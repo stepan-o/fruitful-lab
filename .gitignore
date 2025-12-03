@@ -69,3 +69,4 @@ Thumbs.db
 # -------------------------
 *.temp
 *.tmp
+/backend/data-local/

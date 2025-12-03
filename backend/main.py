@@ -13,7 +13,7 @@ import models
 from utils import parse_calendar_month, parse_int_field
 from schemas import PinterestAccountStatsMonthlyOut
 from routers.auth import router as auth_router
-from security import get_db
+from security import get_db, get_current_active_user
 
 
 @asynccontextmanager
@@ -160,7 +160,10 @@ async def upload_pinterest_stats_csv(
     "/pinterest-stats/monthly",
     response_model=list[PinterestAccountStatsMonthlyOut],
 )
-def list_pinterest_stats_monthly(db: Session = Depends(get_db)):
+def list_pinterest_stats_monthly(
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(get_current_active_user),
+):
     """
     Typed JSON view of monthly Pinterest stats, ordered by calendar_month.
 

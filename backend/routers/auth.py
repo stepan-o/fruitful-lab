@@ -1,6 +1,6 @@
 # backend/routers/auth.py
 
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
@@ -14,6 +14,7 @@ from security import (
     create_access_token,
     get_db,
     hash_password,
+    get_current_active_user,
 )
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -38,11 +39,15 @@ def register_user(payload: UserCreate, db: Session = Depends(get_db)):
             detail="User with this email already exists",
         )
 
+    now = datetime.now(timezone.utc)
+
     user = models.User(
         email=payload.email,
         full_name=payload.full_name,
         hashed_password=hash_password(payload.password),
         is_active=payload.is_active,
+        created_at=now,
+        updated_at=now,
     )
     db.add(user)
     db.commit()
@@ -79,3 +84,15 @@ def login_for_access_token(
     )
 
     return Token(access_token=access_token, token_type="bearer")
+
+
+@router.get("/me", response_model=UserOut)
+async def read_current_user(
+        current_user: models.User = Depends(get_current_active_user),
+):
+    """
+    Return the currently authenticated user.
+
+    Used by the frontend to hydrate session info.
+    """
+    return current_user

@@ -20,12 +20,17 @@ const API_BASE_URL =
  * This calls the FastAPI endpoint:
  *   GET /pinterest-stats/monthly
  */
-export async function fetchPinterestMonthlyStats(): Promise<PinterestMonthlyStat[]> {
+export async function fetchPinterestMonthlyStats(
+    accessToken: string,
+): Promise<PinterestMonthlyStat[]> {
     const url = `${API_BASE_URL}/pinterest-stats/monthly`;
 
     const res = await fetch(url, {
         // no-store so dashboard always sees fresh data
         cache: "no-store",
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
     });
 
     if (!res.ok) {

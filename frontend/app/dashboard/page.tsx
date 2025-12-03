@@ -1,6 +1,9 @@
 // frontend/app/dashboard/page.tsx
 
-import { fetchPinterestMonthlyStats } from "@/lib/pinterestStats";
+import { cookies } from "next/headers";
+import { fetchPinterestMonthlyStats, PinterestMonthlyStat } from "@/lib/pinterestStats";
+
+const COOKIE_NAME = "fruitful_access_token";
 
 function formatMonth(isoDate: string) {
     // crude but fine for now; we'll refine formatting later if needed
@@ -12,11 +15,21 @@ function formatMonth(isoDate: string) {
 }
 
 export default async function DashboardPage() {
-    let stats = [];
+    // In this typing, cookies() returns a Promise<ReadonlyRequestCookies>,
+    // so we await it once.
+    const cookieStore = await cookies();
+    const token = cookieStore.get(COOKIE_NAME)?.value;
+
+    // middleware should prevent this, but guard just in case
+    if (!token) {
+        throw new Error("Missing auth token in dashboard; check middleware.");
+    }
+
+    let stats: PinterestMonthlyStat[] = [];
     let error: string | null = null;
 
     try {
-        stats = await fetchPinterestMonthlyStats();
+        stats = await fetchPinterestMonthlyStats(token);
     } catch (err) {
         error =
             err instanceof Error

@@ -2,20 +2,27 @@
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env when running locally.
-# On Railway, env vars come from the service config and load_dotenv()
-# just quietly does nothing if there's no file.
 load_dotenv()
 
+# --- OpenAI (existing) ---
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
 def require_openai_api_key() -> str:
-    """
-    Return the OpenAI API key or raise a clear error if it's missing.
-
-    You can use this in actual code where the key is required.
-    """
     if not OPENAI_API_KEY:
         raise RuntimeError("OPENAI_API_KEY is not set")
     return OPENAI_API_KEY
+
+
+# --- Auth / JWT config (new) ---
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+JWT_ALGORITHM = "HS256"
+JWT_ACCESS_TOKEN_EXPIRE_MINUTES = int(
+    os.getenv("JWT_ACCESS_TOKEN_EXPIRE_MINUTES", "60")
+)
+
+
+def require_jwt_secret() -> str:
+    if not JWT_SECRET_KEY:
+        raise RuntimeError("JWT_SECRET_KEY is not set")
+    return JWT_SECRET_KEY

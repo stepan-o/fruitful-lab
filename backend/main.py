@@ -12,6 +12,8 @@ from db import Base, SessionLocal, engine
 import models
 from utils import parse_calendar_month, parse_int_field
 from schemas import PinterestAccountStatsMonthlyOut
+from routers.auth import router as auth_router
+from security import get_db
 
 
 @asynccontextmanager
@@ -40,15 +42,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# --- DB session dependency ---
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
+# NEW: mount auth routes
+app.include_router(auth_router)
 
 # --- Startup handled via FastAPI lifespan API (creates tables) ---
 

@@ -28,3 +28,8 @@ build-backend = "hatchling.build"
 # Tell hatch which files to include in the wheel.
 # Our package is the current directory (backend/).
 packages = ["."]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+]

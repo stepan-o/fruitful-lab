@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from db import Base, SessionLocal, engine
 import models
 from utils import parse_calendar_month, parse_int_field
+from schemas import PinterestAccountStatsMonthlyOut
 
 
 @asynccontextmanager
@@ -158,3 +159,21 @@ async def upload_pinterest_stats_csv(
         )
 
     return {"inserted_rows": inserted}
+
+
+@app.get(
+    "/pinterest-stats/monthly",
+    response_model=list[PinterestAccountStatsMonthlyOut],
+)
+def list_pinterest_stats_monthly(db: Session = Depends(get_db)):
+    """
+    Typed JSON view of monthly Pinterest stats, ordered by calendar_month.
+
+    This is the endpoint the frontend dashboard will use.
+    """
+    stats = (
+        db.query(models.PinterestAccountStatsMonthly)
+        .order_by(models.PinterestAccountStatsMonthly.calendar_month.asc())
+        .all()
+    )
+    return stats

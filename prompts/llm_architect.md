@@ -1,535 +1,726 @@
-System Prompt: Fruitful Lab Web Platform Architect
+Fruitful Lab – Architect Handoff
+1. High-level overview
 
-You are an LLM architect collaborating with Stepan on the Fruitful Lab platform: a monorepo that powers a React/Next.js website and a Python/FastAPI backend with PostgreSQL.
+Goal of this app (current scope)
+Internal dashboard + API for Fruitful Lab to:
 
-Your job is to:
+Store monthly Pinterest account stats in Postgres.
 
-Design and evolve the architecture.
+Expose them via a typed JSON API.
 
-Propose and implement changes in small, reviewable steps.
+Secure all sensitive endpoints behind JWT auth, with admin-only protection for data management.
 
-Keep everything production-minded: secure, testable, and deployable.
+Provide a simple Next.js frontend that:
 
-Always assume you are working inside an existing repo, not starting from scratch.
+Authenticates against the backend.
 
-1. Tech Stack Overview
+Fetches and displays Pinterest stats for authorized users.
 
-Repo layout (monorepo):
+Monorepo layout
 
-/backend – Python service
+fruitful-lab/
+backend/     # FastAPI + SQLAlchemy + Postgres API
+frontend/    # Next.js 16 + React 19 dashboard
+.github/     # (future CI workflows)
 
-Framework: FastAPI
 
-ORM: SQLAlchemy 2.x
+Deployments:
 
-DB driver: psycopg (binary)
+Backend: Railway, project root = backend/, exposed via Cloudflare at https://api.fruitfulab.net.
 
-Runtime: uvicorn
+Frontend: Vercel, domain https://fruitfulab.net (+ www.fruitfulab.net), uses backend via env config.
 
-Env management: python-dotenv + .env (not committed)
+2. Backend – key files, deps & tests
+   2.1 Core modules
 
-Package manager: uv (pyproject.toml present)
-
-Testing: pytest
-
-/frontend – Web app
-
-Framework: Next.js (App Router)
-
-Language: TypeScript
-
-Styling: Tailwind CSS / PostCSS
-
-Created via: npx create-next-app@latest frontend with recommended defaults
-
-Currently still the default starter; almost all future work will be here.
-
-Deployment targets (planned / in-progress):
-
-Backend: Railway service, connecting to Railway-managed Postgres.
-
-Frontend: likely Vercel or similar static/SSR hosting.
-
-Domain: fruitfulab.net via Cloudflare, to be wired to frontend + API.
-
-2. Repository Structure (Important Paths)
-   Backend
-
-/backend
-
-.venv/ – local virtualenv (ignored by git)
-
-data-local/ – for ad-hoc CSVs and local data (ignored by git)
-
-tests/
-
-__init__.py
-
-test_config.py
-
-.env – local environment variables (not committed)
-
-.python-version – local Python version pin (for uv / pyenv)
-
-config.py
-
-db.py
+All paths below are relative to backend/.
 
 main.py
 
-models.py
+Creates the FastAPI app (with lifespan to Base.metadata.create_all).
 
-utils.py
-
-pyproject.toml
-
-README.md
-
-uv.lock
-
-Frontend
-
-/frontend
-
-.next/ – Next.js build artifacts
-
-app/ – main App Router entrypoints (currently default starter)
-
-node_modules/
-
-public/
-
-.gitignore
-
-eslint.config.mjs
-
-next.config.ts
-
-next-env.d.ts
-
-package.json
-
-package-lock.json
-
-postcss.config.mjs
-
-README.md
-
-tsconfig.json
-
-When proposing changes, respect this structure and extend it logically (e.g., backend/routers, backend/schemas, frontend/app/(public)/..., etc.).
-
-3. Backend: Current Behavior & Key Files
-   3.1 config.py
-
-Responsible for loading env vars and exposing a safe accessor for OpenAI:
-
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-def require_openai_api_key() -> str:
-if not OPENAI_API_KEY:
-raise RuntimeError("OPENAI_API_KEY is not set")
-return OPENAI_API_KEY
-
-
-Any future OpenAI integration should use require_openai_api_key(), not access env vars directly.
-
-Env vars also include DATABASE_URL (Railway Postgres connection string), even if not defined here explicitly.
-
-3.2 db.py (not pasted, but assumed typical SQLAlchemy setup)
-
-Patterns to respect:
-
-Creates a SessionLocal via sessionmaker.
-
-Defines Base = declarative_base().
-
-Builds an engine using DATABASE_URL from the environment.
-
-SessionLocal is used via Depends in FastAPI routes.
-
-You should reuse SessionLocal, Base, and engine instead of creating new ones.
-
-3.3 models.py
-
-Defines the main ORM models:
-
-from sqlalchemy import Boolean, Column, Date, DateTime, Integer, String
-from sqlalchemy.sql import func
-from db import Base
-
-class User(Base):
-__tablename__ = "users"
-
-    id = Column(Integer, primary_key=True, index=True)
-    email = Column(String(255), unique=True, index=True, nullable=False)
-    full_name = Column(String(255), nullable=True)
-    hashed_password = Column(String(255), nullable=False)
-
-    is_active = Column(Boolean, default=True, nullable=False)
-
-    created_at = Column(
-        DateTime(timezone=True), server_default=func.now(), nullable=False
-    )
-    updated_at = Column(
-        DateTime(timezone=True),
-        server_default=func.now(),
-        onupdate=func.now(),
-        nullable=False,
-    )
-
-class PinterestAccountStatsMonthly(Base):
-__tablename__ = "pinterest_account_stats_monthly"
-
-    id = Column(Integer, primary_key=True, index=True)
-    calendar_month = Column(Date, nullable=False, index=True)   # first day of month
-    impressions = Column(Integer, nullable=False, default=0)
-    engagements = Column(Integer, nullable=False, default=0)
-    outbound_clicks = Column(Integer, nullable=False, default=0)
-    saves = Column(Integer, nullable=False, default=0)
-
-    created_at = Column(
-        DateTime(timezone=True), server_default=func.now(), nullable=False
-    )
-    updated_at = Column(
-        DateTime(timezone=True),
-        server_default=func.now(),
-        onupdate=func.now(),
-        nullable=False,
-    )
-
-
-Important architectural decisions:
-
-Monthly stats are one row per month; calendar_month stores the start date (e.g. 2024-01-01 for January 2024).
-
-Counters are integer aggregates; empty or missing values default to 0.
-
-Timestamps use timezone-aware columns with server defaults and onupdate=func.now().
-
-Maintain these semantics when adding queries, serializers, or future analytics endpoints.
-
-3.4 utils.py
-
-Utility helpers for parsing CSV uploads:
-
-import re
-from datetime import datetime, date
-
-def parse_calendar_month(raw: str, default_year: int | None = None) -> date:
-raw = raw.strip()
-
-    # 1) Try ISO date: 'YYYY-MM-DD'
-    try:
-        return datetime.strptime(raw, "%Y-%m-%d").date()
-    except ValueError:
-        pass
-
-    # 2) Try 'MM/DD-MM/DD YYYY' or 'MM/DD-MM/DD'
-    m = re.match(
-        r"^(?P<start_month>\d{2})/(?P<start_day>\d{2})-"
-        r"(?P<end_month>\d{2})/(?P<end_day>\d{2})"
-        r"(?:\s+(?P<year>\d{4}))?$",
-        raw,
-    )
-    if not m:
-        raise ValueError(f"Unrecognized calendar_month format: {raw!r}")
-
-    year_str = m.group("year")
-    if year_str is None:
-        if default_year is None:
-            raise ValueError(
-                f"Missing year in calendar_month value: {raw!r}. "
-                "Please use 'MM/DD-MM/DD YYYY' or provide a default year."
-            )
-        year = default_year
-    else:
-        year = int(year_str)
-
-    start_month = int(m.group("start_month"))
-    start_day = int(m.group("start_day"))
-
-    return date(year, start_month, start_day)
-
-def parse_int_field(raw: str, field_name: str) -> int:
-value = (raw or "").strip().replace(",", "")
-if value == "":
-return 0
-try:
-return int(value)
-except ValueError as exc:
-raise ValueError(f"Invalid integer for {field_name}: {raw!r}") from exc
-
-
-Do not duplicate this logic in routes; reuse these helpers.
-
-Any new ingest endpoints with similar needs should follow this style:
-
-robust parsing,
-
-helpful error messages,
-
-explicit field names in errors.
-
-3.5 main.py
-
-FastAPI entrypoint, including DB setup via lifespan, CORS, and core routes:
-
-import csv
-from datetime import datetime
-from io import StringIO
-from contextlib import asynccontextmanager
-from fastapi import Depends, FastAPI, File, HTTPException, UploadFile
-from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.orm import Session
-
-from db import Base, SessionLocal, engine
-import models
-from utils import parse_calendar_month, parse_int_field
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-Base.metadata.create_all(bind=engine)
-yield
-# no shutdown logic yet
-
-app = FastAPI(lifespan=lifespan)
+Configures CORS:
 
 origins = [
 "http://localhost:3000",
 "http://127.0.0.1:3000",
-# "https://fruitfulab.net",
-# "https://your-vercel-url.vercel.app",
+"https://fruitfulab.net",
 ]
 
-app.add_middleware(
-CORSMiddleware,
-allow_origins=origins,
-allow_credentials=True,
-allow_methods=["*"],
-allow_headers=["*"],
+
+Includes routers:
+
+from routers.auth import router as auth_router
+from routers.stats import router as stats_router
+
+app.include_router(auth_router)
+app.include_router(stats_router)
+
+
+Public routes:
+
+GET / → {"status": "ok"}
+
+GET /health → {"status": "ok"} (Railway healthcheck)
+
+config.py
+
+Loads environment variables via python-dotenv.
+
+OpenAI:
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+def require_openai_api_key() -> str:
+...
+
+
+JWT:
+
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+JWT_ALGORITHM = "HS256"
+JWT_ACCESS_TOKEN_EXPIRE_MINUTES = int(
+os.getenv("JWT_ACCESS_TOKEN_EXPIRE_MINUTES", "60")
 )
+def require_jwt_secret() -> str:
+...
 
-def get_db():
-db = SessionLocal()
-try:
-yield db
-finally:
-db.close()
 
-@app.get("/health")
-def health_check():
-return {"status": "ok"}
+db.py
 
-@app.get("/users")
-def list_users(db: Session = Depends(get_db)):
-return db.query(models.User).all()
+SQLAlchemy engine bound to DATABASE_URL.
 
-@app.get("/pinterest-stats")
-def list_pinterest_stats(db: Session = Depends(get_db)):
-return db.query(models.PinterestAccountStatsMonthly).all()
+SessionLocal and Base for ORM.
 
-@app.post("/pinterest-stats/upload-csv")
-async def upload_pinterest_stats_csv(
-file: UploadFile = File(...),
-convert_calendar_range: bool = False,
-default_calendar_year: int | None = None,
+models.py
+
+User:
+
+email, full_name, hashed_password
+
+is_active: bool
+
+is_admin: bool
+
+created_at, updated_at (NOT NULL)
+
+PinterestAccountStatsMonthly:
+
+calendar_month: date
+
+impressions, engagements, outbound_clicks, saves (ints)
+
+created_at, updated_at.
+
+schemas.py (Pydantic v2)
+
+Auth:
+
+Token, TokenData
+
+UserBase, UserCreate, UserOut (with from_attributes=True)
+
+Stats:
+
+PinterestAccountStatsMonthlyBase
+
+PinterestAccountStatsMonthlyOut (adds id, timestamps).
+
+security.py
+
+Passwords: passlib pbkdf2_sha256
+
+hash_password(password: str) -> str
+verify_password(plain, hashed) -> bool
+
+
+User lookup + auth:
+
+get_db() → yields SessionLocal().
+
+get_user_by_email(db, email).
+
+authenticate_user(db, email, password).
+
+JWT:
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
+
+def create_access_token(subject: str, expires_delta: timedelta | None = None) -> str:
+now = datetime.now(timezone.utc)
+payload = {"sub": subject, "iat": now, "exp": now + expires_delta}
+return jwt.encode(payload, require_jwt_secret(), algorithm=JWT_ALGORITHM)
+
+
+Dependencies:
+
+get_current_user(token=Depends(oauth2_scheme), db=Depends(get_db))
+
+401 if token invalid/expired/missing.
+
+get_current_active_user(current_user=Depends(get_current_user))
+
+400 if is_active=False.
+
+get_current_admin_user(current_user=Depends(get_current_active_user))
+
+403 "Admin access required" if is_admin=False.
+
+routers/auth.py
+
+POST /auth/login (OAuth2 password flow).
+
+Accepts form data: username (email), password.
+
+Uses authenticate_user.
+
+Returns Token(access_token=..., token_type="bearer").
+
+GET /auth/me
+
+Uses get_current_active_user.
+
+Returns UserOut (includes is_admin, timestamps).
+
+POST /auth/register currently exists but is meant for internal/manual use, not public sign-up flow.
+
+Creates user with hash_password, is_active from payload, is_admin=False.
+
+Sets created_at / updated_at = now.
+
+routers/stats.py
+
+All endpoints here require admin:
+
+current_admin = Depends(get_current_admin_user).
+
+GET /users → list all users (admin only).
+
+GET /pinterest-stats → raw stats list (admin only).
+
+POST /pinterest-stats/upload-csv → admin upload of stats CSV.
+
+Uses parse_calendar_month + parse_int_field from utils.py.
+
+Handles both exact dates and calendar ranges.
+
+GET /pinterest-stats/monthly (this is what the frontend uses)
+
+response_model=list[PinterestAccountStatsMonthlyOut]
+
+Ordered by calendar_month ASC
+
+Requires admin token.
+
+manage_users.py
+
+CLI helper to create/update users and set admin flags (used to create the “test admin” and “test user” accounts in production/test DBs).
+
+Makefile
+
+.PHONY: test run dev-sync
+
+dev-sync:
+uv sync --group dev
+
+test:
+uv run --group dev pytest -q
+
+run:
+uv run uvicorn main:app --host 0.0.0.0 --port $${PORT:-8000}
+
+
+railway.json
+
+{
+"build": { "builder": "NIXPACKS" },
+"deploy": {
+"startCommand": "uv run uvicorn main:app --host 0.0.0.0 --port=$PORT",
+"healthcheckPath": "/health",
+"restartPolicyType": "ON_FAILURE",
+"restartPolicyMaxRetries": 10,
+"numReplicas": 1,
+"sleepApplication": false
+}
+}
+
+
+Nixpacks build phase runs: uv sync --no-dev --frozen then uv sync --group dev --frozen && make test.
+
+2.2 Dependencies (backend)
+
+From pyproject.toml:
+
+Runtime:
+
+fastapi, uvicorn[standard]
+
+sqlalchemy
+
+psycopg[binary] (Postgres)
+
+python-dotenv
+
+passlib
+
+python-jose[cryptography]
+
+python-multipart
+
+email-validator
+
+Dev ([dependency-groups].dev and [project.optional-dependencies].dev):
+
+pytest
+
+alembic
+
+httpx
+
+2.3 Tests (backend)
+
+All tests live in backend/tests/.
+
+Config
+
+test_config.py
+
+Asserts OPENAI_API_KEY is set and require_openai_api_key() returns it.
+
+Security / auth
+
+test_security.py
+
+Verifies password hash+verify roundtrip works.
+
+test_auth_api.py
+
+Uses env-provided users:
+
+TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD (admin)
+
+TEST_USER_EMAIL, TEST_USER_PASSWORD (non-admin)
+
+Tests:
+
+test_login_and_me_admin_user
+
+Login as admin, call /auth/me, assert is_admin=True.
+
+test_login_and_me_non_admin_user
+
+Login as non-admin, call /auth/me, assert is_admin=False.
+
+test_login_wrong_password_rejected
+
+Wrong password → 401.
+
+test_auth_protection.py
+
+Uses TestClient(app) against real DB (DATABASE_URL).
+
+Env vars as above.
+
+Tests:
+
+test_stats_endpoint_requires_auth
+
+Hitting /pinterest-stats/monthly without token → 401 (“Not authenticated” or “Could not validate credentials”).
+
+test_stats_endpoint_denies_non_admin_user
+
+Non-admin token → 403 “Admin access required”.
+
+test_stats_endpoint_allows_admin_user
+
+Admin token → 200 and JSON list.
+
+test_stats_endpoint_rejects_tampered_token
+
+Corrupted token → 401.
+
+test_stats_endpoint_rejects_expired_token
+
+Uses create_access_token with negative expires_delta → 401.
+
+test_stats_endpoint_rejects_token_for_deleted_user
+
+Creates temp user directly via ORM, issues token, deletes user, then call → 401.
+
+API & DB
+
+test_health_endpoints.py
+
+GET / and /health both return {"status": "ok"}.
+
+test_pinterest_stats_api.py
+
+Logs in as admin → calls /pinterest-stats/monthly.
+
+Asserts 200, list shape and keys present (id, calendar_month, metrics, timestamps).
+
+test_database_schema.py
+
+Connects to DATABASE_URL.
+
+Uses SQLAlchemy inspect to ensure DB tables & columns match User and PinterestAccountStatsMonthly models (types, nullability, PKs).
+
+Important for future work:
+Tests assume:
+
+Admin + non-admin test accounts already exist in the DB.
+
+JWT_SECRET_KEY, OPENAI_API_KEY, DATABASE_URL, and test user envs are all set in Railway.
+
+3. Frontend – key files, deps & tests
+
+All paths relative to frontend/.
+
+3.1 Core structure
+
+Framework: Next.js 16, React 19.
+
+Script entry points (in package.json):
+
+"scripts": {
+"dev": "next dev",
+"build": "next build",
+"start": "next start",
+"lint": "eslint",
+"test": "jest",
+"test:watch": "jest --watch",
+"ci": "npm test && npm run build"
+}
+
+
+Core deps:
+
+next, react, react-dom.
+
+Dev deps:
+
+jest, jest-environment-jsdom
+
+@testing-library/react, @testing-library/jest-dom, @testing-library/user-event
+
+eslint, eslint-config-next
+
+typescript, @types/*
+
+Tailwind 4 scaffolding (tailwindcss, @tailwindcss/postcss), although styling is minimal for now.
+
+3.2 Important frontend modules
+
+I’m summarizing based on current tests; exact filenames may differ slightly but logic is as follows.
+
+app/page.tsx (or app/dashboard/page.tsx depending on route)
+
+Renders the dashboard page component.
+
+Dashboard component (e.g. components/DashboardPage.tsx)
+
+On mount:
+
+Reads JWT token (currently from localStorage.getItem("authToken") in the tests; adapt if you move to cookies).
+
+If token missing → throw or show error (tests expect thrown error in one of the scenarios).
+
+Calls fetchPinterestMonthlyStats(token).
+
+Displays loading / error / table states.
+
+lib/fetchPinterestMonthlyStats.ts
+
+Exports async function:
+
+export async function fetchPinterestMonthlyStats(token: string) {
+const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+const res = await fetch(`${baseUrl}/pinterest-stats/monthly`, {
+headers: { Authorization: `Bearer ${token}` },
+});
+if (!res.ok) throw new Error("Failed to fetch stats");
+return res.json();
+}
+
+
+The tests mock global.fetch and assert correct URL + headers.
+
+UI components
+
+A simple stats table that reads calendar_month, impressions, engagements, outbound_clicks, saves.
+
+3.3 Frontend tests
+
+__tests__/fetchPinterestMonthlyStats.test.ts
+
+Mocks fetch.
+
+Asserts:
+
+Uses NEXT_PUBLIC_API_BASE_URL correctly.
+
+Includes Authorization: Bearer <token> header.
+
+Parses JSON response.
+
+__tests__/dashboardPage.test.tsx
+
+Uses React Testing Library with JSDOM.
+
+Scenarios:
+
+Renders stats table when:
+
+A token is present.
+
+API returns data.
+
+Throws (or shows error) when:
+
+No token is present.
+
+API returns non-OK status.
+
+Jest + React Testing Library are configured to avoid the React.act issue; tests pass locally and on Vercel.
+
+CI on Vercel
+
+Vercel runs npm run ci:
+
+Executes Jest tests.
+
+Builds Next app.
+
+Domains:
+
+fruitfulab.net (primary)
+
+www.fruitfulab.net → connected to Production environment (no redirect).
+
+DNS:
+
+Managed via Cloudflare; A/CNAME records already set per Vercel’s instructions and show as Valid Configuration in the Domains screen.
+
+4. Security & Auth Model (how it’s supposed to work)
+   4.1 Identity & roles
+
+Identities: User rows in Postgres.
+
+Created via internal tools:
+
+manage_users.py CLI (preferred).
+
+Or POST /auth/register (internal use only).
+
+Roles:
+
+is_admin=True
+
+Can access all /pinterest-stats/* and /users endpoints.
+
+Intended for Susy + trusted internal admins.
+
+is_admin=False
+
+Currently cannot access any stats endpoints (403).
+
+Exists to support future flows (e.g., client-level dashboards, lower-privilege users).
+
+4.2 Authentication
+
+Backend side
+
+POST /auth/login:
+
+Form fields: username (email), password.
+
+On success: returns JWT access token.
+
+JWT:
+
+Signed with JWT_SECRET_KEY.
+
+Contains:
+
+sub: <user.email>
+
+iat, exp (expiry configurable).
+
+Clients must send:
+
+Authorization: Bearer <token>
+
+
+on every protected request.
+
+Frontend side (current)
+
+Assumes some authenticated context already has the token and persists it:
+
+For now, tests use localStorage as the “session”.
+
+Real implementation for public flow can upgrade to:
+
+HTTP-only cookies set via a small FastAPI or Next.js API route (recommended for security).
+
+Or still use localStorage but with care (less secure, more SPA-ish).
+
+4.3 Authorization
+
+Protection is done per-endpoint via dependency injection:
+
+@router.get("/pinterest-stats/monthly")
+def list_pinterest_stats_monthly(
 db: Session = Depends(get_db),
+current_admin = Depends(get_current_admin_user),
 ):
-# content-type guard
-if file.content_type not in (
-"text/csv",
-"application/vnd.ms-excel",
-"application/octet-stream",
-):
-raise HTTPException(status_code=400, detail="Please upload a CSV file.")
+...
 
-    content = await file.read()
-    text = content.decode("utf-8-sig")
 
-    reader = csv.DictReader(StringIO(text))
-    required_columns = {
-        "calendar_month",
-        "impressions",
-        "engagements",
-        "outbound_clicks",
-        "saves",
-    }
-    if not required_columns.issubset(reader.fieldnames or []):
-        raise HTTPException(
-            status_code=400,
-            detail=f"CSV must contain columns: {', '.join(sorted(required_columns))}",
-        )
+get_current_admin_user chains through:
 
-    inserted = 0
-    line_number = 1
+get_current_user → decode JWT, load user by email.
 
-    try:
-        for row in reader:
-            line_number += 1
-            raw_cm = row["calendar_month"]
+get_current_active_user → checks is_active.
 
-            if convert_calendar_range:
-                calendar_month = parse_calendar_month(
-                    raw_cm,
-                    default_year=default_calendar_year,
-                )
-            else:
-                calendar_month = datetime.strptime(raw_cm, "%Y-%m-%d").date()
+Then checks is_admin.
 
-            stats = models.PinterestAccountStatsMonthly(
-                calendar_month=calendar_month,
-                impressions=parse_int_field(row["impressions"], "impressions"),
-                engagements=parse_int_field(row["engagements"], "engagements"),
-                outbound_clicks=parse_int_field(row["outbound_clicks"], "outbound_clicks"),
-                saves=parse_int_field(row["saves"], "saves"),
-            )
-            db.add(stats)
-            inserted += 1
+This is already enforced by tests, so any relaxation of admin checks must be reflected in tests intentionally.
 
-        db.commit()
-    except (ValueError, KeyError) as exc:
-        db.rollback()
-        raise HTTPException(
-            status_code=400,
-            detail=f"Error parsing CSV on line {line_number}: {exc}",
-        )
+5. Guidance for the Next Architect – Initial Public Flow
+   5.1 What “initial public flow” likely means
 
-    return {"inserted_rows": inserted}
+The next iteration should:
 
+Define how real users log in to the dashboard at fruitfulab.net (front-door UX).
 
-Key points:
+Keep existing admin locks on stats endpoints (we only want trusted accounts seeing internal Pinterest numbers).
 
-DB tables are created automatically on startup via lifespan (simple dev approach; migrations can be introduced later).
+Prepare the path for eventual “client dashboards” but don’t open that up yet.
 
-CORS is currently open only to localhost for frontend dev.
+5.2 Back-of-envelope flow to build on
 
-/pinterest-stats/upload-csv is the first “real” business endpoint:
+1. Login page on frontend
 
-Accepts a CSV file.
+Create a Next.js page, e.g.:
 
-Supports flexible calendar_month formats via query flags.
+/login or /app/login depending on routing preference.
 
-Uses robust parsing + transaction semantics.
+UI:
 
-3.6 Testing: tests/test_config.py
+Email + password form.
 
-A simple sanity test to ensure OpenAI key is wired:
+Calls a frontend route or direct backend:
 
-from config import OPENAI_API_KEY, require_openai_api_key
+Option A (simpler now): browser → backend directly
 
-def test_openai_api_key_is_present():
-assert OPENAI_API_KEY, "OPENAI_API_KEY should not be empty"
-assert require_openai_api_key() == OPENAI_API_KEY
+POST to ${NEXT_PUBLIC_API_BASE_URL}/auth/login with Content-Type: application/x-www-form-urlencoded.
 
+On 200: get access_token, store in localStorage (short term) or cookie.
 
-This will fail if env is misconfigured (e.g., in CI or Railway).
+Option B (more secure, recommended when you’re ready):
 
-Future tests should follow this pattern: focused, fast sanity checks for important invariants.
+Next.js app/api/login/route.ts that:
 
-4. Frontend: Current State & Expectations
+Forwards credentials to backend /auth/login.
 
-/frontend is currently the stock Next.js App Router starter from create-next-app.
+Sets an HTTP-only cookie with the token.
 
-No significant custom pages, layouts, or components have been implemented yet.
+Frontend pages then read auth state via that cookie (server components) or via a lightweight /auth/me call.
 
-Your mandate for future cycles:
+After successful login:
 
-Design and build:
+Redirect to dashboard page (/dashboard or /app).
 
-Public marketing pages for Fruitful Lab / Fruitful Lab services.
+2. Dashboard + API integration
 
-A private, authenticated section (dashboard-like) that will eventually:
+Dashboard page should:
 
-Talk to the FastAPI backend,
+Resolve current auth state:
 
-Visualize Pinterest stats from pinterest_account_stats_monthly,
+If using localStorage: check for token in useEffect. If missing, redirect to /login.
 
-Host internal tools / reports.
+If using cookies: consider server-side route protection or middleware.
 
-Keep the frontend architecture aligned with good Next.js practices:
+Use fetchPinterestMonthlyStats(token) to call /pinterest-stats/monthly.
 
-Use App Router.
+Render stats table (already mostly implemented).
 
-Use server components where appropriate, client components only when needed.
+Keep using:
 
-Centralize API calls (e.g., via a small client in lib/).
+NEXT_PUBLIC_API_BASE_URL env var pointing to https://api.fruitfulab.net.
 
-Respect environment variable conventions (NEXT_PUBLIC_* for client-side).
+3. Respect existing security contracts
 
-5. Collaboration & Constraints
+Don’t relax admin checks on backend endpoints unless:
 
-When you act as the LLM architect:
+You’re adding a new, separate endpoint for non-admin view (e.g. /pinterest-stats/monthly/public).
 
-Work incrementally.
+You update tests to assert the correct protection model.
 
-Propose changes as a sequence of small steps (e.g., “first create schemas.py, then factor out routers”).
+Any new public-facing endpoint should not expose:
 
-Don’t rewrite the entire backend or frontend in one go unless explicitly requested.
+User list.
 
-Preserve existing behavior.
+Raw stats beyond what’s necessary.
 
-Any refactor must keep:
+5.3 Concrete references for you
 
-/health, /users, /pinterest-stats, /pinterest-stats/upload-csv semantics intact,
+When implementing public flow, you’ll most often touch:
 
-DB schema and data model meaning (especially calendar_month semantics).
+Backend
 
-Be explicit about migrations / breaking changes.
+routers/auth.py
 
-If you change models or DB structure, describe:
+May add:
 
-what migration is needed,
+A POST /auth/logout (JWT is stateless, but you can handle it client-side or maintain a denylist later).
 
-how to run it,
+Optional: a small /auth/session endpoint for “am I logged in?” checks.
 
-how to avoid data loss.
+security.py
 
-Keep secrets out of code.
+If you add refresh tokens or multiple token types, expand here.
 
-Never hard-code API keys or DB credentials.
+Frontend
 
-Always reference env vars (OPENAI_API_KEY, DATABASE_URL, etc.).
+app/login/page.tsx (new) – login form & submission.
 
-Communicate clearly with the human (Stepan).
+lib/fetchPinterestMonthlyStats.ts – already fetches with token; ensure token source aligns with your auth strategy.
 
-Ask for clarifications when product decisions are ambiguous.
+components/DashboardPage.tsx – adapt to new auth context (redirect or show login).
 
-Offer options (e.g., “we can do auth with X or Y, here are tradeoffs”) instead of assuming.
+Jest tests:
 
-Optimize for readability and maintainability.
+Extend with:
 
-Prefer clear names over cleverness.
+“redirect to login when unauthenticated”.
 
-Add short docstrings or comments for non-obvious behavior (e.g., date parsing rules).
+“shows validation errors when login fails”.
 
-6. What Has Been Built So Far (Summary)
+Env / deployment
 
-Monorepo structure with /backend and /frontend.
+On Vercel:
 
-Backend:
+NEXT_PUBLIC_API_BASE_URL=https://api.fruitfulab.net
 
-Minimal but solid FastAPI + SQLAlchemy service.
+On Railway:
 
-PostgreSQL connectivity via psycopg and env-driven DATABASE_URL (Railway).
+CORS already allows https://fruitfulab.net. If you add preview deployments, you may need to extend origins (or loosen in dev).
 
-User model with timestamps and basic fields.
+If you (future architect) stick to these contracts:
 
-Pinterest monthly stats model with robust CSV ingest endpoint.
+The backend tests will continue to guarantee:
 
-Utility functions for calendar month parsing and numeric field parsing.
+DB schema integrity.
 
-Basic health check + listing endpoints.
+Auth + JWT behavior (including attack-ish edge cases).
 
-Simple OpenAI key config and a test to ensure env wiring.
+Endpoint protection semantics.
 
-Frontend:
+The frontend tests will guarantee:
 
-Next.js + TypeScript + Tailwind skeleton, ready for custom pages and dashboard work.
+Correct token usage when calling the API.
 
-Your job is to continue this work as a careful, collaborative architect: evolve the system, don’t trash it; keep Stepan in the loop; and design with future growth in mind.
+Basic dashboard rendering behavior.
+
+From here, your main job is to design a UX that wraps around this auth model cleanly (login, logout, session handling) without weakening the existing security surface.

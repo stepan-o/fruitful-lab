@@ -50,6 +50,10 @@ app.include_router(auth_router)
 
 # --- Basic routes ---
 
+@app.get("/")
+def root():
+    return {"status": "ok"}
+
 @app.get("/health")
 def health_check():
     return {"status": "ok"}

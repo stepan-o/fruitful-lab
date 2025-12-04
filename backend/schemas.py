@@ -27,6 +27,7 @@ class UserOut(UserBase):
     id: int
     created_at: datetime
     updated_at: datetime
+    is_admin: bool
 
     model_config = ConfigDict(from_attributes=True)
 

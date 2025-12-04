@@ -1,10 +1,12 @@
 import os
-from uuid import uuid4
 
 import pytest
 from fastapi.testclient import TestClient
 
 from main import app
+
+ADMIN_EMAIL_ENV = "TEST_ADMIN_EMAIL"
+ADMIN_PASSWORD_ENV = "TEST_ADMIN_PASSWORD"
 
 
 @pytest.mark.skipif(
@@ -14,31 +16,23 @@ from main import app
 def test_pinterest_stats_monthly_endpoint_shape():
     client = TestClient(app)
 
-    # 1) Register a unique user
-    email = f"schema_{uuid4().hex}@example.com"
-    password = "super-secret-password"
+    admin_email = os.getenv(ADMIN_EMAIL_ENV)
+    admin_password = os.getenv(ADMIN_PASSWORD_ENV)
 
-    register_resp = client.post(
-        "/auth/register",
-        json={
-            "email": email,
-            "full_name": "Schema Test User",
-            "password": password,
-            "is_active": True,
-        },
-    )
-    assert register_resp.status_code == 200, register_resp.text
+    # HARD FAIL if admin creds aren’t configured
+    assert admin_email, f"{ADMIN_EMAIL_ENV} must be set for this test"
+    assert admin_password, f"{ADMIN_PASSWORD_ENV} must be set for this test"
 
-    # 2) Login to get a token
+    # 1) Login as existing ADMIN user
     login_resp = client.post(
         "/auth/login",
-        data={"username": email, "password": password},
+        data={"username": admin_email, "password": admin_password},
         headers={"Content-Type": "application/x-www-form-urlencoded"},
     )
     assert login_resp.status_code == 200, login_resp.text
     token = login_resp.json()["access_token"]
 
-    # 3) Call the protected endpoint with Authorization header
+    # 2) Call the protected endpoint with Authorization header
     resp = client.get(
         "/pinterest-stats/monthly",
         headers={"Authorization": f"Bearer {token}"},

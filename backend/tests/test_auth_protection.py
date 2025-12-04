@@ -1,5 +1,4 @@
 import os
-from uuid import uuid4
 
 import pytest
 from fastapi.testclient import TestClient
@@ -10,6 +9,8 @@ client = TestClient(app)
 
 ADMIN_EMAIL_ENV = "TEST_ADMIN_EMAIL"
 ADMIN_PASSWORD_ENV = "TEST_ADMIN_PASSWORD"
+USER_EMAIL_ENV = "TEST_USER_EMAIL"          # non-admin test user
+USER_PASSWORD_ENV = "TEST_USER_PASSWORD"    # non-admin test user
 
 
 @pytest.mark.skipif(
@@ -31,31 +32,30 @@ def test_stats_endpoint_requires_auth():
     reason="DATABASE_URL not set; skipping auth protection tests",
 )
 def test_stats_endpoint_denies_non_admin_user():
-    # 1) Register a unique NON-ADMIN user
-    email = f"testuser_{uuid4().hex}@example.com"
-    password = "super-secret-password"
+    """
+    Non-admin user should NOT be able to access the admin-only stats endpoint.
 
-    register_resp = client.post(
-        "/auth/register",
-        json={
-            "email": email,
-            "full_name": "Test User",
-            "password": password,
-            "is_active": True,
-        },
-    )
-    assert register_resp.status_code == 200, register_resp.text
+    Uses a pre-existing non-admin test account:
+      TEST_USER_EMAIL / TEST_USER_PASSWORD
+    """
 
-    # 2) Login to get token
+    user_email = os.getenv(USER_EMAIL_ENV)
+    user_password = os.getenv(USER_PASSWORD_ENV)
+
+    # HARD FAIL if non-admin test creds aren’t configured
+    assert user_email, f"{USER_EMAIL_ENV} must be set for this test"
+    assert user_password, f"{USER_PASSWORD_ENV} must be set for this test"
+
+    # Login as NON-ADMIN user
     login_resp = client.post(
         "/auth/login",
-        data={"username": email, "password": password},
+        data={"username": user_email, "password": user_password},
         headers={"Content-Type": "application/x-www-form-urlencoded"},
     )
     assert login_resp.status_code == 200, login_resp.text
     token = login_resp.json()["access_token"]
 
-    # 3) Call protected ADMIN-ONLY endpoint
+    # Attempt to hit ADMIN-ONLY endpoint
     stats_resp = client.get(
         "/pinterest-stats/monthly",
         headers={"Authorization": f"Bearer {token}"},
@@ -69,6 +69,13 @@ def test_stats_endpoint_denies_non_admin_user():
     reason="DATABASE_URL not set; skipping auth protection tests",
 )
 def test_stats_endpoint_allows_admin_user():
+    """
+    Admin user SHOULD be able to access the admin-only stats endpoint.
+
+    Uses a pre-existing admin test account:
+      TEST_ADMIN_EMAIL / TEST_ADMIN_PASSWORD
+    """
+
     admin_email = os.getenv(ADMIN_EMAIL_ENV)
     admin_password = os.getenv(ADMIN_PASSWORD_ENV)
 

@@ -3,7 +3,7 @@ name = "backend"
 version = "0.1.0"
 description = "FastAPI backend for Fruitful Lab with SQLAlchemy and Postgres"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "email-validator>=2.3.0",
     "fastapi>=0.123.5",

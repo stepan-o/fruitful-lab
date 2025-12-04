@@ -32,5 +32,6 @@ packages = ["."]
 
 [dependency-groups]
 dev = [
+    "alembic>=1.17.2",
     "httpx>=0.28.1",
 ]

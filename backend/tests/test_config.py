@@ -1,5 +1,5 @@
 # backend/tests/test_config.py
-from backend.config import OPENAI_API_KEY, require_openai_api_key
+from config import OPENAI_API_KEY, require_openai_api_key
 
 
 def test_openai_api_key_is_present():

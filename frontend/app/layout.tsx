@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Alatsi, Raleway } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Brand fonts
+const headingFont = Alatsi({
   subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-heading",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const bodyFont = Raleway({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 text-slate-900`}
+        className={`${headingFont.variable} ${bodyFont.variable} font-body antialiased bg-white text-[#171A21]`}
       >
         <div className="min-h-screen flex flex-col">
           <SiteHeader />

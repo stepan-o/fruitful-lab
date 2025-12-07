@@ -1,15 +1,16 @@
 // frontend/app/page.tsx
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import PublicHubLanding from "@/components/PublicHubLanding";
-
-const COOKIE_NAME = "fruitful_access_token";
+import { getCurrentUser } from "@/lib/auth";
 
 export default async function HomePage() {
-  const cookieStore = await cookies();
-  const token = cookieStore.get(COOKIE_NAME)?.value;
-  if (token) {
+  const user = await getCurrentUser();
+
+  if (user?.is_admin) {
     redirect("/dashboard");
+  }
+  if (user && !user.is_admin) {
+    redirect("/tools");
   }
 
   return <PublicHubLanding />;

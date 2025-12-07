@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LogoutButton from "@/components/layout/LogoutButton";
 
 function NavLinks() {
   return (
@@ -47,6 +48,8 @@ export default function SiteHeader() {
           >
             Book a Call
           </a>
+          {/* Global logout (always visible for now) */}
+          <LogoutButton />
         </div>
 
         {/* Mobile menu */}
@@ -82,6 +85,9 @@ export default function SiteHeader() {
               >
                 Book a Call
               </a>
+              <div className="pt-2">
+                <LogoutButton />
+              </div>
             </div>
           </div>
         </details>

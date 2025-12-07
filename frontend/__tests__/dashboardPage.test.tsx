@@ -5,6 +5,11 @@ import DashboardPage from '@/app/dashboard/page';
 import { fetchPinterestMonthlyStats } from '@/lib/pinterestStats';
 import { cookies } from 'next/headers';
 
+// Mock role helper
+jest.mock('@/lib/auth', () => ({
+    getCurrentUser: jest.fn(),
+}));
+
 jest.mock('next/headers', () => ({
     cookies: jest.fn(),
 }));
@@ -19,6 +24,14 @@ describe('DashboardPage', () => {
     });
 
     it('renders stats table when user is authenticated and stats are available', async () => {
+        const { getCurrentUser } = jest.requireMock('@/lib/auth');
+        // admin user
+        getCurrentUser.mockResolvedValue({
+            id: 1,
+            email: 'admin@example.com',
+            is_admin: true,
+        });
+
         // mock cookie with token
         (cookies as unknown as jest.Mock).mockReturnValue({
             get: () => ({ value: 'token-123' }),
@@ -54,13 +67,17 @@ describe('DashboardPage', () => {
         expect(screen.getByText('10')).toBeInTheDocument();
     });
 
-    it('throws when auth token is missing', async () => {
-        (cookies as unknown as jest.Mock).mockReturnValue({
-            get: () => undefined,
-        });
+    it('redirects to login when user is not authenticated', async () => {
+        const { getCurrentUser } = jest.requireMock('@/lib/auth');
+        getCurrentUser.mockResolvedValue(null);
 
-        await expect(DashboardPage()).rejects.toThrow(
-            /Missing auth token in dashboard/i,
-        );
+        await expect(DashboardPage()).rejects.toThrow(/NEXT_REDIRECT/);
+    });
+
+    it('redirects non-admins to /tools', async () => {
+        const { getCurrentUser } = jest.requireMock('@/lib/auth');
+        getCurrentUser.mockResolvedValue({ id: 2, email: 'user@x.com', is_admin: false });
+
+        await expect(DashboardPage()).rejects.toThrow(/NEXT_REDIRECT/);
     });
 });

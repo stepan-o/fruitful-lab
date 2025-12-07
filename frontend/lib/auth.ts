@@ -18,7 +18,7 @@ export type CurrentUser = {
  * Never throws; fetch/network errors yield null.
  */
 export async function getCurrentUser(): Promise<CurrentUser | null> {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const token = cookieStore.get(COOKIE_NAME)?.value;
   if (!token) return null;
 

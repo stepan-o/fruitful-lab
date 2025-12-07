@@ -1,5 +1,6 @@
 // frontend/components/PublicHubLanding.tsx
 import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 // Static, server-friendly component — no client hooks required.
 export default function PublicHubLanding() {
@@ -24,26 +25,24 @@ export default function PublicHubLanding() {
 
             {/* CTAs */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a
-                href="https://fruitfulpin.com" // TODO: Confirm final marketing URL
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md bg-[#950952] px-5 py-3 font-body text-sm font-semibold text-white shadow-sm transition hover:bg-[#7f0846] focus:outline-none focus:ring-2 focus:ring-[#950952]/30"
-              >
-                Go to Fruitful Pin site
-              </a>
-              <Link
-                href="/tools"
-                className="inline-flex items-center justify-center rounded-md border border-[#0B132B] bg-white px-5 py-3 font-body text-sm font-medium text-[#0B132B] transition hover:bg-[#DFDFDF]"
-              >
+              {/* Primary CTA with subtle emphasis */}
+              <div className="relative inline-flex flex-col items-start">
+                <span className="mb-1 text-[11px] uppercase tracking-[0.06em] text-[var(--brand-bronze)]">
+                  Start here
+                </span>
+                <div className="pointer-events-none absolute -inset-1 -z-10 rounded-full bg-[var(--brand-raspberry)]/10 blur-md animate-[hubPulse_6s_ease-in-out_infinite]" />
+                <Button href="https://fruitfulpin.com" variant="primary">
+                  Go to Fruitful Pin site
+                </Button>
+              </div>
+
+              <Button href="/tools" variant="secondary">
                 Browse public tools
-              </Link>
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center px-3 py-2 text-sm text-[#0B132B] underline underline-offset-4 hover:text-[#071026]"
-              >
+              </Button>
+
+              <Button href="/login?next=/dashboard" variant="secondary">
                 Sign in to dashboards
-              </Link>
+              </Button>
             </div>
           </div>
 

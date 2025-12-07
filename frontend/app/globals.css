@@ -39,3 +39,10 @@ body {
 .font-body {
   font-family: var(--font-body), Arial, Helvetica, sans-serif;
 }
+
+/* Subtle breathing animation for primary CTA emphasis */
+@keyframes hubPulse {
+  0% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.18; transform: scale(1.04); }
+  100% { opacity: 0.35; transform: scale(1); }
+}

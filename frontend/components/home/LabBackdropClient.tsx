@@ -59,7 +59,7 @@ export default function LabBackdropClient() {
       "var(--brand-alabaster)",
       "var(--brand-raspberry)",
       "var(--brand-bronze)",
-      "var(--brand-rust)",
+      "var(--brand-heading)", // deep Prussian Blue circle
     ];
 
     // Gentle speeds in px/sec so it feels like background drift

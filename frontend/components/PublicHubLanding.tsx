@@ -40,7 +40,7 @@ export default function PublicHubLanding() {
 
                                 <p className="mt-4 max-w-prose text-base sm:text-lg leading-relaxed sm:leading-relaxed text-[#171A21]/90">
                                     This is the internal tools &amp; dashboards hub behind{" "}
-                                    <span className="font-semibold text-[var(--brand-raspberry)]">
+                                    <span className="font-bold text-[var(--brand-raspberry)]">
                                         Fruitful Pin
                                     </span>{" "}
                                     — our Pinterest &amp; funnel studio. If you&apos;re looking for services,

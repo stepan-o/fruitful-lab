@@ -37,7 +37,7 @@ export default function PublicHubLanding() {
                                     The engine room behind Fruitful Pin.
                                 </h1>
 
-                                <p className="mt-4 max-w-prose text-base leading-relaxed text-[#171A21]/90">
+                                <p className="mt-4 max-w-prose text-base sm:text-lg leading-relaxed sm:leading-relaxed text-[#171A21]/90">
                                     This is the internal tools & dashboards hub behind Fruitful Pin — our Pinterest & funnel studio.
                                     If you&apos;re looking for services, head to the main site.
                                 </p>

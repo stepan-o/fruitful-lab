@@ -5,7 +5,7 @@ import { PUBLIC_NAV_LINKS } from "@/lib/nav";
 
 function NavLinks() {
   return (
-    <nav className="hidden items-center gap-6 text-sm text-slate-700 md:flex">
+    <nav className="hidden items-center gap-7 text-sm sm:text-base text-slate-700 md:flex">
       {PUBLIC_NAV_LINKS.map((item) => (
         <Link
           key={item.href}
@@ -28,7 +28,10 @@ export default async function SiteHeader() {
     <header className="border-b border-slate-200 bg-white/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
-        <Link href="/" className="font-semibold tracking-tight text-slate-900">
+        <Link
+          href="/"
+          className="font-heading text-lg sm:text-xl font-semibold tracking-tight text-slate-900"
+        >
           Fruitful Lab
         </Link>
 
@@ -41,7 +44,7 @@ export default async function SiteHeader() {
             href="https://calendly.com/fruitfulab/15min"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md bg-sky-700 px-3 py-2 text-sm font-medium text-white shadow hover:bg-sky-800"
+            className="rounded-md bg-sky-700 px-3 py-2 text-sm md:text-base font-medium text-white shadow hover:bg-sky-800"
           >
             Book a Call
           </a>
@@ -51,7 +54,7 @@ export default async function SiteHeader() {
           ) : (
             <Link
               href="/login?next=/dashboard"
-              className="rounded-md border border-[#0B132B] bg-white px-3 py-2 text-sm font-medium text-[#0B132B] hover:bg-[#DFDFDF]"
+              className="rounded-md border border-[#0B132B] bg-white px-3 py-2 text-sm md:text-base font-medium text-[#0B132B] hover:bg-[#DFDFDF]"
             >
               Login
             </Link>

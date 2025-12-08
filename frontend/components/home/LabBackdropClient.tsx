@@ -34,12 +34,14 @@ export default function LabBackdropClient() {
   const lastTsRef = useRef<number | null>(null);
   const sizeRef = useRef({ width: 0, height: 0 });
   // Lightweight state to trigger re-renders; render reads from circlesRef.
-  const [setFrame] = useState(0);
+  // We only need the setter; skip the state value to avoid an unused var.
+  const [, setFrame] = useState(0);
 
   // Initialize circles once container size is known.
   // - Spawns exactly 4 circles.
   // - Radii are chosen in a 220–420px range then clamped to fit the container.
-  // - Positions and velocities are randomized within container bounds.
+  // - Positions are randomized in a bottom-right cluster (single cluster center
+  //   per init, with small per-circle jitter) while staying within bounds.
   const initCircles = (width: number, height: number) => {
     // Pick radii in 220–420px range, but clamp so they fit the container
     const minDim = Math.max(0, Math.min(width, height));
@@ -63,11 +65,48 @@ export default function LabBackdropClient() {
     // Gentle speeds in px/sec so it feels like background drift
     const speeds = [24, 28, 32, 26];
 
+    // Choose a single cluster center in the bottom-right region.
+    // Use a conservative max radius to ensure the cluster center is viable.
+    const padding = 16;
+    const unclampedMaxR = Math.max(...radii);
+    const perCircleCap = Math.max(20, Math.floor(minDim / 3));
+    const conservativeMaxRadius = Math.min(unclampedMaxR, perCircleCap);
+
+    // Target bottom-right bands: 60–85% width, 60–90% height.
+    // Also respect bounds using the conservative radius and padding.
+    const clusterXMin = Math.max(conservativeMaxRadius + padding, Math.floor(width * 0.6));
+    const clusterXMax = Math.min(width - conservativeMaxRadius - padding, Math.floor(width * 0.85));
+    const clusterYMin = Math.max(conservativeMaxRadius + padding, Math.floor(height * 0.6));
+    const clusterYMax = Math.min(height - conservativeMaxRadius - padding, Math.floor(height * 0.9));
+
+    const clusterViable =
+      width > 0 && height > 0 &&
+      clusterXMax >= clusterXMin &&
+      clusterYMax >= clusterYMin;
+
+    const clusterX = clusterViable ? rand(clusterXMin, clusterXMax) : 0;
+    const clusterY = clusterViable ? rand(clusterYMin, clusterYMax) : 0;
+
     const circles: Circle[] = radii.map((r, i) => {
       // If container is too small, reduce radius to fit
       const radius = Math.min(r, Math.max(20, Math.floor(minDim / 3)));
-      const x = rand(radius, Math.max(radius, width - radius));
-      const y = rand(radius, Math.max(radius, height - radius));
+      let x: number;
+      let y: number;
+
+      if (clusterViable) {
+        // Small per-circle jitter around the shared cluster center
+        const jitterX = rand(-radius * 0.4, radius * 0.4);
+        const jitterY = rand(-radius * 0.4, radius * 0.4);
+        x = clusterX + jitterX;
+        y = clusterY + jitterY;
+        // Clamp into bounds to avoid clipping at spawn
+        x = Math.min(Math.max(radius, x), Math.max(radius, width - radius));
+        y = Math.min(Math.max(radius, y), Math.max(radius, height - radius));
+      } else {
+        // Fallback: scatter across full container like the original behavior
+        x = rand(radius, Math.max(radius, width - radius));
+        y = rand(radius, Math.max(radius, height - radius));
+      }
       const angle = rand(0, Math.PI * 2);
       const speed = speeds[i % speeds.length];
       const vx = Math.cos(angle) * speed;

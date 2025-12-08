@@ -9,7 +9,7 @@ export default function SiteFooter() {
         {/* Top row: tagline + hub mini-nav driven by shared config */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-slate-600">
-            Pinterest &amp; funnel studio for baby, family, and lifestyle brands.
+              Effective Pinterest Marketing &amp; Funnel Studio For Content Creators & Specialty Brands.
           </p>
 
           <nav className="flex flex-wrap items-center gap-4">

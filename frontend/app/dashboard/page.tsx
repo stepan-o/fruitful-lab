@@ -1,7 +1,9 @@
 // frontend/app/dashboard/page.tsx
 
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { fetchPinterestMonthlyStats, PinterestMonthlyStat } from "@/lib/pinterestStats";
+import { getCurrentUser } from "@/lib/auth";
 
 const COOKIE_NAME = "fruitful_access_token";
 
@@ -15,14 +17,23 @@ function formatMonth(isoDate: string) {
 }
 
 export default async function DashboardPage() {
-    // In this typing, cookies() returns a Promise<ReadonlyRequestCookies>,
-    // so we await it once.
+    // Role-aware server-side guard: only admins may proceed
+    const user = await getCurrentUser();
+    if (!user) {
+        // Missing/invalid session: send to login preserving intent
+        redirect("/login?next=/dashboard");
+    }
+    if (!user.is_admin) {
+        // Non-admins are redirected to tools (avoid 403 dead-end)
+        redirect("/tools");
+    }
+
+    // Still fetch the token for downstream API calls
     const cookieStore = await cookies();
     const token = cookieStore.get(COOKIE_NAME)?.value;
-
-    // middleware should prevent this, but guard just in case
     if (!token) {
-        throw new Error("Missing auth token in dashboard; check middleware.");
+        // Extremely unlikely if user exists, but handle defensively
+        redirect("/login?next=/dashboard");
     }
 
     let stats: PinterestMonthlyStat[] = [];

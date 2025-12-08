@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff; /* page base */
+    --foreground: #171A21; /* Ink Black */
+    --brand-heading: #0B132B; /* Prussian Blue */
+    --brand-raspberry: #950952; /* Dark Raspberry */
+    --brand-alabaster: #DFDFDF; /* Alabaster Grey */
+    --brand-bronze: #D58936; /* Bronze */
+    --brand-rust: #A44200; /* Rust */
+
+    /* font variables set by next/font in layout.tsx */
+    --font-heading: ui-sans-serif; /* fallback */
+    --font-body: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+}
+
+/* Global font utility classes */
+.font-heading {
+    font-family: var(--font-heading), Arial, Helvetica, sans-serif;
+}
+.font-body {
+    font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+/* Subtle breathing animation for primary CTA emphasis */
+@keyframes hubPulse {
+    0% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.18;
+        transform: scale(1.04);
+    }
+    100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+}
+
+/* Task 4 – Lab backdrop animations (INTENTIONALLY OVER-THE-TOP FOR DEBUG) */
+@keyframes labDriftX {
+    0% {
+        transform: translateX(-240px) scale(1);
+    }
+    50% {
+        /* huge swing + slight scale */
+        transform: translateX(240px) scale(1.15);
+    }
+    100% {
+        transform: translateX(-240px) scale(1);
+    }
+}
+
+@keyframes labDriftY {
+    0% {
+        transform: translateY(-180px) scale(1);
+    }
+    50% {
+        transform: translateY(180px) scale(1.1);
+    }
+    100% {
+        transform: translateY(-180px) scale(1);
+    }
+}
+
+@keyframes labOpacityPulse {
+    0% {
+        opacity: 0.05;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.05;
+    }
+}
+
+/* Strong 0→100% opacity pulse for the "Start here" chip */
+@keyframes start-here-pulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
 }

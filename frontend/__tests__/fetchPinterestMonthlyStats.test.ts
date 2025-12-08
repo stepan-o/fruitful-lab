@@ -50,7 +50,7 @@ describe("fetchPinterestMonthlyStats", () => {
         } as Response);
 
         // wire our mock into the global fetch used by the util
-        (globalThis as any).fetch = fetchMock;
+        (globalThis as unknown as { fetch: jest.Mock }).fetch = fetchMock;
 
         const result = await fetchPinterestMonthlyStats("token-123");
 
@@ -76,7 +76,7 @@ describe("fetchPinterestMonthlyStats", () => {
             json: async () => ({ detail: "boom" }),
         } as Response);
 
-        (globalThis as any).fetch = fetchMock;
+        (globalThis as unknown as { fetch: jest.Mock }).fetch = fetchMock;
 
         await expect(fetchPinterestMonthlyStats("token-123")).rejects.toThrow(
             /failed to fetch pinterest stats/i,

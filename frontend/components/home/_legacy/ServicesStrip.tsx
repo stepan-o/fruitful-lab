@@ -1,3 +1,4 @@
+// LEGACY: old marketing home section, not used in the current tech/tools hub.
 // no imports needed
 
 function Card({ title, bullets }: { title: string; bullets: string[] }) {

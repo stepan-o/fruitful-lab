@@ -1,3 +1,4 @@
+// LEGACY: old marketing home section, not used in the current tech/tools hub.
 import Link from "next/link";
 
 export default function HeroSection() {

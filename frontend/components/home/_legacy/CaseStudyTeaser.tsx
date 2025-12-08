@@ -1,3 +1,4 @@
+// LEGACY: old marketing home section, not used in the current tech/tools hub.
 export default function CaseStudyTeaser() {
   return (
     <section id="case-studies" className="border-b border-slate-200 bg-white">

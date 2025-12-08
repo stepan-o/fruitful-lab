@@ -1,24 +1,22 @@
 import Link from "next/link";
 import LogoutButton from "@/components/layout/LogoutButton";
 import { getCurrentUser } from "@/lib/auth";
+import { PUBLIC_NAV_LINKS } from "@/lib/nav";
 
 function NavLinks() {
   return (
     <nav className="hidden items-center gap-6 text-sm text-slate-700 md:flex">
-      <Link href="/tools" className="hover:text-slate-900">
-        Tools &amp; Calculators
-      </Link>
-      <Link href="/case-studies" className="hover:text-slate-900">
-        Case Studies
-      </Link>
-      <a
-        href="https://fruitfulpin.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-slate-900"
-      >
-        Main Agency Site
-      </a>
+      {PUBLIC_NAV_LINKS.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          target={item.external ? "_blank" : undefined}
+          rel={item.external ? "noopener noreferrer" : undefined}
+          className="hover:text-slate-900"
+        >
+          {item.label}
+        </Link>
+      ))}
     </nav>
   );
 }
@@ -67,20 +65,17 @@ export default async function SiteHeader() {
           </summary>
           <div className="absolute left-0 right-0 z-10 mt-2 border-b border-slate-200 bg-white px-4 py-3 shadow-sm">
             <div className="flex flex-col gap-3 text-sm text-slate-700">
-              <Link href="/tools" className="hover:text-slate-900">
-                Tools &amp; Calculators
-              </Link>
-              <Link href="/case-studies" className="hover:text-slate-900">
-                Case Studies
-              </Link>
-              <a
-                href="https://fruitfulpin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-slate-900"
-              >
-                Main Agency Site
-              </a>
+              {PUBLIC_NAV_LINKS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  className="hover:text-slate-900"
+                >
+                  {item.label}
+                </Link>
+              ))}
               <a
                 href="https://calendly.com/fruitfulab/15min"
                 target="_blank"

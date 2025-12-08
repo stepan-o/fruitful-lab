@@ -2,9 +2,18 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import LabAnimatedBackdrop from "@/components/home/LabAnimatedBackdrop";
+import { PUBLIC_NAV_LINKS } from "@/lib/nav";
+
+// Helper to look up a nav link by its href in the shared config
+const getNavLink = (href: string) =>
+    PUBLIC_NAV_LINKS.find((item) => item.href === href);
 
 // Static, server-friendly component — no client hooks required.
 export default function PublicHubLanding() {
+    // Resolve the three public entry links from shared config
+    const toolsLink = getNavLink("/tools");
+    const caseStudiesLink = getNavLink("/case-studies");
+    const mainSiteLink = getNavLink("https://fruitfulpin.com");
     return (
         <div className="bg-white text-[#171A21]">
             {/* Hero band that fills the viewport (minus header). Explainer moved below. */}
@@ -105,40 +114,49 @@ export default function PublicHubLanding() {
             {/* Public entry points – appear only after scrolling */}
             <section className="mx-auto max-w-[1200px] px-4 py-12 sm:py-14 lg:py-20">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    <Link
-                        href="/tools"
-                        className="group rounded-lg border border-[#DFDFDF] bg-white p-5 transition hover:shadow-sm"
-                    >
-                        <h4 className="font-heading text-lg text-[#0B132B]">Tools & Calculators</h4>
-                        <p className="mt-2 text-sm text-[#171A21]/80">Explore utilities that help plan and optimize.</p>
-                        <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
-                            Go →
-                        </span>
-                    </Link>
+                    {/* Tools & Calculators */}
+                    {toolsLink && (
+                        <Link
+                            href={toolsLink.href}
+                            className="group rounded-lg border border-[#DFDFDF] bg-white p-5 transition hover:shadow-sm"
+                        >
+                            <h4 className="font-heading text-lg text-[#0B132B]">{toolsLink.label}</h4>
+                            <p className="mt-2 text-sm text-[#171A21]/80">Explore utilities that help plan and optimize.</p>
+                            <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
+                                Go →
+                            </span>
+                        </Link>
+                    )}
 
-                    <Link
-                        href="/case-studies"
-                        className="group rounded-lg border border-[#DFDFDF] bg-white p-5 transition hover:shadow-sm"
-                    >
-                        <h4 className="font-heading text-lg text-[#0B132B]">Case Studies</h4>
-                        <p className="mt-2 text-sm text-[#171A21]/80">See what&apos;s working across Pinterest and funnels.</p>
-                        <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
-                            Browse →
-                        </span>
-                    </Link>
+                    {/* Case Studies */}
+                    {caseStudiesLink && (
+                        <Link
+                            href={caseStudiesLink.href}
+                            className="group rounded-lg border border-[#DFDFDF] bg-white p-5 transition hover:shadow-sm"
+                        >
+                            <h4 className="font-heading text-lg text-[#0B132B]">{caseStudiesLink.label}</h4>
+                            <p className="mt-2 text-sm text-[#171A21]/80">See what&apos;s working across Pinterest and funnels.</p>
+                            <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
+                                Browse →
+                            </span>
+                        </Link>
+                    )}
 
-                    <a
-                        href="https://fruitfulpin.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group rounded-lg border border-[#DFDFDF] bg-white p-5 transition hover:shadow-sm"
-                    >
-                        <h4 className="font-heading text-lg text-[#0B132B]">Main Agency Site</h4>
-                        <p className="mt-2 text-sm text-[#171A21]/80">Learn about services, offers, and how we work.</p>
-                        <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
-                            Visit →
-                        </span>
-                    </a>
+                    {/* Main Agency Site (external) */}
+                    {mainSiteLink && (
+                        <a
+                            href={mainSiteLink.href}
+                            target={mainSiteLink.external ? "_blank" : undefined}
+                            rel={mainSiteLink.external ? "noopener noreferrer" : undefined}
+                            className="group rounded-lg border border-[#DFDFDF] bg-white p-5 transition hover:shadow-sm"
+                        >
+                            <h4 className="font-heading text-lg text-[#0B132B]">{mainSiteLink.label}</h4>
+                            <p className="mt-2 text-sm text-[#171A21]/80">Learn about services, offers, and how we work.</p>
+                            <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
+                                Visit →
+                            </span>
+                        </a>
+                    )}
                 </div>
             </section>
         </div>

@@ -55,6 +55,7 @@ body {
         transform: scale(1);
     }
 }
+
 /* Task 4 – Lab backdrop animations (INTENTIONALLY OVER-THE-TOP FOR DEBUG) */
 @keyframes labDriftX {
     0% {
@@ -90,5 +91,21 @@ body {
     }
     100% {
         opacity: 0.05;
+    }
+}
+
+/* Strong 0→100% opacity pulse for the "Start here" chip */
+@keyframes start-here-pulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
     }
 }

@@ -35,12 +35,28 @@ export default function PublicHubLanding() {
 
                                 {/* CTAs */}
                                 <div className="mt-7 flex flex-wrap items-center gap-4">
-                                    {/* Primary CTA with subtle emphasis */}
+                                    {/* Primary CTA with emphasized label + halo */}
                                     <div className="relative inline-flex flex-col items-start">
-                    <span className="mb-1 text-[11px] uppercase tracking-[0.06em] text-[var(--brand-bronze)]">
-                      Start here
-                    </span>
-                                        <div className="pointer-events-none absolute -inset-1 -z-10 rounded-full bg-[var(--brand-raspberry)]/10 blur-md animate-[hubPulse_6s_ease-in-out_infinite]" />
+                                        {/* PULSING START HERE LABEL */}
+                                        <span
+                                            className="
+                                                mb-3 inline-flex items-center gap-2
+                                                rounded-full px-4 py-1.5
+                                                text-[11px] sm:text-xs
+                                                font-semibold uppercase tracking-[0.22em]
+                                                text-white
+                                                bg-[#F59E0B]
+                                                shadow-md
+                                                animate-[start-here-pulse_1.8s_ease-in-out_infinite]
+                                            "
+                                        >
+                                            <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                                            Start here
+                                        </span>
+
+                                        {/* halo behind the main CTA */}
+                                        <div className="pointer-events-none absolute left-0 top-7 -z-10 h-[150%] w-[125%] rounded-full bg-[var(--brand-raspberry)]/14 blur-xl animate-[hubPulse_6s_ease-in-out_infinite]" />
+
                                         <Button href="https://fruitfulpin.com" variant="primary">
                                             Go to Fruitful Pin site
                                         </Button>
@@ -99,8 +115,8 @@ export default function PublicHubLanding() {
                         <h4 className="font-heading text-lg text-[#0B132B]">Tools & Calculators</h4>
                         <p className="mt-2 text-sm text-[#171A21]/80">Explore utilities that help plan and optimize.</p>
                         <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
-              Go →
-            </span>
+                            Go →
+                        </span>
                     </Link>
 
                     <Link
@@ -110,8 +126,8 @@ export default function PublicHubLanding() {
                         <h4 className="font-heading text-lg text-[#0B132B]">Case Studies</h4>
                         <p className="mt-2 text-sm text-[#171A21]/80">See what&apos;s working across Pinterest and funnels.</p>
                         <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
-              Browse →
-            </span>
+                            Browse →
+                        </span>
                     </Link>
 
                     <a
@@ -123,8 +139,8 @@ export default function PublicHubLanding() {
                         <h4 className="font-heading text-lg text-[#0B132B]">Main Agency Site</h4>
                         <p className="mt-2 text-sm text-[#171A21]/80">Learn about services, offers, and how we work.</p>
                         <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
-              Visit →
-            </span>
+                            Visit →
+                        </span>
                     </a>
                 </div>
             </section>

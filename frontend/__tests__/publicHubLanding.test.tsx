@@ -20,4 +20,18 @@ describe("PublicHubLanding hero CTAs", () => {
     const login = screen.queryByRole("link", { name: /sign in to dashboards/i });
     expect(login).not.toBeInTheDocument();
   });
+
+  it("shows the main hero heading and the explainer strip content below the hero", () => {
+    render(<PublicHubLanding />);
+
+    // Main hero heading
+    expect(
+      screen.getByRole("heading", { name: /the engine room behind fruitful pin\./i })
+    ).toBeInTheDocument();
+
+    // Explainer strip headings exist on the page (as their own section below)
+    expect(screen.getByText(/internal dashboards/i)).toBeInTheDocument();
+    expect(screen.getByText(/smart tools & calculators/i)).toBeInTheDocument();
+    expect(screen.getByText(/deep-dive case studies/i)).toBeInTheDocument();
+  });
 });

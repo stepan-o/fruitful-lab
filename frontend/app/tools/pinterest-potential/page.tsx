@@ -4,7 +4,6 @@ import {
   DEFAULT_VARIANT,
   ALL_VARIANTS,
   type PinterestPotentialVariant,
-  ENABLE_AB_SPLIT,
   PINTEREST_POTENTIAL_VARIANT_COOKIE,
 } from "@/lib/tools/pinterestPotentialConfig";
 import { PinterestPotentialV1 } from "@/components/tools/pinterestPotential/PinterestPotentialV1";
@@ -27,56 +26,39 @@ type PageProps = {
 };
 
 export default async function PinterestPotentialPage({ searchParams }: PageProps) {
-  const variant = await resolvePinterestPotentialVariant(searchParams?.variant);
+  // Read the cookie set by middleware-based assignment
+  const cookieStore = await cookies();
+  const cookieVariant = cookieStore.get(PINTEREST_POTENTIAL_VARIANT_COOKIE)?.value;
+  const requestedVariant = searchParams?.variant;
+  const variant = resolvePinterestPotentialVariant(requestedVariant, cookieVariant);
   const VariantComponent = VARIANT_COMPONENTS[variant];
   return <VariantComponent />;
 }
 
 /**
- * Variant resolution order:
- * 1) If a valid `?variant=` is provided, always honor it (debugging / manual override).
- * 2) If A/B is disabled, fall back to DEFAULT_VARIANT (no cookies, no randomness).
- * 3) If A/B is enabled (future):
- *    - If a valid cookie exists, use that.
- *    - Otherwise, randomly pick a variant, set cookie, and return it.
+ * Variant resolution order for the calculator (no GrowthBook calls here):
+ * 1) If a valid ?variant= is provided, honor it (debug/QA override).
+ * 2) Otherwise, if a valid cookie value exists, use it (middleware-assigned).
+ * 3) Otherwise, fall back to DEFAULT_VARIANT.
  */
-async function resolvePinterestPotentialVariant(
-  requested?: string
-): Promise<PinterestPotentialVariant> {
-  const normalized = requested?.toLowerCase() as
-    | PinterestPotentialVariant
-    | undefined;
+export function resolvePinterestPotentialVariant(
+  requested?: string,
+  cookieValue?: string,
+): PinterestPotentialVariant {
+  const reqNorm = normalizeVariant(requested);
+  if (reqNorm) return reqNorm;
 
-  // 1) Query override (always allowed for debugging / direct links)
-  if (normalized && (ALL_VARIANTS as string[]).includes(normalized)) {
-    return normalized;
+  const cookieNorm = normalizeVariant(cookieValue);
+  if (cookieNorm) return cookieNorm;
+
+  return DEFAULT_VARIANT;
+}
+
+export function normalizeVariant(value?: string): PinterestPotentialVariant | undefined {
+  if (!value) return undefined;
+  const lower = value.toLowerCase();
+  if ((ALL_VARIANTS as string[]).includes(lower)) {
+    return lower as PinterestPotentialVariant;
   }
-
-  // 2) No A/B split: behave exactly like previous implementation
-  if (!ENABLE_AB_SPLIT) {
-    return DEFAULT_VARIANT;
-  }
-
-  // 3) A/B split enabled (future): use cookie or assign one
-  const cookieStore = await cookies();
-  const existing = cookieStore.get(PINTEREST_POTENTIAL_VARIANT_COOKIE)?.value as
-    | PinterestPotentialVariant
-    | undefined;
-
-  if (existing && (ALL_VARIANTS as string[]).includes(existing)) {
-    return existing;
-  }
-
-  // No valid cookie → assign variant randomly (simple even split)
-  const randomIndex = Math.floor(Math.random() * ALL_VARIANTS.length);
-  const chosen = ALL_VARIANTS[randomIndex];
-
-  // Scope cookie reasonably to this tool path, stick for ~30 days
-  // next/headers cookies() setter may not be typed the same across versions; cast to any for future path
-  (cookieStore as any).set(PINTEREST_POTENTIAL_VARIANT_COOKIE, chosen, {
-    path: "/tools/pinterest-potential",
-    maxAge: 60 * 60 * 24 * 30,
-  });
-
-  return chosen;
+  return undefined;
 }

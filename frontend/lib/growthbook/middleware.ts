@@ -6,6 +6,7 @@ import {
   PINTEREST_POTENTIAL_EXPERIMENT,
   type ExperimentKey,
 } from "@/lib/experiments/config";
+import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotentialConfig";
 
 // Cookie naming convention for experiments
 const EXP_COOKIE_PREFIX = "exp_";
@@ -54,7 +55,8 @@ export async function applyExperimentCookies(
 ): Promise<void> {
   // Scope J2 to a single experiment for now
   const exp = PINTEREST_POTENTIAL_EXPERIMENT;
-  const cookieName = getExperimentCookieName(exp.key);
+  // Use the shared cookie name constant so page and middleware stay in sync
+  const cookieName = PINTEREST_POTENTIAL_VARIANT_COOKIE;
 
   // 1) Respect an existing valid cookie
   const existingRaw = req.cookies.get(cookieName)?.value;

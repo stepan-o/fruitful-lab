@@ -1,5 +1,14 @@
 // frontend/components/tools/pinterestPotential/PinterestPotentialV1.tsx
 // Placeholder shell for the Pinterest Potential Calculator – v1.
+// import { trackConversion } from "@/lib/experiments/track";
+
+// Later, when the calculator is implemented:
+// async function handleComplete() {
+//   await trackConversion("pp_complete", {
+//     variant: "v1",
+//     // additional props like numberOfQuestions, timeToComplete, etc.
+//   });
+// }
 
 export function PinterestPotentialV1() {
   return (

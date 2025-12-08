@@ -6,19 +6,35 @@
 
 import { growthbookAdapter } from "@flags-sdk/growthbook";
 import { after } from "next/server";
+import { logExperimentEvent } from "@/lib/experiments/track";
 
-// Very light tracking callback stub (no real analytics yet)
-growthbookAdapter.setTrackingCallback((experiment, result) => {
-  // NOTE: This is a future-us hook for analytics.
-  // In production we’ll send this to GA/Amplitude or our backend.
+// Tracking callback → send exposure events through central pipe
+growthbookAdapter.setTrackingCallback((experiment: any, result: any) => {
   after(async () => {
-    // Fire-and-forget logging so we don’t block rendering.
-    if (process.env.NODE_ENV === "development") {
-      // eslint-disable-next-line no-console
-      console.log("[GrowthBook] Viewed experiment (stub)", {
-        experimentId: experiment.key,
-        variationId: result.key,
+    try {
+      // Forward an exposure event to our API (no secrets)
+      await logExperimentEvent({
+        type: "exposure",
+        experimentKey: String(experiment?.key ?? ""),
+        // Prefer standard fields; fall back to value/key where needed
+        variant: String(
+          result?.variationId ?? result?.key ?? result?.value ?? ""
+        ),
+        attributes: (result?.attributes as Record<string, unknown>) ?? undefined,
+        source: "growthbook",
       });
+
+      if (process.env.NODE_ENV === "development") {
+        // eslint-disable-next-line no-console
+        console.log("[growthbook exposure]", experiment?.key, {
+          variant: result?.variationId ?? result?.key ?? result?.value,
+        });
+      }
+    } catch (err) {
+      if (process.env.NODE_ENV === "development") {
+        // eslint-disable-next-line no-console
+        console.error("[growthbook exposure] failed to log", err);
+      }
     }
   });
 });

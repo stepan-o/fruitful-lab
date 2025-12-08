@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LogoutButton from "@/components/layout/LogoutButton";
+import { BookCallButton } from "@/components/layout/BookCallButton";
 import { getCurrentUser } from "@/lib/auth";
 import { PUBLIC_NAV_LINKS } from "@/lib/nav";
 
@@ -40,14 +41,7 @@ export default async function SiteHeader() {
 
         {/* CTAs (desktop) */}
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href="https://calendly.com/fruitfulab/15min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md bg-sky-700 px-3 py-2 text-sm md:text-base font-medium text-white shadow hover:bg-sky-800"
-          >
-            Book a Call
-          </a>
+          <BookCallButton />
 
           {isLoggedIn ? (
             <LogoutButton />
@@ -79,14 +73,7 @@ export default async function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <a
-                href="https://calendly.com/fruitfulab/15min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md bg-sky-700 px-3 py-2 text-center font-medium text-white hover:bg-sky-800"
-              >
-                Book a Call
-              </a>
+              <BookCallButton fullWidth />
               {isLoggedIn ? (
                 <div className="pt-2">
                   <LogoutButton />

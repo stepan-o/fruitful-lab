@@ -6,6 +6,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
+// Circle instances represent the moving discs in the hero backdrop:
+// - id: stable identifier for React keying
+// - x/y: center position in pixels inside the container (mutable each frame)
+// - vx/vy: velocity in pixels per second (px/sec)
+// - radius: circle radius in pixels
+// - color/opacity: rendering appearance only
 type Circle = {
   id: number;
   x: number;
@@ -28,9 +34,12 @@ export default function LabBackdropClient() {
   const lastTsRef = useRef<number | null>(null);
   const sizeRef = useRef({ width: 0, height: 0 });
   // Lightweight state to trigger re-renders; render reads from circlesRef.
-  const [frame, setFrame] = useState(0);
+  const [setFrame] = useState(0);
 
-  // Initialize circles once container size is known
+  // Initialize circles once container size is known.
+  // - Spawns exactly 4 circles.
+  // - Radii are chosen in a 220–420px range then clamped to fit the container.
+  // - Positions and velocities are randomized within container bounds.
   const initCircles = (width: number, height: number) => {
     // Pick radii in 220–420px range, but clamp so they fit the container
     const minDim = Math.max(0, Math.min(width, height));
@@ -83,6 +92,10 @@ export default function LabBackdropClient() {
     circlesRef.current = circles;
   };
 
+  // Main animation setup:
+  // - Measures the container, initializes circles once, and observes resizes.
+  // - Runs a requestAnimationFrame loop using px/sec velocities with wall bounces.
+  // - Uses a frame-tick state update to trigger React re-renders from circlesRef.
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -98,7 +111,9 @@ export default function LabBackdropClient() {
         // Trigger initial paint
         setFrame((f) => f + 1);
       } else {
-        // On resize, keep circles inside bounds; do not change velocities
+        // On resize, keep circles inside bounds; do not change velocities.
+        // NOTE: This resize handler also mutates c.x and c.y (via clamping)
+        // in addition to the initCircles() spawn and the per-frame RAF loop.
         const circles = circlesRef.current;
         for (const c of circles) {
           c.x = Math.min(Math.max(c.radius, c.x), Math.max(c.radius, width - c.radius));

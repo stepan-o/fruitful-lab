@@ -1,24 +1,73 @@
 // frontend/components/home/LabAnimatedBackdrop.tsx
-// Pure visual backdrop for the PublicHubLanding hero.
-// Uses only brand color CSS variables defined in globals.css and very subtle animations.
+// DEBUG VERSION: intentionally loud animation so we can verify it's working.
 
 export default function LabAnimatedBackdrop() {
-  return (
-    <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-      {/* Faint vertical line drifting slightly left/right */}
-      <div className="absolute top-6 bottom-6 left-[10%] w-px bg-[var(--brand-alabaster)] opacity-[0.08] sm:opacity-[0.06] md:opacity-[0.05] animate-[labDriftX_18s_ease-in-out_infinite]" />
+    return (
+        // z-0 so the backdrop sits above the section bg,
+        // but below the hero content (which is z-10).
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+            {/* Giant alabaster circle flinging left/right */}
+            <div
+                className="
+          absolute
+          -left-[20%] top-[5%]
+          h-[460px] w-[460px]
+          rounded-full
+          bg-[var(--brand-alabaster)]
+          opacity-[0.8]
+          animate-[labDriftX_3s_linear_infinite]
+        "
+            />
 
-      {/* Faint horizontal line drifting slightly up/down */}
-      <div className="absolute left-8 right-8 top-10 h-px bg-[var(--brand-alabaster)] opacity-[0.08] sm:opacity-[0.06] md:opacity-[0.05] animate-[labDriftY_20s_ease-in-out_infinite]" />
+            {/* Huge alabaster pill bouncing up/down */}
+            <div
+                className="
+          absolute
+          right-[-25%] top-[0%]
+          h-[360px] w-[620px]
+          rounded-[48px]
+          bg-[var(--brand-alabaster)]
+          opacity-[0.7]
+          animate-[labDriftY_4s_linear_infinite]
+        "
+            />
 
-      {/* Rounded rectangle implying a panel; slow vertical drift */}
-      <div className="absolute right-[8%] top-12 hidden h-32 w-56 rounded-lg border border-[var(--brand-alabaster)] opacity-[0.12] md:block animate-[labDriftY_16s_ease-in-out_infinite]" />
+            {/* Big raspberry orb zooming horizontally under CTAs */}
+            <div
+                className="
+          absolute
+          left-[10%] bottom-[-10%]
+          h-[260px] w-[260px]
+          rounded-full
+          bg-[var(--brand-raspberry)]
+          opacity-[0.9]
+          animate-[labDriftX_2s_linear_infinite]
+        "
+            />
 
-      {/* Tiny bronze node with gentle opacity pulse */}
-      <div className="absolute left-[22%] top-[58%] h-2 w-2 rounded-full bg-[var(--brand-bronze)] opacity-[0.12] animate-[labOpacityPulse_14s_ease-in-out_infinite]" />
+            {/* Bronze node strobing like mad */}
+            <div
+                className="
+          absolute
+          left-[30%] top-[55%]
+          h-6 w-6
+          rounded-full
+          bg-[var(--brand-bronze)]
+          animate-[labOpacityPulse_1.5s_linear_infinite]
+        "
+            />
 
-      {/* Tiny rust square node with offset timing */}
-      <div className="absolute bottom-[18%] right-[18%] hidden h-2.5 w-2.5 rounded-[4px] bg-[var(--brand-rust)] opacity-[0.10] sm:block animate-[labOpacityPulse_17s_ease-in-out_infinite]" />
-    </div>
-  );
+            {/* Rust square strobing on the other side */}
+            <div
+                className="
+          absolute
+          bottom-[20%] right-[20%]
+          h-6 w-6
+          rounded-[6px]
+          bg-[var(--brand-rust)]
+          animate-[labOpacityPulse_1.5s_linear_infinite]
+        "
+            />
+        </div>
+    );
 }

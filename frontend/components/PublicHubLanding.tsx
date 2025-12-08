@@ -65,13 +65,16 @@ export default function PublicHubLanding() {
 
                                         {/* halo behind the main CTA */}
                                         <div className="pointer-events-none absolute left-0 top-7 -z-10 h-[150%] w-[125%] rounded-full bg-[var(--brand-raspberry)]/14 blur-xl animate-[hubPulse_6s_ease-in-out_infinite]" />
-
-                                        <Button href="https://fruitfulpin.com" variant="primary">
+                                        {/*
+                                          Note: Hero CTA URLs are sourced from PUBLIC_NAV_LINKS (via getNavLink),
+                                          matching header/footer/cards. Edit hrefs in frontend/lib/nav.ts to update globally.
+                                        */}
+                                        <Button href={mainSiteLink?.href ?? "https://fruitfulpin.com"} variant="primary">
                                             Go to Fruitful Pin site
                                         </Button>
                                     </div>
 
-                                    <Button href="/tools" variant="secondary">
+                                    <Button href={toolsLink?.href ?? "/tools"} variant="secondary">
                                         Browse public tools
                                     </Button>
                                 </div>

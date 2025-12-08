@@ -23,14 +23,50 @@ growthbookAdapter.setTrackingCallback((experiment, result) => {
   });
 });
 
-// NEW: pre-initialize the adapter so GrowthBook sees SDK traffic
-void growthbookAdapter
-  .initialize()
-  .catch((err) => {
-    if (process.env.NODE_ENV === "development") {
-      // eslint-disable-next-line no-console
-      console.error("[GrowthBook] Failed to initialize in dev:", err);
-    }
+// --- Debug/health snapshot (dev-only utility) ---
+// Inspect via the /api/debug/growthbook endpoint.
+export const growthbookDebugState = {
+  envConfigured: false,
+  initialized: false,
+  lastError: null as Error | null,
+};
+
+// Evaluate env configuration once on import
+const clientKey = process.env.GROWTHBOOK_CLIENT_KEY;
+const apiHost = process.env.GROWTHBOOK_API_HOST ?? "https://cdn.growthbook.io";
+growthbookDebugState.envConfigured = !!clientKey;
+
+// Initialize the adapter so the SDK connection sees traffic — but only when
+// env vars are present. Errors are captured in debug state and logged in dev.
+if (growthbookDebugState.envConfigured) {
+  void growthbookAdapter
+    .initialize()
+    .then(() => {
+      growthbookDebugState.initialized = true;
+      if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
+        console.log("[GrowthBook] adapter initialized", { apiHost });
+      }
+    })
+    .catch((err: unknown) => {
+      const error = err instanceof Error ? err : new Error(String(err));
+      growthbookDebugState.lastError = error;
+      if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
+        console.error("[GrowthBook] adapter failed to initialize", error);
+      }
+    });
+} else if (process.env.NODE_ENV !== "production") {
+  // eslint-disable-next-line no-console
+  console.warn("[GrowthBook] env not configured; skipping initialize()", {
+    clientKeyPresent: !!clientKey,
+    apiHost,
   });
+}
+
+// Debug usage (dev only):
+// - Start `npm run dev`
+// - Hit /api/debug/growthbook in the browser
+// - envConfigured=true and initialized=true means SDK has fetched flags at least once
 
 export { growthbookAdapter };

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LogoutButton from "@/components/layout/LogoutButton";
+import { getCurrentUser } from "@/lib/auth";
 
 function NavLinks() {
   return (
@@ -20,7 +21,9 @@ function NavLinks() {
   );
 }
 
-export default function SiteHeader() {
+export default async function SiteHeader() {
+  const user = await getCurrentUser();
+  const isLoggedIn = !!user;
   return (
     <header className="border-b border-slate-200 bg-white/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -32,14 +35,8 @@ export default function SiteHeader() {
         {/* Center nav (desktop) */}
         <NavLinks />
 
-        {/* CTAs */}
+        {/* CTAs (desktop) */}
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href="/hub"
-            className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 shadow-sm hover:bg-slate-50"
-          >
-            Explore the Knowledge Hub
-          </a>
           <a
             href="https://calendly.com/fruitfulab/15min"
             target="_blank"
@@ -48,8 +45,17 @@ export default function SiteHeader() {
           >
             Book a Call
           </a>
-          {/* Global logout (always visible for now) */}
-          <LogoutButton />
+
+          {isLoggedIn ? (
+            <LogoutButton />
+          ) : (
+            <Link
+              href="/login?next=/dashboard"
+              className="rounded-md border border-[#0B132B] bg-white px-3 py-2 text-sm font-medium text-[#0B132B] hover:bg-[#DFDFDF]"
+            >
+              Login
+            </Link>
+          )}
         </div>
 
         {/* Mobile menu */}
@@ -72,12 +78,6 @@ export default function SiteHeader() {
                 Resources
               </Link>
               <a
-                href="/hub"
-                className="rounded-md border border-slate-300 bg-white px-3 py-2 text-center text-slate-700 hover:bg-slate-50"
-              >
-                Explore the Knowledge Hub
-              </a>
-              <a
                 href="https://calendly.com/fruitfulab/15min"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -85,9 +85,18 @@ export default function SiteHeader() {
               >
                 Book a Call
               </a>
-              <div className="pt-2">
-                <LogoutButton />
-              </div>
+              {isLoggedIn ? (
+                <div className="pt-2">
+                  <LogoutButton />
+                </div>
+              ) : (
+                <Link
+                  href="/login?next=/dashboard"
+                  className="mt-1 rounded-md border border-[#0B132B] bg-white px-3 py-2 text-center text-sm font-medium text-[#0B132B] hover:bg-[#DFDFDF]"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         </details>

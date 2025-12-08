@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import PublicHubLanding from "@/components/PublicHubLanding";
 
 describe("PublicHubLanding hero CTAs", () => {
-  it("renders primary CTA to external site and secondary CTAs to tools and login", () => {
+  it("renders only two CTAs: primary to external site and secondary to tools (no login)", () => {
     render(<PublicHubLanding />);
 
     // Primary CTA
@@ -16,9 +16,8 @@ describe("PublicHubLanding hero CTAs", () => {
     expect(tools).toBeInTheDocument();
     expect(tools).toHaveAttribute("href", "/tools");
 
-    // Secondary: sign in
-    const login = screen.getByRole("link", { name: /sign in to dashboards/i });
-    expect(login).toBeInTheDocument();
-    expect(login).toHaveAttribute("href", "/login?next=/dashboard");
+    // Ensure login CTA is not present
+    const login = screen.queryByRole("link", { name: /sign in to dashboards/i });
+    expect(login).not.toBeInTheDocument();
   });
 });

@@ -7,9 +7,9 @@ import LabAnimatedBackdrop from "@/components/home/LabAnimatedBackdrop";
 export default function PublicHubLanding() {
     return (
         <div className="bg-white text-[#171A21]">
-            {/* Hero + explainer band that fills the viewport (minus header) */}
+            {/* Hero band that fills the viewport (minus header). Explainer moved below. */}
             <section className="relative flex w-full flex-col overflow-hidden bg-white min-h-[calc(100vh-72px)] justify-between">
-                {/* Hero area (grows to fill space above the grey strip) */}
+                {/* Hero area */}
                 <div className="relative flex-1">
                     {/* Animated backdrop fills this hero area */}
                     <LabAnimatedBackdrop />
@@ -65,10 +65,6 @@ export default function PublicHubLanding() {
                                     <Button href="/tools" variant="secondary">
                                         Browse public tools
                                     </Button>
-
-                                    <Button href="/login?next=/dashboard" variant="secondary">
-                                        Sign in to dashboards
-                                    </Button>
                                 </div>
                             </div>
 
@@ -80,27 +76,28 @@ export default function PublicHubLanding() {
                     </div>
                 </div>
 
-                {/* Explainer strip anchored to bottom of this band */}
-                <div className="border-y border-[#DFDFDF] bg-[#DFDFDF]">
-                    <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2 lg:grid-cols-3 sm:py-12 lg:py-14">
-                        <div>
-                            <h3 className="font-heading text-xl text-[#0B132B]">Internal dashboards</h3>
-                            <p className="mt-2 text-sm leading-relaxed text-[#171A21]/90">
-                                Admin-only analytics, pacing, and performance views across Pinterest and funnels.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 className="font-heading text-xl text-[#0B132B]">Smart tools & calculators</h3>
-                            <p className="mt-2 text-sm leading-relaxed text-[#171A21]/90">
-                                Public and gated utilities to plan campaigns, budgets, and creative — built for practitioners.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 className="font-heading text-xl text-[#0B132B]">Deep-dive case studies</h3>
-                            <p className="mt-2 text-sm leading-relaxed text-[#171A21]/90">
-                                Transparent breakdowns of strategy, experiments, and outcomes for real brands.
-                            </p>
-                        </div>
+            </section>
+
+            {/* Explainer strip now as its own section below the hero */}
+            <section className="border-y border-[#DFDFDF] bg-[#DFDFDF]">
+                <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2 lg:grid-cols-3 sm:py-12 lg:py-14">
+                    <div>
+                        <h3 className="font-heading text-xl text-[#0B132B]">Internal dashboards</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#171A21]/90">
+                            Admin-only analytics, pacing, and performance views across Pinterest and funnels.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="font-heading text-xl text-[#0B132B]">Smart tools & calculators</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#171A21]/90">
+                            Public and gated utilities to plan campaigns, budgets, and creative — built for practitioners.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="font-heading text-xl text-[#0B132B]">Deep-dive case studies</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#171A21]/90">
+                            Transparent breakdowns of strategy, experiments, and outcomes for real brands.
+                        </p>
                     </div>
                 </div>
             </section>

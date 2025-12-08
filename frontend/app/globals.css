@@ -46,3 +46,22 @@ body {
   50% { opacity: 0.18; transform: scale(1.04); }
   100% { opacity: 0.35; transform: scale(1); }
 }
+
+/* Task 4 – Lab backdrop animations (slow, subtle) */
+@keyframes labDriftX {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes labDriftY {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes labOpacityPulse {
+  0% { opacity: 0.12; }
+  50% { opacity: 0.06; }
+  100% { opacity: 0.12; }
+}

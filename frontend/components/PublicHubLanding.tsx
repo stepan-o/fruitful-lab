@@ -1,6 +1,7 @@
 // frontend/components/PublicHubLanding.tsx
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import LabAnimatedBackdrop from "@/components/home/LabAnimatedBackdrop";
 
 // Static, server-friendly component — no client hooks required.
 export default function PublicHubLanding() {
@@ -8,9 +9,13 @@ export default function PublicHubLanding() {
     <div className="bg-white text-[#171A21]">
       {/* Hero */}
       <section className="mx-auto max-w-[1200px] px-4 pt-10 pb-10 sm:pt-12 sm:pb-12 lg:pt-20 lg:pb-20">
-        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-          {/* Text stack */}
-          <div>
+        <div className="relative overflow-hidden">
+          {/* Animated lab backdrop */}
+          <LabAnimatedBackdrop />
+          {/* Foreground hero content */}
+          <div className="relative z-10 grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+            {/* Text stack */}
+            <div>
             <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#DFDFDF] bg-white px-3 py-1 text-xs text-[#0B132B]">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#D58936]" />
               Fruitful Lab · Tech & Tools
@@ -44,11 +49,12 @@ export default function PublicHubLanding() {
                 Sign in to dashboards
               </Button>
             </div>
-          </div>
+            </div>
 
-          {/* Right-side placeholder for future visuals/animation */}
-          <div className="hidden md:block">
-            <div className="h-64 w-full rounded-lg border border-[#DFDFDF] bg-gradient-to-br from-white via-[#FFF9F2] to-white" />
+            {/* Right-side placeholder for future visuals/animation */}
+            <div className="hidden md:block">
+              <div className="h-64 w-full rounded-lg border border-[#DFDFDF] bg-gradient-to-br from-white via-[#FFF9F2] to-white" />
+            </div>
           </div>
         </div>
       </section>

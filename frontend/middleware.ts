@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+// Future experiments (currently no-op helper):
+// import { applyExperimentCookies } from "@/lib/growthbook/middleware";
 
 const COOKIE_NAME = "fruitful_access_token";
 
@@ -13,6 +15,12 @@ export function middleware(req: NextRequest) {
     );
 
     if (!isProtected) {
+        // For now, we don’t run any experiments in middleware.
+        // Future-us: uncomment this when we’re ready to assign variants here.
+        //
+        // const res = NextResponse.next();
+        // return applyExperimentCookies(req, res);
+        //
         return NextResponse.next();
     }
 
@@ -24,6 +32,9 @@ export function middleware(req: NextRequest) {
         return NextResponse.redirect(loginUrl);
     }
 
+    // Same note as above – keep experiments separate from auth redirects.
+    // const res = NextResponse.next();
+    // return applyExperimentCookies(req, res);
     return NextResponse.next();
 }
 

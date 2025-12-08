@@ -13,12 +13,24 @@ growthbookAdapter.setTrackingCallback((experiment, result) => {
   // In production we’ll send this to GA/Amplitude or our backend.
   after(async () => {
     // Fire-and-forget logging so we don’t block rendering.
-    // eslint-disable-next-line no-console
-    console.log("[GB] Viewed experiment", {
-      experimentId: experiment.key,
-      variationId: result.key,
-    });
+    if (process.env.NODE_ENV === "development") {
+      // eslint-disable-next-line no-console
+      console.log("[GrowthBook] Viewed experiment (stub)", {
+        experimentId: experiment.key,
+        variationId: result.key,
+      });
+    }
   });
 });
+
+// NEW: pre-initialize the adapter so GrowthBook sees SDK traffic
+void growthbookAdapter
+  .initialize()
+  .catch((err) => {
+    if (process.env.NODE_ENV === "development") {
+      // eslint-disable-next-line no-console
+      console.error("[GrowthBook] Failed to initialize in dev:", err);
+    }
+  });
 
 export { growthbookAdapter };

@@ -34,12 +34,17 @@ export default function PublicHubLanding() {
                                 </div>
 
                                 <h1 className="font-heading text-3xl leading-tight text-[#0B132B] sm:text-4xl md:text-5xl md:leading-[1.2]">
-                                    The engine room behind Fruitful Pin.
+                                    The engine room behind{" "}
+                                    <span className="font-semibold text-[var(--brand-raspberry)]">Fruitful Pin.</span>
                                 </h1>
 
                                 <p className="mt-4 max-w-prose text-base sm:text-lg leading-relaxed sm:leading-relaxed text-[#171A21]/90">
-                                    This is the internal tools & dashboards hub behind Fruitful Pin — our Pinterest & funnel studio.
-                                    If you&apos;re looking for services, head to the main site.
+                                    This is the internal tools &amp; dashboards hub behind{" "}
+                                    <span className="font-semibold text-[var(--brand-raspberry)]">
+                                        Fruitful Pin
+                                    </span>{" "}
+                                    — our Pinterest &amp; funnel studio. If you&apos;re looking for services,
+                                    head to the main site.
                                 </p>
 
                                 {/* CTAs */}

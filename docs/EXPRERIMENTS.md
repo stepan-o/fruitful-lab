@@ -175,3 +175,215 @@ Set in `.env.local`:
 * `GROWTHBOOK_APP_ORIGIN` (GrowthBook app URL; used only for debug / linking)
 
 Edge config vars are **optional** and not used yet.
+
+---
+
+## Manual QA Checklist—Pinterest Potential (Example)
+
+This is a step-by-step checklist to verify the Pinterest Potential experiment end-to-end.
+
+---
+
+### 0. Before you start
+
+- **Env:** `npm run dev` running at `http://localhost:3000`.
+- **GrowthBook (dev env):**
+    - Experiment `pinterest_potential_variant` **running**.
+    - Feature / toggle for `pinterest_potential_variant` **enabled for dev**.
+- **Handy URLs:**
+    - Calculator: `http://localhost:3000/tools/pinterest-potential`
+    - Debug: `http://localhost:3000/api/debug/growthbook`
+- Use an **Incognito / private window** so you can clear cookies
+  without affecting anything else.
+
+---
+
+### 1. Infra sanity check
+
+1. Open `http://localhost:3000/api/debug/growthbook`.
+2. Expected JSON includes:
+    - `"envConfigured": true`
+    - `"initialized": true`
+    - `"ping": { "ok": true, "status": 200, ... }`
+3. In GrowthBook’s SDK wizard, status should be **Connected**.
+4. If any of the above fails:
+    - **Stop here** and fix env or adapter before testing variants.
+
+---
+
+### 2. First-time user: assignment + cookie + stickiness
+
+#### 2.1 Fresh anonymous user
+
+1. In DevTools → **Application → Storage → Cookies**,
+   clear all cookies for `localhost:3000`.
+2. Visit `http://localhost:3000/tools/pinterest-potential`.
+3. In DevTools → **Network**, confirm the page request went through.
+4. In **Cookies** panel, confirm:
+    - `pp_variant` cookie exists.
+    - Value is `"v1"` or `"v2"`.
+5. Check the UI:
+    - Layout / copy / CTA matches the expected variant
+      for that cookie value.
+
+#### 2.2 Stickiness on reload
+
+1. Hard-refresh the page 2–3 times.
+2. Expected:
+    - `pp_variant` value **does not change**.
+    - UI stays consistent with that variant.
+3. If the cookie flips between `"v1"` and `"v2"`,
+   middleware is not respecting stickiness.
+
+---
+
+### 3. Variant override behavior (`?variant=`)
+
+Goal: query param overrides **rendering only**, not the assignment cookie.
+
+#### 3.1 Override to `v2`
+
+1. With an existing cookie (e.g. `pp_variant=v1`), visit  
+   `http://localhost:3000/tools/pinterest-potential?variant=v2`.
+2. Expected:
+    - UI reflects **V2**.
+    - `pp_variant` cookie remains `v1`.
+
+#### 3.2 Override to `v1`
+
+1. Visit  
+   `http://localhost:3000/tools/pinterest-potential?variant=v1`.
+2. Expected:
+    - UI reflects **V1**.
+    - `pp_variant` cookie still unchanged.
+
+**Precedence confirmed:** `?variant=` → cookie → default.  
+Overrides do not permanently change bucket assignment.
+
+---
+
+### 4. Flag “off” / emergency stop scenario
+
+Goal: turning the experiment **off** forces the **default variant**.
+
+1. In GrowthBook **dev** env, either:
+    - Pause `pinterest_potential_variant`, **or**
+    - Turn off the enable flag for the calculator.
+2. Clear cookies for `localhost:3000`.
+3. Reload `http://localhost:3000/api/debug/growthbook`
+   to confirm SDK is still connected.
+4. Visit `http://localhost:3000/tools/pinterest-potential`.
+5. Expected:
+    - `pp_variant` is set to the **DEFAULT_VARIANT** (likely `"v1"`).
+    - UI always shows that variant, even after multiple refreshes.
+6. Turn the flag / experiment back **on**, clear cookies again,
+   and repeat the fresh-user flow to confirm randomization returns.
+
+---
+
+### 5. Exposure event pipeline
+
+Goal: each evaluation sends an **exposure** to `/api/experiment-events`.
+
+1. In DevTools → **Network**, filter by `experiment-events`.
+2. Clear cookies and reload  
+   `http://localhost:3000/tools/pinterest-potential`.
+3. Expected on first load:
+    - `POST /api/experiment-events` appears.
+    - Request JSON includes:
+        - `type: "exposure"`
+        - `experimentKey: "pinterest_potential_variant"`
+        - `variant: "v1"` or `"v2"` (matches `pp_variant`)
+        - Optional user/anonymous ID and attributes.
+4. Hard-refresh a few times:
+    - Either no more exposures (deduped),
+      or more with the **same** variant.
+5. After a few minutes, check GrowthBook → experiment →
+   **Live data / diagnostics**:
+    - Exposure counts should start to move.
+6. If there are **no** `experiment-events` calls,
+   tracking callback wiring needs fixing.
+
+---
+
+### 6. Conversion event smoke test
+
+Even without a real submit flow,
+we can simulate a conversion via the console.
+
+---
+
+#### 6.1 Get current variant
+
+On the calculator page, DevTools → **Console**:
+
+```ts
+document.cookie
+  .split("; ")
+  .find((c) => c.startsWith("pp_variant="))
+  ?.split("=")[1];
+```
+
+Copy the value ("v1" or "v2").
+
+---
+
+#### 6.2 Fire fake conversion
+Run:
+```ts
+const variant =
+  document.cookie
+    .split("; ")
+    .find((c) => c.startsWith("pp_variant="))
+    ?.split("=")[1] || "v1";
+
+fetch("/api/experiment-events", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    type: "conversion",
+    experimentKey: "pinterest_potential_variant",
+    variant,
+    eventName: "pinterest_potential_completed",
+  }),
+}).then((r) => r.json()).then(console.log);
+```
+
+Expected: Network shows `POST /api/experiment-events`  
+and response `{ ok: true }`.  
+Later, map `pinterest_potential_completed`  
+as a conversion metric in GrowthBook.
+
+---
+
+### 7. Multi-device sanity (optional)
+
+Goal: verify cookies / anonymous IDs behave per device.
+
+1. Repeat the **First-time user** flow on:
+   - Another browser (Safari / Firefox).
+   - A mobile device hitting your dev machine
+     (e.g. `http://10.0.0.220:3000`).
+2. Expected on each device:
+   - New `pp_variant` cookie on first load.
+   - Stickiness within that device.
+   - Exposure events visible from multiple IDs.
+
+---
+
+### 8. “Everything is fine” recap
+
+You’re good if all of these are true:
+
+- ✅ `/api/debug/growthbook` → `envConfigured: true`,
+  `initialized: true`, `ping.ok: true`.
+- ✅ New user gets exactly one `pp_variant` and it **sticks**.
+- ✅ `?variant=` overrides **rendering only**, not assignment.
+- ✅ Turning feature/experiment **off** forces the default variant.
+- ✅ `POST /api/experiment-events` fires for exposures
+  (and conversions when triggered).
+- ✅ GrowthBook experiment dashboard shows traffic + conversions.
+
+At this point you have a **production-grade experiment engine**
+for the calculator, reusable for any future “which layout/offer
+works best?” idea without rebuilding the plumbing.

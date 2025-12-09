@@ -7,6 +7,7 @@ import {
   type ExperimentKey,
 } from "@/lib/experiments/config";
 import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotentialConfig";
+import { runServerExperiment } from "@/lib/growthbook/experiments";
 
 // Cookie naming convention for experiments
 const EXP_COOKIE_PREFIX = "exp_";
@@ -63,36 +64,8 @@ export async function applyExperimentCookies(
   const existing = normalizeVariant(existingRaw);
   if (existing) return;
 
-  let chosen: VariantKey | undefined;
-
-  // 2) Try GrowthBook (only if env configured)
-  try {
-    if (process.env.GROWTHBOOK_CLIENT_KEY) {
-      const client = await growthbookAdapter.initialize();
-      const attributes = await identify();
-      // Evaluate the experiment via GrowthBook (SDK typing may vary across versions)
-      const feature = (client as any).evalFeature(exp.gbKey, { attributes });
-      const value = (feature?.value as string | null) ?? undefined;
-      const gbVariant = normalizeVariant(value);
-      if (gbVariant) {
-        chosen = gbVariant;
-      }
-    }
-  } catch (err) {
-    if (process.env.NODE_ENV === "development") {
-      // eslint-disable-next-line no-console
-      console.error("[GrowthBook middleware] experiment eval failed:", err);
-    }
-    // fall through to local fallback
-  }
-
-  // 3) Fallback to local weighted choice if GB not used/failed
-  if (!chosen) {
-    chosen = chooseVariantFromWeights(
-      [...exp.variants],
-      exp.weights,
-    );
-  }
+  // 2) Delegate to server experiment runner (uses GB then fallback)
+  const { variant: chosen } = await runServerExperiment(exp);
 
   // 4) Persist cookie for future requests
   res.cookies.set(cookieName, chosen, {

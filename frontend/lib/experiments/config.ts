@@ -47,10 +47,13 @@ export const PINTEREST_POTENTIAL_EXPERIMENT: PinterestPotentialExperimentDefinit
   defaultVariant: PINTEREST_DEFAULT_VARIANT,
   // Equal split default for local fallback when GB is down
   weights: {
-    v1: 1,
-    v2: 1,
+    v1: 0.5,
+    v2: 0.5,
   },
 };
+
+// Tests guarantee: experiment keys/gbKey/variants stay aligned with GrowthBook; fallback
+// weights sum to ~1 so local randomization remains stable across environments.
 
 // Registry of experiments by key for quick lookup.
 const EXPERIMENTS_BY_KEY: Record<ExperimentKey, ExperimentDefinition<any>> = {

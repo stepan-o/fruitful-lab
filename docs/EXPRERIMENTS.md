@@ -142,37 +142,36 @@ Make sure the **event names** used in code are also configured in GrowthBook und
 
 - Check GrowthBook SDK health:
 
-  ```bash
-  curl http://localhost:3000/api/debug/growthbook
+```bash
+curl http://localhost:3000/api/debug/growthbook
+```
+
 You should see:
-
+```json
 {
-"envConfigured": true,
-"initialized": true,
-"ping": { "ok": true, "status": 200, "error": null },
-...
+  "envConfigured": true,
+  "initialized": true,
+  "ping": { "ok": true, "status": 200, "error": null },
+  ...
 }
+```
 
+To force a specific variant locally, append `?variant=<key>` to the URL, e.g.:
 
-To force a specific variant locally, append ?variant=<key> to the URL, e.g.:
-
+```url
 http://localhost:3000/tools/pinterest-potential?variant=v2
+```
+* If experiments look “stuck”:
+  * Clear cookies for the site (especially pp_variant and any anonymous ID cookie).
+  * Confirm the experiment is enabled in GrowthBook and the environment is dev.
 
+---
 
-If experiments look “stuck”:
+## Required env vars
 
-Clear cookies for the site (especially pp_variant and any anonymous ID cookie).
+Set in `.env.local`:
+* `GROWTHBOOK_CLIENT_KEY`
+* `GROWTHBOOK_API_HOST` (usually https://cdn.growthbook.io)
+* `GROWTHBOOK_APP_ORIGIN` (GrowthBook app URL; used only for debug / linking)
 
-Confirm the experiment is enabled in GrowthBook and the environment is dev.
-
-Required env vars
-
-Set in .env.local:
-
-GROWTHBOOK_CLIENT_KEY
-
-GROWTHBOOK_API_HOST (usually https://cdn.growthbook.io)
-
-GROWTHBOOK_APP_ORIGIN (GrowthBook app URL; used only for debug / linking)
-
-Edge config vars are optional and not used yet.
+Edge config vars are **optional** and not used yet.

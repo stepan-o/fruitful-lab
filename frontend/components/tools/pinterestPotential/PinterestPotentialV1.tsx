@@ -1,8 +1,16 @@
 // frontend/components/tools/pinterestPotential/PinterestPotentialV1.tsx
 // Sprint 2: Render the stepper flow skeleton with state, validation, and persistence.
 import PinterestPotentialWizard from "@/components/tools/pinterestPotential/PinterestPotentialWizard";
+import type { Lead } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+import type { LeadMode } from "@/lib/tools/pinterestPotential/leadMode";
 
-export function PinterestPotentialV1() {
+export function PinterestPotentialV1({
+  leadMode = "gate_before_results",
+  initialLead,
+}: {
+  leadMode?: LeadMode;
+  initialLead?: Lead;
+}) {
   return (
     <div className="space-y-6">
       <div>
@@ -11,7 +19,7 @@ export function PinterestPotentialV1() {
           Answer a few quick questions. Your progress is saved for this session.
         </p>
       </div>
-      <PinterestPotentialWizard />
+      <PinterestPotentialWizard leadMode={leadMode} initialLead={initialLead} />
     </div>
   );
 }

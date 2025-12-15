@@ -9,6 +9,10 @@ import {
 import { PinterestPotentialV1 } from "@/components/tools/pinterestPotential/PinterestPotentialV1";
 import { PinterestPotentialV2 } from "@/components/tools/pinterestPotential/PinterestPotentialV2";
 import { cookies } from "next/headers";
+import { getCurrentUser } from "@/lib/auth";
+import { resolveLeadMode } from "@/lib/tools/pinterestPotential/leadMode";
+import { resolveLeadFromToken } from "@/lib/tools/pinterestPotential/leadToken";
+import type { Lead } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
 
 // This page must be dynamic to respect query param overrides like ?variant=v2
 export const dynamic = "force-dynamic";
@@ -22,7 +26,7 @@ const VARIANT_COMPONENTS: Record<
 };
 
 type PageProps = {
-  searchParams?: { variant?: string };
+  searchParams?: { variant?: string; leadMode?: string; t?: string };
 };
 
 export default async function PinterestPotentialPage({ searchParams }: PageProps) {
@@ -31,8 +35,30 @@ export default async function PinterestPotentialPage({ searchParams }: PageProps
   const cookieVariant = cookieStore.get(PINTEREST_POTENTIAL_VARIANT_COOKIE)?.value;
   const requestedVariant = searchParams?.variant;
   const variant = resolvePinterestPotentialVariant(requestedVariant, cookieVariant);
+
+  // Lead mode resolution (Sprint 4)
+  const user = await getCurrentUser();
+  const token = searchParams?.t;
+  const tokenLead: Lead | undefined = await resolveLeadFromToken(token);
+  const isKnownLead = !!user || !!tokenLead;
+  const cookieLeadMode = cookieStore.get("ppc_lead_mode")?.value; // optional future cookie
+  const leadMode = resolveLeadMode({
+    requested: searchParams?.leadMode,
+    cookieValue: cookieLeadMode,
+    isKnownLead,
+  });
+
+  const initialLead: Lead | undefined = tokenLead
+    ? tokenLead
+    : user
+    ? { name: user.full_name || user.email.split("@")[0], email: user.email }
+    : undefined;
+
   const VariantComponent = VARIANT_COMPONENTS[variant];
-  return <VariantComponent />;
+  return (
+    // @ts-expect-error allow passing props to v1; v2 placeholder ignores
+    <VariantComponent leadMode={leadMode} initialLead={initialLead} />
+  );
 }
 
 /**

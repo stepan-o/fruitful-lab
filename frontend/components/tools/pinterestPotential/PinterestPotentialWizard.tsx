@@ -11,13 +11,14 @@ import {
   LEAD,
   validateEmail,
 } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
-import { computeResult } from "@/lib/tools/pinterestPotential/compute";
+import { computeResult, computeScore } from "@/lib/tools/pinterestPotential/compute";
 import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
 import RadioPillGroup from "@/components/ui/forms/RadioPillGroup";
 import CheckboxCardGrid from "@/components/ui/forms/CheckboxCardGrid";
 import SliderWithTicks from "@/components/ui/forms/SliderWithTicks";
 import FieldError from "@/components/ui/forms/FieldError";
 import HelperText from "@/components/ui/forms/HelperText";
+import type { LeadMode } from "@/lib/tools/pinterestPotential/leadMode";
 
 type State = {
   stepIndex: number; // 0..9
@@ -92,14 +93,20 @@ function validateStepLocal(stepIdx: number, answers: Answers, leadDraft: Partial
   return errors;
 }
 
-export default function PinterestPotentialWizard() {
+export default function PinterestPotentialWizard({
+  leadMode = "gate_before_results",
+  initialLead,
+}: {
+  leadMode?: LeadMode;
+  initialLead?: Lead;
+}) {
   // Draft persistence (sessionStorage v1)
   const { draft, updateDraft } = usePinterestPotentialDraft({ stepIndex: 0, answers: {}, leadDraft: {} });
 
   const [state, dispatch] = useReducer(reducer, {
     stepIndex: draft.stepIndex ?? 0,
     answers: draft.answers ?? {},
-    leadDraft: draft.leadDraft ?? {},
+    leadDraft: (draft.leadDraft && Object.keys(draft.leadDraft).length > 0) ? draft.leadDraft : (initialLead ?? {}),
     errors: {},
   } as State);
 
@@ -108,11 +115,24 @@ export default function PinterestPotentialWizard() {
     updateDraft({ stepIndex: state.stepIndex, answers: state.answers, leadDraft: state.leadDraft });
   }, [state.stepIndex, state.answers, state.leadDraft, updateDraft]);
 
-  const current = QUESTIONS[state.stepIndex];
+  // Build dynamic step order based on lead mode
+  const includeLead = useMemo(() => {
+    if (leadMode === "optional_after_results") return false; // shown after results optionally
+    if (leadMode === "prefilled_or_skip" && (state.leadDraft?.email || initialLead?.email)) return false;
+    return true; // gate_before_results or need to collect
+  }, [leadMode, state.leadDraft?.email, initialLead?.email]);
+
+  const steps = useMemo(() => {
+    const base = QUESTIONS.filter((q) => q.type !== "lead");
+    return includeLead ? [...base, LEAD] : base;
+  }, [includeLead]);
+
+  const TOTAL_STEPS = steps.length;
+  const current = steps[state.stepIndex];
   const isLead = current?.id === LEAD.id;
   const isLastStep = state.stepIndex === TOTAL_STEPS - 1;
 
-  const progressText = useMemo(() => `Step ${state.stepIndex + 1} of ${TOTAL_STEPS}`,[state.stepIndex]);
+  const progressText = useMemo(() => `Step ${state.stepIndex + 1} of ${TOTAL_STEPS}`,[state.stepIndex, TOTAL_STEPS]);
 
   function handlePrev() {
     dispatch({ type: "RESET_ERRORS" });
@@ -130,13 +150,29 @@ export default function PinterestPotentialWizard() {
     }
 
     if (isLastStep) {
-      // Final compute
-      const lead: Lead | undefined = state.leadDraft?.name && state.leadDraft?.email ? { name: state.leadDraft.name!, email: state.leadDraft.email! } : undefined;
-      const result = computeResult(state.answers, lead);
-      if (result.ok) {
-        dispatch({ type: "SET_SCORE", score: result.score });
+      // Final compute depending on lead mode
+      if (includeLead) {
+        const lead: Lead | undefined = state.leadDraft?.name && state.leadDraft?.email ? { name: state.leadDraft.name!, email: state.leadDraft.email! } : undefined;
+        const result = computeResult(state.answers, lead);
+        if (result.ok) {
+          dispatch({ type: "SET_SCORE", score: result.score });
+        } else {
+          dispatch({ type: "SET_ERRORS", errors: result.errors });
+        }
       } else {
-        dispatch({ type: "SET_ERRORS", errors: result.errors });
+        // optional-after-results or skip: validate non-lead inputs globally and compute directly
+        const nonLeadErrors: Record<string, string> = {};
+        for (const q of QUESTIONS) {
+          if (q.type === "lead") continue;
+          const e = validateStepLocal(QUESTIONS.indexOf(q), state.answers, state.leadDraft);
+          Object.assign(nonLeadErrors, e);
+        }
+        if (Object.keys(nonLeadErrors).length > 0) {
+          dispatch({ type: "SET_ERRORS", errors: nonLeadErrors });
+        } else {
+          const score = computeScore(state.answers as Required<Answers>);
+          dispatch({ type: "SET_SCORE", score });
+        }
       }
       return;
     }
@@ -262,6 +298,33 @@ export default function PinterestPotentialWizard() {
         <div className="mb-4 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results (temporary)</div>
         <div className="font-heading text-3xl">Score: {state.finalScore}</div>
         <div className="mt-6 text-sm text-[var(--foreground-muted)]">You can refresh the page; your draft is saved in this session.</div>
+
+        {leadMode === "optional_after_results" && !state.leadDraft?.email && (
+          <div className="mt-6 border-t border-[var(--border)] pt-4">
+            <h3 className="font-heading text-lg text-[var(--foreground)]">Want a copy of your results?</h3>
+            <p className="mt-1 text-sm text-[var(--foreground-muted)]">Leave your email and we’ll send this score.</p>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your name (optional)"
+                  value={state.leadDraft.name ?? ""}
+                  onChange={(e) => dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })}
+                  className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  value={state.leadDraft.email ?? ""}
+                  onChange={(e) => dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })}
+                  className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

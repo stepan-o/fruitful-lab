@@ -123,8 +123,6 @@ Reusable components (token-driven; no hardcoded hex):
     - avoid heavy deps
 
 ---
-md
-Copy code
 ## Sprint 7 — Tools index emphasis tweak (your ask)
 **Goal:** Pinterest Potential is clearly *the* tool; others fade into the background.
 

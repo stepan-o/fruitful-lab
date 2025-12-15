@@ -30,8 +30,8 @@ describe("Button UI primitive", () => {
       </Button>
     );
     const link = screen.getByRole("link", { name: /login/i });
-    // Secondary uses alabaster border and prussian (brand-heading) text color
-    expect(link.className).toContain("border-[var(--brand-alabaster)]");
+    // Secondary uses tokenized border and prussian (brand-heading) text color
+    expect(link.className).toContain("border-[var(--border)]");
     expect(link.className).toContain("text-[var(--brand-heading)]");
   });
 

@@ -48,7 +48,7 @@ function variantClasses(variant: ButtonVariant): string {
             // Subtle, “blends in” in both themes (good for Login)
             "bg-[var(--card)]",
             "border border-[var(--border)]",
-            "text-[var(--foreground)]",
+            "text-[var(--brand-heading)]",
             "hover:bg-[var(--card-hover)]",
             "hover:border-[var(--border)]",
             "focus-visible:ring-[var(--brand-raspberry)]",

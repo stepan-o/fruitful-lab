@@ -134,6 +134,19 @@ export default function PinterestPotentialWizard({
 
   const progressText = useMemo(() => `Step ${state.stepIndex + 1} of ${TOTAL_STEPS}`,[state.stepIndex, TOTAL_STEPS]);
 
+  // Helper: validate all non-lead questions (used for optional_after_results compute path)
+  function validateAllNonLead(answers: Answers, leadDraft: Partial<Lead>): Record<string, string> {
+    const nonLeadErrors: Record<string, string> = {};
+    for (const q of QUESTIONS) {
+      if (q.type === "lead") continue;
+      // Use the index in the master QUESTIONS array to leverage validateStepLocal logic
+      const idx = QUESTIONS.indexOf(q);
+      const e = validateStepLocal(idx, answers, leadDraft);
+      Object.assign(nonLeadErrors, e);
+    }
+    return nonLeadErrors;
+  }
+
   function handlePrev() {
     dispatch({ type: "RESET_ERRORS" });
     if (state.stepIndex > 0) {
@@ -161,12 +174,7 @@ export default function PinterestPotentialWizard({
         }
       } else {
         // optional-after-results or skip: validate non-lead inputs globally and compute directly
-        const nonLeadErrors: Record<string, string> = {};
-        for (const q of QUESTIONS) {
-          if (q.type === "lead") continue;
-          const e = validateStepLocal(QUESTIONS.indexOf(q), state.answers, state.leadDraft);
-          Object.assign(nonLeadErrors, e);
-        }
+        const nonLeadErrors = validateAllNonLead(state.answers, state.leadDraft);
         if (Object.keys(nonLeadErrors).length > 0) {
           dispatch({ type: "SET_ERRORS", errors: nonLeadErrors });
         } else {

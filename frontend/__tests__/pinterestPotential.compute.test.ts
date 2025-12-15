@@ -69,12 +69,13 @@ describe("Pinterest Potential – validation gating via computeResult", () => {
     }
   });
 
-  it("returns ok:false when lead info is missing", () => {
+  it("returns ok:true when answers are valid even if lead is missing (lead gating handled by UI)", () => {
     const a = makeValidAnswers();
     const r = computeResult(a, undefined);
-    expect(r.ok).toBe(false);
-    if (!r.ok) {
-      expect(r.errors).toHaveProperty("LEAD");
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      // Should equal computeScore for the same inputs
+      expect(r.score).toBe(computeScore(a));
     }
   });
 });

@@ -112,10 +112,11 @@ export default function PinterestPotentialWizard({
     const searchParams = useSearchParams();
     // Be defensive in non-App Router test environments where useSearchParams may be null/undefined
     const qpLeadMode =
-        (searchParams as any)?.get?.("leadMode") ?? (searchParams as any)?.get?.("leadmode") ?? undefined;
+        (searchParams as any)?.get?.("leadMode") ??
+        (searchParams as any)?.get?.("leadmode") ??
+        undefined;
 
-    const effectiveLeadMode: LeadMode =
-        normalizeLeadMode(qpLeadMode) ?? leadMode;
+    const effectiveLeadMode: LeadMode = normalizeLeadMode(qpLeadMode) ?? leadMode;
 
     // Draft persistence (sessionStorage v1)
     const { draft, updateDraft } = usePinterestPotentialDraft({
@@ -136,15 +137,19 @@ export default function PinterestPotentialWizard({
 
     // Keep storage draft in sync when relevant state changes
     useEffect(() => {
-        updateDraft({ stepIndex: state.stepIndex, answers: state.answers, leadDraft: state.leadDraft });
+        updateDraft({
+            stepIndex: state.stepIndex,
+            answers: state.answers,
+            leadDraft: state.leadDraft,
+        });
     }, [state.stepIndex, state.answers, state.leadDraft, updateDraft]);
 
     // Build dynamic step order based on lead mode
     const includeLead = useMemo(() => {
-        if (effectiveLeadMode === "optional_after_results") return false; // shown after results optionally
-        if (effectiveLeadMode === "prefilled_or_skip" && (state.leadDraft?.email || initialLead?.email)) return false;
-        return true; // gate_before_results or need to collect
-    }, [effectiveLeadMode, state.leadDraft?.email, initialLead?.email]);
+        if (effectiveLeadMode === "optional_after_results") return false;
+        if (effectiveLeadMode === "prefilled_or_skip") return false;
+        return true; // gate_before_results only
+    }, [effectiveLeadMode]);
 
     const steps = useMemo(() => {
         const base = QUESTIONS.filter((q) => q.type !== "lead");
@@ -160,8 +165,11 @@ export default function PinterestPotentialWizard({
         [state.stepIndex, TOTAL_STEPS]
     );
 
-    // Helper: validate all non-lead questions (used for optional_after_results compute path)
-    function validateAllNonLead(answers: Answers, leadDraft: Partial<Lead>): Record<string, string> {
+    // Helper: validate all non-lead questions (used for optional_after_results + prefilled_or_skip)
+    function validateAllNonLead(
+        answers: Answers,
+        leadDraft: Partial<Lead>
+    ): Record<string, string> {
         const nonLeadErrors: Record<string, string> = {};
         for (const q of QUESTIONS) {
             if (q.type === "lead") continue;
@@ -183,17 +191,45 @@ export default function PinterestPotentialWizard({
     function handleNext() {
         dispatch({ type: "RESET_ERRORS" });
 
-        // Only validate the current step when it's actually a rendered step.
-        // (In optional_after_results mode, there is no lead step in `steps`.)
-        const errs = validateStepLocal(state.stepIndex, state.answers, state.leadDraft);
+        // Validate only the currently rendered step.
+        // NOTE: validateStepLocal uses QUESTIONS[] indices; our steps[] excludes lead sometimes.
+        // So we must validate by question id/type, not by stepIndex directly.
+        const stepQuestion = current;
+        if (!stepQuestion) return;
+
+        const errs: Record<string, string> = {};
+        if (stepQuestion.type === "radio") {
+            const v = (state.answers as any)[stepQuestion.id];
+            if (stepQuestion.required && (v === undefined || v === null)) {
+                errs[stepQuestion.id] = "This question is required.";
+            }
+        } else if (stepQuestion.type === "checkbox") {
+            const arr = (state.answers as any)[stepQuestion.id] as any;
+            if (stepQuestion.required && (!Array.isArray(arr) || arr.length === 0)) {
+                errs[stepQuestion.id] = "Please select at least one option.";
+            }
+        } else if (stepQuestion.type === "slider") {
+            const v = (state.answers as any)[stepQuestion.id];
+            if (stepQuestion.required && (v === undefined || v === null)) {
+                errs[stepQuestion.id] = "This question is required.";
+            } else if (v !== undefined && (v < stepQuestion.min || v > stepQuestion.max)) {
+                errs[stepQuestion.id] = `Value must be between ${stepQuestion.min} and ${stepQuestion.max}.`;
+            }
+        } else if (stepQuestion.type === "lead") {
+            const name = state.leadDraft.name ?? "";
+            const email = state.leadDraft.email ?? "";
+            if (!name.trim()) errs["LEAD.name"] = "Name is required.";
+            if (!email || !validateEmail(email)) errs["LEAD.email"] = "A valid email is required.";
+        }
+
         if (Object.keys(errs).length > 0) {
             dispatch({ type: "SET_ERRORS", errors: errs });
             return;
         }
 
         if (isLastStep) {
-            // Final compute depending on lead mode
-            if (includeLead) {
+            // Final compute is MODE-driven (not includeLead-driven).
+            if (effectiveLeadMode === "gate_before_results") {
                 const lead: Lead | undefined =
                     state.leadDraft?.name && state.leadDraft?.email
                         ? { name: state.leadDraft.name!, email: state.leadDraft.email! }
@@ -206,7 +242,7 @@ export default function PinterestPotentialWizard({
                     dispatch({ type: "SET_ERRORS", errors: result.errors });
                 }
             } else {
-                // optional-after-results or skip: validate non-lead inputs globally and compute directly
+                // optional_after_results OR prefilled_or_skip: validate non-lead inputs globally and compute directly
                 const nonLeadErrors = validateAllNonLead(state.answers, state.leadDraft);
                 if (Object.keys(nonLeadErrors).length > 0) {
                     dispatch({ type: "SET_ERRORS", errors: nonLeadErrors });
@@ -228,15 +264,25 @@ export default function PinterestPotentialWizard({
         if (current.type === "lead") {
             return (
                 <div className="space-y-3">
-                    <label className="block text-sm font-medium text-[var(--foreground)]">{current.label}</label>
+                    <label className="block text-sm font-medium text-[var(--foreground)]">
+                        {current.label}
+                    </label>
                     <div className="grid gap-3 sm:grid-cols-2">
                         <div>
                             <input
                                 type="text"
                                 placeholder="Your name"
                                 value={state.leadDraft.name ?? ""}
-                                aria-describedby={state.errors["LEAD.name"] ? "LEAD.name-error" : undefined}
-                                onChange={(e) => dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })}
+                                aria-describedby={
+                                    state.errors["LEAD.name"] ? "LEAD.name-error" : undefined
+                                }
+                                onChange={(e) =>
+                                    dispatch({
+                                        type: "UPDATE_LEAD",
+                                        field: "name",
+                                        value: e.target.value,
+                                    })
+                                }
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
                             <FieldError id="LEAD.name-error" message={state.errors["LEAD.name"]} />
@@ -246,8 +292,16 @@ export default function PinterestPotentialWizard({
                                 type="email"
                                 placeholder="you@example.com"
                                 value={state.leadDraft.email ?? ""}
-                                aria-describedby={state.errors["LEAD.email"] ? "LEAD.email-error" : undefined}
-                                onChange={(e) => dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })}
+                                aria-describedby={
+                                    state.errors["LEAD.email"] ? "LEAD.email-error" : undefined
+                                }
+                                onChange={(e) =>
+                                    dispatch({
+                                        type: "UPDATE_LEAD",
+                                        field: "email",
+                                        value: e.target.value,
+                                    })
+                                }
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
                             <FieldError id="LEAD.email-error" message={state.errors["LEAD.email"]} />
@@ -267,13 +321,17 @@ export default function PinterestPotentialWizard({
 
             return (
                 <div>
-                    {current.helperText ? <HelperText id={helperId}>{current.helperText}</HelperText> : null}
+                    {current.helperText ? (
+                        <HelperText id={helperId}>{current.helperText}</HelperText>
+                    ) : null}
                     <div className="mt-2">
                         <RadioPillGroup
                             name={current.id}
                             value={(state.answers as any)[current.id]}
                             options={current.options}
-                            onChange={(val) => dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: val })}
+                            onChange={(val) =>
+                                dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: val })
+                            }
                             errorId={state.errors[current.id] ? errorId : undefined}
                             describedBy={describedBy}
                         />
@@ -294,12 +352,16 @@ export default function PinterestPotentialWizard({
 
             return (
                 <div>
-                    {current.helperText ? <HelperText id={helperId}>{current.helperText}</HelperText> : null}
+                    {current.helperText ? (
+                        <HelperText id={helperId}>{current.helperText}</HelperText>
+                    ) : null}
                     <div className="mt-2">
                         <CheckboxCardGrid
                             values={values}
                             options={current.options}
-                            onChange={(vals) => dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: vals })}
+                            onChange={(vals) =>
+                                dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: vals })
+                            }
                             describedBy={describedBy}
                         />
                         <FieldError id={errorId} message={state.errors[current.id]} />
@@ -320,9 +382,23 @@ export default function PinterestPotentialWizard({
                             min={current.min}
                             max={current.max}
                             step={current.step}
-                            onChange={(nv) => dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: nv })}
-                            leftLabel={current.id === "Q7" ? "Not seasonal" : current.id === "Q8" ? "Low competition" : undefined}
-                            rightLabel={current.id === "Q7" ? "Very seasonal" : current.id === "Q8" ? "High competition" : undefined}
+                            onChange={(nv) =>
+                                dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: nv })
+                            }
+                            leftLabel={
+                                current.id === "Q7"
+                                    ? "Not seasonal"
+                                    : current.id === "Q8"
+                                        ? "Low competition"
+                                        : undefined
+                            }
+                            rightLabel={
+                                current.id === "Q7"
+                                    ? "Very seasonal"
+                                    : current.id === "Q8"
+                                        ? "High competition"
+                                        : undefined
+                            }
                             errorId={state.errors[current.id] ? errorId : undefined}
                         />
                         <FieldError id={errorId} message={state.errors[current.id]} />
@@ -338,7 +414,9 @@ export default function PinterestPotentialWizard({
         // Temporary results placeholder per acceptance criteria
         return (
             <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-                <div className="mb-4 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results (temporary)</div>
+                <div className="mb-4 text-sm text-[var(--foreground-muted)]">
+                    Pinterest Potential — Results (temporary)
+                </div>
                 <div className="font-heading text-3xl">Score: {state.finalScore}</div>
                 <div className="mt-6 text-sm text-[var(--foreground-muted)]">
                     You can refresh the page; your draft is saved in this session.
@@ -346,15 +424,21 @@ export default function PinterestPotentialWizard({
 
                 {effectiveLeadMode === "optional_after_results" && !state.leadDraft?.email && (
                     <div className="mt-6 border-t border-[var(--border)] pt-4">
-                        <h3 className="font-heading text-lg text-[var(--foreground)]">Want a copy of your results?</h3>
-                        <p className="mt-1 text-sm text-[var(--foreground-muted)]">Leave your email and we’ll send this score.</p>
+                        <h3 className="font-heading text-lg text-[var(--foreground)]">
+                            Want a copy of your results?
+                        </h3>
+                        <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+                            Leave your email and we’ll send this score.
+                        </p>
                         <div className="mt-3 grid gap-3 sm:grid-cols-2">
                             <div>
                                 <input
                                     type="text"
                                     placeholder="Your name (optional)"
                                     value={state.leadDraft.name ?? ""}
-                                    onChange={(e) => dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })}
+                                    onChange={(e) =>
+                                        dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })
+                                    }
                                     className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                 />
                             </div>
@@ -363,7 +447,9 @@ export default function PinterestPotentialWizard({
                                     type="email"
                                     placeholder="you@example.com"
                                     value={state.leadDraft.email ?? ""}
-                                    onChange={(e) => dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })}
+                                    onChange={(e) =>
+                                        dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })
+                                    }
                                     className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                 />
                             </div>

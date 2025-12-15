@@ -9,15 +9,15 @@ Status legend:
 ## Scope
 - [x] Canonical spec file exists at `lib/tools/pinterestPotential/pinterestPotentialSpec.ts` (types, ordered questions, validation rules, formula doc)
 - [x] All question copy (labels) confirmed from Outgrow screenshots (Sprint 0 copy parity)
-- [ ] All option labels confirmed from Outgrow (Q3 full list pending)
-- [ ] All numeric weights confirmed from Outgrow (no placeholders)
+- [x] All option labels confirmed from Outgrow (Q3 full list now present per VALUE table)
+- [x] All numeric weights confirmed from Outgrow for Q1–Q5, Q2, and Q3 (no placeholders)
 
 ## Question Order (must match Outgrow)
-1. [ ] Q1 — label matches Outgrow; options + weights confirmed
-2. [ ] Q2 — checkbox; multi-select; options + weights confirmed
-3. [ ] Q3 — checkbox; multi-select; options + weights confirmed (UI looked like dropdown; modeled as multi-select per formula sum(Q3))
-4. [ ] Q4 — radio; options + weights confirmed
-5. [ ] Q5 — radio; options + weights confirmed
+1. [x] Q1 — label matches Outgrow; options + weights confirmed
+2. [x] Q2 — checkbox; multi-select; options + weights confirmed
+3. [x] Q3 — checkbox; multi-select; options + weights confirmed (UI looked like dropdown; modeled as multi-select per formula sum(Q3))
+4. [x] Q4 — radio; options + weights confirmed
+5. [x] Q5 — radio; options + weights confirmed
 6. [ ] Q6 — radio; options + weights confirmed
 7. [x] Q7 — slider (1–5); label confirmed
 8. [x] Q8 — slider (1–5); label confirmed
@@ -27,7 +27,7 @@ Status legend:
 ## Copy Parity
 - [x] Question labels match Outgrow exactly (spelling, punctuation)
 - [x] Helper text (if any) matches Outgrow (none observed in screenshots)
-- [ ] Option labels match Outgrow exactly (Q3 full list pending)
+- [x] Option labels match Outgrow exactly (Q3 full list now captured)
 
 ## Required/Optional Behavior
 - [x] Q1 required (radio)
@@ -63,8 +63,8 @@ round(
 ```
 
 ## Blockers (must be resolved to exit Sprint 0)
-- [ ] Outgrow-provided option → weight tables for all questions (especially multi-select Q2, Q3, Q9)
-- [ ] Full option list for Q3 (only one visible in screenshot)
+- [ ] Outgrow-provided option → weight tables for remaining questions (Q6, Q9)
+- [ ] Confirm numeric weights for Q6 and Q9 via Outgrow screenshots
 
 ## Notes
 - Sprint 0 intentionally includes no compute engine and no UI. The spec must be deterministic and implementation-ready once weights/copy are filled.

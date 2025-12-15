@@ -169,8 +169,12 @@ export const Q1: RadioQuestion = {
   label: "Do you have a Pinterest Business account ?",
   // helperText: "",
   required: true,
+  // Sprint 0 note: labels retained; weights populated from Outgrow (VALUE)
   optionLabels: ["Yes", "No"],
-  options: [],
+  options: [
+    { label: "Yes", value: 1 },
+    { label: "No", value: 0.7 },
+  ],
 };
 
 export const Q2: CheckboxQuestion = {
@@ -187,7 +191,16 @@ export const Q2: CheckboxQuestion = {
     "Asia-Pacific",
     "Rest of the world",
   ],
-  options: [],
+  // Outgrow VALUEs (large integers) — exact numbers as provided
+  options: [
+    { label: "Global", value: 141000000 },
+    { label: "USA", value: 27000000 },
+    { label: "Canada", value: 1600000 },
+    { label: "Europe", value: 31000000 },
+    { label: "Latin America", value: 19000000 },
+    { label: "Asia-Pacific", value: 3900000 },
+    { label: "Rest of the world", value: 7000000 },
+  ],
 };
 
 export const Q3: CheckboxQuestion = {
@@ -198,10 +211,26 @@ export const Q3: CheckboxQuestion = {
   // NOTE: Outgrow UI appears as a dropdown in screenshot, but label indicates multi-select
   // and the final formula uses sum(Q3), so this is modeled as checkbox multi-select.
   optionLabels: [
-    // Only one visible in screenshot; full list pending confirmation
-    "Travel & Mobility (Strollers, buggies, joggers, car acces...)",
+    "Travel & Mobility",
+    "Nursery & Home",
+    "Clothing & Accessories",
+    "Toys, Play, & Learning & school supplies",
+    "Feeding & Care",
+    "Bath & Changing",
+    "Lifestyle, Special Occasions, product safety",
+    "Technology & Digital Products",
   ],
-  options: [],
+  // Outgrow VALUEs (decimals shown as .xx → stored as 0.xx)
+  options: [
+    { label: "Travel & Mobility", value: 0.18 },
+    { label: "Nursery & Home", value: 0.2 },
+    { label: "Clothing & Accessories", value: 0.17 },
+    { label: "Toys, Play, & Learning & school supplies", value: 0.15 },
+    { label: "Feeding & Care", value: 0.1 },
+    { label: "Bath & Changing", value: 0.07 },
+    { label: "Lifestyle, Special Occasions, product safety", value: 0.08 },
+    { label: "Technology & Digital Products", value: 0.08 },
+  ],
 };
 
 export const Q4: RadioQuestion = {
@@ -214,7 +243,11 @@ export const Q4: RadioQuestion = {
     "No",
     "No, but could consider it",
   ],
-  options: [],
+  options: [
+    { label: "Yes", value: 0.35 },
+    { label: "No", value: 0.1 },
+    { label: "No, but could consider it", value: 0.2 },
+  ],
 };
 
 export const Q5: RadioQuestion = {
@@ -228,7 +261,12 @@ export const Q5: RadioQuestion = {
     "No, but can create",
     "No and not planning to",
   ],
-  options: [],
+  options: [
+    { label: "Yes, my brand has a blog", value: 1.15 },
+    { label: "Not a blog, but we create user guides etc.", value: 1.05 },
+    { label: "No, but can create", value: 1 },
+    { label: "No and not planning to", value: 0.8 },
+  ],
 };
 
 export const Q6: RadioQuestion = {
@@ -314,3 +352,45 @@ export const QUESTIONS: Question[] = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, LEAD];
 //   Outgrow-provided tables are available, replace the ❗ MISSING markers with the
 //   exact labels and numbers.
 // - Lead form placement (before/after results) must match Outgrow behavior.
+
+// -----------------------------
+// Weights snapshot (dev sanity helper)
+// -----------------------------
+// Quick diff-friendly snapshot of the encoded weights from Outgrow VALUE tables.
+export const WEIGHTS_SNAPSHOT = {
+  Q1: [
+    { label: "Yes", value: 1 },
+    { label: "No", value: 0.7 },
+  ],
+  Q2: [
+    { label: "Global", value: 141000000 },
+    { label: "USA", value: 27000000 },
+    { label: "Canada", value: 1600000 },
+    { label: "Europe", value: 31000000 },
+    { label: "Latin America", value: 19000000 },
+    { label: "Asia-Pacific", value: 3900000 },
+    { label: "Rest of the world", value: 7000000 },
+  ],
+  Q3: [
+    { label: "Travel & Mobility", value: 0.18 },
+    { label: "Nursery & Home", value: 0.2 },
+    { label: "Clothing & Accessories", value: 0.17 },
+    { label: "Toys, Play, & Learning & school supplies", value: 0.15 },
+    { label: "Feeding & Care", value: 0.1 },
+    { label: "Bath & Changing", value: 0.07 },
+    { label: "Lifestyle, Special Occasions, product safety", value: 0.08 },
+    { label: "Technology & Digital Products", value: 0.08 },
+  ],
+  Q4: [
+    { label: "Yes", value: 0.35 },
+    { label: "No", value: 0.1 },
+    { label: "No, but could consider it", value: 0.2 },
+  ],
+  Q5: [
+    { label: "Yes, my brand has a blog", value: 1.15 },
+    { label: "Not a blog, but we create user guides etc.", value: 1.05 },
+    { label: "No, but can create", value: 1 },
+    { label: "No and not planning to", value: 0.8 },
+  ],
+  // Q6 and Q9 VALUE screenshots not yet provided → pending
+} as const;

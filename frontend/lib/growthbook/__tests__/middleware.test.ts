@@ -8,12 +8,12 @@ jest.mock("@/lib/growthbook/flags", () => ({
 }));
 
 import {
-  normalizeVariant,
-  chooseVariantFromWeights,
-  applyExperimentCookies,
-  getExperimentCookieName,
+    normalizeVariant,
+    chooseVariantFromWeights,
+    applyExperimentCookies,
 } from "@/lib/growthbook/middleware";
 import { PINTEREST_POTENTIAL_EXPERIMENT } from "@/lib/experiments/config";
+import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotentialConfig";
 
 describe("growthbook/middleware helpers", () => {
   test("normalizeVariant accepts only known variants", () => {
@@ -41,7 +41,7 @@ describe("growthbook/middleware helpers", () => {
 });
 
 describe("applyExperimentCookies", () => {
-  const cookieName = getExperimentCookieName(PINTEREST_POTENTIAL_EXPERIMENT.key);
+  const cookieName = PINTEREST_POTENTIAL_VARIANT_COOKIE;
 
   function makeReq(cookiesMap: Record<string, string> = {}) {
     return {

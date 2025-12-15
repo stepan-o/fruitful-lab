@@ -9,7 +9,7 @@ export default function PinterestPotentialLayout({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-white text-[#171A21]">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <FlowHeader backHref="/tools" />
       <main className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">{children}</main>
       <SiteFooter />

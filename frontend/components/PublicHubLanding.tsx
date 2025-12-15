@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import LabAnimatedBackdrop from "@/components/home/LabAnimatedBackdrop";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import { PUBLIC_NAV_LINKS } from "@/lib/nav";
 
 const getNavLink = (href: string) => PUBLIC_NAV_LINKS.find((item) => item.href === href);
@@ -22,17 +23,22 @@ export default function PublicHubLanding() {
                         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
                             {/* Text */}
                             <div>
-                                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-3 py-1 text-xs text-[var(--foreground)]">
-                                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--brand-bronze)]" />
-                                    <span className="text-[var(--foreground-muted)]">Fruitful Lab ·</span>{" "}
-                                    <span className="text-[var(--foreground)]">Tech &amp; Tools</span>
-                                </div>
+                                {/* Theme toggle */}
+                                <div className="mb-4 flex items-center justify-between">
+                                    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-3 py-1 text-xs text-[var(--foreground)]">
+                                        <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--brand-bronze)]" />
+                                        <span className="text-[var(--foreground-muted)]">Fruitful Lab ·</span>{" "}
+                                        <span className="text-[var(--foreground)]">Tech &amp; Tools</span>
+                                    </div>
 
+                                    <ThemeToggle className="hidden sm:inline-flex" />
+                                </div>
+                                {/*Hero heading*/}
                                 <h1 className="font-heading text-3xl leading-tight text-[var(--foreground)] sm:text-4xl md:text-5xl md:leading-[1.2]">
                                     The engine room behind{" "}
                                     <span className="font-semibold text-[var(--brand-raspberry)]">Fruitful Pin.</span>
                                 </h1>
-
+                                {/* Hero body*/}
                                 <p className="mt-4 max-w-prose text-base sm:text-lg leading-relaxed text-[var(--foreground-muted)]">
                                     This is the internal tools &amp; dashboards hub behind{" "}
                                     <span className="font-semibold text-[var(--brand-raspberry)]">Fruitful Pin</span> — our Pinterest

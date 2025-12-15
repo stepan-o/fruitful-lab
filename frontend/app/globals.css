@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* ------------------------------
+   1) LIGHT defaults
+------------------------------ */
 :root {
     --background: #ffffff;
     --foreground: #171A21;
@@ -17,7 +20,7 @@
     --backdrop-blur: 2px;
     --backdrop-saturate: 1;
     --backdrop-contrast: 1;
-    --backdrop-glow: 0px; /* keep subtle on light */
+    --backdrop-glow: 0px;
 
     /* Backdrop palette (LIGHT) */
     --backdrop-color-1: var(--brand-alabaster);
@@ -29,8 +32,8 @@
     --foreground-muted: rgba(23, 26, 33, 0.72);
 
     /* Surfaces */
-    --surface: rgba(11, 19, 43, 0.03);   /* subtle tint */
-    --card: rgba(255, 255, 255, 0.72);   /* frosted-ish on light */
+    --surface: rgba(11, 19, 43, 0.03);
+    --card: rgba(255, 255, 255, 0.72);
     --card-hover: rgba(255, 255, 255, 0.9);
 
     --font-heading: ui-sans-serif;
@@ -43,24 +46,66 @@
     --color-foreground: var(--foreground);
 }
 
+/* ------------------------------
+   2) DARK variables (as a reusable block)
+   - used by both prefers-color-scheme + manual override
+------------------------------ */
+:root[data-theme="dark"],
+html[data-theme="dark"] {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+
+    --brand-heading: #E7ECFF;
+    --brand-alabaster: rgba(255, 255, 255, 0.14);
+
+    --brand-raspberry: #B0126D;
+    --brand-bronze: #F0A14A;
+    --brand-rust: #D15A1A;
+
+    --backdrop-opacity-soft: 0.26;
+    --backdrop-opacity-strong: 0.42;
+    --backdrop-blur: 1px;
+    --backdrop-saturate: 1.55;
+    --backdrop-contrast: 1.15;
+    --backdrop-glow: 140px;
+
+    --backdrop-color-1: rgba(255, 255, 255, 1);
+    --backdrop-color-2: rgba(176, 18, 109, 1);
+    --backdrop-color-3: rgba(240, 161, 74, 1);
+    --backdrop-color-4: rgba(231, 236, 255, 1);
+
+    --border: rgba(255, 255, 255, 0.12);
+    --foreground-muted: rgba(237, 237, 237, 0.72);
+
+    --surface: rgba(255, 255, 255, 0.06);
+    --card: rgba(255, 255, 255, 0.04);
+    --card-hover: rgba(255, 255, 255, 0.06);
+}
+
+/* ------------------------------
+   3) EXPLICIT LIGHT override (optional clarify)
+------------------------------ */
+:root[data-theme="light"],
+html[data-theme="light"] {
+    /* No need to re-declare — light is the default.
+       This block exists so the toggle can force light even if OS is dark. */
+}
+
+/* ------------------------------
+   4) OS preference fallback (only when user has NOT set data-theme)
+------------------------------ */
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme]) {
         --background: #0a0a0a;
         --foreground: #ededed;
 
-        /*
-          IMPORTANT: Remap brand tokens for “on-dark” usage.
-          This fixes: header divider too white, H1 illegible, Login vanishing.
-        */
-        --brand-heading: #E7ECFF; /* becomes your main “light ink” */
-        --brand-alabaster: rgba(255, 255, 255, 0.14); /* borders/dividers on dark */
+        --brand-heading: #E7ECFF;
+        --brand-alabaster: rgba(255, 255, 255, 0.14);
 
-        /* Keep these brand hues, but slightly lifted so they don’t die on black */
         --brand-raspberry: #B0126D;
         --brand-bronze: #F0A14A;
         --brand-rust: #D15A1A;
 
-        /* Backdrop tuning (DARK) — brighter + glow */
         --backdrop-opacity-soft: 0.26;
         --backdrop-opacity-strong: 0.42;
         --backdrop-blur: 1px;
@@ -68,7 +113,6 @@
         --backdrop-contrast: 1.15;
         --backdrop-glow: 140px;
 
-        /* Backdrop palette (DARK) — “poppier” solids */
         --backdrop-color-1: rgba(255, 255, 255, 1);
         --backdrop-color-2: rgba(176, 18, 109, 1);
         --backdrop-color-3: rgba(240, 161, 74, 1);
@@ -88,31 +132,22 @@ body {
     color: var(--foreground);
 }
 
-.font-heading {
-    font-family: var(--font-heading), Arial, Helvetica, sans-serif;
-}
-.font-body {
-    font-family: var(--font-body), Arial, Helvetica, sans-serif;
-}
+.font-heading { font-family: var(--font-heading), Arial, Helvetica, sans-serif; }
+.font-body { font-family: var(--font-body), Arial, Helvetica, sans-serif; }
 
-/* Backdrop circles: CSS controls pop per theme */
 .lab-backdrop-circle {
     filter: blur(var(--backdrop-blur))
     saturate(var(--backdrop-saturate))
     contrast(var(--backdrop-contrast));
     will-change: transform;
 
-    /* glow uses currentColor set by the element */
     box-shadow: 0 0 var(--backdrop-glow) currentColor;
 }
 
 @media (prefers-color-scheme: dark) {
-    .lab-backdrop-circle {
-        mix-blend-mode: screen;
-    }
+    .lab-backdrop-circle { mix-blend-mode: screen; }
 }
 
-/* animations unchanged... */
 @keyframes hubPulse {
     0% { opacity: 0.35; transform: scale(1); }
     50% { opacity: 0.18; transform: scale(1.04); }

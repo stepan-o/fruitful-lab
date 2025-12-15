@@ -1,19 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
+import { applyExperimentCookies } from "@/lib/growthbook/middleware";
 
 const COOKIE_NAME = "fruitful_access_token";
 
 // Paths that require auth
 const PROTECTED_PATHS = ["/dashboard"];
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
     const isProtected = PROTECTED_PATHS.some((p) =>
         pathname === p || pathname.startsWith(`${p}/`),
     );
 
+    const shouldRunExperiments = pathname.startsWith("/tools/pinterest-potential");
+
     if (!isProtected) {
-        return NextResponse.next();
+        const res = NextResponse.next();
+        if (shouldRunExperiments) {
+            await applyExperimentCookies(req, res);
+        }
+        return res;
     }
 
     const token = req.cookies.get(COOKIE_NAME)?.value;
@@ -24,9 +31,18 @@ export function middleware(req: NextRequest) {
         return NextResponse.redirect(loginUrl);
     }
 
-    return NextResponse.next();
+    const res = NextResponse.next();
+    if (shouldRunExperiments) {
+        await applyExperimentCookies(req, res);
+    }
+    return res;
 }
 
 export const config = {
-    matcher: ["/dashboard/:path*", "/dashboard"],
+    matcher: [
+        "/dashboard/:path*",
+        "/dashboard",
+        "/tools/pinterest-potential",
+        "/tools/pinterest-potential/:path*",
+    ],
 };

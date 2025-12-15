@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import PublicHubLanding from "@/components/PublicHubLanding";
 
 describe("PublicHubLanding hero CTAs", () => {
-  it("renders primary CTA to external site and secondary CTAs to tools and login", () => {
+  it("renders only two CTAs: primary to external site and secondary to tools (no login)", () => {
     render(<PublicHubLanding />);
 
     // Primary CTA
@@ -16,9 +16,22 @@ describe("PublicHubLanding hero CTAs", () => {
     expect(tools).toBeInTheDocument();
     expect(tools).toHaveAttribute("href", "/tools");
 
-    // Secondary: sign in
-    const login = screen.getByRole("link", { name: /sign in to dashboards/i });
-    expect(login).toBeInTheDocument();
-    expect(login).toHaveAttribute("href", "/login?next=/dashboard");
+    // Ensure login CTA is not present
+    const login = screen.queryByRole("link", { name: /sign in to dashboards/i });
+    expect(login).not.toBeInTheDocument();
+  });
+
+  it("shows the main hero heading and the explainer strip content below the hero", () => {
+    render(<PublicHubLanding />);
+
+    // Main hero heading
+    expect(
+      screen.getByRole("heading", { name: /the engine room behind fruitful pin\./i })
+    ).toBeInTheDocument();
+
+    // Explainer strip headings exist on the page (as their own section below)
+    expect(screen.getByText(/internal dashboards/i)).toBeInTheDocument();
+    expect(screen.getByText(/smart tools & calculators/i)).toBeInTheDocument();
+    expect(screen.getByText(/deep-dive case studies/i)).toBeInTheDocument();
   });
 });

@@ -1,55 +1,58 @@
 import Link from "next/link";
 import LogoutButton from "@/components/layout/LogoutButton";
+import { BookCallButton } from "@/components/layout/BookCallButton";
+import { getCurrentUser } from "@/lib/auth";
+import { PUBLIC_NAV_LINKS } from "@/lib/nav";
 
 function NavLinks() {
   return (
-    <nav className="hidden items-center gap-6 text-sm text-slate-700 md:flex">
-      <Link href="#services" className="hover:text-slate-900">
-        Services
-      </Link>
-      <Link href="#case-studies" className="hover:text-slate-900">
-        Case Studies
-      </Link>
-      <Link href="#process" className="hover:text-slate-900">
-        About
-      </Link>
-      <Link href="/hub" className="hover:text-slate-900">
-        Resources
-      </Link>
+    <nav className="hidden items-center gap-7 text-sm sm:text-base text-slate-700 md:flex">
+      {PUBLIC_NAV_LINKS.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          target={item.external ? "_blank" : undefined}
+          rel={item.external ? "noopener noreferrer" : undefined}
+          className="hover:text-slate-900"
+        >
+          {item.label}
+        </Link>
+      ))}
     </nav>
   );
 }
 
-export default function SiteHeader() {
+export default async function SiteHeader() {
+  const user = await getCurrentUser();
+  const isLoggedIn = !!user;
   return (
     <header className="border-b border-slate-200 bg-white/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
-        <Link href="/" className="font-semibold tracking-tight text-slate-900">
+        <Link
+          href="/"
+          className="font-heading text-lg sm:text-xl font-semibold tracking-tight text-slate-900"
+        >
           Fruitful Lab
         </Link>
 
         {/* Center nav (desktop) */}
         <NavLinks />
 
-        {/* CTAs */}
+        {/* CTAs (desktop) */}
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href="/hub"
-            className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 shadow-sm hover:bg-slate-50"
-          >
-            Explore the Knowledge Hub
-          </a>
-          <a
-            href="https://calendly.com/fruitfulab/15min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md bg-sky-700 px-3 py-2 text-sm font-medium text-white shadow hover:bg-sky-800"
-          >
-            Book a Call
-          </a>
-          {/* Global logout (always visible for now) */}
-          <LogoutButton />
+          <BookCallButton />
+
+          {isLoggedIn ? (
+            <LogoutButton />
+          ) : (
+            <Link
+              href="/login?next=/dashboard"
+              className="rounded-md border border-[#0B132B] bg-white px-3 py-2 text-sm md:text-base font-medium text-[#0B132B] hover:bg-[#DFDFDF]"
+            >
+              Login
+            </Link>
+          )}
         </div>
 
         {/* Mobile menu */}
@@ -59,35 +62,30 @@ export default function SiteHeader() {
           </summary>
           <div className="absolute left-0 right-0 z-10 mt-2 border-b border-slate-200 bg-white px-4 py-3 shadow-sm">
             <div className="flex flex-col gap-3 text-sm text-slate-700">
-              <Link href="#services" className="hover:text-slate-900">
-                Services
-              </Link>
-              <Link href="#case-studies" className="hover:text-slate-900">
-                Case Studies
-              </Link>
-              <Link href="#process" className="hover:text-slate-900">
-                About
-              </Link>
-              <Link href="/hub" className="hover:text-slate-900">
-                Resources
-              </Link>
-              <a
-                href="/hub"
-                className="rounded-md border border-slate-300 bg-white px-3 py-2 text-center text-slate-700 hover:bg-slate-50"
-              >
-                Explore the Knowledge Hub
-              </a>
-              <a
-                href="https://calendly.com/fruitfulab/15min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md bg-sky-700 px-3 py-2 text-center font-medium text-white hover:bg-sky-800"
-              >
-                Book a Call
-              </a>
-              <div className="pt-2">
-                <LogoutButton />
-              </div>
+              {PUBLIC_NAV_LINKS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  className="hover:text-slate-900"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <BookCallButton fullWidth />
+              {isLoggedIn ? (
+                <div className="pt-2">
+                  <LogoutButton />
+                </div>
+              ) : (
+                <Link
+                  href="/login?next=/dashboard"
+                  className="mt-1 rounded-md border border-[#0B132B] bg-white px-3 py-2 text-center text-sm font-medium text-[#0B132B] hover:bg-[#DFDFDF]"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         </details>

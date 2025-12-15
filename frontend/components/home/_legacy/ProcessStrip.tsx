@@ -1,3 +1,4 @@
+// LEGACY: old marketing home section, not used in the current tech/tools hub.
 export default function ProcessStrip() {
   const steps = [
     {

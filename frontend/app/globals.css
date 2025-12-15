@@ -56,43 +56,8 @@ body {
     }
 }
 
-/* Task 4 – Lab backdrop animations (INTENTIONALLY OVER-THE-TOP FOR DEBUG) */
-@keyframes labDriftX {
-    0% {
-        transform: translateX(-240px) scale(1);
-    }
-    50% {
-        /* huge swing + slight scale */
-        transform: translateX(240px) scale(1.15);
-    }
-    100% {
-        transform: translateX(-240px) scale(1);
-    }
-}
-
-@keyframes labDriftY {
-    0% {
-        transform: translateY(-180px) scale(1);
-    }
-    50% {
-        transform: translateY(180px) scale(1.1);
-    }
-    100% {
-        transform: translateY(-180px) scale(1);
-    }
-}
-
-@keyframes labOpacityPulse {
-    0% {
-        opacity: 0.05;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.05;
-    }
-}
+/* Removed legacy lab backdrop debug animations (labDriftX, labDriftY, labOpacityPulse)
+   as the physics-based backdrop is now fully handled in code (LabBackdropClient.tsx). */
 
 /* Strong 0→100% opacity pulse for the "Start here" chip */
 @keyframes start-here-pulse {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Alatsi, Raleway } from "next/font/google";
 import "./globals.css";
+import { growthbookAdapter } from "@/lib/growthbook/flags"; // just importing is enough
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 

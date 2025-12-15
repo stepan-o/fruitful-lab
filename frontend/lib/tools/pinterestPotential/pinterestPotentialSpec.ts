@@ -30,14 +30,19 @@ export type BaseQuestion = {
   required: boolean;
 };
 
+// Sprint 0 note: For copy parity without weights, we allow label-only storage
+// via `optionLabels`. Once numeric weights are confirmed, populate `options`
+// and you may drop `optionLabels`.
 export type RadioQuestion = BaseQuestion & {
   type: "radio";
   options: Option[]; // scalar selection → numeric weight
+  optionLabels?: string[]; // Sprint 0: labels only; weights pending
 };
 
 export type CheckboxQuestion = BaseQuestion & {
   type: "checkbox";
   options: Option[]; // multi-select → numeric weights (sum later in compute)
+  optionLabels?: string[]; // Sprint 0: labels only; weights pending
 };
 
 export type SliderQuestion = BaseQuestion & {
@@ -151,78 +156,95 @@ export function validateAnswers(answers: Answers, lead?: Lead): ValidationResult
 // NOTE: Any unknown labels/options/weights are explicitly marked as MISSING.
 // -----------------------------
 
+// -----------------------------
+// Sprint 0 copy parity:
+// Populate exact labels from Outgrow screenshots.
+// Do NOT invent numeric weights; keep `options: []` empty until confirmed.
+// Q3 is treated as multi-select (checkbox) per formula sum(Q3) even if UI looked like dropdown.
+// -----------------------------
+
 export const Q1: RadioQuestion = {
   id: "Q1",
   type: "radio",
-  label: "❗ MISSING — requires confirmation from source (Q1 label)",
+  label: "Do you have a Pinterest Business account ?",
   // helperText: "",
   required: true,
-  options: [
-    // { label: "...", value: ... },
-    // ❗ MISSING — requires confirmation from source (Q1 options + weights)
-  ],
+  optionLabels: ["Yes", "No"],
+  options: [],
 };
 
 export const Q2: CheckboxQuestion = {
   id: "Q2",
   type: "checkbox",
-  label: "❗ MISSING — requires confirmation from source (Q2 label)",
+  label: "Select your target market/region (all that apply)",
   required: true,
-  options: [
-    // { label: "...", value: ... },
-    // { label: "...", value: ... },
-    // ❗ MISSING — requires confirmation from source (Q2 options + weights; multi-select)
+  optionLabels: [
+    "Global",
+    "USA",
+    "Canada",
+    "Europe",
+    "Latin America",
+    "Asia-Pacific",
+    "Rest of the world",
   ],
+  options: [],
 };
 
 export const Q3: CheckboxQuestion = {
   id: "Q3",
   type: "checkbox",
-  label: "❗ MISSING — requires confirmation from source (Q3 label)",
+  label: "What types of products do you offer? (Select all that apply)",
   required: true,
-  options: [
-    // { label: "...", value: ... },
-    // ❗ MISSING — requires confirmation from source (Q3 options + weights; multi-select)
+  // NOTE: Outgrow UI appears as a dropdown in screenshot, but label indicates multi-select
+  // and the final formula uses sum(Q3), so this is modeled as checkbox multi-select.
+  optionLabels: [
+    // Only one visible in screenshot; full list pending confirmation
+    "Travel & Mobility (Strollers, buggies, joggers, car acces...)",
   ],
+  options: [],
 };
 
 export const Q4: RadioQuestion = {
   id: "Q4",
   type: "radio",
-  label: "❗ MISSING — requires confirmation from source (Q4 label)",
+  label: "Could you allocate an ad spend budget for Pinterest?",
   required: true,
-  options: [
-    // { label: "...", value: ... },
-    // ❗ MISSING — requires confirmation from source (Q4 options + weights)
+  optionLabels: [
+    "Yes",
+    "No",
+    "No, but could consider it",
   ],
+  options: [],
 };
 
 export const Q5: RadioQuestion = {
   id: "Q5",
   type: "radio",
-  label: "❗ MISSING — requires confirmation from source (Q5 label)",
+  label: "Do you have a blog?",
   required: true,
-  options: [
-    // { label: "...", value: ... },
-    // ❗ MISSING — requires confirmation from source (Q5 options + weights)
+  optionLabels: [
+    "Yes, my brand has a blog",
+    "Not a blog, but we create user guides etc.",
+    "No, but can create",
+    "No and not planning to",
   ],
+  options: [],
 };
 
 export const Q6: RadioQuestion = {
   id: "Q6",
   type: "radio",
-  label: "❗ MISSING — requires confirmation from source (Q6 label)",
+  label: "Could your product be positioned for gifting occasions?",
   required: true,
-  options: [
-    // { label: "...", value: ... },
-    // ❗ MISSING — requires confirmation from source (Q6 options + weights)
-  ],
+  optionLabels: ["Yes", "No", "Not sure"],
+  options: [],
 };
 
 export const Q7: SliderQuestion = {
   id: "Q7",
   type: "slider",
-  label: "❗ MISSING — requires confirmation from source (Q7 label)",
+  label:
+    "How seasonal is your product or brand? (1 = not seasonal, 5 = very seasonal)",
   required: true,
   min: 1,
   max: 5,
@@ -232,7 +254,8 @@ export const Q7: SliderQuestion = {
 export const Q8: SliderQuestion = {
   id: "Q8",
   type: "slider",
-  label: "❗ MISSING — requires confirmation from source (Q8 label)",
+  label:
+    "On a scale of 1 (low competition) to 5 (high competition), how competitive is your product category?",
   required: true,
   min: 1,
   max: 5,
@@ -242,18 +265,23 @@ export const Q8: SliderQuestion = {
 export const Q9: CheckboxQuestion = {
   id: "Q9",
   type: "checkbox",
-  label: "❗ MISSING — requires confirmation from source (Q9 label)",
+  label: "Which platform is most important for your marketing?",
   required: true,
-  options: [
-    // { label: "...", value: ... },
-    // ❗ MISSING — requires confirmation from source (Q9 options + weights; multi-select)
+  optionLabels: [
+    "Instagram",
+    "Facebook",
+    "Tiktok",
+    "Youtube",
+    "Google/SEO",
+    "Email",
   ],
+  options: [],
 };
 
 export const LEAD: LeadQuestion = {
   id: "LEAD",
   type: "lead",
-  label: "❗ MISSING — requires confirmation from source (Lead capture copy)",
+  label: "Where can we send your results?",
   required: true,
 };
 

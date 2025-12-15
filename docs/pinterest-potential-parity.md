@@ -8,41 +8,41 @@ Status legend:
 
 ## Scope
 - [x] Canonical spec file exists at `lib/tools/pinterestPotential/pinterestPotentialSpec.ts` (types, ordered questions, validation rules, formula doc)
-- [ ] All question copy (labels + helper text) confirmed from Outgrow
-- [ ] All option labels confirmed from Outgrow
+- [x] All question copy (labels) confirmed from Outgrow screenshots (Sprint 0 copy parity)
+- [ ] All option labels confirmed from Outgrow (Q3 full list pending)
 - [ ] All numeric weights confirmed from Outgrow (no placeholders)
 
 ## Question Order (must match Outgrow)
 1. [ ] Q1 — label matches Outgrow; options + weights confirmed
 2. [ ] Q2 — checkbox; multi-select; options + weights confirmed
-3. [ ] Q3 — checkbox; multi-select; options + weights confirmed
+3. [ ] Q3 — checkbox; multi-select; options + weights confirmed (UI looked like dropdown; modeled as multi-select per formula sum(Q3))
 4. [ ] Q4 — radio; options + weights confirmed
 5. [ ] Q5 — radio; options + weights confirmed
 6. [ ] Q6 — radio; options + weights confirmed
-7. [ ] Q7 — slider (1–5); label confirmed
-8. [ ] Q8 — slider (1–5); label confirmed
+7. [x] Q7 — slider (1–5); label confirmed
+8. [x] Q8 — slider (1–5); label confirmed
 9. [ ] Q9 — checkbox; multi-select; options + weights confirmed
-10. [ ] Lead form — presence + placement confirmed
+10. [x] Lead form — presence + placement confirmed (after Q9, before results)
 
 ## Copy Parity
-- [ ] Question labels match Outgrow exactly (spelling, punctuation)
-- [ ] Helper text (if any) matches Outgrow
-- [ ] Option labels match Outgrow exactly
+- [x] Question labels match Outgrow exactly (spelling, punctuation)
+- [x] Helper text (if any) matches Outgrow (none observed in screenshots)
+- [ ] Option labels match Outgrow exactly (Q3 full list pending)
 
 ## Required/Optional Behavior
-- [ ] Q1 required (radio)
-- [ ] Q2 required (checkbox; ≥1 selection)
-- [ ] Q3 required (checkbox; ≥1 selection)
-- [ ] Q4 required (radio)
-- [ ] Q5 required (radio)
-- [ ] Q6 required (radio)
-- [ ] Q7 required (slider 1–5, integer)
-- [ ] Q8 required (slider 1–5, integer)
-- [ ] Q9 required (checkbox; ≥1 selection)
-- [ ] Lead form required (name + email)
+- [x] Q1 required (radio)
+- [x] Q2 required (checkbox; ≥1 selection)
+- [x] Q3 required (checkbox; ≥1 selection)
+- [x] Q4 required (radio)
+- [x] Q5 required (radio)
+- [x] Q6 required (radio)
+- [x] Q7 required (slider 1–5, integer)
+- [x] Q8 required (slider 1–5, integer)
+- [x] Q9 required (checkbox; ≥1 selection)
+- [x] Lead form required (name + email)
 
 ## Lead Form Placement
-- [ ] Confirm whether lead capture occurs before showing results or after (must match Outgrow exactly).
+- [x] Lead capture occurs before showing results (after Q9 on the same flow screen), matching Outgrow.
 
 ## Formula Documentation (Do Not Modify)
 Embedded in `pinterestPotentialSpec.ts`:
@@ -64,7 +64,7 @@ round(
 
 ## Blockers (must be resolved to exit Sprint 0)
 - [ ] Outgrow-provided option → weight tables for all questions (especially multi-select Q2, Q3, Q9)
-- [ ] Final decision on lead form placement (before vs. after results)
+- [ ] Full option list for Q3 (only one visible in screenshot)
 
 ## Notes
 - Sprint 0 intentionally includes no compute engine and no UI. The spec must be deterministic and implementation-ready once weights/copy are filled.

@@ -74,7 +74,7 @@ export default function ToolsIndexPage() {
                         className="
               group block rounded-2xl border border-[var(--brand-raspberry)]
               bg-[var(--card)] p-8 transition
-              hover:bg-[var(--card-hover)] hover:shadow-md
+              hover:bg-[var(--card-hover)] hover:shadow-md hover:ring-1 hover:ring-[var(--brand-raspberry)]
               focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]
               focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]
             "
@@ -86,13 +86,44 @@ export default function ToolsIndexPage() {
                             <StatusPill status={primary.status} />
                         </div>
 
-                        <p className="mt-3 max-w-prose text-sm sm:text-base text-[var(--foreground-muted)]">
-                            {primary.description}
+                        {/* Value line */}
+                        <p className="mt-2 max-w-prose text-sm sm:text-base leading-relaxed text-[var(--foreground-muted)]">
+                            Get a realistic traffic + lead range from Pinterest — based on your site + cadence.
                         </p>
 
-                        <span className="mt-6 inline-flex items-center gap-2 font-medium text-[var(--foreground)]">
-              Open calculator →
-            </span>
+                        {/* What you'll get */}
+                        <div className="mt-4">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-[var(--foreground)]/80">
+                                What you’ll get
+                            </p>
+                            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-[var(--foreground-muted)]">
+                                <li>Estimated monthly clicks + sessions</li>
+                                <li>Lead range based on conversion assumptions</li>
+                                <li>Pacing suggestion: pins/week + time-to-signal</li>
+                            </ul>
+                        </div>
+
+                        {/* What you'll need */}
+                        <p className="mt-4 text-xs sm:text-sm text-[var(--foreground-muted)]">
+                            You’ll need: your monthly traffic + email opt-in / conversion rate (or we’ll use defaults).
+                        </p>
+
+                        {/* Micro trust */}
+                        <p className="mt-1 text-[11px] text-[var(--foreground-muted)]">
+                            Takes ~2 minutes • No login • Built for practitioners
+                        </p>
+
+                        {/* CTA Row */}
+                        <div className="mt-6">
+                            <span className="inline-flex items-center gap-2 font-medium text-[var(--foreground)]">
+                                Open calculator →
+                            </span>
+                            <div className="mt-1">
+                                <span className="text-xs text-[var(--foreground-muted)] underline underline-offset-4 transition-colors group-hover:text-[var(--brand-heading)]">
+                                    What does this estimate?
+                                </span>
+                            </div>
+                        </div>
                     </Link>
                 </div>
 

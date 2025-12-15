@@ -3,9 +3,11 @@
 :root {
     --background: #ffffff; /* page base */
     --foreground: #171A21; /* Ink Black */
+
     --brand-heading: #0B132B; /* Prussian Blue */
     --brand-raspberry: #950952; /* Dark Raspberry */
     --brand-alabaster: #DFDFDF; /* Alabaster Grey */
+
     --brand-bronze: #D58936; /* Bronze */
     --brand-rust: #A44200; /* Rust */
 
@@ -27,6 +29,12 @@
     :root {
         --background: #0a0a0a;
         --foreground: #ededed;
+
+        /* Critical: make borders + subtle surfaces not blinding */
+        --brand-alabaster: rgba(255, 255, 255, 0.14);
+
+        /* Critical: "heading" must be readable on dark backgrounds */
+        --brand-heading: #e6e9f2;
     }
 }
 
@@ -58,9 +66,6 @@ body {
         transform: scale(1);
     }
 }
-
-/* Removed legacy lab backdrop debug animations (labDriftX, labDriftY, labOpacityPulse)
-   as the physics-based backdrop is now fully handled in code (LabBackdropClient.tsx). */
 
 /* Strong 0→100% opacity pulse for the "Start here" chip */
 @keyframes start-here-pulse {

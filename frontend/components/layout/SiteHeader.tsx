@@ -14,7 +14,7 @@ function NavLinks() {
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
-                    className="font-medium text-[var(--foreground)] hover:text-[var(--brand-heading)]"
+                    className="font-medium text-[var(--foreground)] hover:text-[var(--brand-heading)] transition-colors"
                 >
                     {item.label}
                 </Link>
@@ -28,7 +28,7 @@ export default async function SiteHeader() {
     const isLoggedIn = !!user;
 
     return (
-        <header className="border-b border-[var(--brand-alabaster)] bg-[var(--background)]">
+        <header className="border-b border-[var(--brand-alabaster)] bg-[var(--background)]/90 backdrop-blur">
             <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3">
@@ -55,7 +55,17 @@ export default async function SiteHeader() {
                     ) : (
                         <Link
                             href="/login?next=/dashboard"
-                            className="rounded-md border border-[var(--brand-heading)] bg-[var(--background)] px-4 py-2 text-sm md:text-base font-semibold text-[var(--brand-heading)] hover:bg-[var(--brand-alabaster)]"
+                            className={[
+                                "rounded-md border px-4 py-2 text-sm md:text-base font-semibold",
+                                "border-[var(--brand-heading)]",
+                                "bg-[var(--background)]",
+                                "text-[var(--brand-heading)]",
+                                "hover:bg-[var(--brand-alabaster)]/25",
+                                "transition-colors",
+                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+                                "focus-visible:ring-[var(--brand-heading)]",
+                                "focus-visible:ring-offset-[var(--background)]",
+                            ].join(" ")}
                         >
                             Login
                         </Link>
@@ -64,7 +74,7 @@ export default async function SiteHeader() {
 
                 {/* Mobile menu */}
                 <details className="md:hidden">
-                    <summary className="cursor-pointer rounded-md px-2 py-1 font-semibold text-[var(--foreground)] marker:hidden hover:text-[var(--brand-heading)]">
+                    <summary className="cursor-pointer rounded-md px-2 py-1 font-semibold text-[var(--foreground)] marker:hidden hover:text-[var(--brand-heading)] transition-colors">
                         Menu
                     </summary>
                     <div className="absolute left-0 right-0 z-10 mt-2 border-b border-[var(--brand-alabaster)] bg-[var(--background)] px-4 py-3 shadow-sm">
@@ -75,12 +85,14 @@ export default async function SiteHeader() {
                                     href={item.href}
                                     target={item.external ? "_blank" : undefined}
                                     rel={item.external ? "noopener noreferrer" : undefined}
-                                    className="font-medium hover:text-[var(--brand-heading)]"
+                                    className="font-medium hover:text-[var(--brand-heading)] transition-colors"
                                 >
                                     {item.label}
                                 </Link>
                             ))}
+
                             <BookCallButton fullWidth />
+
                             {isLoggedIn ? (
                                 <div className="pt-2">
                                     <LogoutButton />
@@ -88,7 +100,17 @@ export default async function SiteHeader() {
                             ) : (
                                 <Link
                                     href="/login?next=/dashboard"
-                                    className="mt-1 rounded-md border border-[var(--brand-heading)] bg-[var(--background)] px-4 py-2 text-center text-sm font-semibold text-[var(--brand-heading)] hover:bg-[var(--brand-alabaster)]"
+                                    className={[
+                                        "mt-1 rounded-md border px-4 py-2 text-center text-sm font-semibold",
+                                        "border-[var(--brand-heading)]",
+                                        "bg-[var(--background)]",
+                                        "text-[var(--brand-heading)]",
+                                        "hover:bg-[var(--brand-alabaster)]/25",
+                                        "transition-colors",
+                                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+                                        "focus-visible:ring-[var(--brand-heading)]",
+                                        "focus-visible:ring-offset-[var(--background)]",
+                                    ].join(" ")}
                                 >
                                     Login
                                 </Link>

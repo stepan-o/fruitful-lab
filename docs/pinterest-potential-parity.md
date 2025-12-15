@@ -18,10 +18,10 @@ Status legend:
 3. [x] Q3 — checkbox; multi-select; options + weights confirmed (UI looked like dropdown; modeled as multi-select per formula sum(Q3))
 4. [x] Q4 — radio; options + weights confirmed
 5. [x] Q5 — radio; options + weights confirmed
-6. [ ] Q6 — radio; options + weights confirmed
-7. [x] Q7 — slider (1–5); label confirmed
-8. [x] Q8 — slider (1–5); label confirmed
-9. [ ] Q9 — checkbox; multi-select; options + weights confirmed
+6. [x] Q6 — radio; options + weights confirmed
+7. [x] Q7 — slider (1–5); label + required behavior + default(1) confirmed
+8. [x] Q8 — slider (1–5); label + required behavior + default(1) confirmed
+9. [x] Q9 — checkbox; multi-select; options + weights confirmed
 10. [x] Lead form — presence + placement confirmed (after Q9, before results)
 
 ## Copy Parity
@@ -63,8 +63,7 @@ round(
 ```
 
 ## Blockers (must be resolved to exit Sprint 0)
-- [ ] Outgrow-provided option → weight tables for remaining questions (Q6, Q9)
-- [ ] Confirm numeric weights for Q6 and Q9 via Outgrow screenshots
+- [ ] None at this time related to weights/copy. Await any future Outgrow updates for changes.
 
 ## Notes
 - Sprint 0 intentionally includes no compute engine and no UI. The spec must be deterministic and implementation-ready once weights/copy are filled.

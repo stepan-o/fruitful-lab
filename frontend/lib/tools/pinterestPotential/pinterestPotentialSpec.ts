@@ -50,6 +50,8 @@ export type SliderQuestion = BaseQuestion & {
   min: number; // inclusive
   max: number; // inclusive
   step: number;
+  // Sprint 0: default captured for parity; compute uses raw provided value
+  default?: number;
 };
 
 export type LeadQuestion = {
@@ -275,7 +277,11 @@ export const Q6: RadioQuestion = {
   label: "Could your product be positioned for gifting occasions?",
   required: true,
   optionLabels: ["Yes", "No", "Not sure"],
-  options: [],
+  options: [
+    { label: "Yes", value: 1.3 },
+    { label: "No", value: 0.9 },
+    { label: "Not sure", value: 1 },
+  ],
 };
 
 export const Q7: SliderQuestion = {
@@ -287,6 +293,7 @@ export const Q7: SliderQuestion = {
   min: 1,
   max: 5,
   step: 1,
+  default: 1,
 };
 
 export const Q8: SliderQuestion = {
@@ -298,6 +305,7 @@ export const Q8: SliderQuestion = {
   min: 1,
   max: 5,
   step: 1,
+  default: 1,
 };
 
 export const Q9: CheckboxQuestion = {
@@ -313,7 +321,14 @@ export const Q9: CheckboxQuestion = {
     "Google/SEO",
     "Email",
   ],
-  options: [],
+  options: [
+    { label: "Instagram", value: 0 },
+    { label: "Facebook", value: 0 },
+    { label: "Tiktok", value: 0 },
+    { label: "Youtube", value: 4 },
+    { label: "Google/SEO", value: 5 },
+    { label: "Email", value: 6 },
+  ],
 };
 
 export const LEAD: LeadQuestion = {
@@ -392,5 +407,17 @@ export const WEIGHTS_SNAPSHOT = {
     { label: "No, but can create", value: 1 },
     { label: "No and not planning to", value: 0.8 },
   ],
-  // Q6 and Q9 VALUE screenshots not yet provided → pending
+  Q6: [
+    { label: "Yes", value: 1.3 },
+    { label: "No", value: 0.9 },
+    { label: "Not sure", value: 1 },
+  ],
+  Q9: [
+    { label: "Instagram", value: 0 },
+    { label: "Facebook", value: 0 },
+    { label: "Tiktok", value: 0 },
+    { label: "Youtube", value: 4 },
+    { label: "Google/SEO", value: 5 },
+    { label: "Email", value: 6 },
+  ],
 } as const;

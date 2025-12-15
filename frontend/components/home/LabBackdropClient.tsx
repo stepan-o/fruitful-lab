@@ -114,7 +114,7 @@ export default function LabBackdropClient() {
 
       // Softer opacity for lighter colors
       const color = brandColors[i % brandColors.length];
-      const opacity = color.includes("alabaster") ? 0.08 : 0.12;
+      const opacity = i === 0 ? 0.08 : 0.12;
 
       return {
         id: i,

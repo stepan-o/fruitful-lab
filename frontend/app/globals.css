@@ -9,6 +9,9 @@
     --brand-bronze: #D58936; /* Bronze */
     --brand-rust: #A44200; /* Rust */
 
+    --backdrop-opacity-soft: 0.08; /* 8% opacity */
+    --backdrop-opacity-strong: 0.12; /* 12% opacity */
+
     /* font variables set by next/font in layout.tsx */
     --font-heading: ui-sans-serif; /* fallback */
     --font-body: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,

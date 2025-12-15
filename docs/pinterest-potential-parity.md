@@ -68,3 +68,6 @@ round(
 ## Notes
 - Sprint 0 intentionally includes no compute engine and no UI. The spec must be deterministic and implementation-ready once weights/copy are filled.
 - Once Outgrow confirmations arrive, replace the `❗ MISSING` markers in `pinterestPotentialSpec.ts` with exact values and mark the corresponding checklist items as complete.
+
+## Implementation Notes
+- React list rendering keys must NOT use numeric weights because weights can repeat (e.g., 0.08). Keys should be derived from question id + option label (e.g., `${questionId}:${label}`), optionally with an index suffix to ensure uniqueness.

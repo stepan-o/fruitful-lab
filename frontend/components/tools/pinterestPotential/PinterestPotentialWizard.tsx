@@ -179,10 +179,13 @@ export default function PinterestPotentialWizard() {
     if (current.type === "radio") {
       return (
         <div className="space-y-3">
-          {(current.options || []).map((opt) => {
+          {(current.options || []).map((opt, i) => {
             const checked = (state.answers as any)[current.id] === opt.value;
             return (
-              <label key={opt.value} className="flex items-center gap-3 rounded-md border border-[var(--border)] bg-[var(--card)] p-3 hover:bg-[var(--card-hover)]">
+              <label
+                key={`${current.id}:${opt.label}:${i}`}
+                className="flex items-center gap-3 rounded-md border border-[var(--border)] bg-[var(--card)] p-3 hover:bg-[var(--card-hover)]"
+              >
                 <input
                   type="radio"
                   name={current.id}
@@ -209,8 +212,11 @@ export default function PinterestPotentialWizard() {
       }
       return (
         <div className="space-y-3">
-          {(current.options || []).map((opt) => (
-            <label key={opt.value} className="flex items-center gap-3 rounded-md border border-[var(--border)] bg-[var(--card)] p-3 hover:bg-[var(--card-hover)]">
+          {(current.options || []).map((opt, i) => (
+            <label
+              key={`${current.id}:${opt.label}:${i}`}
+              className="flex items-center gap-3 rounded-md border border-[var(--border)] bg-[var(--card)] p-3 hover:bg-[var(--card-hover)]"
+            >
               <input
                 type="checkbox"
                 checked={values.includes(opt.value)}

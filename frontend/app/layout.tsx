@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Alatsi, Raleway } from "next/font/google";
+import { Playfair_Display_SC, Raleway } from "next/font/google";
 import "./globals.css";
 import { growthbookAdapter } from "@/lib/growthbook/flags"; // just importing is enough
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 
 // Brand fonts
-const headingFont = Alatsi({
+const headingFont = Playfair_Display_SC({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "700"],
   variable: "--font-heading",
   display: "swap",
 });

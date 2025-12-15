@@ -23,6 +23,32 @@ function NavLinks() {
     );
 }
 
+const loginLinkClasses = [
+    "rounded-md border px-4 py-2 text-sm md:text-base font-semibold",
+    "border-[var(--border)]",
+    "bg-transparent",
+    "text-[var(--foreground-muted)]",
+    "hover:text-[var(--foreground)]",
+    "hover:bg-[var(--surface)]",
+    "transition-colors",
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+    "focus-visible:ring-[var(--brand-raspberry)]",
+    "focus-visible:ring-offset-[var(--background)]",
+].join(" ");
+
+const mobileLoginLinkClasses = [
+    "mt-1 rounded-md border px-4 py-2 text-center text-sm font-semibold",
+    "border-[var(--border)]",
+    "bg-transparent",
+    "text-[var(--foreground-muted)]",
+    "hover:text-[var(--foreground)]",
+    "hover:bg-[var(--surface)]",
+    "transition-colors",
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+    "focus-visible:ring-[var(--brand-raspberry)]",
+    "focus-visible:ring-offset-[var(--background)]",
+].join(" ");
+
 export default async function SiteHeader() {
     const user = await getCurrentUser();
     const isLoggedIn = !!user;
@@ -53,20 +79,7 @@ export default async function SiteHeader() {
                     {isLoggedIn ? (
                         <LogoutButton />
                     ) : (
-                        <Link
-                            href="/login?next=/dashboard"
-                            className={[
-                                "rounded-md border px-4 py-2 text-sm md:text-base font-semibold",
-                                "border-[var(--brand-heading)]",
-                                "bg-[var(--background)]",
-                                "text-[var(--brand-heading)]",
-                                "hover:bg-[var(--brand-alabaster)]/25",
-                                "transition-colors",
-                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-                                "focus-visible:ring-[var(--brand-heading)]",
-                                "focus-visible:ring-offset-[var(--background)]",
-                            ].join(" ")}
-                        >
+                        <Link href="/login?next=/dashboard" className={loginLinkClasses}>
                             Login
                         </Link>
                     )}
@@ -98,20 +111,7 @@ export default async function SiteHeader() {
                                     <LogoutButton />
                                 </div>
                             ) : (
-                                <Link
-                                    href="/login?next=/dashboard"
-                                    className={[
-                                        "mt-1 rounded-md border px-4 py-2 text-center text-sm font-semibold",
-                                        "border-[var(--brand-heading)]",
-                                        "bg-[var(--background)]",
-                                        "text-[var(--brand-heading)]",
-                                        "hover:bg-[var(--brand-alabaster)]/25",
-                                        "transition-colors",
-                                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-                                        "focus-visible:ring-[var(--brand-heading)]",
-                                        "focus-visible:ring-offset-[var(--background)]",
-                                    ].join(" ")}
-                                >
+                                <Link href="/login?next=/dashboard" className={mobileLoginLinkClasses}>
                                     Login
                                 </Link>
                             )}

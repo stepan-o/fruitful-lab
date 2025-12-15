@@ -1,4 +1,4 @@
-// frontend/app/tools/pinterest-potential/page.tsx
+// frontend/app/(flow)/tools/pinterest-potential/page.tsx
 // Version-switching entry point for the Pinterest Potential Calculator flow.
 import {
   DEFAULT_VARIANT,

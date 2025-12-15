@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import Page, { resolvePinterestPotentialVariant } from "@/app/tools/pinterest-potential/page";
+import Page, { resolvePinterestPotentialVariant } from "@/app/(flow)/tools/pinterest-potential/page";
 import { render, screen } from "@testing-library/react";
 
 // Mock cookies() from next/headers to control cookie-based variant

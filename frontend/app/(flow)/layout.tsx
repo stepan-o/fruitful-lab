@@ -1,13 +1,9 @@
-// frontend/app/tools/pinterest-potential/layout.tsx
+// frontend/app/(flow)/layout.tsx
 import type { ReactNode } from "react";
 import FlowHeader from "@/components/layout/FlowHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 
-export default function PinterestPotentialLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function FlowLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <FlowHeader backHref="/tools" />

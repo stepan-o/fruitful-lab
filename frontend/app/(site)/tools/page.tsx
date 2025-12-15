@@ -1,4 +1,4 @@
-// frontend/app/tools/page.tsx
+// frontend/app/(site)/tools/page.tsx
 import Link from "next/link";
 
 export const dynamic = "force-static";

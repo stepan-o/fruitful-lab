@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display_SC, Poppins } from "next/font/google";
 import "./globals.css";
 import { growthbookAdapter } from "@/lib/growthbook/flags"; // just importing is enough
-import SiteHeader from "@/components/layout/SiteHeader";
-import SiteFooter from "@/components/layout/SiteFooter";
 
 // Brand fonts
 const headingFont = Playfair_Display_SC({
@@ -33,14 +31,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${headingFont.variable} ${bodyFont.variable} font-body antialiased bg-white text-[#171A21]`}
-      >
-        <div className="min-h-screen flex flex-col">
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
-        </div>
+      <body className={`${headingFont.variable} ${bodyFont.variable} font-body antialiased`}>
+        {children}
       </body>
     </html>
   );

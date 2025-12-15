@@ -50,18 +50,19 @@ export default function PublicHubLanding() {
                                     <div className="relative inline-flex flex-col items-start">
                     <span
                         className="
-                        mb-3 inline-flex items-center gap-2
-                        rounded-full px-4 py-1.5
-                        text-[11px] sm:text-xs
-                        font-semibold uppercase tracking-[0.22em]
-                        text-[var(--brand-heading)]
-                        bg-[var(--brand-bronze)]
-                        shadow-sm
-                        animate-[start-here-pulse_1.8s_ease-in-out_infinite]
-                      "
+                            mb-3 inline-flex items-center gap-2
+                            rounded-full px-4 py-1.5
+                            text-[11px] sm:text-xs
+                            font-semibold uppercase tracking-[0.22em]
+                            text-[var(--start-here-fg)]
+                            bg-[var(--start-here-bg)]
+                            shadow-sm
+                            animate-[start-here-pulse_1.8s_ease-in-out_infinite]
+                        "
+                        style={{ boxShadow: "0 1px 0 var(--start-here-shadow)" }}
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--background)]" />
-                      Start here
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--start-here-dot)]" />
+                        Start here
                     </span>
 
                                         <div className="pointer-events-none absolute left-0 top-7 -z-10 h-[150%] w-[125%] rounded-full bg-[var(--brand-raspberry)]/18 blur-xl animate-[hubPulse_6s_ease-in-out_infinite]" />

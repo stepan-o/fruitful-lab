@@ -31,6 +31,12 @@
     --border: var(--brand-alabaster);
     --foreground-muted: rgba(23, 26, 33, 0.72);
 
+    /* Start-here pill tokens (LIGHT) */
+    --start-here-bg: var(--brand-bronze);
+    --start-here-fg: var(--brand-heading);
+    --start-here-dot: var(--background);
+    --start-here-shadow: rgba(0, 0, 0, 0.08);
+
     /* Surfaces */
     --surface: rgba(11, 19, 43, 0.03);
     --card: rgba(255, 255, 255, 0.72);
@@ -76,6 +82,12 @@ html[data-theme="dark"] {
 
     --border: rgba(255, 255, 255, 0.12);
     --foreground-muted: rgba(237, 237, 237, 0.72);
+
+    /* Start-here pill tokens (DARK) */
+    --start-here-bg: rgba(240, 161, 74, 0.14);
+    --start-here-fg: var(--foreground);
+    --start-here-dot: var(--brand-bronze);
+    --start-here-shadow: rgba(0, 0, 0, 0.25);
 
     --surface: rgba(255, 255, 255, 0.06);
     --card: rgba(255, 255, 255, 0.04);

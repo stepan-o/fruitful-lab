@@ -14,7 +14,7 @@ function NavLinks() {
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
-                    className="font-medium text-[#171A21] hover:text-[#0B132B]"
+                    className="font-medium text-[var(--foreground)] hover:text-[var(--brand-heading)]"
                 >
                     {item.label}
                 </Link>
@@ -28,8 +28,8 @@ export default async function SiteHeader() {
     const isLoggedIn = !!user;
 
     return (
-        <header className="border-b border-[#DFDFDF] bg-white">
-        <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6">
+        <header className="border-b border-[var(--brand-alabaster)] bg-[var(--background)]">
+            <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3">
                     <Image
@@ -55,7 +55,7 @@ export default async function SiteHeader() {
                     ) : (
                         <Link
                             href="/login?next=/dashboard"
-                            className="rounded-md border border-[#0B132B] bg-white px-4 py-2 text-sm md:text-base font-semibold text-[#0B132B] hover:bg-[#DFDFDF]"
+                            className="rounded-md border border-[var(--brand-heading)] bg-[var(--background)] px-4 py-2 text-sm md:text-base font-semibold text-[var(--brand-heading)] hover:bg-[var(--brand-alabaster)]"
                         >
                             Login
                         </Link>
@@ -64,18 +64,18 @@ export default async function SiteHeader() {
 
                 {/* Mobile menu */}
                 <details className="md:hidden">
-                    <summary className="cursor-pointer rounded-md px-2 py-1 font-semibold text-[#171A21] marker:hidden hover:text-[#0B132B]">
+                    <summary className="cursor-pointer rounded-md px-2 py-1 font-semibold text-[var(--foreground)] marker:hidden hover:text-[var(--brand-heading)]">
                         Menu
                     </summary>
-                    <div className="absolute left-0 right-0 z-10 mt-2 border-b border-[#DFDFDF] bg-white px-4 py-3 shadow-sm">
-                        <div className="flex flex-col gap-3 text-sm text-[#171A21]">
+                    <div className="absolute left-0 right-0 z-10 mt-2 border-b border-[var(--brand-alabaster)] bg-[var(--background)] px-4 py-3 shadow-sm">
+                        <div className="flex flex-col gap-3 text-sm text-[var(--foreground)]">
                             {PUBLIC_NAV_LINKS.map((item) => (
                                 <Link
                                     key={item.href}
                                     href={item.href}
                                     target={item.external ? "_blank" : undefined}
                                     rel={item.external ? "noopener noreferrer" : undefined}
-                                    className="font-medium hover:text-[#0B132B]"
+                                    className="font-medium hover:text-[var(--brand-heading)]"
                                 >
                                     {item.label}
                                 </Link>
@@ -88,7 +88,7 @@ export default async function SiteHeader() {
                             ) : (
                                 <Link
                                     href="/login?next=/dashboard"
-                                    className="mt-1 rounded-md border border-[#0B132B] bg-white px-4 py-2 text-center text-sm font-semibold text-[#0B132B] hover:bg-[#DFDFDF]"
+                                    className="mt-1 rounded-md border border-[var(--brand-heading)] bg-[var(--background)] px-4 py-2 text-center text-sm font-semibold text-[var(--brand-heading)] hover:bg-[var(--brand-alabaster)]"
                                 >
                                     Login
                                 </Link>

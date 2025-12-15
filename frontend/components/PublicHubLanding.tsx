@@ -14,10 +14,11 @@ export default function PublicHubLanding() {
     const toolsLink = getNavLink("/tools");
     const caseStudiesLink = getNavLink("/case-studies");
     const mainSiteLink = getNavLink("https://fruitfulpin.com");
+
     return (
-        <div className="bg-white text-[#171A21]">
+        <div className="bg-[var(--background)] text-[var(--foreground)]">
             {/* Hero band that fills the viewport (minus header). Explainer moved below. */}
-            <section className="relative flex w-full flex-col overflow-hidden bg-white min-h-[calc(100vh-72px)] justify-between">
+            <section className="relative flex w-full flex-col overflow-hidden bg-[var(--background)] min-h-[calc(100vh-72px)] justify-between">
                 {/* Hero area */}
                 <div className="relative flex-1">
                     {/* Animated backdrop fills this hero area */}
@@ -28,17 +29,19 @@ export default function PublicHubLanding() {
                         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
                             {/* Text stack */}
                             <div>
-                                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#DFDFDF] bg-white px-3 py-1 text-xs text-[#0B132B]">
-                                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#D58936]" />
-                                    Fruitful Lab · Tech & Tools
+                                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[var(--brand-alabaster)] bg-[var(--background)] px-3 py-1 text-xs text-[var(--brand-heading)]">
+                                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--brand-bronze)]" />
+                                    Fruitful Lab · Tech &amp; Tools
                                 </div>
 
-                                <h1 className="font-heading text-3xl leading-tight text-[#0B132B] sm:text-4xl md:text-5xl md:leading-[1.2]">
+                                <h1 className="font-heading text-3xl leading-tight text-[var(--brand-heading)] sm:text-4xl md:text-5xl md:leading-[1.2]">
                                     The engine room behind{" "}
-                                    <span className="font-semibold text-[var(--brand-raspberry)]">Fruitful Pin.</span>
+                                    <span className="font-semibold text-[var(--brand-raspberry)]">
+                                        Fruitful Pin.
+                                    </span>
                                 </h1>
 
-                                <p className="mt-4 max-w-prose text-base sm:text-lg leading-relaxed sm:leading-relaxed text-[#171A21]/90">
+                                <p className="mt-4 max-w-prose text-base sm:text-lg leading-relaxed sm:leading-relaxed text-[var(--foreground)]/90">
                                     This is the internal tools &amp; dashboards hub behind{" "}
                                     <span className="font-bold text-[var(--brand-raspberry)]">
                                         Fruitful Pin
@@ -58,23 +61,27 @@ export default function PublicHubLanding() {
                                                 rounded-full px-4 py-1.5
                                                 text-[11px] sm:text-xs
                                                 font-semibold uppercase tracking-[0.22em]
-                                                text-white
-                                                bg-[#F59E0B]
-                                                shadow-md
+                                                text-[var(--brand-heading)]
+                                                bg-[var(--brand-bronze)]
+                                                shadow-sm
                                                 animate-[start-here-pulse_1.8s_ease-in-out_infinite]
                                             "
                                         >
-                                            <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--background)]" />
                                             Start here
                                         </span>
 
                                         {/* halo behind the main CTA */}
                                         <div className="pointer-events-none absolute left-0 top-7 -z-10 h-[150%] w-[125%] rounded-full bg-[var(--brand-raspberry)]/14 blur-xl animate-[hubPulse_6s_ease-in-out_infinite]" />
+
                                         {/*
-                                          Note: Hero CTA URLs are sourced from PUBLIC_NAV_LINKS (via getNavLink),
-                                          matching header/footer/cards. Edit hrefs in frontend/lib/nav.ts to update globally.
+                                            Note: Hero CTA URLs are sourced from PUBLIC_NAV_LINKS (via getNavLink),
+                                            matching header/footer/cards. Edit hrefs in frontend/lib/nav.ts to update globally.
                                         */}
-                                        <Button href={mainSiteLink?.href ?? "https://fruitfulpin.com"} variant="primary">
+                                        <Button
+                                            href={mainSiteLink?.href ?? "https://fruitfulpin.com"}
+                                            variant="primary"
+                                        >
                                             Go to Fruitful Pin site
                                         </Button>
                                     </div>
@@ -87,32 +94,37 @@ export default function PublicHubLanding() {
 
                             {/* Right-side placeholder for future visuals/animation */}
                             <div className="hidden md:block">
-                                <div className="h-64 w-full rounded-lg border border-[#DFDFDF] bg-gradient-to-br from-white via-[#FFF9F2] to-white" />
+                                <div className="h-64 w-full rounded-lg border border-[var(--brand-alabaster)] bg-gradient-to-br from-[var(--background)] via-[var(--brand-alabaster)]/35 to-[var(--background)]" />
                             </div>
                         </div>
                     </div>
                 </div>
-
             </section>
 
             {/* Explainer strip now as its own section below the hero */}
-            <section className="border-y border-[#DFDFDF] bg-[#DFDFDF]">
+            <section className="border-y border-[var(--brand-alabaster)] bg-[var(--brand-alabaster)]">
                 <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2 lg:grid-cols-3 sm:py-12 lg:py-14">
                     <div>
-                        <h3 className="font-heading text-xl text-[#0B132B]">Internal dashboards</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-[#171A21]/90">
+                        <h3 className="font-heading text-xl text-[var(--brand-heading)]">
+                            Internal dashboards
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[var(--foreground)]/90">
                             Admin-only analytics, pacing, and performance views across Pinterest and funnels.
                         </p>
                     </div>
                     <div>
-                        <h3 className="font-heading text-xl text-[#0B132B]">Smart tools & calculators</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-[#171A21]/90">
+                        <h3 className="font-heading text-xl text-[var(--brand-heading)]">
+                            Smart tools &amp; calculators
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[var(--foreground)]/90">
                             Public and gated utilities to plan campaigns, budgets, and creative — built for practitioners.
                         </p>
                     </div>
                     <div>
-                        <h3 className="font-heading text-xl text-[#0B132B]">Deep-dive case studies</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-[#171A21]/90">
+                        <h3 className="font-heading text-xl text-[var(--brand-heading)]">
+                            Deep-dive case studies
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[var(--foreground)]/90">
                             Transparent breakdowns of strategy, experiments, and outcomes for real brands.
                         </p>
                     </div>
@@ -126,13 +138,17 @@ export default function PublicHubLanding() {
                     {toolsLink && (
                         <Link
                             href={toolsLink.href}
-                            className="group rounded-lg border border-[#DFDFDF] bg-white p-5 transition hover:shadow-sm"
+                            className="group rounded-lg border border-[var(--brand-alabaster)] bg-[var(--background)] p-5 transition hover:shadow-sm"
                         >
-                            <h4 className="font-heading text-lg text-[#0B132B]">{toolsLink.label}</h4>
-                            <p className="mt-2 text-sm text-[#171A21]/80">Explore utilities that help plan and optimize.</p>
-                            <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
-                                Go →
-                            </span>
+                            <h4 className="font-heading text-lg text-[var(--brand-heading)]">
+                                {toolsLink.label}
+                            </h4>
+                            <p className="mt-2 text-sm text-[var(--foreground)]/80">
+                                Explore utilities that help plan and optimize.
+                            </p>
+                            <span className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--brand-heading)] group-hover:underline">
+                Go →
+              </span>
                         </Link>
                     )}
 
@@ -140,11 +156,15 @@ export default function PublicHubLanding() {
                     {caseStudiesLink && (
                         <Link
                             href={caseStudiesLink.href}
-                            className="group rounded-lg border border-[#DFDFDF] bg-white p-5 transition hover:shadow-sm"
+                            className="group rounded-lg border border-[var(--brand-alabaster)] bg-[var(--background)] p-5 transition hover:shadow-sm"
                         >
-                            <h4 className="font-heading text-lg text-[#0B132B]">{caseStudiesLink.label}</h4>
-                            <p className="mt-2 text-sm text-[#171A21]/80">See what&apos;s working across Pinterest and funnels.</p>
-                            <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
+                            <h4 className="font-heading text-lg text-[var(--brand-heading)]">
+                                {caseStudiesLink.label}
+                            </h4>
+                            <p className="mt-2 text-sm text-[var(--foreground)]/80">
+                                See what&apos;s working across Pinterest and funnels.
+                            </p>
+                            <span className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--brand-heading)] group-hover:underline">
                                 Browse →
                             </span>
                         </Link>
@@ -156,11 +176,15 @@ export default function PublicHubLanding() {
                             href={mainSiteLink.href}
                             target={mainSiteLink.external ? "_blank" : undefined}
                             rel={mainSiteLink.external ? "noopener noreferrer" : undefined}
-                            className="group rounded-lg border border-[#DFDFDF] bg-white p-5 transition hover:shadow-sm"
+                            className="group rounded-lg border border-[var(--brand-alabaster)] bg-[var(--background)] p-5 transition hover:shadow-sm"
                         >
-                            <h4 className="font-heading text-lg text-[#0B132B]">{mainSiteLink.label}</h4>
-                            <p className="mt-2 text-sm text-[#171A21]/80">Learn about services, offers, and how we work.</p>
-                            <span className="mt-3 inline-flex items-center gap-2 text-sm text-[#0B132B] group-hover:underline">
+                            <h4 className="font-heading text-lg text-[var(--brand-heading)]">
+                                {mainSiteLink.label}
+                            </h4>
+                            <p className="mt-2 text-sm text-[var(--foreground)]/80">
+                                Learn about services, offers, and how we work.
+                            </p>
+                            <span className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--brand-heading)] group-hover:underline">
                                 Visit →
                             </span>
                         </a>

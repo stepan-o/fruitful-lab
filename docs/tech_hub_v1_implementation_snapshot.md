@@ -1,22 +1,26 @@
-# Fruitful Lab Tech Hub – v1 Implementation Snapshot
+# Fruitful Lab Tech Hub – v1.0 Implementation Snapshot
 
 ---
 
 ## 0. High-level shape
 
 - **Frontend:** Next.js App Router (TypeScript), under `frontend/`.
-- **Backend:** FastAPI (`main:app`) with Postgres + SQLAlchemy, JWT auth,
-  run via `uv` / `uvicorn`, under `backend/`.
+- **Backend:** FastAPI (`main:app`) with Postgres + SQLAlchemy + JWT auth,
+  under `backend/`.
+- **Experiment engine:** GrowthBook SDK wired into frontend
+  for feature flags, A/B assignment, and tracking.
 
 **Primary purpose of this repo**
 
 - Internal **Tech & Tools hub** behind Fruitful Pin:
-    - Public hub at `/` (entry to tools, case studies, pointer to main site).
-    - Auth-gated dashboards under `/dashboard` (admin only).
+    - Public hub at `/` (entry to tools, case studies, main site).
+    - Auth-gated dashboards under `/dashboard` (admin-only).
+    - Public tools under `/tools/*` (e.g. Pinterest Potential calculator).
+
 - Shared design system + navigation across:
-    - Header.
-    - Hub landing.
-    - Footer.
+    - Header
+    - Hub landing
+    - Footer
 
 ---
 
@@ -28,28 +32,26 @@
 
 **Key files**
 
-- `frontend/app/layout.tsx` (standard Next app layout):
-    - Sets fonts (`--font-heading`, `--font-body`).
-    - Wraps pages with `<SiteHeader />` and `<SiteFooter />`.
+- `frontend/app/layout.tsx`
+    - Sets brand fonts (`--font-heading`, `--font-body`).
+    - Wraps every page in `<SiteHeader />` and `<SiteFooter />`.
+    - Imports `growthbookAdapter` from `@/lib/growthbook/flags`
+      so the SDK can lazily initialize on first render.
 
 - `frontend/app/globals.css`
     - Color tokens:
-        - `--brand-heading`, `--brand-raspberry`,
-          `--brand-alabaster`, `--brand-bronze`, `--brand-rust`,
-          plus `--background` / `--foreground`.
-    - Utility font classes:
-        - `.font-heading`, `.font-body`.
+        - `--brand-heading`, `--brand-raspberry`, `--brand-alabaster`,
+          `--brand-bronze`, `--brand-rust`, plus `--background` / `--foreground`.
+    - Utility font classes: `.font-heading`, `.font-body`.
 
-**Animations still in use**
+**Animations**
 
-- `@keyframes hubPulse` – halo behind primary Start CTA.
-- `@keyframes start-here-pulse` – “Start here” chip.
-
-**Legacy debug animations removed**
-
-- `labDriftX`, `labDriftY`, `labOpacityPulse` removed from CSS.
-- Comment notes that motion is now handled entirely in
-  `LabBackdropClient.tsx`.
+- Kept:
+    - `@keyframes hubPulse` – halo behind primary “Start” CTA.
+    - `@keyframes start-here-pulse` – animated “Start here” chip.
+- Removed:
+    - Old lab drift / opacity debug keyframes; comment notes that
+      all motion now lives in `LabBackdropClient.tsx`.
 
 **Implications for future devs**
 
@@ -84,6 +86,11 @@ export const PUBLIC_NAV_LINKS: PublicNavLink[] = [
 ];
 ```
 
+`PUBLIC_NAV_LINKS` includes:
+* `/tools` – “Tools & Calculators”
+* `/case-studies` – “Case Studies”
+* External https://fruitfulpin.com – “Main Agency Site”
+
 **Consumers**
 
 - `frontend/components/layout/SiteHeader.tsx`
@@ -93,11 +100,8 @@ export const PUBLIC_NAV_LINKS: PublicNavLink[] = [
 - `frontend/components/layout/SiteFooter.tsx`
   - Footer hub mini-nav.
 
-Changing any label / URL in `PUBLIC_NAV_LINKS` automatically updates:
-
-- Header nav.
-- Footer nav.
-- Hub entry cards.
+Changing PUBLIC_NAV_LINKS updates header, footer, and hub cards
+without touching individual components.
 
 ---
 
@@ -105,34 +109,27 @@ Changing any label / URL in `PUBLIC_NAV_LINKS` automatically updates:
 
 **File:** `frontend/components/layout/SiteHeader.tsx`
 
-- Async **server component** importing `getCurrentUser` from `@/lib/auth`.
+- Async **server component** using `getCurrentUser()` from `@/lib/auth`.
 - Computes `isLoggedIn = !!user`.
 
 **Structure**
 
-- **Left:** logo “Fruitful Lab” → `/`.
-- **Center:** `<NavLinks />` mapping `PUBLIC_NAV_LINKS`:
-  - Internal links → `<Link>`.
-  - External main site → `<a target="_blank" rel="noopener noreferrer">`.
+- Left: “Fruitful Lab” logo → `/`.
+- Center: mapped `PUBLIC_NAV_LINKS`:
+  - Internal routes via `<Link>`.
+  - External site opens in new tab.
+- Right (desktop):
+  - Always: **Book a Call** (Calendly).
+  - If logged out: **Login** → `/login?next=/dashboard`.
+  - If logged in: `<LogoutButton />`.
 
-- **Right CTAs (desktop):**
-  - Always:
-    - **Book a Call** → Calendly external button.
-  - Auth-aware:
-    - Logged out → `Login` (`/login?next=/dashboard`).
-    - Logged in → `<LogoutButton />`.
+**Mobile**
 
-**Mobile menu**
+- `<details>/<summary>` menu with:
+  - Same nav links + Book a Call.
+  - Login vs Logout based on `isLoggedIn`.
 
-- Implemented via `<details>` / `<summary>`.
-- Inside dropdown:
-  - Same mapping over `PUBLIC_NAV_LINKS`.
-  - Same **Book a Call** button.
-  - Login vs Logout based on `isLoggedIn`:
-    - Logged out → `Login` link.
-    - Logged in → `<LogoutButton />` in a small block.
-
-**Logout button**
+**LogoutButton**
 
 - File: `frontend/components/layout/LogoutButton.tsx`
 - `"use client"` component:
@@ -146,59 +143,53 @@ Changing any label / URL in `PUBLIC_NAV_LINKS` automatically updates:
 
 ---
 
-### 1.4 Hub landing page & backdrop
+### 1.4 Hub landing & animated backdrop
 
 **File:** `frontend/components/ui/PublicHubLanding.tsx`
 
-**Hero section**
+**Hero**
 
-- Full-height band: `min-h-[calc(100vh-72px)]` (header = 72px).
+- Height: `min-h-[calc(100vh-72px)]` (accounts for header).
 - Background: `<LabAnimatedBackdrop />`.
-- Foreground content:
-  - Pill: `Fruitful Lab · Tech & Tools`.
+- Foreground:
+  - Pill: “Fruitful Lab · Tech & Tools”.
   - H1: “The engine room behind Fruitful Pin.”
-  - Body: explains this as internal tools/dashboards hub.
+  - Body text explaining purpose of the hub.
   - CTAs:
-    - Primary: **Go to Fruitful Pin site** (external).
-    - Secondary: **Browse public tools** (`/tools`).
-  - “Start here” chip using `start-here-pulse` and `hubPulse`.
+    - Primary: “Go to Fruitful Pin site” (external).
+    - Secondary: “Browse public tools” → `/tools`.
+  - “Start here” chip using hub pulse animations.
 
 **Explainer strip**
 
-- Separate section below hero:
-  - “Internal dashboards”.
-  - “Smart tools & calculators”.
-  - “Deep-dive case studies”.
-
----
-
-### 1.4 Hub landing page & backdrop (cont.)
+- Section under hero with three pillars:
+  - Internal dashboards
+  - Smart tools & calculators
+  - Deep-dive case studies
 
 **Public entry cards**
 
-- Section further down the page.
-- Uses shared config via helper `getNavLink(href)`:
+- Uses `getNavLink(href)` from nav config to hydrate:
+  - Tools & Calculators card.
+  - Case Studies card.
+  - Main Agency Site card.
+- Card content:
+  - Title from `label`.
+  - Custom description.
+  - CTA text (“Go →”, “Browse →”, “Visit →”).
 
-  - Tools & Calculators:
-    - `toolsLink = getNavLink("/tools")`.
-  - Case Studies:
-    - `caseStudiesLink = getNavLink("/case-studies")`.
-  - Main Agency Site:
-    - `mainSiteLink = getNavLink("https://fruitfulpin.com")`.
+**Backdrop implementation**
 
-- Each card:
-  - Title from `.label`.
-  - Custom description text.
-  - CTA text (`Go →`, `Browse →`, `Visit →`).
-
-**Animated backdrop**
+- `LabAnimatedBackdrop.tsx` – server wrapper.
+- `LabBackdropClient.tsx` – `"use client"` component:
+  - Manages circle state via `useRef`.
+  - Uses `requestAnimationFrame` + clamped delta time.
+  - Uses `ResizeObserver` to react to container size.
+  - Spawns 4 colored circles (brand palette) clustered
+    in the lower-right area; circles bounce off edges.
 
 - Shell: `frontend/components/home/LabAnimatedBackdrop.tsx` (server).
 - Client logic: `frontend/components/home/LabBackdropClient.tsx`.
-
----
-
-### 1.4 Hub landing page & backdrop (cont. 2)
 
 **LabBackdropClient key points**
 
@@ -230,26 +221,31 @@ Changing any label / URL in `PUBLIC_NAV_LINKS` automatically updates:
 
 ---
 
-### 1.5 Footer alignment
+### 1.5 Footer & legacy UI
 
 **File:** `frontend/components/layout/SiteFooter.tsx`
 
-- **Top row**
-  - Tagline:
-    - “Effective Pinterest Marketing and Funnel Studio For Content Creators & Specialty Brands.”
-  - Mini-nav mapping `PUBLIC_NAV_LINKS`:
-    - Internal: `<Link>`.
-    - External main site: `<a target="_blank">`.
-
-- **Bottom row**
-  - Legal links:
-    - `Privacy`, `Imprint`, `Contact` (mailto).
+- Top row:
+  - Tagline describing Fruitful Lab / Fruitful Pin.
+  - Mini-nav mapping `PUBLIC_NAV_LINKS` (same behavior
+    as header).
+- Bottom row:
+  - Legal links (`Privacy`, `Imprint`, `Contact` mailto).
   - `© {year} Fruitful Lab`.
 
-**Implication**
+**Legacy components**
 
-- Footer is now structurally aligned with header + hub.
-- Edits to `PUBLIC_NAV_LINKS` flow automatically into footer.
+- Folder: `frontend/components/home/_legacy`
+  - Old marketing sections (`HeroSection`, `ServicesStrip`, etc.).
+  - Not imported anywhere; safe to delete once confirmed.
+
+**Frontend tests**
+
+- `SiteHeader.test.tsx`:
+  - Mocks logged-in vs logged-out.
+  - Asserts nav items and CTAs (desktop + mobile).
+- `publicHubLanding.test.tsx`:
+  - Asserts hero heading, primary CTAs, and explainer strip.
 
 ---
 
@@ -258,42 +254,226 @@ Changing any label / URL in `PUBLIC_NAV_LINKS` automatically updates:
 **Folder:** `frontend/components/home/_legacy`
 
 - Contains old marketing-site sections:
-  - `HeroSection.tsx`
-  - `ServicesStrip.tsx`
-  - `ProcessStrip.tsx`
-  - `CaseStudyTeaser.tsx`
-  - `ClientStrip.tsx`
-  - `FinalCTASection.tsx`
+    - `HeroSection.tsx`
+    - `ServicesStrip.tsx`
+    - `ProcessStrip.tsx`
+    - `CaseStudyTeaser.tsx`
+    - `ClientStrip.tsx`
+    - `FinalCTASection.tsx`
 - No imports in active code; marked as legacy.
 
 Implication: safe to delete later once you’re sure you won’t reuse them.
-
----
 
 ### 1.7 Frontend tests
 
 **Key files**
 
 - `frontend/components/layout/__tests__/SiteHeader.test.tsx`
-  - Mocks auth states:
-    - Asserts nav items from `PUBLIC_NAV_LINKS`.
-    - Verifies desktop + mobile CTAs for:
-      - Logged out (Login visible).
-      - Logged in (LogoutButton visible).
-  - Handles duplicate elements via `getAllByRole`.
+    - Mocks auth states:
+        - Asserts nav items from `PUBLIC_NAV_LINKS`.
+        - Verifies desktop + mobile CTAs for:
+            - Logged out (Login visible).
+            - Logged in (LogoutButton visible).
+    - Handles duplicate elements via `getAllByRole`.
 
 - `__tests__/publicHubLanding.test.tsx`
-  - Asserts:
-    - Main heading renders.
-    - Hero CTAs:
-      - Fruitful Pin external link.
-      - `/tools` button.
-    - **No** login CTA in hero.
-    - Explainer strip headings appear below hero.
+    - Asserts:
+        - Main heading renders.
+        - Hero CTAs:
+            - Fruitful Pin external link.
+            - `/tools` button.
+        - **No** login CTA in hero.
+        - Explainer strip headings appear below hero.
+
+
+
+## 2. Experiments & GrowthBook infrastructure
 
 ---
 
-## 2. Backend snapshot
+### 2.1 GrowthBook adapter & debug
+
+**Env vars (frontend)**
+
+- `GROWTHBOOK_CLIENT_KEY`
+- `GROWTHBOOK_API_HOST` (e.g. `https://cdn.growthbook.io`)
+- `GROWTHBOOK_APP_ORIGIN` (UI URL, used for docs/debug links).
+
+**Adapter**
+
+- File: `frontend/lib/growthbook/flags.ts`
+  - Creates a singleton `growthbookAdapter`.
+  - Registers a **tracking callback** used for exposure events.
+  - Maintains a `growthbookDebugState` object:
+    - `envConfigured`, `initialized`, `lastError`, `nodeEnv`.
+
+**Debug endpoint**
+
+- File: `frontend/app/api/debug/growthbook/route.ts`
+  - Returns JSON:
+    - `envConfigured`, `initialized`, `lastError`, `nodeEnv`.
+    - `ping` result from calling
+      `${GROWTHBOOK_API_HOST}/api/features/${CLIENT_KEY}`.
+  - Used by local QA and `/EXPERIMENTS.md` checklist.
+
+---
+
+### 2.2 Canonical experiment config & server runner
+
+**Experiment config**
+
+- File: `frontend/lib/experiments/config.ts`
+  - `ExperimentKey` union, currently includes:
+    - `"pinterest_potential_variant"`.
+  - `ExperimentDefinition`:
+    - `key` (local key)
+    - `gbKey` (GrowthBook key – matches feature/experiment)
+    - `variants` (e.g. `["v1", "v2"]`)
+    - Optional `weights` for local fallback.
+    - Default variant constant.
+
+- Exports:
+  - `PINTEREST_POTENTIAL_EXPERIMENT`
+  - `ALL_EXPERIMENT_KEYS`
+  - `getExperimentDefinitionByKey(key)` helper.
+
+**Server-side evaluation helper**
+
+- File: `frontend/lib/growthbook/experiments.ts`
+  - `runServerExperiment({ key, attributes })`:
+    - Ensures GB adapter is initialized.
+    - Checks an `enable_*` flag if defined.
+    - Tries to evaluate via GrowthBook (source `"growthbook"`).
+    - On error / no value:
+      - Chooses variant via local weighted random
+        (source `"fallback"`).
+  - Returns `{ variant, source }`.
+
+---
+
+### 2.3 Identity & middleware-based assignment
+
+**Identity helper**
+
+- File: `frontend/lib/identify.ts`
+  - Builds GrowthBook `Attributes` object:
+    - `id`: user id (if logged in) or anonymous cookie id.
+    - Basic context: URL, path, maybe device hints.
+  - Used by `runServerExperiment` and middleware.
+
+**Middleware**
+
+- Files:
+  - `frontend/lib/growthbook/middleware.ts`
+    - `applyExperimentCookies(req, res)` helper.
+  - `frontend/middleware.ts`
+    - Next.js middleware entry.
+
+**Behavior**
+
+- For targeted paths (currently `/tools/pinterest-potential`):
+  - If `pp_variant` cookie missing/invalid:
+    - Calls `runServerExperiment` with experiment definition
+      and middleware-friendly attributes.
+    - Sets `pp_variant` cookie to chosen variant
+      with reasonable expiry.
+  - If cookie already present:
+    - Keeps same value and refreshes expiry.
+- Auth redirects for `/dashboard` remain unchanged;
+  experiments do **not** interfere with login flow.
+
+---
+  
+### 2.4 Pinterest Potential calculator behavior
+
+**Route**
+
+- File: `frontend/app/tools/pinterest-potential/page.tsx`
+
+**Variant resolution**
+
+- Precedence:
+  1. `?variant=` query override (for manual QA).
+  2. `pp_variant` cookie set by middleware.
+  3. Default variant from experiment definition.
+
+- The page **does not** call GrowthBook directly:
+  - It simply trusts the cookie / override.
+  - Keeps rendering logic simple and deterministic.
+
+**Rendering**
+
+- Uses variant key (`"v1"` or `"v2"`) to decide:
+  - Layout variations.
+  - Copy / CTA variants.
+- Unit tests assert:
+  - Correct precedence of query vs cookie vs default.
+  - Correct conditional rendering based on variant key.
+
+---
+
+### 2.5 Tracking pipeline: exposure + conversion
+
+**Central endpoint**
+
+- File: `frontend/app/api/experiment-events/route.ts`
+  - Receives `POST` with JSON:
+    - `type`: `"exposure"` or `"conversion"`.
+    - `experimentKey`, `variant`.
+    - Optional `eventName`, `userId`, `attributes`.
+  - In dev: primarily logs / validates payload.
+  - In future: hook to analytics warehouse or queue.
+
+**Tracking helpers**
+
+- In GrowthBook adapter:
+  - `setTrackingCallback` wired to call
+    `logExperimentEvent("exposure", ...)`
+    whenever GrowthBook evaluates an experiment.
+- `trackConversion(eventName, props?)` helper:
+  - Wraps a `POST` to `/api/experiment-events`
+    with `type: "conversion"`.
+  - Intended to be called from:
+    - Server routes handling real submissions.
+    - Client components (e.g. calculator CTA) via `fetch`.
+
+GrowthBook experiment is configured to use these events
+for exposure + conversion analysis.
+
+---
+
+### 2.6 Experiments documentation & QA
+
+**Docs**
+
+- `EXPERIMENTS.md` (repo root or `/docs`):
+  - Explains:
+    - How to add a new experiment:
+      - Create in GrowthBook.
+      - Add `ExperimentDefinition`.
+      - Wire middleware matcher + cookie name.
+      - Optionally add UI variant handling.
+    - How assignment works (middleware + cookies +
+      `runServerExperiment`).
+    - How to debug using `/api/debug/growthbook`.
+
+**Manual QA checklist**
+
+- Separate section (or file) with a step-by-step flow:
+  - Verify `debug/growthbook` shows `envConfigured` + `initialized`.
+  - First-time user gets a single `pp_variant` that sticks.
+  - `?variant=` overrides render only (not cookie).
+  - Toggling feature off forces default variant.
+  - `POST /api/experiment-events` fires for exposure
+    and simulated conversions.
+  - GrowthBook dashboard shows live traffic.
+
+This gives future-us a repeatable “open checklist → verify”
+process before turning on any new experiment.
+
+---
+
+## 3. Backend snapshot (unchanged core)
 
 **Stack**
 
@@ -301,11 +481,11 @@ Implication: safe to delete later once you’re sure you won’t reuse them.
   - `fastapi`, `uvicorn[standard]`, `sqlalchemy`, `psycopg[binary]`.
   - `python-jose[cryptography]` for JWT.
   - `passlib` for hashing.
-  - `python-multipart` for uploads.
+  - `python-multipart` for uploads / forms.
 
 **Makefile**
 
-- File: `backend/Makefile`
+- `backend/Makefile`:
 
 ```make
 .PHONY: test run
@@ -348,30 +528,37 @@ run: test
 ## 3. Gap check & recommendations
 
 - ✅ Shared nav config drives header, hub cards, and footer.
-- ✅ Backdrop physics is isolated and documented.
-- ✅ Header CTAs are auth-aware with tests.
-- ✅ Legacy CSS animations removed.
-- ✅ Old marketing sections quarantined in `_legacy`.
+- ✅ Backdrop physics isolated in `LabBackdropClient.tsx`.
+- ✅ Header / auth CTAs tested for both auth states.
+- ✅ GrowthBook SDK wired with:
+  - Env + debug endpoint.
+  - Canonical experiment config.
+  - Server-side evaluation helper.
+  - Middleware-based assignment + sticky cookies.
+  - Central tracking endpoint + helpers.
+- ✅ Pinterest Potential calculator is “experiment-ready”
+  without coupling UI to GrowthBook details.
 
-**Remaining nice-to-haves**
+**For future architects**
 
-- When a `/resources` or “Knowledge Hub” page is added:
-  - Add to `PUBLIC_NAV_LINKS`.
-  - Hub cards / header / footer will pick it up.
-
----
-
-## 4. What this gives future architects
-
-- Clear “plug points”:
-  - Public page → new route + entry in `PUBLIC_NAV_LINKS`.
-  - Admin dashboard → new `/dashboard/*` route with `getCurrentUser()` guard.
+- To add a new tool or experiment:
+  - Add route under `/tools/*`.
+  - Define `ExperimentDefinition`.
+  - Extend middleware matcher + cookie naming.
+  - Use the same patterns as `pinterest_potential_variant`.
 
 - Single sources of truth:
   - Navigation → `frontend/lib/nav.ts`.
-  - Layout frame → `SiteHeader`, `SiteFooter`, `PublicHubLanding`.
+  - Layout frame → `SiteHeader`, `SiteFooter`,
+    `PublicHubLanding`.
+  - Experiments → `lib/experiments/config.ts` +
+    `lib/growthbook/*`.
   - Motion → `LabBackdropClient.tsx` + two keyframes in `globals.css`.
 
 - Auth flow:
   - Backed by FastAPI JWT endpoints.
   - Surfaced via `getCurrentUser()` and `LogoutButton` only.
+
+This snapshot should be enough context to safely evolve both
+new tools and new experiments without reverse-engineering
+the whole stack every time.

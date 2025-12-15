@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display_SC, Raleway } from "next/font/google";
+import { Playfair_Display_SC, Poppins } from "next/font/google";
 import "./globals.css";
 import { growthbookAdapter } from "@/lib/growthbook/flags"; // just importing is enough
 import SiteHeader from "@/components/layout/SiteHeader";
@@ -13,7 +13,7 @@ const headingFont = Playfair_Display_SC({
   display: "swap",
 });
 
-const bodyFont = Raleway({
+const bodyFont = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-body",

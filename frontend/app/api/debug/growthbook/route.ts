@@ -10,9 +10,9 @@ type GrowthbookPingResult = {
 };
 
 export async function GET() {
-  // Build a safe ping result – never include client keys or sensitive values
   const clientKey = process.env.GROWTHBOOK_CLIENT_KEY;
-  const apiHost = process.env.GROWTHBOOK_API_HOST ?? "https://cdn.growthbook.io";
+  const apiHost =
+    process.env.GROWTHBOOK_API_HOST ?? "https://cdn.growthbook.io";
 
   let ping: GrowthbookPingResult;
 

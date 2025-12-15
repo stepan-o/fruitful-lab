@@ -1,19 +1,36 @@
+// Minimal Web API polyfills so `next/server` & GrowthBook can load in Jest
+const g = global as any;
+
+if (typeof g.Request === "undefined") {
+  g.Request = class {} as any;
+}
+if (typeof g.Response === "undefined") {
+  g.Response = class {} as any;
+}
+if (typeof g.Headers === "undefined") {
+  g.Headers = class {} as any;
+}
+if (typeof g.fetch === "undefined") {
+  g.fetch = () =>
+    Promise.reject(new Error("global fetch not mocked in this test"));
+}
+
 import "@testing-library/jest-dom";
 
 // Capture the tracking callback passed into the adapter
 const setTrackingCallback = jest.fn();
 const initialize = jest.fn().mockResolvedValue({});
-jest.mock("@/lib/growthbook/flags", () => {
-  // Defer actual module import after we set up mocks below
-  const real = jest.requireActual("@/lib/growthbook/flags");
-  return {
-    ...real,
-    growthbookAdapter: {
-      setTrackingCallback: (...args: any[]) => setTrackingCallback(...args),
-      initialize: (...args: any[]) => initialize(...args),
-    },
-  };
-});
+// Make `after` a no-op so tests can run outside request scope
+jest.mock("next/server", () => ({
+  after: (fn: any) => fn(),
+}));
+// Mock the underlying SDK so our adapter is used during module evaluation
+jest.mock("@flags-sdk/growthbook", () => ({
+  growthbookAdapter: {
+    setTrackingCallback: (...args: any[]) => setTrackingCallback(...args),
+    initialize: (...args: any[]) => initialize(...args),
+  },
+}));
 
 // Mock the experiment events helper
 const logExperimentEvent = jest.fn().mockResolvedValue(undefined);
@@ -23,18 +40,23 @@ jest.mock("@/lib/experiments/track", () => ({
 
 describe("growthbook flags tracking callback", () => {
   const originalEnv = process.env.NODE_ENV;
-  const originalConsole = { log: console.log, error: console.error };
+  const originalConsole = { log: console.log, error: console.error, warn: console.warn } as any;
 
   beforeEach(() => {
     jest.resetModules();
     (setTrackingCallback as jest.Mock).mockClear();
     (logExperimentEvent as jest.Mock).mockClear();
+    // Avoid noisy logs and adapter errors in tests
+    process.env.GROWTHBOOK_CLIENT_KEY = "test-key";
+    console.warn = jest.fn();
+    console.error = jest.fn();
   });
 
   afterAll(() => {
     process.env.NODE_ENV = originalEnv;
     console.log = originalConsole.log;
     console.error = originalConsole.error;
+    console.warn = originalConsole.warn;
   });
 
   it("invokes logExperimentEvent on exposure and logs in development", async () => {

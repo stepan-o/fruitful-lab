@@ -87,8 +87,7 @@ html[data-theme="dark"] {
 ------------------------------ */
 :root[data-theme="light"],
 html[data-theme="light"] {
-    /* No need to re-declare — light is the default.
-       This block exists so the toggle can force light even if OS is dark. */
+    /* light is the default; this block exists so toggle can force light */
 }
 
 /* ------------------------------
@@ -135,17 +134,96 @@ body {
 .font-heading { font-family: var(--font-heading), Arial, Helvetica, sans-serif; }
 .font-body { font-family: var(--font-body), Arial, Helvetica, sans-serif; }
 
+/* Backdrop circles: CSS controls pop per theme */
 .lab-backdrop-circle {
     filter: blur(var(--backdrop-blur))
     saturate(var(--backdrop-saturate))
     contrast(var(--backdrop-contrast));
     will-change: transform;
-
     box-shadow: 0 0 var(--backdrop-glow) currentColor;
 }
 
+/* ✅ IMPORTANT FIX:
+   mix-blend-mode must follow the *effective theme*, not only OS preference */
+:root[data-theme="dark"] .lab-backdrop-circle,
+html[data-theme="dark"] .lab-backdrop-circle {
+    mix-blend-mode: screen;
+}
 @media (prefers-color-scheme: dark) {
-    .lab-backdrop-circle { mix-blend-mode: screen; }
+    :root:not([data-theme]) .lab-backdrop-circle {
+        mix-blend-mode: screen;
+    }
+}
+
+/* ------------------------------
+   ThemeToggle segmented control styling
+   (works with your current ThemeToggle markup)
+------------------------------ */
+.theme-toggle {
+    position: relative;
+    padding: 2px;
+    gap: 0; /* override the Tailwind gap-2 you still have */
+    border-radius: 9999px;
+}
+
+/* Hide the dot (optional). Keep it if you want, but segmented looks cleaner */
+.theme-toggle-dot {
+    display: none;
+}
+
+/* Two labels behave like two segments */
+.theme-toggle-label-light,
+.theme-toggle-label-dark {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    min-width: 46px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 9999px;
+    user-select: none;
+}
+
+/* Sliding “thumb” */
+.theme-toggle::before {
+    content: "";
+    position: absolute;
+    inset: 2px auto 2px 2px;
+    width: calc(50% - 2px);
+    border-radius: 9999px;
+    background: var(--card-hover);
+    transition: transform 160ms ease;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+}
+
+/* Default (light active) */
+.theme-toggle-label-light { opacity: 1; }
+.theme-toggle-label-dark { opacity: 0.72; }
+
+/* Dark active (manual) */
+:root[data-theme="dark"] .theme-toggle::before,
+html[data-theme="dark"] .theme-toggle::before {
+    transform: translateX(100%);
+}
+:root[data-theme="dark"] .theme-toggle-label-light,
+html[data-theme="dark"] .theme-toggle-label-light {
+    opacity: 0.72;
+}
+:root[data-theme="dark"] .theme-toggle-label-dark,
+html[data-theme="dark"] .theme-toggle-label-dark {
+    opacity: 1;
+}
+
+/* Dark active (OS fallback when no explicit theme) */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .theme-toggle::before {
+        transform: translateX(100%);
+    }
+    :root:not([data-theme]) .theme-toggle-label-light { opacity: 0.72; }
+    :root:not([data-theme]) .theme-toggle-label-dark { opacity: 1; }
 }
 
 @keyframes hubPulse {

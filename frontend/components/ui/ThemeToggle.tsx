@@ -1,60 +1,79 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Theme = "light" | "dark";
 
-function getPreferredTheme(): Theme {
-    if (typeof window === "undefined") return "light";
-    return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+function systemPrefersDark(): boolean {
+    return window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
 }
 
-function getCurrentTheme(): Theme {
+function getEffectiveTheme(): Theme {
+    // If user explicitly set a theme, use it; otherwise use OS preference.
     const t = document.documentElement.dataset.theme;
-    return t === "dark" ? "dark" : "light";
+    if (t === "dark") return "dark";
+    if (t === "light") return "light";
+    return systemPrefersDark() ? "dark" : "light";
 }
 
-function applyTheme(theme: Theme) {
+function setExplicitTheme(theme: Theme) {
     document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem("theme", theme);
+}
+
+function clearExplicitTheme() {
+    // Follow system (no data-theme attribute)
+    delete document.documentElement.dataset.theme;
+    window.localStorage.removeItem("theme");
 }
 
 export default function ThemeToggle({ className = "" }: { className?: string }) {
-    // Initialize dataset theme (no React state needed)
-    useEffect(() => {
-        const saved = (window.localStorage.getItem("theme") as Theme | null) ?? null;
+    const [mounted, setMounted] = useState(false);
+    const [effectiveTheme, setEffectiveThemeState] = useState<Theme>("light");
 
+    const mq = useMemo(() => {
+        if (typeof window === "undefined") return null;
+        return window.matchMedia?.("(prefers-color-scheme: dark)") ?? null;
+    }, []);
+
+    useEffect(() => {
+        // On mount: apply saved preference if any, else follow system (no data-theme)
+        const saved = window.localStorage.getItem("theme");
         if (saved === "light" || saved === "dark") {
-            applyTheme(saved);
-            return;
+            document.documentElement.dataset.theme = saved;
+        } else {
+            clearExplicitTheme();
         }
 
-        // No saved preference => follow system
-        applyTheme(getPreferredTheme());
+        // Set initial effective theme for UI
+        setEffectiveThemeState(getEffectiveTheme());
+        setMounted(true);
 
-        // Optional: if user hasn't chosen a theme, keep following system changes
-        const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
         if (!mq) return;
 
         const onChange = () => {
             const stillNoSaved = !window.localStorage.getItem("theme");
-            if (stillNoSaved) applyTheme(getPreferredTheme());
+            if (stillNoSaved) {
+                clearExplicitTheme(); // let CSS follow OS
+            }
+            setEffectiveThemeState(getEffectiveTheme());
         };
 
-        // Safari compatibility
-        if (typeof mq.addEventListener === "function") {
-            mq.addEventListener("change", onChange);
-            return () => mq.removeEventListener("change", onChange);
-        } else {
-            mq.addListener(onChange);
-            return () => mq.removeListener(onChange);
-        }
-    }, []);
+        // ✅ Use the modern API only (no deprecated addListener/removeListener)
+        mq.addEventListener("change", onChange);
+        return () => mq.removeEventListener("change", onChange);
+    }, [mq]);
 
     const toggle = () => {
-        const next: Theme = getCurrentTheme() === "dark" ? "light" : "dark";
-        applyTheme(next);
-        window.localStorage.setItem("theme", next);
+        const next: Theme = getEffectiveTheme() === "dark" ? "light" : "dark";
+        setExplicitTheme(next);
+        setEffectiveThemeState(next);
     };
+
+    // Avoid hydration mismatch flicker
+    if (!mounted) return null;
+
+    const isDark = effectiveTheme === "dark";
 
     return (
         <button
@@ -62,17 +81,38 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
             onClick={toggle}
             className={[
                 "theme-toggle",
-                "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold",
+                "relative inline-flex items-center rounded-full border p-0.5 text-xs font-semibold",
                 "border-[var(--border)] bg-[var(--card)] text-[var(--foreground)]",
                 "hover:bg-[var(--card-hover)] transition-colors",
                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
                 className,
             ].join(" ")}
-            aria-label="Toggle theme"
+            aria-label={`Theme: ${isDark ? "Dark" : "Light"} (click to toggle)`}
+            aria-pressed={isDark}
         >
-            <span className="theme-toggle-dot inline-block h-2 w-2 rounded-full" />
-            <span className="theme-toggle-label-light">Light</span>
-            <span className="theme-toggle-label-dark">Dark</span>
+            {/* Thumb */}
+            <span
+                className="pointer-events-none absolute top-0.5 bottom-0.5 left-0.5 w-[calc(50%-2px)] rounded-full bg-[var(--card-hover)] shadow-sm transition-transform duration-150 ease-out"
+                style={{ transform: isDark ? "translateX(100%)" : "translateX(0%)" }}
+            />
+
+            {/* Segments */}
+            <span
+                className={[
+                    "relative z-10 inline-flex items-center justify-center rounded-full px-3 py-1",
+                    isDark ? "opacity-70" : "opacity-100",
+                ].join(" ")}
+            >
+        Light
+      </span>
+            <span
+                className={[
+                    "relative z-10 inline-flex items-center justify-center rounded-full px-3 py-1",
+                    isDark ? "opacity-100" : "opacity-70",
+                ].join(" ")}
+            >
+        Dark
+      </span>
         </button>
     );
 }

@@ -1,16 +1,39 @@
 @import "tailwindcss";
 
 :root {
-    --background: #ffffff; /* page base */
-    --foreground: #171A21; /* Ink Black */
-    --brand-heading: #0B132B; /* Prussian Blue */
-    --brand-raspberry: #950952; /* Dark Raspberry */
-    --brand-alabaster: #DFDFDF; /* Alabaster Grey */
-    --brand-bronze: #D58936; /* Bronze */
-    --brand-rust: #A44200; /* Rust */
+    --background: #ffffff;
+    --foreground: #171A21;
 
-    /* font variables set by next/font in layout.tsx */
-    --font-heading: ui-sans-serif; /* fallback */
+    /* Brand */
+    --brand-heading: #0B132B;
+    --brand-raspberry: #950952;
+    --brand-alabaster: #DFDFDF;
+    --brand-bronze: #D58936;
+    --brand-rust: #A44200;
+
+    /* Backdrop tuning (LIGHT) */
+    --backdrop-opacity-soft: 0.08;
+    --backdrop-opacity-strong: 0.12;
+    --backdrop-blur: 2px;
+    --backdrop-saturate: 1;
+    --backdrop-contrast: 1;
+    --backdrop-glow: 0px; /* keep subtle on light */
+
+    /* Backdrop palette (LIGHT) */
+    --backdrop-color-1: var(--brand-alabaster);
+    --backdrop-color-2: var(--brand-raspberry);
+    --backdrop-color-3: var(--brand-bronze);
+    --backdrop-color-4: var(--brand-heading);
+
+    --border: var(--brand-alabaster);
+    --foreground-muted: rgba(23, 26, 33, 0.72);
+
+    /* Surfaces */
+    --surface: rgba(11, 19, 43, 0.03);   /* subtle tint */
+    --card: rgba(255, 255, 255, 0.72);   /* frosted-ish on light */
+    --card-hover: rgba(255, 255, 255, 0.9);
+
+    --font-heading: ui-sans-serif;
     --font-body: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
     "Apple Color Emoji", "Segoe UI Emoji";
 }
@@ -24,6 +47,39 @@
     :root {
         --background: #0a0a0a;
         --foreground: #ededed;
+
+        /*
+          IMPORTANT: Remap brand tokens for “on-dark” usage.
+          This fixes: header divider too white, H1 illegible, Login vanishing.
+        */
+        --brand-heading: #E7ECFF; /* becomes your main “light ink” */
+        --brand-alabaster: rgba(255, 255, 255, 0.14); /* borders/dividers on dark */
+
+        /* Keep these brand hues, but slightly lifted so they don’t die on black */
+        --brand-raspberry: #B0126D;
+        --brand-bronze: #F0A14A;
+        --brand-rust: #D15A1A;
+
+        /* Backdrop tuning (DARK) — brighter + glow */
+        --backdrop-opacity-soft: 0.26;
+        --backdrop-opacity-strong: 0.42;
+        --backdrop-blur: 1px;
+        --backdrop-saturate: 1.55;
+        --backdrop-contrast: 1.15;
+        --backdrop-glow: 140px;
+
+        /* Backdrop palette (DARK) — “poppier” solids */
+        --backdrop-color-1: rgba(255, 255, 255, 1);
+        --backdrop-color-2: rgba(176, 18, 109, 1);
+        --backdrop-color-3: rgba(240, 161, 74, 1);
+        --backdrop-color-4: rgba(231, 236, 255, 1);
+
+        --border: rgba(255, 255, 255, 0.12);
+        --foreground-muted: rgba(237, 237, 237, 0.72);
+
+        --surface: rgba(255, 255, 255, 0.06);
+        --card: rgba(255, 255, 255, 0.04);
+        --card-hover: rgba(255, 255, 255, 0.06);
     }
 }
 
@@ -32,7 +88,6 @@ body {
     color: var(--foreground);
 }
 
-/* Global font utility classes */
 .font-heading {
     font-family: var(--font-heading), Arial, Helvetica, sans-serif;
 }
@@ -40,37 +95,32 @@ body {
     font-family: var(--font-body), Arial, Helvetica, sans-serif;
 }
 
-/* Subtle breathing animation for primary CTA emphasis */
-@keyframes hubPulse {
-    0% {
-        opacity: 0.35;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.18;
-        transform: scale(1.04);
-    }
-    100% {
-        opacity: 0.35;
-        transform: scale(1);
+/* Backdrop circles: CSS controls pop per theme */
+.lab-backdrop-circle {
+    filter: blur(var(--backdrop-blur))
+    saturate(var(--backdrop-saturate))
+    contrast(var(--backdrop-contrast));
+    will-change: transform;
+
+    /* glow uses currentColor set by the element */
+    box-shadow: 0 0 var(--backdrop-glow) currentColor;
+}
+
+@media (prefers-color-scheme: dark) {
+    .lab-backdrop-circle {
+        mix-blend-mode: screen;
     }
 }
 
-/* Removed legacy lab backdrop debug animations (labDriftX, labDriftY, labOpacityPulse)
-   as the physics-based backdrop is now fully handled in code (LabBackdropClient.tsx). */
+/* animations unchanged... */
+@keyframes hubPulse {
+    0% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.18; transform: scale(1.04); }
+    100% { opacity: 0.35; transform: scale(1); }
+}
 
-/* Strong 0→100% opacity pulse for the "Start here" chip */
 @keyframes start-here-pulse {
-    0% {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    40% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0.9);
-    }
+    0% { opacity: 0; transform: scale(0.9); }
+    40% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.9); }
 }

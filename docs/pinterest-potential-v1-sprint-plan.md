@@ -24,8 +24,6 @@ We’ll treat the Outgrow build as the *source of truth* for: question text, ans
     - `computeScore(answers): number`
 
 ---
-md
-Copy code
 ## Sprint 1 — Data model + compute engine (unit-tested)
 **Goal:** compute result perfectly before building UX.
 
@@ -61,8 +59,6 @@ Copy code
     - `sessionStorage` with version key (so old drafts don’t break after updates)
 
 ---
-md
-Copy code
 ## Sprint 3 — Build the “editorial” input components (AAA accessible)
 **Goal:** your “polished boutique” feel comes from controls + spacing + motion + accessibility.
 
@@ -90,8 +86,6 @@ Reusable components (token-driven; no hardcoded hex):
 - Lead capture fields (name/email) with validation + privacy microcopy
 
 ---
-md
-Copy code
 **Important decision**
 - If Outgrow collects email *before* showing results, replicate that (1:1).
 - If Outgrow shows results and then asks for email to “send a copy,” replicate that.

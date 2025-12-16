@@ -21,9 +21,8 @@ import {
     LEAD,
     validateEmail,
     validateAnswers,
-    computeAvgHouseholdIncomeFromAnswers,
-    computeAvgCartSizeFromAnswers,
 } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+import { computeResults, type ResultsBundle } from "@/lib/tools/pinterestPotential/compute";
 import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
 // Step components registry (Sprint 4 compliance)
 import StepQ1 from "./steps/StepQ1";
@@ -42,11 +41,7 @@ import {
 } from "@/lib/tools/pinterestPotential/leadMode";
 import { PRIVACY_MICROCOPY } from "@/lib/tools/pinterestPotential/copy";
 
-type ResultsBundle = {
-    monthlyAudience: number; // Result 1
-    avgHouseholdIncome: number; // Result 2
-    avgCartSize: number; // Result 3
-};
+// ResultsBundle is imported from the canonical compute engine (Sprint 1 source of truth)
 
 type State = {
     stepIndex: number; // 0..9
@@ -137,58 +132,7 @@ function validateStepLocal(
     return errors;
 }
 
-function round(n: number, decimals: number): number {
-    if (decimals === 0) return Math.round(n);
-    const f = Math.pow(10, decimals);
-    return Math.round(n * f) / f;
-}
-
-function sum(arr: number[]): number {
-    return arr.reduce((acc, n) => acc + n, 0);
-}
-
-// ---- Sprint 5 compute (wizard-local, spec-aligned) ----
-function findQuestion(id: string): Question | undefined {
-    return QUESTIONS.find((q) => (q as any).id === id);
-}
-
-function sumCheckboxOptionValues(questionId: "Q2" | "Q3", selectedIds: number[]): number {
-    const q = findQuestion(questionId);
-    if (!q || q.type !== "checkbox") return 0;
-    const valueById = new Map(q.options.map((o) => [o.id, o.value]));
-    const values = selectedIds.map((id) => valueById.get(id)).filter((v): v is number => typeof v === "number");
-    return sum(values);
-}
-
-function computeMonthlyAudienceFromAnswers(a: Required<Answers>): number {
-    // Formula (spec): sum(Q3 values) * sum(Q2 values) * Q1 * Q4 * Q5 * Q6 * seasonalFactor * competitionFactor
-    // Note: Answers store ids for Q2/Q3, so we translate ids -> option.value here.
-    const q2 = sumCheckboxOptionValues("Q2", a.Q2);
-    const q3 = sumCheckboxOptionValues("Q3", a.Q3);
-
-    const seasonalFactor = 1.175 - 0.175 * a.Q7; // Q7 in [1..5]
-    const competitionFactor = 1.15 - 0.15 * a.Q8; // Q8 in [1..5]
-
-    const result =
-        q3 *
-        q2 *
-        a.Q1 *
-        a.Q4 *
-        a.Q5 *
-        a.Q6 *
-        seasonalFactor *
-        competitionFactor;
-
-    return round(result, 0);
-}
-
-function computeResultsFromAnswers(a: Required<Answers>): ResultsBundle {
-    const monthlyAudience = computeMonthlyAudienceFromAnswers(a);
-    const avgHouseholdIncome = computeAvgHouseholdIncomeFromAnswers(a);
-    const avgCartSize = computeAvgCartSizeFromAnswers(a);
-
-    return { monthlyAudience, avgHouseholdIncome, avgCartSize };
-}
+// Compute is centralized in lib/tools/pinterestPotential/compute.ts
 
 // ---- Recap helpers ----
 function formatSliderAnswer(qid: "Q7" | "Q8", v: number): string {
@@ -378,7 +322,7 @@ export default function PinterestPotentialWizard({
                     return;
                 }
 
-                const results = computeResultsFromAnswers(state.answers as Required<Answers>);
+                const results = computeResults(state.answers as Required<Answers>);
                 dispatch({ type: "SET_RESULTS", results });
                 onPhaseChange?.("results");
             } else {
@@ -388,7 +332,7 @@ export default function PinterestPotentialWizard({
                     return;
                 }
 
-                const results = computeResultsFromAnswers(state.answers as Required<Answers>);
+                const results = computeResults(state.answers as Required<Answers>);
                 dispatch({ type: "SET_RESULTS", results });
                 onPhaseChange?.("results");
             }

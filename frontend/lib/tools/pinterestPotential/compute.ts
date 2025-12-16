@@ -1,13 +1,21 @@
 // frontend/lib/tools/pinterestPotential/compute.ts
-// Sprint 1 — Deterministic compute engine for Pinterest Potential
+// Sprint 1 — Deterministic compute engine for Pinterest Potential (source of truth)
 // Sprint 5 — Results bundle (basic Outgrow-style outputs)
 //
-// NOTE: This module assumes spec-compliant Answers where checkbox questions (Q2/Q3/Q9)
-// store selected OPTION IDS, and callers translate IDs → values as needed per spec.
-// The Wizard UI computes and renders results via its own spec-aligned path; this
-// file is reference/utility and intentionally does not support legacy drafts.
+// IMPORTANT: This module is the canonical compute engine.
+// - Spec requires checkbox questions (Q2/Q3/Q9) to store OPTION IDS in Answers.
+// - This module translates IDs → option values per spec when computing.
+// - Callers (Wizard/UI) should NOT re-implement compute logic locally.
 
-import { Answers, Lead, validateAnswers } from "./pinterestPotentialSpec";
+import {
+    Answers,
+    Lead,
+    validateAnswers,
+    Q2 as SPEC_Q2,
+    Q3 as SPEC_Q3,
+    computeAvgHouseholdIncomeFromAnswers,
+    computeAvgCartSizeFromAnswers,
+} from "./pinterestPotentialSpec";
 
 export function sum(arr: number[]): number {
     return arr.reduce((acc, n) => acc + n, 0);
@@ -33,9 +41,22 @@ export function round(n: number, decimals: number): number {
  *   0
  * )
  */
+function sumCheckboxOptionValuesById(
+    selectedIds: number[] | undefined,
+    opts: { id: number; value: number }[]
+): number {
+    if (!Array.isArray(selectedIds) || selectedIds.length === 0) return 0;
+    const valueById = new Map(opts.map((o) => [o.id, o.value] as const));
+    const values = selectedIds
+        .map((id) => valueById.get(id))
+        .filter((v): v is number => typeof v === "number");
+    return sum(values);
+}
+
 export function computeScore(answers: Required<Answers>): number {
-    const q2 = sum(answers.Q2);
-    const q3 = sum(answers.Q3);
+    // Translate checkbox IDs → option values per spec
+    const q2 = sumCheckboxOptionValuesById(answers.Q2, SPEC_Q2.options);
+    const q3 = sumCheckboxOptionValuesById(answers.Q3, SPEC_Q3.options);
 
     const seasonalFactor = 1.175 - 0.175 * answers.Q7; // Q7 in [1..5]
     const competitionFactor = 1.15 - 0.15 * answers.Q8; // Q8 in [1..5]
@@ -66,81 +87,7 @@ type ComputeOk = { ok: true; score: number; results: ResultsBundle };
 type ComputeErr = { ok: false; errors: Record<string, string> };
 export type ComputeResult = ComputeOk | ComputeErr;
 
-/**
- * Result 2 (Income): Outgrow mapping (ported into a table).
- * In Outgrow Q2 looked single-select; in our UI it’s multi-select.
- * We support multi-select by averaging the selected regions’ incomes.
- */
-const REGION_INCOME: Record<number, number> = {
-    141000000: 30000, // Global
-    27000000: 75000,  // USA
-    28000000: 70000,  // (Outgrow had this; not currently in our spec)
-    59000000: 60000,  // (Outgrow had this; not currently in our spec)
-    31000000: 45000,  // Europe
-    19000000: 15000,  // Latin America
-    3000000: 20000,   // (Outgrow had this; not currently in our spec)
-    // Fallthrough handled below
-};
-
-function computeAvgHouseholdIncome(q2Regions: number[] | undefined): number {
-    if (!Array.isArray(q2Regions) || q2Regions.length === 0) return 30000;
-    const incomes = q2Regions.map((v) => REGION_INCOME[v] ?? 30000);
-    const avg = sum(incomes) / Math.max(1, incomes.length);
-    return round(avg, 0);
-}
-
-/**
- * Result 3 (Avg cart size): streamlined port of Outgrow logic.
- *
- * Outgrow formula (simplified):
- * baseAvg = sum(per-category cart value for selected) / count(selected)
- * regionMultiplier = depends on Q2 region selection
- * final = round(baseAvg * regionMultiplier * 1.20, 0)
- *
- * Note: Our Q3 option "value" is a *weight* and has duplicates (0.08 appears twice),
- * so we can’t perfectly infer which of the two 0.08 categories was selected.
- * Ballpark approach:
- * - Map weight -> typical cart value
- * - For ambiguous duplicates (0.08), use an averaged cart value.
- */
-const Q3_WEIGHT_TO_CART_VALUE: Record<number, number> = {
-    0.20: 500, // Nursery & Home
-    0.18: 600, // Travel & Mobility
-    0.17: 160, // Clothing & Accessories
-    0.15: 200, // Toys...
-    0.10: 140, // Feeding & Care
-    0.07: 120, // Bath & Changing
-    0.08: 370, // Ambiguous: average of (240, 500) to stay in ballpark
-};
-
-const REGION_CART_MULTIPLIER: Record<number, number> = {
-    27000000: 1.15, // USA
-    28000000: 1.10, // Outgrow legacy
-    59000000: 1.05, // Outgrow legacy
-    31000000: 0.95, // Europe
-    19000000: 0.85, // Latin America
-    3000000: 0.90,  // Outgrow legacy
-    // default 1.00
-};
-
-function computeRegionCartMultiplier(q2Regions: number[] | undefined): number {
-    if (!Array.isArray(q2Regions) || q2Regions.length === 0) return 1.0;
-    // Multi-select: choose the "strongest" (highest) multiplier to stay optimistic / ballpark.
-    const mults = q2Regions.map((v) => REGION_CART_MULTIPLIER[v] ?? 1.0);
-    return Math.max(1.0, ...mults);
-}
-
-function computeAvgCartSize(q3Weights: number[] | undefined, q2Regions: number[] | undefined): number {
-    if (!Array.isArray(q3Weights) || q3Weights.length === 0) return 0;
-
-    const cartVals = q3Weights.map((w) => Q3_WEIGHT_TO_CART_VALUE[w] ?? 200);
-    const baseAvg = sum(cartVals) / Math.max(1, cartVals.length);
-
-    const regionMult = computeRegionCartMultiplier(q2Regions);
-    const final = baseAvg * regionMult * 1.2;
-
-    return round(final, 0);
-}
+// Results 2/3 now sourced from canonical spec helpers (IDs-aware)
 
 /**
  * Sprint 5: Compute all basic results.
@@ -149,8 +96,8 @@ function computeAvgCartSize(q3Weights: number[] | undefined, q2Regions: number[]
  */
 export function computeResults(answers: Required<Answers>): ResultsBundle {
     const monthlyAudience = computeScore(answers);
-    const avgHouseholdIncome = computeAvgHouseholdIncome(answers.Q2);
-    const avgCartSize = computeAvgCartSize(answers.Q3, answers.Q2);
+    const avgHouseholdIncome = computeAvgHouseholdIncomeFromAnswers(answers);
+    const avgCartSize = computeAvgCartSizeFromAnswers(answers);
 
     return {
         monthlyAudience,

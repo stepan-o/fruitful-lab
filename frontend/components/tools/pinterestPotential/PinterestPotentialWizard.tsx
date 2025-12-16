@@ -97,7 +97,7 @@ function reducer(state: State, action: Action): State {
     }
 }
 
-const TOTAL_STEPS = 10; // Q1..Q9 + LEAD
+// Note: TOTAL_STEPS is derived dynamically from `steps.length` within the component.
 
 function validateStepLocal(
     stepIdx: number,
@@ -388,6 +388,7 @@ export default function PinterestPotentialWizard({
     }
 
     // ---- Sprint 4: step registry rendering ----
+    // StepQ* are the only render path; shared form components are consumed by Step* wrappers.
     const STEP_COMPONENTS: Record<string, React.ComponentType<any>> = {
         Q1: StepQ1,
         Q2: StepQ2,

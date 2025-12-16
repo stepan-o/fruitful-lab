@@ -15,6 +15,9 @@ import {
     type Lead,
     type Question,
     QUESTIONS,
+    Q2 as SPEC_Q2,
+    Q3 as SPEC_Q3,
+    Q9 as SPEC_Q9,
     LEAD,
     validateEmail,
     validateAnswers,
@@ -324,6 +327,30 @@ export default function PinterestPotentialWizard({
         }
 
         if (isLastStep) {
+            // Dev-only invariant: ensure checkbox answers are canonical (IDs only)
+            if (process.env.NODE_ENV !== "production") {
+                const allowedQ2 = new Set(SPEC_Q2.options.map((o) => o.id));
+                const allowedQ3 = new Set(SPEC_Q3.options.map((o) => o.id));
+                const allowedQ9 = new Set(SPEC_Q9.options.map((o) => o.id));
+                const isIdsArray = (arr: any, allowed: Set<number>) =>
+                    Array.isArray(arr) && arr.every((x) => Number.isInteger(x) && allowed.has(x));
+
+                const a = state.answers as Answers;
+                const badQ2 = a.Q2 !== undefined && !isIdsArray(a.Q2, allowedQ2);
+                const badQ3 = a.Q3 !== undefined && !isIdsArray(a.Q3, allowedQ3);
+                const badQ9 = a.Q9 !== undefined && !isIdsArray(a.Q9, allowedQ9);
+                if (badQ2 || badQ3 || badQ9) {
+                    // Make violations loud during development
+                    // eslint-disable-next-line no-console
+                    console.error("PinterestPotential: Non-canonical draft detected (checkboxes must be IDs)", {
+                        Q2: a.Q2,
+                        Q3: a.Q3,
+                        Q9: a.Q9,
+                    });
+                    throw new Error("PinterestPotential invariant: checkbox answers must be option IDs in development");
+                }
+            }
+
             if (effectiveLeadMode === "gate_before_results") {
                 const lead: Lead | undefined =
                     state.leadDraft?.name && state.leadDraft?.email

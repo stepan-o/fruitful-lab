@@ -1,6 +1,11 @@
 // frontend/lib/tools/pinterestPotential/compute.ts
 // Sprint 1 — Deterministic compute engine for Pinterest Potential
 // Sprint 5 — Results bundle (basic Outgrow-style outputs)
+//
+// NOTE: This module assumes spec-compliant Answers where checkbox questions (Q2/Q3/Q9)
+// store selected OPTION IDS, and callers translate IDs → values as needed per spec.
+// The Wizard UI computes and renders results via its own spec-aligned path; this
+// file is reference/utility and intentionally does not support legacy drafts.
 
 import { Answers, Lead, validateAnswers } from "./pinterestPotentialSpec";
 

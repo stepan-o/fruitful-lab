@@ -26,8 +26,8 @@ export default function StepCheckbox({
 
             <div className="mt-2">
                 <CheckboxCardGrid
-                    values={values}                 // ids (preferred) OR values (legacy) — grid handles both
-                    options={question.options}      // options may include id; grid will use id if present
+                    values={values}                 // ids only (canonical)
+                    options={question.options}      // options include id; grid uses id as key
                     onChange={onChange}
                     describedBy={describedBy}
                     // columns={question.columns}   // enable only if your spec/types include it

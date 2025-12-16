@@ -25,11 +25,17 @@ import {
     computeAvgCartSizeFromAnswers,
 } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
 import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
-import RadioPillGroup from "@/components/ui/forms/RadioPillGroup";
-import CheckboxCardGrid from "@/components/ui/forms/CheckboxCardGrid";
-import SliderWithTicks from "@/components/ui/forms/SliderWithTicks";
-import FieldError from "@/components/ui/forms/FieldError";
-import HelperText from "@/components/ui/forms/HelperText";
+// Step components registry (Sprint 4 compliance)
+import StepQ1 from "./steps/StepQ1";
+import StepQ2 from "./steps/StepQ2";
+import StepQ3 from "./steps/StepQ3";
+import StepQ4 from "./steps/StepQ4";
+import StepQ5 from "./steps/StepQ5";
+import StepQ6 from "./steps/StepQ6";
+import StepQ7 from "./steps/StepQ7";
+import StepQ8 from "./steps/StepQ8";
+import StepQ9 from "./steps/StepQ9";
+import StepLead from "./steps/StepLead";
 import {
     type LeadMode,
     normalizeLeadMode,
@@ -381,132 +387,90 @@ export default function PinterestPotentialWizard({
         dispatch({ type: "SET_STEP", index: state.stepIndex + 1 });
     }
 
+    // ---- Sprint 4: step registry rendering ----
+    const STEP_COMPONENTS: Record<string, React.ComponentType<any>> = {
+        Q1: StepQ1,
+        Q2: StepQ2,
+        Q3: StepQ3,
+        Q4: StepQ4,
+        Q5: StepQ5,
+        Q6: StepQ6,
+        Q7: StepQ7,
+        Q8: StepQ8,
+        Q9: StepQ9,
+        LEAD: StepLead,
+    };
+
     function renderQuestion() {
         if (!current) return null;
 
-        if (current.type === "lead") {
-            return (
-                <div className="space-y-3">
-                    <label className="block text-sm font-medium text-[var(--foreground)]">
-                        {current.label}
-                    </label>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                        <div>
-                            <input
-                                type="text"
-                                placeholder="Your name"
-                                value={state.leadDraft.name ?? ""}
-                                aria-describedby={state.errors["LEAD.name"] ? "LEAD.name-error" : undefined}
-                                onChange={(e) =>
-                                    dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })
-                                }
-                                className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                            />
-                            <FieldError id="LEAD.name-error" message={state.errors["LEAD.name"]} />
-                        </div>
-                        <div>
-                            <input
-                                type="email"
-                                placeholder="you@example.com"
-                                value={state.leadDraft.email ?? ""}
-                                aria-describedby={state.errors["LEAD.email"] ? "LEAD.email-error" : undefined}
-                                onChange={(e) =>
-                                    dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })
-                                }
-                                className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                            />
-                            <FieldError id="LEAD.email-error" message={state.errors["LEAD.email"]} />
-                        </div>
-                    </div>
-                </div>
-            );
+        const StepComponent = STEP_COMPONENTS[current.id];
+        if (!StepComponent) {
+            throw new Error(`No Step component registered for ${current.id}`);
         }
 
-        if (current.type === "radio") {
-            const helperId = `${current.id}-helper`;
-            const errorId = `${current.id}-error`;
-            const describedBy =
-                [current.helperText ? helperId : undefined, state.errors[current.id] ? errorId : undefined]
-                    .filter(Boolean)
-                    .join(" ") || undefined;
+        const error = state.errors[current.id];
 
+        if (current.type === "radio") {
             return (
-                <div>
-                    {current.helperText ? <HelperText id={helperId}>{current.helperText}</HelperText> : null}
-                    <div className="mt-2">
-                        <RadioPillGroup
-                            name={current.id}
-                            value={(state.answers as any)[current.id]}
-                            options={current.options}
-                            onChange={(val) =>
-                                dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: val })
-                            }
-                            errorId={state.errors[current.id] ? errorId : undefined}
-                            describedBy={describedBy}
-                        />
-                        <FieldError id={errorId} message={state.errors[current.id]} />
-                    </div>
-                </div>
+                <StepComponent
+                    value={(state.answers as any)[current.id] as number | undefined}
+                    onChange={(v: number) =>
+                        dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: v })
+                    }
+                    error={error}
+                />
             );
         }
 
         if (current.type === "checkbox") {
-            const values = ((state.answers as any)[current.id] as number[]) || [];
-            const helperId = `${current.id}-helper`;
-            const errorId = `${current.id}-error`;
-            const describedBy =
-                [current.helperText ? helperId : undefined, state.errors[current.id] ? errorId : undefined]
-                    .filter(Boolean)
-                    .join(" ") || undefined;
-
             return (
-                <div>
-                    {current.helperText ? <HelperText id={helperId}>{current.helperText}</HelperText> : null}
-                    <div className="mt-2">
-                        <CheckboxCardGrid
-                            values={values}
-                            options={current.options}
-                            onChange={(vals) =>
-                                dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: vals })
-                            }
-                            describedBy={describedBy}
-                        />
-                        <FieldError id={errorId} message={state.errors[current.id]} />
-                    </div>
-                </div>
+                <StepComponent
+                    values={((state.answers as any)[current.id] as number[]) ?? []}
+                    onChange={(vals: number[]) =>
+                        dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: vals })
+                    }
+                    error={error}
+                />
             );
         }
 
         if (current.type === "slider") {
             const v = (state.answers as any)[current.id] ?? current.default ?? current.min;
-            const errorId = `${current.id}-error`;
-
             return (
-                <div>
-                    <div className="mt-2">
-                        <SliderWithTicks
-                            value={v}
-                            min={current.min}
-                            max={current.max}
-                            step={current.step}
-                            onChange={(nv) =>
-                                dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: nv })
-                            }
-                            leftLabel={
-                                current.id === "Q7" ? "Not seasonal" : current.id === "Q8" ? "Low competition" : undefined
-                            }
-                            rightLabel={
-                                current.id === "Q7" ? "Very seasonal" : current.id === "Q8" ? "High competition" : undefined
-                            }
-                            errorId={state.errors[current.id] ? errorId : undefined}
-                        />
-                        <FieldError id={errorId} message={state.errors[current.id]} />
-                    </div>
-                </div>
+                <StepComponent
+                    value={v}
+                    onChange={(nv: number) =>
+                        dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: nv })
+                    }
+                    error={error}
+                />
             );
         }
 
-        return null;
+        if (current.type === "lead") {
+            const leadErrors = {
+                name: state.errors["LEAD.name"],
+                email: state.errors["LEAD.email"],
+            } as { name?: string; email?: string };
+            return (
+                <StepComponent
+                    label={current.label}
+                    leadDraft={state.leadDraft}
+                    onChange={(patch: Partial<Lead>) => {
+                        if (patch.name !== undefined) {
+                            dispatch({ type: "UPDATE_LEAD", field: "name", value: patch.name });
+                        }
+                        if (patch.email !== undefined) {
+                            dispatch({ type: "UPDATE_LEAD", field: "email", value: patch.email });
+                        }
+                    }}
+                    errors={leadErrors}
+                />
+            );
+        }
+
+        throw new Error(`Unsupported question type: ${current.type}`);
     }
 
     if (state.finalScore !== undefined) {

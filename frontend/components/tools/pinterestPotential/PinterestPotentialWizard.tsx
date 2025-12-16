@@ -526,11 +526,49 @@ export default function PinterestPotentialWizard({
             return { label: q.label, value: shown };
         });
 
+        // Show optional email capture at the top of results (optional_after_results, no email yet)
+        const showOptionalEmail =
+            effectiveLeadMode === "optional_after_results" && !state.leadDraft?.email;
+        const OptionalEmailCapture = showOptionalEmail ? (
+            <div className="mt-6 border-t border-[var(--border)] pt-4">
+                <h3 className="font-heading text-lg text-[var(--foreground)]">Want a copy of your results?</h3>
+                <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+                    Leave your email and we’ll send this score.
+                </p>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Your name (optional)"
+                            value={state.leadDraft.name ?? ""}
+                            onChange={(e) =>
+                                dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })
+                            }
+                            className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="email"
+                            placeholder="you@example.com"
+                            value={state.leadDraft.email ?? ""}
+                            onChange={(e) =>
+                                dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })
+                            }
+                            className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                        />
+                    </div>
+                </div>
+            </div>
+        ) : null;
+
         return (
             <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
                 <div className="mb-4 text-sm text-[var(--foreground-muted)]">
                     Pinterest Potential — Results (temporary)
                 </div>
+
+                {OptionalEmailCapture}
 
                 {r ? (
                     <div className="grid gap-3 sm:grid-cols-3">
@@ -572,41 +610,6 @@ export default function PinterestPotentialWizard({
                 <div className="mt-6 text-sm text-[var(--foreground-muted)]">
                     You can refresh the page; your draft is saved in this session.
                 </div>
-
-                {effectiveLeadMode === "optional_after_results" && !state.leadDraft?.email && (
-                    <div className="mt-6 border-t border-[var(--border)] pt-4">
-                        <h3 className="font-heading text-lg text-[var(--foreground)]">
-                            Want a copy of your results?
-                        </h3>
-                        <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-                            Leave your email and we’ll send this score.
-                        </p>
-                        <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="Your name (optional)"
-                                    value={state.leadDraft.name ?? ""}
-                                    onChange={(e) =>
-                                        dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })
-                                    }
-                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    type="email"
-                                    placeholder="you@example.com"
-                                    value={state.leadDraft.email ?? ""}
-                                    onChange={(e) =>
-                                        dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })
-                                    }
-                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                )}
             </div>
         );
     }

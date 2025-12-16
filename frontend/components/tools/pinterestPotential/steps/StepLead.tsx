@@ -31,6 +31,9 @@ export default function StepLead({ label, leadDraft, onChange, errors }: LeadSte
           <FieldError id="LEAD.email-error" message={errors?.email} />
         </div>
       </div>
+      <p className="text-xs text-[var(--foreground-muted)]">
+        We’ll only use your email to send your results. No spam. Unsubscribe anytime.
+      </p>
     </div>
   );
 }

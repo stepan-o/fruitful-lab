@@ -337,9 +337,10 @@ export const PRODUCT_CART_BASE = {
 
 export function computeAvgCartSizeFromAnswers(answers: Answers): number {
     const selected = Array.isArray(answers.Q3) ? answers.Q3 : [];
+    // Map selected category IDs to cart base values; ensure a plain number[] for math
     const bases = selected
         .map((id) => PRODUCT_CART_BASE[id as keyof typeof PRODUCT_CART_BASE])
-        .filter((v): v is number => typeof v === "number" && v > 0);
+        .filter((v) => typeof v === "number" && v > 0) as number[];
 
     const avgBase = bases.length > 0 ? bases.reduce((a, b) => a + b, 0) / bases.length : 0;
 

@@ -216,9 +216,11 @@ function getCheckboxLabels(q: Extract<Question, { type: "checkbox" }>, selectedI
 export default function PinterestPotentialWizard({
                                                      leadMode = "gate_before_results",
                                                      initialLead,
+                                                     onPhaseChange,
                                                  }: {
     leadMode?: LeadMode;
     initialLead?: Lead;
+    onPhaseChange?: (phase: "wizard" | "results") => void;
 }) {
     // Query-param seatbelt: allow runtime override even if upstream wiring is off.
     const searchParams = useSearchParams();
@@ -245,6 +247,12 @@ export default function PinterestPotentialWizard({
                 : initialLead ?? {},
         errors: {},
     } as State);
+
+    // Inform parent that we are in the wizard phase on mount
+    useEffect(() => {
+        onPhaseChange?.("wizard");
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // Keep storage draft in sync when relevant state changes
     useEffect(() => {
@@ -372,6 +380,7 @@ export default function PinterestPotentialWizard({
 
                 const results = computeResultsFromAnswers(state.answers as Required<Answers>);
                 dispatch({ type: "SET_RESULTS", results });
+                onPhaseChange?.("results");
             } else {
                 const nonLeadErrors = validateAllNonLead(state.answers, state.leadDraft);
                 if (Object.keys(nonLeadErrors).length > 0) {
@@ -381,6 +390,7 @@ export default function PinterestPotentialWizard({
 
                 const results = computeResultsFromAnswers(state.answers as Required<Answers>);
                 dispatch({ type: "SET_RESULTS", results });
+                onPhaseChange?.("results");
             }
             return;
         }
@@ -472,7 +482,9 @@ export default function PinterestPotentialWizard({
             );
         }
 
-        throw new Error(`Unsupported question type: ${current.type}`);
+        // TypeScript note: by the time we reach here, `current` was exhaustively
+        // narrowed. Avoid referencing `current.type` to satisfy TS's `never`.
+        throw new Error("Unsupported question type");
     }
 
     if (state.finalScore !== undefined) {
@@ -537,9 +549,7 @@ export default function PinterestPotentialWizard({
 
         return (
             <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-                <div className="mb-4 text-sm text-[var(--foreground-muted)]">
-                    Pinterest Potential — Results (temporary)
-                </div>
+                <div className="mb-4 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results</div>
 
                 {OptionalEmailCapture}
 

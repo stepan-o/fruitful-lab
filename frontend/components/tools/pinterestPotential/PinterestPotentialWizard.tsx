@@ -2,17 +2,25 @@
 
 // frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
 // Sprint 2 — stepper skeleton with reducer state, per-step validation, and sessionStorage draft persistence
+// Sprint 5 — swap-in results UI (3 results) + recap, while keeping lead-mode behavior exactly as-is
+//
+// NOTE (bugfix): Spec changed Q2/Q3/Q9 to store OPTION IDS, not option values.
+// The previous compute.ts version sums raw arrays (treating them as values), which makes Result 1 wrong.
+// This wizard now computes Result 1/2/3 using the spec as source-of-truth.
 
 import { useEffect, useMemo, useReducer } from "react";
 import { useSearchParams } from "next/navigation";
 import {
     type Answers,
     type Lead,
+    type Question,
     QUESTIONS,
     LEAD,
     validateEmail,
+    validateAnswers,
+    computeAvgHouseholdIncomeFromAnswers,
+    computeAvgCartSizeFromAnswers,
 } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
-import { computeResult, computeScore } from "@/lib/tools/pinterestPotential/compute";
 import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
 import RadioPillGroup from "@/components/ui/forms/RadioPillGroup";
 import CheckboxCardGrid from "@/components/ui/forms/CheckboxCardGrid";
@@ -24,12 +32,19 @@ import {
     normalizeLeadMode,
 } from "@/lib/tools/pinterestPotential/leadMode";
 
+type ResultsBundle = {
+    monthlyAudience: number; // Result 1
+    avgHouseholdIncome: number; // Result 2
+    avgCartSize: number; // Result 3
+};
+
 type State = {
     stepIndex: number; // 0..9
     answers: Answers;
     leadDraft: Partial<Lead>;
     errors: Record<string, string>;
-    finalScore?: number;
+    finalScore?: number; // kept for the existing "results gate" check
+    finalResults?: ResultsBundle; // Sprint 5
 };
 
 type Action =
@@ -38,6 +53,7 @@ type Action =
     | { type: "UPDATE_LEAD"; field: keyof Lead; value: string }
     | { type: "SET_ERRORS"; errors: Record<string, string> }
     | { type: "SET_SCORE"; score: number }
+    | { type: "SET_RESULTS"; results: ResultsBundle }
     | { type: "RESET_ERRORS" };
 
 function reducer(state: State, action: Action): State {
@@ -45,7 +61,10 @@ function reducer(state: State, action: Action): State {
         case "SET_STEP":
             return { ...state, stepIndex: action.index };
         case "UPDATE_ANSWER": {
-            const answers = { ...state.answers, [action.questionId]: action.value } as Answers;
+            const answers = {
+                ...state.answers,
+                [action.questionId]: action.value,
+            } as Answers;
             return { ...state, answers };
         }
         case "UPDATE_LEAD": {
@@ -58,6 +77,12 @@ function reducer(state: State, action: Action): State {
             return { ...state, errors: {} };
         case "SET_SCORE":
             return { ...state, finalScore: action.score };
+        case "SET_RESULTS":
+            return {
+                ...state,
+                finalResults: action.results,
+                finalScore: action.results.monthlyAudience, // preserve old gate behavior
+            };
         default:
             return state;
     }
@@ -95,10 +120,87 @@ function validateStepLocal(
         const name = leadDraft.name ?? "";
         const email = leadDraft.email ?? "";
         if (!name.trim()) errors["LEAD.name"] = "Name is required.";
-        if (!email || !validateEmail(email)) errors["LEAD.email"] = "A valid email is required.";
+        if (!email || !validateEmail(email))
+            errors["LEAD.email"] = "A valid email is required.";
     }
 
     return errors;
+}
+
+function round(n: number, decimals: number): number {
+    if (decimals === 0) return Math.round(n);
+    const f = Math.pow(10, decimals);
+    return Math.round(n * f) / f;
+}
+
+function sum(arr: number[]): number {
+    return arr.reduce((acc, n) => acc + n, 0);
+}
+
+// ---- Sprint 5 compute (wizard-local, spec-aligned) ----
+function findQuestion(id: string): Question | undefined {
+    return QUESTIONS.find((q) => (q as any).id === id);
+}
+
+function sumCheckboxOptionValues(questionId: "Q2" | "Q3", selectedIds: number[]): number {
+    const q = findQuestion(questionId);
+    if (!q || q.type !== "checkbox") return 0;
+    const valueById = new Map(q.options.map((o) => [o.id, o.value]));
+    const values = selectedIds.map((id) => valueById.get(id)).filter((v): v is number => typeof v === "number");
+    return sum(values);
+}
+
+function computeMonthlyAudienceFromAnswers(a: Required<Answers>): number {
+    // Formula (spec): sum(Q3 values) * sum(Q2 values) * Q1 * Q4 * Q5 * Q6 * seasonalFactor * competitionFactor
+    // Note: Answers store ids for Q2/Q3, so we translate ids -> option.value here.
+    const q2 = sumCheckboxOptionValues("Q2", a.Q2);
+    const q3 = sumCheckboxOptionValues("Q3", a.Q3);
+
+    const seasonalFactor = 1.175 - 0.175 * a.Q7; // Q7 in [1..5]
+    const competitionFactor = 1.15 - 0.15 * a.Q8; // Q8 in [1..5]
+
+    const result =
+        q3 *
+        q2 *
+        a.Q1 *
+        a.Q4 *
+        a.Q5 *
+        a.Q6 *
+        seasonalFactor *
+        competitionFactor;
+
+    return round(result, 0);
+}
+
+function computeResultsFromAnswers(a: Required<Answers>): ResultsBundle {
+    const monthlyAudience = computeMonthlyAudienceFromAnswers(a);
+    const avgHouseholdIncome = computeAvgHouseholdIncomeFromAnswers(a);
+    const avgCartSize = computeAvgCartSizeFromAnswers(a);
+
+    return { monthlyAudience, avgHouseholdIncome, avgCartSize };
+}
+
+// ---- Recap helpers ----
+function formatSliderAnswer(qid: "Q7" | "Q8", v: number): string {
+    if (qid === "Q7") {
+        const label = v === 1 ? "Not seasonal" : v === 5 ? "Very seasonal" : "Moderately seasonal";
+        return `${v}/5 (${label})`;
+    }
+    const label = v === 1 ? "Low competition" : v === 5 ? "High competition" : "Moderate competition";
+    return `${v}/5 (${label})`;
+}
+
+function getRadioLabel(q: Extract<Question, { type: "radio" }>, value: number | undefined): string {
+    if (value === undefined || value === null) return "—";
+    const opt = q.options.find((o) => o.value === value);
+    return opt?.label ?? String(value);
+}
+
+function getCheckboxLabels(q: Extract<Question, { type: "checkbox" }>, selectedIds: number[] | undefined): string {
+    const ids = Array.isArray(selectedIds) ? selectedIds : [];
+    if (ids.length === 0) return "—";
+    const labelById = new Map(q.options.map((o) => [o.id, o.label]));
+    return ids.map((id) => labelById.get(id) ?? String(id)).join(", ");
 }
 
 export default function PinterestPotentialWizard({
@@ -110,7 +212,6 @@ export default function PinterestPotentialWizard({
 }) {
     // Query-param seatbelt: allow runtime override even if upstream wiring is off.
     const searchParams = useSearchParams();
-    // Be defensive in non-App Router test environments where useSearchParams may be null/undefined
     const qpLeadMode =
         (searchParams as any)?.get?.("leadMode") ??
         (searchParams as any)?.get?.("leadmode") ??
@@ -165,7 +266,6 @@ export default function PinterestPotentialWizard({
         [state.stepIndex, TOTAL_STEPS]
     );
 
-    // Helper: validate all non-lead questions (used for optional_after_results + prefilled_or_skip)
     function validateAllNonLead(
         answers: Answers,
         leadDraft: Partial<Lead>
@@ -173,7 +273,6 @@ export default function PinterestPotentialWizard({
         const nonLeadErrors: Record<string, string> = {};
         for (const q of QUESTIONS) {
             if (q.type === "lead") continue;
-            // Use the index in the master QUESTIONS array to leverage validateStepLocal logic
             const idx = QUESTIONS.indexOf(q);
             const e = validateStepLocal(idx, answers, leadDraft);
             Object.assign(nonLeadErrors, e);
@@ -191,9 +290,6 @@ export default function PinterestPotentialWizard({
     function handleNext() {
         dispatch({ type: "RESET_ERRORS" });
 
-        // Validate only the currently rendered step.
-        // NOTE: validateStepLocal uses QUESTIONS[] indices; our steps[] excludes lead sometimes.
-        // So we must validate by question id/type, not by stepIndex directly.
         const stepQuestion = current;
         if (!stepQuestion) return;
 
@@ -228,28 +324,29 @@ export default function PinterestPotentialWizard({
         }
 
         if (isLastStep) {
-            // Final compute is MODE-driven (not includeLead-driven).
             if (effectiveLeadMode === "gate_before_results") {
                 const lead: Lead | undefined =
                     state.leadDraft?.name && state.leadDraft?.email
                         ? { name: state.leadDraft.name!, email: state.leadDraft.email! }
                         : undefined;
 
-                const result = computeResult(state.answers, lead);
-                if (result.ok) {
-                    dispatch({ type: "SET_SCORE", score: result.score });
-                } else {
-                    dispatch({ type: "SET_ERRORS", errors: result.errors });
+                const validation = validateAnswers(state.answers, lead);
+                if (!validation.ok) {
+                    dispatch({ type: "SET_ERRORS", errors: validation.errors });
+                    return;
                 }
+
+                const results = computeResultsFromAnswers(state.answers as Required<Answers>);
+                dispatch({ type: "SET_RESULTS", results });
             } else {
-                // optional_after_results OR prefilled_or_skip: validate non-lead inputs globally and compute directly
                 const nonLeadErrors = validateAllNonLead(state.answers, state.leadDraft);
                 if (Object.keys(nonLeadErrors).length > 0) {
                     dispatch({ type: "SET_ERRORS", errors: nonLeadErrors });
-                } else {
-                    const score = computeScore(state.answers as Required<Answers>);
-                    dispatch({ type: "SET_SCORE", score });
+                    return;
                 }
+
+                const results = computeResultsFromAnswers(state.answers as Required<Answers>);
+                dispatch({ type: "SET_RESULTS", results });
             }
             return;
         }
@@ -257,7 +354,6 @@ export default function PinterestPotentialWizard({
         dispatch({ type: "SET_STEP", index: state.stepIndex + 1 });
     }
 
-    // Render helpers
     function renderQuestion() {
         if (!current) return null;
 
@@ -273,15 +369,9 @@ export default function PinterestPotentialWizard({
                                 type="text"
                                 placeholder="Your name"
                                 value={state.leadDraft.name ?? ""}
-                                aria-describedby={
-                                    state.errors["LEAD.name"] ? "LEAD.name-error" : undefined
-                                }
+                                aria-describedby={state.errors["LEAD.name"] ? "LEAD.name-error" : undefined}
                                 onChange={(e) =>
-                                    dispatch({
-                                        type: "UPDATE_LEAD",
-                                        field: "name",
-                                        value: e.target.value,
-                                    })
+                                    dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })
                                 }
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
@@ -292,15 +382,9 @@ export default function PinterestPotentialWizard({
                                 type="email"
                                 placeholder="you@example.com"
                                 value={state.leadDraft.email ?? ""}
-                                aria-describedby={
-                                    state.errors["LEAD.email"] ? "LEAD.email-error" : undefined
-                                }
+                                aria-describedby={state.errors["LEAD.email"] ? "LEAD.email-error" : undefined}
                                 onChange={(e) =>
-                                    dispatch({
-                                        type: "UPDATE_LEAD",
-                                        field: "email",
-                                        value: e.target.value,
-                                    })
+                                    dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })
                                 }
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
@@ -321,9 +405,7 @@ export default function PinterestPotentialWizard({
 
             return (
                 <div>
-                    {current.helperText ? (
-                        <HelperText id={helperId}>{current.helperText}</HelperText>
-                    ) : null}
+                    {current.helperText ? <HelperText id={helperId}>{current.helperText}</HelperText> : null}
                     <div className="mt-2">
                         <RadioPillGroup
                             name={current.id}
@@ -352,9 +434,7 @@ export default function PinterestPotentialWizard({
 
             return (
                 <div>
-                    {current.helperText ? (
-                        <HelperText id={helperId}>{current.helperText}</HelperText>
-                    ) : null}
+                    {current.helperText ? <HelperText id={helperId}>{current.helperText}</HelperText> : null}
                     <div className="mt-2">
                         <CheckboxCardGrid
                             values={values}
@@ -386,18 +466,10 @@ export default function PinterestPotentialWizard({
                                 dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: nv })
                             }
                             leftLabel={
-                                current.id === "Q7"
-                                    ? "Not seasonal"
-                                    : current.id === "Q8"
-                                        ? "Low competition"
-                                        : undefined
+                                current.id === "Q7" ? "Not seasonal" : current.id === "Q8" ? "Low competition" : undefined
                             }
                             rightLabel={
-                                current.id === "Q7"
-                                    ? "Very seasonal"
-                                    : current.id === "Q8"
-                                        ? "High competition"
-                                        : undefined
+                                current.id === "Q7" ? "Very seasonal" : current.id === "Q8" ? "High competition" : undefined
                             }
                             errorId={state.errors[current.id] ? errorId : undefined}
                         />
@@ -411,13 +483,65 @@ export default function PinterestPotentialWizard({
     }
 
     if (state.finalScore !== undefined) {
-        // Temporary results placeholder per acceptance criteria
+        const r = state.finalResults;
+
+        const recapItems = QUESTIONS.filter((q) => q.type !== "lead").map((q) => {
+            const id = q.id as keyof Answers;
+            if (q.type === "radio") {
+                return { label: q.label, value: getRadioLabel(q, state.answers[id] as number | undefined) };
+            }
+            if (q.type === "checkbox") {
+                return { label: q.label, value: getCheckboxLabels(q, state.answers[id] as number[] | undefined) };
+            }
+            // slider
+            const v = state.answers[id] as number | undefined;
+            const shown = typeof v === "number" ? formatSliderAnswer(q.id as "Q7" | "Q8", v) : "—";
+            return { label: q.label, value: shown };
+        });
+
         return (
             <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
                 <div className="mb-4 text-sm text-[var(--foreground-muted)]">
                     Pinterest Potential — Results (temporary)
                 </div>
-                <div className="font-heading text-3xl">Score: {state.finalScore}</div>
+
+                {r ? (
+                    <div className="grid gap-3 sm:grid-cols-3">
+                        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                            <div className="text-xs text-[var(--foreground-muted)]">Monthly Pinterest Audience</div>
+                            <div className="mt-1 font-heading text-2xl">{r.monthlyAudience.toLocaleString()}</div>
+                        </div>
+
+                        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                            <div className="text-xs text-[var(--foreground-muted)]">Avg Household Income</div>
+                            <div className="mt-1 font-heading text-2xl">${r.avgHouseholdIncome.toLocaleString()}</div>
+                        </div>
+
+                        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                            <div className="text-xs text-[var(--foreground-muted)]">Avg Cart Size</div>
+                            <div className="mt-1 font-heading text-2xl">${r.avgCartSize.toLocaleString()}</div>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="font-heading text-3xl">Score: {state.finalScore}</div>
+                )}
+
+                {/* Recap */}
+                <div className="mt-6 border-t border-[var(--border)] pt-4">
+                    <div className="mb-2 font-heading text-lg text-[var(--foreground)]">Your answers</div>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                        {recapItems.map((it, idx) => (
+                            <div
+                                key={`${idx}-${it.label}`}
+                                className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4"
+                            >
+                                <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
+                                <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="mt-6 text-sm text-[var(--foreground-muted)]">
                     You can refresh the page; your draft is saved in this session.
                 </div>

@@ -2,6 +2,7 @@
 
 import FieldError from "@/components/ui/forms/FieldError";
 import type { LeadStepProps } from "./StepTypes";
+import { PRIVACY_MICROCOPY } from "@/lib/tools/pinterestPotential/copy";
 
 export default function StepLead({ label, leadDraft, onChange, errors }: LeadStepProps) {
   return (
@@ -31,9 +32,7 @@ export default function StepLead({ label, leadDraft, onChange, errors }: LeadSte
           <FieldError id="LEAD.email-error" message={errors?.email} />
         </div>
       </div>
-      <p className="text-xs text-[var(--foreground-muted)]">
-        We’ll only use your email to send your results. No spam. Unsubscribe anytime.
-      </p>
+      <p className="text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
     </div>
   );
 }

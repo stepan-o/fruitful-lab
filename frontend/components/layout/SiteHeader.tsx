@@ -1,26 +1,25 @@
 import Link from "next/link";
-import Image from "next/image";
 import LogoutButton from "@/components/layout/LogoutButton";
 import { BookCallButton } from "@/components/layout/BookCallButton";
 import { getCurrentUser } from "@/lib/auth";
 import { PUBLIC_NAV_LINKS } from "@/lib/nav";
 
 function NavLinks() {
-    return (
-        <nav className="hidden items-center gap-7 text-sm sm:text-base md:flex">
-            {PUBLIC_NAV_LINKS.map((item) => (
-                <Link
-                    key={item.href}
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noopener noreferrer" : undefined}
-                    className="font-medium text-[var(--foreground)] hover:text-[var(--brand-heading)] transition-colors"
-                >
-                    {item.label}
-                </Link>
-            ))}
-        </nav>
-    );
+  return (
+    <nav className="hidden items-center gap-7 text-sm sm:text-base text-slate-700 md:flex">
+      {PUBLIC_NAV_LINKS.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          target={item.external ? "_blank" : undefined}
+          rel={item.external ? "noopener noreferrer" : undefined}
+          className="hover:text-slate-900"
+        >
+          {item.label}
+        </Link>
+      ))}
+    </nav>
+  );
 }
 
 const loginLinkClasses = [
@@ -50,31 +49,37 @@ const mobileLoginLinkClasses = [
 ].join(" ");
 
 export default async function SiteHeader() {
-    const user = await getCurrentUser();
-    const isLoggedIn = !!user;
+  const user = await getCurrentUser();
+  const isLoggedIn = !!user;
+  return (
+    <header className="border-b border-slate-200 bg-white/80 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="font-heading text-lg sm:text-xl font-semibold tracking-tight text-slate-900"
+        >
+          Fruitful Lab
+        </Link>
 
-    return (
-        <header className="border-b border-[var(--brand-alabaster)] bg-[var(--background)]/90 backdrop-blur">
-            <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6">
-                {/* Logo */}
-                <Link href="/" className="flex items-center gap-3">
-                    <Image
-                        src="/cropped-Logo-Pink.png"
-                        alt="Fruitful Lab"
-                        width={220}
-                        height={60}
-                        priority
-                        className="h-9 w-auto sm:h-10"
-                    />
-                    <span className="sr-only">Fruitful Lab</span>
-                </Link>
+        {/* Center nav (desktop) */}
+        <NavLinks />
 
-                {/* Center nav (desktop) */}
-                <NavLinks />
+        {/* CTAs (desktop) */}
+        <div className="hidden items-center gap-3 md:flex">
+          <BookCallButton />
 
-                {/* CTAs (desktop) */}
-                <div className="hidden items-center gap-3 md:flex">
-                    <BookCallButton />
+          {isLoggedIn ? (
+            <LogoutButton />
+          ) : (
+            <Link
+              href="/login?next=/dashboard"
+              className="rounded-md border border-[#0B132B] bg-white px-3 py-2 text-sm md:text-base font-medium text-[#0B132B] hover:bg-[#DFDFDF]"
+            >
+              Login
+            </Link>
+          )}
+        </div>
 
                     {isLoggedIn ? (
                         <LogoutButton />
@@ -119,6 +124,9 @@ export default async function SiteHeader() {
                     </div>
                 </details>
             </div>
-        </header>
-    );
+          </div>
+        </details>
+      </div>
+    </header>
+  );
 }

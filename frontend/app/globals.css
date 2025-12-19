@@ -244,8 +244,18 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     100% { opacity: 0.35; transform: scale(1); }
 }
 
+/* Strong 0→100% opacity pulse for the "Start here" chip */
 @keyframes start-here-pulse {
-    0% { opacity: 0; transform: scale(0.9); }
-    40% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0; transform: scale(0.9); }
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
 }

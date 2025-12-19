@@ -25,8 +25,8 @@ type ButtonAsLinkProps = CommonProps & {
 
 export type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 
-function baseClasses(): string {
-    return [
+function baseClasses(variant: ButtonVariant): string {
+    const base = [
         "inline-flex items-center justify-center",
         "rounded-lg",
         "px-6 py-4 sm:px-6 sm:py-5",
@@ -35,14 +35,13 @@ function baseClasses(): string {
         "font-semibold leading-snug",
         "text-center",
         "whitespace-normal break-words",
+
         "transition-all duration-200",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
         "focus-visible:ring-offset-[var(--background)]",
         "font-body",
-    ].join(" ");
-}
+    ];
 
-function variantClasses(variant: ButtonVariant): string {
     if (variant === "secondary") {
         return [
             // Subtle, “blends in” in both themes (good for Login)
@@ -60,6 +59,7 @@ function variantClasses(variant: ButtonVariant): string {
 
     // primary
     return [
+        ...base,
         "bg-[var(--brand-raspberry)]",
         "text-white",
         "border border-[var(--brand-raspberry)]",
@@ -72,7 +72,7 @@ function variantClasses(variant: ButtonVariant): string {
 
 export default function Button(props: ButtonProps) {
     const variant: ButtonVariant = props.variant ?? "primary";
-    const classes = `${baseClasses()} ${variantClasses(variant)} ${props.className ?? ""}`.trim();
+    const classes = `${baseClasses(variant)} ${props.className ?? ""}`.trim();
 
     if ("href" in props && props.href) {
         const { href, children } = props;

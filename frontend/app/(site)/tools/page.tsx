@@ -1,5 +1,7 @@
+"use client";
 // frontend/app/(site)/tools/page.tsx
 import Link from "next/link";
+import { trackCtaClick } from "@/lib/gtm";
 
 export const dynamic = "force-static";
 
@@ -71,6 +73,7 @@ export default function ToolsIndexPage() {
                 <div className="mt-10">
                     <Link
                         href={primary.href!}
+                        onClick={() => trackCtaClick("Open calculator →", { location: "/tools" })}
                         className="
               group block rounded-2xl border border-[var(--brand-raspberry)]
               bg-[var(--card)] p-8 transition
@@ -170,6 +173,7 @@ export default function ToolsIndexPage() {
                         href="https://fruitfulpin.com"
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackCtaClick("Visit the main Fruitful Pin site", { location: "/tools" })}
                         className="text-[var(--foreground)] underline underline-offset-4 hover:text-[var(--brand-heading)] transition-colors"
                     >
                         Visit the main Fruitful Pin site

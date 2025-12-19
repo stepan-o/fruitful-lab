@@ -8,7 +8,7 @@
 // The previous compute.ts version sums raw arrays (treating them as values), which makes Result 1 wrong.
 // This wizard now computes Result 1/2/3 using the spec as source-of-truth.
 
-import { useEffect, useMemo, useReducer } from "react";
+import { useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
     type Answers,
@@ -40,6 +40,7 @@ import {
     normalizeLeadMode,
 } from "@/lib/tools/pinterestPotential/leadMode";
 import { PRIVACY_MICROCOPY } from "@/lib/tools/pinterestPotential/copy";
+import { trackLeadSubmit } from "@/lib/gtm";
 
 // ResultsBundle is imported from the canonical compute engine (Sprint 1 source of truth)
 
@@ -158,13 +159,15 @@ function getCheckboxLabels(q: Extract<Question, { type: "checkbox" }>, selectedI
 }
 
 export default function PinterestPotentialWizard({
-                                                     leadMode = "gate_before_results",
-                                                     initialLead,
-                                                     onPhaseChange,
-                                                 }: {
-    leadMode?: LeadMode;
-    initialLead?: Lead;
-    onPhaseChange?: (phase: "wizard" | "results") => void;
+  leadMode = "gate_before_results",
+  initialLead,
+  onPhaseChange,
+  onStart,
+}: {
+  leadMode?: LeadMode;
+  initialLead?: Lead;
+  onPhaseChange?: (phase: "wizard" | "results") => void;
+  onStart?: () => void; // analytics: tool_start
 }) {
     // Query-param seatbelt: allow runtime override even if upstream wiring is off.
     const searchParams = useSearchParams();
@@ -191,6 +194,10 @@ export default function PinterestPotentialWizard({
                 : initialLead ?? {},
         errors: {},
     } as State);
+
+    // Local UI state for optional-after-results submit (results screen)
+    const [emailError, setEmailError] = useState<string | null>(null);
+    const [optionalLeadSubmitted, setOptionalLeadSubmitted] = useState(false);
 
     // Inform parent that we are in the wizard phase on mount
     useEffect(() => {
@@ -249,6 +256,8 @@ export default function PinterestPotentialWizard({
         }
     }
 
+    const hasStartedRef = useRef(false);
+
     function handleNext() {
         dispatch({ type: "RESET_ERRORS" });
 
@@ -283,6 +292,26 @@ export default function PinterestPotentialWizard({
         if (Object.keys(errs).length > 0) {
             dispatch({ type: "SET_ERRORS", errors: errs });
             return;
+        }
+
+        // Fire tool_start once on first successful interaction
+        if (!hasStartedRef.current) {
+            hasStartedRef.current = true;
+            try {
+                onStart?.();
+            } catch {}
+        }
+
+        // If this was a successful lead capture step, emit lead_submit
+        if (stepQuestion.type === "lead") {
+            try {
+                const location = typeof window !== "undefined" ? window.location.pathname : "";
+                trackLeadSubmit({
+                    location,
+                    tool_name: "pinterest_potential",
+                    button_label: isLastStep ? "Calculate" : "Continue",
+                });
+            } catch {}
         }
 
         if (isLastStep) {
@@ -451,6 +480,7 @@ export default function PinterestPotentialWizard({
         // Show optional email capture at the top of results (optional_after_results, no email yet)
         const showOptionalEmail =
             effectiveLeadMode === "optional_after_results" && !state.leadDraft?.email;
+
         const OptionalEmailCapture = showOptionalEmail ? (
             <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
                 <div className="sm:grid sm:grid-cols-3 sm:gap-4">
@@ -484,7 +514,41 @@ export default function PinterestPotentialWizard({
                                     }
                                     className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                 />
+                                {emailError ? (
+                                    <div className="mt-1 text-xs text-red-500">{emailError}</div>
+                                ) : null}
                             </div>
+                        </div>
+                        <div className="mt-3">
+                            <button
+                                type="button"
+                                disabled={optionalLeadSubmitted}
+                                onClick={() => {
+                                    const email = state.leadDraft.email ?? "";
+                                    if (!email || !validateEmail(email)) {
+                                        setEmailError("Please enter a valid email.");
+                                        return;
+                                    }
+                                    setEmailError(null);
+                                    try {
+                                        trackLeadSubmit({
+                                            location:
+                                                typeof window !== "undefined"
+                                                    ? window.location.pathname
+                                                    : "",
+                                            tool_name: "pinterest_potential",
+                                            button_label: "Email me my results",
+                                        });
+                                        setOptionalLeadSubmitted(true);
+                                    } catch {
+                                        // swallow analytics errors
+                                    }
+                                    // TODO: Wire actual email send to backend when available.
+                                }}
+                                className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
+                            >
+                                {optionalLeadSubmitted ? "Sent" : "Email me my results"}
+                            </button>
                         </div>
                     </div>
                 </div>

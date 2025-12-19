@@ -11,7 +11,7 @@ Last updated: 2025-12-16
 - Draft persistence enforces canonical shape and auto-clears legacy drafts (no backward compatibility).
 - Results (Sprint 5) show three KPIs and maintain polished copy and privacy microcopy in both lead flows.
 - This document consolidates prior investigations and audits; older standalone docs have been removed.
- 
+
 ---
 
 ## 1) System Overview

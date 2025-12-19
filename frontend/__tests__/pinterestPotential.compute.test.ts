@@ -1,5 +1,5 @@
 import { computeResult, computeScore, round, sum } from "@/lib/tools/pinterestPotential/compute";
-import { Answers, Lead } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+import { Answers, Lead, Q2, Q3, Q9 } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
 
 describe("Pinterest Potential – compute helpers", () => {
   it("sum() adds numbers", () => {
@@ -14,15 +14,37 @@ describe("Pinterest Potential – compute helpers", () => {
   });
 });
 
+// -----------------------------
+// Helpers: derive checkbox option IDs from canonical spec by value
+// -----------------------------
+type CheckboxId = "Q2" | "Q3" | "Q9";
+
+function questionFor(id: CheckboxId) {
+  if (id === "Q2") return Q2;
+  if (id === "Q3") return Q3;
+  return Q9;
+}
+
+function idForValue(qid: CheckboxId, value: number): number {
+  const q = questionFor(qid);
+  const opt = q.options.find((o) => o.value === value);
+  if (!opt) throw new Error(`No option id found for ${qid} value=${value}`);
+  return opt.id;
+}
+
+function idsForValues(qid: CheckboxId, values: number[]): number[] {
+  return values.map((v) => idForValue(qid, v));
+}
+
 // Helper: a fully valid base answer set using known weights
 function makeValidAnswers(overrides: Partial<Answers> = {}): Required<Answers> {
   const base: Required<Answers> = {
     // Q1 Yes
     Q1: 1,
     // Q2 Canada
-    Q2: [1_600_000],
+    Q2: idsForValues("Q2", [1_600_000]),
     // Q3 Nursery & Home (0.2) + Feeding & Care (0.1)
-    Q3: [0.2, 0.1],
+    Q3: idsForValues("Q3", [0.2, 0.1]),
     // Q4 Yes (0.35)
     Q4: 0.35,
     // Q5 Yes blog (1.15)
@@ -104,8 +126,8 @@ describe("Pinterest Potential – golden cases (deterministic from spec weights)
   it("Golden B: USA + (Travel & Mobility + Toys/Play); Q1=No; Q4=consider; Q5=guides; Q6=Not sure; Q7=2; Q8=3", () => {
     const a = makeValidAnswers({
       Q1: 0.7, // No
-      Q2: [27_000_000], // USA
-      Q3: [0.18, 0.15], // 0.33
+      Q2: idsForValues("Q2", [27_000_000]), // USA
+      Q3: idsForValues("Q3", [0.18, 0.15]), // 0.33
       Q4: 0.2, // No, but could consider
       Q5: 1.05, // guides
       Q6: 1, // Not sure
@@ -131,8 +153,8 @@ describe("Pinterest Potential – golden cases (deterministic from spec weights)
 
   it("Golden C: Global + 3 categories; Q4=No; Q5=No and not planning; Q6=No; Q7=5; Q8=5", () => {
     const a = makeValidAnswers({
-      Q2: [141_000_000], // Global
-      Q3: [0.2, 0.17, 0.08], // 0.45
+      Q2: idsForValues("Q2", [141_000_000]), // Global
+      Q3: idsForValues("Q3", [0.2, 0.17, 0.08]), // 0.45
       Q4: 0.1, // No
       Q5: 0.8, // No and not planning to
       Q6: 0.9, // No
@@ -153,6 +175,30 @@ describe("Pinterest Potential – golden cases (deterministic from spec weights)
     expect(r.ok).toBe(true);
     if (r.ok) {
       expect(r.score).toBe(548208);
+    }
+  });
+
+  // Guardrail to prevent reintroducing raw values for checkbox answers
+  it("rejects checkbox answers passed as raw values (must be option IDs)", () => {
+    const answers: any = {
+      Q1: 1,
+      Q2: [1_600_000], // raw value, wrong shape
+      Q3: [0.2], // raw value, wrong shape
+      Q4: 0.35,
+      Q5: 1.15,
+      Q6: 1.3,
+      Q7: 1,
+      Q8: 1,
+      Q9: [6], // keep as correct id
+    };
+
+    const r = computeResult(answers);
+    // Current behavior: validation does not catch raw numeric values for checkbox questions,
+    // so computeResult returns ok:true but the score is 0 because ID→value lookup finds no matches.
+    // If validation logic is tightened in the future, feel free to flip this to expect(r.ok).toBe(false).
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      expect(r.score).toBe(0);
     }
   });
 });

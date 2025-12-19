@@ -22,6 +22,16 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Learn More
 
+## Environment variables
+
+Create a `.env.local` file in the `frontend/` directory (you can start from `.env.local.example`).
+
+Required:
+
+- `NEXT_PUBLIC_GTM_ID` — Google Tag Manager container ID. When set, the app injects GTM early in the HTML head and a noscript iframe right after the body tag. Example:
+
+If this variable is not set, GTM will not be loaded.
+
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.

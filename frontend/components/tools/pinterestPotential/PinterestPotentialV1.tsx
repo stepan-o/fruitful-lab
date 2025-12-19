@@ -6,6 +6,7 @@ import { useState } from "react";
 import PinterestPotentialWizard from "@/components/tools/pinterestPotential/PinterestPotentialWizard";
 import type { Lead } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
 import type { LeadMode } from "@/lib/tools/pinterestPotential/leadMode";
+import { useToolAnalytics } from "@/lib/hooks/useToolAnalytics";
 
 export function PinterestPotentialV1({
   leadMode = "gate_before_results",
@@ -15,6 +16,7 @@ export function PinterestPotentialV1({
   initialLead?: Lead;
 }) {
   const [phase, setPhase] = useState<"wizard" | "results">("wizard");
+  const { trackToolStart } = useToolAnalytics({ toolName: "pinterest_potential" });
   return (
     <div className="space-y-6">
       <div>
@@ -25,7 +27,12 @@ export function PinterestPotentialV1({
           Answer a few quick questions. Your progress is saved for this session.
         </p>
       </div>
-      <PinterestPotentialWizard leadMode={leadMode} initialLead={initialLead} onPhaseChange={setPhase} />
+      <PinterestPotentialWizard
+        leadMode={leadMode}
+        initialLead={initialLead}
+        onPhaseChange={setPhase}
+        onStart={trackToolStart}
+      />
     </div>
   );
 }

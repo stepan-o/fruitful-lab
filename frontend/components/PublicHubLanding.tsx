@@ -46,35 +46,41 @@ export default function PublicHubLanding() {
                                 </p>
 
                                 {/* CTAs */}
-                                <div className="mt-7 flex flex-wrap items-center gap-4">
-                                    <div className="relative inline-flex flex-col items-start">
-                    <span
-                        className="
-                            mb-3 inline-flex items-center gap-2
-                            rounded-full px-4 py-1.5
-                            text-[11px] sm:text-xs
-                            font-semibold uppercase tracking-[0.22em]
-                            text-[var(--start-here-fg)]
-                            bg-[var(--start-here-bg)]
-                            shadow-sm
-                            animate-[start-here-pulse_1.8s_ease-in-out_infinite]
-                        "
-                        style={{ boxShadow: "0 1px 0 var(--start-here-shadow)" }}
-                    >
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--start-here-dot)]" />
-                        Start here
-                    </span>
+                                <div className="mt-10 flex flex-wrap items-start gap-4">
+                                    {/* Primary CTA group */}
+                                    <div className="relative inline-flex flex-col items-start pt-9">
+                                        <span
+                                            aria-hidden="true"
+                                            className="
+                                                absolute left-0 top-0
+                                                inline-flex items-center gap-2
+                                                rounded-full px-4 py-1.5
+                                                text-[11px] sm:text-xs
+                                                font-semibold uppercase tracking-[0.22em]
+                                                text-[var(--start-here-fg)]
+                                                bg-[var(--start-here-bg)]
+                                                shadow-sm
+                                                animate-[start-here-pulse_1.8s_ease-in-out_infinite]
+                                            "
+                                            style={{ boxShadow: "0 1px 0 var(--start-here-shadow)" }}
+                                        >
+                                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--start-here-dot)]" />
+                                            Start here
+                                        </span>
 
-                                        <div className="pointer-events-none absolute left-0 top-7 -z-10 h-[150%] w-[125%] rounded-full bg-[var(--brand-raspberry)]/18 blur-xl animate-[hubPulse_6s_ease-in-out_infinite]" />
+                                        <div className="pointer-events-none absolute left-0 top-3 -z-10 h-[150%] w-[125%] rounded-full bg-[var(--brand-raspberry)]/18 blur-xl animate-[hubPulse_6s_ease-in-out_infinite]" />
 
                                         <Button href={mainSiteLink?.href ?? "https://fruitfulpin.com"} variant="primary">
                                             Go to Fruitful Pin site
                                         </Button>
                                     </div>
 
-                                    <Button href={toolsLink?.href ?? "/tools"} variant="secondary">
-                                        Browse public tools
-                                    </Button>
+                                    {/* Secondary CTA (same top padding so buttons align) */}
+                                    <div className="inline-flex pt-9">
+                                        <Button href={toolsLink?.href ?? "/tools"} variant="secondary">
+                                            Browse public tools
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
 

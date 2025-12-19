@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {GTM_ID ? (
           <Script

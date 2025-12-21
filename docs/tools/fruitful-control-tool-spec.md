@@ -416,5 +416,5 @@ Fruitful Control V1 must always be:
 - Scope-contained (QA + bounded suggestions only)
 - Fail-closed on ambiguity
 - Observable via existing analytics primitives
-
+ 
 If it becomes “too helpful,” it has failed V1.

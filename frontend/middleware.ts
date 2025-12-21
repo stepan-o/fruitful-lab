@@ -4,7 +4,7 @@ import { applyExperimentCookies } from "@/lib/growthbook/middleware";
 const COOKIE_NAME = "fruitful_access_token";
 
 // Paths that require auth
-const PROTECTED_PATHS = ["/dashboard"];
+const PROTECTED_PATHS = ["/dashboard", "/contractor"];
 
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
@@ -42,6 +42,8 @@ export const config = {
     matcher: [
         "/dashboard/:path*",
         "/dashboard",
+        "/contractor",
+        "/contractor/:path*",
         "/tools/pinterest-potential",
         "/tools/pinterest-potential/:path*",
     ],

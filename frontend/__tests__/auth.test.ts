@@ -27,6 +27,7 @@ describe("getCurrentUser", () => {
         full_name: "Admin User",
         is_admin: true,
         is_active: true,
+        groups: [],
       }),
     });
   });

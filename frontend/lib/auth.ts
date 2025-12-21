@@ -10,6 +10,7 @@ export type CurrentUser = {
   full_name: string | null;
   is_admin: boolean;
   is_active: boolean;
+  groups: string[];
 };
 
 /**

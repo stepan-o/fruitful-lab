@@ -52,7 +52,7 @@ describe("SiteHeader – nav + auth-aware CTAs", () => {
   });
 
   it("renders nav and CTAs for logged-in users (Book a Call + Log out)", async () => {
-    getCurrentUser.mockResolvedValueOnce({ id: "user_1", email: "tester@example.com" });
+    getCurrentUser.mockResolvedValueOnce({ id: "user_1", email: "tester@example.com", groups: [] });
 
     render(await SiteHeader());
 

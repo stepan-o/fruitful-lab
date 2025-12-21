@@ -119,3 +119,32 @@ async def get_current_admin_user(
             detail="Admin access required",
         )
     return current_user
+
+
+# ---------------- Group helpers & contractor dependency ----------------
+
+
+def has_group(user: models.User, group: str) -> bool:
+    """Return True if the given group is present on the user.
+
+    Safe against partially migrated DBs where `groups` could be missing/None.
+    """
+    # user.groups is expected to be a list, but be defensive just in case
+    return group in (getattr(user, "groups", None) or [])
+
+
+async def get_current_contractor_user(
+        current_user: models.User = Depends(get_current_active_user),
+) -> models.User:
+    """Allow access to admins or users in the 'contractor' group.
+
+    Otherwise, raise 403 to fail closed.
+    """
+    if current_user.is_admin:
+        return current_user
+    if has_group(current_user, "contractor"):
+        return current_user
+    raise HTTPException(
+        status_code=status.HTTP_403_FORBIDDEN,
+        detail="Contractor access required",
+    )

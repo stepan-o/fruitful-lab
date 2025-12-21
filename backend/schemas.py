@@ -2,7 +2,7 @@
 
 from datetime import date, datetime
 
-from pydantic import BaseModel, ConfigDict, EmailStr
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 
 # ===================== Auth / Users =====================
@@ -28,12 +28,14 @@ class UserOut(UserBase):
     created_at: datetime
     updated_at: datetime
     is_admin: bool
+    groups: list[str]
 
     model_config = ConfigDict(from_attributes=True)
 
 
 class UserCreate(UserBase):
     password: str
+    groups: list[str] = Field(default_factory=list)
 
 
 # ===================== Pinterest Stats =====================

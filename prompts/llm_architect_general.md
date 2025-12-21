@@ -34,6 +34,7 @@ Current and planned tool categories include:
 - **Contractor tools** (new)
     - Tools intended for vetted external collaborators
     - Access gated by authentication and role/group membership
+    - Contractor tools may include **“assistant” tools** that apply rules and QA to contractor-delivered work (e.g., standards + client rules), without turning into strategy engines.
 
 All tools serve **three simultaneous purposes**:
 
@@ -77,6 +78,7 @@ The system is intentionally designed to be:
 - FastAPI + JWT
 - Role- and group-aware access control
 - Admin and contractor access enforced server-side where applicable
+- Contractor tools that load client-specific guidelines must treat those guidelines as **scoped data** (authorization is not only “contractor vs admin,” but may also be **client-scoped** where implemented).
 
 You are not responsible for backend evolution unless a contract is explicitly changed.
 
@@ -123,6 +125,7 @@ The system supports **multiple access tiers**, enforced via authentication and a
     - Admin dashboards
     - Internal analytics
     - User management capabilities
+- Some contractor tools may additionally require **client-scoped permission** (e.g., contractor can only access client profiles they are assigned to), if such assignment exists in the backend.
 
 ### Admin
 - Authentication required
@@ -167,7 +170,6 @@ Hard rules:
 The frontend **declares intent**.  
 GTM **routes**.  
 Analytics **records**.
-
 
 ---
 
@@ -219,6 +221,11 @@ Tools are implemented as **wizards** with:
 - Answer state
 - Optional lead capture
 
+Some tools (especially contractor tools) may be **rules-based assistants**:
+- They load **structured guidelines** and return **structured QA output**
+- They must remain **deterministic and auditable**
+- They must not silently “do strategy” unless a tool spec explicitly includes that scope
+
 Important boundaries:
 - Rendering ≠ submission
 - Lead events fire only on explicit user action
@@ -228,9 +235,14 @@ Future LLM systems will rely on:
 - Step transitions
 - Answer snapshots
 - Drop-off points
+- (For QA tools) stable, structured “verdict + issues” outputs that can be logged or snapshotted
 
 Step transitions may be captured via optional state snapshots (Appendix E.4).  
 They are not required as canonical analytics events unless explicitly added to Appendix B.
+
+Rule evaluation outputs (e.g., a QA verdict) should be made observable via:
+- either canonical events (if Appendix B is updated), or
+- optional state snapshots (Appendix E.4), without changing the canonical event payload shape.
 
 ---
 
@@ -250,6 +262,7 @@ You must preserve:
 ---
 
 ## 10. Observability & Debugging Requirements
+
 A valid implementation must allow:
 ```ts
 window.dataLayer.filter(e => e.event === "tool_view")
@@ -280,8 +293,9 @@ LLMs must be able to reason about:
 - What happened
 - When it happened
 - Why it happened
-
----
+md
+Copy code
+## Chunk 13 — 12. What You Must NOT Do
 
 ## 12. What You Must NOT Do
 
@@ -291,8 +305,9 @@ LLMs must be able to reason about:
 - Do not collapse events into pageviews
 - Do not bypass GTM
 - Do not assume unfinished flows are intentional
-
----
+md
+Copy code
+## Chunk 14 — 13. Your Role as LLM Architect
 
 ## 13. Your Role as LLM Architect
 
@@ -305,8 +320,9 @@ You are expected to:
 
 When uncertain, ask:
 “Is this observable, deterministic, and explicitly declared?”
-
----
+md
+Copy code
+## Chunk 15 — 14. Canonical Documents (Authority Order)
 
 ## 14. Canonical Documents (Authority Order)
 
@@ -315,11 +331,12 @@ When uncertain, ask:
 3. Tool-specific specs (when present)
 4. Sprint plans / discussions (lowest authority)
 
-“Appendices are contracts only once adopted; until then they are proposals.
+Appendices are contracts only once adopted; until then they are proposals.
 
-If an appendix is marked ‘v1’ and referenced by the audit, it becomes binding.”
-
----
+If an appendix is marked ‘v1’ and referenced by the audit, it becomes binding.
+md
+Copy code
+## Chunk 16 — 15. Optional Next Locks (Only If Explicitly Requested)
 
 ## 15. Optional Next Locks (Only If Explicitly Requested)
 
@@ -330,12 +347,11 @@ If an appendix is marked ‘v1’ and referenced by the audit, it becomes bindin
 - Automated audit diff checklist
 
 Do not proceed unless scope is explicitly locked.
-
----
+md
+Copy code
+## Chunk 17 — Appendix A (Contractor Access Contract v1) — updates required
 
 # Appendix A — Contractor Access Contract (v1)
-
----
 
 ## A.1 Purpose & Scope
 
@@ -351,8 +367,9 @@ This document is **descriptive + prescriptive**:
 - Prescriptive about what *must not* happen
 
 If implementation diverges, the implementation must be corrected or the contract explicitly revised.
-
----
+md
+Copy code
+## Chunk 18 — Appendix A.2 (Definitions)
 
 ## A.2 Definitions
 
@@ -364,6 +381,7 @@ If implementation diverges, the implementation must be corrected or the contract
 **Contractor Tool**
 - Any tool or workflow explicitly intended for contractor use
 - Must be placed under a clearly defined route namespace (see routing rules)
+- May load client-specific guidelines or profiles; if so, those profiles are treated as **scoped data**.
 
 **Admin**
 - An authenticated user with full internal access
@@ -372,8 +390,9 @@ If implementation diverges, the implementation must be corrected or the contract
 **Public**
 - Any unauthenticated visitor
 - Must never access contractor or admin tools
-
----
+md
+Copy code
+## Chunk 19 — Appendix A.3 (Access Tiers)
 
 ## A.3 Access Tiers (Authoritative)
 
@@ -389,8 +408,9 @@ The system recognizes the following access tiers:
 - Access tiers are distinct by default (no implicit grants across tiers except admin → contractor).
 - Contractor access does **not** imply admin access
 - Admin access implies contractor access unless explicitly blocked
-
----
+md
+Copy code
+## Chunk 20 — Appendix A.4 (Routing & Namespacing Rules)
 
 ## A.4 Routing & Namespacing Rules
 
@@ -408,8 +428,9 @@ Rules:
 - Hiding contractor tools behind query params
 - Gating contractor tools only at the UI layer
 - Sharing public routes with conditional contractor-only rendering
-
----
+md
+Copy code
+## Chunk 21 — Appendix A.5 (Enforcement Requirements)
 
 ## A.5 Enforcement Requirements (Non-Negotiable)
 
@@ -430,8 +451,9 @@ Access enforcement must occur at **multiple layers**:
 
 **Invariant**
 > No contractor-only page should ever render meaningful content before access is verified server-side.
-
----
+md
+Copy code
+## Chunk 22 — Appendix A.6 (Authentication & Identity Source of Truth)
 
 ## A.6 Authentication & Identity Source of Truth
 
@@ -446,8 +468,9 @@ Frontend assumptions:
 **Forbidden**
 - Encoding contractor access purely in frontend state
 - Relying on client-only flags for access control
-
----
+md
+Copy code
+## Chunk 23 — Appendix A.7 (Navigation & Discoverability Rules)
 
 ## A.7 Navigation & Discoverability Rules
 
@@ -463,8 +486,9 @@ Navigation rules:
 
 **Invariant**
 > Navigation is advisory; authorization is authoritative.
-
----
+md
+Copy code
+## Chunk 24 — Appendix A.8 (Analytics & Observability)
 
 ## A.8 Analytics & Observability (Contractor Context)
 
@@ -485,8 +509,9 @@ Optional (if implemented later):
 
 **Invariant**
 > Contractor usage must be observable without introducing new analytics primitives.
-
----
+md
+Copy code
+## Chunk 25 — Appendix A.9 (Data Access & Output Constraints) — updated
 
 ## A.9 Data Access & Output Constraints
 
@@ -501,11 +526,17 @@ If a tool consumes backend data:
 - Backend must enforce contractor-safe queries
 - Frontend must not rely on filtering to enforce safety
 
+**Client scope constraint**
+- If the system includes contractor → client assignment, contractor tools that load client profiles/guidelines must enforce **client-scoped authorization**:
+  - Contractors can only access the client profiles they are assigned to.
+- If assignment is not implemented yet, this must be called out in the audit as an intentional limitation and treated as a known risk.
+
 **Forbidden**
 - “We’ll just hide that field in the UI”
 - Over-fetching internal data and trimming client-side
-
----
+md
+Copy code
+## Chunk 26 — Appendix A.10 (Experimentation & Variants)
 
 ## A.10 Experimentation & Variants (Contractor Tools)
 
@@ -520,8 +551,9 @@ Rules:
 
 **Invariant**
 > Experiment scope must align with access scope.
-
----
+md
+Copy code
+## Chunk 27 — Appendix A.11 (Failure Modes & Expected Behavior)
 
 ## A.11 Failure Modes & Expected Behavior
 
@@ -536,8 +568,9 @@ If identity is ambiguous:
 
 **Invariant**
 > Ambiguity defaults to denial, not access.
-
----
+md
+Copy code
+## Chunk 28 — Appendix A.12 (Explicit Non-Goals)
 
 ## A.12 Explicit Non-Goals
 
@@ -548,8 +581,9 @@ This contract does NOT define:
 - Permissions within a contractor tool (v1 is coarse-grained)
 
 Those may be defined in future appendices.
-
----
+md
+Copy code
+## Chunk 29 — Appendix A.13 (Change Management)
 
 ## A.13 Change Management
 
@@ -559,8 +593,9 @@ Any change to contractor access must:
 3. Be validated against routing, auth, and analytics invariants
 
 Silent drift is considered a defect.
-
----
+md
+Copy code
+## Chunk 30 — Appendices B–G (No required updates for alignment)
 
 # Appendix B — Tool Event Specification v1
 
@@ -1132,3 +1167,8 @@ A release is **not complete** unless:
 - Events can be replayed deterministically
 
 If analytics are broken, rollback is acceptable.
+
+Notes:
+- Tool-specific “QA verdict” observability should be handled in the Contractor Control (V1) tool spec via either:
+    - an Appendix B update (new canonical event) **when explicitly adopted**, or
+    - Appendix E state snapshots (derived/optional), keeping canonical events unchanged.

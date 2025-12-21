@@ -56,12 +56,12 @@ Hard rules (from Contractor Access Contract v1):
 
 ## V1 Scope (Included)
 
-Fruitful Control V1 supports only:
+Fruitful Control V1 supports:
 
 Task Types:
 - Pin Titles
 - Pin Descriptions
-- Pin Design QA (checklist-based)
+- Pin Design QA (checklist-based + image analysis)
 
 Capabilities:
 - Load rules (global + client + task)
@@ -69,6 +69,8 @@ Capabilities:
 - Return structured feedback
 - Provide bounded suggested corrections
 - Clarification mode with a single clean question
+- Produce a numeric QA rating (0–10) aligned to the same criteria used for the verdict
+- For Design QA: accept an image input and run deterministic, criteria-based visual checks
 
 Modes:
 - Initial QA
@@ -114,6 +116,8 @@ Layer B — Client-Specific Rules (selected client only)
 
 Invariant:
 - Client rules may **tighten** constraints, but must not **override** global rules.
+- If a client rule conflicts with a global rule, the stricter interpretation wins.
+  - If ambiguity remains, clarification mode must trigger.
 
 ---
 
@@ -155,20 +159,27 @@ Contractor revises and resubmits until “Ready to Deliver.”
 
 ---
 
-## Output Contract (Structured Response)
+## Output Contract (Structured Response) — Updated
 
-Fruitful Control must always return a structured object with these sections:
+Fruitful Control must return:
 
 ```ts
 {
-  verdict: "ready" | "needs_revision",
-  hard_issues: string[],
-  soft_improvements: string[],
-  suggested_changes?: string[],
-  clarification_needed?: {
-    reason: string,
-    proposed_question: string
-  }
+    verdict: "ready" | "needs_revision",
+        qa_score: number, // integer 0..10
+        score_breakdown: Array<{
+        rule_id: string,
+        severity: "S1" | "S2" | "S3" | "soft",
+        deduction: number,
+        note: string
+    }>,
+        hard_issues: string[],
+        soft_improvements: string[],
+        suggested_changes?: string[],
+        clarification_needed?: {
+            reason: string,
+            proposed_question: string
+        }
 }
 ```
 
@@ -177,6 +188,10 @@ Rules:
 - `soft_improvements` do not block delivery
 - `suggested_changes` must remain within the loaded rules
 - `clarification_needed` must include only one question
+- `qa_score` must be an integer 0–10
+- `score_breakdown` must sum to (10 - raw_score) before rounding
+- `rule_id` must point to a stable identifier in the rules store (global/client/task)
+- `hard_issues` and `soft_improvements` must align with the breakdown items
 
 No essays. No unstructured output.
 
@@ -201,24 +216,79 @@ Invariant:
 
 ---
 
-## Design QA (V1 Constraints)
+## Design QA (V1) — With Image Analysis
 
-Design QA in V1 is checklist-based and deterministic.
+Design QA in V1 includes **image analysis support** to validate contractor designs against deterministic rules.
 
-Allowed checks:
-- Template compliance (if templates are defined in client rules)
-- Brand kit adherence (fonts/colors/layout rules where specified)
-- Margin/padding/composition rules (if defined in standards)
-- Banned elements/phrases (if specified)
+Inputs (V1):
+- A design image (PNG/JPG/WebP) for the pin creative
+- Associated metadata (required):
+    - Client
+    - Target URL (optional, if relevant to checks)
+    - Language (optional, if relevant to text checks)
+    - Declared template name/id (if templates exist)
 
-Not allowed:
-- Subjective art direction
-- Trend commentary
-- Aesthetic opinions (“make it prettier”)
+Allowed image-based checks (must be rules-backed):
+- Brand compliance:
+    - Allowed/disallowed colors (palette constraints when specified)
+    - Font constraints (only if the client rule set defines acceptable fonts)
+    - Logo presence/placement rules (if specified)
+- Layout compliance:
+    - Margin/padding safe zones (if global standards define them)
+    - Text area constraints (avoid edge bleed; minimum padding)
+    - Alignment rules (if specified as hard rules)
+- Content constraints (when detectable and specified):
+    - Presence of required elements (e.g., CTA block, title block)
+    - Absence of banned elements/phrases (if specified)
+- Legibility heuristics (only if specified):
+    - Minimum font size rules cannot be inferred; must be implemented as a proxy rule (e.g., text occupies X% of height), explicitly documented
 
-Image analysis support is explicitly deferred unless added via a future spec.
+Hard constraints:
+- No subjective art direction
+- No trend or aesthetic opinions
+- No “make it prettier” feedback
+- All checks must map to explicit rule statements (global or client)
+
+Deferred unless explicitly added later:
+- Automated OCR-based keyword extraction unless required for enforcing banned words/phrases
+- “Template matching” beyond declared template id, unless templates include machine-checkable constraints
 
 ---
+
+## Rating System (0–10) — Deterministic QA Score
+
+Fruitful Control must output a numeric **qa_score** from 0 to 10 based on the same criteria used for QA.
+
+Principles:
+- Deterministic: same input + same rules → same score
+- Explainable: score must be decomposable into component deductions
+- Coupled to verdict:
+    - `verdict: "ready"` requires `qa_score >= READY_THRESHOLD`
+    - `verdict: "needs_revision"` otherwise
+
+Recommended defaults (can be adjusted per tool config, but must be explicit):
+- READY_THRESHOLD = 8
+
+Scoring model (V1):
+- Start from 10.0
+- Apply deductions for rule violations
+    - Hard issue: -1.0 to -3.0 depending on severity class
+    - Soft improvement: -0.2 to -0.5
+- Floor at 0.0, then round to nearest integer for reporting (0–10)
+
+Severity classes (must be rule-backed and stable):
+- S1 Critical (blocks delivery): -3.0
+    - Examples: wrong client brand kit, banned claim/compliance violation, missing required element, unreadable text (if specified)
+- S2 Major (blocks delivery): -2.0
+    - Examples: margin/safe-zone violation, incorrect language/tone constraint violation, wrong template requirement
+- S3 Minor (blocks delivery if repeated or combined): -1.0
+    - Examples: formatting rule miss, CTA mismatch, minor layout misalignment defined as hard rule
+- Soft: -0.2 to -0.5
+    - Examples: optional improvements allowed by spec
+
+Invariant:
+- Hard issues must always drive `needs_revision` even if the score happens to remain high.
+- Score is informative; verdict is authoritative.
 
 ## Rules Storage Requirements (Editable Without Code)
 
@@ -264,7 +334,9 @@ Fruitful Control must emit canonical events only:
 - `tool_view`
 - `tool_start`
 - `cta_click`
-- `lead_submit` only if explicitly included in V1 UX (otherwise omit)
+
+Fruitful Control V1 does not include a lead capture gate by default.  
+Therefore `lead_submit` MUST NOT fire unless a future spec explicitly adds lead capture to this tool.
 
 Rules:
 - Must use the existing GTM/dataLayer pipeline
@@ -307,6 +379,12 @@ Release is blocked unless all are true:
 - [ ] Clarification mode asks only one Susy-ready question
 - [ ] Tool does not generate strategy or expand scope
 - [ ] Canonical analytics events are observable via `window.dataLayer`
+- [ ] Design QA accepts an image input and runs rules-backed checks
+- [ ] Image-based findings map to explicit rule ids (no vibes)
+- [ ] Tool returns `qa_score` 0–10 on every run
+- [ ] Tool returns `score_breakdown` with rule ids + deductions
+- [ ] Verdict is consistent with score thresholds AND hard-issue blocking
+- [ ] All prior V1 acceptance criteria remain satisfied
 - [ ] `docs/SYSTEM_IMPLEMENTATION_AUDIT.md` reflects the true implementation
 
 If any item fails, V1 is not shippable.
@@ -317,7 +395,9 @@ If any item fails, V1 is not shippable.
 
 These require a new spec lock:
 
-- Image analysis for design QA
+- Expanded image analysis beyond rules-backed checks
+- Subjective design critique or aesthetic scoring
+- Template auto-detection without declared template metadata
 - Keyword research assistance
 - Strategy suggestions or targeting recommendations
 - Multi-question clarification conversations

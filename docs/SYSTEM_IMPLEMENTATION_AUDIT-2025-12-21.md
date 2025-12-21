@@ -376,3 +376,12 @@ Bootstrap/apply:
     - Column users.groups exists
     - users.groups is NOT NULL
     - Existing rows have groups = []
+
+## Auth Flow — Middleware Redirect Behavior (Update: Sub‑Sprint 8)
+
+- When a protected route is requested without the auth cookie (fruitful_access_token), middleware redirects to /login.
+- The next parameter now preserves the full intended return URL as pathname + search (querystring included).
+  - Example: Visiting /contractor/tool?variant=v2 while logged out redirects to
+    /login?next=/contractor/tool?variant=v2
+-
+  Matcher and protected path logic remain unchanged; experiment cookie behavior for /tools/pinterest-potential* is unaffected.

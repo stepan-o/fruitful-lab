@@ -5,15 +5,9 @@ import { applyExperimentCookies } from "@/lib/growthbook/middleware";
 const COOKIE_NAME = "fruitful_access_token";
 
 /**
- * PROTECTED_PATHS must match your *actual* URL paths.
- *
- * With your current repo layout:
- * - frontend/app/(contractor)/cont/page.tsx                => /cont
- * - frontend/app/(contractor)/cont/fruitful-qa/page.tsx    => /cont/fruitful-qa
- *
- * So we protect /cont (which implicitly protects all /cont/*).
+ * PROTECTED_PATHS must match our *actual* URL paths.
  */
-const PROTECTED_PATHS = ["/dashboard", "/cont"];
+const PROTECTED_PATHS = ["/dashboard", "/contractor"];
 
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
@@ -54,8 +48,8 @@ export const config = {
         "/dashboard/:path*",
 
         // Contractor area (your current layout)
-        "/cont",
-        "/cont/:path*",
+        "/contractor",
+        "/contractor/:path*",
 
         // Growthbook experiment cookie injection
         "/tools/pinterest-potential",

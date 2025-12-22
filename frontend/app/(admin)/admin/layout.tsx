@@ -1,5 +1,6 @@
 // frontend/app/(admin)/admin/layout.tsx
 import type { ReactNode } from "react";
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
 import FlashBanner from "@/components/layout/FlashBanner";
@@ -25,7 +26,9 @@ export default async function AdminLayout({ children }: { children: ReactNode })
             <AdminHeader />
 
             {/* Global flash toast (top-right) */}
-            <FlashBanner />
+            <Suspense fallback={null}>
+                <FlashBanner />
+            </Suspense>
 
             <main className="flex-1">
                 <div className="mx-auto max-w-[1200px] px-4 py-8 sm:px-6 lg:py-12">

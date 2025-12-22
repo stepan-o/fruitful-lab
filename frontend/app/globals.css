@@ -42,6 +42,19 @@
     --card: rgba(255, 255, 255, 0.72);
     --card-hover: rgba(255, 255, 255, 0.9);
 
+    --toast-bg: rgba(255, 255, 255, 0.85);
+    --toast-border: var(--brand-alabaster);
+
+    /* Error */
+    --toast-error-accent: var(--brand-rust);
+    --toast-error-title: var(--brand-rust);
+    --toast-error-text: var(--foreground);
+
+    /* Success */
+    --toast-success-accent: var(--brand-bronze);
+    --toast-success-title: var(--brand-bronze);
+    --toast-success-text: var(--foreground);
+
     --font-heading: ui-sans-serif;
     --font-body: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
     "Apple Color Emoji", "Segoe UI Emoji";
@@ -89,6 +102,17 @@ html[data-theme="dark"] {
     --start-here-dot: var(--brand-bronze);
     --start-here-shadow: rgba(0, 0, 0, 0.25);
 
+    --toast-bg: rgba(255, 255, 255, 0.06);
+    --toast-border: rgba(255, 255, 255, 0.18);
+
+    --toast-error-accent: var(--brand-rust);
+    --toast-error-title: var(--brand-heading);
+    --toast-error-text: var(--foreground);
+
+    --toast-success-accent: var(--brand-bronze);
+    --toast-success-title: var(--brand-heading);
+    --toast-success-text: var(--foreground);
+
     --surface: rgba(255, 255, 255, 0.06);
     --card: rgba(255, 255, 255, 0.04);
     --card-hover: rgba(255, 255, 255, 0.06);
@@ -131,6 +155,17 @@ html[data-theme="light"] {
 
         --border: rgba(255, 255, 255, 0.12);
         --foreground-muted: rgba(237, 237, 237, 0.72);
+
+        --toast-bg: rgba(255, 255, 255, 0.06);
+        --toast-border: rgba(255, 255, 255, 0.18);
+
+        --toast-error-accent: var(--brand-rust);
+        --toast-error-title: var(--brand-heading);
+        --toast-error-text: var(--foreground);
+
+        --toast-success-accent: var(--brand-bronze);
+        --toast-success-title: var(--brand-heading);
+        --toast-success-text: var(--foreground);
 
         --surface: rgba(255, 255, 255, 0.06);
         --card: rgba(255, 255, 255, 0.04);

@@ -98,7 +98,7 @@ export default async function SiteHeader() {
                             </span>
                         </>
                     ) : (
-                        <Link href="/login?next=/dashboard" className={loginLinkClasses}>
+                        <Link href="/login" className={loginLinkClasses}>
                             Login
                         </Link>
                     )}
@@ -146,7 +146,7 @@ export default async function SiteHeader() {
                                     </div>
                                 </>
                             ) : (
-                                <Link href="/login?next=/dashboard" className={mobileLoginLinkClasses}>
+                                <Link href="/login" className={mobileLoginLinkClasses}>
                                     Login
                                 </Link>
                             )}

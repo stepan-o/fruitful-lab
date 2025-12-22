@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import DashboardPage from '@/app/dashboard/page';
+import DashboardPage from '@/app/(admin)/admin/dashboard/page';
 import { fetchPinterestMonthlyStats } from '@/lib/pinterestStats';
 import { cookies } from 'next/headers';
 

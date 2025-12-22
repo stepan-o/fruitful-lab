@@ -1,16 +1,25 @@
+// frontend/middleware.ts
 import { NextRequest, NextResponse } from "next/server";
 import { applyExperimentCookies } from "@/lib/growthbook/middleware";
 
 const COOKIE_NAME = "fruitful_access_token";
 
-// Paths that require auth
-const PROTECTED_PATHS = ["/dashboard", "/contractor"];
+/**
+ * PROTECTED_PATHS must match your *actual* URL paths.
+ *
+ * With your current repo layout:
+ * - frontend/app/(contractor)/cont/page.tsx                => /cont
+ * - frontend/app/(contractor)/cont/fruitful-qa/page.tsx    => /cont/fruitful-qa
+ *
+ * So we protect /cont (which implicitly protects all /cont/*).
+ */
+const PROTECTED_PATHS = ["/dashboard", "/cont"];
 
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
-    const isProtected = PROTECTED_PATHS.some((p) =>
-        pathname === p || pathname.startsWith(`${p}/`),
+    const isProtected = PROTECTED_PATHS.some(
+        (p) => pathname === p || pathname.startsWith(`${p}/`),
     );
 
     const shouldRunExperiments = pathname.startsWith("/tools/pinterest-potential");
@@ -41,10 +50,14 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
     matcher: [
-        "/dashboard/:path*",
         "/dashboard",
-        "/contractor",
-        "/contractor/:path*",
+        "/dashboard/:path*",
+
+        // Contractor area (your current layout)
+        "/cont",
+        "/cont/:path*",
+
+        // Growthbook experiment cookie injection
         "/tools/pinterest-potential",
         "/tools/pinterest-potential/:path*",
     ],

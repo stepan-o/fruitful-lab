@@ -2,6 +2,8 @@
 // Server component layout that enforces contractor/admin access before rendering children
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
+import ContractorHeader from "@/components/layout/ContractorHeader";
+import ContractorFooter from "@/components/layout/ContractorFooter";
 
 export default async function ContractorGroupLayout({
   children,
@@ -22,5 +24,13 @@ export default async function ContractorGroupLayout({
     redirect("/tools");
   }
 
-  return <>{children}</>;
+  return (
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      <ContractorHeader user={user} />
+      <main className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6">
+        {children}
+      </main>
+      <ContractorFooter />
+    </div>
+  );
 }

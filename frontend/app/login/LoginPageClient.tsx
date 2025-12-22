@@ -1,13 +1,16 @@
 // frontend/app/login/LoginPageClient.tsx
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginPageClient() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const nextParam = searchParams.get("next") || "/dashboard";
+
+    // Default should be home; server will override based on role anyway.
+    const nextParam = searchParams.get("next") || "/";
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -26,15 +29,15 @@ export default function LoginPageClient() {
                 body: JSON.stringify({ email, password, next: nextParam }),
             });
 
-            const data = await resp.json();
+            const data = await resp.json().catch(() => ({}));
 
             if (!resp.ok) {
-                setError(data.detail ?? "Login failed. Please try again.");
-                setSubmitting(false);
+                router.push(data.redirectTo ?? "/tools?flash=login_failed");
+                router.refresh();
                 return;
             }
 
-            router.push(data.redirectTo ?? "/dashboard");
+            router.push(data.redirectTo ?? "/tools");
             router.refresh();
         } catch (err) {
             console.error(err);
@@ -95,6 +98,16 @@ export default function LoginPageClient() {
                     >
                         {submitting ? "Signing in…" : "Sign in"}
                     </button>
+
+                    {/* Back link */}
+                    <div className="pt-2 text-center">
+                        <Link
+                            href="/"
+                            className="text-sm font-medium text-slate-600 hover:text-slate-900 underline underline-offset-4"
+                        >
+                            ← Back to home
+                        </Link>
+                    </div>
                 </form>
             </div>
         </main>

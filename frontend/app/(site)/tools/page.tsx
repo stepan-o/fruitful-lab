@@ -22,14 +22,12 @@ const TOOLS: ToolCard[] = [
     },
     {
         title: "Pinterest Ads Budget Estimator",
-        description:
-            "A quick planner for spend ranges, CPC/CPM assumptions, and conversion pacing.",
+        description: "A quick planner for spend ranges, CPC/CPM assumptions, and conversion pacing.",
         status: "coming_soon",
     },
     {
         title: "Keyword Starter Kit Helper",
-        description:
-            "Generate a clean keyword starting map by category + intent, without keyword stuffing.",
+        description: "Generate a clean keyword starting map by category + intent, without keyword stuffing.",
         status: "coming_soon",
     },
 ];
@@ -47,8 +45,8 @@ function StatusPill({ status }: { status?: ToolCard["status"] }) {
 
     return (
         <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--card)] px-2.5 py-1 text-[11px] font-semibold text-[var(--foreground-muted)]">
-        Coming soon
-      </span>
+      Coming soon
+    </span>
     );
 }
 
@@ -83,18 +81,14 @@ export default function ToolsIndexPage() {
             "
                     >
                         <div className="flex items-start justify-between gap-4">
-                            <h2 className="font-heading text-xl sm:text-2xl">
-                                {primary.title}
-                            </h2>
+                            <h2 className="font-heading text-xl sm:text-2xl">{primary.title}</h2>
                             <StatusPill status={primary.status} />
                         </div>
 
-                        {/* Value line */}
                         <p className="mt-2 max-w-prose text-sm sm:text-base leading-relaxed text-[var(--foreground-muted)]">
                             Get a realistic traffic + lead range from Pinterest — based on your site + cadence.
                         </p>
 
-                        {/* What you'll get */}
                         <div className="mt-4">
                             <p className="text-xs font-semibold uppercase tracking-wide text-[var(--foreground)]/80">
                                 What you’ll get
@@ -106,25 +100,22 @@ export default function ToolsIndexPage() {
                             </ul>
                         </div>
 
-                        {/* What you'll need */}
                         <p className="mt-4 text-xs sm:text-sm text-[var(--foreground-muted)]">
                             You’ll need: your monthly traffic + email opt-in / conversion rate (or we’ll use defaults).
                         </p>
 
-                        {/* Micro trust */}
                         <p className="mt-1 text-[11px] text-[var(--foreground-muted)]">
                             Takes ~2 minutes • No login • Built for practitioners
                         </p>
 
-                        {/* CTA Row */}
                         <div className="mt-6">
-                            <span className="inline-flex items-center gap-2 font-medium text-[var(--foreground)]">
-                                Open calculator →
-                            </span>
+              <span className="inline-flex items-center gap-2 font-medium text-[var(--foreground)]">
+                Open calculator →
+              </span>
                             <div className="mt-1">
-                                <span className="text-xs text-[var(--foreground-muted)] underline underline-offset-4 transition-colors group-hover:text-[var(--brand-heading)]">
-                                    What does this estimate?
-                                </span>
+                <span className="text-xs text-[var(--foreground-muted)] underline underline-offset-4 transition-colors group-hover:text-[var(--brand-heading)]">
+                  What does this estimate?
+                </span>
                             </div>
                         </div>
                     </Link>
@@ -136,16 +127,10 @@ export default function ToolsIndexPage() {
                         <div
                             key={tool.title}
                             aria-disabled="true"
-                            className="
-                rounded-xl border border-[var(--border)]
-                bg-[var(--card)] p-6
-                opacity-70
-              "
+                            className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 opacity-70"
                         >
                             <div className="flex items-start justify-between gap-3">
-                                <h3 className="font-heading text-base text-[var(--foreground)]">
-                                    {tool.title}
-                                </h3>
+                                <h3 className="font-heading text-base text-[var(--foreground)]">{tool.title}</h3>
                                 <StatusPill status={tool.status} />
                             </div>
 

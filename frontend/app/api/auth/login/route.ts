@@ -7,7 +7,7 @@ const API_BASE_URL =
 const COOKIE_NAME = "fruitful_access_token";
 
 // Canonical landing routes (server authority)
-const DEFAULT_ADMIN_LANDING = "/dashboard";
+const DEFAULT_ADMIN_LANDING = "/admin/dashboard";
 const DEFAULT_CONTRACTOR_LANDING = "/contractor";
 const DEFAULT_GENERAL_LANDING = "/tools";
 
@@ -25,11 +25,12 @@ function isSafeNext(next: unknown): next is string {
 }
 
 function isAllowedNextForRole(nextPath: string, role: "admin" | "contractor" | "general") {
+    // Admins can go to admin area + tools + contractor area.
     // NOTE: tighten/expand as policy evolves.
     if (role === "admin") {
         return (
-            nextPath === "/dashboard" ||
-            nextPath.startsWith("/dashboard/") ||
+            nextPath === "/admin" ||
+            nextPath.startsWith("/admin/") ||
             nextPath === "/tools" ||
             nextPath.startsWith("/tools/") ||
             nextPath === "/contractor" ||

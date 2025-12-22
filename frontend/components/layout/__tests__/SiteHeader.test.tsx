@@ -45,7 +45,7 @@ describe("SiteHeader – nav + auth-aware CTAs", () => {
 
     const loginLinks = screen.getAllByRole("link", { name: /login/i });
     expect(loginLinks.length).toBeGreaterThanOrEqual(1);
-    expect(loginLinks[0]).toHaveAttribute("href", "/login?next=/dashboard");
+    expect(loginLinks[0]).toHaveAttribute("href", "/login");
 
     // No logout button when logged out
     expect(screen.queryByRole("button", { name: /log out/i })).not.toBeInTheDocument();

@@ -1,4 +1,4 @@
-// frontend/app/dashboard/page.tsx
+// frontend/app/admin/dashboard/page.tsx
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -21,7 +21,7 @@ export default async function DashboardPage() {
     const user = await getCurrentUser();
     if (!user) {
         // Missing/invalid session: send to login preserving intent
-        redirect("/login?next=/dashboard");
+        redirect("/login?next=/admin/dashboard");
     }
     if (!user.is_admin) {
         // Non-admins are redirected to tools (avoid 403 dead-end)
@@ -33,7 +33,7 @@ export default async function DashboardPage() {
     const token = cookieStore.get(COOKIE_NAME)?.value;
     if (!token) {
         // Extremely unlikely if user exists, but handle defensively
-        redirect("/login?next=/dashboard");
+        redirect("/login?next=/admin/dashboard");
     }
 
     let stats: PinterestMonthlyStat[] = [];

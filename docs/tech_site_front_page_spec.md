@@ -76,7 +76,7 @@ You’ll tweak wording later, but here’s a solid first pass.
 * Right: `Log in` link.
 
 Copy:
-* Log in → /login?next=/dashboard.
+* Log in → /login?next=/admin/dashboard.
 
 ### 3.2 Hero
 **H1:**
@@ -211,7 +211,7 @@ No special casing; relies on existing `/api/auth/login` behavior.
 * **View case studies**:  
 `href="/case-studies"`.
 * **Login text links**:  
-`href="/login?next=/dashboard"`.
+`href="/login?next=/admin/dashboard"`.
 
 ---
 

@@ -7,6 +7,7 @@ from sqlalchemy import (
     DateTime,
     Integer,
     String,
+    JSON,
 )
 from sqlalchemy.sql import func
 
@@ -24,6 +25,9 @@ class User(Base):
     is_active = Column(Boolean, default=True, nullable=False)
 
     is_admin = Column(Boolean, default=False, nullable=False)
+
+    # New: groups as JSON list, non-null, default empty list
+    groups = Column(JSON, default=list, nullable=False)
 
     created_at = Column(
         DateTime(timezone=True), server_default=func.now(), nullable=False

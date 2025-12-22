@@ -30,6 +30,7 @@ describe('DashboardPage', () => {
             id: 1,
             email: 'admin@example.com',
             is_admin: true,
+            groups: [],
         });
 
         // mock cookie with token
@@ -76,7 +77,7 @@ describe('DashboardPage', () => {
 
     it('redirects non-admins to /tools', async () => {
         const { getCurrentUser } = jest.requireMock('@/lib/auth');
-        getCurrentUser.mockResolvedValue({ id: 2, email: 'user@x.com', is_admin: false });
+        getCurrentUser.mockResolvedValue({ id: 2, email: 'user@x.com', is_admin: false, groups: [] });
 
         await expect(DashboardPage()).rejects.toThrow(/NEXT_REDIRECT/);
     });

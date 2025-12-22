@@ -46,6 +46,7 @@ def register_user(payload: UserCreate, db: Session = Depends(get_db)):
         full_name=payload.full_name,
         hashed_password=hash_password(payload.password),
         is_active=payload.is_active,
+        groups=payload.groups,
         created_at=now,
         updated_at=now,
     )

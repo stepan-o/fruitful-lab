@@ -354,3 +354,34 @@ Automation status
   - In pinterestPotentialConfig.ts, ENABLE_AB_SPLIT=false. Middleware still sets variant cookies via GrowthBook/fallback. Page-level variant resolver honors cookie and query param regardless. Status: Works as implemented; intent beyond this is not documented.
 
 End of audit.
+
+## DB/Migrations (Auth Sprint — Sub‑Sprint 4, Path B)
+
+This section records the concrete repository reality and chosen operational path for adding users.groups.
+
+DB and migrations (as implemented):
+- Alembic is configured in backend/alembic.ini with script_location = migrations (relative to backend/).
+- Alembic env: backend/migrations/env.py reads db.DATABASE_URL and assigns sqlalchemy.url accordingly; target_metadata = Base.metadata.
+- Migrations live under backend/migrations/versions/.
+
+Change introduced (Path B: Alembic migration):
+- New migration adds users.groups as JSON, NOT NULL, with server default [] to backfill existing rows.
+    - File: backend/migrations/versions/3f2a1c9e4b6d_add_groups_json_to_users.py
+    - Upgrade: op.add_column("users", sa.Column("groups", sa.JSON(), nullable=False, server_default=sa.text("'[]'::json")))
+    - Downgrade: op.drop_column("users", "groups")
+
+Bootstrap/apply:
+- From backend/, run: alembic upgrade head
+- Expected result:
+    - Column users.groups exists
+    - users.groups is NOT NULL
+    - Existing rows have groups = []
+
+## Auth Flow — Middleware Redirect Behavior (Update: Sub‑Sprint 8)
+
+- When a protected route is requested without the auth cookie (fruitful_access_token), middleware redirects to /login.
+- The next parameter now preserves the full intended return URL as pathname + search (querystring included).
+  - Example: Visiting /contractor/tool?variant=v2 while logged out redirects to
+    /login?next=/contractor/tool?variant=v2
+-
+  Matcher and protected path logic remain unchanged; experiment cookie behavior for /tools/pinterest-potential* is unaffected.

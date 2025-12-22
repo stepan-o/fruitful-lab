@@ -9,14 +9,25 @@ import models
 from security import hash_password
 
 
+def parse_groups(raw: str | None) -> list[str]:
+    """Parse a comma-separated group string into a normalized list[str]."""
+    if not raw:
+        return []
+    parts = [p.strip().lower() for p in raw.split(",")]
+    return [p for p in parts if p]
+
+
 def create_user(
-    email: str,
-    password: str,
-    *,
-    full_name: str | None = None,
-    is_admin: bool = False,
+        email: str,
+        password: str,
+        *,
+        full_name: str | None = None,
+        is_admin: bool = False,
+        groups: list[str] | None = None,
 ) -> None:
     """Create a new user. Admins must be explicitly requested & validated."""
+    groups = groups or []
+
     db = SessionLocal()
     try:
         existing = db.query(models.User).filter(models.User.email == email).first()
@@ -32,15 +43,16 @@ def create_user(
             hashed_password=hash_password(password),
             is_active=True,
             is_admin=is_admin,
+            groups=groups,
             created_at=now,
             updated_at=now,
         )
         db.add(user)
         db.commit()
-        print(
-            f"✅ Created user {email} (id={user.id})"
-            + (" [ADMIN]" if is_admin else "")
-        )
+        db.refresh(user)
+
+        tag = " [ADMIN]" if is_admin else ""
+        print(f"✅ Created user {email} (id={user.id}){tag} groups={user.groups}")
     finally:
         db.close()
 
@@ -62,16 +74,36 @@ def delete_user(email: str) -> None:
 
 
 def list_users() -> None:
-    """List all users (with admin flag)."""
+    """List all users (with admin flag + groups)."""
     db = SessionLocal()
     try:
         users = db.query(models.User).all()
         for u in users:
+            groups = getattr(u, "groups", None) or []
             print(
                 f"- id={u.id}, email={u.email}, "
                 f"active={getattr(u, 'is_active', None)}, "
-                f"is_admin={getattr(u, 'is_admin', None)}"
+                f"is_admin={getattr(u, 'is_admin', None)}, "
+                f"groups={groups}"
             )
+    finally:
+        db.close()
+
+
+def wipe_users(*, yes: bool = False) -> None:
+    """Delete all rows from the users table. Fail-closed confirmation required."""
+    if not yes:
+        confirm = input('⚠️ This will DELETE ALL USERS. Type "WIPE" to confirm: ')
+        if confirm != "WIPE":
+            print("❌ Aborted. No changes made.")
+            return
+
+    db = SessionLocal()
+    try:
+        count = db.query(models.User).count()
+        db.query(models.User).delete()
+        db.commit()
+        print(f"🔥 Wiped users table. Deleted {count} user(s).")
     finally:
         db.close()
 
@@ -94,6 +126,10 @@ def main() -> None:
         action="store_true",
         help="Create as admin (requires ADMIN_CREATION_SECRET)",
     )
+    create_cmd.add_argument(
+        "--groups",
+        help='Comma-separated groups, e.g. "contractor,foo"',
+    )
 
     # delete
     delete_cmd = sub.add_parser("delete", help="Delete a user by email")
@@ -101,6 +137,14 @@ def main() -> None:
 
     # list
     sub.add_parser("list", help="List all users")
+
+    # wipe
+    wipe_cmd = sub.add_parser("wipe", help="Wipe ALL users from the database")
+    wipe_cmd.add_argument(
+        "--yes",
+        action="store_true",
+        help="Skip interactive confirmation (DANGEROUS)",
+    )
 
     args = parser.parse_args()
 
@@ -125,17 +169,24 @@ def main() -> None:
 
             is_admin = True
 
+        groups = parse_groups(getattr(args, "groups", None))
+
         create_user(
             args.email,
             args.password,
             full_name=args.full_name,
             is_admin=is_admin,
+            groups=groups,
         )
 
     elif args.command == "delete":
         delete_user(args.email)
+
     elif args.command == "list":
         list_users()
+
+    elif args.command == "wipe":
+        wipe_users(yes=bool(getattr(args, "yes", False)))
 
 
 if __name__ == "__main__":

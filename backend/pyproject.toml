@@ -5,8 +5,10 @@ description = "FastAPI backend for Fruitful Lab with SQLAlchemy and Postgres"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "boto3>=1.42.15",
     "email-validator>=2.3.0",
     "fastapi>=0.123.5",
+    "langchain-openai>=1.1.6",
     "passlib>=1.7.4",
     "psycopg[binary]>=3.3.1",
     "python-dotenv>=1.2.1",

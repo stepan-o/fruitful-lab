@@ -11,6 +11,7 @@ This handoff tells you exactly where to start, what’s already enforced, and wh
 - Redirect target is computed server-side (`/api/auth/login`) via `/auth/me` role lookup + role allowlist.
 - Middleware enforces protected paths at edge and does role authorization (admin vs contractor vs general).
 - Logout clears the cookie via `/api/auth/logout`.
+- Admin logout 404 was caused by an invalid `/logout` link in `AdminHeader`; logout must use `LogoutButton` (POST `/api/auth/logout`).
 
 **Protected spaces (current policy)**:
 - `/admin/*` → admin only
@@ -114,6 +115,7 @@ You will build the **Fruitful QA tool** under **contractor space**:
 - **Next build / Vercel export constraint:** components using `useSearchParams()` must be inside **Suspense** to avoid prerender failures (the `/tools` build failure was exactly this).
 - Contractor canonical route: ensure `/contractor` is real and not accidentally `/contractor/contractor`.
 - Middleware now calls backend `/auth/me` (requires NEXT_PUBLIC_API_BASE_URL to be correct in env).
+- Do not link to `/logout` unless you create an actual route; standard logout path is `POST /api/auth/logout`.
 
 ## 7) Where To Pick Up Contractor Tool Planning (Starting Point)
 
@@ -145,6 +147,7 @@ Your sprint planning should focus on:
 - Admin user:
     - visit `/admin/dashboard` → allowed
     - visit `/contractor` → allowed
+    - click Log out → should call `/api/auth/logout` and route to `/` (no 404).
 - Logout:
     - clears cookie and protected routes redirect to login again
 

@@ -2,7 +2,7 @@
 
 This repo includes a CLI helper at:
 
-- `backend/manage_users.py`
+- `backend/scripts/db/manage_users.py`
 
 It lets you **create**, **list**, **delete**, and **wipe** users in the `users` table (including `groups[]`).
 
@@ -10,10 +10,10 @@ It lets you **create**, **list**, **delete**, and **wipe** users in the `users` 
 
 ## Prerequisites
 
-### 1) Be in the `backend/` directory
+### 1) Be in the `backend/scripts/db/` directory
 All commands below assume you run them from:
 
-- `backend/`
+- `backend/scripts/db/`
 
 ### 2) Set your DB connection
 This project’s Alembic config (`backend/migrations/env.py`) pulls the DB URL from:

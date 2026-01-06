@@ -1,5 +1,6 @@
-// frontend/components/admin/AdminHeader.tsx
+// frontend/components/layout/AdminHeader.tsx
 import Link from "next/link";
+import LogoutButton from "@/components/layout/LogoutButton";
 
 export default function AdminHeader() {
     return (
@@ -40,7 +41,7 @@ export default function AdminHeader() {
                     </Link>
                 </nav>
 
-                {/* Right: lightweight actions */}
+                {/* Right: actions */}
                 <div className="flex items-center gap-2">
                     <Link
                         href="/tools"
@@ -49,13 +50,8 @@ export default function AdminHeader() {
                         Back to Tools
                     </Link>
 
-                    {/* If you already have a real logout route/button, swap this link */}
-                    <Link
-                        href="/logout"
-                        className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-xs font-semibold text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"
-                    >
-                        Log out
-                    </Link>
+                    {/* Uses POST /api/auth/logout, then push("/") */}
+                    <LogoutButton />
                 </div>
             </div>
         </header>

@@ -93,6 +93,7 @@ Key citations:
   - Source: frontend/app/api/auth/login/route.ts lines 146–154.
 - Cleared on logout (server route /api/auth/logout) by expiring the cookie with matching attributes + expires: new Date(0).
   - Source: frontend/app/api/auth/logout/route.ts lines 6–22.
+  - Logout is implemented as POST /api/auth/logout; GET /logout is not implemented unless explicitly added.
 - Read by middleware and server components via cookies API and forwarded to backend /auth/me.
   - Source: middleware read at lines 90–98; server helper getCurrentUser() in frontend/lib/auth.ts lines 21–37.
 

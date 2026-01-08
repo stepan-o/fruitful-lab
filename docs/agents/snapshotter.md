@@ -32,7 +32,6 @@ Snapshotter runs **two passes** per job.
 **Outputs:**
 - `repo_index.json` (required)
 - `artifact_manifest.json` (required)
-- `repo_snapshot.tar.gz` (optional, default ON for v0.1)
 
 ### Pass 2 (LLM, semantic)
 **Goal:** Produce onboarding-quality structure + gaps, *anchored to repo_index*.
@@ -59,7 +58,12 @@ Snapshotter accepts a single job payload:
   },
   "filters": {
     "deny_dirs": ["node_modules", ".git", ".next", "dist", "build", ".venv"],
-    "deny_file_regex": ["(?i).*\\.pem$", "(?i).*\\.key$", "(?i).*id_rsa$"],
+    "deny_file_regex": [
+      "(?i).*\\.pem$",
+      "(?i).*\\.key$",
+      "(?i).*id_rsa$",
+      "(?i)(^|\\/)(\\.env(\\..*)?)$"
+    ],
     "allow_exts": ["*"]
   },
   "output": {
@@ -72,13 +76,13 @@ Snapshotter accepts a single job payload:
   }
 }
 ```
+
 Defaults (v0.1):
 - `mode = full`
 - `max_file_bytes = 10MB`
 - `max_total_bytes = 250MB`
 - `max_files = 20,000`
 - `allow_exts="*"` with deny-list doing the safety work
-
 
 ## 4) S3 Output Layout (Locked)
 
@@ -95,7 +99,6 @@ Example:
 - `ARCHITECTURE_SUMMARY_SNAPSHOT.json`
 - `GAPS_AND_INCONSISTENCIES.json`
 - `ONBOARDING.md` (if enabled)
-- `repo_snapshot.tar.gz` (if enabled)
 
 ## 5) Security & Bucket Constraints (Locked)
 
@@ -149,7 +152,8 @@ Snapshotter must never upload secrets:
   ]
 }
 ```
-**Extraction rules (Pass 1):**
+
+### Extraction rules (Pass 1):
 - `language` inferred from extension (`.py`, `.ts`, `.tsx`, `.js`, `.json`, `.md`, etc.)
 - `imports`:
   - best-effort regex is acceptable in v0.1
@@ -157,11 +161,12 @@ Snapshotter must never upload secrets:
   - v0.1 required for Python via `ast`
   - best-effort for JS/TS (regex OK) OR mark unknown and add a flag
 
-**Determinism:**
+### Determinism:
 - file list sorted lexicographically by path
 - stable timestamps recorded, but ordering stable
 
 ## 7) Pass 2: LLM semantic outputs (Locked constraints)
+
 ### 7.1 ARCHITECTURE_SUMMARY_SNAPSHOT.json
 
 Must conform to the original Snapshotter concept, plus coverage/audit fields:
@@ -205,12 +210,13 @@ Must conform to the original Snapshotter concept, plus coverage/audit fields:
 }
 ```
 
-**Hard constraints:**
+### Hard constraints:
 - Responsibility must be grounded in:
   - docstrings/comments/README text, or
   - explicit exports / function names
 - If not grounded: `responsibility="unknown"` + an uncertainty entry
 - Dependencies must match literal imports (from Pass 1 index)
+- Snapshotter must never claim file coverage it cannot prove; `files_read` and `files_not_read` are authoritative.
 
 ### 7.2 GAPS_AND_INCONSISTENCIES.json
 
@@ -249,7 +255,7 @@ LLM does **not** blindly read every file. Instead:
 3) Worker streams contents for those files
 4) LLM outputs the semantic docs + `files_read`/`files_not_read`
 
-If the LLM requests a file not in `repo_index.json`: log it and mark as uncertainty.
+If the LLM requests a file not in `repo_index.json`: log it and mark it as an uncertainty.
 
 ## 9) Execution Environment (v0.1)
 
@@ -277,15 +283,14 @@ The Replit run prints one JSON object:
     "repo_index": "s3://.../repo_index.json",
     "architecture_snapshot": "s3://.../ARCHITECTURE_SUMMARY_SNAPSHOT.json",
     "gaps": "s3://.../GAPS_AND_INCONSISTENCIES.json",
-    "onboarding": "s3://.../ONBOARDING.md",
-    "tarball": "s3://.../repo_snapshot.tar.gz"
+    "onboarding": "s3://.../ONBOARDING.md"
   },
   "hashes": {
-    "repo_index_sha256": "string",
-    "tarball_sha256": "string"
+    "repo_index_sha256": "string"
   }
 }
 ```
+
 On failure:
 - `ok=false`
 - include `error_code`, `error_message`, `stage` (clone|pass1|pass2|upload)
@@ -294,21 +299,21 @@ On failure:
 
 These are “later” knobs, not required for v0.1:
 
-### A) Skip tarball
-- OFF by default later to reduce storage
-- Keep on in v0.1 for replayability
-
-### B) Parsing depth for JS/TS
+### A) Parsing depth for JS/TS
 - v0.1: regex imports + unknown defs is acceptable
 - v0.2+: ts-morph/tree-sitter
 
-### C) Multi-agent LLM pass
+### B) Multi-agent LLM pass
 - v0.1: single LLM call producing snapshot + gaps + onboarding
 - later: separate “summarizer” + “gap detector”
 
-### D) Triggering
+### C) Triggering
 - v0.1: manual run
 - later: LangGraph webhook trigger + retries
+
+### D) Replay bundle (read-set archive)
+- later: optionally archive only the Pass 2 `files_read` set for replayability
+- not part of v0.1
 
 ## 12) Final Decisions Locked (So We Don’t Wobble)
 
@@ -318,3 +323,4 @@ These are “later” knobs, not required for v0.1:
 - ✅ Outputs + S3 layout are locked
 - ✅ AES256 SSE-S3 required on all uploads
 - ✅ IAM user keys for v0.1
+- ✅ No repo tarball in v0.1

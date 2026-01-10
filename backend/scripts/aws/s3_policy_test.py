@@ -2,12 +2,19 @@
 """
 S3 bucket policy test for:
 - Deny non-HTTPS (not tested here; boto3 uses HTTPS by default)
-- Deny incorrect encryption header (StringNotEqualsIfExists -> AES256)
+- Require server-side encryption header on uploads:
+  - Deny unencrypted uploads (Null s3:x-amz-server-side-encryption = true)
+  - Deny incorrect encryption header (StringNotEquals s3:x-amz-server-side-encryption != AES256)
 
-Expected results:
-1) no SSE header      -> SUCCESS (if bucket default encryption is enabled)
+Expected results (given current bucket policy):
+1) no SSE header      -> FAIL (AccessDenied)
 2) SSE=AES256         -> SUCCESS
 3) SSE=aws:kms        -> FAIL (AccessDenied)
+
+Notes:
+- This script only tests PutObject behavior against the bucket policy.
+- Failures are expected to be AccessDenied; other error codes likely indicate a different issue
+  (credentials, region, missing permissions, etc.).
 """
 
 import argparse
@@ -72,12 +79,17 @@ def main():
         except ClientError as e:
             code = e.response.get("Error", {}).get("Code", "Unknown")
             msg = e.response.get("Error", {}).get("Message", "")
+
             if should_succeed:
                 print(f"  ❌ UNEXPECTED FAILURE: {code} — {msg}")
                 all_ok = False
             else:
-                # This is what we want for the aws:kms case
-                print(f"  ✅ EXPECTED FAILURE: {code} — {msg}")
+                # Expected for: missing SSE header, or SSE=aws:kms (policy requires AES256)
+                if code != "AccessDenied":
+                    print(f"  ❌ FAILED FOR UNEXPECTED REASON: {code} — {msg}")
+                    all_ok = False
+                else:
+                    print(f"  ✅ EXPECTED FAILURE: {code} — {msg}")
 
         print("-" * 60)
 

@@ -1,68 +1,95 @@
 import "@testing-library/jest-dom";
-import Page, { resolvePinterestPotentialVariant } from "@/app/(flow)/tools/pinterest-potential/page";
+import type { ReactElement } from "react";
 import { render, screen } from "@testing-library/react";
+
+// Mock the rendered components so tests don't depend on actual UI headings/text
+jest.mock("@/components/tools/pinterestPotential/PinterestPotentialV1", () => ({
+    PinterestPotentialV1: () => <h1>Pinterest Potential — welcome</h1>,
+}));
+jest.mock("@/components/tools/pinterestPotential/PinterestPotentialV2", () => ({
+    PinterestPotentialV2: () => <h1>Pinterest Potential — no_welcome</h1>,
+}));
+
+import Page, {
+    resolvePinterestPotentialVariant,
+} from "@/app/(flow)/tools/pinterest-potential/page";
 
 // Mock cookies() from next/headers to control cookie-based variant
 const get = jest.fn();
 const set = jest.fn();
+
 jest.mock("next/headers", () => ({
-  cookies: async () => ({ get, set }),
+    cookies: async () => ({ get, set }),
 }));
 
-describe("pinterest-potential page variant resolution (J3)", () => {
-  it("honors query override even when cookie differs", () => {
-    const v = resolvePinterestPotentialVariant("v2", "v1");
-    expect(v).toBe("v2");
-  });
+describe("pinterest-potential page variant resolution", () => {
+    it("honors query override even when cookie differs", () => {
+        const v = resolvePinterestPotentialVariant("no_welcome", "welcome");
+        expect(v).toBe("no_welcome");
+    });
 
-  it("uses cookie when no query provided", () => {
-    const v = resolvePinterestPotentialVariant(undefined, "v2");
-    expect(v).toBe("v2");
-  });
+    it("uses cookie when no query provided", () => {
+        const v = resolvePinterestPotentialVariant(undefined, "no_welcome");
+        expect(v).toBe("no_welcome");
+    });
 
-  it("falls back to default when cookie is invalid and no query provided", () => {
-    const v = resolvePinterestPotentialVariant(undefined, "not-a-variant");
-    expect(["v1", "v2"]).toContain(v);
-    // We cannot import DEFAULT_VARIANT directly here without coupling; assert membership and not invalid
-    expect(v).not.toBe("not-a-variant");
-  });
+    it("falls back to default when cookie is invalid and no query provided", () => {
+        const v = resolvePinterestPotentialVariant(undefined, "not-a-variant");
+        expect(["welcome", "no_welcome"]).toContain(v);
+        expect(v).not.toBe("not-a-variant");
+    });
 
-  it("falls back to default when neither query nor cookie is present", () => {
-    const v = resolvePinterestPotentialVariant(undefined, undefined);
-    expect(["v1", "v2"]).toContain(v);
-  });
+    it("falls back to default when neither query nor cookie is present", () => {
+        const v = resolvePinterestPotentialVariant(undefined, undefined);
+        expect(["welcome", "no_welcome"]).toContain(v);
+    });
 });
 
+type PageProps = {
+    searchParams?: { variant?: string; leadMode?: string; t?: string };
+};
+
+type PageFn = (props: PageProps) => Promise<ReactElement>;
+
 describe("pinterest-potential page rendering", () => {
-  beforeEach(() => {
-    get.mockReset();
-    set.mockReset();
-  });
+    beforeEach(() => {
+        get.mockReset();
+        set.mockReset();
+    });
 
-  it("renders V2 when searchParams.variant=v2 regardless of cookie", async () => {
-    get.mockReturnValueOnce({ name: "pp_variant", value: "v1" });
-    const element = await (Page as any)({ searchParams: { variant: "v2" } });
-    render(element);
-    expect(
-      screen.getByRole("heading", { name: /pinterest potential calculator — v2/i })
-    ).toBeInTheDocument();
-  });
+    it("renders no_welcome when searchParams.variant=no_welcome regardless of cookie", async () => {
+        get.mockReturnValueOnce({ name: "pp_variant", value: "welcome" });
 
-  it("renders V1 when cookie says v1 and no query", async () => {
-    get.mockReturnValueOnce({ name: "pp_variant", value: "v1" });
-    const element = await (Page as any)({});
-    render(element);
-    expect(
-      screen.getByRole("heading", { name: /pinterest potential calculator — v1/i })
-    ).toBeInTheDocument();
-  });
+        const PageTyped = Page as unknown as PageFn;
+        const element = await PageTyped({ searchParams: { variant: "no_welcome" } });
 
-  it("renders V2 when cookie says v2 and no query", async () => {
-    get.mockReturnValueOnce({ name: "pp_variant", value: "v2" });
-    const element = await (Page as any)({});
-    render(element);
-    expect(
-      screen.getByRole("heading", { name: /pinterest potential calculator — v2/i })
-    ).toBeInTheDocument();
-  });
+        render(element);
+        expect(
+            screen.getByRole("heading", { name: /pinterest potential — no_welcome/i }),
+        ).toBeInTheDocument();
+    });
+
+    it("renders welcome when cookie says welcome and no query", async () => {
+        get.mockReturnValueOnce({ name: "pp_variant", value: "welcome" });
+
+        const PageTyped = Page as unknown as PageFn;
+        const element = await PageTyped({});
+
+        render(element);
+        expect(
+            screen.getByRole("heading", { name: /pinterest potential — welcome/i }),
+        ).toBeInTheDocument();
+    });
+
+    it("renders no_welcome when cookie says no_welcome and no query", async () => {
+        get.mockReturnValueOnce({ name: "pp_variant", value: "no_welcome" });
+
+        const PageTyped = Page as unknown as PageFn;
+        const element = await PageTyped({});
+
+        render(element);
+        expect(
+            screen.getByRole("heading", { name: /pinterest potential — no_welcome/i }),
+        ).toBeInTheDocument();
+    });
 });

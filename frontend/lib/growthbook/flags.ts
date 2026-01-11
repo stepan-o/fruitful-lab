@@ -8,43 +8,71 @@ import { growthbookAdapter } from "@flags-sdk/growthbook";
 import { after } from "next/server";
 import { logExperimentEvent } from "@/lib/experiments/track";
 
-// Tracking callback → send exposure events through central pipe
-growthbookAdapter.setTrackingCallback((experiment: any, result: any) => {
-  after(async () => {
-    try {
-      // Forward an exposure event to our API (no secrets)
-      await logExperimentEvent({
-        type: "exposure",
-        experimentKey: String(experiment?.key ?? ""),
-        // Prefer standard fields; fall back to value/key where needed
-        variant: String(
-          result?.variationId ?? result?.key ?? result?.value ?? ""
-        ),
-        attributes: (result?.attributes as Record<string, unknown>) ?? undefined,
-        source: "growthbook",
-      });
+type GrowthbookExperimentLike = {
+    key?: unknown;
+};
 
-      if (process.env.NODE_ENV === "development") {
-        // eslint-disable-next-line no-console
-        console.log("[growthbook exposure]", experiment?.key, {
-          variant: result?.variationId ?? result?.key ?? result?.value,
-        });
-      }
-    } catch (err) {
-      if (process.env.NODE_ENV === "development") {
-        // eslint-disable-next-line no-console
-        console.error("[growthbook exposure] failed to log", err);
-      }
+type GrowthbookResultLike = {
+    value?: unknown; // IMPORTANT: prefer this for canonical variant values ("welcome" | "no_welcome")
+    key?: unknown;
+    variationId?: unknown; // often "0"/"1" etc — keep as last resort fallback only
+    attributes?: unknown;
+};
+
+function toStringSafe(v: unknown): string {
+    return typeof v === "string" ? v : v == null ? "" : String(v);
+}
+
+function toAttributesSafe(v: unknown): Record<string, unknown> | undefined {
+    if (v && typeof v === "object" && !Array.isArray(v)) {
+        return v as Record<string, unknown>;
     }
-  });
-});
+    return undefined;
+}
+
+// Tracking callback → send exposure events through central pipe
+growthbookAdapter.setTrackingCallback(
+    (experiment: GrowthbookExperimentLike, result: GrowthbookResultLike) => {
+        after(async () => {
+            try {
+                const expKey = toStringSafe(experiment?.key);
+
+                // Canonical variant value ordering:
+                // 1) result.value (should be "welcome" | "no_welcome")
+                // 2) result.key
+                // 3) result.variationId (often numeric-ish; last resort only)
+                const variant = toStringSafe(
+                    result?.value ?? result?.key ?? result?.variationId ?? "",
+                );
+
+                await logExperimentEvent({
+                    type: "exposure",
+                    experimentKey: expKey,
+                    variant,
+                    attributes: toAttributesSafe(result?.attributes),
+                    source: "growthbook",
+                });
+
+                if (process.env.NODE_ENV === "development") {
+                    // eslint-disable-next-line no-console
+                    console.log("[growthbook exposure]", expKey, { variant });
+                }
+            } catch (err) {
+                if (process.env.NODE_ENV === "development") {
+                    // eslint-disable-next-line no-console
+                    console.error("[growthbook exposure] failed to log", err);
+                }
+            }
+        });
+    },
+);
 
 // --- Debug/health snapshot (dev-only utility) ---
 // Inspect via the /api/debug/growthbook endpoint.
 export const growthbookDebugState = {
-  envConfigured: false,
-  initialized: false,
-  lastError: null as Error | null,
+    envConfigured: false,
+    initialized: false,
+    lastError: null as Error | null,
 };
 
 // Evaluate env configuration once on import
@@ -55,29 +83,29 @@ growthbookDebugState.envConfigured = !!clientKey;
 // Initialize the adapter so the SDK connection sees traffic — but only when
 // env vars are present. Errors are captured in debug state and logged in dev.
 if (growthbookDebugState.envConfigured) {
-  void growthbookAdapter
-    .initialize()
-    .then(() => {
-      growthbookDebugState.initialized = true;
-      if (process.env.NODE_ENV !== "production") {
-        // eslint-disable-next-line no-console
-        console.log("[GrowthBook] adapter initialized", { apiHost });
-      }
-    })
-    .catch((err: unknown) => {
-      const error = err instanceof Error ? err : new Error(String(err));
-      growthbookDebugState.lastError = error;
-      if (process.env.NODE_ENV !== "production") {
-        // eslint-disable-next-line no-console
-        console.error("[GrowthBook] adapter failed to initialize", error);
-      }
-    });
+    void growthbookAdapter
+        .initialize()
+        .then(() => {
+            growthbookDebugState.initialized = true;
+            if (process.env.NODE_ENV !== "production") {
+                // eslint-disable-next-line no-console
+                console.log("[GrowthBook] adapter initialized", { apiHost });
+            }
+        })
+        .catch((err: unknown) => {
+            const error = err instanceof Error ? err : new Error(String(err));
+            growthbookDebugState.lastError = error;
+            if (process.env.NODE_ENV !== "production") {
+                // eslint-disable-next-line no-console
+                console.error("[GrowthBook] adapter failed to initialize", error);
+            }
+        });
 } else if (process.env.NODE_ENV !== "production") {
-  // eslint-disable-next-line no-console
-  console.warn("[GrowthBook] env not configured; skipping initialize()", {
-    clientKeyPresent: !!clientKey,
-    apiHost,
-  });
+    // eslint-disable-next-line no-console
+    console.warn("[GrowthBook] env not configured; skipping initialize()", {
+        clientKeyPresent: !!clientKey,
+        apiHost,
+    });
 }
 
 // Debug usage (dev only):

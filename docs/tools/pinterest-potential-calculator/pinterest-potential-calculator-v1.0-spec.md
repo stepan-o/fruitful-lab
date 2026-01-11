@@ -15,6 +15,12 @@
 4. Make UI feel **dynamic and engaging** (but lightweight)
 5. Keep logic **config-driven** (easy to expand niches, edit benchmarks, tune multipliers)
 6. Add **inferred logic** for **seasonality** and **competitiveness** (not asked)
+7. **Lead gating is mandatory** as a *flow capability* with support for **flexible capture modes**:
+    - Existing lead → **no email collection**
+    - New lead (hard lock) → **email required before results**
+    - New lead (soft lock) → **results shown + optional “email me the results” capture**
+
+> Clarification: “Lead gating is mandatory” means the product must support these modes. It does **not** mean email is always required (soft lock allows skipping capture).
 
 ### KPIs
 - Primary: `ppc_complete` (results viewed / completion rate)
@@ -47,6 +53,15 @@
 ### Events
 - `ppc_view_start` (welcome viewed OR Q1 viewed for no-welcome)
 - `ppc_start` (Start clicked OR first interaction on Q1)
+
+### Lead gating interaction with start variants (required)
+- Lead gating must work identically for both variants:
+    - **Hard lock**: results are blocked until a valid email is collected (**unless known lead**)
+    - **Soft lock**: results are shown and the user can optionally submit email to receive results
+    - **Known lead**: skip email collection entirely (hard/soft both treated as “skip”)
+
+**Known lead definition (required):**
+- A user is considered a **known lead** if lead identity is already available at runtime (e.g., authenticated user profile **or** a valid lead token in the URL). If no identity is available, treat as **new lead**.
 
 ## 3) Data Inputs: Segmentation + Questions (8 Total)
 
@@ -239,6 +254,17 @@
 
 ## 5) Results Page (Minimal + High Impact)
 
+### Lead gating placement (mandatory)
+Results UX depends on lead state + lead mode:
+
+- **Known lead (existing)**: show results immediately (no email collection UI)
+- **New lead + hard lock**: show lead gate screen **before** results (email required)
+- **New lead + soft lock**: show results immediately with an **optional** inline/email panel:
+    - “Email me the results” (name optional, email required)
+    - Confirmation state: “Sent — check your inbox” (or “We’ll email your snapshot shortly”)
+
+> Lead mode is a product/ops control and must remain flexible at runtime (see Section 6 for modes and precedence).
+
 ### Structure (3 stacked cards on mobile)
 
 #### Card 1 — Potential Pinterest Audience (always)
@@ -278,18 +304,28 @@ Under the cards (or under Card 2):
 - `ppc_complete` (results viewed)
 - `ppc_cta_click` (CTA clicked)
 
+### Lead capture events (mandatory; new)
+- `ppc_lead_view` (lead gate viewed — hard lock OR soft lock email panel shown)
+- `ppc_lead_submit` (email submitted; include `mode = hard_lock | soft_lock`)
+- `ppc_lead_skip` (only for soft lock when user dismisses/continues without email, if feasible)
+
+> If you want to keep the event set minimal, `ppc_lead_view` and `ppc_lead_submit` are required; `ppc_lead_skip` is optional.
+
 ## 6) Analytics / Telemetry Requirements
 
 ### Events (must-have)
 - `ppc_view_start` (welcome or Q1)
 - `ppc_start` (start click or first Q1 interaction)
 - `ppc_answer` (question_id, answer_id)
-- `ppc_complete` (segment, niche, primary_goal, variant, inferred indices)
+- `ppc_complete` (segment, niche, primary_goal, variant, inferred indices, lead_mode, lead_state)
 - `ppc_cta_click`
+- `ppc_lead_view` (lead gate/panel displayed)
+- `ppc_lead_submit` (lead captured)
 
 ### Optional but useful
 - `ppc_back` (question_id)
 - `ppc_dropoff` (last_question_id on unload if feasible)
+- `ppc_lead_skip` (soft lock only; user proceeds without email)
 
 ### Dimensions to include in `ppc_complete`
 - `variant = welcome | no_welcome`
@@ -298,6 +334,13 @@ Under the cards (or under Card 2):
 - `primary_goal`
 - `seasonality_index`
 - `competition_index`
+- `lead_mode = hard_lock | soft_lock`
+- `lead_state = known | new`
+
+### Dimensions to include in `ppc_lead_submit`
+- `lead_mode = hard_lock | soft_lock`
+- `lead_state = new | known` (known should generally not submit; included for safety)
+- `segment`, `niche`, `primary_goal`, `variant` (recommended for attribution)
 
 ## 7) Core Computation Model (Config-driven)
 
@@ -317,6 +360,11 @@ Under the cards (or under Card 2):
 ### Important: Avoid false precision
 - Use small multipliers; keep effect subtle (±10–15% max)
 - Return ranges only; no single “exact” number
+
+### Lead gating interaction with compute (required)
+- Computation must be possible **before** email collection (hard lock) so the lead gate can truthfully say:
+    - “We’ve calculated your snapshot — enter email to view it.”
+- However, results **must not render** until the lead gate is satisfied in hard lock mode (unless known lead).
 
 ## 8) Inferred Logic (Not Asked): Seasonality + Competitiveness
 
@@ -406,12 +454,41 @@ Each entry includes:
 
 > Keep this small so it never dominates. Can be added later if needed.
 
+### Lead gating config (required)
+Lead gating behavior must be configurable at runtime (without code changes) using a small config surface.
+
+Suggested schema:
+Suggested schema:
+```json
+{
+  "lead_gating": {
+    "default_mode": "hard_lock",
+    "modes": ["hard_lock", "soft_lock"],
+    "known_lead_behavior": "skip",
+
+    "email_optional_in_soft_lock": true,
+
+    "capture_fields": {
+      "email": { "required": true },
+      "name": { "required": false }
+    }
+  }
+}
+```
+
+Notes:
+- `known_lead_behavior = skip` means if the user is identified as an existing lead, email capture is not shown.
+- In **soft lock**, results remain visible even if the user does not submit email. Email is required only if the user chooses “email me the results.”
+
 ## 10) UI/Frontend Dynamics (Lightweight, React-friendly)
 
 ### Must-have “dynamic wins” (v0.2 baseline)
 1) Sticky progress bar + step counter
 2) Card/chip selectors (Q1/Q2) + bottom sheet for “More”
 3) Results: SVG meters + stagger reveal + subtle count-up
+4) Lead gating UI that feels native and lightweight:
+    - Hard lock: single-screen email gate with micro reassurance
+    - Soft lock: inline “Email me the results” panel with a compact form and success state
 
 ### Recommended approach
 - Prefer **inline SVG** over images
@@ -429,25 +506,36 @@ Each entry includes:
 - [ ] Inferred seasonality + competition included in computation
 - [ ] Results page: 3 cards + single CTA
 - [ ] Store inferred indices + optional insight note in results payload
+- [ ] **Lead gating (mandatory) with flexible modes:**
+    - [ ] Known lead → skip email collection
+    - [ ] New lead + hard lock → email required before results
+    - [ ] New lead + soft lock → results visible + optional “email the results” capture
 
 ### Analytics
-- [ ] Track required events
-- [ ] Include `segment/niche/variant/goal + inferred indices` in `ppc_complete`
+- [ ] Track required events (view/start/answer/complete/CTA)
+- [ ] Track lead events (`ppc_lead_view`, `ppc_lead_submit`)
+- [ ] Include `segment/niche/variant/goal + inferred indices + lead_mode/lead_state` in `ppc_complete`
 
 ### UI
 - [ ] Mobile-friendly tap targets
 - [ ] Progress indicator
 - [ ] Lightweight SVG visuals per key screen
 - [ ] Results reveal animations
+- [ ] Lead gating UI for hard/soft lock
 
 ## 12) Acceptance Criteria (Final)
 
-1) Supports **3 segments** and segment-specific **niche selection**  
-2) Total questions **≤ 8**  
-3) Results page shows **3 stacked cards** + **single CTA**  
-4) Welcome A/B test exists and is trackable  
-5) Tracking events implemented: view/start/answer/complete/CTA  
-6) Benchmarks + multipliers are **config-driven** (no hard-coded baby-only logic)  
-7) Each benchmark row includes `seasonality` and `competition` indices  
-8) Opportunity estimates incorporate seasonality + competition multipliers (subtle)  
-9) Results payload includes inferred indices and optional insight note  
+1) Supports **3 segments** and segment-specific **niche selection**
+2) Total questions **≤ 8**
+3) Results page shows **3 stacked cards** + **single CTA**
+4) Welcome A/B test exists and is trackable
+5) Tracking events implemented: view/start/answer/complete/CTA
+6) Benchmarks + multipliers are **config-driven** (no hard-coded baby-only logic)
+7) Each benchmark row includes `seasonality` and `competition` indices
+8) Opportunity estimates incorporate seasonality + competition multipliers (subtle)
+9) Results payload includes inferred indices and optional insight note
+10) **Lead gating is implemented and configurable:**
+- Known lead skips email capture
+- Hard lock requires email before results
+- Soft lock shows results with optional “email the results” capture
+11) Lead telemetry exists: `ppc_lead_view` and `ppc_lead_submit`, and `ppc_complete` includes `lead_mode` + `lead_state`

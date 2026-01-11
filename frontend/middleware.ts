@@ -76,6 +76,7 @@ async function fetchMe(token: string): Promise<MeResponse | null> {
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
+    // GrowthBook cookie injection for the Pinterest Potential tool entry
     const shouldRunExperiments = pathname.startsWith("/tools/pinterest-potential");
 
     // ---- PUBLIC ROUTES
@@ -116,13 +117,18 @@ export async function middleware(req: NextRequest) {
     // role not allowed → route-safe redirect
     // (we don't send to login because they're already authenticated)
     if (!roleAllowedForPath(role, pathname)) {
-        const target = role === "admin" ? "/admin/dashboard" : role === "contractor" ? "/contractor" : "/tools";
+        const target =
+            role === "admin"
+                ? "/admin/dashboard"
+                : role === "contractor"
+                    ? "/contractor"
+                    : "/tools";
         return NextResponse.redirect(new URL(target, req.url));
     }
 
     const res = NextResponse.next();
 
-    // If you ever want experiments on protected routes too, move this outside the public block.
+    // If you ever want experiments on protected routes too, move this outside the protected block.
     if (shouldRunExperiments) {
         await applyExperimentCookies(req, res);
     }

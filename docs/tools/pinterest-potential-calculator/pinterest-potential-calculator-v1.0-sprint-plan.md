@@ -8,400 +8,339 @@
 - UI primitives are minimal → we must add BottomSheet + ProgressBar (+ optional SegmentedToggle) and lean on inline SVG/CSS for flair.
 
 **Delivery strategy:** Build the vNext tool in parallel (new components + compute + API), wire it into the existing route/variant system, then remove v1 implementation once vNext meets acceptance criteria.
-md
-Copy code
-## Sprint 0 — Repo prep + “new tool surface” scaffolding
 
-### Outcomes
-- Create a clean vNext namespace (components + lib) without touching v1 yet.
-- Establish types + config skeletons + event helper interfaces so later sprints are mechanical.
+**Decision:** We will *not* create `pinterestPotentialVNext/*`. We’ll implement v0.2 by **rewriting in-place** under the existing folders:
 
-### Tasks
-1) **Create vNext folders**
-- `frontend/components/tools/pinterestPotentialVNext/`
-- `frontend/lib/tools/pinterestPotentialVNext/`
-- `frontend/lib/tools/pinterestPotentialVNext/config/`
+- **UI + flow:** `frontend/components/tools/pinterestPotential/*`
+    - `PinterestPotentialV1.tsx` = **Welcome** variant
+    - `PinterestPotentialV2.tsx` = **No-welcome** variant
+    - `PinterestPotentialWizard.tsx` = new 8Q wizard + results + lead gating
+    - `steps/*` rewritten to Q1–Q8 + lead gating pieces (hard/soft), removing Q1–Q9 legacy
+- **Logic + config:** `frontend/lib/tools/pinterestPotential/*`
+    - `compute.ts` rewritten to config-driven range model + inferred indices
+    - `pinterestPotentialSpec.ts` rewritten to v0.2 question schema + validation
+    - add `benchmarks.ts`, `multipliers.ts`, `leadGatingConfig.ts`, `insight.ts` *inside the same folder*
+- **Routing:** keep `/tools/pinterest-potential` entry page, but update variant mapping and lead-mode mapping.
+- **Telemetry:** extend `frontend/lib/gtm.ts` to support **ppc_*** events (keep existing helpers, add new ones).
+- **Lead email delivery:** add an API route under `frontend/app/api/...` + provider integration (since none exists today).
 
-2) **Define vNext types (single source of truth)**
-- `types.ts`:
-    - `Segment`, `Niche`, `LeadMode`, `LeadState`
-    - `Answers` (Q1–Q8)
-    - `BenchmarkRow`, `MultipliersConfig`
-    - `ComputeInput`, `ComputeOutput` (ranges + indices + optional insight string)
+**Important mapping note:** Even if we keep components named “V1/V2”, the *experiment variant values* will be updated to `welcome | no_welcome` (spec requirement). V1/V2 file names remain; their meaning changes.
 
-3) **Create config skeletons**
-- `config/benchmarks.ts` (seed with representative rows per segment to unblock UI; expand later)
-- `config/multipliers.ts` (as per spec)
-- `config/leadGating.ts` (default_mode + known behavior + capture fields)
+## Sprint 0 — In-place scaffolding (types + configs + event wrappers)
 
-4) **Create analytics skeleton**
-- `frontend/lib/tools/pinterestPotentialVNext/analytics.ts` with typed wrappers that call `pushEvent`
-    - `trackPpcViewStart`, `trackPpcStart`, `trackPpcAnswer`, `trackPpcComplete`, `trackPpcCtaClick`, `trackPpcLeadView`, `trackPpcLeadSubmit`, `trackPpcLeadSkip?`
+### Outcome
+v0.2 building blocks exist **inside the current pinterestPotential folder**, without changing the UI flow yet.
 
-### Exit criteria
-- vNext compiles (even if unused), with typed config + analytics wrappers in place.
-  md
-  Copy code
-## Sprint 1 — Routing + A/B variant plumbing (welcome vs no-welcome)
+### Tasks (in-place)
+1) **Rewrite/introduce v0.2 types in `frontend/lib/tools/pinterestPotential/pinterestPotentialSpec.ts`**
+- Define:
+    - `Segment = content_creator | product_seller | service_provider`
+    - `Niche` slug unions per segment (+ `other`)
+    - `LeadMode = hard_lock | soft_lock`
+    - `LeadState = known | new`
+    - `Answers` for Q1–Q8 (slug/string-based, not numeric-only)
+- Include per-question IDs exactly: `Q1..Q8` for telemetry.
 
-### Outcomes
-- `/tools/pinterest-potential` can render vNext using the existing precedence chain:
-    - `?variant` → cookie → default
-- Variants represent the new A/B start experience:
-    - `welcome` and `no_welcome`
-- Lead state & lead mode still resolved server-side and passed to client.
+2) **Add config files under the same folder**
+- `frontend/lib/tools/pinterestPotential/benchmarks.ts`
+- `frontend/lib/tools/pinterestPotential/multipliers.ts`
+- `frontend/lib/tools/pinterestPotential/leadGatingConfig.ts`
+- `frontend/lib/tools/pinterestPotential/insight.ts`
 
-### Tasks
-1) **Update experiment/variant definitions**
-- Replace variants list from `["v1","v2"]` → `["welcome","no_welcome"]`
-- Update default in config to `welcome` (or whatever you want as default).
-
-2) **Update normalize/resolve mapping**
-- In `frontend/app/(flow)/tools/pinterest-potential/page.tsx`:
-    - keep `resolvePinterestPotentialVariant` but normalize to `welcome | no_welcome`
-    - keep query override support: `?variant=...`
-
-3) **Wire vNext component(s)**
-- Introduce:
-    - `PinterestPotentialWelcomeVariant` (Welcome → Start → Wizard)
-    - `PinterestPotentialNoWelcomeVariant` (Wizard directly at Q1)
-- Both variants render the same `Wizard` component; only differ in start screen.
-
-4) **Keep lead init path**
-- Keep `initialLead` and `leadMode` resolution in server page:
-    - Known lead detection: authenticated user OR decoded token.
-- Map lead mode to vNext:
-    - `hard_lock | soft_lock`
-    - If existing lead: always “skip UI”.
+3) **Add typed telemetry wrappers (keep GTM as source)**
+- Update `frontend/lib/gtm.ts`:
+    - Add: `trackPpcViewStart`, `trackPpcStart`, `trackPpcAnswer`, `trackPpcComplete`, `trackPpcCtaClick`, `trackPpcLeadView`, `trackPpcLeadSubmit`, `trackPpcLeadSkip?`
+    - Keep existing `pushEvent()` as-is.
 
 ### Exit criteria
-- Navigating to `/tools/pinterest-potential?variant=welcome` shows Welcome screen.
-- Navigating to `/tools/pinterest-potential?variant=no_welcome` shows Q1 immediately.
-- Both variants receive `{ leadMode, initialLead }` props correctly.
+- Repo compiles with new files added under `lib/tools/pinterestPotential/`.
+- No UI behavior changes yet.
+
+## Sprint 1 — Variant plumbing (welcome vs no-welcome) while reusing V1/V2 components
+
+### Outcome
+`/tools/pinterest-potential` renders **either Welcome start or No-welcome start**, using existing V1/V2 component slots.
+
+### Tasks
+1) **Update experiment variants**
+- `frontend/lib/experiments/config.ts`:
+    - Replace `["v1","v2"]` → `["welcome","no_welcome"]`
+    - Set default (recommend: `welcome`)
+- Keep cookie name `pp_variant` (reuse existing plumbing).
+
+2) **Update server entry mapping**
+- `frontend/app/(flow)/tools/pinterest-potential/page.tsx`:
+    - Keep precedence logic (query → cookie → default).
+    - Map:
+        - `welcome` → render `PinterestPotentialV1`
+        - `no_welcome` → render `PinterestPotentialV2`
+    - Keep passing `leadMode` + `initialLead`.
+
+3) **Lead mode mapping alignment**
+- Current `leadMode.ts` contains legacy modes (`gate_before_results`, etc).
+- Rewrite `frontend/lib/tools/pinterestPotential/leadMode.ts` to:
+    - Resolve to **hard_lock | soft_lock**
+    - Preserve known-lead override: if known → “skip UI” behavior (still pass mode, but UI will ignore).
+
+### Exit criteria
+- `?variant=welcome` shows Welcome start (via V1 component).
+- `?variant=no_welcome` jumps to Q1 (via V2 component).
+- Lead token and known lead detection still work at the entry page level.
   md
   Copy code
-## Sprint 2 — UI primitives + “React flair” baseline
+## Sprint 2 — UI primitives (add missing pieces) + upgrade selectors for slug answers
 
-### Outcomes
-- Build the missing primitives needed by the spec:
-    - Bottom sheet for “More” on Q2
-    - Sticky progress bar for steps
-- Add lightweight motion polish (CSS + inline SVG), no heavy libraries.
+### Outcome
+We can implement Q2 chips + “More” bottom sheet + sticky progress bar with solid mobile UX and “React flair”.
 
 ### Tasks
 1) **Add `BottomSheet` primitive**
-- `frontend/components/ui/BottomSheet.tsx`
-- Requirements:
-    - Mobile-first slide-up drawer
-    - Scrim click-to-close
-    - ESC close
-    - Focus trap-lite (at minimum: focus initial element + return focus on close)
-    - Reduced motion support (`prefers-reduced-motion`)
+- Create `frontend/components/ui/BottomSheet.tsx`
+- Features:
+    - slide-up, scrim, ESC close, focus return
+    - reduced motion support
 
 2) **Add `ProgressBar` primitive**
-- `frontend/components/ui/ProgressBar.tsx`
-- Used as sticky header: “Step X of 8” + bar.
+- Create `frontend/components/ui/ProgressBar.tsx`
+- Sticky header: “Step X of 8” + bar fill.
 
-3) **Selector building blocks**
-- Prefer modifying existing primitives to accept string ids:
-    - `RadioPillGroup`: allow `value: string | number`
-    - `CheckboxCardGrid`: allow `values: Array<string|number>` and `id/value: string|number`
-- This avoids duplicating selectors for slugs.
+3) **Upgrade existing selector primitives to accept string IDs**
+- Update:
+    - `RadioPillGroup.tsx` to allow `value: string | number`
+    - `CheckboxCardGrid.tsx` to allow `values: Array<string|number>` and `id/value: string|number`
+- This avoids creating duplicate chip/card components.
 
-4) **Welcome screen micro-flair**
-- Inline SVG hero: “pins floating into a chart”
-- CSS shimmer underline on headline
-- Button tap feedback (scale/translate, reduced motion safe)
+4) **Welcome micro-flair assets**
+- Inline SVG hero + shimmer underline + button tap feedback (CSS only).
 
 ### Exit criteria
-- BottomSheet + ProgressBar usable in isolation.
-- Selector components can store slug-based answers without adapters.
-- Welcome screen looks “designed,” not dev-default.
+- BottomSheet + ProgressBar exist and are usable.
+- Selector primitives can store slug-based answers cleanly (no adapter hacks).
   md
   Copy code
-## Sprint 3 — Wizard core (8 questions) + navigation behavior
+## Sprint 3 — Rewrite Wizard in-place: 8Q flow + nav + draft persistence
 
-### Outcomes
-- Implement the full Q1–Q8 flow with:
-    - Auto-advance after selection (250–400ms)
-    - Back chevron (internal state)
-    - Sticky progress (Step X of 8)
-    - Mobile-friendly tap targets (≥44px)
-    - Helper microcopy + compact layout
+### Outcome
+`PinterestPotentialWizard.tsx` becomes the v0.2 8-step wizard (Q1–Q8), mobile-first, with progress, back chevron, auto-advance, and sessionStorage draft.
 
-### Tasks
-1) **Wizard state machine**
-- `Wizard.tsx` client component with reducer:
-    - `stepIndex` (1–8)
-    - `answers` (Q1–Q8)
-    - `started` boolean (for ppc_start rules)
-    - `draft persistence` via sessionStorage key: `pinterestPotential:draft:vNext`
-    - Clear draft on completion or explicit reset
+### Tasks (in-place rewrites)
+1) **Rewrite `frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx`**
+- Replace reducer/state:
+    - `stepIndex 1..8`
+    - `answers` (v0.2 type)
+    - `started` dedupe flag for `ppc_start`
+    - sessionStorage key: `pinterestPotential:draft:v2` (or keep v1 key if you don’t care—recommend bump key to avoid stale incompatible drafts)
 
-2) **Steps implementation**
-- `steps/Q1Segment.tsx` (3 large cards + icons)
-- `steps/Q2Niche.tsx` (chip picker + “More” bottom sheet + non-numeric preview meter)
-- `steps/Q3Volume.tsx` (segmented selector w/ sparkline growth)
-- `steps/Q4Visual.tsx` (4 cards w/ grid tile animation)
-- `steps/Q5Site.tsx` (A–D phone-frame SVG states)
-- `steps/Q6Offer.tsx` (3-state fill-meter)
-- `steps/Q7Goal.tsx` (2×2 grid + preview line)
-- `steps/Q8GrowthMode.tsx` (3-state toggle; optional rocket for ads)
+2) **Rewrite steps directory**
+- Replace `frontend/components/tools/pinterestPotential/steps/*` with:
+    - `Q1Segment.tsx`
+    - `Q2Niche.tsx` (chips + More bottom sheet + audience-size preview meter)
+    - `Q3Volume.tsx`
+    - `Q4Visual.tsx`
+    - `Q5Site.tsx`
+    - `Q6Offer.tsx`
+    - `Q7Goal.tsx`
+    - `Q8GrowthMode.tsx`
 
-3) **Auto-advance**
-- Each step emits `onAnswer(value)`; wizard sets answer, then advances after short delay.
-
-4) **Back behavior**
-- Back chevron decrements step; answers persist.
+3) **Global behavior**
+- Sticky ProgressBar
+- Auto-advance after selection (250–400ms)
+- Back chevron (internal nav, not browser)
+- Helper microcopy: “Pick the closest match”
 
 ### Exit criteria
-- Complete wizard without compute/lead gating and land on a placeholder “Results computing…” screen.
-- Q2 list properly changes based on Q1 segment.
-- UX feels mobile-native.
+- Both variants can complete Q1–Q8 and land on a placeholder “Crunching…” screen.
+- Q2 is dynamic based on Q1.
+- UI feels polished on mobile.
   md
   Copy code
-## Sprint 4 — Config-driven compute engine + inferred indices + insight
+## Sprint 4 — Rewrite compute engine in-place (config-driven ranges + inferred indices + insight)
 
-### Outcomes
-- Implement real computation (ranges only) using:
-    - benchmark row keyed by `(segment, niche)`
-    - multipliers from Q3–Q8
-    - inferred `seasonality_index` + `competition_index` from config
-- Produce:
-    - `audience_size_est` range
-    - `opportunity_est` range (segment-specific label)
-    - `income_est` range/index
-    - optional insight line (1–2 lines, planning advantage framing)
+### Outcome
+`frontend/lib/tools/pinterestPotential/compute.ts` produces v0.2 outputs:
+- `audience_size_est` (range)
+- `opportunity_est` (range; segment-specific label)
+- `income_est` (range or index)
+- `seasonality_index`, `competition_index`
+- optional `insight` line (1–2 lines, planning advantage)
 
 ### Tasks
-1) **Compute core**
-- `compute.ts`:
-    - lookup benchmark row
-    - apply multipliers (subtle, capped ±10–15% effects)
-    - apply inferred multipliers (seasonality + competition) to opportunity
-    - return range outputs + indices
+1) **Replace old compute logic**
+- Rewrite `compute.ts` to:
+    - lookup benchmark row by `(segment, niche)`
+    - apply multipliers from Q3–Q8 (subtle, capped)
+    - apply inferred multipliers to opportunity (seasonality + competition)
+    - return **ranges only** (no exact numbers)
 
-2) **Goal micro-adjust (optional)**
-- If included in v0.2: keep it tiny (±3%) and non-dominant.
+2) **Add “Focused/Medium/Broad” helper**
+- Derive from benchmark audience range buckets for Q2 preview + results meter.
 
-3) **Insight generator**
-- `insight.ts`:
-    - derive 1–2 lines from indices (never negative; planning advantage)
-    - examples keyed per high/medium/low combos
-
-4) **Non-numeric preview meter (Q2)**
-- Derive “Focused / Medium / Broad” from benchmark audience range buckets.
+3) **Insight generation**
+- Implement `insight.ts` mapping from indices → short positive planning guidance.
 
 ### Exit criteria
-- Given answers, compute returns stable deterministic ranges and indices.
-- Output always ranges; no “exact” numbers.
-- Insight line present when indices warrant it.
+- Wizard completion yields deterministic v0.2 compute output.
+- No false precision, ranges only, subtle multiplier impact.
   md
   Copy code
-## Sprint 5 — Results UI (3-card stack) + dynamic reveal + CTA
+## Sprint 5 — Results UI + animations + CTA (in-place)
 
-### Outcomes
-- Implement Results page exactly per spec:
-    - 3 stacked cards (Audience, Opportunity, Income)
-    - optional insight line
-    - single CTA button (Book consult)
-    - micro loading state 300–500ms
-    - stagger reveal + subtle count-up (≤600ms)
-    - inline SVG meters + micro chart
+### Outcome
+Results page matches spec exactly:
+- 3 stacked cards (Audience, Opportunity, Income)
+- optional Insight line
+- single CTA (book consult)
+- stagger reveal + count-up + micro loading state
 
 ### Tasks
-1) **Results layout**
-- `Results.tsx`:
-    - Card 1: audience range + Focused→Broad meter
-    - Card 2: segment-specific opportunity label + micro chart
-    - Card 3: income range + band chips (Low/Mid/High highlight)
+1) **Implement Results screen inside Wizard (or extracted component)**
+- Card 1: range + SVG meter
+- Card 2: segment-based opportunity label + tiny SVG chart
+- Card 3: income band chips + highlight
 
-2) **Animation polish**
-- Use CSS transitions + requestAnimationFrame count-up
-- Respect reduced motion (disable count-up + reduce transitions)
+2) **Animations (CSS/SVG-first)**
+- Micro loading 300–500ms (“Crunching…”)
+- Stagger slide-up 100–150ms
+- Subtle count-up ≤600ms (disable for reduced motion)
 
-3) **CTA**
-- Button: “Book a free consult to unpack your results”
-- Subtext line under button
-- Wire click to existing booking URL (Calendly or site contact) via `Button href=...`
+3) **CTA wiring**
+- Use existing `Button` component with `href` to booking link.
+- Add `ppc_cta_click` event on click.
 
 ### Exit criteria
-- Results are visually “premium,” mobile-first, and fast.
-- No heavy chart libs; everything via SVG + CSS.
+- Results are “premium” and mobile-first without heavy libs.
+- CTA click tracked.
   md
   Copy code
-## Sprint 6 — Lead gating (known / hard lock / soft lock) + runtime config behavior
+## Sprint 6 — Lead gating (known / hard lock / soft lock) wired into the Results transition
 
-### Outcomes
-- Lead gating works identically for both start variants:
-    - **Known lead:** results show immediately; no email UI
-    - **New lead + hard lock:** email gate before results (compute allowed before gate; results withheld until submit)
-    - **New lead + soft lock:** results visible + optional “Email me the results” panel
+### Outcome
+Lead gating capability is fully implemented and behaves the same for both variants:
+- Known lead: results immediately, no email UI
+- New + hard lock: gate before results (compute allowed, results withheld)
+- New + soft lock: results visible + optional “email me results” panel
 
 ### Tasks
-1) **Lead state resolver (client)**
-- `lead.ts`:
-    - `lead_state = known | new` from `initialLead`
-    - `lead_mode = hard_lock | soft_lock` resolved from server-provided mode/config
+1) **Implement lead gating logic in Wizard completion**
+- After compute:
+    - if `lead_state=new` and `lead_mode=hard_lock` → show hard gate screen
+    - else → show results immediately
 
-2) **Hard lock gate screen**
-- `LeadGateHardLock.tsx`:
-    - Micro reassurance copy + form (email required, name optional)
-    - After successful submit: transition to results screen
-    - Must be able to say: “We’ve calculated your snapshot — enter email to view it.”
+2) **Hard lock gate UI**
+- New component under same folder, e.g.:
+    - `steps/LeadGateHardLock.tsx`
+- Email required, name optional
+- Must truthfully say: “We’ve calculated your snapshot — enter email to view it.”
+- Fire: `ppc_lead_view` on display
 
 3) **Soft lock inline panel**
-- `LeadPanelSoftLock.tsx`:
-    - Inline compact form + “Email me the results”
-    - Success state: “Sent — check your inbox” (or “We’ll email your snapshot shortly”)
-    - Optional dismiss/skip action for `ppc_lead_skip`
-
-4) **Compute + gate sequencing**
-- On wizard completion:
-    - compute immediately
-    - if hard lock + new lead: show gate screen, do NOT render results
-    - else: render results immediately
+- Component: `steps/LeadPanelSoftLock.tsx`
+- “Email me the results” (email required only if submitting)
+- Success state “Sent — check your inbox”
+- Fire: `ppc_lead_view` when panel shown
+- Optional: `ppc_lead_skip` when user dismisses panel
 
 ### Exit criteria
-- All three lead behaviors function and match spec verbatim.
-- No results render in hard lock until lead submit succeeds (unless known lead).
+- Hard lock blocks results render until submit succeeds.
+- Soft lock never blocks results.
+- Known lead never shows email UI.
   md
   Copy code
-## Sprint 7 — Lead submission API + “Email results” delivery (required for truthfulness)
+## Sprint 7 — Lead submission API + real email delivery (required)
 
-### Outcomes
-- Add a real submission endpoint and a real email delivery mechanism so “Sent” is accurate.
-- Capture includes attribution fields (segment/niche/goal/variant + mode/state).
-- Works for both:
-    - hard lock submit
-    - soft lock “email me results” submit
+### Outcome
+Email capture actually does something (no fake “Sent”):
+- A Next API endpoint receives payload and triggers provider delivery.
+- Works for both hard lock and soft lock submissions.
 
 ### Tasks
-1) **Add Next API route**
+1) **Add API route**
 - `frontend/app/api/tools/pinterest-potential/lead/route.ts`
-- Accept payload:
-    - `email`, optional `name`
-    - `variant`, `segment`, `niche`, `primary_goal`, `lead_mode`, `lead_state`
-    - `answers` (Q1–Q8)
-    - `results` (ranges + indices + insight)
+- Accept:
+    - email (+ optional name)
+    - attribution: variant/segment/niche/goal/lead_mode/lead_state
+    - answers + computed results (ranges + indices + insight)
+- Validate payload + basic rate limit.
 
 2) **Provider integration**
-- Implement provider interface:
-    - `sendResultsEmail({email,name,results,answers,ctaUrl})`
-- Default provider recommendation for v0.2:
-    - Transactional email provider (e.g., Resend/Postmark/SendGrid) OR ConvertKit automation trigger.
-- Include env var gating:
-    - If provider keys missing → fail fast in dev; in prod require keys set.
+- Implement a small provider layer (inside `frontend/lib/...` or API route):
+    - `sendResultsEmail(...)`
+- Pick provider (Resend/Postmark/SendGrid/ConvertKit) and drive config via env vars.
+- If env missing → return error (so UI can show a real failure state).
 
 3) **(Optional but recommended) Persistence**
-- Store submission server-side for audit/debug:
-    - simplest: Postgres table `ppc_leads` (email, created_at, payload jsonb)
-    - or lightweight logging if DB migration is heavy
-
-4) **Security + validation**
-- Basic payload validation (zod or manual)
-- Rate limit minimal (by IP/email) to prevent abuse
+- If DB is available/cheap: store payload (email + json) for debugging.
+- Otherwise: structured logs (still better than nothing).
 
 ### Exit criteria
-- Submitting email in hard lock sends a results email and then shows results.
-- Submitting email in soft lock sends a results email and shows “Sent” success state.
+- Submitting email delivers an actual email (or fails loudly with clear UI error).
+- Hard lock: success → results displayed.
+- Soft lock: success → “Sent” state.
   md
   Copy code
-## Sprint 8 — Telemetry (ppc_* events) + attribution completeness
+## Sprint 8 — Telemetry: implement full `ppc_*` contract across both variants + gating
 
-### Outcomes
-- Implement the full required event contract:
-    - `ppc_view_start`, `ppc_start`, `ppc_answer`, `ppc_complete`, `ppc_cta_click`, `ppc_lead_view`, `ppc_lead_submit`
-    - Optional: `ppc_back`, `ppc_dropoff`, `ppc_lead_skip`
+### Outcome
+All required events are emitted with correct dimensions and no double-fires:
+- `ppc_view_start`, `ppc_start`, `ppc_answer`, `ppc_complete`, `ppc_cta_click`, `ppc_lead_view`, `ppc_lead_submit`
+- optional: `ppc_back`, `ppc_dropoff`, `ppc_lead_skip`
 
 ### Tasks
-1) **Event emission rules**
-- `ppc_view_start`:
-    - Welcome variant: on welcome mount
-    - No-welcome variant: on Q1 mount
-- `ppc_start`:
-    - Welcome variant: on Start click
-    - No-welcome variant: on first interaction with Q1 (first answer)
-- `ppc_answer`:
-    - Fire for every Q1–Q8 selection (include `question_id`, `answer_id`)
-- `ppc_complete`:
-    - Fire when results are actually shown
-    - Include: variant/segment/niche/goal + indices + lead_mode + lead_state
-- `ppc_cta_click`:
-    - Fire on CTA click from results
-- `ppc_lead_view`:
-    - Hard lock: when gate screen is displayed
-    - Soft lock: when email panel is displayed
-- `ppc_lead_submit`:
-    - On successful API submission (include mode/state + attribution fields)
+1) **Variant-specific view/start rules**
+- Welcome variant (V1):
+    - `ppc_view_start` on welcome mount
+    - `ppc_start` on Start click
+- No-welcome variant (V2):
+    - `ppc_view_start` on Q1 mount
+    - `ppc_start` on first Q1 interaction
 
-2) **Implement `ppc_dropoff` (optional)**
-- Track last step on unload if feasible (best-effort)
+2) **Question tracking**
+- `ppc_answer` on each Q selection:
+    - include `question_id`, `answer_id`
+
+3) **Completion tracking**
+- `ppc_complete` fires when results are actually visible:
+    - include: variant/segment/niche/goal + indices + lead_mode + lead_state
+
+4) **Lead tracking**
+- `ppc_lead_view` when:
+    - hard gate displayed OR soft panel displayed
+- `ppc_lead_submit` on successful API submit:
+    - include mode/state + attribution fields
 
 ### Exit criteria
-- A test run produces complete, consistent telemetry with no double-fires.
-- `ppc_complete` always includes lead and variant dimensions.
+- Telemetry meets spec 100% and is consistent across both start variants.
   md
   Copy code
-## Sprint 9 — Tests + QA pass + performance polish
+## Sprint 9 — Tests + teardown of legacy v1 logic (since we don’t care about backwards compatibility)
 
-### Outcomes
-- Replace v1 tests with vNext tests for compute + gating behavior.
-- QA flows for both variants and both lead modes.
-- Ensure mobile UX + performance meets “fast + lightweight” intent.
-
-### Tasks
-1) **Unit tests**
-- compute engine:
-    - benchmark lookup + multiplier application + inferred indices
-    - range outputs only
-- insight generator behavior
-
-2) **Component tests (targeted)**
-- hard lock: results not shown before submit
-- soft lock: results shown + optional email submit works
-- known lead: no email UI
-
-3) **Telemetry tests**
-- Mock `window.dataLayer` and assert event payload shapes
-
-4) **Performance**
-- Ensure no heavy deps introduced
-- Keep SVG inline and minimal
-- Ensure bottom sheet does not cause layout thrash
-
-### Exit criteria
-- Test suite passes and covers core behaviors.
-- Tool feels snappy on mobile and respects reduced motion.
-  md
-  Copy code
-## Sprint 10 — Teardown v1 (remove old tool safely) + final acceptance verification
-
-### Outcomes
-- Remove deprecated v1 implementation after vNext is wired and verified.
-- Ensure route `/tools/pinterest-potential` only serves vNext.
-- Update docs/spec references if needed.
+### Outcome
+Old Q1–Q9 + old compute/spec are removed, replaced by v0.2.
+Tool is clean, minimal, and aligned with spec.
 
 ### Tasks
-1) **Remove old v1/v2 components**
-- `frontend/components/tools/pinterestPotential/*` (wizard, steps, draft hook, wrappers)
+1) **Replace existing tests**
+- Remove:
+    - `frontend/__tests__/pinterestPotential.compute.test.ts`
+    - `frontend/__tests__/pinterestPotential.optionalAfterResults.test.tsx`
+- Add new tests for:
+    - compute ranges + inferred indices
+    - hard lock blocks results until submit
+    - soft lock shows results regardless
+    - known lead bypasses email UI
+    - telemetry payload shape sanity (optional but useful)
 
-2) **Remove old v1 lib**
-- `frontend/lib/tools/pinterestPotential/*` (old spec/compute/copy/token)
+2) **Delete dead files**
+- Remove any step components no longer used.
+- Remove old spec types and numeric ID assumptions.
 
-3) **Remove old tests**
-- `frontend/__tests__/pinterestPotential.*` (replace with vNext tests already)
-
-4) **Acceptance Criteria checklist (spec 1–12)**
-- Validate each item explicitly:
-    - 3 segments + dynamic niches
-    - 8 questions
-    - results cards + CTA
-    - welcome/no-welcome A/B trackable
-    - full telemetry contract
-    - config-driven compute + indices
-    - lead gating modes configurable + working
-    - lead telemetry present + correct
+3) **Final acceptance run**
+- Validate every Acceptance Criteria line item (1–11) against actual behavior.
 
 ### Exit criteria
-- vNext is the only implementation, meets spec 100%, and old code is gone.
+- v0.2 passes tests and manual QA for:
+    - welcome/no-welcome
+    - known/new lead
+    - hard/soft lock
+    - email delivery
+    - full telemetry

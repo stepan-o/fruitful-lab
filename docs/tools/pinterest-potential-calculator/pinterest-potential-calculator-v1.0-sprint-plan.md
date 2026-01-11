@@ -86,8 +86,7 @@ v0.2 building blocks exist **inside the current pinterestPotential folder**, wit
 - `?variant=welcome` shows Welcome start (via V1 component).
 - `?variant=no_welcome` jumps to Q1 (via V2 component).
 - Lead token and known lead detection still work at the entry page level.
-  md
-  Copy code
+
 ## Sprint 2 — UI primitives (add missing pieces) + upgrade selectors for slug answers
 
 ### Outcome

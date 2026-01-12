@@ -625,18 +625,23 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     transform-origin: center;
 }
 .ppc-cta-pulse {
-    animation: ppcCtaPulse 1.65s ease-in-out infinite;
+    animation: ppcCtaPulse 1.35s ease-in-out infinite;
 }
 .ppc-cta-wrap:hover,
 .ppc-cta-wrap:focus-within {
     animation: none;
 }
+
+/* ✅ UPDATED: stronger, more noticeable pulse */
 @keyframes ppcCtaPulse {
     0% {
         transform: scale(1);
     }
-    55% {
-        transform: scale(1.035);
+    35% {
+        transform: scale(1.10);
+    }
+    60% {
+        transform: scale(1.03);
     }
     100% {
         transform: scale(1);

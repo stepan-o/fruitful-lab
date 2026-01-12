@@ -23,7 +23,7 @@ export function PinterestPotentialV1({
         <div className="space-y-6">
             <div>
                 <h1 className="font-heading text-2xl text-[var(--foreground)]">
-                    Pinterest Potential Calculator — {phase === "results" ? "Results" : "v1"}
+                    Pinterest Potential Calculator{phase === "results" ? " — Results" : ""}
                 </h1>
                 <p className="mt-2 text-sm text-[var(--foreground-muted)]">
                     Answer a few quick questions. Your progress is saved for this session.

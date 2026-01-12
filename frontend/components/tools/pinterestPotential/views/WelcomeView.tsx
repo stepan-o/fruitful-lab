@@ -156,9 +156,9 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
 
                         <div className="mt-5 grid gap-2">
                             <div className="flex items-start gap-2">
-                <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
-                  <BulletIcon className="h-4 w-4" />
-                </span>
+                                <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
+                                    <BulletIcon className="h-4 w-4" />
+                                </span>
                                 <div className="text-sm text-[var(--foreground)]">
                                     <span className="font-semibold">Audience estimate</span>{" "}
                                     <span className="text-[var(--foreground-muted)]">(monthly range)</span>
@@ -166,9 +166,9 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                             </div>
 
                             <div className="flex items-start gap-2">
-                <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
-                  <BulletIcon className="h-4 w-4" />
-                </span>
+                                <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
+                                    <BulletIcon className="h-4 w-4" />
+                                </span>
                                 <div className="text-sm text-[var(--foreground)]">
                                     <span className="font-semibold">Opportunity snapshot</span>{" "}
                                     <span className="text-[var(--foreground-muted)]">(traffic / leads / sales context)</span>
@@ -176,9 +176,9 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                             </div>
 
                             <div className="flex items-start gap-2">
-                <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
-                  <BulletIcon className="h-4 w-4" />
-                </span>
+                                <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
+                                    <BulletIcon className="h-4 w-4" />
+                                </span>
                                 <div className="text-sm text-[var(--foreground)]">
                                     <span className="font-semibold">3 next steps</span>{" "}
                                     <span className="text-[var(--foreground-muted)]">(what to do first)</span>
@@ -188,22 +188,22 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
 
                         {/* CTAs */}
                         <div className="mt-7 flex flex-wrap items-center gap-3">
-              <span className="ppc-cta-wrap ppc-cta-pulse fp-tap">
-                <button
-                    type="button"
-                    onClick={onStart}
-                    className={[
-                        "ppc-primary-btn inline-flex items-center gap-2 rounded-xl bg-[var(--brand-raspberry)]",
-                        "px-6 py-3 text-sm font-semibold text-white",
-                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
-                    ].join(" ")}
-                >
-                  {primaryLabel}
-                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10">
-                    <ArrowIcon className="h-4 w-4" />
-                  </span>
-                </button>
-              </span>
+                            <span className="ppc-cta-wrap ppc-cta-pulse fp-tap">
+                                <button
+                                    type="button"
+                                    onClick={onStart}
+                                    className={[
+                                        "ppc-primary-btn inline-flex items-center gap-2 rounded-xl bg-[var(--brand-raspberry)]",
+                                        "px-6 py-3 text-sm font-semibold text-white",
+                                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                                    ].join(" ")}
+                                >
+                                    {primaryLabel}
+                                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10">
+                                        <ArrowIcon className="h-4 w-4" />
+                                    </span>
+                                </button>
+                            </span>
 
                             <button
                                 type="button"
@@ -268,39 +268,15 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                                                     key={t}
                                                     className="rounded-full border border-[var(--border)] bg-[var(--background)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]"
                                                 >
-                          {t}
-                        </span>
+                                                    {t}
+                                                </span>
                                             ))}
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Small chart glyph */}
-                            <div className="absolute -right-6 -top-6 h-14 w-14 rounded-2xl border border-[var(--border)] bg-[var(--background)]/60 p-3 backdrop-blur-sm">
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    className="h-full w-full text-[var(--foreground)]"
-                                    aria-hidden="true"
-                                >
-                                    <path
-                                        d="M5 15v4m7-10v10m7-14v14"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        opacity="0.35"
-                                    />
-                                    <path
-                                        d="M5 12c4-5 9-5 14-8"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        opacity="0.35"
-                                    />
-                                    <circle cx="19" cy="4" r="2" fill="currentColor" opacity="0.5" />
-                                </svg>
-                            </div>
+                            {/* ✅ REMOVED: old bars SVG glyph that overlapped the new preview cards */}
                         </div>
                     </div>
                 </div>

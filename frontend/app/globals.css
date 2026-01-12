@@ -75,6 +75,29 @@
 
     /* Welcome backdrop tuning */
     --ppc-welcome-dim: 0.16; /* stronger = darker base */
+
+    /* -------------------------------------------------------
+       ✅ JetBrains/CSS parser quieting:
+       Put complex function-y values behind var() so inspections
+       don't try to type-check the inner gradient args.
+    ------------------------------------------------------- */
+
+    /* border gradient used by .ppc-hero-frame::before */
+    --ppc-hero-frame-border-gradient: linear-gradient(
+            135deg,
+            var(--ppc-accent-stroke),
+            transparent 35%,
+            var(--ppc-accent-stroke-2)
+    );
+
+    /*
+      ✅ IMPORTANT: JetBrains flags -webkit-linear-gradient(left, ...) because it
+      validates against modern linear-gradient() syntax (expects "to left|right").
+      So keep this as *standard* linear-gradient(to right, ...), and feed it into
+      -webkit-mask-image (works in WebKit and satisfies the IDE).
+    */
+    --ppc-mask-image: linear-gradient(to right, #000 0%, #000 100%),
+    linear-gradient(to right, #000 0%, #000 100%);
 }
 
 @theme inline {
@@ -141,7 +164,7 @@ html[data-theme="dark"] {
     /* Deeper base so raspberry blobs pop (higher contrast) */
     --ppc-panel-bg: radial-gradient(
             1200px 640px at 18% 6%,
-            rgba(176, 18, 109, 0.10) 0%,
+            rgba(176, 18, 109, 0.1) 0%,
             rgba(10, 10, 10, 0.88) 52%,
             rgba(6, 6, 6, 0.95) 100%
     );
@@ -149,10 +172,20 @@ html[data-theme="dark"] {
 
     --ppc-chip-bg: rgba(10, 10, 10, 0.55);
     --ppc-chip-border: rgba(255, 255, 255, 0.16);
-    --ppc-noise-opacity: 0.10;
+    --ppc-noise-opacity: 0.1;
     --ppc-cta-shadow: rgba(0, 0, 0, 0.55);
 
     --ppc-welcome-dim: 0.34;
+
+    /* keep the “quieting” vars consistent across themes */
+    --ppc-hero-frame-border-gradient: linear-gradient(
+            135deg,
+            var(--ppc-accent-stroke),
+            transparent 35%,
+            var(--ppc-accent-stroke-2)
+    );
+    --ppc-mask-image: linear-gradient(to right, #000 0%, #000 100%),
+    linear-gradient(to right, #000 0%, #000 100%);
 }
 
 /* ------------------------------
@@ -214,7 +247,7 @@ html[data-theme="light"] {
 
         --ppc-panel-bg: radial-gradient(
                 1200px 640px at 18% 6%,
-                rgba(176, 18, 109, 0.10) 0%,
+                rgba(176, 18, 109, 0.1) 0%,
                 rgba(10, 10, 10, 0.88) 52%,
                 rgba(6, 6, 6, 0.95) 100%
         );
@@ -222,10 +255,20 @@ html[data-theme="light"] {
 
         --ppc-chip-bg: rgba(10, 10, 10, 0.55);
         --ppc-chip-border: rgba(255, 255, 255, 0.16);
-        --ppc-noise-opacity: 0.10;
+        --ppc-noise-opacity: 0.1;
         --ppc-cta-shadow: rgba(0, 0, 0, 0.55);
 
         --ppc-welcome-dim: 0.34;
+
+        /* keep the “quieting” vars consistent across theme modes */
+        --ppc-hero-frame-border-gradient: linear-gradient(
+                135deg,
+                var(--ppc-accent-stroke),
+                transparent 35%,
+                var(--ppc-accent-stroke-2)
+        );
+        --ppc-mask-image: linear-gradient(to right, #000 0%, #000 100%),
+        linear-gradient(to right, #000 0%, #000 100%);
     }
 }
 
@@ -384,9 +427,13 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     overflow: hidden;
     opacity: 0.68; /* slightly stronger */
     /* Darken the base so animated blobs have higher contrast */
-    background:
-            radial-gradient(1200px 520px at 55% 35%, rgba(0, 0, 0, var(--ppc-welcome-dim)) 0%, rgba(0, 0, 0, 0.78) 62%, rgba(0, 0, 0, 0.92) 100%),
-            linear-gradient(180deg, rgba(0,0,0,0.24), rgba(0,0,0,0.58));
+    background: radial-gradient(
+            1200px 520px at 55% 35%,
+            rgba(0, 0, 0, var(--ppc-welcome-dim)) 0%,
+            rgba(0, 0, 0, 0.78) 62%,
+            rgba(0, 0, 0, 0.92) 100%
+    ),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.58));
 }
 
 /*
@@ -547,14 +594,19 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     inset: 0;
     padding: 1px;
     border-radius: 1rem;
-    background: linear-gradient(
-            135deg,
-            var(--ppc-accent-stroke),
-            transparent 35%,
-            var(--ppc-accent-stroke-2)
-    );
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+
+    /* ✅ Put the gradient behind var() to avoid JetBrains argument validation */
+    background: var(--ppc-hero-frame-border-gradient);
+
+    /* ✅ Feed a modern-syntax gradient list into WebKit mask (IDE-friendly) */
+    -webkit-mask-image: var(--ppc-mask-image);
+    mask-image: var(--ppc-mask-image);
+
+    /* legacy keywords for list values = fewer IDE complaints */
+    -webkit-mask-origin: content, border;
+    -webkit-mask-clip: content, border;
     -webkit-mask-composite: xor;
+
     mask-composite: exclude;
     pointer-events: none;
     opacity: 0.9;
@@ -577,26 +629,33 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     position: absolute;
     inset: 0;
     opacity: var(--ppc-noise-opacity);
+
+    /* Expanded stops to keep IDE parsers happy */
     background-image: radial-gradient(
             circle at 20% 20%,
-            rgba(255, 255, 255, 0.6) 0 1px,
+            rgba(255, 255, 255, 0.6) 0px,
+            rgba(255, 255, 255, 0.6) 1px,
             transparent 1px
     ),
     radial-gradient(
             circle at 80% 30%,
-            rgba(255, 255, 255, 0.45) 0 1px,
+            rgba(255, 255, 255, 0.45) 0px,
+            rgba(255, 255, 255, 0.45) 1px,
             transparent 1px
     ),
     radial-gradient(
             circle at 35% 75%,
-            rgba(255, 255, 255, 0.35) 0 1px,
+            rgba(255, 255, 255, 0.35) 0px,
+            rgba(255, 255, 255, 0.35) 1px,
             transparent 1px
     ),
     radial-gradient(
             circle at 72% 80%,
-            rgba(255, 255, 255, 0.25) 0 1px,
+            rgba(255, 255, 255, 0.25) 0px,
+            rgba(255, 255, 255, 0.25) 1px,
             transparent 1px
     );
+
     background-size: 120px 120px, 160px 160px, 210px 210px, 260px 260px;
     mix-blend-mode: overlay;
 }
@@ -638,7 +697,7 @@ html[data-theme="dark"] .theme-toggle-label-dark {
         transform: scale(1);
     }
     35% {
-        transform: scale(1.10);
+        transform: scale(1.1);
     }
     60% {
         transform: scale(1.03);

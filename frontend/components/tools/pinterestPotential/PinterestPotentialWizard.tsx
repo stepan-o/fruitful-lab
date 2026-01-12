@@ -550,7 +550,9 @@ export default function PinterestPotentialWizard({
                     <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
                         <div>
                             <div className="text-sm text-[var(--foreground-muted)]">Pinterest Potential</div>
-                            <h2 className="mt-1 font-heading text-2xl sm:text-3xl text-[var(--foreground)]">See your growth snapshot</h2>
+                            <h2 className="mt-1 font-heading text-2xl sm:text-3xl text-[var(--foreground)]">
+                                See your growth snapshot
+                            </h2>
                             <p className="mt-2 max-w-prose text-sm text-[var(--foreground-muted)]">
                                 Answer a few quick questions and we’ll estimate your monthly audience + opportunity.
                             </p>
@@ -615,145 +617,6 @@ export default function PinterestPotentialWizard({
                         </button>
                     </div>
                 </div>
-
-                {/* Scoped CSS for animated gradient + drift */}
-                <style jsx>{`
-                    /* The overlay container */
-                    .ppc-welcome-gradient {
-                        pointer-events: none;
-                        position: absolute;
-                        inset: 0;
-                        overflow: hidden;
-                        opacity: 0.55; /* stronger */
-                    }
-
-                    /*
-                      Two large “highlight fields” that sweep across the whole card.
-                      Using oversized layers + translate creates visible motion (waves/ripples).
-                    */
-                    .ppc-welcome-gradient::before,
-                    .ppc-welcome-gradient::after {
-                        content: "";
-                        position: absolute;
-                        inset: -45%;
-                        background-repeat: no-repeat;
-                        filter: blur(44px) saturate(1.08);
-                        will-change: transform, background-position;
-                    }
-
-                    /* Layer A (dominant wave) */
-                    .ppc-welcome-gradient::before {
-                        background-image: radial-gradient(
-                                900px circle at 15% 35%,
-                                color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
-                                transparent 60%
-                        ),
-                        radial-gradient(
-                                760px circle at 55% 15%,
-                                color-mix(in srgb, var(--brand-raspberry) 38%, transparent) 0%,
-                                transparent 62%
-                        ),
-                        radial-gradient(
-                                820px circle at 85% 70%,
-                                color-mix(in srgb, var(--brand-raspberry) 34%, transparent) 0%,
-                                transparent 64%
-                        );
-                        animation: ppcWaveA 6.5s ease-in-out infinite;
-                        opacity: 0.9;
-                    }
-
-                    /* Layer B (counter-wave) */
-                    .ppc-welcome-gradient::after {
-                        background-image: radial-gradient(
-                                860px circle at 80% 30%,
-                                color-mix(in srgb, var(--brand-raspberry) 46%, transparent) 0%,
-                                transparent 62%
-                        ),
-                        radial-gradient(
-                                720px circle at 25% 75%,
-                                color-mix(in srgb, var(--brand-raspberry) 30%, transparent) 0%,
-                                transparent 66%
-                        );
-                        animation: ppcWaveB 8.25s ease-in-out infinite;
-                        opacity: 0.75;
-                    }
-
-                    /* Make the two corner glows actually travel across the hero */
-                    .ppc-welcome-glow-1 {
-                        animation: ppcGlowTraverse1 7s ease-in-out infinite;
-                        opacity: 0.22;
-                    }
-                    .ppc-welcome-glow-2 {
-                        animation: ppcGlowTraverse2 9s ease-in-out infinite;
-                        opacity: 0.16;
-                    }
-
-                    /* WAVE: big sweeps across X + subtle Y */
-                    @keyframes ppcWaveA {
-                        0% {
-                            transform: translate3d(-18%, -6%, 0) scale(1.02);
-                        }
-                        35% {
-                            transform: translate3d(6%, 4%, 0) scale(1.04);
-                        }
-                        70% {
-                            transform: translate3d(22%, -2%, 0) scale(1.03);
-                        }
-                        100% {
-                            transform: translate3d(-18%, -6%, 0) scale(1.02);
-                        }
-                    }
-
-                    /* COUNTER-WAVE: opposite direction so it feels like ripples */
-                    @keyframes ppcWaveB {
-                        0% {
-                            transform: translate3d(22%, 8%, 0) scale(1.02);
-                        }
-                        40% {
-                            transform: translate3d(-4%, -2%, 0) scale(1.03);
-                        }
-                        80% {
-                            transform: translate3d(-22%, 5%, 0) scale(1.04);
-                        }
-                        100% {
-                            transform: translate3d(22%, 8%, 0) scale(1.02);
-                        }
-                    }
-
-                    /* Corner blobs traverse across the whole card */
-                    @keyframes ppcGlowTraverse1 {
-                        0% {
-                            transform: translate3d(-40px, -20px, 0) scale(1);
-                        }
-                        50% {
-                            transform: translate3d(-320px, 40px, 0) scale(1.08);
-                        }
-                        100% {
-                            transform: translate3d(-40px, -20px, 0) scale(1);
-                        }
-                    }
-
-                    @keyframes ppcGlowTraverse2 {
-                        0% {
-                            transform: translate3d(40px, 20px, 0) scale(1);
-                        }
-                        50% {
-                            transform: translate3d(340px, -30px, 0) scale(1.06);
-                        }
-                        100% {
-                            transform: translate3d(40px, 20px, 0) scale(1);
-                        }
-                    }
-
-                    @media (prefers-reduced-motion: reduce) {
-                        .ppc-welcome-gradient::before,
-                        .ppc-welcome-gradient::after,
-                        .ppc-welcome-glow-1,
-                        .ppc-welcome-glow-2 {
-                            animation: none !important;
-                        }
-                    }
-                `}</style>
             </div>
         );
     }
@@ -819,7 +682,9 @@ export default function PinterestPotentialWizard({
                 <div className="sm:grid sm:grid-cols-3 sm:gap-4">
                     <div>
                         <h3 className="font-heading text-lg text-[var(--foreground)]">Unlock your results</h3>
-                        <p className="mt-1 text-sm text-[var(--foreground-muted)]">Enter your email to view the full snapshot.</p>
+                        <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+                            Enter your email to view the full snapshot.
+                        </p>
                         <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
                     </div>
 
@@ -834,7 +699,9 @@ export default function PinterestPotentialWizard({
                                         onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
                                         className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                     />
-                                    {errors["LEAD.name"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div> : null}
+                                    {errors["LEAD.name"] ? (
+                                        <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div>
+                                    ) : null}
                                 </div>
                             ) : (
                                 <div>
@@ -856,7 +723,9 @@ export default function PinterestPotentialWizard({
                                     onChange={(e) => setLeadDraft((p) => ({ ...p, email: e.target.value }))}
                                     className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                 />
-                                {errors["LEAD.email"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div> : null}
+                                {errors["LEAD.email"] ? (
+                                    <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div>
+                                ) : null}
                             </div>
                         </div>
 
@@ -904,7 +773,9 @@ export default function PinterestPotentialWizard({
                     <div className="sm:grid sm:grid-cols-3 sm:gap-4">
                         <div>
                             <h3 className="font-heading text-lg text-[var(--foreground)]">Want a copy of your results?</h3>
-                            <p className="mt-1 text-sm text-[var(--foreground-muted)]">Leave your email and we’ll send this snapshot.</p>
+                            <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+                                Leave your email and we’ll send this snapshot.
+                            </p>
                             <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
                         </div>
 
@@ -991,8 +862,9 @@ export default function PinterestPotentialWizard({
                     ) : null}
 
                     <div className="mt-3 text-xs text-[var(--foreground-muted)]">
-                        Seasonality: <span className="text-[var(--foreground)]">{results.inferred.seasonality_index}</span> •
-                        Competition: <span className="text-[var(--foreground)]">{results.inferred.competition_index}</span>
+                        Seasonality:{" "}
+                        <span className="text-[var(--foreground)]">{results.inferred.seasonality_index}</span> • Competition:{" "}
+                        <span className="text-[var(--foreground)]">{results.inferred.competition_index}</span>
                     </div>
 
                     {LeadCaptureSoftLock}

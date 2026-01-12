@@ -293,6 +293,118 @@ html[data-theme="dark"] .theme-toggle-label-dark {
 }
 
 /* ------------------------------
+   Pinterest Potential
+   - Welcome gradient + drift (moved from <style jsx>)
+------------------------------ */
+.ppc-welcome-gradient {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.55; /* matches previous inline style */
+}
+
+/*
+  Two large “highlight fields” that sweep across the whole card.
+  Using oversized layers + translate creates visible motion (waves/ripples).
+*/
+.ppc-welcome-gradient::before,
+.ppc-welcome-gradient::after {
+    content: "";
+    position: absolute;
+    inset: -45%;
+    background-repeat: no-repeat;
+    filter: blur(44px) saturate(1.08);
+    will-change: transform, background-position;
+}
+
+/* Layer A (dominant wave) */
+.ppc-welcome-gradient::before {
+    background-image:
+            radial-gradient(
+                    900px circle at 15% 35%,
+                    color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
+                    transparent 60%
+            ),
+            radial-gradient(
+                    760px circle at 55% 15%,
+                    color-mix(in srgb, var(--brand-raspberry) 38%, transparent) 0%,
+                    transparent 62%
+            ),
+            radial-gradient(
+                    820px circle at 85% 70%,
+                    color-mix(in srgb, var(--brand-raspberry) 34%, transparent) 0%,
+                    transparent 64%
+            );
+    animation: ppcWaveA 6.5s ease-in-out infinite;
+    opacity: 0.9;
+}
+
+/* Layer B (counter-wave) */
+.ppc-welcome-gradient::after {
+    background-image:
+            radial-gradient(
+                    860px circle at 80% 30%,
+                    color-mix(in srgb, var(--brand-raspberry) 46%, transparent) 0%,
+                    transparent 62%
+            ),
+            radial-gradient(
+                    720px circle at 25% 75%,
+                    color-mix(in srgb, var(--brand-raspberry) 30%, transparent) 0%,
+                    transparent 66%
+            );
+    animation: ppcWaveB 8.25s ease-in-out infinite;
+    opacity: 0.75;
+}
+
+/* Corner glows traverse (animation only; keep opacity from Tailwind classes) */
+.ppc-welcome-glow-1 {
+    animation: ppcGlowTraverse1 7s ease-in-out infinite;
+}
+.ppc-welcome-glow-2 {
+    animation: ppcGlowTraverse2 9s ease-in-out infinite;
+}
+
+/* WAVE: big sweeps across X + subtle Y */
+@keyframes ppcWaveA {
+    0%   { transform: translate3d(-18%, -6%, 0) scale(1.02); }
+    35%  { transform: translate3d(6%, 4%, 0) scale(1.04); }
+    70%  { transform: translate3d(22%, -2%, 0) scale(1.03); }
+    100% { transform: translate3d(-18%, -6%, 0) scale(1.02); }
+}
+
+/* COUNTER-WAVE: opposite direction so it feels like ripples */
+@keyframes ppcWaveB {
+    0%   { transform: translate3d(22%, 8%, 0) scale(1.02); }
+    40%  { transform: translate3d(-4%, -2%, 0) scale(1.03); }
+    80%  { transform: translate3d(-22%, 5%, 0) scale(1.04); }
+    100% { transform: translate3d(22%, 8%, 0) scale(1.02); }
+}
+
+/* Corner blobs traverse across the whole card */
+@keyframes ppcGlowTraverse1 {
+    0%   { transform: translate3d(-40px, -20px, 0) scale(1); }
+    50%  { transform: translate3d(-320px, 40px, 0) scale(1.08); }
+    100% { transform: translate3d(-40px, -20px, 0) scale(1); }
+}
+
+@keyframes ppcGlowTraverse2 {
+    0%   { transform: translate3d(40px, 20px, 0) scale(1); }
+    50%  { transform: translate3d(340px, -30px, 0) scale(1.06); }
+    100% { transform: translate3d(40px, 20px, 0) scale(1); }
+}
+
+/* Extra explicit stop for PPC welcome animations */
+@media (prefers-reduced-motion: reduce) {
+    .ppc-welcome-gradient::before,
+    .ppc-welcome-gradient::after,
+    .ppc-welcome-glow-1,
+    .ppc-welcome-glow-2 {
+        animation: none !important;
+    }
+}
+
+/* ------------------------------
    Sprint 2: Reduced motion (global guard)
    - BottomSheet, ProgressBar, welcome micro-flair
 ------------------------------ */

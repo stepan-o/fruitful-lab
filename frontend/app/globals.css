@@ -1,3 +1,4 @@
+/* frontend/app/globals.css */
 @import "tailwindcss";
 
 /* ------------------------------
@@ -5,14 +6,14 @@
 ------------------------------ */
 :root {
     --background: #ffffff;
-    --foreground: #171A21;
+    --foreground: #171a21;
 
     /* Brand */
-    --brand-heading: #0B132B;
+    --brand-heading: #0b132b;
     --brand-raspberry: #950952;
-    --brand-alabaster: #DFDFDF;
-    --brand-bronze: #D58936;
-    --brand-rust: #A44200;
+    --brand-alabaster: #dfdfdf;
+    --brand-bronze: #d58936;
+    --brand-rust: #a44200;
 
     /* Backdrop tuning (LIGHT) */
     --backdrop-opacity-soft: 0.08;
@@ -58,6 +59,19 @@
     --font-heading: ui-sans-serif;
     --font-body: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
     "Apple Color Emoji", "Segoe UI Emoji";
+
+    /* -----------------------------------
+       PPC (Pinterest Potential Calculator)
+       - polish tokens (LIGHT)
+    ----------------------------------- */
+    --ppc-accent-stroke: color-mix(in srgb, var(--brand-raspberry) 70%, transparent);
+    --ppc-accent-stroke-2: color-mix(in srgb, var(--brand-bronze) 55%, transparent);
+    --ppc-panel-bg: color-mix(in srgb, var(--card) 92%, transparent);
+    --ppc-panel-inner: rgba(255, 255, 255, 0.18);
+    --ppc-chip-bg: rgba(255, 255, 255, 0.72);
+    --ppc-chip-border: color-mix(in srgb, var(--border) 65%, transparent);
+    --ppc-noise-opacity: 0.06;
+    --ppc-cta-shadow: rgba(0, 0, 0, 0.14);
 }
 
 @theme inline {
@@ -74,12 +88,12 @@ html[data-theme="dark"] {
     --background: #0a0a0a;
     --foreground: #ededed;
 
-    --brand-heading: #E7ECFF;
+    --brand-heading: #e7ecff;
     --brand-alabaster: rgba(255, 255, 255, 0.14);
 
-    --brand-raspberry: #B0126D;
-    --brand-bronze: #F0A14A;
-    --brand-rust: #D15A1A;
+    --brand-raspberry: #b0126d;
+    --brand-bronze: #f0a14a;
+    --brand-rust: #d15a1a;
 
     --backdrop-opacity-soft: 0.26;
     --backdrop-opacity-strong: 0.42;
@@ -116,6 +130,16 @@ html[data-theme="dark"] {
     --surface: rgba(255, 255, 255, 0.06);
     --card: rgba(255, 255, 255, 0.04);
     --card-hover: rgba(255, 255, 255, 0.06);
+
+    /* PPC polish tokens (DARK) */
+    --ppc-accent-stroke: color-mix(in srgb, var(--brand-raspberry) 62%, transparent);
+    --ppc-accent-stroke-2: color-mix(in srgb, var(--brand-bronze) 54%, transparent);
+    --ppc-panel-bg: rgba(255, 255, 255, 0.035);
+    --ppc-panel-inner: rgba(255, 255, 255, 0.06);
+    --ppc-chip-bg: rgba(10, 10, 10, 0.55);
+    --ppc-chip-border: rgba(255, 255, 255, 0.16);
+    --ppc-noise-opacity: 0.10;
+    --ppc-cta-shadow: rgba(0, 0, 0, 0.45);
 }
 
 /* ------------------------------
@@ -134,12 +158,12 @@ html[data-theme="light"] {
         --background: #0a0a0a;
         --foreground: #ededed;
 
-        --brand-heading: #E7ECFF;
+        --brand-heading: #e7ecff;
         --brand-alabaster: rgba(255, 255, 255, 0.14);
 
-        --brand-raspberry: #B0126D;
-        --brand-bronze: #F0A14A;
-        --brand-rust: #D15A1A;
+        --brand-raspberry: #b0126d;
+        --brand-bronze: #f0a14a;
+        --brand-rust: #d15a1a;
 
         --backdrop-opacity-soft: 0.26;
         --backdrop-opacity-strong: 0.42;
@@ -170,6 +194,16 @@ html[data-theme="light"] {
         --surface: rgba(255, 255, 255, 0.06);
         --card: rgba(255, 255, 255, 0.04);
         --card-hover: rgba(255, 255, 255, 0.06);
+
+        /* PPC polish tokens (DARK OS fallback) */
+        --ppc-accent-stroke: color-mix(in srgb, var(--brand-raspberry) 62%, transparent);
+        --ppc-accent-stroke-2: color-mix(in srgb, var(--brand-bronze) 54%, transparent);
+        --ppc-panel-bg: rgba(255, 255, 255, 0.035);
+        --ppc-panel-inner: rgba(255, 255, 255, 0.06);
+        --ppc-chip-bg: rgba(10, 10, 10, 0.55);
+        --ppc-chip-border: rgba(255, 255, 255, 0.16);
+        --ppc-noise-opacity: 0.10;
+        --ppc-cta-shadow: rgba(0, 0, 0, 0.45);
     }
 }
 
@@ -184,14 +218,13 @@ body {
 }
 
 .font-body {
-    font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system,
-    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 /* Backdrop circles: CSS controls pop per theme */
 .lab-backdrop-circle {
-    filter: blur(var(--backdrop-blur))
-    saturate(var(--backdrop-saturate))
+    filter: blur(var(--backdrop-blur)) saturate(var(--backdrop-saturate))
     contrast(var(--backdrop-contrast));
     will-change: transform;
     box-shadow: 0 0 var(--backdrop-glow) currentColor;
@@ -250,12 +283,16 @@ html[data-theme="dark"] .lab-backdrop-circle {
     border-radius: 9999px;
     background: var(--card-hover);
     transition: transform 160ms ease;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 /* Default (light active) */
-.theme-toggle-label-light { opacity: 1; }
-.theme-toggle-label-dark { opacity: 0.72; }
+.theme-toggle-label-light {
+    opacity: 1;
+}
+.theme-toggle-label-dark {
+    opacity: 0.72;
+}
 
 /* Dark active (manual) */
 :root[data-theme="dark"] .theme-toggle::before,
@@ -276,20 +313,42 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     :root:not([data-theme]) .theme-toggle::before {
         transform: translateX(100%);
     }
-    :root:not([data-theme]) .theme-toggle-label-light { opacity: 0.72; }
-    :root:not([data-theme]) .theme-toggle-label-dark { opacity: 1; }
+    :root:not([data-theme]) .theme-toggle-label-light {
+        opacity: 0.72;
+    }
+    :root:not([data-theme]) .theme-toggle-label-dark {
+        opacity: 1;
+    }
 }
 
 @keyframes hubPulse {
-    0% { opacity: 0.35; transform: scale(1); }
-    50% { opacity: 0.18; transform: scale(1.04); }
-    100% { opacity: 0.35; transform: scale(1); }
+    0% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.18;
+        transform: scale(1.04);
+    }
+    100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
 }
 
 @keyframes start-here-pulse {
-    0% { opacity: 0; transform: scale(0.9); }
-    40% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0; transform: scale(0.9); }
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
 }
 
 /* ------------------------------
@@ -320,39 +379,37 @@ html[data-theme="dark"] .theme-toggle-label-dark {
 
 /* Layer A (dominant wave) */
 .ppc-welcome-gradient::before {
-    background-image:
-            radial-gradient(
-                    900px circle at 15% 35%,
-                    color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
-                    transparent 60%
-            ),
-            radial-gradient(
-                    760px circle at 55% 15%,
-                    color-mix(in srgb, var(--brand-raspberry) 38%, transparent) 0%,
-                    transparent 62%
-            ),
-            radial-gradient(
-                    820px circle at 85% 70%,
-                    color-mix(in srgb, var(--brand-raspberry) 34%, transparent) 0%,
-                    transparent 64%
-            );
+    background-image: radial-gradient(
+            900px circle at 15% 35%,
+            color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
+            transparent 60%
+    ),
+    radial-gradient(
+            760px circle at 55% 15%,
+            color-mix(in srgb, var(--brand-raspberry) 38%, transparent) 0%,
+            transparent 62%
+    ),
+    radial-gradient(
+            820px circle at 85% 70%,
+            color-mix(in srgb, var(--brand-raspberry) 34%, transparent) 0%,
+            transparent 64%
+    );
     animation: ppcWaveA 6.5s ease-in-out infinite;
     opacity: 0.9;
 }
 
 /* Layer B (counter-wave) */
 .ppc-welcome-gradient::after {
-    background-image:
-            radial-gradient(
-                    860px circle at 80% 30%,
-                    color-mix(in srgb, var(--brand-raspberry) 46%, transparent) 0%,
-                    transparent 62%
-            ),
-            radial-gradient(
-                    720px circle at 25% 75%,
-                    color-mix(in srgb, var(--brand-raspberry) 30%, transparent) 0%,
-                    transparent 66%
-            );
+    background-image: radial-gradient(
+            860px circle at 80% 30%,
+            color-mix(in srgb, var(--brand-raspberry) 46%, transparent) 0%,
+            transparent 62%
+    ),
+    radial-gradient(
+            720px circle at 25% 75%,
+            color-mix(in srgb, var(--brand-raspberry) 30%, transparent) 0%,
+            transparent 66%
+    );
     animation: ppcWaveB 8.25s ease-in-out infinite;
     opacity: 0.75;
 }
@@ -367,31 +424,59 @@ html[data-theme="dark"] .theme-toggle-label-dark {
 
 /* WAVE: big sweeps across X + subtle Y */
 @keyframes ppcWaveA {
-    0%   { transform: translate3d(-18%, -6%, 0) scale(1.02); }
-    35%  { transform: translate3d(6%, 4%, 0) scale(1.04); }
-    70%  { transform: translate3d(22%, -2%, 0) scale(1.03); }
-    100% { transform: translate3d(-18%, -6%, 0) scale(1.02); }
+    0% {
+        transform: translate3d(-18%, -6%, 0) scale(1.02);
+    }
+    35% {
+        transform: translate3d(6%, 4%, 0) scale(1.04);
+    }
+    70% {
+        transform: translate3d(22%, -2%, 0) scale(1.03);
+    }
+    100% {
+        transform: translate3d(-18%, -6%, 0) scale(1.02);
+    }
 }
 
 /* COUNTER-WAVE: opposite direction so it feels like ripples */
 @keyframes ppcWaveB {
-    0%   { transform: translate3d(22%, 8%, 0) scale(1.02); }
-    40%  { transform: translate3d(-4%, -2%, 0) scale(1.03); }
-    80%  { transform: translate3d(-22%, 5%, 0) scale(1.04); }
-    100% { transform: translate3d(22%, 8%, 0) scale(1.02); }
+    0% {
+        transform: translate3d(22%, 8%, 0) scale(1.02);
+    }
+    40% {
+        transform: translate3d(-4%, -2%, 0) scale(1.03);
+    }
+    80% {
+        transform: translate3d(-22%, 5%, 0) scale(1.04);
+    }
+    100% {
+        transform: translate3d(22%, 8%, 0) scale(1.02);
+    }
 }
 
 /* Corner blobs traverse across the whole card */
 @keyframes ppcGlowTraverse1 {
-    0%   { transform: translate3d(-40px, -20px, 0) scale(1); }
-    50%  { transform: translate3d(-320px, 40px, 0) scale(1.08); }
-    100% { transform: translate3d(-40px, -20px, 0) scale(1); }
+    0% {
+        transform: translate3d(-40px, -20px, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(-320px, 40px, 0) scale(1.08);
+    }
+    100% {
+        transform: translate3d(-40px, -20px, 0) scale(1);
+    }
 }
 
 @keyframes ppcGlowTraverse2 {
-    0%   { transform: translate3d(40px, 20px, 0) scale(1); }
-    50%  { transform: translate3d(340px, -30px, 0) scale(1.06); }
-    100% { transform: translate3d(40px, 20px, 0) scale(1); }
+    0% {
+        transform: translate3d(40px, 20px, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(340px, -30px, 0) scale(1.06);
+    }
+    100% {
+        transform: translate3d(40px, 20px, 0) scale(1);
+    }
 }
 
 /* Extra explicit stop for PPC welcome animations */
@@ -409,7 +494,9 @@ html[data-theme="dark"] .theme-toggle-label-dark {
    - BottomSheet, ProgressBar, welcome micro-flair
 ------------------------------ */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
         animation-duration: 0.001ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important;
@@ -435,4 +522,160 @@ html[data-theme="dark"] .theme-toggle-label-dark {
 }
 .fp-tap:active {
     transform: scale(0.98);
+}
+
+/* ------------------------------------------------------------------
+   PPC Welcome: AAA panel framing + noise + preview stack (NEW)
+------------------------------------------------------------------ */
+
+/* Accent-stroke border that feels “designed”, not default */
+.ppc-hero-frame {
+    position: relative;
+    border-radius: 1rem; /* matches rounded-2xl */
+    background: var(--ppc-panel-bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.ppc-hero-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px; /* stroke thickness */
+    border-radius: 1rem;
+    background: linear-gradient(
+            135deg,
+            var(--ppc-accent-stroke),
+            transparent 35%,
+            var(--ppc-accent-stroke-2)
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* Subtle “glass” inner sheen */
+.ppc-hero-sheen {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+            900px 420px at 18% 8%,
+            var(--ppc-panel-inner) 0%,
+            transparent 60%
+    );
+    opacity: 0.55;
+}
+
+/* Fine grain/noise overlay so gradients don’t look templated */
+.ppc-hero-noise {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: var(--ppc-noise-opacity);
+    background-image:
+            radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 0 1px, transparent 1px),
+            radial-gradient(circle at 80% 30%, rgba(255,255,255,0.45) 0 1px, transparent 1px),
+            radial-gradient(circle at 35% 75%, rgba(255,255,255,0.35) 0 1px, transparent 1px),
+            radial-gradient(circle at 72% 80%, rgba(255,255,255,0.25) 0 1px, transparent 1px);
+    background-size: 120px 120px, 160px 160px, 210px 210px, 260px 260px;
+    mix-blend-mode: overlay;
+}
+
+/* Premium chip */
+.ppc-chip {
+    background: var(--ppc-chip-bg);
+    border: 1px solid var(--ppc-chip-border);
+    border-radius: 9999px;
+}
+
+/* Primary CTA polish (keeps Tailwind compatibility) */
+.ppc-primary-btn {
+    box-shadow: 0 10px 30px var(--ppc-cta-shadow);
+}
+.ppc-primary-btn:hover {
+    transform: translateY(-1px);
+}
+.ppc-primary-btn:active {
+    transform: translateY(0px) scale(0.98);
+}
+
+/* Preview stack (right side) */
+.ppc-preview-stack {
+    position: relative;
+    width: 280px;
+    height: 170px;
+}
+
+.ppc-preview-card {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--card) 85%, transparent);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    will-change: transform;
+}
+
+.ppc-preview-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+            420px 160px at 20% 0%,
+            rgba(255, 255, 255, 0.12) 0%,
+            transparent 60%
+    ),
+    radial-gradient(
+            420px 160px at 80% 100%,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 55%
+    );
+    pointer-events: none;
+}
+
+.ppc-preview-card-1 {
+    transform: translate3d(0, 0, 0) rotate(-1.2deg);
+    animation: ppcFloat1 7.2s ease-in-out infinite;
+}
+.ppc-preview-card-2 {
+    transform: translate3d(10px, 14px, 0) rotate(1.0deg) scale(0.98);
+    opacity: 0.85;
+    animation: ppcFloat2 8.4s ease-in-out infinite;
+}
+.ppc-preview-card-3 {
+    transform: translate3d(20px, 28px, 0) rotate(-0.6deg) scale(0.96);
+    opacity: 0.7;
+    animation: ppcFloat3 9.6s ease-in-out infinite;
+}
+
+@keyframes ppcFloat1 {
+    0% { transform: translate3d(0, 0, 0) rotate(-1.2deg); }
+    50% { transform: translate3d(0, -6px, 0) rotate(-0.6deg); }
+    100% { transform: translate3d(0, 0, 0) rotate(-1.2deg); }
+}
+@keyframes ppcFloat2 {
+    0% { transform: translate3d(10px, 14px, 0) rotate(1.0deg) scale(0.98); }
+    50% { transform: translate3d(12px, 8px, 0) rotate(0.6deg) scale(0.985); }
+    100% { transform: translate3d(10px, 14px, 0) rotate(1.0deg) scale(0.98); }
+}
+@keyframes ppcFloat3 {
+    0% { transform: translate3d(20px, 28px, 0) rotate(-0.6deg) scale(0.96); }
+    50% { transform: translate3d(18px, 34px, 0) rotate(-0.2deg) scale(0.965); }
+    100% { transform: translate3d(20px, 28px, 0) rotate(-0.6deg) scale(0.96); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ppc-primary-btn:hover,
+    .ppc-primary-btn:active {
+        transform: none !important;
+    }
+    .ppc-preview-card-1,
+    .ppc-preview-card-2,
+    .ppc-preview-card-3 {
+        animation: none !important;
+    }
 }

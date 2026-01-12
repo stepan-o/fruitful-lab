@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Playfair_Display_SC, Poppins } from "next/font/google";
+import { Alatsi, Raleway } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const headingFont = Playfair_Display_SC({
+const headingFont = Alatsi({
     subsets: ["latin"],
-    weight: ["400", "700"],
+    weight: "400",
     variable: "--font-heading",
     display: "swap",
 });
 
-const bodyFont = Poppins({
+const bodyFont = Raleway({
     subsets: ["latin"],
-    weight: ["400", "500", "600", "700"],
+    // common, readable weights (tweak if you want fewer)
+    weight: ["300", "400", "500", "600", "700"],
     variable: "--font-body",
     display: "swap",
 });

@@ -3,9 +3,11 @@
  * v0.2 (Locked) — Multipliers
  * Config-driven adjustment layers for ranges.
  *
- * Notes:
- * - Keep effects subtle and bounded. Spec guidance: ±10–15% max in spirit.
- * - These are applied in compute.ts (not here).
+ * Architecture note:
+ * - The multiplier TABLE is the tuning surface (business config).
+ * - The "subtlety" rule is enforced in compute via a softening layer that blends
+ *   multipliers toward 1.0 + clamps. That way, we can keep rough/tunable tables
+ *   without risking wild swings in outputs.
  */
 
 import type {
@@ -76,9 +78,6 @@ export const MULTIPLIERS: MultipliersConfig = {
     },
 
     // Optional (disabled default): keep all at 1.0 until you explicitly turn it on.
-    // Example keys you might use later:
-    // "product_seller:discovery" -> 1.03
-    // "product_seller:sales" -> 0.97
     goal_micro_adjust: {
         // content_creator
         "content_creator:traffic": 1.0,
@@ -100,7 +99,33 @@ export const MULTIPLIERS: MultipliersConfig = {
     },
 } as const;
 
-/** Utility: keep compute.ts clean. */
+/**
+ * Subtlety controls (v0.2 spirit).
+ * 0.0 = ignore multipliers (always 1.0)
+ * 1.0 = use raw table as-is
+ *
+ * Default: enforce subtle behavior even if the table contains aggressive values.
+ */
+export const MULTIPLIER_INTENSITY = {
+    audience: 0.55,
+    opportunity: 0.65,
+    goal_micro: 0.5,
+} as const;
+
+/**
+ * Blend a multiplier toward 1.0.
+ * Example: raw 0.70 with strength 0.55 -> 1 + (0.70-1)*0.55 = 0.835
+ */
+export function softenMultiplier(raw: number, strength: number): number {
+    if (!Number.isFinite(raw)) return 1.0;
+    if (!Number.isFinite(strength)) return raw;
+    const s = Math.max(0, Math.min(1, strength));
+    return 1 + (raw - 1) * s;
+}
+
+/**
+ * Utility: keep compute.ts clean.
+ */
 export function safeMultiplier(map: Record<string, number>, key: string, fallback = 1.0): number {
     const v = map[key];
     return typeof v === "number" && Number.isFinite(v) ? v : fallback;

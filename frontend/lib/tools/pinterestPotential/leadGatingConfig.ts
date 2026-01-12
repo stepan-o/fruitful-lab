@@ -1,23 +1,27 @@
 // frontend/lib/tools/pinterestPotential/leadGatingConfig.ts
 /**
- * v0.2 (Locked) — Lead gating config surface
+ * v0.2 (Locked) — Lead gating config surface (SPEC-ALIGNED)
  *
- * Requirements:
- * - Must support: known lead skip, new lead hard lock, new lead soft lock.
- * - Must remain flexible at runtime (config surface), so compute + UI can adapt
- *   without changing business logic.
+ * Keep this file as the single source of truth for:
+ * - allowed modes
+ * - default mode
+ * - known-lead behavior policy
+ * - capture field requirements
  *
- * Notes:
- * - This is NOT the same as the legacy leadMode.ts (gate_before_results, etc.).
- *   We’ll map old -> new in a later sprint when we rework the wizard.
+ * IMPORTANT:
+ * - No resolver logic lives here (to avoid duplicate resolution paths).
+ * - Resolver lives in leadMode.ts.
  */
 
-import type { LeadMode, LeadState } from "./pinterestPotentialSpec";
+import type { LeadMode } from "./pinterestPotentialSpec";
 
 export type LeadGatingConfig = {
     lead_gating: {
+        /** Default lead mode when no override is provided. */
         default_mode: LeadMode;
-        modes: LeadMode[];
+
+        /** Allowed lead modes for runtime overrides (query/cookie). */
+        modes: readonly LeadMode[];
 
         /** v0.2: if known lead, skip email capture entirely. */
         known_lead_behavior: "skip";
@@ -28,6 +32,7 @@ export type LeadGatingConfig = {
          */
         email_optional_in_soft_lock: boolean;
 
+        /** Capture field requirements (UI + validation alignment). */
         capture_fields: {
             email: { required: true };
             name: { required: boolean };
@@ -47,37 +52,3 @@ export const LEAD_GATING_CONFIG: LeadGatingConfig = {
         },
     },
 } as const;
-
-/**
- * Resolves effective mode/state for the current request.
- * - requestedMode: from query param (e.g., ?leadMode=soft_lock) or in-app control
- * - cookieMode: optional cookie override (if you decide to add it later)
- * - isKnownLead: computed from auth or token
- */
-export function resolveLeadGating(params: {
-    requestedMode?: string | null;
-    cookieMode?: string | null;
-    isKnownLead: boolean;
-}): { lead_mode: LeadMode; lead_state: LeadState } {
-    const lead_state: LeadState = params.isKnownLead ? "known" : "new";
-
-    // Known lead always skips capture UI; mode still matters for telemetry, but
-    // UX will treat it as "skip" per known_lead_behavior.
-    const allowed = new Set<LeadMode>(LEAD_GATING_CONFIG.lead_gating.modes);
-
-    const normalize = (v?: string | null): LeadMode | null => {
-        if (!v) return null;
-        if (v === "hard_lock" || v === "soft_lock") return v;
-        return null;
-    };
-
-    const requested = normalize(params.requestedMode);
-    const cookie = normalize(params.cookieMode);
-
-    const lead_mode: LeadMode =
-        (requested && allowed.has(requested) && requested) ||
-        (cookie && allowed.has(cookie) && cookie) ||
-        LEAD_GATING_CONFIG.lead_gating.default_mode;
-
-    return { lead_mode, lead_state };
-}

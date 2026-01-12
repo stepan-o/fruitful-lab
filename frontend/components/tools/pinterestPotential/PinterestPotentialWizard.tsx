@@ -1,596 +1,734 @@
 "use client";
 
 // frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
-// Sprint 2 — stepper skeleton with reducer state, per-step validation, and sessionStorage draft persistence
-// Sprint 5 — swap-in results UI (3 results) + recap, while keeping lead-mode behavior exactly as-is
+// v0.2 (Locked) — V2 wizard wired to new step components (Q1–Q8) + compute engine + lead gating.
 //
-// NOTE (bugfix): Spec changed Q2/Q3/Q9 to store OPTION IDS, not option values.
-// The previous compute.ts version sums raw arrays (treating them as values), which makes Result 1 wrong.
-// This wizard now computes Result 1/2/3 using the spec as source-of-truth.
+// Key points:
+// - Uses the new step components: Q1Segment..Q8GrowthMode (no old StepQ*).
+// - Persists draft via usePinterestPotentialDraft (sessionStorage v2).
+// - Supports A/B: welcome vs no_welcome (persisted in draft.variant).
+// - Computes via lib/tools/pinterestPotential/compute.ts (spec answers Q1–Q8).
+// - Lead gating via leadMode.ts + leadGatingConfig.ts (hard_lock | soft_lock), known leads skip capture.
+// - Primary-goal values from the UI are mapped to spec slugs (critical).
 
-import { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import {
-    type Answers,
-    type Lead,
-    type Question,
-    QUESTIONS,
-    Q2 as SPEC_Q2,
-    Q3 as SPEC_Q3,
-    Q9 as SPEC_Q9,
-    LEAD,
-    validateEmail,
-    validateAnswers,
-} from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+
 import { computeResults, type ResultsBundle } from "@/lib/tools/pinterestPotential/compute";
-import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
-// Step components registry (Sprint 4 compliance)
-import StepQ1 from "./steps/StepQ1";
-import StepQ2 from "./steps/StepQ2";
-import StepQ3 from "./steps/StepQ3";
-import StepQ4 from "./steps/StepQ4";
-import StepQ5 from "./steps/StepQ5";
-import StepQ6 from "./steps/StepQ6";
-import StepQ7 from "./steps/StepQ7";
-import StepQ8 from "./steps/StepQ8";
-import StepQ9 from "./steps/StepQ9";
-import StepLead from "./steps/StepLead";
 import {
+    type Answers as SpecAnswers,
+    type Lead,
     type LeadMode,
-    normalizeLeadMode,
-} from "@/lib/tools/pinterestPotential/leadMode";
+    type NicheSlug,
+    type PrimaryGoal,
+    type Segment as SpecSegment,
+    validateAnswers,
+    validateLead,
+    getNicheOptions,
+    getPrimaryGoalOptions,
+} from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+
+import { resolveLeadGatingContext, normalizeLeadMode } from "@/lib/tools/pinterestPotential/leadMode";
+import { LEAD_GATING_CONFIG } from "@/lib/tools/pinterestPotential/leadGatingConfig";
+import { resolveLeadFromToken } from "@/lib/tools/pinterestPotential/leadToken";
 import { PRIVACY_MICROCOPY } from "@/lib/tools/pinterestPotential/copy";
 import { trackLeadSubmit } from "@/lib/gtm";
 
-// ResultsBundle is imported from the canonical compute engine (Sprint 1 source of truth)
+import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
 
-type State = {
-    stepIndex: number; // 0..9
-    answers: Answers;
-    leadDraft: Partial<Lead>;
-    errors: Record<string, string>;
-    finalScore?: number; // kept for the existing "results gate" check
-    finalResults?: ResultsBundle; // Sprint 5
-};
+// New V2 step components
+import Q1Segment from "./steps/Q1Segment";
+import Q2Niche from "./steps/Q2Niche";
+import Q3Volume from "./steps/Q3Volume";
+import Q4Visual from "./steps/Q4Visual";
+import Q5Site from "./steps/Q5Site";
+import Q6Offer from "./steps/Q6Offer";
+import Q7Goal from "./steps/Q7Goal";
+import Q8GrowthMode from "./steps/Q8GrowthMode";
 
-type Action =
-    | { type: "SET_STEP"; index: number }
-    | { type: "UPDATE_ANSWER"; questionId: string; value: any }
-    | { type: "UPDATE_LEAD"; field: keyof Lead; value: string }
-    | { type: "SET_ERRORS"; errors: Record<string, string> }
-    | { type: "SET_SCORE"; score: number }
-    | { type: "SET_RESULTS"; results: ResultsBundle }
-    | { type: "RESET_ERRORS" };
+import { WelcomeHero } from "./WelcomeHero";
+import type {
+    AnswersV2,
+    GrowthMode,
+    OfferClarity,
+    SiteExperience,
+    VisualStrength,
+    VolumeBucket,
+} from "./steps/ppcV2Types";
 
-function reducer(state: State, action: Action): State {
-    switch (action.type) {
-        case "SET_STEP":
-            return { ...state, stepIndex: action.index };
-        case "UPDATE_ANSWER": {
-            const answers = {
-                ...state.answers,
-                [action.questionId]: action.value,
-            } as Answers;
-            return { ...state, answers };
-        }
-        case "UPDATE_LEAD": {
-            const leadDraft = { ...state.leadDraft, [action.field]: action.value };
-            return { ...state, leadDraft };
-        }
-        case "SET_ERRORS":
-            return { ...state, errors: action.errors };
-        case "RESET_ERRORS":
-            return { ...state, errors: {} };
-        case "SET_SCORE":
-            return { ...state, finalScore: action.score };
-        case "SET_RESULTS":
-            return {
-                ...state,
-                finalResults: action.results,
-                finalScore: action.results.monthlyAudience, // preserve old gate behavior
-            };
-        default:
-            return state;
+// -----------------------------
+// Small helpers
+// -----------------------------
+function getCookieValue(name: string): string | null {
+    if (typeof document === "undefined") return null;
+    const parts = document.cookie.split(";").map((s) => s.trim());
+    for (const p of parts) {
+        if (p.startsWith(name + "=")) return decodeURIComponent(p.slice(name.length + 1));
     }
+    return null;
 }
 
-// Note: TOTAL_STEPS is derived dynamically from `steps.length` within the component.
-
-function validateStepLocal(
-    stepIdx: number,
-    answers: Answers,
-    leadDraft: Partial<Lead>
-): Record<string, string> {
-    const q = QUESTIONS[stepIdx];
-    const errors: Record<string, string> = {};
-    if (!q) return errors;
-
-    if (q.type === "radio") {
-        const v = (answers as any)[q.id];
-        if (q.required && (v === undefined || v === null)) {
-            errors[q.id] = "This question is required.";
-        }
-    } else if (q.type === "checkbox") {
-        const arr = (answers as any)[q.id] as any;
-        if (q.required && (!Array.isArray(arr) || arr.length === 0)) {
-            errors[q.id] = "Please select at least one option.";
-        }
-    } else if (q.type === "slider") {
-        const v = (answers as any)[q.id];
-        if (q.required && (v === undefined || v === null)) {
-            errors[q.id] = "This question is required.";
-        } else if (v !== undefined && (v < q.min || v > q.max)) {
-            errors[q.id] = `Value must be between ${q.min} and ${q.max}.`;
-        }
-    } else if (q.type === "lead") {
-        const name = leadDraft.name ?? "";
-        const email = leadDraft.email ?? "";
-        if (!name.trim()) errors["LEAD.name"] = "Name is required.";
-        if (!email || !validateEmail(email))
-            errors["LEAD.email"] = "A valid email is required.";
-    }
-
-    return errors;
+function formatRange(low: number, high: number): string {
+    return `${low.toLocaleString()}–${high.toLocaleString()}`;
 }
 
-// Compute is centralized in lib/tools/pinterestPotential/compute.ts
-
-// ---- Recap helpers ----
-function formatSliderAnswer(qid: "Q7" | "Q8", v: number): string {
-    if (qid === "Q7") {
-        const label = v === 1 ? "Not seasonal" : v === 5 ? "Very seasonal" : "Moderately seasonal";
-        return `${v}/5 (${label})`;
-    }
-    const label = v === 1 ? "Low competition" : v === 5 ? "High competition" : "Moderate competition";
-    return `${v}/5 (${label})`;
+function opportunityLabel(type: ResultsBundle["opportunity_est"]["type"]): string {
+    if (type === "traffic") return "Monthly traffic opportunity";
+    if (type === "revenue") return "Monthly revenue opportunity";
+    return "Monthly lead opportunity";
 }
 
-function getRadioLabel(q: Extract<Question, { type: "radio" }>, value: number | undefined): string {
-    if (value === undefined || value === null) return "—";
-    const opt = q.options.find((o) => o.value === value);
-    return opt?.label ?? String(value);
+function mapGoalToSpec(segment: SpecSegment, raw?: string): PrimaryGoal | undefined {
+    if (!raw) return undefined;
+
+    // If UI ever starts sending spec slugs directly, accept them.
+    const allowed = new Set(getPrimaryGoalOptions(segment).map((o) => o.id));
+    if (allowed.has(raw as PrimaryGoal)) return raw as PrimaryGoal;
+
+    // Current UI slugs (from Q7Goal.tsx) → spec slugs
+    const map: Record<SpecSegment, Record<string, PrimaryGoal>> = {
+        content_creator: {
+            traffic: "traffic",
+            subscribers: "email_subscribers",
+            affiliate: "affiliate_revenue",
+            sales: "course_product_sales",
+        },
+        product_seller: {
+            sales: "sales",
+            subscribers: "email_subscribers",
+            retargeting: "retargeting_pool",
+            discovery: "new_customer_discovery",
+        },
+        service_provider: {
+            leads: "leads_calls",
+            subscribers: "email_subscribers",
+            webinar: "webinar_signups",
+            authority: "authority_visibility",
+        },
+    };
+
+    return map[segment]?.[raw];
 }
 
-function getCheckboxLabels(q: Extract<Question, { type: "checkbox" }>, selectedIds: number[] | undefined): string {
-    const ids = Array.isArray(selectedIds) ? selectedIds : [];
-    if (ids.length === 0) return "—";
-    const labelById = new Map(q.options.map((o) => [o.id, o.label]));
-    return ids.map((id) => labelById.get(id) ?? String(id)).join(", ");
+function segmentLabel(seg?: SpecSegment): string {
+    if (seg === "content_creator") return "Content Creator";
+    if (seg === "product_seller") return "Product Seller";
+    if (seg === "service_provider") return "Service Provider";
+    return "—";
 }
 
+function valueLabelFromOptions<T extends string>(opts: Array<{ id: T; label: string }>, v?: string): string {
+    if (!v) return "—";
+    return opts.find((o) => o.id === v)?.label ?? v;
+}
+
+function getStepTitle(stepIndex: number): string {
+    const titles: Record<number, string> = {
+        1: "Which best describes your business?",
+        2: "What’s your primary niche?",
+        3: "Monthly output volume",
+        4: "How strong is your visual content library right now?",
+        5: "Which best describes your website right now?",
+        6: "Offer clarity",
+        7: "What’s your primary goal from Pinterest?",
+        8: "Ads plan",
+    };
+    return titles[stepIndex] ?? "Pinterest Potential";
+}
+
+function getErrorKeyForStep(stepIndex: number, errors: Record<string, string>, resultsErrors: Record<string, string>) {
+    const keyByStep: Record<number, string[]> = {
+        1: ["Q1"],
+        2: ["Q2", "Q1"],
+        3: ["Q3"],
+        4: ["Q4"],
+        5: ["Q5"],
+        6: ["Q6"],
+        7: ["Q7", "Q1"],
+        8: ["Q8"],
+    };
+
+    const keys = keyByStep[stepIndex] ?? [];
+    return keys.find((k) => errors[k]) ?? keys.find((k) => resultsErrors[k]) ?? null;
+}
+
+// -----------------------------
+// Component
+// -----------------------------
 export default function PinterestPotentialWizard({
-  leadMode = "gate_before_results",
-  initialLead,
-  onPhaseChange,
-  onStart,
-}: {
-  leadMode?: LeadMode;
-  initialLead?: Lead;
-  onPhaseChange?: (phase: "wizard" | "results") => void;
-  onStart?: () => void; // analytics: tool_start
+                                                     leadMode = LEAD_GATING_CONFIG.lead_gating.default_mode,
+                                                     initialLead,
+                                                     onPhaseChangeAction,
+                                                     onStartAction,
+                                                 }: {
+    leadMode?: LeadMode;
+    initialLead?: Lead;
+
+    /**
+     * NOTE: Name ends with "Action" to satisfy Next's client-boundary serialization rule.
+     * If you need client-to-client callbacks, listen via events or ensure the parent is also a client component boundary.
+     */
+    onPhaseChangeAction?: (phase: "wizard" | "results") => void | Promise<void>;
+    onStartAction?: () => void | Promise<void>; // analytics: tool_start
 }) {
-    // Query-param seatbelt: allow runtime override even if upstream wiring is off.
     const searchParams = useSearchParams();
-    const qpLeadMode =
-        (searchParams as any)?.get?.("leadMode") ??
-        (searchParams as any)?.get?.("leadmode") ??
+
+    // ---- A/B variant (welcome vs no_welcome) ----
+    const qpVariant =
+        searchParams.get("variant") ??
+        searchParams.get("pp_variant") ??
+        searchParams.get("ppcVariant") ??
         undefined;
 
-    const effectiveLeadMode: LeadMode = normalizeLeadMode(qpLeadMode) ?? leadMode;
+    const requestedVariant =
+        qpVariant === "welcome" || qpVariant === "no_welcome" ? (qpVariant as "welcome" | "no_welcome") : undefined;
 
-    // Draft persistence (sessionStorage v1)
-    const { draft, updateDraft } = usePinterestPotentialDraft({
-        stepIndex: 0,
+    // ---- Lead gating overrides ----
+    const qpLeadMode =
+        searchParams.get("leadMode") ?? searchParams.get("lead_mode") ?? searchParams.get("leadmode") ?? undefined;
+
+    const qpLeadToken =
+        searchParams.get("leadToken") ?? searchParams.get("lead_token") ?? searchParams.get("token") ?? undefined;
+
+    // Optional cookie override (best-effort; safe if absent)
+    const cookieLeadMode =
+        typeof document !== "undefined"
+            ? getCookieValue("pp_lead_mode") ?? getCookieValue("pinterest_potential_lead_mode") ?? null
+            : null;
+
+    // ---- Draft persistence (sessionStorage v2) ----
+    const { draft, updateDraft, clearDraft } = usePinterestPotentialDraft({
+        stepIndex: 1,
+        started: false,
         answers: {},
-        leadDraft: {},
+        variant: undefined,
     });
 
-    const [state, dispatch] = useReducer(reducer, {
-        stepIndex: draft.stepIndex ?? 0,
-        answers: draft.answers ?? {},
-        leadDraft:
-            draft.leadDraft && Object.keys(draft.leadDraft).length > 0
-                ? draft.leadDraft
-                : initialLead ?? {},
-        errors: {},
-    } as State);
+    // Local answers state (backed by draft)
+    const [answers, setAnswers] = useState<AnswersV2>(draft.answers ?? {});
+    const [stepIndex, setStepIndex] = useState<number>(() => {
+        // stepIndex is 1..8 in v2
+        const n = draft.stepIndex;
+        return n >= 1 && n <= 8 ? n : 1;
+    });
 
-    // Local UI state for optional-after-results submit (results screen)
-    const [emailError, setEmailError] = useState<string | null>(null);
+    // ---- Wizard errors (per-step) ----
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    // ---- Results state ----
+    const [results, setResults] = useState<ResultsBundle | null>(null);
+    const [resultsErrors, setResultsErrors] = useState<Record<string, string>>({});
+    const [optionalLeadEmailError, setOptionalLeadEmailError] = useState<string | null>(null);
     const [optionalLeadSubmitted, setOptionalLeadSubmitted] = useState(false);
 
-    // Inform parent that we are in the wizard phase on mount
+    // ---- Known lead resolution (initialLead OR leadToken) ----
+    const [knownLead, setKnownLead] = useState<Lead | undefined>(initialLead);
+    const [leadDraft, setLeadDraft] = useState<Partial<Lead>>(initialLead ?? {});
+    const [leadSubmitted, setLeadSubmitted] = useState<boolean>(!!initialLead?.email);
+
+    // ---- Analytics: tool_start (once) ----
+    const hasStartedRef = useRef(false);
+
+    // ---- A/B variant persistence ----
     useEffect(() => {
-        onPhaseChange?.("wizard");
+        if (draft.variant) return;
+
+        const v = requestedVariant ?? (Math.random() < 0.5 ? ("welcome" as const) : ("no_welcome" as const));
+        updateDraft({ variant: v, started: v === "no_welcome" ? true : draft.started });
+    }, [draft.variant, requestedVariant, updateDraft, draft.started]);
+
+    const variant = draft.variant ?? requestedVariant ?? "welcome";
+
+    // If variant is no_welcome, force started.
+    const started = variant === "no_welcome" ? true : draft.started;
+
+    // Persist step + answers back to draft
+    useEffect(() => {
+        updateDraft({
+            stepIndex,
+            started,
+            answers,
+            variant,
+        });
+    }, [answers, stepIndex, started, variant, updateDraft]);
+
+    // Inform parent phase on mount (wizard)
+    useEffect(() => {
+        void onPhaseChangeAction?.("wizard");
+        // intentionally only on mount
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Keep storage draft in sync when relevant state changes
+    // Resolve known lead from token
     useEffect(() => {
-        updateDraft({
-            stepIndex: state.stepIndex,
-            answers: state.answers,
-            leadDraft: state.leadDraft,
+        let alive = true;
+        (async () => {
+            try {
+                const fromToken = await resolveLeadFromToken(qpLeadToken);
+                if (!alive) return;
+
+                if (fromToken?.email) {
+                    setKnownLead(fromToken);
+                    setLeadDraft((prev) => ({
+                        name: prev.name ?? fromToken.name,
+                        email: prev.email ?? fromToken.email,
+                    }));
+                    setLeadSubmitted(true);
+                }
+            } catch {
+                // ignore
+            }
+        })();
+
+        return () => {
+            alive = false;
+        };
+    }, [qpLeadToken]);
+
+    const isKnownLead = !!knownLead?.email;
+
+    const gating = useMemo(() => {
+        const requested = normalizeLeadMode(qpLeadMode) ?? normalizeLeadMode(leadMode);
+        return resolveLeadGatingContext({
+            requested: qpLeadMode ?? (requested ? String(requested) : null),
+            cookieValue: cookieLeadMode,
+            isKnownLead,
         });
-    }, [state.stepIndex, state.answers, state.leadDraft, updateDraft]);
+    }, [qpLeadMode, cookieLeadMode, isKnownLead, leadMode]);
 
-    // Build dynamic step order based on lead mode
-    const includeLead = useMemo(() => {
-        if (effectiveLeadMode === "optional_after_results") return false;
-        if (effectiveLeadMode === "prefilled_or_skip") return false;
-        return true; // gate_before_results only
-    }, [effectiveLeadMode]);
+    const effectiveLeadMode: LeadMode = gating.lead_mode;
+    const leadState = gating.lead_state;
 
-    const steps = useMemo(() => {
-        const base = QUESTIONS.filter((q) => q.type !== "lead");
-        return includeLead ? [...base, LEAD] : base;
-    }, [includeLead]);
+    // ---- Derived wizard values (HOOKS MUST ALWAYS RUN) ----
+    const TOTAL = 8;
+    const isLastStep = stepIndex === TOTAL;
 
-    const TOTAL_STEPS = steps.length;
-    const current = steps[state.stepIndex];
-    const isLastStep = state.stepIndex === TOTAL_STEPS - 1;
+    const progressText = useMemo(() => `Step ${stepIndex} of ${TOTAL}`, [stepIndex]);
 
-    const progressText = useMemo(
-        () => `Step ${state.stepIndex + 1} of ${TOTAL_STEPS}`,
-        [state.stepIndex, TOTAL_STEPS]
+    const currentErrorKey = useMemo(
+        () => getErrorKeyForStep(stepIndex, errors, resultsErrors),
+        [errors, resultsErrors, stepIndex],
     );
 
-    function validateAllNonLead(
-        answers: Answers,
-        leadDraft: Partial<Lead>
-    ): Record<string, string> {
-        const nonLeadErrors: Record<string, string> = {};
-        for (const q of QUESTIONS) {
-            if (q.type === "lead") continue;
-            const idx = QUESTIONS.indexOf(q);
-            const e = validateStepLocal(idx, answers, leadDraft);
-            Object.assign(nonLeadErrors, e);
-        }
-        return nonLeadErrors;
+    const header = useMemo(() => getStepTitle(stepIndex), [stepIndex]);
+
+    function resetErrors() {
+        setErrors({});
     }
 
-    function handlePrev() {
-        dispatch({ type: "RESET_ERRORS" });
-        if (state.stepIndex > 0) {
-            dispatch({ type: "SET_STEP", index: state.stepIndex - 1 });
+    function fireToolStartOnce() {
+        if (hasStartedRef.current) return;
+        hasStartedRef.current = true;
+        try {
+            void onStartAction?.();
+        } catch {
+            // ignore
         }
     }
 
-    const hasStartedRef = useRef(false);
+    function validateStep(si: number, a: AnswersV2): Record<string, string> {
+        const e: Record<string, string> = {};
 
-    function handleNext() {
-        dispatch({ type: "RESET_ERRORS" });
-
-        const stepQuestion = current;
-        if (!stepQuestion) return;
-
-        const errs: Record<string, string> = {};
-        if (stepQuestion.type === "radio") {
-            const v = (state.answers as any)[stepQuestion.id];
-            if (stepQuestion.required && (v === undefined || v === null)) {
-                errs[stepQuestion.id] = "This question is required.";
-            }
-        } else if (stepQuestion.type === "checkbox") {
-            const arr = (state.answers as any)[stepQuestion.id] as any;
-            if (stepQuestion.required && (!Array.isArray(arr) || arr.length === 0)) {
-                errs[stepQuestion.id] = "Please select at least one option.";
-            }
-        } else if (stepQuestion.type === "slider") {
-            const v = (state.answers as any)[stepQuestion.id];
-            if (stepQuestion.required && (v === undefined || v === null)) {
-                errs[stepQuestion.id] = "This question is required.";
-            } else if (v !== undefined && (v < stepQuestion.min || v > stepQuestion.max)) {
-                errs[stepQuestion.id] = `Value must be between ${stepQuestion.min} and ${stepQuestion.max}.`;
-            }
-        } else if (stepQuestion.type === "lead") {
-            const name = state.leadDraft.name ?? "";
-            const email = state.leadDraft.email ?? "";
-            if (!name.trim()) errs["LEAD.name"] = "Name is required.";
-            if (!email || !validateEmail(email)) errs["LEAD.email"] = "A valid email is required.";
+        if (si === 1) {
+            if (!a.segment) e["Q1"] = "This question is required.";
+        } else if (si === 2) {
+            if (!a.segment) e["Q1"] = "Select your business type first.";
+            if (!a.niche) e["Q2"] = "This question is required.";
+        } else if (si === 3) {
+            if (!a.volume_bucket) e["Q3"] = "This question is required.";
+        } else if (si === 4) {
+            if (!a.visual_strength) e["Q4"] = "This question is required.";
+        } else if (si === 5) {
+            if (!a.site_experience) e["Q5"] = "This question is required.";
+        } else if (si === 6) {
+            if (!a.offer_clarity) e["Q6"] = "This question is required.";
+        } else if (si === 7) {
+            if (!a.segment) e["Q1"] = "Select your business type first.";
+            if (!a.primary_goal) e["Q7"] = "This question is required.";
+        } else if (si === 8) {
+            if (!a.growth_mode) e["Q8"] = "This question is required.";
         }
 
-        if (Object.keys(errs).length > 0) {
-            dispatch({ type: "SET_ERRORS", errors: errs });
+        return e;
+    }
+
+    function buildSpecAnswers(a: AnswersV2): SpecAnswers {
+        const seg = a.segment as SpecSegment | undefined;
+        return {
+            Q1: seg,
+            Q2: (a.niche as NicheSlug | undefined) ?? undefined,
+            Q3: (a.volume_bucket as VolumeBucket | undefined) ?? undefined,
+            Q4: (a.visual_strength as VisualStrength | undefined) ?? undefined,
+            Q5: (a.site_experience as SiteExperience | undefined) ?? undefined,
+            Q6: (a.offer_clarity as OfferClarity | undefined) ?? undefined,
+            Q7: seg ? mapGoalToSpec(seg, a.primary_goal) : undefined,
+            Q8: (a.growth_mode as GrowthMode | undefined) ?? undefined,
+        };
+    }
+
+    function computeAndShowResults() {
+        const specAnswers = buildSpecAnswers(answers);
+
+        // Canonical validation (spec-level)
+        const v = validateAnswers(specAnswers);
+        if (!v.ok) {
+            setResultsErrors(v.errors);
+            setErrors(v.errors);
+
+            // Jump to first missing/invalid question if possible
+            const order: Array<keyof SpecAnswers> = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8"];
+            const first = order.find((k) => v.errors[String(k)]);
+            if (first) {
+                const idx = Number(String(first).slice(1)); // Q1 -> 1
+                if (idx >= 1 && idx <= 8) setStepIndex(idx);
+            }
             return;
         }
 
-        // Fire tool_start once on first successful interaction
-        if (!hasStartedRef.current) {
-            hasStartedRef.current = true;
-            try {
-                onStart?.();
-            } catch {}
+        const computed = computeResults(specAnswers);
+        if (!computed.ok) {
+            setResultsErrors(computed.errors);
+            setErrors(computed.errors);
+
+            const order = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8"];
+            const first = order.find((k) => computed.errors[k]);
+            if (first) {
+                const idx = Number(first.slice(1));
+                if (idx >= 1 && idx <= 8) setStepIndex(idx);
+            }
+            return;
         }
 
-        // If this was a successful lead capture step, emit lead_submit
-        if (stepQuestion.type === "lead") {
-            try {
-                const location = typeof window !== "undefined" ? window.location.pathname : "";
-                trackLeadSubmit({
-                    location,
-                    tool_name: "pinterest_potential",
-                    button_label: isLastStep ? "Calculate" : "Continue",
-                });
-            } catch {}
+        setResultsErrors({});
+        setResults(computed.results);
+        void onPhaseChangeAction?.("results");
+    }
+
+    function goNext() {
+        resetErrors();
+
+        const stepErrs = validateStep(stepIndex, answers);
+        if (Object.keys(stepErrs).length > 0) {
+            setErrors(stepErrs);
+            return;
         }
+
+        fireToolStartOnce();
 
         if (isLastStep) {
-            // Dev-only invariant: ensure checkbox answers are canonical (IDs only)
-            if (process.env.NODE_ENV !== "production") {
-                const allowedQ2 = new Set(SPEC_Q2.options.map((o) => o.id));
-                const allowedQ3 = new Set(SPEC_Q3.options.map((o) => o.id));
-                const allowedQ9 = new Set(SPEC_Q9.options.map((o) => o.id));
-                const isIdsArray = (arr: any, allowed: Set<number>) =>
-                    Array.isArray(arr) && arr.every((x) => Number.isInteger(x) && allowed.has(x));
-
-                const a = state.answers as Answers;
-                const badQ2 = a.Q2 !== undefined && !isIdsArray(a.Q2, allowedQ2);
-                const badQ3 = a.Q3 !== undefined && !isIdsArray(a.Q3, allowedQ3);
-                const badQ9 = a.Q9 !== undefined && !isIdsArray(a.Q9, allowedQ9);
-                if (badQ2 || badQ3 || badQ9) {
-                    // Make violations loud during development
-                    // eslint-disable-next-line no-console
-                    console.error("PinterestPotential: Non-canonical draft detected (checkboxes must be IDs)", {
-                        Q2: a.Q2,
-                        Q3: a.Q3,
-                        Q9: a.Q9,
-                    });
-                    throw new Error("PinterestPotential invariant: checkbox answers must be option IDs in development");
-                }
-            }
-
-            if (effectiveLeadMode === "gate_before_results") {
-                const lead: Lead | undefined =
-                    state.leadDraft?.name && state.leadDraft?.email
-                        ? { name: state.leadDraft.name!, email: state.leadDraft.email! }
-                        : undefined;
-
-                const validation = validateAnswers(state.answers, lead);
-                if (!validation.ok) {
-                    dispatch({ type: "SET_ERRORS", errors: validation.errors });
-                    return;
-                }
-
-                const results = computeResults(state.answers as Required<Answers>);
-                dispatch({ type: "SET_RESULTS", results });
-                onPhaseChange?.("results");
-            } else {
-                const nonLeadErrors = validateAllNonLead(state.answers, state.leadDraft);
-                if (Object.keys(nonLeadErrors).length > 0) {
-                    dispatch({ type: "SET_ERRORS", errors: nonLeadErrors });
-                    return;
-                }
-
-                const results = computeResults(state.answers as Required<Answers>);
-                dispatch({ type: "SET_RESULTS", results });
-                onPhaseChange?.("results");
-            }
+            computeAndShowResults();
             return;
         }
 
-        dispatch({ type: "SET_STEP", index: state.stepIndex + 1 });
+        setStepIndex((s) => Math.min(TOTAL, s + 1));
     }
 
-    // ---- Sprint 4: step registry rendering ----
-    // StepQ* are the only render path; shared form components are consumed by Step* wrappers.
-    const STEP_COMPONENTS: Record<string, React.ComponentType<any>> = {
-        Q1: StepQ1,
-        Q2: StepQ2,
-        Q3: StepQ3,
-        Q4: StepQ4,
-        Q5: StepQ5,
-        Q6: StepQ6,
-        Q7: StepQ7,
-        Q8: StepQ8,
-        Q9: StepQ9,
-        LEAD: StepLead,
-    };
-
-    function renderQuestion() {
-        if (!current) return null;
-
-        const StepComponent = STEP_COMPONENTS[current.id];
-        if (!StepComponent) {
-            throw new Error(`No Step component registered for ${current.id}`);
-        }
-
-        const error = state.errors[current.id];
-
-        if (current.type === "radio") {
-            return (
-                <StepComponent
-                    value={(state.answers as any)[current.id] as number | undefined}
-                    onChange={(v: number) =>
-                        dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: v })
-                    }
-                    error={error}
-                />
-            );
-        }
-
-        if (current.type === "checkbox") {
-            return (
-                <StepComponent
-                    values={((state.answers as any)[current.id] as number[]) ?? []}
-                    onChange={(vals: number[]) =>
-                        dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: vals })
-                    }
-                    error={error}
-                />
-            );
-        }
-
-        if (current.type === "slider") {
-            const v = (state.answers as any)[current.id] ?? current.default ?? current.min;
-            return (
-                <StepComponent
-                    value={v}
-                    onChange={(nv: number) =>
-                        dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: nv })
-                    }
-                    error={error}
-                />
-            );
-        }
-
-        if (current.type === "lead") {
-            const leadErrors = {
-                name: state.errors["LEAD.name"],
-                email: state.errors["LEAD.email"],
-            } as { name?: string; email?: string };
-            return (
-                <StepComponent
-                    label={current.label}
-                    leadDraft={state.leadDraft}
-                    onChange={(patch: Partial<Lead>) => {
-                        if (patch.name !== undefined) {
-                            dispatch({ type: "UPDATE_LEAD", field: "name", value: patch.name });
-                        }
-                        if (patch.email !== undefined) {
-                            dispatch({ type: "UPDATE_LEAD", field: "email", value: patch.email });
-                        }
-                    }}
-                    errors={leadErrors}
-                />
-            );
-        }
-
-        // TypeScript note: by the time we reach here, `current` was exhaustively
-        // narrowed. Avoid referencing `current.type` to satisfy TS's `never`.
-        throw new Error("Unsupported question type");
+    function autoAdvance() {
+        // Let UI paint the selection state before advancing.
+        window.setTimeout(() => {
+            goNext();
+        }, 120);
     }
 
-    if (state.finalScore !== undefined) {
-        const r = state.finalResults;
+    function goPrev() {
+        resetErrors();
 
-        const recapItems = QUESTIONS.filter((q) => q.type !== "lead").map((q) => {
-            const id = q.id as keyof Answers;
-            if (q.type === "radio") {
-                return { label: q.label, value: getRadioLabel(q, state.answers[id] as number | undefined) };
-            }
-            if (q.type === "checkbox") {
-                return { label: q.label, value: getCheckboxLabels(q, state.answers[id] as number[] | undefined) };
-            }
-            // slider
-            const v = state.answers[id] as number | undefined;
-            const shown = typeof v === "number" ? formatSliderAnswer(q.id as "Q7" | "Q8", v) : "—";
-            return { label: q.label, value: shown };
-        });
+        if (!started && variant === "welcome") return;
 
-        // Show optional email capture at the top of results (optional_after_results, no email yet)
-        const showOptionalEmail =
-            effectiveLeadMode === "optional_after_results" && !state.leadDraft?.email;
+        // Allow going back to welcome if welcome variant and stepIndex is 1
+        if (variant === "welcome" && started && stepIndex === 1) {
+            updateDraft({ started: false });
+            return;
+        }
 
-        const OptionalEmailCapture = showOptionalEmail ? (
-            <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                <div className="sm:grid sm:grid-cols-3 sm:gap-4">
-                    <div>
-                        <h3 className="font-heading text-lg text-[var(--foreground)]">Want a copy of your results?</h3>
-                        <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-                            Leave your email and we’ll send this score.
-                        </p>
-                        <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
+        if (stepIndex > 1) setStepIndex((s) => s - 1);
+    }
+
+    // -----------------------------
+    // Welcome view
+    // -----------------------------
+    if (!started && variant === "welcome") {
+        return (
+            <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
+                <WelcomeHero />
+                <div className="mt-4 text-sm text-[var(--foreground-muted)]">
+                    Answer 8 quick questions and we’ll estimate your Pinterest opportunity.
+                </div>
+
+                <div className="mt-6 flex items-center justify-between">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            updateDraft({ started: true, stepIndex: 1 });
+                            fireToolStartOnce();
+                        }}
+                        className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                    >
+                        Start
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={() => {
+                            clearDraft();
+                            setAnswers({});
+                            setStepIndex(1);
+                            setErrors({});
+                            setResultsErrors({});
+                            setResults(null);
+                            setOptionalLeadSubmitted(false);
+                            setOptionalLeadEmailError(null);
+                        }}
+                        className="rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                    >
+                        Reset
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    // -----------------------------
+    // Results view
+    // -----------------------------
+    if (results) {
+        const unlocked =
+            leadState === "known" ||
+            effectiveLeadMode === "soft_lock" ||
+            (effectiveLeadMode === "hard_lock" && (leadSubmitted || isKnownLead));
+
+        const showHardLockGate = effectiveLeadMode === "hard_lock" && leadState === "new" && !unlocked;
+
+        const seg = (answers.segment as SpecSegment | undefined) ?? undefined;
+        const nicheOpts = seg ? getNicheOptions(seg) : [];
+        const goalOpts = seg ? getPrimaryGoalOptions(seg) : [];
+
+        const recap = [
+            { label: "Business type", value: segmentLabel(seg) },
+            { label: "Niche", value: valueLabelFromOptions(nicheOpts, answers.niche) },
+            { label: "Monthly volume", value: answers.volume_bucket ?? "—" },
+            { label: "Visual library", value: answers.visual_strength ? answers.visual_strength.replace(/_/g, " ") : "—" },
+            { label: "Website experience", value: answers.site_experience ? answers.site_experience.toUpperCase() : "—" },
+            { label: "Offer clarity", value: answers.offer_clarity ? answers.offer_clarity.replace(/_/g, " ") : "—" },
+            {
+                label: "Primary goal",
+                value: seg
+                    ? valueLabelFromOptions(goalOpts, mapGoalToSpec(seg, answers.primary_goal))
+                    : answers.primary_goal ?? "—",
+            },
+            { label: "Ads plan", value: answers.growth_mode ? answers.growth_mode.replace(/_/g, " ") : "—" },
+        ];
+
+        const ResultsCards = (
+            <div className="grid gap-3 sm:grid-cols-3">
+                <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                    <div className="text-xs text-[var(--foreground-muted)]">Monthly Pinterest audience</div>
+                    <div className="mt-1 font-heading text-2xl">{formatRange(results.audience_est.low, results.audience_est.high)}</div>
+                </div>
+
+                <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                    <div className="text-xs text-[var(--foreground-muted)]">{opportunityLabel(results.opportunity_est.type)}</div>
+                    <div className="mt-1 font-heading text-2xl">
+                        {formatRange(results.opportunity_est.low, results.opportunity_est.high)}
                     </div>
-                    <div className="mt-3 sm:mt-0 sm:col-span-2">
-                        <div className="grid gap-3 sm:grid-cols-2">
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="Your name (optional)"
-                                    value={state.leadDraft.name ?? ""}
-                                    onChange={(e) =>
-                                        dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })
-                                    }
-                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    type="email"
-                                    placeholder="you@example.com"
-                                    value={state.leadDraft.email ?? ""}
-                                    onChange={(e) =>
-                                        dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })
-                                    }
-                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                />
-                                {emailError ? (
-                                    <div className="mt-1 text-xs text-red-500">{emailError}</div>
-                                ) : null}
-                            </div>
+                </div>
+
+                <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                    <div className="text-xs text-[var(--foreground-muted)]">Audience income range (USD)</div>
+                    <div className="mt-1 font-heading text-2xl">{formatRange(results.income_est.low, results.income_est.high)}</div>
+                </div>
+            </div>
+        );
+
+        const LeadCaptureHardLock =
+            showHardLockGate ? (
+                <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4">
+                        <div>
+                            <h3 className="font-heading text-lg text-[var(--foreground)]">Unlock your results</h3>
+                            <p className="mt-1 text-sm text-[var(--foreground-muted)]">Enter your email to view the full snapshot.</p>
+                            <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
                         </div>
-                        <div className="mt-3">
-                            <button
-                                type="button"
-                                disabled={optionalLeadSubmitted}
-                                onClick={() => {
-                                    const email = state.leadDraft.email ?? "";
-                                    if (!email || !validateEmail(email)) {
-                                        setEmailError("Please enter a valid email.");
-                                        return;
-                                    }
-                                    setEmailError(null);
-                                    try {
-                                        trackLeadSubmit({
-                                            location:
-                                                typeof window !== "undefined"
-                                                    ? window.location.pathname
-                                                    : "",
-                                            tool_name: "pinterest_potential",
-                                            button_label: "Email me my results",
-                                        });
-                                        setOptionalLeadSubmitted(true);
-                                    } catch {
-                                        // swallow analytics errors
-                                    }
-                                    // TODO: Wire actual email send to backend when available.
-                                }}
-                                className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
-                            >
-                                {optionalLeadSubmitted ? "Sent" : "Email me my results"}
-                            </button>
+
+                        <div className="mt-3 sm:mt-0 sm:col-span-2">
+                            <div className="grid gap-3 sm:grid-cols-2">
+                                {LEAD_GATING_CONFIG.lead_gating.capture_fields.name.required ? (
+                                    <div>
+                                        <input
+                                            type="text"
+                                            placeholder="Your name"
+                                            value={leadDraft.name ?? ""}
+                                            onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
+                                            className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                                        />
+                                        {errors["LEAD.name"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div> : null}
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <input
+                                            type="text"
+                                            placeholder="Your name (optional)"
+                                            value={leadDraft.name ?? ""}
+                                            onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
+                                            className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                                        />
+                                    </div>
+                                )}
+
+                                <div>
+                                    <input
+                                        type="email"
+                                        placeholder="you@example.com"
+                                        value={leadDraft.email ?? ""}
+                                        onChange={(e) => setLeadDraft((p) => ({ ...p, email: e.target.value }))}
+                                        className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                                    />
+                                    {errors["LEAD.email"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div> : null}
+                                </div>
+                            </div>
+
+                            <div className="mt-3">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        resetErrors();
+                                        const lead: Lead = {
+                                            email: (leadDraft.email ?? "").trim(),
+                                            name: leadDraft.name?.trim() || undefined,
+                                        };
+                                        const v = validateLead(lead);
+                                        if (!v.ok) {
+                                            setErrors(v.errors);
+                                            return;
+                                        }
+
+                                        try {
+                                            trackLeadSubmit({
+                                                location: typeof window !== "undefined" ? window.location.pathname : "",
+                                                tool_name: "pinterest_potential",
+                                                button_label: "Unlock results",
+                                            });
+                                        } catch {
+                                            // ignore
+                                        }
+
+                                        // TODO: wire actual submit to backend when available
+                                        setLeadSubmitted(true);
+                                    }}
+                                    className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                                >
+                                    Unlock
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        ) : null;
+            ) : null;
+
+        const LeadCaptureSoftLock =
+            effectiveLeadMode === "soft_lock" && leadState === "new" ? (
+                <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4">
+                        <div>
+                            <h3 className="font-heading text-lg text-[var(--foreground)]">Want a copy of your results?</h3>
+                            <p className="mt-1 text-sm text-[var(--foreground-muted)]">Leave your email and we’ll send this snapshot.</p>
+                            <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
+                        </div>
+
+                        <div className="mt-3 sm:mt-0 sm:col-span-2">
+                            <div className="grid gap-3 sm:grid-cols-2">
+                                <div>
+                                    <input
+                                        type="text"
+                                        placeholder="Your name (optional)"
+                                        value={leadDraft.name ?? ""}
+                                        onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
+                                        className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                                    />
+                                </div>
+
+                                <div>
+                                    <input
+                                        type="email"
+                                        placeholder="you@example.com"
+                                        value={leadDraft.email ?? ""}
+                                        onChange={(e) => setLeadDraft((p) => ({ ...p, email: e.target.value }))}
+                                        className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                                    />
+                                    {optionalLeadEmailError ? <div className="mt-1 text-xs text-red-500">{optionalLeadEmailError}</div> : null}
+                                </div>
+                            </div>
+
+                            <div className="mt-3">
+                                <button
+                                    type="button"
+                                    disabled={optionalLeadSubmitted}
+                                    onClick={() => {
+                                        const email = (leadDraft.email ?? "").trim();
+                                        if (!email) {
+                                            setOptionalLeadEmailError("Please enter a valid email.");
+                                            return;
+                                        }
+                                        const v = validateLead({ email, name: leadDraft.name?.trim() || undefined });
+                                        if (!v.ok) {
+                                            setOptionalLeadEmailError("Please enter a valid email.");
+                                            return;
+                                        }
+
+                                        setOptionalLeadEmailError(null);
+
+                                        try {
+                                            trackLeadSubmit({
+                                                location: typeof window !== "undefined" ? window.location.pathname : "",
+                                                tool_name: "pinterest_potential",
+                                                button_label: "Email me my results",
+                                            });
+                                        } catch {
+                                            // ignore
+                                        }
+
+                                        // TODO: wire actual email send to backend when available.
+                                        setOptionalLeadSubmitted(true);
+                                    }}
+                                    className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
+                                >
+                                    {optionalLeadSubmitted ? "Sent" : "Email me my results"}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ) : null;
 
         return (
             <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-                <div className="mb-4 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results</div>
+                <div className="mb-2 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results</div>
 
-                {OptionalEmailCapture}
+                {LeadCaptureHardLock}
 
-                {r ? (
-                    <div className="grid gap-3 sm:grid-cols-3">
-                        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                            <div className="text-xs text-[var(--foreground-muted)]">Monthly Pinterest Audience</div>
-                            <div className="mt-1 font-heading text-2xl">{r.monthlyAudience.toLocaleString()}</div>
+                <div className={showHardLockGate ? "mt-4 opacity-40 blur-[2px] pointer-events-none select-none" : "mt-4"}>
+                    {ResultsCards}
+
+                    {results.insight_line ? (
+                        <div className="mt-3 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 text-sm text-[var(--foreground)]">
+                            {results.insight_line}
                         </div>
+                    ) : null}
 
-                        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                            <div className="text-xs text-[var(--foreground-muted)]">Avg Household Income</div>
-                            <div className="mt-1 font-heading text-2xl">${r.avgHouseholdIncome.toLocaleString()}</div>
-                        </div>
-
-                        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                            <div className="text-xs text-[var(--foreground-muted)]">Avg Cart Size</div>
-                            <div className="mt-1 font-heading text-2xl">${r.avgCartSize.toLocaleString()}</div>
-                        </div>
+                    <div className="mt-3 text-xs text-[var(--foreground-muted)]">
+                        Seasonality: <span className="text-[var(--foreground)]">{results.inferred.seasonality_index}</span> •
+                        Competition: <span className="text-[var(--foreground)]">{results.inferred.competition_index}</span>
                     </div>
-                ) : (
-                    <div className="font-heading text-3xl">Score: {state.finalScore}</div>
-                )}
+
+                    {LeadCaptureSoftLock}
+                </div>
 
                 {/* Recap */}
                 <div className="mt-6 border-t border-[var(--border)] pt-4">
                     <div className="mb-2 font-heading text-lg text-[var(--foreground)]">Your answers</div>
                     <div className="grid gap-3 sm:grid-cols-2">
-                        {recapItems.map((it, idx) => (
-                            <div
-                                key={`${idx}-${it.label}`}
-                                className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4"
-                            >
+                        {recap.map((it, idx) => (
+                            <div key={`${idx}-${it.label}`} className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
                                 <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
                                 <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
                             </div>
@@ -598,13 +736,46 @@ export default function PinterestPotentialWizard({
                     </div>
                 </div>
 
-                <div className="mt-6 text-sm text-[var(--foreground-muted)]">
-                    You can refresh the page; your draft is saved in this session.
+                <div className="mt-6 flex items-center justify-between">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            clearDraft();
+                            setAnswers({});
+                            setStepIndex(1);
+                            setResults(null);
+                            setErrors({});
+                            setResultsErrors({});
+                            setOptionalLeadSubmitted(false);
+                            setOptionalLeadEmailError(null);
+                            void onPhaseChangeAction?.("wizard");
+                        }}
+                        className="rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                    >
+                        Start over
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setResults(null);
+                            setStepIndex(8);
+                            void onPhaseChangeAction?.("wizard");
+                        }}
+                        className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                    >
+                        Edit answers
+                    </button>
                 </div>
+
+                <div className="mt-4 text-sm text-[var(--foreground-muted)]">You can refresh the page; your draft is saved in this session.</div>
             </div>
         );
     }
 
+    // -----------------------------
+    // Wizard view (Q1–Q8)
+    // -----------------------------
     return (
         <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
             {/* Progress */}
@@ -613,27 +784,114 @@ export default function PinterestPotentialWizard({
             </div>
 
             {/* Question */}
-            {current && (
-                <div>
-                    <h2 className="font-heading text-xl text-[var(--foreground)]">{current.label}</h2>
-                    <div className="mt-4">{renderQuestion()}</div>
+            <div>
+                <h2 className="font-heading text-xl text-[var(--foreground)]">{header}</h2>
+
+                <div className="mt-4">
+                    {stepIndex === 1 ? (
+                        <Q1Segment
+                            value={answers.segment}
+                            onChange={(v) => setAnswers((p) => ({ ...p, segment: v }))}
+                            onAutoAdvance={autoAdvance}
+                        />
+                    ) : null}
+
+                    {stepIndex === 2 ? (
+                        answers.segment ? (
+                            <Q2Niche
+                                segment={answers.segment}
+                                value={answers.niche}
+                                onChange={(v) => setAnswers((p) => ({ ...p, niche: v }))}
+                                onAutoAdvance={autoAdvance}
+                            />
+                        ) : (
+                            <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                        )
+                    ) : null}
+
+                    {stepIndex === 3 ? (
+                        answers.segment ? (
+                            <Q3Volume
+                                segment={answers.segment}
+                                value={answers.volume_bucket}
+                                onChange={(v) => setAnswers((p) => ({ ...p, volume_bucket: v }))}
+                                onAutoAdvance={autoAdvance}
+                            />
+                        ) : (
+                            <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                        )
+                    ) : null}
+
+                    {stepIndex === 4 ? (
+                        <Q4Visual
+                            value={answers.visual_strength}
+                            onChange={(v) => setAnswers((p) => ({ ...p, visual_strength: v }))}
+                            onAutoAdvance={autoAdvance}
+                        />
+                    ) : null}
+
+                    {stepIndex === 5 ? (
+                        <Q5Site
+                            value={answers.site_experience}
+                            onChange={(v) => setAnswers((p) => ({ ...p, site_experience: v }))}
+                            onAutoAdvance={autoAdvance}
+                        />
+                    ) : null}
+
+                    {stepIndex === 6 ? (
+                        answers.segment ? (
+                            <Q6Offer
+                                segment={answers.segment}
+                                value={answers.offer_clarity}
+                                onChange={(v) => setAnswers((p) => ({ ...p, offer_clarity: v }))}
+                                onAutoAdvance={autoAdvance}
+                            />
+                        ) : (
+                            <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                        )
+                    ) : null}
+
+                    {stepIndex === 7 ? (
+                        answers.segment ? (
+                            <Q7Goal
+                                segment={answers.segment}
+                                value={answers.primary_goal}
+                                onChange={(v) => setAnswers((p) => ({ ...p, primary_goal: v }))}
+                                onAutoAdvance={autoAdvance}
+                            />
+                        ) : (
+                            <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                        )
+                    ) : null}
+
+                    {stepIndex === 8 ? (
+                        <Q8GrowthMode
+                            value={answers.growth_mode}
+                            onChange={(v) => setAnswers((p) => ({ ...p, growth_mode: v }))}
+                            onAutoAdvance={autoAdvance}
+                        />
+                    ) : null}
+
+                    {currentErrorKey ? (
+                        <div className="mt-3 text-sm text-red-500">{errors[currentErrorKey] ?? resultsErrors[currentErrorKey]}</div>
+                    ) : null}
                 </div>
-            )}
+            </div>
 
             {/* Nav */}
             <div className="mt-6 flex items-center justify-between">
                 <button
                     type="button"
-                    onClick={handlePrev}
+                    onClick={goPrev}
                     className="rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                    disabled={state.stepIndex === 0}
+                    disabled={variant === "welcome" ? (!started ? true : stepIndex === 1) : stepIndex === 1}
                 >
                     Back
                 </button>
 
                 <button
                     type="button"
-                    onClick={handleNext}
+                    onClick={goNext}
                     className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                 >
                     {isLastStep ? "Calculate" : "Continue"}

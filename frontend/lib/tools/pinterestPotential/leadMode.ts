@@ -1,85 +1,107 @@
 // frontend/lib/tools/pinterestPotential/leadMode.ts
+// v0.2 (Locked) — Lead gating mode resolver (SPEC-ALIGNED)
+//
+// Spec:
+// - LeadMode: hard_lock | soft_lock
+// - LeadState: known | new
+// - Known leads skip capture in UX, but lead_mode still matters for telemetry/config.
+//
+// This file owns ALL resolution logic (query/cookie/default).
 
-export type LeadMode =
-    | "gate_before_results"
-    | "optional_after_results"
-    | "prefilled_or_skip";
+import type { LeadMode, LeadState } from "./pinterestPotentialSpec";
+import { LEAD_GATING_CONFIG } from "./leadGatingConfig";
 
 /**
  * Normalize leadMode strings coming from:
- * - query params (leadMode=...)
- * - cookies (future)
+ * - query params (?leadMode=... or ?lead_mode=...)
+ * - cookies (optional)
  *
- * Accepts a few friendly aliases and tolerates separators like "-", " ", etc.
+ * Accepts friendly aliases and tolerates separators like "-", " ", etc.
  */
-export function normalizeLeadMode(value?: string): LeadMode | undefined {
+export function normalizeLeadMode(value?: string | null): LeadMode | undefined {
     if (!value) return undefined;
 
     const raw = value.trim().toLowerCase();
     if (!raw) return undefined;
 
-    // Allow "auto" to mean "no override"
-    if (raw === "auto") return undefined;
+    // Allow "auto"/"default" to mean "no override"
+    if (raw === "auto" || raw === "default") return undefined;
 
-    // Normalize separators to underscores to tolerate:
-    // "gate-before-results", "gate before results", etc.
     const v = raw.replace(/[\s-]+/g, "_");
 
-    // Gate before results
+    // Hard lock
     if (
-        v === "gate_before_results" ||
-        v === "gate" ||
-        v === "before" ||
-        v === "gated" ||
-        v === "gate_before"
+        v === "hard_lock" ||
+        v === "hard" ||
+        v === "lock" ||
+        v === "required" ||
+        v === "require_email" ||
+        v === "required_email" ||
+        v === "email_required"
     ) {
-        return "gate_before_results";
+        return "hard_lock";
     }
 
-    // Optional after results
+    // Soft lock
     if (
-        v === "optional_after_results" ||
+        v === "soft_lock" ||
+        v === "soft" ||
         v === "optional" ||
-        v === "after" ||
-        v === "after_results" ||
-        v === "optional_after"
+        v === "optional_email" ||
+        v === "email_optional"
     ) {
-        return "optional_after_results";
-    }
-
-    // Prefilled or skip
-    if (
-        v === "prefilled_or_skip" ||
-        v === "prefilled" ||
-        v === "prefill" ||
-        v === "skip" ||
-        v === "prefilled_skip" ||
-        v === "skip_or_prefilled"
-    ) {
-        return "prefilled_or_skip";
+        return "soft_lock";
     }
 
     return undefined;
 }
 
-export function resolveLeadMode({
-                                    requested,
-                                    cookieValue,
-                                    isKnownLead,
-                                }: {
-    requested?: string;
-    cookieValue?: string;
-    isKnownLead?: boolean;
+/**
+ * Resolve the effective lead gating context for this request/session.
+ *
+ * Precedence:
+ * 1) requested (query param override)
+ * 2) cookie (optional override)
+ * 3) config default
+ *
+ * LeadState:
+ * - known if identity already available (auth or verified token)
+ * - new otherwise
+ */
+export function resolveLeadGatingContext(params: {
+    requested?: string | null;
+    cookieValue?: string | null;
+    isKnownLead: boolean;
+}): { lead_mode: LeadMode; lead_state: LeadState } {
+    const lead_state: LeadState = params.isKnownLead ? "known" : "new";
+
+    // Only allow modes that exist in config (runtime safety).
+    const allowed = new Set<LeadMode>(LEAD_GATING_CONFIG.lead_gating.modes);
+
+    const requested = normalizeLeadMode(params.requested);
+    const cookie = normalizeLeadMode(params.cookieValue);
+
+    const pick = (m?: LeadMode): LeadMode | undefined => {
+        if (!m) return undefined;
+        return allowed.has(m) ? m : undefined;
+    };
+
+    const lead_mode: LeadMode =
+        pick(requested) ||
+        pick(cookie) ||
+        LEAD_GATING_CONFIG.lead_gating.default_mode;
+
+    return { lead_mode, lead_state };
+}
+
+/**
+ * Convenience helper if a caller only wants the mode.
+ * (UX should still use lead_state + config.known_lead_behavior to decide capture UI.)
+ */
+export function resolveLeadMode(params: {
+    requested?: string | null;
+    cookieValue?: string | null;
+    isKnownLead: boolean;
 }): LeadMode {
-    const req = normalizeLeadMode(requested);
-    if (req) return req;
-
-    const cookie = normalizeLeadMode(cookieValue);
-    if (cookie) return cookie;
-
-    // If we already know the lead (logged-in user or valid token), prefer skip-mode
-    if (isKnownLead) return "prefilled_or_skip";
-
-    // Default — gated before results like Outgrow
-    return "gate_before_results";
+    return resolveLeadGatingContext(params).lead_mode;
 }

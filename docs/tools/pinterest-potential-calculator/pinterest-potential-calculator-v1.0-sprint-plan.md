@@ -150,8 +150,7 @@ We can implement Q2 chips + “More” bottom sheet + sticky progress bar with s
 - Both variants can complete Q1–Q8 and land on a placeholder “Crunching…” screen.
 - Q2 is dynamic based on Q1.
 - UI feels polished on mobile.
-  md
-  Copy code
+
 ## Sprint 4 — Rewrite compute engine in-place (config-driven ranges + inferred indices + insight)
 
 ### Outcome

@@ -1,126 +1,167 @@
 // frontend/lib/tools/pinterestPotential/compute.ts
-// Sprint 1 — Deterministic compute engine for Pinterest Potential (source of truth)
-// Sprint 5 — Results bundle (basic Outgrow-style outputs)
+// v0.2 (Locked) — Canonical compute engine (config-driven, range outputs)
 //
-// IMPORTANT: This module is the canonical compute engine.
-// - Spec requires checkbox questions (Q2/Q3/Q9) to store OPTION IDS in Answers.
-// - This module translates IDs → option values per spec when computing.
-// - Callers (Wizard/UI) should NOT re-implement compute logic locally.
+// Spec compliance:
+// - Q1–Q8 only (slug-based answers)
+// - Results are ranges (avoid false precision)
+// - Benchmarks are keyed by segment + niche
+// - Multipliers are config-driven + subtle (ENFORCED via softening + clamps)
+// - Inferred seasonality + competition come from benchmark row (not asked)
+// - Lead gating is NOT handled here (compute must work pre-email)
 
+import type { Answers } from "./pinterestPotentialSpec";
+import { validateAnswers } from "./pinterestPotentialSpec";
+import { getBenchmark, type Range, type OpportunityType } from "./benchmarks";
 import {
-    Answers,
-    Lead,
-    validateAnswers,
-    Q2 as SPEC_Q2,
-    Q3 as SPEC_Q3,
-    computeAvgHouseholdIncomeFromAnswers,
-    computeAvgCartSizeFromAnswers,
-} from "./pinterestPotentialSpec";
+    MULTIPLIERS,
+    MULTIPLIER_INTENSITY,
+    safeMultiplier,
+    softenMultiplier,
+} from "./multipliers";
+import { buildInsightFromBenchmark } from "./insight";
 
-export function sum(arr: number[]): number {
-    return arr.reduce((acc, n) => acc + n, 0);
-}
-
-export function round(n: number, decimals: number): number {
-    if (decimals === 0) return Math.round(n);
-    const f = Math.pow(10, decimals);
-    return Math.round(n * f) / f;
-}
-
-/**
- * Implements the exact documented formula from the spec:
- * round(
- *   sum(Q3) *
- *   sum(Q2) *
- *   Q1 *
- *   Q4 *
- *   Q5 *
- *   Q6 *
- *   (1.175 - 0.175 * Q7) *
- *   (1.15  - 0.15  * Q8),
- *   0
- * )
- */
-function sumCheckboxOptionValuesById(
-    selectedIds: number[] | undefined,
-    opts: { id: number; value: number }[]
-): number {
-    if (!Array.isArray(selectedIds) || selectedIds.length === 0) return 0;
-    const valueById = new Map(opts.map((o) => [o.id, o.value] as const));
-    const values = selectedIds
-        .map((id) => valueById.get(id))
-        .filter((v): v is number => typeof v === "number");
-    return sum(values);
-}
-
-export function computeScore(answers: Required<Answers>): number {
-    // Translate checkbox IDs → option values per spec
-    const q2 = sumCheckboxOptionValuesById(answers.Q2, SPEC_Q2.options);
-    const q3 = sumCheckboxOptionValuesById(answers.Q3, SPEC_Q3.options);
-
-    const seasonalFactor = 1.175 - 0.175 * answers.Q7; // Q7 in [1..5]
-    const competitionFactor = 1.15 - 0.15 * answers.Q8; // Q8 in [1..5]
-
-    const result =
-        q3 *
-        q2 *
-        answers.Q1 *
-        answers.Q4 *
-        answers.Q5 *
-        answers.Q6 *
-        seasonalFactor *
-        competitionFactor;
-
-    return round(result, 0);
-}
-
-/**
- * Sprint 5: Basic results bundle (Outgrow-parity, but streamlined/ballpark ok).
- */
 export type ResultsBundle = {
-    monthlyAudience: number;      // Result 1
-    avgHouseholdIncome: number;   // Result 2
-    avgCartSize: number;          // Result 3
+    /** Card 1 */
+    audience_est: Range;
+
+    /** Card 2 (segment-dependent via benchmark row) */
+    opportunity_est: { type: OpportunityType; low: number; high: number };
+
+    /** Card 3 */
+    income_est: Range;
+
+    /** Required telemetry dimensions + optional tags for future sequencing */
+    inferred: {
+        seasonality_index: "low" | "medium" | "high";
+        competition_index: "low" | "medium" | "high";
+        tags?: string[];
+    };
+
+    /** Optional 1–2 line planning-advantage insight */
+    insight_line?: string | null;
 };
 
-type ComputeOk = { ok: true; score: number; results: ResultsBundle };
+type ComputeOk = { ok: true; results: ResultsBundle };
 type ComputeErr = { ok: false; errors: Record<string, string> };
 export type ComputeResult = ComputeOk | ComputeErr;
 
-// Results 2/3 now sourced from canonical spec helpers (IDs-aware)
+function clamp(n: number, min: number, max: number): number {
+    return Math.max(min, Math.min(max, n));
+}
+
+function roundInt(n: number): number {
+    return Math.round(n);
+}
+
+function applyRange(r: Range, m: number): Range {
+    return { low: roundInt(r.low * m), high: roundInt(r.high * m) };
+}
+
+function mulSoft(values: number[], strength: number): number {
+    // Soften each factor toward 1.0, then multiply.
+    return values.reduce((acc, raw) => acc * softenMultiplier(raw, strength), 1.0);
+}
 
 /**
- * Sprint 5: Compute all basic results.
- * - We treat computeScore output as "monthlyAudience" (Result 1)
- * - Results 2/3 derived from Q2/Q3
+ * Audience: keep subtle; primarily driven by volume + visuals + site.
+ * We intentionally do NOT apply seasonality/competition here (spec suggests it's optional).
  */
-export function computeResults(answers: Required<Answers>): ResultsBundle {
-    const monthlyAudience = computeScore(answers);
-    const avgHouseholdIncome = computeAvgHouseholdIncomeFromAnswers(answers);
-    const avgCartSize = computeAvgCartSizeFromAnswers(answers);
+function computeAudienceMultiplier(a: Required<Answers>): number {
+    const rawFactors = [
+        MULTIPLIERS.volume_bucket[a.Q3],
+        MULTIPLIERS.visual_strength[a.Q4],
+        MULTIPLIERS.site_experience[a.Q5],
+    ];
+
+    const m = mulSoft(rawFactors, MULTIPLIER_INTENSITY.audience);
+
+    // Subtle band (≈ ±15%).
+    return clamp(m, 0.85, 1.15);
+}
+
+function computeOpportunityMultiplier(
+    a: Required<Answers>,
+    inferred: { seasonality: "low" | "medium" | "high"; competition: "low" | "medium" | "high" }
+): number {
+    const rawFactors = [
+        MULTIPLIERS.volume_bucket[a.Q3],
+        MULTIPLIERS.visual_strength[a.Q4],
+        MULTIPLIERS.site_experience[a.Q5],
+        MULTIPLIERS.offer_clarity[a.Q6],
+        MULTIPLIERS.growth_mode[a.Q8],
+        MULTIPLIERS.seasonality[inferred.seasonality],
+        MULTIPLIERS.competition[inferred.competition],
+    ];
+
+    const base = mulSoft(rawFactors, MULTIPLIER_INTENSITY.opportunity);
+
+    // Optional tiny goal-based adjustment (kept tiny by default; also softened)
+    const goalKey = `${a.Q1}:${a.Q7}`;
+    const goalRaw = safeMultiplier(MULTIPLIERS.goal_micro_adjust ?? {}, goalKey, 1.0);
+    const goalMicro = softenMultiplier(goalRaw, MULTIPLIER_INTENSITY.goal_micro);
+
+    // Subtle band (slightly wider than audience because opportunity includes more factors).
+    return clamp(base * goalMicro, 0.80, 1.20);
+}
+
+function computeIncomeMultiplier(_a: Required<Answers>): number {
+    // v0.2: keep income benchmark-driven (no fake precision).
+    return 1.0;
+}
+
+/**
+ * Canonical compute (no lead required; lead gating is handled by the flow/UI).
+ * - Validates answers per spec
+ * - Applies benchmark + multipliers
+ * - Returns range outputs + inferred indices + optional insight line
+ */
+export function computeResults(answers: Answers): ComputeResult {
+    const v = validateAnswers(answers);
+    if (!v.ok) return { ok: false, errors: v.errors };
+
+    const a = answers as Required<Answers>;
+    const row = getBenchmark(a.Q1, a.Q2);
+
+    const inferred = {
+        seasonality: row.inferred.seasonality,
+        competition: row.inferred.competition,
+    };
+
+    const audM = computeAudienceMultiplier(a);
+    const oppM = computeOpportunityMultiplier(a, inferred);
+    const incM = computeIncomeMultiplier(a);
+
+    const audience_est = applyRange(row.audience_base, audM);
+    const income_est = applyRange(row.income, incM);
+
+    const opportunity_est = {
+        type: row.opportunity.type,
+        low: roundInt(row.opportunity.low * oppM),
+        high: roundInt(row.opportunity.high * oppM),
+    };
 
     return {
-        monthlyAudience,
-        avgHouseholdIncome,
-        avgCartSize,
+        ok: true,
+        results: {
+            audience_est,
+            opportunity_est,
+            income_est,
+            inferred: {
+                seasonality_index: row.inferred.seasonality,
+                competition_index: row.inferred.competition,
+                tags: row.inferred.tags,
+            },
+            insight_line: buildInsightFromBenchmark({ segment: a.Q1, niche: a.Q2 }),
+        },
     };
 }
 
 /**
- * Validates using the Sprint 0 spec; only computes when valid.
- * NOTE: This path expects lead when your spec requires it (gate_before_results).
- * Optional/skip lead modes should compute via computeScore/computeResults directly.
+ * Convenience: throws on invalid answers (useful for UI that already step-validates).
+ * Prefer `computeResults()` when you want explicit errors.
  */
-export function computeResult(answers: Answers, lead?: Lead): ComputeResult {
-    const validation = validateAnswers(answers, lead);
-    if (!validation.ok) {
-        return { ok: false, errors: validation.errors };
-    }
-
-    // TypeScript: after validation, values should be present. Cast to Required<Answers>.
-    const a = answers as Required<Answers>;
-    const results = computeResults(a);
-
-    // Keep existing field name for backward compatibility with Wizard usage.
-    return { ok: true, score: results.monthlyAudience, results };
+export function computeResultsUnsafe(answers: Answers): ResultsBundle {
+    const r = computeResults(answers);
+    if (!r.ok) throw new Error(`Invalid answers: ${JSON.stringify(r.errors)}`);
+    return r.results;
 }

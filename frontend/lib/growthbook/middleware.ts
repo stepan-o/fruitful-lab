@@ -5,7 +5,7 @@ import {
     type ExperimentKey,
 } from "@/lib/experiments/config";
 import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotentialConfig";
-import { growthbookAdapter } from "@/lib/growthbook/flags";
+import { growthbookAdapter } from "@/lib/growthbook/edgeAdapter";
 
 // Cookie naming convention for experiments
 const EXP_COOKIE_PREFIX = "exp_";
@@ -70,16 +70,22 @@ function getOrSetAnonId(req: NextRequest, res: NextResponse): string {
     return anonId;
 }
 
-async function evaluateViaGrowthBook(exp: typeof PINTEREST_POTENTIAL_EXPERIMENT, anonId: string) {
+async function evaluateViaGrowthBook(
+    exp: typeof PINTEREST_POTENTIAL_EXPERIMENT,
+    anonId: string,
+) {
     if (!process.env.GROWTHBOOK_CLIENT_KEY) return undefined;
 
     // IMPORTANT: use stable id for bucketing
     const attributes = { id: anonId };
 
-    // Use the adapter directly so middleware can bucket deterministically.
+    // Use the Edge-safe adapter so middleware can bucket deterministically.
     const client: unknown = await growthbookAdapter.initialize();
     const gb = client as {
-        evalFeature?: (key: string, opts?: { attributes?: Record<string, unknown> }) => unknown;
+        evalFeature?: (
+            key: string,
+            opts?: { attributes?: Record<string, unknown> },
+        ) => unknown;
     };
 
     const enableKey = `enable_${exp.gbKey}`;

@@ -284,3 +284,36 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     40% { opacity: 1; transform: scale(1); }
     100% { opacity: 0; transform: scale(0.9); }
 }
+
+/* ------------------------------
+   Sprint 2: Reduced motion (global guard)
+   - BottomSheet, ProgressBar, welcome micro-flair
+------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ------------------------------
+   Sprint 2: Optional overlay polish (BottomSheet)
+   - Safe to keep even if unused
+------------------------------ */
+.fp-scrim {
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+
+/* ------------------------------
+   Sprint 2: Optional tap feedback helper (Welcome CTA)
+   - Use by adding className="fp-tap" where needed
+------------------------------ */
+.fp-tap {
+    transition: transform 120ms ease;
+}
+.fp-tap:active {
+    transform: scale(0.98);
+}

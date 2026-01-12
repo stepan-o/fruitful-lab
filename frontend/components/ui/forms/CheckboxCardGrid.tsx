@@ -2,17 +2,19 @@
 
 import React from "react";
 
+export type CheckboxKey = string | number;
+
 export type CheckboxOption = {
     label: string;
-    value: number;     // kept (used for compute lookups / legacy)
-    id?: number;       // NEW: stable option id (preferred for Answers storage)
+    value: CheckboxKey; // kept (used for compute lookups / legacy)
+    id?: CheckboxKey;   // stable option id (preferred for Answers storage)
 };
 
 type Props = {
     /** Selected option keys (ids if provided, otherwise values). */
-    values: number[];
+    values: CheckboxKey[];
     options: CheckboxOption[];
-    onChange: (values: number[]) => void;
+    onChange: (values: CheckboxKey[]) => void;
     columns?: 1 | 2 | 3;
     showSelectedCount?: boolean;
     describedBy?: string;
@@ -38,10 +40,11 @@ export default function CheckboxCardGrid({
                 : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
 
     // Use option.id when present; otherwise fall back to option.value (legacy behavior)
-    const keyOf = (opt: CheckboxOption) => (typeof opt.id === "number" ? opt.id : opt.value);
+    const keyOf = (opt: CheckboxOption): CheckboxKey =>
+        opt.id !== undefined && opt.id !== null ? opt.id : opt.value;
 
-    function toggle(key: number) {
-        const set = new Set(values);
+    function toggle(key: CheckboxKey) {
+        const set = new Set<CheckboxKey>(values);
         if (set.has(key)) set.delete(key);
         else set.add(key);
 
@@ -65,7 +68,10 @@ export default function CheckboxCardGrid({
                     const selectedRing = checked ? " ring-1 ring-[var(--brand-raspberry)]" : "";
 
                     return (
-                        <label key={`cb:${opt.label}:${key}:${i}`} className={[base, focusRing, selectedRing].join(" ")}>
+                        <label
+                            key={`cb:${opt.label}:${String(key)}:${i}`}
+                            className={[base, focusRing, selectedRing].join(" ")}
+                        >
                             <input
                                 type="checkbox"
                                 className="sr-only"
@@ -81,7 +87,9 @@ export default function CheckboxCardGrid({
             </div>
 
             {showSelectedCount && (
-                <div className="mt-2 text-xs text-[var(--foreground-muted)]">Selected: {values.length}</div>
+                <div className="mt-2 text-xs text-[var(--foreground-muted)]">
+                    Selected: {values.length}
+                </div>
             )}
         </div>
     );

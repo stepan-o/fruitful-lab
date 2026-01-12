@@ -3,13 +3,16 @@
 // frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
 // v0.2 (Locked) — V2 wizard wired to new step components (Q1–Q8) + compute engine + lead gating.
 //
-// Key points:
-// - Uses the new step components: Q1Segment..Q8GrowthMode (no old StepQ*).
-// - Persists draft via usePinterestPotentialDraft (sessionStorage v2).
-// - Supports A/B: welcome vs no_welcome (persisted in draft.variant).
-// - Computes via lib/tools/pinterestPotential/compute.ts (spec answers Q1–Q8).
-// - Lead gating via leadMode.ts + leadGatingConfig.ts (hard_lock | soft_lock), known leads skip capture.
-// - Primary-goal values from the UI are mapped to spec slugs (critical).
+// Fix (2026-01-12): Remove random A/B assignment.
+// - Variant precedence:
+//   1) Query param (?variant=welcome|no_welcome) / (?pp_variant=...) / (?ppcVariant=...)
+//   2) Existing persisted draft.variant (sessionStorage v2)
+//   3) Experiment cookie (best-effort; set by middleware/GrowthBook)
+//   4) Default = "welcome" (no randomization)
+//
+// Also fixes a subtle reset bug:
+// - clearDraft() removed sessionStorage, but draft state would immediately repersist old values.
+// - Resets now also setDraft(INITIAL_DRAFT) to truly clear session draft.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -33,6 +36,9 @@ import { LEAD_GATING_CONFIG } from "@/lib/tools/pinterestPotential/leadGatingCon
 import { resolveLeadFromToken } from "@/lib/tools/pinterestPotential/leadToken";
 import { PRIVACY_MICROCOPY } from "@/lib/tools/pinterestPotential/copy";
 import { trackLeadSubmit } from "@/lib/gtm";
+
+// Experiment cookie name (set in middleware)
+import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotentialConfig";
 
 import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
 
@@ -65,6 +71,28 @@ function getCookieValue(name: string): string | null {
         if (p.startsWith(name + "=")) return decodeURIComponent(p.slice(name.length + 1));
     }
     return null;
+}
+
+type PPCVariant = "welcome" | "no_welcome";
+
+function normalizeVariant(raw?: string | null): PPCVariant | undefined {
+    if (!raw) return undefined;
+    return raw === "welcome" || raw === "no_welcome" ? (raw as PPCVariant) : undefined;
+}
+
+function readVariantCookie(): PPCVariant | undefined {
+    if (typeof document === "undefined") return undefined;
+
+    // Primary (canonical) cookie name used by middleware
+    const primary = normalizeVariant(getCookieValue(PINTEREST_POTENTIAL_VARIANT_COOKIE));
+
+    // Back-compat / future-proof fallbacks (harmless if absent)
+    const fallback =
+        normalizeVariant(getCookieValue("pp_variant")) ??
+        normalizeVariant(getCookieValue("ppc_variant")) ??
+        normalizeVariant(getCookieValue("pinterest_potential_variant"));
+
+    return primary ?? fallback;
 }
 
 function formatRange(low: number, high: number): string {
@@ -116,7 +144,10 @@ function segmentLabel(seg?: SpecSegment): string {
     return "—";
 }
 
-function valueLabelFromOptions<T extends string>(opts: Array<{ id: T; label: string }>, v?: string): string {
+function valueLabelFromOptions<T extends string>(
+    opts: Array<{ id: T; label: string }>,
+    v?: string,
+): string {
     if (!v) return "—";
     return opts.find((o) => o.id === v)?.label ?? v;
 }
@@ -135,7 +166,11 @@ function getStepTitle(stepIndex: number): string {
     return titles[stepIndex] ?? "Pinterest Potential";
 }
 
-function getErrorKeyForStep(stepIndex: number, errors: Record<string, string>, resultsErrors: Record<string, string>) {
+function getErrorKeyForStep(
+    stepIndex: number,
+    errors: Record<string, string>,
+    resultsErrors: Record<string, string>,
+) {
     const keyByStep: Record<number, string[]> = {
         1: ["Q1"],
         2: ["Q2", "Q1"],
@@ -172,6 +207,16 @@ export default function PinterestPotentialWizard({
 }) {
     const searchParams = useSearchParams();
 
+    const INITIAL_DRAFT = useMemo(
+        () => ({
+            stepIndex: 1,
+            started: false,
+            answers: {} as AnswersV2,
+            variant: undefined as PPCVariant | undefined,
+        }),
+        [],
+    );
+
     // ---- A/B variant (welcome vs no_welcome) ----
     const qpVariant =
         searchParams.get("variant") ??
@@ -179,8 +224,7 @@ export default function PinterestPotentialWizard({
         searchParams.get("ppcVariant") ??
         undefined;
 
-    const requestedVariant =
-        qpVariant === "welcome" || qpVariant === "no_welcome" ? (qpVariant as "welcome" | "no_welcome") : undefined;
+    const requestedVariant = normalizeVariant(qpVariant);
 
     // ---- Lead gating overrides ----
     const qpLeadMode =
@@ -196,17 +240,11 @@ export default function PinterestPotentialWizard({
             : null;
 
     // ---- Draft persistence (sessionStorage v2) ----
-    const { draft, updateDraft, clearDraft } = usePinterestPotentialDraft({
-        stepIndex: 1,
-        started: false,
-        answers: {},
-        variant: undefined,
-    });
+    const { draft, setDraft, updateDraft, clearDraft } = usePinterestPotentialDraft(INITIAL_DRAFT);
 
     // Local answers state (backed by draft)
     const [answers, setAnswers] = useState<AnswersV2>(draft.answers ?? {});
     const [stepIndex, setStepIndex] = useState<number>(() => {
-        // stepIndex is 1..8 in v2
         const n = draft.stepIndex;
         return n >= 1 && n <= 8 ? n : 1;
     });
@@ -228,15 +266,35 @@ export default function PinterestPotentialWizard({
     // ---- Analytics: tool_start (once) ----
     const hasStartedRef = useRef(false);
 
-    // ---- A/B variant persistence ----
+    // ---- Variant from cookie (best-effort) ----
+    const cookieVariant = useMemo(() => readVariantCookie(), []);
+
+    // ---- Variant persistence (NO RANDOMIZATION) ----
     useEffect(() => {
+        // Highest precedence: explicit query param
+        if (requestedVariant) {
+            if (draft.variant !== requestedVariant) {
+                updateDraft({
+                    variant: requestedVariant,
+                    // no_welcome implies started
+                    started: requestedVariant === "no_welcome" ? true : draft.started,
+                });
+            }
+            return;
+        }
+
+        // If draft already has a variant, keep it (session-stable)
         if (draft.variant) return;
 
-        const v = requestedVariant ?? (Math.random() < 0.5 ? ("welcome" as const) : ("no_welcome" as const));
-        updateDraft({ variant: v, started: v === "no_welcome" ? true : draft.started });
-    }, [draft.variant, requestedVariant, updateDraft, draft.started]);
+        // Else try experiment cookie; else default welcome.
+        const resolved: PPCVariant = cookieVariant ?? "welcome";
+        updateDraft({
+            variant: resolved,
+            started: resolved === "no_welcome" ? true : draft.started,
+        });
+    }, [requestedVariant, cookieVariant, draft.variant, draft.started, updateDraft]);
 
-    const variant = draft.variant ?? requestedVariant ?? "welcome";
+    const variant: PPCVariant = (requestedVariant ?? draft.variant ?? cookieVariant ?? "welcome") as PPCVariant;
 
     // If variant is no_welcome, force started.
     const started = variant === "no_welcome" ? true : draft.started;
@@ -380,7 +438,6 @@ export default function PinterestPotentialWizard({
             setResultsErrors(v.errors);
             setErrors(v.errors);
 
-            // Jump to first missing/invalid question if possible
             const order: Array<keyof SpecAnswers> = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8"];
             const first = order.find((k) => v.errors[String(k)]);
             if (first) {
@@ -465,9 +522,6 @@ export default function PinterestPotentialWizard({
     // -----------------------------
     // Welcome view
     // -----------------------------
-    // -----------------------------
-// Welcome view
-// -----------------------------
     if (!started && variant === "welcome") {
         return (
             <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]">
@@ -496,9 +550,7 @@ export default function PinterestPotentialWizard({
                     <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
                         <div>
                             <div className="text-sm text-[var(--foreground-muted)]">Pinterest Potential</div>
-                            <h2 className="mt-1 font-heading text-2xl sm:text-3xl text-[var(--foreground)]">
-                                See your growth snapshot
-                            </h2>
+                            <h2 className="mt-1 font-heading text-2xl sm:text-3xl text-[var(--foreground)]">See your growth snapshot</h2>
                             <p className="mt-2 max-w-prose text-sm text-[var(--foreground-muted)]">
                                 Answer a few quick questions and we’ll estimate your monthly audience + opportunity.
                             </p>
@@ -510,7 +562,13 @@ export default function PinterestPotentialWizard({
                                 <rect x="10" y="54" width="16" height="32" rx="4" fill="currentColor" opacity="0.22" />
                                 <rect x="36" y="42" width="16" height="44" rx="4" fill="currentColor" opacity="0.32" />
                                 <rect x="62" y="30" width="16" height="56" rx="4" fill="currentColor" opacity="0.42" />
-                                <path d="M18 36 C42 22, 74 22, 108 14" stroke="currentColor" strokeWidth="3" fill="none" opacity="0.35" />
+                                <path
+                                    d="M18 36 C42 22, 74 22, 108 14"
+                                    stroke="currentColor"
+                                    strokeWidth="3"
+                                    fill="none"
+                                    opacity="0.35"
+                                />
                                 <circle cx="116" cy="13" r="5" fill="currentColor" opacity="0.55" />
                             </svg>
                         </div>
@@ -535,7 +593,10 @@ export default function PinterestPotentialWizard({
                         <button
                             type="button"
                             onClick={() => {
+                                // True reset: clear storage + reset draft state to initial
                                 clearDraft();
+                                setDraft(INITIAL_DRAFT);
+
                                 setAnswers({});
                                 setStepIndex(1);
                                 setErrors({});
@@ -582,39 +643,37 @@ export default function PinterestPotentialWizard({
 
                     /* Layer A (dominant wave) */
                     .ppc-welcome-gradient::before {
-                        background-image:
-                                radial-gradient(
-                                        900px circle at 15% 35%,
-                                        color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
-                                        transparent 60%
-                                ),
-                                radial-gradient(
-                                        760px circle at 55% 15%,
-                                        color-mix(in srgb, var(--brand-raspberry) 38%, transparent) 0%,
-                                        transparent 62%
-                                ),
-                                radial-gradient(
-                                        820px circle at 85% 70%,
-                                        color-mix(in srgb, var(--brand-raspberry) 34%, transparent) 0%,
-                                        transparent 64%
-                                );
+                        background-image: radial-gradient(
+                                900px circle at 15% 35%,
+                                color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
+                                transparent 60%
+                        ),
+                        radial-gradient(
+                                760px circle at 55% 15%,
+                                color-mix(in srgb, var(--brand-raspberry) 38%, transparent) 0%,
+                                transparent 62%
+                        ),
+                        radial-gradient(
+                                820px circle at 85% 70%,
+                                color-mix(in srgb, var(--brand-raspberry) 34%, transparent) 0%,
+                                transparent 64%
+                        );
                         animation: ppcWaveA 6.5s ease-in-out infinite;
                         opacity: 0.9;
                     }
 
                     /* Layer B (counter-wave) */
                     .ppc-welcome-gradient::after {
-                        background-image:
-                                radial-gradient(
-                                        860px circle at 80% 30%,
-                                        color-mix(in srgb, var(--brand-raspberry) 46%, transparent) 0%,
-                                        transparent 62%
-                                ),
-                                radial-gradient(
-                                        720px circle at 25% 75%,
-                                        color-mix(in srgb, var(--brand-raspberry) 30%, transparent) 0%,
-                                        transparent 66%
-                                );
+                        background-image: radial-gradient(
+                                860px circle at 80% 30%,
+                                color-mix(in srgb, var(--brand-raspberry) 46%, transparent) 0%,
+                                transparent 62%
+                        ),
+                        radial-gradient(
+                                720px circle at 25% 75%,
+                                color-mix(in srgb, var(--brand-raspberry) 30%, transparent) 0%,
+                                transparent 66%
+                        );
                         animation: ppcWaveB 8.25s ease-in-out infinite;
                         opacity: 0.75;
                     }
@@ -631,31 +690,59 @@ export default function PinterestPotentialWizard({
 
                     /* WAVE: big sweeps across X + subtle Y */
                     @keyframes ppcWaveA {
-                        0%   { transform: translate3d(-18%, -6%, 0) scale(1.02); }
-                        35%  { transform: translate3d(6%,  4%, 0)  scale(1.04); }
-                        70%  { transform: translate3d(22%, -2%, 0) scale(1.03); }
-                        100% { transform: translate3d(-18%, -6%, 0) scale(1.02); }
+                        0% {
+                            transform: translate3d(-18%, -6%, 0) scale(1.02);
+                        }
+                        35% {
+                            transform: translate3d(6%, 4%, 0) scale(1.04);
+                        }
+                        70% {
+                            transform: translate3d(22%, -2%, 0) scale(1.03);
+                        }
+                        100% {
+                            transform: translate3d(-18%, -6%, 0) scale(1.02);
+                        }
                     }
 
                     /* COUNTER-WAVE: opposite direction so it feels like ripples */
                     @keyframes ppcWaveB {
-                        0%   { transform: translate3d(22%,  8%, 0)  scale(1.02); }
-                        40%  { transform: translate3d(-4%, -2%, 0) scale(1.03); }
-                        80%  { transform: translate3d(-22%, 5%, 0) scale(1.04); }
-                        100% { transform: translate3d(22%,  8%, 0)  scale(1.02); }
+                        0% {
+                            transform: translate3d(22%, 8%, 0) scale(1.02);
+                        }
+                        40% {
+                            transform: translate3d(-4%, -2%, 0) scale(1.03);
+                        }
+                        80% {
+                            transform: translate3d(-22%, 5%, 0) scale(1.04);
+                        }
+                        100% {
+                            transform: translate3d(22%, 8%, 0) scale(1.02);
+                        }
                     }
 
                     /* Corner blobs traverse across the whole card */
                     @keyframes ppcGlowTraverse1 {
-                        0%   { transform: translate3d(-40px, -20px, 0) scale(1); }
-                        50%  { transform: translate3d(-320px, 40px, 0) scale(1.08); }
-                        100% { transform: translate3d(-40px, -20px, 0) scale(1); }
+                        0% {
+                            transform: translate3d(-40px, -20px, 0) scale(1);
+                        }
+                        50% {
+                            transform: translate3d(-320px, 40px, 0) scale(1.08);
+                        }
+                        100% {
+                            transform: translate3d(-40px, -20px, 0) scale(1);
+                        }
                     }
 
                     @keyframes ppcGlowTraverse2 {
-                        0%   { transform: translate3d(40px, 20px, 0) scale(1); }
-                        50%  { transform: translate3d(340px, -30px, 0) scale(1.06); }
-                        100% { transform: translate3d(40px, 20px, 0) scale(1); }
+                        0% {
+                            transform: translate3d(40px, 20px, 0) scale(1);
+                        }
+                        50% {
+                            transform: translate3d(340px, -30px, 0) scale(1.06);
+                        }
+                        100% {
+                            transform: translate3d(40px, 20px, 0) scale(1);
+                        }
                     }
 
                     @media (prefers-reduced-motion: reduce) {
@@ -706,7 +793,9 @@ export default function PinterestPotentialWizard({
             <div className="grid gap-3 sm:grid-cols-3">
                 <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
                     <div className="text-xs text-[var(--foreground-muted)]">Monthly Pinterest audience</div>
-                    <div className="mt-1 font-heading text-2xl">{formatRange(results.audience_est.low, results.audience_est.high)}</div>
+                    <div className="mt-1 font-heading text-2xl">
+                        {formatRange(results.audience_est.low, results.audience_est.high)}
+                    </div>
                 </div>
 
                 <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
@@ -718,95 +807,96 @@ export default function PinterestPotentialWizard({
 
                 <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
                     <div className="text-xs text-[var(--foreground-muted)]">Audience income range (USD)</div>
-                    <div className="mt-1 font-heading text-2xl">{formatRange(results.income_est.low, results.income_est.high)}</div>
+                    <div className="mt-1 font-heading text-2xl">
+                        {formatRange(results.income_est.low, results.income_est.high)}
+                    </div>
                 </div>
             </div>
         );
 
-        const LeadCaptureHardLock =
-            showHardLockGate ? (
-                <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                    <div className="sm:grid sm:grid-cols-3 sm:gap-4">
-                        <div>
-                            <h3 className="font-heading text-lg text-[var(--foreground)]">Unlock your results</h3>
-                            <p className="mt-1 text-sm text-[var(--foreground-muted)]">Enter your email to view the full snapshot.</p>
-                            <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
-                        </div>
+        const LeadCaptureHardLock = showHardLockGate ? (
+            <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                <div className="sm:grid sm:grid-cols-3 sm:gap-4">
+                    <div>
+                        <h3 className="font-heading text-lg text-[var(--foreground)]">Unlock your results</h3>
+                        <p className="mt-1 text-sm text-[var(--foreground-muted)]">Enter your email to view the full snapshot.</p>
+                        <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
+                    </div>
 
-                        <div className="mt-3 sm:mt-0 sm:col-span-2">
-                            <div className="grid gap-3 sm:grid-cols-2">
-                                {LEAD_GATING_CONFIG.lead_gating.capture_fields.name.required ? (
-                                    <div>
-                                        <input
-                                            type="text"
-                                            placeholder="Your name"
-                                            value={leadDraft.name ?? ""}
-                                            onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
-                                            className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                        />
-                                        {errors["LEAD.name"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div> : null}
-                                    </div>
-                                ) : (
-                                    <div>
-                                        <input
-                                            type="text"
-                                            placeholder="Your name (optional)"
-                                            value={leadDraft.name ?? ""}
-                                            onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
-                                            className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                        />
-                                    </div>
-                                )}
-
+                    <div className="mt-3 sm:mt-0 sm:col-span-2">
+                        <div className="grid gap-3 sm:grid-cols-2">
+                            {LEAD_GATING_CONFIG.lead_gating.capture_fields.name.required ? (
                                 <div>
                                     <input
-                                        type="email"
-                                        placeholder="you@example.com"
-                                        value={leadDraft.email ?? ""}
-                                        onChange={(e) => setLeadDraft((p) => ({ ...p, email: e.target.value }))}
+                                        type="text"
+                                        placeholder="Your name"
+                                        value={leadDraft.name ?? ""}
+                                        onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
                                         className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                     />
-                                    {errors["LEAD.email"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div> : null}
+                                    {errors["LEAD.name"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div> : null}
                                 </div>
+                            ) : (
+                                <div>
+                                    <input
+                                        type="text"
+                                        placeholder="Your name (optional)"
+                                        value={leadDraft.name ?? ""}
+                                        onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
+                                        className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                                    />
+                                </div>
+                            )}
+
+                            <div>
+                                <input
+                                    type="email"
+                                    placeholder="you@example.com"
+                                    value={leadDraft.email ?? ""}
+                                    onChange={(e) => setLeadDraft((p) => ({ ...p, email: e.target.value }))}
+                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                                />
+                                {errors["LEAD.email"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div> : null}
                             </div>
+                        </div>
 
-                            <div className="mt-3">
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        resetErrors();
-                                        const lead: Lead = {
-                                            email: (leadDraft.email ?? "").trim(),
-                                            name: leadDraft.name?.trim() || undefined,
-                                        };
-                                        const v = validateLead(lead);
-                                        if (!v.ok) {
-                                            setErrors(v.errors);
-                                            return;
-                                        }
+                        <div className="mt-3">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    resetErrors();
+                                    const lead: Lead = {
+                                        email: (leadDraft.email ?? "").trim(),
+                                        name: leadDraft.name?.trim() || undefined,
+                                    };
+                                    const v = validateLead(lead);
+                                    if (!v.ok) {
+                                        setErrors(v.errors);
+                                        return;
+                                    }
 
-                                        try {
-                                            trackLeadSubmit({
-                                                location: typeof window !== "undefined" ? window.location.pathname : "",
-                                                tool_name: "pinterest_potential",
-                                                button_label: "Unlock results",
-                                            });
-                                        } catch {
-                                            // ignore
-                                        }
+                                    try {
+                                        trackLeadSubmit({
+                                            location: typeof window !== "undefined" ? window.location.pathname : "",
+                                            tool_name: "pinterest_potential",
+                                            button_label: "Unlock results",
+                                        });
+                                    } catch {
+                                        // ignore
+                                    }
 
-                                        // TODO: wire actual submit to backend when available
-                                        setLeadSubmitted(true);
-                                    }}
-                                    className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                >
-                                    Unlock
-                                </button>
-                            </div>
+                                    // TODO: wire actual submit to backend when available
+                                    setLeadSubmitted(true);
+                                }}
+                                className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                            >
+                                Unlock
+                            </button>
                         </div>
                     </div>
                 </div>
-            ) : null;
+            </div>
+        ) : null;
 
         const LeadCaptureSoftLock =
             effectiveLeadMode === "soft_lock" && leadState === "new" ? (
@@ -838,7 +928,9 @@ export default function PinterestPotentialWizard({
                                         onChange={(e) => setLeadDraft((p) => ({ ...p, email: e.target.value }))}
                                         className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                     />
-                                    {optionalLeadEmailError ? <div className="mt-1 text-xs text-red-500">{optionalLeadEmailError}</div> : null}
+                                    {optionalLeadEmailError ? (
+                                        <div className="mt-1 text-xs text-red-500">{optionalLeadEmailError}</div>
+                                    ) : null}
                                 </div>
                             </div>
 
@@ -911,7 +1003,10 @@ export default function PinterestPotentialWizard({
                     <div className="mb-2 font-heading text-lg text-[var(--foreground)]">Your answers</div>
                     <div className="grid gap-3 sm:grid-cols-2">
                         {recap.map((it, idx) => (
-                            <div key={`${idx}-${it.label}`} className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                            <div
+                                key={`${idx}-${it.label}`}
+                                className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4"
+                            >
                                 <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
                                 <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
                             </div>
@@ -924,6 +1019,8 @@ export default function PinterestPotentialWizard({
                         type="button"
                         onClick={() => {
                             clearDraft();
+                            setDraft(INITIAL_DRAFT);
+
                             setAnswers({});
                             setStepIndex(1);
                             setResults(null);
@@ -951,7 +1048,9 @@ export default function PinterestPotentialWizard({
                     </button>
                 </div>
 
-                <div className="mt-4 text-sm text-[var(--foreground-muted)]">You can refresh the page; your draft is saved in this session.</div>
+                <div className="mt-4 text-sm text-[var(--foreground-muted)]">
+                    You can refresh the page; your draft is saved in this session.
+                </div>
             </div>
         );
     }

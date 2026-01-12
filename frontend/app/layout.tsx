@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display_SC, Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { growthbookAdapter } from "@/lib/growthbook/flags"; // just importing is enough
 
 const headingFont = Playfair_Display_SC({
     subsets: ["latin"],

@@ -1,6 +1,7 @@
+// frontend/components/tools/pinterestPotential/usePinterestPotentialDraft.ts
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export const DRAFT_STORAGE_KEY = "pinterestPotential:draft:v2";
 
@@ -42,56 +43,89 @@ function isValidStepIndex(n: unknown): n is number {
     return typeof n === "number" && Number.isFinite(n) && n >= 1 && n <= 8;
 }
 
+function isVariant(v: unknown): v is DraftStateV2["variant"] {
+    return v === undefined || v === "welcome" || v === "no_welcome";
+}
+
 function isDraftShape(v: unknown): v is DraftStateV2 {
     if (!isObject(v)) return false;
-    const stepIndex = (v as any).stepIndex;
-    const started = (v as any).started;
-    const answers = (v as any).answers;
-    const variant = (v as any).variant;
+
+    // Avoid `any` by reading from Record<string, unknown>
+    const rec = v;
+
+    const stepIndex = rec["stepIndex"];
+    const started = rec["started"];
+    const answers = rec["answers"];
+    const variant = rec["variant"];
 
     const stepOk = isValidStepIndex(stepIndex);
     const startedOk = typeof started === "boolean";
     const answersOk = isObject(answers);
-    const variantOk =
-        variant === undefined || variant === "welcome" || variant === "no_welcome";
+    const variantOk = isVariant(variant);
 
     return stepOk && startedOk && answersOk && variantOk;
 }
 
-export function usePinterestPotentialDraft(initial: DraftStateV2) {
-    const [draft, setDraft] = useState<DraftStateV2>(initial);
-    const loadedRef = useRef(false);
+function safeReadSession(key: string): string | null {
+    if (typeof window === "undefined") return null;
+    try {
+        return window.sessionStorage.getItem(key);
+    } catch {
+        return null;
+    }
+}
 
-    // Load once on mount
-    useEffect(() => {
-        if (loadedRef.current) return;
-        loadedRef.current = true;
+function safeWriteSession(key: string, value: string): void {
+    if (typeof window === "undefined") return;
+    try {
+        window.sessionStorage.setItem(key, value);
+    } catch {
+        // ignore
+    }
+}
+
+function safeRemoveSession(key: string): void {
+    if (typeof window === "undefined") return;
+    try {
+        window.sessionStorage.removeItem(key);
+    } catch {
+        // ignore
+    }
+}
+
+export function usePinterestPotentialDraft(initial: DraftStateV2) {
+    // Load draft *once* (as initial state) to avoid setState-in-effect lint rule.
+    const initialDraft = useMemo<DraftStateV2>(() => {
+        const raw = safeReadSession(DRAFT_STORAGE_KEY);
+        if (!raw) return initial;
 
         try {
-            const raw =
-                typeof window !== "undefined"
-                    ? window.sessionStorage.getItem(DRAFT_STORAGE_KEY)
-                    : null;
-            if (!raw) return;
-
-            const parsed = JSON.parse(raw);
+            const parsed: unknown = JSON.parse(raw);
             if (isDraftShape(parsed)) {
-                setDraft((prev) => ({ ...prev, ...parsed }));
-            } else {
-                window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+                // Merge with provided initial to preserve defaults for any new fields.
+                return { ...initial, ...parsed };
             }
+            safeRemoveSession(DRAFT_STORAGE_KEY);
+            return initial;
         } catch {
-            try {
-                window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
-            } catch {}
+            safeRemoveSession(DRAFT_STORAGE_KEY);
+            return initial;
         }
+        // initial is stable for our usage; if caller changes it, we intentionally do not rehydrate.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const [draft, setDraft] = useState<DraftStateV2>(initialDraft);
+
+    // Track first persist to avoid double-write surprises (optional, but harmless)
+    const hydratedRef = useRef(false);
 
     // Persist on changes
     useEffect(() => {
-        try {
-            window.sessionStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(draft));
-        } catch {}
+        // Mark hydrated after first render so we only start persisting after mount
+        if (!hydratedRef.current) hydratedRef.current = true;
+
+        safeWriteSession(DRAFT_STORAGE_KEY, JSON.stringify(draft));
     }, [draft]);
 
     const updateDraft = useCallback((patch: Partial<DraftStateV2>) => {
@@ -99,9 +133,7 @@ export function usePinterestPotentialDraft(initial: DraftStateV2) {
     }, []);
 
     const clearDraft = useCallback(() => {
-        try {
-            window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
-        } catch {}
+        safeRemoveSession(DRAFT_STORAGE_KEY);
     }, []);
 
     return { draft, setDraft, updateDraft, clearDraft } as const;

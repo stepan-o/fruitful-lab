@@ -109,7 +109,6 @@ export default function FlashBanner({
         setVisible(false);
         const raf = requestAnimationFrame(() => setVisible(true));
         return () => cancelAnimationFrame(raf);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [flash]);
 
     // auto dismiss timer

@@ -1,24 +1,53 @@
+// frontend/lib/growthbook/__tests__/experiments.test.ts
 import "@testing-library/jest-dom";
 
-// Mock adapter + identify
-const initialize = jest.fn();
+import { PINTEREST_POTENTIAL_EXPERIMENT } from "@/lib/experiments/config";
+
+// -----------------------------
+// Minimal GB client typing
+// -----------------------------
+type GBEnableResult = { on?: boolean; value?: unknown };
+type GBValueResult = { value?: unknown };
+
+type MinimalGBClient = {
+    // Keep signature compatible with prod usage (may pass options as 2nd arg)
+    evalFeature: (key: string, opts?: unknown) => GBEnableResult | GBValueResult;
+};
+
+// -----------------------------
+// Mocks
+// -----------------------------
+const initialize = jest.fn<Promise<MinimalGBClient>, unknown[]>();
+
 jest.mock("@/lib/growthbook/flags", () => ({
-    growthbookAdapter: { initialize: (...args: unknown[]) => initialize(...args) },
+    growthbookAdapter: {
+        initialize,
+    },
 }));
 
-const identify = jest.fn().mockResolvedValue({ id: "anonymous" });
+const identify = jest
+    .fn<Promise<{ id: string }>, unknown[]>()
+    .mockResolvedValue({ id: "anonymous" });
+
 jest.mock("@/lib/identify", () => ({
-    identify: (...args: unknown[]) => identify(...args),
+    identify,
 }));
 
 import { runServerExperiment } from "@/lib/growthbook/experiments";
-import { PINTEREST_POTENTIAL_EXPERIMENT } from "@/lib/experiments/config";
 
-type GBEnableResult = { on?: boolean; value?: unknown };
-type GBValueResult = { value?: unknown };
-type MinimalGBClient = {
-    evalFeature: (key: string, opts?: unknown) => GBEnableResult | GBValueResult;
-};
+function makeClient(enable: boolean, value?: string): MinimalGBClient {
+    return {
+        evalFeature: (key: string, opts?: unknown) => {
+            // Mark as "used" for eslint (some configs don't ignore underscore args)
+            void opts;
+
+            if (key === `enable_${PINTEREST_POTENTIAL_EXPERIMENT.gbKey}`) {
+                return { on: enable, value: enable };
+            }
+            return { value };
+        },
+    };
+}
 
 describe("runServerExperiment", () => {
     const originalKey = process.env.GROWTHBOOK_CLIENT_KEY;
@@ -32,17 +61,6 @@ describe("runServerExperiment", () => {
         if (originalKey) process.env.GROWTHBOOK_CLIENT_KEY = originalKey;
         else delete process.env.GROWTHBOOK_CLIENT_KEY;
     });
-
-    function makeClient(enable: boolean, value?: string): MinimalGBClient {
-        return {
-            evalFeature: (key: string, _opts?: unknown) => {
-                if (key === `enable_${PINTEREST_POTENTIAL_EXPERIMENT.gbKey}`) {
-                    return { on: enable, value: enable };
-                }
-                return { value };
-            },
-        };
-    }
 
     it("returns welcome when GrowthBook evaluates to welcome", async () => {
         initialize.mockResolvedValueOnce(makeClient(true, "welcome"));

@@ -54,12 +54,10 @@ growthbookAdapter.setTrackingCallback(
                 });
 
                 if (process.env.NODE_ENV === "development") {
-                    // eslint-disable-next-line no-console
                     console.log("[growthbook exposure]", expKey, { variant });
                 }
             } catch (err) {
                 if (process.env.NODE_ENV === "development") {
-                    // eslint-disable-next-line no-console
                     console.error("[growthbook exposure] failed to log", err);
                 }
             }
@@ -88,7 +86,6 @@ if (growthbookDebugState.envConfigured) {
         .then(() => {
             growthbookDebugState.initialized = true;
             if (process.env.NODE_ENV !== "production") {
-                // eslint-disable-next-line no-console
                 console.log("[GrowthBook] adapter initialized", { apiHost });
             }
         })
@@ -96,12 +93,10 @@ if (growthbookDebugState.envConfigured) {
             const error = err instanceof Error ? err : new Error(String(err));
             growthbookDebugState.lastError = error;
             if (process.env.NODE_ENV !== "production") {
-                // eslint-disable-next-line no-console
                 console.error("[GrowthBook] adapter failed to initialize", error);
             }
         });
 } else if (process.env.NODE_ENV !== "production") {
-    // eslint-disable-next-line no-console
     console.warn("[GrowthBook] env not configured; skipping initialize()", {
         clientKeyPresent: !!clientKey,
         apiHost,

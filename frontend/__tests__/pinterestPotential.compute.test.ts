@@ -1,204 +1,221 @@
-import { computeResult, computeScore, round, sum } from "@/lib/tools/pinterestPotential/compute";
-import { Answers, Lead, Q2, Q3, Q9 } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+import { computeResults } from "@/lib/tools/pinterestPotential/compute";
+import {
+    getNicheOptions,
+    getPrimaryGoalOptions,
+    type Answers,
+    type Segment,
+    type NicheSlug,
+    type PrimaryGoal,
+    type VolumeBucket,
+    type VisualStrength,
+    type SiteExperience,
+    type OfferClarity,
+    type GrowthMode,
+} from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+import { getBenchmark } from "@/lib/tools/pinterestPotential/benchmarks";
 
-describe("Pinterest Potential – compute helpers", () => {
-  it("sum() adds numbers", () => {
-    expect(sum([1, 2, 3])).toBe(6);
-    expect(sum([])).toBe(0);
-  });
-
-  it("round() rounds to given decimals", () => {
-    expect(round(1.234, 0)).toBe(1);
-    expect(round(1.5, 0)).toBe(2);
-    expect(round(1.234, 2)).toBe(1.23);
-  });
-});
-
-// -----------------------------
-// Helpers: derive checkbox option IDs from canonical spec by value
-// -----------------------------
-type CheckboxId = "Q2" | "Q3" | "Q9";
-
-function questionFor(id: CheckboxId) {
-  if (id === "Q2") return Q2;
-  if (id === "Q3") return Q3;
-  return Q9;
+function firstNiche(segment: Segment): NicheSlug {
+    return getNicheOptions(segment)[0].id;
 }
 
-function idForValue(qid: CheckboxId, value: number): number {
-  const q = questionFor(qid);
-  const opt = q.options.find((o) => o.value === value);
-  if (!opt) throw new Error(`No option id found for ${qid} value=${value}`);
-  return opt.id;
+function firstGoal(segment: Segment): PrimaryGoal {
+    return getPrimaryGoalOptions(segment)[0].id;
 }
 
-function idsForValues(qid: CheckboxId, values: number[]): number[] {
-  return values.map((v) => idForValue(qid, v));
-}
+function makeValidAnswers(overrides: Partial<Answers> = {}): Answers {
+    const segment: Segment = overrides.Q1 ?? "content_creator";
 
-// Helper: a fully valid base answer set using known weights
-function makeValidAnswers(overrides: Partial<Answers> = {}): Required<Answers> {
-  const base: Required<Answers> = {
-    // Q1 Yes
-    Q1: 1,
-    // Q2 Canada
-    Q2: idsForValues("Q2", [1_600_000]),
-    // Q3 Nursery & Home (0.2) + Feeding & Care (0.1)
-    Q3: idsForValues("Q3", [0.2, 0.1]),
-    // Q4 Yes (0.35)
-    Q4: 0.35,
-    // Q5 Yes blog (1.15)
-    Q5: 1.15,
-    // Q6 Yes (1.3)
-    Q6: 1.3,
-    // Q7 1 (min)
-    Q7: 1,
-    // Q8 1 (min)
-    Q8: 1,
-    // Q9 Email (6) — not used in formula but required
-    Q9: [6],
-  };
-  return { ...base, ...overrides };
-}
-
-const validLead: Lead = { name: "Ada Lovelace", email: "ada@example.com" };
-
-describe("Pinterest Potential – validation gating via computeResult", () => {
-  it("returns ok:false when a required question is missing", () => {
-    const a: Answers = {};
-    const r = computeResult(a, validLead);
-    expect(r.ok).toBe(false);
-    if (!r.ok) {
-      expect(r.errors).toHaveProperty("Q1");
-    }
-  });
-
-  it("returns ok:false when a multi-select is empty (Q2)", () => {
-    const a = makeValidAnswers({ Q2: [] });
-    const r = computeResult(a, validLead);
-    expect(r.ok).toBe(false);
-    if (!r.ok) {
-      expect(r.errors).toHaveProperty("Q2");
-    }
-  });
-
-  it("returns ok:false when a slider is out of bounds (Q7 < 1)", () => {
-    const a = makeValidAnswers({ Q7: 0 });
-    const r = computeResult(a, validLead);
-    expect(r.ok).toBe(false);
-    if (!r.ok) {
-      expect(r.errors).toHaveProperty("Q7");
-    }
-  });
-
-  it("returns ok:true when answers are valid even if lead is missing (lead gating handled by UI)", () => {
-    const a = makeValidAnswers();
-    const r = computeResult(a, undefined);
-    expect(r.ok).toBe(true);
-    if (r.ok) {
-      // Should equal computeScore for the same inputs
-      expect(r.score).toBe(computeScore(a));
-    }
-  });
-});
-
-describe("Pinterest Potential – golden cases (deterministic from spec weights)", () => {
-  it("Golden A: Canada + Nursery & Home + Feeding & Care; all positive scalars; Q7=1, Q8=1", () => {
-    const a = makeValidAnswers();
-    // Expected math:
-    // sum(Q3) = 0.2 + 0.1 = 0.3
-    // sum(Q2) = 1,600,000
-    // Base = 0.3 * 1,600,000 = 480,000
-    // * Q1(1) = 480,000
-    // * Q4(0.35) = 168,000
-    // * Q5(1.15) = 193,200
-    // * Q6(1.3) = 251,160
-    // Seasonal factor (Q7=1): 1.175 - 0.175*1 = 1.0
-    // Competition factor (Q8=1): 1.15 - 0.15*1 = 1.0
-    // Result = 251,160 → round(0) = 251,160
-    const r = computeResult(a, validLead);
-    expect(r.ok).toBe(true);
-    if (r.ok) {
-      expect(r.score).toBe(251160);
-    }
-  });
-
-  it("Golden B: USA + (Travel & Mobility + Toys/Play); Q1=No; Q4=consider; Q5=guides; Q6=Not sure; Q7=2; Q8=3", () => {
-    const a = makeValidAnswers({
-      Q1: 0.7, // No
-      Q2: idsForValues("Q2", [27_000_000]), // USA
-      Q3: idsForValues("Q3", [0.18, 0.15]), // 0.33
-      Q4: 0.2, // No, but could consider
-      Q5: 1.05, // guides
-      Q6: 1, // Not sure
-      Q7: 2,
-      Q8: 3,
-    });
-
-    // Expected math:
-    // sum(Q3)=0.33, sum(Q2)=27,000,000 → 8,910,000
-    // * Q1(0.7) = 6,237,000
-    // * Q4(0.2) = 1,247,400
-    // * Q5(1.05) = 1,309,770
-    // * Q6(1) = 1,309,770
-    // Seasonal(Q7=2): 1.175 - 0.35 = 0.825 → 1,080,560.25
-    // Competition(Q8=3): 1.15 - 0.45 = 0.7 → 756,392.175
-    // round(0) = 756,392
-    const r = computeResult(a, validLead);
-    expect(r.ok).toBe(true);
-    if (r.ok) {
-      expect(r.score).toBe(756392);
-    }
-  });
-
-  it("Golden C: Global + 3 categories; Q4=No; Q5=No and not planning; Q6=No; Q7=5; Q8=5", () => {
-    const a = makeValidAnswers({
-      Q2: idsForValues("Q2", [141_000_000]), // Global
-      Q3: idsForValues("Q3", [0.2, 0.17, 0.08]), // 0.45
-      Q4: 0.1, // No
-      Q5: 0.8, // No and not planning to
-      Q6: 0.9, // No
-      Q7: 5,
-      Q8: 5,
-    });
-
-    // Expected math:
-    // sum(Q3)=0.45, sum(Q2)=141,000,000 → 63,450,000
-    // * Q1(1) = 63,450,000
-    // * Q4(0.1) = 6,345,000
-    // * Q5(0.8) = 5,076,000
-    // * Q6(0.9) = 4,568,400
-    // Seasonal(Q7=5): 1.175 - 0.875 = 0.3 → 1,370,520
-    // Competition(Q8=5): 1.15 - 0.75 = 0.4 → 548,208
-    // round(0) = 548,208
-    const r = computeResult(a, validLead);
-    expect(r.ok).toBe(true);
-    if (r.ok) {
-      expect(r.score).toBe(548208);
-    }
-  });
-
-  // Guardrail to prevent reintroducing raw values for checkbox answers
-  it("rejects checkbox answers passed as raw values (must be option IDs)", () => {
-    const answers: any = {
-      Q1: 1,
-      Q2: [1_600_000], // raw value, wrong shape
-      Q3: [0.2], // raw value, wrong shape
-      Q4: 0.35,
-      Q5: 1.15,
-      Q6: 1.3,
-      Q7: 1,
-      Q8: 1,
-      Q9: [6], // keep as correct id
+    const base: Answers = {
+        Q1: segment,
+        Q2: firstNiche(segment),
+        Q3: "3-5" as VolumeBucket,
+        Q4: "decent" as VisualStrength,
+        Q5: "c" as SiteExperience,
+        Q6: "somewhat" as OfferClarity,
+        Q7: firstGoal(segment),
+        Q8: "organic" as GrowthMode,
     };
 
-    const r = computeResult(answers);
-    // Current behavior: validation does not catch raw numeric values for checkbox questions,
-    // so computeResult returns ok:true but the score is 0 because ID→value lookup finds no matches.
-    // If validation logic is tightened in the future, feel free to flip this to expect(r.ok).toBe(false).
-    expect(r.ok).toBe(true);
-    if (r.ok) {
-      expect(r.score).toBe(0);
-    }
-  });
+    // If overrides change Q1, ensure we recompute Q2/Q7 defaults for that segment
+    const nextSegment: Segment = overrides.Q1 ?? base.Q1!;
+    const merged: Answers = { ...base, ...overrides, Q1: nextSegment };
+
+    // If caller didn’t specify Q2/Q7 explicitly, keep them valid for the (possibly overridden) segment
+    if (!overrides.Q2) merged.Q2 = firstNiche(nextSegment);
+    if (!overrides.Q7) merged.Q7 = firstGoal(nextSegment);
+
+    return merged;
+}
+
+describe("Pinterest Potential (v0.2) — computeResults()", () => {
+    it("returns ok:false when a required question is missing", () => {
+        const r = computeResults({});
+        expect(r.ok).toBe(false);
+        if (!r.ok) {
+            expect(r.errors).toHaveProperty("Q1");
+        }
+    });
+
+    it("returns ok:false when Q2 is missing (even if Q1 is set)", () => {
+        const a: Answers = { Q1: "content_creator" };
+        const r = computeResults(a);
+        expect(r.ok).toBe(false);
+        if (!r.ok) {
+            expect(r.errors).toHaveProperty("Q2");
+        }
+    });
+
+    it("returns ok:false when Q2 is not valid for the chosen segment", () => {
+        // Pick a niche from a different segment to ensure invalidity
+        const wrongNiche = getNicheOptions("product_seller")[0].id;
+
+        const a = makeValidAnswers({
+            Q1: "content_creator",
+            Q2: wrongNiche,
+        });
+
+        const r = computeResults(a);
+        expect(r.ok).toBe(false);
+        if (!r.ok) {
+            expect(r.errors).toHaveProperty("Q2");
+        }
+    });
+
+    it("returns ok:false when Q7 is not valid for the chosen segment", () => {
+        // Pick a goal from a different segment to ensure invalidity
+        const wrongGoal = getPrimaryGoalOptions("service_provider")[0].id;
+
+        const a = makeValidAnswers({
+            Q1: "product_seller",
+            Q7: wrongGoal,
+        });
+
+        const r = computeResults(a);
+        expect(r.ok).toBe(false);
+        if (!r.ok) {
+            expect(r.errors).toHaveProperty("Q7");
+        }
+    });
+
+    it("returns ok:true and produces well-formed ranges + inferred indices", () => {
+        const a = makeValidAnswers();
+        const r = computeResults(a);
+
+        expect(r.ok).toBe(true);
+        if (!r.ok) return;
+
+        const { results } = r;
+
+        // Ranges exist and are ordered
+        expect(results.audience_est.low).toBeLessThanOrEqual(results.audience_est.high);
+        expect(results.income_est.low).toBeLessThanOrEqual(results.income_est.high);
+        expect(results.opportunity_est.low).toBeLessThanOrEqual(results.opportunity_est.high);
+
+        // Integers (rounded)
+        expect(Number.isInteger(results.audience_est.low)).toBe(true);
+        expect(Number.isInteger(results.audience_est.high)).toBe(true);
+        expect(Number.isInteger(results.income_est.low)).toBe(true);
+        expect(Number.isInteger(results.income_est.high)).toBe(true);
+        expect(Number.isInteger(results.opportunity_est.low)).toBe(true);
+        expect(Number.isInteger(results.opportunity_est.high)).toBe(true);
+
+        // Inferred indices are present
+        expect(results.inferred.seasonality_index).toMatch(/^(low|medium|high)$/);
+        expect(results.inferred.competition_index).toMatch(/^(low|medium|high)$/);
+
+        // insight_line is optional (string or null/undefined)
+        const il = results.insight_line;
+        expect(il === undefined || il === null || typeof il === "string").toBe(true);
+    });
+
+    it("matches benchmark telemetry fields and keeps income benchmark-driven (multiplier = 1.0)", () => {
+        const a = makeValidAnswers({
+            Q1: "content_creator",
+            Q2: firstNiche("content_creator"),
+            Q3: "6-10",
+            Q4: "strong",
+            Q5: "d",
+            Q6: "yes",
+            Q7: firstGoal("content_creator"),
+            Q8: "later",
+        });
+
+        const r = computeResults(a);
+        expect(r.ok).toBe(true);
+        if (!r.ok) return;
+
+        const row = getBenchmark(a.Q1!, a.Q2!);
+
+        // Telemetry fields should reflect benchmark row inference
+        expect(r.results.inferred.seasonality_index).toBe(row.inferred.seasonality);
+        expect(r.results.inferred.competition_index).toBe(row.inferred.competition);
+
+        // Opportunity type should come from benchmark row
+        expect(r.results.opportunity_est.type).toBe(row.opportunity.type);
+
+        // Income multiplier is 1.0 in v0.2, so income should be benchmark-derived (rounded)
+        expect(r.results.income_est.low).toBe(Math.round(row.income.low));
+        expect(r.results.income_est.high).toBe(Math.round(row.income.high));
+    });
+
+    it("keeps audience multiplier in the subtle clamp band (≈ ±15%)", () => {
+        const a = makeValidAnswers({
+            Q1: "product_seller",
+            Q2: firstNiche("product_seller"),
+            Q3: "20+",
+            Q4: "very_strong",
+            Q5: "d",
+            Q6: "yes",
+            Q7: firstGoal("product_seller"),
+            Q8: "ads",
+        });
+
+        const r = computeResults(a);
+        expect(r.ok).toBe(true);
+        if (!r.ok) return;
+
+        const row = getBenchmark(a.Q1!, a.Q2!);
+
+        // Compute effective multiplier from baseline → output (allow tiny rounding slop)
+        const eps = 0.02;
+
+        const mLow = r.results.audience_est.low / row.audience_base.low;
+        const mHigh = r.results.audience_est.high / row.audience_base.high;
+
+        expect(mLow).toBeGreaterThanOrEqual(0.85 - eps);
+        expect(mLow).toBeLessThanOrEqual(1.15 + eps);
+
+        expect(mHigh).toBeGreaterThanOrEqual(0.85 - eps);
+        expect(mHigh).toBeLessThanOrEqual(1.15 + eps);
+    });
+
+    it("keeps opportunity multiplier in the subtle clamp band (≈ ±20%)", () => {
+        const a = makeValidAnswers({
+            Q1: "service_provider",
+            Q2: firstNiche("service_provider"),
+            Q3: "0-2",
+            Q4: "limited",
+            Q5: "a",
+            Q6: "no",
+            Q7: firstGoal("service_provider"),
+            Q8: "organic",
+        });
+
+        const r = computeResults(a);
+        expect(r.ok).toBe(true);
+        if (!r.ok) return;
+
+        const row = getBenchmark(a.Q1!, a.Q2!);
+
+        const eps = 0.02;
+
+        const mLow = r.results.opportunity_est.low / row.opportunity.low;
+        const mHigh = r.results.opportunity_est.high / row.opportunity.high;
+
+        expect(mLow).toBeGreaterThanOrEqual(0.8 - eps);
+        expect(mLow).toBeLessThanOrEqual(1.2 + eps);
+
+        expect(mHigh).toBeGreaterThanOrEqual(0.8 - eps);
+        expect(mHigh).toBeLessThanOrEqual(1.2 + eps);
+    });
 });

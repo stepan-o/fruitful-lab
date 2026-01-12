@@ -1,15 +1,16 @@
 "use client";
 
 import React from "react";
-import type { Segment, StepBaseProps } from "./ppcV2Types";
+import type { Segment } from "./ppcV2Types";
 
 export default function Q1Segment({
                                       value,
                                       onChange,
                                       onAutoAdvance,
-                                  }: StepBaseProps & {
+                                  }: {
     value?: Segment;
     onChange: (v: Segment) => void;
+    onAutoAdvance?: (segment: Segment) => void;
 }) {
     const options: Array<{
         value: Segment;
@@ -62,34 +63,69 @@ export default function Q1Segment({
         <div className="grid gap-3">
             <div className="text-sm text-[var(--foreground-muted)]">Pick the closest match</div>
 
-            <div className="grid gap-2">
+            <div className="grid gap-3">
                 {options.map((opt) => {
                     const selected = value === opt.value;
+
                     return (
                         <button
                             key={opt.value}
                             type="button"
+                            aria-pressed={selected}
                             onClick={() => {
                                 onChange(opt.value);
-                                onAutoAdvance?.();
+                                onAutoAdvance?.(opt.value);
                             }}
                             className={[
-                                "w-full rounded-xl border p-4 text-left transition-colors",
-                                "border-[var(--border)] bg-[var(--background)] hover:bg-[var(--card-hover)]",
-                                selected ? "ring-1 ring-[var(--brand-raspberry)]" : "",
+                                "group w-full rounded-2xl border px-4 py-4 text-left transition",
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                                "active:scale-[0.99]",
+                                selected
+                                    ? "border-[var(--brand-raspberry)] bg-[var(--card)] shadow-sm"
+                                    : "border-[var(--border)] bg-[var(--background)] hover:bg-[var(--card-hover)]",
                             ].join(" ")}
                         >
-                            <div className="flex items-center gap-3">
-                                <div className="text-[var(--brand-raspberry)]">{opt.icon}</div>
-                                <div>
-                                    <div className="font-heading text-base text-[var(--foreground)]">{opt.title}</div>
-                                    <div className="text-sm text-[var(--foreground-muted)]">{opt.desc}</div>
+                            <div className="flex items-center justify-between gap-3">
+                                <div className="flex items-center gap-3">
+                                    <div
+                                        className={[
+                                            "flex h-10 w-10 items-center justify-center rounded-xl border",
+                                            selected
+                                                ? "border-[var(--brand-raspberry)] text-[var(--brand-raspberry)]"
+                                                : "border-[var(--border)] text-[var(--foreground-muted)] group-hover:text-[var(--brand-raspberry)]",
+                                        ].join(" ")}
+                                    >
+                                        {opt.icon}
+                                    </div>
+
+                                    <div>
+                                        <div className="font-heading text-base text-[var(--foreground)]">{opt.title}</div>
+                                        <div className="text-sm text-[var(--foreground-muted)]">{opt.desc}</div>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-2">
+                                    {selected ? (
+                                        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--background)] px-2 py-1 text-xs text-[var(--foreground)]">
+                      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                      </svg>
+                      Selected
+                    </span>
+                                    ) : (
+                                        <span className="text-xs text-[var(--foreground-muted)] opacity-0 transition group-hover:opacity-100">
+                      Tap to choose
+                    </span>
+                                    )}
                                 </div>
                             </div>
                         </button>
                     );
                 })}
+            </div>
+
+            <div className="text-xs text-[var(--foreground-muted)]">
+                This sets how we tailor the estimate (traffic vs sales vs leads).
             </div>
         </div>
     );

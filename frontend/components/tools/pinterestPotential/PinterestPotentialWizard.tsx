@@ -46,7 +46,6 @@ import Q6Offer from "./steps/Q6Offer";
 import Q7Goal from "./steps/Q7Goal";
 import Q8GrowthMode from "./steps/Q8GrowthMode";
 
-import { WelcomeHero } from "./WelcomeHero";
 import type {
     AnswersV2,
     GrowthMode,
@@ -304,6 +303,7 @@ export default function PinterestPotentialWizard({
     const isLastStep = stepIndex === TOTAL;
 
     const progressText = useMemo(() => `Step ${stepIndex} of ${TOTAL}`, [stepIndex]);
+    const progressPct = useMemo(() => Math.round((stepIndex / TOTAL) * 100), [stepIndex]);
 
     const currentErrorKey = useMemo(
         () => getErrorKeyForStep(stepIndex, errors, resultsErrors),
@@ -351,6 +351,11 @@ export default function PinterestPotentialWizard({
 
         return e;
     }
+
+    const canContinue = useMemo(() => {
+        const stepErrs = validateStep(stepIndex, answers);
+        return Object.keys(stepErrs).length === 0;
+    }, [stepIndex, answers]);
 
     function buildSpecAnswers(a: AnswersV2): SpecAnswers {
         const seg = a.segment as SpecSegment | undefined;
@@ -404,14 +409,23 @@ export default function PinterestPotentialWizard({
         void onPhaseChangeAction?.("results");
     }
 
-    function goNext() {
+    /**
+     * goNext accepts optional `nextAnswers` to fix the auto-advance race:
+     * - step component triggers onChange + onAutoAdvance immediately
+     * - React state might not commit by the time we validate
+     * - passing `nextAnswers` guarantees validation uses the updated answers
+     */
+    function goNext(nextAnswers?: AnswersV2) {
         resetErrors();
 
-        const stepErrs = validateStep(stepIndex, answers);
+        const a = nextAnswers ?? answers;
+        const stepErrs = validateStep(stepIndex, a);
         if (Object.keys(stepErrs).length > 0) {
             setErrors(stepErrs);
             return;
         }
+
+        if (nextAnswers) setAnswers(nextAnswers);
 
         fireToolStartOnce();
 
@@ -423,11 +437,15 @@ export default function PinterestPotentialWizard({
         setStepIndex((s) => Math.min(TOTAL, s + 1));
     }
 
-    function autoAdvance() {
-        // Let UI paint the selection state before advancing.
+    function autoAdvance(patch?: Partial<AnswersV2>) {
+        const next = patch ? ({ ...answers, ...patch } as AnswersV2) : answers;
+
+        // Pre-commit patch so UI shows selected state immediately
+        if (patch) setAnswers(next);
+
         window.setTimeout(() => {
-            goNext();
-        }, 120);
+            goNext(next);
+        }, 140);
     }
 
     function goPrev() {
@@ -447,43 +465,208 @@ export default function PinterestPotentialWizard({
     // -----------------------------
     // Welcome view
     // -----------------------------
+    // -----------------------------
+// Welcome view
+// -----------------------------
     if (!started && variant === "welcome") {
         return (
-            <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-                <WelcomeHero />
-                <div className="mt-4 text-sm text-[var(--foreground-muted)]">
-                    Answer 8 quick questions and we’ll estimate your Pinterest opportunity.
+            <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]">
+                {/* Animated gradient layer */}
+                <div aria-hidden="true" className="ppc-welcome-gradient absolute inset-0" />
+
+                {/* Glows (now drifting) */}
+                <div
+                    aria-hidden="true"
+                    className="ppc-welcome-glow-1 pointer-events-none absolute -top-24 right-[-140px] h-72 w-72 rounded-full opacity-25 blur-3xl"
+                    style={{ background: "var(--brand-raspberry)" }}
+                />
+                <div
+                    aria-hidden="true"
+                    className="ppc-welcome-glow-2 pointer-events-none absolute -bottom-24 left-[-140px] h-72 w-72 rounded-full opacity-15 blur-3xl"
+                    style={{ background: "var(--brand-raspberry)" }}
+                />
+
+                {/* Content */}
+                <div className="relative p-6 sm:p-8">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--background)] px-3 py-1 text-xs text-[var(--foreground-muted)]">
+                        <span className="h-2 w-2 rounded-full" style={{ background: "var(--brand-raspberry)" }} />
+                        8 questions • ~60 seconds • saved this session
+                    </div>
+
+                    <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
+                        <div>
+                            <div className="text-sm text-[var(--foreground-muted)]">Pinterest Potential</div>
+                            <h2 className="mt-1 font-heading text-2xl sm:text-3xl text-[var(--foreground)]">
+                                See your growth snapshot
+                            </h2>
+                            <p className="mt-2 max-w-prose text-sm text-[var(--foreground-muted)]">
+                                Answer a few quick questions and we’ll estimate your monthly audience + opportunity.
+                            </p>
+                        </div>
+
+                        {/* lightweight hero */}
+                        <div className="hidden sm:block text-[var(--foreground)]">
+                            <svg width="150" height="96" viewBox="0 0 150 96" aria-hidden="true">
+                                <rect x="10" y="54" width="16" height="32" rx="4" fill="currentColor" opacity="0.22" />
+                                <rect x="36" y="42" width="16" height="44" rx="4" fill="currentColor" opacity="0.32" />
+                                <rect x="62" y="30" width="16" height="56" rx="4" fill="currentColor" opacity="0.42" />
+                                <path d="M18 36 C42 22, 74 22, 108 14" stroke="currentColor" strokeWidth="3" fill="none" opacity="0.35" />
+                                <circle cx="116" cy="13" r="5" fill="currentColor" opacity="0.55" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 flex items-center justify-between">
+                        <button
+                            type="button"
+                            onClick={() => {
+                                updateDraft({ started: true, stepIndex: 1 });
+                                fireToolStartOnce();
+                            }}
+                            className={[
+                                "rounded-lg bg-[var(--brand-raspberry)] px-5 py-2.5 text-sm font-semibold text-white transition",
+                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                                "active:scale-[0.98]",
+                            ].join(" ")}
+                        >
+                            Start
+                        </button>
+
+                        <button
+                            type="button"
+                            onClick={() => {
+                                clearDraft();
+                                setAnswers({});
+                                setStepIndex(1);
+                                setErrors({});
+                                setResultsErrors({});
+                                setResults(null);
+                                setOptionalLeadSubmitted(false);
+                                setOptionalLeadEmailError(null);
+                            }}
+                            className={[
+                                "rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] transition",
+                                "hover:bg-[var(--card-hover)] active:scale-[0.98]",
+                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                            ].join(" ")}
+                        >
+                            Reset
+                        </button>
+                    </div>
                 </div>
 
-                <div className="mt-6 flex items-center justify-between">
-                    <button
-                        type="button"
-                        onClick={() => {
-                            updateDraft({ started: true, stepIndex: 1 });
-                            fireToolStartOnce();
-                        }}
-                        className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                    >
-                        Start
-                    </button>
+                {/* Scoped CSS for animated gradient + drift */}
+                <style jsx>{`
+                    /* The overlay container */
+                    .ppc-welcome-gradient {
+                        pointer-events: none;
+                        position: absolute;
+                        inset: 0;
+                        overflow: hidden;
+                        opacity: 0.55; /* stronger */
+                    }
 
-                    <button
-                        type="button"
-                        onClick={() => {
-                            clearDraft();
-                            setAnswers({});
-                            setStepIndex(1);
-                            setErrors({});
-                            setResultsErrors({});
-                            setResults(null);
-                            setOptionalLeadSubmitted(false);
-                            setOptionalLeadEmailError(null);
-                        }}
-                        className="rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                    >
-                        Reset
-                    </button>
-                </div>
+                    /*
+                      Two large “highlight fields” that sweep across the whole card.
+                      Using oversized layers + translate creates visible motion (waves/ripples).
+                    */
+                    .ppc-welcome-gradient::before,
+                    .ppc-welcome-gradient::after {
+                        content: "";
+                        position: absolute;
+                        inset: -45%;
+                        background-repeat: no-repeat;
+                        filter: blur(44px) saturate(1.08);
+                        will-change: transform, background-position;
+                    }
+
+                    /* Layer A (dominant wave) */
+                    .ppc-welcome-gradient::before {
+                        background-image:
+                                radial-gradient(
+                                        900px circle at 15% 35%,
+                                        color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
+                                        transparent 60%
+                                ),
+                                radial-gradient(
+                                        760px circle at 55% 15%,
+                                        color-mix(in srgb, var(--brand-raspberry) 38%, transparent) 0%,
+                                        transparent 62%
+                                ),
+                                radial-gradient(
+                                        820px circle at 85% 70%,
+                                        color-mix(in srgb, var(--brand-raspberry) 34%, transparent) 0%,
+                                        transparent 64%
+                                );
+                        animation: ppcWaveA 6.5s ease-in-out infinite;
+                        opacity: 0.9;
+                    }
+
+                    /* Layer B (counter-wave) */
+                    .ppc-welcome-gradient::after {
+                        background-image:
+                                radial-gradient(
+                                        860px circle at 80% 30%,
+                                        color-mix(in srgb, var(--brand-raspberry) 46%, transparent) 0%,
+                                        transparent 62%
+                                ),
+                                radial-gradient(
+                                        720px circle at 25% 75%,
+                                        color-mix(in srgb, var(--brand-raspberry) 30%, transparent) 0%,
+                                        transparent 66%
+                                );
+                        animation: ppcWaveB 8.25s ease-in-out infinite;
+                        opacity: 0.75;
+                    }
+
+                    /* Make the two corner glows actually travel across the hero */
+                    .ppc-welcome-glow-1 {
+                        animation: ppcGlowTraverse1 7s ease-in-out infinite;
+                        opacity: 0.22;
+                    }
+                    .ppc-welcome-glow-2 {
+                        animation: ppcGlowTraverse2 9s ease-in-out infinite;
+                        opacity: 0.16;
+                    }
+
+                    /* WAVE: big sweeps across X + subtle Y */
+                    @keyframes ppcWaveA {
+                        0%   { transform: translate3d(-18%, -6%, 0) scale(1.02); }
+                        35%  { transform: translate3d(6%,  4%, 0)  scale(1.04); }
+                        70%  { transform: translate3d(22%, -2%, 0) scale(1.03); }
+                        100% { transform: translate3d(-18%, -6%, 0) scale(1.02); }
+                    }
+
+                    /* COUNTER-WAVE: opposite direction so it feels like ripples */
+                    @keyframes ppcWaveB {
+                        0%   { transform: translate3d(22%,  8%, 0)  scale(1.02); }
+                        40%  { transform: translate3d(-4%, -2%, 0) scale(1.03); }
+                        80%  { transform: translate3d(-22%, 5%, 0) scale(1.04); }
+                        100% { transform: translate3d(22%,  8%, 0)  scale(1.02); }
+                    }
+
+                    /* Corner blobs traverse across the whole card */
+                    @keyframes ppcGlowTraverse1 {
+                        0%   { transform: translate3d(-40px, -20px, 0) scale(1); }
+                        50%  { transform: translate3d(-320px, 40px, 0) scale(1.08); }
+                        100% { transform: translate3d(-40px, -20px, 0) scale(1); }
+                    }
+
+                    @keyframes ppcGlowTraverse2 {
+                        0%   { transform: translate3d(40px, 20px, 0) scale(1); }
+                        50%  { transform: translate3d(340px, -30px, 0) scale(1.06); }
+                        100% { transform: translate3d(40px, 20px, 0) scale(1); }
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                        .ppc-welcome-gradient::before,
+                        .ppc-welcome-gradient::after,
+                        .ppc-welcome-glow-1,
+                        .ppc-welcome-glow-2 {
+                            animation: none !important;
+                        }
+                    }
+                `}</style>
             </div>
         );
     }
@@ -777,10 +960,19 @@ export default function PinterestPotentialWizard({
     // Wizard view (Q1–Q8)
     // -----------------------------
     return (
-        <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-            {/* Progress */}
-            <div className="mb-4 flex items-center justify-between text-sm">
-                <div className="text-[var(--foreground-muted)]">{progressText}</div>
+        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+            {/* Progress (upgraded chrome) */}
+            <div className="mb-4">
+                <div className="flex items-center justify-between text-xs text-[var(--foreground-muted)]">
+                    <span>{progressText}</span>
+                    <span>{progressPct}%</span>
+                </div>
+                <div className="mt-2 h-2 w-full rounded-full bg-[var(--background)]">
+                    <div
+                        className="h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${(stepIndex / TOTAL) * 100}%`, background: "var(--brand-raspberry)" }}
+                    />
+                </div>
             </div>
 
             {/* Question */}
@@ -791,8 +983,17 @@ export default function PinterestPotentialWizard({
                     {stepIndex === 1 ? (
                         <Q1Segment
                             value={answers.segment}
-                            onChange={(v) => setAnswers((p) => ({ ...p, segment: v }))}
-                            onAutoAdvance={autoAdvance}
+                            onChange={(v) => {
+                                // keep state + clear only this step's visible error immediately
+                                setAnswers((p) => ({ ...p, segment: v }));
+                                setErrors((prev) => {
+                                    if (!prev["Q1"]) return prev;
+                                    const n = { ...prev };
+                                    delete n["Q1"];
+                                    return n;
+                                });
+                            }}
+                            onAutoAdvance={(seg) => autoAdvance({ segment: seg })}
                         />
                     ) : null}
 
@@ -873,7 +1074,10 @@ export default function PinterestPotentialWizard({
                     ) : null}
 
                     {currentErrorKey ? (
-                        <div className="mt-3 text-sm text-red-500">{errors[currentErrorKey] ?? resultsErrors[currentErrorKey]}</div>
+                        <div className="mt-4 inline-flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">
+                            <span className="inline-block h-2 w-2 rounded-full bg-red-400" aria-hidden="true" />
+                            <span>{errors[currentErrorKey] ?? resultsErrors[currentErrorKey]}</span>
+                        </div>
                     ) : null}
                 </div>
             </div>
@@ -883,7 +1087,7 @@ export default function PinterestPotentialWizard({
                 <button
                     type="button"
                     onClick={goPrev}
-                    className="rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                    className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] transition hover:bg-[var(--card-hover)] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                     disabled={variant === "welcome" ? (!started ? true : stepIndex === 1) : stepIndex === 1}
                 >
                     Back
@@ -891,8 +1095,15 @@ export default function PinterestPotentialWizard({
 
                 <button
                     type="button"
-                    onClick={goNext}
-                    className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                    onClick={() => goNext()}
+                    disabled={!canContinue}
+                    className={[
+                        "rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition",
+                        "bg-[var(--brand-raspberry)]",
+                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                        "active:scale-[0.98]",
+                        "disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100",
+                    ].join(" ")}
                 >
                     {isLastStep ? "Calculate" : "Continue"}
                 </button>

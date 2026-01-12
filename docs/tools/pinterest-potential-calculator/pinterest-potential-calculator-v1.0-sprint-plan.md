@@ -115,8 +115,7 @@ We can implement Q2 chips + “More” bottom sheet + sticky progress bar with s
 ### Exit criteria
 - BottomSheet + ProgressBar exist and are usable.
 - Selector primitives can store slug-based answers cleanly (no adapter hacks).
-  md
-  Copy code
+
 ## Sprint 3 — Rewrite Wizard in-place: 8Q flow + nav + draft persistence
 
 ### Outcome

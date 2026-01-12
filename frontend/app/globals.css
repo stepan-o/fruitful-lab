@@ -72,6 +72,9 @@
     --ppc-chip-border: color-mix(in srgb, var(--border) 65%, transparent);
     --ppc-noise-opacity: 0.06;
     --ppc-cta-shadow: rgba(0, 0, 0, 0.14);
+
+    /* Welcome backdrop tuning */
+    --ppc-welcome-dim: 0.16; /* stronger = darker base */
 }
 
 @theme inline {
@@ -134,12 +137,22 @@ html[data-theme="dark"] {
     /* PPC polish tokens (DARK) */
     --ppc-accent-stroke: color-mix(in srgb, var(--brand-raspberry) 62%, transparent);
     --ppc-accent-stroke-2: color-mix(in srgb, var(--brand-bronze) 54%, transparent);
-    --ppc-panel-bg: rgba(255, 255, 255, 0.035);
+
+    /* Deeper base so raspberry blobs pop (higher contrast) */
+    --ppc-panel-bg: radial-gradient(
+            1200px 640px at 18% 6%,
+            rgba(176, 18, 109, 0.10) 0%,
+            rgba(10, 10, 10, 0.88) 52%,
+            rgba(6, 6, 6, 0.95) 100%
+    );
     --ppc-panel-inner: rgba(255, 255, 255, 0.06);
+
     --ppc-chip-bg: rgba(10, 10, 10, 0.55);
     --ppc-chip-border: rgba(255, 255, 255, 0.16);
     --ppc-noise-opacity: 0.10;
-    --ppc-cta-shadow: rgba(0, 0, 0, 0.45);
+    --ppc-cta-shadow: rgba(0, 0, 0, 0.55);
+
+    --ppc-welcome-dim: 0.34;
 }
 
 /* ------------------------------
@@ -198,12 +211,21 @@ html[data-theme="light"] {
         /* PPC polish tokens (DARK OS fallback) */
         --ppc-accent-stroke: color-mix(in srgb, var(--brand-raspberry) 62%, transparent);
         --ppc-accent-stroke-2: color-mix(in srgb, var(--brand-bronze) 54%, transparent);
-        --ppc-panel-bg: rgba(255, 255, 255, 0.035);
+
+        --ppc-panel-bg: radial-gradient(
+                1200px 640px at 18% 6%,
+                rgba(176, 18, 109, 0.10) 0%,
+                rgba(10, 10, 10, 0.88) 52%,
+                rgba(6, 6, 6, 0.95) 100%
+        );
         --ppc-panel-inner: rgba(255, 255, 255, 0.06);
+
         --ppc-chip-bg: rgba(10, 10, 10, 0.55);
         --ppc-chip-border: rgba(255, 255, 255, 0.16);
         --ppc-noise-opacity: 0.10;
-        --ppc-cta-shadow: rgba(0, 0, 0, 0.45);
+        --ppc-cta-shadow: rgba(0, 0, 0, 0.55);
+
+        --ppc-welcome-dim: 0.34;
     }
 }
 
@@ -360,12 +382,15 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    opacity: 0.55; /* matches previous inline style */
+    opacity: 0.68; /* slightly stronger */
+    /* Darken the base so animated blobs have higher contrast */
+    background:
+            radial-gradient(1200px 520px at 55% 35%, rgba(0, 0, 0, var(--ppc-welcome-dim)) 0%, rgba(0, 0, 0, 0.78) 62%, rgba(0, 0, 0, 0.92) 100%),
+            linear-gradient(180deg, rgba(0,0,0,0.24), rgba(0,0,0,0.58));
 }
 
 /*
   Two large “highlight fields” that sweep across the whole card.
-  Using oversized layers + translate creates visible motion (waves/ripples).
 */
 .ppc-welcome-gradient::before,
 .ppc-welcome-gradient::after {
@@ -373,48 +398,48 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     position: absolute;
     inset: -45%;
     background-repeat: no-repeat;
-    filter: blur(44px) saturate(1.08);
+    filter: blur(46px) saturate(1.12) contrast(1.05);
     will-change: transform, background-position;
 }
 
 /* Layer A (dominant wave) */
 .ppc-welcome-gradient::before {
     background-image: radial-gradient(
-            900px circle at 15% 35%,
-            color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
+            920px circle at 15% 35%,
+            color-mix(in srgb, var(--brand-raspberry) 58%, transparent) 0%,
             transparent 60%
     ),
     radial-gradient(
-            760px circle at 55% 15%,
-            color-mix(in srgb, var(--brand-raspberry) 38%, transparent) 0%,
+            780px circle at 55% 15%,
+            color-mix(in srgb, var(--brand-raspberry) 44%, transparent) 0%,
             transparent 62%
     ),
     radial-gradient(
-            820px circle at 85% 70%,
-            color-mix(in srgb, var(--brand-raspberry) 34%, transparent) 0%,
+            860px circle at 85% 70%,
+            color-mix(in srgb, var(--brand-raspberry) 40%, transparent) 0%,
             transparent 64%
     );
     animation: ppcWaveA 6.5s ease-in-out infinite;
-    opacity: 0.9;
+    opacity: 0.92;
 }
 
 /* Layer B (counter-wave) */
 .ppc-welcome-gradient::after {
     background-image: radial-gradient(
-            860px circle at 80% 30%,
-            color-mix(in srgb, var(--brand-raspberry) 46%, transparent) 0%,
+            900px circle at 80% 30%,
+            color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
             transparent 62%
     ),
     radial-gradient(
-            720px circle at 25% 75%,
-            color-mix(in srgb, var(--brand-raspberry) 30%, transparent) 0%,
+            760px circle at 25% 75%,
+            color-mix(in srgb, var(--brand-raspberry) 36%, transparent) 0%,
             transparent 66%
     );
     animation: ppcWaveB 8.25s ease-in-out infinite;
-    opacity: 0.75;
+    opacity: 0.78;
 }
 
-/* Corner glows traverse (animation only; keep opacity from Tailwind classes) */
+/* Corner glows traverse */
 .ppc-welcome-glow-1 {
     animation: ppcGlowTraverse1 7s ease-in-out infinite;
 }
@@ -422,7 +447,6 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     animation: ppcGlowTraverse2 9s ease-in-out infinite;
 }
 
-/* WAVE: big sweeps across X + subtle Y */
 @keyframes ppcWaveA {
     0% {
         transform: translate3d(-18%, -6%, 0) scale(1.02);
@@ -438,7 +462,6 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     }
 }
 
-/* COUNTER-WAVE: opposite direction so it feels like ripples */
 @keyframes ppcWaveB {
     0% {
         transform: translate3d(22%, 8%, 0) scale(1.02);
@@ -454,7 +477,6 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     }
 }
 
-/* Corner blobs traverse across the whole card */
 @keyframes ppcGlowTraverse1 {
     0% {
         transform: translate3d(-40px, -20px, 0) scale(1);
@@ -479,19 +501,8 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     }
 }
 
-/* Extra explicit stop for PPC welcome animations */
-@media (prefers-reduced-motion: reduce) {
-    .ppc-welcome-gradient::before,
-    .ppc-welcome-gradient::after,
-    .ppc-welcome-glow-1,
-    .ppc-welcome-glow-2 {
-        animation: none !important;
-    }
-}
-
 /* ------------------------------
    Sprint 2: Reduced motion (global guard)
-   - BottomSheet, ProgressBar, welcome micro-flair
 ------------------------------ */
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -504,19 +515,13 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     }
 }
 
-/* ------------------------------
-   Sprint 2: Optional overlay polish (BottomSheet)
-   - Safe to keep even if unused
------------------------------- */
+/* Optional overlay polish (BottomSheet) */
 .fp-scrim {
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
 }
 
-/* ------------------------------
-   Sprint 2: Optional tap feedback helper (Welcome CTA)
-   - Use by adding className="fp-tap" where needed
------------------------------- */
+/* Tap feedback helper */
 .fp-tap {
     transition: transform 120ms ease;
 }
@@ -525,13 +530,12 @@ html[data-theme="dark"] .theme-toggle-label-dark {
 }
 
 /* ------------------------------------------------------------------
-   PPC Welcome: AAA panel framing + noise + preview stack (NEW)
+   PPC Welcome: AAA panel framing + noise + preview stack
 ------------------------------------------------------------------ */
 
-/* Accent-stroke border that feels “designed”, not default */
 .ppc-hero-frame {
     position: relative;
-    border-radius: 1rem; /* matches rounded-2xl */
+    border-radius: 1rem;
     background: var(--ppc-panel-bg);
     border: 1px solid var(--border);
     overflow: hidden;
@@ -541,7 +545,7 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     content: "";
     position: absolute;
     inset: 0;
-    padding: 1px; /* stroke thickness */
+    padding: 1px;
     border-radius: 1rem;
     background: linear-gradient(
             135deg,
@@ -556,7 +560,6 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     opacity: 0.9;
 }
 
-/* Subtle “glass” inner sheen */
 .ppc-hero-sheen {
     pointer-events: none;
     position: absolute;
@@ -569,40 +572,78 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     opacity: 0.55;
 }
 
-/* Fine grain/noise overlay so gradients don’t look templated */
 .ppc-hero-noise {
     pointer-events: none;
     position: absolute;
     inset: 0;
     opacity: var(--ppc-noise-opacity);
-    background-image:
-            radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 0 1px, transparent 1px),
-            radial-gradient(circle at 80% 30%, rgba(255,255,255,0.45) 0 1px, transparent 1px),
-            radial-gradient(circle at 35% 75%, rgba(255,255,255,0.35) 0 1px, transparent 1px),
-            radial-gradient(circle at 72% 80%, rgba(255,255,255,0.25) 0 1px, transparent 1px);
+    background-image: radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.6) 0 1px,
+            transparent 1px
+    ),
+    radial-gradient(
+            circle at 80% 30%,
+            rgba(255, 255, 255, 0.45) 0 1px,
+            transparent 1px
+    ),
+    radial-gradient(
+            circle at 35% 75%,
+            rgba(255, 255, 255, 0.35) 0 1px,
+            transparent 1px
+    ),
+    radial-gradient(
+            circle at 72% 80%,
+            rgba(255, 255, 255, 0.25) 0 1px,
+            transparent 1px
+    );
     background-size: 120px 120px, 160px 160px, 210px 210px, 260px 260px;
     mix-blend-mode: overlay;
 }
 
-/* Premium chip */
 .ppc-chip {
     background: var(--ppc-chip-bg);
     border: 1px solid var(--ppc-chip-border);
     border-radius: 9999px;
 }
 
-/* Primary CTA polish (keeps Tailwind compatibility) */
+/* Primary CTA polish */
 .ppc-primary-btn {
     box-shadow: 0 10px 30px var(--ppc-cta-shadow);
+    transition: transform 160ms ease, box-shadow 220ms ease;
 }
 .ppc-primary-btn:hover {
     transform: translateY(-1px);
 }
 .ppc-primary-btn:active {
-    transform: translateY(0px) scale(0.98);
+    transform: translateY(0px);
 }
 
-/* Preview stack (right side) */
+/* CTA pulsing wrapper (size pulse without fighting hover transforms) */
+.ppc-cta-wrap {
+    display: inline-flex;
+    transform-origin: center;
+}
+.ppc-cta-pulse {
+    animation: ppcCtaPulse 1.65s ease-in-out infinite;
+}
+.ppc-cta-wrap:hover,
+.ppc-cta-wrap:focus-within {
+    animation: none;
+}
+@keyframes ppcCtaPulse {
+    0% {
+        transform: scale(1);
+    }
+    55% {
+        transform: scale(1.035);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Preview stack */
 .ppc-preview-stack {
     position: relative;
     width: 280px;
@@ -637,45 +678,76 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     pointer-events: none;
 }
 
+/* Foreground card: crisp + dominant */
 .ppc-preview-card-1 {
-    transform: translate3d(0, 0, 0) rotate(-1.2deg);
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(-1.2deg) scale(1);
     animation: ppcFloat1 7.2s ease-in-out infinite;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
+
+/* Background cards: clearly “supporting”, softer + slightly blurred */
 .ppc-preview-card-2 {
-    transform: translate3d(10px, 14px, 0) rotate(1.0deg) scale(0.98);
-    opacity: 0.85;
+    opacity: 0.38;
+    filter: blur(1px) saturate(0.9);
+    transform: translate3d(14px, 18px, 0) rotate(1.4deg) scale(0.975);
     animation: ppcFloat2 8.4s ease-in-out infinite;
 }
 .ppc-preview-card-3 {
-    transform: translate3d(20px, 28px, 0) rotate(-0.6deg) scale(0.96);
-    opacity: 0.7;
+    opacity: 0.22;
+    filter: blur(1.4px) saturate(0.85);
+    transform: translate3d(26px, 34px, 0) rotate(-0.8deg) scale(0.95);
     animation: ppcFloat3 9.6s ease-in-out infinite;
 }
 
 @keyframes ppcFloat1 {
-    0% { transform: translate3d(0, 0, 0) rotate(-1.2deg); }
-    50% { transform: translate3d(0, -6px, 0) rotate(-0.6deg); }
-    100% { transform: translate3d(0, 0, 0) rotate(-1.2deg); }
+    0% {
+        transform: translate3d(0, 0, 0) rotate(-1.2deg) scale(1);
+    }
+    50% {
+        transform: translate3d(0, -6px, 0) rotate(-0.6deg) scale(1);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) rotate(-1.2deg) scale(1);
+    }
 }
 @keyframes ppcFloat2 {
-    0% { transform: translate3d(10px, 14px, 0) rotate(1.0deg) scale(0.98); }
-    50% { transform: translate3d(12px, 8px, 0) rotate(0.6deg) scale(0.985); }
-    100% { transform: translate3d(10px, 14px, 0) rotate(1.0deg) scale(0.98); }
+    0% {
+        transform: translate3d(14px, 18px, 0) rotate(1.4deg) scale(0.975);
+    }
+    50% {
+        transform: translate3d(16px, 10px, 0) rotate(0.9deg) scale(0.98);
+    }
+    100% {
+        transform: translate3d(14px, 18px, 0) rotate(1.4deg) scale(0.975);
+    }
 }
 @keyframes ppcFloat3 {
-    0% { transform: translate3d(20px, 28px, 0) rotate(-0.6deg) scale(0.96); }
-    50% { transform: translate3d(18px, 34px, 0) rotate(-0.2deg) scale(0.965); }
-    100% { transform: translate3d(20px, 28px, 0) rotate(-0.6deg) scale(0.96); }
+    0% {
+        transform: translate3d(26px, 34px, 0) rotate(-0.8deg) scale(0.95);
+    }
+    50% {
+        transform: translate3d(22px, 40px, 0) rotate(-0.35deg) scale(0.955);
+    }
+    100% {
+        transform: translate3d(26px, 34px, 0) rotate(-0.8deg) scale(0.95);
+    }
 }
 
+/* Explicit stop for PPC welcome animations */
 @media (prefers-reduced-motion: reduce) {
-    .ppc-primary-btn:hover,
-    .ppc-primary-btn:active {
-        transform: none !important;
-    }
+    .ppc-welcome-gradient::before,
+    .ppc-welcome-gradient::after,
+    .ppc-welcome-glow-1,
+    .ppc-welcome-glow-2,
     .ppc-preview-card-1,
     .ppc-preview-card-2,
-    .ppc-preview-card-3 {
+    .ppc-preview-card-3,
+    .ppc-cta-pulse {
         animation: none !important;
+    }
+    .ppc-preview-card-2,
+    .ppc-preview-card-3 {
+        filter: none !important;
     }
 }

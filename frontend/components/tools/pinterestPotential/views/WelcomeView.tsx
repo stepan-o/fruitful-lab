@@ -35,12 +35,31 @@ function BulletIcon(props: React.SVGProps<SVGSVGElement>) {
     );
 }
 
+function safeClearPpcSessionDrafts() {
+    try {
+        if (typeof window === "undefined" || !window.sessionStorage) return;
+        const ss = window.sessionStorage;
+        const keys = Object.keys(ss);
+
+        // Clear likely draft/progress keys (belt + suspenders)
+        for (const k of keys) {
+            if (/(pinterestPotential|pinterest_potential|ppc).*(draft|state|wizard|progress)/i.test(k)) {
+                ss.removeItem(k);
+            }
+            // also clear older/looser matches if we ever renamed without suffixes
+            else if (/pinterestPotential/i.test(k) && /(draft|state|wizard|progress)/i.test(k)) {
+                ss.removeItem(k);
+            }
+        }
+    } catch {
+        // noop
+    }
+}
+
 export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
     const [hasDraft, setHasDraft] = React.useState(false);
 
     React.useEffect(() => {
-        // Heuristic: we persist progress in sessionStorage. We don’t want to hardcode one key
-        // because keys evolve across iterations — so we scan for anything that looks like PPC draft state.
         try {
             if (typeof window === "undefined" || !window.sessionStorage) return;
 
@@ -48,9 +67,7 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
             const keys = Object.keys(ss);
 
             const draftKey =
-                keys.find((k) =>
-                    /(pinterestPotential|pinterest_potential|ppc).*(draft|state|wizard)/i.test(k),
-                ) ??
+                keys.find((k) => /(pinterestPotential|pinterest_potential|ppc).*(draft|state|wizard|progress)/i.test(k)) ??
                 keys.find((k) => /pinterestPotential/i.test(k)) ??
                 null;
 
@@ -59,8 +76,6 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
             const raw = ss.getItem(draftKey);
             if (!raw) return;
 
-            // If it's JSON-ish and indicates any progress, treat as resumable.
-            // If it's not JSON, presence alone is enough for "Resume".
             try {
                 const parsed = JSON.parse(raw);
                 const progressed =
@@ -79,6 +94,17 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
 
     const primaryLabel = hasDraft ? "Resume" : "Start";
 
+    const handleReset = React.useCallback(() => {
+        // Call upstream reset (keeps your existing behavior),
+        // then aggressively reflect/reset local state so UI updates immediately.
+        try {
+            onReset();
+        } finally {
+            safeClearPpcSessionDrafts();
+            setHasDraft(false);
+        }
+    }, [onReset]);
+
     return (
         <div className="ppc-hero-frame relative">
             {/* Animated gradient layer (CSS in globals.css) */}
@@ -88,7 +114,7 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
             <div aria-hidden="true" className="ppc-hero-sheen" />
             <div aria-hidden="true" className="ppc-hero-noise" />
 
-            {/* Glows (kept) */}
+            {/* Glows */}
             <div
                 aria-hidden="true"
                 className="ppc-welcome-glow-1 pointer-events-none absolute -top-24 right-[-140px] h-72 w-72 rounded-full opacity-25 blur-3xl"
@@ -100,7 +126,6 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                 style={{ background: "var(--brand-raspberry)" }}
             />
 
-            {/* Content */}
             <div className="relative p-6 sm:p-8">
                 {/* Chip row */}
                 <div className="flex flex-wrap items-center gap-2">
@@ -113,13 +138,10 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                         <span className="whitespace-nowrap">{hasDraft ? "resume available" : "progress saved"}</span>
                     </div>
 
-                    {/* Tiny “no spam” trust note (subtle, optional) */}
                     <div className="text-xs text-[var(--foreground-muted)]">No email required to start.</div>
                 </div>
 
-                {/* Hero grid */}
                 <div className="mt-5 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-                    {/* Left: message + bullets + CTAs */}
                     <div>
                         <div className="text-sm text-[var(--foreground-muted)]">Pinterest Potential</div>
 
@@ -132,7 +154,6 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                             simple starting plan based on your business.
                         </p>
 
-                        {/* What you’ll get */}
                         <div className="mt-5 grid gap-2">
                             <div className="flex items-start gap-2">
                 <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
@@ -167,24 +188,26 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
 
                         {/* CTAs */}
                         <div className="mt-7 flex flex-wrap items-center gap-3">
-                            <button
-                                type="button"
-                                onClick={onStart}
-                                className={[
-                                    "ppc-primary-btn fp-tap inline-flex items-center gap-2 rounded-xl bg-[var(--brand-raspberry)]",
-                                    "px-6 py-3 text-sm font-semibold text-white transition",
-                                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
-                                ].join(" ")}
-                            >
-                                {primaryLabel}
-                                <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10">
-                  <ArrowIcon className="h-4 w-4" />
-                </span>
-                            </button>
+              <span className="ppc-cta-wrap ppc-cta-pulse fp-tap">
+                <button
+                    type="button"
+                    onClick={onStart}
+                    className={[
+                        "ppc-primary-btn inline-flex items-center gap-2 rounded-xl bg-[var(--brand-raspberry)]",
+                        "px-6 py-3 text-sm font-semibold text-white",
+                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                    ].join(" ")}
+                >
+                  {primaryLabel}
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10">
+                    <ArrowIcon className="h-4 w-4" />
+                  </span>
+                </button>
+              </span>
 
                             <button
                                 type="button"
-                                onClick={onReset}
+                                onClick={handleReset}
                                 className={[
                                     "fp-tap inline-flex items-center rounded-xl px-3 py-2 text-sm text-[var(--foreground-muted)] transition",
                                     "hover:text-[var(--foreground)]",
@@ -208,7 +231,7 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                             <div className="ppc-preview-card ppc-preview-card-3" />
                             <div className="ppc-preview-card ppc-preview-card-2" />
 
-                            {/* Front card with content */}
+                            {/* Foreground card */}
                             <div className="ppc-preview-card ppc-preview-card-1">
                                 <div className="relative p-4">
                                     <div className="flex items-center justify-between">
@@ -253,9 +276,14 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                                 </div>
                             </div>
 
-                            {/* Small chart glyph (subtle) */}
+                            {/* Small chart glyph */}
                             <div className="absolute -right-6 -top-6 h-14 w-14 rounded-2xl border border-[var(--border)] bg-[var(--background)]/60 p-3 backdrop-blur-sm">
-                                <svg viewBox="0 0 24 24" fill="none" className="h-full w-full text-[var(--foreground)]" aria-hidden="true">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    className="h-full w-full text-[var(--foreground)]"
+                                    aria-hidden="true"
+                                >
                                     <path
                                         d="M5 15v4m7-10v10m7-14v14"
                                         stroke="currentColor"
@@ -277,7 +305,7 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                     </div>
                 </div>
 
-                {/* Mobile-only mini preview (lightweight) */}
+                {/* Mobile-only mini preview */}
                 <div className="mt-6 lg:hidden">
                     <div className="rounded-2xl border border-[var(--border)] bg-[var(--background)]/60 p-4 backdrop-blur-sm">
                         <div className="flex items-center justify-between">

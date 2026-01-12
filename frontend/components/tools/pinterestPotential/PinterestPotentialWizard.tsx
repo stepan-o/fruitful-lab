@@ -61,6 +61,11 @@ import type {
     VolumeBucket,
 } from "./steps/ppcV2Types";
 
+// New pure UI views
+import WelcomeView from "./views/WelcomeView";
+import ResultsView from "./views/ResultsView";
+import WizardView from "./views/WizardView";
+
 // -----------------------------
 // Small helpers
 // -----------------------------
@@ -144,10 +149,7 @@ function segmentLabel(seg?: SpecSegment): string {
     return "—";
 }
 
-function valueLabelFromOptions<T extends string>(
-    opts: Array<{ id: T; label: string }>,
-    v?: string,
-): string {
+function valueLabelFromOptions<T extends string>(opts: Array<{ id: T; label: string }>, v?: string): string {
     if (!v) return "—";
     return opts.find((o) => o.id === v)?.label ?? v;
 }
@@ -166,11 +168,7 @@ function getStepTitle(stepIndex: number): string {
     return titles[stepIndex] ?? "Pinterest Potential";
 }
 
-function getErrorKeyForStep(
-    stepIndex: number,
-    errors: Record<string, string>,
-    resultsErrors: Record<string, string>,
-) {
+function getErrorKeyForStep(stepIndex: number, errors: Record<string, string>, resultsErrors: Record<string, string>) {
     const keyByStep: Record<number, string[]> = {
         1: ["Q1"],
         2: ["Q2", "Q1"],
@@ -218,11 +216,7 @@ export default function PinterestPotentialWizard({
     );
 
     // ---- A/B variant (welcome vs no_welcome) ----
-    const qpVariant =
-        searchParams.get("variant") ??
-        searchParams.get("pp_variant") ??
-        searchParams.get("ppcVariant") ??
-        undefined;
+    const qpVariant = searchParams.get("variant") ?? searchParams.get("pp_variant") ?? searchParams.get("ppcVariant") ?? undefined;
 
     const requestedVariant = normalizeVariant(qpVariant);
 
@@ -363,10 +357,7 @@ export default function PinterestPotentialWizard({
     const progressText = useMemo(() => `Step ${stepIndex} of ${TOTAL}`, [stepIndex]);
     const progressPct = useMemo(() => Math.round((stepIndex / TOTAL) * 100), [stepIndex]);
 
-    const currentErrorKey = useMemo(
-        () => getErrorKeyForStep(stepIndex, errors, resultsErrors),
-        [errors, resultsErrors, stepIndex],
-    );
+    const currentErrorKey = useMemo(() => getErrorKeyForStep(stepIndex, errors, resultsErrors), [errors, resultsErrors, stepIndex]);
 
     const header = useMemo(() => getStepTitle(stepIndex), [stepIndex]);
 
@@ -524,100 +515,25 @@ export default function PinterestPotentialWizard({
     // -----------------------------
     if (!started && variant === "welcome") {
         return (
-            <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]">
-                {/* Animated gradient layer */}
-                <div aria-hidden="true" className="ppc-welcome-gradient absolute inset-0" />
+            <WelcomeView
+                onStart={() => {
+                    updateDraft({ started: true, stepIndex: 1 });
+                    fireToolStartOnce();
+                }}
+                onReset={() => {
+                    // True reset: clear storage + reset draft state to initial
+                    clearDraft();
+                    setDraft(INITIAL_DRAFT);
 
-                {/* Glows (now drifting) */}
-                <div
-                    aria-hidden="true"
-                    className="ppc-welcome-glow-1 pointer-events-none absolute -top-24 right-[-140px] h-72 w-72 rounded-full opacity-25 blur-3xl"
-                    style={{ background: "var(--brand-raspberry)" }}
-                />
-                <div
-                    aria-hidden="true"
-                    className="ppc-welcome-glow-2 pointer-events-none absolute -bottom-24 left-[-140px] h-72 w-72 rounded-full opacity-15 blur-3xl"
-                    style={{ background: "var(--brand-raspberry)" }}
-                />
-
-                {/* Content */}
-                <div className="relative p-6 sm:p-8">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--background)] px-3 py-1 text-xs text-[var(--foreground-muted)]">
-                        <span className="h-2 w-2 rounded-full" style={{ background: "var(--brand-raspberry)" }} />
-                        8 questions • ~60 seconds • saved this session
-                    </div>
-
-                    <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
-                        <div>
-                            <div className="text-sm text-[var(--foreground-muted)]">Pinterest Potential</div>
-                            <h2 className="mt-1 font-heading text-2xl sm:text-3xl text-[var(--foreground)]">
-                                See your growth snapshot
-                            </h2>
-                            <p className="mt-2 max-w-prose text-sm text-[var(--foreground-muted)]">
-                                Answer a few quick questions and we’ll estimate your monthly audience + opportunity.
-                            </p>
-                        </div>
-
-                        {/* lightweight hero */}
-                        <div className="hidden sm:block text-[var(--foreground)]">
-                            <svg width="150" height="96" viewBox="0 0 150 96" aria-hidden="true">
-                                <rect x="10" y="54" width="16" height="32" rx="4" fill="currentColor" opacity="0.22" />
-                                <rect x="36" y="42" width="16" height="44" rx="4" fill="currentColor" opacity="0.32" />
-                                <rect x="62" y="30" width="16" height="56" rx="4" fill="currentColor" opacity="0.42" />
-                                <path
-                                    d="M18 36 C42 22, 74 22, 108 14"
-                                    stroke="currentColor"
-                                    strokeWidth="3"
-                                    fill="none"
-                                    opacity="0.35"
-                                />
-                                <circle cx="116" cy="13" r="5" fill="currentColor" opacity="0.55" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div className="mt-6 flex items-center justify-between">
-                        <button
-                            type="button"
-                            onClick={() => {
-                                updateDraft({ started: true, stepIndex: 1 });
-                                fireToolStartOnce();
-                            }}
-                            className={[
-                                "rounded-lg bg-[var(--brand-raspberry)] px-5 py-2.5 text-sm font-semibold text-white transition",
-                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
-                                "active:scale-[0.98]",
-                            ].join(" ")}
-                        >
-                            Start
-                        </button>
-
-                        <button
-                            type="button"
-                            onClick={() => {
-                                // True reset: clear storage + reset draft state to initial
-                                clearDraft();
-                                setDraft(INITIAL_DRAFT);
-
-                                setAnswers({});
-                                setStepIndex(1);
-                                setErrors({});
-                                setResultsErrors({});
-                                setResults(null);
-                                setOptionalLeadSubmitted(false);
-                                setOptionalLeadEmailError(null);
-                            }}
-                            className={[
-                                "rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] transition",
-                                "hover:bg-[var(--card-hover)] active:scale-[0.98]",
-                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
-                            ].join(" ")}
-                        >
-                            Reset
-                        </button>
-                    </div>
-                </div>
-            </div>
+                    setAnswers({});
+                    setStepIndex(1);
+                    setErrors({});
+                    setResultsErrors({});
+                    setResults(null);
+                    setOptionalLeadSubmitted(false);
+                    setOptionalLeadEmailError(null);
+                }}
+            />
         );
     }
 
@@ -645,440 +561,223 @@ export default function PinterestPotentialWizard({
             { label: "Offer clarity", value: answers.offer_clarity ? answers.offer_clarity.replace(/_/g, " ") : "—" },
             {
                 label: "Primary goal",
-                value: seg
-                    ? valueLabelFromOptions(goalOpts, mapGoalToSpec(seg, answers.primary_goal))
-                    : answers.primary_goal ?? "—",
+                value: seg ? valueLabelFromOptions(goalOpts, mapGoalToSpec(seg, answers.primary_goal)) : answers.primary_goal ?? "—",
             },
             { label: "Ads plan", value: answers.growth_mode ? answers.growth_mode.replace(/_/g, " ") : "—" },
         ];
 
-        const ResultsCards = (
-            <div className="grid gap-3 sm:grid-cols-3">
-                <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                    <div className="text-xs text-[var(--foreground-muted)]">Monthly Pinterest audience</div>
-                    <div className="mt-1 font-heading text-2xl">
-                        {formatRange(results.audience_est.low, results.audience_est.high)}
-                    </div>
-                </div>
-
-                <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                    <div className="text-xs text-[var(--foreground-muted)]">{opportunityLabel(results.opportunity_est.type)}</div>
-                    <div className="mt-1 font-heading text-2xl">
-                        {formatRange(results.opportunity_est.low, results.opportunity_est.high)}
-                    </div>
-                </div>
-
-                <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                    <div className="text-xs text-[var(--foreground-muted)]">Audience income range (USD)</div>
-                    <div className="mt-1 font-heading text-2xl">
-                        {formatRange(results.income_est.low, results.income_est.high)}
-                    </div>
-                </div>
-            </div>
-        );
-
-        const LeadCaptureHardLock = showHardLockGate ? (
-            <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                <div className="sm:grid sm:grid-cols-3 sm:gap-4">
-                    <div>
-                        <h3 className="font-heading text-lg text-[var(--foreground)]">Unlock your results</h3>
-                        <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-                            Enter your email to view the full snapshot.
-                        </p>
-                        <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
-                    </div>
-
-                    <div className="mt-3 sm:mt-0 sm:col-span-2">
-                        <div className="grid gap-3 sm:grid-cols-2">
-                            {LEAD_GATING_CONFIG.lead_gating.capture_fields.name.required ? (
-                                <div>
-                                    <input
-                                        type="text"
-                                        placeholder="Your name"
-                                        value={leadDraft.name ?? ""}
-                                        onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
-                                        className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                    />
-                                    {errors["LEAD.name"] ? (
-                                        <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div>
-                                    ) : null}
-                                </div>
-                            ) : (
-                                <div>
-                                    <input
-                                        type="text"
-                                        placeholder="Your name (optional)"
-                                        value={leadDraft.name ?? ""}
-                                        onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
-                                        className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                    />
-                                </div>
-                            )}
-
-                            <div>
-                                <input
-                                    type="email"
-                                    placeholder="you@example.com"
-                                    value={leadDraft.email ?? ""}
-                                    onChange={(e) => setLeadDraft((p) => ({ ...p, email: e.target.value }))}
-                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                />
-                                {errors["LEAD.email"] ? (
-                                    <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div>
-                                ) : null}
-                            </div>
-                        </div>
-
-                        <div className="mt-3">
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    resetErrors();
-                                    const lead: Lead = {
-                                        email: (leadDraft.email ?? "").trim(),
-                                        name: leadDraft.name?.trim() || undefined,
-                                    };
-                                    const v = validateLead(lead);
-                                    if (!v.ok) {
-                                        setErrors(v.errors);
-                                        return;
-                                    }
-
-                                    try {
-                                        trackLeadSubmit({
-                                            location: typeof window !== "undefined" ? window.location.pathname : "",
-                                            tool_name: "pinterest_potential",
-                                            button_label: "Unlock results",
-                                        });
-                                    } catch {
-                                        // ignore
-                                    }
-
-                                    // TODO: wire actual submit to backend when available
-                                    setLeadSubmitted(true);
-                                }}
-                                className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                            >
-                                Unlock
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        ) : null;
-
-        const LeadCaptureSoftLock =
-            effectiveLeadMode === "soft_lock" && leadState === "new" ? (
-                <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                    <div className="sm:grid sm:grid-cols-3 sm:gap-4">
-                        <div>
-                            <h3 className="font-heading text-lg text-[var(--foreground)]">Want a copy of your results?</h3>
-                            <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-                                Leave your email and we’ll send this snapshot.
-                            </p>
-                            <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
-                        </div>
-
-                        <div className="mt-3 sm:mt-0 sm:col-span-2">
-                            <div className="grid gap-3 sm:grid-cols-2">
-                                <div>
-                                    <input
-                                        type="text"
-                                        placeholder="Your name (optional)"
-                                        value={leadDraft.name ?? ""}
-                                        onChange={(e) => setLeadDraft((p) => ({ ...p, name: e.target.value }))}
-                                        className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                    />
-                                </div>
-
-                                <div>
-                                    <input
-                                        type="email"
-                                        placeholder="you@example.com"
-                                        value={leadDraft.email ?? ""}
-                                        onChange={(e) => setLeadDraft((p) => ({ ...p, email: e.target.value }))}
-                                        className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                    />
-                                    {optionalLeadEmailError ? (
-                                        <div className="mt-1 text-xs text-red-500">{optionalLeadEmailError}</div>
-                                    ) : null}
-                                </div>
-                            </div>
-
-                            <div className="mt-3">
-                                <button
-                                    type="button"
-                                    disabled={optionalLeadSubmitted}
-                                    onClick={() => {
-                                        const email = (leadDraft.email ?? "").trim();
-                                        if (!email) {
-                                            setOptionalLeadEmailError("Please enter a valid email.");
-                                            return;
-                                        }
-                                        const v = validateLead({ email, name: leadDraft.name?.trim() || undefined });
-                                        if (!v.ok) {
-                                            setOptionalLeadEmailError("Please enter a valid email.");
-                                            return;
-                                        }
-
-                                        setOptionalLeadEmailError(null);
-
-                                        try {
-                                            trackLeadSubmit({
-                                                location: typeof window !== "undefined" ? window.location.pathname : "",
-                                                tool_name: "pinterest_potential",
-                                                button_label: "Email me my results",
-                                            });
-                                        } catch {
-                                            // ignore
-                                        }
-
-                                        // TODO: wire actual email send to backend when available.
-                                        setOptionalLeadSubmitted(true);
-                                    }}
-                                    className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
-                                >
-                                    {optionalLeadSubmitted ? "Sent" : "Email me my results"}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ) : null;
+        const showSoftLockGate = effectiveLeadMode === "soft_lock" && leadState === "new";
 
         return (
-            <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-                <div className="mb-2 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results</div>
+            <ResultsView
+                results={results}
+                audienceRangeLabel={formatRange(results.audience_est.low, results.audience_est.high)}
+                opportunityLabel={opportunityLabel(results.opportunity_est.type)}
+                opportunityRangeLabel={formatRange(results.opportunity_est.low, results.opportunity_est.high)}
+                incomeRangeLabel={formatRange(results.income_est.low, results.income_est.high)}
+                showHardLockGate={showHardLockGate}
+                showSoftLockGate={showSoftLockGate}
+                privacyMicrocopy={PRIVACY_MICROCOPY}
+                leadName={leadDraft.name ?? ""}
+                leadEmail={leadDraft.email ?? ""}
+                requireName={!!LEAD_GATING_CONFIG.lead_gating.capture_fields.name.required}
+                errors={errors}
+                optionalLeadEmailError={optionalLeadEmailError}
+                optionalLeadSubmitted={optionalLeadSubmitted}
+                onLeadNameChange={(next) => setLeadDraft((p) => ({ ...p, name: next }))}
+                onLeadEmailChange={(next) => setLeadDraft((p) => ({ ...p, email: next }))}
+                onUnlock={() => {
+                    resetErrors();
+                    const lead: Lead = {
+                        email: (leadDraft.email ?? "").trim(),
+                        name: leadDraft.name?.trim() || undefined,
+                    };
+                    const v = validateLead(lead);
+                    if (!v.ok) {
+                        setErrors(v.errors);
+                        return;
+                    }
 
-                {LeadCaptureHardLock}
+                    try {
+                        trackLeadSubmit({
+                            location: typeof window !== "undefined" ? window.location.pathname : "",
+                            tool_name: "pinterest_potential",
+                            button_label: "Unlock results",
+                        });
+                    } catch {
+                        // ignore
+                    }
 
-                <div className={showHardLockGate ? "mt-4 opacity-40 blur-[2px] pointer-events-none select-none" : "mt-4"}>
-                    {ResultsCards}
+                    // TODO: wire actual submit to backend when available
+                    setLeadSubmitted(true);
+                }}
+                onEmailResults={() => {
+                    const email = (leadDraft.email ?? "").trim();
+                    if (!email) {
+                        setOptionalLeadEmailError("Please enter a valid email.");
+                        return;
+                    }
+                    const v = validateLead({ email, name: leadDraft.name?.trim() || undefined });
+                    if (!v.ok) {
+                        setOptionalLeadEmailError("Please enter a valid email.");
+                        return;
+                    }
 
-                    {results.insight_line ? (
-                        <div className="mt-3 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 text-sm text-[var(--foreground)]">
-                            {results.insight_line}
-                        </div>
-                    ) : null}
+                    setOptionalLeadEmailError(null);
 
-                    <div className="mt-3 text-xs text-[var(--foreground-muted)]">
-                        Seasonality:{" "}
-                        <span className="text-[var(--foreground)]">{results.inferred.seasonality_index}</span> • Competition:{" "}
-                        <span className="text-[var(--foreground)]">{results.inferred.competition_index}</span>
-                    </div>
+                    try {
+                        trackLeadSubmit({
+                            location: typeof window !== "undefined" ? window.location.pathname : "",
+                            tool_name: "pinterest_potential",
+                            button_label: "Email me my results",
+                        });
+                    } catch {
+                        // ignore
+                    }
 
-                    {LeadCaptureSoftLock}
-                </div>
+                    // TODO: wire actual email send to backend when available.
+                    setOptionalLeadSubmitted(true);
+                }}
+                recap={recap}
+                onStartOver={() => {
+                    clearDraft();
+                    setDraft(INITIAL_DRAFT);
 
-                {/* Recap */}
-                <div className="mt-6 border-t border-[var(--border)] pt-4">
-                    <div className="mb-2 font-heading text-lg text-[var(--foreground)]">Your answers</div>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                        {recap.map((it, idx) => (
-                            <div
-                                key={`${idx}-${it.label}`}
-                                className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4"
-                            >
-                                <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
-                                <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="mt-6 flex items-center justify-between">
-                    <button
-                        type="button"
-                        onClick={() => {
-                            clearDraft();
-                            setDraft(INITIAL_DRAFT);
-
-                            setAnswers({});
-                            setStepIndex(1);
-                            setResults(null);
-                            setErrors({});
-                            setResultsErrors({});
-                            setOptionalLeadSubmitted(false);
-                            setOptionalLeadEmailError(null);
-                            void onPhaseChangeAction?.("wizard");
-                        }}
-                        className="rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                    >
-                        Start over
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setResults(null);
-                            setStepIndex(8);
-                            void onPhaseChangeAction?.("wizard");
-                        }}
-                        className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                    >
-                        Edit answers
-                    </button>
-                </div>
-
-                <div className="mt-4 text-sm text-[var(--foreground-muted)]">
-                    You can refresh the page; your draft is saved in this session.
-                </div>
-            </div>
+                    setAnswers({});
+                    setStepIndex(1);
+                    setResults(null);
+                    setErrors({});
+                    setResultsErrors({});
+                    setOptionalLeadSubmitted(false);
+                    setOptionalLeadEmailError(null);
+                    void onPhaseChangeAction?.("wizard");
+                }}
+                onEditAnswers={() => {
+                    setResults(null);
+                    setStepIndex(8);
+                    void onPhaseChangeAction?.("wizard");
+                }}
+            />
         );
     }
 
     // -----------------------------
     // Wizard view (Q1–Q8)
     // -----------------------------
-    return (
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
-            {/* Progress (upgraded chrome) */}
-            <div className="mb-4">
-                <div className="flex items-center justify-between text-xs text-[var(--foreground-muted)]">
-                    <span>{progressText}</span>
-                    <span>{progressPct}%</span>
-                </div>
-                <div className="mt-2 h-2 w-full rounded-full bg-[var(--background)]">
-                    <div
-                        className="h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${(stepIndex / TOTAL) * 100}%`, background: "var(--brand-raspberry)" }}
+    const stepContent = (
+        <>
+            {stepIndex === 1 ? (
+                <Q1Segment
+                    value={answers.segment}
+                    onChange={(v) => {
+                        // keep state + clear only this step's visible error immediately
+                        setAnswers((p) => ({ ...p, segment: v }));
+                        setErrors((prev) => {
+                            if (!prev["Q1"]) return prev;
+                            const n = { ...prev };
+                            delete n["Q1"];
+                            return n;
+                        });
+                    }}
+                    onAutoAdvance={(seg) => autoAdvance({ segment: seg })}
+                />
+            ) : null}
+
+            {stepIndex === 2 ? (
+                answers.segment ? (
+                    <Q2Niche
+                        segment={answers.segment}
+                        value={answers.niche}
+                        onChange={(v) => setAnswers((p) => ({ ...p, niche: v }))}
+                        onAutoAdvance={autoAdvance}
                     />
-                </div>
-            </div>
+                ) : (
+                    <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                )
+            ) : null}
 
-            {/* Question */}
-            <div>
-                <h2 className="font-heading text-xl text-[var(--foreground)]">{header}</h2>
+            {stepIndex === 3 ? (
+                answers.segment ? (
+                    <Q3Volume
+                        segment={answers.segment}
+                        value={answers.volume_bucket}
+                        onChange={(v) => setAnswers((p) => ({ ...p, volume_bucket: v }))}
+                        onAutoAdvance={autoAdvance}
+                    />
+                ) : (
+                    <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                )
+            ) : null}
 
-                <div className="mt-4">
-                    {stepIndex === 1 ? (
-                        <Q1Segment
-                            value={answers.segment}
-                            onChange={(v) => {
-                                // keep state + clear only this step's visible error immediately
-                                setAnswers((p) => ({ ...p, segment: v }));
-                                setErrors((prev) => {
-                                    if (!prev["Q1"]) return prev;
-                                    const n = { ...prev };
-                                    delete n["Q1"];
-                                    return n;
-                                });
-                            }}
-                            onAutoAdvance={(seg) => autoAdvance({ segment: seg })}
-                        />
-                    ) : null}
+            {stepIndex === 4 ? (
+                <Q4Visual
+                    value={answers.visual_strength}
+                    onChange={(v) => setAnswers((p) => ({ ...p, visual_strength: v }))}
+                    onAutoAdvance={autoAdvance}
+                />
+            ) : null}
 
-                    {stepIndex === 2 ? (
-                        answers.segment ? (
-                            <Q2Niche
-                                segment={answers.segment}
-                                value={answers.niche}
-                                onChange={(v) => setAnswers((p) => ({ ...p, niche: v }))}
-                                onAutoAdvance={autoAdvance}
-                            />
-                        ) : (
-                            <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
-                        )
-                    ) : null}
+            {stepIndex === 5 ? (
+                <Q5Site
+                    value={answers.site_experience}
+                    onChange={(v) => setAnswers((p) => ({ ...p, site_experience: v }))}
+                    onAutoAdvance={autoAdvance}
+                />
+            ) : null}
 
-                    {stepIndex === 3 ? (
-                        answers.segment ? (
-                            <Q3Volume
-                                segment={answers.segment}
-                                value={answers.volume_bucket}
-                                onChange={(v) => setAnswers((p) => ({ ...p, volume_bucket: v }))}
-                                onAutoAdvance={autoAdvance}
-                            />
-                        ) : (
-                            <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
-                        )
-                    ) : null}
+            {stepIndex === 6 ? (
+                answers.segment ? (
+                    <Q6Offer
+                        segment={answers.segment}
+                        value={answers.offer_clarity}
+                        onChange={(v) => setAnswers((p) => ({ ...p, offer_clarity: v }))}
+                        onAutoAdvance={autoAdvance}
+                    />
+                ) : (
+                    <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                )
+            ) : null}
 
-                    {stepIndex === 4 ? (
-                        <Q4Visual
-                            value={answers.visual_strength}
-                            onChange={(v) => setAnswers((p) => ({ ...p, visual_strength: v }))}
-                            onAutoAdvance={autoAdvance}
-                        />
-                    ) : null}
+            {stepIndex === 7 ? (
+                answers.segment ? (
+                    <Q7Goal
+                        segment={answers.segment}
+                        value={answers.primary_goal}
+                        onChange={(v) => setAnswers((p) => ({ ...p, primary_goal: v }))}
+                        onAutoAdvance={autoAdvance}
+                    />
+                ) : (
+                    <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                )
+            ) : null}
 
-                    {stepIndex === 5 ? (
-                        <Q5Site
-                            value={answers.site_experience}
-                            onChange={(v) => setAnswers((p) => ({ ...p, site_experience: v }))}
-                            onAutoAdvance={autoAdvance}
-                        />
-                    ) : null}
+            {stepIndex === 8 ? (
+                <Q8GrowthMode
+                    value={answers.growth_mode}
+                    onChange={(v) => setAnswers((p) => ({ ...p, growth_mode: v }))}
+                    onAutoAdvance={autoAdvance}
+                />
+            ) : null}
+        </>
+    );
 
-                    {stepIndex === 6 ? (
-                        answers.segment ? (
-                            <Q6Offer
-                                segment={answers.segment}
-                                value={answers.offer_clarity}
-                                onChange={(v) => setAnswers((p) => ({ ...p, offer_clarity: v }))}
-                                onAutoAdvance={autoAdvance}
-                            />
-                        ) : (
-                            <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
-                        )
-                    ) : null}
+    const errorMessage = currentErrorKey ? errors[currentErrorKey] ?? resultsErrors[currentErrorKey] : null;
 
-                    {stepIndex === 7 ? (
-                        answers.segment ? (
-                            <Q7Goal
-                                segment={answers.segment}
-                                value={answers.primary_goal}
-                                onChange={(v) => setAnswers((p) => ({ ...p, primary_goal: v }))}
-                                onAutoAdvance={autoAdvance}
-                            />
-                        ) : (
-                            <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
-                        )
-                    ) : null}
+    const backDisabled = variant === "welcome" ? (!started ? true : stepIndex === 1) : stepIndex === 1;
+    const continueLabel = isLastStep ? "Calculate" : "Continue";
 
-                    {stepIndex === 8 ? (
-                        <Q8GrowthMode
-                            value={answers.growth_mode}
-                            onChange={(v) => setAnswers((p) => ({ ...p, growth_mode: v }))}
-                            onAutoAdvance={autoAdvance}
-                        />
-                    ) : null}
-
-                    {currentErrorKey ? (
-                        <div className="mt-4 inline-flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">
-                            <span className="inline-block h-2 w-2 rounded-full bg-red-400" aria-hidden="true" />
-                            <span>{errors[currentErrorKey] ?? resultsErrors[currentErrorKey]}</span>
-                        </div>
-                    ) : null}
-                </div>
-            </div>
-
-            {/* Nav */}
-            <div className="mt-6 flex items-center justify-between">
-                <button
-                    type="button"
-                    onClick={goPrev}
-                    className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] transition hover:bg-[var(--card-hover)] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                    disabled={variant === "welcome" ? (!started ? true : stepIndex === 1) : stepIndex === 1}
-                >
-                    Back
-                </button>
-
-                <button
-                    type="button"
-                    onClick={() => goNext()}
-                    disabled={!canContinue}
-                    className={[
-                        "rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition",
-                        "bg-[var(--brand-raspberry)]",
-                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
-                        "active:scale-[0.98]",
-                        "disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100",
-                    ].join(" ")}
-                >
-                    {isLastStep ? "Calculate" : "Continue"}
-                </button>
-            </div>
-        </div>
+    return (
+        <WizardView
+            progressText={progressText}
+            progressPct={progressPct}
+            header={header}
+            stepContent={stepContent}
+            errorMessage={errorMessage}
+            backDisabled={backDisabled}
+            continueDisabled={!canContinue}
+            continueLabel={continueLabel}
+            onBack={goPrev}
+            onContinue={() => goNext()}
+        />
     );
 }

@@ -198,7 +198,7 @@ export function BottomSheet({
                     // IMPORTANT: kill the default white sheet.
                     // Use theme tokens so it looks correct in both light + dark.
                     background:
-                        "linear-gradient(180deg, color-mix(in_srgb,var(--background)_92%,transparent), color-mix(in_srgb,var(--card)_86%,transparent))",
+                        "linear-gradient(180deg, color-mix(in srgb, var(--background) 92%, transparent), color-mix(in srgb, var(--card) 86%, transparent))",
                 }}
             >
                 {/* Grab handle */}

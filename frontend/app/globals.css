@@ -98,6 +98,16 @@
     */
     --ppc-mask-image: linear-gradient(to right, #000 0%, #000 100%),
     linear-gradient(to right, #000 0%, #000 100%);
+
+    /* -----------------------------------
+       Global scrollbar tokens (LIGHT)
+       - used by html/body and any scroll container
+    ----------------------------------- */
+    --scrollbar-thumb: color-mix(in srgb, var(--brand-raspberry) 45%, transparent);
+    --scrollbar-thumb-hover: color-mix(in srgb, var(--brand-raspberry) 58%, transparent);
+    --scrollbar-track: color-mix(in srgb, var(--brand-alabaster) 35%, transparent);
+    --scrollbar-size: 10px;
+    --scrollbar-radius: 9999px;
 }
 
 @theme inline {
@@ -186,6 +196,13 @@ html[data-theme="dark"] {
     );
     --ppc-mask-image: linear-gradient(to right, #000 0%, #000 100%),
     linear-gradient(to right, #000 0%, #000 100%);
+
+    /* -----------------------------------
+       Global scrollbar tokens (DARK)
+    ----------------------------------- */
+    --scrollbar-thumb: color-mix(in srgb, rgba(255, 255, 255, 0.42) 55%, transparent);
+    --scrollbar-thumb-hover: color-mix(in srgb, rgba(255, 255, 255, 0.58) 60%, transparent);
+    --scrollbar-track: color-mix(in srgb, rgba(255, 255, 255, 0.12) 55%, transparent);
 }
 
 /* ------------------------------
@@ -269,12 +286,76 @@ html[data-theme="light"] {
         );
         --ppc-mask-image: linear-gradient(to right, #000 0%, #000 100%),
         linear-gradient(to right, #000 0%, #000 100%);
+
+        /* Global scrollbar tokens (DARK OS fallback) */
+        --scrollbar-thumb: color-mix(in srgb, rgba(255, 255, 255, 0.42) 55%, transparent);
+        --scrollbar-thumb-hover: color-mix(in srgb, rgba(255, 255, 255, 0.58) 60%, transparent);
+        --scrollbar-track: color-mix(in srgb, rgba(255, 255, 255, 0.12) 55%, transparent);
     }
 }
 
 body {
     background: var(--background);
     color: var(--foreground);
+}
+
+/* ------------------------------------------------------------------
+   Global scrollbars (ALL pages)
+   - Firefox: scrollbar-color/width MUST target the actual scroll container
+     (html alone does NOT style nested overflow containers).
+   - WebKit: ::-webkit-scrollbar* applies to all scroll containers.
+   Notes:
+   - Applies app-wide (RootLayout imports globals.css once).
+   - Won't remove scrollbars; only styles them.
+------------------------------------------------------------------ */
+
+/* Firefox: page scroll */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* ✅ Firefox: also style nested scroll containers (e.g., BottomSheet panel) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Prefer stable layout: avoids content "jump" when scrollbars appear/disappear */
+@supports (scrollbar-gutter: stable) {
+    html {
+        scrollbar-gutter: stable both-edges;
+    }
+}
+
+/* WebKit (Chrome/Safari/Edge) */
+*::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: var(--scrollbar-radius);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: var(--scrollbar-radius);
+    /* Creates a "padded thumb" look and prevents ugly track bleed */
+    border: 3px solid transparent;
+    background-clip: content-box;
+    min-height: 24px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+    background-clip: content-box;
+}
+
+/* Subtle corner polish for 2D scroll areas */
+*::-webkit-scrollbar-corner {
+    background: transparent;
 }
 
 .font-heading {

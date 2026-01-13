@@ -12,15 +12,20 @@ type Option = {
     icon: React.ReactNode;
 };
 
+type Props = {
+    value?: Segment;
+
+    // NOTE: Next TS plugin (TS71007) wants function props in a "use client" entry
+    // to look like Server Actions. Suffixing with "Action" silences the warning.
+    onChangeAction: (v: Segment) => void;
+    onAutoAdvanceAction?: (segment: Segment) => void;
+};
+
 export default function Q1Segment({
                                       value,
-                                      onChange,
-                                      onAutoAdvance,
-                                  }: {
-    value?: Segment;
-    onChange: (v: Segment) => void;
-    onAutoAdvance?: (segment: Segment) => void;
-}) {
+                                      onChangeAction,
+                                      onAutoAdvanceAction,
+                                  }: Props) {
     const groupId = React.useId();
 
     const options: Option[] = [
@@ -93,8 +98,8 @@ export default function Q1Segment({
     const selectedIndex = selectedIndexRaw >= 0 ? selectedIndexRaw : 0;
 
     function select(v: Segment) {
-        onChange(v);
-        onAutoAdvance?.(v);
+        onChangeAction(v);
+        onAutoAdvanceAction?.(v);
     }
 
     function move(delta: number) {
@@ -104,7 +109,7 @@ export default function Q1Segment({
 
     return (
         <div className="grid gap-4">
-            {/* Common instruction row (replace keyboard tip) */}
+            {/* Common instruction row */}
             <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="text-sm text-[var(--foreground-muted)]">
                     Pick the closest match — this sets how we tailor your results.
@@ -255,8 +260,7 @@ export default function Q1Segment({
                             aria-hidden="true"
                             className="mt-[0.45rem] inline-block h-1.5 w-1.5 rounded-full"
                             style={{
-                                background:
-                                    "color-mix(in srgb, var(--brand-raspberry) 60%, transparent)",
+                                background: "color-mix(in srgb, var(--brand-raspberry) 60%, transparent)",
                             }}
                         />
                                                 <span>{opt.bullets[0]}</span>
@@ -266,8 +270,7 @@ export default function Q1Segment({
                             aria-hidden="true"
                             className="mt-[0.45rem] inline-block h-1.5 w-1.5 rounded-full"
                             style={{
-                                background:
-                                    "color-mix(in srgb, var(--brand-bronze) 60%, transparent)",
+                                background: "color-mix(in srgb, var(--brand-bronze) 60%, transparent)",
                             }}
                         />
                                                 <span>{opt.bullets[1]}</span>

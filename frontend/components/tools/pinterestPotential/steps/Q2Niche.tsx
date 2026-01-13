@@ -44,12 +44,14 @@ import {
     type LucideIcon,
 } from "lucide-react";
 
+import type { NicheSlug, Segment as SpecSegment } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+import { getAudiencePreviewLevel } from "@/lib/tools/pinterestPotential/audiencePreview";
+
 type PreviewLevel = "Focused" | "Medium" | "Broad";
 
 type NicheOpt = {
     label: string;
-    value: string;
-    preview: PreviewLevel;
+    value: NicheSlug;
     includes?: string;
     keywords?: string[];
 };
@@ -59,145 +61,162 @@ const NICHES: Record<Segment, NicheOpt[]> = {
         {
             label: "Food & Recipes",
             value: "food",
-            preview: "Broad",
             includes: "recipes, meal prep, baking",
             keywords: ["cooking", "baking", "meal prep"],
         },
         {
             label: "Travel",
             value: "travel",
-            preview: "Broad",
             includes: "guides, itineraries, tips",
             keywords: ["itinerary", "guide", "destinations"],
         },
         {
             label: "Home & DIY",
             value: "home_diy",
-            preview: "Broad",
             includes: "decor, projects, renovation",
             keywords: ["decor", "renovation", "projects"],
         },
         {
             label: "Lifestyle & Inspiration",
             value: "lifestyle",
-            preview: "Broad",
             includes: "habits, routines, ideas",
             keywords: ["routine", "habits", "aesthetic"],
         },
         {
             label: "Health & Wellness",
             value: "wellness",
-            preview: "Broad",
             includes: "fitness, self-care, wellness",
             keywords: ["fitness", "mindfulness", "self care"],
         },
         {
             label: "Parenting & Family",
             value: "parenting",
-            preview: "Broad",
             includes: "kids, baby, family life",
             keywords: ["kids", "baby", "family"],
         },
         {
             label: "Beauty & Fashion",
             value: "beauty_fashion",
-            preview: "Broad",
             includes: "outfits, makeup, style",
             keywords: ["outfits", "makeup", "style"],
         },
         {
             label: "Personal Finance",
             value: "finance",
-            preview: "Medium",
             includes: "budgeting, saving, planning",
             keywords: ["budget", "saving", "investing"],
         },
         {
             label: "Crafts & Hobbies",
             value: "crafts",
-            preview: "Medium",
             includes: "DIY crafts, printables, handmade",
             keywords: ["printables", "crochet", "handmade"],
         },
-        { label: "Other", value: "other", preview: "Focused", includes: "your specific topic", keywords: ["misc"] },
+        { label: "Other", value: "other", includes: "your specific topic", keywords: ["misc"] },
     ],
     product_seller: [
         {
             label: "Baby & Family Products",
             value: "baby_family",
-            preview: "Broad",
             includes: "nursery, registry, kids",
             keywords: ["nursery", "baby registry"],
         },
         {
             label: "Home & Decor",
             value: "home_decor",
-            preview: "Broad",
             includes: "decor, furniture, styling",
             keywords: ["interior", "furniture", "decor"],
         },
         {
             label: "Beauty & Skincare",
             value: "beauty",
-            preview: "Broad",
             includes: "skincare, hair, makeup",
             keywords: ["skincare", "makeup", "hair"],
         },
         {
             label: "Fashion & Accessories",
             value: "fashion",
-            preview: "Broad",
             includes: "apparel, jewelry, bags",
             keywords: ["jewelry", "bags", "outfits"],
         },
         {
             label: "Health & Wellness",
             value: "wellness",
-            preview: "Broad",
             includes: "wellbeing, lifestyle, products",
             keywords: ["supplements", "wellbeing"],
         },
         {
             label: "Food & Beverage (CPG)",
             value: "food_bev",
-            preview: "Broad",
             includes: "snacks, coffee, pantry",
             keywords: ["snacks", "coffee", "tea"],
         },
         {
             label: "Pets",
             value: "pets",
-            preview: "Broad",
             includes: "pet care, accessories, treats",
             keywords: ["dog", "cat", "pet care"],
         },
         {
             label: "Crafts & Digital Products",
             value: "digital_crafts",
-            preview: "Medium",
             includes: "templates, downloads, DIY",
             keywords: ["templates", "svg", "download"],
         },
         {
             label: "Travel Gear & Accessories",
             value: "travel_gear",
-            preview: "Medium",
             includes: "packing, luggage, gear",
             keywords: ["luggage", "packing"],
         },
-        { label: "Other", value: "other", preview: "Focused", includes: "your specific category", keywords: ["misc"] },
+        { label: "Other", value: "other", includes: "your specific category", keywords: ["misc"] },
     ],
     service_provider: [
-        { label: "Coach / Consultant", value: "coach", preview: "Broad", includes: "offers, programs, advice", keywords: ["business coach", "mentor"] },
-        { label: "Designer", value: "designer", preview: "Broad", includes: "brand, web, visuals", keywords: ["brand", "web", "graphic"] },
-        { label: "Educator / Course Creator", value: "educator", preview: "Broad", includes: "courses, teaching, training", keywords: ["course", "teacher"] },
-        { label: "Wellness Practitioner", value: "wellness_practitioner", preview: "Broad", includes: "therapy, yoga, healing", keywords: ["therapist", "healer", "yoga"] },
-        { label: "Marketing / Creative Agency", value: "agency", preview: "Medium", includes: "strategy, creative, campaigns", keywords: ["studio", "marketing", "creative"] },
-        { label: "Photographer / Videographer", value: "photo_video", preview: "Medium", includes: "photo, video, content", keywords: ["photo", "video", "content"] },
-        { label: "Real Estate / Home Services", value: "real_estate_home", preview: "Medium", includes: "realtor, staging, home", keywords: ["realtor", "staging", "home"] },
-        { label: "Event / Wedding Services", value: "events", preview: "Medium", includes: "weddings, planning, events", keywords: ["wedding", "planner"] },
-        { label: "Finance / Bookkeeping", value: "finance", preview: "Focused", includes: "accounting, bookkeeping", keywords: ["accounting", "bookkeeping"] },
-        { label: "Other", value: "other", preview: "Focused", includes: "your specific service", keywords: ["misc"] },
+        {
+            label: "Coach / Consultant",
+            value: "coach",
+            includes: "offers, programs, advice",
+            keywords: ["business coach", "mentor"],
+        },
+        { label: "Designer", value: "designer", includes: "brand, web, visuals", keywords: ["brand", "web", "graphic"] },
+        {
+            label: "Educator / Course Creator",
+            value: "educator",
+            includes: "courses, teaching, training",
+            keywords: ["course", "teacher"],
+        },
+        {
+            label: "Wellness Practitioner",
+            value: "wellness_practitioner",
+            includes: "therapy, yoga, healing",
+            keywords: ["therapist", "healer", "yoga"],
+        },
+        {
+            label: "Marketing / Creative Agency",
+            value: "agency",
+            includes: "strategy, creative, campaigns",
+            keywords: ["studio", "marketing", "creative"],
+        },
+        {
+            label: "Photographer / Videographer",
+            value: "photo_video",
+            includes: "photo, video, content",
+            keywords: ["photo", "video", "content"],
+        },
+        {
+            label: "Real Estate / Home Services",
+            value: "real_estate_home",
+            includes: "realtor, staging, home",
+            keywords: ["realtor", "staging", "home"],
+        },
+        {
+            label: "Event / Wedding Services",
+            value: "events",
+            includes: "weddings, planning, events",
+            keywords: ["wedding", "planner"],
+        },
+        { label: "Finance / Bookkeeping", value: "finance", includes: "accounting, bookkeeping", keywords: ["accounting", "bookkeeping"] },
+        { label: "Other", value: "other", includes: "your specific service", keywords: ["misc"] },
     ],
 };
 
@@ -209,6 +228,12 @@ function segmentHint(seg: Segment) {
 
 function normalize(s: string) {
     return s.toLowerCase().trim();
+}
+
+/** Benchmark-driven audience preview (source of truth: benchmarks.ts) */
+function audienceLevelFor(segment: Segment, niche: NicheSlug): PreviewLevel {
+    // Cast to spec Segment to satisfy any nominal-type differences across modules.
+    return getAudiencePreviewLevel(segment as SpecSegment, niche);
 }
 
 /** Map (segment + value) → meaningful icon */
@@ -364,13 +389,7 @@ function SmallChip({
     );
 }
 
-function NicheIcon({
-                       Icon,
-                       active,
-                   }: {
-    Icon: LucideIcon;
-    active: boolean;
-}) {
+function NicheIcon({ Icon, active }: { Icon: LucideIcon; active: boolean }) {
     return (
         <span
             aria-hidden="true"
@@ -384,10 +403,7 @@ function NicheIcon({
             ].join(" ")}
         >
       <Icon
-          className={[
-              "h-5 w-5",
-              active ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]",
-          ].join(" ")}
+          className={["h-5 w-5", active ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]"].join(" ")}
           strokeWidth={2}
       />
     </span>
@@ -406,6 +422,7 @@ function Tile({
     segment: Segment;
 }) {
     const Icon = iconFor(segment, opt.value);
+    const level = audienceLevelFor(segment, opt.value);
 
     return (
         <button
@@ -442,14 +459,12 @@ function Tile({
                                 </div>
 
                                 {opt.includes ? (
-                                    <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                        {opt.includes}
-                                    </div>
+                                    <div className="mt-1 text-xs text-[var(--foreground-muted)]">{opt.includes}</div>
                                 ) : null}
                             </div>
 
                             <div className="flex flex-col items-end gap-2">
-                                {audienceBadge(opt.preview)}
+                                {audienceBadge(level)}
                                 {active ? (
                                     <span className="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_14%,transparent)] px-3 py-1 text-xs text-[var(--foreground)]">
                     <span
@@ -491,16 +506,14 @@ export default function Q2Niche({
         return withoutOther.slice(0, 6);
     }, [all]);
 
-    const selected = useMemo(() => all.find((o) => o.value === value), [all, value]);
+    const selected = useMemo(() => all.find((o) => o.value === (value as NicheSlug | undefined)), [all, value]);
 
     const filtered = useMemo(() => {
         const qq = normalize(q);
         if (!qq) return all;
 
         return all.filter((o) => {
-            const hay = [o.label, o.value, o.includes ?? "", ...(o.keywords ?? [])]
-                .join(" ")
-                .toLowerCase();
+            const hay = [o.label, o.value, o.includes ?? "", ...(o.keywords ?? [])].join(" ").toLowerCase();
             return hay.includes(qq);
         });
     }, [all, q]);
@@ -570,12 +583,8 @@ export default function Q2Niche({
                             ].join(" ")}
                             role="note"
                         >
-                            <div className="text-xs text-[var(--foreground)]">
-                                Choose what your audience searches for — not your job title.
-                            </div>
-                            <div className="mt-2 text-xs text-[var(--foreground-muted)]">
-                                Example: “nursery organization” beats “baby brand”.
-                            </div>
+                            <div className="text-xs text-[var(--foreground)]">Choose what your audience searches for — not your job title.</div>
+                            <div className="mt-2 text-xs text-[var(--foreground-muted)]">Example: “nursery organization” beats “baby brand”.</div>
                         </div>
                     ) : null}
                 </div>
@@ -583,13 +592,7 @@ export default function Q2Niche({
 
             <div className="grid gap-3 md:grid-cols-2">
                 {primary.map((opt) => (
-                    <Tile
-                        key={opt.value}
-                        opt={opt}
-                        active={opt.value === value}
-                        onClick={() => select(opt.value)}
-                        segment={segment}
-                    />
+                    <Tile key={opt.value} opt={opt} active={opt.value === value} onClick={() => select(opt.value)} segment={segment} />
                 ))}
 
                 <button
@@ -620,9 +623,7 @@ export default function Q2Niche({
                             <div className="text-base font-semibold text-[var(--foreground)] md:text-lg">More niches</div>
                             <span className="text-xs text-[var(--foreground-muted)]">Search</span>
                         </div>
-                        <div className="mt-2 text-xs text-[var(--foreground-muted)]">
-                            Type → filter → pick the closest match.
-                        </div>
+                        <div className="mt-2 text-xs text-[var(--foreground-muted)]">Type → filter → pick the closest match.</div>
                     </div>
                 </button>
             </div>
@@ -635,17 +636,15 @@ export default function Q2Niche({
                             <div className="mt-1 flex items-center gap-3">
                                 <NicheIcon Icon={iconFor(segment, selected.value)} active />
                                 <div className="min-w-0">
-                                    <div className="text-sm font-semibold text-[var(--foreground)] md:text-base">
-                                        {selected.label}
-                                    </div>
+                                    <div className="text-sm font-semibold text-[var(--foreground)] md:text-base">{selected.label}</div>
                                     <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                        {audienceCopy(selected.preview)}
+                                        {audienceCopy(audienceLevelFor(segment, selected.value))}
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {audienceBadge(selected.preview)}
+                        {audienceBadge(audienceLevelFor(segment, selected.value))}
                     </div>
                 </div>
             ) : null}
@@ -680,9 +679,7 @@ export default function Q2Niche({
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
                             ].join(" ")}
                         />
-                        <div className="text-xs text-[var(--foreground-muted)]">
-                            Tip: choose what your audience searches for (not your job title).
-                        </div>
+                        <div className="text-xs text-[var(--foreground-muted)]">Tip: choose what your audience searches for (not your job title).</div>
                     </div>
 
                     {!q ? (
@@ -692,6 +689,7 @@ export default function Q2Niche({
                                 {primary.map((opt) => {
                                     const active = opt.value === value;
                                     const Icon = iconFor(segment, opt.value);
+                                    const level = audienceLevelFor(segment, opt.value);
 
                                     return (
                                         <button
@@ -716,7 +714,7 @@ export default function Q2Niche({
                                                 </div>
 
                                                 <div className="flex flex-col items-end gap-2">
-                                                    {audienceBadge(opt.preview)}
+                                                    {audienceBadge(level)}
                                                     {active ? <span className="text-xs text-[var(--foreground)]">✓</span> : null}
                                                 </div>
                                             </div>
@@ -728,9 +726,7 @@ export default function Q2Niche({
                     ) : null}
 
                     <div className="mt-2 grid gap-2">
-                        <div className="text-xs font-semibold text-[var(--foreground)]">
-                            {q ? `Results (${filtered.length})` : "All niches"}
-                        </div>
+                        <div className="text-xs font-semibold text-[var(--foreground)]">{q ? `Results (${filtered.length})` : "All niches"}</div>
 
                         {filtered.length === 0 ? (
                             <div className="rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_45%,transparent)] p-4 text-sm text-[var(--foreground-muted)]">
@@ -742,6 +738,7 @@ export default function Q2Niche({
                                     const isActiveRow = idx === activeIdx;
                                     const active = opt.value === value;
                                     const Icon = iconFor(segment, opt.value);
+                                    const level = audienceLevelFor(segment, opt.value);
 
                                     return (
                                         <button
@@ -773,7 +770,7 @@ export default function Q2Niche({
                                                 </div>
 
                                                 <div className="flex flex-col items-end gap-2">
-                                                    {audienceBadge(opt.preview)}
+                                                    {audienceBadge(level)}
                                                     {active ? <span className="text-xs text-[var(--foreground)]">✓</span> : null}
                                                 </div>
                                             </div>

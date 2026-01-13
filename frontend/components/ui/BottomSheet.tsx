@@ -20,6 +20,12 @@ type BottomSheetProps = {
 
     /** Optional class overrides */
     className?: string;
+
+    /**
+     * Optional: focus a specific element when opening (e.g. search input)
+     * Example: initialFocusSelector='input[data-autofocus="true"]'
+     */
+    initialFocusSelector?: string;
 };
 
 function getFocusable(container: HTMLElement | null): HTMLElement[] {
@@ -32,6 +38,7 @@ function getFocusable(container: HTMLElement | null): HTMLElement[] {
         "select:not([disabled])",
         "[tabindex]:not([tabindex='-1'])",
     ].join(",");
+
     return Array.from(container.querySelectorAll<HTMLElement>(selectors)).filter(
         (el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"),
     );
@@ -46,6 +53,7 @@ export function BottomSheet({
                                 closeOnScrim = true,
                                 closeOnEsc = true,
                                 className = "",
+                                initialFocusSelector,
                             }: BottomSheetProps) {
     const [mounted, setMounted] = React.useState(false);
     const panelRef = React.useRef<HTMLDivElement | null>(null);
@@ -61,23 +69,31 @@ export function BottomSheet({
 
         lastActiveRef.current = document.activeElement as HTMLElement | null;
 
-        // focus panel (or first focusable) on next tick after render
         const t = window.setTimeout(() => {
-            const focusables = getFocusable(panelRef.current);
+            const panel = panelRef.current;
+
+            // Prefer an explicit target (useful for search inputs)
+            if (initialFocusSelector && panel) {
+                const target = panel.querySelector<HTMLElement>(initialFocusSelector);
+                if (target) {
+                    target.focus();
+                    return;
+                }
+            }
+
+            const focusables = getFocusable(panel);
             if (focusables[0]) focusables[0].focus();
-            else panelRef.current?.focus();
+            else panel?.focus();
         }, 0);
 
         return () => window.clearTimeout(t);
-    }, [open]);
+    }, [open, initialFocusSelector]);
 
     React.useEffect(() => {
         if (open) return;
 
-        // restore focus when closing
         const el = lastActiveRef.current;
         if (el && typeof el.focus === "function") {
-            // slight delay to let DOM settle
             const t = window.setTimeout(() => el.focus(), 0);
             return () => window.clearTimeout(t);
         }
@@ -150,8 +166,9 @@ export function BottomSheet({
                 type="button"
                 aria-label="Close"
                 className={[
-                    "absolute inset-0 w-full h-full",
-                    "bg-black/40",
+                    "fp-scrim absolute inset-0 h-full w-full",
+                    // darker + on-brand, with your global blur helper
+                    "bg-black/50",
                     "transition-opacity duration-200 motion-reduce:transition-none",
                     open ? "opacity-100" : "opacity-0",
                 ].join(" ")}
@@ -169,24 +186,37 @@ export function BottomSheet({
                 tabIndex={-1}
                 className={[
                     "absolute inset-x-0 bottom-0",
-                    "rounded-t-2xl bg-white shadow-2xl",
                     "max-h-[85vh] overflow-auto",
                     "outline-none",
+                    "rounded-t-3xl border border-[var(--border)]",
+                    "shadow-[0_-22px_70px_rgba(0,0,0,0.55)]",
                     "transition-transform duration-200 motion-reduce:transition-none",
                     open ? "translate-y-0" : "translate-y-full",
                     className,
                 ].join(" ")}
+                style={{
+                    // IMPORTANT: kill the default white sheet.
+                    // Use theme tokens so it looks correct in both light + dark.
+                    background:
+                        "linear-gradient(180deg, color-mix(in_srgb,var(--background)_92%,transparent), color-mix(in_srgb,var(--card)_86%,transparent))",
+                }}
             >
                 {/* Grab handle */}
                 <div className="flex justify-center pt-3">
-                    <div className="h-1.5 w-12 rounded-full bg-black/10" />
+                    <div className="h-1.5 w-12 rounded-full bg-[color-mix(in_srgb,var(--foreground-muted)_35%,transparent)]" />
                 </div>
 
                 {(title || description) && (
                     <div className="px-5 pt-3 pb-2">
-                        {title && <h2 className="text-base font-semibold">{title}</h2>}
+                        {title && (
+                            <h2 className="text-base font-semibold text-[var(--foreground)]">
+                                {title}
+                            </h2>
+                        )}
                         {description && (
-                            <p className="mt-1 text-sm text-black/60">{description}</p>
+                            <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+                                {description}
+                            </p>
                         )}
                     </div>
                 )}

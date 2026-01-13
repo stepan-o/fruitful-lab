@@ -1,68 +1,233 @@
+// frontend/components/tools/pinterestPotential/steps/Q2Niche.tsx
 "use client";
 
-import React, { useMemo, useState } from "react";
+// Q2 (AAA) — Boutique picker + smart drawer
+// Fixes ESLint:
+// - Uses `selected` (so it’s not unused)
+// - Removes setState-in-effect (reset activeIdx in handlers instead)
+// - BottomSheet initialFocusSelector supported by updated BottomSheet
+
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BottomSheet } from "@/components/ui/BottomSheet";
 import type { Segment, StepBaseProps } from "./ppcV2Types";
 
-type NicheOpt = { label: string; value: string; preview: "Focused" | "Medium" | "Broad" };
+type PreviewLevel = "Focused" | "Medium" | "Broad";
+
+type NicheOpt = {
+    label: string;
+    value: string;
+    preview: PreviewLevel;
+    includes?: string;
+    keywords?: string[];
+};
 
 const NICHES: Record<Segment, NicheOpt[]> = {
     content_creator: [
-        { label: "Food & Recipes", value: "food", preview: "Broad" },
-        { label: "Travel", value: "travel", preview: "Broad" },
-        { label: "Home & DIY", value: "home_diy", preview: "Broad" },
-        { label: "Lifestyle & Inspiration", value: "lifestyle", preview: "Broad" },
-        { label: "Personal Finance", value: "finance", preview: "Medium" },
-        { label: "Health & Wellness", value: "wellness", preview: "Broad" },
-        { label: "Parenting & Family", value: "parenting", preview: "Broad" },
-        { label: "Beauty & Fashion", value: "beauty_fashion", preview: "Broad" },
-        { label: "Crafts & Hobbies", value: "crafts", preview: "Medium" },
-        { label: "Other", value: "other", preview: "Focused" },
+        { label: "Food & Recipes", value: "food", preview: "Broad", includes: "recipes, meal prep, baking", keywords: ["cooking", "baking", "meal prep"] },
+        { label: "Travel", value: "travel", preview: "Broad", includes: "guides, itineraries, tips", keywords: ["itinerary", "guide", "destinations"] },
+        { label: "Home & DIY", value: "home_diy", preview: "Broad", includes: "decor, projects, renovation", keywords: ["decor", "renovation", "projects"] },
+        { label: "Lifestyle & Inspiration", value: "lifestyle", preview: "Broad", includes: "habits, routines, ideas", keywords: ["routine", "habits", "aesthetic"] },
+        { label: "Health & Wellness", value: "wellness", preview: "Broad", includes: "fitness, self-care, wellness", keywords: ["fitness", "mindfulness", "self care"] },
+        { label: "Parenting & Family", value: "parenting", preview: "Broad", includes: "kids, baby, family life", keywords: ["kids", "baby", "family"] },
+        { label: "Beauty & Fashion", value: "beauty_fashion", preview: "Broad", includes: "outfits, makeup, style", keywords: ["outfits", "makeup", "style"] },
+        { label: "Personal Finance", value: "finance", preview: "Medium", includes: "budgeting, saving, planning", keywords: ["budget", "saving", "investing"] },
+        { label: "Crafts & Hobbies", value: "crafts", preview: "Medium", includes: "DIY crafts, printables, handmade", keywords: ["printables", "crochet", "handmade"] },
+        { label: "Other", value: "other", preview: "Focused", includes: "your specific topic", keywords: ["misc"] },
     ],
     product_seller: [
-        { label: "Baby & Family Products", value: "baby_family", preview: "Broad" },
-        { label: "Home & Decor", value: "home_decor", preview: "Broad" },
-        { label: "Beauty & Skincare", value: "beauty", preview: "Broad" },
-        { label: "Fashion & Accessories", value: "fashion", preview: "Broad" },
-        { label: "Health & Wellness", value: "wellness", preview: "Broad" },
-        { label: "Food & Beverage (CPG)", value: "food_bev", preview: "Broad" },
-        { label: "Crafts & Digital Products", value: "digital_crafts", preview: "Medium" },
-        { label: "Pets", value: "pets", preview: "Broad" },
-        { label: "Travel Gear & Accessories", value: "travel_gear", preview: "Medium" },
-        { label: "Other", value: "other", preview: "Focused" },
+        { label: "Baby & Family Products", value: "baby_family", preview: "Broad", includes: "nursery, registry, kids", keywords: ["nursery", "baby registry"] },
+        { label: "Home & Decor", value: "home_decor", preview: "Broad", includes: "decor, furniture, styling", keywords: ["interior", "furniture", "decor"] },
+        { label: "Beauty & Skincare", value: "beauty", preview: "Broad", includes: "skincare, hair, makeup", keywords: ["skincare", "makeup", "hair"] },
+        { label: "Fashion & Accessories", value: "fashion", preview: "Broad", includes: "apparel, jewelry, bags", keywords: ["jewelry", "bags", "outfits"] },
+        { label: "Health & Wellness", value: "wellness", preview: "Broad", includes: "wellbeing, lifestyle, products", keywords: ["supplements", "wellbeing"] },
+        { label: "Food & Beverage (CPG)", value: "food_bev", preview: "Broad", includes: "snacks, coffee, pantry", keywords: ["snacks", "coffee", "tea"] },
+        { label: "Pets", value: "pets", preview: "Broad", includes: "pet care, accessories, treats", keywords: ["dog", "cat", "pet care"] },
+        { label: "Crafts & Digital Products", value: "digital_crafts", preview: "Medium", includes: "templates, downloads, DIY", keywords: ["templates", "svg", "download"] },
+        { label: "Travel Gear & Accessories", value: "travel_gear", preview: "Medium", includes: "packing, luggage, gear", keywords: ["luggage", "packing"] },
+        { label: "Other", value: "other", preview: "Focused", includes: "your specific category", keywords: ["misc"] },
     ],
     service_provider: [
-        { label: "Marketing / Creative Agency", value: "agency", preview: "Medium" },
-        { label: "Coach / Consultant", value: "coach", preview: "Broad" },
-        { label: "Designer", value: "designer", preview: "Broad" },
-        { label: "Photographer / Videographer", value: "photo_video", preview: "Medium" },
-        { label: "Wellness Practitioner", value: "wellness_practitioner", preview: "Broad" },
-        { label: "Finance / Bookkeeping", value: "finance", preview: "Focused" },
-        { label: "Real Estate / Home Services", value: "real_estate_home", preview: "Medium" },
-        { label: "Educator / Course Creator", value: "educator", preview: "Broad" },
-        { label: "Event / Wedding Services", value: "events", preview: "Medium" },
-        { label: "Other", value: "other", preview: "Focused" },
+        { label: "Coach / Consultant", value: "coach", preview: "Broad", includes: "offers, programs, advice", keywords: ["business coach", "mentor"] },
+        { label: "Designer", value: "designer", preview: "Broad", includes: "brand, web, visuals", keywords: ["brand", "web", "graphic"] },
+        { label: "Educator / Course Creator", value: "educator", preview: "Broad", includes: "courses, teaching, training", keywords: ["course", "teacher"] },
+        { label: "Wellness Practitioner", value: "wellness_practitioner", preview: "Broad", includes: "therapy, yoga, healing", keywords: ["therapist", "healer", "yoga"] },
+        { label: "Marketing / Creative Agency", value: "agency", preview: "Medium", includes: "strategy, creative, campaigns", keywords: ["studio", "marketing", "creative"] },
+        { label: "Photographer / Videographer", value: "photo_video", preview: "Medium", includes: "photo, video, content", keywords: ["photo", "video", "content"] },
+        { label: "Real Estate / Home Services", value: "real_estate_home", preview: "Medium", includes: "realtor, staging, home", keywords: ["realtor", "staging", "home"] },
+        { label: "Event / Wedding Services", value: "events", preview: "Medium", includes: "weddings, planning, events", keywords: ["wedding", "planner"] },
+        { label: "Finance / Bookkeeping", value: "finance", preview: "Focused", includes: "accounting, bookkeeping", keywords: ["accounting", "bookkeeping"] },
+        { label: "Other", value: "other", preview: "Focused", includes: "your specific service", keywords: ["misc"] },
     ],
 };
 
-function PreviewMeter({ level }: { level: "Focused" | "Medium" | "Broad" }) {
-    const idx = level === "Focused" ? 1 : level === "Medium" ? 2 : 3;
+function segmentHint(seg: Segment) {
+    if (seg === "content_creator") return "Pick what you publish about most.";
+    if (seg === "product_seller") return "Pick the category you sell into.";
+    return "Pick the industry you serve.";
+}
+
+function normalize(s: string) {
+    return s.toLowerCase().trim();
+}
+
+function scopeCopy(level: PreviewLevel) {
+    if (level === "Focused") return "More specific audience (usually easier to target).";
+    if (level === "Medium") return "Good balance of focus + reach.";
+    return "Huge audience (more competition, more upside).";
+}
+
+function scopeBadge(level: PreviewLevel) {
+    const tone =
+        level === "Focused"
+            ? "bg-[color-mix(in_srgb,var(--brand-rust)_18%,transparent)] border-[color-mix(in_srgb,var(--brand-rust)_40%,var(--border))]"
+            : level === "Medium"
+                ? "bg-[color-mix(in_srgb,var(--brand-bronze)_14%,transparent)] border-[color-mix(in_srgb,var(--brand-bronze)_40%,var(--border))]"
+                : "bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,transparent)] border-[color-mix(in_srgb,var(--brand-raspberry)_35%,var(--border))]";
+
     return (
-        <div className="mt-3 rounded-lg border border-[var(--border)] bg-[var(--background)] p-3">
-            <div className="text-xs text-[var(--foreground-muted)]">Typical Pinterest audience size</div>
-            <div className="mt-2 flex items-center gap-2">
-                {[1, 2, 3].map((n) => (
-                    <div
-                        key={n}
-                        className={[
-                            "h-2 flex-1 rounded-full border border-[var(--border)]",
-                            n <= idx ? "bg-[var(--brand-bronze)]" : "bg-[var(--card)]",
-                        ].join(" ")}
+        <span
+            className={[
+                "inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] leading-none",
+                tone,
+                "text-[var(--foreground)]",
+            ].join(" ")}
+        >
+      Scope: {level}
+    </span>
+    );
+}
+
+function Highlight({ text, q }: { text: string; q: string }) {
+    const qq = normalize(q);
+    if (!qq) return <>{text}</>;
+    const idx = text.toLowerCase().indexOf(qq);
+    if (idx < 0) return <>{text}</>;
+
+    const before = text.slice(0, idx);
+    const match = text.slice(idx, idx + qq.length);
+    const after = text.slice(idx + qq.length);
+
+    return (
+        <>
+            {before}
+            <span className="rounded-sm bg-[color-mix(in_srgb,var(--brand-bronze)_22%,transparent)] px-1 text-[var(--foreground)]">
+        {match}
+      </span>
+            {after}
+        </>
+    );
+}
+
+function SmallChip({
+                       children,
+                       dot,
+                       asButton,
+                       onClick,
+                   }: {
+    children: React.ReactNode;
+    dot?: boolean;
+    asButton?: boolean;
+    onClick?: () => void;
+}) {
+    const cls =
+        "ppc-chip inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_55%,transparent)] px-3 py-1 text-xs text-[var(--foreground-muted)]";
+
+    if (asButton) {
+        return (
+            <button
+                type="button"
+                onClick={onClick}
+                className={[
+                    cls,
+                    "transition hover:bg-[var(--card-hover)]",
+                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                ].join(" ")}
+            >
+                {dot ? (
+                    <span
+                        className="inline-block h-1.5 w-1.5 rounded-full"
+                        style={{ background: "var(--brand-raspberry)" }}
+                        aria-hidden="true"
                     />
-                ))}
+                ) : null}
+                {children}
+            </button>
+        );
+    }
+
+    return (
+        <span className={cls}>
+      {dot ? (
+          <span
+              className="inline-block h-1.5 w-1.5 rounded-full"
+              style={{ background: "var(--brand-raspberry)" }}
+              aria-hidden="true"
+          />
+      ) : null}
+            {children}
+    </span>
+    );
+}
+
+function Tile({
+                  opt,
+                  active,
+                  onClick,
+              }: {
+    opt: NicheOpt;
+    active: boolean;
+    onClick: () => void;
+}) {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            className={[
+                "fp-tap group relative w-full overflow-hidden rounded-2xl border p-4 text-left",
+                "transition-[transform,background-color,border-color,box-shadow] duration-200",
+                "bg-[color-mix(in_srgb,var(--background)_70%,transparent)] hover:bg-[color-mix(in_srgb,var(--card-hover)_70%,transparent)]",
+                active
+                    ? "border-[color-mix(in_srgb,var(--brand-raspberry)_65%,var(--border))] shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-raspberry)_55%,transparent)]"
+                    : "border-[var(--border)]",
+                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+            ].join(" ")}
+        >
+            <div
+                aria-hidden="true"
+                className={[
+                    "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200",
+                    "bg-[radial-gradient(1100px_circle_at_10%_10%,color-mix(in_srgb,var(--brand-raspberry)_22%,transparent),transparent_55%)]",
+                    active ? "opacity-100" : "group-hover:opacity-80",
+                ].join(" ")}
+            />
+
+            <div className="relative">
+                <div className="flex items-start justify-between gap-3">
+                    <div>
+                        <div className="text-sm font-semibold text-[var(--foreground)]">{opt.label}</div>
+                        {opt.includes ? (
+                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                                Includes: {opt.includes}
+                            </div>
+                        ) : null}
+                    </div>
+
+                    <div className="flex flex-col items-end gap-2">
+                        {scopeBadge(opt.preview)}
+                        {active ? (
+                            <span className="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_14%,transparent)] px-3 py-1 text-xs text-[var(--foreground)]">
+                <span
+                    className="inline-block h-2 w-2 rounded-full"
+                    style={{ background: "var(--brand-raspberry)" }}
+                    aria-hidden="true"
+                />
+                Selected
+              </span>
+                        ) : null}
+                    </div>
+                </div>
             </div>
-            <div className="mt-2 text-sm text-[var(--foreground)]">{level}</div>
-        </div>
+        </button>
     );
 }
 
@@ -77,82 +242,282 @@ export default function Q2Niche({
     onChange: (v: string) => void;
 }) {
     const [open, setOpen] = useState(false);
+    const [q, setQ] = useState("");
+    const [assistOpen, setAssistOpen] = useState(false);
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     const all = NICHES[segment];
-    const inline = useMemo(() => all.slice(0, 7), [all]); // 6–10 target, keep it tight
-    const selected = all.find((o) => o.value === value);
+
+    const primary = useMemo(() => {
+        const withoutOther = all.filter((x) => x.value !== "other");
+        return withoutOther.slice(0, 6);
+    }, [all]);
+
+    const selected = useMemo(() => all.find((o) => o.value === value), [all, value]);
+
+    const filtered = useMemo(() => {
+        const qq = normalize(q);
+        if (!qq) return all;
+
+        return all.filter((o) => {
+            const hay = [o.label, o.value, o.includes ?? "", ...(o.keywords ?? [])]
+                .join(" ")
+                .toLowerCase();
+            return hay.includes(qq);
+        });
+    }, [all, q]);
+
+    const [activeIdx, setActiveIdx] = useState(0);
 
     function select(v: string) {
         onChange(v);
         setOpen(false);
+        setQ("");
+        setActiveIdx(0);
+        setAssistOpen(false);
         onAutoAdvance?.();
     }
 
-    return (
-        <div className="grid gap-3">
-            <div className="text-sm text-[var(--foreground-muted)]">Pick the closest match</div>
+    useEffect(() => {
+        if (!open) return;
+        const t = window.setTimeout(() => inputRef.current?.focus(), 60);
+        return () => window.clearTimeout(t);
+    }, [open]);
 
-            <div className="flex flex-wrap gap-2">
-                {inline.map((opt) => {
-                    const active = opt.value === value;
-                    return (
-                        <button
-                            key={opt.value}
-                            type="button"
-                            onClick={() => select(opt.value)}
+    function onSearchKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+        if (e.key === "ArrowDown") {
+            e.preventDefault();
+            setActiveIdx((i) => Math.min(Math.max(filtered.length - 1, 0), i + 1));
+            return;
+        }
+        if (e.key === "ArrowUp") {
+            e.preventDefault();
+            setActiveIdx((i) => Math.max(0, i - 1));
+            return;
+        }
+        if (e.key === "Enter") {
+            e.preventDefault();
+            const opt = filtered[activeIdx] ?? filtered[0];
+            if (opt) select(opt.value);
+            return;
+        }
+        if (e.key === "Escape") {
+            e.preventDefault();
+            setOpen(false);
+            setAssistOpen(false);
+            setQ("");
+            setActiveIdx(0);
+        }
+    }
+
+    return (
+        <div className="grid gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="text-sm text-[var(--foreground-muted)]">{segmentHint(segment)}</div>
+
+                <div className="relative flex flex-wrap items-center gap-2">
+                    <SmallChip dot>Popular for you</SmallChip>
+
+                    <SmallChip asButton onClick={() => setAssistOpen((v) => !v)}>
+                        Not sure? Pick closest match
+                    </SmallChip>
+
+                    {assistOpen ? (
+                        <div
                             className={[
-                                "rounded-full border px-3 py-2 text-sm transition-colors",
-                                "border-[var(--border)] bg-[var(--background)] hover:bg-[var(--card-hover)]",
-                                active ? "ring-1 ring-[var(--brand-raspberry)]" : "",
-                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                                "absolute right-0 top-[110%] z-20 w-[320px] max-w-[90vw]",
+                                "rounded-2xl border border-[var(--border)]",
+                                "bg-[color-mix(in_srgb,var(--background)_92%,transparent)] p-3",
+                                "shadow-[0_20px_60px_rgba(0,0,0,0.35)]",
                             ].join(" ")}
+                            role="note"
                         >
-                            {opt.label}
-                        </button>
-                    );
-                })}
+                            <div className="text-xs text-[var(--foreground)]">
+                                Choose what your audience searches for — not your job title.
+                            </div>
+                            <div className="mt-2 text-xs text-[var(--foreground-muted)]">
+                                Example: “nursery organization” beats “baby brand”.
+                            </div>
+                        </div>
+                    ) : null}
+                </div>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2">
+                {primary.map((opt) => (
+                    <Tile
+                        key={opt.value}
+                        opt={opt}
+                        active={opt.value === value}
+                        onClick={() => select(opt.value)}
+                    />
+                ))}
 
                 <button
                     type="button"
-                    onClick={() => setOpen(true)}
+                    onClick={() => {
+                        setAssistOpen(false);
+                        setQ("");
+                        setActiveIdx(0);
+                        setOpen(true);
+                    }}
                     className={[
-                        "rounded-full border px-3 py-2 text-sm",
-                        "border-[var(--border)] bg-[var(--card)] hover:bg-[var(--card-hover)]",
+                        "fp-tap group relative w-full overflow-hidden rounded-2xl border p-4 text-left",
+                        "border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_55%,transparent)] hover:bg-[var(--card-hover)]",
+                        "transition-[transform,background-color,border-color,box-shadow] duration-200",
                         "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
                     ].join(" ")}
                 >
-                    More
+                    <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-0 opacity-70"
+                        style={{
+                            background:
+                                "radial-gradient(900px_circle_at_10%_10%, color-mix(in_srgb,var(--brand-bronze)_14%,transparent), transparent 55%)",
+                        }}
+                    />
+                    <div className="relative">
+                        <div className="flex items-center justify-between gap-3">
+                            <div className="text-sm font-semibold text-[var(--foreground)]">More niches</div>
+                            <span className="text-xs text-[var(--foreground-muted)]">Search</span>
+                        </div>
+                        <div className="mt-2 text-xs text-[var(--foreground-muted)]">
+                            Type → filter → pick the closest match.
+                        </div>
+                    </div>
                 </button>
             </div>
 
-            {selected ? <PreviewMeter level={selected.preview} /> : null}
+            {/* Use `selected` so it’s not unused + adds “agency feel” guidance */}
+            {selected ? (
+                <div className="rounded-2xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_55%,transparent)] p-4">
+                    <div className="flex items-start justify-between gap-3">
+                        <div>
+                            <div className="text-xs text-[var(--foreground-muted)]">Your selection</div>
+                            <div className="mt-1 text-sm font-semibold text-[var(--foreground)]">
+                                {selected.label}
+                            </div>
+                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                                {scopeCopy(selected.preview)}
+                            </div>
+                        </div>
+                        {scopeBadge(selected.preview)}
+                    </div>
+                </div>
+            ) : null}
 
             <BottomSheet
                 open={open}
-                onClose={() => setOpen(false)}
+                onClose={() => {
+                    setOpen(false);
+                    setAssistOpen(false);
+                    setQ("");
+                    setActiveIdx(0);
+                }}
                 title="Choose a niche"
+                initialFocusSelector='input[data-autofocus="true"]'
             >
-                <div className="grid gap-2">
-                    {all.map((opt) => {
-                        const active = opt.value === value;
-                        return (
-                            <button
-                                key={opt.value}
-                                type="button"
-                                onClick={() => select(opt.value)}
-                                className={[
-                                    "w-full rounded-lg border p-3 text-left transition-colors",
-                                    "border-[var(--border)] bg-[var(--background)] hover:bg-[var(--card-hover)]",
-                                    active ? "ring-1 ring-[var(--brand-raspberry)]" : "",
-                                ].join(" ")}
-                            >
-                                <div className="text-sm text-[var(--foreground)]">{opt.label}</div>
-                                <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                    Audience: {opt.preview}
-                                </div>
-                            </button>
-                        );
-                    })}
+                <div className="grid gap-3">
+                    <div className="grid gap-2">
+                        <label className="text-xs text-[var(--foreground-muted)]">Search</label>
+                        <input
+                            ref={inputRef}
+                            data-autofocus="true"
+                            value={q}
+                            onChange={(e) => {
+                                setQ(e.target.value);
+                                setActiveIdx(0);
+                            }}
+                            onKeyDown={onSearchKeyDown}
+                            placeholder="Try: skincare, meal prep, nursery, home office…"
+                            className={[
+                                "w-full rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_92%,transparent)] px-3 py-2 text-sm text-[var(--foreground)]",
+                                "placeholder:text-[color-mix(in_srgb,var(--foreground-muted)_70%,transparent)]",
+                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                            ].join(" ")}
+                        />
+                        <div className="text-xs text-[var(--foreground-muted)]">
+                            Tip: choose what your audience searches for (not your job title).
+                        </div>
+                    </div>
+
+                    {!q ? (
+                        <div className="mt-1 grid gap-2">
+                            <div className="text-xs font-semibold text-[var(--foreground)]">Popular for you</div>
+                            <div className="grid gap-2 md:grid-cols-2">
+                                {primary.map((opt) => {
+                                    const active = opt.value === value;
+                                    return (
+                                        <button
+                                            key={opt.value}
+                                            type="button"
+                                            onClick={() => select(opt.value)}
+                                            className={[
+                                                "fp-tap w-full rounded-xl border p-3 text-left transition-colors",
+                                                "border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_45%,transparent)] hover:bg-[var(--card-hover)]",
+                                                active ? "ring-1 ring-[color-mix(in_srgb,var(--brand-raspberry)_65%,transparent)]" : "",
+                                            ].join(" ")}
+                                        >
+                                            <div className="flex items-center justify-between gap-3">
+                                                <div className="text-sm text-[var(--foreground)]">{opt.label}</div>
+                                                {active ? <span className="text-xs text-[var(--foreground)]">✓</span> : null}
+                                            </div>
+                                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">{opt.includes}</div>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ) : null}
+
+                    <div className="mt-2 grid gap-2">
+                        <div className="text-xs font-semibold text-[var(--foreground)]">
+                            {q ? `Results (${filtered.length})` : "All niches"}
+                        </div>
+
+                        {filtered.length === 0 ? (
+                            <div className="rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_45%,transparent)] p-4 text-sm text-[var(--foreground-muted)]">
+                                No matches. Try a broader keyword (e.g., “home”, “wellness”, “finance”).
+                            </div>
+                        ) : (
+                            <div className="grid gap-2">
+                                {filtered.map((opt, idx) => {
+                                    const isActiveRow = idx === activeIdx;
+                                    const active = opt.value === value;
+
+                                    return (
+                                        <button
+                                            key={opt.value}
+                                            type="button"
+                                            onClick={() => select(opt.value)}
+                                            onMouseEnter={() => setActiveIdx(idx)}
+                                            className={[
+                                                "fp-tap w-full rounded-xl border p-3 text-left transition-colors",
+                                                "border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_88%,transparent)] hover:bg-[var(--card-hover)]",
+                                                active ? "ring-1 ring-[color-mix(in_srgb,var(--brand-raspberry)_65%,transparent)]" : "",
+                                                isActiveRow ? "shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-bronze)_35%,transparent)]" : "",
+                                            ].join(" ")}
+                                        >
+                                            <div className="flex items-start justify-between gap-3">
+                                                <div>
+                                                    <div className="text-sm text-[var(--foreground)]">
+                                                        <Highlight text={opt.label} q={q} />
+                                                    </div>
+                                                    <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                                                        <Highlight text={opt.includes ?? ""} q={q} />
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-col items-end gap-2">
+                                                    {scopeBadge(opt.preview)}
+                                                    {active ? <span className="text-xs text-[var(--foreground)]">✓</span> : null}
+                                                </div>
+                                            </div>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </BottomSheet>
         </div>

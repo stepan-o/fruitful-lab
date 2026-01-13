@@ -2,14 +2,47 @@
 "use client";
 
 // Q2 (AAA) — Boutique picker + smart drawer
-// Fixes ESLint:
-// - Uses `selected` (so it’s not unused)
-// - Removes setState-in-effect (reset activeIdx in handlers instead)
-// - BottomSheet initialFocusSelector supported by updated BottomSheet
+// Visual polish:
+// - Stronger hierarchy (bigger niche labels)
+// - Meaningful icons per niche
+// - “Scope” clarified as Audience size (Huge/Medium/Specific) + better explainer copy
+//
+// Lint-safe:
+// - `selected` used
+// - No setState-in-effect patterns
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BottomSheet } from "@/components/ui/BottomSheet";
 import type { Segment, StepBaseProps } from "./ppcV2Types";
+import {
+    Utensils,
+    Plane,
+    Hammer,
+    Sparkles,
+    HeartPulse,
+    Baby,
+    Shirt,
+    PiggyBank,
+    Scissors,
+    Shapes,
+    Sofa,
+    Droplets,
+    ShoppingBag,
+    Coffee,
+    PawPrint,
+    FileDown,
+    Backpack,
+    Speech,
+    Palette,
+    GraduationCap,
+    Leaf,
+    Briefcase,
+    Camera,
+    Home,
+    PartyPopper,
+    Calculator,
+    type LucideIcon,
+} from "lucide-react";
 
 type PreviewLevel = "Focused" | "Medium" | "Broad";
 
@@ -23,27 +56,135 @@ type NicheOpt = {
 
 const NICHES: Record<Segment, NicheOpt[]> = {
     content_creator: [
-        { label: "Food & Recipes", value: "food", preview: "Broad", includes: "recipes, meal prep, baking", keywords: ["cooking", "baking", "meal prep"] },
-        { label: "Travel", value: "travel", preview: "Broad", includes: "guides, itineraries, tips", keywords: ["itinerary", "guide", "destinations"] },
-        { label: "Home & DIY", value: "home_diy", preview: "Broad", includes: "decor, projects, renovation", keywords: ["decor", "renovation", "projects"] },
-        { label: "Lifestyle & Inspiration", value: "lifestyle", preview: "Broad", includes: "habits, routines, ideas", keywords: ["routine", "habits", "aesthetic"] },
-        { label: "Health & Wellness", value: "wellness", preview: "Broad", includes: "fitness, self-care, wellness", keywords: ["fitness", "mindfulness", "self care"] },
-        { label: "Parenting & Family", value: "parenting", preview: "Broad", includes: "kids, baby, family life", keywords: ["kids", "baby", "family"] },
-        { label: "Beauty & Fashion", value: "beauty_fashion", preview: "Broad", includes: "outfits, makeup, style", keywords: ["outfits", "makeup", "style"] },
-        { label: "Personal Finance", value: "finance", preview: "Medium", includes: "budgeting, saving, planning", keywords: ["budget", "saving", "investing"] },
-        { label: "Crafts & Hobbies", value: "crafts", preview: "Medium", includes: "DIY crafts, printables, handmade", keywords: ["printables", "crochet", "handmade"] },
+        {
+            label: "Food & Recipes",
+            value: "food",
+            preview: "Broad",
+            includes: "recipes, meal prep, baking",
+            keywords: ["cooking", "baking", "meal prep"],
+        },
+        {
+            label: "Travel",
+            value: "travel",
+            preview: "Broad",
+            includes: "guides, itineraries, tips",
+            keywords: ["itinerary", "guide", "destinations"],
+        },
+        {
+            label: "Home & DIY",
+            value: "home_diy",
+            preview: "Broad",
+            includes: "decor, projects, renovation",
+            keywords: ["decor", "renovation", "projects"],
+        },
+        {
+            label: "Lifestyle & Inspiration",
+            value: "lifestyle",
+            preview: "Broad",
+            includes: "habits, routines, ideas",
+            keywords: ["routine", "habits", "aesthetic"],
+        },
+        {
+            label: "Health & Wellness",
+            value: "wellness",
+            preview: "Broad",
+            includes: "fitness, self-care, wellness",
+            keywords: ["fitness", "mindfulness", "self care"],
+        },
+        {
+            label: "Parenting & Family",
+            value: "parenting",
+            preview: "Broad",
+            includes: "kids, baby, family life",
+            keywords: ["kids", "baby", "family"],
+        },
+        {
+            label: "Beauty & Fashion",
+            value: "beauty_fashion",
+            preview: "Broad",
+            includes: "outfits, makeup, style",
+            keywords: ["outfits", "makeup", "style"],
+        },
+        {
+            label: "Personal Finance",
+            value: "finance",
+            preview: "Medium",
+            includes: "budgeting, saving, planning",
+            keywords: ["budget", "saving", "investing"],
+        },
+        {
+            label: "Crafts & Hobbies",
+            value: "crafts",
+            preview: "Medium",
+            includes: "DIY crafts, printables, handmade",
+            keywords: ["printables", "crochet", "handmade"],
+        },
         { label: "Other", value: "other", preview: "Focused", includes: "your specific topic", keywords: ["misc"] },
     ],
     product_seller: [
-        { label: "Baby & Family Products", value: "baby_family", preview: "Broad", includes: "nursery, registry, kids", keywords: ["nursery", "baby registry"] },
-        { label: "Home & Decor", value: "home_decor", preview: "Broad", includes: "decor, furniture, styling", keywords: ["interior", "furniture", "decor"] },
-        { label: "Beauty & Skincare", value: "beauty", preview: "Broad", includes: "skincare, hair, makeup", keywords: ["skincare", "makeup", "hair"] },
-        { label: "Fashion & Accessories", value: "fashion", preview: "Broad", includes: "apparel, jewelry, bags", keywords: ["jewelry", "bags", "outfits"] },
-        { label: "Health & Wellness", value: "wellness", preview: "Broad", includes: "wellbeing, lifestyle, products", keywords: ["supplements", "wellbeing"] },
-        { label: "Food & Beverage (CPG)", value: "food_bev", preview: "Broad", includes: "snacks, coffee, pantry", keywords: ["snacks", "coffee", "tea"] },
-        { label: "Pets", value: "pets", preview: "Broad", includes: "pet care, accessories, treats", keywords: ["dog", "cat", "pet care"] },
-        { label: "Crafts & Digital Products", value: "digital_crafts", preview: "Medium", includes: "templates, downloads, DIY", keywords: ["templates", "svg", "download"] },
-        { label: "Travel Gear & Accessories", value: "travel_gear", preview: "Medium", includes: "packing, luggage, gear", keywords: ["luggage", "packing"] },
+        {
+            label: "Baby & Family Products",
+            value: "baby_family",
+            preview: "Broad",
+            includes: "nursery, registry, kids",
+            keywords: ["nursery", "baby registry"],
+        },
+        {
+            label: "Home & Decor",
+            value: "home_decor",
+            preview: "Broad",
+            includes: "decor, furniture, styling",
+            keywords: ["interior", "furniture", "decor"],
+        },
+        {
+            label: "Beauty & Skincare",
+            value: "beauty",
+            preview: "Broad",
+            includes: "skincare, hair, makeup",
+            keywords: ["skincare", "makeup", "hair"],
+        },
+        {
+            label: "Fashion & Accessories",
+            value: "fashion",
+            preview: "Broad",
+            includes: "apparel, jewelry, bags",
+            keywords: ["jewelry", "bags", "outfits"],
+        },
+        {
+            label: "Health & Wellness",
+            value: "wellness",
+            preview: "Broad",
+            includes: "wellbeing, lifestyle, products",
+            keywords: ["supplements", "wellbeing"],
+        },
+        {
+            label: "Food & Beverage (CPG)",
+            value: "food_bev",
+            preview: "Broad",
+            includes: "snacks, coffee, pantry",
+            keywords: ["snacks", "coffee", "tea"],
+        },
+        {
+            label: "Pets",
+            value: "pets",
+            preview: "Broad",
+            includes: "pet care, accessories, treats",
+            keywords: ["dog", "cat", "pet care"],
+        },
+        {
+            label: "Crafts & Digital Products",
+            value: "digital_crafts",
+            preview: "Medium",
+            includes: "templates, downloads, DIY",
+            keywords: ["templates", "svg", "download"],
+        },
+        {
+            label: "Travel Gear & Accessories",
+            value: "travel_gear",
+            preview: "Medium",
+            includes: "packing, luggage, gear",
+            keywords: ["luggage", "packing"],
+        },
         { label: "Other", value: "other", preview: "Focused", includes: "your specific category", keywords: ["misc"] },
     ],
     service_provider: [
@@ -70,13 +211,65 @@ function normalize(s: string) {
     return s.toLowerCase().trim();
 }
 
-function scopeCopy(level: PreviewLevel) {
-    if (level === "Focused") return "More specific audience (usually easier to target).";
-    if (level === "Medium") return "Good balance of focus + reach.";
-    return "Huge audience (more competition, more upside).";
+/** Map (segment + value) → meaningful icon */
+function iconFor(segment: Segment, value: string): LucideIcon {
+    // common
+    if (value === "other") return Shapes;
+    if (value === "finance") return PiggyBank;
+    if (value === "wellness") return HeartPulse;
+
+    // content creator
+    if (segment === "content_creator") {
+        if (value === "food") return Utensils;
+        if (value === "travel") return Plane;
+        if (value === "home_diy") return Hammer;
+        if (value === "lifestyle") return Sparkles;
+        if (value === "parenting") return Baby;
+        if (value === "beauty_fashion") return Shirt;
+        if (value === "crafts") return Scissors;
+    }
+
+    // product seller
+    if (segment === "product_seller") {
+        if (value === "baby_family") return Baby;
+        if (value === "home_decor") return Sofa;
+        if (value === "beauty") return Droplets;
+        if (value === "fashion") return ShoppingBag;
+        if (value === "food_bev") return Coffee;
+        if (value === "pets") return PawPrint;
+        if (value === "digital_crafts") return FileDown;
+        if (value === "travel_gear") return Backpack;
+    }
+
+    // service provider
+    if (segment === "service_provider") {
+        if (value === "coach") return Speech;
+        if (value === "designer") return Palette;
+        if (value === "educator") return GraduationCap;
+        if (value === "wellness_practitioner") return Leaf;
+        if (value === "agency") return Briefcase;
+        if (value === "photo_video") return Camera;
+        if (value === "real_estate_home") return Home;
+        if (value === "events") return PartyPopper;
+        if (value === "finance") return Calculator;
+    }
+
+    return Sparkles;
 }
 
-function scopeBadge(level: PreviewLevel) {
+function audienceLabel(level: PreviewLevel) {
+    if (level === "Focused") return "Specific";
+    if (level === "Medium") return "Medium";
+    return "Huge";
+}
+
+function audienceCopy(level: PreviewLevel) {
+    if (level === "Focused") return "More specific audience → usually easier targeting + clearer messaging.";
+    if (level === "Medium") return "Balanced audience size → good mix of reach + relevance.";
+    return "Big audience → more competition, but more upside if you commit.";
+}
+
+function audienceBadge(level: PreviewLevel) {
     const tone =
         level === "Focused"
             ? "bg-[color-mix(in_srgb,var(--brand-rust)_18%,transparent)] border-[color-mix(in_srgb,var(--brand-rust)_40%,var(--border))]"
@@ -90,9 +283,11 @@ function scopeBadge(level: PreviewLevel) {
                 "inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] leading-none",
                 tone,
                 "text-[var(--foreground)]",
+                "whitespace-nowrap",
             ].join(" ")}
+            title={audienceCopy(level)}
         >
-      Scope: {level}
+      Audience: {audienceLabel(level)}
     </span>
     );
 }
@@ -169,15 +364,49 @@ function SmallChip({
     );
 }
 
+function NicheIcon({
+                       Icon,
+                       active,
+                   }: {
+    Icon: LucideIcon;
+    active: boolean;
+}) {
+    return (
+        <span
+            aria-hidden="true"
+            className={[
+                "grid place-items-center shrink-0 rounded-2xl border",
+                "h-12 w-12",
+                active
+                    ? "border-[color-mix(in_srgb,var(--brand-raspberry)_55%,var(--border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_16%,transparent)]"
+                    : "border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_40%,transparent)]",
+                "shadow-[0_10px_30px_rgba(0,0,0,0.18)]",
+            ].join(" ")}
+        >
+      <Icon
+          className={[
+              "h-5 w-5",
+              active ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]",
+          ].join(" ")}
+          strokeWidth={2}
+      />
+    </span>
+    );
+}
+
 function Tile({
                   opt,
                   active,
                   onClick,
+                  segment,
               }: {
     opt: NicheOpt;
     active: boolean;
     onClick: () => void;
+    segment: Segment;
 }) {
+    const Icon = iconFor(segment, opt.value);
+
     return (
         <button
             type="button"
@@ -202,28 +431,37 @@ function Tile({
             />
 
             <div className="relative">
-                <div className="flex items-start justify-between gap-3">
-                    <div>
-                        <div className="text-sm font-semibold text-[var(--foreground)]">{opt.label}</div>
-                        {opt.includes ? (
-                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                Includes: {opt.includes}
-                            </div>
-                        ) : null}
-                    </div>
+                <div className="flex items-start gap-3">
+                    <NicheIcon Icon={Icon} active={active} />
 
-                    <div className="flex flex-col items-end gap-2">
-                        {scopeBadge(opt.preview)}
-                        {active ? (
-                            <span className="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_14%,transparent)] px-3 py-1 text-xs text-[var(--foreground)]">
-                <span
-                    className="inline-block h-2 w-2 rounded-full"
-                    style={{ background: "var(--brand-raspberry)" }}
-                    aria-hidden="true"
-                />
-                Selected
-              </span>
-                        ) : null}
+                    <div className="min-w-0 flex-1">
+                        <div className="flex items-start justify-between gap-3">
+                            <div className="min-w-0">
+                                <div className="text-base font-semibold tracking-tight text-[var(--foreground)] md:text-lg">
+                                    {opt.label}
+                                </div>
+
+                                {opt.includes ? (
+                                    <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                                        {opt.includes}
+                                    </div>
+                                ) : null}
+                            </div>
+
+                            <div className="flex flex-col items-end gap-2">
+                                {audienceBadge(opt.preview)}
+                                {active ? (
+                                    <span className="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_14%,transparent)] px-3 py-1 text-xs text-[var(--foreground)]">
+                    <span
+                        className="inline-block h-2 w-2 rounded-full"
+                        style={{ background: "var(--brand-raspberry)" }}
+                        aria-hidden="true"
+                    />
+                    Selected
+                  </span>
+                                ) : null}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -350,6 +588,7 @@ export default function Q2Niche({
                         opt={opt}
                         active={opt.value === value}
                         onClick={() => select(opt.value)}
+                        segment={segment}
                     />
                 ))}
 
@@ -378,7 +617,7 @@ export default function Q2Niche({
                     />
                     <div className="relative">
                         <div className="flex items-center justify-between gap-3">
-                            <div className="text-sm font-semibold text-[var(--foreground)]">More niches</div>
+                            <div className="text-base font-semibold text-[var(--foreground)] md:text-lg">More niches</div>
                             <span className="text-xs text-[var(--foreground-muted)]">Search</span>
                         </div>
                         <div className="mt-2 text-xs text-[var(--foreground-muted)]">
@@ -388,20 +627,25 @@ export default function Q2Niche({
                 </button>
             </div>
 
-            {/* Use `selected` so it’s not unused + adds “agency feel” guidance */}
             {selected ? (
                 <div className="rounded-2xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_55%,transparent)] p-4">
                     <div className="flex items-start justify-between gap-3">
-                        <div>
+                        <div className="min-w-0">
                             <div className="text-xs text-[var(--foreground-muted)]">Your selection</div>
-                            <div className="mt-1 text-sm font-semibold text-[var(--foreground)]">
-                                {selected.label}
-                            </div>
-                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                {scopeCopy(selected.preview)}
+                            <div className="mt-1 flex items-center gap-3">
+                                <NicheIcon Icon={iconFor(segment, selected.value)} active />
+                                <div className="min-w-0">
+                                    <div className="text-sm font-semibold text-[var(--foreground)] md:text-base">
+                                        {selected.label}
+                                    </div>
+                                    <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                                        {audienceCopy(selected.preview)}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        {scopeBadge(selected.preview)}
+
+                        {audienceBadge(selected.preview)}
                     </div>
                 </div>
             ) : null}
@@ -447,6 +691,8 @@ export default function Q2Niche({
                             <div className="grid gap-2 md:grid-cols-2">
                                 {primary.map((opt) => {
                                     const active = opt.value === value;
+                                    const Icon = iconFor(segment, opt.value);
+
                                     return (
                                         <button
                                             key={opt.value}
@@ -458,11 +704,22 @@ export default function Q2Niche({
                                                 active ? "ring-1 ring-[color-mix(in_srgb,var(--brand-raspberry)_65%,transparent)]" : "",
                                             ].join(" ")}
                                         >
-                                            <div className="flex items-center justify-between gap-3">
-                                                <div className="text-sm text-[var(--foreground)]">{opt.label}</div>
-                                                {active ? <span className="text-xs text-[var(--foreground)]">✓</span> : null}
+                                            <div className="flex items-start justify-between gap-3">
+                                                <div className="flex items-start gap-3">
+                          <span className="mt-0.5 grid h-9 w-9 place-items-center rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_40%,transparent)]">
+                            <Icon className="h-4 w-4 text-[var(--foreground-muted)]" />
+                          </span>
+                                                    <div className="min-w-0">
+                                                        <div className="text-sm font-semibold text-[var(--foreground)]">{opt.label}</div>
+                                                        <div className="mt-1 text-xs text-[var(--foreground-muted)]">{opt.includes}</div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex flex-col items-end gap-2">
+                                                    {audienceBadge(opt.preview)}
+                                                    {active ? <span className="text-xs text-[var(--foreground)]">✓</span> : null}
+                                                </div>
                                             </div>
-                                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">{opt.includes}</div>
                                         </button>
                                     );
                                 })}
@@ -484,6 +741,7 @@ export default function Q2Niche({
                                 {filtered.map((opt, idx) => {
                                     const isActiveRow = idx === activeIdx;
                                     const active = opt.value === value;
+                                    const Icon = iconFor(segment, opt.value);
 
                                     return (
                                         <button
@@ -499,16 +757,23 @@ export default function Q2Niche({
                                             ].join(" ")}
                                         >
                                             <div className="flex items-start justify-between gap-3">
-                                                <div>
-                                                    <div className="text-sm text-[var(--foreground)]">
-                                                        <Highlight text={opt.label} q={q} />
-                                                    </div>
-                                                    <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                                        <Highlight text={opt.includes ?? ""} q={q} />
+                                                <div className="flex items-start gap-3">
+                          <span className="mt-0.5 grid h-9 w-9 place-items-center rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_40%,transparent)]">
+                            <Icon className="h-4 w-4 text-[var(--foreground-muted)]" />
+                          </span>
+
+                                                    <div className="min-w-0">
+                                                        <div className="text-sm font-semibold text-[var(--foreground)]">
+                                                            <Highlight text={opt.label} q={q} />
+                                                        </div>
+                                                        <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                                                            <Highlight text={opt.includes ?? ""} q={q} />
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                                 <div className="flex flex-col items-end gap-2">
-                                                    {scopeBadge(opt.preview)}
+                                                    {audienceBadge(opt.preview)}
                                                     {active ? <span className="text-xs text-[var(--foreground)]">✓</span> : null}
                                                 </div>
                                             </div>

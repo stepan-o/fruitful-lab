@@ -13,6 +13,10 @@
 // Also fixes a subtle reset bug:
 // - clearDraft() removed sessionStorage, but draft state would immediately repersist old values.
 // - Resets now also setDraft(INITIAL_DRAFT) to truly clear session draft.
+//
+// Fix (2026-01-13): Hydration gate for reload on Q1.
+// - Prevent SSR/client branch mismatch (Welcome vs Wizard) by rendering a stable shell
+//   until the component hydrates on the client.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -205,6 +209,10 @@ export default function PinterestPotentialWizard({
 }) {
     const searchParams = useSearchParams();
 
+    // ✅ Hydration gate (prevents SSR/client branch mismatch on reload)
+    const [hydrated, setHydrated] = useState(false);
+    useEffect(() => setHydrated(true), []);
+
     const INITIAL_DRAFT = useMemo(
         () => ({
             stepIndex: 1,
@@ -216,13 +224,13 @@ export default function PinterestPotentialWizard({
     );
 
     // ---- A/B variant (welcome vs no_welcome) ----
-    const qpVariant = searchParams.get("variant") ?? searchParams.get("pp_variant") ?? searchParams.get("ppcVariant") ?? undefined;
+    const qpVariant =
+        searchParams.get("variant") ?? searchParams.get("pp_variant") ?? searchParams.get("ppcVariant") ?? undefined;
 
     const requestedVariant = normalizeVariant(qpVariant);
 
     // ---- Lead gating overrides ----
-    const qpLeadMode =
-        searchParams.get("leadMode") ?? searchParams.get("lead_mode") ?? searchParams.get("leadmode") ?? undefined;
+    const qpLeadMode = searchParams.get("leadMode") ?? searchParams.get("lead_mode") ?? searchParams.get("leadmode") ?? undefined;
 
     const qpLeadToken =
         searchParams.get("leadToken") ?? searchParams.get("lead_token") ?? searchParams.get("token") ?? undefined;
@@ -357,7 +365,10 @@ export default function PinterestPotentialWizard({
     const progressText = useMemo(() => `Step ${stepIndex} of ${TOTAL}`, [stepIndex]);
     const progressPct = useMemo(() => Math.round((stepIndex / TOTAL) * 100), [stepIndex]);
 
-    const currentErrorKey = useMemo(() => getErrorKeyForStep(stepIndex, errors, resultsErrors), [errors, resultsErrors, stepIndex]);
+    const currentErrorKey = useMemo(
+        () => getErrorKeyForStep(stepIndex, errors, resultsErrors),
+        [errors, resultsErrors, stepIndex],
+    );
 
     const header = useMemo(() => getStepTitle(stepIndex), [stepIndex]);
 
@@ -508,6 +519,29 @@ export default function PinterestPotentialWizard({
         }
 
         if (stepIndex > 1) setStepIndex((s) => s - 1);
+    }
+
+    // ✅ Hydration gate render:
+    // Render a stable shell to avoid SSR/client mismatch between Welcome/Wizard on reload.
+    if (!hydrated) {
+        return (
+            <WizardView
+                progressText="Loading…"
+                progressPct={0}
+                header="Pinterest Potential Calculator"
+                stepContent={
+                    <div className="text-sm text-[var(--foreground-muted)]">
+                        Loading your saved session…
+                    </div>
+                }
+                errorMessage={null}
+                backDisabled={true}
+                continueDisabled={true}
+                continueLabel="Continue"
+                onBack={() => {}}
+                onContinue={() => {}}
+            />
+        );
     }
 
     // -----------------------------
@@ -669,7 +703,7 @@ export default function PinterestPotentialWizard({
             {stepIndex === 1 ? (
                 <Q1Segment
                     value={answers.segment}
-                    onChange={(v) => {
+                    onChangeAction={(v) => {
                         // keep state + clear only this step's visible error immediately
                         setAnswers((p) => ({ ...p, segment: v }));
                         setErrors((prev) => {
@@ -679,7 +713,7 @@ export default function PinterestPotentialWizard({
                             return n;
                         });
                     }}
-                    onAutoAdvance={(seg) => autoAdvance({ segment: seg })}
+                    onAutoAdvanceAction={(seg) => autoAdvance({ segment: seg })}
                 />
             ) : null}
 

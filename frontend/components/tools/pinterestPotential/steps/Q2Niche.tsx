@@ -47,7 +47,10 @@ import {
 import type { NicheSlug, Segment as SpecSegment } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
 import {
     getNicheUiOptions,
+    getNicheSearchPlaceholder,
+    getNicheSearchSuggestions,
     type AudiencePreviewLevel,
+    type NicheSearchSuggestion,
     type NicheUiOption,
 } from "@/lib/tools/pinterestPotential/nicheUiAdapter";
 
@@ -327,6 +330,16 @@ export default function Q2Niche({
     // Segment types may differ nominally between UI step props and the spec, so cast for adapter.
     const all = useMemo(() => getNicheUiOptions(segment as SpecSegment), [segment]);
 
+    // Canonical suggestions (adapter-owned) — used for placeholder + “try” chips.
+    const suggestions = useMemo<NicheSearchSuggestion[]>(
+        () => getNicheSearchSuggestions(segment as SpecSegment, 4),
+        [segment],
+    );
+    const placeholder = useMemo(
+        () => getNicheSearchPlaceholder(segment as SpecSegment),
+        [segment],
+    );
+
     // Keep the same UI behavior: primary = first 6 non-"other" (ordered by adapter)
     const primary = useMemo(() => {
         const withoutOther = all.filter((x) => x.value !== ("other" as NicheSlug));
@@ -388,6 +401,13 @@ export default function Q2Niche({
         }
     }
 
+    function applySuggestion(s: NicheSearchSuggestion) {
+        setQ(s.query);
+        setActiveIdx(0);
+        // keep focus in input if the sheet is open
+        window.setTimeout(() => inputRef.current?.focus(), 0);
+    }
+
     return (
         <div className="grid gap-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
@@ -410,8 +430,12 @@ export default function Q2Niche({
                             ].join(" ")}
                             role="note"
                         >
-                            <div className="text-xs text-[var(--foreground)]">Choose what your audience searches for — not your job title.</div>
-                            <div className="mt-2 text-xs text-[var(--foreground-muted)]">Example: “nursery organization” beats “baby brand”.</div>
+                            <div className="text-xs text-[var(--foreground)]">
+                                Choose what your audience searches for — not your job title.
+                            </div>
+                            <div className="mt-2 text-xs text-[var(--foreground-muted)]">
+                                Example: “nursery organization” beats “baby brand”.
+                            </div>
                         </div>
                     ) : null}
                 </div>
@@ -419,12 +443,7 @@ export default function Q2Niche({
 
             <div className="grid gap-3 md:grid-cols-2">
                 {primary.map((opt) => (
-                    <Tile
-                        key={opt.value}
-                        opt={opt}
-                        active={opt.value === value}
-                        onClick={() => select(opt.value)}
-                    />
+                    <Tile key={opt.value} opt={opt} active={opt.value === value} onClick={() => select(opt.value)} />
                 ))}
 
                 <button
@@ -468,7 +487,9 @@ export default function Q2Niche({
                             <div className="mt-1 flex items-center gap-3">
                                 <NicheIcon Icon={iconFromKey(selected.iconKey)} active />
                                 <div className="min-w-0">
-                                    <div className="text-sm font-semibold text-[var(--foreground)] md:text-base">{selected.label}</div>
+                                    <div className="text-sm font-semibold text-[var(--foreground)] md:text-base">
+                                        {selected.label}
+                                    </div>
                                     <div className="mt-1 text-xs text-[var(--foreground-muted)]">
                                         {audienceCopy(selected.audienceLevel as PreviewLevel)}
                                     </div>
@@ -504,14 +525,32 @@ export default function Q2Niche({
                                 setActiveIdx(0);
                             }}
                             onKeyDown={onSearchKeyDown}
-                            placeholder="Try: skincare, meal prep, nursery, home office…"
+                            placeholder={placeholder}
                             className={[
                                 "w-full rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_92%,transparent)] px-3 py-2 text-sm text-[var(--foreground)]",
                                 "placeholder:text-[color-mix(in_srgb,var(--foreground-muted)_70%,transparent)]",
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
                             ].join(" ")}
                         />
-                        <div className="text-xs text-[var(--foreground-muted)]">Tip: choose what your audience searches for (not your job title).</div>
+
+                        {/* Adapter-backed “try” chips (only when query is empty) */}
+                        {!q && suggestions.length > 0 ? (
+                            <div className="flex flex-wrap gap-2">
+                                {suggestions.map((s) => (
+                                    <SmallChip
+                                        key={s.query}
+                                        asButton
+                                        onClick={() => applySuggestion(s)}
+                                    >
+                                        {s.label}
+                                    </SmallChip>
+                                ))}
+                            </div>
+                        ) : null}
+
+                        <div className="text-xs text-[var(--foreground-muted)]">
+                            Tip: choose what your audience searches for (not your job title).
+                        </div>
                     </div>
 
                     {!q ? (
@@ -558,7 +597,9 @@ export default function Q2Niche({
                     ) : null}
 
                     <div className="mt-2 grid gap-2">
-                        <div className="text-xs font-semibold text-[var(--foreground)]">{q ? `Results (${filtered.length})` : "All niches"}</div>
+                        <div className="text-xs font-semibold text-[var(--foreground)]">
+                            {q ? `Results (${filtered.length})` : "All niches"}
+                        </div>
 
                         {filtered.length === 0 ? (
                             <div className="rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_45%,transparent)] p-4 text-sm text-[var(--foreground-muted)]">

@@ -209,3 +209,68 @@ export function getPrimaryNicheUiOptions(segment: Segment): NicheUiOption[] {
     const withoutOther = all.filter((x) => x.value !== "other");
     return withoutOther.slice(0, 6);
 }
+
+/* ------------------------------------------------------------------ */
+/* Search suggestions — canonical hint copy for Q2 search input        */
+/* ------------------------------------------------------------------ */
+
+export type NicheSearchSuggestion = {
+    /** The text we display to the user (chip label / placeholder token) */
+    label: string;
+    /** The search query we inject (can be same as label) */
+    query: string;
+    /** Optional mapping back to a real niche (useful for debugging) */
+    niche?: NicheSlug;
+};
+
+/**
+ * Canonical suggestions for Q2 search hinting.
+ *
+ * Boundary rule:
+ * - UI must not invent these strings.
+ * - Suggestions must be derived from real spec+adapter data, so they stay valid when niches/meta change.
+ */
+export function getNicheSearchSuggestions(segment: Segment, limit = 4): NicheSearchSuggestion[] {
+    const opts = getNicheUiOptions(segment);
+
+    const out: NicheSearchSuggestion[] = [];
+    const seen = new Set<string>();
+
+    function add(label: string, niche?: NicheSlug) {
+        const q = label.trim();
+        if (!q) return;
+        const key = q.toLowerCase();
+        if (seen.has(key)) return;
+        seen.add(key);
+        out.push({ label: q, query: q, niche });
+    }
+
+    // Primary strategy: harvest from per-niche keywords (highest-signal “search-like” terms).
+    for (const o of opts) {
+        if (o.value === "other") continue;
+
+        const ks = o.keywords ?? [];
+        for (const k of ks) {
+            add(k, o.value);
+            if (out.length >= limit) return out;
+        }
+    }
+
+    // Fallback: use niche labels (still “real”).
+    for (const o of opts) {
+        if (o.value === "other") continue;
+        add(o.label, o.value);
+        if (out.length >= limit) break;
+    }
+
+    return out;
+}
+
+/**
+ * Convenience: single placeholder string derived from canonical suggestions.
+ */
+export function getNicheSearchPlaceholder(segment: Segment): string {
+    const s = getNicheSearchSuggestions(segment, 4);
+    if (s.length === 0) return "Search…";
+    return `Try: ${s.map((x) => x.label).join(", ")}…`;
+}

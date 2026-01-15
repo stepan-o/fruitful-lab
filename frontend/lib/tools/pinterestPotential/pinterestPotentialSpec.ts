@@ -1,3 +1,4 @@
+// frontend/lib/tools/pinterestPotential/pinterestPotentialSpec.ts
 /**
  * Fruitful Lab — Pinterest Potential Calculator (v0.2 Locked)
  * Canonical spec: Questions (Q1–Q8), answer types, copy maps, option sets, and validation.
@@ -107,23 +108,23 @@ export type SingleSelectQuestion<T extends string> = BaseQuestion & {
     options: Array<Option<T>>;
 };
 
-export type DynamicSingleSelectQuestion = BaseQuestion & {
+export type DynamicSingleSelectQuestion<T extends string = string> = BaseQuestion & {
     type: "dynamic_single_select";
     /**
      * Options depend on segment. UI should call getOptions(segment).
      * Validation will also use this.
      */
-    getOptions: (segment: Segment) => Array<Option<string>>;
+    getOptions: (segment: Segment) => Array<Option<T>>;
 };
 
 export type Question =
     | SingleSelectQuestion<Segment>
-    | DynamicSingleSelectQuestion
+    | DynamicSingleSelectQuestion<NicheSlug>
     | SingleSelectQuestion<VolumeBucket>
     | SingleSelectQuestion<VisualStrength>
     | SingleSelectQuestion<SiteExperience>
-    | DynamicSingleSelectQuestion
-    | DynamicSingleSelectQuestion
+    | DynamicSingleSelectQuestion<OfferClarity>
+    | DynamicSingleSelectQuestion<PrimaryGoal>
     | SingleSelectQuestion<GrowthMode>;
 
 // -------------------------------------
@@ -276,7 +277,7 @@ export const Q1: SingleSelectQuestion<Segment> = {
     ],
 };
 
-export const Q2: DynamicSingleSelectQuestion = {
+export const Q2: DynamicSingleSelectQuestion<NicheSlug> = {
     id: "Q2",
     type: "dynamic_single_select",
     prompt: Q2_PROMPT,
@@ -325,7 +326,7 @@ export const Q5: SingleSelectQuestion<SiteExperience> = {
     ],
 };
 
-export const Q6: DynamicSingleSelectQuestion = {
+export const Q6: DynamicSingleSelectQuestion<OfferClarity> = {
     id: "Q6",
     type: "dynamic_single_select",
     prompt: "Offer clarity", // UI should prefer getQ6Prompt(segment)
@@ -337,7 +338,7 @@ export const Q6: DynamicSingleSelectQuestion = {
     ],
 };
 
-export const Q7: DynamicSingleSelectQuestion = {
+export const Q7: DynamicSingleSelectQuestion<PrimaryGoal> = {
     id: "Q7",
     type: "dynamic_single_select",
     prompt: Q7_PROMPT,

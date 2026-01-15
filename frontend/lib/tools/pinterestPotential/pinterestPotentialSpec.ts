@@ -1,6 +1,6 @@
 /**
  * Fruitful Lab — Pinterest Potential Calculator (v0.2 Locked)
- * Canonical spec: Questions (Q1–Q8), answer types, copy maps, and validation.
+ * Canonical spec: Questions (Q1–Q8), answer types, copy maps, option sets, and validation.
  *
  * v0.2 changes (breaking, no draft/back-compat):
  * - Flow is now 8 questions total (Q1–Q8), generalized beyond baby/family.
@@ -9,7 +9,8 @@
  * - Lead gating is no longer a "question" in the spec; it's a flow capability.
  *
  * NOTE:
- * - Compute is config-driven and will live in compute.ts + benchmarks/multipliers configs.
+ * - Compute is config-driven and lives in compute.ts + benchmarks/multipliers configs.
+ * - UI enrichment (badges, includes, keywords, icons, "popular" derivations) MUST live in the spec→UI adapter.
  * - This file defines only: schema + copy + option sets + validation.
  */
 
@@ -127,6 +128,7 @@ export type Question =
 
 // -------------------------------------
 // Q2: Niche sets (segment-specific)
+// (IMPORTANT: This is canonical. UI meta belongs in nicheUiAdapter.ts)
 // -------------------------------------
 
 export type ContentCreatorNiche =
@@ -457,22 +459,4 @@ export function validateLead(lead: Lead): ValidationResult {
     // name optional; validate only if present but blank-ish
     if (lead.name !== undefined && !lead.name.trim()) errors["LEAD.name"] = "Name cannot be empty.";
     return { ok: Object.keys(errors).length === 0, errors };
-}
-
-// -------------------------------------
-// Tiny UI helpers (non-numeric audience size preview)
-// -------------------------------------
-
-export type AudienceSizeLabel = "Focused" | "Medium" | "Broad";
-
-/**
- * UI-only helper for Q2 preview meter.
- * The actual mapping will likely become benchmark-driven in compute/config later.
- * For now, keep this conservative and override-able by future config.
- */
-export function defaultAudienceSizeLabelForNiche(_segment: Segment, niche: NicheSlug): AudienceSizeLabel {
-    // Very rough defaults; v0.2 compute/benchmarks should be the true source of truth later.
-    if (niche === "travel" || niche === "home_decor" || niche === "food" || niche === "beauty_fashion") return "Broad";
-    if (niche === "finance" || niche === "real_estate_home" || niche === "pets" || niche === "wellness") return "Medium";
-    return "Focused";
 }

@@ -45,180 +45,13 @@ import {
 } from "lucide-react";
 
 import type { NicheSlug, Segment as SpecSegment } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
-import { getAudiencePreviewLevel } from "@/lib/tools/pinterestPotential/audiencePreview";
+import {
+    getNicheUiOptions,
+    type AudiencePreviewLevel,
+    type NicheUiOption,
+} from "@/lib/tools/pinterestPotential/nicheUiAdapter";
 
-type PreviewLevel = "Focused" | "Medium" | "Broad";
-
-type NicheOpt = {
-    label: string;
-    value: NicheSlug;
-    includes?: string;
-    keywords?: string[];
-};
-
-const NICHES: Record<Segment, NicheOpt[]> = {
-    content_creator: [
-        {
-            label: "Food & Recipes",
-            value: "food",
-            includes: "recipes, meal prep, baking",
-            keywords: ["cooking", "baking", "meal prep"],
-        },
-        {
-            label: "Travel",
-            value: "travel",
-            includes: "guides, itineraries, tips",
-            keywords: ["itinerary", "guide", "destinations"],
-        },
-        {
-            label: "Home & DIY",
-            value: "home_diy",
-            includes: "decor, projects, renovation",
-            keywords: ["decor", "renovation", "projects"],
-        },
-        {
-            label: "Lifestyle & Inspiration",
-            value: "lifestyle",
-            includes: "habits, routines, ideas",
-            keywords: ["routine", "habits", "aesthetic"],
-        },
-        {
-            label: "Health & Wellness",
-            value: "wellness",
-            includes: "fitness, self-care, wellness",
-            keywords: ["fitness", "mindfulness", "self care"],
-        },
-        {
-            label: "Parenting & Family",
-            value: "parenting",
-            includes: "kids, baby, family life",
-            keywords: ["kids", "baby", "family"],
-        },
-        {
-            label: "Beauty & Fashion",
-            value: "beauty_fashion",
-            includes: "outfits, makeup, style",
-            keywords: ["outfits", "makeup", "style"],
-        },
-        {
-            label: "Personal Finance",
-            value: "finance",
-            includes: "budgeting, saving, planning",
-            keywords: ["budget", "saving", "investing"],
-        },
-        {
-            label: "Crafts & Hobbies",
-            value: "crafts",
-            includes: "DIY crafts, printables, handmade",
-            keywords: ["printables", "crochet", "handmade"],
-        },
-        { label: "Other", value: "other", includes: "your specific topic", keywords: ["misc"] },
-    ],
-    product_seller: [
-        {
-            label: "Baby & Family Products",
-            value: "baby_family",
-            includes: "nursery, registry, kids",
-            keywords: ["nursery", "baby registry"],
-        },
-        {
-            label: "Home & Decor",
-            value: "home_decor",
-            includes: "decor, furniture, styling",
-            keywords: ["interior", "furniture", "decor"],
-        },
-        {
-            label: "Beauty & Skincare",
-            value: "beauty",
-            includes: "skincare, hair, makeup",
-            keywords: ["skincare", "makeup", "hair"],
-        },
-        {
-            label: "Fashion & Accessories",
-            value: "fashion",
-            includes: "apparel, jewelry, bags",
-            keywords: ["jewelry", "bags", "outfits"],
-        },
-        {
-            label: "Health & Wellness",
-            value: "wellness",
-            includes: "wellbeing, lifestyle, products",
-            keywords: ["supplements", "wellbeing"],
-        },
-        {
-            label: "Food & Beverage (CPG)",
-            value: "food_bev",
-            includes: "snacks, coffee, pantry",
-            keywords: ["snacks", "coffee", "tea"],
-        },
-        {
-            label: "Pets",
-            value: "pets",
-            includes: "pet care, accessories, treats",
-            keywords: ["dog", "cat", "pet care"],
-        },
-        {
-            label: "Crafts & Digital Products",
-            value: "digital_crafts",
-            includes: "templates, downloads, DIY",
-            keywords: ["templates", "svg", "download"],
-        },
-        {
-            label: "Travel Gear & Accessories",
-            value: "travel_gear",
-            includes: "packing, luggage, gear",
-            keywords: ["luggage", "packing"],
-        },
-        { label: "Other", value: "other", includes: "your specific category", keywords: ["misc"] },
-    ],
-    service_provider: [
-        {
-            label: "Coach / Consultant",
-            value: "coach",
-            includes: "offers, programs, advice",
-            keywords: ["business coach", "mentor"],
-        },
-        { label: "Designer", value: "designer", includes: "brand, web, visuals", keywords: ["brand", "web", "graphic"] },
-        {
-            label: "Educator / Course Creator",
-            value: "educator",
-            includes: "courses, teaching, training",
-            keywords: ["course", "teacher"],
-        },
-        {
-            label: "Wellness Practitioner",
-            value: "wellness_practitioner",
-            includes: "therapy, yoga, healing",
-            keywords: ["therapist", "healer", "yoga"],
-        },
-        {
-            label: "Marketing / Creative Agency",
-            value: "agency",
-            includes: "strategy, creative, campaigns",
-            keywords: ["studio", "marketing", "creative"],
-        },
-        {
-            label: "Photographer / Videographer",
-            value: "photo_video",
-            includes: "photo, video, content",
-            keywords: ["photo", "video", "content"],
-        },
-        {
-            label: "Real Estate / Home Services",
-            value: "real_estate_home",
-            includes: "realtor, staging, home",
-            keywords: ["realtor", "staging", "home"],
-        },
-        {
-            label: "Event / Wedding Services",
-            value: "events",
-            includes: "weddings, planning, events",
-            keywords: ["wedding", "planner"],
-        },
-        { label: "Finance / Bookkeeping", value: "finance", includes: "accounting, bookkeeping", keywords: ["accounting", "bookkeeping"] },
-        { label: "Other", value: "other", includes: "your specific service", keywords: ["misc"] },
-    ],
-};
+type PreviewLevel = AudiencePreviewLevel;
 
 function segmentHint(seg: Segment) {
     if (seg === "content_creator") return "Pick what you publish about most.";
@@ -230,56 +63,49 @@ function normalize(s: string) {
     return s.toLowerCase().trim();
 }
 
-/** Benchmark-driven audience preview (source of truth: benchmarks.ts) */
-function audienceLevelFor(segment: Segment, niche: NicheSlug): PreviewLevel {
-    // Cast to spec Segment to satisfy any nominal-type differences across modules.
-    return getAudiencePreviewLevel(segment as SpecSegment, niche);
-}
-
-/** Map (segment + value) → meaningful icon */
-function iconFor(segment: Segment, value: string): LucideIcon {
+/**
+ * Visualization-only mapping.
+ * Adapter provides `iconKey` (canonical for UI), component maps it to a Lucide icon.
+ * No niche logic here.
+ */
+const ICONS: Record<string, LucideIcon> = {
     // common
-    if (value === "other") return Shapes;
-    if (value === "finance") return PiggyBank;
-    if (value === "wellness") return HeartPulse;
+    Shapes,
+    Sparkles,
+    HeartPulse,
+    PiggyBank,
+    Calculator,
 
     // content creator
-    if (segment === "content_creator") {
-        if (value === "food") return Utensils;
-        if (value === "travel") return Plane;
-        if (value === "home_diy") return Hammer;
-        if (value === "lifestyle") return Sparkles;
-        if (value === "parenting") return Baby;
-        if (value === "beauty_fashion") return Shirt;
-        if (value === "crafts") return Scissors;
-    }
+    Utensils,
+    Plane,
+    Hammer,
+    Baby,
+    Shirt,
+    Scissors,
 
     // product seller
-    if (segment === "product_seller") {
-        if (value === "baby_family") return Baby;
-        if (value === "home_decor") return Sofa;
-        if (value === "beauty") return Droplets;
-        if (value === "fashion") return ShoppingBag;
-        if (value === "food_bev") return Coffee;
-        if (value === "pets") return PawPrint;
-        if (value === "digital_crafts") return FileDown;
-        if (value === "travel_gear") return Backpack;
-    }
+    Sofa,
+    Droplets,
+    ShoppingBag,
+    Coffee,
+    PawPrint,
+    FileDown,
+    Backpack,
 
     // service provider
-    if (segment === "service_provider") {
-        if (value === "coach") return Speech;
-        if (value === "designer") return Palette;
-        if (value === "educator") return GraduationCap;
-        if (value === "wellness_practitioner") return Leaf;
-        if (value === "agency") return Briefcase;
-        if (value === "photo_video") return Camera;
-        if (value === "real_estate_home") return Home;
-        if (value === "events") return PartyPopper;
-        if (value === "finance") return Calculator;
-    }
+    Speech,
+    Palette,
+    GraduationCap,
+    Leaf,
+    Briefcase,
+    Camera,
+    Home,
+    PartyPopper,
+};
 
-    return Sparkles;
+function iconFromKey(iconKey: string): LucideIcon {
+    return ICONS[iconKey] ?? Sparkles;
 }
 
 function audienceLabel(level: PreviewLevel) {
@@ -312,8 +138,8 @@ function audienceBadge(level: PreviewLevel) {
             ].join(" ")}
             title={audienceCopy(level)}
         >
-      Audience: {audienceLabel(level)}
-    </span>
+            Audience: {audienceLabel(level)}
+        </span>
     );
 }
 
@@ -331,8 +157,8 @@ function Highlight({ text, q }: { text: string; q: string }) {
         <>
             {before}
             <span className="rounded-sm bg-[color-mix(in_srgb,var(--brand-bronze)_22%,transparent)] px-1 text-[var(--foreground)]">
-        {match}
-      </span>
+                {match}
+            </span>
             {after}
         </>
     );
@@ -377,15 +203,15 @@ function SmallChip({
 
     return (
         <span className={cls}>
-      {dot ? (
-          <span
-              className="inline-block h-1.5 w-1.5 rounded-full"
-              style={{ background: "var(--brand-raspberry)" }}
-              aria-hidden="true"
-          />
-      ) : null}
+            {dot ? (
+                <span
+                    className="inline-block h-1.5 w-1.5 rounded-full"
+                    style={{ background: "var(--brand-raspberry)" }}
+                    aria-hidden="true"
+                />
+            ) : null}
             {children}
-    </span>
+        </span>
     );
 }
 
@@ -402,11 +228,11 @@ function NicheIcon({ Icon, active }: { Icon: LucideIcon; active: boolean }) {
                 "shadow-[0_10px_30px_rgba(0,0,0,0.18)]",
             ].join(" ")}
         >
-      <Icon
-          className={["h-5 w-5", active ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]"].join(" ")}
-          strokeWidth={2}
-      />
-    </span>
+            <Icon
+                className={["h-5 w-5", active ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]"].join(" ")}
+                strokeWidth={2}
+            />
+        </span>
     );
 }
 
@@ -414,15 +240,13 @@ function Tile({
                   opt,
                   active,
                   onClick,
-                  segment,
               }: {
-    opt: NicheOpt;
+    opt: NicheUiOption;
     active: boolean;
     onClick: () => void;
-    segment: Segment;
 }) {
-    const Icon = iconFor(segment, opt.value);
-    const level = audienceLevelFor(segment, opt.value);
+    const Icon = iconFromKey(opt.iconKey);
+    const level = opt.audienceLevel as PreviewLevel;
 
     return (
         <button
@@ -467,13 +291,13 @@ function Tile({
                                 {audienceBadge(level)}
                                 {active ? (
                                     <span className="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_14%,transparent)] px-3 py-1 text-xs text-[var(--foreground)]">
-                    <span
-                        className="inline-block h-2 w-2 rounded-full"
-                        style={{ background: "var(--brand-raspberry)" }}
-                        aria-hidden="true"
-                    />
-                    Selected
-                  </span>
+                                        <span
+                                            className="inline-block h-2 w-2 rounded-full"
+                                            style={{ background: "var(--brand-raspberry)" }}
+                                            aria-hidden="true"
+                                        />
+                                        Selected
+                                    </span>
                                 ) : null}
                             </div>
                         </div>
@@ -499,10 +323,13 @@ export default function Q2Niche({
     const [assistOpen, setAssistOpen] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const all = NICHES[segment];
+    // Adapter is canonical for UI rendering (includes/search keywords/badges/icons).
+    // Segment types may differ nominally between UI step props and the spec, so cast for adapter.
+    const all = useMemo(() => getNicheUiOptions(segment as SpecSegment), [segment]);
 
+    // Keep the same UI behavior: primary = first 6 non-"other" (ordered by adapter)
     const primary = useMemo(() => {
-        const withoutOther = all.filter((x) => x.value !== "other");
+        const withoutOther = all.filter((x) => x.value !== ("other" as NicheSlug));
         return withoutOther.slice(0, 6);
     }, [all]);
 
@@ -592,7 +419,12 @@ export default function Q2Niche({
 
             <div className="grid gap-3 md:grid-cols-2">
                 {primary.map((opt) => (
-                    <Tile key={opt.value} opt={opt} active={opt.value === value} onClick={() => select(opt.value)} segment={segment} />
+                    <Tile
+                        key={opt.value}
+                        opt={opt}
+                        active={opt.value === value}
+                        onClick={() => select(opt.value)}
+                    />
                 ))}
 
                 <button
@@ -634,17 +466,17 @@ export default function Q2Niche({
                         <div className="min-w-0">
                             <div className="text-xs text-[var(--foreground-muted)]">Your selection</div>
                             <div className="mt-1 flex items-center gap-3">
-                                <NicheIcon Icon={iconFor(segment, selected.value)} active />
+                                <NicheIcon Icon={iconFromKey(selected.iconKey)} active />
                                 <div className="min-w-0">
                                     <div className="text-sm font-semibold text-[var(--foreground)] md:text-base">{selected.label}</div>
                                     <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                        {audienceCopy(audienceLevelFor(segment, selected.value))}
+                                        {audienceCopy(selected.audienceLevel as PreviewLevel)}
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {audienceBadge(audienceLevelFor(segment, selected.value))}
+                        {audienceBadge(selected.audienceLevel as PreviewLevel)}
                     </div>
                 </div>
             ) : null}
@@ -688,8 +520,8 @@ export default function Q2Niche({
                             <div className="grid gap-2 md:grid-cols-2">
                                 {primary.map((opt) => {
                                     const active = opt.value === value;
-                                    const Icon = iconFor(segment, opt.value);
-                                    const level = audienceLevelFor(segment, opt.value);
+                                    const Icon = iconFromKey(opt.iconKey);
+                                    const level = opt.audienceLevel as PreviewLevel;
 
                                     return (
                                         <button
@@ -704,9 +536,9 @@ export default function Q2Niche({
                                         >
                                             <div className="flex items-start justify-between gap-3">
                                                 <div className="flex items-start gap-3">
-                          <span className="mt-0.5 grid h-9 w-9 place-items-center rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_40%,transparent)]">
-                            <Icon className="h-4 w-4 text-[var(--foreground-muted)]" />
-                          </span>
+                                                    <span className="mt-0.5 grid h-9 w-9 place-items-center rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_40%,transparent)]">
+                                                        <Icon className="h-4 w-4 text-[var(--foreground-muted)]" />
+                                                    </span>
                                                     <div className="min-w-0">
                                                         <div className="text-sm font-semibold text-[var(--foreground)]">{opt.label}</div>
                                                         <div className="mt-1 text-xs text-[var(--foreground-muted)]">{opt.includes}</div>
@@ -737,8 +569,8 @@ export default function Q2Niche({
                                 {filtered.map((opt, idx) => {
                                     const isActiveRow = idx === activeIdx;
                                     const active = opt.value === value;
-                                    const Icon = iconFor(segment, opt.value);
-                                    const level = audienceLevelFor(segment, opt.value);
+                                    const Icon = iconFromKey(opt.iconKey);
+                                    const level = opt.audienceLevel as PreviewLevel;
 
                                     return (
                                         <button
@@ -755,9 +587,9 @@ export default function Q2Niche({
                                         >
                                             <div className="flex items-start justify-between gap-3">
                                                 <div className="flex items-start gap-3">
-                          <span className="mt-0.5 grid h-9 w-9 place-items-center rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_40%,transparent)]">
-                            <Icon className="h-4 w-4 text-[var(--foreground-muted)]" />
-                          </span>
+                                                    <span className="mt-0.5 grid h-9 w-9 place-items-center rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_40%,transparent)]">
+                                                        <Icon className="h-4 w-4 text-[var(--foreground-muted)]" />
+                                                    </span>
 
                                                     <div className="min-w-0">
                                                         <div className="text-sm font-semibold text-[var(--foreground)]">

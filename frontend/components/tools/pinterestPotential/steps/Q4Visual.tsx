@@ -304,9 +304,9 @@ function GuidanceBlock({ guidance }: { guidance: string }) {
 
 /**
  * Composition rule (per option):
- * 1) Preview is primary + should only take the space it needs (no flex-1 row eating).
- * 2) Guidance text sits to the right INSIDE the option border, no extra border.
- * 3) If there isn't enough space, guidance wraps below and expands full-width on that row.
+ * 1) Preview is primary, but MUST NOT force-wrap guidance due to a min-width.
+ * 2) Guidance sits to the right INSIDE the option border when >= sm.
+ * 3) On narrow widths, it stacks below.
  */
 function VisualStack({
                          level,
@@ -356,36 +356,35 @@ function VisualStack({
     const density: 1 | 2 | 3 = level === 1 ? 1 : level === 2 ? 2 : 3;
 
     const panelSize = useMemo(() => {
-        // Make the preview container hug its contents (no row-eating),
-        // while staying safe inside the option tile.
         const used = placements.slice(0, spec.length);
         const maxX = Math.max(...used.map((p) => p.x + p.w));
         const maxY = Math.max(...used.map((p) => p.y + p.h));
-        const pad = 16; // breathing room + fade + chip
+        const pad = 16;
         const w = Math.ceil(maxX + pad);
         const h = Math.ceil(maxY + pad);
 
-        // Clamp to a sane range so it doesn't balloon on weird tweaks.
         return {
-            w: Math.max(230, Math.min(520, w)),
+            w: Math.max(230, Math.min(440, w)),
             h: Math.max(132, Math.min(210, h)),
         };
     }, [placements, spec.length]);
 
+    const panelW = useMemo(() => Math.min(panelSize.w, 320), [panelSize.w]);
+
     return (
         <div className="mt-3">
-            <div className="flex flex-wrap items-start gap-4">
-                {/* PREVIEW: hugs its own width (no flex-1) */}
+            {/* key: guidance can SHRINK (min-w-0) so it stays beside preview on desktop */}
+            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-start sm:gap-4 sm:flex-nowrap">
+                {/* PREVIEW */}
                 <div
                     className={[
                         "relative rounded-xl border",
                         "border-[var(--border)] bg-[var(--card)] p-3",
                         "overflow-hidden isolate",
-                        // key: do NOT grow; only take what you need.
                         "flex-none",
                     ].join(" ")}
                     style={{
-                        width: `min(${panelSize.w}px, 100%)`,
+                        width: `min(${panelW}px, 100%)`,
                         height: panelSize.h,
                     }}
                     aria-hidden="true"
@@ -457,8 +456,8 @@ function VisualStack({
                     </div>
                 </div>
 
-                {/* GUIDANCE: no border; grows to fill remaining space; if wrapped, it expands full width */}
-                <div className="min-w-[240px] flex-1">
+                {/* GUIDANCE: allow shrink, so it does NOT wrap unnecessarily */}
+                <div className="min-w-0 flex-1">
                     <GuidanceBlock guidance={guidance} />
                 </div>
             </div>

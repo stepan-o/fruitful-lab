@@ -6,11 +6,85 @@ import type { VisualStrength, StepBaseProps } from "./ppcV2Types";
 type Opt = {
     v: VisualStrength;
     title: string;
-    subtitle: string;
+    subtitle: string; // will live inside the pill now
     level: 1 | 2 | 3 | 4;
-    badge: string;
     guidance: string;
 };
+
+function SelectedChip() {
+    return (
+        <span
+            className={[
+                "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs",
+                "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] text-[var(--foreground)]",
+            ].join(" ")}
+        >
+      <span className="h-2.5 w-2.5 rounded-full bg-[var(--brand-raspberry)] shadow-[0_0_0_2px_rgba(0,0,0,0.25)_inset]" />
+      Selected
+    </span>
+    );
+}
+
+function LevelBadge({
+                        level,
+                        subtitle,
+                        selected,
+                    }: {
+    level: 1 | 2 | 3 | 4;
+    subtitle: string;
+    selected: boolean;
+}) {
+    const tone =
+        level === 1
+            ? {
+                dot: "bg-[var(--card)]",
+                ring: "border-[var(--border)]",
+                text: "text-[var(--foreground-muted)]",
+                bg: "bg-[var(--ppc-chip-bg)]",
+            }
+            : level === 2
+                ? {
+                    dot: "bg-[var(--brand-bronze)]",
+                    ring: "border-[color-mix(in_srgb,var(--brand-bronze)_45%,transparent)]",
+                    text: "text-[var(--foreground)]",
+                    bg: "bg-[color-mix(in_srgb,var(--brand-bronze)_10%,var(--ppc-chip-bg))]",
+                }
+                : level === 3
+                    ? {
+                        dot: "bg-[var(--brand-rust)]",
+                        ring: "border-[color-mix(in_srgb,var(--brand-rust)_50%,transparent)]",
+                        text: "text-[var(--foreground)]",
+                        bg: "bg-[color-mix(in_srgb,var(--brand-rust)_10%,var(--ppc-chip-bg))]",
+                    }
+                    : {
+                        dot: "bg-[var(--brand-raspberry)]",
+                        ring: "border-[color-mix(in_srgb,var(--brand-raspberry)_55%,transparent)]",
+                        text: "text-[var(--foreground)]",
+                        bg: "bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,var(--ppc-chip-bg))]",
+                    };
+
+    return (
+        <span
+            className={[
+                "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs",
+                tone.ring,
+                tone.bg,
+                selected ? "shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]" : "",
+            ].join(" ")}
+            title={subtitle}
+        >
+      <span
+          className={[
+              "h-1.5 w-1.5 rounded-full",
+              tone.dot,
+              selected ? "opacity-100" : "opacity-80",
+          ].join(" ")}
+          aria-hidden="true"
+      />
+      <span className={[tone.text, "whitespace-nowrap"].join(" ")}>{subtitle}</span>
+    </span>
+    );
+}
 
 function LevelPips({
                        level,
@@ -42,228 +116,149 @@ function LevelPips({
     );
 }
 
-function SelectedChip() {
-    return (
-        <span
-            className={[
-                "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs",
-                "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] text-[var(--foreground)]",
-            ].join(" ")}
-        >
-      <span className="h-2.5 w-2.5 rounded-full bg-[var(--brand-raspberry)] shadow-[0_0_0_2px_rgba(0,0,0,0.25)_inset]" />
-      Selected
-    </span>
-    );
-}
-
 type PinKind = "photo" | "video" | "carousel" | "product" | "before_after" | "ugc";
 
-function KindGlyph({ kind }: { kind: PinKind }) {
-    const base =
-        "grid h-7 w-7 place-items-center rounded-full border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] text-[var(--foreground-muted)] shadow-[0_1px_0_rgba(255,255,255,0.06)_inset]";
-    const icon =
-        kind === "video" ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" className="opacity-90">
-                <path
-                    d="M10 8.8v6.4c0 .6.7 1 1.2.6l5-3.2c.5-.3.5-1 0-1.3l-5-3.2c-.5-.3-1.2 0-1.2.7Z"
-                    fill="currentColor"
-                />
-            </svg>
-        ) : kind === "carousel" ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" className="opacity-90">
-                <path
-                    d="M7 7h10a2 2 0 0 1 2 2v10H9a2 2 0 0 1-2-2V7Z"
-                    fill="currentColor"
-                    opacity="0.8"
-                />
-                <path d="M5 5h10a2 2 0 0 1 2 2H7a2 2 0 0 1-2-2V5Z" fill="currentColor" opacity="0.35" />
-            </svg>
-        ) : kind === "product" ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" className="opacity-90">
-                <path d="M7 8h10l-1 12H8L7 8Zm3-4h4l1 4H9l1-4Z" fill="currentColor" opacity="0.9" />
-            </svg>
-        ) : kind === "before_after" ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" className="opacity-90">
-                <path d="M5 6h6v12H5V6Z" fill="currentColor" opacity="0.35" />
-                <path d="M13 6h6v12h-6V6Z" fill="currentColor" opacity="0.85" />
-                <path d="M12 6v12" stroke="currentColor" strokeWidth="2" opacity="0.7" />
-            </svg>
-        ) : kind === "ugc" ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" className="opacity-90">
-                <path
-                    d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-7 9a7 7 0 0 1 14 0"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    opacity="0.85"
-                />
-            </svg>
-        ) : (
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" className="opacity-90">
-                <path
-                    d="M7 7h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"
-                    fill="currentColor"
-                    opacity="0.9"
-                />
-                <path d="M8 16l3-3 2 2 3-4 2 5H8Z" fill="currentColor" opacity="0.22" />
-            </svg>
-        );
-
-    return <span className={base}>{icon}</span>;
-}
-
-function CaptionLines({ strength }: { strength: 1 | 2 | 3 }) {
-    const w1 = strength === 1 ? "w-1/2" : strength === 2 ? "w-2/3" : "w-3/4";
-    const w2 = strength === 1 ? "w-1/3" : strength === 2 ? "w-1/2" : "w-2/3";
-    const w3 = strength === 1 ? "w-2/5" : strength === 2 ? "w-3/5" : "w-4/5";
-
-    return (
-        <div className="mt-2 space-y-1.5">
-            <div className={["h-2 rounded bg-[var(--card)] opacity-70", w1].join(" ")} />
-            <div className={["h-2 rounded bg-[var(--card)] opacity-45", w2].join(" ")} />
-            <div className={["h-2 rounded bg-[var(--card)] opacity-25", w3].join(" ")} />
-        </div>
-    );
-}
-
-function MediaArea({
-                       kind,
-                       selected,
-                       intensity,
-                   }: {
-    kind: PinKind;
-    selected: boolean;
-    intensity: 1 | 2 | 3;
-}) {
-    const overlay =
-        kind === "video"
-            ? "radial-gradient(120px 60px at 68% 40%, rgba(255,255,255,0.12), transparent 60%)"
-            : kind === "product"
-                ? "radial-gradient(140px 70px at 60% 35%, rgba(255,255,255,0.10), transparent 60%)"
-                : kind === "carousel"
-                    ? "radial-gradient(140px 70px at 35% 30%, rgba(255,255,255,0.12), transparent 60%)"
-                    : kind === "before_after"
-                        ? "linear-gradient(90deg, rgba(255,255,255,0.10), transparent 55%)"
-                        : kind === "ugc"
-                            ? "radial-gradient(120px 70px at 35% 35%, rgba(255,255,255,0.10), transparent 62%)"
-                            : "radial-gradient(140px 70px at 30% 35%, rgba(255,255,255,0.12), transparent 62%)";
-
-    return (
-        <div className="relative overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--background)]">
-            <div className="absolute inset-0 ppc-media" />
-
-            <div
-                className="absolute inset-0"
-                style={{
-                    background:
-                        "linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.22)), radial-gradient(220px 110px at 20% 25%, rgba(149,9,82,0.20), transparent 60%), radial-gradient(260px 140px at 85% 75%, rgba(213,137,54,0.18), transparent 62%)",
-                    opacity: 0.95,
-                }}
-            />
-
-            <div className="absolute inset-0" style={{ background: overlay, opacity: 0.9 }} />
-
-            {/* sheen */}
-            <div
-                className={[
-                    "absolute inset-0 pointer-events-none opacity-0 transition-opacity",
-                    selected ? "opacity-100" : "group-hover:opacity-70",
-                ].join(" ")}
-                style={{
-                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)",
-                    transform: "translateX(-65%)",
-                    animation: selected ? "ppcSheen 2.6s ease-in-out infinite" : undefined,
-                }}
-            />
-
-            {kind === "video" ? (
-                <div className="absolute left-3 top-3 grid h-7 w-7 place-items-center rounded-full border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] text-[var(--foreground)] shadow-[0_1px_0_rgba(255,255,255,0.06)_inset]">
-                    <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" className="opacity-90">
-                        <path
-                            d="M10 8.8v6.4c0 .6.7 1 1.2.6l5-3.2c.5-.3.5-1 0-1.3l-5-3.2c-.5-.3-1.2 0-1.2.7Z"
-                            fill="currentColor"
-                        />
-                    </svg>
-                </div>
-            ) : null}
-
-            {kind === "carousel" ? (
-                <div className="absolute right-3 top-3 flex items-center gap-1">
-                    {[1, 2, 3].map((n) => (
-                        <span
-                            key={n}
-                            className={[
-                                "h-1.5 w-1.5 rounded-full",
-                                n === 2 ? "bg-[var(--brand-bronze)]" : "bg-[var(--card)]",
-                                "opacity-80",
-                            ].join(" ")}
-                        />
-                    ))}
-                </div>
-            ) : null}
-
-            {kind === "product" ? (
-                <div className="absolute right-3 bottom-3 rounded-full border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
-                    $$
-                </div>
-            ) : null}
-
-            <div
-                className="absolute inset-0"
-                style={{
-                    background:
-                        intensity === 1
-                            ? "linear-gradient(transparent 90%, rgba(255,255,255,0.04))"
-                            : intensity === 2
-                                ? "linear-gradient(transparent 82%, rgba(255,255,255,0.05))"
-                                : "linear-gradient(transparent 74%, rgba(255,255,255,0.06))",
-                    opacity: 0.7,
-                }}
-            />
-        </div>
-    );
-}
-
+/**
+ * “Real-ish content” pin card:
+ * - no circular pictograms
+ * - reads like a piece of content (title, meta, badges)
+ * - lively image area (animated texture + sheen on hover/selected)
+ */
 function PinCard({
                      kind,
+                     level,
                      selected,
                      active,
-                     density,
                      style,
                  }: {
     kind: PinKind;
+    level: 1 | 2 | 3 | 4;
     selected: boolean;
     active: boolean;
-    density: 1 | 2 | 3;
     style?: React.CSSProperties;
 }) {
+    const meta =
+        kind === "video"
+            ? { badge: "Video", badgeTone: "bg-[color-mix(in_srgb,var(--brand-raspberry)_14%,transparent)]" }
+            : kind === "carousel"
+                ? { badge: "Carousel", badgeTone: "bg-[color-mix(in_srgb,var(--brand-bronze)_12%,transparent)]" }
+                : kind === "product"
+                    ? { badge: "Shop", badgeTone: "bg-[color-mix(in_srgb,var(--brand-bronze)_14%,transparent)]" }
+                    : kind === "before_after"
+                        ? { badge: "Before/After", badgeTone: "bg-[color-mix(in_srgb,var(--brand-rust)_14%,transparent)]" }
+                        : kind === "ugc"
+                            ? { badge: "UGC", badgeTone: "bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,transparent)]" }
+                            : { badge: "Photo", badgeTone: "bg-[color-mix(in_srgb,var(--card)_70%,transparent)]" };
+
+    const titleStrength: 1 | 2 | 3 = level === 1 ? 1 : level === 2 ? 2 : 3;
+
+    const t1 = titleStrength === 1 ? "w-3/5" : titleStrength === 2 ? "w-4/5" : "w-[92%]";
+    const t2 = titleStrength === 1 ? "w-2/5" : titleStrength === 2 ? "w-3/5" : "w-4/5";
+
     return (
         <div
             className={[
                 "ppc-pinCard relative overflow-hidden rounded-xl border",
                 "border-[var(--border)] bg-[var(--background)]",
-                "shadow-[0_12px_30px_rgba(0,0,0,0.38)]",
+                "shadow-[0_14px_34px_rgba(0,0,0,0.42)]",
             ].join(" ")}
             style={{
                 ...style,
-                opacity: active ? 1 : 0.35,
-                filter: active ? "saturate(1.05)" : "saturate(0.7)",
+                opacity: active ? 1 : 0.33,
+                filter: active ? "saturate(1.06)" : "saturate(0.75)",
             }}
             aria-hidden="true"
+            data-kind={kind}
+            data-level={level}
+            data-selected={selected ? "true" : "false"}
         >
-            <div className="absolute inset-0 p-2">
-                <MediaArea kind={kind} selected={selected} intensity={density} />
+            {/* “media” area */}
+            <div className="relative h-[58%] border-b border-[var(--border)]">
+                <div className="absolute inset-0 ppc-media" />
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background:
+                            "linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.22)), radial-gradient(240px 120px at 18% 25%, rgba(149,9,82,0.22), transparent 60%), radial-gradient(260px 140px at 85% 78%, rgba(213,137,54,0.18), transparent 62%)",
+                        opacity: 0.95,
+                    }}
+                />
+                {/* content hint overlays (no circles) */}
+                {kind === "video" ? (
+                    <div className="absolute left-3 top-3 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
+                        ▶ Play
+                    </div>
+                ) : null}
+                {kind === "carousel" ? (
+                    <div className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-bronze)] opacity-80" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--card)] opacity-70" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--card)] opacity-55" />
+                    </div>
+                ) : null}
+                {kind === "before_after" ? (
+                    <div className="absolute inset-x-3 bottom-3 grid grid-cols-2 gap-2">
+                        <div className="h-8 rounded-md border border-[var(--border)] bg-[rgba(0,0,0,0.28)]" />
+                        <div className="h-8 rounded-md border border-[var(--border)] bg-[rgba(0,0,0,0.18)]" />
+                    </div>
+                ) : null}
+                {kind === "product" ? (
+                    <div className="absolute right-3 bottom-3 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
+                        $ • In stock
+                    </div>
+                ) : null}
+                {kind === "ugc" ? (
+                    <div className="absolute left-3 bottom-3 inline-flex items-center gap-1 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
+                        ★★★★☆
+                    </div>
+                ) : null}
+
+                {/* sheen */}
+                <div
+                    className={[
+                        "absolute inset-0 pointer-events-none opacity-0 transition-opacity",
+                        selected ? "opacity-100" : "group-hover:opacity-70",
+                    ].join(" ")}
+                    style={{
+                        background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)",
+                        transform: "translateX(-65%)",
+                        animation: selected ? "ppcSheen 2.6s ease-in-out infinite" : undefined,
+                    }}
+                />
             </div>
 
-            <div className="relative flex items-center justify-between px-3 pt-3">
-                <KindGlyph kind={kind} />
-                <span className="h-2 w-10 rounded-full bg-[var(--card)] opacity-55" />
-            </div>
-
+            {/* “content” area */}
             <div className="relative px-3 pb-3 pt-2">
-                <CaptionLines strength={density} />
+                <div className="flex items-center justify-between gap-2">
+                    <div className="flex min-w-0 items-center gap-2">
+                        <span className="h-5 w-5 rounded-full bg-[var(--card)] opacity-70" />
+                        <span className="h-2 w-20 rounded bg-[var(--card)] opacity-55" />
+                    </div>
+                    <span
+                        className={[
+                            "inline-flex items-center rounded-full border px-2 py-0.5 text-[10px]",
+                            "border-[var(--ppc-chip-border)] text-[var(--foreground-muted)]",
+                            meta.badgeTone,
+                        ].join(" ")}
+                    >
+            {meta.badge}
+          </span>
+                </div>
+
+                <div className="mt-2 space-y-1.5">
+                    <div className={["h-2 rounded bg-[var(--card)] opacity-70", t1].join(" ")} />
+                    <div className={["h-2 rounded bg-[var(--card)] opacity-45", t2].join(" ")} />
+                </div>
+
+                {level >= 3 ? (
+                    <div className="mt-2 flex items-center justify-between text-[10px] text-[var(--foreground-muted)]">
+                        <span className="h-2 w-12 rounded bg-[var(--card)] opacity-35" />
+                        <span className="h-2 w-8 rounded bg-[var(--card)] opacity-25" />
+                    </div>
+                ) : null}
             </div>
 
+            {/* selected ring */}
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
@@ -285,9 +280,7 @@ function PinCard({
 function GuidanceBlock({ guidance }: { guidance: string }) {
     return (
         <div className="pt-1">
-            <div className="text-[10px] font-medium uppercase tracking-wide text-[var(--foreground-muted)]">
-                How to interpret
-            </div>
+            <div className="text-[10px] font-medium uppercase tracking-wide text-[var(--foreground-muted)]">How to interpret</div>
             <div className="mt-1 text-sm leading-snug text-[var(--foreground)]">{guidance}</div>
 
             <div className="mt-3 flex items-center justify-between gap-3">
@@ -307,6 +300,11 @@ function GuidanceBlock({ guidance }: { guidance: string }) {
  * 1) Preview is primary, but MUST NOT force-wrap guidance due to a min-width.
  * 2) Guidance sits to the right INSIDE the option border when >= sm.
  * 3) On narrow widths, it stacks below.
+ *
+ * Changes in this version:
+ * - preview panel has a fixed width/height across ALL options (layout consistency)
+ * - higher levels feel more “alive” (more motion + glow), without being floaty noise
+ * - no “X formats” text; visuals do the explaining
  */
 function VisualStack({
                          level,
@@ -317,65 +315,66 @@ function VisualStack({
     selected: boolean;
     guidance: string;
 }) {
-    const spec = useMemo(() => {
-        const base: PinKind[] =
-            level === 1
-                ? ["photo"]
-                : level === 2
-                    ? ["photo", "carousel"]
-                    : level === 3
-                        ? ["photo", "video", "before_after"]
-                        : ["photo", "video", "carousel", "product", "ugc"];
-        return base;
+    const kinds = useMemo<PinKind[]>(() => {
+        return level === 1
+            ? ["photo"]
+            : level === 2
+                ? ["photo", "carousel"]
+                : level === 3
+                    ? ["photo", "video", "before_after"]
+                    : ["photo", "video", "carousel", "product", "ugc"];
     }, [level]);
 
+    const PREVIEW_W = 320;
+    const PREVIEW_H = 188;
+
+    const CARD_W = 172;
+    const CARD_H = 112;
+
     const placements = useMemo(() => {
-        const p =
+        // Use one consistent “stage” for every option.
+        // Higher levels: tighter composition + more depth (but within the same stage size).
+        const base =
             level === 1
-                ? [{ x: 8, y: 12, r: -1.5, s: 1.0, w: 182, h: 100 }]
+                ? [{ x: 20, y: 22, r: -1.5, s: 1.0 }]
                 : level === 2
                     ? [
-                        { x: 6, y: 12, r: -2.0, s: 1.0, w: 170, h: 96 },
-                        { x: 58, y: 22, r: 2.0, s: 0.98, w: 170, h: 96 },
+                        { x: 12, y: 22, r: -2.0, s: 1.0 },
+                        { x: 64, y: 34, r: 1.6, s: 0.99 },
                     ]
                     : level === 3
                         ? [
-                            { x: 6, y: 12, r: -2.0, s: 1.0, w: 162, h: 94 },
-                            { x: 50, y: 22, r: 1.2, s: 0.98, w: 162, h: 94 },
-                            { x: 94, y: 32, r: -1.2, s: 0.96, w: 162, h: 94 },
+                            { x: 10, y: 18, r: -2.2, s: 1.0 },
+                            { x: 58, y: 34, r: 1.5, s: 0.99 },
+                            { x: 106, y: 50, r: -1.2, s: 0.98 },
                         ]
                         : [
-                            { x: 6, y: 12, r: -2.0, s: 1.0, w: 156, h: 92 },
-                            { x: 46, y: 22, r: 1.4, s: 0.99, w: 156, h: 92 },
-                            { x: 86, y: 32, r: -1.4, s: 0.98, w: 156, h: 92 },
-                            { x: 24, y: 44, r: 1.8, s: 0.97, w: 156, h: 92 },
+                            { x: 8, y: 16, r: -2.2, s: 1.0 },
+                            { x: 56, y: 30, r: 1.6, s: 0.99 },
+                            { x: 104, y: 44, r: -1.5, s: 0.98 },
+                            { x: 30, y: 58, r: 2.0, s: 0.97 },
                         ];
-        return p;
+
+        // For level 4 we have 5 kinds; the 5th becomes a “foreground hero” card.
+        const hero = { x: 136, y: 24, r: 0.9, s: 1.01 };
+
+        return level === 4 ? [...base, hero] : base;
     }, [level]);
 
-    const density: 1 | 2 | 3 = level === 1 ? 1 : level === 2 ? 2 : 3;
-
-    const panelSize = useMemo(() => {
-        const used = placements.slice(0, spec.length);
-        const maxX = Math.max(...used.map((p) => p.x + p.w));
-        const maxY = Math.max(...used.map((p) => p.y + p.h));
-        const pad = 16;
-        const w = Math.ceil(maxX + pad);
-        const h = Math.ceil(maxY + pad);
-
+    const motion = useMemo(() => {
+        // Make higher levels feel more “badass” through intensity, not chaos.
+        // (Used by CSS vars.)
         return {
-            w: Math.max(230, Math.min(440, w)),
-            h: Math.max(132, Math.min(210, h)),
+            glow: level === 1 ? 0.55 : level === 2 ? 0.75 : level === 3 ? 0.95 : 1.15,
+            lift: level === 1 ? 1.0 : level === 2 ? 1.25 : level === 3 ? 1.45 : 1.7,
+            drift: level === 1 ? 1.8 : level === 2 ? 2.2 : level === 3 ? 2.6 : 3.2,
         };
-    }, [placements, spec.length]);
-
-    const panelW = useMemo(() => Math.min(panelSize.w, 320), [panelSize.w]);
+    }, [level]);
 
     return (
         <div className="mt-3">
-            {/* key: guidance can SHRINK (min-w-0) so it stays beside preview on desktop */}
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-start sm:gap-4 sm:flex-nowrap">
-                {/* PREVIEW */}
+                {/* PREVIEW (fixed width/height across all options) */}
                 <div
                     className={[
                         "relative rounded-xl border",
@@ -384,17 +383,22 @@ function VisualStack({
                         "flex-none",
                     ].join(" ")}
                     style={{
-                        width: `min(${panelW}px, 100%)`,
-                        height: panelSize.h,
+                        width: "min(320px, 100%)",
+                        height: PREVIEW_H,
+                        ["--ppcGlow" as any]: motion.glow,
+                        ["--ppcLift" as any]: motion.lift,
+                        ["--ppcDrift" as any]: motion.drift,
                     }}
                     aria-hidden="true"
+                    data-level={level}
+                    data-selected={selected ? "true" : "false"}
                 >
-                    {/* background glow */}
+                    {/* stage glow */}
                     <div
                         className="absolute inset-0 rounded-xl"
                         style={{
                             background:
-                                "radial-gradient(320px 150px at 18% 35%, rgba(149,9,82,0.18), transparent 62%), radial-gradient(340px 170px at 82% 70%, rgba(213,137,54,0.16), transparent 64%)",
+                                "radial-gradient(360px 190px at 18% 30%, rgba(149,9,82,0.22), transparent 60%), radial-gradient(420px 220px at 85% 78%, rgba(213,137,54,0.20), transparent 64%)",
                             opacity: selected ? 1 : 0.72,
                         }}
                     />
@@ -419,9 +423,13 @@ function VisualStack({
 
                     {/* stacked cards */}
                     <div className="absolute inset-0 pointer-events-none">
-                        {placements.slice(0, spec.length).map((pos, idx) => {
-                            const floatAnim = selected ? `ppcFloat${idx}` : undefined;
+                        {placements.slice(0, kinds.length).map((pos, idx) => {
+                            const floatAnim = selected ? `ppcDrift${idx}` : undefined;
                             const popAnim = selected ? "ppcPopIn 420ms ease-out both" : undefined;
+
+                            // Increase “depth” for higher levels.
+                            const z = 10 + idx;
+                            const shadowBoost = level >= 4 && idx === placements.length - 1 ? 1 : 0;
 
                             return (
                                 <div
@@ -430,33 +438,41 @@ function VisualStack({
                                     style={{
                                         left: pos.x,
                                         top: pos.y,
-                                        zIndex: 10 + idx,
+                                        zIndex: z,
                                         transform: `rotate(${pos.r}deg) scale(${pos.s})`,
-                                        animation: [floatAnim ? `${floatAnim} 6.2s ease-in-out infinite` : "", popAnim || ""]
+                                        animation: [floatAnim ? `${floatAnim} 6.4s ease-in-out infinite` : "", popAnim || ""]
                                             .filter(Boolean)
                                             .join(", "),
+                                        filter: shadowBoost ? "drop-shadow(0 22px 40px rgba(0,0,0,0.55))" : undefined,
                                     }}
                                 >
                                     <PinCard
-                                        kind={spec[idx]}
+                                        kind={kinds[idx]}
+                                        level={level}
                                         selected={selected}
                                         active={true}
-                                        density={density}
-                                        style={{ width: pos.w, height: pos.h }}
+                                        style={{ width: CARD_W, height: CARD_H }}
                                     />
                                 </div>
                             );
                         })}
                     </div>
 
-                    {/* micro cue */}
-                    <div className="absolute right-3 top-3 z-20 flex items-center gap-2">
-                        <span className="text-[10px] text-[var(--foreground-muted)]">{spec.length} formats</span>
-                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-bronze)] opacity-80" />
-                    </div>
+                    {/* subtle “energy” ring */}
+                    <div
+                        className={[
+                            "absolute inset-0 rounded-xl pointer-events-none opacity-0 transition-opacity",
+                            selected ? "opacity-100" : "group-hover:opacity-40",
+                        ].join(" ")}
+                        style={{
+                            boxShadow:
+                                "0 0 0 1px rgba(255,255,255,0.06) inset, 0 0 0 1px rgba(149,9,82,0.10)",
+                            opacity: selected ? 1 : 0,
+                        }}
+                    />
                 </div>
 
-                {/* GUIDANCE: allow shrink, so it does NOT wrap unnecessarily */}
+                {/* GUIDANCE */}
                 <div className="min-w-0 flex-1">
                     <GuidanceBlock guidance={guidance} />
                 </div>
@@ -509,12 +525,12 @@ function HelpDetails() {
             <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {examples.map((x) => (
                     <div key={x.label} className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-3">
-                        <div className="flex items-start gap-3">
-                            <KindGlyph kind={x.kind} />
-                            <div className="min-w-0">
+                        <div className="min-w-0">
+                            <div className="flex items-center justify-between gap-2">
                                 <div className="text-sm font-medium text-[var(--foreground)]">{x.label}</div>
-                                <div className="mt-0.5 text-xs text-[var(--foreground-muted)]">{x.desc}</div>
+                                <span className="text-[10px] text-[var(--foreground-muted)]">{x.kind.replace("_", "/")}</span>
                             </div>
+                            <div className="mt-0.5 text-xs text-[var(--foreground-muted)]">{x.desc}</div>
                         </div>
 
                         <div className="mt-3 h-16 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--background)]">
@@ -547,7 +563,6 @@ export default function Q4Visual({
             title: "Limited",
             subtitle: "Starter library",
             level: 1,
-            badge: "Starter",
             guidance: "A few usable assets, but not enough variety to pin consistently without repeating yourself.",
         },
         {
@@ -555,7 +570,6 @@ export default function Q4Visual({
             title: "Decent",
             subtitle: "Some solid assets",
             level: 2,
-            badge: "Baseline",
             guidance: "You’ve got a foundation — enough to start, but you’ll need to create new visuals often.",
         },
         {
@@ -563,7 +577,6 @@ export default function Q4Visual({
             title: "Strong",
             subtitle: "Consistent + reusable",
             level: 3,
-            badge: "Reliable",
             guidance: "Multiple formats + repeatable assets. You can publish regularly without scrambling every week.",
         },
         {
@@ -571,7 +584,6 @@ export default function Q4Visual({
             title: "Very strong",
             subtitle: "Deep library + variety",
             level: 4,
-            badge: "Stacked",
             guidance: "A deep, diverse library (photos, video, UGC, before/after, templates). You can scale content fast.",
         },
     ];
@@ -589,11 +601,13 @@ export default function Q4Visual({
           0% { transform: translateY(2px) scale(0.995); opacity: 0.0; }
           100% { transform: translateY(0px) scale(1); opacity: 1; }
         }
-        @keyframes ppcFloat0 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-2px); } }
-        @keyframes ppcFloat1 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-3px); } }
-        @keyframes ppcFloat2 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-2.5px); } }
-        @keyframes ppcFloat3 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-3.2px); } }
-        @keyframes ppcFloat4 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-2.2px); } }
+
+        /* Drift: subtle, tiered. Higher index = slightly different phase. */
+        @keyframes ppcDrift0 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2px * var(--ppcDrift, 2.0))); } }
+        @keyframes ppcDrift1 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.4px * var(--ppcDrift, 2.0))); } }
+        @keyframes ppcDrift2 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.1px * var(--ppcDrift, 2.0))); } }
+        @keyframes ppcDrift3 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.6px * var(--ppcDrift, 2.0))); } }
+        @keyframes ppcDrift4 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.2px * var(--ppcDrift, 2.0))); } }
 
         .ppc-media {
           background:
@@ -614,14 +628,22 @@ export default function Q4Visual({
         }
 
         .ppc-pinCard {
-          transition: transform 280ms ease, filter 280ms ease, opacity 280ms ease;
+          transition: transform 260ms ease, filter 260ms ease, opacity 260ms ease;
           will-change: transform;
         }
-        .ppc-opt:hover .ppc-pinCard { transform: translateY(-2px); }
-        .ppc-opt[data-selected="true"] .ppc-pinCard { transform: translateY(-2px); }
+
+        /* “This is the visuals question” flair: the stack animates as a unit, content moves inside it. */
+        .ppc-opt:hover .ppc-pinCard { transform: translateY(calc(-2px * var(--ppcLift, 1.0))); }
+        .ppc-opt[data-selected="true"] .ppc-pinCard { transform: translateY(calc(-2.5px * var(--ppcLift, 1.0))); }
 
         .ppc-opt:hover .ppc-media { transform: scale(1.04); filter: contrast(1.08) saturate(1.10); }
         .ppc-opt[data-selected="true"] .ppc-media { transform: scale(1.06); filter: contrast(1.10) saturate(1.12); }
+
+        /* Extra “badass” for high levels on hover/selected: slightly stronger contrast. */
+        .ppc-opt[data-level="4"]:hover .ppc-pinCard,
+        .ppc-opt[data-level="4"][data-selected="true"] .ppc-pinCard {
+          filter: saturate(1.12) contrast(1.04);
+        }
 
         @media (prefers-reduced-motion: reduce) {
           * { animation: none !important; transition: none !important; }
@@ -647,6 +669,7 @@ export default function Q4Visual({
                             role="radio"
                             aria-checked={selected}
                             data-selected={selected ? "true" : "false"}
+                            data-level={String(o.level)}
                             onClick={() => {
                                 onChange(o.v);
                                 onAutoAdvance?.();
@@ -687,25 +710,9 @@ export default function Q4Visual({
                                 <div className="min-w-0">
                                     <div className="flex flex-wrap items-center gap-2">
                                         <div className="text-lg font-semibold tracking-tight text-[var(--foreground)]">{o.title}</div>
-
-                                        <span
-                                            className={[
-                                                "inline-flex items-center gap-2 rounded-full border px-2 py-0.5 text-xs",
-                                                "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] text-[var(--foreground-muted)]",
-                                            ].join(" ")}
-                                        >
-                      <span
-                          className={[
-                              "h-1.5 w-1.5 rounded-full",
-                              selected ? "bg-[var(--brand-raspberry)]" : "bg-[var(--border)] opacity-70",
-                          ].join(" ")}
-                          aria-hidden="true"
-                      />
-                                            {o.badge}
-                    </span>
+                                        {/* subtitle now lives inside this pill (color cues by level) */}
+                                        <LevelBadge level={o.level} subtitle={o.subtitle} selected={selected} />
                                     </div>
-
-                                    <div className="mt-1 text-sm text-[var(--foreground-muted)]">{o.subtitle}</div>
 
                                     <VisualStack level={o.level} selected={selected} guidance={o.guidance} />
                                 </div>

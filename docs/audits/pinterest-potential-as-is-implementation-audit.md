@@ -7,9 +7,10 @@
     - welcome → frontend/components/tools/pinterestPotential/PinterestPotentialV1.tsx (export: PinterestPotentialV1)
     - no_welcome → frontend/components/tools/pinterestPotential/PinterestPotentialV2.tsx (export: PinterestPotentialV2)
 - Current wizard step count + high-level flow
-  - Steps: 8 questions (Q1–Q8) implemented as separate step components and orchestrated by frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
-  - Presentational views: WelcomeView, WizardView, ResultsView under frontend/components/tools/pinterestPotential/views are used for layout/presentation; business logic remains in the Wizard.
-  - Flow: Welcome (for "welcome" variant) → Q1..Q8 → computeResults → results; optional lead gate depends on leadMode. WelcomeView shows "Start" or "Resume" based on a sessionStorage heuristic and exposes a Reset that clears PPC-related session keys.
+  - Steps (V1 only): 8 questions (Q1–Q8) implemented as separate step components and orchestrated by frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx.
+  - Presentational views: WelcomeView, WizardView, ResultsView under frontend/components/tools/pinterestPotential/views are used for layout/presentation; business logic remains in the Wizard (V1 path).
+  - Flow (V1/welcome variant): Welcome → Q1..Q8 → computeResults → results; optional lead gate depends on leadMode. WelcomeView shows "Start" or "Resume" based on a sessionStorage heuristic and exposes a Reset that clears PPC-related session keys.
+  - Note on V2 (no_welcome variant): PinterestPotentialV2.tsx is currently a placeholder shell and does NOT render the Wizard or analytics hooks.
 - Variant system summary (where resolved + how persisted)
   - Resolution on page (server): resolvePinterestPotentialVariant() inside page.tsx
     - Precedence: query ?variant → cookie pp_variant → DEFAULT_VARIANT (welcome)
@@ -22,9 +23,9 @@
 - Tracking summary (core events + where fired)
   - Generic GTM events defined in frontend/lib/gtm.ts: tool_view, tool_start, lead_submit, cta_click
   - Fired:
-    - tool_view: by useToolAnalytics hook (frontend/lib/hooks/useToolAnalytics.ts) on mount of variant component
-    - tool_start: PinterestPotentialV1 passes trackToolStart to Wizard via onStartAction; Wizard invokes onStartAction when the flow starts
-    - lead_submit: fired in Wizard when lead is submitted in both hard lock and soft lock panels
+    - tool_view: by useToolAnalytics hook (frontend/lib/hooks/useToolAnalytics.ts) on mount of PinterestPotentialV1. V2 does NOT fire tool_view (no hook present).
+    - tool_start: PinterestPotentialV1 passes trackToolStart to Wizard via onStartAction; Wizard invokes onStartAction when the flow starts. V2 does not wire Wizard.
+    - lead_submit: fired in Wizard when lead is submitted in both hard lock and soft lock panels (V1 only; V2 has no lead UI).
   - ppc_* events are defined in gtm.ts (ppc_view_start, ppc_start, ppc_answer, ppc_complete, ppc_cta_click, ppc_lead_view, etc.) but NOT referenced in the Wizard. DISCREPANCY: helpers exist; flow doesn’t use them yet.
 
 2) File Map (Source of Truth Index)
@@ -42,7 +43,7 @@
     - Responsibility: wraps Wizard; tracks tool_view via useToolAnalytics; passes onStart (tool_start) and leadMode/initialLead
   - frontend/components/tools/pinterestPotential/PinterestPotentialV2.tsx
     - Exports: PinterestPotentialV2
-    - Responsibility: variant shell for no_welcome (implementation exists; not fully reviewed here)
+    - Responsibility: placeholder shell for no_welcome (does NOT render Wizard, analytics hooks, or lead gating; renders a simple heading/paragraph only)
 - Presentational views (stateless)
   - frontend/components/tools/pinterestPotential/views/WelcomeView.tsx
     - Exports: default WelcomeView
@@ -72,6 +73,7 @@
     - frontend/lib/tools/pinterestPotential/benchmarks.ts (getBenchmark, BENCHMARK_MAP)
     - frontend/lib/tools/pinterestPotential/multipliers.ts (MULTIPLIERS, MULTIPLIER_INTENSITY, softenMultiplier, safeMultiplier)
     - frontend/lib/tools/pinterestPotential/insight.ts (buildInsightFromBenchmark)
+    - frontend/lib/tools/pinterestPotential/audiencePreview.ts (audiencePreviewFromRange, getAudiencePreviewLevel) — used by Q2 UI badges; does not affect computeResults
 - Lead capture + submission path
   - Lead validation: validateLead in pinterestPotentialSpec.ts
   - Lead submission event: trackLeadSubmit in frontend/lib/gtm.ts
@@ -97,7 +99,8 @@
   - Page computes initialLead: token lead > user-derived lead > undefined; renders VariantComponent with props { leadMode, initialLead }.
 - client mount
   - useToolAnalytics fires tool_view once per mount for the tool path and tool name "pinterest_potential".
-  - Wizard mounts; it integrates usePinterestPotentialDraft, which rehydrates sessionStorage key pinterestPotential:draft:v2 if present; otherwise starts from provided initial.
+  - V1 only: Wizard mounts; it integrates usePinterestPotentialDraft, which rehydrates sessionStorage key pinterestPotential:draft:v2 if present; otherwise starts from provided initial.
+  - V2: Placeholder component only; no wizard/draft/analytics wiring.
 - variant selection (priority order)
   - On the server page: ?variant query → pp_variant cookie → DEFAULT_VARIANT (welcome). No GrowthBook call on the page itself.
   - On middleware: If pp_variant cookie absent, tries GrowthBook Edge client; if disabled/unavailable, falls back to local weights; persists pp_variant.
@@ -117,7 +120,8 @@
   - Soft lock: Results are visible; optional email panel allows sending the snapshot; clicking submit validates email only if provided; trackLeadSubmit is fired on submit; no network call.
   - Known lead: LEAD_GATING_CONFIG.known_lead_behavior == "skip"; capture UI is skipped; lead_mode still provided in telemetry contexts.
 - final result rendering
-  - After compute ok, the Wizard renders results (not fully excerpted here); opportunity label inferred using helper opportunityLabel in Wizard; also uses compute results’ inferred indices and insight.
+  - V1: After compute ok, the Wizard renders results using ResultsView; opportunity label inferred using helper opportunityLabel in Wizard; also uses compute results’ inferred indices and insight.
+  - V2: No results rendering path (placeholder only).
 - refresh/back/new tab behavior
   - Refresh/new tab within same session: sessionStorage draft ensures persistence (pinterestPotential:draft:v2). Hook merges parsed draft onto initial state if shape-valid. Invalid JSON or shape clears the storage key.
   - Browser back/forward: routing is a single-page wizard; step index presumably stored in draft.stepIndex; moving back should honor the stored index. UNVERIFIED: precise back button handling location in Wizard not extracted here; would inspect how navigation UI updates stepIndex.
@@ -141,7 +145,9 @@
   - Server helper: frontend/lib/growthbook/experiments.ts runServerExperiment(def) uses growthbookAdapter from flags.ts, identify(), enable flag enable_{def.gbKey}, returns { variant, source: "growthbook" | "fallback" }
   - Fallback behavior: if GB disabled or errors, choose via local weights (equal split) or random if weights invalid
 - Variant effects in UI
-  - page.tsx chooses VariantComponent from VARIANT_COMPONENTS mapping; how component behavior differs is by component implementation. In V1, the header shows phase (“Results” vs “v1”). The core Wizard is the same component; variant-specific welcome step differences are handled inside Wizard (draft.variant and started flags). UNVERIFIED: exact conditional UI branches inside Wizard tied to variant; search suggests draft.variant is persisted, but ppc_* analytics not present.
+  - page.tsx chooses VariantComponent from VARIANT_COMPONENTS mapping; how component behavior differs is by component implementation.
+    - V1: Heading appends " — Results" in the results phase; uses shared Wizard component and presentational views.
+    - V2: Placeholder; does not invoke Wizard at all.
 
 5) Wizard Steps: Canonical Step List
 - Ordered steps and mapping
@@ -213,9 +219,9 @@
   - ppc_* family (context-rich):
     - ppc_view_start, ppc_start, ppc_answer, ppc_complete, ppc_cta_click, ppc_lead_view (see gtm.ts for payloads). Payloads include tool_name (default "pinterest_potential"), location, variant, lead_mode, lead_state, segment, niche, primary_goal, and inferred indices for completion/cta.
 - Actual triggers in the calculator flow (AS-IS)
-  - tool_view: fired by useToolAnalytics inside PinterestPotentialV1 (and likely V2 if it uses the same hook)
-  - tool_start: PinterestPotentialV1 passes onStartAction={trackToolStart} to Wizard; Wizard calls onStartAction() at flow start. Exact trigger within the Wizard is based on the first progression from welcome/Q1.
-  - lead_submit: fired in Wizard’s hard lock and soft lock submit handlers
+  - tool_view: fired by useToolAnalytics inside PinterestPotentialV1. PinterestPotentialV2 does NOT import/use this hook; no tool_view fired on the V2 path.
+  - tool_start: PinterestPotentialV1 passes onStartAction={trackToolStart} to Wizard; Wizard calls onStartAction() at flow start. V2 does not wire Wizard.
+  - lead_submit: fired in Wizard’s hard lock and soft lock submit handlers (V1 only).
   - cta_click: defined but not found in Wizard; search for trackCtaClick in Wizard returned nothing. GAP
   - ppc_* events: defined but unused in Wizard (search for "ppc_" returned nothing). GAP
 - Client/server
@@ -259,6 +265,8 @@
   - GTM event emitted but no backend submission; risk of losing leads if GTM blocked or dataLayer not processed.
 - Variant feature flag ENABLE_AB_SPLIT
   - frontend/lib/tools/pinterestPotentialConfig.ts exports ENABLE_AB_SPLIT=false but page resolver doesn’t consult it; middleware assigns pp_variant regardless. DISCREPANCY: flag unused in resolver path.
+- Variant V2 path is a placeholder
+  - The no_welcome variant currently renders a placeholder shell without Wizard, analytics, or compute wiring. If traffic is routed to this variant, users will not see the intended flow and analytics coverage will be lost.
 - SessionStorage persistence
   - Autosave every draft change; if large objects or frequent updates, can cause write churn; however hook is guarded and minimal.
   - Shape validation strictness means any extra fields added by future versions will be dropped unless initial provides defaults.
@@ -274,6 +282,7 @@
   - Wire ppc_* events in Wizard at key points (view start, start, per-answer, complete, cta clicks) using helpers in frontend/lib/gtm.ts. Files to touch: frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx (emit events) and optionally views/WelcomeView.tsx for view start context.
   - Respect ENABLE_AB_SPLIT in page resolver/middleware or remove it to avoid dead code. Files: frontend/lib/tools/pinterestPotentialConfig.ts, frontend/app/(flow)/tools/pinterest-potential/page.tsx (document behavior), and optionally middleware docstring.
   - Add minimal network submission for leads with error handling. File: Wizard, create backend endpoint under frontend/app/api/leads/route.ts (if architecture allows) or reuse existing backend.
+  - Either (a) hide/disable the no_welcome variant in assignment, or (b) implement V2 to wrap the Wizard similarly to V1 so behavior and analytics are consistent. Files: frontend/components/tools/pinterestPotential/PinterestPotentialV2.tsx and assignment strategy.
 - P1 (small refactors)
   - Extract a canonical StepSpec array in Wizard to drive ordered steps and ids; aids testing and analytics mapping. File: PinterestPotentialWizard.tsx.
   - Add a thin analytics wrapper in Wizard that enriches events with variant, lead_mode, lead_state, and current answers (segment/niche/goal) so ppc_* events have consistent payloads.
@@ -285,4 +294,4 @@
 UNVERIFIED items and next inspection targets
 - Exact back button and stepIndex management → inspect full PinterestPotentialWizard.tsx for navigation handlers.
 - Variant-specific branches inside Wizard (welcome vs no_welcome) → search within Wizard for draft.started and draft.variant usage.
-- V2 shell (PinterestPotentialV2.tsx) specifics → open file to confirm it uses useToolAnalytics and passes onStartAction.
+- V2 shell: VERIFIED placeholder — frontend/components/tools/pinterestPotential/PinterestPotentialV2.tsx renders only a heading/paragraph and does not wire Wizard or analytics.

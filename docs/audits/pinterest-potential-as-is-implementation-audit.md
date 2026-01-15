@@ -73,7 +73,7 @@
     - frontend/lib/tools/pinterestPotential/benchmarks.ts (getBenchmark, BENCHMARK_MAP)
     - frontend/lib/tools/pinterestPotential/multipliers.ts (MULTIPLIERS, MULTIPLIER_INTENSITY, softenMultiplier, safeMultiplier)
     - frontend/lib/tools/pinterestPotential/insight.ts (buildInsightFromBenchmark)
-    - frontend/lib/tools/pinterestPotential/audiencePreview.ts (audiencePreviewFromRange, getAudiencePreviewLevel) — used by Q2 UI badges; does not affect computeResults
+    - frontend/lib/tools/pinterestPotential/nicheUiAdapter.ts (getNicheUiOptions, getAudiencePreviewLevel, AUDIENCE_PREVIEW_META) — provides Q2 UI enrichment (labels remain spec-canonical; badges derived from benchmarks); does not affect computeResults
 - Lead capture + submission path
   - Lead validation: validateLead in pinterestPotentialSpec.ts
   - Lead submission event: trackLeadSubmit in frontend/lib/gtm.ts

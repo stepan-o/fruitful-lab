@@ -6,7 +6,7 @@ import type { VisualStrength, StepBaseProps } from "./ppcV2Types";
 /**
  * Q4 thumbs (served from Next.js /public)
  *
- * Repo path (per your screenshot):
+ * Repo path:
  *   public/tools/pinterestPotential/thumbs/
  *     - before-after-1.jpg
  *     - carousel-1.jpg
@@ -15,6 +15,8 @@ import type { VisualStrength, StepBaseProps } from "./ppcV2Types";
  *     - photo-3.jpg
  *     - video-1.jpg
  *     - video-1.mp4
+ *     - video-2.jpg
+ *     - video-2.mp4
  *
  * Public URLs MUST therefore be:
  *   /tools/pinterestPotential/thumbs/<filename>
@@ -33,11 +35,16 @@ function SelectedChip() {
     return (
         <span
             className={[
-                "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs",
+                "inline-flex items-center gap-2 rounded-full border px-2.5 py-1",
+                "text-[10px] leading-none whitespace-nowrap",
                 "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] text-[var(--foreground)]",
+                "shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]",
             ].join(" ")}
         >
-      <span className="h-2.5 w-2.5 rounded-full bg-[var(--brand-raspberry)] shadow-[0_0_0_2px_rgba(0,0,0,0.25)_inset]" />
+      <span
+          className="h-2 w-2 rounded-full bg-[var(--brand-raspberry)] shadow-[0_0_0_2px_rgba(0,0,0,0.25)_inset]"
+          aria-hidden="true"
+      />
       Selected
     </span>
     );
@@ -85,6 +92,7 @@ function LevelBadge({
         <span
             className={[
                 "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs",
+                "whitespace-nowrap",
                 tone.ring,
                 tone.bg,
                 selected ? "shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]" : "",
@@ -136,8 +144,17 @@ function LevelPips({
 
 type PinKind = "photo" | "video" | "carousel" | "product" | "before_after" | "ugc";
 
-function videoMp4Src() {
-    return `${THUMB_BASE}/video-1.mp4`;
+/**
+ * Level-specific video asset selection:
+ * - Level 3 uses video-1.*
+ * - Level 4 uses video-2.* (the “another level” asset)
+ */
+function videoAssetFor(level: 1 | 2 | 3 | 4) {
+    return level >= 4 ? { mp4: "video-2.mp4", poster: "video-2.jpg" } : { mp4: "video-1.mp4", poster: "video-1.jpg" };
+}
+
+function videoMp4Src(level: 1 | 2 | 3 | 4) {
+    return `${THUMB_BASE}/${videoAssetFor(level).mp4}`;
 }
 
 function thumbSrcFor(kind: PinKind, level: 1 | 2 | 3 | 4) {
@@ -146,9 +163,13 @@ function thumbSrcFor(kind: PinKind, level: 1 | 2 | 3 | 4) {
     if (kind === "photo") return `${THUMB_BASE}/photo-${photoN}.jpg`;
     if (kind === "carousel") return `${THUMB_BASE}/carousel-1.jpg`;
     if (kind === "before_after") return `${THUMB_BASE}/before-after-1.jpg`;
-    if (kind === "video") return `${THUMB_BASE}/video-1.jpg`;
 
+    // Video poster depends on level (lvl4 uses video-2.jpg)
+    if (kind === "video") return `${THUMB_BASE}/${videoAssetFor(level).poster}`;
+
+    // No dedicated thumbs yet: reuse strong photos so nothing breaks.
     if (kind === "product") return `${THUMB_BASE}/photo-2.jpg`;
+    // ugc
     return `${THUMB_BASE}/photo-1.jpg`;
 }
 
@@ -172,13 +193,14 @@ function Thumb({
                     ? "ppc-pan-zoom"
                     : "ppc-pan-soft";
 
+    // Loop video for stronger options (levels 3 & 4)
     const useLoopVideo = kind === "video" && level >= 3;
 
     return (
         <div className="absolute inset-0 overflow-hidden">
             {useLoopVideo ? (
                 <video
-                    src={videoMp4Src()}
+                    src={videoMp4Src(level)}
                     poster={src}
                     muted
                     loop
@@ -195,12 +217,7 @@ function Thumb({
                         img.setAttribute("aria-hidden", "true");
                         img.decoding = "async";
                         img.loading = "lazy";
-                        img.className = [
-                            "h-full w-full object-cover",
-                            "ppc-thumb",
-                            pan,
-                            selected ? "ppc-thumb-selected" : "",
-                        ].join(" ");
+                        img.className = ["h-full w-full object-cover", "ppc-thumb", pan, selected ? "ppc-thumb-selected" : ""].join(" ");
                         el.parentElement?.replaceChild(img, el);
                     }}
                 />
@@ -322,9 +339,7 @@ function PinCard({
                 ) : null}
 
                 <div
-                    className={["absolute inset-0 pointer-events-none opacity-0 transition-opacity", selected ? "opacity-100" : "group-hover:opacity-70"].join(
-                        " ",
-                    )}
+                    className={["absolute inset-0 pointer-events-none opacity-0 transition-opacity", selected ? "opacity-100" : "group-hover:opacity-70"].join(" ")}
                     style={{
                         background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)",
                         transform: "translateX(-65%)",
@@ -379,7 +394,7 @@ function PinCard({
 
 function GuidanceBlock({ guidance }: { guidance: string }) {
     return (
-        <div className="pt-1">
+        <div className="w-full pt-1">
             <div className="text-[10px] font-medium uppercase tracking-wide text-[var(--foreground-muted)]">How to interpret</div>
             <div className="mt-1 text-sm leading-snug text-[var(--foreground)]">{guidance}</div>
 
@@ -434,16 +449,16 @@ function VisualStack({
                             // back cards
                             { x: 10, y: 44, r: -2.2, s: 0.98 },
                             { x: 56, y: 30, r: 1.2, s: 0.99 },
-                            // HERO (front): place it more center-right
+                            // HERO (front)
                             { x: 104, y: 22, r: 0.6, s: 1.02 },
                         ]
                         : [
-                            // 4 back-ish cards
-                            { x: 8, y: 52, r: -2.0, s: 0.97 },
-                            { x: 44, y: 40, r: 1.2, s: 0.98 },
-                            { x: 86, y: 28, r: -1.2, s: 0.99 },
-                            { x: 26, y: 24, r: 2.0, s: 0.97 },
-                            // HERO (front): more center-right + slightly larger
+                            // more density for lvl4 to feel “a lot more content”
+                            { x: 6, y: 58, r: -2.1, s: 0.95 },
+                            { x: 26, y: 44, r: 1.7, s: 0.96 },
+                            { x: 52, y: 30, r: -1.3, s: 0.97 },
+                            { x: 86, y: 18, r: 2.2, s: 0.98 },
+                            // HERO (front)
                             { x: 126, y: 18, r: 0.7, s: 1.04 },
                         ];
 
@@ -468,10 +483,11 @@ function VisualStack({
                         "relative rounded-xl border",
                         "border-[var(--border)] bg-[var(--card)] p-3",
                         "overflow-hidden isolate",
-                        "flex-none",
+                        "flex-none shrink-0",
                     ].join(" ")}
                     style={{
-                        width: "min(320px, 100%)",
+                        width: 320,
+                        maxWidth: "100%",
                         height: PREVIEW_H,
                         ["--ppcGlow" as any]: motion.glow,
                         ["--ppcLift" as any]: motion.lift,
@@ -511,7 +527,6 @@ function VisualStack({
                             const floatAnim = selected ? `ppcDrift${idx}` : undefined;
                             const popAnim = selected ? "ppcPopIn 420ms ease-out both" : undefined;
 
-                            // Hero gets extra glow + shadow and always on top due to zIndex
                             const isHero = idx === heroIdx;
                             const heroBoost = isHero && level >= 3 ? 1 : 0;
 
@@ -744,7 +759,7 @@ export default function Q4Visual({
           filter: saturate(1.12) contrast(1.04);
         }
 
-        /* Hero emphasis: this will apply to the front-most wrapper div in VisualStack */
+        /* Hero emphasis */
         .ppc-heroCard .ppc-pinCard {
           transform: translateY(-1px) scale(1.01);
         }
@@ -816,20 +831,27 @@ export default function Q4Visual({
                                 className="pointer-events-none absolute inset-0 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.05)_inset]"
                             />
 
-                            <div className="relative flex items-start justify-between gap-4">
-                                <div className="min-w-0">
+                            {/* KEY LAYOUT FIX:
+                  - Left column is flex-1 so VisualStack (and its guidance) can use all remaining width
+                  - Right column is flex-none (only pips + 1/4)
+                  - Selected chip moved up into the header row next to the subtitle pill
+              */}
+                            <div className="relative flex items-start gap-4">
+                                <div className="min-w-0 flex-1">
                                     <div className="flex flex-wrap items-center gap-2">
                                         <div className="text-lg font-semibold tracking-tight text-[var(--foreground)]">{o.title}</div>
                                         <LevelBadge level={o.level} subtitle={o.subtitle} selected={selected} />
+                                        {selected ? <SelectedChip /> : null}
                                     </div>
 
                                     <VisualStack level={o.level} selected={selected} guidance={o.guidance} />
                                 </div>
 
-                                <div className="flex flex-col items-end gap-2 pt-1">
+                                <div className="flex flex-none flex-col items-end gap-2 pt-1">
                                     <LevelPips level={o.level} selected={selected} />
                                     <div className="text-xs text-[var(--foreground-muted)]">{o.level}/4</div>
-                                    {selected ? <SelectedChip /> : <span className="h-7" aria-hidden="true" />}
+                                    {/* keep vertical rhythm consistent */}
+                                    <span className="h-6" aria-hidden="true" />
                                 </div>
                             </div>
                         </button>

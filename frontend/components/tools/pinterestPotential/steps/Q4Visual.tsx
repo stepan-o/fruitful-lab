@@ -141,21 +141,14 @@ function videoMp4Src() {
 }
 
 function thumbSrcFor(kind: PinKind, level: 1 | 2 | 3 | 4) {
-    // Repo includes:
-    // photo-1.jpg, photo-2.jpg, photo-3.jpg, carousel-1.jpg, before-after-1.jpg, video-1.jpg (+ video-1.mp4)
-    // So: clamp photos to 1..3, and map other kinds to the closest available asset.
     const photoN = Math.min(level, 3);
 
     if (kind === "photo") return `${THUMB_BASE}/photo-${photoN}.jpg`;
     if (kind === "carousel") return `${THUMB_BASE}/carousel-1.jpg`;
     if (kind === "before_after") return `${THUMB_BASE}/before-after-1.jpg`;
-
-    // NEW: dedicated video poster thumb exists
     if (kind === "video") return `${THUMB_BASE}/video-1.jpg`;
 
-    // No dedicated thumbs yet: reuse strong photos so nothing breaks.
     if (kind === "product") return `${THUMB_BASE}/photo-2.jpg`;
-    // ugc
     return `${THUMB_BASE}/photo-1.jpg`;
 }
 
@@ -179,7 +172,6 @@ function Thumb({
                     ? "ppc-pan-zoom"
                     : "ppc-pan-soft";
 
-    // For stronger options (levels 3 & 4), use the MP4 loop for the "video" card.
     const useLoopVideo = kind === "video" && level >= 3;
 
     return (
@@ -194,16 +186,9 @@ function Thumb({
                     playsInline
                     preload="metadata"
                     aria-hidden="true"
-                    className={[
-                        "h-full w-full object-cover",
-                        "ppc-thumb",
-                        pan,
-                        selected ? "ppc-thumb-selected" : "",
-                    ].join(" ")}
-                    // Fail-safe: if video fails, the poster still shows; but we also degrade to img.
+                    className={["h-full w-full object-cover", "ppc-thumb", pan, selected ? "ppc-thumb-selected" : ""].join(" ")}
                     onError={(e) => {
                         const el = e.currentTarget;
-                        // Replace the video element with an img fallback (best-effort, no runtime deps).
                         const img = document.createElement("img");
                         img.src = src || `${THUMB_BASE}/photo-1.jpg`;
                         img.alt = "";
@@ -226,14 +211,8 @@ function Thumb({
                     aria-hidden="true"
                     loading="lazy"
                     decoding="async"
-                    className={[
-                        "h-full w-full object-cover",
-                        "ppc-thumb",
-                        pan,
-                        selected ? "ppc-thumb-selected" : "",
-                    ].join(" ")}
+                    className={["h-full w-full object-cover", "ppc-thumb", pan, selected ? "ppc-thumb-selected" : ""].join(" ")}
                     onError={(e) => {
-                        // Fail-safe: if something is misnamed/misserved, fall back to a known-good thumb.
                         const img = e.currentTarget;
                         const fallback = `${THUMB_BASE}/photo-1.jpg`;
                         if (img.src.endsWith("/photo-1.jpg")) return;
@@ -242,7 +221,6 @@ function Thumb({
                 />
             )}
 
-            {/* light film grain + vignette */}
             <div className="pointer-events-none absolute inset-0 ppc-film" />
             <div className="pointer-events-none absolute inset-0 ppc-vignette" />
         </div>
@@ -298,11 +276,9 @@ function PinCard({
             data-level={level}
             data-selected={selected ? "true" : "false"}
         >
-            {/* “media” area */}
             <div className="relative h-[58%] border-b border-[var(--border)]">
                 <Thumb src={src} kind={kind} level={level} selected={selected} />
 
-                {/* tonal overlays to keep the PPC vibe consistent across thumbs */}
                 <div
                     className="pointer-events-none absolute inset-0"
                     style={{
@@ -312,7 +288,6 @@ function PinCard({
                     }}
                 />
 
-                {/* content hint overlays */}
                 {kind === "video" ? (
                     <div className="absolute left-3 top-3 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
                         ▶ Play
@@ -346,12 +321,10 @@ function PinCard({
                     </div>
                 ) : null}
 
-                {/* sheen */}
                 <div
-                    className={[
-                        "absolute inset-0 pointer-events-none opacity-0 transition-opacity",
-                        selected ? "opacity-100" : "group-hover:opacity-70",
-                    ].join(" ")}
+                    className={["absolute inset-0 pointer-events-none opacity-0 transition-opacity", selected ? "opacity-100" : "group-hover:opacity-70"].join(
+                        " ",
+                    )}
                     style={{
                         background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)",
                         transform: "translateX(-65%)",
@@ -360,7 +333,6 @@ function PinCard({
                 />
             </div>
 
-            {/* “content” area */}
             <div className="relative px-3 pb-3 pt-2">
                 <div className="flex items-center justify-between gap-2">
                     <div className="flex min-w-0 items-center gap-2">
@@ -392,7 +364,6 @@ function PinCard({
                 ) : null}
             </div>
 
-            {/* selected ring */}
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
@@ -409,9 +380,7 @@ function PinCard({
 function GuidanceBlock({ guidance }: { guidance: string }) {
     return (
         <div className="pt-1">
-            <div className="text-[10px] font-medium uppercase tracking-wide text-[var(--foreground-muted)]">
-                How to interpret
-            </div>
+            <div className="text-[10px] font-medium uppercase tracking-wide text-[var(--foreground-muted)]">How to interpret</div>
             <div className="mt-1 text-sm leading-snug text-[var(--foreground)]">{guidance}</div>
 
             <div className="mt-3 flex items-center justify-between gap-3">
@@ -435,14 +404,15 @@ function VisualStack({
     selected: boolean;
     guidance: string;
 }) {
+    // Order matters. For lvl 3/4, we want VIDEO to be the hero/front card.
     const kinds = useMemo<PinKind[]>(() => {
         return level === 1
             ? ["photo"]
             : level === 2
                 ? ["photo", "carousel"]
                 : level === 3
-                    ? ["photo", "video", "before_after"]
-                    : ["photo", "video", "carousel", "product", "ugc"];
+                    ? ["photo", "before_after", "video"] // video last => highest z-index
+                    : ["photo", "carousel", "product", "ugc", "video"]; // video last => highest z-index
     }, [level]);
 
     const PREVIEW_H = 188;
@@ -450,6 +420,7 @@ function VisualStack({
     const CARD_H = 112;
 
     const placements = useMemo(() => {
+        // IMPORTANT: placements are ordered back -> front, because later items get higher z-index.
         const base =
             level === 1
                 ? [{ x: 20, y: 22, r: -1.5, s: 1.0 }]
@@ -460,19 +431,23 @@ function VisualStack({
                     ]
                     : level === 3
                         ? [
-                            { x: 10, y: 18, r: -2.2, s: 1.0 },
-                            { x: 58, y: 34, r: 1.5, s: 0.99 },
-                            { x: 106, y: 50, r: -1.2, s: 0.98 },
+                            // back cards
+                            { x: 10, y: 44, r: -2.2, s: 0.98 },
+                            { x: 56, y: 30, r: 1.2, s: 0.99 },
+                            // HERO (front): place it more center-right
+                            { x: 104, y: 22, r: 0.6, s: 1.02 },
                         ]
                         : [
-                            { x: 8, y: 16, r: -2.2, s: 1.0 },
-                            { x: 56, y: 30, r: 1.6, s: 0.99 },
-                            { x: 104, y: 44, r: -1.5, s: 0.98 },
-                            { x: 30, y: 58, r: 2.0, s: 0.97 },
+                            // 4 back-ish cards
+                            { x: 8, y: 52, r: -2.0, s: 0.97 },
+                            { x: 44, y: 40, r: 1.2, s: 0.98 },
+                            { x: 86, y: 28, r: -1.2, s: 0.99 },
+                            { x: 26, y: 24, r: 2.0, s: 0.97 },
+                            // HERO (front): more center-right + slightly larger
+                            { x: 126, y: 18, r: 0.7, s: 1.04 },
                         ];
 
-        const hero = { x: 136, y: 24, r: 0.9, s: 1.01 };
-        return level === 4 ? [...base, hero] : base;
+        return base;
     }, [level]);
 
     const motion = useMemo(() => {
@@ -483,10 +458,11 @@ function VisualStack({
         };
     }, [level]);
 
+    const heroIdx = kinds.length - 1;
+
     return (
         <div className="mt-3">
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-start sm:gap-4 sm:flex-nowrap">
-                {/* PREVIEW */}
                 <div
                     className={[
                         "relative rounded-xl border",
@@ -505,7 +481,6 @@ function VisualStack({
                     data-level={level}
                     data-selected={selected ? "true" : "false"}
                 >
-                    {/* stage glow */}
                     <div
                         className="absolute inset-0 rounded-xl"
                         style={{
@@ -515,7 +490,6 @@ function VisualStack({
                         }}
                     />
 
-                    {/* subtle texture */}
                     <div
                         className="absolute inset-0 rounded-xl opacity-60"
                         style={{
@@ -524,7 +498,6 @@ function VisualStack({
                         }}
                     />
 
-                    {/* right-edge fade */}
                     <div
                         className="pointer-events-none absolute inset-y-0 right-0 w-10"
                         style={{
@@ -533,13 +506,14 @@ function VisualStack({
                         }}
                     />
 
-                    {/* stacked cards */}
                     <div className="absolute inset-0 pointer-events-none">
                         {placements.slice(0, kinds.length).map((pos, idx) => {
                             const floatAnim = selected ? `ppcDrift${idx}` : undefined;
                             const popAnim = selected ? "ppcPopIn 420ms ease-out both" : undefined;
 
-                            const shadowBoost = level >= 4 && idx === placements.length - 1 ? 1 : 0;
+                            // Hero gets extra glow + shadow and always on top due to zIndex
+                            const isHero = idx === heroIdx;
+                            const heroBoost = isHero && level >= 3 ? 1 : 0;
 
                             return (
                                 <div
@@ -553,22 +527,23 @@ function VisualStack({
                                         animation: [floatAnim ? `${floatAnim} 6.4s ease-in-out infinite` : "", popAnim || ""]
                                             .filter(Boolean)
                                             .join(", "),
-                                        filter: shadowBoost ? "drop-shadow(0 22px 40px rgba(0,0,0,0.55))" : undefined,
+                                        filter: heroBoost ? "drop-shadow(0 26px 52px rgba(0,0,0,0.62))" : undefined,
                                     }}
                                 >
-                                    <PinCard
-                                        kind={kinds[idx]}
-                                        level={level}
-                                        selected={selected}
-                                        active={true}
-                                        style={{ width: CARD_W, height: CARD_H }}
-                                    />
+                                    <div className={isHero ? "ppc-heroCard" : undefined}>
+                                        <PinCard
+                                            kind={kinds[idx]}
+                                            level={level}
+                                            selected={selected}
+                                            active={true}
+                                            style={{ width: CARD_W, height: CARD_H }}
+                                        />
+                                    </div>
                                 </div>
                             );
                         })}
                     </div>
 
-                    {/* subtle energy ring */}
                     <div
                         className={[
                             "absolute inset-0 rounded-xl pointer-events-none opacity-0 transition-opacity",
@@ -581,7 +556,6 @@ function VisualStack({
                     />
                 </div>
 
-                {/* GUIDANCE */}
                 <div className="min-w-0 flex-1">
                     <GuidanceBlock guidance={guidance} />
                 </div>
@@ -711,14 +685,12 @@ export default function Q4Visual({
           100% { transform: translateY(0px) scale(1); opacity: 1; }
         }
 
-        /* Drift: subtle, tiered. */
         @keyframes ppcDrift0 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2px * var(--ppcDrift, 2.0))); } }
         @keyframes ppcDrift1 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.4px * var(--ppcDrift, 2.0))); } }
         @keyframes ppcDrift2 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.1px * var(--ppcDrift, 2.0))); } }
         @keyframes ppcDrift3 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.6px * var(--ppcDrift, 2.0))); } }
         @keyframes ppcDrift4 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.2px * var(--ppcDrift, 2.0))); } }
 
-        /* Thumb layer */
         .ppc-thumb {
           transform: scale(1.02);
           filter: contrast(1.02) saturate(1.05);
@@ -730,7 +702,6 @@ export default function Q4Visual({
           filter: contrast(1.06) saturate(1.12);
         }
 
-        /* gentle motion styles */
         .ppc-pan-soft { transform: translateY(0px) scale(1.02); }
         .ppc-pan-x { transform: translateX(-1px) scale(1.03); }
         .ppc-pan-y { transform: translateY(-1px) scale(1.03); }
@@ -768,10 +739,20 @@ export default function Q4Visual({
         .ppc-opt:hover .ppc-pinCard { transform: translateY(calc(-2px * var(--ppcLift, 1.0))); }
         .ppc-opt[data-selected="true"] .ppc-pinCard { transform: translateY(calc(-2.5px * var(--ppcLift, 1.0))); }
 
-        /* extra punch for lvl4 */
         .ppc-opt[data-level="4"]:hover .ppc-pinCard,
         .ppc-opt[data-level="4"][data-selected="true"] .ppc-pinCard {
           filter: saturate(1.12) contrast(1.04);
+        }
+
+        /* Hero emphasis: this will apply to the front-most wrapper div in VisualStack */
+        .ppc-heroCard .ppc-pinCard {
+          transform: translateY(-1px) scale(1.01);
+        }
+        .ppc-opt:hover .ppc-heroCard .ppc-pinCard {
+          transform: translateY(calc(-3px * var(--ppcLift, 1.0))) scale(1.02);
+        }
+        .ppc-opt[data-selected="true"] .ppc-heroCard .ppc-pinCard {
+          transform: translateY(calc(-3.5px * var(--ppcLift, 1.0))) scale(1.03);
         }
 
         @media (prefers-reduced-motion: reduce) {

@@ -3,10 +3,26 @@
 import React, { useId, useMemo } from "react";
 import type { VisualStrength, StepBaseProps } from "./ppcV2Types";
 
+/**
+ * Q4 thumbs (served from Next.js /public)
+ *
+ * Repo path (per your screenshot):
+ *   public/tools/pinterestPotential/thumbs/
+ *     - before-after-1.jpg
+ *     - carousel-1.jpg
+ *     - photo-1.jpg
+ *     - photo-2.jpg
+ *     - photo-3.jpg
+ *
+ * Public URLs MUST therefore be:
+ *   /tools/pinterestPotential/thumbs/<filename>.jpg
+ */
+const THUMB_BASE = "/tools/pinterestPotential/thumbs";
+
 type Opt = {
     v: VisualStrength;
     title: string;
-    subtitle: string; // will live inside the pill now
+    subtitle: string; // lives inside the pill
     level: 1 | 2 | 3 | 4;
     guidance: string;
 };
@@ -118,12 +134,69 @@ function LevelPips({
 
 type PinKind = "photo" | "video" | "carousel" | "product" | "before_after" | "ugc";
 
-/**
- * “Real-ish content” pin card:
- * - no circular pictograms
- * - reads like a piece of content (title, meta, badges)
- * - lively image area (animated texture + sheen on hover/selected)
- */
+function thumbSrcFor(kind: PinKind, level: 1 | 2 | 3 | 4) {
+    // Your repo only includes:
+    // photo-1.jpg, photo-2.jpg, photo-3.jpg, carousel-1.jpg, before-after-1.jpg
+    // So: clamp photos to 1..3, and map other kinds to the closest available asset.
+    const photoN = Math.min(level, 3);
+
+    if (kind === "photo") return `${THUMB_BASE}/photo-${photoN}.jpg`;
+    if (kind === "carousel") return `${THUMB_BASE}/carousel-1.jpg`;
+    if (kind === "before_after") return `${THUMB_BASE}/before-after-1.jpg`;
+
+    // No dedicated thumbs yet: reuse a strong photo so nothing breaks.
+    if (kind === "video") return `${THUMB_BASE}/photo-3.jpg`;
+    if (kind === "product") return `${THUMB_BASE}/photo-2.jpg`;
+    // ugc
+    return `${THUMB_BASE}/photo-1.jpg`;
+}
+
+function Thumb({
+                   src,
+                   kind,
+                   selected,
+               }: {
+    src: string;
+    kind: PinKind;
+    selected: boolean;
+}) {
+    const pan =
+        kind === "carousel"
+            ? "ppc-pan-x"
+            : kind === "before_after"
+                ? "ppc-pan-y"
+                : kind === "video"
+                    ? "ppc-pan-zoom"
+                    : "ppc-pan-soft";
+
+    return (
+        <div className="absolute inset-0 overflow-hidden">
+            <img
+                src={src}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                className={[
+                    "h-full w-full object-cover",
+                    "ppc-thumb",
+                    pan,
+                    selected ? "ppc-thumb-selected" : "",
+                ].join(" ")}
+                onError={(e) => {
+                    // Fail-safe: if something is misnamed/misserved, fall back to a known-good thumb.
+                    const img = e.currentTarget;
+                    const fallback = `${THUMB_BASE}/photo-1.jpg`;
+                    if (img.src.endsWith("/photo-1.jpg")) return;
+                    img.src = fallback;
+                }}
+            />
+            <div className="pointer-events-none absolute inset-0 ppc-film" />
+            <div className="pointer-events-none absolute inset-0 ppc-vignette" />
+        </div>
+    );
+}
+
 function PinCard({
                      kind,
                      level,
@@ -151,9 +224,10 @@ function PinCard({
                             : { badge: "Photo", badgeTone: "bg-[color-mix(in_srgb,var(--card)_70%,transparent)]" };
 
     const titleStrength: 1 | 2 | 3 = level === 1 ? 1 : level === 2 ? 2 : 3;
-
     const t1 = titleStrength === 1 ? "w-3/5" : titleStrength === 2 ? "w-4/5" : "w-[92%]";
     const t2 = titleStrength === 1 ? "w-2/5" : titleStrength === 2 ? "w-3/5" : "w-4/5";
+
+    const src = thumbSrcFor(kind, level);
 
     return (
         <div
@@ -172,23 +246,24 @@ function PinCard({
             data-level={level}
             data-selected={selected ? "true" : "false"}
         >
-            {/* “media” area */}
             <div className="relative h-[58%] border-b border-[var(--border)]">
-                <div className="absolute inset-0 ppc-media" />
+                <Thumb src={src} kind={kind} selected={selected} />
+
                 <div
-                    className="absolute inset-0"
+                    className="pointer-events-none absolute inset-0"
                     style={{
                         background:
-                            "linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.22)), radial-gradient(240px 120px at 18% 25%, rgba(149,9,82,0.22), transparent 60%), radial-gradient(260px 140px at 85% 78%, rgba(213,137,54,0.18), transparent 62%)",
+                            "linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.26)), radial-gradient(240px 120px at 18% 25%, rgba(149,9,82,0.18), transparent 60%), radial-gradient(260px 140px at 85% 78%, rgba(213,137,54,0.14), transparent 62%)",
                         opacity: 0.95,
                     }}
                 />
-                {/* content hint overlays (no circles) */}
+
                 {kind === "video" ? (
                     <div className="absolute left-3 top-3 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
                         ▶ Play
                     </div>
                 ) : null}
+
                 {kind === "carousel" ? (
                     <div className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
                         <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-bronze)] opacity-80" />
@@ -196,24 +271,26 @@ function PinCard({
                         <span className="h-1.5 w-1.5 rounded-full bg-[var(--card)] opacity-55" />
                     </div>
                 ) : null}
+
                 {kind === "before_after" ? (
                     <div className="absolute inset-x-3 bottom-3 grid grid-cols-2 gap-2">
                         <div className="h-8 rounded-md border border-[var(--border)] bg-[rgba(0,0,0,0.28)]" />
                         <div className="h-8 rounded-md border border-[var(--border)] bg-[rgba(0,0,0,0.18)]" />
                     </div>
                 ) : null}
+
                 {kind === "product" ? (
                     <div className="absolute right-3 bottom-3 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
                         $ • In stock
                     </div>
                 ) : null}
+
                 {kind === "ugc" ? (
                     <div className="absolute left-3 bottom-3 inline-flex items-center gap-1 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
                         ★★★★☆
                     </div>
                 ) : null}
 
-                {/* sheen */}
                 <div
                     className={[
                         "absolute inset-0 pointer-events-none opacity-0 transition-opacity",
@@ -227,13 +304,13 @@ function PinCard({
                 />
             </div>
 
-            {/* “content” area */}
             <div className="relative px-3 pb-3 pt-2">
                 <div className="flex items-center justify-between gap-2">
                     <div className="flex min-w-0 items-center gap-2">
                         <span className="h-5 w-5 rounded-full bg-[var(--card)] opacity-70" />
                         <span className="h-2 w-20 rounded bg-[var(--card)] opacity-55" />
                     </div>
+
                     <span
                         className={[
                             "inline-flex items-center rounded-full border px-2 py-0.5 text-[10px]",
@@ -258,7 +335,6 @@ function PinCard({
                 ) : null}
             </div>
 
-            {/* selected ring */}
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
@@ -272,15 +348,12 @@ function PinCard({
     );
 }
 
-/**
- * Borderless, “inside the option” guidance.
- * - No extra border/card.
- * - Designed to take minimal vertical space when wrapped under the preview.
- */
 function GuidanceBlock({ guidance }: { guidance: string }) {
     return (
         <div className="pt-1">
-            <div className="text-[10px] font-medium uppercase tracking-wide text-[var(--foreground-muted)]">How to interpret</div>
+            <div className="text-[10px] font-medium uppercase tracking-wide text-[var(--foreground-muted)]">
+                How to interpret
+            </div>
             <div className="mt-1 text-sm leading-snug text-[var(--foreground)]">{guidance}</div>
 
             <div className="mt-3 flex items-center justify-between gap-3">
@@ -295,17 +368,6 @@ function GuidanceBlock({ guidance }: { guidance: string }) {
     );
 }
 
-/**
- * Composition rule (per option):
- * 1) Preview is primary, but MUST NOT force-wrap guidance due to a min-width.
- * 2) Guidance sits to the right INSIDE the option border when >= sm.
- * 3) On narrow widths, it stacks below.
- *
- * Changes in this version:
- * - preview panel has a fixed width/height across ALL options (layout consistency)
- * - higher levels feel more “alive” (more motion + glow), without being floaty noise
- * - no “X formats” text; visuals do the explaining
- */
 function VisualStack({
                          level,
                          selected,
@@ -325,15 +387,11 @@ function VisualStack({
                     : ["photo", "video", "carousel", "product", "ugc"];
     }, [level]);
 
-    const PREVIEW_W = 320;
     const PREVIEW_H = 188;
-
     const CARD_W = 172;
     const CARD_H = 112;
 
     const placements = useMemo(() => {
-        // Use one consistent “stage” for every option.
-        // Higher levels: tighter composition + more depth (but within the same stage size).
         const base =
             level === 1
                 ? [{ x: 20, y: 22, r: -1.5, s: 1.0 }]
@@ -355,15 +413,11 @@ function VisualStack({
                             { x: 30, y: 58, r: 2.0, s: 0.97 },
                         ];
 
-        // For level 4 we have 5 kinds; the 5th becomes a “foreground hero” card.
         const hero = { x: 136, y: 24, r: 0.9, s: 1.01 };
-
         return level === 4 ? [...base, hero] : base;
     }, [level]);
 
     const motion = useMemo(() => {
-        // Make higher levels feel more “badass” through intensity, not chaos.
-        // (Used by CSS vars.)
         return {
             glow: level === 1 ? 0.55 : level === 2 ? 0.75 : level === 3 ? 0.95 : 1.15,
             lift: level === 1 ? 1.0 : level === 2 ? 1.25 : level === 3 ? 1.45 : 1.7,
@@ -374,7 +428,6 @@ function VisualStack({
     return (
         <div className="mt-3">
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-start sm:gap-4 sm:flex-nowrap">
-                {/* PREVIEW (fixed width/height across all options) */}
                 <div
                     className={[
                         "relative rounded-xl border",
@@ -393,7 +446,6 @@ function VisualStack({
                     data-level={level}
                     data-selected={selected ? "true" : "false"}
                 >
-                    {/* stage glow */}
                     <div
                         className="absolute inset-0 rounded-xl"
                         style={{
@@ -403,7 +455,6 @@ function VisualStack({
                         }}
                     />
 
-                    {/* subtle texture */}
                     <div
                         className="absolute inset-0 rounded-xl opacity-60"
                         style={{
@@ -412,7 +463,6 @@ function VisualStack({
                         }}
                     />
 
-                    {/* right-edge fade */}
                     <div
                         className="pointer-events-none absolute inset-y-0 right-0 w-10"
                         style={{
@@ -421,14 +471,11 @@ function VisualStack({
                         }}
                     />
 
-                    {/* stacked cards */}
                     <div className="absolute inset-0 pointer-events-none">
                         {placements.slice(0, kinds.length).map((pos, idx) => {
                             const floatAnim = selected ? `ppcDrift${idx}` : undefined;
                             const popAnim = selected ? "ppcPopIn 420ms ease-out both" : undefined;
 
-                            // Increase “depth” for higher levels.
-                            const z = 10 + idx;
                             const shadowBoost = level >= 4 && idx === placements.length - 1 ? 1 : 0;
 
                             return (
@@ -438,7 +485,7 @@ function VisualStack({
                                     style={{
                                         left: pos.x,
                                         top: pos.y,
-                                        zIndex: z,
+                                        zIndex: 10 + idx,
                                         transform: `rotate(${pos.r}deg) scale(${pos.s})`,
                                         animation: [floatAnim ? `${floatAnim} 6.4s ease-in-out infinite` : "", popAnim || ""]
                                             .filter(Boolean)
@@ -458,21 +505,18 @@ function VisualStack({
                         })}
                     </div>
 
-                    {/* subtle “energy” ring */}
                     <div
                         className={[
                             "absolute inset-0 rounded-xl pointer-events-none opacity-0 transition-opacity",
                             selected ? "opacity-100" : "group-hover:opacity-40",
                         ].join(" ")}
                         style={{
-                            boxShadow:
-                                "0 0 0 1px rgba(255,255,255,0.06) inset, 0 0 0 1px rgba(149,9,82,0.10)",
+                            boxShadow: "0 0 0 1px rgba(255,255,255,0.06) inset, 0 0 0 1px rgba(149,9,82,0.10)",
                             opacity: selected ? 1 : 0,
                         }}
                     />
                 </div>
 
-                {/* GUIDANCE */}
                 <div className="min-w-0 flex-1">
                     <GuidanceBlock guidance={guidance} />
                 </div>
@@ -602,22 +646,46 @@ export default function Q4Visual({
           100% { transform: translateY(0px) scale(1); opacity: 1; }
         }
 
-        /* Drift: subtle, tiered. Higher index = slightly different phase. */
+        /* Drift: subtle, tiered. */
         @keyframes ppcDrift0 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2px * var(--ppcDrift, 2.0))); } }
         @keyframes ppcDrift1 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.4px * var(--ppcDrift, 2.0))); } }
         @keyframes ppcDrift2 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.1px * var(--ppcDrift, 2.0))); } }
         @keyframes ppcDrift3 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.6px * var(--ppcDrift, 2.0))); } }
         @keyframes ppcDrift4 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(calc(-2.2px * var(--ppcDrift, 2.0))); } }
 
-        .ppc-media {
+        /* Thumb layer */
+        .ppc-thumb {
+          transform: scale(1.02);
+          filter: contrast(1.02) saturate(1.05);
+          transition: transform 520ms ease, filter 520ms ease;
+          will-change: transform;
+        }
+        .ppc-thumb-selected {
+          transform: scale(1.08);
+          filter: contrast(1.06) saturate(1.12);
+        }
+
+        /* gentle motion styles */
+        .ppc-pan-soft { transform: translateY(0px) scale(1.02); }
+        .ppc-pan-x { transform: translateX(-1px) scale(1.03); }
+        .ppc-pan-y { transform: translateY(-1px) scale(1.03); }
+        .ppc-pan-zoom { transform: translateY(-1px) scale(1.04); }
+
+        .ppc-opt:hover .ppc-thumb { transform: scale(1.08); filter: contrast(1.06) saturate(1.12); }
+        .ppc-opt[data-selected="true"] .ppc-thumb { transform: scale(1.10); filter: contrast(1.08) saturate(1.14); }
+
+        .ppc-film {
           background:
-            radial-gradient(240px 120px at 18% 22%, rgba(255,255,255,0.08), transparent 60%),
-            radial-gradient(260px 140px at 80% 80%, rgba(255,255,255,0.06), transparent 62%),
-            linear-gradient(135deg, rgba(149,9,82,0.12), rgba(0,0,0,0.00) 55%),
-            linear-gradient(135deg, rgba(213,137,54,0.12), rgba(0,0,0,0.00) 55%);
-          filter: contrast(1.05) saturate(1.05);
-          transform: scale(1);
-          transition: transform 420ms ease, filter 420ms ease;
+            radial-gradient(1px 1px at 12px 10px, rgba(255,255,255,0.06), transparent 70%),
+            radial-gradient(1px 1px at 34px 26px, rgba(255,255,255,0.05), transparent 70%),
+            radial-gradient(1px 1px at 58px 18px, rgba(255,255,255,0.04), transparent 70%),
+            linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.10));
+          opacity: 0.55;
+          mix-blend-mode: overlay;
+        }
+        .ppc-vignette {
+          background: radial-gradient(120% 90% at 50% 30%, transparent 35%, rgba(0,0,0,0.45) 100%);
+          opacity: 0.55;
         }
 
         .ppc-exampleThumb {
@@ -632,14 +700,10 @@ export default function Q4Visual({
           will-change: transform;
         }
 
-        /* “This is the visuals question” flair: the stack animates as a unit, content moves inside it. */
         .ppc-opt:hover .ppc-pinCard { transform: translateY(calc(-2px * var(--ppcLift, 1.0))); }
         .ppc-opt[data-selected="true"] .ppc-pinCard { transform: translateY(calc(-2.5px * var(--ppcLift, 1.0))); }
 
-        .ppc-opt:hover .ppc-media { transform: scale(1.04); filter: contrast(1.08) saturate(1.10); }
-        .ppc-opt[data-selected="true"] .ppc-media { transform: scale(1.06); filter: contrast(1.10) saturate(1.12); }
-
-        /* Extra “badass” for high levels on hover/selected: slightly stronger contrast. */
+        /* extra punch for lvl4 */
         .ppc-opt[data-level="4"]:hover .ppc-pinCard,
         .ppc-opt[data-level="4"][data-selected="true"] .ppc-pinCard {
           filter: saturate(1.12) contrast(1.04);
@@ -710,7 +774,6 @@ export default function Q4Visual({
                                 <div className="min-w-0">
                                     <div className="flex flex-wrap items-center gap-2">
                                         <div className="text-lg font-semibold tracking-tight text-[var(--foreground)]">{o.title}</div>
-                                        {/* subtitle now lives inside this pill (color cues by level) */}
                                         <LevelBadge level={o.level} subtitle={o.subtitle} selected={selected} />
                                     </div>
 

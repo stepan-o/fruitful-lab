@@ -13,9 +13,11 @@ import type { VisualStrength, StepBaseProps } from "./ppcV2Types";
  *     - photo-1.jpg
  *     - photo-2.jpg
  *     - photo-3.jpg
+ *     - video-1.jpg
+ *     - video-1.mp4
  *
  * Public URLs MUST therefore be:
- *   /tools/pinterestPotential/thumbs/<filename>.jpg
+ *   /tools/pinterestPotential/thumbs/<filename>
  */
 const THUMB_BASE = "/tools/pinterestPotential/thumbs";
 
@@ -134,9 +136,13 @@ function LevelPips({
 
 type PinKind = "photo" | "video" | "carousel" | "product" | "before_after" | "ugc";
 
+function videoMp4Src() {
+    return `${THUMB_BASE}/video-1.mp4`;
+}
+
 function thumbSrcFor(kind: PinKind, level: 1 | 2 | 3 | 4) {
-    // Your repo only includes:
-    // photo-1.jpg, photo-2.jpg, photo-3.jpg, carousel-1.jpg, before-after-1.jpg
+    // Repo includes:
+    // photo-1.jpg, photo-2.jpg, photo-3.jpg, carousel-1.jpg, before-after-1.jpg, video-1.jpg (+ video-1.mp4)
     // So: clamp photos to 1..3, and map other kinds to the closest available asset.
     const photoN = Math.min(level, 3);
 
@@ -144,8 +150,10 @@ function thumbSrcFor(kind: PinKind, level: 1 | 2 | 3 | 4) {
     if (kind === "carousel") return `${THUMB_BASE}/carousel-1.jpg`;
     if (kind === "before_after") return `${THUMB_BASE}/before-after-1.jpg`;
 
-    // No dedicated thumbs yet: reuse a strong photo so nothing breaks.
-    if (kind === "video") return `${THUMB_BASE}/photo-3.jpg`;
+    // NEW: dedicated video poster thumb exists
+    if (kind === "video") return `${THUMB_BASE}/video-1.jpg`;
+
+    // No dedicated thumbs yet: reuse strong photos so nothing breaks.
     if (kind === "product") return `${THUMB_BASE}/photo-2.jpg`;
     // ugc
     return `${THUMB_BASE}/photo-1.jpg`;
@@ -154,10 +162,12 @@ function thumbSrcFor(kind: PinKind, level: 1 | 2 | 3 | 4) {
 function Thumb({
                    src,
                    kind,
+                   level,
                    selected,
                }: {
     src: string;
     kind: PinKind;
+    level: 1 | 2 | 3 | 4;
     selected: boolean;
 }) {
     const pan =
@@ -169,28 +179,70 @@ function Thumb({
                     ? "ppc-pan-zoom"
                     : "ppc-pan-soft";
 
+    // For stronger options (levels 3 & 4), use the MP4 loop for the "video" card.
+    const useLoopVideo = kind === "video" && level >= 3;
+
     return (
         <div className="absolute inset-0 overflow-hidden">
-            <img
-                src={src}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                className={[
-                    "h-full w-full object-cover",
-                    "ppc-thumb",
-                    pan,
-                    selected ? "ppc-thumb-selected" : "",
-                ].join(" ")}
-                onError={(e) => {
-                    // Fail-safe: if something is misnamed/misserved, fall back to a known-good thumb.
-                    const img = e.currentTarget;
-                    const fallback = `${THUMB_BASE}/photo-1.jpg`;
-                    if (img.src.endsWith("/photo-1.jpg")) return;
-                    img.src = fallback;
-                }}
-            />
+            {useLoopVideo ? (
+                <video
+                    src={videoMp4Src()}
+                    poster={src}
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                    preload="metadata"
+                    aria-hidden="true"
+                    className={[
+                        "h-full w-full object-cover",
+                        "ppc-thumb",
+                        pan,
+                        selected ? "ppc-thumb-selected" : "",
+                    ].join(" ")}
+                    // Fail-safe: if video fails, the poster still shows; but we also degrade to img.
+                    onError={(e) => {
+                        const el = e.currentTarget;
+                        // Replace the video element with an img fallback (best-effort, no runtime deps).
+                        const img = document.createElement("img");
+                        img.src = src || `${THUMB_BASE}/photo-1.jpg`;
+                        img.alt = "";
+                        img.setAttribute("aria-hidden", "true");
+                        img.decoding = "async";
+                        img.loading = "lazy";
+                        img.className = [
+                            "h-full w-full object-cover",
+                            "ppc-thumb",
+                            pan,
+                            selected ? "ppc-thumb-selected" : "",
+                        ].join(" ");
+                        el.parentElement?.replaceChild(img, el);
+                    }}
+                />
+            ) : (
+                <img
+                    src={src}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    className={[
+                        "h-full w-full object-cover",
+                        "ppc-thumb",
+                        pan,
+                        selected ? "ppc-thumb-selected" : "",
+                    ].join(" ")}
+                    onError={(e) => {
+                        // Fail-safe: if something is misnamed/misserved, fall back to a known-good thumb.
+                        const img = e.currentTarget;
+                        const fallback = `${THUMB_BASE}/photo-1.jpg`;
+                        if (img.src.endsWith("/photo-1.jpg")) return;
+                        img.src = fallback;
+                    }}
+                />
+            )}
+
+            {/* light film grain + vignette */}
             <div className="pointer-events-none absolute inset-0 ppc-film" />
             <div className="pointer-events-none absolute inset-0 ppc-vignette" />
         </div>
@@ -246,9 +298,11 @@ function PinCard({
             data-level={level}
             data-selected={selected ? "true" : "false"}
         >
+            {/* “media” area */}
             <div className="relative h-[58%] border-b border-[var(--border)]">
-                <Thumb src={src} kind={kind} selected={selected} />
+                <Thumb src={src} kind={kind} level={level} selected={selected} />
 
+                {/* tonal overlays to keep the PPC vibe consistent across thumbs */}
                 <div
                     className="pointer-events-none absolute inset-0"
                     style={{
@@ -258,6 +312,7 @@ function PinCard({
                     }}
                 />
 
+                {/* content hint overlays */}
                 {kind === "video" ? (
                     <div className="absolute left-3 top-3 rounded-md border border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]">
                         ▶ Play
@@ -291,6 +346,7 @@ function PinCard({
                     </div>
                 ) : null}
 
+                {/* sheen */}
                 <div
                     className={[
                         "absolute inset-0 pointer-events-none opacity-0 transition-opacity",
@@ -304,6 +360,7 @@ function PinCard({
                 />
             </div>
 
+            {/* “content” area */}
             <div className="relative px-3 pb-3 pt-2">
                 <div className="flex items-center justify-between gap-2">
                     <div className="flex min-w-0 items-center gap-2">
@@ -335,6 +392,7 @@ function PinCard({
                 ) : null}
             </div>
 
+            {/* selected ring */}
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
@@ -428,6 +486,7 @@ function VisualStack({
     return (
         <div className="mt-3">
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-start sm:gap-4 sm:flex-nowrap">
+                {/* PREVIEW */}
                 <div
                     className={[
                         "relative rounded-xl border",
@@ -446,6 +505,7 @@ function VisualStack({
                     data-level={level}
                     data-selected={selected ? "true" : "false"}
                 >
+                    {/* stage glow */}
                     <div
                         className="absolute inset-0 rounded-xl"
                         style={{
@@ -455,6 +515,7 @@ function VisualStack({
                         }}
                     />
 
+                    {/* subtle texture */}
                     <div
                         className="absolute inset-0 rounded-xl opacity-60"
                         style={{
@@ -463,6 +524,7 @@ function VisualStack({
                         }}
                     />
 
+                    {/* right-edge fade */}
                     <div
                         className="pointer-events-none absolute inset-y-0 right-0 w-10"
                         style={{
@@ -471,6 +533,7 @@ function VisualStack({
                         }}
                     />
 
+                    {/* stacked cards */}
                     <div className="absolute inset-0 pointer-events-none">
                         {placements.slice(0, kinds.length).map((pos, idx) => {
                             const floatAnim = selected ? `ppcDrift${idx}` : undefined;
@@ -505,6 +568,7 @@ function VisualStack({
                         })}
                     </div>
 
+                    {/* subtle energy ring */}
                     <div
                         className={[
                             "absolute inset-0 rounded-xl pointer-events-none opacity-0 transition-opacity",
@@ -517,6 +581,7 @@ function VisualStack({
                     />
                 </div>
 
+                {/* GUIDANCE */}
                 <div className="min-w-0 flex-1">
                     <GuidanceBlock guidance={guidance} />
                 </div>

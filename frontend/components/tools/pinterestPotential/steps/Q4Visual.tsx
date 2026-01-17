@@ -255,12 +255,14 @@ function PinCard({
                      selected,
                      active,
                      style,
+                     blurBack,
                  }: {
     kind: PinKind;
     level: 1 | 2 | 3 | 4;
     selected: boolean;
     active: boolean;
     style?: React.CSSProperties;
+    blurBack?: boolean;
 }) {
     const meta =
         kind === "video"
@@ -291,7 +293,12 @@ function PinCard({
             style={{
                 ...style,
                 opacity: active ? 1 : 0.33,
-                filter: active ? "saturate(1.06)" : "saturate(0.75)",
+                filter: [
+                    active ? "saturate(1.06)" : "saturate(0.75)",
+                    blurBack ? "blur(0.35px)" : "",
+                ]
+                    .filter(Boolean)
+                    .join(" "),
             }}
             aria-hidden="true"
             data-kind={kind}
@@ -402,9 +409,9 @@ function PinCard({
 
 function GuidanceBlock({ guidance }: { guidance: string }) {
     return (
-        <div className="min-w-0 pt-1">
+        <div className="min-w-0 w-full pt-1">
             <div className="text-[10px] font-medium uppercase tracking-wide text-[var(--foreground-muted)]">How to interpret</div>
-            <div className="mt-1 text-sm leading-snug text-[var(--foreground)] whitespace-normal break-words">
+            <div className="mt-1 text-sm leading-snug text-[var(--foreground)] whitespace-normal break-words max-w-full">
                 {guidance}
             </div>
         </div>
@@ -420,15 +427,15 @@ function VisualStack({
     selected: boolean;
     guidance: string;
 }) {
-    // Order matters. For lvl 3/4, we want VIDEO to be the hero/front card.
+    // Order matters: last item is the "top/front" card.
     const kinds = useMemo<PinKind[]>(() => {
         return level === 1
             ? ["photo"]
             : level === 2
-                ? ["photo", "carousel"]
+                ? ["photo", "carousel"] // carousel is top/front
                 : level === 3
-                    ? ["photo", "before_after", "video"] // video last => highest z-index
-                    : ["photo", "carousel", "product", "ugc", "video"]; // video last => highest z-index
+                    ? ["photo", "before_after", "video"] // video top/front
+                    : ["photo", "carousel", "product", "ugc", "video"]; // video top/front
     }, [level]);
 
     // Keep pin card size as-is
@@ -436,31 +443,37 @@ function VisualStack({
     const CARD_W = 210;
     const CARD_H = 136;
 
+    // Prettier trailing stack (diagonal down-right), while keeping HERO fully visible on the LEFT.
     const placements = useMemo(() => {
-        const base =
-            level === 1
-                ? [{ x: 46, y: 44, r: -1.5, s: 1.0 }]
-                : level === 2
-                    ? [
-                        { x: 18, y: 36, r: -2.0, s: 1.0 },
-                        { x: 102, y: 52, r: 1.6, s: 0.99 },
-                    ]
-                    : level === 3
-                        ? [
-                            { x: 6, y: 68, r: -2.2, s: 0.98 },
-                            { x: 66, y: 44, r: 1.2, s: 0.99 },
-                            { x: 142, y: 26, r: 0.6, s: 1.02 }, // HERO
-                        ]
-                        : [
-                            { x: 2, y: 78, r: -2.1, s: 0.95 },
-                            { x: 34, y: 58, r: 1.7, s: 0.96 },
-                            { x: 78, y: 40, r: -1.3, s: 0.97 },
-                            { x: 132, y: 22, r: 2.2, s: 0.98 },
-                            { x: 188, y: 18, r: 0.7, s: 1.04 }, // HERO
-                        ];
+        const n = kinds.length;
+        const heroX = 18;
+        const heroY = level >= 3 ? 18 : 34;
 
-        return base;
-    }, [level]);
+        // tuned per density
+        const dx = level === 2 ? 92 : level === 3 ? 82 : 62;
+        const dy = level === 2 ? 20 : level === 3 ? 22 : 18;
+
+        // back cards: farther right + lower
+        const rot = (i: number) => {
+            const r = [-2.2, 1.6, -1.2, 2.0, -0.8, 1.2];
+            return r[i % r.length];
+        };
+
+        return Array.from({ length: n }).map((_, idx) => {
+            const isHero = idx === n - 1;
+            if (isHero) return { x: heroX, y: heroY, r: 0.7, s: level === 4 ? 1.04 : 1.02 };
+
+            // distance from hero (1 = just behind hero)
+            const d = (n - 1) - idx;
+            const x = heroX + d * dx;
+            const y = heroY + d * dy;
+
+            // slightly smaller the farther back
+            const s = 1 - Math.min(0.06, d * 0.012);
+
+            return { x, y, r: rot(idx), s };
+        });
+    }, [kinds.length, level, kinds]);
 
     const motion = useMemo(() => {
         return {
@@ -473,13 +486,10 @@ function VisualStack({
     const heroIdx = kinds.length - 1;
 
     return (
-        <div className="mt-3">
-            {/* Ratio layout inside the answer option:
-          - Left preview panel ≈ 65%
-          - Right guidance ≈ 35%
-          - No hard min/max widths that force the text to drop below
-      */}
-            <div className="grid gap-4 sm:grid-cols-[minmax(0,0.65fr)_minmax(0,0.35fr)] sm:items-start">
+        <div className="mt-3 w-full min-w-0">
+            {/* IMPORTANT: Use grid so the whole block NEVER overflows the answer option card.
+          This fixes guidance text wrapping/overflow and ensures it uses available space. */}
+            <div className="grid gap-4 sm:grid-cols-[minmax(0,13fr)_minmax(0,7fr)] sm:items-start">
                 <div
                     className={[
                         "relative w-full rounded-xl border",
@@ -513,11 +523,12 @@ function VisualStack({
                         }}
                     />
 
+                    {/* Right fade so the "trailing" cards can gracefully disappear on the right edge */}
                     <div
-                        className="pointer-events-none absolute inset-y-0 right-0 w-10"
+                        className="pointer-events-none absolute inset-y-0 right-0 w-12"
                         style={{
-                            background: "linear-gradient(90deg, transparent, rgba(0,0,0,0.55))",
-                            opacity: 0.8,
+                            background: "linear-gradient(90deg, transparent, rgba(0,0,0,0.62))",
+                            opacity: 0.78,
                         }}
                     />
 
@@ -528,6 +539,9 @@ function VisualStack({
 
                             const isHero = idx === heroIdx;
                             const heroBoost = isHero && level >= 3 ? 1 : 0;
+
+                            // make back cards feel like a "trail" (less harsh overlap)
+                            const isBack = idx !== heroIdx;
 
                             return (
                                 <div
@@ -542,14 +556,16 @@ function VisualStack({
                                             .filter(Boolean)
                                             .join(", "),
                                         filter: heroBoost ? "drop-shadow(0 26px 52px rgba(0,0,0,0.62))" : undefined,
+                                        opacity: isBack ? (level >= 4 ? 0.9 : 0.92) : 1,
                                     }}
                                 >
-                                    <div className={isHero ? "ppc-heroCard" : undefined}>
+                                    <div className={isHero ? "ppc-heroCard" : "ppc-backCard"}>
                                         <PinCard
                                             kind={kinds[idx]}
                                             level={level}
                                             selected={selected}
                                             active={true}
+                                            blurBack={isBack && level >= 4}
                                             style={{ width: CARD_W, height: CARD_H }}
                                         />
                                     </div>
@@ -767,6 +783,11 @@ export default function Q4Visual({
         }
         .ppc-opt[data-selected="true"] .ppc-heroCard .ppc-pinCard {
           transform: translateY(calc(-3.5px * var(--ppcLift, 1.0))) scale(1.03);
+        }
+
+        /* Back trail polish (subtle) */
+        .ppc-backCard .ppc-pinCard {
+          box-shadow: 0 12px 26px rgba(0,0,0,0.34);
         }
 
         @media (prefers-reduced-motion: reduce) {

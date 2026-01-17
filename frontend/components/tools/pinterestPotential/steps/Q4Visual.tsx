@@ -35,14 +35,20 @@ function SelectedChip() {
     return (
         <span
             className={[
-                "inline-flex items-center gap-2 rounded-full border px-2.5 py-1",
-                "text-[10px] leading-none whitespace-nowrap",
-                "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)] text-[var(--foreground)]",
-                "shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]",
+                "inline-flex items-center gap-2.5 rounded-full border",
+                "px-3.5 py-1.5 text-xs font-semibold leading-none whitespace-nowrap",
+                "border-[color-mix(in_srgb,var(--brand-raspberry)_55%,var(--ppc-chip-border))]",
+                "bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,var(--ppc-chip-bg))]",
+                "text-[var(--foreground)]",
+                "shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_10px_24px_rgba(0,0,0,0.35)]",
             ].join(" ")}
         >
       <span
-          className="h-2 w-2 rounded-full bg-[var(--brand-raspberry)] shadow-[0_0_0_2px_rgba(0,0,0,0.25)_inset]"
+          className={[
+              "h-2.5 w-2.5 rounded-full",
+              "bg-[var(--brand-raspberry)]",
+              "shadow-[0_0_0_2px_rgba(0,0,0,0.30)_inset,0_0_0_1px_rgba(255,255,255,0.12)]",
+          ].join(" ")}
           aria-hidden="true"
       />
       Selected
@@ -169,8 +175,7 @@ function thumbSrcFor(kind: PinKind, level: 1 | 2 | 3 | 4) {
 
     // No dedicated thumbs yet: reuse strong photos so nothing breaks.
     if (kind === "product") return `${THUMB_BASE}/photo-2.jpg`;
-    // ugc
-    return `${THUMB_BASE}/photo-1.jpg`;
+    return `${THUMB_BASE}/photo-1.jpg`; // ugc
 }
 
 function Thumb({
@@ -339,7 +344,10 @@ function PinCard({
                 ) : null}
 
                 <div
-                    className={["absolute inset-0 pointer-events-none opacity-0 transition-opacity", selected ? "opacity-100" : "group-hover:opacity-70"].join(" ")}
+                    className={[
+                        "absolute inset-0 pointer-events-none opacity-0 transition-opacity",
+                        selected ? "opacity-100" : "group-hover:opacity-70",
+                    ].join(" ")}
                     style={{
                         background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)",
                         transform: "translateX(-65%)",
@@ -394,17 +402,10 @@ function PinCard({
 
 function GuidanceBlock({ guidance }: { guidance: string }) {
     return (
-        <div className="w-full pt-1">
+        <div className="min-w-0 pt-1">
             <div className="text-[10px] font-medium uppercase tracking-wide text-[var(--foreground-muted)]">How to interpret</div>
-            <div className="mt-1 text-sm leading-snug text-[var(--foreground)]">{guidance}</div>
-
-            <div className="mt-3 flex items-center justify-between gap-3">
-                <div className="text-xs text-[var(--foreground-muted)]">Depth</div>
-                <div className="flex items-center gap-2">
-                    <span className="h-1 w-10 rounded-full bg-[var(--card)]" />
-                    <span className="h-1 w-14 rounded-full bg-[var(--card)] opacity-80" />
-                    <span className="h-1 w-18 rounded-full bg-[var(--card)] opacity-60" />
-                </div>
+            <div className="mt-1 text-sm leading-snug text-[var(--foreground)] whitespace-normal break-words">
+                {guidance}
             </div>
         </div>
     );
@@ -430,36 +431,32 @@ function VisualStack({
                     : ["photo", "carousel", "product", "ugc", "video"]; // video last => highest z-index
     }, [level]);
 
-    const PREVIEW_H = 188;
-    const CARD_W = 172;
-    const CARD_H = 112;
+    // Keep pin card size as-is
+    const PREVIEW_H = 224;
+    const CARD_W = 210;
+    const CARD_H = 136;
 
     const placements = useMemo(() => {
-        // IMPORTANT: placements are ordered back -> front, because later items get higher z-index.
         const base =
             level === 1
-                ? [{ x: 20, y: 22, r: -1.5, s: 1.0 }]
+                ? [{ x: 46, y: 44, r: -1.5, s: 1.0 }]
                 : level === 2
                     ? [
-                        { x: 12, y: 22, r: -2.0, s: 1.0 },
-                        { x: 64, y: 34, r: 1.6, s: 0.99 },
+                        { x: 18, y: 36, r: -2.0, s: 1.0 },
+                        { x: 102, y: 52, r: 1.6, s: 0.99 },
                     ]
                     : level === 3
                         ? [
-                            // back cards
-                            { x: 10, y: 44, r: -2.2, s: 0.98 },
-                            { x: 56, y: 30, r: 1.2, s: 0.99 },
-                            // HERO (front)
-                            { x: 104, y: 22, r: 0.6, s: 1.02 },
+                            { x: 6, y: 68, r: -2.2, s: 0.98 },
+                            { x: 66, y: 44, r: 1.2, s: 0.99 },
+                            { x: 142, y: 26, r: 0.6, s: 1.02 }, // HERO
                         ]
                         : [
-                            // more density for lvl4 to feel “a lot more content”
-                            { x: 6, y: 58, r: -2.1, s: 0.95 },
-                            { x: 26, y: 44, r: 1.7, s: 0.96 },
-                            { x: 52, y: 30, r: -1.3, s: 0.97 },
-                            { x: 86, y: 18, r: 2.2, s: 0.98 },
-                            // HERO (front)
-                            { x: 126, y: 18, r: 0.7, s: 1.04 },
+                            { x: 2, y: 78, r: -2.1, s: 0.95 },
+                            { x: 34, y: 58, r: 1.7, s: 0.96 },
+                            { x: 78, y: 40, r: -1.3, s: 0.97 },
+                            { x: 132, y: 22, r: 2.2, s: 0.98 },
+                            { x: 188, y: 18, r: 0.7, s: 1.04 }, // HERO
                         ];
 
         return base;
@@ -477,17 +474,19 @@ function VisualStack({
 
     return (
         <div className="mt-3">
-            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-start sm:gap-4 sm:flex-nowrap">
+            {/* Ratio layout inside the answer option:
+          - Left preview panel ≈ 65%
+          - Right guidance ≈ 35%
+          - No hard min/max widths that force the text to drop below
+      */}
+            <div className="grid gap-4 sm:grid-cols-[minmax(0,0.65fr)_minmax(0,0.35fr)] sm:items-start">
                 <div
                     className={[
-                        "relative rounded-xl border",
+                        "relative w-full rounded-xl border",
                         "border-[var(--border)] bg-[var(--card)] p-3",
                         "overflow-hidden isolate",
-                        "flex-none shrink-0",
                     ].join(" ")}
                     style={{
-                        width: 320,
-                        maxWidth: "100%",
                         height: PREVIEW_H,
                         ["--ppcGlow" as any]: motion.glow,
                         ["--ppcLift" as any]: motion.lift,
@@ -501,7 +500,7 @@ function VisualStack({
                         className="absolute inset-0 rounded-xl"
                         style={{
                             background:
-                                "radial-gradient(360px 190px at 18% 30%, rgba(149,9,82,0.22), transparent 60%), radial-gradient(420px 220px at 85% 78%, rgba(213,137,54,0.20), transparent 64%)",
+                                "radial-gradient(420px 220px at 18% 30%, rgba(149,9,82,0.22), transparent 60%), radial-gradient(520px 260px at 85% 78%, rgba(213,137,54,0.20), transparent 64%)",
                             opacity: selected ? 1 : 0.72,
                         }}
                     />
@@ -571,7 +570,7 @@ function VisualStack({
                     />
                 </div>
 
-                <div className="min-w-0 flex-1">
+                <div className="min-w-0 w-full">
                     <GuidanceBlock guidance={guidance} />
                 </div>
             </div>
@@ -831,11 +830,6 @@ export default function Q4Visual({
                                 className="pointer-events-none absolute inset-0 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.05)_inset]"
                             />
 
-                            {/* KEY LAYOUT FIX:
-                  - Left column is flex-1 so VisualStack (and its guidance) can use all remaining width
-                  - Right column is flex-none (only pips + 1/4)
-                  - Selected chip moved up into the header row next to the subtitle pill
-              */}
                             <div className="relative flex items-start gap-4">
                                 <div className="min-w-0 flex-1">
                                     <div className="flex flex-wrap items-center gap-2">
@@ -850,7 +844,6 @@ export default function Q4Visual({
                                 <div className="flex flex-none flex-col items-end gap-2 pt-1">
                                     <LevelPips level={o.level} selected={selected} />
                                     <div className="text-xs text-[var(--foreground-muted)]">{o.level}/4</div>
-                                    {/* keep vertical rhythm consistent */}
                                     <span className="h-6" aria-hidden="true" />
                                 </div>
                             </div>

@@ -807,10 +807,28 @@ export default function PinterestPotentialWizard({
                 <Q1Segment
                     value={answers.segment}
                     onChangeAction={(v) => {
+                        const prevSeg = answersRef.current.segment;
+
+                        // ✅ Repeat click = explicit confirm → advance
+                        if (prevSeg === v && v) {
+                            setErrors((prev) => {
+                                if (!prev["Q1"]) return prev;
+                                const n = { ...prev };
+                                delete n["Q1"];
+                                return n;
+                            });
+
+                            // Important: do NOT go through autoAdvance (it will noop). Just goNext.
+                            goNext(answersRef.current);
+                            return;
+                        }
+
+                        // normal change path
                         setAnswers((p) => {
                             if (p.segment === v) return p;
                             return { ...p, segment: v };
                         });
+
                         setErrors((prev) => {
                             if (!prev["Q1"]) return prev;
                             const n = { ...prev };
@@ -830,10 +848,22 @@ export default function PinterestPotentialWizard({
                         onChange={(v) => {
                             console.log("Q2Niche selected:", v);
 
-                            // Only act on real changes
                             const prev = answersRef.current.niche;
-                            if (prev === v) return;
 
+                            // ✅ Repeat click = explicit confirm → advance
+                            if (prev === v && v) {
+                                setErrors((prevErrs) => {
+                                    if (!prevErrs["Q2"]) return prevErrs;
+                                    const updatedErrors = { ...prevErrs };
+                                    delete updatedErrors["Q2"];
+                                    return updatedErrors;
+                                });
+
+                                goNext(answersRef.current);
+                                return;
+                            }
+
+                            // normal change path
                             setAnswerField("niche", v);
 
                             setErrors((prevErrs) => {
@@ -843,8 +873,7 @@ export default function PinterestPotentialWizard({
                                 return updatedErrors;
                             });
 
-                            // Restore deterministic auto-advance from the actual selection event.
-                            // (Q2Niche currently calls onAutoAdvance(undefined), so relying on it won't advance.)
+                            // Keep this (Q2Niche still calls onAutoAdvance(undefined) in some paths)
                             autoAdvance({ niche: v });
                         }}
                         onAutoAdvance={autoAdvance}

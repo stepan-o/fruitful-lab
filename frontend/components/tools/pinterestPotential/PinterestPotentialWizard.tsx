@@ -28,6 +28,9 @@
 // Fix (2026-01-18): Restore Q2 auto-advance deterministically.
 // - Q2Niche currently calls onAutoAdvance(undefined) (seen in logs), so wizard must trigger autoAdvance({ niche: v })
 //   on real selection changes. Dedupe guard already prevents double-advance if Q2Niche later starts passing patches.
+//
+// Fix (2026-01-18): Segment-dependent invalidation.
+// - Q2 niche options depend on Q1 segment, so changing segment must clear niche (and segment-dependent goal).
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -218,6 +221,23 @@ function patchIsNoop(base: AnswersV2, patch: Partial<AnswersV2>): boolean {
     return true;
 }
 
+function applySegmentInvalidation(base: AnswersV2, next: AnswersV2): AnswersV2 {
+    const prevSeg = base.segment;
+    const nextSeg = next.segment;
+
+    // If segment changed, clear segment-dependent answers.
+    if (prevSeg && nextSeg && prevSeg !== nextSeg) {
+        const updated: AnswersV2 = { ...next };
+        // Q2 depends on segment:
+        delete updated.niche;
+        // Q7 depends on segment:
+        delete updated.primary_goal;
+        return updated;
+    }
+
+    return next;
+}
+
 // -----------------------------
 // Component
 // -----------------------------
@@ -263,8 +283,7 @@ export default function PinterestPotentialWizard({
     const qpLeadMode =
         searchParams.get("leadMode") ?? searchParams.get("lead_mode") ?? searchParams.get("leadmode") ?? undefined;
 
-    const qpLeadToken =
-        searchParams.get("leadToken") ?? searchParams.get("lead_token") ?? searchParams.get("token") ?? undefined;
+    const qpLeadToken = searchParams.get("leadToken") ?? searchParams.get("lead_token") ?? searchParams.get("token") ?? undefined;
 
     // Optional cookie override (best-effort; safe if absent)
     const cookieLeadMode =
@@ -528,12 +547,6 @@ export default function PinterestPotentialWizard({
         });
     }
 
-    /**
-     * goNext accepts optional `nextAnswers` to fix the auto-advance race:
-     * - step component triggers onChange + onAutoAdvance immediately
-     * - React state might not commit by the time we validate
-     * - passing `nextAnswers` guarantees validation uses the updated answers
-     */
     function goNext(nextAnswers?: AnswersV2) {
         console.log("goNext triggered with nextAnswers:", nextAnswers);
         // Any manual navigation should cancel pending auto-advance.
@@ -580,7 +593,12 @@ export default function PinterestPotentialWizard({
         // No-op patch? Do nothing
         if (patchIsNoop(base, patch)) return;
 
-        const next = { ...base, ...patch } as AnswersV2;
+        let next = { ...base, ...patch } as AnswersV2;
+
+        // ✅ Segment change invalidates segment-dependent answers (niche + goal)
+        if (Object.prototype.hasOwnProperty.call(patch, "segment")) {
+            next = applySegmentInvalidation(base, next);
+        }
 
         // Dedupe repeated auto-advance calls for the same step+answers payload
         const sig = `${currentStepAtCall}:${JSON.stringify(next)}`;
@@ -823,16 +841,24 @@ export default function PinterestPotentialWizard({
                             return;
                         }
 
-                        // normal change path
+                        // normal change path (+ invalidation if segment changed)
                         setAnswers((p) => {
                             if (p.segment === v) return p;
-                            return { ...p, segment: v };
+                            const next: AnswersV2 = { ...p, segment: v };
+                            const nextApplied = applySegmentInvalidation(p, next);
+                            return nextApplied;
                         });
 
+                        // Clear errors. If segment changed, clear Q2/Q7 too (those answers are now invalid).
                         setErrors((prev) => {
-                            if (!prev["Q1"]) return prev;
+                            const hadAny = !!prev["Q1"] || (!!prevSeg && prevSeg !== v && (!!prev["Q2"] || !!prev["Q7"]));
+                            if (!hadAny) return prev;
                             const n = { ...prev };
                             delete n["Q1"];
+                            if (prevSeg && prevSeg !== v) {
+                                delete n["Q2"];
+                                delete n["Q7"];
+                            }
                             return n;
                         });
                     }}
@@ -897,19 +923,11 @@ export default function PinterestPotentialWizard({
             ) : null}
 
             {stepIndex === 4 ? (
-                <Q4Visual
-                    value={answers.visual_strength}
-                    onChange={(v) => setAnswerField("visual_strength", v)}
-                    onAutoAdvance={autoAdvance}
-                />
+                <Q4Visual value={answers.visual_strength} onChange={(v) => setAnswerField("visual_strength", v)} onAutoAdvance={autoAdvance} />
             ) : null}
 
             {stepIndex === 5 ? (
-                <Q5Site
-                    value={answers.site_experience}
-                    onChange={(v) => setAnswerField("site_experience", v)}
-                    onAutoAdvance={autoAdvance}
-                />
+                <Q5Site value={answers.site_experience} onChange={(v) => setAnswerField("site_experience", v)} onAutoAdvance={autoAdvance} />
             ) : null}
 
             {stepIndex === 6 ? (
@@ -939,11 +957,7 @@ export default function PinterestPotentialWizard({
             ) : null}
 
             {stepIndex === 8 ? (
-                <Q8GrowthMode
-                    value={answers.growth_mode}
-                    onChange={(v) => setAnswerField("growth_mode", v)}
-                    onAutoAdvance={autoAdvance}
-                />
+                <Q8GrowthMode value={answers.growth_mode} onChange={(v) => setAnswerField("growth_mode", v)} onAutoAdvance={autoAdvance} />
             ) : null}
         </>
     );

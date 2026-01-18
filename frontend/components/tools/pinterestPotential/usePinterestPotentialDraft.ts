@@ -1,4 +1,3 @@
-// frontend/components/tools/pinterestPotential/usePinterestPotentialDraft.ts
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -16,7 +15,6 @@ export type GrowthMode = "organic" | "later" | "ads";
 export type AnswersV2 = {
     segment?: Segment;
     niche?: string;
-
     volume_bucket?: VolumeBucket;
     visual_strength?: VisualStrength;
     site_experience?: SiteExperience;
@@ -26,12 +24,9 @@ export type AnswersV2 = {
 };
 
 export type DraftStateV2 = {
-    /** 1..8 */
-    stepIndex: number;
-    /** Whether user left welcome and entered Q1 (for welcome variant) */
-    started: boolean;
+    stepIndex: number; // 1..8
+    started: boolean; // Whether user left welcome and entered Q1 (for welcome variant)
     answers: AnswersV2;
-    /** A/B */
     variant?: "welcome" | "no_welcome";
 };
 
@@ -50,7 +45,6 @@ function isVariant(v: unknown): v is DraftStateV2["variant"] {
 function isDraftShape(v: unknown): v is DraftStateV2 {
     if (!isObject(v)) return false;
 
-    // Avoid `any` by reading from Record<string, unknown>
     const rec = v;
 
     const stepIndex = rec["stepIndex"];
@@ -94,7 +88,6 @@ function safeRemoveSession(key: string): void {
 }
 
 export function usePinterestPotentialDraft(initial: DraftStateV2) {
-    // Load draft *once* (as initial state) to avoid setState-in-effect lint rule.
     const initialDraft = useMemo<DraftStateV2>(() => {
         const raw = safeReadSession(DRAFT_STORAGE_KEY);
         if (!raw) return initial;
@@ -102,8 +95,7 @@ export function usePinterestPotentialDraft(initial: DraftStateV2) {
         try {
             const parsed: unknown = JSON.parse(raw);
             if (isDraftShape(parsed)) {
-                // Merge with provided initial to preserve defaults for any new fields.
-                return { ...initial, ...parsed };
+                return { ...initial, ...parsed }; // Merge initial state with persisted state
             }
             safeRemoveSession(DRAFT_STORAGE_KEY);
             return initial;
@@ -111,20 +103,17 @@ export function usePinterestPotentialDraft(initial: DraftStateV2) {
             safeRemoveSession(DRAFT_STORAGE_KEY);
             return initial;
         }
-        // initial is stable for our usage; if caller changes it, we intentionally do not rehydrate.
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const [draft, setDraft] = useState<DraftStateV2>(initialDraft);
 
-    // Track first persist to avoid double-write surprises (optional, but harmless)
     const hydratedRef = useRef(false);
 
-    // Persist on changes
+    // Persist to sessionStorage after mount
     useEffect(() => {
-        // Mark hydrated after first render so we only start persisting after mount
         if (!hydratedRef.current) hydratedRef.current = true;
 
+        // Avoid overwriting updated state with old draft values
         safeWriteSession(DRAFT_STORAGE_KEY, JSON.stringify(draft));
     }, [draft]);
 

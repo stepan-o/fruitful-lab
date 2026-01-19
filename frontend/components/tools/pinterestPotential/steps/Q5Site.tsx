@@ -1,6 +1,7 @@
+// frontend/components/tools/pinterestPotential/steps/Q5Site.tsx
 "use client";
 
-import React, { useId, useMemo } from "react";
+import React, { useEffect, useId, useMemo, useRef } from "react";
 import type { SiteExperience, StepBaseProps } from "./ppcV2Types";
 
 /**
@@ -219,10 +220,7 @@ function HelpDetails({ opts }: { opts: Opt[] }) {
     }, [opts]);
 
     return (
-        <details
-            id={HELP_ID}
-            className="group rounded-2xl border border-[var(--border)] bg-[var(--background)] px-4 py-3"
-        >
+        <details id={HELP_ID} className="group rounded-2xl border border-[var(--border)] bg-[var(--background)] px-4 py-3">
             <summary
                 className={[
                     "cursor-pointer select-none list-none text-sm text-[var(--foreground)]",
@@ -286,21 +284,40 @@ function HelpDetails({ opts }: { opts: Opt[] }) {
 
             <div className="mt-3 text-xs text-[var(--foreground-muted)]">
                 Rule of thumb: if a new visitor can tell <span className="text-[var(--foreground)]">what this is</span> and{" "}
-                <span className="text-[var(--foreground)]">what to do next</span> quickly (mobile <em>and</em> desktop), you’re in a good place.
+                <span className="text-[var(--foreground)]">what to do next</span> quickly (mobile <em>and</em> desktop), you’re
+                in a good place.
             </div>
         </details>
     );
 }
 
-export default function Q5Site({
-                                   value,
-                                   onChange,
-                                   onAutoAdvance,
-                               }: StepBaseProps & {
+// --- IMPORTANT ---
+// StepBaseProps' onAutoAdvance is currently typed as 0-arg in some places,
+// but the wizard expects a patch-shaped call.
+// We override the prop type here to match the wizard contract and remove IDE TS2554 errors.
+type Q5AutoAdvancePatch = { site_experience?: SiteExperience };
+type Q5AutoAdvanceFn = (patch?: Q5AutoAdvancePatch) => void;
+
+type Q5Props = Omit<StepBaseProps, "onAutoAdvance"> & {
     value?: SiteExperience;
     onChange: (v: SiteExperience) => void;
-}) {
+    onAutoAdvance?: Q5AutoAdvanceFn;
+};
+
+export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
     const listId = useId();
+
+    const lastClickRef = useRef<SiteExperience | null>(null);
+    const localTimerRef = useRef<number | null>(null);
+
+    useEffect(() => {
+        return () => {
+            if (localTimerRef.current !== null) {
+                window.clearTimeout(localTimerRef.current);
+                localTimerRef.current = null;
+            }
+        };
+    }, []);
 
     const opts: Opt[] = useMemo(
         () => [
@@ -316,8 +333,36 @@ export default function Q5Site({
         const el = document.getElementById(HELP_ID);
         if (!el) return;
         el.scrollIntoView({ behavior: "smooth", block: "start" });
-        // Hint: don’t force-open; user can open if needed.
     };
+
+    function triggerAutoAdvance(clicked: SiteExperience) {
+        const prevValue = value;
+
+        // Always update selection for UI consistency (wizard may noop if unchanged).
+        onChange(clicked);
+
+        // Normal change path: send patch directly.
+        if (prevValue !== clicked) {
+            lastClickRef.current = clicked;
+            onAutoAdvance?.({ site_experience: clicked });
+            return;
+        }
+
+        // Reselect same (back-navigation confirm):
+        // Wizard ignores no-op patches; force a *real* patch by flipping undefined -> value.
+        // This is safe because:
+        // - wizard cancels pending auto-advance timers on subsequent calls
+        // - the "undefined" patch never gets a chance to validate/advance (it is superseded immediately)
+        if (lastClickRef.current === clicked) return; // guard rapid double-fire
+        lastClickRef.current = clicked;
+
+        onAutoAdvance?.({ site_experience: undefined });
+
+        if (localTimerRef.current !== null) window.clearTimeout(localTimerRef.current);
+        localTimerRef.current = window.setTimeout(() => {
+            onAutoAdvance?.({ site_experience: clicked });
+        }, 0);
+    }
 
     return (
         <div className="grid gap-4">
@@ -357,7 +402,6 @@ export default function Q5Site({
                     Pick the closest match — <span className="text-[var(--foreground)]">don’t overthink it</span>.
                 </div>
 
-                {/* Nudge that there’s help below */}
                 <div className="text-xs text-[var(--foreground-muted)]">
                     Not sure?{" "}
                     <button
@@ -387,10 +431,7 @@ export default function Q5Site({
                             aria-checked={selected}
                             data-selected={selected ? "true" : "false"}
                             data-level={String(o.level)}
-                            onClick={() => {
-                                onChange(o.v);
-                                onAutoAdvance?.();
-                            }}
+                            onClick={() => triggerAutoAdvance(o.v)}
                             className={[
                                 "group relative w-full rounded-2xl border p-3 text-left transition",
                                 "border-[var(--border)] bg-[var(--background)]",
@@ -408,13 +449,19 @@ export default function Q5Site({
                         >
               <span
                   aria-hidden="true"
-                  className={["pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity", selected ? "opacity-100" : "group-hover:opacity-20"].join(" ")}
+                  className={[
+                      "pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity",
+                      selected ? "opacity-100" : "group-hover:opacity-20",
+                  ].join(" ")}
                   style={{
                       background:
                           "radial-gradient(520px 240px at 18% 10%, rgba(255,255,255,0.07), transparent 58%), linear-gradient(90deg, color-mix(in srgb, var(--brand-raspberry) 30%, transparent), color-mix(in srgb, var(--brand-bronze) 20%, transparent))",
                   }}
               />
-                            <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.05)_inset]" />
+                            <span
+                                aria-hidden="true"
+                                className="pointer-events-none absolute inset-0 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.05)_inset]"
+                            />
 
                             <div className="relative grid gap-3">
                                 <div className="relative">
@@ -427,10 +474,8 @@ export default function Q5Site({
                                 </div>
 
                                 <div className="grid gap-1">
-                                    {/* Title line only (no pills here) */}
                                     <div className="text-base font-semibold tracking-tight text-[var(--foreground)]">{o.title}</div>
 
-                                    {/* Pills ALWAYS on next line */}
                                     <div className="flex flex-wrap items-center gap-2">
                                         <LevelBadge level={o.level} subtitle={o.subtitle} selected={selected} />
                                         {selected ? <SelectedChip /> : null}

@@ -283,7 +283,8 @@ export default function PinterestPotentialWizard({
     const qpLeadMode =
         searchParams.get("leadMode") ?? searchParams.get("lead_mode") ?? searchParams.get("leadmode") ?? undefined;
 
-    const qpLeadToken = searchParams.get("leadToken") ?? searchParams.get("lead_token") ?? searchParams.get("token") ?? undefined;
+    const qpLeadToken =
+        searchParams.get("leadToken") ?? searchParams.get("lead_token") ?? searchParams.get("token") ?? undefined;
 
     // Optional cookie override (best-effort; safe if absent)
     const cookieLeadMode =
@@ -851,7 +852,8 @@ export default function PinterestPotentialWizard({
 
                         // Clear errors. If segment changed, clear Q2/Q7 too (those answers are now invalid).
                         setErrors((prev) => {
-                            const hadAny = !!prev["Q1"] || (!!prevSeg && prevSeg !== v && (!!prev["Q2"] || !!prev["Q7"]));
+                            const hadAny =
+                                !!prev["Q1"] || (!!prevSeg && prevSeg !== v && (!!prev["Q2"] || !!prev["Q7"]));
                             if (!hadAny) return prev;
                             const n = { ...prev };
                             delete n["Q1"];
@@ -914,7 +916,35 @@ export default function PinterestPotentialWizard({
                     <Q3Volume
                         segment={answers.segment}
                         value={answers.volume_bucket}
-                        onChange={(v) => setAnswerField("volume_bucket", v)}
+                        onChange={(v) => {
+                            const prev = answersRef.current.volume_bucket;
+
+                            // ✅ Repeat click = explicit confirm → advance
+                            if (prev === v && v) {
+                                setErrors((prevErrs) => {
+                                    if (!prevErrs["Q3"]) return prevErrs;
+                                    const n = { ...prevErrs };
+                                    delete n["Q3"];
+                                    return n;
+                                });
+
+                                goNext(answersRef.current);
+                                return;
+                            }
+
+                            // Normal change path
+                            setAnswerField("volume_bucket", v);
+
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q3"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q3"];
+                                return n;
+                            });
+
+                            // ✅ Ensure deterministic auto-advance even if Q3Volume doesn't emit patches
+                            autoAdvance({ volume_bucket: v });
+                        }}
                         onAutoAdvance={autoAdvance}
                     />
                 ) : (
@@ -923,11 +953,47 @@ export default function PinterestPotentialWizard({
             ) : null}
 
             {stepIndex === 4 ? (
-                <Q4Visual value={answers.visual_strength} onChange={(v) => setAnswerField("visual_strength", v)} onAutoAdvance={autoAdvance} />
+                <Q4Visual
+                    value={answers.visual_strength}
+                    onChange={(v) => {
+                        const prev = answersRef.current.visual_strength;
+
+                        // ✅ Repeat click = explicit confirm → advance
+                        if (prev === v && v) {
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q4"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q4"];
+                                return n;
+                            });
+
+                            goNext(answersRef.current);
+                            return;
+                        }
+
+                        // Normal change path
+                        setAnswerField("visual_strength", v);
+
+                        setErrors((prevErrs) => {
+                            if (!prevErrs["Q4"]) return prevErrs;
+                            const n = { ...prevErrs };
+                            delete n["Q4"];
+                            return n;
+                        });
+
+                        // ✅ Ensure deterministic auto-advance even if Q4Visual doesn't emit patches
+                        autoAdvance({ visual_strength: v });
+                    }}
+                    onAutoAdvance={autoAdvance}
+                />
             ) : null}
 
             {stepIndex === 5 ? (
-                <Q5Site value={answers.site_experience} onChange={(v) => setAnswerField("site_experience", v)} onAutoAdvance={autoAdvance} />
+                <Q5Site
+                    value={answers.site_experience}
+                    onChange={(v) => setAnswerField("site_experience", v)}
+                    onAutoAdvance={autoAdvance}
+                />
             ) : null}
 
             {stepIndex === 6 ? (
@@ -957,7 +1023,11 @@ export default function PinterestPotentialWizard({
             ) : null}
 
             {stepIndex === 8 ? (
-                <Q8GrowthMode value={answers.growth_mode} onChange={(v) => setAnswerField("growth_mode", v)} onAutoAdvance={autoAdvance} />
+                <Q8GrowthMode
+                    value={answers.growth_mode}
+                    onChange={(v) => setAnswerField("growth_mode", v)}
+                    onAutoAdvance={autoAdvance}
+                />
             ) : null}
         </>
     );

@@ -1,7 +1,7 @@
 // frontend/components/tools/pinterestPotential/steps/Q5Site.tsx
 "use client";
 
-import React, { useEffect, useId, useMemo, useRef } from "react";
+import React, { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { SiteExperience, StepBaseProps } from "./ppcV2Types";
 
 /**
@@ -10,16 +10,14 @@ import type { SiteExperience, StepBaseProps } from "./ppcV2Types";
  * Repo path:
  *   public/tools/pinterestPotential/thumbs/
  *
- * Theme-aware assets:
- *   - site-1-dark.jpg  / site-1-light.jpg
- *   - site-2-dark.jpg  / site-2-light.jpg
- *   - site-3-dark.jpg  / site-3-light.jpg
- *   - site-4-dark.jpg  / site-4-light.jpg
+ * Theme-aware assets (ONLY):
+ *   - site-1-light.jpg ... site-4-light.jpg
+ *   - site-1-dark.jpg  ... site-4-dark.jpg
+ *
+ * No legacy filenames exist.
  */
 const THUMB_BASE = "/tools/pinterestPotential/thumbs";
 const HELP_ID = "ppc-q5-help";
-
-type Theme = "light" | "dark";
 
 type Opt = {
     v: SiteExperience;
@@ -28,70 +26,6 @@ type Opt = {
     level: 1 | 2 | 3 | 4;
     blurb: string; // keep ultra short (scan in 5s)
 };
-
-function systemPrefersDark(): boolean {
-    return window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
-}
-
-function readSavedTheme(): Theme | null {
-    try {
-        const saved = window.localStorage.getItem("theme");
-        return saved === "light" || saved === "dark" ? saved : null;
-    } catch {
-        return null;
-    }
-}
-
-function getEffectiveTheme(): Theme {
-    const root = document.documentElement;
-
-    // 1) explicit attribute wins
-    const explicit = root.getAttribute("data-theme");
-    if (explicit === "dark") return "dark";
-    if (explicit === "light") return "light";
-
-    // 2) saved (covers first paint before toggle effect runs)
-    const saved = readSavedTheme();
-    if (saved) return saved;
-
-    // 3) OS preference
-    return systemPrefersDark() ? "dark" : "light";
-}
-
-function useEffectiveTheme(): Theme {
-    const [theme, setTheme] = React.useState<Theme>("light");
-
-    // Use layout effect to reduce “flash” of wrong thumbs on initial paint
-    React.useLayoutEffect(() => {
-        if (typeof window === "undefined") return;
-
-        const root = document.documentElement;
-        const mql = window.matchMedia?.("(prefers-color-scheme: dark)");
-
-        const apply = () => setTheme(getEffectiveTheme());
-        apply();
-
-        const onMql = () => apply();
-        if (mql) {
-            if ("addEventListener" in mql) (mql as any).addEventListener("change", onMql);
-            else (mql as any).addListener(onMql);
-        }
-
-        // Watch explicit theme toggles (data-theme changes)
-        const obs = new MutationObserver(() => apply());
-        obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
-
-        return () => {
-            obs.disconnect();
-            if (mql) {
-                if ("removeEventListener" in mql) (mql as any).removeEventListener("change", onMql);
-                else (mql as any).removeListener(onMql);
-            }
-        };
-    }, []);
-
-    return theme;
-}
 
 function SelectedChip() {
     return (
@@ -198,20 +132,52 @@ function LevelPips({ level, total = 4, selected }: { level: number; total?: numb
     );
 }
 
-function siteThumbSrcForLevel(level: 1 | 2 | 3 | 4, theme: Theme) {
-    // New theme-aware assets
-    return `${THUMB_BASE}/site-${level}-${theme}.jpg`;
+/** Resolve effective theme (explicit data-theme wins, else OS preference) */
+function useResolvedIsDark() {
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const root = document.documentElement;
+        const mql = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+        const compute = () => {
+            const explicit = root.getAttribute("data-theme");
+            if (explicit === "dark") return true;
+            if (explicit === "light") return false;
+            return Boolean(mql?.matches);
+        };
+
+        const apply = () => setIsDark(compute());
+        apply();
+
+        const onMql = () => apply();
+        if (mql) {
+            if ("addEventListener" in mql) (mql as any).addEventListener("change", onMql);
+            else (mql as any).addListener(onMql);
+        }
+
+        const obs = new MutationObserver(() => apply());
+        obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+        return () => {
+            obs.disconnect();
+            if (mql) {
+                if ("removeEventListener" in mql) (mql as any).removeEventListener("change", onMql);
+                else (mql as any).removeListener(onMql);
+            }
+        };
+    }, []);
+
+    return isDark;
 }
 
-function Thumb({
-                   src,
-                   fallbackLevelSrc,
-                   selected,
-               }: {
-    src: string;
-    fallbackLevelSrc: string;
-    selected: boolean;
-}) {
+function siteThumbSrcForLevel(level: 1 | 2 | 3 | 4, isDark: boolean) {
+    return `${THUMB_BASE}/site-${level}-${isDark ? "dark" : "light"}.jpg`;
+}
+
+function Thumb({ src, selected, isDark }: { src: string; selected: boolean; isDark: boolean }) {
     return (
         <div
             className={[
@@ -226,36 +192,41 @@ function Thumb({
                 aria-hidden="true"
                 loading="lazy"
                 decoding="async"
-                className={[
-                    "absolute inset-0 h-full w-full object-cover",
-                    "ppc-siteThumb",
-                    selected ? "ppc-siteThumb-selected" : "",
-                ].join(" ")}
+                className={["absolute inset-0 h-full w-full object-cover", "ppc-siteThumb", selected ? "ppc-siteThumb-selected" : ""].join(
+                    " ",
+                )}
                 onError={(e) => {
+                    // No legacy fallbacks; if we ever 404, show a neutral empty state.
                     const img = e.currentTarget;
-                    const photoFallback = `${THUMB_BASE}/photo-1.jpg`;
-
-                    // 1) try level-based fallback (old assets) if we aren’t already on it
-                    if (!img.src.endsWith(fallbackLevelSrc)) {
-                        img.src = fallbackLevelSrc;
-                        return;
-                    }
-
-                    // 2) final fallback
-                    if (img.src.endsWith("/photo-1.jpg")) return;
-                    img.src = photoFallback;
+                    img.style.opacity = "0";
                 }}
             />
-            <div className="pointer-events-none absolute inset-0 ppc-film" />
-            <div className="pointer-events-none absolute inset-0 ppc-vignette" />
-            <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                    background:
-                        "linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.38)), radial-gradient(260px 140px at 18% 22%, rgba(149,9,82,0.16), transparent 62%), radial-gradient(320px 180px at 82% 82%, rgba(213,137,54,0.14), transparent 64%)",
-                    opacity: 0.95,
-                }}
-            />
+
+            {/* DARK: cinematic treatment */}
+            {isDark ? (
+                <>
+                    <div className="pointer-events-none absolute inset-0 ppc-film" />
+                    <div className="pointer-events-none absolute inset-0 ppc-vignette" />
+                    <div
+                        className="pointer-events-none absolute inset-0"
+                        style={{
+                            background:
+                                "linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.38)), radial-gradient(260px 140px at 18% 22%, rgba(149,9,82,0.16), transparent 62%), radial-gradient(320px 180px at 82% 82%, rgba(213,137,54,0.14), transparent 64%)",
+                            opacity: 0.95,
+                        }}
+                    />
+                </>
+            ) : (
+                /* LIGHT: clean, no dark wash */
+                <div
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                        background:
+                            "radial-gradient(520px 260px at 20% 12%, rgba(255,255,255,0.55), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.16), rgba(0,0,0,0.06))",
+                        opacity: 0.55,
+                    }}
+                />
+            )}
         </div>
     );
 }
@@ -283,10 +254,7 @@ function HelpDetails({ opts }: { opts: Opt[] }) {
                 ].join(" ")}
             >
         <span className="inline-flex items-center gap-2">
-          <span
-              aria-hidden="true"
-              className={["grid h-7 w-7 place-items-center rounded-full border", "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)]"].join(" ")}
-          >
+          <span aria-hidden="true" className={["grid h-7 w-7 place-items-center rounded-full border", "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)]"].join(" ")}>
             <span className="h-2 w-2 rounded-full bg-[var(--brand-bronze)]" />
           </span>
           How do I judge my website quality (fast)?
@@ -349,7 +317,7 @@ type Q5Props = Omit<StepBaseProps, "onAutoAdvance"> & {
 
 export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
     const listId = useId();
-    const theme = useEffectiveTheme();
+    const isDark = useResolvedIsDark();
 
     const lastClickRef = useRef<SiteExperience | null>(null);
     const localTimerRef = useRef<number | null>(null);
@@ -402,16 +370,29 @@ export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
     }
 
     return (
-        <div className="grid gap-4">
+        <div className="grid gap-4" data-theme={isDark ? "dark" : "light"}>
             <style>{`
         .ppc-siteThumb {
           transform: scale(1.03);
-          filter: contrast(1.03) saturate(1.06);
-          transition: transform 520ms ease, filter 520ms ease;
+          transition: transform 520ms ease, filter 520ms ease, opacity 220ms ease;
           will-change: transform;
         }
         .ppc-siteThumb-selected {
           transform: scale(1.08);
+        }
+
+        /* Theme-aware image tuning (gentle) */
+        [data-theme="light"] .ppc-siteThumb {
+          filter: contrast(1.02) saturate(1.02) brightness(1.04);
+        }
+        [data-theme="light"] .ppc-siteThumb-selected {
+          filter: contrast(1.03) saturate(1.04) brightness(1.05);
+        }
+
+        [data-theme="dark"] .ppc-siteThumb {
+          filter: contrast(1.03) saturate(1.06);
+        }
+        [data-theme="dark"] .ppc-siteThumb-selected {
           filter: contrast(1.06) saturate(1.12);
         }
 
@@ -458,9 +439,7 @@ export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4" role="radiogroup" aria-labelledby={listId}>
                 {opts.map((o) => {
                     const selected = value === o.v;
-
-                    const src = siteThumbSrcForLevel(o.level, theme);
-                    const fallbackLevelSrc = `${THUMB_BASE}/site-${o.level}.jpg`;
+                    const src = siteThumbSrcForLevel(o.level, isDark);
 
                     return (
                         <button
@@ -483,23 +462,17 @@ export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
                         >
               <span
                   aria-hidden="true"
-                  className={[
-                      "pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity",
-                      selected ? "opacity-100" : "group-hover:opacity-20",
-                  ].join(" ")}
+                  className={["pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity", selected ? "opacity-100" : "group-hover:opacity-20"].join(" ")}
                   style={{
                       background:
                           "radial-gradient(520px 240px at 18% 10%, rgba(255,255,255,0.07), transparent 58%), linear-gradient(90deg, color-mix(in srgb, var(--brand-raspberry) 30%, transparent), color-mix(in srgb, var(--brand-bronze) 20%, transparent))",
                   }}
               />
-                            <span
-                                aria-hidden="true"
-                                className="pointer-events-none absolute inset-0 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.05)_inset]"
-                            />
+                            <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.05)_inset]" />
 
                             <div className="relative grid gap-3">
                                 <div className="relative">
-                                    <Thumb src={src} fallbackLevelSrc={fallbackLevelSrc} selected={selected} />
+                                    <Thumb src={src} selected={selected} isDark={isDark} />
 
                                     <div className="pointer-events-none absolute right-2 top-2 flex items-center gap-2 rounded-full border border-[var(--ppc-chip-border)] bg-[color-mix(in_srgb,var(--ppc-chip-bg)_85%,transparent)] px-2 py-1">
                                         <LevelPips level={o.level} selected={selected} />

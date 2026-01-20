@@ -37,7 +37,7 @@ type Opt = {
     v: GoalValue;
     title: string;
     subtitle: string; // pill
-    level: 1 | 2 | 3 | 4; // used for asset index + pips
+    level: 1 | 2 | 3 | 4; // used for asset index ONLY (no hierarchy)
     blurb: string; // ultra short
 };
 
@@ -76,91 +76,23 @@ function SelectedChip() {
     );
 }
 
-function LevelBadge({
-                        level,
-                        subtitle,
-                        selected,
-                    }: {
-    level: 1 | 2 | 3 | 4;
-    subtitle: string;
-    selected: boolean;
-}) {
-    const tone =
-        level === 1
-            ? {
-                dot: "bg-[var(--card)]",
-                ring: "border-[var(--border)]",
-                text: "text-[var(--foreground-muted)]",
-                bg: "bg-[var(--ppc-chip-bg)]",
-            }
-            : level === 2
-                ? {
-                    dot: "bg-[var(--brand-bronze)]",
-                    ring: "border-[color-mix(in_srgb,var(--brand-bronze)_45%,transparent)]",
-                    text: "text-[var(--foreground)]",
-                    bg: "bg-[color-mix(in_srgb,var(--brand-bronze)_10%,var(--ppc-chip-bg))]",
-                }
-                : level === 3
-                    ? {
-                        dot: "bg-[var(--brand-rust)]",
-                        ring: "border-[color-mix(in_srgb,var(--brand-rust)_50%,transparent)]",
-                        text: "text-[var(--foreground)]",
-                        bg: "bg-[color-mix(in_srgb,var(--brand-rust)_10%,var(--ppc-chip-bg))]",
-                    }
-                    : {
-                        dot: "bg-[var(--brand-raspberry)]",
-                        ring: "border-[color-mix(in_srgb,var(--brand-raspberry)_55%,transparent)]",
-                        text: "text-[var(--foreground)]",
-                        bg: "bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,var(--ppc-chip-bg))]",
-                    };
-
+/**
+ * Same-level pills: no hierarchy. (Q7 is a choice set, not a progression.)
+ * Remove “filled circles” inside the pills: keep them text-only for clarity.
+ */
+function GoalBadge({ subtitle, selected }: { subtitle: string; selected: boolean }) {
     return (
         <span
             className={[
-                "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs",
-                "whitespace-nowrap",
-                tone.ring,
-                tone.bg,
-                selected ? "shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]" : "",
+                "inline-flex items-center rounded-full border px-2.5 py-1 text-xs whitespace-nowrap",
+                selected
+                    ? "border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_10%,var(--ppc-chip-bg))] shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]"
+                    : "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)]",
             ].join(" ")}
             title={subtitle}
         >
-      <span
-          className={["h-1.5 w-1.5 rounded-full", tone.dot, selected ? "opacity-100" : "opacity-80"].join(" ")}
-          aria-hidden="true"
-      />
-      <span className={[tone.text, "whitespace-nowrap"].join(" ")}>{subtitle}</span>
+      <span className={selected ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]"}>{subtitle}</span>
     </span>
-    );
-}
-
-function LevelPips({
-                       level,
-                       total = 4,
-                       selected,
-                   }: {
-    level: number;
-    total?: number;
-    selected: boolean;
-}) {
-    return (
-        <div className="flex items-center gap-1" aria-hidden="true" title={`${level} of ${total}`}>
-            {Array.from({ length: total }).map((_, i) => {
-                const n = i + 1;
-                const on = n <= level;
-                return (
-                    <span
-                        key={n}
-                        className={[
-                            "h-2.5 w-2.5 rounded-full border transition",
-                            "border-[var(--border)]",
-                            on ? "bg-[var(--brand-bronze)]" : "bg-[var(--card)]",
-                            selected && on ? "shadow-[0_0_0_1px_rgba(0,0,0,0.18)_inset]" : "",
-                        ].join(" ")}
-                    />
-                );
-            })}
-        </div>
     );
 }
 
@@ -213,29 +145,77 @@ function helpBulletsBySegment(seg: Segment) {
 
     if (seg === "content_creator") {
         return {
-            traffic: ["Optimizes for website sessions and top-of-funnel reads.", "Best if your monetization happens on-site.", "Think: blog posts, SEO pages, long-form content."],
-            subscribers: ["Optimizes for email list growth (lead magnets + opt-ins).", "Best if you sell later via email.", "Think: freebies, newsletters, challenges."],
-            affiliate: ["Optimizes for revenue via affiliate clicks and intent pages.", "Best if you have buyer-intent content.", "Think: roundups, “best of”, comparisons."],
-            sales: ["Optimizes for direct offer conversions.", "Best if you have a clear product/course + landing page.", "Think: evergreen funnel, launch pages, checkout."],
+            traffic: [
+                "Optimizes for website sessions and top-of-funnel reads.",
+                "Best if your monetization happens on-site.",
+                "Think: blog posts, SEO pages, long-form content.",
+            ],
+            subscribers: [
+                "Optimizes for email list growth (lead magnets + opt-ins).",
+                "Best if you sell later via email.",
+                "Think: freebies, newsletters, challenges.",
+            ],
+            affiliate: [
+                "Optimizes for revenue via affiliate clicks and intent pages.",
+                "Best if you have buyer-intent content.",
+                "Think: roundups, “best of”, comparisons.",
+            ],
+            sales: [
+                "Optimizes for direct offer conversions.",
+                "Best if you have a clear product/course + landing page.",
+                "Think: evergreen funnel, launch pages, checkout.",
+            ],
             common,
         };
     }
 
     if (seg === "product_seller") {
         return {
-            sales: ["Optimizes for purchase intent and product discovery.", "Best if your product pages convert on mobile.", "Think: collections, best-sellers, bundles."],
-            subscribers: ["Optimizes for list growth (promos, VIP, waitlists).", "Best if email is your conversion engine.", "Think: discounts, early access, drops."],
-            retargeting: ["Optimizes for building a warm audience to re-market to.", "Best if you’ll run conversion ads later.", "Think: catalog views, product engagement."],
-            discovery: ["Optimizes for reaching new audiences and new-to-brand demand.", "Best if you’re expanding beyond current buyers.", "Think: category entry points + hero products."],
+            sales: [
+                "Optimizes for purchase intent and product discovery.",
+                "Best if your product pages convert on mobile.",
+                "Think: collections, best-sellers, bundles.",
+            ],
+            subscribers: [
+                "Optimizes for list growth (promos, VIP, waitlists).",
+                "Best if email is your conversion engine.",
+                "Think: discounts, early access, drops.",
+            ],
+            retargeting: [
+                "Optimizes for building a warm audience to re-market to.",
+                "Best if you’ll run conversion ads later.",
+                "Think: catalog views, product engagement.",
+            ],
+            discovery: [
+                "Optimizes for reaching new audiences and new-to-brand demand.",
+                "Best if you’re expanding beyond current buyers.",
+                "Think: category entry points + hero products.",
+            ],
             common,
         };
     }
 
     return {
-        leads: ["Optimizes for inquiries, consult calls, and form fills.", "Best if your offer is high-value + high-intent.", "Think: application pages, booking pages."],
-        subscribers: ["Optimizes for lead capture (content → nurture).", "Best if you educate + build trust before selling.", "Think: guides, checklists, email sequences."],
-        webinar: ["Optimizes for event signups (live or evergreen).", "Best if your webinar is your main conversion lever.", "Think: registration page + reminders."],
-        authority: ["Optimizes for credibility + top-of-funnel visibility.", "Best if you sell via trust + expertise over time.", "Think: proof, case studies, “how it works”."],
+        leads: [
+            "Optimizes for inquiries, consult calls, and form fills.",
+            "Best if your offer is high-value + high-intent.",
+            "Think: application pages, booking pages.",
+        ],
+        subscribers: [
+            "Optimizes for lead capture (content → nurture).",
+            "Best if you educate + build trust before selling.",
+            "Think: guides, checklists, email sequences.",
+        ],
+        webinar: [
+            "Optimizes for event signups (live or evergreen).",
+            "Best if your webinar is your main conversion lever.",
+            "Think: registration page + reminders.",
+        ],
+        authority: [
+            "Optimizes for credibility + top-of-funnel visibility.",
+            "Best if you sell via trust + expertise over time.",
+            "Think: proof, case studies, “how it works”.",
+        ],
         common,
     };
 }
@@ -278,7 +258,6 @@ function HelpDetails({ segment, opts }: { segment: Segment; opts: Opt[] }) {
                 {opts.map((o) => {
                     const perGoal = (bullets as any)[o.v] as string[] | undefined;
                     const common = (bullets as any).common as string[] | undefined;
-
                     const rows = [...(perGoal ?? []), ...(common ?? [])].slice(0, 6);
 
                     return (
@@ -287,13 +266,9 @@ function HelpDetails({ segment, opts }: { segment: Segment; opts: Opt[] }) {
                                 <div className="min-w-0">
                                     <div className="flex flex-wrap items-center gap-2">
                                         <div className="text-sm font-semibold text-[var(--foreground)]">{o.title}</div>
-                                        <LevelBadge level={o.level} subtitle={o.subtitle} selected={false} />
+                                        <GoalBadge subtitle={o.subtitle} selected={false} />
                                     </div>
                                     <div className="mt-1 text-xs text-[var(--foreground-muted)]">{o.blurb}</div>
-                                </div>
-                                <div className="flex flex-col items-end gap-1">
-                                    <LevelPips level={o.level} selected={false} />
-                                    <div className="text-[11px] text-[var(--foreground-muted)]">{o.level}/4</div>
                                 </div>
                             </div>
 
@@ -380,7 +355,7 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
         el.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
-    function triggerAutoAdvance(clicked: string, goalValue: string) {
+    function triggerAutoAdvance(goalValue: string) {
         const prevValue = value;
 
         // Always update selection for UI consistency
@@ -472,8 +447,7 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
                             role="radio"
                             aria-checked={selected}
                             data-selected={selected ? "true" : "false"}
-                            data-level={String(o.level)}
-                            onClick={() => triggerAutoAdvance(o.v, o.v)}
+                            onClick={() => triggerAutoAdvance(o.v)}
                             className={[
                                 "group relative w-full rounded-2xl border p-3 text-left transition",
                                 "border-[var(--border)] bg-[var(--background)]",
@@ -506,20 +480,13 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
                             />
 
                             <div className="relative grid gap-3">
-                                <div className="relative">
-                                    <Thumb src={src} selected={selected} />
-
-                                    <div className="pointer-events-none absolute right-2 top-2 flex items-center gap-2 rounded-full border border-[var(--ppc-chip-border)] bg-[color-mix(in_srgb,var(--ppc-chip-bg)_85%,transparent)] px-2 py-1">
-                                        <LevelPips level={o.level} selected={selected} />
-                                        <span className="text-[11px] text-[var(--foreground-muted)]">{o.level}/4</span>
-                                    </div>
-                                </div>
+                                <Thumb src={src} selected={selected} />
 
                                 <div className="grid gap-1">
                                     <div className="text-base font-semibold tracking-tight text-[var(--foreground)]">{o.title}</div>
 
                                     <div className="flex flex-wrap items-center gap-2">
-                                        <LevelBadge level={o.level} subtitle={o.subtitle} selected={selected} />
+                                        <GoalBadge subtitle={o.subtitle} selected={selected} />
                                         {selected ? <SelectedChip /> : null}
                                     </div>
 

@@ -28,14 +28,81 @@ type Opt = {
     blurb: string; // ultra short
 };
 
-function SelectedChip() {
+/**
+ * Hierarchical pill colors (low → mid → high).
+ * Uses only existing brand tokens + neutral; avoids introducing new CSS vars.
+ *
+ * - Level 1 (Organic): neutral/soft (not “important”)
+ * - Level 2 (Maybe): bronze (middle)
+ * - Level 3 (Ads): raspberry (highest emphasis)
+ */
+function pillClasses(level: 1 | 2 | 3, selected: boolean) {
+    // base shell
+    const base =
+        "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs whitespace-nowrap transition-colors";
+
+    if (level === 1) {
+        // neutral
+        return [
+            base,
+            selected
+                ? "border-[color-mix(in_srgb,rgba(255,255,255,0.22)_70%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,rgba(255,255,255,0.10)_70%,var(--ppc-chip-bg))] shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]"
+                : "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)]",
+        ].join(" ");
+    }
+
+    if (level === 2) {
+        // bronze
+        return [
+            base,
+            selected
+                ? "border-[color-mix(in_srgb,var(--brand-bronze)_50%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,var(--brand-bronze)_12%,var(--ppc-chip-bg))] shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]"
+                : "border-[color-mix(in_srgb,var(--brand-bronze)_30%,var(--ppc-chip-border))] bg-[var(--ppc-chip-bg)]",
+        ].join(" ");
+    }
+
+    // level 3 — raspberry
+    return [
+        base,
+        selected
+            ? "border-[color-mix(in_srgb,var(--brand-raspberry)_55%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,var(--ppc-chip-bg))] shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]"
+            : "border-[color-mix(in_srgb,var(--brand-raspberry)_28%,var(--ppc-chip-border))] bg-[var(--ppc-chip-bg)]",
+    ].join(" ");
+}
+
+function dotClasses(level: 1 | 2 | 3, selected: boolean) {
+    const base = "h-1.5 w-1.5 rounded-full";
+    if (level === 1) {
+        return [base, selected ? "bg-[rgba(255,255,255,0.75)]" : "bg-[rgba(255,255,255,0.42)]"].join(" ");
+    }
+    if (level === 2) {
+        return [base, selected ? "bg-[var(--brand-bronze)]" : "bg-[var(--brand-bronze)] opacity-70"].join(" ");
+    }
+    return [base, selected ? "bg-[var(--brand-raspberry)]" : "bg-[var(--brand-raspberry)] opacity-65"].join(" ");
+}
+
+function SelectedChip({ level }: { level: 1 | 2 | 3 }) {
+    // keep “Selected” chip consistent but slightly tinted by level (subtle hierarchy)
+    const ring =
+        level === 3
+            ? "border-[color-mix(in_srgb,var(--brand-raspberry)_55%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,var(--ppc-chip-bg))]"
+            : level === 2
+                ? "border-[color-mix(in_srgb,var(--brand-bronze)_50%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,var(--brand-bronze)_10%,var(--ppc-chip-bg))]"
+                : "border-[color-mix(in_srgb,rgba(255,255,255,0.22)_70%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,rgba(255,255,255,0.10)_70%,var(--ppc-chip-bg))]";
+
+    const dot =
+        level === 3
+            ? "bg-[var(--brand-raspberry)]"
+            : level === 2
+                ? "bg-[var(--brand-bronze)]"
+                : "bg-[rgba(255,255,255,0.70)]";
+
     return (
         <span
             className={[
                 "inline-flex items-center gap-2.5 rounded-full border",
                 "px-3.5 py-1.5 text-xs font-semibold leading-none whitespace-nowrap",
-                "border-[color-mix(in_srgb,var(--brand-raspberry)_55%,var(--ppc-chip-border))]",
-                "bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,var(--ppc-chip-bg))]",
+                ring,
                 "text-[var(--foreground)]",
                 "shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_10px_24px_rgba(0,0,0,0.35)]",
             ].join(" ")}
@@ -43,7 +110,7 @@ function SelectedChip() {
       <span
           className={[
               "h-2.5 w-2.5 rounded-full",
-              "bg-[var(--brand-raspberry)]",
+              dot,
               "shadow-[0_0_0_2px_rgba(0,0,0,0.30)_inset,0_0_0_1px_rgba(255,255,255,0.12)]",
           ].join(" ")}
           aria-hidden="true"
@@ -53,26 +120,11 @@ function SelectedChip() {
     );
 }
 
-/** Same-level pills (no per-level color hierarchy) */
-function Badge({ subtitle, selected }: { subtitle: string; selected: boolean }) {
+/** Hierarchical pills (per-level color hierarchy) */
+function Badge({ subtitle, selected, level }: { subtitle: string; selected: boolean; level: 1 | 2 | 3 }) {
     return (
-        <span
-            className={[
-                "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs whitespace-nowrap",
-                selected
-                    ? "border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_10%,var(--ppc-chip-bg))]"
-                    : "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)]",
-                selected ? "shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset]" : "",
-            ].join(" ")}
-            title={subtitle}
-        >
-      <span
-          className={[
-              "h-1.5 w-1.5 rounded-full",
-              selected ? "bg-[var(--brand-raspberry)]" : "bg-[var(--brand-bronze)] opacity-80",
-          ].join(" ")}
-          aria-hidden="true"
-      />
+        <span className={pillClasses(level, selected)} title={subtitle}>
+      <span className={dotClasses(level, selected)} aria-hidden="true" />
       <span className={selected ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]"}>{subtitle}</span>
     </span>
     );
@@ -188,7 +240,7 @@ function HelpDetails() {
                             <div className="min-w-0">
                                 <div className="flex flex-wrap items-center gap-2">
                                     <div className="text-sm font-semibold text-[var(--foreground)]">{c.title}</div>
-                                    <Badge subtitle={c.subtitle} selected={false} />
+                                    <Badge subtitle={c.subtitle} selected={false} level={c.level} />
                                 </div>
                             </div>
                             <div className="text-[11px] text-[var(--foreground-muted)]">{c.level}/3</div>
@@ -198,7 +250,14 @@ function HelpDetails() {
                             {c.bullets.map((b) => (
                                 <li key={b} className="flex gap-2">
                   <span
-                      className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-bronze)] opacity-70"
+                      className={[
+                          "mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full",
+                          c.level === 3
+                              ? "bg-[var(--brand-raspberry)] opacity-70"
+                              : c.level === 2
+                                  ? "bg-[var(--brand-bronze)] opacity-70"
+                                  : "bg-[rgba(255,255,255,0.40)]",
+                      ].join(" ")}
                       aria-hidden="true"
                   />
                                     <span className="min-w-0">{b}</span>
@@ -210,8 +269,8 @@ function HelpDetails() {
             </div>
 
             <div className="mt-3 text-xs text-[var(--foreground-muted)]">
-                If you’re unsure, <span className="text-[var(--foreground)]">Maybe later</span> is the safe default — it keeps the plan
-                realistic while still leaving room to scale.
+                If you’re unsure, <span className="text-[var(--foreground)]">Maybe later</span> is the safe default — it keeps the plan realistic
+                while still leaving room to scale.
             </div>
         </details>
     );
@@ -391,8 +450,8 @@ export default function Q8GrowthMode({ value, onChange, onAutoAdvance }: Q8Props
                                     <div className="text-base font-semibold tracking-tight text-[var(--foreground)]">{o.title}</div>
 
                                     <div className="flex flex-wrap items-center gap-2">
-                                        <Badge subtitle={o.subtitle} selected={selected} />
-                                        {selected ? <SelectedChip /> : null}
+                                        <Badge subtitle={o.subtitle} selected={selected} level={o.level} />
+                                        {selected ? <SelectedChip level={o.level} /> : null}
                                     </div>
 
                                     <div className="text-sm text-[var(--foreground-muted)]">{o.blurb}</div>
@@ -407,8 +466,8 @@ export default function Q8GrowthMode({ value, onChange, onAutoAdvance }: Q8Props
             <div className="rounded-2xl border border-[var(--border)] bg-[var(--background)] p-4">
                 <div className="text-sm font-semibold text-[var(--foreground)]">How this affects your plan</div>
                 <div className="mt-1 text-sm text-[var(--foreground-muted)]">
-                    Organic builds compounding reach. Ads accelerate testing + conversion (but need tracking + a solid landing page).
-                    We’ll tailor the recommendations based on what you pick.
+                    Organic builds compounding reach. Ads accelerate testing + conversion (but need tracking + a solid landing page). We’ll tailor the
+                    recommendations based on what you pick.
                 </div>
             </div>
 

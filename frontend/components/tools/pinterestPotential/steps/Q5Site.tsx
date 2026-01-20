@@ -10,16 +10,16 @@ import type { SiteExperience, StepBaseProps } from "./ppcV2Types";
  * Repo path:
  *   public/tools/pinterestPotential/thumbs/
  *
- * Assumed new assets (vertical):
- *   - site-1.jpg
- *   - site-2.jpg
- *   - site-3.jpg
- *   - site-4.jpg
- *
- * If your filenames differ, update siteThumbSrcForLevel().
+ * Theme-aware assets:
+ *   - site-1-dark.jpg  / site-1-light.jpg
+ *   - site-2-dark.jpg  / site-2-light.jpg
+ *   - site-3-dark.jpg  / site-3-light.jpg
+ *   - site-4-dark.jpg  / site-4-light.jpg
  */
 const THUMB_BASE = "/tools/pinterestPotential/thumbs";
 const HELP_ID = "ppc-q5-help";
+
+type Theme = "light" | "dark";
 
 type Opt = {
     v: SiteExperience;
@@ -28,6 +28,70 @@ type Opt = {
     level: 1 | 2 | 3 | 4;
     blurb: string; // keep ultra short (scan in 5s)
 };
+
+function systemPrefersDark(): boolean {
+    return window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+}
+
+function readSavedTheme(): Theme | null {
+    try {
+        const saved = window.localStorage.getItem("theme");
+        return saved === "light" || saved === "dark" ? saved : null;
+    } catch {
+        return null;
+    }
+}
+
+function getEffectiveTheme(): Theme {
+    const root = document.documentElement;
+
+    // 1) explicit attribute wins
+    const explicit = root.getAttribute("data-theme");
+    if (explicit === "dark") return "dark";
+    if (explicit === "light") return "light";
+
+    // 2) saved (covers first paint before toggle effect runs)
+    const saved = readSavedTheme();
+    if (saved) return saved;
+
+    // 3) OS preference
+    return systemPrefersDark() ? "dark" : "light";
+}
+
+function useEffectiveTheme(): Theme {
+    const [theme, setTheme] = React.useState<Theme>("light");
+
+    // Use layout effect to reduce “flash” of wrong thumbs on initial paint
+    React.useLayoutEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const root = document.documentElement;
+        const mql = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+        const apply = () => setTheme(getEffectiveTheme());
+        apply();
+
+        const onMql = () => apply();
+        if (mql) {
+            if ("addEventListener" in mql) (mql as any).addEventListener("change", onMql);
+            else (mql as any).addListener(onMql);
+        }
+
+        // Watch explicit theme toggles (data-theme changes)
+        const obs = new MutationObserver(() => apply());
+        obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+        return () => {
+            obs.disconnect();
+            if (mql) {
+                if ("removeEventListener" in mql) (mql as any).removeEventListener("change", onMql);
+                else (mql as any).removeListener(onMql);
+            }
+        };
+    }, []);
+
+    return theme;
+}
 
 function SelectedChip() {
     return (
@@ -104,11 +168,7 @@ function LevelBadge({
             title={subtitle}
         >
       <span
-          className={[
-              "h-1.5 w-1.5 rounded-full",
-              tone.dot,
-              selected ? "opacity-100" : "opacity-80",
-          ].join(" ")}
+          className={["h-1.5 w-1.5 rounded-full", tone.dot, selected ? "opacity-100" : "opacity-80"].join(" ")}
           aria-hidden="true"
       />
       <span className={[tone.text, "whitespace-nowrap"].join(" ")}>{subtitle}</span>
@@ -116,15 +176,7 @@ function LevelBadge({
     );
 }
 
-function LevelPips({
-                       level,
-                       total = 4,
-                       selected,
-                   }: {
-    level: number;
-    total?: number;
-    selected: boolean;
-}) {
+function LevelPips({ level, total = 4, selected }: { level: number; total?: number; selected: boolean }) {
     return (
         <div className="flex items-center gap-1" aria-hidden="true" title={`${level} of ${total}`}>
             {Array.from({ length: total }).map((_, i) => {
@@ -146,11 +198,20 @@ function LevelPips({
     );
 }
 
-function siteThumbSrcForLevel(level: 1 | 2 | 3 | 4) {
-    return `${THUMB_BASE}/site-${level}.jpg`;
+function siteThumbSrcForLevel(level: 1 | 2 | 3 | 4, theme: Theme) {
+    // New theme-aware assets
+    return `${THUMB_BASE}/site-${level}-${theme}.jpg`;
 }
 
-function Thumb({ src, selected }: { src: string; selected: boolean }) {
+function Thumb({
+                   src,
+                   fallbackLevelSrc,
+                   selected,
+               }: {
+    src: string;
+    fallbackLevelSrc: string;
+    selected: boolean;
+}) {
     return (
         <div
             className={[
@@ -172,9 +233,17 @@ function Thumb({ src, selected }: { src: string; selected: boolean }) {
                 ].join(" ")}
                 onError={(e) => {
                     const img = e.currentTarget;
-                    const fallback = `${THUMB_BASE}/photo-1.jpg`;
+                    const photoFallback = `${THUMB_BASE}/photo-1.jpg`;
+
+                    // 1) try level-based fallback (old assets) if we aren’t already on it
+                    if (!img.src.endsWith(fallbackLevelSrc)) {
+                        img.src = fallbackLevelSrc;
+                        return;
+                    }
+
+                    // 2) final fallback
                     if (img.src.endsWith("/photo-1.jpg")) return;
-                    img.src = fallback;
+                    img.src = photoFallback;
                 }}
             />
             <div className="pointer-events-none absolute inset-0 ppc-film" />
@@ -194,26 +263,10 @@ function Thumb({ src, selected }: { src: string; selected: boolean }) {
 function HelpDetails({ opts }: { opts: Opt[] }) {
     const cards = useMemo(() => {
         const byLevel: Record<1 | 2 | 3 | 4, string[]> = {
-            1: [
-                "Feels slow or jumpy (layout shifts).",
-                "Message isn’t clear (what you do + who it’s for).",
-                "Next step is hard to find (CTA buried or inconsistent).",
-            ],
-            2: [
-                "It works, but visitors have to think too hard.",
-                "CTA exists, but doesn’t stand out or feels generic.",
-                "Trust signals are light (proof, policies, FAQs, examples).",
-            ],
-            3: [
-                "Loads quickly + reads cleanly on mobile and desktop.",
-                "One primary CTA is obvious above the fold.",
-                "Offer + next step are clear (buy, book, subscribe, download).",
-            ],
-            4: [
-                "You’ve tested headlines/CTAs/layout and kept what converts.",
-                "Strong proof throughout (results, reviews, guarantees, FAQs).",
-                "Low friction: clean checkout/booking + fast pages.",
-            ],
+            1: ["Feels slow or jumpy (layout shifts).", "Message isn’t clear (what you do + who it’s for).", "Next step is hard to find (CTA buried or inconsistent)."],
+            2: ["It works, but visitors have to think too hard.", "CTA exists, but doesn’t stand out or feels generic.", "Trust signals are light (proof, policies, FAQs, examples)."],
+            3: ["Loads quickly + reads cleanly on mobile and desktop.", "One primary CTA is obvious above the fold.", "Offer + next step are clear (buy, book, subscribe, download)."],
+            4: ["You’ve tested headlines/CTAs/layout and kept what converts.", "Strong proof throughout (results, reviews, guarantees, FAQs).", "Low friction: clean checkout/booking + fast pages."],
         };
 
         return opts.map((o) => ({ ...o, bullets: byLevel[o.level] }));
@@ -232,20 +285,14 @@ function HelpDetails({ opts }: { opts: Opt[] }) {
         <span className="inline-flex items-center gap-2">
           <span
               aria-hidden="true"
-              className={[
-                  "grid h-7 w-7 place-items-center rounded-full border",
-                  "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)]",
-              ].join(" ")}
+              className={["grid h-7 w-7 place-items-center rounded-full border", "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)]"].join(" ")}
           >
             <span className="h-2 w-2 rounded-full bg-[var(--brand-bronze)]" />
           </span>
           How do I judge my website quality (fast)?
         </span>
 
-                <span
-                    aria-hidden="true"
-                    className={["text-xs text-[var(--foreground-muted)] transition-transform", "group-open:rotate-180"].join(" ")}
-                >
+                <span aria-hidden="true" className={["text-xs text-[var(--foreground-muted)] transition-transform", "group-open:rotate-180"].join(" ")}>
           ▼
         </span>
             </summary>
@@ -270,10 +317,7 @@ function HelpDetails({ opts }: { opts: Opt[] }) {
                         <ul className="mt-2 grid gap-1.5 text-xs text-[var(--foreground-muted)]">
                             {c.bullets.map((b) => (
                                 <li key={b} className="flex gap-2">
-                  <span
-                      className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-bronze)] opacity-70"
-                      aria-hidden="true"
-                  />
+                                    <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-bronze)] opacity-70" aria-hidden="true" />
                                     <span className="min-w-0">{b}</span>
                                 </li>
                             ))}
@@ -284,8 +328,7 @@ function HelpDetails({ opts }: { opts: Opt[] }) {
 
             <div className="mt-3 text-xs text-[var(--foreground-muted)]">
                 Rule of thumb: if a new visitor can tell <span className="text-[var(--foreground)]">what this is</span> and{" "}
-                <span className="text-[var(--foreground)]">what to do next</span> quickly (mobile <em>and</em> desktop), you’re
-                in a good place.
+                <span className="text-[var(--foreground)]">what to do next</span> quickly (mobile <em>and</em> desktop), you’re in a good place.
             </div>
         </details>
     );
@@ -306,6 +349,7 @@ type Q5Props = Omit<StepBaseProps, "onAutoAdvance"> & {
 
 export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
     const listId = useId();
+    const theme = useEffectiveTheme();
 
     const lastClickRef = useRef<SiteExperience | null>(null);
     const localTimerRef = useRef<number | null>(null);
@@ -338,22 +382,15 @@ export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
     function triggerAutoAdvance(clicked: SiteExperience) {
         const prevValue = value;
 
-        // Always update selection for UI consistency (wizard may noop if unchanged).
         onChange(clicked);
 
-        // Normal change path: send patch directly.
         if (prevValue !== clicked) {
             lastClickRef.current = clicked;
             onAutoAdvance?.({ site_experience: clicked });
             return;
         }
 
-        // Reselect same (back-navigation confirm):
-        // Wizard ignores no-op patches; force a *real* patch by flipping undefined -> value.
-        // This is safe because:
-        // - wizard cancels pending auto-advance timers on subsequent calls
-        // - the "undefined" patch never gets a chance to validate/advance (it is superseded immediately)
-        if (lastClickRef.current === clicked) return; // guard rapid double-fire
+        if (lastClickRef.current === clicked) return;
         lastClickRef.current = clicked;
 
         onAutoAdvance?.({ site_experience: undefined });
@@ -421,7 +458,9 @@ export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4" role="radiogroup" aria-labelledby={listId}>
                 {opts.map((o) => {
                     const selected = value === o.v;
-                    const src = siteThumbSrcForLevel(o.level);
+
+                    const src = siteThumbSrcForLevel(o.level, theme);
+                    const fallbackLevelSrc = `${THUMB_BASE}/site-${o.level}.jpg`;
 
                     return (
                         <button
@@ -438,12 +477,7 @@ export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
                                 "hover:bg-[var(--card-hover)]",
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
                                 selected
-                                    ? [
-                                        "border-[var(--brand-raspberry)]/60",
-                                        "ring-2 ring-[var(--brand-raspberry)]/70",
-                                        "shadow-[0_12px_30px_rgba(0,0,0,0.40)]",
-                                        "translate-y-[-1px]",
-                                    ].join(" ")
+                                    ? ["border-[var(--brand-raspberry)]/60", "ring-2 ring-[var(--brand-raspberry)]/70", "shadow-[0_12px_30px_rgba(0,0,0,0.40)]", "translate-y-[-1px]"].join(" ")
                                     : "",
                             ].join(" ")}
                         >
@@ -465,7 +499,7 @@ export default function Q5Site({ value, onChange, onAutoAdvance }: Q5Props) {
 
                             <div className="relative grid gap-3">
                                 <div className="relative">
-                                    <Thumb src={src} selected={selected} />
+                                    <Thumb src={src} fallbackLevelSrc={fallbackLevelSrc} selected={selected} />
 
                                     <div className="pointer-events-none absolute right-2 top-2 flex items-center gap-2 rounded-full border border-[var(--ppc-chip-border)] bg-[color-mix(in_srgb,var(--ppc-chip-bg)_85%,transparent)] px-2 py-1">
                                         <LevelPips level={o.level} selected={selected} />

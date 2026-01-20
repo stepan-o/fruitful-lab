@@ -1,3 +1,4 @@
+// frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
 "use client";
 
 // frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
@@ -35,6 +36,9 @@
 // Fix (2026-01-19): Step header correctness for segment-dependent questions.
 // - Step 6 header must be the actual question (segment-dependent), not "Offer clarity".
 // - Step 3 header should match segment-dependent prompt as well (keeps copy consistent).
+//
+// Fix (2026-01-19): Q8 header copy polish.
+// - Step 8 header should match the intent ("Would you like to use Pinterest ads?") rather than "Ads plan".
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -191,7 +195,7 @@ function getStepTitle(stepIndex: number, segment?: SpecSegment): string {
         5: "Which best describes your website right now?",
         6: segment ? getQ6Prompt(segment) : "Do you have a clear offer + booking flow?",
         7: "What’s your primary goal from Pinterest?",
-        8: "Ads plan",
+        8: "Would you like to use Pinterest ads?",
     };
     return titles[stepIndex] ?? "Pinterest Potential";
 }
@@ -290,17 +294,13 @@ export default function PinterestPotentialWizard({
     const requestedVariant = normalizeVariant(qpVariant);
 
     // ---- Lead gating overrides ----
-    const qpLeadMode =
-        searchParams.get("leadMode") ?? searchParams.get("lead_mode") ?? searchParams.get("leadmode") ?? undefined;
+    const qpLeadMode = searchParams.get("leadMode") ?? searchParams.get("lead_mode") ?? searchParams.get("leadmode") ?? undefined;
 
-    const qpLeadToken =
-        searchParams.get("leadToken") ?? searchParams.get("lead_token") ?? searchParams.get("token") ?? undefined;
+    const qpLeadToken = searchParams.get("leadToken") ?? searchParams.get("lead_token") ?? searchParams.get("token") ?? undefined;
 
     // Optional cookie override (best-effort; safe if absent)
     const cookieLeadMode =
-        typeof document !== "undefined"
-            ? getCookieValue("pp_lead_mode") ?? getCookieValue("pinterest_potential_lead_mode") ?? null
-            : null;
+        typeof document !== "undefined" ? getCookieValue("pp_lead_mode") ?? getCookieValue("pinterest_potential_lead_mode") ?? null : null;
 
     // ---- Draft persistence (sessionStorage v2) ----
     const { draft, setDraft, updateDraft, clearDraft } = usePinterestPotentialDraft(INITIAL_DRAFT);
@@ -448,16 +448,10 @@ export default function PinterestPotentialWizard({
     const progressText = useMemo(() => `Step ${stepIndex} of ${TOTAL}`, [stepIndex]);
     const progressPct = useMemo(() => Math.round((stepIndex / TOTAL) * 100), [stepIndex]);
 
-    const currentErrorKey = useMemo(
-        () => getErrorKeyForStep(stepIndex, errors, resultsErrors),
-        [errors, resultsErrors, stepIndex],
-    );
+    const currentErrorKey = useMemo(() => getErrorKeyForStep(stepIndex, errors, resultsErrors), [errors, resultsErrors, stepIndex]);
 
     // ✅ FIX: segment-aware step titles (Q3 + Q6)
-    const header = useMemo(
-        () => getStepTitle(stepIndex, answers.segment as SpecSegment | undefined),
-        [stepIndex, answers.segment],
-    );
+    const header = useMemo(() => getStepTitle(stepIndex, answers.segment as SpecSegment | undefined), [stepIndex, answers.segment]);
 
     function resetErrors() {
         setErrors({});
@@ -728,9 +722,7 @@ export default function PinterestPotentialWizard({
             { label: "Offer clarity", value: answers.offer_clarity ? answers.offer_clarity.replace(/_/g, " ") : "—" },
             {
                 label: "Primary goal",
-                value: seg
-                    ? valueLabelFromOptions(goalOpts, mapGoalToSpec(seg, answers.primary_goal))
-                    : answers.primary_goal ?? "—",
+                value: seg ? valueLabelFromOptions(goalOpts, mapGoalToSpec(seg, answers.primary_goal)) : answers.primary_goal ?? "—",
             },
             { label: "Ads plan", value: answers.growth_mode ? answers.growth_mode.replace(/_/g, " ") : "—" },
         ];
@@ -1004,21 +996,12 @@ export default function PinterestPotentialWizard({
             ) : null}
 
             {stepIndex === 5 ? (
-                <Q5Site
-                    value={answers.site_experience}
-                    onChange={(v) => setAnswerField("site_experience", v)}
-                    onAutoAdvance={autoAdvance}
-                />
+                <Q5Site value={answers.site_experience} onChange={(v) => setAnswerField("site_experience", v)} onAutoAdvance={autoAdvance} />
             ) : null}
 
             {stepIndex === 6 ? (
                 answers.segment ? (
-                    <Q6Offer
-                        segment={answers.segment}
-                        value={answers.offer_clarity}
-                        onChange={(v) => setAnswerField("offer_clarity", v)}
-                        onAutoAdvance={autoAdvance}
-                    />
+                    <Q6Offer segment={answers.segment} value={answers.offer_clarity} onChange={(v) => setAnswerField("offer_clarity", v)} onAutoAdvance={autoAdvance} />
                 ) : (
                     <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
                 )
@@ -1026,23 +1009,14 @@ export default function PinterestPotentialWizard({
 
             {stepIndex === 7 ? (
                 answers.segment ? (
-                    <Q7Goal
-                        segment={answers.segment}
-                        value={answers.primary_goal}
-                        onChange={(v) => setAnswerField("primary_goal", v)}
-                        onAutoAdvance={autoAdvance}
-                    />
+                    <Q7Goal segment={answers.segment} value={answers.primary_goal} onChange={(v) => setAnswerField("primary_goal", v)} onAutoAdvance={autoAdvance} />
                 ) : (
                     <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
                 )
             ) : null}
 
             {stepIndex === 8 ? (
-                <Q8GrowthMode
-                    value={answers.growth_mode}
-                    onChange={(v) => setAnswerField("growth_mode", v)}
-                    onAutoAdvance={autoAdvance}
-                />
+                <Q8GrowthMode value={answers.growth_mode} onChange={(v) => setAnswerField("growth_mode", v)} onAutoAdvance={autoAdvance} />
             ) : null}
         </>
     );

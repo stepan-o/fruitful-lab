@@ -31,6 +31,10 @@
 //
 // Fix (2026-01-18): Segment-dependent invalidation.
 // - Q2 niche options depend on Q1 segment, so changing segment must clear niche (and segment-dependent goal).
+//
+// Fix (2026-01-19): Step header correctness for segment-dependent questions.
+// - Step 6 header must be the actual question (segment-dependent), not "Offer clarity".
+// - Step 3 header should match segment-dependent prompt as well (keeps copy consistent).
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -47,6 +51,8 @@ import {
     validateLead,
     getNicheOptions,
     getPrimaryGoalOptions,
+    getQ3Prompt,
+    getQ6Prompt,
 } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
 
 import { resolveLeadGatingContext, normalizeLeadMode } from "@/lib/tools/pinterestPotential/leadMode";
@@ -172,14 +178,18 @@ function valueLabelFromOptions<T extends string>(opts: Array<{ id: T; label: str
     return opts.find((o) => o.id === v)?.label ?? v;
 }
 
-function getStepTitle(stepIndex: number): string {
+/**
+ * Step header copy.
+ * NOTE: Step 3 and Step 6 are segment-dependent and must use spec helper prompts.
+ */
+function getStepTitle(stepIndex: number, segment?: SpecSegment): string {
     const titles: Record<number, string> = {
         1: "Which best describes your business?",
         2: "What’s your primary niche?",
-        3: "Monthly output volume",
+        3: segment ? getQ3Prompt(segment) : "Monthly output volume",
         4: "How strong is your visual content library right now?",
         5: "Which best describes your website right now?",
-        6: "Offer clarity",
+        6: segment ? getQ6Prompt(segment) : "Do you have a clear offer + booking flow?",
         7: "What’s your primary goal from Pinterest?",
         8: "Ads plan",
     };
@@ -443,7 +453,11 @@ export default function PinterestPotentialWizard({
         [errors, resultsErrors, stepIndex],
     );
 
-    const header = useMemo(() => getStepTitle(stepIndex), [stepIndex]);
+    // ✅ FIX: segment-aware step titles (Q3 + Q6)
+    const header = useMemo(
+        () => getStepTitle(stepIndex, answers.segment as SpecSegment | undefined),
+        [stepIndex, answers.segment],
+    );
 
     function resetErrors() {
         setErrors({});
@@ -714,7 +728,9 @@ export default function PinterestPotentialWizard({
             { label: "Offer clarity", value: answers.offer_clarity ? answers.offer_clarity.replace(/_/g, " ") : "—" },
             {
                 label: "Primary goal",
-                value: seg ? valueLabelFromOptions(goalOpts, mapGoalToSpec(seg, answers.primary_goal)) : answers.primary_goal ?? "—",
+                value: seg
+                    ? valueLabelFromOptions(goalOpts, mapGoalToSpec(seg, answers.primary_goal))
+                    : answers.primary_goal ?? "—",
             },
             { label: "Ads plan", value: answers.growth_mode ? answers.growth_mode.replace(/_/g, " ") : "—" },
         ];
@@ -852,8 +868,7 @@ export default function PinterestPotentialWizard({
 
                         // Clear errors. If segment changed, clear Q2/Q7 too (those answers are now invalid).
                         setErrors((prev) => {
-                            const hadAny =
-                                !!prev["Q1"] || (!!prevSeg && prevSeg !== v && (!!prev["Q2"] || !!prev["Q7"]));
+                            const hadAny = !!prev["Q1"] || (!!prevSeg && prevSeg !== v && (!!prev["Q2"] || !!prev["Q7"]));
                             if (!hadAny) return prev;
                             const n = { ...prev };
                             delete n["Q1"];

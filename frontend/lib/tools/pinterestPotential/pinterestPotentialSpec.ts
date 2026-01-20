@@ -109,11 +109,11 @@ export type SingleSelectQuestion<T extends string> = BaseQuestion & {
 };
 
 export type DynamicSingleSelectQuestion<T extends string = string> = BaseQuestion & {
-    type: "dynamic_single_select";
     /**
      * Options depend on segment. UI should call getOptions(segment).
      * Validation will also use this.
      */
+    type: "dynamic_single_select";
     getOptions: (segment: Segment) => Array<Option<T>>;
 };
 
@@ -329,7 +329,9 @@ export const Q5: SingleSelectQuestion<SiteExperience> = {
 export const Q6: DynamicSingleSelectQuestion<OfferClarity> = {
     id: "Q6",
     type: "dynamic_single_select",
-    prompt: "Offer clarity", // UI should prefer getQ6Prompt(segment)
+    // FIX: use the actual question string so the wizard's step title matches the UI
+    // (UI can still choose to display segment-specific prompt via getQ6Prompt(segment) if desired.)
+    prompt: "Do you have a clear offer + booking flow?",
     required: true,
     getOptions: (_segment: Segment) => [
         { id: "no", label: "No" },

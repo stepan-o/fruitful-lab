@@ -41,13 +41,10 @@ function safeClearPpcSessionDrafts() {
         const ss = window.sessionStorage;
         const keys = Object.keys(ss);
 
-        // Clear likely draft/progress keys (belt + suspenders)
         for (const k of keys) {
             if (/(pinterestPotential|pinterest_potential|ppc).*(draft|state|wizard|progress)/i.test(k)) {
                 ss.removeItem(k);
-            }
-            // also clear older/looser matches if we ever renamed without suffixes
-            else if (/pinterestPotential/i.test(k) && /(draft|state|wizard|progress)/i.test(k)) {
+            } else if (/pinterestPotential/i.test(k) && /(draft|state|wizard|progress)/i.test(k)) {
                 ss.removeItem(k);
             }
         }
@@ -56,8 +53,49 @@ function safeClearPpcSessionDrafts() {
     }
 }
 
+function useResolvedIsDark() {
+    const [isDark, setIsDark] = React.useState(false);
+
+    React.useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const root = document.documentElement;
+        const mql = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+        const compute = () => {
+            const explicit = root.getAttribute("data-theme");
+            if (explicit === "dark") return true;
+            if (explicit === "light") return false;
+            return Boolean(mql?.matches);
+        };
+
+        const apply = () => setIsDark(compute());
+        apply();
+
+        const onMql = () => apply();
+        if (mql) {
+            if ("addEventListener" in mql) (mql as any).addEventListener("change", onMql);
+            else (mql as any).addListener(onMql);
+        }
+
+        const obs = new MutationObserver(() => apply());
+        obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+        return () => {
+            obs.disconnect();
+            if (mql) {
+                if ("removeEventListener" in mql) (mql as any).removeEventListener("change", onMql);
+                else (mql as any).removeListener(onMql);
+            }
+        };
+    }, []);
+
+    return isDark;
+}
+
 export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
     const [hasDraft, setHasDraft] = React.useState(false);
+    const isDark = useResolvedIsDark();
 
     React.useEffect(() => {
         try {
@@ -95,8 +133,6 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
     const primaryLabel = hasDraft ? "Resume" : "Start";
 
     const handleReset = React.useCallback(() => {
-        // Call upstream reset (keeps your existing behavior),
-        // then aggressively reflect/reset local state so UI updates immediately.
         try {
             onReset();
         } finally {
@@ -105,29 +141,66 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
         }
     }, [onReset]);
 
+    /**
+     * LIGHT theme: neutral paper base + *subtle* brand fields.
+     * Also desaturate the whole gradient layer so the animated ::before/::after
+     * raspberry waves don’t flood the card.
+     */
+    const lightWelcomeBackground = React.useMemo(() => {
+        return [
+            // neutral paper base (no black)
+            "radial-gradient(1200px 520px at 55% 35%, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.94) 56%, rgba(255,255,255,0.90) 100%)",
+            // faint raspberry hint (much lower than before)
+            "radial-gradient(880px 520px at 18% 18%, color-mix(in srgb, var(--brand-raspberry) 7%, transparent) 0%, transparent 70%)",
+            // faint bronze warmth
+            "radial-gradient(980px 560px at 88% 82%, color-mix(in srgb, var(--brand-bronze) 8%, transparent) 0%, transparent 72%)",
+            // tiny depth from heading tone (keeps it premium without “pink wash”)
+            "radial-gradient(900px 520px at 55% 18%, color-mix(in srgb, var(--brand-heading) 5%, transparent) 0%, transparent 74%)",
+            // soft overall lift
+            "linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.72))",
+        ].join(", ");
+    }, []);
+
+    const welcomeGradientStyle: React.CSSProperties | undefined = React.useMemo(() => {
+        if (isDark) return undefined;
+
+        return {
+            background: lightWelcomeBackground,
+            // key: this desaturates the animated pseudo-element waves too
+            filter: "saturate(0.55) contrast(1.02)",
+            opacity: 0.88,
+        };
+    }, [isDark, lightWelcomeBackground]);
+
+    // Glows: also tone down in light so they don’t read “pink backdrop”
+    const glow1Class = isDark ? "opacity-25" : "opacity-[0.10]";
+    const glow2Class = isDark ? "opacity-15" : "opacity-[0.07]";
+
     return (
         <div className="ppc-hero-frame relative">
-            {/* Animated gradient layer (CSS in globals.css) */}
-            <div aria-hidden="true" className="ppc-welcome-gradient absolute inset-0" />
+            <div aria-hidden="true" className="ppc-welcome-gradient absolute inset-0" style={welcomeGradientStyle} />
 
-            {/* Sheen + noise (premium framing) */}
             <div aria-hidden="true" className="ppc-hero-sheen" />
             <div aria-hidden="true" className="ppc-hero-noise" />
 
-            {/* Glows */}
             <div
                 aria-hidden="true"
-                className="ppc-welcome-glow-1 pointer-events-none absolute -top-24 right-[-140px] h-72 w-72 rounded-full opacity-25 blur-3xl"
+                className={[
+                    "ppc-welcome-glow-1 pointer-events-none absolute -top-24 right-[-140px] h-72 w-72 rounded-full blur-3xl",
+                    glow1Class,
+                ].join(" ")}
                 style={{ background: "var(--brand-raspberry)" }}
             />
             <div
                 aria-hidden="true"
-                className="ppc-welcome-glow-2 pointer-events-none absolute -bottom-24 left-[-140px] h-72 w-72 rounded-full opacity-15 blur-3xl"
+                className={[
+                    "ppc-welcome-glow-2 pointer-events-none absolute -bottom-24 left-[-140px] h-72 w-72 rounded-full blur-3xl",
+                    glow2Class,
+                ].join(" ")}
                 style={{ background: "var(--brand-raspberry)" }}
             />
 
             <div className="relative p-6 sm:p-8">
-                {/* Chip row */}
                 <div className="flex flex-wrap items-center gap-2">
                     <div className="ppc-chip inline-flex items-center gap-2 px-3 py-1 text-xs text-[var(--foreground-muted)]">
                         <span className="h-2 w-2 rounded-full" style={{ background: "var(--brand-raspberry)" }} />
@@ -155,55 +228,40 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                         </p>
 
                         <div className="mt-5 grid gap-2">
-                            <div className="flex items-start gap-2">
-                                <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
-                                    <BulletIcon className="h-4 w-4" />
-                                </span>
-                                <div className="text-sm text-[var(--foreground)]">
-                                    <span className="font-semibold">Audience estimate</span>{" "}
-                                    <span className="text-[var(--foreground-muted)]">(monthly range)</span>
+                            {[
+                                ["Audience estimate", "(monthly range)"],
+                                ["Opportunity snapshot", "(traffic / leads / sales context)"],
+                                ["3 next steps", "(what to do first)"],
+                            ].map(([strong, muted]) => (
+                                <div key={strong} className="flex items-start gap-2">
+                  <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
+                    <BulletIcon className="h-4 w-4" />
+                  </span>
+                                    <div className="text-sm text-[var(--foreground)]">
+                                        <span className="font-semibold">{strong}</span>{" "}
+                                        <span className="text-[var(--foreground-muted)]">{muted}</span>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div className="flex items-start gap-2">
-                                <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
-                                    <BulletIcon className="h-4 w-4" />
-                                </span>
-                                <div className="text-sm text-[var(--foreground)]">
-                                    <span className="font-semibold">Opportunity snapshot</span>{" "}
-                                    <span className="text-[var(--foreground-muted)]">(traffic / leads / sales context)</span>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-2">
-                                <span className="mt-[2px] inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
-                                    <BulletIcon className="h-4 w-4" />
-                                </span>
-                                <div className="text-sm text-[var(--foreground)]">
-                                    <span className="font-semibold">3 next steps</span>{" "}
-                                    <span className="text-[var(--foreground-muted)]">(what to do first)</span>
-                                </div>
-                            </div>
+                            ))}
                         </div>
 
-                        {/* CTAs */}
                         <div className="mt-7 flex flex-wrap items-center gap-3">
-                            <span className="ppc-cta-wrap ppc-cta-pulse fp-tap">
-                                <button
-                                    type="button"
-                                    onClick={onStart}
-                                    className={[
-                                        "ppc-primary-btn inline-flex items-center gap-2 rounded-xl bg-[var(--brand-raspberry)]",
-                                        "px-6 py-3 text-sm font-semibold text-white",
-                                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
-                                    ].join(" ")}
-                                >
-                                    {primaryLabel}
-                                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10">
-                                        <ArrowIcon className="h-4 w-4" />
-                                    </span>
-                                </button>
-                            </span>
+              <span className="ppc-cta-wrap ppc-cta-pulse fp-tap">
+                <button
+                    type="button"
+                    onClick={onStart}
+                    className={[
+                        "ppc-primary-btn inline-flex items-center gap-2 rounded-xl bg-[var(--brand-raspberry)]",
+                        "px-6 py-3 text-sm font-semibold text-white",
+                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+                    ].join(" ")}
+                >
+                  {primaryLabel}
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10">
+                    <ArrowIcon className="h-4 w-4" />
+                  </span>
+                </button>
+              </span>
 
                             <button
                                 type="button"
@@ -224,14 +282,11 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                         </div>
                     </div>
 
-                    {/* Right: “product moment” preview */}
                     <div className="hidden lg:flex justify-end">
                         <div className="ppc-preview-stack" aria-hidden="true">
-                            {/* Back cards */}
                             <div className="ppc-preview-card ppc-preview-card-3" />
                             <div className="ppc-preview-card ppc-preview-card-2" />
 
-                            {/* Foreground card */}
                             <div className="ppc-preview-card ppc-preview-card-1">
                                 <div className="relative p-4">
                                     <div className="flex items-center justify-between">
@@ -263,27 +318,24 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                                         </div>
 
                                         <div className="mt-2 flex flex-wrap gap-1.5">
-                                            {["Business type", "Offer", "Content cadence", "SEO", "Creative"].map((t) => (
+                                            {["Business type", "Offer", "Content cadence"].map((t) => (
                                                 <span
                                                     key={t}
                                                     className="rounded-full border border-[var(--border)] bg-[var(--background)] px-2 py-1 text-[10px] text-[var(--foreground-muted)]"
                                                 >
-                                                    {t}
-                                                </span>
+                          {t}
+                        </span>
                                             ))}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            {/* ✅ REMOVED: old bars SVG glyph that overlapped the new preview cards */}
                         </div>
                     </div>
                 </div>
 
-                {/* Mobile-only mini preview */}
                 <div className="mt-6 lg:hidden">
-                    <div className="rounded-2xl border border-[var(--border)] bg-[var(--background)]/60 p-4 backdrop-blur-sm">
+                    <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 backdrop-blur-sm">
                         <div className="flex items-center justify-between">
                             <div className="text-xs text-[var(--foreground-muted)]">Preview</div>
                             <div className="text-xs font-semibold text-[var(--foreground)]">Growth snapshot</div>

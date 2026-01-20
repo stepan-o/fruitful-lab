@@ -38,12 +38,12 @@
     --start-here-dot: var(--background);
     --start-here-shadow: rgba(0, 0, 0, 0.08);
 
-    /* Surfaces */
-    --surface: rgba(11, 19, 43, 0.03);
-    --card: rgba(255, 255, 255, 0.72);
-    --card-hover: rgba(255, 255, 255, 0.9);
+    /* Surfaces (slightly cleaner / less gray) */
+    --surface: rgba(11, 19, 43, 0.035);
+    --card: rgba(255, 255, 255, 0.82);
+    --card-hover: rgba(255, 255, 255, 0.96);
 
-    --toast-bg: rgba(255, 255, 255, 0.85);
+    --toast-bg: rgba(255, 255, 255, 0.88);
     --toast-border: var(--brand-alabaster);
 
     /* Error */
@@ -64,17 +64,78 @@
        PPC (Pinterest Potential Calculator)
        - polish tokens (LIGHT)
     ----------------------------------- */
-    --ppc-accent-stroke: color-mix(in srgb, var(--brand-raspberry) 70%, transparent);
-    --ppc-accent-stroke-2: color-mix(in srgb, var(--brand-bronze) 55%, transparent);
-    --ppc-panel-bg: color-mix(in srgb, var(--card) 92%, transparent);
-    --ppc-panel-inner: rgba(255, 255, 255, 0.18);
-    --ppc-chip-bg: rgba(255, 255, 255, 0.72);
-    --ppc-chip-border: color-mix(in srgb, var(--border) 65%, transparent);
-    --ppc-noise-opacity: 0.06;
-    --ppc-cta-shadow: rgba(0, 0, 0, 0.14);
+    --ppc-accent-stroke: color-mix(in srgb, var(--brand-raspberry) 62%, transparent);
+    --ppc-accent-stroke-2: color-mix(in srgb, var(--brand-bronze) 52%, transparent);
+
+    /* ✅ Less “flat gray” panel base */
+    --ppc-panel-bg: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.88) 0%,
+            rgba(255, 255, 255, 0.76) 100%
+    );
+    --ppc-panel-inner: rgba(255, 255, 255, 0.26);
+
+    --ppc-chip-bg: rgba(255, 255, 255, 0.80);
+    --ppc-chip-border: color-mix(in srgb, var(--border) 72%, transparent);
+
+    /* ✅ less “dirty film” in light */
+    --ppc-noise-opacity: 0.035;
+
+    --ppc-cta-shadow: rgba(0, 0, 0, 0.16);
 
     /* Welcome backdrop tuning */
-    --ppc-welcome-dim: 0.16; /* stronger = darker base */
+    --ppc-welcome-dim: 0.16; /* (kept) used by DARK base */
+
+    /* ✅ Make light gradient feel alive (not pink, not gray) */
+    --ppc-welcome-opacity: 0.92;
+
+    /*
+      LIGHT animated welcome:
+      - keep motion
+      - pearly base + warm/cool corners
+      - tiny brand participation (not wash)
+    */
+    --ppc-welcome-base:
+            radial-gradient(
+                    1200px 560px at 50% 34%,
+                    rgba(255, 255, 255, 0.92) 0%,
+                    rgba(255, 255, 255, 0.82) 58%,
+                    rgba(255, 255, 255, 0.72) 100%
+            ),
+            radial-gradient(
+                    980px 620px at 18% 18%,
+                    color-mix(in srgb, var(--brand-bronze) 12%, transparent) 0%,
+                    transparent 70%
+            ),
+            radial-gradient(
+                    980px 620px at 86% 68%,
+                    color-mix(in srgb, var(--brand-heading) 10%, transparent) 0%,
+                    transparent 72%
+            ),
+            radial-gradient(
+                    900px 520px at 82% 22%,
+                    color-mix(in srgb, var(--brand-raspberry) 8%, transparent) 0%,
+                    transparent 76%
+            ),
+            linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.40) 0%,
+                    rgba(255, 255, 255, 0.78) 100%
+            );
+
+    /* ✅ bring chroma back (your previous saturate(0.82) caused “mud”) */
+    --ppc-welcome-wave-filter: blur(40px) saturate(1.08) contrast(1.08);
+
+    /* LIGHT wave palette (tinted, airy, not pink-washed) */
+    --ppc-welcome-a-1: color-mix(in srgb, var(--brand-bronze) 50%, transparent);
+    --ppc-welcome-a-2: color-mix(in srgb, var(--brand-heading) 5%, transparent);
+    --ppc-welcome-a-3: color-mix(in srgb, var(--brand-raspberry) 0%, transparent);
+
+    --ppc-welcome-b-1: color-mix(in srgb, var(--brand-heading) 0%, transparent);
+    --ppc-welcome-b-2: color-mix(in srgb, var(--brand-bronze) 50%, transparent);
+
+    --ppc-welcome-wave-a-opacity: 0.5;
+    --ppc-welcome-wave-b-opacity: 1.0;
 
     /* -------------------------------------------------------
        ✅ JetBrains/CSS parser quieting:
@@ -186,6 +247,28 @@ html[data-theme="dark"] {
     --ppc-cta-shadow: rgba(0, 0, 0, 0.55);
 
     --ppc-welcome-dim: 0.34;
+    --ppc-welcome-opacity: 0.68;
+
+    /* DARK animated welcome base + waves */
+    --ppc-welcome-base: radial-gradient(
+            1200px 520px at 55% 35%,
+            rgba(0, 0, 0, var(--ppc-welcome-dim)) 0%,
+            rgba(0, 0, 0, 0.78) 62%,
+            rgba(0, 0, 0, 0.92) 100%
+    ),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.58));
+
+    --ppc-welcome-wave-filter: blur(46px) saturate(1.12) contrast(1.05);
+
+    --ppc-welcome-a-1: color-mix(in srgb, var(--brand-raspberry) 58%, transparent);
+    --ppc-welcome-a-2: color-mix(in srgb, var(--brand-raspberry) 44%, transparent);
+    --ppc-welcome-a-3: color-mix(in srgb, var(--brand-raspberry) 40%, transparent);
+
+    --ppc-welcome-b-1: color-mix(in srgb, var(--brand-raspberry) 52%, transparent);
+    --ppc-welcome-b-2: color-mix(in srgb, var(--brand-raspberry) 36%, transparent);
+
+    --ppc-welcome-wave-a-opacity: 0.92;
+    --ppc-welcome-wave-b-opacity: 0.78;
 
     /* keep the “quieting” vars consistent across themes */
     --ppc-hero-frame-border-gradient: linear-gradient(
@@ -276,6 +359,27 @@ html[data-theme="light"] {
         --ppc-cta-shadow: rgba(0, 0, 0, 0.55);
 
         --ppc-welcome-dim: 0.34;
+        --ppc-welcome-opacity: 0.68;
+
+        --ppc-welcome-base: radial-gradient(
+                1200px 520px at 55% 35%,
+                rgba(0, 0, 0, var(--ppc-welcome-dim)) 0%,
+                rgba(0, 0, 0, 0.78) 62%,
+                rgba(0, 0, 0, 0.92) 100%
+        ),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.58));
+
+        --ppc-welcome-wave-filter: blur(46px) saturate(1.12) contrast(1.05);
+
+        --ppc-welcome-a-1: color-mix(in srgb, var(--brand-raspberry) 58%, transparent);
+        --ppc-welcome-a-2: color-mix(in srgb, var(--brand-raspberry) 44%, transparent);
+        --ppc-welcome-a-3: color-mix(in srgb, var(--brand-raspberry) 40%, transparent);
+
+        --ppc-welcome-b-1: color-mix(in srgb, var(--brand-raspberry) 52%, transparent);
+        --ppc-welcome-b-2: color-mix(in srgb, var(--brand-raspberry) 36%, transparent);
+
+        --ppc-welcome-wave-a-opacity: 0.92;
+        --ppc-welcome-wave-b-opacity: 0.78;
 
         /* keep the “quieting” vars consistent across theme modes */
         --ppc-hero-frame-border-gradient: linear-gradient(
@@ -301,12 +405,6 @@ body {
 
 /* ------------------------------------------------------------------
    Global scrollbars (ALL pages)
-   - Firefox: scrollbar-color/width MUST target the actual scroll container
-     (html alone does NOT style nested overflow containers).
-   - WebKit: ::-webkit-scrollbar* applies to all scroll containers.
-   Notes:
-   - Applies app-wide (RootLayout imports globals.css once).
-   - Won't remove scrollbars; only styles them.
 ------------------------------------------------------------------ */
 
 /* Firefox: page scroll */
@@ -315,7 +413,7 @@ html {
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-/* ✅ Firefox: also style nested scroll containers (e.g., BottomSheet panel) */
+/* ✅ Firefox: also style nested scroll containers */
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
@@ -342,7 +440,6 @@ html {
 *::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
     border-radius: var(--scrollbar-radius);
-    /* Creates a "padded thumb" look and prevents ugly track bleed */
     border: 3px solid transparent;
     background-clip: content-box;
     min-height: 24px;
@@ -353,7 +450,6 @@ html {
     background-clip: content-box;
 }
 
-/* Subtle corner polish for 2D scroll areas */
 *::-webkit-scrollbar-corner {
     background: transparent;
 }
@@ -368,7 +464,7 @@ html {
     Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-/* Backdrop circles: CSS controls pop per theme */
+/* Backdrop circles */
 .lab-backdrop-circle {
     filter: blur(var(--backdrop-blur)) saturate(var(--backdrop-saturate))
     contrast(var(--backdrop-contrast));
@@ -376,8 +472,7 @@ html {
     box-shadow: 0 0 var(--backdrop-glow) currentColor;
 }
 
-/* ✅ IMPORTANT FIX:
-   mix-blend-mode must follow the *effective theme*, not only OS preference */
+/* ✅ mix-blend-mode follows effective theme */
 :root[data-theme="dark"] .lab-backdrop-circle,
 html[data-theme="dark"] .lab-backdrop-circle {
     mix-blend-mode: screen;
@@ -390,21 +485,18 @@ html[data-theme="dark"] .lab-backdrop-circle {
 
 /* ------------------------------
    ThemeToggle segmented control styling
-   (works with your current ThemeToggle markup)
 ------------------------------ */
 .theme-toggle {
     position: relative;
     padding: 2px;
-    gap: 0; /* override the Tailwind gap-2 you still have */
+    gap: 0;
     border-radius: 9999px;
 }
 
-/* Hide the dot (optional). Keep it if you want, but segmented looks cleaner */
 .theme-toggle-dot {
     display: none;
 }
 
-/* Two labels behave like two segments */
 .theme-toggle-label-light,
 .theme-toggle-label-dark {
     position: relative;
@@ -420,7 +512,6 @@ html[data-theme="dark"] .lab-backdrop-circle {
     user-select: none;
 }
 
-/* Sliding “thumb” */
 .theme-toggle::before {
     content: "";
     position: absolute;
@@ -432,15 +523,9 @@ html[data-theme="dark"] .lab-backdrop-circle {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
-/* Default (light active) */
-.theme-toggle-label-light {
-    opacity: 1;
-}
-.theme-toggle-label-dark {
-    opacity: 0.72;
-}
+.theme-toggle-label-light { opacity: 1; }
+.theme-toggle-label-dark { opacity: 0.72; }
 
-/* Dark active (manual) */
 :root[data-theme="dark"] .theme-toggle::before,
 html[data-theme="dark"] .theme-toggle::before {
     transform: translateX(100%);
@@ -454,179 +539,125 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     opacity: 1;
 }
 
-/* Dark active (OS fallback when no explicit theme) */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) .theme-toggle::before {
         transform: translateX(100%);
     }
-    :root:not([data-theme]) .theme-toggle-label-light {
-        opacity: 0.72;
-    }
-    :root:not([data-theme]) .theme-toggle-label-dark {
-        opacity: 1;
-    }
+    :root:not([data-theme]) .theme-toggle-label-light { opacity: 0.72; }
+    :root:not([data-theme]) .theme-toggle-label-dark { opacity: 1; }
 }
 
 @keyframes hubPulse {
-    0% {
-        opacity: 0.35;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.18;
-        transform: scale(1.04);
-    }
-    100% {
-        opacity: 0.35;
-        transform: scale(1);
-    }
+    0% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.18; transform: scale(1.04); }
+    100% { opacity: 0.35; transform: scale(1); }
 }
 
 @keyframes start-here-pulse {
-    0% {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    40% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0.9);
-    }
+    0% { opacity: 0; transform: scale(0.9); }
+    40% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.9); }
 }
 
 /* ------------------------------
    Pinterest Potential
-   - Welcome gradient + drift (moved from <style jsx>)
+   - Welcome gradient + drift
 ------------------------------ */
 .ppc-welcome-gradient {
     pointer-events: none;
     position: absolute;
     inset: 0;
     overflow: hidden;
-    opacity: 0.68; /* slightly stronger */
-    /* Darken the base so animated blobs have higher contrast */
-    background: radial-gradient(
-            1200px 520px at 55% 35%,
-            rgba(0, 0, 0, var(--ppc-welcome-dim)) 0%,
-            rgba(0, 0, 0, 0.78) 62%,
-            rgba(0, 0, 0, 0.92) 100%
-    ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.58));
+
+    opacity: var(--ppc-welcome-opacity);
+    background: var(--ppc-welcome-base);
 }
 
-/*
-  Two large “highlight fields” that sweep across the whole card.
-*/
 .ppc-welcome-gradient::before,
 .ppc-welcome-gradient::after {
     content: "";
     position: absolute;
     inset: -45%;
     background-repeat: no-repeat;
-    filter: blur(46px) saturate(1.12) contrast(1.05);
+    filter: var(--ppc-welcome-wave-filter);
     will-change: transform, background-position;
 }
 
-/* Layer A (dominant wave) */
+/* Layer A */
 .ppc-welcome-gradient::before {
     background-image: radial-gradient(
             920px circle at 15% 35%,
-            color-mix(in srgb, var(--brand-raspberry) 58%, transparent) 0%,
+            var(--ppc-welcome-a-1) 0%,
             transparent 60%
     ),
     radial-gradient(
             780px circle at 55% 15%,
-            color-mix(in srgb, var(--brand-raspberry) 44%, transparent) 0%,
+            var(--ppc-welcome-a-2) 0%,
             transparent 62%
     ),
     radial-gradient(
             860px circle at 85% 70%,
-            color-mix(in srgb, var(--brand-raspberry) 40%, transparent) 0%,
+            var(--ppc-welcome-a-3) 0%,
             transparent 64%
     );
     animation: ppcWaveA 6.5s ease-in-out infinite;
-    opacity: 0.92;
+    opacity: var(--ppc-welcome-wave-a-opacity);
 }
 
-/* Layer B (counter-wave) */
+/* Layer B */
 .ppc-welcome-gradient::after {
     background-image: radial-gradient(
             900px circle at 80% 30%,
-            color-mix(in srgb, var(--brand-raspberry) 52%, transparent) 0%,
+            var(--ppc-welcome-b-1) 0%,
             transparent 62%
     ),
     radial-gradient(
             760px circle at 25% 75%,
-            color-mix(in srgb, var(--brand-raspberry) 36%, transparent) 0%,
+            var(--ppc-welcome-b-2) 0%,
             transparent 66%
     );
     animation: ppcWaveB 8.25s ease-in-out infinite;
-    opacity: 0.78;
+    opacity: var(--ppc-welcome-wave-b-opacity);
 }
 
-/* Corner glows traverse */
-.ppc-welcome-glow-1 {
-    animation: ppcGlowTraverse1 7s ease-in-out infinite;
-}
-.ppc-welcome-glow-2 {
-    animation: ppcGlowTraverse2 9s ease-in-out infinite;
+.ppc-welcome-glow-1 { animation: ppcGlowTraverse1 7s ease-in-out infinite; }
+.ppc-welcome-glow-2 { animation: ppcGlowTraverse2 9s ease-in-out infinite; }
+
+/* Keep glows subtle in LIGHT */
+:root[data-theme="light"] .ppc-welcome-glow-1,
+html[data-theme="light"] .ppc-welcome-glow-1 { opacity: 0.14 !important; }
+:root[data-theme="light"] .ppc-welcome-glow-2,
+html[data-theme="light"] .ppc-welcome-glow-2 { opacity: 0.10 !important; }
+
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme]) .ppc-welcome-glow-1 { opacity: 0.14 !important; }
+    :root:not([data-theme]) .ppc-welcome-glow-2 { opacity: 0.10 !important; }
 }
 
 @keyframes ppcWaveA {
-    0% {
-        transform: translate3d(-18%, -6%, 0) scale(1.02);
-    }
-    35% {
-        transform: translate3d(6%, 4%, 0) scale(1.04);
-    }
-    70% {
-        transform: translate3d(22%, -2%, 0) scale(1.03);
-    }
-    100% {
-        transform: translate3d(-18%, -6%, 0) scale(1.02);
-    }
+    0% { transform: translate3d(-18%, -6%, 0) scale(1.02); }
+    35% { transform: translate3d(6%, 4%, 0) scale(1.04); }
+    70% { transform: translate3d(22%, -2%, 0) scale(1.03); }
+    100% { transform: translate3d(-18%, -6%, 0) scale(1.02); }
 }
 
 @keyframes ppcWaveB {
-    0% {
-        transform: translate3d(22%, 8%, 0) scale(1.02);
-    }
-    40% {
-        transform: translate3d(-4%, -2%, 0) scale(1.03);
-    }
-    80% {
-        transform: translate3d(-22%, 5%, 0) scale(1.04);
-    }
-    100% {
-        transform: translate3d(22%, 8%, 0) scale(1.02);
-    }
+    0% { transform: translate3d(22%, 8%, 0) scale(1.02); }
+    40% { transform: translate3d(-4%, -2%, 0) scale(1.03); }
+    80% { transform: translate3d(-22%, 5%, 0) scale(1.04); }
+    100% { transform: translate3d(22%, 8%, 0) scale(1.02); }
 }
 
 @keyframes ppcGlowTraverse1 {
-    0% {
-        transform: translate3d(-40px, -20px, 0) scale(1);
-    }
-    50% {
-        transform: translate3d(-320px, 40px, 0) scale(1.08);
-    }
-    100% {
-        transform: translate3d(-40px, -20px, 0) scale(1);
-    }
+    0% { transform: translate3d(-40px, -20px, 0) scale(1); }
+    50% { transform: translate3d(-320px, 40px, 0) scale(1.08); }
+    100% { transform: translate3d(-40px, -20px, 0) scale(1); }
 }
 
 @keyframes ppcGlowTraverse2 {
-    0% {
-        transform: translate3d(40px, 20px, 0) scale(1);
-    }
-    50% {
-        transform: translate3d(340px, -30px, 0) scale(1.06);
-    }
-    100% {
-        transform: translate3d(40px, 20px, 0) scale(1);
-    }
+    0% { transform: translate3d(40px, 20px, 0) scale(1); }
+    50% { transform: translate3d(340px, -30px, 0) scale(1.06); }
+    100% { transform: translate3d(40px, 20px, 0) scale(1); }
 }
 
 /* ------------------------------
@@ -650,15 +681,11 @@ html[data-theme="dark"] .theme-toggle-label-dark {
 }
 
 /* Tap feedback helper */
-.fp-tap {
-    transition: transform 120ms ease;
-}
-.fp-tap:active {
-    transform: scale(0.98);
-}
+.fp-tap { transition: transform 120ms ease; }
+.fp-tap:active { transform: scale(0.98); }
 
 /* ------------------------------------------------------------------
-   PPC Welcome: AAA panel framing + noise + preview stack
+   PPC Welcome: panel framing + noise + preview stack
 ------------------------------------------------------------------ */
 
 .ppc-hero-frame {
@@ -675,19 +702,12 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     inset: 0;
     padding: 1px;
     border-radius: 1rem;
-
-    /* ✅ Put the gradient behind var() to avoid JetBrains argument validation */
     background: var(--ppc-hero-frame-border-gradient);
-
-    /* ✅ Feed a modern-syntax gradient list into WebKit mask (IDE-friendly) */
     -webkit-mask-image: var(--ppc-mask-image);
     mask-image: var(--ppc-mask-image);
-
-    /* legacy keywords for list values = fewer IDE complaints */
     -webkit-mask-origin: content, border;
     -webkit-mask-clip: content, border;
     -webkit-mask-composite: xor;
-
     mask-composite: exclude;
     pointer-events: none;
     opacity: 0.9;
@@ -711,34 +731,46 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     inset: 0;
     opacity: var(--ppc-noise-opacity);
 
-    /* Expanded stops to keep IDE parsers happy */
     background-image: radial-gradient(
             circle at 20% 20%,
-            rgba(255, 255, 255, 0.6) 0px,
-            rgba(255, 255, 255, 0.6) 1px,
+            rgba(255, 255, 255, 0.55) 0px,
+            rgba(255, 255, 255, 0.55) 1px,
             transparent 1px
     ),
     radial-gradient(
             circle at 80% 30%,
-            rgba(255, 255, 255, 0.45) 0px,
-            rgba(255, 255, 255, 0.45) 1px,
+            rgba(255, 255, 255, 0.40) 0px,
+            rgba(255, 255, 255, 0.40) 1px,
             transparent 1px
     ),
     radial-gradient(
             circle at 35% 75%,
-            rgba(255, 255, 255, 0.35) 0px,
-            rgba(255, 255, 255, 0.35) 1px,
+            rgba(255, 255, 255, 0.32) 0px,
+            rgba(255, 255, 255, 0.32) 1px,
             transparent 1px
     ),
     radial-gradient(
             circle at 72% 80%,
-            rgba(255, 255, 255, 0.25) 0px,
-            rgba(255, 255, 255, 0.25) 1px,
+            rgba(255, 255, 255, 0.22) 0px,
+            rgba(255, 255, 255, 0.22) 1px,
             transparent 1px
     );
 
-    background-size: 120px 120px, 160px 160px, 210px 210px, 260px 260px;
+    background-size: 140px 140px, 180px 180px, 230px 230px, 280px 280px;
+
+    /* ✅ soft in light (prevents “mud film”) */
+    mix-blend-mode: soft-light;
+}
+
+/* Dark: keep overlay punch */
+:root[data-theme="dark"] .ppc-hero-noise,
+html[data-theme="dark"] .ppc-hero-noise {
     mix-blend-mode: overlay;
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .ppc-hero-noise {
+        mix-blend-mode: overlay;
+    }
 }
 
 .ppc-chip {
@@ -747,45 +779,26 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     border-radius: 9999px;
 }
 
-/* Primary CTA polish */
 .ppc-primary-btn {
     box-shadow: 0 10px 30px var(--ppc-cta-shadow);
     transition: transform 160ms ease, box-shadow 220ms ease;
 }
-.ppc-primary-btn:hover {
-    transform: translateY(-1px);
-}
-.ppc-primary-btn:active {
-    transform: translateY(0px);
-}
+.ppc-primary-btn:hover { transform: translateY(-1px); }
+.ppc-primary-btn:active { transform: translateY(0px); }
 
-/* CTA pulsing wrapper (size pulse without fighting hover transforms) */
 .ppc-cta-wrap {
     display: inline-flex;
     transform-origin: center;
 }
-.ppc-cta-pulse {
-    animation: ppcCtaPulse 1.35s ease-in-out infinite;
-}
+.ppc-cta-pulse { animation: ppcCtaPulse 1.35s ease-in-out infinite; }
 .ppc-cta-wrap:hover,
-.ppc-cta-wrap:focus-within {
-    animation: none;
-}
+.ppc-cta-wrap:focus-within { animation: none; }
 
-/* ✅ UPDATED: stronger, more noticeable pulse */
 @keyframes ppcCtaPulse {
-    0% {
-        transform: scale(1);
-    }
-    35% {
-        transform: scale(1.1);
-    }
-    60% {
-        transform: scale(1.03);
-    }
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    35% { transform: scale(1.1); }
+    60% { transform: scale(1.03); }
+    100% { transform: scale(1); }
 }
 
 /* Preview stack */
@@ -823,7 +836,6 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     pointer-events: none;
 }
 
-/* Foreground card: crisp + dominant */
 .ppc-preview-card-1 {
     opacity: 1;
     transform: translate3d(0, 0, 0) rotate(-1.2deg) scale(1);
@@ -831,7 +843,6 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
-/* Background cards: clearly “supporting”, softer + slightly blurred */
 .ppc-preview-card-2 {
     opacity: 0.38;
     filter: blur(1px) saturate(0.9);
@@ -846,40 +857,21 @@ html[data-theme="dark"] .theme-toggle-label-dark {
 }
 
 @keyframes ppcFloat1 {
-    0% {
-        transform: translate3d(0, 0, 0) rotate(-1.2deg) scale(1);
-    }
-    50% {
-        transform: translate3d(0, -6px, 0) rotate(-0.6deg) scale(1);
-    }
-    100% {
-        transform: translate3d(0, 0, 0) rotate(-1.2deg) scale(1);
-    }
+    0% { transform: translate3d(0, 0, 0) rotate(-1.2deg) scale(1); }
+    50% { transform: translate3d(0, -6px, 0) rotate(-0.6deg) scale(1); }
+    100% { transform: translate3d(0, 0, 0) rotate(-1.2deg) scale(1); }
 }
 @keyframes ppcFloat2 {
-    0% {
-        transform: translate3d(14px, 18px, 0) rotate(1.4deg) scale(0.975);
-    }
-    50% {
-        transform: translate3d(16px, 10px, 0) rotate(0.9deg) scale(0.98);
-    }
-    100% {
-        transform: translate3d(14px, 18px, 0) rotate(1.4deg) scale(0.975);
-    }
+    0% { transform: translate3d(14px, 18px, 0) rotate(1.4deg) scale(0.975); }
+    50% { transform: translate3d(16px, 10px, 0) rotate(0.9deg) scale(0.98); }
+    100% { transform: translate3d(14px, 18px, 0) rotate(1.4deg) scale(0.975); }
 }
 @keyframes ppcFloat3 {
-    0% {
-        transform: translate3d(26px, 34px, 0) rotate(-0.8deg) scale(0.95);
-    }
-    50% {
-        transform: translate3d(22px, 40px, 0) rotate(-0.35deg) scale(0.955);
-    }
-    100% {
-        transform: translate3d(26px, 34px, 0) rotate(-0.8deg) scale(0.95);
-    }
+    0% { transform: translate3d(26px, 34px, 0) rotate(-0.8deg) scale(0.95); }
+    50% { transform: translate3d(22px, 40px, 0) rotate(-0.35deg) scale(0.955); }
+    100% { transform: translate3d(26px, 34px, 0) rotate(-0.8deg) scale(0.95); }
 }
 
-/* Explicit stop for PPC welcome animations */
 @media (prefers-reduced-motion: reduce) {
     .ppc-welcome-gradient::before,
     .ppc-welcome-gradient::after,

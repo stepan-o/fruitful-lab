@@ -86,8 +86,8 @@
     /* Welcome backdrop tuning */
     --ppc-welcome-dim: 0.16; /* (kept) used by DARK base */
 
-    /* ✅ Make light gradient feel alive (not pink, not gray) */
-    --ppc-welcome-opacity: 0.92;
+    /* LIGHT welcome should be flat (no animated overlay) */
+    --ppc-welcome-opacity: 0.0;
 
     /*
       LIGHT animated welcome:
@@ -623,15 +623,38 @@ html[data-theme="dark"] .theme-toggle-label-dark {
 .ppc-welcome-glow-1 { animation: ppcGlowTraverse1 7s ease-in-out infinite; }
 .ppc-welcome-glow-2 { animation: ppcGlowTraverse2 9s ease-in-out infinite; }
 
-/* Keep glows subtle in LIGHT */
-:root[data-theme="light"] .ppc-welcome-glow-1,
-html[data-theme="light"] .ppc-welcome-glow-1 { opacity: 0.14 !important; }
-:root[data-theme="light"] .ppc-welcome-glow-2,
-html[data-theme="light"] .ppc-welcome-glow-2 { opacity: 0.10 !important; }
+/* ✅ LIGHT: flat welcome (no glows, no drifting waves) */
+:root[data-theme="light"] .ppc-welcome-gradient::before,
+html[data-theme="light"] .ppc-welcome-gradient::before,
+:root[data-theme="light"] .ppc-welcome-gradient::after,
+html[data-theme="light"] .ppc-welcome-gradient::after {
+    animation: none !important;
+    opacity: 0 !important;
+    background-image: none !important;
+}
 
+:root[data-theme="light"] .ppc-welcome-glow-1,
+html[data-theme="light"] .ppc-welcome-glow-1,
+:root[data-theme="light"] .ppc-welcome-glow-2,
+html[data-theme="light"] .ppc-welcome-glow-2 {
+    animation: none !important;
+    opacity: 0 !important;
+}
+
+/* LIGHT OS fallback (only when no explicit data-theme) */
 @media (prefers-color-scheme: light) {
-    :root:not([data-theme]) .ppc-welcome-glow-1 { opacity: 0.14 !important; }
-    :root:not([data-theme]) .ppc-welcome-glow-2 { opacity: 0.10 !important; }
+    :root:not([data-theme]) .ppc-welcome-gradient::before,
+    :root:not([data-theme]) .ppc-welcome-gradient::after {
+        animation: none !important;
+        opacity: 0 !important;
+        background-image: none !important;
+    }
+
+    :root:not([data-theme]) .ppc-welcome-glow-1,
+    :root:not([data-theme]) .ppc-welcome-glow-2 {
+        animation: none !important;
+        opacity: 0 !important;
+    }
 }
 
 @keyframes ppcWaveA {

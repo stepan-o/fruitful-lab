@@ -53,49 +53,8 @@ function safeClearPpcSessionDrafts() {
     }
 }
 
-function useResolvedIsDark() {
-    const [isDark, setIsDark] = React.useState(false);
-
-    React.useEffect(() => {
-        if (typeof window === "undefined") return;
-
-        const root = document.documentElement;
-        const mql = window.matchMedia?.("(prefers-color-scheme: dark)");
-
-        const compute = () => {
-            const explicit = root.getAttribute("data-theme");
-            if (explicit === "dark") return true;
-            if (explicit === "light") return false;
-            return Boolean(mql?.matches);
-        };
-
-        const apply = () => setIsDark(compute());
-        apply();
-
-        const onMql = () => apply();
-        if (mql) {
-            if ("addEventListener" in mql) (mql as any).addEventListener("change", onMql);
-            else (mql as any).addListener(onMql);
-        }
-
-        const obs = new MutationObserver(() => apply());
-        obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
-
-        return () => {
-            obs.disconnect();
-            if (mql) {
-                if ("removeEventListener" in mql) (mql as any).removeEventListener("change", onMql);
-                else (mql as any).removeListener(onMql);
-            }
-        };
-    }, []);
-
-    return isDark;
-}
-
 export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
     const [hasDraft, setHasDraft] = React.useState(false);
-    const isDark = useResolvedIsDark();
 
     React.useEffect(() => {
         try {
@@ -141,62 +100,23 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
         }
     }, [onReset]);
 
-    /**
-     * LIGHT theme: neutral paper base + *subtle* brand fields.
-     * Also desaturate the whole gradient layer so the animated ::before/::after
-     * raspberry waves don’t flood the card.
-     */
-    const lightWelcomeBackground = React.useMemo(() => {
-        return [
-            // neutral paper base (no black)
-            "radial-gradient(1200px 520px at 55% 35%, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.94) 56%, rgba(255,255,255,0.90) 100%)",
-            // faint raspberry hint (much lower than before)
-            "radial-gradient(880px 520px at 18% 18%, color-mix(in srgb, var(--brand-raspberry) 7%, transparent) 0%, transparent 70%)",
-            // faint bronze warmth
-            "radial-gradient(980px 560px at 88% 82%, color-mix(in srgb, var(--brand-bronze) 8%, transparent) 0%, transparent 72%)",
-            // tiny depth from heading tone (keeps it premium without “pink wash”)
-            "radial-gradient(900px 520px at 55% 18%, color-mix(in srgb, var(--brand-heading) 5%, transparent) 0%, transparent 74%)",
-            // soft overall lift
-            "linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.72))",
-        ].join(", ");
-    }, []);
-
-    const welcomeGradientStyle: React.CSSProperties | undefined = React.useMemo(() => {
-        if (isDark) return undefined;
-
-        return {
-            background: lightWelcomeBackground,
-            // key: this desaturates the animated pseudo-element waves too
-            filter: "saturate(0.55) contrast(1.02)",
-            opacity: 0.88,
-        };
-    }, [isDark, lightWelcomeBackground]);
-
-    // Glows: also tone down in light so they don’t read “pink backdrop”
-    const glow1Class = isDark ? "opacity-25" : "opacity-[0.10]";
-    const glow2Class = isDark ? "opacity-15" : "opacity-[0.07]";
-
     return (
         <div className="ppc-hero-frame relative">
-            <div aria-hidden="true" className="ppc-welcome-gradient absolute inset-0" style={welcomeGradientStyle} />
+            {/* ✅ Theme-controlled: DARK stays animated, LIGHT is flat via globals.css */}
+            <div aria-hidden="true" className="ppc-welcome-gradient absolute inset-0" />
 
             <div aria-hidden="true" className="ppc-hero-sheen" />
             <div aria-hidden="true" className="ppc-hero-noise" />
 
+            {/* ✅ Glows are disabled in LIGHT via globals.css; remain in DARK */}
             <div
                 aria-hidden="true"
-                className={[
-                    "ppc-welcome-glow-1 pointer-events-none absolute -top-24 right-[-140px] h-72 w-72 rounded-full blur-3xl",
-                    glow1Class,
-                ].join(" ")}
+                className="ppc-welcome-glow-1 pointer-events-none absolute -top-24 right-[-140px] h-72 w-72 rounded-full blur-3xl opacity-25"
                 style={{ background: "var(--brand-raspberry)" }}
             />
             <div
                 aria-hidden="true"
-                className={[
-                    "ppc-welcome-glow-2 pointer-events-none absolute -bottom-24 left-[-140px] h-72 w-72 rounded-full blur-3xl",
-                    glow2Class,
-                ].join(" ")}
+                className="ppc-welcome-glow-2 pointer-events-none absolute -bottom-24 left-[-140px] h-72 w-72 rounded-full blur-3xl opacity-15"
                 style={{ background: "var(--brand-raspberry)" }}
             />
 
@@ -223,8 +143,8 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                         </h2>
 
                         <p className="mt-3 max-w-[62ch] text-sm leading-6 text-[var(--foreground-muted)]">
-                            Answer a few quick questions and we’ll estimate your monthly audience + opportunity — then give you a
-                            simple starting plan based on your business.
+                            Answer a few quick questions and we’ll estimate your monthly audience + opportunity — then give you a simple
+                            starting plan based on your business.
                         </p>
 
                         <div className="mt-5 grid gap-2">
@@ -282,6 +202,7 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
                         </div>
                     </div>
 
+                    {/* (right-side preview stack unchanged) */}
                     <div className="hidden lg:flex justify-end">
                         <div className="ppc-preview-stack" aria-hidden="true">
                             <div className="ppc-preview-card ppc-preview-card-3" />

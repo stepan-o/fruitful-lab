@@ -1,7 +1,7 @@
 // frontend/components/tools/pinterestPotential/steps/Q7Goal.tsx
 "use client";
 
-import React, { useEffect, useId, useMemo, useRef } from "react";
+import React, { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { Segment, StepBaseProps } from "./ppcV2Types";
 
 /**
@@ -10,14 +10,19 @@ import type { Segment, StepBaseProps } from "./ppcV2Types";
  * Repo path:
  *   public/tools/pinterestPotential/thumbs/
  *
- * Assumed new assets (vertical):
- *   - content-creator-goal-1.jpg ... goal-4.jpg
- *   - product-seller-goal-1.jpg ... goal-4.jpg
- *   - service-provider-goal-1.jpg ... goal-4.jpg
+ * Theme-aware assets (ONLY):
+ *   - content-creator-goal-1-light.jpg ... content-creator-goal-4-light.jpg
+ *   - content-creator-goal-1-dark.jpg  ... content-creator-goal-4-dark.jpg
+ *   - product-seller-goal-1-light.jpg  ... product-seller-goal-4-light.jpg
+ *   - product-seller-goal-1-dark.jpg   ... product-seller-goal-4-dark.jpg
+ *   - service-provider-goal-1-light.jpg... service-provider-goal-4-light.jpg
+ *   - service-provider-goal-1-dark.jpg ... service-provider-goal-4-dark.jpg
  *
  * Naming pattern:
- *   {segment}-goal-x.jpg
+ *   {segment}-goal-{level}-{light|dark}.jpg
  *   segment in ['content-creator','product-seller','service-provider']
+ *
+ * No legacy filenames / fallbacks exist.
  */
 const THUMB_BASE = "/tools/pinterestPotential/thumbs";
 const HELP_ID = "ppc-q7-help";
@@ -47,8 +52,49 @@ function segmentAssetPrefix(seg: Segment): "content-creator" | "product-seller" 
     return "service-provider";
 }
 
-function goalThumbSrc(seg: Segment, level: 1 | 2 | 3 | 4) {
-    return `${THUMB_BASE}/${segmentAssetPrefix(seg)}-goal-${level}.jpg`;
+/** Resolve effective theme (explicit data-theme wins, else OS preference) */
+function useResolvedIsDark() {
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const root = document.documentElement;
+        const mql = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+        const compute = () => {
+            const explicit = root.getAttribute("data-theme");
+            if (explicit === "dark") return true;
+            if (explicit === "light") return false;
+            return Boolean(mql?.matches);
+        };
+
+        const apply = () => setIsDark(compute());
+        apply();
+
+        const onMql = () => apply();
+        if (mql) {
+            if ("addEventListener" in mql) (mql as any).addEventListener("change", onMql);
+            else (mql as any).addListener(onMql);
+        }
+
+        const obs = new MutationObserver(() => apply());
+        obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+        return () => {
+            obs.disconnect();
+            if (mql) {
+                if ("removeEventListener" in mql) (mql as any).removeEventListener("change", onMql);
+                else (mql as any).removeListener(onMql);
+            }
+        };
+    }, []);
+
+    return isDark;
+}
+
+function goalThumbSrc(seg: Segment, level: 1 | 2 | 3 | 4, isDark: boolean) {
+    return `${THUMB_BASE}/${segmentAssetPrefix(seg)}-goal-${level}-${isDark ? "dark" : "light"}.jpg`;
 }
 
 function SelectedChip() {
@@ -96,7 +142,7 @@ function GoalBadge({ subtitle, selected }: { subtitle: string; selected: boolean
     );
 }
 
-function Thumb({ src, selected }: { src: string; selected: boolean }) {
+function Thumb({ src, selected, isDark }: { src: string; selected: boolean; isDark: boolean }) {
     return (
         <div
             className={[
@@ -117,22 +163,37 @@ function Thumb({ src, selected }: { src: string; selected: boolean }) {
                     selected ? "ppc-goalThumb-selected" : "",
                 ].join(" ")}
                 onError={(e) => {
+                    // No fallbacks; if this 404s, hide image (keeps layout stable).
                     const img = e.currentTarget;
-                    const fallback = `${THUMB_BASE}/photo-1.jpg`;
-                    if (img.src.endsWith("/photo-1.jpg")) return;
-                    img.src = fallback;
+                    img.style.opacity = "0";
                 }}
             />
-            <div className="pointer-events-none absolute inset-0 ppc-film" />
-            <div className="pointer-events-none absolute inset-0 ppc-vignette" />
-            <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                    background:
-                        "linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.38)), radial-gradient(260px 140px at 18% 22%, rgba(149,9,82,0.16), transparent 62%), radial-gradient(320px 180px at 82% 82%, rgba(213,137,54,0.14), transparent 64%)",
-                    opacity: 0.95,
-                }}
-            />
+
+            {/* DARK: cinematic treatment */}
+            {isDark ? (
+                <>
+                    <div className="pointer-events-none absolute inset-0 ppc-film" />
+                    <div className="pointer-events-none absolute inset-0 ppc-vignette" />
+                    <div
+                        className="pointer-events-none absolute inset-0"
+                        style={{
+                            background:
+                                "linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.38)), radial-gradient(260px 140px at 18% 22%, rgba(149,9,82,0.16), transparent 62%), radial-gradient(320px 180px at 82% 82%, rgba(213,137,54,0.14), transparent 64%)",
+                            opacity: 0.95,
+                        }}
+                    />
+                </>
+            ) : (
+                /* LIGHT: clean, no dark wash */
+                <div
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                        background:
+                            "radial-gradient(520px 260px at 20% 12%, rgba(255,255,255,0.55), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.16), rgba(0,0,0,0.06))",
+                        opacity: 0.55,
+                    }}
+                />
+            )}
         </div>
     );
 }
@@ -289,7 +350,8 @@ function HelpDetails({ segment, opts }: { segment: Segment; opts: Opt[] }) {
             </div>
 
             <div className="mt-3 text-xs text-[var(--foreground-muted)]">
-                You’re not locking yourself in forever — this just tells the calculator what outcome to optimize for when it estimates your range.
+                You’re not locking yourself in forever — this just tells the calculator what outcome to optimize for when it
+                estimates your range.
             </div>
         </details>
     );
@@ -311,6 +373,7 @@ type Q7Props = Omit<StepBaseProps, "onAutoAdvance"> & {
 
 export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Props) {
     const listId = useId();
+    const isDark = useResolvedIsDark();
 
     const lastClickRef = useRef<string | null>(null);
     const localTimerRef = useRef<number | null>(null);
@@ -368,8 +431,7 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
             return;
         }
 
-        // Reselect same (back-navigation confirm):
-        // Wizard ignores no-op patches; force a *real* patch by flipping undefined -> value.
+        // Reselect same (back-navigation confirm): force a real patch.
         if (lastClickRef.current === goalValue) return;
         lastClickRef.current = goalValue;
 
@@ -382,16 +444,29 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
     }
 
     return (
-        <div className="grid gap-4">
+        <div className="grid gap-4" data-theme={isDark ? "dark" : "light"}>
             <style>{`
         .ppc-goalThumb {
           transform: scale(1.03);
-          filter: contrast(1.03) saturate(1.06);
-          transition: transform 520ms ease, filter 520ms ease;
+          transition: transform 520ms ease, filter 520ms ease, opacity 220ms ease;
           will-change: transform;
         }
         .ppc-goalThumb-selected {
           transform: scale(1.08);
+        }
+
+        /* Theme-aware image tuning (gentle) */
+        [data-theme="light"] .ppc-goalThumb {
+          filter: contrast(1.02) saturate(1.02) brightness(1.04);
+        }
+        [data-theme="light"] .ppc-goalThumb-selected {
+          filter: contrast(1.03) saturate(1.04) brightness(1.05);
+        }
+
+        [data-theme="dark"] .ppc-goalThumb {
+          filter: contrast(1.03) saturate(1.06);
+        }
+        [data-theme="dark"] .ppc-goalThumb-selected {
           filter: contrast(1.06) saturate(1.12);
         }
 
@@ -438,7 +513,7 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4" role="radiogroup" aria-labelledby={listId}>
                 {opts.map((o) => {
                     const selected = value === o.v;
-                    const src = goalThumbSrc(segment, o.level);
+                    const src = goalThumbSrc(segment, o.level, isDark);
 
                     return (
                         <button
@@ -480,7 +555,7 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
                             />
 
                             <div className="relative grid gap-3">
-                                <Thumb src={src} selected={selected} />
+                                <Thumb src={src} selected={selected} isDark={isDark} />
 
                                 <div className="grid gap-1">
                                     <div className="text-base font-semibold tracking-tight text-[var(--foreground)]">{o.title}</div>

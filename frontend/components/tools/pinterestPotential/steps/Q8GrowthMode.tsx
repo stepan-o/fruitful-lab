@@ -1,7 +1,7 @@
 // frontend/components/tools/pinterestPotential/steps/Q8GrowthMode.tsx
 "use client";
 
-import React, { useEffect, useId, useMemo, useRef } from "react";
+import React, { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { GrowthMode, StepBaseProps } from "./ppcV2Types";
 
 /**
@@ -10,12 +10,15 @@ import type { GrowthMode, StepBaseProps } from "./ppcV2Types";
  * Repo path:
  *   public/tools/pinterestPotential/thumbs/
  *
- * Assumed new assets (square):
- *   - growth-1.jpg
- *   - growth-2.jpg
- *   - growth-3.jpg
+ * Theme-aware assets (ONLY):
+ *   - growth-1-light.jpg / growth-1-dark.jpg
+ *   - growth-2-light.jpg / growth-2-dark.jpg
+ *   - growth-3-light.jpg / growth-3-dark.jpg
  *
- * If your filenames differ, update growthThumbSrcForLevel().
+ * Naming pattern:
+ *   growth-{level}-{light|dark}.jpg
+ *
+ * No legacy filenames / fallbacks exist.
  */
 const THUMB_BASE = "/tools/pinterestPotential/thumbs";
 const HELP_ID = "ppc-q8-help";
@@ -28,6 +31,47 @@ type Opt = {
     blurb: string; // ultra short
 };
 
+/** Resolve effective theme (explicit data-theme wins, else OS preference) */
+function useResolvedIsDark() {
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const root = document.documentElement;
+        const mql = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+        const compute = () => {
+            const explicit = root.getAttribute("data-theme");
+            if (explicit === "dark") return true;
+            if (explicit === "light") return false;
+            return Boolean(mql?.matches);
+        };
+
+        const apply = () => setIsDark(compute());
+        apply();
+
+        const onMql = () => apply();
+        if (mql) {
+            if ("addEventListener" in mql) (mql as any).addEventListener("change", onMql);
+            else (mql as any).addListener(onMql);
+        }
+
+        const obs = new MutationObserver(() => apply());
+        obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+        return () => {
+            obs.disconnect();
+            if (mql) {
+                if ("removeEventListener" in mql) (mql as any).removeEventListener("change", onMql);
+                else (mql as any).removeListener(onMql);
+            }
+        };
+    }, []);
+
+    return isDark;
+}
+
 /**
  * Hierarchical pill colors (low → mid → high).
  * Uses only existing brand tokens + neutral; avoids introducing new CSS vars.
@@ -37,12 +81,10 @@ type Opt = {
  * - Level 3 (Ads): raspberry (highest emphasis)
  */
 function pillClasses(level: 1 | 2 | 3, selected: boolean) {
-    // base shell
     const base =
         "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs whitespace-nowrap transition-colors";
 
     if (level === 1) {
-        // neutral
         return [
             base,
             selected
@@ -52,7 +94,6 @@ function pillClasses(level: 1 | 2 | 3, selected: boolean) {
     }
 
     if (level === 2) {
-        // bronze
         return [
             base,
             selected
@@ -61,7 +102,6 @@ function pillClasses(level: 1 | 2 | 3, selected: boolean) {
         ].join(" ");
     }
 
-    // level 3 — raspberry
     return [
         base,
         selected
@@ -70,10 +110,14 @@ function pillClasses(level: 1 | 2 | 3, selected: boolean) {
     ].join(" ");
 }
 
-function dotClasses(level: 1 | 2 | 3, selected: boolean) {
+function dotClasses(level: 1 | 2 | 3, selected: boolean, isDark: boolean) {
     const base = "h-1.5 w-1.5 rounded-full";
     if (level === 1) {
-        return [base, selected ? "bg-[rgba(255,255,255,0.75)]" : "bg-[rgba(255,255,255,0.42)]"].join(" ");
+        // neutral dot should be visible in both themes
+        if (isDark) {
+            return [base, selected ? "bg-[rgba(255,255,255,0.75)]" : "bg-[rgba(255,255,255,0.42)]"].join(" ");
+        }
+        return [base, selected ? "bg-[rgba(0,0,0,0.55)]" : "bg-[rgba(0,0,0,0.28)]"].join(" ");
     }
     if (level === 2) {
         return [base, selected ? "bg-[var(--brand-bronze)]" : "bg-[var(--brand-bronze)] opacity-70"].join(" ");
@@ -82,7 +126,6 @@ function dotClasses(level: 1 | 2 | 3, selected: boolean) {
 }
 
 function SelectedChip({ level }: { level: 1 | 2 | 3 }) {
-    // keep “Selected” chip consistent but slightly tinted by level (subtle hierarchy)
     const ring =
         level === 3
             ? "border-[color-mix(in_srgb,var(--brand-raspberry)_55%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,var(--ppc-chip-bg))]"
@@ -91,11 +134,7 @@ function SelectedChip({ level }: { level: 1 | 2 | 3 }) {
                 : "border-[color-mix(in_srgb,rgba(255,255,255,0.22)_70%,var(--ppc-chip-border))] bg-[color-mix(in_srgb,rgba(255,255,255,0.10)_70%,var(--ppc-chip-bg))]";
 
     const dot =
-        level === 3
-            ? "bg-[var(--brand-raspberry)]"
-            : level === 2
-                ? "bg-[var(--brand-bronze)]"
-                : "bg-[rgba(255,255,255,0.70)]";
+        level === 3 ? "bg-[var(--brand-raspberry)]" : level === 2 ? "bg-[var(--brand-bronze)]" : "bg-[rgba(255,255,255,0.70)]";
 
     return (
         <span
@@ -121,20 +160,30 @@ function SelectedChip({ level }: { level: 1 | 2 | 3 }) {
 }
 
 /** Hierarchical pills (per-level color hierarchy) */
-function Badge({ subtitle, selected, level }: { subtitle: string; selected: boolean; level: 1 | 2 | 3 }) {
+function Badge({
+                   subtitle,
+                   selected,
+                   level,
+                   isDark,
+               }: {
+    subtitle: string;
+    selected: boolean;
+    level: 1 | 2 | 3;
+    isDark: boolean;
+}) {
     return (
         <span className={pillClasses(level, selected)} title={subtitle}>
-      <span className={dotClasses(level, selected)} aria-hidden="true" />
+      <span className={dotClasses(level, selected, isDark)} aria-hidden="true" />
       <span className={selected ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]"}>{subtitle}</span>
     </span>
     );
 }
 
-function growthThumbSrcForLevel(level: 1 | 2 | 3) {
-    return `${THUMB_BASE}/growth-${level}.jpg`;
+function growthThumbSrcForLevel(level: 1 | 2 | 3, isDark: boolean) {
+    return `${THUMB_BASE}/growth-${level}-${isDark ? "dark" : "light"}.jpg`;
 }
 
-function Thumb({ src, selected }: { src: string; selected: boolean }) {
+function Thumb({ src, selected, isDark }: { src: string; selected: boolean; isDark: boolean }) {
     return (
         <div
             className={[
@@ -155,27 +204,42 @@ function Thumb({ src, selected }: { src: string; selected: boolean }) {
                     selected ? "ppc-growthThumb-selected" : "",
                 ].join(" ")}
                 onError={(e) => {
+                    // No fallbacks; if this 404s, hide image (keeps layout stable).
                     const img = e.currentTarget;
-                    const fallback = `${THUMB_BASE}/photo-1.jpg`;
-                    if (img.src.endsWith("/photo-1.jpg")) return;
-                    img.src = fallback;
+                    img.style.opacity = "0";
                 }}
             />
-            <div className="pointer-events-none absolute inset-0 ppc-film" />
-            <div className="pointer-events-none absolute inset-0 ppc-vignette" />
-            <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                    background:
-                        "linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.34)), radial-gradient(240px 160px at 18% 22%, rgba(149,9,82,0.14), transparent 62%), radial-gradient(300px 220px at 82% 82%, rgba(213,137,54,0.12), transparent 64%)",
-                    opacity: 0.95,
-                }}
-            />
+
+            {/* DARK: cinematic treatment */}
+            {isDark ? (
+                <>
+                    <div className="pointer-events-none absolute inset-0 ppc-film" />
+                    <div className="pointer-events-none absolute inset-0 ppc-vignette" />
+                    <div
+                        className="pointer-events-none absolute inset-0"
+                        style={{
+                            background:
+                                "linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.34)), radial-gradient(240px 160px at 18% 22%, rgba(149,9,82,0.14), transparent 62%), radial-gradient(300px 220px at 82% 82%, rgba(213,137,54,0.12), transparent 64%)",
+                            opacity: 0.95,
+                        }}
+                    />
+                </>
+            ) : (
+                /* LIGHT: clean, no dark wash */
+                <div
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                        background:
+                            "radial-gradient(520px 260px at 20% 12%, rgba(255,255,255,0.55), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.16), rgba(0,0,0,0.06))",
+                        opacity: 0.55,
+                    }}
+                />
+            )}
         </div>
     );
 }
 
-function HelpDetails() {
+function HelpDetails({ isDark }: { isDark: boolean }) {
     const bullets: Record<GrowthMode, string[]> = {
         organic: [
             "You’ll focus on SEO + fresh pin volume + saves over time.",
@@ -240,7 +304,7 @@ function HelpDetails() {
                             <div className="min-w-0">
                                 <div className="flex flex-wrap items-center gap-2">
                                     <div className="text-sm font-semibold text-[var(--foreground)]">{c.title}</div>
-                                    <Badge subtitle={c.subtitle} selected={false} level={c.level} />
+                                    <Badge subtitle={c.subtitle} selected={false} level={c.level} isDark={isDark} />
                                 </div>
                             </div>
                             <div className="text-[11px] text-[var(--foreground-muted)]">{c.level}/3</div>
@@ -256,7 +320,9 @@ function HelpDetails() {
                               ? "bg-[var(--brand-raspberry)] opacity-70"
                               : c.level === 2
                                   ? "bg-[var(--brand-bronze)] opacity-70"
-                                  : "bg-[rgba(255,255,255,0.40)]",
+                                  : isDark
+                                      ? "bg-[rgba(255,255,255,0.40)]"
+                                      : "bg-[rgba(0,0,0,0.28)]",
                       ].join(" ")}
                       aria-hidden="true"
                   />
@@ -269,8 +335,8 @@ function HelpDetails() {
             </div>
 
             <div className="mt-3 text-xs text-[var(--foreground-muted)]">
-                If you’re unsure, <span className="text-[var(--foreground)]">Maybe later</span> is the safe default — it keeps the plan realistic
-                while still leaving room to scale.
+                If you’re unsure, <span className="text-[var(--foreground)]">Maybe later</span> is the safe default — it keeps the plan realistic while still
+                leaving room to scale.
             </div>
         </details>
     );
@@ -291,6 +357,7 @@ type Q8Props = Omit<StepBaseProps, "onAutoAdvance"> & {
 
 export default function Q8GrowthMode({ value, onChange, onAutoAdvance }: Q8Props) {
     const listId = useId();
+    const isDark = useResolvedIsDark();
 
     const lastClickRef = useRef<GrowthMode | null>(null);
     const localTimerRef = useRef<number | null>(null);
@@ -332,8 +399,7 @@ export default function Q8GrowthMode({ value, onChange, onAutoAdvance }: Q8Props
             return;
         }
 
-        // Reselect same (back-navigation confirm):
-        // Wizard ignores no-op patches; force a *real* patch by flipping undefined -> value.
+        // Reselect same (back-navigation confirm): force a real patch.
         if (lastClickRef.current === clicked) return;
         lastClickRef.current = clicked;
 
@@ -346,16 +412,29 @@ export default function Q8GrowthMode({ value, onChange, onAutoAdvance }: Q8Props
     }
 
     return (
-        <div className="grid gap-4">
+        <div className="grid gap-4" data-theme={isDark ? "dark" : "light"}>
             <style>{`
         .ppc-growthThumb {
           transform: scale(1.02);
-          filter: contrast(1.03) saturate(1.06);
-          transition: transform 520ms ease, filter 520ms ease;
+          transition: transform 520ms ease, filter 520ms ease, opacity 220ms ease;
           will-change: transform;
         }
         .ppc-growthThumb-selected {
           transform: scale(1.06);
+        }
+
+        /* Theme-aware image tuning (gentle) */
+        [data-theme="light"] .ppc-growthThumb {
+          filter: contrast(1.02) saturate(1.02) brightness(1.04);
+        }
+        [data-theme="light"] .ppc-growthThumb-selected {
+          filter: contrast(1.03) saturate(1.04) brightness(1.05);
+        }
+
+        [data-theme="dark"] .ppc-growthThumb {
+          filter: contrast(1.03) saturate(1.06);
+        }
+        [data-theme="dark"] .ppc-growthThumb-selected {
           filter: contrast(1.06) saturate(1.12);
         }
 
@@ -402,7 +481,7 @@ export default function Q8GrowthMode({ value, onChange, onAutoAdvance }: Q8Props
             <div className="grid gap-2 sm:grid-cols-3" role="radiogroup" aria-labelledby={listId}>
                 {opts.map((o) => {
                     const selected = value === o.v;
-                    const src = growthThumbSrcForLevel(o.level);
+                    const src = growthThumbSrcForLevel(o.level, isDark);
 
                     return (
                         <button
@@ -444,13 +523,13 @@ export default function Q8GrowthMode({ value, onChange, onAutoAdvance }: Q8Props
                             />
 
                             <div className="relative grid gap-3">
-                                <Thumb src={src} selected={selected} />
+                                <Thumb src={src} selected={selected} isDark={isDark} />
 
                                 <div className="grid gap-1">
                                     <div className="text-base font-semibold tracking-tight text-[var(--foreground)]">{o.title}</div>
 
                                     <div className="flex flex-wrap items-center gap-2">
-                                        <Badge subtitle={o.subtitle} selected={selected} level={o.level} />
+                                        <Badge subtitle={o.subtitle} selected={selected} level={o.level} isDark={isDark} />
                                         {selected ? <SelectedChip level={o.level} /> : null}
                                     </div>
 
@@ -462,16 +541,15 @@ export default function Q8GrowthMode({ value, onChange, onAutoAdvance }: Q8Props
                 })}
             </div>
 
-            {/* basic info at the bottom */}
             <div className="rounded-2xl border border-[var(--border)] bg-[var(--background)] p-4">
                 <div className="text-sm font-semibold text-[var(--foreground)]">How this affects your plan</div>
                 <div className="mt-1 text-sm text-[var(--foreground-muted)]">
-                    Organic builds compounding reach. Ads accelerate testing + conversion (but need tracking + a solid landing page). We’ll tailor the
-                    recommendations based on what you pick.
+                    Organic builds compounding reach. Ads accelerate testing + conversion (but need tracking + a solid landing page). We’ll tailor the recommendations
+                    based on what you pick.
                 </div>
             </div>
 
-            <HelpDetails />
+            <HelpDetails isDark={isDark} />
         </div>
     );
 }

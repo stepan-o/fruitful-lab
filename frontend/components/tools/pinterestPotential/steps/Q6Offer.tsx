@@ -1,7 +1,7 @@
 // frontend/components/tools/pinterestPotential/steps/Q6Offer.tsx
 "use client";
 
-import React, { useEffect, useId, useMemo, useRef } from "react";
+import React, { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { Segment, OfferClarity, StepBaseProps } from "./ppcV2Types";
 
 /**
@@ -10,10 +10,11 @@ import type { Segment, OfferClarity, StepBaseProps } from "./ppcV2Types";
  * Repo path:
  *   public/tools/pinterestPotential/thumbs/
  *
- * New assets:
- *   - offer-1.jpg
- *   - offer-2.jpg
- *   - offer-3.jpg
+ * Theme-aware assets (ONLY):
+ *   - offer-1-light.jpg ... offer-3-light.jpg
+ *   - offer-1-dark.jpg  ... offer-3-dark.jpg
+ *
+ * No legacy filenames / fallbacks exist.
  */
 const THUMB_BASE = "/tools/pinterestPotential/thumbs";
 const HELP_ID = "ppc-q6-help";
@@ -132,11 +133,52 @@ function LevelPips({
     );
 }
 
-function offerThumbSrcForLevel(level: 1 | 2 | 3) {
-    return `${THUMB_BASE}/offer-${level}.jpg`;
+/** Resolve effective theme (explicit data-theme wins, else OS preference) */
+function useResolvedIsDark() {
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const root = document.documentElement;
+        const mql = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+        const compute = () => {
+            const explicit = root.getAttribute("data-theme");
+            if (explicit === "dark") return true;
+            if (explicit === "light") return false;
+            return Boolean(mql?.matches);
+        };
+
+        const apply = () => setIsDark(compute());
+        apply();
+
+        const onMql = () => apply();
+        if (mql) {
+            if ("addEventListener" in mql) (mql as any).addEventListener("change", onMql);
+            else (mql as any).addListener(onMql);
+        }
+
+        const obs = new MutationObserver(() => apply());
+        obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+        return () => {
+            obs.disconnect();
+            if (mql) {
+                if ("removeEventListener" in mql) (mql as any).removeEventListener("change", onMql);
+                else (mql as any).removeListener(onMql);
+            }
+        };
+    }, []);
+
+    return isDark;
 }
 
-function Thumb({ src, selected }: { src: string; selected: boolean }) {
+function offerThumbSrcForLevel(level: 1 | 2 | 3, isDark: boolean) {
+    return `${THUMB_BASE}/offer-${level}-${isDark ? "dark" : "light"}.jpg`;
+}
+
+function Thumb({ src, selected, isDark }: { src: string; selected: boolean; isDark: boolean }) {
     return (
         <div
             className={[
@@ -157,22 +199,37 @@ function Thumb({ src, selected }: { src: string; selected: boolean }) {
                     selected ? "ppc-offerThumb-selected" : "",
                 ].join(" ")}
                 onError={(e) => {
+                    // No fallbacks; if this 404s, hide image (keeps layout stable).
                     const img = e.currentTarget;
-                    const fallback = `${THUMB_BASE}/photo-1.jpg`;
-                    if (img.src.endsWith("/photo-1.jpg")) return;
-                    img.src = fallback;
+                    img.style.opacity = "0";
                 }}
             />
-            <div className="pointer-events-none absolute inset-0 ppc-film" />
-            <div className="pointer-events-none absolute inset-0 ppc-vignette" />
-            <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                    background:
-                        "linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.38)), radial-gradient(260px 140px at 18% 22%, rgba(149,9,82,0.14), transparent 62%), radial-gradient(320px 180px at 82% 82%, rgba(213,137,54,0.12), transparent 64%)",
-                    opacity: 0.95,
-                }}
-            />
+
+            {/* DARK: cinematic treatment */}
+            {isDark ? (
+                <>
+                    <div className="pointer-events-none absolute inset-0 ppc-film" />
+                    <div className="pointer-events-none absolute inset-0 ppc-vignette" />
+                    <div
+                        className="pointer-events-none absolute inset-0"
+                        style={{
+                            background:
+                                "linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.38)), radial-gradient(260px 140px at 18% 22%, rgba(149,9,82,0.14), transparent 62%), radial-gradient(320px 180px at 82% 82%, rgba(213,137,54,0.12), transparent 64%)",
+                            opacity: 0.95,
+                        }}
+                    />
+                </>
+            ) : (
+                /* LIGHT: clean, no dark wash */
+                <div
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                        background:
+                            "radial-gradient(520px 260px at 20% 12%, rgba(255,255,255,0.55), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.16), rgba(0,0,0,0.06))",
+                        opacity: 0.55,
+                    }}
+                />
+            )}
         </div>
     );
 }
@@ -282,8 +339,7 @@ function HelpDetails({ segment, opts }: { segment: Segment; opts: Opt[] }) {
 
             <div className="mt-3 grid gap-3 sm:grid-cols-3">
                 {opts.map((o) => {
-                    const bullets =
-                        o.v === "no" ? help.no : o.v === "somewhat" ? help.somewhat : help.yes;
+                    const bullets = o.v === "no" ? help.no : o.v === "somewhat" ? help.somewhat : help.yes;
 
                     return (
                         <div key={o.v} className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-3">
@@ -340,6 +396,7 @@ type Q6Props = Omit<StepBaseProps, "onAutoAdvance"> & {
 
 export default function Q6Offer({ segment, value, onChange, onAutoAdvance }: Q6Props) {
     const listId = useId();
+    const isDark = useResolvedIsDark();
 
     const lastClickRef = useRef<OfferClarity | null>(null);
     const localTimerRef = useRef<number | null>(null);
@@ -373,17 +430,14 @@ export default function Q6Offer({ segment, value, onChange, onAutoAdvance }: Q6P
     function triggerAutoAdvance(clicked: OfferClarity) {
         const prevValue = value;
 
-        // Always update selection for UI consistency (wizard may noop if unchanged).
         onChange(clicked);
 
-        // Normal change path: send patch directly.
         if (prevValue !== clicked) {
             lastClickRef.current = clicked;
             onAutoAdvance?.({ offer_clarity: clicked });
             return;
         }
 
-        // Reselect same (back-navigation confirm): force a real patch.
         if (lastClickRef.current === clicked) return;
         lastClickRef.current = clicked;
 
@@ -396,16 +450,29 @@ export default function Q6Offer({ segment, value, onChange, onAutoAdvance }: Q6P
     }
 
     return (
-        <div className="grid gap-4">
+        <div className="grid gap-4" data-theme={isDark ? "dark" : "light"}>
             <style>{`
         .ppc-offerThumb {
           transform: scale(1.03);
-          filter: contrast(1.03) saturate(1.06);
-          transition: transform 520ms ease, filter 520ms ease;
+          transition: transform 520ms ease, filter 520ms ease, opacity 220ms ease;
           will-change: transform;
         }
         .ppc-offerThumb-selected {
           transform: scale(1.08);
+        }
+
+        /* Theme-aware image tuning (gentle) */
+        [data-theme="light"] .ppc-offerThumb {
+          filter: contrast(1.02) saturate(1.02) brightness(1.04);
+        }
+        [data-theme="light"] .ppc-offerThumb-selected {
+          filter: contrast(1.03) saturate(1.04) brightness(1.05);
+        }
+
+        [data-theme="dark"] .ppc-offerThumb {
+          filter: contrast(1.03) saturate(1.06);
+        }
+        [data-theme="dark"] .ppc-offerThumb-selected {
           filter: contrast(1.06) saturate(1.12);
         }
 
@@ -454,7 +521,7 @@ export default function Q6Offer({ segment, value, onChange, onAutoAdvance }: Q6P
             <div className="grid gap-2 sm:grid-cols-3" role="radiogroup" aria-labelledby={listId}>
                 {opts.map((o) => {
                     const selected = value === o.v;
-                    const src = offerThumbSrcForLevel(o.level);
+                    const src = offerThumbSrcForLevel(o.level, isDark);
 
                     return (
                         <button
@@ -498,7 +565,7 @@ export default function Q6Offer({ segment, value, onChange, onAutoAdvance }: Q6P
 
                             <div className="relative grid gap-3">
                                 <div className="relative">
-                                    <Thumb src={src} selected={selected} />
+                                    <Thumb src={src} selected={selected} isDark={isDark} />
 
                                     <div className="pointer-events-none absolute right-2 top-2 flex items-center gap-2 rounded-full border border-[var(--ppc-chip-border)] bg-[color-mix(in_srgb,var(--ppc-chip-bg)_85%,transparent)] px-2 py-1">
                                         <LevelPips level={o.level} selected={selected} />
@@ -509,7 +576,6 @@ export default function Q6Offer({ segment, value, onChange, onAutoAdvance }: Q6P
                                 <div className="grid gap-1">
                                     <div className="text-base font-semibold tracking-tight text-[var(--foreground)]">{o.title}</div>
 
-                                    {/* Pill always on next line relative to title */}
                                     <div className="flex flex-wrap items-center gap-2">
                                         <LevelBadge level={o.level} subtitle={o.subtitle} selected={selected} />
                                         {selected ? <SelectedChip /> : null}

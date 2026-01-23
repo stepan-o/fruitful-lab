@@ -1,44 +1,37 @@
 // frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
 "use client";
 
-// frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
-// v0.2 (Locked) — V2 wizard wired to new step components (Q1–Q8) + compute engine + lead gating.
-//
-// Fix (2026-01-12): Remove random A/B assignment.
-// - Variant precedence:
-//   1) Query param (?variant=welcome|no_welcome) / (?pp_variant=...) / (?ppcVariant=...)
-//   2) Existing persisted draft.variant (sessionStorage v2)
-//   3) Experiment cookie (best-effort; set by middleware/GrowthBook)
-//   4) Default = "welcome" (no randomization)
-//
-// Also fixes a subtle reset bug:
-// - clearDraft() removed sessionStorage, but draft state would immediately repersist old values.
-// - Resets now also setDraft(INITIAL_DRAFT) to truly clear session draft.
-//
-// Fix (2026-01-13): Hydration gate for reload on Q1.
-// - Prevent SSR/client branch mismatch (Welcome vs Wizard) by rendering a stable shell
-//   until the component hydrates on the client.
-//
-// Fix (2026-01-17): Auto-advance determinism + redundant update prevention.
-// - Only update answers when the new value actually differs.
-// - Only auto-advance when a real patch change is provided (ignore undefined / no-op patches).
-// - Prevent duplicate goNext from multiple autoAdvance calls (cancel timers + sequence guard).
-// - Ensure auto-advance uses latest answers/step via refs (no stale closure overwrites).
-// - Prevent Q2 double-trigger by removing inline autoAdvance in Q2 onChange; rely on Q2Niche onAutoAdvance.
-//
-// Fix (2026-01-18): Restore Q2 auto-advance deterministically.
-// - Q2Niche currently calls onAutoAdvance(undefined) (seen in logs), so wizard must trigger autoAdvance({ niche: v })
-//   on real selection changes. Dedupe guard already prevents double-advance if Q2Niche later starts passing patches.
-//
-// Fix (2026-01-18): Segment-dependent invalidation.
-// - Q2 niche options depend on Q1 segment, so changing segment must clear niche (and segment-dependent goal).
-//
-// Fix (2026-01-19): Step header correctness for segment-dependent questions.
-// - Step 6 header must be the actual question (segment-dependent), not "Offer clarity".
-// - Step 3 header should match segment-dependent prompt as well (keeps copy consistent).
-//
-// Fix (2026-01-19): Q8 header copy polish.
-// - Step 8 header should match the intent ("Would you like to use Pinterest ads?") rather than "Ads plan".
+/**
+ * Pinterest Potential Calculator — Wizard (v0.2 Locked)
+ *
+ * CLEAN CONTRACT (enforced):
+ * - Query params (canonical only):
+ *   - ?variant=welcome|no_welcome
+ *   - ?leadMode=hard_lock|soft_lock
+ *   - ?leadToken=...
+ * - Variant resolution (no randomization):
+ *   1) query param (?variant)
+ *   2) experiment cookie (PINTEREST_POTENTIAL_VARIANT_COOKIE)
+ *   3) default = "welcome"
+ * - Answers contract:
+ *   - Step components must emit canonical spec IDs for:
+ *     - Q1 segment
+ *     - Q2 niche
+ *     - Q7 primary_goal
+ *   - Wizard verifies Q2/Q7 are valid for the selected segment; otherwise treated as missing.
+ *
+ * RUNTIME GUARDRAILS (kept from locked version):
+ * - Hydration gate to prevent SSR/client mismatch.
+ * - Auto-advance determinism:
+ *   - ignore undefined/no-op patches
+ *   - cancel pending timers on navigation
+ *   - sequence guard + step guard to prevent late/double advances
+ *   - refs to avoid stale closures
+ * - Q2 fallback: if Q2Niche fails to provide patch via onAutoAdvance (observed undefined),
+ *   wizard triggers autoAdvance({ niche: v }) on real onChange.
+ * - Segment-dependent invalidation: changing segment clears niche + primary_goal.
+ * - Repeat-click confirm: clicking the same selection again advances to next step.
+ */
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -65,12 +58,11 @@ import { resolveLeadFromToken } from "@/lib/tools/pinterestPotential/leadToken";
 import { PRIVACY_MICROCOPY } from "@/lib/tools/pinterestPotential/copy";
 import { trackLeadSubmit } from "@/lib/gtm";
 
-// Experiment cookie name (set in middleware)
 import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotentialConfig";
 
 import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
 
-// New V2 step components
+// V2 step components
 import Q1Segment from "./steps/Q1Segment";
 import Q2Niche from "./steps/Q2Niche";
 import Q3Volume from "./steps/Q3Volume";
@@ -89,14 +81,16 @@ import type {
     VolumeBucket,
 } from "./steps/ppcV2Types";
 
-// New pure UI views
+// Pure UI views
 import WelcomeView from "./views/WelcomeView";
 import ResultsView from "./views/ResultsView";
 import WizardView from "./views/WizardView";
 
 // -----------------------------
-// Small helpers
+// Helpers
 // -----------------------------
+type PPCVariant = "welcome" | "no_welcome";
+
 function getCookieValue(name: string): string | null {
     if (typeof document === "undefined") return null;
     const parts = document.cookie.split(";").map((s) => s.trim());
@@ -106,26 +100,14 @@ function getCookieValue(name: string): string | null {
     return null;
 }
 
-type PPCVariant = "welcome" | "no_welcome";
-
 function normalizeVariant(raw?: string | null): PPCVariant | undefined {
     if (!raw) return undefined;
-    return raw === "welcome" || raw === "no_welcome" ? (raw as PPCVariant) : undefined;
+    return raw === "welcome" || raw === "no_welcome" ? raw : undefined;
 }
 
 function readVariantCookie(): PPCVariant | undefined {
     if (typeof document === "undefined") return undefined;
-
-    // Primary (canonical) cookie name used by middleware
-    const primary = normalizeVariant(getCookieValue(PINTEREST_POTENTIAL_VARIANT_COOKIE));
-
-    // Back-compat / future-proof fallbacks (harmless if absent)
-    const fallback =
-        normalizeVariant(getCookieValue("pp_variant")) ??
-        normalizeVariant(getCookieValue("ppc_variant")) ??
-        normalizeVariant(getCookieValue("pinterest_potential_variant"));
-
-    return primary ?? fallback;
+    return normalizeVariant(getCookieValue(PINTEREST_POTENTIAL_VARIANT_COOKIE));
 }
 
 function formatRange(low: number, high: number): string {
@@ -138,38 +120,6 @@ function opportunityLabel(type: ResultsBundle["opportunity_est"]["type"]): strin
     return "Monthly lead opportunity";
 }
 
-function mapGoalToSpec(segment: SpecSegment, raw?: string): PrimaryGoal | undefined {
-    if (!raw) return undefined;
-
-    // If UI ever starts sending spec slugs directly, accept them.
-    const allowed = new Set(getPrimaryGoalOptions(segment).map((o) => o.id));
-    if (allowed.has(raw as PrimaryGoal)) return raw as PrimaryGoal;
-
-    // Current UI slugs (from Q7Goal.tsx) → spec slugs
-    const map: Record<SpecSegment, Record<string, PrimaryGoal>> = {
-        content_creator: {
-            traffic: "traffic",
-            subscribers: "email_subscribers",
-            affiliate: "affiliate_revenue",
-            sales: "course_product_sales",
-        },
-        product_seller: {
-            sales: "sales",
-            subscribers: "email_subscribers",
-            retargeting: "retargeting_pool",
-            discovery: "new_customer_discovery",
-        },
-        service_provider: {
-            leads: "leads_calls",
-            subscribers: "email_subscribers",
-            webinar: "webinar_signups",
-            authority: "authority_visibility",
-        },
-    };
-
-    return map[segment]?.[raw];
-}
-
 function segmentLabel(seg?: SpecSegment): string {
     if (seg === "content_creator") return "Content Creator";
     if (seg === "product_seller") return "Product Seller";
@@ -179,7 +129,7 @@ function segmentLabel(seg?: SpecSegment): string {
 
 function valueLabelFromOptions<T extends string>(opts: Array<{ id: T; label: string }>, v?: string): string {
     if (!v) return "—";
-    return opts.find((o) => o.id === v)?.label ?? v;
+    return opts.find((o) => o.id === v)?.label ?? "—";
 }
 
 /**
@@ -211,7 +161,6 @@ function getErrorKeyForStep(stepIndex: number, errors: Record<string, string>, r
         7: ["Q7", "Q1"],
         8: ["Q8"],
     };
-
     const keys = keyByStep[stepIndex] ?? [];
     return keys.find((k) => errors[k]) ?? keys.find((k) => resultsErrors[k]) ?? null;
 }
@@ -236,19 +185,13 @@ function patchIsNoop(base: AnswersV2, patch: Partial<AnswersV2>): boolean {
 }
 
 function applySegmentInvalidation(base: AnswersV2, next: AnswersV2): AnswersV2 {
-    const prevSeg = base.segment;
-    const nextSeg = next.segment;
-
-    // If segment changed, clear segment-dependent answers.
-    if (prevSeg && nextSeg && prevSeg !== nextSeg) {
+    // Q2 (niche) + Q7 (primary_goal) depend on Q1 (segment).
+    if (base.segment && next.segment && base.segment !== next.segment) {
         const updated: AnswersV2 = { ...next };
-        // Q2 depends on segment:
         delete updated.niche;
-        // Q7 depends on segment:
         delete updated.primary_goal;
         return updated;
     }
-
     return next;
 }
 
@@ -266,12 +209,14 @@ export default function PinterestPotentialWizard({
 
     /**
      * NOTE: Name ends with "Action" to satisfy Next's client-boundary serialization rule.
-     * If you need client-to-client callbacks, listen via events or ensure the parent is also a client component boundary.
+     * If you need client-to-client callbacks, use events or keep the parent as a client boundary too.
      */
     onPhaseChangeAction?: (phase: "wizard" | "results") => void | Promise<void>;
     onStartAction?: () => void | Promise<void>; // analytics: tool_start
 }) {
     const searchParams = useSearchParams();
+
+    const TOTAL = 8;
 
     // ✅ Hydration gate (prevents SSR/client branch mismatch on reload)
     const [hydrated, setHydrated] = useState(false);
@@ -287,32 +232,25 @@ export default function PinterestPotentialWizard({
         [],
     );
 
-    // ---- A/B variant (welcome vs no_welcome) ----
-    const qpVariant =
-        searchParams.get("variant") ?? searchParams.get("pp_variant") ?? searchParams.get("ppcVariant") ?? undefined;
+    // ---- Canonical query params (contract) ----
+    const requestedVariant = normalizeVariant(searchParams.get("variant"));
+    const qpLeadMode = searchParams.get("leadMode") ?? undefined;
+    const qpLeadToken = searchParams.get("leadToken") ?? undefined;
 
-    const requestedVariant = normalizeVariant(qpVariant);
+    // Optional cookie override for lead mode (keep only canonical)
+    const cookieLeadMode = typeof document !== "undefined" ? getCookieValue("pp_lead_mode") : null;
 
-    // ---- Lead gating overrides ----
-    const qpLeadMode = searchParams.get("leadMode") ?? searchParams.get("lead_mode") ?? searchParams.get("leadmode") ?? undefined;
-
-    const qpLeadToken = searchParams.get("leadToken") ?? searchParams.get("lead_token") ?? searchParams.get("token") ?? undefined;
-
-    // Optional cookie override (best-effort; safe if absent)
-    const cookieLeadMode =
-        typeof document !== "undefined" ? getCookieValue("pp_lead_mode") ?? getCookieValue("pinterest_potential_lead_mode") ?? null : null;
-
-    // ---- Draft persistence (sessionStorage v2) ----
+    // ---- Draft persistence ----
     const { draft, setDraft, updateDraft, clearDraft } = usePinterestPotentialDraft(INITIAL_DRAFT);
 
     // Local answers state (backed by draft)
     const [answers, setAnswers] = useState<AnswersV2>(draft.answers ?? {});
     const [stepIndex, setStepIndex] = useState<number>(() => {
         const n = draft.stepIndex;
-        return n >= 1 && n <= 8 ? n : 1;
+        return n >= 1 && n <= TOTAL ? n : 1;
     });
 
-    // Keep latest state in refs to avoid stale closure overwrites (auto-advance + timers)
+    // Refs to avoid stale closure overwrites (auto-advance + timers)
     const answersRef = useRef<AnswersV2>(answers);
     const stepIndexRef = useRef<number>(stepIndex);
     useEffect(() => {
@@ -322,7 +260,7 @@ export default function PinterestPotentialWizard({
         stepIndexRef.current = stepIndex;
     }, [stepIndex]);
 
-    // ---- Auto-advance guardrails (dedupe/cancel) ----
+    // ---- Auto-advance guardrails ----
     const autoAdvanceSeqRef = useRef(0);
     const autoAdvanceTimerRef = useRef<number | null>(null);
     const lastAutoAdvanceSigRef = useRef<string>("");
@@ -334,7 +272,7 @@ export default function PinterestPotentialWizard({
         }
     }
 
-    // ---- Wizard errors (per-step) ----
+    // ---- Errors ----
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     // ---- Results state ----
@@ -343,35 +281,43 @@ export default function PinterestPotentialWizard({
     const [optionalLeadEmailError, setOptionalLeadEmailError] = useState<string | null>(null);
     const [optionalLeadSubmitted, setOptionalLeadSubmitted] = useState(false);
 
-    // ---- Known lead resolution (initialLead OR leadToken) ----
+    // ---- Known lead resolution ----
     const [knownLead, setKnownLead] = useState<Lead | undefined>(initialLead);
     const [leadDraft, setLeadDraft] = useState<Partial<Lead>>(initialLead ?? {});
     const [leadSubmitted, setLeadSubmitted] = useState<boolean>(!!initialLead?.email);
 
+    const isKnownLead = !!knownLead?.email;
+
     // ---- Analytics: tool_start (once) ----
     const hasStartedRef = useRef(false);
+    function fireToolStartOnce() {
+        if (hasStartedRef.current) return;
+        hasStartedRef.current = true;
+        try {
+            void onStartAction?.();
+        } catch {
+            // ignore
+        }
+    }
 
-    // ---- Variant from cookie (best-effort) ----
+    // ---- Variant resolution (no randomization) ----
     const cookieVariant = useMemo(() => readVariantCookie(), []);
-
-    // ---- Variant persistence (NO RANDOMIZATION) ----
     useEffect(() => {
         // Highest precedence: explicit query param
         if (requestedVariant) {
             if (draft.variant !== requestedVariant) {
                 updateDraft({
                     variant: requestedVariant,
-                    // no_welcome implies started
                     started: requestedVariant === "no_welcome" ? true : draft.started,
                 });
             }
             return;
         }
 
-        // If draft already has a variant, keep it (session-stable)
+        // If draft already has a variant, keep it session-stable
         if (draft.variant) return;
 
-        // Else try experiment cookie; else default welcome.
+        // Else use cookie, else default welcome.
         const resolved: PPCVariant = cookieVariant ?? "welcome";
         updateDraft({
             variant: resolved,
@@ -397,7 +343,6 @@ export default function PinterestPotentialWizard({
     // Inform parent phase on mount (wizard)
     useEffect(() => {
         void onPhaseChangeAction?.("wizard");
-        // intentionally only on mount
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -408,7 +353,6 @@ export default function PinterestPotentialWizard({
             try {
                 const fromToken = await resolveLeadFromToken(qpLeadToken);
                 if (!alive) return;
-
                 if (fromToken?.email) {
                     setKnownLead(fromToken);
                     setLeadDraft((prev) => ({
@@ -427,8 +371,7 @@ export default function PinterestPotentialWizard({
         };
     }, [qpLeadToken]);
 
-    const isKnownLead = !!knownLead?.email;
-
+    // Lead gating context
     const gating = useMemo(() => {
         const requested = normalizeLeadMode(qpLeadMode) ?? normalizeLeadMode(leadMode);
         return resolveLeadGatingContext({
@@ -441,30 +384,23 @@ export default function PinterestPotentialWizard({
     const effectiveLeadMode: LeadMode = gating.lead_mode;
     const leadState = gating.lead_state;
 
-    // ---- Derived wizard values (HOOKS MUST ALWAYS RUN) ----
-    const TOTAL = 8;
+    // ---- Derived wizard values ----
     const isLastStep = stepIndex === TOTAL;
-
     const progressText = useMemo(() => `Step ${stepIndex} of ${TOTAL}`, [stepIndex]);
     const progressPct = useMemo(() => Math.round((stepIndex / TOTAL) * 100), [stepIndex]);
+    const currentErrorKey = useMemo(
+        () => getErrorKeyForStep(stepIndex, errors, resultsErrors),
+        [errors, resultsErrors, stepIndex],
+    );
 
-    const currentErrorKey = useMemo(() => getErrorKeyForStep(stepIndex, errors, resultsErrors), [errors, resultsErrors, stepIndex]);
-
-    // ✅ FIX: segment-aware step titles (Q3 + Q6)
-    const header = useMemo(() => getStepTitle(stepIndex, answers.segment as SpecSegment | undefined), [stepIndex, answers.segment]);
+    // Segment-aware headers (Q3 + Q6)
+    const header = useMemo(
+        () => getStepTitle(stepIndex, answers.segment as SpecSegment | undefined),
+        [stepIndex, answers.segment],
+    );
 
     function resetErrors() {
         setErrors({});
-    }
-
-    function fireToolStartOnce() {
-        if (hasStartedRef.current) return;
-        hasStartedRef.current = true;
-        try {
-            void onStartAction?.();
-        } catch {
-            // ignore
-        }
     }
 
     function validateStep(si: number, a: AnswersV2): Record<string, string> {
@@ -498,16 +434,26 @@ export default function PinterestPotentialWizard({
         return Object.keys(stepErrs).length === 0;
     }, [stepIndex, answers]);
 
+    /**
+     * Build spec answers while enforcing segment-dependent option validity for Q2/Q7.
+     * Invalid values become undefined so validateAnswers() fails loudly and routes user correctly.
+     */
     function buildSpecAnswers(a: AnswersV2): SpecAnswers {
         const seg = a.segment as SpecSegment | undefined;
+
+        const nicheOk =
+            !!seg && !!a.niche && getNicheOptions(seg).some((o) => o.id === (a.niche as NicheSlug));
+        const goalOk =
+            !!seg && !!a.primary_goal && getPrimaryGoalOptions(seg).some((o) => o.id === (a.primary_goal as PrimaryGoal));
+
         return {
             Q1: seg,
-            Q2: (a.niche as NicheSlug | undefined) ?? undefined,
+            Q2: nicheOk ? (a.niche as NicheSlug) : undefined,
             Q3: (a.volume_bucket as VolumeBucket | undefined) ?? undefined,
             Q4: (a.visual_strength as VisualStrength | undefined) ?? undefined,
             Q5: (a.site_experience as SiteExperience | undefined) ?? undefined,
             Q6: (a.offer_clarity as OfferClarity | undefined) ?? undefined,
-            Q7: seg ? mapGoalToSpec(seg, a.primary_goal) : undefined,
+            Q7: goalOk ? (a.primary_goal as PrimaryGoal) : undefined,
             Q8: (a.growth_mode as GrowthMode | undefined) ?? undefined,
         };
     }
@@ -515,7 +461,6 @@ export default function PinterestPotentialWizard({
     function computeAndShowResults() {
         const specAnswers = buildSpecAnswers(answersRef.current);
 
-        // Canonical validation (spec-level)
         const v = validateAnswers(specAnswers);
         if (!v.ok) {
             setResultsErrors(v.errors);
@@ -524,8 +469,8 @@ export default function PinterestPotentialWizard({
             const order: Array<keyof SpecAnswers> = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8"];
             const first = order.find((k) => v.errors[String(k)]);
             if (first) {
-                const idx = Number(String(first).slice(1)); // Q1 -> 1
-                if (idx >= 1 && idx <= 8) setStepIndex(idx);
+                const idx = Number(String(first).slice(1));
+                if (idx >= 1 && idx <= TOTAL) setStepIndex(idx);
             }
             return;
         }
@@ -539,7 +484,7 @@ export default function PinterestPotentialWizard({
             const first = order.find((k) => computed.errors[k]);
             if (first) {
                 const idx = Number(first.slice(1));
-                if (idx >= 1 && idx <= 8) setStepIndex(idx);
+                if (idx >= 1 && idx <= TOTAL) setStepIndex(idx);
             }
             return;
         }
@@ -557,10 +502,7 @@ export default function PinterestPotentialWizard({
     }
 
     function goNext(nextAnswers?: AnswersV2) {
-        console.log("goNext triggered with nextAnswers:", nextAnswers);
-        // Any manual navigation should cancel pending auto-advance.
         cancelPendingAutoAdvance();
-
         resetErrors();
 
         const currentStep = stepIndexRef.current;
@@ -573,9 +515,8 @@ export default function PinterestPotentialWizard({
             return;
         }
 
-        // Only commit if there is an actual change (prevents redundant writes / overwrites)
+        // Only commit if there is an actual change (prevents redundant overwrites)
         if (nextAnswers && !shallowEqualAnswers(baseAnswers, nextAnswers)) {
-            console.log("Updated answers in goNext:", nextAnswers);
             setAnswers(nextAnswers);
         }
 
@@ -587,55 +528,46 @@ export default function PinterestPotentialWizard({
         }
 
         setStepIndex((s) => Math.min(TOTAL, s + 1));
-        console.log("Step index updated after goNext:", stepIndex);
     }
 
     function autoAdvance(patch?: Partial<AnswersV2>) {
-        console.log("autoAdvance called with patch:", patch);
-
-        // Ignore undefined patches (some components call onAutoAdvance() with no args)
+        // Some components may call onAutoAdvance() with no args: ignore.
         if (!patch) return;
 
         const currentStepAtCall = stepIndexRef.current;
         const base = answersRef.current;
 
-        // No-op patch? Do nothing
+        // No-op patch? ignore.
         if (patchIsNoop(base, patch)) return;
 
         let next = { ...base, ...patch } as AnswersV2;
 
-        // ✅ Segment change invalidates segment-dependent answers (niche + goal)
+        // Segment change invalidates segment-dependent answers.
         if (Object.prototype.hasOwnProperty.call(patch, "segment")) {
             next = applySegmentInvalidation(base, next);
         }
 
-        // Dedupe repeated auto-advance calls for the same step+answers payload
+        // Dedupe identical emissions for same step+answers payload.
         const sig = `${currentStepAtCall}:${JSON.stringify(next)}`;
         if (lastAutoAdvanceSigRef.current === sig) return;
         lastAutoAdvanceSigRef.current = sig;
 
-        // Commit answers immediately so UI selection persists when revisiting the step.
+        // Commit answers immediately so selection persists.
         setAnswers(next);
-        console.log("Answers after auto-advance patch:", next);
 
-        // Cancel any pending auto-advance and schedule a single advance guarded by sequence.
+        // Cancel pending and schedule guarded advance.
         cancelPendingAutoAdvance();
         const seq = ++autoAdvanceSeqRef.current;
 
         autoAdvanceTimerRef.current = window.setTimeout(() => {
-            // Ignore stale timers (newer auto-advance happened) or step changed (user navigated)
-            if (seq !== autoAdvanceSeqRef.current) return;
-            if (stepIndexRef.current !== currentStepAtCall) return;
-
-            console.log("Advancing to next step after auto-advance");
+            if (seq !== autoAdvanceSeqRef.current) return; // newer auto-advance happened
+            if (stepIndexRef.current !== currentStepAtCall) return; // user navigated
             goNext(next);
         }, 140);
     }
 
     function goPrev() {
-        // Going back must cancel pending auto-advance (prevents late goNext from previous step).
         cancelPendingAutoAdvance();
-
         resetErrors();
 
         if (!started && variant === "welcome") return;
@@ -708,6 +640,7 @@ export default function PinterestPotentialWizard({
             (effectiveLeadMode === "hard_lock" && (leadSubmitted || isKnownLead));
 
         const showHardLockGate = effectiveLeadMode === "hard_lock" && leadState === "new" && !unlocked;
+        const showSoftLockGate = effectiveLeadMode === "soft_lock" && leadState === "new";
 
         const seg = (answers.segment as SpecSegment | undefined) ?? undefined;
         const nicheOpts = seg ? getNicheOptions(seg) : [];
@@ -720,14 +653,9 @@ export default function PinterestPotentialWizard({
             { label: "Visual library", value: answers.visual_strength ? answers.visual_strength.replace(/_/g, " ") : "—" },
             { label: "Website experience", value: answers.site_experience ? answers.site_experience.toUpperCase() : "—" },
             { label: "Offer clarity", value: answers.offer_clarity ? answers.offer_clarity.replace(/_/g, " ") : "—" },
-            {
-                label: "Primary goal",
-                value: seg ? valueLabelFromOptions(goalOpts, mapGoalToSpec(seg, answers.primary_goal)) : answers.primary_goal ?? "—",
-            },
+            { label: "Primary goal", value: valueLabelFromOptions(goalOpts, answers.primary_goal) },
             { label: "Ads plan", value: answers.growth_mode ? answers.growth_mode.replace(/_/g, " ") : "—" },
         ];
-
-        const showSoftLockGate = effectiveLeadMode === "soft_lock" && leadState === "new";
 
         return (
             <ResultsView
@@ -753,6 +681,7 @@ export default function PinterestPotentialWizard({
                         email: (leadDraft.email ?? "").trim(),
                         name: leadDraft.name?.trim() || undefined,
                     };
+
                     const v = validateLead(lead);
                     if (!v.ok) {
                         setErrors(v.errors);
@@ -777,6 +706,7 @@ export default function PinterestPotentialWizard({
                         setOptionalLeadEmailError("Please enter a valid email.");
                         return;
                     }
+
                     const v = validateLead({ email, name: leadDraft.name?.trim() || undefined });
                     if (!v.ok) {
                         setOptionalLeadEmailError("Please enter a valid email.");
@@ -836,7 +766,7 @@ export default function PinterestPotentialWizard({
                     onChangeAction={(v) => {
                         const prevSeg = answersRef.current.segment;
 
-                        // ✅ Repeat click = explicit confirm → advance
+                        // Repeat click = explicit confirm → advance
                         if (prevSeg === v && v) {
                             setErrors((prev) => {
                                 if (!prev["Q1"]) return prev;
@@ -844,24 +774,19 @@ export default function PinterestPotentialWizard({
                                 delete n["Q1"];
                                 return n;
                             });
-
-                            // Important: do NOT go through autoAdvance (it will noop). Just goNext.
                             goNext(answersRef.current);
                             return;
                         }
 
-                        // normal change path (+ invalidation if segment changed)
+                        // Normal change + invalidation
                         setAnswers((p) => {
                             if (p.segment === v) return p;
                             const next: AnswersV2 = { ...p, segment: v };
-                            const nextApplied = applySegmentInvalidation(p, next);
-                            return nextApplied;
+                            return applySegmentInvalidation(p, next);
                         });
 
-                        // Clear errors. If segment changed, clear Q2/Q7 too (those answers are now invalid).
+                        // Clear Q1; if segment changed, Q2/Q7 are now invalid, clear their errors too.
                         setErrors((prev) => {
-                            const hadAny = !!prev["Q1"] || (!!prevSeg && prevSeg !== v && (!!prev["Q2"] || !!prev["Q7"]));
-                            if (!hadAny) return prev;
                             const n = { ...prev };
                             delete n["Q1"];
                             if (prevSeg && prevSeg !== v) {
@@ -881,34 +806,30 @@ export default function PinterestPotentialWizard({
                         segment={answers.segment}
                         value={answers.niche}
                         onChange={(v) => {
-                            console.log("Q2Niche selected:", v);
-
                             const prev = answersRef.current.niche;
 
-                            // ✅ Repeat click = explicit confirm → advance
+                            // Repeat click confirm
                             if (prev === v && v) {
                                 setErrors((prevErrs) => {
                                     if (!prevErrs["Q2"]) return prevErrs;
-                                    const updatedErrors = { ...prevErrs };
-                                    delete updatedErrors["Q2"];
-                                    return updatedErrors;
+                                    const n = { ...prevErrs };
+                                    delete n["Q2"];
+                                    return n;
                                 });
-
                                 goNext(answersRef.current);
                                 return;
                             }
 
-                            // normal change path
                             setAnswerField("niche", v);
 
                             setErrors((prevErrs) => {
                                 if (!prevErrs["Q2"]) return prevErrs;
-                                const updatedErrors = { ...prevErrs };
-                                delete updatedErrors["Q2"];
-                                return updatedErrors;
+                                const n = { ...prevErrs };
+                                delete n["Q2"];
+                                return n;
                             });
 
-                            // Keep this (Q2Niche still calls onAutoAdvance(undefined) in some paths)
+                            // Deterministic fallback: Q2Niche has been observed calling onAutoAdvance(undefined).
                             autoAdvance({ niche: v });
                         }}
                         onAutoAdvance={autoAdvance}
@@ -926,7 +847,7 @@ export default function PinterestPotentialWizard({
                         onChange={(v) => {
                             const prev = answersRef.current.volume_bucket;
 
-                            // ✅ Repeat click = explicit confirm → advance
+                            // Repeat click confirm
                             if (prev === v && v) {
                                 setErrors((prevErrs) => {
                                     if (!prevErrs["Q3"]) return prevErrs;
@@ -934,12 +855,10 @@ export default function PinterestPotentialWizard({
                                     delete n["Q3"];
                                     return n;
                                 });
-
                                 goNext(answersRef.current);
                                 return;
                             }
 
-                            // Normal change path
                             setAnswerField("volume_bucket", v);
 
                             setErrors((prevErrs) => {
@@ -949,7 +868,7 @@ export default function PinterestPotentialWizard({
                                 return n;
                             });
 
-                            // ✅ Ensure deterministic auto-advance even if Q3Volume doesn't emit patches
+                            // Deterministic fallback if component doesn't emit patch
                             autoAdvance({ volume_bucket: v });
                         }}
                         onAutoAdvance={autoAdvance}
@@ -965,7 +884,7 @@ export default function PinterestPotentialWizard({
                     onChange={(v) => {
                         const prev = answersRef.current.visual_strength;
 
-                        // ✅ Repeat click = explicit confirm → advance
+                        // Repeat click confirm
                         if (prev === v && v) {
                             setErrors((prevErrs) => {
                                 if (!prevErrs["Q4"]) return prevErrs;
@@ -973,12 +892,10 @@ export default function PinterestPotentialWizard({
                                 delete n["Q4"];
                                 return n;
                             });
-
                             goNext(answersRef.current);
                             return;
                         }
 
-                        // Normal change path
                         setAnswerField("visual_strength", v);
 
                         setErrors((prevErrs) => {
@@ -988,7 +905,7 @@ export default function PinterestPotentialWizard({
                             return n;
                         });
 
-                        // ✅ Ensure deterministic auto-advance even if Q4Visual doesn't emit patches
+                        // Deterministic fallback if component doesn't emit patch
                         autoAdvance({ visual_strength: v });
                     }}
                     onAutoAdvance={autoAdvance}
@@ -996,12 +913,63 @@ export default function PinterestPotentialWizard({
             ) : null}
 
             {stepIndex === 5 ? (
-                <Q5Site value={answers.site_experience} onChange={(v) => setAnswerField("site_experience", v)} onAutoAdvance={autoAdvance} />
+                <Q5Site
+                    value={answers.site_experience}
+                    onChange={(v) => {
+                        const prev = answersRef.current.site_experience;
+
+                        if (prev === v && v) {
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q5"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q5"];
+                                return n;
+                            });
+                            goNext(answersRef.current);
+                            return;
+                        }
+
+                        setAnswerField("site_experience", v);
+                        setErrors((prevErrs) => {
+                            if (!prevErrs["Q5"]) return prevErrs;
+                            const n = { ...prevErrs };
+                            delete n["Q5"];
+                            return n;
+                        });
+                    }}
+                    onAutoAdvance={autoAdvance}
+                />
             ) : null}
 
             {stepIndex === 6 ? (
                 answers.segment ? (
-                    <Q6Offer segment={answers.segment} value={answers.offer_clarity} onChange={(v) => setAnswerField("offer_clarity", v)} onAutoAdvance={autoAdvance} />
+                    <Q6Offer
+                        segment={answers.segment}
+                        value={answers.offer_clarity}
+                        onChange={(v) => {
+                            const prev = answersRef.current.offer_clarity;
+
+                            if (prev === v && v) {
+                                setErrors((prevErrs) => {
+                                    if (!prevErrs["Q6"]) return prevErrs;
+                                    const n = { ...prevErrs };
+                                    delete n["Q6"];
+                                    return n;
+                                });
+                                goNext(answersRef.current);
+                                return;
+                            }
+
+                            setAnswerField("offer_clarity", v);
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q6"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q6"];
+                                return n;
+                            });
+                        }}
+                        onAutoAdvance={autoAdvance}
+                    />
                 ) : (
                     <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
                 )
@@ -1009,14 +977,65 @@ export default function PinterestPotentialWizard({
 
             {stepIndex === 7 ? (
                 answers.segment ? (
-                    <Q7Goal segment={answers.segment} value={answers.primary_goal} onChange={(v) => setAnswerField("primary_goal", v)} onAutoAdvance={autoAdvance} />
+                    <Q7Goal
+                        segment={answers.segment}
+                        value={answers.primary_goal}
+                        onChange={(v) => {
+                            const prev = answersRef.current.primary_goal;
+
+                            if (prev === v && v) {
+                                setErrors((prevErrs) => {
+                                    if (!prevErrs["Q7"]) return prevErrs;
+                                    const n = { ...prevErrs };
+                                    delete n["Q7"];
+                                    return n;
+                                });
+                                goNext(answersRef.current);
+                                return;
+                            }
+
+                            setAnswerField("primary_goal", v);
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q7"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q7"];
+                                return n;
+                            });
+                        }}
+                        onAutoAdvance={autoAdvance}
+                    />
                 ) : (
                     <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
                 )
             ) : null}
 
             {stepIndex === 8 ? (
-                <Q8GrowthMode value={answers.growth_mode} onChange={(v) => setAnswerField("growth_mode", v)} onAutoAdvance={autoAdvance} />
+                <Q8GrowthMode
+                    value={answers.growth_mode}
+                    onChange={(v) => {
+                        const prev = answersRef.current.growth_mode;
+
+                        if (prev === v && v) {
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q8"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q8"];
+                                return n;
+                            });
+                            goNext(answersRef.current);
+                            return;
+                        }
+
+                        setAnswerField("growth_mode", v);
+                        setErrors((prevErrs) => {
+                            if (!prevErrs["Q8"]) return prevErrs;
+                            const n = { ...prevErrs };
+                            delete n["Q8"];
+                            return n;
+                        });
+                    }}
+                    onAutoAdvance={autoAdvance}
+                />
             ) : null}
         </>
     );

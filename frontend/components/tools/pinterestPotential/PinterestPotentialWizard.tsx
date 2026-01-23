@@ -1,8 +1,7 @@
-// frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
 "use client";
 
 /**
- * Pinterest Potential Calculator — Wizard (v0.2 Locked)
+ * Pinterest Potential Calculator — Wizard (v0.3 Locked)
  *
  * CLEAN CONTRACT (enforced):
  * - Query params (canonical only):
@@ -19,6 +18,27 @@
  *     - Q2 niche
  *     - Q7 primary_goal
  *   - Wizard verifies Q2/Q7 are valid for the selected segment; otherwise treated as missing.
+ *
+ * RESULTS CONTRACT (v1.1 — sessions-based):
+ * - computeResults() returns ResultsBundle with:
+ *   - demand:
+ *       - demand_base_sessions_est
+ *       - distribution_capacity_m
+ *       - conversion_readiness_m
+ *       - likely_pinterest_sessions_est
+ *   - segment_outcome:
+ *       - content_creator: monthly_pinterest_sessions_est
+ *       - product_seller:
+ *           monthly_pinterest_sessions_est
+ *           monthly_purchase_intent_sessions_est
+ *           revenue_by_aov_est
+ *           assumptions
+ *       - service_provider:
+ *           monthly_discovery_calls_est
+ *           assumptions
+ *   - demographics: household_income_usd (+ notes)
+ *   - inferred: seasonality_index, competition_index, tags
+ *   - insight_line
  *
  * RUNTIME GUARDRAILS (kept from locked version):
  * - Hydration gate to prevent SSR/client mismatch.
@@ -112,12 +132,6 @@ function readVariantCookie(): PPCVariant | undefined {
 
 function formatRange(low: number, high: number): string {
     return `${low.toLocaleString()}–${high.toLocaleString()}`;
-}
-
-function opportunityLabel(type: ResultsBundle["opportunity_est"]["type"]): string {
-    if (type === "traffic") return "Monthly traffic opportunity";
-    if (type === "revenue") return "Monthly revenue opportunity";
-    return "Monthly lead opportunity";
 }
 
 function segmentLabel(seg?: SpecSegment): string {
@@ -441,10 +455,11 @@ export default function PinterestPotentialWizard({
     function buildSpecAnswers(a: AnswersV2): SpecAnswers {
         const seg = a.segment as SpecSegment | undefined;
 
-        const nicheOk =
-            !!seg && !!a.niche && getNicheOptions(seg).some((o) => o.id === (a.niche as NicheSlug));
+        const nicheOk = !!seg && !!a.niche && getNicheOptions(seg).some((o) => o.id === (a.niche as NicheSlug));
         const goalOk =
-            !!seg && !!a.primary_goal && getPrimaryGoalOptions(seg).some((o) => o.id === (a.primary_goal as PrimaryGoal));
+            !!seg &&
+            !!a.primary_goal &&
+            getPrimaryGoalOptions(seg).some((o) => o.id === (a.primary_goal as PrimaryGoal));
 
         return {
             Q1: seg,
@@ -634,6 +649,16 @@ export default function PinterestPotentialWizard({
     // Results view
     // -----------------------------
     if (results) {
+        // ---- Compile-time contract asserts (prevents silent drift) ----
+        // If compute.ts changes these keys, this file should fail to typecheck.
+        const _demandKeys = {
+            demand_base_sessions_est: true,
+            distribution_capacity_m: true,
+            conversion_readiness_m: true,
+            likely_pinterest_sessions_est: true,
+        } satisfies Record<keyof ResultsBundle["demand"], true>;
+        void _demandKeys;
+
         const unlocked =
             leadState === "known" ||
             effectiveLeadMode === "soft_lock" ||
@@ -657,13 +682,66 @@ export default function PinterestPotentialWizard({
             { label: "Ads plan", value: answers.growth_mode ? answers.growth_mode.replace(/_/g, " ") : "—" },
         ];
 
+        // v1.1 headline labels (sessions-based)
+        const demandBaseSessionsRangeLabel = formatRange(
+            results.demand.demand_base_sessions_est.low,
+            results.demand.demand_base_sessions_est.high,
+        );
+
+        const likelySessionsRangeLabel = formatRange(
+            results.demand.likely_pinterest_sessions_est.low,
+            results.demand.likely_pinterest_sessions_est.high,
+        );
+
+        const distributionCapacityLabel = `${results.demand.distribution_capacity_m.toFixed(2)}×`;
+
+        const incomeRangeLabel = formatRange(
+            results.demographics.household_income_usd.low,
+            results.demographics.household_income_usd.high,
+        );
+
+        // Segment outcome headline
+        const outcome = results.segment_outcome;
+        let primaryOutcomeLabel: string;
+        let primaryOutcomeRangeLabel: string;
+        let purchaseIntentRangeLabel: string | undefined = undefined;
+
+        if (outcome.kind === "content_creator") {
+            primaryOutcomeLabel = "Monthly Pinterest sessions";
+            primaryOutcomeRangeLabel = formatRange(
+                outcome.monthly_pinterest_sessions_est.low,
+                outcome.monthly_pinterest_sessions_est.high,
+            );
+        } else if (outcome.kind === "service_provider") {
+            primaryOutcomeLabel = "Monthly discovery calls";
+            primaryOutcomeRangeLabel = formatRange(
+                outcome.monthly_discovery_calls_est.low,
+                outcome.monthly_discovery_calls_est.high,
+            );
+        } else {
+            // product_seller
+            primaryOutcomeLabel = "Monthly Pinterest sessions";
+            primaryOutcomeRangeLabel = formatRange(
+                outcome.monthly_pinterest_sessions_est.low,
+                outcome.monthly_pinterest_sessions_est.high,
+            );
+            purchaseIntentRangeLabel = formatRange(
+                outcome.monthly_purchase_intent_sessions_est.low,
+                outcome.monthly_purchase_intent_sessions_est.high,
+            );
+        }
+
         return (
             <ResultsView
                 results={results}
-                audienceRangeLabel={formatRange(results.audience_est.low, results.audience_est.high)}
-                opportunityLabel={opportunityLabel(results.opportunity_est.type)}
-                opportunityRangeLabel={formatRange(results.opportunity_est.low, results.opportunity_est.high)}
-                incomeRangeLabel={formatRange(results.income_est.low, results.income_est.high)}
+                demandBaseSessionsRangeLabel={demandBaseSessionsRangeLabel}
+                likelySessionsRangeLabel={likelySessionsRangeLabel}
+                distributionCapacityLabel={distributionCapacityLabel}
+                primaryOutcomeLabel={primaryOutcomeLabel}
+                primaryOutcomeRangeLabel={primaryOutcomeRangeLabel}
+                purchaseIntentRangeLabel={purchaseIntentRangeLabel}
+                incomeRangeLabel={incomeRangeLabel}
+                insightLine={results.insight_line ?? null}
                 showHardLockGate={showHardLockGate}
                 showSoftLockGate={showSoftLockGate}
                 privacyMicrocopy={PRIVACY_MICROCOPY}

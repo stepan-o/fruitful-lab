@@ -1,88 +1,64 @@
 // frontend/lib/tools/pinterestPotential/compute.ts
 /**
- * v0.3 (Locked) — Canonical compute engine (config-driven, range outputs)
+ * v1.1 (Locked) — Canonical compute engine (config-driven, range outputs)
  *
- * NEW RESULTS CONTRACT (no backwards compatibility):
+ * NEW CONTRACT (NO BACKWARDS COMPATIBILITY):
  *
- * 1) Demand (macro + micro + final)
- *    - addressable_niche_demand_est (MACRO):
- *        Comes directly from benchmarks.ts (segment+niche slice of the US+CA “practical ceiling”).
- *        IMPORTANT: no execution multipliers are applied to this number.
+ * 1) Demand is modeled in SESSIONS (not users).
+ *    - demand_base_sessions_est (MACRO):
+ *        Comes directly from benchmarks.ts (segment+niche slice of US+CA demand).
+ *        No execution multipliers are applied to this number.
  *
  *    - distribution_capacity_m (MICRO):
- *        A single multiplier derived from Q3–Q8 + inferred indices (seasonality/competition),
- *        using multipliers.ts as the only tuning surface.
+ *        A single multiplier derived from Q3/Q4/Q8 + inferred indices (seasonality/competition)
+ *        + optional goal micro-adjust (explicitly keyed; no defaults).
  *
- *    - likely_slice_of_niche_demand_est (FINAL):
- *        addressable_niche_demand_est * distribution_capacity_m
+ *    - likely_pinterest_sessions_est (FINAL):
+ *        demand_base_sessions_est * distribution_capacity_m
  *
- * 2) Segment outcome (more concrete language)
- *    - content_creator: Monthly Pinterest sessions range
- *    - product_seller: Monthly Pinterest sessions + purchase-intent visitors + revenue potential by AOV bucket
- *    - service_provider: Monthly discovery calls range
+ * 2) Post-click outcomes use a separate micro layer:
+ *    - conversion_readiness_m (MICRO):
+ *        Derived from Q5/Q6 (site experience + offer clarity).
  *
- * 3) Demographic context (non-niche-specific)
- *    - We keep this benchmark-driven (benchmarks.ts can set it globally or per-row identically).
+ * 3) Segment outcomes:
+ *    - content_creator: monthly Pinterest sessions range
+ *    - product_seller: monthly sessions + purchase-intent sessions + revenue potential by AOV bucket
+ *    - service_provider: monthly discovery calls range (from sessions * booking-rate * conversion readiness)
  *
- * Notes:
- * - No “safety harness” (no softening, no clamps). The tables must be compute-safe.
- * - We still fail-loud on missing/invalid config, because that’s not a “harness”—it’s correctness.
- * - Inferred seasonality/competition come from benchmark row (not asked).
- * - Lead gating is NOT handled here (compute must work pre-email).
+ * Hard rules:
+ * - 0 fallbacks, 0 defaults, 0 optional imports.
+ * - Missing config must fail immediately (compile-time preferred; runtime only for dynamic keys).
+ * - Lead gating is NOT handled here.
  */
 
 import type { Answers } from "./pinterestPotentialSpec";
 import { validateAnswers } from "./pinterestPotentialSpec";
-import { getBenchmark, type Range } from "./benchmarks";
+import type { GoalKey } from "./pinterestPotentialSpec";
+import { getBenchmark, type Range, type IndexLevel } from "./benchmarks";
 import { buildInsightFromBenchmark } from "./insight";
 
-// Import multipliers as a namespace so we can read optional exports without compile breaks.
-import * as M from "./multipliers";
-
-/** 0–1 range (probabilities/shares). */
-export type Range01 = { low: number; high: number };
-
-/** AOV buckets used for “Revenue potential” display. */
-export type AovBucket = "lt_50" | "50_100" | "100_250" | "250_plus";
-
-/**
- * Canonical AOV bucket metadata (dollars).
- * If multipliers.ts exports AOV_BUCKETS, we’ll prefer that.
- * Otherwise, we fall back to this (kept identical to our expected UI buckets).
- */
-const DEFAULT_AOV_BUCKETS: Array<{ id: AovBucket; label: string; low: number; high: number }> = [
-    { id: "lt_50", label: "<$50", low: 25, high: 50 },
-    { id: "50_100", label: "$50–$100", low: 50, high: 100 },
-    { id: "100_250", label: "$100–$250", low: 100, high: 250 },
-    { id: "250_plus", label: "$250+", low: 250, high: 500 },
-];
-
-/**
- * Purchase-intent visitors is a subset of sessions.
- * Keep conservative by default; you can tune in multipliers.ts later.
- */
-const DEFAULT_PURCHASE_INTENT_SHARE: Range01 = { low: 0.20, high: 0.45 };
-
-/**
- * E-commerce conversion rate by AOV bucket (probability).
- * Defaults are intentionally conservative; tune in multipliers.ts.
- */
-const DEFAULT_ECOM_CONVERSION_RATE_BY_AOV: Record<AovBucket, Range01> = {
-    lt_50: { low: 0.015, high: 0.035 }, // 1.5%–3.5%
-    "50_100": { low: 0.012, high: 0.03 }, // 1.2%–3.0%
-    "100_250": { low: 0.008, high: 0.022 }, // 0.8%–2.2%
-    "250_plus": { low: 0.004, high: 0.015 }, // 0.4%–1.5%
-};
+import {
+    AOV_BUCKETS,
+    DISCOVERY_CALL_BOOK_RATE_FROM_SESSIONS,
+    ECOM_CONVERSION_RATE_BY_AOV,
+    MULTIPLIERS,
+    PURCHASE_INTENT_SHARE_OF_SESSIONS,
+    type AovBucket,
+    type Range01,
+} from "./multipliers";
 
 export type DemandBundle = {
-    /** Macro: niche demand slice (no execution applied). */
-    addressable_niche_demand_est: Range;
+    /** Macro: niche demand slice in SESSIONS/month (no execution applied). */
+    demand_base_sessions_est: Range;
 
-    /** Micro: execution/distribution capacity derived from Q3–Q8 + inferred indices. */
+    /** Micro: execution/distribution capacity derived from Q3/Q4/Q8 + inferred indices + goal micro-adjust. */
     distribution_capacity_m: number;
 
-    /** Final: your likely slice of niche demand (macro * micro). */
-    likely_slice_of_niche_demand_est: Range;
+    /** Micro: post-click readiness derived from Q5/Q6. */
+    conversion_readiness_m: number;
+
+    /** Final: your likely Pinterest sessions (macro * distribution capacity). */
+    likely_pinterest_sessions_est: Range;
 };
 
 export type SegmentOutcome =
@@ -93,23 +69,28 @@ export type SegmentOutcome =
     | {
     kind: "service_provider";
     monthly_discovery_calls_est: Range;
+    assumptions: {
+        call_book_rate_from_sessions: Range01;
+        conversion_readiness_m: number;
+    };
 }
     | {
     kind: "product_seller";
     monthly_pinterest_sessions_est: Range;
-    monthly_purchase_intent_visitors_est: Range;
+    monthly_purchase_intent_sessions_est: Range;
 
     /**
      * Revenue potential by AOV bucket:
-     * purchase_intent_visitors * CR_by_AOV * AOV_range
+     * purchase_intent_sessions * ecommerce_cr_by_aov * conversion_readiness_m * aov_range
      */
     revenue_by_aov_est: Record<AovBucket, Range>;
 
     /** Assumptions surfaced for explainability on the results page. */
     assumptions: {
-        purchase_intent_share: Range01;
+        purchase_intent_share_of_sessions: Range01;
         ecommerce_cr_by_aov: Record<AovBucket, Range01>;
-        aov_buckets: Array<{ id: AovBucket; label: string; low: number; high: number }>;
+        aov_buckets: ReadonlyArray<{ id: AovBucket; label: string; low: number; high: number }>;
+        conversion_readiness_m: number;
     };
 };
 
@@ -118,9 +99,8 @@ export type ResultsBundle = {
 
     segment_outcome: SegmentOutcome;
 
-    /** Non-niche-specific demographic context (kept benchmark-driven). */
+    /** Non-niche-specific demographic context (benchmark-driven). */
     demographics: {
-        /** Annual household income (USD) context. */
         household_income_usd: Range;
         notes?: string[];
     };
@@ -154,6 +134,10 @@ function applyRate(r: Range, rate: Range01): Range {
     return { low: roundInt(r.low * rate.low), high: roundInt(r.high * rate.high) };
 }
 
+function applyRateAndScalar(r: Range, rate: Range01, scalar: number): Range {
+    return { low: roundInt(r.low * rate.low * scalar), high: roundInt(r.high * rate.high * scalar) };
+}
+
 function mustFiniteNumber(v: unknown, label: string): number {
     if (typeof v !== "number" || !Number.isFinite(v)) {
         throw new Error(`Compute config error: ${label} must be a finite number, got ${String(v)}`);
@@ -166,60 +150,49 @@ function mulAll(values: Array<{ v: unknown; label: string }>): number {
 }
 
 // -----------------------------
-// Optional config sourced from multipliers.ts
+// Core multiplier logic (NO CLAMPS / NO DEFAULTS)
 // -----------------------------
 
-const MULTIPLIERS = (M as any).MULTIPLIERS as {
-    volume_bucket: Record<string, number>;
-    visual_strength: Record<string, number>;
-    site_experience: Record<string, number>;
-    offer_clarity: Record<string, number>;
-    growth_mode: Record<string, number>;
-    seasonality: Record<string, number>;
-    competition: Record<string, number>;
-    goal_micro_adjust?: Record<string, number>;
-};
-
-// Prefer exports if present; otherwise use defaults.
-const AOV_BUCKETS: Array<{ id: AovBucket; label: string; low: number; high: number }> =
-    ((M as any).AOV_BUCKETS as any) ?? DEFAULT_AOV_BUCKETS;
-
-const PURCHASE_INTENT_VISITOR_SHARE: Range01 =
-    ((M as any).PURCHASE_INTENT_VISITOR_SHARE as any) ??
-    ((M as any).PURCHASE_INTENT_SHARE as any) ??
-    DEFAULT_PURCHASE_INTENT_SHARE;
-
-const ECOM_CONVERSION_RATE_BY_AOV: Record<AovBucket, Range01> =
-    ((M as any).ECOM_CONVERSION_RATE_BY_AOV as any) ?? DEFAULT_ECOM_CONVERSION_RATE_BY_AOV;
-
-// -----------------------------
-// Core multiplier logic (no clamps)
-// -----------------------------
+function mustGoalKey(a: Required<Answers>): GoalKey {
+    const k = `${a.Q1}:${a.Q7}` as GoalKey;
+    // Fail loud if spec and multipliers diverge.
+    if (!(k in MULTIPLIERS.goal_micro_adjust)) {
+        throw new Error(`Missing goal micro-adjust for key "${k}"`);
+    }
+    return k;
+}
 
 /**
  * distribution_capacity_m (MICRO)
- * We intentionally treat Q3–Q8 + inferred indices as the execution/distribution capacity layer.
- * This is the “what you can realistically capture” layer applied to:
- * - your likely slice of niche demand
- * - sessions/calls (and downstream purchase-intent + revenue for product sellers)
- *
- * IMPORTANT: Because we removed clamping/softening, multipliers.ts must be compute-safe:
- * - ideally these are <= 1.0 if you want “slice of demand” semantics strictly
- * - or, if you allow > 1.0, you are implicitly saying “baseline benchmark is conservative”
+ * - Q3 (volume) * Q4 (visual strength) * Q8 (growth mode)
+ * - lightly adjusted by inferred indices (seasonality/competition)
+ * - optionally adjusted by goal_micro_adjust (explicit keys only)
  */
-function computeDistributionCapacityMultiplier(a: Required<Answers>, inferred: { seasonality: string; competition: string }): number {
-    const goalKey = `${a.Q1}:${a.Q7}`;
-    const goalMicroRaw = (MULTIPLIERS.goal_micro_adjust && MULTIPLIERS.goal_micro_adjust[goalKey]) ?? 1.0;
+function computeDistributionCapacityMultiplier(
+    a: Required<Answers>,
+    inferred: { seasonality: IndexLevel; competition: IndexLevel }
+): number {
+    const goalKey = mustGoalKey(a);
+    const goalMicro = MULTIPLIERS.goal_micro_adjust[goalKey];
 
     return mulAll([
         { v: MULTIPLIERS.volume_bucket[a.Q3], label: `MULTIPLIERS.volume_bucket[${a.Q3}]` },
         { v: MULTIPLIERS.visual_strength[a.Q4], label: `MULTIPLIERS.visual_strength[${a.Q4}]` },
-        { v: MULTIPLIERS.site_experience[a.Q5], label: `MULTIPLIERS.site_experience[${a.Q5}]` },
-        { v: MULTIPLIERS.offer_clarity[a.Q6], label: `MULTIPLIERS.offer_clarity[${a.Q6}]` },
         { v: MULTIPLIERS.growth_mode[a.Q8], label: `MULTIPLIERS.growth_mode[${a.Q8}]` },
         { v: MULTIPLIERS.seasonality[inferred.seasonality], label: `MULTIPLIERS.seasonality[${inferred.seasonality}]` },
         { v: MULTIPLIERS.competition[inferred.competition], label: `MULTIPLIERS.competition[${inferred.competition}]` },
-        { v: goalMicroRaw, label: `MULTIPLIERS.goal_micro_adjust[${goalKey}]` },
+        { v: goalMicro, label: `MULTIPLIERS.goal_micro_adjust[${goalKey}]` },
+    ]);
+}
+
+/**
+ * conversion_readiness_m (MICRO)
+ * - Q5 (site experience) * Q6 (offer clarity)
+ */
+function computeConversionReadinessMultiplier(a: Required<Answers>): number {
+    return mulAll([
+        { v: MULTIPLIERS.site_experience[a.Q5], label: `MULTIPLIERS.site_experience[${a.Q5}]` },
+        { v: MULTIPLIERS.offer_clarity[a.Q6], label: `MULTIPLIERS.offer_clarity[${a.Q6}]` },
     ]);
 }
 
@@ -228,21 +201,20 @@ function computeDistributionCapacityMultiplier(a: Required<Answers>, inferred: {
 // -----------------------------
 
 function computeRevenueByAov(
-    purchaseIntentVisitors: Range,
-    crByAov: Record<AovBucket, Range01>,
-    aovBuckets: Array<{ id: AovBucket; label: string; low: number; high: number }>
+    purchaseIntentSessions: Range,
+    conversionReadinessM: number
 ): Record<AovBucket, Range> {
     const out = {} as Record<AovBucket, Range>;
 
-    for (const bucket of aovBuckets) {
+    for (const bucket of AOV_BUCKETS) {
         const id = bucket.id;
-        const cr = crByAov[id];
+        const cr = ECOM_CONVERSION_RATE_BY_AOV[id];
 
-        // Low = low visitors * low CR * low AOV
-        const low = purchaseIntentVisitors.low * cr.low * bucket.low;
+        // Low = low sessions * low CR * conversion readiness * low AOV
+        const low = purchaseIntentSessions.low * cr.low * conversionReadinessM * bucket.low;
 
-        // High = high visitors * high CR * high AOV
-        const high = purchaseIntentVisitors.high * cr.high * bucket.high;
+        // High = high sessions * high CR * conversion readiness * high AOV
+        const high = purchaseIntentSessions.high * cr.high * conversionReadinessM * bucket.high;
 
         out[id] = { low: roundInt(low), high: roundInt(high) };
     }
@@ -254,12 +226,6 @@ function computeRevenueByAov(
 // Public API
 // -----------------------------
 
-/**
- * Canonical compute (no lead required; lead gating handled by UI/flow).
- * - Validates answers per spec
- * - Applies benchmark (macro) + execution (micro)
- * - Returns new results bundle (v0.3 contract)
- */
 export function computeResults(answers: Answers): ComputeResult {
     const v = validateAnswers(answers);
     if (!v.ok) return { ok: false, errors: v.errors };
@@ -273,88 +239,64 @@ export function computeResults(answers: Answers): ComputeResult {
     };
 
     const distribution_capacity_m = computeDistributionCapacityMultiplier(a, inferred);
+    const conversion_readiness_m = computeConversionReadinessMultiplier(a);
 
     // -----------------------------
-    // 1) Demand (macro + micro + final)
+    // 1) Demand (macro + micro + final) — SESSIONS
     // -----------------------------
-    const addressable_niche_demand_est: Range = row.audience_base;
-    const likely_slice_of_niche_demand_est: Range = applyRange(addressable_niche_demand_est, distribution_capacity_m);
+    const demand_base_sessions_est: Range = row.demand_base_sessions;
+    const likely_pinterest_sessions_est: Range = applyRange(demand_base_sessions_est, distribution_capacity_m);
 
     // -----------------------------
-    // 2) Segment outcome (sessions / calls / revenue)
-    // Benchmarks provide the base “monthly outcome” range for the segment+niche.
-    // We apply the same micro multiplier to reflect execution capacity.
+    // 2) Segment outcomes
     // -----------------------------
-
-    // Runtime contract checks without type fights:
-    const benchOppType = row.opportunity.type as unknown;
-
     let segment_outcome: SegmentOutcome;
 
     if (a.Q1 === "content_creator") {
-        if (benchOppType !== "sessions") {
-            throw new Error(
-                `Benchmark contract mismatch: content_creator expects opportunity.type="sessions", got "${String(
-                    row.opportunity.type
-                )}"`
-            );
-        }
-
-        const baseSessions: Range = { low: row.opportunity.low, high: row.opportunity.high };
         segment_outcome = {
             kind: "content_creator",
-            monthly_pinterest_sessions_est: applyRange(baseSessions, distribution_capacity_m),
+            monthly_pinterest_sessions_est: likely_pinterest_sessions_est,
         };
-    } else if (a.Q1 === "service_provider") {
-        if (benchOppType !== "calls") {
-            throw new Error(
-                `Benchmark contract mismatch: service_provider expects opportunity.type="calls", got "${String(
-                    row.opportunity.type
-                )}"`
-            );
-        }
-
-        const baseCalls: Range = { low: row.opportunity.low, high: row.opportunity.high };
-        segment_outcome = {
-            kind: "service_provider",
-            monthly_discovery_calls_est: applyRange(baseCalls, distribution_capacity_m),
-        };
-    } else {
-        // product_seller
-        if (benchOppType !== "sessions") {
-            throw new Error(
-                `Benchmark contract mismatch: product_seller expects opportunity.type="sessions", got "${String(
-                    row.opportunity.type
-                )}"`
-            );
-        }
-
-        const baseSessions: Range = { low: row.opportunity.low, high: row.opportunity.high };
-        const monthly_pinterest_sessions_est = applyRange(baseSessions, distribution_capacity_m);
-
-        const monthly_purchase_intent_visitors_est = applyRate(monthly_pinterest_sessions_est, PURCHASE_INTENT_VISITOR_SHARE);
-
-        const revenue_by_aov_est = computeRevenueByAov(
-            monthly_purchase_intent_visitors_est,
-            ECOM_CONVERSION_RATE_BY_AOV,
-            AOV_BUCKETS
+    } else if (a.Q1 === "product_seller") {
+        const monthly_purchase_intent_sessions_est = applyRate(
+            likely_pinterest_sessions_est,
+            PURCHASE_INTENT_SHARE_OF_SESSIONS
         );
+
+        const revenue_by_aov_est = computeRevenueByAov(monthly_purchase_intent_sessions_est, conversion_readiness_m);
 
         segment_outcome = {
             kind: "product_seller",
-            monthly_pinterest_sessions_est,
-            monthly_purchase_intent_visitors_est,
+            monthly_pinterest_sessions_est: likely_pinterest_sessions_est,
+            monthly_purchase_intent_sessions_est,
             revenue_by_aov_est,
             assumptions: {
-                purchase_intent_share: PURCHASE_INTENT_VISITOR_SHARE,
+                purchase_intent_share_of_sessions: PURCHASE_INTENT_SHARE_OF_SESSIONS,
                 ecommerce_cr_by_aov: ECOM_CONVERSION_RATE_BY_AOV,
                 aov_buckets: AOV_BUCKETS,
+                conversion_readiness_m,
+            },
+        };
+    } else {
+        // service_provider
+        const monthly_discovery_calls_est = applyRateAndScalar(
+            likely_pinterest_sessions_est,
+            DISCOVERY_CALL_BOOK_RATE_FROM_SESSIONS,
+            conversion_readiness_m
+        );
+
+        segment_outcome = {
+            kind: "service_provider",
+            monthly_discovery_calls_est,
+            assumptions: {
+                call_book_rate_from_sessions: DISCOVERY_CALL_BOOK_RATE_FROM_SESSIONS,
+                conversion_readiness_m,
             },
         };
     }
 
     // -----------------------------
-    // 3) Demographic context (kept benchmark-driven)
+    // 3) Demographic context (benchmark-driven)
     // -----------------------------
     const demographics = {
         household_income_usd: row.income,
@@ -368,9 +310,10 @@ export function computeResults(answers: Answers): ComputeResult {
         ok: true,
         results: {
             demand: {
-                addressable_niche_demand_est,
+                demand_base_sessions_est,
                 distribution_capacity_m,
-                likely_slice_of_niche_demand_est,
+                conversion_readiness_m,
+                likely_pinterest_sessions_est,
             },
             segment_outcome,
             demographics,
@@ -384,10 +327,6 @@ export function computeResults(answers: Answers): ComputeResult {
     };
 }
 
-/**
- * Convenience: throws on invalid answers (useful for UI that already step-validates).
- * Prefer `computeResults()` when you want explicit errors.
- */
 export function computeResultsUnsafe(answers: Answers): ResultsBundle {
     const r = computeResults(answers);
     if (!r.ok) throw new Error(`Invalid answers: ${JSON.stringify(r.errors)}`);

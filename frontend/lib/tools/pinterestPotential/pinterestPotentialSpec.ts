@@ -1,17 +1,19 @@
 // frontend/lib/tools/pinterestPotential/pinterestPotentialSpec.ts
 /**
- * Fruitful Lab — Pinterest Potential Calculator (v0.2 Locked)
+ * Fruitful Lab — Pinterest Potential Calculator (v1.1 Locked)
  * Canonical spec: Questions (Q1–Q8), answer types, copy maps, option sets, and validation.
  *
- * v0.2 changes (breaking, no draft/back-compat):
- * - Flow is now 8 questions total (Q1–Q8), generalized beyond baby/family.
- * - Answers are stored as stable string slugs (not numeric weights).
- * - Q2 (niche), Q6 (offer prompt), and Q7 (goals) are segment-dependent.
- * - Lead gating is no longer a "question" in the spec; it's a flow capability.
+ * v1.1 contract alignment (breaking; NO back-compat):
+ * - Flow remains 8 questions (Q1–Q8).
+ * - Answers are stable string slugs (not numeric weights).
+ * - Q2 (niche) + Q7 (goals) are segment-dependent (validated against canonical option sets).
+ * - Lead gating is NOT a "question" in the spec; it's a flow capability.
+ * - Results model is sessions-based (demand modeled as sessions, not users) — compute/config enforce this,
+ *   spec remains the schema + validation surface only.
  *
  * NOTE:
  * - Compute is config-driven and lives in compute.ts + benchmarks/multipliers configs.
- * - UI enrichment (badges, includes, keywords, icons, "popular" derivations) MUST live in the spec→UI adapter.
+ * - UI enrichment (badges, includes, keywords, icons, "popular" derivations) MUST live in spec→UI adapters.
  * - This file defines only: schema + copy + option sets + validation.
  */
 
@@ -39,23 +41,23 @@ export type OfferClarity = "no" | "somewhat" | "yes";
 export type GrowthMode = "organic" | "later" | "ads";
 
 /**
- * Goals are segment-specific but stored in one union.
- * Keep these stable; telemetry and compute config will key on them.
+ * Goals are segment-specific but stored as stable slugs.
+ * These MUST remain stable: telemetry, multipliers goal-keys, and email sequencing depend on them.
  */
-export type PrimaryGoal =
-// Content creator goals
-    | "traffic"
-    | "email_subscribers"
-    | "affiliate_revenue"
-    | "course_product_sales"
-    // Product seller goals
-    | "sales"
-    | "retargeting_pool"
-    | "new_customer_discovery"
-    // Service provider goals
-    | "leads_calls"
-    | "webinar_signups"
-    | "authority_visibility";
+export type ContentCreatorGoal = "traffic" | "email_subscribers" | "affiliate_revenue" | "course_product_sales";
+export type ProductSellerGoal = "sales" | "retargeting_pool" | "new_customer_discovery" | "email_subscribers";
+export type ServiceProviderGoal = "leads_calls" | "webinar_signups" | "authority_visibility" | "email_subscribers";
+
+export type PrimaryGoal = ContentCreatorGoal | ProductSellerGoal | ServiceProviderGoal;
+
+/**
+ * Useful for config surfaces that key off segment+goal.
+ * (Compute currently enforces these keys via multipliers.ts.)
+ */
+export type GoalKey =
+    | `content_creator:${ContentCreatorGoal}`
+    | `product_seller:${ProductSellerGoal}`
+    | `service_provider:${ServiceProviderGoal}`;
 
 export type Answers = {
     Q1?: Segment;
@@ -74,7 +76,7 @@ export type Answers = {
 
 export type Lead = {
     email: string;
-    name?: string; // optional in v0.2
+    name?: string;
 };
 
 export type ValidationResult = {
@@ -111,7 +113,7 @@ export type SingleSelectQuestion<T extends string> = BaseQuestion & {
 export type DynamicSingleSelectQuestion<T extends string = string> = BaseQuestion & {
     /**
      * Options depend on segment. UI should call getOptions(segment).
-     * Validation will also use this.
+     * Validation will also use this canonical set.
      */
     type: "dynamic_single_select";
     getOptions: (segment: Segment) => Array<Option<T>>;
@@ -129,7 +131,7 @@ export type Question =
 
 // -------------------------------------
 // Q2: Niche sets (segment-specific)
-// (IMPORTANT: This is canonical. UI meta belongs in nicheUiAdapter.ts)
+// (IMPORTANT: This is canonical. UI meta belongs in adapters.)
 // -------------------------------------
 
 export type ContentCreatorNiche =
@@ -243,7 +245,7 @@ export function getPrimaryGoalOptions(segment: Segment): Array<Option<PrimaryGoa
 }
 
 // -------------------------------------
-// Segment-dependent prompts (Q3/Q6) — copy helpers
+// Segment-dependent prompts (copy helpers)
 // -------------------------------------
 
 export function getQ3Prompt(segment: Segment): string {
@@ -326,12 +328,14 @@ export const Q5: SingleSelectQuestion<SiteExperience> = {
     ],
 };
 
+/**
+ * Q6 options are constant; prompt copy may be displayed segment-specifically via getQ6Prompt(segment).
+ * We keep it as dynamic_single_select so the UI can stay uniform for segment-dependent copy.
+ */
 export const Q6: DynamicSingleSelectQuestion<OfferClarity> = {
     id: "Q6",
     type: "dynamic_single_select",
-    // FIX: use the actual question string so the wizard's step title matches the UI
-    // (UI can still choose to display segment-specific prompt via getQ6Prompt(segment) if desired.)
-    prompt: "Do you have a clear offer + booking flow?",
+    prompt: "Do you have a clear offer?",
     required: true,
     getOptions: (_segment: Segment) => [
         { id: "no", label: "No" },
@@ -406,7 +410,7 @@ export function isNicheForSegment(segment: Segment, niche: unknown): niche is Ni
 }
 
 /**
- * Full-form validation (v0.2).
+ * Full-form validation (locked).
  * Wizard may also validate per-step; this is the canonical "all required present" validator.
  */
 export function validateAnswers(answers: Answers): ValidationResult {
@@ -454,12 +458,11 @@ export function validateAnswers(answers: Answers): ValidationResult {
 /**
  * Lead validation for submission.
  * - Email is required if the user is submitting the lead form (hard lock or soft lock "email me results").
- * - Name is optional in v0.2.
+ * - Name is optional.
  */
 export function validateLead(lead: Lead): ValidationResult {
     const errors: Record<string, string> = {};
     if (!lead.email || !validateEmail(lead.email)) errors["LEAD.email"] = "A valid email is required.";
-    // name optional; validate only if present but blank-ish
     if (lead.name !== undefined && !lead.name.trim()) errors["LEAD.name"] = "Name cannot be empty.";
     return { ok: Object.keys(errors).length === 0, errors };
 }

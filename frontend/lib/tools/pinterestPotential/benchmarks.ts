@@ -1,21 +1,26 @@
 // frontend/lib/tools/pinterestPotential/benchmarks.ts
 /**
- * v1.0 (Locked) — Benchmarks (segment + niche)
- * Source of truth for:
- * - audience_base (range)
+ * v1.1 (Locked) — Benchmarks (segment + niche) — NEW CONTRACT
+ *
+ * ✅ Source of truth for:
+ * - demand_base_sessions (range; MACRO)  ← canonical “demand” unit is SESSIONS (NOT users)
  * - income (range)
- * - opportunity (range; type depends on segment)
  * - inferred indices (seasonality + competition) + optional notes/tags
  *
- * NOTE: Numbers are intentionally “range-y” and tunable.
- * Keep these as a config surface, not hard-coded in compute.
+ * ❌ Removed (no backwards compatibility):
+ * - audience_base
+ * - opportunity (and OpportunityType)
+ *
+ * NOTE:
+ * - Numbers are intentionally “range-y” and tunable.
+ * - Keep these as a config surface, not hard-coded in compute.
+ * - This module must fail-loud on invalid config (no soft fallbacks).
  *
  * ---------------------------------------------------------------------
- * Audience model (US & Canada only) — UPDATED (2026-01-22)
+ * Demand model (US & Canada only) — UPDATED (2026-01-22)
  * ---------------------------------------------------------------------
- * We previously used “big” audience ranges (millions) as a loose proxy for niche size.
- * For this calculator, we’re now grounding audience_base in a *quotable platform ceiling*
- * and applying explicit “reality” discounts.
+ * We anchor a *macro monthly session pool* from a quotable platform ceiling (MAU),
+ * then apply conservative “reality” discounts and wide, tunable penetration ranges.
  *
  * 1) Platform ceiling (quotable)
  *    - Pinterest Investor Relations (Q1 2025): Avg. US & Canada MAU = 102M
@@ -23,74 +28,43 @@
  *    - Cross-check: Pinterest Q4 2024 results (SEC/8-K): US & Canada MAU ~101M
  *      https://www.sec.gov/Archives/edgar/data/1506293/000150629325000022/pins-20241231.htm
  *
- * 2) Practical reach discount (conservative “non-major publisher” territory)
+ * 2) Practical session pool discount (conservative “non-major publisher” territory)
  *    - We treat MAU as a “ceiling” that includes very light/rare activity.
- *    - We apply a conservative practical reach factor = 0.3% of MAU.
- *      Rationale (non-exhaustive):
- *      - Organic distribution is volatile and limited by creative volume, intent match, and account trust.
- *      - “Reach” is further constrained by competition, freshness, and rank position.
- *      - This keeps outputs grounded for small/medium brands without heavy paid spend.
- *    - Resulting practical reach ceiling (all niches combined): 102,000,000 * 0.003 = 306,000
+ *    - We apply a conservative practical fraction to form a macro monthly session pool.
+ *      This is intentionally range-y: it’s a modeling knob, not a claim about Pinterest internals.
+ *    - Default: 0.3% of MAU → 102,000,000 * 0.003 = 306,000 sessions/month (macro pool).
  *
  * 3) Niche “penetration” (monthly)
- *    - Public sources rarely provide a clean % breakdown of Pinterest MAU by category.
- *      So we model niche penetration as:
- *        “% of active pinners who meaningfully engage with content in this niche in a typical month”
- *      This is *not* a partition; sums across niches can exceed 100% (one person can engage in multiple).
- *
- *    Inputs used to anchor *which* niches are “large” on Pinterest:
- *    - Pinterest Newsroom trend reporting repeatedly highlights the big verticals:
- *      fashion, beauty, home decor, food, hobbies.
- *      https://newsroom.pinterest.com/news/the-pinterest-fall-2024-trend-report/
- *    - External ecosystem summaries consistently list dominant Pinterest niches:
- *      home decor, DIY/crafts, food & drink, travel, fashion & beauty.
- *      (Less authoritative than Pinterest itself; used as a directional corroboration.)
- *      https://influencermarketinghub.com/top-20-pinterest-influencers/
- *
- *    We keep penetration ranges wide and tunable by design.
+ *    - We model niche penetration as:
+ *        “% of the macro session pool likely to be associated with this niche in a typical month”
+ *      This is *not* a partition; one user can create sessions across multiple niches.
  *
  * 4) Segment multipliers (applied on top of niche penetration)
- *    - Even within the same niche, addressable reach depends on what the business *is*:
+ *    - Even within the same niche, addressable sessions depend on what the business *is*:
  *      content creator vs product seller vs service provider.
- *    - We model this as a multiplier range per segment (still tunable):
- *        content_creator: ~1.0 (baseline)
- *        product_seller: ~0.75 (slightly narrower than pure content, but still strong on Pinterest)
- *        service_provider: ~0.35 (meaningfully narrower; intent exists but is a smaller slice)
- *
- *    Supporting Pinterest signal for “discovery/consideration” behavior:
- *    - Pinterest for Business stat: “97% of top searches are unbranded”
- *      (We use this to justify that discovery is broad; great for content + products.
- *       Services are still viable, but the buyer-intent slice is smaller.)
- *      https://business.pinterest.com/es/blog/drive-automotive-sales-with-pinterest-ads/
  */
 
 import type { NicheSlug, Segment } from "./pinterestPotentialSpec";
 
 export type IndexLevel = "low" | "medium" | "high";
-
 export type Range = { low: number; high: number };
-
-export type OpportunityType = "traffic" | "revenue" | "leads";
 
 export type BenchmarkRow = {
     segment: Segment;
     niche: NicheSlug;
 
     /**
-     * Monthly addressable audience range (unique users),
-     * already grounded in US/CA practical reach + niche penetration + segment multiplier.
+     * Monthly addressable demand (SESSIONS) range (MACRO),
+     * already grounded in US/CA macro pool + niche penetration + segment multiplier.
+     *
+     * IMPORTANT:
+     * - No execution multipliers are applied to this number.
+     * - Compute will apply micro multipliers (Q3–Q8 + indices) downstream.
      */
-    audience_base: Range;
+    demand_base_sessions: Range;
 
     /** Annual household income range (USD). */
     income: Range;
-
-    /** Segment-specific opportunity range (monthly). */
-    opportunity: {
-        type: OpportunityType;
-        low: number;
-        high: number;
-    };
 
     inferred: {
         seasonality: IndexLevel;
@@ -104,14 +78,14 @@ export type BenchmarkRow = {
     };
 };
 
-export type BenchmarkKey = `${Segment}:${string}`;
+export type BenchmarkKey = `${Segment}:${NicheSlug}`;
 
 export function benchmarkKey(segment: Segment, niche: NicheSlug): BenchmarkKey {
     return `${segment}:${niche}`;
 }
 
 // -----------------------------
-// Global audience anchors (US/CA)
+// Global anchors (US/CA)
 // -----------------------------
 
 /**
@@ -121,23 +95,27 @@ export function benchmarkKey(segment: Segment, niche: NicheSlug): BenchmarkKey {
 export const PINTEREST_USCA_MAU_CEILING = 102_000_000;
 
 /**
- * Practical reachable fraction of MAU for “non-major publisher / no heavy paid spend” territory.
+ * Practical fraction of MAU used to form a conservative macro monthly session pool
+ * for “non-major publisher / no heavy paid spend” territory.
+ *
  * Tunable, but keep conservative by default.
  */
-export const PRACTICAL_REACH_FRACTION = 0.003; // 0.3%
+export const PRACTICAL_SESSION_POOL_FRACTION = 0.003; // 0.3%
 
 /**
- * Practical reach ceiling across all niches (unique users / month), before niche & segment slicing.
+ * Macro monthly session pool across all niches (SESSIONS/month), before niche & segment slicing.
  */
-export const PRACTICAL_REACH_USCA_CEILING = Math.round(PINTEREST_USCA_MAU_CEILING * PRACTICAL_REACH_FRACTION); // 306,000
+export const PRACTICAL_SESSIONS_USCA_POOL = Math.round(
+    PINTEREST_USCA_MAU_CEILING * PRACTICAL_SESSION_POOL_FRACTION
+); // 306,000
 
 // -----------------------------
 // Niche penetration (monthly)
 // -----------------------------
 
 /**
- * Niche penetration = % of active pinners likely to engage with this niche in a typical month.
- * Not a partition; users can count toward multiple niches.
+ * Niche penetration = % of the macro monthly session pool likely associated with this niche.
+ * Not a partition; users (and sessions) can count toward multiple niches.
  *
  * IMPORTANT: These are intentionally wide ranges.
  * If we later want higher-fidelity, Ads Manager audience estimates (by interest/keyword) are the
@@ -145,7 +123,7 @@ export const PRACTICAL_REACH_USCA_CEILING = Math.round(PINTEREST_USCA_MAU_CEILIN
  */
 export const NICHE_PENETRATION: Record<NicheSlug, { low: number; high: number }> = {
     // Content creator niches
-    food: { low: 0.35, high: 0.55 }, // consistently one of Pinterest’s biggest planning categories
+    food: { low: 0.35, high: 0.55 },
     travel: { low: 0.15, high: 0.30 },
     home_diy: { low: 0.25, high: 0.40 },
     lifestyle: { low: 0.20, high: 0.35 },
@@ -165,7 +143,7 @@ export const NICHE_PENETRATION: Record<NicheSlug, { low: number; high: number }>
     pets: { low: 0.10, high: 0.18 },
     travel_gear: { low: 0.06, high: 0.12 },
 
-    // Service provider niches (hiring intent slice tends to be smaller)
+    // Service provider niches
     agency: { low: 0.03, high: 0.08 },
     coach: { low: 0.04, high: 0.10 },
     designer: { low: 0.06, high: 0.14 },
@@ -175,7 +153,7 @@ export const NICHE_PENETRATION: Record<NicheSlug, { low: number; high: number }>
     educator: { low: 0.08, high: 0.18 },
     events: { low: 0.08, high: 0.18 },
 
-    // Shared catch-all
+    // Catch-all
     other: { low: 0.05, high: 0.12 },
 };
 
@@ -184,14 +162,8 @@ export const NICHE_PENETRATION: Record<NicheSlug, { low: number; high: number }>
 // -----------------------------
 
 /**
- * Segment multiplier = additional discount based on business type.
- * This captures how often a niche user is addressable *for this kind of business*.
- *
- * - content_creator: baseline (broad discovery content fits Pinterest behavior)
- * - product_seller: slightly narrower (still strong because Pinterest is shopping/planning oriented)
- * - service_provider: narrower (lead intent exists but is a smaller slice)
- *
- * Keep wide: local/intent niches (real estate/events) can skew higher; generic B2B can skew lower.
+ * Segment multiplier = discount based on business type.
+ * Captures how often a niche session is addressable *for this kind of business*.
  */
 export const SEGMENT_MULTIPLIER: Record<Segment, { low: number; high: number }> = {
     content_creator: { low: 0.8, high: 1.15 },
@@ -200,29 +172,37 @@ export const SEGMENT_MULTIPLIER: Record<Segment, { low: number; high: number }> 
 };
 
 // -----------------------------
-// Helpers
+// Helpers (fail-loud)
 // -----------------------------
 
-function clampInt(n: number): number {
-    if (!Number.isFinite(n)) return 0;
-    return Math.max(0, Math.round(n));
+function mustFinite(n: number, label: string): number {
+    if (!Number.isFinite(n)) throw new Error(`Benchmarks config error: ${label} must be finite, got ${String(n)}`);
+    return n;
+}
+
+function mustFiniteNonNegInt(n: number, label: string): number {
+    mustFinite(n, label);
+    if (n < 0) throw new Error(`Benchmarks config error: ${label} must be >= 0, got ${String(n)}`);
+    return Math.round(n);
 }
 
 /**
- * Compute an audience_base range from:
- * - practical reach ceiling (US/CA)
+ * Compute demand_base_sessions range from:
+ * - macro session pool (US/CA)
  * - niche penetration range
  * - segment multiplier range
  */
-export function audienceBaseFor(segment: Segment, niche: NicheSlug): Range {
+export function demandBaseSessionsFor(segment: Segment, niche: NicheSlug): Range {
     const pen = NICHE_PENETRATION[niche];
     const seg = SEGMENT_MULTIPLIER[segment];
 
     // Low = conservative * conservative. High = optimistic * optimistic.
-    // (We intentionally avoid “mixing” low/high to keep interpretation straightforward.)
+    const low = PRACTICAL_SESSIONS_USCA_POOL * pen.low * seg.low;
+    const high = PRACTICAL_SESSIONS_USCA_POOL * pen.high * seg.high;
+
     return {
-        low: clampInt(PRACTICAL_REACH_USCA_CEILING * pen.low * seg.low),
-        high: clampInt(PRACTICAL_REACH_USCA_CEILING * pen.high * seg.high),
+        low: mustFiniteNonNegInt(low, `demandBaseSessionsFor(${segment},${niche}).low`),
+        high: mustFiniteNonNegInt(high, `demandBaseSessionsFor(${segment},${niche}).high`),
     };
 }
 
@@ -230,16 +210,15 @@ export function audienceBaseFor(segment: Segment, niche: NicheSlug): Range {
 // Canonical benchmark table
 // -----------------------------
 
-export const BENCHMARKS: BenchmarkRow[] = [
+export const BENCHMARKS = [
     // -----------------------------
     // Content creator
     // -----------------------------
     {
         segment: "content_creator",
         niche: "food",
-        audience_base: audienceBaseFor("content_creator", "food"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "food"),
         income: { low: 55_000, high: 110_000 },
-        opportunity: { type: "traffic", low: 5_000, high: 20_000 },
         inferred: {
             seasonality: "medium",
             competition: "high",
@@ -253,9 +232,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "content_creator",
         niche: "travel",
-        audience_base: audienceBaseFor("content_creator", "travel"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "travel"),
         income: { low: 65_000, high: 120_000 },
-        opportunity: { type: "traffic", low: 4_000, high: 18_000 },
         inferred: {
             seasonality: "high",
             competition: "high",
@@ -269,9 +247,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "content_creator",
         niche: "home_diy",
-        audience_base: audienceBaseFor("content_creator", "home_diy"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "home_diy"),
         income: { low: 60_000, high: 115_000 },
-        opportunity: { type: "traffic", low: 4_000, high: 16_000 },
         inferred: {
             seasonality: "medium",
             competition: "medium",
@@ -285,9 +262,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "content_creator",
         niche: "lifestyle",
-        audience_base: audienceBaseFor("content_creator", "lifestyle"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "lifestyle"),
         income: { low: 55_000, high: 105_000 },
-        opportunity: { type: "traffic", low: 3_000, high: 14_000 },
         inferred: {
             seasonality: "low",
             competition: "high",
@@ -301,9 +277,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "content_creator",
         niche: "finance",
-        audience_base: audienceBaseFor("content_creator", "finance"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "finance"),
         income: { low: 70_000, high: 140_000 },
-        opportunity: { type: "traffic", low: 2_000, high: 10_000 },
         inferred: {
             seasonality: "low",
             competition: "medium",
@@ -317,9 +292,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "content_creator",
         niche: "wellness",
-        audience_base: audienceBaseFor("content_creator", "wellness"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "wellness"),
         income: { low: 55_000, high: 115_000 },
-        opportunity: { type: "traffic", low: 3_000, high: 13_000 },
         inferred: {
             seasonality: "medium",
             competition: "high",
@@ -333,9 +307,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "content_creator",
         niche: "parenting",
-        audience_base: audienceBaseFor("content_creator", "parenting"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "parenting"),
         income: { low: 55_000, high: 115_000 },
-        opportunity: { type: "traffic", low: 3_000, high: 12_000 },
         inferred: {
             seasonality: "medium",
             competition: "high",
@@ -349,9 +322,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "content_creator",
         niche: "beauty_fashion",
-        audience_base: audienceBaseFor("content_creator", "beauty_fashion"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "beauty_fashion"),
         income: { low: 55_000, high: 115_000 },
-        opportunity: { type: "traffic", low: 4_000, high: 17_000 },
         inferred: {
             seasonality: "high",
             competition: "high",
@@ -365,9 +337,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "content_creator",
         niche: "crafts",
-        audience_base: audienceBaseFor("content_creator", "crafts"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "crafts"),
         income: { low: 50_000, high: 105_000 },
-        opportunity: { type: "traffic", low: 2_000, high: 11_000 },
         inferred: {
             seasonality: "high",
             competition: "medium",
@@ -381,9 +352,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "content_creator",
         niche: "other",
-        audience_base: audienceBaseFor("content_creator", "other"),
+        demand_base_sessions: demandBaseSessionsFor("content_creator", "other"),
         income: { low: 50_000, high: 105_000 },
-        opportunity: { type: "traffic", low: 2_000, high: 9_000 },
         inferred: {
             seasonality: "medium",
             competition: "medium",
@@ -401,9 +371,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "baby_family",
-        audience_base: audienceBaseFor("product_seller", "baby_family"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "baby_family"),
         income: { low: 60_000, high: 120_000 },
-        opportunity: { type: "revenue", low: 8_000, high: 35_000 },
         inferred: {
             seasonality: "medium",
             competition: "high",
@@ -417,9 +386,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "home_decor",
-        audience_base: audienceBaseFor("product_seller", "home_decor"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "home_decor"),
         income: { low: 60_000, high: 130_000 },
-        opportunity: { type: "revenue", low: 10_000, high: 45_000 },
         inferred: {
             seasonality: "high",
             competition: "high",
@@ -433,9 +401,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "beauty",
-        audience_base: audienceBaseFor("product_seller", "beauty"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "beauty"),
         income: { low: 55_000, high: 125_000 },
-        opportunity: { type: "revenue", low: 9_000, high: 40_000 },
         inferred: {
             seasonality: "high",
             competition: "high",
@@ -449,9 +416,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "fashion",
-        audience_base: audienceBaseFor("product_seller", "fashion"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "fashion"),
         income: { low: 55_000, high: 125_000 },
-        opportunity: { type: "revenue", low: 12_000, high: 55_000 },
         inferred: {
             seasonality: "high",
             competition: "high",
@@ -465,9 +431,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "wellness",
-        audience_base: audienceBaseFor("product_seller", "wellness"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "wellness"),
         income: { low: 55_000, high: 120_000 },
-        opportunity: { type: "revenue", low: 8_000, high: 38_000 },
         inferred: {
             seasonality: "medium",
             competition: "high",
@@ -481,9 +446,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "food_bev",
-        audience_base: audienceBaseFor("product_seller", "food_bev"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "food_bev"),
         income: { low: 50_000, high: 110_000 },
-        opportunity: { type: "revenue", low: 7_000, high: 32_000 },
         inferred: {
             seasonality: "high",
             competition: "medium",
@@ -497,9 +461,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "digital_crafts",
-        audience_base: audienceBaseFor("product_seller", "digital_crafts"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "digital_crafts"),
         income: { low: 50_000, high: 110_000 },
-        opportunity: { type: "revenue", low: 5_000, high: 25_000 },
         inferred: {
             seasonality: "high",
             competition: "medium",
@@ -513,9 +476,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "pets",
-        audience_base: audienceBaseFor("product_seller", "pets"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "pets"),
         income: { low: 55_000, high: 120_000 },
-        opportunity: { type: "revenue", low: 6_000, high: 28_000 },
         inferred: {
             seasonality: "low",
             competition: "medium",
@@ -529,9 +491,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "travel_gear",
-        audience_base: audienceBaseFor("product_seller", "travel_gear"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "travel_gear"),
         income: { low: 60_000, high: 130_000 },
-        opportunity: { type: "revenue", low: 5_000, high: 24_000 },
         inferred: {
             seasonality: "high",
             competition: "high",
@@ -545,9 +506,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "product_seller",
         niche: "other",
-        audience_base: audienceBaseFor("product_seller", "other"),
+        demand_base_sessions: demandBaseSessionsFor("product_seller", "other"),
         income: { low: 50_000, high: 115_000 },
-        opportunity: { type: "revenue", low: 4_000, high: 20_000 },
         inferred: {
             seasonality: "medium",
             competition: "medium",
@@ -561,9 +521,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "agency",
-        audience_base: audienceBaseFor("service_provider", "agency"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "agency"),
         income: { low: 70_000, high: 150_000 },
-        opportunity: { type: "leads", low: 25, high: 140 },
         inferred: {
             seasonality: "low",
             competition: "high",
@@ -577,9 +536,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "coach",
-        audience_base: audienceBaseFor("service_provider", "coach"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "coach"),
         income: { low: 65_000, high: 140_000 },
-        opportunity: { type: "leads", low: 20, high: 120 },
         inferred: {
             seasonality: "medium",
             competition: "high",
@@ -593,9 +551,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "designer",
-        audience_base: audienceBaseFor("service_provider", "designer"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "designer"),
         income: { low: 65_000, high: 145_000 },
-        opportunity: { type: "leads", low: 22, high: 130 },
         inferred: {
             seasonality: "medium",
             competition: "medium",
@@ -609,9 +566,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "photo_video",
-        audience_base: audienceBaseFor("service_provider", "photo_video"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "photo_video"),
         income: { low: 60_000, high: 140_000 },
-        opportunity: { type: "leads", low: 18, high: 110 },
         inferred: {
             seasonality: "high",
             competition: "high",
@@ -625,9 +581,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "wellness_practitioner",
-        audience_base: audienceBaseFor("service_provider", "wellness_practitioner"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "wellness_practitioner"),
         income: { low: 55_000, high: 125_000 },
-        opportunity: { type: "leads", low: 18, high: 120 },
         inferred: {
             seasonality: "medium",
             competition: "high",
@@ -637,9 +592,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "finance",
-        audience_base: audienceBaseFor("service_provider", "finance"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "finance"),
         income: { low: 70_000, high: 160_000 },
-        opportunity: { type: "leads", low: 15, high: 90 },
         inferred: {
             seasonality: "high",
             competition: "medium",
@@ -652,9 +606,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "real_estate_home",
-        audience_base: audienceBaseFor("service_provider", "real_estate_home"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "real_estate_home"),
         income: { low: 70_000, high: 160_000 },
-        opportunity: { type: "leads", low: 25, high: 160 },
         inferred: {
             seasonality: "high",
             competition: "high",
@@ -668,9 +621,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "educator",
-        audience_base: audienceBaseFor("service_provider", "educator"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "educator"),
         income: { low: 60_000, high: 140_000 },
-        opportunity: { type: "leads", low: 22, high: 150 },
         inferred: {
             seasonality: "high",
             competition: "medium",
@@ -683,9 +635,8 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "events",
-        audience_base: audienceBaseFor("service_provider", "events"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "events"),
         income: { low: 60_000, high: 140_000 },
-        opportunity: { type: "leads", low: 18, high: 120 },
         inferred: {
             seasonality: "high",
             competition: "high",
@@ -699,31 +650,32 @@ export const BENCHMARKS: BenchmarkRow[] = [
     {
         segment: "service_provider",
         niche: "other",
-        audience_base: audienceBaseFor("service_provider", "other"),
+        demand_base_sessions: demandBaseSessionsFor("service_provider", "other"),
         income: { low: 55_000, high: 130_000 },
-        opportunity: { type: "leads", low: 15, high: 90 },
         inferred: {
             seasonality: "medium",
             competition: "medium",
             tags: ["other"],
         },
     },
-];
+] as const satisfies ReadonlyArray<BenchmarkRow>;
 
 // -----------------------------
-// Fast lookup map
+// Fast lookup map (fail-loud)
 // -----------------------------
 
-export const BENCHMARK_MAP: Record<BenchmarkKey, BenchmarkRow> = Object.fromEntries(
-    BENCHMARKS.map((row) => [benchmarkKey(row.segment, row.niche), row])
-) as Record<BenchmarkKey, BenchmarkRow>;
+const _map = new Map<BenchmarkKey, BenchmarkRow>();
+for (const row of BENCHMARKS) {
+    const key = benchmarkKey(row.segment, row.niche);
+    if (_map.has(key)) throw new Error(`Duplicate benchmark row for ${key}`);
+    _map.set(key, row);
+}
+
+export const BENCHMARK_MAP = Object.fromEntries(_map.entries()) as Record<BenchmarkKey, BenchmarkRow>;
 
 export function getBenchmark(segment: Segment, niche: NicheSlug): BenchmarkRow {
     const key = benchmarkKey(segment, niche);
     const row = BENCHMARK_MAP[key];
-    if (!row) {
-        // Fail loud: compute must not silently guess.
-        throw new Error(`Missing benchmark row for ${key}`);
-    }
+    if (!row) throw new Error(`Missing benchmark row for ${key}`);
     return row;
 }

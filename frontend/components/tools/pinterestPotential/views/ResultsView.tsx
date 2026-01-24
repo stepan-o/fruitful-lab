@@ -12,11 +12,19 @@ export type ResultsRecapItem = {
 export type ResultsViewProps = {
     results: ResultsBundle;
 
-    // Cards (pre-formatted strings so this stays pure UI)
-    audienceRangeLabel: string;
-    opportunityLabel: string;
-    opportunityRangeLabel: string;
-    incomeRangeLabel: string;
+    // Headline cards (pre-formatted strings so this stays pure UI)
+    demandBaseSessionsRangeLabel: string; // results.demand.demand_base_sessions_est (range label)
+    likelySessionsRangeLabel: string; // results.demand.likely_pinterest_sessions_est (range label)
+    distributionCapacityLabel: string; // results.demand.distribution_capacity_m (e.g. "1.42×")
+
+    // Segment outcome headline (pre-formatted)
+    primaryOutcomeLabel: string; // e.g. "Monthly Pinterest sessions" / "Monthly discovery calls"
+    primaryOutcomeRangeLabel: string; // range label
+    purchaseIntentRangeLabel?: string; // product_seller only
+
+    // Context
+    incomeRangeLabel: string; // demographics household income (range label)
+    insightLine: string | null;
 
     // Meta
     showHardLockGate: boolean;
@@ -26,7 +34,6 @@ export type ResultsViewProps = {
     // Lead capture (controlled)
     leadName: string;
     leadEmail: string;
-
     requireName: boolean;
 
     errors: Record<string, string>;
@@ -69,15 +76,15 @@ function useReducedMotion(): boolean {
 function CheckBadge({ text }: { text: string }) {
     return (
         <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--background)] px-3 py-1 text-xs text-[var(--foreground)]">
-      <span
-          className="inline-flex h-5 w-5 items-center justify-center rounded-full text-white"
-          aria-hidden="true"
-          style={{ background: "var(--brand-raspberry)" }}
-      >
-        ✓
-      </span>
+            <span
+                className="inline-flex h-5 w-5 items-center justify-center rounded-full text-white"
+                aria-hidden="true"
+                style={{ background: "var(--brand-raspberry)" }}
+            >
+                ✓
+            </span>
             {text}
-    </span>
+        </span>
     );
 }
 
@@ -180,11 +187,15 @@ function CandyBurstOverlay({
             const dx = spread;
             const up = lift;
 
-            const left = originX + (spread / (window.innerWidth || 1)) * 100 * 0.85 + (Math.random() * 8 - 4);
+            const left =
+                originX +
+                (spread / (window.innerWidth || 1)) * 100 * 0.85 +
+                (Math.random() * 8 - 4);
             const top = originY + (Math.random() * 36 - 18);
 
             const size = (lvl === 3 ? 10 : lvl === 2 ? 11 : 12) + Math.random() * (lvl === 3 ? 18 : 16);
-            const radius = Math.random() < 0.45 ? size * 0.9 : Math.random() < 0.75 ? size * 0.35 : size * 0.15;
+            const radius =
+                Math.random() < 0.45 ? size * 0.9 : Math.random() < 0.75 ? size * 0.35 : size * 0.15;
 
             // slower overall feel: 3.4s – 5.6s
             const dur = 3400 + Math.random() * (lvl === 3 ? 2200 : 2000);
@@ -283,7 +294,9 @@ function CandyBurstOverlay({
 
             {/* Message */}
             <div className="relative mx-6 max-w-xl text-center">
-                {headline ? <div className="font-heading text-3xl sm:text-4xl text-white drop-shadow">{headline}</div> : null}
+                {headline ? (
+                    <div className="font-heading text-3xl sm:text-4xl text-white drop-shadow">{headline}</div>
+                ) : null}
                 {subhead ? <div className="mt-2 text-sm sm:text-base text-white/80">{subhead}</div> : null}
 
                 <button
@@ -299,72 +312,72 @@ function CandyBurstOverlay({
             </div>
 
             <style jsx>{`
-        .ppc-candy {
-          position: absolute;
-          transform: translate3d(0, 0, 0);
-          will-change: transform, opacity;
-          animation: ppcDrop var(--dur) cubic-bezier(0.18, 0.86, 0.22, 1) var(--delay) both;
-        }
+                .ppc-candy {
+                    position: absolute;
+                    transform: translate3d(0, 0, 0);
+                    will-change: transform, opacity;
+                    animation: ppcDrop var(--dur) cubic-bezier(0.18, 0.86, 0.22, 1) var(--delay) both;
+                }
 
-        .ppc-candy-sway {
-          will-change: transform;
-          animation: ppcSway calc(var(--dur) * 0.62) ease-in-out var(--delay) infinite;
-        }
+                .ppc-candy-sway {
+                    will-change: transform;
+                    animation: ppcSway calc(var(--dur) * 0.62) ease-in-out var(--delay) infinite;
+                }
 
-        .ppc-candy-spin {
-          will-change: transform;
-          animation: ppcSpin var(--dur) ease-in-out var(--delay) both;
-        }
+                .ppc-candy-spin {
+                    will-change: transform;
+                    animation: ppcSpin var(--dur) ease-in-out var(--delay) both;
+                }
 
-        .ppc-candy-piece {
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
-          filter: saturate(1.15);
-        }
+                .ppc-candy-piece {
+                    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+                    filter: saturate(1.15);
+                }
 
-        @keyframes ppcDrop {
-          0% {
-            transform: translate3d(0, 12px, 0) scale(0.88);
-            opacity: 0;
-          }
-          8% {
-            opacity: 1;
-          }
-          22% {
-            transform: translate3d(calc(var(--dx) * 0.52), calc(var(--up) * -1), 0) scale(1);
-          }
-          100% {
-            transform: translate3d(var(--dx), var(--fall), 0) scale(1);
-            opacity: 0;
-          }
-        }
+                @keyframes ppcDrop {
+                    0% {
+                        transform: translate3d(0, 12px, 0) scale(0.88);
+                        opacity: 0;
+                    }
+                    8% {
+                        opacity: 1;
+                    }
+                    22% {
+                        transform: translate3d(calc(var(--dx) * 0.52), calc(var(--up) * -1), 0) scale(1);
+                    }
+                    100% {
+                        transform: translate3d(var(--dx), var(--fall), 0) scale(1);
+                        opacity: 0;
+                    }
+                }
 
-        @keyframes ppcSpin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(var(--spin));
-          }
-        }
+                @keyframes ppcSpin {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+                    100% {
+                        transform: rotate(var(--spin));
+                    }
+                }
 
-        @keyframes ppcSway {
-          0%,
-          100% {
-            transform: translate3d(0, 0, 0);
-          }
-          50% {
-            transform: translate3d(var(--sway), 0, 0);
-          }
-        }
+                @keyframes ppcSway {
+                    0%,
+                    100% {
+                        transform: translate3d(0, 0, 0);
+                    }
+                    50% {
+                        transform: translate3d(var(--sway), 0, 0);
+                    }
+                }
 
-        @media (prefers-reduced-motion: reduce) {
-          .ppc-candy,
-          .ppc-candy-sway,
-          .ppc-candy-spin {
-            animation: none !important;
-          }
-        }
-      `}</style>
+                @media (prefers-reduced-motion: reduce) {
+                    .ppc-candy,
+                    .ppc-candy-sway,
+                    .ppc-candy-spin {
+                        animation: none !important;
+                    }
+                }
+            `}</style>
         </div>
     );
 }
@@ -459,12 +472,34 @@ function ResultsHero({ variant }: { variant: HeroVariant }) {
     );
 }
 
+function MetricCard({
+                        label,
+                        value,
+                        sublabel,
+                    }: {
+    label: string;
+    value: string;
+    sublabel?: string;
+}) {
+    return (
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+            <div className="text-xs text-[var(--foreground-muted)]">{label}</div>
+            <div className="mt-1 font-heading text-2xl text-[var(--foreground)]">{value}</div>
+            {sublabel ? <div className="mt-1 text-xs text-[var(--foreground-muted)]">{sublabel}</div> : null}
+        </div>
+    );
+}
+
 export default function ResultsView({
                                         results,
-                                        audienceRangeLabel,
-                                        opportunityLabel,
-                                        opportunityRangeLabel,
+                                        demandBaseSessionsRangeLabel,
+                                        likelySessionsRangeLabel,
+                                        distributionCapacityLabel,
+                                        primaryOutcomeLabel,
+                                        primaryOutcomeRangeLabel,
+                                        purchaseIntentRangeLabel,
                                         incomeRangeLabel,
+                                        insightLine,
                                         showHardLockGate,
                                         showSoftLockGate,
                                         privacyMicrocopy,
@@ -532,31 +567,101 @@ export default function ResultsView({
         prevEmailedRef.current = emailed;
     }, [emailed]);
 
+    const conversionReadinessLabel = useMemo(() => {
+        const m = results?.demand?.conversion_readiness_m;
+        if (typeof m !== "number" || !Number.isFinite(m)) return "—";
+        return `${m.toFixed(2)}×`;
+    }, [results]);
+
+    const insight = (insightLine ?? results.insight_line ?? null) as string | null;
+
     const ResultsCards = (
         <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                <div className="text-xs text-[var(--foreground-muted)]">Monthly Pinterest audience</div>
-                <div className="mt-1 font-heading text-2xl text-[var(--foreground)]">{audienceRangeLabel}</div>
-            </div>
-
-            <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                <div className="text-xs text-[var(--foreground-muted)]">{opportunityLabel}</div>
-                <div className="mt-1 font-heading text-2xl text-[var(--foreground)]">{opportunityRangeLabel}</div>
-            </div>
-
-            <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                <div className="text-xs text-[var(--foreground-muted)]">Audience income range (USD)</div>
-                <div className="mt-1 font-heading text-2xl text-[var(--foreground)]">{incomeRangeLabel}</div>
-            </div>
+            <MetricCard
+                label="Base monthly demand (sessions)"
+                value={demandBaseSessionsRangeLabel}
+                sublabel="Benchmark slice (US+CA) for your segment + niche."
+            />
+            <MetricCard
+                label="Likely Pinterest sessions"
+                value={likelySessionsRangeLabel}
+                sublabel="Base demand × your distribution capacity."
+            />
+            <MetricCard
+                label={primaryOutcomeLabel}
+                value={primaryOutcomeRangeLabel}
+                sublabel="Outcome based on your business type."
+            />
         </div>
     );
+
+    const MicroRow = (
+        <div className="mt-3 grid gap-3 sm:grid-cols-3">
+            <MetricCard
+                label="Distribution capacity"
+                value={distributionCapacityLabel}
+                sublabel="Volume + visuals + ads plan + indices + goal micro-adjust."
+            />
+            <MetricCard
+                label="Conversion readiness"
+                value={conversionReadinessLabel}
+                sublabel="Website experience × offer clarity."
+            />
+            <MetricCard
+                label="Audience income range (USD)"
+                value={incomeRangeLabel}
+                sublabel="Context only (not a prediction)."
+            />
+        </div>
+    );
+
+    const ProductExtras = useMemo(() => {
+        if (!purchaseIntentRangeLabel) return null;
+        if (results.segment_outcome.kind !== "product_seller") return null;
+
+        const buckets = results.segment_outcome.assumptions?.aov_buckets ?? [];
+        const revenue = results.segment_outcome.revenue_by_aov_est ?? ({} as Record<string, { low: number; high: number }>);
+
+        return (
+            <div className="mt-3">
+                <div className="grid gap-3 sm:grid-cols-2">
+                    <MetricCard
+                        label="Purchase-intent sessions"
+                        value={purchaseIntentRangeLabel}
+                        sublabel="Estimated share of likely sessions with buying intent."
+                    />
+
+                    <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                        <div className="text-xs text-[var(--foreground-muted)]">Revenue potential (by AOV)</div>
+                        <div className="mt-2 grid gap-2">
+                            {buckets.map((b) => {
+                                const r = revenue[b.id];
+                                const v = r ? `${Math.round(r.low).toLocaleString()}–${Math.round(r.high).toLocaleString()}` : "—";
+                                return (
+                                    <div key={b.id} className="flex items-center justify-between gap-3 text-sm">
+                                        <div className="text-[var(--foreground)]">{b.label}</div>
+                                        <div className="font-semibold text-[var(--foreground)]">{v}</div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div className="mt-2 text-xs text-[var(--foreground-muted)]">
+                            Rough estimate: purchase-intent sessions × CR (by AOV) × conversion readiness × AOV.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }, [purchaseIntentRangeLabel, results]);
 
     const LeadCaptureHardLock = showHardLockGate ? (
         <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
             <div className="sm:grid sm:grid-cols-3 sm:gap-4">
                 <div>
                     <h3 className="font-heading text-lg text-[var(--foreground)]">Reveal your full snapshot</h3>
-                    <p className="mt-1 text-sm text-[var(--foreground-muted)]">Enter your email to view your results (and keep a copy).</p>
+                    <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+                        Enter your email to view your results (and keep a copy).
+                    </p>
                     <p className="mt-2 text-xs text-[var(--foreground-muted)]">{privacyMicrocopy}</p>
                 </div>
 
@@ -571,7 +676,9 @@ export default function ResultsView({
                                     onChange={(e) => onLeadNameChange(e.target.value)}
                                     className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                 />
-                                {errors["LEAD.name"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div> : null}
+                                {errors["LEAD.name"] ? (
+                                    <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div>
+                                ) : null}
                             </div>
                         ) : (
                             <div>
@@ -593,7 +700,9 @@ export default function ResultsView({
                                 onChange={(e) => onLeadEmailChange(e.target.value)}
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
-                            {errors["LEAD.email"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div> : null}
+                            {errors["LEAD.email"] ? (
+                                <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div>
+                            ) : null}
                         </div>
                     </div>
 
@@ -644,7 +753,9 @@ export default function ResultsView({
                                 onChange={(e) => onLeadEmailChange(e.target.value)}
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
-                            {optionalLeadEmailError ? <div className="mt-1 text-xs text-red-500">{optionalLeadEmailError}</div> : null}
+                            {optionalLeadEmailError ? (
+                                <div className="mt-1 text-xs text-red-500">{optionalLeadEmailError}</div>
+                            ) : null}
                         </div>
                     </div>
 
@@ -662,6 +773,9 @@ export default function ResultsView({
             </div>
         </div>
     ) : null;
+
+    const tags = results?.inferred?.tags ?? [];
+    const showTags = Array.isArray(tags) && tags.length > 0;
 
     return (
         <>
@@ -684,19 +798,35 @@ export default function ResultsView({
                 <div className={showHardLockGate ? "mt-4 opacity-40 blur-[2px] pointer-events-none select-none" : "mt-4"}>
                     {ResultsCards}
 
-                    {results.insight_line ? (
+                    {MicroRow}
+
+                    {ProductExtras}
+
+                    {insight ? (
                         <div className="mt-3 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 text-sm text-[var(--foreground)]">
-                            {results.insight_line}
+                            {insight}
                         </div>
                     ) : null}
 
                     <div className="mt-3 flex flex-wrap gap-2 text-xs text-[var(--foreground-muted)]">
-            <span className="rounded-full border border-[var(--border)] bg-[var(--background)] px-2 py-1">
-              Seasonality: <span className="text-[var(--foreground)]">{results.inferred.seasonality_index}</span>
-            </span>
                         <span className="rounded-full border border-[var(--border)] bg-[var(--background)] px-2 py-1">
-              Competition: <span className="text-[var(--foreground)]">{results.inferred.competition_index}</span>
-            </span>
+                            Seasonality: <span className="text-[var(--foreground)]">{results.inferred.seasonality_index}</span>
+                        </span>
+                        <span className="rounded-full border border-[var(--border)] bg-[var(--background)] px-2 py-1">
+                            Competition: <span className="text-[var(--foreground)]">{results.inferred.competition_index}</span>
+                        </span>
+                        {showTags ? (
+                            <>
+                                {tags.slice(0, 6).map((t) => (
+                                    <span
+                                        key={t}
+                                        className="rounded-full border border-[var(--border)] bg-[var(--background)] px-2 py-1"
+                                    >
+                                        <span className="text-[var(--foreground)]">{t}</span>
+                                    </span>
+                                ))}
+                            </>
+                        ) : null}
                     </div>
 
                     {LeadCaptureSoftLock}
@@ -706,7 +836,10 @@ export default function ResultsView({
                     <div className="mb-2 font-heading text-lg text-[var(--foreground)]">Your answers</div>
                     <div className="grid gap-3 sm:grid-cols-2">
                         {recap.map((it, idx) => (
-                            <div key={`${idx}-${it.label}`} className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+                            <div
+                                key={`${idx}-${it.label}`}
+                                className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4"
+                            >
                                 <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
                                 <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
                             </div>
@@ -732,7 +865,9 @@ export default function ResultsView({
                     </button>
                 </div>
 
-                <div className="mt-4 text-sm text-[var(--foreground-muted)]">You can refresh the page; your draft is saved in this session.</div>
+                <div className="mt-4 text-sm text-[var(--foreground-muted)]">
+                    You can refresh the page; your draft is saved in this session.
+                </div>
             </div>
         </>
     );

@@ -2,14 +2,20 @@
 /**
  * Pinterest Potential — Spec → UI Adapter (Q2 Niche enrichment)
  *
+ * v1.1 alignment (2026-01-23):
+ * - Benchmarks no longer expose "audience_base". Canonical macro unit is SESSIONS:
+ *   `BenchmarkRow.demand_base_sessions` (range).
+ * - Q2 badges must be derived from demand_base_sessions (not invented in UI).
+ *
  * Invariants:
  * - Spec remains canonical source of truth for IDs + labels + ordering.
- * - This adapter enriches spec options with UI-only metadata (includes, keywords, icon keys, badges, helper copy).
+ * - This adapter enriches spec options with UI-only metadata (includes, keywords, icon keys, badges, helper copy),
+ *   and surfaces benchmark-derived signals for UI consumption.
  * - UI components (Q2Niche, BottomSheet usage) must not invent niche logic.
  *
  * Dependencies allowed:
  * - Spec (types + getNicheOptions)
- * - Benchmarks (for audience preview tiers)
+ * - Benchmarks (for demand preview tiers + income + inferred indices)
  *
  * Forbidden:
  * - Spec importing this module
@@ -17,53 +23,71 @@
  * - This module importing Lucide/React icon components (UI maps iconKey → icon component)
  */
 
-import type { Range } from "./benchmarks";
-import { getBenchmark } from "./benchmarks";
+import type { BenchmarkRow, IndexLevel, Range } from "./benchmarks";
+import { getBenchmark, PRACTICAL_SESSIONS_USCA_POOL } from "./benchmarks";
 import type { NicheSlug, Segment } from "./pinterestPotentialSpec";
 import { getNicheOptions } from "./pinterestPotentialSpec";
 
-export type AudiencePreviewLevel = "Focused" | "Medium" | "Broad";
+// -----------------------------
+// Demand preview (Q2 badges)
+// -----------------------------
 
-export type AudiencePreviewMeta = {
-    /** What the UI badge displays after “Audience:” */
-    badgeLabel: "Specific" | "Medium" | "Huge";
-    /** Tooltip/help copy shown to the user */
+export type DemandPreviewLevel = "Focused" | "Medium" | "Broad";
+
+export type DemandPreviewMeta = {
+    /** What the UI badge displays after “Demand:” (or equivalent label). */
+    badgeLabel: string;
+    /** Tooltip/help copy shown to the user. */
     helperCopy: string;
 };
 
-export const AUDIENCE_PREVIEW_META: Record<AudiencePreviewLevel, AudiencePreviewMeta> = {
+export const DEMAND_PREVIEW_META: Record<DemandPreviewLevel, DemandPreviewMeta> = {
     Focused: {
-        badgeLabel: "Specific",
-        helperCopy: "More specific audience → usually easier targeting + clearer messaging.",
+        badgeLabel: "Focused",
+        helperCopy: "Smaller monthly demand → easier to stand out, but less total volume.",
     },
     Medium: {
-        badgeLabel: "Medium",
-        helperCopy: "Balanced audience size → good mix of reach + relevance.",
+        badgeLabel: "Balanced",
+        helperCopy: "Balanced monthly demand → good mix of volume + focus.",
     },
     Broad: {
         badgeLabel: "Huge",
-        helperCopy: "Big audience → more competition, but more upside if you commit.",
+        helperCopy: "Big monthly demand → more upside, and usually more competition.",
     },
 };
 
 /**
- * Convert benchmark audience range into a stable preview tier.
+ * Thresholds derive from the macro US/CA practical session pool,
+ * so tiers stay stable if we tune the macro anchors.
+ *
+ * Rule: tiering uses HIGH end of the range as a ceiling signal (preview only).
+ */
+export const DEMAND_PREVIEW_THRESHOLDS = {
+    // ~20% of macro pool = "Broad"
+    broad_min_high: Math.round(PRACTICAL_SESSIONS_USCA_POOL * 0.2),
+    // ~7% of macro pool = "Medium"
+    medium_min_high: Math.round(PRACTICAL_SESSIONS_USCA_POOL * 0.07),
+} as const;
+
+/**
+ * Convert benchmark demand range (sessions/month) into a stable preview tier.
  * Canonical for Q2 badges.
  */
-export function audiencePreviewFromRange(r: Range): AudiencePreviewLevel {
-    // Keep current behavior: use HIGH end as ceiling signal.
+export function demandPreviewFromSessionsRange(r: Range): DemandPreviewLevel {
     const high = r.high;
-
-    // Thresholds preserved from prior audiencePreview.ts
-    if (high >= 20_000_000) return "Broad";
-    if (high >= 10_000_000) return "Medium";
+    if (high >= DEMAND_PREVIEW_THRESHOLDS.broad_min_high) return "Broad";
+    if (high >= DEMAND_PREVIEW_THRESHOLDS.medium_min_high) return "Medium";
     return "Focused";
 }
 
-export function getAudiencePreviewLevel(segment: Segment, niche: NicheSlug): AudiencePreviewLevel {
+export function getDemandPreviewLevel(segment: Segment, niche: NicheSlug): DemandPreviewLevel {
     const row = getBenchmark(segment, niche);
-    return audiencePreviewFromRange(row.audience_base);
+    return demandPreviewFromSessionsRange(row.demand_base_sessions);
 }
+
+// -----------------------------
+// Segment hint copy
+// -----------------------------
 
 export function getSegmentHint(seg: Segment): string {
     if (seg === "content_creator") return "Pick what you publish about most.";
@@ -71,19 +95,60 @@ export function getSegmentHint(seg: Segment): string {
     return "Pick the industry you serve.";
 }
 
+// -----------------------------
+// Benchmark UI payload (single source for Q2)
+// -----------------------------
+
+export type NicheBenchmarkUi = {
+    demand_base_sessions: Range;
+    demand_preview: {
+        level: DemandPreviewLevel;
+        badgeLabel: string;
+        helperCopy: string;
+    };
+    income: Range;
+    inferred: {
+        seasonality: IndexLevel;
+        competition: IndexLevel;
+        notes?: Partial<Record<"seasonality" | "competition", string>>;
+        tags?: string[];
+    };
+};
+
+export function getNicheBenchmarkUi(segment: Segment, niche: NicheSlug): NicheBenchmarkUi {
+    const row = getBenchmark(segment, niche);
+    const level = demandPreviewFromSessionsRange(row.demand_base_sessions);
+    const meta = DEMAND_PREVIEW_META[level];
+
+    return {
+        demand_base_sessions: row.demand_base_sessions,
+        demand_preview: {
+            level,
+            badgeLabel: meta.badgeLabel,
+            helperCopy: meta.helperCopy,
+        },
+        income: row.income,
+        inferred: row.inferred,
+    };
+}
+
+// -----------------------------
+// Q2 UI option shape (adapter output)
+// -----------------------------
+
 /**
- * Q2 UI option shape expected by Q2Niche.tsx
- * - `value` is the canonical niche slug
+ * Q2 UI option shape expected by the Q2 step.
+ * - `id` is the canonical niche slug
  * - `iconKey` is a stable string identifier (UI maps this to a Lucide icon component)
- * - `audienceLevel` is the canonical tier for Q2 badges
+ * - `benchmark` is the canonical (benchmarks-derived) signal bundle for Q2 UI
  */
 export type NicheUiOption = {
-    value: NicheSlug;
+    id: NicheSlug;
     label: string;
     includes?: string;
     keywords?: string[];
     iconKey: string;
-    audienceLevel: AudiencePreviewLevel;
+    benchmark: NicheBenchmarkUi;
 };
 
 type NicheMeta = {
@@ -136,7 +201,7 @@ const NICHE_META: Record<Segment, Partial<Record<NicheSlug, NicheMeta>>> = {
 
 /**
  * Canonical icon key mapping (moved out of UI).
- * NOTE: These keys must match the ICONS map in Q2Niche.tsx.
+ * NOTE: These keys must match the ICONS map in Q2Niche.tsx (or whatever replaces it).
  */
 export function getNicheIconKey(segment: Segment, niche: NicheSlug): string {
     // common
@@ -177,7 +242,7 @@ export function getNicheIconKey(segment: Segment, niche: NicheSlug): string {
         if (niche === "photo_video") return "Camera";
         if (niche === "real_estate_home") return "Home";
         if (niche === "events") return "PartyPopper";
-        // finance handled above (so TS doesn't narrow it out before we need it)
+        // finance handled above
     }
 
     return "Sparkles";
@@ -190,36 +255,35 @@ export function getNicheUiOptions(segment: Segment): NicheUiOption[] {
     return spec.map((o) => {
         const m = meta[o.id] ?? {};
         return {
-            value: o.id,
+            id: o.id,
             label: o.label,
             includes: m.includes,
             keywords: m.keywords,
             iconKey: getNicheIconKey(segment, o.id),
-            audienceLevel: getAudiencePreviewLevel(segment, o.id),
+            benchmark: getNicheBenchmarkUi(segment, o.id),
         };
     });
 }
 
 /**
- * Convenience helper (kept) — primary = first 6 non-"other", preserving adapter order.
- * (Q2Niche currently re-derives this itself, but keeping this export is harmless and may be used elsewhere.)
+ * Convenience helper — primary = first 6 non-"other", preserving adapter order.
  */
 export function getPrimaryNicheUiOptions(segment: Segment): NicheUiOption[] {
     const all = getNicheUiOptions(segment);
-    const withoutOther = all.filter((x) => x.value !== "other");
+    const withoutOther = all.filter((x) => x.id !== "other");
     return withoutOther.slice(0, 6);
 }
 
-/* ------------------------------------------------------------------ */
-/* Search suggestions — canonical hint copy for Q2 search input        */
-/* ------------------------------------------------------------------ */
+// -----------------------------
+// Search suggestions (canonical; derived from adapter data)
+// -----------------------------
 
 export type NicheSearchSuggestion = {
-    /** The text we display to the user (chip label / placeholder token) */
+    /** The text we display to the user (chip label / placeholder token). */
     label: string;
-    /** The search query we inject (can be same as label) */
+    /** The search query we inject (can be same as label). */
     query: string;
-    /** Optional mapping back to a real niche (useful for debugging) */
+    /** Optional mapping back to a real niche (useful for debugging). */
     niche?: NicheSlug;
 };
 
@@ -228,7 +292,7 @@ export type NicheSearchSuggestion = {
  *
  * Boundary rule:
  * - UI must not invent these strings.
- * - Suggestions must be derived from real spec+adapter data, so they stay valid when niches/meta change.
+ * - Suggestions are derived from real spec+adapter data, so they stay valid when niches/meta change.
  */
 export function getNicheSearchSuggestions(segment: Segment, limit = 4): NicheSearchSuggestion[] {
     const opts = getNicheUiOptions(segment);
@@ -247,19 +311,19 @@ export function getNicheSearchSuggestions(segment: Segment, limit = 4): NicheSea
 
     // Primary strategy: harvest from per-niche keywords (highest-signal “search-like” terms).
     for (const o of opts) {
-        if (o.value === "other") continue;
+        if (o.id === "other") continue;
 
         const ks = o.keywords ?? [];
         for (const k of ks) {
-            add(k, o.value);
+            add(k, o.id);
             if (out.length >= limit) return out;
         }
     }
 
     // Fallback: use niche labels (still “real”).
     for (const o of opts) {
-        if (o.value === "other") continue;
-        add(o.label, o.value);
+        if (o.id === "other") continue;
+        add(o.label, o.id);
         if (out.length >= limit) break;
     }
 

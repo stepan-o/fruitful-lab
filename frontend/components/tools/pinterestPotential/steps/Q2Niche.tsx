@@ -5,7 +5,7 @@
 // Visual polish:
 // - Stronger hierarchy (bigger niche labels)
 // - Meaningful icons per niche
-// - “Scope” clarified as Audience size (Huge/Medium/Specific) + better explainer copy
+// - “Scope” clarified as Demand size (Huge/Balanced/Focused) + better explainer copy
 //
 // Lint-safe:
 // - `selected` used
@@ -49,18 +49,13 @@ import {
     getNicheUiOptions,
     getNicheSearchPlaceholder,
     getNicheSearchSuggestions,
-    type AudiencePreviewLevel,
+    getSegmentHint,
+    type DemandPreviewLevel,
     type NicheSearchSuggestion,
     type NicheUiOption,
 } from "@/lib/tools/pinterestPotential/nicheUiAdapter";
 
-type PreviewLevel = AudiencePreviewLevel;
-
-function segmentHint(seg: Segment) {
-    if (seg === "content_creator") return "Pick what you publish about most.";
-    if (seg === "product_seller") return "Pick the category you sell into.";
-    return "Pick the industry you serve.";
-}
+type PreviewLevel = DemandPreviewLevel;
 
 function normalize(s: string) {
     return s.toLowerCase().trim();
@@ -111,25 +106,16 @@ function iconFromKey(iconKey: string): LucideIcon {
     return ICONS[iconKey] ?? Sparkles;
 }
 
-function audienceLabel(level: PreviewLevel) {
-    if (level === "Focused") return "Specific";
-    if (level === "Medium") return "Medium";
-    return "Huge";
-}
-
-function audienceCopy(level: PreviewLevel) {
-    if (level === "Focused") return "More specific audience → usually easier targeting + clearer messaging.";
-    if (level === "Medium") return "Balanced audience size → good mix of reach + relevance.";
-    return "Big audience → more competition, but more upside if you commit.";
-}
-
-function audienceBadge(level: PreviewLevel) {
+function demandBadge(level: PreviewLevel, helperCopy?: string, badgeLabel?: string) {
     const tone =
         level === "Focused"
             ? "bg-[color-mix(in_srgb,var(--brand-rust)_18%,transparent)] border-[color-mix(in_srgb,var(--brand-rust)_40%,var(--border))]"
             : level === "Medium"
                 ? "bg-[color-mix(in_srgb,var(--brand-bronze)_14%,transparent)] border-[color-mix(in_srgb,var(--brand-bronze)_40%,var(--border))]"
                 : "bg-[color-mix(in_srgb,var(--brand-raspberry)_12%,transparent)] border-[color-mix(in_srgb,var(--brand-raspberry)_35%,var(--border))]";
+
+    const label = badgeLabel ?? (level === "Focused" ? "Focused" : level === "Medium" ? "Balanced" : "Huge");
+    const title = helperCopy ?? "";
 
     return (
         <span
@@ -139,9 +125,9 @@ function audienceBadge(level: PreviewLevel) {
                 "text-[var(--foreground)]",
                 "whitespace-nowrap",
             ].join(" ")}
-            title={audienceCopy(level)}
+            title={title}
         >
-            Audience: {audienceLabel(level)}
+            Demand: {label}
         </span>
     );
 }
@@ -249,7 +235,9 @@ function Tile({
     onClick: () => void;
 }) {
     const Icon = iconFromKey(opt.iconKey);
-    const level = opt.audienceLevel as PreviewLevel;
+
+    const preview = opt.benchmark?.demand_preview;
+    const level = (preview?.level ?? "Medium") as PreviewLevel;
 
     return (
         <button
@@ -291,7 +279,7 @@ function Tile({
                             </div>
 
                             <div className="flex flex-col items-end gap-2">
-                                {audienceBadge(level)}
+                                {demandBadge(level, preview?.helperCopy, preview?.badgeLabel)}
                                 {active ? (
                                     <span className="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--border))] bg-[color-mix(in_srgb,var(--brand-raspberry)_14%,transparent)] px-3 py-1 text-xs text-[var(--foreground)]">
                                         <span
@@ -335,25 +323,25 @@ export default function Q2Niche({
         () => getNicheSearchSuggestions(segment as SpecSegment, 4),
         [segment],
     );
-    const placeholder = useMemo(
-        () => getNicheSearchPlaceholder(segment as SpecSegment),
-        [segment],
-    );
+    const placeholder = useMemo(() => getNicheSearchPlaceholder(segment as SpecSegment), [segment]);
 
     // Keep the same UI behavior: primary = first 6 non-"other" (ordered by adapter)
     const primary = useMemo(() => {
-        const withoutOther = all.filter((x) => x.value !== ("other" as NicheSlug));
+        const withoutOther = all.filter((x) => x.id !== ("other" as NicheSlug));
         return withoutOther.slice(0, 6);
     }, [all]);
 
-    const selected = useMemo(() => all.find((o) => o.value === (value as NicheSlug | undefined)), [all, value]);
+    const selected = useMemo(
+        () => all.find((o) => o.id === (value as NicheSlug | undefined)),
+        [all, value],
+    );
 
     const filtered = useMemo(() => {
         const qq = normalize(q);
         if (!qq) return all;
 
         return all.filter((o) => {
-            const hay = [o.label, o.value, o.includes ?? "", ...(o.keywords ?? [])].join(" ").toLowerCase();
+            const hay = [o.label, o.id, o.includes ?? "", ...(o.keywords ?? [])].join(" ").toLowerCase();
             return hay.includes(qq);
         });
     }, [all, q]);
@@ -389,7 +377,7 @@ export default function Q2Niche({
         if (e.key === "Enter") {
             e.preventDefault();
             const opt = filtered[activeIdx] ?? filtered[0];
-            if (opt) select(opt.value);
+            if (opt) select(opt.id);
             return;
         }
         if (e.key === "Escape") {
@@ -411,7 +399,7 @@ export default function Q2Niche({
     return (
         <div className="grid gap-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="text-sm text-[var(--foreground-muted)]">{segmentHint(segment)}</div>
+                <div className="text-sm text-[var(--foreground-muted)]">{getSegmentHint(segment as SpecSegment)}</div>
 
                 <div className="relative flex flex-wrap items-center gap-2">
                     <SmallChip dot>Popular for you</SmallChip>
@@ -443,7 +431,7 @@ export default function Q2Niche({
 
             <div className="grid gap-3 md:grid-cols-2">
                 {primary.map((opt) => (
-                    <Tile key={opt.value} opt={opt} active={opt.value === value} onClick={() => select(opt.value)} />
+                    <Tile key={opt.id} opt={opt} active={opt.id === value} onClick={() => select(opt.id)} />
                 ))}
 
                 <button
@@ -491,13 +479,18 @@ export default function Q2Niche({
                                         {selected.label}
                                     </div>
                                     <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                        {audienceCopy(selected.audienceLevel as PreviewLevel)}
+                                        {selected.benchmark?.demand_preview?.helperCopy ??
+                                            "Preview based on estimated monthly demand for this niche."}
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {audienceBadge(selected.audienceLevel as PreviewLevel)}
+                        {demandBadge(
+                            (selected.benchmark?.demand_preview?.level ?? "Medium") as PreviewLevel,
+                            selected.benchmark?.demand_preview?.helperCopy,
+                            selected.benchmark?.demand_preview?.badgeLabel,
+                        )}
                     </div>
                 </div>
             ) : null}
@@ -537,11 +530,7 @@ export default function Q2Niche({
                         {!q && suggestions.length > 0 ? (
                             <div className="flex flex-wrap gap-2">
                                 {suggestions.map((s) => (
-                                    <SmallChip
-                                        key={s.query}
-                                        asButton
-                                        onClick={() => applySuggestion(s)}
-                                    >
+                                    <SmallChip key={s.query} asButton onClick={() => applySuggestion(s)}>
                                         {s.label}
                                     </SmallChip>
                                 ))}
@@ -558,15 +547,17 @@ export default function Q2Niche({
                             <div className="text-xs font-semibold text-[var(--foreground)]">Popular for you</div>
                             <div className="grid gap-2 md:grid-cols-2">
                                 {primary.map((opt) => {
-                                    const active = opt.value === value;
+                                    const active = opt.id === value;
                                     const Icon = iconFromKey(opt.iconKey);
-                                    const level = opt.audienceLevel as PreviewLevel;
+
+                                    const preview = opt.benchmark?.demand_preview;
+                                    const level = (preview?.level ?? "Medium") as PreviewLevel;
 
                                     return (
                                         <button
-                                            key={opt.value}
+                                            key={opt.id}
                                             type="button"
-                                            onClick={() => select(opt.value)}
+                                            onClick={() => select(opt.id)}
                                             className={[
                                                 "fp-tap w-full rounded-xl border p-3 text-left transition-colors",
                                                 "border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_45%,transparent)] hover:bg-[var(--card-hover)]",
@@ -585,7 +576,7 @@ export default function Q2Niche({
                                                 </div>
 
                                                 <div className="flex flex-col items-end gap-2">
-                                                    {audienceBadge(level)}
+                                                    {demandBadge(level, preview?.helperCopy, preview?.badgeLabel)}
                                                     {active ? <span className="text-xs text-[var(--foreground)]">✓</span> : null}
                                                 </div>
                                             </div>
@@ -609,15 +600,17 @@ export default function Q2Niche({
                             <div className="grid gap-2">
                                 {filtered.map((opt, idx) => {
                                     const isActiveRow = idx === activeIdx;
-                                    const active = opt.value === value;
+                                    const active = opt.id === value;
                                     const Icon = iconFromKey(opt.iconKey);
-                                    const level = opt.audienceLevel as PreviewLevel;
+
+                                    const preview = opt.benchmark?.demand_preview;
+                                    const level = (preview?.level ?? "Medium") as PreviewLevel;
 
                                     return (
                                         <button
-                                            key={opt.value}
+                                            key={opt.id}
                                             type="button"
-                                            onClick={() => select(opt.value)}
+                                            onClick={() => select(opt.id)}
                                             onMouseEnter={() => setActiveIdx(idx)}
                                             className={[
                                                 "fp-tap w-full rounded-xl border p-3 text-left transition-colors",
@@ -643,7 +636,7 @@ export default function Q2Niche({
                                                 </div>
 
                                                 <div className="flex flex-col items-end gap-2">
-                                                    {audienceBadge(level)}
+                                                    {demandBadge(level, preview?.helperCopy, preview?.badgeLabel)}
                                                     {active ? <span className="text-xs text-[var(--foreground)]">✓</span> : null}
                                                 </div>
                                             </div>

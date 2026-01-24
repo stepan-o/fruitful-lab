@@ -12,34 +12,40 @@
  * - opportunity (and OpportunityType)
  *
  * NOTE:
- * - Numbers are intentionally “range-y” and tunable.
+ * - Numbers are intentionally “range-y” and tunable *where it matters* (niche + segment ranges).
+ * - The MAU → session-pool transition uses SINGLE fixed scalars (no additional ranges),
+ *   otherwise everything becomes meaningless.
  * - Keep these as a config surface, not hard-coded in compute.
  * - This module must fail-loud on invalid config (no soft fallbacks).
  *
  * ---------------------------------------------------------------------
- * Demand model (US & Canada only) — UPDATED (2026-01-22)
+ * Demand model (US & Canada only) — UPDATED (2026-01-23)
  * ---------------------------------------------------------------------
  * We anchor a *macro monthly session pool* from a quotable platform ceiling (MAU),
- * then apply conservative “reality” discounts and wide, tunable penetration ranges.
+ * then apply conservative “practical reach” discounts and tunable niche/segment ranges.
  *
  * 1) Platform ceiling (quotable)
  *    - Pinterest Investor Relations (Q1 2025): Avg. US & Canada MAU = 102M
  *      https://investor.pinterestinc.com/news-and-events/press-releases/press-releases-details/2025/Pinterest-Announces-First-Quarter-2025-Results-Delivers-16-Revenue-Growth-and-Record-Users/default.aspx
- *    - Cross-check: Pinterest Q4 2024 results (SEC/8-K): US & Canada MAU ~101M
+ *    - Cross-check: Pinterest FY2024 / Q4 results (SEC/10-K): US & Canada MAU ~101M
  *      https://www.sec.gov/Archives/edgar/data/1506293/000150629325000022/pins-20241231.htm
  *
- * 2) Practical session pool discount (conservative “non-major publisher” territory)
- *    - We treat MAU as a “ceiling” that includes very light/rare activity.
- *    - We apply a conservative practical fraction to form a macro monthly session pool.
- *      This is intentionally range-y: it’s a modeling knob, not a claim about Pinterest internals.
- *    - Default: 0.3% of MAU → 102,000,000 * 0.003 = 306,000 sessions/month (macro pool).
+ * 2) Practical addressable USER pool discount (conservative “non-major publisher” territory)
+ *    - We treat MAU as a ceiling that includes very light/rare activity.
+ *    - We apply a conservative practical fraction to form a macro monthly *user* pool.
+ *      This is a modeling knob (NOT a claim about Pinterest internals).
+ *    - Default: 0.3% of MAU → 102,000,000 * 0.003 = 306,000 practical users/month.
  *
- * 3) Niche “penetration” (monthly)
- *    - We model niche penetration as:
- *        “% of the macro session pool likely to be associated with this niche in a typical month”
- *      This is *not* a partition; one user can create sessions across multiple niches.
+ * 3) Convert practical users → practical sessions (single scalar; NO ranges)
+ *    - We apply ONE fixed average sessions-per-user-per-month value.
+ *    - This avoids compounding ranges on top of ranges.
+ *    - Default: 4 sessions/user/month → 306,000 * 4 = 1,224,000 sessions/month (macro pool).
  *
- * 4) Segment multipliers (applied on top of niche penetration)
+ * 4) Niche “penetration” (monthly)
+ *    - “% of the macro session pool likely to be associated with this niche in a typical month”
+ *      Not a partition; one user can create sessions across multiple niches.
+ *
+ * 5) Segment multipliers (applied on top of niche penetration)
  *    - Even within the same niche, addressable sessions depend on what the business *is*:
  *      content creator vs product seller vs service provider.
  */
@@ -95,19 +101,35 @@ export function benchmarkKey(segment: Segment, niche: NicheSlug): BenchmarkKey {
 export const PINTEREST_USCA_MAU_CEILING = 102_000_000;
 
 /**
- * Practical fraction of MAU used to form a conservative macro monthly session pool
+ * Practical fraction of MAU used to form a conservative macro monthly *user* pool
  * for “non-major publisher / no heavy paid spend” territory.
  *
  * Tunable, but keep conservative by default.
  */
-export const PRACTICAL_SESSION_POOL_FRACTION = 0.003; // 0.3%
+export const PRACTICAL_ACTIVE_USER_FRACTION = 0.003; // 0.3%
+
+/**
+ * Fixed average sessions per practical active user per month.
+ *
+ * IMPORTANT:
+ * - Single scalar only (no ranges), to avoid turning everything into meaningless compounding ranges.
+ * - This is a modeling knob, not a claim about Pinterest internals.
+ */
+export const AVG_SESSIONS_PER_PRACTICAL_USER_PER_MONTH = 4;
+
+/**
+ * Macro monthly practical user pool (US/CA), before niche & segment slicing.
+ */
+export const PRACTICAL_USERS_USCA_POOL = Math.round(
+    PINTEREST_USCA_MAU_CEILING * PRACTICAL_ACTIVE_USER_FRACTION
+); // 306,000
 
 /**
  * Macro monthly session pool across all niches (SESSIONS/month), before niche & segment slicing.
  */
 export const PRACTICAL_SESSIONS_USCA_POOL = Math.round(
-    PINTEREST_USCA_MAU_CEILING * PRACTICAL_SESSION_POOL_FRACTION
-); // 306,000
+    PRACTICAL_USERS_USCA_POOL * AVG_SESSIONS_PER_PRACTICAL_USER_PER_MONTH
+); // 1,224,000
 
 // -----------------------------
 // Niche penetration (monthly)

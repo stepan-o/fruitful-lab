@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect, useId, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import type { Segment, StepBaseProps } from "./ppcV2Types";
 
 /**
@@ -27,16 +28,34 @@ import type { Segment, StepBaseProps } from "./ppcV2Types";
 const THUMB_BASE = "/tools/pinterestPotential/thumbs";
 const HELP_ID = "ppc-q7-help";
 
+/**
+ * IMPORTANT (v1.1 contract):
+ * Q7 MUST emit canonical spec slugs (PrimaryGoal) — not legacy shorthand labels.
+ */
 type GoalValue =
     | "traffic"
-    | "subscribers"
-    | "affiliate"
+    | "email_subscribers"
+    | "affiliate_revenue"
+    | "course_product_sales"
     | "sales"
-    | "retargeting"
-    | "discovery"
-    | "leads"
-    | "webinar"
-    | "authority";
+    | "retargeting_pool"
+    | "new_customer_discovery"
+    | "leads_calls"
+    | "webinar_signups"
+    | "authority_visibility";
+
+const GOAL_VALUES = [
+    "traffic",
+    "email_subscribers",
+    "affiliate_revenue",
+    "course_product_sales",
+    "sales",
+    "retargeting_pool",
+    "new_customer_discovery",
+    "leads_calls",
+    "webinar_signups",
+    "authority_visibility",
+] as const satisfies readonly GoalValue[];
 
 type Opt = {
     v: GoalValue;
@@ -45,6 +64,14 @@ type Opt = {
     level: 1 | 2 | 3 | 4; // used for asset index ONLY (no hierarchy)
     blurb: string; // ultra short
 };
+
+type HelpBulletsMap = Record<GoalValue, string[]> & { common: string[] };
+
+function createEmptyHelpMap(common: string[]): HelpBulletsMap {
+    const base = {} as Record<GoalValue, string[]>;
+    for (const k of GOAL_VALUES) base[k] = [];
+    return { ...base, common };
+}
 
 function segmentAssetPrefix(seg: Segment): "content-creator" | "product-seller" | "service-provider" {
     if (seg === "content_creator") return "content-creator";
@@ -72,21 +99,32 @@ function useResolvedIsDark() {
         const apply = () => setIsDark(compute());
         apply();
 
-        const onMql = () => apply();
-        if (mql) {
-            if ("addEventListener" in mql) (mql as any).addEventListener("change", onMql);
-            else (mql as any).addListener(onMql);
-        }
+        const onMql = (_ev: MediaQueryListEvent) => apply();
+
+        // TS-safe legacy support without `any`
+        type LegacyMql = {
+            addListener: (listener: (ev: MediaQueryListEvent) => void) => void;
+            removeListener: (listener: (ev: MediaQueryListEvent) => void) => void;
+        };
+
+        const addMqlListener = (mq: MediaQueryList) => {
+            if (typeof mq.addEventListener === "function") mq.addEventListener("change", onMql);
+            else (mq as unknown as LegacyMql).addListener(onMql);
+        };
+
+        const removeMqlListener = (mq: MediaQueryList) => {
+            if (typeof mq.removeEventListener === "function") mq.removeEventListener("change", onMql);
+            else (mq as unknown as LegacyMql).removeListener(onMql);
+        };
+
+        if (mql) addMqlListener(mql);
 
         const obs = new MutationObserver(() => apply());
         obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
 
         return () => {
             obs.disconnect();
-            if (mql) {
-                if ("removeEventListener" in mql) (mql as any).removeEventListener("change", onMql);
-                else (mql as any).removeListener(onMql);
-            }
+            if (mql) removeMqlListener(mql);
         };
     }, []);
 
@@ -109,16 +147,16 @@ function SelectedChip() {
                 "shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_10px_24px_rgba(0,0,0,0.35)]",
             ].join(" ")}
         >
-      <span
-          className={[
-              "h-2.5 w-2.5 rounded-full",
-              "bg-[var(--brand-raspberry)]",
-              "shadow-[0_0_0_2px_rgba(0,0,0,0.30)_inset,0_0_0_1px_rgba(255,255,255,0.12)]",
-          ].join(" ")}
-          aria-hidden="true"
-      />
-      Selected
-    </span>
+            <span
+                className={[
+                    "h-2.5 w-2.5 rounded-full",
+                    "bg-[var(--brand-raspberry)]",
+                    "shadow-[0_0_0_2px_rgba(0,0,0,0.30)_inset,0_0_0_1px_rgba(255,255,255,0.12)]",
+                ].join(" ")}
+                aria-hidden="true"
+            />
+            Selected
+        </span>
     );
 }
 
@@ -137,8 +175,8 @@ function GoalBadge({ subtitle, selected }: { subtitle: string; selected: boolean
             ].join(" ")}
             title={subtitle}
         >
-      <span className={selected ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]"}>{subtitle}</span>
-    </span>
+            <span className={selected ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]"}>{subtitle}</span>
+        </span>
     );
 }
 
@@ -151,17 +189,13 @@ function Thumb({ src, selected, isDark }: { src: string; selected: boolean; isDa
                 "aspect-[3/4]",
             ].join(" ")}
         >
-            <img
+            <Image
                 src={src}
                 alt=""
                 aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                className={[
-                    "absolute inset-0 h-full w-full object-cover",
-                    "ppc-goalThumb",
-                    selected ? "ppc-goalThumb-selected" : "",
-                ].join(" ")}
+                fill
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                className={["object-cover", "ppc-goalThumb", selected ? "ppc-goalThumb-selected" : ""].join(" ")}
                 onError={(e) => {
                     // No fallbacks; if this 404s, hide image (keeps layout stable).
                     const img = e.currentTarget;
@@ -198,87 +232,84 @@ function Thumb({ src, selected, isDark }: { src: string; selected: boolean; isDa
     );
 }
 
-function helpBulletsBySegment(seg: Segment) {
+function helpBulletsBySegment(seg: Segment): HelpBulletsMap {
     const common = [
         "Pick the outcome you want first — we’ll tailor the “potential” math to that.",
         "If two feel true, choose what you want in the next 60–90 days.",
     ];
 
+    const map = createEmptyHelpMap(common);
+
     if (seg === "content_creator") {
-        return {
-            traffic: [
-                "Optimizes for website sessions and top-of-funnel reads.",
-                "Best if your monetization happens on-site.",
-                "Think: blog posts, SEO pages, long-form content.",
-            ],
-            subscribers: [
-                "Optimizes for email list growth (lead magnets + opt-ins).",
-                "Best if you sell later via email.",
-                "Think: freebies, newsletters, challenges.",
-            ],
-            affiliate: [
-                "Optimizes for revenue via affiliate clicks and intent pages.",
-                "Best if you have buyer-intent content.",
-                "Think: roundups, “best of”, comparisons.",
-            ],
-            sales: [
-                "Optimizes for direct offer conversions.",
-                "Best if you have a clear product/course + landing page.",
-                "Think: evergreen funnel, launch pages, checkout.",
-            ],
-            common,
-        };
+        map.traffic = [
+            "Optimizes for website sessions and top-of-funnel reads.",
+            "Best if your monetization happens on-site.",
+            "Think: blog posts, SEO pages, long-form content.",
+        ];
+        map.email_subscribers = [
+            "Optimizes for email list growth (lead magnets + opt-ins).",
+            "Best if you sell later via email.",
+            "Think: freebies, newsletters, challenges.",
+        ];
+        map.affiliate_revenue = [
+            "Optimizes for revenue via affiliate clicks and intent pages.",
+            "Best if you have buyer-intent content.",
+            "Think: roundups, “best of”, comparisons.",
+        ];
+        map.course_product_sales = [
+            "Optimizes for direct offer conversions.",
+            "Best if you have a clear product/course + landing page.",
+            "Think: evergreen funnel, launch pages, checkout.",
+        ];
+        return map;
     }
 
     if (seg === "product_seller") {
-        return {
-            sales: [
-                "Optimizes for purchase intent and product discovery.",
-                "Best if your product pages convert on mobile.",
-                "Think: collections, best-sellers, bundles.",
-            ],
-            subscribers: [
-                "Optimizes for list growth (promos, VIP, waitlists).",
-                "Best if email is your conversion engine.",
-                "Think: discounts, early access, drops.",
-            ],
-            retargeting: [
-                "Optimizes for building a warm audience to re-market to.",
-                "Best if you’ll run conversion ads later.",
-                "Think: catalog views, product engagement.",
-            ],
-            discovery: [
-                "Optimizes for reaching new audiences and new-to-brand demand.",
-                "Best if you’re expanding beyond current buyers.",
-                "Think: category entry points + hero products.",
-            ],
-            common,
-        };
+        map.sales = [
+            "Optimizes for purchase intent and product discovery.",
+            "Best if your product pages convert on mobile.",
+            "Think: collections, best-sellers, bundles.",
+        ];
+        map.email_subscribers = [
+            "Optimizes for list growth (promos, VIP, waitlists).",
+            "Best if email is your conversion engine.",
+            "Think: discounts, early access, drops.",
+        ];
+        map.retargeting_pool = [
+            "Optimizes for building a warm audience to re-market to.",
+            "Best if you’ll run conversion ads later.",
+            "Think: catalog views, product engagement.",
+        ];
+        map.new_customer_discovery = [
+            "Optimizes for reaching new audiences and new-to-brand demand.",
+            "Best if you’re expanding beyond current buyers.",
+            "Think: category entry points + hero products.",
+        ];
+        return map;
     }
 
-    return {
-        leads: [
-            "Optimizes for inquiries, consult calls, and form fills.",
-            "Best if your offer is high-value + high-intent.",
-            "Think: application pages, booking pages.",
-        ],
-        subscribers: [
-            "Optimizes for lead capture (content → nurture).",
-            "Best if you educate + build trust before selling.",
-            "Think: guides, checklists, email sequences.",
-        ],
-        webinar: [
-            "Optimizes for event signups (live or evergreen).",
-            "Best if your webinar is your main conversion lever.",
-            "Think: registration page + reminders.",
-        ],
-        authority: [
-            "Optimizes for credibility + top-of-funnel visibility.",
-            "Best if you sell via trust + expertise over time.",
-            "Think: proof, case studies, “how it works”.",
-        ],
-        common,
-    };
+    // service_provider
+    map.leads_calls = [
+        "Optimizes for inquiries, consult calls, and form fills.",
+        "Best if your offer is high-value + high-intent.",
+        "Think: application pages, booking pages.",
+    ];
+    map.email_subscribers = [
+        "Optimizes for lead capture (content → nurture).",
+        "Best if you educate + build trust before selling.",
+        "Think: guides, checklists, email sequences.",
+    ];
+    map.webinar_signups = [
+        "Optimizes for event signups (live or evergreen).",
+        "Best if your webinar is your main conversion lever.",
+        "Think: registration page + reminders.",
+    ];
+    map.authority_visibility = [
+        "Optimizes for credibility + top-of-funnel visibility.",
+        "Best if you sell via trust + expertise over time.",
+        "Think: proof, case studies, “how it works”.",
+    ];
+    return map;
 }
 
 function HelpDetails({ segment, opts }: { segment: Segment; opts: Opt[] }) {
@@ -294,32 +325,33 @@ function HelpDetails({ segment, opts }: { segment: Segment; opts: Opt[] }) {
                     "flex items-center justify-between gap-3",
                 ].join(" ")}
             >
-        <span className="inline-flex items-center gap-2">
-          <span
-              aria-hidden="true"
-              className={[
-                  "grid h-7 w-7 place-items-center rounded-full border",
-                  "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)]",
-              ].join(" ")}
-          >
-            <span className="h-2 w-2 rounded-full bg-[var(--brand-bronze)]" />
-          </span>
-          How do I choose the right goal (fast)?
-        </span>
+                <span className="inline-flex items-center gap-2">
+                    <span
+                        aria-hidden="true"
+                        className={[
+                            "grid h-7 w-7 place-items-center rounded-full border",
+                            "border-[var(--ppc-chip-border)] bg-[var(--ppc-chip-bg)]",
+                        ].join(" ")}
+                    >
+                        <span className="h-2 w-2 rounded-full bg-[var(--brand-bronze)]" />
+                    </span>
+                    How do I choose the right goal (fast)?
+                </span>
 
                 <span
                     aria-hidden="true"
-                    className={["text-xs text-[var(--foreground-muted)] transition-transform", "group-open:rotate-180"].join(" ")}
+                    className={["text-xs text-[var(--foreground-muted)] transition-transform", "group-open:rotate-180"].join(
+                        " ",
+                    )}
                 >
-          ▼
-        </span>
+                    ▼
+                </span>
             </summary>
 
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 {opts.map((o) => {
-                    const perGoal = (bullets as any)[o.v] as string[] | undefined;
-                    const common = (bullets as any).common as string[] | undefined;
-                    const rows = [...(perGoal ?? []), ...(common ?? [])].slice(0, 6);
+                    const perGoal = bullets[o.v];
+                    const rows = [...perGoal, ...bullets.common].slice(0, 6);
 
                     return (
                         <div key={o.v} className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-3">
@@ -336,10 +368,10 @@ function HelpDetails({ segment, opts }: { segment: Segment; opts: Opt[] }) {
                             <ul className="mt-2 grid gap-1.5 text-xs text-[var(--foreground-muted)]">
                                 {rows.map((b) => (
                                     <li key={b} className="flex gap-2">
-                    <span
-                        className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-bronze)] opacity-70"
-                        aria-hidden="true"
-                    />
+                                        <span
+                                            className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-bronze)] opacity-70"
+                                            aria-hidden="true"
+                                        />
                                         <span className="min-w-0">{b}</span>
                                     </li>
                                 ))}
@@ -391,21 +423,21 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
         const base: Record<Segment, Opt[]> = {
             content_creator: [
                 { v: "traffic", title: "Traffic", subtitle: "Website visits", level: 1, blurb: "Send more people to your content." },
-                { v: "subscribers", title: "Email subscribers", subtitle: "List growth", level: 2, blurb: "Grow a warm audience you own." },
-                { v: "affiliate", title: "Affiliate revenue", subtitle: "Buyer intent", level: 3, blurb: "Earn from clicks that convert." },
-                { v: "sales", title: "Course/product sales", subtitle: "Direct sales", level: 4, blurb: "Move people to your offer." },
+                { v: "email_subscribers", title: "Email subscribers", subtitle: "List growth", level: 2, blurb: "Grow a warm audience you own." },
+                { v: "affiliate_revenue", title: "Affiliate revenue", subtitle: "Buyer intent", level: 3, blurb: "Earn from clicks that convert." },
+                { v: "course_product_sales", title: "Course/product sales", subtitle: "Direct sales", level: 4, blurb: "Move people to your offer." },
             ],
             product_seller: [
                 { v: "sales", title: "Sales", subtitle: "Purchases", level: 1, blurb: "Drive product buys from Pinterest." },
-                { v: "subscribers", title: "Email subscribers", subtitle: "VIP list", level: 2, blurb: "Build a list for promos + drops." },
-                { v: "retargeting", title: "Retargeting pool", subtitle: "Warm audience", level: 3, blurb: "Build an audience to re-market to." },
-                { v: "discovery", title: "New customer discovery", subtitle: "New-to-brand", level: 4, blurb: "Reach people who don’t know you yet." },
+                { v: "email_subscribers", title: "Email subscribers", subtitle: "VIP list", level: 2, blurb: "Build a list for promos + drops." },
+                { v: "retargeting_pool", title: "Retargeting pool", subtitle: "Warm audience", level: 3, blurb: "Build an audience to re-market to." },
+                { v: "new_customer_discovery", title: "New customer discovery", subtitle: "New-to-brand", level: 4, blurb: "Reach people who don’t know you yet." },
             ],
             service_provider: [
-                { v: "leads", title: "Leads/calls", subtitle: "Inquiries", level: 1, blurb: "Get booked (forms + consult calls)." },
-                { v: "subscribers", title: "Email subscribers", subtitle: "Nurture", level: 2, blurb: "Capture leads and build trust." },
-                { v: "webinar", title: "Webinar signups", subtitle: "Events", level: 3, blurb: "Fill a webinar (live or evergreen)." },
-                { v: "authority", title: "Authority/visibility", subtitle: "Credibility", level: 4, blurb: "Be the obvious expert in your niche." },
+                { v: "leads_calls", title: "Leads/calls", subtitle: "Inquiries", level: 1, blurb: "Get booked (forms + consult calls)." },
+                { v: "email_subscribers", title: "Email subscribers", subtitle: "Nurture", level: 2, blurb: "Capture leads and build trust." },
+                { v: "webinar_signups", title: "Webinar signups", subtitle: "Events", level: 3, blurb: "Fill a webinar (live or evergreen)." },
+                { v: "authority_visibility", title: "Authority/visibility", subtitle: "Credibility", level: 4, blurb: "Be the obvious expert in your niche." },
             ],
         };
 
@@ -506,8 +538,8 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
                 </div>
 
                 <span id={listId} className="sr-only">
-          Primary goal options
-        </span>
+                    Primary goal options
+                </span>
             </div>
 
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4" role="radiogroup" aria-labelledby={listId}>
@@ -538,17 +570,17 @@ export default function Q7Goal({ segment, value, onChange, onAutoAdvance }: Q7Pr
                                     : "",
                             ].join(" ")}
                         >
-              <span
-                  aria-hidden="true"
-                  className={[
-                      "pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity",
-                      selected ? "opacity-100" : "group-hover:opacity-20",
-                  ].join(" ")}
-                  style={{
-                      background:
-                          "radial-gradient(520px 240px at 18% 10%, rgba(255,255,255,0.07), transparent 58%), linear-gradient(90deg, color-mix(in srgb, var(--brand-raspberry) 30%, transparent), color-mix(in srgb, var(--brand-bronze) 20%, transparent))",
-                  }}
-              />
+                            <span
+                                aria-hidden="true"
+                                className={[
+                                    "pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity",
+                                    selected ? "opacity-100" : "group-hover:opacity-20",
+                                ].join(" ")}
+                                style={{
+                                    background:
+                                        "radial-gradient(520px 240px at 18% 10%, rgba(255,255,255,0.07), transparent 58%), linear-gradient(90deg, color-mix(in srgb, var(--brand-raspberry) 30%, transparent), color-mix(in srgb, var(--brand-bronze) 20%, transparent))",
+                                }}
+                            />
                             <span
                                 aria-hidden="true"
                                 className="pointer-events-none absolute inset-0 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.05)_inset]"

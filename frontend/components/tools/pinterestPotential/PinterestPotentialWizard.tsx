@@ -423,8 +423,17 @@ export default function PinterestPotentialWizard({
         if (si === 1) {
             if (!a.segment) e["Q1"] = "This question is required.";
         } else if (si === 2) {
-            if (!a.segment) e["Q1"] = "Select your business type first.";
-            if (!a.niche) e["Q2"] = "This question is required.";
+            const seg = a.segment;
+            const segOk = seg === "content_creator" || seg === "product_seller" || seg === "service_provider";
+
+            if (!segOk) e["Q1"] = "Select your business type first.";
+
+            if (!a.niche) {
+                e["Q2"] = "This question is required.";
+            } else if (segOk) {
+                const nicheOk = getNicheOptions(seg).some((o) => o.id === (a.niche as NicheSlug));
+                if (!nicheOk) e["Q2"] = "This question is required.";
+            }
         } else if (si === 3) {
             if (!a.volume_bucket) e["Q3"] = "This question is required.";
         } else if (si === 4) {
@@ -434,8 +443,17 @@ export default function PinterestPotentialWizard({
         } else if (si === 6) {
             if (!a.offer_clarity) e["Q6"] = "This question is required.";
         } else if (si === 7) {
-            if (!a.segment) e["Q1"] = "Select your business type first.";
-            if (!a.primary_goal) e["Q7"] = "This question is required.";
+            const seg = a.segment;
+            const segOk = seg === "content_creator" || seg === "product_seller" || seg === "service_provider";
+
+            if (!segOk) e["Q1"] = "Select your business type first.";
+
+            if (!a.primary_goal) {
+                e["Q7"] = "This question is required.";
+            } else if (segOk) {
+                const goalOk = getPrimaryGoalOptions(seg).some((o) => o.id === (a.primary_goal as PrimaryGoal));
+                if (!goalOk) e["Q7"] = "This question is required.";
+            }
         } else if (si === 8) {
             if (!a.growth_mode) e["Q8"] = "This question is required.";
         }

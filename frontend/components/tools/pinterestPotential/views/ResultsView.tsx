@@ -240,14 +240,7 @@ function CandyBurstOverlay({
 
     return (
         <div className="fixed inset-0 z-[60] flex items-center justify-center" onClick={onClose} role="presentation">
-            <div
-                className="absolute inset-0"
-                aria-hidden="true"
-                style={{
-                    background:
-                        "radial-gradient(1000px 600px at 50% 45%, rgba(255,77,141,0.20), rgba(0,0,0,0.86) 68%), radial-gradient(800px 520px at 65% 25%, rgba(77,220,255,0.10), rgba(0,0,0,0) 60%)",
-                }}
-            />
+            <div className="absolute inset-0 ppc-celebrate-scrim" aria-hidden="true" />
 
             <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
                 {pieces.map((p) => (
@@ -1026,11 +1019,11 @@ export default function ResultsView({
                     inset: 0;
                     pointer-events: none;
                     background: linear-gradient(
-                        120deg,
-                        rgba(255, 77, 141, 0.2),
-                        rgba(255, 209, 102, 0.16),
-                        rgba(77, 220, 255, 0.14),
-                        rgba(255, 77, 141, 0.18)
+                            120deg,
+                            rgba(255, 77, 141, 0.2),
+                            rgba(255, 209, 102, 0.16),
+                            rgba(77, 220, 255, 0.14),
+                            rgba(255, 77, 141, 0.18)
                     );
                     background-size: 240% 240%;
                     animation: ppcHeroGlow 6.5s ease-in-out infinite;
@@ -1044,9 +1037,9 @@ export default function ResultsView({
                     inset: 0;
                     pointer-events: none;
                     background: radial-gradient(
-                        900px 260px at 20% 10%,
-                        rgba(255, 255, 255, 0.14),
-                        rgba(255, 255, 255, 0) 60%
+                            900px 260px at 20% 10%,
+                            rgba(255, 255, 255, 0.14),
+                            rgba(255, 255, 255, 0) 60%
                     );
                     opacity: 0.55;
                     z-index: 0;

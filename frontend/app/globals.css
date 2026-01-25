@@ -83,6 +83,33 @@
 
     --ppc-cta-shadow: rgba(0, 0, 0, 0.16);
 
+    --ppc-celebrate-scrim: radial-gradient(
+            1200px 560px at 50% 34%,
+            rgba(255, 255, 255, 0.96) 0%,
+            rgba(255, 255, 255, 0.90) 58%,
+            rgba(255, 255, 255, 0.82) 100%
+    ),
+    radial-gradient(
+            980px 620px at 18% 18%,
+            color-mix(in srgb, var(--brand-bronze) 14%, transparent) 0%,
+            transparent 70%
+    ),
+    radial-gradient(
+            980px 620px at 86% 68%,
+            color-mix(in srgb, var(--brand-heading) 8%, transparent) 0%,
+            transparent 72%
+    ),
+    radial-gradient(
+            900px 520px at 82% 22%,
+            color-mix(in srgb, var(--brand-raspberry) 10%, transparent) 0%,
+            transparent 76%
+    ),
+    linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.58) 0%,
+            rgba(255, 255, 255, 0.94) 100%
+    );
+
     /* Welcome backdrop tuning */
     --ppc-welcome-dim: 0.16; /* (kept) used by DARK base */
 
@@ -140,9 +167,7 @@
     /* -------------------------------------------------------
        ✅ JetBrains/CSS parser quieting:
        Put complex function-y values behind var() so inspections
-       don't try to type-check the inner gradient args.
-    ------------------------------------------------------- */
-
+       don't try to type `.ppc-hero-frame::before` */
     /* border gradient used by .ppc-hero-frame::before */
     --ppc-hero-frame-border-gradient: linear-gradient(
             135deg,
@@ -245,6 +270,14 @@ html[data-theme="dark"] {
     --ppc-chip-border: rgba(255, 255, 255, 0.16);
     --ppc-noise-opacity: 0.1;
     --ppc-cta-shadow: rgba(0, 0, 0, 0.55);
+
+    --ppc-celebrate-scrim: radial-gradient(
+            1200px 520px at 55% 35%,
+            rgba(0, 0, 0, var(--ppc-welcome-dim)) 0%,
+            rgba(0, 0, 0, 0.78) 62%,
+            rgba(0, 0, 0, 0.92) 100%
+    ),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.58));
 
     --ppc-welcome-dim: 0.34;
     --ppc-welcome-opacity: 0.68;
@@ -557,6 +590,10 @@ html[data-theme="dark"] .theme-toggle-label-dark {
     0% { opacity: 0; transform: scale(0.9); }
     40% { opacity: 1; transform: scale(1); }
     100% { opacity: 0; transform: scale(0.9); }
+}
+
+.ppc-celebrate-scrim {
+    background: var(--ppc-celebrate-scrim);
 }
 
 /* ------------------------------

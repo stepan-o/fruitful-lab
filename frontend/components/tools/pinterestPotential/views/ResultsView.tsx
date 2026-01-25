@@ -1,4 +1,7 @@
-// frontend/components/tools/pinterestPotential/views/ResultsView.tsx
+// THIS IS AN ARCHIVED VERSION OF THE RESULTS VIEW SAVED FOR POTENTIAL FUTURE USE
+// DO NOT IMPORT INTO THE MAIN PINTEREST POTENTIAL CALCULATOR
+// USE frontend/components/tools/pinterestPotential/views/ResultsView.tsx INSTEAD
+// frontend/components/tools/pinterestPotential/views/archive/ResultsView.tsx
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -382,7 +385,15 @@ function CandyBurstOverlay({
     );
 }
 
-function ResultsHero({ variant }: { variant: HeroVariant }) {
+function ResultsHero({ 
+    variant,
+    onEditAnswers,
+    onStartOver,
+}: { 
+    variant: HeroVariant;
+    onEditAnswers: () => void;
+    onStartOver: () => void;
+}) {
     const copy = useMemo(() => {
         if (variant === "locked") {
             return {
@@ -426,15 +437,45 @@ function ResultsHero({ variant }: { variant: HeroVariant }) {
                 <div className="ppc-sheen" />
             </div>
 
-            <div className="relative flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                    <div className="text-xs font-semibold tracking-wide text-[var(--foreground-muted)]">{copy.eyebrow}</div>
-                    <div className="mt-1 font-heading text-2xl text-[var(--foreground)] sm:text-3xl">{copy.title}</div>
-                    <div className="mt-2 max-w-2xl text-sm text-[var(--foreground-muted)]">{copy.body}</div>
+            <div className="relative">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-4">
+                    <div>
+                        <div className="text-xs font-semibold tracking-wide text-[var(--foreground-muted)]">{copy.eyebrow}</div>
+                        <div className="mt-1 font-heading text-2xl text-[var(--foreground)] sm:text-3xl">{copy.title}</div>
+                        <div className="mt-2 max-w-2xl text-sm text-[var(--foreground-muted)]">{copy.body}</div>
+                    </div>
+
+                    <div className="shrink-0">
+                        <CheckBadge text="Completed • 8/8" />
+                    </div>
                 </div>
 
-                <div className="shrink-0">
-                    <CheckBadge text="Completed • 8/8" />
+                {/* Action buttons */}
+                <div className="flex flex-wrap items-center gap-3">
+                    <a
+                        href="https://cal.com/fruitfullab/pinterest-strategy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block rounded-md bg-[var(--brand-raspberry)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]"
+                    >
+                        Book a Strategy Call →
+                    </a>
+
+                    <button
+                        type="button"
+                        onClick={onEditAnswers}
+                        className="rounded-md border border-[var(--border)] bg-[var(--background)]/50 px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--background)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]"
+                    >
+                        Edit answers
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={onStartOver}
+                        className="rounded-md px-3 py-2 text-sm text-[var(--foreground-muted)] hover:text-[var(--foreground)] focus:outline-none"
+                    >
+                        Start over
+                    </button>
                 </div>
             </div>
 
@@ -575,84 +616,353 @@ export default function ResultsView({
 
     const insight = (insightLine ?? results.insight_line ?? null) as string | null;
 
-    const ResultsCards = (
-        <div className="grid gap-3 sm:grid-cols-3">
-            <MetricCard
-                label="Base monthly demand (sessions)"
-                value={demandBaseSessionsRangeLabel}
-                sublabel="Benchmark slice (US+CA) for your segment + niche."
-            />
-            <MetricCard
-                label="Likely Pinterest sessions"
-                value={likelySessionsRangeLabel}
-                sublabel="Base demand × your distribution capacity."
-            />
-            <MetricCard
-                label={primaryOutcomeLabel}
-                value={primaryOutcomeRangeLabel}
-                sublabel="Outcome based on your business type."
-            />
-        </div>
-    );
+    // Helper to format numbers with K/M suffix
+    const formatNumber = (num: number): string => {
+        if (num >= 1000000) {
+            return `${Math.round(num / 100000) / 10}M`;
+        }
+        if (num >= 1000) {
+            return `${Math.round(num / 100) / 10}K`;
+        }
+        return num.toString();
+    };
 
-    const MicroRow = (
-        <div className="mt-3 grid gap-3 sm:grid-cols-3">
-            <MetricCard
-                label="Distribution capacity"
-                value={distributionCapacityLabel}
-                sublabel="Volume + visuals + ads plan + indices + goal micro-adjust."
-            />
-            <MetricCard
-                label="Conversion readiness"
-                value={conversionReadinessLabel}
-                sublabel="Website experience × offer clarity."
-            />
-            <MetricCard
-                label="Audience income range (USD)"
-                value={incomeRangeLabel}
-                sublabel="Context only (not a prediction)."
-            />
-        </div>
-    );
+    const formatRange = (low: number, high: number): string => {
+        return `${formatNumber(low)}–${formatNumber(high)}`;
+    };
 
-    const ProductExtras = useMemo(() => {
-        if (!purchaseIntentRangeLabel) return null;
-        if (results.segment_outcome.kind !== "product_seller") return null;
-
-        const buckets = results.segment_outcome.assumptions?.aov_buckets ?? [];
-        const revenue = results.segment_outcome.revenue_by_aov_est ?? ({} as Record<string, { low: number; high: number }>);
-
+    // Influenced by pill component
+    const InfluencedByPill = ({ label, impact }: { label: string; impact: "positive" | "neutral" | "negative" }) => {
+        const colorClass = impact === "positive" ? "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400" : 
+                           impact === "negative" ? "border-orange-500/30 bg-orange-500/10 text-orange-700 dark:text-orange-400" : 
+                           "border-[var(--border)] bg-[var(--background)]/50 text-[var(--foreground-muted)]";
+        
+        const icon = impact === "positive" ? "↗" : impact === "negative" ? "↘" : "→";
+        
         return (
-            <div className="mt-3">
-                <div className="grid gap-3 sm:grid-cols-2">
-                    <MetricCard
-                        label="Purchase-intent sessions"
-                        value={purchaseIntentRangeLabel}
-                        sublabel="Estimated share of likely sessions with buying intent."
-                    />
+            <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs ${colorClass}`}>
+                <span>{label}</span>
+                <span className="text-sm">{icon}</span>
+            </span>
+        );
+    };
 
-                    <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                        <div className="text-xs text-[var(--foreground-muted)]">Revenue potential (by AOV)</div>
-                        <div className="mt-2 grid gap-2">
-                            {buckets.map((b) => {
-                                const r = revenue[b.id];
-                                const v = r ? `${Math.round(r.low).toLocaleString()}–${Math.round(r.high).toLocaleString()}` : "—";
-                                return (
-                                    <div key={b.id} className="flex items-center justify-between gap-3 text-sm">
-                                        <div className="text-[var(--foreground)]">{b.label}</div>
-                                        <div className="font-semibold text-[var(--foreground)]">{v}</div>
-                                    </div>
-                                );
-                            })}
+    // Funnel card component
+    const FunnelCard = ({
+        step,
+        label,
+        value,
+        sublabel,
+        width = "full",
+        influencedBy,
+    }: {
+        step: string;
+        label: string;
+        value: string;
+        sublabel?: string;
+        width?: "full" | "medium" | "narrow";
+        influencedBy?: Array<{ label: string; impact: "positive" | "neutral" | "negative" }>;
+    }) => {
+        const widthClass = width === "full" ? "w-full" : width === "medium" ? "sm:w-[85%]" : "sm:w-[70%]";
+        
+        return (
+            <div className={`${widthClass} mx-auto`}>
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 relative">
+                    <div className="text-xs font-semibold text-[var(--foreground-muted)] mb-1">{step}</div>
+                    <div className="text-sm text-[var(--foreground)] mb-2">{label}</div>
+                    <div className="font-heading text-3xl sm:text-4xl text-[var(--foreground)] mb-3">{value}</div>
+                    {sublabel && <div className="text-xs text-[var(--foreground-muted)] mb-3">{sublabel}</div>}
+                    
+                    {/* Influenced by pills */}
+                    {influencedBy && influencedBy.length > 0 && (
+                        <div className="pt-3 border-t border-[var(--border)]">
+                            <div className="text-xs text-[var(--foreground-muted)] mb-2">Influenced by:</div>
+                            <div className="flex flex-wrap gap-1.5">
+                                {influencedBy.map((item, idx) => (
+                                    <InfluencedByPill key={idx} label={item.label} impact={item.impact} />
+                                ))}
+                            </div>
                         </div>
-                        <div className="mt-2 text-xs text-[var(--foreground-muted)]">
-                            Rough estimate: purchase-intent sessions × CR (by AOV) × conversion readiness × AOV.
+                    )}
+                </div>
+            </div>
+        );
+    };
+
+    // Arrow between funnel steps
+    const FunnelArrow = () => (
+        <div className="flex justify-center py-2">
+            <svg className="w-6 h-6 text-[var(--foreground-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    );
+
+    const ResultsCards = useMemo(() => {
+        const kind = results.segment_outcome.kind;
+        const sessions = results.demand.likely_pinterest_sessions_est;
+        const distCapacity = results.demand.distribution_capacity_m;
+        const convReadiness = results.demand.conversion_readiness_m;
+        
+        // Determine impact for pills
+        const getImpact = (multiplier: number): "positive" | "neutral" | "negative" => {
+            if (multiplier > 1.05) return "positive";
+            if (multiplier < 0.95) return "negative";
+            return "neutral";
+        };
+        
+        const distImpact = getImpact(distCapacity);
+        const convImpact = getImpact(convReadiness);
+        
+        if (kind === "content_creator") {
+            const websiteVisitsLow = Math.round(sessions.low * 0.15);
+            const websiteVisitsHigh = Math.round(sessions.high * 0.35);
+            
+            return (
+                <div className="space-y-2">
+                    {/* Step 1: Pinterest Sessions */}
+                    <FunnelCard
+                        step="STEP 1: REACH"
+                        label="Pinterest monthly reach"
+                        value={formatRange(sessions.low, sessions.high)}
+                        sublabel="People who could see your content"
+                        width="full"
+                        influencedBy={[
+                            { label: "Publishing volume", impact: distImpact },
+                            { label: "Visual library", impact: distImpact },
+                            { label: "Niche demand", impact: "neutral" },
+                        ]}
+                    />
+                    
+                    <FunnelArrow />
+                    
+                    {/* Step 2: Website Visits - PRIMARY OUTCOME */}
+                    <FunnelCard
+                        step="STEP 2: TRAFFIC"
+                        label="Potential website visits"
+                        value={formatRange(websiteVisitsLow, websiteVisitsHigh)}
+                        sublabel="Based on 15-35% click-through rate"
+                        width="medium"
+                        influencedBy={[
+                            { label: "Pin quality", impact: "neutral" },
+                            { label: "CTR optimization", impact: "neutral" },
+                        ]}
+                    />
+                    
+                    <FunnelArrow />
+                    
+                    {/* Step 3: Conversions */}
+                    <FunnelCard
+                        step="STEP 3: CONVERSIONS"
+                        label="Email signups / sales"
+                        value="Depends on your setup"
+                        sublabel="Influenced by offer clarity + site experience"
+                        width="narrow"
+                        influencedBy={[
+                            { label: "Website quality", impact: convImpact },
+                            { label: "Offer clarity", impact: convImpact },
+                        ]}
+                    />
+                </div>
+            );
+        }
+        
+        if (kind === "product_seller") {
+            const purchaseIntent = results.segment_outcome.monthly_purchase_intent_sessions_est;
+            const revenue = results.segment_outcome.revenue_by_aov_est;
+            const midAov = revenue["100_250"] || revenue["50_100"];
+            
+            return (
+                <div className="space-y-2">
+                    {/* Step 1: Pinterest Sessions */}
+                    <FunnelCard
+                        step="STEP 1: REACH"
+                        label="Pinterest monthly reach"
+                        value={formatRange(sessions.low, sessions.high)}
+                        sublabel="People who could see your products"
+                        width="full"
+                        influencedBy={[
+                            { label: "Publishing volume", impact: distImpact },
+                            { label: "Visual library", impact: distImpact },
+                            { label: "Niche demand", impact: "neutral" },
+                        ]}
+                    />
+                    
+                    <FunnelArrow />
+                    
+                    {/* Step 2: Purchase-Intent Sessions */}
+                    <FunnelCard
+                        step="STEP 2: SHOPPING INTENT"
+                        label="Purchase-intent sessions"
+                        value={formatRange(purchaseIntent.low, purchaseIntent.high)}
+                        sublabel="Visitors actively looking to buy"
+                        width="medium"
+                        influencedBy={[
+                            { label: "Product appeal", impact: "neutral" },
+                            { label: "Niche buying intent", impact: "neutral" },
+                        ]}
+                    />
+                    
+                    <FunnelArrow />
+                    
+                    {/* Step 3: Revenue - PRIMARY OUTCOME */}
+                    <FunnelCard
+                        step="STEP 3: REVENUE"
+                        label="Monthly revenue potential"
+                        value={midAov ? `$${formatRange(midAov.low, midAov.high)}` : "—"}
+                        sublabel="Typical order value: $100–$250"
+                        width="narrow"
+                        influencedBy={[
+                            { label: "Website quality", impact: convImpact },
+                            { label: "Offer clarity", impact: convImpact },
+                            { label: "AOV range", impact: "neutral" },
+                        ]}
+                    />
+                </div>
+            );
+        }
+        
+        if (kind === "service_provider") {
+            const websiteVisitsLow = Math.round(sessions.low * 0.15);
+            const websiteVisitsHigh = Math.round(sessions.high * 0.35);
+            const calls = results.segment_outcome.monthly_discovery_calls_est;
+            
+            return (
+                <div className="space-y-2">
+                    {/* Step 1: Pinterest Sessions */}
+                    <FunnelCard
+                        step="STEP 1: REACH"
+                        label="Pinterest monthly reach"
+                        value={formatRange(sessions.low, sessions.high)}
+                        sublabel="People who could discover your services"
+                        width="full"
+                        influencedBy={[
+                            { label: "Publishing volume", impact: distImpact },
+                            { label: "Visual library", impact: distImpact },
+                            { label: "Niche demand", impact: "neutral" },
+                        ]}
+                    />
+                    
+                    <FunnelArrow />
+                    
+                    {/* Step 2: Website Visits */}
+                    <FunnelCard
+                        step="STEP 2: TRAFFIC"
+                        label="Potential website visits"
+                        value={formatRange(websiteVisitsLow, websiteVisitsHigh)}
+                        sublabel="Based on 15-35% click-through rate"
+                        width="medium"
+                        influencedBy={[
+                            { label: "Pin quality", impact: "neutral" },
+                            { label: "CTR optimization", impact: "neutral" },
+                        ]}
+                    />
+                    
+                    <FunnelArrow />
+                    
+                    {/* Step 3: Discovery Calls - PRIMARY OUTCOME */}
+                    <FunnelCard
+                        step="STEP 3: QUALIFIED LEADS"
+                        label="Monthly discovery calls"
+                        value={formatRange(calls.low, calls.high)}
+                        sublabel="Qualified leads booking calls with you"
+                        width="narrow"
+                        influencedBy={[
+                            { label: "Website quality", impact: convImpact },
+                            { label: "Offer clarity", impact: convImpact },
+                            { label: "Booking flow", impact: "neutral" },
+                        ]}
+                    />
+                </div>
+            );
+        }
+        
+        return null;
+    }, [results]);
+
+    // "What drove this" section with interactive pills including question numbers
+    const WhatDroveThis = useMemo(() => {
+        const distCapacity = results.demand.distribution_capacity_m;
+        const convReadiness = results.demand.conversion_readiness_m;
+        
+        const FactorPill = ({ label, question, value, impact }: { label: string; question: string; value: string; impact: "boost" | "neutral" | "limit" }) => {
+            const colorClass = impact === "boost" ? "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400" : 
+                               impact === "limit" ? "border-orange-500/30 bg-orange-500/10 text-orange-700 dark:text-orange-400" : 
+                               "border-[var(--border)] bg-[var(--background)] text-[var(--foreground-muted)]";
+            
+            const icon = impact === "boost" ? "↗" : impact === "limit" ? "↘" : "→";
+            
+            return (
+                <div 
+                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition-all hover:scale-105 ${colorClass}`}
+                    title={`${question}: ${value}`}
+                >
+                    <span className="font-medium">{label}</span>
+                    <span className="opacity-60 text-[10px]">{question}</span>
+                    <span className="opacity-70">{value}</span>
+                    <span className="text-base">{icon}</span>
+                </div>
+            );
+        };
+        
+        const volumeAnswer = recap.find(r => r.label.toLowerCase().includes("content") || r.label.toLowerCase().includes("publish") || r.label.toLowerCase().includes("promos"))?.value ?? "—";
+        const visualAnswer = recap.find(r => r.label.toLowerCase().includes("visual"))?.value ?? "—";
+        const siteAnswer = recap.find(r => r.label.toLowerCase().includes("website"))?.value ?? "—";
+        const offerAnswer = recap.find(r => r.label.toLowerCase().includes("offer") || r.label.toLowerCase().includes("magnet"))?.value ?? "—";
+        const adsAnswer = recap.find(r => r.label.toLowerCase().includes("ads"))?.value ?? "—";
+        
+        return (
+            <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
+                <div className="text-sm font-semibold text-[var(--foreground)] mb-3">What drove this</div>
+                
+                <div className="space-y-3">
+                    <div>
+                        <div className="text-xs text-[var(--foreground-muted)] mb-2">Distribution (reach)</div>
+                        <div className="flex flex-wrap gap-2">
+                            <FactorPill 
+                                label="Publishing volume" 
+                                question="Q3"
+                                value={volumeAnswer}
+                                impact={distCapacity > 1.05 ? "boost" : distCapacity < 0.95 ? "limit" : "neutral"}
+                            />
+                            <FactorPill 
+                                label="Visual library" 
+                                question="Q4"
+                                value={visualAnswer}
+                                impact={distCapacity > 1.05 ? "boost" : distCapacity < 0.95 ? "limit" : "neutral"}
+                            />
+                            <FactorPill 
+                                label="Growth mode" 
+                                question="Q8"
+                                value={adsAnswer}
+                                impact={adsAnswer.toLowerCase().includes("ads") || adsAnswer.toLowerCase().includes("yes") ? "boost" : "neutral"}
+                            />
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div className="text-xs text-[var(--foreground-muted)] mb-2">Conversion (outcomes)</div>
+                        <div className="flex flex-wrap gap-2">
+                            <FactorPill 
+                                label="Website quality" 
+                                question="Q5"
+                                value={siteAnswer}
+                                impact={convReadiness > 1.05 ? "boost" : convReadiness < 0.95 ? "limit" : "neutral"}
+                            />
+                            <FactorPill 
+                                label="Offer clarity" 
+                                question="Q6"
+                                value={offerAnswer}
+                                impact={convReadiness > 1.05 ? "boost" : convReadiness < 0.95 ? "limit" : "neutral"}
+                            />
                         </div>
                     </div>
                 </div>
             </div>
         );
-    }, [purchaseIntentRangeLabel, results]);
+    }, [results, recap]);
+
+    const ProductExtras = null; // Revenue now shown in SegmentFunnel
 
     const LeadCaptureHardLock = showHardLockGate ? (
         <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
@@ -791,43 +1101,209 @@ export default function ResultsView({
             <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
                 <div className="mb-3 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results</div>
 
-                <ResultsHero variant={heroVariant} />
+                <ResultsHero variant={heroVariant} onEditAnswers={onEditAnswers} onStartOver={onStartOver} />
 
                 {LeadCaptureHardLock}
 
                 <div className={showHardLockGate ? "mt-4 opacity-40 blur-[2px] pointer-events-none select-none" : "mt-4"}>
                     {ResultsCards}
 
-                    {MicroRow}
+                    {/* Product seller: AOV revenue breakdown */}
+                    {results.segment_outcome.kind === "product_seller" && (
+                        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
+                            <div className="text-sm font-semibold text-[var(--foreground)] mb-3">Revenue by price point</div>
+                            
+                            {(() => {
+                                const revenue = results.segment_outcome.revenue_by_aov_est ?? {};
+                                const buckets = results.segment_outcome.assumptions?.aov_buckets ?? [];
+                                
+                                return (
+                                    <div className="space-y-2">
+                                        {buckets.map((bucket) => {
+                                            const r = revenue[bucket.id];
+                                            if (!r) return null;
+                                            
+                                            return (
+                                                <div key={bucket.id} className="flex items-center justify-between p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] hover:border-[var(--brand-raspberry)]/30 transition-colors">
+                                                    <div className="text-sm text-[var(--foreground)]">{bucket.label}</div>
+                                                    <div className="font-heading text-lg text-[var(--foreground)]">
+                                                        ${formatNumber(r.low)}–${formatNumber(r.high)}/mo
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                );
+                            })()}
+                        </div>
+                    )}
 
-                    {ProductExtras}
+                    {WhatDroveThis}
 
+                    {/* Niche context cards with fixed hover tooltips */}
+                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                        <div className="group relative rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 transition-all hover:border-[var(--brand-raspberry)]/30 hover:shadow-sm">
+                            <div className="flex items-center gap-2 text-xs text-[var(--foreground-muted)]">
+                                <span>Seasonality</span>
+                                <svg className="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div className="mt-1 text-sm font-semibold text-[var(--foreground)] capitalize">
+                                {results.inferred.seasonality_index}
+                            </div>
+                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                                {results.inferred.seasonality_index === "low" ? "Steady demand year-round" : 
+                                 results.inferred.seasonality_index === "medium" ? "Some seasonal variation" : 
+                                 "Strong seasonal peaks"}
+                            </div>
+                            {/* Hover tooltip - fixed opacity */}
+                            <div className="pointer-events-none absolute left-0 top-full z-10 mt-2 hidden w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs shadow-xl opacity-0 group-hover:block group-hover:opacity-100 transition-opacity">
+                                <div className="font-semibold text-[var(--foreground)] mb-1">Based on:</div>
+                                <div className="text-[var(--foreground-muted)]">
+                                    Historical Pinterest search patterns for your niche ({recap.find(r => r.label.toLowerCase().includes("niche"))?.value || "your niche"})
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="group relative rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 transition-all hover:border-[var(--brand-raspberry)]/30 hover:shadow-sm">
+                            <div className="flex items-center gap-2 text-xs text-[var(--foreground-muted)]">
+                                <span>Competition</span>
+                                <svg className="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div className="mt-1 text-sm font-semibold text-[var(--foreground)] capitalize">
+                                {results.inferred.competition_index}
+                            </div>
+                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                                {results.inferred.competition_index === "low" ? "Less crowded niche" : 
+                                 results.inferred.competition_index === "medium" ? "Moderate competition" : 
+                                 "Highly competitive niche"}
+                            </div>
+                            {/* Hover tooltip - fixed opacity */}
+                            <div className="pointer-events-none absolute left-0 top-full z-10 mt-2 hidden w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs shadow-xl opacity-0 group-hover:block group-hover:opacity-100 transition-opacity">
+                                <div className="font-semibold text-[var(--foreground)] mb-1">Based on:</div>
+                                <div className="text-[var(--foreground-muted)]">
+                                    Number of active publishers and content saturation in your niche category
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="group relative rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 transition-all hover:border-[var(--brand-raspberry)]/30 hover:shadow-sm">
+                            <div className="flex items-center gap-2 text-xs text-[var(--foreground-muted)]">
+                                <span>Audience income</span>
+                                <svg className="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div className="mt-1 text-sm font-semibold text-[var(--foreground)]">{incomeRangeLabel}</div>
+                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">Context, not prediction</div>
+                            {/* Hover tooltip - fixed opacity */}
+                            <div className="pointer-events-none absolute left-0 top-full z-10 mt-2 hidden w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs shadow-xl opacity-0 group-hover:block group-hover:opacity-100 transition-opacity">
+                                <div className="font-semibold text-[var(--foreground)] mb-1">Based on:</div>
+                                <div className="text-[var(--foreground-muted)]">
+                                    Typical household income of Pinterest users engaged with this niche (US/Canada). This doesn't predict your specific buyer income.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Strategic insight - moved below main results */}
                     {insight ? (
-                        <div className="mt-3 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 text-sm text-[var(--foreground)]">
-                            {insight}
+                        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
+                            <div className="text-xs font-semibold uppercase tracking-wide text-[var(--brand-raspberry)] mb-2">
+                                Strategic Insight
+                            </div>
+                            <div className="text-sm text-[var(--foreground)] leading-relaxed">
+                                {insight}
+                            </div>
                         </div>
                     ) : null}
 
-                    <div className="mt-3 flex flex-wrap gap-2 text-xs text-[var(--foreground-muted)]">
-                        <span className="rounded-full border border-[var(--border)] bg-[var(--background)] px-2 py-1">
-                            Seasonality: <span className="text-[var(--foreground)]">{results.inferred.seasonality_index}</span>
-                        </span>
-                        <span className="rounded-full border border-[var(--border)] bg-[var(--background)] px-2 py-1">
-                            Competition: <span className="text-[var(--foreground)]">{results.inferred.competition_index}</span>
-                        </span>
-                        {showTags ? (
-                            <>
-                                {tags.slice(0, 6).map((t) => (
-                                    <span
-                                        key={t}
-                                        className="rounded-full border border-[var(--border)] bg-[var(--background)] px-2 py-1"
-                                    >
-                                        <span className="text-[var(--foreground)]">{t}</span>
-                                    </span>
-                                ))}
-                            </>
-                        ) : null}
-                    </div>
+                    {/* Expanded methodology with more details */}
+                    <details className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] overflow-hidden">
+                        <summary className="cursor-pointer px-6 py-4 hover:bg-[var(--background)] transition-colors flex items-center justify-between">
+                            <div className="text-sm font-semibold text-[var(--foreground)]">How we calculated this</div>
+                            <svg className="w-4 h-4 text-[var(--foreground-muted)] transition-transform details-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        
+                        <div className="px-6 pb-6 space-y-4 border-t border-[var(--border)] bg-[var(--background)]">
+                            {/* Foundation */}
+                            <div>
+                                <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
+                                    Foundation
+                                </div>
+                                <div className="space-y-2 text-sm">
+                                    <div>
+                                        <span className="text-[var(--foreground-muted)]">Platform size: </span>
+                                        <span className="text-[var(--foreground)]">
+                                            ~102M monthly users in US/Canada{" "}
+                                            <a 
+                                                href="https://investor.pinterestinc.com/news-and-events/press-releases/" 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                className="text-[var(--brand-raspberry)] hover:underline"
+                                            >
+                                                (source)
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span className="text-[var(--foreground-muted)]">Your niche reach: </span>
+                                        <span className="text-[var(--foreground)]">{demandBaseSessionsRangeLabel} sessions/month</span>
+                                    </div>
+                                    <div className="text-xs text-[var(--foreground-muted)] italic">
+                                        This is calculated as a percentage of total platform activity focused on {recap.find(r => r.label.toLowerCase().includes("niche"))?.value || "your niche"}, based on Pinterest search trends and category data.
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* How answers affect results */}
+                            <div>
+                                <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
+                                    How Your Answers Affect Results
+                                </div>
+                                <div className="space-y-2 text-sm">
+                                    <div className="text-[var(--foreground-muted)]">
+                                        <strong className="text-[var(--foreground)]">Distribution (Reach):</strong> Your publishing volume, visual quality, and whether you use ads all influence how many people see your content. Consistent publishing + strong visuals + ads = maximum reach.
+                                    </div>
+                                    <div className="text-[var(--foreground-muted)]">
+                                        <strong className="text-[var(--foreground)]">Conversion (Outcomes):</strong> Website speed, clarity, and offer attractiveness determine what percentage of visitors take action. A fast, clear site with compelling offers converts better.
+                                    </div>
+                                    <div className="text-[var(--foreground-muted)]">
+                                        <strong className="text-[var(--foreground)]">Niche factors:</strong> Seasonality and competition are estimated from historical Pinterest data for your category. These create natural ceilings or boost factors independent of your execution.
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Assumptions */}
+                            <div>
+                                <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
+                                    Key Assumptions
+                                </div>
+                                <ul className="space-y-1.5 text-sm text-[var(--foreground-muted)]">
+                                    <li>• Click-through rates: 15-35% (industry benchmarks)</li>
+                                    <li>• Conversion rates: Vary by segment and offer quality</li>
+                                    {results.segment_outcome.kind === "product_seller" && (
+                                        <li>• Purchase intent: ~25% of sessions for product categories</li>
+                                    )}
+                                    <li>• US & Canada only (international traffic not included)</li>
+                                    <li>• Organic reach prioritized (ads provide incremental boost)</li>
+                                </ul>
+                            </div>
+
+                            {/* Disclaimer */}
+                            <div className="pt-3 border-t border-[var(--border)]">
+                                <div className="text-xs text-[var(--foreground-muted)] leading-relaxed">
+                                    <strong>Important:</strong> These are modeled estimates based on platform data, niche benchmarks, and your inputs. 
+                                    Actual results depend on content quality, consistency, SEO optimization, and market timing. This is not a guarantee of results.
+                                </div>
+                            </div>
+                        </div>
+                    </details>
 
                     {LeadCaptureSoftLock}
                 </div>
@@ -845,24 +1321,6 @@ export default function ResultsView({
                             </div>
                         ))}
                     </div>
-                </div>
-
-                <div className="mt-6 flex items-center justify-between">
-                    <button
-                        type="button"
-                        onClick={onStartOver}
-                        className="rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                    >
-                        Start over
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={onEditAnswers}
-                        className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                    >
-                        Edit answers
-                    </button>
                 </div>
 
                 <div className="mt-4 text-sm text-[var(--foreground-muted)]">

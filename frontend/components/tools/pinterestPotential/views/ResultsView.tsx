@@ -1,7 +1,4 @@
-// THIS IS AN ARCHIVED VERSION OF THE RESULTS VIEW SAVED FOR POTENTIAL FUTURE USE
-// DO NOT IMPORT INTO THE MAIN PINTEREST POTENTIAL CALCULATOR
-// USE frontend/components/tools/pinterestPotential/views/ResultsView.tsx INSTEAD
-// frontend/components/tools/pinterestPotential/views/archive/ResultsView.tsx
+// frontend/components/tools/pinterestPotential/views/ResultsView.tsx
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -207,7 +204,7 @@ function CandyBurstOverlay({
             const spin = (Math.random() < 0.5 ? -1 : 1) * (520 + Math.random() * 980);
             const sway = (Math.random() < 0.5 ? -1 : 1) * (18 + Math.random() * 44);
 
-            return {
+           return {
                 id: `candy-${Date.now()}-${i}`,
                 leftPct: clamp(left, -5, 105),
                 topPx: clamp(top, 0, window.innerHeight),
@@ -242,11 +239,7 @@ function CandyBurstOverlay({
     if (!open) return null;
 
     return (
-        <div
-            className="fixed inset-0 z-[60] flex items-center justify-center"
-            onClick={onClose}
-            role="presentation"
-        >
+        <div className="fixed inset-0 z-[60] flex items-center justify-center" onClick={onClose} role="presentation">
             {/* Darkened premium backdrop + soft color bloom */}
             <div
                 className="absolute inset-0"
@@ -297,9 +290,7 @@ function CandyBurstOverlay({
 
             {/* Message */}
             <div className="relative mx-6 max-w-xl text-center">
-                {headline ? (
-                    <div className="font-heading text-3xl sm:text-4xl text-white drop-shadow">{headline}</div>
-                ) : null}
+                {headline ? <div className="font-heading text-3xl sm:text-4xl text-white drop-shadow">{headline}</div> : null}
                 {subhead ? <div className="mt-2 text-sm sm:text-base text-white/80">{subhead}</div> : null}
 
                 <button
@@ -385,35 +376,27 @@ function CandyBurstOverlay({
     );
 }
 
-function ResultsHero({ 
-    variant,
-    onEditAnswers,
-    onStartOver,
-}: { 
-    variant: HeroVariant;
-    onEditAnswers: () => void;
-    onStartOver: () => void;
-}) {
+function ResultsHero({ variant }: { variant: HeroVariant }) {
     const copy = useMemo(() => {
         if (variant === "locked") {
             return {
                 eyebrow: "Completed",
                 title: "All set — your snapshot is ready.",
-                body: "Enter your email to reveal the full results (and keep a copy).",
+                body: "Want help turning this into a plan? Book a strategy call.",
             };
         }
         if (variant === "ready") {
             return {
                 eyebrow: "Completed",
                 title: "Snapshot complete.",
-                body: "Your results are ready. Want a copy emailed to you?",
+                body: "Want help turning this into a plan? Book a strategy call.",
             };
         }
         if (variant === "emailed") {
             return {
                 eyebrow: "Sent",
                 title: "Done — check your inbox.",
-                body: "We just emailed your snapshot. You can keep this tab open too.",
+                body: "Want help turning this into a plan? Book a strategy call.",
             };
         }
         return {
@@ -450,7 +433,7 @@ function ResultsHero({
                     </div>
                 </div>
 
-                {/* Action buttons */}
+                {/* Single CTA */}
                 <div className="flex flex-wrap items-center gap-3">
                     <a
                         href="https://cal.com/fruitfullab/pinterest-strategy"
@@ -460,22 +443,6 @@ function ResultsHero({
                     >
                         Book a Strategy Call →
                     </a>
-
-                    <button
-                        type="button"
-                        onClick={onEditAnswers}
-                        className="rounded-md border border-[var(--border)] bg-[var(--background)]/50 px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--background)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]"
-                    >
-                        Edit answers
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={onStartOver}
-                        className="rounded-md px-3 py-2 text-sm text-[var(--foreground-muted)] hover:text-[var(--foreground)] focus:outline-none"
-                    >
-                        Start over
-                    </button>
                 </div>
             </div>
 
@@ -540,7 +507,7 @@ export default function ResultsView({
                                         primaryOutcomeRangeLabel,
                                         purchaseIntentRangeLabel,
                                         incomeRangeLabel,
-                                        insightLine,
+                                        insightLine: _insightLine,
                                         showHardLockGate,
                                         showSoftLockGate,
                                         privacyMicrocopy,
@@ -555,19 +522,13 @@ export default function ResultsView({
                                         onUnlock,
                                         onEmailResults,
                                         recap,
-                                        onStartOver,
-                                        onEditAnswers,
+                                        onStartOver: _onStartOver,
+                                        onEditAnswers: _onEditAnswers,
                                     }: ResultsViewProps) {
     const locked = showHardLockGate;
     const emailed = optionalLeadSubmitted;
 
-    const heroVariant: HeroVariant = emailed
-        ? "emailed"
-        : locked
-            ? "locked"
-            : showSoftLockGate
-                ? "ready"
-                : "unlocked";
+    const heroVariant: HeroVariant = emailed ? "emailed" : locked ? "locked" : showSoftLockGate ? "ready" : "unlocked";
 
     const [celebrate, setCelebrate] = useState(false);
     const [celebrateCfg, setCelebrateCfg] = useState<{
@@ -608,14 +569,6 @@ export default function ResultsView({
         prevEmailedRef.current = emailed;
     }, [emailed]);
 
-    const conversionReadinessLabel = useMemo(() => {
-        const m = results?.demand?.conversion_readiness_m;
-        if (typeof m !== "number" || !Number.isFinite(m)) return "—";
-        return `${m.toFixed(2)}×`;
-    }, [results]);
-
-    const insight = (insightLine ?? results.insight_line ?? null) as string | null;
-
     // Helper to format numbers with K/M suffix
     const formatNumber = (num: number): string => {
         if (num >= 1000000) {
@@ -631,59 +584,29 @@ export default function ResultsView({
         return `${formatNumber(low)}–${formatNumber(high)}`;
     };
 
-    // Influenced by pill component
-    const InfluencedByPill = ({ label, impact }: { label: string; impact: "positive" | "neutral" | "negative" }) => {
-        const colorClass = impact === "positive" ? "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400" : 
-                           impact === "negative" ? "border-orange-500/30 bg-orange-500/10 text-orange-700 dark:text-orange-400" : 
-                           "border-[var(--border)] bg-[var(--background)]/50 text-[var(--foreground-muted)]";
-        
-        const icon = impact === "positive" ? "↗" : impact === "negative" ? "↘" : "→";
-        
-        return (
-            <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs ${colorClass}`}>
-                <span>{label}</span>
-                <span className="text-sm">{icon}</span>
-            </span>
-        );
-    };
-
-    // Funnel card component
+    // Funnel card component (no "Influenced by" section)
     const FunnelCard = ({
-        step,
-        label,
-        value,
-        sublabel,
-        width = "full",
-        influencedBy,
-    }: {
+                            step,
+                            label,
+                            value,
+                            sublabel,
+                            width = "full",
+                        }: {
         step: string;
         label: string;
         value: string;
         sublabel?: string;
         width?: "full" | "medium" | "narrow";
-        influencedBy?: Array<{ label: string; impact: "positive" | "neutral" | "negative" }>;
     }) => {
         const widthClass = width === "full" ? "w-full" : width === "medium" ? "sm:w-[85%]" : "sm:w-[70%]";
-        
+
         return (
             <div className={`${widthClass} mx-auto`}>
                 <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 relative">
                     <div className="text-xs font-semibold text-[var(--foreground-muted)] mb-1">{step}</div>
                     <div className="text-sm text-[var(--foreground)] mb-2">{label}</div>
                     <div className="font-heading text-3xl sm:text-4xl text-[var(--foreground)] mb-3">{value}</div>
-                    {sublabel && <div className="text-xs text-[var(--foreground-muted)] mb-3">{sublabel}</div>}
-                    
-                    {/* Influenced by pills */}
-                    {influencedBy && influencedBy.length > 0 && (
-                        <div className="pt-3 border-t border-[var(--border)]">
-                            <div className="text-xs text-[var(--foreground-muted)] mb-2">Influenced by:</div>
-                            <div className="flex flex-wrap gap-1.5">
-                                {influencedBy.map((item, idx) => (
-                                    <InfluencedByPill key={idx} label={item.label} impact={item.impact} />
-                                ))}
-                            </div>
-                        </div>
-                    )}
+                    {sublabel ? <div className="text-xs text-[var(--foreground-muted)]">{sublabel}</div> : null}
                 </div>
             </div>
         );
@@ -701,266 +624,122 @@ export default function ResultsView({
     const ResultsCards = useMemo(() => {
         const kind = results.segment_outcome.kind;
         const sessions = results.demand.likely_pinterest_sessions_est;
-        const distCapacity = results.demand.distribution_capacity_m;
-        const convReadiness = results.demand.conversion_readiness_m;
-        
-        // Determine impact for pills
-        const getImpact = (multiplier: number): "positive" | "neutral" | "negative" => {
-            if (multiplier > 1.05) return "positive";
-            if (multiplier < 0.95) return "negative";
-            return "neutral";
-        };
-        
-        const distImpact = getImpact(distCapacity);
-        const convImpact = getImpact(convReadiness);
-        
+
         if (kind === "content_creator") {
             const websiteVisitsLow = Math.round(sessions.low * 0.15);
             const websiteVisitsHigh = Math.round(sessions.high * 0.35);
-            
+
             return (
                 <div className="space-y-2">
-                    {/* Step 1: Pinterest Sessions */}
                     <FunnelCard
                         step="STEP 1: REACH"
-                        label="Pinterest monthly reach"
+                        label="Monthly Pinterest reach (unique people)"
                         value={formatRange(sessions.low, sessions.high)}
-                        sublabel="People who could see your content"
+                        sublabel="Estimated unique people who could see your content (not impressions)."
                         width="full"
-                        influencedBy={[
-                            { label: "Publishing volume", impact: distImpact },
-                            { label: "Visual library", impact: distImpact },
-                            { label: "Niche demand", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 2: Website Visits - PRIMARY OUTCOME */}
+
                     <FunnelCard
                         step="STEP 2: TRAFFIC"
-                        label="Potential website visits"
+                        label="From that reach: potential website visits"
                         value={formatRange(websiteVisitsLow, websiteVisitsHigh)}
-                        sublabel="Based on 15-35% click-through rate"
+                        sublabel="Assumes ~15–35% click-through from Pinterest to your site."
                         width="medium"
-                        influencedBy={[
-                            { label: "Pin quality", impact: "neutral" },
-                            { label: "CTR optimization", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 3: Conversions */}
+
                     <FunnelCard
                         step="STEP 3: CONVERSIONS"
-                        label="Email signups / sales"
+                        label="From those visits: email signups / sales"
                         value="Depends on your setup"
-                        sublabel="Influenced by offer clarity + site experience"
+                        sublabel="Your website experience + offer clarity determine what converts."
                         width="narrow"
-                        influencedBy={[
-                            { label: "Website quality", impact: convImpact },
-                            { label: "Offer clarity", impact: convImpact },
-                        ]}
                     />
                 </div>
             );
         }
-        
+
         if (kind === "product_seller") {
             const purchaseIntent = results.segment_outcome.monthly_purchase_intent_sessions_est;
             const revenue = results.segment_outcome.revenue_by_aov_est;
             const midAov = revenue["100_250"] || revenue["50_100"];
-            
+
             return (
                 <div className="space-y-2">
-                    {/* Step 1: Pinterest Sessions */}
                     <FunnelCard
                         step="STEP 1: REACH"
-                        label="Pinterest monthly reach"
+                        label="Monthly Pinterest reach (unique people)"
                         value={formatRange(sessions.low, sessions.high)}
-                        sublabel="People who could see your products"
+                        sublabel="Estimated unique people who could see your products (not impressions)."
                         width="full"
-                        influencedBy={[
-                            { label: "Publishing volume", impact: distImpact },
-                            { label: "Visual library", impact: distImpact },
-                            { label: "Niche demand", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 2: Purchase-Intent Sessions */}
+
                     <FunnelCard
                         step="STEP 2: SHOPPING INTENT"
-                        label="Purchase-intent sessions"
+                        label="From that reach: purchase-intent sessions"
                         value={formatRange(purchaseIntent.low, purchaseIntent.high)}
-                        sublabel="Visitors actively looking to buy"
+                        sublabel="Visitors actively browsing with buying intent in your category."
                         width="medium"
-                        influencedBy={[
-                            { label: "Product appeal", impact: "neutral" },
-                            { label: "Niche buying intent", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 3: Revenue - PRIMARY OUTCOME */}
+
                     <FunnelCard
                         step="STEP 3: REVENUE"
-                        label="Monthly revenue potential"
+                        label="From those sessions: monthly revenue potential"
                         value={midAov ? `$${formatRange(midAov.low, midAov.high)}` : "—"}
-                        sublabel="Typical order value: $100–$250"
+                        sublabel="Example AOV range: $100–$250 (results vary by store + offer)."
                         width="narrow"
-                        influencedBy={[
-                            { label: "Website quality", impact: convImpact },
-                            { label: "Offer clarity", impact: convImpact },
-                            { label: "AOV range", impact: "neutral" },
-                        ]}
                     />
                 </div>
             );
         }
-        
+
         if (kind === "service_provider") {
             const websiteVisitsLow = Math.round(sessions.low * 0.15);
             const websiteVisitsHigh = Math.round(sessions.high * 0.35);
             const calls = results.segment_outcome.monthly_discovery_calls_est;
-            
+
             return (
                 <div className="space-y-2">
-                    {/* Step 1: Pinterest Sessions */}
                     <FunnelCard
                         step="STEP 1: REACH"
-                        label="Pinterest monthly reach"
+                        label="Monthly Pinterest reach (unique people)"
                         value={formatRange(sessions.low, sessions.high)}
-                        sublabel="People who could discover your services"
+                        sublabel="Estimated unique people who could discover your services (not impressions)."
                         width="full"
-                        influencedBy={[
-                            { label: "Publishing volume", impact: distImpact },
-                            { label: "Visual library", impact: distImpact },
-                            { label: "Niche demand", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 2: Website Visits */}
+
                     <FunnelCard
                         step="STEP 2: TRAFFIC"
-                        label="Potential website visits"
+                        label="From that reach: potential website visits"
                         value={formatRange(websiteVisitsLow, websiteVisitsHigh)}
-                        sublabel="Based on 15-35% click-through rate"
+                        sublabel="Assumes ~15–35% click-through from Pinterest to your site."
                         width="medium"
-                        influencedBy={[
-                            { label: "Pin quality", impact: "neutral" },
-                            { label: "CTR optimization", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 3: Discovery Calls - PRIMARY OUTCOME */}
+
                     <FunnelCard
                         step="STEP 3: QUALIFIED LEADS"
-                        label="Monthly discovery calls"
+                        label="From those visits: monthly discovery calls"
                         value={formatRange(calls.low, calls.high)}
-                        sublabel="Qualified leads booking calls with you"
+                        sublabel="Depends on offer clarity + booking flow + site experience."
                         width="narrow"
-                        influencedBy={[
-                            { label: "Website quality", impact: convImpact },
-                            { label: "Offer clarity", impact: convImpact },
-                            { label: "Booking flow", impact: "neutral" },
-                        ]}
                     />
                 </div>
             );
         }
-        
+
         return null;
     }, [results]);
-
-    // "What drove this" section with interactive pills including question numbers
-    const WhatDroveThis = useMemo(() => {
-        const distCapacity = results.demand.distribution_capacity_m;
-        const convReadiness = results.demand.conversion_readiness_m;
-        
-        const FactorPill = ({ label, question, value, impact }: { label: string; question: string; value: string; impact: "boost" | "neutral" | "limit" }) => {
-            const colorClass = impact === "boost" ? "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400" : 
-                               impact === "limit" ? "border-orange-500/30 bg-orange-500/10 text-orange-700 dark:text-orange-400" : 
-                               "border-[var(--border)] bg-[var(--background)] text-[var(--foreground-muted)]";
-            
-            const icon = impact === "boost" ? "↗" : impact === "limit" ? "↘" : "→";
-            
-            return (
-                <div 
-                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition-all hover:scale-105 ${colorClass}`}
-                    title={`${question}: ${value}`}
-                >
-                    <span className="font-medium">{label}</span>
-                    <span className="opacity-60 text-[10px]">{question}</span>
-                    <span className="opacity-70">{value}</span>
-                    <span className="text-base">{icon}</span>
-                </div>
-            );
-        };
-        
-        const volumeAnswer = recap.find(r => r.label.toLowerCase().includes("content") || r.label.toLowerCase().includes("publish") || r.label.toLowerCase().includes("promos"))?.value ?? "—";
-        const visualAnswer = recap.find(r => r.label.toLowerCase().includes("visual"))?.value ?? "—";
-        const siteAnswer = recap.find(r => r.label.toLowerCase().includes("website"))?.value ?? "—";
-        const offerAnswer = recap.find(r => r.label.toLowerCase().includes("offer") || r.label.toLowerCase().includes("magnet"))?.value ?? "—";
-        const adsAnswer = recap.find(r => r.label.toLowerCase().includes("ads"))?.value ?? "—";
-        
-        return (
-            <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
-                <div className="text-sm font-semibold text-[var(--foreground)] mb-3">What drove this</div>
-                
-                <div className="space-y-3">
-                    <div>
-                        <div className="text-xs text-[var(--foreground-muted)] mb-2">Distribution (reach)</div>
-                        <div className="flex flex-wrap gap-2">
-                            <FactorPill 
-                                label="Publishing volume" 
-                                question="Q3"
-                                value={volumeAnswer}
-                                impact={distCapacity > 1.05 ? "boost" : distCapacity < 0.95 ? "limit" : "neutral"}
-                            />
-                            <FactorPill 
-                                label="Visual library" 
-                                question="Q4"
-                                value={visualAnswer}
-                                impact={distCapacity > 1.05 ? "boost" : distCapacity < 0.95 ? "limit" : "neutral"}
-                            />
-                            <FactorPill 
-                                label="Growth mode" 
-                                question="Q8"
-                                value={adsAnswer}
-                                impact={adsAnswer.toLowerCase().includes("ads") || adsAnswer.toLowerCase().includes("yes") ? "boost" : "neutral"}
-                            />
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div className="text-xs text-[var(--foreground-muted)] mb-2">Conversion (outcomes)</div>
-                        <div className="flex flex-wrap gap-2">
-                            <FactorPill 
-                                label="Website quality" 
-                                question="Q5"
-                                value={siteAnswer}
-                                impact={convReadiness > 1.05 ? "boost" : convReadiness < 0.95 ? "limit" : "neutral"}
-                            />
-                            <FactorPill 
-                                label="Offer clarity" 
-                                question="Q6"
-                                value={offerAnswer}
-                                impact={convReadiness > 1.05 ? "boost" : convReadiness < 0.95 ? "limit" : "neutral"}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }, [results, recap]);
 
     const ProductExtras = null; // Revenue now shown in SegmentFunnel
 
@@ -986,9 +765,7 @@ export default function ResultsView({
                                     onChange={(e) => onLeadNameChange(e.target.value)}
                                     className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                 />
-                                {errors["LEAD.name"] ? (
-                                    <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div>
-                                ) : null}
+                                {errors["LEAD.name"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div> : null}
                             </div>
                         ) : (
                             <div>
@@ -1010,9 +787,7 @@ export default function ResultsView({
                                 onChange={(e) => onLeadEmailChange(e.target.value)}
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
-                            {errors["LEAD.email"] ? (
-                                <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div>
-                            ) : null}
+                            {errors["LEAD.email"] ? <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div> : null}
                         </div>
                     </div>
 
@@ -1063,9 +838,7 @@ export default function ResultsView({
                                 onChange={(e) => onLeadEmailChange(e.target.value)}
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
-                            {optionalLeadEmailError ? (
-                                <div className="mt-1 text-xs text-red-500">{optionalLeadEmailError}</div>
-                            ) : null}
+                            {optionalLeadEmailError ? <div className="mt-1 text-xs text-red-500">{optionalLeadEmailError}</div> : null}
                         </div>
                     </div>
 
@@ -1101,7 +874,7 @@ export default function ResultsView({
             <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
                 <div className="mb-3 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results</div>
 
-                <ResultsHero variant={heroVariant} onEditAnswers={onEditAnswers} onStartOver={onStartOver} />
+                <ResultsHero variant={heroVariant} />
 
                 {LeadCaptureHardLock}
 
@@ -1112,19 +885,22 @@ export default function ResultsView({
                     {results.segment_outcome.kind === "product_seller" && (
                         <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
                             <div className="text-sm font-semibold text-[var(--foreground)] mb-3">Revenue by price point</div>
-                            
+
                             {(() => {
                                 const revenue = results.segment_outcome.revenue_by_aov_est ?? {};
                                 const buckets = results.segment_outcome.assumptions?.aov_buckets ?? [];
-                                
+
                                 return (
                                     <div className="space-y-2">
                                         {buckets.map((bucket) => {
                                             const r = revenue[bucket.id];
                                             if (!r) return null;
-                                            
+
                                             return (
-                                                <div key={bucket.id} className="flex items-center justify-between p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] hover:border-[var(--brand-raspberry)]/30 transition-colors">
+                                                <div
+                                                    key={bucket.id}
+                                                    className="flex items-center justify-between p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] hover:border-[var(--brand-raspberry)]/30 transition-colors"
+                                                >
                                                     <div className="text-sm text-[var(--foreground)]">{bucket.label}</div>
                                                     <div className="font-heading text-lg text-[var(--foreground)]">
                                                         ${formatNumber(r.low)}–${formatNumber(r.high)}/mo
@@ -1137,8 +913,6 @@ export default function ResultsView({
                             })()}
                         </div>
                     )}
-
-                    {WhatDroveThis}
 
                     {/* Niche context cards with fixed hover tooltips */}
                     <div className="mt-4 grid gap-3 sm:grid-cols-3">
@@ -1153,15 +927,17 @@ export default function ResultsView({
                                 {results.inferred.seasonality_index}
                             </div>
                             <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                {results.inferred.seasonality_index === "low" ? "Steady demand year-round" : 
-                                 results.inferred.seasonality_index === "medium" ? "Some seasonal variation" : 
-                                 "Strong seasonal peaks"}
+                                {results.inferred.seasonality_index === "low"
+                                    ? "Steady demand year-round"
+                                    : results.inferred.seasonality_index === "medium"
+                                        ? "Some seasonal variation"
+                                        : "Strong seasonal peaks"}
                             </div>
                             {/* Hover tooltip - fixed opacity */}
                             <div className="pointer-events-none absolute left-0 top-full z-10 mt-2 hidden w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs shadow-xl opacity-0 group-hover:block group-hover:opacity-100 transition-opacity">
                                 <div className="font-semibold text-[var(--foreground)] mb-1">Based on:</div>
                                 <div className="text-[var(--foreground-muted)]">
-                                    Historical Pinterest search patterns for your niche ({recap.find(r => r.label.toLowerCase().includes("niche"))?.value || "your niche"})
+                                    Historical Pinterest search patterns for your niche ({recap.find((r) => r.label.toLowerCase().includes("niche"))?.value || "your niche"})
                                 </div>
                             </div>
                         </div>
@@ -1177,9 +953,11 @@ export default function ResultsView({
                                 {results.inferred.competition_index}
                             </div>
                             <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                {results.inferred.competition_index === "low" ? "Less crowded niche" : 
-                                 results.inferred.competition_index === "medium" ? "Moderate competition" : 
-                                 "Highly competitive niche"}
+                                {results.inferred.competition_index === "low"
+                                    ? "Less crowded niche"
+                                    : results.inferred.competition_index === "medium"
+                                        ? "Moderate competition"
+                                        : "Highly competitive niche"}
                             </div>
                             {/* Hover tooltip - fixed opacity */}
                             <div className="pointer-events-none absolute left-0 top-full z-10 mt-2 hidden w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs shadow-xl opacity-0 group-hover:block group-hover:opacity-100 transition-opacity">
@@ -1209,102 +987,6 @@ export default function ResultsView({
                         </div>
                     </div>
 
-                    {/* Strategic insight - moved below main results */}
-                    {insight ? (
-                        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
-                            <div className="text-xs font-semibold uppercase tracking-wide text-[var(--brand-raspberry)] mb-2">
-                                Strategic Insight
-                            </div>
-                            <div className="text-sm text-[var(--foreground)] leading-relaxed">
-                                {insight}
-                            </div>
-                        </div>
-                    ) : null}
-
-                    {/* Expanded methodology with more details */}
-                    <details className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] overflow-hidden">
-                        <summary className="cursor-pointer px-6 py-4 hover:bg-[var(--background)] transition-colors flex items-center justify-between">
-                            <div className="text-sm font-semibold text-[var(--foreground)]">How we calculated this</div>
-                            <svg className="w-4 h-4 text-[var(--foreground-muted)] transition-transform details-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </summary>
-                        
-                        <div className="px-6 pb-6 space-y-4 border-t border-[var(--border)] bg-[var(--background)]">
-                            {/* Foundation */}
-                            <div>
-                                <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
-                                    Foundation
-                                </div>
-                                <div className="space-y-2 text-sm">
-                                    <div>
-                                        <span className="text-[var(--foreground-muted)]">Platform size: </span>
-                                        <span className="text-[var(--foreground)]">
-                                            ~102M monthly users in US/Canada{" "}
-                                            <a 
-                                                href="https://investor.pinterestinc.com/news-and-events/press-releases/" 
-                                                target="_blank" 
-                                                rel="noopener noreferrer"
-                                                className="text-[var(--brand-raspberry)] hover:underline"
-                                            >
-                                                (source)
-                                            </a>
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span className="text-[var(--foreground-muted)]">Your niche reach: </span>
-                                        <span className="text-[var(--foreground)]">{demandBaseSessionsRangeLabel} sessions/month</span>
-                                    </div>
-                                    <div className="text-xs text-[var(--foreground-muted)] italic">
-                                        This is calculated as a percentage of total platform activity focused on {recap.find(r => r.label.toLowerCase().includes("niche"))?.value || "your niche"}, based on Pinterest search trends and category data.
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* How answers affect results */}
-                            <div>
-                                <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
-                                    How Your Answers Affect Results
-                                </div>
-                                <div className="space-y-2 text-sm">
-                                    <div className="text-[var(--foreground-muted)]">
-                                        <strong className="text-[var(--foreground)]">Distribution (Reach):</strong> Your publishing volume, visual quality, and whether you use ads all influence how many people see your content. Consistent publishing + strong visuals + ads = maximum reach.
-                                    </div>
-                                    <div className="text-[var(--foreground-muted)]">
-                                        <strong className="text-[var(--foreground)]">Conversion (Outcomes):</strong> Website speed, clarity, and offer attractiveness determine what percentage of visitors take action. A fast, clear site with compelling offers converts better.
-                                    </div>
-                                    <div className="text-[var(--foreground-muted)]">
-                                        <strong className="text-[var(--foreground)]">Niche factors:</strong> Seasonality and competition are estimated from historical Pinterest data for your category. These create natural ceilings or boost factors independent of your execution.
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Assumptions */}
-                            <div>
-                                <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
-                                    Key Assumptions
-                                </div>
-                                <ul className="space-y-1.5 text-sm text-[var(--foreground-muted)]">
-                                    <li>• Click-through rates: 15-35% (industry benchmarks)</li>
-                                    <li>• Conversion rates: Vary by segment and offer quality</li>
-                                    {results.segment_outcome.kind === "product_seller" && (
-                                        <li>• Purchase intent: ~25% of sessions for product categories</li>
-                                    )}
-                                    <li>• US & Canada only (international traffic not included)</li>
-                                    <li>• Organic reach prioritized (ads provide incremental boost)</li>
-                                </ul>
-                            </div>
-
-                            {/* Disclaimer */}
-                            <div className="pt-3 border-t border-[var(--border)]">
-                                <div className="text-xs text-[var(--foreground-muted)] leading-relaxed">
-                                    <strong>Important:</strong> These are modeled estimates based on platform data, niche benchmarks, and your inputs. 
-                                    Actual results depend on content quality, consistency, SEO optimization, and market timing. This is not a guarantee of results.
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-
                     {LeadCaptureSoftLock}
                 </div>
 
@@ -1312,16 +994,117 @@ export default function ResultsView({
                     <div className="mb-2 font-heading text-lg text-[var(--foreground)]">Your answers</div>
                     <div className="grid gap-3 sm:grid-cols-2">
                         {recap.map((it, idx) => (
-                            <div
-                                key={`${idx}-${it.label}`}
-                                className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4"
-                            >
+                            <div key={`${idx}-${it.label}`} className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
                                 <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
                                 <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
                             </div>
                         ))}
                     </div>
                 </div>
+
+                {/* Bottom CTA (single CTA repeated) */}
+                <div className="mt-6 rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="text-sm text-[var(--foreground-muted)]">
+                            Want a clear action plan for your niche + goals?
+                        </div>
+                        <a
+                            href="https://cal.com/fruitfullab/pinterest-strategy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center rounded-md bg-[var(--brand-raspberry)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]"
+                        >
+                            Book a Strategy Call →
+                        </a>
+                    </div>
+                </div>
+
+                {/* Methodology (kept, but de-emphasized + moved to the bottom) */}
+                <details className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] overflow-hidden opacity-80">
+                    <summary className="cursor-pointer px-6 py-4 hover:bg-[var(--background)]/60 transition-colors flex items-center justify-between">
+                        <div className="text-sm font-semibold text-[var(--foreground-muted)]">How we calculated this</div>
+                        <svg
+                            className="w-4 h-4 text-[var(--foreground-muted)] transition-transform details-open:rotate-180"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+
+                    <div className="px-6 pb-6 space-y-4 border-t border-[var(--border)] bg-[var(--background)]">
+                        {/* Foundation */}
+                        <div>
+                            <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
+                                Foundation
+                            </div>
+                            <div className="space-y-2 text-sm">
+                                <div>
+                                    <span className="text-[var(--foreground-muted)]">Platform size: </span>
+                                    <span className="text-[var(--foreground)]">
+                                        ~102M monthly users in US/Canada{" "}
+                                        <a
+                                            href="https://investor.pinterestinc.com/news-and-events/press-releases/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-[var(--foreground-muted)] hover:underline"
+                                        >
+                                            (source)
+                                        </a>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span className="text-[var(--foreground-muted)]">Your niche reach: </span>
+                                    <span className="text-[var(--foreground)]">{demandBaseSessionsRangeLabel} sessions/month</span>
+                                </div>
+                                <div className="text-xs text-[var(--foreground-muted)] italic">
+                                    This is calculated as a percentage of total platform activity focused on{" "}
+                                    {recap.find((r) => r.label.toLowerCase().includes("niche"))?.value || "your niche"}, based on Pinterest search trends and category data.
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* How answers affect results */}
+                        <div>
+                            <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
+                                How Your Answers Affect Results
+                            </div>
+                            <div className="space-y-2 text-sm">
+                                <div className="text-[var(--foreground-muted)]">
+                                    <strong className="text-[var(--foreground)]">Distribution (Reach):</strong> Your publishing volume, visual quality, and whether you use ads all influence how many people see your content. Consistent publishing + strong visuals + ads = maximum reach.
+                                </div>
+                                <div className="text-[var(--foreground-muted)]">
+                                    <strong className="text-[var(--foreground)]">Conversion (Outcomes):</strong> Website speed, clarity, and offer attractiveness determine what percentage of visitors take action. A fast, clear site with compelling offers converts better.
+                                </div>
+                                <div className="text-[var(--foreground-muted)]">
+                                    <strong className="text-[var(--foreground)]">Niche factors:</strong> Seasonality and competition are estimated from historical Pinterest data for your category. These create natural ceilings or boost factors independent of your execution.
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Assumptions */}
+                        <div>
+                            <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
+                                Key Assumptions
+                            </div>
+                            <ul className="space-y-1.5 text-sm text-[var(--foreground-muted)]">
+                                <li>• Click-through rates: 15-35% (industry benchmarks)</li>
+                                <li>• Conversion rates: Vary by segment and offer quality</li>
+                                {results.segment_outcome.kind === "product_seller" && <li>• Purchase intent: ~25% of sessions for product categories</li>}
+                                <li>• US & Canada only (international traffic not included)</li>
+                                <li>• Organic reach prioritized (ads provide incremental boost)</li>
+                            </ul>
+                        </div>
+
+                        {/* Disclaimer */}
+                        <div className="pt-3 border-t border-[var(--border)]">
+                            <div className="text-xs text-[var(--foreground-muted)] leading-relaxed">
+                                <strong>Important:</strong> These are modeled estimates based on platform data, niche benchmarks, and your inputs. Actual results depend on content quality, consistency, SEO optimization, and market timing. This is not a guarantee of results.
+                            </div>
+                        </div>
+                    </div>
+                </details>
 
                 <div className="mt-4 text-sm text-[var(--foreground-muted)]">
                     You can refresh the page; your draft is saved in this session.

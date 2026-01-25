@@ -240,7 +240,6 @@ function CandyBurstOverlay({
 
     return (
         <div className="fixed inset-0 z-[60] flex items-center justify-center" onClick={onClose} role="presentation">
-            {/* Darkened premium backdrop + soft color bloom */}
             <div
                 className="absolute inset-0"
                 aria-hidden="true"
@@ -250,7 +249,6 @@ function CandyBurstOverlay({
                 }}
             />
 
-            {/* Candy pieces */}
             <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
                 {pieces.map((p) => (
                     <div
@@ -288,7 +286,6 @@ function CandyBurstOverlay({
                 ))}
             </div>
 
-            {/* Message */}
             <div className="relative mx-6 max-w-xl text-center">
                 {headline ? <div className="font-heading text-3xl sm:text-4xl text-white drop-shadow">{headline}</div> : null}
                 {subhead ? <div className="mt-2 text-sm sm:text-base text-white/80">{subhead}</div> : null}
@@ -407,19 +404,7 @@ function ResultsHero({ variant }: { variant: HeroVariant }) {
     }, [variant]);
 
     return (
-        <div className="relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background)] p-5 sm:p-6">
-            <div
-                className="pointer-events-none absolute inset-0 opacity-80"
-                aria-hidden="true"
-                style={{
-                    background:
-                        "radial-gradient(900px 320px at 15% 20%, rgba(255,77,141,0.22), transparent 60%), radial-gradient(900px 320px at 85% 10%, rgba(255,209,102,0.16), transparent 60%)",
-                }}
-            />
-            <div className="pointer-events-none absolute inset-0 opacity-25" aria-hidden="true">
-                <div className="ppc-sheen" />
-            </div>
-
+        <div className="ppc-hero-glow relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background)] p-6 sm:p-7">
             <div className="relative">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-4">
                     <div>
@@ -433,49 +418,17 @@ function ResultsHero({ variant }: { variant: HeroVariant }) {
                     </div>
                 </div>
 
-                {/* Single CTA */}
                 <div className="flex flex-wrap items-center gap-3">
                     <a
                         href="https://cal.com/fruitfullab/pinterest-strategy"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block rounded-md bg-[var(--brand-raspberry)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]"
+                        className="inline-flex items-center justify-center rounded-md bg-[var(--brand-raspberry)] px-8 py-4 text-base font-semibold text-white shadow-sm hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                     >
                         Book a Strategy Call →
                     </a>
                 </div>
             </div>
-
-            <style jsx>{`
-                .ppc-sheen {
-                    position: absolute;
-                    inset: -40%;
-                    background: linear-gradient(
-                            110deg,
-                            rgba(255, 255, 255, 0) 35%,
-                            rgba(255, 255, 255, 0.12) 50%,
-                            rgba(255, 255, 255, 0) 65%
-                    );
-                    transform: translateX(-30%);
-                    animation: ppcSheen 3.8s ease-in-out infinite;
-                }
-                @keyframes ppcSheen {
-                    0% {
-                        transform: translateX(-35%);
-                    }
-                    50% {
-                        transform: translateX(35%);
-                    }
-                    100% {
-                        transform: translateX(-35%);
-                    }
-                }
-                @media (prefers-reduced-motion: reduce) {
-                    .ppc-sheen {
-                        animation: none;
-                    }
-                }
-            `}</style>
         </div>
     );
 }
@@ -541,11 +494,10 @@ export default function ResultsView({
     const prevLockedRef = useRef<boolean>(locked);
     const prevEmailedRef = useRef<boolean>(emailed);
 
-    // Trigger celebration on hard-lock unlock
     useEffect(() => {
         if (prevLockedRef.current && !locked) {
             setCelebrateCfg({
-                durationMs: 4300, // ✅ slower
+                durationMs: 4300,
                 intensity: 3,
                 headline: "Unlocked.",
                 subhead: "Your full Pinterest Potential snapshot is ready.",
@@ -555,11 +507,10 @@ export default function ResultsView({
         prevLockedRef.current = locked;
     }, [locked]);
 
-    // Trigger celebration on optional “email me” submit
     useEffect(() => {
         if (!prevEmailedRef.current && emailed) {
             setCelebrateCfg({
-                durationMs: 3200, // ✅ slower
+                durationMs: 3200,
                 intensity: 2,
                 headline: "Sent.",
                 subhead: "Snapshot delivered to your inbox.",
@@ -569,7 +520,6 @@ export default function ResultsView({
         prevEmailedRef.current = emailed;
     }, [emailed]);
 
-    // Helper to format numbers with K/M suffix
     const formatNumber = (num: number): string => {
         if (num >= 1000000) {
             return `${Math.round(num / 100000) / 10}M`;
@@ -584,7 +534,6 @@ export default function ResultsView({
         return `${formatNumber(low)}–${formatNumber(high)}`;
     };
 
-    // Funnel card component (no "Influenced by" section)
     const FunnelCard = ({
                             step,
                             label,
@@ -612,7 +561,6 @@ export default function ResultsView({
         );
     };
 
-    // Arrow between funnel steps
     const FunnelArrow = () => (
         <div className="flex justify-center py-2">
             <svg className="w-6 h-6 text-[var(--foreground-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -741,16 +689,12 @@ export default function ResultsView({
         return null;
     }, [results]);
 
-    const ProductExtras = null; // Revenue now shown in SegmentFunnel
-
     const LeadCaptureHardLock = showHardLockGate ? (
         <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
             <div className="sm:grid sm:grid-cols-3 sm:gap-4">
                 <div>
                     <h3 className="font-heading text-lg text-[var(--foreground)]">Reveal your full snapshot</h3>
-                    <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-                        Enter your email to view your results (and keep a copy).
-                    </p>
+                    <p className="mt-1 text-sm text-[var(--foreground-muted)]">Enter your email to view your results (and keep a copy).</p>
                     <p className="mt-2 text-xs text-[var(--foreground-muted)]">{privacyMicrocopy}</p>
                 </div>
 
@@ -857,9 +801,6 @@ export default function ResultsView({
         </div>
     ) : null;
 
-    const tags = results?.inferred?.tags ?? [];
-    const showTags = Array.isArray(tags) && tags.length > 0;
-
     const nicheLabel = recap.find((r) => r.label.toLowerCase().includes("niche"))?.value || "your niche";
 
     return (
@@ -883,7 +824,6 @@ export default function ResultsView({
                 <div className={showHardLockGate ? "mt-4 opacity-40 blur-[2px] pointer-events-none select-none" : "mt-4"}>
                     {ResultsCards}
 
-                    {/* Product seller: AOV revenue breakdown */}
                     {results.segment_outcome.kind === "product_seller" && (
                         <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
                             <div className="text-sm font-semibold text-[var(--foreground)] mb-3">Revenue by price point</div>
@@ -916,7 +856,6 @@ export default function ResultsView({
                         </div>
                     )}
 
-                    {/* Audience income (horizontal, secondary) */}
                     <div className="mt-4">
                         <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
                             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -937,15 +876,15 @@ export default function ResultsView({
                     {LeadCaptureSoftLock}
                 </div>
 
-                {/* Bottom CTA (single CTA repeated) */}
+                {/* Bottom CTA (bigger vertically + bigger CTA) */}
                 <div className="mt-6 rounded-xl border border-[var(--border)] overflow-hidden">
-                    <div className="ppc-cta relative p-6 sm:p-7">
-                        <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="ppc-hero-glow relative p-8 sm:p-10">
+                        <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                             <div>
-                                <div className="font-heading text-xl sm:text-2xl text-[var(--foreground)]">
+                                <div className="font-heading text-2xl sm:text-3xl text-[var(--foreground)]">
                                     Want a clear action plan for your niche + goals?
                                 </div>
-                                <div className="mt-1 text-sm text-[var(--foreground-muted)]">
+                                <div className="mt-2 text-base text-[var(--foreground-muted)]">
                                     Turn this snapshot into a prioritized roadmap (and skip the guesswork).
                                 </div>
                             </div>
@@ -954,91 +893,15 @@ export default function ResultsView({
                                 href="https://cal.com/fruitfullab/pinterest-strategy"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center rounded-md bg-[var(--brand-raspberry)] px-6 py-3 text-sm font-semibold text-white hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]"
+                                className="inline-flex w-full sm:w-auto items-center justify-center rounded-md bg-[var(--brand-raspberry)] px-10 py-5 text-base font-semibold text-white shadow-sm hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             >
                                 Book a Strategy Call →
                             </a>
                         </div>
                     </div>
-
-                    <style jsx>{`
-                        .ppc-cta {
-                            background: rgba(255, 255, 255, 0.02);
-                        }
-
-                        .ppc-cta::before {
-                            content: "";
-                            position: absolute;
-                            inset: 0;
-                            pointer-events: none;
-                            background: linear-gradient(
-                                120deg,
-                                rgba(255, 77, 141, 0.20),
-                                rgba(255, 209, 102, 0.16),
-                                rgba(77, 220, 255, 0.14),
-                                rgba(255, 77, 141, 0.18)
-                            );
-                            background-size: 240% 240%;
-                            animation: ppcCtaGlow 6.5s ease-in-out infinite;
-                            opacity: 0.95;
-                        }
-
-                        .ppc-cta::after {
-                            content: "";
-                            position: absolute;
-                            inset: 0;
-                            pointer-events: none;
-                            background: radial-gradient(900px 260px at 20% 10%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 60%);
-                            opacity: 0.55;
-                        }
-
-                        @keyframes ppcCtaGlow {
-                            0% {
-                                background-position: 0% 30%;
-                            }
-                            50% {
-                                background-position: 100% 70%;
-                            }
-                            100% {
-                                background-position: 0% 30%;
-                            }
-                        }
-
-                        @media (prefers-reduced-motion: reduce) {
-                            .ppc-cta::before {
-                                animation: none;
-                            }
-                        }
-                    `}</style>
                 </div>
 
-                {/* Your answers (collapsible, greyed, below everything else) */}
-                <details className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] overflow-hidden opacity-75">
-                    <summary className="cursor-pointer px-6 py-4 hover:bg-[var(--background)]/60 transition-colors flex items-center justify-between">
-                        <div className="text-sm font-semibold text-[var(--foreground-muted)]">Your answers</div>
-                        <svg
-                            className="w-4 h-4 text-[var(--foreground-muted)] transition-transform details-open:rotate-180"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-
-                    <div className="px-6 pb-6 border-t border-[var(--border)] bg-[var(--background)]">
-                        <div className="grid gap-3 sm:grid-cols-2 pt-4">
-                            {recap.map((it, idx) => (
-                                <div key={`${idx}-${it.label}`} className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-4">
-                                    <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
-                                    <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </details>
-
-                {/* Methodology (kept, but de-emphasized + moved to the bottom) */}
+                {/* ✅ Swapped order: Methodology first */}
                 <details className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] overflow-hidden opacity-80">
                     <summary className="cursor-pointer px-6 py-4 hover:bg-[var(--background)]/60 transition-colors flex items-center justify-between">
                         <div className="text-sm font-semibold text-[var(--foreground-muted)]">How we calculated this</div>
@@ -1053,7 +916,6 @@ export default function ResultsView({
                     </summary>
 
                     <div className="px-6 pb-6 space-y-4 border-t border-[var(--border)] bg-[var(--background)]">
-                        {/* Foundation */}
                         <div>
                             <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
                                 Foundation
@@ -1084,7 +946,6 @@ export default function ResultsView({
                             </div>
                         </div>
 
-                        {/* How answers affect results */}
                         <div>
                             <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
                                 How Your Answers Affect Results
@@ -1099,7 +960,6 @@ export default function ResultsView({
                             </div>
                         </div>
 
-                        {/* Assumptions */}
                         <div>
                             <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
                                 Key Assumptions
@@ -1113,7 +973,6 @@ export default function ResultsView({
                             </ul>
                         </div>
 
-                        {/* Disclaimer */}
                         <div className="pt-3 border-t border-[var(--border)]">
                             <div className="text-xs text-[var(--foreground-muted)] leading-relaxed">
                                 <strong>Important:</strong> These are modeled estimates based on platform data, niche benchmarks, and your inputs. Actual results depend on content quality, consistency, SEO optimization, and market timing. This is not a guarantee of results.
@@ -1122,10 +981,95 @@ export default function ResultsView({
                     </div>
                 </details>
 
+                {/* ✅ “Your answers” now last */}
+                <details className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] overflow-hidden opacity-75">
+                    <summary className="cursor-pointer px-6 py-4 hover:bg-[var(--background)]/60 transition-colors flex items-center justify-between">
+                        <div className="text-sm font-semibold text-[var(--foreground-muted)]">Your answers</div>
+                        <svg
+                            className="w-4 h-4 text-[var(--foreground-muted)] transition-transform details-open:rotate-180"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+
+                    <div className="px-6 pb-6 border-t border-[var(--border)] bg-[var(--background)]">
+                        <div className="grid gap-3 sm:grid-cols-2 pt-4">
+                            {recap.map((it, idx) => (
+                                <div key={`${idx}-${it.label}`} className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-4">
+                                    <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
+                                    <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </details>
+
                 <div className="mt-4 text-sm text-[var(--foreground-muted)]">
                     You can refresh the page; your draft is saved in this session.
                 </div>
             </div>
+
+            {/* Shared animated gradient for BOTH heroes */}
+            <style jsx global>{`
+                .ppc-hero-glow {
+                    position: relative;
+                    overflow: hidden;
+                    isolation: isolate;
+                }
+
+                .ppc-hero-glow::before {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    pointer-events: none;
+                    background: linear-gradient(
+                        120deg,
+                        rgba(255, 77, 141, 0.2),
+                        rgba(255, 209, 102, 0.16),
+                        rgba(77, 220, 255, 0.14),
+                        rgba(255, 77, 141, 0.18)
+                    );
+                    background-size: 240% 240%;
+                    animation: ppcHeroGlow 6.5s ease-in-out infinite;
+                    opacity: 0.95;
+                    z-index: 0;
+                }
+
+                .ppc-hero-glow::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    pointer-events: none;
+                    background: radial-gradient(
+                        900px 260px at 20% 10%,
+                        rgba(255, 255, 255, 0.14),
+                        rgba(255, 255, 255, 0) 60%
+                    );
+                    opacity: 0.55;
+                    z-index: 0;
+                }
+
+                @keyframes ppcHeroGlow {
+                    0% {
+                        background-position: 0% 30%;
+                    }
+                    50% {
+                        background-position: 100% 70%;
+                    }
+                    100% {
+                        background-position: 0% 30%;
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    .ppc-hero-glow::before {
+                        animation: none;
+                    }
+                }
+            `}</style>
         </>
     );
 }

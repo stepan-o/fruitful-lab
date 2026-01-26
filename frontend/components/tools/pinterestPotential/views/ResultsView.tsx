@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { ResultsBundle } from "@/lib/tools/pinterestPotential/compute";
 
 export type ResultsRecapItem = {
@@ -238,7 +239,7 @@ function CandyBurstOverlay({
 
     if (!open) return null;
 
-    return (
+    const overlay = (
         <div className="fixed inset-0 z-[60] flex items-center justify-center" onClick={onClose} role="presentation">
             <div className="absolute inset-0 ppc-celebrate-scrim" aria-hidden="true" />
 
@@ -364,6 +365,11 @@ function CandyBurstOverlay({
             `}</style>
         </div>
     );
+
+    // ✅ Fix: render the fixed overlay in a portal so it truly covers the viewport
+    // even if an ancestor creates a containing block (transform/filter/etc.).
+    if (typeof document === "undefined") return null;
+    return createPortal(overlay, document.body);
 }
 
 function ResultsHero({ variant }: { variant: HeroVariant }) {

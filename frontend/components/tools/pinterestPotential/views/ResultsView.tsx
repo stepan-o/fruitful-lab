@@ -397,7 +397,7 @@ function ResultsHero({ variant }: { variant: HeroVariant }) {
         }
         return {
             eyebrow: "Unlocked",
-            title: "Your full snapshot is live.",
+            title: "Your full snapshot is the live.",
             body: "Use this as a benchmark + a priority map (not a promise).",
         };
     }, [variant]);
@@ -820,7 +820,8 @@ export default function ResultsView({
 
                 {LeadCaptureHardLock}
 
-                <div className={showHardLockGate ? "mt-4 opacity-40 blur-[2px] pointer-events-none select-none" : "mt-4"}>
+                {/* ✅ Update: lighter hard-lock obfuscation so it doesn't wash out the entire section */}
+                <div className={showHardLockGate ? "mt-4 opacity-90 blur-[6px] pointer-events-none select-none" : "mt-4"}>
                     {ResultsCards}
 
                     {results.segment_outcome.kind === "product_seller" && (

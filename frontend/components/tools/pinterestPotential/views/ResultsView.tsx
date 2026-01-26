@@ -56,6 +56,20 @@ export type ResultsViewProps = {
 
 type HeroVariant = "locked" | "ready" | "unlocked" | "emailed";
 
+function clamp(n: number, a: number, b: number) {
+    return Math.max(a, Math.min(b, n));
+}
+
+function formatNumber(num: number): string {
+    if (num >= 1_000_000) return `${Math.round(num / 100_000) / 10}M`;
+    if (num >= 1_000) return `${Math.round(num / 100) / 10}K`;
+    return num.toString();
+}
+
+function formatRange(low: number, high: number): string {
+    return `${formatNumber(low)}–${formatNumber(high)}`;
+}
+
 function useReducedMotion(): boolean {
     const [reduced, setReduced] = useState(false);
     useEffect(() => {
@@ -89,6 +103,39 @@ function CheckBadge({ text }: { text: string }) {
     );
 }
 
+type FunnelCardProps = {
+    step: string;
+    label: string;
+    value: string;
+    sublabel?: string;
+    width?: "full" | "medium" | "narrow";
+};
+
+function FunnelCard({ step, label, value, sublabel, width = "full" }: FunnelCardProps) {
+    const widthClass = width === "full" ? "w-full" : width === "medium" ? "sm:w-[85%]" : "sm:w-[70%]";
+
+    return (
+        <div className={`${widthClass} mx-auto`}>
+            <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 relative">
+                <div className="text-xs font-semibold text-[var(--foreground-muted)] mb-1">{step}</div>
+                <div className="text-sm text-[var(--foreground)] mb-2">{label}</div>
+                <div className="font-heading text-3xl sm:text-4xl text-[var(--foreground)] mb-3">{value}</div>
+                {sublabel ? <div className="text-xs text-[var(--foreground-muted)]">{sublabel}</div> : null}
+            </div>
+        </div>
+    );
+}
+
+function FunnelArrow() {
+    return (
+        <div className="flex justify-center py-2">
+            <svg className="w-6 h-6 text-[var(--foreground-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    );
+}
+
 type CandyBurstOverlayProps = {
     open: boolean;
     onClose: () => void;
@@ -114,10 +161,6 @@ type CandyPiece = {
     opacity: number;
 };
 
-function clamp(n: number, a: number, b: number) {
-    return Math.max(a, Math.min(b, n));
-}
-
 function CandyBurstOverlay({
                                open,
                                onClose,
@@ -138,26 +181,23 @@ function CandyBurstOverlay({
             return () => window.clearTimeout(t);
         }
 
-        // Create “piñata candy” pieces once per open. (No per-frame JS.)
         const lvl = clamp(intensity, 1, 3);
         const count = lvl === 3 ? 140 : lvl === 2 ? 110 : 85;
 
-        // Burst origin (roughly where the message sits).
         const originX = 50; // %
         const originY = Math.round(window.innerHeight * 0.52); // px
 
         const palette = [
-            { a: "255,77,141", b: "255,209,102" }, // raspberry/gold
-            { a: "77,220,255", b: "184,255,77" }, // cyan/lime
-            { a: "255,255,255", b: "255,77,141" }, // white/raspberry
-            { a: "255,209,102", b: "77,220,255" }, // gold/cyan
-            { a: "184,255,77", b: "255,255,255" }, // lime/white
+            { a: "255,77,141", b: "255,209,102" },
+            { a: "77,220,255", b: "184,255,77" },
+            { a: "255,255,255", b: "255,77,141" },
+            { a: "255,209,102", b: "77,220,255" },
+            { a: "184,255,77", b: "255,255,255" },
         ];
 
         const makeBg = () => {
             const p = palette[Math.floor(Math.random() * palette.length)]!;
             const mode = Math.random();
-            // Candy textures: stripes / gummy sheen / sprinkle dot
             if (mode < 0.45) {
                 return `linear-gradient(90deg,
           rgba(${p.a},1) 0%,
@@ -181,7 +221,6 @@ function CandyBurstOverlay({
         };
 
         const next: CandyPiece[] = Array.from({ length: count }).map((_, i) => {
-            // spread around origin with a wide cone
             const spread = (Math.random() * 2 - 1) * (lvl === 3 ? 520 : lvl === 2 ? 440 : 360);
             const lift = 80 + Math.random() * (lvl === 3 ? 220 : 180);
 
@@ -198,7 +237,6 @@ function CandyBurstOverlay({
             const radius =
                 Math.random() < 0.45 ? size * 0.9 : Math.random() < 0.75 ? size * 0.35 : size * 0.15;
 
-            // slower overall feel: 3.4s – 5.6s
             const dur = 3400 + Math.random() * (lvl === 3 ? 2200 : 2000);
             const delay = Math.random() * (lvl === 3 ? 520 : 420);
 
@@ -222,10 +260,15 @@ function CandyBurstOverlay({
             };
         });
 
-        setPieces(next);
+        // ✅ avoid setState synchronously inside effect body
+        let raf = 0;
+        raf = window.requestAnimationFrame(() => setPieces(next));
 
         const auto = window.setTimeout(() => onClose(), durationMs);
-        return () => window.clearTimeout(auto);
+        return () => {
+            window.cancelAnimationFrame(raf);
+            window.clearTimeout(auto);
+        };
     }, [open, reducedMotion, onClose, durationMs, intensity]);
 
     useEffect(() => {
@@ -366,8 +409,6 @@ function CandyBurstOverlay({
         </div>
     );
 
-    // ✅ Fix: render the fixed overlay in a portal so it truly covers the viewport
-    // even if an ancestor creates a containing block (transform/filter/etc.).
     if (typeof document === "undefined") return null;
     return createPortal(overlay, document.body);
 }
@@ -397,7 +438,7 @@ function ResultsHero({ variant }: { variant: HeroVariant }) {
         }
         return {
             eyebrow: "Unlocked",
-            title: "Your full snapshot is the live.",
+            title: "Your full snapshot is live.",
             body: "Use this as a benchmark + a priority map (not a promise).",
         };
     }, [variant]);
@@ -432,51 +473,27 @@ function ResultsHero({ variant }: { variant: HeroVariant }) {
     );
 }
 
-function MetricCard({
-                        label,
-                        value,
-                        sublabel,
-                    }: {
-    label: string;
-    value: string;
-    sublabel?: string;
-}) {
-    return (
-        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-            <div className="text-xs text-[var(--foreground-muted)]">{label}</div>
-            <div className="mt-1 font-heading text-2xl text-[var(--foreground)]">{value}</div>
-            {sublabel ? <div className="mt-1 text-xs text-[var(--foreground-muted)]">{sublabel}</div> : null}
-        </div>
-    );
-}
+export default function ResultsView(props: ResultsViewProps) {
+    const {
+        results,
+        demandBaseSessionsRangeLabel,
+        incomeRangeLabel,
+        showHardLockGate,
+        showSoftLockGate,
+        privacyMicrocopy,
+        leadName,
+        leadEmail,
+        requireName,
+        errors,
+        optionalLeadEmailError,
+        optionalLeadSubmitted,
+        onLeadNameChange,
+        onLeadEmailChange,
+        onUnlock,
+        onEmailResults,
+        recap,
+    } = props;
 
-export default function ResultsView({
-                                        results,
-                                        demandBaseSessionsRangeLabel,
-                                        likelySessionsRangeLabel,
-                                        distributionCapacityLabel,
-                                        primaryOutcomeLabel,
-                                        primaryOutcomeRangeLabel,
-                                        purchaseIntentRangeLabel,
-                                        incomeRangeLabel,
-                                        insightLine: _insightLine,
-                                        showHardLockGate,
-                                        showSoftLockGate,
-                                        privacyMicrocopy,
-                                        leadName,
-                                        leadEmail,
-                                        requireName,
-                                        errors,
-                                        optionalLeadEmailError,
-                                        optionalLeadSubmitted,
-                                        onLeadNameChange,
-                                        onLeadEmailChange,
-                                        onUnlock,
-                                        onEmailResults,
-                                        recap,
-                                        onStartOver: _onStartOver,
-                                        onEditAnswers: _onEditAnswers,
-                                    }: ResultsViewProps) {
     const locked = showHardLockGate;
     const emailed = optionalLeadSubmitted;
 
@@ -494,79 +511,50 @@ export default function ResultsView({
     const prevEmailedRef = useRef<boolean>(emailed);
 
     useEffect(() => {
+        let t: number | null = null;
+
         if (prevLockedRef.current && !locked) {
-            setCelebrateCfg({
-                durationMs: 4300,
-                intensity: 3,
-                headline: "Unlocked.",
-                subhead: "Your full Pinterest Potential snapshot is ready.",
-            });
-            setCelebrate(true);
+            // ✅ defer state updates (avoid set-state-in-effect)
+            t = window.setTimeout(() => {
+                setCelebrateCfg({
+                    durationMs: 4300,
+                    intensity: 3,
+                    headline: "Unlocked.",
+                    subhead: "Your full Pinterest Potential snapshot is ready.",
+                });
+                setCelebrate(true);
+            }, 0);
         }
+
         prevLockedRef.current = locked;
+
+        return () => {
+            if (t != null) window.clearTimeout(t);
+        };
     }, [locked]);
 
     useEffect(() => {
+        let t: number | null = null;
+
         if (!prevEmailedRef.current && emailed) {
-            setCelebrateCfg({
-                durationMs: 3200,
-                intensity: 2,
-                headline: "Sent.",
-                subhead: "Snapshot delivered to your inbox.",
-            });
-            setCelebrate(true);
+            // ✅ defer state updates (avoid set-state-in-effect)
+            t = window.setTimeout(() => {
+                setCelebrateCfg({
+                    durationMs: 3200,
+                    intensity: 2,
+                    headline: "Sent.",
+                    subhead: "Snapshot delivered to your inbox.",
+                });
+                setCelebrate(true);
+            }, 0);
         }
+
         prevEmailedRef.current = emailed;
+
+        return () => {
+            if (t != null) window.clearTimeout(t);
+        };
     }, [emailed]);
-
-    const formatNumber = (num: number): string => {
-        if (num >= 1000000) {
-            return `${Math.round(num / 100000) / 10}M`;
-        }
-        if (num >= 1000) {
-            return `${Math.round(num / 100) / 10}K`;
-        }
-        return num.toString();
-    };
-
-    const formatRange = (low: number, high: number): string => {
-        return `${formatNumber(low)}–${formatNumber(high)}`;
-    };
-
-    const FunnelCard = ({
-                            step,
-                            label,
-                            value,
-                            sublabel,
-                            width = "full",
-                        }: {
-        step: string;
-        label: string;
-        value: string;
-        sublabel?: string;
-        width?: "full" | "medium" | "narrow";
-    }) => {
-        const widthClass = width === "full" ? "w-full" : width === "medium" ? "sm:w-[85%]" : "sm:w-[70%]";
-
-        return (
-            <div className={`${widthClass} mx-auto`}>
-                <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 relative">
-                    <div className="text-xs font-semibold text-[var(--foreground-muted)] mb-1">{step}</div>
-                    <div className="text-sm text-[var(--foreground)] mb-2">{label}</div>
-                    <div className="font-heading text-3xl sm:text-4xl text-[var(--foreground)] mb-3">{value}</div>
-                    {sublabel ? <div className="text-xs text-[var(--foreground-muted)]">{sublabel}</div> : null}
-                </div>
-            </div>
-        );
-    };
-
-    const FunnelArrow = () => (
-        <div className="flex justify-center py-2">
-            <svg className="w-6 h-6 text-[var(--foreground-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-        </div>
-    );
 
     const ResultsCards = useMemo(() => {
         const kind = results.segment_outcome.kind;
@@ -820,7 +808,6 @@ export default function ResultsView({
 
                 {LeadCaptureHardLock}
 
-                {/* ✅ Update: lighter hard-lock obfuscation so it doesn't wash out the entire section */}
                 <div className={showHardLockGate ? "mt-4 opacity-90 blur-[6px] pointer-events-none select-none" : "mt-4"}>
                     {ResultsCards}
 
@@ -876,7 +863,6 @@ export default function ResultsView({
                     {LeadCaptureSoftLock}
                 </div>
 
-                {/* Bottom CTA (bigger vertically + bigger CTA) */}
                 <div className="mt-6 rounded-xl border border-[var(--border)] overflow-hidden">
                     <div className="ppc-hero-glow relative p-8 sm:p-10">
                         <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
@@ -901,7 +887,6 @@ export default function ResultsView({
                     </div>
                 </div>
 
-                {/* ✅ Swapped order: Methodology first */}
                 <details className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] overflow-hidden opacity-80">
                     <summary className="cursor-pointer px-6 py-4 hover:bg-[var(--background)]/60 transition-colors flex items-center justify-between">
                         <div className="text-sm font-semibold text-[var(--foreground-muted)]">How we calculated this</div>
@@ -981,7 +966,6 @@ export default function ResultsView({
                     </div>
                 </details>
 
-                {/* ✅ “Your answers” now last */}
                 <details className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] overflow-hidden opacity-75">
                     <summary className="cursor-pointer px-6 py-4 hover:bg-[var(--background)]/60 transition-colors flex items-center justify-between">
                         <div className="text-sm font-semibold text-[var(--foreground-muted)]">Your answers</div>
@@ -1012,7 +996,6 @@ export default function ResultsView({
                 </div>
             </div>
 
-            {/* Shared animated gradient for BOTH heroes */}
             <style jsx global>{`
                 .ppc-hero-glow {
                     position: relative;

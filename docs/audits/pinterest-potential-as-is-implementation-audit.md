@@ -1,8 +1,11 @@
 ### Pinterest Potential Calculator — AS-IS Implementation Audit (code-as-truth)
 
+Audit updated: 2026-01-29 08:39 (local). Verified against current repository state. No code changes performed; documentation only.
+
 1) Executive Snapshot
 - Public route(s) and entry points
   - Route: frontend/app/(flow)/tools/pinterest-potential/page.tsx (default export: PinterestPotentialPage)
+  - Page rendering mode: export const dynamic = "force-dynamic" (ensures query param overrides like ?variant= are respected on each request)
   - Variants → components mapping:
     - welcome → frontend/components/tools/pinterestPotential/PinterestPotentialV1.tsx (export: PinterestPotentialV1)
     - no_welcome → frontend/components/tools/pinterestPotential/PinterestPotentialV2.tsx (export: PinterestPotentialV2)
@@ -26,13 +29,13 @@
     - tool_view: by useToolAnalytics hook (frontend/lib/hooks/useToolAnalytics.ts) on mount of PinterestPotentialV1. V2 does NOT fire tool_view (no hook present).
     - tool_start: PinterestPotentialV1 passes trackToolStart to Wizard via onStartAction; Wizard invokes onStartAction when the flow starts. V2 does not wire Wizard.
     - lead_submit: fired in Wizard when lead is submitted in both hard lock and soft lock panels (V1 only; V2 has no lead UI).
-  - ppc_* events are defined in gtm.ts (ppc_view_start, ppc_start, ppc_answer, ppc_complete, ppc_cta_click, ppc_lead_view, etc.) but NOT referenced in the Wizard. DISCREPANCY: helpers exist; flow doesn’t use them yet.
+  - ppc_* events are defined in gtm.ts (ppc_view_start, ppc_start, ppc_answer, ppc_complete, ppc_cta_click, ppc_lead_view, etc.) but NOT referenced in the Wizard or presentational views. DISCREPANCY: helpers exist; flow doesn’t use them yet. Confirmed by code search in frontend/components/tools/pinterestPotential (no matches for "ppc_").
 
 2) File Map (Source of Truth Index)
 - UI entry route/page/layout
   - frontend/app/(flow)/tools/pinterest-potential/page.tsx
     - Exports: default async function PinterestPotentialPage, resolvePinterestPotentialVariant, normalizeVariant
-    - Responsibility: server-side variant resolution; leadMode resolution; initial lead derivation from user or token; choose variant component
+    - Responsibility: server-side variant resolution; leadMode resolution; initial lead derivation from user or token; choose variant component. Reads pp_variant cookie and optional ppc_lead_mode cookie; derives initialLead from token lead > user > undefined.
 - Wizard controller/component(s)
   - frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
     - Exports: default component
@@ -53,7 +56,7 @@
     - Responsibility: presentational shell for step screens (progress bar, header, error banner, Back/Continue controls)
   - frontend/components/tools/pinterestPotential/views/ResultsView.tsx
     - Exports: default ResultsView
-    - Responsibility: presentational results renderer for audience/opportunity/income cards and CTA hooks; no business logic
+    - Responsibility: presentational results renderer for audience/opportunity/income cards and CTA hooks; no business logic and no analytics firing within this view (CTA tracking not wired here as of this audit).
 - Step definitions/spec (business model)
   - frontend/lib/tools/pinterestPotential/pinterestPotentialSpec.ts
     - Exports (selected): Segment, LeadMode, LeadState, PrimaryGoal, Answers type, validateAnswers(), validateLead(), getNicheOptions(), getPrimaryGoalOptions(), prompts helpers
@@ -77,7 +80,7 @@
 - Lead capture + submission path
   - Lead validation: validateLead in pinterestPotentialSpec.ts
   - Lead submission event: trackLeadSubmit in frontend/lib/gtm.ts
-  - Network submission: no API call implemented in Wizard (GAP). Only GTM lead_submit is fired.
+  - Network submission: no API call implemented in Wizard (GAP). Only GTM lead_submit is fired. Confirmed: Wizard invokes trackLeadSubmit(...) in both hard and soft lock handlers; no fetch/POST present.
 - Analytics/tracking module(s)
   - frontend/lib/gtm.ts — pushEvent(), trackToolView, trackToolStart, trackLeadSubmit, trackCtaClick, plus ppc_* events (not used yet in Wizard)
   - frontend/lib/hooks/useToolAnalytics.ts — fires tool_view on mount; exposes trackToolStart
@@ -292,6 +295,6 @@
   - Introduce analytics provider abstraction to optionally mirror events to an internal endpoint for auditability.
 
 UNVERIFIED items and next inspection targets
-- Exact back button and stepIndex management → inspect full PinterestPotentialWizard.tsx for navigation handlers.
-- Variant-specific branches inside Wizard (welcome vs no_welcome) → search within Wizard for draft.started and draft.variant usage.
+- Exact back button and stepIndex management → inspect full PinterestPotentialWizard.tsx for navigation handlers. Status: UNVERIFIED (not observed emitting analytics or using browser history APIs; stepIndex persisted via draft state).
+- Variant-specific branches inside Wizard (welcome vs no_welcome) → search within Wizard for draft.started and draft.variant usage. Status: UNVERIFIED; Wizard imports the variant cookie constant but variant-specific UI branches not confirmed.
 - V2 shell: VERIFIED placeholder — frontend/components/tools/pinterestPotential/PinterestPotentialV2.tsx renders only a heading/paragraph and does not wire Wizard or analytics.

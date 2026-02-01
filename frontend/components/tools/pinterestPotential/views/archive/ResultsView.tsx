@@ -1,11 +1,193 @@
-// THIS IS AN ARCHIVED VERSION OF THE RESULTS VIEW SAVED FOR POTENTIAL FUTURE USE
-// DO NOT IMPORT INTO THE MAIN PINTEREST POTENTIAL CALCULATOR
-// USE frontend/components/tools/pinterestPotential/views/ResultsView.tsx INSTEAD
-// frontend/components/tools/pinterestPotential/views/archive/ResultsView.tsx
+// frontend/components/tools/pinterestPotential/views/ResultsView.tsx
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import type { ResultsBundle } from "@/lib/tools/pinterestPotential/compute";
+import { createPortal } from "react-dom";
+
+/**
+ * v1.2 STRICT UI CONTRACT (breaking; NO back-compat):
+ * ResultsView must NOT import compute.ts.
+ * This file defines the minimal ResultsBundle shape it expects from the upstream controller/adapter.
+ *
+ * If compute/result types drift, update this file + the upstream mapping (no fallbacks).
+ */
+type Range = { low: number; high: number };
+type Range01 = Range;
+
+type DemandBundle = {
+    demand_base_sessions_est: Range;
+    distribution_capacity_m: number;
+    conversion_readiness_m: number;
+    likely_pinterest_sessions_est: Range;
+};
+
+type TrafficBundle = {
+    website_sessions_est: Range;
+    purchase_intent_sessions_est?: Range;
+};
+
+type CoursePriceBucket = string;
+type AovBucket = string;
+
+type ContentCreatorGoalOutcomeV2 =
+    | {
+    kind: "traffic";
+    monthly_email_subscribers_est: Range;
+    note: string;
+}
+    | {
+    kind: "email_subscribers";
+    monthly_email_subscribers_est: Range;
+}
+    | {
+    kind: "affiliate_revenue";
+    monthly_affiliate_revenue_usd_est: Range;
+}
+    | {
+    kind: "course_product_sales";
+    monthly_course_intent_sessions_est: Range;
+    revenue_by_course_price_est: Record<CoursePriceBucket, Range>;
+};
+
+type ProductSellerGoalOutcomeV2 =
+    | {
+    kind: "sales";
+    revenue_by_aov_est: Record<AovBucket, Range>;
+}
+    | {
+    kind: "email_subscribers";
+    monthly_email_subscribers_est: Range;
+}
+    | {
+    kind: "retargeting_pool";
+    monthly_retargetable_visitors_est: Range;
+}
+    | {
+    kind: "new_customer_discovery";
+    monthly_new_to_brand_sessions_est: Range;
+};
+
+type ServiceProviderGoalOutcomeV2 =
+    | {
+    kind: "leads_calls";
+    monthly_discovery_calls_est: Range;
+}
+    | {
+    kind: "email_subscribers";
+    monthly_email_subscribers_est: Range;
+}
+    | {
+    kind: "webinar_signups";
+    monthly_webinar_signups_est: Range;
+}
+    | {
+    kind: "authority_visibility";
+    monthly_visibility_reach_est: Range;
+};
+
+type ContentCreatorAssumptionsV2 =
+    | {
+    kind: "traffic" | "email_subscribers";
+    optin_rate_from_sessions: Range01;
+    conversion_readiness_m: number;
+}
+    | {
+    kind: "affiliate_revenue";
+    rpm_usd: Range;
+    conversion_readiness_m: number;
+}
+    | {
+    kind: "course_product_sales";
+    course_intent_share_of_sessions: Range01;
+    enroll_rate_by_price: Record<CoursePriceBucket, Range01>;
+    course_price_buckets: ReadonlyArray<{ id: CoursePriceBucket; label: string; low: number; high: number }>;
+    conversion_readiness_m: number;
+};
+
+type ProductSellerAssumptionsV2 =
+    | {
+    kind: "sales";
+    purchase_intent_share_of_sessions: Range01;
+    ecommerce_cr_by_aov: Record<AovBucket, Range01>;
+    aov_buckets: ReadonlyArray<{ id: AovBucket; label: string; low: number; high: number }>;
+    conversion_readiness_m: number;
+}
+    | {
+    kind: "email_subscribers";
+    optin_rate_from_sessions: Range01;
+    conversion_readiness_m: number;
+}
+    | {
+    kind: "retargeting_pool";
+    retargetable_share_of_sessions: Range01;
+}
+    | {
+    kind: "new_customer_discovery";
+    new_to_brand_share_of_sessions: Range01;
+};
+
+type ServiceProviderAssumptionsV2 =
+    | {
+    kind: "leads_calls";
+    call_book_rate_from_sessions: Range01;
+    conversion_readiness_m: number;
+}
+    | {
+    kind: "email_subscribers";
+    optin_rate_from_sessions: Range01;
+    conversion_readiness_m: number;
+}
+    | {
+    kind: "webinar_signups";
+    webinar_signup_rate_from_sessions: Range01;
+    conversion_readiness_m: number;
+}
+    | {
+    kind: "authority_visibility";
+    visibility_reach_per_session: Range;
+};
+
+type SegmentOutcome =
+    | {
+    kind: "content_creator";
+    goal_key: string;
+    primary_goal: string;
+    goal_outcome: ContentCreatorGoalOutcomeV2;
+    assumptions: ContentCreatorAssumptionsV2;
+}
+    | {
+    kind: "product_seller";
+    goal_key: string;
+    primary_goal: string;
+    goal_outcome: ProductSellerGoalOutcomeV2;
+    assumptions: ProductSellerAssumptionsV2;
+}
+    | {
+    kind: "service_provider";
+    goal_key: string;
+    primary_goal: string;
+    goal_outcome: ServiceProviderGoalOutcomeV2;
+    assumptions: ServiceProviderAssumptionsV2;
+};
+
+export type ResultsBundle = {
+    demand: DemandBundle;
+    traffic: TrafficBundle;
+    segment_outcome: SegmentOutcome;
+
+    demographics: {
+        household_income_usd: Range;
+        notes?: string[];
+    };
+
+    inferred: {
+        seasonality_index: "low" | "medium" | "high";
+        competition_index: "low" | "medium" | "high";
+        tags?: string[];
+    };
+
+    insight_line?: string | null;
+};
 
 export type ResultsRecapItem = {
     label: string;
@@ -58,6 +240,62 @@ export type ResultsViewProps = {
 
 type HeroVariant = "locked" | "ready" | "unlocked" | "emailed";
 
+// -----------------------------
+// Utilities
+// -----------------------------
+
+function clamp(n: number, a: number, b: number) {
+    return Math.max(a, Math.min(b, n));
+}
+
+function formatNumber(num: number): string {
+    const n = Math.round(num);
+    if (n >= 1_000_000) return `${Math.round(n / 100_000) / 10}M`;
+    if (n >= 1_000) return `${Math.round(n / 100) / 10}K`;
+    return n.toString();
+}
+
+function formatRange(low: number, high: number): string {
+    return `${formatNumber(low)}–${formatNumber(high)}`;
+}
+
+function formatPercent(v: number): string {
+    const p = v * 100;
+    const rounded = Math.round(p * 10) / 10;
+    return `${rounded}%`;
+}
+
+function formatPercentRange(r: { low: number; high: number }): string {
+    return `${formatPercent(r.low)}–${formatPercent(r.high)}`;
+}
+
+function mustGetRecordValue<V>(rec: Record<string, V>, key: string, label: string): V {
+    if (!(key in rec)) {
+        throw new Error(`Results UI contract error: Missing ${label} for key "${key}"`);
+    }
+    return rec[key] as V;
+}
+
+function assertRange(r: Range, name: string): Range {
+    if (!r || typeof r.low !== "number" || typeof r.high !== "number") {
+        throw new Error(`Results UI contract error: ${name} must be a {low,high} range`);
+    }
+    if (!Number.isFinite(r.low) || !Number.isFinite(r.high)) {
+        throw new Error(`Results UI contract error: ${name} must be finite`);
+    }
+    if (r.low < 0 || r.high < 0 || r.low > r.high) {
+        throw new Error(`Results UI contract error: ${name} invalid bounds (${r.low}–${r.high})`);
+    }
+    return r;
+}
+
+function assertFiniteNumber(v: unknown, name: string): number {
+    if (typeof v !== "number" || !Number.isFinite(v)) {
+        throw new Error(`Results UI contract error: ${name} must be a finite number`);
+    }
+    return v;
+}
+
 function useReducedMotion(): boolean {
     const [reduced, setReduced] = useState(false);
     useEffect(() => {
@@ -76,6 +314,10 @@ function useReducedMotion(): boolean {
     return reduced;
 }
 
+// -----------------------------
+// UI bits
+// -----------------------------
+
 function CheckBadge({ text }: { text: string }) {
     return (
         <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--background)] px-3 py-1 text-xs text-[var(--foreground)]">
@@ -90,6 +332,64 @@ function CheckBadge({ text }: { text: string }) {
         </span>
     );
 }
+
+type FunnelCardProps = {
+    step: string;
+    label: string;
+    value: string;
+    sublabel?: string;
+    width?: "full" | "medium" | "narrow";
+};
+
+function FunnelCard({ step, label, value, sublabel, width = "full" }: FunnelCardProps) {
+    const widthClass = width === "full" ? "w-full" : width === "medium" ? "sm:w-[85%]" : "sm:w-[70%]";
+
+    return (
+        <div className={`${widthClass} mx-auto`}>
+            <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 relative">
+                <div className="text-xs font-semibold text-[var(--foreground-muted)] mb-1">{step}</div>
+                <div className="text-sm text-[var(--foreground)] mb-2">{label}</div>
+                <div className="font-heading text-3xl sm:text-4xl text-[var(--foreground)] mb-3">{value}</div>
+                {sublabel ? <div className="text-xs text-[var(--foreground-muted)]">{sublabel}</div> : null}
+            </div>
+        </div>
+    );
+}
+
+function FunnelArrow() {
+    return (
+        <div className="flex justify-center py-2">
+            <svg className="w-6 h-6 text-[var(--foreground-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    );
+}
+
+function SoftDivider() {
+    return <div className="h-px w-full bg-[var(--border)]/70 my-4" />;
+}
+
+function StatRow({ label, value }: { label: string; value: string }) {
+    return (
+        <div className="flex items-start justify-between gap-4">
+            <div className="text-sm text-[var(--foreground-muted)]">{label}</div>
+            <div className="text-sm font-semibold text-[var(--foreground)]">{value}</div>
+        </div>
+    );
+}
+
+function Pill({ label }: { label: string }) {
+    return (
+        <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--background)] px-3 py-1 text-xs text-[var(--foreground)]">
+            {label}
+        </span>
+    );
+}
+
+// -----------------------------
+// Candy burst overlay (unchanged)
+// -----------------------------
 
 type CandyBurstOverlayProps = {
     open: boolean;
@@ -116,10 +416,6 @@ type CandyPiece = {
     opacity: number;
 };
 
-function clamp(n: number, a: number, b: number) {
-    return Math.max(a, Math.min(b, n));
-}
-
 function CandyBurstOverlay({
                                open,
                                onClose,
@@ -140,26 +436,23 @@ function CandyBurstOverlay({
             return () => window.clearTimeout(t);
         }
 
-        // Create “piñata candy” pieces once per open. (No per-frame JS.)
         const lvl = clamp(intensity, 1, 3);
         const count = lvl === 3 ? 140 : lvl === 2 ? 110 : 85;
 
-        // Burst origin (roughly where the message sits).
         const originX = 50; // %
         const originY = Math.round(window.innerHeight * 0.52); // px
 
         const palette = [
-            { a: "255,77,141", b: "255,209,102" }, // raspberry/gold
-            { a: "77,220,255", b: "184,255,77" }, // cyan/lime
-            { a: "255,255,255", b: "255,77,141" }, // white/raspberry
-            { a: "255,209,102", b: "77,220,255" }, // gold/cyan
-            { a: "184,255,77", b: "255,255,255" }, // lime/white
+            { a: "255,77,141", b: "255,209,102" },
+            { a: "77,220,255", b: "184,255,77" },
+            { a: "255,255,255", b: "255,77,141" },
+            { a: "255,209,102", b: "77,220,255" },
+            { a: "184,255,77", b: "255,255,255" },
         ];
 
         const makeBg = () => {
             const p = palette[Math.floor(Math.random() * palette.length)]!;
             const mode = Math.random();
-            // Candy textures: stripes / gummy sheen / sprinkle dot
             if (mode < 0.45) {
                 return `linear-gradient(90deg,
           rgba(${p.a},1) 0%,
@@ -183,7 +476,6 @@ function CandyBurstOverlay({
         };
 
         const next: CandyPiece[] = Array.from({ length: count }).map((_, i) => {
-            // spread around origin with a wide cone
             const spread = (Math.random() * 2 - 1) * (lvl === 3 ? 520 : lvl === 2 ? 440 : 360);
             const lift = 80 + Math.random() * (lvl === 3 ? 220 : 180);
 
@@ -191,16 +483,12 @@ function CandyBurstOverlay({
             const up = lift;
 
             const left =
-                originX +
-                (spread / (window.innerWidth || 1)) * 100 * 0.85 +
-                (Math.random() * 8 - 4);
+                originX + (spread / (window.innerWidth || 1)) * 100 * 0.85 + (Math.random() * 8 - 4);
             const top = originY + (Math.random() * 36 - 18);
 
             const size = (lvl === 3 ? 10 : lvl === 2 ? 11 : 12) + Math.random() * (lvl === 3 ? 18 : 16);
-            const radius =
-                Math.random() < 0.45 ? size * 0.9 : Math.random() < 0.75 ? size * 0.35 : size * 0.15;
+            const radius = Math.random() < 0.45 ? size * 0.9 : Math.random() < 0.75 ? size * 0.35 : size * 0.15;
 
-            // slower overall feel: 3.4s – 5.6s
             const dur = 3400 + Math.random() * (lvl === 3 ? 2200 : 2000);
             const delay = Math.random() * (lvl === 3 ? 520 : 420);
 
@@ -224,10 +512,15 @@ function CandyBurstOverlay({
             };
         });
 
-        setPieces(next);
+        // ✅ avoid setState synchronously inside effect body
+        let raf = 0;
+        raf = window.requestAnimationFrame(() => setPieces(next));
 
         const auto = window.setTimeout(() => onClose(), durationMs);
-        return () => window.clearTimeout(auto);
+        return () => {
+            window.cancelAnimationFrame(raf);
+            window.clearTimeout(auto);
+        };
     }, [open, reducedMotion, onClose, durationMs, intensity]);
 
     useEffect(() => {
@@ -241,23 +534,10 @@ function CandyBurstOverlay({
 
     if (!open) return null;
 
-    return (
-        <div
-            className="fixed inset-0 z-[60] flex items-center justify-center"
-            onClick={onClose}
-            role="presentation"
-        >
-            {/* Darkened premium backdrop + soft color bloom */}
-            <div
-                className="absolute inset-0"
-                aria-hidden="true"
-                style={{
-                    background:
-                        "radial-gradient(1000px 600px at 50% 45%, rgba(255,77,141,0.20), rgba(0,0,0,0.86) 68%), radial-gradient(800px 520px at 65% 25%, rgba(77,220,255,0.10), rgba(0,0,0,0) 60%)",
-                }}
-            />
+    const overlay = (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center" onClick={onClose} role="presentation">
+            <div className="absolute inset-0 ppc-celebrate-scrim" aria-hidden="true" />
 
-            {/* Candy pieces */}
             <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
                 {pieces.map((p) => (
                     <div
@@ -295,11 +575,8 @@ function CandyBurstOverlay({
                 ))}
             </div>
 
-            {/* Message */}
             <div className="relative mx-6 max-w-xl text-center">
-                {headline ? (
-                    <div className="font-heading text-3xl sm:text-4xl text-white drop-shadow">{headline}</div>
-                ) : null}
+                {headline ? <div className="font-heading text-3xl sm:text-4xl text-white drop-shadow">{headline}</div> : null}
                 {subhead ? <div className="mt-2 text-sm sm:text-base text-white/80">{subhead}</div> : null}
 
                 <button
@@ -383,37 +660,36 @@ function CandyBurstOverlay({
             `}</style>
         </div>
     );
+
+    if (typeof document === "undefined") return null;
+    return createPortal(overlay, document.body);
 }
 
-function ResultsHero({ 
-    variant,
-    onEditAnswers,
-    onStartOver,
-}: { 
-    variant: HeroVariant;
-    onEditAnswers: () => void;
-    onStartOver: () => void;
-}) {
+// -----------------------------
+// Hero
+// -----------------------------
+
+function ResultsHero({ variant }: { variant: HeroVariant }) {
     const copy = useMemo(() => {
         if (variant === "locked") {
             return {
                 eyebrow: "Completed",
                 title: "All set — your snapshot is ready.",
-                body: "Enter your email to reveal the full results (and keep a copy).",
+                body: "Want help turning this into a plan? Book a strategy call.",
             };
         }
         if (variant === "ready") {
             return {
                 eyebrow: "Completed",
                 title: "Snapshot complete.",
-                body: "Your results are ready. Want a copy emailed to you?",
+                body: "Want help turning this into a plan? Book a strategy call.",
             };
         }
         if (variant === "emailed") {
             return {
                 eyebrow: "Sent",
                 title: "Done — check your inbox.",
-                body: "We just emailed your snapshot. You can keep this tab open too.",
+                body: "Want help turning this into a plan? Book a strategy call.",
             };
         }
         return {
@@ -424,19 +700,7 @@ function ResultsHero({
     }, [variant]);
 
     return (
-        <div className="relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background)] p-5 sm:p-6">
-            <div
-                className="pointer-events-none absolute inset-0 opacity-80"
-                aria-hidden="true"
-                style={{
-                    background:
-                        "radial-gradient(900px 320px at 15% 20%, rgba(255,77,141,0.22), transparent 60%), radial-gradient(900px 320px at 85% 10%, rgba(255,209,102,0.16), transparent 60%)",
-                }}
-            />
-            <div className="pointer-events-none absolute inset-0 opacity-25" aria-hidden="true">
-                <div className="ppc-sheen" />
-            </div>
-
+        <div className="ppc-hero-glow relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background)] p-6 sm:p-7">
             <div className="relative">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-4">
                     <div>
@@ -450,124 +714,150 @@ function ResultsHero({
                     </div>
                 </div>
 
-                {/* Action buttons */}
                 <div className="flex flex-wrap items-center gap-3">
                     <a
                         href="https://cal.com/fruitfullab/pinterest-strategy"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block rounded-md bg-[var(--brand-raspberry)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]"
+                        className="inline-flex items-center justify-center rounded-md bg-[var(--brand-raspberry)] px-8 py-4 text-base font-semibold text-white shadow-sm hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                     >
                         Book a Strategy Call →
                     </a>
-
-                    <button
-                        type="button"
-                        onClick={onEditAnswers}
-                        className="rounded-md border border-[var(--border)] bg-[var(--background)]/50 px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--background)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]"
-                    >
-                        Edit answers
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={onStartOver}
-                        className="rounded-md px-3 py-2 text-sm text-[var(--foreground-muted)] hover:text-[var(--foreground)] focus:outline-none"
-                    >
-                        Start over
-                    </button>
                 </div>
             </div>
-
-            <style jsx>{`
-                .ppc-sheen {
-                    position: absolute;
-                    inset: -40%;
-                    background: linear-gradient(
-                            110deg,
-                            rgba(255, 255, 255, 0) 35%,
-                            rgba(255, 255, 255, 0.12) 50%,
-                            rgba(255, 255, 255, 0) 65%
-                    );
-                    transform: translateX(-30%);
-                    animation: ppcSheen 3.8s ease-in-out infinite;
-                }
-                @keyframes ppcSheen {
-                    0% {
-                        transform: translateX(-35%);
-                    }
-                    50% {
-                        transform: translateX(35%);
-                    }
-                    100% {
-                        transform: translateX(-35%);
-                    }
-                }
-                @media (prefers-reduced-motion: reduce) {
-                    .ppc-sheen {
-                        animation: none;
-                    }
-                }
-            `}</style>
         </div>
     );
 }
 
-function MetricCard({
-                        label,
-                        value,
-                        sublabel,
-                    }: {
-    label: string;
-    value: string;
-    sublabel?: string;
-}) {
+// -----------------------------
+// Goal-driven breakdowns (v1.2; strict; no hard-coded bucket IDs)
+// -----------------------------
+
+function SalesRevenueBreakdown({ seg }: { seg: Extract<SegmentOutcome, { kind: "product_seller" }> }) {
+    const g = seg.goal_outcome;
+    const a = seg.assumptions;
+
+    if (g.kind !== "sales") return null;
+    if (a.kind !== "sales") {
+        throw new Error("Results UI contract error: product_seller:sales requires assumptions.kind === sales");
+    }
+
+    if (!a.aov_buckets || a.aov_buckets.length === 0) {
+        throw new Error("Results UI contract error: product_seller:sales must include aov_buckets");
+    }
+
     return (
-        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-            <div className="text-xs text-[var(--foreground-muted)]">{label}</div>
-            <div className="mt-1 font-heading text-2xl text-[var(--foreground)]">{value}</div>
-            {sublabel ? <div className="mt-1 text-xs text-[var(--foreground-muted)]">{sublabel}</div> : null}
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
+            <div className="font-heading text-lg text-[var(--foreground)]">Revenue breakdown by AOV</div>
+            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                Modeled from purchase-intent sessions × conversion rate × AOV bucket (with conversion readiness applied).
+            </div>
+
+            <div className="mt-4 space-y-3">
+                {a.aov_buckets.map((b) => {
+                    const r = mustGetRecordValue(
+                        g.revenue_by_aov_est as unknown as Record<string, Range>,
+                        b.id,
+                        `revenue_by_aov_est.${b.id}`
+                    );
+                    const rr = assertRange(r, `revenue_by_aov_est.${b.id}`);
+
+                    return (
+                        <div
+                            key={b.id}
+                            className="flex items-center justify-between gap-4 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3"
+                        >
+                            <div className="text-sm text-[var(--foreground)]">
+                                <div className="font-semibold">AOV: {b.label}</div>
+                                <div className="text-xs text-[var(--foreground-muted)]">
+                                    CR assumed: {formatPercentRange(mustGetRecordValue(a.ecommerce_cr_by_aov as unknown as Record<string, Range01>, b.id, `ecommerce_cr_by_aov.${b.id}`))}
+                                </div>
+                            </div>
+                            <div className="text-right">
+                                <div className="font-heading text-xl text-[var(--foreground)]">${formatRange(rr.low, rr.high)}</div>
+                                <div className="text-xs text-[var(--foreground-muted)]">per month</div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 }
 
-export default function ResultsView({
-                                        results,
-                                        demandBaseSessionsRangeLabel,
-                                        likelySessionsRangeLabel,
-                                        distributionCapacityLabel,
-                                        primaryOutcomeLabel,
-                                        primaryOutcomeRangeLabel,
-                                        purchaseIntentRangeLabel,
-                                        incomeRangeLabel,
-                                        insightLine,
-                                        showHardLockGate,
-                                        showSoftLockGate,
-                                        privacyMicrocopy,
-                                        leadName,
-                                        leadEmail,
-                                        requireName,
-                                        errors,
-                                        optionalLeadEmailError,
-                                        optionalLeadSubmitted,
-                                        onLeadNameChange,
-                                        onLeadEmailChange,
-                                        onUnlock,
-                                        onEmailResults,
-                                        recap,
-                                        onStartOver,
-                                        onEditAnswers,
-                                    }: ResultsViewProps) {
-    const locked = showHardLockGate;
-    const emailed = optionalLeadSubmitted;
+function CourseRevenueBreakdown({ seg }: { seg: Extract<SegmentOutcome, { kind: "content_creator" }> }) {
+    const g = seg.goal_outcome;
+    const a = seg.assumptions;
 
-    const heroVariant: HeroVariant = emailed
-        ? "emailed"
-        : locked
-            ? "locked"
-            : showSoftLockGate
-                ? "ready"
-                : "unlocked";
+    if (g.kind !== "course_product_sales") return null;
+    if (a.kind !== "course_product_sales") {
+        throw new Error("Results UI contract error: content_creator:course_product_sales requires assumptions.kind === course_product_sales");
+    }
+
+    if (!a.course_price_buckets || a.course_price_buckets.length === 0) {
+        throw new Error("Results UI contract error: course_product_sales must include course_price_buckets");
+    }
+
+    const intent = assertRange(g.monthly_course_intent_sessions_est, "monthly_course_intent_sessions_est");
+
+    return (
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
+            <div className="font-heading text-lg text-[var(--foreground)]">Course/product breakdown</div>
+            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                Revenue is modeled from intent sessions × enroll-rate by price × conversion readiness.
+            </div>
+
+            <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3">
+                <div className="text-xs font-semibold text-[var(--foreground-muted)] mb-1">Intent sessions</div>
+                <div className="font-heading text-2xl text-[var(--foreground)]">{formatRange(intent.low, intent.high)}</div>
+                <div className="text-xs text-[var(--foreground-muted)]">sessions/mo</div>
+            </div>
+
+            <div className="mt-4 space-y-3">
+                {a.course_price_buckets.map((b) => {
+                    const r = mustGetRecordValue(
+                        g.revenue_by_course_price_est as unknown as Record<string, Range>,
+                        b.id,
+                        `revenue_by_course_price_est.${b.id}`
+                    );
+                    const rr = assertRange(r, `revenue_by_course_price_est.${b.id}`);
+
+                    const enroll = mustGetRecordValue(
+                        a.enroll_rate_by_price as unknown as Record<string, Range01>,
+                        b.id,
+                        `enroll_rate_by_price.${b.id}`
+                    );
+
+                    return (
+                        <div
+                            key={b.id}
+                            className="flex items-center justify-between gap-4 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3"
+                        >
+                            <div className="text-sm text-[var(--foreground)]">
+                                <div className="font-semibold">Price: {b.label}</div>
+                                <div className="text-xs text-[var(--foreground-muted)]">Enroll assumed: {formatPercentRange(enroll)}</div>
+                            </div>
+                            <div className="text-right">
+                                <div className="font-heading text-xl text-[var(--foreground)]">${formatRange(rr.low, rr.high)}</div>
+                                <div className="text-xs text-[var(--foreground-muted)]">per month</div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+}
+
+// -----------------------------
+// Main view (layout preserved; results wiring updated to v1.2)
+// -----------------------------
+
+export default function ResultsView(props: ResultsViewProps) {
+    const locked = props.showHardLockGate;
+    const emailed = props.optionalLeadSubmitted;
+
+    const heroVariant: HeroVariant = emailed ? "emailed" : locked ? "locked" : props.showSoftLockGate ? "ready" : "unlocked";
 
     const [celebrate, setCelebrate] = useState(false);
     const [celebrateCfg, setCelebrateCfg] = useState<{
@@ -580,391 +870,394 @@ export default function ResultsView({
     const prevLockedRef = useRef<boolean>(locked);
     const prevEmailedRef = useRef<boolean>(emailed);
 
-    // Trigger celebration on hard-lock unlock
     useEffect(() => {
+        let t: number | null = null;
+
         if (prevLockedRef.current && !locked) {
-            setCelebrateCfg({
-                durationMs: 4300, // ✅ slower
-                intensity: 3,
-                headline: "Unlocked.",
-                subhead: "Your full Pinterest Potential snapshot is ready.",
-            });
-            setCelebrate(true);
+            t = window.setTimeout(() => {
+                setCelebrateCfg({
+                    durationMs: 4300,
+                    intensity: 3,
+                    headline: "Unlocked.",
+                    subhead: "Your full Pinterest Potential snapshot is ready.",
+                });
+                setCelebrate(true);
+            }, 0);
         }
+
         prevLockedRef.current = locked;
+
+        return () => {
+            if (t != null) window.clearTimeout(t);
+        };
     }, [locked]);
 
-    // Trigger celebration on optional “email me” submit
     useEffect(() => {
+        let t: number | null = null;
+
         if (!prevEmailedRef.current && emailed) {
-            setCelebrateCfg({
-                durationMs: 3200, // ✅ slower
-                intensity: 2,
-                headline: "Sent.",
-                subhead: "Snapshot delivered to your inbox.",
-            });
-            setCelebrate(true);
+            t = window.setTimeout(() => {
+                setCelebrateCfg({
+                    durationMs: 3200,
+                    intensity: 2,
+                    headline: "Sent.",
+                    subhead: "Snapshot delivered to your inbox.",
+                });
+                setCelebrate(true);
+            }, 0);
         }
+
         prevEmailedRef.current = emailed;
+
+        return () => {
+            if (t != null) window.clearTimeout(t);
+        };
     }, [emailed]);
 
-    const conversionReadinessLabel = useMemo(() => {
-        const m = results?.demand?.conversion_readiness_m;
-        if (typeof m !== "number" || !Number.isFinite(m)) return "—";
-        return `${m.toFixed(2)}×`;
-    }, [results]);
-
-    const insight = (insightLine ?? results.insight_line ?? null) as string | null;
-
-    // Helper to format numbers with K/M suffix
-    const formatNumber = (num: number): string => {
-        if (num >= 1000000) {
-            return `${Math.round(num / 100000) / 10}M`;
-        }
-        if (num >= 1000) {
-            return `${Math.round(num / 100) / 10}K`;
-        }
-        return num.toString();
-    };
-
-    const formatRange = (low: number, high: number): string => {
-        return `${formatNumber(low)}–${formatNumber(high)}`;
-    };
-
-    // Influenced by pill component
-    const InfluencedByPill = ({ label, impact }: { label: string; impact: "positive" | "neutral" | "negative" }) => {
-        const colorClass = impact === "positive" ? "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400" : 
-                           impact === "negative" ? "border-orange-500/30 bg-orange-500/10 text-orange-700 dark:text-orange-400" : 
-                           "border-[var(--border)] bg-[var(--background)]/50 text-[var(--foreground-muted)]";
-        
-        const icon = impact === "positive" ? "↗" : impact === "negative" ? "↘" : "→";
-        
-        return (
-            <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs ${colorClass}`}>
-                <span>{label}</span>
-                <span className="text-sm">{icon}</span>
-            </span>
-        );
-    };
-
-    // Funnel card component
-    const FunnelCard = ({
-        step,
-        label,
-        value,
-        sublabel,
-        width = "full",
-        influencedBy,
-    }: {
-        step: string;
-        label: string;
-        value: string;
-        sublabel?: string;
-        width?: "full" | "medium" | "narrow";
-        influencedBy?: Array<{ label: string; impact: "positive" | "neutral" | "negative" }>;
-    }) => {
-        const widthClass = width === "full" ? "w-full" : width === "medium" ? "sm:w-[85%]" : "sm:w-[70%]";
-        
-        return (
-            <div className={`${widthClass} mx-auto`}>
-                <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 relative">
-                    <div className="text-xs font-semibold text-[var(--foreground-muted)] mb-1">{step}</div>
-                    <div className="text-sm text-[var(--foreground)] mb-2">{label}</div>
-                    <div className="font-heading text-3xl sm:text-4xl text-[var(--foreground)] mb-3">{value}</div>
-                    {sublabel && <div className="text-xs text-[var(--foreground-muted)] mb-3">{sublabel}</div>}
-                    
-                    {/* Influenced by pills */}
-                    {influencedBy && influencedBy.length > 0 && (
-                        <div className="pt-3 border-t border-[var(--border)]">
-                            <div className="text-xs text-[var(--foreground-muted)] mb-2">Influenced by:</div>
-                            <div className="flex flex-wrap gap-1.5">
-                                {influencedBy.map((item, idx) => (
-                                    <InfluencedByPill key={idx} label={item.label} impact={item.impact} />
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </div>
-        );
-    };
-
-    // Arrow between funnel steps
-    const FunnelArrow = () => (
-        <div className="flex justify-center py-2">
-            <svg className="w-6 h-6 text-[var(--foreground-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-        </div>
-    );
-
+    // -----------------------------
+    // Result 1–3 (v1.2 strict rules)
+    // -----------------------------
     const ResultsCards = useMemo(() => {
-        const kind = results.segment_outcome.kind;
-        const sessions = results.demand.likely_pinterest_sessions_est;
-        const distCapacity = results.demand.distribution_capacity_m;
-        const convReadiness = results.demand.conversion_readiness_m;
-        
-        // Determine impact for pills
-        const getImpact = (multiplier: number): "positive" | "neutral" | "negative" => {
-            if (multiplier > 1.05) return "positive";
-            if (multiplier < 0.95) return "negative";
-            return "neutral";
-        };
-        
-        const distImpact = getImpact(distCapacity);
-        const convImpact = getImpact(convReadiness);
-        
-        if (kind === "content_creator") {
-            const websiteVisitsLow = Math.round(sessions.low * 0.15);
-            const websiteVisitsHigh = Math.round(sessions.high * 0.35);
-            
+        const results = props.results;
+        const segment = results.segment_outcome;
+
+        // Result 1: demand (macro)
+        const demand = assertRange(results.demand.demand_base_sessions_est, "results.demand.demand_base_sessions_est");
+
+        // Result 2: traffic lens (goal-aware)
+        const websiteSessions = assertRange(results.traffic.website_sessions_est, "results.traffic.website_sessions_est");
+        const likelySessions = assertRange(results.demand.likely_pinterest_sessions_est, "results.demand.likely_pinterest_sessions_est");
+
+        // Strict non-duplication: traffic.website_sessions_est MUST mirror demand.likely_pinterest_sessions_est
+        if (websiteSessions.low !== likelySessions.low || websiteSessions.high !== likelySessions.high) {
+            throw new Error("Results UI contract error: traffic.website_sessions_est must mirror demand.likely_pinterest_sessions_est");
+        }
+
+        const isSalesLens = segment.kind === "product_seller" && segment.primary_goal === "sales";
+
+        // Strict: purchase_intent_sessions_est must exist for product_seller (compute enforces "at minimum"),
+        // but Result 2 only *uses* it for sales goal.
+        if (segment.kind !== "product_seller") {
+            if (results.traffic.purchase_intent_sessions_est !== undefined) {
+                throw new Error(`Results UI contract error: purchase_intent_sessions_est must be absent for segment=${segment.kind}`);
+            }
+        } else {
+            if (!results.traffic.purchase_intent_sessions_est) {
+                throw new Error("Results UI contract error: purchase_intent_sessions_est required for product_seller");
+            }
+        }
+
+        const trafficLens: Range = isSalesLens
+            ? assertRange(results.traffic.purchase_intent_sessions_est as Range, "results.traffic.purchase_intent_sessions_est")
+            : websiteSessions;
+
+        const distributionM = assertFiniteNumber(results.demand.distribution_capacity_m, "results.demand.distribution_capacity_m");
+
+        const trafficLabel = isSalesLens
+            ? "High-intent sessions to product pages"
+            : "Website sessions you can get from Pinterest";
+
+        const trafficSublabel = isSalesLens
+            ? "A focused slice of sessions modeled as purchase-intent (used for sales outcomes)."
+            : `Modeled sessions landing on your site from Pinterest (includes distribution capacity x${distributionM.toFixed(2)}).`;
+
+        // Result 3: must match selected goal (goal_outcome-driven for ALL segments)
+        if (segment.kind === "content_creator") {
+            const goal = segment.goal_outcome;
+            const a = segment.assumptions;
+
+            const Result3 = (() => {
+                if (goal.kind === "traffic") {
+                    if (a.kind !== "traffic") throw new Error("Results UI contract error: assumptions.kind must be traffic");
+                    return (
+                        <FunnelCard
+                            step="RESULT 3: LIST GROWTH"
+                            label="From that traffic: monthly email subscribers"
+                            value={formatRange(goal.monthly_email_subscribers_est.low, goal.monthly_email_subscribers_est.high)}
+                            sublabel={`${goal.note} Assumes opt-in rate ${formatPercentRange(a.optin_rate_from_sessions)} × conversion readiness.`}
+                            width="narrow"
+                        />
+                    );
+                }
+
+                if (goal.kind === "email_subscribers") {
+                    if (a.kind !== "email_subscribers")
+                        throw new Error("Results UI contract error: assumptions.kind must be email_subscribers");
+                    return (
+                        <FunnelCard
+                            step="RESULT 3: EMAIL"
+                            label="Monthly email subscribers"
+                            value={formatRange(goal.monthly_email_subscribers_est.low, goal.monthly_email_subscribers_est.high)}
+                            sublabel={`Assumes opt-in rate ${formatPercentRange(a.optin_rate_from_sessions)} × conversion readiness.`}
+                            width="narrow"
+                        />
+                    );
+                }
+
+                if (goal.kind === "affiliate_revenue") {
+                    if (a.kind !== "affiliate_revenue")
+                        throw new Error("Results UI contract error: assumptions.kind must be affiliate_revenue");
+                    return (
+                        <FunnelCard
+                            step="RESULT 3: AFFILIATE"
+                            label="Affiliate revenue potential"
+                            value={`$${formatRange(goal.monthly_affiliate_revenue_usd_est.low, goal.monthly_affiliate_revenue_usd_est.high)}`}
+                            sublabel={`Modeled via RPM ($ per 1,000 sessions): $${formatNumber(a.rpm_usd.low)}–$${formatNumber(a.rpm_usd.high)}, nudged by conversion readiness.`}
+                            width="narrow"
+                        />
+                    );
+                }
+
+                // course_product_sales
+                if (a.kind !== "course_product_sales")
+                    throw new Error("Results UI contract error: assumptions.kind must be course_product_sales");
+
+                // Strict: highlight the first bucket deterministically (no hard-coded IDs).
+                if (!a.course_price_buckets || a.course_price_buckets.length === 0) {
+                    throw new Error("Results UI contract error: Missing course_price_buckets");
+                }
+
+                const firstBucket = a.course_price_buckets[0]!;
+                const firstRev = mustGetRecordValue(
+                    goal.revenue_by_course_price_est as unknown as Record<string, Range>,
+                    firstBucket.id,
+                    "revenue_by_course_price_est"
+                );
+
+                return (
+                    <FunnelCard
+                        step="RESULT 3: REVENUE"
+                        label={`Revenue potential (example: ${firstBucket.label})`}
+                        value={`$${formatRange(firstRev.low, firstRev.high)}`}
+                        sublabel="Full breakdown by price point below."
+                        width="narrow"
+                    />
+                );
+            })();
+
             return (
                 <div className="space-y-2">
-                    {/* Step 1: Pinterest Sessions */}
                     <FunnelCard
-                        step="STEP 1: REACH"
-                        label="Pinterest monthly reach"
-                        value={formatRange(sessions.low, sessions.high)}
-                        sublabel="People who could see your content"
+                        step="RESULT 1: DEMAND"
+                        label="Monthly demand in your niche (US+CA)"
+                        value={formatRange(demand.low, demand.high)}
+                        sublabel="General niche demand ceiling on Pinterest (macro benchmark; no execution applied)."
                         width="full"
-                        influencedBy={[
-                            { label: "Publishing volume", impact: distImpact },
-                            { label: "Visual library", impact: distImpact },
-                            { label: "Niche demand", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 2: Website Visits - PRIMARY OUTCOME */}
+
                     <FunnelCard
-                        step="STEP 2: TRAFFIC"
-                        label="Potential website visits"
-                        value={formatRange(websiteVisitsLow, websiteVisitsHigh)}
-                        sublabel="Based on 15-35% click-through rate"
+                        step="RESULT 2: TRAFFIC"
+                        label={trafficLabel}
+                        value={formatRange(trafficLens.low, trafficLens.high)}
+                        sublabel={trafficSublabel}
                         width="medium"
-                        influencedBy={[
-                            { label: "Pin quality", impact: "neutral" },
-                            { label: "CTR optimization", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 3: Conversions */}
-                    <FunnelCard
-                        step="STEP 3: CONVERSIONS"
-                        label="Email signups / sales"
-                        value="Depends on your setup"
-                        sublabel="Influenced by offer clarity + site experience"
-                        width="narrow"
-                        influencedBy={[
-                            { label: "Website quality", impact: convImpact },
-                            { label: "Offer clarity", impact: convImpact },
-                        ]}
-                    />
+
+                    {Result3}
                 </div>
             );
         }
-        
-        if (kind === "product_seller") {
-            const purchaseIntent = results.segment_outcome.monthly_purchase_intent_sessions_est;
-            const revenue = results.segment_outcome.revenue_by_aov_est;
-            const midAov = revenue["100_250"] || revenue["50_100"];
-            
+
+        if (segment.kind === "product_seller") {
+            const goal = segment.goal_outcome;
+            const a = segment.assumptions;
+
+            const Result3 = (() => {
+                if (goal.kind === "sales") {
+                    if (a.kind !== "sales") throw new Error("Results UI contract error: assumptions.kind must be sales");
+
+                    if (!a.aov_buckets || a.aov_buckets.length === 0) {
+                        throw new Error("Results UI contract error: Missing aov_buckets");
+                    }
+
+                    // Strict: highlight the first bucket deterministically (no hard-coded IDs).
+                    const firstBucket = a.aov_buckets[0]!;
+                    const r = mustGetRecordValue(
+                        goal.revenue_by_aov_est as unknown as Record<string, Range>,
+                        firstBucket.id,
+                        "revenue_by_aov_est"
+                    );
+
+                    return (
+                        <FunnelCard
+                            step="RESULT 3: REVENUE"
+                            label={`Monthly revenue potential (example: ${firstBucket.label})`}
+                            value={`$${formatRange(r.low, r.high)}`}
+                            sublabel="Full breakdown by AOV below."
+                            width="narrow"
+                        />
+                    );
+                }
+
+                if (goal.kind === "email_subscribers") {
+                    if (a.kind !== "email_subscribers")
+                        throw new Error("Results UI contract error: assumptions.kind must be email_subscribers");
+                    return (
+                        <FunnelCard
+                            step="RESULT 3: EMAIL"
+                            label="Monthly email subscribers"
+                            value={formatRange(goal.monthly_email_subscribers_est.low, goal.monthly_email_subscribers_est.high)}
+                            sublabel={`Assumes opt-in rate ${formatPercentRange(a.optin_rate_from_sessions)} × conversion readiness.`}
+                            width="narrow"
+                        />
+                    );
+                }
+
+                if (goal.kind === "retargeting_pool") {
+                    if (a.kind !== "retargeting_pool")
+                        throw new Error("Results UI contract error: assumptions.kind must be retargeting_pool");
+                    return (
+                        <FunnelCard
+                            step="RESULT 3: RETARGETING"
+                            label="Monthly retargetable visitors"
+                            value={formatRange(goal.monthly_retargetable_visitors_est.low, goal.monthly_retargetable_visitors_est.high)}
+                            sublabel={`Assumes retargetable share ${formatPercentRange(a.retargetable_share_of_sessions)} of sessions.`}
+                            width="narrow"
+                        />
+                    );
+                }
+
+                // new_customer_discovery
+                if (a.kind !== "new_customer_discovery")
+                    throw new Error("Results UI contract error: assumptions.kind must be new_customer_discovery");
+                return (
+                    <FunnelCard
+                        step="RESULT 3: NEW TO BRAND"
+                        label="Monthly new-to-brand sessions"
+                        value={formatRange(goal.monthly_new_to_brand_sessions_est.low, goal.monthly_new_to_brand_sessions_est.high)}
+                        sublabel={`Assumes new-to-brand share ${formatPercentRange(a.new_to_brand_share_of_sessions)} of sessions.`}
+                        width="narrow"
+                    />
+                );
+            })();
+
             return (
                 <div className="space-y-2">
-                    {/* Step 1: Pinterest Sessions */}
                     <FunnelCard
-                        step="STEP 1: REACH"
-                        label="Pinterest monthly reach"
-                        value={formatRange(sessions.low, sessions.high)}
-                        sublabel="People who could see your products"
+                        step="RESULT 1: DEMAND"
+                        label="Monthly demand in your niche (US+CA)"
+                        value={formatRange(demand.low, demand.high)}
+                        sublabel="General niche demand ceiling on Pinterest (macro benchmark; no execution applied)."
                         width="full"
-                        influencedBy={[
-                            { label: "Publishing volume", impact: distImpact },
-                            { label: "Visual library", impact: distImpact },
-                            { label: "Niche demand", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 2: Purchase-Intent Sessions */}
+
                     <FunnelCard
-                        step="STEP 2: SHOPPING INTENT"
-                        label="Purchase-intent sessions"
-                        value={formatRange(purchaseIntent.low, purchaseIntent.high)}
-                        sublabel="Visitors actively looking to buy"
+                        step="RESULT 2: TRAFFIC"
+                        label={trafficLabel}
+                        value={formatRange(trafficLens.low, trafficLens.high)}
+                        sublabel={trafficSublabel}
                         width="medium"
-                        influencedBy={[
-                            { label: "Product appeal", impact: "neutral" },
-                            { label: "Niche buying intent", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 3: Revenue - PRIMARY OUTCOME */}
-                    <FunnelCard
-                        step="STEP 3: REVENUE"
-                        label="Monthly revenue potential"
-                        value={midAov ? `$${formatRange(midAov.low, midAov.high)}` : "—"}
-                        sublabel="Typical order value: $100–$250"
-                        width="narrow"
-                        influencedBy={[
-                            { label: "Website quality", impact: convImpact },
-                            { label: "Offer clarity", impact: convImpact },
-                            { label: "AOV range", impact: "neutral" },
-                        ]}
-                    />
+
+                    {Result3}
                 </div>
             );
         }
-        
-        if (kind === "service_provider") {
-            const websiteVisitsLow = Math.round(sessions.low * 0.15);
-            const websiteVisitsHigh = Math.round(sessions.high * 0.35);
-            const calls = results.segment_outcome.monthly_discovery_calls_est;
-            
+
+        if (segment.kind === "service_provider") {
+            const goal = segment.goal_outcome;
+            const a = segment.assumptions;
+
+            const Result3 = (() => {
+                if (goal.kind === "leads_calls") {
+                    if (a.kind !== "leads_calls") throw new Error("Results UI contract error: assumptions.kind must be leads_calls");
+                    return (
+                        <FunnelCard
+                            step="RESULT 3: LEADS"
+                            label="Monthly discovery calls"
+                            value={formatRange(goal.monthly_discovery_calls_est.low, goal.monthly_discovery_calls_est.high)}
+                            sublabel={`Assumes booking rate ${formatPercentRange(a.call_book_rate_from_sessions)} × conversion readiness.`}
+                            width="narrow"
+                        />
+                    );
+                }
+
+                if (goal.kind === "email_subscribers") {
+                    if (a.kind !== "email_subscribers")
+                        throw new Error("Results UI contract error: assumptions.kind must be email_subscribers");
+                    return (
+                        <FunnelCard
+                            step="RESULT 3: EMAIL"
+                            label="Monthly email subscribers"
+                            value={formatRange(goal.monthly_email_subscribers_est.low, goal.monthly_email_subscribers_est.high)}
+                            sublabel={`Assumes opt-in rate ${formatPercentRange(a.optin_rate_from_sessions)} × conversion readiness.`}
+                            width="narrow"
+                        />
+                    );
+                }
+
+                if (goal.kind === "webinar_signups") {
+                    if (a.kind !== "webinar_signups")
+                        throw new Error("Results UI contract error: assumptions.kind must be webinar_signups");
+                    return (
+                        <FunnelCard
+                            step="RESULT 3: WEBINAR"
+                            label="Monthly webinar signups"
+                            value={formatRange(goal.monthly_webinar_signups_est.low, goal.monthly_webinar_signups_est.high)}
+                            sublabel={`Assumes signup rate ${formatPercentRange(a.webinar_signup_rate_from_sessions)} × conversion readiness.`}
+                            width="narrow"
+                        />
+                    );
+                }
+
+                // authority_visibility
+                if (a.kind !== "authority_visibility")
+                    throw new Error("Results UI contract error: assumptions.kind must be authority_visibility");
+                return (
+                    <FunnelCard
+                        step="RESULT 3: VISIBILITY"
+                        label="Monthly visibility reach"
+                        value={formatRange(goal.monthly_visibility_reach_est.low, goal.monthly_visibility_reach_est.high)}
+                        sublabel={`Modeled via visibility reach per session: ${formatRange(a.visibility_reach_per_session.low, a.visibility_reach_per_session.high)}.`}
+                        width="narrow"
+                    />
+                );
+            })();
+
             return (
                 <div className="space-y-2">
-                    {/* Step 1: Pinterest Sessions */}
                     <FunnelCard
-                        step="STEP 1: REACH"
-                        label="Pinterest monthly reach"
-                        value={formatRange(sessions.low, sessions.high)}
-                        sublabel="People who could discover your services"
+                        step="RESULT 1: DEMAND"
+                        label="Monthly demand in your niche (US+CA)"
+                        value={formatRange(demand.low, demand.high)}
+                        sublabel="General niche demand ceiling on Pinterest (macro benchmark; no execution applied)."
                         width="full"
-                        influencedBy={[
-                            { label: "Publishing volume", impact: distImpact },
-                            { label: "Visual library", impact: distImpact },
-                            { label: "Niche demand", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 2: Website Visits */}
+
                     <FunnelCard
-                        step="STEP 2: TRAFFIC"
-                        label="Potential website visits"
-                        value={formatRange(websiteVisitsLow, websiteVisitsHigh)}
-                        sublabel="Based on 15-35% click-through rate"
+                        step="RESULT 2: TRAFFIC"
+                        label={trafficLabel}
+                        value={formatRange(trafficLens.low, trafficLens.high)}
+                        sublabel={trafficSublabel}
                         width="medium"
-                        influencedBy={[
-                            { label: "Pin quality", impact: "neutral" },
-                            { label: "CTR optimization", impact: "neutral" },
-                        ]}
                     />
-                    
+
                     <FunnelArrow />
-                    
-                    {/* Step 3: Discovery Calls - PRIMARY OUTCOME */}
-                    <FunnelCard
-                        step="STEP 3: QUALIFIED LEADS"
-                        label="Monthly discovery calls"
-                        value={formatRange(calls.low, calls.high)}
-                        sublabel="Qualified leads booking calls with you"
-                        width="narrow"
-                        influencedBy={[
-                            { label: "Website quality", impact: convImpact },
-                            { label: "Offer clarity", impact: convImpact },
-                            { label: "Booking flow", impact: "neutral" },
-                        ]}
-                    />
+
+                    {Result3}
                 </div>
             );
         }
-        
-        return null;
-    }, [results]);
 
-    // "What drove this" section with interactive pills including question numbers
-    const WhatDroveThis = useMemo(() => {
-        const distCapacity = results.demand.distribution_capacity_m;
-        const convReadiness = results.demand.conversion_readiness_m;
-        
-        const FactorPill = ({ label, question, value, impact }: { label: string; question: string; value: string; impact: "boost" | "neutral" | "limit" }) => {
-            const colorClass = impact === "boost" ? "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400" : 
-                               impact === "limit" ? "border-orange-500/30 bg-orange-500/10 text-orange-700 dark:text-orange-400" : 
-                               "border-[var(--border)] bg-[var(--background)] text-[var(--foreground-muted)]";
-            
-            const icon = impact === "boost" ? "↗" : impact === "limit" ? "↘" : "→";
-            
-            return (
-                <div 
-                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition-all hover:scale-105 ${colorClass}`}
-                    title={`${question}: ${value}`}
-                >
-                    <span className="font-medium">{label}</span>
-                    <span className="opacity-60 text-[10px]">{question}</span>
-                    <span className="opacity-70">{value}</span>
-                    <span className="text-base">{icon}</span>
-                </div>
-            );
-        };
-        
-        const volumeAnswer = recap.find(r => r.label.toLowerCase().includes("content") || r.label.toLowerCase().includes("publish") || r.label.toLowerCase().includes("promos"))?.value ?? "—";
-        const visualAnswer = recap.find(r => r.label.toLowerCase().includes("visual"))?.value ?? "—";
-        const siteAnswer = recap.find(r => r.label.toLowerCase().includes("website"))?.value ?? "—";
-        const offerAnswer = recap.find(r => r.label.toLowerCase().includes("offer") || r.label.toLowerCase().includes("magnet"))?.value ?? "—";
-        const adsAnswer = recap.find(r => r.label.toLowerCase().includes("ads"))?.value ?? "—";
-        
-        return (
-            <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
-                <div className="text-sm font-semibold text-[var(--foreground)] mb-3">What drove this</div>
-                
-                <div className="space-y-3">
-                    <div>
-                        <div className="text-xs text-[var(--foreground-muted)] mb-2">Distribution (reach)</div>
-                        <div className="flex flex-wrap gap-2">
-                            <FactorPill 
-                                label="Publishing volume" 
-                                question="Q3"
-                                value={volumeAnswer}
-                                impact={distCapacity > 1.05 ? "boost" : distCapacity < 0.95 ? "limit" : "neutral"}
-                            />
-                            <FactorPill 
-                                label="Visual library" 
-                                question="Q4"
-                                value={visualAnswer}
-                                impact={distCapacity > 1.05 ? "boost" : distCapacity < 0.95 ? "limit" : "neutral"}
-                            />
-                            <FactorPill 
-                                label="Growth mode" 
-                                question="Q8"
-                                value={adsAnswer}
-                                impact={adsAnswer.toLowerCase().includes("ads") || adsAnswer.toLowerCase().includes("yes") ? "boost" : "neutral"}
-                            />
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div className="text-xs text-[var(--foreground-muted)] mb-2">Conversion (outcomes)</div>
-                        <div className="flex flex-wrap gap-2">
-                            <FactorPill 
-                                label="Website quality" 
-                                question="Q5"
-                                value={siteAnswer}
-                                impact={convReadiness > 1.05 ? "boost" : convReadiness < 0.95 ? "limit" : "neutral"}
-                            />
-                            <FactorPill 
-                                label="Offer clarity" 
-                                question="Q6"
-                                value={offerAnswer}
-                                impact={convReadiness > 1.05 ? "boost" : convReadiness < 0.95 ? "limit" : "neutral"}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }, [results, recap]);
+        const k = String((segment as unknown as { kind?: unknown }).kind);
+        throw new Error(`Results UI contract error: Unexpected segment_outcome.kind: ${k}`);
+    }, [props.results]);
 
-    const ProductExtras = null; // Revenue now shown in SegmentFunnel
+    // -----------------------------
+    // Gates (hard lock + soft lock) — layout preserved
+    // -----------------------------
 
-    const LeadCaptureHardLock = showHardLockGate ? (
+    const LeadCaptureHardLock = props.showHardLockGate ? (
         <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
             <div className="sm:grid sm:grid-cols-3 sm:gap-4">
                 <div>
@@ -972,75 +1265,7 @@ export default function ResultsView({
                     <p className="mt-1 text-sm text-[var(--foreground-muted)]">
                         Enter your email to view your results (and keep a copy).
                     </p>
-                    <p className="mt-2 text-xs text-[var(--foreground-muted)]">{privacyMicrocopy}</p>
-                </div>
-
-                <div className="mt-3 sm:mt-0 sm:col-span-2">
-                    <div className="grid gap-3 sm:grid-cols-2">
-                        {requireName ? (
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="Your name"
-                                    value={leadName}
-                                    onChange={(e) => onLeadNameChange(e.target.value)}
-                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                />
-                                {errors["LEAD.name"] ? (
-                                    <div className="mt-1 text-xs text-red-500">{errors["LEAD.name"]}</div>
-                                ) : null}
-                            </div>
-                        ) : (
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="Your name (optional)"
-                                    value={leadName}
-                                    onChange={(e) => onLeadNameChange(e.target.value)}
-                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                />
-                            </div>
-                        )}
-
-                        <div>
-                            <input
-                                type="email"
-                                placeholder="you@example.com"
-                                value={leadEmail}
-                                onChange={(e) => onLeadEmailChange(e.target.value)}
-                                className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                            />
-                            {errors["LEAD.email"] ? (
-                                <div className="mt-1 text-xs text-red-500">{errors["LEAD.email"]}</div>
-                            ) : null}
-                        </div>
-                    </div>
-
-                    <div className="mt-3">
-                        <button
-                            type="button"
-                            onClick={onUnlock}
-                            className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                        >
-                            Reveal results
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    ) : null;
-
-    const LeadCaptureSoftLock = showSoftLockGate ? (
-        <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4">
-                <div>
-                    <h3 className="font-heading text-lg text-[var(--foreground)]">
-                        {optionalLeadSubmitted ? "Results sent ✅" : "Want a copy of your results?"}
-                    </h3>
-                    <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-                        {optionalLeadSubmitted ? "Check your inbox for the snapshot." : "Leave your email and we’ll send this snapshot."}
-                    </p>
-                    <p className="mt-2 text-xs text-[var(--foreground-muted)]">{privacyMicrocopy}</p>
+                    <p className="mt-2 text-xs text-[var(--foreground-muted)]">{props.privacyMicrocopy}</p>
                 </div>
 
                 <div className="mt-3 sm:mt-0 sm:col-span-2">
@@ -1048,285 +1273,275 @@ export default function ResultsView({
                         <div>
                             <input
                                 type="text"
-                                placeholder="Your name (optional)"
-                                value={leadName}
-                                onChange={(e) => onLeadNameChange(e.target.value)}
+                                placeholder={props.requireName ? "Your name" : "Your name (optional)"}
+                                value={props.leadName}
+                                onChange={(e) => props.onLeadNameChange(e.target.value)}
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
+                            {props.errors["LEAD.name"] ? (
+                                <div className="mt-1 text-xs text-red-500">{props.errors["LEAD.name"]}</div>
+                            ) : null}
                         </div>
 
                         <div>
                             <input
                                 type="email"
                                 placeholder="you@example.com"
-                                value={leadEmail}
-                                onChange={(e) => onLeadEmailChange(e.target.value)}
+                                value={props.leadEmail}
+                                onChange={(e) => props.onLeadEmailChange(e.target.value)}
                                 className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                             />
-                            {optionalLeadEmailError ? (
-                                <div className="mt-1 text-xs text-red-500">{optionalLeadEmailError}</div>
+                            {props.errors["LEAD.email"] ? (
+                                <div className="mt-1 text-xs text-red-500">{props.errors["LEAD.email"]}</div>
                             ) : null}
                         </div>
                     </div>
 
-                    <div className="mt-3">
+                    <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                         <button
                             type="button"
-                            disabled={optionalLeadSubmitted}
-                            onClick={onEmailResults}
-                            className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
+                            onClick={props.onUnlock}
+                            className="inline-flex w-full items-center justify-center rounded-md bg-[var(--brand-raspberry)] px-5 py-3 text-sm font-semibold text-white hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] sm:w-auto"
                         >
-                            {optionalLeadSubmitted ? "Sent" : "Email me my results"}
+                            Unlock results →
                         </button>
+
+                        <div className="text-xs text-[var(--foreground-muted)]">
+                            We’ll send a copy. No spam. Unsubscribe anytime.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     ) : null;
 
-    const tags = results?.inferred?.tags ?? [];
-    const showTags = Array.isArray(tags) && tags.length > 0;
+    const LeadCaptureSoftLock = props.showSoftLockGate ? (
+        <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
+            <div className="sm:flex sm:items-start sm:justify-between sm:gap-6">
+                <div>
+                    <h3 className="font-heading text-lg text-[var(--foreground)]">Email yourself a copy</h3>
+                    <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+                        Want these results in your inbox? Drop your email below.
+                    </p>
+                    <p className="mt-2 text-xs text-[var(--foreground-muted)]">{props.privacyMicrocopy}</p>
+                </div>
+
+                <div className="mt-3 sm:mt-0 sm:w-[420px]">
+                    <div className="flex flex-col gap-2 sm:flex-row">
+                        <input
+                            type="email"
+                            placeholder="you@example.com"
+                            value={props.leadEmail}
+                            onChange={(e) => props.onLeadEmailChange(e.target.value)}
+                            className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                        />
+                        <button
+                            type="button"
+                            onClick={props.onEmailResults}
+                            className="inline-flex items-center justify-center rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--background)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                        >
+                            Email me →
+                        </button>
+                    </div>
+
+                    {props.optionalLeadEmailError ? (
+                        <div className="mt-1 text-xs text-red-500">{props.optionalLeadEmailError}</div>
+                    ) : null}
+
+                    {props.optionalLeadSubmitted ? (
+                        <div className="mt-2 text-xs text-[var(--foreground-muted)]">Sent — check your inbox.</div>
+                    ) : null}
+                </div>
+            </div>
+        </div>
+    ) : null;
+
+    // -----------------------------
+    // Right-column context + recap (kept; now strictly uses v1.2 fields)
+    // -----------------------------
+
+    const ContextPanel = useMemo(() => {
+        const r = props.results;
+
+        const income = assertRange(r.demographics.household_income_usd, "results.demographics.household_income_usd");
+        const dist = assertFiniteNumber(r.demand.distribution_capacity_m, "results.demand.distribution_capacity_m");
+        const ready = assertFiniteNumber(r.demand.conversion_readiness_m, "results.demand.conversion_readiness_m");
+
+        const seasonality = r.inferred.seasonality_index;
+        const competition = r.inferred.competition_index;
+
+        return (
+            <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
+                <div className="font-heading text-lg text-[var(--foreground)]">Snapshot context</div>
+                <div className="mt-1 text-xs text-[var(--foreground-muted)]">Benchmarks + multipliers used to model these ranges.</div>
+
+                <div className="mt-4 space-y-3">
+                    <StatRow label="Distribution capacity" value={`x${dist.toFixed(2)}`} />
+                    <StatRow label="Conversion readiness" value={`x${ready.toFixed(2)}`} />
+                    <StatRow label="US+CA audience income (benchmark)" value={`$${formatRange(income.low, income.high)}`} />
+                </div>
+
+                <SoftDivider />
+
+                <div className="flex flex-wrap gap-2">
+                    <Pill label={`Seasonality: ${seasonality}`} />
+                    <Pill label={`Competition: ${competition}`} />
+                    {(r.inferred.tags ?? []).map((t) => (
+                        <Pill key={t} label={t} />
+                    ))}
+                </div>
+
+                {r.insight_line ? (
+                    <>
+                        <SoftDivider />
+                        <div className="text-sm text-[var(--foreground)]">
+                            <div className="text-xs font-semibold text-[var(--foreground-muted)] mb-1">Insight</div>
+                            {r.insight_line}
+                        </div>
+                    </>
+                ) : null}
+
+                {r.demographics.notes && r.demographics.notes.length > 0 ? (
+                    <>
+                        <SoftDivider />
+                        <div className="text-xs text-[var(--foreground-muted)] space-y-1">
+                            {r.demographics.notes.map((n, idx) => (
+                                <div key={idx}>• {n}</div>
+                            ))}
+                        </div>
+                    </>
+                ) : null}
+            </div>
+        );
+    }, [props.results]);
+
+    const RecapPanel = useMemo(() => {
+        if (!props.recap || props.recap.length === 0) return null;
+
+        return (
+            <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
+                <div className="font-heading text-lg text-[var(--foreground)]">Your answers (recap)</div>
+                <div className="mt-1 text-xs text-[var(--foreground-muted)]">Useful for aligning the strategy recommendations.</div>
+
+                <div className="mt-4 space-y-3">
+                    {props.recap.map((item, idx) => (
+                        <div key={`${item.label}-${idx}`} className="flex items-start justify-between gap-4">
+                            <div className="text-sm text-[var(--foreground-muted)]">{item.label}</div>
+                            <div className="text-sm font-semibold text-[var(--foreground)] text-right">{item.value}</div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                    <button
+                        type="button"
+                        onClick={props.onEditAnswers}
+                        className="inline-flex items-center justify-center rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--background)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                    >
+                        Edit answers
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={props.onStartOver}
+                        className="inline-flex items-center justify-center rounded-md border border-[var(--border)] bg-transparent px-4 py-2 text-sm font-semibold text-[var(--foreground-muted)] hover:bg-[var(--background)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                    >
+                        Start over
+                    </button>
+                </div>
+            </div>
+        );
+    }, [props.recap, props.onEditAnswers, props.onStartOver]);
+
+    // -----------------------------
+    // Goal-specific supporting breakdowns (kept; updated to v1.2 unions)
+    // -----------------------------
+
+    const SupportingBreakdowns = useMemo(() => {
+        const seg = props.results.segment_outcome;
+
+        if (seg.kind === "content_creator") {
+            return (
+                <div className="space-y-4">
+                    <CourseRevenueBreakdown seg={seg} />
+                </div>
+            );
+        }
+
+        if (seg.kind === "product_seller") {
+            return (
+                <div className="space-y-4">
+                    <SalesRevenueBreakdown seg={seg} />
+                </div>
+            );
+        }
+
+        // service_provider has no bucketed breakdowns in v1.2
+        return null;
+    }, [props.results.segment_outcome]);
+
+    // -----------------------------
+    // Render (layout preserved)
+    // -----------------------------
+
+    const blurWrap = locked ? "relative" : "relative";
+    const blurInner = locked ? "pointer-events-none select-none blur-[3px] opacity-60" : "";
 
     return (
-        <>
+        <div className="space-y-6">
+            <ResultsHero variant={heroVariant} />
+
+            <div className="grid gap-6 lg:grid-cols-12">
+                {/* Left: Funnel + gates + breakdown */}
+                <div className="lg:col-span-7 space-y-4">
+                    <div className={blurWrap}>
+                        <div className={blurInner}>{ResultsCards}</div>
+
+                        {locked ? (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="rounded-xl border border-[var(--border)] bg-[var(--background)]/95 px-5 py-4 text-center shadow-sm">
+                                    <div className="font-heading text-lg text-[var(--foreground)]">Unlock to view</div>
+                                    <div className="mt-1 text-xs text-[var(--foreground-muted)]">
+                                        Enter your email below to reveal the full snapshot.
+                                    </div>
+                                </div>
+                            </div>
+                        ) : null}
+                    </div>
+
+                    {LeadCaptureHardLock}
+                    {LeadCaptureSoftLock}
+
+                    {!locked ? SupportingBreakdowns : null}
+
+                    <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
+                        <div className="font-heading text-lg text-[var(--foreground)]">Notes</div>
+                        <div className="mt-2 text-xs text-[var(--foreground-muted)] space-y-1">
+                            <div>• All values are ranges per month (not guarantees).</div>
+                            <div>• Result 1 is benchmark demand; Result 2 includes distribution capacity; Result 3 is goal-model driven.</div>
+                            <div>• If your tracking is weak (cookies/pixels/slow pages), real outcomes may underperform these ranges.</div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right: Context + recap */}
+                <div className="lg:col-span-5 space-y-4">
+                    {ContextPanel}
+                    {RecapPanel}
+                </div>
+            </div>
+
             <CandyBurstOverlay
                 open={celebrate}
-                onClose={() => setCelebrate(false)}
+                onClose={() => {
+                    setCelebrate(false);
+                    setCelebrateCfg(null);
+                }}
                 durationMs={celebrateCfg?.durationMs ?? 4200}
                 intensity={celebrateCfg?.intensity ?? 2}
                 headline={celebrateCfg?.headline}
                 subhead={celebrateCfg?.subhead}
             />
-
-            <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-                <div className="mb-3 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results</div>
-
-                <ResultsHero variant={heroVariant} onEditAnswers={onEditAnswers} onStartOver={onStartOver} />
-
-                {LeadCaptureHardLock}
-
-                <div className={showHardLockGate ? "mt-4 opacity-40 blur-[2px] pointer-events-none select-none" : "mt-4"}>
-                    {ResultsCards}
-
-                    {/* Product seller: AOV revenue breakdown */}
-                    {results.segment_outcome.kind === "product_seller" && (
-                        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
-                            <div className="text-sm font-semibold text-[var(--foreground)] mb-3">Revenue by price point</div>
-                            
-                            {(() => {
-                                const revenue = results.segment_outcome.revenue_by_aov_est ?? {};
-                                const buckets = results.segment_outcome.assumptions?.aov_buckets ?? [];
-                                
-                                return (
-                                    <div className="space-y-2">
-                                        {buckets.map((bucket) => {
-                                            const r = revenue[bucket.id];
-                                            if (!r) return null;
-                                            
-                                            return (
-                                                <div key={bucket.id} className="flex items-center justify-between p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] hover:border-[var(--brand-raspberry)]/30 transition-colors">
-                                                    <div className="text-sm text-[var(--foreground)]">{bucket.label}</div>
-                                                    <div className="font-heading text-lg text-[var(--foreground)]">
-                                                        ${formatNumber(r.low)}–${formatNumber(r.high)}/mo
-                                                    </div>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                );
-                            })()}
-                        </div>
-                    )}
-
-                    {WhatDroveThis}
-
-                    {/* Niche context cards with fixed hover tooltips */}
-                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                        <div className="group relative rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 transition-all hover:border-[var(--brand-raspberry)]/30 hover:shadow-sm">
-                            <div className="flex items-center gap-2 text-xs text-[var(--foreground-muted)]">
-                                <span>Seasonality</span>
-                                <svg className="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div className="mt-1 text-sm font-semibold text-[var(--foreground)] capitalize">
-                                {results.inferred.seasonality_index}
-                            </div>
-                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                {results.inferred.seasonality_index === "low" ? "Steady demand year-round" : 
-                                 results.inferred.seasonality_index === "medium" ? "Some seasonal variation" : 
-                                 "Strong seasonal peaks"}
-                            </div>
-                            {/* Hover tooltip - fixed opacity */}
-                            <div className="pointer-events-none absolute left-0 top-full z-10 mt-2 hidden w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs shadow-xl opacity-0 group-hover:block group-hover:opacity-100 transition-opacity">
-                                <div className="font-semibold text-[var(--foreground)] mb-1">Based on:</div>
-                                <div className="text-[var(--foreground-muted)]">
-                                    Historical Pinterest search patterns for your niche ({recap.find(r => r.label.toLowerCase().includes("niche"))?.value || "your niche"})
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="group relative rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 transition-all hover:border-[var(--brand-raspberry)]/30 hover:shadow-sm">
-                            <div className="flex items-center gap-2 text-xs text-[var(--foreground-muted)]">
-                                <span>Competition</span>
-                                <svg className="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div className="mt-1 text-sm font-semibold text-[var(--foreground)] capitalize">
-                                {results.inferred.competition_index}
-                            </div>
-                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">
-                                {results.inferred.competition_index === "low" ? "Less crowded niche" : 
-                                 results.inferred.competition_index === "medium" ? "Moderate competition" : 
-                                 "Highly competitive niche"}
-                            </div>
-                            {/* Hover tooltip - fixed opacity */}
-                            <div className="pointer-events-none absolute left-0 top-full z-10 mt-2 hidden w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs shadow-xl opacity-0 group-hover:block group-hover:opacity-100 transition-opacity">
-                                <div className="font-semibold text-[var(--foreground)] mb-1">Based on:</div>
-                                <div className="text-[var(--foreground-muted)]">
-                                    Number of active publishers and content saturation in your niche category
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="group relative rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 transition-all hover:border-[var(--brand-raspberry)]/30 hover:shadow-sm">
-                            <div className="flex items-center gap-2 text-xs text-[var(--foreground-muted)]">
-                                <span>Audience income</span>
-                                <svg className="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div className="mt-1 text-sm font-semibold text-[var(--foreground)]">{incomeRangeLabel}</div>
-                            <div className="mt-1 text-xs text-[var(--foreground-muted)]">Context, not prediction</div>
-                            {/* Hover tooltip - fixed opacity */}
-                            <div className="pointer-events-none absolute left-0 top-full z-10 mt-2 hidden w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs shadow-xl opacity-0 group-hover:block group-hover:opacity-100 transition-opacity">
-                                <div className="font-semibold text-[var(--foreground)] mb-1">Based on:</div>
-                                <div className="text-[var(--foreground-muted)]">
-                                    Typical household income of Pinterest users engaged with this niche (US/Canada). This doesn't predict your specific buyer income.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Strategic insight - moved below main results */}
-                    {insight ? (
-                        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--background)] p-5">
-                            <div className="text-xs font-semibold uppercase tracking-wide text-[var(--brand-raspberry)] mb-2">
-                                Strategic Insight
-                            </div>
-                            <div className="text-sm text-[var(--foreground)] leading-relaxed">
-                                {insight}
-                            </div>
-                        </div>
-                    ) : null}
-
-                    {/* Expanded methodology with more details */}
-                    <details className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] overflow-hidden">
-                        <summary className="cursor-pointer px-6 py-4 hover:bg-[var(--background)] transition-colors flex items-center justify-between">
-                            <div className="text-sm font-semibold text-[var(--foreground)]">How we calculated this</div>
-                            <svg className="w-4 h-4 text-[var(--foreground-muted)] transition-transform details-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </summary>
-                        
-                        <div className="px-6 pb-6 space-y-4 border-t border-[var(--border)] bg-[var(--background)]">
-                            {/* Foundation */}
-                            <div>
-                                <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
-                                    Foundation
-                                </div>
-                                <div className="space-y-2 text-sm">
-                                    <div>
-                                        <span className="text-[var(--foreground-muted)]">Platform size: </span>
-                                        <span className="text-[var(--foreground)]">
-                                            ~102M monthly users in US/Canada{" "}
-                                            <a 
-                                                href="https://investor.pinterestinc.com/news-and-events/press-releases/" 
-                                                target="_blank" 
-                                                rel="noopener noreferrer"
-                                                className="text-[var(--brand-raspberry)] hover:underline"
-                                            >
-                                                (source)
-                                            </a>
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span className="text-[var(--foreground-muted)]">Your niche reach: </span>
-                                        <span className="text-[var(--foreground)]">{demandBaseSessionsRangeLabel} sessions/month</span>
-                                    </div>
-                                    <div className="text-xs text-[var(--foreground-muted)] italic">
-                                        This is calculated as a percentage of total platform activity focused on {recap.find(r => r.label.toLowerCase().includes("niche"))?.value || "your niche"}, based on Pinterest search trends and category data.
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* How answers affect results */}
-                            <div>
-                                <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
-                                    How Your Answers Affect Results
-                                </div>
-                                <div className="space-y-2 text-sm">
-                                    <div className="text-[var(--foreground-muted)]">
-                                        <strong className="text-[var(--foreground)]">Distribution (Reach):</strong> Your publishing volume, visual quality, and whether you use ads all influence how many people see your content. Consistent publishing + strong visuals + ads = maximum reach.
-                                    </div>
-                                    <div className="text-[var(--foreground-muted)]">
-                                        <strong className="text-[var(--foreground)]">Conversion (Outcomes):</strong> Website speed, clarity, and offer attractiveness determine what percentage of visitors take action. A fast, clear site with compelling offers converts better.
-                                    </div>
-                                    <div className="text-[var(--foreground-muted)]">
-                                        <strong className="text-[var(--foreground)]">Niche factors:</strong> Seasonality and competition are estimated from historical Pinterest data for your category. These create natural ceilings or boost factors independent of your execution.
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Assumptions */}
-                            <div>
-                                <div className="text-xs font-semibold text-[var(--foreground-muted)] uppercase tracking-wide mb-2">
-                                    Key Assumptions
-                                </div>
-                                <ul className="space-y-1.5 text-sm text-[var(--foreground-muted)]">
-                                    <li>• Click-through rates: 15-35% (industry benchmarks)</li>
-                                    <li>• Conversion rates: Vary by segment and offer quality</li>
-                                    {results.segment_outcome.kind === "product_seller" && (
-                                        <li>• Purchase intent: ~25% of sessions for product categories</li>
-                                    )}
-                                    <li>• US & Canada only (international traffic not included)</li>
-                                    <li>• Organic reach prioritized (ads provide incremental boost)</li>
-                                </ul>
-                            </div>
-
-                            {/* Disclaimer */}
-                            <div className="pt-3 border-t border-[var(--border)]">
-                                <div className="text-xs text-[var(--foreground-muted)] leading-relaxed">
-                                    <strong>Important:</strong> These are modeled estimates based on platform data, niche benchmarks, and your inputs. 
-                                    Actual results depend on content quality, consistency, SEO optimization, and market timing. This is not a guarantee of results.
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-
-                    {LeadCaptureSoftLock}
-                </div>
-
-                <div className="mt-6 border-t border-[var(--border)] pt-4">
-                    <div className="mb-2 font-heading text-lg text-[var(--foreground)]">Your answers</div>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                        {recap.map((it, idx) => (
-                            <div
-                                key={`${idx}-${it.label}`}
-                                className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4"
-                            >
-                                <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
-                                <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="mt-4 text-sm text-[var(--foreground-muted)]">
-                    You can refresh the page; your draft is saved in this session.
-                </div>
-            </div>
-        </>
+        </div>
     );
 }

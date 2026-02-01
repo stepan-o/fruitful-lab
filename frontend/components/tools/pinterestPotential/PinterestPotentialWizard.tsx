@@ -19,27 +19,25 @@
  *     - Q7 primary_goal
  *   - Wizard verifies Q2/Q7 are valid for the selected segment; otherwise treated as missing.
  *
- * RESULTS CONTRACT (v1.1 — sessions-based):
+ * RESULTS CONTRACT (v1.2 — goal-keyed outcomes):
  * - computeResults() returns ResultsBundle with:
- *   - demand:
+ *   - demand (shared):
  *       - demand_base_sessions_est
  *       - distribution_capacity_m
  *       - conversion_readiness_m
  *       - likely_pinterest_sessions_est
- *   - segment_outcome:
- *       - content_creator: monthly_pinterest_sessions_est
- *       - product_seller:
- *           monthly_pinterest_sessions_est
- *           monthly_purchase_intent_sessions_est
- *           revenue_by_aov_est
- *           assumptions
- *       - service_provider:
- *           monthly_discovery_calls_est
- *           assumptions
+ *   - traffic (shared):
+ *       - website_sessions_est (alias of demand.likely_pinterest_sessions_est)
+ *       - purchase_intent_sessions_est? (present when relevant, e.g. product_seller)
+ *   - segment_outcome (goal-driven for ALL segments):
+ *       - kind (segment)
+ *       - goal_key (${Q1}:${Q7})
+ *       - primary_goal (Q7 slug)
+ *       - goal_outcome (union; goal-specific Result 3)
+ *       - assumptions (goal-specific explainability)
  *   - demographics: household_income_usd (+ notes)
  *   - inferred: seasonality_index, competition_index, tags
  *   - insight_line
- *
  * RUNTIME GUARDRAILS (kept from locked version):
  * - Hydration gate to prevent SSR/client mismatch.
  * - Auto-advance determinism:
@@ -707,8 +705,8 @@ export default function PinterestPotentialWizard({
         );
 
         const likelySessionsRangeLabel = formatRange(
-            results.demand.likely_pinterest_sessions_est.low,
-            results.demand.likely_pinterest_sessions_est.high,
+            results.traffic.website_sessions_est.low,
+            results.traffic.website_sessions_est.high,
         );
 
         const distributionCapacityLabel = `${results.demand.distribution_capacity_m.toFixed(2)}×`;
@@ -718,37 +716,165 @@ export default function PinterestPotentialWizard({
             results.demographics.household_income_usd.high,
         );
 
-        // Segment outcome headline
-        const outcome = results.segment_outcome;
+        // Segment outcome headline (v1.2 — goal-keyed for ALL segments)
+        const goalOutcome = results.segment_outcome.goal_outcome;
+
+        // Present when relevant (at minimum for product_seller); used by ResultsView as the
+        // "high-intent traffic" lens when the goal is product_seller:sales.
+        const purchaseIntentRangeLabel = results.traffic.purchase_intent_sessions_est
+            ? formatRange(
+                  results.traffic.purchase_intent_sessions_est.low,
+                  results.traffic.purchase_intent_sessions_est.high
+              )
+            : undefined;
+
+        // Deterministic defaults for range records (kept in-view to avoid coupling).
+        const DEFAULT_AOV_BUCKET = "100_250" as const;
+        const DEFAULT_COURSE_PRICE_BUCKET = "200_1000" as const;
+
         let primaryOutcomeLabel: string;
         let primaryOutcomeRangeLabel: string;
-        let purchaseIntentRangeLabel: string | undefined = undefined;
 
-        if (outcome.kind === "content_creator") {
-            primaryOutcomeLabel = "Monthly Pinterest sessions";
-            primaryOutcomeRangeLabel = formatRange(
-                outcome.monthly_pinterest_sessions_est.low,
-                outcome.monthly_pinterest_sessions_est.high,
-            );
-        } else if (outcome.kind === "service_provider") {
-            primaryOutcomeLabel = "Monthly discovery calls";
-            primaryOutcomeRangeLabel = formatRange(
-                outcome.monthly_discovery_calls_est.low,
-                outcome.monthly_discovery_calls_est.high,
-            );
-        } else {
-            // product_seller
-            primaryOutcomeLabel = "Monthly Pinterest sessions";
-            primaryOutcomeRangeLabel = formatRange(
-                outcome.monthly_pinterest_sessions_est.low,
-                outcome.monthly_pinterest_sessions_est.high,
-            );
-            purchaseIntentRangeLabel = formatRange(
-                outcome.monthly_purchase_intent_sessions_est.low,
-                outcome.monthly_purchase_intent_sessions_est.high,
-            );
+        switch (goalOutcome.kind) {
+            // Content creator
+            case "traffic":
+                // Result 2 is traffic (sessions). Result 3 is list growth so it’s not blank.
+                primaryOutcomeLabel = "Estimated email subscribers (list growth)";
+                primaryOutcomeRangeLabel = formatRange(
+                    goalOutcome.monthly_email_subscribers_est.low,
+                    goalOutcome.monthly_email_subscribers_est.high
+                );
+                break;
+            case "email_subscribers":
+                primaryOutcomeLabel = "Estimated email subscribers";
+                primaryOutcomeRangeLabel = formatRange(
+                    goalOutcome.monthly_email_subscribers_est.low,
+                    goalOutcome.monthly_email_subscribers_est.high
+                );
+                break;
+            case "affiliate_revenue":
+                primaryOutcomeLabel = "Estimated affiliate revenue";
+                primaryOutcomeRangeLabel = formatRange(
+                    goalOutcome.monthly_affiliate_revenue_usd_est.low,
+                    goalOutcome.monthly_affiliate_revenue_usd_est.high
+                );
+                break;
+            case "course_product_sales": {
+                primaryOutcomeLabel = "Estimated course revenue";
+                const bucket = goalOutcome.revenue_by_course_price_est[DEFAULT_COURSE_PRICE_BUCKET];
+                if (!bucket) {
+                    throw new Error(`Missing course price bucket: ${DEFAULT_COURSE_PRICE_BUCKET}`);
+                }
+                primaryOutcomeRangeLabel = formatRange(bucket.low, bucket.high);
+                break;
+            }
+
+            // Product seller
+            case "sales": {
+                primaryOutcomeLabel = "Estimated revenue";
+                const bucket = goalOutcome.revenue_by_aov_est[DEFAULT_AOV_BUCKET];
+                if (!bucket) {
+                    throw new Error(`Missing AOV bucket: ${DEFAULT_AOV_BUCKET}`);
+                }
+                primaryOutcomeRangeLabel = formatRange(bucket.low, bucket.high);
+                break;
+            }
+            case "retargeting_pool":
+                primaryOutcomeLabel = "Estimated retargetable visitors";
+                primaryOutcomeRangeLabel = formatRange(
+                    goalOutcome.monthly_retargetable_visitors_est.low,
+                    goalOutcome.monthly_retargetable_visitors_est.high
+                );
+                break;
+            case "new_customer_discovery":
+                primaryOutcomeLabel = "Estimated new-to-brand sessions";
+                primaryOutcomeRangeLabel = formatRange(
+                    goalOutcome.monthly_new_to_brand_sessions_est.low,
+                    goalOutcome.monthly_new_to_brand_sessions_est.high
+                );
+                break;
+
+            // Service provider
+            case "leads_calls":
+                primaryOutcomeLabel = "Estimated discovery calls";
+                primaryOutcomeRangeLabel = formatRange(
+                    goalOutcome.monthly_discovery_calls_est.low,
+                    goalOutcome.monthly_discovery_calls_est.high
+                );
+                break;
+            case "webinar_signups":
+                primaryOutcomeLabel = "Estimated webinar signups";
+                primaryOutcomeRangeLabel = formatRange(
+                    goalOutcome.monthly_webinar_signups_est.low,
+                    goalOutcome.monthly_webinar_signups_est.high
+                );
+                break;
+            case "authority_visibility":
+                primaryOutcomeLabel = "Estimated visibility reach";
+                primaryOutcomeRangeLabel = formatRange(
+                    goalOutcome.monthly_visibility_reach_est.low,
+                    goalOutcome.monthly_visibility_reach_est.high
+                );
+                break;
+
+            default:
+                throw new Error(`Unhandled goal outcome kind: ${(goalOutcome as any).kind}`);
         }
 
+        // These are currently unused by ResultsView (kept for local debugging / future UI).
+        const segmentOutcomeHeadline = (() => {
+            switch (goalOutcome.kind) {
+                case "traffic":
+                    return "List growth potential";
+                case "email_subscribers":
+                    return "Email list growth potential";
+                case "affiliate_revenue":
+                    return "Affiliate revenue potential";
+                case "course_product_sales":
+                    return "Course sales potential";
+                case "sales":
+                    return "Sales potential";
+                case "retargeting_pool":
+                    return "Retargeting pool potential";
+                case "new_customer_discovery":
+                    return "New customer discovery potential";
+                case "leads_calls":
+                    return "Leads / calls potential";
+                case "webinar_signups":
+                    return "Webinar signups potential";
+                case "authority_visibility":
+                    return "Authority + visibility potential";
+                default:
+                    return "Outcome";
+            }
+        })();
+
+        const segmentOutcomeSubhead = (() => {
+            switch (goalOutcome.kind) {
+                case "traffic":
+                    return "Traffic is Result 2 — Result 3 shows list growth potential so it’s not blank.";
+                case "email_subscribers":
+                    return "Estimated subscribers per month from Pinterest-driven traffic.";
+                case "affiliate_revenue":
+                    return "Estimated monthly affiliate revenue driven by Pinterest.";
+                case "course_product_sales":
+                    return "Revenue ranges shown for a representative course price bucket.";
+                case "sales":
+                    return "Revenue ranges shown for a representative AOV bucket.";
+                case "retargeting_pool":
+                    return "Visitors you could retarget each month from Pinterest traffic.";
+                case "new_customer_discovery":
+                    return "Estimated sessions from new-to-brand shoppers.";
+                case "leads_calls":
+                    return "Estimated discovery calls you could generate per month.";
+                case "webinar_signups":
+                    return "Estimated webinar signups per month from Pinterest.";
+                case "authority_visibility":
+                    return "Estimated visibility / reach actions per month from Pinterest.";
+                default:
+                    throw new Error(`Unhandled goal outcome kind: ${(goalOutcome as any).kind}`);
+            }
+        })();
         return (
             <ResultsView
                 results={results}

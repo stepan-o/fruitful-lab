@@ -15,6 +15,12 @@
  * - Compute is config-driven and lives in compute.ts + benchmarks/multipliers configs.
  * - UI enrichment (badges, includes, keywords, icons, "popular" derivations) MUST live in spec→UI adapters.
  * - This file defines only: schema + copy + option sets + validation.
+ *
+ * v1.2+ STRICT CONTRACT CHANGE (breaking; NO back-compat, NO flexibility):
+ * - GoalKey construction is locked to this module via `makeGoalKey(...)`.
+ *   All other modules MUST use this helper instead of `${segment}:${goal}` ad-hoc concatenation.
+ *   This prevents drift and guarantees segment↔goal correctness at runtime (fail-loud).
+ * - PrimaryGoal remains EXACTLY the Q7 goal slug union (no new question inputs).
  */
 
 // -------------------------------------
@@ -48,6 +54,10 @@ export type ContentCreatorGoal = "traffic" | "email_subscribers" | "affiliate_re
 export type ProductSellerGoal = "sales" | "retargeting_pool" | "new_customer_discovery" | "email_subscribers";
 export type ServiceProviderGoal = "leads_calls" | "webinar_signups" | "authority_visibility" | "email_subscribers";
 
+/**
+ * IMPORTANT (locked): PrimaryGoal is EXACTLY the union of the Q7 goal slugs.
+ * No aliases, no remaps, no legacy labels.
+ */
 export type PrimaryGoal = ContentCreatorGoal | ProductSellerGoal | ServiceProviderGoal;
 
 /**
@@ -58,6 +68,45 @@ export type GoalKey =
     | `content_creator:${ContentCreatorGoal}`
     | `product_seller:${ProductSellerGoal}`
     | `service_provider:${ServiceProviderGoal}`;
+
+/**
+ * v1.2+ STRICT CONTRACT:
+ * GoalKey construction is locked to this helper.
+ *
+ * Why:
+ * - Avoid `${segment}:${goal}` ad-hoc concatenation in compute/UI.
+ * - Guarantee segment↔goal correctness at runtime (fail loud).
+ *
+ * NO BACKWARDS COMPATIBILITY:
+ * - This helper throws on invalid combinations.
+ * - Callers MUST pass validated/typed values or expect a thrown Error.
+ */
+export function makeGoalKey(segment: Segment, goal: PrimaryGoal): GoalKey {
+    if (segment === "content_creator") {
+        if (
+            goal === "traffic" ||
+            goal === "email_subscribers" ||
+            goal === "affiliate_revenue" ||
+            goal === "course_product_sales"
+        ) {
+            return `content_creator:${goal}` as const;
+        }
+        throw new Error(`Spec contract error: invalid goal for content_creator: ${String(goal)}`);
+    }
+
+    if (segment === "product_seller") {
+        if (goal === "sales" || goal === "retargeting_pool" || goal === "new_customer_discovery" || goal === "email_subscribers") {
+            return `product_seller:${goal}` as const;
+        }
+        throw new Error(`Spec contract error: invalid goal for product_seller: ${String(goal)}`);
+    }
+
+    // service_provider
+    if (goal === "leads_calls" || goal === "webinar_signups" || goal === "authority_visibility" || goal === "email_subscribers") {
+        return `service_provider:${goal}` as const;
+    }
+    throw new Error(`Spec contract error: invalid goal for service_provider: ${String(goal)}`);
+}
 
 export type Answers = {
     Q1?: Segment;

@@ -71,3 +71,5 @@ Thumbs.db
 *.tmp
 /backend/data-local/
 /.output.txt
+
+/data/

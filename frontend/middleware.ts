@@ -7,9 +7,6 @@ const COOKIE_NAME = "fruitful_access_token";
 const API_BASE_URL =
     process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
 
-/**
- * PROTECTED_PATHS must match our *actual* URL paths.
- */
 const PROTECTED_PATHS = ["/admin", "/contractor"] as const;
 
 type Role = "admin" | "contractor" | "general";
@@ -119,7 +116,7 @@ export async function middleware(req: NextRequest) {
     if (!roleAllowedForPath(role, pathname)) {
         const target =
             role === "admin"
-                ? "/admin/dashboard"
+                ? "/admin/analytics"
                 : role === "contractor"
                     ? "/contractor"
                     : "/tools";

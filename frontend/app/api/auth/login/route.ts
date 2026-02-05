@@ -7,7 +7,7 @@ const API_BASE_URL =
 const COOKIE_NAME = "fruitful_access_token";
 
 // Canonical landing routes (server authority)
-const DEFAULT_ADMIN_LANDING = "/admin/dashboard";
+const DEFAULT_ADMIN_LANDING = "/admin/analytics";
 const DEFAULT_CONTRACTOR_LANDING = "/contractor";
 const DEFAULT_GENERAL_LANDING = "/tools";
 

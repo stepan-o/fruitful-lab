@@ -12,7 +12,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
 
     // Not logged in → send to login, preserve intent.
     if (!user) {
-        redirect("/login?next=/admin/dashboard");
+        redirect("/login?next=/admin/analytics");
     }
 
     // Logged in but not admin → send to least-surprising place.

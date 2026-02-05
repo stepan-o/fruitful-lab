@@ -30,6 +30,8 @@ venv/
 backend/venv/
 env/
 .env
+backend/.env
+backend/.env.local
 *.env
 
 __pycache__/

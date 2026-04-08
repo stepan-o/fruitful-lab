@@ -2,6 +2,7 @@ import { computeResults } from "@/lib/tools/pinterestPotential/compute";
 import {
     getNicheOptions,
     getPrimaryGoalOptions,
+    makeGoalKey,
     type Answers,
     type Segment,
     type NicheSlug,
@@ -13,6 +14,7 @@ import {
     type GrowthMode,
 } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
 import { getBenchmark } from "@/lib/tools/pinterestPotential/benchmarks";
+import { buildResultsUiModel } from "@/lib/tools/pinterestPotential/resultsUiAdapter";
 
 function firstNiche(segment: Segment): NicheSlug {
     return getNicheOptions(segment)[0].id;
@@ -36,18 +38,16 @@ function makeValidAnswers(overrides: Partial<Answers> = {}): Answers {
         Q8: "organic" as GrowthMode,
     };
 
-    // If overrides change Q1, ensure we recompute Q2/Q7 defaults for that segment
     const nextSegment: Segment = overrides.Q1 ?? base.Q1!;
     const merged: Answers = { ...base, ...overrides, Q1: nextSegment };
 
-    // If caller didn’t specify Q2/Q7 explicitly, keep them valid for the (possibly overridden) segment
     if (!overrides.Q2) merged.Q2 = firstNiche(nextSegment);
     if (!overrides.Q7) merged.Q7 = firstGoal(nextSegment);
 
     return merged;
 }
 
-describe("Pinterest Potential (v0.2) — computeResults()", () => {
+describe("Pinterest Potential (v1.2) — computeResults()", () => {
     it("returns ok:false when a required question is missing", () => {
         const r = computeResults({});
         expect(r.ok).toBe(false);
@@ -66,7 +66,6 @@ describe("Pinterest Potential (v0.2) — computeResults()", () => {
     });
 
     it("returns ok:false when Q2 is not valid for the chosen segment", () => {
-        // Pick a niche from a different segment to ensure invalidity
         const wrongNiche = getNicheOptions("product_seller")[0].id;
 
         const a = makeValidAnswers({
@@ -82,7 +81,6 @@ describe("Pinterest Potential (v0.2) — computeResults()", () => {
     });
 
     it("returns ok:false when Q7 is not valid for the chosen segment", () => {
-        // Pick a goal from a different segment to ensure invalidity
         const wrongGoal = getPrimaryGoalOptions("service_provider")[0].id;
 
         const a = makeValidAnswers({
@@ -97,7 +95,7 @@ describe("Pinterest Potential (v0.2) — computeResults()", () => {
         }
     });
 
-    it("returns ok:true and produces well-formed ranges + inferred indices", () => {
+    it("returns ok:true with internally consistent v1.2 bundles", () => {
         const a = makeValidAnswers();
         const r = computeResults(a);
 
@@ -106,29 +104,38 @@ describe("Pinterest Potential (v0.2) — computeResults()", () => {
 
         const { results } = r;
 
-        // Ranges exist and are ordered
-        expect(results.audience_est.low).toBeLessThanOrEqual(results.audience_est.high);
-        expect(results.income_est.low).toBeLessThanOrEqual(results.income_est.high);
-        expect(results.opportunity_est.low).toBeLessThanOrEqual(results.opportunity_est.high);
+        expect(results.demand.demand_base_sessions_est.low).toBeLessThanOrEqual(
+            results.demand.demand_base_sessions_est.high,
+        );
+        expect(results.demand.likely_pinterest_sessions_est.low).toBeLessThanOrEqual(
+            results.demand.likely_pinterest_sessions_est.high,
+        );
+        expect(results.demographics.household_income_usd.low).toBeLessThanOrEqual(
+            results.demographics.household_income_usd.high,
+        );
 
-        // Integers (rounded)
-        expect(Number.isInteger(results.audience_est.low)).toBe(true);
-        expect(Number.isInteger(results.audience_est.high)).toBe(true);
-        expect(Number.isInteger(results.income_est.low)).toBe(true);
-        expect(Number.isInteger(results.income_est.high)).toBe(true);
-        expect(Number.isInteger(results.opportunity_est.low)).toBe(true);
-        expect(Number.isInteger(results.opportunity_est.high)).toBe(true);
+        expect(Number.isInteger(results.demand.demand_base_sessions_est.low)).toBe(true);
+        expect(Number.isInteger(results.demand.demand_base_sessions_est.high)).toBe(true);
+        expect(Number.isInteger(results.demand.likely_pinterest_sessions_est.low)).toBe(true);
+        expect(Number.isInteger(results.demand.likely_pinterest_sessions_est.high)).toBe(true);
+        expect(Number.isInteger(results.demographics.household_income_usd.low)).toBe(true);
+        expect(Number.isInteger(results.demographics.household_income_usd.high)).toBe(true);
 
-        // Inferred indices are present
+        expect(results.traffic.website_sessions_est).toEqual(
+            results.demand.likely_pinterest_sessions_est,
+        );
+        expect(results.segment_outcome.kind).toBe(a.Q1);
+        expect(results.segment_outcome.goal_key).toBe(makeGoalKey(a.Q1!, a.Q7!));
+        expect(Number.isFinite(results.demand.distribution_capacity_m)).toBe(true);
+        expect(Number.isFinite(results.demand.conversion_readiness_m)).toBe(true);
         expect(results.inferred.seasonality_index).toMatch(/^(low|medium|high)$/);
         expect(results.inferred.competition_index).toMatch(/^(low|medium|high)$/);
 
-        // insight_line is optional (string or null/undefined)
         const il = results.insight_line;
         expect(il === undefined || il === null || typeof il === "string").toBe(true);
     });
 
-    it("matches benchmark telemetry fields and keeps income benchmark-driven (multiplier = 1.0)", () => {
+    it("keeps benchmark-driven demand, demographics, and inferred indices aligned", () => {
         const a = makeValidAnswers({
             Q1: "content_creator",
             Q2: firstNiche("content_creator"),
@@ -146,19 +153,14 @@ describe("Pinterest Potential (v0.2) — computeResults()", () => {
 
         const row = getBenchmark(a.Q1!, a.Q2!);
 
-        // Telemetry fields should reflect benchmark row inference
         expect(r.results.inferred.seasonality_index).toBe(row.inferred.seasonality);
         expect(r.results.inferred.competition_index).toBe(row.inferred.competition);
-
-        // Opportunity type should come from benchmark row
-        expect(r.results.opportunity_est.type).toBe(row.opportunity.type);
-
-        // Income multiplier is 1.0 in v0.2, so income should be benchmark-derived (rounded)
-        expect(r.results.income_est.low).toBe(Math.round(row.income.low));
-        expect(r.results.income_est.high).toBe(Math.round(row.income.high));
+        expect(r.results.demand.demand_base_sessions_est).toEqual(row.demand_base_sessions);
+        expect(r.results.demographics.household_income_usd.low).toBe(Math.round(row.income.low));
+        expect(r.results.demographics.household_income_usd.high).toBe(Math.round(row.income.high));
     });
 
-    it("keeps audience multiplier in the subtle clamp band (≈ ±15%)", () => {
+    it("adds the purchase-intent traffic lens for product sellers", () => {
         const a = makeValidAnswers({
             Q1: "product_seller",
             Q2: firstNiche("product_seller"),
@@ -174,48 +176,36 @@ describe("Pinterest Potential (v0.2) — computeResults()", () => {
         expect(r.ok).toBe(true);
         if (!r.ok) return;
 
-        const row = getBenchmark(a.Q1!, a.Q2!);
-
-        // Compute effective multiplier from baseline → output (allow tiny rounding slop)
-        const eps = 0.02;
-
-        const mLow = r.results.audience_est.low / row.audience_base.low;
-        const mHigh = r.results.audience_est.high / row.audience_base.high;
-
-        expect(mLow).toBeGreaterThanOrEqual(0.85 - eps);
-        expect(mLow).toBeLessThanOrEqual(1.15 + eps);
-
-        expect(mHigh).toBeGreaterThanOrEqual(0.85 - eps);
-        expect(mHigh).toBeLessThanOrEqual(1.15 + eps);
+        expect(r.results.segment_outcome.kind).toBe("product_seller");
+        expect(r.results.segment_outcome.primary_goal).toBe(a.Q7);
+        expect(r.results.traffic.purchase_intent_sessions_est).toBeDefined();
+        expect(r.results.traffic.purchase_intent_sessions_est?.low).toBeLessThanOrEqual(
+            r.results.traffic.purchase_intent_sessions_est?.high ?? 0,
+        );
     });
 
-    it("keeps opportunity multiplier in the subtle clamp band (≈ ±20%)", () => {
-        const a = makeValidAnswers({
-            Q1: "service_provider",
-            Q2: firstNiche("service_provider"),
-            Q3: "0-2",
-            Q4: "limited",
-            Q5: "a",
-            Q6: "no",
-            Q7: firstGoal("service_provider"),
-            Q8: "organic",
-        });
-
+    it("builds a UI model from the compute result without contract drift", () => {
+        const a = makeValidAnswers();
         const r = computeResults(a);
         expect(r.ok).toBe(true);
         if (!r.ok) return;
 
-        const row = getBenchmark(a.Q1!, a.Q2!);
+        const model = buildResultsUiModel({
+            segment: a.Q1!,
+            niche: a.Q2!,
+            results: r.results,
+        });
 
-        const eps = 0.02;
-
-        const mLow = r.results.opportunity_est.low / row.opportunity.low;
-        const mHigh = r.results.opportunity_est.high / row.opportunity.high;
-
-        expect(mLow).toBeGreaterThanOrEqual(0.8 - eps);
-        expect(mLow).toBeLessThanOrEqual(1.2 + eps);
-
-        expect(mHigh).toBeGreaterThanOrEqual(0.8 - eps);
-        expect(mHigh).toBeLessThanOrEqual(1.2 + eps);
+        expect(model.snapshot.segment).toBe(a.Q1);
+        expect(model.snapshot.niche).toBe(a.Q2);
+        expect(model.scenarios).toHaveLength(1);
+        expect(model.scenarios[0]?.cards[0]).toEqual(
+            expect.objectContaining({
+                id: "result_1_demand",
+                title: "Monthly demand in your niche (US+CA)",
+            }),
+        );
+        expect(model.scenarios[0]?.cards[1]).toBeDefined();
+        expect(model.scenarios[0]?.cards[2]).toBeDefined();
     });
 });

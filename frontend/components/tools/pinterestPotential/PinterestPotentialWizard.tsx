@@ -5,13 +5,10 @@
  *
  * CLEAN CONTRACT (enforced):
  * - Query params (canonical only):
- *   - ?variant=welcome|no_welcome
  *   - ?leadMode=hard_lock|soft_lock
  *   - ?leadToken=...
- * - Variant resolution (no randomization):
- *   1) query param (?variant)
- *   2) experiment cookie (PINTEREST_POTENTIAL_VARIANT_COOKIE)
- *   3) default = "welcome"
+ * - Variant resolution:
+ *   - Server-owned. Parent passes `initialVariant`.
  * - Answers contract:
  *   - Step components must emit canonical spec IDs for:
  *     - Q1 segment
@@ -75,8 +72,8 @@ import { LEAD_GATING_CONFIG } from "@/lib/tools/pinterestPotential/leadGatingCon
 import { resolveLeadFromToken } from "@/lib/tools/pinterestPotential/leadToken";
 import { PRIVACY_MICROCOPY } from "@/lib/tools/pinterestPotential/copy";
 import { trackLeadSubmit } from "@/lib/gtm";
-
-import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotentialConfig";
+import type { PinterestPotentialVariant } from "@/lib/tools/pinterestPotentialConfig";
+import { buildResultsUiModel } from "@/lib/tools/pinterestPotential/resultsUiAdapter";
 
 import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
 
@@ -107,8 +104,6 @@ import WizardView from "./views/WizardView";
 // -----------------------------
 // Helpers
 // -----------------------------
-type PPCVariant = "welcome" | "no_welcome";
-
 function getCookieValue(name: string): string | null {
     if (typeof document === "undefined") return null;
     const parts = document.cookie.split(";").map((s) => s.trim());
@@ -116,16 +111,6 @@ function getCookieValue(name: string): string | null {
         if (p.startsWith(name + "=")) return decodeURIComponent(p.slice(name.length + 1));
     }
     return null;
-}
-
-function normalizeVariant(raw?: string | null): PPCVariant | undefined {
-    if (!raw) return undefined;
-    return raw === "welcome" || raw === "no_welcome" ? raw : undefined;
-}
-
-function readVariantCookie(): PPCVariant | undefined {
-    if (typeof document === "undefined") return undefined;
-    return normalizeVariant(getCookieValue(PINTEREST_POTENTIAL_VARIANT_COOKIE));
 }
 
 function formatRange(low: number, high: number): string {
@@ -213,11 +198,13 @@ function applySegmentInvalidation(base: AnswersV2, next: AnswersV2): AnswersV2 {
 export default function PinterestPotentialWizard({
                                                      leadMode = LEAD_GATING_CONFIG.lead_gating.default_mode,
                                                      initialLead,
+                                                     initialVariant = "welcome",
                                                      onPhaseChangeAction,
                                                      onStartAction,
                                                  }: {
     leadMode?: LeadMode;
     initialLead?: Lead;
+    initialVariant?: PinterestPotentialVariant;
 
     /**
      * NOTE: Name ends with "Action" to satisfy Next's client-boundary serialization rule.
@@ -239,13 +226,11 @@ export default function PinterestPotentialWizard({
             stepIndex: 1,
             started: false,
             answers: {} as AnswersV2,
-            variant: undefined as PPCVariant | undefined,
         }),
         [],
     );
 
     // ---- Canonical query params (contract) ----
-    const requestedVariant = normalizeVariant(searchParams.get("variant"));
     const qpLeadMode = searchParams.get("leadMode") ?? undefined;
     const qpLeadToken = searchParams.get("leadToken") ?? undefined;
 
@@ -312,32 +297,7 @@ export default function PinterestPotentialWizard({
         }
     }
 
-    // ---- Variant resolution (no randomization) ----
-    const cookieVariant = useMemo(() => readVariantCookie(), []);
-    useEffect(() => {
-        // Highest precedence: explicit query param
-        if (requestedVariant) {
-            if (draft.variant !== requestedVariant) {
-                updateDraft({
-                    variant: requestedVariant,
-                    started: requestedVariant === "no_welcome" ? true : draft.started,
-                });
-            }
-            return;
-        }
-
-        // If draft already has a variant, keep it session-stable
-        if (draft.variant) return;
-
-        // Else use cookie, else default welcome.
-        const resolved: PPCVariant = cookieVariant ?? "welcome";
-        updateDraft({
-            variant: resolved,
-            started: resolved === "no_welcome" ? true : draft.started,
-        });
-    }, [requestedVariant, cookieVariant, draft.variant, draft.started, updateDraft]);
-
-    const variant: PPCVariant = (requestedVariant ?? draft.variant ?? cookieVariant ?? "welcome") as PPCVariant;
+    const variant = initialVariant;
 
     // If variant is no_welcome, force started.
     const started = variant === "no_welcome" ? true : draft.started;
@@ -348,9 +308,8 @@ export default function PinterestPotentialWizard({
             stepIndex,
             started,
             answers,
-            variant,
         });
-    }, [answers, stepIndex, started, variant, updateDraft]);
+    }, [answers, stepIndex, started, updateDraft]);
 
     // Inform parent phase on mount (wizard)
     useEffect(() => {
@@ -698,187 +657,48 @@ export default function PinterestPotentialWizard({
             { label: "Ads plan", value: answers.growth_mode ? answers.growth_mode.replace(/_/g, " ") : "—" },
         ];
 
-        // v1.1 headline labels (sessions-based)
-        const demandBaseSessionsRangeLabel = formatRange(
-            results.demand.demand_base_sessions_est.low,
-            results.demand.demand_base_sessions_est.high,
-        );
+        const niche = answers.niche as NicheSlug | undefined;
+        if (!seg || !niche) {
+            throw new Error("Results require a resolved segment and niche.");
+        }
 
+        const uiModel = buildResultsUiModel({
+            segment: seg,
+            niche,
+            results,
+        });
+        const scenario = uiModel.scenarios[0];
+        if (!scenario || scenario.cards.length < 3) {
+            throw new Error("Results UI model must provide at least three cards.");
+        }
+
+        const [result1Card, result2Card, result3Card] = scenario.cards;
+        const demandBaseSessionsRangeLabel = result1Card.value;
+        const step2Label = result2Card.title;
+        const step2ValueLabel = result2Card.value;
         const likelySessionsRangeLabel = formatRange(
             results.traffic.website_sessions_est.low,
             results.traffic.website_sessions_est.high,
         );
-
         const distributionCapacityLabel = `${results.demand.distribution_capacity_m.toFixed(2)}×`;
-
+        const primaryOutcomeLabel = result3Card.title;
+        const primaryOutcomeRangeLabel = result3Card.value;
+        const purchaseIntentRangeLabel = results.traffic.purchase_intent_sessions_est
+            ? formatRange(
+                  results.traffic.purchase_intent_sessions_est.low,
+                  results.traffic.purchase_intent_sessions_est.high,
+              )
+            : undefined;
         const incomeRangeLabel = formatRange(
             results.demographics.household_income_usd.low,
             results.demographics.household_income_usd.high,
         );
-
-        // Segment outcome headline (v1.2 — goal-keyed for ALL segments)
-        const goalOutcome = results.segment_outcome.goal_outcome;
-
-        // Present when relevant (at minimum for product_seller); used by ResultsView as the
-        // "high-intent traffic" lens when the goal is product_seller:sales.
-        const purchaseIntentRangeLabel = results.traffic.purchase_intent_sessions_est
-            ? formatRange(
-                  results.traffic.purchase_intent_sessions_est.low,
-                  results.traffic.purchase_intent_sessions_est.high
-              )
-            : undefined;
-
-        // Deterministic defaults for range records (kept in-view to avoid coupling).
-        const DEFAULT_AOV_BUCKET = "100_250" as const;
-        const DEFAULT_COURSE_PRICE_BUCKET = "200_1000" as const;
-
-        let primaryOutcomeLabel: string;
-        let primaryOutcomeRangeLabel: string;
-
-        switch (goalOutcome.kind) {
-            // Content creator
-            case "traffic":
-                // Result 2 is traffic (sessions). Result 3 is list growth so it’s not blank.
-                primaryOutcomeLabel = "Estimated email subscribers (list growth)";
-                primaryOutcomeRangeLabel = formatRange(
-                    goalOutcome.monthly_email_subscribers_est.low,
-                    goalOutcome.monthly_email_subscribers_est.high
-                );
-                break;
-            case "email_subscribers":
-                primaryOutcomeLabel = "Estimated email subscribers";
-                primaryOutcomeRangeLabel = formatRange(
-                    goalOutcome.monthly_email_subscribers_est.low,
-                    goalOutcome.monthly_email_subscribers_est.high
-                );
-                break;
-            case "affiliate_revenue":
-                primaryOutcomeLabel = "Estimated affiliate revenue";
-                primaryOutcomeRangeLabel = formatRange(
-                    goalOutcome.monthly_affiliate_revenue_usd_est.low,
-                    goalOutcome.monthly_affiliate_revenue_usd_est.high
-                );
-                break;
-            case "course_product_sales": {
-                primaryOutcomeLabel = "Estimated course revenue";
-                const bucket = goalOutcome.revenue_by_course_price_est[DEFAULT_COURSE_PRICE_BUCKET];
-                if (!bucket) {
-                    throw new Error(`Missing course price bucket: ${DEFAULT_COURSE_PRICE_BUCKET}`);
-                }
-                primaryOutcomeRangeLabel = formatRange(bucket.low, bucket.high);
-                break;
-            }
-
-            // Product seller
-            case "sales": {
-                primaryOutcomeLabel = "Estimated revenue";
-                const bucket = goalOutcome.revenue_by_aov_est[DEFAULT_AOV_BUCKET];
-                if (!bucket) {
-                    throw new Error(`Missing AOV bucket: ${DEFAULT_AOV_BUCKET}`);
-                }
-                primaryOutcomeRangeLabel = formatRange(bucket.low, bucket.high);
-                break;
-            }
-            case "retargeting_pool":
-                primaryOutcomeLabel = "Estimated retargetable visitors";
-                primaryOutcomeRangeLabel = formatRange(
-                    goalOutcome.monthly_retargetable_visitors_est.low,
-                    goalOutcome.monthly_retargetable_visitors_est.high
-                );
-                break;
-            case "new_customer_discovery":
-                primaryOutcomeLabel = "Estimated new-to-brand sessions";
-                primaryOutcomeRangeLabel = formatRange(
-                    goalOutcome.monthly_new_to_brand_sessions_est.low,
-                    goalOutcome.monthly_new_to_brand_sessions_est.high
-                );
-                break;
-
-            // Service provider
-            case "leads_calls":
-                primaryOutcomeLabel = "Estimated discovery calls";
-                primaryOutcomeRangeLabel = formatRange(
-                    goalOutcome.monthly_discovery_calls_est.low,
-                    goalOutcome.monthly_discovery_calls_est.high
-                );
-                break;
-            case "webinar_signups":
-                primaryOutcomeLabel = "Estimated webinar signups";
-                primaryOutcomeRangeLabel = formatRange(
-                    goalOutcome.monthly_webinar_signups_est.low,
-                    goalOutcome.monthly_webinar_signups_est.high
-                );
-                break;
-            case "authority_visibility":
-                primaryOutcomeLabel = "Estimated visibility reach";
-                primaryOutcomeRangeLabel = formatRange(
-                    goalOutcome.monthly_visibility_reach_est.low,
-                    goalOutcome.monthly_visibility_reach_est.high
-                );
-                break;
-
-            default:
-                throw new Error(`Unhandled goal outcome kind: ${(goalOutcome as any).kind}`);
-        }
-
-        // These are currently unused by ResultsView (kept for local debugging / future UI).
-        const segmentOutcomeHeadline = (() => {
-            switch (goalOutcome.kind) {
-                case "traffic":
-                    return "List growth potential";
-                case "email_subscribers":
-                    return "Email list growth potential";
-                case "affiliate_revenue":
-                    return "Affiliate revenue potential";
-                case "course_product_sales":
-                    return "Course sales potential";
-                case "sales":
-                    return "Sales potential";
-                case "retargeting_pool":
-                    return "Retargeting pool potential";
-                case "new_customer_discovery":
-                    return "New customer discovery potential";
-                case "leads_calls":
-                    return "Leads / calls potential";
-                case "webinar_signups":
-                    return "Webinar signups potential";
-                case "authority_visibility":
-                    return "Authority + visibility potential";
-                default:
-                    return "Outcome";
-            }
-        })();
-
-        const segmentOutcomeSubhead = (() => {
-            switch (goalOutcome.kind) {
-                case "traffic":
-                    return "Traffic is Result 2 — Result 3 shows list growth potential so it’s not blank.";
-                case "email_subscribers":
-                    return "Estimated subscribers per month from Pinterest-driven traffic.";
-                case "affiliate_revenue":
-                    return "Estimated monthly affiliate revenue driven by Pinterest.";
-                case "course_product_sales":
-                    return "Revenue ranges shown for a representative course price bucket.";
-                case "sales":
-                    return "Revenue ranges shown for a representative AOV bucket.";
-                case "retargeting_pool":
-                    return "Visitors you could retarget each month from Pinterest traffic.";
-                case "new_customer_discovery":
-                    return "Estimated sessions from new-to-brand shoppers.";
-                case "leads_calls":
-                    return "Estimated discovery calls you could generate per month.";
-                case "webinar_signups":
-                    return "Estimated webinar signups per month from Pinterest.";
-                case "authority_visibility":
-                    return "Estimated visibility / reach actions per month from Pinterest.";
-                default:
-                    throw new Error(`Unhandled goal outcome kind: ${(goalOutcome as any).kind}`);
-            }
-        })();
         return (
             <ResultsView
                 results={results}
                 demandBaseSessionsRangeLabel={demandBaseSessionsRangeLabel}
+                step2Label={step2Label}
+                step2ValueLabel={step2ValueLabel}
                 likelySessionsRangeLabel={likelySessionsRangeLabel}
                 distributionCapacityLabel={distributionCapacityLabel}
                 primaryOutcomeLabel={primaryOutcomeLabel}

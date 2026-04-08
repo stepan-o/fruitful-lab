@@ -8,13 +8,16 @@ import PinterestPotentialWizard from "@/components/tools/pinterestPotential/Pint
 import type { Lead, LeadMode } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
 import { LEAD_GATING_CONFIG } from "@/lib/tools/pinterestPotential/leadGatingConfig";
 import { useToolAnalytics } from "@/lib/hooks/useToolAnalytics";
+import type { PinterestPotentialVariant } from "@/lib/tools/pinterestPotentialConfig";
 
 export function PinterestPotentialV1({
                                          leadMode = LEAD_GATING_CONFIG.lead_gating.default_mode,
                                          initialLead,
+                                         initialVariant,
                                      }: {
     leadMode?: LeadMode;
     initialLead?: Lead;
+    initialVariant: PinterestPotentialVariant;
 }) {
     const [phase, setPhase] = useState<"wizard" | "results">("wizard");
     const { trackToolStart } = useToolAnalytics({ toolName: "pinterest_potential" });
@@ -33,6 +36,7 @@ export function PinterestPotentialV1({
             <PinterestPotentialWizard
                 leadMode={leadMode}
                 initialLead={initialLead}
+                initialVariant={initialVariant}
                 onPhaseChangeAction={setPhase}
                 onStartAction={trackToolStart}
             />

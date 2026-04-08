@@ -28,20 +28,26 @@ describe("pinterest-potential page variant resolution", () => {
         expect(v).toBe("no_welcome");
     });
 
-    it("uses cookie when no query provided", () => {
+    it("ignores experiment cookies when A/B split is disabled", () => {
         const v = resolvePinterestPotentialVariant(undefined, "no_welcome");
-        expect(v).toBe("no_welcome");
+        expect(v).toBe("welcome");
     });
 
-    it("falls back to default when cookie is invalid and no query provided", () => {
-        const v = resolvePinterestPotentialVariant(undefined, "not-a-variant");
-        expect(["welcome", "no_welcome"]).toContain(v);
-        expect(v).not.toBe("not-a-variant");
+    it("ignores variant query overrides in production", () => {
+        const originalNodeEnv = process.env.NODE_ENV;
+        process.env.NODE_ENV = "production";
+
+        try {
+            const v = resolvePinterestPotentialVariant("no_welcome", "welcome");
+            expect(v).toBe("welcome");
+        } finally {
+            process.env.NODE_ENV = originalNodeEnv;
+        }
     });
 
     it("falls back to default when neither query nor cookie is present", () => {
         const v = resolvePinterestPotentialVariant(undefined, undefined);
-        expect(["welcome", "no_welcome"]).toContain(v);
+        expect(v).toBe("welcome");
     });
 });
 
@@ -81,7 +87,7 @@ describe("pinterest-potential page rendering", () => {
         ).toBeInTheDocument();
     });
 
-    it("renders no_welcome when cookie says no_welcome and no query", async () => {
+    it("renders welcome when cookie says no_welcome and no query", async () => {
         get.mockReturnValueOnce({ name: "pp_variant", value: "no_welcome" });
 
         const PageTyped = Page as unknown as PageFn;
@@ -89,7 +95,7 @@ describe("pinterest-potential page rendering", () => {
 
         render(element);
         expect(
-            screen.getByRole("heading", { name: /pinterest potential — no_welcome/i }),
+            screen.getByRole("heading", { name: /pinterest potential — welcome/i }),
         ).toBeInTheDocument();
     });
 });

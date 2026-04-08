@@ -58,11 +58,12 @@ function getOrSetAnonId(req: NextRequest, res: NextResponse): string {
     if (existing && existing.length > 0) return existing;
 
     const anonId = generateAnonId();
+    const isProd = process.env.NODE_ENV === "production";
 
-    // Not sensitive; keep readable by client if you later want client-side analytics.
     res.cookies.set(ANON_ID_COOKIE, anonId, {
         path: "/",
-        httpOnly: false,
+        httpOnly: true,
+        secure: isProd,
         sameSite: "lax",
         maxAge: ANON_ID_MAX_AGE_SECONDS,
     });
@@ -127,6 +128,7 @@ export async function applyExperimentCookies(
 ): Promise<void> {
     const exp = PINTEREST_POTENTIAL_EXPERIMENT;
     const cookieName = PINTEREST_POTENTIAL_VARIANT_COOKIE;
+    const isProd = process.env.NODE_ENV === "production";
 
     // 1) Respect an existing valid cookie
     const existingRaw = req.cookies.get(cookieName)?.value;
@@ -151,7 +153,8 @@ export async function applyExperimentCookies(
     // 4) Persist experiment cookie for future requests
     res.cookies.set(cookieName, chosen, {
         path: "/",
-        httpOnly: false,
+        httpOnly: true,
+        secure: isProd,
         sameSite: "lax",
         maxAge: 60 * 60 * 24 * 90, // ~90 days
     });

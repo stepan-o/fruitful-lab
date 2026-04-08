@@ -1,18 +1,19 @@
 import "@testing-library/jest-dom";
 import type { NextRequest, NextResponse } from "next/server";
 
-// Spy on runServerExperiment so we don't hit GrowthBook
-const runServerExperiment = jest
-    .fn()
-    .mockResolvedValue({ variant: "no_welcome", source: "fallback" });
-
-jest.mock("@/lib/growthbook/experiments", () => ({
-    runServerExperiment: (...args: unknown[]) => runServerExperiment(...args),
+jest.mock("@/lib/growthbook/edgeAdapter", () => ({
+    growthbookAdapter: {
+        initialize: jest.fn(),
+    },
 }));
 
+import { growthbookAdapter } from "@/lib/growthbook/edgeAdapter";
 import { applyExperimentCookies } from "@/lib/growthbook/middleware";
 import { PINTEREST_POTENTIAL_EXPERIMENT } from "@/lib/experiments/config";
 import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotentialConfig";
+
+const ANON_COOKIE = "fp_anon_id";
+const initialize = jest.mocked(growthbookAdapter.initialize);
 
 type MinimalReq = {
     cookies: { get: (name: string) => { name: string; value: string } | undefined };
@@ -27,7 +28,9 @@ type MinimalRes = {
     __calls: CookieSetCall[];
 };
 
-describe("applyExperimentCookies – assignment + cookie persistence", () => {
+describe("applyExperimentCookies – GrowthBook evaluation", () => {
+    const originalKey = process.env.GROWTHBOOK_CLIENT_KEY;
+
     function makeReq(cookiesMap: Record<string, string> = {}): MinimalReq {
         return {
             cookies: {
@@ -53,10 +56,25 @@ describe("applyExperimentCookies – assignment + cookie persistence", () => {
 
     beforeEach(() => {
         jest.clearAllMocks();
+        process.env.GROWTHBOOK_CLIENT_KEY = "test-key";
     });
 
-    it("calls runServerExperiment and sets pp_variant when missing", async () => {
-        const req = makeReq();
+    afterAll(() => {
+        if (originalKey) process.env.GROWTHBOOK_CLIENT_KEY = originalKey;
+        else delete process.env.GROWTHBOOK_CLIENT_KEY;
+    });
+
+    it("uses the GrowthBook-evaluated variant when the experiment is enabled", async () => {
+        initialize.mockResolvedValueOnce({
+            evalFeature: (key: string) => {
+                if (key === `enable_${PINTEREST_POTENTIAL_EXPERIMENT.gbKey}`) {
+                    return { on: true, value: true };
+                }
+                return { value: "no_welcome" };
+            },
+        });
+
+        const req = makeReq({ [ANON_COOKIE]: "anon-123" });
         const res = makeRes();
 
         await applyExperimentCookies(
@@ -64,18 +82,23 @@ describe("applyExperimentCookies – assignment + cookie persistence", () => {
             res as unknown as NextResponse,
         );
 
-        expect(runServerExperiment).toHaveBeenCalledTimes(1);
-        expect(runServerExperiment).toHaveBeenCalledWith(PINTEREST_POTENTIAL_EXPERIMENT);
-
-        expect(res.__calls.length).toBe(1);
-        const call = res.__calls[0];
-
-        expect(call.name).toBe(PINTEREST_POTENTIAL_VARIANT_COOKIE);
-        expect(["welcome", "no_welcome"]).toContain(call.value);
+        expect(initialize).toHaveBeenCalledTimes(1);
+        expect(res.__calls).toHaveLength(1);
+        expect(res.__calls[0]?.name).toBe(PINTEREST_POTENTIAL_VARIANT_COOKIE);
+        expect(res.__calls[0]?.value).toBe("no_welcome");
     });
 
-    it("does not call runServerExperiment when valid cookie exists", async () => {
-        const req = makeReq({ [PINTEREST_POTENTIAL_VARIANT_COOKIE]: "welcome" });
+    it("uses the default variant when the GrowthBook enable flag is off", async () => {
+        initialize.mockResolvedValueOnce({
+            evalFeature: (key: string) => {
+                if (key === `enable_${PINTEREST_POTENTIAL_EXPERIMENT.gbKey}`) {
+                    return { on: false, value: false };
+                }
+                return { value: "no_welcome" };
+            },
+        });
+
+        const req = makeReq({ [ANON_COOKIE]: "anon-123" });
         const res = makeRes();
 
         await applyExperimentCookies(
@@ -83,7 +106,8 @@ describe("applyExperimentCookies – assignment + cookie persistence", () => {
             res as unknown as NextResponse,
         );
 
-        expect(runServerExperiment).not.toHaveBeenCalled();
-        expect(res.__calls.length).toBe(0);
+        expect(initialize).toHaveBeenCalledTimes(1);
+        expect(res.__calls).toHaveLength(1);
+        expect(res.__calls[0]?.value).toBe(PINTEREST_POTENTIAL_EXPERIMENT.defaultVariant);
     });
 });

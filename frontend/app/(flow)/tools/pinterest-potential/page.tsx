@@ -4,6 +4,7 @@
 import {
     DEFAULT_VARIANT,
     ALL_VARIANTS,
+    ENABLE_AB_SPLIT,
     type PinterestPotentialVariant,
     PINTEREST_POTENTIAL_VARIANT_COOKIE,
 } from "@/lib/tools/pinterestPotentialConfig";
@@ -24,6 +25,7 @@ export const dynamic = "force-dynamic";
 type VariantProps = {
     leadMode: ReturnType<typeof resolveLeadMode>;
     initialLead?: Lead;
+    initialVariant: PinterestPotentialVariant;
 };
 
 const VARIANT_COMPONENTS: Record<PinterestPotentialVariant, ComponentType<VariantProps>> = {
@@ -36,9 +38,10 @@ type PageProps = {
 };
 
 export default async function PinterestPotentialPage({ searchParams }: PageProps) {
-    // Read the cookie set by middleware-based assignment
     const cookieStore = await cookies();
-    const cookieVariant = cookieStore.get(PINTEREST_POTENTIAL_VARIANT_COOKIE)?.value;
+    const cookieVariant = ENABLE_AB_SPLIT
+        ? cookieStore.get(PINTEREST_POTENTIAL_VARIANT_COOKIE)?.value
+        : undefined;
     const requestedVariant = searchParams?.variant;
     const variant = resolvePinterestPotentialVariant(requestedVariant, cookieVariant);
 
@@ -63,7 +66,13 @@ export default async function PinterestPotentialPage({ searchParams }: PageProps
             : undefined;
 
     const VariantComponent = VARIANT_COMPONENTS[variant];
-    return <VariantComponent leadMode={leadMode} initialLead={initialLead} />;
+    return (
+        <VariantComponent
+            leadMode={leadMode}
+            initialLead={initialLead}
+            initialVariant={variant}
+        />
+    );
 }
 
 /**
@@ -76,10 +85,12 @@ export function resolvePinterestPotentialVariant(
     requested?: string,
     cookieValue?: string,
 ): PinterestPotentialVariant {
-    const reqNorm = normalizeVariant(requested);
+    const allowVariantOverride = process.env.NODE_ENV !== "production";
+
+    const reqNorm = allowVariantOverride ? normalizeVariant(requested) : undefined;
     if (reqNorm) return reqNorm;
 
-    const cookieNorm = normalizeVariant(cookieValue);
+    const cookieNorm = ENABLE_AB_SPLIT ? normalizeVariant(cookieValue) : undefined;
     if (cookieNorm) return cookieNorm;
 
     return DEFAULT_VARIANT;

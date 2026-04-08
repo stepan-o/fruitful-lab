@@ -42,6 +42,8 @@ export type ResultsViewProps = {
 
     // Pre-formatted strings (kept for compatibility with existing orchestrator)
     demandBaseSessionsRangeLabel: string; // optional usage (we can compute from results)
+    step2Label?: string;
+    step2ValueLabel?: string;
     likelySessionsRangeLabel?: string; // optional usage
     distributionCapacityLabel?: string; // optional usage
 
@@ -502,6 +504,8 @@ export default function ResultsView(props: ResultsViewProps) {
     const {
         results,
         demandBaseSessionsRangeLabel,
+        step2Label: step2LabelProp,
+        step2ValueLabel,
         likelySessionsRangeLabel,
         primaryOutcomeLabel,
         primaryOutcomeRangeLabel,
@@ -592,12 +596,16 @@ export default function ResultsView(props: ResultsViewProps) {
         const likely = results.demand.likely_pinterest_sessions_est;
 
         const step2Label =
-            kind === "product_seller"
+            step2LabelProp?.trim()
+                ? step2LabelProp
+                : kind === "product_seller"
                 ? "Monthly purchase-intent sessions (in your niche)"
                 : "Monthly website sessions you could earn from Pinterest";
 
         const step2Value =
-            kind === "product_seller"
+            step2ValueLabel?.trim()
+                ? step2ValueLabel
+                : kind === "product_seller"
                 ? (purchaseIntentRangeLabel?.trim()
                     ? purchaseIntentRangeLabel
                     : purchaseIntent
@@ -651,6 +659,8 @@ export default function ResultsView(props: ResultsViewProps) {
     }, [
         results,
         demandBaseSessionsRangeLabel,
+        step2LabelProp,
+        step2ValueLabel,
         likelySessionsRangeLabel,
         purchaseIntentRangeLabel,
         primaryOutcomeLabel,

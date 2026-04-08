@@ -55,21 +55,21 @@ export default function AdminAnalyticsPage() {
                 );
                 if (!res.ok) throw new Error(await res.text());
 
-                const data = (await res.json()) as { accounts: Account[] }
+                const data = (await res.json()) as { accounts: Account[] };
                 if (!alive) return;
 
-                const list = data.accounts ?? [];
+                const list = (data.accounts ?? []).map(({ account_name }) => account_name);
                 setAccounts(list);
 
                 // default selection (only if none chosen yet)
                 if (!accountName && list.length > 0) {
-                    setAccountName(list[0]!.account_name);
+                    setAccountName(list[0]!);
                 }
             } catch (e) {
                 if (!alive) return;
                 setAccountsError(e instanceof Error ? e.message : "Failed to load accounts");
             } finally {
-                if (alive) setAccountsLoading(false)
+                if (alive) setAccountsLoading(false);
             }
             //const list = (await res.json()) as string[];
 
@@ -163,11 +163,17 @@ export default function AdminAnalyticsPage() {
                         <label className="space-y-1">
                             <span className="text-sm text-[var(--foreground)]">Account name</span>
                             <input
+                                list="analytics-account-names"
                                 value={accountName}
                                 onChange={(e) => setAccountName(e.target.value)}
                                 placeholder="e.g. Lenabo"
                                 className="w-full rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:ring-2 focus:ring-[var(--ring)]"
                             />
+                            <datalist id="analytics-account-names">
+                                {accounts.map((name) => (
+                                    <option key={name} value={name} />
+                                ))}
+                            </datalist>
                         </label>
 
                         <label className="space-y-1">

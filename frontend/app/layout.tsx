@@ -1,22 +1,35 @@
 import type { Metadata } from "next";
-import { Alatsi, Raleway } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const headingFont = Alatsi({
-    subsets: ["latin"],
-    weight: "400",
-    variable: "--font-heading",
-    display: "swap",
-});
+const shouldSkipRemoteFonts =
+    process.env.CI === "1" ||
+    process.env.CI === "true" ||
+    process.env.SKIP_REMOTE_FONTS === "1";
 
-const bodyFont = Raleway({
-    subsets: ["latin"],
-    // common, readable weights (tweak if you want fewer)
-    weight: ["300", "400", "500", "600", "700"],
-    variable: "--font-body",
-    display: "swap",
-});
+async function getFontVariables() {
+    if (shouldSkipRemoteFonts) {
+        return "";
+    }
+
+    const { Alatsi, Raleway } = await import("next/font/google");
+
+    const headingFont = Alatsi({
+        subsets: ["latin"],
+        weight: "400",
+        variable: "--font-heading",
+        display: "swap",
+    });
+
+    const bodyFont = Raleway({
+        subsets: ["latin"],
+        weight: ["300", "400", "500", "600", "700"],
+        variable: "--font-body",
+        display: "swap",
+    });
+
+    return `${headingFont.variable} ${bodyFont.variable}`;
+}
 
 export const metadata: Metadata = {
     title: "Fruitful Lab – Pinterest & Funnel Studio",
@@ -24,17 +37,18 @@ export const metadata: Metadata = {
         "Full-funnel Pinterest strategy, ads, and analytics for baby, family, lifestyle, and CPG brands.",
 };
 
-export default function RootLayout({
-                                       children,
-                                   }: Readonly<{
+export default async function RootLayout({
+                                             children,
+                                         }: Readonly<{
     children: React.ReactNode;
 }>) {
     const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+    const fontVariables = await getFontVariables();
 
     return (
         <html lang="en" suppressHydrationWarning>
         <head />
-        <body className={`${headingFont.variable} ${bodyFont.variable} font-body antialiased`}>
+        <body className={`${fontVariables} font-body antialiased`.trim()}>
         {GTM_ID ? (
             <>
                 <Script

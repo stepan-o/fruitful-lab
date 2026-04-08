@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "ci:test": "NODE_ENV=test jest",
-    "ci": "npm run ci:test && npm run build"
+    "ci": "npm run ci:test && CI=1 npm run build"
   },
   "dependencies": {
     "@flags-sdk/growthbook": "^0.2.0",

@@ -1,7 +1,18 @@
 // frontend/components/tools/pinterestPotential/PinterestPotentialV2.tsx
 // Placeholder shell for the Pinterest Potential Calculator – v2.
 
-export function PinterestPotentialV2() {
+import type { Lead, LeadMode } from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+import type { PinterestPotentialVariant } from "@/lib/tools/pinterestPotentialConfig";
+
+export function PinterestPotentialV2({
+  leadMode: _leadMode,
+  initialLead: _initialLead,
+  initialVariant: _initialVariant,
+}: {
+  leadMode?: LeadMode;
+  initialLead?: Lead;
+  initialVariant: PinterestPotentialVariant;
+}) {
   return (
     <div className="space-y-4">
       <h1 className="font-heading text-2xl text-[#0B132B]">

@@ -1,0 +1,562 @@
+./
+├── .github/
+│   └── workflows/
+│       └── security-audits.yml
+├── .gitignore
+├── Makefile
+├── backend/
+│   ├── .python-version
+│   ├── Makefile
+│   ├── README.md
+│   ├── __init__.py
+│   ├── alembic.ini
+│   ├── config.py
+│   ├── db.py
+│   ├── main.py
+│   ├── migrations/
+│   │   ├── README
+│   │   ├── _legacy_versions/
+│   │   │   ├── 3f2a1c9e4b6d_add_groups_json_to_users.py
+│   │   │   ├── b105958cfa97_add_is_admin_to_users.py
+│   │   │   └── c1a2b3c4d5e6_monthly_stats_add_account_name_uploaded_at.py
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions/
+│   │       └── 0f1db0936876_initial_schema.py
+│   ├── models.py
+│   ├── pyproject.toml
+│   ├── railway.json
+│   ├── routers/
+│   │   ├── __init__.py
+│   │   ├── admin_pinterest_stats.py
+│   │   ├── auth.py
+│   │   └── stats.py
+│   ├── schemas.py
+│   ├── scripts/
+│   │   ├── aws/
+│   │   │   └── s3_policy_test.py
+│   │   └── db/
+│   │       ├── manage_pinterest_stats.py
+│   │       └── manage_users.py
+│   ├── security.py
+│   ├── tests/
+│   │   ├── __init__.py
+│   │   ├── test_auth_api.py
+│   │   ├── test_auth_protection.py
+│   │   ├── test_config.py
+│   │   ├── test_database_schema.py
+│   │   ├── test_health_endpoints.py
+│   │   ├── test_pinterest_stats_api.py
+│   │   └── test_security.py
+│   ├── utils.py
+│   └── uv.lock
+├── docs/
+│   ├── AWS_ACCESS_GUIDE.md
+│   ├── EXPRERIMENTS.md
+│   ├── REPO_GROUNDING_PACK.md
+│   ├── SCROLLBAR_STYLING_AUDIT.md
+│   ├── SYSTEM_IMPLEMENTATION_AUDIT-2026-01-10.md
+│   ├── _archived/
+│   │   ├── pinterest-potential-parity.md
+│   │   ├── pinterest-potential-v1-sprint-plan.md
+│   │   └── tech_hub_v1_implementation_snapshot.md
+│   ├── agents/
+│   │   └── snapshotter.md
+│   ├── audits/
+│   │   └── pinterest-potential-as-is-implementation-audit.md
+│   ├── db_migrations_guide.md
+│   ├── tech_site_front_page_spec.md
+│   ├── tools/
+│   │   ├── fruitful-control/
+│   │   │   ├── fruitful-control-tool-spec.md
+│   │   │   ├── fruitful-control-v1-auth-sprint-plan.md
+│   │   │   └── post_auth_sprint_llm_architect_handoff.md
+│   │   └── pinterest-potential-calculator/
+│   │       ├── pinterest-potential-calculator-v1.0-post-wizard-refactor-llm-architect-handoff.md
+│   │       ├── pinterest-potential-calculator-v1.0-result-sets.md
+│   │       ├── pinterest-potential-calculator-v1.0-spec.md
+│   │       └── pinterest-potential-calculator-v1.0-sprint-plan.md
+│   └── user_management.md
+├── frontend/
+│   ├── .gitignore
+│   ├── README.md
+│   ├── __tests__/
+│   │   ├── Button.test.tsx
+│   │   ├── auth.test.ts
+│   │   ├── dashboardPage.test.tsx
+│   │   ├── fetchPinterestMonthlyStats.test.ts
+│   │   ├── middleware.auth.test.ts
+│   │   ├── pinterestPotential.compute.test.ts
+│   │   ├── pinterestPotential.optionalAfterResults.test.tsx
+│   │   ├── publicHubLanding.test.tsx
+│   │   └── routes/
+│   │       └── pinterestPotentialPage.test.tsx
+│   ├── app/
+│   │   ├── (admin)/
+│   │   │   └── admin/
+│   │   │       ├── analytics/
+│   │   │       │   └── page.tsx
+│   │   │       ├── dashboard/
+│   │   │       │   └── page.tsx
+│   │   │       └── layout.tsx
+│   │   ├── (contractor)/
+│   │   │   ├── contractor/
+│   │   │   │   ├── fruitful-qa/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (flow)/
+│   │   │   ├── layout.tsx
+│   │   │   └── tools/
+│   │   │       └── pinterest-potential/
+│   │   │           └── page.tsx
+│   │   ├── (site)/
+│   │   │   ├── layout.tsx
+│   │   │   └── tools/
+│   │   │       └── page.tsx
+│   │   ├── api/
+│   │   │   ├── admin/
+│   │   │   │   └── pinterest-stats/
+│   │   │   │       ├── monthly/
+│   │   │   │       └── upload/
+│   │   │   ├── auth/
+│   │   │   │   ├── login/
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── logout/
+│   │   │   │       └── route.ts
+│   │   │   ├── debug/
+│   │   │   │   ├── __tests__/
+│   │   │   │   │   └── growthbook.route.test.ts
+│   │   │   │   └── growthbook/
+│   │   │   │       └── route.ts
+│   │   │   └── experiment-events/
+│   │   │       ├── __tests__/
+│   │   │       │   └── route.test.ts
+│   │   │       └── route.ts
+│   │   ├── case-studies/
+│   │   │   └── page.tsx
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── hub/
+│   │   │   └── page.tsx
+│   │   ├── layout.tsx
+│   │   ├── login/
+│   │   │   ├── LoginPageClient.tsx
+│   │   │   └── page.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── PublicHubLanding.tsx
+│   │   ├── home/
+│   │   │   ├── LabAnimatedBackdrop.tsx
+│   │   │   ├── LabBackdropClient.tsx
+│   │   │   └── _legacy/
+│   │   │       ├── CaseStudyTeaser.tsx
+│   │   │       ├── ClientStrip.tsx
+│   │   │       ├── FinalCTASection.tsx
+│   │   │       ├── HeroSection.tsx
+│   │   │       ├── ProcessStrip.tsx
+│   │   │       └── ServicesStrip.tsx
+│   │   ├── layout/
+│   │   │   ├── AdminFooter.tsx
+│   │   │   ├── AdminHeader.tsx
+│   │   │   ├── BookCallButton.tsx
+│   │   │   ├── ContractorFooter.tsx
+│   │   │   ├── ContractorHeader.tsx
+│   │   │   ├── FlashBanner.tsx
+│   │   │   ├── FlowHeader.tsx
+│   │   │   ├── LogoutButton.tsx
+│   │   │   ├── SiteFooter.tsx
+│   │   │   ├── SiteHeader.tsx
+│   │   │   └── __tests__/
+│   │   │       ├── FlowHeader.test.tsx
+│   │   │       └── SiteHeader.test.tsx
+│   │   ├── tools/
+│   │   │   └── pinterestPotential/
+│   │   │       ├── PinterestPotentialV1.tsx
+│   │   │       ├── PinterestPotentialV2.tsx
+│   │   │       ├── PinterestPotentialWizard.tsx
+│   │   │       ├── steps/
+│   │   │       │   ├── Q1Segment.tsx
+│   │   │       │   ├── Q2Niche.tsx
+│   │   │       │   ├── Q3Volume.tsx
+│   │   │       │   ├── Q4Visual.tsx
+│   │   │       │   ├── Q5Site.tsx
+│   │   │       │   ├── Q6Offer.tsx
+│   │   │       │   ├── Q7Goal.tsx
+│   │   │       │   ├── Q8GrowthMode.tsx
+│   │   │       │   └── ppcV2Types.ts
+│   │   │       ├── usePinterestPotentialDraft.ts
+│   │   │       └── views/
+│   │   │           ├── ResultsView.tsx
+│   │   │           ├── WelcomeView.tsx
+│   │   │           ├── WizardView.tsx
+│   │   │           └── archive/
+│   │   └── ui/
+│   │       ├── BottomSheet.tsx
+│   │       ├── Button.tsx
+│   │       ├── ProgressBar.tsx
+│   │       ├── ThemeToggle.tsx
+│   │       └── forms/
+│   │           ├── CheckboxCardGrid.tsx
+│   │           ├── FieldError.tsx
+│   │           ├── HelperText.tsx
+│   │           ├── RadioPillGroup.tsx
+│   │           └── SliderWithTicks.tsx
+│   ├── eslint.config.mjs
+│   ├── jest.config.cjs
+│   ├── jest.setup.ts
+│   ├── lib/
+│   │   ├── auth.ts
+│   │   ├── experiments/
+│   │   │   ├── __tests__/
+│   │   │   │   ├── config.test.ts
+│   │   │   │   └── track.test.ts
+│   │   │   ├── config.ts
+│   │   │   └── track.ts
+│   │   ├── growthbook/
+│   │   │   ├── __tests__/
+│   │   │   │   ├── experiments.test.ts
+│   │   │   │   ├── flags.test.ts
+│   │   │   │   ├── middleware.apply.test.ts
+│   │   │   │   └── middleware.test.ts
+│   │   │   ├── edgeAdapter.ts
+│   │   │   ├── experiments.ts
+│   │   │   ├── flags.ts
+│   │   │   └── middleware.ts
+│   │   ├── gtm.ts
+│   │   ├── hooks/
+│   │   │   └── useToolAnalytics.ts
+│   │   ├── identify.ts
+│   │   ├── nav.ts
+│   │   ├── pinterestStats.ts
+│   │   └── tools/
+│   │       ├── pinterestPotential/
+│   │       │   ├── benchmarks.ts
+│   │       │   ├── compute.ts
+│   │       │   ├── copy.ts
+│   │       │   ├── insight.ts
+│   │       │   ├── leadGatingConfig.ts
+│   │       │   ├── leadMode.ts
+│   │       │   ├── leadToken.ts
+│   │       │   ├── multipliers.ts
+│   │       │   ├── nicheUiAdapter.ts
+│   │       │   ├── pinterestPotentialSpec.ts
+│   │       │   └── resultsUiAdapter.ts
+│   │       └── pinterestPotentialConfig.ts
+│   ├── middleware.ts
+│   ├── next.config.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.mjs
+│   ├── public/
+│   │   ├── Pinterest-Ads-Management-768x419.webp
+│   │   ├── cropped-Logo-Pink.png
+│   │   ├── file.svg
+│   │   ├── globe.svg
+│   │   ├── next.svg
+│   │   ├── repo_snapshotter_icon.png
+│   │   ├── repo_snapshotter_icon2.png
+│   │   ├── tools/
+│   │   │   └── pinterestPotential/
+│   │   │       └── thumbs/
+│   │   │           ├── before-after-1.jpg
+│   │   │           ├── carousel-1.jpg
+│   │   │           ├── content-creator-goal-1-dark.jpg
+│   │   │           ├── content-creator-goal-1-light.jpg
+│   │   │           ├── content-creator-goal-2-dark.jpg
+│   │   │           ├── content-creator-goal-2-light.jpg
+│   │   │           ├── content-creator-goal-3-dark.jpg
+│   │   │           ├── content-creator-goal-3-light.jpg
+│   │   │           ├── content-creator-goal-4-dark.jpg
+│   │   │           ├── content-creator-goal-4-light.jpg
+│   │   │           ├── growth-1-dark.jpg
+│   │   │           ├── growth-1-light.jpg
+│   │   │           ├── growth-2-dark.jpg
+│   │   │           ├── growth-2-light.jpg
+│   │   │           ├── growth-3-dark.jpg
+│   │   │           ├── growth-3-light.jpg
+│   │   │           ├── offer-1-dark.jpg
+│   │   │           ├── offer-1-light.jpg
+│   │   │           ├── offer-2-dark.jpg
+│   │   │           ├── offer-2-light.jpg
+│   │   │           ├── offer-3-dark.jpg
+│   │   │           ├── offer-3-light.jpg
+│   │   │           ├── photo-1.jpg
+│   │   │           ├── photo-2.jpg
+│   │   │           ├── photo-3.jpg
+│   │   │           ├── product-seller-goal-1-dark.jpg
+│   │   │           ├── product-seller-goal-1-light.jpg
+│   │   │           ├── product-seller-goal-2-dark.jpg
+│   │   │           ├── product-seller-goal-2-light.jpg
+│   │   │           ├── product-seller-goal-3-dark.jpg
+│   │   │           ├── product-seller-goal-3-light.jpg
+│   │   │           ├── product-seller-goal-4-dark.jpg
+│   │   │           ├── product-seller-goal-4-light.jpg
+│   │   │           ├── service-provider-goal-1-dark.jpg
+│   │   │           ├── service-provider-goal-1-light.jpg
+│   │   │           ├── service-provider-goal-2-dark.jpg
+│   │   │           ├── service-provider-goal-2-light.jpg
+│   │   │           ├── service-provider-goal-3-dark.jpg
+│   │   │           ├── service-provider-goal-3-light.jpg
+│   │   │           ├── service-provider-goal-4-dark.jpg
+│   │   │           ├── service-provider-goal-4-light.jpg
+│   │   │           ├── site-1-dark.jpg
+│   │   │           ├── site-1-light.jpg
+│   │   │           ├── site-2-dark.jpg
+│   │   │           ├── site-2-light.jpg
+│   │   │           ├── site-3-dark.jpg
+│   │   │           ├── site-3-light.jpg
+│   │   │           ├── site-4-dark.jpg
+│   │   │           ├── site-4-light.jpg
+│   │   │           ├── video-1.jpg
+│   │   │           ├── video-1.mp4
+│   │   │           ├── video-2.jpg
+│   │   │           └── video-2.mp4
+│   │   ├── vercel.svg
+│   │   └── window.svg
+│   ├── tsconfig.json
+│   └── types/
+│       ├── global.d.ts
+│       └── next-jest.d.ts
+├── prompts/
+│   ├── llm_architect_dual_website_overview.md
+│   ├── llm_architect_general.md
+│   ├── llm_architect_ppc_ui_polish.md
+│   ├── llm_architect_public_tools.md
+│   ├── repo_system_audit.md
+│   └── sprints/
+│       ├── EVOLUTION.md
+│       ├── SPRINT_PLAN_V1_TECH_TOOLS_HUB_PAGE.md
+│       └── snapshotter_sprint_plan.md
+└── repo-tree.txt
+
+79 directories, 256 files
+│   │   │   ├── contractor
+│   │   │   │   ├── fruitful-qa
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (flow)
+│   │   │   ├── layout.tsx
+│   │   │   └── tools
+│   │   │       └── pinterest-potential
+│   │   │           └── page.tsx
+│   │   ├── (site)
+│   │   │   ├── layout.tsx
+│   │   │   └── tools
+│   │   │       └── page.tsx
+│   │   ├── api
+│   │   │   ├── auth
+│   │   │   │   ├── login
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── logout
+│   │   │   │       └── route.ts
+│   │   │   ├── debug
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── growthbook.route.test.ts
+│   │   │   │   └── growthbook
+│   │   │   │       └── route.ts
+│   │   │   └── experiment-events
+│   │   │       ├── __tests__
+│   │   │       │   └── route.test.ts
+│   │   │       └── route.ts
+│   │   ├── case-studies
+│   │   │   └── page.tsx
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── hub
+│   │   │   └── page.tsx
+│   │   ├── layout.tsx
+│   │   ├── login
+│   │   │   ├── LoginPageClient.tsx
+│   │   │   └── page.tsx
+│   │   └── page.tsx
+│   ├── components
+│   │   ├── PublicHubLanding.tsx
+│   │   ├── home
+│   │   │   ├── LabAnimatedBackdrop.tsx
+│   │   │   ├── LabBackdropClient.tsx
+│   │   │   └── _legacy
+│   │   │       ├── CaseStudyTeaser.tsx
+│   │   │       ├── ClientStrip.tsx
+│   │   │       ├── FinalCTASection.tsx
+│   │   │       ├── HeroSection.tsx
+│   │   │       ├── ProcessStrip.tsx
+│   │   │       └── ServicesStrip.tsx
+│   │   ├── layout
+│   │   │   ├── AdminFooter.tsx
+│   │   │   ├── AdminHeader.tsx
+│   │   │   ├── BookCallButton.tsx
+│   │   │   ├── ContractorFooter.tsx
+│   │   │   ├── ContractorHeader.tsx
+│   │   │   ├── FlashBanner.tsx
+│   │   │   ├── FlowHeader.tsx
+│   │   │   ├── LogoutButton.tsx
+│   │   │   ├── SiteFooter.tsx
+│   │   │   ├── SiteHeader.tsx
+│   │   │   └── __tests__
+│   │   │       ├── FlowHeader.test.tsx
+│   │   │       └── SiteHeader.test.tsx
+│   │   ├── tools
+│   │   │   └── pinterestPotential
+│   │   │       ├── PinterestPotentialV1.tsx
+│   │   │       ├── PinterestPotentialV2.tsx
+│   │   │       ├── PinterestPotentialWizard.tsx
+│   │   │       ├── steps
+│   │   │       │   ├── Q1Segment.tsx
+│   │   │       │   ├── Q2Niche.tsx
+│   │   │       │   ├── Q3Volume.tsx
+│   │   │       │   ├── Q4Visual.tsx
+│   │   │       │   ├── Q5Site.tsx
+│   │   │       │   ├── Q6Offer.tsx
+│   │   │       │   ├── Q7Goal.tsx
+│   │   │       │   ├── Q8GrowthMode.tsx
+│   │   │       │   └── ppcV2Types.ts
+│   │   │       ├── usePinterestPotentialDraft.ts
+│   │   │       └── views
+│   │   │           ├── ResultsView.tsx
+│   │   │           ├── WelcomeView.tsx
+│   │   │           ├── WizardView.tsx
+│   │   │           └── archive
+│   │   │               └── ResultsView.tsx
+│   │   └── ui
+│   │       ├── BottomSheet.tsx
+│   │       ├── Button.tsx
+│   │       ├── ProgressBar.tsx
+│   │       ├── ThemeToggle.tsx
+│   │       └── forms
+│   │           ├── CheckboxCardGrid.tsx
+│   │           ├── FieldError.tsx
+│   │           ├── HelperText.tsx
+│   │           ├── RadioPillGroup.tsx
+│   │           └── SliderWithTicks.tsx
+│   ├── eslint.config.mjs
+│   ├── jest.config.cjs
+│   ├── jest.setup.ts
+│   ├── lib
+│   │   ├── auth.ts
+│   │   ├── experiments
+│   │   │   ├── __tests__
+│   │   │   │   ├── config.test.ts
+│   │   │   │   └── track.test.ts
+│   │   │   ├── config.ts
+│   │   │   └── track.ts
+│   │   ├── growthbook
+│   │   │   ├── __tests__
+│   │   │   │   ├── experiments.test.ts
+│   │   │   │   ├── flags.test.ts
+│   │   │   │   ├── middleware.apply.test.ts
+│   │   │   │   └── middleware.test.ts
+│   │   │   ├── edgeAdapter.ts
+│   │   │   ├── experiments.ts
+│   │   │   ├── flags.ts
+│   │   │   └── middleware.ts
+│   │   ├── gtm.ts
+│   │   ├── hooks
+│   │   │   └── useToolAnalytics.ts
+│   │   ├── identify.ts
+│   │   ├── nav.ts
+│   │   ├── pinterestStats.ts
+│   │   └── tools
+│   │       ├── pinterestPotential
+│   │       │   ├── benchmarks.ts
+│   │       │   ├── compute.ts
+│   │       │   ├── copy.ts
+│   │       │   ├── insight.ts
+│   │       │   ├── leadGatingConfig.ts
+│   │       │   ├── leadMode.ts
+│   │       │   ├── leadToken.ts
+│   │       │   ├── multipliers.ts
+│   │       │   ├── nicheUiAdapter.ts
+│   │       │   ├── pinterestPotentialSpec.ts
+│   │       │   └── resultsUiAdapter.ts
+│   │       └── pinterestPotentialConfig.ts
+│   ├── middleware.ts
+│   ├── next-env.d.ts
+│   ├── next.config.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.mjs
+│   ├── public
+│   │   ├── Pinterest-Ads-Management-768x419.webp
+│   │   ├── cropped-Logo-Pink.png
+│   │   ├── file.svg
+│   │   ├── globe.svg
+│   │   ├── next.svg
+│   │   ├── repo_snapshotter_icon.png
+│   │   ├── repo_snapshotter_icon2.png
+│   │   ├── tools
+│   │   │   └── pinterestPotential
+│   │   │       └── thumbs
+│   │   │           ├── before-after-1.jpg
+│   │   │           ├── carousel-1.jpg
+│   │   │           ├── content-creator-goal-1-dark.jpg
+│   │   │           ├── content-creator-goal-1-light.jpg
+│   │   │           ├── content-creator-goal-2-dark.jpg
+│   │   │           ├── content-creator-goal-2-light.jpg
+│   │   │           ├── content-creator-goal-3-dark.jpg
+│   │   │           ├── content-creator-goal-3-light.jpg
+│   │   │           ├── content-creator-goal-4-dark.jpg
+│   │   │           ├── content-creator-goal-4-light.jpg
+│   │   │           ├── growth-1-dark.jpg
+│   │   │           ├── growth-1-light.jpg
+│   │   │           ├── growth-2-dark.jpg
+│   │   │           ├── growth-2-light.jpg
+│   │   │           ├── growth-3-dark.jpg
+│   │   │           ├── growth-3-light.jpg
+│   │   │           ├── offer-1-dark.jpg
+│   │   │           ├── offer-1-light.jpg
+│   │   │           ├── offer-2-dark.jpg
+│   │   │           ├── offer-2-light.jpg
+│   │   │           ├── offer-3-dark.jpg
+│   │   │           ├── offer-3-light.jpg
+│   │   │           ├── photo-1.jpg
+│   │   │           ├── photo-2.jpg
+│   │   │           ├── photo-3.jpg
+│   │   │           ├── product-seller-goal-1-dark.jpg
+│   │   │           ├── product-seller-goal-1-light.jpg
+│   │   │           ├── product-seller-goal-2-dark.jpg
+│   │   │           ├── product-seller-goal-2-light.jpg
+│   │   │           ├── product-seller-goal-3-dark.jpg
+│   │   │           ├── product-seller-goal-3-light.jpg
+│   │   │           ├── product-seller-goal-4-dark.jpg
+│   │   │           ├── product-seller-goal-4-light.jpg
+│   │   │           ├── service-provider-goal-1-dark.jpg
+│   │   │           ├── service-provider-goal-1-light.jpg
+│   │   │           ├── service-provider-goal-2-dark.jpg
+│   │   │           ├── service-provider-goal-2-light.jpg
+│   │   │           ├── service-provider-goal-3-dark.jpg
+│   │   │           ├── service-provider-goal-3-light.jpg
+│   │   │           ├── service-provider-goal-4-dark.jpg
+│   │   │           ├── service-provider-goal-4-light.jpg
+│   │   │           ├── site-1-dark.jpg
+│   │   │           ├── site-1-light.jpg
+│   │   │           ├── site-2-dark.jpg
+│   │   │           ├── site-2-light.jpg
+│   │   │           ├── site-3-dark.jpg
+│   │   │           ├── site-3-light.jpg
+│   │   │           ├── site-4-dark.jpg
+│   │   │           ├── site-4-light.jpg
+│   │   │           ├── video-1.jpg
+│   │   │           ├── video-1.mp4
+│   │   │           ├── video-2.jpg
+│   │   │           └── video-2.mp4
+│   │   ├── vercel.svg
+│   │   └── window.svg
+│   ├── tsconfig.json
+│   └── types
+│       ├── global.d.ts
+│       └── next-jest.d.ts
+├── prompts
+│   ├── llm_architect_dual_website_overview.md
+│   ├── llm_architect_general.md
+│   ├── llm_architect_ppc_ui_polish.md
+│   ├── llm_architect_public_tools.md
+│   ├── repo_system_audit.md
+│   └── sprints
+│       ├── EVOLUTION.md
+│       ├── SPRINT_PLAN_V1_TECH_TOOLS_HUB_PAGE.md
+│       └── snapshotter_sprint_plan.md
+└── repo-tree.txt
+
+76 directories, 262 files

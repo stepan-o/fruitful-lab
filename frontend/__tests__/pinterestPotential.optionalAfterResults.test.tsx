@@ -1,11 +1,26 @@
+import "@testing-library/jest-dom";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import PinterestPotentialWizard from "@/components/tools/pinterestPotential/PinterestPotentialWizard";
 
-describe("PinterestPotentialWizard — optional_after_results mode", () => {
-  it("shows 9 steps (no lead) and initial progress reads 'Step 1 of 9'", () => {
-    render(<PinterestPotentialWizard leadMode="optional_after_results" />);
-    expect(screen.getByText(/Step 1 of 9/i)).toBeInTheDocument();
-  });
+jest.mock("next/navigation", () => {
+    return {
+        useSearchParams: () => ({
+            get: (_key: string): string | null => null,
+        }),
+    };
+});
+
+describe("PinterestPotentialWizard (v0.2) — no_welcome variant", () => {
+    beforeEach(() => {
+        window.sessionStorage.clear();
+        document.cookie = "";
+    });
+
+    it("renders the wizard directly and progress reads 'Step 1 of 8'", () => {
+        render(<PinterestPotentialWizard leadMode="soft_lock" initialVariant="no_welcome" />);
+
+        expect(screen.getByText(/Step\s+1\s+of\s+8/i)).toBeInTheDocument();
+        expect(screen.getByText(/Which best describes your business\?/i)).toBeInTheDocument();
+    });
 });

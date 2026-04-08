@@ -1,15 +1,14 @@
 // frontend/middleware.ts
 import { NextRequest, NextResponse } from "next/server";
 import { applyExperimentCookies } from "@/lib/growthbook/middleware";
+import { getApiOrigin } from "@/lib/auth";
+import type { FlashReason } from "@/lib/flash";
+import { isFlashReason } from "@/lib/flash";
+import { ENABLE_AB_SPLIT } from "@/lib/tools/pinterestPotentialConfig";
 
+const API_BASE_URL = getApiOrigin();
 const COOKIE_NAME = "fruitful_access_token";
 
-const API_BASE_URL =
-    process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
-
-/**
- * PROTECTED_PATHS must match our *actual* URL paths.
- */
 const PROTECTED_PATHS = ["/admin", "/contractor"] as const;
 
 type Role = "admin" | "contractor" | "general";
@@ -18,6 +17,19 @@ type MeResponse = {
     is_admin: boolean;
     groups: string[];
 };
+
+const DEFAULT_FLASH_REASON: FlashReason = "auth_required";
+
+function toFlashReason(v: unknown, fallback: FlashReason = DEFAULT_FLASH_REASON): FlashReason {
+    if (typeof v !== "string") return fallback;
+    if (isFlashReason(v)) return v;
+
+    // dev signal, but don't break prod redirects
+    if (process.env.NODE_ENV !== "production") {
+        console.warn(`[middleware] invalid flash reason: ${v} (fallback: ${fallback})`);
+    }
+    return fallback;
+}
 
 // --- helpers
 
@@ -46,15 +58,35 @@ function roleAllowedForPath(role: Role, pathname: string) {
     return true;
 }
 
-function redirectToLogin(req: NextRequest) {
+function redirectToLogin(req: NextRequest, reason: FlashReason) {
+    const safeReason = toFlashReason(reason);
+
     const loginUrl = new URL("/login", req.url);
-    loginUrl.searchParams.set("next", req.nextUrl.pathname + req.nextUrl.search);
-    return NextResponse.redirect(loginUrl);
+
+    // next = original path, but strip Next's internal param
+    const nextUrl = req.nextUrl.clone();
+    nextUrl.searchParams.delete("_rsc");
+
+    const nextPath = nextUrl.pathname + (nextUrl.search || "");
+    loginUrl.searchParams.set("next", nextPath);
+    loginUrl.searchParams.set("flash", safeReason);
+
+    const res = NextResponse.redirect(loginUrl);
+
+    // helpful when UI isn't showing it yet
+    res.headers.set("x-fw-auth-redirect", safeReason);
+
+    if (reason !== safeReason) {
+        res.headers.set("x-fw-auth-redirect-invalid", reason);
+    }
+
+    return res;
 }
 
 async function fetchMe(token: string): Promise<MeResponse | null> {
     try {
-        const resp = await fetch(`${API_BASE_URL}/auth/me`, {
+        const url = new URL("/auth/me", API_BASE_URL);
+        const resp = await fetch(url, {
             headers: { Authorization: `Bearer ${token}` },
             // middleware runtime: keep it no-store
             cache: "no-store",
@@ -65,7 +97,7 @@ async function fetchMe(token: string): Promise<MeResponse | null> {
 
         // defensive shape checks
         return {
-            is_admin: !!me.is_admin,
+            is_admin: me.is_admin,
             groups: Array.isArray(me.groups) ? me.groups : [],
         };
     } catch {
@@ -76,7 +108,9 @@ async function fetchMe(token: string): Promise<MeResponse | null> {
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
-    const shouldRunExperiments = pathname.startsWith("/tools/pinterest-potential");
+    // GrowthBook cookie injection for the Pinterest Potential tool entry
+    const shouldRunExperiments =
+        ENABLE_AB_SPLIT && pathname.startsWith("/tools/pinterest-potential");
 
     // ---- PUBLIC ROUTES
     if (!isProtectedPath(pathname)) {
@@ -90,7 +124,7 @@ export async function middleware(req: NextRequest) {
     // ---- PROTECTED ROUTES: must have token
     const token = req.cookies.get(COOKIE_NAME)?.value;
     if (!token) {
-        return redirectToLogin(req);
+        return redirectToLogin(req, "auth_required");
     }
 
     // ---- PROTECTED ROUTES: role check via backend /auth/me
@@ -98,7 +132,7 @@ export async function middleware(req: NextRequest) {
 
     // invalid/expired token → clear cookie + login
     if (!me) {
-        const res = redirectToLogin(req);
+        const res = redirectToLogin(req, "logged_out");
         res.cookies.set({
             name: COOKIE_NAME,
             value: "",
@@ -116,13 +150,18 @@ export async function middleware(req: NextRequest) {
     // role not allowed → route-safe redirect
     // (we don't send to login because they're already authenticated)
     if (!roleAllowedForPath(role, pathname)) {
-        const target = role === "admin" ? "/admin/dashboard" : role === "contractor" ? "/contractor" : "/tools";
+        const target =
+            role === "admin"
+                ? "/admin/analytics"
+                : role === "contractor"
+                    ? "/contractor"
+                    : "/tools";
         return NextResponse.redirect(new URL(target, req.url));
     }
 
     const res = NextResponse.next();
 
-    // If you ever want experiments on protected routes too, move this outside the public block.
+    // If you ever want experiments on protected routes too, move this outside the protected block.
     if (shouldRunExperiments) {
         await applyExperimentCookies(req, res);
     }

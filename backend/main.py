@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from db import Base, engine
 from routers.auth import router as auth_router
 from routers.stats import router as stats_router
+from routers.admin_pinterest_stats import router as admin_pinterest_stats_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -33,6 +34,7 @@ app.add_middleware(
 # Routers
 app.include_router(auth_router)
 app.include_router(stats_router)
+app.include_router(admin_pinterest_stats_router)
 
 @app.get("/")
 def root():

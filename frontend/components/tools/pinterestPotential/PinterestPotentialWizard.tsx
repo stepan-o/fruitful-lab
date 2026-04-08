@@ -1,644 +1,1104 @@
 "use client";
 
-// frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
-// Sprint 2 — stepper skeleton with reducer state, per-step validation, and sessionStorage draft persistence
-// Sprint 5 — swap-in results UI (3 results) + recap, while keeping lead-mode behavior exactly as-is
-//
-// NOTE (bugfix): Spec changed Q2/Q3/Q9 to store OPTION IDS, not option values.
-// The previous compute.ts version sums raw arrays (treating them as values), which makes Result 1 wrong.
-// This wizard now computes Result 1/2/3 using the spec as source-of-truth.
+/**
+ * Pinterest Potential Calculator — Wizard (v0.3 Locked)
+ *
+ * CLEAN CONTRACT (enforced):
+ * - Query params (canonical only):
+ *   - ?leadMode=hard_lock|soft_lock
+ *   - ?leadToken=...
+ * - Variant resolution:
+ *   - Server-owned. Parent passes `initialVariant`.
+ * - Answers contract:
+ *   - Step components must emit canonical spec IDs for:
+ *     - Q1 segment
+ *     - Q2 niche
+ *     - Q7 primary_goal
+ *   - Wizard verifies Q2/Q7 are valid for the selected segment; otherwise treated as missing.
+ *
+ * RESULTS CONTRACT (v1.2 — goal-keyed outcomes):
+ * - computeResults() returns ResultsBundle with:
+ *   - demand (shared):
+ *       - demand_base_sessions_est
+ *       - distribution_capacity_m
+ *       - conversion_readiness_m
+ *       - likely_pinterest_sessions_est
+ *   - traffic (shared):
+ *       - website_sessions_est (alias of demand.likely_pinterest_sessions_est)
+ *       - purchase_intent_sessions_est? (present when relevant, e.g. product_seller)
+ *   - segment_outcome (goal-driven for ALL segments):
+ *       - kind (segment)
+ *       - goal_key (${Q1}:${Q7})
+ *       - primary_goal (Q7 slug)
+ *       - goal_outcome (union; goal-specific Result 3)
+ *       - assumptions (goal-specific explainability)
+ *   - demographics: household_income_usd (+ notes)
+ *   - inferred: seasonality_index, competition_index, tags
+ *   - insight_line
+ * RUNTIME GUARDRAILS (kept from locked version):
+ * - Hydration gate to prevent SSR/client mismatch.
+ * - Auto-advance determinism:
+ *   - ignore undefined/no-op patches
+ *   - cancel pending timers on navigation
+ *   - sequence guard + step guard to prevent late/double advances
+ *   - refs to avoid stale closures
+ * - Q2 fallback: if Q2Niche fails to provide patch via onAutoAdvance (observed undefined),
+ *   wizard triggers autoAdvance({ niche: v }) on real onChange.
+ * - Segment-dependent invalidation: changing segment clears niche + primary_goal.
+ * - Repeat-click confirm: clicking the same selection again advances to next step.
+ */
 
-import { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import {
-    type Answers,
-    type Lead,
-    type Question,
-    QUESTIONS,
-    Q2 as SPEC_Q2,
-    Q3 as SPEC_Q3,
-    Q9 as SPEC_Q9,
-    LEAD,
-    validateEmail,
-    validateAnswers,
-} from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+
 import { computeResults, type ResultsBundle } from "@/lib/tools/pinterestPotential/compute";
-import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
-// Step components registry (Sprint 4 compliance)
-import StepQ1 from "./steps/StepQ1";
-import StepQ2 from "./steps/StepQ2";
-import StepQ3 from "./steps/StepQ3";
-import StepQ4 from "./steps/StepQ4";
-import StepQ5 from "./steps/StepQ5";
-import StepQ6 from "./steps/StepQ6";
-import StepQ7 from "./steps/StepQ7";
-import StepQ8 from "./steps/StepQ8";
-import StepQ9 from "./steps/StepQ9";
-import StepLead from "./steps/StepLead";
 import {
+    type Answers as SpecAnswers,
+    type Lead,
     type LeadMode,
-    normalizeLeadMode,
-} from "@/lib/tools/pinterestPotential/leadMode";
+    type NicheSlug,
+    type PrimaryGoal,
+    type Segment as SpecSegment,
+    validateAnswers,
+    validateLead,
+    getNicheOptions,
+    getPrimaryGoalOptions,
+    getQ3Prompt,
+    getQ6Prompt,
+} from "@/lib/tools/pinterestPotential/pinterestPotentialSpec";
+
+import { resolveLeadGatingContext, normalizeLeadMode } from "@/lib/tools/pinterestPotential/leadMode";
+import { LEAD_GATING_CONFIG } from "@/lib/tools/pinterestPotential/leadGatingConfig";
+import { resolveLeadFromToken } from "@/lib/tools/pinterestPotential/leadToken";
 import { PRIVACY_MICROCOPY } from "@/lib/tools/pinterestPotential/copy";
 import { trackLeadSubmit } from "@/lib/gtm";
+import type { PinterestPotentialVariant } from "@/lib/tools/pinterestPotentialConfig";
+import { buildResultsUiModel } from "@/lib/tools/pinterestPotential/resultsUiAdapter";
 
-// ResultsBundle is imported from the canonical compute engine (Sprint 1 source of truth)
+import { usePinterestPotentialDraft } from "./usePinterestPotentialDraft";
 
-type State = {
-    stepIndex: number; // 0..9
-    answers: Answers;
-    leadDraft: Partial<Lead>;
-    errors: Record<string, string>;
-    finalScore?: number; // kept for the existing "results gate" check
-    finalResults?: ResultsBundle; // Sprint 5
-};
+// V2 step components
+import Q1Segment from "./steps/Q1Segment";
+import Q2Niche from "./steps/Q2Niche";
+import Q3Volume from "./steps/Q3Volume";
+import Q4Visual from "./steps/Q4Visual";
+import Q5Site from "./steps/Q5Site";
+import Q6Offer from "./steps/Q6Offer";
+import Q7Goal from "./steps/Q7Goal";
+import Q8GrowthMode from "./steps/Q8GrowthMode";
 
-type Action =
-    | { type: "SET_STEP"; index: number }
-    | { type: "UPDATE_ANSWER"; questionId: string; value: any }
-    | { type: "UPDATE_LEAD"; field: keyof Lead; value: string }
-    | { type: "SET_ERRORS"; errors: Record<string, string> }
-    | { type: "SET_SCORE"; score: number }
-    | { type: "SET_RESULTS"; results: ResultsBundle }
-    | { type: "RESET_ERRORS" };
+import type {
+    AnswersV2,
+    GrowthMode,
+    OfferClarity,
+    SiteExperience,
+    VisualStrength,
+    VolumeBucket,
+} from "./steps/ppcV2Types";
 
-function reducer(state: State, action: Action): State {
-    switch (action.type) {
-        case "SET_STEP":
-            return { ...state, stepIndex: action.index };
-        case "UPDATE_ANSWER": {
-            const answers = {
-                ...state.answers,
-                [action.questionId]: action.value,
-            } as Answers;
-            return { ...state, answers };
-        }
-        case "UPDATE_LEAD": {
-            const leadDraft = { ...state.leadDraft, [action.field]: action.value };
-            return { ...state, leadDraft };
-        }
-        case "SET_ERRORS":
-            return { ...state, errors: action.errors };
-        case "RESET_ERRORS":
-            return { ...state, errors: {} };
-        case "SET_SCORE":
-            return { ...state, finalScore: action.score };
-        case "SET_RESULTS":
-            return {
-                ...state,
-                finalResults: action.results,
-                finalScore: action.results.monthlyAudience, // preserve old gate behavior
-            };
-        default:
-            return state;
+// Pure UI views
+import WelcomeView from "./views/WelcomeView";
+import ResultsView from "./views/ResultsView";
+import WizardView from "./views/WizardView";
+
+// -----------------------------
+// Helpers
+// -----------------------------
+function getCookieValue(name: string): string | null {
+    if (typeof document === "undefined") return null;
+    const parts = document.cookie.split(";").map((s) => s.trim());
+    for (const p of parts) {
+        if (p.startsWith(name + "=")) return decodeURIComponent(p.slice(name.length + 1));
     }
+    return null;
 }
 
-// Note: TOTAL_STEPS is derived dynamically from `steps.length` within the component.
+function formatRange(low: number, high: number): string {
+    return `${low.toLocaleString()}–${high.toLocaleString()}`;
+}
 
-function validateStepLocal(
-    stepIdx: number,
-    answers: Answers,
-    leadDraft: Partial<Lead>
-): Record<string, string> {
-    const q = QUESTIONS[stepIdx];
-    const errors: Record<string, string> = {};
-    if (!q) return errors;
+function segmentLabel(seg?: SpecSegment): string {
+    if (seg === "content_creator") return "Content Creator";
+    if (seg === "product_seller") return "Product Seller";
+    if (seg === "service_provider") return "Service Provider";
+    return "—";
+}
 
-    if (q.type === "radio") {
-        const v = (answers as any)[q.id];
-        if (q.required && (v === undefined || v === null)) {
-            errors[q.id] = "This question is required.";
-        }
-    } else if (q.type === "checkbox") {
-        const arr = (answers as any)[q.id] as any;
-        if (q.required && (!Array.isArray(arr) || arr.length === 0)) {
-            errors[q.id] = "Please select at least one option.";
-        }
-    } else if (q.type === "slider") {
-        const v = (answers as any)[q.id];
-        if (q.required && (v === undefined || v === null)) {
-            errors[q.id] = "This question is required.";
-        } else if (v !== undefined && (v < q.min || v > q.max)) {
-            errors[q.id] = `Value must be between ${q.min} and ${q.max}.`;
-        }
-    } else if (q.type === "lead") {
-        const name = leadDraft.name ?? "";
-        const email = leadDraft.email ?? "";
-        if (!name.trim()) errors["LEAD.name"] = "Name is required.";
-        if (!email || !validateEmail(email))
-            errors["LEAD.email"] = "A valid email is required.";
+function valueLabelFromOptions<T extends string>(opts: Array<{ id: T; label: string }>, v?: string): string {
+    if (!v) return "—";
+    return opts.find((o) => o.id === v)?.label ?? "—";
+}
+
+/**
+ * Step header copy.
+ * NOTE: Step 3 and Step 6 are segment-dependent and must use spec helper prompts.
+ */
+function getStepTitle(stepIndex: number, segment?: SpecSegment): string {
+    const titles: Record<number, string> = {
+        1: "Which best describes your business?",
+        2: "What’s your primary niche?",
+        3: segment ? getQ3Prompt(segment) : "Monthly output volume",
+        4: "How strong is your visual content library right now?",
+        5: "Which best describes your website right now?",
+        6: segment ? getQ6Prompt(segment) : "Do you have a clear offer + booking flow?",
+        7: "What’s your primary goal from Pinterest?",
+        8: "Would you like to use Pinterest ads?",
+    };
+    return titles[stepIndex] ?? "Pinterest Potential";
+}
+
+function getErrorKeyForStep(stepIndex: number, errors: Record<string, string>, resultsErrors: Record<string, string>) {
+    const keyByStep: Record<number, string[]> = {
+        1: ["Q1"],
+        2: ["Q2", "Q1"],
+        3: ["Q3"],
+        4: ["Q4"],
+        5: ["Q5"],
+        6: ["Q6"],
+        7: ["Q7", "Q1"],
+        8: ["Q8"],
+    };
+    const keys = keyByStep[stepIndex] ?? [];
+    return keys.find((k) => errors[k]) ?? keys.find((k) => resultsErrors[k]) ?? null;
+}
+
+function shallowEqualAnswers(a: AnswersV2, b: AnswersV2): boolean {
+    if (a === b) return true;
+    const aKeys = Object.keys(a) as Array<keyof AnswersV2>;
+    const bKeys = Object.keys(b) as Array<keyof AnswersV2>;
+    if (aKeys.length !== bKeys.length) return false;
+    for (const k of aKeys) {
+        if (a[k] !== b[k]) return false;
     }
-
-    return errors;
+    return true;
 }
 
-// Compute is centralized in lib/tools/pinterestPotential/compute.ts
-
-// ---- Recap helpers ----
-function formatSliderAnswer(qid: "Q7" | "Q8", v: number): string {
-    if (qid === "Q7") {
-        const label = v === 1 ? "Not seasonal" : v === 5 ? "Very seasonal" : "Moderately seasonal";
-        return `${v}/5 (${label})`;
+function patchIsNoop(base: AnswersV2, patch: Partial<AnswersV2>): boolean {
+    const keys = Object.keys(patch) as Array<keyof AnswersV2>;
+    for (const k of keys) {
+        if (base[k] !== patch[k]) return false;
     }
-    const label = v === 1 ? "Low competition" : v === 5 ? "High competition" : "Moderate competition";
-    return `${v}/5 (${label})`;
+    return true;
 }
 
-function getRadioLabel(q: Extract<Question, { type: "radio" }>, value: number | undefined): string {
-    if (value === undefined || value === null) return "—";
-    const opt = q.options.find((o) => o.value === value);
-    return opt?.label ?? String(value);
+function applySegmentInvalidation(base: AnswersV2, next: AnswersV2): AnswersV2 {
+    // Q2 (niche) + Q7 (primary_goal) depend on Q1 (segment).
+    if (base.segment && next.segment && base.segment !== next.segment) {
+        const updated: AnswersV2 = { ...next };
+        delete updated.niche;
+        delete updated.primary_goal;
+        return updated;
+    }
+    return next;
 }
 
-function getCheckboxLabels(q: Extract<Question, { type: "checkbox" }>, selectedIds: number[] | undefined): string {
-    const ids = Array.isArray(selectedIds) ? selectedIds : [];
-    if (ids.length === 0) return "—";
-    const labelById = new Map(q.options.map((o) => [o.id, o.label]));
-    return ids.map((id) => labelById.get(id) ?? String(id)).join(", ");
-}
-
+// -----------------------------
+// Component
+// -----------------------------
 export default function PinterestPotentialWizard({
-  leadMode = "gate_before_results",
-  initialLead,
-  onPhaseChange,
-  onStart,
-}: {
-  leadMode?: LeadMode;
-  initialLead?: Lead;
-  onPhaseChange?: (phase: "wizard" | "results") => void;
-  onStart?: () => void; // analytics: tool_start
+                                                     leadMode = LEAD_GATING_CONFIG.lead_gating.default_mode,
+                                                     initialLead,
+                                                     initialVariant = "welcome",
+                                                     onPhaseChangeAction,
+                                                     onStartAction,
+                                                 }: {
+    leadMode?: LeadMode;
+    initialLead?: Lead;
+    initialVariant?: PinterestPotentialVariant;
+
+    /**
+     * NOTE: Name ends with "Action" to satisfy Next's client-boundary serialization rule.
+     * If you need client-to-client callbacks, use events or keep the parent as a client boundary too.
+     */
+    onPhaseChangeAction?: (phase: "wizard" | "results") => void | Promise<void>;
+    onStartAction?: () => void | Promise<void>; // analytics: tool_start
 }) {
-    // Query-param seatbelt: allow runtime override even if upstream wiring is off.
     const searchParams = useSearchParams();
-    const qpLeadMode =
-        (searchParams as any)?.get?.("leadMode") ??
-        (searchParams as any)?.get?.("leadmode") ??
-        undefined;
 
-    const effectiveLeadMode: LeadMode = normalizeLeadMode(qpLeadMode) ?? leadMode;
+    const TOTAL = 8;
 
-    // Draft persistence (sessionStorage v1)
-    const { draft, updateDraft } = usePinterestPotentialDraft({
-        stepIndex: 0,
-        answers: {},
-        leadDraft: {},
+    // ✅ Hydration gate (prevents SSR/client branch mismatch on reload)
+    const [hydrated, setHydrated] = useState(false);
+    useEffect(() => setHydrated(true), []);
+
+    const INITIAL_DRAFT = useMemo(
+        () => ({
+            stepIndex: 1,
+            started: false,
+            answers: {} as AnswersV2,
+        }),
+        [],
+    );
+
+    // ---- Canonical query params (contract) ----
+    const qpLeadMode = searchParams.get("leadMode") ?? undefined;
+    const qpLeadToken = searchParams.get("leadToken") ?? undefined;
+
+    // Optional cookie override for lead mode (keep only canonical)
+    const cookieLeadMode = typeof document !== "undefined" ? getCookieValue("pp_lead_mode") : null;
+
+    // ---- Draft persistence ----
+    const { draft, setDraft, updateDraft, clearDraft } = usePinterestPotentialDraft(INITIAL_DRAFT);
+
+    // Local answers state (backed by draft)
+    const [answers, setAnswers] = useState<AnswersV2>(draft.answers ?? {});
+    const [stepIndex, setStepIndex] = useState<number>(() => {
+        const n = draft.stepIndex;
+        return n >= 1 && n <= TOTAL ? n : 1;
     });
 
-    const [state, dispatch] = useReducer(reducer, {
-        stepIndex: draft.stepIndex ?? 0,
-        answers: draft.answers ?? {},
-        leadDraft:
-            draft.leadDraft && Object.keys(draft.leadDraft).length > 0
-                ? draft.leadDraft
-                : initialLead ?? {},
-        errors: {},
-    } as State);
+    // Refs to avoid stale closure overwrites (auto-advance + timers)
+    const answersRef = useRef<AnswersV2>(answers);
+    const stepIndexRef = useRef<number>(stepIndex);
+    useEffect(() => {
+        answersRef.current = answers;
+    }, [answers]);
+    useEffect(() => {
+        stepIndexRef.current = stepIndex;
+    }, [stepIndex]);
 
-    // Local UI state for optional-after-results submit (results screen)
-    const [emailError, setEmailError] = useState<string | null>(null);
+    // ---- Auto-advance guardrails ----
+    const autoAdvanceSeqRef = useRef(0);
+    const autoAdvanceTimerRef = useRef<number | null>(null);
+    const lastAutoAdvanceSigRef = useRef<string>("");
+
+    function cancelPendingAutoAdvance() {
+        if (autoAdvanceTimerRef.current !== null) {
+            window.clearTimeout(autoAdvanceTimerRef.current);
+            autoAdvanceTimerRef.current = null;
+        }
+    }
+
+    // ---- Errors ----
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    // ---- Results state ----
+    const [results, setResults] = useState<ResultsBundle | null>(null);
+    const [resultsErrors, setResultsErrors] = useState<Record<string, string>>({});
+    const [optionalLeadEmailError, setOptionalLeadEmailError] = useState<string | null>(null);
     const [optionalLeadSubmitted, setOptionalLeadSubmitted] = useState(false);
 
-    // Inform parent that we are in the wizard phase on mount
+    // ---- Known lead resolution ----
+    const [knownLead, setKnownLead] = useState<Lead | undefined>(initialLead);
+    const [leadDraft, setLeadDraft] = useState<Partial<Lead>>(initialLead ?? {});
+    const [leadSubmitted, setLeadSubmitted] = useState<boolean>(!!initialLead?.email);
+
+    const isKnownLead = !!knownLead?.email;
+
+    // ---- Analytics: tool_start (once) ----
+    const hasStartedRef = useRef(false);
+    function fireToolStartOnce() {
+        if (hasStartedRef.current) return;
+        hasStartedRef.current = true;
+        try {
+            void onStartAction?.();
+        } catch {
+            // ignore
+        }
+    }
+
+    const variant = initialVariant;
+
+    // If variant is no_welcome, force started.
+    const started = variant === "no_welcome" ? true : draft.started;
+
+    // Persist step + answers back to draft
     useEffect(() => {
-        onPhaseChange?.("wizard");
+        updateDraft({
+            stepIndex,
+            started,
+            answers,
+        });
+    }, [answers, stepIndex, started, updateDraft]);
+
+    // Inform parent phase on mount (wizard)
+    useEffect(() => {
+        void onPhaseChangeAction?.("wizard");
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Keep storage draft in sync when relevant state changes
+    // Resolve known lead from token
     useEffect(() => {
-        updateDraft({
-            stepIndex: state.stepIndex,
-            answers: state.answers,
-            leadDraft: state.leadDraft,
+        let alive = true;
+        (async () => {
+            try {
+                const fromToken = await resolveLeadFromToken(qpLeadToken);
+                if (!alive) return;
+                if (fromToken?.email) {
+                    setKnownLead(fromToken);
+                    setLeadDraft((prev) => ({
+                        name: prev.name ?? fromToken.name,
+                        email: prev.email ?? fromToken.email,
+                    }));
+                    setLeadSubmitted(true);
+                }
+            } catch {
+                // ignore
+            }
+        })();
+
+        return () => {
+            alive = false;
+        };
+    }, [qpLeadToken]);
+
+    // Lead gating context
+    const gating = useMemo(() => {
+        const requested = normalizeLeadMode(qpLeadMode) ?? normalizeLeadMode(leadMode);
+        return resolveLeadGatingContext({
+            requested: qpLeadMode ?? (requested ? String(requested) : null),
+            cookieValue: cookieLeadMode,
+            isKnownLead,
         });
-    }, [state.stepIndex, state.answers, state.leadDraft, updateDraft]);
+    }, [qpLeadMode, cookieLeadMode, isKnownLead, leadMode]);
 
-    // Build dynamic step order based on lead mode
-    const includeLead = useMemo(() => {
-        if (effectiveLeadMode === "optional_after_results") return false;
-        if (effectiveLeadMode === "prefilled_or_skip") return false;
-        return true; // gate_before_results only
-    }, [effectiveLeadMode]);
+    const effectiveLeadMode: LeadMode = gating.lead_mode;
+    const leadState = gating.lead_state;
 
-    const steps = useMemo(() => {
-        const base = QUESTIONS.filter((q) => q.type !== "lead");
-        return includeLead ? [...base, LEAD] : base;
-    }, [includeLead]);
-
-    const TOTAL_STEPS = steps.length;
-    const current = steps[state.stepIndex];
-    const isLastStep = state.stepIndex === TOTAL_STEPS - 1;
-
-    const progressText = useMemo(
-        () => `Step ${state.stepIndex + 1} of ${TOTAL_STEPS}`,
-        [state.stepIndex, TOTAL_STEPS]
+    // ---- Derived wizard values ----
+    const isLastStep = stepIndex === TOTAL;
+    const progressText = useMemo(() => `Step ${stepIndex} of ${TOTAL}`, [stepIndex]);
+    const progressPct = useMemo(() => Math.round((stepIndex / TOTAL) * 100), [stepIndex]);
+    const currentErrorKey = useMemo(
+        () => getErrorKeyForStep(stepIndex, errors, resultsErrors),
+        [errors, resultsErrors, stepIndex],
     );
 
-    function validateAllNonLead(
-        answers: Answers,
-        leadDraft: Partial<Lead>
-    ): Record<string, string> {
-        const nonLeadErrors: Record<string, string> = {};
-        for (const q of QUESTIONS) {
-            if (q.type === "lead") continue;
-            const idx = QUESTIONS.indexOf(q);
-            const e = validateStepLocal(idx, answers, leadDraft);
-            Object.assign(nonLeadErrors, e);
-        }
-        return nonLeadErrors;
+    // Segment-aware headers (Q3 + Q6)
+    const header = useMemo(
+        () => getStepTitle(stepIndex, answers.segment as SpecSegment | undefined),
+        [stepIndex, answers.segment],
+    );
+
+    function resetErrors() {
+        setErrors({});
     }
 
-    function handlePrev() {
-        dispatch({ type: "RESET_ERRORS" });
-        if (state.stepIndex > 0) {
-            dispatch({ type: "SET_STEP", index: state.stepIndex - 1 });
+    function validateStep(si: number, a: AnswersV2): Record<string, string> {
+        const e: Record<string, string> = {};
+
+        if (si === 1) {
+            if (!a.segment) e["Q1"] = "This question is required.";
+        } else if (si === 2) {
+            const seg = a.segment;
+            const segOk = seg === "content_creator" || seg === "product_seller" || seg === "service_provider";
+
+            if (!segOk) e["Q1"] = "Select your business type first.";
+
+            if (!a.niche) {
+                e["Q2"] = "This question is required.";
+            } else if (segOk) {
+                const nicheOk = getNicheOptions(seg).some((o) => o.id === (a.niche as NicheSlug));
+                if (!nicheOk) e["Q2"] = "This question is required.";
+            }
+        } else if (si === 3) {
+            if (!a.volume_bucket) e["Q3"] = "This question is required.";
+        } else if (si === 4) {
+            if (!a.visual_strength) e["Q4"] = "This question is required.";
+        } else if (si === 5) {
+            if (!a.site_experience) e["Q5"] = "This question is required.";
+        } else if (si === 6) {
+            if (!a.offer_clarity) e["Q6"] = "This question is required.";
+        } else if (si === 7) {
+            const seg = a.segment;
+            const segOk = seg === "content_creator" || seg === "product_seller" || seg === "service_provider";
+
+            if (!segOk) e["Q1"] = "Select your business type first.";
+
+            if (!a.primary_goal) {
+                e["Q7"] = "This question is required.";
+            } else if (segOk) {
+                const goalOk = getPrimaryGoalOptions(seg).some((o) => o.id === (a.primary_goal as PrimaryGoal));
+                if (!goalOk) e["Q7"] = "This question is required.";
+            }
+        } else if (si === 8) {
+            if (!a.growth_mode) e["Q8"] = "This question is required.";
         }
+
+        return e;
     }
 
-    const hasStartedRef = useRef(false);
+    const canContinue = useMemo(() => {
+        const stepErrs = validateStep(stepIndex, answers);
+        return Object.keys(stepErrs).length === 0;
+    }, [stepIndex, answers]);
 
-    function handleNext() {
-        dispatch({ type: "RESET_ERRORS" });
+    /**
+     * Build spec answers while enforcing segment-dependent option validity for Q2/Q7.
+     * Invalid values become undefined so validateAnswers() fails loudly and routes user correctly.
+     */
+    function buildSpecAnswers(a: AnswersV2): SpecAnswers {
+        const seg = a.segment as SpecSegment | undefined;
 
-        const stepQuestion = current;
-        if (!stepQuestion) return;
+        const nicheOk = !!seg && !!a.niche && getNicheOptions(seg).some((o) => o.id === (a.niche as NicheSlug));
+        const goalOk =
+            !!seg &&
+            !!a.primary_goal &&
+            getPrimaryGoalOptions(seg).some((o) => o.id === (a.primary_goal as PrimaryGoal));
 
-        const errs: Record<string, string> = {};
-        if (stepQuestion.type === "radio") {
-            const v = (state.answers as any)[stepQuestion.id];
-            if (stepQuestion.required && (v === undefined || v === null)) {
-                errs[stepQuestion.id] = "This question is required.";
-            }
-        } else if (stepQuestion.type === "checkbox") {
-            const arr = (state.answers as any)[stepQuestion.id] as any;
-            if (stepQuestion.required && (!Array.isArray(arr) || arr.length === 0)) {
-                errs[stepQuestion.id] = "Please select at least one option.";
-            }
-        } else if (stepQuestion.type === "slider") {
-            const v = (state.answers as any)[stepQuestion.id];
-            if (stepQuestion.required && (v === undefined || v === null)) {
-                errs[stepQuestion.id] = "This question is required.";
-            } else if (v !== undefined && (v < stepQuestion.min || v > stepQuestion.max)) {
-                errs[stepQuestion.id] = `Value must be between ${stepQuestion.min} and ${stepQuestion.max}.`;
-            }
-        } else if (stepQuestion.type === "lead") {
-            const name = state.leadDraft.name ?? "";
-            const email = state.leadDraft.email ?? "";
-            if (!name.trim()) errs["LEAD.name"] = "Name is required.";
-            if (!email || !validateEmail(email)) errs["LEAD.email"] = "A valid email is required.";
-        }
+        return {
+            Q1: seg,
+            Q2: nicheOk ? (a.niche as NicheSlug) : undefined,
+            Q3: (a.volume_bucket as VolumeBucket | undefined) ?? undefined,
+            Q4: (a.visual_strength as VisualStrength | undefined) ?? undefined,
+            Q5: (a.site_experience as SiteExperience | undefined) ?? undefined,
+            Q6: (a.offer_clarity as OfferClarity | undefined) ?? undefined,
+            Q7: goalOk ? (a.primary_goal as PrimaryGoal) : undefined,
+            Q8: (a.growth_mode as GrowthMode | undefined) ?? undefined,
+        };
+    }
 
-        if (Object.keys(errs).length > 0) {
-            dispatch({ type: "SET_ERRORS", errors: errs });
-            return;
-        }
+    function computeAndShowResults() {
+        const specAnswers = buildSpecAnswers(answersRef.current);
 
-        // Fire tool_start once on first successful interaction
-        if (!hasStartedRef.current) {
-            hasStartedRef.current = true;
-            try {
-                onStart?.();
-            } catch {}
-        }
+        const v = validateAnswers(specAnswers);
+        if (!v.ok) {
+            setResultsErrors(v.errors);
+            setErrors(v.errors);
 
-        // If this was a successful lead capture step, emit lead_submit
-        if (stepQuestion.type === "lead") {
-            try {
-                const location = typeof window !== "undefined" ? window.location.pathname : "";
-                trackLeadSubmit({
-                    location,
-                    tool_name: "pinterest_potential",
-                    button_label: isLastStep ? "Calculate" : "Continue",
-                });
-            } catch {}
-        }
-
-        if (isLastStep) {
-            // Dev-only invariant: ensure checkbox answers are canonical (IDs only)
-            if (process.env.NODE_ENV !== "production") {
-                const allowedQ2 = new Set(SPEC_Q2.options.map((o) => o.id));
-                const allowedQ3 = new Set(SPEC_Q3.options.map((o) => o.id));
-                const allowedQ9 = new Set(SPEC_Q9.options.map((o) => o.id));
-                const isIdsArray = (arr: any, allowed: Set<number>) =>
-                    Array.isArray(arr) && arr.every((x) => Number.isInteger(x) && allowed.has(x));
-
-                const a = state.answers as Answers;
-                const badQ2 = a.Q2 !== undefined && !isIdsArray(a.Q2, allowedQ2);
-                const badQ3 = a.Q3 !== undefined && !isIdsArray(a.Q3, allowedQ3);
-                const badQ9 = a.Q9 !== undefined && !isIdsArray(a.Q9, allowedQ9);
-                if (badQ2 || badQ3 || badQ9) {
-                    // Make violations loud during development
-                    // eslint-disable-next-line no-console
-                    console.error("PinterestPotential: Non-canonical draft detected (checkboxes must be IDs)", {
-                        Q2: a.Q2,
-                        Q3: a.Q3,
-                        Q9: a.Q9,
-                    });
-                    throw new Error("PinterestPotential invariant: checkbox answers must be option IDs in development");
-                }
-            }
-
-            if (effectiveLeadMode === "gate_before_results") {
-                const lead: Lead | undefined =
-                    state.leadDraft?.name && state.leadDraft?.email
-                        ? { name: state.leadDraft.name!, email: state.leadDraft.email! }
-                        : undefined;
-
-                const validation = validateAnswers(state.answers, lead);
-                if (!validation.ok) {
-                    dispatch({ type: "SET_ERRORS", errors: validation.errors });
-                    return;
-                }
-
-                const results = computeResults(state.answers as Required<Answers>);
-                dispatch({ type: "SET_RESULTS", results });
-                onPhaseChange?.("results");
-            } else {
-                const nonLeadErrors = validateAllNonLead(state.answers, state.leadDraft);
-                if (Object.keys(nonLeadErrors).length > 0) {
-                    dispatch({ type: "SET_ERRORS", errors: nonLeadErrors });
-                    return;
-                }
-
-                const results = computeResults(state.answers as Required<Answers>);
-                dispatch({ type: "SET_RESULTS", results });
-                onPhaseChange?.("results");
+            const order: Array<keyof SpecAnswers> = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8"];
+            const first = order.find((k) => v.errors[String(k)]);
+            if (first) {
+                const idx = Number(String(first).slice(1));
+                if (idx >= 1 && idx <= TOTAL) setStepIndex(idx);
             }
             return;
         }
 
-        dispatch({ type: "SET_STEP", index: state.stepIndex + 1 });
+        const computed = computeResults(specAnswers);
+        if (!computed.ok) {
+            setResultsErrors(computed.errors);
+            setErrors(computed.errors);
+
+            const order = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8"];
+            const first = order.find((k) => computed.errors[k]);
+            if (first) {
+                const idx = Number(first.slice(1));
+                if (idx >= 1 && idx <= TOTAL) setStepIndex(idx);
+            }
+            return;
+        }
+
+        setResultsErrors({});
+        setResults(computed.results);
+        void onPhaseChangeAction?.("results");
     }
 
-    // ---- Sprint 4: step registry rendering ----
-    // StepQ* are the only render path; shared form components are consumed by Step* wrappers.
-    const STEP_COMPONENTS: Record<string, React.ComponentType<any>> = {
-        Q1: StepQ1,
-        Q2: StepQ2,
-        Q3: StepQ3,
-        Q4: StepQ4,
-        Q5: StepQ5,
-        Q6: StepQ6,
-        Q7: StepQ7,
-        Q8: StepQ8,
-        Q9: StepQ9,
-        LEAD: StepLead,
-    };
-
-    function renderQuestion() {
-        if (!current) return null;
-
-        const StepComponent = STEP_COMPONENTS[current.id];
-        if (!StepComponent) {
-            throw new Error(`No Step component registered for ${current.id}`);
-        }
-
-        const error = state.errors[current.id];
-
-        if (current.type === "radio") {
-            return (
-                <StepComponent
-                    value={(state.answers as any)[current.id] as number | undefined}
-                    onChange={(v: number) =>
-                        dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: v })
-                    }
-                    error={error}
-                />
-            );
-        }
-
-        if (current.type === "checkbox") {
-            return (
-                <StepComponent
-                    values={((state.answers as any)[current.id] as number[]) ?? []}
-                    onChange={(vals: number[]) =>
-                        dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: vals })
-                    }
-                    error={error}
-                />
-            );
-        }
-
-        if (current.type === "slider") {
-            const v = (state.answers as any)[current.id] ?? current.default ?? current.min;
-            return (
-                <StepComponent
-                    value={v}
-                    onChange={(nv: number) =>
-                        dispatch({ type: "UPDATE_ANSWER", questionId: current.id, value: nv })
-                    }
-                    error={error}
-                />
-            );
-        }
-
-        if (current.type === "lead") {
-            const leadErrors = {
-                name: state.errors["LEAD.name"],
-                email: state.errors["LEAD.email"],
-            } as { name?: string; email?: string };
-            return (
-                <StepComponent
-                    label={current.label}
-                    leadDraft={state.leadDraft}
-                    onChange={(patch: Partial<Lead>) => {
-                        if (patch.name !== undefined) {
-                            dispatch({ type: "UPDATE_LEAD", field: "name", value: patch.name });
-                        }
-                        if (patch.email !== undefined) {
-                            dispatch({ type: "UPDATE_LEAD", field: "email", value: patch.email });
-                        }
-                    }}
-                    errors={leadErrors}
-                />
-            );
-        }
-
-        // TypeScript note: by the time we reach here, `current` was exhaustively
-        // narrowed. Avoid referencing `current.type` to satisfy TS's `never`.
-        throw new Error("Unsupported question type");
-    }
-
-    if (state.finalScore !== undefined) {
-        const r = state.finalResults;
-
-        const recapItems = QUESTIONS.filter((q) => q.type !== "lead").map((q) => {
-            const id = q.id as keyof Answers;
-            if (q.type === "radio") {
-                return { label: q.label, value: getRadioLabel(q, state.answers[id] as number | undefined) };
-            }
-            if (q.type === "checkbox") {
-                return { label: q.label, value: getCheckboxLabels(q, state.answers[id] as number[] | undefined) };
-            }
-            // slider
-            const v = state.answers[id] as number | undefined;
-            const shown = typeof v === "number" ? formatSliderAnswer(q.id as "Q7" | "Q8", v) : "—";
-            return { label: q.label, value: shown };
+    function setAnswerField<K extends keyof AnswersV2>(key: K, value: AnswersV2[K]) {
+        setAnswers((prev) => {
+            if (prev[key] === value) return prev;
+            return { ...prev, [key]: value };
         });
+    }
 
-        // Show optional email capture at the top of results (optional_after_results, no email yet)
-        const showOptionalEmail =
-            effectiveLeadMode === "optional_after_results" && !state.leadDraft?.email;
+    function goNext(nextAnswers?: AnswersV2) {
+        cancelPendingAutoAdvance();
+        resetErrors();
 
-        const OptionalEmailCapture = showOptionalEmail ? (
-            <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                <div className="sm:grid sm:grid-cols-3 sm:gap-4">
-                    <div>
-                        <h3 className="font-heading text-lg text-[var(--foreground)]">Want a copy of your results?</h3>
-                        <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-                            Leave your email and we’ll send this score.
-                        </p>
-                        <p className="mt-2 text-xs text-[var(--foreground-muted)]">{PRIVACY_MICROCOPY}</p>
-                    </div>
-                    <div className="mt-3 sm:mt-0 sm:col-span-2">
-                        <div className="grid gap-3 sm:grid-cols-2">
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="Your name (optional)"
-                                    value={state.leadDraft.name ?? ""}
-                                    onChange={(e) =>
-                                        dispatch({ type: "UPDATE_LEAD", field: "name", value: e.target.value })
-                                    }
-                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    type="email"
-                                    placeholder="you@example.com"
-                                    value={state.leadDraft.email ?? ""}
-                                    onChange={(e) =>
-                                        dispatch({ type: "UPDATE_LEAD", field: "email", value: e.target.value })
-                                    }
-                                    className="w-full rounded-md border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-[var(--foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                                />
-                                {emailError ? (
-                                    <div className="mt-1 text-xs text-red-500">{emailError}</div>
-                                ) : null}
-                            </div>
-                        </div>
-                        <div className="mt-3">
-                            <button
-                                type="button"
-                                disabled={optionalLeadSubmitted}
-                                onClick={() => {
-                                    const email = state.leadDraft.email ?? "";
-                                    if (!email || !validateEmail(email)) {
-                                        setEmailError("Please enter a valid email.");
-                                        return;
-                                    }
-                                    setEmailError(null);
-                                    try {
-                                        trackLeadSubmit({
-                                            location:
-                                                typeof window !== "undefined"
-                                                    ? window.location.pathname
-                                                    : "",
-                                            tool_name: "pinterest_potential",
-                                            button_label: "Email me my results",
-                                        });
-                                        setOptionalLeadSubmitted(true);
-                                    } catch {
-                                        // swallow analytics errors
-                                    }
-                                    // TODO: Wire actual email send to backend when available.
-                                }}
-                                className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
-                            >
-                                {optionalLeadSubmitted ? "Sent" : "Email me my results"}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        ) : null;
+        const currentStep = stepIndexRef.current;
+        const baseAnswers = answersRef.current;
+        const a = nextAnswers ?? baseAnswers;
 
+        const stepErrs = validateStep(currentStep, a);
+        if (Object.keys(stepErrs).length > 0) {
+            setErrors(stepErrs);
+            return;
+        }
+
+        // Only commit if there is an actual change (prevents redundant overwrites)
+        if (nextAnswers && !shallowEqualAnswers(baseAnswers, nextAnswers)) {
+            setAnswers(nextAnswers);
+        }
+
+        fireToolStartOnce();
+
+        if (currentStep === TOTAL) {
+            computeAndShowResults();
+            return;
+        }
+
+        setStepIndex((s) => Math.min(TOTAL, s + 1));
+    }
+
+    function autoAdvance(patch?: Partial<AnswersV2>) {
+        // Some components may call onAutoAdvance() with no args: ignore.
+        if (!patch) return;
+
+        const currentStepAtCall = stepIndexRef.current;
+        const base = answersRef.current;
+
+        // No-op patch? ignore.
+        if (patchIsNoop(base, patch)) return;
+
+        let next = { ...base, ...patch } as AnswersV2;
+
+        // Segment change invalidates segment-dependent answers.
+        if (Object.prototype.hasOwnProperty.call(patch, "segment")) {
+            next = applySegmentInvalidation(base, next);
+        }
+
+        // Dedupe identical emissions for same step+answers payload.
+        const sig = `${currentStepAtCall}:${JSON.stringify(next)}`;
+        if (lastAutoAdvanceSigRef.current === sig) return;
+        lastAutoAdvanceSigRef.current = sig;
+
+        // Commit answers immediately so selection persists.
+        setAnswers(next);
+
+        // Cancel pending and schedule guarded advance.
+        cancelPendingAutoAdvance();
+        const seq = ++autoAdvanceSeqRef.current;
+
+        autoAdvanceTimerRef.current = window.setTimeout(() => {
+            if (seq !== autoAdvanceSeqRef.current) return; // newer auto-advance happened
+            if (stepIndexRef.current !== currentStepAtCall) return; // user navigated
+            goNext(next);
+        }, 140);
+    }
+
+    function goPrev() {
+        cancelPendingAutoAdvance();
+        resetErrors();
+
+        if (!started && variant === "welcome") return;
+
+        // Allow going back to welcome if welcome variant and stepIndex is 1
+        if (variant === "welcome" && started && stepIndex === 1) {
+            updateDraft({ started: false });
+            return;
+        }
+
+        if (stepIndex > 1) setStepIndex((s) => s - 1);
+    }
+
+    // ✅ Hydration gate render
+    if (!hydrated) {
         return (
-            <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-                <div className="mb-4 text-sm text-[var(--foreground-muted)]">Pinterest Potential — Results</div>
-
-                {OptionalEmailCapture}
-
-                {r ? (
-                    <div className="grid gap-3 sm:grid-cols-3">
-                        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                            <div className="text-xs text-[var(--foreground-muted)]">Monthly Pinterest Audience</div>
-                            <div className="mt-1 font-heading text-2xl">{r.monthlyAudience.toLocaleString()}</div>
-                        </div>
-
-                        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                            <div className="text-xs text-[var(--foreground-muted)]">Avg Household Income</div>
-                            <div className="mt-1 font-heading text-2xl">${r.avgHouseholdIncome.toLocaleString()}</div>
-                        </div>
-
-                        <div className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
-                            <div className="text-xs text-[var(--foreground-muted)]">Avg Cart Size</div>
-                            <div className="mt-1 font-heading text-2xl">${r.avgCartSize.toLocaleString()}</div>
-                        </div>
-                    </div>
-                ) : (
-                    <div className="font-heading text-3xl">Score: {state.finalScore}</div>
-                )}
-
-                {/* Recap */}
-                <div className="mt-6 border-t border-[var(--border)] pt-4">
-                    <div className="mb-2 font-heading text-lg text-[var(--foreground)]">Your answers</div>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                        {recapItems.map((it, idx) => (
-                            <div
-                                key={`${idx}-${it.label}`}
-                                className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4"
-                            >
-                                <div className="text-xs text-[var(--foreground-muted)]">{it.label}</div>
-                                <div className="mt-1 text-sm text-[var(--foreground)]">{it.value}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="mt-6 text-sm text-[var(--foreground-muted)]">
-                    You can refresh the page; your draft is saved in this session.
-                </div>
-            </div>
+            <WizardView
+                progressText="Loading…"
+                progressPct={0}
+                header="Pinterest Potential Calculator"
+                stepContent={<div className="text-sm text-[var(--foreground-muted)]">Loading your saved session…</div>}
+                errorMessage={null}
+                backDisabled={true}
+                continueDisabled={true}
+                continueLabel="Continue"
+                onBack={() => {}}
+                onContinue={() => {}}
+            />
         );
     }
 
+    // -----------------------------
+    // Welcome view
+    // -----------------------------
+    if (!started && variant === "welcome") {
+        return (
+            <WelcomeView
+                onStart={() => {
+                    cancelPendingAutoAdvance();
+                    updateDraft({ started: true, stepIndex: 1 });
+                    fireToolStartOnce();
+                }}
+                onReset={() => {
+                    cancelPendingAutoAdvance();
+                    lastAutoAdvanceSigRef.current = "";
+                    autoAdvanceSeqRef.current += 1;
+
+                    clearDraft();
+                    setDraft(INITIAL_DRAFT);
+
+                    setAnswers({});
+                    setStepIndex(1);
+                    setErrors({});
+                    setResultsErrors({});
+                    setResults(null);
+                    setOptionalLeadSubmitted(false);
+                    setOptionalLeadEmailError(null);
+                }}
+            />
+        );
+    }
+
+    // -----------------------------
+    // Results view
+    // -----------------------------
+    if (results) {
+        // ---- Compile-time contract asserts (prevents silent drift) ----
+        // If compute.ts changes these keys, this file should fail to typecheck.
+        const _demandKeys = {
+            demand_base_sessions_est: true,
+            distribution_capacity_m: true,
+            conversion_readiness_m: true,
+            likely_pinterest_sessions_est: true,
+        } satisfies Record<keyof ResultsBundle["demand"], true>;
+        void _demandKeys;
+
+        const unlocked =
+            leadState === "known" ||
+            effectiveLeadMode === "soft_lock" ||
+            (effectiveLeadMode === "hard_lock" && (leadSubmitted || isKnownLead));
+
+        const showHardLockGate = effectiveLeadMode === "hard_lock" && leadState === "new" && !unlocked;
+        const showSoftLockGate = effectiveLeadMode === "soft_lock" && leadState === "new";
+
+        const seg = (answers.segment as SpecSegment | undefined) ?? undefined;
+        const nicheOpts = seg ? getNicheOptions(seg) : [];
+        const goalOpts = seg ? getPrimaryGoalOptions(seg) : [];
+
+        const recap = [
+            { label: "Business type", value: segmentLabel(seg) },
+            { label: "Niche", value: valueLabelFromOptions(nicheOpts, answers.niche) },
+            { label: "Monthly volume", value: answers.volume_bucket ?? "—" },
+            { label: "Visual library", value: answers.visual_strength ? answers.visual_strength.replace(/_/g, " ") : "—" },
+            { label: "Website experience", value: answers.site_experience ? answers.site_experience.toUpperCase() : "—" },
+            { label: "Offer clarity", value: answers.offer_clarity ? answers.offer_clarity.replace(/_/g, " ") : "—" },
+            { label: "Primary goal", value: valueLabelFromOptions(goalOpts, answers.primary_goal) },
+            { label: "Ads plan", value: answers.growth_mode ? answers.growth_mode.replace(/_/g, " ") : "—" },
+        ];
+
+        const niche = answers.niche as NicheSlug | undefined;
+        if (!seg || !niche) {
+            throw new Error("Results require a resolved segment and niche.");
+        }
+
+        const uiModel = buildResultsUiModel({
+            segment: seg,
+            niche,
+            results,
+        });
+        const scenario = uiModel.scenarios[0];
+        if (!scenario || scenario.cards.length < 3) {
+            throw new Error("Results UI model must provide at least three cards.");
+        }
+
+        const [result1Card, result2Card, result3Card] = scenario.cards;
+        const demandBaseSessionsRangeLabel = result1Card.value;
+        const step2Label = result2Card.title;
+        const step2ValueLabel = result2Card.value;
+        const likelySessionsRangeLabel = formatRange(
+            results.traffic.website_sessions_est.low,
+            results.traffic.website_sessions_est.high,
+        );
+        const distributionCapacityLabel = `${results.demand.distribution_capacity_m.toFixed(2)}×`;
+        const primaryOutcomeLabel = result3Card.title;
+        const primaryOutcomeRangeLabel = result3Card.value;
+        const purchaseIntentRangeLabel = results.traffic.purchase_intent_sessions_est
+            ? formatRange(
+                  results.traffic.purchase_intent_sessions_est.low,
+                  results.traffic.purchase_intent_sessions_est.high,
+              )
+            : undefined;
+        const incomeRangeLabel = formatRange(
+            results.demographics.household_income_usd.low,
+            results.demographics.household_income_usd.high,
+        );
+        return (
+            <ResultsView
+                results={results}
+                demandBaseSessionsRangeLabel={demandBaseSessionsRangeLabel}
+                step2Label={step2Label}
+                step2ValueLabel={step2ValueLabel}
+                likelySessionsRangeLabel={likelySessionsRangeLabel}
+                distributionCapacityLabel={distributionCapacityLabel}
+                primaryOutcomeLabel={primaryOutcomeLabel}
+                primaryOutcomeRangeLabel={primaryOutcomeRangeLabel}
+                purchaseIntentRangeLabel={purchaseIntentRangeLabel}
+                incomeRangeLabel={incomeRangeLabel}
+                insightLine={results.insight_line ?? null}
+                showHardLockGate={showHardLockGate}
+                showSoftLockGate={showSoftLockGate}
+                privacyMicrocopy={PRIVACY_MICROCOPY}
+                leadName={leadDraft.name ?? ""}
+                leadEmail={leadDraft.email ?? ""}
+                requireName={!!LEAD_GATING_CONFIG.lead_gating.capture_fields.name.required}
+                errors={errors}
+                optionalLeadEmailError={optionalLeadEmailError}
+                optionalLeadSubmitted={optionalLeadSubmitted}
+                onLeadNameChange={(next) => setLeadDraft((p) => ({ ...p, name: next }))}
+                onLeadEmailChange={(next) => setLeadDraft((p) => ({ ...p, email: next }))}
+                onUnlock={() => {
+                    resetErrors();
+                    const lead: Lead = {
+                        email: (leadDraft.email ?? "").trim(),
+                        name: leadDraft.name?.trim() || undefined,
+                    };
+
+                    const v = validateLead(lead);
+                    if (!v.ok) {
+                        setErrors(v.errors);
+                        return;
+                    }
+
+                    try {
+                        trackLeadSubmit({
+                            location: typeof window !== "undefined" ? window.location.pathname : "",
+                            tool_name: "pinterest_potential",
+                            button_label: "Unlock results",
+                        });
+                    } catch {
+                        // ignore
+                    }
+
+                    setLeadSubmitted(true);
+                }}
+                onEmailResults={() => {
+                    const email = (leadDraft.email ?? "").trim();
+                    if (!email) {
+                        setOptionalLeadEmailError("Please enter a valid email.");
+                        return;
+                    }
+
+                    const v = validateLead({ email, name: leadDraft.name?.trim() || undefined });
+                    if (!v.ok) {
+                        setOptionalLeadEmailError("Please enter a valid email.");
+                        return;
+                    }
+
+                    setOptionalLeadEmailError(null);
+
+                    try {
+                        trackLeadSubmit({
+                            location: typeof window !== "undefined" ? window.location.pathname : "",
+                            tool_name: "pinterest_potential",
+                            button_label: "Email me my results",
+                        });
+                    } catch {
+                        // ignore
+                    }
+
+                    setOptionalLeadSubmitted(true);
+                }}
+                recap={recap}
+                onStartOver={() => {
+                    cancelPendingAutoAdvance();
+                    lastAutoAdvanceSigRef.current = "";
+                    autoAdvanceSeqRef.current += 1;
+
+                    clearDraft();
+                    setDraft(INITIAL_DRAFT);
+
+                    setAnswers({});
+                    setStepIndex(1);
+                    setResults(null);
+                    setErrors({});
+                    setResultsErrors({});
+                    setOptionalLeadSubmitted(false);
+                    setOptionalLeadEmailError(null);
+                    void onPhaseChangeAction?.("wizard");
+                }}
+                onEditAnswers={() => {
+                    cancelPendingAutoAdvance();
+                    setResults(null);
+                    setStepIndex(8);
+                    void onPhaseChangeAction?.("wizard");
+                }}
+            />
+        );
+    }
+
+    // -----------------------------
+    // Wizard view (Q1–Q8)
+    // -----------------------------
+    const stepContent = (
+        <>
+            {stepIndex === 1 ? (
+                <Q1Segment
+                    value={answers.segment}
+                    onChangeAction={(v) => {
+                        const prevSeg = answersRef.current.segment;
+
+                        // Repeat click = explicit confirm → advance
+                        if (prevSeg === v && v) {
+                            setErrors((prev) => {
+                                if (!prev["Q1"]) return prev;
+                                const n = { ...prev };
+                                delete n["Q1"];
+                                return n;
+                            });
+                            goNext(answersRef.current);
+                            return;
+                        }
+
+                        // Normal change + invalidation
+                        setAnswers((p) => {
+                            if (p.segment === v) return p;
+                            const next: AnswersV2 = { ...p, segment: v };
+                            return applySegmentInvalidation(p, next);
+                        });
+
+                        // Clear Q1; if segment changed, Q2/Q7 are now invalid, clear their errors too.
+                        setErrors((prev) => {
+                            const n = { ...prev };
+                            delete n["Q1"];
+                            if (prevSeg && prevSeg !== v) {
+                                delete n["Q2"];
+                                delete n["Q7"];
+                            }
+                            return n;
+                        });
+                    }}
+                    onAutoAdvanceAction={(seg) => autoAdvance({ segment: seg })}
+                />
+            ) : null}
+
+            {stepIndex === 2 ? (
+                answers.segment ? (
+                    <Q2Niche
+                        segment={answers.segment}
+                        value={answers.niche}
+                        onChange={(v) => {
+                            const prev = answersRef.current.niche;
+
+                            // Repeat click confirm
+                            if (prev === v && v) {
+                                setErrors((prevErrs) => {
+                                    if (!prevErrs["Q2"]) return prevErrs;
+                                    const n = { ...prevErrs };
+                                    delete n["Q2"];
+                                    return n;
+                                });
+                                goNext(answersRef.current);
+                                return;
+                            }
+
+                            setAnswerField("niche", v);
+
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q2"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q2"];
+                                return n;
+                            });
+
+                            // Deterministic fallback: Q2Niche has been observed calling onAutoAdvance(undefined).
+                            autoAdvance({ niche: v });
+                        }}
+                        onAutoAdvance={autoAdvance}
+                    />
+                ) : (
+                    <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                )
+            ) : null}
+
+            {stepIndex === 3 ? (
+                answers.segment ? (
+                    <Q3Volume
+                        segment={answers.segment}
+                        value={answers.volume_bucket}
+                        onChange={(v) => {
+                            const prev = answersRef.current.volume_bucket;
+
+                            // Repeat click confirm
+                            if (prev === v && v) {
+                                setErrors((prevErrs) => {
+                                    if (!prevErrs["Q3"]) return prevErrs;
+                                    const n = { ...prevErrs };
+                                    delete n["Q3"];
+                                    return n;
+                                });
+                                goNext(answersRef.current);
+                                return;
+                            }
+
+                            setAnswerField("volume_bucket", v);
+
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q3"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q3"];
+                                return n;
+                            });
+
+                            // Deterministic fallback if component doesn't emit patch
+                            autoAdvance({ volume_bucket: v });
+                        }}
+                        onAutoAdvance={autoAdvance}
+                    />
+                ) : (
+                    <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                )
+            ) : null}
+
+            {stepIndex === 4 ? (
+                <Q4Visual
+                    value={answers.visual_strength}
+                    onChange={(v) => {
+                        const prev = answersRef.current.visual_strength;
+
+                        // Repeat click confirm
+                        if (prev === v && v) {
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q4"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q4"];
+                                return n;
+                            });
+                            goNext(answersRef.current);
+                            return;
+                        }
+
+                        setAnswerField("visual_strength", v);
+
+                        setErrors((prevErrs) => {
+                            if (!prevErrs["Q4"]) return prevErrs;
+                            const n = { ...prevErrs };
+                            delete n["Q4"];
+                            return n;
+                        });
+
+                        // Deterministic fallback if component doesn't emit patch
+                        autoAdvance({ visual_strength: v });
+                    }}
+                    onAutoAdvance={autoAdvance}
+                />
+            ) : null}
+
+            {stepIndex === 5 ? (
+                <Q5Site
+                    value={answers.site_experience}
+                    onChange={(v) => {
+                        const prev = answersRef.current.site_experience;
+
+                        if (prev === v && v) {
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q5"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q5"];
+                                return n;
+                            });
+                            goNext(answersRef.current);
+                            return;
+                        }
+
+                        setAnswerField("site_experience", v);
+                        setErrors((prevErrs) => {
+                            if (!prevErrs["Q5"]) return prevErrs;
+                            const n = { ...prevErrs };
+                            delete n["Q5"];
+                            return n;
+                        });
+                    }}
+                    onAutoAdvance={autoAdvance}
+                />
+            ) : null}
+
+            {stepIndex === 6 ? (
+                answers.segment ? (
+                    <Q6Offer
+                        segment={answers.segment}
+                        value={answers.offer_clarity}
+                        onChange={(v) => {
+                            const prev = answersRef.current.offer_clarity;
+
+                            if (prev === v && v) {
+                                setErrors((prevErrs) => {
+                                    if (!prevErrs["Q6"]) return prevErrs;
+                                    const n = { ...prevErrs };
+                                    delete n["Q6"];
+                                    return n;
+                                });
+                                goNext(answersRef.current);
+                                return;
+                            }
+
+                            setAnswerField("offer_clarity", v);
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q6"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q6"];
+                                return n;
+                            });
+                        }}
+                        onAutoAdvance={autoAdvance}
+                    />
+                ) : (
+                    <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                )
+            ) : null}
+
+            {stepIndex === 7 ? (
+                answers.segment ? (
+                    <Q7Goal
+                        segment={answers.segment}
+                        value={answers.primary_goal}
+                        onChange={(v) => {
+                            const prev = answersRef.current.primary_goal;
+
+                            if (prev === v && v) {
+                                setErrors((prevErrs) => {
+                                    if (!prevErrs["Q7"]) return prevErrs;
+                                    const n = { ...prevErrs };
+                                    delete n["Q7"];
+                                    return n;
+                                });
+                                goNext(answersRef.current);
+                                return;
+                            }
+
+                            setAnswerField("primary_goal", v);
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q7"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q7"];
+                                return n;
+                            });
+                        }}
+                        onAutoAdvance={autoAdvance}
+                    />
+                ) : (
+                    <div className="text-sm text-[var(--foreground-muted)]">Select your business type first.</div>
+                )
+            ) : null}
+
+            {stepIndex === 8 ? (
+                <Q8GrowthMode
+                    value={answers.growth_mode}
+                    onChange={(v) => {
+                        const prev = answersRef.current.growth_mode;
+
+                        if (prev === v && v) {
+                            setErrors((prevErrs) => {
+                                if (!prevErrs["Q8"]) return prevErrs;
+                                const n = { ...prevErrs };
+                                delete n["Q8"];
+                                return n;
+                            });
+                            goNext(answersRef.current);
+                            return;
+                        }
+
+                        setAnswerField("growth_mode", v);
+                        setErrors((prevErrs) => {
+                            if (!prevErrs["Q8"]) return prevErrs;
+                            const n = { ...prevErrs };
+                            delete n["Q8"];
+                            return n;
+                        });
+                    }}
+                    onAutoAdvance={autoAdvance}
+                />
+            ) : null}
+        </>
+    );
+
+    const errorMessage = currentErrorKey ? errors[currentErrorKey] ?? resultsErrors[currentErrorKey] : null;
+
+    const backDisabled = variant === "welcome" ? (!started ? true : stepIndex === 1) : stepIndex === 1;
+    const continueLabel = isLastStep ? "Calculate" : "Continue";
+
     return (
-        <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-            {/* Progress */}
-            <div className="mb-4 flex items-center justify-between text-sm">
-                <div className="text-[var(--foreground-muted)]">{progressText}</div>
-            </div>
-
-            {/* Question */}
-            {current && (
-                <div>
-                    <h2 className="font-heading text-xl text-[var(--foreground)]">{current.label}</h2>
-                    <div className="mt-4">{renderQuestion()}</div>
-                </div>
-            )}
-
-            {/* Nav */}
-            <div className="mt-6 flex items-center justify-between">
-                <button
-                    type="button"
-                    onClick={handlePrev}
-                    className="rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                    disabled={state.stepIndex === 0}
-                >
-                    Back
-                </button>
-
-                <button
-                    type="button"
-                    onClick={handleNext}
-                    className="rounded-md bg-[var(--brand-raspberry)] px-4 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                >
-                    {isLastStep ? "Calculate" : "Continue"}
-                </button>
-            </div>
-        </div>
+        <WizardView
+            progressText={progressText}
+            progressPct={progressPct}
+            header={header}
+            stepContent={stepContent}
+            errorMessage={errorMessage}
+            backDisabled={backDisabled}
+            continueDisabled={!canContinue}
+            continueLabel={continueLabel}
+            onBack={goPrev}
+            onContinue={() => goNext()}
+        />
     );
 }

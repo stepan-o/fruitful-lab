@@ -1,13 +1,11 @@
 // frontend/app/api/auth/login/route.ts
 import { NextRequest, NextResponse } from "next/server";
-
-const API_BASE_URL =
-    process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+import { getApiOrigin } from "@/lib/auth";
 
 const COOKIE_NAME = "fruitful_access_token";
 
 // Canonical landing routes (server authority)
-const DEFAULT_ADMIN_LANDING = "/admin/dashboard";
+const DEFAULT_ADMIN_LANDING = "/admin/analytics";
 const DEFAULT_CONTRACTOR_LANDING = "/contractor";
 const DEFAULT_GENERAL_LANDING = "/tools";
 
@@ -24,26 +22,33 @@ function isSafeNext(next: unknown): next is string {
     );
 }
 
+function normalizePath(nextPathOrUrl: string): string {
+    // dummy base so URL can parse relative paths + query
+    return new URL(nextPathOrUrl, "http://localhost").pathname;
+}
+
 function isAllowedNextForRole(nextPath: string, role: "admin" | "contractor" | "general") {
+    const p = normalizePath(nextPath);
+
     // Admins can go to admin area + tools + contractor area.
     // NOTE: tighten/expand as policy evolves.
     if (role === "admin") {
         return (
-            nextPath === "/admin" ||
-            nextPath.startsWith("/admin/") ||
-            nextPath === "/tools" ||
-            nextPath.startsWith("/tools/") ||
-            nextPath === "/contractor" ||
-            nextPath.startsWith("/contractor/")
+            p === "/admin" ||
+            p.startsWith("/admin/") ||
+            p === "/tools" ||
+            p.startsWith("/tools/") ||
+            p === "/contractor" ||
+            p.startsWith("/contractor/")
         );
     }
 
     if (role === "contractor") {
-        return nextPath === "/contractor" || nextPath.startsWith("/contractor/");
+        return p === "/contractor" || p.startsWith("/contractor/");
     }
 
     // general
-    return nextPath === "/tools" || nextPath.startsWith("/tools/");
+    return p === "/tools" || p.startsWith("/tools/");
 }
 
 function appendQueryParam(pathWithQuery: string, key: string, value: string) {
@@ -61,6 +66,19 @@ function roleDefault(role: "admin" | "contractor" | "general") {
 }
 
 export async function POST(req: NextRequest) {
+    let apiOrigin: string;
+
+    try {
+        apiOrigin = getApiOrigin();
+    } catch (err) {
+        // Log server-side, but don't break internals to the client
+        console.error("Misconfigured API_BASE_URL", err);
+        return NextResponse.json(
+            { success: false, detail: "Server configuration error"},
+            { status: 500 }
+        );
+    }
+
     const body = await req.json().catch(() => null);
 
     if (!body || typeof body.email !== "string" || typeof body.password !== "string") {
@@ -71,7 +89,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 1) Authenticate against backend /auth/login
-    const loginUrl = `${API_BASE_URL}/auth/login`;
+    const loginUrl = new URL("/auth/login", apiOrigin).toString();
 
     const params = new URLSearchParams();
     params.set("username", body.email);
@@ -81,6 +99,7 @@ export async function POST(req: NextRequest) {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: params.toString(),
+        cache: "no-store",
     });
 
     if (!resp.ok) {
@@ -97,16 +116,23 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await resp.json();
+
+    if (!data || typeof data.access_token !== "string") {
+        return NextResponse.json({ success: false, detail: "Invalid auth response"},
+                                 { status: 502 });
+    }
+
     const token = data.access_token as string;
 
     // 2) Set cookie (server authority)
     // NOTE: cookie must be set on the same response we return.
     // We'll compute redirectTo first, but cookie will be attached to the final response.
     let role: "admin" | "contractor" | "general" = "general";
+    const meUrl = new URL("/auth/me", apiOrigin).toString();
 
     // 3) Identify role via /auth/me using the freshly issued token
     try {
-        const meResp = await fetch(`${API_BASE_URL}/auth/me`, {
+        const meResp = await fetch(meUrl, {
             headers: { Authorization: `Bearer ${token}` },
             cache: "no-store",
         });

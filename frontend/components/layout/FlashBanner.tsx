@@ -3,23 +3,44 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import type { FlashReason } from "@/lib/flash";
+import { isFlashReason } from "@/lib/flash";
 
-type FlashKind = "login_failed" | "login_success";
-
-const COPY: Record<FlashKind, { title: string; message: string }> = {
+const COPY: Record<FlashReason, { kind: string; title: string; message: string }> = {
     login_failed: {
+        kind: "error",
         title: "Login failed",
         message: "Please check your email/password and try again.",
     },
     login_success: {
+        kind: "success",
         title: "You’re signed in",
         message: "Welcome back — you can keep using the tools.",
     },
+    logged_out: {
+        kind: "success",
+        title: "You’re logged out",
+        message: "You’ve been logged out."
+    },
+    auth_required: {
+        kind: "error",
+        title: "Authorization required",
+        message: "Please sign in to continue."
+    },
+    session_expired: {
+        kind: "error",
+        title: "Your session expired",
+        message: "Your session expired. Please sign in again."
+    },
+    auth_unavailable: {
+        kind: "error",
+        title: "Auth is temporarily unavailable",
+        message: "Auth is temporarily unavailable. Please report this problem." },
+    auth_misconfig: {
+        kind: "error",
+        title: "Auth is misconfigured",
+        message: "Auth is misconfigured. Please report this problem." },
 };
-
-function isFlashKind(v: string | null): v is FlashKind {
-    return v === "login_failed" || v === "login_success";
-}
 
 export default function FlashBanner({
                                         className = "",
@@ -39,7 +60,7 @@ export default function FlashBanner({
     const searchParams = useSearchParams();
 
     const raw = searchParams.get(paramKey);
-    const flash = isFlashKind(raw) ? raw : null;
+    const flash = isFlashReason(raw) ? raw : null;
     const copy = flash ? COPY[flash] : null;
 
     // single source of truth for animation
@@ -109,7 +130,6 @@ export default function FlashBanner({
         setVisible(false);
         const raf = requestAnimationFrame(() => setVisible(true));
         return () => cancelAnimationFrame(raf);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [flash]);
 
     // auto dismiss timer

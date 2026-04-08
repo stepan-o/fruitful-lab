@@ -1,3 +1,4 @@
+// frontend/components/ui/ThemeToggle.tsx
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -9,7 +10,6 @@ function systemPrefersDark(): boolean {
 }
 
 function getEffectiveTheme(): Theme {
-    // If user explicitly set a theme, use it; otherwise use OS preference.
     const t = document.documentElement.dataset.theme;
     if (t === "dark") return "dark";
     if (t === "light") return "light";
@@ -42,7 +42,10 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
 
         el.dataset.effectiveTheme = effective;
         el.setAttribute("aria-pressed", isDark ? "true" : "false");
-        el.setAttribute("aria-label", `Theme: ${isDark ? "Dark" : "Light"} (click to toggle)`);
+        el.setAttribute(
+            "aria-label",
+            `Theme: ${isDark ? "Dark" : "Light"} (click to toggle)`
+        );
     };
 
     useEffect(() => {
@@ -50,7 +53,6 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
         if (saved) {
             document.documentElement.dataset.theme = saved;
         } else {
-            // IMPORTANT: do NOT set data-theme; let CSS media query drive it.
             clearExplicitTheme();
         }
 
@@ -60,7 +62,6 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
         if (!mq) return;
 
         const onChange = () => {
-            // Only follow system if user hasn't explicitly chosen a theme
             if (!readSavedTheme()) {
                 clearExplicitTheme();
             }
@@ -91,16 +92,8 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
                 className,
             ].join(" ")}
         >
-            {/* Thumb */}
-            <span className="theme-toggle-thumb pointer-events-none absolute top-0.5 bottom-0.5 left-0.5 w-[calc(50%-2px)] rounded-full bg-[var(--card-hover)] shadow-sm transition-transform duration-150 ease-out" />
-
-            {/* Segments */}
-            <span className="theme-toggle-seg theme-toggle-light relative z-10 inline-flex items-center justify-center rounded-full px-3 py-1">
-        Light
-      </span>
-            <span className="theme-toggle-seg theme-toggle-dark relative z-10 inline-flex items-center justify-center rounded-full px-3 py-1">
-        Dark
-      </span>
+            <span className="theme-toggle-label-light">Light</span>
+            <span className="theme-toggle-label-dark">Dark</span>
         </button>
     );
 }

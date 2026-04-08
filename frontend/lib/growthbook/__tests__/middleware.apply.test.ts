@@ -1,55 +1,113 @@
 import "@testing-library/jest-dom";
+import type { NextRequest, NextResponse } from "next/server";
 
-// Spy on runServerExperiment so we don't hit GB
-const runServerExperiment = jest.fn().mockResolvedValue({ variant: "v2", source: "fallback" });
-jest.mock("@/lib/growthbook/experiments", () => ({
-  runServerExperiment: (...args: any[]) => (runServerExperiment as any)(...args),
+jest.mock("@/lib/growthbook/edgeAdapter", () => ({
+    growthbookAdapter: {
+        initialize: jest.fn(),
+    },
 }));
 
+import { growthbookAdapter } from "@/lib/growthbook/edgeAdapter";
 import { applyExperimentCookies } from "@/lib/growthbook/middleware";
 import { PINTEREST_POTENTIAL_EXPERIMENT } from "@/lib/experiments/config";
 import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotentialConfig";
 
-describe("applyExperimentCookies – assignment + cookie persistence", () => {
-  function makeReq(cookiesMap: Record<string, string> = {}) {
-    return {
-      cookies: {
-        get: (name: string) => (cookiesMap[name] ? { name, value: cookiesMap[name] } : undefined),
-      },
-      headers: new Headers(),
-    } as any;
-  }
-  function makeRes() {
-    const setCalls: Array<{ name: string; value: string; opts: any }> = [];
-    return {
-      cookies: {
-        set: (name: string, value: string, opts?: any) => setCalls.push({ name, value, opts }),
-      },
-      __calls: setCalls,
-    } as any;
-  }
+const ANON_COOKIE = "fp_anon_id";
+const initialize = jest.mocked(growthbookAdapter.initialize);
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+type MinimalReq = {
+    cookies: { get: (name: string) => { name: string; value: string } | undefined };
+    headers: Headers;
+    nextUrl: { pathname: string };
+};
 
-  it("calls runServerExperiment and sets pp_variant when missing", async () => {
-    const req = makeReq();
-    const res = makeRes();
-    await applyExperimentCookies(req, res);
-    expect(runServerExperiment).toHaveBeenCalledTimes(1);
-    expect(runServerExperiment).toHaveBeenCalledWith(PINTEREST_POTENTIAL_EXPERIMENT);
-    expect(res.__calls.length).toBe(1);
-    const call = res.__calls[0];
-    expect(call.name).toBe(PINTEREST_POTENTIAL_VARIANT_COOKIE);
-    expect(["v1", "v2"]).toContain(call.value);
-  });
+type CookieSetCall = { name: string; value: string; opts: unknown };
 
-  it("does not call runServerExperiment when valid cookie exists", async () => {
-    const req = makeReq({ [PINTEREST_POTENTIAL_VARIANT_COOKIE]: "v1" });
-    const res = makeRes();
-    await applyExperimentCookies(req, res);
-    expect(runServerExperiment).not.toHaveBeenCalled();
-    expect(res.__calls.length).toBe(0);
-  });
+type MinimalRes = {
+    cookies: { set: (name: string, value: string, opts?: unknown) => void };
+    __calls: CookieSetCall[];
+};
+
+describe("applyExperimentCookies – GrowthBook evaluation", () => {
+    const originalKey = process.env.GROWTHBOOK_CLIENT_KEY;
+
+    function makeReq(cookiesMap: Record<string, string> = {}): MinimalReq {
+        return {
+            cookies: {
+                get: (name: string) =>
+                    cookiesMap[name] ? { name, value: cookiesMap[name] } : undefined,
+            },
+            headers: new Headers(),
+            nextUrl: { pathname: "/tools/pinterest-potential" },
+        };
+    }
+
+    function makeRes(): MinimalRes {
+        const setCalls: CookieSetCall[] = [];
+        return {
+            cookies: {
+                set: (name: string, value: string, opts?: unknown) => {
+                    setCalls.push({ name, value, opts });
+                },
+            },
+            __calls: setCalls,
+        };
+    }
+
+    beforeEach(() => {
+        jest.clearAllMocks();
+        process.env.GROWTHBOOK_CLIENT_KEY = "test-key";
+    });
+
+    afterAll(() => {
+        if (originalKey) process.env.GROWTHBOOK_CLIENT_KEY = originalKey;
+        else delete process.env.GROWTHBOOK_CLIENT_KEY;
+    });
+
+    it("uses the GrowthBook-evaluated variant when the experiment is enabled", async () => {
+        initialize.mockResolvedValueOnce({
+            evalFeature: (key: string) => {
+                if (key === `enable_${PINTEREST_POTENTIAL_EXPERIMENT.gbKey}`) {
+                    return { on: true, value: true };
+                }
+                return { value: "no_welcome" };
+            },
+        });
+
+        const req = makeReq({ [ANON_COOKIE]: "anon-123" });
+        const res = makeRes();
+
+        await applyExperimentCookies(
+            req as unknown as NextRequest,
+            res as unknown as NextResponse,
+        );
+
+        expect(initialize).toHaveBeenCalledTimes(1);
+        expect(res.__calls).toHaveLength(1);
+        expect(res.__calls[0]?.name).toBe(PINTEREST_POTENTIAL_VARIANT_COOKIE);
+        expect(res.__calls[0]?.value).toBe("no_welcome");
+    });
+
+    it("uses the default variant when the GrowthBook enable flag is off", async () => {
+        initialize.mockResolvedValueOnce({
+            evalFeature: (key: string) => {
+                if (key === `enable_${PINTEREST_POTENTIAL_EXPERIMENT.gbKey}`) {
+                    return { on: false, value: false };
+                }
+                return { value: "no_welcome" };
+            },
+        });
+
+        const req = makeReq({ [ANON_COOKIE]: "anon-123" });
+        const res = makeRes();
+
+        await applyExperimentCookies(
+            req as unknown as NextRequest,
+            res as unknown as NextResponse,
+        );
+
+        expect(initialize).toHaveBeenCalledTimes(1);
+        expect(res.__calls).toHaveLength(1);
+        expect(res.__calls[0]?.value).toBe(PINTEREST_POTENTIAL_EXPERIMENT.defaultVariant);
+    });
 });

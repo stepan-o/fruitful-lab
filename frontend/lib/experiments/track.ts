@@ -25,7 +25,6 @@ export async function logExperimentEvent(
     });
   } catch (err) {
     if (process.env.NODE_ENV === "development") {
-      // eslint-disable-next-line no-console
       console.error("[experiment-events] failed to send", err);
     }
   }

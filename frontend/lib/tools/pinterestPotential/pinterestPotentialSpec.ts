@@ -1,92 +1,131 @@
+// frontend/lib/tools/pinterestPotential/pinterestPotentialSpec.ts
 /**
- * Fruitful Lab — Pinterest Potential Calculator
- * Canonical spec + light helper maps for results (Sprint 5 ready)
+ * Fruitful Lab — Pinterest Potential Calculator (v1.1 Locked)
+ * Canonical spec: Questions (Q1–Q8), answer types, copy maps, option sets, and validation.
  *
- * Key update:
- * - Options now have a stable `id` (1..N) in addition to `value`.
- * - For checkboxes, Answers should store option ids (not values).
- *   This makes “income” and “cart size” deterministic and maintainable.
+ * v1.1 contract alignment (breaking; NO back-compat):
+ * - Flow remains 8 questions (Q1–Q8).
+ * - Answers are stable string slugs (not numeric weights).
+ * - Q2 (niche) + Q7 (goals) are segment-dependent (validated against canonical option sets).
+ * - Lead gating is NOT a "question" in the spec; it's a flow capability.
+ * - Results model is sessions-based (demand modeled as sessions, not users) — compute/config enforce this,
+ *   spec remains the schema + validation surface only.
  *
- * NOTE: We do not preserve backwards compatibility with old drafts.
+ * NOTE:
+ * - Compute is config-driven and lives in compute.ts + benchmarks/multipliers configs.
+ * - UI enrichment (badges, includes, keywords, icons, "popular" derivations) MUST live in spec→UI adapters.
+ * - This file defines only: schema + copy + option sets + validation.
+ *
+ * v1.2+ STRICT CONTRACT CHANGE (breaking; NO back-compat, NO flexibility):
+ * - GoalKey construction is locked to this module via `makeGoalKey(...)`.
+ *   All other modules MUST use this helper instead of `${segment}:${goal}` ad-hoc concatenation.
+ *   This prevents drift and guarantees segment↔goal correctness at runtime (fail-loud).
+ * - PrimaryGoal remains EXACTLY the Q7 goal slug union (no new question inputs).
  */
 
-// -----------------------------
-// Types
-// -----------------------------
+// -------------------------------------
+// IDs / Core enums
+// -------------------------------------
 
-export type QuestionType = "radio" | "checkbox" | "slider" | "lead";
+export const QUESTION_COUNT = 8 as const;
 
-export type Option = {
-    /** Stable option id for UI + downstream result mapping (1..N). */
-    id: number;
-    label: string;
+export type QuestionId = `Q${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8}`;
 
-    /**
-     * Numeric weight used by the audience score formula (computeScore).
-     * For radios/sliders it’s a scalar multiplier; for checkbox questions it’s included in sum().
-     */
-    value: number;
-};
+export type Segment = "content_creator" | "product_seller" | "service_provider";
 
-export type BaseQuestion = {
-    id: `Q${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}`;
-    type: QuestionType;
-    label: string;
-    helperText?: string;
-    required: boolean;
-};
+export type LeadMode = "hard_lock" | "soft_lock";
+export type LeadState = "known" | "new";
 
-export type RadioQuestion = BaseQuestion & {
-    type: "radio";
-    options: Option[];
-};
+// -------------------------------------
+// Answer types (slug-based)
+// -------------------------------------
 
-export type CheckboxQuestion = BaseQuestion & {
-    type: "checkbox";
-    options: Option[];
-};
-
-export type SliderQuestion = BaseQuestion & {
-    type: "slider";
-    min: number;
-    max: number;
-    step: number;
-    default?: number;
-};
-
-export type LeadQuestion = {
-    id: "LEAD";
-    type: "lead";
-    label: string;
-    required: true;
-};
-
-export type Question = RadioQuestion | CheckboxQuestion | SliderQuestion | LeadQuestion;
-
-// -----------------------------
-// Answers model (updated)
-// -----------------------------
+export type VolumeBucket = "0-2" | "3-5" | "6-10" | "11-20" | "20+";
+export type VisualStrength = "limited" | "decent" | "strong" | "very_strong";
+export type SiteExperience = "a" | "b" | "c" | "d";
+export type OfferClarity = "no" | "somewhat" | "yes";
+export type GrowthMode = "organic" | "later" | "ads";
 
 /**
- * IMPORTANT:
- * - Q2/Q3/Q9 store SELECTED OPTION IDS (number[]), not option values.
- * - Compute layer should look up values from the spec when doing sums.
+ * Goals are segment-specific but stored as stable slugs.
+ * These MUST remain stable: telemetry, multipliers goal-keys, and email sequencing depend on them.
  */
+export type ContentCreatorGoal = "traffic" | "email_subscribers" | "affiliate_revenue" | "course_product_sales";
+export type ProductSellerGoal = "sales" | "retargeting_pool" | "new_customer_discovery" | "email_subscribers";
+export type ServiceProviderGoal = "leads_calls" | "webinar_signups" | "authority_visibility" | "email_subscribers";
+
+/**
+ * IMPORTANT (locked): PrimaryGoal is EXACTLY the union of the Q7 goal slugs.
+ * No aliases, no remaps, no legacy labels.
+ */
+export type PrimaryGoal = ContentCreatorGoal | ProductSellerGoal | ServiceProviderGoal;
+
+/**
+ * Useful for config surfaces that key off segment+goal.
+ * (Compute currently enforces these keys via multipliers.ts.)
+ */
+export type GoalKey =
+    | `content_creator:${ContentCreatorGoal}`
+    | `product_seller:${ProductSellerGoal}`
+    | `service_provider:${ServiceProviderGoal}`;
+
+/**
+ * v1.2+ STRICT CONTRACT:
+ * GoalKey construction is locked to this helper.
+ *
+ * Why:
+ * - Avoid `${segment}:${goal}` ad-hoc concatenation in compute/UI.
+ * - Guarantee segment↔goal correctness at runtime (fail loud).
+ *
+ * NO BACKWARDS COMPATIBILITY:
+ * - This helper throws on invalid combinations.
+ * - Callers MUST pass validated/typed values or expect a thrown Error.
+ */
+export function makeGoalKey(segment: Segment, goal: PrimaryGoal): GoalKey {
+    if (segment === "content_creator") {
+        if (
+            goal === "traffic" ||
+            goal === "email_subscribers" ||
+            goal === "affiliate_revenue" ||
+            goal === "course_product_sales"
+        ) {
+            return `content_creator:${goal}` as const;
+        }
+        throw new Error(`Spec contract error: invalid goal for content_creator: ${String(goal)}`);
+    }
+
+    if (segment === "product_seller") {
+        if (goal === "sales" || goal === "retargeting_pool" || goal === "new_customer_discovery" || goal === "email_subscribers") {
+            return `product_seller:${goal}` as const;
+        }
+        throw new Error(`Spec contract error: invalid goal for product_seller: ${String(goal)}`);
+    }
+
+    // service_provider
+    if (goal === "leads_calls" || goal === "webinar_signups" || goal === "authority_visibility" || goal === "email_subscribers") {
+        return `service_provider:${goal}` as const;
+    }
+    throw new Error(`Spec contract error: invalid goal for service_provider: ${String(goal)}`);
+}
+
 export type Answers = {
-    Q1?: number;     // radio → scalar value
-    Q2?: number[];   // checkbox → selected option ids
-    Q3?: number[];   // checkbox → selected option ids
-    Q4?: number;     // radio
-    Q5?: number;     // radio
-    Q6?: number;     // radio
-    Q7?: number;     // slider (1..5)
-    Q8?: number;     // slider (1..5)
-    Q9?: number[];   // checkbox → selected option ids
+    Q1?: Segment;
+    Q2?: NicheSlug; // depends on segment; validated via getNicheOptions()
+    Q3?: VolumeBucket;
+    Q4?: VisualStrength;
+    Q5?: SiteExperience;
+    Q6?: OfferClarity;
+    Q7?: PrimaryGoal; // depends on segment; validated via getPrimaryGoalOptions()
+    Q8?: GrowthMode;
 };
+
+// -------------------------------------
+// Lead payload (gating / submission)
+// -------------------------------------
 
 export type Lead = {
-    name: string;
     email: string;
+    name?: string;
 };
 
 export type ValidationResult = {
@@ -94,273 +133,385 @@ export type ValidationResult = {
     errors: Record<string, string>;
 };
 
-// -----------------------------
-// Validation helpers
-// -----------------------------
+// -------------------------------------
+// Question model (UI-facing)
+// -------------------------------------
 
-export function clampToSliderRange(v: number, min = 1, max = 5): number {
-    return Math.min(max, Math.max(min, Math.round(v)));
+export type QuestionType = "single_select" | "dynamic_single_select";
+
+export type Option<T extends string> = {
+    id: T;
+    label: string;
+    /** Optional short helper label for UI (e.g., descriptors under segment cards). */
+    metaLabel?: string;
+};
+
+export type BaseQuestion = {
+    id: QuestionId;
+    type: QuestionType;
+    prompt: string;
+    helperText?: string;
+    required: true;
+};
+
+export type SingleSelectQuestion<T extends string> = BaseQuestion & {
+    type: "single_select";
+    options: Array<Option<T>>;
+};
+
+export type DynamicSingleSelectQuestion<T extends string = string> = BaseQuestion & {
+    /**
+     * Options depend on segment. UI should call getOptions(segment).
+     * Validation will also use this canonical set.
+     */
+    type: "dynamic_single_select";
+    getOptions: (segment: Segment) => Array<Option<T>>;
+};
+
+export type Question =
+    | SingleSelectQuestion<Segment>
+    | DynamicSingleSelectQuestion<NicheSlug>
+    | SingleSelectQuestion<VolumeBucket>
+    | SingleSelectQuestion<VisualStrength>
+    | SingleSelectQuestion<SiteExperience>
+    | DynamicSingleSelectQuestion<OfferClarity>
+    | DynamicSingleSelectQuestion<PrimaryGoal>
+    | SingleSelectQuestion<GrowthMode>;
+
+// -------------------------------------
+// Q2: Niche sets (segment-specific)
+// (IMPORTANT: This is canonical. UI meta belongs in adapters.)
+// -------------------------------------
+
+export type ContentCreatorNiche =
+    | "food"
+    | "travel"
+    | "home_diy"
+    | "lifestyle"
+    | "finance"
+    | "wellness"
+    | "parenting"
+    | "beauty_fashion"
+    | "crafts"
+    | "other";
+
+export type ProductSellerNiche =
+    | "baby_family"
+    | "home_decor"
+    | "beauty"
+    | "fashion"
+    | "wellness"
+    | "food_bev"
+    | "digital_crafts"
+    | "pets"
+    | "travel_gear"
+    | "other";
+
+export type ServiceProviderNiche =
+    | "agency"
+    | "coach"
+    | "designer"
+    | "photo_video"
+    | "wellness_practitioner"
+    | "finance"
+    | "real_estate_home"
+    | "educator"
+    | "events"
+    | "other";
+
+export type NicheSlug = ContentCreatorNiche | ProductSellerNiche | ServiceProviderNiche;
+
+export const NICHE_OPTIONS: Record<Segment, Array<Option<NicheSlug>>> = {
+    content_creator: [
+        { id: "food", label: "Food & Recipes" },
+        { id: "travel", label: "Travel" },
+        { id: "home_diy", label: "Home & DIY" },
+        { id: "lifestyle", label: "Lifestyle & Inspiration" },
+        { id: "finance", label: "Personal Finance" },
+        { id: "wellness", label: "Health & Wellness" },
+        { id: "parenting", label: "Parenting & Family" },
+        { id: "beauty_fashion", label: "Beauty & Fashion" },
+        { id: "crafts", label: "Crafts & Hobbies" },
+        { id: "other", label: "Other" },
+    ],
+    product_seller: [
+        { id: "baby_family", label: "Baby & Family Products" },
+        { id: "home_decor", label: "Home & Decor" },
+        { id: "beauty", label: "Beauty & Skincare" },
+        { id: "fashion", label: "Fashion & Accessories" },
+        { id: "wellness", label: "Health & Wellness" },
+        { id: "food_bev", label: "Food & Beverage (CPG)" },
+        { id: "digital_crafts", label: "Crafts & Digital Products" },
+        { id: "pets", label: "Pets" },
+        { id: "travel_gear", label: "Travel Gear & Accessories" },
+        { id: "other", label: "Other" },
+    ],
+    service_provider: [
+        { id: "agency", label: "Marketing / Creative Agency" },
+        { id: "coach", label: "Coach / Consultant" },
+        { id: "designer", label: "Designer (interior/graphic/web)" },
+        { id: "photo_video", label: "Photographer / Videographer" },
+        { id: "wellness_practitioner", label: "Wellness Practitioner" },
+        { id: "finance", label: "Finance / Accounting / Bookkeeping" },
+        { id: "real_estate_home", label: "Real Estate / Home Services" },
+        { id: "educator", label: "Educator / Course Creator" },
+        { id: "events", label: "Event / Wedding Services" },
+        { id: "other", label: "Other" },
+    ],
+} as const;
+
+export function getNicheOptions(segment: Segment): Array<Option<NicheSlug>> {
+    return NICHE_OPTIONS[segment];
 }
+
+// -------------------------------------
+// Q7: Primary goal sets (segment-specific)
+// -------------------------------------
+
+export const PRIMARY_GOAL_OPTIONS: Record<Segment, Array<Option<PrimaryGoal>>> = {
+    content_creator: [
+        { id: "traffic", label: "Traffic" },
+        { id: "email_subscribers", label: "Email subscribers" },
+        { id: "affiliate_revenue", label: "Affiliate revenue" },
+        { id: "course_product_sales", label: "Course/product sales" },
+    ],
+    product_seller: [
+        { id: "sales", label: "Sales" },
+        { id: "email_subscribers", label: "Email subscribers" },
+        { id: "retargeting_pool", label: "Retargeting pool" },
+        { id: "new_customer_discovery", label: "New customer discovery" },
+    ],
+    service_provider: [
+        { id: "leads_calls", label: "Leads/calls" },
+        { id: "email_subscribers", label: "Email subscribers" },
+        { id: "webinar_signups", label: "Webinar signups" },
+        { id: "authority_visibility", label: "Authority/visibility" },
+    ],
+} as const;
+
+export function getPrimaryGoalOptions(segment: Segment): Array<Option<PrimaryGoal>> {
+    return PRIMARY_GOAL_OPTIONS[segment];
+}
+
+// -------------------------------------
+// Segment-dependent prompts (copy helpers)
+// -------------------------------------
+
+export function getQ3Prompt(segment: Segment): string {
+    if (segment === "content_creator") return "How many pieces of content do you publish per month?";
+    if (segment === "product_seller") return "How many promos/new arrivals/collections do you run per month?";
+    return "How often do you publish marketing content per month?";
+}
+
+export function getQ6Prompt(segment: Segment): string {
+    if (segment === "content_creator") return "Do you have a clear lead magnet or newsletter offer?";
+    if (segment === "product_seller") return "Do you have a hero product / best-seller to push?";
+    return "Do you have a clear offer + booking flow?";
+}
+
+export const Q2_PROMPT = "What’s your primary niche?" as const;
+export const Q7_PROMPT = "What’s your primary goal from Pinterest?" as const;
+
+// -------------------------------------
+// Canonical questions (Q1–Q8)
+// -------------------------------------
+
+export const Q1: SingleSelectQuestion<Segment> = {
+    id: "Q1",
+    type: "single_select",
+    prompt: "Which best describes your business?",
+    required: true,
+    options: [
+        { id: "content_creator", label: "Primarily a Content Creator", metaLabel: "Traffic / Subscribers" },
+        { id: "product_seller", label: "Primarily a Product Seller", metaLabel: "Sales" },
+        { id: "service_provider", label: "Primarily a Service Provider", metaLabel: "Leads" },
+    ],
+};
+
+export const Q2: DynamicSingleSelectQuestion<NicheSlug> = {
+    id: "Q2",
+    type: "dynamic_single_select",
+    prompt: Q2_PROMPT,
+    required: true,
+    getOptions: (segment: Segment) => getNicheOptions(segment),
+};
+
+export const Q3: SingleSelectQuestion<VolumeBucket> = {
+    id: "Q3",
+    type: "single_select",
+    prompt: "Monthly output volume", // UI should prefer getQ3Prompt(segment)
+    required: true,
+    options: [
+        { id: "0-2", label: "0–2" },
+        { id: "3-5", label: "3–5" },
+        { id: "6-10", label: "6–10" },
+        { id: "11-20", label: "11–20" },
+        { id: "20+", label: "20+" },
+    ],
+};
+
+export const Q4: SingleSelectQuestion<VisualStrength> = {
+    id: "Q4",
+    type: "single_select",
+    prompt: "How strong is your visual content library right now?",
+    required: true,
+    options: [
+        { id: "limited", label: "Limited" },
+        { id: "decent", label: "Decent" },
+        { id: "strong", label: "Strong" },
+        { id: "very_strong", label: "Very strong" },
+    ],
+};
+
+export const Q5: SingleSelectQuestion<SiteExperience> = {
+    id: "Q5",
+    type: "single_select",
+    prompt: "Which best describes your website right now?",
+    helperText: "On mobile, can someone tell what to do in 5 seconds?",
+    required: true,
+    options: [
+        { id: "a", label: "It’s slow / confusing on mobile (unclear what to click)." },
+        { id: "b", label: "It’s okay, but could be clearer (CTA exists, not super obvious)." },
+        { id: "c", label: "It’s solid (loads fairly fast + clear CTA above the fold)." },
+        { id: "d", label: "It’s optimized (fast, clear CTA, and I’ve tested/improved it)." },
+    ],
+};
+
+/**
+ * Q6 options are constant; prompt copy may be displayed segment-specifically via getQ6Prompt(segment).
+ * We keep it as dynamic_single_select so the UI can stay uniform for segment-dependent copy.
+ */
+export const Q6: DynamicSingleSelectQuestion<OfferClarity> = {
+    id: "Q6",
+    type: "dynamic_single_select",
+    prompt: "Do you have a clear offer?",
+    required: true,
+    getOptions: (_segment: Segment) => [
+        { id: "no", label: "No" },
+        { id: "somewhat", label: "Somewhat" },
+        { id: "yes", label: "Yes" },
+    ],
+};
+
+export const Q7: DynamicSingleSelectQuestion<PrimaryGoal> = {
+    id: "Q7",
+    type: "dynamic_single_select",
+    prompt: Q7_PROMPT,
+    required: true,
+    getOptions: (segment: Segment) => getPrimaryGoalOptions(segment),
+};
+
+export const Q8: SingleSelectQuestion<GrowthMode> = {
+    id: "Q8",
+    type: "single_select",
+    prompt: "Are you planning to use Pinterest ads, or organic only?",
+    required: true,
+    options: [
+        { id: "organic", label: "Organic only" },
+        { id: "later", label: "Maybe later" },
+        { id: "ads", label: "Yes (ads)" },
+    ],
+};
+
+export const QUESTIONS: Question[] = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8];
+
+export const QUESTION_ORDER: QuestionId[] = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8"];
+
+// -------------------------------------
+// Validation helpers
+// -------------------------------------
 
 export function validateEmail(email: string): boolean {
     const re = /[^\s@]+@[^\s@]+\.[^\s@]+/;
     return re.test(email);
 }
 
+export function isSegment(x: unknown): x is Segment {
+    return x === "content_creator" || x === "product_seller" || x === "service_provider";
+}
+
+export function isVolumeBucket(x: unknown): x is VolumeBucket {
+    return x === "0-2" || x === "3-5" || x === "6-10" || x === "11-20" || x === "20+";
+}
+
+export function isVisualStrength(x: unknown): x is VisualStrength {
+    return x === "limited" || x === "decent" || x === "strong" || x === "very_strong";
+}
+
+export function isSiteExperience(x: unknown): x is SiteExperience {
+    return x === "a" || x === "b" || x === "c" || x === "d";
+}
+
+export function isOfferClarity(x: unknown): x is OfferClarity {
+    return x === "no" || x === "somewhat" || x === "yes";
+}
+
+export function isGrowthMode(x: unknown): x is GrowthMode {
+    return x === "organic" || x === "later" || x === "ads";
+}
+
+export function isPrimaryGoalForSegment(segment: Segment, goal: unknown): goal is PrimaryGoal {
+    return getPrimaryGoalOptions(segment).some((o) => o.id === goal);
+}
+
+export function isNicheForSegment(segment: Segment, niche: unknown): niche is NicheSlug {
+    return getNicheOptions(segment).some((o) => o.id === niche);
+}
+
 /**
- * Validation rules:
- * - Required questions cannot be skipped
- * - Checkbox questions must have ≥1 selection
- * - Sliders must be within [min,max]
- * - Lead: name + syntactically valid email (when lead is required by the flow)
- *
- * NOTE: Lead gating is controlled by leadMode in the wizard;
- * validateAnswers treats LEAD as required if lead is passed as "required".
+ * Full-form validation (locked).
+ * Wizard may also validate per-step; this is the canonical "all required present" validator.
  */
-export function validateAnswers(answers: Answers, lead?: Lead): ValidationResult {
+export function validateAnswers(answers: Answers): ValidationResult {
     const errors: Record<string, string> = {};
 
-    for (const q of QUESTIONS) {
-        if (q.type === "lead") continue;
+    // Q1
+    if (!answers.Q1) errors["Q1"] = "This question is required.";
+    else if (!isSegment(answers.Q1)) errors["Q1"] = "Invalid selection.";
 
-        const id = q.id;
-        if (q.type === "radio") {
-            const v = answers[id as keyof Answers] as number | undefined;
-            if (q.required && (v === undefined || v === null)) {
-                errors[id] = "This question is required.";
-            }
-        } else if (q.type === "checkbox") {
-            const arr = answers[id as keyof Answers] as number[] | undefined;
-            if (q.required && (!Array.isArray(arr) || arr.length === 0)) {
-                errors[id] = "Please select at least one option.";
-            }
-        } else if (q.type === "slider") {
-            const v = answers[id as keyof Answers] as number | undefined;
-            if (q.required && (v === undefined || v === null)) {
-                errors[id] = "This question is required.";
-            } else if (v !== undefined && (v < q.min || v > q.max)) {
-                errors[id] = `Value must be between ${q.min} and ${q.max}.`;
-            }
-        }
-    }
+    const segment = answers.Q1;
 
-    if (!lead) {
-        // Leave as-is: caller decides if lead is required (gate_before_results) or optional.
-        // If lead is required, caller should pass lead and validateEmail/name will run below.
-    } else {
-        if (!lead.name || !lead.name.trim()) errors["LEAD.name"] = "Name is required.";
-        if (!lead.email || !validateEmail(lead.email)) errors["LEAD.email"] = "A valid email is required.";
-    }
+    // Q2 depends on Q1
+    if (!answers.Q2) errors["Q2"] = "This question is required.";
+    else if (!segment) errors["Q2"] = "Select your business type first.";
+    else if (!isNicheForSegment(segment, answers.Q2)) errors["Q2"] = "Invalid selection.";
+
+    // Q3
+    if (!answers.Q3) errors["Q3"] = "This question is required.";
+    else if (!isVolumeBucket(answers.Q3)) errors["Q3"] = "Invalid selection.";
+
+    // Q4
+    if (!answers.Q4) errors["Q4"] = "This question is required.";
+    else if (!isVisualStrength(answers.Q4)) errors["Q4"] = "Invalid selection.";
+
+    // Q5
+    if (!answers.Q5) errors["Q5"] = "This question is required.";
+    else if (!isSiteExperience(answers.Q5)) errors["Q5"] = "Invalid selection.";
+
+    // Q6
+    if (!answers.Q6) errors["Q6"] = "This question is required.";
+    else if (!isOfferClarity(answers.Q6)) errors["Q6"] = "Invalid selection.";
+
+    // Q7 depends on Q1
+    if (!answers.Q7) errors["Q7"] = "This question is required.";
+    else if (!segment) errors["Q7"] = "Select your business type first.";
+    else if (!isPrimaryGoalForSegment(segment, answers.Q7)) errors["Q7"] = "Invalid selection.";
+
+    // Q8
+    if (!answers.Q8) errors["Q8"] = "This question is required.";
+    else if (!isGrowthMode(answers.Q8)) errors["Q8"] = "Invalid selection.";
 
     return { ok: Object.keys(errors).length === 0, errors };
 }
 
-// -----------------------------
-// Canonical questions (Q1–Q9 + Lead)
-// -----------------------------
-
-export const Q1: RadioQuestion = {
-    id: "Q1",
-    type: "radio",
-    label: "Do you have a Pinterest Business account ?",
-    required: true,
-    options: [
-        { id: 1, label: "Yes", value: 1 },
-        { id: 2, label: "No", value: 0.7 },
-    ],
-};
-
-export const Q2: CheckboxQuestion = {
-    id: "Q2",
-    type: "checkbox",
-    label: "Select your target market/region (all that apply)",
-    required: true,
-    options: [
-        { id: 1, label: "Global", value: 141000000 },
-        { id: 2, label: "USA", value: 27000000 },
-        { id: 3, label: "Canada", value: 1600000 },
-        { id: 4, label: "Europe", value: 31000000 },
-        { id: 5, label: "Latin America", value: 19000000 },
-        { id: 6, label: "Asia-Pacific", value: 3900000 },
-        { id: 7, label: "Rest of the world", value: 7000000 },
-    ],
-};
-
-export const Q3: CheckboxQuestion = {
-    id: "Q3",
-    type: "checkbox",
-    label: "What types of products do you offer? (Select all that apply)",
-    required: true,
-    options: [
-        { id: 1, label: "Travel & Mobility", value: 0.18 },
-        { id: 2, label: "Nursery & Home", value: 0.2 },
-        { id: 3, label: "Clothing & Accessories", value: 0.17 },
-        { id: 4, label: "Toys, Play, & Learning & school supplies", value: 0.15 },
-        { id: 5, label: "Feeding & Care", value: 0.1 },
-        { id: 6, label: "Bath & Changing", value: 0.07 },
-        { id: 7, label: "Lifestyle, Special Occasions, product safety", value: 0.08 },
-        { id: 8, label: "Technology & Digital Products", value: 0.08 },
-    ],
-};
-
-export const Q4: RadioQuestion = {
-    id: "Q4",
-    type: "radio",
-    label: "Could you allocate an ad spend budget for Pinterest?",
-    required: true,
-    options: [
-        { id: 1, label: "Yes", value: 0.35 },
-        { id: 2, label: "No", value: 0.1 },
-        { id: 3, label: "No, but could consider it", value: 0.2 },
-    ],
-};
-
-export const Q5: RadioQuestion = {
-    id: "Q5",
-    type: "radio",
-    label: "Do you have a blog?",
-    required: true,
-    options: [
-        { id: 1, label: "Yes, my brand has a blog", value: 1.15 },
-        { id: 2, label: "Not a blog, but we create user guides etc.", value: 1.05 },
-        { id: 3, label: "No, but can create", value: 1 },
-        { id: 4, label: "No and not planning to", value: 0.8 },
-    ],
-};
-
-export const Q6: RadioQuestion = {
-    id: "Q6",
-    type: "radio",
-    label: "Could your product be positioned for gifting occasions?",
-    required: true,
-    options: [
-        { id: 1, label: "Yes", value: 1.3 },
-        { id: 2, label: "No", value: 0.9 },
-        { id: 3, label: "Not sure", value: 1 },
-    ],
-};
-
-export const Q7: SliderQuestion = {
-    id: "Q7",
-    type: "slider",
-    label: "How seasonal is your product or brand? (1 = not seasonal, 5 = very seasonal)",
-    required: true,
-    min: 1,
-    max: 5,
-    step: 1,
-    default: 1,
-};
-
-export const Q8: SliderQuestion = {
-    id: "Q8",
-    type: "slider",
-    label: "On a scale of 1 (low competition) to 5 (high competition), how competitive is your product category?",
-    required: true,
-    min: 1,
-    max: 5,
-    step: 1,
-    default: 1,
-};
-
-export const Q9: CheckboxQuestion = {
-    id: "Q9",
-    type: "checkbox",
-    label: "Which platform is most important for your marketing?",
-    required: true,
-    options: [
-        { id: 1, label: "Instagram", value: 0 },
-        { id: 2, label: "Facebook", value: 0 },
-        { id: 3, label: "Tiktok", value: 0 },
-        { id: 4, label: "Youtube", value: 4 },
-        { id: 5, label: "Google/SEO", value: 5 },
-        { id: 6, label: "Email", value: 6 },
-    ],
-};
-
-export const LEAD: LeadQuestion = {
-    id: "LEAD",
-    type: "lead",
-    label: "Where can we send your results?",
-    required: true,
-};
-
-export const QUESTIONS: Question[] = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, LEAD];
-
-// -----------------------------
-// Sprint 5 helper maps (results 2 & 3)
-// -----------------------------
-
 /**
- * For results, we interpret the “primary region” as:
- * - first selected region option id (if multiple selected)
- * - otherwise undefined → falls back to "Global"
+ * Lead validation for submission.
+ * - Email is required if the user is submitting the lead form (hard lock or soft lock "email me results").
+ * - Name is optional.
  */
-export function getPrimaryRegionId(answers: Answers): number | undefined {
-    const ids = answers.Q2;
-    return Array.isArray(ids) && ids.length > 0 ? ids[0] : undefined;
+export function validateLead(lead: Lead): ValidationResult {
+    const errors: Record<string, string> = {};
+    if (!lead.email || !validateEmail(lead.email)) errors["LEAD.email"] = "A valid email is required.";
+    if (lead.name !== undefined && !lead.name.trim()) errors["LEAD.name"] = "Name cannot be empty.";
+    return { ok: Object.keys(errors).length === 0, errors };
 }
-
-export const REGION_META = {
-    // ids correspond to Q2 option ids
-    1: { label: "Global", avgHouseholdIncome: 30000, cartMultiplier: 1.0 },
-    2: { label: "USA", avgHouseholdIncome: 75000, cartMultiplier: 1.15 },
-    3: { label: "Canada", avgHouseholdIncome: 70000, cartMultiplier: 1.10 }, // streamlined (ballpark)
-    4: { label: "Europe", avgHouseholdIncome: 45000, cartMultiplier: 0.95 },
-    5: { label: "Latin America", avgHouseholdIncome: 15000, cartMultiplier: 0.85 },
-    6: { label: "Asia-Pacific", avgHouseholdIncome: 20000, cartMultiplier: 0.90 },
-    7: { label: "Rest of the world", avgHouseholdIncome: 30000, cartMultiplier: 1.0 },
-} as const;
-
-export function computeAvgHouseholdIncomeFromAnswers(answers: Answers): number {
-    const primary = getPrimaryRegionId(answers) ?? 1;
-    return REGION_META[primary as keyof typeof REGION_META]?.avgHouseholdIncome ?? 30000;
-}
-
-/**
- * Avg cart size model (ballpark, inspired by Outgrow):
- * - Each selected product category contributes a base cart value
- * - We average across selected categories (so multi-category brands don’t explode)
- * - Apply region multiplier
- * - Apply final bump factor (1.20) and round
- */
-export const PRODUCT_CART_BASE = {
-    // ids correspond to Q3 option ids
-    1: 600,
-    2: 500,
-    3: 160,
-    4: 200,
-    5: 140,
-    6: 120,
-    7: 240,
-    8: 500,
-} as const;
-
-export function computeAvgCartSizeFromAnswers(answers: Answers): number {
-    const selected = Array.isArray(answers.Q3) ? answers.Q3 : [];
-    // Map selected category IDs to cart base values; ensure a plain number[] for math
-    const bases = selected
-        .map((id) => PRODUCT_CART_BASE[id as keyof typeof PRODUCT_CART_BASE])
-        .filter((v) => typeof v === "number" && v > 0) as number[];
-
-    const avgBase = bases.length > 0 ? bases.reduce((a, b) => a + b, 0) / bases.length : 0;
-
-    const primaryRegionId = getPrimaryRegionId(answers) ?? 1;
-    const regionMult =
-        REGION_META[primaryRegionId as keyof typeof REGION_META]?.cartMultiplier ?? 1.0;
-
-    return Math.round(avgBase * regionMult * 1.2);
-}
-
-// -----------------------------
-// Weights snapshot (dev sanity helper)
-// -----------------------------
-
-export const WEIGHTS_SNAPSHOT = {
-    Q1: Q1.options.map(({ label, value }) => ({ label, value })),
-    Q2: Q2.options.map(({ label, value }) => ({ label, value })),
-    Q3: Q3.options.map(({ label, value }) => ({ label, value })),
-    Q4: Q4.options.map(({ label, value }) => ({ label, value })),
-    Q5: Q5.options.map(({ label, value }) => ({ label, value })),
-    Q6: Q6.options.map(({ label, value }) => ({ label, value })),
-    Q9: Q9.options.map(({ label, value }) => ({ label, value })),
-} as const;

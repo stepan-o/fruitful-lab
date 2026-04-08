@@ -30,6 +30,8 @@ venv/
 backend/venv/
 env/
 .env
+backend/.env
+backend/.env.local
 *.env
 
 __pycache__/
@@ -71,3 +73,5 @@ Thumbs.db
 *.tmp
 /backend/data-local/
 /.output.txt
+
+/data/

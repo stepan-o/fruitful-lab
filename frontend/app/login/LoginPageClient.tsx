@@ -2,8 +2,33 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+
+type LoginResponse = {
+    success?: boolean;
+    redirectTo?: string;
+    detail?: string;
+}
+
+function parseLoginResponse(x: unknown): LoginResponse {
+    if (!x || typeof x !== "object") return {};
+    const o = x as Record<string, unknown>;
+    return {
+        success: typeof o.success === "boolean" ? o.success : undefined,
+        redirectTo: typeof o.redirectTo === "string" ? o.redirectTo : undefined,
+        detail: typeof o.detail === "string" ? o.detail : undefined,
+    };
+}
+
+function flashToMessage(flash: string | null): string | null {
+    if (!flash) return null;
+    if (flash === "auth_required") return "Please sign in to continue.";
+    if (flash === "session_expired") return "Your session expired. Please sign in again.";
+    if (flash === "auth_unavailable") return "Auth service is unavailable right now. Try again.";
+    if (flash === "auth_misconfig") return "Auth is misconfigured (API base URL). Check server env.";
+    return null;
+}
 
 export default function LoginPageClient() {
     const router = useRouter();
@@ -17,6 +42,14 @@ export default function LoginPageClient() {
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    // If middleware redirects us back to /login with a reason, show it + unstick UI.
+    useEffect(() => {
+        const flash = searchParams.get("flash");
+        const msg = flashToMessage(flash);
+        if (msg) setError(msg);
+        setSubmitting(false);
+    }, [searchParams]);
+
     async function handleSubmit(e: FormEvent) {
         e.preventDefault();
         setSubmitting(true);
@@ -29,19 +62,21 @@ export default function LoginPageClient() {
                 body: JSON.stringify({ email, password, next: nextParam }),
             });
 
-            const data = await resp.json().catch(() => ({}));
+            const raw = await resp.json().catch(() => null);
+            const data = parseLoginResponse(raw);
 
             if (!resp.ok) {
-                router.push(data.redirectTo ?? "/tools?flash=login_failed");
-                router.refresh();
+                setError(data.detail ?? "Invalid email or password.");
                 return;
             }
 
-            router.push(data.redirectTo ?? "/tools");
-            router.refresh();
-        } catch (err) {
-            console.error(err);
-            setError("Something went wrong. Please try again.");
+            const redirectTo = data.redirectTo ?? nextParam ?? "/admin/analytics";
+            router.replace(redirectTo);
+            // router.refresh();
+        } catch (e: unknown) {
+            const msg = e instanceof Error ? e.message : "Something went wrong. Please try again."
+            setError(msg);
+        } finally {
             setSubmitting(false);
         }
     }

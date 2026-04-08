@@ -34,10 +34,12 @@ function makeReq({
     origin?: string;
 }): MiddlewareReq {
     const url = `${origin}${pathname}${search}`;
+    const nextUrl = new URL(url) as URL & { clone: () => URL };
+    nextUrl.clone = () => new URL(url);
 
     const reqLike = {
         url,
-        nextUrl: { pathname, search },
+        nextUrl,
         cookies: {
             get: (name: string): CookieGetResult =>
                 name === "fruitful_access_token" && cookie ? { name, value: cookie } : undefined,
@@ -48,14 +50,14 @@ function makeReq({
     return reqLike as unknown as MiddlewareReq;
 }
 
-function makeRedirectResponse(): { cookies: { set: jest.Mock } } {
+function makeRedirectResponse(): { cookies: { set: jest.Mock }; headers: { set: jest.Mock } } {
     const set = jest.fn();
-    return { cookies: { set } };
+    return { cookies: { set }, headers: { set: jest.fn() } };
 }
 
-function makeNextResponse(): { cookies: { set: jest.Mock } } {
+function makeNextResponse(): { cookies: { set: jest.Mock }; headers: { set: jest.Mock } } {
     const set = jest.fn();
-    return { cookies: { set } };
+    return { cookies: { set }, headers: { set: jest.fn() } };
 }
 
 describe("middleware auth policy", () => {

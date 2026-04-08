@@ -2,7 +2,7 @@
 import { cookies } from "next/headers";
 
 const COOKIE_NAME = "fruitful_access_token";
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+const API_BASE_URL = getApiOrigin();
 
 export type CurrentUser = {
   id: number;
@@ -38,4 +38,18 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
   } catch {
     return null;
   }
+}
+
+export function getApiOrigin() {
+    const raw = process.env.API_BASE_URL
+
+    if (!raw) {
+        throw new Error("API_BASE_URL not set")
+    }
+
+    // optional: for debugging
+    // console.log("API:", raw);
+
+    // enforces "absolute URL with scheme" (must include http:// or https://)
+    return new URL(raw).origin;
 }

@@ -30,6 +30,14 @@ export type DraftStateV2 = {
     variant?: "welcome" | "no_welcome";
 };
 
+export function hasMeaningfulDraftState(v: DraftStateV2): boolean {
+    return (
+        v.started ||
+        v.stepIndex > 1 ||
+        Object.keys(v.answers).length > 0
+    );
+}
+
 function isObject(v: unknown): v is Record<string, unknown> {
     return typeof v === "object" && v !== null;
 }
@@ -113,8 +121,12 @@ export function usePinterestPotentialDraft(initial: DraftStateV2) {
     useEffect(() => {
         if (!hydratedRef.current) hydratedRef.current = true;
 
-        // Avoid overwriting updated state with old draft values
-        safeWriteSession(DRAFT_STORAGE_KEY, JSON.stringify(draft));
+        if (hasMeaningfulDraftState(draft)) {
+            safeWriteSession(DRAFT_STORAGE_KEY, JSON.stringify(draft));
+            return;
+        }
+
+        safeRemoveSession(DRAFT_STORAGE_KEY);
     }, [draft]);
 
     const updateDraft = useCallback((patch: Partial<DraftStateV2>) => {

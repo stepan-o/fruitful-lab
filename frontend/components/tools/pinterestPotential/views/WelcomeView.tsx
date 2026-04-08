@@ -2,6 +2,11 @@
 "use client";
 
 import React from "react";
+import {
+    DRAFT_STORAGE_KEY,
+    hasMeaningfulDraftState,
+    type DraftStateV2,
+} from "@/components/tools/pinterestPotential/usePinterestPotentialDraft";
 
 export type WelcomeViewProps = {
     onStart: () => void;
@@ -64,6 +69,7 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
             const keys = Object.keys(ss);
 
             const draftKey =
+                (ss.getItem(DRAFT_STORAGE_KEY) ? DRAFT_STORAGE_KEY : null) ??
                 keys.find((k) => /(pinterestPotential|pinterest_potential|ppc).*(draft|state|wizard|progress)/i.test(k)) ??
                 keys.find((k) => /pinterestPotential/i.test(k)) ??
                 null;
@@ -74,13 +80,28 @@ export default function WelcomeView({ onStart, onReset }: WelcomeViewProps) {
             if (!raw) return;
 
             try {
-                const parsed = JSON.parse(raw);
-                const progressed =
-                    Boolean(parsed?.started) ||
-                    typeof parsed?.stepIndex === "number" ||
-                    typeof parsed?.step === "number" ||
-                    Boolean(parsed?.answers && Object.keys(parsed.answers).length > 0);
-                setHasDraft(progressed || true);
+                const parsed = JSON.parse(raw) as Partial<DraftStateV2> & {
+                    step?: number;
+                    answers?: Record<string, unknown>;
+                };
+                const normalized: DraftStateV2 = {
+                    stepIndex:
+                        typeof parsed.stepIndex === "number"
+                            ? parsed.stepIndex
+                            : typeof parsed.step === "number"
+                                ? parsed.step
+                                : 1,
+                    started: Boolean(parsed.started),
+                    answers:
+                        parsed.answers && typeof parsed.answers === "object"
+                            ? parsed.answers
+                            : {},
+                    variant:
+                        parsed.variant === "welcome" || parsed.variant === "no_welcome"
+                            ? parsed.variant
+                            : undefined,
+                };
+                setHasDraft(hasMeaningfulDraftState(normalized));
             } catch {
                 setHasDraft(true);
             }

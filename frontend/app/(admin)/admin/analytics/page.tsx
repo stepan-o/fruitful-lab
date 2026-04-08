@@ -1,7 +1,10 @@
 // frontend/app/(admin)/admin/analytics/page.tsx
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
+import { getErrorMessage, safeJson, parseUploadResponse } from "@/lib/utils/http";
+
+type Account = { account_name: string };
 
 type MonthlyRow = {
     id: number;
@@ -25,6 +28,9 @@ function fmtMonth(isoDate: string) {
 
 export default function AdminAnalyticsPage() {
     const [accountName, setAccountName] = useState("");
+    const [accounts, setAccounts] = useState<string[]>([])
+    const [accountsLoading, setAccountsLoading] = useState(false);
+    const [accountsError, setAccountsError] = useState<string | null>(null);
     const [file, setFile] = useState<File | null>(null);
 
     const [rows, setRows] = useState<MonthlyRow[]>([]);
@@ -34,6 +40,48 @@ export default function AdminAnalyticsPage() {
     const canSubmit = useMemo(() => {
         return accountName.trim().length > 0 && file !== null && !busy;
     }, [accountName, file, busy]);
+
+    useEffect(() => {
+        let alive = true;
+
+        (async () => {
+            try {
+                setAccountsLoading(true);
+                setAccountsError(null);
+
+                const res = await fetch(
+                    "/api/admin/pinterest-stats/accounts",
+                    { cache: "no-store" }
+                );
+                if (!res.ok) throw new Error(await res.text());
+
+                const data = (await res.json()) as { accounts: Account[] }
+                if (!alive) return;
+
+                const list = data.accounts ?? [];
+                setAccounts(list);
+
+                // default selection (only if none chosen yet)
+                if (!accountName && list.length > 0) {
+                    setAccountName(list[0]!.account_name);
+                }
+            } catch (e) {
+                if (!alive) return;
+                setAccountsError(e instanceof Error ? e.message : "Failed to load accounts");
+            } finally {
+                if (alive) setAccountsLoading(false)
+            }
+            //const list = (await res.json()) as string[];
+
+            //setAccounts(list);
+
+            //const fromQuery = new URLSearchParams(window.location.search).get("account");
+            //const initial = fromQuery || list[0] || "";
+
+            //if (initial && !accountName) setAccountName(initial);
+        })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     async function loadMonthly(name: string) {
         const res = await fetch(
@@ -74,9 +122,12 @@ export default function AdminAnalyticsPage() {
                 body: form,
             });
 
-            const data = await res.json().catch(() => null);
+            const raw = await safeJson(res);
+            const data = parseUploadResponse(raw);
+
             if (!res.ok) {
-                throw new Error(data?.detail ?? "Upload failed");
+                setMessage(`❌ ${data.detail ?? "Upload failed"}`);
+                return; // skip the success path
             }
 
             const inserted = data?.inserted ?? 0;
@@ -84,8 +135,8 @@ export default function AdminAnalyticsPage() {
             setMessage(`✅ Uploaded. Inserted: ${inserted}, Updated: ${updated}`);
 
             await loadMonthly(name);
-        } catch (err: any) {
-            setMessage(`❌ ${err?.message ?? "Something went wrong"}`);
+        } catch (err: unknown) {
+            setMessage(`❌ ${getErrorMessage(err)}`);
         } finally {
             setBusy(false);
         }

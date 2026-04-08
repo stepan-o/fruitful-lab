@@ -1,13 +1,27 @@
 // frontend/app/api/admin/pinterest-stats/monthly/route.ts
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { getApiOrigin } from "@/lib/auth";
 
-const API_BASE_URL =
-    process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+const API_BASE_URL = getApiOrigin();
 
 const COOKIE_NAME = "fruitful_access_token";
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
+
+    const accountName = req.nextUrl.searchParams.get("account_name")?.trim() ?? "";
+
+    if (!accountName) {
+        return NextResponse.json(
+            { success: false, detail: "account_name is required" },
+            { status: 400 },
+        );
+    }
+
+    const apiOrigin = getApiOrigin();
+    const url = new URL("/admin/pinterest-stats/monthly", apiOrigin);
+    url.searchParams.set("account_name", accountName);
+
     const cookieStore = await cookies();
     const token = cookieStore.get(COOKIE_NAME)?.value;
 
@@ -18,15 +32,8 @@ export async function GET(req: Request) {
         );
     }
 
-    const url = new URL(req.url);
-    const accountName = (url.searchParams.get("account_name") || "").trim();
-
-    if (!accountName) {
-        return NextResponse.json(
-            { success: false, detail: "account_name is required" },
-            { status: 400 },
-        );
-    }
+    // const url = new URL(req.url);
+    // const accountName = (url.searchParams.get("account_name") || "").trim();
 
     const upstreamUrl = new URL(
         `${API_BASE_URL}/admin/pinterest-stats/monthly`,

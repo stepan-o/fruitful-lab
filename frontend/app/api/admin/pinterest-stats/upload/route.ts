@@ -1,9 +1,9 @@
 // frontend/app/api/admin/pinterest-stats/upload/route.ts
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { getApiOrigin } from "@/lib/auth";
 
-const API_BASE_URL =
-    process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+const API_BASE_URL = getApiOrigin();
 
 const COOKIE_NAME = "fruitful_access_token";
 

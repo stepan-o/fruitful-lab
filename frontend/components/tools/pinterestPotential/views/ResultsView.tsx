@@ -211,12 +211,13 @@ function CandyBurstOverlay({
         if (!open) return;
 
         if (reducedMotion) {
-            const t = window.setTimeout(() => onClose(), 650);
+            const t = window.setTimeout(() => onClose(), 350);
             return () => window.clearTimeout(t);
         }
 
         const lvl = clamp(intensity, 1, 3);
         const count = lvl === 3 ? 140 : lvl === 2 ? 110 : 85;
+        const maxDelayMs = Math.min(lvl === 3 ? 240 : 200, Math.max(durationMs * 0.14, 110));
 
         const originX = 50; // %
         const originY = Math.round(window.innerHeight * 0.52); // px
@@ -268,8 +269,9 @@ function CandyBurstOverlay({
             const radius =
                 Math.random() < 0.45 ? size * 0.9 : Math.random() < 0.75 ? size * 0.35 : size * 0.15;
 
-            const dur = 3400 + Math.random() * (lvl === 3 ? 2200 : 2000);
-            const delay = Math.random() * (lvl === 3 ? 520 : 420);
+            const delay = Math.random() * maxDelayMs;
+            const availableMs = Math.max(1200, durationMs - delay - 140);
+            const dur = availableMs * (0.88 + Math.random() * 0.08);
 
             const spin = (Math.random() < 0.5 ? -1 : 1) * (520 + Math.random() * 980);
             const sway = (Math.random() < 0.5 ? -1 : 1) * (18 + Math.random() * 44);
@@ -313,7 +315,18 @@ function CandyBurstOverlay({
     if (!open) return null;
 
     const overlay = (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center" onClick={onClose} role="presentation">
+        <div
+            className="fixed inset-0 z-[60] flex items-center justify-center"
+            onClick={onClose}
+            role="presentation"
+            style={
+                {
+                    "--overlay-dur": `${Math.round(durationMs)}ms`,
+                    "--scrim-fade-delay": `${Math.max(0, Math.round(durationMs - 420))}ms`,
+                    "--copy-fade-delay": `${Math.max(0, Math.round(durationMs - 520))}ms`,
+                } as React.CSSProperties
+            }
+        >
             <div className="absolute inset-0 ppc-celebrate-scrim" aria-hidden="true" />
 
             <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -353,7 +366,7 @@ function CandyBurstOverlay({
                 ))}
             </div>
 
-            <div className="relative mx-6 max-w-xl text-center">
+            <div className="ppc-celebrate-copy relative mx-6 max-w-xl text-center">
                 {headline ? <div className="font-heading text-3xl text-white drop-shadow sm:text-4xl">{headline}</div> : null}
                 {subhead ? <div className="mt-2 text-sm text-white/80 sm:text-base">{subhead}</div> : null}
 
@@ -370,6 +383,15 @@ function CandyBurstOverlay({
             </div>
 
             <style jsx>{`
+                .ppc-celebrate-scrim {
+                    opacity: 0;
+                    animation:
+                        ppcCelebrateScrimIn 180ms ease-out forwards,
+                        ppcCelebrateScrimOut 420ms ease-in var(--scrim-fade-delay) forwards;
+                }
+                .ppc-celebrate-copy {
+                    animation: ppcCelebrateCopyOut 360ms ease-in var(--copy-fade-delay) forwards;
+                }
                 .ppc-candy {
                     position: absolute;
                     transform: translate3d(0, 0, 0);
@@ -387,6 +409,32 @@ function CandyBurstOverlay({
                 .ppc-candy-piece {
                     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
                     filter: saturate(1.15);
+                }
+                @keyframes ppcCelebrateScrimIn {
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 0.52;
+                    }
+                }
+                @keyframes ppcCelebrateScrimOut {
+                    0% {
+                        opacity: 0.52;
+                    }
+                    100% {
+                        opacity: 0.04;
+                    }
+                }
+                @keyframes ppcCelebrateCopyOut {
+                    0% {
+                        opacity: 1;
+                        transform: translate3d(0, 0, 0);
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: translate3d(0, 10px, 0);
+                    }
                 }
                 @keyframes ppcDrop {
                     0% {
@@ -546,7 +594,7 @@ export default function ResultsView(props: ResultsViewProps) {
         if (prevLockedRef.current && !locked) {
             t = window.setTimeout(() => {
                 setCelebrateCfg({
-                    durationMs: 4300,
+                    durationMs: 2800,
                     intensity: 3,
                     headline: "Unlocked.",
                     subhead: "Your full Pinterest Potential snapshot is ready.",
@@ -567,7 +615,7 @@ export default function ResultsView(props: ResultsViewProps) {
         if (!prevEmailedRef.current && emailed) {
             t = window.setTimeout(() => {
                 setCelebrateCfg({
-                    durationMs: 3200,
+                    durationMs: 2200,
                     intensity: 2,
                     headline: "Sent.",
                     subhead: "Snapshot delivered to your inbox.",

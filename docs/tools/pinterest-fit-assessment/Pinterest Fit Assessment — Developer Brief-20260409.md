@@ -181,6 +181,8 @@ How open are you to using paid Pinterest ads if they make strategic sense for yo
 ### CTA labels
 *   Strong fit → **Book a Fit Call**
 *   Possible fit → **Book a Fit Call**
+*   Not the right fit right now → **Book a Fit Call**
+### Optional CTA caption
 *   Not the right fit right now → **Still want to talk it through?**
 ### CTA subtext
 **Strong fit**
@@ -366,6 +368,14 @@ Eligibility:
 *   category fit <= 2
 *   goal type = sales
 If fewer than 3 blocker/caution reasons qualify, use the next-lowest scored signals until 3 reasons are filled.
+#### not-right-now fallback tiebreaker
+When multiple remaining signals have the same score, use this deterministic order:
+1. goal
+2. support readiness
+3. ads openness
+4. category
+5. offer
+This tiebreaker is only used after blocker/caution-eligible reasons have already been selected.
 * * *
 # Best role for Pinterest logic
 Assign exactly one role block.
@@ -374,6 +384,7 @@ Assign exactly one role block.
 *   `organic_first_ads_later`
 *   `sales_with_ads_support`
 *   `warm_audience_support`
+*   `selective_test_channel`
 *   `foundation_first`
 *   `not_priority_yet`
 ## Role rules
@@ -396,6 +407,14 @@ Use if:
 *   `q3_assets >= 3`
 *   `q4_website >= 3`
 *   `q5_goal_type in [discovery, traffic]`
+### `selective_test_channel`
+Use if:
+*   `q1_category_fit = 2`
+*   `q2_offer_proven >= 3`
+*   `q3_assets >= 3`
+*   `q4_website >= 3`
+*   `q5_goal_type in [discovery, traffic, launches]`
+*   `final outcome != not_right_now`
 ### `organic_first_ads_later`
 Use if:
 *   `q1_category_fit >= 3`
@@ -411,8 +430,9 @@ Use if:
 2. `sales_with_ads_support`
 3. `warm_audience_support`
 4. `discovery_traffic`
-5. `organic_first_ads_later`
-6. `foundation_first`
+5. `selective_test_channel`
+6. `organic_first_ads_later`
+7. `foundation_first`
 Acceptance requirement:
 *   Every valid answer set must resolve to exactly one role key.
 * * *
@@ -476,6 +496,7 @@ Based on your current foundation, Pinterest likely is not the best next priority
 *   `organic_first_ads_later` → The smartest path here may be to start with organic, then layer in ads once the foundation is stronger.
 *   `sales_with_ads_support` → Pinterest could support sales for your brand, especially if you pair a strong organic foundation with paid promotion.
 *   `warm_audience_support` → Pinterest could play a strong supporting role by helping your brand attract and warm up future buyers over time.
+*   `selective_test_channel` → Pinterest may be worth testing for your brand as a selective discovery channel, but it will likely need sharper positioning and stronger creative to prove out than a more natural-fit category.
 *   `foundation_first` → There may be potential here, but the smartest move is to strengthen the foundation before expecting Pinterest to do heavy lifting.
 *   `not_priority_yet` → Right now, Pinterest looks more like a later move than a now move — your foundation likely needs tightening first.
 * * *
@@ -485,10 +506,16 @@ All three result states must include:
 *   destination URL
 *   subtext
 *   tracking event
+Optional:
+*   supporting caption text above or below the button
 ## CTA labels
 *   `strong_fit` → section copy may vary, button label = `Book a Fit Call`
 *   `possible_fit` → section copy may vary, button label = `Book a Fit Call`
 *   `not_right_now` → section copy may vary, button label = `Book a Fit Call`
+## CTA caption rules
+*   `strong_fit` → no caption required
+*   `possible_fit` → no caption required
+*   `not_right_now` → optional caption = `Still want to talk it through?`
 ## CTA destination
 *   All three states use the same Fit Call booking URL unless explicitly changed later.
 ## CTA tracking
@@ -527,7 +554,8 @@ Optional richer events:
 *   q5=traffic
 *   q6=2
 *   q7=2
-*   Expected: `possible_fit`
+*   Expected: `not_right_now`
+*   Expected role: `not_priority_yet`
 ## Scenario 3 — sales expectation but low readiness
 *   q1=4
 *   q2=4
@@ -596,7 +624,21 @@ Optional richer events:
 *   Expected reasons:
 *   `reason_category_strong`
 *   `reason_offer_proven`
-*   `reason_ads_open`
+*   `reason_support_ready`
+## Scenario 9 — strong foundation, less natural category fit
+*   q1=2
+*   q2=4
+*   q3=4
+*   q4=4
+*   q5=discovery
+*   q6=3
+*   q7=3
+*   Expected: `strong_fit`
+*   Expected role: `selective_test_channel`
+*   Expected reasons:
+*   `reason_category_maybe`
+*   `reason_offer_proven`
+*   `reason_support_ready`
 * * *
 # What “done” means
 The new version is ready when:

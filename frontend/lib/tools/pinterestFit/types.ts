@@ -156,6 +156,13 @@ export type ResultReasons = readonly [string, string, string];
 export type AssessmentResultDebug = Readonly<{
     normalizedAnswers: StoredAssessmentAnswers;
     triggeredGuardrails: readonly GuardrailKey[];
+    signalScores: Readonly<Record<AssessmentSignalKey, number>>;
+    signalReasonKeys: Readonly<Record<AssessmentSignalKey, ReasonKey>>;
+    positiveSignals: readonly AssessmentSignalKey[];
+    blockerSignals: readonly AssessmentSignalKey[];
+    moderateSignals: readonly AssessmentSignalKey[];
+    selectedReasonSignals: readonly AssessmentSignalKey[];
+    matchedRole: RoleKey;
 }>;
 
 export type AssessmentResult = Readonly<{

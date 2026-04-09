@@ -336,7 +336,7 @@ Use exactly:
 Use exactly:
 1. highest-priority positive reason from the positive priority list
 2. next highest-priority positive reason from the positive priority list
-3. highest-priority blocker/caution reason from the blocker/caution priority list
+3. highest-priority blocker/caution reason from the blocker/caution priority list that is not already selected
 #### Positive eligibility
 A reason counts as positive if:
 *   category fit >= 3
@@ -355,7 +355,10 @@ A reason counts as blocker/caution if:
 *   ads openness <= 1
 *   category fit <= 2
 *   goal type = sales
+#### Moderate eligibility
+A reason counts as moderate if it is neither positive nor blocker/caution.
 If only one positive reason exists, fill the second slot with the highest-priority moderate reason using the same positive priority order.
+If no moderate reason exists, fill the second slot with the highest-priority remaining signal from the positive priority order.
 * * *
 ### If final outcome = not\_right\_now
 Use the top 3 reasons from the blocker/caution priority order.
@@ -375,6 +378,8 @@ When multiple remaining signals have the same score, use this deterministic orde
 3. ads openness
 4. category
 5. offer
+6. assets
+7. website
 This tiebreaker is only used after blocker/caution-eligible reasons have already been selected.
 * * *
 # Best role for Pinterest logic
@@ -409,7 +414,7 @@ Use if:
 *   `q5_goal_type in [discovery, traffic]`
 ### `selective_test_channel`
 Use if:
-*   `q1_category_fit = 2`
+*   `q1_category_fit <= 2`
 *   `q2_offer_proven >= 3`
 *   `q3_assets >= 3`
 *   `q4_website >= 3`
@@ -423,8 +428,9 @@ Use if:
 *   `q5_goal_type in [discovery, traffic, launches]`
 ### `foundation_first`
 Use if:
-*   `final outcome = possible_fit`
+*   `final outcome != not_right_now`
 *   and no higher-priority role matches
+This is the universal fallback role for any non-`not_right_now` result that does not satisfy a more specific role rule.
 ## Role priority order
 1. `not_priority_yet`
 2. `sales_with_ads_support`
@@ -497,7 +503,7 @@ Based on your current foundation, Pinterest likely is not the best next priority
 *   `sales_with_ads_support` → Pinterest could support sales for your brand, especially if you pair a strong organic foundation with paid promotion.
 *   `warm_audience_support` → Pinterest could play a strong supporting role by helping your brand attract and warm up future buyers over time.
 *   `selective_test_channel` → Pinterest may be worth testing for your brand as a selective discovery channel, but it will likely need sharper positioning and stronger creative to prove out than a more natural-fit category.
-*   `foundation_first` → There may be potential here, but the smartest move is to strengthen the foundation before expecting Pinterest to do heavy lifting.
+*   `foundation_first` → There may be real potential here, but one or more important prerequisites still need tightening before Pinterest should do heavy lifting.
 *   `not_priority_yet` → Right now, Pinterest looks more like a later move than a now move — your foundation likely needs tightening first.
 * * *
 # CTA rules
@@ -637,6 +643,34 @@ Optional richer events:
 *   Expected role: `selective_test_channel`
 *   Expected reasons:
 *   `reason_category_maybe`
+*   `reason_offer_proven`
+*   `reason_support_ready`
+## Scenario 10 — strong score but weak asset foundation
+*   q1=4
+*   q2=4
+*   q3=0
+*   q4=4
+*   q5=traffic
+*   q6=3
+*   q7=3
+*   Expected: `strong_fit`
+*   Expected role: `foundation_first`
+*   Expected reasons:
+*   `reason_category_strong`
+*   `reason_offer_proven`
+*   `reason_support_ready`
+## Scenario 11 — strong foundation, weak natural category fit
+*   q1=1
+*   q2=4
+*   q3=4
+*   q4=4
+*   q5=discovery
+*   q6=3
+*   q7=3
+*   Expected: `strong_fit`
+*   Expected role: `selective_test_channel`
+*   Expected reasons:
+*   `reason_category_weak`
 *   `reason_offer_proven`
 *   `reason_support_ready`
 * * *

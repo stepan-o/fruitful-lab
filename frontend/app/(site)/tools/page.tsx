@@ -14,10 +14,10 @@ type ToolCard = {
 
 const TOOLS: ToolCard[] = [
     {
-        title: "Pinterest Potential Calculator",
+        title: "Pinterest Fit Assessment",
         description:
-            "Estimate how much traffic + lead volume Pinterest could realistically drive based on your site + cadence.",
-        href: "/tools/pinterest-potential",
+            "A short assessment for product-based brands to see whether Pinterest makes sense, what role it could play, and whether it is worth exploring further.",
+        href: "/tools/pinterest-fit-assessment",
         status: "live",
     },
     {
@@ -58,12 +58,12 @@ export default function ToolsIndexPage() {
             <section className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6 sm:py-12 lg:py-20">
                 <div className="max-w-2xl">
                     <h1 className="font-heading text-3xl leading-tight sm:text-4xl">
-                        Tools &amp; Calculators
+                        Tools &amp; Assessments
                     </h1>
                     <p className="mt-4 text-base sm:text-lg leading-relaxed text-[var(--foreground-muted)]">
-                        A curated set of utilities for planning Pinterest campaigns, forecasting budgets,
-                        and optimizing funnels. We’re polishing the first batch — but you can already try the
-                        first tool below.
+                        A curated set of tools for evaluating Pinterest opportunities, planning campaigns,
+                        and strengthening the path from discovery to conversion. The first live tool is built
+                        specifically for product-based brands.
                     </p>
                 </div>
 
@@ -71,7 +71,7 @@ export default function ToolsIndexPage() {
                 <div className="mt-10">
                     <Link
                         href={primary.href!}
-                        onClick={() => trackCtaClick("Open calculator →", { location: "/tools" })}
+                        onClick={() => trackCtaClick("Start assessment →", { location: "/tools" })}
                         className="
               group block rounded-2xl border border-[var(--brand-raspberry)]
               bg-[var(--card)] p-8 transition
@@ -86,7 +86,8 @@ export default function ToolsIndexPage() {
                         </div>
 
                         <p className="mt-2 max-w-prose text-sm sm:text-base leading-relaxed text-[var(--foreground-muted)]">
-                            Get a realistic traffic + lead range from Pinterest — based on your site + cadence.
+                            Find out whether Pinterest is a fit for your brand, what role it could play,
+                            and whether it is worth exploring further.
                         </p>
 
                         <div className="mt-4">
@@ -94,27 +95,27 @@ export default function ToolsIndexPage() {
                                 What you’ll get
                             </p>
                             <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-[var(--foreground-muted)]">
-                                <li>Estimated monthly clicks + sessions</li>
-                                <li>Lead range based on conversion assumptions</li>
-                                <li>Pacing suggestion: pins/week + time-to-signal</li>
+                                <li>A clear fit outcome for your brand</li>
+                                <li>The top reasons behind that result</li>
+                                <li>The best role Pinterest could play for you</li>
                             </ul>
                         </div>
 
                         <p className="mt-4 text-xs sm:text-sm text-[var(--foreground-muted)]">
-                            You’ll need: your monthly traffic + email opt-in / conversion rate (or we’ll use defaults).
+                            Built for product-based brands only.
                         </p>
 
                         <p className="mt-1 text-[11px] text-[var(--foreground-muted)]">
-                            Takes ~2 minutes • No login • Built for practitioners
+                            Takes ~2 minutes • No login • Fixed 7-question flow
                         </p>
 
                         <div className="mt-6">
               <span className="inline-flex items-center gap-2 font-medium text-[var(--foreground)]">
-                Open calculator →
+                Start assessment →
               </span>
                             <div className="mt-1">
                 <span className="text-xs text-[var(--foreground-muted)] underline underline-offset-4 transition-colors group-hover:text-[var(--brand-heading)]">
-                  What does this estimate?
+                  See if Pinterest is a fit
                 </span>
                             </div>
                         </div>

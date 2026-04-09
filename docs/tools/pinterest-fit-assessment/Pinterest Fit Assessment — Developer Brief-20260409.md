@@ -542,6 +542,37 @@ Optional richer events:
 *   `assessment_q5_goal_selected`
 *   `assessment_q7_ads_selected`
 * * *
+# Remaining implementation gaps
+These items do not block the scoring engine, but they are still open implementation decisions and should be resolved during build.
+## 1) CTA destination URL
+The brief currently requires a destination URL for all result states, but the actual Fit Call booking URL is not specified yet.
+Implementation note:
+*   add the final booking URL before shipping
+*   keep all three result states pointed to the same URL unless strategy changes
+## 2) Tracking payload schema
+The event names are defined, but the payload contract is still open for most events.
+Implementation note:
+*   define the minimum payload for `assessment_started`
+*   define the minimum payload for `assessment_question_completed`:
+question id, selected answer, step number, and session/run id are the likely minimums
+*   define the minimum payload for `assessment_completed`:
+final score, final outcome, role key, and session/run id are the likely minimums
+*   define whether the `result_*` events should include score, role key, and reason keys
+## 3) Off-target visitor handling
+The outreach-first V1 removes the pre-screen from the main flow, but the brief does not yet define what should happen if a non-product brand lands on the tool anyway.
+Implementation note:
+*   decide whether to allow completion as-is
+*   or show a soft disclaimer on the intro screen
+*   or redirect off-target visitors to a different contact path
+## 4) Interaction details
+The screen order and question content are defined, but the interaction behavior is still open.
+Implementation note:
+*   decide whether each answer auto-advances or requires an explicit Next action
+*   decide whether back navigation is allowed on every question screen
+*   decide whether progress should be shown as steps, percentage, or both
+*   decide whether answers should persist on refresh or session return
+*   decide whether the result screen should support restarting the assessment
+* * *
 # QA scenarios
 ## Scenario 1 — clear strong fit
 *   q1=4

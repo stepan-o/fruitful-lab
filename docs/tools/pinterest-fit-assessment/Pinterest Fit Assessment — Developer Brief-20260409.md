@@ -1,6 +1,6 @@
-# Pinterest Fit Assessment — Developer Brief
+# Revised Brief
 
-# Pinterest Fit Assessment
+# Pinterest Fit Assessment — Developer Brief for Stepan
 ## Purpose
 This brief outlines the changes needed to turn the current broader Pinterest potential tool into a tighter **Pinterest Fit Assessment** for **product-based brands**.
 The goal of this version is to:
@@ -68,15 +68,15 @@ No pre-screen in this outreach-first version.
 Frame the tool clearly and set expectations.
 ### Copy
 **Title**
-Could Pinterest Be a Bigger Opportunity for Your Brand Than You Think?
+Is Pinterest Actually a Fit for Your Brand?
 **Subtitle**
-In less than 2 minutes, find out whether Pinterest is a real opportunity for your brand — or just a distraction.
+Take this short assessment to see whether Pinterest makes sense for your brand, what role it could play, and whether it’s worth exploring further.
 **Support line**
 Built for product-based brands.
 **Primary button**
-See If It’s a Fit
+Start the Assessment
 **Small note**
-Takes less than 2 minutes.
+Takes about 2 minutes.
 ### Notes
 *   Keep this screen clean and short.
 *   No extra explanation needed.
@@ -84,7 +84,7 @@ Takes less than 2 minutes.
 * * *
 ## 2) Q1 — Category fit
 ### Question
-Which category best describes what you sell?
+Which category best fits your brand?
 ### Options + score
 *   Home & Decor = 4
 *   DIY / Home Improvement = 4
@@ -101,12 +101,12 @@ Which category best describes what you sell?
 * * *
 ## 3) Q2 — Product/collection proof
 ### Question
-How much traction does the product or collection you’d promote already have?
+How proven is the product or collection you’d want Pinterest to support?
 ### Options + score
-*   We already know it sells well = 4
-*   We’ve seen some traction = 3
-*   It’s launched, but still early = 1
-*   It’s not really proven yet = 0
+*   Very proven — it already sells and we know people want it = 4
+*   Somewhat proven — we’ve seen traction, but it’s not a standout yet = 3
+*   Early — it’s live, but still pretty new or untested = 1
+*   Not proven yet — we’re still figuring out what will land best = 0
 ### Stored fields
 *   `q2_offer_proven`
 * * *
@@ -125,20 +125,20 @@ How strong are your content assets right now — both visual and educational?
 ### Question
 If Pinterest started sending people to your website, how ready would it feel?
 ### Options + score
-*   We’d feel good sending traffic there now = 4
-*   It’s decent, but could use tightening = 3
-*   It works, but the experience has gaps = 1
-*   It’s not really ready for traffic yet= 0
+*   Ready — clear, credible, easy to shop = 4
+*   Mostly ready — solid overall, with a few gaps = 3
+*   Somewhat ready — workable, but not very polished = 1
+*   Not ready — confusing, weak, or not conversion-friendly = 0
 ### Stored fields
 *   `q4_website`
 * * *
 ## 6) Q5 — Desired outcome
 ### Question
-If Pinterest worked well for your brand, what would you want it to do first?
+What would you want to get out of Pinterest the most?
 ### Options + score/type
-*   Get my brand in front of new people = score 3 / type `discovery`
-*   Drive traffic to my product or collection pages = score 3 / type `traffic`
-*   Support my launches, seasonal pushes, or promotions = score 3 / type `launches`
+*   Get the brand in front of new people = score 3 / type `discovery`
+*   Drive traffic to product or collection pages = score 3 / type `traffic`
+*   Support launches, seasonal pushes, or promotions = score 3 / type `launches`
 *   Build a warm audience we can retarget later = score 3 / type `retargeting`
 *   Help drive sales sooner rather than later = score 2 / type `sales`
 ### Stored fields
@@ -147,7 +147,7 @@ If Pinterest worked well for your brand, what would you want it to do first?
 * * *
 ## 7) Q6 — Readiness to invest in expert support
 ### Question
-How ready would you be to bring in expert Pinterest support if the opportunity looked real?
+How ready are you to invest in expert Pinterest support if it looks like a fit?
 ### Options + score
 *   Ready now = 3
 *   Open, but we’d want to start lean = 2
@@ -158,7 +158,7 @@ How ready would you be to bring in expert Pinterest support if the opportunity l
 * * *
 ## 8) Q7 — Openness to ads
 ### Question
-How willing would you be to use Pinterest ads as part of the right strategy?
+How open are you to using paid Pinterest ads if they make strategic sense for your brand?
 ### Options + score
 *   Very open — we’d consider ads as part of the strategy = 3
 *   Somewhat open — maybe later, once the foundation is there = 2
@@ -169,9 +169,9 @@ How willing would you be to use Pinterest ads as part of the right strategy?
 * * *
 ## 9) Result screen
 ### Result types
-*   Pinterest Could Be a Strong Growth Channel for Your Brand
-*   Pinterest Could Work for Your Brand — With the Right Strategy
-*   Pinterest May Be Premature for Your Brand Right Now
+*   Strong fit
+*   Possible fit
+*   Not the right fit right now
 ### Result page should contain
 1. outcome label
 2. short intro paragraph
@@ -179,14 +179,14 @@ How willing would you be to use Pinterest ads as part of the right strategy?
 4. “Best role for Pinterest” block
 5. CTA
 ### CTA labels
-*   Strong fit → **Want to talk through what this could look like for your brand? Book a Fit Call**
-*   Possible fit →**Want help figuring out whether Pinterest is worth pursuing for your brand?** **Book a Fit Call**
-*   Not the right fit right now → **Still want to talk it through or get a second opinion?**
+*   Strong fit → **Book a Fit Call**
+*   Possible fit → **Book a Fit Call**
+*   Not the right fit right now → **Still want to talk it through?**
 ### CTA subtext
 **Strong fit**
-Based on your answers, Pinterest looks like a channel your brand should be taking seriously.
+Your brand looks like it could be a strong candidate for Pinterest. Let’s talk through what that could look like.
 **Possible fit**
-There may be real potential here, but whether Pinterest is worth pursuing depends on a few strategic factors.
+There may be real potential here, but it depends on a few strategic factors. A fit call can help clarify that.
 **Not right now**
 If you want a second opinion on whether Pinterest is worth exploring later, you can still reach out.
 * * *
@@ -214,7 +214,7 @@ If:
 *   `q3_assets = 0`
 *   `q4_website = 0`
 Then:
-*   if base outcome is `strong_fit`, downgrade to `possible_fit`
+*   final outcome = `not_right_now`
 ## Guardrail C
 If:
 *   `q1_category_fit = 1`
@@ -301,129 +301,199 @@ Show exactly **3 reasons**.
 *   q7=0 → `reason_ads_not_open`
 * * *
 ## Reason selection by outcome
+Show exactly **3 reasons** in a fixed order.
+### Deterministic priority lists
+#### Positive priority order
+1. category
+2. offer
+3. assets
+4. website
+5. support readiness
+6. ads openness
+7. goal
+#### Blocker / caution priority order
+1. website
+2. assets
+3. offer
+4. support readiness
+5. ads openness
+6. category
+7. goal
+* * *
+## Reason selection rules
 ### If final outcome = strong\_fit
-Pick:
+Use exactly:
 1. category reason
-2. strongest foundation reason from offer/assets/website
-3. strongest readiness or goal reason from support/ads/goal
+2. best foundation reason among offer / assets / website
+3. best readiness / intent reason among support / ads / goal
+#### Strong-fit tiebreakers
+*   Foundation tiebreaker order: offer > assets > website
+*   Readiness/intent tiebreaker order: support > ads > goal
+* * *
 ### If final outcome = possible\_fit
-Pick:
-1. strongest positive reason
-2. second-best positive or moderate reason
-3. biggest limiting reason
+Use exactly:
+1. highest-priority positive reason from the positive priority list
+2. next highest-priority positive reason from the positive priority list
+3. highest-priority blocker/caution reason from the blocker/caution priority list
+#### Positive eligibility
+A reason counts as positive if:
+*   category fit >= 3
+*   offer >= 3
+*   assets >= 3
+*   website >= 3
+*   support readiness >= 2
+*   ads openness >= 2
+*   goal type is discovery / traffic / launches / retargeting
+#### Blocker / caution eligibility
+A reason counts as blocker/caution if:
+*   website <= 1
+*   assets <= 1
+*   offer <= 1
+*   support readiness <= 1
+*   ads openness <= 1
+*   category fit <= 2
+*   goal type = sales
+If only one positive reason exists, fill the second slot with the highest-priority moderate reason using the same positive priority order.
+* * *
 ### If final outcome = not\_right\_now
-Pick:
-1. biggest blocker
-2. second-biggest blocker
-3. third blocker or caution
+Use the top 3 reasons from the blocker/caution priority order.
+Eligibility:
+*   website <= 1
+*   assets <= 1
+*   offer <= 1
+*   support readiness <= 1
+*   ads openness <= 1
+*   category fit <= 2
+*   goal type = sales
+If fewer than 3 blocker/caution reasons qualify, use the next-lowest scored signals until 3 reasons are filled.
 * * *
 # Best role for Pinterest logic
-Assign one role block.
+Assign exactly one role block.
 ## Role keys
 *   `discovery_traffic`
 *   `organic_first_ads_later`
-*   `seasonal_campaign_support`
+*   `sales_with_ads_support`
 *   `warm_audience_support`
+*   `foundation_first`
 *   `not_priority_yet`
 ## Role rules
-### `discovery_traffic`
+### `not_priority_yet`
 Use if:
-*   q1 >= 3
-*   q3 >= 3
-*   q4 >= 3
-*   q5\_goal\_type in \[discovery, traffic\]
-### `organic_first_ads_later`
+*   `final outcome = not_right_now`
+### `sales_with_ads_support`
 Use if:
-*   q1 >= 3
-*   q3 >= 1
-*   q4 >= 1
-*   q7 in \[1,2\]
-*   q5\_goal\_type in \[discovery, traffic, launches\]
-### `seasonal_campaign_support`
-Use if:
-*   q5\_goal\_type = launches
-*   q2 >= 3
-*   q3 >= 3
+*   `q5_goal_type = sales`
+*   `q2_offer_proven >= 3`
+*   `q4_website >= 3`
+*   `q7_ads_openness >= 2`
 ### `warm_audience_support`
 Use if:
-*   q5\_goal\_type = retargeting
-*   q6 >= 1
-*   q7 >= 1
-### `not_priority_yet`
-Use if any:
-*   q2 <= 1
-*   q3 <= 1 and q4 <= 1
-*   q6 = 0
-*   final outcome = not\_right\_now
+*   `q5_goal_type = retargeting`
+*   `final outcome != not_right_now`
+### `discovery_traffic`
+Use if:
+*   `q1_category_fit >= 3`
+*   `q3_assets >= 3`
+*   `q4_website >= 3`
+*   `q5_goal_type in [discovery, traffic]`
+### `organic_first_ads_later`
+Use if:
+*   `q1_category_fit >= 3`
+*   `q3_assets >= 1`
+*   `q4_website >= 1`
+*   `q5_goal_type in [discovery, traffic, launches]`
+### `foundation_first`
+Use if:
+*   `final outcome = possible_fit`
+*   and no higher-priority role matches
 ## Role priority order
-If multiple match, use:
 1. `not_priority_yet`
-2. `seasonal_campaign_support`
+2. `sales_with_ads_support`
 3. `warm_audience_support`
 4. `discovery_traffic`
 5. `organic_first_ads_later`
+6. `foundation_first`
+Acceptance requirement:
+*   Every valid answer set must resolve to exactly one role key.
 * * *
 # Copy bank
 ## Result headlines
 ### Strong fit
-Pinterest Could Be a Strong Growth Channel for Your Brand
+Your brand looks like a strong fit for Pinterest.
 ### Possible fit
-Pinterest Could Work for Your Brand — With the Right Strategy
+Your brand could be a fit for Pinterest — but a few things may need tightening first.
 ### Not right now
-Pinterest May Be Premature for Your Brand Right Now
+Pinterest does not look like the right next move for your brand right now.
 * * *
 ## Standard result intros
 ### Strong fit
-Your answers suggest Pinterest could be a real growth opportunity for your brand — not just a nice-to-have.
+Based on your answers, Pinterest looks like a channel that could make strategic sense for your brand.
 ### Possible fit
-There’s real potential here, but whether Pinterest pays off for your brand depends on how you approach it.
+There may be real potential here, but whether Pinterest is worth prioritizing depends on a few important factors.
 ### Not right now
-**Pinterest doesn’t look like the smartest next move for your brand right now — at least not** with your current setup.
+Based on your current foundation, Pinterest likely is not the best next priority right now.
 * * *
 ## Reason copy
 ### Category
-*   `reason_category_strong` → Your niche has strong Pinterest potential — millions of people are actively looking for products and solutions like yours.
-*   `reason_category_good` → Your product category can work well on Pinterest, especially with the right positioning and creative strategy.
-*   `reason_category_maybe` → There may be room for your brand on Pinterest, but it will take sharper positioning to stand out.
-*   `reason_category_weak` → Your category is not the most obvious Pinterest fit, so the channel has more to prove in your case.
+*   `reason_category_strong` → Your category is a strong natural fit for Pinterest.
+*   `reason_category_good` → Your category can work well on Pinterest with the right strategy and assets.
+*   `reason_category_maybe` → Your category may have potential on Pinterest, but it needs stronger positioning to stand out.
+*   `reason_category_weak` → Your category is not the most natural Pinterest fit, so the case needs to be stronger elsewhere.
 ### Offer
-*   `reason_offer_proven` → You already have a product or collection with real traction, which gives Pinterest something strong to amplify.
-*   `reason_offer_some_traction` → You’re not starting from zero — there’s already enough traction here to make Pinterest worth considering.
+*   `reason_offer_proven` → You already have a proven product or collection, which makes Pinterest easier to test strategically.
+*   `reason_offer_some_traction` → You have some product traction already, which gives Pinterest something solid to support.
 *   `reason_offer_early` → Your product is still early, which makes Pinterest harder to evaluate as a channel right now.
-*   `reason_offer_unproven` → Your offer still needs stronger proof of demand before Pinterest becomes a smart next move.
+*   `reason_offer_unproven` → Your offer is not proven enough yet, so Pinterest would likely be premature.
 ### Assets
-*   `reason_assets_strong` → You already have the kind of visual and supporting content that turns Pinterest traffic into potential customers.
-*   `reason_assets_decent` → You have enough content to start getting discovered in front of the right audience, even if there are still some gaps.
-*   `reason_assets_limited` → Your content library feels a bit thin right now, which means Pinterest may work more slowly.
-*   `reason_assets_weak` → Right now, your brand would need a much stronger content foundation before Pinterest makes sense to prioritize.
+*   `reason_assets_strong` → You already have strong visual and supporting content assets, which is a big advantage on Pinterest.
+*   `reason_assets_decent` → You have enough content to start, even if your asset library still has some gaps.
+*   `reason_assets_limited` → Your current content depth is limited, which may make Pinterest harder to sustain well.
+*   `reason_assets_weak` → You would need to build much stronger content assets before Pinterest becomes a smart priority.
 ### Website
-*   `reason_site_ready` → Your website looks ready to turn Pinterest visitors into potential customers.
-*   `reason_site_solid` → Your site is in decent shape, which gives Pinterest a workable place to send traffic.
+*   `reason_site_ready` → Your website looks ready to support Pinterest traffic.
+*   `reason_site_solid` → Your site is in solid shape overall, which gives Pinterest a workable landing point.
 *   `reason_site_friction` → Your website may still create friction if Pinterest starts driving traffic.
 *   `reason_site_not_ready` → Your website is not ready enough yet to make Pinterest traffic worth pursuing.
 ### Goal
-*   `reason_goal_discovery` → Your goal lines up with one of Pinterest’s biggest strengths: getting your brand discovered by the right people.
+*   `reason_goal_discovery` → Your goals match one of Pinterest’s biggest strengths: helping new people discover your brand.
 *   `reason_goal_traffic` → Pinterest can be a strong fit when the goal is driving qualified traffic to products or collections.
-*   `reason_goal_launches` → Pinterest can work well for launches and seasonal pushes when there’s a clear offer and enough creative support behind it.
+*   `reason_goal_launches` → Pinterest can support launches and seasonal moments well when the assets and timing are there.
 *   `reason_goal_retargeting` → Using Pinterest to build a warmer audience can make strategic sense, especially as part of a broader funnel.
-*   `reason_goal_sales_caution` → Pinterest can support sales, but it usually works best when the foundation is strong — and it can be especially powerful when paired with ads.
+*   `reason_goal_sales_caution` → Your sales goals may be possible, but Pinterest usually works best with the right foundation and expectations.
 ### Support readiness
-*   `reason_support_ready` → You’re ready to take action if the opportunity is there, which makes Pinterest much more realistic to test now.
-*   `reason_support_open` → You’re open enough to explore this seriously, even if you’d want to start lean.
-*   `reason_support_cautious` → There’s interest here, but the hesitation could slow momentum if Pinterest does look promising.
-*   `reason_support_not_committed` → Right now, there doesn’t seem to be enough commitment behind seriously exploring Pinterest.
+*   `reason_support_ready` → You seem ready to invest if the opportunity is there, which makes testing Pinterest much more realistic.
+*   `reason_support_open` → You’re open to testing Pinterest in a lean way, which is often enough to start well.
+*   `reason_support_cautious` → Your current readiness is cautious, which may slow momentum even if the fit is there.
+*   `reason_support_not_committed` → Right now, there does not seem to be enough commitment behind exploring Pinterest seriously.
 ### Ads
 *   `reason_ads_open` → You’re open to ads if they make sense, which gives Pinterest more room to become a meaningful channel.
-*   `reason_ads_later` → You’re open to ads later, which gives Pinterest a clearer path if the organic foundation looks promising.
+*   `reason_ads_later` → You’re open to ads later, which can work well once the foundation is clearer.
 *   `reason_ads_unsure` → You’re still unsure about ads, so Pinterest may need to start as a slower organic test.
 *   `reason_ads_not_open` → If ads are fully off the table, Pinterest may need to play a narrower role for your brand.
 * * *
 ## Role copy
-*   `discovery_traffic` → Pinterest looks most promising here as a discovery and traffic channel for your brand.
-*   `organic_first_ads_later` → Pinterest may make the most sense as an organic-first channel, with room to layer ads later if the foundation proves strong.
-*   `seasonal_campaign_support` →Pinterest may be most useful for your brand if you build the foundation first, then use it to support launches, promotions, and seasonal moments more strategically.
+*   `discovery_traffic` → Pinterest looks most promising for your brand as a discovery and traffic channel — helping more of your ideal audience find you.
+*   `organic_first_ads_later` → The smartest path here may be to start with organic, then layer in ads once the foundation is stronger.
+*   `sales_with_ads_support` → Pinterest could support sales for your brand, especially if you pair a strong organic foundation with paid promotion.
 *   `warm_audience_support` → Pinterest could play a strong supporting role by helping your brand attract and warm up future buyers over time.
-*   `not_priority_yet` → Pinterest does not look like the right priority right now. Your foundation likely needs more work before this channel becomes worth serious attention.
+*   `foundation_first` → There may be potential here, but the smartest move is to strengthen the foundation before expecting Pinterest to do heavy lifting.
+*   `not_priority_yet` → Right now, Pinterest looks more like a later move than a now move — your foundation likely needs tightening first.
+* * *
+# CTA rules
+All three result states must include:
+*   explicit button label
+*   destination URL
+*   subtext
+*   tracking event
+## CTA labels
+*   `strong_fit` → section copy may vary, button label = `Book a Fit Call`
+*   `possible_fit` → section copy may vary, button label = `Book a Fit Call`
+*   `not_right_now` → section copy may vary, button label = `Book a Fit Call`
+## CTA destination
+*   All three states use the same Fit Call booking URL unless explicitly changed later.
+## CTA tracking
+*   All three states fire `cta_fit_call_clicked`
+*   Include result variant in payload, e.g. `result_variant = strong_fit | possible_fit | not_right_now`
 * * *
 # Tracking events
 Recommended minimum events:
@@ -493,7 +563,40 @@ Optional richer events:
 *   q5=retargeting
 *   q6=0
 *   q7=0
-*   Expected: likely `possible_fit` or `not_right_now` depending on total
+*   Expected: `possible_fit`
+*   Expected role: `warm_audience_support`
+*   Expected reasons:
+*   `reason_category_strong`
+*   `reason_offer_some_traction`
+*   `reason_support_not_committed`
+## Scenario 7 — weak assets + weak website
+*   q1=4
+*   q2=4
+*   q3=0
+*   q4=0
+*   q5=traffic
+*   q6=3
+*   q7=3
+*   Expected: `not_right_now`
+*   Expected role: `not_priority_yet`
+*   Expected reasons:
+*   `reason_site_not_ready`
+*   `reason_assets_weak`
+*   `reason_goal_traffic`
+## Scenario 8 — strong sales-oriented respondent
+*   q1=4
+*   q2=4
+*   q3=4
+*   q4=4
+*   q5=sales
+*   q6=3
+*   q7=3
+*   Expected: `strong_fit`
+*   Expected role: `sales_with_ads_support`
+*   Expected reasons:
+*   `reason_category_strong`
+*   `reason_offer_proven`
+*   `reason_ads_open`
 * * *
 # What “done” means
 The new version is ready when:

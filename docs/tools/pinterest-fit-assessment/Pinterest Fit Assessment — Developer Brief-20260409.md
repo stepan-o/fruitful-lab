@@ -9,7 +9,8 @@ The goal of this version is to:
 *   surface the top reasons behind that outcome
 *   move the right leads toward a **Fit Call**
 This version can be built as a **new standalone tool from scratch**.
-The existing Pinterest Potential Calculator code should be **preserved in the repo as-is**, but it will be **removed from the live website flow and replaced by this new tool**.
+The existing Pinterest Potential Calculator code should be **preserved in the repo as-is**.
+The new assessment should live at a **new public route**, while the old calculator remains available only via its direct legacy URL and is no longer surfaced from the main tools page.
 * * *
 ## Key strategic change
 We are narrowing the tool from a broader multi-audience Pinterest tool into a **brand-specific assessment**.
@@ -39,8 +40,19 @@ This tool does **not** need to inherit the previous calculator architecture.
 It can be implemented as a **greenfield frontend tool** shaped specifically around this assessment spec.
 ### Practical implication
 *   preserve the existing Pinterest Potential Calculator code for future reference or reuse
-*   replace the current website entry point with this new assessment experience
+*   add a new route for this assessment rather than replacing the legacy calculator route
+*   update the tools index so it points to this new assessment instead of the old calculator
+*   leave the old calculator accessible only to users who visit its direct URL
 *   do not contort this build to fit the previous multi-audience scoring model
+## Route strategy
+### Public entry
+The Pinterest Fit Assessment should be implemented at:
+*   `/tools/pinterest-fit-assessment`
+### Legacy route
+The existing Pinterest Potential Calculator route:
+*   should remain available at `/tools/pinterest-potential`
+*   should not be removed in this phase
+*   should not be linked from the main tools page once the new assessment is live
 ## Architecture preference
 Prefer a **simple client-side React implementation** with:
 *   a small, assessment-specific question/config spec
@@ -733,7 +745,9 @@ The new version is ready when:
 *   the old audience branching is removed
 *   the new 7-question flow is live
 *   results are based on fit logic rather than potential-style forecasting
-*   the new tool replaces the old calculator in the website flow while the old calculator code remains preserved in the repo
+*   the new tool is live at `/tools/pinterest-fit-assessment`
+*   the main tools page links to the new assessment instead of the old calculator
+*   the old calculator code and direct legacy URL remain preserved in the repo
 *   the CTA points to the fit call
 *   tracking is in place
 *   QA scenarios behave as expected

@@ -8,7 +8,8 @@ The goal of this version is to:
 *   give a clear outcome
 *   surface the top reasons behind that outcome
 *   move the right leads toward a **Fit Call**
-This is a **rework of the existing React build**, not a rebuild.
+This version can be built as a **new standalone tool from scratch**.
+The existing Pinterest Potential Calculator code should be **preserved in the repo as-is**, but it will be **removed from the live website flow and replaced by this new tool**.
 * * *
 ## Key strategic change
 We are narrowing the tool from a broader multi-audience Pinterest tool into a **brand-specific assessment**.
@@ -31,6 +32,24 @@ If traffic is intentionally sent only to product brands, the pre-screen adds unn
 ### Recommendation
 *   remove pre-screen from the main V1 experience
 *   keep the code modular enough that a pre-screen can be reintroduced later if this becomes a public tool
+* * *
+# Implementation direction
+## Build approach
+This tool does **not** need to inherit the previous calculator architecture.
+It can be implemented as a **greenfield frontend tool** shaped specifically around this assessment spec.
+### Practical implication
+*   preserve the existing Pinterest Potential Calculator code for future reference or reuse
+*   replace the current website entry point with this new assessment experience
+*   do not contort this build to fit the previous multi-audience scoring model
+## Architecture preference
+Prefer a **simple client-side React implementation** with:
+*   a small, assessment-specific question/config spec
+*   a pure scoring/result engine
+*   a thin UI flow layer for intro, questions, and results
+### V1 constraint
+*   no backend dependency is required for scoring
+*   no session storage or draft persistence is required
+*   if the page is refreshed before completion, the assessment may restart from the intro screen
 * * *
 # Final V1 flow
 ## Screen order
@@ -570,8 +589,11 @@ Implementation note:
 *   decide whether each answer auto-advances or requires an explicit Next action
 *   decide whether back navigation is allowed on every question screen
 *   decide whether progress should be shown as steps, percentage, or both
-*   decide whether answers should persist on refresh or session return
 *   decide whether the result screen should support restarting the assessment
+### Confirmed interaction constraints
+*   do **not** persist unfinished answers in session storage or local storage for V1
+*   do **not** implement resume-on-refresh behavior for V1
+*   it is acceptable for a refresh to reset the tool to the intro screen
 * * *
 # QA scenarios
 ## Scenario 1 — clear strong fit
@@ -711,6 +733,7 @@ The new version is ready when:
 *   the old audience branching is removed
 *   the new 7-question flow is live
 *   results are based on fit logic rather than potential-style forecasting
+*   the new tool replaces the old calculator in the website flow while the old calculator code remains preserved in the repo
 *   the CTA points to the fit call
 *   tracking is in place
 *   QA scenarios behave as expected

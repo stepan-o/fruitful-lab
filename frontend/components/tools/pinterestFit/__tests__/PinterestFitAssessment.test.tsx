@@ -65,6 +65,9 @@ describe("PinterestFitAssessment", () => {
             await screen.findByRole("heading", { name: /your brand looks like a strong fit for pinterest/i }),
         ).toBeInTheDocument();
         expect(screen.getByRole("button", { name: /restart/i })).toBeInTheDocument();
+        expect(
+            screen.getByText(/todo: replace the fit call booking url in frontend\/lib\/tools\/pinterestFit\/config\.ts before shipping\./i),
+        ).toBeInTheDocument();
     });
 
     it("renders the results screen with fit-specific blocks and only shows the talk-it-through caption for not_right_now", () => {
@@ -215,5 +218,66 @@ describe("PinterestFitAssessment", () => {
                 cta_url: "TODO_ADD_REAL_FIT_CALL_URL_BEFORE_SHIPPING",
             }),
         );
+    });
+
+    it("resets back to the intro when restarting from results", async () => {
+        const user = userEvent.setup();
+
+        render(<PinterestFitAssessment />);
+
+        await user.click(screen.getByRole("button", { name: /start the assessment/i }));
+        await user.click(screen.getByRole("button", { name: /home & decor/i }));
+        await user.click(screen.getByRole("button", { name: /very proven/i }));
+        await user.click(
+            screen.getByRole("button", {
+                name: /strong - we have plenty of product\/lifestyle visuals and helpful content/i,
+            }),
+        );
+        await user.click(screen.getByRole("button", { name: /ready - clear, credible, easy to shop/i }));
+        await user.click(screen.getByRole("button", { name: /get the brand in front of new people/i }));
+        await user.click(screen.getByRole("button", { name: /ready now/i }));
+        await user.click(screen.getByRole("button", { name: /very open - we'd consider ads as part of the strategy/i }));
+
+        await screen.findByRole("heading", { name: /your brand looks like a strong fit for pinterest/i });
+
+        await user.click(screen.getByRole("button", { name: /restart/i }));
+
+        expect(screen.getByRole("heading", { name: /is pinterest actually a fit for your brand/i })).toBeInTheDocument();
+        expect(screen.queryByText(/question 1 of 7/i)).not.toBeInTheDocument();
+    });
+
+    it("renders a clickable Fit Call CTA when a non-placeholder booking URL is available", async () => {
+        const user = userEvent.setup();
+        const handleCtaClick = jest.fn();
+        const result = scorePinterestFitAssessment({
+            q1: "home_decor",
+            q2: "very_proven",
+            q3: "strong",
+            q4: "ready",
+            q5: "discovery",
+            q6: "ready_now",
+            q7: "very_open",
+        });
+
+        render(
+            <ResultsScreen
+                result={{
+                    ...result,
+                    cta: {
+                        ...result.cta,
+                        url: "https://example.com/fit-call",
+                    },
+                }}
+                onRestart={() => {}}
+                onCtaClick={handleCtaClick}
+            />,
+        );
+
+        const ctaLink = screen.getByRole("link", { name: /book a fit call/i });
+        expect(ctaLink).toHaveAttribute("href", "https://example.com/fit-call");
+
+        await user.click(ctaLink);
+
+        expect(handleCtaClick).toHaveBeenCalledTimes(1);
     });
 });

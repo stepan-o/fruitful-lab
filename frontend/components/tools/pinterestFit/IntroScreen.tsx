@@ -45,7 +45,6 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                     <span className="ppc-chip inline-flex items-center px-3 py-1 text-xs text-[var(--foreground-muted)]">
                         Pinterest Fit Assessment
                     </span>
-                    <span className="text-xs text-[var(--foreground-muted)]">{INTRO_COPY.durationNote}</span>
                 </div>
 
                 <div className="mt-6 max-w-2xl">

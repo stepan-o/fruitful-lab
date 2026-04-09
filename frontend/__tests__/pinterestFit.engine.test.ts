@@ -141,4 +141,160 @@ describe("Pinterest Fit Assessment engine", () => {
             "reason_support_ready",
         ]);
     });
+
+    it.each([
+        {
+            name: "Scenario 1 - clear strong fit",
+            answers: makeAnswers(),
+            expectedOutcome: "strong_fit",
+        },
+        {
+            name: "Scenario 2 - strong category but weak foundation",
+            answers: makeAnswers({
+                q2: "early",
+                q3: "weak",
+                q4: "not_ready",
+                q5: "traffic",
+                q6: "open_start_lean",
+                q7: "somewhat_open",
+            }),
+            expectedOutcome: "not_right_now",
+            expectedRole: "not_priority_yet",
+        },
+        {
+            name: "Scenario 3 - sales expectation but low readiness",
+            answers: makeAnswers({
+                q5: "sales",
+                q6: "maybe_later",
+                q7: "unsure",
+            }),
+            expectedOutcome: "possible_fit",
+        },
+        {
+            name: "Scenario 4 - unclear niche plus unproven offer",
+            answers: makeAnswers({
+                q1: "other",
+                q2: "early",
+                q3: "decent",
+                q4: "mostly_ready",
+                q5: "discovery",
+                q6: "open_start_lean",
+                q7: "somewhat_open",
+            }),
+            expectedOutcome: "not_right_now",
+        },
+        {
+            name: "Scenario 5 - moderate fit",
+            answers: makeAnswers({
+                q1: "fashion_accessories",
+                q2: "somewhat_proven",
+                q3: "decent",
+                q4: "somewhat_ready",
+                q5: "launches",
+                q6: "open_start_lean",
+                q7: "somewhat_open",
+            }),
+            expectedOutcome: "possible_fit",
+        },
+        {
+            name: "Scenario 6 - low commitment",
+            answers: makeAnswers({
+                q2: "somewhat_proven",
+                q3: "decent",
+                q4: "mostly_ready",
+                q5: "retargeting",
+                q6: "just_exploring",
+                q7: "not_open",
+            }),
+            expectedOutcome: "possible_fit",
+            expectedRole: "warm_audience_support",
+            expectedReasons: [
+                "reason_category_strong",
+                "reason_offer_some_traction",
+                "reason_support_not_committed",
+            ],
+        },
+        {
+            name: "Scenario 7 - weak assets plus weak website",
+            answers: makeAnswers({
+                q3: "weak",
+                q4: "not_ready",
+                q5: "traffic",
+            }),
+            expectedOutcome: "not_right_now",
+            expectedRole: "not_priority_yet",
+            expectedReasons: [
+                "reason_site_not_ready",
+                "reason_assets_weak",
+                "reason_goal_traffic",
+            ],
+        },
+        {
+            name: "Scenario 8 - strong sales-oriented respondent",
+            answers: makeAnswers({
+                q5: "sales",
+            }),
+            expectedOutcome: "strong_fit",
+            expectedRole: "sales_with_ads_support",
+            expectedReasons: [
+                "reason_category_strong",
+                "reason_offer_proven",
+                "reason_support_ready",
+            ],
+        },
+        {
+            name: "Scenario 9 - strong foundation, less natural category fit",
+            answers: makeAnswers({
+                q1: "health_wellness_products",
+                q5: "discovery",
+            }),
+            expectedOutcome: "strong_fit",
+            expectedRole: "selective_test_channel",
+            expectedReasons: [
+                "reason_category_maybe",
+                "reason_offer_proven",
+                "reason_support_ready",
+            ],
+        },
+        {
+            name: "Scenario 10 - strong score but weak asset foundation",
+            answers: makeAnswers({
+                q3: "weak",
+                q5: "traffic",
+            }),
+            expectedOutcome: "strong_fit",
+            expectedRole: "foundation_first",
+            expectedReasons: [
+                "reason_category_strong",
+                "reason_offer_proven",
+                "reason_support_ready",
+            ],
+        },
+        {
+            name: "Scenario 11 - strong foundation, weak natural category fit",
+            answers: makeAnswers({
+                q1: "other",
+                q5: "discovery",
+            }),
+            expectedOutcome: "strong_fit",
+            expectedRole: "selective_test_channel",
+            expectedReasons: [
+                "reason_category_weak",
+                "reason_offer_proven",
+                "reason_support_ready",
+            ],
+        },
+    ])("$name", ({ answers, expectedOutcome, expectedRole, expectedReasons }) => {
+        const result = scorePinterestFitAssessment(answers);
+
+        expect(result.finalOutcome).toBe(expectedOutcome);
+
+        if (expectedRole) {
+            expect(result.roleKey).toBe(expectedRole);
+        }
+
+        if (expectedReasons) {
+            expect(result.reasonKeys).toEqual(expectedReasons);
+        }
+    });
 });

@@ -23,6 +23,7 @@ import type {
     OutcomeKey,
     OfferProvenValue,
     ReasonKey,
+    ResultReasons,
     ResultReasonKeys,
     RoleKey,
     StoredAssessmentAnswers,
@@ -449,6 +450,29 @@ function selectReasonSignals(
     }
 }
 
+function mapReasonKeys(
+    selectedSignals: readonly AssessmentSignalKey[],
+    evaluations: SignalEvaluationMap,
+): ResultReasonKeys {
+    if (selectedSignals.length !== 3) {
+        throw new Error("Pinterest Fit reason selection must resolve exactly three signals.");
+    }
+
+    return [
+        evaluations[selectedSignals[0]].reasonKey,
+        evaluations[selectedSignals[1]].reasonKey,
+        evaluations[selectedSignals[2]].reasonKey,
+    ];
+}
+
+function mapReasonCopy(reasonKeys: ResultReasonKeys): ResultReasons {
+    return [
+        REASON_COPY_BY_KEY[reasonKeys[0]],
+        REASON_COPY_BY_KEY[reasonKeys[1]],
+        REASON_COPY_BY_KEY[reasonKeys[2]],
+    ];
+}
+
 function matchesRole(
     role: RoleKey,
     normalizedAnswers: StoredAssessmentAnswers,
@@ -515,8 +539,8 @@ export function scorePinterestFitAssessment(answers: AssessmentAnswers): Assessm
     const { finalOutcome, triggeredGuardrails } = applyGuardrails(normalizedAnswers, baseOutcome);
     const evaluations = buildSignalEvaluations(normalizedAnswers);
     const selectedReasonSignals = selectReasonSignals(finalOutcome, evaluations);
-    const reasonKeys = selectedReasonSignals.map((signal) => evaluations[signal].reasonKey) as ResultReasonKeys;
-    const reasons = reasonKeys.map((reasonKey) => REASON_COPY_BY_KEY[reasonKey]) as AssessmentResult["reasons"];
+    const reasonKeys = mapReasonKeys(selectedReasonSignals, evaluations);
+    const reasons = mapReasonCopy(reasonKeys);
     const roleKey = resolveRole(normalizedAnswers, finalOutcome);
     const outcomeCopy = RESULT_COPY_BY_OUTCOME[finalOutcome];
 

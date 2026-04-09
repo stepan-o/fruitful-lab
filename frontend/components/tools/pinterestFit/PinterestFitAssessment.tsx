@@ -1,14 +1,21 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import {
     PINTEREST_FIT_QUESTIONS,
     QUESTION_COUNT,
     QUESTION_ORDER,
+    createPinterestFitRunId,
     scorePinterestFitAssessment,
+    trackPinterestFitAssessmentCompleted,
+    trackPinterestFitAssessmentStarted,
+    trackPinterestFitCallClicked,
+    trackPinterestFitQuestionCompleted,
+    trackPinterestFitResultShown,
     type AssessmentAnswerValue,
     type AssessmentAnswers,
+    type AssessmentQuestion,
     type AssessmentResult,
     type PartialAssessmentAnswers,
     type QuestionId,
@@ -35,6 +42,8 @@ export function PinterestFitAssessment() {
     const [screen, setScreen] = useState<ScreenState>({ kind: "intro" });
     const [answers, setAnswers] = useState<PartialAssessmentAnswers>({});
     const [result, setResult] = useState<AssessmentResult | null>(null);
+    const [runId, setRunId] = useState<string | null>(null);
+    const trackedCompletionRunIdRef = useRef<string | null>(null);
 
     const currentQuestion = useMemo(() => {
         if (screen.kind !== "question") {
@@ -44,13 +53,35 @@ export function PinterestFitAssessment() {
         return PINTEREST_FIT_QUESTIONS[screen.questionIndex] ?? null;
     }, [screen]);
 
+    useEffect(() => {
+        if (screen.kind !== "results" || !result || !runId) {
+            return;
+        }
+
+        if (trackedCompletionRunIdRef.current === runId) {
+            return;
+        }
+
+        trackPinterestFitAssessmentCompleted({ runId, result });
+        trackPinterestFitResultShown({ runId, result });
+        trackedCompletionRunIdRef.current = runId;
+    }, [result, runId, screen]);
+
     const startAssessment = () => {
+        if (!runId) {
+            const nextRunId = createPinterestFitRunId();
+            setRunId(nextRunId);
+            trackPinterestFitAssessmentStarted(nextRunId);
+        }
+
         setScreen({ kind: "question", questionIndex: 0 });
     };
 
     const restartAssessment = () => {
         setAnswers({});
         setResult(null);
+        setRunId(null);
+        trackedCompletionRunIdRef.current = null;
         setScreen({ kind: "intro" });
     };
 
@@ -67,15 +98,28 @@ export function PinterestFitAssessment() {
         setScreen({ kind: "question", questionIndex: screen.questionIndex - 1 });
     };
 
-    const handleSelectAnswer = (questionId: QuestionId, value: AssessmentAnswerValue) => {
+    const handleSelectAnswer = (question: AssessmentQuestion, value: AssessmentAnswerValue) => {
+        const activeRunId = runId ?? createPinterestFitRunId();
+
+        if (!runId) {
+            setRunId(activeRunId);
+            trackPinterestFitAssessmentStarted(activeRunId);
+        }
+
         const nextAnswers = {
             ...answers,
-            [questionId]: value,
+            [question.id]: value,
         } satisfies PartialAssessmentAnswers;
 
         setAnswers(nextAnswers);
+        trackPinterestFitQuestionCompleted({
+            runId: activeRunId,
+            questionId: question.id,
+            selectedAnswer: value,
+            stepNumber: question.step,
+        });
 
-        const selectedQuestionIndex = QUESTION_ORDER.indexOf(questionId);
+        const selectedQuestionIndex = QUESTION_ORDER.indexOf(question.id);
         const isLastQuestion = selectedQuestionIndex === QUESTION_COUNT - 1;
 
         if (isLastQuestion) {
@@ -100,11 +144,23 @@ export function PinterestFitAssessment() {
                     question={currentQuestion}
                     selectedValue={getAnswerForQuestion(answers, currentQuestion.id)}
                     onBack={handleBack}
-                    onSelect={(value) => handleSelectAnswer(currentQuestion.id, value)}
+                    onSelect={(value) => handleSelectAnswer(currentQuestion, value)}
                 />
             ) : null}
 
-            {screen.kind === "results" && result ? <ResultsScreen result={result} onRestart={restartAssessment} /> : null}
+            {screen.kind === "results" && result ? (
+                <ResultsScreen
+                    result={result}
+                    onRestart={restartAssessment}
+                    onCtaClick={() => {
+                        if (!runId) {
+                            return;
+                        }
+
+                        trackPinterestFitCallClicked({ runId, result });
+                    }}
+                />
+            ) : null}
         </div>
     );
 }

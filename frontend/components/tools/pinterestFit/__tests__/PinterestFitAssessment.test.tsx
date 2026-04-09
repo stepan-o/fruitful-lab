@@ -4,7 +4,32 @@ import userEvent from "@testing-library/user-event";
 
 import { PinterestFitAssessment } from "@/components/tools/pinterestFit/PinterestFitAssessment";
 import { ResultsScreen } from "@/components/tools/pinterestFit/ResultsScreen";
-import { scorePinterestFitAssessment } from "@/lib/tools/pinterestFit";
+import { scorePinterestFitAssessment, trackPinterestFitCallClicked } from "@/lib/tools/pinterestFit";
+
+type DataLayerEvent = Record<string, unknown> & { event: string };
+
+const originalCrypto = globalThis.crypto;
+
+function getDataLayerEvents() {
+    return (window as Window & { dataLayer?: DataLayerEvent[] }).dataLayer ?? [];
+}
+
+beforeEach(() => {
+    (window as Window & { dataLayer?: DataLayerEvent[] }).dataLayer = [];
+    Object.defineProperty(globalThis, "crypto", {
+        value: {
+            randomUUID: jest.fn(() => "run-123"),
+        },
+        configurable: true,
+    });
+});
+
+afterAll(() => {
+    Object.defineProperty(globalThis, "crypto", {
+        value: originalCrypto,
+        configurable: true,
+    });
+});
 
 describe("PinterestFitAssessment", () => {
     it("runs through the intro, auto-advances between questions, and reaches results", async () => {
@@ -101,5 +126,94 @@ describe("PinterestFitAssessment", () => {
         await user.click(screen.getByRole("button", { name: /back/i }));
 
         expect(screen.getByRole("heading", { name: /is pinterest actually a fit for your brand/i })).toBeInTheDocument();
+    });
+
+    it("pushes the Pinterest Fit tracking events with the expected minimum payloads", async () => {
+        const user = userEvent.setup();
+
+        render(<PinterestFitAssessment />);
+
+        await user.click(screen.getByRole("button", { name: /start the assessment/i }));
+        await user.click(screen.getByRole("button", { name: /home & decor/i }));
+        await user.click(screen.getByRole("button", { name: /very proven/i }));
+        await user.click(
+            screen.getByRole("button", {
+                name: /strong - we have plenty of product\/lifestyle visuals and helpful content/i,
+            }),
+        );
+        await user.click(screen.getByRole("button", { name: /ready - clear, credible, easy to shop/i }));
+        await user.click(screen.getByRole("button", { name: /get the brand in front of new people/i }));
+        await user.click(screen.getByRole("button", { name: /ready now/i }));
+        await user.click(screen.getByRole("button", { name: /very open - we'd consider ads as part of the strategy/i }));
+
+        await screen.findByRole("heading", { name: /your brand looks like a strong fit for pinterest/i });
+
+        const events = getDataLayerEvents();
+
+        expect(events).toHaveLength(10);
+        expect(events[0]).toMatchObject({
+            event: "assessment_started",
+            run_id: "run-123",
+            tool_name: "pinterest-fit-assessment",
+            assessment_key: "pinterest-fit-assessment",
+        });
+        expect(events[1]).toMatchObject({
+            event: "assessment_question_completed",
+            run_id: "run-123",
+            question_id: "q1",
+            selected_answer: "home_decor",
+            step_number: 1,
+        });
+        expect(events[7]).toMatchObject({
+            event: "assessment_question_completed",
+            run_id: "run-123",
+            question_id: "q7",
+            selected_answer: "very_open",
+            step_number: 7,
+        });
+        expect(events[8]).toMatchObject({
+            event: "assessment_completed",
+            run_id: "run-123",
+            final_score: 25,
+            final_outcome: "strong_fit",
+            role_key: "discovery_traffic",
+            reason_keys: ["reason_category_strong", "reason_offer_proven", "reason_support_ready"],
+        });
+        expect(events[9]).toMatchObject({
+            event: "result_strong_fit",
+            run_id: "run-123",
+            final_score: 25,
+            final_outcome: "strong_fit",
+            result_variant: "strong_fit",
+            role_key: "discovery_traffic",
+        });
+    });
+
+    it("pushes the CTA tracking event with the result payload", () => {
+        const result = scorePinterestFitAssessment({
+            q1: "home_decor",
+            q2: "very_proven",
+            q3: "strong",
+            q4: "ready",
+            q5: "discovery",
+            q6: "ready_now",
+            q7: "very_open",
+        });
+
+        trackPinterestFitCallClicked({ runId: "run-cta", result });
+
+        expect(getDataLayerEvents()).toContainEqual(
+            expect.objectContaining({
+                event: "cta_fit_call_clicked",
+                run_id: "run-cta",
+                final_score: 25,
+                final_outcome: "strong_fit",
+                result_variant: "strong_fit",
+                role_key: "discovery_traffic",
+                reason_keys: ["reason_category_strong", "reason_offer_proven", "reason_support_ready"],
+                button_label: "Book a Fit Call",
+                cta_url: "TODO_ADD_REAL_FIT_CALL_URL_BEFORE_SHIPPING",
+            }),
+        );
     });
 });

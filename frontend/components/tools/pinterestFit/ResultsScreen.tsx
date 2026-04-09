@@ -5,9 +5,10 @@ import { createPinterestFitResultViewModel, type AssessmentResult } from "@/lib/
 type ResultsScreenProps = {
     result: AssessmentResult;
     onRestart: () => void;
+    onCtaClick?: () => void;
 };
 
-export function ResultsScreen({ result, onRestart }: ResultsScreenProps) {
+export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenProps) {
     const viewModel = createPinterestFitResultViewModel(result);
 
     return (
@@ -73,6 +74,7 @@ export function ResultsScreen({ result, onRestart }: ResultsScreenProps) {
                                 ) : (
                                     <a
                                         href={viewModel.ctaUrl}
+                                        onClick={onCtaClick}
                                         className="ppc-primary-btn inline-flex items-center rounded-xl bg-[var(--brand-raspberry)] px-5 py-3 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                                     >
                                         {viewModel.ctaLabel}

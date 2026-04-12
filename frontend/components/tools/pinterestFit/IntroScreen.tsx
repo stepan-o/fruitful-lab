@@ -25,7 +25,7 @@ function ArrowIcon(props: SVGProps<SVGSVGElement>) {
 
 export function IntroScreen({ onStart }: IntroScreenProps) {
     return (
-        <section className="ppc-hero-frame relative overflow-hidden">
+        <section className="ppc-hero-frame pfa-screen-enter relative overflow-hidden">
             <div aria-hidden="true" className="ppc-hero-sheen" />
             <div aria-hidden="true" className="ppc-hero-noise" />
 
@@ -40,7 +40,7 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                 style={{ background: "var(--brand-bronze)" }}
             />
 
-            <div className="relative z-10 p-6 sm:p-8">
+            <div className="relative z-10 p-7 sm:p-9">
                 <div className="flex flex-wrap items-center gap-3">
                     <span className="ppc-chip inline-flex items-center px-3 py-1 text-xs text-[var(--foreground-muted)]">
                         Pinterest Fit Assessment
@@ -48,11 +48,11 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                 </div>
 
                 <div className="mt-6 max-w-2xl">
-                    <p className="text-sm text-[var(--foreground-muted)]">{INTRO_COPY.supportLine}</p>
-                    <h1 className="mt-2 font-heading text-3xl leading-tight text-[var(--foreground)] sm:text-4xl">
+                    <p className="text-base text-[var(--foreground-muted)] sm:text-lg">{INTRO_COPY.supportLine}</p>
+                    <h1 className="mt-3 font-heading text-4xl leading-tight text-[var(--foreground)] sm:text-5xl">
                         {INTRO_COPY.title}
                     </h1>
-                    <p className="mt-4 max-w-[62ch] text-base leading-7 text-[var(--foreground-muted)]">
+                    <p className="mt-5 max-w-[62ch] text-lg leading-8 text-[var(--foreground-muted)] sm:text-xl">
                         {INTRO_COPY.subtitle}
                     </p>
                 </div>
@@ -64,7 +64,7 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                             onClick={onStart}
                             className={[
                                 "ppc-primary-btn inline-flex items-center gap-2 rounded-xl bg-[var(--brand-raspberry)]",
-                                "px-6 py-3 text-sm font-semibold text-white",
+                                "px-6 py-3.5 text-base font-semibold text-white",
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]",
                                 "focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
                             ].join(" ")}
@@ -76,7 +76,7 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                         </button>
                     </span>
 
-                    <p className="text-sm text-[var(--foreground-muted)]">{INTRO_COPY.durationNote}</p>
+                    <p className="text-base text-[var(--foreground-muted)]">{INTRO_COPY.durationNote}</p>
                 </div>
             </div>
         </section>

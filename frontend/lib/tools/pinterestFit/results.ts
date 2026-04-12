@@ -14,7 +14,6 @@ export type PinterestFitResultViewModel = Readonly<{
     ctaSubtext: string;
     ctaUrl: string;
     bookingUrlPending: boolean;
-    pendingMessage: "TODO: replace the Fit Call booking URL in frontend/lib/tools/pinterestFit/config.ts before shipping.";
     restartLabel: "Restart";
 }>;
 
@@ -36,7 +35,6 @@ export function createPinterestFitResultViewModel(result: AssessmentResult): Pin
         ctaSubtext: result.cta.subtext,
         ctaUrl: result.cta.url,
         bookingUrlPending: isPendingPinterestFitCallUrl(result.cta.url),
-        pendingMessage: "TODO: replace the Fit Call booking URL in frontend/lib/tools/pinterestFit/config.ts before shipping.",
         restartLabel: "Restart",
     };
 }

@@ -55,6 +55,5 @@ export const ROLE_PRIORITY_ORDER = [
     "foundation_first",
 ] as const satisfies readonly RoleKey[];
 
-// TODO: replace with the real booking URL before shipping the assessment.
 export const PINTEREST_FIT_CALL_URL_PLACEHOLDER_TOKEN = "TODO_ADD_REAL_FIT_CALL_URL" as const;
-export const PINTEREST_FIT_CALL_URL = "TODO_ADD_REAL_FIT_CALL_URL_BEFORE_SHIPPING" as const;
+export const PINTEREST_FIT_CALL_URL = "https://cal.com/fruitfullab/pinterest-strategy" as const;

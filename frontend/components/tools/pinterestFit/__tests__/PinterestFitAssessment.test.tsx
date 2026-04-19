@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import type { MouseEvent as ReactMouseEvent } from "react";
 
 import { PinterestFitAssessment } from "@/components/tools/pinterestFit/PinterestFitAssessment";
 import { ResultsScreen } from "@/components/tools/pinterestFit/ResultsScreen";
@@ -37,40 +38,52 @@ describe("PinterestFitAssessment", () => {
 
         render(<PinterestFitAssessment />);
 
-        expect(screen.getByRole("heading", { name: /is pinterest actually a fit for your brand/i })).toBeInTheDocument();
+        expect(
+            screen.getByRole("heading", {
+                name: /could pinterest be a bigger opportunity for your brand than you think/i,
+            }),
+        ).toBeInTheDocument();
 
-        await user.click(screen.getByRole("button", { name: /start the assessment/i }));
+        await user.click(screen.getByRole("button", { name: /see if it’s a fit/i }));
 
-        expect(screen.getByRole("heading", { name: /which category best fits your brand/i })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: /which category best describes what you sell/i })).toBeInTheDocument();
         expect(screen.getByText("Question 1 of 7")).toBeInTheDocument();
 
         await user.click(screen.getByRole("button", { name: /home & decor/i }));
 
         expect(
-            screen.getByRole("heading", { name: /how proven is the product or collection you'd want pinterest to support/i }),
+            screen.getByRole("heading", {
+                name: /how much traction does the product or collection you’d promote already have/i,
+            }),
         ).toBeInTheDocument();
 
-        await user.click(screen.getByRole("button", { name: /very proven/i }));
+        await user.click(screen.getByRole("button", { name: /we already know it sells well/i }));
         await user.click(
             screen.getByRole("button", {
-                name: /strong - we have plenty of product\/lifestyle visuals and helpful content/i,
+                name: /strong — we have plenty of product\/lifestyle visuals and helpful content/i,
             }),
         );
-        await user.click(screen.getByRole("button", { name: /ready - clear, credible, easy to shop/i }));
-        await user.click(screen.getByRole("button", { name: /get the brand in front of new people/i }));
+        await user.click(screen.getByRole("button", { name: /we’d feel good sending traffic there now/i }));
+        await user.click(screen.getByRole("button", { name: /get my brand in front of new people/i }));
         await user.click(screen.getByRole("button", { name: /ready now/i }));
-        await user.click(screen.getByRole("button", { name: /very open - we'd consider ads as part of the strategy/i }));
+        await user.click(screen.getByRole("button", { name: /very open — we’d consider ads as part of the strategy/i }));
 
         expect(
-            await screen.findByRole("heading", { name: /your brand looks like a strong fit for pinterest/i }),
+            await screen.findByRole("heading", {
+                name: /pinterest could be a strong growth channel for your brand/i,
+            }),
         ).toBeInTheDocument();
         expect(screen.getByRole("button", { name: /restart/i })).toBeInTheDocument();
-        expect(
-            screen.getByText(/todo: replace the fit call booking url in frontend\/lib\/tools\/pinterestFit\/config\.ts before shipping\./i),
-        ).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: /book a fit call/i })).toHaveAttribute(
+            "href",
+            "https://cal.com/fruitfullab/pinterest-strategy",
+        );
+        expect(screen.getByRole("heading", { name: /want your full breakdown sent to your inbox/i })).toBeInTheDocument();
+        expect(screen.queryByRole("heading", { name: /top 3 reasons/i })).not.toBeInTheDocument();
     });
 
-    it("renders the results screen with fit-specific blocks and only shows the talk-it-through caption for not_right_now", () => {
+    it("reveals the gated breakdown after a valid email submit without blocking the hero CTA", async () => {
+        const user = userEvent.setup();
         const strongFitResult = scorePinterestFitAssessment({
             q1: "home_decor",
             q2: "very_proven",
@@ -81,15 +94,29 @@ describe("PinterestFitAssessment", () => {
             q7: "very_open",
         });
 
-        const { rerender } = render(<ResultsScreen result={strongFitResult} onRestart={() => {}} />);
+        render(<ResultsScreen result={strongFitResult} onRestart={() => {}} />);
 
         expect(screen.getByText("Strong fit")).toBeInTheDocument();
+        const heroCtas = screen.getAllByRole("link", { name: /book a fit call/i });
+        expect(heroCtas).toHaveLength(1);
+        expect(screen.queryByRole("heading", { name: /top 3 reasons/i })).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole("button", { name: /unlock my full result/i }));
+        expect(screen.getByText(/enter a valid email to unlock your full result/i)).toBeInTheDocument();
+
+        await user.type(screen.getByLabelText(/email/i), "founder@example.com");
+        await user.type(screen.getByLabelText(/first name/i), "Avery");
+        await user.click(screen.getByRole("button", { name: /unlock my full result/i }));
+
+        expect(screen.getByRole("heading", { name: /your full breakdown is unlocked/i })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: /next step/i })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: /top 3 reasons/i })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: /best role for pinterest/i })).toBeInTheDocument();
-        expect(screen.getByRole("heading", { name: /next step/i })).toBeInTheDocument();
-        expect(screen.getByRole("button", { name: /book a fit call/i })).toBeDisabled();
-        expect(screen.queryByText(/still want to talk it through/i)).not.toBeInTheDocument();
+        expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
+    });
 
+    it("shows the talk-it-through caption in the unlocked next-step block for not_right_now results", async () => {
+        const user = userEvent.setup();
         const notRightNowResult = scorePinterestFitAssessment({
             q1: "other",
             q2: "not_proven_yet",
@@ -100,10 +127,14 @@ describe("PinterestFitAssessment", () => {
             q7: "not_open",
         });
 
-        rerender(<ResultsScreen result={notRightNowResult} onRestart={() => {}} />);
+        render(<ResultsScreen result={notRightNowResult} onRestart={() => {}} />);
 
         expect(screen.getByText("Not the right fit right now")).toBeInTheDocument();
-        expect(screen.getByText("Still want to talk it through?")).toBeInTheDocument();
+
+        await user.type(screen.getByLabelText(/email/i), "founder@example.com");
+        await user.click(screen.getByRole("button", { name: /unlock my full result/i }));
+
+        expect(screen.getByText("Still want to talk it through or get a second opinion?")).toBeInTheDocument();
         expect(
             screen.getByText(/if you want a second opinion on whether pinterest is worth exploring later/i),
         ).toBeInTheDocument();
@@ -114,11 +145,13 @@ describe("PinterestFitAssessment", () => {
 
         render(<PinterestFitAssessment />);
 
-        await user.click(screen.getByRole("button", { name: /start the assessment/i }));
+        await user.click(screen.getByRole("button", { name: /see if it’s a fit/i }));
         await user.click(screen.getByRole("button", { name: /fashion & accessories/i }));
 
         expect(
-            screen.getByRole("heading", { name: /how proven is the product or collection you'd want pinterest to support/i }),
+            screen.getByRole("heading", {
+                name: /how much traction does the product or collection you’d promote already have/i,
+            }),
         ).toBeInTheDocument();
 
         await user.click(screen.getByRole("button", { name: /back/i }));
@@ -128,7 +161,11 @@ describe("PinterestFitAssessment", () => {
 
         await user.click(screen.getByRole("button", { name: /back/i }));
 
-        expect(screen.getByRole("heading", { name: /is pinterest actually a fit for your brand/i })).toBeInTheDocument();
+        expect(
+            screen.getByRole("heading", {
+                name: /could pinterest be a bigger opportunity for your brand than you think/i,
+            }),
+        ).toBeInTheDocument();
     });
 
     it("pushes the Pinterest Fit tracking events with the expected minimum payloads", async () => {
@@ -136,20 +173,20 @@ describe("PinterestFitAssessment", () => {
 
         render(<PinterestFitAssessment />);
 
-        await user.click(screen.getByRole("button", { name: /start the assessment/i }));
+        await user.click(screen.getByRole("button", { name: /see if it’s a fit/i }));
         await user.click(screen.getByRole("button", { name: /home & decor/i }));
-        await user.click(screen.getByRole("button", { name: /very proven/i }));
+        await user.click(screen.getByRole("button", { name: /we already know it sells well/i }));
         await user.click(
             screen.getByRole("button", {
-                name: /strong - we have plenty of product\/lifestyle visuals and helpful content/i,
+                name: /strong — we have plenty of product\/lifestyle visuals and helpful content/i,
             }),
         );
-        await user.click(screen.getByRole("button", { name: /ready - clear, credible, easy to shop/i }));
-        await user.click(screen.getByRole("button", { name: /get the brand in front of new people/i }));
+        await user.click(screen.getByRole("button", { name: /we’d feel good sending traffic there now/i }));
+        await user.click(screen.getByRole("button", { name: /get my brand in front of new people/i }));
         await user.click(screen.getByRole("button", { name: /ready now/i }));
-        await user.click(screen.getByRole("button", { name: /very open - we'd consider ads as part of the strategy/i }));
+        await user.click(screen.getByRole("button", { name: /very open — we’d consider ads as part of the strategy/i }));
 
-        await screen.findByRole("heading", { name: /your brand looks like a strong fit for pinterest/i });
+        await screen.findByRole("heading", { name: /pinterest could be a strong growth channel for your brand/i });
 
         const events = getDataLayerEvents();
 
@@ -215,7 +252,7 @@ describe("PinterestFitAssessment", () => {
                 role_key: "discovery_traffic",
                 reason_keys: ["reason_category_strong", "reason_offer_proven", "reason_support_ready"],
                 button_label: "Book a Fit Call",
-                cta_url: "TODO_ADD_REAL_FIT_CALL_URL_BEFORE_SHIPPING",
+                cta_url: "https://cal.com/fruitfullab/pinterest-strategy",
             }),
         );
     });
@@ -225,30 +262,36 @@ describe("PinterestFitAssessment", () => {
 
         render(<PinterestFitAssessment />);
 
-        await user.click(screen.getByRole("button", { name: /start the assessment/i }));
+        await user.click(screen.getByRole("button", { name: /see if it’s a fit/i }));
         await user.click(screen.getByRole("button", { name: /home & decor/i }));
-        await user.click(screen.getByRole("button", { name: /very proven/i }));
+        await user.click(screen.getByRole("button", { name: /we already know it sells well/i }));
         await user.click(
             screen.getByRole("button", {
-                name: /strong - we have plenty of product\/lifestyle visuals and helpful content/i,
+                name: /strong — we have plenty of product\/lifestyle visuals and helpful content/i,
             }),
         );
-        await user.click(screen.getByRole("button", { name: /ready - clear, credible, easy to shop/i }));
-        await user.click(screen.getByRole("button", { name: /get the brand in front of new people/i }));
+        await user.click(screen.getByRole("button", { name: /we’d feel good sending traffic there now/i }));
+        await user.click(screen.getByRole("button", { name: /get my brand in front of new people/i }));
         await user.click(screen.getByRole("button", { name: /ready now/i }));
-        await user.click(screen.getByRole("button", { name: /very open - we'd consider ads as part of the strategy/i }));
+        await user.click(screen.getByRole("button", { name: /very open — we’d consider ads as part of the strategy/i }));
 
-        await screen.findByRole("heading", { name: /your brand looks like a strong fit for pinterest/i });
+        await screen.findByRole("heading", { name: /pinterest could be a strong growth channel for your brand/i });
 
         await user.click(screen.getByRole("button", { name: /restart/i }));
 
-        expect(screen.getByRole("heading", { name: /is pinterest actually a fit for your brand/i })).toBeInTheDocument();
+        expect(
+            screen.getByRole("heading", {
+                name: /could pinterest be a bigger opportunity for your brand than you think/i,
+            }),
+        ).toBeInTheDocument();
         expect(screen.queryByText(/question 1 of 7/i)).not.toBeInTheDocument();
     });
 
     it("renders a clickable Fit Call CTA when a non-placeholder booking URL is available", async () => {
         const user = userEvent.setup();
-        const handleCtaClick = jest.fn();
+        const handleCtaClick = jest.fn((event: ReactMouseEvent<HTMLAnchorElement>) => {
+            event.preventDefault();
+        });
         const result = scorePinterestFitAssessment({
             q1: "home_decor",
             q2: "very_proven",

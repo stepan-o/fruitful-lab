@@ -16,7 +16,7 @@ export default function FlowShell({ children }: { children: ReactNode }) {
     if (isChromelessRoute) {
         return (
             <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-                <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">{children}</main>
+                <main className="mx-auto max-w-5xl px-3 py-4 sm:px-5 sm:py-6">{children}</main>
             </div>
         );
     }

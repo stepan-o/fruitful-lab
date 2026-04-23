@@ -150,8 +150,8 @@ function RocketIcon(props: SVGProps<SVGSVGElement>) {
 function FitCallButton({ href, label, isPending, variant, onClick, className = "" }: FitCallButtonProps) {
     const buttonClassName =
         variant === "primary"
-            ? "assessment-primary-cta w-full px-5 py-4 text-lg font-semibold text-white sm:w-auto sm:min-w-[18rem]"
-            : "assessment-secondary-cta w-full px-5 py-4 text-lg font-semibold text-white sm:w-auto sm:min-w-[18rem]";
+            ? "assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold text-white sm:w-auto sm:min-w-[16rem] sm:text-lg"
+            : "assessment-secondary-cta w-full px-5 py-3.5 text-base font-semibold text-white sm:w-auto sm:min-w-[16rem] sm:text-lg";
 
     const content = (
         <>
@@ -205,7 +205,7 @@ function BreakdownCard({ card, isUnlocked }: { card: PinterestFitBreakdownCardVi
     const renderUnlockedContent = () => {
         if (card.kind === "list") {
             return (
-                <ol className="mt-5 space-y-3">
+                <ol className="mt-4 space-y-2.5">
                     {card.items.map((item, index) => (
                         <li key={item} className="flex items-start gap-3">
                             <span
@@ -214,7 +214,7 @@ function BreakdownCard({ card, isUnlocked }: { card: PinterestFitBreakdownCardVi
                             >
                                 {index + 1}
                             </span>
-                            <span className="pt-0.5 text-base leading-7 text-[var(--foreground)]">{item}</span>
+                            <span className="pt-0.5 text-[0.98rem] leading-7 text-[var(--foreground)]">{item}</span>
                         </li>
                     ))}
                 </ol>
@@ -223,20 +223,20 @@ function BreakdownCard({ card, isUnlocked }: { card: PinterestFitBreakdownCardVi
 
         if (card.kind === "callout") {
             return (
-                <div className="mt-5 space-y-3">
-                    <p className="text-lg font-semibold leading-7 text-[var(--foreground)]">{card.heading}</p>
-                    <p className="text-base leading-7 text-[var(--foreground-muted)]">{card.body}</p>
+                <div className="mt-4 space-y-2.5">
+                    <p className="text-[1.02rem] font-semibold leading-7 text-[var(--foreground)]">{card.heading}</p>
+                    <p className="text-[0.98rem] leading-7 text-[var(--assessment-copy-soft)]">{card.body}</p>
                 </div>
             );
         }
 
-        return <p className="mt-5 text-base leading-7 text-[var(--foreground-muted)]">{card.body}</p>;
+        return <p className="mt-4 text-[0.98rem] leading-7 text-[var(--assessment-copy-soft)]">{card.body}</p>;
     };
 
     const renderLockedContent = () => {
         if (card.kind === "list") {
             return (
-                <ol className="assessment-preview-mask mt-5 space-y-3" aria-hidden="true">
+                <ol className="assessment-preview-mask mt-4 space-y-2.5" aria-hidden="true">
                     {card.items.map((item, index) => (
                         <li key={`${card.id}-${index}`} className="flex items-start gap-3">
                             <span
@@ -245,7 +245,7 @@ function BreakdownCard({ card, isUnlocked }: { card: PinterestFitBreakdownCardVi
                             >
                                 {index + 1}
                             </span>
-                            <span className="pt-0.5 text-base leading-7 text-[var(--foreground-muted)]">
+                            <span className="pt-0.5 text-[0.98rem] leading-7 text-[var(--assessment-copy-soft)]">
                                 {maskPreviewText(item)}
                             </span>
                         </li>
@@ -256,22 +256,22 @@ function BreakdownCard({ card, isUnlocked }: { card: PinterestFitBreakdownCardVi
 
         if (card.kind === "callout") {
             return (
-                <div className="assessment-preview-mask mt-5 space-y-3" aria-hidden="true">
-                    <p className="text-lg font-semibold leading-7 text-[var(--foreground)]">{maskPreviewText(card.heading)}</p>
-                    <p className="text-base leading-7 text-[var(--foreground-muted)]">{maskPreviewText(card.body)}</p>
+                <div className="assessment-preview-mask mt-4 space-y-2.5" aria-hidden="true">
+                    <p className="text-[1.02rem] font-semibold leading-7 text-[var(--foreground)]">{maskPreviewText(card.heading)}</p>
+                    <p className="text-[0.98rem] leading-7 text-[var(--assessment-copy-soft)]">{maskPreviewText(card.body)}</p>
                 </div>
             );
         }
 
         return (
-            <p className="assessment-preview-mask mt-5 text-base leading-7 text-[var(--foreground-muted)]" aria-hidden="true">
+            <p className="assessment-preview-mask mt-4 text-[0.98rem] leading-7 text-[var(--assessment-copy-soft)]" aria-hidden="true">
                 {maskPreviewText(card.body)}
             </p>
         );
     };
 
     return (
-        <article className="assessment-preview-card assessment-card relative rounded-[1.5rem] p-5 sm:p-6">
+        <article className="assessment-preview-card assessment-card relative rounded-[1.4rem] p-4 sm:p-5">
             <div className="relative z-10 flex items-start gap-4">
                 <span
                     aria-hidden="true"
@@ -281,7 +281,7 @@ function BreakdownCard({ card, isUnlocked }: { card: PinterestFitBreakdownCardVi
                 </span>
 
                 <div className="min-w-0 flex-1">
-                    <h4 className="font-heading text-[1.65rem] leading-[0.98] text-[var(--foreground)] sm:text-[1.75rem]">
+                    <h4 className="font-heading text-[1.42rem] leading-[0.98] text-[var(--foreground)] sm:text-[1.58rem]">
                         {card.title}
                     </h4>
                     {isUnlocked ? renderUnlockedContent() : renderLockedContent()}
@@ -291,7 +291,7 @@ function BreakdownCard({ card, isUnlocked }: { card: PinterestFitBreakdownCardVi
             {isUnlocked ? null : (
                 <>
                     <div className="assessment-preview-overlay" />
-                    <div className="absolute inset-x-5 bottom-5 z-20 flex justify-center">
+                    <div className="absolute inset-x-4 bottom-4 z-20 flex justify-center sm:inset-x-5 sm:bottom-5">
                         <span className="assessment-lock-badge px-4 py-2 text-sm font-medium text-[var(--foreground)]">
                             <LockIcon className="h-4 w-4" />
                             Unlock to view
@@ -326,24 +326,24 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
     };
 
     return (
-        <section className="pfa-screen-enter space-y-6 sm:space-y-7">
-            <div className="assessment-results-hero assessment-card relative px-5 py-6 sm:px-8 sm:py-8">
+        <section className="pfa-screen-enter space-y-4 sm:space-y-5">
+            <div className="assessment-results-hero assessment-card relative px-4 py-5 sm:px-6 sm:py-6">
                 <div className="relative z-10">
                     <span className="assessment-chip px-4 py-2 text-base font-medium text-[var(--foreground)] sm:px-5 sm:py-2.5 sm:text-lg">
                         <SparkleIcon className="h-5 w-5 text-[color-mix(in_srgb,var(--brand-bronze)_78%,white)]" />
                         {viewModel.label}
                     </span>
 
-                    <div className="mt-6 max-w-4xl">
-                        <h2 className="font-heading text-[3.3rem] leading-[0.94] tracking-[-0.03em] text-white sm:text-[4.5rem]">
+                    <div className="mt-5 max-w-[46rem]">
+                        <h2 className="font-heading text-[2.82rem] leading-[0.94] tracking-[-0.03em] text-[var(--foreground)] sm:text-[4rem]">
                             {viewModel.headline}
                         </h2>
-                        <p className="mt-5 max-w-3xl text-[1.08rem] leading-8 text-[color-mix(in_srgb,var(--foreground-muted)_88%,white_12%)] sm:text-[1.4rem]">
+                        <p className="mt-4 max-w-[38rem] text-[1rem] leading-7 text-[var(--assessment-copy-soft)] sm:text-[1.22rem] sm:leading-[1.75]">
                             {viewModel.intro}
                         </p>
                     </div>
 
-                    <div className="mt-7 sm:mt-8">
+                    <div className="mt-6 sm:mt-7">
                         <FitCallButton
                             href={viewModel.ctaUrl}
                             label={viewModel.ctaLabel}
@@ -355,27 +355,27 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                 </div>
             </div>
 
-            <div className="assessment-card px-5 py-6 sm:px-8 sm:py-8">
-                <form className="relative z-10 space-y-5" onSubmit={handleSubmit} noValidate>
-                    <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+            <div className="assessment-card px-4 py-5 sm:px-6 sm:py-6">
+                <form className="relative z-10 space-y-4" onSubmit={handleSubmit} noValidate>
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                         <span
                             aria-hidden="true"
-                            className="assessment-icon-badge h-20 w-20 shrink-0 bg-[color-mix(in_srgb,var(--brand-raspberry)_16%,transparent)] text-[color-mix(in_srgb,var(--brand-raspberry)_78%,white)]"
+                            className="assessment-icon-badge h-16 w-16 shrink-0 bg-[color-mix(in_srgb,var(--brand-raspberry)_16%,transparent)] text-[color-mix(in_srgb,var(--brand-raspberry)_78%,white)] sm:h-20 sm:w-20"
                         >
                             <MailIcon className="h-9 w-9" />
                         </span>
 
-                        <div className="max-w-3xl">
-                            <h3 className="font-heading text-[2.25rem] leading-[0.95] text-[var(--foreground)] sm:text-[3rem]">
+                        <div className="max-w-[38rem]">
+                            <h3 className="font-heading text-[2rem] leading-[0.95] text-[var(--foreground)] sm:text-[2.6rem]">
                                 {emailHeading}
                             </h3>
-                            <p className="mt-3 max-w-[42rem] text-lg leading-8 text-[var(--foreground-muted)]">
+                            <p className="mt-2.5 max-w-[36rem] text-[1rem] leading-7 text-[var(--assessment-copy-soft)] sm:text-[1.08rem]">
                                 {RESULT_EMAIL_GATE_COPY.body}
                             </p>
                         </div>
                     </div>
 
-                    <div className="space-y-3">
+                    <div className="space-y-2.5">
                         <label htmlFor="pfa-email" className="sr-only">
                             Email
                         </label>
@@ -392,7 +392,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                             placeholder={RESULT_EMAIL_GATE_COPY.placeholder}
                             autoComplete="email"
                             inputMode="email"
-                            className="assessment-input px-4 py-4 text-lg text-[var(--foreground)] outline-none transition focus:border-[color-mix(in_srgb,var(--brand-raspberry)_48%,var(--border))] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--brand-raspberry)_16%,transparent)]"
+                            className="assessment-input px-4 py-3.5 text-[1rem] text-[var(--foreground)] outline-none transition focus:border-[color-mix(in_srgb,var(--brand-raspberry)_48%,var(--border))] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--brand-raspberry)_16%,transparent)] sm:text-[1.05rem]"
                             aria-invalid={emailError ? "true" : "false"}
                             aria-describedby={emailError ? "pfa-email-error" : undefined}
                             required
@@ -405,16 +405,16 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                         ) : null}
                     </div>
 
-                    <div className="space-y-3">
+                    <div className="space-y-2.5">
                         <button
                             type="submit"
-                            className="assessment-primary-cta w-full px-5 py-4 text-lg font-semibold text-white"
+                            className="assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold text-white sm:text-lg"
                         >
                             <LockIcon className="h-5 w-5 shrink-0" />
                             <span>{RESULT_EMAIL_GATE_COPY.buttonLabel}</span>
                         </button>
 
-                        <p className="flex items-center gap-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                        <p className="flex items-center gap-2 text-sm leading-6 text-[var(--assessment-copy-strong)]">
                             <LockIcon className="h-4 w-4 shrink-0" />
                             <span>{RESULT_EMAIL_GATE_COPY.trustNote}</span>
                         </p>
@@ -422,7 +422,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                 </form>
             </div>
 
-            <div className="assessment-card px-5 py-6 sm:px-8 sm:py-8">
+            <div className="assessment-card px-4 py-5 sm:px-6 sm:py-6">
                 <div className="relative z-10">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                         <div>
@@ -430,19 +430,19 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                                 <SparkleIcon className="h-4 w-4" />
                                 {isUnlocked ? "Unlocked" : viewModel.breakdownUnlockLabel}
                             </div>
-                            <h3 className="mt-3 font-heading text-[2.3rem] leading-[0.96] text-[var(--foreground)] sm:text-[3rem]">
+                            <h3 className="mt-2.5 font-heading text-[2.02rem] leading-[0.96] text-[var(--foreground)] sm:text-[2.6rem]">
                                 {viewModel.breakdownTitle}
                             </h3>
                         </div>
                     </div>
 
-                    <div className="mt-6 grid gap-4 md:grid-cols-3">
+                    <div className="mt-5 grid gap-3.5 md:grid-cols-2 xl:grid-cols-3">
                         {viewModel.breakdownCards.map((card) => (
                             <BreakdownCard key={card.id} card={card} isUnlocked={isUnlocked} />
                         ))}
                     </div>
 
-                    <div className="mt-6">
+                    <div className="mt-5">
                         <FitCallButton
                             href={viewModel.ctaUrl}
                             label={viewModel.ctaLabel}
@@ -455,7 +455,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
             </div>
 
             <div className="flex flex-wrap items-center justify-between gap-3 px-1">
-                <p className="text-sm text-[var(--foreground-muted)]">
+                <p className="max-w-[38rem] text-sm leading-6 text-[var(--assessment-copy-strong)]">
                     {isUnlocked
                         ? "Your personalized breakdown is fully unlocked."
                         : "Unlock the full breakdown to reveal the personalized details behind your result."}

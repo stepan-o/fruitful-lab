@@ -73,29 +73,29 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                     </span>
                 </div>
 
-                <div className="mt-6 max-w-[46rem] sm:mt-7">
-                    <p className="text-sm font-medium uppercase tracking-[0.24em] text-[color-mix(in_srgb,var(--brand-bronze)_70%,white)] sm:text-base">
+                <div className="mt-5 max-w-[42rem] sm:mt-6">
+                    <p className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--assessment-kicker-color)] sm:text-[0.96rem]">
                         {INTRO_COPY.supportLine}
                     </p>
-                    <h1 className="mt-4 max-w-[12ch] font-heading text-[3.02rem] leading-[0.95] tracking-[-0.03em] text-white sm:text-[4.35rem]">
+                    <h1 className="mt-3.5 max-w-[11ch] font-heading text-[2.7rem] leading-[0.94] tracking-[-0.03em] text-[var(--foreground)] sm:text-[3.85rem]">
                         {INTRO_COPY.title}
                     </h1>
-                    <p className="mt-5 max-w-[42rem] text-[1.04rem] leading-7 text-[color-mix(in_srgb,var(--foreground-muted)_88%,white_12%)] sm:text-[1.24rem] sm:leading-8">
+                    <p className="mt-4 max-w-[38rem] text-[1rem] leading-7 text-[var(--assessment-copy-soft)] sm:text-[1.14rem] sm:leading-[1.8]">
                         {INTRO_COPY.subtitle}
                     </p>
                 </div>
 
-                <div className="mt-8 flex flex-col items-start gap-3.5 sm:mt-9">
+                <div className="mt-6 flex flex-col items-start gap-3 sm:mt-7">
                     <button
                         type="button"
                         onClick={onStart}
-                        className="assessment-primary-cta w-full px-5 py-4 text-lg font-semibold text-white sm:w-auto sm:min-w-[18rem]"
+                        className="assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold text-white sm:w-auto sm:min-w-[16rem] sm:text-lg"
                     >
                         <span>{INTRO_COPY.primaryButtonLabel}</span>
                         <ArrowIcon className="h-5 w-5 shrink-0" />
                     </button>
 
-                    <div className="assessment-hero-note assessment-muted-panel px-4 py-2.5 text-sm sm:text-[0.98rem]">
+                    <div className="assessment-hero-note assessment-muted-panel px-3.5 py-2 text-sm sm:text-[0.95rem]">
                         <ClockIcon className="h-4 w-4 shrink-0" />
                         <span>{INTRO_COPY.durationNote}</span>
                     </div>

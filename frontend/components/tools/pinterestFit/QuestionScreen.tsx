@@ -62,7 +62,7 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
                         <span className="assessment-chip assessment-chip--subtle px-4 py-2 text-sm font-medium text-[var(--foreground)] sm:px-5 sm:py-2.5 sm:text-base">
                             Question {question.step} of {QUESTION_COUNT}
                         </span>
-                        <span className="text-sm font-medium tabular-nums text-[var(--foreground-muted)] sm:text-base">
+                        <span className="text-sm font-medium tabular-nums text-[var(--assessment-copy-strong)] sm:text-[0.96rem]">
                             {progressPercent}%
                         </span>
                     </div>
@@ -82,16 +82,16 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
                     </div>
                 </div>
 
-                <div className="mt-6 max-w-[44rem] sm:mt-7">
-                    <p className="text-sm font-medium uppercase tracking-[0.22em] text-[color-mix(in_srgb,var(--brand-bronze)_66%,white)] sm:text-base">
+                <div className="mt-5 max-w-[38rem] sm:mt-6">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--assessment-kicker-color)] sm:text-[0.96rem]">
                         Choose the option that fits best
                     </p>
-                    <h2 className="mt-4 max-w-[13ch] font-heading text-[2.62rem] leading-[0.98] tracking-[-0.03em] text-white sm:max-w-[15ch] sm:text-[3.45rem]">
+                    <h2 className="mt-3.5 max-w-[13ch] font-heading text-[2.28rem] leading-[0.96] tracking-[-0.03em] text-[var(--foreground)] sm:max-w-[14ch] sm:text-[3.05rem]">
                         {question.prompt}
                     </h2>
                 </div>
 
-                <div className="mt-7 grid gap-3.5 sm:mt-8">
+                <div className="mt-6 grid gap-3 sm:mt-7">
                     {question.options.map((option, index) => {
                         const isSelected = option.value === selectedValue;
 
@@ -102,7 +102,7 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
                                 onClick={() => onSelect(option.value)}
                                 aria-pressed={isSelected}
                                 className={[
-                                    "assessment-answer-card pfa-option fp-tap group p-4 text-left sm:p-5",
+                                    "assessment-answer-card pfa-option fp-tap group p-4 text-left",
                                     "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]",
                                     "focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
                                     isSelected ? "assessment-answer-card-selected pfa-option-selected" : "",
@@ -120,7 +120,7 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
                                     </span>
 
                                     <div className="min-w-0 flex-1">
-                                        <div className="text-[1rem] leading-7 text-[var(--foreground)] sm:text-[1.12rem] sm:leading-8">
+                                        <div className="text-[0.98rem] leading-7 text-[var(--foreground)] sm:text-[1.05rem] sm:leading-[1.75]">
                                             {option.label}
                                         </div>
                                     </div>
@@ -130,17 +130,17 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
                     })}
                 </div>
 
-                <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-5 flex flex-col gap-3 sm:mt-6 sm:flex-row sm:items-center sm:justify-between">
                     <button
                         type="button"
                         onClick={onBack}
-                        className="assessment-ghost-button fp-tap w-full px-4 py-3 text-base font-medium text-[var(--foreground)] sm:w-auto"
+                        className="assessment-ghost-button fp-tap w-full px-4 py-3 text-[0.98rem] font-medium text-[var(--foreground)] sm:w-auto"
                     >
                         <ChevronLeftIcon className="h-4 w-4 shrink-0" />
                         <span>Back</span>
                     </button>
 
-                    <div className="assessment-muted-panel inline-flex w-full items-center gap-2 px-4 py-3 text-sm text-[var(--foreground-muted)] sm:w-auto sm:text-base">
+                    <div className="assessment-muted-panel inline-flex w-full items-center gap-2 px-4 py-3 text-sm text-[var(--assessment-copy-soft)] sm:w-auto sm:text-[0.96rem]">
                         <BoltIcon className="h-4 w-4 shrink-0 text-[color-mix(in_srgb,var(--brand-bronze)_74%,white)]" />
                         <span>Select an answer to continue.</span>
                     </div>

@@ -136,8 +136,8 @@ export function PinterestFitAssessment() {
     };
 
     return (
-        <div className="assessment-flow-shell mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
-            <div className="assessment-flow-inner mx-auto w-full max-w-5xl">
+        <div className="assessment-flow-shell mx-auto w-full px-0 py-1 sm:py-2">
+            <div className="assessment-flow-inner mx-auto w-full">
                 {screen.kind === "intro" ? <IntroScreen onStart={startAssessment} /> : null}
 
                 {screen.kind === "question" && currentQuestion ? (

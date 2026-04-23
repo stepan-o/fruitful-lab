@@ -176,6 +176,15 @@
             rgba(245, 235, 243, 0.97) 100%
     );
     --assessment-secondary-border: color-mix(in srgb, var(--brand-raspberry) 30%, var(--border));
+    --assessment-primary-cta-text: #fff8fc;
+    --assessment-secondary-cta-text: color-mix(in srgb, var(--brand-raspberry) 58%, var(--foreground) 42%);
+    --assessment-answer-index-bg: linear-gradient(
+            180deg,
+            rgba(255, 246, 250, 0.94) 0%,
+            rgba(245, 233, 240, 0.98) 100%
+    );
+    --assessment-answer-index-border: color-mix(in srgb, var(--brand-raspberry) 18%, var(--border));
+    --assessment-answer-index-color: color-mix(in srgb, var(--foreground) 72%, var(--brand-raspberry) 28%);
     --assessment-preview-overlay: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.16) 0%,
@@ -497,6 +506,11 @@ html[data-theme="dark"] {
             rgba(16, 8, 20, 0.98) 100%
     );
     --assessment-secondary-border: color-mix(in srgb, var(--brand-raspberry) 54%, var(--border));
+    --assessment-primary-cta-text: #ffffff;
+    --assessment-secondary-cta-text: color-mix(in srgb, white 92%, var(--brand-bronze) 8%);
+    --assessment-answer-index-bg: color-mix(in srgb, rgba(8, 8, 12, 0.94) 86%, transparent);
+    --assessment-answer-index-border: color-mix(in srgb, white 10%, var(--border));
+    --assessment-answer-index-color: var(--foreground-muted);
     --assessment-preview-overlay: linear-gradient(
             180deg,
             rgba(12, 8, 18, 0.08) 0%,
@@ -746,6 +760,11 @@ html[data-theme="light"] {
                 rgba(16, 8, 20, 0.98) 100%
         );
         --assessment-secondary-border: color-mix(in srgb, var(--brand-raspberry) 54%, var(--border));
+        --assessment-primary-cta-text: #ffffff;
+        --assessment-secondary-cta-text: color-mix(in srgb, white 92%, var(--brand-bronze) 8%);
+        --assessment-answer-index-bg: color-mix(in srgb, rgba(8, 8, 12, 0.94) 86%, transparent);
+        --assessment-answer-index-border: color-mix(in srgb, white 10%, var(--border));
+        --assessment-answer-index-color: var(--foreground-muted);
         --assessment-preview-overlay: linear-gradient(
                 180deg,
                 rgba(12, 8, 18, 0.08) 0%,
@@ -1254,6 +1273,45 @@ html[data-theme="dark"] .ppc-hero-noise {
     pointer-events: none;
 }
 
+.assessment-results-stage {
+    position: relative;
+    isolation: isolate;
+}
+
+.assessment-results-stage::before,
+.assessment-results-stage::after {
+    content: "";
+    position: absolute;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(70px);
+    opacity: 0.42;
+}
+
+.assessment-results-stage::before {
+    left: 6%;
+    top: 20%;
+    height: 18rem;
+    width: 18rem;
+    background: color-mix(in srgb, var(--brand-raspberry) 16%, transparent);
+    animation: pfaResultsFloatPrimary 16s ease-in-out infinite;
+}
+
+.assessment-results-stage::after {
+    right: 8%;
+    top: 48%;
+    height: 20rem;
+    width: 20rem;
+    background: color-mix(in srgb, var(--brand-bronze) 16%, transparent);
+    animation: pfaResultsFloatSecondary 19s ease-in-out infinite;
+}
+
+.assessment-results-stage > * {
+    position: relative;
+    z-index: 1;
+}
+
 .assessment-results-hero {
     background: var(--assessment-results-hero-bg);
 }
@@ -1273,6 +1331,7 @@ html[data-theme="dark"] .ppc-hero-noise {
     opacity: 0.9;
     pointer-events: none;
     filter: blur(0.2px);
+    animation: pfaResultsOrbitDrift 18s ease-in-out infinite;
 }
 
 .assessment-results-hero::before {
@@ -1287,6 +1346,7 @@ html[data-theme="dark"] .ppc-hero-noise {
             transparent 64%
         );
     pointer-events: none;
+    animation: pfaResultsGlowShift 14s ease-in-out infinite;
 }
 
 .assessment-chip {
@@ -1313,6 +1373,7 @@ html[data-theme="dark"] .ppc-hero-noise {
     align-items: center;
     justify-content: center;
     gap: 0.875rem;
+    color: var(--assessment-primary-cta-text);
     border-radius: 1rem;
     border: 1px solid color-mix(in srgb, white 12%, transparent);
     background:
@@ -1343,6 +1404,7 @@ html[data-theme="dark"] .ppc-hero-noise {
     align-items: center;
     justify-content: center;
     gap: 0.875rem;
+    color: var(--assessment-secondary-cta-text);
     border-radius: 1rem;
     border: 1px solid var(--assessment-secondary-border);
     background: var(--assessment-secondary-bg);
@@ -1651,10 +1713,12 @@ html[data-theme="dark"] .ppc-hero-noise {
     align-items: center;
     justify-content: center;
     border-radius: 9999px;
-    border: 1px solid color-mix(in srgb, white 10%, var(--border));
-    background: color-mix(in srgb, rgba(8, 8, 12, 0.94) 86%, transparent);
-    color: var(--foreground-muted);
-    box-shadow: inset 0 1px 0 color-mix(in srgb, white 5%, transparent);
+    border: 1px solid var(--assessment-answer-index-border);
+    background: var(--assessment-answer-index-bg);
+    color: var(--assessment-answer-index-color);
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, var(--assessment-surface-highlight) 24%, transparent),
+        0 8px 18px color-mix(in srgb, var(--assessment-surface-shadow) 12%, transparent);
 }
 
 .assessment-answer-index-selected {
@@ -1863,7 +1927,49 @@ html[data-theme="dark"] .ppc-hero-noise {
     100% { transform: translate3d(26px, 34px, 0) rotate(-0.8deg) scale(0.95); }
 }
 
+@keyframes pfaResultsOrbitDrift {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(-2%, 2%, 0) scale(1.03);
+    }
+}
+
+@keyframes pfaResultsGlowShift {
+    0%, 100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        opacity: 0.88;
+        transform: translate3d(1.5%, 1.5%, 0);
+    }
+}
+
+@keyframes pfaResultsFloatPrimary {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(5%, -4%, 0) scale(1.05);
+    }
+}
+
+@keyframes pfaResultsFloatSecondary {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(-4%, 5%, 0) scale(1.04);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
+    .assessment-results-stage::before,
+    .assessment-results-stage::after,
+    .assessment-results-hero::before,
+    .assessment-results-hero::after,
     .ppc-welcome-gradient::before,
     .ppc-welcome-gradient::after,
     .ppc-welcome-glow-1,

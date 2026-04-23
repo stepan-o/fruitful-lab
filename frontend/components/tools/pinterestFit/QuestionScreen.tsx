@@ -82,11 +82,11 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
                     </div>
                 </div>
 
-                <div className="mt-5 max-w-[38rem] sm:mt-6">
+                <div className="mt-5 max-w-[52rem] sm:mt-6">
                     <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--assessment-kicker-color)] sm:text-[0.96rem]">
                         Choose the option that fits best
                     </p>
-                    <h2 className="mt-3.5 max-w-[13ch] font-heading text-[2.28rem] leading-[0.96] tracking-[-0.03em] text-[var(--foreground)] sm:max-w-[14ch] sm:text-[3.05rem]">
+                    <h2 className="mt-3.5 max-w-[13ch] font-heading text-[2.28rem] leading-[0.96] tracking-[-0.03em] text-[var(--foreground)] sm:max-w-[18ch] sm:text-[3rem] lg:max-w-[22ch] lg:text-[3.12rem]">
                         {question.prompt}
                     </h2>
                 </div>

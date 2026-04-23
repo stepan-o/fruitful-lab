@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent, type MouseEvent, type SVGProps } from "react";
+import { useEffect, useRef, useState, type FormEvent, type MouseEvent, type SVGProps } from "react";
 
 import {
     RESULT_EMAIL_GATE_COPY,
@@ -150,8 +150,8 @@ function RocketIcon(props: SVGProps<SVGSVGElement>) {
 function FitCallButton({ href, label, isPending, variant, onClick, className = "" }: FitCallButtonProps) {
     const buttonClassName =
         variant === "primary"
-            ? "assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold text-white sm:w-auto sm:min-w-[16rem] sm:text-lg"
-            : "assessment-secondary-cta w-full px-5 py-3.5 text-base font-semibold text-white sm:w-auto sm:min-w-[16rem] sm:text-lg";
+            ? "assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold sm:w-auto sm:min-w-[16rem] sm:text-lg"
+            : "assessment-secondary-cta w-full px-5 py-3.5 text-base font-semibold sm:w-auto sm:min-w-[16rem] sm:text-lg";
 
     const content = (
         <>
@@ -308,8 +308,23 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState<string | null>(null);
     const [isUnlocked, setIsUnlocked] = useState(false);
+    const breakdownRef = useRef<HTMLDivElement | null>(null);
 
     const emailHeading = isUnlocked ? RESULT_EMAIL_GATE_COPY.unlockedHeading : RESULT_EMAIL_GATE_COPY.heading;
+
+    useEffect(() => {
+        if (!isUnlocked || !breakdownRef.current) {
+            return;
+        }
+
+        const prefersReducedMotion =
+            typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+        breakdownRef.current.scrollIntoView({
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+            block: "start",
+        });
+    }, [isUnlocked]);
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -326,7 +341,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
     };
 
     return (
-        <section className="pfa-screen-enter space-y-4 sm:space-y-5">
+        <section className="assessment-results-stage pfa-screen-enter space-y-4 sm:space-y-5">
             <div className="assessment-results-hero assessment-card relative px-4 py-5 sm:px-6 sm:py-6">
                 <div className="relative z-10">
                     <span className="assessment-chip px-4 py-2 text-base font-medium text-[var(--foreground)] sm:px-5 sm:py-2.5 sm:text-lg">
@@ -408,7 +423,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                     <div className="space-y-2.5">
                         <button
                             type="submit"
-                            className="assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold text-white sm:text-lg"
+                            className="assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold sm:text-lg"
                         >
                             <LockIcon className="h-5 w-5 shrink-0" />
                             <span>{RESULT_EMAIL_GATE_COPY.buttonLabel}</span>
@@ -422,7 +437,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                 </form>
             </div>
 
-            <div className="assessment-card px-4 py-5 sm:px-6 sm:py-6">
+            <div ref={breakdownRef} className="assessment-card px-4 py-5 sm:px-6 sm:py-6">
                 <div className="relative z-10">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                         <div>

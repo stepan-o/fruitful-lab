@@ -10,6 +10,8 @@ import { scorePinterestFitAssessment, trackPinterestFitCallClicked } from "@/lib
 type DataLayerEvent = Record<string, unknown> & { event: string };
 
 const originalCrypto = globalThis.crypto;
+const originalScrollIntoView = window.HTMLElement.prototype.scrollIntoView;
+const scrollIntoViewMock = jest.fn();
 
 function getDataLayerEvents() {
     return (window as Window & { dataLayer?: DataLayerEvent[] }).dataLayer ?? [];
@@ -17,6 +19,8 @@ function getDataLayerEvents() {
 
 beforeEach(() => {
     (window as Window & { dataLayer?: DataLayerEvent[] }).dataLayer = [];
+    window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
+    scrollIntoViewMock.mockClear();
     Object.defineProperty(globalThis, "crypto", {
         value: {
             randomUUID: jest.fn(() => "run-123"),
@@ -26,6 +30,7 @@ beforeEach(() => {
 });
 
 afterAll(() => {
+    window.HTMLElement.prototype.scrollIntoView = originalScrollIntoView;
     Object.defineProperty(globalThis, "crypto", {
         value: originalCrypto,
         configurable: true,
@@ -122,6 +127,7 @@ describe("PinterestFitAssessment", () => {
         expect(screen.getByText(/pinterest looks most promising here as a discovery and traffic channel/i)).toBeInTheDocument();
         expect(screen.getByText(/want to talk through what this could look like for your brand/i)).toBeInTheDocument();
         expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
+        expect(scrollIntoViewMock).toHaveBeenCalled();
     });
 
     it("shows the talk-it-through caption in the unlocked next-step block for not_right_now results", async () => {

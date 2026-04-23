@@ -1,8 +1,13 @@
 "use client";
 
-import { useMemo, useState, type FormEvent, type MouseEvent } from "react";
+import { useState, type FormEvent, type MouseEvent, type SVGProps } from "react";
 
-import { createPinterestFitResultViewModel, type AssessmentResult } from "@/lib/tools/pinterestFit";
+import {
+    RESULT_EMAIL_GATE_COPY,
+    createPinterestFitResultViewModel,
+    type AssessmentResult,
+    type PinterestFitBreakdownCardViewModel,
+} from "@/lib/tools/pinterestFit";
 
 type ResultsScreenProps = {
     result: AssessmentResult;
@@ -10,213 +15,454 @@ type ResultsScreenProps = {
     onCtaClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 };
 
-type LeadDraft = {
-    email: string;
-    firstName: string;
+type FitCallButtonProps = {
+    href: string;
+    label: string;
+    isPending: boolean;
+    variant: "primary" | "secondary";
+    onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+    className?: string;
 };
 
 function isValidEmail(value: string) {
     return /[^\s@]+@[^\s@]+\.[^\s@]+/.test(value);
 }
 
+function maskPreviewText(value: string) {
+    return value.replace(/[A-Za-z0-9]/g, "•");
+}
+
+function SparkleIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+            <path
+                d="M12 3.5l1.8 4.7L18.5 10l-4.7 1.8L12 16.5l-1.8-4.7L5.5 10l4.7-1.8L12 3.5Z"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <path
+                d="M18.5 3.5l.8 2.1 2.2.9-2.2.8-.8 2.2-.9-2.2-2.1-.8 2.1-.9.9-2.1Z"
+                fill="currentColor"
+            />
+        </svg>
+    );
+}
+
+function MailIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+            <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+            <path
+                d="M5.5 8l6.5 5L18.5 8"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+    );
+}
+
+function LockIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+            <rect x="5.5" y="10.5" width="13" height="9" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+            <path
+                d="M8.5 10.5V8.8a3.5 3.5 0 017 0v1.7"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <circle cx="12" cy="14.8" r="1.1" fill="currentColor" />
+        </svg>
+    );
+}
+
+function CalendarIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+            <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+            <path d="M7.5 3.8v3.3M16.5 3.8v3.3M3.5 9.5h17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        </svg>
+    );
+}
+
+function ArrowRightIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+            <path
+                d="M5 12h14m0 0-4.5-4.5M19 12l-4.5 4.5"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+    );
+}
+
+function StarIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+            <path
+                d="M12 4.5l2.2 4.6 5.1.8-3.7 3.6.9 5.1-4.5-2.4-4.5 2.4.9-5.1-3.7-3.6 5.1-.8L12 4.5Z"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+    );
+}
+
+function PersonIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+            <circle cx="12" cy="8" r="3.25" stroke="currentColor" strokeWidth="1.8" />
+            <path
+                d="M5 18.5c1.5-3 4.1-4.5 7-4.5s5.5 1.5 7 4.5"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+            />
+        </svg>
+    );
+}
+
+function RocketIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+            <path
+                d="M14.5 4.5c2.9 0 5 2.1 5 5 0 4.4-3.6 8-8 8H8.2l-3.7 2 .9-3.6V12.5c0-4.4 3.6-8 8-8h1.1Z"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <circle cx="14.6" cy="9.4" r="1.4" fill="currentColor" />
+        </svg>
+    );
+}
+
+function FitCallButton({ href, label, isPending, variant, onClick, className = "" }: FitCallButtonProps) {
+    const buttonClassName =
+        variant === "primary"
+            ? "assessment-primary-cta w-full px-5 py-4 text-lg font-semibold text-white sm:w-auto sm:min-w-[18rem]"
+            : "assessment-secondary-cta w-full px-5 py-4 text-lg font-semibold text-white";
+
+    const content = (
+        <>
+            <CalendarIcon className="h-5 w-5 shrink-0" />
+            <span>{label}</span>
+            <ArrowRightIcon className="h-5 w-5 shrink-0" />
+        </>
+    );
+
+    if (isPending) {
+        return (
+            <button type="button" disabled className={`${buttonClassName} ${className} opacity-60`}>
+                {content}
+            </button>
+        );
+    }
+
+    return (
+        <a href={href} onClick={onClick} className={`${buttonClassName} ${className}`}>
+            {content}
+        </a>
+    );
+}
+
+function cardIcon(card: PinterestFitBreakdownCardViewModel) {
+    switch (card.id) {
+        case "reasons":
+            return {
+                Icon: StarIcon,
+                badgeClassName:
+                    "bg-[color-mix(in_srgb,var(--brand-raspberry)_18%,transparent)] text-[color-mix(in_srgb,var(--brand-raspberry)_72%,white)]",
+            };
+        case "role":
+            return {
+                Icon: PersonIcon,
+                badgeClassName:
+                    "bg-[color-mix(in_srgb,var(--brand-bronze)_18%,transparent)] text-[color-mix(in_srgb,var(--brand-bronze)_78%,white)]",
+            };
+        case "next_step":
+            return {
+                Icon: RocketIcon,
+                badgeClassName:
+                    "bg-[color-mix(in_srgb,#6d28d9_18%,transparent)] text-[color-mix(in_srgb,#d78bff_82%,white)]",
+            };
+    }
+}
+
+function BreakdownCard({ card, isUnlocked }: { card: PinterestFitBreakdownCardViewModel; isUnlocked: boolean }) {
+    const { Icon, badgeClassName } = cardIcon(card);
+
+    const renderUnlockedContent = () => {
+        if (card.kind === "list") {
+            return (
+                <ol className="mt-5 space-y-3">
+                    {card.items.map((item, index) => (
+                        <li key={item} className="flex items-start gap-3">
+                            <span
+                                aria-hidden="true"
+                                className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--brand-raspberry)_18%,transparent)] text-sm font-semibold text-[color-mix(in_srgb,var(--brand-raspberry)_76%,white)]"
+                            >
+                                {index + 1}
+                            </span>
+                            <span className="pt-0.5 text-base leading-7 text-[var(--foreground)]">{item}</span>
+                        </li>
+                    ))}
+                </ol>
+            );
+        }
+
+        if (card.kind === "callout") {
+            return (
+                <div className="mt-5 space-y-3">
+                    <p className="text-lg font-semibold leading-7 text-[var(--foreground)]">{card.heading}</p>
+                    <p className="text-base leading-7 text-[var(--foreground-muted)]">{card.body}</p>
+                </div>
+            );
+        }
+
+        return <p className="mt-5 text-base leading-7 text-[var(--foreground-muted)]">{card.body}</p>;
+    };
+
+    const renderLockedContent = () => {
+        if (card.kind === "list") {
+            return (
+                <ol className="assessment-preview-mask mt-5 space-y-3" aria-hidden="true">
+                    {card.items.map((item, index) => (
+                        <li key={`${card.id}-${index}`} className="flex items-start gap-3">
+                            <span
+                                aria-hidden="true"
+                                className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--brand-raspberry)_18%,transparent)] text-sm font-semibold text-[color-mix(in_srgb,var(--brand-raspberry)_76%,white)]"
+                            >
+                                {index + 1}
+                            </span>
+                            <span className="pt-0.5 text-base leading-7 text-[var(--foreground-muted)]">
+                                {maskPreviewText(item)}
+                            </span>
+                        </li>
+                    ))}
+                </ol>
+            );
+        }
+
+        if (card.kind === "callout") {
+            return (
+                <div className="assessment-preview-mask mt-5 space-y-3" aria-hidden="true">
+                    <p className="text-lg font-semibold leading-7 text-[var(--foreground)]">{maskPreviewText(card.heading)}</p>
+                    <p className="text-base leading-7 text-[var(--foreground-muted)]">{maskPreviewText(card.body)}</p>
+                </div>
+            );
+        }
+
+        return (
+            <p className="assessment-preview-mask mt-5 text-base leading-7 text-[var(--foreground-muted)]" aria-hidden="true">
+                {maskPreviewText(card.body)}
+            </p>
+        );
+    };
+
+    return (
+        <article className="assessment-preview-card assessment-card relative rounded-[1.5rem] p-5 sm:p-6">
+            <div className="relative z-10 flex items-start gap-4">
+                <span
+                    aria-hidden="true"
+                    className={`assessment-icon-badge h-14 w-14 shrink-0 ${badgeClassName}`}
+                >
+                    <Icon className="h-6 w-6" />
+                </span>
+
+                <div className="min-w-0 flex-1">
+                    <h4 className="font-heading text-[1.75rem] leading-none text-[var(--foreground)]">{card.title}</h4>
+                    {isUnlocked ? renderUnlockedContent() : renderLockedContent()}
+                </div>
+            </div>
+
+            {isUnlocked ? null : (
+                <>
+                    <div className="assessment-preview-overlay" />
+                    <div className="absolute inset-x-5 bottom-5 z-20 flex justify-center">
+                        <span className="assessment-lock-badge px-4 py-2 text-sm font-medium text-[var(--foreground)]">
+                            <LockIcon className="h-4 w-4" />
+                            Unlock to view
+                        </span>
+                    </div>
+                </>
+            )}
+        </article>
+    );
+}
+
 export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenProps) {
     const viewModel = createPinterestFitResultViewModel(result);
-    const [leadDraft, setLeadDraft] = useState<LeadDraft>({ email: "", firstName: "" });
+    const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState<string | null>(null);
     const [isUnlocked, setIsUnlocked] = useState(false);
 
-    const emailHeading = useMemo(() => {
-        if (isUnlocked) {
-            return "Your full breakdown is unlocked";
-        }
-
-        return "Want your full breakdown sent to your inbox?";
-    }, [isUnlocked]);
+    const emailHeading = isUnlocked ? RESULT_EMAIL_GATE_COPY.unlockedHeading : RESULT_EMAIL_GATE_COPY.heading;
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const trimmedEmail = leadDraft.email.trim();
+        const trimmedEmail = email.trim();
         if (!isValidEmail(trimmedEmail)) {
-            setEmailError("Enter a valid email to unlock your full result.");
+            setEmailError(RESULT_EMAIL_GATE_COPY.validationMessage);
             return;
         }
 
-        setLeadDraft((current) => ({ ...current, email: trimmedEmail, firstName: current.firstName.trim() }));
+        setEmail(trimmedEmail);
         setEmailError(null);
         setIsUnlocked(true);
     };
 
-    const ctaClassName =
-        "ppc-primary-btn inline-flex items-center justify-center rounded-xl bg-[var(--brand-raspberry)] px-5 py-3.5 text-base font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]";
-
     return (
-        <section className="pfa-screen-enter space-y-5">
-            <div className="ppc-hero-frame relative overflow-hidden">
-                <div aria-hidden="true" className="ppc-hero-sheen" />
-                <div aria-hidden="true" className="ppc-hero-noise" />
+        <section className="pfa-screen-enter space-y-6 sm:space-y-7">
+            <div className="assessment-results-hero assessment-card relative px-5 py-6 sm:px-8 sm:py-8">
+                <div className="relative z-10">
+                    <span className="assessment-chip px-4 py-2 text-base font-medium text-[var(--foreground)] sm:px-5 sm:py-2.5 sm:text-lg">
+                        <SparkleIcon className="h-5 w-5 text-[color-mix(in_srgb,var(--brand-bronze)_78%,white)]" />
+                        {viewModel.label}
+                    </span>
 
-                <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 top-0 h-44 opacity-90"
-                    style={{
-                        background:
-                            "linear-gradient(180deg, color-mix(in srgb, var(--brand-raspberry) 16%, transparent) 0%, transparent 100%)",
-                    }}
-                />
-
-                <div className="relative z-10 p-7 sm:p-9">
-                    <div className="flex flex-wrap items-center gap-3">
-                        <span className="ppc-chip inline-flex items-center px-3 py-1 text-sm text-[var(--foreground-muted)]">
-                            {viewModel.label}
-                        </span>
-                    </div>
-
-                    <div className="mt-6 max-w-3xl">
-                        <h2 className="font-heading text-4xl leading-tight text-[var(--foreground)] sm:text-5xl">
+                    <div className="mt-6 max-w-4xl">
+                        <h2 className="font-heading text-[3.3rem] leading-[0.94] tracking-[-0.03em] text-white sm:text-[4.5rem]">
                             {viewModel.headline}
                         </h2>
-                        <p className="mt-4 text-lg leading-8 text-[var(--foreground-muted)]">{viewModel.intro}</p>
+                        <p className="mt-5 max-w-3xl text-[1.08rem] leading-8 text-[color-mix(in_srgb,var(--foreground-muted)_88%,white_12%)] sm:text-[1.4rem]">
+                            {viewModel.intro}
+                        </p>
                     </div>
 
-                    <div className="mt-7 flex flex-wrap items-center gap-3">
-                        {viewModel.bookingUrlPending ? (
-                            <button type="button" disabled className={`${ctaClassName} opacity-60`}>
-                                {viewModel.ctaLabel}
-                            </button>
-                        ) : (
-                            <a href={viewModel.ctaUrl} onClick={onCtaClick} className={ctaClassName}>
-                                {viewModel.ctaLabel}
-                            </a>
-                        )}
+                    <div className="mt-7 sm:mt-8">
+                        <FitCallButton
+                            href={viewModel.ctaUrl}
+                            label={viewModel.ctaLabel}
+                            isPending={viewModel.bookingUrlPending}
+                            onClick={onCtaClick}
+                            variant="primary"
+                        />
                     </div>
                 </div>
             </div>
 
-            <div className="rounded-[1.35rem] border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_72%,white)] p-6 sm:p-7">
-                <form className="space-y-5" onSubmit={handleSubmit} noValidate>
-                    <div className="max-w-3xl">
-                        <h3 className="font-heading text-2xl text-[var(--foreground)] sm:text-3xl">{emailHeading}</h3>
-                        <p className="mt-3 text-base leading-7 text-[var(--foreground-muted)] sm:text-lg">
-                            Enter your email to unlock your full result, including your top 3 reasons and what
-                            Pinterest’s best role could be for your brand.
-                        </p>
+            <div className="assessment-card px-5 py-6 sm:px-8 sm:py-8">
+                <form className="relative z-10 space-y-5" onSubmit={handleSubmit} noValidate>
+                    <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                        <span
+                            aria-hidden="true"
+                            className="assessment-icon-badge h-20 w-20 shrink-0 bg-[color-mix(in_srgb,var(--brand-raspberry)_16%,transparent)] text-[color-mix(in_srgb,var(--brand-raspberry)_78%,white)]"
+                        >
+                            <MailIcon className="h-9 w-9" />
+                        </span>
+
+                        <div className="max-w-3xl">
+                            <h3 className="font-heading text-[2.25rem] leading-[0.95] text-[var(--foreground)] sm:text-[3rem]">
+                                {emailHeading}
+                            </h3>
+                            <p className="mt-3 text-lg leading-8 text-[var(--foreground-muted)]">
+                                {RESULT_EMAIL_GATE_COPY.body}
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="grid gap-3 sm:grid-cols-2">
-                        <label className="block">
-                            <span className="mb-2 block text-sm font-medium text-[var(--foreground)]">Email</span>
-                            <input
-                                type="email"
-                                value={leadDraft.email}
-                                onChange={(event) => {
-                                    setLeadDraft((current) => ({ ...current, email: event.target.value }));
-                                    if (emailError) {
-                                        setEmailError(null);
-                                    }
-                                }}
-                                className="w-full rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3 text-base text-[var(--foreground)] outline-none transition focus:border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--border))] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--brand-raspberry)_15%,transparent)]"
-                                aria-invalid={emailError ? "true" : "false"}
-                                aria-describedby={emailError ? "pfa-email-error" : undefined}
-                                required
-                            />
+                    <div className="space-y-3">
+                        <label htmlFor="pfa-email" className="sr-only">
+                            Email
                         </label>
-
-                        <label className="block">
-                            <span className="mb-2 block text-sm font-medium text-[var(--foreground)]">First name</span>
-                            <input
-                                type="text"
-                                value={leadDraft.firstName}
-                                onChange={(event) =>
-                                    setLeadDraft((current) => ({ ...current, firstName: event.target.value }))
+                        <input
+                            id="pfa-email"
+                            type="email"
+                            value={email}
+                            onChange={(event) => {
+                                setEmail(event.target.value);
+                                if (emailError) {
+                                    setEmailError(null);
                                 }
-                                className="w-full rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3 text-base text-[var(--foreground)] outline-none transition focus:border-[color-mix(in_srgb,var(--brand-raspberry)_45%,var(--border))] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--brand-raspberry)_15%,transparent)]"
-                            />
-                        </label>
+                            }}
+                            placeholder={RESULT_EMAIL_GATE_COPY.placeholder}
+                            autoComplete="email"
+                            inputMode="email"
+                            className="assessment-input px-4 py-4 text-lg text-[var(--foreground)] outline-none transition focus:border-[color-mix(in_srgb,var(--brand-raspberry)_48%,var(--border))] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--brand-raspberry)_16%,transparent)]"
+                            aria-invalid={emailError ? "true" : "false"}
+                            aria-describedby={emailError ? "pfa-email-error" : undefined}
+                            required
+                        />
+
+                        {emailError ? (
+                            <p id="pfa-email-error" className="text-sm text-[var(--brand-rust)]">
+                                {emailError}
+                            </p>
+                        ) : null}
                     </div>
 
-                    {emailError ? (
-                        <p id="pfa-email-error" className="text-sm text-[var(--brand-rust)]">
-                            {emailError}
-                        </p>
-                    ) : null}
-
-                    <div className="flex flex-wrap items-center gap-3">
-                        <button type="submit" className={ctaClassName}>
-                            Unlock My Full Result
+                    <div className="space-y-3">
+                        <button
+                            type="submit"
+                            className="assessment-primary-cta w-full px-5 py-4 text-lg font-semibold text-white"
+                        >
+                            <LockIcon className="h-5 w-5 shrink-0" />
+                            <span>{RESULT_EMAIL_GATE_COPY.buttonLabel}</span>
                         </button>
-                        <p className="text-sm text-[var(--foreground-muted)]">We’ll send you a copy of your result too. No spam.</p>
+
+                        <p className="flex items-center gap-2 text-sm text-[var(--foreground-muted)]">
+                            <LockIcon className="h-4 w-4 shrink-0" />
+                            <span>{RESULT_EMAIL_GATE_COPY.trustNote}</span>
+                        </p>
                     </div>
                 </form>
             </div>
 
-            {isUnlocked ? (
-                <div className="pfa-section-reveal grid gap-5">
-                    <div className="rounded-[1.35rem] border border-[color-mix(in_srgb,var(--brand-bronze)_26%,var(--border))] bg-[color-mix(in_srgb,var(--brand-bronze)_10%,var(--card))] p-6 sm:p-7">
-                        <div className="max-w-3xl">
-                            <h3 className="font-heading text-2xl text-[var(--foreground)] sm:text-3xl">{viewModel.ctaTitle}</h3>
-
-                            {viewModel.ctaCaption ? (
-                                <p className="mt-3 text-lg font-medium leading-7 text-[var(--foreground)]">{viewModel.ctaCaption}</p>
-                            ) : null}
-
-                            <p className="mt-3 text-base leading-7 text-[var(--foreground-muted)] sm:text-lg">{viewModel.ctaSubtext}</p>
-                        </div>
-
-                        <div className="mt-6 flex flex-wrap items-center gap-3">
-                            {viewModel.bookingUrlPending ? (
-                                <button type="button" disabled className={`${ctaClassName} opacity-60`}>
-                                    {viewModel.ctaLabel}
-                                </button>
-                            ) : (
-                                <a href={viewModel.ctaUrl} onClick={onCtaClick} className={ctaClassName}>
-                                    {viewModel.ctaLabel}
-                                </a>
-                            )}
+            <div className="assessment-card px-5 py-6 sm:px-8 sm:py-8">
+                <div className="relative z-10">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                            <div className="assessment-kicker">
+                                <SparkleIcon className="h-4 w-4" />
+                                {isUnlocked ? "Unlocked" : viewModel.breakdownUnlockLabel}
+                            </div>
+                            <h3 className="mt-3 font-heading text-[2.3rem] leading-[0.96] text-[var(--foreground)] sm:text-[3rem]">
+                                {viewModel.breakdownTitle}
+                            </h3>
                         </div>
                     </div>
 
-                    <div className="rounded-[1.35rem] border border-[var(--border)] bg-[var(--card)] p-6 sm:p-7">
-                        <h3 className="font-heading text-2xl text-[var(--foreground)] sm:text-3xl">Top 3 reasons</h3>
-                        <div className="mt-5 grid gap-3">
-                            {viewModel.reasons.map((reason, index) => (
-                                <div
-                                    key={reason}
-                                    className="rounded-2xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_78%,transparent)] p-4"
-                                >
-                                    <div className="flex items-start gap-3">
-                                        <span
-                                            aria-hidden="true"
-                                            className="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full text-sm font-semibold text-white"
-                                            style={{ background: "linear-gradient(135deg, var(--brand-raspberry), var(--brand-bronze))" }}
-                                        >
-                                            {index + 1}
-                                        </span>
-                                        <p className="text-base leading-7 text-[var(--foreground)] sm:text-lg">{reason}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="mt-6 grid gap-4 md:grid-cols-3">
+                        {viewModel.breakdownCards.map((card) => (
+                            <BreakdownCard key={card.id} card={card} isUnlocked={isUnlocked} />
+                        ))}
                     </div>
 
-                    <div className="rounded-[1.35rem] border border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_76%,transparent)] p-6 sm:p-7">
-                        <h3 className="font-heading text-2xl text-[var(--foreground)] sm:text-3xl">{viewModel.roleTitle}</h3>
-                        <p className="mt-4 max-w-3xl text-base leading-7 text-[var(--foreground-muted)] sm:text-lg">
-                            {viewModel.roleCopy}
-                        </p>
+                    <div className="mt-6">
+                        <FitCallButton
+                            href={viewModel.ctaUrl}
+                            label={viewModel.ctaLabel}
+                            isPending={viewModel.bookingUrlPending}
+                            onClick={onCtaClick}
+                            variant="secondary"
+                        />
                     </div>
                 </div>
-            ) : null}
+            </div>
 
             <div className="flex flex-wrap items-center justify-between gap-3 px-1">
                 <p className="text-sm text-[var(--foreground-muted)]">
-                    {isUnlocked ? "Your detailed breakdown is ready below." : "Unlock the full breakdown to see your top reasons and best-fit role."}
+                    {isUnlocked
+                        ? "Your personalized breakdown is fully unlocked."
+                        : "Unlock the full breakdown to reveal the personalized details behind your result."}
                 </p>
 
                 <button
                     type="button"
                     onClick={onRestart}
-                    className="fp-tap rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-base text-[var(--foreground)] transition hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                    className="fp-tap rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_70%,transparent)] px-4 py-2.5 text-base text-[var(--foreground)] transition hover:bg-[var(--card-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                 >
                     {viewModel.restartLabel}
                 </button>

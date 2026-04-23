@@ -12,21 +12,31 @@ export const INTRO_COPY = {
 
 export const RESULT_COPY_BY_OUTCOME = {
     strong_fit: {
-        label: "Strong fit",
-        headline: "Pinterest Could Be a Strong Growth Channel for Your Brand",
-        intro: "Your answers suggest Pinterest could be a real growth opportunity for your brand — not just a nice-to-have.",
+        label: "Strong Pinterest Fit",
+        headline: "Pinterest Could Be a Real Growth Opportunity for Your Brand",
+        intro: "Your answers suggest Pinterest could be a meaningful growth channel for your brand — not just a nice-to-have.",
     },
     possible_fit: {
-        label: "Possible fit",
+        label: "Possible Pinterest Fit",
         headline: "Pinterest Could Work for Your Brand — With the Right Strategy",
         intro: "There’s real potential here, but whether Pinterest pays off for your brand depends on how you approach it.",
     },
     not_right_now: {
-        label: "Not the right fit right now",
+        label: "Not the Right Fit Right Now",
         headline: "Pinterest May Be Premature for Your Brand Right Now",
         intro: "Pinterest doesn’t look like the smartest next move for your brand right now — at least not with your current setup.",
     },
 } as const satisfies Record<OutcomeKey, OutcomeCopy>;
+
+export const RESULT_EMAIL_GATE_COPY = {
+    heading: "Want your full breakdown?",
+    body: "Enter your email to unlock your personalized results, including your top 3 reasons, best Pinterest role, and recommended next step.",
+    placeholder: "Your email address",
+    buttonLabel: "Unlock My Full Breakdown",
+    trustNote: "Your info is safe. No spam, ever.",
+    unlockedHeading: "Your full breakdown is unlocked",
+    validationMessage: "Enter a valid email to unlock your full breakdown.",
+} as const;
 
 export const REASON_COPY_BY_KEY = {
     reason_category_strong:

@@ -67,25 +67,25 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
 
             <div className="assessment-stage-grid">
                 <div className="flex flex-wrap items-center gap-3">
-                    <span className="assessment-stage-chip px-4 py-2 text-sm font-medium text-[var(--foreground)] sm:text-base">
+                    <span className="assessment-chip assessment-chip--subtle px-4 py-2 text-sm font-medium text-[var(--foreground)] sm:px-5 sm:py-2.5 sm:text-base">
                         <SparkleIcon className="h-4 w-4 text-[color-mix(in_srgb,var(--brand-bronze)_78%,white)]" />
                         Pinterest Fit Assessment
                     </span>
                 </div>
 
-                <div className="mt-7 max-w-4xl">
+                <div className="mt-6 max-w-[46rem] sm:mt-7">
                     <p className="text-sm font-medium uppercase tracking-[0.24em] text-[color-mix(in_srgb,var(--brand-bronze)_70%,white)] sm:text-base">
                         {INTRO_COPY.supportLine}
                     </p>
-                    <h1 className="mt-4 font-heading text-[3.4rem] leading-[0.94] tracking-[-0.03em] text-white sm:text-[4.8rem]">
+                    <h1 className="mt-4 max-w-[12ch] font-heading text-[3.02rem] leading-[0.95] tracking-[-0.03em] text-white sm:text-[4.35rem]">
                         {INTRO_COPY.title}
                     </h1>
-                    <p className="mt-5 max-w-3xl text-[1.08rem] leading-8 text-[color-mix(in_srgb,var(--foreground-muted)_88%,white_12%)] sm:text-[1.32rem]">
+                    <p className="mt-5 max-w-[42rem] text-[1.04rem] leading-7 text-[color-mix(in_srgb,var(--foreground-muted)_88%,white_12%)] sm:text-[1.24rem] sm:leading-8">
                         {INTRO_COPY.subtitle}
                     </p>
                 </div>
 
-                <div className="mt-8 flex flex-col items-start gap-4 sm:mt-10">
+                <div className="mt-8 flex flex-col items-start gap-3.5 sm:mt-9">
                     <button
                         type="button"
                         onClick={onStart}
@@ -95,7 +95,7 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                         <ArrowIcon className="h-5 w-5 shrink-0" />
                     </button>
 
-                    <div className="assessment-hero-note assessment-muted-panel px-4 py-2.5 text-sm sm:text-base">
+                    <div className="assessment-hero-note assessment-muted-panel px-4 py-2.5 text-sm sm:text-[0.98rem]">
                         <ClockIcon className="h-4 w-4 shrink-0" />
                         <span>{INTRO_COPY.durationNote}</span>
                     </div>

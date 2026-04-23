@@ -936,6 +936,13 @@ html[data-theme="dark"] .ppc-hero-noise {
         0 14px 34px color-mix(in srgb, rgba(0, 0, 0, 0.44) 74%, transparent);
 }
 
+.assessment-chip--subtle {
+    border-color: color-mix(in srgb, var(--brand-raspberry) 42%, var(--border));
+    box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, white 3%, transparent),
+        0 12px 28px color-mix(in srgb, rgba(0, 0, 0, 0.34) 72%, transparent);
+}
+
 .assessment-primary-cta {
     display: inline-flex;
     align-items: center;
@@ -988,6 +995,10 @@ html[data-theme="dark"] .ppc-hero-noise {
 .assessment-secondary-cta:hover {
     transform: translateY(-1px);
     border-color: color-mix(in srgb, var(--brand-raspberry) 68%, var(--border));
+}
+
+.assessment-secondary-cta:active {
+    transform: translateY(0);
 }
 
 .assessment-input {
@@ -1113,6 +1124,24 @@ html[data-theme="dark"] .ppc-hero-noise {
     z-index: 1;
 }
 
+@media (max-width: 639px) {
+    .assessment-flow-shell::before {
+        left: -20%;
+        top: 3%;
+        height: 12rem;
+        width: 12rem;
+        opacity: 0.26;
+    }
+
+    .assessment-flow-shell::after {
+        right: -18%;
+        top: 16%;
+        height: 13rem;
+        width: 13rem;
+        opacity: 0.24;
+    }
+}
+
 .assessment-stage-card {
     position: relative;
     overflow: hidden;
@@ -1204,30 +1233,17 @@ html[data-theme="dark"] .ppc-hero-noise {
 .assessment-stage-grid {
     position: relative;
     z-index: 1;
-    padding: 1.5rem;
+    padding: 1.375rem;
 }
 
 @media (min-width: 640px) {
     .assessment-stage-grid {
-        padding: 2rem;
+        padding: 1.875rem;
     }
 }
 
-.assessment-stage-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-    border-radius: 9999px;
-    border: 1px solid color-mix(in srgb, var(--brand-raspberry) 42%, var(--border));
-    background:
-        linear-gradient(
-            180deg,
-            color-mix(in srgb, rgba(36, 11, 34, 0.92) 86%, transparent) 0%,
-            color-mix(in srgb, rgba(16, 10, 20, 0.96) 88%, transparent) 100%
-        );
-    box-shadow:
-        inset 0 1px 0 color-mix(in srgb, white 7%, transparent),
-        0 14px 34px color-mix(in srgb, rgba(0, 0, 0, 0.34) 74%, transparent);
+.assessment-chip {
+    line-height: 1;
 }
 
 .assessment-hero-note {
@@ -1276,6 +1292,7 @@ html[data-theme="dark"] .ppc-hero-noise {
 .assessment-answer-card {
     position: relative;
     width: 100%;
+    min-height: 5.4rem;
     border-radius: 1.35rem;
     border: 1px solid color-mix(in srgb, white 8%, var(--border));
     background:
@@ -1368,6 +1385,10 @@ html[data-theme="dark"] .ppc-hero-noise {
 .assessment-ghost-button:hover {
     transform: translateY(-1px);
     border-color: color-mix(in srgb, var(--brand-raspberry) 28%, var(--border));
+}
+
+.assessment-ghost-button:active {
+    transform: translateY(0);
 }
 
 .pfa-screen-enter {

@@ -151,7 +151,7 @@ function FitCallButton({ href, label, isPending, variant, onClick, className = "
     const buttonClassName =
         variant === "primary"
             ? "assessment-primary-cta w-full px-5 py-4 text-lg font-semibold text-white sm:w-auto sm:min-w-[18rem]"
-            : "assessment-secondary-cta w-full px-5 py-4 text-lg font-semibold text-white";
+            : "assessment-secondary-cta w-full px-5 py-4 text-lg font-semibold text-white sm:w-auto sm:min-w-[18rem]";
 
     const content = (
         <>
@@ -281,7 +281,9 @@ function BreakdownCard({ card, isUnlocked }: { card: PinterestFitBreakdownCardVi
                 </span>
 
                 <div className="min-w-0 flex-1">
-                    <h4 className="font-heading text-[1.75rem] leading-none text-[var(--foreground)]">{card.title}</h4>
+                    <h4 className="font-heading text-[1.65rem] leading-[0.98] text-[var(--foreground)] sm:text-[1.75rem]">
+                        {card.title}
+                    </h4>
                     {isUnlocked ? renderUnlockedContent() : renderLockedContent()}
                 </div>
             </div>
@@ -367,7 +369,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                             <h3 className="font-heading text-[2.25rem] leading-[0.95] text-[var(--foreground)] sm:text-[3rem]">
                                 {emailHeading}
                             </h3>
-                            <p className="mt-3 text-lg leading-8 text-[var(--foreground-muted)]">
+                            <p className="mt-3 max-w-[42rem] text-lg leading-8 text-[var(--foreground-muted)]">
                                 {RESULT_EMAIL_GATE_COPY.body}
                             </p>
                         </div>
@@ -412,7 +414,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                             <span>{RESULT_EMAIL_GATE_COPY.buttonLabel}</span>
                         </button>
 
-                        <p className="flex items-center gap-2 text-sm text-[var(--foreground-muted)]">
+                        <p className="flex items-center gap-2 text-sm leading-6 text-[var(--foreground-muted)]">
                             <LockIcon className="h-4 w-4 shrink-0" />
                             <span>{RESULT_EMAIL_GATE_COPY.trustNote}</span>
                         </p>

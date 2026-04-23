@@ -59,7 +59,7 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
             <div className="assessment-stage-grid">
                 <div className="assessment-progress-wrap">
                     <div className="assessment-progress-meta">
-                        <span className="assessment-stage-chip px-4 py-2 text-sm font-medium text-[var(--foreground)] sm:text-base">
+                        <span className="assessment-chip assessment-chip--subtle px-4 py-2 text-sm font-medium text-[var(--foreground)] sm:px-5 sm:py-2.5 sm:text-base">
                             Question {question.step} of {QUESTION_COUNT}
                         </span>
                         <span className="text-sm font-medium tabular-nums text-[var(--foreground-muted)] sm:text-base">
@@ -82,11 +82,11 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
                     </div>
                 </div>
 
-                <div className="mt-7 max-w-4xl">
+                <div className="mt-6 max-w-[44rem] sm:mt-7">
                     <p className="text-sm font-medium uppercase tracking-[0.22em] text-[color-mix(in_srgb,var(--brand-bronze)_66%,white)] sm:text-base">
                         Choose the option that fits best
                     </p>
-                    <h2 className="mt-4 font-heading text-[3rem] leading-[0.96] tracking-[-0.03em] text-white sm:text-[4rem]">
+                    <h2 className="mt-4 max-w-[13ch] font-heading text-[2.62rem] leading-[0.98] tracking-[-0.03em] text-white sm:max-w-[15ch] sm:text-[3.45rem]">
                         {question.prompt}
                     </h2>
                 </div>
@@ -120,7 +120,7 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
                                     </span>
 
                                     <div className="min-w-0 flex-1">
-                                        <div className="text-[1.02rem] leading-7 text-[var(--foreground)] sm:text-[1.2rem] sm:leading-8">
+                                        <div className="text-[1rem] leading-7 text-[var(--foreground)] sm:text-[1.12rem] sm:leading-8">
                                             {option.label}
                                         </div>
                                     </div>
@@ -134,13 +134,13 @@ export function QuestionScreen({ question, selectedValue, onBack, onSelect }: Qu
                     <button
                         type="button"
                         onClick={onBack}
-                        className="assessment-ghost-button fp-tap px-4 py-3 text-base font-medium text-[var(--foreground)]"
+                        className="assessment-ghost-button fp-tap w-full px-4 py-3 text-base font-medium text-[var(--foreground)] sm:w-auto"
                     >
                         <ChevronLeftIcon className="h-4 w-4 shrink-0" />
                         <span>Back</span>
                     </button>
 
-                    <div className="assessment-muted-panel inline-flex items-center gap-2 px-4 py-3 text-sm text-[var(--foreground-muted)] sm:text-base">
+                    <div className="assessment-muted-panel inline-flex w-full items-center gap-2 px-4 py-3 text-sm text-[var(--foreground-muted)] sm:w-auto sm:text-base">
                         <BoltIcon className="h-4 w-4 shrink-0 text-[color-mix(in_srgb,var(--brand-bronze)_74%,white)]" />
                         <span>Select an answer to continue.</span>
                     </div>

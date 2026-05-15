@@ -29,6 +29,8 @@ Create a `.env.local` file in the `frontend/` directory (you can start from `.en
 Required:
 
 - `NEXT_PUBLIC_GTM_ID` — Google Tag Manager container ID. When set, the app injects GTM early in the HTML head and a noscript iframe right after the body tag. Example:
+- `MAILERLITE_API_KEY` — server-only MailerLite API token used by the Pinterest Fit Assessment email unlock form.
+- `MAILERLITE_PINTEREST_FIT_GROUP_ID` — MailerLite group ID for Pinterest Fit Assessment leads. Current group: `187545365081229029`.
 
 If this variable is not set, GTM will not be loaded.
 

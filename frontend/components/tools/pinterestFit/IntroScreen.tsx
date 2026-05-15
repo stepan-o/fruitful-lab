@@ -8,75 +8,97 @@ type IntroScreenProps = {
     onStart: () => void;
 };
 
+function SparkleIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+            <path
+                d="M12 3.5l1.8 4.7L18.5 10l-4.7 1.8L12 16.5l-1.8-4.7L5.5 10l4.7-1.8L12 3.5Z"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <path
+                d="M18.5 3.5l.8 2.1 2.2.9-2.2.8-.8 2.2-.9-2.2-2.1-.8 2.1-.9.9-2.1Z"
+                fill="currentColor"
+            />
+        </svg>
+    );
+}
+
 function ArrowIcon(props: SVGProps<SVGSVGElement>) {
     return (
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
             <path
-                d="M7.5 4.5h8m0 0v8m0-8L5 15"
+                d="M4.5 10h10m0 0-4-4m4 4-4 4"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="1.8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                opacity="0.95"
             />
+        </svg>
+    );
+}
+
+function ClockIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
+            <circle cx="10" cy="10" r="6.8" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M10 6.8v3.6l2.5 1.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
     );
 }
 
 export function IntroScreen({ onStart }: IntroScreenProps) {
     return (
-        <section className="ppc-hero-frame pfa-screen-enter relative overflow-hidden">
-            <div aria-hidden="true" className="ppc-hero-sheen" />
-            <div aria-hidden="true" className="ppc-hero-noise" />
+        <section className="assessment-stage-card assessment-stage-card--hero pfa-screen-enter relative">
+            <div aria-hidden="true" className="assessment-stage-noise" />
 
             <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-20 top-0 h-64 w-64 rounded-full blur-3xl opacity-20"
-                style={{ background: "var(--brand-raspberry)" }}
+                className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full opacity-30 blur-3xl"
+                style={{ background: "color-mix(in srgb, var(--brand-bronze) 48%, transparent)" }}
             />
             <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -bottom-24 left-0 h-56 w-56 rounded-full blur-3xl opacity-15"
-                style={{ background: "var(--brand-bronze)" }}
+                className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full opacity-24 blur-3xl"
+                style={{ background: "color-mix(in srgb, var(--brand-raspberry) 54%, transparent)" }}
             />
 
-            <div className="relative z-10 p-7 sm:p-9">
+            <div className="assessment-stage-grid">
                 <div className="flex flex-wrap items-center gap-3">
-                    <span className="ppc-chip inline-flex items-center px-3 py-1 text-xs text-[var(--foreground-muted)]">
+                    <span className="assessment-chip assessment-chip--subtle px-4 py-2 text-sm font-medium text-[var(--foreground)] sm:px-5 sm:py-2.5 sm:text-base">
+                        <SparkleIcon className="h-4 w-4 text-[color-mix(in_srgb,var(--brand-bronze)_78%,white)]" />
                         Pinterest Fit Assessment
                     </span>
                 </div>
 
-                <div className="mt-6 max-w-2xl">
-                    <p className="text-base text-[var(--foreground-muted)] sm:text-lg">{INTRO_COPY.supportLine}</p>
-                    <h1 className="mt-3 font-heading text-4xl leading-tight text-[var(--foreground)] sm:text-5xl">
+                <div className="mt-5 max-w-[42rem] sm:mt-6">
+                    <p className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--assessment-kicker-color)] sm:text-[0.96rem]">
+                        {INTRO_COPY.supportLine}
+                    </p>
+                    <h1 className="mt-3.5 max-w-[11ch] font-heading text-[2.7rem] leading-[0.94] tracking-[-0.03em] text-[var(--foreground)] sm:text-[3.85rem]">
                         {INTRO_COPY.title}
                     </h1>
-                    <p className="mt-5 max-w-[62ch] text-lg leading-8 text-[var(--foreground-muted)] sm:text-xl">
+                    <p className="mt-4 max-w-[38rem] text-[1rem] leading-7 text-[var(--assessment-copy-soft)] sm:text-[1.14rem] sm:leading-[1.8]">
                         {INTRO_COPY.subtitle}
                     </p>
                 </div>
 
-                <div className="mt-8 flex flex-wrap items-center gap-4">
-                    <span className="ppc-cta-wrap ppc-cta-pulse fp-tap">
-                        <button
-                            type="button"
-                            onClick={onStart}
-                            className={[
-                                "ppc-primary-btn inline-flex items-center gap-2 rounded-xl bg-[var(--brand-raspberry)]",
-                                "px-6 py-3.5 text-base font-semibold text-white",
-                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-raspberry)]",
-                                "focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
-                            ].join(" ")}
-                        >
-                            {INTRO_COPY.primaryButtonLabel}
-                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10">
-                                <ArrowIcon className="h-4 w-4" />
-                            </span>
-                        </button>
-                    </span>
+                <div className="mt-6 flex flex-col items-start gap-3 sm:mt-7">
+                    <button
+                        type="button"
+                        onClick={onStart}
+                        className="assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold text-white sm:w-auto sm:min-w-[16rem] sm:text-lg"
+                    >
+                        <span>{INTRO_COPY.primaryButtonLabel}</span>
+                        <ArrowIcon className="h-5 w-5 shrink-0" />
+                    </button>
 
-                    <p className="text-base text-[var(--foreground-muted)]">{INTRO_COPY.durationNote}</p>
+                    <div className="assessment-hero-note assessment-muted-panel px-3.5 py-2 text-sm sm:text-[0.95rem]">
+                        <ClockIcon className="h-4 w-4 shrink-0" />
+                        <span>{INTRO_COPY.durationNote}</span>
+                    </div>
                 </div>
             </div>
         </section>

@@ -10,6 +10,8 @@ import { scorePinterestFitAssessment, trackPinterestFitCallClicked } from "@/lib
 type DataLayerEvent = Record<string, unknown> & { event: string };
 
 const originalCrypto = globalThis.crypto;
+const originalScrollIntoView = window.HTMLElement.prototype.scrollIntoView;
+const scrollIntoViewMock = jest.fn();
 
 function getDataLayerEvents() {
     return (window as Window & { dataLayer?: DataLayerEvent[] }).dataLayer ?? [];
@@ -17,6 +19,8 @@ function getDataLayerEvents() {
 
 beforeEach(() => {
     (window as Window & { dataLayer?: DataLayerEvent[] }).dataLayer = [];
+    window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
+    scrollIntoViewMock.mockClear();
     Object.defineProperty(globalThis, "crypto", {
         value: {
             randomUUID: jest.fn(() => "run-123"),
@@ -26,6 +30,7 @@ beforeEach(() => {
 });
 
 afterAll(() => {
+    window.HTMLElement.prototype.scrollIntoView = originalScrollIntoView;
     Object.defineProperty(globalThis, "crypto", {
         value: originalCrypto,
         configurable: true,
@@ -70,19 +75,23 @@ describe("PinterestFitAssessment", () => {
 
         expect(
             await screen.findByRole("heading", {
-                name: /pinterest could be a strong growth channel for your brand/i,
+                name: /pinterest could be a real growth opportunity for your brand/i,
             }),
         ).toBeInTheDocument();
         expect(screen.getByRole("button", { name: /restart/i })).toBeInTheDocument();
-        expect(screen.getByRole("link", { name: /book a fit call/i })).toHaveAttribute(
+        expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
+        expect(screen.getAllByRole("link", { name: /book a fit call/i })[0]).toHaveAttribute(
             "href",
             "https://cal.com/fruitfullab/pinterest-strategy",
         );
-        expect(screen.getByRole("heading", { name: /want your full breakdown sent to your inbox/i })).toBeInTheDocument();
-        expect(screen.queryByRole("heading", { name: /top 3 reasons/i })).not.toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: /want your full breakdown/i })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: /your personalized breakdown/i })).toBeInTheDocument();
+        expect(screen.getByText(/unlock after email/i)).toBeInTheDocument();
+        expect(screen.getByPlaceholderText(/your email address/i)).toBeInTheDocument();
+        expect(screen.queryByText(/your niche has strong pinterest potential/i)).not.toBeInTheDocument();
     });
 
-    it("reveals the gated breakdown after a valid email submit without blocking the hero CTA", async () => {
+    it("shows a locked premium preview before unlock and reveals personalized content after a valid email submit", async () => {
         const user = userEvent.setup();
         const strongFitResult = scorePinterestFitAssessment({
             q1: "home_decor",
@@ -96,23 +105,29 @@ describe("PinterestFitAssessment", () => {
 
         render(<ResultsScreen result={strongFitResult} onRestart={() => {}} />);
 
-        expect(screen.getByText("Strong fit")).toBeInTheDocument();
-        const heroCtas = screen.getAllByRole("link", { name: /book a fit call/i });
-        expect(heroCtas).toHaveLength(1);
-        expect(screen.queryByRole("heading", { name: /top 3 reasons/i })).not.toBeInTheDocument();
-
-        await user.click(screen.getByRole("button", { name: /unlock my full result/i }));
-        expect(screen.getByText(/enter a valid email to unlock your full result/i)).toBeInTheDocument();
-
-        await user.type(screen.getByLabelText(/email/i), "founder@example.com");
-        await user.type(screen.getByLabelText(/first name/i), "Avery");
-        await user.click(screen.getByRole("button", { name: /unlock my full result/i }));
-
-        expect(screen.getByRole("heading", { name: /your full breakdown is unlocked/i })).toBeInTheDocument();
-        expect(screen.getByRole("heading", { name: /next step/i })).toBeInTheDocument();
+        expect(screen.getByText("Strong Pinterest Fit")).toBeInTheDocument();
+        expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
+        expect(screen.getByRole("heading", { name: /your personalized breakdown/i })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: /top 3 reasons/i })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: /best role for pinterest/i })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: /recommended next step/i })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: /want your full breakdown/i })).toBeInTheDocument();
+        expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
+        expect(screen.queryByLabelText(/first name/i)).not.toBeInTheDocument();
+        expect(screen.queryByText(/your niche has strong pinterest potential/i)).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole("button", { name: /unlock my full breakdown/i }));
+        expect(screen.getByText(/enter a valid email to unlock your full breakdown/i)).toBeInTheDocument();
+
+        await user.type(screen.getByLabelText(/email/i), "founder@example.com");
+        await user.click(screen.getByRole("button", { name: /unlock my full breakdown/i }));
+
+        expect(screen.getByRole("heading", { name: /your full breakdown is unlocked/i })).toBeInTheDocument();
+        expect(screen.getByText(/your niche has strong pinterest potential/i)).toBeInTheDocument();
+        expect(screen.getByText(/pinterest looks most promising here as a discovery and traffic channel/i)).toBeInTheDocument();
+        expect(screen.getByText(/want to talk through what this could look like for your brand/i)).toBeInTheDocument();
         expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
+        expect(scrollIntoViewMock).toHaveBeenCalled();
     });
 
     it("shows the talk-it-through caption in the unlocked next-step block for not_right_now results", async () => {
@@ -129,10 +144,10 @@ describe("PinterestFitAssessment", () => {
 
         render(<ResultsScreen result={notRightNowResult} onRestart={() => {}} />);
 
-        expect(screen.getByText("Not the right fit right now")).toBeInTheDocument();
+        expect(screen.getByText("Not the Right Fit Right Now")).toBeInTheDocument();
 
         await user.type(screen.getByLabelText(/email/i), "founder@example.com");
-        await user.click(screen.getByRole("button", { name: /unlock my full result/i }));
+        await user.click(screen.getByRole("button", { name: /unlock my full breakdown/i }));
 
         expect(screen.getByText("Still want to talk it through or get a second opinion?")).toBeInTheDocument();
         expect(
@@ -186,7 +201,7 @@ describe("PinterestFitAssessment", () => {
         await user.click(screen.getByRole("button", { name: /ready now/i }));
         await user.click(screen.getByRole("button", { name: /very open — we’d consider ads as part of the strategy/i }));
 
-        await screen.findByRole("heading", { name: /pinterest could be a strong growth channel for your brand/i });
+        await screen.findByRole("heading", { name: /pinterest could be a real growth opportunity for your brand/i });
 
         const events = getDataLayerEvents();
 
@@ -275,7 +290,7 @@ describe("PinterestFitAssessment", () => {
         await user.click(screen.getByRole("button", { name: /ready now/i }));
         await user.click(screen.getByRole("button", { name: /very open — we’d consider ads as part of the strategy/i }));
 
-        await screen.findByRole("heading", { name: /pinterest could be a strong growth channel for your brand/i });
+        await screen.findByRole("heading", { name: /pinterest could be a real growth opportunity for your brand/i });
 
         await user.click(screen.getByRole("button", { name: /restart/i }));
 
@@ -316,7 +331,7 @@ describe("PinterestFitAssessment", () => {
             />,
         );
 
-        const ctaLink = screen.getByRole("link", { name: /book a fit call/i });
+        const ctaLink = screen.getAllByRole("link", { name: /book a fit call/i })[0];
         expect(ctaLink).toHaveAttribute("href", "https://example.com/fit-call");
 
         await user.click(ctaLink);

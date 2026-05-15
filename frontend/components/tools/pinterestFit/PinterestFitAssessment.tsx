@@ -136,31 +136,33 @@ export function PinterestFitAssessment() {
     };
 
     return (
-        <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-12">
-            {screen.kind === "intro" ? <IntroScreen onStart={startAssessment} /> : null}
+        <div className="assessment-flow-shell mx-auto w-full px-0 py-1 sm:py-2">
+            <div className="assessment-flow-inner mx-auto w-full">
+                {screen.kind === "intro" ? <IntroScreen onStart={startAssessment} /> : null}
 
-            {screen.kind === "question" && currentQuestion ? (
-                <QuestionScreen
-                    question={currentQuestion}
-                    selectedValue={getAnswerForQuestion(answers, currentQuestion.id)}
-                    onBack={handleBack}
-                    onSelect={(value) => handleSelectAnswer(currentQuestion, value)}
-                />
-            ) : null}
+                {screen.kind === "question" && currentQuestion ? (
+                    <QuestionScreen
+                        question={currentQuestion}
+                        selectedValue={getAnswerForQuestion(answers, currentQuestion.id)}
+                        onBack={handleBack}
+                        onSelect={(value) => handleSelectAnswer(currentQuestion, value)}
+                    />
+                ) : null}
 
-            {screen.kind === "results" && result ? (
-                <ResultsScreen
-                    result={result}
-                    onRestart={restartAssessment}
-                    onCtaClick={() => {
-                        if (!runId) {
-                            return;
-                        }
+                {screen.kind === "results" && result ? (
+                    <ResultsScreen
+                        result={result}
+                        onRestart={restartAssessment}
+                        onCtaClick={() => {
+                            if (!runId) {
+                                return;
+                            }
 
-                        trackPinterestFitCallClicked({ runId, result });
-                    }}
-                />
-            ) : null}
+                            trackPinterestFitCallClicked({ runId, result });
+                        }}
+                    />
+                ) : null}
+            </div>
         </div>
     );
 }

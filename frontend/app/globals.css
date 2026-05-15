@@ -56,9 +56,150 @@
     --toast-success-title: var(--brand-bronze);
     --toast-success-text: var(--foreground);
 
-    --font-heading: ui-sans-serif;
-    --font-body: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-    "Apple Color Emoji", "Segoe UI Emoji";
+    --font-heading: var(--font-alatsi);
+    --font-body: var(--font-raleway);
+
+    /* Assessment UI (LIGHT) */
+    --assessment-shell-spotlight-1: color-mix(in srgb, var(--brand-raspberry) 12%, transparent);
+    --assessment-shell-spotlight-2: color-mix(in srgb, var(--brand-bronze) 16%, transparent);
+    --assessment-surface-border: color-mix(in srgb, var(--brand-raspberry) 16%, var(--border));
+    --assessment-surface-border-strong: color-mix(in srgb, var(--brand-raspberry) 24%, var(--border));
+    --assessment-surface-highlight: rgba(255, 255, 255, 0.78);
+    --assessment-surface-shadow: rgba(30, 16, 34, 0.12);
+    --assessment-card-bg: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.94) 0%,
+            rgba(250, 243, 248, 0.98) 100%
+    );
+    --assessment-card-bg-strong: linear-gradient(
+            180deg,
+            rgba(255, 252, 255, 0.96) 0%,
+            rgba(247, 239, 245, 0.99) 100%
+    );
+    --assessment-stage-hero-bg: radial-gradient(
+            860px 420px at 90% 18%,
+            color-mix(in srgb, var(--brand-bronze) 26%, transparent) 0%,
+            transparent 50%
+    ),
+    radial-gradient(
+            720px 360px at 12% 10%,
+            color-mix(in srgb, var(--brand-raspberry) 18%, transparent) 0%,
+            transparent 56%
+    ),
+    linear-gradient(
+            180deg,
+            rgba(255, 249, 253, 0.98) 0%,
+            rgba(244, 233, 242, 0.99) 100%
+    );
+    --assessment-stage-question-bg: radial-gradient(
+            820px 420px at 88% 14%,
+            color-mix(in srgb, var(--brand-bronze) 18%, transparent) 0%,
+            transparent 48%
+    ),
+    radial-gradient(
+            620px 320px at 14% 8%,
+            color-mix(in srgb, var(--brand-raspberry) 14%, transparent) 0%,
+            transparent 56%
+    ),
+    linear-gradient(
+            180deg,
+            rgba(255, 251, 254, 0.98) 0%,
+            rgba(247, 240, 246, 0.99) 100%
+    );
+    --assessment-results-hero-bg: radial-gradient(
+            1000px 540px at 92% 42%,
+            color-mix(in srgb, var(--brand-bronze) 28%, transparent) 0%,
+            transparent 42%
+    ),
+    radial-gradient(
+            760px 360px at 18% 8%,
+            color-mix(in srgb, var(--brand-raspberry) 18%, transparent) 0%,
+            transparent 54%
+    ),
+    linear-gradient(
+            180deg,
+            rgba(255, 247, 252, 0.99) 0%,
+            rgba(242, 229, 238, 1) 100%
+    );
+    --assessment-preview-card-bg: linear-gradient(
+            180deg,
+            rgba(255, 249, 252, 0.96) 0%,
+            rgba(247, 239, 245, 0.99) 100%
+    );
+    --assessment-chip-bg: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.72) 0%,
+            rgba(249, 241, 246, 0.88) 100%
+    );
+    --assessment-chip-border: color-mix(in srgb, var(--brand-raspberry) 26%, var(--border));
+    --assessment-copy-soft: color-mix(in srgb, var(--foreground-muted) 94%, var(--foreground) 6%);
+    --assessment-copy-strong: color-mix(in srgb, var(--foreground-muted) 78%, var(--foreground) 22%);
+    --assessment-kicker-color: color-mix(in srgb, var(--brand-bronze) 80%, var(--brand-rust) 20%);
+    --assessment-input-bg: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.94) 0%,
+            rgba(250, 244, 248, 0.98) 100%
+    );
+    --assessment-input-border: color-mix(in srgb, var(--brand-raspberry) 14%, var(--border));
+    --assessment-progress-track-bg: rgba(48, 28, 42, 0.08);
+    --assessment-progress-track-border: color-mix(in srgb, var(--brand-raspberry) 12%, var(--border));
+    --assessment-answer-bg: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.94) 0%,
+            rgba(249, 242, 247, 0.98) 100%
+    );
+    --assessment-answer-bg-hover: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.98) 0%,
+            rgba(246, 236, 243, 0.99) 100%
+    );
+    --assessment-answer-bg-selected: linear-gradient(
+            180deg,
+            rgba(255, 244, 250, 0.99) 0%,
+            rgba(244, 231, 240, 1) 100%
+    );
+    --assessment-muted-panel-bg: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.84) 0%,
+            rgba(248, 241, 246, 0.92) 100%
+    );
+    --assessment-muted-panel-border: color-mix(in srgb, var(--brand-raspberry) 12%, var(--border));
+    --assessment-ghost-bg: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.84) 0%,
+            rgba(247, 240, 246, 0.92) 100%
+    );
+    --assessment-ghost-border: color-mix(in srgb, var(--brand-raspberry) 12%, var(--border));
+    --assessment-secondary-bg: linear-gradient(
+            180deg,
+            rgba(255, 251, 254, 0.92) 0%,
+            rgba(245, 235, 243, 0.97) 100%
+    );
+    --assessment-secondary-border: color-mix(in srgb, var(--brand-raspberry) 30%, var(--border));
+    --assessment-primary-cta-text: #fff8fc;
+    --assessment-secondary-cta-text: color-mix(in srgb, var(--brand-raspberry) 58%, var(--foreground) 42%);
+    --assessment-answer-index-bg: linear-gradient(
+            180deg,
+            rgba(255, 246, 250, 0.94) 0%,
+            rgba(245, 233, 240, 0.98) 100%
+    );
+    --assessment-answer-index-border: color-mix(in srgb, var(--brand-raspberry) 18%, var(--border));
+    --assessment-answer-index-color: color-mix(in srgb, var(--foreground) 72%, var(--brand-raspberry) 28%);
+    --assessment-preview-overlay: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.16) 0%,
+            rgba(248, 239, 245, 0.54) 100%
+    ),
+    radial-gradient(
+            240px 120px at 50% 58%,
+            color-mix(in srgb, white 58%, transparent) 0%,
+            transparent 70%
+    );
+    --assessment-lock-bg: rgba(255, 255, 255, 0.78);
+    --assessment-lock-border: color-mix(in srgb, var(--brand-raspberry) 16%, var(--border));
+    --assessment-orbit-color: color-mix(in srgb, var(--brand-bronze) 42%, transparent);
+    --assessment-orbit-glow: color-mix(in srgb, var(--brand-bronze) 18%, transparent);
+    --assessment-stage-noise-opacity: 0.08;
 
     /* -----------------------------------
        PPC (Pinterest Potential Calculator)
@@ -253,6 +394,139 @@ html[data-theme="dark"] {
     --card: rgba(255, 255, 255, 0.04);
     --card-hover: rgba(255, 255, 255, 0.06);
 
+    --assessment-shell-spotlight-1: color-mix(in srgb, var(--brand-raspberry) 24%, transparent);
+    --assessment-shell-spotlight-2: color-mix(in srgb, var(--brand-bronze) 22%, transparent);
+    --assessment-surface-border: color-mix(in srgb, var(--brand-raspberry) 22%, var(--border));
+    --assessment-surface-border-strong: color-mix(in srgb, var(--brand-raspberry) 34%, var(--border));
+    --assessment-surface-highlight: rgba(255, 255, 255, 0.08);
+    --assessment-surface-shadow: rgba(0, 0, 0, 0.46);
+    --assessment-card-bg: linear-gradient(
+            180deg,
+            rgba(32, 16, 30, 0.92) 0%,
+            rgba(11, 10, 16, 0.98) 100%
+    );
+    --assessment-card-bg-strong: linear-gradient(
+            180deg,
+            rgba(39, 17, 36, 0.96) 0%,
+            rgba(14, 9, 19, 0.99) 100%
+    );
+    --assessment-stage-hero-bg: radial-gradient(
+            900px 500px at 88% 18%,
+            color-mix(in srgb, var(--brand-bronze) 18%, transparent) 0%,
+            transparent 42%
+    ),
+    radial-gradient(
+            720px 420px at 16% 8%,
+            color-mix(in srgb, var(--brand-raspberry) 18%, transparent) 0%,
+            transparent 58%
+    ),
+    linear-gradient(
+            180deg,
+            rgba(32, 10, 30, 0.98) 0%,
+            rgba(14, 9, 18, 0.98) 100%
+    );
+    --assessment-stage-question-bg: radial-gradient(
+            820px 460px at 86% 14%,
+            color-mix(in srgb, var(--brand-bronze) 13%, transparent) 0%,
+            transparent 46%
+    ),
+    radial-gradient(
+            620px 360px at 12% 4%,
+            color-mix(in srgb, var(--brand-raspberry) 12%, transparent) 0%,
+            transparent 60%
+    ),
+    linear-gradient(
+            180deg,
+            rgba(24, 12, 28, 0.98) 0%,
+            rgba(12, 10, 16, 0.98) 100%
+    );
+    --assessment-results-hero-bg: radial-gradient(
+            1200px 620px at 88% 50%,
+            color-mix(in srgb, var(--brand-bronze) 58%, transparent) 0%,
+            transparent 38%
+    ),
+    radial-gradient(
+            760px 420px at 20% 10%,
+            color-mix(in srgb, var(--brand-raspberry) 20%, transparent) 0%,
+            transparent 54%
+    ),
+    linear-gradient(
+            180deg,
+            rgba(39, 9, 34, 0.98) 0%,
+            rgba(16, 8, 20, 0.98) 100%
+    );
+    --assessment-preview-card-bg: linear-gradient(
+            180deg,
+            rgba(34, 18, 34, 0.92) 0%,
+            rgba(16, 10, 22, 0.98) 100%
+    );
+    --assessment-chip-bg: linear-gradient(
+            180deg,
+            rgba(39, 9, 34, 0.96) 0%,
+            rgba(18, 8, 18, 0.94) 100%
+    );
+    --assessment-chip-border: color-mix(in srgb, var(--brand-raspberry) 54%, var(--border));
+    --assessment-copy-soft: color-mix(in srgb, var(--foreground-muted) 88%, white 12%);
+    --assessment-copy-strong: color-mix(in srgb, var(--foreground-muted) 76%, white 24%);
+    --assessment-kicker-color: color-mix(in srgb, var(--brand-bronze) 78%, white 22%);
+    --assessment-input-bg: linear-gradient(
+            180deg,
+            rgba(11, 9, 16, 0.96) 0%,
+            rgba(8, 8, 12, 0.98) 100%
+    );
+    --assessment-input-border: color-mix(in srgb, white 10%, var(--border));
+    --assessment-progress-track-bg: rgba(4, 4, 8, 0.88);
+    --assessment-progress-track-border: color-mix(in srgb, white 7%, transparent);
+    --assessment-answer-bg: linear-gradient(
+            180deg,
+            rgba(30, 16, 32, 0.94) 0%,
+            rgba(13, 10, 18, 0.98) 100%
+    );
+    --assessment-answer-bg-hover: linear-gradient(
+            180deg,
+            rgba(36, 17, 35, 0.96) 0%,
+            rgba(16, 10, 21, 0.99) 100%
+    );
+    --assessment-answer-bg-selected: linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--brand-raspberry) 14%, rgba(32, 16, 34, 0.96)) 0%,
+            rgba(18, 11, 21, 0.99) 100%
+    );
+    --assessment-muted-panel-bg: rgba(10, 10, 14, 0.88);
+    --assessment-muted-panel-border: color-mix(in srgb, white 8%, transparent);
+    --assessment-ghost-bg: linear-gradient(
+            180deg,
+            rgba(14, 14, 18, 0.92) 0%,
+            rgba(8, 8, 12, 0.96) 100%
+    );
+    --assessment-ghost-border: color-mix(in srgb, white 10%, var(--border));
+    --assessment-secondary-bg: linear-gradient(
+            180deg,
+            rgba(39, 9, 34, 0.92) 0%,
+            rgba(16, 8, 20, 0.98) 100%
+    );
+    --assessment-secondary-border: color-mix(in srgb, var(--brand-raspberry) 54%, var(--border));
+    --assessment-primary-cta-text: #ffffff;
+    --assessment-secondary-cta-text: color-mix(in srgb, white 92%, var(--brand-bronze) 8%);
+    --assessment-answer-index-bg: color-mix(in srgb, rgba(8, 8, 12, 0.94) 86%, transparent);
+    --assessment-answer-index-border: color-mix(in srgb, white 10%, var(--border));
+    --assessment-answer-index-color: var(--foreground-muted);
+    --assessment-preview-overlay: linear-gradient(
+            180deg,
+            rgba(12, 8, 18, 0.08) 0%,
+            rgba(12, 8, 18, 0.36) 100%
+    ),
+    radial-gradient(
+            240px 120px at 50% 56%,
+            color-mix(in srgb, rgba(255, 255, 255, 0.06) 82%, transparent) 0%,
+            transparent 70%
+    );
+    --assessment-lock-bg: rgba(8, 8, 12, 0.9);
+    --assessment-lock-border: color-mix(in srgb, white 16%, transparent);
+    --assessment-orbit-color: color-mix(in srgb, var(--brand-bronze) 74%, transparent);
+    --assessment-orbit-glow: color-mix(in srgb, var(--brand-bronze) 34%, transparent);
+    --assessment-stage-noise-opacity: 0.18;
+
     /* PPC polish tokens (DARK) */
     --ppc-accent-stroke: color-mix(in srgb, var(--brand-raspberry) 62%, transparent);
     --ppc-accent-stroke-2: color-mix(in srgb, var(--brand-bronze) 54%, transparent);
@@ -373,6 +647,139 @@ html[data-theme="light"] {
         --surface: rgba(255, 255, 255, 0.06);
         --card: rgba(255, 255, 255, 0.04);
         --card-hover: rgba(255, 255, 255, 0.06);
+
+        --assessment-shell-spotlight-1: color-mix(in srgb, var(--brand-raspberry) 24%, transparent);
+        --assessment-shell-spotlight-2: color-mix(in srgb, var(--brand-bronze) 22%, transparent);
+        --assessment-surface-border: color-mix(in srgb, var(--brand-raspberry) 22%, var(--border));
+        --assessment-surface-border-strong: color-mix(in srgb, var(--brand-raspberry) 34%, var(--border));
+        --assessment-surface-highlight: rgba(255, 255, 255, 0.08);
+        --assessment-surface-shadow: rgba(0, 0, 0, 0.46);
+        --assessment-card-bg: linear-gradient(
+                180deg,
+                rgba(32, 16, 30, 0.92) 0%,
+                rgba(11, 10, 16, 0.98) 100%
+        );
+        --assessment-card-bg-strong: linear-gradient(
+                180deg,
+                rgba(39, 17, 36, 0.96) 0%,
+                rgba(14, 9, 19, 0.99) 100%
+        );
+        --assessment-stage-hero-bg: radial-gradient(
+                900px 500px at 88% 18%,
+                color-mix(in srgb, var(--brand-bronze) 18%, transparent) 0%,
+                transparent 42%
+        ),
+        radial-gradient(
+                720px 420px at 16% 8%,
+                color-mix(in srgb, var(--brand-raspberry) 18%, transparent) 0%,
+                transparent 58%
+        ),
+        linear-gradient(
+                180deg,
+                rgba(32, 10, 30, 0.98) 0%,
+                rgba(14, 9, 18, 0.98) 100%
+        );
+        --assessment-stage-question-bg: radial-gradient(
+                820px 460px at 86% 14%,
+                color-mix(in srgb, var(--brand-bronze) 13%, transparent) 0%,
+                transparent 46%
+        ),
+        radial-gradient(
+                620px 360px at 12% 4%,
+                color-mix(in srgb, var(--brand-raspberry) 12%, transparent) 0%,
+                transparent 60%
+        ),
+        linear-gradient(
+                180deg,
+                rgba(24, 12, 28, 0.98) 0%,
+                rgba(12, 10, 16, 0.98) 100%
+        );
+        --assessment-results-hero-bg: radial-gradient(
+                1200px 620px at 88% 50%,
+                color-mix(in srgb, var(--brand-bronze) 58%, transparent) 0%,
+                transparent 38%
+        ),
+        radial-gradient(
+                760px 420px at 20% 10%,
+                color-mix(in srgb, var(--brand-raspberry) 20%, transparent) 0%,
+                transparent 54%
+        ),
+        linear-gradient(
+                180deg,
+                rgba(39, 9, 34, 0.98) 0%,
+                rgba(16, 8, 20, 0.98) 100%
+        );
+        --assessment-preview-card-bg: linear-gradient(
+                180deg,
+                rgba(34, 18, 34, 0.92) 0%,
+                rgba(16, 10, 22, 0.98) 100%
+        );
+        --assessment-chip-bg: linear-gradient(
+                180deg,
+                rgba(39, 9, 34, 0.96) 0%,
+                rgba(18, 8, 18, 0.94) 100%
+        );
+        --assessment-chip-border: color-mix(in srgb, var(--brand-raspberry) 54%, var(--border));
+        --assessment-copy-soft: color-mix(in srgb, var(--foreground-muted) 88%, white 12%);
+        --assessment-copy-strong: color-mix(in srgb, var(--foreground-muted) 76%, white 24%);
+        --assessment-kicker-color: color-mix(in srgb, var(--brand-bronze) 78%, white 22%);
+        --assessment-input-bg: linear-gradient(
+                180deg,
+                rgba(11, 9, 16, 0.96) 0%,
+                rgba(8, 8, 12, 0.98) 100%
+        );
+        --assessment-input-border: color-mix(in srgb, white 10%, var(--border));
+        --assessment-progress-track-bg: rgba(4, 4, 8, 0.88);
+        --assessment-progress-track-border: color-mix(in srgb, white 7%, transparent);
+        --assessment-answer-bg: linear-gradient(
+                180deg,
+                rgba(30, 16, 32, 0.94) 0%,
+                rgba(13, 10, 18, 0.98) 100%
+        );
+        --assessment-answer-bg-hover: linear-gradient(
+                180deg,
+                rgba(36, 17, 35, 0.96) 0%,
+                rgba(16, 10, 21, 0.99) 100%
+        );
+        --assessment-answer-bg-selected: linear-gradient(
+                180deg,
+                color-mix(in srgb, var(--brand-raspberry) 14%, rgba(32, 16, 34, 0.96)) 0%,
+                rgba(18, 11, 21, 0.99) 100%
+        );
+        --assessment-muted-panel-bg: rgba(10, 10, 14, 0.88);
+        --assessment-muted-panel-border: color-mix(in srgb, white 8%, transparent);
+        --assessment-ghost-bg: linear-gradient(
+                180deg,
+                rgba(14, 14, 18, 0.92) 0%,
+                rgba(8, 8, 12, 0.96) 100%
+        );
+        --assessment-ghost-border: color-mix(in srgb, white 10%, var(--border));
+        --assessment-secondary-bg: linear-gradient(
+                180deg,
+                rgba(39, 9, 34, 0.92) 0%,
+                rgba(16, 8, 20, 0.98) 100%
+        );
+        --assessment-secondary-border: color-mix(in srgb, var(--brand-raspberry) 54%, var(--border));
+        --assessment-primary-cta-text: #ffffff;
+        --assessment-secondary-cta-text: color-mix(in srgb, white 92%, var(--brand-bronze) 8%);
+        --assessment-answer-index-bg: color-mix(in srgb, rgba(8, 8, 12, 0.94) 86%, transparent);
+        --assessment-answer-index-border: color-mix(in srgb, white 10%, var(--border));
+        --assessment-answer-index-color: var(--foreground-muted);
+        --assessment-preview-overlay: linear-gradient(
+                180deg,
+                rgba(12, 8, 18, 0.08) 0%,
+                rgba(12, 8, 18, 0.36) 100%
+        ),
+        radial-gradient(
+                240px 120px at 50% 56%,
+                color-mix(in srgb, rgba(255, 255, 255, 0.06) 82%, transparent) 0%,
+                transparent 70%
+        );
+        --assessment-lock-bg: rgba(8, 8, 12, 0.9);
+        --assessment-lock-border: color-mix(in srgb, white 16%, transparent);
+        --assessment-orbit-color: color-mix(in srgb, var(--brand-bronze) 74%, transparent);
+        --assessment-orbit-glow: color-mix(in srgb, var(--brand-bronze) 34%, transparent);
+        --assessment-stage-noise-opacity: 0.18;
 
         /* PPC polish tokens (DARK OS fallback) */
         --ppc-accent-stroke: color-mix(in srgb, var(--brand-raspberry) 62%, transparent);
@@ -846,6 +1253,520 @@ html[data-theme="dark"] .ppc-hero-noise {
 .ppc-primary-btn:hover { transform: translateY(-1px); }
 .ppc-primary-btn:active { transform: translateY(0px); }
 
+.assessment-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.6rem;
+    border: 1px solid var(--assessment-surface-border);
+    background: var(--assessment-card-bg);
+    box-shadow:
+        0 20px 60px color-mix(in srgb, var(--assessment-surface-shadow) 82%, transparent),
+        inset 0 1px 0 var(--assessment-surface-highlight);
+}
+
+.assessment-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid color-mix(in srgb, var(--assessment-surface-highlight) 82%, transparent);
+    pointer-events: none;
+}
+
+.assessment-results-stage {
+    position: relative;
+    isolation: isolate;
+}
+
+.assessment-results-stage::before,
+.assessment-results-stage::after {
+    content: "";
+    position: absolute;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(70px);
+    opacity: 0.42;
+}
+
+.assessment-results-stage::before {
+    left: 6%;
+    top: 20%;
+    height: 18rem;
+    width: 18rem;
+    background: color-mix(in srgb, var(--brand-raspberry) 16%, transparent);
+    animation: pfaResultsFloatPrimary 16s ease-in-out infinite;
+}
+
+.assessment-results-stage::after {
+    right: 8%;
+    top: 48%;
+    height: 20rem;
+    width: 20rem;
+    background: color-mix(in srgb, var(--brand-bronze) 16%, transparent);
+    animation: pfaResultsFloatSecondary 19s ease-in-out infinite;
+}
+
+.assessment-results-stage > * {
+    position: relative;
+    z-index: 1;
+}
+
+.assessment-results-hero {
+    background: var(--assessment-results-hero-bg);
+}
+
+.assessment-results-hero::after {
+    content: "";
+    position: absolute;
+    right: -12%;
+    top: 12%;
+    height: 84%;
+    width: 58%;
+    border-radius: 9999px;
+    border: 2px solid var(--assessment-orbit-color);
+    box-shadow:
+        0 0 46px var(--assessment-orbit-glow),
+        0 0 120px color-mix(in srgb, var(--assessment-orbit-glow) 58%, transparent);
+    opacity: 0.9;
+    pointer-events: none;
+    filter: blur(0.2px);
+    animation: pfaResultsOrbitDrift 18s ease-in-out infinite;
+}
+
+.assessment-results-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, color-mix(in srgb, var(--assessment-surface-highlight) 76%, transparent), transparent 32%),
+        radial-gradient(
+            680px 280px at 50% 100%,
+            color-mix(in srgb, var(--brand-raspberry) 18%, transparent) 0%,
+            transparent 64%
+        );
+    pointer-events: none;
+    animation: pfaResultsGlowShift 14s ease-in-out infinite;
+}
+
+.assessment-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 9999px;
+    border: 1px solid var(--assessment-chip-border);
+    background: var(--assessment-chip-bg);
+    box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--assessment-surface-highlight) 28%, transparent),
+        0 12px 28px color-mix(in srgb, var(--assessment-surface-shadow) 40%, transparent);
+}
+
+.assessment-chip--subtle {
+    border-color: color-mix(in srgb, var(--assessment-chip-border) 86%, var(--assessment-surface-border));
+    box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--assessment-surface-highlight) 20%, transparent),
+        0 10px 22px color-mix(in srgb, var(--assessment-surface-shadow) 34%, transparent);
+}
+
+.assessment-primary-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.875rem;
+    color: var(--assessment-primary-cta-text);
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, white 12%, transparent);
+    background:
+        linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--brand-raspberry) 94%, white 6%) 0%,
+            color-mix(in srgb, var(--brand-rust) 82%, var(--brand-bronze) 18%) 100%
+        );
+    box-shadow:
+        0 24px 60px color-mix(in srgb, var(--brand-raspberry) 24%, transparent),
+        inset 0 1px 0 color-mix(in srgb, white 24%, transparent);
+    transition: transform 160ms ease, box-shadow 220ms ease, opacity 160ms ease;
+}
+
+.assessment-primary-cta:hover {
+    transform: translateY(-1px);
+    box-shadow:
+        0 28px 72px color-mix(in srgb, var(--brand-raspberry) 28%, transparent),
+        inset 0 1px 0 color-mix(in srgb, white 24%, transparent);
+}
+
+.assessment-primary-cta:active {
+    transform: translateY(0);
+}
+
+.assessment-secondary-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.875rem;
+    color: var(--assessment-secondary-cta-text);
+    border-radius: 1rem;
+    border: 1px solid var(--assessment-secondary-border);
+    background: var(--assessment-secondary-bg);
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, var(--assessment-surface-highlight) 34%, transparent),
+        0 16px 34px color-mix(in srgb, var(--assessment-surface-shadow) 32%, transparent);
+    transition: transform 160ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.assessment-secondary-cta:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--brand-raspberry) 44%, var(--assessment-secondary-border));
+}
+
+.assessment-secondary-cta:active {
+    transform: translateY(0);
+}
+
+.assessment-input {
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid var(--assessment-input-border);
+    background: var(--assessment-input-bg);
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, var(--assessment-surface-highlight) 28%, transparent),
+        0 10px 24px color-mix(in srgb, var(--assessment-surface-shadow) 14%, transparent);
+}
+
+.assessment-input::placeholder {
+    color: var(--assessment-copy-strong);
+}
+
+.assessment-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    color: var(--assessment-kicker-color);
+}
+
+.assessment-preview-card {
+    min-height: 100%;
+    background: var(--assessment-preview-card-bg);
+}
+
+.assessment-preview-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--assessment-surface-highlight) 26%, transparent), transparent 38%),
+        radial-gradient(
+            520px 240px at 18% 0%,
+            color-mix(in srgb, var(--brand-raspberry) 10%, transparent) 0%,
+            transparent 70%
+        );
+    pointer-events: none;
+}
+
+.assessment-preview-mask {
+    filter: blur(7px);
+    opacity: 0.64;
+    transform: scale(1.015);
+    transform-origin: center;
+}
+
+.assessment-preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--assessment-preview-overlay);
+    pointer-events: none;
+}
+
+.assessment-lock-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--assessment-lock-border);
+    background: var(--assessment-lock-bg);
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, var(--assessment-surface-highlight) 26%, transparent),
+        0 14px 28px color-mix(in srgb, var(--assessment-surface-shadow) 34%, transparent);
+}
+
+.assessment-icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, white 10%, transparent);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, white 6%, transparent);
+}
+
+.assessment-flow-shell {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 2rem;
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--surface) 44%, transparent) 0%,
+            transparent 22%,
+            color-mix(in srgb, var(--surface) 28%, transparent) 100%
+        );
+}
+
+.assessment-flow-shell::before,
+.assessment-flow-shell::after {
+    content: "";
+    position: absolute;
+    border-radius: 9999px;
+    pointer-events: none;
+    filter: blur(90px);
+    opacity: 0.3;
+}
+
+.assessment-flow-shell::before {
+    left: -8%;
+    top: 4%;
+    height: 16rem;
+    width: 16rem;
+    background: var(--assessment-shell-spotlight-1);
+}
+
+.assessment-flow-shell::after {
+    right: -8%;
+    top: 20%;
+    height: 18rem;
+    width: 18rem;
+    background: var(--assessment-shell-spotlight-2);
+}
+
+.assessment-flow-inner {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 639px) {
+    .assessment-flow-shell::before {
+        left: -20%;
+        top: 3%;
+        height: 12rem;
+        width: 12rem;
+        opacity: 0.26;
+    }
+
+    .assessment-flow-shell::after {
+        right: -18%;
+        top: 16%;
+        height: 13rem;
+        width: 13rem;
+        opacity: 0.24;
+    }
+}
+
+.assessment-stage-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.75rem;
+    border: 1px solid var(--assessment-surface-border-strong);
+    box-shadow:
+        0 24px 70px color-mix(in srgb, var(--assessment-surface-shadow) 62%, transparent),
+        inset 0 1px 0 color-mix(in srgb, var(--assessment-surface-highlight) 32%, transparent);
+}
+
+.assessment-stage-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            880px 320px at 18% 4%,
+            color-mix(in srgb, var(--assessment-surface-highlight) 28%, transparent) 0%,
+            transparent 60%
+        ),
+        linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--assessment-surface-highlight) 16%, transparent),
+            transparent 26%
+        );
+    pointer-events: none;
+}
+
+.assessment-stage-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid color-mix(in srgb, var(--assessment-surface-highlight) 26%, transparent);
+    pointer-events: none;
+}
+
+.assessment-stage-card--hero {
+    background: var(--assessment-stage-hero-bg);
+}
+
+.assessment-stage-card--question {
+    background: var(--assessment-stage-question-bg);
+}
+
+.assessment-stage-noise {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: var(--assessment-stage-noise-opacity);
+    mix-blend-mode: screen;
+    background-image:
+        radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.42) 0px, rgba(255, 255, 255, 0.42) 1px, transparent 1px),
+        radial-gradient(circle at 82% 26%, rgba(255, 255, 255, 0.28) 0px, rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+        radial-gradient(circle at 38% 76%, rgba(255, 255, 255, 0.16) 0px, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+    background-size: 180px 180px, 220px 220px, 280px 280px;
+}
+
+.assessment-stage-grid {
+    position: relative;
+    z-index: 1;
+    padding: 1.125rem;
+}
+
+@media (min-width: 640px) {
+    .assessment-stage-grid {
+        padding: 1.5rem;
+    }
+}
+
+.assessment-chip {
+    line-height: 1;
+}
+
+.assessment-hero-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--assessment-copy-strong);
+}
+
+.assessment-progress-wrap {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.assessment-progress-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.assessment-progress-track {
+    height: 0.7rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 9999px;
+    border: 1px solid var(--assessment-progress-track-border);
+    background: var(--assessment-progress-track-bg);
+    box-shadow: inset 0 1px 2px color-mix(in srgb, var(--assessment-surface-shadow) 38%, transparent);
+}
+
+.assessment-progress-fill {
+    height: 100%;
+    border-radius: inherit;
+    background:
+        linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--brand-raspberry) 92%, white 8%) 0%,
+            color-mix(in srgb, var(--brand-rust) 76%, var(--brand-bronze) 24%) 100%
+        );
+    box-shadow:
+        0 0 22px color-mix(in srgb, var(--brand-raspberry) 20%, transparent),
+        inset 0 1px 0 color-mix(in srgb, white 18%, transparent);
+}
+
+.assessment-answer-card {
+    position: relative;
+    width: 100%;
+    min-height: 4.8rem;
+    border-radius: 1.2rem;
+    border: 1px solid var(--assessment-surface-border);
+    background: var(--assessment-answer-bg);
+    box-shadow:
+        0 14px 28px color-mix(in srgb, var(--assessment-surface-shadow) 24%, transparent),
+        inset 0 1px 0 color-mix(in srgb, var(--assessment-surface-highlight) 24%, transparent);
+}
+
+.assessment-answer-card:hover {
+    border-color: color-mix(in srgb, var(--brand-raspberry) 36%, var(--assessment-surface-border));
+    background: var(--assessment-answer-bg-hover);
+}
+
+.assessment-answer-card-selected {
+    border-color: color-mix(in srgb, var(--brand-raspberry) 56%, var(--assessment-surface-border));
+    background: var(--assessment-answer-bg-selected);
+    box-shadow:
+        0 16px 30px color-mix(in srgb, var(--brand-raspberry) 16%, transparent),
+        inset 0 0 0 1px color-mix(in srgb, var(--brand-raspberry) 12%, transparent);
+}
+
+.assessment-answer-index {
+    display: inline-flex;
+    height: 2.25rem;
+    width: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid var(--assessment-answer-index-border);
+    background: var(--assessment-answer-index-bg);
+    color: var(--assessment-answer-index-color);
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, var(--assessment-surface-highlight) 24%, transparent),
+        0 8px 18px color-mix(in srgb, var(--assessment-surface-shadow) 12%, transparent);
+}
+
+.assessment-answer-index-selected {
+    border-color: color-mix(in srgb, var(--brand-raspberry) 70%, transparent);
+    background:
+        linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--brand-raspberry) 92%, white 8%) 0%,
+            color-mix(in srgb, var(--brand-rust) 72%, var(--brand-bronze) 28%) 100%
+        );
+    color: white;
+    box-shadow:
+        0 12px 28px color-mix(in srgb, var(--brand-raspberry) 20%, transparent),
+        inset 0 1px 0 color-mix(in srgb, white 16%, transparent);
+}
+
+.assessment-muted-panel {
+    border-radius: 1rem;
+    border: 1px solid var(--assessment-muted-panel-border);
+    background: var(--assessment-muted-panel-bg);
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, var(--assessment-surface-highlight) 24%, transparent),
+        0 10px 20px color-mix(in srgb, var(--assessment-surface-shadow) 14%, transparent);
+}
+
+.assessment-ghost-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    border-radius: 0.9rem;
+    border: 1px solid var(--assessment-ghost-border);
+    background: var(--assessment-ghost-bg);
+    box-shadow:
+        0 12px 24px color-mix(in srgb, var(--assessment-surface-shadow) 18%, transparent),
+        inset 0 1px 0 color-mix(in srgb, var(--assessment-surface-highlight) 24%, transparent);
+    transition: transform 160ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.assessment-ghost-button:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--brand-raspberry) 34%, var(--assessment-ghost-border));
+}
+
+.assessment-ghost-button:active {
+    transform: translateY(0);
+}
+
 .pfa-screen-enter {
     animation: pfaScreenEnter 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -1006,7 +1927,49 @@ html[data-theme="dark"] .ppc-hero-noise {
     100% { transform: translate3d(26px, 34px, 0) rotate(-0.8deg) scale(0.95); }
 }
 
+@keyframes pfaResultsOrbitDrift {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(-2%, 2%, 0) scale(1.03);
+    }
+}
+
+@keyframes pfaResultsGlowShift {
+    0%, 100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        opacity: 0.88;
+        transform: translate3d(1.5%, 1.5%, 0);
+    }
+}
+
+@keyframes pfaResultsFloatPrimary {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(5%, -4%, 0) scale(1.05);
+    }
+}
+
+@keyframes pfaResultsFloatSecondary {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(-4%, 5%, 0) scale(1.04);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
+    .assessment-results-stage::before,
+    .assessment-results-stage::after,
+    .assessment-results-hero::before,
+    .assessment-results-hero::after,
     .ppc-welcome-gradient::before,
     .ppc-welcome-gradient::after,
     .ppc-welcome-glow-1,

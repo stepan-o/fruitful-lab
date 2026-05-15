@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
+import { Alatsi, Raleway } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+
+const alatsi = Alatsi({
+    weight: "400",
+    subsets: ["latin"],
+    variable: "--font-alatsi",
+    display: "swap",
+});
+
+const raleway = Raleway({
+    subsets: ["latin"],
+    variable: "--font-raleway",
+    display: "swap",
+});
 
 export const metadata: Metadata = {
     title: "Fruitful Lab – Pinterest & Funnel Studio",
@@ -16,7 +30,7 @@ export default function RootLayout({
     const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en" suppressHydrationWarning className={`${raleway.variable} ${alatsi.variable}`}>
         <head />
         <body className="font-body antialiased">
         {GTM_ID ? (

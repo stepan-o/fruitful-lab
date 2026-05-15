@@ -79,7 +79,7 @@ describe("PinterestFitAssessment", () => {
             }),
         ).toBeInTheDocument();
         expect(screen.getByRole("button", { name: /restart/i })).toBeInTheDocument();
-        expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
+        expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(1);
         expect(screen.getAllByRole("link", { name: /book a fit call/i })[0]).toHaveAttribute(
             "href",
             "https://cal.com/fruitfullab/pinterest-strategy",
@@ -106,7 +106,7 @@ describe("PinterestFitAssessment", () => {
         render(<ResultsScreen result={strongFitResult} onRestart={() => {}} />);
 
         expect(screen.getByText("Strong Pinterest Fit")).toBeInTheDocument();
-        expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
+        expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(1);
         expect(screen.getByRole("heading", { name: /your personalized breakdown/i })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: /top 3 reasons/i })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: /best role for pinterest/i })).toBeInTheDocument();
@@ -126,7 +126,7 @@ describe("PinterestFitAssessment", () => {
         expect(screen.getByText(/your niche has strong pinterest potential/i)).toBeInTheDocument();
         expect(screen.getByText(/pinterest looks most promising here as a discovery and traffic channel/i)).toBeInTheDocument();
         expect(screen.getByText(/want to talk through what this could look like for your brand/i)).toBeInTheDocument();
-        expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
+        expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(1);
         expect(scrollIntoViewMock).toHaveBeenCalled();
     });
 

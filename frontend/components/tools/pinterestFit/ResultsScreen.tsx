@@ -358,15 +358,6 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                         </p>
                     </div>
 
-                    <div className="mt-6 sm:mt-7">
-                        <FitCallButton
-                            href={viewModel.ctaUrl}
-                            label={viewModel.ctaLabel}
-                            isPending={viewModel.bookingUrlPending}
-                            onClick={onCtaClick}
-                            variant="primary"
-                        />
-                    </div>
                 </div>
             </div>
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent, type MouseEvent, type SVGProps } from "react";
 
 import {
+    PINTEREST_FIT_LEAD_SOURCE,
     RESULT_EMAIL_GATE_COPY,
     createPinterestFitResultViewModel,
     type AssessmentResult,
@@ -308,6 +309,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState<string | null>(null);
     const [isUnlocked, setIsUnlocked] = useState(false);
+    const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
     const breakdownRef = useRef<HTMLDivElement | null>(null);
 
     const emailHeading = isUnlocked ? RESULT_EMAIL_GATE_COPY.unlockedHeading : RESULT_EMAIL_GATE_COPY.heading;
@@ -326,7 +328,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
         });
     }, [isUnlocked]);
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const trimmedEmail = email.trim();
@@ -335,9 +337,33 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
             return;
         }
 
-        setEmail(trimmedEmail);
-        setEmailError(null);
-        setIsUnlocked(true);
+        setIsSubmittingEmail(true);
+
+        try {
+            const response = await fetch("/api/tools/pinterest-fit-assessment/lead", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: trimmedEmail,
+                    result: viewModel.label,
+                    source: PINTEREST_FIT_LEAD_SOURCE,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Email capture failed");
+            }
+
+            setEmail(trimmedEmail);
+            setEmailError(null);
+            setIsUnlocked(true);
+        } catch {
+            setEmailError(RESULT_EMAIL_GATE_COPY.submitErrorMessage);
+        } finally {
+            setIsSubmittingEmail(false);
+        }
     };
 
     return (
@@ -407,6 +433,7 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                             placeholder={RESULT_EMAIL_GATE_COPY.placeholder}
                             autoComplete="email"
                             inputMode="email"
+                            disabled={isSubmittingEmail || isUnlocked}
                             className="assessment-input px-4 py-3.5 text-[1rem] text-[var(--foreground)] outline-none transition focus:border-[color-mix(in_srgb,var(--brand-raspberry)_48%,var(--border))] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--brand-raspberry)_16%,transparent)] sm:text-[1.05rem]"
                             aria-invalid={emailError ? "true" : "false"}
                             aria-describedby={emailError ? "pfa-email-error" : undefined}
@@ -423,10 +450,11 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                     <div className="space-y-2.5">
                         <button
                             type="submit"
-                            className="assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold sm:text-lg"
+                            disabled={isSubmittingEmail || isUnlocked}
+                            className="assessment-primary-cta w-full px-5 py-3.5 text-base font-semibold disabled:cursor-not-allowed disabled:opacity-70 sm:text-lg"
                         >
                             <LockIcon className="h-5 w-5 shrink-0" />
-                            <span>{RESULT_EMAIL_GATE_COPY.buttonLabel}</span>
+                            <span>{isSubmittingEmail ? "Unlocking..." : RESULT_EMAIL_GATE_COPY.buttonLabel}</span>
                         </button>
 
                         <p className="flex items-center gap-2 text-sm leading-6 text-[var(--assessment-copy-strong)]">

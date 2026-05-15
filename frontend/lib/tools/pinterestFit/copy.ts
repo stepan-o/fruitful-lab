@@ -33,9 +33,10 @@ export const RESULT_EMAIL_GATE_COPY = {
     body: "Enter your email to unlock your personalized results, including your top 3 reasons, best Pinterest role, and recommended next step.",
     placeholder: "Your email address",
     buttonLabel: "Unlock My Full Breakdown",
-    trustNote: "Your info is safe. No spam, ever.",
+    trustNote: "We’ll also send a copy of your result to your inbox. No spam, ever.",
     unlockedHeading: "Your full breakdown is unlocked",
     validationMessage: "Enter a valid email to unlock your full breakdown.",
+    submitErrorMessage: "Something went wrong. Please try again in a moment.",
 } as const;
 
 export const REASON_COPY_BY_KEY = {

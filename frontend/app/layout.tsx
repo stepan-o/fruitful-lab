@@ -17,6 +17,7 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
+    applicationName: "Fruitful Lab",
     title: "Fruitful Lab – Pinterest & Funnel Studio",
     description:
         "Full-funnel Pinterest strategy, ads, and analytics for baby, family, lifestyle, and CPG brands.",

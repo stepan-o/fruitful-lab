@@ -91,7 +91,7 @@ describe("PinterestFitAssessment", () => {
         expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
         expect(screen.getAllByRole("link", { name: /book a fit call/i })[0]).toHaveAttribute(
             "href",
-            "https://tidycal.com/susycid/pinterest-fit-call?utm_source=fruitful_lab&utm_medium=assessment&utm_campaign=pinterest_fit_assessment&utm_content=book_fit_call",
+            "https://tidycal.com/susycid/pinterest-fit-call",
         );
         expect(screen.getByRole("heading", { name: /want your full breakdown/i })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: /your personalized breakdown/i })).toBeInTheDocument();
@@ -323,7 +323,7 @@ describe("PinterestFitAssessment", () => {
                 role_key: "discovery_traffic",
                 reason_keys: ["reason_category_strong", "reason_offer_proven", "reason_support_ready"],
                 button_label: "Book a Fit Call",
-                cta_url: "https://tidycal.com/susycid/pinterest-fit-call?utm_source=fruitful_lab&utm_medium=assessment&utm_campaign=pinterest_fit_assessment&utm_content=book_fit_call",
+                cta_url: "https://tidycal.com/susycid/pinterest-fit-call",
             }),
         );
     });

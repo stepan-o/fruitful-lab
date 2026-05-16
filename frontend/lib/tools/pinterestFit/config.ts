@@ -56,5 +56,4 @@ export const ROLE_PRIORITY_ORDER = [
 ] as const satisfies readonly RoleKey[];
 
 export const PINTEREST_FIT_CALL_URL_PLACEHOLDER_TOKEN = "TODO_ADD_REAL_FIT_CALL_URL" as const;
-export const PINTEREST_FIT_CALL_URL =
-    "https://tidycal.com/susycid/pinterest-fit-call?utm_source=fruitful_lab&utm_medium=assessment&utm_campaign=pinterest_fit_assessment&utm_content=book_fit_call" as const;
+export const PINTEREST_FIT_CALL_URL = "https://tidycal.com/susycid/pinterest-fit-call" as const;

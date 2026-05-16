@@ -24,6 +24,7 @@ type MailerLiteFieldResponse = {
 
 type MailerLiteSubscriber = {
     id?: string;
+    fields?: Record<string, unknown>;
 };
 
 type MailerLiteSubscriberResponse = {
@@ -34,6 +35,13 @@ type PinterestFitLeadPayload = {
     email?: unknown;
     result?: unknown;
     source?: unknown;
+};
+
+type PinterestFitLeadFields = {
+    resultFieldKey: string;
+    result: string;
+    sourceFieldKey: string;
+    source: string;
 };
 
 function isValidEmail(value: string) {
@@ -115,6 +123,10 @@ async function resolveMailerLiteSubscriberId(params: {
     return lookupSubscriber.data?.id ?? null;
 }
 
+function hasSavedLeadFields(subscriber: MailerLiteSubscriber | undefined, fields: PinterestFitLeadFields) {
+    return subscriber?.fields?.[fields.resultFieldKey] === fields.result && subscriber.fields[fields.sourceFieldKey] === fields.source;
+}
+
 export async function POST(request: Request) {
     let payload: PinterestFitLeadPayload;
 
@@ -151,16 +163,18 @@ export async function POST(request: Request) {
         }),
     ]);
 
+    const leadFields = {
+        [resultFieldKey]: payload.result,
+        [sourceFieldKey]: source,
+    };
+
     const subscribeResponse = await fetch(`${MAILERLITE_API_BASE_URL}/subscribers`, {
         method: "POST",
         headers: mailerLiteHeaders(apiKey),
         body: JSON.stringify({
             email,
             groups: [groupId],
-            fields: {
-                [resultFieldKey]: payload.result,
-                [sourceFieldKey]: source,
-            },
+            fields: leadFields,
         }),
     });
 
@@ -178,6 +192,18 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
     }
 
+    const updateSubscriberResponse = await fetch(`${MAILERLITE_API_BASE_URL}/subscribers/${encodeURIComponent(subscriberId)}`, {
+        method: "PUT",
+        headers: mailerLiteHeaders(apiKey),
+        body: JSON.stringify({
+            fields: leadFields,
+        }),
+    });
+
+    if (!updateSubscriberResponse.ok) {
+        return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
+    }
+
     const assignGroupResponse = await fetch(
         `${MAILERLITE_API_BASE_URL}/subscribers/${encodeURIComponent(subscriberId)}/groups/${encodeURIComponent(groupId)}`,
         {
@@ -187,6 +213,27 @@ export async function POST(request: Request) {
     );
 
     if (!assignGroupResponse.ok) {
+        return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
+    }
+
+    const verifySubscriberResponse = await fetch(`${MAILERLITE_API_BASE_URL}/subscribers/${encodeURIComponent(subscriberId)}`, {
+        headers: mailerLiteHeaders(apiKey),
+    });
+
+    if (!verifySubscriberResponse.ok) {
+        return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
+    }
+
+    const verifiedSubscriber = (await verifySubscriberResponse.json()) as MailerLiteSubscriberResponse;
+
+    if (
+        !hasSavedLeadFields(verifiedSubscriber.data, {
+            resultFieldKey,
+            result: payload.result,
+            sourceFieldKey,
+            source,
+        })
+    ) {
         return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
     }
 

@@ -79,10 +79,40 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
                 } as Response;
             }
 
+            if (url.endsWith("/subscribers/subscriber-123") && method === "PUT") {
+                return {
+                    ok: true,
+                    json: async () => ({
+                        data: {
+                            id: "subscriber-123",
+                            fields: {
+                                pinterest_fit_result: "Strong Pinterest Fit",
+                                lead_source: "Pinterest Fit Assessment",
+                            },
+                        },
+                    }),
+                } as Response;
+            }
+
             if (url.endsWith("/subscribers/subscriber-123/groups/group-123") && method === "POST") {
                 return {
                     ok: true,
                     json: async () => ({ data: { id: "subscriber-123" } }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/subscriber-123") && method === "GET") {
+                return {
+                    ok: true,
+                    json: async () => ({
+                        data: {
+                            id: "subscriber-123",
+                            fields: {
+                                pinterest_fit_result: "Strong Pinterest Fit",
+                                lead_source: "Pinterest Fit Assessment",
+                            },
+                        },
+                    }),
                 } as Response;
             }
 
@@ -128,6 +158,18 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
         });
 
         expect(assignGroupCall).toBeDefined();
+
+        const updateFieldsCall = fetchMock.mock.calls.find(([url, init]) => {
+            return String(url).endsWith("/subscribers/subscriber-123") && init?.method === "PUT";
+        });
+
+        expect(updateFieldsCall).toBeDefined();
+        expect(JSON.parse(updateFieldsCall?.[1]?.body as string)).toEqual({
+            fields: {
+                pinterest_fit_result: "Strong Pinterest Fit",
+                lead_source: "Pinterest Fit Assessment",
+            },
+        });
     });
 
     it("looks up the subscriber before assigning the group when MailerLite omits the id from subscribe", async () => {
@@ -165,6 +207,28 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
                 return {
                     ok: true,
                     json: async () => ({ data: { id: "subscriber-lookup-123" } }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/subscriber-lookup-123") && method === "PUT") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: { id: "subscriber-lookup-123" } }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/subscriber-lookup-123") && method === "GET") {
+                return {
+                    ok: true,
+                    json: async () => ({
+                        data: {
+                            id: "subscriber-lookup-123",
+                            fields: {
+                                pinterest_fit_result: "Strong Pinterest Fit",
+                                lead_source: "Pinterest Fit Assessment",
+                            },
+                        },
+                    }),
                 } as Response;
             }
 
@@ -217,6 +281,81 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
                 return {
                     ok: false,
                     json: async () => ({ message: "Group assignment failed" }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/subscriber-123") && method === "PUT") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: { id: "subscriber-123" } }),
+                } as Response;
+            }
+
+            throw new Error(`Unexpected fetch: ${method} ${url}`);
+        });
+
+        const res = await POST({
+            json: async () => ({
+                email: "founder@example.com",
+                result: "Strong Pinterest Fit",
+                source: "Pinterest Fit Assessment",
+            }),
+        });
+
+        expect(res.status).toBe(502);
+        expect(await res.json()).toEqual({ error: "Email capture failed" });
+    });
+
+    it("keeps the email gate locked when MailerLite does not save the result field", async () => {
+        global.fetch = jest.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+            const url = String(input);
+            const method = init?.method ?? "GET";
+
+            if (url.endsWith("/fields?limit=100")) {
+                return {
+                    ok: true,
+                    json: async () => ({
+                        data: [
+                            { name: "Pinterest Fit Result", key: "pinterest_fit_result", type: "text" },
+                            { name: "Lead Source", key: "lead_source", type: "text" },
+                        ],
+                    }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers") && method === "POST") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: { id: "subscriber-123" } }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/subscriber-123") && method === "PUT") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: { id: "subscriber-123" } }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/subscriber-123/groups/group-123") && method === "POST") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: { id: "subscriber-123" } }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/subscriber-123") && method === "GET") {
+                return {
+                    ok: true,
+                    json: async () => ({
+                        data: {
+                            id: "subscriber-123",
+                            fields: {
+                                pinterest_fit_result: null,
+                                lead_source: "Pinterest Fit Assessment",
+                            },
+                        },
+                    }),
                 } as Response;
             }
 

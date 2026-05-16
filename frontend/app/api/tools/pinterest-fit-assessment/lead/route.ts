@@ -22,6 +22,14 @@ type MailerLiteFieldResponse = {
     data?: MailerLiteField;
 };
 
+type MailerLiteSubscriber = {
+    id?: string;
+};
+
+type MailerLiteSubscriberResponse = {
+    data?: MailerLiteSubscriber;
+};
+
 type PinterestFitLeadPayload = {
     email?: unknown;
     result?: unknown;
@@ -83,6 +91,30 @@ async function fetchMailerLiteFieldKey(params: {
     return createdField.data?.key ?? params.fallbackKey;
 }
 
+async function resolveMailerLiteSubscriberId(params: {
+    apiKey: string;
+    email: string;
+    subscribeResponse: Response;
+}) {
+    const subscriber = (await params.subscribeResponse.json()) as MailerLiteSubscriberResponse;
+
+    if (subscriber.data?.id) {
+        return subscriber.data.id;
+    }
+
+    const lookupResponse = await fetch(`${MAILERLITE_API_BASE_URL}/subscribers/${encodeURIComponent(params.email)}`, {
+        headers: mailerLiteHeaders(params.apiKey),
+    });
+
+    if (!lookupResponse.ok) {
+        return null;
+    }
+
+    const lookupSubscriber = (await lookupResponse.json()) as MailerLiteSubscriberResponse;
+
+    return lookupSubscriber.data?.id ?? null;
+}
+
 export async function POST(request: Request) {
     let payload: PinterestFitLeadPayload;
 
@@ -133,6 +165,28 @@ export async function POST(request: Request) {
     });
 
     if (!subscribeResponse.ok) {
+        return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
+    }
+
+    const subscriberId = await resolveMailerLiteSubscriberId({
+        apiKey,
+        email,
+        subscribeResponse,
+    });
+
+    if (!subscriberId) {
+        return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
+    }
+
+    const assignGroupResponse = await fetch(
+        `${MAILERLITE_API_BASE_URL}/subscribers/${encodeURIComponent(subscriberId)}/groups/${encodeURIComponent(groupId)}`,
+        {
+            method: "POST",
+            headers: mailerLiteHeaders(apiKey),
+        },
+    );
+
+    if (!assignGroupResponse.ok) {
         return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
     }
 

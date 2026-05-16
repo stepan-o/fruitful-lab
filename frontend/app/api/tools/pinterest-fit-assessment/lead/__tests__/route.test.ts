@@ -79,6 +79,13 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
                 } as Response;
             }
 
+            if (url.endsWith("/subscribers/subscriber-123/groups/group-123") && method === "POST") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: { id: "subscriber-123" } }),
+                } as Response;
+            }
+
             throw new Error(`Unexpected fetch: ${method} ${url}`);
         });
     });
@@ -115,6 +122,117 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
                 lead_source: "Pinterest Fit Assessment",
             },
         });
+
+        const assignGroupCall = fetchMock.mock.calls.find(([url, init]) => {
+            return String(url).endsWith("/subscribers/subscriber-123/groups/group-123") && init?.method === "POST";
+        });
+
+        expect(assignGroupCall).toBeDefined();
+    });
+
+    it("looks up the subscriber before assigning the group when MailerLite omits the id from subscribe", async () => {
+        global.fetch = jest.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+            const url = String(input);
+            const method = init?.method ?? "GET";
+
+            if (url.endsWith("/fields?limit=100")) {
+                return {
+                    ok: true,
+                    json: async () => ({
+                        data: [
+                            { name: "Pinterest Fit Result", key: "pinterest_fit_result", type: "text" },
+                            { name: "Lead Source", key: "lead_source", type: "text" },
+                        ],
+                    }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers") && method === "POST") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: {} }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/founder%40example.com") && method === "GET") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: { id: "subscriber-lookup-123" } }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/subscriber-lookup-123/groups/group-123") && method === "POST") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: { id: "subscriber-lookup-123" } }),
+                } as Response;
+            }
+
+            throw new Error(`Unexpected fetch: ${method} ${url}`);
+        });
+
+        const res = await POST({
+            json: async () => ({
+                email: "Founder@Example.com",
+                result: "Strong Pinterest Fit",
+                source: "Pinterest Fit Assessment",
+            }),
+        });
+
+        expect(res.status).toBe(200);
+
+        const fetchMock = global.fetch as jest.Mock;
+        expect(
+            fetchMock.mock.calls.some(([url, init]) => {
+                return String(url).endsWith("/subscribers/subscriber-lookup-123/groups/group-123") && init?.method === "POST";
+            }),
+        ).toBe(true);
+    });
+
+    it("keeps the email gate locked when group assignment fails", async () => {
+        global.fetch = jest.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+            const url = String(input);
+            const method = init?.method ?? "GET";
+
+            if (url.endsWith("/fields?limit=100")) {
+                return {
+                    ok: true,
+                    json: async () => ({
+                        data: [
+                            { name: "Pinterest Fit Result", key: "pinterest_fit_result", type: "text" },
+                            { name: "Lead Source", key: "lead_source", type: "text" },
+                        ],
+                    }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers") && method === "POST") {
+                return {
+                    ok: true,
+                    json: async () => ({ data: { id: "subscriber-123" } }),
+                } as Response;
+            }
+
+            if (url.endsWith("/subscribers/subscriber-123/groups/group-123") && method === "POST") {
+                return {
+                    ok: false,
+                    json: async () => ({ message: "Group assignment failed" }),
+                } as Response;
+            }
+
+            throw new Error(`Unexpected fetch: ${method} ${url}`);
+        });
+
+        const res = await POST({
+            json: async () => ({
+                email: "founder@example.com",
+                result: "Strong Pinterest Fit",
+                source: "Pinterest Fit Assessment",
+            }),
+        });
+
+        expect(res.status).toBe(502);
+        expect(await res.json()).toEqual({ error: "Email capture failed" });
     });
 
     it("rejects invalid payloads", async () => {

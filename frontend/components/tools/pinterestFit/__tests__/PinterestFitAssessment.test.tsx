@@ -11,7 +11,9 @@ type DataLayerEvent = Record<string, unknown> & { event: string };
 
 const originalCrypto = globalThis.crypto;
 const originalScrollIntoView = window.HTMLElement.prototype.scrollIntoView;
+const originalFetch = globalThis.fetch;
 const scrollIntoViewMock = jest.fn();
+const fetchMock = jest.fn();
 
 function getDataLayerEvents() {
     return (window as Window & { dataLayer?: DataLayerEvent[] }).dataLayer ?? [];
@@ -21,6 +23,12 @@ beforeEach(() => {
     (window as Window & { dataLayer?: DataLayerEvent[] }).dataLayer = [];
     window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
     scrollIntoViewMock.mockClear();
+    fetchMock.mockReset();
+    fetchMock.mockResolvedValue({
+        ok: true,
+        json: async () => ({ ok: true }),
+    });
+    globalThis.fetch = fetchMock as unknown as typeof fetch;
     Object.defineProperty(globalThis, "crypto", {
         value: {
             randomUUID: jest.fn(() => "run-123"),
@@ -31,6 +39,7 @@ beforeEach(() => {
 
 afterAll(() => {
     window.HTMLElement.prototype.scrollIntoView = originalScrollIntoView;
+    globalThis.fetch = originalFetch;
     Object.defineProperty(globalThis, "crypto", {
         value: originalCrypto,
         configurable: true,
@@ -82,7 +91,7 @@ describe("PinterestFitAssessment", () => {
         expect(screen.getAllByRole("link", { name: /book a fit call/i })).toHaveLength(2);
         expect(screen.getAllByRole("link", { name: /book a fit call/i })[0]).toHaveAttribute(
             "href",
-            "https://cal.com/fruitfullab/pinterest-strategy",
+            "https://tidycal.com/susycid/pinterest-fit-call?utm_source=fruitful_lab&utm_medium=assessment&utm_campaign=pinterest_fit_assessment&utm_content=book_fit_call",
         );
         expect(screen.getByRole("heading", { name: /want your full breakdown/i })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: /your personalized breakdown/i })).toBeInTheDocument();
@@ -122,6 +131,17 @@ describe("PinterestFitAssessment", () => {
         await user.type(screen.getByLabelText(/email/i), "founder@example.com");
         await user.click(screen.getByRole("button", { name: /unlock my full breakdown/i }));
 
+        expect(fetchMock).toHaveBeenCalledWith(
+            "/api/tools/pinterest-fit-assessment/lead",
+            expect.objectContaining({
+                method: "POST",
+                body: JSON.stringify({
+                    email: "founder@example.com",
+                    result: "Strong Pinterest Fit",
+                    source: "Pinterest Fit Assessment",
+                }),
+            }),
+        );
         expect(screen.getByRole("heading", { name: /your full breakdown is unlocked/i })).toBeInTheDocument();
         expect(screen.getByText(/your niche has strong pinterest potential/i)).toBeInTheDocument();
         expect(screen.getByText(/pinterest looks most promising here as a discovery and traffic channel/i)).toBeInTheDocument();
@@ -149,10 +169,46 @@ describe("PinterestFitAssessment", () => {
         await user.type(screen.getByLabelText(/email/i), "founder@example.com");
         await user.click(screen.getByRole("button", { name: /unlock my full breakdown/i }));
 
+        expect(fetchMock).toHaveBeenCalledWith(
+            "/api/tools/pinterest-fit-assessment/lead",
+            expect.objectContaining({
+                body: JSON.stringify({
+                    email: "founder@example.com",
+                    result: "Not the Right Fit Right Now",
+                    source: "Pinterest Fit Assessment",
+                }),
+            }),
+        );
         expect(screen.getByText("Still want to talk it through or get a second opinion?")).toBeInTheDocument();
         expect(
             screen.getByText(/if you want a second opinion on whether pinterest is worth exploring later/i),
         ).toBeInTheDocument();
+    });
+
+    it("keeps the breakdown locked when email capture fails", async () => {
+        const user = userEvent.setup();
+        const strongFitResult = scorePinterestFitAssessment({
+            q1: "home_decor",
+            q2: "very_proven",
+            q3: "strong",
+            q4: "ready",
+            q5: "discovery",
+            q6: "ready_now",
+            q7: "very_open",
+        });
+        fetchMock.mockResolvedValueOnce({
+            ok: false,
+            json: async () => ({ error: "Email capture failed" }),
+        });
+
+        render(<ResultsScreen result={strongFitResult} onRestart={() => {}} />);
+
+        await user.type(screen.getByLabelText(/email/i), "founder@example.com");
+        await user.click(screen.getByRole("button", { name: /unlock my full breakdown/i }));
+
+        expect(await screen.findByText(/something went wrong/i)).toBeInTheDocument();
+        expect(screen.queryByRole("heading", { name: /your full breakdown is unlocked/i })).not.toBeInTheDocument();
+        expect(screen.queryByText(/your niche has strong pinterest potential/i)).not.toBeInTheDocument();
     });
 
     it("supports going back to the intro from the first question and restoring a prior answer when navigating back", async () => {
@@ -267,7 +323,7 @@ describe("PinterestFitAssessment", () => {
                 role_key: "discovery_traffic",
                 reason_keys: ["reason_category_strong", "reason_offer_proven", "reason_support_ready"],
                 button_label: "Book a Fit Call",
-                cta_url: "https://cal.com/fruitfullab/pinterest-strategy",
+                cta_url: "https://tidycal.com/susycid/pinterest-fit-call?utm_source=fruitful_lab&utm_medium=assessment&utm_campaign=pinterest_fit_assessment&utm_content=book_fit_call",
             }),
         );
     });

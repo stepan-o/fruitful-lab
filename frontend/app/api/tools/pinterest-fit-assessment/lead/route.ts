@@ -34,15 +34,23 @@ type MailerLiteSubscriberResponse = {
 type PinterestFitLeadPayload = {
     email?: unknown;
     result?: unknown;
+    topReason1?: unknown;
+    topReason2?: unknown;
+    topReason3?: unknown;
+    pinterestRole?: unknown;
+    recommendedNextStep?: unknown;
     source?: unknown;
 };
 
-type PinterestFitLeadFields = {
-    resultFieldKey: string;
-    result: string;
-    sourceFieldKey: string;
-    source: string;
-};
+type PinterestFitLeadFields = Record<string, string>;
+
+const PINTEREST_FIT_PERSONALIZATION_HEADERS = {
+    topReason1: "x-pinterest-fit-top-reason-1",
+    topReason2: "x-pinterest-fit-top-reason-2",
+    topReason3: "x-pinterest-fit-top-reason-3",
+    pinterestRole: "x-pinterest-fit-role",
+    recommendedNextStep: "x-pinterest-fit-recommended-next-step",
+} as const;
 
 function isValidEmail(value: string) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -123,12 +131,29 @@ async function resolveMailerLiteSubscriberId(params: {
     return lookupSubscriber.data?.id ?? null;
 }
 
+function normalizeOptionalText(value: unknown) {
+    return typeof value === "string" ? value.trim() : "";
+}
+
+function decodeHeaderText(value: string | null) {
+    if (!value) {
+        return "";
+    }
+
+    try {
+        return decodeURIComponent(value).trim();
+    } catch {
+        return value.trim();
+    }
+}
+
 function hasSavedLeadFields(subscriber: MailerLiteSubscriber | undefined, fields: PinterestFitLeadFields) {
-    return subscriber?.fields?.[fields.resultFieldKey] === fields.result && subscriber.fields[fields.sourceFieldKey] === fields.source;
+    return Object.entries(fields).every(([key, value]) => subscriber?.fields?.[key] === value);
 }
 
 export async function POST(request: Request) {
     let payload: PinterestFitLeadPayload;
+    const requestHeaders = request.headers as Headers | undefined;
 
     try {
         payload = (await request.json()) as PinterestFitLeadPayload;
@@ -138,6 +163,21 @@ export async function POST(request: Request) {
 
     const email = typeof payload.email === "string" ? payload.email.trim().toLowerCase() : "";
     const source = typeof payload.source === "string" && payload.source.trim() ? payload.source.trim() : PINTEREST_FIT_LEAD_SOURCE;
+    const topReason1 =
+        normalizeOptionalText(payload.topReason1) ||
+        decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.topReason1) ?? null);
+    const topReason2 =
+        normalizeOptionalText(payload.topReason2) ||
+        decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.topReason2) ?? null);
+    const topReason3 =
+        normalizeOptionalText(payload.topReason3) ||
+        decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.topReason3) ?? null);
+    const pinterestRole =
+        normalizeOptionalText(payload.pinterestRole) ||
+        decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.pinterestRole) ?? null);
+    const recommendedNextStep =
+        normalizeOptionalText(payload.recommendedNextStep) ||
+        decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.recommendedNextStep) ?? null);
 
     if (!isValidEmail(email) || !isPinterestFitResultLabel(payload.result)) {
         return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
@@ -150,23 +190,53 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "Email capture is not configured" }, { status: 503 });
     }
 
-    const [resultFieldKey, sourceFieldKey] = await Promise.all([
-        fetchMailerLiteFieldKey({
-            apiKey,
-            fieldName: PINTEREST_FIT_MAILERLITE_FIELDS.result.name,
-            fallbackKey: PINTEREST_FIT_MAILERLITE_FIELDS.result.fallbackKey,
+    const requestedMailerLiteFields = [
+        ["result", PINTEREST_FIT_MAILERLITE_FIELDS.result],
+        ["source", PINTEREST_FIT_MAILERLITE_FIELDS.source],
+        ...(topReason1 ? ([ ["topReason1", PINTEREST_FIT_MAILERLITE_FIELDS.topReason1] ] as const) : []),
+        ...(topReason2 ? ([ ["topReason2", PINTEREST_FIT_MAILERLITE_FIELDS.topReason2] ] as const) : []),
+        ...(topReason3 ? ([ ["topReason3", PINTEREST_FIT_MAILERLITE_FIELDS.topReason3] ] as const) : []),
+        ...(pinterestRole ? ([ ["pinterestRole", PINTEREST_FIT_MAILERLITE_FIELDS.pinterestRole] ] as const) : []),
+        ...(recommendedNextStep ? ([ ["recommendedNextStep", PINTEREST_FIT_MAILERLITE_FIELDS.recommendedNextStep] ] as const) : []),
+    ] as const;
+
+    const fieldEntries = await Promise.all(
+        requestedMailerLiteFields.map(async ([id, field]) => {
+            const key = await fetchMailerLiteFieldKey({
+                apiKey,
+                fieldName: field.name,
+                fallbackKey: field.fallbackKey,
+            });
+
+            return [id, key] as const;
         }),
-        fetchMailerLiteFieldKey({
-            apiKey,
-            fieldName: PINTEREST_FIT_MAILERLITE_FIELDS.source.name,
-            fallbackKey: PINTEREST_FIT_MAILERLITE_FIELDS.source.fallbackKey,
-        }),
-    ]);
+    );
+    const fieldKeys = Object.fromEntries(fieldEntries) as Partial<Record<keyof typeof PINTEREST_FIT_MAILERLITE_FIELDS, string>>;
 
     const leadFields = {
-        [resultFieldKey]: payload.result,
-        [sourceFieldKey]: source,
+        [fieldKeys.result ?? PINTEREST_FIT_MAILERLITE_FIELDS.result.fallbackKey]: payload.result,
+        [fieldKeys.source ?? PINTEREST_FIT_MAILERLITE_FIELDS.source.fallbackKey]: source,
     };
+
+    if (topReason1 && fieldKeys.topReason1) {
+        leadFields[fieldKeys.topReason1] = topReason1;
+    }
+
+    if (topReason2 && fieldKeys.topReason2) {
+        leadFields[fieldKeys.topReason2] = topReason2;
+    }
+
+    if (topReason3 && fieldKeys.topReason3) {
+        leadFields[fieldKeys.topReason3] = topReason3;
+    }
+
+    if (pinterestRole && fieldKeys.pinterestRole) {
+        leadFields[fieldKeys.pinterestRole] = pinterestRole;
+    }
+
+    if (recommendedNextStep && fieldKeys.recommendedNextStep) {
+        leadFields[fieldKeys.recommendedNextStep] = recommendedNextStep;
+    }
 
     const subscribeResponse = await fetch(`${MAILERLITE_API_BASE_URL}/subscribers`, {
         method: "POST",
@@ -226,14 +296,7 @@ export async function POST(request: Request) {
 
     const verifiedSubscriber = (await verifySubscriberResponse.json()) as MailerLiteSubscriberResponse;
 
-    if (
-        !hasSavedLeadFields(verifiedSubscriber.data, {
-            resultFieldKey,
-            result: payload.result,
-            sourceFieldKey,
-            source,
-        })
-    ) {
+    if (!hasSavedLeadFields(verifiedSubscriber.data, leadFields)) {
         return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
     }
 

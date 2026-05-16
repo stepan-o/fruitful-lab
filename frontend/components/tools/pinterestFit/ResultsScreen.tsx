@@ -344,6 +344,11 @@ export function ResultsScreen({ result, onRestart, onCtaClick }: ResultsScreenPr
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "X-Pinterest-Fit-Top-Reason-1": encodeURIComponent(result.reasons[0]),
+                    "X-Pinterest-Fit-Top-Reason-2": encodeURIComponent(result.reasons[1]),
+                    "X-Pinterest-Fit-Top-Reason-3": encodeURIComponent(result.reasons[2]),
+                    "X-Pinterest-Fit-Role": encodeURIComponent(result.roleCopy),
+                    "X-Pinterest-Fit-Recommended-Next-Step": encodeURIComponent(result.cta.caption ?? result.cta.label),
                 },
                 body: JSON.stringify({
                     email: trimmedEmail,

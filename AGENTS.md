@@ -53,3 +53,4 @@ If old docs or prompts disagree with current code, verify the code and update th
 - Keep backend models, schemas, migrations, routers, frontend proxies/helpers, and tests aligned.
 - Preserve current memory by updating `docs/PROJECT_MEMORY.md` and `docs/REPO_GROUNDING_PACK.md` when contracts change.
 - Fruitful Lab Vercel must build from `apps/lab/`.
+- Before starting a local dev server from Codex, request network permission for the turn; local binding to `127.0.0.1` can fail with `listen EPERM` without it.

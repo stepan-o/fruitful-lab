@@ -138,6 +138,7 @@ Pinterest Fit:
 - WordPress adapter placeholder: `apps/fruitful-pin/lib/wordpress.ts`
 - Routes: `/`, `/services`, `/blog`, `/case-studies`, `/about`, `/contact`, `/privacy`, `/terms`
 - Root checks: `make fruitful-pin-test`, `make fruitful-pin-build`, `make fruitful-pin-ci`
+- Local preview from Codex requires network permission before starting the server; otherwise `next dev -H 127.0.0.1 -p 4173` can fail with `listen EPERM`.
 
 Do not point `fruitfulpin.com` at this app until preview, content migration, redirects, analytics, and launch checks are explicitly approved.
 

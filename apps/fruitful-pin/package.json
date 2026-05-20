@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
     "test": "jest",
     "test:watch": "jest --watch",
     "ci:test": "NODE_ENV=test jest",
-    "ci": "npm run ci:test && CI=1 npm run build"
+    "ci": "npm run ci:test && CI=1 npm run build",
+    "dev:local": "next dev -H 127.0.0.1 -p 4173"
   },
   "dependencies": {
     "next": "16.2.3",

@@ -6,8 +6,9 @@ Always read the current project memory before architectural or code work:
 2. `docs/PROJECT_MEMORY.md`
 3. `docs/SYSTEM_IMPLEMENTATION_AUDIT-2026-05-15.md`
 4. `docs/AGENT_OPERATING_PROCEDURES.md`
+5. `docs/CANONICAL_DOMAINS.md`
 
-These files are the repo-level memory for structure, layout, key components, auth, experiments, analytics, frontend/backend contracts, and working patterns.
+These files are the repo-level memory for structure, layout, key components, auth, experiments, analytics, frontend/backend contracts, domains, and working patterns.
 `docs/AGENT_OPERATING_PROCEDURES.md` is the explicit process authority for Susie's end-to-end change delivery workflow.
 
 ## Authority Order
@@ -23,6 +24,7 @@ If old docs or prompts disagree with current code, verify the code and update th
 ## Project Shape
 
 - Current Fruitful Lab app: Next.js App Router in `apps/lab/`.
+- Canonical Fruitful Lab public domain: `https://fruitfulab.net` (one `l` in the middle: `fruitfulab`, not `fruitfullab`). `https://fruitfulab.net` redirects to `https://www.fruitfulab.net`.
 - App structure: brand/app monorepo under `apps/*`, starting with `apps/lab` for the current Fruitful Lab app and `apps/fruitful-pin` for the Fruitful Pin migration.
 - Backend: FastAPI + SQLAlchemy/Postgres in `backend/`.
 - Shared-code target: extract reusable code into `packages/*` only when there is real cross-app reuse.

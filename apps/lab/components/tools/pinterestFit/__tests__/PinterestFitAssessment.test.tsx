@@ -140,6 +140,13 @@ describe("PinterestFitAssessment", () => {
                     result: "Strong Pinterest Fit",
                     source: "Pinterest Fit Assessment",
                 }),
+                headers: expect.objectContaining({
+                    "X-Pinterest-Fit-Top-Reason-1": encodeURIComponent(strongFitResult.reasons[0]),
+                    "X-Pinterest-Fit-Top-Reason-2": encodeURIComponent(strongFitResult.reasons[1]),
+                    "X-Pinterest-Fit-Top-Reason-3": encodeURIComponent(strongFitResult.reasons[2]),
+                    "X-Pinterest-Fit-Role": encodeURIComponent(strongFitResult.roleCopy),
+                    "X-Pinterest-Fit-Recommended-Next-Step": encodeURIComponent(strongFitResult.cta.caption ?? strongFitResult.cta.label),
+                }),
             }),
         );
         expect(screen.getByRole("heading", { name: /your full breakdown is unlocked/i })).toBeInTheDocument();
@@ -176,6 +183,15 @@ describe("PinterestFitAssessment", () => {
                     email: "founder@example.com",
                     result: "Not the Right Fit Right Now",
                     source: "Pinterest Fit Assessment",
+                }),
+                headers: expect.objectContaining({
+                    "X-Pinterest-Fit-Top-Reason-1": encodeURIComponent(notRightNowResult.reasons[0]),
+                    "X-Pinterest-Fit-Top-Reason-2": encodeURIComponent(notRightNowResult.reasons[1]),
+                    "X-Pinterest-Fit-Top-Reason-3": encodeURIComponent(notRightNowResult.reasons[2]),
+                    "X-Pinterest-Fit-Role": encodeURIComponent(notRightNowResult.roleCopy),
+                    "X-Pinterest-Fit-Recommended-Next-Step": encodeURIComponent(
+                        notRightNowResult.cta.caption ?? notRightNowResult.cta.label,
+                    ),
                 }),
             }),
         );

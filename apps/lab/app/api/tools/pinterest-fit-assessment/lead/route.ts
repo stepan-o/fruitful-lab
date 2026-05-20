@@ -131,7 +131,7 @@ async function resolveMailerLiteSubscriberId(params: {
     return lookupSubscriber.data?.id ?? null;
 }
 
-function normalizeOptionalText(value: unknown) {
+function normalizeRequiredText(value: unknown) {
     return typeof value === "string" ? value.trim() : "";
 }
 
@@ -164,19 +164,19 @@ export async function POST(request: Request) {
     const email = typeof payload.email === "string" ? payload.email.trim().toLowerCase() : "";
     const source = typeof payload.source === "string" && payload.source.trim() ? payload.source.trim() : PINTEREST_FIT_LEAD_SOURCE;
     const topReason1 =
-        normalizeOptionalText(payload.topReason1) ||
+        normalizeRequiredText(payload.topReason1) ||
         decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.topReason1) ?? null);
     const topReason2 =
-        normalizeOptionalText(payload.topReason2) ||
+        normalizeRequiredText(payload.topReason2) ||
         decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.topReason2) ?? null);
     const topReason3 =
-        normalizeOptionalText(payload.topReason3) ||
+        normalizeRequiredText(payload.topReason3) ||
         decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.topReason3) ?? null);
     const pinterestRole =
-        normalizeOptionalText(payload.pinterestRole) ||
+        normalizeRequiredText(payload.pinterestRole) ||
         decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.pinterestRole) ?? null);
     const recommendedNextStep =
-        normalizeOptionalText(payload.recommendedNextStep) ||
+        normalizeRequiredText(payload.recommendedNextStep) ||
         decodeHeaderText(requestHeaders?.get(PINTEREST_FIT_PERSONALIZATION_HEADERS.recommendedNextStep) ?? null);
 
     if (!isValidEmail(email) || !isPinterestFitResultLabel(payload.result)) {
@@ -193,11 +193,11 @@ export async function POST(request: Request) {
     const requestedMailerLiteFields = [
         ["result", PINTEREST_FIT_MAILERLITE_FIELDS.result],
         ["source", PINTEREST_FIT_MAILERLITE_FIELDS.source],
-        ...(topReason1 ? ([ ["topReason1", PINTEREST_FIT_MAILERLITE_FIELDS.topReason1] ] as const) : []),
-        ...(topReason2 ? ([ ["topReason2", PINTEREST_FIT_MAILERLITE_FIELDS.topReason2] ] as const) : []),
-        ...(topReason3 ? ([ ["topReason3", PINTEREST_FIT_MAILERLITE_FIELDS.topReason3] ] as const) : []),
-        ...(pinterestRole ? ([ ["pinterestRole", PINTEREST_FIT_MAILERLITE_FIELDS.pinterestRole] ] as const) : []),
-        ...(recommendedNextStep ? ([ ["recommendedNextStep", PINTEREST_FIT_MAILERLITE_FIELDS.recommendedNextStep] ] as const) : []),
+        ...(topReason1 ? ([["topReason1", PINTEREST_FIT_MAILERLITE_FIELDS.topReason1]] as const) : []),
+        ...(topReason2 ? ([["topReason2", PINTEREST_FIT_MAILERLITE_FIELDS.topReason2]] as const) : []),
+        ...(topReason3 ? ([["topReason3", PINTEREST_FIT_MAILERLITE_FIELDS.topReason3]] as const) : []),
+        ...(pinterestRole ? ([["pinterestRole", PINTEREST_FIT_MAILERLITE_FIELDS.pinterestRole]] as const) : []),
+        ...(recommendedNextStep ? ([["recommendedNextStep", PINTEREST_FIT_MAILERLITE_FIELDS.recommendedNextStep]] as const) : []),
     ] as const;
 
     const fieldEntries = await Promise.all(
@@ -296,7 +296,9 @@ export async function POST(request: Request) {
 
     const verifiedSubscriber = (await verifySubscriberResponse.json()) as MailerLiteSubscriberResponse;
 
-    if (!hasSavedLeadFields(verifiedSubscriber.data, leadFields)) {
+    if (
+        !hasSavedLeadFields(verifiedSubscriber.data, leadFields)
+    ) {
         return NextResponse.json({ error: "Email capture failed" }, { status: 502 });
     }
 

@@ -41,6 +41,37 @@ type PostReq = { json: () => Promise<unknown> };
 
 let POST: (req: PostReq) => Promise<RouteResponse>;
 
+const mailerLiteFieldsResponse = [
+    { name: "Pinterest Fit Result", key: "pinterest_fit_result", type: "text" },
+    { name: "Top Reason 1", key: "top_reason_1", type: "text" },
+    { name: "Top Reason 2", key: "top_reason_2", type: "text" },
+    { name: "Top Reason 3", key: "top_reason_3", type: "text" },
+    { name: "Pinterest Role", key: "pinterest_role", type: "text" },
+    { name: "Recommended Next Step", key: "recommended_next_step", type: "text" },
+    { name: "Lead Source", key: "lead_source", type: "text" },
+];
+
+const strongLeadFields = {
+    pinterest_fit_result: "Strong Pinterest Fit",
+    top_reason_1: "Your niche has strong Pinterest potential.",
+    top_reason_2: "You already have a product with real traction.",
+    top_reason_3: "You are ready to take action.",
+    pinterest_role: "Pinterest looks most promising here as a discovery and traffic channel.",
+    recommended_next_step: "Want to talk through what this could look like for your brand?",
+    lead_source: "Pinterest Fit Assessment",
+};
+
+const strongLeadPayload = {
+    email: "Founder@Example.com",
+    result: strongLeadFields.pinterest_fit_result,
+    topReason1: strongLeadFields.top_reason_1,
+    topReason2: strongLeadFields.top_reason_2,
+    topReason3: strongLeadFields.top_reason_3,
+    pinterestRole: strongLeadFields.pinterest_role,
+    recommendedNextStep: strongLeadFields.recommended_next_step,
+    source: strongLeadFields.lead_source,
+};
+
 describe("/api/tools/pinterest-fit-assessment/lead route", () => {
     const originalApiKey = process.env.MAILERLITE_API_KEY;
     const originalGroupId = process.env.MAILERLITE_PINTEREST_FIT_GROUP_ID;
@@ -63,12 +94,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
             if (url.endsWith("/fields?limit=100")) {
                 return {
                     ok: true,
-                    json: async () => ({
-                        data: [
-                            { name: "Pinterest Fit Result", key: "pinterest_fit_result", type: "text" },
-                            { name: "Lead Source", key: "lead_source", type: "text" },
-                        ],
-                    }),
+                    json: async () => ({ data: mailerLiteFieldsResponse }),
                 } as Response;
             }
 
@@ -85,10 +111,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
                     json: async () => ({
                         data: {
                             id: "subscriber-123",
-                            fields: {
-                                pinterest_fit_result: "Strong Pinterest Fit",
-                                lead_source: "Pinterest Fit Assessment",
-                            },
+                            fields: strongLeadFields,
                         },
                     }),
                 } as Response;
@@ -107,10 +130,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
                     json: async () => ({
                         data: {
                             id: "subscriber-123",
-                            fields: {
-                                pinterest_fit_result: "Strong Pinterest Fit",
-                                lead_source: "Pinterest Fit Assessment",
-                            },
+                            fields: strongLeadFields,
                         },
                     }),
                 } as Response;
@@ -130,8 +150,13 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
         const res = await POST({
             json: async () => ({
                 email: " Founder@Example.com ",
-                result: "Strong Pinterest Fit",
-                source: "Pinterest Fit Assessment",
+                result: strongLeadPayload.result,
+                topReason1: strongLeadPayload.topReason1,
+                topReason2: strongLeadPayload.topReason2,
+                topReason3: strongLeadPayload.topReason3,
+                pinterestRole: strongLeadPayload.pinterestRole,
+                recommendedNextStep: strongLeadPayload.recommendedNextStep,
+                source: strongLeadPayload.source,
             }),
         });
 
@@ -147,10 +172,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
         expect(JSON.parse(subscriberCall?.[1]?.body as string)).toEqual({
             email: "founder@example.com",
             groups: ["group-123"],
-            fields: {
-                pinterest_fit_result: "Strong Pinterest Fit",
-                lead_source: "Pinterest Fit Assessment",
-            },
+            fields: strongLeadFields,
         });
 
         const assignGroupCall = fetchMock.mock.calls.find(([url, init]) => {
@@ -165,10 +187,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
 
         expect(updateFieldsCall).toBeDefined();
         expect(JSON.parse(updateFieldsCall?.[1]?.body as string)).toEqual({
-            fields: {
-                pinterest_fit_result: "Strong Pinterest Fit",
-                lead_source: "Pinterest Fit Assessment",
-            },
+            fields: strongLeadFields,
         });
     });
 
@@ -180,12 +199,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
             if (url.endsWith("/fields?limit=100")) {
                 return {
                     ok: true,
-                    json: async () => ({
-                        data: [
-                            { name: "Pinterest Fit Result", key: "pinterest_fit_result", type: "text" },
-                            { name: "Lead Source", key: "lead_source", type: "text" },
-                        ],
-                    }),
+                    json: async () => ({ data: mailerLiteFieldsResponse }),
                 } as Response;
             }
 
@@ -223,10 +237,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
                     json: async () => ({
                         data: {
                             id: "subscriber-lookup-123",
-                            fields: {
-                                pinterest_fit_result: "Strong Pinterest Fit",
-                                lead_source: "Pinterest Fit Assessment",
-                            },
+                            fields: strongLeadFields,
                         },
                     }),
                 } as Response;
@@ -236,11 +247,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
         });
 
         const res = await POST({
-            json: async () => ({
-                email: "Founder@Example.com",
-                result: "Strong Pinterest Fit",
-                source: "Pinterest Fit Assessment",
-            }),
+            json: async () => strongLeadPayload,
         });
 
         expect(res.status).toBe(200);
@@ -261,12 +268,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
             if (url.endsWith("/fields?limit=100")) {
                 return {
                     ok: true,
-                    json: async () => ({
-                        data: [
-                            { name: "Pinterest Fit Result", key: "pinterest_fit_result", type: "text" },
-                            { name: "Lead Source", key: "lead_source", type: "text" },
-                        ],
-                    }),
+                    json: async () => ({ data: mailerLiteFieldsResponse }),
                 } as Response;
             }
 
@@ -295,11 +297,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
         });
 
         const res = await POST({
-            json: async () => ({
-                email: "founder@example.com",
-                result: "Strong Pinterest Fit",
-                source: "Pinterest Fit Assessment",
-            }),
+            json: async () => strongLeadPayload,
         });
 
         expect(res.status).toBe(502);
@@ -314,12 +312,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
             if (url.endsWith("/fields?limit=100")) {
                 return {
                     ok: true,
-                    json: async () => ({
-                        data: [
-                            { name: "Pinterest Fit Result", key: "pinterest_fit_result", type: "text" },
-                            { name: "Lead Source", key: "lead_source", type: "text" },
-                        ],
-                    }),
+                    json: async () => ({ data: mailerLiteFieldsResponse }),
                 } as Response;
             }
 
@@ -351,8 +344,8 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
                         data: {
                             id: "subscriber-123",
                             fields: {
+                                ...strongLeadFields,
                                 pinterest_fit_result: null,
-                                lead_source: "Pinterest Fit Assessment",
                             },
                         },
                     }),
@@ -363,11 +356,7 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
         });
 
         const res = await POST({
-            json: async () => ({
-                email: "founder@example.com",
-                result: "Strong Pinterest Fit",
-                source: "Pinterest Fit Assessment",
-            }),
+            json: async () => strongLeadPayload,
         });
 
         expect(res.status).toBe(502);
@@ -391,8 +380,8 @@ describe("/api/tools/pinterest-fit-assessment/lead route", () => {
 
         const res = await POST({
             json: async () => ({
+                ...strongLeadPayload,
                 email: "founder@example.com",
-                result: "Strong Pinterest Fit",
             }),
         });
 

@@ -1,7 +1,7 @@
 import { ServicesPage } from "@/components/ServicesPage";
 
 export const metadata = {
-  title: "Services",
+  title: "Pinterest Services",
   description: "Pinterest strategy, organic management, ads, audits, and a la carte support for search-driven growth.",
 };
 

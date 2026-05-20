@@ -22,15 +22,15 @@ export const PUBLIC_NAV_LINKS: PublicNavLink[] = [
  * Contractor routes (must reflect the real URL paths produced by app router):
  *
  * With:
- *   frontend/app/(contractor)/cont/page.tsx
- *   frontend/app/(contractor)/cont/fruitful-qa/page.tsx
+ *   frontend/app/(contractor)/contractor/page.tsx
+ *   frontend/app/(contractor)/contractor/fruitful-qa/page.tsx
  *
  * URLs are:
- *   /cont
- *   /cont/fruitful-qa
+ *   /contractor
+ *   /contractor/fruitful-qa
  */
 export const CONTRACTOR_NAV_LINKS = [
-    { label: "Contractor Home", href: "/cont" },
-    { label: "Submit Your Work (QA)", href: "/cont/fruitful-qa" },
+    { label: "Contractor Home", href: "/contractor" },
+    { label: "Submit Your Work (QA)", href: "/contractor/fruitful-qa" },
     { label: "Public Tools", href: "/tools" },
 ] as const;

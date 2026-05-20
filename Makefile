@@ -2,7 +2,7 @@
 
 .PHONY: backend-test backend-run backend-ci \
         lab-test lab-build lab-ci \
-        fruitful-pin-install fruitful-pin-test fruitful-pin-build fruitful-pin-ci \
+        fruitful-pin-install fruitful-pin-dev fruitful-pin-test fruitful-pin-build fruitful-pin-ci \
         frontend-test frontend-build frontend-ci \
         test all
 
@@ -30,6 +30,9 @@ frontend-ci: lab-ci
 
 fruitful-pin-install:
 	cd apps/fruitful-pin && npm ci
+
+fruitful-pin-dev:
+	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm run dev:local
 
 fruitful-pin-test:
 	cd apps/fruitful-pin && npm test

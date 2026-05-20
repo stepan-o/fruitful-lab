@@ -36,6 +36,8 @@ Operational defaults:
 - For Fruitful Lab validation, use `API_BASE_URL=http://localhost:8000 npm run ci` from `apps/lab/` unless the task clearly requires another check.
 - For brand/app monorepo work, read `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` and keep separate brands as separate apps under `apps/*`.
 - For Fruitful Pin migration work, read `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md`; the current phase-one target is Cloudflare for the public Next.js frontend and WordPress on prepaid A2 as the headless CMS/editor.
+- Before starting local dev servers from Codex, request network permission for the turn. Fresh-thread testing on 2026-05-20 confirmed that `next dev` on `127.0.0.1:4173` fails with `listen EPERM` until network permission is granted.
+- For Fruitful Pin local preview, prefer `make fruitful-pin-dev` from the repo root or `npm run dev:local` from `apps/fruitful-pin/`.
 - If local builds fail because network is needed for `next/font`, request network access and rerun once.
 - If backend validation is relevant, run the repo's backend test command and report any missing environment requirements clearly.
 - Preserve unrelated user edits. Work around them or stage explicit file paths only.

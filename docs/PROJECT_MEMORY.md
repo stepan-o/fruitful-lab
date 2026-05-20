@@ -71,6 +71,11 @@ Current foundation:
 
 Use `npm run build` from `apps/fruitful-pin/` or `make fruitful-pin-build` from the repo root to verify the static export. Cloudflare Pages should use `apps/fruitful-pin` as the root, `npm run build` as the build command, and `out` as the build output directory. If later WordPress preview, SSR, or dynamic route needs exceed static export, switch this app to the Cloudflare Workers/OpenNext path in a dedicated PR.
 
+Local preview note for Codex:
+
+- Request network permission before starting `next dev` or any local preview server. Fresh-thread testing on 2026-05-20 confirmed that Codex cannot bind `127.0.0.1:4173` without network permission and fails with `listen EPERM`; after permission is granted, the Fruitful Pin dev server renders locally.
+- Confirmed local preview command target: `make fruitful-pin-dev` from the repo root, or `npm run dev:local` from `apps/fruitful-pin/`. Use `http://127.0.0.1:4173/` for browser review.
+
 ## Frontend Layers
 
 ### App Router

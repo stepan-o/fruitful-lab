@@ -230,11 +230,13 @@ Assessment integration:
 
 ### Phase 0: Monorepo Structure Preparation
 
+Status: completed by the structure migration PR.
+
 Estimated time: 1 PR.
 
 Tasks:
 
-- Move the current Fruitful Lab app from `frontend/` to `apps/lab/`.
+- Current Fruitful Lab app now lives in `apps/lab/`.
 - Update commands, workflows, docs, and path references.
 - Keep Fruitful Lab rendering and behavior unchanged.
 - Update the Fruitful Lab Vercel project so it builds from `apps/lab/`.

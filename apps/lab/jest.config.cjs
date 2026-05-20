@@ -1,4 +1,4 @@
-// frontend/jest.config.cjs
+// apps/lab/jest.config.cjs
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const nextJest = require('next/jest.js');

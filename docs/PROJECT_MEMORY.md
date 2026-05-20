@@ -1,6 +1,6 @@
 # Project Memory - Fruitful Lab
 
-Status: current working memory as of 2026-05-20 after adopting the brand/app monorepo direction.
+Status: current working memory as of 2026-05-20 after moving the Fruitful Lab app to apps/lab.
 
 Use this file as the durable architectural memory for future Codex/LLM work on this repo. It records the structure, layers, contracts, and working patterns that should be assumed going forward unless code proves otherwise.
 
@@ -10,8 +10,8 @@ Fruitful Lab is becoming a brand/app monorepo for multiple separately deployed w
 
 Related planning note:
 
-- `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` is the current target architecture reference. It defines the shift from a single `frontend/` app toward separate apps under `apps/*`, beginning with `apps/lab` for Fruitful Lab and later `apps/fruitful-pin` for the Fruitful Pin migration. Future brand apps may include Bloom Whispers and Bricoli.
-- `docs/BRAND_APP_MONOREPO_EXECUTION_PLAN.md` is the active PR-gated execution plan for the monorepo migration. It defines PR 1 as docs/architecture baseline, PR 2 as the structure-only `frontend/` to `apps/lab/` move, PR 3 as Fruitful Pin app foundation, and later PRs for inventory, content contracts, templates, CMS integration, and launch prep.
+- `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` is the current target architecture reference. It defines the shift from a single-app layout toward separate apps under `apps/*`, beginning with `apps/lab` for Fruitful Lab and later `apps/fruitful-pin` for the Fruitful Pin migration. Future brand apps may include Bloom Whispers and Bricoli.
+- `docs/BRAND_APP_MONOREPO_EXECUTION_PLAN.md` is the active PR-gated execution plan for the monorepo migration. It defines PR 1 as docs/architecture baseline, PR 2 as the completed structure-only `frontend/` to `apps/lab/` move, PR 3 as Fruitful Pin app foundation, and later PRs for inventory, content contracts, templates, CMS integration, and launch prep.
 - `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md` is the current planning reference for a Fruitful Bean / Fruitful Pin-only migration of `fruitfulpin.com` to a coded Next.js marketing site. It explicitly does not propose rebuilding Fruitful Lab, removes Kadence from future cost comparisons, assumes GoDaddy domain registration and prepaid A2 hosting until 2027, prefers Cloudflare hosting for the public Next.js frontend, and keeps WordPress on A2 as the phase-one headless CMS/editor to avoid a CMS learning curve during migration.
 
 The current Fruitful Lab app is not just a marketing site. It is a tool-and-analytics system with:
@@ -27,14 +27,14 @@ The current Fruitful Lab app is not just a marketing site. It is a tool-and-anal
 
 The target repo shape is:
 
-- `apps/lab/` - current Fruitful Lab Next.js app after the first structure migration PR; hosted on Vercel as a sandbox/prototype platform.
+- `apps/lab/` - current Fruitful Lab Next.js app; hosted on Vercel as a sandbox/prototype platform.
 - `apps/fruitful-pin/` - planned Fruitful Pin commercial marketing site; preferred public frontend host is Cloudflare.
 - `apps/bloom-whispers/` - future separate brand/site example.
 - `apps/bricoli/` - future separate brand/site example.
 - `packages/*` - shared code extracted only after real cross-app reuse exists.
 - `backend/` - current FastAPI backend, used where needed and not assumed by every future brand app.
 
-Current code still lives in `frontend/` until the first structure PR moves it to `apps/lab/`.
+Current Fruitful Lab code lives in `apps/lab/`.
 
 Working pattern:
 
@@ -46,18 +46,18 @@ Working pattern:
 
 ## Top-Level Layout Today
 
-- `frontend/` - current Next.js App Router app for Fruitful Lab; planned to move to `apps/lab/`.
+- `apps/lab/` - current Next.js App Router app for Fruitful Lab.
 - `backend/` - FastAPI app with SQLAlchemy, Alembic, JWT auth, and Postgres.
 - `docs/` - current memory, audits, implementation notes, guides, and archived plans.
 - `prompts/` - LLM architect prompts and sprint plans.
-- `Makefile` - root convenience commands for backend/frontend tests and builds.
+- `Makefile` - root convenience commands for backend and Lab app tests/builds.
 - `repo-tree.txt` - static repo tree snapshot.
 
 ## Frontend Layers
 
 ### App Router
 
-`frontend/app/` owns routes, layouts, and Next route handlers today. After the structure PR, this becomes `apps/lab/app/`.
+`apps/lab/app/` owns Fruitful Lab routes, layouts, and Next route handlers.
 
 Current route groups:
 
@@ -83,46 +83,45 @@ Protected routes:
 
 ### Layouts and Shared UI
 
-- `frontend/app/layout.tsx` - root HTML/body and GTM injection when `NEXT_PUBLIC_GTM_ID` is present.
-- `frontend/app/globals.css` - Tailwind import plus project tokens, light/dark variables, scrollbars, and PPC-specific visual tokens.
-- `frontend/components/layout/*` - headers, footers, flash banner, logout, book-call button, flow shell/header.
-- `frontend/lib/nav.ts` - shared public and contractor navigation config.
+- `apps/lab/app/layout.tsx` - root HTML/body and GTM injection when `NEXT_PUBLIC_GTM_ID` is present.
+- `apps/lab/app/globals.css` - Tailwind import plus project tokens, light/dark variables, scrollbars, and PPC-specific visual tokens.
+- `apps/lab/components/layout/*` - headers, footers, flash banner, logout, book-call button, flow shell/header.
+- `apps/lab/lib/nav.ts` - shared public and contractor navigation config.
 
-After the structure PR, replace the `frontend/` prefix above with `apps/lab/`.
 
 Working pattern:
 
 - Server components by default.
 - Client components only for interaction, browser APIs, or analytics event pushes.
 - Shared visual tokens live in CSS variables, not scattered hard-coded palettes.
-- Do not duplicate route paths in many places when `frontend/lib/nav.ts` can own them.
+- Do not duplicate route paths in many places when `apps/lab/lib/nav.ts` can own them.
 
 ## Tool System
 
-Public tools are explicit flows with typed config/data/compute layers under `frontend/lib/tools/*` and UI components under `frontend/components/tools/*`. After the structure PR these remain inside `apps/lab/` until a second app needs them; then stable reusable logic should move to `packages/tools` and reusable UI may move to `packages/tool-ui`.
+Public tools are explicit flows with typed config/data/compute layers under `apps/lab/lib/tools/*` and UI components under `apps/lab/components/tools/*`. These remain inside `apps/lab/` until a second app needs them; then stable reusable logic should move to `packages/tools` and reusable UI may move to `packages/tool-ui`.
 
 ### Pinterest Potential Calculator
 
 Route:
 
-- `frontend/app/(flow)/tools/pinterest-potential/page.tsx`
+- `apps/lab/app/(flow)/tools/pinterest-potential/page.tsx`
 
 Key UI:
 
 - `PinterestPotentialV1` - `welcome` variant.
 - `PinterestPotentialV2` - `no_welcome` variant shell.
 - `PinterestPotentialWizard` - core wizard.
-- Step components under `frontend/components/tools/pinterestPotential/steps/`.
-- View components under `frontend/components/tools/pinterestPotential/views/`.
+- Step components under `apps/lab/components/tools/pinterestPotential/steps/`.
+- View components under `apps/lab/components/tools/pinterestPotential/views/`.
 
 Key logic:
 
-- `frontend/lib/tools/pinterestPotentialConfig.ts` - variant constants and A/B enable flag.
-- `frontend/lib/tools/pinterestPotential/compute.ts` - calculation logic.
-- `frontend/lib/tools/pinterestPotential/pinterestPotentialSpec.ts` - typed spec/contracts.
-- `frontend/lib/tools/pinterestPotential/leadMode.ts` - lead gating mode resolver.
-- `frontend/lib/tools/pinterestPotential/leadGatingConfig.ts` - lead gating config.
-- `frontend/lib/tools/pinterestPotential/leadToken.ts` - current lead-token stub/QA decoder.
+- `apps/lab/lib/tools/pinterestPotentialConfig.ts` - variant constants and A/B enable flag.
+- `apps/lab/lib/tools/pinterestPotential/compute.ts` - calculation logic.
+- `apps/lab/lib/tools/pinterestPotential/pinterestPotentialSpec.ts` - typed spec/contracts.
+- `apps/lab/lib/tools/pinterestPotential/leadMode.ts` - lead gating mode resolver.
+- `apps/lab/lib/tools/pinterestPotential/leadGatingConfig.ts` - lead gating config.
+- `apps/lab/lib/tools/pinterestPotential/leadToken.ts` - current lead-token stub/QA decoder.
 
 Current variant contract:
 
@@ -144,20 +143,20 @@ Current lead contract:
 
 Route:
 
-- `frontend/app/(flow)/tools/pinterest-fit-assessment/page.tsx`
+- `apps/lab/app/(flow)/tools/pinterest-fit-assessment/page.tsx`
 
 Key UI:
 
-- `frontend/components/tools/pinterestFit/PinterestFitAssessment.tsx`
+- `apps/lab/components/tools/pinterestFit/PinterestFitAssessment.tsx`
 - `IntroScreen`, `QuestionScreen`, `ResultsScreen`
 
 Key logic:
 
-- `frontend/lib/tools/pinterestFit/questions.ts`
-- `frontend/lib/tools/pinterestFit/engine.ts`
-- `frontend/lib/tools/pinterestFit/results.ts`
-- `frontend/lib/tools/pinterestFit/tracking.ts`
-- `frontend/lib/tools/pinterestFit/types.ts`
+- `apps/lab/lib/tools/pinterestFit/questions.ts`
+- `apps/lab/lib/tools/pinterestFit/engine.ts`
+- `apps/lab/lib/tools/pinterestFit/results.ts`
+- `apps/lab/lib/tools/pinterestFit/tracking.ts`
+- `apps/lab/lib/tools/pinterestFit/types.ts`
 
 Current behavior:
 
@@ -176,11 +175,11 @@ Cookie:
 
 Frontend auth files:
 
-- `frontend/lib/auth.ts`
-- `frontend/middleware.ts`
-- `frontend/app/api/auth/login/route.ts`
-- `frontend/app/api/auth/logout/route.ts`
-- `frontend/app/login/LoginPageClient.tsx`
+- `apps/lab/lib/auth.ts`
+- `apps/lab/middleware.ts`
+- `apps/lab/app/api/auth/login/route.ts`
+- `apps/lab/app/api/auth/logout/route.ts`
+- `apps/lab/app/login/LoginPageClient.tsx`
 
 Backend auth files:
 
@@ -231,15 +230,15 @@ Working pattern:
 
 Experiment config:
 
-- `frontend/lib/experiments/config.ts`
+- `apps/lab/lib/experiments/config.ts`
 
 GrowthBook integration:
 
-- `frontend/lib/growthbook/middleware.ts` - Edge-safe middleware assignment.
-- `frontend/lib/growthbook/edgeAdapter.ts` - Edge-safe adapter import.
-- `frontend/lib/growthbook/flags.ts` - server-side adapter with tracking callback.
-- `frontend/app/api/debug/growthbook/route.ts` - debug/health endpoint.
-- `frontend/app/api/experiment-events/route.ts` - dev-friendly event intake.
+- `apps/lab/lib/growthbook/middleware.ts` - Edge-safe middleware assignment.
+- `apps/lab/lib/growthbook/edgeAdapter.ts` - Edge-safe adapter import.
+- `apps/lab/lib/growthbook/flags.ts` - server-side adapter with tracking callback.
+- `apps/lab/app/api/debug/growthbook/route.ts` - debug/health endpoint.
+- `apps/lab/app/api/experiment-events/route.ts` - dev-friendly event intake.
 
 Current registered experiment:
 
@@ -264,9 +263,9 @@ Current important reality:
 
 GTM/Data Layer:
 
-- Root GTM injection lives in `frontend/app/layout.tsx`.
-- Data-layer helpers live in `frontend/lib/gtm.ts`.
-- `window.dataLayer` typing lives in `frontend/types/global.d.ts`.
+- Root GTM injection lives in `apps/lab/app/layout.tsx`.
+- Data-layer helpers live in `apps/lab/lib/gtm.ts`.
+- `window.dataLayer` typing lives in `apps/lab/types/global.d.ts`.
 
 Generic helper pattern:
 
@@ -384,8 +383,8 @@ Admin Pinterest stats contract:
 ## Known Drift / Watch Points
 
 - `docs/SYSTEM_IMPLEMENTATION_AUDIT-2026-01-10.md` is historical and stale in several areas. Use the 2026-05-15 audit for current work.
-- Some comments and older prompts still describe contractor route examples or dashboard redirects from prior iterations. Verify against `frontend/app/` and `frontend/middleware.ts`.
-- `frontend/app/(admin)/admin/analytics/page.tsx` currently expects accounts as `{ accounts: Account[] }` in one code path, while the proxy/backend returns a raw string array. This looks like a runtime bug or unfinished refactor; verify before relying on that UI.
+- Some comments and older prompts still describe contractor route examples or dashboard redirects from prior iterations. Verify against `apps/lab/app/` and `apps/lab/middleware.ts`.
+- `apps/lab/app/(admin)/admin/analytics/page.tsx` currently expects accounts as `{ accounts: Account[] }` in one code path, while the proxy/backend returns a raw string array. This looks like a runtime bug or unfinished refactor; verify before relying on that UI.
 - `backend/routers/stats.py` still contains older `/pinterest-stats/upload-csv` behavior that constructs monthly stats without `account_name`, even though the model now requires it. Treat `/admin/pinterest-stats/*` as the current admin ingestion path.
 - `resolveLeadFromToken()` is not secure verification; it is a stub/demo decoder.
 
@@ -394,17 +393,17 @@ Admin Pinterest stats contract:
 Root commands:
 
 - `make backend-test`
-- `make frontend-test`
-- `make frontend-build`
+- `make lab-test`
+- `make lab-build`
 - `make test`
 - `make all`
 
 Direct commands:
 
 - `cd backend && uv run pytest -q`
-- `cd frontend && npm test`
-- `cd frontend && npm run build`
-- `cd frontend && npm run ci`
+- `cd apps/lab && npm test`
+- `cd apps/lab && npm run build`
+- `cd apps/lab && npm run ci`
 
 Test surface:
 
@@ -415,9 +414,9 @@ Test surface:
 
 1. Start by reading `docs/REPO_GROUNDING_PACK.md` and this file.
 2. Verify current code before trusting old prompts, archived docs, or dated audits.
-3. For route or auth changes, inspect `frontend/app`, `frontend/middleware.ts`, `frontend/lib/auth.ts`, and backend auth dependencies together.
+3. For route or auth changes, inspect `apps/lab/app`, `apps/lab/middleware.ts`, `apps/lab/lib/auth.ts`, and backend auth dependencies together.
 4. For tool changes, keep UI, typed config, compute/scoring, and tracking contracts aligned.
-5. For analytics changes, update `frontend/lib/gtm.ts` or tool-specific tracking helpers and document event schema changes here.
-6. For experiment changes, update `frontend/lib/experiments/config.ts`, middleware assignment logic, and the tool page resolver together.
+5. For analytics changes, update `apps/lab/lib/gtm.ts` or tool-specific tracking helpers and document event schema changes here.
+6. For experiment changes, update `apps/lab/lib/experiments/config.ts`, middleware assignment logic, and the tool page resolver together.
 7. For API/data changes, update backend model/schema/router, migrations, frontend proxy/helper, and tests together.
 8. When architectural contracts change, update this file and add or refresh a dated implementation audit.

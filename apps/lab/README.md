@@ -24,7 +24,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Environment variables
 
-Create a `.env.local` file in the `frontend/` directory (you can start from `.env.local.example`).
+Create a `.env.local` file in the `apps/lab/` directory (you can start from `.env.local.example`).
 
 Required:
 

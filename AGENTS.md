@@ -22,15 +22,15 @@ If old docs or prompts disagree with current code, verify the code and update th
 
 ## Project Shape
 
-- Current frontend: Next.js App Router in `frontend/` until the first monorepo structure PR moves it.
-- Target app structure: brand/app monorepo under `apps/*`, starting with `apps/lab` for the current Fruitful Lab app and `apps/fruitful-pin` for the Fruitful Pin migration.
+- Current Fruitful Lab app: Next.js App Router in `apps/lab/`.
+- App structure: brand/app monorepo under `apps/*`, starting with `apps/lab` for the current Fruitful Lab app and `apps/fruitful-pin` for the Fruitful Pin migration.
 - Backend: FastAPI + SQLAlchemy/Postgres in `backend/`.
 - Shared-code target: extract reusable code into `packages/*` only when there is real cross-app reuse.
-- Public tools today: typed logic in `frontend/lib/tools/*`, UI in `frontend/components/tools/*`; after the structure PR these paths become `apps/lab/lib/tools/*` and `apps/lab/components/tools/*` until shared packages are intentionally extracted.
+- Public tools today: typed logic in `apps/lab/lib/tools/*`, UI in `apps/lab/components/tools/*` until shared packages are intentionally extracted.
 - Gated areas: `/admin/*` and `/contractor/*`.
 - Auth source of truth: backend `/auth/me`, using the `fruitful_access_token` cookie on the frontend.
-- Experiments: configured in `frontend/lib/experiments/config.ts`, assigned before render in middleware.
-- Analytics: GTM/dataLayer helpers in `frontend/lib/gtm.ts`; no direct `gtag()` calls.
+- Experiments: configured in `apps/lab/lib/experiments/config.ts`, assigned before render in middleware.
+- Analytics: GTM/dataLayer helpers in `apps/lab/lib/gtm.ts`; no direct `gtag()` calls.
 
 ## Brand/App Monorepo Direction
 
@@ -50,4 +50,4 @@ If old docs or prompts disagree with current code, verify the code and update th
 - Keep experiment variants, cookies, middleware assignment, and page resolvers aligned.
 - Keep backend models, schemas, migrations, routers, frontend proxies/helpers, and tests aligned.
 - Preserve current memory by updating `docs/PROJECT_MEMORY.md` and `docs/REPO_GROUNDING_PACK.md` when contracts change.
-- When moving from `frontend/` to `apps/lab/`, preserve Fruitful Lab behavior and update commands, workflows, Vercel root-directory assumptions, and docs in the same change.
+- Fruitful Lab Vercel must build from `apps/lab/`.

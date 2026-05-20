@@ -21,7 +21,7 @@ Code is the highest authority. If older docs, archived plans, or prompts disagre
 
 ## Repository Layout
 
-- `frontend/` - current Next.js App Router app for Fruitful Lab. Planned first structure step: move this to `apps/lab/` without changing behavior.
+- `apps/lab/` - current Next.js App Router app for Fruitful Lab.
 - `apps/` - target location for separate deployable brand apps, starting with `apps/lab` and later `apps/fruitful-pin`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
 - `packages/` - target location for shared tool logic, analytics, SEO, CMS, WordPress, UI, and config packages after real reuse exists.
 - `backend/` - FastAPI app with SQLAlchemy, Alembic, JWT auth, and Postgres.
@@ -32,7 +32,7 @@ Code is the highest authority. If older docs, archived plans, or prompts disagre
 
 ## Frontend
 
-The current Fruitful Lab frontend lives in `frontend/` and uses Next.js App Router. The first monorepo migration PR should move it to `apps/lab/` while preserving the current rendered site and behavior.
+The current Fruitful Lab app lives in `apps/lab/` and uses Next.js App Router.
 
 Route groups:
 
@@ -53,17 +53,16 @@ Important routes:
 
 Important frontend anchors:
 
-- `frontend/app/layout.tsx` - root layout and GTM injection.
-- `frontend/middleware.ts` - auth gate and experiment cookie assignment.
-- `frontend/lib/auth.ts` - server-side current-user helper.
-- `frontend/lib/nav.ts` - shared navigation config.
-- `frontend/lib/gtm.ts` - dataLayer/GTM event helpers.
-- `frontend/lib/experiments/config.ts` - canonical experiment registry.
-- `frontend/lib/growthbook/*` - GrowthBook integration.
-- `frontend/lib/tools/*` - typed tool logic, scoring, config, and tracking.
-- `frontend/components/tools/*` - public tool UI.
+- `apps/lab/app/layout.tsx` - root layout and GTM injection.
+- `apps/lab/middleware.ts` - auth gate and experiment cookie assignment.
+- `apps/lab/lib/auth.ts` - server-side current-user helper.
+- `apps/lab/lib/nav.ts` - shared navigation config.
+- `apps/lab/lib/gtm.ts` - dataLayer/GTM event helpers.
+- `apps/lab/lib/experiments/config.ts` - canonical experiment registry.
+- `apps/lab/lib/growthbook/*` - GrowthBook integration.
+- `apps/lab/lib/tools/*` - typed tool logic, scoring, config, and tracking.
+- `apps/lab/components/tools/*` - public tool UI.
 
-After the structure migration PR, these paths should be read under `apps/lab/`.
 
 ## Brand/App Monorepo Direction
 
@@ -181,8 +180,8 @@ From the repo root:
 
 ```bash
 make backend-test
-make frontend-test
-make frontend-build
+make lab-test
+make lab-build
 make test
 make all
 ```
@@ -190,12 +189,11 @@ make all
 Directly:
 
 ```bash
-cd frontend && npm test
-cd frontend && npm run build
+cd apps/lab && npm test
+cd apps/lab && npm run build
 cd backend && uv run pytest -q
 ```
 
-After the structure migration PR, replace `cd frontend` with `cd apps/lab` for Fruitful Lab checks.
 
 Some backend integration tests require real environment variables and seeded/migrated test data, including `DATABASE_URL`, `JWT_SECRET_KEY`, `TEST_ADMIN_EMAIL`, `TEST_ADMIN_PASSWORD`, `TEST_USER_EMAIL`, and `TEST_USER_PASSWORD`.
 

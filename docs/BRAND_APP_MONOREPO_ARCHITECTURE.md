@@ -62,8 +62,9 @@ Do not create every package up front. Extract packages when a second app creates
 Current implementation:
 
 ```txt
-apps/lab/   # current Fruitful Lab Next.js app
-backend/    # FastAPI backend
+apps/lab/           # current Fruitful Lab Next.js app
+apps/fruitful-pin/  # Fruitful Pin static-first Next.js foundation
+backend/            # FastAPI backend
 docs/
 prompts/
 ```
@@ -119,7 +120,7 @@ Fruitful Lab:
 Fruitful Pin:
 
 - Commercial Pinterest-specific marketing site.
-- Preferred public frontend host: Cloudflare Pages/Workers.
+- Preferred public frontend host: Cloudflare Pages for the static-first foundation; switch to Cloudflare Workers/OpenNext later only if dynamic requirements need it.
 - Phase-one CMS/editor: WordPress on prepaid A2 hosting until the later CMS-off-ramp decision.
 - Domain: `fruitfulpin.com`, currently registered at GoDaddy.
 
@@ -192,5 +193,5 @@ The first migration PR was a structure-only move:
 4. Update Vercel project settings so the Fruitful Lab project builds from `apps/lab`.
 5. Validate the Lab app locally and through the Vercel deployment.
 
-Only after that structure PR is stable should the repo introduce `apps/fruitful-pin`.
+The next migration step introduced `apps/fruitful-pin` as a separate static-first app foundation without changing DNS, A2, WordPress, or Cloudflare production settings.
 

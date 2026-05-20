@@ -21,7 +21,8 @@ Related planning reference:
 ## Repo Map
 
 - `apps/lab/` - current Next.js App Router app for Fruitful Lab public pages, tool flows, login, admin, contractor pages, analytics proxies, and experiment diagnostics.
-- `apps/` - target home for separate deployable brand apps. Planned apps include `apps/lab`, `apps/fruitful-pin`, and future examples such as `apps/bloom-whispers` and `apps/bricoli`.
+- `apps/fruitful-pin/` - Fruitful Pin static-first Next.js foundation targeting Cloudflare Pages; not connected to live DNS or WordPress yet.
+- `apps/` - home for separate deployable brand apps. Current apps include `apps/lab` and `apps/fruitful-pin`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
 - `packages/` - target home for shared code once real cross-app reuse exists. Do not create broad shared abstractions prematurely.
 - `backend/` - FastAPI app for auth, users, Pinterest stats, Postgres models, Alembic migrations, and admin-only CSV ingestion.
 - `docs/` - current memory, audits, guides, and historical implementation notes.
@@ -128,6 +129,18 @@ Pinterest Fit:
 - Client assessment component: `apps/lab/components/tools/pinterestFit/PinterestFitAssessment.tsx`
 - Scoring engine and typed config: `apps/lab/lib/tools/pinterestFit/*`
 
+## Fruitful Pin Anchors
+
+- App root: `apps/fruitful-pin/`
+- Static export config: `apps/fruitful-pin/next.config.ts`
+- Site constants: `apps/fruitful-pin/lib/site.ts`
+- Placeholder content boundary: `apps/fruitful-pin/lib/content.ts`
+- WordPress adapter placeholder: `apps/fruitful-pin/lib/wordpress.ts`
+- Routes: `/`, `/services`, `/blog`, `/case-studies`, `/about`, `/contact`, `/privacy`, `/terms`
+- Root checks: `make fruitful-pin-test`, `make fruitful-pin-build`, `make fruitful-pin-ci`
+
+Do not point `fruitfulpin.com` at this app until preview, content migration, redirects, analytics, and launch checks are explicitly approved.
+
 ## Backend/API Anchors
 
 - FastAPI app: `backend/main.py`
@@ -147,8 +160,10 @@ Admin Pinterest stats contract:
 
 - Root test target: `make test`
 - Backend tests: `cd backend && uv run pytest -q`
-- Frontend tests: `cd apps/lab && npm test`
-- Frontend build: `cd apps/lab && npm run build`
+- Lab tests: `cd apps/lab && npm test`
+- Lab build: `cd apps/lab && npm run build`
+- Fruitful Pin tests: `cd apps/fruitful-pin && npm test`
+- Fruitful Pin build: `cd apps/fruitful-pin && npm run build`
 - Full frontend CI-ish path: `cd apps/lab && npm run ci`
 - Root full target: `make all`
 

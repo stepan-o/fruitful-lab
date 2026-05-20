@@ -8,11 +8,17 @@ on:
 
 jobs:
   npm-audit:
-    name: Frontend npm audit
+    name: App npm audit (${{ matrix.app }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app:
+          - apps/lab
+          - apps/fruitful-pin
     defaults:
       run:
-        working-directory: apps/lab
+        working-directory: ${{ matrix.app }}
 
     steps:
       - name: Checkout repo

@@ -2,6 +2,7 @@
 
 .PHONY: backend-test backend-run backend-ci \
         lab-test lab-build lab-ci \
+        fruitful-pin-install fruitful-pin-test fruitful-pin-build fruitful-pin-ci \
         frontend-test frontend-build frontend-ci \
         test all
 
@@ -27,8 +28,19 @@ lab-ci: lab-test lab-build
 
 frontend-ci: lab-ci
 
+fruitful-pin-install:
+	cd apps/fruitful-pin && npm ci
+
+fruitful-pin-test:
+	cd apps/fruitful-pin && npm test
+
+fruitful-pin-build:
+	cd apps/fruitful-pin && npm run build
+
+fruitful-pin-ci: fruitful-pin-test fruitful-pin-build
+
 # run both test suites
-test: backend-test lab-test
+test: backend-test lab-test fruitful-pin-test
 
 # full CI-ish run
-all: backend-ci lab-ci
+all: backend-ci lab-ci fruitful-pin-ci

@@ -1,165 +1,167 @@
-# Repo Grounding Pack — “Where Truth Lives” (Fruitful Lab)
+# Repo Grounding Pack - Fruitful Lab
 
-This appendix anchors the locked LLM Architect System Prompt to exact, real repo locations. Scope is system-level and reality-first. Each item includes: path, what it is, why it matters (invariants), and what to check.
+Status: refreshed from local repo scan and planning updates on 2026-05-20.
 
----
+This is the high-signal orientation file for Fruitful Lab. Treat it as the first stop before changing the system. The fuller current-state memory is `docs/PROJECT_MEMORY.md`; the dated implementation audit is `docs/SYSTEM_IMPLEMENTATION_AUDIT-2026-05-15.md`.
 
-## 1) Repo Map (High-Signal)
+Related planning reference:
 
-- Path: frontend/app/
-  - What: Next.js App Router (routes, layouts, server components)
-  - Why: Canonical source for public pages, tool entry points, and admin dashboard routing
-  - What to check:
-    - Root layout at frontend/app/layout.tsx; landing at frontend/app/page.tsx
-    - Tool routes at frontend/app/(flow)/tools/*; public pages at frontend/app/(site)/*
+- `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` is the target architecture reference for the shift to separate brand apps under `apps/*`, shared packages under `packages/*`, and future apps such as Bloom Whispers and Bricoli.
+- `docs/BRAND_APP_MONOREPO_EXECUTION_PLAN.md` is the active PR-gated execution plan for moving from docs baseline to `apps/lab`, then `apps/fruitful-pin`, then launch preparation.
+- `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md` captures the corrected Fruitful Bean / Fruitful Pin-only plan for migrating `fruitfulpin.com` to a coded Next.js marketing site. Fruitful Lab remains as-is for that plan; Cloudflare is the preferred public frontend host for cost; WordPress stays on prepaid A2 hosting as the phase-one headless CMS/editor; Kadence is excluded from future cost comparisons.
 
-- Path: frontend/middleware.ts
-  - What: Middleware for auth gating and experiment cookie assignment
-  - Why: Enforces access to /dashboard and runs pre-render variant assignment for tools
-  - What to check:
-    - PROTECTED_PATHS includes "/dashboard"; applyExperimentCookies for Pinterest Potential
+## Authority Model
 
-- Path: frontend/lib/gtm.ts
-  - What: Single utility for window.dataLayer event pushes
-  - Why: Canonical analytics emission layer (tool_view, tool_start, lead_submit, cta_click)
-  - What to check:
-    - pushEvent uses window.dataLayer; payloads are flat
+- Code is the highest authority.
+- `docs/PROJECT_MEMORY.md` is the durable working memory for structure, contracts, and architectural patterns.
+- `docs/SYSTEM_IMPLEMENTATION_AUDIT-2026-05-15.md` is the evidence-oriented snapshot from the latest deep scan.
+- Older dated audits and archived sprint plans are historical context only.
+- If docs and code disagree, update docs or code after verifying the actual runtime contract.
 
-- Path: frontend/lib/growthbook/ (flags.ts, middleware.ts, experiments.ts)
-  - What: GrowthBook integration (SDK adapter, cookie assignment, server runner)
-  - Why: Canonical experiment plumbing and exposure tracking
-  - What to check:
-    - Adapter tracking callback; applyExperimentCookies; runServerExperiment
+## Repo Map
 
-- Path: frontend/components/tools/pinterestPotential/
-  - What: Pinterest Potential wizard + variant components
-  - Why: Reference wizard pattern used by public tools
-  - What to check:
-    - Wizard.tsx manages steps; V1.tsx wires analytics
+- `frontend/` - current Next.js App Router app for Fruitful Lab public pages, tool flows, login, admin, contractor pages, analytics proxies, and experiment diagnostics. Planned first migration step: move this app to `apps/lab/` without behavior changes.
+- `apps/` - target home for separate deployable brand apps. Planned apps include `apps/lab`, `apps/fruitful-pin`, and future examples such as `apps/bloom-whispers` and `apps/bricoli`.
+- `packages/` - target home for shared code once real cross-app reuse exists. Do not create broad shared abstractions prematurely.
+- `backend/` - FastAPI app for auth, users, Pinterest stats, Postgres models, Alembic migrations, and admin-only CSV ingestion.
+- `docs/` - current memory, audits, guides, and historical implementation notes.
+- `prompts/` - LLM architect prompts and sprint prompts; useful as context, not runtime truth.
+- `repo-tree.txt` - static tree snapshot; regenerate only when intentionally needed.
 
-- Path: backend/
-  - What: FastAPI app (auth, stats, security, models, schemas)
-  - Why: Canonical API and authorization gates
-  - What to check:
-    - Routers in backend/routers; security in backend/security.py
+## Frontend Anchors
 
-- Path: docs/SYSTEM_IMPLEMENTATION_AUDIT.md
-  - What: Reality-first system audit document (ground truth snapshot)
-  - Why: Authority source when prompts and code comments disagree
-  - What to check:
-    - Coverage of routing, analytics, experiments, auth, and known gaps
+Current paths use `frontend/`. After the structure PR, use the equivalent path under `apps/lab/`.
 
----
+- App router entry: `frontend/app/`
+- Root layout and GTM injection: `frontend/app/layout.tsx`
+- Global styles and tokens: `frontend/app/globals.css`
+- Public site layout: `frontend/app/(site)/layout.tsx`
+- Public tools index: `frontend/app/(site)/tools/page.tsx`
+- Flow layout: `frontend/app/(flow)/layout.tsx`
+- Admin layout gate: `frontend/app/(admin)/admin/layout.tsx`
+- Contractor layout gate: `frontend/app/(contractor)/layout.tsx`
+- Middleware auth and experiment cookie assignment: `frontend/middleware.ts`
+- Navigation config: `frontend/lib/nav.ts`
 
-## 2) Access Enforcement Anchors
+## Public Routes
 
-- Path: frontend/middleware.ts
-  - What: Gate /dashboard; assign experiment cookie on tool routes
-  - Why: Prevents unauthenticated access before render; sets variant early
-  - What to check:
-    - Missing fruitful_access_token → redirect to /login?next=...
-    - Matcher includes /dashboard and /tools/pinterest-potential*
+- `/` - public hub for logged-out visitors; logged-in users are redirected by role.
+- `/tools` - public tools index.
+- `/tools/pinterest-fit-assessment` - public Pinterest Fit Assessment.
+- `/tools/pinterest-potential` - public Pinterest Potential Calculator entry with variant and lead-mode resolution.
+- `/case-studies` - public coming-soon case-studies page.
+- `/hub` - public knowledge-hub preview.
+- `/login` - public login UI.
 
-- Path: frontend/app/dashboard/page.tsx
-  - What: Server-side admin check (fail-closed)
-  - Why: Ensures only admins see dashboard even if middleware is bypassed
-  - What to check:
-    - Redirect to /login if no user; redirect non-admins to /tools
+## Gated Routes
 
-- Path: frontend/lib/auth.ts
-  - What: Server helper for current user via /auth/me
-  - Why: Canonical read of auth state from cookie/token
-  - What to check:
-    - Cookie name fruitful_access_token; Bearer call to /auth/me
+- `/admin` and `/admin/*` - admin-only. Middleware checks token and role via backend `/auth/me`; admin layout also fail-closes server-side.
+- `/admin/dashboard` - legacy/early Pinterest stats dashboard using backend `/pinterest-stats/monthly`.
+- `/admin/analytics` - admin Pinterest stats upload and monthly-row UI through frontend API proxies.
+- `/admin/accounts` - admin account list UI.
+- `/contractor` and `/contractor/*` - allowed for admins and users in the `contractor` group. Middleware and layout both gate access.
+- `/contractor/fruitful-qa` - placeholder contractor QA assistant route.
 
----
+## Auth Anchors
 
-## 3) Analytics / GTM Anchors
+- Cookie: `fruitful_access_token`
+- Frontend server helper: `frontend/lib/auth.ts`
+- Frontend login proxy: `frontend/app/api/auth/login/route.ts`
+- Frontend logout proxy: `frontend/app/api/auth/logout/route.ts`
+- Middleware gate: `frontend/middleware.ts`
+- Backend auth router: `backend/routers/auth.py`
+- Backend dependencies and JWT helpers: `backend/security.py`
+- Backend user schema/model: `backend/schemas.py`, `backend/models.py`
 
-- Path: frontend/lib/gtm.ts
-  - What: Centralized dataLayer push helpers
-  - Why: Consistent event names and flat payloads for GTM
-  - What to check:
-    - pushEvent merges into { event, ...params }; helpers for tool/CTA/lead
+Auth flow:
+- Frontend login posts email/password to `/api/auth/login`.
+- The Next route calls FastAPI `/auth/login`, receives a JWT, calls `/auth/me`, computes role, sets `fruitful_access_token`, and returns a safe `redirectTo`.
+- Server components call `getCurrentUser()`, which reads the cookie and calls backend `/auth/me`.
+- Middleware uses the same cookie and backend `/auth/me` for protected route role checks.
+- Backend JWT subject is the user email. Active users only can pass `/auth/me`.
 
-- Path: frontend/app/layout.tsx
-  - What: GTM snippet injection when NEXT_PUBLIC_GTM_ID is set
-  - Why: Initializes window.dataLayer; single container insertion
-  - What to check:
-    - Next Script id="gtm"; no direct gtag() calls elsewhere
+## Experiment Anchors
 
----
+- Canonical experiment config: `frontend/lib/experiments/config.ts`
+- Middleware cookie assignment: `frontend/lib/growthbook/middleware.ts`
+- Edge-safe GrowthBook adapter: `frontend/lib/growthbook/edgeAdapter.ts`
+- Server GrowthBook adapter/tracking callback: `frontend/lib/growthbook/flags.ts`
+- Event ingestion endpoint: `frontend/app/api/experiment-events/route.ts`
+- Debug endpoint: `frontend/app/api/debug/growthbook/route.ts`
+- Pinterest Potential variant constants: `frontend/lib/tools/pinterestPotentialConfig.ts`
 
-## 4) Experiments / GrowthBook Anchors
+Current reality:
+- The only registered experiment key is `pinterest_potential_variant`.
+- Valid variants are `welcome` and `no_welcome`; default is `welcome`.
+- `ENABLE_AB_SPLIT` is currently `false`, so middleware does not assign random variants in normal operation.
+- Non-production can still use `?variant=welcome` or `?variant=no_welcome` for QA.
+- When enabled, middleware persists `fp_anon_id` and `pp_variant`, using GrowthBook first and weighted local fallback second.
 
-- Path: frontend/lib/experiments/config.ts
-  - What: Experiment registry (keys, variants, defaults)
-  - Why: Single source for experiment keys and allowed variants
-  - What to check:
-    - pinterest_potential_variant aligns with tool variants ("v1","v2")
+## Analytics Anchors
 
-- Path: frontend/lib/growthbook/experiments.ts
-  - What: Server-side runner (GB-first, fallback weights)
-  - Why: Canonical assignment path used by middleware
-  - What to check:
-    - Returns { variant, source }; handles GB errors
+- GTM script injection: `frontend/app/layout.tsx`
+- Data layer helper: `frontend/lib/gtm.ts`
+- Generic tool hook: `frontend/lib/hooks/useToolAnalytics.ts`
+- Pinterest Fit tracking: `frontend/lib/tools/pinterestFit/tracking.ts`
 
-- Path: frontend/app/(flow)/tools/pinterest-potential/page.tsx
-  - What: Page reads cookie/query; does not assign
-  - Why: Verifies “assignment before render” and precedence
-  - What to check:
-    - ?variant → cookie → DEFAULT_VARIANT using PINTEREST_POTENTIAL_VARIANT_COOKIE
+Current event families:
+- Generic events: `tool_view`, `tool_start`, `lead_submit`, `cta_click`
+- Pinterest Potential vNext events: `ppc_view_start`, `ppc_start`, `ppc_answer`, `ppc_complete`, `ppc_cta_click`, `ppc_lead_view`, `ppc_lead_submit`, `ppc_lead_skip`, `ppc_back`
+- Pinterest Fit events: `assessment_started`, `assessment_question_completed`, `assessment_completed`, result-specific events, and `cta_fit_call_clicked`
 
----
+Invariant:
+- App code pushes events to `window.dataLayer` through helpers.
+- GTM is the orchestrator. Do not add direct `gtag()` calls in app code.
 
-## 5) Tool Wizard Pattern Anchors
+## Tool System Anchors
 
-- Path: frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx
-  - What: Canonical wizard component (steps, validation, transitions)
-  - Why: Reference wizard contract used by public tools
-  - What to check:
-    - Props: leadMode, initialLead, onPhaseChange, onStart
+Pinterest Potential:
+- Route: `frontend/app/(flow)/tools/pinterest-potential/page.tsx`
+- Variants: `PinterestPotentialV1` for `welcome`, `PinterestPotentialV2` for `no_welcome`
+- Wizard: `frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx`
+- State draft helper: `frontend/components/tools/pinterestPotential/usePinterestPotentialDraft.ts`
+- Compute/spec layer: `frontend/lib/tools/pinterestPotential/*`
+- Lead gating: `leadMode.ts`, `leadGatingConfig.ts`, `leadToken.ts`
 
-- Path: frontend/components/tools/pinterestPotential/PinterestPotentialV1.tsx
-  - What: V1 tool that composes the wizard and analytics
-  - Why: Demonstrates Start vs Results phases and event wiring
-  - What to check:
-    - useToolAnalytics({ toolName: "pinterest_potential" }); onStart → trackToolStart
+Pinterest Fit:
+- Route: `frontend/app/(flow)/tools/pinterest-fit-assessment/page.tsx`
+- Client assessment component: `frontend/components/tools/pinterestFit/PinterestFitAssessment.tsx`
+- Scoring engine and typed config: `frontend/lib/tools/pinterestFit/*`
 
----
+## Backend/API Anchors
 
-## 6) Schema / Spec Anchors (if present)
+- FastAPI app: `backend/main.py`
+- CORS origins: localhost frontend, `fruitfulab.net`, and Vercel app.
+- DB setup: `backend/db.py`
+- Env config: `backend/config.py`
+- Models: `User`, `PinterestAccountStatsMonthly`
+- Current migration: `backend/migrations/versions/0f1db0936876_initial_schema.py`
 
-- Path: backend/schemas.py
-  - What: Pydantic schemas for auth and Pinterest stats
-  - Why: Canonical API response shapes consumed by frontend
-  - What to check:
-    - UserOut and PinterestAccountStatsMonthlyOut fields
+Admin Pinterest stats contract:
+- Frontend proxies under `/api/admin/pinterest-stats/*`.
+- Backend admin endpoints under `/admin/pinterest-stats/*`.
+- All admin stats endpoints require backend admin dependency.
+- `PinterestAccountStatsMonthly` is unique by `(account_name, calendar_month)`.
 
-- Path: backend/models.py
-  - What: SQLAlchemy models (users, pinterest_account_stats_monthly)
-  - Why: Canonical database entities backing API schemas
-  - What to check:
-    - User.is_admin field; monthly stats columns and types
+## Tests and Commands
 
----
+- Root test target: `make test`
+- Backend tests: `cd backend && uv run pytest -q`
+- Frontend tests: `cd frontend && npm test`
+- Frontend build: `cd frontend && npm run build`
+- Full frontend CI-ish path: `cd frontend && npm run ci`
+- Root full target: `make all`
 
-## 7) Gaps / Ambiguities to record in SYSTEM_IMPLEMENTATION_AUDIT.md
+## Working Rules
 
-- Path: (frontend) /login (referenced, not found)
-  - What: Login page/UI is referenced by redirects but missing in repo
-  - Why: Onboarding and access enforcement assume a login UI exists
-  - What to check:
-    - Redirects to /login from middleware and dashboard; no corresponding route found
-
-- Path: frontend/app/(site)/case-studies (referenced in nav, not found)
-  - What: /case-studies link present in navigation but route missing
-  - Why: Public nav should not 404; treat as known gap
-  - What to check:
-    - PUBLIC_NAV_LINKS includes /case-studies; no matching route implementation
-
-- Path: Lead persistence
-  - What: Lead capture behavior implied by leadMode; storage endpoints unclear
-  - Why: Wizard analytics may assume lead_submit exists
-  - What to check:
-    - Presence/usage of trackLeadSubmit in actual components (not confirmed)
+- Start with code, then this grounding pack, then `docs/PROJECT_MEMORY.md`.
+- For architecture, repo-structure, hosting, shared-package, or new-brand work, read `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md`.
+- Keep brands as separate apps/deployments; do not mix Fruitful Pin, Bloom Whispers, Bricoli, or other future brand sites into the Fruitful Lab route tree.
+- Apps must not import directly from other apps. Move reusable code into `packages/*` before cross-app use.
+- First structure migration step is `frontend/` to `apps/lab/`, preserving Fruitful Lab behavior and Vercel rendering.
+- Preserve role checks in both middleware and server layouts for gated areas.
+- Preserve the backend as the source of user truth through `/auth/me`.
+- Keep experiment assignment before render; pages may read cookies/query params but should not call GrowthBook directly.
+- Keep analytics helper-driven and GTM-oriented.
+- Keep public tools deterministic, typed, and step-based.
+- Update `docs/PROJECT_MEMORY.md` and the latest dated audit when architecture, auth, analytics, experiment, route, or API contracts change.

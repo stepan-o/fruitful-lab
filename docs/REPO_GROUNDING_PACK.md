@@ -20,7 +20,7 @@ Related planning reference:
 
 ## Repo Map
 
-- `frontend/` - current Next.js App Router app for Fruitful Lab public pages, tool flows, login, admin, contractor pages, analytics proxies, and experiment diagnostics. Planned first migration step: move this app to `apps/lab/` without behavior changes.
+- `apps/lab/` - current Next.js App Router app for Fruitful Lab public pages, tool flows, login, admin, contractor pages, analytics proxies, and experiment diagnostics.
 - `apps/` - target home for separate deployable brand apps. Planned apps include `apps/lab`, `apps/fruitful-pin`, and future examples such as `apps/bloom-whispers` and `apps/bricoli`.
 - `packages/` - target home for shared code once real cross-app reuse exists. Do not create broad shared abstractions prematurely.
 - `backend/` - FastAPI app for auth, users, Pinterest stats, Postgres models, Alembic migrations, and admin-only CSV ingestion.
@@ -30,18 +30,18 @@ Related planning reference:
 
 ## Frontend Anchors
 
-Current paths use `frontend/`. After the structure PR, use the equivalent path under `apps/lab/`.
+Current Fruitful Lab paths use `apps/lab/`.
 
-- App router entry: `frontend/app/`
-- Root layout and GTM injection: `frontend/app/layout.tsx`
-- Global styles and tokens: `frontend/app/globals.css`
-- Public site layout: `frontend/app/(site)/layout.tsx`
-- Public tools index: `frontend/app/(site)/tools/page.tsx`
-- Flow layout: `frontend/app/(flow)/layout.tsx`
-- Admin layout gate: `frontend/app/(admin)/admin/layout.tsx`
-- Contractor layout gate: `frontend/app/(contractor)/layout.tsx`
-- Middleware auth and experiment cookie assignment: `frontend/middleware.ts`
-- Navigation config: `frontend/lib/nav.ts`
+- App router entry: `apps/lab/app/`
+- Root layout and GTM injection: `apps/lab/app/layout.tsx`
+- Global styles and tokens: `apps/lab/app/globals.css`
+- Public site layout: `apps/lab/app/(site)/layout.tsx`
+- Public tools index: `apps/lab/app/(site)/tools/page.tsx`
+- Flow layout: `apps/lab/app/(flow)/layout.tsx`
+- Admin layout gate: `apps/lab/app/(admin)/admin/layout.tsx`
+- Contractor layout gate: `apps/lab/app/(contractor)/layout.tsx`
+- Middleware auth and experiment cookie assignment: `apps/lab/middleware.ts`
+- Navigation config: `apps/lab/lib/nav.ts`
 
 ## Public Routes
 
@@ -65,10 +65,10 @@ Current paths use `frontend/`. After the structure PR, use the equivalent path u
 ## Auth Anchors
 
 - Cookie: `fruitful_access_token`
-- Frontend server helper: `frontend/lib/auth.ts`
-- Frontend login proxy: `frontend/app/api/auth/login/route.ts`
-- Frontend logout proxy: `frontend/app/api/auth/logout/route.ts`
-- Middleware gate: `frontend/middleware.ts`
+- Frontend server helper: `apps/lab/lib/auth.ts`
+- Frontend login proxy: `apps/lab/app/api/auth/login/route.ts`
+- Frontend logout proxy: `apps/lab/app/api/auth/logout/route.ts`
+- Middleware gate: `apps/lab/middleware.ts`
 - Backend auth router: `backend/routers/auth.py`
 - Backend dependencies and JWT helpers: `backend/security.py`
 - Backend user schema/model: `backend/schemas.py`, `backend/models.py`
@@ -82,13 +82,13 @@ Auth flow:
 
 ## Experiment Anchors
 
-- Canonical experiment config: `frontend/lib/experiments/config.ts`
-- Middleware cookie assignment: `frontend/lib/growthbook/middleware.ts`
-- Edge-safe GrowthBook adapter: `frontend/lib/growthbook/edgeAdapter.ts`
-- Server GrowthBook adapter/tracking callback: `frontend/lib/growthbook/flags.ts`
-- Event ingestion endpoint: `frontend/app/api/experiment-events/route.ts`
-- Debug endpoint: `frontend/app/api/debug/growthbook/route.ts`
-- Pinterest Potential variant constants: `frontend/lib/tools/pinterestPotentialConfig.ts`
+- Canonical experiment config: `apps/lab/lib/experiments/config.ts`
+- Middleware cookie assignment: `apps/lab/lib/growthbook/middleware.ts`
+- Edge-safe GrowthBook adapter: `apps/lab/lib/growthbook/edgeAdapter.ts`
+- Server GrowthBook adapter/tracking callback: `apps/lab/lib/growthbook/flags.ts`
+- Event ingestion endpoint: `apps/lab/app/api/experiment-events/route.ts`
+- Debug endpoint: `apps/lab/app/api/debug/growthbook/route.ts`
+- Pinterest Potential variant constants: `apps/lab/lib/tools/pinterestPotentialConfig.ts`
 
 Current reality:
 - The only registered experiment key is `pinterest_potential_variant`.
@@ -99,10 +99,10 @@ Current reality:
 
 ## Analytics Anchors
 
-- GTM script injection: `frontend/app/layout.tsx`
-- Data layer helper: `frontend/lib/gtm.ts`
-- Generic tool hook: `frontend/lib/hooks/useToolAnalytics.ts`
-- Pinterest Fit tracking: `frontend/lib/tools/pinterestFit/tracking.ts`
+- GTM script injection: `apps/lab/app/layout.tsx`
+- Data layer helper: `apps/lab/lib/gtm.ts`
+- Generic tool hook: `apps/lab/lib/hooks/useToolAnalytics.ts`
+- Pinterest Fit tracking: `apps/lab/lib/tools/pinterestFit/tracking.ts`
 
 Current event families:
 - Generic events: `tool_view`, `tool_start`, `lead_submit`, `cta_click`
@@ -116,17 +116,17 @@ Invariant:
 ## Tool System Anchors
 
 Pinterest Potential:
-- Route: `frontend/app/(flow)/tools/pinterest-potential/page.tsx`
+- Route: `apps/lab/app/(flow)/tools/pinterest-potential/page.tsx`
 - Variants: `PinterestPotentialV1` for `welcome`, `PinterestPotentialV2` for `no_welcome`
-- Wizard: `frontend/components/tools/pinterestPotential/PinterestPotentialWizard.tsx`
-- State draft helper: `frontend/components/tools/pinterestPotential/usePinterestPotentialDraft.ts`
-- Compute/spec layer: `frontend/lib/tools/pinterestPotential/*`
+- Wizard: `apps/lab/components/tools/pinterestPotential/PinterestPotentialWizard.tsx`
+- State draft helper: `apps/lab/components/tools/pinterestPotential/usePinterestPotentialDraft.ts`
+- Compute/spec layer: `apps/lab/lib/tools/pinterestPotential/*`
 - Lead gating: `leadMode.ts`, `leadGatingConfig.ts`, `leadToken.ts`
 
 Pinterest Fit:
-- Route: `frontend/app/(flow)/tools/pinterest-fit-assessment/page.tsx`
-- Client assessment component: `frontend/components/tools/pinterestFit/PinterestFitAssessment.tsx`
-- Scoring engine and typed config: `frontend/lib/tools/pinterestFit/*`
+- Route: `apps/lab/app/(flow)/tools/pinterest-fit-assessment/page.tsx`
+- Client assessment component: `apps/lab/components/tools/pinterestFit/PinterestFitAssessment.tsx`
+- Scoring engine and typed config: `apps/lab/lib/tools/pinterestFit/*`
 
 ## Backend/API Anchors
 
@@ -147,9 +147,9 @@ Admin Pinterest stats contract:
 
 - Root test target: `make test`
 - Backend tests: `cd backend && uv run pytest -q`
-- Frontend tests: `cd frontend && npm test`
-- Frontend build: `cd frontend && npm run build`
-- Full frontend CI-ish path: `cd frontend && npm run ci`
+- Frontend tests: `cd apps/lab && npm test`
+- Frontend build: `cd apps/lab && npm run build`
+- Full frontend CI-ish path: `cd apps/lab && npm run ci`
 - Root full target: `make all`
 
 ## Working Rules
@@ -158,7 +158,7 @@ Admin Pinterest stats contract:
 - For architecture, repo-structure, hosting, shared-package, or new-brand work, read `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md`.
 - Keep brands as separate apps/deployments; do not mix Fruitful Pin, Bloom Whispers, Bricoli, or other future brand sites into the Fruitful Lab route tree.
 - Apps must not import directly from other apps. Move reusable code into `packages/*` before cross-app use.
-- First structure migration step is `frontend/` to `apps/lab/`, preserving Fruitful Lab behavior and Vercel rendering.
+- Fruitful Lab now lives in `apps/lab/`; preserve Fruitful Lab behavior and Vercel rendering when changing it.
 - Preserve role checks in both middleware and server layouts for gated areas.
 - Preserve the backend as the source of user truth through `/auth/me`.
 - Keep experiment assignment before render; pages may read cookies/query params but should not call GrowthBook directly.

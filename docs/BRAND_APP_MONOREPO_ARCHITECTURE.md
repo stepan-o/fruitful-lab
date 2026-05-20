@@ -1,8 +1,8 @@
 # Brand App Monorepo Architecture
 
-Status: target architecture adopted for upcoming migration planning on 2026-05-20.
+Status: target architecture adopted 2026-05-20; updated after the Fruitful Lab app move to apps/lab.
 
-This document describes the intended long-term repo shape for Fruitful Lab, Fruitful Pin, and future separate brands such as Bloom Whispers and Bricoli. It is a planning and implementation reference. Current code still lives in `frontend/` until the first structure migration PR moves it.
+This document describes the intended long-term repo shape for Fruitful Lab, Fruitful Pin, and future separate brands such as Bloom Whispers and Bricoli. Fruitful Lab now lives in `apps/lab/`.
 
 ## Strategic Model
 
@@ -57,27 +57,18 @@ fruitful-lab/
 
 Do not create every package up front. Extract packages when a second app creates a real need for reuse.
 
-## Current-To-Target Migration
+## Current Structure
 
 Current implementation:
 
 ```txt
-frontend/   # current Fruitful Lab Next.js app
+apps/lab/   # current Fruitful Lab Next.js app
 backend/    # FastAPI backend
 docs/
 prompts/
 ```
 
-First structure PR target:
-
-```txt
-apps/lab/   # moved current Fruitful Lab Next.js app
-backend/
-docs/
-prompts/
-```
-
-The first structure PR should only move/rename the current Fruitful Lab app and update references, commands, docs, and workflows. It should preserve the rendered Fruitful Lab site and behavior.
+The structure PR moved/renamed the current Fruitful Lab app and updated references, commands, docs, and workflows. Fruitful Lab rendering and behavior should remain unchanged.
 
 ## App Boundaries
 
@@ -123,7 +114,7 @@ Fruitful Lab:
 
 - Existing app, currently hosted on Vercel.
 - Treat as sandbox/prototype space.
-- After the first structure PR, Vercel must build from `apps/lab`.
+- Vercel must build from `apps/lab`.
 
 Fruitful Pin:
 
@@ -191,13 +182,13 @@ apps/bloom-whispers/components/some-tool.tsx
 
 It should not import from `apps/lab` or `apps/fruitful-pin`.
 
-## First Migration Step
+## Completed First Migration Step
 
-The first migration PR should be a structure-only move:
+The first migration PR was a structure-only move:
 
-1. Move `frontend/` to `apps/lab/`.
-2. Update root commands, workflows, docs, and any path references.
-3. Keep Fruitful Lab routes, behavior, tests, and rendering unchanged.
+1. Moved `frontend/` to `apps/lab/`.
+2. Updated root commands, workflows, docs, and path references.
+3. Kept Fruitful Lab routes, behavior, tests, and rendering unchanged.
 4. Update Vercel project settings so the Fruitful Lab project builds from `apps/lab`.
 5. Validate the Lab app locally and through the Vercel deployment.
 

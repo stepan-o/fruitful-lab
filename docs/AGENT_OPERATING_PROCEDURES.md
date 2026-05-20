@@ -31,8 +31,7 @@ Operational defaults:
 - Prefer draft PRs unless Susie explicitly asks for ready-for-review.
 - Use the GitHub app connector when local GitHub credentials cannot push or create PRs.
 - Use Vercel project `fruitful-lab` under team `team_6IXsIS7tsIiWezQJDDNVBumg` when validating deployments.
-- Until the monorepo structure PR lands, for Fruitful Lab frontend validation use `API_BASE_URL=http://localhost:8000 npm run ci` from `frontend/` unless the task clearly requires another check.
-- After the monorepo structure PR lands, Fruitful Lab validation should run from `apps/lab/`.
+- For Fruitful Lab validation, use `API_BASE_URL=http://localhost:8000 npm run ci` from `apps/lab/` unless the task clearly requires another check.
 - For brand/app monorepo work, read `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` and keep separate brands as separate apps under `apps/*`.
 - For Fruitful Pin migration work, read `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md`; the current phase-one target is Cloudflare for the public Next.js frontend and WordPress on prepaid A2 as the headless CMS/editor.
 - If local builds fail because network is needed for `next/font`, request network access and rerun once.
@@ -40,11 +39,11 @@ Operational defaults:
 - Preserve unrelated user edits. Work around them or stage explicit file paths only.
 - If a remote deployment is protected, use Vercel's authenticated fetch/share-link tools to verify the deployment response.
 
-Structure migration default:
+Structure migration status:
 
-- The first monorepo migration step should be a structure-only PR moving the current `frontend/` app to `apps/lab/`.
-- That PR should preserve Fruitful Lab rendering and behavior, update commands/workflows/docs/path references, and require the Vercel project root directory to point to `apps/lab`.
-- Do not introduce `apps/fruitful-pin` in the same PR unless Susie explicitly asks to combine those steps.
+- The first monorepo migration step moved the current Fruitful Lab app from `frontend/` to `apps/lab/`.
+- Fruitful Lab rendering and behavior should remain unchanged after the move. The Fruitful Lab Vercel project root directory must point to `apps/lab`.
+- Do not introduce `apps/fruitful-pin` into unrelated Lab maintenance PRs unless Susie explicitly asks to combine those steps.
 
 Completion criteria:
 

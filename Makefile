@@ -1,6 +1,7 @@
 # Makefile at repo root
 
 .PHONY: backend-test backend-run backend-ci \
+        lab-test lab-build lab-ci \
         frontend-test frontend-build frontend-ci \
         test all
 
@@ -12,16 +13,22 @@ backend-run:
 
 backend-ci: backend-test
 
-frontend-test:
-	cd frontend && npm test
+lab-test:
+	cd apps/lab && API_BASE_URL=http://localhost:8000 npm test
 
-frontend-build:
-	cd frontend && npm run build
+frontend-test: lab-test
 
-frontend-ci: frontend-test frontend-build
+lab-build:
+	cd apps/lab && API_BASE_URL=http://localhost:8000 npm run build
+
+frontend-build: lab-build
+
+lab-ci: lab-test lab-build
+
+frontend-ci: lab-ci
 
 # run both test suites
-test: backend-test frontend-test
+test: backend-test lab-test
 
 # full CI-ish run
-all: backend-ci frontend-ci
+all: backend-ci lab-ci

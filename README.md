@@ -22,7 +22,7 @@ Code is the highest authority. If older docs, archived plans, or prompts disagre
 ## Repository Layout
 
 - `apps/lab/` - current Next.js App Router app for Fruitful Lab.
-- `apps/` - target location for separate deployable brand apps, starting with `apps/lab` and later `apps/fruitful-pin`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
+- `apps/` - location for separate deployable brand apps, starting with `apps/lab` and `apps/fruitful-pin`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
 - `packages/` - target location for shared tool logic, analytics, SEO, CMS, WordPress, UI, and config packages after real reuse exists.
 - `backend/` - FastAPI app with SQLAlchemy, Alembic, JWT auth, and Postgres.
 - `docs/` - project memory, audits, guides, specs, and historical implementation notes.
@@ -32,7 +32,7 @@ Code is the highest authority. If older docs, archived plans, or prompts disagre
 
 ## Frontend
 
-The current Fruitful Lab app lives in `apps/lab/` and uses Next.js App Router.
+The current Fruitful Lab app lives in `apps/lab/` and uses Next.js App Router. The Fruitful Pin foundation lives in `apps/fruitful-pin/` and is a separate static-first Next.js app targeting Cloudflare Pages.
 
 Route groups:
 
@@ -71,7 +71,7 @@ Target app structure:
 ```txt
 apps/
   lab/             # Fruitful Lab sandbox/prototype app, Vercel
-  fruitful-pin/    # Fruitful Pin commercial marketing site, Cloudflare target
+  fruitful-pin/    # Fruitful Pin commercial marketing site, static-first Cloudflare target
   bloom-whispers/  # future separate brand/site
   bricoli/         # future separate brand/site
 ```
@@ -182,6 +182,8 @@ From the repo root:
 make backend-test
 make lab-test
 make lab-build
+make fruitful-pin-test
+make fruitful-pin-build
 make test
 make all
 ```
@@ -191,6 +193,8 @@ Directly:
 ```bash
 cd apps/lab && npm test
 cd apps/lab && npm run build
+cd apps/fruitful-pin && npm test
+cd apps/fruitful-pin && npm run build
 cd backend && uv run pytest -q
 ```
 

@@ -23,6 +23,7 @@ Read these before doing migration work:
 - Keep Fruitful Lab rendering unchanged during the structure migration.
 - Do not touch GoDaddy, A2, WordPress admin, Cloudflare production projects, Vercel project settings, or DNS without explicit external approval and credentials.
 - Create PRs as draft PRs unless Susy explicitly asks for ready-for-review.
+- Prefer meaningful PR checkpoints over tiny granular PRs, because every merge can trigger a Fruitful Lab Vercel rebuild. Bundle small docs/config updates into the next substantial PR when safe.
 - Pause after PR creation until Susy/Stepan review and merge.
 - Preserve unrelated user edits. Stage explicit files only.
 
@@ -144,6 +145,8 @@ Susy/Stepan review tasks:
 
 ## PR 3: Fruitful Pin App Foundation
 
+Status: foundation implementation checkpoint.
+
 Goal:
 
 - Introduce the separate Fruitful Pin app shell under `apps/fruitful-pin` without launching or touching DNS.
@@ -151,9 +154,9 @@ Goal:
 Scope:
 
 - Create `apps/fruitful-pin/` as a separate Next.js app.
-- Configure it for Cloudflare-oriented hosting where practical.
+- Configure it as a static-first Cloudflare Pages target where practical.
 - Add initial app shell, routing skeleton, brand placeholder structure, and content adapter boundaries.
-- Add WordPress headless CMS adapter plan or minimal client scaffolding if credentials/API details are available.
+- Add minimal WordPress headless CMS adapter scaffolding without requiring credentials or touching the live WordPress site.
 - Do not change `fruitfulpin.com` DNS.
 - Do not modify WordPress/A2 production content.
 

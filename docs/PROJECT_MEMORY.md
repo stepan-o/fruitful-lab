@@ -1,6 +1,6 @@
 # Project Memory - Fruitful Lab
 
-Status: current working memory as of 2026-05-20 after moving the Fruitful Lab app to apps/lab.
+Status: current working memory as of 2026-05-20 after adding the Fruitful Pin app foundation.
 
 Use this file as the durable architectural memory for future Codex/LLM work on this repo. It records the structure, layers, contracts, and working patterns that should be assumed going forward unless code proves otherwise.
 
@@ -28,7 +28,7 @@ The current Fruitful Lab app is not just a marketing site. It is a tool-and-anal
 The target repo shape is:
 
 - `apps/lab/` - current Fruitful Lab Next.js app; hosted on Vercel as a sandbox/prototype platform.
-- `apps/fruitful-pin/` - planned Fruitful Pin commercial marketing site; preferred public frontend host is Cloudflare.
+- `apps/fruitful-pin/` - Fruitful Pin commercial marketing site foundation; static-first Next.js app with Cloudflare Pages as the preferred public frontend host.
 - `apps/bloom-whispers/` - future separate brand/site example.
 - `apps/bricoli/` - future separate brand/site example.
 - `packages/*` - shared code extracted only after real cross-app reuse exists.
@@ -47,11 +47,29 @@ Working pattern:
 ## Top-Level Layout Today
 
 - `apps/lab/` - current Next.js App Router app for Fruitful Lab.
+- `apps/fruitful-pin/` - separate Next.js App Router foundation for Fruitful Pin.
 - `backend/` - FastAPI app with SQLAlchemy, Alembic, JWT auth, and Postgres.
 - `docs/` - current memory, audits, implementation notes, guides, and archived plans.
 - `prompts/` - LLM architect prompts and sprint plans.
 - `Makefile` - root convenience commands for backend and Lab app tests/builds.
 - `repo-tree.txt` - static repo tree snapshot.
+
+
+## Fruitful Pin App Foundation
+
+`apps/fruitful-pin/` is now the separate Fruitful Pin app foundation. It is intentionally not a production launch and does not change `fruitfulpin.com`, GoDaddy, A2, WordPress, or Cloudflare settings.
+
+Current foundation:
+
+- static-first Next.js App Router app,
+- `output: "export"` for Cloudflare Pages compatibility,
+- public route placeholders for `/`, `/services`, `/blog`, `/case-studies`, `/about`, `/contact`, `/privacy`, and `/terms`,
+- brand/site constants in `apps/fruitful-pin/lib/site.ts`,
+- placeholder content boundary in `apps/fruitful-pin/lib/content.ts`,
+- WordPress connection placeholder in `apps/fruitful-pin/lib/wordpress.ts`,
+- local tests in `apps/fruitful-pin/__tests__/`.
+
+Use `npm run build` from `apps/fruitful-pin/` or `make fruitful-pin-build` from the repo root to verify the static export. Cloudflare Pages should use `apps/fruitful-pin` as the root, `npm run build` as the build command, and `out` as the build output directory. If later WordPress preview, SSR, or dynamic route needs exceed static export, switch this app to the Cloudflare Workers/OpenNext path in a dedicated PR.
 
 ## Frontend Layers
 

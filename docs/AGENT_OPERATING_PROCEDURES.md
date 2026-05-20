@@ -29,6 +29,7 @@ Operational defaults:
 - Do not ask Susie which branch name, commit message, staging command, or PR structure to use; choose sensible defaults.
 - Do not stage unrelated local changes.
 - Prefer draft PRs unless Susie explicitly asks for ready-for-review.
+- Prefer meaningful bundled PRs over tiny granular PRs when the work can be safely validated in internal checkpoints; each merge can trigger a Fruitful Lab Vercel rebuild.
 - Use the GitHub app connector when local GitHub credentials cannot push or create PRs.
 - Use Vercel project `fruitful-lab` under team `team_6IXsIS7tsIiWezQJDDNVBumg` when validating deployments.
 - Treat `https://fruitfulab.net` as the canonical Fruitful Lab public domain. It is spelled `fruitfulab` with one `l` in the middle, and the apex redirects to `https://www.fruitfulab.net`.

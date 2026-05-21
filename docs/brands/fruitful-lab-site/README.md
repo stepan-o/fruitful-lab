@@ -57,11 +57,12 @@ Fruitful Lab can share family resemblance with Fruitful Pin, but it should lean 
 Current visual pass:
 
 - Use a mostly white base rather than the cream/beige Fruitful Pin direction.
-- Avoid the green/sage labels from the first skeleton; use navy, cobalt, teal, and gold instead.
-- Keep a non-pink gradient as an ecosystem cue across the brand family.
+- Avoid the green/sage labels from the first skeleton; use navy, warmer denim blue, muted aqua, amber, and coral instead.
+- Keep a non-pink gradient as an ecosystem cue across the brand family, but avoid a cold SaaS-style blue/purple feeling.
 - Use Alatsi for body copy and Raleway for headings.
 - Favor flowing, guided sections over repeated stacked rectangles.
 - Leave visible space for founder presence, future photography, diagrams, and system graphics.
+- Blog archive should follow the same discovery pattern as Fruitful Pin: featured article, article list, search, about block, lead magnet/list-building block, popular reads, and resource links.
 
 Current services model:
 

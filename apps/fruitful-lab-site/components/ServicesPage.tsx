@@ -8,49 +8,75 @@ export function ServicesPage() {
     <div>
       <PageHeader
         eyebrow="Services"
-        title="Marketing systems, paid campaigns, AI workflows, and content engines."
-        description="Fruitful Lab helps brands connect strategy, execution, and decision-making across the full customer path."
+        title="A clearer way into funnels, paid media, AI workflows, email, and content systems."
+        description="The exact offer language can keep sharpening. The operating model starts with fit, moves into a diagnostic, then builds the highest-leverage system first."
       />
 
       <Section>
-        <SectionInner className="grid gap-5 md:grid-cols-2">
-          {SERVICE_PACKAGES.map((service) => (
-            <article key={service.title} className="flex h-full flex-col rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm">
-              <p className="text-sm font-semibold text-[var(--bronze)]">{service.kicker}</p>
-              <h2 className="mt-3 text-2xl font-semibold text-[var(--heading)]">{service.title}</h2>
-              <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{service.description}</p>
-              <p className="mt-5 text-sm font-semibold text-[var(--heading)]">Best for</p>
-              <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{service.bestFor}</p>
-              <ul className="mt-5 space-y-2 text-sm leading-6 text-[var(--foreground)]">
-                {service.includes.map((item) => (
-                  <li key={item}>- {item}</li>
-                ))}
-              </ul>
-              <Link className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-[var(--heading)] px-4 text-sm font-semibold text-white" href="/contact">
-                {service.cta}
+        <SectionInner>
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+            <div className="lg:sticky lg:top-28">
+              <p className="eyebrow">Working model</p>
+              <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)]">
+                Not a menu of tactics. A path into the right build.
+              </h2>
+              <p className="mt-5 text-base leading-7 text-[var(--muted)]">
+                Fruitful Lab can still offer broad expertise, but the buying journey should feel guided: first conversation, paid clarity product, implementation, then deeper partnership.
+              </p>
+              <Link className="btn btn-primary mt-7" href="/contact">
+                Book a fit call
               </Link>
-            </article>
-          ))}
+            </div>
+
+            <div>
+              {SERVICE_PACKAGES.map((service, index) => (
+                <article key={service.title} className="service-stage">
+                  <div>
+                    <span className="service-index">0{index + 1}</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-black text-[var(--cobalt)]">{service.kicker}</p>
+                    <h2 className="mt-2 text-3xl font-extrabold leading-tight text-[var(--heading)]">{service.title}</h2>
+                    <p className="mt-4 text-base leading-7 text-[var(--muted)]">{service.description}</p>
+                    <p className="mt-5 text-sm font-black uppercase tracking-[0.12em] text-[var(--heading)]">Best for</p>
+                    <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{service.bestFor}</p>
+                    <Link className="btn btn-secondary mt-6" href="/contact">
+                      {service.cta}
+                    </Link>
+                  </div>
+                  <ul className="stage-includes">
+                    {service.includes.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
         </SectionInner>
       </Section>
 
       <Section surface="surface">
         <SectionInner>
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase text-[var(--sage)]">Working model</p>
-            <h2 className="mt-3 text-3xl font-semibold text-[var(--heading)]">Start with clarity, then build what the system actually needs.</h2>
-            <p className="mt-4 text-base leading-7 text-[var(--muted)]">
-              These steps keep the work grounded, even when the business has several channels, ideas, and offers competing for attention.
-            </p>
-          </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {PROCESS_STEPS.map((step, index) => (
-              <article key={step.title} className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-6">
-                <p className="text-sm font-semibold text-[var(--bronze)]">0{index + 1}</p>
-                <h3 className="mt-3 text-xl font-semibold text-[var(--heading)]">{step.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{step.description}</p>
-              </article>
-            ))}
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+            <div>
+              <p className="eyebrow">How decisions stay grounded</p>
+              <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)]">
+                The goal is a useful first system, not a giant unfinished rebuild.
+              </h2>
+              <p className="mt-5 text-base leading-7 text-[var(--muted)]">
+                Each phase narrows the next decision so the work can move from strategy into visible assets, live systems, and measurable signals.
+              </p>
+            </div>
+            <div className="path-shell grid gap-5 md:grid-cols-3">
+              {PROCESS_STEPS.map((step, index) => (
+                <article key={step.title} className="path-card p-6">
+                  <span className="path-number">0{index + 1}</span>
+                  <h3 className="mt-6 text-xl font-bold text-[var(--heading)]">{step.title}</h3>
+                  <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{step.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </SectionInner>
       </Section>

@@ -29,10 +29,10 @@ describe("Fruitful Lab customer site config", () => {
 
   it("starts with the agreed service and blog skeleton", () => {
     expect(SERVICE_PACKAGES.map((service) => service.title)).toEqual([
-      "Full-Funnel Growth Systems",
-      "Paid Media and Campaign Support",
-      "AI Workflow and Marketing Ops",
-      "Content and Email Engines",
+      "Fit Call",
+      "Growth Systems Diagnostic",
+      "Implementation Sprint",
+      "Scale Partnership",
     ]);
 
     expect(BLOG_POSTS.map((post) => `/blog/${post.slug}`)).toEqual([

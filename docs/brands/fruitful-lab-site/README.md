@@ -53,3 +53,19 @@ Case studies and tools/experiments are intentionally out of the first skeleton. 
 ## Brand Direction
 
 Fruitful Lab can share family resemblance with Fruitful Pin, but it should lean more navy and gold than pink. Fruitful Pin can stay more pink/yellow and Pinterest-specific. Fruitful Lab should feel like the broader, systems-minded parent brand.
+
+Current visual pass:
+
+- Use a mostly white base rather than the cream/beige Fruitful Pin direction.
+- Avoid the green/sage labels from the first skeleton; use navy, cobalt, teal, and gold instead.
+- Keep a non-pink gradient as an ecosystem cue across the brand family.
+- Use Lato for body copy and Raleway for headings.
+- Favor flowing, guided sections over repeated stacked rectangles.
+- Leave visible space for founder presence, future photography, diagrams, and system graphics.
+
+Current services model:
+
+1. Fit Call
+2. Growth Systems Diagnostic as the lead product
+3. Implementation Sprint for the first useful build
+4. Scale Partnership for larger projects or ongoing systems work

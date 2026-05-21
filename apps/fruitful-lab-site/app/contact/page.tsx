@@ -24,7 +24,7 @@ export default function ContactPage() {
               <li>- Goals, constraints, and bottlenecks</li>
               <li>- Best-fit next step or project shape</li>
             </ul>
-            <a className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-[var(--heading)] px-6 text-sm font-semibold text-white" href={BOOKING_URL}>
+            <a className="btn btn-primary mt-6" href={BOOKING_URL}>
               Open TidyCal
             </a>
           </div>

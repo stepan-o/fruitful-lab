@@ -19,78 +19,78 @@ export type BlogPost = {
 
 export const SERVICE_PACKAGES: ServicePackage[] = [
   {
-    title: "Full-Funnel Growth Systems",
-    kicker: "Offer to lead to sale",
+    title: "Fit Call",
+    kicker: "First filter",
     description:
-      "Strategy and implementation for brands that need their content, landing pages, email, and conversion path to work as one connected system.",
-    bestFor: "Service providers, consultants, educators, and specialty brands with an offer that needs a clearer path to buyers.",
+      "A focused first conversation to understand the offer, current growth path, bottlenecks, and whether Fruitful Lab is the right partner for the next move.",
+    bestFor: "Founders and small teams that know the marketing system needs work, but do not yet know which piece should move first.",
     includes: [
-      "Offer and audience path mapping",
-      "Landing page and funnel structure",
-      "Lead magnet or application flow planning",
-      "Email follow-up and conversion touchpoints",
+      "Current offer and audience context",
+      "Quick read on traffic, funnel, content, and follow-up",
+      "Fit and readiness conversation",
+      "Recommended next step when there is a match",
     ],
-    cta: "Map the funnel",
+    cta: "Book the fit call",
   },
   {
-    title: "Paid Media and Campaign Support",
-    kicker: "Meta, Pinterest, and launch campaigns",
+    title: "Growth Systems Diagnostic",
+    kicker: "Lead product",
     description:
-      "Campaign planning and optimization for teams that want ads connected to the real funnel instead of isolated traffic, creative, or spend reports.",
-    bestFor: "Businesses with an offer, tracking, and landing page that are ready for structured testing and clearer reporting.",
+      "A paid strategy map that turns the messy middle into a clear build plan: offer path, landing page, email, paid media, content, AI workflows, and reporting.",
+    bestFor: "Brands that need clarity before investing in a larger funnel, campaign, automation, content engine, or AI workflow project.",
     includes: [
-      "Campaign structure and audience planning",
-      "Creative testing angles",
-      "Landing page and tracking review",
-      "Readable reporting tied to decisions",
+      "Funnel and customer-path review",
+      "Channel, content, and email opportunity map",
+      "AI workflow and operations opportunities",
+      "Prioritized roadmap for the first build",
     ],
-    cta: "Plan the campaign",
+    cta: "Start with a diagnostic",
   },
   {
-    title: "AI Workflow and Marketing Ops",
-    kicker: "Better systems behind the marketing",
+    title: "Implementation Sprint",
+    kicker: "Build the first useful system",
     description:
-      "Practical AI and workflow systems for content production, research, reporting, client delivery, and repeatable marketing operations.",
-    bestFor: "Small teams that want to save time without flattening their voice, judgment, or customer experience.",
+      "A scoped build for the highest-leverage piece: a landing page, lead path, email sequence, campaign structure, content engine, or practical AI workflow.",
+    bestFor: "Teams ready to turn the diagnostic into a working asset without trying to rebuild the whole business at once.",
     includes: [
-      "AI-assisted content and research workflows",
-      "Marketing operations cleanup",
-      "Prompt and process libraries",
-      "Lightweight dashboards or decision tools",
+      "Build plan and production timeline",
+      "Copy, structure, and implementation support",
+      "Tracking or reporting requirements",
+      "Launch-ready handoff and next-test plan",
     ],
-    cta: "Improve the workflow",
+    cta: "Plan an implementation sprint",
   },
   {
-    title: "Content and Email Engines",
-    kicker: "A useful rhythm, not random posting",
+    title: "Scale Partnership",
+    kicker: "Bigger projects and ongoing systems",
     description:
-      "Content strategy, email nurture, and resource planning for brands that want their expertise to become a repeatable trust-building system.",
-    bestFor: "Founder-led businesses with strong expertise and scattered content that needs structure, repurposing, and follow-up.",
+      "Longer support for brands that need the system improved over time across paid media, funnels, email, content, reporting, and AI-assisted operations.",
+    bestFor: "Businesses with a validated direction that want a strategic implementation partner across several connected marketing pieces.",
     includes: [
-      "Content pillar and resource planning",
-      "Newsletter and nurture sequence structure",
-      "Repurposing paths across channels",
-      "Editorial and conversion calendar",
+      "Campaign and funnel iteration",
+      "Email, content, and resource systems",
+      "AI workflow libraries and team enablement",
+      "Decision dashboards and growth experiments",
     ],
-    cta: "Build the content engine",
+    cta: "Discuss the bigger system",
   },
 ];
 
 export const PROCESS_STEPS = [
   {
-    title: "Diagnose the Growth Path",
+    title: "Find the fit",
     description:
-      "We look at the offer, audience, traffic sources, content, email, and conversion points before deciding what needs to be built first.",
+      "Start with a conversation about the offer, audience, current systems, constraints, and whether there is a strong reason to keep exploring together.",
   },
   {
-    title: "Build the Smallest Useful System",
+    title: "Map the system",
     description:
-      "The first version should be practical: a clearer page, a better lead path, a campaign structure, an AI workflow, or a content engine that can actually ship.",
+      "Use the diagnostic to decide what should be built first, what can wait, and how the work should connect across channels.",
   },
   {
-    title: "Improve With Signals",
+    title: "Build and expand",
     description:
-      "Once the system is live, the work shifts toward cleaner reporting, useful experiments, and decisions that make the next iteration sharper.",
+      "Ship the first useful system, then use signals from the work to choose the next campaign, workflow, email path, or growth experiment.",
   },
 ] as const;
 

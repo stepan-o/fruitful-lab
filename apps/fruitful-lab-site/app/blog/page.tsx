@@ -18,13 +18,13 @@ export default function BlogPage() {
           <div className="grid gap-5">
             {BLOG_POSTS.map((post) => (
               <article key={post.slug} className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
-                <p className="text-sm font-semibold text-[var(--bronze)]">{post.category}</p>
+                <p className="text-sm font-black text-[var(--cobalt)]">{post.category}</p>
                 <h2 className="mt-3 text-2xl font-semibold leading-snug text-[var(--heading)]">
                   <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                 </h2>
-                <p className="mt-2 text-sm text-[var(--sage)]">{post.date}</p>
+                <p className="mt-2 text-sm text-[var(--muted)]">{post.date}</p>
                 <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{post.excerpt}</p>
-                <Link className="mt-6 inline-flex text-sm font-semibold text-[var(--bronze)]" href={`/blog/${post.slug}`}>
+                <Link className="mt-6 inline-flex text-sm font-black text-[var(--cobalt)]" href={`/blog/${post.slug}`}>
                   Read article
                 </Link>
               </article>
@@ -35,12 +35,12 @@ export default function BlogPage() {
             <div className="mt-5 space-y-4">
               {RESOURCE_ITEMS.map((item) => (
                 <div key={item.title}>
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--bronze)]">{item.type}</p>
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--cobalt)]">{item.type}</p>
                   <p className="mt-1 text-sm font-semibold text-[var(--heading)]">{item.title}</p>
                 </div>
               ))}
             </div>
-            <Link className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-[var(--heading)] px-5 text-sm font-semibold text-white" href="/resources">
+            <Link className="btn btn-primary mt-6 min-h-11 px-5 py-2 text-sm" href="/resources">
               View resources
             </Link>
           </aside>

@@ -18,7 +18,7 @@ export default function ResourcesPage() {
           <div className="grid gap-5 md:grid-cols-3">
             {RESOURCE_ITEMS.map((item) => (
               <article key={item.title} className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
-                <p className="text-sm font-semibold text-[var(--bronze)]">{item.type}</p>
+                <p className="text-sm font-black text-[var(--cobalt)]">{item.type}</p>
                 <h2 className="mt-3 text-xl font-semibold text-[var(--heading)]">{item.title}</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{item.description}</p>
               </article>
@@ -29,7 +29,7 @@ export default function ResourcesPage() {
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--muted)]">
               Resources can support the thinking. Services are for turning that thinking into a funnel, workflow, campaign, email path, or content engine.
             </p>
-            <Link className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md bg-[var(--heading)] px-5 text-sm font-semibold text-white" href="/services">
+            <Link className="btn btn-primary mt-5 min-h-11 px-5 py-2 text-sm" href="/services">
               Explore services
             </Link>
           </div>

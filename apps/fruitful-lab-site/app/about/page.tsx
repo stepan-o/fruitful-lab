@@ -38,19 +38,19 @@ export default function AboutPage() {
       <Section surface="surface">
         <SectionInner>
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase text-[var(--sage)]">Ecosystem</p>
+            <p className="eyebrow">Ecosystem</p>
             <h2 className="mt-3 text-3xl font-semibold text-[var(--heading)]">The bigger brand can hold more than one focused business.</h2>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {ECOSYSTEM_ITEMS.map((item) => (
               <article key={item.name} className="rounded-lg border border-[var(--border)] bg-white p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--bronze)]">{item.role}</p>
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--cobalt)]">{item.role}</p>
                 <h3 className="mt-3 text-lg font-semibold text-[var(--heading)]">{item.name}</h3>
                 <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{item.description}</p>
               </article>
             ))}
           </div>
-          <Link className="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-[var(--heading)] px-6 text-sm font-semibold text-white" href="/contact">
+          <Link className="btn btn-primary mt-8" href="/contact">
             Talk about the bigger system
           </Link>
         </SectionInner>

@@ -9,9 +9,9 @@ export function SiteHeader() {
           <span className="grid h-9 w-9 place-items-center rounded-md bg-[var(--navy)] text-sm font-black text-[var(--amber)] shadow-sm">FL</span>
           <span>{SITE_NAME}</span>
         </Link>
-        <nav className="hidden items-center gap-5 text-sm font-medium text-[var(--muted)] lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-5 text-sm font-bold text-[var(--heading)] lg:flex" aria-label="Primary">
           {PRIMARY_NAV.map((item) => (
-            <Link key={item.href} className="transition hover:text-[var(--cobalt)]" href={item.href}>
+            <Link key={item.href} className="transition hover:text-[var(--gold)]" href={item.href}>
               {item.label}
             </Link>
           ))}

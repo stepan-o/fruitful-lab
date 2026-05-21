@@ -11,14 +11,14 @@
   --border: #e4d9cf;
   --navy: #06142d;
   --navy-soft: #10264d;
-  --gold: #c9862d;
-  --amber: #f0b24a;
+  --gold: #b86a1c;
+  --amber: #d9822b;
   --cobalt: #2f5f9f;
-  --teal: #4aa7a2;
-  --coral: #e97855;
+  --teal: #5c9188;
+  --coral: #c75b35;
   --ink: #050d1d;
-  --lab-gradient: linear-gradient(135deg, #2f5f9f 0%, #4aa7a2 42%, #f0b24a 76%, #e97855 100%);
-  --lab-gradient-soft: linear-gradient(135deg, rgba(47, 95, 159, 0.12), rgba(74, 167, 162, 0.11) 50%, rgba(240, 178, 74, 0.2));
+  --lab-gradient: linear-gradient(135deg, #2f5f9f 0%, #5c9188 42%, #d9822b 76%, #c75b35 100%);
+  --lab-gradient-soft: linear-gradient(135deg, rgba(47, 95, 159, 0.12), rgba(92, 145, 136, 0.11) 50%, rgba(217, 130, 43, 0.2));
   --shadow-soft: 0 18px 60px rgba(6, 20, 45, 0.12);
   --shadow-tight: 0 10px 28px rgba(6, 20, 45, 0.1);
 
@@ -176,7 +176,7 @@ a {
 .system-visual::after {
   position: absolute;
   inset: 58px 46px 74px 78px;
-  border: 1px solid rgba(74, 167, 162, 0.38);
+  border: 1px solid rgba(92, 145, 136, 0.38);
   content: "";
   transform: skewY(-7deg);
   z-index: -1;
@@ -287,7 +287,7 @@ a {
   right: 7%;
   left: 7%;
   height: 2px;
-  background: linear-gradient(90deg, rgba(47, 95, 159, 0), rgba(47, 95, 159, 0.5), rgba(74, 167, 162, 0.48), rgba(240, 178, 74, 0));
+  background: linear-gradient(90deg, rgba(47, 95, 159, 0), rgba(47, 95, 159, 0.5), rgba(92, 145, 136, 0.48), rgba(217, 130, 43, 0));
   content: "";
 }
 
@@ -500,7 +500,7 @@ a {
   display: block;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(47, 95, 159, 0.92), rgba(74, 167, 162, 0.72) 48%, rgba(240, 178, 74, 0.78)),
+    linear-gradient(135deg, rgba(47, 95, 159, 0.92), rgba(92, 145, 136, 0.72) 48%, rgba(217, 130, 43, 0.78)),
     linear-gradient(90deg, transparent 0 18px, rgba(255, 255, 255, 0.16) 18px 19px, transparent 19px 38px);
 }
 

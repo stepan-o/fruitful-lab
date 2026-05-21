@@ -1,6 +1,6 @@
 # Brand App Monorepo Architecture
 
-Status: target architecture adopted 2026-05-20; updated after the Fruitful Lab app move to apps/lab.
+Status: target architecture adopted 2026-05-20; updated after the Fruitful Lab customer site foundation on 2026-05-21.
 
 This document describes the intended long-term repo shape for Fruitful Lab, Fruitful Pin, and future separate brands such as Bloom Whispers and Bricoli. Fruitful Lab now lives in `apps/lab/`.
 
@@ -8,7 +8,7 @@ This document describes the intended long-term repo shape for Fruitful Lab, Frui
 
 This repository should become a brand/app monorepo.
 
-Fruitful Lab is the sandbox and builder brand. It can host prototypes, internal tools, experiments, one-off marketing efforts, and early versions of assessments or calculators. Fruitful Lab is currently hosted on Vercel and may remain on a free/sandbox-oriented hosting setup where allowed.
+Fruitful Lab has two separate public roles. The existing `fruitfulab.net` app is the sandbox and builder space for prototypes, internal tools, experiments, one-off marketing efforts, and early versions of assessments or calculators. The `fruitfulab.com` customer site is the broader public umbrella marketing brand for AI workflows, funnels, paid media, email, content systems, and parent-brand positioning.
 
 Fruitful Pin / Fruitful Bean is a separate Pinterest-specific service brand. It is the first commercial marketing site migration target. It should be hosted separately from Fruitful Lab and should use a commercial-friendly hosting setup. The phase-one plan is Cloudflare for the public Next.js frontend, with WordPress on prepaid A2 hosting as the headless CMS/editor.
 
@@ -31,6 +31,7 @@ Long-term target:
 fruitful-lab/
   apps/
     lab/                # Fruitful Lab sandbox/prototype platform
+    fruitful-lab-site/  # Fruitful Lab customer-facing umbrella marketing site
     fruitful-pin/       # Pinterest-specific service brand site
     bloom-whispers/     # future separate brand/site example
     bricoli/            # future separate brand/site example
@@ -64,6 +65,7 @@ Current implementation:
 ```txt
 apps/lab/           # current Fruitful Lab Next.js app
 apps/fruitful-pin/  # Fruitful Pin static-first Next.js foundation
+apps/fruitful-lab-site/ # Fruitful Lab customer-site foundation
 backend/            # FastAPI backend
 docs/
 prompts/
@@ -111,11 +113,19 @@ Avoid sharing:
 
 ## Hosting Model
 
-Fruitful Lab:
+Fruitful Lab sandbox:
 
 - Existing app, currently hosted on Vercel.
 - Treat as sandbox/prototype space.
 - Vercel must build from `apps/lab`.
+
+Fruitful Lab customer site:
+
+- Public umbrella marketing site for `fruitfulab.com`.
+- Preferred public frontend host follows the Fruitful Pin-style Cloudflare/static-first direction.
+- Phase-one CMS/editor direction follows the Fruitful Pin-style headless WordPress model on prepaid hosting.
+- App path is `apps/fruitful-lab-site`.
+- Keep distinct from `apps/lab`, which remains the sandbox/tools/experiments app.
 
 Fruitful Pin:
 
@@ -194,4 +204,3 @@ The first migration PR was a structure-only move:
 5. Validate the Lab app locally and through the Vercel deployment.
 
 The next migration step introduced `apps/fruitful-pin` as a separate static-first app foundation without changing DNS, A2, WordPress, or Cloudflare production settings.
-

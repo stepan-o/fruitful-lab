@@ -1,6 +1,6 @@
 # Project Memory - Fruitful Lab
 
-Status: current working memory as of 2026-05-20 after adding the Fruitful Pin app foundation.
+Status: current working memory as of 2026-05-21 after adding the Fruitful Lab customer site foundation.
 
 Use this file as the durable architectural memory for future Codex/LLM work on this repo. It records the structure, layers, contracts, and working patterns that should be assumed going forward unless code proves otherwise.
 
@@ -29,6 +29,7 @@ The target repo shape is:
 
 - `apps/lab/` - current Fruitful Lab Next.js app; hosted on Vercel as a sandbox/prototype platform.
 - `apps/fruitful-pin/` - Fruitful Pin commercial marketing site foundation; static-first Next.js app with Cloudflare Pages as the preferred public frontend host.
+- `apps/fruitful-lab-site/` - Fruitful Lab customer-facing umbrella marketing site foundation for `fruitfulab.com`; separate from the sandbox app on `fruitfulab.net`.
 - `apps/bloom-whispers/` - future separate brand/site example.
 - `apps/bricoli/` - future separate brand/site example.
 - `packages/*` - shared code extracted only after real cross-app reuse exists.
@@ -41,13 +42,14 @@ Working pattern:
 - Keep separate brands as separate apps and deployments.
 - Do not import directly across apps.
 - Promote reusable code into `packages/*` before sharing it across apps.
-- Keep hosting assumptions per app: Fruitful Lab on Vercel, Fruitful Pin public frontend on Cloudflare in the current plan.
+- Keep hosting assumptions per app: Fruitful Lab sandbox on Vercel, Fruitful Pin public frontend on Cloudflare in the current plan, and Fruitful Lab customer site following the same Cloudflare/static-first direction as Fruitful Pin.
 - Use Fruitful Lab as the prototype/sandbox space and promote mature tools into commercial brand apps through shared packages.
 
 ## Top-Level Layout Today
 
 - `apps/lab/` - current Next.js App Router app for Fruitful Lab.
 - `apps/fruitful-pin/` - separate Next.js App Router foundation for Fruitful Pin.
+- `apps/fruitful-lab-site/` - separate Next.js App Router foundation for the public Fruitful Lab customer site at `fruitfulab.com`.
 - `backend/` - FastAPI app with SQLAlchemy, Alembic, JWT auth, and Postgres.
 - `docs/` - current memory, audits, implementation notes, guides, and archived plans.
 - `prompts/` - LLM architect prompts and sprint plans.
@@ -75,6 +77,41 @@ Local preview note for Codex:
 
 - Request network permission before starting `next dev` or any local preview server. Fresh-thread testing on 2026-05-20 confirmed that Codex cannot bind `127.0.0.1:4173` without network permission and fails with `listen EPERM`; after permission is granted, the Fruitful Pin dev server renders locally.
 - Confirmed local preview command target: `make fruitful-pin-dev` from the repo root, or `npm run dev:local` from `apps/fruitful-pin/`. Use `http://127.0.0.1:4173/` for browser review.
+
+## Fruitful Lab Customer Site Foundation
+
+`apps/fruitful-lab-site/` is the separate public customer-facing Fruitful Lab site foundation for `https://fruitfulab.com`.
+
+Domain split:
+
+- `fruitfulab.net` remains the sandbox/tools/experiments app in `apps/lab/`.
+- `fruitfulab.com` is the public umbrella marketing site in `apps/fruitful-lab-site/`.
+- `fruitfulpin.com` remains the Pinterest-specific commercial brand in `apps/fruitful-pin/`.
+- Do not use `fruitfullab.com`; Susy confirmed the only correct .com domain is `fruitfulab.com`.
+
+Current foundation:
+
+- static-first Next.js App Router app,
+- `output: "export"` for Cloudflare Pages compatibility,
+- first-pass public routes for `/`, `/services`, `/blog`, `/blog/[slug]`, `/resources`, `/about`, `/contact`, `/privacy`, and `/terms`,
+- brand/site constants in `apps/fruitful-lab-site/lib/site.ts`,
+- content boundary in `apps/fruitful-lab-site/lib/content.ts`,
+- WordPress connection placeholder in `apps/fruitful-lab-site/lib/wordpress.ts`,
+- sitemap and robots metadata routes,
+- local tests in `apps/fruitful-lab-site/__tests__/`.
+
+Brand and offer direction memory:
+
+- Fruitful Lab is the bigger umbrella brand where Susi and Esteban can combine AI marketing, funnels, paid media, email, content systems, and workflow expertise.
+- Fruitful Lab is the parent-company style home for Fruitful Pin, Bloom Whispers, Bricoli Studio, and future brands.
+- Fruitful Pin and Fruitful Lab can share a family resemblance, but Fruitful Lab should lean more navy/gold and less pink while Fruitful Pin stays more pink/yellow and Pinterest-specific.
+- Initial site scope includes Home, About, Services, Blog, Resources, Contact, Privacy, and Terms.
+- Case studies and tools/experiments are intentionally out of the first skeleton.
+- Contact path uses `hello@fruitfulab.com` and a TidyCal booking destination. `NEXT_PUBLIC_TIDYCAL_URL` can override the default fallback.
+- Phase-one CMS direction is WordPress as headless CMS/editor on the existing prepaid hosting model, following the Fruitful Pin approach.
+- Cloudflare/static-first is the preferred public frontend hosting direction when launch work begins.
+
+Use `npm run build` from `apps/fruitful-lab-site/` to verify the static export. Cloudflare Pages should use `apps/fruitful-lab-site` as the root, `npm run build` as the build command, and `out` as the build output directory. Do not point `fruitfulab.com` at this app until preview, content, analytics, redirects, and launch checks are explicitly approved.
 
 ## Frontend Layers
 

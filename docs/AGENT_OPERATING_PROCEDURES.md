@@ -32,7 +32,8 @@ Operational defaults:
 - Prefer meaningful bundled PRs over tiny granular PRs when the work can be safely validated in internal checkpoints; each merge can trigger a Fruitful Lab Vercel rebuild.
 - Use the GitHub app connector when local GitHub credentials cannot push or create PRs.
 - Use Vercel project `fruitful-lab` under team `team_6IXsIS7tsIiWezQJDDNVBumg` when validating deployments.
-- Treat `https://fruitfulab.net` as the canonical Fruitful Lab public domain. It is spelled `fruitfulab` with one `l` in the middle, and the apex redirects to `https://www.fruitfulab.net`.
+- Treat `https://fruitfulab.net` as the canonical Fruitful Lab sandbox/tools domain. It is spelled `fruitfulab` with one `l` in the middle, and the apex redirects to `https://www.fruitfulab.net`.
+- Treat `https://fruitfulab.com` as the canonical Fruitful Lab customer-facing umbrella marketing site domain. Do not use `fruitfullab.com`.
 - For Fruitful Lab validation, use `API_BASE_URL=http://localhost:8000 npm run ci` from `apps/lab/` unless the task clearly requires another check.
 - For brand/app monorepo work, read `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` and keep separate brands as separate apps under `apps/*`.
 - For Fruitful Pin migration work, read `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md`; the current phase-one target is Cloudflare for the public Next.js frontend and WordPress on prepaid A2 as the headless CMS/editor.

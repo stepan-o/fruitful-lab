@@ -1,6 +1,6 @@
 # Repo Grounding Pack - Fruitful Lab
 
-Status: refreshed from local repo scan and planning updates on 2026-05-20.
+Status: refreshed from local repo scan and planning updates on 2026-05-21.
 
 This is the high-signal orientation file for Fruitful Lab. Treat it as the first stop before changing the system. The fuller current-state memory is `docs/PROJECT_MEMORY.md`; the dated implementation audit is `docs/SYSTEM_IMPLEMENTATION_AUDIT-2026-05-15.md`.
 
@@ -22,7 +22,8 @@ Related planning reference:
 
 - `apps/lab/` - current Next.js App Router app for Fruitful Lab public pages, tool flows, login, admin, contractor pages, analytics proxies, and experiment diagnostics.
 - `apps/fruitful-pin/` - Fruitful Pin static-first Next.js foundation targeting Cloudflare Pages; not connected to live DNS or WordPress yet.
-- `apps/` - home for separate deployable brand apps. Current apps include `apps/lab` and `apps/fruitful-pin`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
+- `apps/fruitful-lab-site/` - Fruitful Lab customer-facing umbrella marketing site foundation for `fruitfulab.com`; separate from the sandbox app on `fruitfulab.net`.
+- `apps/` - home for separate deployable brand apps. Current apps include `apps/lab`, `apps/fruitful-pin`, and `apps/fruitful-lab-site`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
 - `packages/` - target home for shared code once real cross-app reuse exists. Do not create broad shared abstractions prematurely.
 - `backend/` - FastAPI app for auth, users, Pinterest stats, Postgres models, Alembic migrations, and admin-only CSV ingestion.
 - `docs/` - current memory, audits, guides, and historical implementation notes.
@@ -141,6 +142,21 @@ Pinterest Fit:
 - Local preview from Codex requires network permission before starting the server; otherwise `next dev -H 127.0.0.1 -p 4173` can fail with `listen EPERM`.
 
 Do not point `fruitfulpin.com` at this app until preview, content migration, redirects, analytics, and launch checks are explicitly approved.
+
+## Fruitful Lab Customer Site Anchors
+
+- App root: `apps/fruitful-lab-site/`
+- Canonical domain: `https://fruitfulab.com`
+- Distinct from `apps/lab/`, which remains the `fruitfulab.net` sandbox/tools/experiments app.
+- Static export config: `apps/fruitful-lab-site/next.config.ts`
+- Site constants: `apps/fruitful-lab-site/lib/site.ts`
+- Placeholder content boundary: `apps/fruitful-lab-site/lib/content.ts`
+- WordPress connection placeholder: `apps/fruitful-lab-site/lib/wordpress.ts`
+- Routes: `/`, `/services`, `/blog`, `/blog/[slug]`, `/resources`, `/about`, `/contact`, `/privacy`, `/terms`
+- Contact email: `hello@fruitfulab.com`
+- TidyCal URL can be set with `NEXT_PUBLIC_TIDYCAL_URL`; default fallback is `https://tidycal.com/susycid`.
+
+Do not point `fruitfulab.com` at this app until preview, content, analytics, redirects, and launch checks are explicitly approved.
 
 ## Backend/API Anchors
 

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Lato, Raleway } from "next/font/google";
+import { Alatsi, Raleway } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { CANONICAL_URL, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
-const lato = Lato({
+const alatsi = Alatsi({
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
+  weight: "400",
   variable: "--font-body",
   display: "swap",
 });
@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lato.variable} ${raleway.variable}`} suppressHydrationWarning>
+      <body className={`${alatsi.variable} ${raleway.variable}`} suppressHydrationWarning>
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

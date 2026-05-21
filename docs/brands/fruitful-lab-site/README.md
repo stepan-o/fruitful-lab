@@ -59,7 +59,7 @@ Current visual pass:
 - Use a mostly white base rather than the cream/beige Fruitful Pin direction.
 - Avoid the green/sage labels from the first skeleton; use navy, cobalt, teal, and gold instead.
 - Keep a non-pink gradient as an ecosystem cue across the brand family.
-- Use Lato for body copy and Raleway for headings.
+- Use Alatsi for body copy and Raleway for headings.
 - Favor flowing, guided sections over repeated stacked rectangles.
 - Leave visible space for founder presence, future photography, diagrams, and system graphics.
 

@@ -44,7 +44,7 @@ body {
   background:
     linear-gradient(180deg, #ffffff 0%, #f7fbff 42%, #ffffff 100%);
   color: var(--foreground);
-  font-family: var(--font-body), Lato, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body), Alatsi, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 h1,

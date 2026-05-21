@@ -22,11 +22,11 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
     title: "Fit Call",
     kicker: "First filter",
     description:
-      "A focused first conversation to understand the offer, current growth path, bottlenecks, and whether Fruitful Lab is the right partner for the next move.",
-    bestFor: "Founders and small teams that know the marketing system needs work, but do not yet know which piece should move first.",
+      "A focused first conversation to understand the product, current visibility path, data signals, bottlenecks, and whether Fruitful Lab is the right partner for the next move.",
+    bestFor: "Founders and small teams that know the discovery ecosystem around the product needs work, but do not yet know which piece should move first.",
     includes: [
-      "Current offer and audience context",
-      "Quick read on traffic, funnel, content, and follow-up",
+      "Current product, audience, and channel context",
+      "Quick read on search, content, funnel, data, and follow-up",
       "Fit and readiness conversation",
       "Recommended next step when there is a match",
     ],
@@ -36,12 +36,12 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
     title: "Growth Systems Diagnostic",
     kicker: "Lead product",
     description:
-      "A paid strategy map that turns the messy middle into a clear build plan: offer path, landing page, email, paid media, content, AI workflows, and reporting.",
-    bestFor: "Brands that need clarity before investing in a larger funnel, campaign, automation, content engine, or AI workflow project.",
+      "A paid strategy map that turns the messy middle into a clearer product-discovery plan: story, search, content angles, email path, paid traffic readiness, data, testing, and AI-supported workflows.",
+    bestFor: "Brands that need clarity before investing in a larger funnel, campaign, content ecosystem, reporting workflow, or AI-assisted build.",
     includes: [
-      "Funnel and customer-path review",
-      "Channel, content, and email opportunity map",
-      "AI workflow and operations opportunities",
+      "Product discovery and customer-path review",
+      "Search, content, and email opportunity map",
+      "Analytics, reporting, and testing opportunities",
       "Prioritized roadmap for the first build",
     ],
     cta: "Start with a diagnostic",
@@ -50,12 +50,12 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
     title: "Implementation Sprint",
     kicker: "Build the first useful system",
     description:
-      "A scoped build for the highest-leverage piece: a landing page, lead path, email sequence, campaign structure, content engine, or practical AI workflow.",
-    bestFor: "Teams ready to turn the diagnostic into a working asset without trying to rebuild the whole business at once.",
+      "A scoped build for the highest-leverage piece: a search-informed page, product content path, email sequence, campaign structure, reporting loop, or practical AI workflow.",
+    bestFor: "Teams ready to turn the diagnostic into a working asset without trying to rebuild the whole marketing ecosystem at once.",
     includes: [
       "Build plan and production timeline",
       "Copy, structure, and implementation support",
-      "Tracking or reporting requirements",
+      "Tracking, reporting, or experiment requirements",
       "Launch-ready handoff and next-test plan",
     ],
     cta: "Plan an implementation sprint",
@@ -64,13 +64,13 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
     title: "Scale Partnership",
     kicker: "Bigger projects and ongoing systems",
     description:
-      "Longer support for brands that need the system improved over time across paid media, funnels, email, content, reporting, and AI-assisted operations.",
-    bestFor: "Businesses with a validated direction that want a strategic implementation partner across several connected marketing pieces.",
+      "Longer support for brands that need the ecosystem improved over time across search, content, email, paid media, analytics, reporting, testing, and AI-assisted operations.",
+    bestFor: "Businesses with a validated direction that want a strategic implementation partner across several connected growth pieces.",
     includes: [
       "Campaign and funnel iteration",
-      "Email, content, and resource systems",
+      "Email, content, search, and resource systems",
       "AI workflow libraries and team enablement",
-      "Decision dashboards and growth experiments",
+      "Decision dashboards, reporting rhythms, and growth experiments",
     ],
     cta: "Discuss the bigger system",
   },
@@ -80,17 +80,17 @@ export const PROCESS_STEPS = [
   {
     title: "Find the fit",
     description:
-      "Start with a conversation about the offer, audience, current systems, constraints, and whether there is a strong reason to keep exploring together.",
+      "Start with a conversation about the product, audience, current channels, constraints, and whether there is a strong reason to keep exploring together.",
   },
   {
-    title: "Map the system",
+    title: "Map the ecosystem",
     description:
-      "Use the diagnostic to decide what should be built first, what can wait, and how the work should connect across channels.",
+      "Use the diagnostic to decide what should be built first, what can wait, and how search, content, email, paid traffic, data, and workflows should connect.",
   },
   {
-    title: "Build and expand",
+    title: "Build, test, expand",
     description:
-      "Ship the first useful system, then use signals from the work to choose the next campaign, workflow, email path, or growth experiment.",
+      "Ship the first useful asset, then use real signals to choose the next campaign, workflow, email path, report, or growth experiment.",
   },
 ] as const;
 
@@ -114,50 +114,50 @@ export const ECOSYSTEM_ITEMS = [
 
 export const RESOURCE_ITEMS = [
   {
-    title: "Funnel Clarity Checklist",
+    title: "Product Discovery Checklist",
     type: "Guide",
-    description: "A simple way to see where the current path from attention to inquiry is leaking momentum.",
+    description: "A simple way to see where the path from product story to search, content, trust, and purchase is leaking momentum.",
   },
   {
-    title: "AI Workflow Starter Map",
+    title: "Search + Content Angle Map",
     type: "Template",
-    description: "A practical planning asset for deciding which parts of content, research, and reporting should become repeatable.",
+    description: "A practical planning asset for turning product features, use cases, routines, objections, and buying moments into content.",
   },
   {
-    title: "Content-to-Email Planner",
+    title: "Data-to-Decision Planner",
     type: "Worksheet",
-    description: "A lightweight structure for turning expertise into resources, nurture, and conversion moments.",
+    description: "A lightweight structure for turning analytics, reporting, and test ideas into clearer next moves.",
   },
 ];
 
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "which-growth-system-to-build-first",
-    title: "How to Know Which Growth System to Build First",
-    category: "Growth Systems",
+    title: "How to Know Which Product Discovery Piece to Build First",
+    category: "Product Discovery",
     date: "May 2026",
     excerpt:
-      "A useful marketing system starts with the bottleneck, not the trend. The first job is knowing whether the offer, funnel, traffic, content, or follow-up needs attention.",
+      "A useful growth ecosystem starts with the bottleneck, not the trend. The first job is knowing whether search, product story, content, funnel, email, or reporting needs attention.",
     keyTakeaways: [
-      "The best first system is usually the one closest to the current revenue constraint.",
-      "Traffic does not fix an unclear offer or a weak conversion path.",
-      "Small, useful systems are easier to improve than big unfinished rebuilds.",
+      "The best first piece is usually the one closest to the current growth constraint.",
+      "Traffic does not fix unclear product angles or a weak path to trust.",
+      "Small, useful systems are easier to test than big unfinished rebuilds.",
     ],
     sections: [
       {
         heading: "Start with the current bottleneck",
         body:
-          "Before choosing a channel or tactic, look at what already happens when someone discovers the brand. If people are clicking but not inquiring, the page or offer may need work. If people love the offer but do not hear from you again, email follow-up may matter more than new traffic.",
+          "Before choosing a channel or tactic, look at what already happens when someone discovers the product. If people are clicking but not buying, the page, product angles, or trust signals may need work. If people show interest but do not hear from you again, email follow-up may matter more than new traffic.",
       },
       {
         heading: "Build the smallest useful version",
         body:
-          "A first system does not need to be fancy. It can be a clearer services page, a better inquiry form, a simple lead magnet, a three-email follow-up, or a campaign test with clean reporting.",
+          "A first system does not need to be fancy. It can be a clearer product page, a better use-case content path, a simple lead magnet, a three-email follow-up, or a campaign test with clean reporting.",
       },
       {
         heading: "Let the signal choose the next move",
         body:
-          "Once the first version is live, performance should guide the next improvement. The goal is not to make every channel busy. The goal is to make the path easier to understand and easier to trust.",
+          "Once the first version is live, performance should guide the next improvement. The goal is not to make every channel busy. The goal is to make the product easier to understand, easier to trust, and easier to choose.",
       },
     ],
   },
@@ -193,15 +193,15 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "content-needs-a-conversion-path",
-    title: "Your Content Needs a Conversion Path",
-    category: "Content Strategy",
+    title: "Your Content Needs a Product Path",
+    category: "Content Ecosystem",
     date: "May 2026",
     excerpt:
-      "Content becomes more useful when each piece has a job: attract the right person, answer the right question, and point to a reasonable next step.",
+      "Content becomes more useful when each piece has a job: attract the right person, answer the right question, show the right use case, and point to a reasonable next step.",
     keyTakeaways: [
-      "Content should connect to an offer, resource, email path, or decision moment.",
+      "Content should connect to a product, resource, email path, or decision moment.",
       "The next step should match the reader's level of readiness.",
-      "A content engine is easier to maintain when the jobs are clear.",
+      "A content ecosystem is easier to maintain when the jobs are clear.",
     ],
     sections: [
       {

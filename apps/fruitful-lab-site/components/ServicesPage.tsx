@@ -8,8 +8,8 @@ export function ServicesPage() {
     <div>
       <PageHeader
         eyebrow="Services"
-        title="A clearer way into funnels, paid media, AI workflows, email, and content systems."
-        description="The exact offer language can keep sharpening. The operating model starts with fit, moves into a diagnostic, then builds the highest-leverage system first."
+        title="A sharper way to build the ecosystem around the product."
+        description="The exact offer language can keep sharpening. The operating model starts with fit, moves into a diagnostic, then builds the highest-leverage search, content, email, data, or workflow piece first."
       />
 
       <Section>
@@ -18,10 +18,10 @@ export function ServicesPage() {
             <div className="lg:sticky lg:top-28">
               <p className="eyebrow">Working model</p>
               <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)]">
-                Not a menu of tactics. A path into the right build.
+                Not a menu of tactics. A path into the right first move.
               </h2>
               <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-                Fruitful Lab can still offer broad expertise, but the buying journey should feel guided: first conversation, paid clarity product, implementation, then deeper partnership.
+                Fruitful Lab can still bring broad expertise, but the buying journey should feel guided: first conversation, paid clarity product, first useful build, then deeper partnership if the signals justify it.
               </p>
               <Link className="btn btn-primary mt-7" href="/contact">
                 Book a fit call
@@ -65,7 +65,7 @@ export function ServicesPage() {
                 The goal is a useful first system, not a giant unfinished rebuild.
               </h2>
               <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-                Each phase narrows the next decision so the work can move from strategy into visible assets, live systems, and measurable signals.
+                Each phase narrows the next decision so the work can move from strategy into visible assets, live systems, useful reporting, and measurable signals.
               </p>
             </div>
             <div className="path-shell grid gap-5 md:grid-cols-3">

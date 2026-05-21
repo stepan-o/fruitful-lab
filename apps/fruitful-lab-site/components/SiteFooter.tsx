@@ -7,7 +7,9 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 text-sm text-white sm:px-8 md:grid-cols-[1.2fr_1fr]">
         <div>
           <p className="text-lg font-extrabold text-white">{SITE_NAME}</p>
-          <p className="mt-3 max-w-md leading-6 text-white/86">Marketing systems, funnels, email, paid media, AI workflows, and content strategy for brands that need clearer growth paths.</p>
+          <p className="mt-3 max-w-md leading-6 text-white/86">
+            Product discovery, search, content, email, data, testing, and AI-supported systems for specialty brands that need a clearer path to purchase.
+          </p>
           <p className="mt-4 text-[var(--amber)]">{CONTACT_EMAIL}</p>
           <p className="mt-6 text-white/68">© {new Date().getFullYear()} {SITE_NAME}. All rights reserved.</p>
         </div>

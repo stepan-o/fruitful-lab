@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(CANONICAL_URL),
   applicationName: SITE_NAME,
   title: {
-    default: `${SITE_NAME} | AI Marketing Systems and Funnels`,
+    default: `${SITE_NAME} | Product Discovery Systems`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   openGraph: {
-    title: `${SITE_NAME} | AI Marketing Systems and Funnels`,
+    title: `${SITE_NAME} | Product Discovery Systems`,
     description: SITE_DESCRIPTION,
     url: CANONICAL_URL,
     siteName: SITE_NAME,

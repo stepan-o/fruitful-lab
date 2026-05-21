@@ -10,26 +10,27 @@ export default function AboutPage() {
     <div>
       <PageHeader
         eyebrow="About Fruitful Lab"
-        title="The umbrella for practical marketing systems, AI workflows, and focused brand experiments."
-        description="Fruitful Lab is where Susi and Esteban bring together marketing, funnels, paid media, content, data, and AI-assisted operations into client-facing systems."
+        title="The strategy and systems lab for making good products easier to discover."
+        description="Fruitful Lab is where Susy and Stepan bring together product discovery, search, content ecosystems, funnels, paid media, analytics, testing, and AI-assisted workflows."
       />
       <Section>
         <SectionInner className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <h2 className="text-3xl font-semibold text-[var(--heading)]">A parent brand for the work that connects the dots.</h2>
+            <h2 className="text-3xl font-semibold text-[var(--heading)]">A parent brand for the work around the product.</h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-              Fruitful Lab sits above the more focused brands. It can hold the bigger strategic work: Meta ads, funnels, email, content systems, AI workflows, analytics, and the custom tools that support smarter marketing decisions.
+              Fruitful Lab sits above the more focused brands. It can hold the bigger strategic work: product story, search behavior, use-case content, funnels, email, paid media, analytics, reporting, A/B testing, AI workflows, and the custom tools that support smarter marketing decisions.
             </p>
             <p className="mt-4 text-base leading-7 text-[var(--muted)]">
               The existing sandbox remains separate. This site is the customer-facing home for the broader Fruitful Lab offer.
             </p>
           </div>
-          <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[var(--shadow-tight)]">
             <h3 className="text-xl font-semibold text-[var(--heading)]">The way we work</h3>
             <dl className="mt-5 space-y-4 text-sm leading-6">
-              <div><dt className="font-semibold text-[var(--heading)]">Systems over scattered tactics</dt><dd className="text-[var(--muted)]">Channels work better when the offer, message, page, email, and reporting are connected.</dd></div>
+              <div><dt className="font-semibold text-[var(--heading)]">Ecosystem over scattered tactics</dt><dd className="text-[var(--muted)]">Channels work better when the product story, search path, content, email, data, and reporting are connected.</dd></div>
+              <div><dt className="font-semibold text-[var(--heading)]">Search beyond one platform</dt><dd className="text-[var(--muted)]">Discovery can happen through Google, AI search, visual search, marketplace-style search, or Pinterest-style behavior.</dd></div>
+              <div><dt className="font-semibold text-[var(--heading)]">Data that changes decisions</dt><dd className="text-[var(--muted)]">Analytics, reporting, and A/B tests should make the next move clearer, not just fill a dashboard.</dd></div>
               <div><dt className="font-semibold text-[var(--heading)]">AI with human judgment</dt><dd className="text-[var(--muted)]">AI should reduce friction and support decisions, not flatten the brand or replace strategic thinking.</dd></div>
-              <div><dt className="font-semibold text-[var(--heading)]">Useful experiments</dt><dd className="text-[var(--muted)]">We prefer small, clear tests that teach the business something and can become reusable assets.</dd></div>
               <div><dt className="font-semibold text-[var(--heading)]">Separate brands, clear boundaries</dt><dd className="text-[var(--muted)]">Fruitful Pin, Bloom Whispers, Bricoli Studio, and future brands can each keep their own audience and identity.</dd></div>
             </dl>
           </div>
@@ -51,7 +52,7 @@ export default function AboutPage() {
             ))}
           </div>
           <Link className="btn btn-primary mt-8" href="/contact">
-            Talk about the bigger system
+            Talk about the bigger ecosystem
           </Link>
         </SectionInner>
       </Section>

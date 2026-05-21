@@ -22,7 +22,7 @@ export default function BlogPage() {
     <div>
       <PageHeader
         eyebrow="Blog"
-        title="Notes on marketing systems, AI workflows, funnels, and content that has a job."
+        title="Notes on product discovery, search, content ecosystems, data, and AI-supported workflows."
         description="A starting editorial home for the bigger Fruitful Lab point of view while the final content strategy gets sharper."
       />
 
@@ -77,15 +77,15 @@ export default function BlogPage() {
                     <circle cx="11" cy="11" r="7" />
                     <path d="m16 16 4 4" />
                   </svg>
-                  <input id="blog-search" className="blog-search-input" type="search" placeholder="Funnels, AI workflows, email..." />
+                  <input id="blog-search" className="blog-search-input" type="search" placeholder="Search, content, data..." />
                 </div>
               </section>
 
               <section className="blog-sidebar-card">
                 <div className="blog-about-mark">FL</div>
-                <h2 className="mt-5 text-2xl font-extrabold leading-tight text-[var(--heading)]">Fruitful Lab is the systems brain behind the bigger brand family.</h2>
+                <h2 className="mt-5 text-2xl font-extrabold leading-tight text-[var(--heading)]">Fruitful Lab is the strategy and systems brain behind the bigger brand family.</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                  Susi and Esteban bring together marketing strategy, practical AI, funnels, paid media, email, and workflow systems.
+                  Susy and Stepan bring together product discovery, search, content, data, reporting, testing, paid media, email, and practical AI workflows.
                 </p>
                 <Link className="mt-5 inline-flex text-sm font-black text-[var(--cobalt)]" href="/about">
                   About the studio
@@ -94,12 +94,12 @@ export default function BlogPage() {
 
               <section className="blog-sidebar-card blog-optin-card">
                 <div className="blog-optin-visual">
-                  <span className="blog-visual-label">Growth Systems Diagnostic</span>
+                  <span className="blog-visual-label">Product Discovery Map</span>
                 </div>
                 <p className="eyebrow mt-5">Start here</p>
                 <h2 className="mt-3 text-2xl font-extrabold leading-tight text-[var(--heading)]">Want a clearer first move?</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                  The future lead magnet can live here: a funnel clarity checklist, AI workflow map, or diagnostic preview.
+                  The future lead magnet can live here: a product discovery checklist, search/content map, reporting worksheet, or diagnostic preview.
                 </p>
                 <form className="mt-5 grid gap-3">
                   <input className="blog-form-input" type="text" name="name" placeholder="Your name" />

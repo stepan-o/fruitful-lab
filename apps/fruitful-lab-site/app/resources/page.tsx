@@ -10,8 +10,8 @@ export default function ResourcesPage() {
     <div>
       <PageHeader
         eyebrow="Resources"
-        title="Guides, templates, and practical assets for clearer marketing systems."
-        description="This page can become the home for lead magnets, worksheets, AI workflow maps, funnel resources, and future client-facing tools."
+        title="Guides, templates, and practical assets for clearer product discovery."
+        description="This page can become the home for lead magnets, worksheets, search/content maps, reporting prompts, AI workflow maps, and future client-facing tools."
       />
       <Section>
         <SectionInner>
@@ -27,7 +27,7 @@ export default function ResourcesPage() {
           <div className="mt-10 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
             <h2 className="text-2xl font-semibold text-[var(--heading)]">Need the system built with you?</h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--muted)]">
-              Resources can support the thinking. Services are for turning that thinking into a funnel, workflow, campaign, email path, or content engine.
+              Resources can support the thinking. Services are for turning that thinking into a search path, content ecosystem, funnel, reporting rhythm, campaign, email path, or workflow.
             </p>
             <Link className="btn btn-primary mt-5 min-h-11 px-5 py-2 text-sm" href="/services">
               Explore services

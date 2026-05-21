@@ -3,24 +3,24 @@ import { ECOSYSTEM_ITEMS, PROCESS_STEPS, SERVICE_PACKAGES } from "@/lib/content"
 
 const CAPABILITIES = [
   {
-    title: "Funnel strategy",
-    description: "Offer paths, landing pages, lead magnets, applications, and follow-up journeys.",
+    title: "Product discovery",
+    description: "Use cases, buying moments, search behavior, and the product story people need before they choose.",
   },
   {
-    title: "Paid media",
-    description: "Meta, Pinterest, launch campaigns, creative testing, and traffic that connects to the real path.",
+    title: "Search ecosystem",
+    description: "Google search, AI search, visual search, and product-led content paths that help demand find you.",
   },
   {
-    title: "AI workflows",
-    description: "Research, content production, reporting, and operations systems that keep human judgment in the loop.",
+    title: "Content architecture",
+    description: "Educational, lifestyle, use-case-led, and product-direct content with clearer jobs in the funnel.",
   },
   {
-    title: "Email systems",
-    description: "Nurture, newsletter, launch, and sales follow-up structures that turn attention into trust.",
+    title: "Email and funnel",
+    description: "Nurture, lead capture, launch, and purchase paths that move people from interest to trust.",
   },
   {
-    title: "Content engines",
-    description: "Resource planning, repurposing, editorial systems, and useful authority-building assets.",
+    title: "Data and testing",
+    description: "Analytics, reporting, A/B tests, and AI-supported workflows that make the next decision clearer.",
   },
 ] as const;
 
@@ -31,43 +31,49 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-5 py-8 sm:px-8 lg:grid-cols-[1.02fr_0.9fr] lg:items-center lg:py-8">
           <div>
             <p className="eyebrow">Fruitful Lab</p>
-            <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight text-[var(--heading)] sm:text-5xl">
-              Marketing systems for offers that need a clearer path from <span className="gradient-text">attention to action.</span>
+            <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+              Good products should not be hard to <span className="gradient-text">discover.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              The public home for Susi and Esteban&apos;s broader client-facing work: funnels, paid media, email, AI workflows, content systems, and the brand ecosystem behind focused projects like Fruitful Pin.
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/78">
+              Fruitful Lab helps specialty product brands make their best products easier to find, understand, and choose by connecting product story, search, content, email, data, testing, and AI-supported workflows.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link className="btn btn-primary" href="/services">
-                Explore the working model
+                Explore the approach
               </Link>
               <Link className="btn btn-secondary" href="/contact">
                 Book a fit call
               </Link>
             </div>
+            <div className="lab-proof-points mt-9">
+              <span>Search</span>
+              <span>Content</span>
+              <span>Email</span>
+              <span>Data</span>
+            </div>
           </div>
 
-          <div className="system-visual" aria-label="A connected marketing system map">
+          <div className="system-visual" aria-label="A connected product discovery ecosystem map">
             <div className="signal-strip" aria-hidden="true">
               <span />
               <span />
               <span />
             </div>
             <div className="visual-card visual-card-a">
-              <strong>Offer path</strong>
-              <span>Positioning, next step, and the reason someone should keep moving.</span>
+              <strong>Product story</strong>
+              <span>What it is, why it matters, and which buying moments it belongs to.</span>
             </div>
             <div className="visual-card visual-card-b">
-              <strong>Traffic and content</strong>
-              <span>Paid, organic, resources, and creative all pointing to the same decision path.</span>
+              <strong>Search ecosystem</strong>
+              <span>Google, AI search, visual search, and content paths that surface demand.</span>
             </div>
             <div className="visual-card visual-card-c">
-              <strong>Email and workflow</strong>
-              <span>Follow-up, production systems, and AI-supported operations behind the scenes.</span>
+              <strong>Content modes</strong>
+              <span>Educational, use-case-led, lifestyle, and product-direct assets.</span>
             </div>
             <div className="visual-card visual-card-d">
-              <strong>Signal</strong>
-              <span>Cleaner reporting, better experiments, sharper next moves.</span>
+              <strong>Signal loop</strong>
+              <span>Reporting, tests, and sharper next moves.</span>
             </div>
           </div>
         </div>
@@ -78,7 +84,7 @@ export default function HomePage() {
           <div className="max-w-3xl">
             <p className="eyebrow">How the engagement flows</p>
             <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)] sm:text-4xl">
-              Start narrow enough to be useful, then build into the larger system.
+              Start narrow enough to be useful, then build the ecosystem around the product.
             </h2>
           </div>
           <div className="path-shell mt-10 grid gap-5 md:grid-cols-3">
@@ -98,10 +104,10 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">Services</p>
             <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)] sm:text-4xl">
-              The offer can sharpen later. The client journey can start now.
+              The offer can sharpen later. The first decision can get clearer now.
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-              Instead of presenting four disconnected service boxes, Fruitful Lab can guide people through a fit call, a paid diagnostic, a first implementation sprint, and then the larger growth-system work.
+              Instead of selling a menu of tactics, Fruitful Lab can guide product brands through fit, diagnosis, first build, and then the larger search, content, email, data, and workflow ecosystem.
             </p>
             <Link className="btn btn-primary mt-7" href="/services">
               View services
@@ -128,11 +134,11 @@ export default function HomePage() {
             <div>
               <p className="eyebrow">What can live here</p>
               <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)] sm:text-4xl">
-                A broader umbrella without turning every brand into the same thing.
+                A sharper lab for the pieces around the product.
               </h2>
             </div>
             <p className="text-base leading-7 text-[var(--muted)]">
-              Fruitful Lab can hold the senior marketing systems work while focused brands keep their own audience, domain, voice, and offer.
+              Fruitful Lab can hold the senior strategy, systems, data, and implementation work while focused brands keep their own audience, domain, voice, and offer.
             </p>
           </div>
           <div className="capability-ribbon mt-10">
@@ -152,21 +158,21 @@ export default function HomePage() {
             <div className="relative z-10 portrait-strip">
               <div className="portrait-block">
                 <p className="text-sm font-black uppercase tracking-[0.16em] text-[var(--amber)]">Strategy</p>
-                <p className="mt-3 text-3xl font-extrabold">Susi</p>
+                <p className="mt-3 text-3xl font-extrabold">Susy</p>
               </div>
               <div className="portrait-block">
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[var(--cobalt)]">Systems</p>
-                <p className="mt-3 text-3xl font-extrabold">Esteban</p>
+                <p className="text-sm font-black uppercase tracking-[0.16em] text-[var(--cobalt)]">Data + systems</p>
+                <p className="mt-3 text-3xl font-extrabold">Stepan</p>
               </div>
             </div>
           </div>
           <div>
             <p className="eyebrow">Human by design</p>
             <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)] sm:text-4xl">
-              AI and automation should make the work clearer, not colder.
+              Data and AI should make the work clearer, not colder.
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-              This site should leave room for real founder presence, future photography, diagrams, and the tools being developed inside the Fruitful Lab ecosystem.
+              This site should leave room for real founder presence, future photography, diagrams, reporting views, search maps, and the tools being developed inside the Fruitful Lab ecosystem.
             </p>
             <Link className="btn btn-secondary mt-7" href="/about">
               About the studio

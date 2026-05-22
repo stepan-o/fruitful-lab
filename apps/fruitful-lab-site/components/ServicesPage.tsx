@@ -1,85 +1,233 @@
 import Link from "next/link";
-import { PageHeader } from "@/components/PageHeader";
-import { Section, SectionInner } from "@/components/Section";
-import { PROCESS_STEPS, SERVICE_PACKAGES } from "@/lib/content";
+
+const SERVICE_LABS = [
+  {
+    label: "Search ecosystem",
+    title: "Pinterest, Google, SEO, AI search, and visual discovery.",
+    description:
+      "We map how demand looks for the product, then shape search-led pages, product angles, and content paths that help the right people find it.",
+  },
+  {
+    label: "Paid media",
+    title: "Campaigns built around the offer, not just the platform.",
+    description:
+      "Meta, retargeting, paid tests, and launch paths can sit inside the wider formula so traffic has somewhere useful to land and learn.",
+  },
+  {
+    label: "SEO + content",
+    title: "Educational, lifestyle, use-case, and product-direct content.",
+    description:
+      "A content system where each piece has a job: answer a question, show a use case, build trust, support search, or move someone to the next step.",
+  },
+  {
+    label: "Lifecycle + funnels",
+    title: "Lead capture, email, purchase paths, and follow-up.",
+    description:
+      "Useful funnels for people who are not ready today, but could become ready when the education, timing, and product context are right.",
+  },
+  {
+    label: "Data + testing",
+    title: "Reporting and experiments that make the next move clearer.",
+    description:
+      "Analytics, dashboards, A/B testing, signal reviews, and measurement rhythms that help the brand choose what to improve next.",
+  },
+  {
+    label: "AI creative systems",
+    title: "Brand-trained creative workflows that still feel human.",
+    description:
+      "Ongoing creative production systems for content, ads, product education, and repurposing without the generic AI look or flat brand voice.",
+  },
+] as const;
+
+const ENGAGEMENT_PATH = [
+  {
+    number: "01",
+    title: "Fit call",
+    description:
+      "A first conversation about the product, stage, audience, current channels, constraints, and whether there is a strong reason to work together.",
+  },
+  {
+    number: "02",
+    title: "Growth formula diagnostic",
+    description:
+      "A paid clarity product that identifies the bottleneck, maps the service mix, and chooses the first useful build instead of guessing.",
+  },
+  {
+    number: "03",
+    title: "Focused build",
+    description:
+      "A search page, content path, email sequence, paid-media test, analytics view, AI workflow, or creative system that can actually ship.",
+  },
+  {
+    number: "04",
+    title: "Scale partnership",
+    description:
+      "Deeper implementation across the ecosystem when the first build creates enough signal to justify the next experiment or bigger system.",
+  },
+] as const;
+
+const FORMULA_FILTERS = [
+  {
+    label: "Stage",
+    description: "What does the brand need now: clarity, first build, campaign support, reporting, or scale?",
+  },
+  {
+    label: "Signal",
+    description: "Where is the evidence: search demand, conversion gaps, content performance, email behavior, or paid-media data?",
+  },
+  {
+    label: "System",
+    description: "What should be built first so the next decision becomes easier instead of louder?",
+  },
+] as const;
+
+const HERO_TAGS = ["Search", "Paid media", "Content", "Lifecycle", "Data", "AI creative"] as const;
 
 export function ServicesPage() {
   return (
-    <div>
-      <PageHeader
-        eyebrow="Services"
-        title="A sharper way to build the ecosystem around the product."
-        description="The exact offer language can keep sharpening. The operating model starts with fit, moves into a diagnostic, then builds the highest-leverage search, content, email, data, or workflow piece first."
-      />
-
-      <Section>
-        <SectionInner>
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-            <div className="lg:sticky lg:top-28">
-              <p className="eyebrow">Working model</p>
-              <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)]">
-                Not a menu of tactics. A path into the right first move.
-              </h2>
-              <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-                Fruitful Lab can still bring broad expertise, but the buying journey should feel guided: first conversation, paid clarity product, first useful build, then deeper partnership if the signals justify it.
-              </p>
-              <Link className="btn btn-primary mt-7" href="/contact">
-                Book a fit call
+    <div className="overflow-hidden">
+      <section className="services-hero">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-24">
+          <div>
+            <div className="hero-proof-row" aria-label="Fruitful Lab service markers">
+              <span className="proof-pill proof-pill-light">
+                <span aria-hidden="true">✦✦✦</span>
+                Custom brand formulas
+              </span>
+              <span className="proof-pill proof-pill-dark">
+                <span className="proof-dot" aria-hidden="true" />
+                Built from signal
+              </span>
+            </div>
+            <h1 className="mt-6 max-w-4xl text-5xl font-normal leading-[0.95] text-[var(--heading)] sm:text-6xl lg:text-7xl">
+              Services mixed around the <span className="gradient-text">right first move.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+              Fruitful Lab is not meant to feel like a giant menu of tactics. The service mix depends on the product, the stage, the bottleneck, and the signals we can trust.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link className="btn btn-primary" href="/contact">
+                Book a fit call →
+              </Link>
+              <Link className="btn btn-secondary" href="#service-labs">
+                Explore the labs →
               </Link>
             </div>
-
-            <div>
-              {SERVICE_PACKAGES.map((service, index) => (
-                <article key={service.title} className="service-stage">
-                  <div>
-                    <span className="service-index">0{index + 1}</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-black text-[var(--cobalt)]">{service.kicker}</p>
-                    <h2 className="mt-2 text-3xl font-extrabold leading-tight text-[var(--heading)]">{service.title}</h2>
-                    <p className="mt-4 text-base leading-7 text-[var(--muted)]">{service.description}</p>
-                    <p className="mt-5 text-sm font-black uppercase tracking-[0.12em] text-[var(--heading)]">Best for</p>
-                    <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{service.bestFor}</p>
-                    <Link className="btn btn-secondary mt-6" href="/contact">
-                      {service.cta}
-                    </Link>
-                  </div>
-                  <ul className="stage-includes">
-                    {service.includes.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
           </div>
-        </SectionInner>
-      </Section>
 
-      <Section surface="surface">
-        <SectionInner>
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div className="service-formula-board" aria-label="Service formula visual">
+            <div className="formula-core">
+              <p>Growth formula</p>
+              <strong>Product + stage + signal</strong>
+            </div>
+            {HERO_TAGS.map((tag, index) => (
+              <span key={tag} className={`formula-tag formula-tag-${index + 1}`}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="signal-marquee" aria-label="Fruitful Lab service areas">
+        <div className="marquee-track">
+          {[...HERO_TAGS, ...HERO_TAGS, ...HERO_TAGS].map((item, index) => (
+            <span key={`${item}-${index}`}>{item}</span>
+          ))}
+        </div>
+      </section>
+
+      <section className="service-labs-section" id="service-labs">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+          <div className="grid gap-8 lg:grid-cols-[0.84fr_1.16fr] lg:items-end">
             <div>
-              <p className="eyebrow">How decisions stay grounded</p>
-              <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)]">
-                The goal is a useful first system, not a giant unfinished rebuild.
+              <p className="eyebrow">Service labs</p>
+              <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
+                The formula changes by brand. These are the ingredients.
               </h2>
-              <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-                Each phase narrows the next decision so the work can move from strategy into visible assets, live systems, useful reporting, and measurable signals.
-              </p>
             </div>
-            <div className="path-shell grid gap-5 md:grid-cols-3">
-              {PROCESS_STEPS.map((step, index) => (
-                <article key={step.title} className="path-card p-6">
-                  <span className="path-number">0{index + 1}</span>
-                  <h3 className="mt-6 text-xl font-bold text-[var(--heading)]">{step.title}</h3>
-                  <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{step.description}</p>
-                </article>
-              ))}
-            </div>
+            <p className="text-base leading-7 text-[var(--muted)]">
+              A specialty product brand might need search before paid traffic, email before more content, reporting before another campaign, or an AI creative workflow before scaling production.
+            </p>
           </div>
-        </SectionInner>
-      </Section>
+
+          <div className="service-lab-grid mt-12">
+            {SERVICE_LABS.map((lab) => (
+              <article key={lab.label} className="service-lab-card">
+                <p>{lab.label}</p>
+                <h3>{lab.title}</h3>
+                <span>{lab.description}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="service-path-section">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div>
+              <p className="eyebrow">Engagement path</p>
+              <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
+                Fit first. Formula second. Build third.
+              </h2>
+            </div>
+            <p className="text-base leading-7 text-[var(--muted)]">
+              Every engagement starts by narrowing the problem before building the system. That keeps the work practical, staged, and easier to measure.
+            </p>
+          </div>
+
+          <div className="service-path-list mt-12">
+            {ENGAGEMENT_PATH.map((step) => (
+              <article key={step.title} className="service-path-row">
+                <span>{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="formula-filter-section">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:py-24">
+          <div>
+            <p className="eyebrow">How we choose</p>
+            <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
+              A lab is useful because it tests the formula, not because it adds more noise.
+            </h2>
+            <p className="mt-5 text-base leading-7 text-[var(--muted)]">
+              The job is to make the product easier to discover, understand, trust, and buy from. The channel is only useful when it helps that happen.
+            </p>
+          </div>
+
+          <div className="formula-filter-card">
+            {FORMULA_FILTERS.map((filter) => (
+              <article key={filter.label}>
+                <p>{filter.label}</p>
+                <span>{filter.description}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="final-lab-cta">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center lg:py-20">
+          <div>
+            <p className="eyebrow">Start with the fit</p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
+              Bring the product, the stage, and the messy middle.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)]">
+              We will use the first call to see whether there is a useful formula to build together.
+            </p>
+          </div>
+          <Link className="btn btn-primary" href="/contact">
+            Book a fit call →
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

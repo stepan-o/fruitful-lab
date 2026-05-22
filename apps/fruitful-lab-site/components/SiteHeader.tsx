@@ -2,9 +2,12 @@ import Link from "next/link";
 import { BOOKING_URL, PRIMARY_NAV, SITE_NAME } from "@/lib/site";
 
 const SERVICES_MENU = [
-  { label: "Fit Call", description: "A first read on fit and current bottlenecks." },
-  { label: "Diagnostic", description: "A paid map for the first useful growth system." },
-  { label: "Implementation", description: "Build the page, path, workflow, or reporting loop." },
+  { label: "Search ecosystem", description: "Pinterest, Google, SEO, AI search, and visual discovery." },
+  { label: "Paid media", description: "Acquisition tests, offer paths, and campaign structure." },
+  { label: "SEO + content", description: "Use-case content, product education, and search-led pages." },
+  { label: "Lifecycle + funnels", description: "Email, lead capture, launches, and follow-up systems." },
+  { label: "Data + testing", description: "Analytics, reporting, A/B tests, and decision dashboards." },
+  { label: "AI creative systems", description: "Brand-trained creative workflows that do not look generic." },
 ] as const;
 
 export function SiteHeader() {
@@ -23,7 +26,7 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
                 <div className="nav-menu-panel">
-                  <p className="nav-menu-kicker">Engagement path</p>
+                  <p className="nav-menu-kicker">Service labs</p>
                   {SERVICES_MENU.map((service) => (
                     <Link key={service.label} href="/services" className="nav-menu-item">
                       <span>{service.label}</span>

@@ -1063,11 +1063,14 @@ a {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
+  align-items: stretch;
 }
 
 .service-tile {
   position: relative;
-  min-height: 300px;
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(16, 25, 53, 0.12);
   border-radius: 18px;
@@ -1090,7 +1093,6 @@ a {
 }
 
 .service-tile:nth-child(2) {
-  margin-top: 2rem;
   --tile-accent: rgba(255, 74, 28, 0.14);
 }
 
@@ -1099,7 +1101,6 @@ a {
 }
 
 .service-tile:nth-child(4) {
-  margin-top: 1rem;
   --tile-accent: rgba(16, 25, 53, 0.08);
 }
 
@@ -1110,9 +1111,11 @@ a {
 }
 
 .tile-arrow {
-  position: absolute;
-  bottom: 1.2rem;
-  left: 1.2rem;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  margin-top: auto;
+  padding-top: 1.5rem;
   color: var(--heading);
   font-size: 0.86rem;
   font-weight: 900;
@@ -1639,6 +1642,70 @@ a {
   line-height: 1.55;
 }
 
+.capability-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 10% 18%, rgba(33, 209, 159, 0.1), transparent 26%),
+    linear-gradient(180deg, #ffffff 0%, rgba(237, 237, 244, 0.72) 100%);
+}
+
+.capability-section::before {
+  position: absolute;
+  top: -74px;
+  right: -5%;
+  left: -5%;
+  height: 150px;
+  border-radius: 0 0 52% 48% / 0 0 100% 100%;
+  background: #ffffff;
+  content: "";
+}
+
+.human-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.human-section::before {
+  position: absolute;
+  top: -76px;
+  right: -6%;
+  left: -6%;
+  height: 154px;
+  border-radius: 0 0 48% 52% / 0 0 100% 100%;
+  background:
+    linear-gradient(90deg, rgba(153, 132, 212, 0.08), rgba(33, 209, 159, 0.08)),
+    rgba(237, 237, 244, 0.72);
+  content: "";
+}
+
+.ecosystem-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  margin-bottom: -1px;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(255, 74, 28, 0.1), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, var(--navy) 100%);
+}
+
+.ecosystem-section::after {
+  position: absolute;
+  right: -6%;
+  bottom: -1px;
+  left: -6%;
+  height: 135px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: var(--navy);
+  content: "";
+  z-index: 0;
+}
+
+.ecosystem-section > div {
+  position: relative;
+  z-index: 1;
+}
+
 .human-panel {
   position: relative;
   overflow: hidden;
@@ -2108,7 +2175,7 @@ a {
   }
 
   .marquee-track {
-    animation: marquee-drift 28s linear infinite;
+    animation: marquee-drift 56s linear infinite;
   }
 
   .product-orbit-a {

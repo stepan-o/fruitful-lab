@@ -48,7 +48,7 @@ export default function HomePage() {
       <section className="lab-hero">
         <div className="hero-blob hero-blob-a" aria-hidden="true" />
         <div className="hero-blob hero-blob-b" aria-hidden="true" />
-        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] max-w-6xl gap-12 px-5 pb-24 pt-16 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:items-center lg:pb-28 lg:pt-20">
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-8rem)] max-w-6xl gap-12 px-5 pb-20 pt-8 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:items-start lg:pb-24 lg:pt-10">
           <div>
             <div className="hero-proof-row" aria-label="Future proof markers">
               <span className="proof-pill proof-pill-light">
@@ -64,7 +64,7 @@ export default function HomePage() {
               Good products should not be hard to <span className="gradient-text">discover.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              Fruitful Lab helps specialty product brands make their best products easier to find, understand, and choose by connecting product story, search, content, email, data, testing, and AI-supported workflows.
+              Fruitful Lab is a growth laboratory for specialty product brands: we test the formula that connects product story, search, content, email, data, and AI workflows so the right customers can find, understand, and choose what you sell.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link className="btn btn-primary" href="/contact">
@@ -168,11 +168,11 @@ export default function HomePage() {
             <div>
               <p className="eyebrow">Services</p>
               <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-                A guided path into the right first move.
+                Find the right growth formula for your brand stage.
               </h2>
             </div>
             <p className="text-base leading-7 text-[var(--muted)]">
-              The offer can sharpen later, but the buying journey should already feel intentional: fit, diagnostic, first build, then a larger system when the signals justify it.
+              The work moves like a lab sequence: isolate the bottleneck, map the formula, build the first useful system, then keep testing what compounds.
             </p>
           </div>
           <div className="service-grid mt-12">
@@ -255,7 +255,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-plain">
+      <section className="section-plain capability-section">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
           <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
             <div>
@@ -279,7 +279,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-soft">
+      <section className="section-soft human-section">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-20">
           <div className="human-panel p-6 sm:p-8">
             <div className="relative z-10 portrait-strip">
@@ -308,7 +308,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-plain">
+      <section className="section-plain ecosystem-section">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
           <div className="max-w-3xl">
             <p className="eyebrow">Brand ecosystem</p>

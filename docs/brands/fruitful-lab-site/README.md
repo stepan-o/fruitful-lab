@@ -64,6 +64,11 @@ Current visual pass:
 - Keep a non-pink gradient as an ecosystem cue across the brand family, but make it warmer and more editorial than cold SaaS blue/purple.
 - Use Alatsi as the primary heading/accent font and Raleway for readable body copy.
 - Favor flowing, guided sections over repeated stacked rectangles: waves, organic shapes, offset content, and open white space should lead the visual system.
+- Current reference direction: Commence Studio is the structural skeleton and MVR Digital is the pulse. Fruitful Lab should keep its own palette, typography, and product-discovery positioning.
+- Borrowable Commence-style patterns: pill navigation, richer service navigation later, full-width moving trust/positioning rail, serious diagnostic offer framing, featured case-study style modules, metrics/signals, and a clear process section.
+- Do not copy Commence's exact language, exact layout, colors, client claims, or Shopify-specific positioning. Do not show fake client logos or fake performance proof.
+- The homepage hero should stay product-centered: the product/story sits in the middle, with connected discovery paths around it. Avoid generic pills or disconnected floating cards.
+- Section transitions should use smooth curves and open space, not jagged waves.
 - Shift the visual tone toward a sharper strategic workbench: stronger dark/white contrast, tighter editorial blocks, offset panels, sharper labels, data/search/reporting motifs, and less soft SaaS styling.
 - The 9G StandOut Plan page can be used as a broad inspiration point for bolder contrast, clearer paid-strategy entry flow, and more direct problem language. Do not copy its exact layout, icon style, pink palette, or contractor-specific language.
 - Leave visible space for founder presence, future photography, diagrams, and system graphics.

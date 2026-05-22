@@ -11,6 +11,7 @@ describe("Fruitful Pin site config", () => {
 
   it("defines stable public navigation paths for the marketing foundation", () => {
     expect(PRIMARY_NAV.map((item) => item.href)).toEqual([
+      "/",
       "/blog",
       "/pinterest-services",
       "/resources",

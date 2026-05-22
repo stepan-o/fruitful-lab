@@ -45,7 +45,7 @@ describe("Fruitful Pin SEO and route safety", () => {
       "",
       "/services",
       "/privacy",
-      ...PRIMARY_NAV.map((item) => item.href),
+      ...PRIMARY_NAV.map((item) => (item.href === "/" ? "" : item.href)),
       ...FOOTER_LINKS.map((item) => item.href),
       ...BLOG_POSTS.map((post) => `/${post.slug}`),
     ];

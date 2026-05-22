@@ -1,7 +1,7 @@
 export const SITE_NAME = "Fruitful Lab";
 export const CANONICAL_URL = "https://fruitfulab.com";
 export const SITE_DESCRIPTION =
-  "AI-aware marketing systems, funnels, paid media, email, and content strategy for service businesses and growing brands.";
+  "Product discovery, search, content, paid media, lifecycle, and data systems for specialty brands that need a clearer path to purchase.";
 export const BOOKING_URL = process.env.NEXT_PUBLIC_TIDYCAL_URL ?? "https://tidycal.com/susycid";
 export const CONTACT_EMAIL = "hello@fruitfulab.com";
 

@@ -8,7 +8,7 @@ Fruitful Lab customer site is the public umbrella marketing site for `fruitfulab
 - Static-first Cloudflare Pages target for phase one.
 - WordPress on prepaid hosting remains the planned headless CMS/editor model, but this foundation does not connect to live WordPress yet.
 - No DNS, WordPress admin, A2, Cloudflare production, or Vercel settings are changed by this app shell.
-- The visual direction starts near the Fruitful Pin family but leans more navy and gold for the broader umbrella brand.
+- The visual direction starts near the Fruitful Pin family but leans into the Fruitful Lab palette: navy, ghost white, periwinkle, flame orange, and mint.
 
 ## Commands
 
@@ -57,3 +57,5 @@ Initial pages:
 - `/terms`
 
 The current content is a polished skeleton for the broader Fruitful Lab offer: marketing systems, funnels, paid media, AI workflows, email, and content strategy. It can be narrowed once the final offer and copy are ready.
+
+The current Services page uses a Commence-inspired conversion structure: hero, thin-line mock logo ribbon, four clickable phases, engagement timeline, approach explanation, case-study frame, engagement models, testimonials, FAQ, and final CTA. Copy, pricing, proof, and imagery remain editable placeholders while the offer is refined.

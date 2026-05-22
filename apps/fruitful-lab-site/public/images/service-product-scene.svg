@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Neutral specialty product arrangement</title>
+  <desc id="desc">A soft studio product scene with unbranded packaging, jars, and folded fabric.</desc>
+  <defs>
+    <linearGradient id="backdrop" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6f1f0"/>
+      <stop offset="0.45" stop-color="#ededf4"/>
+      <stop offset="1" stop-color="#dff6ef"/>
+    </linearGradient>
+    <linearGradient id="orangeBox" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff6a3d"/>
+      <stop offset="1" stop-color="#ff4a1c"/>
+    </linearGradient>
+    <linearGradient id="mintDisk" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#69e8c2"/>
+      <stop offset="1" stop-color="#21d19f"/>
+    </linearGradient>
+    <linearGradient id="periwinkleFabric" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#c5b8ee"/>
+      <stop offset="1" stop-color="#9984d4"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#101935" flood-opacity="0.16"/>
+    </filter>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#101935" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="820" fill="url(#backdrop)"/>
+  <ellipse cx="620" cy="690" rx="470" ry="72" fill="#101935" opacity="0.08"/>
+  <path d="M-40 620 C200 520 430 560 610 500 C790 440 980 460 1250 350 L1250 820 L-40 820 Z" fill="#fff" opacity="0.42"/>
+  <path d="M100 560 C240 520 395 545 530 496 C685 440 812 475 1010 410" fill="none" stroke="#101935" stroke-opacity="0.11" stroke-width="4"/>
+  <g filter="url(#softShadow)">
+    <path d="M250 472 C340 432 486 420 585 466 C671 506 696 594 624 644 C522 715 273 704 192 632 C131 579 157 514 250 472 Z" fill="#d8cff2"/>
+    <path d="M252 486 C352 454 466 454 563 492 C503 518 332 542 199 528 C211 510 228 497 252 486 Z" fill="url(#periwinkleFabric)" opacity="0.72"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="670" y="238" width="188" height="315" rx="38" fill="url(#orangeBox)"/>
+    <path d="M708 296 H820" stroke="#fff" stroke-opacity="0.46" stroke-width="16" stroke-linecap="round"/>
+    <path d="M708 334 H786" stroke="#fff" stroke-opacity="0.24" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <ellipse cx="438" cy="344" rx="146" ry="54" fill="#fff3df"/>
+    <rect x="292" y="344" width="292" height="222" rx="44" fill="#f7ead8"/>
+    <ellipse cx="438" cy="566" rx="146" ry="52" fill="#f1ddc2"/>
+    <ellipse cx="438" cy="348" rx="116" ry="34" fill="#fffaf5"/>
+  </g>
+  <g filter="url(#softShadow)">
+    <rect x="548" y="494" width="168" height="168" rx="30" fill="#101935"/>
+    <path d="M584 552 H680" stroke="#fff" stroke-opacity="0.34" stroke-width="12" stroke-linecap="round"/>
+    <path d="M584 588 H644" stroke="#fff" stroke-opacity="0.18" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#softShadow)">
+    <circle cx="832" cy="596" r="93" fill="url(#mintDisk)"/>
+    <circle cx="832" cy="596" r="58" fill="#ffffff" opacity="0.42"/>
+  </g>
+  <g filter="url(#softShadow)">
+    <path d="M246 324 C247 286 270 254 311 244 L512 244 C552 254 575 286 576 324 L576 386 C574 424 550 456 511 464 L312 464 C273 456 249 424 246 386 Z" fill="#f7f1e9"/>
+    <path d="M311 244 C330 184 379 158 421 184 C449 204 462 231 512 244" fill="none" stroke="#c9b8a0" stroke-width="14" stroke-linecap="round"/>
+    <path d="M323 310 H500" stroke="#c9b8a0" stroke-opacity="0.34" stroke-width="10" stroke-linecap="round"/>
+    <path d="M323 346 H456" stroke="#c9b8a0" stroke-opacity="0.26" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g opacity="0.62">
+    <circle cx="208" cy="226" r="11" fill="#ff4a1c"/>
+    <circle cx="944" cy="276" r="13" fill="#21d19f"/>
+    <circle cx="1005" cy="520" r="10" fill="#9984d4"/>
+    <circle cx="165" cy="475" r="8" fill="#9984d4"/>
+  </g>
+</svg>

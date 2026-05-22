@@ -41,6 +41,7 @@ The current foundation does not change DNS, WordPress, A2, Cloudflare, or any li
 - Homepage
 - About
 - Services
+- How We Work / process language can live inside Services first, then become a separate page when the offer is stable
 - Blog
 - Blog post template
 - Resources
@@ -53,3 +54,12 @@ Case studies and tools/experiments are intentionally out of the first skeleton. 
 ## Brand Direction
 
 Fruitful Lab can share family resemblance with Fruitful Pin, but it should lean more navy and gold than pink. Fruitful Pin can stay more pink/yellow and Pinterest-specific. Fruitful Lab should feel like the broader, systems-minded parent brand.
+
+Current Services-page direction:
+
+- Use the Commence Studio services/process structure as a layout reference, translated into Fruitful Lab's brand language.
+- The page should read like a guided buying page, not a simple menu of service cards.
+- Core sections are hero, thin-line mock brand/logo ribbon, four clickable service phases, typical workflow timeline, "why this way" explanation, case-study frame, engagement/pricing models, testimonials, FAQ, and dark final CTA with a soft pointer glow.
+- Use Fruitful Lab's lab metaphor: diagnose, formulate, build, test, compound, signal, and growth formula.
+- Services should stay oriented around specialty/product brands, product discovery, search, content, paid media, lifecycle/email, data/testing, and AI-assisted creative systems.
+- Final copy, proof, pricing, testimonials, and imagery are still placeholders until the offer and source material are locked.

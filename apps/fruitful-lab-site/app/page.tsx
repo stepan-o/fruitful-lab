@@ -1,46 +1,104 @@
 import Link from "next/link";
 import { HoverSpotlight } from "@/components/HoverSpotlight";
-import { ECOSYSTEM_ITEMS, PROCESS_STEPS, SERVICE_PACKAGES } from "@/lib/content";
-
-const CAPABILITIES = [
-  {
-    title: "Product discovery",
-    description: "Use cases, buying moments, search behavior, and the product story people need before they choose.",
-  },
-  {
-    title: "Search ecosystem",
-    description: "Google search, AI search, visual search, and product-led content paths that help demand find you.",
-  },
-  {
-    title: "Content architecture",
-    description: "Educational, lifestyle, use-case-led, and product-direct content with clearer jobs in the funnel.",
-  },
-  {
-    title: "Email and funnel",
-    description: "Nurture, lead capture, launch, and purchase paths that move people from interest to trust.",
-  },
-  {
-    title: "Data and testing",
-    description: "Analytics, reporting, A/B tests, and AI-supported workflows that make the next decision clearer.",
-  },
-] as const;
+import { BLOG_POSTS } from "@/lib/content";
 
 const RAIL_ITEMS = [
-  "Specialty product brands",
+  "Product discovery",
   "Search visibility",
-  "Product education",
+  "Content systems",
   "Email paths",
   "Analytics",
+  "A/B testing",
   "AI workflows",
-  "Use-case content",
-  "Testing loops",
+  "Growth-stage brands",
 ] as const;
 
-const FEATURED_METRICS = [
-  { value: "01", label: "Product story" },
-  { value: "02", label: "Search demand" },
-  { value: "03", label: "Email path" },
+const SERVICE_SYSTEM = [
+  {
+    label: "Discovery lab",
+    title: "Find what is leaking attention.",
+    description:
+      "A focused diagnostic for the product story, buying moments, search behavior, current channels, and the first bottleneck worth solving.",
+  },
+  {
+    label: "Search ecosystem",
+    title: "Make demand easier to meet.",
+    description:
+      "Google search, AI search, visual search, and product-led content paths shaped around how real customers look for answers.",
+  },
+  {
+    label: "Content architecture",
+    title: "Give every asset a job.",
+    description:
+      "Educational, lifestyle, use-case, and product-direct content mapped to the moments where customers need clarity or trust.",
+  },
+  {
+    label: "Lifecycle and funnel",
+    title: "Build the next step around intent.",
+    description:
+      "Lead capture, email, launch paths, landing pages, and follow-up systems that move people from interest to a confident next action.",
+  },
+  {
+    label: "Data and testing",
+    title: "Let signals choose the next move.",
+    description:
+      "Analytics, reporting, A/B testing, and decision dashboards that make performance easier to understand and improve.",
+  },
+  {
+    label: "AI workflow systems",
+    title: "Speed up without flattening the brand.",
+    description:
+      "Practical AI-supported workflows for research, content operations, reporting, repurposing, QA, and team enablement.",
+  },
 ] as const;
+
+const PROCESS_STEPS = [
+  {
+    number: "01",
+    title: "Diagnose",
+    duration: "Fit call + first read",
+    description:
+      "We look at the product, audience, current discovery path, data, and constraints to decide whether there is a strong reason to keep exploring together.",
+  },
+  {
+    number: "02",
+    title: "Formulate",
+    duration: "Paid diagnostic",
+    description:
+      "We map the formula for the brand stage: what needs to be built first, what can wait, and how search, content, email, data, and AI should connect.",
+  },
+  {
+    number: "03",
+    title: "Build",
+    duration: "Focused sprint",
+    description:
+      "We ship the first useful system: a search-informed page, content path, email sequence, reporting loop, campaign structure, or practical workflow.",
+  },
+  {
+    number: "04",
+    title: "Test",
+    duration: "Ongoing or next sprint",
+    description:
+      "We use real signals to choose the next experiment, improve the path, and keep the growth system becoming clearer instead of busier.",
+  },
+] as const;
+
+const FOUNDER_PROFILES = [
+  {
+    name: "Susy",
+    role: "Strategy, product discovery, content, and search",
+    description:
+      "The side of the lab focused on customer language, product education, content systems, positioning, and the buying moments that make a brand easier to choose.",
+  },
+  {
+    name: "Stepan",
+    role: "Data, systems, analytics, and testing",
+    description:
+      "The side of the lab focused on reporting, experimentation, workflows, technical systems, and the signals that make the next decision less fuzzy.",
+  },
+] as const;
+
+const INSIGHT_CARDS = BLOG_POSTS.slice(0, 3);
 
 export default function HomePage() {
   return (
@@ -53,18 +111,18 @@ export default function HomePage() {
             <div className="hero-proof-row" aria-label="Future proof markers">
               <span className="proof-pill proof-pill-light">
                 <span aria-hidden="true">★★★★★</span>
-                Reviews coming soon
+                Client proof
               </span>
               <span className="proof-pill proof-pill-dark">
                 <span className="proof-dot" aria-hidden="true" />
-                Partner credentials in progress
+                Partner credentials
               </span>
             </div>
             <h1 className="mt-5 max-w-4xl text-5xl font-normal leading-[0.95] text-[var(--heading)] sm:text-6xl lg:text-7xl">
               Good products should not be hard to <span className="gradient-text">discover.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              Fruitful Lab is a growth laboratory for specialty product brands: we test the formula that connects product story, search, content, email, data, and AI workflows so the right customers can find, understand, and choose what you sell.
+              Fruitful Lab is a growth laboratory for specialty product brands. We test the formula that connects product story, search, content, email, data, and AI workflows so the right customers can find, understand, and choose what you sell.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link className="btn btn-primary" href="/contact">
@@ -143,111 +201,145 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-plain thesis-section">
+      <section className="lab-thesis-section">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end lg:py-24">
           <div>
             <p className="eyebrow">What we do</p>
             <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-              Product visibility is rarely one channel problem.
+              One lab for the discovery system around your product.
             </h2>
           </div>
           <div className="thesis-copy">
             <p>
-              A product can be strong and still feel hard to sell when the story, search path, content, follow-up, and reporting are built in separate rooms.
+              Most product brands do not need more random marketing activity. They need the pieces around the product to make sense together.
             </p>
             <p>
-              Fruitful Lab connects those pieces into a discovery ecosystem: the right customers can find the product, understand why it matters, trust the brand, and know what to do next.
+              Fruitful Lab mixes strategy, content, search, email, data, testing, and AI-supported workflows into a clearer buying environment: people can discover the product, understand why it fits, trust the brand, and know what to do next.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="section-soft services-overview">
+      <section className="lab-service-system-section">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
             <div>
-              <p className="eyebrow">Services</p>
+              <p className="eyebrow">Inside the formula</p>
               <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-                Find the right growth formula for your brand stage.
+                The growth pieces can be built separately. They should not think separately.
               </h2>
             </div>
             <p className="text-base leading-7 text-[var(--muted)]">
-              The work moves like a lab sequence: isolate the bottleneck, map the formula, build the first useful system, then keep testing what compounds.
+              The work can start as a focused diagnostic and expand into the pieces the brand actually needs: search, content, lifecycle, analytics, testing, and workflow systems.
             </p>
           </div>
-          <div className="service-grid mt-12">
-            {SERVICE_PACKAGES.map((service, index) => (
-              <Link key={service.title} className="service-tile" href="/services">
-                <span className="path-number">0{index + 1}</span>
-                <p className="mt-6 text-sm font-black text-[var(--cobalt)]">{service.kicker}</p>
-                <h3 className="mt-2 text-2xl font-normal text-[var(--heading)]">{service.title}</h3>
-                <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{service.description}</p>
-                <span className="tile-arrow">Explore →</span>
-              </Link>
+          <div className="lab-service-grid mt-12">
+            {SERVICE_SYSTEM.map((service) => (
+              <article key={service.title} className="lab-service-card">
+                <p>{service.label}</p>
+                <h3>{service.title}</h3>
+                <span>{service.description}</span>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-plain featured-system-section">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center lg:py-24">
-          <div className="max-w-3xl">
-            <p className="eyebrow">Featured system map</p>
+      <section className="lab-case-section">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:py-24">
+          <div>
+            <p className="eyebrow">Case study frame</p>
             <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
               Show the product, the path, and the signal.
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-              The case study structure should make one thing obvious: what product needed visibility, what path was built around it, and what changed after launch.
+              The case-study structure highlights the product context, the system we built, the visible change, and the numbers that support the story.
             </p>
+            <Link className="btn btn-secondary mt-8" href="/services">
+              See the approach →
+            </Link>
           </div>
-          <HoverSpotlight className="featured-system-card">
-            <div className="case-visual">
-              <span className="case-orbit" aria-hidden="true" />
-              <span className="case-dot case-dot-a" aria-hidden="true" />
-              <span className="case-dot case-dot-b" aria-hidden="true" />
-              <span className="case-dot case-dot-c" aria-hidden="true" />
+
+          <HoverSpotlight className="lab-case-card">
+            <div className="case-media-grid" aria-hidden="true">
+              <div className="case-product-shot case-product-shot-main">
+                <span>Product photo</span>
+              </div>
+              <div className="case-product-shot case-product-shot-small">
+                <span>Search page</span>
+              </div>
+              <div className="case-product-shot case-product-shot-small">
+                <span>Email path</span>
+              </div>
             </div>
-            <div className="case-body">
-              <p className="text-sm font-black text-[var(--cobalt)]">Specialty product brand · Diagnostic + first build</p>
-              <h3 className="mt-3 text-3xl font-normal leading-tight text-white sm:text-4xl">
-                Turning scattered visibility into one product discovery path.
-              </h3>
-              <p className="mt-4 text-sm leading-6 text-white/76">
-                A product story, search surface, content path, email sequence, and reporting loop can work as one connected buying environment.
-              </p>
-              <div className="case-metrics">
-                {FEATURED_METRICS.map((metric) => (
-                  <div key={metric.label}>
-                    <strong>{metric.value}</strong>
-                    <span>{metric.label}</span>
-                  </div>
-                ))}
+            <div className="case-story-panel">
+              <p>Specialty product brand</p>
+              <h3>From scattered visibility to a clearer product discovery path.</h3>
+              <div className="case-signal-row">
+                <span>Story</span>
+                <span>Search</span>
+                <span>Content</span>
+                <span>Signals</span>
               </div>
             </div>
           </HoverSpotlight>
         </div>
       </section>
 
-      <section className="section-plain flow-section">
+      <section className="lab-process-section" id="process">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-          <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+          <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
             <div>
-              <p className="eyebrow">How the engagement flows</p>
+              <p className="eyebrow">How we work</p>
               <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-                A clear path from messy visibility to a system that can improve.
+                A clear path from messy visibility to a formula we can test.
               </h2>
             </div>
             <p className="text-base leading-7 text-[var(--muted)]">
-              The work starts narrow enough to make a decision. Then it becomes a build, a test, and a better next move.
+              The engagement stays simple on purpose: diagnose what is happening, formulate the right first move, build the useful piece, then test what compounds.
             </p>
           </div>
-          <div className="process-flow mt-14">
-            {PROCESS_STEPS.map((step, index) => (
-              <article key={step.title} className="process-node">
-                <span className="path-number">0{index + 1}</span>
+
+          <div className="lab-process-list mt-12">
+            {PROCESS_STEPS.map((step) => (
+              <article key={step.title} className="lab-process-row">
+                <span className="process-number">{step.number}</span>
                 <div>
-                  <h3 className="mt-6 text-2xl font-normal text-[var(--heading)]">{step.title}</h3>
-                  <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{step.description}</p>
+                  <p>{step.duration}</p>
+                  <h3>{step.title}</h3>
+                </div>
+                <p>{step.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="founder-lab-section">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-24">
+          <div>
+            <p className="eyebrow">Inside the lab</p>
+            <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
+              Strategy and systems, human by design.
+            </h2>
+            <p className="mt-5 text-base leading-7 text-[var(--muted)]">
+              The studio should make the human side visible: real photography, short bios, and a clear reason why Susy and Stepan are useful together for growth-stage product brands.
+            </p>
+            <Link className="btn btn-secondary mt-8" href="/about">
+              About the studio →
+            </Link>
+          </div>
+
+          <div className="founder-card-grid">
+            {FOUNDER_PROFILES.map((profile) => (
+              <article key={profile.name} className="founder-card">
+                <div className="founder-photo">
+                  <span>Photo</span>
+                </div>
+                <div>
+                  <p>{profile.role}</p>
+                  <h3>{profile.name}</h3>
+                  <span>{profile.description}</span>
                 </div>
               </article>
             ))}
@@ -255,75 +347,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-plain capability-section">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
-          <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-            <div>
-              <p className="eyebrow">What can live here</p>
+      <section className="lab-insights-section">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-3xl">
+              <p className="eyebrow">Lab notes</p>
               <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-                A sharper lab for the pieces around the product.
+                Sharp thinking, practical reads.
               </h2>
             </div>
-            <p className="text-base leading-7 text-[var(--muted)]">
-              Fruitful Lab can hold the senior strategy, systems, data, and implementation work while focused brands keep their own audience, domain, voice, and offer.
-            </p>
-          </div>
-          <div className="capability-constellation mt-12">
-            {CAPABILITIES.map((capability) => (
-              <div key={capability.title} className="capability-shape">
-                <h3 className="text-lg font-normal text-[var(--heading)]">{capability.title}</h3>
-                <p className="mt-3">{capability.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-soft human-section">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-20">
-          <div className="human-panel p-6 sm:p-8">
-            <div className="relative z-10 portrait-strip">
-              <div className="portrait-block">
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[var(--amber)]">Strategy</p>
-                <p className="mt-3 text-3xl font-extrabold">Susy</p>
-              </div>
-              <div className="portrait-block">
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[var(--cobalt)]">Data + systems</p>
-                <p className="mt-3 text-3xl font-extrabold">Stepan</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p className="eyebrow">Human by design</p>
-            <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-              Data and AI should make the work clearer, not colder.
-            </h2>
-            <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-              This site should leave room for real founder presence, future photography, diagrams, reporting views, search maps, and the tools being developed inside the Fruitful Lab ecosystem.
-            </p>
-            <Link className="btn btn-secondary mt-7" href="/about">
-              About the studio
+            <Link className="btn btn-secondary" href="/blog">
+              Read the blog →
             </Link>
           </div>
+          <div className="insight-card-grid mt-12">
+            {INSIGHT_CARDS.map((post) => (
+              <Link key={post.slug} className="insight-card" href={`/blog/${post.slug}`}>
+                <p>{post.category}</p>
+                <h3>{post.title}</h3>
+                <span>{post.excerpt}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section-plain ecosystem-section">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
-          <div className="max-w-3xl">
-            <p className="eyebrow">Brand ecosystem</p>
-            <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-              One parent brand, separate commercial lanes.
+      <section className="final-lab-cta">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center lg:py-20">
+          <div>
+            <p className="eyebrow">Ready to test the formula?</p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
+              Start with the product, the stage, and the bottleneck.
             </h2>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)]">
+              The first move is a fit call. From there, the offer can become a diagnostic, a focused build, or a larger growth system.
+            </p>
           </div>
-          <div className="ecosystem-flow mt-10">
-            {ECOSYSTEM_ITEMS.map((item) => (
-              <article key={item.name} className="ecosystem-item">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--cobalt)]">{item.role}</p>
-                <h3 className="mt-3 text-xl font-bold text-[var(--heading)]">{item.name}</h3>
-                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{item.description}</p>
-              </article>
-            ))}
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <Link className="btn btn-primary" href="/contact">
+              Book a fit call →
+            </Link>
+            <Link className="btn btn-secondary" href="/services">
+              Explore services →
+            </Link>
           </div>
         </div>
       </section>

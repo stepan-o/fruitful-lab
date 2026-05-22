@@ -72,6 +72,7 @@ Current visual pass:
 - Brand language can lean into the `Lab` concept: formula, testing, experiments, stages, signals, bottlenecks, and growth laboratory metaphors, especially for services and process framing.
 - Section transitions should use smooth curves and open space, not jagged waves.
 - Shift the visual tone toward a sharper strategic workbench: stronger dark/white contrast, tighter editorial blocks, offset panels, sharper labels, data/search/reporting motifs, and less soft SaaS styling.
+- Current homepage structure is a Commence-inspired scaffold, translated into Fruitful Lab language: proof pills, product-centered hero, moving focus rail, thesis, service-system grid, case-study frame, diagnose/formulate/build/test process, founder/photo area, lab notes, and final fit-call CTA. Use Commence as a layout and hierarchy reference, not as source copy.
 - The 9G StandOut Plan page can be used as a broad inspiration point for bolder contrast, clearer paid-strategy entry flow, and more direct problem language. Do not copy its exact layout, icon style, pink palette, or contractor-specific language.
 - Leave visible space for founder presence, future photography, diagrams, and system graphics.
 - Blog archive should follow the same discovery pattern as Fruitful Pin: featured article, article list, search, about block, lead magnet/list-building block, popular reads, and resource links.

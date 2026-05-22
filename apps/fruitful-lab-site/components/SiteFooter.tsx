@@ -3,7 +3,7 @@ import { CONTACT_EMAIL, FOOTER_LINKS, SITE_NAME } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--navy)]">
+    <footer className="site-footer">
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 text-sm text-white sm:px-8 md:grid-cols-[1.2fr_1fr]">
         <div>
           <p className="text-lg font-extrabold text-white">{SITE_NAME}</p>

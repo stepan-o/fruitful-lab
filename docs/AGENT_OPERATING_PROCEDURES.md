@@ -1,6 +1,6 @@
 # Agent Operating Procedures
 
-Status: active as of 2026-05-15.
+Status: active as of 2026-05-22.
 
 These procedures describe how Codex should operate in this repository when Susie provides implementation work.
 
@@ -28,6 +28,7 @@ Operational defaults:
 - Do not commit directly to `master`.
 - Do not ask Susie which branch name, commit message, staging command, or PR structure to use; choose sensible defaults.
 - Do not stage unrelated local changes.
+- Do not use `git add .`; stage explicit files or app-scoped paths only.
 - Prefer draft PRs unless Susie explicitly asks for ready-for-review.
 - Prefer meaningful bundled PRs over tiny granular PRs when the work can be safely validated in internal checkpoints; each merge can trigger a Fruitful Lab Vercel rebuild.
 - Use the GitHub app connector when local GitHub credentials cannot push or create PRs.
@@ -36,13 +37,38 @@ Operational defaults:
 - Treat `https://fruitfulab.com` as the canonical Fruitful Lab customer-facing umbrella marketing site domain. Do not use `fruitfullab.com`.
 - For Fruitful Lab validation, use `API_BASE_URL=http://localhost:8000 npm run ci` from `apps/lab/` unless the task clearly requires another check.
 - For brand/app monorepo work, read `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` and keep separate brands as separate apps under `apps/*`.
+- For parallel brand/app work, read `docs/MONOREPO_PARALLEL_WORKFLOW.md` and use separate branches and preferably separate git worktrees. The main checkout must not be used as a shared dirty folder across multiple project threads.
 - For Fruitful Pin migration work, read `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md`; the current phase-one target is Cloudflare for the public Next.js frontend and WordPress on prepaid A2 as the headless CMS/editor.
 - Before starting local dev servers from Codex, request network permission for the turn. Fresh-thread testing on 2026-05-20 confirmed that `next dev` on `127.0.0.1:4173` fails with `listen EPERM` until network permission is granted.
 - For Fruitful Pin local preview, prefer `make fruitful-pin-dev` from the repo root or `npm run dev:local` from `apps/fruitful-pin/`.
 - If local builds fail because network is needed for `next/font`, request network access and rerun once.
 - If backend validation is relevant, run the repo's backend test command and report any missing environment requirements clearly.
 - Preserve unrelated user edits. Work around them or stage explicit file paths only.
+- If dirty files from another app/brand appear in the current checkout, stop and report the mismatch. Do not edit, stash, reset, clean, delete, or commit those files until the owning workstream confirms the work is preserved.
 - If a remote deployment is protected, use Vercel's authenticated fetch/share-link tools to verify the deployment response.
+
+## Parallel Brand/App Workflow
+
+Each active brand/app thread must have a clearly assigned scope:
+
+- `apps/lab/` for the live Fruitful Lab sandbox/tools app at `fruitfulab.net`.
+- `apps/fruitful-pin/` for Fruitful Pin at `fruitfulpin.com`.
+- `apps/fruitful-lab-site/` for the future Fruitful Lab customer site at `fruitfulab.com`.
+- `apps/bloom-whispers/` for the future Bloom Whispers site at `bloomwhispers.com`.
+
+Before editing, every project thread must report:
+
+```bash
+pwd
+git branch --show-current
+git status --short --branch
+git log -1 --oneline
+git worktree list
+```
+
+Then confirm the assigned app, allowed file scope, and whether any dirty files belong to another app.
+
+Use dedicated worktrees for parallel threads whenever more than one brand/app is being worked on at the same time. A PR should include only its assigned app and docs scope unless a shared change is explicitly called out in the PR.
 
 Structure migration status:
 

@@ -77,7 +77,7 @@ Current visual pass:
 - Susy confirmed on 2026-05-22 that this Commence-inspired structure is the better working direction. Preserve the logic: make each section's job obvious, reduce cards-for-cards' sake, keep placeholders legible, and let future copy/images replace clear slots rather than guessing what a block is meant to be.
 - The Services page should use the same logic: service-lab categories, engagement path, formula/testing language, and clear CTA path. Current service-lab categories are Search ecosystem, Paid media, SEO + content, Lifecycle + funnels, Data + testing, and AI creative systems.
 - The How We Work page is the process page. Use Commence's process page as a structure reference, translated into Fruitful Lab's brand: fit, diagnose, build, test; diagnostic as the lab bench; practical outputs; and a clear fit-call CTA.
-- Keep the moving ribbon limited to the homepage unless Susy asks for it elsewhere; it became distracting on the Services page.
+- Moving ribbons should be used sparingly. On Services, Susy asked for a restrained Commence-style outline logo rail below the hero, using mock brand names only until real proof exists.
 - Services and process hero visuals should include realistic product imagery so product-brand visitors can picture their own brand inside the service, supported by lab/formula overlays rather than only abstract diagrams.
 - The 9G StandOut Plan page can be used as a broad inspiration point for bolder contrast, clearer paid-strategy entry flow, and more direct problem language. Do not copy its exact layout, icon style, pink palette, or contractor-specific language.
 - Leave visible space for founder presence, future photography, diagrams, and system graphics.
@@ -86,6 +86,7 @@ Current visual pass:
 Current services model:
 
 1. Fit Call
-2. Growth Systems Diagnostic as the lead product
-3. Implementation Sprint for the first useful build
-4. Scale Partnership for larger projects or ongoing systems work
+2. Diagnose with a Growth Formula Diagnostic as the lead product
+3. Formulate the search/content/lifecycle/data/creative mix
+4. Build the first useful system
+5. Compound through signal reviews, testing, and ongoing improvement

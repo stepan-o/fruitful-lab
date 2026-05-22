@@ -11,6 +11,7 @@ export const CONTACT_EMAIL = "hello@fruitfulpin.com";
 export const CONTACT_EMAIL_URL = `mailto:${CONTACT_EMAIL}?subject=Fruitful%20Pin%20Fit%20Call`;
 
 export const PRIMARY_NAV = [
+  { label: "Home", href: "/" },
   { label: "Blog", href: "/blog" },
   { label: "Services", href: "/pinterest-services" },
   { label: "Resources", href: "/resources" },

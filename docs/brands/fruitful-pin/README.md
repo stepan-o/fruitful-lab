@@ -7,6 +7,7 @@ Fruitful Pin / Fruitful Bean is the Pinterest-specific service brand and the fir
 Current active spec:
 
 - `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md`
+- `docs/brands/fruitful-pin/second-pass-prep-2026-05-22.md`
 
 Current phase-one target:
 
@@ -50,6 +51,7 @@ These notes reflect Susy's direction from the 2026-05-20 local prototype review.
 
 ## Current Prototype Page Decisions
 
+- Second-pass prep is recorded in `docs/brands/fruitful-pin/second-pass-prep-2026-05-22.md`. Use that file as the active checklist for route/content guardrails, asset gaps, integration gaps, launch gates, and the next implementation chunks.
 - Resources is a soft-conversion hub, not the main sales path. It should support article discovery, list-building, future tools, and visitors who are not ready to book a fit call yet.
 - Contact is the fit-call page. Current direction, after Susy's 2026-05-21 reset, is to stay close to the live `fruitfulpin.com/contact` structure: one-column intro, full-width embedded TidyCal calendar directly under the intro, then the message form directly underneath. The embed must not be trapped in a fixed-height/cropped wrapper; use a tall, full-width, overflow-visible container and keep the public TidyCal URL as the fallback. Do not wire new email automation, CRM, or form backend integrations without explicit approval.
 - Case studies/proof is currently shaped as one featured proof snapshot, supporting proof cards, trust/logos/testimonials, and a small creative-proof/portfolio section that can later hold real pin examples, strategy maps, screenshots, and permission-approved proof packets.

@@ -49,6 +49,7 @@ Initial pages:
 - `/`
 - `/about`
 - `/services`
+- `/how-we-work`
 - `/blog`
 - `/blog/[slug]`
 - `/resources`

@@ -93,7 +93,7 @@ Current foundation:
 
 - static-first Next.js App Router app,
 - `output: "export"` for Cloudflare Pages compatibility,
-- first-pass public routes for `/`, `/services`, `/blog`, `/blog/[slug]`, `/resources`, `/about`, `/contact`, `/privacy`, and `/terms`,
+- first-pass public routes for `/`, `/services`, `/how-we-work`, `/blog`, `/blog/[slug]`, `/resources`, `/about`, `/contact`, `/privacy`, and `/terms`,
 - brand/site constants in `apps/fruitful-lab-site/lib/site.ts`,
 - content boundary in `apps/fruitful-lab-site/lib/content.ts`,
 - WordPress connection placeholder in `apps/fruitful-lab-site/lib/wordpress.ts`,
@@ -105,7 +105,7 @@ Brand and offer direction memory:
 - Fruitful Lab is the bigger umbrella brand where Susi and Esteban can combine AI marketing, funnels, paid media, email, content systems, and workflow expertise.
 - Fruitful Lab is the parent-company style home for Fruitful Pin, Bloom Whispers, Bricoli Studio, and future brands.
 - Fruitful Pin and Fruitful Lab can share a family resemblance, but Fruitful Lab should lean more navy/gold and less pink while Fruitful Pin stays more pink/yellow and Pinterest-specific.
-- Initial site scope includes Home, About, Services, Blog, Resources, Contact, Privacy, and Terms.
+- Initial site scope includes Home, About, Services, How We Work, Blog, Resources, Contact, Privacy, and Terms.
 - Case studies and tools/experiments are intentionally out of the first skeleton.
 - Contact path uses `hello@fruitfulab.com` and a TidyCal booking destination. `NEXT_PUBLIC_TIDYCAL_URL` can override the default fallback.
 - Phase-one CMS direction is WordPress as headless CMS/editor on the existing prepaid hosting model, following the Fruitful Pin approach.

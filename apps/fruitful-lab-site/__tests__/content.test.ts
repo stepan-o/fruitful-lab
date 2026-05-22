@@ -13,6 +13,7 @@ describe("Fruitful Lab customer site config", () => {
   it("defines stable public navigation paths for the marketing foundation", () => {
     expect(PRIMARY_NAV.map((item) => item.href)).toEqual([
       "/services",
+      "/how-we-work",
       "/resources",
       "/blog",
       "/about",

@@ -7,6 +7,7 @@ export const CONTACT_EMAIL = "hello@fruitfulab.com";
 
 export const PRIMARY_NAV = [
   { label: "Services", href: "/services" },
+  { label: "How we work", href: "/how-we-work" },
   { label: "Resources", href: "/resources" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
@@ -15,6 +16,7 @@ export const PRIMARY_NAV = [
 
 export const FOOTER_LINKS = [
   { label: "Services", href: "/services" },
+  { label: "How we work", href: "/how-we-work" },
   { label: "Resources", href: "/resources" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },

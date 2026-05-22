@@ -152,7 +152,7 @@ Do not point `fruitfulpin.com` at this app until preview, content migration, red
 - Site constants: `apps/fruitful-lab-site/lib/site.ts`
 - Placeholder content boundary: `apps/fruitful-lab-site/lib/content.ts`
 - WordPress connection placeholder: `apps/fruitful-lab-site/lib/wordpress.ts`
-- Routes: `/`, `/services`, `/blog`, `/blog/[slug]`, `/resources`, `/about`, `/contact`, `/privacy`, `/terms`
+- Routes: `/`, `/services`, `/how-we-work`, `/blog`, `/blog/[slug]`, `/resources`, `/about`, `/contact`, `/privacy`, `/terms`
 - Contact email: `hello@fruitfulab.com`
 - TidyCal URL can be set with `NEXT_PUBLIC_TIDYCAL_URL`; default fallback is `https://tidycal.com/susycid`.
 

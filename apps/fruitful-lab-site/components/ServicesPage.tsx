@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const SERVICE_LABS = [
@@ -89,17 +90,8 @@ export function ServicesPage() {
       <section className="services-hero">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-24">
           <div>
-            <div className="hero-proof-row" aria-label="Fruitful Lab service markers">
-              <span className="proof-pill proof-pill-light">
-                <span aria-hidden="true">✦✦✦</span>
-                Custom brand formulas
-              </span>
-              <span className="proof-pill proof-pill-dark">
-                <span className="proof-dot" aria-hidden="true" />
-                Built from signal
-              </span>
-            </div>
-            <h1 className="mt-6 max-w-4xl text-5xl font-normal leading-[0.95] text-[var(--heading)] sm:text-6xl lg:text-7xl">
+            <p className="eyebrow">Services</p>
+            <h1 className="mt-5 max-w-4xl text-5xl font-normal leading-[0.95] text-[var(--heading)] sm:text-6xl lg:text-7xl">
               Services mixed around the <span className="gradient-text">right first move.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
@@ -116,6 +108,16 @@ export function ServicesPage() {
           </div>
 
           <div className="service-formula-board" aria-label="Service formula visual">
+            <div className="service-product-photo">
+              <Image
+                src="/images/service-product-lab-photo.jpg"
+                alt="Unbranded specialty product arrangement on a soft studio backdrop"
+                width={1536}
+                height={1024}
+                sizes="(max-width: 900px) 88vw, 410px"
+                priority
+              />
+            </div>
             <div className="formula-core">
               <p>Growth formula</p>
               <strong>Product + stage + signal</strong>
@@ -126,14 +128,6 @@ export function ServicesPage() {
               </span>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="signal-marquee" aria-label="Fruitful Lab service areas">
-        <div className="marquee-track">
-          {[...HERO_TAGS, ...HERO_TAGS, ...HERO_TAGS].map((item, index) => (
-            <span key={`${item}-${index}`}>{item}</span>
-          ))}
         </div>
       </section>
 

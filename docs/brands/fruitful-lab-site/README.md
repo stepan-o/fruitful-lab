@@ -42,6 +42,7 @@ The current foundation does not change DNS, WordPress, A2, Cloudflare, or any li
 - Homepage
 - About
 - Services
+- How We Work
 - Blog
 - Blog post template
 - Resources
@@ -75,6 +76,9 @@ Current visual pass:
 - Current homepage structure is a Commence-inspired scaffold, translated into Fruitful Lab language: proof pills, product-centered hero, moving focus rail, thesis, service-system grid, case-study frame, diagnose/formulate/build/test process, founder/photo area, lab notes, and final fit-call CTA. Use Commence as a layout and hierarchy reference, not as source copy.
 - Susy confirmed on 2026-05-22 that this Commence-inspired structure is the better working direction. Preserve the logic: make each section's job obvious, reduce cards-for-cards' sake, keep placeholders legible, and let future copy/images replace clear slots rather than guessing what a block is meant to be.
 - The Services page should use the same logic: service-lab categories, engagement path, formula/testing language, and clear CTA path. Current service-lab categories are Search ecosystem, Paid media, SEO + content, Lifecycle + funnels, Data + testing, and AI creative systems.
+- The How We Work page is the process page. Use Commence's process page as a structure reference, translated into Fruitful Lab's brand: fit, diagnose, build, test; diagnostic as the lab bench; practical outputs; and a clear fit-call CTA.
+- Keep the moving ribbon limited to the homepage unless Susy asks for it elsewhere; it became distracting on the Services page.
+- Services and process hero visuals should include realistic product imagery so product-brand visitors can picture their own brand inside the service, supported by lab/formula overlays rather than only abstract diagrams.
 - The 9G StandOut Plan page can be used as a broad inspiration point for bolder contrast, clearer paid-strategy entry flow, and more direct problem language. Do not copy its exact layout, icon style, pink palette, or contractor-specific language.
 - Leave visible space for founder presence, future photography, diagrams, and system graphics.
 - Blog archive should follow the same discovery pattern as Fruitful Pin: featured article, article list, search, about block, lead magnet/list-building block, popular reads, and resource links.

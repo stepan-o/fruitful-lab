@@ -7,9 +7,11 @@ Always read the current project memory before architectural or code work:
 3. `docs/SYSTEM_IMPLEMENTATION_AUDIT-2026-05-15.md`
 4. `docs/AGENT_OPERATING_PROCEDURES.md`
 5. `docs/CANONICAL_DOMAINS.md`
+6. `docs/MONOREPO_PARALLEL_WORKFLOW.md`
 
 These files are the repo-level memory for structure, layout, key components, auth, experiments, analytics, frontend/backend contracts, domains, and working patterns.
 `docs/AGENT_OPERATING_PROCEDURES.md` is the explicit process authority for Susie's end-to-end change delivery workflow.
+`docs/MONOREPO_PARALLEL_WORKFLOW.md` is the explicit process authority for parallel brand/app workstreams, worktree isolation, PR scope, and cleanup discipline.
 
 ## Authority Order
 
@@ -41,6 +43,8 @@ If old docs or prompts disagree with current code, verify the code and update th
 - Fruitful Lab is the sandbox/prototype app. Fruitful Pin is the first commercial marketing-site migration target.
 - Hosting can differ by app: Fruitful Lab may remain on Vercel, while Fruitful Pin should target Cloudflare for the public frontend.
 - Apps must not import directly from other apps. Promote reusable code into `packages/*` first.
+- Parallel brand/app work must use separate branches and preferably separate git worktrees. Do not use the main checkout as a shared scratchpad across Fruitful Pin, Fruitful Lab customer site, Bloom Whispers, and Fruitful Lab sandbox work.
+- Before editing in a parallel project thread, confirm `pwd`, branch, `git status --short --branch`, assigned app scope, and allowed file paths. If dirty files from another app appear, stop and coordinate before editing, stashing, resetting, cleaning, or committing.
 - Read `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` before repo-structure, hosting, shared-package, or new-brand work.
 - Read `docs/BRAND_APP_MONOREPO_EXECUTION_PLAN.md` before executing the monorepo migration PR sequence.
 - Read `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md` before Fruitful Pin migration work.
@@ -54,3 +58,4 @@ If old docs or prompts disagree with current code, verify the code and update th
 - Preserve current memory by updating `docs/PROJECT_MEMORY.md` and `docs/REPO_GROUNDING_PACK.md` when contracts change.
 - Fruitful Lab Vercel must build from `apps/lab/`.
 - Before starting a local dev server from Codex, request network permission for the turn; local binding to `127.0.0.1` can fail with `listen EPERM` without it.
+- Never use `git add .` for this repo. Stage explicit files or app-scoped paths only, and keep each PR limited to its assigned app/docs scope unless a shared change is explicitly coordinated.

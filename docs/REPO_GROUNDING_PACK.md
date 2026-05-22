@@ -21,7 +21,7 @@ Related planning reference:
 ## Repo Map
 
 - `apps/lab/` - current Next.js App Router app for Fruitful Lab public pages, tool flows, login, admin, contractor pages, analytics proxies, and experiment diagnostics.
-- `apps/fruitful-pin/` - Fruitful Pin static-first Next.js foundation targeting Cloudflare Pages; not connected to live DNS or WordPress yet.
+- `apps/fruitful-pin/` - Fruitful Pin static-first Next.js first-pass marketing site targeting Cloudflare Pages; not connected to live DNS or WordPress yet.
 - `apps/fruitful-lab-site/` - Fruitful Lab customer-facing umbrella marketing site foundation for `fruitfulab.com`; separate from the sandbox app on `fruitfulab.net`.
 - `apps/` - home for separate deployable brand apps. Current apps include `apps/lab`, `apps/fruitful-pin`, and `apps/fruitful-lab-site`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
 - `packages/` - target home for shared code once real cross-app reuse exists. Do not create broad shared abstractions prematurely.
@@ -135,9 +135,11 @@ Pinterest Fit:
 - App root: `apps/fruitful-pin/`
 - Static export config: `apps/fruitful-pin/next.config.ts`
 - Site constants: `apps/fruitful-pin/lib/site.ts`
-- Placeholder content boundary: `apps/fruitful-pin/lib/content.ts`
+- Content boundary: `apps/fruitful-pin/lib/content.ts`
 - WordPress adapter placeholder: `apps/fruitful-pin/lib/wordpress.ts`
-- Routes: `/`, `/services`, `/blog`, `/case-studies`, `/about`, `/contact`, `/privacy`, `/terms`
+- Native Pinterest Fit Check: `apps/fruitful-pin/app/pinterest-fit-check/page.tsx`, `apps/fruitful-pin/components/PinterestFitAssessmentEmbed.tsx`, `apps/fruitful-pin/lib/fitAssessment.ts`
+- SEO/static export routes: `apps/fruitful-pin/app/sitemap.ts`, `apps/fruitful-pin/app/robots.ts`
+- Routes: `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/case-studies`, `/about`, `/contact`, `/privacy`, `/privacy-policy`, `/terms`, and legacy `/services`
 - Root checks: `make fruitful-pin-test`, `make fruitful-pin-build`, `make fruitful-pin-ci`
 - Local preview from Codex requires network permission before starting the server; otherwise `next dev -H 127.0.0.1 -p 4173` can fail with `listen EPERM`.
 

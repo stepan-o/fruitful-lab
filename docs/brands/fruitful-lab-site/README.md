@@ -53,17 +53,17 @@ Case studies and tools/experiments are intentionally out of the first skeleton. 
 
 ## Brand Direction
 
-Fruitful Lab can share family resemblance with Fruitful Pin, but it should lean more navy and gold than pink. Fruitful Pin can stay more pink/yellow and Pinterest-specific. Fruitful Lab should feel like the broader, systems-minded parent brand.
+Fruitful Lab can share family resemblance with Fruitful Pin, but it should use its own palette and movement. Fruitful Pin can stay more pink/yellow and Pinterest-specific. Fruitful Lab should feel like the broader, systems-minded parent brand.
 
 The current positioning spine lives in `docs/brands/fruitful-lab-site/positioning-spine-2026-05-21.md`. The working core idea is: good products should not be hard to discover. This is positioning territory only, not a locked offer. Current language should favor broader search/discovery over Pinterest-specific positioning for Fruitful Lab.
 
 Current visual pass:
 
-- Use a mostly white base rather than the cream/beige Fruitful Pin direction.
-- Avoid the green/sage labels from the first skeleton; use navy, warmer denim blue, muted aqua, burnt orange-gold, and coral instead.
-- Keep a non-pink gradient as an ecosystem cue across the brand family, but avoid a cold SaaS-style blue/purple feeling.
-- Use Alatsi for body copy and Raleway for headings.
-- Favor flowing, guided sections over repeated stacked rectangles.
+- Use a mostly white and ghost-white base rather than the cream/beige Fruitful Pin direction.
+- Current palette: Ghost White `#EDEDF4`, Soft Periwinkle `#9984D4`, Blazing Flame `#FF4A1C`, Mint Leaf `#21D19F`, and Prussian Blue `#101935`.
+- Keep a non-pink gradient as an ecosystem cue across the brand family, but make it warmer and more editorial than cold SaaS blue/purple.
+- Use Alatsi as the primary heading/accent font and Raleway for readable body copy.
+- Favor flowing, guided sections over repeated stacked rectangles: waves, organic shapes, offset content, and open white space should lead the visual system.
 - Shift the visual tone toward a sharper strategic workbench: stronger dark/white contrast, tighter editorial blocks, offset panels, sharper labels, data/search/reporting motifs, and less soft SaaS styling.
 - The 9G StandOut Plan page can be used as a broad inspiration point for bolder contrast, clearer paid-strategy entry flow, and more direct problem language. Do not copy its exact layout, icon style, pink palette, or contractor-specific language.
 - Leave visible space for founder presence, future photography, diagrams, and system graphics.

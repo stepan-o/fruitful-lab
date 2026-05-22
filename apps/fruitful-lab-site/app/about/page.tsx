@@ -24,7 +24,7 @@ export default function AboutPage() {
               The existing sandbox remains separate. This site is the customer-facing home for the broader Fruitful Lab offer.
             </p>
           </div>
-          <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[var(--shadow-tight)]">
+          <div className="lab-panel p-6 shadow-[var(--shadow-tight)]">
             <h3 className="text-xl font-semibold text-[var(--heading)]">The way we work</h3>
             <dl className="mt-5 space-y-4 text-sm leading-6">
               <div><dt className="font-semibold text-[var(--heading)]">Ecosystem over scattered tactics</dt><dd className="text-[var(--muted)]">Channels work better when the product story, search path, content, email, data, and reporting are connected.</dd></div>
@@ -44,7 +44,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {ECOSYSTEM_ITEMS.map((item) => (
-              <article key={item.name} className="rounded-lg border border-[var(--border)] bg-white p-5">
+              <article key={item.name} className="ecosystem-item">
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--cobalt)]">{item.role}</p>
                 <h3 className="mt-3 text-lg font-semibold text-[var(--heading)]">{item.name}</h3>
                 <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{item.description}</p>

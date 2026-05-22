@@ -8,7 +8,7 @@ Fruitful Lab customer site is the public umbrella marketing site for `fruitfulab
 - Static-first Cloudflare Pages target for phase one.
 - WordPress on prepaid hosting remains the planned headless CMS/editor model, but this foundation does not connect to live WordPress yet.
 - No DNS, WordPress admin, A2, Cloudflare production, or Vercel settings are changed by this app shell.
-- The visual direction starts near the Fruitful Pin family but leans more navy and gold for the broader umbrella brand.
+- The visual direction keeps a family relationship with Fruitful Pin, but uses a distinct Fruitful Lab palette: ghost white, soft periwinkle, blazing flame, mint leaf, and Prussian blue.
 
 ## Commands
 

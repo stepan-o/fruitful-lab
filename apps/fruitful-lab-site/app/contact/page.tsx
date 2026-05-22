@@ -14,7 +14,7 @@ export default function ContactPage() {
       />
       <Section>
         <SectionInner className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
+          <div className="lab-panel contact-panel p-6">
             <h2 className="text-2xl font-semibold text-[var(--heading)]">Book through TidyCal</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--muted)]">
               A first call is for sorting the current stage: offer, funnel, ads, content, AI workflows, email, and what should be built first.
@@ -28,7 +28,7 @@ export default function ContactPage() {
               Open TidyCal
             </a>
           </div>
-          <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
+          <div className="lab-panel contact-panel p-6">
             <h2 className="text-2xl font-semibold text-[var(--heading)]">Prefer email first?</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--muted)]">
               Send a note with your website, offer, and what feels unclear or heavy in the current marketing system.

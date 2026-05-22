@@ -28,13 +28,15 @@ export default function HomePage() {
   return (
     <div className="overflow-hidden">
       <section className="lab-hero">
-        <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-5 py-8 sm:px-8 lg:grid-cols-[1.02fr_0.9fr] lg:items-center lg:py-8">
+        <div className="hero-blob hero-blob-a" aria-hidden="true" />
+        <div className="hero-blob hero-blob-b" aria-hidden="true" />
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.02fr_0.9fr] lg:items-center lg:py-20">
           <div>
             <p className="eyebrow">Fruitful Lab</p>
-            <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+            <h1 className="mt-5 max-w-4xl text-5xl font-normal leading-[0.95] text-[var(--heading)] sm:text-6xl lg:text-7xl">
               Good products should not be hard to <span className="gradient-text">discover.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/78">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
               Fruitful Lab helps specialty product brands make their best products easier to find, understand, and choose by connecting product story, search, content, email, data, testing, and AI-supported workflows.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -53,43 +55,41 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="system-visual" aria-label="A connected product discovery ecosystem map">
-            <div className="signal-strip" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="visual-card visual-card-a">
+          <div className="flow-map" aria-label="A connected product discovery ecosystem map">
+            <div className="flow-orbit flow-orbit-main" aria-hidden="true" />
+            <div className="flow-orbit flow-orbit-soft" aria-hidden="true" />
+            <div className="map-node map-node-a">
               <strong>Product story</strong>
-              <span>What it is, why it matters, and which buying moments it belongs to.</span>
+              <span>Why it matters and when people want it.</span>
             </div>
-            <div className="visual-card visual-card-b">
-              <strong>Search ecosystem</strong>
-              <span>Google, AI search, visual search, and content paths that surface demand.</span>
+            <div className="map-node map-node-b">
+              <strong>Search</strong>
+              <span>Google, AI, visual, and intent-led discovery.</span>
             </div>
-            <div className="visual-card visual-card-c">
-              <strong>Content modes</strong>
-              <span>Educational, use-case-led, lifestyle, and product-direct assets.</span>
+            <div className="map-node map-node-c">
+              <strong>Content</strong>
+              <span>Education, lifestyle, use cases, and product-direct assets.</span>
             </div>
-            <div className="visual-card visual-card-d">
-              <strong>Signal loop</strong>
-              <span>Reporting, tests, and sharper next moves.</span>
+            <div className="map-node map-node-d">
+              <strong>Signals</strong>
+              <span>Reporting, experiments, and sharper next moves.</span>
             </div>
           </div>
         </div>
+        <div className="wave-divider wave-divider-mint" aria-hidden="true" />
       </section>
 
-      <section className="section-plain">
-        <div className="mx-auto max-w-6xl px-5 pb-16 pt-10 sm:px-8 lg:pb-20 lg:pt-12">
+      <section className="section-plain flow-section">
+        <div className="mx-auto max-w-6xl px-5 pb-16 pt-14 sm:px-8 lg:pb-24 lg:pt-18">
           <div className="max-w-3xl">
             <p className="eyebrow">How the engagement flows</p>
             <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[var(--heading)] sm:text-4xl">
               Start narrow enough to be useful, then build the ecosystem around the product.
             </h2>
           </div>
-          <div className="path-shell mt-10 grid gap-5 md:grid-cols-3">
+          <div className="process-flow mt-12">
             {PROCESS_STEPS.map((step, index) => (
-              <article key={step.title} className="path-card p-6">
+              <article key={step.title} className="process-node">
                 <span className="path-number">0{index + 1}</span>
                 <h3 className="mt-6 text-2xl font-bold text-[var(--heading)]">{step.title}</h3>
                 <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{step.description}</p>
@@ -99,7 +99,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-soft">
+      <section className="section-soft wave-section">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:py-20">
           <div>
             <p className="eyebrow">Services</p>
@@ -113,9 +113,9 @@ export default function HomePage() {
               View services
             </Link>
           </div>
-          <div className="space-y-4">
+          <div className="service-river">
             {SERVICE_PACKAGES.map((service, index) => (
-              <article key={service.title} className="grid gap-4 border-t border-[var(--border)] py-5 sm:grid-cols-[4rem_1fr]">
+              <article key={service.title} className="service-river-item">
                 <span className="path-number">0{index + 1}</span>
                 <div>
                   <p className="text-sm font-black text-[var(--cobalt)]">{service.kicker}</p>
@@ -141,9 +141,9 @@ export default function HomePage() {
               Fruitful Lab can hold the senior strategy, systems, data, and implementation work while focused brands keep their own audience, domain, voice, and offer.
             </p>
           </div>
-          <div className="capability-ribbon mt-10">
+          <div className="capability-constellation mt-12">
             {CAPABILITIES.map((capability) => (
-              <div key={capability.title}>
+              <div key={capability.title} className="capability-shape">
                 <h3 className="text-lg font-bold text-[var(--heading)]">{capability.title}</h3>
                 <p className="mt-3">{capability.description}</p>
               </div>

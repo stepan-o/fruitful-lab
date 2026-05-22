@@ -8,14 +8,14 @@ import "./globals.css";
 const alatsi = Alatsi({
   subsets: ["latin"],
   weight: "400",
-  variable: "--font-body",
+  variable: "--font-heading",
   display: "swap",
 });
 
 const raleway = Raleway({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
-  variable: "--font-heading",
+  variable: "--font-body",
   display: "swap",
 });
 

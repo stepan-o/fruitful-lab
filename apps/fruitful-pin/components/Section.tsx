@@ -13,5 +13,5 @@ export function Section({ children, className = "", surface = "background" }: Se
 }
 
 export function SectionInner({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:py-18 ${className}`}>{children}</div>;
+  return <div className={`mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:py-16 ${className}`}>{children}</div>;
 }

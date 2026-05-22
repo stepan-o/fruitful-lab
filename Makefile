@@ -30,16 +30,16 @@ lab-ci: lab-test lab-build
 frontend-ci: lab-ci
 
 fruitful-pin-install:
-	cd apps/fruitful-pin && npm ci
+	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm ci
 
 fruitful-pin-dev:
-	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm run dev:local
+	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm run dev:local
 
 fruitful-pin-test:
-	cd apps/fruitful-pin && npm test
+	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm test
 
 fruitful-pin-build:
-	cd apps/fruitful-pin && npm run build
+	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm run build
 
 fruitful-pin-ci: fruitful-pin-test fruitful-pin-build
 

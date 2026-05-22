@@ -68,6 +68,7 @@ Current visual pass:
 - Borrowable Commence-style patterns: pill navigation, richer service navigation later, full-width moving trust/positioning rail, serious diagnostic offer framing, featured case-study style modules, metrics/signals, and a clear process section.
 - Do not copy Commence's exact language, exact layout, colors, client claims, or Shopify-specific positioning. Do not show fake client logos or fake performance proof.
 - The homepage hero should stay product-centered: the product/story sits in the middle, with connected discovery paths around it. Avoid generic pills or disconnected floating cards.
+- Current hero test direction: proof-style pills can sit above the headline, CTAs should be pill-shaped with the fit-call action first, and the hero visual should illustrate product discovery/search with product imagery or a phone/search mockup rather than an abstract scheme.
 - Section transitions should use smooth curves and open space, not jagged waves.
 - Shift the visual tone toward a sharper strategic workbench: stronger dark/white contrast, tighter editorial blocks, offset panels, sharper labels, data/search/reporting motifs, and less soft SaaS styling.
 - The 9G StandOut Plan page can be used as a broad inspiration point for bolder contrast, clearer paid-strategy entry flow, and more direct problem language. Do not copy its exact layout, icon style, pink palette, or contractor-specific language.

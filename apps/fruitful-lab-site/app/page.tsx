@@ -50,7 +50,16 @@ export default function HomePage() {
         <div className="hero-blob hero-blob-b" aria-hidden="true" />
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] max-w-6xl gap-12 px-5 pb-24 pt-16 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:items-center lg:pb-28 lg:pt-20">
           <div>
-            <p className="hero-kicker">For specialty product brands</p>
+            <div className="hero-proof-row" aria-label="Future proof markers">
+              <span className="proof-pill proof-pill-light">
+                <span aria-hidden="true">★★★★★</span>
+                Reviews coming soon
+              </span>
+              <span className="proof-pill proof-pill-dark">
+                <span className="proof-dot" aria-hidden="true" />
+                Partner credentials in progress
+              </span>
+            </div>
             <h1 className="mt-5 max-w-4xl text-5xl font-normal leading-[0.95] text-[var(--heading)] sm:text-6xl lg:text-7xl">
               Good products should not be hard to <span className="gradient-text">discover.</span>
             </h1>
@@ -58,34 +67,66 @@ export default function HomePage() {
               Fruitful Lab helps specialty product brands make their best products easier to find, understand, and choose by connecting product story, search, content, email, data, testing, and AI-supported workflows.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link className="btn btn-primary" href="/services">
-                Explore the approach
+              <Link className="btn btn-primary" href="/contact">
+                Book a fit call →
               </Link>
-              <Link className="btn btn-secondary" href="/contact">
-                Book a fit call
+              <Link className="btn btn-secondary" href="/services">
+                How we work →
               </Link>
             </div>
           </div>
 
-          <div className="product-system" aria-label="Product-centered discovery system visual">
-            <div className="product-orbit product-orbit-a" aria-hidden="true" />
-            <div className="product-orbit product-orbit-b" aria-hidden="true" />
-            <div className="product-core">
-              <span className="product-core-label">Product</span>
-              <strong>Signature product</strong>
-              <p>Use case, proof, promise, and path to purchase in one clearer system.</p>
+          <div className="hero-discovery-showcase" aria-label="Example product discovery search visual">
+            <div className="showcase-product-card showcase-product-card-main">
+              <span className="product-tag">Search-ready page</span>
+              <div className="product-image product-image-mint" />
+              <strong>Organic baby rattle set</strong>
+              <p>Use case, product story, and trust cues ready for discovery.</p>
             </div>
-            <div className="product-path product-path-search">
-              <span>01</span>
-              <strong>Search demand</strong>
+            <div className="showcase-product-card showcase-product-card-small">
+              <span className="product-tag">Use case content</span>
+              <div className="product-image product-image-flame" />
+              <strong>Quiet play guide</strong>
             </div>
-            <div className="product-path product-path-story">
-              <span>02</span>
-              <strong>Story + content</strong>
-            </div>
-            <div className="product-path product-path-followup">
-              <span>03</span>
-              <strong>Email + data</strong>
+            <div className="phone-mockup">
+              <div className="phone-speaker" aria-hidden="true" />
+              <div className="phone-screen">
+                <div className="search-app-top">
+                  <span className="search-dot" />
+                  <span className="search-app-name">Visual search</span>
+                </div>
+                <div className="search-bar">
+                  <span>best sensory toys for babies</span>
+                </div>
+                <div className="search-tabs">
+                  <span className="active">Ideas</span>
+                  <span>Products</span>
+                  <span>Guides</span>
+                </div>
+                <div className="search-results">
+                  <article className="result-card result-card-featured">
+                    <div className="result-image result-image-a" />
+                    <div>
+                      <strong>Soft sensory set for calm play</strong>
+                      <p>Why parents choose it, when to use it, what makes it safer.</p>
+                    </div>
+                  </article>
+                  <article className="result-card">
+                    <div className="result-image result-image-b" />
+                    <div>
+                      <strong>Giftable baby toy bundle</strong>
+                      <p>Use-case angle + product path.</p>
+                    </div>
+                  </article>
+                  <article className="result-card">
+                    <div className="result-image result-image-c" />
+                    <div>
+                      <strong>How to choose first toys</strong>
+                      <p>Educational content that leads back to the product.</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
             </div>
           </div>
         </div>

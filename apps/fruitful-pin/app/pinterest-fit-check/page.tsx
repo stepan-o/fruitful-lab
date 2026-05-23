@@ -37,7 +37,7 @@ export default function PinterestFitCheckPage() {
             </p>
             <div className="fit-check-note mt-8">
               <span>How to use it</span>
-              <p>Take the fit check first, then use the result to decide whether to book a fit call, read deeper resources, or strengthen the foundation before Pinterest becomes the main move.</p>
+              <p>Take the Fit Check first, then use the result to decide whether to book a Fit Call, read deeper resources, or strengthen the foundation before Pinterest becomes the main move.</p>
             </div>
           </div>
 
@@ -71,7 +71,7 @@ export default function PinterestFitCheckPage() {
         <div className="cta-wave mx-auto max-w-6xl">
           <h2 className="brand-display max-w-3xl headline-section text-[var(--heading)]">Want help reading the result?</h2>
           <p className="mt-5 max-w-3xl text-base leading-7 text-[var(--muted)]">
-            Start with a fit call and we&apos;ll look at your content, offer, and Pinterest opportunity without guessing.
+            Start with a Fit Call and we&apos;ll look at your content, offer, and Pinterest opportunity without guessing.
           </p>
           <Link className="button-primary mt-7 inline-flex min-h-12 items-center justify-center rounded-md px-6 text-sm font-semibold" href={BOOKING_URL}>
             {FIT_CALL_LABEL}

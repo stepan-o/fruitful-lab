@@ -248,7 +248,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <Link className="blog-next-action-card" href="/pinterest-services">
                   <span>Want support?</span>
                   <strong>See the Pinterest service paths</strong>
-                  <small>Compare strategy, organic, ads, and full-funnel support before a fit call.</small>
+                  <small>Compare strategy, organic, ads, and implementation support before a Fit Call.</small>
                 </Link>
               </div>
             </section>
@@ -256,7 +256,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <section className="blog-post-final-cta">
               <h2 className="brand-display max-w-3xl headline-section text-[var(--heading)]">Want this mapped to your brand?</h2>
               <p className="mt-5 max-w-3xl text-base leading-7 text-[var(--muted)]">
-                Start with a fit call and we&apos;ll look at your content, offer, and Pinterest opportunity without guessing.
+                Start with a Fit Call and we&apos;ll look at your content, offer, and Pinterest opportunity without guessing.
               </p>
               <Link className="button-primary mt-7 inline-flex min-h-12 items-center justify-center rounded-md px-6 text-sm font-semibold" href={BOOKING_URL}>
                 {FIT_CALL_LABEL}

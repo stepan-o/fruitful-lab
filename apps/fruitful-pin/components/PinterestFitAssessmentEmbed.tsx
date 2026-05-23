@@ -53,7 +53,7 @@ export function PinterestFitAssessmentEmbed({ intro = "full" }: PinterestFitAsse
           Seven quick questions. An immediate result. The option to save it by email after you see it.
         </p>
         <button className="button-primary mt-6 inline-flex min-h-12 items-center justify-center px-6" type="button" onClick={() => setStarted(true)}>
-          Start the fit check
+          Start the Fit Check
         </button>
       </section>
     );
@@ -75,7 +75,7 @@ export function PinterestFitAssessmentEmbed({ intro = "full" }: PinterestFitAsse
           <span>Option to save by email</span>
         </div>
         <button className="button-primary mt-6 inline-flex min-h-12 items-center justify-center px-6" type="button" onClick={() => setStarted(true)}>
-          Start the fit check
+          Start the Fit Check
         </button>
       </section>
     );

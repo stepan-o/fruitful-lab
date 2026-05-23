@@ -38,7 +38,7 @@ export default function CaseStudiesPage() {
               Pinterest work with a real job, not just <span className="text-gradient">prettier pins.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              A first look at the brands, campaigns, and search-led work Fruitful Pin has supported: the strategy, the creative, the traffic path, and the results signals that make Pinterest worth taking seriously.
+              A first look at the brands, campaigns, and Pinterest work Fruitful Pin has supported: the strategy, the creative, the traffic path, and the results signals that make Pinterest worth taking seriously.
             </p>
           </div>
           <aside className="case-hero-proof-card reveal-on-scroll" aria-label="Proof preview">
@@ -165,7 +165,7 @@ export default function CaseStudiesPage() {
               Better proof starts with the right <span className="text-gradient">Pinterest job.</span>
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-              Some brands need search-led organic structure. Others need creative testing, paid distribution, or a stronger destination after the click. The first step is naming the constraint clearly.
+              Some brands need a clearer organic structure. Others need creative testing, paid distribution, or a stronger destination after the click. The first step is naming the constraint clearly.
             </p>
             <Link className="button-primary mt-7 inline-flex min-h-11 items-center justify-center rounded-md px-5 text-sm font-semibold" href={BOOKING_URL}>
               {FIT_CALL_LABEL}

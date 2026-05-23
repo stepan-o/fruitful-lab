@@ -142,7 +142,7 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
     timeline: "Best reviewed in 90-day strategy cycles.",
     includes: [
       "Pinterest strategy mapped to offers and landing pages",
-      "Organic pin creation, board structure, and search-led publishing",
+      "Organic pin creation, board structure, and keyword-informed publishing",
       "Ads planning and optimization when the funnel is ready",
       "Monthly reporting focused on clicks, saves, traffic, and conversion signals",
     ],

@@ -6,8 +6,9 @@ import sitemap from "@/app/sitemap";
 import { BLOG_POSTS } from "@/lib/content";
 import { CANONICAL_URL, FOOTER_LINKS, PRIMARY_NAV } from "@/lib/site";
 
-const PUBLIC_PAGE_FILES = [
+const PUBLIC_COPY_SOURCES = [
   "app/page.tsx",
+  "app/[slug]/page.tsx",
   "app/about/page.tsx",
   "app/blog/page.tsx",
   "app/case-studies/page.tsx",
@@ -18,14 +19,25 @@ const PUBLIC_PAGE_FILES = [
   "app/resources/page.tsx",
   "app/terms/page.tsx",
   "components/ServicesPage.tsx",
+  "components/PinterestFitAssessmentEmbed.tsx",
   "components/ContactForm.tsx",
+  "lib/fitAssessment.ts",
+  "lib/content.ts",
 ] as const;
 
 const BANNED_VISITOR_COPY = [
+  /a place for/i,
+  /coming soon/i,
+  /exact copy can be refined/i,
+  /for now/i,
+  /future lead magnets/i,
+  /future resources/i,
+  /get more specific later/i,
   /prototype/i,
   /first-pass/i,
   /placeholder until/i,
   /no dns/i,
+  /no email required/i,
   /calendar link is still/i,
   /can live here/i,
   /placeholder\./i,
@@ -96,12 +108,26 @@ describe("Fruitful Pin SEO and route safety", () => {
   });
 
   it("keeps implementation-status language out of visitor-facing page source", () => {
-    for (const file of PUBLIC_PAGE_FILES) {
+    for (const file of PUBLIC_COPY_SOURCES) {
       const source = fs.readFileSync(path.join(process.cwd(), file), "utf8");
 
       for (const phrase of BANNED_VISITOR_COPY) {
         expect(source).not.toMatch(phrase);
       }
     }
+  });
+
+  it("keeps the public typography and button system aligned with the Fruitful Pin art direction", () => {
+    const globals = fs.readFileSync(path.join(process.cwd(), "app/globals.css"), "utf8");
+
+    expect(globals).toContain("family=Poppins");
+    expect(globals).toContain('--font-body: "Poppins"');
+    expect(globals).toContain("--headline-hero:");
+    expect(globals).toContain(".text-gradient");
+    expect(globals).toContain("font-style: italic");
+    expect(globals).toContain(".button-outline");
+    expect(globals).toContain("border-radius: 999px");
+    expect(globals).toContain("animation: button-glow-pulse");
+    expect(globals).not.toContain("Raleway");
   });
 });

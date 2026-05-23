@@ -11,17 +11,17 @@ const portfolioSamples = [
   {
     title: "Pin creative system",
     label: "Design set",
-    description: "A place for real pin examples, template families, and creative directions.",
+    description: "Pin examples, template families, and creative directions that show how strategy becomes saveable assets.",
   },
   {
     title: "Strategy map",
     label: "Search path",
-    description: "A place for keyword maps, board structure, funnel sketches, and page paths.",
+    description: "Keyword maps, board structure, funnel sketches, and page paths that connect discovery to a useful next step.",
   },
   {
     title: "Campaign board",
     label: "Launch set",
-    description: "A place for seasonal visuals, ad concepts, and campaign learning snapshots.",
+    description: "Seasonal visuals, ad concepts, and campaign learning snapshots that show how Pinterest supports timely moments.",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function CaseStudiesPage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_0.75fr] lg:items-center lg:py-20">
           <div className="max-w-4xl">
             <p className="eyebrow">Proof snapshots</p>
-            <h1 className="brand-display mt-4 text-4xl leading-tight text-[var(--heading)] sm:text-5xl lg:text-6xl">
+            <h1 className="brand-display mt-4 headline-hero text-[var(--heading)]">
               Pinterest work with a real job, not just <span className="text-gradient">prettier pins.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
@@ -55,7 +55,7 @@ export default function CaseStudiesPage() {
             <article className="case-study-feature zoom-on-scroll">
               <div>
                 <p className="eyebrow">Featured snapshot</p>
-                <h2 className="brand-display mt-3 text-3xl leading-tight text-[var(--heading)] sm:text-5xl">
+                <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
                   {featuredStudy.brand}: Pinterest built around the job it needed to do.
                 </h2>
                 <p className="mt-5 text-base leading-7 text-[var(--muted)]">{featuredStudy.result}</p>
@@ -86,7 +86,7 @@ export default function CaseStudiesPage() {
               <article key={study.brand} className="case-study-card reveal-on-scroll">
                 <p className="case-study-metric">{study.metricValue}</p>
                 <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-[var(--brand-rust)]">{study.metricLabel}</p>
-                <h2 className="brand-display mt-5 text-2xl leading-tight text-[var(--heading)]">{study.brand}</h2>
+                <h2 className="brand-display mt-5 headline-card text-[var(--heading)]">{study.brand}</h2>
                 <p className="mt-2 text-sm font-bold text-[var(--brand-pink)]">{study.context}</p>
                 <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{study.result}</p>
                 <p className="mt-auto pt-6 text-xs font-bold uppercase tracking-[0.14em] text-[var(--brand-rust)]">Proof snapshot</p>
@@ -100,7 +100,7 @@ export default function CaseStudiesPage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:py-20">
           <div>
             <p className="eyebrow">Creative proof</p>
-            <h2 className="brand-display mt-3 text-3xl leading-tight text-[var(--heading)] sm:text-4xl">
+            <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
               Case studies can show the <span className="text-gradient">strategy and the visuals</span> together.
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
@@ -125,7 +125,7 @@ export default function CaseStudiesPage() {
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
           <div className="max-w-3xl">
             <p className="eyebrow">Proof and people</p>
-            <h2 className="brand-display mt-3 text-3xl leading-tight text-[var(--heading)] sm:text-4xl">Brands and creators have trusted this Pinterest brain.</h2>
+            <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">Brands and creators have trusted this Pinterest brain.</h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)]">
               Proof does not always start as a polished case-study page. Sometimes it starts as a clear result, a client note, or a pattern worth showing.
             </p>
@@ -144,7 +144,7 @@ export default function CaseStudiesPage() {
                   <div className="flex items-center gap-3">
                     <span className="testimonial-avatar">{testimonial.initials}</span>
                     <div className="min-w-0">
-                      <h3 className="text-lg font-semibold leading-snug text-[var(--heading)]">{testimonial.brand}</h3>
+                      <h3 className="headline-compact text-[var(--heading)]">{testimonial.brand}</h3>
                       <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-rust)]">{testimonial.role}</p>
                     </div>
                   </div>
@@ -161,7 +161,7 @@ export default function CaseStudiesPage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:py-20">
           <div>
             <p className="eyebrow">How proof gets built</p>
-            <h2 className="brand-display mt-3 text-3xl leading-tight text-[var(--heading)] sm:text-4xl">
+            <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
               Better proof starts with the right <span className="text-gradient">Pinterest job.</span>
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
@@ -176,7 +176,7 @@ export default function CaseStudiesPage() {
               <article key={step.title} className="process-step-card reveal-on-scroll">
                 <span className="grid size-10 place-items-center rounded-full bg-[var(--brand-pink)] text-sm font-bold text-white">{index + 1}</span>
                 <div>
-                  <h3 className="text-xl font-semibold text-[var(--heading)]">{step.title}</h3>
+                  <h3 className="headline-compact text-[var(--heading)]">{step.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{step.description}</p>
                 </div>
               </article>

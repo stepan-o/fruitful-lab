@@ -66,8 +66,8 @@ export function SiteFooter() {
         </nav>
         <div className="site-footer-card p-5">
           <p className="font-semibold">Not sure where Pinterest fits?</p>
-          <p className="mt-2 leading-6">Start with a fit call and we will sort the Pinterest path before anyone touches a pin.</p>
-          <Link className="button-primary mt-4 inline-flex min-h-10 items-center justify-center rounded-md px-4 text-sm font-semibold" href={BOOKING_URL}>
+          <p className="mt-2 leading-6">Start with a Fit Call and we&apos;ll look at whether Pinterest can support the goals that matter right now.</p>
+          <Link className="button-primary mt-4 inline-flex min-h-10 items-center justify-center px-4" href={BOOKING_URL}>
             {FIT_CALL_LABEL}
           </Link>
         </div>

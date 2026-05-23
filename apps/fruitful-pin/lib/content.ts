@@ -197,7 +197,7 @@ export const A_LA_CARTE = [
   {
     title: "Pinterest Keyword Bank + Board Strategy",
     price: "USD $397",
-    description: "A search-led foundation for discoverability and growth.",
+    description: "A clearer keyword and board foundation for being found by the right people.",
     includes: [
       "Keyword research and interest mapping",
       "Board titles and descriptions rewritten for SEO",
@@ -353,48 +353,61 @@ export const PROCESS_STEPS = [
 
 export const FIT_SIGNALS = {
   good: [
-    "You sell physical or digital products online.",
-    "You create useful content in niches like food, travel, wellness, home, gardening, or lifestyle.",
-    "You want search-based visibility that compounds over time.",
+    "You sell products people research, compare, save, gift, style, or plan around.",
+    "You publish useful content in niches like food, travel, home, wellness, education, gardening, or lifestyle.",
+    "You want visibility that can keep working beyond one post, launch, or campaign.",
     "You have offers, pages, or content worth sending traffic toward.",
   ],
   notYet: [
-    "You need overnight results or viral spikes.",
-    "You want someone to post pretty pins without a funnel plan.",
-    "You do not have an offer, content engine, or website experience ready yet.",
+    "You need overnight results, viral spikes, or instant sales from Pinterest.",
+    "You only want someone to post pretty pins without looking at the bigger business picture.",
+    "You do not have an offer, content library, product page, or website experience ready yet.",
   ],
 } as const;
 
 export const RESOURCE_ITEMS: ResourceItem[] = [
   {
-    title: "Pinterest strategy guide",
+    title: "Pinterest Fit Check",
+    type: "Quiz",
+    status: "Ready now",
+    description:
+      "A quick questionnaire to help you see whether Pinterest is worth building around right now, based on your offer, content, website, and goals.",
+    ctaLabel: "Start the Fit Check",
+    ctaHref: "/pinterest-fit-check",
+  },
+  {
+    title: "Pinterest Opportunity Guide",
     type: "Guide",
-    status: "Coming soon",
-    description: "A simple guide for deciding what Pinterest should do for your content, products, or service path before you hire support.",
+    status: "Waitlist",
+    description:
+      "A simple guide for understanding when Pinterest makes sense, what needs to be ready first, and what kind of business benefits most.",
     ctaLabel: "Join the list",
     ctaHref: "/contact",
   },
   {
-    title: "Pin Ready Blueprint",
-    type: "Mini-course",
-    status: "Coming soon",
-    description: "A short learning path for turning scattered Pinterest ideas into a cleaner plan, content structure, and next step.",
-    ctaLabel: "Join the list",
-    ctaHref: "/contact",
-  },
-  {
-    title: "Pinterest content checklist",
+    title: "Pinterest Page Readiness Checklist",
     type: "Checklist",
-    status: "Coming soon",
-    description: "A practical checklist for checking whether a blog post, product page, or offer is ready to receive Pinterest traffic.",
+    status: "Waitlist",
+    description:
+      "A practical checklist for seeing whether your product page, blog post, offer, or opt-in is ready to receive Pinterest traffic.",
     ctaLabel: "Join the list",
     ctaHref: "/contact",
   },
   {
-    title: "Client-attracting pin ideas",
-    type: "Prompt sheet",
-    status: "Coming soon",
-    description: "Prompt-style idea starters for turning your offer, content, and client questions into pins people may actually save and click.",
+    title: "Pinterest Keyword Starter Kit",
+    type: "Keyword Kit",
+    status: "Waitlist",
+    description:
+      "A beginner-friendly keyword guide for finding the words people may already use when they search, plan, compare, and save.",
+    ctaLabel: "Join the list",
+    ctaHref: "/contact",
+  },
+  {
+    title: "Pin Ideas for Product Brands",
+    type: "Prompt Sheet",
+    status: "Waitlist",
+    description:
+      "Prompt-style idea starters for turning products, use cases, FAQs, seasonal moments, and customer questions into pins people may actually save and click.",
     ctaLabel: "Join the list",
     ctaHref: "/contact",
   },
@@ -402,7 +415,8 @@ export const RESOURCE_ITEMS: ResourceItem[] = [
     title: "Pinterest articles",
     type: "Blog",
     status: "Ready now",
-    description: "Plain-English articles on organic Pinterest, ads, product discovery, and what a pin is supposed to do.",
+    description:
+      "Plain-English articles on Pinterest strategy, organic growth, ads, product discovery, and what a pin is supposed to help people do.",
     ctaLabel: "Read the blog",
     ctaHref: "/blog",
   },
@@ -411,15 +425,21 @@ export const RESOURCE_ITEMS: ResourceItem[] = [
 export const TOOL_STACK = [
   {
     name: "ClickUp",
-    role: "Content planning and production tracking",
-  },
-  {
-    name: "MailerLite",
-    role: "Email capture and nurture sequences",
+    bestFor: "Content planning and production tracking",
+    description: "Use it to keep blog posts, pins, client tasks, approvals, and recurring workflows from living in scattered notes.",
+    ctaHref: "https://clickup.com/",
   },
   {
     name: "Metricool",
-    role: "Scheduling, reporting, and channel visibility",
+    bestFor: "Scheduling, reporting, and channel visibility",
+    description: "Useful for planning and scheduling content, reviewing performance, and keeping social publishing less chaotic.",
+    ctaHref: "https://metricool.com/",
+  },
+  {
+    name: "MailerLite",
+    bestFor: "Email capture and nurture sequences",
+    description: "Useful for turning Pinterest traffic into subscribers through forms, automations, and simple email follow-up.",
+    ctaHref: "https://www.mailerlite.com/",
   },
 ] as const;
 
@@ -448,7 +468,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Pinterest Marketing",
     date: "February 5, 2026",
     excerpt:
-      "For gardening brands and bloggers, Pinterest works best when content matches the projects, problems, and plans people are already searching for.",
+      "For gardening brands and bloggers, Pinterest works best when your ideas show up while people are planning what to plant, buy, fix, or try next.",
     keyTakeaways: [
       "Pinterest is search and saving, not daily posting for its own sake.",
       "Gardening searches cluster around projects, problems, and seasonal plans.",
@@ -478,7 +498,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Pinterest Ads",
     date: "January 17, 2026",
     excerpt:
-      "Organic Pinterest and Pinterest ads do different jobs. Organic builds the library; ads buy speed and distribution when the funnel is ready.",
+      "Organic Pinterest and Pinterest ads can both help, but they solve different problems. Learn when to build the base, when to test paid reach, and what needs to be ready first.",
     keyTakeaways: [
       "Organic builds compounding discovery over time.",
       "Ads create faster traffic and faster learning.",
@@ -551,7 +571,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "E-commerce Marketing",
     date: "January 2026",
     excerpt:
-      "Product brands need more than attractive pins. Pinterest works when search intent, creative, product pages, and measurement are connected.",
+      "For product brands, Pinterest works better when pretty creative connects to the questions people ask before they buy, compare, save, or choose.",
     keyTakeaways: [
       "Pretty pins are not a strategy by themselves.",
       "Product content needs a clear search and shopping job.",

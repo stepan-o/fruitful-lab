@@ -1,15 +1,23 @@
 import Image from "next/image";
+import Link from "next/link";
 import Script from "next/script";
 import { ContactForm } from "@/components/ContactForm";
-import { CALENDAR_EMBED_PATH, CALENDAR_URL, CONTACT_EMAIL, CONTACT_EMAIL_URL } from "@/lib/site";
+import {
+  CALENDAR_EMBED_PATH,
+  CALENDAR_URL,
+  CONTACT_EMAIL,
+  CONTACT_EMAIL_URL,
+  FIT_CALL_LABEL,
+  PINTEREST_FIT_CHECK_URL,
+} from "@/lib/site";
 
 const HEADSHOT = "https://fruitfulpin.com/wp-content/uploads/2025/12/Cid-headshot.webp";
 
-const RIBBON_ITEMS = ["Book a fit call", "Pinterest strategy", "Ask a question", "Find the next step"] as const;
+const RIBBON_ITEMS = ["Find the next step", "Book a Fit Call", "Pinterest strategy", "Ask a question", "Start the Fit Check"] as const;
 
 export const metadata = {
   title: "Contact",
-  description: "Book a Fruitful Pin fit call or send a message about Pinterest services, collaborations, speaking, or general questions.",
+  description: "Book a Fruitful Pin Fit Call, send a message, or start the Pinterest Fit Check if you are not ready for a call yet.",
 };
 
 export default function ContactPage() {
@@ -20,12 +28,21 @@ export default function ContactPage() {
         <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 lg:py-18">
           <div className="contact-flow-copy reveal-on-scroll">
             <p className="eyebrow">Contact</p>
-            <h1 className="brand-display mt-4 max-w-4xl text-4xl leading-tight text-[var(--heading)] sm:text-5xl lg:text-6xl">
-              Let&apos;s figure out what <span className="text-gradient italic">Pinterest could do</span> for your brand.
+            <h1 className="brand-display mt-4 max-w-4xl headline-hero text-[var(--heading)]">
+              Let&apos;s figure out what <span className="text-gradient">Pinterest could do</span> for your brand.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              Bring the questions, the half-formed ideas, or the quiet feeling that Pinterest should be doing more. This is where we sort the next right move before anyone starts talking packages.
-            </p>
+            <div className="mt-6 max-w-2xl space-y-4 text-lg leading-8 text-[var(--muted)]">
+              <p>Bring the questions, the half-formed ideas, or the quiet feeling that Pinterest should be doing more.</p>
+              <p>This is where we look at your business, your goals, and whether Pinterest is worth building around right now.</p>
+            </div>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a className="button-primary inline-flex min-h-12 items-center justify-center px-6" href="#book-fit-call">
+                {FIT_CALL_LABEL}
+              </a>
+              <Link className="button-outline" href={PINTEREST_FIT_CHECK_URL}>
+                Start the Fit Check
+              </Link>
+            </div>
           </div>
 
           <div className="contact-human-note reveal-on-scroll">
@@ -35,8 +52,9 @@ export default function ContactPage() {
             <div>
               <p className="eyebrow">Hi, I&apos;m Susy</p>
               <p className="mt-2 text-base leading-7 text-[var(--muted)]">
-                I&apos;ll help you look at Pinterest like a search path, not another content chore. If there is a fit, we will map the cleanest next step together.
+                I&apos;ll help you look at Pinterest in the context of your business, not as another content chore. If there is a fit, we will choose the cleanest next step together.
               </p>
+              <p className="mt-3 text-sm font-bold text-[var(--brand-rust)]">No pressure to know the answer before the call.</p>
             </div>
           </div>
 
@@ -48,7 +66,15 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="contact-calendar-panel reveal-on-scroll">
+          <div id="book-fit-call" className="contact-calendar-panel reveal-on-scroll">
+            <div className="contact-calendar-copy">
+              <p className="eyebrow">Book a Fit Call</p>
+              <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">Start with a conversation, not a package.</h2>
+              <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
+                <p>The Fit Call is for figuring out whether Pinterest makes sense for your business right now and what the next right step could be.</p>
+                <p>If there is a fit, the next step is usually The Fruitful Path, the paid strategy step before implementation.</p>
+              </div>
+            </div>
             <div className="contact-calendar-shell">
               <div className="tidycal-embed" data-path={CALENDAR_EMBED_PATH} />
             </div>
@@ -64,12 +90,15 @@ export default function ContactPage() {
           <div className="contact-message-panel reveal-on-scroll">
             <div className="contact-message-copy">
               <p className="eyebrow">Have a different question?</p>
-              <h2 className="brand-display mt-3 text-3xl leading-tight text-[var(--heading)] sm:text-4xl">Send a message.</h2>
+              <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">Send a message.</h2>
               <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-                For collaboration ideas, podcast invitations, speaking, or general questions, use the form and I&apos;ll get back to you within 2-3 business days.
+                For collaboration ideas, podcast invitations, speaking, partnerships, or general questions, use the form and I&apos;ll get back to you within 2 to 3 business days.
               </p>
               <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-                If forms aren&apos;t your thing, you can also reach me at{" "}
+                If your question is about working together on Pinterest, the Fit Call is usually the best place to start.
+              </p>
+              <p className="mt-5 text-base leading-7 text-[var(--muted)]">
+                You can also reach me at{" "}
                 <a className="font-bold text-[var(--brand-pink)]" href={CONTACT_EMAIL_URL}>
                   {CONTACT_EMAIL}
                 </a>
@@ -77,6 +106,21 @@ export default function ContactPage() {
               </p>
             </div>
             <ContactForm />
+          </div>
+
+          <div className="contact-fit-check-card">
+            <div>
+              <p className="eyebrow">Not ready for a call?</p>
+              <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
+                Start with the Pinterest <span className="text-gradient">Fit Check.</span>
+              </h2>
+              <p className="mt-5 text-base leading-7 text-[var(--muted)]">
+                Answer seven quick questions about your offer, content, website, and goals. You&apos;ll get an immediate direction, with the option to send your result to your inbox.
+              </p>
+            </div>
+            <Link className="button-outline" href={PINTEREST_FIT_CHECK_URL}>
+              Start the Fit Check
+            </Link>
           </div>
         </div>
       </section>

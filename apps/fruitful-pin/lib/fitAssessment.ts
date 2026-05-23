@@ -207,7 +207,7 @@ export const PINTEREST_FIT_ASSESSMENT_QUESTIONS: PinterestFitAssessmentQuestion[
       {
         id: "lean-start",
         label: "Open, but I would want to start lean",
-        helper: "You may want a roadmap, audit, or smaller first step before management.",
+        helper: "You may want a focused strategy step before management.",
         points: 2,
         signal: "A focused first step may fit better than jumping straight into management.",
       },
@@ -252,7 +252,7 @@ export const PINTEREST_FIT_ASSESSMENT_QUESTIONS: PinterestFitAssessmentQuestion[
       {
         id: "organic-only",
         label: "Not open right now",
-        helper: "You only want an organic Pinterest path for now.",
+        helper: "You only want an organic Pinterest path at this stage.",
         points: 0,
       },
     ],
@@ -271,7 +271,7 @@ const OUTCOMES: Record<PinterestFitAssessmentOutcome["id"], PinterestFitAssessme
     headline: "Pinterest looks like a real growth path for this stage.",
     summary:
       "You likely have enough offer, content, and page readiness for Pinterest to support discovery, traffic, or list growth in a meaningful way.",
-    nextStep: "Use a fit call to map the smartest first move before building the whole system.",
+    nextStep: "A Pinterest Fit Call or The Fruitful Path can help clarify what to fix, build, or prioritize first.",
   },
   "possible-fit": {
     id: "possible-fit",
@@ -279,7 +279,7 @@ const OUTCOMES: Record<PinterestFitAssessmentOutcome["id"], PinterestFitAssessme
     headline: "Pinterest could work, but the path needs focus first.",
     summary:
       "There are useful signals here, but the strategy should start by tightening the offer, content library, or page experience before scaling activity.",
-    nextStep: "A focused roadmap or fit call can clarify what to fix first.",
+    nextStep: "A Pinterest Fit Call or The Fruitful Path can help clarify what to fix, build, or prioritize first.",
   },
   "later-fit": {
     id: "later-fit",
@@ -287,7 +287,7 @@ const OUTCOMES: Record<PinterestFitAssessmentOutcome["id"], PinterestFitAssessme
     headline: "Pinterest may be a later move, not the next move.",
     summary:
       "Pinterest can still become useful, but it may be better to strengthen the offer, content, visuals, or website before investing in a bigger channel plan.",
-    nextStep: "Start with the resource library and come back when the foundation is stronger.",
+    nextStep: "A Pinterest Fit Call or The Fruitful Path can help clarify what to fix, build, or prioritize first.",
   },
 };
 

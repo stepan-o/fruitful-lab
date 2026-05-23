@@ -10,9 +10,6 @@ export function SiteHeader() {
           <span>{SITE_NAME}</span>
         </Link>
         <nav className="hidden items-center gap-6 text-base font-semibold text-[var(--muted)] lg:flex" aria-label="Primary">
-          <Link className="hover:text-[var(--brand-pink)]" href="/">
-            Home
-          </Link>
           {PRIMARY_NAV.map((item) => (
             <Link key={item.href} className="hover:text-[var(--brand-pink)]" href={item.href}>
               {item.label}
@@ -33,9 +30,6 @@ export function SiteHeader() {
             </span>
           </summary>
           <nav className="absolute right-0 mt-3 grid w-64 gap-1 rounded-md border border-[var(--border)] bg-[var(--surface)] p-3 text-sm font-medium text-[var(--heading)] shadow-lg" aria-label="Mobile primary">
-            <Link className="rounded-md px-3 py-2 hover:bg-[var(--surface-warm)]" href="/">
-              Home
-            </Link>
             {PRIMARY_NAV.map((item) => (
               <Link key={item.href} className="rounded-md px-3 py-2 hover:bg-[var(--surface-warm)]" href={item.href}>
                 {item.label}

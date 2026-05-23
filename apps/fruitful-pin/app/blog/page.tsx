@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BLOG_POSTS, type BlogPost } from "@/lib/content";
-import { BOOKING_URL, FIT_CALL_LABEL } from "@/lib/site";
+import { BOOKING_URL, FIT_CALL_LABEL, PINTEREST_FIT_CHECK_URL } from "@/lib/site";
 
 export const metadata = {
   title: "Blog",
-  description: "Pinterest strategy articles for product brands, content creators, and businesses building long-term discovery.",
+  description: "Simple Pinterest strategy notes for brands that want to get found, remembered, and chosen.",
 };
 
 const HEADSHOT = "https://fruitfulpin.com/wp-content/uploads/2025/12/Cid-headshot.webp";
@@ -40,11 +40,11 @@ export default function BlogPage() {
         <div className="mx-auto max-w-6xl px-5 pb-14 pt-16 sm:px-8 lg:pb-16 lg:pt-20">
           <div className="max-w-4xl">
             <p className="eyebrow">Pinterest blog</p>
-            <h1 className="brand-display mt-4 text-4xl leading-tight text-[var(--heading)] sm:text-5xl lg:text-6xl">
-              Strategy notes for Pinterest that keeps <span className="text-gradient">working after publish day.</span>
+            <h1 className="brand-display mt-4 headline-hero text-[var(--heading)]">
+              Learn how Pinterest can help the right people <span className="text-gradient">find your brand.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              Search-led articles on organic Pinterest, ads, content systems, and the small strategic choices that make pins worth clicking.
+              Read simple, strategic notes on Pinterest marketing, content, ads, and the path from being found to being remembered.
             </p>
           </div>
 
@@ -59,12 +59,12 @@ export default function BlogPage() {
                 <BlogVisual post={featuredPost} variant="featured" />
                 <div className="blog-featured-body">
                   <p className="eyebrow">{featuredPost.category}</p>
-                  <h2 className="brand-display mt-3 text-3xl leading-tight text-[var(--heading)] sm:text-4xl">
+                  <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
                     <Link href={`/${featuredPost.slug}`}>{featuredPost.title}</Link>
                   </h2>
                   <p className="mt-3 text-sm font-semibold text-[var(--brand-rust)]">By Susy Cid · {featuredPost.date}</p>
                   <p className="mt-5 text-base leading-7 text-[var(--muted)]">{featuredPost.excerpt}</p>
-                  <Link className="button-primary mt-7 inline-flex min-h-11 items-center justify-center rounded-md px-5 text-sm font-semibold" href={`/${featuredPost.slug}`}>
+                  <Link className="button-primary mt-7 inline-flex min-h-11 items-center justify-center px-5" href={`/${featuredPost.slug}`}>
                     Read article
                   </Link>
                 </div>
@@ -77,7 +77,7 @@ export default function BlogPage() {
                   <BlogVisual post={post} variant="list" />
                   <div className="min-w-0">
                     <p className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--brand-pink)]">{post.category}</p>
-                    <h2 className="brand-display mt-2 text-2xl leading-tight text-[var(--heading)]">
+                    <h2 className="brand-display mt-2 headline-card text-[var(--heading)]">
                       <Link href={`/${post.slug}`}>{post.title}</Link>
                     </h2>
                     <p className="mt-2 text-sm font-semibold text-[var(--brand-rust)]">By Susy Cid · {post.date}</p>
@@ -102,11 +102,26 @@ export default function BlogPage() {
                     <circle cx="11" cy="11" r="7" />
                     <path d="m16 16 4 4" />
                   </svg>
-                  <input id="blog-search" className="blog-search-input" type="search" placeholder="Pinterest ads, SEO, product pins..." />
+                  <input id="blog-search" className="blog-search-input" type="search" placeholder="Search articles, topics, or Pinterest questions..." />
                 </div>
               </section>
 
-              <section className="blog-sidebar-card blog-about-card">
+              <section className="blog-sidebar-card blog-fit-check-card reveal-on-scroll">
+                <p className="eyebrow">Start here</p>
+                <h2 className="brand-display mt-3 headline-card text-[var(--heading)]">Not sure if Pinterest is worth building around?</h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+                  Take the Pinterest Fit Check and get a quick direction based on your offer, content, website, and goals.
+                </p>
+                <div className="blog-mini-badges mt-4" aria-label="Pinterest Fit Check details">
+                  <span>2 minutes</span>
+                  <span>Immediate result</span>
+                </div>
+                <Link className="button-primary mt-5 inline-flex min-h-11 items-center justify-center px-5" href={PINTEREST_FIT_CHECK_URL}>
+                  Start the Fit Check
+                </Link>
+              </section>
+
+              <section className="blog-sidebar-card blog-about-card reveal-on-scroll">
                 <div className="blog-about-photo">
                   <Image
                     src={HEADSHOT}
@@ -117,16 +132,16 @@ export default function BlogPage() {
                     sizes="(min-width: 1024px) 16vw, 48vw"
                   />
                 </div>
-                <h2 className="brand-display mt-5 text-2xl leading-tight text-[var(--heading)]">I&apos;m Susy, your Pinterest strategy brain.</h2>
+                <h2 className="brand-display mt-5 headline-card text-[var(--heading)]">I&apos;m Susy. I help brands make Pinterest make sense.</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                  I help content creators and specialty brands build long-term traffic and sales without turning Pinterest into another noisy chore.
+                  I work with product brands and content-led businesses that want more than pretty pins, random saves, or another marketing chore.
                 </p>
                 <Link className="mt-5 inline-flex text-sm font-bold text-[var(--brand-pink)]" href="/about">
                   Learn more
                 </Link>
               </section>
 
-              <section className="blog-sidebar-card blog-optin-card">
+              <section className="blog-sidebar-card blog-optin-card reveal-on-scroll">
                 <div className="blog-optin-visual">
                   <Image
                     src="/images/pinterest-growth-workbench.webp"
@@ -137,21 +152,22 @@ export default function BlogPage() {
                     sizes="(min-width: 1024px) 20vw, 86vw"
                   />
                 </div>
-                <p className="eyebrow mt-5">Start here</p>
-                <h2 className="brand-display mt-3 text-2xl leading-tight text-[var(--heading)]">Want more Pinterest strategies in your inbox?</h2>
+                <p className="eyebrow mt-5">Pinterest notes</p>
+                <h2 className="brand-display mt-3 headline-card text-[var(--heading)]">Want Pinterest notes you can actually use?</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                  Get sustainable Pinterest tips, case studies, and tools for turning content into a longer-lasting traffic path.
+                  Get practical strategy notes on visibility, content, ads, and how to make Pinterest support the business behind the pins.
                 </p>
                 <form className="mt-5 grid gap-3">
                   <input className="blog-form-input" type="text" name="name" placeholder="Your name" />
                   <input className="blog-form-input" type="email" name="email" placeholder="Email address" />
-                  <button className="button-primary min-h-11 rounded-md px-5 text-sm font-semibold" type="button">
-                    Send me the tips
+                  <button className="button-primary min-h-11 px-5" type="button">
+                    Send me the notes
                   </button>
                 </form>
+                <p className="mt-3 text-xs leading-5 text-[var(--muted)]">Occasional Pinterest strategy notes. Unsubscribe anytime.</p>
               </section>
 
-              <section className="blog-sidebar-card">
+              <section className="blog-sidebar-card reveal-on-scroll">
                 <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[var(--brand-rust)]">Popular reads</h2>
                 <div className="mt-4 grid gap-4">
                   {popularPosts.map((post) => (
@@ -163,10 +179,12 @@ export default function BlogPage() {
                 </div>
               </section>
 
-              <section className="blog-sidebar-card blog-resource-card">
-                <h2 className="brand-display text-2xl leading-tight text-[var(--heading)]">Explore the resource library.</h2>
-                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">Find checklists, tools, and deeper Pinterest planning resources when you want a softer next step.</p>
-                <Link className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md border border-[var(--brand-navy)] bg-white px-5 text-sm font-semibold text-[var(--brand-navy)]" href="/resources">
+              <section className="blog-sidebar-card blog-resource-card reveal-on-scroll">
+                <h2 className="brand-display headline-card text-[var(--heading)]">Need a softer next step?</h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+                  Find checklists, tools, and planning resources to help you understand where Pinterest fits before booking a call.
+                </p>
+                <Link className="button-outline mt-5" href="/resources">
                   Visit resources
                 </Link>
               </section>
@@ -176,14 +194,21 @@ export default function BlogPage() {
       </section>
 
       <section className="bg-white px-5 pb-16 sm:px-8 lg:pb-20">
-        <div className="cta-wave mx-auto max-w-6xl">
-          <h2 className="brand-display max-w-3xl text-3xl leading-tight text-[var(--heading)] sm:text-5xl">Want this mapped to your brand?</h2>
+        <div className="cta-wave mx-auto max-w-6xl reveal-on-scroll">
+          <h2 className="brand-display max-w-3xl headline-section text-[var(--heading)]">
+            Want to know what this could look like for <span className="text-gradient">your brand?</span>
+          </h2>
           <p className="mt-5 max-w-3xl text-base leading-7 text-[var(--muted)]">
-            Start with a fit call and we&apos;ll look at your content, offer, and Pinterest opportunity without guessing.
+            Start with a Fit Call and we&apos;ll look at your business, your goals, and whether Pinterest is worth building around right now.
           </p>
-          <Link className="button-primary mt-7 inline-flex min-h-12 items-center justify-center rounded-md px-6 text-sm font-semibold" href={BOOKING_URL}>
-            {FIT_CALL_LABEL}
-          </Link>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Link className="button-primary inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
+              {FIT_CALL_LABEL}
+            </Link>
+            <Link className="button-outline" href={PINTEREST_FIT_CHECK_URL}>
+              Start the Fit Check
+            </Link>
+          </div>
         </div>
       </section>
     </div>

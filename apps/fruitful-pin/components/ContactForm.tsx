@@ -1,13 +1,17 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { CONTACT_EMAIL } from "@/lib/site";
+
+const PINTEREST_SUPPORT_TOPIC = "I want to explore Pinterest support";
 
 function getField(formData: FormData, key: string) {
   return String(formData.get(key) ?? "").trim();
 }
 
 export function ContactForm() {
+  const [topic, setTopic] = useState(PINTEREST_SUPPORT_TOPIC);
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -39,7 +43,7 @@ export function ContactForm() {
         <input name="name" type="text" placeholder="Your name" required />
       </label>
       <label className="contact-form-field">
-        <span>Email Address*</span>
+        <span>Email address*</span>
         <input name="email" type="email" placeholder="you@example.com" required />
       </label>
       <label className="contact-form-field contact-form-field-wide">
@@ -48,18 +52,21 @@ export function ContactForm() {
       </label>
       <label className="contact-form-field contact-form-field-wide">
         <span>What are you reaching out about?</span>
-        <select name="topic" defaultValue="General question">
-          <option>General question</option>
-          <option>Pinterest services</option>
+        <select name="topic" value={topic} onChange={(event) => setTopic(event.target.value)}>
+          <option>{PINTEREST_SUPPORT_TOPIC}</option>
+          <option>I have a general question</option>
+          <option>Collaboration or partnership</option>
           <option>Podcast or speaking invitation</option>
-          <option>Collaboration idea</option>
+          <option>Press or media</option>
+          <option>Other</option>
         </select>
       </label>
+      {topic === PINTEREST_SUPPORT_TOPIC ? <p className="contact-form-helper">For Pinterest support, you may get a faster next step by booking a Fit Call.</p> : null}
       <label className="contact-form-field contact-form-field-wide">
         <span>Message*</span>
-        <textarea name="message" rows={6} placeholder="Tell me what you are hoping Pinterest can support." required />
+        <textarea name="message" rows={6} placeholder="Tell me what you are hoping Pinterest can support, or what question you would like to ask." required />
       </label>
-      <button className="button-primary min-h-12 rounded-md px-6 text-sm font-semibold" type="submit">
+      <button className="button-primary" type="submit">
         Send Message
       </button>
     </form>

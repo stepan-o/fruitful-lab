@@ -29,7 +29,7 @@ export default function PinterestFitCheckPage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.85fr_1fr] lg:items-center lg:py-20">
           <div>
             <p className="eyebrow">Pinterest Fit Check</p>
-            <h1 className="brand-display mt-4 text-4xl leading-tight text-[var(--heading)] sm:text-5xl lg:text-6xl">
+            <h1 className="brand-display mt-4 headline-hero text-[var(--heading)]">
               Is Pinterest a smart next move, or a <span className="text-gradient">later project?</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
@@ -49,7 +49,7 @@ export default function PinterestFitCheckPage() {
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
           <div className="max-w-3xl">
             <p className="eyebrow">Result paths</p>
-            <h2 className="brand-display mt-3 text-3xl leading-tight text-[var(--heading)] sm:text-4xl">
+            <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
               The score is just a shortcut to the right next step.
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
@@ -59,7 +59,7 @@ export default function PinterestFitCheckPage() {
           <div className="fit-check-path-grid mt-9">
             {resultPaths.map((path) => (
               <article key={path.title} className="fit-check-path-card reveal-on-scroll">
-                <h3 className="brand-display text-2xl leading-tight text-[var(--heading)]">{path.title}</h3>
+                <h3 className="brand-display headline-card text-[var(--heading)]">{path.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{path.description}</p>
               </article>
             ))}
@@ -69,7 +69,7 @@ export default function PinterestFitCheckPage() {
 
       <section className="bg-white px-5 pb-16 sm:px-8 lg:pb-20">
         <div className="cta-wave mx-auto max-w-6xl">
-          <h2 className="brand-display max-w-3xl text-3xl leading-tight text-[var(--heading)] sm:text-5xl">Want help reading the result?</h2>
+          <h2 className="brand-display max-w-3xl headline-section text-[var(--heading)]">Want help reading the result?</h2>
           <p className="mt-5 max-w-3xl text-base leading-7 text-[var(--muted)]">
             Start with a fit call and we&apos;ll look at your content, offer, and Pinterest opportunity without guessing.
           </p>

@@ -2,7 +2,7 @@ import { ServicesPage } from "@/components/ServicesPage";
 
 export const metadata = {
   title: "Pinterest Services",
-  description: "Pinterest strategy, organic management, ads, audits, and a la carte support for search-driven growth.",
+  description: "Pinterest support that starts with a Fit Call, moves through The Fruitful Path, and builds the right Pinterest system for your business.",
 };
 
 export default ServicesPage;

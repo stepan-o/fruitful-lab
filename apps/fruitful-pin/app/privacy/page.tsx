@@ -18,7 +18,7 @@ export default function PrivacyPage() {
       <Section>
         <SectionInner className="max-w-3xl">
           <div className="warm-panel rounded-md p-6">
-            <h2 className="brand-display text-2xl font-semibold text-[var(--heading)]">Privacy questions</h2>
+            <h2 className="brand-display headline-card text-[var(--heading)]">Privacy questions</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--muted)]">
               For questions about personal information, email communication, or data handling, contact Fruitful Pin at <a className="font-semibold text-[var(--raspberry)]" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
             </p>

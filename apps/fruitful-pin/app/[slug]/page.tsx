@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <article className="bg-white">
       <section className="blog-post-hero">
         <div className="mx-auto max-w-5xl px-5 py-16 text-center sm:px-8 lg:py-20">
-          <h1 className="brand-display mx-auto max-w-4xl text-4xl leading-tight text-[var(--heading)] sm:text-5xl lg:text-6xl">
+          <h1 className="brand-display mx-auto max-w-4xl headline-hero text-[var(--heading)]">
             {post.title}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">{post.excerpt}</p>
@@ -90,7 +90,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <section className="blog-takeaway-card reveal-on-scroll" aria-labelledby="key-takeaways">
               <p className="eyebrow">Key takeaways</p>
-              <h2 id="key-takeaways" className="brand-display mt-2 text-2xl leading-tight text-[var(--heading)]">
+              <h2 id="key-takeaways" className="brand-display mt-2 headline-card text-[var(--heading)]">
                 The short version before you keep reading.
               </h2>
               <ul className="blog-takeaway-list mt-5">
@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <nav className="blog-table-of-contents reveal-on-scroll" aria-labelledby="table-of-contents">
               <p className="eyebrow">Table of contents</p>
-              <h2 id="table-of-contents" className="brand-display mt-2 text-2xl leading-tight text-[var(--heading)]">
+              <h2 id="table-of-contents" className="brand-display mt-2 headline-card text-[var(--heading)]">
                 Jump to what you need.
               </h2>
               <ol className="mt-5">
@@ -127,9 +127,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {index === 0 ? (
                     <aside className="blog-inline-optin reveal-on-scroll">
                       <p className="eyebrow">Start here</p>
-                      <h3 className="brand-display mt-2 text-2xl leading-tight text-[var(--heading)]">Want Pinterest ideas you can actually use?</h3>
+                      <h3 className="brand-display mt-2 headline-card text-[var(--heading)]">Want Pinterest ideas you can actually use?</h3>
                       <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                        Join the list for practical Pinterest strategy notes, case studies, and future resources for content-led brands.
+                        Join the list for practical Pinterest strategy notes, case studies, and resource drops for content-led brands.
                       </p>
                       <form className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
                         <input className="blog-form-input" type="email" name="email" placeholder="Email address" />
@@ -151,7 +151,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {index === post.sections.length - 1 && post.pinGraphics ? (
                     <aside className="pin-graphics-block reveal-on-scroll">
                       <p className="eyebrow">Pinterest graphics</p>
-                      <h3 className="brand-display mt-2 text-2xl leading-tight text-[var(--heading)]">Saveable Pinterest graphics for later.</h3>
+                      <h3 className="brand-display mt-2 headline-card text-[var(--heading)]">Saveable Pinterest graphics for later.</h3>
                       <div className="pin-graphics-grid mt-5">
                         {post.pinGraphics.map((graphic) => (
                           <div key={graphic.title} className="pin-graphic-placeholder">
@@ -173,7 +173,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {index === 1 && post.comparisonTable ? (
                     <aside className="blog-comparison-block reveal-on-scroll">
                       <p className="eyebrow">Comparison</p>
-                      <h3 className="brand-display mt-2 text-2xl leading-tight text-[var(--heading)]">{post.comparisonTable.title}</h3>
+                      <h3 className="brand-display mt-2 headline-card text-[var(--heading)]">{post.comparisonTable.title}</h3>
                       <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{post.comparisonTable.description}</p>
                       <div className="blog-comparison-table-wrap mt-5">
                         <table className="blog-comparison-table">
@@ -204,7 +204,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.faqs ? (
               <section id="faq" className="blog-faq-section">
                 <p className="eyebrow">Frequently asked questions</p>
-                <h2 className="brand-display mt-2 text-3xl leading-tight text-[var(--heading)]">Quick answers before you choose a path.</h2>
+                <h2 className="brand-display mt-2 headline-section text-[var(--heading)]">Quick answers before you choose a path.</h2>
                 <div className="mt-6 grid gap-4">
                   {post.faqs.map((item) => (
                     <details key={item.question} className="blog-faq-item">
@@ -233,7 +233,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <section className="blog-next-actions">
               <p className="eyebrow">Where to go next</p>
-              <h2 className="brand-display mt-2 text-3xl leading-tight text-[var(--heading)]">Choose the next step that fits your stage.</h2>
+              <h2 className="brand-display mt-2 headline-section text-[var(--heading)]">Choose the next step that fits your stage.</h2>
               <div className="blog-next-action-grid mt-6">
                 <Link className="blog-next-action-card" href="/blog">
                   <span>Keep reading</span>
@@ -243,7 +243,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <Link className="blog-next-action-card" href="/resources">
                   <span>Get practical</span>
                   <strong>Open the resource library</strong>
-                  <small>Use guides, tools, and future lead magnets when you need a softer next step.</small>
+                  <small>Use guides, tools, and gentle next steps when you need a softer path.</small>
                 </Link>
                 <Link className="blog-next-action-card" href="/pinterest-services">
                   <span>Want support?</span>
@@ -254,7 +254,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </section>
 
             <section className="blog-post-final-cta">
-              <h2 className="brand-display max-w-3xl text-3xl leading-tight text-[var(--heading)] sm:text-5xl">Want this mapped to your brand?</h2>
+              <h2 className="brand-display max-w-3xl headline-section text-[var(--heading)]">Want this mapped to your brand?</h2>
               <p className="mt-5 max-w-3xl text-base leading-7 text-[var(--muted)]">
                 Start with a fit call and we&apos;ll look at your content, offer, and Pinterest opportunity without guessing.
               </p>
@@ -290,7 +290,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     sizes="(min-width: 1024px) 16vw, 48vw"
                   />
                 </div>
-                <h2 className="brand-display mt-5 text-2xl leading-tight text-[var(--heading)]">I&apos;m Susy, your Pinterest strategy brain.</h2>
+                <h2 className="brand-display mt-5 headline-card text-[var(--heading)]">I&apos;m Susy, your Pinterest strategy brain.</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
                   I help content creators and specialty brands build long-term traffic and sales without turning Pinterest into another noisy chore.
                 </p>
@@ -311,7 +311,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   />
                 </div>
                 <p className="eyebrow mt-5">Free guide</p>
-                <h2 className="brand-display mt-3 text-2xl leading-tight text-[var(--heading)]">Grab the free Pinterest strategy guide.</h2>
+                <h2 className="brand-display mt-3 headline-card text-[var(--heading)]">Grab the free Pinterest strategy guide.</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
                   Get a low-pressure starting point for choosing the Pinterest path that fits your content, offer, and stage.
                 </p>

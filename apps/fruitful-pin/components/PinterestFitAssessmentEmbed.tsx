@@ -9,7 +9,11 @@ import {
 } from "@/lib/fitAssessment";
 import { BOOKING_URL, FIT_CALL_LABEL } from "@/lib/site";
 
-export function PinterestFitAssessmentEmbed() {
+type PinterestFitAssessmentEmbedProps = {
+  intro?: "full" | "buttonOnly";
+};
+
+export function PinterestFitAssessmentEmbed({ intro = "full" }: PinterestFitAssessmentEmbedProps) {
   const [started, setStarted] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<PinterestFitAssessmentAnswers>({});
@@ -38,22 +42,39 @@ export function PinterestFitAssessmentEmbed() {
     setAnswers({});
   }
 
+  if (!started && intro === "buttonOnly") {
+    return (
+      <section className="fit-assessment-card zoom-on-scroll" aria-labelledby="fit-assessment-start-title">
+        <p className="eyebrow">Start the check</p>
+        <h2 id="fit-assessment-start-title" className="brand-display mt-3 headline-card text-[var(--heading)]">
+          Take the Pinterest Fit Check
+        </h2>
+        <p className="mt-4 text-sm leading-6 text-[var(--muted)]">
+          Seven quick questions. An immediate result. The option to save it by email after you see it.
+        </p>
+        <button className="button-primary mt-6 inline-flex min-h-12 items-center justify-center px-6" type="button" onClick={() => setStarted(true)}>
+          Start the fit check
+        </button>
+      </section>
+    );
+  }
+
   if (!started) {
     return (
       <section className="fit-assessment-card zoom-on-scroll" aria-labelledby="fit-assessment-title">
         <p className="eyebrow">Pinterest Fit Check</p>
-        <h2 id="fit-assessment-title" className="brand-display mt-3 text-3xl leading-tight text-[var(--heading)]">
+        <h2 id="fit-assessment-title" className="brand-display mt-3 headline-card text-[var(--heading)]">
           See if Pinterest is worth building around right now.
         </h2>
         <p className="mt-4 text-sm leading-6 text-[var(--muted)]">
-          Answer seven quick questions about your offer, content, website, and goals. You will get a simple direction before you choose the next Pinterest move.
+          Answer seven quick questions about your offer, content, website, and goals. You&apos;ll get an immediate direction, with the option to send your result to your inbox.
         </p>
         <div className="fit-assessment-mini-list mt-5" aria-label="Assessment details">
+          <span>Takes about 2 minutes</span>
           <span>Immediate result</span>
-          <span>No email required</span>
-          <span>Built for real business paths</span>
+          <span>Option to save by email</span>
         </div>
-        <button className="button-primary mt-6 inline-flex min-h-12 items-center justify-center rounded-md px-6 text-sm font-semibold" type="button" onClick={() => setStarted(true)}>
+        <button className="button-primary mt-6 inline-flex min-h-12 items-center justify-center px-6" type="button" onClick={() => setStarted(true)}>
           Start the fit check
         </button>
       </section>
@@ -68,7 +89,7 @@ export function PinterestFitAssessmentEmbed() {
           <small>/{result.maxScore}</small>
         </div>
         <p className="eyebrow">{result.outcome.label}</p>
-        <h2 id="fit-result-title" className="brand-display mt-3 text-3xl leading-tight text-[var(--heading)]">
+        <h2 id="fit-result-title" className="brand-display mt-3 headline-card text-[var(--heading)]">
           {result.outcome.headline}
         </h2>
         <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{result.outcome.summary}</p>
@@ -81,8 +102,23 @@ export function PinterestFitAssessmentEmbed() {
           <span>Best next step</span>
           <p>{result.outcome.nextStep}</p>
         </div>
+        <div className="fit-assessment-email-save mt-6">
+          <h3 className="headline-compact text-[var(--heading)]">Want to keep this result?</h3>
+          <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+            I&apos;ll send your Pinterest Fit Check result to your inbox, along with a simple next-step note so you can revisit whether Pinterest is worth building, fixing, or saving for later.
+          </p>
+          <form className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
+            <input className="blog-form-input" type="email" name="fitResultEmail" placeholder="Email address" aria-label="Email address for your Pinterest Fit Check result" />
+            <button className="button-primary min-h-11 px-5" type="button">
+              Send my result
+            </button>
+          </form>
+          <p className="mt-3 text-xs leading-5 text-[var(--muted)]">
+            You&apos;ll also get occasional Pinterest strategy notes from Fruitful Pin. Unsubscribe anytime.
+          </p>
+        </div>
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link className="button-primary inline-flex min-h-11 items-center justify-center rounded-md px-5 text-sm font-semibold" href={BOOKING_URL}>
+          <Link className="button-primary inline-flex min-h-11 items-center justify-center px-5" href={BOOKING_URL}>
             {FIT_CALL_LABEL}
           </Link>
           <button className="fit-assessment-secondary-button" type="button" onClick={restart}>
@@ -104,7 +140,7 @@ export function PinterestFitAssessmentEmbed() {
       <div className="fit-assessment-progress-track" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}>
         <span style={{ width: `${progress}%` }} />
       </div>
-      <h2 id="fit-question-title" className="brand-display mt-5 text-2xl leading-tight text-[var(--heading)]">
+      <h2 id="fit-question-title" className="brand-display mt-5 headline-card text-[var(--heading)]">
         {currentQuestion.question}
       </h2>
       <div className="fit-assessment-options mt-5">
@@ -135,7 +171,7 @@ export function PinterestFitAssessmentEmbed() {
             Start over
           </button>
         </div>
-        <button className="button-primary inline-flex min-h-11 items-center justify-center rounded-md px-5 text-sm font-semibold" type="button" onClick={goNext} disabled={!selectedOptionId}>
+        <button className="button-primary inline-flex min-h-11 items-center justify-center px-5" type="button" onClick={goNext} disabled={!selectedOptionId}>
           {questionIndex === PINTEREST_FIT_ASSESSMENT_QUESTIONS.length - 1 ? "See result" : "Next"}
         </button>
       </div>

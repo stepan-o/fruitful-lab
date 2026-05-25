@@ -39,7 +39,10 @@ describe("Fruitful Pin site config", () => {
     expect(BLOG_POSTS.map((post) => `/${post.slug}`)).toEqual([
       "/pinterest-marketing-for-gardening-brands",
       "/pinterest-organic-vs-ads",
-      "/pinterest-in-2026-for-product-brands",
+      "/pinterest-for-product-based-business",
+      "/before-and-after-pins-the-secret-weapon-for-home-renovation-marketing-on-pinterest",
+      "/pinterest-marketing-for-gardening-brands-the-key-to-conquer-urban-markets",
+      "/exploring-pinterest-management-what-does-a-pinterest-manager-do",
     ]);
   });
 

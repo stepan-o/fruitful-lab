@@ -8,13 +8,14 @@ Current active spec:
 
 - `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md`
 - `docs/brands/fruitful-pin/second-pass-prep-2026-05-22.md`
+- `docs/brands/fruitful-pin/V1_BLOG_TEMPLATE_RULES_2026-05-25.md`
 
 Current phase-one target:
 
 ```txt
 GoDaddy domain
 -> Cloudflare hosts the public Next.js site from apps/fruitful-pin
--> WordPress remains on prepaid A2 as a headless CMS/editor
+-> Content is managed in the Next.js repo through Codex-assisted updates
 ```
 
 Fruitful Lab remains separate and should not be rebuilt as part of Fruitful Pin work unless Susy explicitly changes the scope.

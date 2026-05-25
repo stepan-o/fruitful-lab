@@ -1,6 +1,6 @@
 # Agent Operating Procedures
 
-Status: active as of 2026-05-22.
+Status: active as of 2026-05-24.
 
 These procedures describe how Codex should operate in this repository when Susie provides implementation work.
 
@@ -38,7 +38,7 @@ Operational defaults:
 - For Fruitful Lab validation, use `API_BASE_URL=http://localhost:8000 npm run ci` from `apps/lab/` unless the task clearly requires another check.
 - For brand/app monorepo work, read `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` and keep separate brands as separate apps under `apps/*`.
 - For parallel brand/app work, read `docs/MONOREPO_PARALLEL_WORKFLOW.md` and use separate branches and preferably separate git worktrees. The main checkout must not be used as a shared dirty folder across multiple project threads.
-- For Fruitful Pin migration work, read `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md`; the current phase-one target is Cloudflare for the public Next.js frontend and WordPress on prepaid A2 as the headless CMS/editor.
+- For Fruitful Pin migration work, read `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md`; the current B1 launch target is Cloudflare for the public static Next.js frontend with code-managed content. Do not assume headless WordPress for B1. WordPress/A2 can be used as the old-site source/archive during migration, but public posts/media should be migrated into `apps/fruitful-pin` unless Susy explicitly reopens a headless CMS plan.
 - Before starting local dev servers from Codex, request network permission for the turn. Fresh-thread testing on 2026-05-20 confirmed that `next dev` on `127.0.0.1:4173` fails with `listen EPERM` until network permission is granted.
 - For Fruitful Pin local preview, prefer `make fruitful-pin-dev` from the repo root or `npm run dev:local` from `apps/fruitful-pin/`.
 - If local builds fail because network is needed for `next/font`, request network access and rerun once.

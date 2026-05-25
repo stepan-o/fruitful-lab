@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CursorGlowPanel } from "@/components/CursorGlowPanel";
+import { BRAND_ASSETS } from "@/lib/brandAssets";
 import { BLOG_POSTS, type BlogPost } from "@/lib/content";
 import { BOOKING_URL, FIT_CALL_LABEL, PINTEREST_FIT_CHECK_URL } from "@/lib/site";
 
@@ -8,7 +10,7 @@ export const metadata = {
   description: "Simple Pinterest strategy notes for brands that want to get found, remembered, and chosen.",
 };
 
-const HEADSHOT = "https://fruitfulpin.com/wp-content/uploads/2025/12/Cid-headshot.webp";
+const HEADSHOT = BRAND_ASSETS.founderExpert;
 
 function BlogVisual({ post, variant }: { post: BlogPost; variant: "featured" | "list" }) {
   const className = variant === "featured" ? "blog-featured-visual" : "blog-list-visual";
@@ -21,7 +23,7 @@ function BlogVisual({ post, variant }: { post: BlogPost; variant: "featured" | "
           alt={post.featuredImage.alt}
           fill
           className="blog-visual-image"
-          sizes={variant === "featured" ? "(min-width: 1024px) 34vw, 92vw" : "(min-width: 1024px) 18vw, 92vw"}
+          sizes={variant === "featured" ? "(min-width: 1024px) 56rem, 92vw" : "(min-width: 1024px) 42rem, 92vw"}
         />
       ) : (
         <span className="blog-visual-placeholder-label">{post.category}</span>
@@ -193,8 +195,8 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="bg-white px-5 pb-16 sm:px-8 lg:pb-20">
-        <div className="cta-wave mx-auto max-w-6xl reveal-on-scroll">
+      <section className="blog-final-cta-section bg-white px-5 sm:px-8">
+        <CursorGlowPanel className="cta-wave blog-final-cta-panel mx-auto max-w-6xl reveal-on-scroll">
           <h2 className="brand-display max-w-3xl headline-section text-[var(--heading)]">
             Want to know what this could look like for <span className="text-gradient">your brand?</span>
           </h2>
@@ -209,7 +211,7 @@ export default function BlogPage() {
               Start the Fit Check
             </Link>
           </div>
-        </div>
+        </CursorGlowPanel>
       </section>
     </div>
   );

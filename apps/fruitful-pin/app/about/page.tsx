@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CERTIFICATION_BADGES, FIT_SIGNALS, NICE_WORDS } from "@/lib/content";
+import { CursorGlowPanel } from "@/components/CursorGlowPanel";
+import { BRAND_ASSETS } from "@/lib/brandAssets";
+import { FIT_SIGNALS, NICE_WORDS } from "@/lib/content";
 import { BOOKING_URL, FIT_CALL_LABEL, PINTEREST_FIT_CHECK_URL } from "@/lib/site";
 
 export const metadata = {
@@ -73,8 +75,8 @@ const FUN_FACTS = [
 
 const featuredNiceWords = NICE_WORDS.slice(0, 4);
 
-const OWN_PHOTO = "https://fruitfulpin.com/wp-content/uploads/2025/12/Cid-own-photo.webp";
-const HEADSHOT = "https://fruitfulpin.com/wp-content/uploads/2025/12/Cid-headshot.webp";
+const OWN_PHOTO = BRAND_ASSETS.founderManager;
+const HEADSHOT = BRAND_ASSETS.founderExpert;
 
 function AccentCurve({ className = "" }: { className?: string }) {
   return (
@@ -327,15 +329,13 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="certification-ribbon-row">
-              <div className="flex flex-wrap justify-start gap-3 lg:justify-end">
-                {CERTIFICATION_BADGES.map((badge, index) => (
-                  <span key={badge.label} className="certification-badge">
-                    <span className="certification-provider">Pinterest</span>
-                    <span className="certification-mark" aria-hidden="true">P</span>
-                    <span className="certification-title">{index === 0 ? "Certified Media Buyer" : "Certified Media Planner"}</span>
-                  </span>
-                ))}
-              </div>
+              <Image
+                src={BRAND_ASSETS.pinterestCertifications}
+                alt="Pinterest Certified Media Buyer and Pinterest Certified Media Planner badges"
+                width={760}
+                height={430}
+                className="certification-image"
+              />
             </div>
           </div>
 
@@ -392,7 +392,7 @@ export default function AboutPage() {
       </section>
 
       <section className="about-final-cta bg-white px-5 pb-16 sm:px-8 lg:pb-20">
-        <div className="cta-wave mx-auto max-w-6xl">
+        <CursorGlowPanel className="cta-wave about-final-cta-panel mx-auto max-w-6xl">
           <div className="max-w-3xl">
             <p className="eyebrow">Start here</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
@@ -426,7 +426,7 @@ export default function AboutPage() {
               </Link>
             </article>
           </div>
-        </div>
+        </CursorGlowPanel>
       </section>
     </div>
   );

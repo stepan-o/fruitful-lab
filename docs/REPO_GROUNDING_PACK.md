@@ -1,6 +1,6 @@
 # Repo Grounding Pack - Fruitful Lab
 
-Status: refreshed from local repo scan and planning updates on 2026-05-21.
+Status: refreshed from local repo scan and planning updates on 2026-05-24.
 
 This is the high-signal orientation file for Fruitful Lab. Treat it as the first stop before changing the system. The fuller current-state memory is `docs/PROJECT_MEMORY.md`; the dated implementation audit is `docs/SYSTEM_IMPLEMENTATION_AUDIT-2026-05-15.md`.
 
@@ -8,7 +8,7 @@ Related planning reference:
 
 - `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` is the target architecture reference for the shift to separate brand apps under `apps/*`, shared packages under `packages/*`, and future apps such as Bloom Whispers and Bricoli.
 - `docs/BRAND_APP_MONOREPO_EXECUTION_PLAN.md` is the active PR-gated execution plan for moving from docs baseline to `apps/lab`, then `apps/fruitful-pin`, then launch preparation.
-- `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md` captures the corrected Fruitful Bean / Fruitful Pin-only plan for migrating `fruitfulpin.com` to a coded Next.js marketing site. Fruitful Lab remains as-is for that plan; Cloudflare is the preferred public frontend host for cost; WordPress stays on prepaid A2 hosting as the phase-one headless CMS/editor; Kadence is excluded from future cost comparisons.
+- `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md` captures the corrected Fruitful Bean / Fruitful Pin-only plan for migrating `fruitfulpin.com` to a coded Next.js marketing site. Fruitful Lab remains as-is for that plan; Cloudflare is the preferred public frontend host for cost; Kadence is excluded from future cost comparisons. As of 2026-05-24, the Fruitful Pin B1 launch direction is code-managed content, not phase-one headless WordPress: WordPress/A2 can remain as the old-site source/archive during migration, but approved public content and optimized media should live in the Next.js app unless Susy explicitly reopens a headless CMS path.
 
 ## Authority Model
 
@@ -21,7 +21,7 @@ Related planning reference:
 ## Repo Map
 
 - `apps/lab/` - current Next.js App Router app for Fruitful Lab public pages, tool flows, login, admin, contractor pages, analytics proxies, and experiment diagnostics.
-- `apps/fruitful-pin/` - Fruitful Pin static-first Next.js first-pass marketing site targeting Cloudflare Pages; not connected to live DNS or WordPress yet.
+- `apps/fruitful-pin/` - Fruitful Pin static-first Next.js first-pass marketing site targeting Cloudflare Pages; not connected to live DNS and no longer targeting headless WordPress for B1.
 - `apps/fruitful-lab-site/` - Fruitful Lab customer-facing umbrella marketing site foundation for `fruitfulab.com`; separate from the sandbox app on `fruitfulab.net`.
 - `apps/` - home for separate deployable brand apps. Current apps include `apps/lab`, `apps/fruitful-pin`, and `apps/fruitful-lab-site`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
 - `packages/` - target home for shared code once real cross-app reuse exists. Do not create broad shared abstractions prematurely.
@@ -136,12 +136,21 @@ Pinterest Fit:
 - Static export config: `apps/fruitful-pin/next.config.ts`
 - Site constants: `apps/fruitful-pin/lib/site.ts`
 - Content boundary: `apps/fruitful-pin/lib/content.ts`
-- WordPress adapter placeholder: `apps/fruitful-pin/lib/wordpress.ts`
+- WordPress adapter placeholder: `apps/fruitful-pin/lib/wordpress.ts` remains historical/future optional plumbing only; B1 content is code-managed.
 - Native Pinterest Fit Check: `apps/fruitful-pin/app/pinterest-fit-check/page.tsx`, `apps/fruitful-pin/components/PinterestFitAssessmentEmbed.tsx`, `apps/fruitful-pin/lib/fitAssessment.ts`
 - SEO/static export routes: `apps/fruitful-pin/app/sitemap.ts`, `apps/fruitful-pin/app/robots.ts`
 - Routes: `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/case-studies`, `/about`, `/contact`, `/privacy`, `/privacy-policy`, `/terms`, and legacy `/services`
 - Root checks: `make fruitful-pin-test`, `make fruitful-pin-build`, `make fruitful-pin-ci`
 - Local preview from Codex requires network permission before starting the server; otherwise `next dev -H 127.0.0.1 -p 4173` can fail with `listen EPERM`.
+
+B1 launch direction as of 2026-05-24:
+
+- Use a code-managed blog/content workflow for Fruitful Pin B1 instead of headless WordPress.
+- Migrate selected existing WordPress blog posts and necessary media into `apps/fruitful-pin` content/assets before launch.
+- Do not depend on `fruitfulpin.com/wp-content/uploads/*` after DNS cutover; copy required images locally or move them to an approved permanent media host.
+- ClickUp can be used as Susy's editorial desk/intake source, but the published post and optimized images should live in the website repo.
+- MailerLite is the likely platform for newsletter signups, Fit Check result saves, and resource waitlists; analytics IDs are intentionally on hold until Susy provides them.
+- Case Studies should remain preserved for V2, but should not be treated as a B1 launch blocker.
 
 Do not point `fruitfulpin.com` at this app until preview, content migration, redirects, analytics, and launch checks are explicitly approved.
 

@@ -1,20 +1,115 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BRAND_ASSETS } from "@/lib/brandAssets";
 import { BLOG_POSTS, getPostBySlug, type BlogPost } from "@/lib/content";
-import { BOOKING_URL, FIT_CALL_LABEL } from "@/lib/site";
+import { BOOKING_URL, CANONICAL_URL, FIT_CALL_LABEL, SITE_NAME } from "@/lib/site";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const HEADSHOT = "https://fruitfulpin.com/wp-content/uploads/2025/12/Cid-headshot.webp";
+const HEADSHOT = BRAND_ASSETS.founderExpert;
 
 function slugify(value: string) {
   return value
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+}
+
+function getSectionId(section: BlogPost["sections"][number]) {
+  return section.id ?? slugify(section.heading);
+}
+
+function absoluteUrl(path: string) {
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    return path;
+  }
+
+  return `${CANONICAL_URL}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+function isoDate(date: string) {
+  const parsed = new Date(date);
+
+  if (Number.isNaN(parsed.getTime())) {
+    return undefined;
+  }
+
+  return parsed.toISOString().slice(0, 10);
+}
+
+function safeJsonLd(data: unknown) {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
+function buildJsonLd(post: BlogPost) {
+  const postUrl = absoluteUrl(`/${post.slug}/`);
+  const publishedDate = isoDate(post.date);
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.seoTitle ?? post.title,
+    description: post.seoDescription ?? post.excerpt,
+    ...(post.featuredImage ? { image: [absoluteUrl(post.featuredImage.src)] } : {}),
+    datePublished: publishedDate,
+    dateModified: publishedDate,
+    author: {
+      "@type": "Person",
+      name: "Susy Cid",
+      url: absoluteUrl("/about/"),
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: CANONICAL_URL,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: absoluteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: absoluteUrl("/blog/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: postUrl,
+      },
+    ],
+  };
+  const faqSchema = post.faqs
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      }
+    : undefined;
+
+  return [articleSchema, breadcrumbSchema, faqSchema].filter(Boolean);
 }
 
 function BlogPostVisual({ post }: { post: BlogPost }) {
@@ -49,8 +144,8 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   }
 
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: post.seoTitle ?? post.title,
+    description: post.seoDescription ?? post.excerpt,
   };
 }
 
@@ -66,13 +161,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const previousPost = currentIndex > 0 ? BLOG_POSTS[currentIndex - 1] : undefined;
   const nextPost = currentIndex >= 0 && currentIndex < BLOG_POSTS.length - 1 ? BLOG_POSTS[currentIndex + 1] : undefined;
   const tocItems = [
+    ...(post.quickAnswer ? [{ label: "Quick answer", href: "#quick-answer" }] : []),
     { label: "Key takeaways", href: "#key-takeaways" },
-    ...post.sections.map((section) => ({ label: section.heading, href: `#${slugify(section.heading)}` })),
+    ...post.sections.map((section) => ({ label: section.heading, href: `#${getSectionId(section)}` })),
     ...(post.faqs ? [{ label: "Frequently asked questions", href: "#faq" }] : []),
   ];
+  const jsonLdItems = buildJsonLd(post);
 
   return (
     <article className="bg-white">
+      {jsonLdItems.map((item) => (
+        <script
+          key={(item as { "@type": string })["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(item) }}
+        />
+      ))}
+
       <section className="blog-post-hero">
         <div className="mx-auto max-w-5xl px-5 py-16 text-center sm:px-8 lg:py-20">
           <h1 className="brand-display mx-auto max-w-4xl headline-hero text-[var(--heading)]">
@@ -88,6 +193,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <main className="blog-post-main">
             <BlogPostVisual post={post} />
 
+            {post.quickAnswer ? (
+              <section id="quick-answer" className="blog-quick-answer reveal-on-scroll" aria-labelledby="quick-answer-heading">
+                <p className="eyebrow">Quick answer</p>
+                <h2 id="quick-answer-heading" className="brand-display mt-2 headline-card text-[var(--heading)]">
+                  {post.quickAnswer.heading}
+                </h2>
+                <p>{post.quickAnswer.body}</p>
+              </section>
+            ) : null}
+
             <section className="blog-takeaway-card reveal-on-scroll" aria-labelledby="key-takeaways">
               <p className="eyebrow">Key takeaways</p>
               <h2 id="key-takeaways" className="brand-display mt-2 headline-card text-[var(--heading)]">
@@ -101,7 +216,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </section>
 
             <p className="blog-intro-bridge">
-              Use this as a practical map, not a rigid rulebook. The sections below walk through what each Pinterest path is best at, where each one can fall short, and how to decide which one belongs in your current growth plan.
+              {post.introBridge ?? "Use this as a practical map, not a rigid rulebook. The sections below walk through what each Pinterest path is best at, where each one can fall short, and how to decide which one belongs in your current growth plan."}
             </p>
 
             <nav className="blog-table-of-contents reveal-on-scroll" aria-labelledby="table-of-contents">
@@ -118,11 +233,92 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </ol>
             </nav>
 
+            {post.comparisonTable ? (
+              <aside className="blog-comparison-block blog-comparison-block-featured reveal-on-scroll">
+                <p className="eyebrow">Comparison</p>
+                <h2 className="brand-display mt-2 headline-card text-[var(--heading)]">{post.comparisonTable.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{post.comparisonTable.description}</p>
+                <div className="blog-comparison-table-wrap mt-5">
+                  <table className="blog-comparison-table">
+                    <thead>
+                      <tr>
+                        {post.comparisonTable.columns.map((column) => (
+                          <th key={column}>{column}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {post.comparisonTable.rows.map((row) => (
+                        <tr key={row.join("-")}>
+                          {row.map((cell) => (
+                            <td key={cell}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </aside>
+            ) : null}
+
             <div className="blog-article-prose">
               {post.sections.map((section, index) => (
-                <section key={section.heading} id={slugify(section.heading)}>
+                <section key={section.heading} id={getSectionId(section)}>
                   <h2>{section.heading}</h2>
-                  <p>{section.body}</p>
+                  {section.body ? <p>{section.body}</p> : null}
+                  {section.paragraphs?.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                  {section.bullets ? (
+                    <ul>
+                      {section.bullets.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {section.subsections?.map((subsection) => (
+                    <div key={subsection.heading} className="blog-article-subsection">
+                      <h3>{subsection.heading}</h3>
+                      {subsection.paragraphs?.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                      {subsection.bullets ? (
+                        <ul>
+                          {subsection.bullets.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
+                  ))}
+                  {section.numberedItems ? (
+                    <div className="blog-numbered-group">
+                      {section.numberedItems.map((item, itemIndex) => (
+                        <div key={item.title} className="blog-numbered-item">
+                          <span>{itemIndex + 1}</span>
+                          <div>
+                            <h3>{item.title}</h3>
+                            {item.paragraphs?.map((paragraph) => (
+                              <p key={paragraph}>{paragraph}</p>
+                            ))}
+                            {item.bullets ? (
+                              <ul>
+                                {item.bullets.map((bullet) => (
+                                  <li key={bullet}>{bullet}</li>
+                                ))}
+                              </ul>
+                            ) : null}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                  {section.answerSnippet ? (
+                    <aside className="blog-answer-snippet reveal-on-scroll">
+                      <span>{section.answerSnippet.label}</span>
+                      <p>{section.answerSnippet.body}</p>
+                    </aside>
+                  ) : null}
 
                   {index === 0 ? (
                     <aside className="blog-inline-optin reveal-on-scroll">
@@ -140,25 +336,58 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     </aside>
                   ) : null}
 
-                  {index === 0 && post.featuredPinGraphic ? (
-                    <aside className="pin-graphic-feature reveal-on-scroll" aria-label="Pinterest graphic">
-                      <span>Pin graphic</span>
-                      <strong>{post.featuredPinGraphic.title}</strong>
-                      <small>{post.featuredPinGraphic.description}</small>
-                    </aside>
+                  {index === 0 && post.featuredPinGraphic?.image ? (
+                    <figure className="article-body-graphic reveal-on-scroll">
+                      <div className="article-body-graphic-frame">
+                        <Image
+                          src={post.featuredPinGraphic.image.src}
+                          alt={post.featuredPinGraphic.image.alt}
+                          fill
+                          className="article-pin-image"
+                          sizes="(min-width: 1024px) 34rem, 88vw"
+                          data-pin-description={post.featuredPinGraphic.description}
+                        />
+                      </div>
+                    </figure>
                   ) : null}
 
+                  {post.bodyGraphics
+                    ?.filter((graphic) => graphic.afterSectionId === section.id)
+                    .map((graphic) => (
+                      <figure key={graphic.title} className="article-body-graphic reveal-on-scroll">
+                        <div className="article-body-graphic-frame">
+                          <Image
+                            src={graphic.image.src}
+                            alt={graphic.image.alt}
+                            fill
+                            className="article-pin-image"
+                            sizes="(min-width: 1024px) 34rem, 88vw"
+                            data-pin-description={graphic.description}
+                          />
+                        </div>
+                      </figure>
+                    ))}
+
                   {index === post.sections.length - 1 && post.pinGraphics ? (
-                    <aside className="pin-graphics-block reveal-on-scroll">
-                      <p className="eyebrow">Pinterest graphics</p>
-                      <h3 className="brand-display mt-2 headline-card text-[var(--heading)]">Saveable Pinterest graphics for later.</h3>
-                      <div className="pin-graphics-grid mt-5">
-                        {post.pinGraphics.map((graphic) => (
-                          <div key={graphic.title} className="pin-graphic-placeholder">
-                            <span>Pin graphic</span>
-                            <strong>{graphic.title}</strong>
-                            <small>{graphic.description}</small>
-                          </div>
+                    <aside className="pin-graphics-section reveal-on-scroll" aria-labelledby="pin-graphics-heading">
+                      <p className="eyebrow">Save for later</p>
+                      <h3 id="pin-graphics-heading" className="brand-display mt-2 headline-card text-[var(--heading)]">
+                        Pin these strategy takeaways.
+                      </h3>
+                      <div className="pin-graphics-image-grid mt-5">
+                        {post.pinGraphics.slice(0, 2).map((graphic) => (
+                          <figure key={graphic.title} className="pin-graphic-image-card">
+                            {graphic.image ? (
+                              <Image
+                                src={graphic.image.src}
+                                alt={graphic.image.alt}
+                                fill
+                                className="pin-graphic-clean-image"
+                                sizes="(min-width: 1024px) 16rem, 82vw"
+                                data-pin-description={graphic.description}
+                              />
+                            ) : null}
+                          </figure>
                         ))}
                       </div>
                     </aside>
@@ -170,33 +399,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     </blockquote>
                   ) : null}
 
-                  {index === 1 && post.comparisonTable ? (
-                    <aside className="blog-comparison-block reveal-on-scroll">
-                      <p className="eyebrow">Comparison</p>
-                      <h3 className="brand-display mt-2 headline-card text-[var(--heading)]">{post.comparisonTable.title}</h3>
-                      <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{post.comparisonTable.description}</p>
-                      <div className="blog-comparison-table-wrap mt-5">
-                        <table className="blog-comparison-table">
-                          <thead>
-                            <tr>
-                              {post.comparisonTable.columns.map((column) => (
-                                <th key={column}>{column}</th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {post.comparisonTable.rows.map((row) => (
-                              <tr key={row.join("-")}>
-                                {row.map((cell) => (
-                                  <td key={cell}>{cell}</td>
-                                ))}
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </aside>
-                  ) : null}
                 </section>
               ))}
             </div>

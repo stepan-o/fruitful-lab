@@ -1,4 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
+import { CursorGlowPanel } from "@/components/CursorGlowPanel";
+import { BRAND_ASSETS } from "@/lib/brandAssets";
 import { BOOKING_URL, FIT_CALL_LABEL, PINTEREST_FIT_CHECK_URL } from "@/lib/site";
 
 const FRUITFUL_PATH_CARDS = [
@@ -107,6 +110,12 @@ const DIFFERENCE_CARDS = [
 
 const TRUST_LOGOS = ["Organic Prairie", "Visit Southern Spain", "Armstrong-Clark"] as const;
 
+const SERVICE_HERO_CHIPS = [
+  "What are people already looking for?",
+  "What does your business need more of?",
+  "What should Pinterest support first?",
+] as const;
+
 const PROOF_TESTIMONIALS = [
   {
     client: "Organic Prairie",
@@ -173,8 +182,8 @@ export function ServicesPage() {
   return (
     <div className="bg-white">
       <section className="services-hero">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-24 pt-16 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:pb-28 lg:pt-20">
-          <div>
+        <div className="service-hero-inner mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="service-hero-copy">
             <p className="eyebrow">Pinterest services</p>
             <h1 className="brand-display mt-5 headline-hero text-[var(--heading)]">
               Pinterest support that starts with <span className="text-gradient">the fit</span>, not the posting schedule.
@@ -197,22 +206,16 @@ export function ServicesPage() {
             </div>
           </div>
 
-          <aside className="fit-call-note reveal-on-scroll">
-            <p className="eyebrow">Before we build</p>
-            <h2 className="brand-display mt-3 headline-card text-[var(--heading)]">
-              First, we figure out where Pinterest belongs in your marketing and whether it can support the goals that matter right now.
-            </h2>
-            <ul className="service-check-list mt-6">
-              <li>What are people already looking for?</li>
-              <li>What does your business need more of?</li>
-              <li>What would Pinterest need to support before we build?</li>
-            </ul>
-          </aside>
+          <div className="service-hero-strip" aria-label="What Fruitful Pin looks at first">
+            {SERVICE_HERO_CHIPS.map((chip) => (
+              <span key={chip}>{chip}</span>
+            ))}
+          </div>
         </div>
       </section>
 
       <section id="how-it-works" className="bg-white">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:py-20">
+        <div className="service-path-section mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div className="lg:sticky lg:top-28">
             <p className="eyebrow">The paid strategy step</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
@@ -233,9 +236,9 @@ export function ServicesPage() {
             </p>
           </div>
 
-          <div className="process-ladder">
+          <div className="process-ladder service-path-timeline">
             {FRUITFUL_PATH_CARDS.map((card, index) => (
-              <article key={card.title} className="process-step-card reveal-on-scroll">
+              <article key={card.title} className="process-step-card service-path-step premium-interactive-card reveal-on-scroll">
                 <span className="grid size-10 place-items-center rounded-full bg-[var(--brand-pink)] text-sm font-bold text-white">{index + 1}</span>
                 <div>
                   <h3 className="headline-compact text-[var(--heading)]">{card.title}</h3>
@@ -247,8 +250,8 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section className="section-swell bg-[var(--surface-soft)]">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+      <section className="service-momentum-section section-swell bg-[var(--surface-soft)]">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="max-w-3xl">
             <p className="eyebrow">Build the Momentum</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
@@ -263,36 +266,53 @@ export function ServicesPage() {
           </div>
 
           <div className="service-tier-grid mt-10">
-            {MOMENTUM_TIERS.map((tier) => (
-              <article key={tier.name} className={`service-tier-card reveal-on-scroll${tier.featured ? " service-tier-card-featured" : ""}`}>
-                {tier.badge ? <p className="service-tier-badge">{tier.badge}</p> : null}
-                <div>
-                  <h3 className="headline-card text-[var(--heading)]">{tier.name}</h3>
-                  <p className="mt-4 text-lg font-black leading-7 text-[var(--brand-pink)]">{tier.price}</p>
-                  <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{tier.description}</p>
-                  {tier.supporting ? <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{tier.supporting}</p> : null}
-                </div>
+            {MOMENTUM_TIERS.map((tier) => {
+              const visibleIncludes = tier.includes.slice(0, tier.featured ? 7 : 6);
+              const hiddenIncludes = tier.includes.slice(visibleIncludes.length);
 
-                <div className="mt-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--brand-rust)]">Can include</p>
-                  <ul className="service-check-list mt-3">
-                    {tier.includes.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+              return (
+                <article key={tier.name} className={`service-tier-card reveal-on-scroll${tier.featured ? " service-tier-card-featured" : ""}`}>
+                  {tier.badge ? <p className="service-tier-badge">{tier.badge}</p> : null}
+                  <div>
+                    <h3 className="headline-card text-[var(--heading)]">{tier.name}</h3>
+                    <p className="service-tier-price">{tier.price}</p>
+                    <p className="service-tier-description">{tier.description}</p>
+                  </div>
 
-                <div className="mt-5 border-t border-[var(--border)] pt-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--brand-rust)]">Best for</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground)]">{tier.bestFor}</p>
-                </div>
+                  <div className="service-tier-scope">
+                    <p className="service-tier-label">Can include</p>
+                    <ul className="service-check-list">
+                      {visibleIncludes.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                    {hiddenIncludes.length > 0 || tier.supporting ? (
+                      <details className="service-scope-details">
+                        <summary>See full scope</summary>
+                        {tier.supporting ? <p>{tier.supporting}</p> : null}
+                        {hiddenIncludes.length > 0 ? (
+                          <ul className="service-check-list">
+                            {hiddenIncludes.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        ) : null}
+                      </details>
+                    ) : null}
+                  </div>
 
-                <p className="service-tier-footer mt-5">{tier.footer}</p>
-              </article>
-            ))}
+                  <div className="service-tier-best-for">
+                    <p className="service-tier-label">Best for</p>
+                    <p>{tier.bestFor}</p>
+                  </div>
+
+                  <p className="service-tier-footer">{tier.footer}</p>
+                </article>
+              );
+            })}
           </div>
 
-          <div className="fit-call-note mt-10 text-center">
+          <div className="fit-call-note service-package-cta mt-10 text-center">
             <p className="text-base font-bold text-[var(--heading)]">Not sure which build fits? Start with a Pinterest Fit Call.</p>
             <Link className="button-primary mt-5 inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
               {FIT_CALL_LABEL}
@@ -301,8 +321,8 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+      <section className="service-difference-section bg-white">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="max-w-4xl">
             <p className="eyebrow">What makes this different</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
@@ -319,9 +339,9 @@ export function ServicesPage() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
+          <div className="service-difference-grid mt-10 grid gap-4 md:grid-cols-2">
             {DIFFERENCE_CARDS.map((card) => (
-              <article key={card.title} className="path-card reveal-on-scroll">
+              <article key={card.title} className="path-card premium-interactive-card reveal-on-scroll">
                 <h3 className="headline-compact text-[var(--heading)]">{card.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{card.body}</p>
               </article>
@@ -336,9 +356,9 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section className="section-swell bg-[var(--surface-warm)]">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
-          <div className="max-w-3xl">
+      <section className="proof-snapshot-section service-proof-section">
+        <div className="proof-snapshot-inner mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="proof-snapshot-intro mx-auto max-w-3xl text-center">
             <p className="eyebrow">Proof it can work</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
               What changes when Pinterest is built around the business, not just the pins.
@@ -351,43 +371,34 @@ export function ServicesPage() {
             </div>
           </div>
 
-          <div className="proof-showcase mt-10">
-            <div className="logo-marquee" aria-label="Client and industry proof">
-              <div className="logo-track">
-                {[...TRUST_LOGOS, ...TRUST_LOGOS, ...TRUST_LOGOS].map((logo, index) => (
-                  <span key={`${logo}-${index}`} className="logo-pill">
-                    {logo}
-                  </span>
-                ))}
-              </div>
-            </div>
+          <div className="proof-credibility-strip" aria-label="Client and industry proof">
+            <span>Trusted for Pinterest strategy across {TRUST_LOGOS.join(", ")} and specialty product brands.</span>
+          </div>
 
-            <p className="mx-auto max-w-3xl text-center text-sm font-semibold leading-6 text-[var(--muted)]">
-              Pinterest strategy across food, travel, home, baby, wellness, education, and specialty product brands.
-            </p>
-
-            <div className="testimonial-row">
-              {PROOF_TESTIMONIALS.map((testimonial) => (
-                <article key={testimonial.client} className="testimonial-card reveal-on-scroll">
-                  <p className="text-sm font-bold text-[var(--brand-pink)]">{testimonial.outcome}</p>
-                  <p className="mt-5 text-base leading-7 text-[var(--muted)]">&ldquo;{testimonial.quote}&rdquo;</p>
-                  <div className="mt-6 border-t border-[var(--border)] pt-5">
-                    <h3 className="headline-compact text-[var(--heading)]">{testimonial.client}</h3>
-                    <p className="mt-1 text-sm font-semibold text-[var(--brand-rust)]">{testimonial.role}</p>
-                  </div>
-                  <p className="mt-5 text-sm leading-6 text-[var(--foreground)]">
-                    <span className="font-bold text-[var(--brand-rust)]">What this shows: </span>
-                    {testimonial.shows}
-                  </p>
-                </article>
-              ))}
-            </div>
+          <div className="proof-snapshot-grid">
+            {PROOF_TESTIMONIALS.map((testimonial) => (
+              <article key={testimonial.client} className="proof-snapshot-card reveal-on-scroll">
+                <div className="proof-snapshot-card-top">
+                  <span className="proof-snapshot-tag">Proof snapshot</span>
+                  <h3>{testimonial.outcome}</h3>
+                </div>
+                <p className="proof-snapshot-quote">&ldquo;{testimonial.quote}&rdquo;</p>
+                <div className="proof-snapshot-footer">
+                  <p>{testimonial.client}</p>
+                  <span>{testimonial.role}</span>
+                </div>
+                <p className="service-proof-shows">
+                  <span>What this shows: </span>
+                  {testimonial.shows}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:py-20">
+      <section className="service-faq-section bg-white">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="eyebrow">Questions before we build</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">Every Pinterest path starts with clarity.</h2>
@@ -414,44 +425,56 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-white px-5 pb-16 sm:px-8 lg:pb-20">
-        <div className="cta-wave mx-auto max-w-6xl">
-          <div className="max-w-3xl">
-            <p className="eyebrow">Start here</p>
-            <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-              Not sure what kind of Pinterest support you need? That is exactly why we start with a <span className="text-gradient">Fit Call.</span>
-            </h2>
-            <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
-              <p>You do not need to know whether you need organic, ads, content support, cleanup, or a full Pinterest build before reaching out.</p>
-              <p>We will look at where Pinterest belongs in your marketing, whether there is a real opportunity, and whether The Fruitful Path is the right next step.</p>
+      <section className="service-final-cta-section bg-white px-5 sm:px-8">
+        <CursorGlowPanel className="service-final-cta-panel mx-auto max-w-6xl">
+          <div className="service-final-cta-content">
+            <div>
+              <p className="eyebrow">Start here</p>
+              <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
+                Not sure what kind of Pinterest support you need? That is exactly why we start with a <span className="text-gradient">Fit Call.</span>
+              </h2>
+              <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
+                <p>You do not need to know whether you need organic, ads, content support, cleanup, or a full Pinterest build before reaching out.</p>
+                <p>We will look at where Pinterest belongs in your marketing, whether there is a real opportunity, and whether The Fruitful Path is the right next step.</p>
+              </div>
+
+              <div className="service-final-options">
+                <article className="service-final-option service-final-option-primary">
+                  <h3 className="headline-card text-[var(--heading)]">Ready to talk it through?</h3>
+                  <p>
+                    Book a Pinterest Fit Call and we&apos;ll look at your business, your goals, and whether Pinterest is worth building around right now.
+                  </p>
+                  <Link className="button-primary mt-6 inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
+                    {FIT_CALL_LABEL}
+                  </Link>
+                </article>
+                <article className="service-final-option">
+                  <h3 className="headline-card text-[var(--heading)]">Still deciding?</h3>
+                  <p>
+                    Take the Pinterest Fit Check and get a quick direction based on your offer, content, website, and goals.
+                  </p>
+                  <Link className="button-outline mt-6" href={PINTEREST_FIT_CHECK_URL}>
+                    Start the Fit Check
+                  </Link>
+                </article>
+              </div>
+
+              <p className="service-credit-note mt-8 max-w-3xl">
+                Every client journey starts with The Fruitful Path after the Fit Call. If you move forward into Build the Momentum, your Fruitful Path investment can be credited toward the build.
+              </p>
             </div>
-          </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <article className="soft-card p-6">
-              <h3 className="headline-card text-[var(--heading)]">Ready to talk it through?</h3>
-              <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                Book a Pinterest Fit Call and we&apos;ll look at your business, your goals, and whether Pinterest is worth building around right now.
-              </p>
-              <Link className="button-primary mt-6 inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
-                {FIT_CALL_LABEL}
-              </Link>
-            </article>
-            <article className="soft-card p-6">
-              <h3 className="headline-card text-[var(--heading)]">Still deciding?</h3>
-              <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                Take the Pinterest Fit Check and get a quick direction based on your offer, content, website, and goals.
-              </p>
-              <Link className="button-outline mt-6" href={PINTEREST_FIT_CHECK_URL}>
-                Start the Fit Check
-              </Link>
-            </article>
+            <figure className="service-final-portrait" aria-label="Susy at the Fruitful Pin desk">
+              <Image
+                src={BRAND_ASSETS.founderExpert}
+                alt="Susy at her desk with Fruitful Pin materials"
+                width={1122}
+                height={1402}
+                sizes="(min-width: 1024px) 28vw, 88vw"
+              />
+            </figure>
           </div>
-
-          <p className="service-credit-note mt-8 max-w-3xl">
-            Every client journey starts with The Fruitful Path after the Fit Call. If you move forward into Build the Momentum, your Fruitful Path investment can be credited toward the build.
-          </p>
-        </div>
+        </CursorGlowPanel>
       </section>
     </div>
   );

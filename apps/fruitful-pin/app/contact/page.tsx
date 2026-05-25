@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import { ContactForm } from "@/components/ContactForm";
+import { CursorGlowPanel } from "@/components/CursorGlowPanel";
+import { BRAND_ASSETS } from "@/lib/brandAssets";
 import {
   CALENDAR_EMBED_PATH,
   CALENDAR_URL,
@@ -11,7 +13,7 @@ import {
   PINTEREST_FIT_CHECK_URL,
 } from "@/lib/site";
 
-const HEADSHOT = "https://fruitfulpin.com/wp-content/uploads/2025/12/Cid-headshot.webp";
+const HEADSHOT = BRAND_ASSETS.founderStrategist;
 
 const RIBBON_ITEMS = ["Find the next step", "Book a Fit Call", "Pinterest strategy", "Ask a question", "Start the Fit Check"] as const;
 
@@ -108,7 +110,7 @@ export default function ContactPage() {
             <ContactForm />
           </div>
 
-          <div className="contact-fit-check-card">
+          <CursorGlowPanel className="contact-fit-check-card">
             <div>
               <p className="eyebrow">Not ready for a call?</p>
               <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
@@ -121,7 +123,7 @@ export default function ContactPage() {
             <Link className="button-outline" href={PINTEREST_FIT_CHECK_URL}>
               Start the Fit Check
             </Link>
-          </div>
+          </CursorGlowPanel>
         </div>
       </section>
     </div>

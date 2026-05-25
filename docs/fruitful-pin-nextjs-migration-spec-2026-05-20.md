@@ -1,8 +1,16 @@
 # Fruitful Pin Next.js Migration Spec
 
-Status: planning reference created 2026-05-20.
+Status: planning reference created 2026-05-20; B1 content workflow updated 2026-05-24.
 
-This document captures the corrected implementation direction for migrating the Fruitful Bean / Fruitful Pin marketing site at `fruitfulpin.com` away from the current WordPress/Kadence-style frontend into a coded Next.js site while keeping WordPress on prepaid A2 hosting as the first-phase headless CMS.
+This document captures the corrected implementation direction for migrating the Fruitful Bean / Fruitful Pin marketing site at `fruitfulpin.com` away from the current WordPress/Kadence-style frontend into a coded Next.js site.
+
+Important 2026-05-24 update:
+
+- The original version of this spec assumed WordPress on prepaid A2 would remain as the phase-one headless CMS/editor.
+- Susy has since chosen a simpler B1 direction: code-managed content and a Codex-assisted publishing workflow.
+- WordPress/A2 can remain available as the old-site source/archive during migration, but it should not be assumed as the B1 CMS.
+- Existing WordPress posts and required media should be migrated into the Next.js app for launch.
+- Headless WordPress may be revisited later only if Susy explicitly decides the CMS workflow is worth the added complexity.
 
 ## Core Context
 
@@ -15,8 +23,9 @@ This document captures the corrected implementation direction for migrating the 
 - The current A2 hosting is prepaid until 2027; renewal is expected to be about `$600` for 3 years, or about `$200/year`.
 - Kadence should be removed from future cost comparison because Susy does not plan to keep using it.
 - WordPress itself is free in the current setup; no paid plugins are assumed.
-- The chosen first-phase migration path is to keep WordPress on A2 as the CMS/editor because this creates no editing learning curve while A2 is already prepaid.
-- A later iteration may replace WordPress/A2 with a different CMS or structured content workflow.
+- The original first-phase migration path kept WordPress on A2 as the CMS/editor, but this is now superseded for B1.
+- The current B1 path is code-managed content: approved blog posts, page content, SEO fields, and optimized media live in the Next.js app and are updated through Codex-assisted repo changes.
+- A later iteration may revisit WordPress, Sanity, or another CMS if the code-managed workflow becomes too cumbersome.
 - Susy already has the primary offer, claims, services, copy, and migration scope defined.
 - Susy is tech-savvy and comfortable using Codex/AI-assisted editing for site changes, but a familiar CMS-style editing experience is still valuable for normal content.
 - Stepan is expected to be comfortable with AI-assisted implementation.
@@ -29,7 +38,7 @@ Rebuild `fruitfulpin.com` as a faster, cleaner, more conversion-focused Pinteres
 - supports normal marketing pages and blog content,
 - integrates the Pinterest assessment path as a lead/conversion asset,
 - reduces dependence on WordPress themes,
-- can be edited without HTML through the familiar WordPress editor in phase one,
+- can be maintained through a Codex-assisted code-managed content workflow in phase one,
 - can be maintained with AI-assisted workflows,
 - and can launch without taking the current A2/WordPress site offline during the build.
 
@@ -52,23 +61,26 @@ See `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` for the broader repo structure and
 - Use Vercel only if Cloudflare compatibility creates enough friction to justify the higher monthly cost.
 - Keep the public frontend in code with reusable React components and page templates.
 
-### Chosen Phase-One Target
+### Chosen B1 Target
 
 Use this as the implementation target unless Susy explicitly changes direction:
 
 ```txt
 GoDaddy domain
 -> Cloudflare hosts the public Next.js site
--> WordPress remains on prepaid A2 as a headless CMS/editor
+-> Content is managed in the Next.js repo through Codex-assisted updates
+-> MailerLite handles email/list capture once integration credentials are available
 ```
 
 This means:
 
 - visitors see the Cloudflare-hosted Next.js site,
-- Susy edits content in WordPress,
+- approved blog posts, metadata, and optimized images live in `apps/fruitful-pin`,
+- Susy can draft and organize posts in ClickUp, Drive, or another editorial workspace,
+- Codex migrates/publishes approved content into the site repo and runs validation before launch,
 - WordPress/Kadence no longer controls the public frontend,
-- A2 remains only because it is prepaid and needed to host WordPress for phase one,
-- the CMS replacement decision is punted to a later iteration closer to the A2 renewal window.
+- A2 can remain available as the old WordPress source/archive while the content is migrated,
+- the CMS decision can be revisited before the 2027 A2 renewal window if the code-managed workflow feels limiting.
 
 ### Hosting Preference
 
@@ -87,41 +99,39 @@ Comparison against current future A2-only cost after the prepaid period:
 - Current likely future A2 renewal cost without Kadence: about `$600` over 3 years.
 - Cloudflare likely range: `$0-$180` over 3 years.
 - Expected future savings after dropping A2: about `$420-$600` over 3 years, depending on whether paid Workers are needed.
-- Phase one does not immediately remove A2 because A2 is prepaid and WordPress is intentionally kept as the editor.
+- Phase one does not require A2 as a CMS if content/media are migrated into the Next.js app. A2 can remain available because it is prepaid, but the launch target should avoid depending on it.
 
 ### Content Editing
 
-Use WordPress on A2 as the first-phase headless CMS. Do not build a custom CMS unless a unique Fruitful workflow requires it later.
+Use code-managed content for B1. Do not add headless WordPress, Sanity, or another CMS unless Susy explicitly reopens that decision.
 
 Phased options:
 
-1. Phase one: Headless WordPress on A2
+1. B1: Code-managed content
+   - Susy can draft content in ClickUp, Drive, Docs, or another editorial workspace.
+   - Codex migrates approved copy, SEO fields, images, and internal links into `apps/fruitful-pin`.
+   - Published content is committed in the website repo and deployed through the normal build pipeline.
+   - This keeps the launch simpler, faster, and less dependent on WordPress hosting.
+
+2. Later option: Headless WordPress on A2
    - Susy keeps the WordPress editor, posts, media library, categories, tags, drafts, and publishing workflow.
    - WordPress becomes the content database and editor UI only.
    - Kadence no longer controls the public site.
    - The Next.js frontend fetches content from WordPress and renders it in custom page templates.
-   - This preserves familiarity and uses the already prepaid A2 hosting period.
+   - This preserves familiarity and uses the already prepaid A2 hosting period, but adds API/media/domain complexity.
 
-2. Later iteration: Sanity or a similar headless CMS
+3. Later iteration: Sanity or a similar headless CMS
    - Susy uses a modern CMS dashboard instead of WordPress.
    - Content is modeled as structured fields and rich text blocks.
    - Likely cleaner for service pages, testimonials, case studies, FAQs, CTAs, and SEO fields.
    - May be free at the current scale, depending on usage and seats.
    - Avoids long-term WordPress hosting if all content migrates before A2 renewal.
 
-3. Later iteration: AI-assisted content files
-   - Content lives in the code repo as structured files.
-   - Susy/Stepan/Codex make edits through AI-assisted workflows.
-   - Lowest recurring cost because there is no CMS.
-   - Best for technical or semi-technical workflows, less ideal if Susy wants an independent dashboard for frequent blog editing.
+- Use AI-assisted repo edits as the first-class workflow for B1 layout, blog posts, assessment, global CTA, SEO, and sitewide changes.
 
-Recommended starting point:
+## What Headless CMS Would Mean If Reopened Later
 
-- Use headless WordPress first because preserving the familiar WordPress editing experience is now the selected phase-one criterion.
-- Revisit Sanity, Prismic, Tina/Decap, or content files later when the A2 renewal decision is closer.
-- Use AI-assisted repo edits as a first-class workflow for layout, assessment, global CTA, SEO, and sitewide changes regardless of CMS choice.
-
-## What Headless CMS Means For This Project
+This is no longer the B1 launch path, but it remains useful context if Susy later decides she wants a CMS dashboard.
 
 In the current WordPress model:
 
@@ -180,18 +190,18 @@ During build:
   - `staging.fruitfulpin.com`
 - The current `fruitfulpin.com` remains live on A2.
 
-At launch in phase one:
+At launch in B1:
 
 - DNS is updated at GoDaddy, or DNS is moved to Cloudflare and then pointed to the new Cloudflare-hosted frontend.
 - `fruitfulpin.com` and `www.fruitfulpin.com` point to the new site.
-- WordPress remains available on A2 as the CMS/editor, ideally through a CMS/admin URL or subdomain that is not the public marketing frontend.
+- WordPress may remain available on A2 as the old-site source/archive, but the public B1 site should not depend on WordPress media or API calls.
 - SSL, redirects, sitemap, analytics, and Search Console are verified.
 
 After launch:
 
-- Keep A2/WordPress because it is the chosen phase-one CMS and A2 is prepaid until 2027.
-- Later, before A2 renewal, decide whether to move off WordPress/A2 to Sanity, another CMS, or structured content files.
-- Cancel A2 only after the site no longer depends on WordPress as the CMS.
+- Keep A2/WordPress only as long as it is useful for archive/source access or another site need.
+- Publish new Fruitful Pin posts through the code-managed workflow unless Susy explicitly changes the publishing model.
+- Before A2 renewal, decide whether WordPress can be cancelled because Fruitful Pin no longer depends on it.
 
 ## Site Scope
 
@@ -283,13 +293,13 @@ Deliverable:
 
 - Private preview site live on temporary URL.
 
-### Phase 3: Headless WordPress Content Mapping
+### Phase 3: Code-Managed Blog And Content Mapping
 
 Estimated time: 2-4 days.
 
 Tasks:
 
-- Map WordPress content to the Next.js content contract:
+- Map existing WordPress/source content to the Next.js content contract:
   - blog posts,
   - service pages,
   - FAQs,
@@ -298,13 +308,14 @@ Tasks:
   - homepage sections,
   - CTAs,
   - SEO fields.
-- Decide whether to use existing WordPress post/page fields, blocks, custom fields, or a minimal custom field layer.
-- Add preview/draft workflow if practical.
-- Test that Susy can edit content in WordPress without touching HTML.
+- Decide which existing posts are included in B1 and which are deferred.
+- Add a clear blog post intake checklist for title, slug, excerpt, meta title, meta description, featured image, inline images, alt text, internal links, and CTA placement.
+- Use ClickUp/Drive/Docs as editorial intake if useful, but publish final content from the repo.
+- Keep headless WordPress out of B1 unless Susy explicitly reopens it.
 
 Deliverable:
 
-- Working headless WordPress content workflow and one fully editable page rendered by Next.js.
+- Working code-managed content workflow and migrated B1 blog/content set rendered by Next.js.
 
 ### Phase 4: Page Build
 
@@ -330,8 +341,8 @@ Estimated time: 3-7 days.
 
 Tasks:
 
-- Move approved content into the headless WordPress content structure.
-- Migrate images and media.
+- Move approved content into the Next.js content structure.
+- Migrate images and media into the app or another approved permanent asset location.
 - Clean formatting.
 - Add SEO titles and descriptions.
 - Add internal links.
@@ -358,7 +369,7 @@ Tasks:
 - Redirect test.
 - 404 page.
 - `www` and non-`www` behavior.
-- Backup old WordPress site.
+- Backup old WordPress site before DNS changes or major content cleanup.
 
 Deliverable:
 
@@ -392,7 +403,7 @@ Tasks:
 - Check form submissions and booking links.
 - Review top landing pages.
 - Compare speed and conversion behavior.
-- Decide when to cancel A2 renewal.
+- Decide whether Fruitful Pin still needs A2/WordPress before the 2027 renewal window.
 
 Deliverable:
 
@@ -435,9 +446,9 @@ Cloudflare-based Next.js setup:
 
 - Cloudflare Pages: potentially `$0`.
 - Cloudflare Workers Paid if needed: about `$5/month`, or `$180` over 3 years.
-- CMS in phase one: WordPress on already prepaid A2 hosting.
-- A2 in phase one: `$0` incremental cost until 2027 because it is prepaid.
-- A2 later: `$0` only after WordPress is replaced or no longer needed.
+- CMS in B1: none; content is code-managed in the Next.js app.
+- A2 in B1: `$0` incremental cost until 2027 because it is prepaid, but Fruitful Pin should avoid depending on it if content/media are migrated.
+- A2 later: `$0` only after WordPress is no longer needed for archives, other sites, or any reopened CMS workflow.
 - Kadence: `$0`.
 - Approximate post-A2 3-year cost after CMS replacement: `$0-$180`, excluding domain/email and any optional CMS upgrades.
 
@@ -456,8 +467,8 @@ Recommended path:
 1. Keep current A2/WordPress site live.
 2. Build new Next.js site privately.
 3. Prefer Cloudflare hosting for cost.
-4. Use WordPress on prepaid A2 as the phase-one headless CMS.
+4. Use code-managed content for B1; migrate approved posts/media into `apps/fruitful-pin`.
 5. Preserve and redirect SEO-relevant URLs.
 6. Launch by DNS switch only after preview approval.
-7. Revisit CMS replacement before the 2027 A2 renewal window.
-8. Cancel A2 only after the new site no longer depends on WordPress as the CMS.
+7. Revisit CMS needs before the 2027 A2 renewal window.
+8. Cancel A2 only after Fruitful Pin no longer needs WordPress for source/archive or another explicit workflow.

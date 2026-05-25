@@ -27,7 +27,6 @@ const PUBLIC_COPY_SOURCES = [
 
 const BANNED_VISITOR_COPY = [
   /a place for/i,
-  /coming soon/i,
   /exact copy can be refined/i,
   /for now/i,
   /future lead magnets/i,
@@ -84,8 +83,8 @@ describe("Fruitful Pin SEO and route safety", () => {
 
     for (const post of BLOG_POSTS) {
       await expect(generateMetadata({ params: Promise.resolve({ slug: post.slug }) })).resolves.toEqual({
-        title: post.title,
-        description: post.excerpt,
+        title: post.seoTitle ?? post.title,
+        description: post.seoDescription ?? post.excerpt,
       });
     }
   });

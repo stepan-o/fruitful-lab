@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CursorGlowPanel } from "@/components/CursorGlowPanel";
 import { PinterestFitAssessmentEmbed } from "@/components/PinterestFitAssessmentEmbed";
 import { BLOG_POSTS, RESOURCE_ITEMS, TOOL_STACK } from "@/lib/content";
 import { BOOKING_URL, FIT_CALL_LABEL, PINTEREST_FIT_CHECK_URL } from "@/lib/site";
@@ -33,7 +34,7 @@ export default function ResourcesPage() {
               <a className="button-primary inline-flex min-h-12 items-center justify-center px-6" href="#pinterest-fit-check-card">
                 Start the Fit Check
               </a>
-              <Link className="inline-flex text-sm font-bold text-[var(--brand-pink)]" href={PINTEREST_FIT_CHECK_URL}>
+              <Link className="resource-hero-link inline-flex text-sm font-bold text-[var(--brand-pink)]" href={PINTEREST_FIT_CHECK_URL}>
                 Take the Fit Check on its own page
               </Link>
             </div>
@@ -45,8 +46,8 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section id="resource-library" className="bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+      <section id="resource-library" className="resource-library-section bg-white">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="max-w-3xl">
             <p className="eyebrow">Resource library</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
@@ -74,8 +75,8 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="section-swell bg-[var(--surface-soft)]">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+      <section className="resources-tools-section section-swell bg-[var(--surface-soft)]">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="resource-stack-panel">
             <div>
               <p className="eyebrow">Helpful tools</p>
@@ -105,8 +106,8 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:py-20">
+      <section className="resources-blog-section bg-white">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>
             <p className="eyebrow">From the blog</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
@@ -129,7 +130,7 @@ export default function ResourcesPage() {
                       alt={post.featuredImage.alt}
                       fill
                       className="blog-visual-image"
-                      sizes="(min-width: 1024px) 24vw, 92vw"
+                      sizes="(min-width: 1024px) 38rem, 92vw"
                     />
                   ) : (
                     <span>{post.category}</span>
@@ -145,8 +146,8 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="bg-white px-5 pb-16 sm:px-8 lg:pb-20">
-        <div className="cta-wave mx-auto max-w-6xl reveal-on-scroll">
+      <section className="resource-final-cta-section bg-white px-5 sm:px-8">
+        <CursorGlowPanel className="cta-wave resource-final-cta-panel mx-auto max-w-6xl reveal-on-scroll">
           <div className="max-w-3xl">
             <p className="eyebrow">Start here</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
@@ -154,6 +155,9 @@ export default function ResourcesPage() {
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
               Answer seven quick questions and get a simple direction based on your offer, content, website, and goals. You can save your result by email and come back to it later.
+            </p>
+            <p className="resource-human-note mt-4">
+              Not sure where to start? The Fit Check gives you a simple first direction before you choose a guide, article, or call.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link className="button-primary inline-flex min-h-12 items-center justify-center px-6" href={PINTEREST_FIT_CHECK_URL}>
@@ -164,7 +168,7 @@ export default function ResourcesPage() {
               </Link>
             </div>
           </div>
-        </div>
+        </CursorGlowPanel>
       </section>
     </div>
   );

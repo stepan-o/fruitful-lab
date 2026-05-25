@@ -1,6 +1,6 @@
 # Project Memory - Fruitful Lab
 
-Status: current working memory as of 2026-05-21 after adding the Fruitful Lab customer site foundation.
+Status: current working memory as of 2026-05-24 after approving the Fruitful Pin B1 code-managed content direction.
 
 Use this file as the durable architectural memory for future Codex/LLM work on this repo. It records the structure, layers, contracts, and working patterns that should be assumed going forward unless code proves otherwise.
 
@@ -12,7 +12,7 @@ Related planning note:
 
 - `docs/BRAND_APP_MONOREPO_ARCHITECTURE.md` is the current target architecture reference. It defines the shift from a single-app layout toward separate apps under `apps/*`, beginning with `apps/lab` for Fruitful Lab and later `apps/fruitful-pin` for the Fruitful Pin migration. Future brand apps may include Bloom Whispers and Bricoli.
 - `docs/BRAND_APP_MONOREPO_EXECUTION_PLAN.md` is the active PR-gated execution plan for the monorepo migration. It defines PR 1 as docs/architecture baseline, PR 2 as the completed structure-only `frontend/` to `apps/lab/` move, PR 3 as Fruitful Pin app foundation, and later PRs for inventory, content contracts, templates, CMS integration, and launch prep.
-- `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md` is the current planning reference for a Fruitful Bean / Fruitful Pin-only migration of `fruitfulpin.com` to a coded Next.js marketing site. It explicitly does not propose rebuilding Fruitful Lab, removes Kadence from future cost comparisons, assumes GoDaddy domain registration and prepaid A2 hosting until 2027, prefers Cloudflare hosting for the public Next.js frontend, and keeps WordPress on A2 as the phase-one headless CMS/editor to avoid a CMS learning curve during migration.
+- `docs/fruitful-pin-nextjs-migration-spec-2026-05-20.md` is the current planning reference for a Fruitful Bean / Fruitful Pin-only migration of `fruitfulpin.com` to a coded Next.js marketing site. It explicitly does not propose rebuilding Fruitful Lab, removes Kadence from future cost comparisons, assumes GoDaddy domain registration and prepaid A2 hosting until 2027, and prefers Cloudflare hosting for the public Next.js frontend. The original spec proposed phase-one headless WordPress, but Susy changed the B1 launch direction on 2026-05-24: Fruitful Pin should launch with code-managed content and a Codex-assisted publishing workflow, while WordPress/A2 remains only as the old-site source/archive unless headless is explicitly reopened later.
 
 The current Fruitful Lab app is not just a marketing site. It is a tool-and-analytics system with:
 
@@ -68,7 +68,7 @@ Current foundation:
 - first-pass public routes for `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/case-studies`, `/about`, `/contact`, `/privacy`, `/privacy-policy`, `/terms`, and legacy `/services`,
 - brand/site constants in `apps/fruitful-pin/lib/site.ts`,
 - content boundary in `apps/fruitful-pin/lib/content.ts`,
-- WordPress connection placeholder in `apps/fruitful-pin/lib/wordpress.ts`,
+- WordPress connection placeholder in `apps/fruitful-pin/lib/wordpress.ts` retained as optional future/historical plumbing, not the B1 launch path,
 - local tests in `apps/fruitful-pin/__tests__/`.
 
 First-pass checkpoint memory:
@@ -81,6 +81,16 @@ First-pass checkpoint memory:
 - Blog templates should support a sidebar, featured images, table of contents, key takeaways, pin graphic slots, pull quotes, comparison tables, FAQs, and reader navigation.
 - Contact is the fit-call page: embedded TidyCal first, then the general inquiry form/email option. Do not wire new email automation, CRM, or form backend integrations without explicit approval.
 - Case studies/proof is currently a first-pass holding structure until Susy is ready to build real visual case studies and proof packets.
+
+B1 launch content direction approved on 2026-05-24:
+
+- Fruitful Pin B1 should use a code-managed blog/content workflow, not headless WordPress.
+- WordPress/A2 may remain available through the prepaid period as the old-site source/archive, but the new public site should not rely on WordPress as the CMS unless Susy explicitly changes direction.
+- Existing WordPress posts that should launch with B1 need to be migrated into the Next.js content model and rendered through the approved blog templates.
+- Required media should be copied into the app or another approved permanent asset location; avoid production dependencies on `fruitfulpin.com/wp-content/uploads/*` once DNS points to the new site.
+- ClickUp can be used as the editorial planning/intake workspace. The live published copy, metadata, and optimized images should still be committed into `apps/fruitful-pin`.
+- MailerLite is the likely integration target for newsletter signups, Fit Check result emails, and future resource waitlists. Analytics IDs and affiliate URLs remain pending from Susy.
+- Case Studies should be preserved for V2 and should not block B1 launch. If the case-study page is not polished enough for B1, hide it from public navigation/sitemap while keeping the code/content available for later.
 
 Use `npm run build` from `apps/fruitful-pin/` or `make fruitful-pin-build` from the repo root to verify the static export. Cloudflare Pages should use `apps/fruitful-pin` as the root, `npm run build` as the build command, and `out` as the build output directory. If later WordPress preview, SSR, or dynamic route needs exceed static export, switch this app to the Cloudflare Workers/OpenNext path in a dedicated PR.
 
@@ -119,7 +129,7 @@ Brand and offer direction memory:
 - Initial site scope includes Home, About, Services, Blog, Resources, Contact, Privacy, and Terms.
 - Case studies and tools/experiments are intentionally out of the first skeleton.
 - Contact path uses `hello@fruitfulab.com` and a TidyCal booking destination. `NEXT_PUBLIC_TIDYCAL_URL` can override the default fallback.
-- Phase-one CMS direction is WordPress as headless CMS/editor on the existing prepaid hosting model, following the Fruitful Pin approach.
+- CMS direction for the Fruitful Lab customer site has not been re-decided after the Fruitful Pin 2026-05-24 code-managed pivot. Do not automatically inherit either WordPress/headless or code-managed content for `apps/fruitful-lab-site` without a separate decision.
 - Cloudflare/static-first is the preferred public frontend hosting direction when launch work begins.
 
 Use `npm run build` from `apps/fruitful-lab-site/` to verify the static export. Cloudflare Pages should use `apps/fruitful-lab-site` as the root, `npm run build` as the build command, and `out` as the build output directory. Do not point `fruitfulab.com` at this app until preview, content, analytics, redirects, and launch checks are explicitly approved.

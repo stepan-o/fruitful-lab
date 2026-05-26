@@ -63,8 +63,8 @@ function createTaskDescription(payload: CleanContactPayload) {
 }
 
 export async function onRequestPost(context: PagesFunctionContext) {
-  const token = context.env.CLICKUP_API_TOKEN;
-  const listId = context.env.CLICKUP_CONTACT_LIST_ID;
+  const token = cleanString(context.env.CLICKUP_API_TOKEN, 500).replace(/^Bearer\s+/i, "");
+  const listId = cleanString(context.env.CLICKUP_CONTACT_LIST_ID, 80);
 
   if (!token || !listId) {
     return jsonResponse({ ok: false, message: "The contact form is not configured yet. Please email hello@fruitfulpin.com." }, 500);
@@ -114,10 +114,17 @@ export async function onRequestPost(context: PagesFunctionContext) {
   });
 
   if (!clickUpResponse.ok) {
+    const message =
+      clickUpResponse.status === 401 || clickUpResponse.status === 403
+        ? "ClickUp rejected the request. Please check the ClickUp API token permissions."
+        : clickUpResponse.status === 404
+          ? "ClickUp could not find the contact list. Please check the ClickUp list ID."
+          : "ClickUp rejected the contact form request. Please try again or email hello@fruitfulpin.com.";
+
     return jsonResponse(
       {
         ok: false,
-        message: "Something went sideways. Please try again or email hello@fruitfulpin.com.",
+        message,
       },
       clickUpResponse.status >= 500 ? 502 : 400,
     );

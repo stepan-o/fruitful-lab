@@ -43,7 +43,8 @@ export function SubscribeForm({
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const email = getField(formData, "email");
 
     if (!email) {
@@ -79,7 +80,7 @@ export function SubscribeForm({
         throw new Error(data?.message || "Please try again.");
       }
 
-      event.currentTarget.reset();
+      form.reset();
       setStatus("success");
       setMessage(successMessage);
     } catch (error) {

@@ -7,6 +7,7 @@ import {
   scorePinterestFitAssessment,
   type PinterestFitAssessmentAnswers,
 } from "@/lib/fitAssessment";
+import { SubscribeForm } from "@/components/SubscribeForm";
 import { BOOKING_URL, FIT_CALL_LABEL } from "@/lib/site";
 
 type PinterestFitAssessmentEmbedProps = {
@@ -40,6 +41,14 @@ export function PinterestFitAssessmentEmbed({ intro = "full" }: PinterestFitAsse
     setStarted(false);
     setQuestionIndex(0);
     setAnswers({});
+  }
+
+  function getAnswerLabel(questionId: string) {
+    const selectedId = answers[questionId];
+    const question = PINTEREST_FIT_ASSESSMENT_QUESTIONS.find((item) => item.id === questionId);
+    const option = question?.options.find((item) => item.id === selectedId);
+
+    return option?.label ?? "";
   }
 
   if (!started && intro === "buttonOnly") {
@@ -107,12 +116,26 @@ export function PinterestFitAssessmentEmbed({ intro = "full" }: PinterestFitAsse
           <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
             I&apos;ll send your Pinterest Fit Check result to your inbox, along with a simple next-step note so you can revisit whether Pinterest is worth building, fixing, or saving for later.
           </p>
-          <form className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
-            <input className="blog-form-input" type="email" name="fitResultEmail" placeholder="Email address" aria-label="Email address for your Pinterest Fit Check result" />
-            <button className="button-primary min-h-11 px-5" type="button">
-              Send my result
-            </button>
-          </form>
+          <SubscribeForm
+            formType="fit-check"
+            buttonLabel="Send my result"
+            successMessage="Saved. Your result is on the list for Fruitful Pin follow-up."
+            includeWebsite
+            emailPlaceholder="Email address"
+            className="mt-4 grid gap-3 sm:grid-cols-[1fr_1fr_auto]"
+            buttonClassName="button-primary min-h-11 px-5"
+            fields={{
+              fit_result: result.outcome.label,
+              fit_score: result.totalScore,
+              fit_max_score: result.maxScore,
+              fit_goal: getAnswerLabel("goal"),
+              fit_offer_readiness: getAnswerLabel("proof"),
+              fit_content_readiness: getAnswerLabel("assets"),
+              fit_website_readiness: getAnswerLabel("website"),
+              fit_support_interest: getAnswerLabel("support"),
+              fit_ads_interest: getAnswerLabel("ads"),
+            }}
+          />
           <p className="mt-3 text-xs leading-5 text-[var(--muted)]">
             You&apos;ll also get occasional Pinterest strategy notes from Fruitful Pin. Unsubscribe anytime.
           </p>

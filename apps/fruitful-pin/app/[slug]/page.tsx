@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { SubscribeForm } from "@/components/SubscribeForm";
 import { BRAND_ASSETS } from "@/lib/brandAssets";
 import { BLOG_POSTS, getPostBySlug, type BlogPost } from "@/lib/content";
 import { BOOKING_URL, CANONICAL_URL, FIT_CALL_LABEL, SITE_NAME } from "@/lib/site";
@@ -327,12 +328,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
                         Join the list for practical Pinterest strategy notes, case studies, and resource drops for content-led brands.
                       </p>
-                      <form className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
-                        <input className="blog-form-input" type="email" name="email" placeholder="Email address" />
-                        <button className="button-primary min-h-11 rounded-md px-5 text-sm font-semibold" type="button">
-                          Send me the notes
-                        </button>
-                      </form>
+                      <SubscribeForm
+                        formType="newsletter"
+                        buttonLabel="Send me the notes"
+                        successMessage="You're on the list. Pinterest notes will head your way."
+                        className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]"
+                        buttonClassName="button-primary min-h-11 rounded-md px-5 text-sm font-semibold"
+                      />
                     </aside>
                   ) : null}
 
@@ -517,13 +519,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
                   Get a low-pressure starting point for choosing the Pinterest path that fits your content, offer, and stage.
                 </p>
-                <form className="mt-5 grid gap-3">
-                  <input className="blog-form-input" type="text" name="name" placeholder="Your name" />
-                  <input className="blog-form-input" type="email" name="email" placeholder="Email address" />
-                  <button className="button-primary min-h-11 rounded-md px-5 text-sm font-semibold" type="button">
-                    Send me the guide
-                  </button>
-                </form>
+                <SubscribeForm
+                  formType="resource-interest"
+                  buttonLabel="Send me the guide"
+                  successMessage="You're on the resource list. I'll send the next useful guide when it's ready."
+                  resourceInterest="Pinterest strategy guide"
+                  includeName
+                  className="mt-5 grid gap-3"
+                  buttonClassName="button-primary min-h-11 rounded-md px-5 text-sm font-semibold"
+                />
               </section>
 
               <section className="blog-post-side-card">

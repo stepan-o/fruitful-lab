@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CursorGlowPanel } from "@/components/CursorGlowPanel";
+import { SubscribeForm } from "@/components/SubscribeForm";
 import { BRAND_ASSETS } from "@/lib/brandAssets";
 import { BLOG_POSTS, type BlogPost } from "@/lib/content";
 import { BOOKING_URL, FIT_CALL_LABEL, PINTEREST_FIT_CHECK_URL } from "@/lib/site";
@@ -159,13 +160,14 @@ export default function BlogPage() {
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
                   Get practical strategy notes on visibility, content, ads, and how to make Pinterest support the business behind the pins.
                 </p>
-                <form className="mt-5 grid gap-3">
-                  <input className="blog-form-input" type="text" name="name" placeholder="Your name" />
-                  <input className="blog-form-input" type="email" name="email" placeholder="Email address" />
-                  <button className="button-primary min-h-11 px-5" type="button">
-                    Send me the notes
-                  </button>
-                </form>
+                <SubscribeForm
+                  formType="newsletter"
+                  buttonLabel="Send me the notes"
+                  successMessage="You're on the list. Pinterest notes will head your way."
+                  includeName
+                  className="mt-5 grid gap-3"
+                  buttonClassName="button-primary min-h-11 px-5"
+                />
                 <p className="mt-3 text-xs leading-5 text-[var(--muted)]">Occasional Pinterest strategy notes. Unsubscribe anytime.</p>
               </section>
 

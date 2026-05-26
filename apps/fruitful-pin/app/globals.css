@@ -2638,6 +2638,22 @@ summary::-webkit-details-marker {
   box-shadow: 0 0 0 4px rgba(149, 9, 82, 0.08), 0 0 24px rgba(149, 9, 82, 0.1);
 }
 
+.form-status-message {
+  grid-column: 1 / -1;
+  margin-top: 0.15rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.form-status-message.is-success {
+  color: var(--brand-rust);
+}
+
+.form-status-message.is-error {
+  color: var(--brand-pink);
+}
+
 .blog-search-field:focus-within {
   box-shadow: 0 0 0 5px rgba(213, 137, 54, 0.08);
 }

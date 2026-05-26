@@ -109,7 +109,7 @@ Phase-one safe fields:
 - fit criteria
 - not-fit criteria
 
-Do not implement a live contact form until the provider, spam protection, notification target, and data handling expectations are confirmed.
+Confirmed B1 contact provider: ClickUp. The public contact form posts to `/api/contact`, which creates a ClickUp task through a Cloudflare Pages Function. Keep spam protection lightweight for B1 with a honeypot field, and keep `CLICKUP_API_TOKEN` plus `CLICKUP_CONTACT_LIST_ID` in Cloudflare env vars rather than the repo.
 
 ## WordPress Mapping Notes
 

@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CONTACT_EMAIL } from "@/lib/site";
 
 const PINTEREST_SUPPORT_TOPIC = "I want to explore Pinterest support";
+
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
 function getField(formData: FormData, key: string) {
   return String(formData.get(key) ?? "").trim();
@@ -11,33 +12,65 @@ function getField(formData: FormData, key: string) {
 
 export function ContactForm() {
   const [topic, setTopic] = useState(PINTEREST_SUPPORT_TOPIC);
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [message, setMessage] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const name = getField(formData, "name");
     const email = getField(formData, "email");
     const website = getField(formData, "website");
     const topic = getField(formData, "topic") || "General question";
     const message = getField(formData, "message");
+    const company = getField(formData, "company");
 
-    const body = [
-      name ? `Name: ${name}` : "",
-      email ? `Email: ${email}` : "",
-      website ? `Website / Brand: ${website}` : "",
-      `Topic: ${topic}`,
-      "",
-      message,
-    ]
-      .filter(Boolean)
-      .join("\n");
+    if (!name || !email || !message) {
+      setStatus("error");
+      setMessage("Please add your name, email address, and message.");
+      return;
+    }
 
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`Fruitful Pin: ${topic}`)}&body=${encodeURIComponent(body)}`;
+    setStatus("submitting");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          website,
+          topic,
+          message,
+          company,
+          signupPage: window.location.pathname,
+        }),
+      });
+      const data = (await response.json().catch(() => null)) as { message?: string } | null;
+
+      if (!response.ok) {
+        throw new Error(data?.message || "Please try again.");
+      }
+
+      form.reset();
+      setTopic(PINTEREST_SUPPORT_TOPIC);
+      setStatus("success");
+      setMessage("Thank you. Your message has been sent.");
+    } catch (error) {
+      setStatus("error");
+      setMessage(error instanceof Error ? error.message : "Please try again or email hello@fruitfulpin.com.");
+    }
   }
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
+      <input className="hidden" type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <label className="contact-form-field">
         <span>Name*</span>
         <input name="name" type="text" placeholder="Your name" required />
@@ -66,9 +99,14 @@ export function ContactForm() {
         <span>Message*</span>
         <textarea name="message" rows={6} placeholder="Tell me what you are hoping Pinterest can support, or what question you would like to ask." required />
       </label>
-      <button className="button-primary" type="submit">
-        Send Message
+      <button className="button-primary" type="submit" disabled={status === "submitting"}>
+        {status === "submitting" ? "Sending..." : "Send Message"}
       </button>
+      {message ? (
+        <p className={`form-status-message ${status === "success" ? "is-success" : "is-error"}`} role="status" aria-live="polite">
+          {message}
+        </p>
+      ) : null}
     </form>
   );
 }

@@ -80,7 +80,7 @@ First-pass checkpoint memory:
 - Resources is a soft-conversion hub. It features the native Pinterest Fit Check and keeps guide/resource/blog paths underneath.
 - Pinterest Fit Check is the Fruitful Pin-native diagnostic tool at `/pinterest-fit-check`; it lives inside `apps/fruitful-pin` rather than importing from `apps/lab`.
 - Blog templates should support a sidebar, featured images, table of contents, key takeaways, pin graphic slots, pull quotes, comparison tables, FAQs, and reader navigation.
-- Contact is the fit-call page: embedded TidyCal first, then the general inquiry form/email option. Do not wire new email automation, CRM, or form backend integrations without explicit approval.
+- Contact is the fit-call page: embedded TidyCal first, then the general inquiry form. The general inquiry form is approved for ClickUp routing in B1 and posts to `/api/contact`.
 - Case studies/proof is currently a first-pass holding structure until Susy is ready to build real visual case studies and proof packets.
 
 B1 launch content direction approved on 2026-05-24:
@@ -91,6 +91,7 @@ B1 launch content direction approved on 2026-05-24:
 - Required media should be copied into the app or another approved permanent asset location; avoid production dependencies on `fruitfulpin.com/wp-content/uploads/*` once DNS points to the new site.
 - ClickUp can be used as the editorial planning/intake workspace. The live published copy, metadata, and optimized images should still be committed into `apps/fruitful-pin`.
 - MailerLite is the likely integration target for newsletter signups, Fit Check result emails, and future resource waitlists. Analytics IDs and affiliate URLs remain pending from Susy.
+- Contact page messages use a Cloudflare Pages Function at `/api/contact` to create a ClickUp task. Configure `CLICKUP_API_TOKEN` and `CLICKUP_CONTACT_LIST_ID` in Cloudflare; do not commit the token to the repo.
 - Case Studies should be preserved for V2 and should not block B1 launch. For V1, hide it from public navigation/sitemap and redirect `/case-studies` to `/pinterest-services` while keeping the future proof/story work available for later.
 
 Use `npm run build` from `apps/fruitful-pin/` or `make fruitful-pin-build` from the repo root to verify the static export. Cloudflare Pages should use `apps/fruitful-pin` as the root, `npm run build` as the build command, and `out` as the build output directory. If later WordPress preview, SSR, or dynamic route needs exceed static export, switch this app to the Cloudflare Workers/OpenNext path in a dedicated PR.

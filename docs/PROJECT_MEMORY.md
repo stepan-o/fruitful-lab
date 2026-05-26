@@ -65,7 +65,8 @@ Current foundation:
 
 - static-first Next.js App Router app,
 - `output: "export"` for Cloudflare Pages compatibility,
-- first-pass public routes for `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/case-studies`, `/about`, `/contact`, `/privacy`, `/privacy-policy`, `/terms`, and legacy `/services`,
+- V1 public sitemap/navigation routes for `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/about`, `/contact`, `/privacy`, `/privacy-policy`, and `/terms`,
+- legacy `/services` redirects to `/pinterest-services`, and `/case-studies` is preserved as a V2 redirect/holding route that also points to `/pinterest-services` during V1,
 - brand/site constants in `apps/fruitful-pin/lib/site.ts`,
 - content boundary in `apps/fruitful-pin/lib/content.ts`,
 - WordPress connection placeholder in `apps/fruitful-pin/lib/wordpress.ts` retained as optional future/historical plumbing, not the B1 launch path,
@@ -75,7 +76,7 @@ First-pass checkpoint memory:
 
 - Fruitful Pin should feel airy, breezy, editorial, warm, and Pinterest-specific rather than corporate, generic, or boxy.
 - Primary CTAs use solid `#950952` pink. Gradients are for text highlights and occasional intentional accents, not CTA buttons.
-- Top navigation should stay intentionally lean: Home, Blog, Services, Resources, and About. Case Studies, Contact, Privacy, and Terms can live in the footer and contextual page CTAs.
+- Top navigation should stay intentionally lean: Home, Blog, Services, Resources, and About. Contact, Privacy, and Terms can live in the footer and contextual page CTAs. Case Studies is held for V2 and should not be linked in V1 navigation or sitemap.
 - Resources is a soft-conversion hub. It features the native Pinterest Fit Check and keeps guide/resource/blog paths underneath.
 - Pinterest Fit Check is the Fruitful Pin-native diagnostic tool at `/pinterest-fit-check`; it lives inside `apps/fruitful-pin` rather than importing from `apps/lab`.
 - Blog templates should support a sidebar, featured images, table of contents, key takeaways, pin graphic slots, pull quotes, comparison tables, FAQs, and reader navigation.
@@ -90,7 +91,7 @@ B1 launch content direction approved on 2026-05-24:
 - Required media should be copied into the app or another approved permanent asset location; avoid production dependencies on `fruitfulpin.com/wp-content/uploads/*` once DNS points to the new site.
 - ClickUp can be used as the editorial planning/intake workspace. The live published copy, metadata, and optimized images should still be committed into `apps/fruitful-pin`.
 - MailerLite is the likely integration target for newsletter signups, Fit Check result emails, and future resource waitlists. Analytics IDs and affiliate URLs remain pending from Susy.
-- Case Studies should be preserved for V2 and should not block B1 launch. If the case-study page is not polished enough for B1, hide it from public navigation/sitemap while keeping the code/content available for later.
+- Case Studies should be preserved for V2 and should not block B1 launch. For V1, hide it from public navigation/sitemap and redirect `/case-studies` to `/pinterest-services` while keeping the future proof/story work available for later.
 
 Use `npm run build` from `apps/fruitful-pin/` or `make fruitful-pin-build` from the repo root to verify the static export. Cloudflare Pages should use `apps/fruitful-pin` as the root, `npm run build` as the build command, and `out` as the build output directory. If later WordPress preview, SSR, or dynamic route needs exceed static export, switch this app to the Cloudflare Workers/OpenNext path in a dedicated PR.
 

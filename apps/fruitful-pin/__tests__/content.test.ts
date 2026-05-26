@@ -21,12 +21,12 @@ describe("Fruitful Pin site config", () => {
     expect(FOOTER_LINKS).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ href: "/resources" }),
-        expect.objectContaining({ href: "/case-studies" }),
         expect.objectContaining({ href: "/contact" }),
         expect.objectContaining({ href: "/privacy-policy" }),
         expect.objectContaining({ href: "/terms" }),
       ]),
     );
+    expect(FOOTER_LINKS).not.toEqual(expect.arrayContaining([expect.objectContaining({ href: "/case-studies" })]));
   });
 
   it("preserves current Fruitful Pin service and post URL shapes", () => {
@@ -84,5 +84,7 @@ describe("Fruitful Pin site config", () => {
     expect(urls).toContain("https://fruitfulpin.com/pinterest-fit-check");
     expect(urls).toContain("https://fruitfulpin.com/resources");
     expect(urls).toContain("https://fruitfulpin.com/pinterest-organic-vs-ads");
+    expect(urls).not.toContain("https://fruitfulpin.com/services");
+    expect(urls).not.toContain("https://fruitfulpin.com/case-studies");
   });
 });

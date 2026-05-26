@@ -23,7 +23,6 @@ export const FOOTER_LINKS = [
   { label: "Services", href: "/pinterest-services" },
   { label: "About", href: "/about" },
   { label: "Resources", href: "/resources" },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy", href: "/privacy-policy" },
   { label: "Terms", href: "/terms" },

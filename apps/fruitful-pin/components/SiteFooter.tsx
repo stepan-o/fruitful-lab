@@ -5,7 +5,7 @@ import { CONTACT_EMAIL, FOOTER_LINKS, SITE_NAME } from "@/lib/site";
 
 const footerGroups = [
   { title: "Explore", labels: ["Blog", "Services", "Resources", "About"] },
-  { title: "Proof and contact", labels: ["Case Studies", "Contact"] },
+  { title: "Contact", labels: ["Contact"] },
   { title: "Legal", labels: ["Privacy", "Terms"] },
 ] as const;
 

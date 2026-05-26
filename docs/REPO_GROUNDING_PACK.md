@@ -139,7 +139,7 @@ Pinterest Fit:
 - WordPress adapter placeholder: `apps/fruitful-pin/lib/wordpress.ts` remains historical/future optional plumbing only; B1 content is code-managed.
 - Native Pinterest Fit Check: `apps/fruitful-pin/app/pinterest-fit-check/page.tsx`, `apps/fruitful-pin/components/PinterestFitAssessmentEmbed.tsx`, `apps/fruitful-pin/lib/fitAssessment.ts`
 - SEO/static export routes: `apps/fruitful-pin/app/sitemap.ts`, `apps/fruitful-pin/app/robots.ts`
-- Routes: `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/case-studies`, `/about`, `/contact`, `/privacy`, `/privacy-policy`, `/terms`, and legacy `/services`
+- V1 sitemap/navigation routes: `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/about`, `/contact`, `/privacy`, `/privacy-policy`, and `/terms`; legacy `/services` and held-for-V2 `/case-studies` redirect to `/pinterest-services`
 - Root checks: `make fruitful-pin-test`, `make fruitful-pin-build`, `make fruitful-pin-ci`
 - Local preview from Codex requires network permission before starting the server; otherwise `next dev -H 127.0.0.1 -p 4173` can fail with `listen EPERM`.
 
@@ -150,7 +150,7 @@ B1 launch direction as of 2026-05-24:
 - Do not depend on `fruitfulpin.com/wp-content/uploads/*` after DNS cutover; copy required images locally or move them to an approved permanent media host.
 - ClickUp can be used as Susy's editorial desk/intake source, but the published post and optimized images should live in the website repo.
 - MailerLite is the likely platform for newsletter signups, Fit Check result saves, and resource waitlists; analytics IDs are intentionally on hold until Susy provides them.
-- Case Studies should remain preserved for V2, but should not be treated as a B1 launch blocker.
+- Case Studies should remain preserved for V2, but should not be treated as a B1 launch blocker. For V1, do not link it in navigation or sitemap; redirect `/case-studies` to `/pinterest-services`.
 
 Do not point `fruitfulpin.com` at this app until preview, content migration, redirects, analytics, and launch checks are explicitly approved.
 

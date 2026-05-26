@@ -54,7 +54,6 @@ describe("Fruitful Pin SEO and route safety", () => {
     const sitemapUrls = sitemap().map((entry) => entry.url);
     const expectedInternalRoutes = [
       "",
-      "/services",
       "/privacy",
       ...PRIMARY_NAV.map((item) => (item.href === "/" ? "" : item.href)),
       ...FOOTER_LINKS.map((item) => item.href),
@@ -66,6 +65,8 @@ describe("Fruitful Pin SEO and route safety", () => {
     for (const route of expectedInternalRoutes) {
       expect(sitemapUrls).toContain(`${CANONICAL_URL}${route}`);
     }
+    expect(sitemapUrls).not.toContain(`${CANONICAL_URL}/services`);
+    expect(sitemapUrls).not.toContain(`${CANONICAL_URL}/case-studies`);
   });
 
   it("keeps robots.txt open and pointed at the canonical Fruitful Pin sitemap", () => {

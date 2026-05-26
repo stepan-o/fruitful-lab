@@ -65,7 +65,7 @@ Confirmed B1 set:
 Required:
 
 - `/pinterest-services/` -> keep as current B1 services route.
-- `/services/` -> keep legacy route or redirect to `/pinterest-services/`.
+- `/services/` -> redirect to `/pinterest-services/`; `/pinterest-services/` is the only public services URL for V1.
 - `/pinterest-marketing-for-gardening-brands/` -> keep.
 - `/pinterest-organic-vs-ads/` -> keep.
 - `/pinterest-in-2026-for-product-brands/` -> keep after confirming current live URL.

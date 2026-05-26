@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { PinterestTag } from "@/components/PinterestTag";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { CANONICAL_URL, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="font-body">
         <GoogleAnalytics />
+        <PinterestTag />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

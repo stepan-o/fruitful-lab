@@ -149,7 +149,7 @@ B1 launch direction as of 2026-05-24:
 - Migrate selected existing WordPress blog posts and necessary media into `apps/fruitful-pin` content/assets before launch.
 - Do not depend on `fruitfulpin.com/wp-content/uploads/*` after DNS cutover; copy required images locally or move them to an approved permanent media host.
 - ClickUp can be used as Susy's editorial desk/intake source, but the published post and optimized images should live in the website repo.
-- MailerLite is the likely platform for newsletter signups, Fit Check result saves, and resource waitlists; analytics IDs are intentionally on hold until Susy provides them.
+- MailerLite is the platform for newsletter signups, Fit Check result saves, and resource waitlists. B1 analytics include Cloudflare Web Analytics, Google Search Console with `https://fruitfulpin.com/sitemap.xml`, and GA4 Measurement ID `G-E0TLX9V17Q` wired through `apps/fruitful-pin/components/GoogleAnalytics.tsx`.
 - Contact page messages use the Fruitful Pin Cloudflare Pages Function at `/api/contact`, which creates a ClickUp task using Cloudflare env vars `CLICKUP_API_TOKEN` and `CLICKUP_CONTACT_LIST_ID`.
 - Case Studies should remain preserved for V2, but should not be treated as a B1 launch blocker. For V1, do not link it in navigation or sitemap; redirect `/case-studies` to `/pinterest-services`.
 

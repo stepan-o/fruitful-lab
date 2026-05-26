@@ -111,6 +111,8 @@ Phase-one safe fields:
 
 Confirmed B1 contact provider: ClickUp. The public contact form posts to `/api/contact`, which creates a ClickUp task through a Cloudflare Pages Function. Keep spam protection lightweight for B1 with a honeypot field, and keep `CLICKUP_API_TOKEN` plus `CLICKUP_CONTACT_LIST_ID` in Cloudflare env vars rather than the repo.
 
+Confirmed B1 analytics: Cloudflare Web Analytics is enabled for `fruitfulpin.com`, Google Search Console is verified with `https://fruitfulpin.com/sitemap.xml`, and GA4 uses Measurement ID `G-E0TLX9V17Q` through the app-level Google Analytics component.
+
 ## WordPress Mapping Notes
 
 The current local content can map to WordPress in two ways:

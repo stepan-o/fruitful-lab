@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const PINTEREST_SUPPORT_TOPIC = "I want to explore Pinterest support";
 
@@ -62,6 +63,11 @@ export function ContactForm() {
       setTopic(PINTEREST_SUPPORT_TOPIC);
       setStatus("success");
       setMessage("Thank you. Your message has been sent.");
+      trackEvent("contact_form_submitted", {
+        topic,
+        has_website: Boolean(website),
+        page_path: window.location.pathname,
+      });
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Please try again or email hello@fruitfulpin.com.");

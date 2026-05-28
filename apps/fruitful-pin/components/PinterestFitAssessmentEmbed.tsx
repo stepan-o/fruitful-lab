@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   PINTEREST_FIT_ASSESSMENT_QUESTIONS,
   scorePinterestFitAssessment,
   type PinterestFitAssessmentAnswers,
 } from "@/lib/fitAssessment";
 import { SubscribeForm } from "@/components/SubscribeForm";
+import { trackEvent } from "@/lib/analytics";
 import { BOOKING_URL, FIT_CALL_LABEL } from "@/lib/site";
 
 type PinterestFitAssessmentEmbedProps = {
@@ -18,12 +19,42 @@ export function PinterestFitAssessmentEmbed({ intro = "full" }: PinterestFitAsse
   const [started, setStarted] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<PinterestFitAssessmentAnswers>({});
+  const completedEventKey = useRef<string | null>(null);
 
   const result = useMemo(() => scorePinterestFitAssessment(answers), [answers]);
   const currentQuestion = PINTEREST_FIT_ASSESSMENT_QUESTIONS[questionIndex];
   const selectedOptionId = currentQuestion ? answers[currentQuestion.id] : undefined;
   const isComplete = questionIndex >= PINTEREST_FIT_ASSESSMENT_QUESTIONS.length;
   const progress = Math.round((result.answeredCount / PINTEREST_FIT_ASSESSMENT_QUESTIONS.length) * 100);
+  const answerSignature = PINTEREST_FIT_ASSESSMENT_QUESTIONS.map((question) => `${question.id}:${answers[question.id] ?? ""}`).join("|");
+
+  useEffect(() => {
+    if (!isComplete || result.answeredCount !== PINTEREST_FIT_ASSESSMENT_QUESTIONS.length) {
+      return;
+    }
+
+    if (completedEventKey.current === answerSignature) {
+      return;
+    }
+
+    completedEventKey.current = answerSignature;
+
+    trackEvent("fit_check_completed", {
+      fit_result: result.outcome.label,
+      fit_result_id: result.outcome.id,
+      fit_score: result.totalScore,
+      fit_max_score: result.maxScore,
+      page_path: window.location.pathname,
+    });
+  }, [
+    answerSignature,
+    isComplete,
+    result.answeredCount,
+    result.maxScore,
+    result.outcome.id,
+    result.outcome.label,
+    result.totalScore,
+  ]);
 
   function chooseAnswer(questionId: string, optionId: string) {
     setAnswers((currentAnswers) => ({ ...currentAnswers, [questionId]: optionId }));
@@ -38,6 +69,7 @@ export function PinterestFitAssessmentEmbed({ intro = "full" }: PinterestFitAsse
   }
 
   function restart() {
+    completedEventKey.current = null;
     setStarted(false);
     setQuestionIndex(0);
     setAnswers({});

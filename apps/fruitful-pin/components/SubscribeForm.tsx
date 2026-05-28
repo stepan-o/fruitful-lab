@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 type SubscribeFormType = "newsletter" | "fit-check" | "resource-interest";
 
@@ -83,6 +84,21 @@ export function SubscribeForm({
       form.reset();
       setStatus("success");
       setMessage(successMessage);
+
+      if (formType === "newsletter") {
+        trackEvent("newsletter_signup", {
+          form_type: formType,
+          page_path: window.location.pathname,
+        });
+      }
+
+      if (formType === "resource-interest") {
+        trackEvent("resource_interest", {
+          form_type: formType,
+          resource_interest: resourceInterest,
+          page_path: window.location.pathname,
+        });
+      }
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Please try again or email hello@fruitfulpin.com.");

@@ -111,7 +111,7 @@ Phase-one safe fields:
 
 Confirmed B1 contact provider: ClickUp. The public contact form posts to `/api/contact`, which creates a ClickUp task through a Cloudflare Pages Function. Keep spam protection lightweight for B1 with a honeypot field, and keep `CLICKUP_API_TOKEN` plus `CLICKUP_CONTACT_LIST_ID` in Cloudflare env vars rather than the repo.
 
-Confirmed B1 analytics: Cloudflare Web Analytics is enabled for `fruitfulpin.com`, Google Search Console is verified with `https://fruitfulpin.com/sitemap.xml`, GA4 uses Measurement ID `G-E0TLX9V17Q` through the app-level Google Analytics component, and Pinterest Tag ID `2612504823331` is loaded through the app-level Pinterest Tag component. GA4 V1 conversion events are `fit_check_completed`, `newsletter_signup`, `resource_interest`, `contact_form_submitted`, and `fit_call_click`.
+Confirmed B1 analytics: Cloudflare Web Analytics is enabled for `fruitfulpin.com`, Google Search Console is verified with `https://fruitfulpin.com/sitemap.xml`, GA4 uses Measurement ID `G-E0TLX9V17Q` through the app-level Google Analytics component, Microsoft Clarity uses project ID `wyaafqmk6j` through the app-level Microsoft Clarity component, and Pinterest Tag ID `2612504823331` is loaded through the app-level Pinterest Tag component. GA4 V1 conversion events are `fit_check_completed`, `newsletter_signup`, `resource_interest`, `contact_form_submitted`, and `fit_call_click`.
 
 ## WordPress Mapping Notes
 

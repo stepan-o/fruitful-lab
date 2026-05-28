@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { PinterestTag } from "@/components/PinterestTag";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="font-body">
         <GoogleAnalytics />
+        <MicrosoftClarity />
         <PinterestTag />
         <SiteHeader />
         <main>{children}</main>

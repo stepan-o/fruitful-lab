@@ -8,6 +8,7 @@ const STATIC_ROUTES = [
   "",
   "/pinterest-services",
   "/pinterest-fit-check",
+  "/pinterest-readiness-check",
   "/resources",
   "/blog",
   "/about",

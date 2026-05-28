@@ -1,6 +1,17 @@
 import { AUDIENCE_PATHS, BLOG_POSTS, CERTIFICATION_BADGES, FAQS, NICE_WORDS, PIN_SYSTEM_PILLARS, RESOURCE_ITEMS, SERVICE_PACKAGES, TESTIMONIALS, TRUST_LOGOS } from "@/lib/content";
 import { PINTEREST_FIT_ASSESSMENT_MAX_SCORE, PINTEREST_FIT_ASSESSMENT_QUESTIONS, scorePinterestFitAssessment } from "@/lib/fitAssessment";
-import { CALENDAR_EMBED_PATH, CALENDAR_URL, CANONICAL_URL, CONTACT_EMAIL_URL, FIT_CALL_LABEL, FOOTER_LINKS, PINTEREST_FIT_CHECK_URL, PRIMARY_NAV, SITE_NAME } from "@/lib/site";
+import {
+  CALENDAR_EMBED_PATH,
+  CALENDAR_URL,
+  CANONICAL_URL,
+  CONTACT_EMAIL_URL,
+  FIT_CALL_LABEL,
+  FOOTER_LINKS,
+  PINTEREST_FIT_CHECK_URL,
+  PINTEREST_READINESS_CHECK_URL,
+  PRIMARY_NAV,
+  SITE_NAME,
+} from "@/lib/site";
 import sitemap from "@/app/sitemap";
 
 describe("Fruitful Pin site config", () => {
@@ -60,6 +71,17 @@ describe("Fruitful Pin site config", () => {
     expect(CALENDAR_EMBED_PATH).toBe("susycid/is-pinterest-a-good-fit-for-your-brand");
     expect(CONTACT_EMAIL_URL).toContain("mailto:hello@fruitfulpin.com");
     expect(PINTEREST_FIT_CHECK_URL).toBe("/pinterest-fit-check");
+    expect(PINTEREST_READINESS_CHECK_URL).toBe("/pinterest-readiness-check");
+    expect(RESOURCE_ITEMS).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          title: "Pinterest Readiness Check",
+          status: "Ready now",
+          ctaLabel: "Take the Readiness Check",
+          ctaHref: "/pinterest-readiness-check",
+        }),
+      ]),
+    );
   });
 
   it("keeps the native Fruitful Pin fit check complete and scored", () => {
@@ -82,6 +104,7 @@ describe("Fruitful Pin site config", () => {
 
     expect(urls).toContain("https://fruitfulpin.com/pinterest-services");
     expect(urls).toContain("https://fruitfulpin.com/pinterest-fit-check");
+    expect(urls).toContain("https://fruitfulpin.com/pinterest-readiness-check");
     expect(urls).toContain("https://fruitfulpin.com/resources");
     expect(urls).toContain("https://fruitfulpin.com/pinterest-organic-vs-ads");
     expect(urls).not.toContain("https://fruitfulpin.com/services");

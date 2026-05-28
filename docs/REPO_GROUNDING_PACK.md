@@ -1,6 +1,6 @@
 # Repo Grounding Pack - Fruitful Lab
 
-Status: refreshed from local repo scan and planning updates on 2026-05-24.
+Status: refreshed from local repo scan and planning updates on 2026-05-28.
 
 This is the high-signal orientation file for Fruitful Lab. Treat it as the first stop before changing the system. The fuller current-state memory is `docs/PROJECT_MEMORY.md`; the dated implementation audit is `docs/SYSTEM_IMPLEMENTATION_AUDIT-2026-05-15.md`.
 
@@ -21,7 +21,7 @@ Related planning reference:
 ## Repo Map
 
 - `apps/lab/` - current Next.js App Router app for Fruitful Lab public pages, tool flows, login, admin, contractor pages, analytics proxies, and experiment diagnostics.
-- `apps/fruitful-pin/` - Fruitful Pin static-first Next.js first-pass marketing site targeting Cloudflare Pages; not connected to live DNS and no longer targeting headless WordPress for B1.
+- `apps/fruitful-pin/` - Fruitful Pin static-first Next.js marketing site targeting Cloudflare Pages; live DNS now points to Cloudflare for `fruitfulpin.com`, and B1 is no longer targeting headless WordPress.
 - `apps/fruitful-lab-site/` - Fruitful Lab customer-facing umbrella marketing site foundation for `fruitfulab.com`; separate from the sandbox app on `fruitfulab.net`.
 - `apps/` - home for separate deployable brand apps. Current apps include `apps/lab`, `apps/fruitful-pin`, and `apps/fruitful-lab-site`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
 - `packages/` - target home for shared code once real cross-app reuse exists. Do not create broad shared abstractions prematurely.
@@ -138,8 +138,9 @@ Pinterest Fit:
 - Content boundary: `apps/fruitful-pin/lib/content.ts`
 - WordPress adapter placeholder: `apps/fruitful-pin/lib/wordpress.ts` remains historical/future optional plumbing only; B1 content is code-managed.
 - Native Pinterest Fit Check: `apps/fruitful-pin/app/pinterest-fit-check/page.tsx`, `apps/fruitful-pin/components/PinterestFitAssessmentEmbed.tsx`, `apps/fruitful-pin/lib/fitAssessment.ts`
+- Separate Pinterest Readiness Check resource: `apps/fruitful-pin/app/pinterest-readiness-check/page.tsx`, `apps/fruitful-pin/components/PinterestReadinessCheck/`, `apps/fruitful-pin/lib/pinterestReadinessCheck.ts`
 - SEO/static export routes: `apps/fruitful-pin/app/sitemap.ts`, `apps/fruitful-pin/app/robots.ts`
-- V1 sitemap/navigation routes: `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/about`, `/contact`, `/privacy`, `/privacy-policy`, and `/terms`; legacy `/services` and held-for-V2 `/case-studies` redirect to `/pinterest-services`
+- V1 sitemap/navigation routes: `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/pinterest-readiness-check`, `/blog`, root-level blog posts, `/about`, `/contact`, `/privacy`, `/privacy-policy`, and `/terms`; legacy `/services` and held-for-V2 `/case-studies` redirect to `/pinterest-services`
 - Root checks: `make fruitful-pin-test`, `make fruitful-pin-build`, `make fruitful-pin-ci`
 - Local preview from Codex requires network permission before starting the server; otherwise `next dev -H 127.0.0.1 -p 4173` can fail with `listen EPERM`.
 
@@ -149,7 +150,7 @@ B1 launch direction as of 2026-05-24:
 - Migrate selected existing WordPress blog posts and necessary media into `apps/fruitful-pin` content/assets before launch.
 - Do not depend on `fruitfulpin.com/wp-content/uploads/*` after DNS cutover; copy required images locally or move them to an approved permanent media host.
 - ClickUp can be used as Susy's editorial desk/intake source, but the published post and optimized images should live in the website repo.
-- MailerLite is the platform for newsletter signups, Fit Check result saves, and resource waitlists. B1 analytics include Cloudflare Web Analytics, Google Search Console with `https://fruitfulpin.com/sitemap.xml`, GA4 Measurement ID `G-E0TLX9V17Q` wired through `apps/fruitful-pin/components/GoogleAnalytics.tsx`, Microsoft Clarity project `wyaafqmk6j` loaded as a direct root-layout script in `apps/fruitful-pin/app/layout.tsx`, and Pinterest Tag ID `2612504823331` wired through `apps/fruitful-pin/components/PinterestTag.tsx`. Fruitful Pin GA4 conversion events are intentionally simple V1 events: `fit_check_completed`, `newsletter_signup`, `resource_interest`, `contact_form_submitted`, and `fit_call_click`.
+- MailerLite is the platform for newsletter signups, Fit Check result saves, Pinterest Readiness Check full-readout email steps, and resource waitlists. The Readiness Check uses best-effort rich result fields and falls back to the existing resource-interest group if no dedicated `MAILERLITE_READINESS_CHECK_GROUP_ID` is configured. B1 analytics include Cloudflare Web Analytics, Google Search Console with `https://fruitfulpin.com/sitemap.xml`, GA4 Measurement ID `G-E0TLX9V17Q` wired through `apps/fruitful-pin/components/GoogleAnalytics.tsx`, Microsoft Clarity project `wyaafqmk6j` loaded as a direct root-layout script in `apps/fruitful-pin/app/layout.tsx`, and Pinterest Tag ID `2612504823331` wired through `apps/fruitful-pin/components/PinterestTag.tsx`. Fruitful Pin GA4 conversion events are intentionally simple V1 events: `fit_check_completed`, `newsletter_signup`, `resource_interest`, `contact_form_submitted`, and `fit_call_click`; the Readiness Check adds its own readiness-specific events.
 - Contact page messages use the Fruitful Pin Cloudflare Pages Function at `/api/contact`, which creates a ClickUp task using Cloudflare env vars `CLICKUP_API_TOKEN` and `CLICKUP_CONTACT_LIST_ID`.
 - Case Studies should remain preserved for V2, but should not be treated as a B1 launch blocker. For V1, do not link it in navigation or sitemap; redirect `/case-studies` to `/pinterest-services`.
 

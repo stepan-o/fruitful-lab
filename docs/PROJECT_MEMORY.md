@@ -1,6 +1,6 @@
 # Project Memory - Fruitful Lab
 
-Status: current working memory as of 2026-05-24 after approving the Fruitful Pin B1 code-managed content direction.
+Status: current working memory as of 2026-05-28 after adding the separate Fruitful Pin Pinterest Readiness Check resource.
 
 Use this file as the durable architectural memory for future Codex/LLM work on this repo. It records the structure, layers, contracts, and working patterns that should be assumed going forward unless code proves otherwise.
 
@@ -65,7 +65,7 @@ Current foundation:
 
 - static-first Next.js App Router app,
 - `output: "export"` for Cloudflare Pages compatibility,
-- V1 public sitemap/navigation routes for `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/about`, `/contact`, `/privacy`, `/privacy-policy`, and `/terms`,
+- V1 public sitemap/navigation routes for `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/pinterest-readiness-check`, `/blog`, root-level blog posts, `/about`, `/contact`, `/privacy`, `/privacy-policy`, and `/terms`,
 - legacy `/services` redirects to `/pinterest-services`, and `/case-studies` is preserved as a V2 redirect/holding route that also points to `/pinterest-services` during V1,
 - brand/site constants in `apps/fruitful-pin/lib/site.ts`,
 - content boundary in `apps/fruitful-pin/lib/content.ts`,
@@ -77,8 +77,9 @@ First-pass checkpoint memory:
 - Fruitful Pin should feel airy, breezy, editorial, warm, and Pinterest-specific rather than corporate, generic, or boxy.
 - Primary CTAs use solid `#950952` pink. Gradients are for text highlights and occasional intentional accents, not CTA buttons.
 - Top navigation should stay intentionally lean: Home, Blog, Services, Resources, and About. Contact, Privacy, and Terms can live in the footer and contextual page CTAs. Case Studies is held for V2 and should not be linked in V1 navigation or sitemap.
-- Resources is a soft-conversion hub. It features the native Pinterest Fit Check and keeps guide/resource/blog paths underneath.
+- Resources is a soft-conversion hub. It features the native Pinterest Fit Check, includes the migrated Pinterest Readiness Check as a separate ready-now assessment resource, and keeps guide/resource/blog paths underneath.
 - Pinterest Fit Check is the Fruitful Pin-native diagnostic tool at `/pinterest-fit-check`; it lives inside `apps/fruitful-pin` rather than importing from `apps/lab`.
+- Pinterest Readiness Check is a separate migrated assessment at `/pinterest-readiness-check`; it preserves the approved Fruitful Lab assessment questions, scoring, guardrails, result copy, and email-unlock behavior without replacing or renaming the native Pinterest Fit Check.
 - Blog templates should support a sidebar, featured images, table of contents, key takeaways, pin graphic slots, pull quotes, comparison tables, FAQs, and reader navigation.
 - Contact is the fit-call page: embedded TidyCal first, then the general inquiry form. The general inquiry form is approved for ClickUp routing in B1 and posts to `/api/contact`.
 - Case studies/proof is currently a first-pass holding structure until Susy is ready to build real visual case studies and proof packets.
@@ -90,7 +91,7 @@ B1 launch content direction approved on 2026-05-24:
 - Existing WordPress posts that should launch with B1 need to be migrated into the Next.js content model and rendered through the approved blog templates.
 - Required media should be copied into the app or another approved permanent asset location; avoid production dependencies on `fruitfulpin.com/wp-content/uploads/*` once DNS points to the new site.
 - ClickUp can be used as the editorial planning/intake workspace. The live published copy, metadata, and optimized images should still be committed into `apps/fruitful-pin`.
-- MailerLite is the B1 integration target for newsletter signups, Fit Check result emails, and future resource waitlists. Analytics setup now includes Cloudflare Web Analytics, Google Search Console with `https://fruitfulpin.com/sitemap.xml`, GA4 Measurement ID `G-E0TLX9V17Q` wired through `apps/fruitful-pin/components/GoogleAnalytics.tsx`, Microsoft Clarity project `wyaafqmk6j` loaded as a direct root-layout script in `apps/fruitful-pin/app/layout.tsx`, and Pinterest Tag ID `2612504823331` wired through `apps/fruitful-pin/components/PinterestTag.tsx`. GA4 V1 conversion events are `fit_check_completed`, `newsletter_signup`, `resource_interest`, `contact_form_submitted`, and `fit_call_click`. Affiliate URLs remain pending from Susy.
+- MailerLite is the B1 integration target for newsletter signups, Fit Check result emails, the Pinterest Readiness Check full-readout email step, and future resource waitlists. The Readiness Check submits rich result fields on a best-effort basis and falls back to the existing resource-interest group if no dedicated `MAILERLITE_READINESS_CHECK_GROUP_ID` is configured, so missing custom fields should not block the user from seeing the full readout. Analytics setup now includes Cloudflare Web Analytics, Google Search Console with `https://fruitfulpin.com/sitemap.xml`, GA4 Measurement ID `G-E0TLX9V17Q` wired through `apps/fruitful-pin/components/GoogleAnalytics.tsx`, Microsoft Clarity project `wyaafqmk6j` loaded as a direct root-layout script in `apps/fruitful-pin/app/layout.tsx`, and Pinterest Tag ID `2612504823331` wired through `apps/fruitful-pin/components/PinterestTag.tsx`. GA4 V1 conversion events are `fit_check_completed`, `newsletter_signup`, `resource_interest`, `contact_form_submitted`, and `fit_call_click`; the Readiness Check also emits readiness-specific events such as `readiness_check_started`, `readiness_check_completed`, and `readiness_check_email_unlocked`. Affiliate URLs remain pending from Susy.
 - Contact page messages use a Cloudflare Pages Function at `/api/contact` to create a ClickUp task. Configure `CLICKUP_API_TOKEN` and `CLICKUP_CONTACT_LIST_ID` in Cloudflare; do not commit the token to the repo.
 - Case Studies should be preserved for V2 and should not block B1 launch. For V1, hide it from public navigation/sitemap and redirect `/case-studies` to `/pinterest-services` while keeping the future proof/story work available for later.
 

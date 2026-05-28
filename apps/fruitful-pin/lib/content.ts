@@ -421,6 +421,15 @@ export const RESOURCE_ITEMS: ResourceItem[] = [
     ctaHref: "/pinterest-fit-check",
   },
   {
+    title: "Pinterest Readiness Check",
+    type: "Assessment",
+    status: "Ready now",
+    description:
+      "A deeper readiness assessment for product-based brands that want to see whether Pinterest is a real opportunity or a distraction right now.",
+    ctaLabel: "Take the Readiness Check",
+    ctaHref: "/pinterest-readiness-check",
+  },
+  {
     title: "Pinterest Opportunity Guide",
     type: "Guide",
     status: "Coming soon",

@@ -1,14 +1,14 @@
 # Fruitful Pin Content Contract
 
-Status: working contract for the first local Next.js implementation pass.
+Status: working contract for the B1 code-managed Next.js implementation.
 
-This contract defines how the coded Next.js site should consume content now and how it can later map to headless WordPress fields without changing the public rendering layer.
+This contract defines how the coded Next.js site should consume content now. A future CMS can still map into these fields later, but B1 is code-managed unless Susy explicitly reopens the headless WordPress path.
 
 ## Content Source Phases
 
-1. Local structured content in `apps/fruitful-pin/lib/content.ts` for fast local iteration.
-2. Headless WordPress on A2 for phase-one editing once fields/API shape are confirmed.
-3. Future CMS or repo-content migration near the A2 renewal decision.
+1. Local structured content in `apps/fruitful-pin/lib/content.ts` and app-specific tool libraries for B1 publishing.
+2. ClickUp can support editorial planning/intake, but the published copy, metadata, and optimized assets live in the repo.
+3. Future CMS/headless WordPress remains optional and should be treated as a separate decision, not the current B1 path.
 
 ## Shared Page Fields
 
@@ -80,9 +80,9 @@ Fields:
 
 Current resources:
 
-- Pin-Ready Blueprint
-- Pinterest Content Checklist
-- Client-Attracting Pin Ideas Prompt Sheet
+- Pinterest Fit Check at `/pinterest-fit-check`
+- Pinterest Readiness Check at `/pinterest-readiness-check`, migrated as a separate assessment resource and not a replacement for the native Fit Check
+- Coming-soon guide/checklist/keyword/prompt resources
 - recommended tools such as ClickUp, MailerLite, and Metricool
 
 ## Proof / Case Study Model
@@ -111,7 +111,7 @@ Phase-one safe fields:
 
 Confirmed B1 contact provider: ClickUp. The public contact form posts to `/api/contact`, which creates a ClickUp task through a Cloudflare Pages Function. Keep spam protection lightweight for B1 with a honeypot field, and keep `CLICKUP_API_TOKEN` plus `CLICKUP_CONTACT_LIST_ID` in Cloudflare env vars rather than the repo.
 
-Confirmed B1 analytics: Cloudflare Web Analytics is enabled for `fruitfulpin.com`, Google Search Console is verified with `https://fruitfulpin.com/sitemap.xml`, GA4 uses Measurement ID `G-E0TLX9V17Q` through the app-level Google Analytics component, Microsoft Clarity uses project ID `wyaafqmk6j` through a direct root-layout script, and Pinterest Tag ID `2612504823331` is loaded through the app-level Pinterest Tag component. GA4 V1 conversion events are `fit_check_completed`, `newsletter_signup`, `resource_interest`, `contact_form_submitted`, and `fit_call_click`.
+Confirmed B1 analytics: Cloudflare Web Analytics is enabled for `fruitfulpin.com`, Google Search Console is verified with `https://fruitfulpin.com/sitemap.xml`, GA4 uses Measurement ID `G-E0TLX9V17Q` through the app-level Google Analytics component, Microsoft Clarity uses project ID `wyaafqmk6j` through a direct root-layout script, and Pinterest Tag ID `2612504823331` is loaded through the app-level Pinterest Tag component. GA4 V1 conversion events are `fit_check_completed`, `newsletter_signup`, `resource_interest`, `contact_form_submitted`, and `fit_call_click`; the Pinterest Readiness Check also emits readiness-specific events for start, completion, question progress, and email unlock.
 
 ## WordPress Mapping Notes
 
@@ -120,4 +120,4 @@ The current local content can map to WordPress in two ways:
 - Standard pages/posts for broad rich text content.
 - Advanced Custom Fields or similar structured fields for service packages, CTAs, proof blocks, FAQs, and resource cards.
 
-The phase-one goal is to preserve Susy's familiar WordPress editing workflow while letting Next.js own layout, routing, performance, and UX.
+The original phase-one idea was to preserve Susy's familiar WordPress editing workflow while letting Next.js own layout, routing, performance, and UX. That is no longer the B1 direction; keep this section only as a future mapping reference.

@@ -15,13 +15,16 @@ const PUBLIC_COPY_SOURCES = [
   "app/contact/page.tsx",
   "app/pinterest-services/page.tsx",
   "app/pinterest-fit-check/page.tsx",
+  "app/pinterest-readiness-check/page.tsx",
   "app/privacy/page.tsx",
   "app/resources/page.tsx",
   "app/terms/page.tsx",
   "components/ServicesPage.tsx",
   "components/PinterestFitAssessmentEmbed.tsx",
+  "components/PinterestReadinessCheck/PinterestReadinessCheck.tsx",
   "components/ContactForm.tsx",
   "lib/fitAssessment.ts",
+  "lib/pinterestReadinessCheck.ts",
   "lib/content.ts",
 ] as const;
 
@@ -65,6 +68,7 @@ describe("Fruitful Pin SEO and route safety", () => {
     for (const route of expectedInternalRoutes) {
       expect(sitemapUrls).toContain(`${CANONICAL_URL}${route}`);
     }
+    expect(sitemapUrls).toContain(`${CANONICAL_URL}/pinterest-readiness-check`);
     expect(sitemapUrls).not.toContain(`${CANONICAL_URL}/services`);
     expect(sitemapUrls).not.toContain(`${CANONICAL_URL}/case-studies`);
   });

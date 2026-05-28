@@ -5,6 +5,7 @@ export const SITE_DESCRIPTION =
 export const FIT_CALL_LABEL = "Book a Fit Call";
 export const BOOKING_URL = "/contact";
 export const PINTEREST_FIT_CHECK_URL = "/pinterest-fit-check";
+export const PINTEREST_READINESS_CHECK_URL = "/pinterest-readiness-check";
 export const CALENDAR_URL = "https://tidycal.com/susycid/is-pinterest-a-good-fit-for-your-brand";
 export const CALENDAR_EMBED_PATH = "susycid/is-pinterest-a-good-fit-for-your-brand";
 export const CONTACT_EMAIL = "hello@fruitfulpin.com";

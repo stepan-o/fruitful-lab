@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Poppins } from "next/font/google";
 import "./globals.css";
+import { DirectTracking } from "@/components/DirectTracking";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { CANONICAL_URL, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className={`${displaySerif.variable} ${bodySans.variable}`}>
+        <DirectTracking />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

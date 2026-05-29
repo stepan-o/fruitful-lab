@@ -69,3 +69,17 @@ npm run dev:local
 ```
 
 The script binds to `127.0.0.1:4185` and enables polling/webpack mode because the default Next dev watcher can hit `EMFILE: too many open files` in Codex local preview sessions.
+
+## Direct Tracking Setup
+
+Bloom Whispers V1 uses direct tracking installs instead of Google Tag Manager.
+
+Set these environment variables in the deployment platform:
+
+```txt
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-K6215K4DM8
+NEXT_PUBLIC_PINTEREST_TAG_ID=...
+NEXT_PUBLIC_CLARITY_PROJECT_ID=rozfnuhll7
+```
+
+When a value is absent, that tracking script is not rendered. MailerLite is intentionally separate from this tracking setup and still needs the selected form/embed/API configuration before production lead capture is fully wired.

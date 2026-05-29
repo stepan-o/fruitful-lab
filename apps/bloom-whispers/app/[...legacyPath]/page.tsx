@@ -1,20 +1,36 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JournalPostTemplate } from "@/components/JournalPostTemplate";
-import { getAllJournalPosts, getJournalPost, getPrimaryJournalPath } from "@/lib/journalPosts";
+import {
+  getAllJournalPosts,
+  getJournalPostByLegacyPath,
+  getPrimaryJournalPath,
+  normalizePath,
+} from "@/lib/journalPosts";
 import { CANONICAL_URL, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ legacyPath: string[] }>;
 };
 
 export function generateStaticParams() {
-  return getAllJournalPosts().map((post) => ({ slug: post.slug }));
+  return getAllJournalPosts().flatMap((post) =>
+    post.legacyPaths.map((legacyPath) => ({
+      legacyPath: normalizePath(legacyPath)
+        .replace(/^\/|\/$/g, "")
+        .split("/")
+        .filter(Boolean),
+    })),
+  );
+}
+
+async function resolvePost(params: PageProps["params"]) {
+  const { legacyPath } = await params;
+  return getJournalPostByLegacyPath(`/${legacyPath.join("/")}/`);
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const post = getJournalPost(slug);
+  const post = await resolvePost(params);
 
   if (!post) {
     return {};
@@ -44,16 +60,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function JournalPostPage({ params }: PageProps) {
-  const { slug } = await params;
-  const post = getJournalPost(slug);
+export default async function LegacyJournalPostPage({ params }: PageProps) {
+  const post = await resolvePost(params);
 
   if (!post) {
     notFound();
   }
 
   const canonicalPath = getPrimaryJournalPath(post);
-
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",

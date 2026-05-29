@@ -58,6 +58,17 @@ First-pass routes:
 - `/privacy`
 - `/terms`
 
+## Journal Content Migration
+
+The current live Bloom Whispers journal content has been moved into the app-level journal content source in
+`apps/bloom-whispers/lib/journalPosts.ts`. Migrated articles are served through the approved journal template and use
+clean root-level public slugs such as `/hibiscus-flower-meaning/` as their primary URLs, matching the Pinterest-friendly
+URL structure Susy wants to preserve.
+
+Date-based WordPress-style paths are kept only as backup aliases where they may have existed, so old URLs can still
+resolve after DNS migration. The `/journal/[slug]` route remains available for internal organization, but migrated
+article cards and canonical metadata prefer the clean root-level public path for each article.
+
 The app is static-first for Cloudflare-style hosting compatibility. It should not import directly from other apps. Shared code should be promoted into `packages/*` first only after real reuse exists.
 
 ## Local Preview

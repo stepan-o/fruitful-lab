@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
+import { getAllJournalPosts } from "@/lib/journalPosts";
 import styles from "./JournalArchive.module.css";
 
 type CategoryId = "all" | "meanings" | "profiles" | "stories" | "food" | "podcast" | "guides";
@@ -27,169 +28,15 @@ const categories: { id: CategoryId; label: string }[] = [
   { id: "guides", label: "Guides & Rituals" },
 ];
 
-const posts: JournalPost[] = [
-  {
-    title: "12 Spider Lily Floral Arrangement Ideas That Feel Like Autumn Magic",
-    href: "https://bloomwhispers.com/spider-lily-floral-arrangement-ideas/",
-    date: "Mar 23, 2026",
-    category: "guides",
-    label: "Guides & Rituals",
-    excerpt:
-      "A practical guide to styling spider lilies with space, drama, and a little autumn spellwork for the eye.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2026/03/Spider-lily-arrangement.jpg",
-  },
-  {
-    title: "Spider Lily in Anime & Pop Culture",
-    href: "https://bloomwhispers.com/spider-lily-in-anime/",
-    date: "Mar 23, 2026",
-    category: "stories",
-    label: "Folklore & Stories",
-    excerpt:
-      "Why Higanbana appears so often in visual stories, from farewells to memory, mystery, and beautiful warning.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2026/03/Spider-Lily-in-Anime.jpg",
-  },
-  {
-    title: "Spider Lily Colors & Meanings",
-    href: "https://bloomwhispers.com/spider-lily-colors-meanings/",
-    date: "Mar 23, 2026",
-    category: "meanings",
-    label: "Flower Meanings",
-    excerpt:
-      "Red, white, pink, and yellow spider lilies, and how each color shifts the message the flower carries.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2026/03/Spider-Lily-Colors.jpg",
-  },
-  {
-    title: "Higanbana in Japan: Red Spider Lily Symbolism",
-    href: "https://bloomwhispers.com/red-spider-lily-symbolism/",
-    date: "Mar 19, 2026",
-    category: "stories",
-    label: "Folklore & Stories",
-    excerpt:
-      "A look at Ohigan, memory, autumn bloom magic, and the red spider lily's place in Japanese symbolism.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2026/03/Red-Spider-Lily-Symbolism.jpg",
-  },
-  {
-    title: "10 Ways the World Uses the Hibiscus Flower",
-    href: "https://bloomwhispers.com/hibiscus-flower-uses/",
-    date: "Oct 29, 2025",
-    category: "profiles",
-    label: "Flower Profiles",
-    excerpt:
-      "Hibiscus as color, food, ritual, beauty, and everyday energy across cultures and kitchens.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2025/10/10-Hibiscus-flower-Uses-e1761777237347.jpg",
-  },
-  {
-    title: "Flower Recipes: 7 Ways to Use Dried Hibiscus Flowers",
-    href: "https://bloomwhispers.com/hibiscusflower-recipe/",
-    date: "Oct 28, 2025",
-    category: "food",
-    label: "Floral Food & Drink",
-    excerpt:
-      "Tart, ruby-toned hibiscus ideas for drinks, sweets, sauces, and simple flower-bright kitchen experiments.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2025/10/hibiscus-flower-recipes-e1761616059362.jpg",
-  },
-  {
-    title: "The Story of the Hibiscus Flower",
-    href: "/journal/hibiscus-flower-meaning",
-    date: "Oct 28, 2025",
-    category: "meanings",
-    label: "Flower Meanings",
-    excerpt:
-      "Meaning, symbolism, cultural uses, and the many lives of one radiant bloom.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2025/10/Hibiscus-meaning-e1761614297165.jpg",
-  },
-  {
-    title: "5 Min Hibiscus Chamoy Recipe",
-    href: "https://bloomwhispers.com/5-min-hibiscus-chamoy-recipe/",
-    date: "Oct 27, 2025",
-    category: "food",
-    label: "Floral Food & Drink",
-    excerpt:
-      "A sweet-heat hibiscus sauce for bringing floral brightness into everyday flavor.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2025/10/Hibiscus-Chamoy.jpg",
-  },
-  {
-    title: "7 Benefits of the Hibiscus Flower for Hair and Skin",
-    href: "https://bloomwhispers.com/hibiscus-flower-benefits/",
-    date: "Oct 27, 2025",
-    category: "profiles",
-    label: "Flower Profiles",
-    excerpt:
-      "A botanical beauty note on hibiscus in hair, skin, traditional care, and modern flower curiosity.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2025/10/Hibiscus-flower-benefits-1.jpg",
-  },
-  {
-    title: "20+ Edible Flowers for Cake Decoration",
-    href: "https://bloomwhispers.com/edible-flowers-for-cakes/",
-    date: "Feb 19, 2025",
-    category: "food",
-    label: "Floral Food & Drink",
-    excerpt:
-      "Pressed, dried, and edible flowers for cakes that feel decorative, seasonal, and naturally beautiful.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2025/02/Edible-flowers.jpg",
-  },
-  {
-    title: "Forest Therapy with Elizabeth Mintun",
-    href: "https://bloomwhispers.com/the-healing-power-of-forest-therapy/",
-    date: "Sep 24, 2024",
-    category: "podcast",
-    label: "Podcast",
-    excerpt:
-      "A conversation about nature, restoration, and what happens when the forest becomes a place to listen.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2024/09/Forest-Therapy-e1727154772145.jpg",
-  },
-  {
-    title: "Flower Therapy: The Healing Power of Flowers",
-    href: "https://bloomwhispers.com/flower-therapy-healing-power-of-flowers/",
-    date: "Sep 24, 2024",
-    category: "podcast",
-    label: "Podcast",
-    excerpt:
-      "A Bloom Whispers conversation on how flowers can shape memory, mood, ritual, and gentle attention.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2024/09/Flower-Therapy-e1727150554942.jpg",
-  },
-  {
-    title: "Understanding the Essence of Flowers",
-    href: "https://bloomwhispers.com/what-are-flowers/",
-    date: "Sep 24, 2024",
-    category: "podcast",
-    label: "Podcast",
-    excerpt:
-      "Botanist Roxana Khoshravesh explores what flowers are, how they work, and why we keep returning to them.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2024/09/What-are-flowers-e1727147957670.jpg",
-  },
-  {
-    title: "Flower Frequencies with Laura Ashley",
-    href: "https://bloomwhispers.com/flower-energy/",
-    date: "Sep 23, 2024",
-    category: "podcast",
-    label: "Podcast",
-    excerpt:
-      "A conversation about flower energy, intuition, and the emotional language people build around blooms.",
-    image:
-      "https://bloomwhispers.com/wp-content/uploads/2024/09/The-Healing-Power-of-Flowers-Insights-from-Laura-Ashley-e1727116543848.jpg",
-  },
-  {
-    title: "Exploring the Healing Properties of Flowers",
-    href: "https://bloomwhispers.com/healing-properties-of-flowers/",
-    date: "Apr 5, 2024",
-    category: "podcast",
-    label: "Podcast",
-    excerpt:
-      "A reflective episode note on flowers, care, meaning, and the gentle ways blooms move through a life.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2024/04/Healing-Properties-of-Flowers-e1727116647246.jpg",
-  },
-  {
-    title: "The Lotus Flower Meaning: Healing & Creativity",
-    href: "https://bloomwhispers.com/lotus-flower-meaning/",
-    date: "May 30, 2021",
-    category: "podcast",
-    label: "Podcast",
-    excerpt:
-      "Lotus symbolism, creativity, renewal, and the way one flower can become a whole inner landscape.",
-    image: "https://bloomwhispers.com/wp-content/uploads/2024/04/Lotus-flower-meaning-e1727116714135.jpg",
-  },
-];
+const posts: JournalPost[] = getAllJournalPosts().map((post) => ({
+  title: post.title,
+  href: post.legacyPaths[0],
+  date: post.date,
+  category: post.categoryId,
+  label: post.category,
+  excerpt: post.description,
+  image: post.heroImage,
+}));
 
 const popularPosts = [
   posts[11],

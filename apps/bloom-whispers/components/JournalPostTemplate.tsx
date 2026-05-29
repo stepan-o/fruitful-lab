@@ -85,7 +85,7 @@ export function JournalPostTemplate({ post }: { post: JournalPost }) {
 
             <section className={styles.inShort} id="in-short" aria-labelledby="in-short-heading">
               <p className={styles.sectionEyebrow}>In Short</p>
-              <h2 id="in-short-heading">The hibiscus story, gathered simply</h2>
+              <h2 id="in-short-heading">The story, gathered simply</h2>
               <ul>
                 {post.inShort.map((item) => (
                   <li key={item}>
@@ -208,7 +208,7 @@ export function JournalPostTemplate({ post }: { post: JournalPost }) {
 
             <section className={styles.faqSection} id="faq" aria-labelledby="faq-heading">
               <p className={styles.sectionEyebrow}>Frequently Asked Questions</p>
-              <h2 id="faq-heading">Hibiscus flower FAQs</h2>
+              <h2 id="faq-heading">Questions from the garden</h2>
               <div>
                 {post.faqs.map((faq) => (
                   <details key={faq.question}>

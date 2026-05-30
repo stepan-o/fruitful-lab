@@ -68,6 +68,8 @@ export function FlowerMessageQuiz() {
   const [email, setEmail] = useState("");
   const [capturedEmail, setCapturedEmail] = useState("");
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const [emailStatus, setEmailStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [emailMessage, setEmailMessage] = useState("");
   const shellRef = useRef<HTMLElement>(null);
 
   const currentQuestion = questions[selectedAnswerIds.length];
@@ -101,6 +103,8 @@ export function FlowerMessageQuiz() {
     setEmail("");
     setCapturedEmail("");
     setIsUnlocked(false);
+    setEmailStatus("idle");
+    setEmailMessage("");
   }
 
   function selectAnswer(answerId: AnswerId) {
@@ -116,12 +120,39 @@ export function FlowerMessageQuiz() {
     setEmail("");
     setCapturedEmail("");
     setIsUnlocked(false);
+    setEmailStatus("idle");
+    setEmailMessage("");
   }
 
-  function submitEmail(event: FormEvent<HTMLFormElement>) {
+  async function submitEmail(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setCapturedEmail(email);
-    setIsUnlocked(true);
+    setEmailStatus("submitting");
+    setEmailMessage("");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          email,
+          group: "quiz",
+          source: `flower_message_quiz_${primaryResultId}`,
+        }),
+      });
+      const result = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(result.message || "We could not send that message yet.");
+      }
+
+      setCapturedEmail(email);
+      setIsUnlocked(true);
+      setEmailStatus("success");
+      setEmailMessage("");
+    } catch (error) {
+      setEmailStatus("error");
+      setEmailMessage(error instanceof Error ? error.message : "We could not send that message yet.");
+    }
   }
 
   return (
@@ -309,8 +340,18 @@ export function FlowerMessageQuiz() {
                           type="email"
                           value={email}
                         />
-                        <button type="submit">Send my flower message</button>
+                        <button disabled={emailStatus === "submitting"} type="submit">
+                          Send my flower message
+                        </button>
                       </div>
+                      {emailMessage ? (
+                        <p
+                          aria-live="polite"
+                          className={`form-status ${emailStatus === "error" ? "form-status--error" : ""}`}
+                        >
+                          {emailMessage}
+                        </p>
+                      ) : null}
                       <button className={styles.readHereButton} type="button" onClick={() => setIsUnlocked(true)}>
                         Keep reading here
                       </button>

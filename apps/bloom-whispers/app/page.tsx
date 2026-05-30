@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { GlitterField } from "@/components/GlitterField";
+import { EmailSignupForm } from "@/components/EmailSignupForm";
 import { PodcastPlayer } from "@/components/PodcastPlayer";
 import { TrackedLink } from "@/components/TrackedLink";
 
@@ -592,14 +593,14 @@ export default function Home() {
               Receive flower meanings, curious stories, gentle rituals, and unique floral finds from the Bloom Whispers
               garden.
             </p>
-            <form className="signup-form" aria-label="Bloom Letter signup prototype">
-              <label htmlFor="bloom-email">Email address</label>
-              <div>
-                <input id="bloom-email" type="email" placeholder="Your email address" />
-                <button type="button">Join the Bloom Letter</button>
-              </div>
-              <p>Occasional notes from the garden. Unsubscribe anytime.</p>
-            </form>
+            <EmailSignupForm
+              buttonLabel="Join the Bloom Letter"
+              className="signup-form"
+              group="bloom-letter"
+              inputId="bloom-email"
+              note="Occasional notes from the garden. Unsubscribe anytime."
+              source="homepage_bloom_letter"
+            />
           </div>
 
           <div className="letter-benefit-rail" aria-label="Bloom Letter themes">
@@ -752,11 +753,14 @@ export default function Home() {
               <p>The shop is in progress</p>
             </div>
             <p className="shop-ribbon-copy">New arrivals and updates, delivered to your inbox first.</p>
-            <form className="shop-waitlist-form" aria-label="Bloom shop waitlist prototype">
-              <label htmlFor="shop-email">Email address</label>
-              <input id="shop-email" type="email" placeholder="Your email address" />
-              <button type="button">Join the Waitlist</button>
-            </form>
+            <EmailSignupForm
+              buttonLabel="Join the Waitlist"
+              className="shop-waitlist-form"
+              group="shop-waitlist"
+              inputId="shop-email"
+              layout="plain"
+              source="homepage_shop_waitlist"
+            />
             <Image
               className="shop-ribbon-floral shop-ribbon-floral--right"
               src="/assets/shop-ribbon-floral-accent1.png.png"

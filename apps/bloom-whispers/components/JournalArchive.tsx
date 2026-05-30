@@ -62,6 +62,8 @@ export function JournalArchive() {
   const [activeCategory, setActiveCategory] = useState<CategoryId>("all");
   const [query, setQuery] = useState("");
   const [email, setEmail] = useState("");
+  const [emailStatus, setEmailStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [emailMessage, setEmailMessage] = useState("");
   const [pageIndex, setPageIndex] = useState(0);
 
   const categoryCounts = useMemo(() => {
@@ -94,9 +96,34 @@ export function JournalArchive() {
   const pageEnd = Math.min(pageStart + POSTS_PER_PAGE, visiblePosts.length);
   const pagedPosts = visiblePosts.slice(pageStart, pageEnd);
 
-  function submitPlaceholder(event: FormEvent<HTMLFormElement>) {
+  async function submitPlaceholder(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setEmail("");
+    setEmailStatus("submitting");
+    setEmailMessage("");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          email,
+          group: "bloom-letter",
+          source: "journal_archive_sidebar",
+        }),
+      });
+      const result = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(result.message || "We could not save that email yet.");
+      }
+
+      setEmailStatus("success");
+      setEmailMessage(result.message || "You're in. Watch your inbox for a note from the garden.");
+      setEmail("");
+    } catch (error) {
+      setEmailStatus("error");
+      setEmailMessage(error instanceof Error ? error.message : "We could not save that email yet.");
+    }
   }
 
   return (
@@ -285,6 +312,14 @@ export function JournalArchive() {
                 />
                 <button type="submit">Subscribe</button>
               </form>
+              {emailMessage ? (
+                <p
+                  aria-live="polite"
+                  className={`form-status ${emailStatus === "error" ? "form-status--error" : ""}`}
+                >
+                  {emailMessage}
+                </p>
+              ) : null}
             </section>
 
             <section className={styles.sidebarCard}>

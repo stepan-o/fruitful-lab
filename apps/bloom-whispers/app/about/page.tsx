@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { GlitterField } from "@/components/GlitterField";
-import { CONTACT_EMAIL } from "@/lib/site";
+import { GuestInterestForm } from "@/components/GuestInterestForm";
 import styles from "./AboutPage.module.css";
 
 const findItems = [
@@ -138,19 +138,7 @@ export default function AboutPage() {
               <h2 id="guest-heading">Be a Guest on Bloom Whispers</h2>
               <p>Do you have a story to share, floral wisdom to offer, or a creative heart that loves flowers too?</p>
             </div>
-            <form
-              action={`mailto:${CONTACT_EMAIL}`}
-              className={styles.guestForm}
-              encType="text/plain"
-              method="post"
-            >
-              <label htmlFor="guest-email">Your email address</label>
-              <div>
-                <input id="guest-email" name="guest-email" placeholder="Your email address" required type="email" />
-                <button type="submit">Become a Guest Contributor</button>
-              </div>
-              <p>We&apos;d love to hear from you.</p>
-            </form>
+            <GuestInterestForm className={styles.guestForm} />
           </section>
 
           <Link className={styles.bottomRibbon} href="/flower-message-quiz">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { EmailSignupForm } from "@/components/EmailSignupForm";
 import styles from "./ShopPage.module.css";
 
 const shopCategories = [
@@ -77,17 +78,21 @@ export default function ShopPage() {
               <li>Perfect for gifting or keeping</li>
             </ul>
 
-            <form className={styles.waitlistForm} aria-label="Bloom shop waitlist">
-              <label htmlFor="shop-page-email">Email address</label>
-              <div className={styles.inputWrap}>
-                <input id="shop-page-email" name="email" type="email" placeholder="Your email address" />
-                <span aria-hidden="true">✉</span>
-              </div>
-              <button type="submit">
-                Join the waitlist
-                <span aria-hidden="true">✦</span>
-              </button>
-            </form>
+            <EmailSignupForm
+              buttonChildren={
+                <>
+                  Join the waitlist
+                  <span aria-hidden="true">✦</span>
+                </>
+              }
+              buttonLabel="Join the waitlist"
+              className={styles.waitlistForm}
+              group="shop-waitlist"
+              inputIcon={<span aria-hidden="true">✉</span>}
+              inputId="shop-page-email"
+              inputWrapClassName={styles.inputWrap}
+              source="shop_page_waitlist"
+            />
 
             <p className={styles.note}>We will never share your email. Unsubscribe anytime.</p>
           </div>

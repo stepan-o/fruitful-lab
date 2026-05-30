@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { EmailSignupForm } from "@/components/EmailSignupForm";
 import type { JournalPost } from "@/lib/journalPosts";
 import styles from "./JournalPostTemplate.module.css";
 
@@ -154,13 +155,15 @@ export function JournalPostTemplate({ post }: { post: JournalPost }) {
                 <p>Flower meanings, curious stories, and gentle notes from the garden.</p>
               </div>
               <Image src="/assets/bloom-letter-signup-art.png" alt="" width={1200} height={900} />
-              <form className={styles.sidebarForm}>
-                <label className={styles.visuallyHidden} htmlFor="article-letter-email">
-                  Email address
-                </label>
-                <input id="article-letter-email" placeholder="Your email address" type="email" />
-                <button type="button">Subscribe</button>
-              </form>
+              <EmailSignupForm
+                buttonLabel="Subscribe"
+                className={styles.sidebarForm}
+                group="bloom-letter"
+                inputId="article-letter-email"
+                labelClassName={styles.visuallyHidden}
+                layout="plain"
+                source={`journal_post_${post.slug}`}
+              />
             </section>
 
             <section className={styles.sidebarCard}>

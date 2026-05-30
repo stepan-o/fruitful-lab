@@ -2470,6 +2470,18 @@ p {
   font-size: 0.76rem;
 }
 
+.form-status {
+  color: rgba(249, 241, 228, 0.82);
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 0.65rem 0 0;
+}
+
+.form-status--error {
+  color: #f0b0bd;
+}
+
 .bloom-letter-stars {
   inset: 0;
   pointer-events: none;

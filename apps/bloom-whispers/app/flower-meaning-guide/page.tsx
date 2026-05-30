@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { EmailSignupForm } from "@/components/EmailSignupForm";
 import { GlitterField } from "@/components/GlitterField";
 import styles from "./FlowerMeaningGuidePage.module.css";
 
@@ -153,17 +154,25 @@ export default function FlowerMeaningGuidePage() {
               height={900}
               priority
             />
-            <form className={styles.guideForm} aria-label="Get the Flower Meaning Guide">
-              <label htmlFor="guide-first-name">First name</label>
-              <input id="guide-first-name" name="first-name" type="text" placeholder="Your first name" />
-              <label htmlFor="guide-email">Email address</label>
-              <input id="guide-email" name="email" type="email" placeholder="you@example.com" required />
-              <button type="button">
-                Get the Flower Meaning Guide
-                <span aria-hidden="true">✦</span>
-              </button>
-            </form>
-            <p className={styles.formNote}>Free PDF. Delivery will connect in the next pass. We&apos;ll never share your information.</p>
+            <EmailSignupForm
+              buttonChildren={
+                <>
+                  Get the Flower Meaning Guide
+                  <span aria-hidden="true">✦</span>
+                </>
+              }
+              buttonLabel="Get the Flower Meaning Guide"
+              className={styles.guideForm}
+              firstNameId="guide-first-name"
+              group="flower-guide"
+              inputId="guide-email"
+              layout="plain"
+              note="Free PDF. Delivery will connect in the next pass. We'll never share your information."
+              noteClassName={styles.formNote}
+              placeholder="you@example.com"
+              showFirstName
+              source="flower_meaning_guide_page"
+            />
           </aside>
         </div>
       </section>

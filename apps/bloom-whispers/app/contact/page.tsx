@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ContactSubmissionForm } from "@/components/ContactSubmissionForm";
 import { GlitterField } from "@/components/GlitterField";
-import { CONTACT_EMAIL } from "@/lib/site";
 import styles from "./ContactPage.module.css";
 
 const guestInterests = [
@@ -48,40 +48,17 @@ export default function ContactPage() {
             <h2 id="general-heading">General Contact</h2>
             <p>Questions, kind words, feedback, or collaborations. We&apos;re all ears in the garden.</p>
 
-            <form action={`mailto:${CONTACT_EMAIL}`} className={styles.contactForm} encType="text/plain" method="post">
-              <div className={styles.twoFields}>
-                <label>
-                  <span>Your name</span>
-                  <input name="name" placeholder="Your name" type="text" />
-                </label>
-                <label>
-                  <span>Your email</span>
-                  <input name="email" placeholder="Your email" required type="email" />
-                </label>
-              </div>
-              <label>
-                <span>What&apos;s this about?</span>
-                <select defaultValue="" name="topic" required>
-                  <option disabled value="">
-                    What&apos;s this about?
-                  </option>
-                  <option>General question</option>
-                  <option>Collaboration</option>
-                  <option>Flower meaning or story idea</option>
-                  <option>Press or partnership</option>
-                  <option>Something else</option>
-                </select>
-              </label>
-              <label>
-                <span>Your message</span>
-                <textarea name="message" placeholder="Your message" required rows={5} />
-              </label>
-              <button type="submit">
-                Send Your Note
-                <span aria-hidden="true">✦</span>
-              </button>
-              <p className={styles.formNote}>Your note is safe with us. We&apos;ll get back to you as soon as we can.</p>
-            </form>
+            <ContactSubmissionForm
+              buttonLabel="Send Your Note"
+              className={styles.contactForm}
+              messageLabel="Your message"
+              messagePlaceholder="Your message"
+              note="Your note is safe with us. We'll get back to you as soon as we can."
+              noteClassName={styles.formNote}
+              showTopic
+              twoFieldsClassName={styles.twoFields}
+              type="contact"
+            />
           </section>
 
           <section className={styles.contactCard} id="be-a-guest" aria-labelledby="guest-heading">
@@ -104,32 +81,18 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <form action={`mailto:${CONTACT_EMAIL}`} className={styles.contactForm} encType="text/plain" method="post">
-              <div className={styles.twoFields}>
-                <label>
-                  <span>Your name</span>
-                  <input name="guest-name" placeholder="Your name" type="text" />
-                </label>
-                <label>
-                  <span>Your email</span>
-                  <input name="guest-email" placeholder="Your email" required type="email" />
-                </label>
-              </div>
-              <label>
-                <span>Why you&apos;d be a lovely fit</span>
-                <textarea
-                  name="guest-pitch"
-                  placeholder="Tell us about your story, expertise, or flower-connected idea"
-                  required
-                  rows={4}
-                />
-              </label>
-              <button className={styles.guestButton} type="submit">
-                Pitch a Guest Idea
-                <span aria-hidden="true">✦</span>
-              </button>
-              <p className={styles.formNote}>We review every pitch personally and will be in touch if it feels like a match.</p>
-            </form>
+            <ContactSubmissionForm
+              buttonClassName={styles.guestButton}
+              buttonLabel="Pitch a Guest Idea"
+              className={styles.contactForm}
+              defaultTopic="Guest pitch"
+              messageLabel="Why you'd be a lovely fit"
+              messagePlaceholder="Tell us about your story, expertise, or flower-connected idea"
+              note="We review every pitch personally and will be in touch if it feels like a match."
+              noteClassName={styles.formNote}
+              twoFieldsClassName={styles.twoFields}
+              type="guest"
+            />
           </section>
         </div>
       </section>

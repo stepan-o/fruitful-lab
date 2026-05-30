@@ -21,6 +21,7 @@ The design-system layer uses the `--fl-*` token prefix and generic `fl-*` utilit
 ## Typography Decision Log
 
 - 2026-05-30: Approved Comfortaa 700 as the Fruitful Lab heading/display font, paired with Raleway for body copy, navigation, buttons, labels, forms, and interface text. This replaced the earlier heading test after visual review against the new Fruitful Lab logo. Keep this as a token-level decision so it remains easy to revert or adjust later.
+- 2026-05-30: After previewing Comfortaa across the site, the V1 hero and section scales were compacted so headings read more horizontally and do not stack into tall columns. Headline emphasis should use the warmer red/orange `--fl-gradient-text`; keep the broader brand gradient for larger visual systems and background shapes.
 
 ## V1 Type Scale Lock
 

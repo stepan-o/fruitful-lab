@@ -20,15 +20,15 @@
 
   --fl-gradient-brand: linear-gradient(135deg, #9984d4 0%, #ff4a1c 48%, #21d19f 100%);
   --fl-gradient-brand-soft: linear-gradient(135deg, rgba(153, 132, 212, 0.18), rgba(255, 74, 28, 0.14) 52%, rgba(33, 209, 159, 0.18));
-  --fl-gradient-text: linear-gradient(120deg, #9984d4 0%, #ff4a1c 48%, #21d19f 100%);
+  --fl-gradient-text: linear-gradient(120deg, #9984d4 0%, #d76079 30%, #ff4a1c 66%, #b56f3a 100%);
 
   --fl-font-heading: "comfortaa", "comfortaa Fallback", ui-sans-serif, system-ui, sans-serif;
   --fl-font-body: "Raleway", "Raleway Fallback", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --fl-weight-heading: 700;
-  --fl-type-hero: clamp(3rem, 5vw, 4.5rem);
-  --fl-type-hero-large: clamp(3.15rem, 6.2vw, 5.9rem);
-  --fl-type-section: clamp(3rem, 6.6vw, 6.1rem);
-  --fl-type-section-compact: clamp(2.7rem, 5.1vw, 5rem);
+  --fl-type-hero: clamp(2.85rem, 4.5vw, 4.75rem);
+  --fl-type-hero-large: clamp(2.95rem, 5vw, 5.15rem);
+  --fl-type-section: clamp(2.35rem, 4vw, 4rem);
+  --fl-type-section-compact: clamp(2.2rem, 3.6vw, 3.65rem);
   --fl-type-card: clamp(1.3rem, 2vw, 2rem);
   --fl-type-card-large: clamp(1.8rem, 3vw, 3rem);
   --fl-line-display: 0.96;
@@ -562,7 +562,7 @@ a {
 
 .hero-discovery-showcase {
   position: relative;
-  min-height: 560px;
+  min-height: 490px;
   isolation: isolate;
 }
 
@@ -581,11 +581,11 @@ a {
 
 .phone-mockup {
   position: absolute;
-  top: 5%;
+  top: 3%;
   right: 8%;
-  width: min(64vw, 292px);
-  border: 10px solid var(--navy);
-  border-radius: 42px;
+  width: min(42vw, 258px);
+  border: 9px solid var(--navy);
+  border-radius: 38px;
   background: var(--navy);
   box-shadow: 0 28px 90px rgba(16, 25, 53, 0.24);
   overflow: hidden;
@@ -604,11 +604,11 @@ a {
 }
 
 .phone-screen {
-  min-height: 520px;
-  border-radius: 31px;
+  min-height: 450px;
+  border-radius: 29px;
   background:
     linear-gradient(180deg, #ffffff 0%, #f7f7fb 58%, #ededf4 100%);
-  padding: 2.1rem 0.95rem 1rem;
+  padding: 1.9rem 0.85rem 0.9rem;
 }
 
 .search-app-top {
@@ -699,7 +699,7 @@ a {
 }
 
 .result-image {
-  min-height: 4.5rem;
+  min-height: 3.8rem;
   border-radius: 14px;
   background: var(--image-bg, var(--ghost));
   position: relative;
@@ -707,7 +707,7 @@ a {
 }
 
 .result-card-featured .result-image {
-  min-height: 8.5rem;
+  min-height: 6.7rem;
 }
 
 .result-image::before {
@@ -742,15 +742,15 @@ a {
 }
 
 .showcase-product-card-main {
-  right: 42%;
-  bottom: 10%;
-  width: 15.4rem;
+  right: 39%;
+  bottom: 8%;
+  width: 13.6rem;
 }
 
 .showcase-product-card-small {
-  top: 14%;
+  top: 12%;
   right: 0;
-  width: 11.5rem;
+  width: 10.4rem;
 }
 
 .product-tag {
@@ -766,7 +766,7 @@ a {
 }
 
 .product-image {
-  min-height: 8.5rem;
+  min-height: 7.2rem;
   border-radius: 20px;
   margin-top: 0.65rem;
   position: relative;
@@ -804,7 +804,7 @@ a {
 }
 
 .product-image-flame {
-  min-height: 6rem;
+  min-height: 5rem;
   background:
     radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.58), transparent 24%),
     linear-gradient(135deg, rgba(255, 74, 28, 0.8), rgba(237, 237, 244, 0.92));
@@ -815,8 +815,8 @@ a {
   margin-top: 0.8rem;
   color: var(--heading);
   font-family: var(--fl-font-heading);
-  font-size: 1.26rem;
-  font-weight: 400;
+  font-size: 1.1rem;
+  font-weight: 700;
   line-height: 1.08;
 }
 
@@ -3590,13 +3590,13 @@ a {
 
 @media (max-width: 900px) {
   .hero-discovery-showcase {
-    min-height: 660px;
+    min-height: 600px;
   }
 
   .phone-mockup {
     top: 7%;
     right: 50%;
-    width: min(78vw, 292px);
+    width: min(78vw, 260px);
     transform: translateX(50%);
   }
 
@@ -3821,7 +3821,7 @@ a {
   }
 
   .hero-discovery-showcase {
-    min-height: 700px;
+    min-height: 610px;
   }
 
   .showcase-product-card-small {
@@ -9697,9 +9697,9 @@ h6,
 /* Fruitful Lab V1 type-scale lock. Keep this late in the file so page-specific
    design passes inherit the approved Comfortaa/Raleway pairing and shared hierarchy. */
 :root {
-  --fl-type-v1-hero: clamp(3.25rem, 6vw, 5.9rem);
-  --fl-type-v1-section: clamp(2.75rem, 4.9vw, 4.85rem);
-  --fl-type-v1-card: clamp(1.45rem, 2.35vw, 2.2rem);
+  --fl-type-v1-hero: clamp(2.85rem, 4.6vw, 5.05rem);
+  --fl-type-v1-section: clamp(2.25rem, 3.6vw, 3.85rem);
+  --fl-type-v1-card: clamp(1.35rem, 2vw, 2.05rem);
   --fl-type-v1-small-heading: clamp(1.15rem, 1.6vw, 1.45rem);
   --fl-type-v1-copy: clamp(1rem, 1.08vw, 1.08rem);
   --fl-type-v1-copy-large: clamp(1.06rem, 1.28vw, 1.18rem);
@@ -9876,6 +9876,49 @@ body :where(p, a, li, small, label, input, textarea, select, button),
   text-transform: uppercase;
 }
 
+
+:where(h1, h2) > span,
+.fl-gradient-text,
+.gradient-text {
+  background: var(--fl-gradient-text) !important;
+  background-size: 190% 190%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: fl-gradient-slide var(--fl-motion-gradient);
+}
+
+.lab-hero-inner {
+  min-height: auto;
+}
+
+.lab-hero h1 {
+  max-width: 12.5ch;
+}
+
+.lab-hero h1 .gradient-text {
+  white-space: nowrap;
+}
+
+@media (min-width: 980px) {
+  .lab-hero-inner {
+    grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.82fr) !important;
+  }
+
+  .lab-process-section > div > .grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .lab-hero h1 {
+    max-width: 10.8ch;
+  }
+
+  .lab-hero h1 .gradient-text {
+    white-space: normal;
+  }
+}
 
 .lab-about-founder-story:first-child .lab-about-founder-photo img {
   object-position: center 36%;

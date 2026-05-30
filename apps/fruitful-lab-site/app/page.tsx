@@ -117,7 +117,7 @@ export default function HomePage() {
       <section className="lab-hero">
         <div className="hero-blob hero-blob-a" aria-hidden="true" />
         <div className="hero-blob hero-blob-b" aria-hidden="true" />
-        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-8rem)] max-w-6xl gap-12 px-5 pb-20 pt-8 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:items-start lg:pb-24 lg:pt-10">
+        <div className="lab-hero-inner relative z-10 mx-auto grid max-w-6xl gap-10 px-5 pb-16 pt-8 sm:px-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(340px,0.82fr)] lg:items-center lg:pb-20 lg:pt-10">
           <div>
             <div className="hero-proof-row" aria-label="Fruitful Lab focus markers">
               <span className="proof-pill proof-pill-light">
@@ -217,7 +217,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">What we do</p>
             <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-              One lab for the discovery system around your product.
+              One lab for the <span className="gradient-text">discovery system</span> around your product.
             </h2>
           </div>
           <div className="thesis-copy">
@@ -237,7 +237,7 @@ export default function HomePage() {
             <div>
               <p className="eyebrow">Inside the formula</p>
               <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-                The growth pieces can be built separately. They should not think separately.
+                The growth pieces can be built separately. They should <span className="gradient-text">not think separately</span>.
               </h2>
             </div>
             <p className="text-base leading-7 text-[var(--muted)]">
@@ -261,7 +261,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">Proof structure</p>
             <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-              When proof is ready, the story will show the system.
+              When proof is ready, the story will <span className="gradient-text">show the system</span>.
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
               Case studies will focus on context, work shipped, signals observed, and the decisions made next, without inflating claims.
@@ -303,7 +303,7 @@ export default function HomePage() {
             <div>
               <p className="eyebrow">How we work</p>
               <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-                A clear path from messy visibility to a formula we can test.
+                A clear path from messy visibility to a <span className="gradient-text">formula we can test</span>.
               </h2>
             </div>
             <p className="text-base leading-7 text-[var(--muted)]">
@@ -331,7 +331,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">Inside the lab</p>
             <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-              Strategy and systems, human by design.
+              Strategy and systems, <span className="gradient-text">human by design</span>.
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
               Fruitful Lab is founder-led by Susy and Stepan, bringing together customer language, product discovery, search behavior, data, systems, testing, and practical AI workflows.
@@ -364,7 +364,7 @@ export default function HomePage() {
             <div className="max-w-3xl">
               <p className="eyebrow">Lab notes</p>
               <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-                Sharp thinking, practical reads.
+                Sharp thinking, <span className="gradient-text">practical reads</span>.
               </h2>
             </div>
             <Link className="btn btn-secondary" href="/blog">
@@ -388,7 +388,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">Ready to test the formula?</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-              Start with the product, the stage, and the bottleneck.
+              Start with the product, the stage, and the <span className="gradient-text">bottleneck</span>.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)]">
               The first move is a fit call. We look at the product, the stage, the current path, and the bottleneck before recommending a diagnostic, focused build, or larger growth system.

@@ -14,6 +14,7 @@ const podcastEpisodes = [
     icon: "incense",
     durationSeconds: 2692,
     audioUrl: "https://audio2.redcircle.com/episodes/3c7774ef-24bb-4963-a4ca-9171b6c9e53d/stream.mp3",
+    detailsHref: "/podcast#episode-8",
   },
   {
     fullTitle: "Forest Therapy: Elizabeth Mintun on Nature's Healing Power",
@@ -23,6 +24,7 @@ const podcastEpisodes = [
     icon: "forest",
     durationSeconds: 2519,
     audioUrl: "https://audio2.redcircle.com/episodes/955faaeb-c403-468d-8da3-3c7399e7859c/stream.mp3",
+    detailsHref: "/the-healing-power-of-forest-therapy",
   },
   {
     fullTitle: "Harnessing Flower Energy: Healing with Yvette Timmins",
@@ -32,6 +34,7 @@ const podcastEpisodes = [
     icon: "flower",
     durationSeconds: 2502,
     audioUrl: "https://audio2.redcircle.com/episodes/88477bb4-8da0-4b04-a585-32c59e97e896/stream.mp3",
+    detailsHref: "/flower-therapy-healing-power-of-flowers",
   },
 ] as const;
 
@@ -204,7 +207,7 @@ export function PodcastPlayer() {
             <span aria-hidden="true">✦</span>
             {isPlaying ? "Pause the Podcast" : "Listen to the Podcast"}
           </button>
-          <Link className="podcast-button podcast-button--secondary" href="#podcast-episodes">
+          <Link className="podcast-button podcast-button--secondary" href="/podcast#podcast-episodes">
             Browse Episodes
             <span aria-hidden="true">-&gt;</span>
           </Link>
@@ -298,7 +301,9 @@ export function PodcastPlayer() {
                   <PodcastEpisodeIcon type={episode.icon} />
                 </div>
                 <div>
-                  <h3>{episode.title}</h3>
+                  <h3>
+                    <Link href={episode.detailsHref}>{episode.title}</Link>
+                  </h3>
                   <p className="podcast-episode-subtitle">{episode.subtitle}</p>
                   <p>{episode.body}</p>
                 </div>

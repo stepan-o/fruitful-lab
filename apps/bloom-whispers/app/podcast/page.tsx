@@ -21,6 +21,7 @@ const episodes = [
       "A conversation with Alisa of Flora Botanical Incense about ancient incense traditions, natural materials, and floral-inspired ritual.",
     audioUrl: "https://audio2.redcircle.com/episodes/3c7774ef-24bb-4963-a4ca-9171b6c9e53d/stream.mp3",
     image: "/assets/podcast-cover-t1-e1.png",
+    detailsHref: "#episode-8",
   },
   {
     episode: 7,
@@ -33,6 +34,7 @@ const episodes = [
       "Gina joins Susy to explore roses, pomegranate blossoms, and the quiet flower symbols tucked inside Tarot cards.",
     audioUrl: "https://audio2.redcircle.com/episodes/e0a8a7ea-7881-45b6-8c74-9defb87a83c6/stream.mp3",
     image: "/assets/quiz-result-hellebore.png",
+    detailsHref: "#episode-7",
   },
   {
     episode: 6,
@@ -45,6 +47,7 @@ const episodes = [
       "Psychotherapist Elizabeth Mintun shares the roots of forest bathing and practical ways nature can support daily wellbeing.",
     audioUrl: "https://audio2.redcircle.com/episodes/955faaeb-c403-468d-8da3-3c7399e7859c/stream.mp3",
     image: "/assets/journal-arch.png",
+    detailsHref: "/the-healing-power-of-forest-therapy",
   },
   {
     episode: 5,
@@ -57,6 +60,7 @@ const episodes = [
       "Florist and energy healer Yvette Timmins talks about sunflowers, roses, flower energy, and small healing practices.",
     audioUrl: "https://audio2.redcircle.com/episodes/88477bb4-8da0-4b04-a585-32c59e97e896/stream.mp3",
     image: "/assets/flower-pink-rose.png",
+    detailsHref: "/flower-therapy-healing-power-of-flowers",
   },
   {
     episode: 4,
@@ -69,6 +73,7 @@ const episodes = [
       "Botanist Roxana Khoshravesh explores what a flower is, why flowers matter, and how plants survive and communicate.",
     audioUrl: "https://audio2.redcircle.com/episodes/44d30aea-d22d-485a-8a81-abf2a713fe3a/stream.mp3",
     image: "/assets/flower-white-bloom.png",
+    detailsHref: "/what-are-flowers",
   },
   {
     episode: 3,
@@ -81,6 +86,7 @@ const episodes = [
       "Laura Ashley shares how floral essences can become gentle allies for healing, self-discovery, and everyday ritual.",
     audioUrl: "https://audio2.redcircle.com/episodes/f887d055-9a2e-4e21-8d92-78178fff605f/stream.mp3",
     image: "/assets/quiz-result-camellia.png",
+    detailsHref: "/flower-energy",
   },
   {
     episode: 2,
@@ -93,6 +99,7 @@ const episodes = [
       "Herbalist Amelia South guides us through chamomile, roses, violets, calendula, bee balm, and nature's gentle remedies.",
     audioUrl: "https://audio2.redcircle.com/episodes/275f9371-1220-4cb1-b65b-eb0c8c01802c/stream.mp3",
     image: "/assets/quiz-result-iris.png",
+    detailsHref: "/healing-properties-of-flowers",
   },
   {
     episode: 1,
@@ -105,6 +112,7 @@ const episodes = [
       "Laurie Morse joins Susy for a conversation on lotus symbolism, intentional creativity, resilience, and inner light.",
     audioUrl: "https://audio2.redcircle.com/episodes/a0edaf72-9ea8-451d-8cbe-181cfbd11547/stream.mp3",
     image: "/assets/quiz-result-love-in-a-mist.png",
+    detailsHref: "/lotus-flower-meaning",
   },
 ] as const;
 
@@ -158,11 +166,7 @@ export default function PodcastPage() {
                   aria-label={`Play episode ${latestEpisode.episode}: ${latestEpisode.title}`}
                 />
                 <div className={styles.latestActions}>
-                  <a className={styles.primaryButton} href={latestEpisode.audioUrl}>
-                    <span aria-hidden="true">▶</span>
-                    Open Audio
-                  </a>
-                  <a className={styles.textLink} href={redCircleUrl}>
+                  <a className={styles.textLink} href={latestEpisode.detailsHref}>
                     View Episode Details
                     <span aria-hidden="true">→</span>
                   </a>
@@ -178,11 +182,13 @@ export default function PodcastPage() {
               <div className={styles.episodeList}>
                 {episodes.map((episode) => (
                   <article className={styles.episodeRow} id={`episode-${episode.episode}`} key={episode.audioUrl}>
-                    <a className={styles.episodeThumb} href={episode.audioUrl} aria-label={`Listen to ${episode.title}`}>
+                    <a className={styles.episodeThumb} href={episode.detailsHref} aria-label={`View details for ${episode.title}`}>
                       <Image src={episode.image} alt="" width={320} height={240} />
                     </a>
                     <div>
-                      <h3>Ep. {episode.episode} - {episode.title}</h3>
+                      <h3>
+                        <a href={episode.detailsHref}>Ep. {episode.episode} - {episode.title}</a>
+                      </h3>
                       <p className={styles.episodeMeta}>
                         {episode.date}
                         <span aria-hidden="true">•</span>
@@ -199,8 +205,8 @@ export default function PodcastPage() {
                         aria-label={`Play episode ${episode.episode}: ${episode.title}`}
                       />
                     </div>
-                    <a className={styles.listenLink} href={episode.audioUrl}>
-                      Open Audio
+                    <a className={styles.listenLink} href={episode.detailsHref}>
+                      Episode Details
                       <span aria-hidden="true">→</span>
                     </a>
                   </article>
@@ -250,7 +256,7 @@ export default function PodcastPage() {
               </div>
               <div className={styles.recentList}>
                 {recentEpisodes.map((episode) => (
-                  <a href={episode.audioUrl} key={episode.audioUrl}>
+                  <a href={episode.detailsHref} key={episode.audioUrl}>
                     <Image src={episode.image} alt="" width={120} height={120} />
                     <span>
                       <strong>Ep. {episode.episode} - {episode.shortTitle}</strong>

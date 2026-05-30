@@ -229,6 +229,10 @@
   margin-top: 28px;
 }
 
+.episodeRow h3 a {
+  color: inherit;
+}
+
 .sectionHeading {
   align-items: center;
   display: flex;

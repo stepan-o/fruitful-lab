@@ -16,6 +16,8 @@ const connectLinks = [
   { label: "Contact", href: "/contact", icon: "none" },
   { label: "Be a Guest", href: "/contact#be-a-guest", icon: "none" },
   { label: "Instagram", href: "https://www.instagram.com/bloomwhispers/", icon: "instagram" },
+  { label: "Threads", href: "https://www.threads.net/@bloomwhispers", icon: "threads" },
+  { label: "Pinterest", href: "https://www.pinterest.com/bloomwhispers1/", icon: "pinterest" },
   { label: "Spotify", href: "https://open.spotify.com/show/0iIlU2mfu9Nowa1qVu0qhc", icon: "spotify" },
   { label: "Apple Podcasts", href: "https://podcasts.apple.com/us/podcast/bloom-whispers/id1738589218", icon: "podcast" },
 ] as const;
@@ -38,6 +40,27 @@ function FooterIcon({ type }: { type: (typeof connectLinks)[number]["icon"] }) {
         <path d="M7.6 9.5c3.1-.8 6.1-.5 8.9.9" />
         <path d="M8.2 12.2c2.4-.6 4.8-.4 7 .7" />
         <path d="M8.8 14.8c1.7-.4 3.5-.3 5.2.5" />
+      </svg>
+    );
+  }
+
+  if (type === "threads") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <path d="M15.8 10.6c-.4-2.2-1.8-3.5-4-3.5c-2.7 0-4.6 2.1-4.6 5.1c0 3.1 1.9 5.2 4.8 5.2c2.6 0 4.5-1.4 4.5-3.4c0-1.7-1.4-2.8-3.5-2.8h-1.7" />
+        <path d="M12.1 13.2c-1 0-1.7.4-1.7 1.1s.6 1.1 1.6 1.1c1.2 0 2-.7 2-1.8v-.4" />
+        <path d="M16.3 11.3c1.6.5 2.5 1.5 2.5 3c0 3-2.8 5.2-6.7 5.2c-4.4 0-7.2-2.9-7.2-7.4c0-4.3 2.8-7.3 6.9-7.3c3.5 0 6 2 6.7 5.3" />
+      </svg>
+    );
+  }
+
+  if (type === "pinterest") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M10.4 19.8l1.2-5.1" />
+        <path d="M11.8 14.2c.6 1 1.6 1.4 2.7 1.4c2.3 0 4-2.1 4-4.8c0-3-2.4-5.2-5.9-5.2c-3.8 0-6.2 2.5-6.2 5.7c0 1.8.8 3.2 2.1 3.8" />
+        <path d="M10.8 13.6c.4-1.7.8-3.3 1.1-4.4c.3-1 1-1.6 1.9-1.6c1.1 0 1.8.8 1.8 1.9c0 1.8-1 3.4-2.4 3.4c-.8 0-1.4-.4-1.7-1.1" />
       </svg>
     );
   }

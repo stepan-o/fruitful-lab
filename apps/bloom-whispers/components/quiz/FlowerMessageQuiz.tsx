@@ -329,7 +329,7 @@ export function FlowerMessageQuiz() {
                   <section className={styles.tryNextSection}>
                     <h3>Try this next</h3>
                     <div className={styles.tryNextGrid}>
-                      <Link href="/post/flower-therapy-harnessing-the-healing-power-of-flowers">
+                      <Link href="/podcast#episode-5">
                         Flower healing energy
                       </Link>
                       <Link href="/flower-meaning-guide">Get the flower guide</Link>

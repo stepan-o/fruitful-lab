@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 text-sm text-white sm:px-8 md:grid-cols-[1.2fr_1fr]">
         <div>
-          <p className="text-lg font-extrabold text-white">{SITE_NAME}</p>
+          <p className="fl-heading-accent text-lg text-white">{SITE_NAME}</p>
           <p className="mt-3 max-w-md leading-6 text-white/86">
             Product discovery, search, content, email, data, testing, and AI-supported systems for specialty brands that need a clearer path to purchase.
           </p>

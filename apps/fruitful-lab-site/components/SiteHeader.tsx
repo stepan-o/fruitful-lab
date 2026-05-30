@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BOOKING_URL, PRIMARY_NAV, SITE_NAME } from "@/lib/site";
 
@@ -15,8 +16,14 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="mx-auto flex min-h-20 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
         <Link className="brand-mark" href="/" aria-label={`${SITE_NAME} home`}>
-          <span className="brand-mark-icon">FL</span>
-          <span>{SITE_NAME}</span>
+          <Image
+            className="brand-mark-logo"
+            src="/images/brand/fruitful-lab-logo.png"
+            alt={SITE_NAME}
+            width={194}
+            height={75}
+            priority
+          />
         </Link>
         <nav className="nav-pill" aria-label="Primary">
           {PRIMARY_NAV.map((item) => (

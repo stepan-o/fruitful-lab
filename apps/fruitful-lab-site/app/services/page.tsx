@@ -2,7 +2,11 @@ import { ServicesPage } from "@/components/ServicesPage";
 
 export const metadata = {
   title: "Services",
-  description: "Marketing systems, funnels, paid media, AI workflows, email, and content strategy from Fruitful Lab.",
+  description:
+    "Fruitful Lab services for product discovery, search, content, paid media, lifecycle, data, and AI-supported creative systems.",
+  alternates: {
+    canonical: "/services/",
+  },
 };
 
 export default ServicesPage;

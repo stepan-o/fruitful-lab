@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { HoverSpotlight } from "@/components/HoverSpotlight";
 import { BLOG_POSTS } from "@/lib/content";
@@ -10,45 +11,45 @@ const RAIL_ITEMS = [
   "Analytics",
   "A/B testing",
   "AI workflows",
-  "Growth-stage brands",
+  "Specialty product brands",
 ] as const;
 
 const SERVICE_SYSTEM = [
   {
-    label: "Discovery lab",
-    title: "Find what is leaking attention.",
+    label: "Discovery diagnostic",
+    title: "Find the bottleneck before adding tactics.",
     description:
-      "A focused diagnostic for the product story, buying moments, search behavior, current channels, and the first bottleneck worth solving.",
+      "We review the product story, customer intent, search behavior, website path, current channels, and data so the first move is grounded in evidence.",
   },
   {
     label: "Search ecosystem",
-    title: "Make demand easier to meet.",
+    title: "Show up where customers look.",
     description:
-      "Google search, AI search, visual search, and product-led content paths shaped around how real customers look for answers.",
+      "Google, AI answers, visual discovery, marketplace-style search, and product-led content paths shaped around real customer behavior.",
   },
   {
-    label: "Content architecture",
-    title: "Give every asset a job.",
+    label: "Content path",
+    title: "Give every piece a role in the buying journey.",
     description:
-      "Educational, lifestyle, use-case, and product-direct content mapped to the moments where customers need clarity or trust.",
+      "Educational, use-case, lifestyle, and product-direct content mapped to discovery, trust, comparison, and action.",
   },
   {
     label: "Lifecycle and funnel",
-    title: "Build the next step around intent.",
+    title: "Make the next step feel obvious.",
     description:
-      "Lead capture, email, launch paths, landing pages, and follow-up systems that move people from interest to a confident next action.",
+      "Lead capture, email, launch paths, landing pages, and follow-up systems that keep interested people moving.",
   },
   {
     label: "Data and testing",
-    title: "Let signals choose the next move.",
+    title: "Turn signals into better decisions.",
     description:
-      "Analytics, reporting, A/B testing, and decision dashboards that make performance easier to understand and improve.",
+      "Analytics, reporting, A/B tests, and dashboards that help the team understand what to improve next.",
   },
   {
     label: "AI workflow systems",
-    title: "Speed up without flattening the brand.",
+    title: "Use AI without losing the brand.",
     description:
-      "Practical AI-supported workflows for research, content operations, reporting, repurposing, QA, and team enablement.",
+      "Practical workflows for research, repurposing, QA, reporting, and creative operations with human judgment built in.",
   },
 ] as const;
 
@@ -63,7 +64,7 @@ const PROCESS_STEPS = [
   {
     number: "02",
     title: "Formulate",
-    duration: "Paid diagnostic",
+    duration: "Diagnostic map",
     description:
       "We map the formula for the brand stage: what needs to be built first, what can wait, and how search, content, email, data, and AI should connect.",
   },
@@ -87,18 +88,28 @@ const FOUNDER_PROFILES = [
   {
     name: "Susy",
     role: "Strategy, product discovery, content, and search",
+    image: "/images/founders/susy-founder-portrait.jpg",
+    imageAlt: "Susy, Fruitful Lab co-founder, seated at a strategy desk.",
     description:
       "The side of the lab focused on customer language, product education, content systems, positioning, and the buying moments that make a brand easier to choose.",
   },
   {
     name: "Stepan",
     role: "Data, systems, analytics, and testing",
+    image: "/images/founders/stepan-founder-portrait.jpg",
+    imageAlt: "Stepan, Fruitful Lab co-founder, seated in a warm studio workspace.",
     description:
       "The side of the lab focused on reporting, experimentation, workflows, technical systems, and the signals that make the next decision less fuzzy.",
   },
 ] as const;
 
 const INSIGHT_CARDS = BLOG_POSTS.slice(0, 3);
+
+export const metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   return (
@@ -108,37 +119,37 @@ export default function HomePage() {
         <div className="hero-blob hero-blob-b" aria-hidden="true" />
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-8rem)] max-w-6xl gap-12 px-5 pb-20 pt-8 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:items-start lg:pb-24 lg:pt-10">
           <div>
-            <div className="hero-proof-row" aria-label="Future proof markers">
+            <div className="hero-proof-row" aria-label="Fruitful Lab focus markers">
               <span className="proof-pill proof-pill-light">
                 <span aria-hidden="true">★★★★★</span>
-                Client proof
+                Product discovery systems
               </span>
               <span className="proof-pill proof-pill-dark">
                 <span className="proof-dot" aria-hidden="true" />
-                Partner credentials
+                Strategy + implementation
               </span>
             </div>
-            <h1 className="mt-5 max-w-4xl text-5xl font-normal leading-[0.95] text-[var(--heading)] sm:text-6xl lg:text-7xl">
+            <h1 className="fl-title-hero mt-5">
               Good products should not be hard to <span className="gradient-text">discover.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              Fruitful Lab is a growth laboratory for specialty product brands. We test the formula that connects product story, search, content, email, data, and AI workflows so the right customers can find, understand, and choose what you sell.
+              Fruitful Lab helps specialty product brands turn scattered marketing into a clearer path from discovery to trust to purchase, connecting product story, search, content, lifecycle, data, testing, and AI-supported workflows around what you sell.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link className="btn btn-primary" href="/contact">
                 Book a fit call →
               </Link>
               <Link className="btn btn-secondary" href="/services">
-                How we work →
+                Explore services →
               </Link>
             </div>
           </div>
 
           <div className="hero-discovery-showcase" aria-label="Example product discovery search visual">
             <div className="showcase-product-card showcase-product-card-main">
-              <span className="product-tag">Search-ready page</span>
+              <span className="product-tag">Discovery-ready page</span>
               <div className="product-image product-image-mint" />
-              <strong>Organic baby rattle set</strong>
+              <strong>Specialty product set</strong>
               <p>Use case, product story, and trust cues ready for discovery.</p>
             </div>
             <div className="showcase-product-card showcase-product-card-small">
@@ -211,7 +222,7 @@ export default function HomePage() {
           </div>
           <div className="thesis-copy">
             <p>
-              Most product brands do not need more random marketing activity. They need the pieces around the product to make sense together.
+              A strong product can still be hard to find if the story, search path, content, email, paid traffic, and reporting all work from different assumptions.
             </p>
             <p>
               Fruitful Lab mixes strategy, content, search, email, data, testing, and AI-supported workflows into a clearer buying environment: people can discover the product, understand why it fits, trust the brand, and know what to do next.
@@ -230,7 +241,7 @@ export default function HomePage() {
               </h2>
             </div>
             <p className="text-base leading-7 text-[var(--muted)]">
-              The work can start as a focused diagnostic and expand into the pieces the brand actually needs: search, content, lifecycle, analytics, testing, and workflow systems.
+              You do not have to rebuild everything at once. We find the first useful system, build it clearly, then use signal to decide what deserves the next round of attention.
             </p>
           </div>
           <div className="lab-service-grid mt-12">
@@ -248,12 +259,12 @@ export default function HomePage() {
       <section className="lab-case-section">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:py-24">
           <div>
-            <p className="eyebrow">Case study frame</p>
+            <p className="eyebrow">Proof structure</p>
             <h2 className="mt-4 text-4xl font-normal leading-[1.02] text-[var(--heading)] sm:text-5xl">
-              Show the product, the path, and the signal.
+              When proof is ready, the story will show the system.
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-              The case-study structure highlights the product context, the system we built, the visible change, and the numbers that support the story.
+              Case studies will focus on context, work shipped, signals observed, and the decisions made next, without inflating claims.
             </p>
             <Link className="btn btn-secondary mt-8" href="/services">
               See the approach →
@@ -274,7 +285,7 @@ export default function HomePage() {
             </div>
             <div className="case-story-panel">
               <p>Specialty product brand</p>
-              <h3>From scattered visibility to a clearer product discovery path.</h3>
+              <h3>A clear before-and-after around product discovery, not a vanity metric.</h3>
               <div className="case-signal-row">
                 <span>Story</span>
                 <span>Search</span>
@@ -323,7 +334,7 @@ export default function HomePage() {
               Strategy and systems, human by design.
             </h2>
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-              The studio should make the human side visible: real photography, short bios, and a clear reason why Susy and Stepan are useful together for growth-stage product brands.
+              Fruitful Lab is founder-led by Susy and Stepan, bringing together customer language, product discovery, search behavior, data, systems, testing, and practical AI workflows.
             </p>
             <Link className="btn btn-secondary mt-8" href="/about">
               About the studio →
@@ -334,7 +345,7 @@ export default function HomePage() {
             {FOUNDER_PROFILES.map((profile) => (
               <article key={profile.name} className="founder-card">
                 <div className="founder-photo">
-                  <span>Photo</span>
+                  <Image src={profile.image} alt={profile.imageAlt} fill sizes="(max-width: 980px) 100vw, 340px" />
                 </div>
                 <div>
                   <p>{profile.role}</p>
@@ -380,7 +391,7 @@ export default function HomePage() {
               Start with the product, the stage, and the bottleneck.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)]">
-              The first move is a fit call. From there, the offer can become a diagnostic, a focused build, or a larger growth system.
+              The first move is a fit call. We look at the product, the stage, the current path, and the bottleneck before recommending a diagnostic, focused build, or larger growth system.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">

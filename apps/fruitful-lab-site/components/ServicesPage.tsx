@@ -5,14 +5,14 @@ import Link from "next/link";
 import { useRef, useState, type PointerEvent } from "react";
 
 const LOGO_RIBBON = [
-  "Luma & Co.",
-  "Northline Baby",
-  "Field & Vessel",
-  "Casa Miel",
-  "Trove Goods",
-  "Bloom & Birch",
-  "Wellkind",
-  "Oro Pantry",
+  "Baby + family",
+  "Home + lifestyle",
+  "Wellness",
+  "Giftable goods",
+  "Food + pantry",
+  "Creative products",
+  "Visual brands",
+  "Specialty retail",
 ] as const;
 
 const PHASES = [
@@ -21,10 +21,10 @@ const PHASES = [
     title: "Diagnose",
     weeks: "2-4 weeks",
     number: "01.",
-    chips: ["Fixed price", "Credited toward build", "Signal audit"],
-    heading: "Find the real bottleneck before we prescribe the formula.",
+    chips: ["Scoped start", "Evidence first", "Signal audit"],
+    heading: "Find the real bottleneck before choosing the build.",
     description:
-      "We map the product, audience, search behavior, customer path, creative assets, analytics, and channel gaps so the first move is based on evidence instead of preference.",
+      "We map the product, audience, search behavior, customer path, creative assets, analytics, and channel gaps so the first move is based on evidence instead of preference or trend.",
     leavesWith: [
       "Product discovery and search audit",
       "Offer, funnel, and content gap map",
@@ -44,7 +44,7 @@ const PHASES = [
       "We define the channel mix, messaging lanes, search ecosystem, content jobs, funnel logic, reporting rhythm, and implementation order before production begins.",
     leavesWith: [
       "Positioning and message architecture",
-      "Search, SEO, Pinterest, and AI-search plan",
+      "Search, SEO, visual discovery, and AI-search plan",
       "Content and creative production map",
       "Dashboard and testing requirements",
       "Build plan with budget and team roles",
@@ -97,8 +97,8 @@ const PACKAGES = [
   {
     eyebrow: "01 · Diagnose",
     title: "Growth Formula Diagnostic",
-    price: "From $3.5K",
-    detail: "Fixed scope · 2-4 weeks",
+    price: "Scoped project",
+    detail: "Best first step when the bottleneck is unclear",
     cta: "Start with a diagnostic",
     featured: false,
     items: [
@@ -106,14 +106,14 @@ const PACKAGES = [
       "Funnel, content, and offer review",
       "Analytics and tracking assessment",
       "90-day prioritized roadmap",
-      "Credited toward implementation when scoped together",
+      "Recommended next build sequence",
     ],
   },
   {
     eyebrow: "02 · Build · Most chosen",
     title: "Implementation Lab",
-    price: "Custom",
-    detail: "Fixed scope · 8-12 weeks",
+    price: "Custom scope",
+    detail: "Focused build after the diagnostic or a clear brief",
     cta: "Talk through the build",
     featured: true,
     items: [
@@ -127,8 +127,8 @@ const PACKAGES = [
   {
     eyebrow: "03 · Compound",
     title: "Signal Retainer",
-    price: "Monthly",
-    detail: "Ongoing after the first build",
+    price: "Ongoing support",
+    detail: "For brands with a live system to improve",
     cta: "See retainer fit",
     featured: false,
     items: [
@@ -143,22 +143,22 @@ const PACKAGES = [
 
 const TESTIMONIALS = [
   {
-    initials: "PW",
-    role: "Content leader",
+    initials: "01",
+    role: "Strategic clarity",
     quote:
-      "Susy's strategic approach helped us turn scattered ideas into a clearer plan, with practical recommendations we could actually use.",
+      "The work should make the real constraint easier to see, so the next move is not chosen by trend, panic, or guesswork.",
   },
   {
-    initials: "AD",
-    role: "Marketing collaborator",
+    initials: "02",
+    role: "Connected execution",
     quote:
-      "The value is in the depth of thinking: search, content, creative, and the business goal all get connected instead of treated as separate tasks.",
+      "Search, content, email, creative, and data should support the same customer path instead of becoming separate task lists.",
   },
   {
-    initials: "EA",
-    role: "Founder collaborator",
+    initials: "03",
+    role: "Useful signal",
     quote:
-      "Susana is collaborative and strategic, focused on both the customer experience and the metrics that show whether the work is moving.",
+      "Every build should leave behind a better way to read what is working, what is stuck, and what deserves attention next.",
   },
 ] as const;
 
@@ -186,7 +186,7 @@ const FAQS = [
   {
     question: "How quickly can we start?",
     answer:
-      "The next step is a fit call. From there, we can scope the diagnostic or first build based on timing, budget, existing assets, and how much evidence already exists.",
+      "The next step is a fit call. From there, we can scope a diagnostic or first build based on timing, budget, existing assets, and how much evidence already exists.",
   },
 ] as const;
 
@@ -251,7 +251,7 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section className="cfs-logo-ribbon" aria-label="Example brand logo ribbon">
+      <section className="cfs-logo-ribbon" aria-label="Specialty brand context ribbon">
         <div className="cfs-logo-ribbon-track">
           {[...LOGO_RIBBON, ...LOGO_RIBBON].map((logo, index) => (
             <span key={`${logo}-${index}`}>{logo}</span>
@@ -359,7 +359,7 @@ export function ServicesPage() {
 
       <section className="cfs-case-section">
         <div className="cfs-shell">
-          <p className="cfs-kicker">The process in production</p>
+          <p className="cfs-kicker">Proof structure</p>
           <div className="cfs-case-card">
             <div className="cfs-case-collage">
               <div className="cfs-case-image-large">
@@ -381,8 +381,8 @@ export function ServicesPage() {
                 <span>Product discovery</span>
                 <span>Search + lifecycle</span>
               </div>
-              <h2>A future proof story for a brand that needed the pieces to work together.</h2>
-              <p>This space is designed for the real case study later: the diagnosis, the formula, the build, the data, and the customer path that changed.</p>
+              <h2>A real case study should show the context, the build, and the signal that changed.</h2>
+              <p>Every project is documented through the product context, the bottleneck, the system built, and the signal used to choose the next move.</p>
               <div className="cfs-case-metrics">
                 <span>
                   <strong>01</strong>
@@ -440,16 +440,16 @@ export function ServicesPage() {
         <div className="cfs-shell">
           <div className="cfs-testimonial-heading">
             <div>
-              <p className="cfs-kicker">What clients and collaborators say</p>
-              <h2>Clearer thinking, repeatedly.</h2>
+              <p className="cfs-kicker">Partnership standards</p>
+              <h2>Clearer thinking, fewer loose ends.</h2>
             </div>
-            <p>Early testimonial structure for the page. Final quotes can be swapped in once the Fruitful Lab offer is locked.</p>
+            <p>A good engagement should leave the team with sharper decisions, connected assets, and an easier way to know what to improve next.</p>
           </div>
           <div className="cfs-testimonial-grid">
             {TESTIMONIALS.map((item) => (
               <article className="cfs-testimonial-card" key={item.initials}>
-                <div className="cfs-stars" aria-label="Five stars">★★★★★</div>
-                <blockquote>“{item.quote}”</blockquote>
+                <div className="cfs-stars" aria-hidden="true">STANDARD</div>
+                <blockquote>{item.quote}</blockquote>
                 <div className="cfs-testimonial-person">
                   <span>{item.initials}</span>
                   <p>{item.role}</p>
@@ -491,7 +491,7 @@ export function ServicesPage() {
           <h2>
             Ready to see where your product discovery system is <span>leaking momentum?</span>
           </h2>
-          <p>Start with a fit call. We will look at the product, the stage, the channels, and the signals before we decide what to build.</p>
+          <p>Start with a fit call. We will look at the product, the stage, the current path, and the signal quality before recommending what to build.</p>
           <div className="cfs-actions cfs-actions-center">
             <Link className="cfs-button cfs-button-primary" href="/contact">
               Book a fit call →

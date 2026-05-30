@@ -39,7 +39,9 @@ export async function onRequest({ request, env }) {
     return json({ ok: false, message: "Please enter a valid email address." }, 400);
   }
 
-  if (!env.MAILERLITE_API_KEY) {
+  const mailerLiteToken = env.MAILERLITE_API_KEY || env.MAILERLITE_API_TOKEN;
+
+  if (!mailerLiteToken) {
     return json({ ok: false, message: "Email signup is almost connected. Please try again soon." }, 503);
   }
 
@@ -53,7 +55,7 @@ export async function onRequest({ request, env }) {
   const response = await fetch("https://connect.mailerlite.com/api/subscribers", {
     method: "POST",
     headers: {
-      authorization: `Bearer ${env.MAILERLITE_API_KEY}`,
+      authorization: `Bearer ${mailerLiteToken}`,
       "content-type": "application/json",
       accept: "application/json",
     },

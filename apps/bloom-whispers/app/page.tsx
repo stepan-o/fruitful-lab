@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { GlitterField } from "@/components/GlitterField";
 import { PodcastPlayer } from "@/components/PodcastPlayer";
+import { TrackedLink } from "@/components/TrackedLink";
 
 export const metadata: Metadata = {
   title: "Flower Meanings, Folklore & the Flower Message Quiz",
@@ -65,7 +66,7 @@ const journalGatewayCards = [
     label: "Flower Story",
     body: "Discover the rich history, meaning, and symbolism behind one of the world's most captivating blooms.",
     action: "Read the Story",
-    href: "/journal",
+    href: "/hibiscus-flower-meaning",
     image: "/assets/journal-hibiscus-card.png",
     icon: "flower",
     variant: "cream",
@@ -75,7 +76,7 @@ const journalGatewayCards = [
     label: "Podcast Conversation",
     body: "Join beautiful conversations on how flowers nourish our minds, hearts, and everyday lives.",
     action: "Listen In",
-    href: "#podcast",
+    href: "/podcast#episode-5",
     image: "/assets/journal-podcast-card.png",
     icon: "microphone",
     variant: "dark",
@@ -297,7 +298,7 @@ export default function Home() {
               <Link className="button primary glow-button" href="/flower-message-quiz">
                 Take the Flower Quiz
               </Link>
-              <Link className="button ghost audio-button" href="#podcast">
+              <Link className="button ghost audio-button" href="/podcast">
                 <span className="audio-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" focusable="false">
                     <path d="M4.75 12.5v-1a7.25 7.25 0 0 1 14.5 0v1" />
@@ -689,14 +690,24 @@ export default function Home() {
               souls. Thoughtful pieces inspired by nature, made to bring more beauty into your everyday.
             </p>
             <div className="shop-actions" aria-label="Shop actions">
-              <Link className="shop-button shop-button--primary" href="#shop-waitlist">
+              <TrackedLink
+                className="shop-button shop-button--primary"
+                href="/shop"
+                eventName="shop_waitlist_click"
+                eventProperties={{ source: "homepage_shop_teaser" }}
+              >
                 Join the Waitlist
                 <span aria-hidden="true">✦</span>
-              </Link>
-              <Link className="shop-button shop-button--secondary" href="#shop-categories">
+              </TrackedLink>
+              <TrackedLink
+                className="shop-button shop-button--secondary"
+                href="/shop"
+                eventName="shop_see_whats_coming_click"
+                eventProperties={{ source: "homepage_shop_teaser" }}
+              >
                 See What&apos;s Coming
                 <span aria-hidden="true">→</span>
-              </Link>
+              </TrackedLink>
             </div>
           </div>
 
@@ -711,10 +722,16 @@ export default function Home() {
                 </div>
                 <h3>{card.title}</h3>
                 <p>{card.body}</p>
-                <Link className="shop-card-link" href="#shop-waitlist" data-shop-category={card.title}>
+                <TrackedLink
+                  className="shop-card-link"
+                  href="/shop"
+                  data-shop-category={card.title}
+                  eventName="shop_category_interest_click"
+                  eventProperties={{ category: card.title, source: "homepage_shop_card" }}
+                >
                   Explore
                   <span aria-hidden="true">→</span>
-                </Link>
+                </TrackedLink>
               </article>
             ))}
           </div>

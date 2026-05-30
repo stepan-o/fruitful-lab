@@ -4,10 +4,13 @@ import type { JournalPost } from "@/lib/journalPosts";
 import styles from "./JournalPostTemplate.module.css";
 
 export function JournalPostTemplate({ post }: { post: JournalPost }) {
+  const articleHeadings = post.contentHeadings?.length
+    ? post.contentHeadings
+    : post.sections.map((section) => ({ id: section.id, label: section.title }));
   const onThisPage = [
     { href: "#quick-answer", label: "Quick Answer" },
     { href: "#in-short", label: "In Short" },
-    ...post.sections.map((section) => ({ href: `#${section.id}`, label: section.title })),
+    ...articleHeadings.map((section) => ({ href: `#${section.id}`, label: section.label })),
     { href: "#faq", label: "FAQs" },
   ];
 
@@ -184,27 +187,34 @@ export function JournalPostTemplate({ post }: { post: JournalPost }) {
           </aside>
 
           <div className={styles.articleBody}>
-            {post.sections.map((section) => (
-              <section className={styles.articleSection} id={section.id} key={section.id}>
-                <h2>{section.title}</h2>
-                {section.paragraphs?.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-                {section.bullets ? (
-                  <ul>
-                    {section.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
-                  </ul>
-                ) : null}
-                {section.snippet ? (
-                  <aside className={styles.snippetBox}>
-                    <strong>{section.snippet.title}</strong>
-                    <p>{section.snippet.text}</p>
-                  </aside>
-                ) : null}
-              </section>
-            ))}
+            {post.contentHtml ? (
+              <section
+                className={styles.wordpressContent}
+                dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+              />
+            ) : (
+              post.sections.map((section) => (
+                <section className={styles.articleSection} id={section.id} key={section.id}>
+                  <h2>{section.title}</h2>
+                  {section.paragraphs?.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                  {section.bullets ? (
+                    <ul>
+                      {section.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {section.snippet ? (
+                    <aside className={styles.snippetBox}>
+                      <strong>{section.snippet.title}</strong>
+                      <p>{section.snippet.text}</p>
+                    </aside>
+                  ) : null}
+                </section>
+              ))
+            )}
 
             <section className={styles.faqSection} id="faq" aria-labelledby="faq-heading">
               <p className={styles.sectionEyebrow}>Frequently Asked Questions</p>

@@ -335,7 +335,7 @@ export function FlowerMessageQuiz() {
                       <Link href="/flower-meaning-guide">Get the flower guide</Link>
                       <Link href="/shop">Visit the Bloom shop</Link>
                     </div>
-                    <Link className={styles.keepExploringLink} href="/#podcast">
+                    <Link className={styles.keepExploringLink} href="/podcast">
                       <span aria-hidden="true">✦</span>
                       Listen to the Podcast
                       <span aria-hidden="true">✦</span>

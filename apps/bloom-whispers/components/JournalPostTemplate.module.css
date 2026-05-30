@@ -365,33 +365,153 @@
 }
 
 .articleSection,
+.wordpressContent,
 .faqSection {
   border-top: 1px solid rgba(231, 167, 103, 0.42);
   margin-top: clamp(40px, 5vw, 64px);
   padding-top: clamp(28px, 4vw, 48px);
 }
 
-.articleBody > .articleSection:first-child {
+.articleBody > .articleSection:first-child,
+.articleBody > .wordpressContent:first-child {
   margin-top: 0;
 }
 
 .articleSection h2,
+.wordpressContent h2,
 .faqSection h2 {
   font-size: clamp(2.45rem, 4vw, 4.15rem);
 }
 
-.articleSection p {
+.articleSection p,
+.wordpressContent p {
   margin-top: 18px;
   max-width: 840px;
 }
 
-.articleSection ul {
+.articleSection ul,
+.wordpressContent ul,
+.wordpressContent ol {
   margin-top: 22px;
 }
 
-.articleSection li {
+.articleSection li,
+.wordpressContent li {
   border-left: 2px solid rgba(231, 167, 103, 0.72);
   padding-left: 16px;
+}
+
+.wordpressContent {
+  color: rgba(38, 27, 34, 0.78);
+}
+
+.wordpressContent h2,
+.wordpressContent h3,
+.wordpressContent h4 {
+  color: #061d20;
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  margin: clamp(38px, 5vw, 64px) 0 0;
+  max-width: 900px;
+}
+
+.wordpressContent h2:first-child,
+.wordpressContent h3:first-child,
+.wordpressContent h4:first-child {
+  margin-top: 0;
+}
+
+.wordpressContent h3 {
+  font-size: clamp(1.85rem, 2.7vw, 2.8rem);
+  line-height: 1.08;
+}
+
+.wordpressContent h4 {
+  font-size: clamp(1.45rem, 2vw, 2.1rem);
+  line-height: 1.12;
+}
+
+.wordpressContent p,
+.wordpressContent li,
+.wordpressContent blockquote,
+.wordpressContent figcaption,
+.wordpressContent td,
+.wordpressContent th {
+  color: rgba(38, 27, 34, 0.78);
+  font-size: clamp(0.98rem, 1.08vw, 1.08rem);
+  line-height: 1.76;
+}
+
+.wordpressContent a {
+  color: #8a4d15;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(231, 167, 103, 0.55);
+  text-underline-offset: 3px;
+}
+
+.wordpressContent strong {
+  color: #061d20;
+}
+
+.wordpressContent ul,
+.wordpressContent ol {
+  display: grid;
+  gap: 12px;
+  padding-left: 0;
+}
+
+.wordpressContent li {
+  list-style: none;
+}
+
+.wordpressContent blockquote {
+  background:
+    radial-gradient(circle at 92% 12%, rgba(231, 167, 103, 0.14), transparent 22%),
+    rgba(255, 253, 248, 0.7);
+  border: 1px solid rgba(38, 27, 34, 0.13);
+  border-left: 3px solid rgba(231, 167, 103, 0.78);
+  border-radius: 14px;
+  box-shadow: 0 18px 46px rgba(70, 4, 60, 0.1);
+  margin: 26px 0;
+  max-width: 840px;
+  padding: 20px 22px;
+}
+
+.wordpressContent figure {
+  margin: 28px 0;
+  max-width: 840px;
+}
+
+.wordpressContent img {
+  border-radius: 14px;
+  box-shadow: 0 18px 46px rgba(70, 4, 60, 0.12);
+  height: auto;
+  max-width: 100%;
+}
+
+.wordpressContent iframe {
+  border: 0;
+  border-radius: 14px;
+  margin: 24px 0;
+  max-width: 840px;
+  width: 100%;
+}
+
+.wordpressContent table {
+  border-collapse: collapse;
+  margin: 28px 0;
+  max-width: 840px;
+  width: 100%;
+}
+
+.wordpressContent th,
+.wordpressContent td {
+  border: 1px solid rgba(38, 27, 34, 0.14);
+  padding: 12px;
+  text-align: left;
 }
 
 .snippetBox {

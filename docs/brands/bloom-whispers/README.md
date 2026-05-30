@@ -31,7 +31,7 @@ Approved across 2026-05-26 through 2026-05-28:
 - Homepage V1 visual direction: approved as the current Midnight Botanical Editorial baseline.
 - Homepage V1 section order: Hero, What You'll Find Here, Quiz CTA, Bloom Journal, Bloom Letter, Podcast, Shop Soon, Footer.
 - Flower-message quiz V1: approved as the current interactive quiz and result-card baseline.
-- Result-card routing: podcast CTA scrolls to the homepage podcast section; flower healing link points to the live Bloom Whispers post; guide and shop CTAs scroll to homepage anchors.
+- Result-card routing: podcast CTA points to `/podcast`; flower healing link points to the migrated Bloom Whispers post; guide and shop CTAs point to the V1 guide/shop pages.
 - Journal archive V1, hibiscus journal post template V1, About, Contact, Podcast, Shop, Flower Meaning Guide, Privacy, and Terms are approved as V1 pages.
 - Header primary CTA points to the flower-message quiz. Flower Meaning Guide is the first navigation item and has a dedicated capture page.
 - Email capture and shop/waitlist behavior remain placeholder smoke-test surfaces for V1.
@@ -41,8 +41,8 @@ Known V2 candidates:
 - Refine quiz copy and scoring after more review paths.
 - Refine mobile result-card and shop-section details if live QA shows friction.
 - Wire real email/list capture once the email platform is chosen.
-- Add analytics/click tracking for quiz starts, guide signups, Bloom Letter signups, shop interest clicks, podcast clicks, and contact submissions.
-- Migrate existing bloomwhispers.com journal content into the new app.
+- Expand analytics/click tracking for quiz starts, guide signups, Bloom Letter signups, podcast clicks, and contact submissions.
+- Download/archive media assets locally before DNS cutover if the old WordPress upload URLs will not remain available.
 
 First-pass routes:
 
@@ -60,14 +60,22 @@ First-pass routes:
 
 ## Journal Content Migration
 
-The current live Bloom Whispers journal content has been moved into the app-level journal content source in
+The live Bloom Whispers WordPress export from 2026-05-29 is the source of truth for V1 journal bodies. Its published
+post titles, slugs, dates, metadata, and body HTML have been moved into the app-level journal content source in
 `apps/bloom-whispers/lib/journalPosts.ts`. Migrated articles are served through the approved journal template and use
 clean root-level public slugs such as `/hibiscus-flower-meaning/` as their primary URLs, matching the Pinterest-friendly
 URL structure Susy wants to preserve.
 
-Date-based WordPress-style paths are kept only as backup aliases where they may have existed, so old URLs can still
-resolve after DNS migration. The `/journal/[slug]` route remains available for internal organization, but migrated
-article cards and canonical metadata prefer the clean root-level public path for each article.
+The `/journal/[slug]` route remains available for internal organization, but migrated article cards and canonical
+metadata prefer the clean root-level public path for each article. Temporary `/post/[slug]` aliases are also served for
+legacy internal links found in older content.
+
+Current media audit: the migrated journal content referenced 127 unique files under
+`https://bloomwhispers.com/wp-content/uploads/...`. Those files have been downloaded into
+`apps/bloom-whispers/public/wp-content/uploads/...`, and migrated article HTML now uses local
+`/wp-content/uploads/...` URLs where the WordPress export embedded media inside post bodies. Keep this folder with the
+Bloom app before DNS cutover so Pinterest-distributed article URLs and article media remain stable after WordPress is
+retired.
 
 The app is static-first for Cloudflare-style hosting compatibility. It should not import directly from other apps. Shared code should be promoted into `packages/*` first only after real reuse exists.
 

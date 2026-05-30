@@ -150,10 +150,17 @@ export default function PodcastPage() {
                   <span aria-hidden="true">|</span>
                   <span>{latestEpisode.category}</span>
                 </div>
+                <audio
+                  className={styles.latestAudio}
+                  controls
+                  preload="none"
+                  src={latestEpisode.audioUrl}
+                  aria-label={`Play episode ${latestEpisode.episode}: ${latestEpisode.title}`}
+                />
                 <div className={styles.latestActions}>
                   <a className={styles.primaryButton} href={latestEpisode.audioUrl}>
                     <span aria-hidden="true">▶</span>
-                    Listen Now
+                    Open Audio
                   </a>
                   <a className={styles.textLink} href={redCircleUrl}>
                     View Episode Details
@@ -170,10 +177,9 @@ export default function PodcastPage() {
               </div>
               <div className={styles.episodeList}>
                 {episodes.map((episode) => (
-                  <article className={styles.episodeRow} key={episode.audioUrl}>
+                  <article className={styles.episodeRow} id={`episode-${episode.episode}`} key={episode.audioUrl}>
                     <a className={styles.episodeThumb} href={episode.audioUrl} aria-label={`Listen to ${episode.title}`}>
                       <Image src={episode.image} alt="" width={320} height={240} />
-                      <span aria-hidden="true">▶</span>
                     </a>
                     <div>
                       <h3>Ep. {episode.episode} - {episode.title}</h3>
@@ -185,9 +191,16 @@ export default function PodcastPage() {
                         {episode.category}
                       </p>
                       <p>{episode.summary}</p>
+                      <audio
+                        className={styles.episodeAudio}
+                        controls
+                        preload="none"
+                        src={episode.audioUrl}
+                        aria-label={`Play episode ${episode.episode}: ${episode.title}`}
+                      />
                     </div>
                     <a className={styles.listenLink} href={episode.audioUrl}>
-                      Listen Now
+                      Open Audio
                       <span aria-hidden="true">→</span>
                     </a>
                   </article>

@@ -187,6 +187,21 @@
   margin-top: 28px;
 }
 
+.latestAudio,
+.episodeAudio {
+  display: block;
+  width: 100%;
+}
+
+.latestAudio {
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.18));
+  margin-top: 24px;
+}
+
+.episodeAudio {
+  margin-top: 14px;
+}
+
 .primaryButton,
 .textLink,
 .listenLink,
@@ -268,21 +283,6 @@
   height: auto;
   object-fit: cover;
   width: 100%;
-}
-
-.episodeThumb span {
-  align-items: center;
-  background: rgba(255, 253, 248, 0.9);
-  border-radius: 999px;
-  color: #061d20;
-  display: flex;
-  height: 42px;
-  justify-content: center;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 42px;
 }
 
 .episodeRow h3 {

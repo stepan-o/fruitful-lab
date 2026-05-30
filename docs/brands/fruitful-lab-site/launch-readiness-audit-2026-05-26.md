@@ -30,13 +30,13 @@ Passed locally from `apps/fruitful-lab-site/`:
 - `npm test -- --runInBand`
 - `npm run build`
 - Exported internal route and asset href check across 19 HTML files
-- Exported font/CSS check confirming Alatsi and Raleway font assets, both Next font variables on route bodies, and the V1 typography lock in the generated CSS
+- Exported font/CSS check confirming the then-current heading/body font assets and V1 typography lock in the generated CSS. Superseded on 2026-05-30 by the approved Comfortaa 700/Raleway pairing
 
 ## Typography Standardization
 
 The shared stylesheet now has a late `Fruitful Lab V1 type-scale lock` section. It keeps:
 
-- Alatsi for display/headings
+- Comfortaa 700 for display/headings
 - Raleway for body, navigation, forms, buttons, labels, and interface text
 - one hero headline scale across the site
 - one major section headline scale across the site

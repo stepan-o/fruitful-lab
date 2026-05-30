@@ -311,6 +311,7 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: fl-gradient-slide var(--fl-motion-gradient);
 }
 
@@ -4049,6 +4050,7 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: fl-gradient-slide var(--fl-motion-gradient);
 }
 
@@ -5372,6 +5374,7 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: fl-gradient-slide var(--fl-motion-gradient);
 }
 
@@ -5956,6 +5959,7 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: fl-gradient-slide var(--fl-motion-gradient);
 }
 
@@ -6493,6 +6497,7 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: fl-gradient-slide var(--fl-motion-gradient);
 }
 
@@ -7271,6 +7276,7 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: fl-gradient-slide var(--fl-motion-gradient);
 }
 
@@ -7724,6 +7730,7 @@ h6,
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: fl-gradient-slide var(--fl-motion-gradient);
 }
 
@@ -8271,6 +8278,7 @@ h6,
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: fl-gradient-slide var(--fl-motion-gradient);
 }
 
@@ -9877,16 +9885,6 @@ body :where(p, a, li, small, label, input, textarea, select, button),
 }
 
 
-:where(h1, h2) > span,
-.fl-gradient-text,
-.gradient-text {
-  background: var(--fl-gradient-text) !important;
-  background-size: 190% 190%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  animation: fl-gradient-slide var(--fl-motion-gradient);
-}
 
 .lab-hero-inner {
   min-height: auto;

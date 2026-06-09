@@ -42,6 +42,7 @@ export type JournalPost = {
   sourceUrl: string;
   heroImage: string;
   heroImageAlt: string;
+  quickAnswerLabel?: string;
   quickAnswer: string;
   inShort: string[];
   keyTakeaways: string[];
@@ -52,7 +53,291 @@ export type JournalPost = {
   related: RelatedJournalPost[];
 };
 
+const queenAnnesLaceContentHtml = `
+<p>At first, Queen Anne's lace looks almost too innocent to have a story.</p>
+<p>White lace lifts above the summer grass. The flower head is delicate enough to look sewn, a little parasol held up for bees, beetles, fairies, brides, or anyone willing to believe in a small place of refuge.</p>
+<p>Then you see it.</p>
+<p>Near the center, there is sometimes a dark purple dot.</p>
+<p>Folklore turns that dot into a blood drop from a queen's pricked finger. Science has asked whether it might work like an insect decoy. The flower's modern symbolism leans toward sanctuary and delicacy, yet its lookalikes include plants dangerous enough to make casual gathering unsafe.</p>
+<p>This is the spell of Queen Anne's lace: it looks like a place to rest, but it asks you to pay attention before you reach for it.</p>
+
+<figure class="bw-article-media bw-article-media--portrait">
+  <img src="/assets/queen-annes-lace/queen-annes-lace-at-glance-alt.png" alt="Queen Anne's lace at-a-glance graphic naming the common name, botanical anchor Daucus carota, white umbel flower type, symbolism, and dangerous lookalikes safety note." loading="lazy" />
+  <figcaption>At a glance: the approved article summary keeps the botanical anchor and safety warning visible.</figcaption>
+</figure>
+
+<h2 id="what-is-queen-annes-lace">What Is Queen Anne's Lace?</h2>
+<p>Queen Anne's lace is the white roadside flower that makes a ditch look dressed for ceremony.</p>
+<p>In North America, the name usually points to wild carrot, <em>Daucus carota</em>, a member of the carrot family with flat, lacy flower heads called umbels. It grows in sunny, disturbed places: roadsides, fields, meadow edges, and waste ground.</p>
+<p>Walter P. Eaton described wild carrot as a plant that "often appears like a strip of delicate embroidery along the wayside." That line understands the flower better than any dry definition could. Queen Anne's lace looks handmade even when no hand has touched it.</p>
+<p>The plant has other visual tricks too. After flowering, the seed head can curl inward into a small nest shape, which helps explain the old "bird's nest" association. Many flower heads also carry one to five tiny dark central florets, though not every plant has the famous dot.</p>
+<p>That dot is where the flower stops behaving like a decoration and starts behaving like a secret.</p>
+
+<h2 id="what-does-queen-annes-lace-mean">What Does Queen Anne's Lace Mean?</h2>
+<p>Queen Anne's lace means sanctuary, refuge, delicacy, protection, and feminine grace in modern flower language. In the wider <a href="/flower-meaning-guide/">Flower Meaning Guide</a>, it belongs with flowers whose meanings come from shape, story, and careful interpretation rather than one simple old floriography entry. Fantasy appears in modern meaning lists too, though it should stay secondary unless stronger book evidence turns up later.</p>
+<p>The meanings make emotional sense.</p>
+<p>The flower head looks like shelter: a white canopy, a small umbrella, a lace roof over the grass. The curled seed head becomes a nest. The word "lace" brings veils, garments, altar cloths, baby clothes, mourning clothes, and the hidden patience of handwork.</p>
+<p>The caveat matters: the Victorian flower-language books checked for this article did not verify Queen Anne's lace as an old symbol of sanctuary or fantasy. Those meanings are better treated as modern symbolism shaped by the flower's canopy, nest, folklore, and design life.</p>
+<p>The deepest meaning is softness with discernment.</p>
+<p>Queen Anne's lace offers a delicate kind of sanctuary, the kind that says: come close, but stay awake.</p>
+
+<figure class="bw-article-media bw-article-media--portrait">
+  <img src="/assets/queen-annes-lace/queen-annes-lace-symbolism.png" alt="Queen Anne's lace symbolism graphic connecting lace with handmade beauty, the canopy with refuge, the nest seed head with protection, the dark dot with mystery, roadside growth with wildness, and lookalikes with discernment." loading="lazy" />
+  <figcaption>A visual summary of the article's symbolism: lace, canopy, nest, dark dot, roadside growth, and lookalike caution.</figcaption>
+</figure>
+
+<h2 id="is-queen-annes-lace-the-same-as-wild-carrot">Is Queen Anne's Lace The Same As Wild Carrot?</h2>
+<p>In North America, yes. Queen Anne's lace usually means wild carrot, <em>Daucus carota</em>.</p>
+<p>The name gets slippery when it travels.</p>
+<p>In parts of the British Isles, "Queen Anne's lace" can refer to cow parsley, <em>Anthriscus sylvestris</em>, another white, airy member of the carrot family. Floristry adds another layer because <em>Ammi majus</em> may be sold under Queen Anne's lace-style or laceflower names.</p>
+<p>For this article, the anchor is <em>Daucus carota</em>: wild carrot, the purple-dot plant, the bird's-nest seed head, the blood-drop legend.</p>
+<p>That distinction matters. Common names are little suitcases. They carry stories across borders, but sometimes they carry the wrong plant too.</p>
+
+<h2 id="why-is-it-called-queen-annes-lace">Why Is It Called Queen Anne's Lace?</h2>
+<p>The lace part is easy. Look at the flower head and you can almost see a needle passing through white thread.</p>
+<p>The Queen Anne part is less obedient.</p>
+<p>One legend, retold by Mitich as legend rather than settled origin history, says Anne of Denmark challenged ladies of the court to make lace as fine as the flower. Other versions drift toward Queen Anne of Great Britain, Saint Anne, or later folk associations with Anne Boleyn.</p>
+<p>That instability is not a failure of the story. It is part of folk naming.</p>
+<p>Folk names often keep atmosphere more faithfully than paperwork. They remember the queen, the needle, the lace, the blood, the courtly room, the white work held close to the eye. They do not always remember which Anne was seated at the table.</p>
+<p>Mitich notes that the exact English entry date for the name is not recorded, though the name was already somewhat general in the United States by 1894. So Queen Anne's lace feels old, but the source trail asks for care: legend, not royal paperwork.</p>
+
+<h2 id="the-blood-drop-legend">The Blood-Drop Legend</h2>
+<p>The familiar story says Queen Anne was making lace when she pricked her finger. A drop of blood fell onto the white work, and the flower remembers it as the dark point at the center.</p>
+<p>That is folklore, not proven history. But it works because the flower already looks interrupted.</p>
+<p>White, white, white, white, and then: a speck of purple-black.</p>
+<p>The National Park Service also records the purple center as a "fairy-seat," a gentler folk image. In one telling, the dot is a wound. In another, it is a tiny throne.</p>
+<p>Either way, the flower makes people lean closer. The dot changes the scale of the whole scene. Suddenly a roadside plant feels like a miniature world: queen, needle, blood, fairy, beetle, warning.</p>
+
+<h2 id="why-does-queen-annes-lace-have-a-purple-dot">Why Does Queen Anne's Lace Have A Purple Dot?</h2>
+<p>The purple dot is not universal. Some Queen Anne's lace umbels have it, some do not, and some populations show it more clearly than others.</p>
+<p>Botanically, researchers have studied the dark central floret as a possible insect mimic. In a Portuguese population where small beetles were common visitors, Goulson et al. found that dark florets increased beetle attraction.</p>
+<p>That sounds wonderfully strange, and it is. But the careful version matters.</p>
+<p>Westmoreland and Muntan studied Queen Anne's lace across five eastern U.S. locations and found that some insect taxa sometimes favored umbels with central florets, while their experiment did not show increased fruit production. Their cautious phrase is that the trait "may be adaptive when the attracted insect taxa are common."</p>
+<p>The purple dot may sometimes help the flower get attention from certain insects. It is not a magic button, and it does not work the same way everywhere.</p>
+<p>In plain language, the purple dot is the flower's tiny trick of attention. Folklore sees blood. Some insects may see company. A reader sees a reason to keep looking.</p>
+
+<aside class="bw-bloom-callout" id="the-bloom-whisper-of-queen-annes-lace" aria-labelledby="bloom-whisper-heading">
+  <p class="bw-callout-label">Bloom Whisper</p>
+  <h2 id="bloom-whisper-heading">The Bloom Whisper Of Queen Anne's Lace</h2>
+  <p>The tiny Bloom Whisper of Queen Anne's lace is this: the purple dot is where three stories meet.</p>
+  <p>Folklore sees a drop of blood from a lace-making queen. A folk detail calls it a fairy-seat. Science has studied whether the same dark spot may sometimes work like an insect mimic, attracting certain visitors in certain contexts.</p>
+  <p>The dot is not universal, and it is not a guaranteed pollinator trick. Its power is subtler: it turns a white flower into a question.</p>
+</aside>
+
+<h2 id="queen-annes-lace-lace-making-and-womens-craft">Queen Anne's Lace, Lace-Making, And Women's Craft</h2>
+<p>The flower's lace is not just visual. It leads into the human history of lace itself: women's work, household skill, religious instruction, trade, class, patronage, ceremony, and beauty made slowly.</p>
+<p>David Hopkin's work on lace legends notes that lace was associated with "key moments in the life cycle," including rites such as marriage, mourning, and religious observance. That does not prove Queen Anne's lace flowers were historically used in those rituals. It tells us why the word lace has emotional weight before the flower ever enters a bouquet.</p>
+<p>Lace is never just pretty.</p>
+<p>It is time made visible. It is thread disciplined into pattern. It is labor that can be dismissed because it looks delicate.</p>
+<p>That is one of Queen Anne's lace's deeper lessons. Delicacy is not weakness. Delicacy can be skill, patience, status, care, and quiet power.</p>
+<p>There is even a small adornment echo in wild carrot history. Maud Grieve records that carrot foliage once had a fashion moment, saying "it became the fashion for ladies to use its feathery leaves in their head-dresses." This is about carrot leaves rather than the modern Queen Anne's lace flower head, so it should not be stretched into symbolism. Still, it is charming: even the leaves found their way into hair.</p>
+
+<h2 id="queen-annes-lace-in-weddings-tables-and-bouquets">Queen Anne's Lace In Weddings, Tables, And Bouquets</h2>
+<p>Queen Anne's lace belongs naturally at a wedding table because it already looks like lace caught in bloom.</p>
+<p>Modern florists use it as airy filler in rustic, garden-style, wildflower, boho, meadow, and DIY arrangements. It softens bouquets without taking over. It gives roses a less polished edge. It makes grasses and field flowers look intentional rather than accidental.</p>
+<p>For Queen Anne's lace wedding decor, a few stems can loosen a low centerpiece, float above bud vases, or make a long wedding table feel like a meadow has quietly entered the room.</p>
+<p>Its wedding meaning is modern, visual, and symbolic rather than an old flower-specific wedding ritual. The flower borrows some of its romance from lace itself: veils, ceremony, garments for thresholds, handmade beauty, and the quiet drama of white against green.</p>
+<p>If you want the symbolism for a wedding, keep it simple and honest: Queen Anne's lace can stand for a sanctuary built by hand.</p>
+<p>Not a perfect sanctuary. A living one. A table where softness and attention sit together.</p>
+
+<h2 id="herbal-history-of-wild-carrot">Herbal History Of Wild Carrot</h2>
+<p>Wild carrot has a long herbal and food-history trail. Older herbals such as Culpeper and Grieve discuss wild carrot and carrot uses. Mitich also connects the plant to Greek and Roman medicine, later European herbals, settler use, and modern carrot nutrition history.</p>
+<p>The old record is rich, but richness is not permission. Because Queen Anne's lace has dangerous lookalikes and a complicated herbal record, this article does not give recipes, harvesting directions, dosage ideas, medicinal instructions, or edible-use advice.</p>
+<p>If you came here searching for Queen Anne's lace recipes, benefits, or herbal uses, the safest answer is cultural: people have written about wild carrot for centuries, but this flower-meaning article will not turn that history into a how-to.</p>
+
+<h2 id="tiffanys-queen-annes-lace-a-roadside-flower-made-precious">Tiffany's Queen Anne's Lace: A Roadside Flower Made Precious</h2>
+<p>In 1904, Louis C. Tiffany turned Queen Anne's lace into a hair ornament.</p>
+<p>Not a vague floral motif. Queen Anne's lace itself.</p>
+<figure class="bw-article-media bw-article-media--portrait">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Queen_Anne%27s_Lace_Hair_Ornament_MET_269109.jpg" alt="Louis C. Tiffany's 1904 Queen Anne's Lace Hair Ornament with silver wire flower forms, opals, garnets, and enamel, from The Metropolitan Museum of Art." loading="lazy" />
+  <figcaption>Louis C. Tiffany, <em>Queen Anne's Lace Hair Ornament</em>, 1904. Public domain image via Wikimedia Commons / The Metropolitan Museum of Art; <a href="https://www.metmuseum.org/art/collection/search/16942">view the Met object record</a>.</figcaption>
+</figure>
+<p>The object was made of silver, copper, opals, demantoid garnets, garnets, and enamel. The Metropolitan Museum of Art notes Tiffany's "use of a common wildflower and semi-precious stones." That pairing is the point: a plant from roadsides and field edges made precious without being made tame.</p>
+<p>The Met also notes that Tiffany exhibited three Queen Anne's lace ornaments at the 1904 Saint Louis Exposition. The flower stepped into Art Nouveau exactly where it belonged, a movement that loved stems, curves, living pattern, and natural forms made strange by craft.</p>
+<p>Cooper Hewitt adds another design afterlife with a Queen Anne's Lace textile made through botanical image transfer and screen-printing. The flower's shape explains why it keeps returning to wallpaper, pressed-flower jewelry, botanical prints, textile patterns, and home decor.</p>
+<p>Queen Anne's lace is a wildflower, but it knows how to become ornament.</p>
+
+<h2 id="queen-annes-lace-vs-poison-hemlock">Queen Anne's Lace Vs Poison Hemlock</h2>
+<p>Here, the lace has to meet the warning.</p>
+<p>Queen Anne's lace belongs to a plant family where white umbels can be dangerously easy to confuse. Poison hemlock is a serious lookalike. University of Maryland Extension describes poison hemlock as highly poisonous and notes that it can be fatal.</p>
+<aside class="bw-safety-callout" aria-label="Safety note">
+  <strong>Safety note</strong>
+  <p>This is not a plant-identification, foraging, recipe, or herbal-advice guide. Do not forage from this article. If identifying a wild white umbel matters, use local expert help or extension resources.</p>
+</aside>
+<p>The warning does not ruin the flower. It finishes the meaning.</p>
+<p>Queen Anne's lace can symbolize sanctuary, but it does not promise safety to the casual or untrained. It looks tender, but it lives near danger. It gives the reader one of the most useful flower lessons: beauty can invite attention without giving permission.</p>
+<p>Admiration is safer than assumption.</p>
+<p>For another flower where symbolism carries beauty, folklore, and a darker edge, read <a href="/red-spider-lily-symbolism/">Higanbana in Japan: Red Spider Lily Symbolism</a>.</p>
+
+<h2 id="the-bloom-wisdom-of-queen-annes-lace">The Bloom Wisdom Of Queen Anne's Lace</h2>
+<p>Our interpretation: Queen Anne's lace teaches delicate discernment.</p>
+<p>It says that softness can have a center of blood. That refuge can require attention. That handmade beauty often hides labor. That the common thing on the roadside can still enter a museum case, a wedding table, a pattern book, or a private memory.</p>
+<p>Its wisdom is not simply to be delicate. It is to notice the difference between delicacy and innocence.</p>
+<p>Queen Anne's lace is gentle, but not simple. It is pretty, but not empty. It is a sanctuary flower with a warning folded into the lace.</p>
+<p>Queen Anne's lace teaches that not every beautiful thing should be gathered, and not every sanctuary is free of warning.</p>
+
+<figure class="bw-article-media bw-article-media--portrait">
+  <img src="/assets/queen-annes-lace/queen-annes-lace-quote.png" alt="Quote graphic showing Queen Anne's lace in a dark meadow with the words Not every beautiful thing should be gathered." loading="lazy" />
+  <figcaption>Original Bloom Whispers line from the Queen Anne's lace wisdom section.</figcaption>
+</figure>
+
+<h2 id="ways-to-bring-queen-annes-lace-into-your-life">Ways To Bring Queen Anne's Lace Into Your Life</h2>
+<p>These are safe, non-foraging, non-medical ideas inspired by the research and symbolism.</p>
+<h3 id="for-reflection">For Reflection</h3>
+<p>Use Queen Anne's lace as a journal prompt when you are thinking about refuge, boundaries, or soft strength.</p>
+<ul>
+  <li>Where do I mistake softness for safety?</li>
+  <li>What kind of sanctuary am I trying to build by hand?</li>
+  <li>What beautiful thing in my life asks for more discernment?</li>
+</ul>
+<h3 id="for-weddings-and-tables">For Weddings And Tables</h3>
+<p>Use Queen Anne's lace as a visual symbol of handmade sanctuary: airy white stems in bud vases, a softened garden-style bouquet, or low centerpieces that make the wedding table feel meadow-lit rather than formal.</p>
+<p>Keep the meaning modern and poetic: refuge, delicacy, protection, and wild beauty brought into ceremony.</p>
+<h3 id="for-a-gift-meaning">For A Gift Meaning</h3>
+<p>Queen Anne's lace can be a thoughtful symbolic flower for someone creating refuge after a difficult season, someone who loves handmade beauty, or someone who understands that gentleness can still have boundaries.</p>
+
+<aside class="bw-quiz-callout" aria-labelledby="flower-message-quiz-callout-heading">
+  <p class="bw-callout-label">Flower Message Quiz</p>
+  <h2 id="flower-message-quiz-callout-heading">Find The Flower Message For Your Season</h2>
+  <p>After reading Queen Anne's lace, you can take the Bloom Whispers quiz for one bloom, one reflection, and one small ritual for the season you are in.</p>
+  <a class="bw-article-button" href="/flower-message-quiz/">Take The Flower Message Quiz</a>
+</aside>
+
+<h2 id="sources-and-further-reading">Sources And Further Reading</h2>
+<ul class="bw-source-list">
+  <li>Plant-Lore for Queen Anne's lace name confusion and blood-drop folklore: <a href="https://www.plant-lore.com/plantofthemonth/queen-annes-lace/">https://www.plant-lore.com/plantofthemonth/queen-annes-lace/</a></li>
+  <li>Goulson et al. for dark central floret / insect-mimic research: <a href="https://www.sussex.ac.uk/lifesci/goulsonlab/documents/goulson-et-al-plant-species-biology-2009.pdf">https://www.sussex.ac.uk/lifesci/goulsonlab/documents/goulson-et-al-plant-species-biology-2009.pdf</a></li>
+  <li>Westmoreland and Muntan for context-dependent dark-floret findings: <a href="https://www.jstor.org/stable/2426878">https://www.jstor.org/stable/2426878</a></li>
+  <li>Larry W. Mitich, "Wild Carrot (<em>Daucus carota</em> L.)," for name history, Anne of Denmark legend, natural history, and herbal-history context: <a href="https://www.jstor.org/stable/3988083">https://www.jstor.org/stable/3988083</a></li>
+  <li>David Hopkin, "Legends of Lace," for lace, women's craft, ritual, class, and life-cycle context: <a href="https://ora.ox.ac.uk/objects/uuid%3A33828426-fedb-4c30-a0d1-e423441f8dcd/files/r6682x446r">https://ora.ox.ac.uk/objects/uuid%3A33828426-fedb-4c30-a0d1-e423441f8dcd/files/r6682x446r</a></li>
+  <li>University of Maryland Extension for poison hemlock safety: <a href="https://extension.umd.edu/resource/poison-hemlock-conium-maculatum-ebr-57">https://extension.umd.edu/resource/poison-hemlock-conium-maculatum-ebr-57</a></li>
+  <li>The Metropolitan Museum of Art for Louis C. Tiffany's 1904 Queen Anne's Lace hair ornament: <a href="https://www.metmuseum.org/art/collection/search/16942">https://www.metmuseum.org/art/collection/search/16942</a></li>
+  <li>Cooper Hewitt for Queen Anne's lace textile/design context: <a href="https://www.cooperhewitt.org/2019/02/14/queen-annes-lace-2/">https://www.cooperhewitt.org/2019/02/14/queen-annes-lace-2/</a></li>
+  <li>Maud Grieve, <em>A Modern Herbal</em>, for historical carrot and wild carrot context: <a href="https://www.botanical.com/botanical/mgmh/c/carrot24.html">https://www.botanical.com/botanical/mgmh/c/carrot24.html</a></li>
+</ul>
+`;
+
+const queenAnnesLacePost = {
+  slug: "queen-annes-lace-meaning",
+  title: "Queen Anne's Lace Meaning: Why This Delicate Flower Carries Blood, Beauty, And Warning",
+  seoTitle: "Queen Anne's Lace Meaning: Blood, Beauty, And Warning",
+  description:
+    "Queen Anne's lace meaning, symbolism, folklore, wedding uses, Tiffany design, purple-dot science, and poison-hemlock warning, explained with care.",
+  category: "Flower Meanings",
+  categoryId: "meanings",
+  date: "Jun 9, 2026",
+  updated: "Jun 9, 2026",
+  datePublished: "2026-06-09",
+  dateModified: "2026-06-09",
+  readTime: "12 min read",
+  author: "Susycid",
+  sourceUrl: "https://bloomwhispers.com/queen-annes-lace-meaning/",
+  heroImage: "/assets/queen-annes-lace/queen-annes-lace-meaning.png",
+  heroImageAlt:
+    "Illustrated Queen Anne's lace meaning card with white umbels, seed heads, and the words sanctuary, delicacy, protection, and soft strength.",
+  quickAnswerLabel: "Quick Meaning",
+  quickAnswer:
+    "Queen Anne's lace is a flower of delicate refuge with a warning folded into the lace. In North America, the name usually refers to wild carrot, Daucus carota, a white umbel flower associated in modern flower language with sanctuary, refuge, delicacy, protection, and feminine grace. Its tiny dark center gives the flower its strongest story: folklore remembers it as Queen Anne's blood or a fairy-seat, while scientific studies have explored whether the dark floret may sometimes act like an insect mimic. The flower is loved in weddings, botanical prints, wallpaper, and Art Nouveau design, but it has dangerous lookalikes, especially poison hemlock, so this is not a foraging, recipe, herbal-use, or plant-identification guide.",
+  inShort: [
+    "Queen Anne's lace usually means wild carrot, Daucus carota, in North America.",
+    "The purple dot is both folklore material and botanical mystery: blood-drop legend, fairy-seat detail, and possible insect-mimic science.",
+    "Sanctuary, refuge, delicacy, protection, and fantasy are modern flower-language meanings here, not verified Victorian floriography.",
+    "The article treats herbal history as cultural context only and keeps the poison-hemlock warning clear.",
+  ],
+  keyTakeaways: [
+    "In North America, Queen Anne's lace usually means wild carrot, Daucus carota.",
+    "In parts of the British Isles, the same common name can refer to cow parsley, so region matters.",
+    "Treat sanctuary, refuge, delicacy, protection, and fantasy as modern flower-language meanings here, not verified Victorian floriography.",
+    "The dark purple dot is both folklore material and botanical mystery: blood-drop legend, fairy-seat detail, and possible insect-mimic science.",
+    "The lace symbolism is not just pretty. Lace carries older associations with women's craft, ceremony, marriage, mourning, class, and handmade beauty.",
+    "Queen Anne's lace is beautiful in modern weddings and design, but poison hemlock confusion keeps the safety warning serious.",
+  ],
+  contentHtml: queenAnnesLaceContentHtml,
+  contentHeadings: [
+    { id: "what-is-queen-annes-lace", label: "What Is Queen Anne's Lace?" },
+    { id: "what-does-queen-annes-lace-mean", label: "What Does Queen Anne's Lace Mean?" },
+    { id: "is-queen-annes-lace-the-same-as-wild-carrot", label: "Is It The Same As Wild Carrot?" },
+    { id: "why-is-it-called-queen-annes-lace", label: "Why Is It Called Queen Anne's Lace?" },
+    { id: "the-blood-drop-legend", label: "The Blood-Drop Legend" },
+    { id: "why-does-queen-annes-lace-have-a-purple-dot", label: "Why Does It Have A Purple Dot?" },
+    { id: "the-bloom-whisper-of-queen-annes-lace", label: "The Bloom Whisper" },
+    { id: "queen-annes-lace-lace-making-and-womens-craft", label: "Lace-Making And Women's Craft" },
+    { id: "queen-annes-lace-in-weddings-tables-and-bouquets", label: "Weddings, Tables, And Bouquets" },
+    { id: "herbal-history-of-wild-carrot", label: "Herbal History Of Wild Carrot" },
+    {
+      id: "tiffanys-queen-annes-lace-a-roadside-flower-made-precious",
+      label: "Tiffany's Queen Anne's Lace",
+    },
+    { id: "queen-annes-lace-vs-poison-hemlock", label: "Queen Anne's Lace Vs Poison Hemlock" },
+    { id: "the-bloom-wisdom-of-queen-annes-lace", label: "The Bloom Wisdom" },
+    { id: "ways-to-bring-queen-annes-lace-into-your-life", label: "Ways To Bring It Into Your Life" },
+    { id: "sources-and-further-reading", label: "Sources And Further Reading" },
+  ],
+  faqs: [
+    {
+      question: "What does Queen Anne's lace symbolize?",
+      answer:
+        "Queen Anne's lace symbolizes sanctuary, refuge, delicacy, protection, and feminine grace in modern flower language. Fantasy also appears in modern meaning lists, but sanctuary and fantasy should be treated as modern associations here rather than verified Victorian flower-language meanings.",
+    },
+    {
+      question: "Is Queen Anne's lace the same as wild carrot?",
+      answer:
+        "In North America, Queen Anne's lace usually refers to wild carrot, Daucus carota. In parts of the British Isles, the same common name can refer to cow parsley, so the plant behind the name depends on region and context.",
+    },
+    {
+      question: "Why does Queen Anne's lace have a purple dot?",
+      answer:
+        "Folklore explains the purple dot as a drop of blood from Queen Anne's finger or as a fairy-seat. Scientists have also studied the dark central floret as a possible insect mimic, but research suggests the effect depends on place and insect visitors.",
+    },
+    {
+      question: "Is Queen Anne's lace used in weddings?",
+      answer:
+        "Yes. Queen Anne's lace is popular in modern wildflower, rustic, garden-style, boho, meadow, and DIY weddings. It works well in bouquets, low centerpieces, bud vases, and wedding table decor because it adds a soft lace-like texture.",
+    },
+    {
+      question: "Is Queen Anne's lace poisonous?",
+      answer:
+        "This article does not recommend eating or using Queen Anne's lace. The biggest safety concern for casual readers is misidentification: poison hemlock and other dangerous lookalikes can resemble Queen Anne's lace, and poison hemlock can be fatal.",
+    },
+    {
+      question: "What is the difference between Queen Anne's lace and poison hemlock?",
+      answer:
+        "Queen Anne's lace and poison hemlock are different plants, but both can appear as white umbels in the carrot-family world. Because confusion can be dangerous, use local expert identification or extension resources rather than relying on casual online comparisons.",
+    },
+    {
+      question: "Can you eat Queen Anne's lace?",
+      answer:
+        "Do not use this article as permission to eat Queen Anne's lace. The research supports discussing wild carrot's historical food and herbal uses, but this article does not provide recipes, harvesting guidance, dosage information, or ingestion advice.",
+    },
+    {
+      question: "Why is Queen Anne's lace called bird's nest?",
+      answer:
+        "After flowering, wild carrot's seed head can curl inward into a nest-like shape. That curled form helps explain the bird's nest name association.",
+    },
+  ],
+  legacyPaths: ["/queen-annes-lace-meaning/", "/post/queen-annes-lace-meaning/"],
+  related: [
+    {
+      title: "Flower Meaning Guide",
+      href: "/flower-meaning-guide/",
+      label: "Guide",
+    },
+    {
+      title: "Higanbana in Japan: Red Spider Lily Symbolism, Ohigan Traditions, and Autumn Bloom Magic",
+      href: "/red-spider-lily-symbolism/",
+      label: "Flower Meanings",
+    },
+    {
+      title: "Take the Flower Message Quiz",
+      href: "/flower-message-quiz/",
+      label: "Quiz",
+    },
+  ],
+  sections: [],
+} satisfies JournalPost;
+
 export const journalPosts: JournalPost[] = [
+  queenAnnesLacePost,
   {
     "slug": "spider-lily-colors-meanings",
     "title": "Spider Lily Colors & Meanings: Red, White, Pink, Yellow (and What You’re Actually Looking At)",

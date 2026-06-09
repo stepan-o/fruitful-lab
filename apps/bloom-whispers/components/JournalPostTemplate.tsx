@@ -5,11 +5,12 @@ import type { JournalPost } from "@/lib/journalPosts";
 import styles from "./JournalPostTemplate.module.css";
 
 export function JournalPostTemplate({ post }: { post: JournalPost }) {
+  const quickAnswerLabel = post.quickAnswerLabel ?? "Quick Answer";
   const articleHeadings = post.contentHeadings?.length
     ? post.contentHeadings
     : post.sections.map((section) => ({ id: section.id, label: section.title }));
   const onThisPage = [
-    { href: "#quick-answer", label: "Quick Answer" },
+    { href: "#quick-answer", label: quickAnswerLabel },
     { href: "#in-short", label: "In Short" },
     ...articleHeadings.map((section) => ({ href: `#${section.id}`, label: section.label })),
     { href: "#faq", label: "FAQs" },
@@ -69,7 +70,7 @@ export function JournalPostTemplate({ post }: { post: JournalPost }) {
                 ✦
               </div>
               <div>
-                <h2 id="quick-answer-heading">Quick Answer</h2>
+                <h2 id="quick-answer-heading">{quickAnswerLabel}</h2>
                 <p>{post.quickAnswer}</p>
               </div>
               <Image src="/assets/flower-pink-rose.png" alt="" width={600} height={600} />

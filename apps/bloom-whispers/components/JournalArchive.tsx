@@ -9,6 +9,7 @@ import styles from "./JournalArchive.module.css";
 type CategoryId = "all" | "meanings" | "profiles" | "stories" | "food" | "podcast" | "guides";
 
 type JournalPost = {
+  slug: string;
   title: string;
   href: string;
   date: string;
@@ -29,6 +30,7 @@ const categories: { id: CategoryId; label: string }[] = [
 ];
 
 const posts: JournalPost[] = getAllJournalPosts().map((post) => ({
+  slug: post.slug,
   title: post.title,
   href: post.legacyPaths[0],
   date: post.date,
@@ -38,11 +40,15 @@ const posts: JournalPost[] = getAllJournalPosts().map((post) => ({
   image: post.heroImage,
 }));
 
-const popularPosts = [
-  posts[11],
-  posts[2],
-  posts[6],
+const popularPostSlugs = [
+  "flower-therapy-healing-power-of-flowers",
+  "spider-lily-floral-arrangement-ideas",
+  "hibiscusflower-recipe",
 ];
+
+const popularPosts = popularPostSlugs
+  .map((slug) => posts.find((post) => post.slug === slug))
+  .filter((post): post is JournalPost => Boolean(post));
 
 const POSTS_PER_PAGE = 5;
 

@@ -480,9 +480,99 @@
   padding: 20px 22px;
 }
 
+.wordpressContent :global(.bw-bloom-callout),
+.wordpressContent :global(.bw-safety-callout),
+.wordpressContent :global(.bw-quiz-callout) {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(197, 99, 183, 0.13), transparent 24%),
+    linear-gradient(145deg, rgba(255, 253, 248, 0.92), rgba(247, 239, 223, 0.74));
+  border: 1px solid rgba(38, 27, 34, 0.14);
+  border-left: 4px solid rgba(231, 167, 103, 0.82);
+  border-radius: 14px;
+  box-shadow: 0 18px 46px rgba(70, 4, 60, 0.1);
+  margin: clamp(30px, 4vw, 48px) 0;
+  max-width: 840px;
+  padding: clamp(22px, 3vw, 30px);
+}
+
+.wordpressContent :global(.bw-bloom-callout h2) {
+  font-size: clamp(2.05rem, 3vw, 3.2rem);
+  margin-top: 0;
+}
+
+.wordpressContent :global(.bw-callout-label) {
+  color: #b66f24;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.wordpressContent :global(.bw-safety-callout) {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(231, 167, 103, 0.18), transparent 22%),
+    linear-gradient(145deg, rgba(255, 249, 237, 0.96), rgba(246, 229, 207, 0.78));
+  border-left-color: #b66f24;
+}
+
+.wordpressContent :global(.bw-safety-callout strong) {
+  color: #061d20;
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.wordpressContent :global(.bw-quiz-callout) {
+  align-items: start;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(109, 150, 127, 0.2), transparent 24%),
+    linear-gradient(145deg, rgba(249, 252, 246, 0.95), rgba(236, 245, 231, 0.8));
+  border-left-color: rgba(109, 150, 127, 0.88);
+}
+
+.wordpressContent :global(.bw-quiz-callout h2) {
+  font-size: clamp(1.85rem, 2.6vw, 2.75rem);
+  margin-top: 0;
+}
+
+.wordpressContent :global(.bw-article-button) {
+  background: #061d20;
+  border-radius: 999px;
+  color: #fffaf1;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-top: 14px;
+  padding: 12px 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.wordpressContent :global(.bw-article-button:hover) {
+  background: #8a4d15;
+}
+
 .wordpressContent figure {
   margin: 28px 0;
   max-width: 840px;
+}
+
+.wordpressContent :global(.bw-article-media) {
+  background: rgba(255, 253, 248, 0.62);
+  border: 1px solid rgba(231, 167, 103, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 18px 46px rgba(70, 4, 60, 0.11);
+  overflow: hidden;
+  padding: clamp(10px, 1.5vw, 16px);
+}
+
+.wordpressContent :global(.bw-article-media--portrait) {
+  max-width: min(560px, 100%);
 }
 
 .wordpressContent img {
@@ -490,6 +580,19 @@
   box-shadow: 0 18px 46px rgba(70, 4, 60, 0.12);
   height: auto;
   max-width: 100%;
+}
+
+.wordpressContent :global(.bw-article-media img) {
+  box-shadow: none;
+  display: block;
+  width: 100%;
+}
+
+.wordpressContent :global(.bw-article-media figcaption) {
+  color: rgba(38, 27, 34, 0.66);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  margin-top: 12px;
 }
 
 .wordpressContent iframe {
@@ -512,6 +615,10 @@
   border: 1px solid rgba(38, 27, 34, 0.14);
   padding: 12px;
   text-align: left;
+}
+
+.wordpressContent :global(.bw-source-list) {
+  overflow-wrap: anywhere;
 }
 
 .snippetBox {

@@ -1,8 +1,9 @@
 import { ServicesPage } from "@/components/ServicesPage";
 
 export const metadata = {
-  title: "Pinterest Services",
-  description: "Pinterest support that starts with a Fit Call, moves through The Fruitful Path, and builds the right Pinterest system for your business.",
+  title: "Pinterest Growth for Niche Product Brands",
+  description:
+    "Fruitful Pin helps niche product brands already selling online find and build another layer of traffic, discovery, and conversions through Pinterest.",
 };
 
 export default ServicesPage;

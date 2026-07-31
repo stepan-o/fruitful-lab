@@ -6,115 +6,113 @@ import { BOOKING_URL, FIT_CALL_LABEL, PINTEREST_FIT_CHECK_URL } from "@/lib/site
 
 const FRUITFUL_PATH_CARDS = [
   {
-    title: "Where you are now",
-    body: "We look at your current Pinterest presence, content, offers, website, and marketing goals so the strategy starts from reality.",
+    title: "Fit Call",
+    body: "First, we find out if Pinterest has a real job to do. I look at what you sell, what is already working, where your traffic comes from now, and where buyers may be missing you.",
   },
   {
-    title: "Where people may be missing you",
-    body: "We look for the moments where your future customers may already be searching, planning, comparing, or saving, but not finding your brand.",
+    title: "The Fruitful Path",
+    body: "If the fit is there, this is the next step. I look at your brand as it is now and show you what should be fixed, built, tested, or prioritized before we build the wrong thing.",
   },
   {
-    title: "What should happen next",
-    body: "We clarify what Pinterest needs to support next: visibility, traffic, product discovery, email growth, sales, or a cleaner path between them.",
+    title: "Build the Momentum",
+    body: "Once we know where the opportunity is, we build the path that helps more buyers find, understand, and choose your product.",
+  },
+  {
+    title: "Refine and Grow",
+    body: "Ongoing support comes after the foundation is live, when there is already a clear path worth growing.",
   },
 ] as const;
 
 const MOMENTUM_TIERS = [
   {
-    name: "Pinterest Core Build",
-    price: "Starting at $1,500",
+    name: "The Fruitful Path",
+    price: "Flat-fee step after the Fit Call",
     badge: null,
-    description: "For brands that need their Pinterest foundation cleaned up, clarified, or built before moving into bigger growth work.",
-    supporting: null,
+    description:
+      "If the fit is there, this is the next step.",
+    supporting:
+      "I look at your brand as it is now: what is already working, where people are getting lost, where traffic, clicks, or interest may be leaking, and what buyers are searching for.",
     includes: [
-      "Pinterest account review and cleanup",
-      "Board structure",
-      "Keyword direction",
-      "Content and URL prioritization",
-      "Pin creative direction",
-      "Landing page recommendations from the Pinterest view",
-      "Next-step plan for publishing or growth",
+      "Product, offer, and traffic review",
+      "Pinterest opportunity map",
+      "Search and buyer-path gaps",
+      "Website and landing-page notes",
+      "Content and product angle priorities",
+      "What to fix, build, test, and prioritize",
+      "Recommended next step",
     ],
     bestFor:
-      "Brands that know Pinterest has potential, but the account, boards, keywords, or content direction need a clearer foundation first.",
-    footer: "A cleaner foundation before more activity.",
+      "Product brands that want to know what to fix, build, test, and prioritize next before investing in a bigger build.",
+    footer: "The growth map we use before we build.",
     featured: false,
   },
   {
-    name: "Full-Funnel Pinterest Build",
-    price: "6-month build investment starts at $9,000",
-    badge: "Recommended for most growth builds",
+    name: "Build the Momentum",
+    price: "Build projects start at $3,500",
+    badge: null,
     description:
-      "For brands that want Pinterest connected across the full path: account, keywords, boards, creative, content priorities, website pages, reporting, and next steps.",
+      "This is where we start building.",
     supporting:
-      "This is Pinterest-first. We look at the business through the Pinterest lens so the channel has a clearer role in visibility, product discovery, traffic, email growth, or sales.",
+      "Once we know where the opportunity is, we build the path that helps more buyers find, understand, and choose your product.",
     includes: [
-      "Organic Pinterest strategy",
-      "Pinterest account and board optimization",
-      "Keyword and content planning",
+      "Pinterest account and board foundation",
+      "Keyword strategy and search angles",
       "Pin creative direction and workflow",
-      "URL and landing page prioritization",
-      "Pinterest analytics and reporting",
-      "Ads readiness or campaign direction where relevant",
+      "Content and product priorities",
+      "Product and landing-page recommendations",
+      "Reporting and learning loop",
+      "Lead-generation setup",
+      "Ads preparation or campaign direction",
     ],
-    bestFor: "Brands ready to build Pinterest as a serious visibility and traffic channel, not just clean up the basics.",
-    footer: "A full Pinterest path, not scattered pin activity.",
+    bestFor:
+      "Brands that want a system they can keep using, either on their own or with continued support.",
+    footer: "A working system, not a pretty plan sitting in a folder.",
     featured: true,
   },
   {
-    name: "Full-Funnel Plus Content",
-    price: "Expanded content build starts at $12,000 / 6 months",
+    name: "Refine and Grow",
+    price: "Optional continuation after the build",
     badge: null,
     description:
-      "For brands that need Pinterest plus stronger content assets to support the path people land in after they find you.",
+      "Some brands keep going with ongoing support after Build the Momentum.",
     supporting:
-      "This is for businesses where the opportunity is there, but the missing piece is not only the Pinterest account. It may also be the blog content, lead magnet, product education, landing page messaging, or broader content path Pinterest is sending people into.",
+      "This is where we watch what people respond to, refine the creative, plan around seasons or launches, adjust the strategy, and keep the channel moving with intention.",
     includes: [
-      "Everything in Full-Funnel Pinterest Build",
-      "Select AI-assisted content assets",
-      "Content direction",
-      "AI-assisted blog content drafts",
-      "Content refreshes or content briefs",
-      "Lead magnet or quiz content direction",
-      "Landing page copy recommendations",
-      "Product education content ideas",
-      "Broader analytics review",
-      "Email-list path recommendations",
-      "Content repurposing for Pinterest",
+      "Ongoing Pinterest strategy oversight",
+      "Pin creative testing direction",
+      "Publishing workflow and optimization",
+      "Performance reporting",
+      "Seasonal and campaign recommendations",
+      "Ads refinement where relevant",
+      "Next-opportunity planning",
     ],
     bestFor:
-      "Brands that want Pinterest connected to a stronger content and conversion path, not just managed as a standalone channel.",
-    footer: "When Pinterest needs better content to send people to.",
+      "Brands that already have a clear path worth growing.",
+    footer: "The next layer after the foundation is live.",
     featured: false,
   },
 ] as const;
 
 const DIFFERENCE_CARDS = [
   {
-    title: "Product story, not just promotion",
-    body: "We look at how people first understand what you sell, why it matters, and what would make them care enough to click, save, subscribe, inquire, or buy.",
+    title: "Your traffic and content",
+    body: "I look at where people first find you, what they need to understand, what they click on, and what content supports the next step.",
   },
   {
-    title: "Creative that teaches and sells",
-    body: "The visuals are not just there to look nice. They help test angles, explain use cases, show desire, answer objections, and make the product or idea easier to remember.",
+    title: "Your products and offers",
+    body: "I look at what you sell, what people need to believe, and how the offer fits into the rest of the marketing ecosystem.",
   },
   {
-    title: "A fuller view of the customer path",
-    body: "Pinterest may be the discovery point, but we also look at what happens after the click: the page, the offer, the next step, and whether the experience supports trust.",
+    title: "Your website and email list",
+    body: "I look at where people land, what happens after they subscribe, and whether the path supports someone who compares, browses, or buys.",
   },
   {
-    title: "Learning you can reuse beyond Pinterest",
-    body: "The best insights do not stay trapped in one channel. Message tests, seasonal angles, audience signals, creative patterns, and content learnings can support your wider marketing.",
+    title: "Your customer journey and sales path",
+    body: "I look at how the work connects to launches, sales, customer decisions, and the rest of the business you are building.",
   },
 ] as const;
 
 const TRUST_LOGOS = ["Organic Prairie", "Visit Southern Spain", "Armstrong-Clark"] as const;
-
-const SERVICE_HERO_CHIPS = [
-  "What are people already looking for?",
-  "What does your business need more of?",
-  "What should Pinterest support first?",
-] as const;
 
 const PROOF_TESTIMONIALS = [
   {
@@ -125,18 +123,18 @@ const PROOF_TESTIMONIALS = [
     shows: "Pinterest can support both paid performance and organic product-page visibility.",
   },
   {
-    client: "Visit Southern Spain",
-    role: "Full-time Travel Blogger",
-    quote: "We stopped chasing trends and finally invested in Pinterest. It's now one of our top-performing platforms.",
-    outcome: "Pinterest became a top traffic driver",
-    shows: "Evergreen content can keep working when Pinterest is built around how people plan and search.",
-  },
-  {
     client: "Armstrong-Clark",
     role: "Founder",
     quote: "Our seasonal Pinterest campaigns brought a surge in brand visibility when it mattered most. We reached new audiences and saw real lift, right when demand peaked.",
     outcome: "Seasonal visibility lift + new audience reach",
     shows: "Pinterest can help brands show up during high-intent seasonal planning windows.",
+  },
+  {
+    client: "Visit Southern Spain",
+    role: "Full-time Travel Blogger",
+    quote: "We stopped chasing trends and finally invested in Pinterest. It's now one of our top-performing platforms.",
+    outcome: "Pinterest became a top traffic driver",
+    shows: "Evergreen content can keep working when Pinterest is built around how people plan and search.",
   },
 ] as const;
 
@@ -144,12 +142,12 @@ const SERVICE_FAQS = [
   {
     question: "Do I need organic Pinterest, Pinterest ads, or both?",
     answer:
-      "Not necessarily. That depends on your goals, your current content or product pages, your budget, and how much foundation is already in place. Some brands need organic first. Some are ready to test ads. Some need the account and website path cleaned up before either one makes sense.",
+      "Not necessarily. That depends on your products, current traffic, budget, website path, and what your business needs Pinterest to support first. Some brands need organic visibility. Some are ready to test ads. Some need the account and funnel path clarified before either one makes sense.",
   },
   {
     question: "What if my Pinterest account is old, messy, or inactive?",
     answer:
-      "That is common. The first step is not to panic-post more pins. We start with The Fruitful Path so we can see what is already there, what is still useful, what may be confusing Pinterest, and what needs to be cleaned up or rebuilt.",
+      "That is common. The first step is not to panic-post more pins. We start with The Fruitful Path so we can see what is already there, what is still useful, what may be confusing Pinterest, and what needs to be cleaned up, rebuilt, or connected to a better product path.",
   },
   {
     question: "Do I need a blog for Pinterest to work?",
@@ -159,17 +157,17 @@ const SERVICE_FAQS = [
   {
     question: "What is The Fruitful Path?",
     answer:
-      "The Fruitful Path is the paid strategy step after the Pinterest Fit Call. It shows where your brand can be found, where visibility is getting lost, and what to fix, build, test, or prioritize next. If you continue into Build the Momentum, your Fruitful Path investment can be credited toward the implementation.",
+      "The Fruitful Path is the flat-fee step after the Pinterest Fit Call. I look at your brand as it is, what is already working, where people are getting lost, and what needs to be fixed, built, tested, or prioritized before we build the wrong thing.",
   },
   {
     question: "Can I hire you just to manage Pinterest?",
     answer:
-      "Usually, we start with The Fruitful Path first. Pinterest management works better when the strategy is clear, the account has a purpose, and we know what the channel needs to support for your business.",
+      "Usually, we do not start with management alone. Pinterest works better when it is connected to your products, website, offers, content, and customer path. That is why we start with fit, then The Fruitful Path, then the build if the opportunity is there.",
   },
   {
     question: "What happens after The Fruitful Path?",
     answer:
-      "You can use the plan on your own, or we can move into Build the Momentum, where we turn the strategy into a working Pinterest system. This may include account structure, keywords, boards, pin creative, content planning, landing page direction, workflows, or ads preparation, depending on what your business needs.",
+      "We can move into Build the Momentum, where I turn the strategy into a working system. By the end, you have something your brand can keep using. You can take it and run it yourself, or I can keep managing and refining it with you.",
   },
   {
     question: "What if I am not ready for a call?",
@@ -184,32 +182,48 @@ export function ServicesPage() {
       <section className="services-hero">
         <div className="service-hero-inner mx-auto max-w-6xl px-5 sm:px-8">
           <div className="service-hero-copy">
-            <p className="eyebrow">Pinterest services</p>
+            <p className="eyebrow">Pinterest growth for product brands</p>
             <h1 className="brand-display mt-5 headline-hero text-[var(--heading)]">
-              Pinterest support that starts with <span className="text-gradient">the fit</span>, not the posting schedule.
+              Your product is already selling. Now let&apos;s help more of the <span className="text-gradient">right people find it.</span>
             </h1>
-            <div className="mt-6 max-w-2xl space-y-4 text-lg leading-8 text-[var(--muted)]">
+            <div className="service-hero-lede mt-6 max-w-2xl space-y-4 text-lg leading-8 text-[var(--muted)]">
               <p>
-                You do not need to know whether you need organic management, ads, cleanup, content support, or a bigger Pinterest system before you reach out.
-              </p>
-              <p>
-                We start by looking at your marketing, your goals, and whether Pinterest can help the right people find, understand, and choose your brand.
+                I use Pinterest to build another path into your brand: more discovery, more qualified traffic, and more chances for people to find you before they are ready to buy.
               </p>
             </div>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="service-hero-actions mt-8 flex flex-col gap-3 sm:flex-row">
               <Link className="button-primary inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
                 {FIT_CALL_LABEL}
               </Link>
-              <a className="button-outline" href="#how-it-works">
-                See How It Works
-              </a>
+              <Link className="button-outline" href={PINTEREST_FIT_CHECK_URL}>
+                Start the Fit Check
+              </Link>
             </div>
+            <p className="service-hero-note mt-5 max-w-xl text-sm font-semibold leading-6 text-[var(--muted)]">
+              Not sure if Pinterest is a real opportunity for your brand? Good. That is exactly what we figure out first.
+            </p>
           </div>
 
-          <div className="service-hero-strip" aria-label="What Fruitful Pin looks at first">
-            {SERVICE_HERO_CHIPS.map((chip) => (
-              <span key={chip}>{chip}</span>
-            ))}
+        </div>
+      </section>
+
+      <section className="service-problem-section bg-white">
+        <div className="service-problem-grid mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.82fr_1.18fr]">
+          <div>
+            <p className="eyebrow">The real question</p>
+            <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
+              You do not need &ldquo;to be on Pinterest&rdquo; just because <span className="text-gradient">Pinterest exists.</span>
+            </h2>
+          </div>
+          <div className="service-problem-copy space-y-4 text-base leading-7 text-[var(--muted)]">
+            <p>You need to know if Pinterest can open a real growth opportunity for your brand.</p>
+            <p>Because if most of your traffic is coming from the same few places, you may be leaving an entire discovery channel untouched.</p>
+            <p>There are buyers searching, comparing, planning, and collecting ideas before they even know your product exists.</p>
+            <p>If your brand is not showing up in that part of the journey, someone else gets there first.</p>
+            <p>That is the opportunity I look for.</p>
+            <p className="service-problem-punch">
+              Not more posting. Not more pretty pins with no plan behind them. A real path for more of the right people to find your product, understand why it matters, and move closer to buying.
+            </p>
           </div>
         </div>
       </section>
@@ -217,28 +231,28 @@ export function ServicesPage() {
       <section id="how-it-works" className="bg-white">
         <div className="service-path-section mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div className="lg:sticky lg:top-28">
-            <p className="eyebrow">The paid strategy step</p>
+            <p className="eyebrow">The offer path</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-              <span className="text-gradient">The Fruitful Path</span> shows what Pinterest should actually support.
+              First, we find out if Pinterest has a <span className="text-gradient">real job to do.</span>
             </h2>
             <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
-              <p>If the fit is there, we do not jump straight into management, ads, or more content.</p>
+              <p>I am not here to sell you a channel that does not make sense.</p>
               <p>
-                We start with The Fruitful Path, a focused strategy plan that looks at your current state, where your brand can be found, where visibility is getting lost, and what needs to happen next.
+                On the Fit Call, I look at what you sell, what is already working, where your traffic comes from now, and where buyers may be missing you.
               </p>
-              <p>You leave with a clear plan for your current state, what to fix, build, test, or prioritize next.</p>
+              <p>If I see a real opportunity, I will tell you. If I do not, I will tell you that too.</p>
             </div>
             <Link className="button-primary mt-7 inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
               Start with a Fit Call
             </Link>
             <p className="service-credit-note mt-5">
-              The Fruitful Path is the required strategy step before implementation. If you move forward into Build the Momentum, your Fruitful Path investment can be credited toward the build.
+              If the fit is there, this is the next step: The Fruitful Path.
             </p>
           </div>
 
           <div className="process-ladder service-path-timeline">
             {FRUITFUL_PATH_CARDS.map((card, index) => (
-              <article key={card.title} className="process-step-card service-path-step premium-interactive-card reveal-on-scroll">
+              <article key={card.title} className="process-step-card service-path-step reveal-on-scroll">
                 <span className="grid size-10 place-items-center rounded-full bg-[var(--brand-pink)] text-sm font-bold text-white">{index + 1}</span>
                 <div>
                   <h3 className="headline-compact text-[var(--heading)]">{card.title}</h3>
@@ -252,16 +266,19 @@ export function ServicesPage() {
 
       <section className="service-momentum-section section-swell bg-[var(--surface-soft)]">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="max-w-3xl">
+          <div className="service-momentum-copy max-w-3xl">
             <p className="eyebrow">Build the Momentum</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-              Once the path is clear, we build the Pinterest <span className="text-gradient">system your business actually needs.</span>
+              This is where we <span className="text-gradient">start building.</span>
             </h2>
             <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
-              <p>The Fruitful Path shows what needs to happen first. From there, we build around your goals, audience, offer, positioning, and buying journey.</p>
+              <p>Once we know where the opportunity is, we build the path that helps more buyers find, understand, and choose your product.</p>
+              <p>Build projects start at $3,500.</p>
               <p>
-                This is where strategy turns into structure, so Pinterest is not just another channel to manage. It becomes a system that helps people find you, understand you, and take the next step.
+                Depending on what your brand needs, this can include Pinterest foundation, keyword strategy, board direction, pin creative, content priorities, product and landing page recommendations, lead-generation setup, reporting, and ads preparation or campaign direction.
               </p>
+              <p>By the end, you are not left with a pretty plan sitting in a folder. You have a system your brand can keep using.</p>
+              <p>You can run it with your team, or I can keep managing and refining it with you.</p>
             </div>
           </div>
 
@@ -313,7 +330,7 @@ export function ServicesPage() {
           </div>
 
           <div className="fit-call-note service-package-cta mt-10 text-center">
-            <p className="text-base font-bold text-[var(--heading)]">Not sure which build fits? Start with a Pinterest Fit Call.</p>
+            <p className="text-base font-bold text-[var(--heading)]">Not sure which build fits? Start with a Fit Call.</p>
             <Link className="button-primary mt-5 inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
               {FIT_CALL_LABEL}
             </Link>
@@ -322,36 +339,34 @@ export function ServicesPage() {
       </section>
 
       <section className="service-difference-section bg-white">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="max-w-4xl">
+        <div className="service-difference-layout mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <div className="service-difference-copy max-w-4xl">
             <p className="eyebrow">What makes this different</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-              You are not just buying pins. You are building a better way for people to <span className="text-gradient">understand and choose your brand.</span>
+              I will never treat your marketing like it <span className="text-gradient">lives on one platform.</span>
             </h2>
             <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
-              <p>Pinterest is often where the bigger questions become visible.</p>
+              <p>Pinterest may be the channel I know deeply, but I am not here to &ldquo;just manage Pinterest&rdquo; in a corner.</p>
               <p>
-                Are people understanding what you sell? Do they know why it matters? Are the visuals telling the right story? Does the page answer the next question? Are people saving, clicking, comparing, or quietly moving on?
+                Your traffic, content, products, offers, website, email list, customer journey, launches, and sales path all affect whether Pinterest can actually do its job.
+              </p>
+              <p>So I look at the whole ecosystem.</p>
+              <p>
+                Where people first find you. What they need to understand. What they click. Where they land. What happens after they compare, subscribe, browse, or buy.
               </p>
               <p>
-                That is why our work looks beyond the pin itself. We use Pinterest as a discovery surface, but the strategy connects product story, customer psychology, creative direction, content, landing pages, and analytics so your brand has a clearer path from first impression to next step.
+                Because Pinterest should not become another disconnected marketing task. It should help more of the right people find the business you are already building.
               </p>
             </div>
           </div>
 
-          <div className="service-difference-grid mt-10 grid gap-4 md:grid-cols-2">
+          <div className="service-difference-grid grid gap-4 md:grid-cols-2">
             {DIFFERENCE_CARDS.map((card) => (
               <article key={card.title} className="path-card premium-interactive-card reveal-on-scroll">
                 <h3 className="headline-compact text-[var(--heading)]">{card.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{card.body}</p>
               </article>
             ))}
-          </div>
-
-          <div className="fit-call-note mt-8">
-            <p className="brand-display headline-card text-[var(--heading)]">
-              Pinterest is the channel. The real work is helping more of the right people understand, trust, and want what you offer.
-            </p>
           </div>
         </div>
       </section>
@@ -361,18 +376,18 @@ export function ServicesPage() {
           <div className="proof-snapshot-intro mx-auto max-w-3xl text-center">
             <p className="eyebrow">Proof it can work</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-              What changes when Pinterest is built around the business, not just the pins.
+              Product brands can use Pinterest to reach people before they are ready to buy.
             </h2>
             <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
               <p>
-                Different brands need Pinterest to do different jobs. Sometimes it needs to support product discovery. Sometimes it needs to bring steady traffic to evergreen content. Sometimes it needs to lift seasonal demand when timing matters most.
+                Pinterest can support the quiet moments before purchase: when people are researching, comparing, planning, and coming back later.
               </p>
-              <p>The common thread is the same: Pinterest works better when the strategy, creative, content, and next step are connected.</p>
+              <p>That is why product-brand proof matters most here.</p>
             </div>
           </div>
 
           <div className="proof-credibility-strip" aria-label="Client and industry proof">
-            <span>Trusted for Pinterest strategy across {TRUST_LOGOS.join(", ")} and specialty product brands.</span>
+            <span>Trusted for Pinterest strategy across product, food, home, travel, and specialty consumer brands including {TRUST_LOGOS.join(", ")}.</span>
           </div>
 
           <div className="proof-snapshot-grid">
@@ -404,10 +419,10 @@ export function ServicesPage() {
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">Every Pinterest path starts with clarity.</h2>
             <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
               <p>
-                After the Pinterest Fit Call, every client journey begins with The Fruitful Path. This is the paid strategy step where we look at your current state, your goals, where your brand can be found, and what Pinterest would need to support next.
+                After the Pinterest Fit Call, the next step is The Fruitful Path. This is where I look at your current state, your goals, where your product brand can be found, and what Pinterest needs to support next.
               </p>
               <p>
-                If you move forward into Build the Momentum, your Fruitful Path investment can be credited toward the build. That way, the strategy does not sit in a document. It becomes the foundation for what we create next.
+                If you move forward into Build the Momentum, that opportunity map becomes the foundation for what we create next.
               </p>
             </div>
           </div>
@@ -431,18 +446,17 @@ export function ServicesPage() {
             <div>
               <p className="eyebrow">Start here</p>
               <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-                Not sure what kind of Pinterest support you need? That is exactly why we start with a <span className="text-gradient">Fit Call.</span>
+                Before your brand keeps missing <span className="text-gradient">traffic and sales on Pinterest</span>, let&apos;s find out if the opportunity is really there.
               </h2>
               <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
-                <p>You do not need to know whether you need organic, ads, content support, cleanup, or a full Pinterest build before reaching out.</p>
-                <p>We will look at where Pinterest belongs in your marketing, whether there is a real opportunity, and whether The Fruitful Path is the right next step.</p>
+                <p>Book a Fit Call and we will look at what you sell, what is already working, where people may be missing you, and whether Pinterest is the next layer your brand should build.</p>
               </div>
 
               <div className="service-final-options">
                 <article className="service-final-option service-final-option-primary">
                   <h3 className="headline-card text-[var(--heading)]">Ready to talk it through?</h3>
                   <p>
-                    Book a Pinterest Fit Call and we&apos;ll look at your business, your goals, and whether Pinterest is worth building around right now.
+                    Book a Fit Call and we&apos;ll look at your product brand, your goals, and whether Pinterest has a real job to do.
                   </p>
                   <Link className="button-primary mt-6 inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
                     {FIT_CALL_LABEL}
@@ -460,7 +474,7 @@ export function ServicesPage() {
               </div>
 
               <p className="service-credit-note mt-8 max-w-3xl">
-                Every client journey starts with The Fruitful Path after the Fit Call. If you move forward into Build the Momentum, your Fruitful Path investment can be credited toward the build.
+                If we move forward after the Fit Call, The Fruitful Path maps the opportunity first. Build the Momentum turns the plan into a working system.
               </p>
             </div>
 

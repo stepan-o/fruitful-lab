@@ -6,16 +6,16 @@ import { BOOKING_URL, FIT_CALL_LABEL } from "@/lib/site";
 
 const REAL_PROBLEM_CARDS = [
   {
-    title: "They are already planning",
-    body: "Your future customers are searching for ideas, products, routines, trips, rooms, gifts, and solutions while they are still shaping what they may buy next.",
+    title: "They are already looking",
+    body: "Your future buyers may be searching for ideas, solutions, routines, gifts, rooms, ingredients, tools, or products like yours before they know your brand by name.",
   },
   {
-    title: "Another brand enters the buying path first",
-    body: "When your brand is not visible in those planning and comparison moments, another product, guide, or shop can become the option they trust first.",
+    title: "Your competitor shows up instead",
+    body: "When your product is not visible in those early search and planning moments, another brand or product can become the option they click, compare, save, or buy.",
   },
   {
-    title: "More pins will not fix a blurry path",
-    body: "Pinterest works better when your search language, visuals, boards, pages, and next steps all support the customer journey from idea to purchase.",
+    title: "Visibility needs a strategy",
+    body: "Your product needs to show up for the right searches, with creative that matches what buyers are trying to decide.",
   },
 ] as const;
 
@@ -44,43 +44,43 @@ const VISIBILITY_CARDS = [
 
 const FIT_CARDS = [
   {
-    title: "Product brands",
+    title: "Product brands with a clear use case",
     body: "For brands with products people research, compare, save, gift, style, use, or plan around before they buy.",
     image: "/assets/home/travel%20product%20brand.png",
     imageAlt: "Editorial product and travel brand visuals arranged for discovery.",
   },
   {
-    title: "Content-led businesses",
-    body: "For brands with articles, guides, recipes, tutorials, resources, or ideas that should keep bringing people back long after publish day.",
+    title: "Products that need context",
+    body: "For offers that are easier to choose once people understand the use case, benefits, ingredients, materials, story, routine, or transformation.",
     image: "/assets/home/blogger%20brand.png",
-    imageAlt: "Editorial workspace for a content-led business with articles and ideas.",
+    imageAlt: "Editorial workspace for product content, resources, and launch planning.",
   },
   {
-    title: "Specialty brands with a longer buying path",
-    body: "For brands that need education, trust, inspiration, or repeated touchpoints before someone is ready to buy, subscribe, inquire, or come back.",
+    title: "Brands ready for another growth channel",
+    body: "For product brands that are already selling online and want more of the right people to find them before competitors do.",
     image: "/assets/home/product%20center.png",
     imageAlt: "Premium product-centered brand scene for a thoughtful buying path.",
   },
 ] as const;
 
 const SEARCHABLE_THINGS = [
-  "Products",
-  "Blog posts",
-  "Guides",
-  "Recipes",
-  "Room ideas",
-  "Trip itineraries",
-  "Routines",
-  "Gifts",
-  "Tutorials",
-  "Offers",
+  "Home goods",
+  "Baby products",
+  "Specialty toys",
+  "Premium food",
+  "Unique beauty",
+  "Wellness products",
+  "Home improvement",
+  "Giftable products",
+  "Seasonal products",
+  "Problem-solving products",
 ] as const;
 
 const WORK_STAGES = [
   {
     title: "Pinterest Fit Call",
     body: [
-      "We start with a conversation to see whether Pinterest is a smart next move for your business, your audience, and what you want to grow.",
+      "We start with a conversation to see whether Pinterest is a smart next move for your product, your audience, and what you want to grow.",
       "This is where we look for fit before we talk about a bigger plan.",
     ],
     footer: "Clear first. Commitment second.",
@@ -88,20 +88,20 @@ const WORK_STAGES = [
   {
     title: "The Fruitful Path",
     body: [
-      "If the fit is there, we move into the paid strategy step.",
-      "The Fruitful Path shows where your brand can be found, where visibility is getting lost, and what needs to happen before Pinterest can support more traffic, email growth, product discovery, or sales.",
-      "You leave with a clear plan for your current state, what to fix, build, test, or prioritize next.",
+      "If the fit is there, this is the next step.",
+      "I look at your business as it is: what is working, what is not, where people may already be searching, and where your current path is making it harder for them to choose you.",
+      "You leave with a clear plan for what to fix, build, test, or prioritize next so Pinterest is tied to a real business opportunity.",
     ],
-    footer: "Strategy before guesswork.",
+    footer: "Opportunity before guesswork.",
   },
   {
     title: "Build the Momentum",
     body: [
-      "This is where we turn The Fruitful Path into a system your brand can actually grow with.",
-      "We build the Pinterest foundation around what makes your business specific: your products, content, audience, positioning, buying journey, and next best step for the people finding you.",
-      "Depending on what the strategy calls for, this can include account structure, keywords, boards, pin creative, content planning, landing page direction, workflows, and ads preparation.",
+      "This is where we start building.",
+      "We turn The Fruitful Path into a system your brand can actually use: Pinterest foundation, keyword strategy, board direction, pin creative, content priorities, product and landing page recommendations, lead-generation setup, reporting, and ads preparation or campaign direction when it makes sense.",
+      "By the end, you are not left with a pretty plan sitting in a folder. You have a path your brand can keep using.",
     ],
-    footer: "Built to fit, not burn out.",
+    footer: "Built to keep working.",
   },
   {
     title: "Refine and Grow",
@@ -137,7 +137,7 @@ const PROOF_TESTIMONIALS = [
   },
 ] as const;
 
-const CREDIBILITY_RIBBON_COPY = "Pinterest strategy across food, travel, home, baby, wellness, education, and specialty product brands.";
+const CREDIBILITY_RIBBON_COPY = "Pinterest strategy across food, home, baby, wellness, education, travel, and specialty product brands.";
 
 const HERO_SEARCH_RESULTS = [
   {
@@ -225,7 +225,7 @@ export default function HomePage() {
               <span className="home-hero-line home-hero-brand-line"><span className="text-gradient home-hero-gradient">your brand?</span></span>
             </h1>
             <p className="home-hero-lede mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              We help your brand get found on Pinterest while people are planning their next purchase, project, trip, meal, room, routine, or idea.
+              I use Pinterest to help qualified buyers discover your product while they&apos;re searching, comparing, planning, and getting ready to buy.
             </p>
             <div className="home-hero-actions mt-9 flex flex-col gap-3 sm:flex-row">
               <Link className="button-primary inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
@@ -248,14 +248,14 @@ export default function HomePage() {
             <div className="real-problem-copy">
               <p className="eyebrow">The real problem</p>
               <h2 className="brand-display headline-section text-[var(--heading)]">
-                Your brand may be showing up <span className="text-gradient">too late</span>, or not at all.
+                Your product is already selling. Pinterest may be the <span className="text-gradient">discovery channel</span> you have not built yet.
               </h2>
               <div className="real-problem-body">
                 <p>
-                  People do not only come to Pinterest when they are ready to buy today. They come when they are imagining, comparing, collecting ideas, planning projects, and quietly deciding what they want next.
+                  People do not only look for products when they are ready to buy today. They search, compare, plan, collect ideas, and quietly decide what they want before they ever land on a product page.
                 </p>
                 <p>
-                  If your brand is not showing up in those moments, you are not just missing clicks. You may be missing the chance to become the brand they remember first.
+                  If your brand is not showing up in those moments, another product gets the click, the save, the comparison, and eventually the sale.
                 </p>
               </div>
             </div>
@@ -298,10 +298,10 @@ export default function HomePage() {
             <div className="visibility-system-copy">
               <p>A pin can get attention and still do very little for your business.</p>
               <p>
-                That is why we do not look at Pinterest like a separate little task on your marketing list. We look at the bigger picture: what you sell, who needs to find it, what they are already looking for, where they land, and what would make the next step feel natural.
+                That is why I do not look at Pinterest like one more platform to manage. I look at what you sell, who needs to find it, what they need to understand, where they land, and what would make the next step feel natural.
               </p>
               <p>
-                Because being seen is not enough. Your brand needs to be found in the right moment, remembered for the right reason, and supported by a path that actually makes sense.
+                Because being seen is not enough. Your product needs to be found in the right moment, understood for the right reason, and supported by a path that makes people want to keep going.
               </p>
             </div>
           </div>
@@ -330,16 +330,16 @@ export default function HomePage() {
             <div>
               <p className="eyebrow">Who this is for</p>
               <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-                For brands with something people are <span className="text-gradient">already looking for.</span>
+                For product brands with something people need to <span className="text-gradient">find, understand, and choose.</span>
               </h2>
             </div>
             <div className="audience-fit-copy">
-              <p>Pinterest works best when your business has something people naturally search for, save, compare, plan, or come back to later.</p>
+              <p>Pinterest works best when your product is something people naturally search for, compare, save, plan around, gift, use, style, improve, or come back to later.</p>
               <p>
-                That might be a product, a blog post, a guide, a recipe, a room idea, a trip itinerary, a routine, a gift, a tutorial, or an offer that needs more of the right people to find it.
+                That might be home goods, baby products, specialty toys, premium food products, unique beauty products, wellness products, home improvement products, or another product people need a little more context to understand and want.
               </p>
               <p>
-                This is not about posting for the sake of posting. It is about helping the right people discover your brand at the moment they are already open to ideas.
+                This is not about posting for the sake of posting. It is about helping more of the right people discover your product while they are already open to ideas.
               </p>
             </div>
           </div>
@@ -385,13 +385,13 @@ export default function HomePage() {
             <div>
               <p className="eyebrow">How we work</p>
               <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-                Start with <span className="text-gradient">the path</span> before building more Pinterest.
+                Start with fit. <span className="text-gradient">Then build the path.</span>
               </h2>
             </div>
             <div className="work-roadmap-lede">
               <p>Before we recommend management, ads, or ongoing support, we look at whether Pinterest actually makes sense for your business right now.</p>
               <p>
-                The goal is not to sell you more pins. The goal is to understand where people may already be looking for what you offer, where they may be missing you, and what kind of Pinterest work would be worth building next.
+                The goal is not to sell you more pins. The goal is to understand what people may already be searching for, what your site needs to support, and where Pinterest could become another growth channel for your brand.
               </p>
             </div>
           </div>
@@ -426,7 +426,7 @@ export default function HomePage() {
               What changes when Pinterest has a <span className="text-gradient">clearer job.</span>
             </h2>
             <p>
-              The goal is not more Pinterest activity for the sake of activity. It is helping Pinterest support something your business actually needs: visibility, product discovery, better traffic, seasonal demand, or content that keeps working longer.
+              The goal is not more Pinterest activity for the sake of activity. It is helping Pinterest support something your business actually needs: product discovery, better traffic, seasonal demand, or more people finding the product before they are ready to buy.
             </p>
           </div>
 
@@ -457,7 +457,7 @@ export default function HomePage() {
           <div className="home-fit-check-copy">
             <p className="eyebrow">Pinterest Fit Check</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-              See if Pinterest is <span className="text-gradient">worth building around</span> right now.
+              See if Pinterest is a <span className="text-gradient">smart next move</span> for your brand.
             </h2>
             <p>
               Answer seven quick questions about your offer, content, website, and goals. You&apos;ll get an immediate direction, with the option to send your result to your inbox.

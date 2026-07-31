@@ -39,7 +39,7 @@ export function SiteFooter() {
               className="site-footer-logo"
             />
           </div>
-          <p className="mt-4 max-w-md leading-6">Warm Pinterest strategy for product brands and content-led businesses that want more than pretty pins.</p>
+          <p className="mt-4 max-w-md leading-6">Strategic Pinterest growth for product brands with something people need to find, understand, and choose.</p>
           <div className="footer-certification-image mt-5">
             <Image
               src={BRAND_ASSETS.pinterestCertifications}

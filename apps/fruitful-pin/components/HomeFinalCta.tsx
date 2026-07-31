@@ -45,7 +45,7 @@ export function HomeFinalCta({ bookingUrl, fitCallLabel }: HomeFinalCtaProps) {
             Not sure <span className="text-gradient">where Pinterest fits</span>? That is exactly where we start.
           </h2>
           <p>
-            You do not need to know whether you need organic management, ads, a cleaner account, or a better content path before you reach out. Start with the option that matches where you are right now.
+            You do not need to know whether you need organic management, ads, a cleaner account, or a better content path before you reach out. We start by looking at the product, the audience, the site, and whether Pinterest is a real opportunity.
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export function HomeFinalCta({ bookingUrl, fitCallLabel }: HomeFinalCtaProps) {
           <article className="home-final-cta-option home-final-cta-option-primary">
             <span className="home-final-cta-option-label">Primary path</span>
             <h3 className="headline-card text-[var(--heading)]">Ready for a conversation?</h3>
-            <p>Book a Pinterest Fit Call and we&apos;ll look at whether Pinterest makes sense for your business, your audience, and what you want to grow.</p>
+            <p>Book a Pinterest Fit Call and we&apos;ll look at whether Pinterest makes sense for your product, your audience, and what you want to grow.</p>
             <Link className="button-primary mt-6 inline-flex min-h-12 items-center justify-center px-6" href={bookingUrl}>
               {fitCallLabel}
             </Link>

@@ -326,7 +326,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       <p className="eyebrow">Start here</p>
                       <h3 className="brand-display mt-2 headline-card text-[var(--heading)]">Want Pinterest ideas you can actually use?</h3>
                       <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                        Join the list for practical Pinterest strategy notes, case studies, and resource drops for content-led brands.
+                        Join the list for practical Pinterest strategy notes, case studies, and resource drops for product brands.
                       </p>
                       <SubscribeForm
                         formType="newsletter"
@@ -496,7 +496,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
                 <h2 className="brand-display mt-5 headline-card text-[var(--heading)]">I&apos;m Susy, your Pinterest strategy brain.</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                  I help content creators and specialty brands build long-term traffic and sales without turning Pinterest into another noisy chore.
+                  I help product brands use Pinterest for qualified discovery, traffic, and sales support.
                 </p>
                 <Link className="mt-5 inline-flex text-sm font-bold text-[var(--brand-pink)]" href="/about">
                   Learn more
@@ -517,7 +517,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <p className="eyebrow mt-5">Free guide</p>
                 <h2 className="brand-display mt-3 headline-card text-[var(--heading)]">Grab the free Pinterest strategy guide.</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                  Get a low-pressure starting point for choosing the Pinterest path that fits your content, offer, and stage.
+                  Get a low-pressure starting point for choosing the Pinterest path that fits your product, content, and stage.
                 </p>
                 <SubscribeForm
                   formType="resource-interest"

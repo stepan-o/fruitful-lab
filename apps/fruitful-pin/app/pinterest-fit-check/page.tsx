@@ -4,7 +4,7 @@ import { BOOKING_URL, FIT_CALL_LABEL } from "@/lib/site";
 
 export const metadata = {
   title: "Pinterest Fit Check",
-  description: "Take the Fruitful Pin Pinterest Fit Check to see whether Pinterest is a strong, promising, or later-stage move for your brand.",
+  description: "Take the Fruitful Pin Pinterest Fit Check to see whether Pinterest could be a real revenue opportunity for your brand.",
 };
 
 const resultPaths = [
@@ -30,14 +30,14 @@ export default function PinterestFitCheckPage() {
           <div>
             <p className="eyebrow">Pinterest Fit Check</p>
             <h1 className="brand-display mt-4 headline-hero text-[var(--heading)]">
-              Is Pinterest a smart next move, or a <span className="text-gradient">later project?</span>
+              Is Pinterest your next <span className="text-gradient">revenue opportunity?</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
               Use this quick diagnostic before you invest in a Pinterest plan. It looks at the pieces that make traffic useful: offer readiness, content assets, website clarity, goals, and support timing.
             </p>
             <div className="fit-check-note mt-8">
               <span>How to use it</span>
-              <p>Take the Fit Check first, then use the result to decide whether to book a Fit Call, read deeper resources, or strengthen the foundation before Pinterest becomes the main move.</p>
+              <p>Take the Fit Check first, then use the result to decide whether to book a Fit Call, read deeper resources, or strengthen the foundation before Pinterest becomes a real growth channel.</p>
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 export const SITE_NAME = "Fruitful Pin";
 export const CANONICAL_URL = "https://fruitfulpin.com";
 export const SITE_DESCRIPTION =
-  "Warm, strategic Pinterest marketing for brands that want their best content, products, and offers to keep getting discovered.";
+  "Pinterest strategy for product brands that want more qualified buyers to discover, understand, and choose what they sell.";
 export const FIT_CALL_LABEL = "Book a Fit Call";
 export const BOOKING_URL = "/contact";
 export const PINTEREST_FIT_CHECK_URL = "/pinterest-fit-check";

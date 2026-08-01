@@ -105,10 +105,10 @@ export function PinterestFitAssessmentEmbed({ intro = "full" }: PinterestFitAsse
       <section className="fit-assessment-card zoom-on-scroll" aria-labelledby="fit-assessment-title">
         <p className="eyebrow">Pinterest Fit Check</p>
         <h2 id="fit-assessment-title" className="brand-display mt-3 headline-card text-[var(--heading)]">
-          See if Pinterest is worth building around right now.
+          See if Pinterest is a real opportunity right now.
         </h2>
         <p className="mt-4 text-sm leading-6 text-[var(--muted)]">
-          Answer seven quick questions about your offer, content, website, and goals. You&apos;ll get an immediate direction, with the option to send your result to your inbox.
+          Answer seven quick questions about your product, content, website, and goals. You&apos;ll get an immediate direction, with the option to send your result to your inbox.
         </p>
         <div className="fit-assessment-mini-list mt-5" aria-label="Assessment details">
           <span>Takes about 2 minutes</span>
@@ -146,7 +146,7 @@ export function PinterestFitAssessmentEmbed({ intro = "full" }: PinterestFitAsse
         <div className="fit-assessment-email-save mt-6">
           <h3 className="headline-compact text-[var(--heading)]">Want to keep this result?</h3>
           <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-            I&apos;ll send your Pinterest Fit Check result to your inbox, along with a simple next-step note so you can revisit whether Pinterest is worth building, fixing, or saving for later.
+            I&apos;ll send your Pinterest Fit Check result to your inbox, along with a simple next-step note so you can revisit whether Pinterest is a real opportunity, something to fix first, or something to save for later.
           </p>
           <SubscribeForm
             formType="fit-check"

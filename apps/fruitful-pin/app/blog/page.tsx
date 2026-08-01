@@ -8,7 +8,7 @@ import { BOOKING_URL, FIT_CALL_LABEL, PINTEREST_FIT_CHECK_URL } from "@/lib/site
 
 export const metadata = {
   title: "Blog",
-  description: "Simple Pinterest strategy notes for brands that want to get found, remembered, and chosen.",
+  description: "Simple Pinterest strategy notes for product brands that want more qualified buyers to discover, understand, and choose what they sell.",
 };
 
 const HEADSHOT = BRAND_ASSETS.founderExpert;
@@ -47,7 +47,7 @@ export default function BlogPage() {
               Learn how Pinterest can help the right people <span className="text-gradient">find your brand.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              Read simple, strategic notes on Pinterest marketing, content, ads, and the path from being found to being remembered.
+              Read simple, strategic notes on Pinterest, product discovery, traffic, ads, and how to make the channel support the business behind the product.
             </p>
           </div>
 
@@ -111,9 +111,9 @@ export default function BlogPage() {
 
               <section className="blog-sidebar-card blog-fit-check-card reveal-on-scroll">
                 <p className="eyebrow">Start here</p>
-                <h2 className="brand-display mt-3 headline-card text-[var(--heading)]">Not sure if Pinterest is worth building around?</h2>
+                <h2 className="brand-display mt-3 headline-card text-[var(--heading)]">Not sure if Pinterest is a real opportunity for your brand?</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                  Take the Pinterest Fit Check and get a quick direction based on your offer, content, website, and goals.
+                  Take the Pinterest Fit Check and get a quick direction based on your product, content, website, and goals.
                 </p>
                 <div className="blog-mini-badges mt-4" aria-label="Pinterest Fit Check details">
                   <span>2 minutes</span>
@@ -135,9 +135,9 @@ export default function BlogPage() {
                     sizes="(min-width: 1024px) 16vw, 48vw"
                   />
                 </div>
-                <h2 className="brand-display mt-5 headline-card text-[var(--heading)]">I&apos;m Susy. I help brands make Pinterest make sense.</h2>
+                <h2 className="brand-display mt-5 headline-card text-[var(--heading)]">I&apos;m Susy. I help product brands turn Pinterest into a real discovery channel.</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                  I work with product brands and content-led businesses that want more than pretty pins, random saves, or another marketing chore.
+                  I work with product brands that want Pinterest connected to discovery, traffic, and the bigger business picture.
                 </p>
                 <Link className="mt-5 inline-flex text-sm font-bold text-[var(--brand-pink)]" href="/about">
                   Learn more
@@ -203,7 +203,7 @@ export default function BlogPage() {
             Want to know what this could look like for <span className="text-gradient">your brand?</span>
           </h2>
           <p className="mt-5 max-w-3xl text-base leading-7 text-[var(--muted)]">
-            Start with a Fit Call and we&apos;ll look at your business, your goals, and whether Pinterest is worth building around right now.
+            Start with a Fit Call and we&apos;ll look at your product, your current traffic, your website, your goals, and whether Pinterest is a real opportunity right now.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link className="button-primary inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>

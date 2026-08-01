@@ -19,7 +19,7 @@ const RIBBON_ITEMS = ["Find the next step", "Book a Fit Call", "Pinterest strate
 
 export const metadata = {
   title: "Contact",
-  description: "Book a Fruitful Pin Fit Call, send a message, or start the Pinterest Fit Check if you are not ready for a call yet.",
+  description: "Book a Fruitful Pin Fit Call to see whether Pinterest can help your product brand reach more qualified buyers, or send Susy a message.",
 };
 
 export default function ContactPage() {
@@ -29,13 +29,13 @@ export default function ContactPage() {
       <section className="contact-flow">
         <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 lg:py-18">
           <div className="contact-flow-copy reveal-on-scroll">
-            <p className="eyebrow">Contact</p>
+            <p className="eyebrow">Fit Call</p>
             <h1 className="brand-display mt-4 max-w-4xl headline-hero text-[var(--heading)]">
-              Let&apos;s figure out what <span className="text-gradient">Pinterest could do</span> for your brand.
+              Let&apos;s find the Pinterest <span className="text-gradient">opportunity</span> your product brand may be missing.
             </h1>
             <div className="mt-6 max-w-2xl space-y-4 text-lg leading-8 text-[var(--muted)]">
-              <p>Bring the questions, the half-formed ideas, or the quiet feeling that Pinterest should be doing more.</p>
-              <p>This is where we look at your business, your goals, and whether Pinterest is worth building around right now.</p>
+              <p>Bring the questions, the half-formed ideas, or the quiet feeling that Pinterest could become more than another marketing task.</p>
+              <p>This is where I look at your product, your website, your current traffic, and whether Pinterest is a real opportunity right now.</p>
             </div>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a className="button-primary inline-flex min-h-12 items-center justify-center px-6" href="#book-fit-call">
@@ -54,7 +54,7 @@ export default function ContactPage() {
             <div>
               <p className="eyebrow">Hi, I&apos;m Susy</p>
               <p className="mt-2 text-base leading-7 text-[var(--muted)]">
-                I&apos;ll help you look at Pinterest in the context of your business, not as another content chore. If there is a fit, we will choose the cleanest next step together.
+                I&apos;ll help you look at Pinterest in the context of your product, website, email list, customer journey, and sales goals. If there is a fit, we will choose the cleanest next step together.
               </p>
               <p className="mt-3 text-sm font-bold text-[var(--brand-rust)]">No pressure to know the answer before the call.</p>
             </div>
@@ -73,8 +73,8 @@ export default function ContactPage() {
               <p className="eyebrow">Book a Fit Call</p>
               <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">Start with a conversation, not a package.</h2>
               <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
-                <p>The Fit Call is for figuring out whether Pinterest makes sense for your business right now and what the next right step could be.</p>
-                <p>If there is a fit, the next step is usually The Fruitful Path, the paid strategy step before implementation.</p>
+                <p>The Fit Call is for figuring out whether Pinterest can help more qualified buyers discover your product and what the next right step should be.</p>
+                <p>If there is a fit, the next step is The Fruitful Path: a focused, paid strategy step that maps the opportunity before we build.</p>
               </div>
             </div>
             <div className="contact-calendar-shell">
@@ -117,7 +117,7 @@ export default function ContactPage() {
                 Start with the Pinterest <span className="text-gradient">Fit Check.</span>
               </h2>
               <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-                Answer seven quick questions about your offer, content, website, and goals. You&apos;ll get an immediate direction, with the option to send your result to your inbox.
+                Answer seven quick questions about your product, content, website, and goals. You&apos;ll get an immediate direction, with the option to send your result to your inbox.
               </p>
             </div>
             <Link className="button-outline" href={PINTEREST_FIT_CHECK_URL}>

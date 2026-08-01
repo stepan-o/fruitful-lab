@@ -8,7 +8,7 @@ import { BOOKING_URL, FIT_CALL_LABEL, PINTEREST_FIT_CHECK_URL } from "@/lib/site
 export const metadata = {
   title: "About",
   description:
-    "Meet Susy, the Pinterest strategist behind Fruitful Pin, and learn how the work helps product brands and content-led businesses get found, understood, and chosen.",
+    "Meet Susy Cid, the Pinterest strategist behind Fruitful Pin, and learn how product brands can reach more qualified buyers through Pinterest.",
 };
 
 type ValueIconName = "strategy" | "data" | "global" | "communication" | "creative" | "learning";
@@ -56,8 +56,8 @@ const PROOF_CARDS = [
     body: "Fruitful Pin is built around Pinterest strategy, not generic social media management.",
   },
   {
-    title: "Across different business models",
-    body: "Experience across product brands, publishers, bloggers, educators, and specialty businesses.",
+    title: "Across product categories",
+    body: "Experience across food, home, baby, wellness, education, travel, and specialty product brands.",
   },
   {
     title: "Organic and paid perspective",
@@ -164,11 +164,11 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:px-8 lg:py-20">
           <p className="eyebrow">About Fruitful Pin</p>
           <h1 className="brand-display mt-5 headline-hero text-[var(--heading)]">
-            We don&apos;t just pin. We help the right people <span className="text-gradient">find, understand, and choose</span> your brand.
+            I help product brands use Pinterest to reach more of the <span className="text-gradient">right buyers.</span>
           </h1>
           <AccentCurve className="accent-curve-center mt-5" />
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-            Fruitful Pin helps product brands and content-led businesses turn Pinterest into a clearer path from first discovery to real business action, with strategy, creative direction, content thinking, and follow-through.
+            Fruitful Pin is led by Susy Cid, a Pinterest strategist who looks at the whole marketing system: your product, website, content, email list, customer journey, and sales goals. Pinterest is the channel I know deeply. The real work is making it connect to the rest of the business so more qualified buyers can discover, understand, and choose your product.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <Link className="button-primary inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
@@ -186,15 +186,15 @@ export default function AboutPage() {
           <div>
             <p className="eyebrow">The story</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-              I thought I was managing Pinterest. I was really learning how people <span className="text-gradient">discover brands.</span>
+              I thought I was managing Pinterest. I was really learning how people <span className="text-gradient">discover products.</span>
             </h2>
             <div className="mt-6 space-y-4 text-base leading-7 text-[var(--muted)]">
               <p>Fruitful Pin started as a hands-on experiment: managing Pinterest for a small bean-to-bar chocolate maker.</p>
               <p>
-                That work showed Susy something that still shapes the agency today: Pinterest works better when it is connected to the whole path. What people are looking for. What they need to understand. What makes them care. Where they land. What helps them take the next step.
+                That work taught me something I still believe: Pinterest only works when it connects to the bigger picture. What people are searching for. What they need to understand. Where they land. What helps them decide.
               </p>
               <p>
-                Today, Fruitful Pin helps product brands and content-led businesses use Pinterest as more than a place to post. The work brings together strategy, creative direction, content, analytics, and customer psychology so more of the right people can find, understand, and choose your brand.
+                Today, I help product brands tap into Pinterest as another discovery channel, not another random marketing task. The work brings together strategy, creative direction, content, analytics, and customer psychology so more of the right people can find your product before they choose someone else.
               </p>
             </div>
           </div>
@@ -216,15 +216,16 @@ export default function AboutPage() {
       <section className="section-swell bg-[var(--surface-soft)]">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start lg:py-20">
           <div>
-            <p className="eyebrow">Who we work with</p>
+            <p className="eyebrow">Who this is for</p>
             <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">
-              Pinterest is strongest when your audience is already <span className="text-gradient">planning, saving, and deciding.</span>
+              For product brands with something people need to <span className="text-gradient">find, understand, and choose.</span>
             </h2>
             <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
-              <p>If people naturally search for, compare, save, plan, or come back to what you offer, Pinterest may have a real role to play.</p>
+              <p>Pinterest is strongest when your product fits how people naturally search, compare, plan, save, or shop.</p>
               <p>
-                That might mean products, recipes, guides, tutorials, room ideas, trips, routines, gifts, or content that helps someone make a decision before they buy, subscribe, inquire, or come back later.
+                That might mean home goods, baby products, specialty toys, premium food products, unique beauty products, wellness products, home improvement products, or another product people need a little context to understand and want.
               </p>
+              <p>If your product is already selling, Pinterest may be the next channel that helps more qualified buyers discover it.</p>
             </div>
           </div>
 
@@ -294,9 +295,9 @@ export default function AboutPage() {
               Pinterest is my zone of genius, but the real work is understanding <span className="text-gradient">how people choose.</span>
             </h2>
             <div className="mt-6 space-y-4 text-base leading-7 text-[var(--muted)]">
-              <p>I help product brands and content-led businesses make Pinterest feel less random and more useful.</p>
+              <p>I help product brands tap into a new pool of qualified buyers by making Pinterest work with the rest of the business, not off in a corner by itself.</p>
               <p>
-                My work sits at the intersection of Pinterest strategy, creative direction, customer psychology, content, analytics, and the very practical question every founder cares about: how do the right people find us, understand us, and choose us?
+                My work sits at the intersection of Pinterest strategy, creative direction, customer psychology, content, analytics, and the practical question every founder cares about: how do more of the right people find us, understand us, trust us, and buy?
               </p>
               <p>
                 Fruitful Pin is led by me, with a small network of designers, data support, and specialists brought in when the project needs it. You get strategic direction without the bloated agency feeling.
@@ -325,7 +326,7 @@ export default function AboutPage() {
               <p className="eyebrow">Proof behind the work</p>
               <h2 className="brand-display mt-3 headline-section text-[var(--heading)]">Certified, tested, and shaped by real client strategy.</h2>
               <p className="mt-5 text-base leading-7 text-[var(--muted)]">
-                Pinterest training matters, but the real proof is in the client work: product launches, seasonal campaigns, blog growth, account rebuilds, ad testing, and the messy middle where strategy has to meet real business goals.
+                Pinterest training matters, but the real proof is in the client work: product launches, seasonal campaigns, account rebuilds, ad testing, and the messy middle where strategy has to meet real business goals.
               </p>
             </div>
             <div className="certification-ribbon-row">
@@ -350,12 +351,12 @@ export default function AboutPage() {
 
           <div
             className="about-credibility-strip mt-8"
-            aria-label="Pinterest strategy across food, travel, home, baby, wellness, education, and specialty product brands."
+            aria-label="Pinterest strategy across food, home, baby, wellness, education, travel, and specialty product brands."
           >
             <div className="about-credibility-track" aria-hidden="true">
               {Array.from({ length: 4 }).map((_, index) => (
                 <span key={index} className="about-credibility-pill">
-                  Pinterest strategy across food, travel, home, baby, wellness, education, and specialty product brands.
+                  Pinterest strategy across food, home, baby, wellness, education, travel, and specialty product brands.
                 </span>
               ))}
             </div>
@@ -399,9 +400,9 @@ export default function AboutPage() {
               Not sure <span className="text-gradient">where Pinterest fits</span>? That is exactly where we start.
             </h2>
             <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
-              <p>Book a Pinterest Fit Call and we&apos;ll look at your business, your goals, and whether Pinterest is worth building around right now.</p>
+              <p>Book a Pinterest Fit Call and we&apos;ll look at your product, your current traffic, your website, your goals, and whether Pinterest is a real opportunity right now.</p>
               <p>
-                You do not need to know whether you need organic, ads, cleanup, content support, or The Fruitful Path yet. We start with fit first.
+                You do not need to know whether you need organic, ads, cleanup, content support, The Fruitful Path, or a bigger build yet. We start with fit first.
               </p>
             </div>
           </div>
@@ -410,7 +411,7 @@ export default function AboutPage() {
             <article className="path-card reveal-on-scroll">
               <h3 className="headline-card text-[var(--heading)]">Ready for a conversation?</h3>
               <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                Book a Pinterest Fit Call and we&apos;ll look at whether Pinterest makes sense for your business, your audience, and what you want to grow.
+                Book a Pinterest Fit Call and we&apos;ll look at whether Pinterest makes sense for your product, your audience, and what you want to grow.
               </p>
               <Link className="button-primary mt-6 inline-flex min-h-12 items-center justify-center px-6" href={BOOKING_URL}>
                 {FIT_CALL_LABEL}

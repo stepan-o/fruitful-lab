@@ -48,7 +48,7 @@ const MOMENTUM_TIERS = [
   },
   {
     name: "Build the Momentum",
-    price: "Build projects start at $3,500",
+    price: "Build projects start at $2,000",
     badge: null,
     description:
       "This is where we start building.",
@@ -273,7 +273,7 @@ export function ServicesPage() {
             </h2>
             <div className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)]">
               <p>Once we know where the opportunity is, we build the path that helps more buyers find, understand, and choose your product.</p>
-              <p>Build projects start at $3,500.</p>
+              <p>Build projects start at $2,000.</p>
               <p>
                 Depending on what your brand needs, this can include Pinterest foundation, keyword strategy, board direction, pin creative, content priorities, product and landing page recommendations, lead-generation setup, reporting, and ads preparation or campaign direction.
               </p>

@@ -41,6 +41,34 @@ type EspacioGourmetOrderFormProps = {
     initialDeliveryDates: DeliveryDateOption[];
 };
 
+const productPhotos = [
+    {
+        src: "/images/espacio-gourmet/cochinita-pot.webp",
+        alt: "Cochinita pibil recién salida del horno en una olla",
+        title: "Cochinita recién salida del horno",
+    },
+    {
+        src: "/images/espacio-gourmet/cochinita-shredded.webp",
+        alt: "Cochinita pibil desmenuzada en una olla",
+        title: "Carne suave y desmenuzada",
+    },
+    {
+        src: "/images/espacio-gourmet/cebolla-morada.webp",
+        alt: "Cebollita morada preparada en un plato",
+        title: "Cebollita morada preparada",
+    },
+    {
+        src: "/images/espacio-gourmet/salsa-habanero.webp",
+        alt: "Salsa de chile habanero en un plato",
+        title: "Salsa de chile habanero",
+    },
+    {
+        src: "/images/espacio-gourmet/package.webp",
+        alt: "Bote de un kilo de cochinita pibil con cebollita y salsa",
+        title: "Presentación de 1 kilo",
+    },
+];
+
 export default function EspacioGourmetOrderForm({ initialDeliveryDates }: EspacioGourmetOrderFormProps) {
     const [deliveryDates] = useState<DeliveryDateOption[]>(initialDeliveryDates);
     const [customerName, setCustomerName] = useState("");
@@ -331,22 +359,30 @@ export default function EspacioGourmetOrderForm({ initialDeliveryDates }: Espaci
                     </button>
                 </form>
 
-                <div className="mt-6 overflow-hidden rounded-lg border border-[#ead7c6] bg-white">
-                    <div className="aspect-[4/3] overflow-hidden">
-                        <Image
-                            src="/images/espacio-gourmet/package.webp"
-                            alt="Bote de un kilo de cochinita pibil con cebollita y salsa"
-                            width={1200}
-                            height={900}
-                            sizes="(max-width: 640px) 100vw, 576px"
-                            className="h-full w-full object-cover"
-                            priority
-                        />
-                    </div>
-                    <div className="px-4 py-3">
-                        <p className="text-sm font-bold text-[#25180f]">Bote de 1 kilo: {formatMxCurrency(ESPACIO_GOURMET_ORDER.unitPrice)}</p>
-                        <p className="mt-1 text-sm text-[#6d5446]">Con cebollita preparada y salsa de chile habanero.</p>
-                    </div>
+                <div className="mt-6 space-y-3" aria-label="Fotos de la cochinita pibil">
+                    {productPhotos.map((photo) => (
+                        <div key={photo.src} className="overflow-hidden rounded-lg border border-[#ead7c6] bg-white">
+                            <div className="aspect-[4/3] overflow-hidden">
+                                <Image
+                                    src={photo.src}
+                                    alt={photo.alt}
+                                    width={1200}
+                                    height={900}
+                                    sizes="(max-width: 640px) 100vw, 576px"
+                                    className="h-full w-full object-cover"
+                                />
+                            </div>
+                            <div className="px-4 py-3">
+                                <p className="text-sm font-bold text-[#25180f]">{photo.title}</p>
+                                {photo.src === "/images/espacio-gourmet/package.webp" ? (
+                                    <p className="mt-1 text-sm text-[#6d5446]">
+                                        Bote de 1 kilo: {formatMxCurrency(ESPACIO_GOURMET_ORDER.unitPrice)}. Incluye
+                                        cebollita preparada y salsa de chile habanero.
+                                    </p>
+                                ) : null}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </section>
         </main>

@@ -14,13 +14,14 @@ The Fruitful Lab customer site is the public umbrella marketing site for `https:
 
 ## Role
 
-Fruitful Lab customer site is the broader marketing service provider and parent brand. It can represent Susi and Esteban's combined work across:
+Fruitful Lab customer site is the broader marketing service provider and parent brand. It can represent Susy and Stepan's combined work across:
 
 - AI workflow systems,
 - funnel strategy and implementation,
 - Meta and other paid media support,
 - email marketing,
 - content strategy and content engines,
+- data, analytics, reporting, and A/B testing,
 - full-funnel marketing systems,
 - the parent-brand relationship to Fruitful Pin, Bloom Whispers, Bricoli Studio, and future brands.
 
@@ -41,6 +42,7 @@ The current foundation does not change DNS, WordPress, A2, Cloudflare, or any li
 - Homepage
 - About
 - Services
+- How We Work
 - Blog
 - Blog post template
 - Resources
@@ -52,4 +54,38 @@ Case studies and tools/experiments are intentionally out of the first skeleton. 
 
 ## Brand Direction
 
-Fruitful Lab can share family resemblance with Fruitful Pin, but it should lean more navy and gold than pink. Fruitful Pin can stay more pink/yellow and Pinterest-specific. Fruitful Lab should feel like the broader, systems-minded parent brand.
+Fruitful Lab can share family resemblance with Fruitful Pin, but it should use its own palette and movement. Fruitful Pin can stay more pink/yellow and Pinterest-specific. Fruitful Lab should feel like the broader, systems-minded parent brand.
+
+The current positioning spine lives in `docs/brands/fruitful-lab-site/positioning-spine-2026-05-21.md`. The working core idea is: good products should not be hard to discover. This is positioning territory only, not a locked offer. Current language should favor broader search/discovery over Pinterest-specific positioning for Fruitful Lab.
+
+Current visual pass:
+
+- Use a mostly white and ghost-white base rather than the cream/beige Fruitful Pin direction.
+- Current palette: Ghost White `#EDEDF4`, Soft Periwinkle `#9984D4`, Blazing Flame `#FF4A1C`, Mint Leaf `#21D19F`, and Prussian Blue `#101935`.
+- Keep a non-pink gradient as an ecosystem cue across the brand family, but make it warmer and more editorial than cold SaaS blue/purple.
+- Use Alatsi as the primary heading/accent font and Raleway for readable body copy.
+- Favor flowing, guided sections over repeated stacked rectangles: waves, organic shapes, offset content, and open white space should lead the visual system.
+- Current reference direction: Commence Studio is the structural skeleton and MVR Digital is the pulse. Fruitful Lab should keep its own palette, typography, and product-discovery positioning.
+- Borrowable Commence-style patterns: pill navigation, richer service navigation later, full-width moving trust/positioning rail, serious diagnostic offer framing, featured case-study style modules, metrics/signals, and a clear process section.
+- Do not copy Commence's exact language, exact layout, colors, client claims, or Shopify-specific positioning. Do not show fake client logos or fake performance proof.
+- The homepage hero should stay product-centered: the product/story sits in the middle, with connected discovery paths around it. Avoid generic pills or disconnected floating cards.
+- Current hero test direction: proof-style pills can sit above the headline, CTAs should be pill-shaped with the fit-call action first, and the hero visual should illustrate product discovery/search with product imagery or a phone/search mockup rather than an abstract scheme.
+- Brand language can lean into the `Lab` concept: formula, testing, experiments, stages, signals, bottlenecks, and growth laboratory metaphors, especially for services and process framing.
+- Section transitions should use smooth curves and open space, not jagged waves.
+- Shift the visual tone toward a sharper strategic workbench: stronger dark/white contrast, tighter editorial blocks, offset panels, sharper labels, data/search/reporting motifs, and less soft SaaS styling.
+- Current homepage structure is a Commence-inspired scaffold, translated into Fruitful Lab language: proof pills, product-centered hero, moving focus rail, thesis, service-system grid, case-study frame, diagnose/formulate/build/test process, founder/photo area, lab notes, and final fit-call CTA. Use Commence as a layout and hierarchy reference, not as source copy.
+- Susy confirmed on 2026-05-22 that this Commence-inspired structure is the better working direction. Preserve the logic: make each section's job obvious, reduce cards-for-cards' sake, keep placeholders legible, and let future copy/images replace clear slots rather than guessing what a block is meant to be.
+- The Services page should use the same logic: service-lab categories, engagement path, formula/testing language, and clear CTA path. Current service-lab categories are Search ecosystem, Paid media, SEO + content, Lifecycle + funnels, Data + testing, and AI creative systems.
+- The How We Work page is the process page. Use Commence's process page as a structure reference, translated into Fruitful Lab's brand: fit, diagnose, build, test; diagnostic as the lab bench; practical outputs; and a clear fit-call CTA.
+- Keep the moving ribbon limited to the homepage unless Susy asks for it elsewhere; it became distracting on the Services page.
+- Services and process hero visuals should include realistic product imagery so product-brand visitors can picture their own brand inside the service, supported by lab/formula overlays rather than only abstract diagrams.
+- The 9G StandOut Plan page can be used as a broad inspiration point for bolder contrast, clearer paid-strategy entry flow, and more direct problem language. Do not copy its exact layout, icon style, pink palette, or contractor-specific language.
+- Leave visible space for founder presence, future photography, diagrams, and system graphics.
+- Blog archive should follow the same discovery pattern as Fruitful Pin: featured article, article list, search, about block, lead magnet/list-building block, popular reads, and resource links.
+
+Current services model:
+
+1. Fit Call
+2. Growth Systems Diagnostic as the lead product
+3. Implementation Sprint for the first useful build
+4. Scale Partnership for larger projects or ongoing systems work

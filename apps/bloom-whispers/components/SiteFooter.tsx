@@ -209,6 +209,8 @@ export function SiteFooter() {
           <Link href="/privacy">Privacy</Link>
           <span aria-hidden="true">·</span>
           <Link href="/terms">Terms</Link>
+          <span aria-hidden="true">·</span>
+          <Link href="/affiliate-disclosure">Affiliate Disclosure</Link>
         </p>
       </div>
     </footer>

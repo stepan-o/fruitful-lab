@@ -22,4 +22,5 @@ export const FOOTER_LINKS = [
   { label: "Contact", href: "/contact" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
+  { label: "Affiliate Disclosure", href: "/affiliate-disclosure" },
 ] as const;

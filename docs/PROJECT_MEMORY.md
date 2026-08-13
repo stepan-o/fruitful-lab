@@ -124,6 +124,42 @@ Brand and offer direction memory:
 
 Use `npm run build` from `apps/fruitful-lab-site/` to verify the static export. Cloudflare Pages should use `apps/fruitful-lab-site` as the root, `npm run build` as the build command, and `out` as the build output directory. Do not point `fruitfulab.com` at this app until preview, content, analytics, redirects, and launch checks are explicitly approved.
 
+## Bloom Whispers Editorial Framework
+
+Bloom Whispers is a separate editorial and ritual brand under `apps/bloom-whispers/` with brand documentation in `docs/brands/bloom-whispers/`.
+
+Current editorial memory:
+
+- The Bloom Whispers Editorial Orchestrator is documented in `docs/brands/bloom-whispers/agents/orchestrator-agent.md`. It is the preferred user-facing coordination layer for multi-stage Bloom Whispers content work.
+- Fundamental workflow objective: preserve Bloom Whispers' quality promise while reducing Susy's manual routing between separate researcher, writer, editor, creative, and publisher tasks. The orchestrator should keep deep research, source discipline, Bloom Whispers originality, SEO/Pinterest usefulness, safety boundaries, and human approval gates intact while making the current article state and next action obvious.
+- Fundamental reader-arrival principle: research is used to make the article richer and to support the source list, not to make the opening feel academic. Every Bloom Whispers article must give a general English-speaking reader a familiar, sensory, plain-English doorway before introducing dense cultural terms, source names, botanical Latin, or institutional proof. If Susy cannot get past the opening, the draft is not approved no matter how high a prior score was.
+- Every orchestrated article package should have `docs/brands/bloom-whispers/content-pipeline/<topic-slug>/pipeline-status.md`, using `docs/brands/bloom-whispers/content-pipeline/_templates/pipeline-status-template.md` as the durable state manifest.
+- Bloom Whispers media production is a staged workflow: Media Strategy proposes five concrete Pinterest/article concepts by category, Susy selects, Creative Director creates prototype/creative direction, Production Agent creates ChatGPT-ready prompts plus Canva edit notes, and Publisher implements only approved assets or placeholders. Susy prefers generating text-included image drafts in ChatGPT and refining or rebuilding the text/layout in Canva; Codex image generation is not the default unless explicitly requested.
+- The first orchestration pilot is Marigold, with status tracked in `docs/brands/bloom-whispers/content-pipeline/marigold/pipeline-status.md`; current state is live publish authorized / production deployment in progress as of 2026-08-13. The prior V3 editor verdict is superseded because Susy rejected the first-screen reading experience after the 9.1 score; V4 fixed reader arrival, V5 over-tightened and introduced confusing thesis language, and V6 restores V4 as the base with Susy's clearer line: "Marigold meaning changes by where the flower is placed." Susy approved V6 on 2026-08-12, while noting the writing style can still improve as a future polish/watch point. Media direction lives at `docs/brands/bloom-whispers/content-pipeline/marigold/media-ideas-v1.md`; selected concepts are recorded in `docs/brands/bloom-whispers/content-pipeline/marigold/media-selection-decision-v1.md`; prompt/Canva handoff is `docs/brands/bloom-whispers/content-pipeline/marigold/media/production-prompts-v1.md`; first generated PNG QA lives at `docs/brands/bloom-whispers/content-pipeline/marigold/media/asset-review-v1.md`; approved launch media handoff lives at `docs/brands/bloom-whispers/content-pipeline/marigold/media/selected-media-handoff-v1.md`; Publisher Brief Only lives at `docs/brands/bloom-whispers/content-pipeline/marigold/publisher-brief-v1.md`; Site Implementation lives at `docs/brands/bloom-whispers/content-pipeline/marigold/site-implementation-v1.md`. The article is implemented in `apps/bloom-whispers/lib/journalPosts.ts` with canonical clean route `/marigold-meaning/`, internal route `/journal/marigold-meaning/`, five selected assets staged in `apps/bloom-whispers/public/assets/marigold/`, FAQ/schema support, visible safety notes, and source list. A real sub-agent rerun was completed on 2026-08-12 with Writer, Editor/Critic, Media/Creative, Publisher readiness, Production, Publisher Brief, and Publisher QA outputs recorded in the Marigold pipeline. Future quote graphics should feel like wisdom/inspiration/motivation or a useful reminder, not merely cute or decorative.
+- The lane-based research workflow is documented in `docs/brands/bloom-whispers/content-research-workflow-2026-06-06.md`.
+- The post-research Writer Agent framework is documented in `docs/brands/bloom-whispers/agents/writer-agent.md`.
+- The first pilot topic is Queen Anne's lace, with source dossier `docs/brands/bloom-whispers/queen-annes-lace-research-dossier-2026-06-06.md` and visual dossier `docs/brands/bloom-whispers/queen-annes-lace-visual-dossier-2026-06-06.html`.
+- The Bloom Whispers Pinterest-to-Metricool scheduling workflow is documented in `docs/brands/bloom-whispers/pinterest-metricool-workflow-notes-2026-07-17.md`; use it before preparing or uploading Bloom Metricool CSVs.
+
+Writing direction approved on 2026-06-07:
+
+- Bloom Whispers articles must be accurate, reader-first, expressive, and original. Factual completeness alone is not enough.
+- Use familiar language, short paragraphs, strong verbs, clear headings, and task-focused organization.
+- Add a sensory intro / story lead, central curiosity object, and story ladder before flattening into SEO sections. The first 100 to 150 words should follow the reader-arrival ramp: common/familiar anchor, sensory curiosity, plain-English promise, then unfamiliar proper nouns or source-backed details later.
+- Curiosity-led copy must create immediate tension, specificity, or a clear reader payoff. Do not treat a number, a vague "surprising things" construction, or ornate internal-brand phrasing as a hook. Public H1s, H2s, Quick Meaning boxes, and first-screen callouts should be plain, useful, and click-worthy before they become poetic.
+- Every article should create Bloom Whispers original value: Bloom Wisdom, original quote options for Pinterest/social, synthesized plain-language definitions, and safe ways to bring the flower's meaning into the reader's life.
+- Original Bloom Whispers lines may be poetic, inspirational, beautiful, funny, witty, strange, or Pinterest-friendly, but must be clearly distinct from source-backed historical, botanical, cultural, medical, or safety claims.
+- Safety boundaries remain strict around foraging, ingestion, recipes, dosage, medicinal advice, and plant identification unless explicitly approved and source-supported.
+
+Working research anchors for the writing framework:
+
+- Nielsen Norman Group on web reading and scannability.
+- Digital.gov on plain-language web writing.
+- Purdue OWL on leads and inverted pyramid structure.
+- Green and Brock on narrative transportation.
+- Berger and Milkman on emotional activation and online sharing.
+- Google Search Central on people-first helpful content.
+
 ## Frontend Layers
 
 ### App Router

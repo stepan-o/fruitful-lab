@@ -23,7 +23,8 @@ Related planning reference:
 - `apps/lab/` - current Next.js App Router app for Fruitful Lab public pages, tool flows, login, admin, contractor pages, analytics proxies, and experiment diagnostics.
 - `apps/fruitful-pin/` - Fruitful Pin static-first Next.js first-pass marketing site targeting Cloudflare Pages; not connected to live DNS or WordPress yet.
 - `apps/fruitful-lab-site/` - Fruitful Lab customer-facing umbrella marketing site foundation for `fruitfulab.com`; separate from the sandbox app on `fruitfulab.net`.
-- `apps/` - home for separate deployable brand apps. Current apps include `apps/lab`, `apps/fruitful-pin`, and `apps/fruitful-lab-site`; future examples include `apps/bloom-whispers` and `apps/bricoli`.
+- `apps/bloom-whispers/` - Bloom Whispers editorial/ritual brand app foundation and migrated journal site; content workflow docs live under `docs/brands/bloom-whispers/`.
+- `apps/` - home for separate deployable brand apps. Current apps include `apps/lab`, `apps/fruitful-pin`, `apps/fruitful-lab-site`, and `apps/bloom-whispers`; future examples include `apps/bricoli`.
 - `packages/` - target home for shared code once real cross-app reuse exists. Do not create broad shared abstractions prematurely.
 - `backend/` - FastAPI app for auth, users, Pinterest stats, Postgres models, Alembic migrations, and admin-only CSV ingestion.
 - `docs/` - current memory, audits, guides, and historical implementation notes.
@@ -159,6 +160,24 @@ Do not point `fruitfulpin.com` at this app until preview, content migration, red
 - TidyCal URL can be set with `NEXT_PUBLIC_TIDYCAL_URL`; default fallback is `https://tidycal.com/susycid`.
 
 Do not point `fruitfulab.com` at this app until preview, content, analytics, redirects, and launch checks are explicitly approved.
+
+## Bloom Whispers Editorial Anchors
+
+- App root: `apps/bloom-whispers/`
+- Brand docs: `docs/brands/bloom-whispers/`
+- Editorial orchestrator: `docs/brands/bloom-whispers/agents/orchestrator-agent.md`
+- Pipeline manifest template: `docs/brands/bloom-whispers/content-pipeline/_templates/pipeline-status-template.md`
+- First orchestrator pilot: `docs/brands/bloom-whispers/content-pipeline/marigold/pipeline-status.md`
+
+Fundamental workflow objective: preserve Bloom Whispers' quality promise while reducing Susy's manual routing between separate researcher, writer, editor, creative, and publisher tasks. The orchestrator is the preferred user-facing coordination layer for multi-stage Bloom Whispers content work; specialist agents still own their craft lanes, while the orchestrator owns state, sequencing, handoffs, and human approval gates.
+
+Fundamental reader-arrival principle: research should make the article richer and support the source list, not make the opening feel academic. The first screen must give a general English-speaking reader a familiar, sensory, plain-English doorway before it introduces dense cultural terms, source names, botanical Latin, or institutional proof. Susy's rejection of reader arrival supersedes any prior numerical score or editor approval.
+
+Fundamental hook principle: curiosity-led Bloom Whispers copy must create immediate tension, specificity, or a clear reader payoff. A number alone is not a hook, vague "surprising things" phrasing is not enough, and ornate internal-brand language should not appear as public H1/H2 copy when it makes the reader work harder.
+
+Bloom Whispers media production is staged: Media Strategy proposes five concrete concepts by category, Susy selects, Creative Director creates prototype direction, Production Agent creates ChatGPT-ready prompts plus Canva edit notes, and Publisher implements only approved assets/placeholders. Susy prefers generating text-included image drafts in ChatGPT and refining or rebuilding the text/layout in Canva; Codex image generation is not the default unless explicitly requested.
+
+Current Marigold pilot state: live publish authorized / production deployment in progress as of 2026-08-13. The V3 9.1/10 verdict is preserved as historical context but is no longer current approval; V4 fixed reader arrival, V5 over-tightened and introduced confusing thesis language, and V6 restores V4 as the base with Susy's clearer line: "Marigold meaning changes by where the flower is placed." Susy approved V6 on 2026-08-12, while noting the writing style can still improve as a future polish/watch point. Current media direction: `docs/brands/bloom-whispers/content-pipeline/marigold/media-ideas-v1.md`; selected concepts: `docs/brands/bloom-whispers/content-pipeline/marigold/media-selection-decision-v1.md`; prompt/Canva handoff: `docs/brands/bloom-whispers/content-pipeline/marigold/media/production-prompts-v1.md`; first generated PNG QA: `docs/brands/bloom-whispers/content-pipeline/marigold/media/asset-review-v1.md`; approved launch media handoff: `docs/brands/bloom-whispers/content-pipeline/marigold/media/selected-media-handoff-v1.md`; Publisher Brief Only: `docs/brands/bloom-whispers/content-pipeline/marigold/publisher-brief-v1.md`; Site Implementation: `docs/brands/bloom-whispers/content-pipeline/marigold/site-implementation-v1.md`. The article is implemented in `apps/bloom-whispers/lib/journalPosts.ts` with canonical clean route `/marigold-meaning/`, internal route `/journal/marigold-meaning/`, five selected assets staged in `apps/bloom-whispers/public/assets/marigold/`, FAQ/schema support, visible safety notes, and source list. A real sub-agent rerun was completed on 2026-08-12 with Writer, Editor/Critic, Media/Creative, Publisher readiness, Production, Publisher Brief, and Publisher QA outputs recorded in the Marigold pipeline. Future quote graphics should feel like wisdom/inspiration/motivation or a useful reminder, not merely cute or decorative.
 
 ## Backend/API Anchors
 

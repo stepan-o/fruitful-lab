@@ -57,6 +57,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${CANONICAL_URL}${canonicalPath}`,
       siteName: SITE_NAME,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: post.seoTitle,
+      description: post.description,
+      images: [
+        {
+          url: post.heroImage,
+          alt: post.heroImageAlt,
+        },
+      ],
+    },
   };
 }
 

@@ -301,6 +301,7 @@
 }
 
 .channelChip,
+.stageChip,
 .warningChip {
   display: inline-flex;
   width: fit-content;
@@ -321,11 +322,18 @@
 }
 
 .cardMeta .channelChip,
+.cardMeta .stageChip,
 .lastCard > .channelChip,
 .monitorRow .channelChip,
 .drawerMeta .channelChip,
 .contentHqApp .warningChip {
   color: var(--chip-ink, var(--hq-muted));
+}
+
+.stageChip {
+  --chip-bg: rgba(231, 167, 103, 0.2);
+  --chip-border: rgba(231, 167, 103, 0.44);
+  --chip-ink: #835216;
 }
 
 .workspace {
@@ -448,7 +456,7 @@
   align-items: center;
 }
 
-.cardMeta > span:not(.channelChip) {
+.cardMeta > span:not(.channelChip):not(.stageChip) {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -460,6 +468,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+}
+
+.warningChip {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .emptyState {
@@ -583,6 +596,42 @@
 .calendarCell .itemCard > span:not(.cardMeta):not(.warningStrip),
 .calendarCell .itemCard > .warningStrip {
   display: none;
+}
+
+.planningPool {
+  display: grid;
+  gap: 14px;
+}
+
+.planningPoolSection {
+  display: grid;
+  gap: 8px;
+}
+
+.poolHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.poolHeader h3 {
+  margin: 0;
+  color: var(--hq-night);
+  font-size: 0.96rem;
+  letter-spacing: 0;
+}
+
+.poolHeader span {
+  display: inline-grid;
+  min-width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(1, 64, 71, 0.1);
+  color: var(--hq-night);
+  font-size: 0.82rem;
+  font-weight: 900;
 }
 
 .pipelineView,
@@ -766,6 +815,12 @@
   background: rgba(70, 4, 60, 0.06);
   color: var(--hq-plum);
   font-weight: 850;
+}
+
+.dateActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .appFooter {

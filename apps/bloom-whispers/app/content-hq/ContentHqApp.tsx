@@ -8,6 +8,7 @@ export type ContentHqItem = Record<string, string>;
 type View = "home" | "planning" | "pipeline" | "monitoring";
 type HomeList = "drafts" | "scheduled" | "published";
 type ChannelFilter = "All" | "Blog" | "Instagram" | "Etsy" | "Pinterest" | "Podcast" | "Affiliate";
+type PlanningStageLabel = "Idea" | "Research" | "Drafted";
 type SyncMode = "local" | "loading" | "ready" | "saving" | "saved" | "error";
 type SyncState = {
   mode: SyncMode;
@@ -87,6 +88,11 @@ const pipelineLanes = [
   { label: "Scheduled", stages: ["Ready To Schedule", "Scheduled"], nextStage: "Scheduled" },
   { label: "Published", stages: ["Published", "Monitoring", "Repurpose Candidate"], nextStage: "Published" },
   { label: "Hold", stages: ["Hold", "Archived", "Tracking"], nextStage: "Hold" },
+];
+const planningStageGroups: { label: PlanningStageLabel; stages: string[] }[] = [
+  { label: "Idea", stages: ["Captured", "Idea Bank"] },
+  { label: "Research", stages: ["Needs Research", "Research Complete"] },
+  { label: "Drafted", stages: ["Selected", "Drafted", "Editor Review"] },
 ];
 
 const draftStages = new Set(["Selected", "Drafted", "Editor Review", "Ready To Produce", "In Production"]);
@@ -266,7 +272,7 @@ function warningsFor(item: ContentHqItem) {
   if (isActive(item) && !field(item, "Work Date") && field(item, "Priority").startsWith("P0")) warnings.push("No work date");
   if (isActive(item) && !field(item, "Target Publish Date") && field(item, "Priority").startsWith("P0")) warnings.push("No publish date");
   if (susyInput) warnings.push("Needs Susy input");
-  if (blocker) warnings.push("Blocked");
+  if (blocker) warnings.push(`Blocked: ${blocker}`);
   if (publishedStages.has(stage) && !field(item, "Publish URL")) warnings.push("Missing URL");
   if (publishedStages.has(stage) && missing) warnings.push("Published incomplete");
   if (publishedStages.has(stage) && !field(item, "Last Optimized Date")) warnings.push("Not optimized");
@@ -289,8 +295,17 @@ function statusClass(item: ContentHqItem) {
   return channelClass(itemChannel(item));
 }
 
+function planningStageLabel(item: ContentHqItem) {
+  const stage = field(item, "Stage");
+  return planningStageGroups.find((group) => group.stages.includes(stage))?.label ?? "";
+}
+
+function stageLabelFor(item: ContentHqItem) {
+  return planningStageLabel(item) || field(item, "Stage") || "No stage";
+}
+
 function warningClass(warning: string) {
-  if (warning === "Blocked") return styles.warnBlocked;
+  if (warning.startsWith("Blocked")) return styles.warnBlocked;
   if (warning === "Needs Susy input") return styles.warnNeedsInput;
   if (warning === "No publish date") return styles.warnNoPublishDate;
   if (warning === "No work date") return styles.warnNoWorkDate;
@@ -464,6 +479,10 @@ function ChannelBadge({ channel }: { channel: string }) {
   return <span className={`${styles.channelChip} ${channelClass(channel)}`}>{channel}</span>;
 }
 
+function StageBadge({ item }: { item: ContentHqItem }) {
+  return <span className={styles.stageChip}>{stageLabelFor(item)}</span>;
+}
+
 function ChannelFilterButton({
   channel,
   isActive,
@@ -489,7 +508,7 @@ function WarningChips({ warnings }: { warnings: string[] }) {
   return (
     <>
       {warnings.map((warning) => (
-        <span className={`${styles.warningChip} ${warningClass(warning)}`} key={warning}>
+        <span className={`${styles.warningChip} ${warningClass(warning)}`} key={warning} title={warning}>
           {warning}
         </span>
       ))}
@@ -522,6 +541,7 @@ function CardButton({ item, onOpen }: { item: ContentHqItem; onOpen: (item: Cont
       <span className={styles.cardMeta}>
         <span>{idFor(item)}</span>
         <ChannelBadge channel={itemChannel(item)} />
+        <StageBadge item={item} />
       </span>
       <strong>{titleFor(item)}</strong>
       <span>{field(item, "Next Action") || field(item, "Short Description") || "Open item details"}</span>
@@ -573,15 +593,15 @@ export function ContentHqApp({
   const scheduled = workingItems.filter((item) => scheduledStages.has(field(item, "Stage")));
   const published = workingItems.filter((item) => publishedStages.has(field(item, "Stage")));
   const selectedMonthLabel = monthLabel(planningMonth);
-  const plannedThisMonth = workingItems.filter((item) => {
+  const workItemsThisMonth = workingItems.filter((item) => {
     const workDate = parseDate(field(item, "Work Date"));
-    const targetDate = parseDate(field(item, "Target Publish Date"));
-    const planning = field(item, "Planning Month") === selectedMonthLabel;
-    const workMatch = workDate && `${workDate.getFullYear()}-${String(workDate.getMonth() + 1).padStart(2, "0")}` === planningMonth;
-    const targetMatch = targetDate && `${targetDate.getFullYear()}-${String(targetDate.getMonth() + 1).padStart(2, "0")}` === planningMonth;
-    return planning || workMatch || targetMatch;
+    return workDate && `${workDate.getFullYear()}-${String(workDate.getMonth() + 1).padStart(2, "0")}` === planningMonth;
   });
-  const undatedThisMonth = plannedThisMonth.filter((item) => !field(item, "Work Date"));
+  const planningPoolItems = workingItems.filter((item) => planningStageLabel(item) && !field(item, "Work Date"));
+  const planningBuckets = planningStageGroups.map((group) => ({
+    ...group,
+    items: planningPoolItems.filter((item) => planningStageLabel(item) === group.label),
+  }));
   const monitoringRows = sortItems(workingItems.filter((item) => publishedStages.has(field(item, "Stage")) || field(item, "Publish URL")));
   const visibleLastPostedChannels = channelFilter === "All" ? lastPostedChannels : lastPostedChannels.filter((channel) => channel === channelFilter);
   const calendarFeedUrl = syncKey ? contentHqApiUrl({ format: "ics", token: syncKey }) : "";
@@ -677,10 +697,10 @@ export function ContentHqApp({
         </button>
         {calendarFeedUrl ? (
           <a href={calendarFeedUrl} target="_blank" rel="noreferrer">
-            Apple Calendar feed
+            Apple work calendar feed
           </a>
         ) : (
-          <span className={styles.disabledSyncLink}>Apple Calendar feed needs sync key</span>
+          <span className={styles.disabledSyncLink}>Apple work calendar feed needs sync key</span>
         )}
       </div>
 
@@ -812,28 +832,42 @@ export function ContentHqApp({
               </div>
               <div className={styles.planningLayout}>
                 <Calendar
-                  items={plannedThisMonth}
+                  items={workItemsThisMonth}
                   monthValue={planningMonth}
                   onDropItem={(id, date) => updateItem(id, "Work Date", date)}
                   onOpen={openItem}
                 />
                 <aside className={styles.undatedPanel}>
                   <div className={styles.sectionTitle}>
-                    <span>Unscheduled</span>
-                    <h2>{undatedThisMonth.length} items</h2>
+                    <span>Planning pool</span>
+                    <h2>{planningPoolItems.length} candidates</h2>
                   </div>
                   <div
-                    className={styles.compactList}
+                    className={styles.planningPool}
                     onDragOver={(event) => event.preventDefault()}
                     onDrop={(event) => {
                       const id = droppedItemId(event);
                       if (id) updateItem(id, "Work Date", "");
                     }}
                   >
-                    {undatedThisMonth.length > 0 ? (
-                      undatedThisMonth.map((item) => <CardButton item={item} key={idFor(item)} onOpen={openItem} />)
+                    {planningPoolItems.length > 0 ? (
+                      planningBuckets.map((bucket) => (
+                        <section className={styles.planningPoolSection} key={bucket.label}>
+                          <div className={styles.poolHeader}>
+                            <h3>{bucket.label}</h3>
+                            <span>{bucket.items.length}</span>
+                          </div>
+                          <div className={styles.compactList}>
+                            {bucket.items.length > 0 ? (
+                              bucket.items.map((item) => <CardButton item={item} key={idFor(item)} onOpen={openItem} />)
+                            ) : (
+                              <EmptyState>No unscheduled {bucket.label.toLowerCase()} items.</EmptyState>
+                            )}
+                          </div>
+                        </section>
+                      ))
                     ) : (
-                      <EmptyState>All selected items have a work date.</EmptyState>
+                      <EmptyState>All Idea, Research, and Drafted candidates already have a work date.</EmptyState>
                     )}
                   </div>
                 </aside>
@@ -1143,11 +1177,18 @@ function ItemDrawer({
           <EditableField item={item} label="Work date" name="Work Date" onChange={onChange} type="date" />
           <EditableField item={item} label="Target publish" name="Target Publish Date" onChange={onChange} type="date" />
         </div>
-        {field(item, "Work Date") ? (
-          <button className={styles.secondaryAction} onClick={() => onChange("Work Date", "")} type="button">
-            Remove work date
-          </button>
-        ) : null}
+        <div className={styles.dateActions}>
+          {field(item, "Work Date") ? (
+            <button className={styles.secondaryAction} onClick={() => onChange("Work Date", "")} type="button">
+              Remove work date
+            </button>
+          ) : null}
+          {field(item, "Target Publish Date") ? (
+            <button className={styles.secondaryAction} onClick={() => onChange("Target Publish Date", "")} type="button">
+              Remove target publish date
+            </button>
+          ) : null}
+        </div>
       </div>
 
       <div className={styles.drawerSection}>

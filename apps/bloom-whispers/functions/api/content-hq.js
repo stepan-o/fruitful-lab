@@ -430,24 +430,19 @@ function buildIcs(items) {
       .filter(Boolean)
       .join("\n");
 
-    for (const eventType of [
-      { date: clean(item["Work Date"]), label: "Work" },
-      { date: clean(item["Target Publish Date"]), label: "Publish" },
-    ]) {
-      const startDate = compactDate(eventType.date);
-      const endDate = nextCompactDate(eventType.date);
-      if (!startDate || !endDate) continue;
+    const startDate = compactDate(clean(item["Work Date"]));
+    const endDate = nextCompactDate(clean(item["Work Date"]));
+    if (!startDate || !endDate) continue;
 
-      lines.push("BEGIN:VEVENT");
-      lines.push(`UID:${escapeIcsText(`${id}-${eventType.label.toLowerCase()}@bloomwhispers-content-hq`)}`);
-      lines.push(`DTSTAMP:${timestamp}`);
-      lines.push(`DTSTART;VALUE=DATE:${startDate}`);
-      lines.push(`DTEND;VALUE=DATE:${endDate}`);
-      lines.push(`SUMMARY:${escapeIcsText(`${eventType.label}: ${title}`)}`);
-      if (description) lines.push(`DESCRIPTION:${escapeIcsText(description)}`);
-      if (publishUrl) lines.push(`URL:${publishUrl}`);
-      lines.push("END:VEVENT");
-    }
+    lines.push("BEGIN:VEVENT");
+    lines.push(`UID:${escapeIcsText(`${id}-work@bloomwhispers-content-hq`)}`);
+    lines.push(`DTSTAMP:${timestamp}`);
+    lines.push(`DTSTART;VALUE=DATE:${startDate}`);
+    lines.push(`DTEND;VALUE=DATE:${endDate}`);
+    lines.push(`SUMMARY:${escapeIcsText(`Work: ${title}`)}`);
+    if (description) lines.push(`DESCRIPTION:${escapeIcsText(description)}`);
+    if (publishUrl) lines.push(`URL:${publishUrl}`);
+    lines.push("END:VEVENT");
   }
 
   lines.push("END:VCALENDAR");

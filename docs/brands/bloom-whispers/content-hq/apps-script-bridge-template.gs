@@ -8,6 +8,12 @@ function json_(body) {
   return ContentService.createTextOutput(JSON.stringify(body)).setMimeType(ContentService.MimeType.JSON);
 }
 
+function errorMessage_(error, fallback) {
+  if (error && typeof error.message === "string") return error.message;
+  if (error) return String(error);
+  return fallback;
+}
+
 function clean_(value) {
   return typeof value === "string" ? value.trim() : "";
 }
@@ -55,7 +61,7 @@ function doGet(event) {
     });
   } catch (error) {
     return json_({
-      message: error instanceof Error ? error.message : "Content HQ bridge read failed.",
+      message: errorMessage_(error, "Content HQ bridge read failed."),
       ok: false,
     });
   }
@@ -108,7 +114,7 @@ function doPost(event) {
     });
   } catch (error) {
     return json_({
-      message: error instanceof Error ? error.message : "Content HQ bridge write failed.",
+      message: errorMessage_(error, "Content HQ bridge write failed."),
       ok: false,
     });
   }

@@ -27,6 +27,33 @@ function text(body, contentType = "text/plain; charset=utf-8", status = 200) {
   });
 }
 
+function corsHeaders(request) {
+  const origin = request.headers.get("origin") || "";
+  const isAllowedOrigin =
+    origin === "https://bloomwhispers.com" ||
+    origin === "https://www.bloomwhispers.com" ||
+    /^https:\/\/[a-z0-9-]+\.bloom-whispers\.pages\.dev$/i.test(origin) ||
+    /^http:\/\/localhost:\d+$/i.test(origin) ||
+    /^http:\/\/127\.0\.0\.1:\d+$/i.test(origin);
+
+  if (!isAllowedOrigin) return {};
+
+  return {
+    "access-control-allow-headers": "authorization, content-type",
+    "access-control-allow-methods": "GET, POST, OPTIONS",
+    "access-control-allow-origin": origin,
+    vary: "Origin",
+  };
+}
+
+function withCors(response, request) {
+  for (const [key, value] of Object.entries(corsHeaders(request))) {
+    response.headers.set(key, value);
+  }
+
+  return response;
+}
+
 function clean(value) {
   return typeof value === "string" ? value.trim() : "";
 }
@@ -498,26 +525,33 @@ export async function onRequest({ request, env }) {
   const url = new URL(request.url);
 
   try {
+    let response;
+
     if (request.method === "OPTIONS") {
-      return new Response(null, { status: 204 });
+      return withCors(new Response(null, { status: 204 }), request);
     }
 
     if (request.method === "GET") {
-      return await handleGet(request, env, url);
+      response = await handleGet(request, env, url);
+      return withCors(response, request);
     }
 
     if (request.method === "POST") {
-      return await handlePost(request, env, url);
+      response = await handlePost(request, env, url);
+      return withCors(response, request);
     }
 
-    return json({ ok: false, message: "Method not allowed." }, 405);
+    return withCors(json({ ok: false, message: "Method not allowed." }, 405), request);
   } catch (error) {
-    return json(
-      {
-        ok: false,
-        message: error instanceof Error ? error.message : "Content HQ sync failed.",
-      },
-      500,
+    return withCors(
+      json(
+        {
+          ok: false,
+          message: error instanceof Error ? error.message : "Content HQ sync failed.",
+        },
+        500,
+      ),
+      request,
     );
   }
 }

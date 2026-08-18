@@ -17,7 +17,8 @@ type SyncState = {
 
 const STORAGE_KEY = "bloom-whispers-content-hq-local-v1";
 const SYNC_KEY_STORAGE_KEY = "bloom-whispers-content-hq-sync-key-v1";
-const CONTENT_HQ_API_ENDPOINT = "/api/content-hq";
+const CONTENT_HQ_API_PATH = "/api/content-hq";
+const CONTENT_HQ_API_ORIGIN = "https://bloomwhispers.com";
 const pageChromeStyles = `
   body.content-hq-mode {
     background: #f9f1e4;
@@ -95,6 +96,45 @@ const activeStages = new Set(["Selected", "Drafted", "Editor Review", "Ready To 
 
 function field(item: ContentHqItem, key: string) {
   return item[key]?.trim() ?? "";
+}
+
+function contentHqApiUrl(searchParams?: Record<string, string>) {
+  const params = new URLSearchParams(searchParams);
+
+  if (typeof window === "undefined") {
+    const query = params.toString();
+    return `${CONTENT_HQ_API_PATH}${query ? `?${query}` : ""}`;
+  }
+
+  const currentOrigin = window.location.origin;
+  const shouldUseCurrentOrigin =
+    currentOrigin === "https://bloomwhispers.com" ||
+    currentOrigin === "https://www.bloomwhispers.com" ||
+    currentOrigin.endsWith(".bloom-whispers.pages.dev");
+  const url = new URL(CONTENT_HQ_API_PATH, shouldUseCurrentOrigin ? currentOrigin : CONTENT_HQ_API_ORIGIN);
+
+  for (const [key, value] of params) {
+    url.searchParams.set(key, value);
+  }
+
+  return url.toString();
+}
+
+async function readApiJson<T>(response: Response) {
+  const text = await response.text();
+  const trimmed = text.trim();
+
+  if (!trimmed) return {} as T;
+
+  if (!trimmed.startsWith("{") && !trimmed.startsWith("[")) {
+    throw new Error("The Content HQ API returned a web page instead of data. Refresh the dashboard, then try again.");
+  }
+
+  try {
+    return JSON.parse(trimmed) as T;
+  } catch {
+    throw new Error("The Content HQ API returned data that the dashboard could not read.");
+  }
 }
 
 function isUrl(value: string) {
@@ -344,12 +384,13 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
     setSyncState({ mode: "loading", message: "Loading from Google Sheet..." });
 
     try {
-      const response = await fetch(CONTENT_HQ_API_ENDPOINT, {
+      const response = await fetch(contentHqApiUrl(), {
         headers: {
+          accept: "application/json",
           authorization: `Bearer ${syncKey}`,
         },
       });
-      const body = (await response.json()) as { ok?: boolean; items?: ContentHqItem[]; message?: string; generatedAt?: string };
+      const body = await readApiJson<{ ok?: boolean; items?: ContentHqItem[]; message?: string; generatedAt?: string }>(response);
 
       if (!response.ok || !body.ok || !Array.isArray(body.items)) {
         throw new Error(body.message || "Google Sheet sync is not ready yet.");
@@ -375,15 +416,16 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
     setSyncState({ mode: "saving", message: `Saving ${key}...` });
 
     try {
-      const response = await fetch(CONTENT_HQ_API_ENDPOINT, {
+      const response = await fetch(contentHqApiUrl(), {
         method: "POST",
         headers: {
+          accept: "application/json",
           authorization: `Bearer ${syncKey}`,
           "content-type": "application/json",
         },
         body: JSON.stringify({ id, key, type: "update-field", value }),
       });
-      const body = (await response.json()) as { ok?: boolean; item?: ContentHqItem; message?: string; savedAt?: string };
+      const body = await readApiJson<{ ok?: boolean; item?: ContentHqItem; message?: string; savedAt?: string }>(response);
 
       if (!response.ok || !body.ok) {
         throw new Error(body.message || "Could not save to Google Sheet.");
@@ -542,7 +584,7 @@ export function ContentHqApp({
   const undatedThisMonth = plannedThisMonth.filter((item) => !field(item, "Work Date"));
   const monitoringRows = sortItems(workingItems.filter((item) => publishedStages.has(field(item, "Stage")) || field(item, "Publish URL")));
   const visibleLastPostedChannels = channelFilter === "All" ? lastPostedChannels : lastPostedChannels.filter((channel) => channel === channelFilter);
-  const calendarFeedUrl = syncKey ? `${CONTENT_HQ_API_ENDPOINT}?format=ics&token=${encodeURIComponent(syncKey)}` : "";
+  const calendarFeedUrl = syncKey ? contentHqApiUrl({ format: "ics", token: syncKey }) : "";
 
   function openItem(item: ContentHqItem) {
     setSelectedId(idFor(item));

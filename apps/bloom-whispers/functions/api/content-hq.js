@@ -116,23 +116,49 @@ function readRequestToken(request, url) {
   return clean(bearerMatch?.[1] || url.searchParams.get("token") || "");
 }
 
-function requireToken(request, env, url, purpose) {
-  const requiredToken =
-    purpose === "calendar"
-      ? clean(env.BLOOM_CONTENT_HQ_CALENDAR_TOKEN) || clean(env.BLOOM_CONTENT_HQ_SYNC_TOKEN)
-      : clean(env.BLOOM_CONTENT_HQ_SYNC_TOKEN);
+function allowedTokens(env, purpose) {
+  const syncToken = clean(env.BLOOM_CONTENT_HQ_SYNC_TOKEN);
 
-  if (!requiredToken) {
+  if (purpose === "calendar") {
+    const calendarToken = clean(env.BLOOM_CONTENT_HQ_CALENDAR_TOKEN);
+    return [...new Set([calendarToken, syncToken].filter(Boolean))];
+  }
+
+  return syncToken ? [syncToken] : [];
+}
+
+function requireToken(request, env, url, purpose) {
+  const tokens = allowedTokens(env, purpose);
+
+  if (tokens.length === 0) {
     return {
       ok: false,
-      response: json({ ok: false, message: "Content HQ sync token is not configured in Cloudflare yet." }, 503),
+      response: json(
+        {
+          ok: false,
+          message:
+            purpose === "calendar"
+              ? "Content HQ calendar feed token is not configured in Cloudflare yet."
+              : "Content HQ sync token is not configured in Cloudflare yet.",
+        },
+        503,
+      ),
     };
   }
 
-  if (readRequestToken(request, url) !== requiredToken) {
+  if (!tokens.includes(readRequestToken(request, url))) {
     return {
       ok: false,
-      response: json({ ok: false, message: "Content HQ sync key is missing or incorrect." }, 401),
+      response: json(
+        {
+          ok: false,
+          message:
+            purpose === "calendar"
+              ? "Content HQ calendar feed key is missing or incorrect."
+              : "Content HQ sync key is missing or incorrect.",
+        },
+        401,
+      ),
     };
   }
 

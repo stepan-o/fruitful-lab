@@ -306,6 +306,7 @@
   display: inline-flex;
   width: fit-content;
   max-width: 100%;
+  min-width: 0;
   min-height: 24px;
   align-items: center;
   justify-content: center;
@@ -313,6 +314,7 @@
   border: 1px solid var(--chip-border, rgba(103, 90, 98, 0.2));
   border-radius: 999px;
   background: var(--chip-bg, rgba(103, 90, 98, 0.1));
+  box-sizing: border-box;
   color: var(--chip-ink, var(--hq-muted));
   font-size: 0.72rem;
   font-weight: 900;
@@ -376,8 +378,9 @@
 
 .planningLayout {
   display: grid;
-  grid-template-columns: minmax(460px, 1.15fr) minmax(320px, 0.85fr);
+  grid-template-columns: minmax(720px, 1fr) minmax(340px, 430px);
   gap: 14px;
+  align-items: start;
 }
 
 .todayPanel,
@@ -423,6 +426,7 @@
   gap: 7px;
   width: 100%;
   min-width: 0;
+  overflow: hidden;
   padding: 12px;
   border-left-width: 5px;
   border-left-color: var(--channel, rgba(103, 90, 98, 0.44));
@@ -439,6 +443,15 @@
   white-space: nowrap;
 }
 
+.pipelineLane .itemCard strong,
+.planningPool .itemCard strong {
+  display: -webkit-box;
+  text-overflow: clip;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .itemCard > span:not(.cardMeta):not(.warningStrip),
 .lastCard small {
   overflow: hidden;
@@ -449,14 +462,26 @@
   white-space: nowrap;
 }
 
+.pipelineLane .itemCard > span:not(.cardMeta):not(.warningStrip),
+.planningPool .itemCard > span:not(.cardMeta):not(.warningStrip) {
+  display: -webkit-box;
+  text-overflow: clip;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .cardMeta {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   align-items: center;
+  min-width: 0;
 }
 
 .cardMeta > span:not(.channelChip):not(.stageChip) {
+  max-width: 100%;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -468,11 +493,22 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  min-width: 0;
 }
 
 .warningChip {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.pipelineLane .warningChip,
+.planningPool .warningChip {
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .emptyState {
@@ -601,6 +637,9 @@
 .planningPool {
   display: grid;
   gap: 14px;
+  max-height: min(72vh, 780px);
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .planningPoolSection {
@@ -613,6 +652,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  min-width: 0;
+}
+
+.poolHeaderTitle {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
 }
 
 .poolHeader h3 {
@@ -622,7 +668,22 @@
   letter-spacing: 0;
 }
 
-.poolHeader span {
+.poolHint {
+  color: var(--hq-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.poolControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.poolCount {
   display: inline-grid;
   min-width: 30px;
   height: 30px;
@@ -634,6 +695,18 @@
   font-weight: 900;
 }
 
+.poolToggle {
+  min-height: 30px;
+  padding: 5px 8px;
+  border: 1px solid rgba(1, 64, 71, 0.2);
+  border-radius: 999px;
+  background: rgba(1, 64, 71, 0.06);
+  color: var(--hq-night);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
 .pipelineView,
 .planningView,
 .monitoringView {
@@ -643,17 +716,21 @@
 
 .pipelineBoard {
   display: grid;
-  grid-template-columns: repeat(7, minmax(190px, 1fr));
+  grid-auto-columns: minmax(280px, 310px);
+  grid-auto-flow: column;
   gap: 12px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  padding-bottom: 10px;
+  overscroll-behavior-x: contain;
 }
 
 .pipelineLane {
   display: grid;
   align-content: start;
   gap: 12px;
+  min-width: 0;
   min-height: 560px;
+  overflow: hidden;
   padding: 12px;
 }
 
@@ -678,17 +755,60 @@
   font-size: 1.18rem;
 }
 
+.laneCards {
+  max-height: min(76vh, 780px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.laneMore {
+  padding: 10px;
+  border: 1px dashed var(--hq-line);
+  border-radius: 8px;
+  color: var(--hq-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
 .monitorTable {
   display: grid;
   gap: 7px;
+  overflow-x: auto;
+}
+
+.monitorSummary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: -4px;
+}
+
+.monitorSummary span {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(1, 64, 71, 0.14);
+  border-radius: 999px;
+  background: rgba(1, 64, 71, 0.08);
+  color: var(--hq-night);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.monitorSummary strong {
+  font-size: 1rem;
 }
 
 .monitorHeader,
 .monitorRow {
   display: grid;
-  grid-template-columns: 104px minmax(150px, 1fr) 84px 96px 104px minmax(160px, 0.8fr);
+  grid-template-columns: 118px minmax(230px, 1.1fr) minmax(280px, 1.3fr) 112px 126px minmax(190px, 0.8fr);
   gap: 8px;
   align-items: center;
+  min-width: 1060px;
 }
 
 .monitorHeader {
@@ -959,7 +1079,7 @@
 
   .monitorHeader,
   .monitorRow {
-    grid-template-columns: 100px minmax(180px, 1fr) 96px 100px 110px minmax(120px, 0.8fr);
+    grid-template-columns: 118px minmax(230px, 1.1fr) minmax(280px, 1.3fr) 112px 126px minmax(190px, 0.8fr);
   }
 }
 
@@ -970,6 +1090,7 @@
 
   .monitorRow {
     grid-template-columns: 1fr;
+    min-width: 0;
   }
 
   .monitorRow strong,

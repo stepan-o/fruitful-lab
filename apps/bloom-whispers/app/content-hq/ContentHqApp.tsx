@@ -94,6 +94,7 @@ const planningStageGroups: { label: PlanningStageLabel; stages: string[] }[] = [
   { label: "Research", stages: ["Needs Research", "Research Complete"] },
   { label: "Drafted", stages: ["Selected", "Drafted", "Editor Review"] },
 ];
+const collapsedPlanningBucketLimit = 5;
 
 const draftStages = new Set(["Selected", "Drafted", "Editor Review", "Ready To Produce", "In Production"]);
 const scheduledStages = new Set(["Ready To Schedule", "Scheduled"]);
@@ -261,6 +262,26 @@ function sortItems(items: ContentHqItem[]) {
   });
 }
 
+function sortMonitoringItems(items: ContentHqItem[]) {
+  return [...items].sort((a, b) => {
+    const postedDiff = field(b, "Last Posted Date").localeCompare(field(a, "Last Posted Date"));
+    if (postedDiff !== 0) return postedDiff;
+    const publishDiff = field(b, "Target Publish Date").localeCompare(field(a, "Target Publish Date"));
+    if (publishDiff !== 0) return publishDiff;
+    return titleFor(a).localeCompare(titleFor(b));
+  });
+}
+
+function isMonitoringItem(item: ContentHqItem) {
+  const stage = field(item, "Stage");
+  return publishedStages.has(stage) && field(item, "Asset Type") !== "Shop Operations";
+}
+
+function mergeItemsById(baseItems: ContentHqItem[], incomingItems: ContentHqItem[]) {
+  const incomingIds = new Set(incomingItems.map((item) => idFor(item)));
+  return [...incomingItems, ...baseItems.filter((item) => !incomingIds.has(idFor(item)))];
+}
+
 function warningsFor(item: ContentHqItem) {
   const warnings: string[] = [];
   const stage = field(item, "Stage");
@@ -339,8 +360,12 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
         try {
           const parsed = JSON.parse(saved) as ContentHqItem[];
           if (Array.isArray(parsed) && parsed.length > 0) {
-            setItems(parsed);
+            const mergedSavedItems = mergeItemsById(initialItems, parsed);
+            setItems(mergedSavedItems);
             setHasLocalEdits(true);
+            if (mergedSavedItems.length !== parsed.length) {
+              window.localStorage.setItem(STORAGE_KEY, JSON.stringify(mergedSavedItems));
+            }
           }
         } catch {
           window.localStorage.removeItem(STORAGE_KEY);
@@ -353,7 +378,7 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
       window.clearTimeout(hydrationTimer);
       document.body.classList.remove("content-hq-mode");
     };
-  }, []);
+  }, [initialItems]);
 
   useEffect(() => {
     if (!isHydrated || !syncKey || hasLocalEdits) return;
@@ -411,12 +436,18 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
         throw new Error(body.message || "Google Sheet sync is not ready yet.");
       }
 
-      setItems(body.items);
+      const mergedItems = mergeItemsById(initialItems, body.items);
+      const staticRows = mergedItems.length - body.items.length;
+
+      setItems(mergedItems);
       window.localStorage.removeItem(STORAGE_KEY);
       setHasLocalEdits(false);
       setSyncState({
         mode: "ready",
-        message: `Loaded ${body.items.length} rows from Google Sheet.`,
+        message:
+          staticRows > 0
+            ? `Loaded ${body.items.length} Sheet rows plus ${staticRows} site archive rows.`
+            : `Loaded ${body.items.length} rows from Google Sheet.`,
         syncedAt: body.generatedAt || new Date().toISOString(),
       });
     } catch (error) {
@@ -575,6 +606,11 @@ export function ContentHqApp({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [channelFilter, setChannelFilter] = useState<ChannelFilter>("All");
   const [planningMonth, setPlanningMonth] = useState("2026-08");
+  const [expandedPlanningBuckets, setExpandedPlanningBuckets] = useState<Record<PlanningStageLabel, boolean>>({
+    Drafted: false,
+    Idea: false,
+    Research: false,
+  });
 
   const selectedItem = selectedId ? (items.find((item) => idFor(item) === selectedId) ?? null) : null;
   const today = todayDate();
@@ -602,7 +638,8 @@ export function ContentHqApp({
     ...group,
     items: planningPoolItems.filter((item) => planningStageLabel(item) === group.label),
   }));
-  const monitoringRows = sortItems(workingItems.filter((item) => publishedStages.has(field(item, "Stage")) || field(item, "Publish URL")));
+  const monitoringRows = sortMonitoringItems(workingItems.filter(isMonitoringItem));
+  const missingMonitoringUrls = monitoringRows.filter((item) => !field(item, "Publish URL")).length;
   const visibleLastPostedChannels = channelFilter === "All" ? lastPostedChannels : lastPostedChannels.filter((channel) => channel === channelFilter);
   const calendarFeedUrl = syncKey ? contentHqApiUrl({ format: "ics", token: syncKey }) : "";
 
@@ -851,21 +888,50 @@ export function ContentHqApp({
                     }}
                   >
                     {planningPoolItems.length > 0 ? (
-                      planningBuckets.map((bucket) => (
-                        <section className={styles.planningPoolSection} key={bucket.label}>
-                          <div className={styles.poolHeader}>
-                            <h3>{bucket.label}</h3>
-                            <span>{bucket.items.length}</span>
-                          </div>
-                          <div className={styles.compactList}>
-                            {bucket.items.length > 0 ? (
-                              bucket.items.map((item) => <CardButton item={item} key={idFor(item)} onOpen={openItem} />)
-                            ) : (
-                              <EmptyState>No unscheduled {bucket.label.toLowerCase()} items.</EmptyState>
-                            )}
-                          </div>
-                        </section>
-                      ))
+                      planningBuckets.map((bucket) => {
+                        const isExpanded = expandedPlanningBuckets[bucket.label];
+                        const visibleItems = isExpanded ? bucket.items : bucket.items.slice(0, collapsedPlanningBucketLimit);
+                        const hiddenCount = Math.max(bucket.items.length - visibleItems.length, 0);
+
+                        return (
+                          <section className={styles.planningPoolSection} key={bucket.label}>
+                            <div className={styles.poolHeader}>
+                              <div className={styles.poolHeaderTitle}>
+                                <h3>{bucket.label}</h3>
+                                {bucket.items.length > collapsedPlanningBucketLimit ? (
+                                  <span className={styles.poolHint}>
+                                    Showing {visibleItems.length} of {bucket.items.length}
+                                  </span>
+                                ) : null}
+                              </div>
+                              <div className={styles.poolControls}>
+                                <span className={styles.poolCount}>{bucket.items.length}</span>
+                                {bucket.items.length > collapsedPlanningBucketLimit ? (
+                                  <button
+                                    className={styles.poolToggle}
+                                    onClick={() =>
+                                      setExpandedPlanningBuckets((current) => ({
+                                        ...current,
+                                        [bucket.label]: !current[bucket.label],
+                                      }))
+                                    }
+                                    type="button"
+                                  >
+                                    {isExpanded ? "Show fewer" : `Show ${hiddenCount} more`}
+                                  </button>
+                                ) : null}
+                              </div>
+                            </div>
+                            <div className={styles.compactList}>
+                              {visibleItems.length > 0 ? (
+                                visibleItems.map((item) => <CardButton item={item} key={idFor(item)} onOpen={openItem} />)
+                              ) : (
+                                <EmptyState>No unscheduled {bucket.label.toLowerCase()} items.</EmptyState>
+                              )}
+                            </div>
+                          </section>
+                        );
+                      })
                     ) : (
                       <EmptyState>All Idea, Research, and Drafted candidates already have a work date.</EmptyState>
                     )}
@@ -884,6 +950,7 @@ export function ContentHqApp({
               <div className={styles.pipelineBoard}>
                 {pipelineLanes.map((lane) => {
                   const laneItems = workingItems.filter((item) => lane.stages.includes(field(item, "Stage")));
+                  const visibleLaneItems = laneItems.slice(0, 18);
                   return (
                     <section
                       className={styles.pipelineLane}
@@ -899,9 +966,14 @@ export function ContentHqApp({
                         <span>{laneItems.length}</span>
                       </div>
                       <div className={styles.laneCards}>
-                        {laneItems.slice(0, 18).map((item) => (
+                        {visibleLaneItems.map((item) => (
                           <CardButton item={item} key={idFor(item)} onOpen={openItem} />
                         ))}
+                        {laneItems.length > visibleLaneItems.length ? (
+                          <div className={styles.laneMore}>
+                            Showing {visibleLaneItems.length} of {laneItems.length}. Use channel filters to narrow.
+                          </div>
+                        ) : null}
                       </div>
                     </section>
                   );
@@ -915,6 +987,14 @@ export function ContentHqApp({
               <div className={styles.sectionTitle}>
                 <span>Monitoring</span>
                 <h2>Published content dashboard</h2>
+              </div>
+              <div className={styles.monitorSummary}>
+                <span>
+                  <strong>{monitoringRows.length}</strong> live/archive rows
+                </span>
+                <span>
+                  <strong>{missingMonitoringUrls}</strong> missing URLs
+                </span>
               </div>
               <div className={styles.monitorTable} aria-label="Published content">
                 <div className={styles.monitorHeader}>

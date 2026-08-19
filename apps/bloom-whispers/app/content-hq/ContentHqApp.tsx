@@ -95,6 +95,14 @@ const planningStageGroups: { label: PlanningStageLabel; stages: string[] }[] = [
   { label: "Drafted", stages: ["Selected", "Drafted", "Editor Review"] },
 ];
 const collapsedPlanningBucketLimit = 5;
+const collapsedPipelineLaneLimit = 10;
+const staticBackfillFields = new Set([
+  "Publish URL",
+  "Last Posted Date",
+  "Last Checked",
+  "Metric Snapshot",
+  "Last Optimized Date",
+]);
 
 const draftStages = new Set(["Selected", "Drafted", "Editor Review", "Ready To Produce", "In Production"]);
 const scheduledStages = new Set(["Ready To Schedule", "Scheduled"]);
@@ -234,6 +242,11 @@ function isContent(item: ContentHqItem) {
   return itemChannel(item) !== "Unassigned";
 }
 
+function isPipelineItem(item: ContentHqItem) {
+  const assetType = field(item, "Asset Type");
+  return isContent(item) && assetType !== "Shop Operations" && assetType !== "Inventory Constraint";
+}
+
 function channelMatches(item: ContentHqItem, channel: string) {
   return itemChannel(item) === channel;
 }
@@ -278,8 +291,23 @@ function isMonitoringItem(item: ContentHqItem) {
 }
 
 function mergeItemsById(baseItems: ContentHqItem[], incomingItems: ContentHqItem[]) {
+  const baseById = new Map(baseItems.map((item) => [idFor(item), item]));
   const incomingIds = new Set(incomingItems.map((item) => idFor(item)));
-  return [...incomingItems, ...baseItems.filter((item) => !incomingIds.has(idFor(item)))];
+  const mergedIncomingItems = incomingItems.map((incomingItem) => {
+    const baseItem = baseById.get(idFor(incomingItem));
+    if (!baseItem) return incomingItem;
+
+    const mergedItem = { ...baseItem, ...incomingItem };
+    for (const key of staticBackfillFields) {
+      if (!field(mergedItem, key) && field(baseItem, key)) {
+        mergedItem[key] = field(baseItem, key);
+      }
+    }
+
+    return mergedItem;
+  });
+
+  return [...mergedIncomingItems, ...baseItems.filter((item) => !incomingIds.has(idFor(item)))];
 }
 
 function warningsFor(item: ContentHqItem) {
@@ -585,6 +613,38 @@ function CardButton({ item, onOpen }: { item: ContentHqItem; onOpen: (item: Cont
   );
 }
 
+function PipelineCardButton({ item, onOpen }: { item: ContentHqItem; onOpen: (item: ContentHqItem) => void }) {
+  const warnings = warningsFor(item);
+  const visibleWarning = warnings[0];
+  const description = field(item, "Next Action") || field(item, "Short Description") || "Open item details";
+
+  return (
+    <button
+      className={`${styles.pipelineCard} ${statusClass(item)}`}
+      draggable
+      onClick={() => onOpen(item)}
+      onDragStart={(event) => {
+        event.dataTransfer.setData("text/plain", idFor(item));
+      }}
+      type="button"
+    >
+      <span className={styles.pipelineCardMeta}>
+        <span>{idFor(item)}</span>
+        <ChannelBadge channel={itemChannel(item)} />
+        <StageBadge item={item} />
+      </span>
+      <strong>{titleFor(item)}</strong>
+      <span className={styles.pipelineCardBody}>{description}</span>
+      {visibleWarning ? (
+        <span className={styles.pipelineCardWarnings}>
+          <span className={`${styles.warningChip} ${warningClass(visibleWarning)}`}>{visibleWarning}</span>
+          {warnings.length > 1 ? <span className={styles.pipelineWarningCount}>+{warnings.length - 1}</span> : null}
+        </span>
+      ) : null}
+    </button>
+  );
+}
+
 function EmptyState({ children }: { children: ReactNode }) {
   return <div className={styles.emptyState}>{children}</div>;
 }
@@ -611,6 +671,7 @@ export function ContentHqApp({
     Idea: false,
     Research: false,
   });
+  const [expandedPipelineLanes, setExpandedPipelineLanes] = useState<Record<string, boolean>>({});
 
   const selectedItem = selectedId ? (items.find((item) => idFor(item) === selectedId) ?? null) : null;
   const today = todayDate();
@@ -628,6 +689,7 @@ export function ContentHqApp({
   const drafts = workingItems.filter((item) => draftStages.has(field(item, "Stage")));
   const scheduled = workingItems.filter((item) => scheduledStages.has(field(item, "Stage")));
   const published = workingItems.filter((item) => publishedStages.has(field(item, "Stage")));
+  const pipelineItems = workingItems.filter(isPipelineItem);
   const selectedMonthLabel = monthLabel(planningMonth);
   const workItemsThisMonth = workingItems.filter((item) => {
     const workDate = parseDate(field(item, "Work Date"));
@@ -949,8 +1011,10 @@ export function ContentHqApp({
               </div>
               <div className={styles.pipelineBoard}>
                 {pipelineLanes.map((lane) => {
-                  const laneItems = workingItems.filter((item) => lane.stages.includes(field(item, "Stage")));
-                  const visibleLaneItems = laneItems.slice(0, 18);
+                  const laneItems = pipelineItems.filter((item) => lane.stages.includes(field(item, "Stage")));
+                  const isLaneExpanded = Boolean(expandedPipelineLanes[lane.label]);
+                  const visibleLaneItems = isLaneExpanded ? laneItems : laneItems.slice(0, collapsedPipelineLaneLimit);
+                  const hiddenLaneItems = Math.max(laneItems.length - visibleLaneItems.length, 0);
                   return (
                     <section
                       className={styles.pipelineLane}
@@ -967,11 +1031,24 @@ export function ContentHqApp({
                       </div>
                       <div className={styles.laneCards}>
                         {visibleLaneItems.map((item) => (
-                          <CardButton item={item} key={idFor(item)} onOpen={openItem} />
+                          <PipelineCardButton item={item} key={idFor(item)} onOpen={openItem} />
                         ))}
-                        {laneItems.length > visibleLaneItems.length ? (
+                        {laneItems.length > collapsedPipelineLaneLimit ? (
                           <div className={styles.laneMore}>
-                            Showing {visibleLaneItems.length} of {laneItems.length}. Use channel filters to narrow.
+                            <span>
+                              Showing {visibleLaneItems.length} of {laneItems.length}.
+                            </span>
+                            <button
+                              onClick={() =>
+                                setExpandedPipelineLanes((current) => ({
+                                  ...current,
+                                  [lane.label]: !current[lane.label],
+                                }))
+                              }
+                              type="button"
+                            >
+                              {isLaneExpanded ? "Show fewer" : `Show ${hiddenLaneItems} more`}
+                            </button>
                           </div>
                         ) : null}
                       </div>

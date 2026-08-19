@@ -502,7 +502,6 @@
   text-overflow: ellipsis;
 }
 
-.pipelineLane .warningChip,
 .planningPool .warningChip {
   width: 100%;
   justify-content: flex-start;
@@ -716,31 +715,39 @@
 
 .pipelineBoard {
   display: grid;
-  grid-auto-columns: minmax(280px, 310px);
+  grid-auto-columns: 380px;
   grid-auto-flow: column;
-  gap: 12px;
+  gap: 14px;
+  max-width: 100%;
   overflow-x: auto;
-  padding-bottom: 10px;
+  padding: 2px 2px 14px;
   overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
 }
 
 .pipelineLane {
   display: grid;
   align-content: start;
   gap: 12px;
+  width: 380px;
   min-width: 0;
-  min-height: 560px;
+  max-width: min(86vw, 380px);
+  min-height: 640px;
   overflow: hidden;
-  padding: 12px;
+  padding: 14px;
+  scroll-snap-align: start;
 }
 
 .laneHeader {
   display: flex;
+  min-width: 0;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .laneHeader span {
+  flex: 0 0 auto;
   display: inline-grid;
   min-width: 34px;
   height: 34px;
@@ -752,16 +759,126 @@
 }
 
 .laneHeader h2 {
-  font-size: 1.18rem;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 1.3rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .laneCards {
-  max-height: min(76vh, 780px);
+  align-content: start;
+  max-height: min(74vh, 760px);
   overflow-y: auto;
+  overflow-x: hidden;
   padding-right: 4px;
 }
 
+.pipelineCard {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 132px;
+  overflow: hidden;
+  padding: 12px 12px 12px 14px;
+  border: 1px solid var(--hq-line);
+  border-left-width: 6px;
+  border-left-color: var(--channel, rgba(103, 90, 98, 0.44));
+  border-radius: 8px;
+  background: var(--hq-white);
+  color: var(--hq-ink);
+  text-align: left;
+}
+
+.pipelineCardMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+  color: var(--hq-muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.pipelineCard .channelChip,
+.pipelineCard .stageChip {
+  max-width: 148px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pipelineCardMeta > span:not(.channelChip):not(.stageChip) {
+  max-width: 112px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pipelineCard strong {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 1.04rem;
+  line-height: 1.18;
+  text-overflow: clip;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.pipelineCardBody {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--hq-muted);
+  font-size: 0.9rem;
+  line-height: 1.28;
+  text-overflow: clip;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.pipelineCardWarnings {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.pipelineCardWarnings .warningChip {
+  flex: 1 1 auto;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pipelineWarningCount {
+  flex: 0 0 auto;
+  display: inline-grid;
+  min-width: 30px;
+  height: 24px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(70, 4, 60, 0.08);
+  color: var(--hq-plum);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
 .laneMore {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
   padding: 10px;
   border: 1px dashed var(--hq-line);
   border-radius: 8px;
@@ -769,6 +886,22 @@
   font-size: 0.78rem;
   font-weight: 800;
   line-height: 1.35;
+}
+
+.laneMore span {
+  min-width: 0;
+}
+
+.laneMore button {
+  min-height: 30px;
+  padding: 5px 9px;
+  border: 1px solid rgba(1, 64, 71, 0.2);
+  border-radius: 999px;
+  background: rgba(1, 64, 71, 0.06);
+  color: var(--hq-night);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .monitorTable {

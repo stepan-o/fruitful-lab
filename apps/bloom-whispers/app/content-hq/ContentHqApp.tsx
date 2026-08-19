@@ -17,6 +17,7 @@ type SyncState = {
 };
 
 const STORAGE_KEY = "bloom-whispers-content-hq-local-v1";
+const DIRTY_FIELDS_STORAGE_KEY = "bloom-whispers-content-hq-dirty-fields-v1";
 const SYNC_KEY_STORAGE_KEY = "bloom-whispers-content-hq-sync-key-v1";
 const CONTENT_HQ_API_PATH = "/api/content-hq";
 const CONTENT_HQ_API_ORIGIN = "https://bloomwhispers.com";
@@ -103,6 +104,39 @@ const staticBackfillFields = new Set([
   "Metric Snapshot",
   "Last Optimized Date",
 ]);
+const sheetEditableFields = [
+  "Asset / Idea",
+  "Ecosystem Area",
+  "Stage",
+  "Priority",
+  "Seasonality",
+  "Work Date",
+  "Target Publish Date",
+  "Topic / Cluster",
+  "Planning Month",
+  "Pillar",
+  "Audience",
+  "Short Description",
+  "CTA / Goal",
+  "Copy / Captions",
+  "Examples",
+  "Affiliate Angle",
+  "Canva Design URL",
+  "Canva Template URL",
+  "Visual Asset Status",
+  "Next Action",
+  "Susy Input",
+  "Blocked By",
+  "Missing / Incomplete Items",
+  "Publish URL",
+  "Last Posted Date",
+  "Last Optimized Date",
+  "Last Updated",
+  "Last Checked",
+  "Source / Evidence",
+  "Notes",
+  "Metric Snapshot",
+];
 
 const draftStages = new Set(["Selected", "Drafted", "Editor Review", "Ready To Produce", "In Production"]);
 const scheduledStages = new Set(["Ready To Schedule", "Scheduled"]);
@@ -111,6 +145,19 @@ const activeStages = new Set(["Selected", "Drafted", "Editor Review", "Ready To 
 
 function field(item: ContentHqItem, key: string) {
   return item[key]?.trim() ?? "";
+}
+
+function rawField(item: ContentHqItem | undefined, key: string) {
+  return item?.[key] ?? "";
+}
+
+function dirtyFieldKey(id: string, key: string) {
+  return `${id}\u0000${key}`;
+}
+
+function parseDirtyFieldKey(value: string) {
+  const [id, key] = value.split("\u0000");
+  return id && key ? { id, key } : null;
 }
 
 function contentHqApiUrl(searchParams?: Record<string, string>) {
@@ -327,6 +374,25 @@ function mergeItemsById(baseItems: ContentHqItem[], incomingItems: ContentHqItem
   return [...mergedIncomingItems, ...baseItems.filter((item) => !incomingIds.has(idFor(item)))];
 }
 
+function inferDirtyFieldKeys(baseItems: ContentHqItem[], incomingItems: ContentHqItem[]) {
+  const baseById = new Map(baseItems.map((item) => [idFor(item), item]));
+  const dirtyKeys = new Set<string>();
+
+  for (const item of incomingItems) {
+    const id = idFor(item);
+    const baseItem = baseById.get(id);
+    if (!baseItem) continue;
+
+    for (const key of sheetEditableFields) {
+      if (rawField(item, key) !== rawField(baseItem, key)) {
+        dirtyKeys.add(dirtyFieldKey(id, key));
+      }
+    }
+  }
+
+  return dirtyKeys;
+}
+
 function warningsFor(item: ContentHqItem) {
   const warnings: string[] = [];
   const stage = field(item, "Stage");
@@ -385,16 +451,18 @@ function warningClass(warning: string) {
 function useContentHqItems(initialItems: ContentHqItem[]) {
   const [items, setItems] = useState(initialItems);
   const [isHydrated, setIsHydrated] = useState(false);
-  const [hasLocalEdits, setHasLocalEdits] = useState(false);
+  const [dirtyFieldKeys, setDirtyFieldKeys] = useState<Set<string>>(new Set());
   const [syncKey, setSyncKeyState] = useState("");
   const [syncState, setSyncState] = useState<SyncState>({
     mode: "local",
     message: "Local browser mode. Add the sync key after Cloudflare is configured.",
   });
+  const hasLocalEdits = dirtyFieldKeys.size > 0;
 
   useEffect(() => {
     document.body.classList.add("content-hq-mode");
     const saved = window.localStorage.getItem(STORAGE_KEY);
+    const savedDirtyFields = window.localStorage.getItem(DIRTY_FIELDS_STORAGE_KEY);
     const savedSyncKey = window.localStorage.getItem(SYNC_KEY_STORAGE_KEY) ?? "";
     const hydrationTimer = window.setTimeout(() => {
       if (savedSyncKey) {
@@ -406,14 +474,24 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
           const parsed = JSON.parse(saved) as ContentHqItem[];
           if (Array.isArray(parsed) && parsed.length > 0) {
             const mergedSavedItems = mergeItemsById(initialItems, parsed);
+            const parsedDirtyFields = savedDirtyFields ? JSON.parse(savedDirtyFields) : [];
+            const nextDirtyFields =
+              Array.isArray(parsedDirtyFields) && parsedDirtyFields.length > 0
+                ? new Set(parsedDirtyFields.filter((value): value is string => typeof value === "string"))
+                : inferDirtyFieldKeys(initialItems, parsed);
             setItems(mergedSavedItems);
-            setHasLocalEdits(true);
-            if (mergedSavedItems.length !== parsed.length) {
+            setDirtyFieldKeys(nextDirtyFields);
+            if (nextDirtyFields.size > 0 && mergedSavedItems.length !== parsed.length) {
               window.localStorage.setItem(STORAGE_KEY, JSON.stringify(mergedSavedItems));
+            }
+            if (nextDirtyFields.size === 0) {
+              window.localStorage.removeItem(STORAGE_KEY);
+              window.localStorage.removeItem(DIRTY_FIELDS_STORAGE_KEY);
             }
           }
         } catch {
           window.localStorage.removeItem(STORAGE_KEY);
+          window.localStorage.removeItem(DIRTY_FIELDS_STORAGE_KEY);
         }
       }
       setIsHydrated(true);
@@ -435,12 +513,35 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
   useEffect(() => {
     if (isHydrated && hasLocalEdits) {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      window.localStorage.setItem(DIRTY_FIELDS_STORAGE_KEY, JSON.stringify([...dirtyFieldKeys]));
+    } else if (isHydrated) {
+      window.localStorage.removeItem(STORAGE_KEY);
+      window.localStorage.removeItem(DIRTY_FIELDS_STORAGE_KEY);
     }
-  }, [hasLocalEdits, isHydrated, items]);
+  }, [dirtyFieldKeys, hasLocalEdits, isHydrated, items]);
+
+  async function postFieldUpdate(id: string, key: string, value: string) {
+    const response = await fetch(contentHqApiUrl(), {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        authorization: `Bearer ${syncKey}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ id, key, type: "update-field", value }),
+    });
+    const body = await readApiJson<{ ok?: boolean; item?: ContentHqItem; message?: string; savedAt?: string }>(response);
+
+    if (!response.ok || !body.ok) {
+      throw new Error(body.message || "Could not save to Google Sheet.");
+    }
+
+    return body;
+  }
 
   function updateItem(id: string, key: string, value: string) {
     setItems((current) => current.map((item) => (idFor(item) === id ? { ...item, [key]: value } : item)));
-    setHasLocalEdits(true);
+    setDirtyFieldKeys((current) => new Set(current).add(dirtyFieldKey(id, key)));
 
     if (syncKey) {
       void saveFieldToSheet(id, key, value);
@@ -486,7 +587,8 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
 
       setItems(mergedItems);
       window.localStorage.removeItem(STORAGE_KEY);
-      setHasLocalEdits(false);
+      window.localStorage.removeItem(DIRTY_FIELDS_STORAGE_KEY);
+      setDirtyFieldKeys(new Set());
       setSyncState({
         mode: "ready",
         message:
@@ -507,27 +609,17 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
     setSyncState({ mode: "saving", message: `Saving ${key}...` });
 
     try {
-      const response = await fetch(contentHqApiUrl(), {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          authorization: `Bearer ${syncKey}`,
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ id, key, type: "update-field", value }),
-      });
-      const body = await readApiJson<{ ok?: boolean; item?: ContentHqItem; message?: string; savedAt?: string }>(response);
-
-      if (!response.ok || !body.ok) {
-        throw new Error(body.message || "Could not save to Google Sheet.");
-      }
+      const body = await postFieldUpdate(id, key, value);
 
       if (body.item) {
         setItems((current) => current.map((item) => (idFor(item) === id ? { ...item, ...body.item } : item)));
       }
 
-      window.localStorage.removeItem(STORAGE_KEY);
-      setHasLocalEdits(false);
+      setDirtyFieldKeys((current) => {
+        const next = new Set(current);
+        next.delete(dirtyFieldKey(id, key));
+        return next;
+      });
       setSyncState({
         mode: "saved",
         message: `Saved ${key} to Google Sheet.`,
@@ -541,14 +633,79 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
     }
   }
 
+  async function saveLocalEditsToSheet() {
+    if (!syncKey) {
+      setSyncState({ mode: "local", message: "Paste the sync key before saving local edits to the Google Sheet." });
+      return;
+    }
+
+    const updates = [...dirtyFieldKeys]
+      .map(parseDirtyFieldKey)
+      .filter((update): update is { id: string; key: string } => Boolean(update))
+      .sort((a, b) => Number(a.key === "Last Updated") - Number(b.key === "Last Updated"));
+
+    if (updates.length === 0) {
+      setSyncState({ mode: "ready", message: "No local edits need saving." });
+      return;
+    }
+
+    setSyncState({ mode: "saving", message: `Saving ${updates.length} local changes to Google Sheet...` });
+
+    const savedKeys = new Set<string>();
+    const failures: string[] = [];
+    let savedAt = "";
+
+    for (const update of updates) {
+      const item = items.find((candidate) => idFor(candidate) === update.id);
+      if (!item) {
+        failures.push(`${update.id} ${update.key}`);
+        continue;
+      }
+
+      try {
+        const body = await postFieldUpdate(update.id, update.key, rawField(item, update.key));
+        savedAt = body.savedAt || savedAt;
+        savedKeys.add(dirtyFieldKey(update.id, update.key));
+
+        if (body.item) {
+          setItems((current) => current.map((candidate) => (idFor(candidate) === update.id ? { ...candidate, ...body.item } : candidate)));
+        }
+      } catch {
+        failures.push(`${update.id} ${update.key}`);
+      }
+    }
+
+    setDirtyFieldKeys((current) => {
+      const next = new Set(current);
+      for (const key of savedKeys) next.delete(key);
+      return next;
+    });
+
+    if (failures.length > 0) {
+      setSyncState({
+        mode: "error",
+        message: `Saved ${savedKeys.size} changes. ${failures.length} still need attention.`,
+        syncedAt: savedAt || new Date().toISOString(),
+      });
+      return;
+    }
+
+    setSyncState({
+      mode: "saved",
+      message: `Saved ${savedKeys.size} local changes to Google Sheet. Apple Calendar will refresh from the feed.`,
+      syncedAt: savedAt || new Date().toISOString(),
+    });
+  }
+
   function resetLocalEdits() {
     window.localStorage.removeItem(STORAGE_KEY);
+    window.localStorage.removeItem(DIRTY_FIELDS_STORAGE_KEY);
     setItems(initialItems);
-    setHasLocalEdits(false);
+    setDirtyFieldKeys(new Set());
     setSyncState(syncKey ? { mode: "ready", message: "Local edits discarded. Reload from Sheet when ready." } : { mode: "local", message: "Local edits discarded." });
   }
 
-  return { hasLocalEdits, items, reloadFromSheet, resetLocalEdits, setSyncKey, syncKey, syncState, updateItem };
+  return { hasLocalEdits, items, reloadFromSheet, resetLocalEdits, saveLocalEditsToSheet, setSyncKey, syncKey, syncState, updateItem };
 }
 
 function ChannelBadge({ channel }: { channel: string }) {
@@ -677,7 +834,8 @@ export function ContentHqApp({
   initialItems: ContentHqItem[];
   sheetUrl: string;
 }) {
-  const { hasLocalEdits, items, reloadFromSheet, resetLocalEdits, setSyncKey, syncKey, syncState, updateItem } = useContentHqItems(initialItems);
+  const { hasLocalEdits, items, reloadFromSheet, resetLocalEdits, saveLocalEditsToSheet, setSyncKey, syncKey, syncState, updateItem } =
+    useContentHqItems(initialItems);
   const [view, setView] = useState<View>("home");
   const [homeList, setHomeList] = useState<HomeList>("drafts");
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -813,9 +971,16 @@ export function ContentHqApp({
             value={syncKey}
           />
         </label>
-        <button onClick={reloadFromSheet} type="button">
-          Reload from Sheet
-        </button>
+        <div className={styles.syncActions}>
+          {hasLocalEdits ? (
+            <button className={styles.primarySyncAction} disabled={!syncKey || syncState.mode === "saving"} onClick={saveLocalEditsToSheet} type="button">
+              Save local edits to Sheet
+            </button>
+          ) : null}
+          <button disabled={hasLocalEdits || syncState.mode === "loading" || syncState.mode === "saving"} onClick={reloadFromSheet} type="button">
+            Reload from Sheet
+          </button>
+        </div>
         {calendarFeedUrl ? (
           <a href={calendarFeedUrl} target="_blank" rel="noreferrer">
             Apple work calendar feed
@@ -827,7 +992,7 @@ export function ContentHqApp({
 
       {hasLocalEdits ? (
         <div className={styles.localNotice}>
-          <span>Local browser edits are active. With sync configured, field changes save to the Google Sheet after you leave the field.</span>
+          <span>Local browser edits are active. Save them to the Sheet before reloading; Apple Calendar only sees Sheet changes.</span>
           <button onClick={resetLocalEdits} type="button">
             Discard dashboard edits
           </button>

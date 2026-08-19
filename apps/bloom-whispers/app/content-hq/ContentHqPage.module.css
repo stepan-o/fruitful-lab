@@ -173,7 +173,7 @@
 
 .syncPanel {
   display: grid;
-  grid-template-columns: minmax(240px, 1fr) minmax(180px, 260px) auto auto;
+  grid-template-columns: minmax(240px, 1fr) minmax(180px, 260px) minmax(210px, auto) auto;
   gap: 10px;
   align-items: end;
   margin: -2px 0 12px;
@@ -229,6 +229,27 @@
   background: rgba(1, 64, 71, 0.08);
   color: var(--hq-night);
   font-weight: 900;
+}
+
+.syncActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.syncActions button {
+  flex: 1 1 150px;
+}
+
+.syncPanel .primarySyncAction {
+  border-color: rgba(1, 64, 71, 0.72);
+  background: var(--hq-night);
+  color: var(--hq-white);
+}
+
+.syncPanel button:disabled {
+  cursor: not-allowed;
+  opacity: 0.46;
 }
 
 .disabledSyncLink {

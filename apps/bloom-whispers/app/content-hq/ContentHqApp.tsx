@@ -251,6 +251,23 @@ function channelMatches(item: ContentHqItem, channel: string) {
   return itemChannel(item) === channel;
 }
 
+function isJournalPostMonitoringItem(item: ContentHqItem) {
+  return (
+    field(item, "Source / Evidence").includes("journalPosts.ts") &&
+    field(item, "Publish URL").includes("bloomwhispers.com") &&
+    field(item, "Asset Type") !== "Archive"
+  );
+}
+
+function monitoringChannel(item: ContentHqItem) {
+  if (isJournalPostMonitoringItem(item)) return "Blog";
+  return itemChannel(item);
+}
+
+function monitoringChannelMatches(item: ContentHqItem, channel: string) {
+  return monitoringChannel(item) === channel;
+}
+
 function priorityRank(item: ContentHqItem) {
   const priority = field(item, "Priority");
   if (priority.startsWith("P0")) return 0;
@@ -690,6 +707,10 @@ export function ContentHqApp({
   const scheduled = workingItems.filter((item) => scheduledStages.has(field(item, "Stage")));
   const published = workingItems.filter((item) => publishedStages.has(field(item, "Stage")));
   const pipelineItems = workingItems.filter(isPipelineItem);
+  const monitoringItems =
+    channelFilter === "All"
+      ? allContentItems
+      : allContentItems.filter((item) => monitoringChannelMatches(item, channelFilter));
   const selectedMonthLabel = monthLabel(planningMonth);
   const workItemsThisMonth = workingItems.filter((item) => {
     const workDate = parseDate(field(item, "Work Date"));
@@ -700,7 +721,8 @@ export function ContentHqApp({
     ...group,
     items: planningPoolItems.filter((item) => planningStageLabel(item) === group.label),
   }));
-  const monitoringRows = sortMonitoringItems(workingItems.filter(isMonitoringItem));
+  const monitoringRows = sortMonitoringItems(monitoringItems.filter(isMonitoringItem));
+  const journalMonitoringRows = monitoringRows.filter(isJournalPostMonitoringItem).length;
   const missingMonitoringUrls = monitoringRows.filter((item) => !field(item, "Publish URL")).length;
   const visibleLastPostedChannels = channelFilter === "All" ? lastPostedChannels : lastPostedChannels.filter((channel) => channel === channelFilter);
   const calendarFeedUrl = syncKey ? contentHqApiUrl({ format: "ics", token: syncKey }) : "";
@@ -1070,6 +1092,9 @@ export function ContentHqApp({
                   <strong>{monitoringRows.length}</strong> live/archive rows
                 </span>
                 <span>
+                  <strong>{journalMonitoringRows}</strong> journal URLs
+                </span>
+                <span>
                   <strong>{missingMonitoringUrls}</strong> missing URLs
                 </span>
               </div>
@@ -1086,10 +1111,11 @@ export function ContentHqApp({
                   monitoringRows.map((item) => {
                     const warnings = warningsFor(item);
                     const publishUrl = field(item, "Publish URL");
+                    const channel = monitoringChannel(item);
                     return (
-                      <button className={styles.monitorRow} key={idFor(item)} onClick={() => openItem(item)} type="button">
+                      <button className={`${styles.monitorRow} ${channelClass(channel)}`} key={idFor(item)} onClick={() => openItem(item)} type="button">
                         <span>
-                          <ChannelBadge channel={itemChannel(item)} />
+                          <ChannelBadge channel={channel} />
                         </span>
                         <strong>{titleFor(item)}</strong>
                         <span className={styles.urlText}>{publishUrl || "Missing URL"}</span>

@@ -653,12 +653,14 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
 
     const savedKeys = new Set<string>();
     const failures: string[] = [];
+    const failureReasons = new Set<string>();
     let savedAt = "";
 
     for (const update of updates) {
       const item = items.find((candidate) => idFor(candidate) === update.id);
       if (!item) {
         failures.push(`${update.id} ${update.key}`);
+        failureReasons.add(`Local item not found: ${update.id}`);
         continue;
       }
 
@@ -670,8 +672,9 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
         if (body.item) {
           setItems((current) => current.map((candidate) => (idFor(candidate) === update.id ? { ...candidate, ...body.item } : candidate)));
         }
-      } catch {
+      } catch (error) {
         failures.push(`${update.id} ${update.key}`);
+        failureReasons.add(error instanceof Error ? error.message : "Could not save to Google Sheet.");
       }
     }
 
@@ -682,9 +685,10 @@ function useContentHqItems(initialItems: ContentHqItem[]) {
     });
 
     if (failures.length > 0) {
+      const reasonSummary = [...failureReasons].slice(0, 2).join(" ");
       setSyncState({
         mode: "error",
-        message: `Saved ${savedKeys.size} changes. ${failures.length} still need attention.`,
+        message: `Saved ${savedKeys.size} changes. ${failures.length} failed. ${reasonSummary}`,
         syncedAt: savedAt || new Date().toISOString(),
       });
       return;

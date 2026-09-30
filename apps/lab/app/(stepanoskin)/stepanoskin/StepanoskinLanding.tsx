@@ -17,6 +17,7 @@ const menuItems = [
 const soundPreferenceKey = "stepanoskin_sound_v1";
 const soundPreferenceEvent = "stepanoskin:sound-preference";
 let sharedClang: HTMLAudioElement | null = null;
+let sharedTing: HTMLAudioElement | null = null;
 
 function getClang() {
     if (typeof window === "undefined") return null;
@@ -26,6 +27,16 @@ function getClang() {
         sharedClang.volume = 0.78;
     }
     return sharedClang;
+}
+
+function getTing() {
+    if (typeof window === "undefined") return null;
+    if (!sharedTing) {
+        sharedTing = new Audio("/stepanoskin/freesound_community-ting_1-47612.mp3");
+        sharedTing.preload = "auto";
+        sharedTing.volume = 0.3;
+    }
+    return sharedTing;
 }
 
 function subscribeToSoundPreference(onStoreChange: () => void) {
@@ -41,18 +52,88 @@ function getSoundPreference() {
     return window.localStorage.getItem(soundPreferenceKey) !== "off";
 }
 
+function createBoltPath(reverse = false) {
+    const startX = reverse ? 91 : 9;
+    const endX = reverse ? 46 : 54;
+    const startY = 22 + Math.random() * 20;
+    const endY = 56 + Math.random() * 24;
+    const points = [`M ${startX} ${startY.toFixed(1)}`];
+
+    for (let index = 1; index <= 7; index += 1) {
+        const progress = index / 7;
+        const x = startX + (endX - startX) * progress + (Math.random() - 0.5) * 7;
+        const y = startY + (endY - startY) * progress + (Math.random() - 0.5) * 11;
+        points.push(`L ${x.toFixed(1)} ${y.toFixed(1)}`);
+    }
+
+    return points.join(" ");
+}
+
 export default function StepanoskinLanding({ initialLocale }: { initialLocale: Locale }) {
     const router = useRouter();
     const [locale, setLocale] = useState<Locale>(initialLocale);
     const soundEnabled = useSyncExternalStore(subscribeToSoundPreference, getSoundPreference, () => true);
     const [isActivating, setIsActivating] = useState(false);
     const pointerFrameRef = useRef<number | null>(null);
+    const lastTingRef = useRef(0);
+    const logoFxRef = useRef<HTMLDivElement | null>(null);
+    const primaryBoltRef = useRef<SVGPathElement | null>(null);
+    const secondaryBoltRef = useRef<SVGPathElement | null>(null);
     const copy = translations[locale];
 
     useEffect(() => {
         getClang();
+        getTing();
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let glitchTimer: number | undefined;
+        let burstTimer: number | undefined;
+        let stopped = false;
+
+        function scheduleGlitch() {
+            if (stopped || reducedMotion.matches) return;
+            glitchTimer = window.setTimeout(runGlitch, 2400 + Math.random() * 5200);
+        }
+
+        function runGlitch() {
+            const fx = logoFxRef.current;
+            if (!fx || stopped || reducedMotion.matches) return;
+
+            fx.querySelectorAll<HTMLElement>("[data-glitch-band]").forEach((band, index) => {
+                const top = 14 + Math.random() * 66;
+                const height = 2 + Math.random() * 8;
+                band.style.clipPath = `polygon(0 ${top}%, 100% ${top}%, 100% ${top + height}%, 0 ${top + height}%)`;
+                band.style.setProperty("--band-shift", `${(Math.random() - 0.5) * (index + 1) * 13}px`);
+            });
+            primaryBoltRef.current?.setAttribute("d", createBoltPath());
+            secondaryBoltRef.current?.setAttribute("d", createBoltPath(true));
+            fx.style.setProperty("--flash-x", `${24 + Math.random() * 52}%`);
+            fx.style.setProperty("--flash-y", `${22 + Math.random() * 48}%`);
+            fx.classList.remove(styles.logoBurst);
+            void fx.offsetWidth;
+            fx.classList.add(styles.logoBurst);
+
+            burstTimer = window.setTimeout(() => {
+                fx.classList.remove(styles.logoBurst);
+                scheduleGlitch();
+            }, 190 + Math.random() * 130);
+        }
+
+        function handleMotionPreference() {
+            if (glitchTimer) window.clearTimeout(glitchTimer);
+            if (burstTimer) window.clearTimeout(burstTimer);
+            logoFxRef.current?.classList.remove(styles.logoBurst);
+            scheduleGlitch();
+        }
+
+        reducedMotion.addEventListener("change", handleMotionPreference);
+        scheduleGlitch();
 
         return () => {
+            stopped = true;
+            if (glitchTimer) window.clearTimeout(glitchTimer);
+            if (burstTimer) window.clearTimeout(burstTimer);
+            reducedMotion.removeEventListener("change", handleMotionPreference);
             if (pointerFrameRef.current !== null) cancelAnimationFrame(pointerFrameRef.current);
         };
     }, []);
@@ -63,9 +144,23 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
 
     function playClang() {
         const clang = getClang();
+        const ting = getTing();
         if (!soundEnabled || !clang) return;
+        if (ting) {
+            ting.pause();
+            ting.currentTime = 0;
+        }
         clang.currentTime = 0.18;
         void clang.play().catch(() => undefined);
+    }
+
+    function playTing() {
+        const ting = getTing();
+        const now = Date.now();
+        if (!soundEnabled || !ting || now - lastTingRef.current < 180) return;
+        lastTingRef.current = now;
+        ting.currentTime = 0;
+        void ting.play().catch(() => undefined);
     }
 
     function toggleSound() {
@@ -159,6 +254,15 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                         sizes="(max-width: 720px) 94vw, 760px"
                         priority
                     />
+                    <div className={styles.logoFx} ref={logoFxRef} aria-hidden="true">
+                        {Array.from({ length: 4 }, (_, index) => (
+                            <i className={styles.glitchBand} data-glitch-band key={index} />
+                        ))}
+                        <svg className={styles.electricField} viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path ref={primaryBoltRef} />
+                            <path ref={secondaryBoltRef} />
+                        </svg>
+                    </div>
                 </div>
 
                 <div className={styles.menuShell}>
@@ -173,6 +277,8 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                                 className={styles.menuItem}
                                 href={item.href}
                                 key={item.id}
+                                onPointerEnter={(event) => event.pointerType !== "touch" && playTing()}
+                                onFocus={(event) => event.currentTarget.matches(":focus-visible") && playTing()}
                                 onClick={(event) => activateMenu(event, item.href)}
                             >
                                 <span className={styles.itemIndex}>{String(index + 1).padStart(2, "0")}</span>

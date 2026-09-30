@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import styles from "./stepanoskin.module.css";
 import { localeCookieName, localeNames, locales, translations, type Locale } from "./translations";
 
@@ -16,6 +16,17 @@ const menuItems = [
 
 const soundPreferenceKey = "stepanoskin_sound_v1";
 const soundPreferenceEvent = "stepanoskin:sound-preference";
+let sharedClang: HTMLAudioElement | null = null;
+
+function getClang() {
+    if (typeof window === "undefined") return null;
+    if (!sharedClang) {
+        sharedClang = new Audio("/stepanoskin/dobcommunications-metal-clang-284809.mp3");
+        sharedClang.preload = "auto";
+        sharedClang.volume = 0.78;
+    }
+    return sharedClang;
+}
 
 function subscribeToSoundPreference(onStoreChange: () => void) {
     window.addEventListener("storage", onStoreChange);
@@ -35,21 +46,14 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
     const [locale, setLocale] = useState<Locale>(initialLocale);
     const soundEnabled = useSyncExternalStore(subscribeToSoundPreference, getSoundPreference, () => true);
     const [isActivating, setIsActivating] = useState(false);
-    const clangRef = useRef<HTMLAudioElement | null>(null);
-    const audioContextRef = useRef<AudioContext | null>(null);
-    const lastTickRef = useRef(0);
     const pointerFrameRef = useRef<number | null>(null);
     const copy = translations[locale];
 
     useEffect(() => {
-        const clang = new Audio("/stepanoskin/dobcommunications-metal-clang-284809.mp3");
-        clang.preload = "auto";
-        clang.volume = 0.42;
-        clangRef.current = clang;
+        getClang();
 
         return () => {
             if (pointerFrameRef.current !== null) cancelAnimationFrame(pointerFrameRef.current);
-            audioContextRef.current?.close();
         };
     }, []);
 
@@ -57,37 +61,11 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
         document.documentElement.lang = locale;
     }, [locale]);
 
-    const playMetalTick = useCallback(() => {
-        if (!soundEnabled || Date.now() - lastTickRef.current < 90) return;
-        lastTickRef.current = Date.now();
-
-        const context = audioContextRef.current ?? new AudioContext();
-        audioContextRef.current = context;
-        const now = context.currentTime;
-        const output = context.createGain();
-        const highpass = context.createBiquadFilter();
-        highpass.type = "highpass";
-        highpass.frequency.value = 1100;
-        output.gain.setValueAtTime(0.0001, now);
-        output.gain.exponentialRampToValueAtTime(0.032, now + 0.004);
-        output.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
-        highpass.connect(output).connect(context.destination);
-
-        [1680, 2490].forEach((frequency, index) => {
-            const oscillator = context.createOscillator();
-            oscillator.type = index === 0 ? "square" : "triangle";
-            oscillator.frequency.setValueAtTime(frequency, now);
-            oscillator.frequency.exponentialRampToValueAtTime(frequency * 0.72, now + 0.05);
-            oscillator.connect(highpass);
-            oscillator.start(now);
-            oscillator.stop(now + 0.06);
-        });
-    }, [soundEnabled]);
-
     function playClang() {
-        if (!soundEnabled || !clangRef.current) return;
-        clangRef.current.currentTime = 0;
-        void clangRef.current.play().catch(() => undefined);
+        const clang = getClang();
+        if (!soundEnabled || !clang) return;
+        clang.currentTime = 0.18;
+        void clang.play().catch(() => undefined);
     }
 
     function toggleSound() {
@@ -157,7 +135,6 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                         <select
                             value={locale}
                             onChange={(event) => changeLocale(event.target.value as Locale)}
-                            onPointerEnter={playMetalTick}
                             aria-label={copy.language}
                         >
                             {locales.map((availableLocale) => (
@@ -196,8 +173,6 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                                 className={styles.menuItem}
                                 href={item.href}
                                 key={item.id}
-                                onPointerEnter={(event) => event.pointerType !== "touch" && playMetalTick()}
-                                onFocus={playMetalTick}
                                 onClick={(event) => activateMenu(event, item.href)}
                             >
                                 <span className={styles.itemIndex}>{String(index + 1).padStart(2, "0")}</span>

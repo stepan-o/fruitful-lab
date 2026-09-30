@@ -14,10 +14,10 @@ The game-style menu is data-driven and sized for three to five future entries,
 while currently showing only Game Monetization. Art assets under
 `public/stepanoskin/` are sourced from the Loopforge repository. The landing
 page adds pointer depth, ambient embers, a short selection impact, and a
-localized persistent sound toggle. Hover/focus ticks are synthesized with the
-Web Audio API. The selection sound is Pixabay asset
+localized persistent sound toggle. The selection sound is Pixabay asset
 `dobcommunications-metal-clang-284809.mp3`, supplied by the project owner under
-the Pixabay Content License.
+the Pixabay Content License. Playback skips the source file's leading silence
+and continues across client-side navigation so its full decay remains audible.
 
 Parenthesized groups do not add a URL segment. Do not add a group-level
 `page.tsx`, which would conflict with the existing `/` page.

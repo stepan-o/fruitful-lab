@@ -3,6 +3,10 @@
     --acid: #e7df55;
     --amber: #d6a348;
     --muted: #8f9687;
+    --shift-x: 0px;
+    --shift-y: 0px;
+    --counter-shift-x: 0px;
+    --counter-shift-y: 0px;
     position: relative;
     min-height: 100svh;
     overflow: hidden;
@@ -17,7 +21,9 @@
 }
 
 .texture,
-.scanlines {
+.scanlines,
+.impactFlash,
+.ambientParticles {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -36,6 +42,45 @@
     opacity: 0.055;
     background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(255, 255, 255, 0.35) 4px);
 }
+
+.impactFlash {
+    z-index: 30;
+    opacity: 0;
+    background: radial-gradient(circle at 50% 62%, rgba(255, 244, 145, 0.38), rgba(231, 223, 85, 0.08) 24%, transparent 58%);
+    mix-blend-mode: screen;
+}
+
+.ambientParticles {
+    z-index: 1;
+    overflow: hidden;
+}
+
+.ambientParticles i {
+    position: absolute;
+    left: var(--particle-x);
+    bottom: -0.5rem;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--amber);
+    opacity: 0;
+    box-shadow: 0 0 7px rgba(214, 163, 72, 0.85);
+    animation: emberRise var(--particle-speed) linear infinite;
+    animation-delay: var(--particle-delay);
+}
+
+.ambientParticles i:nth-child(1) { --particle-x: 7%; --particle-speed: 8s; --particle-delay: -3s; }
+.ambientParticles i:nth-child(2) { --particle-x: 15%; --particle-speed: 11s; --particle-delay: -8s; }
+.ambientParticles i:nth-child(3) { --particle-x: 24%; --particle-speed: 7s; --particle-delay: -5s; }
+.ambientParticles i:nth-child(4) { --particle-x: 33%; --particle-speed: 13s; --particle-delay: -2s; }
+.ambientParticles i:nth-child(5) { --particle-x: 41%; --particle-speed: 9s; --particle-delay: -7s; }
+.ambientParticles i:nth-child(6) { --particle-x: 48%; --particle-speed: 12s; --particle-delay: -4s; }
+.ambientParticles i:nth-child(7) { --particle-x: 56%; --particle-speed: 8s; --particle-delay: -6s; }
+.ambientParticles i:nth-child(8) { --particle-x: 64%; --particle-speed: 10s; --particle-delay: -1s; }
+.ambientParticles i:nth-child(9) { --particle-x: 72%; --particle-speed: 14s; --particle-delay: -9s; }
+.ambientParticles i:nth-child(10) { --particle-x: 81%; --particle-speed: 9s; --particle-delay: -5s; }
+.ambientParticles i:nth-child(11) { --particle-x: 89%; --particle-speed: 12s; --particle-delay: -3s; }
+.ambientParticles i:nth-child(12) { --particle-x: 96%; --particle-speed: 7s; --particle-delay: -6s; }
 
 .topbar,
 .footer {
@@ -86,6 +131,37 @@
     white-space: nowrap;
 }
 
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.soundToggle {
+    display: grid;
+    place-items: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border: 1px solid rgba(214, 163, 72, 0.28);
+    background: #090b09;
+    color: var(--acid);
+    font: 700 0.66rem/1 monospace;
+    letter-spacing: -0.12em;
+    cursor: pointer;
+    transition: color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.soundToggle:hover,
+.soundToggle:focus-visible {
+    border-color: rgba(231, 223, 85, 0.72);
+    box-shadow: 0 0 16px rgba(231, 223, 85, 0.1);
+    outline: none;
+}
+
+.soundToggle[aria-pressed="false"] {
+    color: var(--muted);
+}
+
 .localeControl {
     display: flex;
     align-items: center;
@@ -124,6 +200,9 @@
     position: relative;
     width: min(100%, 38rem);
     margin: 0 auto clamp(-3rem, -4vw, -2rem);
+    transform: translate3d(var(--shift-x), var(--shift-y), 0);
+    transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
 }
 
 .logoGlow {
@@ -155,6 +234,9 @@
         #0b0d0c;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.76), inset 0 0 0 4px rgba(0, 0, 0, 0.55), inset 0 0 40px rgba(0, 0, 0, 0.76);
     clip-path: polygon(1.2rem 0, calc(100% - 1.2rem) 0, 100% 1.2rem, 100% calc(100% - 1.2rem), calc(100% - 1.2rem) 100%, 1.2rem 100%, 0 calc(100% - 1.2rem), 0 1.2rem);
+    transform: translate3d(var(--counter-shift-x), var(--counter-shift-y), 0);
+    transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
 }
 
 .menuShell::after {
@@ -239,6 +321,19 @@
     transform: translateX(0.35rem);
     box-shadow: 0 0 28px rgba(157, 155, 62, 0.13), inset 0 0 24px rgba(231, 223, 85, 0.04);
     outline: none;
+}
+
+.isActivating .stage {
+    animation: impactShake 210ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.isActivating .impactFlash {
+    animation: impactFlash 210ms ease-out both;
+}
+
+.isActivating .menuItem {
+    border-color: rgba(255, 242, 112, 0.95);
+    box-shadow: 0 0 46px rgba(231, 223, 85, 0.3), inset 0 0 36px rgba(231, 223, 85, 0.12);
 }
 
 .menuItem:hover::after,
@@ -327,6 +422,28 @@
     box-shadow: 0 0 9px #8fbc82;
 }
 
+@keyframes emberRise {
+    0% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.65); }
+    12% { opacity: 0.42; }
+    70% { opacity: 0.16; }
+    100% { opacity: 0; transform: translate3d(22px, -78vh, 0) scale(1.15); }
+}
+
+@keyframes impactShake {
+    0% { transform: translate3d(0, 0, 0); }
+    18% { transform: translate3d(-5px, 2px, 0); }
+    36% { transform: translate3d(5px, -2px, 0); }
+    54% { transform: translate3d(-3px, 1px, 0); }
+    72% { transform: translate3d(2px, -1px, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes impactFlash {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 @media (max-width: 640px) {
     .topbar {
         padding-block: 1rem;
@@ -370,6 +487,19 @@
     .menuItem,
     .menuItem::after,
     .itemAction span {
+        transition: none;
+    }
+
+    .ambientParticles {
+        display: none;
+    }
+
+    .logoWrap,
+    .menuShell,
+    .isActivating .stage,
+    .isActivating .impactFlash {
+        animation: none;
+        transform: none;
         transition: none;
     }
 }

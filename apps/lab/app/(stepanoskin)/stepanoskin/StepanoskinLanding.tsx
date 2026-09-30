@@ -17,7 +17,6 @@ const menuItems = [
 const soundPreferenceKey = "stepanoskin_sound_v1";
 const soundPreferenceEvent = "stepanoskin:sound-preference";
 let sharedClang: HTMLAudioElement | null = null;
-let sharedTing: HTMLAudioElement | null = null;
 
 function getClang() {
     if (typeof window === "undefined") return null;
@@ -27,16 +26,6 @@ function getClang() {
         sharedClang.volume = 0.78;
     }
     return sharedClang;
-}
-
-function getTing() {
-    if (typeof window === "undefined") return null;
-    if (!sharedTing) {
-        sharedTing = new Audio("/stepanoskin/freesound_community-ting_1-47612.mp3");
-        sharedTing.preload = "auto";
-        sharedTing.volume = 0.3;
-    }
-    return sharedTing;
 }
 
 function subscribeToSoundPreference(onStoreChange: () => void) {
@@ -75,7 +64,6 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
     const soundEnabled = useSyncExternalStore(subscribeToSoundPreference, getSoundPreference, () => true);
     const [isActivating, setIsActivating] = useState(false);
     const pointerFrameRef = useRef<number | null>(null);
-    const lastTingRef = useRef(0);
     const logoFxRef = useRef<HTMLDivElement | null>(null);
     const primaryBoltRef = useRef<SVGPathElement | null>(null);
     const secondaryBoltRef = useRef<SVGPathElement | null>(null);
@@ -83,7 +71,6 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
 
     useEffect(() => {
         getClang();
-        getTing();
 
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
         let glitchTimer: number | undefined;
@@ -92,37 +79,46 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
 
         function scheduleGlitch() {
             if (stopped || reducedMotion.matches) return;
-            glitchTimer = window.setTimeout(runGlitch, 2400 + Math.random() * 5200);
+            glitchTimer = window.setTimeout(runGlitch, 700 + Math.random() * 2100);
         }
 
         function runGlitch() {
             const fx = logoFxRef.current;
             if (!fx || stopped || reducedMotion.matches) return;
+            const wrap = fx.parentElement;
 
             fx.querySelectorAll<HTMLElement>("[data-glitch-band]").forEach((band, index) => {
-                const top = 14 + Math.random() * 66;
-                const height = 2 + Math.random() * 8;
+                const top = 5 + Math.random() * 77;
+                const height = 5 + Math.random() * Math.min(16, 94 - top);
                 band.style.clipPath = `polygon(0 ${top}%, 100% ${top}%, 100% ${top + height}%, 0 ${top + height}%)`;
-                band.style.setProperty("--band-shift", `${(Math.random() - 0.5) * (index + 1) * 13}px`);
+                const direction = Math.random() > 0.5 ? 1 : -1;
+                band.style.setProperty("--band-shift", `${direction * (14 + Math.random() * (22 + index * 4))}px`);
             });
             primaryBoltRef.current?.setAttribute("d", createBoltPath());
             secondaryBoltRef.current?.setAttribute("d", createBoltPath(true));
             fx.style.setProperty("--flash-x", `${24 + Math.random() * 52}%`);
             fx.style.setProperty("--flash-y", `${22 + Math.random() * 48}%`);
+            const burstDuration = `${340 + Math.random() * 230}ms`;
+            fx.style.setProperty("--burst-duration", burstDuration);
+            wrap?.style.setProperty("--burst-duration", burstDuration);
             fx.classList.remove(styles.logoBurst);
+            wrap?.classList.remove(styles.logoGlitching);
             void fx.offsetWidth;
             fx.classList.add(styles.logoBurst);
+            wrap?.classList.add(styles.logoGlitching);
 
             burstTimer = window.setTimeout(() => {
                 fx.classList.remove(styles.logoBurst);
+                wrap?.classList.remove(styles.logoGlitching);
                 scheduleGlitch();
-            }, 190 + Math.random() * 130);
+            }, 390 + Math.random() * 230);
         }
 
         function handleMotionPreference() {
             if (glitchTimer) window.clearTimeout(glitchTimer);
             if (burstTimer) window.clearTimeout(burstTimer);
             logoFxRef.current?.classList.remove(styles.logoBurst);
+            logoFxRef.current?.parentElement?.classList.remove(styles.logoGlitching);
             scheduleGlitch();
         }
 
@@ -144,23 +140,9 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
 
     function playClang() {
         const clang = getClang();
-        const ting = getTing();
         if (!soundEnabled || !clang) return;
-        if (ting) {
-            ting.pause();
-            ting.currentTime = 0;
-        }
         clang.currentTime = 0.18;
         void clang.play().catch(() => undefined);
-    }
-
-    function playTing() {
-        const ting = getTing();
-        const now = Date.now();
-        if (!soundEnabled || !ting || now - lastTingRef.current < 180) return;
-        lastTingRef.current = now;
-        ting.currentTime = 0;
-        void ting.play().catch(() => undefined);
     }
 
     function toggleSound() {
@@ -255,7 +237,7 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                         priority
                     />
                     <div className={styles.logoFx} ref={logoFxRef} aria-hidden="true">
-                        {Array.from({ length: 4 }, (_, index) => (
+                        {Array.from({ length: 7 }, (_, index) => (
                             <i className={styles.glitchBand} data-glitch-band key={index} />
                         ))}
                         <svg className={styles.electricField} viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -277,8 +259,6 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                                 className={styles.menuItem}
                                 href={item.href}
                                 key={item.id}
-                                onPointerEnter={(event) => event.pointerType !== "touch" && playTing()}
-                                onFocus={(event) => event.currentTarget.matches(":focus-visible") && playTing()}
                                 onClick={(event) => activateMenu(event, item.href)}
                             >
                                 <span className={styles.itemIndex}>{String(index + 1).padStart(2, "0")}</span>

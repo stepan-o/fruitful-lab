@@ -79,7 +79,7 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
 
         function scheduleGlitch() {
             if (stopped || reducedMotion.matches) return;
-            glitchTimer = window.setTimeout(runGlitch, 700 + Math.random() * 2100);
+            glitchTimer = window.setTimeout(runGlitch, 1500 + Math.random() * 3000);
         }
 
         function runGlitch() {
@@ -89,18 +89,18 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
 
             fx.querySelectorAll<HTMLElement>("[data-glitch-band]").forEach((band, index) => {
                 const top = 5 + Math.random() * 77;
-                const height = 5 + Math.random() * Math.min(16, 94 - top);
+                const height = 3 + Math.random() * 10;
                 band.style.clipPath = `polygon(0 ${top}%, 100% ${top}%, 100% ${top + height}%, 0 ${top + height}%)`;
                 const direction = Math.random() > 0.5 ? 1 : -1;
-                band.style.setProperty("--band-shift", `${direction * (14 + Math.random() * (22 + index * 4))}px`);
+                band.style.setProperty("--band-shift", `${direction * (7 + Math.random() * (11 + index * 2))}px`);
             });
             primaryBoltRef.current?.setAttribute("d", createBoltPath());
             secondaryBoltRef.current?.setAttribute("d", createBoltPath(true));
             fx.style.setProperty("--flash-x", `${24 + Math.random() * 52}%`);
             fx.style.setProperty("--flash-y", `${22 + Math.random() * 48}%`);
-            const burstDuration = `${340 + Math.random() * 230}ms`;
-            fx.style.setProperty("--burst-duration", burstDuration);
-            wrap?.style.setProperty("--burst-duration", burstDuration);
+            const burstDuration = 280 + Math.random() * 140;
+            fx.style.setProperty("--burst-duration", `${burstDuration}ms`);
+            wrap?.style.setProperty("--burst-duration", `${burstDuration}ms`);
             fx.classList.remove(styles.logoBurst);
             wrap?.classList.remove(styles.logoGlitching);
             void fx.offsetWidth;
@@ -111,7 +111,7 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                 fx.classList.remove(styles.logoBurst);
                 wrap?.classList.remove(styles.logoGlitching);
                 scheduleGlitch();
-            }, 390 + Math.random() * 230);
+            }, burstDuration + 100);
         }
 
         function handleMotionPreference() {
@@ -237,7 +237,7 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                         priority
                     />
                     <div className={styles.logoFx} ref={logoFxRef} aria-hidden="true">
-                        {Array.from({ length: 7 }, (_, index) => (
+                        {Array.from({ length: 5 }, (_, index) => (
                             <i className={styles.glitchBand} data-glitch-band key={index} />
                         ))}
                         <svg className={styles.electricField} viewBox="0 0 100 100" preserveAspectRatio="none">

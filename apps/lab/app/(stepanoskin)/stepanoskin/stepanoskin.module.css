@@ -237,7 +237,7 @@
     position: absolute;
     inset: 0;
     opacity: 0;
-    background: radial-gradient(circle at var(--flash-x, 50%) var(--flash-y, 50%), rgba(255, 252, 180, 0.82), rgba(186, 242, 214, 0.2) 8%, transparent 24%);
+    background: radial-gradient(circle at var(--flash-x, 50%) var(--flash-y, 50%), rgba(255, 255, 220, 0.96), rgba(148, 255, 213, 0.34) 13%, rgba(231, 223, 85, 0.12) 29%, transparent 48%);
     mix-blend-mode: screen;
 }
 
@@ -246,12 +246,12 @@
     inset: 0;
     opacity: 0;
     background: url("/stepanoskin/loopforge_factory_logo_main.webp") center / contain no-repeat;
-    filter: contrast(1.35) saturate(1.6) hue-rotate(14deg) drop-shadow(4px 0 rgba(106, 255, 209, 0.72)) drop-shadow(-4px 0 rgba(255, 211, 68, 0.62));
+    filter: contrast(1.55) saturate(2) hue-rotate(14deg) drop-shadow(8px 0 rgba(106, 255, 209, 0.86)) drop-shadow(-8px 0 rgba(255, 211, 68, 0.78));
     transform: translateX(var(--band-shift, 0));
 }
 
 .glitchBand:nth-child(even) {
-    filter: contrast(1.5) saturate(1.8) hue-rotate(-24deg) drop-shadow(5px 0 rgba(231, 223, 85, 0.74)) drop-shadow(-3px 0 rgba(118, 233, 255, 0.6));
+    filter: contrast(1.7) saturate(2.2) hue-rotate(-28deg) drop-shadow(10px 0 rgba(231, 223, 85, 0.88)) drop-shadow(-7px 0 rgba(118, 233, 255, 0.78));
 }
 
 .electricField {
@@ -261,13 +261,13 @@
     height: 83%;
     overflow: visible;
     opacity: 0;
-    filter: drop-shadow(0 0 2px #fff9a6) drop-shadow(0 0 8px rgba(164, 255, 218, 0.86));
+    filter: drop-shadow(0 0 3px #fffbd0) drop-shadow(0 0 13px rgba(130, 255, 211, 0.96));
 }
 
 .electricField path {
     fill: none;
     stroke: #f6ffc5;
-    stroke-width: 0.42;
+    stroke-width: 0.7;
     stroke-linecap: square;
     stroke-linejoin: bevel;
     vector-effect: non-scaling-stroke;
@@ -276,28 +276,39 @@
 
 .electricField path:last-child {
     stroke: #8af4d2;
-    stroke-width: 0.26;
+    stroke-width: 0.46;
     animation-delay: 42ms;
 }
 
 .logoBurst::after {
-    animation: logoFlash 260ms steps(3, end) both;
+    animation: logoFlash var(--burst-duration, 460ms) steps(5, end) both;
 }
 
 .logoBurst .glitchBand {
-    animation: logoSlice 230ms steps(2, end) both;
+    animation: logoSlice var(--burst-duration, 460ms) steps(4, end) both;
 }
 
 .logoBurst .glitchBand:nth-child(2) { animation-delay: 23ms; }
 .logoBurst .glitchBand:nth-child(3) { animation-delay: 61ms; }
 .logoBurst .glitchBand:nth-child(4) { animation-delay: 94ms; }
+.logoBurst .glitchBand:nth-child(5) { animation-delay: 37ms; }
+.logoBurst .glitchBand:nth-child(6) { animation-delay: 78ms; }
+.logoBurst .glitchBand:nth-child(7) { animation-delay: 112ms; }
 
 .logoBurst .electricField {
-    animation: electricReveal 260ms steps(3, end) both;
+    animation: electricReveal var(--burst-duration, 460ms) steps(5, end) both;
 }
 
 .logoBurst .electricField path {
-    animation: boltTravel 230ms linear both;
+    animation: boltTravel var(--burst-duration, 460ms) linear both;
+}
+
+.logoGlitching .logo {
+    animation: tvSignalTear var(--burst-duration, 460ms) steps(5, end) both;
+}
+
+.logoGlitching .logoGlow {
+    animation: voltageBloom var(--burst-duration, 460ms) steps(4, end) both;
 }
 
 .menuShell {
@@ -523,31 +534,55 @@
 
 @keyframes logoSlice {
     0%, 100% { opacity: 0; transform: translateX(0); }
-    18% { opacity: 0.8; transform: translateX(var(--band-shift, 5px)); }
-    42% { opacity: 0.18; transform: translateX(-3px); }
-    64% { opacity: 0.72; transform: translateX(3px); }
-    82% { opacity: 0.1; transform: translateX(-1px); }
+    10% { opacity: 0.92; transform: translateX(var(--band-shift, 20px)) scaleX(1.03); }
+    27% { opacity: 0.16; transform: translateX(-9px) scaleX(0.98); }
+    44% { opacity: 0.86; transform: translateX(12px) scaleX(1.055); }
+    61% { opacity: 0.26; transform: translateX(var(--band-shift, -18px)); }
+    78% { opacity: 0.76; transform: translateX(-16px) scaleX(1.02); }
+    91% { opacity: 0.12; transform: translateX(5px); }
 }
 
 @keyframes logoFlash {
     0%, 100% { opacity: 0; }
-    16% { opacity: 0.76; }
-    31% { opacity: 0.08; }
-    52% { opacity: 0.46; }
-    72% { opacity: 0; }
+    9% { opacity: 0.92; }
+    22% { opacity: 0.06; }
+    39% { opacity: 0.7; }
+    57% { opacity: 0.13; }
+    73% { opacity: 0.82; }
+    88% { opacity: 0; }
 }
 
 @keyframes electricReveal {
     0%, 100% { opacity: 0; }
-    12% { opacity: 0.95; }
-    34% { opacity: 0.12; }
-    53% { opacity: 0.78; }
-    76% { opacity: 0; }
+    8% { opacity: 1; }
+    23% { opacity: 0.08; }
+    38% { opacity: 0.94; }
+    54% { opacity: 0.2; }
+    69% { opacity: 0.88; }
+    86% { opacity: 0; }
 }
 
 @keyframes boltTravel {
     from { stroke-dashoffset: 18; }
     to { stroke-dashoffset: 0; }
+}
+
+@keyframes tvSignalTear {
+    0%, 100% { transform: translate(0) scale(1); filter: saturate(0.88) contrast(1.09) drop-shadow(0 20px 34px rgba(0, 0, 0, 0.9)); }
+    12% { transform: translate(-8px, 2px) scaleX(1.018); filter: saturate(1.6) contrast(1.34) brightness(1.18) drop-shadow(8px 0 rgba(76, 255, 202, 0.36)); }
+    28% { transform: translate(11px, -2px) scaleX(0.985); }
+    46% { transform: translate(-15px, 1px) scaleX(1.035); filter: saturate(2) contrast(1.45) brightness(0.92) drop-shadow(-10px 0 rgba(255, 218, 72, 0.42)); }
+    63% { transform: translate(7px, 0) scaleX(1.01); }
+    79% { transform: translate(-5px, -1px) scaleX(0.995); filter: saturate(1.4) contrast(1.22) brightness(1.25); }
+    91% { transform: translate(3px, 0) scale(1); }
+}
+
+@keyframes voltageBloom {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    18% { opacity: 0.82; transform: scale(1.22); background: rgba(190, 255, 220, 0.28); }
+    39% { opacity: 0.25; transform: scale(0.9); }
+    57% { opacity: 1; transform: scale(1.35); background: rgba(231, 223, 85, 0.34); }
+    76% { opacity: 0.45; transform: scale(1.05); }
 }
 
 @media (max-width: 640px) {

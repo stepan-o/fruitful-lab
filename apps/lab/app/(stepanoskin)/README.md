@@ -18,11 +18,9 @@ localized persistent sound toggle. The selection sound is Pixabay asset
 `dobcommunications-metal-clang-284809.mp3`, supplied by the project owner under
 the Pixabay Content License. Playback skips the source file's leading silence
 and continues across client-side navigation so its full decay remains audible.
-The hover and keyboard-focus cue uses the project-owner-supplied Pixabay asset
-`freesound_community-ting_1-47612.mp3` at reduced volume, with retrigger
-throttling to prevent stacked playback. Resting logo effects use randomized
-runtime geometry for glitch slices and regenerated SVG lightning paths; they
-stop when the visitor prefers reduced motion.
+Resting logo effects use randomized runtime geometry for broad television-style
+signal tears and regenerated SVG lightning paths. Bursts recur at irregular,
+short intervals and stop when the visitor prefers reduced motion.
 
 Parenthesized groups do not add a URL segment. Do not add a group-level
 `page.tsx`, which would conflict with the existing `/` page.

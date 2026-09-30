@@ -1,0 +1,375 @@
+.page {
+    --bone: #f1edc9;
+    --acid: #e7df55;
+    --amber: #d6a348;
+    --muted: #8f9687;
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background:
+        radial-gradient(circle at 50% 31%, rgba(174, 168, 72, 0.13), transparent 26rem),
+        radial-gradient(circle at 50% 110%, rgba(39, 89, 62, 0.17), transparent 42rem),
+        #020302;
+    color: var(--bone);
+    isolation: isolate;
+}
+
+.texture,
+.scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.texture {
+    z-index: -2;
+    background: url("/stepanoskin/noise_tile.webp") repeat;
+    background-size: 512px 512px;
+    opacity: 0.09;
+    mix-blend-mode: screen;
+}
+
+.scanlines {
+    z-index: 10;
+    opacity: 0.055;
+    background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(255, 255, 255, 0.35) 4px);
+}
+
+.topbar,
+.footer {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.35rem clamp(1.1rem, 4vw, 4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+}
+
+.topbar {
+    border-bottom: 1px solid rgba(214, 163, 72, 0.18);
+    background: linear-gradient(180deg, rgba(5, 7, 6, 0.96), rgba(5, 7, 6, 0.28));
+}
+
+.identity {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.72rem;
+    color: rgba(241, 237, 201, 0.7);
+}
+
+.identityMark {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgba(231, 223, 85, 0.56);
+    color: var(--acid);
+    font-size: 0;
+    transform: rotate(45deg);
+    box-shadow: inset 0 0 12px rgba(231, 223, 85, 0.08);
+}
+
+.identityMark::before {
+    content: "SO";
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    transform: rotate(-45deg);
+}
+
+.identityName {
+    white-space: nowrap;
+}
+
+.localeControl {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--muted);
+    font-size: 0.62rem;
+}
+
+.localeControl select {
+    min-width: 7.5rem;
+    border: 1px solid rgba(214, 163, 72, 0.28);
+    border-radius: 0;
+    padding: 0.58rem 2rem 0.58rem 0.75rem;
+    background: #090b09;
+    color: var(--bone);
+    font: inherit;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    cursor: pointer;
+}
+
+.localeControl select:focus-visible {
+    outline: 1px solid var(--acid);
+    outline-offset: 3px;
+}
+
+.stage {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 58rem);
+    margin: auto;
+    padding: clamp(0.25rem, 1.5vh, 1rem) clamp(1rem, 4vw, 2rem) clamp(1rem, 3vh, 2rem);
+}
+
+.logoWrap {
+    position: relative;
+    width: min(100%, 38rem);
+    margin: 0 auto clamp(-3rem, -4vw, -2rem);
+}
+
+.logoGlow {
+    position: absolute;
+    inset: 20% 16%;
+    border-radius: 50%;
+    background: rgba(231, 223, 85, 0.12);
+    filter: blur(60px);
+}
+
+.logo {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: saturate(0.88) contrast(1.09) drop-shadow(0 20px 34px rgba(0, 0, 0, 0.9));
+    -webkit-mask-image: radial-gradient(ellipse 66% 55% at 50% 48%, #000 48%, transparent 100%);
+    mask-image: radial-gradient(ellipse 66% 55% at 50% 48%, #000 48%, transparent 100%);
+}
+
+.menuShell {
+    position: relative;
+    width: min(100%, 43rem);
+    margin: 0 auto;
+    border: 1px solid rgba(214, 163, 72, 0.32);
+    background:
+        linear-gradient(140deg, rgba(255, 255, 255, 0.045), transparent 28%),
+        url("/stepanoskin/gunmetal_tile.webp") center / 540px auto,
+        #0b0d0c;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.76), inset 0 0 0 4px rgba(0, 0, 0, 0.55), inset 0 0 40px rgba(0, 0, 0, 0.76);
+    clip-path: polygon(1.2rem 0, calc(100% - 1.2rem) 0, 100% 1.2rem, 100% calc(100% - 1.2rem), calc(100% - 1.2rem) 100%, 1.2rem 100%, 0 calc(100% - 1.2rem), 0 1.2rem);
+}
+
+.menuShell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: url("/stepanoskin/glass_glare.webp") top center / 100% 52% no-repeat;
+    opacity: 0.11;
+    mix-blend-mode: screen;
+}
+
+.menuHeader {
+    padding: 1.2rem 1.4rem 1rem;
+    border-bottom: 1px solid rgba(214, 163, 72, 0.2);
+}
+
+.eyebrow {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--amber);
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+}
+
+.menuHeader h1 {
+    margin: 0;
+    font-family: var(--font-heading), sans-serif;
+    font-size: clamp(1.35rem, 3.5vw, 2rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow: 0 0 22px rgba(231, 223, 85, 0.12);
+}
+
+.menuList {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 0.7rem;
+    padding: 1rem;
+}
+
+.menuItem {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    min-height: 5.6rem;
+    padding: 0.9rem 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(116, 138, 109, 0.44);
+    background: linear-gradient(90deg, rgba(49, 70, 57, 0.72), rgba(14, 18, 15, 0.9));
+    color: var(--bone);
+    text-decoration: none;
+    transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.menuItem::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--acid);
+    box-shadow: 0 0 16px rgba(231, 223, 85, 0.55);
+}
+
+.menuItem::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 0 54%, rgba(231, 223, 85, 0.08) 67%, transparent 81%);
+    transform: translateX(-120%);
+    transition: transform 480ms ease;
+}
+
+.menuItem:hover,
+.menuItem:focus-visible {
+    border-color: rgba(231, 223, 85, 0.78);
+    transform: translateX(0.35rem);
+    box-shadow: 0 0 28px rgba(157, 155, 62, 0.13), inset 0 0 24px rgba(231, 223, 85, 0.04);
+    outline: none;
+}
+
+.menuItem:hover::after,
+.menuItem:focus-visible::after {
+    transform: translateX(120%);
+}
+
+.itemIndex {
+    color: var(--amber);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+}
+
+.itemCopy,
+.itemAction {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemCopy strong {
+    font-family: var(--font-heading), sans-serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: 400;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+}
+
+.itemCopy small {
+    margin-top: 0.25rem;
+    color: rgba(241, 237, 201, 0.56);
+    font-size: 0.72rem;
+}
+
+.itemAction {
+    align-items: flex-end;
+    gap: 0.14rem;
+    padding-left: 1.25rem;
+    border-left: 1px solid rgba(214, 163, 72, 0.18);
+    text-transform: uppercase;
+}
+
+.itemAction small {
+    color: #92b99a;
+    font-size: 0.5rem;
+    letter-spacing: 0.16em;
+}
+
+.itemAction strong {
+    color: var(--acid);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+}
+
+.itemAction span {
+    position: absolute;
+    right: 0.9rem;
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateX(-0.35rem);
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.menuItem:hover .itemAction span,
+.menuItem:focus-visible .itemAction span {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.footer {
+    border-top: 1px solid rgba(214, 163, 72, 0.1);
+    color: rgba(143, 150, 135, 0.58);
+    font-size: 0.52rem;
+}
+
+.systemStatus {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.systemStatus i {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: #8fbc82;
+    box-shadow: 0 0 9px #8fbc82;
+}
+
+@media (max-width: 640px) {
+    .topbar {
+        padding-block: 1rem;
+    }
+
+    .identityName,
+    .localeControl > span {
+        display: none;
+    }
+
+    .stage {
+        padding-inline: 0.8rem;
+    }
+
+    .logoWrap {
+        width: 112%;
+        margin-left: -6%;
+        margin-bottom: -1.8rem;
+    }
+
+    .menuHeader {
+        padding-inline: 1.1rem;
+    }
+
+    .menuItem {
+        grid-template-columns: auto 1fr;
+        gap: 0.75rem;
+        min-height: 5.2rem;
+    }
+
+    .itemAction {
+        display: none;
+    }
+
+    .itemCopy small {
+        font-size: 0.64rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menuItem,
+    .menuItem::after,
+    .itemAction span {
+        transition: none;
+    }
+}

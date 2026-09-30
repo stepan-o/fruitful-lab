@@ -5,6 +5,13 @@ Lab sandbox group with a pass-through layout. It inherits the root layout and
 serves the public `/stepanoskin` landing page without login. Its page lives at
 `(stepanoskin)/stepanoskin/page.tsx`.
 
+The Stepanoskin landing page uses Loopforge art assets and a data-driven game
+menu prepared for three to five destinations. Game Monetization is the first
+public choice. Native dictionaries cover English (default), French, Spanish,
+Russian, Mandarin Chinese, and Thai; the visitor's explicit locale is stored
+in the versioned `stepanoskin_locale_v1` browser cookie and shared with the
+destination placeholder.
+
 Status: current working memory as of 2026-05-21 after adding the Fruitful Lab customer site foundation.
 
 Use this file as the durable architectural memory for future Codex/LLM work on this repo. It records the structure, layers, contracts, and working patterns that should be assumed going forward unless code proves otherwise.

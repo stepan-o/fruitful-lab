@@ -1,5 +1,10 @@
 # Project Memory - Fruitful Lab
 
+Route-group update, 2026-09-30: `apps/lab/app/(stepanoskin)/` is a top-level
+Lab sandbox group with a pass-through layout. It inherits the root layout and
+serves the public `/stepanoskin` landing page without login. Its page lives at
+`(stepanoskin)/stepanoskin/page.tsx`.
+
 Status: current working memory as of 2026-05-21 after adding the Fruitful Lab customer site foundation.
 
 Use this file as the durable architectural memory for future Codex/LLM work on this repo. It records the structure, layers, contracts, and working patterns that should be assumed going forward unless code proves otherwise.

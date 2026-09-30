@@ -22,6 +22,8 @@ type Translation = {
     enter: string;
     available: string;
     systemOnline: string;
+    soundOn: string;
+    soundOff: string;
     moduleLoading: string;
     moduleDescription: string;
     backToMenu: string;
@@ -37,6 +39,8 @@ export const translations: Record<Locale, Translation> = {
         enter: "Enter",
         available: "Available",
         systemOnline: "System online",
+        soundOn: "Sound on",
+        soundOff: "Sound off",
         moduleLoading: "Module loading",
         moduleDescription: "The Game Monetization section is being assembled.",
         backToMenu: "Back to menu",
@@ -50,6 +54,8 @@ export const translations: Record<Locale, Translation> = {
         enter: "Entrer",
         available: "Disponible",
         systemOnline: "Système en ligne",
+        soundOn: "Son activé",
+        soundOff: "Son désactivé",
         moduleLoading: "Chargement du module",
         moduleDescription: "La section Monétisation des jeux est en cours d’assemblage.",
         backToMenu: "Retour au menu",
@@ -63,6 +69,8 @@ export const translations: Record<Locale, Translation> = {
         enter: "Entrar",
         available: "Disponible",
         systemOnline: "Sistema en línea",
+        soundOn: "Sonido activado",
+        soundOff: "Sonido desactivado",
         moduleLoading: "Cargando módulo",
         moduleDescription: "La sección de Monetización de videojuegos está en construcción.",
         backToMenu: "Volver al menú",
@@ -76,6 +84,8 @@ export const translations: Record<Locale, Translation> = {
         enter: "Войти",
         available: "Доступно",
         systemOnline: "Система в сети",
+        soundOn: "Звук включён",
+        soundOff: "Звук выключен",
         moduleLoading: "Загрузка модуля",
         moduleDescription: "Раздел о монетизации игр находится в разработке.",
         backToMenu: "Назад в меню",
@@ -89,6 +99,8 @@ export const translations: Record<Locale, Translation> = {
         enter: "进入",
         available: "可用",
         systemOnline: "系统在线",
+        soundOn: "声音开启",
+        soundOff: "声音关闭",
         moduleLoading: "模块加载中",
         moduleDescription: "游戏商业化内容正在构建中。",
         backToMenu: "返回菜单",
@@ -102,6 +114,8 @@ export const translations: Record<Locale, Translation> = {
         enter: "เข้าสู่",
         available: "พร้อมใช้งาน",
         systemOnline: "ระบบออนไลน์",
+        soundOn: "เปิดเสียง",
+        soundOff: "ปิดเสียง",
         moduleLoading: "กำลังโหลดโมดูล",
         moduleDescription: "ส่วนการสร้างรายได้จากเกมกำลังอยู่ระหว่างการพัฒนา",
         backToMenu: "กลับไปที่เมนู",

@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import styles from "./stepanoskin.module.css";
 import { localeCookieName, localeNames, locales, translations, type Locale } from "./translations";
 
@@ -13,9 +14,111 @@ const menuItems = [
     },
 ] as const;
 
+const soundPreferenceKey = "stepanoskin_sound_v1";
+const soundPreferenceEvent = "stepanoskin:sound-preference";
+
+function subscribeToSoundPreference(onStoreChange: () => void) {
+    window.addEventListener("storage", onStoreChange);
+    window.addEventListener(soundPreferenceEvent, onStoreChange);
+    return () => {
+        window.removeEventListener("storage", onStoreChange);
+        window.removeEventListener(soundPreferenceEvent, onStoreChange);
+    };
+}
+
+function getSoundPreference() {
+    return window.localStorage.getItem(soundPreferenceKey) !== "off";
+}
+
 export default function StepanoskinLanding({ initialLocale }: { initialLocale: Locale }) {
+    const router = useRouter();
     const [locale, setLocale] = useState<Locale>(initialLocale);
+    const soundEnabled = useSyncExternalStore(subscribeToSoundPreference, getSoundPreference, () => true);
+    const [isActivating, setIsActivating] = useState(false);
+    const clangRef = useRef<HTMLAudioElement | null>(null);
+    const audioContextRef = useRef<AudioContext | null>(null);
+    const lastTickRef = useRef(0);
+    const pointerFrameRef = useRef<number | null>(null);
     const copy = translations[locale];
+
+    useEffect(() => {
+        const clang = new Audio("/stepanoskin/dobcommunications-metal-clang-284809.mp3");
+        clang.preload = "auto";
+        clang.volume = 0.42;
+        clangRef.current = clang;
+
+        return () => {
+            if (pointerFrameRef.current !== null) cancelAnimationFrame(pointerFrameRef.current);
+            audioContextRef.current?.close();
+        };
+    }, []);
+
+    useEffect(() => {
+        document.documentElement.lang = locale;
+    }, [locale]);
+
+    const playMetalTick = useCallback(() => {
+        if (!soundEnabled || Date.now() - lastTickRef.current < 90) return;
+        lastTickRef.current = Date.now();
+
+        const context = audioContextRef.current ?? new AudioContext();
+        audioContextRef.current = context;
+        const now = context.currentTime;
+        const output = context.createGain();
+        const highpass = context.createBiquadFilter();
+        highpass.type = "highpass";
+        highpass.frequency.value = 1100;
+        output.gain.setValueAtTime(0.0001, now);
+        output.gain.exponentialRampToValueAtTime(0.032, now + 0.004);
+        output.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
+        highpass.connect(output).connect(context.destination);
+
+        [1680, 2490].forEach((frequency, index) => {
+            const oscillator = context.createOscillator();
+            oscillator.type = index === 0 ? "square" : "triangle";
+            oscillator.frequency.setValueAtTime(frequency, now);
+            oscillator.frequency.exponentialRampToValueAtTime(frequency * 0.72, now + 0.05);
+            oscillator.connect(highpass);
+            oscillator.start(now);
+            oscillator.stop(now + 0.06);
+        });
+    }, [soundEnabled]);
+
+    function playClang() {
+        if (!soundEnabled || !clangRef.current) return;
+        clangRef.current.currentTime = 0;
+        void clangRef.current.play().catch(() => undefined);
+    }
+
+    function toggleSound() {
+        const nextValue = !soundEnabled;
+        window.localStorage.setItem(soundPreferenceKey, nextValue ? "on" : "off");
+        window.dispatchEvent(new Event(soundPreferenceEvent));
+    }
+
+    function activateMenu(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        if (isActivating) return;
+        setIsActivating(true);
+        playClang();
+        navigator.vibrate?.(24);
+        window.setTimeout(() => router.push(href), 210);
+    }
+
+    function trackPointer(event: React.PointerEvent<HTMLElement>) {
+        if (event.pointerType === "touch" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const page = event.currentTarget;
+        const x = event.clientX / window.innerWidth - 0.5;
+        const y = event.clientY / window.innerHeight - 0.5;
+        if (pointerFrameRef.current !== null) cancelAnimationFrame(pointerFrameRef.current);
+        pointerFrameRef.current = requestAnimationFrame(() => {
+            page.style.setProperty("--shift-x", `${(x * 14).toFixed(2)}px`);
+            page.style.setProperty("--shift-y", `${(y * 10).toFixed(2)}px`);
+            page.style.setProperty("--counter-shift-x", `${(x * -3.1).toFixed(2)}px`);
+            page.style.setProperty("--counter-shift-y", `${(y * -2.2).toFixed(2)}px`);
+        });
+    }
 
     function changeLocale(nextLocale: Locale) {
         setLocale(nextLocale);
@@ -24,9 +127,13 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
     }
 
     return (
-        <main className={styles.page}>
+        <main className={`${styles.page} ${isActivating ? styles.isActivating : ""}`} onPointerMove={trackPointer}>
             <div className={styles.texture} aria-hidden="true" />
             <div className={styles.scanlines} aria-hidden="true" />
+            <div className={styles.ambientParticles} aria-hidden="true">
+                {Array.from({ length: 12 }, (_, index) => <i key={index} />)}
+            </div>
+            <div className={styles.impactFlash} aria-hidden="true" />
 
             <header className={styles.topbar}>
                 <div className={styles.identity} aria-label="Stepan Oskin">
@@ -34,20 +141,33 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                     <span className={styles.identityName}>Stepan Oskin</span>
                 </div>
 
-                <label className={styles.localeControl}>
-                    <span>{copy.language}</span>
-                    <select
-                        value={locale}
-                        onChange={(event) => changeLocale(event.target.value as Locale)}
-                        aria-label={copy.language}
+                <div className={styles.controls}>
+                    <button
+                        className={styles.soundToggle}
+                        type="button"
+                        onClick={toggleSound}
+                        aria-label={soundEnabled ? copy.soundOn : copy.soundOff}
+                        aria-pressed={soundEnabled}
+                        title={soundEnabled ? copy.soundOn : copy.soundOff}
                     >
-                        {locales.map((availableLocale) => (
-                            <option key={availableLocale} value={availableLocale}>
-                                {localeNames[availableLocale]}
-                            </option>
-                        ))}
-                    </select>
-                </label>
+                        <span aria-hidden="true">{soundEnabled ? "◖))" : "◖×"}</span>
+                    </button>
+                    <label className={styles.localeControl}>
+                        <span>{copy.language}</span>
+                        <select
+                            value={locale}
+                            onChange={(event) => changeLocale(event.target.value as Locale)}
+                            onPointerEnter={playMetalTick}
+                            aria-label={copy.language}
+                        >
+                            {locales.map((availableLocale) => (
+                                <option key={availableLocale} value={availableLocale}>
+                                    {localeNames[availableLocale]}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                </div>
             </header>
 
             <section className={styles.stage}>
@@ -72,7 +192,14 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
 
                     <nav className={styles.menuList} aria-label={copy.menuTitle}>
                         {menuItems.map((item, index) => (
-                            <Link className={styles.menuItem} href={item.href} key={item.id}>
+                            <Link
+                                className={styles.menuItem}
+                                href={item.href}
+                                key={item.id}
+                                onPointerEnter={(event) => event.pointerType !== "touch" && playMetalTick()}
+                                onFocus={playMetalTick}
+                                onClick={(event) => activateMenu(event, item.href)}
+                            >
                                 <span className={styles.itemIndex}>{String(index + 1).padStart(2, "0")}</span>
                                 <span className={styles.itemCopy}>
                                     <strong>{copy.gameMonetization}</strong>

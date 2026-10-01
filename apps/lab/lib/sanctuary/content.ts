@@ -1,4 +1,5 @@
 import type { Chapter, EvidenceSource } from "./types";
+import { chapterVisuals } from "./visual-content";
 
 export const parts = ["The fork", "Why the industry built it", "Why people play", "The machine", "Four goods", "The purchase path", "What the instrument cannot read"];
 export const revision = "2026-10-01";
@@ -14,6 +15,7 @@ export const sources: EvidenceSource[] = [
   { id: "reliquary", title: "Blizzard — Belial’s Return / Reliquaries (2025)", url: "https://news.blizzard.com/en-us/article/24189530/combat-deception-in-season-8-belials-return", note: "Dated launch rules: catalog access, earned Favor, a 99-token held balance, and bundle eligibility. Not a current-season price quote." },
   { id: "auction", title: "Blizzard — Diablo III Auction House Update (2013)", url: "https://news.blizzard.com/en-gb/article/10974978/diablo-iii-auction-house-update", note: "Blizzard said the auction houses undermined the core loot experience and announced their March 2014 removal." },
   { id: "concord", title: "PlayStation — An Important Update on Concord (2024)", url: "https://blog.playstation.com/2024/09/03/an-important-update-on-concord/", note: "Launch on August 23; September 3 notice announces September 6 shutdown and refunds. Does not establish development cost or total sales." },
+  { id: "concord-reveal", title: "PlayStation — Concord gameplay revealed (2024)", url: "https://blog.playstation.com/2024/05/30/concord-gameplay-revealed-launching-august-23-2024-on-ps5-and-pc/", note: "Publisher gameplay reveal and provenance for the PS5 capture available only in the local research edition. A historical image, not a currently playable service." },
   { id: "sony", title: "Sony — Game & Network Services investor presentation (2022)", url: "https://www.sony.com/en/SonyInfo/IR/library/presen/irday/pdf/2022/GNS_E.pdf", note: "Historical portfolio plans, including a forecast for live-service franchises. A forecast is not a delivered outcome." },
   { id: "halo", title: "Halo — Season 2: Lone Wolves launch (2022)", url: "https://www.halowaypoint.com/news/season-2-lone-wolves-launch", note: "Documents continuing access to premium passes; free-track access has different rules." },
   { id: "drg", title: "Ghost Ship Games — Reactivating seasons Q&A (2024)", url: "https://steamcommunity.com/games/DeepRockGalactic/announcements/detail/4195740093438639601", note: "Announced season selection and retained track progress. The illustrated proposal is explicitly work in progress." },
@@ -32,7 +34,7 @@ export const sources: EvidenceSource[] = [
   { id: "cyberpunk", title: "CD PROJEKT — Phantom Liberty expenditure disclosure (2023)", url: "https://www.cdprojekt.com/en/investors/regulatory-announcements/current-report-no-38-2023/", note: "Separates expansion production and marketing expenditure. Neither figure is a budget for repairing the base game." },
 ];
 
-export const chapters: Chapter[] = [
+const manuscript: Omit<Chapter,"visual">[] = [
   {
     id: "the-fork", part: 0, title: "The fork",
     lede: "Every revenue model makes a different request of the person holding the controller.",
@@ -66,7 +68,7 @@ export const chapters: Chapter[] = [
   },
   {
     id:"concord",part:1,title:"Concord",lede:"A multiplayer game has to attract people who can find other people to play with.",
-    paragraphs:["Concord launched on 23 August 2024. On 3 September, PlayStation announced it would go offline on 6 September and that purchases would be refunded. That short public sequence is sufficient to establish a severe commercial failure. Speculative budgets are not needed to make it dramatic.","A population-dependent game faces constraints that a solitary campaign does not. Region, mode, skill, platform and time of day divide the available population. A worldwide concurrent-player total cannot by itself tell us whether a particular queue will fill.","The design lesson is to test demand and the service’s ability to function before production commitments remove room to change direction. The announcement cannot tell us which internal decisions were decisive, or isolate price from differentiation, timing and execution."],takeaway:"Test the conditions required for the game to function.",figures:[{asset:"concord-shutdown-announcement-art",alt:"Concord promotional artwork with a group of characters",caption:"Key art accompanying the shutdown announcement. The linked statement, rather than this artwork, establishes the dates and refund policy.",credit:"Firewalk / PlayStation · September 2024"}],sources:["concord"],evidence:"No unsupported total-sales estimate, development-cost figure or minimum viable player threshold is presented. One failure cannot identify a universal cause."
+    paragraphs:["Concord launched on 23 August 2024. On 3 September, PlayStation announced it would go offline on 6 September and that purchases would be refunded. That short public sequence is sufficient to establish a severe commercial failure. Speculative budgets are not needed to make it dramatic.","A population-dependent game faces constraints that a solitary campaign does not. Region, mode, skill, platform and time of day divide the available population. A worldwide concurrent-player total cannot by itself tell us whether a particular queue will fill.","The design lesson is to test demand and the service’s ability to function before production commitments remove room to change direction. The announcement cannot tell us which internal decisions were decisive, or isolate price from differentiation, timing and execution."],takeaway:"Test the conditions required for the game to function.",figures:[{asset:"concord-shutdown-announcement-art",alt:"Concord promotional artwork with a group of characters",caption:"Key art accompanying the shutdown announcement. The linked statement, rather than this artwork, establishes the dates and refund policy.",credit:"Firewalk / PlayStation · September 2024"}],sources:["concord","concord-reveal"],evidence:"No unsupported total-sales estimate, development-cost figure or minimum viable player threshold is presented. One failure cannot identify a universal cause."
   },
   {
     id:"what-decides",part:1,title:"What a studio can learn in time",lede:"A production plan needs a way for evidence to change it.",
@@ -133,6 +135,12 @@ export const chapters: Chapter[] = [
     paragraphs:["Retention, purchases, playtime and completed objectives describe behavior. Interviews and well-designed surveys can investigate motives, satisfaction and regret. Revenue and operating cost describe another outcome again. None is a complete substitute for the others.","Experiments can identify causal effects under their design assumptions. Their duration, population, treatment exposure and chosen outcomes constrain what they establish. Microsoft’s research on long-term experiments discusses some of these problems; it does not say that experimentation is incapable of studying enduring value.","The handoff ends with Stepan’s own case: a level-eight Eternal Barbarian named funduck, and uncertainty about how to re-enter the game. One person cannot establish a population result. The case can still identify a concrete design question: does the returning player understand which character, realm and activity will deliver the experience they want?"],takeaway:"A useful metric should leave room for the player’s account of what happened.",panel:{title:"Four kinds of evidence",items:[{label:"Behavior",text:"What did people do?"},{label:"Experience",text:"How did they describe it?"},{label:"Business",text:"What value and costs resulted?"},{label:"Causality",text:"Which change produced which effect?"}]},figures:[{asset:"legacy-d4-char-select",alt:"Diablo IV Season Info popup over the owner’s character selection screen",caption:"The Season Info prompt distinguishes a new seasonal character from continuing in Eternal. This is not the missing Rebirth confirmation.",credit:"Blizzard · owner-provided handoff capture"}],sources:["experiment","sdt"],evidence:"Stepan’s case is attributed to his supplied handoff. Public concurrency cannot identify this individual’s retention or the cause of his decision."
   },
 ];
+
+// Every chapter has a scene, a conceptual diagram, and a reference screenshot.
+export const chapters: Chapter[] = manuscript.map(chapter => {
+  const visual=chapterVisuals[chapter.id];
+  return {...chapter,visual,figures:[visual.screenshot,...(chapter.figures??[]).filter(figure=>figure.asset!==visual.screenshot.asset)]};
+});
 
 export const appendix = [
   "Describe the player’s desired experience before choosing the metric.",

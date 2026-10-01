@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "npm run assets:check && next build",
     "assets:build": "node scripts/assets.mjs build",
-    "assets:check": "node scripts/assets.mjs check",
+    "assets:check": "node scripts/assets.mjs check && node scripts/research-assets.mjs",
     "assets:activate": "node scripts/assets.mjs activate",
     "assets:test": "node --test scripts/assets.node-check.mjs",
     "start": "next start",
@@ -14,7 +14,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "ci:test": "NODE_ENV=test jest",
-    "ci": "npm run assets:test && npm run ci:test && CI=1 npm run build"
+    "ci": "npm run assets:test && npm run ci:test && CI=1 npm run build",
+    "preresearch:dev": "node scripts/research-assets.mjs --required",
+    "research:dev": "STEPANOSKIN_RESEARCH_MODE=1 next dev --hostname 127.0.0.1 --port 3101",
+    "research:import": "node scripts/import-research.mjs"
   },
   "dependencies": {
     "@flags-sdk/growthbook": "^0.2.0",

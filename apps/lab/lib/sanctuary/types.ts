@@ -1,8 +1,10 @@
+import type { VisualSpec } from "./visual-content";
 export type EvidenceSource = { id: string; title: string; url: string; note: string };
 export type Figure = { asset: string; alt: string; caption: string; credit: string };
 export type Panel = { title: string; items: { label: string; text: string }[]; flow?: boolean };
 export type Chapter = {
   id: string;
+  visual: VisualSpec;
   part: number;
   title: string;
   lede: string;

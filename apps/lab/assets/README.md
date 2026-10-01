@@ -90,3 +90,20 @@ retaining old assets, byte-for-byte audio, alpha, no upscaling, rollback,
 integrity failures and over-budget rejection. Jest covers the reader's cache,
 deduplication, validation and failure fallback. Check actual response headers
 on the deployed pointer, manifest and file after publishing.
+
+## Local research media exception
+
+Sanctuary publisher screenshots are not public CDN releases. They have been
+withdrawn from the current `public/` tree and retained in an optional gitignored
+`assets/research/` archive. This rights-driven removal is an explicit exception
+to normal append-only retention, not a precedent for routine asset cleanup.
+Earlier immutable URLs in old deployments, Git history or browser caches are
+not retroactively erased.
+
+`research:import` installs the private pack; `research:dev` runs it only on local
+loopback in development, with analytics disabled. It serves images through the
+separate `/research-media/` route using private, no-store headers, not the public
+immutable cache rules. Production/Vercel reject this mode even with the flag set.
+`assets:check` rejects research variants under `public/` and verifies the archive
+when present. The public build does not require it. See
+`docs/sanctuary/README.md` for the exact workflow and media boundaries.

@@ -5,6 +5,7 @@ import Reader from "@/components/sanctuary/Reader";
 import { appendix, chapters, parts, sources } from "@/lib/sanctuary/content";
 import rawManifest from "@/lib/assets/generated/sanctuary.json";
 import { parseManifest, type AssetManifest } from "@/lib/assets/types";
+import { isInternalResearchMode } from "@/lib/stepanoskin/media-policy";
 import { isLocale, localeCookieName } from "../translations";
 
 export const metadata: Metadata = {
@@ -25,10 +26,11 @@ export default async function GameMonetizationPage({ searchParams }: {
     const index = typeof id === "string" ? chapters.findIndex(chapter => chapter.id === id) : -1;
     if (id !== undefined && index < 0) notFound();
     const current = chapters[index] ?? null;
-    const ids = current ? (current.figures ?? []).map(figure => figure.asset) : ["legacy-d4-key"];
+    const research = isInternalResearchMode();
+    const ids = research && current ? (current.figures ?? []).map(figure => figure.asset) : [];
     // Send only the current chapter and its media metadata to the client.
-    const assets: AssetManifest = { ...manifest, assets: Object.fromEntries(ids.map(id => [id, manifest.assets[id]])) };
-    return <Reader key={current?.id ?? "overview"} locale={locale} current={current} index={index}
+    const assets: AssetManifest = { ...manifest, assets: Object.fromEntries(ids.map(id => [id, { ...manifest.assets[id], variants: manifest.assets[id].variants.map(file => ({ ...file, src: file.src.replace("/media/files/", "/research-media/") })) }])) };
+    return <Reader key={current?.id ?? "overview"} locale={locale} research={research} current={current} index={index}
         navigation={chapters.map(({id, title, part}) => ({id, title, part}))} parts={parts}
         assets={assets} sources={sources.filter(source => current?.sources.includes(source.id))}
         rules={index === chapters.length - 1 ? appendix : []} />;

@@ -852,7 +852,7 @@
   border:0
 }
 @media(min-width:1250px) {
-  .headerControls>button {
+  .headerControls>.contentsButton {
     display:none
   }
 }
@@ -1082,3 +1082,15 @@
     display:none
   }
 }
+
+.layout {position:relative;z-index:2}
+.coverMural {position:absolute;z-index:-2;right:-3%;top:18px;width:57%;height:calc(100% - 8px);opacity:.9}
+.cover:after {background:linear-gradient(90deg,#0c0d0ce8,transparent 82%),linear-gradient(0deg,#0c0d0c,transparent 38%)}
+.headerControls>.preferenceButton {min-width:38px;padding:8px 9px}
+.researchNote {font:10px/1.7 Arial,sans-serif;letter-spacing:.14em;color:#cc9b5b;border:1px solid #705932;padding:12px 14px;margin-bottom:28px!important}
+.article {animation:chapter-arrive .4s ease-out both}
+@keyframes chapter-arrive {from{opacity:.5;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.reader[data-motion=off] *, .reader[data-motion=off] *::before,.reader[data-motion=off] *::after {animation:none!important;transition:none!important}
+@media(max-width:950px){.coverMural{width:65%;right:-5%;opacity:.72}}
+@media(max-width:560px){.coverMural{width:93%;height:510px;right:-31%;top:20px;opacity:.52}.header{padding-inline:18px}.brand{font-size:8px;gap:7px;letter-spacing:.12em}.brand>span{font-size:23px}.headerControls{gap:5px}.headerControls>.preferenceButton{min-width:31px;padding:5px;font-size:10px}.locale select{max-width:87px;padding-inline:5px}.headerControls>.contentsButton{padding:6px;min-width:31px}}
+@media(prefers-reduced-motion:reduce){.article{animation:none}}

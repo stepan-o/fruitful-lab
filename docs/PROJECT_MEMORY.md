@@ -4,8 +4,13 @@ Sanctuary reader, 2026-10-01: `/stepanoskin/game-monetization` serves the
 illustrated overview; `?chapter=<stable-id>` directly addresses any of 21
 chapters in seven parts. Server rendering sends only the selected chapter and
 its image metadata. The English editorial edition includes primary-source notes,
-17 illustrations, two hypothetical interactive models, and native zoom/contents
-dialogs. Navigation uses the six existing locales; body prose is explicitly
+21 original scenes and diagrams, two hypothetical interactive models, and native
+contents dialogs. A local-only research execution mode adds 23 optimized reference
+images and native zoom, requiring an ignored archive. It cannot be enabled in
+production/Vercel or by browser parameters. Publisher binaries and the public
+Sanctuary pack have been withdrawn from the active deployment. The cover uses an
+original procedural devil; ambient fire, embers and shared clang/motion controls
+restore the presentation atmosphere. Navigation uses the six existing locales; body prose is explicitly
 labeled English pending editorial approval and translation. Unknown chapter IDs
 return 404. See `docs/sanctuary/README.md` for content and provenance boundaries.
 

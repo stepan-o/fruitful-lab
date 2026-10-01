@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "pack": "stepanoskin",
+  "assets": {
+    "click": {
+      "kind": "audio",
+      "variants": [
+        {
+          "src": "/media/files/14fce7505a56e27599f18006d496de56e2c4c411a154aaf801e9da6aa248196b.mp3",
+          "mime": "audio/mpeg",
+          "bytes": 51827,
+          "sha256": "14fce7505a56e27599f18006d496de56e2c4c411a154aaf801e9da6aa248196b"
+        }
+      ]
+    },
+    "glare": {
+      "kind": "image",
+      "width": 768,
+      "height": 768,
+      "variants": [
+        {
+          "src": "/media/files/73177e28f30c53e10ee0b1a47164e66de9f3d9f554fd742453ebf7c318f1bae9.webp",
+          "mime": "image/webp",
+          "bytes": 23212,
+          "sha256": "73177e28f30c53e10ee0b1a47164e66de9f3d9f554fd742453ebf7c318f1bae9",
+          "width": 768,
+          "height": 768
+        }
+      ]
+    },
+    "gunmetal": {
+      "kind": "image",
+      "width": 512,
+      "height": 512,
+      "variants": [
+        {
+          "src": "/media/files/290dc32d1db9188b39d773146e5285f82c3cc02d4471a95943fe8e42cfc40fec.webp",
+          "mime": "image/webp",
+          "bytes": 16872,
+          "sha256": "290dc32d1db9188b39d773146e5285f82c3cc02d4471a95943fe8e42cfc40fec",
+          "width": 512,
+          "height": 512
+        }
+      ]
+    },
+    "logo": {
+      "kind": "image",
+      "width": 1152,
+      "height": 768,
+      "variants": [
+        {
+          "src": "/media/files/367bef7ac24324bdefe3a50bc9b341a7ec94f7181d21057ae3c7009b466caa7e.webp",
+          "mime": "image/webp",
+          "bytes": 42898,
+          "sha256": "367bef7ac24324bdefe3a50bc9b341a7ec94f7181d21057ae3c7009b466caa7e",
+          "width": 384,
+          "height": 256
+        },
+        {
+          "src": "/media/files/15f205aa4323c32a547ab84dd824fb9f5e328fe7b644b8e1b14859d618817903.webp",
+          "mime": "image/webp",
+          "bytes": 152560,
+          "sha256": "15f205aa4323c32a547ab84dd824fb9f5e328fe7b644b8e1b14859d618817903",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "src": "/media/files/9d2748a7dc5c1af72f8fada8db923a2c23921995a12311470688d8b5a3bb1ce0.webp",
+          "mime": "image/webp",
+          "bytes": 368596,
+          "sha256": "9d2748a7dc5c1af72f8fada8db923a2c23921995a12311470688d8b5a3bb1ce0",
+          "width": 1152,
+          "height": 768
+        }
+      ]
+    },
+    "noise": {
+      "kind": "image",
+      "width": 512,
+      "height": 512,
+      "variants": [
+        {
+          "src": "/media/files/5b37c3d821a456248beb28cf48646931ee0f13de7bdf525ae575507932ab90be.webp",
+          "mime": "image/webp",
+          "bytes": 18074,
+          "sha256": "5b37c3d821a456248beb28cf48646931ee0f13de7bdf525ae575507932ab90be",
+          "width": 512,
+          "height": 512
+        }
+      ]
+    }
+  }
+}

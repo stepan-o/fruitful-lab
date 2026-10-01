@@ -1,5 +1,18 @@
 # Project Memory - Fruitful Lab
 
+Versioned media, 2026-10-01: Lab owns the asset pipeline in
+`apps/lab/scripts/assets.mjs` and catalogs in `apps/lab/assets/`. Optimized files
+and manifests under `/media/files/` and `/media/manifests/` use content hashes
+and one-year immutable caching. `/media/pointers/<pack>.json` refreshes after
+30 seconds in the browser / 60 seconds at Vercel's edge (30-second edge SWR).
+`AssetImage` uses prebuilt responsive WebP variants; Stepanoskin's logo,
+textures and exact click MP3 are the first pack. First render pins a generated
+manifest; optional scene loaders discover newer releases with integrity checks
+and last-good fallback. Normal builds retain all old files. Asset rollback is
+a pointer change in a new deployment that retains forward-version files, not
+a whole-deployment rewind. See `apps/lab/assets/README.md` for publishing,
+budgets, rollback and the boundary between Git assets and future object storage.
+
 Route-group update, 2026-09-30: `apps/lab/app/(stepanoskin)/` is a top-level
 Lab sandbox group with a pass-through layout. It inherits the root layout and
 serves the public `/stepanoskin` landing page without login. Its page lives at

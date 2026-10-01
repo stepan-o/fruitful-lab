@@ -37,6 +37,7 @@ Current Fruitful Lab paths use `apps/lab/`.
 - App router entry: `apps/lab/app/`
 - Root layout and GTM injection: `apps/lab/app/layout.tsx`
 - Global styles and tokens: `apps/lab/app/globals.css`
+- Versioned media: `apps/lab/assets/README.md`, `scripts/assets.mjs`, `lib/assets/*`, and `components/media/AssetImage.tsx`; content-hashed files/manifests and short-cached per-pack pointers. `npm run build` validates retained releases; `npm run ci` also runs asset-pipeline tests.
 - Public site layout: `apps/lab/app/(site)/layout.tsx`
 - Public tools index: `apps/lab/app/(site)/tools/page.tsx`
 - Flow layout: `apps/lab/app/(flow)/layout.tsx`

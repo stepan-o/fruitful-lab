@@ -49,7 +49,9 @@ not in the public runtime manifest.
 
 For first-render images, import the generated pack and use `parseManifest`,
 `imageAsset` and `AssetImage`. `sizes` is required; the component selects the
-prebuilt variants without a second image transformation. Images are lazy by
+prebuilt variants using a native `srcset` with exact file widths, without a
+second image transformation. React emits a responsive image preload for the
+explicitly prioritized hero. Images are lazy by
 default; use `preload` only for the main visible image. Width/height reserve
 space. CSS textures use `assetUrl` and inherited CSS custom properties.
 

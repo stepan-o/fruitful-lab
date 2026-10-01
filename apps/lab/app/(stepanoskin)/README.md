@@ -29,3 +29,15 @@ stop when the visitor prefers reduced motion.
 
 Parenthesized groups do not add a URL segment. Do not add a group-level
 `page.tsx`, which would conflict with the existing `/` page.
+
+## Sanctuary Economics
+
+`/stepanoskin/game-monetization` is the illustrated reader overview. Chapters use
+`?chapter=<stable-id>` for shareable links and browser history. Invalid IDs are
+404s. The page renders its current chapter on the server and passes a small
+content/asset subset to the client. Contents, previous/next links, source notes,
+native image zoom, and two labeled hypothetical models are available.
+
+Controls share the landing locale cookie. The editorial prose is currently
+English, clearly disclosed in all six UI languages; it is not a completed
+translation edition. Content and provenance: `docs/sanctuary/README.md`.

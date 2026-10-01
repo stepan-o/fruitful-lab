@@ -1,0 +1,155 @@
+[
+  {
+    "id": "d4-seasonal-tooltip",
+    "caption": "Seasonal character tooltip; explicitly describes conversion to Eternal at season end.",
+    "date": "Captured 2026-10-01; owner confirms current version/season at capture; exact build and platform unconfirmed.",
+    "status": "visually reviewed",
+    "rights": "User-provided game capture; game imagery remains publisher-owned.",
+    "originalSha256": "105a6ab777976b4268228f8ffb1a71522608afe1b5a30194626be0426e45a53e",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "d4-campaign-state",
+    "caption": "Campaign selection with Endgame recommended and two expansion entries shown locked.",
+    "date": "Captured 2026-10-01; owner confirms current version/season at capture; exact build and platform unconfirmed.",
+    "status": "visually reviewed",
+    "rights": "User-provided game capture; game imagery remains publisher-owned.",
+    "originalSha256": "27ad5f8163cc1826108b2720226c5b37b4db625e46d4892715a9ba9ae1887d61",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-d2-combat",
+    "caption": "d2-combat",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "e61d38d37fe0368aa3daf147bf203e5d84008659fc710a0db24987ffa1ef2373",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-d4-char-select",
+    "caption": "Season Info prompt contrasts seasonal content with continuing Eternal; Rebirth button is behind the prompt. Not a Rebirth confirmation.",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed; dated/context-qualified",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "7d41109d0d13ba3d49bc2df559993633ce5864ced9f51431a7624dc9225b5cca",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-d4-corridor",
+    "caption": "d4-corridor",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "af7470e4456c6626d564137cca49372c841420e5fe811f4b981b3909ea37480e",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-d4-key",
+    "caption": "d4-key",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "ef61a3fe1092cc15359f335766f99d0f0a347154b566faef104da8ec521a1c0c",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-d4-platinum",
+    "caption": "Historical Platinum pack screenshot; owner identifies store currency as CAD. Prices must be dated rather than treated as current.",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed; dated/context-qualified",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "7ec7e54d08de887093b80197a20d4095bb93460222ceae24c4d849b1936f0d15",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-d4-shop-grid",
+    "caption": "d4-shop-grid",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "6ff3aad665012c3bee97e157401becd819d4ba2940a0c55456664f0d7cbb4467",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-favor-tutorial",
+    "caption": "Favor Tokens tutorial states a holding limit of 99 and carryover into future seasons; spend tokens to earn more.",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed; dated/context-qualified",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "d2ef8233a108e0038db80cc71561ac87a332214f29bb4da1a8ba3b3f88df250b",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-indika-points",
+    "caption": "indika-points",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "d4bf51f2d5057754941b24f64b1edbb1220264bdac24bb9d5e7bb3050c2213d2",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-indika-pray",
+    "caption": "indika-pray",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "bf9592cae13d24721abfbcf1b033c05a9257d43794a99abe07b45b473a836633",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "legacy-season-rank",
+    "caption": "Death Awakening season panel with three days remaining. Historical capture; not evidence of current season objectives.",
+    "date": "Original capture date unknown",
+    "status": "visually reviewed; dated/context-qualified",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "494aaf7ac027472bcbe52b7ecfcd0a3ef9beacba296c70047c924db0364cc715",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+  },
+  {
+    "id": "outer-wilds-signalscope-prototype",
+    "caption": "Mobius 2016 prototype: signalscope and Riebeck. Historical design illustration, not current shipped interface.",
+    "date": "Retrieved 2026-10-01",
+    "status": "visually reviewed; dated/context-qualified",
+    "rights": "Publisher-owned material; retain source attribution and review use in final editorial context.",
+    "originalSha256": "3ef88bf06bca2fe2419536e980e179c95d96dde3c469cf6b4d4d3845a7ab3903",
+    "source": "https://www.mobiusdigitalgames.com/news/separating-the-signal-from-the-noise"
+  },
+  {
+    "id": "drg-season-selection-proposal-2024",
+    "caption": "Ghost Ship Games April 2024 season-selection proposal, visibly marked WORK IN PROGRESS. Not a capture of the shipped current menu.",
+    "date": "Retrieved 2026-10-01",
+    "status": "visually reviewed; dated/context-qualified",
+    "rights": "Publisher-owned material; retain source attribution and review use in final editorial context.",
+    "originalSha256": "a5391e3b9f4cbefaef335c1d7a9d3bde79c1fd4fc1acf169687de21a0b1ae6d1",
+    "source": "https://store.steampowered.com/news/posts/?appids=548430&enddate=1713439891&feed=steam_community_announcements"
+  },
+  {
+    "id": "halo-premium-pass-rewards-2022",
+    "caption": "Halo Infinite Season 2 promotional reward overview (2022), including 1,000 credits in the premium pass. Not an in-game pass selection screen.",
+    "date": "Retrieved 2026-10-01",
+    "status": "visually reviewed; dated/context-qualified",
+    "rights": "Publisher-owned material; retain source attribution and review use in final editorial context.",
+    "originalSha256": "5293bd6b28744ebaee518edbb2e6df97f1dcce2c90003f1b3575b4ffb0b1aa86",
+    "source": "https://www.halowaypoint.com/news/season-2-lone-wolves-launch"
+  },
+  {
+    "id": "concord-shutdown-announcement-art",
+    "caption": "Concord key art accompanying the September 2024 shutdown announcement. The art itself is not the notice text.",
+    "date": "Retrieved 2026-10-01",
+    "status": "visually reviewed; dated/context-qualified",
+    "rights": "Publisher-owned material; retain source attribution and review use in final editorial context.",
+    "originalSha256": "d2ea514b7cfb1be4645a353bf701d346c5ef39acfbb6d8efc568a2e9b8096d17",
+    "source": "https://blog.playstation.com/2024/09/03/an-important-update-on-concord/"
+  },
+  {
+    "id": "gauntlet-options-manual-p3-4",
+    "caption": "1985 Atari Gauntlet operator manual, printed page 3-4 (PDF page 22): game options and health-per-coin settings.",
+    "date": "1985",
+    "status": "visually reviewed; primary-source page render",
+    "rights": "Publisher/author-owned source, retained for editorial reference; credit source in final content.",
+    "originalSha256": "9bd11e5986d60cce52338e2c5e6803d51b3c390f0deadcd3b1c0db3d1887b23a",
+    "source": "https://files.stardustarcade.com/PDF_Arcade_Atari_Kee/Gauntlet/Gauntlet_TM-284_1st_Printing.pdf"
+  }
+]

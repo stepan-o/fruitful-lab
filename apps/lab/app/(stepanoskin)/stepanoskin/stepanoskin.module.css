@@ -31,7 +31,7 @@
 
 .texture {
     z-index: -2;
-    background: url("/stepanoskin/noise_tile.webp") repeat;
+    background: var(--asset-noise) repeat;
     background-size: 512px 512px;
     opacity: 0.09;
     mix-blend-mode: screen;
@@ -245,7 +245,7 @@
     position: absolute;
     inset: 0;
     opacity: 0;
-    background: url("/stepanoskin/loopforge_factory_logo_main.webp") center / contain no-repeat;
+    background: var(--asset-logo) center / contain no-repeat;
     filter: contrast(1.4) saturate(1.65) hue-rotate(14deg) drop-shadow(4px 0 rgba(106, 255, 209, 0.65)) drop-shadow(-4px 0 rgba(255, 211, 68, 0.55));
     transform: translateX(var(--band-shift, 0));
 }
@@ -316,7 +316,7 @@
     border: 1px solid rgba(214, 163, 72, 0.32);
     background:
         linear-gradient(140deg, rgba(255, 255, 255, 0.045), transparent 28%),
-        url("/stepanoskin/gunmetal_tile.webp") center / 540px auto,
+        var(--asset-gunmetal) center / 540px auto,
         #0b0d0c;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.76), inset 0 0 0 4px rgba(0, 0, 0, 0.55), inset 0 0 40px rgba(0, 0, 0, 0.76);
     clip-path: polygon(1.2rem 0, calc(100% - 1.2rem) 0, 100% 1.2rem, 100% calc(100% - 1.2rem), calc(100% - 1.2rem) 100%, 1.2rem 100%, 0 calc(100% - 1.2rem), 0 1.2rem);
@@ -330,7 +330,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: url("/stepanoskin/glass_glare.webp") top center / 100% 52% no-repeat;
+    background: var(--asset-glare) top center / 100% 52% no-repeat;
     opacity: 0.11;
     mix-blend-mode: screen;
 }

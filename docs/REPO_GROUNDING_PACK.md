@@ -37,9 +37,11 @@ Current Fruitful Lab paths use `apps/lab/`.
 - App router entry: `apps/lab/app/`
 - Root layout and GTM injection: `apps/lab/app/layout.tsx`
 - Global styles and tokens: `apps/lab/app/globals.css`
+- Versioned media: `apps/lab/assets/README.md`, `scripts/assets.mjs`, `lib/assets/*`, and `components/media/AssetImage.tsx`; content-hashed files/manifests and short-cached per-pack pointers. `npm run build` validates retained releases; `npm run ci` also runs asset-pipeline tests.
 - Public site layout: `apps/lab/app/(site)/layout.tsx`
 - Public tools index: `apps/lab/app/(site)/tools/page.tsx`
 - Flow layout: `apps/lab/app/(flow)/layout.tsx`
+- Sanctuary Economics: public `/stepanoskin/game-monetization` with `?chapter=<stable-id>` navigation; `apps/lab/lib/sanctuary/` owns 21 English chapters and six-language reader UI, `components/sanctuary/` owns the responsive reader. Per-chapter server props, lazy images, on-demand zoom, and the immutable `sanctuary` media pack keep transfers bounded. Editorial/provenance notes: `docs/sanctuary/README.md`.
 - Stepanoskin foundation: `apps/lab/app/(stepanoskin)/layout.tsx`; inherits the root layout, serves public `/stepanoskin` without login (added 2026-09-30).
 - Admin layout gate: `apps/lab/app/(admin)/admin/layout.tsx`
 - Contractor layout gate: `apps/lab/app/(contractor)/layout.tsx`

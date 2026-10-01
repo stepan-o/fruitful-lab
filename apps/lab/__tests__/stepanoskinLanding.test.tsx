@@ -54,4 +54,18 @@ describe("Stepanoskin landing", () => {
         expect(screen.getByRole("button", { name: "Sound off" })).toHaveAttribute("aria-pressed", "false");
         expect(window.localStorage.getItem("stepanoskin_sound_v1")).toBe("off");
     });
+
+    it("loads the versioned sound only on activation, with silent hover and focus", () => {
+        const play = jest.fn().mockResolvedValue(undefined);
+        const audio = jest.spyOn(window, "Audio").mockImplementation(() => ({ play, currentTime: 0 }) as unknown as HTMLAudioElement);
+        render(<StepanoskinLanding initialLocale="en" />);
+        const link = screen.getByRole("link", { name: /Game Monetization/i });
+        fireEvent.pointerEnter(link);
+        fireEvent.focus(link);
+        expect(audio).not.toHaveBeenCalled();
+        fireEvent.click(link);
+        expect(audio).toHaveBeenCalledWith(expect.stringMatching(/^\/media\/files\/[a-f0-9]{64}\.mp3$/));
+        expect(play).toHaveBeenCalledTimes(1);
+        audio.mockRestore();
+    });
 });

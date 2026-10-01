@@ -24,8 +24,6 @@ type Translation = {
     systemOnline: string;
     soundOn: string;
     soundOff: string;
-    moduleLoading: string;
-    moduleDescription: string;
     backToMenu: string;
 };
 
@@ -41,8 +39,6 @@ export const translations: Record<Locale, Translation> = {
         systemOnline: "System online",
         soundOn: "Sound on",
         soundOff: "Sound off",
-        moduleLoading: "Module loading",
-        moduleDescription: "The Game Monetization section is being assembled.",
         backToMenu: "Back to menu",
     },
     fr: {
@@ -56,8 +52,6 @@ export const translations: Record<Locale, Translation> = {
         systemOnline: "Système en ligne",
         soundOn: "Son activé",
         soundOff: "Son désactivé",
-        moduleLoading: "Chargement du module",
-        moduleDescription: "La section Monétisation des jeux est en cours d’assemblage.",
         backToMenu: "Retour au menu",
     },
     es: {
@@ -71,8 +65,6 @@ export const translations: Record<Locale, Translation> = {
         systemOnline: "Sistema en línea",
         soundOn: "Sonido activado",
         soundOff: "Sonido desactivado",
-        moduleLoading: "Cargando módulo",
-        moduleDescription: "La sección de Monetización de videojuegos está en construcción.",
         backToMenu: "Volver al menú",
     },
     ru: {
@@ -86,8 +78,6 @@ export const translations: Record<Locale, Translation> = {
         systemOnline: "Система в сети",
         soundOn: "Звук включён",
         soundOff: "Звук выключен",
-        moduleLoading: "Загрузка модуля",
-        moduleDescription: "Раздел о монетизации игр находится в разработке.",
         backToMenu: "Назад в меню",
     },
     zh: {
@@ -101,8 +91,6 @@ export const translations: Record<Locale, Translation> = {
         systemOnline: "系统在线",
         soundOn: "声音开启",
         soundOff: "声音关闭",
-        moduleLoading: "模块加载中",
-        moduleDescription: "游戏商业化内容正在构建中。",
         backToMenu: "返回菜单",
     },
     th: {
@@ -116,8 +104,6 @@ export const translations: Record<Locale, Translation> = {
         systemOnline: "ระบบออนไลน์",
         soundOn: "เปิดเสียง",
         soundOff: "ปิดเสียง",
-        moduleLoading: "กำลังโหลดโมดูล",
-        moduleDescription: "ส่วนการสร้างรายได้จากเกมกำลังอยู่ระหว่างการพัฒนา",
         backToMenu: "กลับไปที่เมนู",
     },
 };

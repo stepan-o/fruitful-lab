@@ -1,9 +1,11 @@
 "use client";
 
-import Image from "next/image";
+import AssetImage from "@/components/media/AssetImage";
+import manifest from "@/lib/assets/generated/stepanoskin.json";
+import { assetUrl, imageAsset, parseManifest } from "@/lib/assets/types";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import styles from "./stepanoskin.module.css";
 import { localeCookieName, localeNames, locales, translations, type Locale } from "./translations";
 
@@ -15,13 +17,20 @@ const menuItems = [
 ] as const;
 
 const soundPreferenceKey = "stepanoskin_sound_v1";
+const assets = parseManifest(manifest, "stepanoskin");
+const assetStyles = {
+    "--asset-logo": `url("${assetUrl(assets, "logo")}")`,
+    "--asset-noise": `url("${assetUrl(assets, "noise")}")`,
+    "--asset-gunmetal": `url("${assetUrl(assets, "gunmetal")}")`,
+    "--asset-glare": `url("${assetUrl(assets, "glare")}")`,
+} as CSSProperties;
 const soundPreferenceEvent = "stepanoskin:sound-preference";
 let sharedClang: HTMLAudioElement | null = null;
 
 function getClang() {
     if (typeof window === "undefined") return null;
     if (!sharedClang) {
-        sharedClang = new Audio("/stepanoskin/dobcommunications-metal-clang-284809.mp3");
+        sharedClang = new Audio(assetUrl(assets, "click"));
         sharedClang.preload = "auto";
         sharedClang.volume = 0.78;
     }
@@ -70,8 +79,6 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
     const copy = translations[locale];
 
     useEffect(() => {
-        getClang();
-
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
         let glitchTimer: number | undefined;
         let burstTimer: number | undefined;
@@ -139,8 +146,9 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
     }, [locale]);
 
     function playClang() {
+        if (!soundEnabled) return;
         const clang = getClang();
-        if (!soundEnabled || !clang) return;
+        if (!clang) return;
         clang.currentTime = 0.18;
         void clang.play().catch(() => undefined);
     }
@@ -182,7 +190,7 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
     }
 
     return (
-        <main className={`${styles.page} ${isActivating ? styles.isActivating : ""}`} onPointerMove={trackPointer}>
+        <main className={`${styles.page} ${isActivating ? styles.isActivating : ""}`} style={assetStyles} onPointerMove={trackPointer}>
             <div className={styles.texture} aria-hidden="true" />
             <div className={styles.scanlines} aria-hidden="true" />
             <div className={styles.ambientParticles} aria-hidden="true">
@@ -227,14 +235,12 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
             <section className={styles.stage}>
                 <div className={styles.logoWrap}>
                     <div className={styles.logoGlow} aria-hidden="true" />
-                    <Image
+                    <AssetImage
                         className={styles.logo}
-                        src="/stepanoskin/loopforge_factory_logo_main.webp"
+                        asset={imageAsset(assets, "logo")}
                         alt="Loopforge — AI Brain Factory"
-                        width={1152}
-                        height={768}
                         sizes="(max-width: 720px) 94vw, 760px"
-                        priority
+                        preload
                     />
                     <div className={styles.logoFx} ref={logoFxRef} aria-hidden="true">
                         {Array.from({ length: 5 }, (_, index) => (

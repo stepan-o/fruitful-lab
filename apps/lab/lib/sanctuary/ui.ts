@@ -1,0 +1,15 @@
+import type { Locale } from "@/app/(stepanoskin)/stepanoskin/translations";
+
+type Copy = {
+  contents: string; close: string; previous: string; next: string; start: string;
+  home: string; sourceNotes: string; zoom: string; chapter: string; overview: string;
+  edition: string; editionNote: string; appendix: string; skip: string; print: string;
+};
+export const readerCopy: Record<Locale, Copy> = {
+  en: { contents:"Contents",close:"Close",previous:"Previous",next:"Next chapter",start:"Enter the study",home:"Main menu",sourceNotes:"Sources & evidence",zoom:"Enlarge image",chapter:"Chapter",overview:"Overview",edition:"English editorial edition",editionNote:"Navigation is available in six languages. The essay, figures and evidence notes are in English while the prose is reviewed.",appendix:"Ten rules that travel",skip:"Skip to reading",print:"Print this chapter" },
+  fr: { contents:"Sommaire",close:"Fermer",previous:"Précédent",next:"Chapitre suivant",start:"Ouvrir l’étude",home:"Menu principal",sourceNotes:"Sources et éléments probants",zoom:"Agrandir l’image",chapter:"Chapitre",overview:"Présentation",edition:"Version éditoriale en anglais",editionNote:"La navigation est disponible en six langues. L’essai, les figures et les notes restent en anglais pendant la relecture du texte.",appendix:"Dix principes à retenir",skip:"Aller au texte",print:"Imprimer ce chapitre" },
+  es: { contents:"Contenido",close:"Cerrar",previous:"Anterior",next:"Siguiente capítulo",start:"Abrir el estudio",home:"Menú principal",sourceNotes:"Fuentes y evidencia",zoom:"Ampliar imagen",chapter:"Capítulo",overview:"Presentación",edition:"Edición editorial en inglés",editionNote:"La navegación está disponible en seis idiomas. El ensayo, las figuras y las notas están en inglés mientras se revisa el texto.",appendix:"Diez principios útiles",skip:"Ir al texto",print:"Imprimir este capítulo" },
+  ru: { contents:"Содержание",close:"Закрыть",previous:"Назад",next:"Следующая глава",start:"Открыть исследование",home:"Главное меню",sourceNotes:"Источники и основания",zoom:"Увеличить изображение",chapter:"Глава",overview:"Обзор",edition:"Редакционная версия на английском",editionNote:"Навигация доступна на шести языках. Текст, подписи и примечания пока остаются на английском: сначала они проходят редакционную проверку.",appendix:"Десять принципов",skip:"Перейти к тексту",print:"Напечатать главу" },
+  zh: { contents:"目录",close:"关闭",previous:"上一章",next:"下一章",start:"开始阅读",home:"主菜单",sourceNotes:"来源与证据",zoom:"放大图片",chapter:"章节",overview:"概览",edition:"英文审阅版",editionNote:"导航支持六种语言。正文、图注和证据说明在审阅期间暂以英文提供。",appendix:"十项设计原则",skip:"跳至正文",print:"打印本章" },
+  th: { contents:"สารบัญ",close:"ปิด",previous:"ก่อนหน้า",next:"บทถัดไป",start:"เริ่มอ่าน",home:"เมนูหลัก",sourceNotes:"แหล่งข้อมูลและหลักฐาน",zoom:"ขยายภาพ",chapter:"บท",overview:"ภาพรวม",edition:"ฉบับภาษาอังกฤษสำหรับตรวจทาน",editionNote:"เมนูรองรับหกภาษา ส่วนเนื้อหา คำบรรยายภาพ และหมายเหตุหลักฐานยังเป็นภาษาอังกฤษระหว่างตรวจทานต้นฉบับ",appendix:"หลักการสิบข้อ",skip:"ข้ามไปเนื้อหา",print:"พิมพ์บทนี้" },
+};

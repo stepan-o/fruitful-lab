@@ -2,6 +2,12 @@
 
 Status: confirmed from local repository scan on 2026-05-15.
 
+2026-10-01 addendum: `apps/lab` now includes versioned media catalogs,
+content-addressed files/manifests, short-cached per-pack pointers, responsive
+WebP generation, and release integrity checks in frontend CI. See
+`apps/lab/assets/README.md` and `docs/PROJECT_MEMORY.md` for current contracts.
+The original audit below remains the May snapshot.
+
 This audit describes what is implemented in the repo today. It is descriptive, not a plan. For the compact working-memory version, use `docs/PROJECT_MEMORY.md`.
 
 Planning update after this audit:

@@ -6,7 +6,8 @@
     "status": "visually reviewed",
     "rights": "User-provided game capture; game imagery remains publisher-owned.",
     "originalSha256": "105a6ab777976b4268228f8ffb1a71522608afe1b5a30194626be0426e45a53e",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "d4-campaign-state",
@@ -15,7 +16,8 @@
     "status": "visually reviewed",
     "rights": "User-provided game capture; game imagery remains publisher-owned.",
     "originalSha256": "27ad5f8163cc1826108b2720226c5b37b4db625e46d4892715a9ba9ae1887d61",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-d2-combat",
@@ -24,7 +26,8 @@
     "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "e61d38d37fe0368aa3daf147bf203e5d84008659fc710a0db24987ffa1ef2373",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-d4-char-select",
@@ -33,7 +36,8 @@
     "status": "visually reviewed; dated/context-qualified",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "7d41109d0d13ba3d49bc2df559993633ce5864ced9f51431a7624dc9225b5cca",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-d4-corridor",
@@ -42,7 +46,8 @@
     "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "af7470e4456c6626d564137cca49372c841420e5fe811f4b981b3909ea37480e",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-d4-key",
@@ -51,7 +56,8 @@
     "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "ef61a3fe1092cc15359f335766f99d0f0a347154b566faef104da8ec521a1c0c",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-d4-platinum",
@@ -60,7 +66,8 @@
     "status": "visually reviewed; dated/context-qualified",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "7ec7e54d08de887093b80197a20d4095bb93460222ceae24c4d849b1936f0d15",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-d4-shop-grid",
@@ -69,7 +76,8 @@
     "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "6ff3aad665012c3bee97e157401becd819d4ba2940a0c55456664f0d7cbb4467",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-favor-tutorial",
@@ -78,7 +86,8 @@
     "status": "visually reviewed; dated/context-qualified",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "d2ef8233a108e0038db80cc71561ac87a332214f29bb4da1a8ba3b3f88df250b",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-indika-points",
@@ -87,7 +96,8 @@
     "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "d4bf51f2d5057754941b24f64b1edbb1220264bdac24bb9d5e7bb3050c2213d2",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-indika-pray",
@@ -96,7 +106,8 @@
     "status": "visually reviewed for this edition; original capture date and photographer remain unconfirmed",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "bf9592cae13d24721abfbcf1b033c05a9257d43794a99abe07b45b473a836633",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "legacy-season-rank",
@@ -105,7 +116,8 @@
     "status": "visually reviewed; dated/context-qualified",
     "rights": "Inherited handoff asset; original source/credit requires audit.",
     "originalSha256": "494aaf7ac027472bcbe52b7ecfcd0a3ef9beacba296c70047c924db0364cc715",
-    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive"
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "outer-wilds-signalscope-prototype",
@@ -114,7 +126,8 @@
     "status": "visually reviewed; dated/context-qualified",
     "rights": "Publisher-owned material; retain source attribution and review use in final editorial context.",
     "originalSha256": "3ef88bf06bca2fe2419536e980e179c95d96dde3c469cf6b4d4d3845a7ab3903",
-    "source": "https://www.mobiusdigitalgames.com/news/separating-the-signal-from-the-noise"
+    "source": "https://www.mobiusdigitalgames.com/news/separating-the-signal-from-the-noise",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "drg-season-selection-proposal-2024",
@@ -123,7 +136,8 @@
     "status": "visually reviewed; dated/context-qualified",
     "rights": "Publisher-owned material; retain source attribution and review use in final editorial context.",
     "originalSha256": "a5391e3b9f4cbefaef335c1d7a9d3bde79c1fd4fc1acf169687de21a0b1ae6d1",
-    "source": "https://store.steampowered.com/news/posts/?appids=548430&enddate=1713439891&feed=steam_community_announcements"
+    "source": "https://store.steampowered.com/news/posts/?appids=548430&enddate=1713439891&feed=steam_community_announcements",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "halo-premium-pass-rewards-2022",
@@ -132,7 +146,8 @@
     "status": "visually reviewed; dated/context-qualified",
     "rights": "Publisher-owned material; retain source attribution and review use in final editorial context.",
     "originalSha256": "5293bd6b28744ebaee518edbb2e6df97f1dcce2c90003f1b3575b4ffb0b1aa86",
-    "source": "https://www.halowaypoint.com/news/season-2-lone-wolves-launch"
+    "source": "https://www.halowaypoint.com/news/season-2-lone-wolves-launch",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "concord-shutdown-announcement-art",
@@ -141,7 +156,8 @@
     "status": "visually reviewed; dated/context-qualified",
     "rights": "Publisher-owned material; retain source attribution and review use in final editorial context.",
     "originalSha256": "d2ea514b7cfb1be4645a353bf701d346c5ef39acfbb6d8efc568a2e9b8096d17",
-    "source": "https://blog.playstation.com/2024/09/03/an-important-update-on-concord/"
+    "source": "https://blog.playstation.com/2024/09/03/an-important-update-on-concord/",
+    "delivery": "Local research mode only; absent from public deployment"
   },
   {
     "id": "gauntlet-options-manual-p3-4",
@@ -150,6 +166,68 @@
     "status": "visually reviewed; primary-source page render",
     "rights": "Publisher/author-owned source, retained for editorial reference; credit source in final content.",
     "originalSha256": "9bd11e5986d60cce52338e2c5e6803d51b3c390f0deadcd3b1c0db3d1887b23a",
-    "source": "https://files.stardustarcade.com/PDF_Arcade_Atari_Kee/Gauntlet/Gauntlet_TM-284_1st_Printing.pdf"
+    "source": "https://files.stardustarcade.com/PDF_Arcade_Atari_Kee/Gauntlet/Gauntlet_TM-284_1st_Printing.pdf",
+    "delivery": "Local research mode only; absent from public deployment"
+  },
+  {
+    "id": "legacy-d2-heroes",
+    "caption": "d2-heroes",
+    "date": "Original capture date unknown",
+    "status": "imported; provenance and chapter relevance to review",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "e7dcbd009aa482091e8306affc18535590a02a800bd479079fcc2f3e6f67e3bb",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
+  },
+  {
+    "id": "legacy-d2-item",
+    "caption": "d2-item",
+    "date": "Original capture date unknown",
+    "status": "imported; provenance and chapter relevance to review",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "665c6a6edfd0695999749096e8439427b30c3fe7340671c2b04d61f094813eb2",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
+  },
+  {
+    "id": "legacy-d4-confirm",
+    "caption": "d4-confirm",
+    "date": "Original capture date unknown",
+    "status": "imported; provenance and chapter relevance to review",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "20053e8546496c6d6242a2d8da7367af2538022c52926e2b949dc6c84210bd86",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
+  },
+  {
+    "id": "legacy-poe-store",
+    "caption": "poe-store",
+    "date": "Original capture date unknown",
+    "status": "imported; provenance and chapter relevance to review",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "5553e6d846348c766baa8aec9e85cdea3cadcacd4d5b4df680922bb0b84c3c9e",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
+  },
+  {
+    "id": "legacy-social",
+    "caption": "social",
+    "date": "Original capture date unknown",
+    "status": "imported; provenance and chapter relevance to review",
+    "rights": "Inherited handoff asset; original source/credit requires audit.",
+    "originalSha256": "ec79a6b723905d604624c6d3cdc40735b8983a203c506d130fd6b49cfcb1f6f1",
+    "source": "Owner-provided Sanctuary Economics handoff / screenshot archive",
+    "delivery": "Local research mode only; absent from public deployment"
+  },
+  {
+    "id": "concord-gameplay-reveal-2024",
+    "caption": "Concord publisher gameplay reveal, captured on PS5. Historical pre-launch screenshot.",
+    "date": "Published 2024-05-30",
+    "status": "visually reviewed",
+    "rights": "Firewalk / Sony Interactive Entertainment; local research reference only.",
+    "originalSha256": "0f4133e40a2021f9e88dcddc1fab1ed134f85870b28acab21bc15643b003df47",
+    "source": "https://blog.playstation.com/2024/05/30/concord-gameplay-revealed-launching-august-23-2024-on-ps5-and-pc/",
+    "sourceImage": "https://blog.playstation.com/uploads/2024/05/78c0808e622ff0025b860e2f1c691afde110aeab.jpg",
+    "delivery": "Local research mode only; absent from public deployment"
   }
 ]

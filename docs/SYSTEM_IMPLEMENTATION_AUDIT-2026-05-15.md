@@ -6,6 +6,11 @@ Status: confirmed from local repository scan on 2026-05-15.
 content-addressed files/manifests, short-cached per-pack pointers, responsive
 WebP generation, and release integrity checks in frontend CI. See
 `apps/lab/assets/README.md` and `docs/PROJECT_MEMORY.md` for current contracts.
+Sanctuary Economics now has 21 public chapters with original procedural scenes
+and diagrams, a mosaic devil cover, ambient fire/embers and shared audio/motion
+preferences. Publisher screenshots are confined to an optional gitignored local
+research archive; the explicit development mode is disabled on production/Vercel.
+See `docs/sanctuary/README.md` for execution and retention boundaries.
 The original audit below remains the May snapshot.
 
 This audit describes what is implemented in the repo today. It is descriptive, not a plan. For the compact working-memory version, use `docs/PROJECT_MEMORY.md`.

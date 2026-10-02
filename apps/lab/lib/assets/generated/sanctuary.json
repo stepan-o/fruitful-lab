@@ -424,6 +424,144 @@
           "height": 618
         }
       ]
+    },
+    "legacy-d2-heroes": {
+      "kind": "image",
+      "width": 900,
+      "height": 675,
+      "variants": [
+        {
+          "src": "/media/files/0389b7c886973d2990e65a44b5b5008ff619780f8b8bf8a8f562e7759c4bf564.webp",
+          "mime": "image/webp",
+          "bytes": 37464,
+          "sha256": "0389b7c886973d2990e65a44b5b5008ff619780f8b8bf8a8f562e7759c4bf564",
+          "width": 768,
+          "height": 576
+        },
+        {
+          "src": "/media/files/e12293c987d012791e1edbd06b0e809f7e30302a3705e22d1d92d22a243a7476.webp",
+          "mime": "image/webp",
+          "bytes": 49516,
+          "sha256": "e12293c987d012791e1edbd06b0e809f7e30302a3705e22d1d92d22a243a7476",
+          "width": 900,
+          "height": 675
+        }
+      ]
+    },
+    "legacy-d2-item": {
+      "kind": "image",
+      "width": 1093,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/media/files/5956626e90a9770a9769a8ea6dda24679cd33846d59f6735a0e9dc0dff73f047.webp",
+          "mime": "image/webp",
+          "bytes": 100724,
+          "sha256": "5956626e90a9770a9769a8ea6dda24679cd33846d59f6735a0e9dc0dff73f047",
+          "width": 768,
+          "height": 843
+        },
+        {
+          "src": "/media/files/38d019ac7eb7ef164bb639178ee52e80d862ceca48672cfb4ef57eeeab9c26a9.webp",
+          "mime": "image/webp",
+          "bytes": 150284,
+          "sha256": "38d019ac7eb7ef164bb639178ee52e80d862ceca48672cfb4ef57eeeab9c26a9",
+          "width": 1093,
+          "height": 1200
+        }
+      ]
+    },
+    "legacy-social": {
+      "kind": "image",
+      "width": 1400,
+      "height": 787,
+      "variants": [
+        {
+          "src": "/media/files/68508e3657863961e0e44cdbc02b4a60c8688c72d0103e7648efe329470a831e.webp",
+          "mime": "image/webp",
+          "bytes": 26628,
+          "sha256": "68508e3657863961e0e44cdbc02b4a60c8688c72d0103e7648efe329470a831e",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/d8b7a8dcfd197490b55a7f769924e2e3533ce7294ceaf33102c094965c2ceea8.webp",
+          "mime": "image/webp",
+          "bytes": 68834,
+          "sha256": "d8b7a8dcfd197490b55a7f769924e2e3533ce7294ceaf33102c094965c2ceea8",
+          "width": 1400,
+          "height": 787
+        }
+      ]
+    },
+    "legacy-poe-store": {
+      "kind": "image",
+      "width": 1000,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/media/files/b204c7d6fee34f5a62e03b380e13fa94f4ab861e73e233ebd843188621ecb9ca.webp",
+          "mime": "image/webp",
+          "bytes": 105622,
+          "sha256": "b204c7d6fee34f5a62e03b380e13fa94f4ab861e73e233ebd843188621ecb9ca",
+          "width": 768,
+          "height": 922
+        },
+        {
+          "src": "/media/files/841b5c86d7c55b25634b3124e16145b909b0a639f368e2177c3cfbda2d987064.webp",
+          "mime": "image/webp",
+          "bytes": 142274,
+          "sha256": "841b5c86d7c55b25634b3124e16145b909b0a639f368e2177c3cfbda2d987064",
+          "width": 1000,
+          "height": 1200
+        }
+      ]
+    },
+    "legacy-d4-confirm": {
+      "kind": "image",
+      "width": 1100,
+      "height": 791,
+      "variants": [
+        {
+          "src": "/media/files/485c90f9c508afdaf7e743c3de3925f381db70495732f2e0eb86c5ce9202b8ec.webp",
+          "mime": "image/webp",
+          "bytes": 53118,
+          "sha256": "485c90f9c508afdaf7e743c3de3925f381db70495732f2e0eb86c5ce9202b8ec",
+          "width": 768,
+          "height": 552
+        },
+        {
+          "src": "/media/files/e8529632b8346cf0e22c218f2be2cf0461c44cf43346ea0131d5e3aff5ec73d2.webp",
+          "mime": "image/webp",
+          "bytes": 90826,
+          "sha256": "e8529632b8346cf0e22c218f2be2cf0461c44cf43346ea0131d5e3aff5ec73d2",
+          "width": 1100,
+          "height": 791
+        }
+      ]
+    },
+    "concord-gameplay-reveal-2024": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/08cd37c11761130074bc5cf4927d89281eb0dfe5a4b2f7305e27f69fd1f4d937.webp",
+          "mime": "image/webp",
+          "bytes": 42938,
+          "sha256": "08cd37c11761130074bc5cf4927d89281eb0dfe5a4b2f7305e27f69fd1f4d937",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/691b2eb933878b9be37eeff915d89a245e67d3d0d8b604a058980e05fb1ed927.webp",
+          "mime": "image/webp",
+          "bytes": 113300,
+          "sha256": "691b2eb933878b9be37eeff915d89a245e67d3d0d8b604a058980e05fb1ed927",
+          "width": 1600,
+          "height": 900
+        }
+      ]
     }
   }
 }

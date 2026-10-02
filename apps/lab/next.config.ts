@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
+import { isInternalResearchMode } from "./lib/stepanoskin/media-policy";
 
 const nextConfig: NextConfig = {
+  distDir: isInternalResearchMode() ? ".next-research" : ".next",
+  // Internal reference media is never copied into production server bundles.
+  outputFileTracingExcludes: { "/*": ["./assets/research/**/*"] },
   async headers() {
     return [
       ...["/media/files/:path*", "/media/manifests/:path*"].map(source => ({

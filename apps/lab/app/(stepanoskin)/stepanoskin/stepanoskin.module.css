@@ -648,3 +648,5 @@
         transition: none;
     }
 }
+
+.page[data-motion="off"] *, .page[data-motion="off"] *::before, .page[data-motion="off"] *::after { animation:none!important; transition:none!important; }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Alatsi, Raleway } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { isInternalResearchMode } from "@/lib/stepanoskin/media-policy";
 
 const alatsi = Alatsi({
     weight: "400",
@@ -28,7 +29,7 @@ export default function RootLayout({
                                          }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+    const GTM_ID = isInternalResearchMode() ? undefined : process.env.NEXT_PUBLIC_GTM_ID;
 
     return (
         <html lang="en" suppressHydrationWarning className={`${raleway.variable} ${alatsi.variable}`}>

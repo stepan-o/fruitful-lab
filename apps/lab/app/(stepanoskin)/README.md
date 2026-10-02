@@ -41,3 +41,14 @@ native image zoom, and two labeled hypothetical models are available.
 Controls share the landing locale cookie. The editorial prose is currently
 English, clearly disclosed in all six UI languages; it is not a completed
 translation edition. Content and provenance: `docs/sanctuary/README.md`.
+
+The public reader uses original procedural art by default: a mosaic devil with
+glowing eyes/shared signal tears, plus a scene and diagram in every chapter. Fire
+and embers run on a bounded canvas. Chapter changes reuse the landing clang;
+reader sound and motion controls persist across both pages.
+
+Publisher screenshots and promotional art are local research references only.
+Run `npm run research:dev` with the private archive installed to view them on
+loopback port 3101. There is no public mode switch; production and Vercel cannot
+activate this mode. The archive is excluded from Git, public assets and server
+tracing. See the Sanctuary README for installation and source provenance.

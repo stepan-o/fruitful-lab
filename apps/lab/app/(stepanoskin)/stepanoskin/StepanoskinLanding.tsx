@@ -4,8 +4,11 @@ import AssetImage from "@/components/media/AssetImage";
 import manifest from "@/lib/assets/generated/stepanoskin.json";
 import { assetUrl, imageAsset, parseManifest } from "@/lib/assets/types";
 import Link from "next/link";
+import { playClang } from "@/lib/stepanoskin/audio";
+import { soundKey, motionKey, usePreference } from "@/lib/stepanoskin/preferences";
+import { useSignalGlitch } from "@/components/stepanoskin/useSignalGlitch";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./stepanoskin.module.css";
 import { localeCookieName, localeNames, locales, translations, type Locale } from "./translations";
 
@@ -16,7 +19,6 @@ const menuItems = [
     },
 ] as const;
 
-const soundPreferenceKey = "stepanoskin_sound_v1";
 const assets = parseManifest(manifest, "stepanoskin");
 const assetStyles = {
     "--asset-logo": `url("${assetUrl(assets, "logo")}")`,
@@ -24,140 +26,24 @@ const assetStyles = {
     "--asset-gunmetal": `url("${assetUrl(assets, "gunmetal")}")`,
     "--asset-glare": `url("${assetUrl(assets, "glare")}")`,
 } as CSSProperties;
-const soundPreferenceEvent = "stepanoskin:sound-preference";
-let sharedClang: HTMLAudioElement | null = null;
-
-function getClang() {
-    if (typeof window === "undefined") return null;
-    if (!sharedClang) {
-        sharedClang = new Audio(assetUrl(assets, "click"));
-        sharedClang.preload = "auto";
-        sharedClang.volume = 0.78;
-    }
-    return sharedClang;
-}
-
-function subscribeToSoundPreference(onStoreChange: () => void) {
-    window.addEventListener("storage", onStoreChange);
-    window.addEventListener(soundPreferenceEvent, onStoreChange);
-    return () => {
-        window.removeEventListener("storage", onStoreChange);
-        window.removeEventListener(soundPreferenceEvent, onStoreChange);
-    };
-}
-
-function getSoundPreference() {
-    return window.localStorage.getItem(soundPreferenceKey) !== "off";
-}
-
-function createBoltPath(reverse = false) {
-    const startX = reverse ? 91 : 9;
-    const endX = reverse ? 46 : 54;
-    const startY = 22 + Math.random() * 20;
-    const endY = 56 + Math.random() * 24;
-    const points = [`M ${startX} ${startY.toFixed(1)}`];
-
-    for (let index = 1; index <= 7; index += 1) {
-        const progress = index / 7;
-        const x = startX + (endX - startX) * progress + (Math.random() - 0.5) * 7;
-        const y = startY + (endY - startY) * progress + (Math.random() - 0.5) * 11;
-        points.push(`L ${x.toFixed(1)} ${y.toFixed(1)}`);
-    }
-
-    return points.join(" ");
-}
-
 export default function StepanoskinLanding({ initialLocale }: { initialLocale: Locale }) {
     const router = useRouter();
     const [locale, setLocale] = useState<Locale>(initialLocale);
-    const soundEnabled = useSyncExternalStore(subscribeToSoundPreference, getSoundPreference, () => true);
+    const [soundEnabled, setSoundEnabled] = usePreference(soundKey);
+    const [motionEnabled] = usePreference(motionKey);
     const [isActivating, setIsActivating] = useState(false);
     const pointerFrameRef = useRef<number | null>(null);
     const logoFxRef = useRef<HTMLDivElement | null>(null);
-    const primaryBoltRef = useRef<SVGPathElement | null>(null);
-    const secondaryBoltRef = useRef<SVGPathElement | null>(null);
     const copy = translations[locale];
 
-    useEffect(() => {
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-        let glitchTimer: number | undefined;
-        let burstTimer: number | undefined;
-        let stopped = false;
-
-        function scheduleGlitch() {
-            if (stopped || reducedMotion.matches) return;
-            glitchTimer = window.setTimeout(runGlitch, 1500 + Math.random() * 3000);
-        }
-
-        function runGlitch() {
-            const fx = logoFxRef.current;
-            if (!fx || stopped || reducedMotion.matches) return;
-            const wrap = fx.parentElement;
-
-            fx.querySelectorAll<HTMLElement>("[data-glitch-band]").forEach((band, index) => {
-                const top = 5 + Math.random() * 77;
-                const height = 3 + Math.random() * 10;
-                band.style.clipPath = `polygon(0 ${top}%, 100% ${top}%, 100% ${top + height}%, 0 ${top + height}%)`;
-                const direction = Math.random() > 0.5 ? 1 : -1;
-                band.style.setProperty("--band-shift", `${direction * (7 + Math.random() * (11 + index * 2))}px`);
-            });
-            primaryBoltRef.current?.setAttribute("d", createBoltPath());
-            secondaryBoltRef.current?.setAttribute("d", createBoltPath(true));
-            fx.style.setProperty("--flash-x", `${24 + Math.random() * 52}%`);
-            fx.style.setProperty("--flash-y", `${22 + Math.random() * 48}%`);
-            const burstDuration = 280 + Math.random() * 140;
-            fx.style.setProperty("--burst-duration", `${burstDuration}ms`);
-            wrap?.style.setProperty("--burst-duration", `${burstDuration}ms`);
-            fx.classList.remove(styles.logoBurst);
-            wrap?.classList.remove(styles.logoGlitching);
-            void fx.offsetWidth;
-            fx.classList.add(styles.logoBurst);
-            wrap?.classList.add(styles.logoGlitching);
-
-            burstTimer = window.setTimeout(() => {
-                fx.classList.remove(styles.logoBurst);
-                wrap?.classList.remove(styles.logoGlitching);
-                scheduleGlitch();
-            }, burstDuration + 100);
-        }
-
-        function handleMotionPreference() {
-            if (glitchTimer) window.clearTimeout(glitchTimer);
-            if (burstTimer) window.clearTimeout(burstTimer);
-            logoFxRef.current?.classList.remove(styles.logoBurst);
-            logoFxRef.current?.parentElement?.classList.remove(styles.logoGlitching);
-            scheduleGlitch();
-        }
-
-        reducedMotion.addEventListener("change", handleMotionPreference);
-        scheduleGlitch();
-
-        return () => {
-            stopped = true;
-            if (glitchTimer) window.clearTimeout(glitchTimer);
-            if (burstTimer) window.clearTimeout(burstTimer);
-            reducedMotion.removeEventListener("change", handleMotionPreference);
-            if (pointerFrameRef.current !== null) cancelAnimationFrame(pointerFrameRef.current);
-        };
-    }, []);
+    useSignalGlitch(logoFxRef, styles.logoBurst, styles.logoGlitching, motionEnabled);
+    useEffect(() => () => { if (pointerFrameRef.current !== null) cancelAnimationFrame(pointerFrameRef.current); }, []);
 
     useEffect(() => {
         document.documentElement.lang = locale;
     }, [locale]);
 
-    function playClang() {
-        if (!soundEnabled) return;
-        const clang = getClang();
-        if (!clang) return;
-        clang.currentTime = 0.18;
-        void clang.play().catch(() => undefined);
-    }
-
-    function toggleSound() {
-        const nextValue = !soundEnabled;
-        window.localStorage.setItem(soundPreferenceKey, nextValue ? "on" : "off");
-        window.dispatchEvent(new Event(soundPreferenceEvent));
-    }
+    function toggleSound() { setSoundEnabled(!soundEnabled); }
 
     function activateMenu(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -170,7 +56,7 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
     }
 
     function trackPointer(event: React.PointerEvent<HTMLElement>) {
-        if (event.pointerType === "touch" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (!motionEnabled || event.pointerType === "touch" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         const page = event.currentTarget;
         const x = event.clientX / window.innerWidth - 0.5;
         const y = event.clientY / window.innerHeight - 0.5;
@@ -190,7 +76,7 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
     }
 
     return (
-        <main className={`${styles.page} ${isActivating ? styles.isActivating : ""}`} style={assetStyles} onPointerMove={trackPointer}>
+        <main className={`${styles.page} ${isActivating ? styles.isActivating : ""}`} data-motion={motionEnabled ? "on" : "off"} style={assetStyles} onPointerMove={trackPointer}>
             <div className={styles.texture} aria-hidden="true" />
             <div className={styles.scanlines} aria-hidden="true" />
             <div className={styles.ambientParticles} aria-hidden="true">
@@ -247,8 +133,8 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                             <i className={styles.glitchBand} data-glitch-band key={index} />
                         ))}
                         <svg className={styles.electricField} viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <path ref={primaryBoltRef} />
-                            <path ref={secondaryBoltRef} />
+                            <path data-bolt />
+                            <path data-bolt />
                         </svg>
                     </div>
                 </div>

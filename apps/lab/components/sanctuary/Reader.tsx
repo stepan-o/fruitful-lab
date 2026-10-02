@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Atmosphere from "./Atmosphere";
 import DevilMural from "./DevilMural";
 import ChapterDiagram from "./ChapterDiagram";
@@ -94,7 +94,30 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             <Link href={chapterHref(first.id)} className={styles.primary} lang={locale}>{copy.start} <span aria-hidden="true">↗</span></Link>
           </section>
           <div className={styles.editionNote}><strong>{copy.edition}</strong><p>{copy.editionNote}</p></div>
-          <section className={styles.introduction} lang="en"><p>Play has value before it has a price. Learning a system, finding a place, making a character your own, or finishing a story can each justify the time spent.</p><p>This study follows what changes when access, identity, time and power become things a game can sell. Diablo IV provides the detailed case. Other games challenge the assumptions around it.</p><p>Each chapter stands on its own. Evidence notes separate documented rules, historical captures, hypothetical models and interpretation.</p></section>
+          <section className={styles.introduction} lang="en">
+            <p>
+              A coin buys another stretch of life in an arcade cabinet. An
+              expansion buys a destination, sometimes behind a boss the
+              receipt cannot defeat. A reward catalog sells permission to
+              begin earning. The word “purchase” conceals several different
+              relationships with a game.
+            </p>
+            <p>
+              This essay follows those relationships from Gauntlet’s
+              operator switches to Diablo IV’s layered economy. Along the
+              way: a signalscope that confused its explorers, a nun with a
+              suspicious score, an auction house that competed with its own
+              monsters, and a level-eight Barbarian trying to find his way
+              back.
+            </p>
+            <p>
+              The plates interpret the games through original art. The
+              instruments let you try an argument: miss a week, move a gate,
+              empty a reservoir. Numbered references connect the prose to
+              research papers and developer accounts; the evidence notes
+              identify what each example can establish.
+            </p>
+          </section>
           <section className={styles.partGrid} aria-label={copy.contents}>{parts.map((part,p)=><Link prefetch={false} href={chapterHref(navigation.find(c=>c.part===p)!.id)} key={part}><span>0{p+1}</span><h2 lang="en">{part}</h2><small>{roman(navigation.findIndex(c=>c.part===p))} — {roman(navigation.findLastIndex(c=>c.part===p))}</small><b aria-hidden="true">↗</b></Link>)}</section>
         </> : <>
           <article className={styles.article} lang="en">
@@ -104,7 +127,41 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             <div className={styles.titleRow}><span className={styles.chapterNumeral} aria-hidden="true">{roman(index)}</span><h1>{current.title}</h1></div>
             <p className={styles.lede}>{current.lede}</p>
             {!research?<ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/>:null}
-            <div className={styles.prose}>{current.paragraphs.map(p=><p key={p}>{p}</p>)}</div>
+            <div className={styles.prose}>
+              {current.paragraphs.map((paragraph, paragraphIndex) => (
+                <Fragment key={`${current.id}-${paragraphIndex}`}>
+                  {current.sections
+                    ?.filter((section) => section.at === paragraphIndex)
+                    .map((section) => (
+                      <h2 key={section.title}>{section.title}</h2>
+                    ))}
+                  <p>
+                    {paragraph}
+                    {current.paragraphCitations?.[paragraphIndex]?.map(
+                      (id) => {
+                        const sourceIndex = sources.findIndex(
+                          (source) => source.id === id,
+                        );
+                        const source = sources[sourceIndex];
+                        return source ? (
+                          <sup className={styles.citation} key={id}>
+                            <a
+                              href={source.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`Source ${sourceIndex + 1}: ${source.title}`}
+                              title={source.title}
+                            >
+                              {sourceIndex + 1}
+                            </a>
+                          </sup>
+                        ) : null;
+                      },
+                    )}
+                  </p>
+                </Fragment>
+              ))}
+            </div>
             <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/>
             {current.table?<div className={styles.tableWrap} tabIndex={0} aria-label={current.table.caption}><table><caption>{current.table.caption}</caption><thead><tr>{current.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{current.table.rows.map(row=><tr key={row[0]}>{row.map((cell,i)=>i===0?<th scope="row" key={i}>{cell}</th>:<td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>:null}
             {research?current.figures?.map((figure,i)=><figure className={styles.figure} key={figure.asset}>
@@ -114,7 +171,25 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             <blockquote className={styles.takeaway}><span aria-hidden="true">◇</span>{current.takeaway}</blockquote>
             <details className={styles.evidence}><summary lang={locale}>{copy.sourceNotes} <span aria-hidden="true">+</span></summary><p>{current.evidence}</p>{sources.length?<ol>{sources.map(source=><li key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><p>{source.note}</p></li>)}</ol>:<p>Source: the stated mathematical model or owner-provided research capture. Public illustrations are original scene studies.</p>}</details>
             {index===navigation.length-1?<>
-              <section className={styles.coda}><p className={styles.eyebrow}>Coda</p><h2>The orchard</h2><p>A game leaves things outside its own accounting: knowledge, a practiced movement, a conversation, a place that can still be recalled after the save file is gone.</p><p>Those effects are harder to count. They remain part of what the work can give. A design can make room for someone to finish, leave, and carry something away.</p></section>
+              <section className={styles.coda}>
+                <p className={styles.eyebrow}>Coda</p>
+                <h2>The orchard</h2>
+                <p>
+                  An orchard takes work before it bears fruit, and care
+                  after the first harvest. It also needs a season in which
+                  nothing is being picked. A game that hopes to remain
+                  part of someone’s life has a similar problem: how to
+                  sustain the place without exhausting the reasons to
+                  visit it.
+                </p>
+                <p>
+                  The economic question is what pays for that care. The
+                  design question is what grows because of it. Leave room
+                  in the accounting for the player who finishes, leaves
+                  content, and tells a friend about a world worth
+                  entering. Some of the harvest has gone elsewhere.
+                </p>
+              </section>
               <section className={styles.rules}><h2>Ten rules that travel</h2><ol>{rules.map(rule=><li key={rule}>{rule}</li>)}</ol></section>
             </>:null}
           </article>

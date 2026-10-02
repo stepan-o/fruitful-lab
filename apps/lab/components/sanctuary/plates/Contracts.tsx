@@ -194,7 +194,6 @@ export function Access() {
             type="button"
             onClick={() => {
               setOwned(!owned);
-              setEffort(false);
             }}
           >
             {owned ? "Reset ownership" : "Simulate purchase"}
@@ -209,7 +208,7 @@ export function Access() {
           <p>Access can still leave work to do.</p>
           <button
             type="button"
-            disabled={!owned || effort}
+            disabled={effort}
             onClick={() => setEffort(true)}
           >
             {effort ? "Requirement completed" : "Complete the requirement"}
@@ -218,22 +217,26 @@ export function Access() {
       </div>
       <Readout
         tag={
-          effort
+          owned && effort
             ? "BOTH CONDITIONS MET"
-            : owned
-              ? "THE DOOR IS OPEN"
-              : "BEFORE PAYMENT"
+            : effort
+              ? "READY BEFORE PURCHASE"
+              : owned
+                ? "THE DOOR IS OPEN"
+                : "BEFORE PAYMENT"
         }
       >
-        {effort
-          ? "The outcome became available after ownership and effort were satisfied."
-          : owned
-            ? "The entitlement changed. The unfinished requirement did not."
-            : "Read what the purchase grants, what it requires, and what remains afterward."}
+        {owned && effort
+          ? "The outcome is available: ownership and readiness are both satisfied."
+          : effort
+            ? "The character is ready. Ownership is still a separate condition."
+            : owned
+              ? "The entitlement changed. The unfinished requirement did not."
+              : "Read what the purchase grants, what it requires, and what remains afterward."}
       </Readout>
       <p className={s.footnote}>
-        A conceptual gated journey, not a purchase flow or a simulated real
-        store.
+        A conceptual model. Meet the requirements in either order; the outcome
+        needs both. No purchase occurs here.
       </p>
     </>
   );
@@ -443,8 +446,8 @@ export function Vault() {
   return (
     <>
       <p className={s.instruction}>
-        A working model of two separate requirements. The 99-held cap is
-        documented; earning 25 and a 30-Favor claim are illustrative values.
+        Fill, claim, refill. This model earns up to 25 tokens at a time and
+        spends 30 per reward. Both amounts are invented.
       </p>
       <div className={s.vault}>
         <div>

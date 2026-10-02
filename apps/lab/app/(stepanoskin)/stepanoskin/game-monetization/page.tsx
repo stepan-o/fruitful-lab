@@ -32,6 +32,6 @@ export default async function GameMonetizationPage({ searchParams }: {
     const assets: AssetManifest = { ...manifest, assets: Object.fromEntries(ids.map(id => [id, { ...manifest.assets[id], variants: manifest.assets[id].variants.map(file => ({ ...file, src: file.src.replace("/media/files/", "/research-media/") })) }])) };
     return <Reader key={current?.id ?? "overview"} locale={locale} research={research} current={current} index={index}
         navigation={chapters.map(({id, title, part}) => ({id, title, part}))} parts={parts}
-        assets={assets} sources={sources.filter(source => current?.sources.includes(source.id))}
+        assets={assets} sources={current ? current.sources.map(id => sources.find(source => source.id === id)).filter(source => source !== undefined) : []}
         rules={index === chapters.length - 1 ? appendix : []} />;
 }

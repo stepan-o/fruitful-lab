@@ -531,3 +531,25 @@ Test surface:
 6. For experiment changes, update `apps/lab/lib/experiments/config.ts`, middleware assignment logic, and the tool page resolver together.
 7. For API/data changes, update backend model/schema/router, migrations, frontend proxy/helper, and tests together.
 8. When architectural contracts change, update this file and add or refresh a dated implementation audit.
+
+
+### Sanctuary narrative and atmosphere · 2026-10-01
+
+- The 21-chapter Sanctuary reader now includes an integrated literature pass;
+  `Chapter.sections` and `Chapter.paragraphCitations` supply optional headings
+  and paragraph-level source links. Source numbering follows each chapter’s
+  source list, including evidence needed by its retained exhibits.
+- Separate soot/shadow and flame passes share a bounded native WebGL canvas.
+  Fire uses a transported, cooling heat field and five procedural depth slices;
+  no fixed flame columns. The original Canvas2D embers remain independent.
+  Both obey manual motion,
+  reduced motion and hidden-page suspension. WebGL failure leaves reading and
+  embers usable. New lifecycle tests cover suspension, restoration and cleanup.
+- The access exhibit separates ownership from readiness in either order. It
+  does not imply that an expansion must be bought before its gameplay
+  prerequisites can be completed.
+- Asset versioning, original-only public media and the local research boundary
+  are unchanged. ESLint excludes generated `.next-research` output alongside
+  `.next`; source files in research routes remain linted.
+- Editorial sources, interpretation boundaries and methods are summarized in
+  `docs/sanctuary/LITERATURE_PASS.md`.

@@ -53,12 +53,7 @@ describe("Sanctuary exhibits", () => {
     }
   });
   it("mounts the enlarged illustration only on request and removes it when closed", () => {
-    render(
-      <ChapterScene
-        chapter={chapters[0].id}
-        index={0}
-      />,
-    );
+    render(<ChapterScene chapter={chapters[0].id} index={0} />);
     fireEvent.click(
       screen.getByRole("button", { name: /Enlarge illustration:/ }),
     );
@@ -118,25 +113,28 @@ describe("Sanctuary exhibits", () => {
     fireEvent.click(screen.getByRole("button", { name: /Reset the model/ }));
     expect(screen.getByRole("meter")).toHaveAttribute("aria-valuenow", "0");
   });
-  it("keeps remaining effort after purchase and resets it with ownership", () => {
-    render(<Access />);
-    const work = screen.getByRole("button", {
-      name: "Complete the requirement",
-    });
-    expect(work).toBeDisabled();
+  it("keeps ownership and readiness independent in either completion order", () => {
+    const { unmount } = render(<Access />);
+    fireEvent.click(
+      screen.getByRole("button", { name: "Complete the requirement" }),
+    );
+    expect(screen.getByText("READY BEFORE PURCHASE")).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: "Simulate purchase" }));
-    expect(work).toBeEnabled();
+    expect(screen.getByText("BOTH CONDITIONS MET")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Reset ownership" }));
+    expect(screen.getByText("READY BEFORE PURCHASE")).toBeVisible();
+    unmount();
+    render(<Access />);
+    fireEvent.click(screen.getByRole("button", { name: "Simulate purchase" }));
     expect(
       screen.getByText(
         "The entitlement changed. The unfinished requirement did not.",
       ),
     ).toBeVisible();
-    fireEvent.click(work);
-    expect(screen.getByText("BOTH CONDITIONS MET")).toBeVisible();
-    fireEvent.click(screen.getByRole("button", { name: "Reset ownership" }));
-    expect(
+    fireEvent.click(
       screen.getByRole("button", { name: "Complete the requirement" }),
-    ).toBeDisabled();
+    );
+    expect(screen.getByText("BOTH CONDITIONS MET")).toBeVisible();
   });
   it("changes appearance without changing mechanical scope", () => {
     render(<Wardrobe />);

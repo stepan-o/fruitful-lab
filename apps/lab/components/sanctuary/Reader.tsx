@@ -14,7 +14,6 @@ import { assetUrl, imageAsset, type AssetManifest } from "@/lib/assets/types";
 import { chapterHref, type Chapter, type EvidenceSource, type Figure } from "@/lib/sanctuary/types";
 import { readerCopy } from "@/lib/sanctuary/ui";
 import { isLocale, localeCookieName, localeNames, locales, translations, type Locale } from "@/app/(stepanoskin)/stepanoskin/translations";
-import { ProbabilityLab, PriceLab } from "./Experiments";
 import styles from "./reader.module.css";
 
 export type ReaderProps = {
@@ -104,11 +103,10 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             <p className={styles.eyebrow}>PART {roman(current.part)} · {parts[current.part]}</p>
             <div className={styles.titleRow}><span className={styles.chapterNumeral} aria-hidden="true">{roman(index)}</span><h1>{current.title}</h1></div>
             <p className={styles.lede}>{current.lede}</p>
-            {!research?<ChapterScene visual={current.visual} index={index}/>:null}
+            {!research?<ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/>:null}
             <div className={styles.prose}>{current.paragraphs.map(p=><p key={p}>{p}</p>)}</div>
-            <ChapterDiagram diagram={current.visual.diagram} index={index}/>
+            <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/>
             {current.table?<div className={styles.tableWrap} tabIndex={0} aria-label={current.table.caption}><table><caption>{current.table.caption}</caption><thead><tr>{current.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{current.table.rows.map(row=><tr key={row[0]}>{row.map((cell,i)=>i===0?<th scope="row" key={i}>{cell}</th>:<td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>:null}
-            {current.interactive==="probability"?<ProbabilityLab/>:current.interactive==="price"?<PriceLab/>:null}
             {research?current.figures?.map((figure,i)=><figure className={styles.figure} key={figure.asset}>
               <button type="button" className={styles.figureButton} aria-label={`${copy.zoom}: ${figure.alt}`} onClick={()=>setZoom(figure)}><AssetImage asset={imageAsset(assets,figure.asset)} alt={figure.alt} sizes="(max-width:720px) 94vw, (max-width:1100px) 80vw, 900px"/><span className={styles.zoomLabel}>{copy.zoom} ↗</span></button>
               <figcaption><span className={styles.figureNumber}>FIG. {index+1}.{i+1}</span><p>{figure.caption}</p><small>{figure.credit}</small></figcaption>

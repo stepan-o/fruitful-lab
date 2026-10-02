@@ -4,8 +4,9 @@ Sanctuary reader, 2026-10-01: `/stepanoskin/game-monetization` serves the
 illustrated overview; `?chapter=<stable-id>` directly addresses any of 21
 chapters in seven parts. Server rendering sends only the selected chapter and
 its image metadata. The English editorial edition includes primary-source notes,
-21 original scenes and diagrams, two hypothetical interactive models, and native
-contents dialogs. A local-only research execution mode adds 23 optimized reference
+21 individually composed original plates, 20 interactive exhibits and a documented
+timeline, plus native contents/inspection dialogs. The plates draw on Loopforge’s
+console materials and controlled mischief; see `docs/sanctuary/VISUAL_DIRECTION.md`. A local-only research execution mode adds 23 optimized reference
 images and native zoom, requiring an ignored archive. It cannot be enabled in
 production/Vercel or by browser parameters. Publisher binaries and the public
 Sanctuary pack have been withdrawn from the active deployment. The cover uses an

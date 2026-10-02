@@ -40,7 +40,11 @@ unverified. Important boundaries:
 Public and production pages render our own procedural mosaic devil, original
 scene illustrations and chapter-specific diagrams. Every chapter requires a
 `visual` definition in `lib/sanctuary/visual-content.ts`: one original scene, one
-diagram and a research screenshot reference. Original scenes are clearly labeled
+diagram and a research screenshot reference. The original plate’s recognition cues
+and caption live in `lib/sanctuary/art-direction.ts`; 21 compositions and bespoke
+exhibits are implemented in `components/sanctuary/plates/`. See
+[the visual direction](VISUAL_DIRECTION.md) for the Loopforge reference study,
+chapter-by-chapter plan and interaction boundaries. Original scenes are clearly labeled
 as illustrations, not game captures. The Lilith promotional art is inside the
 first chapter of the internal edition, never on the public cover.
 
@@ -97,7 +101,10 @@ in research mode, that chapter's image metadata. Research images use exact-width
 native `srcset`, lazy loading and on-demand full-size zoom. Navigation disables
 bulk chapter prefetching. Original scenes and diagrams use SVG/HTML geometry;
 the mosaic shares its geometry across glitch bands with SVG `use` elements.
-There is no new chart or animation dependency.
+There is no new chart or animation dependency. Plate inspection mounts enlarged
+geometry only on demand; deterministic integer noise avoids hydration drift.
+Twenty exhibits have purposeful controls; Concord retains a documented timeline.
+The loot and price models are integrated into their exhibits, not duplicated.
 
 The ambient fire/ember canvas caps pixel density at 1.5, particles at 64 and
 rendering near 30 fps. It stops while the document is hidden. Shared signal

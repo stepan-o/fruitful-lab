@@ -114,6 +114,6 @@ describe("Sanctuary reader",()=>{
     fireEvent.change(screen.getByRole("combobox",{name:"One pack purchase"}),{target:{value:"0"}});
     expect(screen.getByText("1,900 PT")).toBeVisible();
     expect(screen.getByText("Still needed for item")).toBeVisible();
-    expect(screen.getByText("CAD 6.99")).toBeVisible();
+    expect(screen.getAllByText("CAD 6.99")).toHaveLength(2);
   });
 });

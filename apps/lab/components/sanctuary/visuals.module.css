@@ -17,31 +17,3 @@
 .mural[data-motion=off] *{animation:none!important}
 @media(prefers-reduced-motion:reduce){.mural *{animation:none!important}.atmosphere{display:none}}
 @media print{.atmosphere,.muralFx{display:none}}
-.visualLabel{display:flex;justify-content:space-between;gap:14px;font:9px/1.6 Arial,sans-serif;letter-spacing:.14em;color:#b29c70;padding:16px 20px;border-bottom:1px solid #b2985c26}
-.scene{margin:44px 0;border:1px solid #423c2d;background:#0b1013;overflow:hidden;box-shadow:0 20px 70px #0006}
-.scene>svg{display:block;width:100%;height:auto}
-.scene figcaption{padding:23px 26px 27px;background:linear-gradient(120deg,#172021,#0c0e0f)}
-.scene h2{font:normal 29px/1.2 Georgia,serif!important;color:#e1d3b8;margin-bottom:12px!important}
-.scene figcaption p{font:15px/1.7 Georgia,serif;color:#b8b9aa;margin-bottom:12px!important}
-.scene small{font:10px/1.6 Arial,sans-serif;color:#8e9a94}
-.sceneMist{animation:mist-drift 17s ease-in-out infinite alternate}
-.sceneHalo{animation:relic-pulse 7s ease-in-out infinite}
-@keyframes mist-drift{to{transform:translateX(45px)}}
-@keyframes relic-pulse{50%{opacity:.35}}
-.diagram{margin:44px 0;border:1px solid #49402d;background:radial-gradient(ellipse at 50% 50%,#46351d26,transparent 65%),#111412;overflow:hidden}
-.diagram>h2{font:normal clamp(23px,3vw,34px)/1.25 Georgia,serif!important;margin:26px 24px 0!important;text-align:center;color:#e5d5b4}
-.diagramStage{position:relative;height:400px;margin:10px 12px 0}
-.connections{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke-width:.25;opacity:.65;overflow:visible}
-.tracer{stroke-dasharray:3 12;animation:trace-flow 10s linear infinite;stroke-width:.32}
-@keyframes trace-flow{to{stroke-dashoffset:-90}}
-.diagramSeal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:120px;height:120px;border:1px solid #78634366;border-radius:50%;background:radial-gradient(#342d20,#111412 72%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 35px #ad6c1620;z-index:1}
-.diagramSeal>span{font:24px Georgia;color:#cc9c57;margin-bottom:5px}
-.diagramSeal strong{font:9px/1.5 Arial,sans-serif;letter-spacing:.09em;color:#ccb080;max-width:85px}
-.diagramNodes{list-style:none;margin:0;padding:0}
-.diagramNodes li{position:absolute;transform:translate(-50%,-50%);width:40%;max-width:245px;min-height:103px;border:1px solid #7e735348;background:linear-gradient(125deg,#222921,#131814);padding:15px 12px;text-align:center;box-shadow:0 12px 32px #0003}
-.nodeIndex{font:9px Arial;letter-spacing:.13em;color:#a88953}
-.diagramNodes h3{font:normal 21px/1.15 Georgia,serif;color:#e5dac5;margin:5px 0 9px}
-.diagramNodes p{font:12px/1.55 Arial,sans-serif;color:#b1b8a8}
-.diagram figcaption{padding:5px 24px 27px;font:14px/1.7 Georgia,serif;color:#a9af9e}
-@media(max-width:560px){.visualLabel{font-size:8px;padding:12px}.scene h2{font-size:23px!important}.scene figcaption{padding:20px}.diagramStage{height:395px;margin-inline:4px}.diagramNodes li{padding:12px 8px;min-height:110px;width:43%}.diagramNodes h3{font-size:16px}.diagramNodes p{font-size:11px}.diagramSeal{width:102px;height:102px}.diagramSeal strong{font-size:8px}.diagram figcaption{padding-inline:18px}.diagram>h2{margin-inline:15px!important}}
-@media(prefers-reduced-motion:reduce){.scene *,.diagram *{animation:none!important}}

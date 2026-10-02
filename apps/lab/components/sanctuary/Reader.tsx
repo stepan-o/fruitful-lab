@@ -95,11 +95,13 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
           <div className={styles.editionNote}><strong>{copy.edition}</strong><p>{copy.editionNote}</p></div>
           <section className={styles.introduction} lang="en">
             <p>
-              A coin buys another stretch of life in an arcade cabinet. An
-              expansion buys a destination, sometimes behind a boss the
-              receipt cannot defeat. A reward catalog sells permission to
-              begin earning. The word “purchase” conceals several different
-              relationships with a game.
+              The word “purchase” conceals several different relationships
+              with a game. In an arcade, a coin can buy another attempt. An
+              expansion buys access to new content. A paid reward track
+              makes additional rewards available to earn through play.
+              Each offer makes a different promise about what money
+              provides, what effort remains, and how long the player is
+              expected to stay.
             </p>
             <p>
               This essay follows those relationships from Gauntlet’s

@@ -135,7 +135,10 @@ while offscreen. The fuel bed is cropped below the viewport, with a soft fringe
 limited to the lowest 19% of the hearth and 38% of its former intensity. Slow
 shadows and the existing embers remain independent of this end-of-page reveal.
 
-The cover’s eyes have larger pale-hot cores, a broader warm halo and a brighter
-minimum in their slow pulse. Reduced motion retains a steady eye glow. Mural
+The cover’s eyes pulse on a 3.6-second cycle: their pale-hot cores brighten
+from 48% to full opacity while separate warm halos expand from 85% to 145%
+and rise from 12% to 95% opacity. The mural renders directly in the SVG; glitch
+bands still reference its shared group. Reduced motion retains a steady bright
+eye glow. Mural
 color/geometry attributes round fractional values to keep server and browser
 rendering consistent across different JavaScript engines.

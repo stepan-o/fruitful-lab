@@ -42,7 +42,7 @@ No Loopforge room-art binaries were added to the public asset library.
 | Loot table | A slotted inventory and sought-after relic | Change fixed odds and attempts; read the cumulative curve |
 | Checklist | Reward machinery driven by a great clock | Take a week off; compare expiration with continuing availability |
 | Familiar verbs | Two tactical floors with the same attack | Change a constraint and see movement/attack paths change |
-| Access | A paid door with work still behind it | Satisfy ownership, then the remaining requirement |
+| Access | A paid door with work still behind it | Satisfy ownership and readiness in either order |
 | Identity | Three invented ceremonial armors | Change appearance and motive while the mechanical baseline stays fixed |
 | Time | A forge route and an exchange bridge | Compare craft, purchase and trade with their remaining conditions |
 | Power | Monster and market offering one imagined sword | Trace which activity the acquisition route rewards |
@@ -66,8 +66,8 @@ capture or measured player data.
 
 Keep screenshots inside the existing local-only research boundary. The public
 plate's caption names the game/mechanic being referenced and identifies the
-work as an original illustration. The existing cover, fire/embers, clang and
-preference controls remain intact.
+work as an original illustration. The cover, ember field, clang and preference controls remain. Fire and shadows
+now have independent procedural fields, described below.
 
 ## Performance and accessibility
 
@@ -92,3 +92,53 @@ publisher images. The main reader/exhibit production chunk measured 32,713
 bytes gzip in this build; no new binary assets were added. Functional checks
 cover break/return policy, dual-key claims/refills, ownership prerequisites,
 cosmetic invariance, term disclosure, encounter constraints and realm transfer.
+
+## Atmosphere revision · 1 October 2026
+
+The former shared orange glow and Bézier silhouettes are replaced by a native
+WebGL hearth. One bounded canvas composites two independently timed fields:
+slow, domain-warped soot with lit edges, then fire whose heat is carried upward
+and cools in a small, double-buffered field. Five procedural depth slices add
+bright folds and dark gaps inside the transported heat. The fuel supply varies
+across space and time: fronts form, split, detach and disappear rather than
+bending persistent pointed columns. The existing Canvas2D embers retain their
+movement, color, population and glow. No external textures, media or packages load.
+
+The revision was compared against MIKAEL LOPES’s slow-motion fire footage on
+Pexels (video 6158961), at 2.0, 2.5, 3.0, 3.5 and 4.0 seconds. Matched snapshots
+compare changing silhouettes, detached tips, bright folds and open gaps; slow
+motion is a shape reference, not a measurement of real-time burning speed. The
+reference remains outside the product assets. This is stylized procedural fire,
+not a physical combustion solver or a claim of photorealism.
+
+The hearth draws at approximately 30fps, with a backbuffer bounded to 960×256
+(actual aspect ratio preserved). The heat simulation is separately bounded to
+512×192 using two RGBA8 textures; a transport pass precedes the soot and fire
+compositing passes. It suspends when hidden or reduced motion is
+requested, follows the shared manual motion switch, disposes GPU objects on
+unmount, and rebuilds after context restoration. Without WebGL the reading
+experience and embers remain available. Lifecycle tests cover these boundaries.
+
+The 21 chapters now have a connected, cited narrative. Optional section headings
+and paragraph references are data in the chapter schema; a chapter sends only
+its own text and source notes to the client. Numbered references follow chapter
+source order and open the supporting work. Research and interpretation remain
+distinct, with limitations in the chapter evidence notes. See LITERATURE_PASS.md.
+
+## Reading restraint · 2 October 2026
+
+Fire appears only when the reader’s final one-pixel marker is fully in view.
+An IntersectionObserver tracks the actual document end, including expanded
+evidence and responsive layout changes. It fades in over 700ms and disappears
+when the reader scrolls away; heat transport and flame shading are skipped
+while offscreen. The fuel bed is cropped below the viewport, with a soft fringe
+limited to the lowest 19% of the hearth and 38% of its former intensity. Slow
+shadows and the existing embers remain independent of this end-of-page reveal.
+
+The cover’s eyes pulse on a 3.6-second cycle: their pale-hot cores brighten
+from 48% to full opacity while separate warm halos expand from 85% to 145%
+and rise from 12% to 95% opacity. The mural renders directly in the SVG; glitch
+bands still reference its shared group. Reduced motion retains a steady bright
+eye glow. Mural
+color/geometry attributes round fractional values to keep server and browser
+rendering consistent across different JavaScript engines.

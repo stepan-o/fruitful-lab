@@ -16,7 +16,7 @@ const tiles=Array.from({length:29},(_,row)=>Array.from({length:22},(_,col)=>{
     const cx=points.reduce((s,p)=>s+p[0],0)/3,cy=points.reduce((s,p)=>s+p[1],0)/3;
     const head=inside(cx,cy,face),horned=inside(cx,cy,horn)||inside(440-cx,cy,horn),darkMouth=inside(cx,cy,mouth);
     const r=random(j+side),light=10+r*13+(head?Math.max(0,1-Math.abs(cx-220)/120)*10:0);
-    const fill=darkMouth?'#130c0a':head?`hsl(${8+r*18} 48% ${light+5}%)`:horned?`hsl(37 28% ${light+13}%)`:`hsl(${155+r*28} 14% ${4+r*7}%)`;
+    const fill=darkMouth?'#130c0a':head?`hsl(${(8+r*18).toFixed(3)} 48% ${(light+5).toFixed(3)}%)`:horned?`hsl(37 28% ${(light+13).toFixed(3)}%)`:`hsl(${(155+r*28).toFixed(3)} 14% ${(4+r*7).toFixed(3)}%)`;
     return {points:points.map(p=>p.join(',')).join(' '),fill,key:j+side};
   });
 })).flat(2);
@@ -29,6 +29,8 @@ export default function DevilMural({motion=true}:{motion?:boolean}) {
       <defs>
         <clipPath id={`${id}-arch`}><path d="M28 580V219Q28 79 220 12Q412 79 412 219V580Z"/></clipPath>
         <filter id={`${id}-glow`}><feGaussianBlur stdDeviation="6"/></filter>
+        <filter id={`${id}-eye-halo`} x="-100%" y="-150%" width="300%" height="400%"><feGaussianBlur stdDeviation="12"/></filter>
+      </defs>
         <g id={`${id}-window`} clipPath={`url(#${id}-arch)`}>
           <rect width="440" height="580" fill="#080b0b"/>
           <g stroke="#070909" strokeWidth="1.1">{tiles.map(t=><polygon key={t.key} points={t.points} fill={t.fill}/>)}</g>
@@ -36,16 +38,18 @@ export default function DevilMural({motion=true}:{motion?:boolean}) {
           <path d="M148 243L206 266L178 268ZM292 243L234 266L262 268Z" fill="#1d0b08"/>
           <path d="M220 267L201 320L220 342L239 320Z" fill="#924728" stroke="#28150e" strokeWidth="2"/>
           <path d="M201 320L220 303L239 320L220 334Z" fill="#321810"/>
-          <g fill="#cbb288" stroke="#261811" strokeWidth="1.5">{Array.from({length:7},(_,i)=><path key={i} d={`M${182+i*12} ${359+Math.sin(i/6*Math.PI)*12}l10 3l-5 18Z`}/>)}</g>
+          <g fill="#cbb288" stroke="#261811" strokeWidth="1.5">{Array.from({length:7},(_,i)=><path key={i} d={`M${182+i*12} ${(359+Math.sin(i/6*Math.PI)*12).toFixed(3)}l10 3l-5 18Z`}/>)}</g>
           <path d="M175 421L220 456L265 421L248 503L220 545L192 503Z" fill="#241814" stroke="#58402c"/>
           <g className={styles.eyeFire}>
+            <path className={styles.eyeHalo} d="M155 264L203 274L185 290L165 279Z" fill="#ff5814" filter={`url(#${id}-eye-halo)`}/>
+            <path className={styles.eyeHalo} d="M285 264L237 274L255 290L275 279Z" fill="#ff5814" filter={`url(#${id}-eye-halo)`}/>
             <path d="M155 264L203 274L185 290L165 279ZM285 264L237 274L255 290L275 279Z" fill="#f43d0b" filter={`url(#${id}-glow)`}/>
-            <path d="M158 267L200 275L184 285ZM282 267L240 275L256 285Z" fill="#ff8b24"/>
-            <path d="M172 273L192 277L182 281ZM268 273L248 277L258 281Z" fill="#ffeab4"/>
+            <g className={styles.eyeCore}>
+            <path d="M158 267L200 275L184 285ZM282 267L240 275L256 285Z" fill="#ffb947"/>
+            <path d="M166 271L196 276L183 282ZM274 271L244 276L257 282Z" fill="#fff3cd"/>
+            </g>
           </g>
         </g>
-      </defs>
-      <use href={`#${id}-window`}/>
       <path d="M28 580V219Q28 79 220 12Q412 79 412 219V580M41 580V223Q41 91 220 29Q399 91 399 223V580" fill="none" stroke="#a1834c" strokeWidth="2" strokeOpacity=".55"/>
     </svg>
     <div className={styles.muralFx} ref={fx} aria-hidden="true"><svg viewBox="0 0 440 580">{Array.from({length:5},(_,i)=><use key={i} href={`#${id}-window`} data-glitch-band className={styles.muralBand}/>)}</svg><svg className={styles.bolts} viewBox="0 0 100 100" preserveAspectRatio="none"><path data-bolt/><path data-bolt/></svg></div>

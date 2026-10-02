@@ -376,6 +376,7 @@
   margin:27px 0 35px!important
 }
 .prose {
+  margin-top:36px;
   max-width:730px;
   font-family:Georgia,"Times New Roman",serif;
   font-size:19px;
@@ -1094,3 +1095,9 @@
 @media(max-width:950px){.coverMural{width:65%;right:-5%;opacity:.72}}
 @media(max-width:560px){.coverMural{width:93%;height:510px;right:-31%;top:20px;opacity:.52}.header{padding-inline:18px}.brand{font-size:8px;gap:7px;letter-spacing:.12em}.brand>span{font-size:23px}.headerControls{gap:5px}.headerControls>.preferenceButton{min-width:31px;padding:5px;font-size:10px}.locale select{max-width:87px;padding-inline:5px}.headerControls>.contentsButton{padding:6px;min-width:31px}}
 @media(prefers-reduced-motion:reduce){.article{animation:none}}
+
+.prose h2 { margin: 2.3em 0 .85em; font-family: Georgia, serif; font-size: clamp(1.45rem, 2.5vw, 1.8rem); line-height: 1.3; color: #dfd4b5; font-weight: 400; }
+.citation { font-family: ui-monospace, monospace; font-size: .65em; margin-left: .4em; line-height: 0; }
+.citation a { color: #c2a46b; padding: .2em .25em; text-decoration: none; border-bottom: 1px solid #8e794c70; }
+.citation a:hover { color: #f1d09b; border-color: currentColor; }
+.citation a:focus-visible { outline: 2px solid #d5b570; outline-offset: 4px; }

@@ -124,3 +124,18 @@ and paragraph references are data in the chapter schema; a chapter sends only
 its own text and source notes to the client. Numbered references follow chapter
 source order and open the supporting work. Research and interpretation remain
 distinct, with limitations in the chapter evidence notes. See LITERATURE_PASS.md.
+
+## Reading restraint · 2 October 2026
+
+Fire appears only when the reader’s final one-pixel marker is fully in view.
+An IntersectionObserver tracks the actual document end, including expanded
+evidence and responsive layout changes. It fades in over 700ms and disappears
+when the reader scrolls away; heat transport and flame shading are skipped
+while offscreen. The fuel bed is cropped below the viewport, with a soft fringe
+limited to the lowest 19% of the hearth and 38% of its former intensity. Slow
+shadows and the existing embers remain independent of this end-of-page reveal.
+
+The cover’s eyes have larger pale-hot cores, a broader warm halo and a brighter
+minimum in their slow pulse. Reduced motion retains a steady eye glow. Mural
+color/geometry attributes round fractional values to keep server and browser
+rendering consistent across different JavaScript engines.

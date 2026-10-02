@@ -10,12 +10,21 @@ let reduced = false;
 let motionChange: (() => void) | undefined;
 let pending: Map<number, FrameRequestCallback>;
 let frameId = 0;
+let intersection: IntersectionObserverCallback;
+const observe = jest.fn();
+const disconnect = jest.fn();
 beforeEach(() => {
   jest.clearAllMocks();
   hidden = false;
   reduced = false;
   pending = new Map();
   create.mockReturnValue(renderer);
+  Object.defineProperty(window, "IntersectionObserver", {configurable: true, writable: true, value:
+    jest.fn((callback: IntersectionObserverCallback) => {
+      intersection = callback;
+      return {observe, disconnect};
+    }),
+  });
   Object.defineProperty(document, "hidden", {configurable: true, get: () => hidden});
   Object.defineProperty(window, "matchMedia", {writable:true, value: () => ({
     get matches() { return reduced; },
@@ -29,6 +38,46 @@ beforeEach(() => {
   jest.spyOn(HTMLCanvasElement.prototype, "getBoundingClientRect").mockReturnValue({width:1440,height:440} as DOMRect);
 });
 afterEach(() => {jest.restoreAllMocks();});
+
+function tick(time: number) {
+  act(() => {
+    const callbacks = [...pending.values()];
+    pending.clear();
+    callbacks.forEach(callback => callback(time));
+  });
+}
+
+function showEnd(ratio: number) {
+  act(() => intersection([
+    {isIntersecting: ratio > 0, intersectionRatio: ratio} as IntersectionObserverEntry,
+  ], {} as IntersectionObserver));
+}
+
+it("reveals fire only at the full page end, hides it on leaving, and cleans up observation", () => {
+  const {unmount} = render(<Hearth enabled/>);
+  expect(observe).toHaveBeenCalledTimes(1);
+  tick(100);
+  expect(renderer.draw).toHaveBeenLastCalledWith(expect.any(Number), 0);
+  // A visible footer or a partly visible final pixel is not the page bottom.
+  showEnd(.5);
+  tick(180);
+  expect(renderer.draw).toHaveBeenLastCalledWith(expect.any(Number), 0);
+  showEnd(1);
+  for (let time = 260; time <= 980; time += 80) tick(time);
+  expect(renderer.draw).toHaveBeenLastCalledWith(expect.any(Number), 1);
+  // Scrolling upward or expanding evidence moves the end out of view.
+  showEnd(0);
+  tick(1060);
+  expect(renderer.draw).toHaveBeenLastCalledWith(expect.any(Number), 0);
+  showEnd(1);
+  tick(1140);
+  const strength = renderer.draw.mock.calls.at(-1)![1];
+  expect(strength).toBeGreaterThan(0);
+  expect(strength).toBeLessThan(1);
+  unmount();
+  expect(disconnect).toHaveBeenCalledTimes(1);
+  expect(pending.size).toBe(0);
+});
 
 it("allocates only when motion is allowed and bounds the rendering surface", () => {
   reduced = true;

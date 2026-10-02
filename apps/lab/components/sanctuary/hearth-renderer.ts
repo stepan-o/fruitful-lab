@@ -66,6 +66,7 @@ void main() {
 const display = common + `
 uniform sampler2D u_heat;
 uniform float u_layer;
+uniform float u_fire;
 vec4 shadows(vec2 uv, float aspect) {
   vec2 p = vec2(uv.x * aspect * 2.8, uv.y * 3.3);
   float t = u_time * .16;
@@ -127,7 +128,11 @@ vec4 flames(vec2 uv, float aspect) {
 void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution;
   float aspect = u_resolution.x / u_resolution.y;
-  gl_FragColor = u_layer < .5 ? shadows(uv, aspect) : flames(uv, aspect);
+  // Look over the edge of the fire: its fuel bed stays below the viewport.
+  // Preserve the folds' proportions, softly cropping their height and light.
+  float fringe = (1. - smoothstep(.035, .19, uv.y)) * .38 * u_fire;
+  gl_FragColor = u_layer < .5 ? shadows(uv, aspect)
+    : flames(uv + vec2(0., .14), aspect) * fringe;
 }
 `;
 
@@ -188,7 +193,7 @@ export function createHearth(canvas: HTMLCanvasElement) {
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
   const loc = (program: WebGLProgram, name: string) => gl.getUniformLocation(program, name);
   const step = {resolution:loc(stepProgram,"u_resolution"), time:loc(stepProgram,"u_time"), dt:loc(stepProgram,"u_step"), texture:loc(stepProgram,"u_previous")};
-  const draw = {resolution:loc(drawProgram,"u_resolution"), time:loc(drawProgram,"u_time"), layer:loc(drawProgram,"u_layer"), texture:loc(drawProgram,"u_heat")};
+  const draw = {resolution:loc(drawProgram,"u_resolution"), time:loc(drawProgram,"u_time"), layer:loc(drawProgram,"u_layer"), texture:loc(drawProgram,"u_heat"), fire:loc(drawProgram,"u_fire")};
   gl.clearColor(0, 0, 0, 0);
   gl.activeTexture(gl.TEXTURE0);
   return {
@@ -218,21 +223,24 @@ export function createHearth(canvas: HTMLCanvasElement) {
       }
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     },
-    draw(elapsed: number) {
+    draw(elapsed: number, fire = 0) {
       if (targets.length !== 2) return;
       const dt = previous === null ? 1 / 30 : Math.min(Math.max(elapsed - previous, 0), .08);
       previous = elapsed;
-      gl.disable(gl.BLEND);
-      gl.useProgram(stepProgram);
-      gl.viewport(0, 0, simWidth, simHeight);
-      gl.bindFramebuffer(gl.FRAMEBUFFER, targets[1-front].framebuffer);
-      gl.bindTexture(gl.TEXTURE_2D, targets[front].texture);
-      gl.uniform1i(step.texture, 0);
-      gl.uniform2f(step.resolution, simWidth, simHeight);
-      gl.uniform1f(step.time, elapsed % 3600);
-      gl.uniform1f(step.dt, dt);
-      gl.drawArrays(gl.TRIANGLES, 0, 6);
-      front = 1-front;
+      // No heat transport or flame shading while the page end is out of view.
+      if (fire > 0) {
+        gl.disable(gl.BLEND);
+        gl.useProgram(stepProgram);
+        gl.viewport(0, 0, simWidth, simHeight);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, targets[1-front].framebuffer);
+        gl.bindTexture(gl.TEXTURE_2D, targets[front].texture);
+        gl.uniform1i(step.texture, 0);
+        gl.uniform2f(step.resolution, simWidth, simHeight);
+        gl.uniform1f(step.time, elapsed % 3600);
+        gl.uniform1f(step.dt, dt);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        front = 1-front;
+      }
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
       gl.viewport(0, 0, width, height);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -243,7 +251,8 @@ export function createHearth(canvas: HTMLCanvasElement) {
       gl.uniform1i(draw.texture, 0);
       gl.uniform2f(draw.resolution, width, height);
       gl.uniform1f(draw.time, elapsed % 3600);
-      for (const pass of [0, 1]) {
+      gl.uniform1f(draw.fire, fire);
+      for (const pass of fire > 0 ? [0, 1] : [0]) {
         gl.uniform1f(draw.layer, pass);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
       }

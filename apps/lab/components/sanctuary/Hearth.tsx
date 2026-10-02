@@ -7,6 +7,7 @@ import styles from "./visuals.module.css";
 /** Two independent fields: slow soot behind fast, emissive flame filaments. */
 export default function Hearth({ enabled }: { enabled: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const end = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     const canvas = ref.current;
     if (!canvas || !enabled) return;
@@ -16,6 +17,19 @@ export default function Hearth({ enabled }: { enabled: boolean }) {
     let previous = 0;
     let elapsed = 0;
     let lost = false;
+    let atEnd = false;
+    let fire = 0;
+
+    // This marker is the reader's last in-flow element. A fully visible pixel
+    // means the reader has reached the actual end, including expanded sources.
+    // One pixel of root margin accommodates fractional scrollHeight rounding.
+    const observer = typeof IntersectionObserver === "undefined" ? null :
+      new IntersectionObserver(([entry]) => {
+        atEnd = entry.isIntersecting && entry.intersectionRatio === 1;
+        canvas.dataset.fireVisible = String(atEnd);
+        if (!atEnd) fire = 0;
+      }, { threshold: 1, rootMargin: "0px 0px 1px 0px" });
+    if (end.current) observer?.observe(end.current);
 
     function resize() {
       if (!renderer || !canvas) return;
@@ -29,9 +43,11 @@ export default function Hearth({ enabled }: { enabled: boolean }) {
     function draw(now: number) {
       frame = requestAnimationFrame(draw);
       if (previous && now - previous < 33) return;
-      elapsed += previous ? Math.min(now - previous, 80) / 1000 : 0;
+      const delta = previous ? Math.min(now - previous, 80) / 1000 : 0;
+      elapsed += delta;
       previous = now;
-      renderer?.draw(elapsed);
+      fire = atEnd ? Math.min(1, fire + delta / .7) : 0;
+      renderer?.draw(elapsed, fire);
     }
     function sync() {
       cancelAnimationFrame(frame);
@@ -65,6 +81,7 @@ export default function Hearth({ enabled }: { enabled: boolean }) {
     canvas.addEventListener("webglcontextrestored", onRestored);
     return () => {
       cancelAnimationFrame(frame);
+      observer?.disconnect();
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", sync);
       motion.removeEventListener("change", sync);
@@ -74,11 +91,15 @@ export default function Hearth({ enabled }: { enabled: boolean }) {
     };
   }, [enabled]);
   return enabled ? (
-    <canvas
-      ref={ref}
-      className={styles.hearth}
-      aria-hidden="true"
-      data-effects="shadows flames"
-    />
+    <>
+      <canvas
+        ref={ref}
+        className={styles.hearth}
+        aria-hidden="true"
+        data-effects="shadows flames"
+        data-fire-visible="false"
+      />
+      <span ref={end} className={styles.hearthEnd} aria-hidden="true" />
+    </>
   ) : null;
 }

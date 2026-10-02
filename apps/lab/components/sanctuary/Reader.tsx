@@ -64,7 +64,6 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
   }
 
   return <main className={styles.reader} lang={locale} data-motion={motion?"on":"off"} data-media-mode={research?"internal-research":"original"} onClickCapture={transitionSound}>
-    <Atmosphere enabled={motion}/>
     <a href="#reading" className={styles.skip}>{copy.skip}</a>
     <header className={styles.header}>
       <Link className={styles.brand} href="/stepanoskin"><span aria-hidden="true">◇</span> STEPAN OSKIN</Link>
@@ -205,5 +204,6 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
       {/* Full-sized image is mounted only when opened; native scrolling preserves readable UI text. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={assetUrl(assets,zoom.asset)} width={imageAsset(assets,zoom.asset).width} height={imageAsset(assets,zoom.asset).height} alt={zoom.alt}/><figcaption lang="en">{zoom.caption}<br/>{zoom.credit}</figcaption></figure>:null}</dialog>
+    <Atmosphere enabled={motion}/>
   </main>;
 }

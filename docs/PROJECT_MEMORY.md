@@ -553,3 +553,13 @@ Test surface:
   `.next`; source files in research routes remain linted.
 - Editorial sources, interpretation boundaries and methods are summarized in
   `docs/sanctuary/LITERATURE_PASS.md`.
+
+### Sanctuary reading restraint · 2026-10-02
+
+- Only the subdued upper fringe of the fire appears at the true document end;
+  a final in-flow marker follows all reader content and expanded evidence.
+  Leaving the bottom hides fire and skips its simulation/shading passes.
+  Shadows and embers keep their independent ambient behavior.
+- The cover devil has brighter eye cores and a wider warm halo, with a steady
+  glow when motion is disabled. Rounded SVG numbers prevent engine-dependent
+  hydration differences in the procedural mosaic.

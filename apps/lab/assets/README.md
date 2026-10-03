@@ -91,19 +91,12 @@ integrity failures and over-budget rejection. Jest covers the reader's cache,
 deduplication, validation and failure fallback. Check actual response headers
 on the deployed pointer, manifest and file after publishing.
 
-## Local research media exception
+## Sanctuary public editorial selection — 3 October 2026
 
-Sanctuary publisher screenshots are not public CDN releases. They have been
-withdrawn from the current `public/` tree and retained in an optional gitignored
-`assets/research/` archive. This rights-driven removal is an explicit exception
-to normal append-only retention, not a precedent for routine asset cleanup.
-Earlier immutable URLs in old deployments, Git history or browser caches are
-not retroactively erased.
-
-`research:import` installs the private pack; `research:dev` runs it only on local
-loopback in development, with analytics disabled. It serves images through the
-separate `/research-media/` route using private, no-store headers, not the public
-immutable cache rules. Production/Vercel reject this mode even with the flag set.
-`assets:check` rejects research variants under `public/` and verifies the archive
-when present. The public build does not require it. See
-`docs/sanctuary/README.md` for the exact workflow and media boundaries.
+The `sanctuary-editorial` pack contains the 24 selected publisher images used by
+the manuscript. `lib/sanctuary/editorial-media.json` records the publication
+rationale; `npm run assets:publish-editorial` promotes reviewed archive entries,
+adds mobile derivatives and activates the public pointer last. Public image files
+and manifests are committed. The source archive stays ignored and optional for
+production builds. New research imports do not grant publication automatically.
+`assets:check` validates the decisions, public file integrity and archive boundary.

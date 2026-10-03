@@ -1,4 +1,12 @@
+Current media policy, 3 October 2026: selected publisher imagery now appears in the public editorial edition alongside original scenes and diagrams. See [Design system §9](DESIGN_SYSTEM.md#9-access-localization-and-media-policy) and [rights review](EDITORIAL_MEDIA_RIGHTS.md). Historical local-only notes below describe the earlier iteration.
+
 # Sanctuary: a cabinet of working ideas
+
+The current design specification is [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md), with
+an [offline visual reference sheet](design-system/index.html). It captures the
+approved local opening as of 2 October 2026. This file retains the reference
+study, chapter inventory and development history. The remaining plates still
+need the opening's latest detail and coherence pass.
 
 This pass takes its personal style reference from the owner's Loopforge. It
 keeps Sanctuary's black, brass, ember and muted teal palette. The original
@@ -29,7 +37,7 @@ No Loopforge room-art binaries were added to the public asset library.
 
 | Chapter | Original plate | Exhibit and primary action |
 | --- | --- | --- |
-| The fork | Four contracts at the devil's counter | Switch the transaction and follow what changes hands |
+| The fork | The shape of a playthrough: a campaign's unfolding adventure beside a fresh seasonal attempt | Compare how sessions fit together, the supporting design and the commercial offer |
 | Six games | A six-window cabinet of journey emblems | Compare design, commerce and completion across the same six games |
 | The reset | A Seasonal-to-Eternal transfer engine | End the season; distinguish character transfer from a fresh start |
 | Several histories | A crooked arcade of coexisting machines | Highlight a mechanism across selected historical anchors |
@@ -78,6 +86,26 @@ geometry mounts only while the native inspection dialog is open. Only the
 current chapter renders. Exhibits keep their own small local state, reset when
 the chapter changes, and compute results directly without animation loops.
 
+The opening diptych uses original woodblock-inspired terrain: layered ridges,
+exposed rock faces, ink cuts and branching, wind-shaped pines. Layered roofs,
+timber framing, latticed windows and stone gate foundations carry the same print
+language into the architecture. Clouds use crisp layered silhouettes and contour
+highlights, while chimney smoke retains soft dispersal. The visual reference
+was Hiroshige's [Mountains and Rivers Along the Kisokaidō](https://www.metmuseum.org/art/collection/search/55647)
+in the Met collection; the composition and geometry remain our own.
+
+Its moving atmosphere is isolated on one transparent canvas, capped at 960×566
+and 30 fps. Three cached sprites serve six cloud layers and 28 overlapping smoke
+wisps; the frame also draws 26 drifting/flickering motes, three birds and three
+lamps. Smoke starts at fixed chimney mouths, spreads with age and fades; birds
+fly forward through wingbeats and glides. Shared silhouette paths keep clouds
+behind mountains and buildings. The static vector terrain is never rebuilt per
+frame. There are no added media downloads, canvas filters or animation libraries.
+An intersection observer and page visibility listener stop the loop offscreen
+and in background tabs. The inspector pauses the underlying plate. Reduced-motion
+and the reader's motion control keep a still frame. Sprites are created only
+when the plate is visible, and geometry mounts in the inspector only on request.
+
 Buttons expose pressed/disabled state; sliders and the Favor meter have labels.
 Live readouts explain the consequence. Dense SVG instruments retain legible
 geometry in a keyboard-focusable horizontal scroll area on narrow screens;
@@ -85,7 +113,8 @@ text explanations remain outside the SVG. Native dialogs support Escape.
 Transitions and wire motion respect both reduced-motion and the shared manual
 motion setting. Existing hashed assets and manifest caching remain unchanged.
 
-Validation for this pass: 143 tests in 32 suites and the production build pass,
+Historical validation of the initial 21-plate pass, before the later local
+opening revisions: 143 tests in 32 suites and the production build passed,
 including the asset-boundary checks. Browser inspection covered all 21 plates
 and all 21 mobile chapter layouts (390px viewport), with no page overflow or
 publisher images. The main reader/exhibit production chunk measured 32,713

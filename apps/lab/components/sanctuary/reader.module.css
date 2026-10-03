@@ -350,6 +350,37 @@
 .chapterTop a:hover {
   color:var(--gold)
 }
+.article[data-opening] .chapterTop {
+  margin-bottom:18px;
+  padding-bottom:12px
+}
+.article[data-opening] {
+  padding-top:24px
+}
+.article[data-opening] > .eyebrow {
+  margin-bottom:12px!important
+}
+.article[data-opening] .chapterNumeral {
+  display:none
+}
+.article[data-opening] .lede {
+  margin:0!important;
+  font-size:clamp(22px,2.1vw,28px);
+  max-width:720px
+}
+.openingHeading {
+  display:grid;
+  grid-template-columns: minmax(180px,.8fr) minmax(0,1.4fr);
+  align-items:center;
+  gap:24px;
+  margin-bottom:24px
+}
+.article[data-opening] > figure:first-of-type {
+  margin-top:0
+}
+@media(max-width:720px) {
+  .openingHeading {grid-template-columns:1fr;gap:16px}
+}
 .titleRow {
   position:relative;
   padding-left:0
@@ -478,6 +509,26 @@
   margin:42px 0!important;
   border:1px solid var(--line);
   background:#10120f
+}
+.referenceComparison {
+  margin:28px 0 40px;
+  border:1px solid var(--line);
+  background:#10120f;
+}
+.referencePair {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+.referencePair figure { margin:0; min-width:0; }
+.referencePair figure + figure { border-left:1px solid var(--line); }
+.referencePair figcaption { padding:16px 20px; color:#bcb6a8; font-size:13px; line-height:1.6; }
+.referencePair figcaption p { margin:0 0 10px; }
+.referencePair small { font-size:10px; color:#969185; }
+.referencePair .figureButton img { aspect-ratio:16/9; object-fit:contain; }
+.referenceReading { margin:0; padding:18px 22px; border-top:1px solid var(--line); color:#d6c6a6; font-family:Georgia,serif; font-size:18px; line-height:1.55; }
+@media(max-width:720px) {
+  .referencePair { grid-template-columns:1fr; }
+  .referencePair figure + figure { border-left:0; border-top:1px solid var(--line); }
 }
 .figureButton {
   display:block;
@@ -1089,6 +1140,7 @@
 .cover:after {background:linear-gradient(90deg,#0c0d0ce8,transparent 82%),linear-gradient(0deg,#0c0d0c,transparent 38%)}
 .headerControls>.preferenceButton {min-width:38px;padding:8px 9px}
 .researchNote {font:10px/1.7 Arial,sans-serif;letter-spacing:.14em;color:#cc9b5b;border:1px solid #705932;padding:12px 14px;margin-bottom:28px!important}
+.article[data-opening] .researchNote {border:0;padding:0;margin-bottom:16px!important;font-size:9px}
 .article {animation:chapter-arrive .4s ease-out both}
 @keyframes chapter-arrive {from{opacity:.5;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .reader[data-motion=off] *, .reader[data-motion=off] *::before,.reader[data-motion=off] *::after {animation:none!important;transition:none!important}
@@ -1101,3 +1153,12 @@
 .citation a { color: #c2a46b; padding: .2em .25em; text-decoration: none; border-bottom: 1px solid #8e794c70; }
 .citation a:hover { color: #f1d09b; border-color: currentColor; }
 .citation a:focus-visible { outline: 2px solid #d5b570; outline-offset: 4px; }
+
+/* Shared mobile quality bar: full touch targets without crowding the reader. */
+.headerControls button,.headerControls>.preferenceButton,.headerControls>.contentsButton,.locale select {min-height:44px;min-width:44px}
+.dialogHead button{min-height:44px;min-width:44px}
+.footer{flex-wrap:wrap;gap:12px 24px}.footer a{min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:360px){.header{padding-inline:12px}.brand{font-size:0;gap:0}.brand>span{font-size:23px}.headerControls{gap:4px}.locale select{max-width:80px}}
+
+/* Keep embedded publisher notices at the foot of key art unobscured. */
+.referencePair .zoomLabel{top:12px;bottom:auto}

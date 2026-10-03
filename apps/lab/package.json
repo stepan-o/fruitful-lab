@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run assets:check && next build",
+    "assets:publish-editorial": "node scripts/publish-editorial.mjs",
     "assets:build": "node scripts/assets.mjs build",
     "assets:check": "node scripts/assets.mjs check && node scripts/research-assets.mjs",
     "assets:activate": "node scripts/assets.mjs activate",

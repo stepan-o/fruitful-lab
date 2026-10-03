@@ -1,6 +1,6 @@
 import type { VisualSpec } from "@/lib/sanctuary/visual-content";
 import {
-  Transaction,
+  ExperienceFork,
   PromiseAtlas,
   Transfer,
   Histories,
@@ -25,7 +25,7 @@ import {
 import { ProbabilityLab, PriceLab } from "./Experiments";
 import s from "./exhibits.module.css";
 const instruments = {
-  "the-fork": Transaction,
+  "the-fork": ExperienceFork,
   "six-games": PromiseAtlas,
   "the-reset": Transfer,
   "several-histories": Histories,

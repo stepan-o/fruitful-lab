@@ -1,4 +1,5 @@
 import { memo, useId } from "react";
+import ForkPlate from "./ForkPlate";
 import {
   brass,
   ember,
@@ -183,46 +184,6 @@ function Floor({
 }
 function Scene({ chapter }: { chapter: string }) {
   switch (chapter) {
-    case "the-fork":
-      return (
-        <>
-          <Arch x={500} y={40} w={250} h={390} />
-          <path
-            d="M416 315L434 182L471 143L454 96L492 121L530 96L519 143L560 186L584 315Z"
-            fill="#2b2322"
-            stroke={brass}
-            strokeWidth="3"
-          />
-          <path
-            d="M471 174l16 5M514 174l16 -5"
-            stroke={ember}
-            strokeWidth="4"
-          />
-          <path
-            d="M438 236L320 298M555 236L684 299"
-            stroke="#605043"
-            strokeWidth="13"
-          />
-          <Plate x={235} y={313} w={530} h={132} />
-          {(["coin", "book", "crystal", "eye"] as const).map((t, i) => (
-            <g key={t}>
-              <Relic
-                type={t}
-                x={303 + i * 130}
-                y={352}
-                s={0.47}
-                tone={i % 2 ? teal : brass}
-              />
-              <Label x={303 + i * 130} y={413} size={16}>
-                {["OWN", "RETURN", "ACQUIRE", "ATTEND"][i]}
-              </Label>
-            </g>
-          ))}
-          <Person x={494} y={463} s={1.1} />
-          <Gear x={175} y={420} r={60} />
-          <Gear x={825} y={420} r={60} />
-        </>
-      );
     case "six-games":
       return (
         <>
@@ -1146,17 +1107,20 @@ function Scene({ chapter }: { chapter: string }) {
   }
 }
 
-/** Twenty-one engraved dioramas. Geometry is deterministic; no assets or animation loop. */
+/** Deterministic engravings. The opening plate owns its bounded atmospheric layer. */
 function ScenePlate({
   chapter,
   index,
   label,
+  motionPaused = false,
 }: {
   chapter: string;
   index: number;
   label: string;
+  motionPaused?: boolean;
 }) {
   const id = useId().replace(/:/g, "");
+  if (chapter === "the-fork") return <ForkPlate label={label} paused={motionPaused} />;
   return (
     <svg viewBox="0 0 1000 600" role="img" aria-label={label}>
       <defs>

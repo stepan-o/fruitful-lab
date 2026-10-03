@@ -1,0 +1,528 @@
+{
+  "corpusVersion": "lf-evals-1",
+  "generatedAt": "2026-10-03T18:09:35.054Z",
+  "results": [
+    {
+      "caseId": "first-pressure",
+      "sample": 0,
+      "review": "Recognize delivery-versus-strain tension without inventing a failure.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 7,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 3572,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "stiletto",
+          "line": "Eight units down in the Lattice Forge, no room for slack but we're barely a sixth through the quota. Pressure's spiking, and this strain isn’t just numbers—it’s a warning.",
+          "evidenceId": "da209db415ee56c876802411ba217143a53d794c3812978d7d42938609a7adf7"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-2",
+          "evidenceId": "da209db415ee56c876802411ba217143a53d794c3812978d7d42938609a7adf7",
+          "sample": 0,
+          "usage": {
+            "input": 506,
+            "output": 86,
+            "cached": 0
+          },
+          "latencyMs": 2584,
+          "reservedMicroUsd": 2160
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "quiet-opening",
+      "sample": 0,
+      "review": "Find a distinctive voice in an ordinary event without manufacturing drama.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 42,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "balanced",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 1101,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "limen",
+          "line": "Four units of strain accrued after the first shift. That’s the ledger of disorder creeping in—no shortcuts allowed if we want to avoid cascading faults in the lattice.",
+          "evidenceId": "8df8475cd2d2ac0d449e3d7185199008053d6cc342a426d6d123f8939d79abed"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-2",
+          "evidenceId": "8df8475cd2d2ac0d449e3d7185199008053d6cc342a426d6d123f8939d79abed",
+          "sample": 0,
+          "usage": {
+            "input": 511,
+            "output": 84,
+            "cached": 0
+          },
+          "latencyMs": 954,
+          "reservedMicroUsd": 2161
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "recovery",
+      "sample": 0,
+      "review": "Care reduces strain but does not erase the past or guarantee the order.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 8,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "care",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 1432,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "witch",
+          "line": "Thirteen units marched through the shift, but the quota's still a distant drumbeat; the strain eased, yet the materials whisper there's more tempering needed before the forge sings true.",
+          "evidenceId": "15addb7963d709a6ac0f59983bd25d68bb10376e32b6026c86fc8b79cb305497"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-2",
+          "evidenceId": "15addb7963d709a6ac0f59983bd25d68bb10376e32b6026c86fc8b79cb305497",
+          "sample": 0,
+          "usage": {
+            "input": 500,
+            "output": 85,
+            "cached": 0
+          },
+          "latencyMs": 1339,
+          "reservedMicroUsd": 2154
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "wrong-specialists",
+      "sample": 0,
+      "review": "Interpret a strained staffing choice; do not invent interpersonal history.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 13,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "balanced",
+            "assignments": [
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum",
+              "limen"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum",
+              "limen"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 1116,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "stiletto",
+          "line": "We hammered out 26 units, but 240’s the real game—pressure’s intact, strain’s spiking, and the run’s still hanging. Nobody’s banking overtime; it’s all on the schedule—and this schedule’s leaking.",
+          "evidenceId": "c95139b4bf492d38fe35e0c977b6108dd0a3c607fc57c14c41fcef1bca7aed79"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-2",
+          "evidenceId": "c95139b4bf492d38fe35e0c977b6108dd0a3c607fc57c14c41fcef1bca7aed79",
+          "sample": 0,
+          "usage": {
+            "input": 512,
+            "output": 101,
+            "cached": 0
+          },
+          "latencyMs": 1010,
+          "reservedMicroUsd": 2160
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "finished-order",
+      "sample": 0,
+      "review": "The quota is met narrowly. No extra shifts or opened rooms may be claimed.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 7,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "care",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "care",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "care",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 1525,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "thrum",
+          "line": "Seven units weaving through the gallery—just enough to meet destiny's tight demands. But strain mounting from twenty-four to forty-two whispers; harmony bends, not breaks, yet no one should ignore that pressure.",
+          "evidenceId": "8a7296a8af54994bf8d50ce93186617e94d5668696cabf5eb191e3d3390c4709"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-2",
+          "evidenceId": "8a7296a8af54994bf8d50ce93186617e94d5668696cabf5eb191e3d3390c4709",
+          "sample": 0,
+          "usage": {
+            "input": 506,
+            "output": 91,
+            "cached": 0
+          },
+          "latencyMs": 1329,
+          "reservedMicroUsd": 2156
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "exhausted-line",
+      "sample": 0,
+      "review": "High strain is factual. Injury, rebellion and sabotage are not established.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 42,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 2239,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "cathexis",
+          "line": "Closing day and the tally doesn't lie—we’ve missed our mark by a yawning gap. The strain remains untouched, as if we pretended the pressure could be shrugged off like dust.",
+          "evidenceId": "2742b1c923d809b72d9e57b7fa1989f59e38156cc321664e27b2c692b945c8c5"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-2",
+          "evidenceId": "2742b1c923d809b72d9e57b7fa1989f59e38156cc321664e27b2c692b945c8c5",
+          "sample": 0,
+          "usage": {
+            "input": 514,
+            "output": 91,
+            "cached": 0
+          },
+          "latencyMs": 2168,
+          "reservedMicroUsd": 2165
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    }
+  ]
+}

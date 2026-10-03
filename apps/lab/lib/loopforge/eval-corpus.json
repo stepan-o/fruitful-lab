@@ -1,0 +1,66 @@
+{
+  "version": "lf-evals-1",
+  "engineVersion": "lf-teaching-1",
+  "cases": [
+    {
+      "id": "first-pressure",
+      "seed": 7,
+      "doctrines": ["pressure"],
+      "rotate": 0,
+      "review": "Recognize delivery-versus-strain tension without inventing a failure."
+    },
+    {
+      "id": "quiet-opening",
+      "seed": 42,
+      "doctrines": ["balanced"],
+      "rotate": 0,
+      "review": "Find a distinctive voice in an ordinary event without manufacturing drama."
+    },
+    {
+      "id": "recovery",
+      "seed": 8,
+      "doctrines": ["pressure", "pressure", "pressure", "care"],
+      "rotate": 0,
+      "review": "Care reduces strain but does not erase the past or guarantee the order."
+    },
+    {
+      "id": "wrong-specialists",
+      "seed": 13,
+      "doctrines": ["balanced", "pressure"],
+      "rotate": 1,
+      "review": "Interpret a strained staffing choice; do not invent interpersonal history."
+    },
+    {
+      "id": "finished-order",
+      "seed": 7,
+      "doctrines": [
+        "pressure",
+        "pressure",
+        "care",
+        "pressure",
+        "care",
+        "pressure",
+        "care",
+        "pressure"
+      ],
+      "rotate": 0,
+      "review": "The quota is met narrowly. No extra shifts or opened rooms may be claimed."
+    },
+    {
+      "id": "exhausted-line",
+      "seed": 42,
+      "doctrines": [
+        "pressure",
+        "pressure",
+        "pressure",
+        "pressure",
+        "pressure",
+        "pressure",
+        "pressure",
+        "pressure"
+      ],
+      "rotate": 0,
+      "review": "High strain is factual. Injury, rebellion and sabotage are not established."
+    }
+  ]
+}

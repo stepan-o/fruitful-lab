@@ -210,6 +210,35 @@ Admin Pinterest stats contract:
 - Update `docs/PROJECT_MEMORY.md` and the latest dated audit when architecture, auth, analytics, experiment, route, or API contracts change.
 
 
+## Loopforge learning prototype — 2026-10-03
+
+The Stepanoskin group now includes two English Loopforge readers (8 overview and
+16 architecture chapters) and an eight-shift director console at
+`/stepanoskin/loopforge`. Routes/components/logic are scoped to `apps/lab`; owned
+art uses the versioned `loopforge` asset pack. See `docs/loopforge/README.md`,
+`DELIVERY_CHECKLIST.md`, `ARCHITECTURE_DECISIONS.md`, `BDI_AND_PROTOCOL_REVIEW.md`
+and `OPERATIONS_AND_EVALS.md` in that directory.
+
+`POST /api/loopforge/run` validates a bounded seed/command history and reconstructs
+server state with `lf-teaching-1`; the public demo allows forks and has no account,
+scarce currency or shared-world claim. The pure TS kernel has explicit integer
+rules and seeded replay. A small deterministic BDI advisor recommends one-shift
+doctrine; persistent autonomous BDI and LLM intention admission remain future work.
+
+`GET/POST /api/loopforge/narrative` is a separate slow lane. It derives evidence
+from the kernel, validates structured OpenAI output, and cannot mutate mechanics.
+The paid path requires server credentials, a private gate and a durable Redis
+reservation budget. It fails closed without configuration. Narration artifacts
+retain source hash, model/prompt, usage and latency. Twelve real responses across
+two prompt versions and cached retrieval are verified within the owner-approved
+$1 allocation. `docs/loopforge/LIVE_EVALUATION.md` records costs, latency and
+remaining semantic defects; envelope acceptance is not a human quality score.
+
+Original Stepanoskin landing now links to both decks, the console, Sanctuary
+and the Production Systems profile, preserving its translated menu labels.
+The broader front-page redesign is deferred. Current Sanctuary work and the
+reference Loopforge repository remain separate.
+
 ## Production systems profile · 2026-10-03
 
 Public `/stepanoskin/production-systems` is a professional profile and methodology

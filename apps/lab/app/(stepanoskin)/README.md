@@ -10,13 +10,27 @@ Spanish, Russian, Mandarin Chinese, and Thai. English is the default; the
 visitor's explicit choice is saved in the versioned `stepanoskin_locale_v1`
 browser cookie so the server can render the selected language immediately.
 
-The game-style menu is data-driven and sized for three to five future entries,
-with Game Monetization and the Data Science & Production Systems profile. Art assets are sourced from the
-Loopforge repository and published through the versioned media pipeline in
+The landing is a lightweight personal project directory with Data Science &
+Production Systems, Sanctuary Economics (game monetization), and Loopforge.
+About links to a real localized placeholder at `/stepanoskin/about`; it contains
+no biographical claims. `directory-copy.ts` and `directory.module.css` own its
+six-language copy and editorial styling. It loads no factory artwork or effects.
+
+## Loopforge entrance
+
+The factory-style menu now lives at `/stepanoskin/loopforge`, implemented in
+`stepanoskin/loopforge/LoopforgeLanding.tsx` and `landing.module.css`. Its three
+entries lead to `/overview/the-factory`, `/architecture/the-thesis`, and `/play`
+under that route. Its identity link returns to `/stepanoskin`; Loopforge reader
+and prototype branding and first-chapter main-menu links return to this factory
+entrance. Existing chapter URLs are unchanged. The entrance reads the shared
+locale cookie on the server.
+
+Art assets are sourced from the Loopforge repository and published through the versioned media pipeline in
 `assets/README.md`. The landing page pins its compiled manifest for an immediate
 first render; hashed media URLs receive immutable caching. Legacy source URLs
 under `public/stepanoskin/` remain available. The landing
-page adds pointer depth, ambient embers, a short selection impact, and a
+page adds a moving conveyor, pointer depth, ambient embers, a short selection impact, and a
 localized persistent sound toggle. The selection sound is Pixabay asset
 `dobcommunications-metal-clang-284809.mp3`, supplied by the project owner under
 the Pixabay Content License. Playback skips the source file's leading silence

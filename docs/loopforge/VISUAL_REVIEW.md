@@ -72,3 +72,29 @@ production promotion remain separate from this preview's technical verification.
 
 Selected review images are stored in `review/`; the broader temporary screenshot
 set is `/tmp/loopforge-visual-review` on the implementation host.
+
+## Project-directory routing follow-up · 3 October 2026
+
+After the first delivery, the owner requested a separate Loopforge entrance.
+The original factory menu now lives at `/stepanoskin/loopforge`; `/stepanoskin`
+is a lightweight directory with production systems, Sanctuary Economics,
+Loopforge and an About placeholder. The factory keeps its three Loopforge
+destinations, existing artwork, conveyor, activation sound and preferences.
+
+Verified the new directory at 1440, 768, 390 and 320 CSS-pixel widths, and the
+factory entrance at desktop and 320px. No horizontal overflow was observed.
+Factory header controls now meet a 44px minimum target. Corrected inherited
+white scrollbar gutters on both entrances; colors are scoped by page presence.
+The directory loads no raster artwork or animated factory effects.
+
+Browser navigation covered all four directory destinations, all three factory
+destinations, reader/prototype branding, the overview main-menu link and returns
+from the existing profile and Sanctuary reader. Language selection survives a
+reload and is shared with the localized About placeholder. All six directory
+languages render, with narrow-layout checks for the longer translations. No
+browser errors were recorded during this flow. Screenshot evidence is saved at
+`/tmp/stepanoskin-directory-review` on the implementation host.
+
+Required frontend CI passed: 37 suites / 169 tests, asset-pipeline tests and
+production build. Scoped ESLint passed; a second production build verified the
+final CSS refinements. No model calls or paid evaluation were needed.

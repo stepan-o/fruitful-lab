@@ -1,191 +1,91 @@
 "use client";
 
-import AssetImage from "@/components/media/AssetImage";
-import manifest from "@/lib/assets/generated/stepanoskin.json";
-import { assetUrl, imageAsset, parseManifest } from "@/lib/assets/types";
 import Link from "next/link";
-import { playClang } from "@/lib/stepanoskin/audio";
-import { soundKey, motionKey, usePreference } from "@/lib/stepanoskin/preferences";
-import { useSignalGlitch } from "@/components/stepanoskin/useSignalGlitch";
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
-import styles from "./stepanoskin.module.css";
+import { useEffect, useState } from "react";
+import { directoryCopy } from "./directory-copy";
+import styles from "./directory.module.css";
 import { localeCookieName, localeNames, locales, translations, type Locale } from "./translations";
-import Conveyor from "@/components/loopforge/Conveyor";
 
-const menuItems = [
-    { id: "loopforge-overview", href: "/stepanoskin/loopforge/overview/the-factory", title: "Loopforge — the game", description: "Inside the artificial brain factory. Presentation in English." },
-    { id: "loopforge-engine", href: "/stepanoskin/loopforge/architecture/the-thesis", title: "Loopforge — the engine", description: "Truth stays clean. Story gets messy. Presentation in English." },
-    { id: "loopforge-play", href: "/stepanoskin/loopforge/play", title: "Enter the factory", description: "Take the director’s chair. Eight-shift prototype in English." },
-    {
-        id: "game-monetization",
-        href: "/stepanoskin/game-monetization",
-        titleKey: "gameMonetization",
-        descriptionKey: "gameMonetizationDescription",
-    },
-    {
-        id: "production-systems",
-        href: "/stepanoskin/production-systems",
-        titleKey: "productionSystems",
-        descriptionKey: "productionSystemsDescription",
-    },
-] as const;
+type ProjectKind = "systems" | "economics" | "factory";
 
-const assets = parseManifest(manifest, "stepanoskin");
-const assetStyles = {
-    "--asset-logo": `url("${assetUrl(assets, "logo")}")`,
-    "--asset-noise": `url("${assetUrl(assets, "noise")}")`,
-    "--asset-gunmetal": `url("${assetUrl(assets, "gunmetal")}")`,
-    "--asset-glare": `url("${assetUrl(assets, "glare")}")`,
-} as CSSProperties;
+function ProjectMark({ kind }: { kind: ProjectKind }) {
+    return (
+        <svg className={styles.projectMark} viewBox="0 0 180 100" fill="none" stroke="currentColor" aria-hidden="true">
+            {kind === "systems" ? <>
+                <path d="M32 50h35m46 0h35M148 63v20H32V63" />
+                <circle cx="24" cy="50" r="8" /><circle cx="156" cy="50" r="8" />
+                <rect x="67" y="27" width="46" height="46" rx="2" />
+                <path d="m82 42 8 8-8 8m12 0h8m39-12 7 4-7 4M83 79l-7 4 7 4" />
+                <path d="M78 17h24M78 10h24" opacity=".4" />
+            </> : kind === "economics" ? <>
+                <path d="m90 26 24 24-24 24-24-24Z" /><circle cx="90" cy="50" r="9" />
+                <path d="M49 53a41 41 0 0 1 72-30m-1-9 2 10-11-1M131 47a41 41 0 0 1-72 30m1 9-2-10 11 1" />
+                <path d="M22 50h13m110 0h13M90 3v9m0 76v9" opacity=".4" />
+            </> : <>
+                <rect x="22" y="59" width="136" height="24" rx="12" />
+                {[36, 63, 90, 117, 144].map((cx) => <circle key={cx} cx={cx} cy="71" r="6" />)}
+                <path d="M43 59V35h27v24m31 0V27h27v32M36 88v7m108-7v7M48 41h17m43-7h13M25 48h9m109 0h12m-5-4 5 4-5 4" />
+                <path d="M47 22V12h77v8" opacity=".4" />
+            </>}
+        </svg>
+    );
+}
+
 export default function StepanoskinLanding({ initialLocale }: { initialLocale: Locale }) {
-    const router = useRouter();
     const [locale, setLocale] = useState<Locale>(initialLocale);
-    const [soundEnabled, setSoundEnabled] = usePreference(soundKey);
-    const [motionEnabled] = usePreference(motionKey);
-    const [isActivating, setIsActivating] = useState(false);
-    const pointerFrameRef = useRef<number | null>(null);
-    const logoFxRef = useRef<HTMLDivElement | null>(null);
     const copy = translations[locale];
+    const directory = directoryCopy[locale];
 
-    useSignalGlitch(logoFxRef, styles.logoBurst, styles.logoGlitching, motionEnabled);
-    useEffect(() => () => { if (pointerFrameRef.current !== null) cancelAnimationFrame(pointerFrameRef.current); }, []);
-
-    useEffect(() => {
-        document.documentElement.lang = locale;
-    }, [locale]);
-
-    function toggleSound() { setSoundEnabled(!soundEnabled); }
-
-    function activateMenu(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
-        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        event.preventDefault();
-        if (isActivating) return;
-        setIsActivating(true);
-        playClang();
-        navigator.vibrate?.(24);
-        window.setTimeout(() => router.push(href), 210);
-    }
-
-    function trackPointer(event: React.PointerEvent<HTMLElement>) {
-        if (!motionEnabled || event.pointerType === "touch" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        const page = event.currentTarget;
-        const x = event.clientX / window.innerWidth - 0.5;
-        const y = event.clientY / window.innerHeight - 0.5;
-        if (pointerFrameRef.current !== null) cancelAnimationFrame(pointerFrameRef.current);
-        pointerFrameRef.current = requestAnimationFrame(() => {
-            page.style.setProperty("--shift-x", `${(x * 14).toFixed(2)}px`);
-            page.style.setProperty("--shift-y", `${(y * 10).toFixed(2)}px`);
-            page.style.setProperty("--counter-shift-x", `${(x * -3.1).toFixed(2)}px`);
-            page.style.setProperty("--counter-shift-y", `${(y * -2.2).toFixed(2)}px`);
-        });
-    }
+    useEffect(() => { document.documentElement.lang = locale; }, [locale]);
 
     function changeLocale(nextLocale: Locale) {
         setLocale(nextLocale);
         document.cookie = `${localeCookieName}=${nextLocale}; Path=/; Max-Age=31536000; SameSite=Lax`;
-        document.documentElement.lang = nextLocale;
     }
 
+    const projects: { kind: ProjectKind; title: string; description: string; category: string; href: string }[] = [
+        { kind: "systems", title: copy.productionSystems, description: copy.productionSystemsDescription, category: directory.practice, href: "/stepanoskin/production-systems" },
+        { kind: "economics", title: "Sanctuary Economics", description: `${copy.gameMonetization}. ${copy.gameMonetizationDescription}`, category: directory.essay, href: "/stepanoskin/game-monetization" },
+        { kind: "factory", title: "Loopforge", description: directory.loopforge, category: directory.world, href: "/stepanoskin/loopforge" },
+    ];
+
     return (
-        <main className={`${styles.page} ${isActivating ? styles.isActivating : ""}`} data-motion={motionEnabled ? "on" : "off"} style={assetStyles} onPointerMove={trackPointer}>
-            <div className={styles.texture} aria-hidden="true" />
-            <div className={styles.scanlines} aria-hidden="true" />
-            <div className={styles.ambientParticles} aria-hidden="true">
-                {Array.from({ length: 12 }, (_, index) => <i key={index} />)}
-            </div>
-            <div className={styles.impactFlash} aria-hidden="true" />
-
-            <header className={styles.topbar}>
-                <div className={styles.identity} aria-label="Stepan Oskin">
-                    <span className={styles.identityMark}>SO</span>
-                    <span className={styles.identityName}>Stepan Oskin</span>
-                </div>
-
-                <div className={styles.controls}>
-                    <button
-                        className={styles.soundToggle}
-                        type="button"
-                        onClick={toggleSound}
-                        aria-label={soundEnabled ? copy.soundOn : copy.soundOff}
-                        aria-pressed={soundEnabled}
-                        title={soundEnabled ? copy.soundOn : copy.soundOff}
-                    >
-                        <span aria-hidden="true">{soundEnabled ? "◖))" : "◖×"}</span>
-                    </button>
-                    <label className={styles.localeControl}>
-                        <span>{copy.language}</span>
-                        <select
-                            value={locale}
-                            onChange={(event) => changeLocale(event.target.value as Locale)}
-                            aria-label={copy.language}
-                        >
-                            {locales.map((availableLocale) => (
-                                <option key={availableLocale} value={availableLocale}>
-                                    {localeNames[availableLocale]}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-                </div>
+        <main className={styles.page} lang={locale}>
+            <header className={styles.header}>
+                <span className={styles.identity}><span className={styles.monogram} aria-hidden="true">so.</span>Stepan Oskin</span>
+                <label className={styles.localeControl}>
+                    <span>{copy.language}</span>
+                    <select value={locale} onChange={(event) => changeLocale(event.target.value as Locale)}>
+                        {locales.map((value) => <option key={value} value={value}>{localeNames[value]}</option>)}
+                    </select>
+                </label>
             </header>
-
-            <section className={styles.stage}>
-                <div className={styles.logoWrap}>
-                    <div className={styles.logoGlow} aria-hidden="true" />
-                    <AssetImage
-                        className={styles.logo}
-                        asset={imageAsset(assets, "logo")}
-                        alt="Loopforge — AI Brain Factory"
-                        sizes="(max-width: 720px) 94vw, 760px"
-                        preload
-                    />
-                    <div className={styles.logoFx} ref={logoFxRef} aria-hidden="true">
-                        {Array.from({ length: 5 }, (_, index) => (
-                            <i className={styles.glitchBand} data-glitch-band key={index} />
-                        ))}
-                        <svg className={styles.electricField} viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <path data-bolt />
-                            <path data-bolt />
-                        </svg>
-                    </div>
-                </div>
-
-                <div className={styles.menuShell}>
-                    <div className={styles.menuHeader}>
-                        <span className={styles.eyebrow}>{copy.menuEyebrow}</span>
-                        <h1>{copy.menuTitle}</h1>
-                    </div>
-
-                    <nav className={styles.menuList} aria-label={copy.menuTitle}>
-                        {menuItems.map((item, index) => (
-                            <Link
-                                className={styles.menuItem}
-                                href={item.href}
-                                key={item.id}
-                                onClick={(event) => activateMenu(event, item.href)}
-                            >
-                                <span className={styles.itemIndex}>{String(index + 1).padStart(2, "0")}</span>
-                                <span className={styles.itemCopy}>
-                                    <strong>{"titleKey" in item ? copy[item.titleKey] : item.title}</strong>
-                                    <small>{"descriptionKey" in item ? copy[item.descriptionKey] : item.description}</small>
-                                </span>
-                                <span className={styles.itemAction}>
-                                    <small>{copy.available}</small>
-                                    <strong>{copy.enter}</strong>
-                                    <span aria-hidden="true">›</span>
-                                </span>
-                            </Link>
-                        ))}
-                    </nav>
-                </div>
+            <section className={styles.intro}>
+                <p className={styles.eyebrow}>{directory.index} <span>01—04</span></p>
+                <h1>{directory.heading}</h1>
+                <p className={styles.lead}>{directory.intro}</p>
             </section>
-
-            <Conveyor quiet/>
-            <footer className={styles.footer}>
-                <span>LOOPFORGE // 2026</span>
-                <span className={styles.systemStatus}><i /> {copy.systemOnline}</span>
-            </footer>
+            <nav className={styles.projects} aria-label={directory.index}>
+                {projects.map((project, index) => (
+                    <Link className={styles.project} data-project={project.kind} href={project.href} key={project.kind}>
+                        <span className={styles.index} aria-hidden="true">0{index + 1}</span>
+                        <div className={styles.projectCopy}>
+                            <span className={styles.category}>{project.category}</span>
+                            <h2>{project.title}</h2>
+                            <p>{project.description}</p>
+                        </div>
+                        <ProjectMark kind={project.kind} />
+                        <span className={styles.arrow} aria-hidden="true">↗</span>
+                    </Link>
+                ))}
+                <Link className={styles.aboutRow} href="/stepanoskin/about">
+                    <span className={styles.index} aria-hidden="true">04</span>
+                    <h2>{directory.about}</h2>
+                    <span className={styles.status}>{directory.soon}</span>
+                    <span className={styles.arrow} aria-hidden="true">↗</span>
+                </Link>
+            </nav>
+            <footer className={styles.footer}><span>Stepan Oskin</span><span>{directory.footer}</span></footer>
         </main>
     );
 }

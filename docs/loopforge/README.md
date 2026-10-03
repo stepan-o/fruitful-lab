@@ -16,9 +16,10 @@ the [delivery checklist](DELIVERY_CHECKLIST.md) records current completion statu
   is a small demo, without a requirement for thousands of concurrent players.
 - Loopforge is a factory. A moving conveyor should recur throughout the
   experience, giving the pages a recognizable sense of machinery in operation.
-- The current `/stepanoskin` landing already largely serves as a Loopforge
-  entrance. Use it for this phase; its menu may change to accommodate the work.
-- Rebuilding the broader Stepanoskin front page is deferred to a later phase.
+- The factory entrance lives at `/stepanoskin/loopforge`. The broader
+  `/stepanoskin` landing is now a project directory linking the production
+  systems profile, Sanctuary Economics, Loopforge and an About placeholder.
+  This routing follow-up was requested on 3 October after the first delivery.
 
 ## Proposed conveyor treatment
 
@@ -67,6 +68,7 @@ motion does not introduce automatic machinery audio.
 
 ## Implemented entry points
 
+- Factory entrance: `/stepanoskin/loopforge` (overview, engine and play menu).
 - Overview: `/stepanoskin/loopforge/overview/the-factory` (8 chapters).
 - Engine: `/stepanoskin/loopforge/architecture/the-thesis` (16 chapters).
 - Play: `/stepanoskin/loopforge/play` (8-shift teaching prototype).

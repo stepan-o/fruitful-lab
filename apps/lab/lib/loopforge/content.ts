@@ -19,7 +19,7 @@ export type Chapter = {
   lead: string;
   art: string;
   caption: string;
-  exhibit: Exhibit;
+  exhibit?: Exhibit;
   sections: { title: string; body: string }[];
   principle: string;
   sources?: { label: string; href: string }[];
@@ -37,7 +37,6 @@ export const overview: Chapter[] = [
     lead: "You run a factory that builds artificial brains. The machines have opinions. The supervisors have agendas. Tomorrow’s quota has already arrived.",
     art: "entrance",
     caption: "Factory entrance · original Loopforge concept art",
-    exhibit: "premise",
     sections: [
       {
         title: "A robot drama machine",

@@ -108,11 +108,13 @@ export default async function Page({
           </section>
           <Conveyor />
           <div className={styles.chapterBody}>
+            {chapter.exhibit && <>
             <div className={styles.sectionHeading}>
               <span className={styles.eyebrow}>WORKING EXHIBIT</span>
               <span>Explore the idea ↓</span>
             </div>
             <Exhibits kind={chapter.exhibit} />
+            </>}
             <div className={styles.essay}>
               {chapter.sections.map((s, i) => (
                 <section key={s.title}>

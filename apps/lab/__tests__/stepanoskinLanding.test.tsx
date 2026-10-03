@@ -3,6 +3,8 @@ import StepanoskinLanding from "@/app/(stepanoskin)/stepanoskin/StepanoskinLandi
 import LoopforgeLanding from "@/app/(stepanoskin)/stepanoskin/loopforge/LoopforgeLanding";
 
 const mockPush = jest.fn();
+jest.mock("@/components/loopforge/factory-renderer", () => ({ createFactoryRenderer: () => null }));
+
 jest.mock("next/navigation", () => ({
     useRouter: () => ({ push: mockPush }),
 }));

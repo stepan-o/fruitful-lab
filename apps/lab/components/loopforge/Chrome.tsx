@@ -7,7 +7,7 @@ export default function Chrome({ deck }: { deck?: Deck }) {
   const [motion, setMotion] = usePreference(motionKey);
   return (
     <header className={styles.topbar}>
-      <Link href="/stepanoskin" className={styles.brand}>
+      <Link href="/stepanoskin/loopforge" className={styles.brand}>
         <span className={styles.brandMark}>Lƒ</span>
         <span>
           LOOPFORGE<small>AI BRAIN FACTORY</small>

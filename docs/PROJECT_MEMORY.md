@@ -97,12 +97,17 @@ Lab sandbox group with a pass-through layout. It inherits the root layout and
 serves the public `/stepanoskin` landing page without login. Its page lives at
 `(stepanoskin)/stepanoskin/page.tsx`.
 
-The Stepanoskin landing page uses Loopforge art assets and a data-driven game
-menu prepared for three to five destinations. Game Monetization is the first
-public choice. Native dictionaries cover English (default), French, Spanish,
-Russian, Mandarin Chinese, and Thai; the visitor's explicit locale is stored
-in the versioned `stepanoskin_locale_v1` browser cookie and shared with the
-Sanctuary Economics reader.
+As of 2026-10-03, `/stepanoskin` is a lightweight project directory linking Data
+Science & Production Systems, Sanctuary Economics (game monetization), Loopforge,
+and an About placeholder at `/stepanoskin/about`. The factory-style entrance
+has moved to `/stepanoskin/loopforge`, with its art, conveyor, sound and motion
+preferences preserved. Its three destinations are the game overview, engine
+architecture and playable prototype. Loopforge reader/play branding returns to
+this entrance; its Stepan Oskin link returns to the project directory.
+Native dictionaries cover English (default), French, Spanish, Russian, Mandarin
+Chinese and Thai. The `stepanoskin_locale_v1` cookie is shared by the directory,
+About placeholder, Loopforge entrance and Sanctuary controls. Both entrances
+render the saved language on the server; deck content remains English.
 
 Status: current working memory as of 2026-05-21 after adding the Fruitful Lab customer site foundation.
 

@@ -148,7 +148,7 @@ export default async function Page({
                   {chapters[index - 1].title}
                 </Link>
               ) : (
-                <Link href="/stepanoskin">
+                <Link href="/stepanoskin/loopforge">
                   <small>← ENTRANCE</small>Main menu
                 </Link>
               )}

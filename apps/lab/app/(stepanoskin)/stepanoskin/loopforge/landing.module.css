@@ -102,6 +102,9 @@
 
 .identity {
     display: flex;
+    min-height: 44px;
+    min-width: 44px;
+    text-decoration: none;
     align-items: center;
     gap: 0.75rem;
     font-size: 0.72rem;
@@ -131,6 +134,11 @@
     white-space: nowrap;
 }
 
+.identity:focus-visible {
+    outline: 2px solid var(--acid);
+    outline-offset: 6px;
+}
+
 .controls {
     display: flex;
     align-items: center;
@@ -140,8 +148,8 @@
 .soundToggle {
     display: grid;
     place-items: center;
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 44px;
+    height: 44px;
     border: 1px solid rgba(214, 163, 72, 0.28);
     background: #090b09;
     color: var(--acid);
@@ -172,6 +180,7 @@
 
 .localeControl select {
     min-width: 7.5rem;
+    min-height: 44px;
     border: 1px solid rgba(214, 163, 72, 0.28);
     border-radius: 0;
     padding: 0.58rem 2rem 0.58rem 0.75rem;
@@ -650,3 +659,9 @@
 }
 
 .page[data-motion="off"] *, .page[data-motion="off"] *::before, .page[data-motion="off"] *::after { animation:none!important; transition:none!important; }
+:global(html):has(.page) {
+    background: #050706;
+    --scrollbar-thumb: #746b47;
+    --scrollbar-track: #050706;
+    scrollbar-color: #746b47 #050706;
+}

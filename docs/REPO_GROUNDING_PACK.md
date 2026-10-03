@@ -208,3 +208,17 @@ Admin Pinterest stats contract:
 - Keep analytics helper-driven and GTM-oriented.
 - Keep public tools deterministic, typed, and step-based.
 - Update `docs/PROJECT_MEMORY.md` and the latest dated audit when architecture, auth, analytics, experiment, route, or API contracts change.
+
+
+## Production systems profile · 2026-10-03
+
+Public `/stepanoskin/production-systems` is a professional profile and methodology
+presentation for Stepan Oskin, linked from the six-language `/stepanoskin` menu.
+The profile is in English and sets its own language scope. It presents abstract
+current-role context at Prodigy Education, publicly verifiable work, an original
+production-loop diagram, four illustrative applications, primary-source notes,
+and LinkedIn/print actions. It discloses no internal project details or results.
+Static server content and scoped CSS contain most of the page; small client
+components handle domain selection and printing. Profile actions reuse `cta_click`.
+No auth, API, experiment assignment, dependencies, or other apps change.
+See `docs/brands/lab/production-systems-profile.md` for the brief, sources and checks.

@@ -19,6 +19,8 @@ type Translation = {
     menuTitle: string;
     gameMonetization: string;
     gameMonetizationDescription: string;
+    productionSystems: string;
+    productionSystemsDescription: string;
     enter: string;
     available: string;
     systemOnline: string;
@@ -34,6 +36,8 @@ export const translations: Record<Locale, Translation> = {
         menuTitle: "Select a path",
         gameMonetization: "Game Monetization",
         gameMonetizationDescription: "Revenue systems players value.",
+        productionSystems: "Data Science & Production Systems",
+        productionSystemsDescription: "Professional profile and methodology. In English.",
         enter: "Enter",
         available: "Available",
         systemOnline: "System online",
@@ -47,6 +51,8 @@ export const translations: Record<Locale, Translation> = {
         menuTitle: "Choisissez une voie",
         gameMonetization: "Monétisation des jeux",
         gameMonetizationDescription: "Des systèmes de revenus appréciés des joueurs.",
+        productionSystems: "Science des données et systèmes de production",
+        productionSystemsDescription: "Profil professionnel et méthodologie. En anglais.",
         enter: "Entrer",
         available: "Disponible",
         systemOnline: "Système en ligne",
@@ -60,6 +66,8 @@ export const translations: Record<Locale, Translation> = {
         menuTitle: "Elige una ruta",
         gameMonetization: "Monetización de videojuegos",
         gameMonetizationDescription: "Sistemas de ingresos que los jugadores valoran.",
+        productionSystems: "Ciencia de datos y sistemas de producción",
+        productionSystemsDescription: "Perfil profesional y metodología. En inglés.",
         enter: "Entrar",
         available: "Disponible",
         systemOnline: "Sistema en línea",
@@ -73,6 +81,8 @@ export const translations: Record<Locale, Translation> = {
         menuTitle: "Выберите направление",
         gameMonetization: "Монетизация игр",
         gameMonetizationDescription: "Системы дохода, которые ценят игроки.",
+        productionSystems: "Наука о данных и производственные системы",
+        productionSystemsDescription: "Профессиональный профиль и методология. На английском.",
         enter: "Войти",
         available: "Доступно",
         systemOnline: "Система в сети",
@@ -86,6 +96,8 @@ export const translations: Record<Locale, Translation> = {
         menuTitle: "选择方向",
         gameMonetization: "游戏商业化",
         gameMonetizationDescription: "打造玩家认可的营收系统。",
+        productionSystems: "数据科学与生产系统",
+        productionSystemsDescription: "专业简介与方法论。英文版。",
         enter: "进入",
         available: "可用",
         systemOnline: "系统在线",
@@ -99,6 +111,8 @@ export const translations: Record<Locale, Translation> = {
         menuTitle: "เลือกเส้นทาง",
         gameMonetization: "การสร้างรายได้จากเกม",
         gameMonetizationDescription: "ระบบรายได้ที่ผู้เล่นเห็นคุณค่า",
+        productionSystems: "วิทยาการข้อมูลและระบบการผลิต",
+        productionSystemsDescription: "ประวัติการทำงานและแนวทางการทำงาน เนื้อหาภาษาอังกฤษ",
         enter: "เข้าสู่",
         available: "พร้อมใช้งาน",
         systemOnline: "ระบบออนไลน์",

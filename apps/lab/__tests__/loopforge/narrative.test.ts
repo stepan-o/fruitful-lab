@@ -34,6 +34,7 @@ test("validates evidence identity, speaker, bounded text and field whitelist", (
   for (const bad of [
     { ...good, evidenceId: "another-branch" },
     { ...good, speaker: "admin" },
+    { ...good, speaker: "limen" },
     { ...good, line: "x".repeat(421) },
     { ...good, line: "<script>run()</script>" },
     { ...good, command: { type: "open_room" } },
@@ -185,4 +186,25 @@ test("schema-valid prose can still be unfaithful; requires semantic evaluation",
       evidence,
     ),
   ).toBeDefined();
+});
+test("narration receives named facts, assigned voice and explicit quota outcome", () => {
+  const finished = replay(
+    7,
+    Array.from({ length: 8 }, () => request.commands[0]),
+  );
+  const payload = narrativeRequest({
+    id: "finished",
+    event: finished.events[7],
+  });
+  const input = JSON.parse(payload.input);
+  expect(input.committedFacts).toMatchObject({ runComplete: true, quota: 240 });
+  expect(input.committedFacts.rooms[0]).toMatchObject({
+    name: "Security",
+    supervisor: "Limen",
+  });
+  expect(input.committedFacts.rooms[0]).not.toHaveProperty("room");
+  expect(input.assignedSpeaker).toBe("cathexis");
+  expect(payload.text.format.schema.properties.speaker.enum).toEqual([
+    "cathexis",
+  ]);
 });

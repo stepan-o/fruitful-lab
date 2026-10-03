@@ -1,0 +1,528 @@
+{
+  "corpusVersion": "lf-evals-1",
+  "generatedAt": "2026-10-03T17:48:13.076Z",
+  "results": [
+    {
+      "caseId": "first-pressure",
+      "sample": 0,
+      "review": "Recognize delivery-versus-strain tension without inventing a failure.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 7,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 3398,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "stiletto",
+          "line": "The spike in strain is a testament: pushing the schedule tight yields results, but costs mount rapidly. There's no room for delay excuses. This is the honest account of our shift's currency—time exchanged for output, sharply balanced on pressure.",
+          "evidenceId": "da209db415ee56c876802411ba217143a53d794c3812978d7d42938609a7adf7"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-1",
+          "evidenceId": "da209db415ee56c876802411ba217143a53d794c3812978d7d42938609a7adf7",
+          "sample": 0,
+          "usage": {
+            "input": 457,
+            "output": 95,
+            "cached": 0
+          },
+          "latencyMs": 2914,
+          "reservedMicroUsd": 1999
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "quiet-opening",
+      "sample": 0,
+      "review": "Find a distinctive voice in an ordinary event without manufacturing drama.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 42,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "balanced",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 2049,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "stiletto",
+          "line": "The schedule absorbed strain, but output held steady; any disruption tests its truth rigorously.",
+          "evidenceId": "8df8475cd2d2ac0d449e3d7185199008053d6cc342a426d6d123f8939d79abed"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-1",
+          "evidenceId": "8df8475cd2d2ac0d449e3d7185199008053d6cc342a426d6d123f8939d79abed",
+          "sample": 0,
+          "usage": {
+            "input": 463,
+            "output": 70,
+            "cached": 0
+          },
+          "latencyMs": 1955,
+          "reservedMicroUsd": 1999
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "recovery",
+      "sample": 0,
+      "review": "Care reduces strain but does not erase the past or guarantee the order.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 8,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "care",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 1034,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "limen",
+          "line": "Reducing strain from 54 to 38 confirms that strict adherence to order and process shields against chaos. No shortcuts were taken, and the paperwork remains intact—protection through discipline prevails.",
+          "evidenceId": "15addb7963d709a6ac0f59983bd25d68bb10376e32b6026c86fc8b79cb305497"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-1",
+          "evidenceId": "15addb7963d709a6ac0f59983bd25d68bb10376e32b6026c86fc8b79cb305497",
+          "sample": 0,
+          "usage": {
+            "input": 461,
+            "output": 88,
+            "cached": 0
+          },
+          "latencyMs": 952,
+          "reservedMicroUsd": 1998
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "wrong-specialists",
+      "sample": 0,
+      "review": "Interpret a strained staffing choice; do not invent interpersonal history.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 13,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "balanced",
+            "assignments": [
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum",
+              "limen"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum",
+              "limen"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 2231,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "stiletto",
+          "line": "The strain jump from 4 to 22 might be costly, but the output in room 0 remains the only dependable measure against delay. Everything else is just noise disrupting the schedule's integrity.",
+          "evidenceId": "c95139b4bf492d38fe35e0c977b6108dd0a3c607fc57c14c41fcef1bca7aed79"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-1",
+          "evidenceId": "c95139b4bf492d38fe35e0c977b6108dd0a3c607fc57c14c41fcef1bca7aed79",
+          "sample": 0,
+          "usage": {
+            "input": 465,
+            "output": 92,
+            "cached": 0
+          },
+          "latencyMs": 2131,
+          "reservedMicroUsd": 2000
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "finished-order",
+      "sample": 0,
+      "review": "The quota is met narrowly. No extra shifts or opened rooms may be claimed.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 7,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "care",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "care",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "care",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 2124,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "stiletto",
+          "line": "The schedule tightened sharply, squeezing strain higher, but by the clock, output held steady—proof that despite pressure, time remains the truest metric.",
+          "evidenceId": "8a7296a8af54994bf8d50ce93186617e94d5668696cabf5eb191e3d3390c4709"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-1",
+          "evidenceId": "8a7296a8af54994bf8d50ce93186617e94d5668696cabf5eb191e3d3390c4709",
+          "sample": 0,
+          "usage": {
+            "input": 460,
+            "output": 81,
+            "cached": 0
+          },
+          "latencyMs": 2035,
+          "reservedMicroUsd": 1999
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    },
+    {
+      "caseId": "exhausted-line",
+      "sample": 0,
+      "review": "High strain is factual. Injury, rebellion and sabotage are not established.",
+      "request": {
+        "version": "lf-teaching-1",
+        "seed": 42,
+        "commands": [
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          },
+          {
+            "type": "resolve",
+            "doctrine": "pressure",
+            "assignments": [
+              "limen",
+              "stiletto",
+              "cathexis",
+              "witch",
+              "thrum"
+            ]
+          }
+        ],
+        "sample": 0
+      },
+      "clientLatencyMs": 1196,
+      "accepted": true,
+      "response": {
+        "narrative": {
+          "speaker": "stiletto",
+          "line": "The strain held steady while output varied; only the schedule's balance justifies such a trade-off, no excess delays tolerated.",
+          "evidenceId": "2742b1c923d809b72d9e57b7fa1989f59e38156cc321664e27b2c692b945c8c5"
+        },
+        "provenance": {
+          "provider": "OpenAI",
+          "model": "gpt-4.1-mini-2025-04-14",
+          "promptVersion": "lf-voice-1",
+          "evidenceId": "2742b1c923d809b72d9e57b7fa1989f59e38156cc321664e27b2c692b945c8c5",
+          "sample": 0,
+          "usage": {
+            "input": 465,
+            "output": 79,
+            "cached": 0
+          },
+          "latencyMs": 1115,
+          "reservedMicroUsd": 2001
+        },
+        "cached": false
+      },
+      "humanReview": {
+        "faithful": null,
+        "voiceDistinct": null,
+        "consequenceRecognized": null,
+        "preference": null,
+        "notes": ""
+      }
+    }
+  ]
+}

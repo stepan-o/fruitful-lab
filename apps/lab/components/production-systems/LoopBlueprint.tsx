@@ -1,6 +1,9 @@
 import styles from "@/app/(stepanoskin)/stepanoskin/production-systems/profile.module.css";
 
-const ink = "#46574f";
+import { Grain, Hatch } from "./engraving-primitives";
+import motion from "./engravings.module.css";
+
+const ink = "#493f31";
 const paper = "#f4f2eb";
 const brass = "#9a8050";
 
@@ -24,13 +27,14 @@ function Bolt({ x, y }: { x: number; y: number }) {
 
 export default function LoopBlueprint() {
   return (
-    <figure className={styles.blueprint} aria-labelledby="loop-caption">
+    <figure className={styles.blueprint} aria-labelledby="loop-caption" data-engraving="conveyor" data-playing="false">
       <div className={styles.plateHeader}><span>Fig. 01 / The working method</span><span>Production ↔ evidence</span></div>
       <svg className={styles.loopSvg} viewBox="0 0 600 420" role="img" aria-labelledby="loop-title loop-description">
         <title id="loop-title">An illustrated production and learning apparatus</title>
         <desc id="loop-description">A printmaking-style machine carries individual content cards through production and review. An observation instrument records what happens after release; a brass return path carries that evidence back to the next specification. A conceptual metaphor, not a system architecture or a live result.</desc>
         <defs>
           <pattern id="profile-etch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V5" stroke={ink} strokeWidth=".55" opacity=".3" /></pattern>
+          <clipPath id="profile-belt-clip"><path d="M78 196H505V257H78Z" /></clipPath>
           <pattern id="profile-rib" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M1 0V6" stroke={ink} strokeWidth=".8" opacity=".5" /></pattern>
         </defs>
 
@@ -41,12 +45,17 @@ export default function LoopBlueprint() {
           <path d="M454 228V188Q454 178 444 178H205Q188 178 188 195V223" />
           <path d="M461 229V187Q461 171 444 171H205Q181 171 181 195V222" />
         </g>
-        <path d="M119 302V340L130 344V306M458 302V323L469 326V299" fill="#8f9b8a" stroke={ink} />
-        <path d="m112 339 18-5 12 6-19 6Zm339-16 19-5 12 6-19 6Z" fill="#b3b9a5" stroke={ink} />
-        <path d="M139 309 453 293M140 314 453 298" stroke={ink} strokeWidth="1.2" />
+        <path d="M114 303H474L491 295V357L474 371H114Z" fill="#94775b" stroke={ink} strokeWidth="1.4" />
+        <Grain x={118} y={309} w={352} h={56} />
+        <Hatch id="profile-conveyor-side" d="M474 305 491 295V357L474 371Z" gap={3} cross />
+        <path d="M130 317H274V359H130ZM289 317H459V359H289Z" fill="#685441" stroke={ink} />
+        <path d="M135 322H269V354H135ZM294 322H454V354H294Z" fill="none" stroke="#b69c72" strokeWidth=".7" />
+        <path d="M187 332q12 11 24 0m142 0q12 11 24 0" fill="none" stroke="#ccb07a" strokeWidth="2" />
+        <path d="M114 369H474V377H114ZM124 377V390H141V377M446 377V389H463V377" fill="#68483a" stroke={ink} />
+        <path d="M117 372H471M128 380v7m322-7v7" stroke="#b29a72" strokeWidth=".7" />
 
         {/* Rear column, screw and flywheel: the press is a built object, not a node. */}
-        <path d="m343 259 20-9V112l-20 9Z" fill="#83988a" stroke={ink} strokeWidth="1.2" />
+        <path d="m343 259 20-9V112l-20 9Z" fill="#887858" stroke={ink} strokeWidth="1.2" />
         <path d="m343 259 20-9V112l-20 9Z" fill="url(#profile-etch)" />
         <path d="M282 117V73l17-8v44" fill="#b6bba5" stroke={ink} />
         <path d="M282 84H299M282 89H299M282 94H299M282 99H299M282 104H299" stroke={ink} strokeWidth=".8" />
@@ -58,10 +67,10 @@ export default function LoopBlueprint() {
         <path d="m271 43 49 0M280 38 312 48M280 48 312 38" stroke={ink} />
         <circle cx="296" cy="43" r="3" fill={brass} />
         <g transform="translate(364 164)">
-          <ellipse rx="32" ry="39" fill="#b8bfa9" stroke={ink} strokeWidth="1.5" />
+          <ellipse rx="32" ry="39" fill="#b6a078" stroke={ink} strokeWidth="1.5" />
           <ellipse rx="26" ry="33" fill={paper} stroke={ink} />
           <ellipse rx="22" ry="29" fill="none" stroke={brass} />
-          <path d="M0-30V30M-24 0H24M-17-22 17 22M-17 22 17-22" stroke={ink} strokeWidth="3" />
+          <g className={motion.wheel}><path d="M0-30V30M-24 0H24M-17-22 17 22M-17 22 17-22" stroke={ink} strokeWidth="3" /></g>
           <ellipse rx="7" ry="9" fill="#b49c65" stroke={ink} />
           <path d="M0 0 21 16" stroke={ink} strokeWidth="3" /><circle cx="21" cy="16" r="4" fill={paper} stroke={ink} />
         </g>
@@ -72,7 +81,7 @@ export default function LoopBlueprint() {
         <path d="M86 265H478a16 16 0 0 1 0 32H86a16 16 0 0 1 0-32Z" fill="#63796d" stroke={ink} />
         {Array.from({ length: 14 }, (_, i) => <g key={i} transform={`translate(${87 + i * 30} 281)`}>
           <circle r="11.5" fill="#bcc5ad" stroke={ink} /><circle r="7.5" fill="none" stroke={ink} strokeWidth=".7" />
-          <path d="M-8 0H8M0-8V8" stroke={ink} strokeWidth=".7" /><circle r="2.5" fill={brass} stroke={ink} strokeWidth=".6" />
+          <g className={motion.roller}><path d="M-8 0H8M0-8V8" stroke={ink} strokeWidth=".7" /></g><circle r="2.5" fill={brass} stroke={ink} strokeWidth=".6" />
         </g>)}
         <path d="M88 258H476M88 304H476" stroke={brass} strokeWidth="2.5" />
         <path d="M90 253H485M91 307H474" stroke={ink} strokeWidth=".65" />
@@ -86,25 +95,26 @@ export default function LoopBlueprint() {
           <path d="m119 193 29 2m-29 5 24 2m-25 5 29 2m-29 5 19 1" stroke={brass} />
           <path d="m118 226 11-7 7 4 13-7" fill="none" />
         </g>
-        <CatalogLeaf x={178} y={208} variant={0} />
-        <CatalogLeaf x={385} y={208} variant={1} />
-        <CatalogLeaf x={448} y={208} variant={2} />
+        <g clipPath="url(#profile-belt-clip)"><g className={motion.conveyorCard}>
+          {Array.from({ length: 6 }, (_, i) => <CatalogLeaf key={i} x={92 + i * 86} y={208} variant={i % 3} />)}
+        </g></g>
 
         {/* The open review gate keeps both the work and its quality boundary visible. */}
-        <path d="m232 115 22-12h97l-20 12Z" fill="#dce0cd" stroke={ink} strokeWidth="1.3" />
-        <path d="M232 115H331V264H314V148H249V264H232Z" fill="#afbcaa" stroke={ink} strokeWidth="1.5" />
-        <path d="m331 115 20-12v149l-20 12Z" fill="#718878" stroke={ink} strokeWidth="1.3" />
+        <path d="m232 115 22-12h97l-20 12Z" fill="#dac9a5" stroke={ink} strokeWidth="1.3" />
+        <path d="M232 115H331V264H314V148H249V264H232Z" fill="#b39b72" stroke={ink} strokeWidth="1.5" />
+        <path d="m331 115 20-12v149l-20 12Z" fill="#806a4d" stroke={ink} strokeWidth="1.3" />
         <path d="m331 115 20-12v149l-20 12Z" fill="url(#profile-etch)" />
+        <Hatch id="profile-press-hatch" d="M232 115H331V264H314V148H249V264H232Z" gap={3} />
         <path d="M237 151V257M244 151V257M319 152V255M325 151V257" stroke={ink} strokeWidth=".7" />
         <path d="M251 119H313V142H251Z" fill="#e0d2ad" stroke={ink} />
         <path d="M256 124H308V137H256Z" fill="none" stroke={brass} strokeWidth=".7" />
         <path d="M267 130H277m10 0h10M282 125v10" stroke={ink} strokeWidth="1.3" />
-        <path d="M275 149H290V180H275Z" fill="#bca473" stroke={ink} />
+        <g className={motion.press}><path d="M275 149H290V180H275Z" fill="#bca473" stroke={ink} />
         <path d="M278 150V178M284 150V178" stroke={paper} strokeWidth=".8" />
         <path d="m263 180 12-6h24l-12 6Z" fill="#e1d4b2" stroke={ink} />
         <path d="M263 180H287V191H263Z" fill="#b39c6e" stroke={ink} />
-        <path d="m287 180 12-6v11l-12 6Z" fill="#8c784f" stroke={ink} />
-        <CatalogLeaf x={264} y={208} variant={0} />
+        <path d="m287 180 12-6v11l-12 6Z" fill="#8c784f" stroke={ink} /></g>
+
         <path d="M227 257H253V266H227Zm82 0h27v9h-27Z" fill="#c6cbb7" stroke={ink} />
         {[{x:239,y:124},{x:239,y:142},{x:322,y:124},{x:322,y:142},{x:238,y:250},{x:322,y:250}].map((point, i) => <Bolt key={i} {...point} />)}
 

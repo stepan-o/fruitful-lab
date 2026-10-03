@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, ArrowLeft } from "lucide-react";
+import EngravedScene from "@/components/production-systems/EngravedScene";
+import ProfileMotion from "@/components/production-systems/ProfileMotion";
 import LoopBlueprint from "@/components/production-systems/LoopBlueprint";
 import ScenarioExplorer from "@/components/production-systems/ScenarioExplorer";
 import ProfileActions from "@/components/production-systems/ProfileActions";
@@ -47,7 +49,7 @@ export default function ProductionSystemsPage() {
         <Link className={styles.backLink} href="/stepanoskin"><ArrowLeft size={15} aria-hidden="true" /><span>Presentations</span></Link>
       </header>
 
-      <main id="profile" tabIndex={-1}>
+      <ProfileMotion>
         <section className={styles.hero} aria-labelledby="profile-title">
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>Professional profile <span>/</span> 2026</p>
@@ -68,7 +70,7 @@ export default function ProductionSystemsPage() {
         </div>
 
         <section className={styles.section} id="experience" aria-labelledby="experience-title">
-          <div className={styles.sectionLabel}><span>01 / Background</span><h2 id="experience-title">Grounded in <br />production.</h2></div>
+          <div className={styles.sectionLabel}><span>01 / Background</span><h2 id="experience-title">Grounded in <br />production.</h2><EngravedScene scene="operator" /></div>
           <div className={styles.sectionContent}>
             <article className={styles.role}>
               <div className={styles.rowHeading}><h3>Prodigy Education</h3><span className={styles.badge}>Current</span></div>
@@ -94,7 +96,7 @@ export default function ProductionSystemsPage() {
         </section>
 
         <section className={styles.section} aria-labelledby="capabilities-title">
-          <div className={styles.sectionLabel}><span>02 / Capabilities</span><h2 id="capabilities-title">One system. <br />The whole stack.</h2><p>Data science is the connecting discipline: what to measure, what to infer, and what to change.</p></div>
+          <div className={styles.sectionLabel}><span>02 / Capabilities</span><h2 id="capabilities-title">One system. <br />The whole stack.</h2><p>Data science is the connecting discipline: what to measure, what to infer, and what to change.</p><EngravedScene scene="cabinet" /></div>
           <div className={styles.capabilities}>
             {capabilities.map(capability => <article key={capability.number} className={styles.capability}>
               <span className={styles.capabilityNumber}>{capability.number}</span>
@@ -104,16 +106,17 @@ export default function ProductionSystemsPage() {
         </section>
 
         <section className={styles.applicationSection} id="applications" aria-labelledby="applications-title">
-          <div className={styles.applicationIntro}>
+          <div className={styles.applicationHeading}><div className={styles.applicationIntro}>
             <p className={styles.eyebrow}>03 / A transferable architecture</p>
             <h2 id="applications-title">Different catalogs. <br /><em>The same design problem.</em></h2>
             <p>A lesson, a game encounter, a product selector, or a troubleshooting guide can each become a versioned, measurable unit of improvement.</p>
           </div>
+          <EngravedScene scene="board" /></div>
           <ScenarioExplorer />
         </section>
 
         <section className={`${styles.section} ${styles.longForm}`} id="approach" aria-labelledby="approach-title">
-          <div className={styles.sectionLabel}><span>04 / Method</span><h2 id="approach-title">Make the loop <br />trustworthy.</h2></div>
+          <div className={styles.sectionLabel}><span>04 / Method</span><h2 id="approach-title">Make the loop <br />trustworthy.</h2><EngravedScene scene="inspection" compact /></div>
           <div className={styles.sectionContent}>
             <p className={styles.sectionLead}>The central question: which change to which item is most likely to improve the overall outcome—and what evidence would justify shipping it?</p>
             <div className={styles.methods}>
@@ -130,7 +133,7 @@ export default function ProductionSystemsPage() {
         </section>
 
         <section className={`${styles.section} ${styles.longForm}`} id="production" aria-labelledby="production-title">
-          <div className={styles.sectionLabel}><span>05 / Production perspective</span><h2 id="production-title">Generation is <br />one stage.</h2></div>
+          <div className={styles.sectionLabel}><span>05 / Production perspective</span><h2 id="production-title">Generation is <br />one stage.</h2><EngravedScene scene="release" compact /></div>
           <div className={styles.sectionContent}>
             <p className={styles.sectionLead}>A production pipeline gives generated work a specification, a quality bar, a delivery path, and a way to learn from use.</p>
             <ol className={styles.pipeline}>
@@ -144,21 +147,23 @@ export default function ProductionSystemsPage() {
         </section>
 
         <section className={`${styles.section} ${styles.references}`} id="references" aria-labelledby="references-title">
-          <div className={styles.sectionLabel}><span>06 / Reading & evidence</span><h2 id="references-title">References.</h2><p>Primary sources behind the methodology and industry context. Checked October 2026.</p></div>
-          <ol className={styles.sourceList}>
+          <div className={styles.sectionLabel}><span>06 / Reading & evidence</span><h2 id="references-title">References.</h2><p>Primary sources behind the methodology and industry context. Checked October 2026.</p><EngravedScene scene="folio" compact /></div>
+          <div><ol className={styles.sourceList}>
             {sources.map((source, index) => <li id={`source-${source.id}`} key={source.id}>
               <span className={styles.sourceNumber}>[{index + 1}]</span>
               <div><a href={source.url}>{source.title}<ArrowUpRight size={14} aria-hidden="true" /></a><p className={styles.sourcePublisher}>{source.publisher}</p><p>{source.note}</p></div>
             </li>)}
           </ol>
+          <details className={styles.artSources}><summary>About the engraved studies</summary><p>Procedural drawings after the cabinet and chessboard in <a href="https://commons.wikimedia.org/wiki/File:Tuerkischer_schachspieler_windisch4.jpg">Windisch’s 1783 engraving</a> and vector figure studies derived from <a href="https://commons.wikimedia.org/wiki/File:Racknitz_-_The_Turk_3.jpg">Racknitz’s 1789 interior plate</a>. Racknitz proposed a reconstruction; these illustrations freely reinterpret the plates as metaphors for contemporary systems work. The workshop instruments and their motion are original compositions.</p></details></div>
         </section>
 
         <section className={styles.contact} aria-labelledby="contact-title">
           <div><p className={styles.eyebrow}>Continue the conversation</p><h2 id="contact-title">From a useful question <br />to a working system.</h2><p>Data science, experimentation, and the engineering that connects them.</p></div>
+          <EngravedScene scene="rest" compact />
           <ProfileActions />
           <p className={styles.printNote}>Full presentation and references: <a href={canonical}>{canonical}</a></p>
         </section>
-      </main>
+      </ProfileMotion>
       <footer className={styles.footer}><span>Stepan Oskin <span>/</span> Fruitful Lab</span><Link href="/stepanoskin">All presentations <ArrowUpRight size={14} aria-hidden="true" /></Link><span>Professional profile · English</span></footer>
     </div>
   );

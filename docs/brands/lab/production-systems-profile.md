@@ -143,3 +143,40 @@ Verification on the final production build:
   continues to produce two A4 pages. The images above show the revised version.
 - Unthrottled local production observation: cold LCP 496 ms, warm LCP 148 ms,
   CLS 0.000. These are laboratory observations, not field-performance claims.
+
+
+## Mechanical Turk design direction · 3 October 2026
+
+The owner accepted the revised visual as an improvement and chose the historical
+Mechanical Turk as the reference for focused polish passes. The page will use a
+coherent sequence of content-led highlight scenes: the conveyor, a candlelit
+operator inside the cabinet, a sectional view of the whole stack, chessboard
+geometry, inspection, release, a source folio and a quiet closing worktable.
+
+The researched [design guidelines](production-systems-design/DESIGN_GUIDELINES.md)
+and [visual reference sheet](production-systems-design/reference.html) define the
+source anchors, material/color roles, typography, illustration and interaction
+grammar, section storyboard and review sequence. They distinguish historical
+representations from original conceptual scenes and proposed palette choices.
+This pass establishes the design direction in documentation; the public page
+has not yet adopted the new section scenes or the proposed material palette.
+
+
+## Procedural Mechanical Turk scene pass · 3 October 2026
+
+Owner direction: retain procedural visuals, add engraving-like detail and motion,
+use real historical references, and keep one highlight scene per section. This
+supersedes the preceding direction-only note. Eight SVG plates now accompany the
+profile: the conveyor, candlelit operator, opened cabinet, chessboard, comparator,
+release bench, folio and quiet closing worktable. See the linked design guidelines
+for source provenance and the distinction between source-derived figure geometry
+and original constructed scenes.
+
+The professional facts and abstract employer framing are unchanged. The page gains
+one small motion controller; scene geometry remains server-rendered. Motion stops
+for offscreen plates, hidden documents and reduced-motion settings. Manual pause
+persists independently in `production_systems_motion_v1`; no JavaScript retains
+complete still scenes. Printed scenes are hidden to preserve the compact CV.
+
+Validation and screenshots for this pass are recorded in
+`production-systems-evidence/engraving-verification.md`.

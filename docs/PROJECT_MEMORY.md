@@ -670,3 +670,17 @@ Static server content and scoped CSS contain most of the page; small client
 components handle domain selection and printing. Profile actions reuse `cta_click`.
 No auth, API, experiment assignment, dependencies, or other apps change.
 See `docs/brands/lab/production-systems-profile.md` for the brief, sources and checks.
+
+
+### Production profile procedural scenes · 2026-10-03
+
+`/stepanoskin/production-systems` now has eight server-rendered SVG studies based
+on Mechanical Turk engravings. `ProfileMotion` owns one visibility observer and
+CSS-motion lifecycle, with the independent persistent preference
+`production_systems_motion_v1`; reduced motion and hidden/offscreen states stop
+movement. No JavaScript retains complete still illustrations. Fine figure paths
+are generated offline from the credited public-domain Racknitz plate; no runtime
+raster references, fonts, dependencies or per-frame React updates are added.
+Professional facts, APIs, analytics and experiment contracts are unchanged.
+See `docs/brands/lab/production-systems-design/DESIGN_GUIDELINES.md` for provenance
+and `docs/brands/lab/production-systems-evidence/engraving-verification.md` for checks.

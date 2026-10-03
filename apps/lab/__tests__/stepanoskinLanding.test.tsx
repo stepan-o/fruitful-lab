@@ -2,6 +2,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import StepanoskinLanding from "@/app/(stepanoskin)/stepanoskin/StepanoskinLanding";
 import LoopforgeLanding from "@/app/(stepanoskin)/stepanoskin/loopforge/LoopforgeLanding";
 
+jest.mock("@/components/loopforge/factory-renderer", () => ({ createFactoryRenderer: () => null }));
+
 jest.mock("next/navigation", () => ({
     useRouter: () => ({ push: jest.fn() }),
 }));

@@ -696,3 +696,18 @@ and `docs/brands/lab/production-systems-evidence/engraving-verification.md` for 
   both motion preferences. Native cover dialogs mount enlarged artwork on demand.
 - Pass history and delivery constraints: `docs/sanctuary/CINEMA_CATALOG_ART_PASSES.md`.
   This draft is being submitted for PR review; later chapters remain iterative.
+
+## Loopforge entrance conveyor · 2026-10-03
+
+The `/stepanoskin/loopforge` entrance uses `FactoryConveyor`, a bounded Canvas2D
+scene with cached machinery and twelve seeded cargo sprites. Decorative drive
+state is isolated in `factory-drive.ts`: uneven pulls, a jam after 19 seconds of
+active viewing, manual lever restart, then 33–55 seconds between later jams.
+An amber beacon beneath the belt becomes red on a jam. Pointer drag, click and
+keyboard activation share the reset action; the shared sound preference gates
+the user-triggered clang. Motion obeys the shared manual preference, OS reduced
+motion, intersection and document visibility; a static SVG remains if canvas
+is unavailable. No model requests or new runtime media/dependencies. Compact
+reader/play conveyors remain separate. Overview chapter `the-factory` has no
+Working Exhibit; `Chapter.exhibit` is optional and other chapters retain theirs.
+References, visual checks and rendering limits: `docs/loopforge/CONVEYOR_REFINEMENT.md`.

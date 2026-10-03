@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./landing.module.css";
 import { localeCookieName, localeNames, locales, translations, type Locale } from "../translations";
-import Conveyor from "@/components/loopforge/Conveyor";
+import FactoryConveyor from "@/components/loopforge/FactoryConveyor";
 
 const menuItems = [
     { id: "loopforge-overview", href: "/stepanoskin/loopforge/overview/the-factory", title: "Loopforge — the game", description: "Inside the artificial brain factory. Presentation in English." },
@@ -169,7 +169,7 @@ export default function LoopforgeLanding({ initialLocale }: { initialLocale: Loc
                 </div>
             </section>
 
-            <Conveyor quiet/>
+            <FactoryConveyor />
             <footer className={styles.footer}>
                 <span>LOOPFORGE // 2026</span>
                 <span className={styles.systemStatus}><i /> {copy.systemOnline}</span>

@@ -1,0 +1,48 @@
+/** Decorative machine state, deliberately separate from the game kernel. */
+export type Drive = {
+  time: number; distance: number; velocity: number; untilJam: number;
+  status: "running" | "jammed" | "restarting"; stateAge: number; restarts: number;
+};
+export function createDrive(): Drive {
+  return { time: 0, distance: 83, velocity: 0, untilJam: 19, status: "running", stateAge: 0, restarts: 0 };
+}
+export function noise(seed: number) {
+  let n = Math.imul(seed ^ (seed >>> 16), 0x45d9f3b);
+  n = Math.imul(n ^ (n >>> 16), 0x45d9f3b);
+  return ((n ^ (n >>> 16)) >>> 0) / 4294967296;
+}
+export function stepDrive(d: Drive, seconds: number) {
+  const dt = Math.max(0, Math.min(seconds, .08));
+  d.time += dt;
+  d.stateAge += dt;
+  if (d.status === "jammed") { d.velocity = 0; return; }
+  d.untilJam -= dt;
+  if (d.untilJam <= 0) {
+    d.status = "jammed"; d.stateAge = 0; d.velocity = 0; return;
+  }
+  // Chain stays stationary during take-up, then the geared motor hauls one pitch.
+  // Every visible part derives motion from this one distance (no slipping cargo).
+  const cycle = d.time / 1.36;
+  const phase = cycle % 1;
+  const pull = phase < .17 ? 0 : phase < .28 ? (phase - .17) / .11
+    : phase < .66 ? 1 : phase < .82 ? 1 - (phase - .66) / .16 : 0;
+  const load = .82 + noise(Math.floor(cycle) + 17) * .35;
+  const ramp = d.status === "restarting" ? Math.min(1, d.stateAge / 1.25) : 1;
+  d.velocity = pull * 69 * load * ramp;
+  d.distance += d.velocity * dt;
+  if (d.status === "restarting" && d.stateAge >= 1.6) { d.status = "running"; d.stateAge = 0; }
+}
+export function restartDrive(d: Drive) {
+  if (d.status !== "jammed") return false;
+  d.restarts += 1;
+  d.status = "restarting"; d.stateAge = 0;
+  d.untilJam = 33 + noise(d.restarts * 73) * 22;
+  return true;
+}
+
+export const cargoKinds = ["cortex", "twin", "glass", "cracked", "halo", "augmented", "rejected", "skull", "cortex", "sprout", "glass", "augmented"] as const;
+export type CargoKind = typeof cargoKinds[number];
+export function cargoFor(index: number) {
+  const slot = ((index % 12) + 12) % 12;
+  return { kind: cargoKinds[slot], seed: slot * 919 + 47, scale: .86 + noise(slot + 71) * .2 };
+}

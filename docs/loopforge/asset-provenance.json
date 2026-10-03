@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-03",
+  "sourceRepository": "loopforge",
+  "sourceRoot": "frontend/loopforge-webview/public/assets",
+  "authorization": "Owner-provided artwork for approved Loopforge experience",
+  "assets": {
+    "entrance": "concept_art/world/loopforge_factory_entrance_1.png",
+    "factory": "concept_art/world/loopforge_factory_overview_2.png",
+    "lanes": "concept_art/loopforge_3_lanes.png",
+    "brewery": "concept_art/rooms/06_loopforge_rooms_cognition_brewery_3_rivet_witch.png",
+    "forge": "concept_art/rooms/04_loopforge_rooms_neural_lattice_converyor_1.png",
+    "theatre": "concept_art/rooms/07_loopforge_rooms_burnin_theatre_3.png",
+    "weaving": "concept_art/rooms/05_loopforge_rooms_weaving_room_3.png",
+    "security": "concept_art/rooms/03_loopforge_rooms_access_control_9.png",
+    "conflict": "concept_art/characters/interactions/argue_limen_stiletto_conveyor.png",
+    "cathexis": "concept_art/characters/character_sheets/set_1/cathexis_character_sheet_1.png",
+    "limen": "concept_art/characters/character_sheets/set_2/limen_character_sheet_2.png",
+    "stiletto": "concept_art/characters/character_sheets/set_2/stiletto_character_sheet_2.png",
+    "witch": "concept_art/characters/character_sheets/set_1/rivet_witch_character_sheet_1.png",
+    "thrum": "concept_art/characters/character_sheets/set_1/thrum_character_sheet_1.png"
+  }
+}

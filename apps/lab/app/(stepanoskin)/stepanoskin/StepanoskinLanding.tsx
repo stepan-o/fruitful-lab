@@ -11,11 +11,17 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./stepanoskin.module.css";
 import { localeCookieName, localeNames, locales, translations, type Locale } from "./translations";
+import Conveyor from "@/components/loopforge/Conveyor";
 
 const menuItems = [
+    { id: "loopforge-overview", href: "/stepanoskin/loopforge/overview/the-factory", title: "Loopforge — the game", description: "Inside the artificial brain factory. Presentation in English." },
+    { id: "loopforge-engine", href: "/stepanoskin/loopforge/architecture/the-thesis", title: "Loopforge — the engine", description: "Truth stays clean. Story gets messy. Presentation in English." },
+    { id: "loopforge-play", href: "/stepanoskin/loopforge/play", title: "Enter the factory", description: "Take the director’s chair. Eight-shift prototype in English." },
     {
         id: "game-monetization",
         href: "/stepanoskin/game-monetization",
+        title: null,
+        description: null,
     },
 ] as const;
 
@@ -155,8 +161,8 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                             >
                                 <span className={styles.itemIndex}>{String(index + 1).padStart(2, "0")}</span>
                                 <span className={styles.itemCopy}>
-                                    <strong>{copy.gameMonetization}</strong>
-                                    <small>{copy.gameMonetizationDescription}</small>
+                                    <strong>{item.title ?? copy.gameMonetization}</strong>
+                                    <small>{item.description ?? copy.gameMonetizationDescription}</small>
                                 </span>
                                 <span className={styles.itemAction}>
                                     <small>{copy.available}</small>
@@ -169,6 +175,7 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                 </div>
             </section>
 
+            <Conveyor quiet/>
             <footer className={styles.footer}>
                 <span>LOOPFORGE // 2026</span>
                 <span className={styles.systemStatus}><i /> {copy.systemOnline}</span>

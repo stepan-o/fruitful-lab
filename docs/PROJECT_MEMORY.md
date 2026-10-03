@@ -627,3 +627,30 @@ Test surface:
 - The cover devil has brighter eye cores and a wider warm halo, with a steady
   glow when motion is disabled. Rounded SVG numbers prevent engine-dependent
   hydration differences in the procedural mosaic.
+
+
+## Loopforge learning prototype — 2026-10-03
+
+The Stepanoskin group now includes two English Loopforge readers (8 overview and
+16 architecture chapters) and an eight-shift director console at
+`/stepanoskin/loopforge`. Routes/components/logic are scoped to `apps/lab`; owned
+art uses the versioned `loopforge` asset pack. See `docs/loopforge/README.md`,
+`DELIVERY_CHECKLIST.md`, `ARCHITECTURE_DECISIONS.md`, `BDI_AND_PROTOCOL_REVIEW.md`
+and `OPERATIONS_AND_EVALS.md` in that directory.
+
+`POST /api/loopforge/run` validates a bounded seed/command history and reconstructs
+server state with `lf-teaching-1`; the public demo allows forks and has no account,
+scarce currency or shared-world claim. The pure TS kernel has explicit integer
+rules and seeded replay. A small deterministic BDI advisor recommends one-shift
+doctrine; persistent autonomous BDI and LLM intention admission remain future work.
+
+`GET/POST /api/loopforge/narrative` is a separate slow lane. It derives evidence
+from the kernel, validates structured OpenAI output, and cannot mutate mechanics.
+The paid path requires server credentials, a private gate and a durable Redis
+reservation budget. It fails closed without configuration. Narration artifacts
+retain source hash, model/prompt, usage and latency. No live model-quality result
+is claimed until credentials and an owner-approved budget enable verification.
+
+Original Stepanoskin landing now links to both decks, the console and Sanctuary.
+The broader front-page redesign is deferred. Current Sanctuary work and the
+reference Loopforge repository remain separate.

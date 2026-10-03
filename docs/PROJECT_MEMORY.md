@@ -1,3 +1,5 @@
+Sanctuary context visuals (2026-10-03, local): the opening now uses the economics of creative work and audience attachment as its lens, with a cinema/Netflix comparison and the 2013 Adobe transition. `sanctuary-context` is a separate immutable asset pack; `lib/sanctuary/context-media.json` feeds its source records into the public credits page. The original SVG master and responsive logo derivatives are stored with the project; bounded CSS atmosphere pauses offscreen and with motion preferences; no new dependencies. See `docs/sanctuary/NARRATIVE_REBUILD.md`.
+
 # Project Memory - Fruitful Lab
 
 Sanctuary public editorial edition, 2026-10-03: selected publisher imagery is now
@@ -34,28 +36,24 @@ living atmosphere are the latest illustration quality reference; later
 chapters still need that detail/coherence pass. The document maps accepted
 editorial and visual rules to current code and motion/media budgets. This is
 a local design capture during copy editing, not a deployment status update.
-Opening and manuscript revision, 2026-10-03: lead with BG3 versus D4 as different
-ways of building, selling and sustaining a replayable RPG. Explain Larian and
-Blizzard, the games' activities, class/build and campaign in place. Then locate
-the duality inside D4: a campaign with resolution alongside an ongoing seasonal
-program. The book/continuing-series analogy describes expectations about scope
-and who sets the timetable, not legal ownership. Some returning boxed-game
-players may feel that tension without making another purchase. Do not turn
-these overlapping emphases into exclusive modes or artistic rankings.
-ExperienceFork now has Two games / Inside Diablo IV / Player expectations views;
-FundingDiagram compares a substantial release, an expansion and ongoing offers.
-Both still use the existing lightweight controls/geometry. The illustration stays
-before the prose; the first diagram follows paragraph 4, funding follows 7.
-The internal opening capture now shows D4's campaign selector.
-The 21 chapters received a first-mention/context pass. Detailed D2 replayability,
-box/expansion and ladder history moved to Several histories at once; digital
-costs and Netflix's historical delivery change now sit beside it. The funding
-chapter distinguishes old-game sales to new buyers from existing-player spend,
-adds Adobe's subscription comparison, and treats eight years as a hypothetical
-financing interval. Social-third-place research informs motivation; bounded
-non-gaming comparisons appear in the transaction chapters. The ending returns
-to the opening question and funduck's actual return problem. Six primary sources
-were added with paragraph citations; all 21 stable IDs and seven parts remain.
+Opening reconstruction, 2026-10-03 (local editorial draft):
+`docs/sanctuary/NARRATIVE_REBUILD.md` supersedes the earlier opening sequence.
+The stable `the-fork` chapter is now “The business of keeping a world alive”:
+lasting enjoyment and the next sale → connected products → games → BG3/D4
+as a contemporary preview → history. First mentions are deliberately limited;
+class/build, reset rules and transaction details belong later. The opening
+keeps the publisher image pair and a new original three-track AfterPurchase
+exhibit (player, studio, payment). It has no ambient illustration ahead of prose.
+The approved animated diptych moves to Where progress lives; FundingDiagram
+moves to The shape of the money. Media remain immutable and chapter-scoped.
+Reading order begins opening → Several histories at once → Concord; all 21
+stable IDs and seven parts remain. The two early part labels now describe that
+local arrangement. This is a section-by-section reconstruction: only chapter one
+has been rebuilt. Subsequent history/Concord revisions and dedicated Diablo
+origin/franchise chapters remain to be authored; later order is transitional.
+The new local branch is codex/sanctuary-stage-setting; the preceding public
+edition was merged through PR #51. Local review comes before another PR.
+
 Replayability and duration never establish a payment model. BG3's updates and
 paid editions prevent a false frozen-product comparison; D4 seasonal play does
 not require cosmetic purchases, and seasonal characters can follow the campaign.
@@ -63,7 +61,6 @@ Historical plans remain dated, including D4's August 2022 commercial design.
 Date D2 seasonal ladder characters to patch 1.10 (28 October 2003), not the first
 leaderboard. D1's Tristram Cathedral and D2's Rogue Monastery are different places.
 No cinematic budget, private financing history or inevitable evolution is claimed.
-The design reference and visual specimen are now version 1.3.
 
 Sanctuary reader, 2026-10-01: `/stepanoskin/game-monetization` serves the
 illustrated overview; `?chapter=<stable-id>` directly addresses any of 21
@@ -689,3 +686,13 @@ raster references, fonts, dependencies or per-frame React updates are added.
 Professional facts, APIs, analytics and experiment contracts are unchanged.
 See `docs/brands/lab/production-systems-design/DESIGN_GUIDELINES.md` for provenance
 and `docs/brands/lab/production-systems-evidence/engraving-verification.md` for checks.
+
+### Sanctuary cinema/catalog plates · 2026-10-03 · local draft
+
+- `AudienceEconomy` now contains a full-width original cinema and three inspectable
+  catalog-cover parodies. `cover-references.ts` shares source/creator metadata
+  between the drawings and public credits; the Netflix logo retains its manifest.
+- `useLivingPlate` gates CSS atmosphere by intersection, document visibility and
+  both motion preferences. Native cover dialogs mount enlarged artwork on demand.
+- Pass history and delivery constraints: `docs/sanctuary/CINEMA_CATALOG_ART_PASSES.md`.
+  This draft is being submitted for PR review; later chapters remain iterative.

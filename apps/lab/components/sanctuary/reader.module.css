@@ -370,10 +370,13 @@
 }
 .openingHeading {
   display:grid;
-  grid-template-columns: minmax(180px,.8fr) minmax(0,1.4fr);
-  align-items:center;
-  gap:24px;
+  grid-template-columns: minmax(0,1fr);
+  gap:18px;
   margin-bottom:24px
+}
+.openingHeading h1 {
+  font-size:clamp(42px,5vw,68px);
+  text-wrap:balance
 }
 .article[data-opening] > figure:first-of-type {
   margin-top:0

@@ -1,5 +1,12 @@
 # Sanctuary design system
 
+**Editorial placement update · 3 October 2026:** the new opening uses the
+authentic BG3/D4 pairing and the three-track AfterPurchase exhibit. The approved
+animated diptych is preserved in **Where progress lives**, where campaign and
+seasonal play are introduced. Its historical description as the “opening” below
+identifies the visual benchmark, not its current chapter placement. See
+[Narrative reconstruction](NARRATIVE_REBUILD.md).
+
 **Version 1.3 · 2 October 2026 · approved visual reference with experience-first opening**
 
 An illustrated essay about the relationship between game design, the player,
@@ -450,3 +457,23 @@ review before publishing the accumulated local changes.
 When evolving the system, record the accepted change, update the source values
 and this dated reference, and replace captures that no longer match. Keep
 unfinished adoption explicit so a visual reference never overstates the product.
+
+## Recognizable context visuals — 3 October 2026
+
+Use authentic identifying logos where they establish the subject faster than prose, with recorded sources and adjacent analytical purpose. Preserve the mark; apply Sanctuary’s materials and original geometry to the surrounding explanation. `AudienceEconomy.tsx` demonstrates this with a static theater/catalog pair and the official Netflix wordmark. The audience’s attachment and the business’s measurable behaviors remain distinct. The small context pack uses the existing immutable delivery contract and lazy image loading.
+
+The first “subscription” in the opening receives an infernal typographic accent:
+warm illuminated lettering, a thin original sigil beneath it and a small halo.
+The halo flares once on hover through opacity/transform only; no idle loop,
+timer, new media or per-frame script. Motion-off and reduced-motion disable the
+flare. Use this intensity for a pivotal concept, not every repeated occurrence.
+
+### Cinema and catalog adoption · 3 October 2026
+
+The opening's cinema/catalog comparison now uses the approved plate's level of
+spatial and material craft. Follow the [targeted pass record](CINEMA_CATALOG_ART_PASSES.md)
+for composition, fabric, seated figures, projected film, and the six individual
+cover passes. Real references supply recognizable visual grammar; original
+parodies adapt it to the deck. Drawings stay local vectors, source credits remain
+adjacent, and mobile covers are inspectable at a useful size. `useLivingPlate`
+provides visibility/preference gating for these CSS-driven atmosphere layers.

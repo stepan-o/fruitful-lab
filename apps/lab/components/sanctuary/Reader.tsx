@@ -8,6 +8,8 @@ import DevilMural from "./DevilMural";
 import ChapterDiagram from "./ChapterDiagram";
 import ChapterScene from "./ChapterScene";
 import FundingDiagram from "./plates/FundingDiagram";
+import InfernalTerm from "./InfernalTerm";
+import AudienceEconomy from "./plates/AudienceEconomy";
 import { playClang } from "@/lib/stepanoskin/audio";
 import { motionKey,soundKey,usePreference } from "@/lib/stepanoskin/preferences";
 import AssetImage from "@/components/media/AssetImage";
@@ -133,9 +135,9 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                 <button type="button" className={styles.figureButton} aria-label={`${copy.zoom}: ${figure.alt}`} onClick={()=>setZoom(figure)}><AssetImage asset={imageAsset(assets,figure.asset)} alt={figure.alt} sizes="(max-width:720px) 94vw, (max-width:1100px) 40vw, 450px" preload/><span className={styles.zoomLabel}>{copy.zoom} ↗</span></button>
                 <figcaption><p>{figure.caption}</p><small>{figure.credit} · <Link prefetch={false} href={`/stepanoskin/game-monetization/credits#${figure.asset}`}>Source & use ↗</Link></small></figcaption>
               </figure>)}</div>
-              <p className={styles.referenceReading}>Both images promise a fantasy adventure. The difference in how these games sustain play—and collect payment—takes more than their covers to explain.</p>
+              <p className={styles.referenceReading}>Two contemporary worlds. To understand why their creators plan such different futures for them, we begin with the business around the game.</p>
             </section>:null}
-            <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/>
+            {current.id !== "the-fork" ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
             <div className={styles.prose}>
               {current.paragraphs.map((paragraph, paragraphIndex) => (
                 <Fragment key={`${current.id}-${paragraphIndex}`}>
@@ -145,7 +147,11 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       <h2 key={section.title}>{section.title}</h2>
                     ))}
                   <p>
-                    {paragraph}
+                    {current.id === "the-fork" && paragraphIndex === 2
+                      ? paragraph.split(/\b(subscription)\b/).map((text, segment) => text === "subscription"
+                        ? <InfernalTerm key={segment}>{text}</InfernalTerm>
+                        : text)
+                      : paragraph}
                     {current.paragraphCitations?.[paragraphIndex]?.map(
                       (id) => {
                         const sourceIndex = sources.findIndex(
@@ -168,8 +174,9 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       },
                     )}
                   </p>
-                  {current.id === "the-fork" && paragraphIndex === 4 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
-                  {current.id === "the-fork" && paragraphIndex === 7 ? <FundingDiagram/> : null}
+                  {current.id === "the-fork" && paragraphIndex === 2 ? <AudienceEconomy/> : null}
+                  {current.id === "the-fork" && paragraphIndex === 6 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+                  {current.id === "shape-of-money" && paragraphIndex === 1 ? <FundingDiagram/> : null}
                 </Fragment>
               ))}
             </div>

@@ -15,9 +15,11 @@ adopting the opening's latest level of detail; this is not a publication marker.
 Audience direction, revised 3 October 2026: the essay keeps its industry depth
 while introducing key games, organizations and systems for readers unfamiliar
 with games. See [Audience and wider context](AUDIENCE_AND_CONTEXT.md) for the
-research brief, bounded comparisons and chapter-level introduction audit. An initial pass now reaches all 21 chapters. The opening compares BG3 and D4,
-then the campaign/seasonal duality inside D4; history, funding and motivation
-carry the wider context. This edition is prepared for PR review; prose remains open to iteration.
+research brief, bounded comparisons and chapter-level introduction audit.
+[Narrative reconstruction](NARRATIVE_REBUILD.md) now governs a section-by-section
+rebuild. The local opening establishes the wider context, then previews BG3/D4
+and leads into history and Concord. Later chapters remain working material.
+Review this copy locally before another publication PR.
 
 `apps/lab/lib/sanctuary/content.ts` contains 21 self-contained chapters in seven
 parts, source notes, figures and ten closing rules. `types.ts` owns the chapter
@@ -50,9 +52,10 @@ unverified. Important boundaries:
 
 ## Public editorial edition and optional source archive
 
-The normal route shows the original mosaic devil, 21 original scene studies,
-interactive diagrams and all 24 selected publisher images. The opening juxtaposes
-BG3 and D4 key art, then preserves the approved animated original diptych. No
+The normal route combines the original mosaic devil, original scenes and
+interactive diagrams with the selected publisher images. The opening juxtaposes
+BG3 and D4 key art and separates play, production and payment in an original
+exhibit. The approved animated diptych appears in Where progress lives. No
 research flag, cookie or special URL is required to see screenshots.
 
 The public [rights and credits page](/stepanoskin/game-monetization/credits)
@@ -67,7 +70,8 @@ writes an immutable `sanctuary-editorial` manifest, verifies it and moves the
 short-cached pointer last. Normal builds use committed public files and do not
 require the private archive. Only current-chapter asset metadata is serialized.
 The opening pair is prioritized; other figures load lazily and inspection masters
-mount only when requested. Every chapter retains its original illustration.
+mount only when requested. Each chapter has an original explanatory visual;
+the opening uses the three-track exhibit rather than another atmospheric scene.
 
 The ignored `assets/research/` archive remains useful for source masters and
 future unselected candidates. Its loopback-only `research:dev` command and

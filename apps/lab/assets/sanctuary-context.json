@@ -1,0 +1,12 @@
+{
+  "pack": "sanctuary-context",
+  "assets": {
+    "netflix-wordmark": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/netflix-wordmark.svg",
+      "widths": [154, 309],
+      "quality": 96,
+      "maxBytes": 6000
+    }
+  }
+}

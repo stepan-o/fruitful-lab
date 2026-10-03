@@ -1,0 +1,20 @@
+{
+  "reviewed": "2026-10-03",
+  "assets": {
+    "netflix-wordmark": {
+      "title": "Netflix — official red wordmark",
+      "owner": "Netflix, Inc.",
+      "source": "Netflix Brand Site — Logos, Color section",
+      "sourceUrl": "https://brand.netflix.com/en/assets/logos/",
+      "assetUrl": "https://images.ctfassets.net/y2ske730sjqp/821Wg4N9hJD8vs5FBcCGg/9eaf66123397cc61be14e40174123c40/Vector__3_.svg",
+      "sourceDate": "Retrieved 3 October 2026; asset publication date not supplied",
+      "sourceSha256": "68762a70b6a5a5641a57775e0b39ae9cae84d4ce157f668142fefd9a9c523054",
+      "reviewed": "2026-10-03",
+      "publication": "editorial",
+      "basis": "Contextual identification of the business directly analyzed in the adjacent prose and shareholder quotation. Editorial rationale, not bespoke permission or a claim of partnership.",
+      "purpose": "Identify Netflix in a comparison of theatrical admissions and subscription catalog economics, grounded in its July 2024 shareholder letter.",
+      "treatment": "Official red shape and proportions retained; responsive WebP derivatives at 154 and 309 pixels. No effects on the mark. Original surrounding cinema and catalog drawings use Sanctuary’s engraved style. Three invented cover parodies cite their production references separately; the catalog is an editorial illustration, not an operational Netflix interface.",
+      "chapters": ["the-fork"]
+    }
+  }
+}

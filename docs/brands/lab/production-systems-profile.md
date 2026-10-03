@@ -20,8 +20,8 @@ work; capabilities across measurement, generation, implementation, and operation
 an interactive comparison of four application domains; experimental method;
 production process; primary sources and LinkedIn/print actions.
 
-Visual direction: warm paper, graphite, restrained brass, SO monogram, and a quiet
-technical drawing. No ambient motion, sound, image generation, or new fonts. This
+Visual direction: warm paper, graphite, restrained brass, SO monogram, and an engraved
+production apparatus on the same paper surface. No ambient motion, sound, image generation, or new fonts. This
 follows the shared design/performance instructions provided from the main checkout.
 Server-render the document. Limit client JavaScript to the scenario comparison and
 profile actions. Preserve keyboard navigation, 44px controls, visible focus, English
@@ -106,5 +106,40 @@ Review captures (production rendering):
 
 ![Phone profile](production-systems-evidence/mobile.webp)
 
-Cold observation: LCP 516 ms; CLS 0.000; document encoded size 14,910 bytes; resource transfer 298,718 bytes.
-Warm observation: LCP 192 ms; CLS 0.000; document encoded size 14,910 bytes; resource transfer 27,822 bytes.
+Original implementation, before illustration revision — cold observation: LCP 516 ms; CLS 0.000; document encoded size 14,910 bytes; resource transfer 298,718 bytes.
+Original implementation — warm observation: LCP 192 ms; CLS 0.000; document encoded size 14,910 bytes; resource transfer 27,822 bytes.
+
+
+## Opening illustration revision · 3 October 2026
+
+The owner rejected the dark flowchart and asked that Sanctuary and Loopforge
+inform its replacement. Reviewed Sanctuary's approved opening and design system,
+and the Loopforge presentation's current overview and conveyor. Adopt their
+composed, materially coherent illustration approach within this profile's existing
+paper, graphite, sage and brass palette. Do not transplant their dark backgrounds,
+fantasy setting or factory artwork.
+
+The new original SVG depicts a supported conveyor, content cards, a screw press
+and review gate, an observation instrument and a brass evidence-return path.
+The illustration is a conceptual metaphor, not employer architecture or measured
+results. A four-step HTML legend remains readable on phones; title/description
+provide an accessible explanation. It is server-rendered, static and self-contained,
+with no raster downloads, fonts, dependencies or added client JavaScript. Profile
+copy, navigation, other presentations and the two-page print layout are unchanged.
+
+Follow-up branch: `codex/profile-illustration`, based on the merged profile at
+`1c5fc70`, then integrated with the Loopforge merge at `ccb2f67`. Scope: the illustration component, its scoped styling and this record
+with refreshed desktop/phone captures. Worktree remains isolated from active
+Sanctuary and Loopforge work.
+
+Verification on the final production build:
+- Full required CI after integration: 37 suites / 168 tests, asset validation, TypeScript and build
+  passed; scoped ESLint and diff whitespace checks passed.
+- Browser review at 320, 390, 768 and 1440 CSS pixels: no page overflow or browser
+  errors, and no reported axe WCAG A/AA or best-practice violations.
+- Existing keyboard, touch, four-scenario selection, six-language menu round trip,
+  source anchors, no-JavaScript reading and reduced-motion checks passed.
+- The new SVG is present without JavaScript; no motion is introduced. Print
+  continues to produce two A4 pages. The images above show the revised version.
+- Unthrottled local production observation: cold LCP 496 ms, warm LCP 148 ms,
+  CLS 0.000. These are laboratory observations, not field-performance claims.

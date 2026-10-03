@@ -51,10 +51,10 @@ presented as live generation.
 
 ## Automated and HTTP checks
 
-- Required `API_BASE_URL=http://localhost:8000 npm run ci`: 37 suites, 167 tests,
+- Required `API_BASE_URL=http://localhost:8000 npm run ci`: 37 suites, 168 tests,
   asset checks and production build passed.
   This includes the newly published Sanctuary baseline (`463e1cb`).
-- Focused Loopforge checks: 18 tests cover kernel fixtures/invariants, command
+- Focused Loopforge checks: 19 tests cover kernel fixtures/invariants, command
   isolation, BDI staleness, body limits, narrative envelopes, provenance, quota
   and provider failures, and motion lifecycle. Provider/store calls are mocked.
 - Scoped ESLint and evaluation-script syntax checks passed. The paid runner exits
@@ -64,9 +64,11 @@ presented as live generation.
   and narration availability returns false without secrets.
 - No browser error/warning messages were recorded during the final local flow.
 
-Real OpenAI/Redis integration, human narrative judgments, hosted preview and
-production promotion are separate verification steps. See the delivery checklist
-for their current state. This record makes no claim that they passed locally.
+Real OpenAI/Redis integration and the hosted preview were subsequently verified:
+the browser completed the 241-unit/42-strain run and rejected an incorrect private
+code without changing its committed shift. Twelve fresh responses and six cached
+retrievals are documented in `LIVE_EVALUATION.md`. Human narrative judgments and
+production promotion remain separate from this preview's technical verification.
 
 Selected review images are stored in `review/`; the broader temporary screenshot
 set is `/tmp/loopforge-visual-review` on the implementation host.

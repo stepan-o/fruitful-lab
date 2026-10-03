@@ -5,7 +5,7 @@ import { isLocale, localeCookieName } from "./translations";
 
 export const metadata: Metadata = {
     title: "Stepan Oskin | Loopforge",
-    description: "Game systems, monetization, and sustainable player economies.",
+    description: "Presentations by Stepan Oskin on data science, production systems, game monetization, and sustainable player economies.",
 };
 
 export default async function StepanoskinPage() {

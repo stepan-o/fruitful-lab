@@ -65,7 +65,7 @@ the source checkout remains untouched. No cross-app imports or speculative packa
 - [x] Build player console: staffing doctrine, shift resolution, choices, recap and restart.
 - [x] Implement the OpenAI narration adapter from structured committed events; validate outputs,
       separate it from mechanics, show provenance and degrade honestly on provider failure.
-- [ ] Configure provider credentials and approved spending limit; verify a real provider call.
+- [x] Configure provider credentials and approved spending limit; verify a real provider call.
 - [x] Verify replay parity, invalid commands, cross-session isolation, mocked exhausted budgets,
       timeout/error recovery, game end, reset and keyboard/mobile behavior.
 
@@ -75,8 +75,8 @@ the source checkout remains untouched. No cross-app imports or speculative packa
 - [x] Visually inspect every chapter at desktop and narrow widths; complete a desktop run and mobile order flow.
 - [x] Inspect time-separated motion/still frames; test reduced-motion lifecycle and fix quality defects.
 - [x] Update project memory, architecture decisions, provenance and operational setup.
-- [ ] Commit only explicit scoped files; push and open draft PR against master.
-- [ ] Verify hosted preview, real simulation and live narration; attach PR and share URLs.
+- [x] Commit only explicit scoped files; push and open draft PR against master.
+- [x] Verify hosted preview, real simulation and live narration; attach PR and share URLs.
 - [x] Record remaining limitations without marking incomplete work done.
 
 ## Completion bar
@@ -92,9 +92,10 @@ and production promotion follow the repository delivery workflow.
 ## Open dependencies
 
 - Provider selected: OpenAI. Owner approved a $1 total model-testing allocation.
-  Preview budget settings are configured; no paid calls have been made.
+  Preview settings are configured. Two six-case passes cost an estimated $0.0039968;
+  reservations total $0.024952. See `LIVE_EVALUATION.md` for defects and limitations.
 - An existing `OPENAI_API_KEY` was found in Vercel Preview settings, without
-  revealing its value. It has not yet been tested with this adapter.
+  revealing its value. It is verified with this adapter.
 - The free Upstash quota store is provisioned and connected to Preview. The owner
   added the private access code and redeployed; its Secret/Preview scope is verified.
 - Local Git push has no credential; publication uses the connected GitHub app.
@@ -103,3 +104,12 @@ and production promotion follow the repository delivery workflow.
   publication and Upstash Marketplace terms are now explicitly approved.
 - Legacy contract check: 21 live-input tests ran, 10 failed; newer end-of-day tests
   passed 4/4. Do not describe the legacy test suite as passing.
+
+## Published delivery
+
+- [Draft PR #52](https://github.com/stepan-o/fruitful-lab/pull/52).
+- [Hosted overview](https://fruitful-lab-git-codex-loopforge-f32bcf-stepan-oskins-projects.vercel.app/stepanoskin/loopforge/overview/the-factory).
+- [Hosted architecture](https://fruitful-lab-git-codex-loopforge-f32bcf-stepan-oskins-projects.vercel.app/stepanoskin/loopforge/architecture/the-thesis).
+- [Playable preview](https://fruitful-lab-git-codex-loopforge-f32bcf-stepan-oskins-projects.vercel.app/stepanoskin/loopforge/play).
+- Final live-adapter CI: 37 suites / 168 tests. Model quality remains a learning
+  result with recorded defects, not an approved production benchmark.

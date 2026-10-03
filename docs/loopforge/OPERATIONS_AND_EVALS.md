@@ -33,7 +33,9 @@ The owner approved a **$1 total model-testing budget** on 2026-10-03. Vercel Pre
 settings now contain `LOOPFORGE_BUDGET_MICRO_USD=1000000` and allocation ID
 `lf-initial-2026-10-03`. Preserve that ID across redeployments. This is a shared
 allocation, not $1 per deployment. An existing preview `OPENAI_API_KEY` is present
-but has not yet been verified. No paid calls have been made. See [owner setup](OWNER_SETUP.md).
+and has been verified by twelve fresh model calls across two prompt versions.
+Estimated token cost: $0.0039968; durable reservations: $0.024952. See
+[live evaluation](LIVE_EVALUATION.md) and [owner setup](OWNER_SETUP.md).
 
 Configure these server-only secrets on the preview deployment (never NEXT_PUBLIC):
 
@@ -117,7 +119,9 @@ quality is not evidence of planning competence.
 ## Evidence status
 
 Preview credentials, durable quota storage and the owner's $1 spending limit are
-configured. Real provider and hosted narration verification await publication of
-the implementation branch. No live-model score is claimed.
+configured. Real provider calls, durable cached retrieval, the private gate and
+the hosted eight-shift simulation are verified. The six-case corpus exposed real
+writing defects and drove prompt revision `lf-voice-2`; remaining semantic issues
+are recorded in [the evaluation](LIVE_EVALUATION.md). No human quality score is claimed.
 The site says not connected while configuration is absent, and ready (not verified)
 when configuration exists. Generation records identify accepted live artifacts.

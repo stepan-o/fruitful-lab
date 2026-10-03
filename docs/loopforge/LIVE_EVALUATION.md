@@ -34,8 +34,30 @@ not emergent agency. Schema and runtime validation require that assigned speaker
 The evidence projection names rooms and includes quota/completion facts. It
 separates personality examples from committed events and forbids unsupported
 history or output comparisons. The prompt asks for a short spoken reaction.
-The same six cases will be rerun; the versioned artifact keys preserve the old
+The same six cases were rerun; the versioned artifact keys preserve the old
 outputs and prevent false reuse as independent samples.
+
+All six revised responses passed their envelope checks. Provider p50 was 1,329 ms
+and p95 2,584 ms; recorded usage implies $0.0020804. Reservations were $0.012956.
+All five assigned voices appeared. A second retrieval of the same six cases
+returned six cached artifacts, making no additional paid generation calls.
+See [revision records](eval-revision-v2.json). Both fresh runs together used an
+estimated **$0.0039968** and reserved **$0.024952** of the shared $1 allocation.
+
+Agent inspection confirms that raw room indices and invented paperwork checks
+disappeared, and final-run reactions now address the order outcome. The prose
+still needs editorial judgment: the staffing reaction's overtime assertion is
+unsupported, and some metaphors are generic. Structural acceptance is therefore
+not a faithfulness pass. This version is exposed only as the private learning
+prototype, not certified production narration. Human review remains unfilled.
+
+## Hosted integration
+
+The hosted browser completed all eight shifts at 241 units and 42 strain, matching
+the golden replay. A wrong private access code was rejected without changing
+the committed 38-unit first shift. OpenAI responses and durable cached retrieval
+were verified through the deployed endpoint. The Vercel preview is protected;
+use an authorized preview session before testing its API requests.
 
 Future model/provider changes require a held-out corpus, repeated samples,
 blinded human faithfulness/voice review and preset acceptance criteria. Six

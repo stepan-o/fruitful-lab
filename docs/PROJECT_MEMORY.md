@@ -648,9 +648,25 @@ doctrine; persistent autonomous BDI and LLM intention admission remain future wo
 from the kernel, validates structured OpenAI output, and cannot mutate mechanics.
 The paid path requires server credentials, a private gate and a durable Redis
 reservation budget. It fails closed without configuration. Narration artifacts
-retain source hash, model/prompt, usage and latency. No live model-quality result
-is claimed until credentials and an owner-approved budget enable verification.
+retain source hash, model/prompt, usage and latency. Twelve real responses across
+two prompt versions and cached retrieval are verified within the owner-approved
+$1 allocation. `docs/loopforge/LIVE_EVALUATION.md` records costs, latency and
+remaining semantic defects; envelope acceptance is not a human quality score.
 
-Original Stepanoskin landing now links to both decks, the console and Sanctuary.
+Original Stepanoskin landing now links to both decks, the console, Sanctuary
+and the Production Systems profile, preserving its translated menu labels.
 The broader front-page redesign is deferred. Current Sanctuary work and the
 reference Loopforge repository remain separate.
+
+## Production systems profile · 2026-10-03
+
+Public `/stepanoskin/production-systems` is a professional profile and methodology
+presentation for Stepan Oskin, linked from the six-language `/stepanoskin` menu.
+The profile is in English and sets its own language scope. It presents abstract
+current-role context at Prodigy Education, publicly verifiable work, an original
+production-loop diagram, four illustrative applications, primary-source notes,
+and LinkedIn/print actions. It discloses no internal project details or results.
+Static server content and scoped CSS contain most of the page; small client
+components handle domain selection and printing. Profile actions reuse `cta_click`.
+No auth, API, experiment assignment, dependencies, or other apps change.
+See `docs/brands/lab/production-systems-profile.md` for the brief, sources and checks.

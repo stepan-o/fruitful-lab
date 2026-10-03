@@ -2,7 +2,8 @@
 
 The simulation and both presentations work without this setup. The owner has
 approved a $1 total model-testing allocation. No additional model-spend approval
-is needed within that cap. No paid calls have yet been made.
+is needed within that cap. Setup and the first two evaluation passes are complete;
+see [live results](LIVE_EVALUATION.md). No owner setup action is outstanding.
 
 ## Already prepared
 
@@ -12,7 +13,7 @@ is needed within that cap. No paid calls have yet been made.
 - Preview-only budget: `LOOPFORGE_BUDGET_MICRO_USD=1000000`.
 - Stable allocation ID: `LOOPFORGE_BUDGET_ID=lf-initial-2026-10-03`.
 - An existing `OPENAI_API_KEY` is visible by name in Preview settings. Its value
-  was not revealed. It may already be usable; verification is pending.
+  was not revealed. Real Responses API calls now verify that it is usable.
 - The owner approved the Upstash terms. The free `loopforge-preview-quota` store
   is provisioned in `iad1`, eviction disabled, connected to Preview only with
   prefix `LOOPFORGE`. Its native REST variables are accepted by the adapter.

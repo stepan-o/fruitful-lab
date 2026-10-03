@@ -49,25 +49,21 @@
 .currentRole { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-top: 33px; }
 .currentRole > span { width: 5px; height: 5px; border-radius: 50%; background: #777958; margin-right: 3px; }
 .currentRole strong { color: var(--ink); font-weight: 500; }
-.blueprint { background-color: var(--dark); background-image: linear-gradient(#b6cbb807 1px, transparent 1px), linear-gradient(90deg, #b6cbb807 1px, transparent 1px); background-size: 24px 24px; color: var(--light-ink); border: 1px solid #394740; padding: 22px 22px 25px; position: relative; }
-.plateHeader { display: flex; justify-content: space-between; gap: 12px; font-family: var(--mono); color: #a9b4a9; font-size: 9px; text-transform: uppercase; letter-spacing: .11em; }
-.loopSvg { display: block; width: 100%; height: auto; margin: 4px 0 0; }
-.guideLines { stroke: #c5cdb518; stroke-dasharray: 3 5; }
-.loopPaths { color: #c2ab73; stroke: currentColor; stroke-width: 1.5; }
-.centerLines { stroke: #a9b5a344; stroke-width: 1; }
-.diagramSmall { font-family: var(--mono); font-size: 8px; letter-spacing: .6px; fill: #b8c4b7; }
-.diagramCenter { font-family: Georgia, serif; font-size: 17px; fill: #f0e7cd; }
-.diagramNode rect { fill: #1c2a25; stroke: #7e8e7444; }
-.diagramNode > text:not(.diagramSmall) { fill: #ede9d9; font-size: 13px; }
-.diagramTick { stroke: #b8a16f77; stroke-width: 1; fill: none; }
-.blueprint figcaption { border-top: 1px solid #a0b2982b; padding: 22px 6px 0; }
-.blueprint figcaption > .smallLabel { color: #bca775; font-size: 9px; }
-.blueprint figcaption p { font-family: Georgia, serif; font-size: 25px; line-height: 1.2; margin-top: 8px; color: #b8c4b7; }
-.blueprint figcaption strong { font-weight: 400; color: #efe8d2; }
-.plateFootnote { display: block; font-family: var(--mono); font-size: 9px; color: #a9b4a9; margin-top: 17px; }
+/* The opening plate shares the paper and ink of the editorial surface. */
+.blueprint { color: var(--ink); min-width: 0; position: relative; padding: 16px 0 0; border-top: 1px solid var(--line); }
+.plateHeader { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; font-family: var(--mono); color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
+.loopSvg { display: block; width: 100%; height: auto; margin: 18px 0 2px; }
+.plateNumbers { font-family: Georgia, serif; font-size: 13px; fill: var(--ink); }
+.plateLegend { display: flex; justify-content: space-between; gap: 8px; list-style: none; padding: 0 12px 20px; margin: 0; }
+.plateLegend li { display: flex; align-items: baseline; gap: 6px; color: var(--muted); font-size: 11px; }
+.plateLegend span { color: var(--brass); font-family: Georgia, serif; font-size: 13px; font-style: italic; }
+.blueprint figcaption { border-top: 1px solid var(--line); padding: 23px 0 0; }
+.blueprint figcaption p { font-family: Georgia, serif; font-size: 29px; letter-spacing: -.025em; line-height: 1.2; color: var(--muted); }
+.blueprint figcaption strong { font-weight: 400; color: var(--ink); }
+.plateFootnote { display: block; font-size: 11px; color: var(--muted); margin-top: 13px; }
 .focusStrip { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px 20px; max-width: 1184px; margin: 0 auto; padding: 23px 0; border-block: 1px solid var(--line); font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); }
 .focusStrip span::before { content: "+"; color: var(--brass); margin-right: 13px; }
-.section { max-width: 1280px; margin: auto; padding: 76px 48px; display: grid; grid-template-columns: minmax(190px, 1fr) minmax(0, 2.4fr); gap: 68px; }
+.section { max-width: 1280px; margin: auto; padding: 76px 48px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.8fr); gap: 68px; }
 .section + .section { border-top: 1px solid var(--line); }
 .sectionLabel > span { font-family: var(--mono); text-transform: uppercase; font-size: 10px; letter-spacing: .11em; color: var(--brass); }
 .section h2 { font-family: Georgia, serif; font-size: 32px; font-weight: 400; letter-spacing: -.035em; line-height: 1.18; margin: 20px 0 18px; }
@@ -92,7 +88,17 @@
 .capability p { margin-top: 7px; }
 .capability .tags { font-family: var(--mono); font-size: 10px; color: #6a624c; line-height: 1.8; margin-top: 12px; }
 .applicationSection { background: var(--dark); color: var(--light-ink); padding: 72px max(24px, calc((100vw - 1184px) / 2)); }
-.applicationIntro { display: grid; grid-template-columns: 1fr 1fr; column-gap: 68px; align-items: end; }
+.applicationHeading { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.applicationHeading > figure { background: var(--paper); padding: 0 18px 16px; }
+.applicationIntro { display: block; }
+.applicationIntro > p:last-child { margin-top: 25px; }
+.artSources { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 12px; }
+.artSources summary { display: list-item; min-height: 44px; padding: 10px 0; cursor: pointer; color: var(--brass); font-size: 12px; }
+.artSources summary:focus-visible { outline: 2px solid var(--brass); outline-offset: 4px; }
+.artSources p { font-size: 12px; line-height: 1.8; color: var(--muted); padding-bottom: 12px; }
+.artSources a { text-decoration: underline; color: var(--brass); }
+.contact > figure { flex: 0 1 250px; min-width: 180px; margin-top: 0 !important; }
+.contact > figure figcaption { display: none; }
 .applicationIntro .eyebrow { grid-column: 1 / -1; color: #c4b381; margin-bottom: 24px; }
 .applicationIntro h2 { font-family: Georgia, serif; font-size: 39px; font-weight: 400; line-height: 1.15; letter-spacing: -.03em; }
 .applicationIntro h2 em { font-weight: 400; color: #b6c2b1; }
@@ -170,14 +176,16 @@
   .intro { font-size: 17px; }
   .heroDetail { font-size: 14px; }
   .heroActions { gap: 10px; }
-  .blueprint { padding: 18px 12px 22px; }
+  .blueprint { padding-top: 14px; }
+  .plateLegend { padding-inline: 0; gap: 6px; }
+  .plateLegend li { font-size: 10px; gap: 4px; }
   .plateHeader { font-size: 8px; }
   .blueprint figcaption p { font-size: 22px; }
   .focusStrip { margin-inline: 28px; font-size: 9px; }
-  .section { padding: 56px 28px; grid-template-columns: 180px minmax(0, 1fr); gap: 28px; }
+  .section { padding: 56px 28px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 28px; }
   .section h2 { font-size: 28px; }
   .applicationSection { padding: 52px 28px; }
-  .applicationIntro { gap: 24px; }
+  .applicationHeading { gap: 24px; }
   .applicationIntro h2 { font-size: 32px; }
   .contact { margin-inline: 28px; padding: 32px; }
   .contact h2 { font-size: 29px; }
@@ -196,12 +204,13 @@
   .heroDetail { font-size: 15px; }
   .heroActions { gap: 20px; }
   .currentRole { margin-top: 23px; }
-  .blueprint { padding: 20px; max-width: 470px; width: 100%; margin: auto; }
-  .loopSvg { max-height: 305px; }
+  .blueprint { padding: 18px 0 0; max-width: 500px; width: 100%; margin: auto; }
+  .loopSvg { margin-top: 15px; }
+  .plateLegend { padding-bottom: 18px; }
+  .plateLegend li { font-size: 11px; }
   .blueprint figcaption { display: block; padding-top: 17px; }
-  .blueprint figcaption > .smallLabel { grid-column: 1 / -1; }
-  .blueprint figcaption p { font-size: 23px; margin: 9px 0 0; }
-  .plateFootnote { font-size: 9px; margin-top: 14px; }
+  .blueprint figcaption p { font-size: 26px; }
+  .plateFootnote { font-size: 11px; margin-top: 12px; }
   .focusStrip { margin-inline: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px 10px; font-size: 8px; letter-spacing: .02em; }
   .focusStrip span::before { margin-right: 7px; }
   .section { grid-template-columns: 1fr; gap: 25px; padding: 43px 22px; }
@@ -213,7 +222,9 @@
   .workGrid .smallLabel { line-height: 1.8; }
   .capability { gap: 14px; }
   .applicationSection { padding: 42px 22px; }
-  .applicationIntro { grid-template-columns: 1fr; gap: 20px; }
+  .applicationHeading { grid-template-columns: 1fr; gap: 12px; }
+  .applicationIntro > p:last-child { margin-top: 20px; }
+  .contact > figure { flex: auto; width: 100%; max-width: 280px; align-self: center; }
   .applicationIntro .eyebrow { margin-bottom: 0; }
   .applicationIntro h2 { font-size: 34px; }
   .scenarioChoices > div { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }

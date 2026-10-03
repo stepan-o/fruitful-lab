@@ -1120,7 +1120,7 @@ function ScenePlate({
   motionPaused?: boolean;
 }) {
   const id = useId().replace(/:/g, "");
-  if (chapter === "the-fork") return <ForkPlate label={label} paused={motionPaused} />;
+  if (chapter === "the-fork" || chapter === "the-reset") return <ForkPlate label={label} paused={motionPaused} />;
   return (
     <svg viewBox="0 0 1000 600" role="img" aria-label={label}>
       <defs>

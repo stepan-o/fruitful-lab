@@ -15,14 +15,10 @@ export const artDirection: Record<
     motifs: ["Party silhouettes", "Journey emblems", "Six independent windows"],
   },
   "the-reset": {
-    title: "The season-transfer engine",
-    reference: "Diablo IV · Seasonal → Eternal",
-    read: "The character crosses into the archive. The player’s knowledge and skill stay above the machine.",
-    motifs: [
-      "Realm selection",
-      "A persistent character",
-      "A fresh seasonal starting line",
-    ],
+    title: "The shape of a playthrough",
+    reference: "Diablo IV · campaign and seasons",
+    read: "The campaign gives an adventure a resolution; a season gathers players around a fresh set of possibilities. Both belong to Diablo IV, and a seasonal character can follow the campaign. Their overlap raises the next question: which parts of an earlier adventure accompany the player into a new one?",
+    alt: "An engraved diptych. A traveler follows a mountain road toward a sunlit gate; several travelers inhabit a city encircled by a returning path.",
   },
   "several-histories": {
     title: "The arcade never really closed",

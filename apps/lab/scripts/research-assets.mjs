@@ -1,11 +1,20 @@
 import { readFile, access } from 'node:fs/promises';
-import { checkAll } from './assets.mjs';
+import { checkAll, digest } from './assets.mjs';
 
 const publicRoot = new URL('../assets/research/public/', import.meta.url).pathname;
 const read = async file => JSON.parse(await readFile(new URL(file, import.meta.url), 'utf8'));
 const archive = await read('../lib/assets/generated/sanctuary.json');
 const editorial = await read('../lib/assets/generated/sanctuary-editorial.json');
 const decisions = await read('../lib/sanctuary/editorial-media.json');
+const context = await read('../lib/assets/generated/sanctuary-context.json');
+const contextDecisions = await read('../lib/sanctuary/context-media.json');
+const contextCatalog = await read('../assets/sanctuary-context.json');
+for (const id of new Set([...Object.keys(context.assets), ...Object.keys(contextDecisions.assets)])) {
+  const decision = contextDecisions.assets[id];
+  if (!context.assets[id] || decision?.publication !== 'editorial' || !decision.owner || !decision.sourceUrl || !decision.purpose || !decision.basis || !decision.reviewed) throw new Error(`Incomplete context visual record: ${id}`);
+  const source = contextCatalog.assets[id]?.source;
+  if (!source || digest(await readFile(new URL(`../${source}`, import.meta.url))) !== decision.sourceSha256) throw new Error(`Context source identity mismatch: ${id}`);
+}
 const published = new Set();
 for (const [id, asset] of Object.entries(editorial.assets)) {
   const decision = decisions.assets[id];

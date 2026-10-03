@@ -100,3 +100,11 @@ adds mobile derivatives and activates the public pointer last. Public image file
 and manifests are committed. The source archive stays ignored and optional for
 production builds. New research imports do not grant publication automatically.
 `assets:check` validates the decisions, public file integrity and archive boundary.
+
+`sanctuary-context` holds separately reviewed cross-industry identifying assets.
+Build it with `npm run assets:build -- assets/sanctuary-context.json`. Source
+masters are committed under `assets/sources/sanctuary-context`; provenance and
+editorial purpose live in `lib/sanctuary/context-media.json` and are included in
+the public credits register. Its initial Netflix wordmark has lazy-loaded
+154/309px derivatives under 4 KB each. Source shape, color and proportions are
+preserved; surrounding schematic drawings are original.

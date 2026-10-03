@@ -2,8 +2,8 @@ import type { Chapter, EvidenceSource } from "./types";
 import { chapterVisuals } from "./visual-content";
 
 export const parts = [
-  "The fork",
-  "How the business changed",
+  "The world around the game",
+  "Studios, games and players",
   "Why people play",
   "How play takes shape",
   "What money buys",
@@ -12,6 +12,8 @@ export const parts = [
 ];
 export const revision = "2026-10-03";
 export const sources: EvidenceSource[] = [
+  {"id": "netflix-engagement", "title": "Netflix — Q2 2024 shareholder letter, pp. 3–4 (18 July 2024)", "url": "https://ir.netflix.net/files/doc_financials/2024/q2/FINAL-Q2-24-Shareholder-Letter.pdf", "note": "Management connects viewing with member satisfaction, retention and acquisition, and explains its investment in varied programming. A stated business rationale, not an independent measure of audience wellbeing."},
+  {"id": "wga-streaming-2023", "title": "Writers Guild of America — Summary of the 2023 agreement", "url": "https://www.wgacontract2023.org/the-campaign/summary-of-the-2023-wga-mba", "note": "Historical agreement adds a viewership-based bonus for qualifying high-budget subscription streaming productions and provides the Guild with confidential viewing data. Used as a concrete change in compensation, not a claim about every production or current contract terms."},
   {"id": "bg3-patch8", "title": "Larian — The Final Patch (15 April 2025)", "url": "https://baldursgate3.game/news/the-final-patch-new-subclasses-photo-mode-and-cross-play_138", "note": "Documents added subclasses and cross-play, and the studio’s stated end to major content updates so it can work on another project. Minor fixes and paid editions are separate questions."},
   {"id": "bg-lineage", "title": "BioWare — Games: Baldur’s Gate (1998)", "url": "https://www.bioware.com/games/", "note": "Original developer record of the 1998 game and its Advanced Dungeons & Dragons foundation. The modern BG3 was made by Larian; the studios are not interchangeable."},
   {"id": "digital-economics", "title": "Goldfarb & Tucker — Digital Economics (2017 / 2019)", "url": "https://www.nber.org/papers/w23684", "note": "Research review organized around lower search, replication, transport, tracking and verification costs. The application to the game industry is our synthesis, not a game-specific causal estimate."},
@@ -381,180 +383,108 @@ export const sources: EvidenceSource[] = [
 
 const manuscript: Omit<Chapter, "visual">[] = [
   {
-    id: "the-fork",
-    part: 0,
-    title: "The fork",
-    lede: "Baldur’s Gate 3 and Diablo IV offer worlds worth returning to. They make different promises about what we buy—and what happens after we buy it.",
-    figures: [
+    "id": "the-fork",
+    "part": 0,
+    "title": "The business of keeping a world alive",
+    "lede": "We can love a game for years after paying for it. The studio has to keep the lights on until the next sale. How it earns that sale reaches into the work itself.",
+    "figures": [
       {
-        asset: "bg3-official-key-art",
-        alt: "Baldur’s Gate 3 official key art: companions gathered beneath a mind flayer ship",
-        caption: "Baldur’s Gate 3 puts its companions in the foreground: characters whose choices and relationships will shape an adventure.",
-        credit: "© Wizards of the Coast / Larian Studios · official wallpaper",
-        sourceUrl: "https://baldursgate3.game/",
-        placement: "opening",
+        "asset": "bg3-official-key-art",
+        "alt": "Baldur’s Gate 3 official key art: companions gathered beneath a mind flayer ship",
+        "caption": "Baldur’s Gate 3 · Larian Studios. A fantasy adventure in which a group of companions faces decisions that change their story.",
+        "credit": "© Wizards of the Coast / Larian Studios",
+        "sourceUrl": "https://baldursgate3.game/",
+        "placement": "opening"
       },
       {
-        asset: "legacy-d4-key",
-        alt: "Diablo IV key art: Lilith above the game’s title in a field of red",
-        caption: "Diablo IV leads with Lilith and the threat at the heart of its campaign. Its seasonal program shares this world, but is largely invisible in the image.",
-        credit: "© Blizzard Entertainment · supplied research archive",
-        placement: "opening",
+        "asset": "legacy-d4-key",
+        "alt": "Diablo IV key art: Lilith above the game’s title in a field of red",
+        "caption": "Diablo IV · Blizzard Entertainment. A dark fantasy world built around fighting monsters, finding equipment and developing a character.",
+        "credit": "© Blizzard Entertainment",
+        "placement": "opening"
+      }
+    ],
+    "paragraphs": [
+      "A book can stay with us for decades; a film can become part of how we see the world. Their makers cannot pay this month’s wages with our memories. The next work may take years, and the people creating it need an income in the meantime. A studio can draw on earlier earnings, sell older work to new audiences or find someone willing to finance what comes next. Each route depends on an expectation of future sales. Keeping the lights on means finding a way across the gap.",
+      "What the audience carries across that gap is attachment: to a story, a character, a place, or the people with whom they experienced it. That attachment can outlast a purchase by decades. It can also give a creator an audience for their next work. The commercial question is when, and for what, that audience will be willing to pay again.",
+      "Consider a film in a cinema and a film on Netflix. A cinema ticket sells admission to a particular showing. For a subscription service, a film can help persuade someone to join or keep paying for access to a whole catalog. Netflix’s July 2024 letter to shareholders explicitly connects more viewing with members staying longer and valuing the service more. The film still needs to move its audience; it now also has a job within a continuing paid relationship.",
+      "That changes the terms under which creative work is valued and paid for. In 2023, the Writers Guild of America negotiated a new bonus for qualifying streaming films and series that reached a specified share of a service’s subscribers. It also secured access to viewing data. A hit inside a subscription catalog needed a way to become visible in its writers’ compensation.",
+      "A parallel shift reached the tools used to make the work. Adobe, the company behind Photoshop, announced in 2013 that new creative features would go to Creative Cloud subscribers; Creative Suite 6 would be its last major release for perpetual licenses. Editing a photograph remained a familiar activity. Keeping access to the newest tools became a continuing purchase. Across these examples, digital delivery made a lasting commercial connection easier to maintain, while the work of making something worth paying for remained expensive.",
+      "Games bring that connection inside a world the audience acts upon. Players learn its rules, develop skills and make choices that affect what happens. In online games, teammates and rivals can become friends, and a shared evening can become a weekly ritual. An update can give those friends somewhere new to explore, or change the activity around which they have arranged their time. The studio is working on something that already has a place in people’s lives.",
+      "It must also decide what to fund next. Another game asks the audience to follow the studio to a new work. An expansion sells more of a world they already know. An ongoing program of updates and optional purchases builds further production around people who are already there. Each can support worthwhile creative work. Each gives the team different reasons to expand one part of the experience, preserve another, or put a price on something new.",
+      "The two worlds at the top of this chapter give us a glimpse of where these choices have led. Baldur’s Gate 3 and Diablo IV are role-playing games: players develop characters whose abilities and equipment change what they can do. Larian Studios builds BG3 around a group of companions, conversations with consequences and battles fought in turns. Blizzard Entertainment’s Diablo IV puts a character under the player’s direct control, fighting through crowds of monsters in search of better equipment.",
+      "In Baldur’s Gate 3, the purchase opens a substantial campaign—the main story adventure—with many possible routes through it. Larian’s stated offer includes no in-game purchases. The studio continued adding features after release, then announced its final major content update in April 2025. It could keep working on the game indefinitely, the announcement explained: “But then we’d never be able to create something new.” Players could continue exploring its possibilities while the studio turned to another project.",
+      "Blizzard described a different future for Diablo IV in its August 2022 development update: “Diablo IV will be supported by an army of developers for years to come.” Alongside the purchased adventure, it planned seasons: recurring cycles of new activities and changes to play. Optional sales of character appearances and paid reward tracks would accompany that continuing program. A dedicated team would keep creating reasons to return and further things to buy.",
+      "Here is the fork. A studio can build a game whose existing possibilities keep attracting players while it goes on to make its next work. It can also organize years of production and further sales around the world those players already inhabit. Both approaches need an audience; both can reward returning to the game. They give the team different work to do after release, and give that work a different place in the player’s life.",
+      "Diablo IV contains the tension within itself. Its campaign offers an adventure that reaches a resolution. Its seasons promise further occasions to play in the same world. Someone hoping to finish the adventure they bought can encounter a game already preparing its next beginning. Someone else may have returned precisely because there is a new season to share with friends. The continuing business has to find its place among those expectations.",
+      "To understand how these arrangements came about, we need to follow more than a succession of games with better graphics. We need the history of what studios could build, how they reached their audiences and what they learned to sell. Diablo will give us a thread through that history: a series whose familiar pleasures survived substantial changes to the product around them. First, we go back to the different ways games learned to pay for themselves."
+    ],
+    "sections": [
+      {
+        "at": 2,
+        "title": "What the next payment buys"
       },
+      {
+        "at": 5,
+        "title": "When the audience inhabits the work"
+      },
+      {
+        "at": 7,
+        "title": "Two worlds, different futures"
+      },
+      {
+        "at": 12,
+        "title": "How we arrived here"
+      }
     ],
-    paragraphs: [
-      "Baldur’s Gate 3, made by Larian Studios, and Diablo IV, made by Blizzard Entertainment, belong to the broad family of role-playing games: adventures in which we develop characters, choose their abilities and find equipment that changes what they can do. Their rhythms differ. Baldur’s Gate 3 gives us a group of companions, conversations with consequences and battles fought in turns. Diablo IV puts one character under our immediate control, fighting through crowds of monsters and searching for better equipment.",
-      "Both leave room for mastery, discovery and another attempt. A class gives a character a particular set of abilities; a build is the combination of abilities and equipment the player chooses. A different build can change how the adventure unfolds. So can another companion, another decision or another group of friends. A long game and a replayable game can both be sold in one purchase. Duration tells us little about the business model.",
-      "Baldur’s Gate 3 centers that purchase on a branching campaign, its main story adventure. Larian’s stated offer has no in-game purchases. Supporting a release can still involve substantial work afterward: its April 2025 update added new character specializations and cross-platform play, while announcing an end to major content updates. A studio can finish extending its work while players keep finding new ways through it.",
-      "Diablo IV contains an adventure with a resolution too. Alongside its campaign are seasons: recurring periods with changes, activities and goals around a fresh character run. Players begin again at level one, developing their character under the season’s conditions. Eligible players can skip the campaign; a seasonal character can also follow it. The game accommodates both a story we can complete and a succession of new occasions to play.",
-      "Its commercial structure also continues beyond the initial purchase. In its August 2022 design plan, Blizzard set out a paid game with optional sales of cosmetics—items that change appearance—and paid tracks of rewards earned through play. Expansions add further adventures for another price. Joining a season and shopping are separate choices, but both now belong to the continuing product.",
-      "The fork is between building a release whose possibilities players keep exploring and operating a game whose activities and offers the studio keeps renewing. These approaches ask different things of the people making the game, as well as those playing it. They can coexist: Diablo IV carries the distinction inside itself. Completing its campaign does not complete the studio’s program of seasons, updates and sales.",
-      "For someone used to buying boxed role-playing games, that can create a tension in expectations. A purchased book contains the whole work, from first page to last. We choose when to finish it or read it again. A continuing series also gives us someone else’s release calendar to follow. Diablo IV offers both kinds of invitation. A player may want to finish an adventure at their own pace while the surrounding game is already announcing the next beginning. That tension can exist without a single additional purchase.",
-      "The comparison has limits. A game gives us choices and skills to develop, not just pages to revisit; a season can be a welcome occasion to gather friends. The economic question is what each arrangement needs to sustain it. Selling a substantial release means persuading people it is worth buying. Selling within an ongoing game also means giving existing players things they want to buy again. Those demands can influence what gets built, how it is presented and which uses of a player’s time receive attention.",
-      "Neither arrangement determines how much affection a game deserves. Both inherit decades of role-playing design, and both can offer far more than a single journey. We will compare six games first, then follow the histories, production choices and human motives behind their offers. The fork gives us a question to carry through the essay: how well does the way a game earns money support the reasons people love playing it?",
-    ],
-    sections: [{"at": 3, "title": "An adventure inside an ongoing game"}, {"at": 6, "title": "The book and the continuing series"}],
-    takeaway: "The shape of play and the shape of payment meet in the product. They can support each other—or ask different things of the same player.",
-    sources: ["bg3", "bg3-patch8", "d4-expansion-structure", "d4-season-philosophy"],
-    evidence: "The comparison uses Larian’s product description and April 2025 update, Blizzard’s August 2022 commercial design plan and its 2026 campaign/realm guide. BG3 has paid editions and extras; no in-game purchases does not mean no commercial variants. D4 seasons and campaign overlap, and seasonal play does not require buying cosmetics. The release/service distinction is our interpretive lens, not an exhaustive taxonomy, a judgment of artistic merit or a reconstruction of either studio’s finances. The book analogy describes expectations about scope and pace, not legal ownership rights or a measured response shared by all veteran players. D4’s ongoing program is not a promise of an endless service.",
-    paragraphCitations: {
-      "0": ["bg3", "d4-expansion-structure"],
-      "2": ["bg3", "bg3-patch8"],
-      "3": ["d4-expansion-structure"],
-      "4": ["d4-season-philosophy", "d4-expansion-structure"],
-    },
-  },
-  {
-    id: "six-games",
-    part: 0,
-    title: "Six games, different promises",
-    lede: "Similar pleasures can sit inside very different packages. The useful comparison is what each game invites us to do—and what the purchase includes.",
-    paragraphs: [
-      "The opening comparison is a starting point, not two boxes into which every game must fit. These six role-playing games all connect an adventure to a developing character. They differ in how that adventure unfolds, what another playthrough offers and what is sold separately. An expansion is a substantial addition to an existing game; an edition is a particular package offered for sale. Neither term tells us, by itself, what an owner already has.",
-      "Baldur’s Gate 3 asks players to guide a group of companions through a story shaped by their choices. Its purchase includes different paths through that campaign. The analogy to a novel is useful at the checkout: revisiting the work does not require another purchase. During play, the analogy becomes less exact. We can make choices that were absent from our first experience.",
-      "Elden Ring, FromSoftware’s fantasy action role-playing game, emphasizes exploration and demanding combat. CD PROJEKT RED’s Cyberpunk 2077 places its character in a futuristic city of jobs and conflicting loyalties. Their Shadow of the Erdtree and Phantom Liberty expansions offer another substantial adventure for another purchase. Like a new volume, each has a named scope; unlike an independent book, an expansion can require the original game and progress within it.",
-      "The Witcher 3 follows a professional monster hunter through a world of authored quests. Its 2022 Complete Edition bundled the main game with Hearts of Stone, Blood and Wine and earlier additions. A collected edition of novels works similarly: material sold at different times becomes one package for a later reader. The world has not changed simply because the contents of the box have.",
-      "Clair Obscur: Expedition 33, from Sandfall Interactive, follows a group on a fantasy expedition. Its battles combine taking turns with actions timed by the player. The studio released a free Thank You update in December 2025. An adventure sold as a release can receive additional material; an update schedule does not, by itself, create a recurring payment obligation.",
-      "Diablo IV combines its campaign with a seasonal program and a shop. Its 2025 Reliquary system added reward catalogs: collections whose premium access could be bought, while their contents required a resource earned by playing. We will examine that transaction later. Here it establishes a different kind of offer from an expansion: permission to pursue specified rewards within the game already being played.",
-      "Compare the scope of the adventure, the reasons to revisit it and the terms of the next purchase separately. That keeps us from treating every update as a service, every ending as exhausted value or every return as another sale. It also raises the next question: when the game changes, which parts of our earlier investment come with us?",
-    ],
-    takeaway:
-      "Compare the reason to return, the next purchase and the progress that remains usable.",
-    table: {
-      caption:
-        "Selected product structures, with historical scope where specified. This is not a current price or complete DLC catalog.",
-      headers: ["Game", "Design emphasis", "Commercial example"],
-      rows: [
-        [
-          "Baldur’s Gate 3",
-          "Authored campaign and branching choices",
-          "Base game; Larian states no microtransactions",
-        ],
-        [
-          "Elden Ring",
-          "Exploration, combat and build mastery",
-          "Base game + Shadow of the Erdtree",
-        ],
-        [
-          "Clair Obscur: Expedition 33",
-          "Authored RPG campaign",
-          "Premium game; no sales or budget estimate used here",
-        ],
-        [
-          "The Witcher 3",
-          "Authored quests in an open world",
-          "2022 Complete Edition bundles two story expansions",
-        ],
-        [
-          "Cyberpunk 2077",
-          "Authored open-world RPG",
-          "Phantom Liberty as a separately produced expansion",
-        ],
-        [
-          "Diablo IV",
-          "Campaign plus repeatable progression",
-          "Base game, expansions, shop and seasonal catalogs",
-        ],
+    "paragraphCitations": {
+      "2": [
+        "netflix-engagement"
       ],
+      "3": [
+        "wga-streaming-2023"
+      ],
+      "4": [
+        "adobe-2013",
+        "digital-economics"
+      ],
+      "5": [
+        "third-places"
+      ],
+      "7": [
+        "bg3",
+        "d4-expansion-structure"
+      ],
+      "8": [
+        "bg3",
+        "bg3-patch8"
+      ],
+      "9": [
+        "d4-season-philosophy"
+      ],
+      "11": [
+        "d4-expansion-structure",
+        "d4-season-philosophy"
+      ]
     },
-    sources: [
+    "sources": [
+      "netflix-engagement",
+      "netflix-2007",
+      "wga-streaming-2023",
+      "adobe-2013",
+      "digital-economics",
+      "third-places",
       "bg3",
-      "elden",
-      "cyberpunk",
-      "witcher",
-      "expedition",
-      "hist-expedition-update",
-      "hist-season-design",
-      "reliquary",
+      "bg3-patch8",
+      "d4-season-philosophy",
+      "d4-expansion-structure"
     ],
-    evidence:
-      "The comparison uses selected official product descriptions, a dated bundle announcement and expansion disclosure. It is not a financial ranking, a complete DLC catalog or a guarantee of permanent offline availability.",
-    paragraphCitations: {
-      "1": ["bg3"],
-      "2": ["elden", "cyberpunk"],
-      "3": ["witcher"],
-      "4": ["expedition", "hist-expedition-update"],
-      "5": ["hist-season-design", "reliquary"],
-    },
-  },
-  {
-    id: "the-reset",
-    part: 0,
-    title: "Where progress lives",
-    lede: "The character can be saved while the occasion for playing it changes.",
-    paragraphs: [
-      "Diablo IV lets characters take part in a season, a period of shared changes and goals, or continue outside that cycle in the Eternal Realm. Realm here means the version of the game world to which the character belongs. Blizzard’s first-season explanation in 2023 said seasonal characters and their progress would move to Eternal afterward, while season-specific features could disappear. The newer character-selection capture also describes that transfer. Beginning another season does not mean the previous character has been deleted.",
-      "Several things can survive in different places. The saved character holds equipment, completed tasks and levels—stages of development reached by earning experience through play. The account records purchased access and other shared benefits. Knowledge and skill belong to the person: recognizing a useful item, understanding an enemy or timing a move. A new sports season provides a useful comparison. The standings can start over; the competitors have still learned from last year.",
-      "That is why two nominally fresh characters can begin from very different positions. Imagine a veteran who recognizes a useful modifier immediately and a newcomer who must read every item. Give them identical starting equipment and their decisions will still diverge. The reset has equalized part of the saved state. It has left the history of learning intact. The shared starting line preserves a considerable difference in preparation.",
-      "Outer Wilds, a space-exploration game by Mobius Digital, puts learning at the center of progress. Its solar system repeats while discoveries change where the player wants to go. In the developer’s account of an early prototype, testers began keeping notes, reinforcing the need for a ship computer that recorded discoveries. Saving a clue and understanding it are different achievements.",
-      "Blizzard gave a different design rationale for seasons: temporary mechanics create room to experiment without balancing every new theme against all previous themes forever. A fresh cycle can also give a group a shared point of departure. Those are real design possibilities. Whether the cycle feels like a welcome reunion or an obligation depends partly on which continuity the player values: experimenting again, keeping one character, playing with friends or finishing an unfinished project.",
-      "The commercial consequence appears when rewards and purchases follow different luggage rules. An account appearance may travel differently from a seasonal power; a catalog may have its own period of availability. The design must explain the relevant boundaries at the moment of commitment. “You keep your progress” is inadequate if the listener and the designer mean different kinds of progress.",
-      "The transfer exhibit below deliberately keeps the categories separate. End the season and watch where the character goes, then consider what the player brings to a new beginning. Once that distinction is visible, a larger historical pattern becomes easier to recognize: games have long sold different relationships to time, and each relationship has shaped what an interruption costs.",
-    ],
-    takeaway:
-      "Ask where each kind of progress survives and in which activity it can still be used.",
-    panel: {
-      title: "Four places change accumulates",
-      items: [
-        { label: "Knowledge", text: "What the player understands" },
-        { label: "Skill", text: "What the player can execute" },
-        { label: "Character", text: "Levels, equipment and quest state" },
-        { label: "Account", text: "Owned access and cosmetics" },
-      ],
-    },
-    figures: [
-      {
-        asset: "d4-seasonal-tooltip",
-        alt: "Diablo IV Seasonal Character tooltip states that the character becomes Eternal at the end of the season",
-        caption:
-          "The Seasonal tooltip explicitly describes transfer to Eternal. Owner reports the current season and version at capture, 1 October 2026.",
-        credit: "Blizzard",
-      },
-      {
-        asset: "outer-wilds-signalscope-prototype",
-        alt: "Early Outer Wilds signalscope interface facing Riebeck",
-        caption:
-          "The signalscope directs curiosity toward a place to investigate. This image is a 2016 prototype, not the released interface.",
-        credit: "Mobius Digital · 2016 design article",
-      },
-    ],
-    sources: [
-      "hist-season-design",
-      "hist-outer-product",
-      "hist-outer-demake",
-      "outer",
-    ],
-    evidence:
-      "The detailed season rationale is attributed to Blizzard’s 2023 announcement, not projected onto current-season rules. The present capture supports transfer wording only. No undocumented Rebirth preservation rules are asserted.",
-    paragraphCitations: {
-      "0": ["hist-season-design"],
-      "3": ["hist-outer-product", "hist-outer-demake"],
-      "4": ["hist-season-design"],
-    },
+    "takeaway": "What does a work mean to its audience—and what does the business need that audience to do next?",
+    "evidence": "The opening offers an interpretive lens, not a reconstruction of private studio finances. Attachment names what a work means to people; it is not equated with viewing hours, time played, spending or wellbeing. Netflix’s July 2024 letter explains its own use of viewing as a proxy, not proof that more viewing always means greater satisfaction. The cinema/catalog illustration compares two payment relationships, not mutually exclusive industries: films have multiple release and licensing channels, and streaming did not invent subscriptions. Netflix’s 2007 announcement added streaming to an existing DVD subscription. The WGA passage describes the historical 2023 agreement and qualifying high-budget subscription streaming productions, not all writers or current contract terms. Adobe’s 2013 transition concerns access to new creative releases, not removal of previously purchased perpetual licenses. Digital Economics supplies the broader cost framework; the cross-industry argument is our synthesis. Online social relationships vary across games and players. Larian’s April 2025 statement concerns major content updates, not the end of support. Blizzard’s August 2022 plan records pre-launch intent, not today’s catalog or prices. D4 seasons and optional purchases remain separate choices; neither game is a Netflix-style subscription. The exhibits are qualitative, not financial forecasts."
   },
   {
     id: "several-histories",
-    part: 1,
+    part: 0,
     title: "Several histories at once",
     lede: "The genre kept its familiar pleasures while distribution, online life and the ways to pay developed around them.",
     paragraphs: [
@@ -628,7 +558,7 @@ const manuscript: Omit<Chapter, "visual">[] = [
   },
   {
     id: "concord",
-    part: 1,
+    part: 0,
     title: "Concord",
     lede: "For a multiplayer world, other players are part of what the product has to deliver.",
     paragraphs: [
@@ -735,6 +665,137 @@ const manuscript: Omit<Chapter, "visual">[] = [
       "3": ["bg3-patch8", "d4-season-philosophy"],
       "4": ["sony", "hist-valorant"],
       "5": ["cyberpunk"],
+    },
+  },
+  {
+    id: "six-games",
+    part: 1,
+    title: "Six games, different promises",
+    lede: "Similar pleasures can sit inside very different packages. The useful comparison is what each game invites us to do—and what the purchase includes.",
+    paragraphs: [
+      "The opening comparison is a starting point, not two boxes into which every game must fit. These six role-playing games all connect an adventure to a developing character. They differ in how that adventure unfolds, what another playthrough offers and what is sold separately. An expansion is a substantial addition to an existing game; an edition is a particular package offered for sale. Neither term tells us, by itself, what an owner already has.",
+      "Baldur’s Gate 3 asks players to guide a group of companions through a story shaped by their choices. Its purchase includes different paths through that campaign. The analogy to a novel is useful at the checkout: revisiting the work does not require another purchase. During play, the analogy becomes less exact. We can make choices that were absent from our first experience.",
+      "Elden Ring, FromSoftware’s fantasy action role-playing game, emphasizes exploration and demanding combat. CD PROJEKT RED’s Cyberpunk 2077 places its character in a futuristic city of jobs and conflicting loyalties. Their Shadow of the Erdtree and Phantom Liberty expansions offer another substantial adventure for another purchase. Like a new volume, each has a named scope; unlike an independent book, an expansion can require the original game and progress within it.",
+      "The Witcher 3 follows a professional monster hunter through a world of authored quests. Its 2022 Complete Edition bundled the main game with Hearts of Stone, Blood and Wine and earlier additions. A collected edition of novels works similarly: material sold at different times becomes one package for a later reader. The world has not changed simply because the contents of the box have.",
+      "Clair Obscur: Expedition 33, from Sandfall Interactive, follows a group on a fantasy expedition. Its battles combine taking turns with actions timed by the player. The studio released a free Thank You update in December 2025. An adventure sold as a release can receive additional material; an update schedule does not, by itself, create a recurring payment obligation.",
+      "Diablo IV combines its campaign with a seasonal program and a shop. Its 2025 Reliquary system added reward catalogs: collections whose premium access could be bought, while their contents required a resource earned by playing. We will examine that transaction later. Here it establishes a different kind of offer from an expansion: permission to pursue specified rewards within the game already being played.",
+      "Compare the scope of the adventure, the reasons to revisit it and the terms of the next purchase separately. That keeps us from treating every update as a service, every ending as exhausted value or every return as another sale. It also raises the next question: when the game changes, which parts of our earlier investment come with us?",
+    ],
+    takeaway:
+      "Compare the reason to return, the next purchase and the progress that remains usable.",
+    table: {
+      caption:
+        "Selected product structures, with historical scope where specified. This is not a current price or complete DLC catalog.",
+      headers: ["Game", "Design emphasis", "Commercial example"],
+      rows: [
+        [
+          "Baldur’s Gate 3",
+          "Authored campaign and branching choices",
+          "Base game; Larian states no microtransactions",
+        ],
+        [
+          "Elden Ring",
+          "Exploration, combat and build mastery",
+          "Base game + Shadow of the Erdtree",
+        ],
+        [
+          "Clair Obscur: Expedition 33",
+          "Authored RPG campaign",
+          "Premium game; no sales or budget estimate used here",
+        ],
+        [
+          "The Witcher 3",
+          "Authored quests in an open world",
+          "2022 Complete Edition bundles two story expansions",
+        ],
+        [
+          "Cyberpunk 2077",
+          "Authored open-world RPG",
+          "Phantom Liberty as a separately produced expansion",
+        ],
+        [
+          "Diablo IV",
+          "Campaign plus repeatable progression",
+          "Base game, expansions, shop and seasonal catalogs",
+        ],
+      ],
+    },
+    sources: [
+      "bg3",
+      "elden",
+      "cyberpunk",
+      "witcher",
+      "expedition",
+      "hist-expedition-update",
+      "hist-season-design",
+      "reliquary",
+    ],
+    evidence:
+      "The comparison uses selected official product descriptions, a dated bundle announcement and expansion disclosure. It is not a financial ranking, a complete DLC catalog or a guarantee of permanent offline availability.",
+    paragraphCitations: {
+      "1": ["bg3"],
+      "2": ["elden", "cyberpunk"],
+      "3": ["witcher"],
+      "4": ["expedition", "hist-expedition-update"],
+      "5": ["hist-season-design", "reliquary"],
+    },
+  },
+  {
+    id: "the-reset",
+    part: 1,
+    title: "Where progress lives",
+    lede: "The character can be saved while the occasion for playing it changes.",
+    paragraphs: [
+      "Diablo IV combines a campaign, its main story adventure, with seasons: recurring periods of new activities and changes to character development. The campaign reaches a resolution; a season offers a fresh run through a changing set of possibilities. These structures overlap, since a seasonal character can also follow the campaign. Before examining their rewards, it helps to distinguish what a new beginning preserves.",
+      "Diablo IV lets characters take part in a season, a period of shared changes and goals, or continue outside that cycle in the Eternal Realm. Realm here means the version of the game world to which the character belongs. Blizzard’s first-season explanation in 2023 said seasonal characters and their progress would move to Eternal afterward, while season-specific features could disappear. The newer character-selection capture also describes that transfer. Beginning another season does not mean the previous character has been deleted.",
+      "Several things can survive in different places. The saved character holds equipment, completed tasks and levels—stages of development reached by earning experience through play. The account records purchased access and other shared benefits. Knowledge and skill belong to the person: recognizing a useful item, understanding an enemy or timing a move. A new sports season provides a useful comparison. The standings can start over; the competitors have still learned from last year.",
+      "That is why two nominally fresh characters can begin from very different positions. Imagine a veteran who recognizes a useful modifier immediately and a newcomer who must read every item. Give them identical starting equipment and their decisions will still diverge. The reset has equalized part of the saved state. It has left the history of learning intact. The shared starting line preserves a considerable difference in preparation.",
+      "Outer Wilds, a space-exploration game by Mobius Digital, puts learning at the center of progress. Its solar system repeats while discoveries change where the player wants to go. In the developer’s account of an early prototype, testers began keeping notes, reinforcing the need for a ship computer that recorded discoveries. Saving a clue and understanding it are different achievements.",
+      "Blizzard gave a different design rationale for seasons: temporary mechanics create room to experiment without balancing every new theme against all previous themes forever. A fresh cycle can also give a group a shared point of departure. Those are real design possibilities. Whether the cycle feels like a welcome reunion or an obligation depends partly on which continuity the player values: experimenting again, keeping one character, playing with friends or finishing an unfinished project.",
+      "The commercial consequence appears when rewards and purchases follow different luggage rules. An account appearance may travel differently from a seasonal power; a catalog may have its own period of availability. The design must explain the relevant boundaries at the moment of commitment. “You keep your progress” is inadequate if the listener and the designer mean different kinds of progress.",
+      "The transfer exhibit below keeps the categories separate. End the season and watch where the character goes, then consider what the player brings to a new beginning. Deciding what to preserve depends on understanding what that person values. The following chapters examine those reasons for playing.",
+    ],
+    takeaway:
+      "Ask where each kind of progress survives and in which activity it can still be used.",
+    panel: {
+      title: "Four places change accumulates",
+      items: [
+        { label: "Knowledge", text: "What the player understands" },
+        { label: "Skill", text: "What the player can execute" },
+        { label: "Character", text: "Levels, equipment and quest state" },
+        { label: "Account", text: "Owned access and cosmetics" },
+      ],
+    },
+    figures: [
+      {
+        asset: "d4-seasonal-tooltip",
+        alt: "Diablo IV Seasonal Character tooltip states that the character becomes Eternal at the end of the season",
+        caption:
+          "The Seasonal tooltip explicitly describes transfer to Eternal. Owner reports the current season and version at capture, 1 October 2026.",
+        credit: "Blizzard",
+      },
+      {
+        asset: "outer-wilds-signalscope-prototype",
+        alt: "Early Outer Wilds signalscope interface facing Riebeck",
+        caption:
+          "The signalscope directs curiosity toward a place to investigate. This image is a 2016 prototype, not the released interface.",
+        credit: "Mobius Digital · 2016 design article",
+      },
+    ],
+    sources: [
+      "d4-expansion-structure",
+      "hist-season-design",
+      "hist-outer-product",
+      "hist-outer-demake",
+      "outer",
+    ],
+    evidence:
+      "The detailed season rationale is attributed to Blizzard’s 2023 announcement, not projected onto current-season rules. The present capture supports transfer wording only. No undocumented Rebirth preservation rules are asserted.",
+    paragraphCitations: {
+      "0": ["d4-expansion-structure"],
+      "1": ["hist-season-design"],
+      "4": ["hist-outer-product", "hist-outer-demake"],
+      "5": ["hist-season-design"],
     },
   },
   {
@@ -1316,7 +1377,7 @@ export const chapters: Chapter[] = manuscript.map((chapter) => {
     ...chapter,
     visual,
     figures: [
-      visual.screenshot,
+      chapter.figures?.find((figure) => figure.asset === visual.screenshot.asset) ?? visual.screenshot,
       ...(chapter.figures ?? []).filter(
         (figure) => figure.asset !== visual.screenshot.asset,
       ),

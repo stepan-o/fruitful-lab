@@ -104,13 +104,12 @@ describe("Sanctuary reader", () => {
       <Reader {...props} current={chapters[0]} index={0} />,
     );
     expect(screen.getByRole("figure", { name: /Diagram:/ })).toBeVisible();
-    expect(
-      screen.getByText(
-        "Original procedural scene · illustrative, not a game capture",
-      ),
-    ).toBeVisible();
-    expect(container.querySelectorAll("img")).toHaveLength(chapters[0].figures!.length);
-    expect(screen.getAllByRole("link", { name: /Source & use/ })).toHaveLength(chapters[0].figures!.length);
+    expect(screen.getByRole("group", { name: "What happens after purchase?" })).toBeVisible();
+    expect(screen.getByRole("navigation", { name: "Chapter" }).querySelector("a:last-child"))
+      .toHaveAttribute("href", chapterHref("several-histories"));
+    expect(container.querySelectorAll("img")).toHaveLength(chapters[0].figures!.length + 1);
+    expect(screen.getByRole("img", { name: "Netflix" })).toHaveAttribute("loading", "lazy");
+    expect(screen.getAllByRole("link", { name: /Source & use/ })).toHaveLength(chapters[0].figures!.length + 1);
     expect(screen.getByRole("link", { name: /Rights & credits/ })).toHaveAttribute("href", "/stepanoskin/game-monetization/credits");
     expect(container.querySelector("main")).toHaveAttribute(
       "data-media-mode",
@@ -157,12 +156,13 @@ describe("Sanctuary reader", () => {
     );
   });
   it("keeps source notes and chapter links available and mounts zoom on request", () => {
-    const current = chapters[2];
+    const index = chapters.findIndex(chapter => chapter.id === "the-reset");
+    const current = chapters[index];
     render(
       <Reader
         {...props}
         current={current}
-        index={2}
+        index={index}
         sources={sources.filter((s) => current.sources.includes(s.id))}
       />,
     );
@@ -173,7 +173,7 @@ describe("Sanctuary reader", () => {
       screen
         .getByRole("navigation", { name: "Chapter" })
         .querySelector("a:last-child"),
-    ).toHaveAttribute("href", chapterHref(chapters[3].id));
+    ).toHaveAttribute("href", chapterHref(chapters[index + 1].id));
     expect(
       screen.queryByRole("dialog", { name: "Enlarge image" }),
     ).not.toBeInTheDocument();

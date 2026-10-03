@@ -1,5 +1,10 @@
 # Sanctuary Economics — audience and wider context
 
+**Current narrative authority:** [Narrative reconstruction](NARRATIVE_REBUILD.md)
+records the owner-approved sequence and the new local opening. The historical
+introduction audit and first revision sequence below predate that decision.
+They are research inventory, not the current chapter order.
+
 3 October 2026. Editorial direction and research brief for the ongoing local
 copy pass. Implemented as an initial manuscript pass on 3 October 2026: all 21 chapters
 now introduce their central examples, the opening compares BG3 and D4 and then
@@ -8,6 +13,21 @@ chapters. Continued authorial copy review remains in progress. The research
 and audit below record the rationale, not a requirement to use every analogy.
 
 ## Audience contract
+
+The governing lens is the economics of creative work and the audience’s
+attachment to it. Use attachment for what a work comes to mean to people; use
+trust for confidence in the next offer, and engagement/retention only for
+specified observed behaviors. None proves the others. Keep this distinction
+through later chapters on social life, calendars, identity and measurement.
+
+The opening now illustrates cinema admissions versus a subscription catalog,
+using Netflix’s own [July 2024 shareholder letter](https://ir.netflix.net/files/doc_financials/2024/q2/FINAL-Q2-24-Shareholder-Letter.pdf).
+The [2023 WGA agreement summary](https://www.wgacontract2023.org/the-campaign/summary-of-the-2023-wga-mba)
+supports a specific compensation change: a bonus for qualifying streaming
+productions tied to audience reach, with confidential data access for the Guild.
+Do not turn it into an unsupported claim that streaming alone caused every
+change in production, employment or writing quality. These are historical
+sources, not a statement of current employment terms.
 
 Assume an interested adult, possibly an experienced player, but no required
 knowledge of Diablo or games. Preserve the depth of the industry argument.

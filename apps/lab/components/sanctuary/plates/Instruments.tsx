@@ -3,58 +3,6 @@ import { Choices, Readout, Scope, Wire, Node } from "./Controls";
 import { brass, teal, Relic, Label, Gear } from "./Engraving";
 import s from "../exhibits.module.css";
 
-export function ExperienceFork() {
-  const [lens, setLens] = useState(0);
-  const lenses = [
-    {
-      question: "What kind of lasting game is the studio building?",
-      leftLabel: "BALDUR’S GATE 3", rightLabel: "DIABLO IV",
-      leftTitle: "Explore a substantial work", rightTitle: "Join a continuing program",
-      campaign: "A branching adventure makes room for different choices and characters within the purchased game. Support and updates can extend the release.",
-      seasonal: "A campaign sits alongside seasons, expansions and optional shop offers. The studio keeps supplying occasions to play and things to buy.",
-      point: "Both can sustain years of enjoyment. The distinction concerns what the studio keeps producing and selling, rather than how long a player stays.",
-    },
-    {
-      question: "How does the same game make both invitations?",
-      leftLabel: "DIABLO IV · CAMPAIGN", rightLabel: "DIABLO IV · SEASONS",
-      leftTitle: "Follow the adventure", rightTitle: "Begin another run",
-      campaign: "Events and encounters carry a character toward a story’s resolution. The player can still pursue other goals afterward.",
-      seasonal: "A shared cycle renews goals and conditions around a level-one start. Eligible players can skip the campaign or choose to follow it.",
-      point: "These structures overlap. A seasonal character can play the campaign, and joining a season does not require a cosmetic purchase.",
-    },
-    {
-      question: "Whose timetable organizes the next visit?",
-      leftLabel: "THE PURCHASED BOOK", rightLabel: "THE CONTINUING SERIES",
-      leftTitle: "Return when it suits me", rightTitle: "Follow what arrives next",
-      campaign: "I know the scope of the work I bought. I can finish it, put it aside and revisit its possibilities at my own pace.",
-      seasonal: "New releases give me occasions to return. Shared dates can bring friends together, while timed goals may compete with other plans.",
-      point: "This is an analogy about expectations. Inside Diablo IV, wanting to finish an existing adventure can meet a calendar already pointing toward the next beginning.",
-    },
-  ];
-  const view = lenses[lens];
-  return (
-    <>
-      <p className={s.instruction}>Compare the two products, then find the same tension inside Diablo IV.</p>
-      <Choices label="Explore the fork" items={["Two games", "Inside Diablo IV", "Player expectations"]} value={lens} onChange={setLens}/>
-      <div className={s.departurePlayer}><span>THE FORK</span><p>{view.question}</p></div>
-      <div className={s.departureBranches} aria-hidden="true"><span/><span/></div>
-      <div className={s.departureComparison}>
-        <section>
-          <small>{view.leftLabel}</small>
-          <h3>{view.leftTitle}</h3>
-          <p>{view.campaign}</p>
-        </section>
-        <section>
-          <small>{view.rightLabel}</small>
-          <h3>{view.rightTitle}</h3>
-          <p>{view.seasonal}</p>
-        </section>
-      </div>
-      <Readout tag="READ THE DISTINCTION">{view.point}</Readout>
-    </>
-  );
-}
-
 const promises = [
   [
     "Baldur’s Gate 3",

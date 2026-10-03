@@ -21,6 +21,12 @@ Captions add context that the image cannot supply by itself. Diagrams show a
 specific relationship and state their assumptions; controls should reveal a
 useful comparison. Keep reading surfaces steady and visual layers coherent.
 
+Add visuals wherever they improve understanding or recognition. An authentic,
+properly sourced logo can establish a familiar company faster than its name in
+a paragraph. Use that recognition to introduce an argument, not to decorate
+empty space. Compose original explanatory graphics around visual citations,
+preserve the marks themselves and keep each addition within the delivery budget.
+
 Authentic visual citations and original graphics can coexist. Identify source
 material, preserve creator notices, record its publication basis and label
 reconstructions. A new rendering or different style is not automatic legal

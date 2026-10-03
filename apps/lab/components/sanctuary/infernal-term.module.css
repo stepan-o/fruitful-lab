@@ -1,0 +1,12 @@
+.term { position:relative; isolation:isolate; display:inline-block; padding:0 .82em; margin:0 .1em; font:700 1.09em/1.5 Georgia,"Times New Roman",serif; letter-spacing:.012em; white-space:nowrap; vertical-align:baseline; }
+.mount { position:absolute; inset:-.32em 0; width:100%; height:calc(100% + .64em); overflow:visible; pointer-events:none; z-index:-1; }
+.letters { color:#efd1a2; text-shadow:0 1px 0 #060d0f,0 -1px 0 #3f231b,0 2px 2px #0009,0 0 12px #c6532633; }
+.heat { opacity:.5; animation:heatBreath 7s ease-in-out infinite alternate paused; }
+.seam { stroke-dasharray:32 250; stroke-dashoffset:32; opacity:.4; animation:seamTravel 10s ease-in-out infinite paused; }
+.sparks { opacity:.15; animation:ashRise 8s ease-in-out infinite paused; }
+.term[data-playing=true] :is(.heat,.seam,.sparks) { animation-play-state:running; }
+@keyframes heatBreath { to { opacity:.85; } }
+@keyframes seamTravel { 0%,65% { stroke-dashoffset:32; opacity:.2; } 83% { opacity:.85; } 100% { stroke-dashoffset:-250; opacity:.2; } }
+@keyframes ashRise { 0%,60%,100% { transform:translateY(1px); opacity:0; } 72% { opacity:.6; } 94% { transform:translate(3px,-8px); opacity:0; } }
+@media(prefers-reduced-motion:reduce) { .term * { animation:none!important; } }
+@media print { .mount { display:none; } .term { padding:0; } .letters { color:inherit; text-shadow:none; } }

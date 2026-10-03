@@ -16,6 +16,14 @@ const menuItems = [
     {
         id: "game-monetization",
         href: "/stepanoskin/game-monetization",
+        titleKey: "gameMonetization",
+        descriptionKey: "gameMonetizationDescription",
+    },
+    {
+        id: "production-systems",
+        href: "/stepanoskin/production-systems",
+        titleKey: "productionSystems",
+        descriptionKey: "productionSystemsDescription",
     },
 ] as const;
 
@@ -155,8 +163,8 @@ export default function StepanoskinLanding({ initialLocale }: { initialLocale: L
                             >
                                 <span className={styles.itemIndex}>{String(index + 1).padStart(2, "0")}</span>
                                 <span className={styles.itemCopy}>
-                                    <strong>{copy.gameMonetization}</strong>
-                                    <small>{copy.gameMonetizationDescription}</small>
+                                    <strong>{copy[item.titleKey]}</strong>
+                                    <small>{copy[item.descriptionKey]}</small>
                                 </span>
                                 <span className={styles.itemAction}>
                                     <small>{copy.available}</small>

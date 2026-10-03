@@ -11,7 +11,7 @@ visitor's explicit choice is saved in the versioned `stepanoskin_locale_v1`
 browser cookie so the server can render the selected language immediately.
 
 The game-style menu is data-driven and sized for three to five future entries,
-while currently showing only Game Monetization. Art assets are sourced from the
+with Game Monetization and the Data Science & Production Systems profile. Art assets are sourced from the
 Loopforge repository and published through the versioned media pipeline in
 `assets/README.md`. The landing page pins its compiled manifest for an immediate
 first render; hashed media URLs receive immutable caching. Legacy source URLs
@@ -52,3 +52,17 @@ Run `npm run research:dev` with the private archive installed to view them on
 loopback port 3101. There is no public mode switch; production and Vercel cannot
 activate this mode. The archive is excluded from Git, public assets and server
 tracing. See the Sanctuary README for installation and source provenance.
+
+
+## Production systems profile · 2026-10-03
+
+Public `/stepanoskin/production-systems` is a professional profile and methodology
+presentation for Stepan Oskin, linked from the six-language `/stepanoskin` menu.
+The profile is in English and sets its own language scope. It presents abstract
+current-role context at Prodigy Education, publicly verifiable work, an original
+production-loop diagram, four illustrative applications, primary-source notes,
+and LinkedIn/print actions. It discloses no internal project details or results.
+Static server content and scoped CSS contain most of the page; small client
+components handle domain selection and printing. Profile actions reuse `cta_click`.
+No auth, API, experiment assignment, dependencies, or other apps change.
+See `docs/brands/lab/production-systems-profile.md` for the brief, sources and checks.

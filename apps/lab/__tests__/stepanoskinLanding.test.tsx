@@ -2,8 +2,9 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import StepanoskinLanding from "@/app/(stepanoskin)/stepanoskin/StepanoskinLanding";
 import LoopforgeLanding from "@/app/(stepanoskin)/stepanoskin/loopforge/LoopforgeLanding";
 
+const mockPush = jest.fn();
 jest.mock("next/navigation", () => ({
-    useRouter: () => ({ push: jest.fn() }),
+    useRouter: () => ({ push: mockPush }),
 }));
 
 Object.defineProperty(window, "matchMedia", {
@@ -22,18 +23,19 @@ Object.defineProperty(window, "matchMedia", {
 
 describe("Stepanoskin landing", () => {
     beforeEach(() => {
+        mockPush.mockClear();
         window.localStorage.clear();
         document.cookie = "stepanoskin_locale_v1=; Path=/; Max-Age=0";
         document.documentElement.lang = "en";
     });
 
-    it("offers all three projects and an About destination without the factory entrance", () => {
+    it("offers the professional CV and three secondary destinations without factory media", () => {
         render(<StepanoskinLanding initialLocale="en" />);
 
-        expect(screen.getByRole("heading", { name: "Systems, economies & imagined worlds." })).toBeInTheDocument();
-        expect(screen.getByRole("link", { name: /Data Science & Production Systems/i })).toHaveAttribute("href", "/stepanoskin/production-systems");
+        expect(screen.getByRole("heading", { name: "Stepan Oskin" })).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: /Professional CV/i })).toHaveAttribute("href", "/stepanoskin/production-systems");
         expect(screen.getByRole("link", { name: /Game Monetization/i })).toHaveAttribute("href", "/stepanoskin/game-monetization");
-        expect(screen.getByRole("link", { name: /Loopforge/i })).toHaveAttribute("href", "/stepanoskin/loopforge");
+        expect(screen.getByRole("link", { name: /Game Engines and LLMs/i })).toHaveAttribute("href", "/stepanoskin/loopforge");
         expect(screen.getByRole("link", { name: /About/i })).toHaveAttribute("href", "/stepanoskin/about");
         expect(screen.queryByAltText("Loopforge — AI Brain Factory")).not.toBeInTheDocument();
     });
@@ -45,9 +47,22 @@ describe("Stepanoskin landing", () => {
             target: { value: "ru" },
         });
 
-        expect(screen.getByRole("heading", { name: "Системы, экономики и придуманные миры." })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Stepan Oskin" })).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: /Профессиональное резюме/ })).toBeInTheDocument();
         expect(document.cookie).toContain("stepanoskin_locale_v1=ru");
         expect(document.documentElement.lang).toBe("ru");
+    });
+
+    it("pauses ambient motion and remembers that choice on remount", () => {
+        const { unmount } = render(<StepanoskinLanding initialLocale="en" />);
+        fireEvent.click(screen.getByRole("button", { name: "Pause motion" }));
+        expect(screen.getByRole("main")).toHaveAttribute("data-motion", "off");
+        expect(window.localStorage.getItem("stepanoskin_motion_v1")).toBe("off");
+        unmount();
+        render(<StepanoskinLanding initialLocale="en" />);
+        expect(screen.getByRole("button", { name: "Resume motion" })).toHaveAttribute("aria-pressed", "false");
+        fireEvent.click(screen.getByRole("button", { name: "Resume motion" }));
+        expect(screen.getByRole("main")).toHaveAttribute("data-motion", "on");
     });
 
     it("keeps the factory entrance focused on Loopforge and links back to all projects", () => {

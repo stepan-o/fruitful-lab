@@ -1,17 +1,12 @@
 /** Recognition comes from a game's design vocabulary, never traced publisher art. */
 export const artDirection: Record<
   string,
-  { title: string; reference: string; read: string; motifs: string[] }
+  { title: string; reference?: string; read: string; motifs?: string[]; alt?: string }
 > = {
   "the-fork": {
-    title: "Four contracts at the devil’s desk",
-    reference: "Diablo IV · layered commercial offers",
-    read: "The same adventurer faces four different requests. Follow the coin, clock, object and eye.",
-    motifs: [
-      "Contract seals",
-      "An adventurer at the counter",
-      "Four distinct exchanges",
-    ],
+    title: "The shape of a playthrough",
+    read: "An adventure can reach its resolution while a world continues to offer new occasions to play. Diablo IV contains both: its campaign and its seasonal program. For a player expecting to finish the work they bought, the next season can arrive before the current journey feels complete. The picture holds that tension; the diagrams below examine what each invitation asks of the studio and the player.",
+    alt: "An engraved diptych. On the left, a traveler follows a winding mountain road toward a sunlit gate. On the right, several travelers inhabit a city encircled by a returning path.",
   },
   "six-games": {
     title: "The cabinet of different promises",

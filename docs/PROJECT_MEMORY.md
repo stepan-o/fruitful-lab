@@ -1,15 +1,79 @@
 # Project Memory - Fruitful Lab
 
+Sanctuary public editorial edition, 2026-10-03: selected publisher imagery is now
+part of the normal presentation alongside original plates and diagrams. The
+`sanctuary-editorial` immutable pack publishes the 24 images used by the manuscript;
+`editorial-media.json` records source, owner and per-image analytical purpose.
+Only active-chapter metadata reaches the client. Large inspection images mount
+on demand; 480px variants supplement the existing optimized WebPs. The optional
+private archive and gated research endpoint remain for source work, not a second
+reading edition. No flag is needed to see the selected screenshots. Public
+`/stepanoskin/game-monetization/credits` includes dated source excerpts and
+ownership notices. This is an editorial publication decision, not legal clearance.
+See `docs/sanctuary/EDITORIAL_MEDIA_RIGHTS.md`. Publisher assets are not licensed
+for reuse in Loopforge. Preserve the original animated opening diptych.
+
+All Fruitful Lab projects inherit `docs/DESIGN_AND_PERFORMANCE_STANDARDS.md`:
+rich visuals, efficient delivery/motion and excellent mobile behavior are one
+acceptance requirement. Field Web Vitals are targets until actually measured.
+
+Sanctuary audience revision, 2026-10-03: do not assume readers play games or know
+Diablo. Keep the industry depth, introduce key games/studios/systems in context,
+and make directly linked chapters understandable without a gaming primer.
+`docs/sanctuary/AUDIENCE_AND_CONTEXT.md` records the researched wider economic
+and social frame, bounded non-gaming comparisons and 21-chapter introduction
+audit. This supersedes the earlier veteran/D2 audience assumption. The brief
+guides the ongoing local copy pass; it is not a completed manuscript revision.
+
+Sanctuary design system, 2026-10-02: `docs/sanctuary/DESIGN_SYSTEM.md` is the
+canonical design reference for the reader and its Stepanoskin relationship.
+`docs/sanctuary/design-system/index.html` is an offline visual specimen with
+scoped palettes, type, controls and an optimized capture of the approved
+original opening. The opening's woodblock terrain, architecture, pines and
+living atmosphere are the latest illustration quality reference; later
+chapters still need that detail/coherence pass. The document maps accepted
+editorial and visual rules to current code and motion/media budgets. This is
+a local design capture during copy editing, not a deployment status update.
+Opening and manuscript revision, 2026-10-03: lead with BG3 versus D4 as different
+ways of building, selling and sustaining a replayable RPG. Explain Larian and
+Blizzard, the games' activities, class/build and campaign in place. Then locate
+the duality inside D4: a campaign with resolution alongside an ongoing seasonal
+program. The book/continuing-series analogy describes expectations about scope
+and who sets the timetable, not legal ownership. Some returning boxed-game
+players may feel that tension without making another purchase. Do not turn
+these overlapping emphases into exclusive modes or artistic rankings.
+ExperienceFork now has Two games / Inside Diablo IV / Player expectations views;
+FundingDiagram compares a substantial release, an expansion and ongoing offers.
+Both still use the existing lightweight controls/geometry. The illustration stays
+before the prose; the first diagram follows paragraph 4, funding follows 7.
+The internal opening capture now shows D4's campaign selector.
+The 21 chapters received a first-mention/context pass. Detailed D2 replayability,
+box/expansion and ladder history moved to Several histories at once; digital
+costs and Netflix's historical delivery change now sit beside it. The funding
+chapter distinguishes old-game sales to new buyers from existing-player spend,
+adds Adobe's subscription comparison, and treats eight years as a hypothetical
+financing interval. Social-third-place research informs motivation; bounded
+non-gaming comparisons appear in the transaction chapters. The ending returns
+to the opening question and funduck's actual return problem. Six primary sources
+were added with paragraph citations; all 21 stable IDs and seven parts remain.
+Replayability and duration never establish a payment model. BG3's updates and
+paid editions prevent a false frozen-product comparison; D4 seasonal play does
+not require cosmetic purchases, and seasonal characters can follow the campaign.
+Historical plans remain dated, including D4's August 2022 commercial design.
+Date D2 seasonal ladder characters to patch 1.10 (28 October 2003), not the first
+leaderboard. D1's Tristram Cathedral and D2's Rogue Monastery are different places.
+No cinematic budget, private financing history or inevitable evolution is claimed.
+The design reference and visual specimen are now version 1.3.
+
 Sanctuary reader, 2026-10-01: `/stepanoskin/game-monetization` serves the
 illustrated overview; `?chapter=<stable-id>` directly addresses any of 21
 chapters in seven parts. Server rendering sends only the selected chapter and
 its image metadata. The English editorial edition includes primary-source notes,
 21 individually composed original plates, 20 interactive exhibits and a documented
 timeline, plus native contents/inspection dialogs. The plates draw on Loopforge’s
-console materials and controlled mischief; see `docs/sanctuary/VISUAL_DIRECTION.md`. A local-only research execution mode adds 23 optimized reference
-images and native zoom, requiring an ignored archive. It cannot be enabled in
-production/Vercel or by browser parameters. Publisher binaries and the public
-Sanctuary pack have been withdrawn from the active deployment. The cover uses an
+console materials and controlled mischief; see `docs/sanctuary/VISUAL_DIRECTION.md`. The public editorial pack now adds 24 selected publisher images and native zoom.
+The ignored archive is only a source-work convenience; its separate endpoint
+cannot be enabled in production/Vercel or by browser parameters. The cover uses an
 original procedural devil; ambient fire, embers and shared clang/motion controls
 restore the presentation atmosphere. Navigation uses the six existing locales; body prose is explicitly
 labeled English pending editorial approval and translation. Unknown chapter IDs
@@ -548,8 +612,8 @@ Test surface:
 - The access exhibit separates ownership from readiness in either order. It
   does not imply that an expansion must be bought before its gameplay
   prerequisites can be completed.
-- Asset versioning, original-only public media and the local research boundary
-  are unchanged. ESLint excludes generated `.next-research` output alongside
+- Historical state for this atmosphere change: original-only public media was
+  retained then; the 3 October editorial selection above supersedes that rule. ESLint excludes generated `.next-research` output alongside
   `.next`; source files in research routes remain linted.
 - Editorial sources, interpretation boundaries and methods are summarized in
   `docs/sanctuary/LITERATURE_PASS.md`.

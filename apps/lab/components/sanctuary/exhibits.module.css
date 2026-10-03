@@ -28,6 +28,8 @@
   color: var(--brass);
 }
 .kicker button {
+  min-height: 44px;
+  min-width: 44px;
   background: none;
   border: 0;
   color: #cfcca9;
@@ -110,7 +112,8 @@
   background: #03080bee;
   backdrop-filter: blur(6px);
 }
-.inspector > svg {
+.inspector > svg,
+.inspector > [data-plate] {
   display: block;
   width: 100%;
   min-width: 720px;
@@ -233,6 +236,72 @@
 .choices button {
   flex: 1 1 auto;
   min-width: 80px;
+}
+.departurePlayer {
+  max-width: 440px;
+  margin: 30px auto 0;
+  padding: 22px;
+  text-align: center;
+  border: 1px solid #a9946480;
+  background: radial-gradient(ellipse at top, #a9946422, transparent), #172528;
+}
+.departurePlayer > span,
+.departureComparison small {
+  display: block;
+  color: var(--brass);
+  font: 9px/1.7 Arial, sans-serif;
+  letter-spacing: .09em;
+  margin-bottom: 12px;
+}
+.departurePlayer > p {
+  font: 20px/1.4 Georgia, serif;
+  color: var(--paper);
+}
+.departureBranches {
+  display: flex;
+  height: 39px;
+  width: 52%;
+  margin: auto;
+}
+.departureBranches > span {
+  width: 50%;
+  border-bottom: 1px solid var(--brass);
+}
+.departureBranches > span:first-child { border-right: 1px solid var(--brass); }
+.departureComparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+.departureComparison > section {
+  position: relative;
+  padding: 27px 23px;
+  border: 1px solid #bfa36c65;
+  background: linear-gradient(150deg, #6f563d25, transparent), #182426;
+}
+.departureComparison > section:last-child {
+  border-color: #89bfb065;
+  background: linear-gradient(150deg, #3a7f7325, transparent), #162629;
+}
+.departureComparison > section:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -1px;
+  height: 12px;
+  border-left: 1px solid var(--brass);
+}
+.departureComparison > section:last-child small { color: var(--teal); }
+.departureComparison h3 { margin: 0 0 15px; }
+.departureComparison p { min-height: 110px; }
+@media (max-width: 540px) {
+  .departureComparison { grid-template-columns: 1fr; }
+  .departureComparison > section { padding: 23px 19px; }
+  .departureComparison p { min-height: 0; }
+  .departureBranches { width: 1px; height: 24px; background: var(--brass); }
+  .departureBranches > span { display: none; }
+  .departureComparison > section:before { display: none; }
 }
 .exhibit .readout {
   position: relative;
@@ -1051,6 +1120,7 @@
   margin: 7px 0 14px;
 }
 .labControls input {
+  min-height: 44px;
   display: block;
   width: 100%;
   accent-color: #adcaab;

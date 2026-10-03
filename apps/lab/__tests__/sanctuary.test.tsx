@@ -4,7 +4,7 @@ import { PriceLab, ProbabilityLab } from "@/components/sanctuary/Experiments";
 import { appendix, chapters, parts, sources } from "@/lib/sanctuary/content";
 import { chapterHref, successProbability } from "@/lib/sanctuary/types";
 import { parseManifest } from "@/lib/assets/types";
-import rawManifest from "@/lib/assets/generated/sanctuary.json";
+import rawManifest from "@/lib/assets/generated/sanctuary-editorial.json";
 import { readerCopy } from "@/lib/sanctuary/ui";
 import { locales } from "@/app/(stepanoskin)/stepanoskin/translations";
 import landingManifest from "@/lib/assets/generated/stepanoskin.json";
@@ -32,7 +32,7 @@ Object.defineProperty(window, "matchMedia", {
 });
 jest.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(null);
 jest.mock("next/navigation", () => ({ useRouter: () => ({ refresh }) }));
-const manifest = parseManifest(rawManifest, "sanctuary");
+const manifest = parseManifest(rawManifest, "sanctuary-editorial");
 const navigation = chapters.map(({ id, title, part }) => ({ id, title, part }));
 const props = {
   locale: "en" as const,
@@ -99,7 +99,7 @@ describe("Sanctuary reader", () => {
       screen.getAllByText("English editorial edition").length,
     ).toBeGreaterThan(0);
   });
-  it("uses original art by default and offers no public research switch", () => {
+  it("combines credited publisher images with original art in the public edition", () => {
     const { container } = render(
       <Reader {...props} current={chapters[0]} index={0} />,
     );
@@ -109,10 +109,12 @@ describe("Sanctuary reader", () => {
         "Original procedural scene · illustrative, not a game capture",
       ),
     ).toBeVisible();
-    expect(container.querySelectorAll("img")).toHaveLength(0);
+    expect(container.querySelectorAll("img")).toHaveLength(chapters[0].figures!.length);
+    expect(screen.getAllByRole("link", { name: /Source & use/ })).toHaveLength(chapters[0].figures!.length);
+    expect(screen.getByRole("link", { name: /Rights & credits/ })).toHaveAttribute("href", "/stepanoskin/game-monetization/credits");
     expect(container.querySelector("main")).toHaveAttribute(
       "data-media-mode",
-      "original",
+      "editorial",
     );
     expect(screen.queryByText(/INTERNAL REFERENCE/)).not.toBeInTheDocument();
   });
@@ -161,7 +163,6 @@ describe("Sanctuary reader", () => {
         {...props}
         current={current}
         index={2}
-        research
         sources={sources.filter((s) => current.sources.includes(s.id))}
       />,
     );

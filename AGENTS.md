@@ -8,6 +8,7 @@ Always read the current project memory before architectural or code work:
 4. `docs/AGENT_OPERATING_PROCEDURES.md`
 5. `docs/CANONICAL_DOMAINS.md`
 6. `docs/MONOREPO_PARALLEL_WORKFLOW.md`
+7. `docs/DESIGN_AND_PERFORMANCE_STANDARDS.md` before visual/UI work in any app or project.
 
 These files are the repo-level memory for structure, layout, key components, auth, experiments, analytics, frontend/backend contracts, domains, and working patterns.
 `docs/AGENT_OPERATING_PROCEDURES.md` is the explicit process authority for Susie's end-to-end change delivery workflow.

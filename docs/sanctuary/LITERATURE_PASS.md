@@ -7,13 +7,38 @@ received a separate cross-chapter audit and an authorial edit.
 
 ## The argument
 
-Begin with a returning player: possessions can survive while the occasion for
-using them moves on. Compare the invitation to return across six games, then
-separate progress in a character, an account and a person. Commercial history
-shows that payment and play were being tuned together in cabinets and text
-worlds long before contemporary shops. Concord introduces population as part
-of a multiplayer product; the Outer Wilds prototype shows a test changing a
-specific design decision.
+Opening rebuilt 3 October 2026: BG3 and D4 provide two contemporary ways of
+building, selling and sustaining a lasting role-playing game. Introduce their
+makers and activities before comparing the commercial relationship. Then find
+the duality inside D4: its campaign and its ongoing seasonal program. The book
+and continuing-series analogy makes expectations about scope, completion and
+pace visible. It is bounded interpretation, not legal ownership advice or a
+universal claim about veteran players. Replayability belongs on both sides.
+
+The accepted audience brief is now integrated as a first-mention/context pass
+across all 21 chapters. D2 history moves into Several histories at once, alongside
+digital economics and Netflix's delivery example. The funding chapter adds
+Adobe and contrasts Larian's 2025 production decision with Blizzard's dated
+seasonal plan. Motivation adds online-third-place research. Familiar products
+supply selective comparisons in later chapters. The conclusion reconnects the
+business model to an evening a particular player wants to have.
+
+New primary sources are recorded in content.ts under bg3-patch8, bg-lineage,
+digital-economics, netflix-2007, adobe-2013 and third-places, with paragraph
+citations and limits. See AUDIENCE_AND_CONTEXT.md for the broader research map.
+The original illustration remains intact; the comparison instrument now has
+Two games / Inside Diablo IV / Player expectations views. The commercial
+instrument compares release, expansion and ongoing offers. This is a local
+editorial draft, pending the owner's continued copy review.
+
+The funding chapter now introduces the user's multi-year funding question:
+how does a studio support operations and the next major release? It distinguishes
+new buyers of older games, expansion sales, purchases by existing players,
+portfolio revenue, reserves and external funding. The eight-year interval remains
+illustrative; release intervals alone do not establish title-level financing.
+Further work on Blizzard's internal service/design lineage needs financial and
+production evidence, without claiming D4 was inevitable or that D2 owners paid
+repeatedly.
 
 The middle follows what people want from a session and what reward systems
 actually change. SDT, Yee, Koster, MDA and Juul supply different lenses, without
@@ -27,6 +52,74 @@ acquisition routes and Diablo III's auction-house closure. CAD pack arithmetic
 leads into catalog access and claim requirements, then into comprehension of
 the complete offer. The final chapter returns to funduck and the difference
 between recording behavior and understanding a worthwhile evening.
+
+## Targeted opening source check — 2 October 2026
+
+- [Blizzard, Diablo II: The story so far](https://news.blizzard.com/en-us/article/23725427/diablo-ii-the-story-so-far)
+  connects the original hero and Dark Wanderer. The Tristram Cathedral and
+  Rogue Monastery are separate places; continuity is narrative and design.
+- [GOG, Diablo + Hellfire](https://www.gog.com/en/game/diablo)
+  documents the 1997 expansion's class/area additions and separate developer.
+  Mention its extension of the original design without claiming canonical
+  story ancestry or Blizzard authorship.
+- [Blizzard, Season of Hell's Legacy](https://news.blizzard.com/en-us/article/24295394/celebrate-30-years-of-diablo-in-season-of-hell-s-legacy)
+  documents September 2026 anniversary encounters with echoes of the Prime
+  Evils at familiar locations, including Tristram Cathedral. Its Rebirth section
+  also means a level-one seasonal start need not mean a newly created identity.
+
+- [Erich Schaefer, Diablo II postmortem (October 2000)](https://www.gamedeveloper.com/design/postmortem-blizzard-s-i-diablo-ii-i-)
+  provides direct designer testimony about skill-tree experimentation,
+  replayability, cinematic acts and keeping Battle.net free. The opening's
+  short quotation comes from the character skill-tree section. No cinematic
+  cost is invented; the full development history is not reducible to story.
+- [Blizzard's 2020 retrospective](https://news.blizzard.com/en-gb/article/23460551/diablo-ii-continues-to-inspire-blizzard-20-years-later)
+  documents acts and the original five classes plus the expansion's two.
+- [Lord of Destruction FAQ](https://classic.battle.net/diablo2exp/faq/expansion.shtml)
+  establishes additional ownership and the fifth act, classes and equipment.
+  “Everything included” means the purchased release's content available through
+  play, not all future releases or immediate access to earned items.
+
+- [GameSpot, Diablo II patch released (28 October 2003)](https://www.gamespot.com/articles/diablo-ii-patch-released/1100-6077473/)
+  reports Blizzard's release announcement and identifies seasonal ladder
+  characters among patch 1.10's additions. This dates the seasonal character
+  system, not Diablo II's first leaderboard. The dated source is contemporary
+  reporting; the operating rules below come from Blizzard's documentation.
+- [Blizzard's Ladder FAQ](https://classic.battle.net/diablo2exp/faq/ladder.shtml)
+  explains the ranking. Define ladder, fresh economy and end-of-season transfer
+  instead of assuming that someone who played Diablo II used its online modes.
+- [Blizzard, The Arreat Summit: Character Types](https://classic.battle.net/diablo2exp/basics/charactertypes.shtml)
+  and [Difficulty Levels](https://classic.battle.net/diablo2exp/basics/difficulty.shtml):
+  D2 already had shared ladder restarts; each character advanced through
+  repeated difficulties. These legacy sources establish the veteran reader's
+  reference point, not current Resurrected rules or a first-invention date.
+- [Blizzard's 2026 realm and campaign guide](https://news.blizzard.com/en-us/article/24267729/prepare-for-the-reckoning-lord-of-hatred-draws-near),
+  *Battle Hatred on Seasonal or Eternal Realm*: campaigns can be played in
+  either realm, with campaign skipping when eligible. Campaign versus season
+  is therefore an experiential comparison of overlapping structures, not the
+  mutually exclusive choice presented by the realm selector. Avoid implying
+  that every season has identical content or skip prerequisites.
+- [Hunicke, LeBlanc and Zubek, MDA (2004)](https://www.cs.northwestern.edu/~hunicke/MDA.pdf),
+  pp. 2–3: begins with the player's experience and recognizes combinations of
+  pleasures. The framework and mechanics/dynamics explanation remain in
+  *Anatomy of a loop*; the opening now uses concrete Diablo design history.
+- [Blizzard's August 2022 update](https://news.blizzard.com/en-us/article/23816415/diablo-iv-quarterly-updateaugust-2022):
+  Piepiora's *Seasons* section supplies the seasonal rationale; the opening
+  retains a short quotation from Clark's *Battle Pass* section. These are
+  pre-launch design intentions, not proof of
+  player motives, financial performance or current-season policy.
+- [Juul, The Open and the Closed (2002)](https://jesperjuul.net/text/openandtheclosed.html):
+  authored sequences and variation from interacting rules can coexist. That
+  distinction does not map directly onto campaign versus seasons: campaigns
+  also have systemic play, while seasons can contain authored stories. Keep
+  this theory in the later encounter comparison instead of adding jargon to
+  the introduction.
+
+The resulting sequence is experience → design → offer → business question.
+This is an editorial order, not a claim that every studio develops in that
+order. The opening's interpretation is identified in its evidence note; quotes
+have paragraph-level citations and source sections. Progression and its link
+to the campaign now appear in *Anatomy of a loop*, after the concrete game
+comparisons and motivation chapters have prepared the reader.
 
 ## Literature added or closely revisited
 

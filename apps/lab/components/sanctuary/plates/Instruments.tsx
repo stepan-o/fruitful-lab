@@ -1,63 +1,60 @@
 import { useState } from "react";
 import { Choices, Readout, Scope, Wire, Node } from "./Controls";
-import { brass, teal, Halo, Person, Relic, Label, Gear } from "./Engraving";
+import { brass, teal, Relic, Label, Gear } from "./Engraving";
 import s from "../exhibits.module.css";
 
-export function Transaction() {
-  const [v, set] = useState(0);
-  const modes = [
-    [
-      "A payment",
-      "Access to the purchased scope",
-      "The boundary of the purchase.",
-    ],
-    ["Renewal", "Access for another period", "What stops when renewal stops?"],
-    ["Another payment", "A particular good", "What does this good change?"],
-    [
-      "Attention",
-      "A funded experience or optional reward",
-      "What is watched, and what is optional?",
-    ],
+export function ExperienceFork() {
+  const [lens, setLens] = useState(0);
+  const lenses = [
+    {
+      question: "What kind of lasting game is the studio building?",
+      leftLabel: "BALDUR’S GATE 3", rightLabel: "DIABLO IV",
+      leftTitle: "Explore a substantial work", rightTitle: "Join a continuing program",
+      campaign: "A branching adventure makes room for different choices and characters within the purchased game. Support and updates can extend the release.",
+      seasonal: "A campaign sits alongside seasons, expansions and optional shop offers. The studio keeps supplying occasions to play and things to buy.",
+      point: "Both can sustain years of enjoyment. The distinction concerns what the studio keeps producing and selling, rather than how long a player stays.",
+    },
+    {
+      question: "How does the same game make both invitations?",
+      leftLabel: "DIABLO IV · CAMPAIGN", rightLabel: "DIABLO IV · SEASONS",
+      leftTitle: "Follow the adventure", rightTitle: "Begin another run",
+      campaign: "Events and encounters carry a character toward a story’s resolution. The player can still pursue other goals afterward.",
+      seasonal: "A shared cycle renews goals and conditions around a level-one start. Eligible players can skip the campaign or choose to follow it.",
+      point: "These structures overlap. A seasonal character can play the campaign, and joining a season does not require a cosmetic purchase.",
+    },
+    {
+      question: "Whose timetable organizes the next visit?",
+      leftLabel: "THE PURCHASED BOOK", rightLabel: "THE CONTINUING SERIES",
+      leftTitle: "Return when it suits me", rightTitle: "Follow what arrives next",
+      campaign: "I know the scope of the work I bought. I can finish it, put it aside and revisit its possibilities at my own pace.",
+      seasonal: "New releases give me occasions to return. Shared dates can bring friends together, while timed goals may compete with other plans.",
+      point: "This is an analogy about expectations. Inside Diablo IV, wanting to finish an existing adventure can meet a calendar already pointing toward the next beginning.",
+    },
   ];
+  const view = lenses[lens];
   return (
     <>
-      <Choices
-        label="Transaction type"
-        items={["Purchase", "Subscription", "Item shop", "Advertising"]}
-        value={v}
-        onChange={set}
-      />
-      <Scope
-        label={`The player gives ${modes[v][0]} and receives ${modes[v][1]}`}
-      >
-        <Halo x={130} y={166} r={82} />
-        <Person x={130} y={140} s={0.8} />
-        <Node x={620} y={165} label="THE GAME" sub="a specific promise" />
-        <Wire d="M217 135H531" />
-        <Wire d="M531 207H217" />
-        <path
-          d="M517 126l14 9l-14 9M232 198l-15 9l15 9"
-          fill="none"
-          stroke={teal}
-          strokeWidth="3"
-        />
-        <Label x={374} y={113} tone={brass}>
-          {modes[v][0]}
-        </Label>
-        <Label x={374} y={245} tone={teal}>
-          {modes[v][1]}
-        </Label>
-        <Label x={130} y={287} size={16}>
-          THE PLAYER
-        </Label>
-      </Scope>
-      <Readout tag="READ THE CONTRACT">
-        {modes[v][2]}{" "}
-        <strong>The exchange changes when the business model changes.</strong>
-      </Readout>
+      <p className={s.instruction}>Compare the two products, then find the same tension inside Diablo IV.</p>
+      <Choices label="Explore the fork" items={["Two games", "Inside Diablo IV", "Player expectations"]} value={lens} onChange={setLens}/>
+      <div className={s.departurePlayer}><span>THE FORK</span><p>{view.question}</p></div>
+      <div className={s.departureBranches} aria-hidden="true"><span/><span/></div>
+      <div className={s.departureComparison}>
+        <section>
+          <small>{view.leftLabel}</small>
+          <h3>{view.leftTitle}</h3>
+          <p>{view.campaign}</p>
+        </section>
+        <section>
+          <small>{view.rightLabel}</small>
+          <h3>{view.rightTitle}</h3>
+          <p>{view.seasonal}</p>
+        </section>
+      </div>
+      <Readout tag="READ THE DISTINCTION">{view.point}</Readout>
     </>
   );
 }
+
 const promises = [
   [
     "Baldur’s Gate 3",

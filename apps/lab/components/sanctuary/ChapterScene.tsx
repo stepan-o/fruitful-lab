@@ -16,7 +16,7 @@ export default function ChapterScene({
   useEffect(() => {
     if (expanded) dialog.current?.showModal();
   }, [expanded]);
-  const label = `${art.title}. ${art.read}`;
+  const label = art.alt ?? `${art.title} ${art.read}`;
   return (
     <figure className={styles.scene}>
       <div className={styles.kicker}>
@@ -31,16 +31,16 @@ export default function ChapterScene({
           Inspect ↗
         </button>
       </div>
-      <ScenePlate chapter={chapter} index={index} label={label} />
+      <ScenePlate chapter={chapter} index={index} label={label} motionPaused={expanded} />
       <figcaption>
-        <p className={styles.reference}>{art.reference}</p>
+        {art.reference ? <p className={styles.reference}>{art.reference}</p> : null}
         <h2>{art.title}</h2>
         <p>{art.read}</p>
-        <ul className={styles.motifs}>
+        {art.motifs?.length ? <ul className={styles.motifs}>
           {art.motifs.map((m) => (
             <li key={m}>{m}</li>
           ))}
-        </ul>
+        </ul> : null}
         <small>
           Original procedural scene · illustrative, not a game capture
         </small>

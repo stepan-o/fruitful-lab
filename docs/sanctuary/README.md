@@ -4,7 +4,20 @@ Public route: `/stepanoskin/game-monetization`. Chapter links append
 `?chapter=<stable-id>`; an unknown ID returns 404. The route is rendered by the
 Lab app, without authentication or backend dependencies.
 
+Design reference: [Sanctuary design system](DESIGN_SYSTEM.md) and the
+[visual reference sheet](design-system/index.html). Version 1.3 captures the
+approved local opening illustration, materials, typography, component states,
+editorial rules and motion/performance contracts. Later chapters are still
+adopting the opening's latest level of detail; this is not a publication marker.
+
 ## Content contract
+
+Audience direction, revised 3 October 2026: the essay keeps its industry depth
+while introducing key games, organizations and systems for readers unfamiliar
+with games. See [Audience and wider context](AUDIENCE_AND_CONTEXT.md) for the
+research brief, bounded comparisons and chapter-level introduction audit. An initial pass now reaches all 21 chapters. The opening compares BG3 and D4,
+then the campaign/seasonal duality inside D4; history, funding and motivation
+carry the wider context. This edition is prepared for PR review; prose remains open to iteration.
 
 `apps/lab/lib/sanctuary/content.ts` contains 21 self-contained chapters in seven
 parts, source notes, figures and ten closing rules. `types.ts` owns the chapter
@@ -35,43 +48,37 @@ unverified. Important boundaries:
 - Prototype and promotional images are labeled. Publisher imagery remains
   publisher-owned; it is not a newly licensed reusable artwork library.
 
-## Original public edition and internal research mode
+## Public editorial edition and optional source archive
 
-Public and production pages render our own procedural mosaic devil, original
-scene illustrations and chapter-specific diagrams. Every chapter requires a
-`visual` definition in `lib/sanctuary/visual-content.ts`: one original scene, one
-diagram and a research screenshot reference. The original plate’s recognition cues
-and caption live in `lib/sanctuary/art-direction.ts`; 21 compositions and bespoke
-exhibits are implemented in `components/sanctuary/plates/`. See
-[the visual direction](VISUAL_DIRECTION.md) for the Loopforge reference study,
-chapter-by-chapter plan and interaction boundaries. Original scenes are clearly labeled
-as illustrations, not game captures. The Lilith promotional art is inside the
-first chapter of the internal edition, never on the public cover.
+The normal route shows the original mosaic devil, 21 original scene studies,
+interactive diagrams and all 24 selected publisher images. The opening juxtaposes
+BG3 and D4 key art, then preserves the approved animated original diptych. No
+research flag, cookie or special URL is required to see screenshots.
 
-The research edition is an explicit **local development execution mode**. It
-cannot be enabled through a public switch, URL or cookie. Its server policy
-requires all three: `STEPANOSKIN_RESEARCH_MODE=1`, `NODE_ENV=development`, and
-no `VERCEL` environment. Production and Vercel previews always use original art.
+The public [rights and credits page](/stepanoskin/game-monetization/credits)
+links each image to its source, owner and editorial use. See the
+[media-rights review](EDITORIAL_MEDIA_RIGHTS.md) for the publication decision;
+source quotations are versioned locally, not fetched at runtime.
 
-From `apps/lab`, run `npm run research:dev`, then open
-`http://127.0.0.1:3101/stepanoskin/game-monetization`. It binds to loopback, uses
-`.next-research/` separately from normal development, and checks the archive
-before starting. GTM is disabled in this execution mode. The reader has no
-commerce or platform integrations; source links remain ordinary explicit links.
-Do not expose or tunnel this local server to the internet.
+`lib/sanctuary/editorial-media.json` controls selection. From `apps/lab`, run
+`npm run assets:publish-editorial` after an explicit record review. It copies
+selected optimized files from the optional source archive, adds 480px variants,
+writes an immutable `sanctuary-editorial` manifest, verifies it and moves the
+short-cached pointer last. Normal builds use committed public files and do not
+require the private archive. Only current-chapter asset metadata is serialized.
+The opening pair is prioritized; other figures load lazily and inspection masters
+mount only when requested. Every chapter retains its original illustration.
 
-Publisher files live only in the gitignored `apps/lab/assets/research/` archive.
-The compiled manifest contains metadata, not image bytes. Production file
-tracing excludes the archive too. Only the local research route
-`/research-media/<sha256>.webp` can read it, with `private, no-store`, edge
-`no-store` and `noindex, noarchive` headers. It accepts only exact hashed WebP
-filenames and returns 404 outside research mode. Public image URLs and the
-public Sanctuary manifest/pointer have been removed.
+The ignored `assets/research/` archive remains useful for source masters and
+future unselected candidates. Its loopback-only `research:dev` command and
+`/research-media/<hash>.webp` endpoint retain their environment guards, but the
+reader itself now uses the same public selection. This is no longer an alternative
+screenshot edition. An import into the archive does not publish it automatically.
 
 On another workstation, install the archive explicitly:
 
 ```sh
-npm run research:import -- /path/to/sanctuary-assets /path/to/concord-reveal.jpg
+npm run research:import -- /path/to/sanctuary-assets /path/to/concord-reveal.jpg /path/to/bg3-key-art.jpg
 npm run research:dev
 ```
 
@@ -89,16 +96,17 @@ withdrawal is an exception to the usual append-only public asset retention rule.
 
 ## Media and performance
 
-The optional internal pack now contains 23 research images and 50 optimized WebP
-variants totaling 6,047,804 bytes. `asset-provenance.json` records original hashes,
-dates, credits and source URLs without publishing local user paths. Source
-originals and the wider gallery remain outside the repository. Public pages
-request none of these images. `assets:check` rejects any research variant found
-under `public/` and verifies the local archive when installed.
+The public editorial pack contains 24 images and 76 optimized WebP
+variants totaling 6,964,936 bytes across the entire library, not a page load.
+`asset-provenance.json` records original hashes, dates and source URLs. The
+publication register adds each image's analytical purpose and rights assessment.
+`assets:check` verifies public hashes and reviewed selection, and the optional
+archive when installed. The smallest variant for every image is 480 pixels wide.
 
-The server sends only the current chapter, navigation titles, cited sources and,
-in research mode, that chapter's image metadata. Research images use exact-width
-native `srcset`, lazy loading and on-demand full-size zoom. Navigation disables
+The server sends only the current chapter, navigation titles, cited sources and
+that chapter's selected image metadata. Native `srcset` selects exact widths;
+below-fold figures load lazily and full-size inspection mounts on demand.
+Navigation disables
 bulk chapter prefetching. Original scenes and diagrams use SVG/HTML geometry;
 the mosaic shares its geometry across glitch bands with SVG `use` elements.
 There is no new chart or animation dependency. Plate inspection mounts enlarged
@@ -106,8 +114,13 @@ geometry only on demand; deterministic integer noise avoids hydration drift.
 Twenty exhibits have purposeful controls; Concord retains a documented timeline.
 The loot and price models are integrated into their exhibits, not duplicated.
 
-The ambient fire/ember canvas caps pixel density at 1.5, particles at 64 and
-rendering near 30 fps. It stops while the document is hidden. Shared signal
+The ember canvas caps pixel density at 1.5, particles at 64 and rendering near
+30 fps. The separate WebGL hearth uses a backbuffer no larger than 960×256 and
+a heat field no larger than 512×192; its restrained fire fringe appears only
+at the actual document end. The opening plate adds a separate atmospheric
+canvas capped at 960×566 and 30 fps over static vector geometry. Its cached
+sprites initialize only when visible, and its loop stops offscreen or behind
+the inspector. These renderers stop while the document is hidden. Shared signal
 tears stop offscreen and follow the landing's moderated timing. Reduced-motion
 preferences and the reader's persistent motion control disable animations.
 Sound and motion preferences are shared with the landing page. Chapter activation

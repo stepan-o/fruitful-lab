@@ -562,6 +562,37 @@
           "height": 900
         }
       ]
+    },
+    "bg3-official-key-art": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/4ea1807852921f78bfe3e0a749b5f9575c7dc520bccc8574e84d3e9be95552dc.webp",
+          "mime": "image/webp",
+          "bytes": 31478,
+          "sha256": "4ea1807852921f78bfe3e0a749b5f9575c7dc520bccc8574e84d3e9be95552dc",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/77c75b0d43b845dc1f40f29fc1ab537dbc29c03ef88e77c72b57db1ef6461aa9.webp",
+          "mime": "image/webp",
+          "bytes": 99752,
+          "sha256": "77c75b0d43b845dc1f40f29fc1ab537dbc29c03ef88e77c72b57db1ef6461aa9",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/5de4174a26b452ca1fe740d772420f11b1676f4cad822540a3a11c30218bbcac.webp",
+          "mime": "image/webp",
+          "bytes": 307962,
+          "sha256": "5de4174a26b452ca1fe740d772420f11b1676f4cad822540a3a11c30218bbcac",
+          "width": 1920,
+          "height": 1080
+        }
+      ]
     }
   }
 }

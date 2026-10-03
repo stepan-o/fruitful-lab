@@ -10,6 +10,8 @@ export type Figure = {
   alt: string;
   caption: string;
   credit: string;
+  sourceUrl?: string;
+  placement?: "opening";
 };
 export type Panel = {
   title: string;

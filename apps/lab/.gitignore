@@ -40,6 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Publisher reference media is local-only; never deploy or publish it again.
+# Source masters stay local. Publish reviewed derivatives through the editorial asset tool.
 /assets/research/
 /.next-research/

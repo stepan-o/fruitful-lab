@@ -1,0 +1,236 @@
+{
+  "responsive": [
+    {
+      "media": 0,
+      "pageWidth": 1420,
+      "paths": 309,
+      "targets": [
+        {
+          "height": 44,
+          "width": 69
+        },
+        {
+          "height": 134,
+          "width": 608
+        },
+        {
+          "height": 134,
+          "width": 608
+        },
+        {
+          "height": 150,
+          "width": 608
+        },
+        {
+          "height": 134,
+          "width": 608
+        },
+        {
+          "height": 44,
+          "width": 59.546875
+        },
+        {
+          "height": 44,
+          "width": 74.046875
+        }
+      ],
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "media": 0,
+      "pageWidth": 748,
+      "paths": 309,
+      "targets": [
+        {
+          "height": 44,
+          "width": 69
+        },
+        {
+          "height": 134,
+          "width": 608
+        },
+        {
+          "height": 134,
+          "width": 608
+        },
+        {
+          "height": 150,
+          "width": 608
+        },
+        {
+          "height": 134,
+          "width": 608
+        },
+        {
+          "height": 44,
+          "width": 59.546875
+        },
+        {
+          "height": 44,
+          "width": 74.046875
+        }
+      ],
+      "width": 768,
+      "violations": []
+    },
+    {
+      "media": 0,
+      "pageWidth": 370,
+      "paths": 309,
+      "targets": [
+        {
+          "height": 44,
+          "width": 69
+        },
+        {
+          "height": 117,
+          "width": 322
+        },
+        {
+          "height": 117,
+          "width": 322
+        },
+        {
+          "height": 117,
+          "width": 322
+        },
+        {
+          "height": 117,
+          "width": 322
+        },
+        {
+          "height": 44,
+          "width": 59.546875
+        },
+        {
+          "height": 44,
+          "width": 74.046875
+        }
+      ],
+      "width": 390,
+      "violations": []
+    },
+    {
+      "media": 0,
+      "pageWidth": 300,
+      "paths": 309,
+      "targets": [
+        {
+          "height": 44,
+          "width": 69
+        },
+        {
+          "height": 110,
+          "width": 264
+        },
+        {
+          "height": 110,
+          "width": 264
+        },
+        {
+          "height": 110,
+          "width": 264
+        },
+        {
+          "height": 110,
+          "width": 264
+        },
+        {
+          "height": 44,
+          "width": 59.546875
+        },
+        {
+          "height": 44,
+          "width": 74.046875
+        }
+      ],
+      "width": 320,
+      "violations": []
+    }
+  ],
+  "locales": [
+    {
+      "lang": "en",
+      "links": [
+        "Data Science \u2014 Professional CV",
+        "Game Monetization",
+        "Game Engines and LLMs",
+        "About"
+      ],
+      "width": 300
+    },
+    {
+      "lang": "fr",
+      "links": [
+        "Science des donn\u00e9es \u2014 CV professionnel",
+        "Mon\u00e9tisation des jeux",
+        "Moteurs de jeux et LLM",
+        "\u00c0 propos"
+      ],
+      "width": 300
+    },
+    {
+      "lang": "es",
+      "links": [
+        "Ciencia de datos \u2014 CV profesional",
+        "Monetizaci\u00f3n de videojuegos",
+        "Motores de juegos y LLM",
+        "Acerca de"
+      ],
+      "width": 300
+    },
+    {
+      "lang": "ru",
+      "links": [
+        "\u041d\u0430\u0443\u043a\u0430 \u043e \u0434\u0430\u043d\u043d\u044b\u0445 \u2014 \u041f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0435\u0437\u044e\u043c\u0435",
+        "\u041c\u043e\u043d\u0435\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u0438\u0433\u0440",
+        "\u0418\u0433\u0440\u043e\u0432\u044b\u0435 \u0434\u0432\u0438\u0436\u043a\u0438 \u0438 LLM",
+        "\u041e\u0431\u043e \u043c\u043d\u0435"
+      ],
+      "width": 300
+    },
+    {
+      "lang": "zh",
+      "links": [
+        "\u6570\u636e\u79d1\u5b66 \u2014 \u804c\u4e1a\u7b80\u5386",
+        "\u6e38\u620f\u5546\u4e1a\u5316",
+        "\u6e38\u620f\u5f15\u64ce\u4e0e\u5927\u8bed\u8a00\u6a21\u578b",
+        "\u5173\u4e8e\u6211"
+      ],
+      "width": 300
+    },
+    {
+      "lang": "th",
+      "links": [
+        "\u0e27\u0e34\u0e17\u0e22\u0e32\u0e01\u0e32\u0e23\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25 \u2014 \u0e1b\u0e23\u0e30\u0e27\u0e31\u0e15\u0e34\u0e01\u0e32\u0e23\u0e17\u0e33\u0e07\u0e32\u0e19",
+        "\u0e01\u0e32\u0e23\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49\u0e08\u0e32\u0e01\u0e40\u0e01\u0e21",
+        "\u0e40\u0e2d\u0e19\u0e08\u0e34\u0e19\u0e40\u0e01\u0e21\u0e41\u0e25\u0e30\u0e42\u0e21\u0e40\u0e14\u0e25\u0e20\u0e32\u0e29\u0e32\u0e02\u0e19\u0e32\u0e14\u0e43\u0e2b\u0e0d\u0e48",
+        "\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a"
+      ],
+      "width": 300
+    }
+  ],
+  "interactions": [
+    "Persistent pause and resume work across reloads.",
+    "Offscreen title animation is paused by its intersection observer.",
+    "Simulated hidden-page visibility suspends all animation.",
+    "CV keyboard activation and all three secondary route clicks work; Back restores the launcher.",
+    "OS reduced motion disables every animation."
+  ],
+  "warmLoad": "# Page Load Profile - http://127.0.0.1:3225/stepanoskin\n\n## Core Web Vitals\n  TTFB     51.6ms\n  LCP      268ms (span)\n  CLS          0\n  FCP      268ms\n\n## React Hydration - no data (requires React profiling build)",
+  "resources": {
+    "encodedBytes": 316316,
+    "images": 0
+  },
+  "errors": {
+    "errors": []
+  },
+  "freshBrowserLoad": {
+    "environment": "unthrottled localhost production build; fresh browser session",
+    "ttfbMs": 61,
+    "lcpMs": 228,
+    "fcpMs": 228,
+    "cls": 0
+  }
+}

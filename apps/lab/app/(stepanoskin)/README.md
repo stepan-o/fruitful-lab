@@ -1,5 +1,7 @@
 # Stepanoskin route group
 
+Landing design authority: [`docs/stepanoskin/DESIGN_GUIDELINES.md`](../../../../docs/stepanoskin/DESIGN_GUIDELINES.md). An almost empty white launcher with a centered procedural block-letter menu. Only DATA SCIENCE uses darker blocks; its professional-CV clarification sits beneath it; all other destinations are equal gray peers.
+
 This top-level App Router group holds public Stepanoskin pages in the Lab sandbox.
 Its layout inherits the app root layout and renders children without adding a shell.
 
@@ -10,11 +12,19 @@ Spanish, Russian, Mandarin Chinese, and Thai. English is the default; the
 visitor's explicit choice is saved in the versioned `stepanoskin_locale_v1`
 browser cookie so the server can render the selected language immediately.
 
-The landing is a lightweight personal project directory with Data Science &
-Production Systems, Sanctuary Economics (game monetization), and Loopforge.
-About links to a real localized placeholder at `/stepanoskin/about`; it contains
-no biographical claims. `directory-copy.ts` and `directory.module.css` own its
-six-language copy and editorial styling. It loads no factory artwork or effects.
+The landing uses a flat white canvas and a centered menu of original block-built
+lettering: DATA SCIENCE (professional CV), GAME MONETIZATION, GAME ENGINES AND
+LLMs, and ABOUT. Stepan Oskin is a slightly emphasized block title above the menu. `BlockWord.tsx` projects its small bitmap alphabet into aggregated front/depth
+paths per letter, exposing only outer depth faces. Baselines remain level. `launcher.module.css` owns the shared projection's colors,
+slight shadows, idle float, hover lift and short selection impact. Only the CV is
+near-black; other destinations share the same gray treatment. No image/font asset,
+3D library or drawing loop is needed. Geometry is decorative; real link labels,
+controls and hover/focus captions use the six-language `launcher-copy.ts`.
+Motion pauses while hidden/offscreen and respects reduced motion and the shared
+persistent preference. Selection reuses the shared clang; hover/focus are silent.
+Reduced-motion/manual pause remove the 170ms selection delay. Normal new-tab and
+modified-click behavior remain. Links do not prefetch the project readers.
+About retains its localized placeholder and separate directory styling.
 
 ## Loopforge entrance
 

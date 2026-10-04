@@ -1,13 +1,18 @@
 # Production systems profile — design guidelines
 
-Version 1.7 · 4 October 2026 · Mechanical Turk direction
+Version 1.8 · 4 October 2026 · Mechanical Turk direction
 
-Applies to `/stepanoskin/production-systems`. The owner accepted the revised
-engraved illustration as an improvement and selected the historical Mechanical
-Turk as the reference for focused polish passes. These guidelines define that
-direction. The first implementation adds eight procedural section studies and
-a shared motion lifecycle. Material and typography refinements below remain
-next-pass targets unless recorded in the implementation notes.
+Applies to `/stepanoskin/production-systems`. The owner accepted the opening
+illustration after its cabinet pass (PR #70). **That opening is now the visual
+quality standard for every later scene.** Preserve its coherent construction,
+engraved detail, restrained materials and meaningful motion. The seven later
+studies remain first-pass compositions awaiting their own focused refinements;
+their existence does not imply that they meet the accepted hero's finish.
+
+This pass extends the opening's muted deep green through the page's typography,
+links, navigation and controls, refines the belt's depth, adds signed lift values
+and introduces a synchronized experiment-pace selector. These changes establish
+the current page palette and behavior, not a historical restoration.
 
 [Visual reference sheet](reference.html) · [Profile brief and implementation evidence](../production-systems-profile.md)
 
@@ -115,46 +120,48 @@ systems should conceal human involvement.
 
 ## 4. Materials and color
 
-This is a **proposed digital palette**, not a sampled historical restoration.
-Preserve the existing light page. Add warmth primarily inside illustrations and
-small control details. As a composition guide, keep roughly three quarters of
-the reading surface as untextured paper and whitespace; use dark casework and
-accent pigments locally. This is an art-direction heuristic, not a fixed quota.
+The accepted machine supplies the page's material family. **Muted deep green is
+the principal highlight**, with a darker shade for headings, warm charcoal for
+prose and warm gray for supporting text. Walnut and brass support the instrument;
+they do not compete for the page's primary accent. Keep the reading surface light,
+untextured and spacious. This is our digital interpretation, not a sampled
+historical restoration; a source scan's tint is not material evidence.
 
-| Role / proposed token | Value | Use |
+| Role / token | Value | Use |
 | --- | --- | --- |
-| `--paper` | `#F4F2EB` | Existing page and reading surface |
-| `--ink` | `#222A29` | Existing principal text and structural contours |
-| `--muted` | `#59635F` | Existing supporting text |
-| `--walnut` | `#4B332A` | New cabinet recesses, selected control face, small framed exhibits |
-| `--wood-edge` | `#68483A` | New case edges and restrained grain inside artwork |
-| `--ivory` | `#E7DCC1` | New inlays, engraved labels and content on walnut |
-| `--brass` | `#78602C` | Existing readable brass text, links and focus on paper |
-| `--brass-light` | `#B9A274` | New metal edges and small highlights; decorative on paper |
-| `--oxblood` | `#793C3C` | New occasional emphasis or chosen decision; always paired with a label |
-| `--sage` | `#899584` | Proposed secondary pigment within artwork, not small text on paper |
+| `--paper` | `#F4F2EB` | Reading surface and quiet space around the machine |
+| `--ink` | `#403B31` | Warm charcoal body text |
+| `--muted` | `#6B6458` | Supporting text, metadata and captions |
+| `--accent` | `#4D6353` | Deep muted green: links, navigation, identifiers, primary action, selected pace and focus |
+| `--accent-deep` | `#344A3C` | Principal and section headings; primary-action hover |
+| `--sage` | `#7D866B` | Small decorative marks, borders and secondary pigment |
+| `--walnut` | `#68483A` | Casework family, with darker recesses inside the illustration |
+| `--ivory` | `#E7DCC1` | Inlay, paper register and readable text on the dark application section |
+| `--metal` | `#AE9365` | Small brass edges and fittings, not small text on paper |
+| `--brass` | `#78602C` | Readable supporting brass where needed; never the primary page accent |
+| `--dark` | `#2F3A2E` | Olive-green application section, with a related `#3B4535` inset surface |
+| `--line` | `#CEC7B6` | Quiet rules and separators |
+| Positive / negative lift | `#52694D` / `#87564B` | Subtle green / muted red-brown, always accompanied by a signed percentage |
 
-Contrast calculated from these solid sRGB values: ink/paper **13.10:1**,
-muted/paper **5.56:1**, brass/paper **5.34:1**, oxblood/paper **7.43:1**,
-ivory/walnut **8.53:1**. Sage/paper is **2.80:1**, so reserve it for decorative
-fills with stronger contours. Light brass on paper is also decoration, not body
-text or the sole boundary of an essential control. Check actual composited
-backgrounds when opacity, texture or hover states are introduced. W3C's normal
-text threshold is 4.5:1; nominal token contrast alone is not a full accessibility
-review. [S5]
+Solid sRGB contrast: ink/paper **9.93:1**, muted/paper **5.22:1**,
+accent/paper **5.81:1**, deep accent/paper **8.56:1**, ivory/dark **8.73:1**.
+Positive and negative lift inks have **5.38:1** and **5.41:1** contrast against
+paper before animation opacity. Sage/paper is **3.41:1**: reserve it for decoration
+and boundaries, not normal text. Light brass is also decorative on paper.
+Check actual composited backgrounds and fading states. W3C's normal text threshold
+is 4.5:1; token contrast alone is not a full accessibility review. [S5]
 
 Material hierarchy:
 
-1. Paper carries the prose and most of the page.
-2. Wood establishes an object's case, frame or supporting base.
-3. Ivory marks the surface that can be read or inspected.
-4. Brass joins, registers or adjusts parts; it is a functional accent.
-5. Oxblood supplies a very small warm focal point; sage recedes.
+1. Paper carries prose; green supplies editorial emphasis and orientation.
+2. Wood establishes a case, frame or supporting base, with board-directed grain.
+3. Ivory identifies a surface to read or inspect.
+4. Brass belongs to joints, bearings, controls and thin finished edges.
+5. Directional result color belongs to evidence; it does not certify a decision.
 
-Use short, directional grain inside wood only. Keep wear minimal. One lit edge
-and a darker recess are usually sufficient; avoid repeated shiny bevels. Paper
-must not acquire a noisy texture behind text. Colors in the blue-tinted museum
-scan are not a palette prescription.
+Keep wear minimal and surfaces matte. Build depth with a lit edge, an occluding
+surface and a darker recess. Avoid repeated shiny bevels, broad brass plates,
+unrelated accent colors or noisy texture behind the prose.
 
 ## 5. Illustration grammar
 
@@ -168,7 +175,7 @@ anchors. The conveyor is the chessboard work surface itself, supported by the
 same cabinet and brackets. Paired specimens keep A and B together as one unit;
 the outfeed reveals the uneven evidence they produce. Most estimates cluster near
 zero, with noise, some losses and a rare large positive effect. The hand
-works an attached lever with a brisk stamping gesture every 2.4 seconds; the
+works an attached lever with a brisk stamping gesture every 3 seconds at the default Medium pace; the
 belt, rollers and meshing drive run continuously through that gesture. Layer
 the chair and torso behind the tabletop, with only the forearms and hands
 crossing it. The body must never appear to emerge from the moving work surface.
@@ -179,29 +186,38 @@ should compete with this action.
 
 The result register is a physical paper roll attached to the case, not a
 floating dashboard. It presents synthetic estimates, approximate 95% intervals
-and two-sided normal-model p-values in arbitrary effect units. Small gray
+and two-sided normal-model p-values. Display effects as relative percentage lift;
+the internal plot coordinates use tenths of a percentage point. Scaling estimate
+and standard error equally preserves every p-value and interval position. Small gray
 annotations stay secondary to the distribution around zero. Most results are
 near zero, with noisy overlap and two negative results; one large positive breaks
 the pattern. The paper advances one row for each test: the result leaving the
 outfeed, entering the register and appearing in the smoke share one outcome.
 Use mild gray, oxblood and green row washes with matching interval marks,
 respectively; keep the paper and plot geometry dominant. Ten outcomes repeat
-every 24 seconds. This mix is an editorial choice, not an estimated industry
+every 30 seconds at Medium (24 seconds of shared animation time). This mix is an editorial choice, not an estimated industry
 success rate.
 
-P-values and verdicts emerge in clear gray italic lettering within faint smoke
-contours. Reach 96% opacity within 240 ms and hold through 2.16 seconds, then
-dissolve gradually. The text is 17/14 SVG units in #58615A; wisps are independently
-faint. Stagger emissions every 2.4 seconds, with at most three active plumes.
-The owner rejected text that began already dissolved; readability comes first. Keep this atmosphere secondary to
-the figure and machinery; no bottom caption, legend or outcome notes. Reduced
-motion shows three still plumes. Essential meaning remains in the SVG description
-and the readable methodology notes.
+Each plume carries **signed percentage lift → p-value → verdict**, so its first
+line reads as a test result without statistical training. Lift is 18 SVG units in
+Georgia, with green positive and red-brown negative ink. The sign and value remain
+explicit: color never substitutes for meaning. P-values are 12.5 units in warm
+gray `#746C5F`; verdicts are 13 units in `#665F51`. Their independent wisps stay
+faint. Direction is not significance: a small green estimate can remain null, and
+an apparent positive can be the explicitly fictional false-positive example.
+
+At Medium, text reaches 96% opacity within 300 ms, stays there through 2.7 seconds
+and then gradually dissolves. Emissions are 3 seconds apart, with at most three
+visible plumes, more vertical space and distinct baselines for all three lines.
+The owner rejected text that began already dissolved. Preserve this readable
+window as the entire machine speeds up or slows down. No bottom caption, legend
+or outcome notes. Reduced motion shows three complete still plumes. Essential
+meaning remains in the SVG description and readable artwork notes.
 
 Keep initial evidence separate from later value. Two smoke examples show
 `p = .020` with an apparent lift later identified as a false positive, and
 `p = .237` with an inconclusive idea dropped too early. Their fictional underlying
-effects are 0 and +61 respectively; these hindsight labels are authored story
+effects are 0% and +6.1% respectively; these hindsight labels are authored story
 facts, not deductions from p-values or the fact of a failed replication. The
 source fixture uses estimate ± 1.96 SE and p = 2 Φ(−|estimate / SE|). No number
 represents Stepan's or Prodigy's results. The page identifies synthetic data and
@@ -216,6 +232,10 @@ rails, bracing, inspection openings and fasteners. Retain this page’s engraved
 wood/iron/brass treatment rather than adopting the factory’s lighting or materials.
 
 - Paired cards ride jointed checker-inlaid slats on one oblique upper plane.
+  Use the exact (+36.95, −64) depth vector across its bed, drums and cabinet.
+  The rear tail corner is (68.95, 249), directly behind (32, 313). Rear shaft
+  bearings, a thin guide-cap top, contact shadow and moving front slat end faces
+  distinguish fixed supports from the moving surface without thickening the frame.
   Both end drums use that same depth vector. The lower return moves left while
   the loaded run moves right; the frame, bearings and adjustment screw stay fixed.
 - A continuous side loop wraps the drums. Separate stationary rails carry split
@@ -252,7 +272,8 @@ supersedes the first watch-bridge treatment in PR #68.
   centre arbor and drives a separate reduction wheel. Overlap has a physical
   explanation, with an exposed spacer and open spokes revealing the deeper train.
 - Use a 74-tooth, radius-37 flywheel and pinions down to 18 teeth, radius 9.
-  Rotation periods range from 1.5 to approximately 6.17 seconds. Neighboring
+  At Medium, rotation periods range from 1.875 to approximately 7.71 seconds
+  (the geometry module uses a 1.5–6.17-second logical timebase). Neighboring
   gears counter-rotate, compound wheels share an angular speed, and the separate
   reduction adds a slower counter-rotation. A small eccentric marks a fast pinion.
 - Recess bearings into the dark back of the case. Thin mounting rails remain
@@ -306,6 +327,20 @@ structural apron. This is original casework, not a historical restoration.
   font or dependency.
 
 [Cabinet production captures and verification](../production-systems-evidence/turk-cabinet-verification.md)
+
+### Applying the accepted opening to the remaining scenes
+
+Start each next pass from this construction standard: one coherent projection,
+visible load-bearing joints, contours stronger than grain, selective recess
+hatching and enough quiet surface to read the object. Continue the same walnut,
+ivory, brass and green family across viewpoints. Light must attach to a source;
+motion must express an actual linkage or a meaningful change of state. The
+operator, board and cutaway deserve new compositions, not copies of the hero's
+gear cluster. No floating supports, decorative gears without a drive, arbitrary
+perspective changes or extra hardware used only to fill space. Review at normal
+reading size and on a phone before rewarding enlargement-level detail.
+
+[Current instrument, palette and pace verification](../production-systems-evidence/instrument-finish-verification.md)
 
 The conveyor and its transmission are our editorial invention. Racknitz's
 figure is source-derived vector geometry, with a clipped forearm used for the
@@ -364,8 +399,8 @@ reading an ornamental dial.
 | --- | --- |
 | Rest | Paper surface, ink label, readable structural border |
 | Hover | Slight warm surface change; no layout shift |
-| Selected | Walnut face, ivory label, plus a clear selection marker or border |
-| Focus | Separate 2px brass outline on paper, 4px offset; ivory outline on dark wood |
+| Selected | Muted green face with paper label, or a green/brass knob; clear marker beyond color |
+| Focus | Separate 2px deep-green outline on paper; ivory outline on dark surfaces |
 | Pressed | Subtle inset change, at most 1px displacement |
 | Disabled | Native disabled semantics and clearly subdued appearance |
 
@@ -373,6 +408,36 @@ Retain native radio semantics for the domain comparison. A future inspection
 control can open an explanation or show a useful cutaway; the related text must
 remain available without animation. Provide at least a 44×44px touch area per
 the repository standard, visible keyboard focus and logical reading order.
+
+### Experiment pace
+
+The opening has a small three-detent brass rail with a green knob: **Slow / Medium /
+Fast**, default Medium on every page load. Native radios provide keyboard and
+screen-reader semantics; every label has at least a 44×44px target. Keep it in the
+plate's quiet upper-left area, away from the figure and rising results. The nearby
+information disclosure explains the methodological trade-off and cites sources.
+
+The CSS machine retains one 2.4-second logical test period. Playback rates are
+0.55 / 0.8 / 1.1, giving approximately **4.36 / 3.00 / 2.18 seconds per test**.
+Apply the rate to all 35 hero animations together: stamp, belt, slat edges, gears,
+chains, specimens, paper and smoke. Preserve phase and paused state; never restart
+parts or change their individual periods. `Animation.updatePlaybackRate` preserves
+the current position [S14]. One scheduled update per selection/preference change
+is sufficient; there is no per-frame JavaScript loop.
+
+The metaphor needs careful wording. At fixed traffic, shorter tests collect less
+evidence per decision; uncertainty depends on sample size, variability and design
+[S12]. More comparisons require a testing policy that handles multiplicity [S13].
+**Speed alone does not determine FDR**, and a p-value is not the probability that
+one result is false [S7]. The switch changes animation pace only; it does not
+manufacture accuracy rates, change the fixed examples or simulate an experiment.
+Keep this explanation readable in the disclosure and public artwork notes.
+
+Pause, offscreen suspension and hidden-tab behavior retain authority. A speed
+change while paused must not resume or seek. Reduced motion disables the speed
+fieldset and keeps the explanation available; turning reduced motion off reapplies
+the chosen rate, as does returning from print. Without JavaScript the inactive switch is hidden and the complete
+still remains. Print omits the controls and illustrations.
 
 The owner requested living, procedural engravings. The initial server-rendered
 state is a complete still; motion begins only after the lifecycle controller
@@ -394,7 +459,7 @@ is informed by W3C guidance. [S6]
 | `ScenarioExplorer.tsx` | A bounded demonstration surface with precise selectors and clearly labeled outcomes | A selection reveals one useful comparison; no imitation dashboard data |
 | Method and sources | Marginal-style numbering, calm notes, generous source spacing | Readers can trace claims to evidence without losing their place |
 | Contact / `ProfileActions.tsx` | A restrained closing colophon and decisive primary link | LinkedIn and printing stay obvious |
-| `profile.module.css` | Introduce semantic material roles locally, once a corresponding pass uses them | No global token changes or spillover to Sanctuary/Loopforge |
+| `profile.module.css` | Implemented: local green emphasis, warm charcoal prose, paper, ivory and olive-green application surface | No global token changes or spillover to Sanctuary/Loopforge |
 
 ## 9. The focused passes
 
@@ -459,7 +524,7 @@ focus and the act of inspection.
 
 ## Sources and observed evidence
 
-Checked 3 October 2026. Historical observations above and our design choices are
+Checked 3–4 October 2026. Historical observations above and our design choices are
 separated deliberately. The visual sheet embeds source-hosted reference images;
 its material and type specimens are our original design interpretation.
 
@@ -511,6 +576,20 @@ its material and type specimens are our original design interpretation.
 - **S11 — KHK, “Calculation of Gear Dimensions.”** Standard spur-gear module,
   reference diameter and center-distance relationships; consulted 4 October 2026.
   https://khkgears.net/new/gear_knowledge/gear_technical_reference/calculation_gear_dimensions.html
+
+- **S12 — NIST/SEMATECH, “How do we determine the required sample size?”**
+  Sample-size relationships for precision, power and error rates. Consulted
+  4 October 2026; basis for the fixed-traffic evidence caveat.
+  https://www.itl.nist.gov/div898/handbook/prc/section2/prc222.htm
+- **S13 — Microsoft Research / ExP, “Treatment effect assessment at scale:
+  accounting for correlated metrics and metric relevance in modern
+  experimentation,” 15 July 2026.** FDR is the expected proportion of false
+  discoveries among discoveries, handled by the testing procedure. It is not a
+  per-result probability or a quantity derived from illustration speed.
+  https://www.microsoft.com/en-us/research/articles/treatment-effect-assessment-at-scale-accounting-for-correlated-metrics-and-metric-relevance-in-modern-experimentation/
+- **S14 — MDN, `Animation.updatePlaybackRate()`.** Asynchronous rate changes keep
+  the current position rather than jumping the animation. Consulted 4 October 2026.
+  https://developer.mozilla.org/en-US/docs/Web/API/Animation/updatePlaybackRate
 
 Local references: Sanctuary's `docs/sanctuary/DESIGN_SYSTEM.md`, Loopforge's
 `docs/loopforge/VISUAL_REVIEW.md`, and this profile's revised opening. Their

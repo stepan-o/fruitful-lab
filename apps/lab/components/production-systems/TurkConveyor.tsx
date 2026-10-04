@@ -64,6 +64,7 @@ export default function TurkConveyor({ children }: { children: ReactNode }) {
       <linearGradient id="turk-drum-shade" x1="0" y1="0" x2="1" y2="1">
         <stop stopColor="#d0bb8f" /><stop offset=".38" stopColor="#938466" /><stop offset="1" stopColor="#4e4a3b" />
       </linearGradient>
+      <clipPath id="turk-slat-edge-window"><path d="M32 314H591.05V319H32Z" /></clipPath>
       <clipPath id="turk-return-window"><path d="M32 345H591.05V351H32Z" /></clipPath>
       <clipPath id="turk-chain-inspection"><path d="M340 324H404V340H340ZM419 324H483V340H419ZM498 324H562V340H498Z" /></clipPath>
     </defs>
@@ -98,16 +99,32 @@ export default function TurkConveyor({ children }: { children: ReactNode }) {
       <path d={`M${round(x)} 314l${round(depthX)}-64a18 18 0 0 ${i ? 1 : 0} 0 36l${round(-depthX)} 64a18 18 0 0 ${i ? 0 : 1} 0-36Z`} fill="url(#turk-drum-shade)" stroke={ink} strokeWidth="1" />
       {[.15,.32,.53,.74,.9].map((f,j) => <path key={j} d={`M${round(x + (i ? 1 : -1) * Math.sin(f * Math.PI) * 18)} ${round(314 + f * 36)}l${round(depthX)}-64`} fill="none" stroke={j%2 ? edge : ink} strokeWidth=".6" opacity=".45" />)}
     </g>)}
-    <path d="M63 247H628L591.05 311H26.05Z" fill="#5b5948" stroke={ink} />
+    <g data-conveyor-part="rear-bearings" stroke={ink}>
+      {[32 + depthX, 628].map(x => <g key={x} transform={`translate(${round(x)} 268)`}>
+        <circle r="12" fill={iron} strokeWidth=".9" /><circle r="8.2" fill="#a28b62" stroke={edge} strokeWidth=".65" />
+        <circle r="4.3" fill="#474738" /><path d="M-2 0H2M0-2V2" stroke={brass} strokeWidth="1" />
+      </g>)}
+    </g>
+    <path d="M68.95 249H628L591.05 313H32Z" fill="#5b5948" stroke={ink} />
+    <path d="M58 242 61 239H632L629 242Z" fill={brass} stroke={ink} strokeWidth=".8" />
     <path d="M58 242H629V249H58Z" fill={iron} stroke={ink} strokeWidth="1.1" />
     <path d="M60 243H627M61 247H625" stroke={edge} strokeWidth=".7" />
     {[78,180,282,384,486,613].map(x=><Screw key={x} x={x} y={245.5} r={1.6} />)}
 
     {children}
+    <path d="M68.95 250H628L626.85 252H67.8Z" fill="#302f26" opacity=".2" />
 
     {/* The lower run moves back under the frame. Straight rails stay stationary. */}
     <path d="M32 314H591.05a18 18 0 0 1 0 36H32a18 18 0 0 1 0-36Z" fill="#484637" stroke={ink} strokeWidth="1.2" />
     <path d="M32 315H591.05M32 349H591.05" stroke={edge} strokeWidth="1" />
+    <g clipPath="url(#turk-slat-edge-window)" data-conveyor-part="slat-edge">
+      <g className={motion.belt}>
+        <path d="M-60 314H710V319H-60Z" fill="#977f58" />
+        <path d={Array.from({ length: 36 }, (_, i) => `M${round(-44 - depthX + i * 22)} 314v5`).join("")} stroke="#463d2d" strokeWidth="1.4" />
+        <path d={Array.from({ length: 36 }, (_, i) => `M${round(-42.5 - depthX + i * 22)} 314v4`).join("")} stroke={edge} strokeWidth=".6" />
+        <path d="M-60 314.5H710" stroke="#d8c394" strokeWidth=".6" />
+      </g>
+    </g>
     <g clipPath="url(#turk-return-window)" data-conveyor-part="return-run">
       <g className={motion.returnBelt}>
         <path d="M-66 346H708V350H-66Z" fill="#897252" />

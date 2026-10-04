@@ -326,3 +326,37 @@ client boundary, dependency, raster image or animation was added. Later scenes,
 page layout and professional claims retain their existing scope.
 
 Validation: [cabinet evidence](production-systems-evidence/turk-cabinet-verification.md).
+
+
+## Accepted opening, green palette and experiment pace · 4 October 2026
+
+The owner accepted the PR #70 opening and chose its muted deep green as the main
+page accent. Branch `codex/profile-instrument-finish` starts from master `f218692`.
+Design guidelines v1.8 make that opening the standard for future section-scene
+passes; the remaining seven compositions still await individual refinement.
+
+The page now uses related deep greens for headings, links, navigation, primary
+actions and selected controls, warm charcoal/gray for prose, and an olive-green
+application section. The palette is route-local. The belt's rear bed corner,
+shaft bearings, guide top and moving slat end faces now share the cabinet's depth
+vector, while the accepted casework and gear geometry are retained.
+
+Every result plume now has a signed relative percentage lift above its p-value
+and verdict, with subtle green/red-brown direction. The existing synthetic
+estimates and intervals are expressed at one-tenth their internal plot coordinate
+scale; their p-values and row geometry are unchanged. A green lift does not imply
+significance or a release recommendation. The false-positive and dropped-idea
+hindsight remains explicitly authored, fictional context.
+
+A small brass/green Slow–Medium–Fast selector changes all 35 hero animations as
+one mechanism without seeking or resuming paused motion. Medium is the default:
+3 seconds per test, compared with the previous 2.4 seconds. Reduced motion keeps
+a still and disables the selector; no-JS hides the inactive control. The new
+client island is limited to the selector; SVG geometry remains server-rendered.
+
+The nearby disclosure and artwork notes distinguish fixed-traffic evidence
+trade-offs from multiple-testing policy. NIST and Microsoft ExP sources are
+linked. The control does not simulate accuracy or FDR; synthetic outcomes remain
+fixed at every pace. Professional claims and employer details are unchanged.
+
+Validation: [instrument finish evidence](production-systems-evidence/instrument-finish-verification.md).

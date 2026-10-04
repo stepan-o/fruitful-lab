@@ -51,15 +51,15 @@ export function createFactoryOptics() {
       const shoulder=Math.pow(Math.max(0,orbit.depth),5),core=orbit.facing;
       if(shoulder<.002)return;
       const art=alarm>.1?red:amber, power=.18+.82*alarm;
-      const bulb=x+orbit.lateral*13;
+      const bulb=x;
       c.save();c.globalCompositeOperation='screen';
       const radius=90+alarm*115;
       c.globalAlpha=shoulder*power;c.drawImage(art.halo,bulb-radius,y-radius,radius*2,radius*2);
       c.globalCompositeOperation='lighter';
-      c.globalAlpha=core*power;c.drawImage(art.streak,0,y-20,width,40);
-      c.drawImage(art.streak,0,y-8,width,16);
+      c.globalAlpha=core*power;c.drawImage(art.streak,bulb-width*.5,y-20,width,40);
+      c.drawImage(art.streak,bulb-width*.5,y-8,width,16);
       c.globalCompositeOperation='screen';
-      c.globalAlpha=core*power*.2;c.drawImage(art.streak,width*.15,y-9,width*.7,10);
+      c.globalAlpha=core*power*.2;c.drawImage(art.streak,bulb-width*.35,y-9,width*.7,10);
       // Restrained diffraction needles remain attached to the bulb.
       c.save();c.translate(bulb,y);c.rotate(-.19);
       c.globalAlpha=core*power*.55;c.drawImage(art.streak,-75,-5,150,10);

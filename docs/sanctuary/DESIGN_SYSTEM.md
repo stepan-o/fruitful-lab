@@ -1,7 +1,10 @@
 # Sanctuary design system
 
-**Editorial placement update · 3 October 2026:** the first chapter now uses an
-original room/world comparison, then the arcade-cabinet cutaway and Atari’s operator manual. The authentic BG3/D4
+**Editorial placement update · 4 October 2026:** the first chapter opens with
+the original arcade-room illustration immediately after the title and a short,
+one-sentence lead. Its heading, comparison controls and accounts follow the
+image; no body paragraphs precede it. The arcade-cabinet cutaway follows the
+Gauntlet introduction, then Atari’s operator manual appears with its analysis. The authentic BG3/D4
 pair, AfterPurchase and cinema/catalog exhibits now belong to chapter three.
 The approved animated diptych stays in **Where progress lives**. Its historical
 description as the “opening” below identifies the illustration benchmark.
@@ -171,9 +174,12 @@ Current layout measurements:
   `24px 28px 28px`; instrument interior is `0 27px 28px`.
 - At ≤950px: 68px header, hidden rail with contents dialog, article maximum
   850px and `30px 6vw` padding. At ≤560px: 23px article side padding.
-- Opening title/lede share a row above 720px and stack below it. The opening
-  illustration comes **before the prose**. Its first instrument follows the
-  first three paragraphs in the current reader.
+- Opening title and lead stack. Keep the first chapter’s lead to one short
+  proposition, then show the illustration **before body prose, exhibit headings
+  or controls**. The scene must be visible in the first viewport on desktop and
+  phone. Check the actual graphic, not merely the figure’s outer container.
+- The room/world comparison follows its opening image; the cabinet’s
+  player/operator instrument follows the Gauntlet introduction (paragraph 5).
 
 These are measured values, not a retroactively invented 8px spacing grid.
 Reuse their hierarchy; add a spacing token only when genuine reuse justifies it.

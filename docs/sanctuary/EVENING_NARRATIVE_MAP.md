@@ -73,8 +73,10 @@ it does not claim to add the still-separate Diablo I/franchise-history chapters.
 
 - `EveningPlace.tsx`: a wide original room/courtyard study with two explicit
   views. The scene changes alongside three readable accounts: people, the work
-  and payment. Introduce it after the opening's historical setting; revisit its
-  world view when discussing online places in chapter three.
+  and payment. In chapter one, the image immediately follows the title and a
+  one-sentence lead, before its own heading/controls and all body prose. The
+  historical setting then develops the scene. Revisit its world view when
+  discussing online places in chapter three.
 - `ArcadeExchange.tsx`: keep the documented health controls as a focused second
   instrument, after Gauntlet and its intangible resource have been introduced.
   Player/operator controls are not represented as the entire venue relationship.

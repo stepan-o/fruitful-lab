@@ -137,6 +137,12 @@ describe("Sanctuary reader", () => {
     expect(screen.getByRole("group", { name:"Which side of the cabinet?" })).toBeVisible();
     const gathering = screen.getByRole("group", {name:"Where does the gathering happen?"});
     expect(gathering).toBeVisible();
+    const openingScene = screen.getByRole("img", {name:"An imagined venue: conversation, spectators and a game share a warmly lit room"});
+    const firstParagraph = screen.getByText(current.paragraphs[0]);
+    const sceneHeading = screen.getByRole("heading", {name:"The evening is larger than the machine."});
+    expect(openingScene.compareDocumentPosition(firstParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(openingScene.compareDocumentPosition(sceneHeading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(openingScene.compareDocumentPosition(gathering) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(gathering.compareDocumentPosition(screen.getByRole("group", {name:"Which side of the cabinet?"})) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     fireEvent.click(screen.getByRole("button", {name:"A world to meet in"}));
     expect(screen.getByRole("heading", {name:"The gathering place can be part of the game."})).toBeVisible();

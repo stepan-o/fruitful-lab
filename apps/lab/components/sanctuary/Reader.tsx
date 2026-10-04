@@ -117,6 +117,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
               <p className={styles.referenceReading}>Two role-playing traditions, with different plans for what comes after release.</p>
             </section>:null}
             {current.id !== "the-fork" && current.id !== "insert-coin" ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
+            {current.id === "insert-coin" ? <EveningPlace opening/> : null}
             <div className={styles.prose}>
               {current.paragraphs.map((paragraph, paragraphIndex) => (
                 <Fragment key={`${current.id}-${paragraphIndex}`}>
@@ -153,7 +154,6 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       },
                     )}
                   </p>
-                  {current.id === "insert-coin" && paragraphIndex === 1 ? <EveningPlace/> : null}
                   {current.id === "the-fork" && paragraphIndex === 5 ? <EveningPlace initialWorld/> : null}
                   {current.id === "insert-coin" && paragraphIndex === 4 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
                   {current.figures?.map((figure,i)=>figure.afterParagraph === paragraphIndex ? renderFigure(figure,i) : null)}

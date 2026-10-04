@@ -391,7 +391,7 @@ const manuscript: Omit<Chapter, "visual">[] = [
     "id": "insert-coin",
     "part": 0,
     "title": "Insert coin. Join in.",
-    "lede": "A machine in the corner gives people another thing to do together. Inside it, a coin can buy another stretch of life. Around it, a business is making a place worth visiting.",
+    "lede": "A machine in the corner gives people another thing to do together.",
     "paragraphs": [
       "Picture a bar with a game in the corner. Two people play; a friend watches, waiting for a turn. Someone else carries on talking at the table. The machine gives this little group something to gather around, without needing to be the reason everyone came. For the person running the place, it could be part of what makes an ordinary evening worth coming out for.",
       "That setting belongs near the beginning of commercial video games. Computer Space reached paying audiences in 1971. In 1972, Atari tested a prototype of Pong at Andy Capp’s Tavern in Sunnyvale, California. Pong put a simple contest on a screen: two players moved paddles to return a ball. A new kind of game entered a place where people already spent time together.",

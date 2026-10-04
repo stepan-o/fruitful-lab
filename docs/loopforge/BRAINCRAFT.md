@@ -28,10 +28,10 @@ contained discharges stay irregular and attached to one carrier.
 - [x] Refine braid routing, crossings, connectors and pulse scale.
 - [x] Keep the belt advancing at uneven speed until a real jam.
 - [x] Replace running copy with “If it jams, pull the lever down.”
-- [ ] Inspect the final desktop/phone production rendering and reset interaction.
-- [ ] Measure cache preparation and per-frame work; retain motion preferences.
+- [x] Inspect the final desktop/phone production rendering and reset interaction.
+- [x] Measure cache preparation and per-frame work; retain motion preferences.
 - [x] Required tests, asset validation and production build.
-- [ ] Publish a scoped PR and verify its hosted preview.
+- [x] Publish a scoped PR and verify its hosted preview.
 
 ## Verification
 
@@ -52,3 +52,29 @@ contained discharges stay irregular and attached to one carrier.
   (previous pass 36,374 / 14,094). No new runtime image assets or dependencies.
 - Final hosted desktop/phone screenshots and checks follow with the PR. Field
   Web Vitals and physical-phone performance remain unmeasured.
+
+
+## Hosted result
+
+Runtime commit `f1015aa`, Vercel READY:
+https://fruitful-j8vk96s4n-stepan-oskins-projects.vercel.app/stepanoskin/loopforge
+
+The hosted 1280×720, 390×844 and 768×1024 compositions were inspected. No
+horizontal overflow or browser errors were observed. Desktop Enter and a 44px
+phone pull both change LINE JAMMED to DRIVE ENGAGING; production then resumes.
+Manual pause held the observed frame counter at 1440 with animation disabled;
+resume restores it. Existing offscreen, hidden-document and OS reduced-motion
+checks remain passing in the full suite.
+
+Hosted shared-host sample at 240 drawn desktop frames: 222.1ms one-time specimen
+preparation; 2.63ms mean / 11.8ms max CPU draw submission. These measurements are
+not field Web Vitals. First-load and repeat-load UI were inspected; network
+cold-cache timings and physical-phone behavior were not instrumented.
+
+Desktop running state, including the new instructions:
+
+![Desktop specimens and braided fibres](evidence/braincraft-desktop.webp)
+
+Phone jam, with damaged tissue and its adjacent restart instruction:
+
+![Phone damaged specimen](evidence/braincraft-phone.webp)

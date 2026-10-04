@@ -4,7 +4,7 @@ export type Drive = {
   status: "running" | "jammed" | "restarting"; stateAge: number; restarts: number;
 };
 export function createDrive(): Drive {
-  return { time: 0, distance: 83, velocity: 0, untilJam: 19, status: "running", stateAge: 0, restarts: 0 };
+  return { time: 0, distance: 83, velocity: 34, untilJam: 19, status: "running", stateAge: 0, restarts: 0 };
 }
 export function noise(seed: number) {
   let n = Math.imul(seed ^ (seed >>> 16), 0x45d9f3b);
@@ -20,15 +20,16 @@ export function stepDrive(d: Drive, seconds: number) {
   if (d.untilJam <= 0) {
     d.status = "jammed"; d.stateAge = 0; d.velocity = 0; return;
   }
-  // Chain stays stationary during take-up, then the geared motor hauls one pitch.
-  // Every visible part derives motion from this one distance (no slipping cargo).
-  const cycle = d.time / 1.36;
-  const phase = cycle % 1;
-  const pull = phase < .17 ? 0 : phase < .28 ? (phase - .17) / .11
-    : phase < .66 ? 1 : phase < .82 ? 1 - (phase - .66) / .16 : 0;
-  const load = .82 + noise(Math.floor(cycle) + 17) * .35;
+  // A loaded continuous drive: broad torque variation plus small tooth ripple.
+  // The positive floor prevents routine hesitation from reading as another jam.
+  // Smooth seeded load interpolation avoids discontinuities at cycle boundaries.
+  const cycle = d.time / 2.7, whole = Math.floor(cycle), phase = cycle - whole;
+  const blend = phase * phase * (3 - 2 * phase);
+  const load = .83 + .32 * (noise(whole + 17) * (1 - blend) + noise(whole + 18) * blend);
+  const haul = 35 + 15 * Math.sin(d.time * 3.1) + 7 * Math.sin(d.time * 6.7 + .8)
+    + 2.5 * Math.sin(d.time * 23);
   const ramp = d.status === "restarting" ? Math.min(1, d.stateAge / 1.25) : 1;
-  d.velocity = pull * 69 * load * ramp;
+  d.velocity = haul * load * ramp;
   d.distance += d.velocity * dt;
   if (d.status === "restarting" && d.stateAge >= 1.6) { d.status = "running"; d.stateAge = 0; }
 }

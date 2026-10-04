@@ -126,7 +126,7 @@ export default function LoopforgeLanding({ initialLocale }: { initialLocale: Loc
                         className={styles.logo}
                         asset={imageAsset(assets, "logo")}
                         alt="Loopforge — AI Brain Factory"
-                        sizes="(max-width: 640px) 280px, 440px"
+                        sizes="(max-width: 640px) and (max-height: 480px) and (orientation: landscape) 125px, (min-width: 641px) and (max-height: 480px) 190px, (max-width: 360px) min(260px, 34svh), (max-width: 640px) and (max-height: 650px) 190px, (max-width: 640px) min(300px, 45svh), (max-height: 650px) 310px, (min-height: 850px) 440px, min(380px, 50svh)"
                         preload
                     />
                     <div className={styles.logoFx} ref={logoFxRef} aria-hidden="true">

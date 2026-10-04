@@ -1,4 +1,5 @@
-import { createNeuralWeave, neuralDischarge, neuralPulse } from "@/components/loopforge/factory-neural";
+import { specimenSlots, specimenWeave } from "@/components/loopforge/factory-specimens";
+import { neuralDischarge, neuralPulse } from "@/components/loopforge/factory-neural";
 import { cargoFor } from "@/components/loopforge/factory-drive";
 
 describe("decorative neural activity", () => {
@@ -30,11 +31,22 @@ describe("decorative neural activity", () => {
   it("keeps specimen geometry stable while varied specimens pulse independently", () => {
     const pulses=new Set<number>();
     for(let i=0;i<12;i++) {
-      const q=cargoFor(i),a=createNeuralWeave(q.kind,q.seed);
-      expect(a).toEqual(createNeuralWeave(q.kind,q.seed));
+      const q=cargoFor(i),a=specimenWeave(specimenSlots[i],q.seed);
+      expect(a).toEqual(specimenWeave(specimenSlots[i],q.seed));
       expect(a.routes.flat().every(([x,y])=>Number.isFinite(x)&&Number.isFinite(y))).toBe(true);
       pulses.add(neuralPulse(13,q.seed,0).position);
     }
     expect(pulses.size).toBe(12);
   });
+  it("keeps signal speed and braid pitch even through curved cable runs", () => {
+    for(let i=0;i<12;i++) {
+      const q=cargoFor(i), weave=specimenWeave(specimenSlots[i],q.seed);
+      for(const route of weave.routes) {
+        const steps=route.slice(1).map((p,k)=>Math.hypot(p[0]-route[k][0],p[1]-route[k][1]));
+        expect(Math.min(...steps)).toBeGreaterThan(0);
+        expect(Math.max(...steps)/Math.min(...steps)).toBeLessThan(1.08);
+      }
+    }
+  });
+
 });

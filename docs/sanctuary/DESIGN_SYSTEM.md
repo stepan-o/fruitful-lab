@@ -547,8 +547,25 @@ clockwork, Japanese architecture or a single palette indiscriminately.
 
 The first arcade craft adoption is recorded in
 [Arcade craft passes](ARCADE_CRAFT_PASSES.md). `EveningVenue` composes separate
-architecture, furnishings and patron modules; its cabinet is the same original
-component used in the later cutaway. `ArcadeMaterials` stays local to Sanctuary.
+architecture, furnishings and patron modules. The room’s cabinets are projected
+into its floor plan; the later cutaway uses a separate frontal composition for
+legibility. `ArcadeMaterials` stays local to Sanctuary.
 The venue and instrument reuse `useLivingPlate` for preference/visibility gating.
 The original scene remains ahead of prose; archival citations retain their
 source pixels and have a different job from the authored illustrations.
+
+### Composition before ornament — owner correction, 4 October 2026
+
+Visceral coherence comes from light, material, contour and depth, not borrowing
+literal architecture from another subject. A real bar should read as a real bar.
+Start with a strong photographic reference when the subject depends on human
+activity or spatial credibility. Record its source and the specific qualities
+being interpreted. Do not imply an invented scene is historical documentation.
+
+Before surface detail, resolve camera/eye level, floor plan, object scale,
+passage space, seating, sightlines and hand-to-control contact. People may remain
+stylized; their proportions, orientation and scale must make sense in the room.
+Review occlusion and contacts in the assembled composition. Adding grain, brass
+outlines and glows cannot repair a wrong pose or a floating piece of furniture.
+The revised opening uses Barcade’s Brooklyn gallery as its composition reference,
+while Sanctuary supplies the procedural rendering language.

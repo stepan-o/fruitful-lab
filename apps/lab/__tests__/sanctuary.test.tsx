@@ -132,7 +132,7 @@ describe("Sanctuary reader", () => {
     const current = chapters[0];
     const { container } = render(<Reader {...props} current={current} index={0}/>);
     expect(screen.getByRole("heading", { level:1, name:"Insert coin. Join in." })).toBeVisible();
-    const openingScene = screen.getByRole("img", {name:"An imagined venue: conversation, spectators and a game share a warmly lit room"});
+    const openingScene = screen.getByRole("img", {name:/An imagined arcade bar:/});
     const firstParagraph = screen.getByText(current.paragraphs[0]);
     expect(openingScene.compareDocumentPosition(firstParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(screen.queryByRole("group", {name:"Where does the gathering happen?"})).not.toBeInTheDocument();

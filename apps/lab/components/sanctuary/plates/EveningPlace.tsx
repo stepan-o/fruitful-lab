@@ -88,7 +88,7 @@ export default function EveningPlace({initialWorld=false,opening=false}:{initial
  const [selected,setSelected]=useState(initialWorld?1:0); const view=views[selected];
  if (opening) return <figure ref={livingRef} data-living-venue className={`${s.place} ${s.opening}`} aria-label="Study: the place around the game" data-opening>
    <div className={s.scene}><PlaceScene world={false}/></div>
-   <figcaption>Original illustration · an imagined venue</figcaption>
+   <figcaption>Original scene · atmosphere after <a href="https://barcade.com/location/brooklyn/photos" target="_blank" rel="noreferrer">Barcade, Brooklyn ↗</a></figcaption>
  </figure>;
  return <figure ref={livingRef} data-living-venue className={s.place} aria-label="Study: the place around the game">
    <div className={s.heading}><span>A PLACE IN THE EVENING</span><h2>{view.title}</h2></div>

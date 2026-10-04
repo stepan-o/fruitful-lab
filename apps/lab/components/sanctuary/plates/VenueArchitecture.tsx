@@ -1,54 +1,72 @@
-import { InsetPanel, WoodGrain, round } from "./ArcadeMaterials";
+import { roomPath as d, segment, wallRect } from "./venue-perspective";
 
-function Pier({x}:{x:number}) {
- return <g transform={`translate(${x} 0)`}>
-  <path d="M-16 77H16V365H-16Z" fill="#253431" stroke="#b59a68"/>
-  <path d="M-11 95H-5V344H-11ZM4 95H10V344H4Z" fill="#111f22" stroke="#6f775d" strokeWidth=".7"/>
-  <path d="M-19 72H19V86H-19ZM-20 346H20V365H-20Z" fill="#6c664b" stroke="#c6aa75"/>
-  <path d="M-21 68H21V73H-21ZM-21 363H21V371H-21Z" fill="#253332" stroke="#a99364"/>
-  <path d="M-17 78H17M-17 351H17M-15 359H15M-13 86V345" fill="none" stroke="#dbc391" strokeWidth=".65"/>
-  <path d="M0 98V336" stroke="#0c191d" strokeWidth="3"/>
-  <path d="M-7 99v239M8 99v239" stroke="#c4ac76" opacity=".2"/>
- </g>;
-}
-function Arch({x,w}:{x:number;w:number}) {
- const h=w/2, center=x+h;
- const d=`M${x} 351V208Q${x} 118 ${center} 109Q${x+w} 118 ${x+w} 208V351Z`;
- return <g><path d={d} fill="#0d1e23" stroke="#625e46" strokeWidth="12"/><path d={d} fill="none" stroke="#b99b63" strokeWidth="1.5"/><path d={`M${x+10} 348V207Q${x+10} 129 ${center} 120Q${x+w-10} 129 ${x+w-10} 207V348`} fill="none" stroke="#76836b" strokeWidth="1"/>
-  <path d={Array.from({length:15},(_,i)=>{const a=Math.PI+(i/14)*Math.PI;return `M${round(center+Math.cos(a)*(h+4))} ${round(209+Math.sin(a)*103)}l${round(Math.cos(a)*7)} ${round(Math.sin(a)*7)}`;}).join("")} stroke="#0b181b" strokeWidth="2.2"/>
-  <path d={`M${center-8} 104l8-13 8 13-2 16h-12Z`} fill="#8f7952" stroke="#ceaf77" strokeWidth=".7"/>
- </g>;
-}
+const leftBricks=Array.from({length:16},(_,row)=> {
+ const y=.95+row*.15;
+ return segment([-4.19,y,-1.3],[-4.19,y,9])+Array.from({length:25},(_,col)=>{
+  const z=-1.3+col*.44+(row%2)*.22;
+  return segment([-4.18,y,z],[-4.18,y+.15,z]);
+ }).join("");
+}).join("");
+const backBricks=Array.from({length:17},(_,row)=> {
+ const y=.8+row*.15;
+ return segment([-4.2,y,9],[4.2,y,9])+Array.from({length:27},(_,col)=>{
+  const x=-4.2+col*.33+(row%2)*.165;
+  return segment([x,y,8.99],[x,y+.15,8.99]);
+ }).join("");
+}).join("");
+const floorGrain=Array.from({length:67},(_,i)=> {
+ const x=-4.1+i*.126;
+ return segment([x,0,-1.3],[x+.016,0,9]);
+}).join("");
 
-/** A single-point room, with joinery and mouldings sharing the same perspective. */
+/** A modest brick-and-timber room, projected from one camera, with a clear central aisle. */
 export default function VenueArchitecture({id}:{id:string}) {
- const floor="M30 377L106 343H902L974 377L944 559H59Z";
  return <g data-art-element="room-architecture" strokeLinejoin="round">
   <defs>
-   <linearGradient id={`${id}-room`} x2="0" y2="1"><stop stopColor="#293432"/><stop offset=".65" stopColor="#162629"/><stop offset="1" stopColor="#0c191f"/></linearGradient>
-   <linearGradient id={`${id}-floor`} x2=".3" y2="1"><stop stopColor="#42483a"/><stop offset="1" stopColor="#16272b"/></linearGradient>
-   <pattern id={`${id}-wallpaper`} width="24" height="28" patternUnits="userSpaceOnUse"><path d="M12 1l5 12-5 14-5-14Z M0 13h24M12 6v15" stroke="#c2aa7a" fill="none" strokeWidth=".6" opacity=".1"/></pattern>
-   <clipPath id={`${id}-floor-clip`}><path d={floor}/></clipPath>
+   <linearGradient id={`${id}-leftwall`} x2="1" y2=".5"><stop stopColor="#514331"/><stop offset="1" stopColor="#273c39"/></linearGradient>
+   <linearGradient id={`${id}-floor`} x2="0" y2="1"><stop stopColor="#36433b"/><stop offset="1" stopColor="#101f25"/></linearGradient>
+   <radialGradient id={`${id}-bricklight`}><stop stopColor="#d7a665" stopOpacity=".29"/><stop offset=".45" stopColor="#c29454" stopOpacity=".09"/><stop offset="1" stopColor="#c29454" stopOpacity="0"/></radialGradient>
+   <clipPath id={`${id}-left-clip`}><path d={d([[-4.2,0,-1.3],[-4.2,3.35,-1.3],[-4.2,3.35,9],[-4.2,0,9]])}/></clipPath>
+   <clipPath id={`${id}-floor-clip`}><path d={d([[-4.2,0,-1.3],[-4.2,0,9],[4.2,0,9],[4.2,0,-1.3]])}/></clipPath>
   </defs>
-  <path d="M29 376V62L105 22H902L974 62V377Z" fill={`url(#${id}-room)`} stroke="#70694e"/>
-  <path d="M30 62L107 27H899L974 62Z" fill="#354036"/>
-  <path d="M31 70H974V341H31Z" fill={`url(#${id}-wallpaper)`}/>
-  <path d="M29 64H974V82H29ZM30 339H974V378H30Z" fill="#25322d" stroke="#9b8357"/>
-  <path d="M31 66H972M32 73H971M34 80H969M32 345H971M34 371H969" stroke="#cfb581" strokeWidth=".9" opacity=".65"/>
-  <path d={Array.from({length:57},(_,i)=>`M${40+i*16} 70v6`).join("")} stroke="#090f12" strokeWidth="4"/>
-  <WoodGrain x={34} y={349} w={932} h={18}/>
-  <Arch x={105} w={241}/><Arch x={387} w={222}/><Arch x={653} w={241}/>
-  {[71,368,635,931].map(x=><Pier key={x} x={x}/>)}
-  <path d={floor} fill={`url(#${id}-floor)`} stroke="#927c54"/>
+  <path d="M0 0H1000V590H0Z" fill="#0d1d23"/>
+  <path d={d([[-4.2,3.35,-1.3],[-4.2,3.35,9],[4.2,3.35,9],[4.2,3.35,-1.3]])} fill="#19272a"/>
+  <path d={wallRect(-4.2,0,9,8.4,3.35)} fill="#223136"/>
+  <path d={d([[-4.2,0,-1.3],[-4.2,3.35,-1.3],[-4.2,3.35,9],[-4.2,0,9]])} fill={`url(#${id}-leftwall)`}/>
+  <path d={d([[4.2,0,-1.3],[4.2,3.35,-1.3],[4.2,3.35,9],[4.2,0,9]])} fill="#23312e"/>
+  <path d={leftBricks} stroke="#ae9470" strokeWidth=".65" opacity=".26" fill="none"/>
+  <g clipPath={`url(#${id}-left-clip)`}><ellipse cx="185" cy="132" rx="260" ry="156" fill={`url(#${id}-bricklight)`}/></g>
+  <path d={Array.from({length:38},(_,i)=>{const z=(i*1.37)%9, y=1.12+(i*.31)%1.84;return segment([-4.175,y,z],[-4.175,y,z+.2]);}).join("")} stroke="#ccb182" strokeWidth="1" opacity=".18"/>
+  <path d={backBricks} stroke="#859080" strokeWidth=".55" opacity=".16" fill="none"/>
+  {/* Ordinary dado boards, lintels and exposed joists, without ornamental portals. */}
+  {[-4.17,4.17].map(x=><g key={x}>
+   <path d={wallRect(x,0,-1.3,10.3,.77,true)} fill="#17282a" stroke="#6d7158"/>
+   <path d={segment([x,.81,-1.3],[x,.81,9])+segment([x,3.2,-1.3],[x,3.2,9])} stroke="#a99368" strokeWidth="2"/>
+   <path d={Array.from({length:30},(_,i)=>segment([x,.04,-1.3+i*.35],[x,.75,-1.3+i*.35])).join("")} stroke="#9e8b66" strokeWidth=".65" opacity=".3"/>
+  </g>)}
+  {[1.2,4.4,7.8].map(z=><g key={z}>
+   <path d={d([[-4.2,3.2,z],[4.2,3.2,z],[4.2,3.02,z],[-4.2,3.02,z]])} fill="#3b3930" stroke="#887856" strokeWidth="1.1"/>
+   <path d={d([[-4.2,3.02,z],[4.2,3.02,z],[4.2,3.02,z+.2],[-4.2,3.02,z+.2]])} fill="#0a1b20" stroke="#61634e" strokeWidth=".6"/>
+   <path d={segment([-4,3.17,z],[4,3.17,z])} stroke="#b19769" strokeWidth=".6" opacity=".45"/>
+  </g>)}
+  <path d={d([[-4.2,0,-1.3],[-4.2,0,9],[4.2,0,9],[4.2,0,-1.3]])} fill={`url(#${id}-floor)`}/>
   <g clipPath={`url(#${id}-floor-clip)`} fill="none">
-   <path d={Array.from({length:19},(_,i)=>`M${100+i*45} 342L${-520+i*115} 565`).join("")} stroke="#08191d" strokeWidth="2"/>
-   <path d={Array.from({length:19},(_,i)=>`M${102+i*45} 342L${-517+i*115} 565`).join("")} stroke="#b0a173" strokeWidth=".7" opacity=".32"/>
-   {[364,394,434,486,554].map((y,i)=><path key={y} d={`M0 ${y}H1000M${84+i*73} ${y}l44 -2m159 2 92 -3m106 3 61 -2`} stroke="#b8a779" strokeWidth=".7" opacity=".24"/>)}
-   <path d={Array.from({length:46},(_,i)=>{const y=377+i*4;return `M${51+(i%7)*13} ${y}q68 -2 137 0m${93+(i%5)*17} 0q79 3 151 0m77 0 169 1`;}).join("")} stroke="#bda775" strokeWidth=".5" opacity=".13"/>
+   <path d={floorGrain} stroke="#8c997d" strokeWidth=".55" opacity=".16"/>
+   <path d={Array.from({length:25},(_,i)=>segment([-4.2+i*.35,0,-1.3],[-4.2+i*.35,0,9])).join("")} stroke="#07171b" strokeWidth=".85" opacity=".45"/>
+   <path d={Array.from({length:25},(_,i)=>{const x=-4.2+i*.35;return [0,1,2,3].map(j=>segment([x,0,(i%3)*.9+j*2.8],[x+.35,0,(i%3)*.9+j*2.8])).join("");}).join("")} stroke="#a09570" strokeWidth=".55" opacity=".21"/>
   </g>
-  <path d="M34 383L63 549H940L967 383M44 384L70 543H934L957 385" stroke="#b29861" strokeWidth="1.1" fill="none" opacity=".6"/>
-  <path d="M31 382L52 563H950L974 382" fill="none" stroke="#0a1218" strokeWidth="8"/>
-  <path d="M101 345H347V362H101M391 345H606V362H391M657 345H896V362H657" fill="none" stroke="#bb9d65" strokeWidth=".7"/>
-  <g opacity=".9"><InsetPanel x={405} y={271} w={85} h={67}/><InsetPanel x={499} y={271} w={85} h={67}/></g>
+  {/* A glazed street door at the rear: rectangular panes and an ordinary push bar. */}
+  <path d={wallRect(-1.4,0,8.98,2.45,2.67)} fill="#111f24" stroke="#877856" strokeWidth="3"/>
+  <path d={wallRect(-1.29,.09,8.96,2.22,2.47)} fill="#4b605c" stroke="#b2a47c" strokeWidth=".8"/>
+  <path d={wallRect(-1.22,.12,8.94,2.08,2.33)} fill="#31484b"/>
+  <path d={d([[-1.21,.15,8.93],[-1.21,1.6,8.93],[-.6,1.5,8.93],[-.6,.8,8.93],[.04,.8,8.93],[.04,1.9,8.93],[.8,1.9,8.93],[.8,.15,8.93]])} fill="#1c3139"/>
+  <path d={segment([-.16,.12,8.9],[-.16,2.48,8.9])+[.77,1.47,2.12].map(y=>segment([-1.24,y,8.9],[.9,y,8.9])).join("")} stroke="#a99d77" strokeWidth="2.3"/>
+  <path d={segment([-.9,.97,8.87],[.55,.97,8.87])} stroke="#d5be8d" strokeWidth="2"/>
+  <path d={segment([-.95,2.34,8.86],[-.68,1.7,8.86])+segment([.12,2.02,8.86],[.42,1.61,8.86])} stroke="#b5c9af" opacity=".24"/>
+  {[-3.45,-2.6,1.6,2.5,3.4].map((x,i)=><g key={x}>
+   <path d={wallRect(x,1.76,8.91,.58,.75)} fill="#696344" stroke="#bba279" strokeWidth=".8"/>
+   <path d={wallRect(x+.06,1.83,8.89,.46,.61)} fill={i%2?"#324c4e":"#3f4940"}/>
+   <path d={d([[x+.1,1.86,8.87],[x+.22,2.14,8.87],[x+.34,1.96,8.87],[x+.45,2.3,8.87],[x+.48,1.86,8.87]])} fill="#b1a27a" opacity=".55"/>
+  </g>)}
  </g>;
 }

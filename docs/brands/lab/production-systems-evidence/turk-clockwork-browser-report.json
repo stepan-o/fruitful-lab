@@ -78,10 +78,10 @@
   "timings": [
     {
       "kind": "cold",
-      "dom": 1551,
-      "lcp": 1696,
+      "dom": 2031,
+      "lcp": 1996,
       "cls": 0,
-      "htmlEncoded": 280470,
+      "htmlEncoded": 289782,
       "resources": [
         {
           "name": "3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
@@ -160,7 +160,7 @@
         },
         {
           "name": "stepanoskin?_rsc=15be1",
-          "bytes": 165,
+          "bytes": 167,
           "type": "fetch"
         },
         {
@@ -169,14 +169,14 @@
           "type": "fetch"
         }
       ],
-      "svgPaths": 1251
+      "svgPaths": 1274
     },
     {
       "kind": "warm",
-      "dom": 409,
-      "lcp": 572,
+      "dom": 536,
+      "lcp": 324,
       "cls": 0,
-      "htmlEncoded": 280470,
+      "htmlEncoded": 289782,
       "resources": [
         {
           "name": "3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
@@ -255,7 +255,7 @@
         },
         {
           "name": "stepanoskin?_rsc=15be1",
-          "bytes": 165,
+          "bytes": 167,
           "type": "fetch"
         },
         {
@@ -264,7 +264,7 @@
           "type": "fetch"
         }
       ],
-      "svgPaths": 1251
+      "svgPaths": 1274
     }
   ],
   "scenario": "Games selected",

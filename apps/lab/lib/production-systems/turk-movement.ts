@@ -1,31 +1,50 @@
-/** Original editorial movement, in SVG units. Module 1 and a common 20°
- * pressure angle give every wheel the same tooth pitch. Adjacent pitch circles
- * are tangent; four external meshes preserve clockwise motion at the takeoff.
- * The existing conveyor consumes 4/5 revolution in each 2.4-second tray period.
+/** Original open clockwork, in SVG units. All meshes use module-one teeth.
+ * Rear bearings leave the train exposed; the foreground reduction shares the
+ * centre wheel's arbor. The conveyor takes 4/5 revolution per 2.4-second tray.
  */
-const teeth = [58, 34, 44, 56, 44];
-const heights = [429, 390, 394, 439, 415];
-const names = ["barrel", "intermediate", "centre", "transfer", "takeoff"];
 export const movementOutput = { x: 322, y: 415, revolutionsPerSecond: 1 / 3 };
+export type MovementWheel = {
+  name: string; x: number; y: number; teeth: number; radius: number;
+  phase: number; direction: number; period: number; layer: number;
+};
+const teeth = [74, 32, 48, 34, 36];
+const heights = [421, 387, 411, 444, 415];
+const names = ["flywheel", "intermediate", "centre", "transfer", "takeoff"];
 const xs = [0, 0, 0, 0, movementOutput.x];
 for (let i = 3; i >= 0; i--) {
   const distance = (teeth[i] + teeth[i + 1]) / 2;
   xs[i] = xs[i + 1] - Math.sqrt(distance ** 2 - (heights[i + 1] - heights[i]) ** 2);
 }
-const phases = [0];
-for (let i = 1; i < teeth.length; i++) {
-  const angle = Math.atan2(heights[i] - heights[i - 1], xs[i] - xs[i - 1]);
-  const previousTooth = (angle - phases[i - 1]) * teeth[i - 1] / (2 * Math.PI);
-  // Put a tooth opposite a space at the pitch-circle contact, at every time.
-  phases[i] = angle + Math.PI - (0.5 - previousTooth) * 2 * Math.PI / teeth[i];
+function meshPhase(a: MovementWheel, x: number, y: number, count: number) {
+  const angle = Math.atan2(y - a.y, x - a.x) * 180 / Math.PI;
+  const previousTooth = (angle - a.phase) * a.teeth / 360;
+  return angle + 180 - (0.5 - previousTooth) * 360 / count;
 }
-export const movementWheels = teeth.map((count, i) => ({
-  name: names[i], x: xs[i], y: heights[i], teeth: count, radius: count / 2,
-  phase: phases[i] * 180 / Math.PI,
-  direction: i % 2 ? -1 : 1,
-  period: count / teeth[4] / movementOutput.revolutionsPerSecond,
-}));
-export type MovementWheel = typeof movementWheels[number];
+export const movementWheels: MovementWheel[] = [];
+for (let i = 0; i < teeth.length; i++) {
+  movementWheels.push({
+    name: names[i], x: xs[i], y: heights[i], teeth: teeth[i], radius: teeth[i] / 2,
+    phase: i ? meshPhase(movementWheels[i - 1], xs[i], heights[i], teeth[i]) : 0,
+    direction: i % 2 ? -1 : 1, period: teeth[i] / teeth[4] / movementOutput.revolutionsPerSecond,
+    layer: 0,
+  });
+}
+export const movementMeshes: [number, number][] = [[0, 1], [1, 2], [2, 3], [3, 4]];
+function branch(parent: number, name: string, count: number, dx: number, dy: number) {
+  const a = movementWheels[parent], x = a.x + dx, y = a.y + dy;
+  movementMeshes.push([parent, movementWheels.length]);
+  movementWheels.push({ name, x, y, teeth: count, radius: count / 2,
+    phase: meshPhase(a, x, y, count), direction: -a.direction,
+    period: a.period * count / a.teeth, layer: a.layer });
+}
+branch(0, "upper-pinion", 20, 0, -47);
+branch(0, "winding-pinion", 20, -Math.sqrt(47 ** 2 - 32 ** 2), -32);
+branch(4, "relay-pinion", 18, 23, -Math.sqrt(27 ** 2 - 23 ** 2));
+branch(7, "upper-relay", 28, Math.sqrt(23 ** 2 - 22 ** 2), -22);
+// A compound arbor carries two wheels at the same speed in separate planes.
+export const movementCompound: [number, number] = [2, 9];
+movementWheels.push({ ...movementWheels[2], name: "compound-pinion", teeth: 20, radius: 10, layer: 1 });
+branch(9, "reduction", 30, -20, 15);
 
 /** Sampled involute flanks with root clearance. No runtime geometry or frames. */
 export function wheelOutline(count: number) {

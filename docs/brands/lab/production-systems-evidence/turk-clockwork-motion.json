@@ -4,51 +4,51 @@
       "time": 0,
       "wheels": [
         {
-          "name": "barrel",
-          "period": 3.9545454545454546,
-          "cssPeriod": 3.95455,
+          "name": "flywheel",
+          "period": 6.166666666666666,
+          "cssPeriod": 6.16667,
           "direction": 1,
-          "teeth": 58,
+          "teeth": 74,
           "angle": 0,
           "center": [
-            193.16000366210938,
-            429
+            205.4199981689453,
+            421
           ]
         },
         {
           "name": "intermediate",
-          "period": 2.3181818181818183,
-          "cssPeriod": 2.31818,
+          "period": 2.6666666666666665,
+          "cssPeriod": 2.66667,
           "direction": -1,
-          "teeth": 34,
+          "teeth": 32,
           "angle": 0,
           "center": [
-            217.5500030517578,
-            390
+            246.07000732421875,
+            387
           ]
         },
         {
           "name": "centre",
-          "period": 3,
-          "cssPeriod": 3,
+          "period": 4,
+          "cssPeriod": 4,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 48,
           "angle": 0,
           "center": [
-            256.3399963378906,
-            394
+            278.07000732421875,
+            411
           ]
         },
         {
           "name": "transfer",
-          "period": 3.8181818181818183,
-          "cssPeriod": 3.81818,
+          "period": 2.8333333333333335,
+          "cssPeriod": 2.83333,
           "direction": -1,
-          "teeth": 56,
+          "teeth": 34,
           "angle": 0,
           "center": [
-            278.1400146484375,
-            439
+            302.3999938964844,
+            444
           ]
         },
         {
@@ -56,11 +56,83 @@
           "period": 3,
           "cssPeriod": 3,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 36,
           "angle": 0,
           "center": [
             322,
             415
+          ]
+        },
+        {
+          "name": "upper-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 0,
+          "center": [
+            205.4199981689453,
+            374
+          ]
+        },
+        {
+          "name": "winding-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 0,
+          "center": [
+            170.99000549316406,
+            389
+          ]
+        },
+        {
+          "name": "relay-pinion",
+          "period": 1.5,
+          "cssPeriod": 1.5,
+          "direction": -1,
+          "teeth": 18,
+          "angle": 0,
+          "center": [
+            345,
+            400.8599853515625
+          ]
+        },
+        {
+          "name": "upper-relay",
+          "period": 2.3333333333333335,
+          "cssPeriod": 2.33333,
+          "direction": 1,
+          "teeth": 28,
+          "angle": 0,
+          "center": [
+            351.7099914550781,
+            378.8599853515625
+          ]
+        },
+        {
+          "name": "compound-pinion",
+          "period": 4,
+          "cssPeriod": 4,
+          "direction": 1,
+          "teeth": 20,
+          "angle": 0,
+          "center": [
+            278.07000732421875,
+            411
+          ]
+        },
+        {
+          "name": "reduction",
+          "period": 6,
+          "cssPeriod": 6,
+          "direction": -1,
+          "teeth": 30,
+          "angle": 0,
+          "center": [
+            258.07000732421875,
+            426
           ]
         }
       ]
@@ -69,51 +141,51 @@
       "time": 600,
       "wheels": [
         {
-          "name": "barrel",
-          "period": 3.9545454545454546,
-          "cssPeriod": 3.95455,
+          "name": "flywheel",
+          "period": 6.166666666666666,
+          "cssPeriod": 6.16667,
           "direction": 1,
-          "teeth": 58,
-          "angle": 54.620682406461015,
+          "teeth": 74,
+          "angle": 35.027050433489656,
           "center": [
-            193.16000366210938,
-            429
+            205.4199981689453,
+            421
           ]
         },
         {
           "name": "intermediate",
-          "period": 2.3181818181818183,
-          "cssPeriod": 2.31818,
+          "period": 2.6666666666666665,
+          "cssPeriod": 2.66667,
           "direction": -1,
-          "teeth": 34,
-          "angle": -93.17647076589468,
+          "teeth": 32,
+          "angle": -81.00002326404382,
           "center": [
-            217.5500030517578,
-            390
+            246.07000732421875,
+            387
           ]
         },
         {
           "name": "centre",
-          "period": 3,
-          "cssPeriod": 3,
+          "period": 4,
+          "cssPeriod": 4,
           "direction": 1,
-          "teeth": 44,
-          "angle": 72.00000825765157,
+          "teeth": 48,
+          "angle": 54.00001188401849,
           "center": [
-            256.3399963378906,
-            394
+            278.07000732421875,
+            411
           ]
         },
         {
           "name": "transfer",
-          "period": 3.8181818181818183,
-          "cssPeriod": 3.81818,
+          "period": 2.8333333333333335,
+          "cssPeriod": 2.83333,
           "direction": -1,
-          "teeth": 56,
-          "angle": -56.57141967603477,
+          "teeth": 34,
+          "angle": -76.23530453672662,
           "center": [
-            278.1400146484375,
-            439
+            302.3999938964844,
+            444
           ]
         },
         {
@@ -121,11 +193,83 @@
           "period": 3,
           "cssPeriod": 3,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 36,
           "angle": 72.00000825765157,
           "center": [
             322,
             415
+          ]
+        },
+        {
+          "name": "upper-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": -129.6000093191535,
+          "center": [
+            205.4199981689453,
+            374
+          ]
+        },
+        {
+          "name": "winding-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": -129.6000093191535,
+          "center": [
+            170.99000549316406,
+            389
+          ]
+        },
+        {
+          "name": "relay-pinion",
+          "period": 1.5,
+          "cssPeriod": 1.5,
+          "direction": -1,
+          "teeth": 18,
+          "angle": -144.0000118840185,
+          "center": [
+            345,
+            400.8599853515625
+          ]
+        },
+        {
+          "name": "upper-relay",
+          "period": 2.3333333333333335,
+          "cssPeriod": 2.33333,
+          "direction": 1,
+          "teeth": 28,
+          "angle": 92.57142700527189,
+          "center": [
+            351.7099914550781,
+            378.8599853515625
+          ]
+        },
+        {
+          "name": "compound-pinion",
+          "period": 4,
+          "cssPeriod": 4,
+          "direction": 1,
+          "teeth": 20,
+          "angle": 54.00001188401849,
+          "center": [
+            278.07000732421875,
+            411
+          ]
+        },
+        {
+          "name": "reduction",
+          "period": 6,
+          "cssPeriod": 6,
+          "direction": -1,
+          "teeth": 30,
+          "angle": -35.9999881159815,
+          "center": [
+            258.07000732421875,
+            426
           ]
         }
       ]
@@ -134,51 +278,51 @@
       "time": 1200,
       "wheels": [
         {
-          "name": "barrel",
-          "period": 3.9545454545454546,
-          "cssPeriod": 3.95455,
+          "name": "flywheel",
+          "period": 6.166666666666666,
+          "cssPeriod": 6.16667,
           "direction": 1,
-          "teeth": 58,
-          "angle": 109.24139397497471,
+          "teeth": 74,
+          "angle": 70.05408162366565,
           "center": [
-            193.16000366210938,
-            429
+            205.4199981689453,
+            421
           ]
         },
         {
           "name": "intermediate",
-          "period": 2.3181818181818183,
-          "cssPeriod": 2.31818,
+          "period": 2.6666666666666665,
+          "cssPeriod": 2.66667,
           "direction": -1,
-          "teeth": 34,
-          "angle": 173.64703984127146,
+          "teeth": 32,
+          "angle": -162.0000082576516,
           "center": [
-            217.5500030517578,
-            390
+            246.07000732421875,
+            387
           ]
         },
         {
           "name": "centre",
-          "period": 3,
-          "cssPeriod": 3,
+          "period": 4,
+          "cssPeriod": 4,
           "direction": 1,
-          "teeth": 44,
-          "angle": 144.0000118840185,
+          "teeth": 48,
+          "angle": 107.99999174234844,
           "center": [
-            256.3399963378906,
-            394
+            278.07000732421875,
+            411
           ]
         },
         {
           "name": "transfer",
-          "period": 3.8181818181818183,
-          "cssPeriod": 3.81818,
+          "period": 2.8333333333333335,
+          "cssPeriod": 2.83333,
           "direction": -1,
-          "teeth": 56,
-          "angle": -113.14285035332951,
+          "teeth": 34,
+          "angle": -152.47059063573332,
           "center": [
-            278.1400146484375,
-            439
+            302.3999938964844,
+            444
           ]
         },
         {
@@ -186,11 +330,83 @@
           "period": 3,
           "cssPeriod": 3,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 36,
           "angle": 144.0000118840185,
           "center": [
             322,
             415
+          ]
+        },
+        {
+          "name": "upper-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 100.79998498668633,
+          "center": [
+            205.4199981689453,
+            374
+          ]
+        },
+        {
+          "name": "winding-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 100.79998498668633,
+          "center": [
+            170.99000549316406,
+            389
+          ]
+        },
+        {
+          "name": "relay-pinion",
+          "period": 1.5,
+          "cssPeriod": 1.5,
+          "direction": -1,
+          "teeth": 18,
+          "angle": 72.00000825765157,
+          "center": [
+            345,
+            400.8599853515625
+          ]
+        },
+        {
+          "name": "upper-relay",
+          "period": 2.3333333333333335,
+          "cssPeriod": 2.33333,
+          "direction": 1,
+          "teeth": 28,
+          "angle": -174.85714185527206,
+          "center": [
+            351.7099914550781,
+            378.8599853515625
+          ]
+        },
+        {
+          "name": "compound-pinion",
+          "period": 4,
+          "cssPeriod": 4,
+          "direction": 1,
+          "teeth": 20,
+          "angle": 107.99999174234844,
+          "center": [
+            278.07000732421875,
+            411
+          ]
+        },
+        {
+          "name": "reduction",
+          "period": 6,
+          "cssPeriod": 6,
+          "direction": -1,
+          "teeth": 30,
+          "angle": -72.00000825765157,
+          "center": [
+            258.07000732421875,
+            426
           ]
         }
       ]
@@ -199,51 +415,51 @@
       "time": 1800,
       "wheels": [
         {
-          "name": "barrel",
-          "period": 3.9545454545454546,
-          "cssPeriod": 3.95455,
+          "name": "flywheel",
+          "period": 6.166666666666666,
+          "cssPeriod": 6.16667,
           "direction": 1,
-          "teeth": 58,
-          "angle": 163.8620439812457,
+          "teeth": 74,
+          "angle": 105.08109177546099,
           "center": [
-            193.16000366210938,
-            429
+            205.4199981689453,
+            421
           ]
         },
         {
           "name": "intermediate",
-          "period": 2.3181818181818183,
-          "cssPeriod": 2.31818,
+          "period": 2.6666666666666665,
+          "cssPeriod": 2.66667,
           "direction": -1,
-          "teeth": 34,
-          "angle": 80.47058363555122,
+          "teeth": 32,
+          "angle": 116.99996211115892,
           "center": [
-            217.5500030517578,
-            390
+            246.07000732421875,
+            387
           ]
         },
         {
           "name": "centre",
-          "period": 3,
-          "cssPeriod": 3,
+          "period": 4,
+          "cssPeriod": 4,
           "direction": 1,
-          "teeth": 44,
-          "angle": -144.0000118840185,
+          "teeth": 48,
+          "angle": 162.0000082576516,
           "center": [
-            256.3399963378906,
-            394
+            278.07000732421875,
+            411
           ]
         },
         {
           "name": "transfer",
-          "period": 3.8181818181818183,
-          "cssPeriod": 3.81818,
+          "period": 2.8333333333333335,
+          "cssPeriod": 2.83333,
           "direction": -1,
-          "teeth": 56,
-          "angle": -169.71428399242322,
+          "teeth": 34,
+          "angle": 131.29413349370844,
           "center": [
-            278.1400146484375,
-            439
+            302.3999938964844,
+            444
           ]
         },
         {
@@ -251,11 +467,83 @@
           "period": 3,
           "cssPeriod": 3,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 36,
           "angle": -144.0000118840185,
           "center": [
             322,
             415
+          ]
+        },
+        {
+          "name": "upper-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": -28.80000753134356,
+          "center": [
+            205.4199981689453,
+            374
+          ]
+        },
+        {
+          "name": "winding-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": -28.80000753134356,
+          "center": [
+            170.99000549316406,
+            389
+          ]
+        },
+        {
+          "name": "relay-pinion",
+          "period": 1.5,
+          "cssPeriod": 1.5,
+          "direction": -1,
+          "teeth": 18,
+          "angle": -72.00000825765157,
+          "center": [
+            345,
+            400.8599853515625
+          ]
+        },
+        {
+          "name": "upper-relay",
+          "period": 2.3333333333333335,
+          "cssPeriod": 2.33333,
+          "direction": 1,
+          "teeth": 28,
+          "angle": -82.28573121034619,
+          "center": [
+            351.7099914550781,
+            378.8599853515625
+          ]
+        },
+        {
+          "name": "compound-pinion",
+          "period": 4,
+          "cssPeriod": 4,
+          "direction": 1,
+          "teeth": 20,
+          "angle": 162.0000082576516,
+          "center": [
+            278.07000732421875,
+            411
+          ]
+        },
+        {
+          "name": "reduction",
+          "period": 6,
+          "cssPeriod": 6,
+          "direction": -1,
+          "teeth": 30,
+          "angle": -107.99999174234844,
+          "center": [
+            258.07000732421875,
+            426
           ]
         }
       ]
@@ -264,51 +552,51 @@
       "time": 2400,
       "wheels": [
         {
-          "name": "barrel",
-          "period": 3.9545454545454546,
-          "cssPeriod": 3.95455,
+          "name": "flywheel",
+          "period": 6.166666666666666,
+          "cssPeriod": 6.16667,
           "direction": 1,
-          "teeth": 58,
-          "angle": -141.5172302090504,
+          "teeth": 74,
+          "angle": 140.10811382068889,
           "center": [
-            193.16000366210938,
-            429
+            205.4199981689453,
+            421
           ]
         },
         {
           "name": "intermediate",
-          "period": 2.3181818181818183,
-          "cssPeriod": 2.31818,
+          "period": 2.6666666666666665,
+          "cssPeriod": 2.66667,
           "direction": -1,
-          "teeth": 34,
-          "angle": -12.70586194879782,
+          "teeth": 32,
+          "angle": 35.9999881159815,
           "center": [
-            217.5500030517578,
-            390
+            246.07000732421875,
+            387
           ]
         },
         {
           "name": "centre",
-          "period": 3,
-          "cssPeriod": 3,
+          "period": 4,
+          "cssPeriod": 4,
           "direction": 1,
-          "teeth": 44,
-          "angle": -72.00000825765157,
+          "teeth": 48,
+          "angle": -144.0000118840185,
           "center": [
-            256.3399963378906,
-            394
+            278.07000732421875,
+            411
           ]
         },
         {
           "name": "transfer",
-          "period": 3.8181818181818183,
-          "cssPeriod": 3.81818,
+          "period": 2.8333333333333335,
+          "cssPeriod": 2.83333,
           "direction": -1,
-          "teeth": 56,
-          "angle": 133.7142948590722,
+          "teeth": 34,
+          "angle": 55.05881426191392,
           "center": [
-            278.1400146484375,
-            439
+            302.3999938964844,
+            444
           ]
         },
         {
@@ -316,11 +604,83 @@
           "period": 3,
           "cssPeriod": 3,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 36,
           "angle": -72.00000825765157,
           "center": [
             322,
             415
+          ]
+        },
+        {
+          "name": "upper-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": -158.39996592214143,
+          "center": [
+            205.4199981689453,
+            374
+          ]
+        },
+        {
+          "name": "winding-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": -158.39996592214143,
+          "center": [
+            170.99000549316406,
+            389
+          ]
+        },
+        {
+          "name": "relay-pinion",
+          "period": 1.5,
+          "cssPeriod": 1.5,
+          "direction": -1,
+          "teeth": 18,
+          "angle": 144.0000118840185,
+          "center": [
+            345,
+            400.8599853515625
+          ]
+        },
+        {
+          "name": "upper-relay",
+          "period": 2.3333333333333335,
+          "cssPeriod": 2.33333,
+          "direction": 1,
+          "teeth": 28,
+          "angle": 10.285716007576804,
+          "center": [
+            351.7099914550781,
+            378.8599853515625
+          ]
+        },
+        {
+          "name": "compound-pinion",
+          "period": 4,
+          "cssPeriod": 4,
+          "direction": 1,
+          "teeth": 20,
+          "angle": -144.0000118840185,
+          "center": [
+            278.07000732421875,
+            411
+          ]
+        },
+        {
+          "name": "reduction",
+          "period": 6,
+          "cssPeriod": 6,
+          "direction": -1,
+          "teeth": 30,
+          "angle": -144.0000118840185,
+          "center": [
+            258.07000732421875,
+            426
           ]
         }
       ]
@@ -329,51 +689,51 @@
       "time": 2999,
       "wheels": [
         {
-          "name": "barrel",
-          "period": 3.9545454545454546,
-          "cssPeriod": 3.95455,
+          "name": "flywheel",
+          "period": 6.166666666666666,
+          "cssPeriod": 6.16667,
           "direction": 1,
-          "teeth": 58,
-          "angle": -86.98758681281613,
+          "teeth": 74,
+          "angle": 175.07675916877906,
           "center": [
-            193.16000366210938,
-            429
+            205.4199981689453,
+            421
           ]
         },
         {
           "name": "intermediate",
-          "period": 2.3181818181818183,
-          "cssPeriod": 2.31818,
+          "period": 2.6666666666666665,
+          "cssPeriod": 2.66667,
           "direction": -1,
-          "teeth": 34,
-          "angle": -105.72705298162282,
+          "teeth": 32,
+          "angle": -44.86500648129798,
           "center": [
-            217.5500030517578,
-            390
+            246.07000732421875,
+            387
           ]
         },
         {
           "name": "centre",
-          "period": 3,
-          "cssPeriod": 3,
+          "period": 4,
+          "cssPeriod": 4,
           "direction": 1,
-          "teeth": 44,
-          "angle": -0.1199997721953574,
+          "teeth": 48,
+          "angle": -90.09000022643679,
           "center": [
-            256.3399963378906,
-            394
+            278.07000732421875,
+            411
           ]
         },
         {
           "name": "transfer",
-          "period": 3.8181818181818183,
-          "cssPeriod": 3.81818,
+          "period": 2.8333333333333335,
+          "cssPeriod": 2.83333,
           "direction": -1,
-          "teeth": 56,
-          "angle": 77.23716227615085,
+          "teeth": 34,
+          "angle": -21.04941577588718,
           "center": [
-            278.1400146484375,
-            439
+            302.3999938964844,
+            444
           ]
         },
         {
@@ -381,11 +741,83 @@
           "period": 3,
           "cssPeriod": 3,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 36,
           "angle": -0.1199997721953574,
           "center": [
             322,
             415
+          ]
+        },
+        {
+          "name": "upper-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 72.21602714695433,
+          "center": [
+            205.4199981689453,
+            374
+          ]
+        },
+        {
+          "name": "winding-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 72.21602714695433,
+          "center": [
+            170.99000549316406,
+            389
+          ]
+        },
+        {
+          "name": "relay-pinion",
+          "period": 1.5,
+          "cssPeriod": 1.5,
+          "direction": -1,
+          "teeth": 18,
+          "angle": 0.24000017163305337,
+          "center": [
+            345,
+            400.8599853515625
+          ]
+        },
+        {
+          "name": "upper-relay",
+          "period": 2.3333333333333335,
+          "cssPeriod": 2.33333,
+          "direction": 1,
+          "teeth": 28,
+          "angle": 102.70286019750921,
+          "center": [
+            351.7099914550781,
+            378.8599853515625
+          ]
+        },
+        {
+          "name": "compound-pinion",
+          "period": 4,
+          "cssPeriod": 4,
+          "direction": 1,
+          "teeth": 20,
+          "angle": -90.09000022643679,
+          "center": [
+            278.07000732421875,
+            411
+          ]
+        },
+        {
+          "name": "reduction",
+          "period": 6,
+          "cssPeriod": 6,
+          "direction": -1,
+          "teeth": 30,
+          "angle": -179.93999982162634,
+          "center": [
+            258.07000732421875,
+            426
           ]
         }
       ]
@@ -394,51 +826,51 @@
       "time": 3000,
       "wheels": [
         {
-          "name": "barrel",
-          "period": 3.9545454545454546,
-          "cssPeriod": 3.95455,
+          "name": "flywheel",
+          "period": 6.166666666666666,
+          "cssPeriod": 6.16667,
           "direction": 1,
-          "teeth": 58,
-          "angle": -86.89655093158676,
+          "teeth": 74,
+          "angle": 175.1351341585874,
           "center": [
-            193.16000366210938,
-            429
+            205.4199981689453,
+            421
           ]
         },
         {
           "name": "intermediate",
-          "period": 2.3181818181818183,
-          "cssPeriod": 2.31818,
+          "period": 2.6666666666666665,
+          "cssPeriod": 2.66667,
           "direction": -1,
-          "teeth": 34,
-          "angle": -105.88234789333595,
+          "teeth": 32,
+          "angle": -45,
           "center": [
-            217.5500030517578,
-            390
+            246.07000732421875,
+            387
           ]
         },
         {
           "name": "centre",
-          "period": 3,
-          "cssPeriod": 3,
+          "period": 4,
+          "cssPeriod": 4,
           "direction": 1,
-          "teeth": 44,
-          "angle": 0,
+          "teeth": 48,
+          "angle": -90,
           "center": [
-            256.3399963378906,
-            394
+            278.07000732421875,
+            411
           ]
         },
         {
           "name": "transfer",
-          "period": 3.8181818181818183,
-          "cssPeriod": 3.81818,
+          "period": 2.8333333333333335,
+          "cssPeriod": 2.83333,
           "direction": -1,
-          "teeth": 56,
-          "angle": 77.1428545733451,
+          "teeth": 34,
+          "angle": -21.17649317088884,
           "center": [
-            278.1400146484375,
-            439
+            302.3999938964844,
+            444
           ]
         },
         {
@@ -446,11 +878,83 @@
           "period": 3,
           "cssPeriod": 3,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 36,
           "angle": 0,
           "center": [
             322,
             415
+          ]
+        },
+        {
+          "name": "upper-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 72.00000825765157,
+          "center": [
+            205.4199981689453,
+            374
+          ]
+        },
+        {
+          "name": "winding-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 72.00000825765157,
+          "center": [
+            170.99000549316406,
+            389
+          ]
+        },
+        {
+          "name": "relay-pinion",
+          "period": 1.5,
+          "cssPeriod": 1.5,
+          "direction": -1,
+          "teeth": 18,
+          "angle": 0,
+          "center": [
+            345,
+            400.8599853515625
+          ]
+        },
+        {
+          "name": "upper-relay",
+          "period": 2.3333333333333335,
+          "cssPeriod": 2.33333,
+          "direction": 1,
+          "teeth": 28,
+          "angle": 102.85714542665491,
+          "center": [
+            351.7099914550781,
+            378.8599853515625
+          ]
+        },
+        {
+          "name": "compound-pinion",
+          "period": 4,
+          "cssPeriod": 4,
+          "direction": 1,
+          "teeth": 20,
+          "angle": -90,
+          "center": [
+            278.07000732421875,
+            411
+          ]
+        },
+        {
+          "name": "reduction",
+          "period": 6,
+          "cssPeriod": 6,
+          "direction": -1,
+          "teeth": 30,
+          "angle": 180,
+          "center": [
+            258.07000732421875,
+            426
           ]
         }
       ]
@@ -459,51 +963,51 @@
       "time": 6000,
       "wheels": [
         {
-          "name": "barrel",
-          "period": 3.9545454545454546,
-          "cssPeriod": 3.95455,
+          "name": "flywheel",
+          "period": 6.166666666666666,
+          "cssPeriod": 6.16667,
           "direction": 1,
-          "teeth": 58,
-          "angle": -173.79310476312045,
+          "teeth": 74,
+          "angle": -9.729739008340863,
           "center": [
-            193.16000366210938,
-            429
+            205.4199981689453,
+            421
           ]
         },
         {
           "name": "intermediate",
-          "period": 2.3181818181818183,
-          "cssPeriod": 2.31818,
+          "period": 2.6666666666666665,
+          "cssPeriod": 2.66667,
           "direction": -1,
-          "teeth": 34,
-          "angle": 148.23529795810856,
+          "teeth": 32,
+          "angle": -90,
           "center": [
-            217.5500030517578,
-            390
+            246.07000732421875,
+            387
           ]
         },
         {
           "name": "centre",
-          "period": 3,
-          "cssPeriod": 3,
+          "period": 4,
+          "cssPeriod": 4,
           "direction": 1,
-          "teeth": 44,
-          "angle": 0,
+          "teeth": 48,
+          "angle": 180,
           "center": [
-            256.3399963378906,
-            394
+            278.07000732421875,
+            411
           ]
         },
         {
           "name": "transfer",
-          "period": 3.8181818181818183,
-          "cssPeriod": 3.81818,
+          "period": 2.8333333333333335,
+          "cssPeriod": 2.83333,
           "direction": -1,
-          "teeth": 56,
-          "angle": 154.28570410242511,
+          "teeth": 34,
+          "angle": -42.35295306994156,
           "center": [
-            278.1400146484375,
-            439
+            302.3999938964844,
+            444
           ]
         },
         {
@@ -511,11 +1015,83 @@
           "period": 3,
           "cssPeriod": 3,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 36,
           "angle": 0,
           "center": [
             322,
             415
+          ]
+        },
+        {
+          "name": "upper-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 144.0000118840185,
+          "center": [
+            205.4199981689453,
+            374
+          ]
+        },
+        {
+          "name": "winding-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": 144.0000118840185,
+          "center": [
+            170.99000549316406,
+            389
+          ]
+        },
+        {
+          "name": "relay-pinion",
+          "period": 1.5,
+          "cssPeriod": 1.5,
+          "direction": -1,
+          "teeth": 18,
+          "angle": 0,
+          "center": [
+            345,
+            400.8599853515625
+          ]
+        },
+        {
+          "name": "upper-relay",
+          "period": 2.3333333333333335,
+          "cssPeriod": 2.33333,
+          "direction": 1,
+          "teeth": 28,
+          "angle": -154.28570410242511,
+          "center": [
+            351.7099914550781,
+            378.8599853515625
+          ]
+        },
+        {
+          "name": "compound-pinion",
+          "period": 4,
+          "cssPeriod": 4,
+          "direction": 1,
+          "teeth": 20,
+          "angle": 180,
+          "center": [
+            278.07000732421875,
+            411
+          ]
+        },
+        {
+          "name": "reduction",
+          "period": 6,
+          "cssPeriod": 6,
+          "direction": -1,
+          "teeth": 30,
+          "angle": 0,
+          "center": [
+            258.07000732421875,
+            426
           ]
         }
       ]
@@ -524,51 +1100,51 @@
       "time": 24000,
       "wheels": [
         {
-          "name": "barrel",
-          "period": 3.9545454545454546,
-          "cssPeriod": 3.95455,
+          "name": "flywheel",
+          "period": 6.166666666666666,
+          "cssPeriod": 6.16667,
           "direction": 1,
-          "teeth": 58,
-          "angle": 24.827591022131088,
+          "teeth": 74,
+          "angle": -38.918910196326735,
           "center": [
-            193.16000366210938,
-            429
+            205.4199981689453,
+            421
           ]
         },
         {
           "name": "intermediate",
-          "period": 2.3181818181818183,
-          "cssPeriod": 2.31818,
+          "period": 2.6666666666666665,
+          "cssPeriod": 2.66667,
           "direction": -1,
-          "teeth": 34,
-          "angle": -127.0588480028769,
+          "teeth": 32,
+          "angle": 0,
           "center": [
-            217.5500030517578,
-            390
+            246.07000732421875,
+            387
           ]
         },
         {
           "name": "centre",
-          "period": 3,
-          "cssPeriod": 3,
+          "period": 4,
+          "cssPeriod": 4,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 48,
           "angle": 0,
           "center": [
-            256.3399963378906,
-            394
+            278.07000732421875,
+            411
           ]
         },
         {
           "name": "transfer",
-          "period": 3.8181818181818183,
-          "cssPeriod": 3.81818,
+          "period": 2.8333333333333335,
+          "cssPeriod": 2.83333,
           "direction": -1,
-          "teeth": 56,
-          "angle": -102.85714542665491,
+          "teeth": 34,
+          "angle": -169.4117364997308,
           "center": [
-            278.1400146484375,
-            439
+            302.3999938964844,
+            444
           ]
         },
         {
@@ -576,11 +1152,83 @@
           "period": 3,
           "cssPeriod": 3,
           "direction": 1,
-          "teeth": 44,
+          "teeth": 36,
           "angle": 0,
           "center": [
             322,
             415
+          ]
+        },
+        {
+          "name": "upper-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": -144.0000118840185,
+          "center": [
+            205.4199981689453,
+            374
+          ]
+        },
+        {
+          "name": "winding-pinion",
+          "period": 1.6666666666666665,
+          "cssPeriod": 1.66667,
+          "direction": -1,
+          "teeth": 20,
+          "angle": -144.0000118840185,
+          "center": [
+            170.99000549316406,
+            389
+          ]
+        },
+        {
+          "name": "relay-pinion",
+          "period": 1.5,
+          "cssPeriod": 1.5,
+          "direction": -1,
+          "teeth": 18,
+          "angle": 0,
+          "center": [
+            345,
+            400.8599853515625
+          ]
+        },
+        {
+          "name": "upper-relay",
+          "period": 2.3333333333333335,
+          "cssPeriod": 2.33333,
+          "direction": 1,
+          "teeth": 28,
+          "angle": 102.85714542665491,
+          "center": [
+            351.7099914550781,
+            378.8599853515625
+          ]
+        },
+        {
+          "name": "compound-pinion",
+          "period": 4,
+          "cssPeriod": 4,
+          "direction": 1,
+          "teeth": 20,
+          "angle": 0,
+          "center": [
+            278.07000732421875,
+            411
+          ]
+        },
+        {
+          "name": "reduction",
+          "period": 6,
+          "cssPeriod": 6,
+          "direction": -1,
+          "teeth": 30,
+          "angle": 0,
+          "center": [
+            258.07000732421875,
+            426
           ]
         }
       ]
@@ -588,17 +1236,17 @@
   ],
   "pause": {
     "allStopped": true,
-    "count": 28
+    "count": 34
   },
   "markup": {
-    "wheels": 5,
-    "bridges": 5,
-    "bearings": 4,
+    "wheels": 11,
+    "bridges": 0,
+    "rearBearings": 9,
     "outputBearing": 1,
-    "animations": 28
+    "animations": 34
   },
   "reduced": {
     "running": 0,
-    "wheels": 5
+    "wheels": 11
   }
 }

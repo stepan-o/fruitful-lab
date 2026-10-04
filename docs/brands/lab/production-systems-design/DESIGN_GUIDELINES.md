@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 1.5 · 4 October 2026 · Mechanical Turk direction
+Version 1.6 · 4 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. The owner accepted the revised
 engraved illustration as an improvement and selected the historical Mechanical
@@ -210,7 +210,7 @@ cites the ASA distinction between significance, effect size and practical value.
 
 ### Conveyor construction · 4 October 2026
 
-The conveyor is a complete, supported assembly. The watch-finished cabinet
+The conveyor is a complete, supported assembly. The open clockwork cabinet
 movement below now meets the coupling boundary established by this pass. Loopforge supplies a light reference for substantial
 rails, bracing, inspection openings and fasteners. Retain this page’s engraved
 wood/iron/brass treatment rather than adopting the factory’s lighting or materials.
@@ -236,41 +236,42 @@ wood/iron/brass treatment rather than adopting the factory’s lighting or mater
   original period-material illustration, not a manufacturer drawing, fabrication
   plan or authenticated historical reconstruction.
 
-### Watch-finished cabinet movement · 4 October 2026
+### Open clockwork cabinet · 4 October 2026
 
-Owner direction: intricate clockwork with the care of a high-end Swiss movement,
-while preserving a legible, plausible drive to the accepted conveyor. Refine the
-opening’s left chamber only; the paper register and seated Turk remain the anchors.
+Owner correction: the watch reference became too literal. Broad silver supports
+covered too much of the compartment; five wheels of similar scale made the
+motion uniform. The current direction is an exposed, layered gear train, with
+small rear bearings and much more variation in wheel size and motion. This
+supersedes the first watch-bridge treatment in PR #68.
 
-Reference study: Patek Philippe’s 30-255 movement [S9] places shaped bridges over
-individual functions. Its hand-finishing guide [S10] describes polished bevels,
-recessed settings and overlapping circular graining. These inform material and
-construction, not a reproduction of that caliber. No manufacturer insignia or
-performance claim belongs on the profile’s original illustration.
-
-- Compose five wheels as a compact, rising-and-falling train, with four visible
-  contacts. Give the barrel a concentrically finished lid and separate stationary
-  winding ratchet/click. Keep its arbor in a bearing rather than an unsupported hub.
-- Distinguish three depths: a dark, circular-grained mainplate; warm brass wheels;
-  pale striped bearing bridges. Each bridge has a broad screw-fastened foot,
-  curved neck, bright chamfer and inset jewel. A very small oxblood bearing and
-  subdued blue-gray screw head provide color; no glow or jewel-like UI chrome.
-- The transmission uses module-one, 20° sampled involute teeth, with pitch radii
-  29, 17, 22, 28 and 22 SVG units. Centers are calculated from tangent pitch
-  circles; phases place teeth opposite gaps. Adjacent wheels counter-rotate at
-  equal pitch-line speed. These are illustration constraints, not toleranced CAD.
-- The last wheel’s center is exactly (322, 415). A visible bearing flange supports
-  the coaxial front sprocket, which carries power up to the conveyor jackshaft
-  and then to the head drum. Four meshes preserve clockwise output: 288° per
-  2.4 seconds, unchanged from the accepted conveyor. Gear relationships follow
-  the standard spur-gear geometry summarized by KHK [S11].
-- Each wheel completes full revolutions on its own linear CSS period; asymmetric
-  spokes therefore never jump when the tray cycle repeats. All five wheels use
-  the existing pause, visibility and reduced-motion lifecycle. No new client
-  bundle, external artwork, texture image, filter or frame-by-frame JS.
-- At phone size, the gold wheels, light bridges, dark recesses and continuous
-  drive path must remain distinct. Fine graining rewards closer inspection but
-  must not turn the whole compartment into an equally weighted texture.
+- Let gears occupy the view. One large, eight-spoke flywheel anchors the left;
+  medium brass wheels and smaller dark steel pinions form a denser, asymmetric
+  train. Keep the material family of the wooden Turk cabinet and its engraving.
+- Eleven wheels occupy two planes. The five-wheel main train drives the conveyor;
+  four smaller branch wheels mesh with it. A small foreground pinion shares the
+  centre arbor and drives a separate reduction wheel. Overlap has a physical
+  explanation, with an exposed spacer and open spokes revealing the deeper train.
+- Use a 74-tooth, radius-37 flywheel and pinions down to 18 teeth, radius 9.
+  Rotation periods range from 1.5 to approximately 6.17 seconds. Neighboring
+  gears counter-rotate, compound wheels share an angular speed, and the separate
+  reduction adds a slower counter-rotation. A small eccentric marks a fast pinion.
+- Recess bearings into the dark back of the case. Thin mounting rails remain
+  behind the wheels. Remove broad shaped bridges, pearl-patterned plates, bright
+  jewel settings and front braces. The only foreground collar belongs to the
+  conveyor takeoff; keep it small enough to expose the driving wheel’s teeth.
+- Preserve the precise connection at (322, 415): 288° clockwise per 2.4 seconds,
+  with the same vertical chain, jackshaft and head-drive chain as the accepted
+  conveyor. The entire mechanism uses the existing pause, visibility and reduced
+  motion lifecycle, with complete stills and no per-frame JS.
+- Geometry remains deliberate: common module-one teeth, tangent pitch circles,
+  phased contacts, matched pitch-line velocities and clearance between non-mating
+  wheels in the same plane. These are illustration constraints, not toleranced CAD.
+  KHK’s spur-gear reference [S11] informs these relationships.
+- Patek Philippe [S9–S10] remains a study of fine metal finishing, not a template
+  for the composition. Translate its care into thin rim highlights, hub detailing
+  and crisp tooth profiles. Do not reproduce a watch caliber or brand marks.
+- At phone size, the dominant flywheel, small gears, layered motion and continuous
+  conveyor drive should read before the engraved surface detail.
 
 The conveyor and its transmission are our editorial invention. Racknitz's
 figure is source-derived vector geometry, with a clipped forearm used for the

@@ -17,7 +17,7 @@ lighting. Performance remains important; it must not excuse unfinished visuals.
 - [x] Review multiple phases in motion, compare original factory art, iterate.
 - [x] Measure the GPU scene's bounded geometry, resolution and frame work; verify
   motion preferences, keyboard/phone controls, first viewport and production CI.
-- [ ] Update PR #59 and verify the hosted result.
+- [x] Update PR #59 and verify the hosted result.
 
 ## Current implementation
 
@@ -62,8 +62,20 @@ belong to superseded implementations.
   calls / about 401k triangles at the captured phase. Shadow/visibility phases
   change these counts. This is CPU submission on a shared desktop, not GPU/FPS,
   actual-phone or field evidence. The startup outlier is retained.
-- Hosted preview verification is pending publication of the final lens-color
-  correction. Production is not changed until the owner merges the draft PR.
+- Hosted preview d998c27 is READY and verified without console errors:
+  https://fruitful-gpb0qfrg5-stepan-oskins-projects.vercel.app/stepanoskin/loopforge
+  The deployed red lens, stage sweep, jam tension and adjacent hint were reviewed.
+  A phone-size pull, keyboard reset and pause/resume passed. At 320px and 390px,
+  document width equals viewport width; the hint stays inside the first screen.
+  Landscape 844 × 390 has no menu/conveyor overlap. Production awaits owner merge.
+- Hosted cold sampling also recorded a 737.2ms draw outlier and 18.26ms mean over
+  the first 120 landscape submissions. These include startup/shared-host overhead;
+  the larger outlier is retained rather than treating the earlier sample as a bound.
+
+Current hosted evidence:
+- [Desktop jam and red sweep](evidence/loopforge-stage-jam-desktop.webp)
+- [Phone jam and adjacent instruction](evidence/loopforge-stage-jam-phone.webp)
+- [Short landscape composition](evidence/loopforge-stage-landscape.webp)
 
 ## Brief and checklist
 

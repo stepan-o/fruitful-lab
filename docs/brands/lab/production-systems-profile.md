@@ -180,3 +180,37 @@ complete still scenes. Printed scenes are hidden to preserve the compact CV.
 
 Validation and screenshots for this pass are recorded in
 `production-systems-evidence/engraving-verification.md`.
+
+
+## Focused hero polish · 3 October 2026
+
+The owner asked for a coherent Mechanical Turk conveyor and clarified that the
+Turk must push a conveyor of A/B testing. The opening now uses the recognizable
+seated figure above a broad walnut case. Paired A/B specimens move together on
+its chessboard conveyor; the hand works a feed lever while the connected rollers
+and exposed transmission advance in the same indexed cycle. An open door,
+support brackets, joinery and feet establish one physical apparatus. The caption
+is “Many experiments. A few useful signals.” The outfeed transforms paired
+specimens into uncertain effect estimates. Its attached paper register shows
+mostly near-zero results, noise, some negatives and one large gain. Muted
+p-values and two marginal hindsight notes make the distinction between initial
+significance and later value explicit: a false positive and a valuable idea
+that was dropped too early.
+
+The ten results are synthetic normal-model examples, with matching estimates,
+approximate 95% intervals and two-sided p-values in arbitrary units. The two
+hindsight examples have authored underlying effects of 0 and +61, respectively;
+the labels are not inferred from p-values. The mixed outcome proportions are
+editorial, not empirical. A public methodology note and the ASA's 2016 statement
+explain this framing. No employer data or new professional claims are added.
+
+This supersedes the generic press, detached observation instrument and numbered
+process legend in the earlier opening. The seven later scenes remain the next
+focused polish passes. Historical sources, abstract professional facts and the
+existing motion preferences remain intact. The source-derived figure is reused
+inside the SVG with `use` references; no new image, font, dependency or client
+script is introduced.
+
+Branch: `codex/mechanical-turk-conveyor`, based on master `994074a`. The isolated
+worktree keeps this change separate from Sanctuary and launcher work.
+Validation and review captures: [hero verification](production-systems-evidence/turk-conveyor-verification.md).

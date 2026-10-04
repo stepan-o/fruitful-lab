@@ -1,0 +1,42 @@
+/* A single indexed feed: push, advance one specimen, return the hand.
+   Paused server rendering and the shared visibility/preference controller apply
+   to every part, so no independent timer or client bundle is necessary. */
+.belt { animation: feed 8s linear infinite; }
+/* Ten outcomes repeat over ten strokes; large gains occur once per cycle. */
+.results { animation: results 80s linear infinite; }
+.hand { transform-origin: 432px 235px; animation: push 8s ease-in-out infinite; }
+.feedHandle { transform-origin: 510px 309px; animation: handle 8s ease-in-out infinite; }
+.gear { transform-origin: 0 0; animation: turn 8s linear infinite; }
+.roller { transform-origin: 0 0; animation: roller 8s linear infinite; }
+.belt, .results, .hand, .feedHandle, .gear, .roller { animation-play-state: paused !important; }
+:global([data-playing="true"]) :is(.belt, .results, .hand, .feedHandle, .gear, .roller) { animation-play-state: running !important; }
+@keyframes feed { 0%, 12% { transform: translateX(0); } 52%, 100% { transform: translateX(88px); } }
+@keyframes push { 0%, 12%, 100% { transform: rotate(0); } 52%, 64% { transform: rotate(-7.5deg); } }
+@keyframes handle { 0%, 12%, 100% { transform: rotate(0); } 52%, 64% { transform: rotate(24deg); } }
+@keyframes turn { 0%, 12% { transform: rotate(0); } 52%, 100% { transform: rotate(var(--sweep)); } }
+@keyframes roller { 0%, 12% { transform: rotate(0); } 52%, 100% { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .belt, .results, .hand, .feedHandle, .gear, .roller { animation: none; } }
+
+@keyframes results {
+  0%, 1.2% { transform: translateX(0); }
+  5.2%, 11.2% { transform: translateX(88px); }
+  15.2%, 21.2% { transform: translateX(176px); }
+  25.2%, 31.2% { transform: translateX(264px); }
+  35.2%, 41.2% { transform: translateX(352px); }
+  45.2%, 51.2% { transform: translateX(440px); }
+  55.2%, 61.2% { transform: translateX(528px); }
+  65.2%, 71.2% { transform: translateX(616px); }
+  75.2%, 81.2% { transform: translateX(704px); }
+  85.2%, 91.2% { transform: translateX(792px); }
+  95.2%, 100% { transform: translateX(880px); }
+}
+.outcomeLegend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 16px 0 0; padding: 0; list-style: none; font-size: 11px; color: var(--muted); }
+.outcomeLegend li { display: flex; align-items: center; gap: 6px; }
+.outcomeLegend li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #766c5c; }
+.outcomeLegend li:nth-child(2)::before { background: #793c3c; }
+.outcomeLegend li:nth-child(3)::before { background: #4d6b4d; }
+
+.resultNotes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 0 20px; color: var(--muted); }
+.resultNotes p { margin: 0; border-left: 1px solid var(--line); padding-left: 12px; font-size: 11px; line-height: 1.5; }
+.resultNotes span { display: block; font-family: var(--mono); font-size: 9px; }
+.resultNotes em { display: block; margin-top: 4px; font-family: Georgia, serif; font-size: 13px; }

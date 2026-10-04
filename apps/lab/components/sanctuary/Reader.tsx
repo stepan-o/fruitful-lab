@@ -12,6 +12,8 @@ import InfernalTerm from "./InfernalTerm";
 import AudienceEconomy from "./plates/AudienceEconomy";
 import EveningPlace from "./plates/EveningPlace";
 import EvidenceFigure from "./EvidenceFigure";
+import VisualNotes from "./VisualNotes";
+import type { VisualNote } from "@/lib/sanctuary/visual-notes";
 import { playClang } from "@/lib/stepanoskin/audio";
 import { motionKey,soundKey,usePreference } from "@/lib/stepanoskin/preferences";
 import AssetImage from "@/components/media/AssetImage";
@@ -30,11 +32,12 @@ export type ReaderProps = {
   assets: AssetManifest;
   sources: EvidenceSource[];
   rules: string[];
+  visualNotes?: VisualNote[];
 };
 
 const roman = (n:number) => ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI","XXII"][n];
 
-export default function Reader({locale,current,index,navigation,parts,assets,sources,rules}:ReaderProps) {
+export default function Reader({locale,current,index,navigation,parts,assets,sources,rules,visualNotes=[]}:ReaderProps) {
   const copy = readerCopy[locale];
   const soundCopy = translations[locale];
   const [sound,setSound] = usePreference(soundKey);
@@ -81,15 +84,15 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
 
   return <main className={styles.reader} lang={locale} data-motion={motion?"on":"off"} data-media-mode="editorial" onClickCapture={transitionSound}>
     {current ? <a href="#reading" className={styles.skip}>{copy.skip}</a> : null}
-    {current ? <header className={styles.header}>
-      <Link className={styles.brand} href="/stepanoskin"><span aria-hidden="true">◇</span> STEPAN OSKIN</Link>
-      <div className={styles.headerControls}>
+    <header className={styles.header}>
+      <Link className={styles.brand} href="/stepanoskin"><span aria-hidden="true">←</span> {soundCopy.backToMenu}</Link>
+      {current ? <div className={styles.headerControls}>
         <button className={styles.contentsButton} type="button" onClick={()=>contents.current?.showModal()} aria-haspopup="dialog" aria-label={copy.contents}>☰ <span>{copy.contents}</span></button>
         <button className={styles.preferenceButton} type="button" aria-label={sound?soundCopy.soundOn:soundCopy.soundOff} title={sound?soundCopy.soundOn:soundCopy.soundOff} aria-pressed={sound} onClick={()=>setSound(!sound)}>{sound?"◖))":"◖×"}</button>
         <button className={styles.preferenceButton} type="button" aria-label={motion?copy.motionOn:copy.motionOff} title={motion?copy.motionOn:copy.motionOff} aria-pressed={motion} onClick={()=>setMotion(!motion)}>{motion?"✧":"◇"}</button>
         <label className={styles.locale}><span className={styles.srOnly}>{localeNames[locale]}</span><select aria-label={localeNames[locale]} value={locale} onChange={event=>switchLocale(event.target.value)}>{locales.map(l=><option key={l} value={l}>{localeNames[l]}</option>)}</select></label>
-      </div>
-    </header> : null}
+      </div> : null}
+    </header>
 
     <div className={`${styles.layout} ${!current ? styles.landingLayout : ""}`}>
       {current ? <aside className={styles.rail} aria-label={copy.contents}>
@@ -105,7 +108,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             <p className={styles.eyebrow}>An illustrated study of game design & monetization</p>
             <h1>Sanctuary<br/><em>Economics</em></h1>
             <p className={styles.coverLede}>How the games we love are built, sold and kept alive.</p>
-            <Link href={chapterHref(first.id)} className={styles.primary} lang={locale}>{copy.start} <span aria-hidden="true">↗</span></Link>
+            <Link href={chapterHref(first.id)} className={styles.primary} lang={locale}>{copy.start} <span aria-hidden="true">↗︎</span></Link>
           </section>
         </> : <>
           <article className={styles.article} lang="en" data-opening={index === 0 || current.id === "the-fork" || undefined}>
@@ -173,6 +176,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             {current.table?<div className={styles.tableWrap} tabIndex={0} aria-label={current.table.caption}><table><caption>{current.table.caption}</caption><thead><tr>{current.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{current.table.rows.map(row=><tr key={row[0]}>{row.map((cell,i)=>i===0?<th scope="row" key={i}>{cell}</th>:<td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>:null}
             {current.figures?.map((figure,i)=>figure.placement !== "opening" && figure.afterParagraph === undefined ? renderFigure(figure,i) : null)}
             {current.takeaway ? <blockquote className={styles.takeaway}><span aria-hidden="true">◇</span>{current.takeaway}</blockquote> : null}
+            <VisualNotes notes={visualNotes}/>
             <details className={styles.evidence}><summary lang={locale}>{copy.sourceNotes} <span aria-hidden="true">+</span></summary><p>{current.evidence}</p>{sources.length?<ol>{sources.map(source=><li key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><p>{source.note}</p></li>)}</ol>:<p>Source: the stated mathematical model or owner-provided research capture. Original scene studies accompany selected visual citations.</p>}</details>
             {index===navigation.length-1?<>
               <section className={styles.coda}>

@@ -1,3 +1,13 @@
+Sanctuary visual notebook (2026-10-04): `lib/sanctuary/graphic-descriptions.json`
+and `visual-notes.ts` hold the description, interpretation, motion and references
+for original chapter art and instruments. Source images join from the existing
+media registers. The server passes only active-chapter notes to `Reader`;
+“About the visuals” is collapsed by default, with the original-art atlas also
+in `/stepanoskin/game-monetization/credits`. Add a record when adding a graphic.
+Arcade screen loops are CSS transforms gated by `useLivingPlate`; they are
+original demonstrations, not game emulation. Sanctuary has its own dark viewport
+metadata/safe-area treatment and a menu-return link on its cover and chapters.
+
 Sanctuary arcade imagery (2026-10-04): the opening adds five sourced Pong/Gauntlet
 images in the reproducible `sanctuary-arcade` pack. `lib/sanctuary/media.ts` combines
 reviewed inventories server-side; only the current chapter’s metadata reaches the

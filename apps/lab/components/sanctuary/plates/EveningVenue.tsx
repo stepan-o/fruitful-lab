@@ -10,6 +10,7 @@ const motes=Array.from({length:10},(_,i)=>({x:115+(i*109)%752,y:125+(i*43)%201,r
 function EveningVenue() {
  const id=useId().replaceAll(":","");
  return <svg viewBox="0 0 1000 590" role="img" aria-label="An imagined arcade bar: cabinets line the left wall, a timber counter runs along the right, and players face glowing screens beside an open aisle" data-venue-composition="photographic-perspective">
+  <desc>Two partners face the nearest paddle game, each reaching one control. Rain and distant lightning stay outside the rear door; behind the counter, a bartender polishes a glass.</desc>
   <defs>
    <radialGradient id={`${id}-lamplight`}><stop stopColor="#e4b671" stopOpacity=".3"/><stop offset=".38" stopColor="#d8ac64" stopOpacity=".13"/><stop offset="1" stopColor="#d8ac64" stopOpacity="0"/></radialGradient>
    <radialGradient id={`${id}-crtlight`}><stop stopColor="#7fbcae" stopOpacity=".14"/><stop offset="1" stopColor="#74b6aa" stopOpacity="0"/></radialGradient>

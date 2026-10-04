@@ -1,0 +1,6 @@
+.rally,.paddle,.patrol{animation:screen-route 8s linear infinite paused}
+.patrol{transform:translate(var(--rest-x),var(--rest-y))}
+.paddle{animation-timing-function:ease-in-out}
+:global([data-playing=true]) :is(.rally,.paddle,.patrol){animation-play-state:running}
+@keyframes screen-route{0%,100%{transform:translate(var(--x0),var(--y0))}25%{transform:translate(var(--x1),var(--y1))}50%{transform:translate(var(--x2),var(--y2))}75%{transform:translate(var(--x3),var(--y3))}}
+@media(prefers-reduced-motion:reduce){.rally,.paddle,.patrol{animation:none!important}}

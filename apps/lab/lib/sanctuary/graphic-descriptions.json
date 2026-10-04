@@ -1,0 +1,266 @@
+{
+  "insert-coin": {
+    "scene": {
+      "description": "Cabinets recede along the left wall; a timber counter and seated customers occupy the right. Two players share the nearest cabinet, each using one rotary control. The open aisle leads toward a rain-lit rear door. A single perspective sets the furniture, people and hand-to-control contact. Warm lamps belong to the room; cooler light belongs to the games.",
+      "reading": "The room gives the machine a social setting before the chapter opens its coin door. Players, spectators, customers and staff share the evening without sharing the same activity. It is an imagined contemporary room, not a reconstruction of Andy Capp’s Tavern in 1972.",
+      "behavior": "The near screen runs a paddle-and-ball rally; the two smaller screens show figures circling a maze. The screen planes follow the cabinets’ perspective. Rain falls outside the glazed door, with occasional soft distant lightning confined to its panes. The bartender supports a glass with one hand while the other polishes it. Furniture, feet and seated bodies remain still; the existing motion controls pause every animated layer."
+    },
+    "diagram": {
+      "description": "The upright is shown from the front and side so that its marquee, speaker grille, curved CRT, four control stations and hinged service door remain separate manufactured parts. Inside the open door, a deliberately enlarged settings panel connects the machine’s commercial setting to the adventure above it.",
+      "reading": "Change health per coin between 100, 600 and 2,000. These are documented options; 600 is the manual’s recommended setting. The selected amount changes the readout and comparison bar. Health is a reserve consumed under the game’s rules, so the bar never converts it into a fabricated number of minutes.",
+      "boundary": "The original dungeon runs a ten-second attract loop. Four color-coded figures travel a clear passage around a central island; a guard, a projectile and a small treasure glint add distinct rhythms. The floor plan, electronics and animation timing are invented, not a reproduction of Atari’s circuitry or game code."
+    }
+  },
+  "several-histories": {
+    "scene": {
+      "description": "A coin-operated cabinet, adjustable switches and several commercial stalls occupy the same engraved arcade. Their shared architectural setting holds different offers together instead of depicting one machine turning into the next.",
+      "reading": "The image prepares a history of coexisting arrangements. A bought copy, an item economy and paid participation answer different questions about who pays and what they receive. The architecture is a metaphor, not a historical venue.",
+      "behavior": "The engraving is still; the adjacent historical selector supplies the change of emphasis."
+    },
+    "diagram": {
+      "description": "Five dated examples form a vertical historical register. A selector illuminates paid participation, the purchased copy, an additional offer or advertising while leaving the other examples visible.",
+      "reading": "Compare Gauntlet with Diablo II: another attempt can be covered by a purchase already made. The later examples add other participants or offers. Highlighting changes the reading of the register, not the underlying dates.",
+      "boundary": "These are selected anchors rather than invention dates, an exhaustive timeline or stages every game must pass through."
+    }
+  },
+  "concord": {
+    "scene": {
+      "description": "Two industrial team bays face each other across an unoccupied arena. Cover and entrances suggest a space prepared for encounters, while vacant player positions leave the expected activity missing.",
+      "reading": "The visual makes a dependency palpable: a multiplayer arena needs people available to play together. It is an original arena, not a traced Concord map or a picture of its servers.",
+      "behavior": "The empty scene stays still. Motion would undermine the absence the composition is built around."
+    },
+    "diagram": {
+      "description": "Three dated stops show launch, the closure announcement and the service going offline. A separate receipt records refunds. Below, a sieve lists region, mode, skill, platform and time as ways a large audience can become a smaller matching pool.",
+      "reading": "Read the timeline as documented events and the sieve as an explanation of matchmaking constraints. They answer different questions; neither supplies an audited player count.",
+      "boundary": "The official notice establishes dates and refunds. The queue sketch does not isolate why Concord closed or establish a universal minimum audience."
+    }
+  },
+  "what-decides": {
+    "scene": {
+      "description": "A brass directional receiver faces a small orbital system inside an unfinished observatory. The instrument, signal paths and campfire-scale setting borrow the vocabulary of investigation associated with Outer Wilds.",
+      "reading": "The protagonist here is a question. The receiver gives otherwise invisible uncertainty a direction, while the unfinished surroundings suggest that a useful prototype can precede a finished world.",
+      "behavior": "The illustration is a still composition. Its companion instrument changes the question being investigated."
+    },
+    "diagram": {
+      "description": "The exhibit offers three uncertainties: clue readability, combat choice and offer comprehension. Each selection connects a proposed question to a small prototype and an observation that could change a decision.",
+      "reading": "Try moving between the three questions. What matters is whether the observation would inform a different next step, rather than how much of the final game the prototype resembles.",
+      "boundary": "The proposed probes are our examples. Mobius’s account supports the discussion of prototype learning; it does not report results from these invented exercises."
+    }
+  },
+  "shape-of-money": {
+    "scene": {
+      "description": "A storefront, workshop and inhabited world are joined by pipes and a furnace. Brass connections make continuing work visible behind the illuminated shopfront.",
+      "reading": "The furnace stands for obligations that outlast a sale: maintaining access, producing further activities and supporting people doing that work. Pipe widths and light levels carry no financial scale.",
+      "behavior": "This plate is still. Selection in the adjacent model traces a particular obligation without animating an invented cash flow."
+    },
+    "diagram": {
+      "description": "Four connected positions separate player value, revenue, operations and new content. The selector shifts attention around the loop and explains what each relationship asks of the provider.",
+      "reading": "Follow money beyond the till and then return to the player’s experience. Funding a service and making it worth using are connected tasks, but neither guarantees the other.",
+      "boundary": "This is a qualitative model. No studio budget, margin, break-even date or amount of content is encoded."
+    }
+  },
+  "six-games": {
+    "scene": {
+      "description": "Six windows share one engraved frame: a party, a fractured crown, an expedition monument, a hunt, a neon skyline and a dungeon. Each uses a different identifying motif at an equal visual size.",
+      "reading": "The emblems refer to BG3, Elden Ring, Expedition 33, The Witcher 3, Cyberpunk 2077 and Diablo IV. The shared frame makes them comparable while refusing to treat their product promises as interchangeable.",
+      "behavior": "The emblems remain still. The comparison below changes the descriptions while keeping the six games in stable positions."
+    },
+    "diagram": {
+      "description": "A six-card atlas can be read through design emphasis, commercial structure or what completion means. The same products remain visible when the lens changes.",
+      "reading": "Changing the lens exposes dimensions a genre label hides. A game may offer deep replay while having a different plan for expansions, updates or recurring offers.",
+      "boundary": "The cards summarize selected product structures. Their equal sizes do not rank quality, success, sales or hours of play."
+    }
+  },
+  "the-reset": {
+    "scene": {
+      "description": "A winding mountain road leads one traveler toward a luminous gate. Across the diptych, an inhabited city sits inside a returning route. Stratified rock, tiered roofs and shaped pines give both halves the same material world.",
+      "reading": "The two compositions concern the shape of a playthrough: resolution and renewed occasions to begin. Both can exist within Diablo IV. The left side does not mean a game cannot be replayed, and the right does not itself mean another purchase.",
+      "behavior": "Clouds drift through the sky, birds cross it in high contrast, smoke rises from fixed chimneys and motes wander near the light. These layers leave the architecture and path legible; offscreen and reduced-motion versions remain complete still images."
+    },
+    "diagram": {
+      "description": "A character marker moves from Seasonal to Eternal when the season ends. Knowledge, practiced skill and account entitlements sit on their own rail above the realm transition.",
+      "reading": "End the season and compare what changed with what remained. The existing character changing realms is different from the player creating a new seasonal character.",
+      "boundary": "The model separates storage of progress; it is not a complete transfer checklist for every item, seasonal mechanic or future update."
+    }
+  },
+  "why-people-play": {
+    "scene": {
+      "description": "Three travelers gather around a campfire. Their different postures and surrounding possibilities suggest practice, a choice of route and waiting for company without assigning a score to any of them.",
+      "reading": "A shared location is visible; a shared motive is not. This is why a return event cannot by itself tell us whether someone felt willing, capable or connected.",
+      "behavior": "The engraving stays still. Three selectable lenses below reveal questions about the same observed return."
+    },
+    "diagram": {
+      "description": "Autonomy, competence and relatedness appear as three lenses over a single event: a player returned to a dungeon. The event strip stays unchanged as its possible interpretation changes.",
+      "reading": "Use each lens to ask a more discriminating question. The controls deliberately do not calculate a motivation score or choose a player type.",
+      "boundary": "The questions draw on self-determination theory. They are prompts for investigation, not a psychological assessment or evidence about the people in a screenshot."
+    }
+  },
+  "play-beyond-score": {
+    "scene": {
+      "description": "A bowed figure occupies a fractured chapel while a conspicuous counter stands beside the ritual. Red architectural breaks and the held gesture recall INDIKA’s tension between quantified action and interpretation.",
+      "reading": "The tally is deliberately easier to count than the act is to explain. The picture gives score and meaning separate places rather than presenting a meter of belief.",
+      "behavior": "The plate is static. The exhibit switches between reading the counter and reading the experience."
+    },
+    "diagram": {
+      "description": "Two views reconsider the same system through its visible tally and through a player’s interpretation. Action, rule and feedback remain available to inspect; their significance is not settled by a higher number.",
+      "reading": "The switch is a close-reading exercise. It asks what a numerical reward does within a work that can also use irony, doubt and discomfort.",
+      "boundary": "The chapel is original art, not an INDIKA level. The exhibit does not infer player emotion or enjoyment from a score."
+    }
+  },
+  "anatomy-of-loop": {
+    "scene": {
+      "description": "An elevated dungeon composition puts local encounters inside a wider route and a larger enclosing structure. Small threats and destinations can be read at more than one distance.",
+      "reading": "The nesting gives scale to the word loop. A satisfying attack, encounter, session and longer project can depend on different kinds of feedback.",
+      "behavior": "The illustration stays still; the adjacent instrument lets the reader choose the scale."
+    },
+    "diagram": {
+      "description": "Nested rings represent moment, encounter, session and longer project. Selecting a scale changes the example while a rule–behavior relationship remains visible.",
+      "reading": "Keep the scales separate: a pleasant input does not automatically supply a worthwhile evening or a lasting project. Compare what the player is deciding at each level.",
+      "boundary": "The rings are a conceptual hierarchy, not proportional durations, measured retention or a claim that all games have four loops."
+    }
+  },
+  "loot-table": {
+    "scene": {
+      "description": "A single luminous relic rises above an inventory of more ordinary objects. Compartments, item silhouettes and small marks give a distribution the visual vocabulary of equipment collection.",
+      "reading": "Rarity becomes a search for something particular rather than an abstract percentage. The plate does not assign actual drop rates to the depicted items.",
+      "behavior": "The engraving stays still; the probability controls provide the changing comparison."
+    },
+    "diagram": {
+      "description": "A curve and a two-part probability display show the chance of at least one success and of no success after a chosen number of attempts. The user can vary per-attempt chance and attempt count.",
+      "reading": "The result is 1 − (1 − p)ⁿ. Compare the shrinking chance of no success with the absence of a guarantee. The same fixed chance is assumed on every independent attempt.",
+      "boundary": "This model excludes pity timers, changing tables, targeting and trading. Its probabilities are hypothetical and are not inferred from the Diablo II item image."
+    }
+  },
+  "the-checklist": {
+    "scene": {
+      "description": "A reward track is attached to a large clock above a gate. The route promises something desirable while the clock introduces a second condition: arriving in time.",
+      "reading": "The clock supplies the pressure in the composition. A task can be identical in effort yet mean something different when its reward expires.",
+      "behavior": "The scene remains still. Weeks and availability can be changed in the model below."
+    },
+    "diagram": {
+      "description": "A short calendar lets the reader mark weeks of play or absence. A second control switches between an expiring reward and progress that remains available.",
+      "reading": "Miss a week, then change only availability. The juxtaposition isolates the consequence of a deadline without pretending every player has the same schedule or reaction.",
+      "boundary": "The calendar and thresholds are invented. Halo and Deep Rock Galactic are contextual comparisons, not the source of these exact example values."
+    }
+  },
+  "familiar-verbs": {
+    "scene": {
+      "description": "Two tactical floors share a recognizable attack silhouette and resource-orb framing. Obstacles, hazard positions and routes around the figures differ.",
+      "reading": "The paired layout holds the verb steady while changing the question around it. Similar-looking combat can demand different decisions.",
+      "behavior": "The artwork is static; the instrument selects among encounter layouts."
+    },
+    "diagram": {
+      "description": "The same attack is placed on an open floor, beside a hazard that blocks retreat or behind cover that blocks approach. The selected constraint changes the spatial diagram and explanation.",
+      "reading": "Look for the route that becomes possible or difficult. The comparison concerns information, positioning and alternatives around an input.",
+      "boundary": "These are original tactical sketches, not extracted Diablo maps, simulated combat outcomes or a ranking of the two games’ depth."
+    }
+  },
+  "access": {
+    "scene": {
+      "description": "A paid key sits before an illuminated outer door. A connecting path leads toward another requirement farther inside the architecture.",
+      "reading": "Ownership is drawn as a threshold rather than a finished reward. The remaining path shows why the receipt can be valid while the destination is still out of reach.",
+      "behavior": "The illustration is still. The two conditions below are independently controllable."
+    },
+    "diagram": {
+      "description": "An ownership gate and a play requirement can be satisfied separately and in either order. The outcome becomes available only when both conditions are met.",
+      "reading": "Try completing the requirement before simulating a purchase. The player’s readiness and the account’s entitlement describe different states.",
+      "boundary": "The interaction performs no purchase. It is a conceptual model informed by documented access prerequisites, not a reproduction of a checkout or every expansion’s rules."
+    }
+  },
+  "identity": {
+    "scene": {
+      "description": "Three ceremonial armor designs stand in matching niches. Their colors, outlines and ornament differ while the presentation keeps their scale and underlying stance comparable.",
+      "reading": "The wardrobe treats appearance as an object of desire in its own right. A mechanically equivalent costume can still matter to expression, fantasy, collection or social meaning.",
+      "behavior": "The plate is still. The wardrobe below switches the design and the reason for valuing it."
+    },
+    "diagram": {
+      "description": "Three original armor styles can be selected while the mechanical baseline remains unchanged. A second selector offers four overlapping ways to value an appearance.",
+      "reading": "Change style and motive separately. The visual difference is real even though no damage number rises.",
+      "boundary": "The designs are invented, not Blizzard shop items. The motives are interpretive lenses; the model does not estimate purchase likelihood or diagnose a player."
+    }
+  },
+  "time": {
+    "scene": {
+      "description": "A material route winds through a forge while a higher exchange route approaches the same destination more directly. Chambers, drawers and a trade connection keep the routes distinct.",
+      "reading": "The shorter-looking route makes convenience visible, while the intervening stations remind the reader that paying can leave constraints in place.",
+      "behavior": "The engraving is still. The route selector below highlights a complete acquisition path."
+    },
+    "diagram": {
+      "description": "Play/craft, purchase and trade each expose an ordered route with different remaining conditions. Selecting a route changes both the highlighted path and its explanatory readout.",
+      "reading": "Compare what the player must still supply: time, materials, currency, another player or prerequisites. A shorter path on the page is not a measured time saving.",
+      "boundary": "Warframe and Path of Exile provide examples in the prose. The composite routes are not a universal recipe or current price comparison."
+    }
+  },
+  "power": {
+    "scene": {
+      "description": "A monster and an exchange booth face the same sword suspended between them. Each side offers a route to an identical imagined result.",
+      "reading": "The central object stays desirable; the activity rewarded by obtaining it can change. The composition concerns substitution between activities, not proof that a market makes items stronger.",
+      "behavior": "The illustration is still. The adjacent selector follows either the encounter or the market."
+    },
+    "diagram": {
+      "description": "One path moves through an encounter and an uncertain loot result; the other through searching a market and exchanging. The highlighted route changes while the reward stays fixed.",
+      "reading": "Ask what becomes worth doing when acquisition moves from fighting to shopping. The exhibit isolates the route rather than inventing a damage advantage.",
+      "boundary": "The Diablo III auction-house discussion comes from the developer’s explanation. Neither the diagram nor the Diablo II comparison image establishes manipulated drop rates."
+    }
+  },
+  "what-things-cost": {
+    "scene": {
+      "description": "Cash enters a hopper, token currency passes through a central chamber and an item occupies the far side. A separate tray catches the balance remaining after the purchase.",
+      "reading": "The remainder deserves its own place in the picture because it is easy to lose when attention moves from money to tokens to the item.",
+      "behavior": "The engraving is still. Selecting a currency pack changes the arithmetic below."
+    },
+    "diagram": {
+      "description": "A pack selector compares cash paid, tokens acquired, the example item’s cost and the balance left afterward. Values are drawn from a historical CAD store capture.",
+      "reading": "Starting balance is held at zero and one pack is considered at a time. Compare cash leaving the wallet with tokens left inside the system; they are different quantities.",
+      "boundary": "These are historical prices, not a current offer or advice to buy a pack. Taxes, regional differences, existing balances and pack combinations are outside the illustration."
+    }
+  },
+  "two-key-lock": {
+    "scene": {
+      "description": "A vault has two keyholes, with paid catalog access on one side and earned Favor on the other. A small reservoir nearby makes held currency a separate object.",
+      "reading": "Permission to use the catalog and the resource spent to claim a reward cannot substitute for one another. The twin lock makes that dependency visible before the interface details arrive.",
+      "behavior": "The engraving is still. The exhibit below allows catalog access, earning and claiming to be explored."
+    },
+    "diagram": {
+      "description": "An access state and a Favor balance jointly govern a reward claim. Earning fills the reservoir; claiming spends from it so that earning can resume.",
+      "reading": "Watch the distinction between a balance limit and a lifetime allowance. A full reservoir does not mean no more can ever be earned.",
+      "boundary": "The access structure refers to the historical 2025 Reliquary. The earning increment and claim price in the model are invented; the interface is not a current live-store replica."
+    }
+  },
+  "abstraction-and-surface": {
+    "scene": {
+      "description": "An elaborate reward occupies the center while separate plates carry cash, ownership, effort and time. Fine connectors ask the eye to assemble the terms around the appealing object.",
+      "reading": "The hierarchy makes the reward conspicuous and the conditions dispersed. It is a visual question about comprehension, not a claim that ornament alone causes spending.",
+      "behavior": "The artwork is still. The diagram switches the arrangement of the same facts."
+    },
+    "diagram": {
+      "description": "The offer can be shown as scattered surfaces or as one complete decision. Ownership, effort, deadline and payment information remain the same between views.",
+      "reading": "Compare the work required to explain the offer back. The intervention is where the facts appear, not a more generous underlying deal.",
+      "boundary": "The layout is our demonstration. A clearer presentation or a change in purchasing behavior would need evaluation with readers rather than inference from this illustration."
+    }
+  },
+  "does-it-work": {
+    "scene": {
+      "description": "A traveler stands between a cabinet of measurement instruments and an open, growing garden. Needles describe selected observations; the living space suggests value outside the cabinet.",
+      "reading": "The ending keeps the person visible beside the metrics. Neither behavior counts nor the picture itself can tell us why the player came back.",
+      "behavior": "The plate remains still. The final exhibit changes the evidence lens."
+    },
+    "diagram": {
+      "description": "Four lenses separate behavior, experience, business and causality. Each selection changes the question, useful evidence and limits of the conclusion.",
+      "reading": "Use the lenses together rather than searching for a universal score. An observed return, a reported feeling and a causal estimate answer different questions.",
+      "boundary": "The returning-character example is one case, not a population result. The exhibit organizes evidence; it does not supply new measured outcomes."
+    }
+  },
+  "the-fork": {
+    "scene": {
+      "description": "",
+      "reading": "",
+      "behavior": ""
+    },
+    "diagram": {
+      "description": "Three parallel tracks follow the player, the studio and payment from an initial purchase into what happens afterward. The controls switch among exploring an existing work, buying an expansion and an ongoing program.",
+      "reading": "Read across all three tracks after each change. More play, more production and another sale need not occur together. The stable layout lets those differences remain visible.",
+      "boundary": "These are possible arrangements, not mutually exclusive game categories, measured revenue paths or timelines. The paths have no financial scale."
+    }
+  }
+}

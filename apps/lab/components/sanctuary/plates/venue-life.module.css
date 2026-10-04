@@ -1,0 +1,11 @@
+/* Local physical actions; the existing figure lifecycle owns all motion. */
+.rainFar{opacity:.19;animation:door-rain 1.4s linear infinite;animation-play-state:paused}
+.rainNear{opacity:.32;animation:door-rain .85s linear infinite;animation-delay:-.4s;animation-play-state:paused}
+.lightning{opacity:0;animation:distant-lightning 19s linear infinite;animation-delay:-8s;animation-play-state:paused}
+.polish{animation:glass-polish 4.8s ease-in-out infinite;animation-play-state:paused;transform-origin:0 0}
+:global([data-playing=true]) .rainFar,:global([data-playing=true]) .rainNear,:global([data-playing=true]) .lightning,:global([data-playing=true]) .polish{animation-play-state:running}
+@keyframes door-rain{to{transform:translate(-6px,24px)}}
+/* One soft distant illumination, confined to glass: no bolt or whole-scene flash. */
+@keyframes distant-lightning{0%,68%,74%,100%{opacity:0}69%{opacity:.32}70%{opacity:.13}72%{opacity:.04}}
+@keyframes glass-polish{0%,12%,72%,100%{transform:rotate(0)}24%,48%{transform:rotate(-4deg)}36%,60%{transform:rotate(3deg)}}
+@media(prefers-reduced-motion:reduce){.rainFar,.rainNear,.lightning,.polish{animation:none!important}.lightning{opacity:0}}

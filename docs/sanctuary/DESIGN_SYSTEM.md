@@ -569,3 +569,14 @@ Review occlusion and contacts in the assembled composition. Adding grain, brass
 outlines and glows cannot repair a wrong pose or a floating piece of furniture.
 The revised opening uses Barcade’s Brooklyn gallery as its composition reference,
 while Sanctuary supplies the procedural rendering language.
+
+## Visual explanations and mobile frame — 2026-10-04
+
+Every new graphic needs an atlas record: composition/description, narrative role,
+references, meaningful motion/interaction and limits of the evidence. Keep long
+notes in the chapter’s native “About the visuals” disclosure, with the complete
+original-art atlas on the credits page. See [VISUAL_ATLAS.md](VISUAL_ATLAS.md).
+Motion must belong to the depicted activity: sprites follow passages, paddles
+meet the ball, and unheld cabinet controls do not move on their own.
+Dark experiences must theme the root canvas and browser chrome, respect safe
+areas and provide a visible top-level return path even on a minimal cover.

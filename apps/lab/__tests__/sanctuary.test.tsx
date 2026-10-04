@@ -4,6 +4,7 @@ import { PriceLab, ProbabilityLab } from "@/components/sanctuary/Experiments";
 import { appendix, chapters, parts, sources } from "@/lib/sanctuary/content";
 import { chapterHref, successProbability } from "@/lib/sanctuary/types";
 import { sanctuaryMedia as manifest } from "@/lib/sanctuary/media";
+import { chapterVisualNotes } from "@/lib/sanctuary/visual-notes";
 import { readerCopy } from "@/lib/sanctuary/ui";
 import { locales } from "@/app/(stepanoskin)/stepanoskin/translations";
 import landingManifest from "@/lib/assets/generated/stepanoskin.json";
@@ -90,6 +91,21 @@ describe("Sanctuary reader", () => {
     for (const locale of locales)
       expect(Object.values(readerCopy[locale]).every(Boolean)).toBe(true);
   });
+  it("documents every chapter illustration, instrument and cited image with resolvable records", () => {
+    for (const chapter of chapters) {
+      const notes = chapterVisualNotes(chapter, sources.filter(source=>chapter.sources.includes(source.id)));
+      expect(new Set(notes.map(note=>note.id)).size).toBe(notes.length);
+      expect(notes.some(note=>note.id===`diagram-${chapter.id}`)).toBe(true);
+      if(chapter.id!=="the-fork") expect(notes.some(note=>note.id===`scene-${chapter.id}`)).toBe(true);
+      for(const figure of chapter.figures??[]) expect(notes.some(note=>note.id===`media-${figure.asset}`)).toBe(true);
+      for(const note of notes) {
+        expect(note.description.length).toBeGreaterThan(30);
+        expect(note.reading.length).toBeGreaterThan(30);
+        expect(note.references.length).toBeGreaterThan(0);
+        for(const reference of note.references) expect(reference.url).toMatch(/^(https:\/\/|\/stepanoskin\/)/);
+      }
+    }
+  });
   it("keeps the landing screen to its hero and single study-entry action", () => {
     render(<Reader {...props} />);
     expect(
@@ -99,7 +115,8 @@ describe("Sanctuary reader", () => {
       screen.getByRole("link", { name: /Enter the study/ }),
     ).toHaveAttribute("href", chapterHref("insert-coin"));
     expect(screen.queryByText("Module loading")).not.toBeInTheDocument();
-    expect(screen.getAllByRole("link")).toHaveLength(1);
+    expect(screen.getAllByRole("link")).toHaveLength(2);
+    expect(screen.getByRole("link", {name:/Back to menu/})).toHaveAttribute("href", "/stepanoskin");
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
     expect(screen.queryByRole("complementary")).not.toBeInTheDocument();
     expect(screen.queryByText("English editorial edition")).not.toBeInTheDocument();

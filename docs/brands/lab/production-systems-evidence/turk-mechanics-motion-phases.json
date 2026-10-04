@@ -1,0 +1,1227 @@
+{
+  "phases": [
+    {
+      "name": "rest",
+      "time": 0,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "registerTrack",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "belt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "results",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "returnBelt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "hand",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "smoke",
+          "outcome": "0",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "1",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "2",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "3",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "4",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "5",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "6",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "7",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, -7.92708, -34.0833)",
+          "opacity": "0.96"
+        },
+        {
+          "part": "smoke",
+          "outcome": "8",
+          "duration": 24000,
+          "transform": "matrix(0.999814, -0.0192702, 0.0192702, 0.999814, -26.3854, -87.9479)",
+          "opacity": "0.8275"
+        },
+        {
+          "part": "smoke",
+          "outcome": "9",
+          "duration": 24000,
+          "transform": "matrix(0.997859, -0.0654031, 0.0654031, 0.997859, -46.25, -148.667)",
+          "opacity": "0.3"
+        }
+      ]
+    },
+    {
+      "name": "stroke",
+      "time": 1800,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(-0.707107, 0.707107, -0.707107, -0.707107, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(0, 1, -1, 0, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(-0.809017, -0.587785, 0.587785, -0.809017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "registerTrack",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 0, 6.375)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(-0.809017, -0.587785, 0.587785, -0.809017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "belt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 66, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "results",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 66, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "returnBelt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, -66, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(-0.809017, -0.587785, 0.587785, -0.809017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(-0.809017, -0.587785, 0.587785, -0.809017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(-0.809017, -0.587785, 0.587785, -0.809017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(-0.809017, -0.587785, 0.587785, -0.809017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 2400,
+          "transform": "matrix(0.913545, 0.406737, -0.406737, 0.913545, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "hand",
+          "duration": 2400,
+          "transform": "matrix(0.991445, -0.130526, 0.130526, 0.991445, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "smoke",
+          "outcome": "0",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "1",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "2",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "3",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "4",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "5",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "6",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, -3.91667, -21.6667)",
+          "opacity": "0.88"
+        },
+        {
+          "part": "smoke",
+          "outcome": "7",
+          "duration": 24000,
+          "transform": "matrix(0.999965, -0.00836294, 0.00836294, 0.999965, -21.0729, -73.2604)",
+          "opacity": "0.9025"
+        },
+        {
+          "part": "smoke",
+          "outcome": "8",
+          "duration": 24000,
+          "transform": "matrix(0.998567, -0.0535243, 0.0535243, 0.998567, -41.4773, -133.212)",
+          "opacity": "0.463636"
+        },
+        {
+          "part": "smoke",
+          "outcome": "9",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        }
+      ]
+    },
+    {
+      "name": "smoke",
+      "time": 3000,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(0.707107, 0.707107, -0.707107, 0.707107, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(0, -1, 1, 0, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "registerTrack",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 0, 10.625)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "belt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 22, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "results",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 110, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "returnBelt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, -22, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "hand",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "smoke",
+          "outcome": "0",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "1",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "2",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "3",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "4",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "5",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "6",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, -11.9896, -46.5833)",
+          "opacity": "0.96"
+        },
+        {
+          "part": "smoke",
+          "outcome": "7",
+          "duration": 24000,
+          "transform": "matrix(0.999545, -0.0301751, 0.0301751, 0.999545, -31.6979, -102.635)",
+          "opacity": "0.7525"
+        },
+        {
+          "part": "smoke",
+          "outcome": "8",
+          "duration": 24000,
+          "transform": "matrix(0.99701, -0.0772727, 0.0772727, 0.99701, -51.0227, -164.121)",
+          "opacity": "0.136364"
+        },
+        {
+          "part": "smoke",
+          "outcome": "9",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        }
+      ]
+    },
+    {
+      "name": "return",
+      "time": 2280,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(-0.987688, 0.156434, -0.156434, -0.987688, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(0.951057, 0.309017, -0.309017, 0.951057, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(0.0627905, -0.998027, 0.998027, 0.0627905, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "registerTrack",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 0, 8.075)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.0627905, -0.998027, 0.998027, 0.0627905, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "belt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 83.6, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "results",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 83.6, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "returnBelt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, -83.6, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.0627905, -0.998027, 0.998027, 0.0627905, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.0627905, -0.998027, 0.998027, 0.0627905, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.0627905, -0.998027, 0.998027, 0.0627905, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.0627905, -0.998027, 0.998027, 0.0627905, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "hand",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "smoke",
+          "outcome": "0",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "1",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "2",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "3",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "4",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "5",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "6",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, -7.11458, -31.5833)",
+          "opacity": "0.96"
+        },
+        {
+          "part": "smoke",
+          "outcome": "7",
+          "duration": 24000,
+          "transform": "matrix(0.999854, -0.0170889, 0.0170889, 0.999854, -25.3229, -85.0104)",
+          "opacity": "0.8425"
+        },
+        {
+          "part": "smoke",
+          "outcome": "8",
+          "duration": 24000,
+          "transform": "matrix(0.998012, -0.063028, 0.063028, 0.998012, -45.2955, -145.576)",
+          "opacity": "0.332727"
+        },
+        {
+          "part": "smoke",
+          "outcome": "9",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        }
+      ]
+    },
+    {
+      "name": "cycle-end",
+      "time": 23999,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(-0.999999, 0.001309, -0.001309, -0.999999, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(0.999997, 0.00261799, -0.00261799, 0.999997, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(0.307024, -0.951702, 0.951702, 0.307024, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "registerTrack",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 0, 84.9965)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.307024, -0.951702, 0.951702, 0.307024, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "belt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 87.9633, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "results",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 879.963, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "returnBelt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, -87.9633, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.307024, -0.951702, 0.951702, 0.307024, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.307024, -0.951702, 0.951702, 0.307024, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.307024, -0.951702, 0.951702, 0.307024, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(0.307024, -0.951702, 0.951702, 0.307024, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "hand",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "smoke",
+          "outcome": "0",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "1",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "2",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "3",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "4",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "5",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "6",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "7",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, -7.92031, -34.0625)",
+          "opacity": "0.96"
+        },
+        {
+          "part": "smoke",
+          "outcome": "8",
+          "duration": 24000,
+          "transform": "matrix(0.999815, -0.019252, 0.019252, 0.999815, -26.3766, -87.9234)",
+          "opacity": "0.827625"
+        },
+        {
+          "part": "smoke",
+          "outcome": "9",
+          "duration": 24000,
+          "transform": "matrix(0.99786, -0.0653833, 0.0653833, 0.99786, -46.242, -148.641)",
+          "opacity": "0.300273"
+        }
+      ]
+    },
+    {
+      "name": "cycle-start",
+      "time": 24000,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "gear",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "registerTrack",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "belt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "results",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "returnBelt",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "driveChain",
+          "duration": 2400,
+          "transform": "none",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "roller",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "hand",
+          "duration": 2400,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": "1"
+        },
+        {
+          "part": "smoke",
+          "outcome": "0",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "1",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "2",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "3",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "4",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "5",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "6",
+          "duration": 24000,
+          "transform": "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, -55, -177)",
+          "opacity": "0"
+        },
+        {
+          "part": "smoke",
+          "outcome": "7",
+          "duration": 24000,
+          "transform": "matrix(1, 0, 0, 1, -7.92708, -34.0833)",
+          "opacity": "0.96"
+        },
+        {
+          "part": "smoke",
+          "outcome": "8",
+          "duration": 24000,
+          "transform": "matrix(0.999814, -0.0192702, 0.0192702, 0.999814, -26.3854, -87.9479)",
+          "opacity": "0.8275"
+        },
+        {
+          "part": "smoke",
+          "outcome": "9",
+          "duration": 24000,
+          "transform": "matrix(0.997859, -0.0654031, 0.0654031, 0.997859, -46.25, -148.667)",
+          "opacity": "0.3"
+        }
+      ]
+    }
+  ],
+  "synchronization": [
+    {
+      "time": 1582.8181818181818,
+      "expected": 6,
+      "tray": 6,
+      "register": 6,
+      "smoke": 6,
+      "registerColor": "#4d6b4d",
+      "rowY": 378.0058038964844,
+      "plumeProgress": 0.00011742424242444649
+    },
+    {
+      "time": 3982.818181818182,
+      "expected": 5,
+      "tray": 5,
+      "register": 5,
+      "smoke": 5,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    },
+    {
+      "time": 6382.818181818182,
+      "expected": 4,
+      "tray": 4,
+      "register": 4,
+      "smoke": 4,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242444649
+    },
+    {
+      "time": 8782.818181818182,
+      "expected": 3,
+      "tray": 3,
+      "register": 3,
+      "smoke": 3,
+      "registerColor": "#793c3c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242444649
+    },
+    {
+      "time": 11182.818181818182,
+      "expected": 2,
+      "tray": 2,
+      "register": 2,
+      "smoke": 2,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    },
+    {
+      "time": 13582.818181818182,
+      "expected": 1,
+      "tray": 1,
+      "register": 1,
+      "smoke": 1,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    },
+    {
+      "time": 15982.818181818182,
+      "expected": 0,
+      "tray": 0,
+      "register": 0,
+      "smoke": 0,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    },
+    {
+      "time": 18382.818181818184,
+      "expected": 9,
+      "tray": 9,
+      "register": 9,
+      "smoke": 9,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242444649
+    },
+    {
+      "time": 20782.81818181818,
+      "expected": 8,
+      "tray": 8,
+      "register": 8,
+      "smoke": 8,
+      "registerColor": "#793c3c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.0001174242424240024
+    },
+    {
+      "time": 23182.81818181818,
+      "expected": 7,
+      "tray": 7,
+      "register": 7,
+      "smoke": 7,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    }
+  ],
+  "mechanics": [
+    {
+      "time": 0,
+      "top": 0,
+      "return": 0,
+      "chainOffset": 0,
+      "drumTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    },
+    {
+      "time": 600,
+      "top": 22,
+      "return": -22,
+      "chainOffset": -8.79645,
+      "drumTransform": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    },
+    {
+      "time": 1200,
+      "top": 44,
+      "return": -44,
+      "chainOffset": -17.5929,
+      "drumTransform": "matrix(-0.809017, 0.587785, -0.587785, -0.809017, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    },
+    {
+      "time": 1800,
+      "top": 66,
+      "return": -66,
+      "chainOffset": -26.3894,
+      "drumTransform": "matrix(-0.809017, -0.587785, 0.587785, -0.809017, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    },
+    {
+      "time": 2400,
+      "top": 0,
+      "return": 0,
+      "chainOffset": 0,
+      "drumTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    }
+  ],
+  "legibility": [
+    {
+      "age": 240,
+      "opacity": 0.96,
+      "lettering": "rgb(88, 97, 90)"
+    },
+    {
+      "age": 1000,
+      "opacity": 0.96,
+      "lettering": "rgb(88, 97, 90)"
+    },
+    {
+      "age": 2100,
+      "opacity": 0.96,
+      "lettering": "rgb(88, 97, 90)"
+    },
+    {
+      "age": 4000,
+      "opacity": 0.73,
+      "lettering": "rgb(88, 97, 90)"
+    },
+    {
+      "age": 6500,
+      "opacity": 0.06,
+      "lettering": "rgb(88, 97, 90)"
+    }
+  ]
+}

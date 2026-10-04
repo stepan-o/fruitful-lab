@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 1.3 · 3 October 2026 · Mechanical Turk direction
+Version 1.4 · 4 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. The owner accepted the revised
 engraved illustration as an improvement and selected the historical Mechanical
@@ -189,9 +189,11 @@ respectively; keep the paper and plot geometry dominant. Ten outcomes repeat
 every 24 seconds. This mix is an editorial choice, not an estimated industry
 success rate.
 
-P-values and verdicts exhale from the outfeed as pale gray italic text within
-fine smoke contours. Stagger emissions every 2.4 seconds, with at most three
-active plumes rising and fading at a time. Keep this atmosphere secondary to
+P-values and verdicts emerge in clear gray italic lettering within faint smoke
+contours. Reach 96% opacity within 240 ms and hold through 2.16 seconds, then
+dissolve gradually. The text is 17/14 SVG units in #58615A; wisps are independently
+faint. Stagger emissions every 2.4 seconds, with at most three active plumes.
+The owner rejected text that began already dissolved; readability comes first. Keep this atmosphere secondary to
 the figure and machinery; no bottom caption, legend or outcome notes. Reduced
 motion shows three still plumes. Essential meaning remains in the SVG description
 and the readable methodology notes.
@@ -205,6 +207,34 @@ source fixture uses estimate ± 1.96 SE and p = 2 Φ(−|estimate / SE|). No num
 represents Stepan's or Prodigy's results. The page identifies synthetic data and
 cites the ASA distinction between significance, effect size and practical value.
 [S7]
+
+### Conveyor construction · 4 October 2026
+
+The conveyor is a complete, supported assembly; the cabinet mechanism’s deeper
+redesign is the next pass. Loopforge supplies a light reference for substantial
+rails, bracing, inspection openings and fasteners. Retain this page’s engraved
+wood/iron/brass treatment rather than adopting the factory’s lighting or materials.
+
+- Paired cards ride jointed checker-inlaid slats on one oblique upper plane.
+  Both end drums use that same depth vector. The lower return moves left while
+  the loaded run moves right; the frame, bearings and adjustment screw stay fixed.
+- A continuous side loop wraps the drums. Separate stationary rails carry split
+  bearing blocks, visible collars, a slotted tail adjustment and a tension screw.
+  Riveted triangular brackets terminate in bolted mounting plates on the case;
+  the open cabinet door does not support the conveyor.
+- The existing right cabinet shaft at (322, 415) supplies a narrow vertical chain
+  to a compound jackshaft at (322, 332). A second guarded chain, visible through
+  three inspection openings, drives the right end drum at (591.05, 332).
+  Equal sprockets preserve direction and speed. This connection is the boundary
+  for the next cabinet iteration; do not redesign the internal gear train here.
+- Drum and chain motion match the existing shaft’s 288 degrees per 2.4 seconds.
+  An effective drum pitch radius of 17.507 SVG units corresponds to 88 units of
+  belt travel. Ten-tooth radius-seven sprockets advance eight links per period.
+  Repeated geometry closes at the animation boundary; no stop/start indexing.
+- Contemporary functional references: the drive/idler ends, mounting brackets,
+  return rollers and bearings in Dorner’s end-drive manual [S8]. This is an
+  original period-material illustration, not a manufacturer drawing, fabrication
+  plan or authenticated historical reconstruction.
 
 The conveyor and its transmission are our editorial invention. Racknitz's
 figure is source-derived vector geometry, with a clipped forearm used for the
@@ -393,6 +423,12 @@ its material and type specimens are our original design interpretation.
   fragment about effect size and importance from principle 5.
   https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf
 
+- **S8 — Dorner, 2200 Series End Drive Conveyors, installation, maintenance and
+  parts manual, 851-452 Rev. J.** Consulted 4 October 2026, especially the component
+  list (p. 5), mounts/returns (pp. 8–9), and tension/bearings (pp. 13–17). The manual
+  identifies the functional relationships; no source diagram is reproduced.
+  https://www.dornerconveyors.com/wp-content/uploads/2017/09/851-452j.pdf
+
 Local references: Sanctuary's `docs/sanctuary/DESIGN_SYSTEM.md`, Loopforge's
 `docs/loopforge/VISUAL_REVIEW.md`, and this profile's revised opening. Their
 compositional care remains the quality benchmark; this profile keeps its own
@@ -406,7 +442,8 @@ material and editorial identity.
 - Programmatic board cells, turned pieces, gear teeth, wood grain, hatch fields,
   fasteners and source-derived figure strokes share one material palette.
 - CSS transform/opacity motion: rollers, flywheel, conveyor sheets, press, candle,
-  comparator and one knight move. A single observer starts only visible plates.
+  comparator and one knight move. Two small conveyor chain paths use dash-offset
+  motion to expose power transmission through their inspection openings. A single observer starts only visible plates.
   No per-frame React updates, large blur filters, canvas loop or audio.
 - `production_systems_motion_v1` is an independent, persistent profile preference.
   OS reduced motion takes precedence. No JavaScript leaves complete still plates

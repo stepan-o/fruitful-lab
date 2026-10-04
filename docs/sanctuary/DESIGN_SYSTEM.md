@@ -527,3 +527,45 @@ demand rather than synthesizing image detail.
 `sanctuary-arcade` holds five reviewed images, their responsive derivatives and a
 versioned pointer. Source masters are non-public build inputs. The server combines
 reviewed packs, then sends only active-chapter image metadata to the reader.
+
+## Coherent craft across subjects — 4 October 2026
+
+The owner’s illustration benchmarks are the approved journey/world diptych and
+the current Mechanical Turk/conveyor on the professional Data Science pages.
+Carry their depth of construction into every original plate. Each key element
+receives its own focused styling pass before the assembled composition is
+reviewed: architecture, furniture, people, equipment, light and atmosphere.
+A pass must resolve silhouette, material, connections/contact, useful detail and
+reading-size legibility. A general glow or texture overlay is not a substitute.
+
+Sanctuary Economics remains the common visual identity: dark teal recesses,
+warm focal light, brass edges, directional engraving, layered depth and bounded
+motion. Adapt the subject’s own construction and period vocabulary. A pub,
+electronic cabinet, mountain gate and mechanical instrument should be visibly
+different things, while belonging to the same illustrated essay. Do not copy
+clockwork, Japanese architecture or a single palette indiscriminately.
+
+The first arcade craft adoption is recorded in
+[Arcade craft passes](ARCADE_CRAFT_PASSES.md). `EveningVenue` composes separate
+architecture, furnishings and patron modules. The room’s cabinets are projected
+into its floor plan; the later cutaway uses a separate frontal composition for
+legibility. `ArcadeMaterials` stays local to Sanctuary.
+The venue and instrument reuse `useLivingPlate` for preference/visibility gating.
+The original scene remains ahead of prose; archival citations retain their
+source pixels and have a different job from the authored illustrations.
+
+### Composition before ornament — owner correction, 4 October 2026
+
+Visceral coherence comes from light, material, contour and depth, not borrowing
+literal architecture from another subject. A real bar should read as a real bar.
+Start with a strong photographic reference when the subject depends on human
+activity or spatial credibility. Record its source and the specific qualities
+being interpreted. Do not imply an invented scene is historical documentation.
+
+Before surface detail, resolve camera/eye level, floor plan, object scale,
+passage space, seating, sightlines and hand-to-control contact. People may remain
+stylized; their proportions, orientation and scale must make sense in the room.
+Review occlusion and contacts in the assembled composition. Adding grain, brass
+outlines and glows cannot repair a wrong pose or a floating piece of furniture.
+The revised opening uses Barcade’s Brooklyn gallery as its composition reference,
+while Sanctuary supplies the procedural rendering language.

@@ -6,3 +6,7 @@
 /* The opener is an illustration, not a second essay or a premature comparison. */
 .opening>.scene{padding-top:10px}
 .opening figcaption{padding:10px 18px;font:10px/1.6 ui-monospace,monospace;letter-spacing:.06em}
+
+/* The room uses the same inset, quiet brass edge as the approved engraved worlds. */
+.opening{background:#101d21;border-color:#716448;box-shadow:0 24px 65px #0005,inset 0 0 0 4px #080f13}
+.opening>.scene{padding:0}

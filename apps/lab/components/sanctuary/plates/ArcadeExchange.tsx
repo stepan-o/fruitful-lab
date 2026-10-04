@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useLivingPlate } from "./useLivingPlate";
 import { Readout } from "./Controls";
 import ArcadeCabinet from "./ArcadeCabinet";
 import styles from "./arcade-exchange.module.css";
 
 export default function ArcadeExchange() {
+  const livingRef=useLivingPlate<HTMLDivElement>();
   const [health, setHealth] = useState(600);
   return <>
-    <div className={styles.cutaway}>
+    <div ref={livingRef} data-living-cabinet className={styles.cutaway}>
       <div className={styles.cabinet}><ArcadeCabinet health={health} operator label="An original arcade cabinet with its coin door open to show the health-per-coin setting"/></div>
       <div className={styles.ledger}>
         <p className={styles.eyebrow}>BEHIND THE COIN DOOR</p>

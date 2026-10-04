@@ -155,7 +155,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                     )}
                   </p>
                   {current.id === "the-fork" && paragraphIndex === 5 ? <EveningPlace initialWorld/> : null}
-                  {current.id === "insert-coin" && paragraphIndex === 4 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+                  {current.id === "insert-coin" && paragraphIndex === 3 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
                   {current.figures?.map((figure,i)=>figure.afterParagraph === paragraphIndex ? renderFigure(figure,i) : null)}
                   {current.id === "the-fork" && paragraphIndex === 2 ? <AudienceEconomy/> : null}
                   {current.id === "the-fork" && paragraphIndex === 6 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
@@ -166,7 +166,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             {current.id !== "the-fork" && current.id !== "insert-coin" ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
             {current.table?<div className={styles.tableWrap} tabIndex={0} aria-label={current.table.caption}><table><caption>{current.table.caption}</caption><thead><tr>{current.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{current.table.rows.map(row=><tr key={row[0]}>{row.map((cell,i)=>i===0?<th scope="row" key={i}>{cell}</th>:<td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>:null}
             {current.figures?.map((figure,i)=>figure.placement !== "opening" && figure.afterParagraph === undefined ? renderFigure(figure,i) : null)}
-            <blockquote className={styles.takeaway}><span aria-hidden="true">◇</span>{current.takeaway}</blockquote>
+            {current.takeaway ? <blockquote className={styles.takeaway}><span aria-hidden="true">◇</span>{current.takeaway}</blockquote> : null}
             <details className={styles.evidence}><summary lang={locale}>{copy.sourceNotes} <span aria-hidden="true">+</span></summary><p>{current.evidence}</p>{sources.length?<ol>{sources.map(source=><li key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><p>{source.note}</p></li>)}</ol>:<p>Source: the stated mathematical model or owner-provided research capture. Original scene studies accompany selected visual citations.</p>}</details>
             {index===navigation.length-1?<>
               <section className={styles.coda}>

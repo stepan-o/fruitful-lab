@@ -101,11 +101,14 @@ const views=[{
 }];
 export default function EveningPlace({initialWorld=false,opening=false}:{initialWorld?:boolean;opening?:boolean}) {
  const [selected,setSelected]=useState(initialWorld?1:0); const view=views[selected];
- return <figure className={s.place} aria-label="Study: the place around the game" data-opening={opening || undefined}>
-   {opening ? <div className={s.scene}><PlaceScene world={selected===1}/></div> : null}
+ if (opening) return <figure className={`${s.place} ${s.opening}`} aria-label="Study: the place around the game" data-opening>
+   <div className={s.scene}><PlaceScene world={false}/></div>
+   <figcaption>Original illustration · an imagined venue</figcaption>
+ </figure>;
+ return <figure className={s.place} aria-label="Study: the place around the game">
    <div className={s.heading}><span>A PLACE IN THE EVENING</span><h2>{view.title}</h2></div>
    <Choices label="Where does the gathering happen?" items={views.map(v=>v.name)} value={selected} onChange={setSelected}/>
-   {!opening ? <div className={s.scene}><PlaceScene world={selected===1}/></div> : null}
+   <div className={s.scene}><PlaceScene world={selected===1}/></div>
    <div className={s.accounts} aria-live="polite">
     <section><span>01 · PEOPLE</span><p>{view.people}</p></section>
     <section><span>02 · THE WORK</span><p>{view.work}</p></section>

@@ -28,7 +28,7 @@ export type Chapter = {
   paragraphs: string[];
   sections?: { at: number; title: string }[];
   paragraphCitations?: Record<string, string[]>;
-  takeaway: string;
+  takeaway?: string;
   figures?: Figure[];
   panel?: Panel;
   interactive?: "probability" | "price";

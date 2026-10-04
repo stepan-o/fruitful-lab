@@ -1,3 +1,8 @@
+> Historical implementation record. The 4 October whole-manuscript rewrite in
+> [NARRATIVE_SPINE.md](NARRATIVE_SPINE.md) supersedes this document's opening
+> prose and its people/work/payment template. The later chapter inventory records
+> what exists, not an assertion that its writing has passed the new editorial bar.
+
 # Sanctuary Economics — the life around the game
 
 Current editorial authority · 3 October 2026 · follows the arcade-first revision.

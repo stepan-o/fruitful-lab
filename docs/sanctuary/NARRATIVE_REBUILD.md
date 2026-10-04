@@ -1,10 +1,11 @@
-# Current reconstruction: the life around the game
+# Current reconstruction: write the argument before the page
 
-The evening/venue revision supersedes the framing below. Read
-[The full narrative impact map](EVENING_NARRATIVE_MAP.md) for the argument,
-chapter-by-chapter implementation, source boundaries and visual decisions.
-The first chapter is now **Insert coin. Join in.**; stable IDs and the
-arcade → copy → ongoing world → Concord sequence remain.
+The [recovered narrative spine](NARRATIVE_SPINE.md) is the current editorial
+authority. The first chapter has been written and edited as one continuous essay
+in [OPENING_MANUSCRIPT.md](OPENING_MANUSCRIPT.md), then projected into the reader.
+The opening art remains before the prose; duplicated accounts, player instructions
+and a mandatory takeaway have been removed. The records below describe earlier
+passes, not approval of all remaining chapters' prose.
 
 # Sanctuary Economics — narrative reconstruction
 

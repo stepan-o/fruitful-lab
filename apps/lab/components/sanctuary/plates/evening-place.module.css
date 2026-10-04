@@ -3,7 +3,6 @@
 .place button{cursor:pointer;border:1px solid #80704e;border-radius:2px;background:linear-gradient(180deg,#253c3c,#16282d);color:#ded3b9;box-shadow:inset 0 0 0 3px #0a161933;padding:12px 15px;font-family:Georgia,serif}.place button:hover{border-color:#d1bc88;background:#2b4442}.place button[aria-pressed=true]{border-color:#c8b077;background:linear-gradient(150deg,#455846,#29433e);color:#fff2cf;box-shadow:inset 3px 0 #d7b673}.place button:focus-visible{outline:2px solid #e5cb91;outline-offset:4px}
 @media(max-width:600px){.place button{padding:10px 8px}}
 
-/* The first chapter shows its world before labels, controls or commentary. */
-.place[data-opening]>.scene{padding-top:10px}
-.place[data-opening]>.heading{padding-top:18px}
-.place[data-opening]>.accounts{margin-top:22px}
+/* The opener is an illustration, not a second essay or a premature comparison. */
+.opening>.scene{padding-top:10px}
+.opening figcaption{padding:10px 18px;font:10px/1.6 ui-monospace,monospace;letter-spacing:.06em}

@@ -1,9 +1,6 @@
 .cutaway{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:18px;margin:18px 0 12px;background:radial-gradient(ellipse at 25% 45%,#29403a60,transparent 65%)}
 .cabinet{min-width:0}.cabinet svg{display:block;width:100%;height:auto}
 .ledger{padding:16px 12px 16px 0;min-width:0}.ledger .eyebrow{color:#b8a172;font:10px/1.5 ui-monospace,monospace;letter-spacing:.16em;margin:0 0 12px}
-.ledger h3{color:#e4d5b8;font:clamp(22px,2.5vw,29px)/1.15 Georgia,serif;margin:0 0 24px;max-width:15ch}
-.chain{list-style:none;padding:0;margin:0;display:grid;gap:22px}.chain li{display:flex;gap:14px;align-items:flex-start}.chain li>span{color:#b7a16a;border:1px solid #776540;width:29px;height:29px;flex-shrink:0;display:grid;place-items:center;font:10px ui-monospace,monospace;background:#111d20}.chain strong,.rule strong{color:#e1d4b9;font:16px/1.25 Georgia,serif}
-.ledger .chain p,.ledger .rule p{color:#a6b4a8;font:13px/1.6 system-ui,sans-serif;margin:5px 0 0}
 .setting{display:grid;gap:10px;color:#e4d5b8;font:16px Georgia,serif}.setting select{min-height:46px;width:100%;max-width:100%;background:#0b1518;color:#e6d3ab;border:1px solid #8f7b52;border-radius:3px;padding:10px 8px;font:12px system-ui,sans-serif}.setting select:focus-visible{outline:2px solid #aadaca;outline-offset:4px}
-.gauge{height:9px;background:#050c0f;border:1px solid #4c5143;margin:16px 0}.gauge span{display:block;height:100%;background:#bb9b63}.ledger .note{color:#a6b4a8;font:12px/1.6 system-ui,sans-serif;margin:0 0 22px}.rule{border-top:1px solid #58604c;padding-top:17px}
-@media(max-width:600px){.cutaway{grid-template-columns:1fr;gap:0}.cabinet{width:min(100%,320px);margin:auto}.ledger{padding:0 8px 16px}.ledger h3{max-width:none;margin-bottom:20px;font-size:25px}.chain{gap:17px}.ledger .chain p,.ledger .rule p{font-size:14px}.ledger .note{font-size:13px}.setting select{font-size:14px}}
+.gauge{height:9px;background:#050c0f;border:1px solid #4c5143;margin:16px 0}.gauge span{display:block;height:100%;background:#bb9b63}.ledger .note{color:#a6b4a8;font:12px/1.6 system-ui,sans-serif;margin:0 0 22px}
+@media(max-width:600px){.cutaway{grid-template-columns:1fr;gap:0}.cabinet{width:min(100%,320px);margin:auto}.ledger{padding:0 8px 16px}.ledger .note{font-size:13px}.setting select{font-size:14px}}

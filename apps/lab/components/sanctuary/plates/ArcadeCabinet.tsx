@@ -1,6 +1,7 @@
 import { memo, useId } from "react";
 import { Screw, WoodGrain } from "./ArcadeMaterials";
 import s from "./arcade-craft.module.css";
+import ArcadePlayfield from "./ArcadePlayfield";
 
 function Control({x,color,n}:{x:number;color:string;n:number}) {
  return <g transform={`translate(${x} 0)`}>
@@ -15,20 +16,7 @@ function Control({x,color,n}:{x:number;color:string;n:number}) {
 }
 function Dungeon({id}:{id:string}) {
  return <g clipPath={`url(#${id}-screen)`} data-art-element="crt-dungeon">
-  <path d="M132 123H348V279H132Z" fill="#142c2b"/>
-  <path d="M132 123H348V279H132Z" fill={`url(#${id}-tiles)`}/>
-  <path d="M154 150H280V186H192V245H316V215H245M290 149H326V192M159 196V226M218 146V165" fill="none" stroke="#06171b" strokeWidth="16"/>
-  <path d="M154 146H280V182H192V241H316V211H245M290 145H326V188M159 192V222M218 142V161" fill="none" stroke="#627c68" strokeWidth="9"/>
-  <path d="M154 142H284M188 182V245H319M290 141H330V188M159 190V222" fill="none" stroke="#bac394" strokeWidth="1.2"/>
-  <path d="M166 142v9m15-9v9m15-9v9m15-9v9m16-9v9m15-9v9m15-9v9m16-9v9M188 193h9m-9 16h9m-9 16h9m7 12v8m17-8v8m17-8v8m17-8v8m17-8v8m17-8v8m17-8v8" stroke="#142e2b" strokeWidth="1.4"/>
-  {([[224,202,"#d6b477"],[247,199,"#83bdba"],[260,229,"#b48a6b"],[281,223,"#99ad78"]] as const).map(([x,y,tone],i)=><g key={i} transform={`translate(${x} ${y})`}>
-   <ellipse cy="6" rx="5" ry="2" fill="#05171a"/>
-   <path d="M-2-7h4v4H5V3H2V7H0V3H-2V7H-4V-2H-2Z" fill={tone}/><path d="M5-6V4M3-2H7" stroke="#e1dbad" strokeWidth="1"/>
-  </g>)}
-  <g fill="#b17256"><path d="M304 161h5v-4h3v5h4v7h-3v-3h-6v4h-3ZM165 245h6v-3h3v5h3v8h-4v-5h-5v5h-3Z"/><path d="M306 163h3m3 0h2M167 248h2m3 0h2" stroke="#f0d1a1" strokeWidth="1"/></g>
-  <g className={s.screenGlint}><path d="M283 198v7m-3-3h6M174 171v7m-3-3h6" stroke="#e5d7a3" strokeWidth="1.3"/></g>
-  <path d="M131 124H348V136H131Z" fill="#08181b"/><path d="M142 129h26m7 0h12m9 0h30m10 0h9m10 0h31m8 0h31" stroke="#a7b18b" strokeWidth="2"/>
-  <path d="M131 262H348V280H131Z" fill="#09181b"/><text x="241" y="274" textAnchor="middle" fontSize="7" letterSpacing="1.3" fontFamily="monospace" fill="#c9c59d">A PLACE FOR FOUR</text>
+  <ArcadePlayfield/>
   <path d="M141 126Q237 110 335 130L301 252L266 259Z" fill="#bee2c5" opacity=".025"/>
   <path d="M141 148Q236 132 339 145M137 258Q237 271 337 258" stroke="#9bc6b0" opacity=".12" fill="none"/>
   <path className={s.screenBreath} d="M130 120H350V280H130Z" fill={`url(#${id}-phosphor)`}/>

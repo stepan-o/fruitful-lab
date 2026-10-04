@@ -1,5 +1,5 @@
 import { roomPath as d, segment, wallRect } from "./venue-perspective";
-import s from "./arcade-craft.module.css";
+import VenueScreen from "./VenueScreen";
 
 /** Uprights face into the aisle; their backs sit against the left wall. */
 function Cabinet({z,tone,pong=false}:{z:number;tone:string;pong?:boolean}) {
@@ -17,16 +17,8 @@ function Cabinet({z,tone,pong=false}:{z:number;tone:string;pong?:boolean}) {
   <path d={d([[-3.15,1.91,a+.08],[-3.15,1.91,b-.08],[-3.05,1.73,b-.08],[-3.05,1.73,a+.08]])} fill="#9f986a"/>
   <path d={Array.from({length:9},(_,i)=>segment([-3.1,1.81,a+.16+i*.106],[-3.13,1.875,a+.16+i*.106])).join("")} stroke="#283c37" strokeWidth="2.2"/>
   <path d={front(-3.03,1.66,-3.23,1.18)} fill="#06161c" stroke="#a29264"/>
-  <path d={d([[-3.05,1.62,a+.12],[-3.05,1.62,b-.12],[-3.18,1.23,b-.12],[-3.18,1.23,a+.12]])} fill="#487b70" stroke="#8eafa0" strokeWidth=".7"/>
-  <path className={s.screenBreath} d={d([[-3.04,1.61,a+.14],[-3.04,1.61,b-.14],[-3.16,1.24,b-.14],[-3.16,1.24,a+.14]])} fill="#86b39c" opacity=".4"/>
-  {pong?<g fill="none" stroke="#e2ddb0" strokeWidth="1.7">
-   <path d={segment([-3.09,1.53,a+.24],[-3.12,1.42,a+.24])+segment([-3.12,1.4,b-.24],[-3.16,1.29,b-.24])}/>
-   <path d={segment([-3.11,1.44,a+.62],[-3.11,1.44,a+.65])} strokeWidth="3"/>
-   <path d={segment([-3.06,1.59,a+.64],[-3.16,1.26,a+.64])} strokeDasharray="2 3" strokeWidth=".8"/>
-  </g>:<g fill="none" stroke="#c4d2a1" strokeWidth="1.6">
-   <path d={d([[-3.07,1.55,a+.2],[-3.07,1.55,b-.23],[-3.12,1.41,b-.23],[-3.12,1.41,a+.43],[-3.16,1.28,a+.43],[-3.16,1.28,b-.16]],false)}/>
-   <path d={segment([-3.1,1.47,a+.28],[-3.12,1.42,a+.28])+segment([-3.13,1.38,b-.3],[-3.15,1.31,b-.3])} stroke="#e6bc7e" strokeWidth="2.6"/>
-  </g>}
+  <path d={d([[-3.025,1.64,a+.08],[-3.025,1.64,b-.08],[-3.195,1.215,b-.08],[-3.195,1.215,a+.08]])} fill="#082027" stroke="#7c8e77" strokeWidth="1.2"/>
+  <VenueScreen z={z} pong={pong}/>
   <path d={front(-3.23,1.18,-2.74,1.02)} fill="#746443" stroke="#c6af7b" strokeWidth="1"/>
   <path d={front(-2.74,1.02,-2.81,.85)} fill="#24352e" stroke="#998358"/>
   {[a+.34,b-.3].map(q=><g key={q}>

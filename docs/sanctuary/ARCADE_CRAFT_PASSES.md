@@ -79,3 +79,13 @@ behavior changed to satisfy the test). All 45 suites pass across the run/retry.
 
 Source photographs are visual research, not additional public media assets.
 Field Core Web Vitals remain unmeasured.
+
+## Arcade motion follow-through — 2026-10-04
+
+The accepted bar composition remains. The focused CRT pass replaces light-only
+pulsing with projected paddle/ball and maze loops. The standalone cabinet now
+has a clipped four-player dungeon attract sequence, with static hardware and
+user-controlled health settings. Per-element reasoning, source links and runtime
+constraints are recorded in [VISUAL_ATLAS.md](VISUAL_ATLAS.md) and the public
+chapter notebook. The old 19-layer room count above describes the previous
+revision; the new room has 23 CSS animation layers (16 atmosphere + 7 gameplay).

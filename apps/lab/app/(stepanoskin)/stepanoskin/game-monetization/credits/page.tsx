@@ -5,7 +5,9 @@ import { coverReferences } from "@/lib/sanctuary/cover-references";
 import contextMedia from "@/lib/sanctuary/context-media.json";
 import arcadeMedia from "@/lib/sanctuary/arcade-media.json";
 import { bg3Notice, rightsReviewDate, rightsSources } from "@/lib/sanctuary/rights-sources";
-import { chapters } from "@/lib/sanctuary/content";
+import { VisualNoteEntries } from "@/components/sanctuary/VisualNotes";
+import { chapterVisualNotes, sharedVisualNotes } from "@/lib/sanctuary/visual-notes";
+import { chapters, sources } from "@/lib/sanctuary/content";
 import { chapterHref } from "@/lib/sanctuary/types";
 import styles from "./page.module.css";
 
@@ -30,6 +32,10 @@ export default function CreditsPage() {
     </section>
     <section aria-labelledby="catalog-parodies"><h2 id="catalog-parodies">Original catalog parodies</h2><p>The opening chapter reinterprets three recognizable screen worlds to examine the invitation to keep watching. These are original procedural illustrations and invented titles, not official Netflix posters or actual catalog listings. Their reference works and creators are credited below; the original production images were studied, not embedded in these drawings.</p>
       <div className={styles.sources}>{coverReferences.map(cover=><article key={cover.id} id={cover.id}><h3>{cover.title}</h3><p>{cover.detail}</p><p className={styles.credit}>Reference work: {cover.original} · {cover.creator}</p><p><a href={cover.source} target="_blank" rel="noreferrer">Netflix Tudum — original production reference ↗</a></p></article>)}</div>
+    </section>
+    <section aria-labelledby="original-art"><h2 id="original-art">The original visual atlas</h2><p>Descriptions, interpretive choices and references for the cover, atmosphere, illustrations and instruments. Chapter-specific notes also appear behind “About the visuals” in the reader.</p>
+      <VisualNoteEntries notes={sharedVisualNotes}/>
+      {chapters.map(chapter=><details key={chapter.id}><summary>{chapter.title}</summary><VisualNoteEntries notes={chapterVisualNotes(chapter,chapter.sources.map(id=>sources.find(source=>source.id===id)).filter(source=>source!==undefined)).filter(note=>!note.id.startsWith("media-"))}/></details>)}
     </section>
     <footer><p>For a source correction or rights concern, identify the image and the chapter through <a href="https://github.com/stepan-o/fruitful-lab/issues">the project’s issue tracker</a>. No confidential material is needed.</p><Link href={chapterHref("insert-coin")}>Return to the study →</Link></footer>
   </main>;

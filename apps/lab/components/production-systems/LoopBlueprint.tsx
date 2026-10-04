@@ -6,6 +6,7 @@ import { Grain, Screw, round } from "./engraving-primitives";
 import motion from "./turk-conveyor.module.css";
 import TurkConveyor from "./TurkConveyor";
 import TurkMovement from "./TurkMovement";
+import TurkCabinet from "./TurkCabinet";
 
 const ink = "#463a30";
 const paper = "#f4f2eb";
@@ -172,7 +173,7 @@ export default function LoopBlueprint() {
       <div className={styles.plateHeader}><span>Fig. 01 / The experiment engine</span><span>Illustrative experiments</span></div>
       <svg className={styles.loopSvg} viewBox="0 0 680 550" role="img" aria-labelledby="loop-title loop-description">
         <title id="loop-title">The Mechanical Turk operating an A/B experiment conveyor</title>
-        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a walnut cabinet. Its forearms reach over a continuously moving conveyor of jointed chessboard slats, supported by bolted brackets and end bearings. Inside the open cabinet, eleven brass and dark steel wheels turn at different speeds: a large slow flywheel, fast small pinions and an overlapping reduction train. Recessed bearings leave the gears exposed. The output wheel shares an axle with a guarded chain that drives the conveyor’s head drum; a return run travels beneath the fixed frame. The Turk stamps paired A/B specimens into effect estimates. P-values and verdicts exhale from the outfeed in clear lettering that rises and gradually dissolves into smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
+        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a finely joined walnut cabinet, with a molded base, turned feet, recessed paneling and an open door on small brass hinges. Its forearms reach over a continuously moving conveyor of jointed chessboard slats, supported by bolted brackets and end bearings. Inside the open cabinet, eleven brass and dark steel wheels turn at different speeds: a large slow flywheel, fast small pinions and an overlapping reduction train. Recessed bearings leave the gears exposed. The output wheel shares an axle with a guarded chain that drives the conveyor’s head drum; a return run travels beneath the fixed frame. The Turk stamps paired A/B specimens into effect estimates. P-values and verdicts exhale from the outfeed in clear lettering that rises and gradually dissolves into smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
         <defs>
           <pattern id="turk-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke={ink} strokeWidth=".55" opacity=".45" /></pattern>
           <pattern id="turk-crosshatch" width="5" height="5" patternUnits="userSpaceOnUse"><path d="m0 0 5 5M0 5 5 0" stroke={ink} strokeWidth=".5" opacity=".45" /></pattern>
@@ -189,36 +190,9 @@ export default function LoopBlueprint() {
 
         <SeatedTurk />
 
-        {/* One ground plane and one case: everything has a physical support. */}
-        <path d="M94 510 169 537 611 504 556 478Z" fill="#b7ad94" opacity=".16" />
-        <path d="M116 516 175 530 598 503M138 514 180 523 581 500M183 517 557 497" fill="none" stroke="#938775" strokeWidth=".65" opacity=".35" />
-        <path d="M146 483V517Q155 526 166 516L172 483M548 483V517Q558 524 567 516L573 483" fill="#70513c" stroke={ink} strokeWidth="1.3" />
-        <path d="M152 491v24m7-24v26m395-26v25m7-25v26" stroke="#c1a278" strokeWidth=".7" />
-        <path d="M589 323 625 264V444L589 496Z" fill="#6d5842" stroke={ink} strokeWidth="1.5" />
-        <path d="M598 342 617 310V441L598 469Z" fill="#4f4032" stroke={ink} />
-        <path d="M589 323 625 264V444L589 496Z" fill="url(#turk-hatch)" />
-        <path d="M129 327H589V492H129Z" fill={wood} stroke={ink} strokeWidth="1.6" />
-        <Grain x={133} y={333} w={452} h={154} />
-        <path d="M136 337H582V478H136Z" fill="none" stroke="#c4ab81" strokeWidth="1" />
-        <path d="M145 344H382V480H145Z" fill="#503e2f" stroke={ink} />
-        <path d="M158 354H369V469H158Z" fill="#302b24" stroke={ink} />
-        <path d="M158 354H369V469H158Z" fill="url(#turk-crosshatch)" />
-        <path d="M160 356 179 370H369M179 370V468" fill="none" stroke="#79664a" strokeWidth="1" />
-
-        <TurkMovement />
-        {/* The left door opens toward the reader, with real hinges and a recessed panel. */}
-        <path d="M145 344 89 363V493L145 480Z" fill="#73533d" stroke={ink} strokeWidth="1.4" />
-        <path d="M136 355 99 369V481L136 471Z" fill="#a08058" stroke={ink} />
-        <path d="M131 362 104 372V475L131 466Z" fill="#6c503b" stroke={ink} strokeWidth=".8" />
-        <path d="M145 344 89 363V493L145 480Z" fill="url(#turk-hatch)" />
-        <path d="M92 366V489M139 351V475" fill="none" stroke="#c2a67b" strokeWidth=".7" />
-        <path d="M141 364H150V377H141ZM141 447H150V460H141Z" fill={brass} stroke={ink} strokeWidth=".7" />
-        <ellipse cx="102" cy="425" rx="3" ry="5" fill={brass} stroke={ink} />
-
-        {/* The moving register remains a physical paper roll inside the cabinet. */}
-        <path d="M388 344H579V478H388Z" fill="#6d503c" stroke={ink} />
-        <path d="M128 479H590V488H128ZM124 490H594V499H124Z" fill="#73523a" stroke={ink} />
-        <path d="M130 482H587M127 494H591" stroke="#cfb88a" strokeWidth="1" />
+        <TurkCabinet>
+          <TurkMovement />
+        </TurkCabinet>
         <ResultRegister />
 
         <TurkConveyor>

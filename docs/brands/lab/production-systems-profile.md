@@ -299,3 +299,30 @@ remains a material influence; the page no longer cites the 30-255 as its layout.
 
 Current evidence replaces the first-pass captures and reports at
 [clockwork verification](production-systems-evidence/turk-clockwork-verification.md).
+
+
+## Cabinet finish · 4 October 2026
+
+Owner direction: the final focused pass for the opening illustration is the
+cabinet itself. Branch `codex/turk-cabinet-finish` starts from merged PR #68,
+master `720cd95`, in the dedicated professional-profile worktree.
+
+`TurkCabinet.tsx` separates the static casework from the accepted machine. The
+walnut shell now has a shaped cornice, rebated opening, fluted center stile,
+continuous banded apron, stepped base and turned feet. The right panel and each
+base return use the conveyor's depth vector. The open door has an edge, a raised
+panel with figured grain, two small pin hinges and a hanging pull. The upper
+hinge clears the fixed conveyor bracket. Grain follows individual board axes;
+thin highlights and dark recesses supply depth at phone scale.
+
+Windisch's 1783 engraving was visually revisited for casework proportions,
+projecting edges and framed openings. These are original procedural details;
+there is no claim of exact historical reconstruction. The existing public source
+credit remains applicable. Design guidelines are now v1.7.
+
+The accepted figure, eleven exposed gears, continuous conveyor, brisk stamp,
+advancing paper plots and result smoke retain their geometry and timing. No new
+client boundary, dependency, raster image or animation was added. Later scenes,
+page layout and professional claims retain their existing scope.
+
+Validation: [cabinet evidence](production-systems-evidence/turk-cabinet-verification.md).

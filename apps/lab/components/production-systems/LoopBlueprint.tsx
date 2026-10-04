@@ -10,6 +10,8 @@ const paper = "#f4f2eb";
 const brass = "#ae9365";
 const wood = "#917456";
 const figure = figureStudies.studies.automaton;
+const trayPeriod = 2.4;
+const outfeedLead = 58 / 88 * trayPeriod;
 
 // Synthetic normal-model examples: estimate ± 1.96 SE and two-sided p-values.
 // Most estimates sit near zero; one large gain and two losses punctuate the run.
@@ -32,24 +34,27 @@ const resultInk = { neutral: "#766c5c", loss: "#793c3c", gain: "#4d6b4d" };
 
 function ResultTray({ x, index }: { x: number; index: number }) {
   const result = outcomes[index % outcomes.length];
-  const hint = result.kind === "gain" ? "large gain" : result.kind === "loss" ? "negative" : index % outcomes.length === 2 ? "apparent lift" : "inconclusive";
   const xx = (n: number) => round(25 + n * .44);
-  return <g transform={`translate(${x} 0)`} stroke={ink} strokeWidth=".8">
+  return <g transform={`translate(${x} 0)`} data-outcome={index % outcomes.length} stroke={ink} strokeWidth=".8">
     <path d="M0 6H68V60H0Z" fill="#584d3d" /><path d="M0 3H68V57H0Z" fill="#c4b38c" />
     <path d="M3 6H65V54H3Z" fill={paper} />
     <path d="M8 19H60M25 23V48" stroke="#b8ad97" strokeWidth=".6" />
-    <text x="34" y="16" textAnchor="middle" fill={ink} stroke="none" fontSize="8" fontFamily="Georgia, serif">{hint}</text>
+    <path d="M12 13H28M38 13H56" stroke={brass} strokeWidth=".6" />
     <g stroke={resultInk[result.kind]} fill={resultInk[result.kind]}>
       <path d={`M${xx(result.low)} 36H${xx(result.high)}m0-3v6M${xx(result.low)} 33v6`} strokeWidth="1.1" />
       <circle cx={xx(result.estimate)} cy="36" r={result.kind === "gain" ? 2.6 : 1.8} />
     </g>
-    <text x="34" y="51" textAnchor="middle" fill="#766c5c" stroke="none" fontSize="8" fontFamily="Georgia, serif">p {result.p}</text>
+    <path d="M12 50H55" stroke={brass} strokeWidth=".5" />
   </g>;
 }
 
+/** A moving paper log shares the conveyor's exact outcome order and speed. */
 function ResultRegister() {
+  // At the instant a specimen leaves the conveyor, its estimate reaches the
+  // top of the register. Older rows descend; the 10-row repeat is seamless.
+  const firstRow = 378 + 8.5 - outfeedLead / trayPeriod * 8.5;
   return <g>
-    {/* A paper register physically feeds from a slot in the conveyor's case. */}
+    <defs><clipPath id="turk-register-window"><path d="M402 378H570V468H402Z" /></clipPath></defs>
     <path d="M392 350H582V360H392Z" fill="#302b24" stroke={ink} />
     <path d="M403 353H574V472Q574 486 564 486H404Z" fill="#4b382b" opacity=".35" />
     <path d="M399 352H575V472Q574 481 567 483H392Q402 478 399 466Z" fill="#f0e7d0" stroke={ink} strokeWidth="1" />
@@ -59,25 +64,74 @@ function ResultRegister() {
     <text x="561" y="370" fill="#766c5c" fontFamily="Georgia, serif" fontSize="9" textAnchor="end">p</text>
     <text x="456" y="373" fill={ink} fontFamily="Georgia, serif" fontSize="9" textAnchor="middle">0</text>
     <path d="M406 376v90M535 376v90" stroke="#b6a98c" strokeWidth=".5" strokeDasharray="1 3" />
-    {outcomes.map((r, i) => {
-      const y = 382 + i * 8.5;
-      return <g key={i}>
-        <path d={`M406 ${y}H565`} stroke="#d7ccb1" strokeWidth=".45" />
-        {/* Faint observations make the background variation visible, while the
-            darker estimate and range distinguish noise from stronger evidence. */}
-        <path d={Array.from({ length: 7 }, (_, j) => {
-          const x = 456 + r.estimate + (((i * 13 + j * 17) % 37) - 18);
-          return `M${x} ${y - 1.3}v2.6`;
-        }).join("")} stroke={resultInk[r.kind]} strokeWidth=".6" opacity=".25" />
-        <path d={`M${456 + r.low} ${y}H${456 + r.high}m0-2v4M${456 + r.low} ${y - 2}v4`} stroke={resultInk[r.kind]} strokeWidth={r.kind === "neutral" ? .85 : 1.2} fill="none" />
-        <circle cx={456 + r.estimate} cy={y} r={r.kind === "gain" ? 2.8 : r.kind === "loss" ? 2.1 : 1.5} fill={resultInk[r.kind]} />
-        <text x="565" y={y + 2.5} fill="#766c5c" fontFamily="Georgia, serif" fontSize="8" textAnchor="end">{r.p}</text>
-      </g>;
-    })}
+    <g clipPath="url(#turk-register-window)">
+      <g className={motion.registerTrack}>
+        {Array.from({ length: 22 }, (_, i) => {
+          const row = i - 11, index = (row + 27) % outcomes.length;
+          const r = outcomes[index], y = round(firstRow + row * 8.5);
+          return <g key={i} data-outcome={index} data-register-row={row} transform={`translate(0 ${y})`}>
+            <path d="M403-4H569V4.5H403Z" fill={resultInk[r.kind]} opacity={r.kind === "neutral" ? .025 : .095} />
+            <path d="M406 4H565" stroke="#d7ccb1" strokeWidth=".45" />
+            <path d={Array.from({ length: 7 }, (_, j) => {
+              const x = 456 + r.estimate + (((index * 13 + j * 17) % 37) - 18);
+              return `M${x} -1.3v2.6`;
+            }).join("")} stroke={resultInk[r.kind]} strokeWidth=".6" opacity=".25" />
+            <path d={`M${456 + r.low} 0H${456 + r.high}m0-2v4M${456 + r.low} -2v4`} stroke={resultInk[r.kind]} strokeWidth={r.kind === "neutral" ? .85 : 1.2} fill="none" />
+            <circle cx={456 + r.estimate} cy="0" r={r.kind === "gain" ? 2.8 : r.kind === "loss" ? 2.1 : 1.5} fill={resultInk[r.kind]} />
+            <text x="565" y="2.5" fill="#766c5c" fontFamily="Georgia, serif" fontSize="8" textAnchor="end">{r.p}</text>
+          </g>;
+        })}
+      </g>
+    </g>
     <path d="M392 483q8-3 7-10h176q0 8-8 10Z" fill="#cfbf99" stroke={ink} strokeWidth=".7" />
     <path d="M401 475H569" stroke="#f2e7c9" strokeWidth=".8" />
     <path d="M390 351H581" stroke={brass} strokeWidth="4" />
     <Screw x={391} y={351} r={3} /><Screw x={581} y={351} r={3} />
+  </g>;
+}
+
+/** Verdicts are carried by the exhaust itself, not by a caption or dashboard.
+ * The sequence follows the outfeed's reversed order as trays move to the right.
+ * Each ten-result period takes 24 seconds, with one emission per 2.4-second tray.
+ */
+function ResultExhalation() {
+  const verdicts = [
+    ["no clear lift"], ["inconclusive"], ["later: false positive"], ["negative"],
+    ["noise"], ["no clear lift"], ["large gain"], ["later: great thing", "we dropped"],
+    ["negative"], ["inconclusive"],
+  ];
+  return <g transform="translate(620 251)" aria-hidden="true">
+    {outcomes.map((result, index) => <g key={index} className={motion.smoke} data-outcome={index} style={{
+      "--delay": `${round(outfeedLead + ((6 - index + outcomes.length) % outcomes.length) * trayPeriod - outcomes.length * trayPeriod)}s`,
+      "--still-x": index === 0 ? "-14px" : index === 3 ? "-39px" : "-60px",
+      "--still-y": index === 0 ? "-29px" : index === 3 ? "-92px" : "-154px",
+      "--still-opacity": [0, 3, 6].includes(index) ? .62 : 0,
+    } as CSSProperties}>
+      <g fill="none" stroke="#90928a" strokeWidth=".7" opacity=".25">
+        <path d="M-14 17C-43 7-22-5-34-17S-63-32-45-46M17 22C44 9 14-8 32-20S58-39 45-53" />
+        <path d="M-1 23C-18 12 7 2-5-10M23-26c-10-14 5-18 13-24" strokeWidth=".45" />
+      </g>
+      <text className={motion.smokeValue} textAnchor="middle" y="-7">p {result.p.startsWith("<") ? result.p : `= ${result.p}`}</text>
+      <text className={motion.smokeVerdict} textAnchor="middle" y="11">
+        {verdicts[index].map((line, row) => <tspan key={line} x="0" dy={row === 0 ? 0 : 16}>{line}</tspan>)}
+      </text>
+    </g>)}
+  </g>;
+}
+
+/** The chair and coat are behind the work surface; only the hands cross it. */
+function SeatedTurk() {
+  return <g>
+    <path d="M302 289V184Q302 175 312 175H447Q458 175 458 188V290" fill="none" stroke={ink} strokeWidth="7" />
+    <path d="M302 289V184Q302 175 312 175H447Q458 175 458 188V290" fill="none" stroke={wood} strokeWidth="4" />
+    <path d="M305 191H455V275H305Z" fill="#6d5842" stroke={ink} />
+    <Grain x={310} y={195} w={140} h={73} />
+    <path d="M301 273H458V284H301Z" fill="#70513c" stroke={ink} />
+    <path d="M315 248Q326 278 321 303H448Q447 277 437 248Z" fill="#8a6f58" stroke={ink} />
+    <path d="M326 251q16 31 9 48m10-48q12 29 7 48m10-48q7 28 5 48m11-48q1 24 7 48m12-48q-2 27 9 48m9-48q-1 23 13 48" fill="none" stroke="#514237" strokeWidth=".75" />
+    <g transform="translate(168 21) scale(.75)">
+      <g clipPath="url(#turk-still-figure)"><use href="#turk-engraved-figure" /></g>
+    </g>
   </g>;
 }
 
@@ -130,11 +184,11 @@ function TurkFigure() {
 
 export default function LoopBlueprint() {
   return (
-    <figure className={styles.blueprint} aria-labelledby="loop-caption" data-engraving="conveyor" data-playing="false">
-      <div className={styles.plateHeader}><span>Fig. 01 / The experiment engine</span><span>Variants → evidence</span></div>
+    <figure className={styles.blueprint} aria-labelledby="loop-title" data-engraving="conveyor" data-playing="false" style={{ "--tray-period": `${trayPeriod}s`, "--cycle-period": `${outcomes.length * trayPeriod}s` } as CSSProperties}>
+      <div className={styles.plateHeader}><span>Fig. 01 / The experiment engine</span><span>Illustrative experiments</span></div>
       <svg className={styles.loopSvg} viewBox="0 0 680 550" role="img" aria-labelledby="loop-title loop-description">
         <title id="loop-title">The Mechanical Turk operating an A/B experiment conveyor</title>
-        <desc id="loop-description">A seated, engraved chess automaton pushes the feed lever of a conveyor built into its walnut cabinet. Paired A and B specimens enter from the left and emerge on the right as effect estimates. The paper register beneath the outfeed shows mostly noisy estimates overlapping zero, a few negative effects, and one large positive effect. The same feed stroke drives the hand, conveyor, rollers, and exposed gears. P-values accompany the synthetic effect estimates and uncertainty intervals. Marginal notes distinguish initial evidence from later hindsight: an apparent lift that becomes a false positive, and an inconclusive idea dropped too early. These are illustrative normal-model examples, not measured results; the machine is an original metaphor, not a historical reconstruction.</desc>
+        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a walnut cabinet. Its forearms reach over a continuously moving chessboard conveyor, stamping paired A/B specimens into effect estimates. P-values and verdicts exhale from the outfeed as pale rising smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
         <defs>
           <pattern id="turk-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke={ink} strokeWidth=".55" opacity=".45" /></pattern>
           <pattern id="turk-crosshatch" width="5" height="5" patternUnits="userSpaceOnUse"><path d="m0 0 5 5M0 5 5 0" stroke={ink} strokeWidth=".5" opacity=".45" /></pattern>
@@ -144,9 +198,12 @@ export default function LoopBlueprint() {
           <g id="turk-engraved-figure"><TurkFigure /></g>
           <clipPath id="turk-figure-silhouette"><path d={figure.outline} /></clipPath>
           <clipPath id="turk-still-figure"><path d="M0 0H470V238H411V355H0Z" /></clipPath>
+          <clipPath id="turk-left-hand"><path d="M0 250H166V355H0Z" /></clipPath>
           <clipPath id="turk-working-hand"><path d="M411 222H470V355H411Z" /></clipPath>
           <clipPath id="turk-chamber"><path d="M158 354H369V469H158Z" /></clipPath>
         </defs>
+
+        <SeatedTurk />
 
         {/* One ground plane and one case: everything has a physical support. */}
         <path d="M94 510 169 537 611 504 556 478Z" fill="#b7ad94" opacity=".16" />
@@ -189,7 +246,7 @@ export default function LoopBlueprint() {
         <path d="M141 364H150V377H141ZM141 447H150V460H141Z" fill={brass} stroke={ink} strokeWidth=".7" />
         <ellipse cx="102" cy="425" rx="3" ry="5" fill={brass} stroke={ink} />
 
-        {/* The output is a material record, not a success-only status panel. */}
+        {/* The moving register remains a physical paper roll inside the cabinet. */}
         <path d="M388 344H579V478H388Z" fill="#6d503c" stroke={ink} />
         <path d="M128 479H590V488H128ZM124 490H594V499H124Z" fill="#73523a" stroke={ink} />
         <path d="M130 482H587M127 494H591" stroke="#cfb88a" strokeWidth="1" />
@@ -227,10 +284,10 @@ export default function LoopBlueprint() {
         <path d="M33 341 172 351Q185 351 187 338M33 337 172 347Q181 347 183 337" fill="none" stroke={ink} strokeWidth="1.2" />
         <path d="M39 314H579" stroke="#eadbbb" strokeWidth="1" />
 
-        {/* The original engraved posture is the dominant silhouette, with the hand
-            and feed handle moving together. The sleeve covers the pivot seam. */}
+        {/* The tabletop occludes the seated torso. Only the left forearm and the
+            working right hand are redrawn in front of the moving specimens. */}
         <g transform="translate(168 21) scale(.75)">
-          <g clipPath="url(#turk-still-figure)"><use href="#turk-engraved-figure" /></g>
+          <g clipPath="url(#turk-left-hand)"><use href="#turk-engraved-figure" /></g>
         </g>
         <path d="M505 305V328H517V305Z" fill={brass} stroke={ink} />
         <path d="M509 307V326M514 307V326" stroke="#dfc99b" strokeWidth=".7" />
@@ -244,19 +301,11 @@ export default function LoopBlueprint() {
         <g transform="translate(168 21) scale(.75)">
           <g className={motion.hand} clipPath="url(#turk-working-hand)"><use href="#turk-engraved-figure" /></g>
         </g>
+        <path d="M610 249q10-5 20 0v6q-10 5-20 0Z" fill={brass} stroke={ink} strokeWidth=".8" />
+        <ellipse cx="620" cy="249" rx="10" ry="3" fill="#554b3a" stroke={ink} strokeWidth=".7" />
+        <ResultExhalation />
         <path d="M149 507H474" stroke="#a99b7d" strokeWidth=".6" opacity=".45" />
       </svg>
-      <div className={motion.resultNotes} aria-label="Illustrative follow-up outcomes">
-        <p><span>p = .020 · apparent lift</span><em>Later: false positive.</em></p>
-        <p><span>p = .237 · inconclusive</span><em>Later: a great idea we dropped.</em></p>
-      </div>
-      <figcaption id="loop-caption">
-        <p>Many experiments.<br /><strong>A few useful signals.</strong></p>
-        <ul className={motion.outcomeLegend} aria-label="Illustrative test outcomes">
-          <li>Mostly near zero</li><li>Some negative</li><li>Rare large gains</li>
-        </ul>
-        <span className={styles.plateFootnote}>Illustrative experiments. Initial significance and later value can disagree.</span>
-      </figcaption>
     </figure>
   );
 }

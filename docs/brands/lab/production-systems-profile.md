@@ -214,3 +214,25 @@ script is introduced.
 Branch: `codex/mechanical-turk-conveyor`, based on master `994074a`. The isolated
 worktree keeps this change separate from Sanctuary and launcher work.
 Validation and review captures: [hero verification](production-systems-evidence/turk-conveyor-verification.md).
+
+
+## Continuous conveyor and living register · 3 October 2026
+
+Follow-up to merged PR #60, on `codex/turk-continuous-evidence` from `f6467a8`.
+The figure now sits behind the tabletop, with a visible chair and only its hands
+and forearms crossing the work surface. A continuous conveyor replaces the
+indexed motion. Each 2.4-second test has a quick stamping stroke (216 ms down,
+96 ms contact, 384 ms return); the ten-outcome sequence repeats every 24 seconds.
+
+The cabinet’s paper plot register is retained and advances with every test. Its
+new row shares the outgoing specimen’s outcome and subtle gray, red or green
+highlight. P-values and verdicts exhale as pale smoke from the outfeed. The two
+hindsight examples also appear in the vapor, explicitly prefixed “later.” This
+supersedes the preceding bottom caption, outcome legend and marginal notes: the
+opening has no visible text below the SVG. Synthetic-data context remains in
+the accessible description, plate header and existing artwork/methodology notes.
+
+Still/reduced-motion states, persistent pause and offscreen/hidden-document
+suspension remain supported. These refinements use the existing server-rendered
+SVG and CSS only. The seven later scenes and professional claims are unchanged.
+Validation: [continuous conveyor evidence](production-systems-evidence/turk-continuous-verification.md).

@@ -53,10 +53,6 @@
 .blueprint { color: var(--ink); min-width: 0; position: relative; padding: 16px 0 0; border-top: 1px solid var(--line); }
 .plateHeader { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; font-family: var(--mono); color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
 .loopSvg { display: block; width: 100%; height: auto; margin: 18px 0 2px; }
-.blueprint figcaption { border-top: 1px solid var(--line); padding: 23px 0 0; }
-.blueprint figcaption p { font-family: Georgia, serif; font-size: 29px; letter-spacing: -.025em; line-height: 1.2; color: var(--muted); }
-.blueprint figcaption strong { font-weight: 400; color: var(--ink); }
-.plateFootnote { display: block; font-size: 11px; color: var(--muted); margin-top: 13px; }
 .focusStrip { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px 20px; max-width: 1184px; margin: 0 auto; padding: 23px 0; border-block: 1px solid var(--line); font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); }
 .focusStrip span::before { content: "+"; color: var(--brass); margin-right: 13px; }
 .section { max-width: 1280px; margin: auto; padding: 76px 48px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.8fr); gap: 68px; }
@@ -174,7 +170,6 @@
   .heroActions { gap: 10px; }
   .blueprint { padding-top: 14px; }
   .plateHeader { font-size: 8px; }
-  .blueprint figcaption p { font-size: 22px; }
   .focusStrip { margin-inline: 28px; font-size: 9px; }
   .section { padding: 56px 28px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 28px; }
   .section h2 { font-size: 28px; }
@@ -200,9 +195,6 @@
   .currentRole { margin-top: 23px; }
   .blueprint { padding: 18px 0 0; max-width: 500px; width: 100%; margin: auto; }
   .loopSvg { margin-top: 15px; }
-  .blueprint figcaption { display: block; padding-top: 17px; }
-  .blueprint figcaption p { font-size: 26px; }
-  .plateFootnote { font-size: 11px; margin-top: 12px; }
   .focusStrip { margin-inline: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px 10px; font-size: 8px; letter-spacing: .02em; }
   .focusStrip span::before { margin-right: 7px; }
   .section { grid-template-columns: 1fr; gap: 25px; padding: 43px 22px; }
@@ -240,7 +232,7 @@
   .footer { padding: 18px 22px; gap: 10px 20px; }
   .footer > span:last-child { flex-basis: 100%; }
 }
-@media (max-width: 360px) { .identitySub { display: none; } .header { gap: 12px; } .monogram { width: 30px; height: 36px; } .workGrid { grid-template-columns: 1fr; } .heroActions { gap: 10px; } .blueprint figcaption { grid-template-columns: 1fr; } .plateFootnote { margin-top: 7px; } }
+@media (max-width: 360px) { .identitySub { display: none; } .header { gap: 12px; } .monogram { width: 30px; height: 36px; } .workGrid { grid-template-columns: 1fr; } .heroActions { gap: 10px; } }
 @media (prefers-reduced-motion: reduce) { .page *, .page *::before, .page *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
 @media print {
   .page { --paper: #fff; --ink: #111; --muted: #333; --line: #ccc; --brass: #444; background: white; color: black; font-size: 10pt; }

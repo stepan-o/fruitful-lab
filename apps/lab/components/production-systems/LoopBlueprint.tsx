@@ -8,6 +8,7 @@ import TurkConveyor from "./TurkConveyor";
 import TurkMovement from "./TurkMovement";
 import TurkCabinet from "./TurkCabinet";
 import ConveyorPace from "./ConveyorPace";
+import { BeltHandShadows, GroundShadows, OverhangShadow } from "./TurkLighting";
 
 const ink = "#463a30";
 const paper = "#f4f2eb";
@@ -91,6 +92,7 @@ function ResultRegister() {
     <path d="M392 483q8-3 7-10h176q0 8-8 10Z" fill="#cfbf99" stroke={ink} strokeWidth=".7" />
     <path d="M401 475H569" stroke="#f2e7c9" strokeWidth=".8" />
     <path d="M390 351H581" stroke={brass} strokeWidth="4" />
+    <g clipPath="url(#turk-paper-receiver)"><OverhangShadow depth={-1} /></g>
     <Screw x={391} y={351} r={3} /><Screw x={581} y={351} r={3} />
   </g>;
 }
@@ -163,7 +165,7 @@ function ExperimentTray({ x }: { x: number }) {
 /** Racknitz's figure is three batched vector paths, reused by the cabinet study. */
 function TurkFigure() {
   return <g strokeLinecap="round" strokeLinejoin="round">
-    <path d={figure.outline} fill="#e4d8bf" stroke={ink} strokeWidth="1.2" />
+    <use href="#turk-figure-outline" fill="#e4d8bf" stroke={ink} strokeWidth="1.2" />
     <g clipPath="url(#turk-figure-silhouette)" fill="#793c3c" opacity=".24">
       <path d="M207 49 216 17 275 4 296 43 281 55Z" />
       <path d="M150 189 181 156 224 144 220 209 193 245 174 323 209 323 245 164 281 166 307 324 379 326 347 230 387 249 411 253 440 296 463 292 462 240 427 211 391 202 350 145 316 132 282 126 237 128 184 147Z" />
@@ -187,14 +189,20 @@ export default function LoopBlueprint() {
           <pattern id="turk-checker" width="44" height="32" patternUnits="userSpaceOnUse"><rect width="44" height="32" fill="#c4b08b" /><path d="M0 0H22V16H0ZM22 16H44V32H22Z" fill="#827b60" /><path d="M4 0V32M9 0V32M15 0V32M26 0V32M31 0V32M37 0V32" stroke={ink} strokeWidth=".45" opacity=".25" /><path d="M0 0V32M22 0V32M44 0V32" stroke="#504737" strokeWidth="1.3" /><path d="M1.5 0V32M23.5 0V32" stroke="#e2cca1" strokeWidth=".6" /></pattern>
           <clipPath id="turk-belt-window"><path d="M68.95 0H463V64H68.95Z" /></clipPath>
           <clipPath id="turk-results-window"><path d="M463 0H628V64H463Z" /></clipPath>
+          <path id="turk-figure-outline" d={figure.outline} />
+          <clipPath id="turk-lit-belt"><path d="M68.95 250H628L591.05 314H32Z" /></clipPath>
+          <clipPath id="turk-above-belt-left"><path d="M0 0H680V260H0Z" /></clipPath>
+          <clipPath id="turk-above-belt-working"><path d="M0 0H680V288H0Z" /></clipPath>
+          <clipPath id="turk-paper-receiver"><path d="M399 352H575V472H399Z" /></clipPath>
           <g id="turk-engraved-figure"><TurkFigure /></g>
-          <clipPath id="turk-figure-silhouette"><path d={figure.outline} /></clipPath>
+          <clipPath id="turk-figure-silhouette"><use href="#turk-figure-outline" /></clipPath>
           <clipPath id="turk-still-figure"><path d="M0 0H470V238H411V355H0Z" /></clipPath>
           <clipPath id="turk-left-hand"><path d="M0 250H166V355H0Z" /></clipPath>
           <clipPath id="turk-working-hand"><path d="M411 222H470V355H411Z" /></clipPath>
           <clipPath id="turk-chamber"><path d="M158 354H369V469H158Z" /></clipPath>
         </defs>
 
+        <GroundShadows />
         <SeatedTurk />
 
         <TurkCabinet>
@@ -217,6 +225,7 @@ export default function LoopBlueprint() {
               </g>
             </g>
           </g>
+          <BeltHandShadows />
         </TurkConveyor>
 
         {/* The tabletop occludes the seated torso. Only the left forearm and the
@@ -239,7 +248,6 @@ export default function LoopBlueprint() {
         <path d="M610 249q10-5 20 0v6q-10 5-20 0Z" fill={brass} stroke={ink} strokeWidth=".8" />
         <ellipse cx="620" cy="249" rx="10" ry="3" fill="#554b3a" stroke={ink} strokeWidth=".7" />
         <ResultExhalation />
-        <path d="M149 507H474" stroke="#a99b7d" strokeWidth=".6" opacity=".45" />
       </svg>
     </figure>
   );

@@ -377,3 +377,22 @@ open door. A short knee now bolts to the fixed central stile between the mechani
 and register, and meets the stationary conveyor rail. The continuous rail and
 cabinet crown pads carry the left overhang. Door hinges and the eleven-wheel
 movement retain their geometry; the bracket does not move with the belt.
+
+
+### Coherent light and receiving surfaces · 4 October 2026
+
+The opening's lighting now shares a small orthographic scene model. The cabinet,
+conveyor overhang and open door project onto the floor from one upper/front-left
+key. Seven fixed samples soften distant edges while contact shading stays beneath
+the feet. The frame shades the cabinet front, recessed movement and paper at their
+separate depths. Eleven pierced, rotating gear silhouettes cast onto the back
+wall; the stamp and resting hand project onto the belt. Fixed bevel highlights
+and a cooler right return reinforce the same source direction.
+
+This is a procedural engraving approximation, not a full lighting engine or a
+change to accepted machinery geometry. Figure silhouette reuse reduces duplicate
+vector data. Twelve shadow animations join the existing 35, with identical pace,
+phase and pause handling; no new client code or dependency is introduced. Design
+Guidelines v1.9 record the lighting contract and the PBRT area-light reference.
+
+Validation: [lighting evidence](production-systems-evidence/turk-lighting-verification.md).

@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 import { movementWheels, wheelOutline, type MovementWheel } from "@/lib/production-systems/turk-movement";
+import { planeOffset } from "@/lib/production-systems/turk-lighting";
+import { OverhangShadow } from "./TurkLighting";
 import { round } from "./engraving-primitives";
 import motion from "./turk-conveyor.module.css";
 
@@ -22,7 +24,7 @@ function Wheel({ wheel, index }: { wheel: MovementWheel; index: number }) {
         <circle r={inner + .7} fill="none" stroke={steel ? "#bcc2a6" : "#ead3a1"} strokeWidth=".5" />
         {Array.from({ length: spokes }, (_, i) => <g key={i} transform={`rotate(${i * 360 / spokes})`}>
           <path d={`M-1.5 -3Q-1 ${-r / 2} -2.3 ${-inner - .7}H2.3Q1 ${-r / 2} 1.5 -3Z`} fill={metal} stroke={ink} strokeWidth=".5" />
-          <path d={`M-1 -4Q-.6 ${-r / 2} -1.6 ${-inner}`} fill="none" stroke={edge} strokeWidth=".45" />
+          <path d={`M-1 -4Q-.6 ${-r / 2} -1.6 ${-inner}`} fill="none" stroke={edge} strokeWidth=".45" opacity=".45" />
         </g>)}
         {r > 20 && <path d={Array.from({ length: teeth }, (_, i) => {
           const a = i * Math.PI * 2 / teeth;
@@ -40,6 +42,26 @@ function Wheel({ wheel, index }: { wheel: MovementWheel; index: number }) {
         <path d="M-1-1H1V1H-1Z" fill={ink} />
         {/* A small eccentric makes the fast pinion's rotation easy to read. */}
         {index === 5 && <circle cx="5" cy="-2" r="1.5" fill="#584438" stroke={edge} strokeWidth=".6" />}
+      </g>
+    </g>
+    {/* Circular bevels catch the fixed key; they do not rotate with the teeth. */}
+    <path d={`M${-r*.86} ${-r*.42}A${r-.8} ${r-.8} 0 0 1 ${r*.34} ${-r*.89}`} fill="none" stroke={steel ? "#d2d8bd" : "#f0dcad"} strokeWidth=".85" opacity=".75" />
+    <path d={`M${r*.86} ${r*.42}A${r-.8} ${r-.8} 0 0 1 ${-r*.34} ${r*.89}`} fill="none" stroke="#302d24" strokeWidth="1" opacity=".6" />
+  </g>;
+}
+
+/** Pierced, moving silhouettes replace arbitrary concentric drop shadows. */
+function WheelShadow({ wheel, index }: { wheel: MovementWheel; index: number }) {
+  const { x, y, radius: r, phase, direction, period, layer } = wheel;
+  const p = planeOffset(layer === 0 ? 2 : 0, 8);
+  const inner = r - (r > 30 ? 6 : 3.4);
+  const spokes = index === 0 ? 8 : r < 12 ? 3 : index === 2 ? 6 : index === 3 ? 4 : 5;
+  return <g transform={`translate(${round(x+p.x)} ${round(y+p.y)})`} fill="#161d17" opacity=".42" data-wheel-shadow={wheel.name}>
+    <g className={motion.gear} style={{ "--sweep": `${direction*360}deg`, "--wheel-period": `${period}s` } as CSSProperties}>
+      <g transform={`rotate(${phase})`}>
+        <path d={`M${r} 0a${r} ${r} 0 1 0 ${-r*2} 0a${r} ${r} 0 1 0 ${r*2} 0ZM${inner} 0a${inner} ${inner} 0 1 0 ${-inner*2} 0a${inner} ${inner} 0 1 0 ${inner*2} 0Z`} fillRule="evenodd" />
+        {Array.from({ length: spokes }, (_, i) => <path key={i} transform={`rotate(${i*360/spokes})`} d={`M-1.5 0 -2.3 ${-inner-1}H2.3L1.5 0Z`} />)}
+        <circle r={r < 12 ? 3 : 4.2} />
       </g>
     </g>
   </g>;
@@ -61,15 +83,14 @@ export default function TurkMovement() {
       <path d="M-6-3H6V3H-6Z" fill="#736249" stroke={ink} strokeWidth=".6" />
       <circle r="4.3" fill="#86744f" stroke="#b69d70" strokeWidth=".6" />
     </g>)}
-    {/* Cast depth stays behind every wheel in its plane; it cannot mask a mesh. */}
-    {movementWheels.filter(w => w.layer === 0).map(w => <circle key={w.name} cx={round(w.x)} cy={round(w.y + 1)} r={w.radius - 1.2} fill="none" stroke="#181915" strokeWidth="2.7" />)}
+    <OverhangShadow depth={8} />
+    {movementWheels.map((wheel, index) => <WheelShadow key={wheel.name} wheel={wheel} index={index} />)}
     {movementWheels.filter(w => w.layer === 0).map((wheel, index) => <Wheel key={wheel.name} wheel={wheel} index={index} />)}
 
     {/* A short spacer makes the second plane readable, without a cover plate. */}
     <g data-movement-part="compound-arbor" transform={`translate(${round(movementWheels[2].x)} ${movementWheels[2].y})`}>
       <circle r="6.4" fill="#413a2c" stroke={edge} strokeWidth=".65" /><circle r="4.7" fill="#b59b69" stroke={ink} strokeWidth=".7" />
     </g>
-    {movementWheels.filter(w => w.layer === 1).map(w => <circle key={w.name} cx={round(w.x)} cy={round(w.y + 1.7)} r={w.radius - 1} fill="none" stroke="#171b16" strokeWidth="2.5" />)}
     {movementWheels.filter(w => w.layer === 1).map((wheel, i) => <Wheel key={wheel.name} wheel={wheel} index={i + 9} />)}
 
     {/* The only prominent front bearing is the conveyor's load-bearing takeoff. */}

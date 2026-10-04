@@ -726,6 +726,15 @@ Professional facts, APIs, analytics and experiment contracts are unchanged.
 See `docs/brands/lab/production-systems-design/DESIGN_GUIDELINES.md` for provenance
 and `docs/brands/lab/production-systems-evidence/engraving-verification.md` for checks.
 
+Opening lighting refinement (2026-10-04): `turk-lighting.ts` defines the shared
+orthographic key and receiver planes. Server-rendered floor/overhang penumbrae,
+pierced gear shadows and projected hand shadows replace independent offsets.
+There are now 47 synchronized hero animations; Slow/Medium/Fast remain
+0.55/1.1/3×. Figure silhouette reuse avoids duplicate vector data. Design
+Guidelines v1.9 and `production-systems-evidence/turk-lighting-verification.md`
+record the contract and production checks. No new client boundary or frame loop.
+
+
 ### Sanctuary cinema/catalog plates · 2026-10-03 · local draft
 
 - `AudienceEconomy` now contains a full-width original cinema and three inspectable

@@ -3,6 +3,11 @@ export const artDirection: Record<
   string,
   { title: string; reference?: string; read: string; motifs?: string[]; alt?: string }
 > = {
+  "insert-coin": {
+    title: "The coin slot and the dungeon",
+    read: "The commercial machine and the adventure share a boundary. The original cutaway below makes both sides available to inspect.",
+    alt: "An original engraved arcade cabinet with four adventurers in its screen and a coin slot below.",
+  },
   "the-fork": {
     title: "The shape of a playthrough",
     read: "An adventure can reach its resolution while a world continues to offer new occasions to play. Diablo IV contains both: its campaign and its seasonal program. For a player expecting to finish the work they bought, the next season can arrive before the current journey feels complete. The picture holds that tension; the diagrams below examine what each invitation asks of the studio and the player.",

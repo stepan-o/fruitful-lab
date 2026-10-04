@@ -118,63 +118,21 @@ export function Transfer() {
 }
 export function Histories() {
   const [v, set] = useState(0);
-  const names = [
-    "All mechanisms",
-    "Access / continued play",
-    "Items / catalogs",
-    "Event participation",
+  const names = ["All arrangements", "Paid participation", "A purchased copy", "An additional offer", "Advertising"];
+  const examples = [
+    { year:"1985", name:"Gauntlet", desc:"A coin buys a resource consumed by continued play.", kind:1 },
+    { year:"2000", name:"Diablo II", desc:"The same purchase covers another attempt, class or playthrough.", kind:2 },
+    { year:"2011", name:"Team Fortress 2", desc:"Free entry sits alongside an item economy.", kind:3 },
+    { year:"2013", name:"Dota 2", desc:"A tournament companion gives existing players another offer.", kind:3 },
+    { year:"2015 talk", name:"Crossy Road", desc:"Optional rewarded video brings an advertiser into the exchange.", kind:4 },
   ];
-  return (
-    <>
-      <Choices
-        label="Highlight a mechanism"
-        items={names}
-        value={v}
-        onChange={set}
-      />
-      <div className={s.history}>
-        {[
-          [
-            "1985",
-            "Gauntlet",
-            "Coins connect to health and continued play.",
-            1,
-          ],
-          [
-            "2011",
-            "Team Fortress 2",
-            "A free-to-play shift sits beside an item economy.",
-            2,
-          ],
-          [
-            "2013",
-            "Dota 2",
-            "The Compendium connects an event and purchases.",
-            3,
-          ],
-          [
-            "2025",
-            "Diablo IV",
-            "Reliquaries separate access and earned claims.",
-            2,
-          ],
-        ].map(([year, name, desc, kind]) => (
-          <div key={year} data-dim={v !== 0 && v !== kind}>
-            <time>{year}</time>
-            <div>
-              <h3>{name}</h3>
-              <p>{desc}</p>
-            </div>
-            <span aria-hidden="true">●</span>
-          </div>
-        ))}
-      </div>
-      <p className={s.footnote}>
-        Selected documented anchors, not invention dates. Earlier mechanisms do
-        not vanish when a later one appears.
-      </p>
-    </>
-  );
+  return <>
+    <Choices label="Highlight a payment relationship" items={names} value={v} onChange={set}/>
+    <div className={s.history}>{examples.map(example=><div key={example.name} data-dim={v !== 0 && v !== example.kind}>
+      <time>{example.year}</time><div><h3>{example.name}</h3><p>{example.desc}</p></div><span aria-hidden="true">●</span>
+    </div>)}</div>
+    <p className={s.footnote}>Selected historical examples, not invention dates. These arrangements coexist and can be combined in one game.</p>
+  </>;
 }
 export function ConcordTimeline() {
   return (

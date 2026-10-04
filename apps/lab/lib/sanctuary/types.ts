@@ -12,6 +12,7 @@ export type Figure = {
   credit: string;
   sourceUrl?: string;
   placement?: "opening";
+  afterParagraph?: number;
 };
 export type Panel = {
   title: string;

@@ -26,8 +26,8 @@ export default function AudienceEconomy() {
       <section className={styles.streaming} aria-label="Netflix subscription catalog">
         <div className={`${styles.identity} ${styles.catalogIdentity}`}><AssetImage asset={netflix} alt="Netflix" sizes="154px" className={styles.wordmark}/><small>A membership to a catalog</small><span className={styles.viewerAvatar} aria-hidden="true"><i/><i/></span></div>
         <CatalogCovers/>
-        <div className={styles.argument}><h3>Give people a reason to stay.</h3><p>A film contributes to the value of a library. Finishing it can lead to choosing something else within the same subscription.</p></div>
-        <div className={styles.payment} aria-label="Payment: successive months of catalog access"><span className={styles.month}>MONTH 1</span><span aria-hidden="true">→</span><span className={styles.month}>MONTH 2</span><span aria-hidden="true">→</span></div>
+        <div className={styles.argument}><h3>Give people a reason to stay.</h3><p>A film contributes to the value of a library. The invitation is to join; the ongoing task is to make the next payment feel worthwhile.</p></div>
+        <div className={styles.payment} aria-label="Payment: joining begins recurring billing for catalog access, until cancellation"><span className={styles.month}>JOIN</span><span aria-hidden="true">→</span><span className={styles.month}>RENEW</span><span aria-hidden="true">↻</span><span>Until cancelled</span></div>
       </section>
     </div>
     <figcaption className={styles.caption}>

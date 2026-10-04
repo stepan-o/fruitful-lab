@@ -1,10 +1,13 @@
 # Sanctuary design system
 
-**Editorial placement update · 3 October 2026:** the new opening uses the
-authentic BG3/D4 pairing and the three-track AfterPurchase exhibit. The approved
-animated diptych is preserved in **Where progress lives**, where campaign and
-seasonal play are introduced. Its historical description as the “opening” below
-identifies the visual benchmark, not its current chapter placement. See
+**Editorial placement update · 3 October 2026:** the first chapter now uses an
+original room/world comparison, then the arcade-cabinet cutaway and Atari’s operator manual. The authentic BG3/D4
+pair, AfterPurchase and cinema/catalog exhibits now belong to chapter three.
+The approved animated diptych stays in **Where progress lives**. Its historical
+description as the “opening” below identifies the illustration benchmark.
+The room is introduced before the controls: people and the occasion establish
+what the later commercial mechanism can affect. See the
+[full narrative map](EVENING_NARRATIVE_MAP.md) and
 [Narrative reconstruction](NARRATIVE_REBUILD.md).
 
 **Version 1.3 · 2 October 2026 · approved visual reference with experience-first opening**
@@ -477,3 +480,21 @@ cover passes. Real references supply recognizable visual grammar; original
 parodies adapt it to the deck. Drawings stay local vectors, source credits remain
 adjacent, and mobile covers are inspectable at a useful size. `useLivingPlate`
 provides visibility/preference gating for these CSS-driven atmosphere layers.
+
+## Entry and financial inscriptions — 3 October 2026
+
+The study overview contains the devil mural, title/short hero copy and one
+“Enter the study” link. Contents, settings, edition information, credits and
+chapter navigation appear inside the study. Do not repopulate the entry with
+summary cards or additional reading. Stored motion preferences and the OS
+reduced-motion setting still govern the mural and atmosphere.
+
+Financial terms have distinct narrative jobs. “Future sales” is a spectral
+inscription drawing wisps toward a small face. “The gap” opens a glowing fissure.
+“Subscription” pairs the illuminated invitation with its renewal mechanism:
+JOIN → RENEW, a cycling billing line and a small turning wheel. The invitation
+and continuing payment are one relationship; this is an editorial illustration,
+not a working sales button or a claim that every subscription is exploitative.
+The cinema/catalog plate makes the same relationship explicit at readable scale.
+Use bounded SVG/CSS motion gated by visibility, document visibility, manual
+pause and reduced motion; preserve a complete and legible still state.

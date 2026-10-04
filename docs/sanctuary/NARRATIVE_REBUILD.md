@@ -1,4 +1,92 @@
+# Current reconstruction: the life around the game
+
+The evening/venue revision supersedes the framing below. Read
+[The full narrative impact map](EVENING_NARRATIVE_MAP.md) for the argument,
+chapter-by-chapter implementation, source boundaries and visual decisions.
+The first chapter is now **Insert coin. Join in.**; stable IDs and the
+arcade → copy → ongoing world → Concord sequence remain.
+
 # Sanctuary Economics — narrative reconstruction
+
+## Current sequence · 3 October 2026 · arcade-first revision
+
+The owner’s Russian discussion, “Объяснение презентации монетизации игр,”
+changes the narrative spine: **what has the player paid for, what can end, and
+what prompts the next payment?** The contemporary fork is a conclusion reached
+through those relationships, rather than an opening division between finite
+adventures and repeatable services.
+
+1. **Insert coin. Stay alive.** (`insert-coin`): introduce paid participation
+   before naming Gauntlet. Computer Space/Pong place coin-operated commerce near
+   the industry’s beginnings; Gauntlet’s 1985 manual makes the shared game and
+   business controls explicit. “Air” means an intangible resource, not worthless
+   play. The player’s evening and the operator’s work both count.
+2. **The next attempt is already paid for** (`several-histories`): Diablo II
+   separates the end of an attempt, a story and paid access. Deep replayability
+   and free Battle.net did not require another Blizzard sale. Ladder, connection
+   costs, digital delivery and later offers extend the argument. Netflix’s 2007
+   DVD/streaming announcement separates delivery from payment.
+3. **The business of keeping a world alive** (`the-fork`): retain the creative
+   financing and audience lens, cinema/catalog artwork, Adobe and BG3/D4. The
+   fork asks what the studio produces and sells after the initial purchase.
+4. **Concord**: continuing-world obligations and the cost of an audience that
+   does not materialize. Its dedicated chapter remains in place.
+5. Continue into studio learning, funding and the design/case-study chapters.
+   Dedicated Diablo-origin/franchise chapters remain the next editorial work;
+   this revision does not claim those have been written.
+
+There are now **22 chapters**, seven parts and one new stable URL. All previous
+chapter IDs resolve. Overview entry, contents, sequential navigation, counts and
+credits return link follow the new order. The original diptych, cinema, covers,
+Netflix accent and BG3/D4 imagery are preserved.
+
+### Evidence and presentation
+
+- Gauntlet’s manual was re-read at printed 2–2, 2–3 and 3–4. Its recommendations
+  assume US 25¢ play, not a present-day exchange rate. Health settings do not
+  guarantee time or revenue. Gauntlet is neither the first commercial video game
+  nor a claimed direct ancestor of Diablo.
+- Ed Logg’s GDC 2012 slides (PDF pages 6 and 40) distinguish Atari’s machine
+  sales from operator coin income, and recall rejecting a final monster to
+  avoid ending play funded by coins already deposited. This is a dated designer
+  recollection; no earnings anecdote becomes an industry statistic.
+- The new original cutaway lets readers view a cabinet as player or operator.
+  Its selected health settings (100, 600, 2,000) are documented; no rate of play,
+  difficulty response curve or earnings simulation is fabricated. No timers,
+  animation loops, new assets or dependencies are added.
+- The existing optimized manual page follows the operator argument. D2’s class
+  image follows its explanation. `Figure.afterParagraph` keeps evidence beside
+  the claim without duplicating its image at the bottom. Inspection remains
+  on-demand; the same retained immutable files and source register are used.
+- Paid survival, a purchased copy, subscriptions, ads and optional cosmetics
+  remain distinct. Historical continuity is not a verdict that offers are
+  equivalent, harmless or inevitable. There is no golden age of noncommercial
+  games and no villain inferred from a business model.
+
+### Validation of the arcade-first revision
+
+- Scoped lint and whitespace checks pass. The reader/exhibit suites pass all
+  19 tests, including chapter order, inline figure placement without duplication,
+  and the documented health settings.
+- All 42 application test suites passed across the full run and a targeted
+  retry. The initial run lacked `API_BASE_URL` for three auth suites and hit a
+  five-second timeout in the Pinterest Fit component suite. Those four suites
+  passed with the required environment and a 30-second test timeout; no product
+  code was changed to accommodate the retry.
+- The final production build passes compilation, TypeScript and route generation.
+- Asset pipeline tests and integrity checks pass for four retained releases.
+  The public edition works without the optional local research archive.
+- Browser checks covered desktop and requested widths of 768, 390 and 320 px:
+  no horizontal overflow, usable player/operator controls, keyboard health
+  selection, lazy manual loading, inspection/Escape with restored focus, and
+  forward navigation through all three revised chapters. The phone view's
+  perspective buttons measure 55 px tall. The new diagram has no motion loop;
+  the reader's existing Motion control still works. No browser errors were seen.
+- This is functional and responsive verification, not a field Core Web Vitals
+  measurement. The local review entry is port 3106, chapter `insert-coin`;
+  older local servers may still show a previous build.
+
+## Previous opening record (superseded sequence)
 
 Owner-approved direction, 3 October 2026. Rebuild section by section; preserve the
 approved visual quality and the public edition’s asset/credit pipeline. Review
@@ -128,3 +216,45 @@ Follow-up verification, 3 October 2026: revised creative-economics opening and c
 The final subscription accent also passes the production build and nine reader tests. It was visually checked at 320px and desktop; no browser errors or horizontal overflow were observed. The Netflix credit link resolves to its public source record. Preview now runs independently of a tool session; its PID/log are recorded at `/tmp/fruitful-sanctuary-3104.pid` and `/tmp/fruitful-sanctuary-3104.log`.
 
 Publication preparation, 3 October 2026: the owner requested a PR for the accumulated opening rewrite and targeted cinema/catalog passes. The final local run passes 35 suites / 152 tests, asset integrity checks and the production build. Jest emitted one worker-shutdown warning after all tests passed; the three new motion/dialog tests also pass in isolation. Scoped ESLint passes. Details of the visual pass and browser verification are in `CINEMA_CATALOG_ART_PASSES.md`.
+
+## Evening/venue revision verification — 4 October 2026
+
+The current implementation follows `EVENING_NARRATIVE_MAP.md`. It also reduces
+the study landing to the mural/hero and entry CTA and adds the three financial
+inscriptions documented in `DESIGN_SYSTEM.md`. The subscription inscription and
+catalog payment strip connect the sales invitation to recurring billing.
+
+- Integrated main through `d596a5d`; only Sanctuary app files and its memory
+  documents differ from that base. Final full run: **43 suites / 191 tests pass**.
+  The pre-integration run also passed all 42 suites / 186 tests.
+- Scoped ESLint, production build and the asset-pipeline test pass. The build
+  verifies all four retained releases and the public editorial selection.
+  Existing optional GrowthBook configuration and middleware-convention notices
+  remain; neither prevents the build.
+- Browser review covers desktop, 768, 390 and 320 CSS-pixel viewport requests.
+  No horizontal page overflow. On the narrow layout, perspective controls are
+  at least 44 pixels high; captions stack below the original SVG scenes.
+- Production checks: hero has one link and no extra navigation; entry, next
+  chapter and the first three chapters' order work. Keyboard view selection,
+  the 2,000-health setting, manual image inspection, Escape dismissal and focus
+  restoration work. No browser errors were logged in the production tab.
+- Financial inscriptions report playing while visible and stop offscreen.
+  Manual pause persists; the shared living-plate gate and CSS also retain OS
+  reduced-motion handling. No new frame timers, image assets or dependencies
+  are introduced by this Sanctuary revision.
+- At the tested 390-pixel / 1× phone viewport, the opening manual chooses the
+  480×626 WebP (53,688 bytes, lazy), while the BG3/D4 opening pair choose 480-pixel
+  files totaling **42,044 bytes**. The landing mural is procedural. These are
+  selected-image measurements, not total page weight or field speed.
+- Two consecutive local production requests returned 200: landing 22,551 bytes
+  gzip, opening 20,078, fork 36,790. Observed times were 58–146 ms on this host.
+  The server had already served browser requests; this is warm local response
+  evidence, not a cold-cache, throttled-mobile or CDN benchmark. Fresh-tab and
+  reload rendering were inspected; field Core Web Vitals remain unmeasured.
+
+Local visual captures are under
+`/home/stpn/Documents/Codex/2026-09-30/is-x20/outputs/sanctuary-evening/`:
+`landing-desktop.png`, `landing-phone.png`, `room-phone.png`,
+`world-desktop.png` and `financial-inscriptions-desktop.png`. The local preview
+uses the production build on port 3106; PID and log are recorded in
+`/tmp/sanctuary-evening-production.pid` and `.log`.

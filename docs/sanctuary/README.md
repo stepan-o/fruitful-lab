@@ -1,3 +1,8 @@
+Current narrative: [the life around the game](EVENING_NARRATIVE_MAP.md). The
+22-chapter edition opens with “Insert coin. Join in.” and follows purpose,
+provision and payment from the physical venue to purchased copies and online
+worlds. The local production preview remains on port 3106.
+
 # Sanctuary Economics: editorial edition
 
 Public route: `/stepanoskin/game-monetization`. Chapter links append
@@ -17,11 +22,11 @@ while introducing key games, organizations and systems for readers unfamiliar
 with games. See [Audience and wider context](AUDIENCE_AND_CONTEXT.md) for the
 research brief, bounded comparisons and chapter-level introduction audit.
 [Narrative reconstruction](NARRATIVE_REBUILD.md) now governs a section-by-section
-rebuild. The local opening establishes the wider context, then previews BG3/D4
-and leads into history and Concord. Later chapters remain working material.
+rebuild. The opening now begins at Gauntlet’s coin slot, follows the purchased-copy
+bargain, then reaches creative economics, BG3/D4 and Concord. Later chapters remain working material.
 Review this copy locally before another publication PR.
 
-`apps/lab/lib/sanctuary/content.ts` contains 21 self-contained chapters in seven
+`apps/lab/lib/sanctuary/content.ts` contains 22 self-contained chapters in seven
 parts, source notes, figures and ten closing rules. `types.ts` owns the chapter
 contract and URL helper. `ui.ts` has the six-language navigation dictionary.
 The manuscript is an English editorial edition, disclosed in every UI language.
@@ -53,7 +58,7 @@ unverified. Important boundaries:
 ## Public editorial edition and optional source archive
 
 The normal route combines the original mosaic devil, original scenes and
-interactive diagrams with the selected publisher images. The opening juxtaposes
+interactive diagrams with the selected publisher images. The third chapter juxtaposes
 BG3 and D4 key art and separates play, production and payment in an original
 exhibit. The approved animated diptych appears in Where progress lives. No
 research flag, cookie or special URL is required to see screenshots.
@@ -71,7 +76,9 @@ short-cached pointer last. Normal builds use committed public files and do not
 require the private archive. Only current-chapter asset metadata is serialized.
 The opening pair is prioritized; other figures load lazily and inspection masters
 mount only when requested. Each chapter has an original explanatory visual;
-the opening uses the three-track exhibit rather than another atmospheric scene.
+the arcade opening uses an original cabinet cutaway and the third chapter uses
+the three-track exhibit. `Figure.afterParagraph` can place documentary evidence
+inside the argument; figures without a placement stay at the chapter end.
 
 The ignored `assets/research/` archive remains useful for source masters and
 future unselected candidates. Its loopback-only `research:dev` command and

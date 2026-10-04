@@ -1,42 +1,46 @@
-/* A single indexed feed: push, advance one specimen, return the hand.
-   Paused server rendering and the shared visibility/preference controller apply
-   to every part, so no independent timer or client bundle is necessary. */
-.belt { animation: feed 8s linear infinite; }
-/* Ten outcomes repeat over ten strokes; large gains occur once per cycle. */
-.results { animation: results 80s linear infinite; }
-.hand { transform-origin: 432px 235px; animation: push 8s ease-in-out infinite; }
-.feedHandle { transform-origin: 510px 309px; animation: handle 8s ease-in-out infinite; }
-.gear { transform-origin: 0 0; animation: turn 8s linear infinite; }
-.roller { transform-origin: 0 0; animation: roller 8s linear infinite; }
-.belt, .results, .hand, .feedHandle, .gear, .roller { animation-play-state: paused !important; }
-:global([data-playing="true"]) :is(.belt, .results, .hand, .feedHandle, .gear, .roller) { animation-play-state: running !important; }
-@keyframes feed { 0%, 12% { transform: translateX(0); } 52%, 100% { transform: translateX(88px); } }
-@keyframes push { 0%, 12%, 100% { transform: rotate(0); } 52%, 64% { transform: rotate(-7.5deg); } }
-@keyframes handle { 0%, 12%, 100% { transform: rotate(0); } 52%, 64% { transform: rotate(24deg); } }
-@keyframes turn { 0%, 12% { transform: rotate(0); } 52%, 100% { transform: rotate(var(--sweep)); } }
-@keyframes roller { 0%, 12% { transform: rotate(0); } 52%, 100% { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .belt, .results, .hand, .feedHandle, .gear, .roller { animation: none; } }
-
-@keyframes results {
-  0%, 1.2% { transform: translateX(0); }
-  5.2%, 11.2% { transform: translateX(88px); }
-  15.2%, 21.2% { transform: translateX(176px); }
-  25.2%, 31.2% { transform: translateX(264px); }
-  35.2%, 41.2% { transform: translateX(352px); }
-  45.2%, 51.2% { transform: translateX(440px); }
-  55.2%, 61.2% { transform: translateX(528px); }
-  65.2%, 71.2% { transform: translateX(616px); }
-  75.2%, 81.2% { transform: translateX(704px); }
-  85.2%, 91.2% { transform: translateX(792px); }
-  95.2%, 100% { transform: translateX(880px); }
+/* The motor runs continuously. The stamping hand has a quick strike and return;
+   the visibility/preference controller still suspends every animated part. */
+.belt { animation: feed var(--tray-period) linear infinite; }
+.registerTrack { animation: register var(--cycle-period) linear infinite; }
+.results { animation: results var(--cycle-period) linear infinite; }
+.hand { transform-origin: 432px 235px; animation: stamp var(--tray-period) linear infinite; }
+.feedHandle { transform-origin: 510px 309px; animation: handle var(--tray-period) linear infinite; }
+.gear { transform-origin: 0 0; animation: turn var(--tray-period) linear infinite; }
+.roller { transform-origin: 0 0; animation: roller var(--tray-period) linear infinite; }
+.smoke {
+  transform: translate(var(--still-x), var(--still-y));
+  opacity: var(--still-opacity);
+  animation: exhale var(--cycle-period) linear var(--delay) infinite;
 }
-.outcomeLegend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 16px 0 0; padding: 0; list-style: none; font-size: 11px; color: var(--muted); }
-.outcomeLegend li { display: flex; align-items: center; gap: 6px; }
-.outcomeLegend li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #766c5c; }
-.outcomeLegend li:nth-child(2)::before { background: #793c3c; }
-.outcomeLegend li:nth-child(3)::before { background: #4d6b4d; }
-
-.resultNotes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 0 20px; color: var(--muted); }
-.resultNotes p { margin: 0; border-left: 1px solid var(--line); padding-left: 12px; font-size: 11px; line-height: 1.5; }
-.resultNotes span { display: block; font-family: var(--mono); font-size: 9px; }
-.resultNotes em { display: block; margin-top: 4px; font-family: Georgia, serif; font-size: 13px; }
+.smokeValue { fill: #737c75; font: italic 16px Georgia, serif; }
+.smokeVerdict { fill: #737c75; font: italic 13px Georgia, serif; }
+.belt, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack { animation-play-state: paused !important; }
+:global([data-playing="true"]) :is(.belt, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack) { animation-play-state: running !important; }
+@keyframes register { to { transform: translateY(85px); } }
+@keyframes feed { to { transform: translateX(88px); } }
+@keyframes results { to { transform: translateX(880px); } }
+@keyframes turn { to { transform: rotate(var(--sweep)); } }
+@keyframes roller { to { transform: rotate(360deg); } }
+/* A 216ms strike, a brief contact, then a 384ms return. */
+@keyframes stamp {
+  0%, 66%, 100% { transform: rotate(0); }
+  75%, 79% { transform: rotate(-7.5deg); }
+  95% { transform: rotate(0); }
+}
+@keyframes handle {
+  0%, 66%, 100% { transform: rotate(0); }
+  75%, 79% { transform: rotate(24deg); }
+  95% { transform: rotate(0); }
+}
+/* Only three short-lived emissions occupy the plume at once. No blur filter,
+   particle engine, per-frame JavaScript, or text beneath the illustration. */
+@keyframes exhale {
+  0% { transform: translate(0, 0) scale(.88) rotate(3deg); opacity: 0; }
+  3% { transform: translate(-8px, -18px) scale(.94) rotate(1deg); opacity: .42; }
+  11% { transform: translate(-28px, -67px) scale(1) rotate(-3deg); opacity: .65; }
+  19% { transform: translate(-47px, -120px) scale(1.04) rotate(-6deg); opacity: .35; }
+  28%, 100% { transform: translate(-65px, -176px) scale(1.1) rotate(-9deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .belt, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack { animation: none; }
+}

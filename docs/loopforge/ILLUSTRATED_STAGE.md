@@ -16,9 +16,9 @@ Three.js rebuild is not an art direction reference. No new graphics dependency.
 - [x] Stage-wide soft moving light, occlusion and metal reflections; amber/red.
 - [x] Held belt, periodic motor strain, local sparks and a visual invitation to reset.
 - [x] Preserve varied brains, damaged cases, cyan pulses and irregular discharges.
-- [ ] Inspect running, jammed, restarting and paused states in actual browser.
-- [ ] Measure bounded render work, production delivery, console and reduced motion.
-- [ ] Required CI, scoped PR and verified hosted preview.
+- [x] Inspect running, jammed, restarting and paused states in actual browser.
+- [x] Measure bounded render work, production delivery, console and reduced motion.
+- [x] Required CI, scoped PR and verified hosted preview.
 
 ## Reference observations
 
@@ -55,3 +55,23 @@ Checks establish behavior and measured cost. Owner visual acceptance is separate
   not GPU frame time, real-phone measurements or field Web Vitals.
 - Hosted verification and final screenshots are recorded with the PR. The
   rejected Three.js screenshots are not reused as acceptance evidence.
+
+## Hosted verification · 4 October 2026
+
+Runtime commit: `545fc2e`. Vercel preview READY:
+https://fruitful-8lg6v05iv-stepan-oskins-projects.vercel.app/stepanoskin/loopforge
+
+Desktop keyboard Enter and a 41px phone pull both change LINE JAMMED to DRIVE
+ENGAGING. Pause keeps the observed frame counter unchanged and sets animation
+to false; resume restores production. Hosted desktop/390px phone report no
+browser errors or horizontal overflow. The ordinary server-rendered SVG is
+visible while client initialization is pending, followed by the detailed canvas;
+this is observed behavior, not an instrumented network timing measurement.
+
+The following screenshots show live jam states, not design mockups:
+
+![Desktop jam](evidence/illustrated-stage-desktop.webp)
+
+![Phone jam and adjacent reset](evidence/illustrated-stage-phone.webp)
+
+Final production factory chunk: 36,374 bytes raw / 14,094 bytes gzip.

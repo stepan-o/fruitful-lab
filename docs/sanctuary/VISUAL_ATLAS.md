@@ -12,7 +12,7 @@ reader navigation retains its six-language support.
 - `apps/lab/lib/sanctuary/graphic-descriptions.json`: authored scene descriptions,
   visual interpretation, motion, instrument operation and model boundaries for
   every chapter. Stable chapter IDs are the keys; no generic fallback.
-- `apps/lab/lib/sanctuary/visual-notes.ts`: typed assembly; Barcade reference;
+- `apps/lab/lib/sanctuary/visual-notes.ts`: typed assembly;
   cinema, gathering-place and funding comparisons; cover/atmosphere/typography
   notes. Only the current chapter is serialized into the interactive reader.
 - `art-direction.ts`: scene titles and immediate reader-facing captions.
@@ -44,12 +44,14 @@ landing remains a hero, study-entry action and menu-return navigation.
 for room composition; [Computer History Museum](https://computerhistory.org/blog/50-years-of-fun-with-pong/)
 for Pong hardware/context; [Atari’s Gauntlet operator manual](https://files.stardustarcade.com/PDF_Arcade_Atari_Kee/Gauntlet/Gauntlet_TM-284_1st_Printing.pdf)
 for health settings; [Ed Logg’s postmortem](https://media.gdcvault.com/gdc2012/slides/Design%20Track/Logg_Ed_Gauntlet_Postmortem.pdf)
-for design/commercial context. Existing sourced photos, flyer and gameplay
+for design/commercial context. The venue reference stays in internal design records, not the public caption or notebook, as requested by the owner. Existing sourced photos, flyer and gameplay
 remain distinct from our animated illustrations.
 
 | Element | Construction and motion decision |
 | --- | --- |
-| Room and people | Preserve the accepted photographed composition, shared perspective, hand contact, supported seats and open aisle. |
+| Room and people | Preserve the accepted composition, shared perspective, supported seats and open aisle. Rounded engraved head profiles; two partners at the nearest cabinet with hands projected onto separate rotary controls. |
+| Weather outside | Two tiled rain stroke groups behind the door glass; one soft distant illumination every 19 seconds, clipped to the panes. No whole-scene flash. |
+| Bar activity | A supported glass, stationary upper arm and forearm/cloth polishing around a fixed elbow. Body and counter stay still. |
 | Near CRT | Project each rally vertex onto the physical screen plane. An eight-second loop synchronizes both paddles with the ball’s contacts. No floating flat overlay. |
 | Far CRTs | Project original maze walls and two patrolling figures onto each cabinet’s plane; offset phases so the room does not blink in unison. |
 | Glass | Fixed dim scan lines, a restrained reflection and a dark bezel keep moving game objects behind the surface. |

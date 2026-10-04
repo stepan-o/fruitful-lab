@@ -11,7 +11,6 @@ export type VisualNote = {
   description: string; reading: string; behavior?: string; boundary?: string;
   references: {title:string;url:string}[];
 };
-const barReference = {title:"Composition reference: Barcade, Brooklyn — photo gallery",url:"https://barcade.com/location/brooklyn/photos"};
 const records: Record<string, {title:string;purpose:string;source:string;sourceUrl:string|null;sourceDate:string;owner:string;treatment:string;provenanceNote?:string}> = {...editorial.assets,...arcade.assets,...context.assets};
 
 export const sharedVisualNotes: VisualNote[] = [
@@ -49,7 +48,7 @@ export function chapterVisualNotes(chapter:Chapter,sources:EvidenceSource[]):Vis
  const result:VisualNote[]=[];
  if(chapter.id!=="the-fork") result.push({id:`scene-${chapter.id}`,title:chapter.id==="insert-coin"?"The place around the game":artDirection[chapter.id].title,kind:"Original procedural illustration",...detail.scene,
   boundary:chapter.id==="insert-coin"?"The original scene studies a contemporary bar photograph. It is not documentary evidence of a 1970s venue, customer motives or beverage sales.":"Original interpretive geometry. References establish the game, theory or historical context; they do not turn this invented scene into documentary evidence.",
-  references:chapter.id==="insert-coin"?[barReference,...references.filter(r=>r.url.includes("computerhistory"))]:references});
+  references:chapter.id==="insert-coin"?references.filter(r=>r.url.includes("computerhistory")):references});
  result.push({id:`diagram-${chapter.id}`,title:chapter.visual.diagram.title,kind:"Explanatory instrument",...detail.diagram,references});
  if(chapter.id==="the-fork") {
   result.push({id:"cinema",title:"A ticket for a showing",kind:"Original cinema illustration",
@@ -62,10 +61,10 @@ export function chapterVisualNotes(chapter:Chapter,sources:EvidenceSource[]):Vis
    behavior:"Small local animation layers keep the card legible as a cover rather than turning it into a trailer.",boundary:`Reference creators: ${cover.creator}. Original geometry; not an official poster, cast portrait or actual catalog listing.`,references:[{title:"Production reference: Netflix Tudum",url:cover.source}]});
   result.push(sourceNote("netflix-wordmark","The red Netflix wordmark identifies the catalog side of the comparison.","Its role is identification; the surrounding interface and covers are our interpretation."));
   result.push({id:"gathering-place",title:"A game in the room / a world to meet in",kind:"Original comparison",
-   description:"A view switch places the photographed-composition bar beside an invented lantern-lit courtyard with travelers, tables and an adventure gate. Three stable accounts below separate people, work and payment.",
+   description:"A view switch places the arcade bar beside an invented lantern-lit courtyard with travelers, tables and an adventure gate. Three stable accounts below separate people, work and payment.",
    reading:"Compare who supplies the gathering place and what people contribute to it. Social value can extend beyond playing together, and it does not determine a single correct payment model.",
-   behavior:"The switch replaces the complete setting. The bar’s screen loops run only while that view is visible and motion is enabled; the courtyard is a still scene.",
-   boundary:"Both are illustrative settings. The courtyard is not a reconstructed Diablo town, and the room is not evidence of historical customer behavior.",references:[barReference,...references.filter(r=>r.url.includes("nickyee")||r.url.includes("wiley"))]});
+   behavior:"The switch replaces the complete setting. The bar’s screen loops, rain and glass-polishing action run only while that view is visible and motion is enabled; the courtyard is a still scene.",
+   boundary:"Both are illustrative settings. The courtyard is not a reconstructed Diablo town, and the room is not evidence of historical customer behavior.",references:references.filter(r=>r.url.includes("nickyee")||r.url.includes("wiley"))});
  }
  if(chapter.id==="shape-of-money") result.push({id:"funding",title:"Where the next sale comes from",kind:"Original commercial comparison",
   description:"A common player/studio structure is redrawn around several sources of a subsequent sale. Selecting a commercial model changes the offer, the funding connection and a short account of the resulting design pressure.",

@@ -1,9 +1,9 @@
 {
   "insert-coin": {
     "scene": {
-      "description": "Cabinets recede along the left wall; a timber counter and seated customers occupy the right. The open aisle lets the eye travel from the nearest player to the rear door. A single perspective sets the furniture, people and hand-to-control contact. Warm lamps belong to the room; cooler light belongs to the games.",
-      "reading": "The room gives the machine a social setting before the chapter opens its coin door. Players, spectators, customers and staff share the evening without sharing the same activity. The composition studies Barcade’s Brooklyn photo gallery; it does not reconstruct Andy Capp’s Tavern in 1972.",
-      "behavior": "The near screen runs a paddle-and-ball rally; the two smaller screens show figures circling a maze. The screen planes follow the cabinets’ perspective. Fixed furnishings and grounded people give those small movements something still to play against."
+      "description": "Cabinets recede along the left wall; a timber counter and seated customers occupy the right. Two players share the nearest cabinet, each using one rotary control. The open aisle leads toward a rain-lit rear door. A single perspective sets the furniture, people and hand-to-control contact. Warm lamps belong to the room; cooler light belongs to the games.",
+      "reading": "The room gives the machine a social setting before the chapter opens its coin door. Players, spectators, customers and staff share the evening without sharing the same activity. It is an imagined contemporary room, not a reconstruction of Andy Capp’s Tavern in 1972.",
+      "behavior": "The near screen runs a paddle-and-ball rally; the two smaller screens show figures circling a maze. The screen planes follow the cabinets’ perspective. Rain falls outside the glazed door, with occasional soft distant lightning confined to its panes. The bartender supports a glass with one hand while the other polishes it. Furniture, feet and seated bodies remain still; the existing motion controls pause every animated layer."
     },
     "diagram": {
       "description": "The upright is shown from the front and side so that its marquee, speaker grille, curved CRT, four control stations and hinged service door remain separate manufactured parts. Inside the open door, a deliberately enlarged settings panel connects the machine’s commercial setting to the adventure above it.",

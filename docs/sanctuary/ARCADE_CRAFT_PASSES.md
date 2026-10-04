@@ -25,7 +25,7 @@ an open central aisle, brick, exposed joists, receding pendant lights, screen gl
 and the forward lean of someone using a cabinet. What is authored: all vector
 geometry, fictional cabinet designs and screens, stylized people, palette, framing
 and motion. Source pixels and venue branding are not included in the runtime.
-The caption links the photographic reference. This is an original imagined scene;
+The photographic reference is retained here for internal design provenance. At the owner’s request, the public caption and visual notebook do not name or link the venue. This is an original imagined scene;
 it does not reconstruct Andy Capp’s Tavern or claim to document the 1972 Pong test.
 
 The approved journey/world diptych still supplies engraved surfaces, teal shadow
@@ -89,3 +89,26 @@ user-controlled health settings. Per-element reasoning, source links and runtime
 constraints are recorded in [VISUAL_ATLAS.md](VISUAL_ATLAS.md) and the public
 chapter notebook. The old 19-layer room count above describes the previous
 revision; the new room has 23 CSS animation layers (16 atmosphere + 7 gameplay).
+
+
+## People and room activity — 4 October 2026
+
+- Heads use a shared engraved profile construction: a rounded cranium, restrained
+  nose/chin, ear, hair plane and supported neck. Facing direction follows the
+  action; seated guests turn toward the bar and players toward the CRTs.
+- Two partners share the nearest paddle cabinet. Each hand endpoint is calculated
+  from one of its actual world-space rotary-control positions (depths 1.39 and
+  2.03). Bodies render far to near; both keep planted feet and forward attention.
+- Rain occupies two batched stroke paths behind the rear door’s glazing. Their
+  geometry tiles along the motion vector to avoid a jump at the loop boundary.
+  A single low-intensity distant illumination every 19 seconds is clipped to
+  the glass; the room and reading surface never flash.
+- The bartender supports a glass with one hand while the other forearm and cloth
+  rotate a few degrees around a stationary elbow. The glass, shoulder, torso and
+  counter stay fixed; there is no whole-person floating or detached cloth.
+- Four additional CSS layers bring the room to 27. All use the existing visible,
+  document-active, manual-motion and reduced-motion gates. No new image requests,
+  libraries, timers or frame-driven React work.
+- Public venue attribution is removed from both uses of the scene and the visual
+  atlas. This file retains the photographic research trail. Notices on actual
+  archival photographs and other source imagery are unchanged.

@@ -1,3 +1,4 @@
+import VenueWeather from "./VenueWeather";
 import { roomPath as d, segment, wallRect } from "./venue-perspective";
 
 const leftBricks=Array.from({length:16},(_,row)=> {
@@ -60,6 +61,7 @@ export default function VenueArchitecture({id}:{id:string}) {
   <path d={wallRect(-1.29,.09,8.96,2.22,2.47)} fill="#4b605c" stroke="#b2a47c" strokeWidth=".8"/>
   <path d={wallRect(-1.22,.12,8.94,2.08,2.33)} fill="#31484b"/>
   <path d={d([[-1.21,.15,8.93],[-1.21,1.6,8.93],[-.6,1.5,8.93],[-.6,.8,8.93],[.04,.8,8.93],[.04,1.9,8.93],[.8,1.9,8.93],[.8,.15,8.93]])} fill="#1c3139"/>
+  <VenueWeather id={id}/>
   <path d={segment([-.16,.12,8.9],[-.16,2.48,8.9])+[.77,1.47,2.12].map(y=>segment([-1.24,y,8.9],[.9,y,8.9])).join("")} stroke="#a99d77" strokeWidth="2.3"/>
   <path d={segment([-.9,.97,8.87],[.55,.97,8.87])} stroke="#d5be8d" strokeWidth="2"/>
   <path d={segment([-.95,2.34,8.86],[-.68,1.7,8.86])+segment([.12,2.02,8.86],[.42,1.61,8.86])} stroke="#b5c9af" opacity=".24"/>

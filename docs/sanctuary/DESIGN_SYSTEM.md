@@ -175,9 +175,9 @@ Current layout measurements:
   proposition, then show the illustration **before body prose, exhibit headings
   or controls**. The scene must be visible in the first viewport on desktop and
   phone. Check the actual graphic, not merely the figure’s outer container.
-- Chapter one uses the room as a still plate, then begins the essay. Its cabinet
-  instrument follows the Gauntlet introduction; the manual follows the operator
-  argument. The later room/world comparison remains in chapter three.
+- Chapter one uses the room as a still plate, then begins the essay. Its historical Pong pair follows the Atari paragraph; Gauntlet gameplay follows
+  its introduction. The cabinet instrument follows the participation paragraph,
+  the flyer pair follows cooperation, and the manual follows the operator argument. The later room/world comparison remains in chapter three.
 - Author the whole chapter before choosing layout slots. Review its sequence as
   continuous writing, then place images where they introduce, expose or verify
   something. Do not fill components with paraphrases of nearby prose. Captions
@@ -508,3 +508,22 @@ not a working sales button or a claim that every subscription is exploitative.
 The cinema/catalog plate makes the same relationship explicit at readable scale.
 Use bounded SVG/CSS motion gated by visibility, document visibility, manual
 pause and reduced motion; preserve a complete and legible still state.
+
+## Archival figures · 4 October 2026
+
+Give each source a distinct job: object, social invitation, interface, commercial
+pitch or primary documentation. Pair related portrait sheets on desktop and stack
+on phones. Preserve the full composition and notices; separate our frame, labels
+and analytical outlines from the source image. Label staged promotional scenes,
+later variants and modern photographs honestly.
+
+`EvidenceFigure` offers static, labeled region selection for an interface where
+inspection clarifies the argument. It uses native 44px buttons, `aria-pressed`,
+a polite readout and CSS borders only; no continuous animation, image filters or
+extra network work per selection. Gauntlet retains its native pixel grid, with a
+lossless 336px file and CSS pixel rendering. Inspection enlarges the display on
+demand rather than synthesizing image detail.
+
+`sanctuary-arcade` holds five reviewed images, their responsive derivatives and a
+versioned pointer. Source masters are non-public build inputs. The server combines
+reviewed packs, then sends only active-chapter image metadata to the reader.

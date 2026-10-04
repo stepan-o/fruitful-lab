@@ -3,9 +3,8 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import Reader from "@/components/sanctuary/Reader";
 import { appendix, chapters, parts, sources } from "@/lib/sanctuary/content";
-import rawManifest from "@/lib/assets/generated/sanctuary-editorial.json";
-import { parseManifest, type AssetManifest } from "@/lib/assets/types";
-import editorialMedia from "@/lib/sanctuary/editorial-media.json";
+import { sanctuaryMedia as manifest, sanctuaryMediaCredits as records } from "@/lib/sanctuary/media";
+import { type AssetManifest } from "@/lib/assets/types";
 import { isLocale, localeCookieName } from "../translations";
 
 export const metadata: Metadata = {
@@ -13,7 +12,6 @@ export const metadata: Metadata = {
     description: "From a game in the corner to a world people meet in. An illustrated study of games, the lives around them and the work and payments that sustain them: 22 chapters, primary sources and interactive models.",
 };
 
-const manifest = parseManifest(rawManifest, "sanctuary-editorial");
 
 export default async function GameMonetizationPage({ searchParams }: {
     searchParams: Promise<{ chapter?: string | string[] }>;
@@ -27,8 +25,7 @@ export default async function GameMonetizationPage({ searchParams }: {
     if (id !== undefined && index < 0) notFound();
     const current = chapters[index] ?? null;
     const ids = current ? (current.figures ?? []).filter(figure => manifest.assets[figure.asset]).map(figure => figure.asset) : [];
-    const records = editorialMedia.assets as Record<string, { owner: string; sourceUrl: string | null }>;
-    const chapter = current ? { ...current, figures: current.figures?.filter(figure => manifest.assets[figure.asset]).map(figure => ({ ...figure, credit: `© ${records[figure.asset].owner}`, sourceUrl: records[figure.asset].sourceUrl ?? undefined })) } : null;
+    const chapter = current ? { ...current, figures: current.figures?.filter(figure => manifest.assets[figure.asset]).map(figure => ({ ...figure, credit: records[figure.asset].displayCredit ?? `© ${records[figure.asset].owner}`, sourceUrl: records[figure.asset].sourceUrl ?? undefined })) } : null;
     // Send only the current chapter and its media metadata to the client.
     const assets: AssetManifest = { ...manifest, assets: Object.fromEntries(ids.map(id => [id, manifest.assets[id]])) };
     return <Reader key={current?.id ?? "overview"} locale={locale} current={chapter} index={index}

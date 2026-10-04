@@ -1,3 +1,11 @@
+Sanctuary arcade imagery (2026-10-04): the opening adds five sourced Pong/Gauntlet
+images in the reproducible `sanctuary-arcade` pack. `lib/sanctuary/media.ts` combines
+reviewed inventories server-side; only the current chapter’s metadata reaches the
+reader. `arcade-media.json` feeds the public source register, including the Pong
+photograph’s CC BY 2.0 attribution. Static optional screenshot outlines separate
+score, health, drop-in slots and the coin exchange. Full originals stay non-public;
+responsive derivatives retain the existing immutable-file/pointer cache contract.
+
 Sanctuary editorial authority (2026-10-04): `docs/sanctuary/NARRATIVE_SPINE.md`
 supersedes the earlier evening/venue implementation map below. The first chapter
 opens with creative production and funding, then develops Gauntlet through

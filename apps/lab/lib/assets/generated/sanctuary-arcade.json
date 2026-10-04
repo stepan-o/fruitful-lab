@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "pack": "sanctuary-arcade",
+  "assets": {
+    "gauntlet-flyer-back-1985": {
+      "kind": "image",
+      "width": 850,
+      "height": 1112,
+      "variants": [
+        {
+          "src": "/media/files/d558f3a1585166c4707f52843735d4bdf92ef73fc9f64c61227785d042bb9e50.webp",
+          "mime": "image/webp",
+          "bytes": 39200,
+          "sha256": "d558f3a1585166c4707f52843735d4bdf92ef73fc9f64c61227785d042bb9e50",
+          "width": 320,
+          "height": 419
+        },
+        {
+          "src": "/media/files/a8ec282416eb5193d57574b08994a179db7449539000111ef2d4e03c6b25049b.webp",
+          "mime": "image/webp",
+          "bytes": 81426,
+          "sha256": "a8ec282416eb5193d57574b08994a179db7449539000111ef2d4e03c6b25049b",
+          "width": 480,
+          "height": 628
+        },
+        {
+          "src": "/media/files/4d6a4097a485bfe2405f78635873b361ca0f7ddadc25461d33e8bba18d5c5c98.webp",
+          "mime": "image/webp",
+          "bytes": 155096,
+          "sha256": "4d6a4097a485bfe2405f78635873b361ca0f7ddadc25461d33e8bba18d5c5c98",
+          "width": 720,
+          "height": 942
+        },
+        {
+          "src": "/media/files/fd9867e3e3471c5cc48c2f318e545ed06f2252b2a779e034824a61f925b949df.webp",
+          "mime": "image/webp",
+          "bytes": 206576,
+          "sha256": "fd9867e3e3471c5cc48c2f318e545ed06f2252b2a779e034824a61f925b949df",
+          "width": 850,
+          "height": 1112
+        }
+      ]
+    },
+    "gauntlet-flyer-front-1985": {
+      "kind": "image",
+      "width": 850,
+      "height": 1108,
+      "variants": [
+        {
+          "src": "/media/files/bf6e9ac42fa2c2c00ea93a1617b5e90ac78f720a459eb698037593febabbc510.webp",
+          "mime": "image/webp",
+          "bytes": 30752,
+          "sha256": "bf6e9ac42fa2c2c00ea93a1617b5e90ac78f720a459eb698037593febabbc510",
+          "width": 320,
+          "height": 417
+        },
+        {
+          "src": "/media/files/1bca3d9c990e2fadc24136b74fa02480268cd33caf3e7c4ffcc382dae8ddd3e5.webp",
+          "mime": "image/webp",
+          "bytes": 60012,
+          "sha256": "1bca3d9c990e2fadc24136b74fa02480268cd33caf3e7c4ffcc382dae8ddd3e5",
+          "width": 480,
+          "height": 626
+        },
+        {
+          "src": "/media/files/5c1adde66229b8a5b0d6fc6cf4def39811625c3391f5ef2978076f8b77f7ed15.webp",
+          "mime": "image/webp",
+          "bytes": 114004,
+          "sha256": "5c1adde66229b8a5b0d6fc6cf4def39811625c3391f5ef2978076f8b77f7ed15",
+          "width": 720,
+          "height": 939
+        },
+        {
+          "src": "/media/files/95e9c031f717fab3c342bc2313f25c125f78ce84d788dfb4f31a969edf858937.webp",
+          "mime": "image/webp",
+          "bytes": 154184,
+          "sha256": "95e9c031f717fab3c342bc2313f25c125f78ce84d788dfb4f31a969edf858937",
+          "width": 850,
+          "height": 1108
+        }
+      ]
+    },
+    "gauntlet-gameplay-1985": {
+      "kind": "image",
+      "width": 336,
+      "height": 240,
+      "variants": [
+        {
+          "src": "/media/files/342c4d8209137d7568441ade68fff4e853070c2504d83712d3fc4037328c733d.webp",
+          "mime": "image/webp",
+          "bytes": 7376,
+          "sha256": "342c4d8209137d7568441ade68fff4e853070c2504d83712d3fc4037328c733d",
+          "width": 336,
+          "height": 240
+        }
+      ]
+    },
+    "pong-cabinet": {
+      "kind": "image",
+      "width": 1461,
+      "height": 1998,
+      "variants": [
+        {
+          "src": "/media/files/c43043ae4d6bd8825c716b2f01eb9f1664ce8c3b31afd45bd5814d82900ead5b.webp",
+          "mime": "image/webp",
+          "bytes": 13544,
+          "sha256": "c43043ae4d6bd8825c716b2f01eb9f1664ce8c3b31afd45bd5814d82900ead5b",
+          "width": 320,
+          "height": 438
+        },
+        {
+          "src": "/media/files/0b6c401243002cf05490b4252355ccd0f96fabc837b18cf902c681ee22b5d253.webp",
+          "mime": "image/webp",
+          "bytes": 26504,
+          "sha256": "0b6c401243002cf05490b4252355ccd0f96fabc837b18cf902c681ee22b5d253",
+          "width": 480,
+          "height": 657
+        },
+        {
+          "src": "/media/files/697d6df45d32e02ddd370aa92a37b3aa9c2ffe396a9ee453d1cbac38e4121a2b.webp",
+          "mime": "image/webp",
+          "bytes": 160492,
+          "sha256": "697d6df45d32e02ddd370aa92a37b3aa9c2ffe396a9ee453d1cbac38e4121a2b",
+          "width": 960,
+          "height": 1313
+        }
+      ]
+    },
+    "pong-doubles-social-1973": {
+      "kind": "image",
+      "width": 850,
+      "height": 1205,
+      "variants": [
+        {
+          "src": "/media/files/f66217448da6dcaeab9374dd311c7a8d689c731607d41e8271f9f0feed6f704d.webp",
+          "mime": "image/webp",
+          "bytes": 13884,
+          "sha256": "f66217448da6dcaeab9374dd311c7a8d689c731607d41e8271f9f0feed6f704d",
+          "width": 320,
+          "height": 454
+        },
+        {
+          "src": "/media/files/c3aa1ede70dac580f473f90502a59b1389afb2e1e11b3f6480b37622faeae691.webp",
+          "mime": "image/webp",
+          "bytes": 28156,
+          "sha256": "c3aa1ede70dac580f473f90502a59b1389afb2e1e11b3f6480b37622faeae691",
+          "width": 480,
+          "height": 680
+        },
+        {
+          "src": "/media/files/d0c6a37dede3d4737a2b76a416003b85380fe0d5c82e0e7d1e8fc80d3e18d1de.webp",
+          "mime": "image/webp",
+          "bytes": 53076,
+          "sha256": "d0c6a37dede3d4737a2b76a416003b85380fe0d5c82e0e7d1e8fc80d3e18d1de",
+          "width": 720,
+          "height": 1021
+        },
+        {
+          "src": "/media/files/d3540816d17147702fd182315d61afdf56e6ca83b4d83428720c88ea79381b0a.webp",
+          "mime": "image/webp",
+          "bytes": 72600,
+          "sha256": "d3540816d17147702fd182315d61afdf56e6ca83b4d83428720c88ea79381b0a",
+          "width": 850,
+          "height": 1205
+        }
+      ]
+    }
+  }
+}

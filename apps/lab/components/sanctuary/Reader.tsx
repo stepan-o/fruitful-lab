@@ -11,6 +11,7 @@ import FundingDiagram from "./plates/FundingDiagram";
 import InfernalTerm from "./InfernalTerm";
 import AudienceEconomy from "./plates/AudienceEconomy";
 import EveningPlace from "./plates/EveningPlace";
+import EvidenceFigure from "./EvidenceFigure";
 import { playClang } from "@/lib/stepanoskin/audio";
 import { motionKey,soundKey,usePreference } from "@/lib/stepanoskin/preferences";
 import AssetImage from "@/components/media/AssetImage";
@@ -66,11 +67,16 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
     playClang();
   }
 
-  function renderFigure(figure: Figure, i: number) {
-    return <figure className={styles.figure} key={figure.asset}>
-              <button type="button" className={styles.figureButton} aria-label={`${copy.zoom}: ${figure.alt}`} onClick={()=>setZoom(figure)}><AssetImage asset={imageAsset(assets,figure.asset)} alt={figure.alt} sizes="(max-width:720px) 94vw, (max-width:1100px) 80vw, 900px"/><span className={styles.zoomLabel}>{copy.zoom} ↗</span></button>
-              <figcaption><span className={styles.figureNumber}>FIG. {index+1}.{i+1}</span><p>{figure.caption}</p><small>{figure.credit} · <Link prefetch={false} href={`/stepanoskin/game-monetization/credits#${figure.asset}`}>Source & use ↗</Link></small></figcaption>
-            </figure>;
+  function renderFigure(figure: Figure, i: number, paired = false) {
+    return <EvidenceFigure key={figure.asset} figure={figure} asset={imageAsset(assets,figure.asset)} number={`${index+1}.${i+1}`} zoomLabel={copy.zoom} paired={paired} onInspect={()=>setZoom(figure)}/>;
+  }
+
+  function renderInlineFigures(paragraphIndex: number) {
+    const figures = current?.figures?.map((figure,i)=>({figure,i})).filter(({figure})=>figure.afterParagraph === paragraphIndex) ?? [];
+    if (!figures.length) return null;
+    return figures.length > 1
+      ? <div className={styles.archivePair}>{figures.map(({figure,i})=>renderFigure(figure,i,true))}</div>
+      : renderFigure(figures[0].figure,figures[0].i);
   }
 
   return <main className={styles.reader} lang={locale} data-motion={motion?"on":"off"} data-media-mode="editorial" onClickCapture={transitionSound}>
@@ -155,8 +161,8 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                     )}
                   </p>
                   {current.id === "the-fork" && paragraphIndex === 5 ? <EveningPlace initialWorld/> : null}
-                  {current.id === "insert-coin" && paragraphIndex === 2 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
-                  {current.figures?.map((figure,i)=>figure.afterParagraph === paragraphIndex ? renderFigure(figure,i) : null)}
+                  {current.id === "insert-coin" && paragraphIndex === 3 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+                  {renderInlineFigures(paragraphIndex)}
                   {current.id === "the-fork" && paragraphIndex === 2 ? <AudienceEconomy/> : null}
                   {current.id === "the-fork" && paragraphIndex === 6 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
                   {current.id === "shape-of-money" && paragraphIndex === 1 ? <FundingDiagram/> : null}
@@ -202,7 +208,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
     <dialog className={styles.lightbox} ref={lightbox} aria-label={copy.zoom} onClose={()=>setZoom(null)}><div className={styles.dialogHead}><span>{copy.zoom}</span><button type="button" onClick={()=>lightbox.current?.close()}>{copy.close} ×</button></div>{zoom && assets.assets[zoom.asset]?<figure>
       {/* Full-sized image is mounted only when opened; native scrolling preserves readable UI text. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={assetUrl(assets,zoom.asset)} width={imageAsset(assets,zoom.asset).width} height={imageAsset(assets,zoom.asset).height} alt={zoom.alt}/><figcaption lang="en">{zoom.caption}<br/>{zoom.credit}</figcaption></figure>:null}</dialog></> : null}
+      <img className={zoom.presentation === "pixels" ? styles.pixelInspection : undefined} src={assetUrl(assets,zoom.asset)} width={imageAsset(assets,zoom.asset).width} height={imageAsset(assets,zoom.asset).height} alt={zoom.alt}/><figcaption lang="en">{zoom.caption}<br/>{zoom.credit}</figcaption></figure>:null}</dialog></> : null}
     <Atmosphere enabled={motion}/>
   </main>;
 }

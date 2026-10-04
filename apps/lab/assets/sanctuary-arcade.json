@@ -1,0 +1,62 @@
+{
+  "pack": "sanctuary-arcade",
+  "assets": {
+    "pong-cabinet": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-arcade/pong-cabinet.jpg",
+      "widths": [
+        320,
+        480,
+        960
+      ],
+      "quality": 78,
+      "maxBytes": 240000
+    },
+    "pong-doubles-social-1973": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-arcade/pong-doubles-people2.jpg",
+      "widths": [
+        320,
+        480,
+        720,
+        1200
+      ],
+      "quality": 86,
+      "maxBytes": 240000
+    },
+    "gauntlet-gameplay-1985": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-arcade/gauntlet-screen.png",
+      "widths": [
+        336
+      ],
+      "quality": 100,
+      "maxBytes": 240000,
+      "lossless": true
+    },
+    "gauntlet-flyer-front-1985": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-arcade/gauntlet-flyer-front.jpg",
+      "widths": [
+        320,
+        480,
+        720,
+        1200
+      ],
+      "quality": 86,
+      "maxBytes": 240000
+    },
+    "gauntlet-flyer-back-1985": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-arcade/gauntlet-flyer-back.jpg",
+      "widths": [
+        320,
+        480,
+        720,
+        1200
+      ],
+      "quality": 86,
+      "maxBytes": 240000
+    }
+  }
+}

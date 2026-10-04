@@ -22,7 +22,8 @@ bounded eventual freshness, not an instantaneous switch.
    inputs in a non-public source directory and add an entry to a pack catalog.
    Existing `public/stepanoskin` paths remain as legacy compatibility URLs.
 2. Use descriptive logical IDs, such as `seasonal-tooltip`. Image entries accept
-   `widths`, WebP `quality` (default 88), and `maxBytes` per variant. Default
+   `widths`, WebP `quality` (default 88), optional `lossless: true` for exact pixel preservation,
+   and `maxBytes` per variant. Default
    widths are 768/1536/2560, capped to the source dimensions; images are never
    enlarged. EXIF orientation is applied and metadata removed. Transparency is
    retained; an explicit `alphaQuality` can reduce alpha-channel size for artwork
@@ -108,3 +109,10 @@ editorial purpose live in `lib/sanctuary/context-media.json` and are included in
 the public credits register. Its initial Netflix wordmark has lazy-loaded
 154/309px derivatives under 4 KB each. Source shape, color and proportions are
 preserved; surrounding schematic drawings are original.
+
+`sanctuary-arcade` contains the five opening-chapter historical images. Build with
+`npm run assets:build -- assets/sanctuary-arcade.json`. The selected source masters
+are in `assets/sources/sanctuary-arcade` and never served directly. The independent
+`lib/sanctuary/arcade-media.json` records credits, publication rationale, hashes
+and the Pong photograph’s CC BY 2.0 license. `assets:check` verifies the catalog,
+manifest and source register together. This pack needs no private research archive.

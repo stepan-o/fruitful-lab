@@ -93,7 +93,7 @@ export async function buildPack(catalogPath, options = {}) {
       if (widths.some(w => !Number.isInteger(w) || w < 1 || w > 4096)) throw new Error(`${id}: invalid image widths`);
       for (const width of widths) {
         const { data, info } = await sharp(sourceBytes).rotate().resize({ width, withoutEnlargement: true })
-          .webp({ quality: spec.quality ?? 88, alphaQuality: spec.alphaQuality ?? 100, effort: 4 }).toBuffer({ resolveWithObject: true });
+          .webp({ lossless: spec.lossless ?? false, quality: spec.quality ?? 88, alphaQuality: spec.alphaQuality ?? 100, effort: 4 }).toBuffer({ resolveWithObject: true });
         await save(data, '.webp', 'image/webp', { width: info.width, height: info.height });
       }
       manifest.assets[id] = { kind: 'image', width: sourceWidth, height: sourceHeight, variants };

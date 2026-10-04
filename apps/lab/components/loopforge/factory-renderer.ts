@@ -1,3 +1,4 @@
+import { cortexOutline, paintCortex, type CortexCache } from "./factory-brain";
 import { cargoFor, noise, type CargoKind, type Drive } from "./factory-drive";
 import { createNeuralWeave, drawNeuralSignals, neuralDischarge, neuralPulse, paintNeuralWeave, type NeuralWeave } from "./factory-neural";
 
@@ -40,39 +41,10 @@ function pipe(c: Ctx, x: number, y: number, w: number) {
   c.fillRect(x,y,w,11);
   for(let a=x+8;a<x+w;a+=72) { c.fillStyle="#252e26";c.fillRect(a,y-2,8,15);line(c,[a+1,y-1,a+1,y+12],"#777c5e"); }
 }
-function brainOutline(c: Ctx) {
-  c.beginPath();c.moveTo(-56,11);c.bezierCurveTo(-69,-9,-56,-37,-36,-44);
-  c.bezierCurveTo(-28,-61,-6,-59,3,-51);c.bezierCurveTo(24,-61,49,-45,56,-27);
-  c.bezierCurveTo(72,-14,70,11,55,21);c.bezierCurveTo(36,37,18,30,4,31);
-  c.bezierCurveTo(-19,38,-48,29,-56,11);c.closePath();
-}
-function drawBrain(c: Ctx, seed: number, kind: CargoKind) {
+function drawBrain(c: Ctx, seed: number, kind: CargoKind, cortex: CortexCache) {
   const damaged = kind === "rejected" || kind === "cracked";
-  const skin = damaged ? ["#7f8564","#454e37","#152721"] : ["#bc946a","#805336","#30251c"];
-  c.save(); brainOutline(c);
-  c.fillStyle=gradient(c,-35,-55,32,36,[[0,skin[0]],[.5,skin[1]],[1,skin[2]]]);c.fill();
-  c.lineWidth=3;c.strokeStyle="#211d17";c.stroke();c.clip();
-  // Dense asymmetric lobules, deep sulci and broken highlights: cast tissue,
-  // with the worn bronze / cold cyan contrast of the original forge paintings.
-  c.lineCap="round";c.lineJoin="round";
-  for(let row=0;row<9;row++) for(let column=0;column<10;column++) {
-    const id=seed+row*113+column*71,n=noise(id);
-    const x=-68+column*14+(row%2)*6+Math.sin(row*1.4+column)*3;
-    const y=-59+row*11+Math.sin(column*.8+row)*4;
-    c.save();c.translate(x,y);c.rotate((n-.5)*1.4);c.scale(.8+noise(id+4)*.5,.7+noise(id+9)*.6);
-    c.beginPath();c.moveTo(-6,4);c.bezierCurveTo(-12,-4,-4,-10,2,-7);
-    c.bezierCurveTo(13,-7,12,2,6,6);c.bezierCurveTo(2,10,-1,6,1,1);
-    c.strokeStyle="#202219";c.lineWidth=7.6;c.stroke();
-    c.strokeStyle=gradient(c,-5,-6,5,8,[[0,damaged?"#a3a27b":"#c9b08a"],[.35,damaged?"#777e59":"#a1865c"],[1,damaged?"#3c4936":"#57432d"]]);c.lineWidth=5.7;c.stroke();
-    c.save();c.translate(-.6,-1.3);c.strokeStyle=damaged?"#b1b38b":"#d5c49a";c.lineWidth=.7;c.stroke();c.restore();
-    c.restore();
-  }
-  // Broad form lighting and subtle pores give the folds a rounded, warm material.
-  c.fillStyle=gradient(c,-65,-15,66,28,[[0,"#19190f90"],[.3,"#f5c78713"],[.6,"#1b17040b"],[1,"#091712ac"]]);c.fillRect(-75,-70,150,110);
-  c.fillStyle=gradient(c,0,-53,0,36,[[0,"#eac18239"],[.3,"#dea26106"],[.65,"#181b1017"],[1,"#09120dc9"]]);c.fillRect(-75,-70,150,110);
-  for(let i=0;i<1500;i++){c.fillStyle=i%3?"#f3d3a016":"#1a211128";c.fillRect(-67+noise(seed+i*31)*137,-61+noise(seed+i*67)*99,.65,.65);}
-  c.beginPath();c.moveTo(0,-52);c.bezierCurveTo(-12,-30,17,-18,5,3);c.bezierCurveTo(-2,14,12,20,6,34);
-  c.strokeStyle="#201b16";c.lineWidth=3.4;c.stroke();
+  paintCortex(c, seed, damaged, cortex);
+  c.save(); cortexOutline(c); c.clip();
   if(kind==="cracked") {
     polygon(c,[17,-45,3,-19,20,-5,5,23,30,4,17,-12,33,-41],"#0e1613");
     line(c,[18,-44,4,-19,21,-5,7,22],"#edb154",1.5);
@@ -119,15 +91,15 @@ function skull(c: Ctx) {
   c.restore();
 }
 
-function cargoSprite(kind: CargoKind, seed: number, weave: NeuralWeave) {
+function cargoSprite(kind: CargoKind, seed: number, weave: NeuralWeave, cortex: CortexCache) {
   const sprite=surface(340,280),c=sprite.getContext("2d")!;c.scale(2,2);c.translate(85,95);
   ellipse(c,0,19,74,15,"#0009");
   polygon(c,[-67,13,-49,-2,62,-2,77,14,59,29,-70,29],gradient(c,0,0,0,29,[[0,"#777456"],[.2,"#2d3932"],[.6,"#181f1a"],[1,"#050d0d"]]),"#7d7954");
   polygon(c,[-60,9,-45,1,54,1,65,11,49,20,-63,20],"#071410","#54665a");
   c.save();c.translate(0,-9);
   if(kind==="skull")skull(c);
-  else if(kind==="twin") {c.save();c.translate(-24,0);c.scale(.64,.7);drawBrain(c,seed,"cortex");c.restore();c.save();c.translate(24,-5);c.scale(.67,.8);drawBrain(c,seed+7,"cortex");c.restore();}
-  else {c.save();if(kind==="rejected"){c.rotate(-.17);c.scale(1.04,.72);c.translate(0,12);}drawBrain(c,seed,kind);c.restore();}
+  else if(kind==="twin") {c.save();c.translate(-24,0);c.scale(.64,.7);drawBrain(c,seed,"cortex",cortex);c.restore();c.save();c.translate(24,-5);c.scale(.67,.8);drawBrain(c,seed+7,"cortex",cortex);c.restore();}
+  else {c.save();if(kind==="rejected"){c.rotate(-.17);c.scale(1.04,.72);c.translate(0,12);}drawBrain(c,seed,kind,cortex);c.restore();}
   paintNeuralWeave(c,weave);
   if(kind==="glass") {
     c.beginPath();c.moveTo(-65,23);c.lineTo(-65,-31);c.bezierCurveTo(-67,-91,66,-91,66,-31);c.lineTo(66,23);c.closePath();
@@ -186,11 +158,16 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
   let width=1200,height=370,beltY=190;
   const background=surface(1,1),front=surface(1,1),lightLayer=surface(1,1);
   const redFan=opticalFan(true),amberFan=opticalFan(false);
+  const bakeStart=performance.now();
+  const cortex: CortexCache=new Map();
   const weaves=Array.from({length:12},(_,i)=>{const q=cargoFor(i);return createNeuralWeave(q.kind,q.seed);});
-  const cargo=weaves.map((weave,i)=>{const q=cargoFor(i);return cargoSprite(q.kind,q.seed,weave);});
+  const cargo=weaves.map((weave,i)=>{const q=cargoFor(i);return cargoSprite(q.kind,q.seed,weave,cortex);});
+  for(const master of cortex.values())master.width=master.height=1;
+  cortex.clear();
   const neural=weaves.map(neuralSprite);
   const shadows=cargo.map(silhouette);
   const slat=slatSprite();let count=0,totalMs=0,maxMs=0;
+  canvas.dataset.bakeMs=(performance.now()-bakeStart).toFixed(2);
   let burstCycle=-1,burstCarrier:number|null=null;
   function build() {
     background.width=front.width=Math.ceil(width);background.height=front.height=Math.ceil(height);

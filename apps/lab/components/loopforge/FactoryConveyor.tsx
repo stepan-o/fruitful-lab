@@ -112,7 +112,7 @@ export default function FactoryConveyor({ controlTarget }: { controlTarget?: HTM
         <div className={styles.readout}>
           <span className={styles.micro}>LINE 01 · MANUAL OVERRIDE</span>
           <p role="status" aria-live="polite" aria-atomic="true"><i aria-hidden="true"/>{status === "jammed" ? "LINE JAMMED" : status === "restarting" ? "DRIVE ENGAGING" : stoppedMotion || !ready ? "LINE AT REST" : "PRODUCTION IN PROGRESS"}</p>
-          <span className={styles.hint} id={hintId}>{status === "jammed" ? "Pull down to restart." : status === "restarting" ? "Taking up the slack. Stand clear." : "Continuity not guaranteed."}</span>
+          <span className={styles.hint} id={hintId}>{status === "jammed" ? "Pull down to restart." : status === "restarting" ? "Taking up the slack. Stand clear." : "If it jams, pull the lever down."}</span>
         </div>
         <div className={styles.station}>
           <button className={styles.motion} onClick={() => setMotion(!motion)} aria-label={motion ? "Pause factory motion" : "Resume factory motion"} aria-pressed={motion} disabled={reduced}>

@@ -1,36 +1,67 @@
 import { noise, type CargoKind } from "./factory-drive";
 
 type Point = readonly [number, number];
-export type NeuralWeave = { routes: Point[][]; strands: Point[][]; broken: boolean; seed: number };
+export type NeuralWeave = {
+  routes: Point[][]; strands: Point[][];
+  crossings: { points: Point[]; strand: number }[];
+  broken: boolean; seed: number;
+};
 type Ctx = CanvasRenderingContext2D;
 const TAU = Math.PI * 2;
 
-/** Geometry is built once per specimen. The three cores actually cross in a braid. */
+/** Arc-length sampling gives the braid a consistent physical pitch on tight bends.
+ * Geometry, crossover ordering and connector orientation are all baked once. */
 export function createNeuralWeave(kind: CargoKind, seed: number): NeuralWeave {
   const broken = kind === "cracked" || kind === "rejected";
   const curves: number[][] = kind === "skull"
-    ? [[-26,-43,-54,-35,-55,0,-31,14], [11,-49,5,-18,44,-30,37,6], [38,2,60,10,57,30,41,28]]
+    ? [[-25,-47,-50,-39,-50,-4,-30,14], [11,-48,3,-25,39,-23,32,15]]
     : kind === "twin"
-      ? [[-30,-39,-61,-28,-41,5,-20,13], [24,-47,-1,-30,46,-18,29,15], [-16,-4,-1,25,14,-20,27,2]]
-      : [[-19,-49,-66,-42,-55,16,-31,23], [13,-49,-8,-28,56,-26,43,17], [-38,-17,-5,-2,-7,30,24,22], [49,6,79,-2,73,34,48,28]];
+      ? [[-30,-39,-53,-25,-46,1,-30,17], [23,-47,6,-25,41,-20,33,17], [-30,17,-15,27,11,29,33,17]]
+      : [[-29,-49,-53,-39,-58,-5,-43,17], [14,-51,3,-28,42,-18,39,20], [-43,17,-25,31,16,33,39,20]];
   const routes = curves.map((v, j) => {
-    const bend = (noise(seed + j * 61) - .5) * 12;
-    return Array.from({ length: 65 }, (_, k): Point => {
-      const t = k / 64, u = 1 - t;
+    const bend = (noise(seed + j * 61) - .5) * 3;
+    const points = Array.from({ length: 193 }, (_, k): Point => {
+      const t = k / 192, u = 1 - t;
       let x = u*u*u*v[0] + 3*u*u*t*(v[2]+bend) + 3*u*t*t*v[4] + t*t*t*v[6];
       let y = u*u*u*v[1] + 3*u*u*t*v[3] + 3*u*t*t*(v[5]+bend) + t*t*t*v[7];
-      if (kind === "rejected") { const a = x, b = y*.72+12; x = a*.986+b*.169; y = -a*.169+b*.986; }
-      if (kind === "cracked" && j === 1 && t > .58) { x += (t-.58)*19; y -= (t-.58)*32; }
-      return [x, y];
+      if (kind === "rejected") { const a=x, b=y*.72+12; x=a*.986+b*.169; y=-a*.169+b*.986; }
+      if (kind === "cracked" && j === 1 && t > .7) { x+=(t-.7)*20; y-=(t-.7)*37; }
+      return [x,y];
+    });
+    const lengths=[0];
+    for(let k=1;k<points.length;k++) lengths.push(lengths[k-1]+Math.hypot(points[k][0]-points[k-1][0],points[k][1]-points[k-1][1]));
+    let cursor=1;
+    return Array.from({length:65},(_,k): Point => {
+      const distance=lengths[192]*k/64;
+      while(cursor<192 && lengths[cursor]<distance)cursor++;
+      const f=(distance-lengths[cursor-1])/(lengths[cursor]-lengths[cursor-1] || 1);
+      return [points[cursor-1][0]*(1-f)+points[cursor][0]*f,points[cursor-1][1]*(1-f)+points[cursor][1]*f];
     });
   });
-  const strands = routes.flatMap((route, j) => Array.from({length: 3}, (_, strand) => route.map(([x, y], k): Point => {
-    const before = route[Math.max(0,k-1)], after = route[Math.min(64,k+1)];
-    const dx = after[0]-before[0], dy = after[1]-before[1], length = Math.hypot(dx,dy) || 1;
-    const wind = Math.sin(k*.8+strand*TAU/3+j)*1.8;
-    return [x-dy/length*wind,y+dx/length*wind];
-  })));
-  return { routes, strands, broken, seed };
+  const strands: Point[][]=[], crossings: NeuralWeave["crossings"]=[];
+  for(const [j,route] of routes.entries()) {
+    const spacing=Math.hypot(route[1][0]-route[0][0],route[1][1]-route[0][1]);
+    for(let strand=0;strand<3;strand++) {
+      const core=route.map(([x,y],k): Point => {
+        const before=route[Math.max(0,k-1)],after=route[Math.min(64,k+1)];
+        const dx=after[0]-before[0],dy=after[1]-before[1],length=Math.hypot(dx,dy)||1;
+        const wind=Math.sin(k*spacing*TAU/8+strand*TAU/3+j)*.95;
+        return [x-dy/length*wind,y+dx/length*wind];
+      });
+      strands.push(core);
+      let front: Point[]=[];
+      for(let k=0;k<=64;k++) {
+        const above=Math.cos(k*spacing*TAU/8+strand*TAU/3+j)>.1;
+        if(above)front.push(core[k]);
+        if((!above || k===64) && front.length) {
+          if(!above)front.push(core[k]);
+          if(front.length>1)crossings.push({points:front,strand});
+          front=[];
+        }
+      }
+    }
+  }
+  return { routes, strands, crossings, broken, seed };
 }
 
 function stroke(c: Ctx, points: readonly Point[], color: string, width: number) {
@@ -41,23 +72,30 @@ function stroke(c: Ctx, points: readonly Point[], color: string, width: number) 
 
 export function paintNeuralWeave(c: Ctx, weave: NeuralWeave, emissive = false) {
   c.save(); c.lineCap="round"; c.lineJoin="round";
-  if (!emissive) for (const route of weave.routes) {
-    c.save(); c.translate(1,2); stroke(c,route,"#020a09cf",8); c.restore();
-    stroke(c,route,"#242c23",6); stroke(c,route,"#697d68",4.7);
+  if(emissive) {
+    for(const route of weave.routes)stroke(c,route,"#16cddb18",5);
+    for(const crossing of weave.crossings)stroke(c,crossing.points,"#70ffef75",.7);
+    c.restore();return;
   }
-  for (const [j, strand] of weave.strands.entries()) {
-    if (emissive) { stroke(c,strand,"#18e8e713",6); stroke(c,strand,"#4bf5ed80",1.1); }
-    else { stroke(c,strand,j%3===0?"#a39b62":"#065954",1.6); stroke(c,strand,j%3===0?"#789c7c":"#58bfb2",.65); }
+  for(const route of weave.routes) {
+    c.save();c.translate(.8,1.5);stroke(c,route,"#020a08ba",5.4);c.restore();
+    stroke(c,route,"#092723",4.2);stroke(c,route,"#387b73",3.1);
   }
-  if (!emissive) for (const route of weave.routes) {
-    // Brass ferrules make the luminous fibres part of the machine, not a decal.
-    for (const k of [0,25,64]) {
-      const p=route[k], next=route[Math.min(64,k+1)], prev=route[Math.max(0,k-1)];
-      c.save(); c.translate(...p); c.rotate(Math.atan2(next[1]-prev[1],next[0]-prev[0]));
-      c.fillStyle="#0b1713"; c.fillRect(-3,-4.5,6,9);
-      c.fillStyle="#716642"; c.fillRect(-2,-4,4,8);
-      c.fillStyle="#c2b183"; c.fillRect(-2,-4,1,8); c.restore();
-    }
+  for(const strand of weave.strands)stroke(c,strand,"#08635f",1.25);
+  // Front windings occlude their neighbours: a manufactured plait, not scribbles.
+  for(const crossing of weave.crossings) {
+    stroke(c,crossing.points,"#063d3c",1.7);
+    stroke(c,crossing.points,crossing.strand===0?"#55d9cf":"#32b3ae",1.05);
+    c.save();c.translate(-.2,-.25);stroke(c,crossing.points,"#bbf5df",.28);c.restore();
+  }
+  for(const [j,route] of weave.routes.entries())for(const k of (j===2?[32]:[0,64])) {
+    const p=route[k],next=route[Math.min(64,k+1)],prev=route[Math.max(0,k-1)];
+    c.save();c.translate(...p);c.rotate(Math.atan2(next[1]-prev[1],next[0]-prev[0]));
+    c.fillStyle="#082622";c.fillRect(-3.5,-3.4,7,6.8);
+    const metal=c.createLinearGradient(0,-3,0,3);
+    metal.addColorStop(0,"#3a493b");metal.addColorStop(.25,"#b0a475");metal.addColorStop(.5,"#637866");metal.addColorStop(1,"#172d27");
+    c.fillStyle=metal;c.fillRect(-3,-2.8,6,5.6);
+    c.fillStyle="#112d27";c.fillRect(-1.7,-2.8,.7,5.6);c.fillRect(1,-2.8,.7,5.6);c.restore();
   }
   c.restore();
 }
@@ -91,16 +129,16 @@ export function drawNeuralSignals(c: Ctx, weave: NeuralWeave, time: number, stil
     if (at<1 || at>63) continue;
     const k=Math.floor(at), p=route[k], tail=route[Math.max(0,k-6)];
     c.globalAlpha=weave.broken?.7:1;
-    halo(c,p[0],p[1],10,.34);
+    halo(c,p[0],p[1],6,.22);
     c.beginPath();c.moveTo(...tail);
     for(let n=Math.max(0,k-5);n<=k;n++) c.lineTo(...route[n]);
-    c.strokeStyle="#90fff0";c.lineWidth=1.6;c.stroke();
-    halo(c,p[0],p[1],2,.8);
+    c.strokeStyle="#90fff0";c.lineWidth=.9;c.stroke();
+    halo(c,p[0],p[1],1.4,.65);
   }
   if (discharge && discharge.strength>0) {
     const {age,strength,cycle}=discharge;
     const route=weave.routes[weave.broken?1:Math.floor(noise(cycle+weave.seed)*weave.routes.length)];
-    const at=weave.broken?64:25, origin=route[at], reach=weave.broken?36:27;
+    const at=weave.broken?64:32, origin=route[at], reach=weave.broken?36:27;
     c.globalAlpha=strength;
     halo(c,origin[0],origin[1],51,.63);
     for(let branch=0;branch<3;branch++) {

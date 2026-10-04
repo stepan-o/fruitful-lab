@@ -297,6 +297,13 @@ cover dialogs provide enlargement. See `docs/sanctuary/CINEMA_CATALOG_ART_PASSES
 
 ## Loopforge entrance conveyor · 2026-10-04
 
+Focused specimen refinement: `factory-brain.ts` bakes rounded cortical relief
+from authored sulci, surface normals and crevice shading; four temporary masters
+supply the twelve cached assembled variants. Cyan braids use arc-length sampling,
+ordered strand crossings and fitted collars. The running drive now maintains
+positive, uneven velocity until a true jam; the adjacent instruction reads
+“If it jams, pull the lever down.” See `docs/loopforge/BRAINCRAFT.md` for evidence.
+
 The entrance preserves the restored Canvas2D factory illustration. It now fills
 one responsive stage with a compact horizontal text menu and menu-side reset
 station. The full conveyor stays visible in the initial desktop/phone viewport;

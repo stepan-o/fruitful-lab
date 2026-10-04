@@ -10,6 +10,7 @@ import ChapterScene from "./ChapterScene";
 import FundingDiagram from "./plates/FundingDiagram";
 import InfernalTerm from "./InfernalTerm";
 import AudienceEconomy from "./plates/AudienceEconomy";
+import EveningPlace from "./plates/EveningPlace";
 import { playClang } from "@/lib/stepanoskin/audio";
 import { motionKey,soundKey,usePreference } from "@/lib/stepanoskin/preferences";
 import AssetImage from "@/components/media/AssetImage";
@@ -73,8 +74,8 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
   }
 
   return <main className={styles.reader} lang={locale} data-motion={motion?"on":"off"} data-media-mode="editorial" onClickCapture={transitionSound}>
-    <a href="#reading" className={styles.skip}>{copy.skip}</a>
-    <header className={styles.header}>
+    {current ? <a href="#reading" className={styles.skip}>{copy.skip}</a> : null}
+    {current ? <header className={styles.header}>
       <Link className={styles.brand} href="/stepanoskin"><span aria-hidden="true">◇</span> STEPAN OSKIN</Link>
       <div className={styles.headerControls}>
         <button className={styles.contentsButton} type="button" onClick={()=>contents.current?.showModal()} aria-haspopup="dialog" aria-label={copy.contents}>☰ <span>{copy.contents}</span></button>
@@ -82,14 +83,14 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
         <button className={styles.preferenceButton} type="button" aria-label={motion?copy.motionOn:copy.motionOff} title={motion?copy.motionOn:copy.motionOff} aria-pressed={motion} onClick={()=>setMotion(!motion)}>{motion?"✧":"◇"}</button>
         <label className={styles.locale}><span className={styles.srOnly}>{localeNames[locale]}</span><select aria-label={localeNames[locale]} value={locale} onChange={event=>switchLocale(event.target.value)}>{locales.map(l=><option key={l} value={l}>{localeNames[l]}</option>)}</select></label>
       </div>
-    </header>
+    </header> : null}
 
-    <div className={styles.layout}>
-      <aside className={styles.rail} aria-label={copy.contents}>
+    <div className={`${styles.layout} ${!current ? styles.landingLayout : ""}`}>
+      {current ? <aside className={styles.rail} aria-label={copy.contents}>
         <Link href={chapterHref()} className={styles.railTitle} aria-current={!current?"page":undefined}>SANCTUARY<br/><em>ECONOMICS</em></Link>
         {parts.map((part,p)=><div className={styles.railPart} key={part}><p lang="en"><span>0{p+1}</span> {part}</p>{navigation.map((chapter,i)=>chapter.part===p?<Link key={chapter.id} href={chapterHref(chapter.id)} prefetch={false} aria-current={current?.id===chapter.id?"page":undefined}><span>{roman(i)}</span><span lang="en">{chapter.title}</span></Link>:null)}</div>)}
         <span className={styles.railEdition}>{copy.edition}<br/>03 OCT 2026</span>
-      </aside>
+      </aside> : null}
 
       <div className={styles.body} id="reading" tabIndex={-1}>
         {!current ? <>
@@ -98,33 +99,8 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             <p className={styles.eyebrow}>An illustrated study of game design & monetization</p>
             <h1>Sanctuary<br/><em>Economics</em></h1>
             <p className={styles.coverLede}>How the games we love are built, sold and kept alive.</p>
-            <div className={styles.coverMeta}><span>{navigation.length} CHAPTERS</span><span>{parts.length} PARTS</span><span>GAUNTLET · DIABLO · BEYOND</span></div>
             <Link href={chapterHref(first.id)} className={styles.primary} lang={locale}>{copy.start} <span aria-hidden="true">↗</span></Link>
           </section>
-          <div className={styles.editionNote}><strong>{copy.edition}</strong><p>{copy.editionNote}</p></div>
-          <section className={styles.introduction} lang="en">
-            <p>
-              The word “purchase” conceals several different relationships with
-              a game. We can pay for a turn, buy an adventure to replay for years,
-              or buy something inside a world we already inhabit. The next
-              payment need not buy the same thing as the first.
-            </p>
-            <p>
-              We begin at a coin-operated arcade cabinet, where money could
-              become a character’s health. From there, we follow the changing
-              connection between continuing to play and paying again: through
-              games bought for the home, connected worlds and the contemporary
-              choices of studios such as Larian and Blizzard. Cinema and other
-              creative businesses help place those choices in a wider history.
-            </p>
-            <p>
-              This is a study of what players value, what creators make and how
-              the next sale joins the two. The old arrangements were commercial
-              too. Understanding them gives us a better way to examine the new
-              ones—and to ask what each makes possible, or puts at risk.
-            </p>
-          </section>
-          <section className={styles.partGrid} aria-label={copy.contents}>{parts.map((part,p)=><Link prefetch={false} href={chapterHref(navigation.find(c=>c.part===p)!.id)} key={part}><span>0{p+1}</span><h2 lang="en">{part}</h2><small>{roman(navigation.findIndex(c=>c.part===p))} — {roman(navigation.findLastIndex(c=>c.part===p))}</small><b aria-hidden="true">↗</b></Link>)}</section>
         </> : <>
           <article className={styles.article} lang="en" data-opening={index === 0 || current.id === "the-fork" || undefined}>
             <div className={styles.chapterTop}><Link href={chapterHref()}>{copy.overview}</Link><span>{String(index+1).padStart(2,"0")} / {navigation.length}</span></div>
@@ -150,9 +126,9 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       <h2 key={section.title}>{section.title}</h2>
                     ))}
                   <p>
-                    {current.id === "the-fork" && paragraphIndex === 2
-                      ? paragraph.split(/\b(subscription)\b/).map((text, segment) => text === "subscription"
-                        ? <InfernalTerm key={segment}>{text}</InfernalTerm>
+                    {current.id === "the-fork" && paragraphIndex <= 2
+                      ? paragraph.split(/\b(subscription|future sales|the gap)\b/).map((text, segment) => text === "subscription" || text === "future sales" || text === "the gap"
+                        ? <InfernalTerm key={segment} tone={text === "the gap" ? "abyss" : text === "future sales" ? "spectral" : "subscription"}>{text}</InfernalTerm>
                         : text)
                       : paragraph}
                     {current.paragraphCitations?.[paragraphIndex]?.map(
@@ -177,7 +153,9 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       },
                     )}
                   </p>
-                  {current.id === "insert-coin" && paragraphIndex === 1 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+                  {current.id === "insert-coin" && paragraphIndex === 1 ? <EveningPlace/> : null}
+                  {current.id === "the-fork" && paragraphIndex === 5 ? <EveningPlace initialWorld/> : null}
+                  {current.id === "insert-coin" && paragraphIndex === 4 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
                   {current.figures?.map((figure,i)=>figure.afterParagraph === paragraphIndex ? renderFigure(figure,i) : null)}
                   {current.id === "the-fork" && paragraphIndex === 2 ? <AudienceEconomy/> : null}
                   {current.id === "the-fork" && paragraphIndex === 6 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
@@ -216,15 +194,15 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
           <nav className={styles.chapterNav} aria-label={copy.chapter}><Link prefetch={false} href={chapterHref(previous?.id)}><small>← {copy.previous}</small><strong lang="en">{previous?.title??copy.overview}</strong></Link><Link prefetch={false} href={chapterHref(next?.id)}><small>{next?copy.next:copy.overview} →</small><strong lang="en">{next?.title??"Sanctuary Economics"}</strong></Link></nav>
           <p className={styles.chapterEdition}>{copy.edition}</p>
         </>}
-        <footer className={styles.footer}><span>SANCTUARY ECONOMICS · 2026</span><Link prefetch={false} href="/stepanoskin/game-monetization/credits">{copy.credits} ↗</Link><Link href="/stepanoskin">{copy.home} ↗</Link></footer>
+        {current ? <footer className={styles.footer}><span>SANCTUARY ECONOMICS · 2026</span><Link prefetch={false} href="/stepanoskin/game-monetization/credits">{copy.credits} ↗</Link><Link href="/stepanoskin">{copy.home} ↗</Link></footer> : null}
       </div>
     </div>
 
-    <dialog className={styles.contentsDialog} ref={contents} aria-labelledby="contents-title"><div className={styles.dialogHead}><h2 id="contents-title">{copy.contents}</h2><button type="button" onClick={()=>contents.current?.close()}>{copy.close} ×</button></div><Link onClick={()=>contents.current?.close()} href={chapterHref()}>{copy.overview}</Link>{parts.map((part,p)=><section key={part}><h3 lang="en">0{p+1} · {part}</h3>{navigation.map((chapter,i)=>chapter.part===p?<Link href={chapterHref(chapter.id)} prefetch={false} key={chapter.id} onClick={()=>contents.current?.close()} aria-current={current?.id===chapter.id?"page":undefined}><span>{roman(i)}</span><span lang="en">{chapter.title}</span></Link>:null)}</section>)}</dialog>
+    {current ? <><dialog className={styles.contentsDialog} ref={contents} aria-labelledby="contents-title"><div className={styles.dialogHead}><h2 id="contents-title">{copy.contents}</h2><button type="button" onClick={()=>contents.current?.close()}>{copy.close} ×</button></div><Link onClick={()=>contents.current?.close()} href={chapterHref()}>{copy.overview}</Link>{parts.map((part,p)=><section key={part}><h3 lang="en">0{p+1} · {part}</h3>{navigation.map((chapter,i)=>chapter.part===p?<Link href={chapterHref(chapter.id)} prefetch={false} key={chapter.id} onClick={()=>contents.current?.close()} aria-current={current?.id===chapter.id?"page":undefined}><span>{roman(i)}</span><span lang="en">{chapter.title}</span></Link>:null)}</section>)}</dialog>
     <dialog className={styles.lightbox} ref={lightbox} aria-label={copy.zoom} onClose={()=>setZoom(null)}><div className={styles.dialogHead}><span>{copy.zoom}</span><button type="button" onClick={()=>lightbox.current?.close()}>{copy.close} ×</button></div>{zoom && assets.assets[zoom.asset]?<figure>
       {/* Full-sized image is mounted only when opened; native scrolling preserves readable UI text. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={assetUrl(assets,zoom.asset)} width={imageAsset(assets,zoom.asset).width} height={imageAsset(assets,zoom.asset).height} alt={zoom.alt}/><figcaption lang="en">{zoom.caption}<br/>{zoom.credit}</figcaption></figure>:null}</dialog>
+      <img src={assetUrl(assets,zoom.asset)} width={imageAsset(assets,zoom.asset).width} height={imageAsset(assets,zoom.asset).height} alt={zoom.alt}/><figcaption lang="en">{zoom.caption}<br/>{zoom.credit}</figcaption></figure>:null}</dialog></> : null}
     <Atmosphere enabled={motion}/>
   </main>;
 }

@@ -180,3 +180,59 @@ complete still scenes. Printed scenes are hidden to preserve the compact CV.
 
 Validation and screenshots for this pass are recorded in
 `production-systems-evidence/engraving-verification.md`.
+
+
+## Focused hero polish · 3 October 2026
+
+The owner asked for a coherent Mechanical Turk conveyor and clarified that the
+Turk must push a conveyor of A/B testing. The opening now uses the recognizable
+seated figure above a broad walnut case. Paired A/B specimens move together on
+its chessboard conveyor; the hand works a feed lever while the connected rollers
+and exposed transmission advance in the same indexed cycle. An open door,
+support brackets, joinery and feet establish one physical apparatus. The caption
+is “Many experiments. A few useful signals.” The outfeed transforms paired
+specimens into uncertain effect estimates. Its attached paper register shows
+mostly near-zero results, noise, some negatives and one large gain. Muted
+p-values and two marginal hindsight notes make the distinction between initial
+significance and later value explicit: a false positive and a valuable idea
+that was dropped too early.
+
+The ten results are synthetic normal-model examples, with matching estimates,
+approximate 95% intervals and two-sided p-values in arbitrary units. The two
+hindsight examples have authored underlying effects of 0 and +61, respectively;
+the labels are not inferred from p-values. The mixed outcome proportions are
+editorial, not empirical. A public methodology note and the ASA's 2016 statement
+explain this framing. No employer data or new professional claims are added.
+
+This supersedes the generic press, detached observation instrument and numbered
+process legend in the earlier opening. The seven later scenes remain the next
+focused polish passes. Historical sources, abstract professional facts and the
+existing motion preferences remain intact. The source-derived figure is reused
+inside the SVG with `use` references; no new image, font, dependency or client
+script is introduced.
+
+Branch: `codex/mechanical-turk-conveyor`, based on master `994074a`. The isolated
+worktree keeps this change separate from Sanctuary and launcher work.
+Validation and review captures: [hero verification](production-systems-evidence/turk-conveyor-verification.md).
+
+
+## Continuous conveyor and living register · 3 October 2026
+
+Follow-up to merged PR #60, on `codex/turk-continuous-evidence` from `f6467a8`.
+The figure now sits behind the tabletop, with a visible chair and only its hands
+and forearms crossing the work surface. A continuous conveyor replaces the
+indexed motion. Each 2.4-second test has a quick stamping stroke (216 ms down,
+96 ms contact, 384 ms return); the ten-outcome sequence repeats every 24 seconds.
+
+The cabinet’s paper plot register is retained and advances with every test. Its
+new row shares the outgoing specimen’s outcome and subtle gray, red or green
+highlight. P-values and verdicts exhale as pale smoke from the outfeed. The two
+hindsight examples also appear in the vapor, explicitly prefixed “later.” This
+supersedes the preceding bottom caption, outcome legend and marginal notes: the
+opening has no visible text below the SVG. Synthetic-data context remains in
+the accessible description, plate header and existing artwork/methodology notes.
+
+Still/reduced-motion states, persistent pause and offscreen/hidden-document
+suspension remain supported. These refinements use the existing server-rendered
+SVG and CSS only. The seven later scenes and professional claims are unchanged.
+Validation: [continuous conveyor evidence](production-systems-evidence/turk-continuous-verification.md).

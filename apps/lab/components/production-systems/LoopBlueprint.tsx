@@ -1,159 +1,311 @@
+import type { CSSProperties } from "react";
 import styles from "@/app/(stepanoskin)/stepanoskin/production-systems/profile.module.css";
+import figureStudies from "@/lib/production-systems/figure-studies.json";
 
-import { Grain, Hatch } from "./engraving-primitives";
-import motion from "./engravings.module.css";
+import { Grain, Screw, round } from "./engraving-primitives";
+import motion from "./turk-conveyor.module.css";
 
-const ink = "#493f31";
+const ink = "#463a30";
 const paper = "#f4f2eb";
-const brass = "#9a8050";
+const brass = "#ae9365";
+const wood = "#917456";
+const figure = figureStudies.studies.automaton;
+const trayPeriod = 2.4;
+const outfeedLead = 58 / 88 * trayPeriod;
 
-function CatalogLeaf({ x, y, variant = 0 }: { x: number; y: number; variant?: number }) {
-  return (
-    <g transform={`translate(${x} ${y})`}>
-      <path d="M0 0 8-5H43V43L35 48H0Z" fill="#deded0" stroke={ink} />
-      <path d="M0 0H35V48H0Z" fill={paper} stroke={ink} />
-      <path d="M35 0 43-5M35 48 43 43" fill="none" stroke={ink} />
-      <path d="M6 7H29M6 39H21" stroke={brass} />
-      {variant === 0 ? <path d="m7 29 7-11 6 6 8-10M7 33H28" fill="none" stroke={ink} /> :
-        variant === 1 ? <g fill="none" stroke={ink}><path d="m14 17-6 7 6 7m8-14 6 7-6 7M20 15 16 33" /></g> :
-          <g fill="#82988a" stroke={ink}><circle cx="18" cy="23" r="7" /><path d="M7 33 13 27M25 28 29 33" fill="none" /></g>}
+// Synthetic normal-model examples: estimate ± 1.96 SE and two-sided p-values.
+// Most estimates sit near zero; one large gain and two losses punctuate the run.
+// Cases 2 and 7 have fictional underlying effects of 0 and +61 respectively.
+// Their hindsight labels are narrative facts, not inferences from p-values.
+// These are editorial examples, never the owner's or an employer's results.
+const outcomes = [
+  { estimate: 2, low: -19.56, high: 23.56, p: ".856", kind: "neutral" },
+  { estimate: -5, low: -24.60, high: 14.60, p: ".617", kind: "neutral" },
+  { estimate: 14, low: 2.24, high: 25.76, p: ".020", kind: "neutral" },
+  { estimate: -36, low: -49.72, high: -22.28, p: "<.001", kind: "loss" },
+  { estimate: 1, low: -22.52, high: 24.52, p: ".934", kind: "neutral" },
+  { estimate: -4, low: -19.68, high: 11.68, p: ".617", kind: "neutral" },
+  { estimate: 61, low: 47.28, high: 74.72, p: "<.001", kind: "gain" },
+  { estimate: 26, low: -17.12, high: 69.12, p: ".237", kind: "neutral" },
+  { estimate: -29, low: -42.72, high: -15.28, p: "<.001", kind: "loss" },
+  { estimate: -2, low: -21.60, high: 17.60, p: ".841", kind: "neutral" },
+] as const;
+const resultInk = { neutral: "#766c5c", loss: "#793c3c", gain: "#4d6b4d" };
+
+function ResultTray({ x, index }: { x: number; index: number }) {
+  const result = outcomes[index % outcomes.length];
+  const xx = (n: number) => round(25 + n * .44);
+  return <g transform={`translate(${x} 0)`} data-outcome={index % outcomes.length} stroke={ink} strokeWidth=".8">
+    <path d="M0 6H68V60H0Z" fill="#584d3d" /><path d="M0 3H68V57H0Z" fill="#c4b38c" />
+    <path d="M3 6H65V54H3Z" fill={paper} />
+    <path d="M8 19H60M25 23V48" stroke="#b8ad97" strokeWidth=".6" />
+    <path d="M12 13H28M38 13H56" stroke={brass} strokeWidth=".6" />
+    <g stroke={resultInk[result.kind]} fill={resultInk[result.kind]}>
+      <path d={`M${xx(result.low)} 36H${xx(result.high)}m0-3v6M${xx(result.low)} 33v6`} strokeWidth="1.1" />
+      <circle cx={xx(result.estimate)} cy="36" r={result.kind === "gain" ? 2.6 : 1.8} />
     </g>
-  );
+    <path d="M12 50H55" stroke={brass} strokeWidth=".5" />
+  </g>;
 }
 
-function Bolt({ x, y }: { x: number; y: number }) {
-  return <g transform={`translate(${x} ${y})`}><circle r="2.2" fill={paper} stroke={ink} strokeWidth=".8" /><path d="m-1.2 1.2 2.4-2.4" stroke={ink} strokeWidth=".7" /></g>;
+/** A moving paper log shares the conveyor's exact outcome order and speed. */
+function ResultRegister() {
+  // At the instant a specimen leaves the conveyor, its estimate reaches the
+  // top of the register. Older rows descend; the 10-row repeat is seamless.
+  const firstRow = 378 + 8.5 - outfeedLead / trayPeriod * 8.5;
+  return <g>
+    <defs><clipPath id="turk-register-window"><path d="M402 378H570V468H402Z" /></clipPath></defs>
+    <path d="M392 350H582V360H392Z" fill="#302b24" stroke={ink} />
+    <path d="M403 353H574V472Q574 486 564 486H404Z" fill="#4b382b" opacity=".35" />
+    <path d="M399 352H575V472Q574 481 567 483H392Q402 478 399 466Z" fill="#f0e7d0" stroke={ink} strokeWidth="1" />
+    <path d="M400 356H574M404 478H567" stroke="#cbbb96" strokeWidth=".7" />
+    <path d="M406 374H565M456 371V468" stroke="#8f826b" strokeWidth=".8" />
+    <text x="408" y="365" fill={ink} fontFamily="Georgia, serif" fontSize="9" fontStyle="italic">Effect B − A</text>
+    <text x="561" y="370" fill="#766c5c" fontFamily="Georgia, serif" fontSize="9" textAnchor="end">p</text>
+    <text x="456" y="373" fill={ink} fontFamily="Georgia, serif" fontSize="9" textAnchor="middle">0</text>
+    <path d="M406 376v90M535 376v90" stroke="#b6a98c" strokeWidth=".5" strokeDasharray="1 3" />
+    <g clipPath="url(#turk-register-window)">
+      <g className={motion.registerTrack}>
+        {Array.from({ length: 22 }, (_, i) => {
+          const row = i - 11, index = (row + 27) % outcomes.length;
+          const r = outcomes[index], y = round(firstRow + row * 8.5);
+          return <g key={i} data-outcome={index} data-register-row={row} transform={`translate(0 ${y})`}>
+            <path d="M403-4H569V4.5H403Z" fill={resultInk[r.kind]} opacity={r.kind === "neutral" ? .025 : .095} />
+            <path d="M406 4H565" stroke="#d7ccb1" strokeWidth=".45" />
+            <path d={Array.from({ length: 7 }, (_, j) => {
+              const x = 456 + r.estimate + (((index * 13 + j * 17) % 37) - 18);
+              return `M${x} -1.3v2.6`;
+            }).join("")} stroke={resultInk[r.kind]} strokeWidth=".6" opacity=".25" />
+            <path d={`M${456 + r.low} 0H${456 + r.high}m0-2v4M${456 + r.low} -2v4`} stroke={resultInk[r.kind]} strokeWidth={r.kind === "neutral" ? .85 : 1.2} fill="none" />
+            <circle cx={456 + r.estimate} cy="0" r={r.kind === "gain" ? 2.8 : r.kind === "loss" ? 2.1 : 1.5} fill={resultInk[r.kind]} />
+            <text x="565" y="2.5" fill="#766c5c" fontFamily="Georgia, serif" fontSize="8" textAnchor="end">{r.p}</text>
+          </g>;
+        })}
+      </g>
+    </g>
+    <path d="M392 483q8-3 7-10h176q0 8-8 10Z" fill="#cfbf99" stroke={ink} strokeWidth=".7" />
+    <path d="M401 475H569" stroke="#f2e7c9" strokeWidth=".8" />
+    <path d="M390 351H581" stroke={brass} strokeWidth="4" />
+    <Screw x={391} y={351} r={3} /><Screw x={581} y={351} r={3} />
+  </g>;
+}
+
+/** Verdicts are carried by the exhaust itself, not by a caption or dashboard.
+ * The sequence follows the outfeed's reversed order as trays move to the right.
+ * Each ten-result period takes 24 seconds, with one emission per 2.4-second tray.
+ */
+function ResultExhalation() {
+  const verdicts = [
+    ["no clear lift"], ["inconclusive"], ["later: false positive"], ["negative"],
+    ["noise"], ["no clear lift"], ["large gain"], ["later: great thing", "we dropped"],
+    ["negative"], ["inconclusive"],
+  ];
+  return <g transform="translate(620 251)" aria-hidden="true">
+    {outcomes.map((result, index) => <g key={index} className={motion.smoke} data-outcome={index} style={{
+      "--delay": `${round(outfeedLead + ((6 - index + outcomes.length) % outcomes.length) * trayPeriod - outcomes.length * trayPeriod)}s`,
+      "--still-x": index === 0 ? "-14px" : index === 3 ? "-39px" : "-60px",
+      "--still-y": index === 0 ? "-29px" : index === 3 ? "-92px" : "-154px",
+      "--still-opacity": [0, 3, 6].includes(index) ? .62 : 0,
+    } as CSSProperties}>
+      <g fill="none" stroke="#90928a" strokeWidth=".7" opacity=".25">
+        <path d="M-14 17C-43 7-22-5-34-17S-63-32-45-46M17 22C44 9 14-8 32-20S58-39 45-53" />
+        <path d="M-1 23C-18 12 7 2-5-10M23-26c-10-14 5-18 13-24" strokeWidth=".45" />
+      </g>
+      <text className={motion.smokeValue} textAnchor="middle" y="-7">p {result.p.startsWith("<") ? result.p : `= ${result.p}`}</text>
+      <text className={motion.smokeVerdict} textAnchor="middle" y="11">
+        {verdicts[index].map((line, row) => <tspan key={line} x="0" dy={row === 0 ? 0 : 16}>{line}</tspan>)}
+      </text>
+    </g>)}
+  </g>;
+}
+
+/** The chair and coat are behind the work surface; only the hands cross it. */
+function SeatedTurk() {
+  return <g>
+    <path d="M302 289V184Q302 175 312 175H447Q458 175 458 188V290" fill="none" stroke={ink} strokeWidth="7" />
+    <path d="M302 289V184Q302 175 312 175H447Q458 175 458 188V290" fill="none" stroke={wood} strokeWidth="4" />
+    <path d="M305 191H455V275H305Z" fill="#6d5842" stroke={ink} />
+    <Grain x={310} y={195} w={140} h={73} />
+    <path d="M301 273H458V284H301Z" fill="#70513c" stroke={ink} />
+    <path d="M315 248Q326 278 321 303H448Q447 277 437 248Z" fill="#8a6f58" stroke={ink} />
+    <path d="M326 251q16 31 9 48m10-48q12 29 7 48m10-48q7 28 5 48m11-48q1 24 7 48m12-48q-2 27 9 48m9-48q-1 23 13 48" fill="none" stroke="#514237" strokeWidth=".75" />
+    <g transform="translate(168 21) scale(.75)">
+      <g clipPath="url(#turk-still-figure)"><use href="#turk-engraved-figure" /></g>
+    </g>
+  </g>;
+}
+
+/** One experiment travels as a paired specimen, never as a declared winner. */
+function ExperimentTray({ x }: { x: number }) {
+  return <g transform={`translate(${x} 0)`} stroke={ink} strokeWidth=".8">
+    <path d="M0 6H68V60H0Z" fill="#584d3d" />
+    <path d="M0 3H68V57H0Z" fill="#c4b38c" />
+    <path d="M3 6H65V54H3Z" fill="#e7dcc1" />
+    {[{ letter: "A", y: 9, color: "#746c55" }, { letter: "B", y: 33, color: "#793c3c" }].map(({ letter, y, color }) => <g key={letter} transform={`translate(7 ${y})`}>
+      <path d="M0 0H54V17H0Z" fill={paper} />
+      <path d="M19 3V14M25 5H47M25 9H43M25 13H47" stroke={color} strokeWidth=".65" />
+      <text x="9" y="12.5" textAnchor="middle" fill={color} stroke="none" fontFamily="Georgia, serif" fontSize="14">{letter}</text>
+    </g>)}
+    <path d="M4 28H64M4 30H64" stroke={brass} strokeWidth=".6" />
+    <path d="M2 4H66M2 4V56" stroke="#f2e8cb" strokeWidth=".6" fill="none" />
+  </g>;
+}
+
+function Gear({ x, y, r, teeth, reverse = false, sweep = 180, spokes = 6 }: { x: number; y: number; r: number; teeth: number; reverse?: boolean; sweep?: number; spokes?: number }) {
+  const tooth = Array.from({ length: teeth }, (_, i) => {
+    const a = i * Math.PI * 2 / teeth;
+    return [0, .22, .7, .92].map((f, j) => {
+      const radius = r + (j === 1 || j === 2 ? 2 : -1);
+      return `${i === 0 && j === 0 ? "M" : "L"}${round(Math.cos(a + f * Math.PI * 2 / teeth) * radius)} ${round(Math.sin(a + f * Math.PI * 2 / teeth) * radius)}`;
+    }).join("");
+  }).join("") + "Z";
+  return <g transform={`translate(${x} ${y})`}>
+    <g className={motion.gear} style={{ "--sweep": `${reverse ? -sweep : sweep}deg` } as CSSProperties} stroke={ink} strokeWidth=".8">
+      <path d={tooth} fill={brass} /><circle r={r - 4} fill="#41372d" /><circle r={r - 7} fill="none" stroke="#b8a277" strokeWidth=".6" />
+      {Array.from({ length: spokes }, (_, i) => <path key={i} transform={`rotate(${i * 360 / spokes})`} d={`M-2-4 -3 ${-r + 6}H3L2-4Z`} fill={brass} />)}
+      <circle r="7" fill={brass} /><circle r="3" fill="#5b4935" />
+    </g>
+    <circle r="1.2" fill="#e8d4a1" />
+  </g>;
+}
+
+/** Racknitz's figure is three batched vector paths, reused by the cabinet study. */
+function TurkFigure() {
+  return <g strokeLinecap="round" strokeLinejoin="round">
+    <path d={figure.outline} fill="#e4d8bf" stroke={ink} strokeWidth="1.2" />
+    <g clipPath="url(#turk-figure-silhouette)" fill="#793c3c" opacity=".24">
+      <path d="M207 49 216 17 275 4 296 43 281 55Z" />
+      <path d="M150 189 181 156 224 144 220 209 193 245 174 323 209 323 245 164 281 166 307 324 379 326 347 230 387 249 411 253 440 296 463 292 462 240 427 211 391 202 350 145 316 132 282 126 237 128 184 147Z" />
+    </g>
+    <path d={figure.mid} stroke="#776751" strokeWidth=".65" fill="none" />
+    <path d={figure.ink} stroke="#3b3028" strokeWidth=".85" fill="none" />
+  </g>;
 }
 
 export default function LoopBlueprint() {
   return (
-    <figure className={styles.blueprint} aria-labelledby="loop-caption" data-engraving="conveyor" data-playing="false">
-      <div className={styles.plateHeader}><span>Fig. 01 / The working method</span><span>Production ↔ evidence</span></div>
-      <svg className={styles.loopSvg} viewBox="0 0 600 420" role="img" aria-labelledby="loop-title loop-description">
-        <title id="loop-title">An illustrated production and learning apparatus</title>
-        <desc id="loop-description">A printmaking-style machine carries individual content cards through production and review. An observation instrument records what happens after release; a brass return path carries that evidence back to the next specification. A conceptual metaphor, not a system architecture or a live result.</desc>
+    <figure className={styles.blueprint} aria-labelledby="loop-title" data-engraving="conveyor" data-playing="false" style={{ "--tray-period": `${trayPeriod}s`, "--cycle-period": `${outcomes.length * trayPeriod}s` } as CSSProperties}>
+      <div className={styles.plateHeader}><span>Fig. 01 / The experiment engine</span><span>Illustrative experiments</span></div>
+      <svg className={styles.loopSvg} viewBox="0 0 680 550" role="img" aria-labelledby="loop-title loop-description">
+        <title id="loop-title">The Mechanical Turk operating an A/B experiment conveyor</title>
+        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a walnut cabinet. Its forearms reach over a continuously moving chessboard conveyor, stamping paired A/B specimens into effect estimates. P-values and verdicts exhale from the outfeed as pale rising smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
         <defs>
-          <pattern id="profile-etch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V5" stroke={ink} strokeWidth=".55" opacity=".3" /></pattern>
-          <clipPath id="profile-belt-clip"><path d="M78 196H505V257H78Z" /></clipPath>
-          <pattern id="profile-rib" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M1 0V6" stroke={ink} strokeWidth=".8" opacity=".5" /></pattern>
+          <pattern id="turk-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke={ink} strokeWidth=".55" opacity=".45" /></pattern>
+          <pattern id="turk-crosshatch" width="5" height="5" patternUnits="userSpaceOnUse"><path d="m0 0 5 5M0 5 5 0" stroke={ink} strokeWidth=".5" opacity=".45" /></pattern>
+          <pattern id="turk-checker" width="22" height="16" patternUnits="userSpaceOnUse"><rect width="22" height="16" fill="#c6b999" /><path d="M0 0H11V8H0ZM11 8H22V16H11Z" fill="#7e7b61" /><path d="M1 0V16M4 0V16M7 0V16M10 0V16M13 0V16M16 0V16M19 0V16" stroke={ink} strokeWidth=".45" opacity=".25" /></pattern>
+          <clipPath id="turk-belt-window"><path d="M63 0H463V64H63Z" /></clipPath>
+          <clipPath id="turk-results-window"><path d="M463 0H628V64H463Z" /></clipPath>
+          <g id="turk-engraved-figure"><TurkFigure /></g>
+          <clipPath id="turk-figure-silhouette"><path d={figure.outline} /></clipPath>
+          <clipPath id="turk-still-figure"><path d="M0 0H470V238H411V355H0Z" /></clipPath>
+          <clipPath id="turk-left-hand"><path d="M0 250H166V355H0Z" /></clipPath>
+          <clipPath id="turk-working-hand"><path d="M411 222H470V355H411Z" /></clipPath>
+          <clipPath id="turk-chamber"><path d="M158 354H369V469H158Z" /></clipPath>
         </defs>
 
-        {/* Ground and the rear return line establish a single, supported apparatus. */}
-        <path d="M52 351 183 387 553 333 421 302Z" fill="#e3e3d7" opacity=".65" />
-        <path d="M67 351 185 379 538 329M85 355 185 374 518 326M114 354 184 368" fill="none" stroke="#c3c8bb" strokeWidth=".7" />
-        <g fill="none" stroke={brass} strokeWidth="2">
-          <path d="M454 228V188Q454 178 444 178H205Q188 178 188 195V223" />
-          <path d="M461 229V187Q461 171 444 171H205Q181 171 181 195V222" />
-        </g>
-        <path d="M114 303H474L491 295V357L474 371H114Z" fill="#94775b" stroke={ink} strokeWidth="1.4" />
-        <Grain x={118} y={309} w={352} h={56} />
-        <Hatch id="profile-conveyor-side" d="M474 305 491 295V357L474 371Z" gap={3} cross />
-        <path d="M130 317H274V359H130ZM289 317H459V359H289Z" fill="#685441" stroke={ink} />
-        <path d="M135 322H269V354H135ZM294 322H454V354H294Z" fill="none" stroke="#b69c72" strokeWidth=".7" />
-        <path d="M187 332q12 11 24 0m142 0q12 11 24 0" fill="none" stroke="#ccb07a" strokeWidth="2" />
-        <path d="M114 369H474V377H114ZM124 377V390H141V377M446 377V389H463V377" fill="#68483a" stroke={ink} />
-        <path d="M117 372H471M128 380v7m322-7v7" stroke="#b29a72" strokeWidth=".7" />
+        <SeatedTurk />
 
-        {/* Rear column, screw and flywheel: the press is a built object, not a node. */}
-        <path d="m343 259 20-9V112l-20 9Z" fill="#887858" stroke={ink} strokeWidth="1.2" />
-        <path d="m343 259 20-9V112l-20 9Z" fill="url(#profile-etch)" />
-        <path d="M282 117V73l17-8v44" fill="#b6bba5" stroke={ink} />
-        <path d="M282 84H299M282 89H299M282 94H299M282 99H299M282 104H299" stroke={ink} strokeWidth=".8" />
-        <path d="m260 67 40-12 35 10-40 12Z" fill="#d9c99d" stroke={ink} />
-        <path d="M260 67V73L295 83V77M295 83 335 71V65" fill="#ad9566" stroke={ink} />
-        <path d="M296 60V43" stroke={ink} strokeWidth="3" />
-        <ellipse cx="296" cy="43" rx="26" ry="8" fill={paper} stroke={ink} strokeWidth="1.5" />
-        <ellipse cx="296" cy="43" rx="19" ry="5" fill="none" stroke={brass} />
-        <path d="m271 43 49 0M280 38 312 48M280 48 312 38" stroke={ink} />
-        <circle cx="296" cy="43" r="3" fill={brass} />
-        <g transform="translate(364 164)">
-          <ellipse rx="32" ry="39" fill="#b6a078" stroke={ink} strokeWidth="1.5" />
-          <ellipse rx="26" ry="33" fill={paper} stroke={ink} />
-          <ellipse rx="22" ry="29" fill="none" stroke={brass} />
-          <g className={motion.wheel}><path d="M0-30V30M-24 0H24M-17-22 17 22M-17 22 17-22" stroke={ink} strokeWidth="3" /></g>
-          <ellipse rx="7" ry="9" fill="#b49c65" stroke={ink} />
-          <path d="M0 0 21 16" stroke={ink} strokeWidth="3" /><circle cx="21" cy="16" r="4" fill={paper} stroke={ink} />
-        </g>
+        {/* One ground plane and one case: everything has a physical support. */}
+        <path d="M94 510 169 537 611 504 556 478Z" fill="#b7ad94" opacity=".16" />
+        <path d="M116 516 175 530 598 503M138 514 180 523 581 500M183 517 557 497" fill="none" stroke="#938775" strokeWidth=".65" opacity=".35" />
+        <path d="M146 483V517Q155 526 166 516L172 483M548 483V517Q558 524 567 516L573 483" fill="#70513c" stroke={ink} strokeWidth="1.3" />
+        <path d="M152 491v24m7-24v26m395-26v25m7-25v26" stroke="#c1a278" strokeWidth=".7" />
+        <path d="M589 323 625 264V444L589 496Z" fill="#6d5842" stroke={ink} strokeWidth="1.5" />
+        <path d="M598 342 617 310V441L598 469Z" fill="#4f4032" stroke={ink} />
+        <path d="M589 323 625 264V444L589 496Z" fill="url(#turk-hatch)" />
+        <path d="M129 327H589V492H129Z" fill={wood} stroke={ink} strokeWidth="1.6" />
+        <Grain x={133} y={333} w={452} h={154} />
+        <path d="M136 337H582V478H136Z" fill="none" stroke="#c4ab81" strokeWidth="1" />
+        <path d="M145 344H382V480H145Z" fill="#503e2f" stroke={ink} />
+        <path d="M158 354H369V469H158Z" fill="#302b24" stroke={ink} />
+        <path d="M158 354H369V469H158Z" fill="url(#turk-crosshatch)" />
+        <path d="M160 356 179 370H369M179 370V468" fill="none" stroke="#79664a" strokeWidth="1" />
 
-        {/* Conveyor bed, its return run and rollers share the same geometry. */}
-        <path d="m77 260 23-12h391q23 0 23 18v18l-23 14H77Z" fill="#b8bfab" stroke={ink} strokeWidth="1.3" />
-        <path d="M86 258H478a23 23 0 0 1 0 46H86a23 23 0 0 1 0-46Z" fill="#d9decd" stroke={ink} strokeWidth="1.5" />
-        <path d="M86 265H478a16 16 0 0 1 0 32H86a16 16 0 0 1 0-32Z" fill="#63796d" stroke={ink} />
-        {Array.from({ length: 14 }, (_, i) => <g key={i} transform={`translate(${87 + i * 30} 281)`}>
-          <circle r="11.5" fill="#bcc5ad" stroke={ink} /><circle r="7.5" fill="none" stroke={ink} strokeWidth=".7" />
-          <g className={motion.roller}><path d="M-8 0H8M0-8V8" stroke={ink} strokeWidth=".7" /></g><circle r="2.5" fill={brass} stroke={ink} strokeWidth=".6" />
+        {/* The exposed transmission connects the feed lever to the conveyor axle. */}
+        <g clipPath="url(#turk-chamber)">
+          <path d="M163 394H367M164 451H367" stroke="#1e1b17" strokeWidth="8" />
+          <path d="M163 391H367M164 448H367" stroke={brass} strokeWidth="3" />
+          <path d="M166 388H367M166 445H367" stroke="#e0c796" strokeWidth=".7" />
+          <Gear x={209} y={416} r={43} teeth={32} sweep={180} />
+          <Gear x={274} y={415} r={20} teeth={16} reverse sweep={360} />
+          <Gear x={322} y={415} r={26} teeth={20} sweep={288} spokes={5} />
+          <path d="M190 416H331" stroke={ink} strokeWidth="5" />
+          <path d="M190 414H331" stroke={brass} strokeWidth="2" />
+          <path d="M205 382V464M317 381V464" stroke="#d3ba85" strokeWidth="3" />
+          <path d="M200 377H210V384H200ZM313 377H323V384H313Z" fill={brass} stroke={ink} />
+          <Screw x={209} y={416} r={4} /><Screw x={322} y={415} r={4} />
+        </g>
+        <path d="M172 343 182 337 216 398M166 346 177 343 206 400" fill="none" stroke="#b39766" strokeWidth="2" />
+        <path d="M175 344 209 398" stroke={ink} strokeWidth="1.2" />
+        {/* The left door opens toward the reader, with real hinges and a recessed panel. */}
+        <path d="M145 344 89 363V493L145 480Z" fill="#73533d" stroke={ink} strokeWidth="1.4" />
+        <path d="M136 355 99 369V481L136 471Z" fill="#a08058" stroke={ink} />
+        <path d="M131 362 104 372V475L131 466Z" fill="#6c503b" stroke={ink} strokeWidth=".8" />
+        <path d="M145 344 89 363V493L145 480Z" fill="url(#turk-hatch)" />
+        <path d="M92 366V489M139 351V475" fill="none" stroke="#c2a67b" strokeWidth=".7" />
+        <path d="M141 364H150V377H141ZM141 447H150V460H141Z" fill={brass} stroke={ink} strokeWidth=".7" />
+        <ellipse cx="102" cy="425" rx="3" ry="5" fill={brass} stroke={ink} />
+
+        {/* The moving register remains a physical paper roll inside the cabinet. */}
+        <path d="M388 344H579V478H388Z" fill="#6d503c" stroke={ink} />
+        <path d="M128 479H590V488H128ZM124 490H594V499H124Z" fill="#73523a" stroke={ink} />
+        <path d="M130 482H587M127 494H591" stroke="#cfb88a" strokeWidth="1" />
+        <ResultRegister />
+
+        {/* Supported extensions make the chessboard itself the moving test bed. */}
+        <path d="m64 335 72 48v-12l-62-43Z" fill={brass} stroke={ink} />
+        <path d="M113 319H592V341H113Z" fill={wood} stroke={ink} strokeWidth="1.3" />
+        <Grain x={117} y={322} w={471} h={14} />
+        <path d="M58 248H627L591 317H22Z" fill="#7c6e50" stroke={ink} strokeWidth="1.4" />
+        <path d="M58 242H627V249H58Z" fill={brass} stroke={ink} />
+        <path d="M64 245H619" stroke="#e0c99a" strokeWidth=".8" />
+        <g transform="translate(0 250) skewX(-30)">
+          <g clipPath="url(#turk-belt-window)">
+            <g className={motion.belt}>
+              <path d="M-44 0H748V64H-44Z" fill="url(#turk-checker)" stroke={ink} />
+              {Array.from({ length: 9 }, (_, i) => <ExperimentTray key={i} x={-26 + i * 88} />)}
+            </g>
+          </g>
+          <g clipPath="url(#turk-results-window)">
+            <g className={motion.results}>
+              <path d="M-924 0H748V64H-924Z" fill="url(#turk-checker)" stroke={ink} />
+              {Array.from({ length: 19 }, (_, i) => <ResultTray key={i} x={-906 + i * 88} index={i} />)}
+            </g>
+          </g>
+        </g>
+        <path d="M26 314H590a12 12 0 0 1 0 24H26a12 12 0 0 1 0-24Z" fill="#3e3b30" stroke={ink} strokeWidth="1.3" />
+        <path d="M26 317H590M26 335H590" stroke={brass} strokeWidth="1.6" />
+        <path d={Array.from({ length: 45 }, (_, i) => `M${36 + i * 12} 316v3m0 14v3`).join("")} stroke="#d4c49a" strokeWidth=".7" />
+        {[32, 587].map(x => <g key={x} transform={`translate(${x} 326)`}>
+          <circle r="15" fill={brass} stroke={ink} /><circle r="11" fill="#4e4b39" stroke={ink} />
+          <g className={motion.roller} stroke="#ccb785" strokeWidth="1.2"><path d="M-10 0H10M0-10V10m-7-7 14 14m0-14L-7 7" /></g>
+          <circle r="4" fill={brass} stroke={ink} /><circle r="1" fill={ink} />
         </g>)}
-        <path d="M88 258H476M88 304H476" stroke={brass} strokeWidth="2.5" />
-        <path d="M90 253H485M91 307H474" stroke={ink} strokeWidth=".65" />
-        {Array.from({ length: 38 }, (_, i) => <path key={i} d={`M${90 + i * 10} 254v4m0 46v3`} stroke={ink} strokeWidth=".6" />)}
+        <path d="M33 341 172 351Q185 351 187 338M33 337 172 347Q181 347 183 337" fill="none" stroke={ink} strokeWidth="1.2" />
+        <path d="M39 314H579" stroke="#eadbbb" strokeWidth="1" />
 
-        {/* A specification becomes a family of versioned production units. */}
-        <g fill={paper} stroke={ink}>
-          <path d="m92 245 10-49 51 9-10 49Z" fill="#c4c9b4" />
-          <path d="m99 242 7-54 52 7-7 54Z" fill="#e6e4d5" />
-          <path d="m108 238 3-56 50 3-3 56Z" />
-          <path d="m119 193 29 2m-29 5 24 2m-25 5 29 2m-29 5 19 1" stroke={brass} />
-          <path d="m118 226 11-7 7 4 13-7" fill="none" />
+        {/* The tabletop occludes the seated torso. Only the left forearm and the
+            working right hand are redrawn in front of the moving specimens. */}
+        <g transform="translate(168 21) scale(.75)">
+          <g clipPath="url(#turk-left-hand)"><use href="#turk-engraved-figure" /></g>
         </g>
-        <g clipPath="url(#profile-belt-clip)"><g className={motion.conveyorCard}>
-          {Array.from({ length: 6 }, (_, i) => <CatalogLeaf key={i} x={92 + i * 86} y={208} variant={i % 3} />)}
-        </g></g>
-
-        {/* The open review gate keeps both the work and its quality boundary visible. */}
-        <path d="m232 115 22-12h97l-20 12Z" fill="#dac9a5" stroke={ink} strokeWidth="1.3" />
-        <path d="M232 115H331V264H314V148H249V264H232Z" fill="#b39b72" stroke={ink} strokeWidth="1.5" />
-        <path d="m331 115 20-12v149l-20 12Z" fill="#806a4d" stroke={ink} strokeWidth="1.3" />
-        <path d="m331 115 20-12v149l-20 12Z" fill="url(#profile-etch)" />
-        <Hatch id="profile-press-hatch" d="M232 115H331V264H314V148H249V264H232Z" gap={3} />
-        <path d="M237 151V257M244 151V257M319 152V255M325 151V257" stroke={ink} strokeWidth=".7" />
-        <path d="M251 119H313V142H251Z" fill="#e0d2ad" stroke={ink} />
-        <path d="M256 124H308V137H256Z" fill="none" stroke={brass} strokeWidth=".7" />
-        <path d="M267 130H277m10 0h10M282 125v10" stroke={ink} strokeWidth="1.3" />
-        <g className={motion.press}><path d="M275 149H290V180H275Z" fill="#bca473" stroke={ink} />
-        <path d="M278 150V178M284 150V178" stroke={paper} strokeWidth=".8" />
-        <path d="m263 180 12-6h24l-12 6Z" fill="#e1d4b2" stroke={ink} />
-        <path d="M263 180H287V191H263Z" fill="#b39c6e" stroke={ink} />
-        <path d="m287 180 12-6v11l-12 6Z" fill="#8c784f" stroke={ink} /></g>
-
-        <path d="M227 257H253V266H227Zm82 0h27v9h-27Z" fill="#c6cbb7" stroke={ink} />
-        {[{x:239,y:124},{x:239,y:142},{x:322,y:124},{x:322,y:142},{x:238,y:250},{x:322,y:250}].map((point, i) => <Bolt key={i} {...point} />)}
-
-        {/* A measuring lens observes released units; its trace returns to the brief. */}
-        <path d="M504 251V161Q504 149 492 149H454" fill="none" stroke={ink} strokeWidth="6" />
-        <path d="M504 251V161Q504 149 492 149H454" fill="none" stroke="#aebbab" strokeWidth="3" />
-        <path d="M496 247H512V255H496Z" fill="#bac3b1" stroke={ink} />
-        <g transform="translate(451 149)">
-          <circle r="28" fill="#d1be8c" stroke={ink} strokeWidth="1.4" />
-          <circle r="23" fill={paper} stroke={ink} />
-          <path d="M-16 12V-12H16M-11 12V-7M-5 12V-10M1 12V-3M7 12V-7M13 12V-14" fill="none" stroke="#8c9e8f" strokeWidth="1.2" />
-          <path d="M-13 4-6 0 1 3 8-5 14-2" fill="none" stroke={ink} strokeWidth="1.5" />
-          <circle r="1.5" cx="14" cy="-2" fill={brass} />
+        <path d="M505 305V328H517V305Z" fill={brass} stroke={ink} />
+        <path d="M509 307V326M514 307V326" stroke="#dfc99b" strokeWidth=".7" />
+        <g className={motion.feedHandle}>
+          <path d="M510 309 497 285" stroke={ink} strokeWidth="5" />
+          <path d="M510 308 497 285" stroke={brass} strokeWidth="2.8" />
+          <path d="M484 285H507" stroke={ink} strokeWidth="6" strokeLinecap="round" />
+          <path d="M485 283H506" stroke="#b29262" strokeWidth="2" strokeLinecap="round" />
         </g>
-        <path d="m447 180-12 22m19-21 10 18" fill="none" stroke={brass} strokeDasharray="2 4" />
-        <g fill="none" stroke={brass}>
-          <path d="M511 281h19q15 0 15 15v25q0 15-15 15H181q-15 0-15-15v-4" strokeWidth="2" />
-          <path d="M511 288h16q11 0 11 11v19q0 11-11 11H185q-12 0-12-12" strokeWidth="1" />
-          <path d="m171 321-5-7-5 7M337 332l-6 4 6 4" strokeWidth="1.5" />
+        <Screw x={510} y={309} r={4} />
+        <g transform="translate(168 21) scale(.75)">
+          <g className={motion.hand} clipPath="url(#turk-working-hand)"><use href="#turk-engraved-figure" /></g>
         </g>
-        <path d="M170 309V289" stroke={brass} strokeWidth="2" />
-        <circle cx="170" cy="289" r="3" fill={brass} stroke={ink} />
-        <g fill={paper} stroke={brass} strokeWidth="1.2">
-          <circle cx="109" cy="161" r="11" /><circle cx="243" cy="91" r="11" /><circle cx="472" cy="229" r="10" /><circle cx="392" cy="336" r="11" />
-        </g>
-        <g className={styles.plateNumbers} textAnchor="middle">
-          <text x="109" y="165">1</text><text x="243" y="95">2</text><text x="472" y="233">3</text><text x="392" y="340">4</text>
-        </g>
-        <path d="M109 173V179M244 103V110M392 348V361" stroke={brass} strokeWidth=".8" />
-        <path d="M188 397H410" stroke="#c7c8b9" strokeWidth=".8" />
-        <path d="m294 394 5 3-5 3m10-6 5 3-5 3" fill="none" stroke={brass} strokeWidth=".8" />
+        <path d="M610 249q10-5 20 0v6q-10 5-20 0Z" fill={brass} stroke={ink} strokeWidth=".8" />
+        <ellipse cx="620" cy="249" rx="10" ry="3" fill="#554b3a" stroke={ink} strokeWidth=".7" />
+        <ResultExhalation />
+        <path d="M149 507H474" stroke="#a99b7d" strokeWidth=".6" opacity=".45" />
       </svg>
-      <ol className={styles.plateLegend} aria-label="The learning loop">
-        <li><span>1</span>Specify</li><li><span>2</span>Produce</li><li><span>3</span>Release</li><li><span>4</span>Learn</li>
-      </ol>
-      <figcaption id="loop-caption">
-        <p>Local evidence.<br /><strong>System-level decisions.</strong></p>
-        <span className={styles.plateFootnote}>A working loop, guided by quality and human judgment.</span>
-      </figcaption>
     </figure>
   );
 }

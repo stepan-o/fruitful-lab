@@ -1,3 +1,11 @@
+# Current reconstruction: the life around the game
+
+The evening/venue revision supersedes the framing below. Read
+[The full narrative impact map](EVENING_NARRATIVE_MAP.md) for the argument,
+chapter-by-chapter implementation, source boundaries and visual decisions.
+The first chapter is now **Insert coin. Join in.**; stable IDs and the
+arcade → copy → ongoing world → Concord sequence remain.
+
 # Sanctuary Economics — narrative reconstruction
 
 ## Current sequence · 3 October 2026 · arcade-first revision
@@ -208,3 +216,45 @@ Follow-up verification, 3 October 2026: revised creative-economics opening and c
 The final subscription accent also passes the production build and nine reader tests. It was visually checked at 320px and desktop; no browser errors or horizontal overflow were observed. The Netflix credit link resolves to its public source record. Preview now runs independently of a tool session; its PID/log are recorded at `/tmp/fruitful-sanctuary-3104.pid` and `/tmp/fruitful-sanctuary-3104.log`.
 
 Publication preparation, 3 October 2026: the owner requested a PR for the accumulated opening rewrite and targeted cinema/catalog passes. The final local run passes 35 suites / 152 tests, asset integrity checks and the production build. Jest emitted one worker-shutdown warning after all tests passed; the three new motion/dialog tests also pass in isolation. Scoped ESLint passes. Details of the visual pass and browser verification are in `CINEMA_CATALOG_ART_PASSES.md`.
+
+## Evening/venue revision verification — 4 October 2026
+
+The current implementation follows `EVENING_NARRATIVE_MAP.md`. It also reduces
+the study landing to the mural/hero and entry CTA and adds the three financial
+inscriptions documented in `DESIGN_SYSTEM.md`. The subscription inscription and
+catalog payment strip connect the sales invitation to recurring billing.
+
+- Integrated main through `d596a5d`; only Sanctuary app files and its memory
+  documents differ from that base. Final full run: **43 suites / 191 tests pass**.
+  The pre-integration run also passed all 42 suites / 186 tests.
+- Scoped ESLint, production build and the asset-pipeline test pass. The build
+  verifies all four retained releases and the public editorial selection.
+  Existing optional GrowthBook configuration and middleware-convention notices
+  remain; neither prevents the build.
+- Browser review covers desktop, 768, 390 and 320 CSS-pixel viewport requests.
+  No horizontal page overflow. On the narrow layout, perspective controls are
+  at least 44 pixels high; captions stack below the original SVG scenes.
+- Production checks: hero has one link and no extra navigation; entry, next
+  chapter and the first three chapters' order work. Keyboard view selection,
+  the 2,000-health setting, manual image inspection, Escape dismissal and focus
+  restoration work. No browser errors were logged in the production tab.
+- Financial inscriptions report playing while visible and stop offscreen.
+  Manual pause persists; the shared living-plate gate and CSS also retain OS
+  reduced-motion handling. No new frame timers, image assets or dependencies
+  are introduced by this Sanctuary revision.
+- At the tested 390-pixel / 1× phone viewport, the opening manual chooses the
+  480×626 WebP (53,688 bytes, lazy), while the BG3/D4 opening pair choose 480-pixel
+  files totaling **42,044 bytes**. The landing mural is procedural. These are
+  selected-image measurements, not total page weight or field speed.
+- Two consecutive local production requests returned 200: landing 22,551 bytes
+  gzip, opening 20,078, fork 36,790. Observed times were 58–146 ms on this host.
+  The server had already served browser requests; this is warm local response
+  evidence, not a cold-cache, throttled-mobile or CDN benchmark. Fresh-tab and
+  reload rendering were inspected; field Core Web Vitals remain unmeasured.
+
+Local visual captures are under
+`/home/stpn/Documents/Codex/2026-09-30/is-x20/outputs/sanctuary-evening/`:
+`landing-desktop.png`, `landing-phone.png`, `room-phone.png`,
+`world-desktop.png` and `financial-inscriptions-desktop.png`. The local preview
+uses the production build on port 3106; PID and log are recorded in
+`/tmp/sanctuary-evening-production.pid` and `.log`.

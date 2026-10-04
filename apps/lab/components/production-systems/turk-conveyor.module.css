@@ -1,0 +1,46 @@
+/* The motor runs continuously. The stamping hand has a quick strike and return;
+   the visibility/preference controller still suspends every animated part. */
+.belt { animation: feed var(--tray-period) linear infinite; }
+.registerTrack { animation: register var(--cycle-period) linear infinite; }
+.results { animation: results var(--cycle-period) linear infinite; }
+.hand { transform-origin: 432px 235px; animation: stamp var(--tray-period) linear infinite; }
+.feedHandle { transform-origin: 510px 309px; animation: handle var(--tray-period) linear infinite; }
+.gear { transform-origin: 0 0; animation: turn var(--tray-period) linear infinite; }
+.roller { transform-origin: 0 0; animation: roller var(--tray-period) linear infinite; }
+.smoke {
+  transform: translate(var(--still-x), var(--still-y));
+  opacity: var(--still-opacity);
+  animation: exhale var(--cycle-period) linear var(--delay) infinite;
+}
+.smokeValue { fill: #737c75; font: italic 16px Georgia, serif; }
+.smokeVerdict { fill: #737c75; font: italic 13px Georgia, serif; }
+.belt, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack { animation-play-state: paused !important; }
+:global([data-playing="true"]) :is(.belt, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack) { animation-play-state: running !important; }
+@keyframes register { to { transform: translateY(85px); } }
+@keyframes feed { to { transform: translateX(88px); } }
+@keyframes results { to { transform: translateX(880px); } }
+@keyframes turn { to { transform: rotate(var(--sweep)); } }
+@keyframes roller { to { transform: rotate(360deg); } }
+/* A 216ms strike, a brief contact, then a 384ms return. */
+@keyframes stamp {
+  0%, 66%, 100% { transform: rotate(0); }
+  75%, 79% { transform: rotate(-7.5deg); }
+  95% { transform: rotate(0); }
+}
+@keyframes handle {
+  0%, 66%, 100% { transform: rotate(0); }
+  75%, 79% { transform: rotate(24deg); }
+  95% { transform: rotate(0); }
+}
+/* Only three short-lived emissions occupy the plume at once. No blur filter,
+   particle engine, per-frame JavaScript, or text beneath the illustration. */
+@keyframes exhale {
+  0% { transform: translate(0, 0) scale(.88) rotate(3deg); opacity: 0; }
+  3% { transform: translate(-8px, -18px) scale(.94) rotate(1deg); opacity: .42; }
+  11% { transform: translate(-28px, -67px) scale(1) rotate(-3deg); opacity: .65; }
+  19% { transform: translate(-47px, -120px) scale(1.04) rotate(-6deg); opacity: .35; }
+  28%, 100% { transform: translate(-65px, -176px) scale(1.1) rotate(-9deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .belt, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack { animation: none; }
+}

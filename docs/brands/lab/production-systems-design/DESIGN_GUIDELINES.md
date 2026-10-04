@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 1.1 · 3 October 2026 · Mechanical Turk direction
+Version 1.3 · 3 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. The owner accepted the revised
 engraved illustration as an improvement and selected the historical Mechanical
@@ -71,7 +71,7 @@ joinery, material family, mechanisms and lighting logic across viewpoints.
 
 | Section | Scene and focal action | What it explains | Composition and intensity |
 | --- | --- | --- | --- |
-| Opening / identity | **The conveyor.** The accepted machine carries discrete content units through a production/review gate and returns evidence. | Digital production becomes a learning loop. | Hero beside the name; paper field, one strong apparatus, restrained detail. Keep its current 600×420 proportion as the starting point. |
+| Opening / identity | **The Turk’s experiment conveyor.** A recognizable automaton sits behind the cabinet and stamps briskly; paired A/B specimens move continuously and emerge as uncertain effects. The paper register advances with each test and its verdict exhales as smoke. | Repeated item-level experiments form one learning system guided by human judgment. | One figure over one broad case, one shared work surface, one connected drive. 680×550 master; no detached gauges or floating process symbols. |
 | Background / experience | **The operator by candlelight.** A cutaway reveals a person seated inside the cabinet, studying the position and guiding the mechanism. One hand works a linkage or control; the other attends to the decision. | Human judgment is part of production infrastructure. | The most intimate scene. A small warm pool of light on face, hands and working surface; credible seated anatomy and usable space; deep local recess, paper caption. |
 | Capabilities / whole stack | **The opened cabinet.** A three-quarter sectional view connects the board above, the transmission beneath and the operating position. | Interfaces, measurement, data and services must work together. | Architectural plate with coherent supports and attachment points; two or three clearly separated depths; no cloud architecture labels painted onto furniture. |
 | Applications / catalog decisions | **The chessboard.** A close, oblique view makes individual squares and the whole position visible. One considered move connects the foreground unit to the wider arrangement. | Local decisions must be evaluated against global objectives and constraints. | A precise geometric scene: convincing perspective, one focal piece or hand, long quiet diagonals. Explanation must work for readers who do not know chess. |
@@ -101,9 +101,11 @@ medium explanatory plate; inspection, release, folio and closing are smaller
 vignettes. Vary viewpoint and scale, not the underlying world.
 
 Place the scene with its heading or opening proposition, before the dense prose
-when practical. On phones, preserve a legible whole composition and place the
-caption immediately below it. Original art has useful alt text; decorative
-extensions stay out of the reading order. Never place long prose over the scene.
+when practical. On phones, preserve a legible whole composition. Later scenes
+keep a caption immediately below; the opening deliberately has no bottom text.
+Its p-values and verdicts belong to the rising outfeed vapor, with methodology
+and source context in the page’s artwork notes. Original art has useful alt text;
+decorative extensions stay out of the reading order. Never place long prose over the scene.
 
 Caption pattern: **the section's conceptual point, in one sentence.** For example,
 “A local move changes the position of the whole board.” The picture attracts
@@ -156,14 +158,60 @@ scan are not a palette prescription.
 
 ## 5. Illustration grammar
 
-The existing conveyor/press illustration is the accepted starting point. Its
-next polish pass should give the apparatus a more intentional cabinet or
-instrument base, a stronger hierarchy of large forms and one well-resolved
-inspection detail. Retain the production/evidence relationship and readable
-legend; do not turn the image into an unrelated chess automaton replica.
+The opening must read as a **Mechanical Turk operating an A/B experiment
+conveyor**, from the picture alone. The owner rejected a generic press with
+loosely associated mechanisms. This requirement supersedes the earlier
+600×420 press/gate composition: the historical silhouette is now essential.
+
+Use Racknitz's seated posture and Windisch's broad cabinet proportions as the
+anchors. The conveyor is the chessboard work surface itself, supported by the
+same cabinet and brackets. Paired specimens keep A and B together as one unit;
+the outfeed reveals the uneven evidence they produce. Most estimates cluster near
+zero, with noise, some losses and a rare large positive effect. The hand
+works an attached lever with a brisk stamping gesture every 2.4 seconds; the
+belt, rollers and meshing drive run continuously through that gesture. Layer
+the chair and torso behind the tabletop, with only the forearms and hands
+crossing it. The body must never appear to emerge from the moving work surface.
+Keep the cabinet door, hinges, recessed transmission and feet legible at phone
+size. The pale paper register balances the dense
+mechanism. No floating gauge, disconnected return arrow or stand-alone glyph
+should compete with this action.
+
+The result register is a physical paper roll attached to the case, not a
+floating dashboard. It presents synthetic estimates, approximate 95% intervals
+and two-sided normal-model p-values in arbitrary effect units. Small gray
+annotations stay secondary to the distribution around zero. Most results are
+near zero, with noisy overlap and two negative results; one large positive breaks
+the pattern. The paper advances one row for each test: the result leaving the
+outfeed, entering the register and appearing in the smoke share one outcome.
+Use mild gray, oxblood and green row washes with matching interval marks,
+respectively; keep the paper and plot geometry dominant. Ten outcomes repeat
+every 24 seconds. This mix is an editorial choice, not an estimated industry
+success rate.
+
+P-values and verdicts exhale from the outfeed as pale gray italic text within
+fine smoke contours. Stagger emissions every 2.4 seconds, with at most three
+active plumes rising and fading at a time. Keep this atmosphere secondary to
+the figure and machinery; no bottom caption, legend or outcome notes. Reduced
+motion shows three still plumes. Essential meaning remains in the SVG description
+and the readable methodology notes.
+
+Keep initial evidence separate from later value. Two smoke examples show
+`p = .020` with an apparent lift later identified as a false positive, and
+`p = .237` with an inconclusive idea dropped too early. Their fictional underlying
+effects are 0 and +61 respectively; these hindsight labels are authored story
+facts, not deductions from p-values or the fact of a failed replication. The
+source fixture uses estimate ± 1.96 SE and p = 2 Φ(−|estimate / SE|). No number
+represents Stepan's or Prodigy's results. The page identifies synthetic data and
+cites the ASA distinction between significance, effect size and practical value.
+[S7]
+
+The conveyor and its transmission are our editorial invention. Racknitz's
+figure is source-derived vector geometry, with a clipped forearm used for the
+working gesture. This is not an authenticated reconstruction of the Turk.
 
 - Compose at thumbnail size first: one principal apparatus, one focal mechanism,
-  one legible return path. Leave air around its silhouette.
+  one connected mechanical action. Leave air around its silhouette.
 - Use a consistent three-quarter or front elevation within one drawing. Align
   top planes, door edges and feet to the same perspective.
 - Design outer contour, internal construction and shading as three levels. For
@@ -177,7 +225,8 @@ legend; do not turn the image into an unrelated chess automaton replica.
   can connect a feature to the HTML legend. No tiny embossed text as the only
   explanation; no invented readings on decorative meters.
 - Distinguish conceptual mechanism, measured data and historical reference in
-  the caption. The profile's apparatus remains an original conceptual metaphor.
+  the artwork notes and accessible description. The profile’s apparatus remains
+  an original conceptual metaphor.
 
 ## 6. Type and editorial rhythm
 
@@ -239,7 +288,7 @@ is informed by W3C guidance. [S6]
 | Area / current code | Next polish direction | What establishes success |
 | --- | --- | --- |
 | Header and identity in `page.tsx` | A small engraved nameplate, disciplined type and spacing | Name and navigation remain the first readable facts |
-| `LoopBlueprint.tsx` | Cabinet craft, attached mechanisms, stronger contour hierarchy | The production/evidence relationship reads before the ornament |
+| `LoopBlueprint.tsx` | Seated Turk operating a cabinet-integrated A/B conveyor | Figure, paired specimens and physical feed action read as one apparatus |
 | Background and capabilities | Folio typography, aligned roles/dates, fine rules | Professional experience is easy to scan |
 | `ScenarioExplorer.tsx` | A bounded demonstration surface with precise selectors and clearly labeled outcomes | A selection reveals one useful comparison; no imitation dashboard data |
 | Method and sources | Marginal-style numbering, calm notes, generous source spacing | Readers can trace claims to evidence without losing their place |
@@ -251,8 +300,8 @@ is informed by W3C guidance. [S6]
 1. **Direction — this document.** Establish sources, material roles, type and
    behavior. The accompanying visual sheet records the references; the first
    procedural scene implementation is recorded below.
-2. **Scene master and hero craft.** Polish the existing apparatus's case, silhouette,
-   joinery, hatching and caption. Establish the shared visual grammar, then stage
+2. **Scene master and hero craft.** Establish the Turk operating an A/B conveyor: silhouette,
+   connected feed action, joinery, hatching and caption. Use that grammar to stage
    the operator and chessboard compositions before extending to the quieter
    section scenes. Compare full-page desktop and phone captures.
 3. **Editorial finish.** Refine identity, whitespace, small labels, reading widths,
@@ -337,6 +386,12 @@ its material and type specimens are our original design interpretation.
 - **S6 — W3C, Understanding SC 2.3.3, Animation from Interactions.** Level AAA
   guidance used as a motion-design principle, not a certification claim.
   https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html
+
+- **S7 — American Statistical Association, “Statement on Statistical Significance
+  and P-Values,” 7 March 2016.** Principles 2, 3 and 5 inform the separation of
+  p-value, effect size, decision and hindsight. The profile quotes the 14-word
+  fragment about effect size and importance from principle 5.
+  https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf
 
 Local references: Sanctuary's `docs/sanctuary/DESIGN_SYSTEM.md`, Loopforge's
 `docs/loopforge/VISUAL_REVIEW.md`, and this profile's revised opening. Their

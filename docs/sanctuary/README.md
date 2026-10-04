@@ -1,3 +1,8 @@
+Current narrative: [the life around the game](EVENING_NARRATIVE_MAP.md). The
+22-chapter edition opens with “Insert coin. Join in.” and follows purpose,
+provision and payment from the physical venue to purchased copies and online
+worlds. The local production preview remains on port 3106.
+
 # Sanctuary Economics: editorial edition
 
 Public route: `/stepanoskin/game-monetization`. Chapter links append

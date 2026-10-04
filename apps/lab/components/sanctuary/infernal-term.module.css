@@ -10,3 +10,37 @@
 @keyframes ashRise { 0%,60%,100% { transform:translateY(1px); opacity:0; } 72% { opacity:.6; } 94% { transform:translate(3px,-8px); opacity:0; } }
 @media(prefers-reduced-motion:reduce) { .term * { animation:none!important; } }
 @media print { .mount { display:none; } .term { padding:0; } .letters { color:inherit; text-shadow:none; } }
+
+.spectral .letters{color:#d4e6d5;text-shadow:0 1px 1px #030a10,0 0 9px #80b0a66b,0 0 20px #5c839638}
+.soulGlow{opacity:.55;animation:soulBreath 6.5s ease-in-out infinite paused}
+.soulStreams{stroke-dasharray:12 9 2 22;opacity:.52;animation:soulDraw 8s linear infinite paused}
+.soulSeam{opacity:.35;animation:soulBreath 6.5s ease-in-out -2s infinite paused}
+.term[data-playing=true] :is(.soulGlow,.soulStreams,.soulSeam){animation-play-state:running}
+@keyframes soulDraw{to{stroke-dashoffset:-90}}
+@keyframes soulBreath{0%,100%{opacity:.3}55%{opacity:.85}}
+
+.abyss{padding:0 .78em}.abyss .letters{color:#e0dfd5;text-shadow:0 2px 1px #000,0 0 5px #000,0 0 12px #638a9b70}
+.abyssGlow{opacity:.45;animation:abyssBreath 9s ease-in-out infinite paused}
+.abyssTrace{stroke-dasharray:23 190;opacity:.45;animation:abyssEdge 14s linear infinite paused}
+.term[data-playing=true] :is(.abyssGlow,.abyssTrace){animation-play-state:running}
+@keyframes abyssBreath{50%{opacity:.9}}
+@keyframes abyssEdge{to{stroke-dashoffset:-426}}
+
+.term[data-inscription=subscription] .letters{color:#ffe2aa;text-shadow:0 1px 0 #070a0b,0 2px 2px #000,0 0 9px #f0824d88,0 0 20px #a83b2c55}
+.pactCircuit{stroke-dasharray:12 88;stroke-dashoffset:0;opacity:.8;animation:pactRenewal 9s linear infinite paused}
+.term[data-playing=true] .pactCircuit{animation-play-state:running}
+@keyframes pactRenewal{to{stroke-dashoffset:-100}}
+
+/* The illuminated invitation sits above the repeating billing mechanism. */
+.subscription { margin-bottom:.52em; }
+.renewal { position:absolute; top:calc(100% - .02em); left:14%; right:14%; display:flex; align-items:center; justify-content:center; gap:.6em; padding:.2em .35em; border:1px solid #72513b; border-top:0; background:linear-gradient(#231a19,#101518); color:#d6b591; font:700 9px/1.1 ui-monospace,SFMono-Regular,monospace; letter-spacing:.1em; box-shadow:0 3px 7px #0008; }
+.renewal::after { content:""; position:absolute; inset:auto 0 -1px; height:1px; background:#ecaa63; transform-origin:left; animation:billingCycle 7s linear infinite paused; }
+.repeat { animation:renewalStamp 7s linear infinite paused; }
+.renewalWheel { transform-box:fill-box; transform-origin:center; animation:wheelTurn 14s linear infinite paused; }
+.term[data-playing=true] :is(.repeat,.renewalWheel),.term[data-playing=true] .renewal::after { animation-play-state:running; }
+.srOnly { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+@keyframes billingCycle { 0% { transform:scaleX(0); opacity:.3; } 88%,100% { transform:scaleX(1); opacity:.8; } }
+@keyframes renewalStamp { 0%,83%,100% { color:#d6b591; text-shadow:none; } 90% { color:#fff0ca; text-shadow:0 0 5px #e9965c; } }
+@keyframes wheelTurn { to { rotate:360deg; } }
+@media(prefers-reduced-motion:reduce) { .renewal::after { animation:none; transform:scaleX(1); } }
+@media print { .renewal,.srOnly { display:none; } .subscription { margin-bottom:0; } }

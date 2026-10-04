@@ -92,7 +92,7 @@ describe("Sanctuary reader", () => {
     for (const locale of locales)
       expect(Object.values(readerCopy[locale]).every(Boolean)).toBe(true);
   });
-  it("shows real content, an honest language label and an entry into the study", () => {
+  it("keeps the landing screen to its hero and single study-entry action", () => {
     render(<Reader {...props} />);
     expect(
       screen.getByRole("heading", { level: 1, name: /Sanctuary.*Economics/ }),
@@ -101,9 +101,10 @@ describe("Sanctuary reader", () => {
       screen.getByRole("link", { name: /Enter the study/ }),
     ).toHaveAttribute("href", chapterHref("insert-coin"));
     expect(screen.queryByText("Module loading")).not.toBeInTheDocument();
-    expect(
-      screen.getAllByText("English editorial edition").length,
-    ).toBeGreaterThan(0);
+    expect(screen.getAllByRole("link")).toHaveLength(1);
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    expect(screen.queryByRole("complementary")).not.toBeInTheDocument();
+    expect(screen.queryByText("English editorial edition")).not.toBeInTheDocument();
   });
   it("combines credited publisher images with original art in the public edition", () => {
     const index = chapters.findIndex(c => c.id === "the-fork");
@@ -116,6 +117,9 @@ describe("Sanctuary reader", () => {
     expect(screen.getByRole("navigation", { name: "Chapter" }).querySelector("a:last-child"))
       .toHaveAttribute("href", chapterHref("concord"));
     expect(container.querySelectorAll("img")).toHaveLength(current.figures!.length + 1);
+    expect(container.querySelector('[data-inscription="the gap"]')).toHaveTextContent("the gap");
+    expect(container.querySelector('[data-inscription="future sales"]')).toHaveTextContent("future sales");
+    expect(container.querySelector('[data-inscription="subscription"]')).toHaveTextContent("subscription");
     expect(screen.getByRole("img", { name: "Netflix" })).toHaveAttribute("loading", "lazy");
     expect(screen.getAllByRole("link", { name: /Source & use/ })).toHaveLength(current.figures!.length + 1);
     expect(screen.getByRole("link", { name: /Rights & credits/ })).toHaveAttribute("href", "/stepanoskin/game-monetization/credits");
@@ -129,14 +133,21 @@ describe("Sanctuary reader", () => {
     expect(chapters.slice(0,4).map(c=>c.id)).toEqual(["insert-coin","several-histories","the-fork","concord"]);
     const current = chapters[0];
     const { container } = render(<Reader {...props} current={current} index={0}/>);
-    expect(screen.getByRole("heading", { level:1, name:"Insert coin. Stay alive." })).toBeVisible();
+    expect(screen.getByRole("heading", { level:1, name:"Insert coin. Join in." })).toBeVisible();
     expect(screen.getByRole("group", { name:"Which side of the cabinet?" })).toBeVisible();
+    const gathering = screen.getByRole("group", {name:"Where does the gathering happen?"});
+    expect(gathering).toBeVisible();
+    expect(gathering.compareDocumentPosition(screen.getByRole("group", {name:"Which side of the cabinet?"})) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", {name:"A world to meet in"}));
+    expect(screen.getByRole("heading", {name:"The gathering place can be part of the game."})).toBeVisible();
+    fireEvent.click(screen.getByRole("button", {name:"A game in the room"}));
+    expect(screen.getByRole("heading", {name:"The evening is larger than the machine."})).toBeVisible();
     expect(screen.queryByRole("img", {name:"Netflix"})).not.toBeInTheDocument();
     expect(container.querySelectorAll("img")).toHaveLength(1);
     expect(screen.getByRole("navigation", {name:"Chapter"}).querySelector("a:last-child"))
       .toHaveAttribute("href", chapterHref("several-histories"));
     const evidence = screen.getByRole("img", {name:current.figures![0].alt});
-    const nextParagraph = screen.getByText(current.paragraphs[5]);
+    const nextParagraph = screen.getByText(current.paragraphs[current.figures![0].afterParagraph!+1]);
     expect(evidence.compareDocumentPosition(nextParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     fireEvent.click(screen.getByRole("button", {name:"The operator"}));
     fireEvent.change(screen.getByRole("combobox", {name:"Health per coin"}), {target:{value:"2000"}});
@@ -147,7 +158,7 @@ describe("Sanctuary reader", () => {
     expect(screen.getByRole("combobox", {name:"Health per coin"})).toHaveValue("2000");
   });
   it("opens and closes contents and persists the navigation language", () => {
-    render(<Reader {...props} />);
+    render(<Reader {...props} current={chapters[0]} index={0}/>);
     fireEvent.click(screen.getByRole("button", { name: /Contents/ }));
     expect(screen.getByRole("dialog", { name: "Contents" })).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: "Close ×" }));
@@ -161,7 +172,7 @@ describe("Sanctuary reader", () => {
     expect(refresh).toHaveBeenCalled();
   });
   it("plays the exact landing clang on chapter activation, with silent hover and persistent mute", () => {
-    render(<Reader {...props} />);
+    const {rerender} = render(<Reader {...props} />);
     const link = screen.getByRole("link", { name: /Enter the study/ });
     fireEvent.mouseOver(link);
     fireEvent.focus(link);
@@ -173,9 +184,10 @@ describe("Sanctuary reader", () => {
     expect(AudioMock).toHaveBeenCalledWith(
       assetUrl(parseManifest(landingManifest, "stepanoskin"), "click"),
     );
+    rerender(<Reader {...props} current={chapters[0]} index={0}/>);
     fireEvent.click(screen.getByRole("button", { name: "Sound on" }));
     expect(window.localStorage.getItem("stepanoskin_sound_v1")).toBe("off");
-    fireEvent.click(link);
+    fireEvent.click(screen.getByRole("link", {name:/Next chapter →/}));
     expect(play).toHaveBeenCalledTimes(1);
     fireEvent.click(screen.getByRole("button", { name: "Motion on" }));
     expect(window.localStorage.getItem("stepanoskin_motion_v1")).toBe("off");

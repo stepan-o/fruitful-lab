@@ -14,9 +14,9 @@ export default function ArcadeExchange() {
         <p className={styles.eyebrow}>{view === 0 ? "INSIDE THE MAZE" : "BEHIND THE COIN DOOR"}</p>
         <h3>{view === 0 ? "How much farther can we get?" : "What does one coin buy?"}</h3>
         {view === 0 ? <ol className={styles.chain}>
-          <li><span>01</span><div><strong>Put in a coin</strong><p>A reserve of health becomes the ability to participate.</p></div></li>
-          <li><span>02</span><div><strong>Make it last</strong><p>Survival depends on the clock, encounters and resources found along the way.</p></div></li>
-          <li><span>03</span><div><strong>Keep this run going</strong><p>Another payment can extend what is already under way.</p></div></li>
+          <li><span>01</span><div><strong>Put in a coin</strong><p>Join the activity already happening at the cabinet.</p></div></li>
+          <li><span>02</span><div><strong>Make it last</strong><p>The clock, encounters and food shape how far this run can go.</p></div></li>
+          <li><span>03</span><div><strong>Keep this run going</strong><p>Another coin can keep this character in the adventure.</p></div></li>
         </ol> : <>
           <label className={styles.setting}>Health per coin
             <select value={health} onChange={event=>setHealth(Number(event.target.value))}>
@@ -31,6 +31,6 @@ export default function ArcadeExchange() {
         </>}
       </div>
     </div>
-    <Readout tag="ONE MACHINE · TWO PERSPECTIVES">{view === 0 ? "The player is trying to survive an adventure. The next purchase sits inside that adventure." : `${health.toLocaleString("en-US")} health per coin selected. The operator is tuning what a paid session offers; the manual supplies no guaranteed revenue outcome.`}</Readout>
+    <Readout tag="ONE MACHINE · TWO PERSPECTIVES">{view === 0 ? "The next coin can continue a run already shared with other people. Its value depends on what the player wants to carry on." : `${health.toLocaleString("en-US")} health per coin selected. The reserve changes; skill, food and difficulty still affect how long it lasts.`}</Readout>
   </>;
 }

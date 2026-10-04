@@ -1,14 +1,14 @@
 # Sanctuary design system
 
-**Editorial placement update · 3 October 2026:** the first chapter now uses an
-original room/world comparison, then the arcade-cabinet cutaway and Atari’s operator manual. The authentic BG3/D4
-pair, AfterPurchase and cinema/catalog exhibits now belong to chapter three.
-The approved animated diptych stays in **Where progress lives**. Its historical
-description as the “opening” below identifies the illustration benchmark.
-The room is introduced before the controls: people and the occasion establish
-what the later commercial mechanism can affect. See the
-[full narrative map](EVENING_NARRATIVE_MAP.md) and
-[Narrative reconstruction](NARRATIVE_REBUILD.md).
+**Editorial revision · 4 October 2026:** chapter one is authored and edited as a
+complete essay in [Opening manuscript](OPENING_MANUSCRIPT.md). The
+[recovered narrative spine](NARRATIVE_SPINE.md) preserves the full thread's
+argument. The latest request supersedes the earlier people/work/payment template.
+The opening is a room illustration, with one short provenance caption and no
+accounts or online-world toggle. The cabinet exposes a documented health setting;
+the manual is primary evidence. Neither repeats the prose as a miniature essay.
+There is no obligatory closing takeaway. BG3/D4 and cinema/catalog remain in
+chapter three; the approved animated diptych remains in **Where progress lives**.
 
 **Version 1.3 · 2 October 2026 · approved visual reference with experience-first opening**
 
@@ -171,9 +171,19 @@ Current layout measurements:
   `24px 28px 28px`; instrument interior is `0 27px 28px`.
 - At ≤950px: 68px header, hidden rail with contents dialog, article maximum
   850px and `30px 6vw` padding. At ≤560px: 23px article side padding.
-- Opening title/lede share a row above 720px and stack below it. The opening
-  illustration comes **before the prose**. Its first instrument follows the
-  first three paragraphs in the current reader.
+- Opening title and lead stack. Keep the first chapter’s lead to one short
+  proposition, then show the illustration **before body prose, exhibit headings
+  or controls**. The scene must be visible in the first viewport on desktop and
+  phone. Check the actual graphic, not merely the figure’s outer container.
+- Chapter one uses the room as a still plate, then begins the essay. Its cabinet
+  instrument follows the Gauntlet introduction; the manual follows the operator
+  argument. The later room/world comparison remains in chapter three.
+- Author the whole chapter before choosing layout slots. Review its sequence as
+  continuous writing, then place images where they introduce, expose or verify
+  something. Do not fill components with paraphrases of nearby prose. Captions
+  should add provenance or a detail the image cannot supply. Controls must offer
+  an actual comparison or inspection. Summaries and takeaways are optional.
+  The full editorial process is recorded in `NARRATIVE_SPINE.md`.
 
 These are measured values, not a retroactively invented 8px spacing grid.
 Reuse their hierarchy; add a spacing token only when genuine reuse justifies it.

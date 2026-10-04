@@ -134,14 +134,11 @@ describe("Sanctuary reader", () => {
     const current = chapters[0];
     const { container } = render(<Reader {...props} current={current} index={0}/>);
     expect(screen.getByRole("heading", { level:1, name:"Insert coin. Join in." })).toBeVisible();
-    expect(screen.getByRole("group", { name:"Which side of the cabinet?" })).toBeVisible();
-    const gathering = screen.getByRole("group", {name:"Where does the gathering happen?"});
-    expect(gathering).toBeVisible();
-    expect(gathering.compareDocumentPosition(screen.getByRole("group", {name:"Which side of the cabinet?"})) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", {name:"A world to meet in"}));
-    expect(screen.getByRole("heading", {name:"The gathering place can be part of the game."})).toBeVisible();
-    fireEvent.click(screen.getByRole("button", {name:"A game in the room"}));
-    expect(screen.getByRole("heading", {name:"The evening is larger than the machine."})).toBeVisible();
+    const openingScene = screen.getByRole("img", {name:"An imagined venue: conversation, spectators and a game share a warmly lit room"});
+    const firstParagraph = screen.getByText(current.paragraphs[0]);
+    expect(openingScene.compareDocumentPosition(firstParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.queryByRole("group", {name:"Where does the gathering happen?"})).not.toBeInTheDocument();
+    expect(container.querySelector("blockquote")).toBeNull();
     expect(screen.queryByRole("img", {name:"Netflix"})).not.toBeInTheDocument();
     expect(container.querySelectorAll("img")).toHaveLength(1);
     expect(screen.getByRole("navigation", {name:"Chapter"}).querySelector("a:last-child"))
@@ -149,13 +146,11 @@ describe("Sanctuary reader", () => {
     const evidence = screen.getByRole("img", {name:current.figures![0].alt});
     const nextParagraph = screen.getByText(current.paragraphs[current.figures![0].afterParagraph!+1]);
     expect(evidence.compareDocumentPosition(nextParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", {name:"The operator"}));
     fireEvent.change(screen.getByRole("combobox", {name:"Health per coin"}), {target:{value:"2000"}});
     expect(screen.getByText(/2,000 health per coin selected/)).toBeVisible();
-    fireEvent.click(screen.getByRole("button", {name:"The player"}));
-    expect(screen.getByText("How much farther can we get?")).toBeVisible();
-    fireEvent.click(screen.getByRole("button", {name:"The operator"}));
-    expect(screen.getByRole("combobox", {name:"Health per coin"})).toHaveValue("2000");
+    expect(screen.getByRole("img", {name:"An original arcade cabinet with its coin door open to show the health-per-coin setting"})).toBeVisible();
+    fireEvent.change(screen.getByRole("combobox", {name:"Health per coin"}), {target:{value:"100"}});
+    expect(screen.getByText(/100 health per coin selected/)).toBeVisible();
   });
   it("opens and closes contents and persists the navigation language", () => {
     render(<Reader {...props} current={chapters[0]} index={0}/>);

@@ -14,7 +14,7 @@ export const revision = "2026-10-03";
 export const sources: EvidenceSource[] = [
   {"id":"pong-tavern","title":"Computer History Museum — 50 Years of Fun With Pong (2022)","url":"https://computerhistory.org/blog/50-years-of-fun-with-pong/","note":"The museum preserves the prototype and documents its 1972 installation at Andy Capp’s Tavern. Used for the setting and game description, not as evidence of the venue owner’s motives or additional beverage sales."},
   {"id":"alone-together","title":"Ducheneaut, Yee, Nickell & Moore — Alone Together? (CHI 2006)","url":"https://www.nickyee.com/pubs/Ducheneaut,%20Yee,%20Nickell,%20Moore%20-%20Alone%20Together%20(2006).pdf","note":"Observational study of World of Warcraft distinguishes grouping from other players’ roles as audience and social presence. Its findings and interpretations concern that game and period, not all online worlds or Diablo IV specifically."},
-  { id: "gauntlet-logg", title: "Ed Logg — Gauntlet postmortem, GDC 2012 (PDF pp. 6, 40)", url: "https://media.gdcvault.com/gdc2012/slides/Design%20Track/Logg_Ed_Gauntlet_Postmortem.pdf", note: "The designer’s retrospective distinguishes cabinet sales from coin collections and connects the absence of a final ending with avoiding loss of coins already deposited. A recollection given decades later, not an audited financial account." },
+  { id: "gauntlet-logg", title: "Ed Logg — Gauntlet postmortem, GDC 2012 (PDF pp. 6, 8, 15–16, 31, 40)", url: "https://media.gdcvault.com/gdc2012/slides/Design%20Track/Logg_Ed_Gauntlet_Postmortem.pdf", note: "The designer’s retrospective connects quarter-price resistance to simultaneous and drop-in play, records marketing’s doubt about four strangers playing together, distinguishes cabinet sales from coin collections, and explains the ending decision. Dungeons & Dragons and Dandy were also creative inspirations (p. 10). A retrospective, not an audited financial account." },
   { id: "computer-space", title: "The Strong — Computer Space (museum collection history)", url: "https://www.museumofplay.org/games/computer-space/", note: "The museum traces the 1971 commercial machine to the existing coin-operated amusement business. Used to place Gauntlet within an older commercial history." },
   { id: "pong-origins", title: "Computer History Museum — Pong", url: "https://www.computerhistory.org/revolution/computer-games/16/183", note: "Museum account and Al Alcorn’s recollection of the 1972 bar prototype; documents a paid-play business at the early commercialization of video games." },
   {"id": "netflix-engagement", "title": "Netflix — Q2 2024 shareholder letter, pp. 3–4 (18 July 2024)", "url": "https://ir.netflix.net/files/doc_financials/2024/q2/FINAL-Q2-24-Shareholder-Letter.pdf", "note": "Management connects viewing with member satisfaction, retention and acquisition, and explains its investment in varied programming. A stated business rationale, not an independent measure of audience wellbeing."},
@@ -391,38 +391,23 @@ const manuscript: Omit<Chapter, "visual">[] = [
     "id": "insert-coin",
     "part": 0,
     "title": "Insert coin. Join in.",
-    "lede": "A machine in the corner gives people another thing to do together. Inside it, a coin can buy another stretch of life. Around it, a business is making a place worth visiting.",
+    "lede": "A quarter bought life. The bargain shaped the adventure.",
     "paragraphs": [
-      "Picture a bar with a game in the corner. Two people play; a friend watches, waiting for a turn. Someone else carries on talking at the table. The machine gives this little group something to gather around, without needing to be the reason everyone came. For the person running the place, it could be part of what makes an ordinary evening worth coming out for.",
-      "That setting belongs near the beginning of commercial video games. Computer Space reached paying audiences in 1971. In 1972, Atari tested a prototype of Pong at Andy Capp’s Tavern in Sunnyvale, California. Pong put a simple contest on a screen: two players moved paddles to return a ball. A new kind of game entered a place where people already spent time together.",
-      "The cabinet’s value could extend beyond its coin box. Imagine choosing where to meet because one place has something fun to do while you talk. The venue gains a reason to be chosen; its guests gain an activity. The paid turn is one part of the evening. Making the whole place worth visiting is a larger business proposition.",
-      "Gauntlet makes the paid turn unusually tangible. Released by Atari Games in 1985, it lets up to four people explore mazes together, fight monsters and search for food and treasure. Health runs down with time and damage. Food restores it; another coin buys more. A resource inside the fiction determines how long a person can remain in the action.",
-      "You could call this selling “air.” No physical object changes hands when the health counter rises. Yet the purchase can carry someone farther into an adventure already shared with the people beside them. The health is imaginary. The challenge, the company and the evening are real. An intangible purchase can have value because of what it lets a person do.",
-      "Different businesses meet at the cabinet. Designer Ed Logg explained that Atari sold machines through distributors, while operators collected the coins. A venue could also have its own reason for making room for one. Manufacturer, operator and venue owner are distinct roles, even when one business takes on more than one. Their interests can overlap without their accounts—or their priorities—being identical.",
-      "Atari’s operator manual turns one of those perspectives into adjustable rules. Its “Maximizing Earnings” section recommends more health when average play is under 90 seconds per quarter. Above 180 seconds, it recommends harder difficulty first, because reducing health is more noticeable. Difficulty changes how frequently monsters appear. The manual shows how an operator could tune the offer; it does not tell us how every owner thought about their customers.",
-      "The same advice asks for sessions long enough to feel worthwhile and encourage repeat play. A machine that takes the next coin sooner can make another visit less appealing. For the player, a crowd of monsters is a challenge. For the operator, it affects what a quarter buys. For a venue, the result might help or hurt the evening around the machine. One setting reaches into several relationships.",
-      "The next coin also arrives in a different situation from the first. The manual connects retained character enhancements with further deposits: continuing can preserve an improved run. The player has something under way. Wanting to carry it on may involve a useful character, unfinished exploration or the company of the group. The next coin can be a decision about carrying on with these people, at this moment.",
-      "The commercial arrangement even reached the ending. In his 2012 retrospective, Logg recalled considering a final monster. The team rejected it: “we did not want players coins lost with a game over.” Levels recirculated instead. Honoring coins already deposited helped shape the adventure itself. A design decision could serve the player’s existing commitment while also keeping a commercial game in motion.",
-      "This is where our study begins: with something people want to do, the work that makes it possible and the place where payment enters. Much later, an online game can become the place where friends agree to meet. Its creator may then be making the attraction and helping maintain the gathering place. We will follow what changes when those responsibilities come together.",
-      "First, the machine comes home. Buying a copy changes who provides the setting for play, and separates two events the coin slot held together: another attempt and another payment."
-    ],
-    "sections": [
-      {
-        "at": 3,
-        "title": "What the coin buys"
-      },
-      {
-        "at": 5,
-        "title": "Whose business is it?"
-      },
-      {
-        "at": 10,
-        "title": "From the attraction to the gathering place"
-      }
+      "I tried explaining this project to my mother-in-law through arcade games. They gave us common ground: games encountered before a PlayStation belonged in the living room, in places where people were already spending time together. The business seemed easy to explain. A coin bought a turn. But thinking about the person who put the machine in the bar made that explanation feel incomplete.",
+      "Imagine buying a cabinet because it will make your place livelier. There is something else for the regulars to do; someone waiting for a friend can join a game; a small crowd gathers around a good player. The machine has a coin box, but its contribution to the business need not stop there. It might help make this the place people choose for their evening. Starting with the coins can obscure the reason there are people around the machine at all.",
+      "That room belongs near the beginning of the story. Atari tested its prototype of Pong in Andy Capp’s Tavern in California in 1972. Two players moved paddles to return a ball across a screen: an electronic contest installed among the existing attractions of a bar. More than a decade later, another Atari game would bring four people together around a very different kind of contest.",
+      "Gauntlet, released in 1985, let its players explore monster-filled mazes as fantasy adventurers. Each had a health counter. Time and injuries wore it down; food replenished it. So did money. Put in another coin and your character could stay alive longer. The machine sold a resource that existed only inside its fiction, helping determine how long you could take part.",
+      "Call it selling “air,” if you like. Yet buying another stretch of imaginary life could mean getting farther with the people beside you. A cinema ticket also buys something that is over at the end of the evening. We understand the value of being there while it happens. The unusual thing about Gauntlet is how directly it made that participation a resource inside the adventure.",
+      "Four-player cooperation had a business argument behind it. Designer Ed Logg recalled resistance to charging more than the customary quarter. More players at once offered another route to higher earnings, especially if they could join and leave without interrupting everyone else. Marketing was unconvinced: “Marketing believed I could not get four strangers to play together.” Making the gathering work promised both a distinctive pleasure for players and a better-earning cabinet.",
+      "Atari earned its money by selling machines through distributors. The operator collecting the coins needed a return after that sale. The manufacturer’s manual tells this customer how to adjust the game, under a heading that leaves little to interpretation: “Maximizing Earnings.”",
+      "For US quarter play, the manual recommends more health when average play falls below 90 seconds. Above 180 seconds, it recommends harder difficulty first: more frequent monsters, before a reduction in the visible health allowance that might discourage players. The price at the coin slot stays the same. The conditions under which the purchased health must last have changed.",
+      "A harder fight might be exactly what a player enjoys. A turn that feels over before it has begun might send them elsewhere. The operator is adjusting a commercial offer through the rules of the world; players encounter the adjustment as monsters, danger and a dwindling chance of survival. Keeping the machine earning and making the evening worth coming out for are related ambitions. They are not interchangeable measures of success.",
+      "The most revealing decision concerned the ending. Logg recalled that the team considered a final monster, then rejected it: “we did not want players coins lost with a game over.” Someone could reach the end with purchased health still remaining. Instead, the levels recirculated. The game could continue taking money, but it also continued honoring money already taken. The purchase reached all the way into the shape of the adventure.",
+      "There is something strikingly contemporary in that old cabinet. An imaginary resource for sale; a design built to accommodate repeated payments; a shared experience whose appeal makes those payments possible. These negotiations were already under way near the beginning of commercial video games. They helped shape features we might remember fondly, as well as terms we might question. The interesting history lies in how those arrangements changed—and how much could change while the familiar pleasures of playing survived.",
+      "Take the game home in a box and a different bargain becomes possible. A character can die, an adventure can end, and its owner can begin again without buying another turn. The studio still needs sales to pay for its work and keep the lights on between releases. But it does not receive another payment merely because someone tries a different character or returns to a favorite game. An evening can become years of play without those years being sold one turn at a time."
     ],
     "paragraphCitations": {
-      "1": [
-        "computer-space",
+      "2": [
         "pong-tavern"
       ],
       "3": [
@@ -432,39 +417,31 @@ const manuscript: Omit<Chapter, "visual">[] = [
         "gauntlet-logg"
       ],
       "6": [
+        "gauntlet-logg",
         "gauntlet"
       ],
       "7": [
         "gauntlet"
       ],
-      "8": [
-        "gauntlet"
-      ],
       "9": [
         "gauntlet-logg"
-      ],
-      "10": [
-        "third-places"
       ]
     },
     "sources": [
-      "computer-space",
       "pong-tavern",
       "gauntlet",
-      "gauntlet-logg",
-      "third-places"
+      "gauntlet-logg"
     ],
     "figures": [
       {
         "asset": "gauntlet-options-manual-p3-4",
         "alt": "Gauntlet operator manual: difficulty and health per coin in the same settings table",
-        "caption": "A view from the operator’s side, 1985. Difficulty and purchased health share a settings table. This documents what could be adjusted, rather than what every venue owner chose to optimize.",
+        "caption": "The operator’s controls, 1985. Health per coin ranges from 100 to 2,000; difficulty has a separate setting. Enlarge to inspect the original table.",
         "credit": "Atari Games · manual preserved by Stardust Arcade",
-        "afterParagraph": 7
+        "afterParagraph": 8
       }
     ],
-    "takeaway": "Begin with the evening people value. Then follow the work and payments that make it possible.",
-    "evidence": "The opening bar is an imagined scene, not a reconstruction of Andy Capp’s Tavern or testimony about a venue owner’s motives. The Computer History Museum documents Pong’s 1972 tavern test; The Strong dates Computer Space to 1971. Gauntlet is a later documented example, not the first game or the invention of recurring payment. Atari’s manual describes health and continuing on printed page 2–2, earnings guidance on 2–3 and settings on 3–4. Its US 25¢ recommendations are guidance, not measured results. Logg’s 2012 retrospective supplies the sales-chain and ending recollections. Venue value is our interpretation; no drink-sales uplift, universal revenue split or operator intention is asserted. The drawings are original explanatory scenes. The cabinet uses selected documented settings, without simulating earnings or session length. The online-place comparison is developed and bounded in chapter three; social play is one source of value among others."
+    "evidence": "The opening conversation is the author’s account. The imagined bar develops his interpretation of why a venue might host a game; it is not testimony about Andy Capp’s Tavern or measured drink-sales uplift. The Computer History Museum documents Pong’s 1972 tavern test. Gauntlet is a later case, not the first commercial video game. Atari’s manual supplies health/food/continuation rules (printed 2–2), earnings guidance for US 25¢ play (2–3), and settings (3–4); its recommendations do not establish a universal optimum or guarantee duration. Ed Logg’s GDC 2012 retrospective describes the sales chain (PDF pp. 6, 8), price resistance and simultaneous/drop-in play (15–16), marketing’s doubt (31), and the final-monster decision (40). His creative inspirations also included Dungeons & Dragons and Dandy (10); the essay does not assign cooperation a solely financial origin. Roles could overlap or share receipts. These are a designer’s recollections, not audited financial findings. The implications for creative form and audience value are the essay’s analysis. Original explanatory art is not a reconstruction of a historical venue or licensed cabinet."
   },
   {
     "id": "several-histories",

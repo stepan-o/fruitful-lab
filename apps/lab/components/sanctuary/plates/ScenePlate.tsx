@@ -1,4 +1,5 @@
 import { memo, useId } from "react";
+import ArcadeCabinet from "./ArcadeCabinet";
 import ForkPlate from "./ForkPlate";
 import {
   brass,
@@ -1120,6 +1121,7 @@ function ScenePlate({
   motionPaused?: boolean;
 }) {
   const id = useId().replace(/:/g, "");
+  if (chapter === "insert-coin") return <ArcadeCabinet label={label} />;
   if (chapter === "the-fork" || chapter === "the-reset") return <ForkPlate label={label} paused={motionPaused} />;
   return (
     <svg viewBox="0 0 1000 600" role="img" aria-label={label}>

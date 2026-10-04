@@ -30,7 +30,7 @@ export type ReaderProps = {
   rules: string[];
 };
 
-const roman = (n:number) => ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI"][n];
+const roman = (n:number) => ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI","XXII"][n];
 
 export default function Reader({locale,current,index,navigation,parts,assets,sources,rules}:ReaderProps) {
   const copy = readerCopy[locale];
@@ -65,6 +65,13 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
     playClang();
   }
 
+  function renderFigure(figure: Figure, i: number) {
+    return <figure className={styles.figure} key={figure.asset}>
+              <button type="button" className={styles.figureButton} aria-label={`${copy.zoom}: ${figure.alt}`} onClick={()=>setZoom(figure)}><AssetImage asset={imageAsset(assets,figure.asset)} alt={figure.alt} sizes="(max-width:720px) 94vw, (max-width:1100px) 80vw, 900px"/><span className={styles.zoomLabel}>{copy.zoom} ↗</span></button>
+              <figcaption><span className={styles.figureNumber}>FIG. {index+1}.{i+1}</span><p>{figure.caption}</p><small>{figure.credit} · <Link prefetch={false} href={`/stepanoskin/game-monetization/credits#${figure.asset}`}>Source & use ↗</Link></small></figcaption>
+            </figure>;
+  }
+
   return <main className={styles.reader} lang={locale} data-motion={motion?"on":"off"} data-media-mode="editorial" onClickCapture={transitionSound}>
     <a href="#reading" className={styles.skip}>{copy.skip}</a>
     <header className={styles.header}>
@@ -91,42 +98,38 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             <p className={styles.eyebrow}>An illustrated study of game design & monetization</p>
             <h1>Sanctuary<br/><em>Economics</em></h1>
             <p className={styles.coverLede}>How the games we love are built, sold and kept alive.</p>
-            <div className={styles.coverMeta}><span>21 CHAPTERS</span><span>7 PARTS</span><span>BALDUR’S GATE · DIABLO · BEYOND</span></div>
+            <div className={styles.coverMeta}><span>{navigation.length} CHAPTERS</span><span>{parts.length} PARTS</span><span>GAUNTLET · DIABLO · BEYOND</span></div>
             <Link href={chapterHref(first.id)} className={styles.primary} lang={locale}>{copy.start} <span aria-hidden="true">↗</span></Link>
           </section>
           <div className={styles.editionNote}><strong>{copy.edition}</strong><p>{copy.editionNote}</p></div>
           <section className={styles.introduction} lang="en">
             <p>
-              The word “purchase” conceals several different relationships
-              with a game. We can buy an adventure and spend years exploring
-              its possibilities. We can buy another chapter of that adventure.
-              We can also enter a world whose creators keep adding activities,
-              setting new dates and offering things for sale. What we enjoy
-              doing may remain familiar while the terms around it change.
+              The word “purchase” conceals several different relationships with
+              a game. We can pay for a turn, buy an adventure to replay for years,
+              or buy something inside a world we already inhabit. The next
+              payment need not buy the same thing as the first.
             </p>
             <p>
-              Baldur’s Gate 3 and Diablo IV give us a starting point: two
-              fantasy role-playing games with different ways of sustaining
-              both play and a business. Diablo IV contains the tension within
-              itself—an adventure with an ending, inside an ongoing program
-              of seasons and offers. The comparison opens into a history of
-              games, digital commerce and the social life that grows around them.
+              We begin at a coin-operated arcade cabinet, where money could
+              become a character’s health. From there, we follow the changing
+              connection between continuing to play and paying again: through
+              games bought for the home, connected worlds and the contemporary
+              choices of studios such as Larian and Blizzard. Cinema and other
+              creative businesses help place those choices in a wider history.
             </p>
             <p>
-              We follow the work behind these worlds, the reasons people play
-              and the different things a purchase can provide. Books, sports
-              and other familiar products offer points of comparison along
-              the way. The illustrations and interactive diagrams make the
-              relationships visible; linked research and developer accounts
-              let you examine the evidence.
+              This is a study of what players value, what creators make and how
+              the next sale joins the two. The old arrangements were commercial
+              too. Understanding them gives us a better way to examine the new
+              ones—and to ask what each makes possible, or puts at risk.
             </p>
           </section>
           <section className={styles.partGrid} aria-label={copy.contents}>{parts.map((part,p)=><Link prefetch={false} href={chapterHref(navigation.find(c=>c.part===p)!.id)} key={part}><span>0{p+1}</span><h2 lang="en">{part}</h2><small>{roman(navigation.findIndex(c=>c.part===p))} — {roman(navigation.findLastIndex(c=>c.part===p))}</small><b aria-hidden="true">↗</b></Link>)}</section>
         </> : <>
-          <article className={styles.article} lang="en" data-opening={current.id === "the-fork" || undefined}>
-            <div className={styles.chapterTop}><Link href={chapterHref()}>{copy.overview}</Link><span>{String(index+1).padStart(2,"0")} / 21</span></div>
+          <article className={styles.article} lang="en" data-opening={index === 0 || current.id === "the-fork" || undefined}>
+            <div className={styles.chapterTop}><Link href={chapterHref()}>{copy.overview}</Link><span>{String(index+1).padStart(2,"0")} / {navigation.length}</span></div>
             <p className={styles.eyebrow}>PART {roman(current.part)} · {parts[current.part]}</p>
-            <div className={current.id === "the-fork" ? styles.openingHeading : undefined}>
+            <div className={index === 0 || current.id === "the-fork" ? styles.openingHeading : undefined}>
               <div className={styles.titleRow}><span className={styles.chapterNumeral} aria-hidden="true">{roman(index)}</span><h1>{current.title}</h1></div>
               <p className={styles.lede}>{current.lede}</p>
             </div>
@@ -135,9 +138,9 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                 <button type="button" className={styles.figureButton} aria-label={`${copy.zoom}: ${figure.alt}`} onClick={()=>setZoom(figure)}><AssetImage asset={imageAsset(assets,figure.asset)} alt={figure.alt} sizes="(max-width:720px) 94vw, (max-width:1100px) 40vw, 450px" preload/><span className={styles.zoomLabel}>{copy.zoom} ↗</span></button>
                 <figcaption><p>{figure.caption}</p><small>{figure.credit} · <Link prefetch={false} href={`/stepanoskin/game-monetization/credits#${figure.asset}`}>Source & use ↗</Link></small></figcaption>
               </figure>)}</div>
-              <p className={styles.referenceReading}>Two contemporary worlds. To understand why their creators plan such different futures for them, we begin with the business around the game.</p>
+              <p className={styles.referenceReading}>Two role-playing traditions, with different plans for what comes after release.</p>
             </section>:null}
-            {current.id !== "the-fork" ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
+            {current.id !== "the-fork" && current.id !== "insert-coin" ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
             <div className={styles.prose}>
               {current.paragraphs.map((paragraph, paragraphIndex) => (
                 <Fragment key={`${current.id}-${paragraphIndex}`}>
@@ -174,18 +177,17 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       },
                     )}
                   </p>
+                  {current.id === "insert-coin" && paragraphIndex === 1 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+                  {current.figures?.map((figure,i)=>figure.afterParagraph === paragraphIndex ? renderFigure(figure,i) : null)}
                   {current.id === "the-fork" && paragraphIndex === 2 ? <AudienceEconomy/> : null}
                   {current.id === "the-fork" && paragraphIndex === 6 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
                   {current.id === "shape-of-money" && paragraphIndex === 1 ? <FundingDiagram/> : null}
                 </Fragment>
               ))}
             </div>
-            {current.id !== "the-fork" ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+            {current.id !== "the-fork" && current.id !== "insert-coin" ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
             {current.table?<div className={styles.tableWrap} tabIndex={0} aria-label={current.table.caption}><table><caption>{current.table.caption}</caption><thead><tr>{current.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{current.table.rows.map(row=><tr key={row[0]}>{row.map((cell,i)=>i===0?<th scope="row" key={i}>{cell}</th>:<td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>:null}
-            {current.figures?.filter(figure=>figure.placement !== "opening").map((figure,i)=><figure className={styles.figure} key={figure.asset}>
-              <button type="button" className={styles.figureButton} aria-label={`${copy.zoom}: ${figure.alt}`} onClick={()=>setZoom(figure)}><AssetImage asset={imageAsset(assets,figure.asset)} alt={figure.alt} sizes="(max-width:720px) 94vw, (max-width:1100px) 80vw, 900px"/><span className={styles.zoomLabel}>{copy.zoom} ↗</span></button>
-              <figcaption><span className={styles.figureNumber}>FIG. {index+1}.{i+1}</span><p>{figure.caption}</p><small>{figure.credit} · <Link prefetch={false} href={`/stepanoskin/game-monetization/credits#${figure.asset}`}>Source & use ↗</Link></small></figcaption>
-            </figure>)}
+            {current.figures?.map((figure,i)=>figure.placement !== "opening" && figure.afterParagraph === undefined ? renderFigure(figure,i) : null)}
             <blockquote className={styles.takeaway}><span aria-hidden="true">◇</span>{current.takeaway}</blockquote>
             <details className={styles.evidence}><summary lang={locale}>{copy.sourceNotes} <span aria-hidden="true">+</span></summary><p>{current.evidence}</p>{sources.length?<ol>{sources.map(source=><li key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><p>{source.note}</p></li>)}</ol>:<p>Source: the stated mathematical model or owner-provided research capture. Original scene studies accompany selected visual citations.</p>}</details>
             {index===navigation.length-1?<>

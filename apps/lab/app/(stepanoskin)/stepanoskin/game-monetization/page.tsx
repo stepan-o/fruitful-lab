@@ -10,7 +10,7 @@ import { isLocale, localeCookieName } from "../translations";
 
 export const metadata: Metadata = {
     title: "Sanctuary Economics — Game Monetization | Stepan Oskin",
-    description: "How games are built, sold and kept alive. An illustrated study beginning with Baldur’s Gate 3 and Diablo IV, with 21 chapters, primary sources and interactive models.",
+    description: "How games are built, sold and kept alive. From Gauntlet’s coin slot to Diablo IV’s ongoing world: an illustrated study with 22 chapters, primary sources and interactive models.",
 };
 
 const manifest = parseManifest(rawManifest, "sanctuary-editorial");

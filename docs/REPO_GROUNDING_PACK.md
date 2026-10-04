@@ -1,3 +1,13 @@
+Sanctuary arcade-first revision (2026-10-03, local): the 22-chapter reader now
+starts at `insert-coin` (Gauntlet), continues to `several-histories` (the purchased
+copy and later offers), then `the-fork` (creative economics and BG3/D4) and Concord.
+All previous stable URLs remain. The new SVG cabinet compares player/operator
+perspectives without continuous work; `Figure.afterParagraph` positions existing
+immutable evidence images inline. The overview, metadata, counts and navigation
+follow the new order. Cinema/catalog artwork and the later diptych are preserved.
+This supersedes the opening order recorded below; later chapters remain iterative.
+See `docs/sanctuary/NARRATIVE_REBUILD.md` for research boundaries and scope.
+
 Stepanoskin landing design brief (2026-10-03, revised after visual feedback): `docs/stepanoskin/DESIGN_GUIDELINES.md` is the landing-specific authority. Almost empty white, centered solid block typography with level baselines and coherent extruded depth. Stepan Oskin sits at the top with slight emphasis. DATA SCIENCE is the dark primary choice, with professional CV floating beneath/behind it; GAME MONETIZATION, GAME ENGINES AND LLMs, and ABOUT are equal gray peers. Refined faces, small shadows, idle float, hover lift and the shared selection clang; performance is paramount. This supersedes the pastel/card and strongly rotated pixel-grid drafts.
 
 Sanctuary context visuals (2026-10-03, local): the opening now uses the economics of creative work and audience attachment as its lens, with a cinema/Netflix comparison and the 2013 Adobe transition. `sanctuary-context` is a separate immutable asset pack; `lib/sanctuary/context-media.json` feeds its source records into the public credits page. The original SVG master and responsive logo derivatives are stored with the project; bounded CSS atmosphere pauses offscreen and with motion preferences; no new dependencies. See `docs/sanctuary/NARRATIVE_REBUILD.md`.

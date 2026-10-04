@@ -1,11 +1,11 @@
 # Sanctuary design system
 
-**Editorial placement update · 3 October 2026:** the new opening uses the
-authentic BG3/D4 pairing and the three-track AfterPurchase exhibit. The approved
-animated diptych is preserved in **Where progress lives**, where campaign and
-seasonal play are introduced. Its historical description as the “opening” below
-identifies the visual benchmark, not its current chapter placement. See
-[Narrative reconstruction](NARRATIVE_REBUILD.md).
+**Editorial placement update · 3 October 2026:** the first chapter now uses an
+original arcade-cabinet cutaway and Atari’s operator manual. The authentic BG3/D4
+pair, AfterPurchase and cinema/catalog exhibits now belong to chapter three.
+The approved animated diptych stays in **Where progress lives**. Its historical
+description as the “opening” below identifies the illustration benchmark.
+See [Narrative reconstruction](NARRATIVE_REBUILD.md).
 
 **Version 1.3 · 2 October 2026 · approved visual reference with experience-first opening**
 

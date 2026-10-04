@@ -2,7 +2,7 @@ import type { Chapter, EvidenceSource } from "./types";
 import { chapterVisuals } from "./visual-content";
 
 export const parts = [
-  "The world around the game",
+  "Play, payment and the next purchase",
   "Studios, games and players",
   "Why people play",
   "How play takes shape",
@@ -12,6 +12,9 @@ export const parts = [
 ];
 export const revision = "2026-10-03";
 export const sources: EvidenceSource[] = [
+  { id: "gauntlet-logg", title: "Ed Logg — Gauntlet postmortem, GDC 2012 (PDF pp. 6, 40)", url: "https://media.gdcvault.com/gdc2012/slides/Design%20Track/Logg_Ed_Gauntlet_Postmortem.pdf", note: "The designer’s retrospective distinguishes cabinet sales from coin collections and connects the absence of a final ending with avoiding loss of coins already deposited. A recollection given decades later, not an audited financial account." },
+  { id: "computer-space", title: "The Strong — Computer Space (museum collection history)", url: "https://www.museumofplay.org/games/computer-space/", note: "The museum traces the 1971 commercial machine to the existing coin-operated amusement business. Used to place Gauntlet within an older commercial history." },
+  { id: "pong-origins", title: "Computer History Museum — Pong", url: "https://www.computerhistory.org/revolution/computer-games/16/183", note: "Museum account and Al Alcorn’s recollection of the 1972 bar prototype; documents a paid-play business at the early commercialization of video games." },
   {"id": "netflix-engagement", "title": "Netflix — Q2 2024 shareholder letter, pp. 3–4 (18 July 2024)", "url": "https://ir.netflix.net/files/doc_financials/2024/q2/FINAL-Q2-24-Shareholder-Letter.pdf", "note": "Management connects viewing with member satisfaction, retention and acquisition, and explains its investment in varied programming. A stated business rationale, not an independent measure of audience wellbeing."},
   {"id": "wga-streaming-2023", "title": "Writers Guild of America — Summary of the 2023 agreement", "url": "https://www.wgacontract2023.org/the-campaign/summary-of-the-2023-wga-mba", "note": "Historical agreement adds a viewership-based bonus for qualifying high-budget subscription streaming productions and provides the Guild with confidential viewing data. Used as a concrete change in compensation, not a claim about every production or current contract terms."},
   {"id": "bg3-patch8", "title": "Larian — The Final Patch (15 April 2025)", "url": "https://baldursgate3.game/news/the-final-patch-new-subclasses-photo-mode-and-cross-play_138", "note": "Documents added subclasses and cross-play, and the studio’s stated end to major content updates so it can work on another project. Minor fixes and paid editions are separate questions."},
@@ -213,7 +216,7 @@ export const sources: EvidenceSource[] = [
     id: "gauntlet",
     title: "Atari — Gauntlet operator manual (1985)",
     url: "https://files.stardustarcade.com/PDF_Arcade_Atari_Kee/Gauntlet/Gauntlet_TM-284_1st_Printing.pdf",
-    note: "Original operator documentation, hosted by a public archive. Printed pages 2-3 and 3-4 discuss earnings and health-per-coin settings.",
+    note: "Original operator documentation, hosted by a public archive. Printed pages 2-2, 2-3 and 3-4 describe health, continuing a run, earnings guidance and operator settings.",
   },
   {
     id: "tf2",
@@ -383,6 +386,176 @@ export const sources: EvidenceSource[] = [
 
 const manuscript: Omit<Chapter, "visual">[] = [
   {
+    "id": "insert-coin",
+    "part": 0,
+    "title": "Insert coin. Stay alive.",
+    "lede": "Before the game came home in a box, you could buy another stretch of life inside it. The coin slot belonged to the rules.",
+    "paragraphs": [
+      "A coin drops into a cabinet. Your character enters the maze. You have paid to take part; the machine stays where it is. This was an early commercial bargain of video games, borrowed from the amusement business around them. Computer Space reached paying audiences in 1971. Atari’s Pong followed in 1972, turning a television screen and a pair of controls into something a bar could earn money from.",
+      "Gauntlet, released by Atari Games in 1985, makes that bargain especially clear. Up to four people explore mazes together, fighting monsters and searching for treasure and food. Health runs down with time and damage. Food restores it; another coin buys more. The purchased resource is also what keeps the character alive.",
+      "You could call this selling “air”: something with no physical substance, whose usefulness exists inside a made-up world. But the evening is real. So are the challenge, the company and the wish to see what comes next. The interesting question is how the game turns those desires into a reason for another purchase.",
+      "The owner of the cabinet sees the same adventure from the other side. Atari’s manual has a section called “Maximizing Earnings.” It recommends more health when average play is under 90 seconds per quarter. Above 180 seconds, it recommends harder difficulty first: reducing health is more noticeable. Difficulty controls how frequently monsters appear.",
+      "The instruction also asks for sessions long enough to feel worthwhile and encourage repeat play. This is a balancing problem: taking the next coin sooner can make the next visit less likely. For the player, a crowd of monsters is a challenge. For the operator, the setting behind that crowd helps determine what a quarter buys. Game design and the commercial offer meet in the same control.",
+      "There is another reason to continue. The manual explicitly connects retained character enhancements with further coin deposits. A payment can preserve a run already under way. In our reading, that makes the next coin different from the first: the player now has something going on, with a history they may want to carry forward.",
+      "The commercial offer even reached the question of an ending. In his 2012 retrospective, designer Ed Logg recalled considering a final monster. The team rejected it: “we did not want players coins lost with a game over.” Levels recirculated instead. A decision about how to honor money already deposited helped determine the shape of the adventure.",
+      "There were different businesses on either side of the coin slot. Logg explained that operators collected the coins; Atari sold machines through distributors. Atari therefore needed to build something an operator would want to buy, and the operator needed people who wanted to play. The same game had to work as a purchased product and as an ongoing source of income. Familiar questions were already intertwined: how much money, how much life, how much enjoyment before the next ask?",
+      "We will eventually reach Diablo IV, Blizzard Entertainment’s modern game of monsters, treasure and developing a hero. Blizzard’s 2022 plan placed optional appearance purchases alongside a paid adventure. Buying an appearance is a different offer from buying the health needed to stay in play. First comes a change that separates two events the cabinet held together: playing again and paying again.",
+      "What happens when the next attempt is already paid for?"
+    ],
+    "sections": [
+      {
+        "at": 3,
+        "title": "The view behind the coin door"
+      },
+      {
+        "at": 6,
+        "title": "An old commercial question"
+      }
+    ],
+    "paragraphCitations": {
+      "0": [
+        "computer-space",
+        "pong-origins"
+      ],
+      "1": [
+        "gauntlet"
+      ],
+      "3": [
+        "gauntlet"
+      ],
+      "4": [
+        "gauntlet"
+      ],
+      "5": [
+        "gauntlet"
+      ],
+      "8": [
+        "d4-season-philosophy"
+      ],
+      "6": [
+        "gauntlet-logg"
+      ],
+      "7": [
+        "gauntlet-logg"
+      ]
+    },
+    "sources": [
+      "computer-space",
+      "pong-origins",
+      "gauntlet",
+      "gauntlet-logg",
+      "d4-season-philosophy"
+    ],
+    "figures": [
+      {
+        "asset": "gauntlet-options-manual-p3-4",
+        "alt": "Gauntlet operator manual: difficulty and health per coin in the same settings table",
+        "caption": "The operator’s controls, 1985. Health and difficulty are commercial settings as well as rules of play. Inspect the original table; the earnings recommendations appear on printed page 2–3 of the linked manual.",
+        "credit": "Atari Games · manual preserved by Stardust Arcade",
+        "afterParagraph": 4
+      }
+    ],
+    "takeaway": "A game can sell the means to keep playing. That possibility is almost as old as the commercial video game.",
+    "evidence": "Computer Space (1971) and Pong (1972) establish early coin-operated commercialization; neither is described as the first game ever made. Gauntlet is a documented example within an established industry, not the invention of repeat payment or a claim of direct ancestry for Diablo. Its 1985 operator manual describes play on printed page 2–2, earnings guidance on 2–3 and settings on 3–4. The earnings advice assumes US 25¢ play; it is guidance, not measured results. The exhibit is an original explanatory drawing with selected documented health settings, not an emulator, earnings forecast or reproduced game screen. “Air” is the author’s metaphor for an intangible resource, not a claim that play has no value. The interpretation of preserving an invested run is distinct from evidence about individual player motives. Logg’s GDC 2012 slides, PDF pages 6 and 40, provide the sales-chain and ending recollections. His presentation is retrospective, not a contemporaneous accounting record. The full presentation is linked; its anecdotes are not treated as measured industry-wide effects."
+  },
+  {
+    "id": "several-histories",
+    "part": 0,
+    "title": "The next attempt is already paid for",
+    "lede": "Buying a copy changes the bargain. A character can die and a story can end without the player having to buy another turn.",
+    "paragraphs": [
+      "A home game lets the player return to something already bought. The coin no longer measures out each visit. This is a change in the commercial offer, not a promise of a shorter game: the purchase can contain years of experiments, failures and fresh starts. To see how much replay could fit inside that bargain, consider Diablo II.",
+      "Blizzard Entertainment released Diablo II in 2000. An action role-playing game, it lets the player guide a hero through a dark fantasy adventure while developing abilities and finding equipment. It expanded the original Diablo’s descent beneath a cathedral into four acts, the major sections of its journey. Cinematic sequences connected the places and conflicts. The adventure had a destination, but reaching it did not exhaust the game.",
+      "Five character classes offered different abilities, with choices within each class. Randomized maps, equipment and harder versions of the adventure supported repeated play. Designer Erich Schaefer described the appeal of “strategies that can be debated and experimented with.” You could try another class or build the same one differently. Replayability belonged to the product you had bought.",
+      "That purchase included the classes, acts and item systems of the release. Equipment came through play and trade; Battle.net, Blizzard’s online service, charged no subscription. The Lord of Destruction expansion added a fifth act and two classes in 2001 for another purchase. The smaller box sold additional work. It did not turn every subsequent attempt into another transaction.",
+      "Three endings have come apart. A death may end an attempt. A final encounter may resolve the story. Neither necessarily ends the paid opportunity to play. A reader can finish a book and reread it; a player can finish an adventure and explore a different way through. A work with an ending can still occupy someone for years.",
+      "Even a deliberately renewed competition need not collect a new payment. A ladder ranks online characters by experience earned through play. Diablo II’s patch 1.10, released on 28 October 2003, introduced seasonal ladder characters: new heroes in a separate economy, without their owners’ accumulated equipment. The fresh start renewed the race. Returning to it and buying something from Blizzard were different events.",
+      "Other arrangements existed alongside the purchased box. Early text-based online worlds had to contend with connection bills: designer Richard Bartle’s MUD Advanced Project Report compared hourly charges with a fixed fee for unlimited access over a period. Access sold by use, access sold by subscription and a game bought for repeated use have long been alternatives. The devices did not dictate a single payment model.",
+      "Internet distribution made some commercial relationships easier to maintain. Economists Avi Goldfarb and Catherine Tucker describe falling costs of searching, copying, transporting, tracking and verifying information. In games, those changes help explain how a studio can deliver updates and offers directly to people already playing. Creating worthwhile new work still takes resources.",
+      "Netflix provides a useful check on the chronology. It already mailed physical DVDs to subscribers when it added internet viewing in January 2007. Streaming changed delivery within an existing subscription. Where a product lives, how it arrives and what the customer pays for are separate questions. Moving a game online does not by itself explain why its next purchase exists.",
+      "The next offer also need not sell access. Valve made its team shooter Team Fortress 2 free to enter in 2011, alongside an item economy. Its 2013 Dota 2 Compendium sold a companion to a tournament, with predictions, rewards and a contribution to the prize pool. These gave existing players another thing to buy without first taking away the ability to play.",
+      "Advertising adds a different payer. Crossy Road, a mobile game about crossing roads and other hazards, combined character sales with optional rewarded video: the player could watch an advertisement for a benefit in the game. An advertiser paid to reach the audience. Looking only at what the player paid would miss part of the exchange.",
+      "The path from the cabinet to the connected game is a rearrangement of these relationships, not a steady invention of new reasons to charge. Continued play can consume what was purchased, draw on a purchase already made, or provide the setting for another offer. Now turn the question around. If the player can keep playing without paying again, what will the creator make—and who will fund that next piece of work?"
+    ],
+    "sections": [
+      {
+        "at": 4,
+        "title": "Three different endings"
+      },
+      {
+        "at": 6,
+        "title": "Connection is not a payment model"
+      },
+      {
+        "at": 9,
+        "title": "Another offer inside the same activity"
+      }
+    ],
+    "paragraphCitations": {
+      "1": [
+        "diablo-story",
+        "d2-postmortem"
+      ],
+      "2": [
+        "d2-postmortem",
+        "d2-retrospective"
+      ],
+      "3": [
+        "d2-postmortem",
+        "d2-expansion"
+      ],
+      "5": [
+        "d2-ladder-ranking",
+        "d2-110-launch",
+        "d2-ladder"
+      ],
+      "6": [
+        "hist-bartle"
+      ],
+      "7": [
+        "digital-economics"
+      ],
+      "8": [
+        "netflix-2007"
+      ],
+      "9": [
+        "tf2",
+        "dota"
+      ],
+      "10": [
+        "crossy"
+      ]
+    },
+    "sources": [
+      "diablo-story",
+      "d2-postmortem",
+      "d2-retrospective",
+      "d2-expansion",
+      "d2-ladder-ranking",
+      "d2-110-launch",
+      "d2-ladder",
+      "hist-bartle",
+      "digital-economics",
+      "netflix-2007",
+      "tf2",
+      "dota",
+      "crossy",
+      "gauntlet",
+      "reliquary"
+    ],
+    "figures": [
+      {
+        "asset": "legacy-d2-heroes",
+        "alt": "Diablo II’s five original character classes gathered around a campfire",
+        "caption": "Five classes inside one purchase. Their different abilities—and the choices within each class—gave the same owner reasons to begin again.",
+        "credit": "Blizzard Entertainment",
+        "afterParagraph": 2
+      }
+    ],
+    "takeaway": "Returning to a game is not the same event as buying something from its creator.",
+    "evidence": "These examples compare overlapping arrangements; they are not stages every game passed through. The original Diablo II purchase is distinguished from its expansion and later Resurrected editions. Patch 1.10 dates seasonal ladder characters, not the first leaderboard. A purchased game is not a guarantee of perpetual online availability. Goldfarb and Tucker supply a general economic framework; its application to games is our synthesis. Netflix’s 2007 announcement separates delivery from an existing DVD subscription. Valve and Crossy Road examples are dated historical offers. The exhibit compares these documented examples; it is not an invention timeline or a complete history."
+  },
+  {
     "id": "the-fork",
     "part": 0,
     "title": "The business of keeping a world alive",
@@ -405,19 +578,19 @@ const manuscript: Omit<Chapter, "visual">[] = [
       }
     ],
     "paragraphs": [
-      "A book can stay with us for decades; a film can become part of how we see the world. Their makers cannot pay this month’s wages with our memories. The next work may take years, and the people creating it need an income in the meantime. A studio can draw on earlier earnings, sell older work to new audiences or find someone willing to finance what comes next. Each route depends on an expectation of future sales. Keeping the lights on means finding a way across the gap.",
+      "A player who has bought a game may not need to pay again for years. The people making the next one still need an income. That gap is familiar across creative work: a book can stay with us for decades, and a film can become part of how we see the world, while their makers have this month’s wages to pay. Earlier earnings, new audiences for older work and financing against future sales can keep production going. A long wait between releases does not mean a company earns nothing in between.",
       "What the audience carries across that gap is attachment: to a story, a character, a place, or the people with whom they experienced it. That attachment can outlast a purchase by decades. It can also give a creator an audience for their next work. The commercial question is when, and for what, that audience will be willing to pay again.",
-      "Consider a film in a cinema and a film on Netflix. A cinema ticket sells admission to a particular showing. For a subscription service, a film can help persuade someone to join or keep paying for access to a whole catalog. Netflix’s July 2024 letter to shareholders explicitly connects more viewing with members staying longer and valuing the service more. The film still needs to move its audience; it now also has a job within a continuing paid relationship.",
+      "The previous chapter separated delivery from payment. Now consider what the payment asks a work to do. A cinema ticket sells admission to a particular showing. For a subscription service such as Netflix, a film can persuade someone to join or keep paying for access to a catalog. Netflix’s July 2024 shareholder letter connects more viewing with members staying longer and valuing the service more. A film still needs to move its audience; it also has a job within a continuing paid relationship.",
       "That changes the terms under which creative work is valued and paid for. In 2023, the Writers Guild of America negotiated a new bonus for qualifying streaming films and series that reached a specified share of a service’s subscribers. It also secured access to viewing data. A hit inside a subscription catalog needed a way to become visible in its writers’ compensation.",
-      "A parallel shift reached the tools used to make the work. Adobe, the company behind Photoshop, announced in 2013 that new creative features would go to Creative Cloud subscribers; Creative Suite 6 would be its last major release for perpetual licenses. Editing a photograph remained a familiar activity. Keeping access to the newest tools became a continuing purchase. Across these examples, digital delivery made a lasting commercial connection easier to maintain, while the work of making something worth paying for remained expensive.",
+      "The tools used to make that work offer another comparison. Adobe, the company behind Photoshop, announced in 2013 that new creative features would go to Creative Cloud subscribers; Creative Suite 6 would be its last major release for perpetual licenses. Editing a photograph remained a familiar activity. Access to the newest releases became a continuing purchase. These are different ways of selling ongoing work, rather than a single destination that every digital product must reach.",
       "Games bring that connection inside a world the audience acts upon. Players learn its rules, develop skills and make choices that affect what happens. In online games, teammates and rivals can become friends, and a shared evening can become a weekly ritual. An update can give those friends somewhere new to explore, or change the activity around which they have arranged their time. The studio is working on something that already has a place in people’s lives.",
       "It must also decide what to fund next. Another game asks the audience to follow the studio to a new work. An expansion sells more of a world they already know. An ongoing program of updates and optional purchases builds further production around people who are already there. Each can support worthwhile creative work. Each gives the team different reasons to expand one part of the experience, preserve another, or put a price on something new.",
-      "The two worlds at the top of this chapter give us a glimpse of where these choices have led. Baldur’s Gate 3 and Diablo IV are role-playing games: players develop characters whose abilities and equipment change what they can do. Larian Studios builds BG3 around a group of companions, conversations with consequences and battles fought in turns. Blizzard Entertainment’s Diablo IV puts a character under the player’s direct control, fighting through crowds of monsters in search of better equipment.",
-      "In Baldur’s Gate 3, the purchase opens a substantial campaign—the main story adventure—with many possible routes through it. Larian’s stated offer includes no in-game purchases. The studio continued adding features after release, then announced its final major content update in April 2025. It could keep working on the game indefinitely, the announcement explained: “But then we’d never be able to create something new.” Players could continue exploring its possibilities while the studio turned to another project.",
-      "Blizzard described a different future for Diablo IV in its August 2022 development update: “Diablo IV will be supported by an army of developers for years to come.” Alongside the purchased adventure, it planned seasons: recurring cycles of new activities and changes to play. Optional sales of character appearances and paid reward tracks would accompany that continuing program. A dedicated team would keep creating reasons to return and further things to buy.",
-      "Here is the fork. A studio can build a game whose existing possibilities keep attracting players while it goes on to make its next work. It can also organize years of production and further sales around the world those players already inhabit. Both approaches need an audience; both can reward returning to the game. They give the team different work to do after release, and give that work a different place in the player’s life.",
+      "Baldur’s Gate 3 and Diablo IV bring that production choice into view. Both are role-playing games: players develop characters whose abilities and equipment change what they can do. Larian Studios builds BG3 around companions, conversations with consequences and battles fought in turns. Blizzard Entertainment’s Diablo IV puts a character under the player’s direct control, fighting crowds of monsters in search of better equipment. Each offers a campaign—the main story adventure—and reasons to play again.",
+      "In Baldur’s Gate 3, the purchase opens a substantial adventure with many possible routes through it. Larian’s stated offer includes no in-game purchases. The studio continued adding features after release, then announced its final major content update in April 2025. It could keep working on the game indefinitely, the announcement explained: “But then we’d never be able to create something new.” Players could continue exploring its possibilities while the studio turned to another project.",
+      "Blizzard described a different future for Diablo IV in its August 2022 development update: “Diablo IV will be supported by an army of developers for years to come.” Alongside the purchased adventure, it planned seasons: recurring cycles of new activities and changes to play. Optional sales of character appearances and paid reward tracks would accompany that continuing program. A dedicated team would keep creating reasons to return and further things to buy. Unlike the coin in Gauntlet, buying a cosmetic appearance would not replenish a resource needed to stay in the game. Continuing to play and accepting the next offer remained separate choices.",
+      "Here is the contemporary fork: what will the studio make and sell after this purchase? Larian described turning from major BG3 updates toward another project. Blizzard planned continuing production and further offers within Diablo IV. Both games can sustain years of play. The distinction concerns where the team puts its next work and how that work reaches a paying audience. Expansions, new customers and other projects can sit alongside either arrangement.",
       "Diablo IV contains the tension within itself. Its campaign offers an adventure that reaches a resolution. Its seasons promise further occasions to play in the same world. Someone hoping to finish the adventure they bought can encounter a game already preparing its next beginning. Someone else may have returned precisely because there is a new season to share with friends. The continuing business has to find its place among those expectations.",
-      "To understand how these arrangements came about, we need to follow more than a succession of games with better graphics. We need the history of what studios could build, how they reached their audiences and what they learned to sell. Diablo will give us a thread through that history: a series whose familiar pleasures survived substantial changes to the product around them. First, we go back to the different ways games learned to pay for themselves."
+      "The coin-operated maze and the modern online world belong to very different businesses, yet both must find a workable relationship between what people enjoy and what they will pay for. An ongoing world adds a particular obligation: people commit their time on the expectation that the world—and often its other players—will still be there. Before we unpack its design, we need to see what that promise can cost when it cannot be kept. Concord makes the risk concrete."
     ],
     "sections": [
       {
@@ -434,7 +607,7 @@ const manuscript: Omit<Chapter, "visual">[] = [
       },
       {
         "at": 12,
-        "title": "How we arrived here"
+        "title": "A promise that needs an audience"
       }
     ],
     "paragraphCitations": {
@@ -479,82 +652,8 @@ const manuscript: Omit<Chapter, "visual">[] = [
       "d4-season-philosophy",
       "d4-expansion-structure"
     ],
-    "takeaway": "What does a work mean to its audience—and what does the business need that audience to do next?",
+    "takeaway": "Continuing to play, continuing to make the game and paying again are three different events. The business model decides how to connect them.",
     "evidence": "The opening offers an interpretive lens, not a reconstruction of private studio finances. Attachment names what a work means to people; it is not equated with viewing hours, time played, spending or wellbeing. Netflix’s July 2024 letter explains its own use of viewing as a proxy, not proof that more viewing always means greater satisfaction. The cinema/catalog illustration compares two payment relationships, not mutually exclusive industries: films have multiple release and licensing channels, and streaming did not invent subscriptions. Netflix’s 2007 announcement added streaming to an existing DVD subscription. The WGA passage describes the historical 2023 agreement and qualifying high-budget subscription streaming productions, not all writers or current contract terms. Adobe’s 2013 transition concerns access to new creative releases, not removal of previously purchased perpetual licenses. Digital Economics supplies the broader cost framework; the cross-industry argument is our synthesis. Online social relationships vary across games and players. Larian’s April 2025 statement concerns major content updates, not the end of support. Blizzard’s August 2022 plan records pre-launch intent, not today’s catalog or prices. D4 seasons and optional purchases remain separate choices; neither game is a Netflix-style subscription. The exhibits are qualitative, not financial forecasts."
-  },
-  {
-    id: "several-histories",
-    part: 0,
-    title: "Several histories at once",
-    lede: "The genre kept its familiar pleasures while distribution, online life and the ways to pay developed around them.",
-    paragraphs: [
-      "The two offers in the opening draw on histories that developed alongside one another. Baldur’s Gate began with BioWare’s 1998 computer adaptation of Dungeons & Dragons, the tabletop tradition of guiding characters through adventures with rules and a group of players. Diablo’s earlier descent beneath a cathedral emphasized direct combat and equipment found along the way. Both franchises emerged in the 1990s; the wider role-playing tradition reaches further back. Their modern descendants inherited different design traditions as well as different commercial choices.",
-      "Blizzard’s Diablo II, released in 2000, expanded the first game’s combat-and-equipment rhythm into four acts, the major sections of its adventure. Cinematic sequences carried the story between them. Five character classes offered distinct abilities, with further choices within each class. Randomized maps and equipment, plus harder versions of the adventure, supported repeated play. Designer Erich Schaefer described the appeal of “strategies that can be debated and experimented with.” The ending was part of a game built to be replayed.",
-      "The original purchase included those classes, acts and item systems. Equipment was acquired through play and trade; Blizzard’s Battle.net online service carried no subscription fee. Lord of Destruction, the 2001 expansion, added a fifth act and two classes for another purchase. That smaller box extended the journey and gave players new ways through familiar places. New buyers could keep generating revenue while existing owners kept playing without paying Blizzard again.",
-      "A ladder is an online ranking of characters by experience earned. Diablo II’s patch 1.10, released on 28 October 2003, introduced seasonal ladder characters. Players opted in by creating a new character, starting at level one in a separate economy without their existing stockpile of equipment. At the end of a season, those characters moved into non-ladder play; joining the next season meant starting again. The reset renewed both the race and the value of finding ordinary equipment.",
-      "The continuity remains visible in Diablo IV. Its September 2026 anniversary season revisits Tristram Cathedral, the site of the original descent, through memories and echoes. Familiar fiction now sits inside a seasonal occasion. A long-running book or film series can also make an old setting meaningful to a new release. Here we can see both the inherited appeal and a changed way of organizing the visit.",
-      "Other payment models were already present before either franchise. Gauntlet was a 1985 arcade game, played on a coin-operated machine. Its manual lets the operator set how much health a coin buys and recommends balancing worthwhile sessions against earnings. If play lasts too long, it suggests raising difficulty before reducing health per coin, since players notice the latter more readily. Commercial decisions reached directly into the rules.",
-      "Early text-based online worlds made the cost of connection another design problem. In his MUD Advanced Project Report, designer Richard Bartle compared hourly charging with a fixed fee for a period of unlimited access. A predictable bill could make participation easier to contemplate. Subscription access, uncertain usage charges and the expense of keeping people connected did not begin with modern seasonal games.",
-      "What digital distribution changed was the ease of reaching customers and continuing the relationship. Economists Avi Goldfarb and Catherine Tucker organize their research around falling costs of search, copying, transport, tracking and verification. Applied to games, that helps explain the possibilities of downloadable releases, updates and stores. It does not remove the work of designing the game, maintaining it or making something people want next.",
-      "Changes in delivery and payment can also follow different paths. Netflix introduced streaming in January 2007 as an addition to its existing DVD subscription. The way a film reached the viewer changed without inventing the recurring bill. In games, a digital download can still be a single purchase, and an online community need not be supported by a monthly fee.",
-      "Valve’s team shooter Team Fortress 2 moved from paid entry to free-to-play in 2011, allowing people to join without buying the game. Its Dota 2, a team strategy game, sold a tournament companion called the Compendium in 2013. Purchasers could follow the event, make predictions, collect rewards and contribute to its prize pool. That resembles buying something to participate in a sporting occasion, as well as buying something for oneself.",
-      "Crossy Road, a mobile game about crossing roads and other hazards, combined character sales with optional rewarded video: a player chose to watch an advertisement for an in-game benefit. Its creators discussed that mixture in 2015. Advertising adds another customer to the arrangement. The player receives entertainment or a reward while an advertiser pays to reach them.",
-      "These models are available ingredients, not successive stages that every game must pass through. A release can support years of play. A season can renew shared activity without requiring a purchase. A shop can sit beside a paid campaign. The important question is how the combined arrangement works for its participants—including what happens when a promised online world cannot sustain them.",
-    ],
-    takeaway:
-      "Inspect each layer of the exchange; several commercial histories may occupy the same game.",
-    panel: {
-      title: "Selected historical anchors",
-      flow: true,
-      items: [
-        { label: "1985 · Gauntlet", text: "Coins, health and operator tuning" },
-        {
-          label: "2011 · Team Fortress 2",
-          text: "A shipped game moves to free-to-play",
-        },
-        {
-          label: "2013 · Dota 2",
-          text: "Tournament companion, participation and rewards",
-        },
-        {
-          label: "2015 · Crossy Road talk",
-          text: "Optional video funds some play",
-        },
-        {
-          label: "2022 · Halo policy",
-          text: "Premium tracks remain accessible",
-        },
-        {
-          label: "2025 · Diablo IV",
-          text: "Reliquaries separate access from claiming",
-        },
-      ],
-    },
-    figures: [
-      {
-        asset: "gauntlet-options-manual-p3-4",
-        alt: "Gauntlet operator manual table with game difficulty and health-per-coin switches",
-        caption:
-          "Health-per-coin settings in the 1985 Gauntlet operator manual, printed page 3-4. A commercial variable is exposed as a game rule.",
-        credit: "Atari · manual preserved by Stardust Arcade",
-      },
-    ],
-    sources: ["bg-lineage", "diablo-story", "d2-postmortem", "d2-retrospective", "d2-expansion", "d2-ladder-ranking", "d2-110-launch", "d2-ladder", "d4-anniversary", "gauntlet", "hist-bartle", "digital-economics", "netflix-2007", "tf2", "dota", "crossy", "reliquary"],
-    evidence: "Selected histories, not invention claims or an exhaustive global chronology. BioWare dates Baldur’s Gate to 1998; neither franchise is described as forty years old. Original D2 content is distinguished from later Resurrected editions and future expansions. Patch 1.10 dates seasonal ladder characters, not the first ranking. The D4 anniversary example is September 2026. Economic research identifies broad cost changes; its application to games is our synthesis. Netflix is a dated delivery example, not a claim that Diablo uses its subscription model. Gauntlet and Bartle establish earlier commercial design considerations. No release interval is treated as evidence of a studio’s cash flow.",
-    paragraphCitations: {
-      "0": ["bg-lineage", "diablo-story"],
-      "1": ["d2-postmortem", "d2-retrospective"],
-      "2": ["d2-postmortem", "d2-expansion"],
-      "3": ["d2-ladder-ranking", "d2-110-launch", "d2-ladder"],
-      "4": ["d4-anniversary"],
-      "5": ["gauntlet"],
-      "6": ["hist-bartle"],
-      "7": ["digital-economics"],
-      "8": ["netflix-2007"],
-      "9": ["tf2", "dota"],
-      "10": ["crossy"],
-    },
-      sections: [{"at": 1, "title": "Replayability came in the box"}, {"at": 5, "title": "Other ways to sell play"}, {"at": 7, "title": "The connection stays open"}],
   },
   {
     id: "concord",

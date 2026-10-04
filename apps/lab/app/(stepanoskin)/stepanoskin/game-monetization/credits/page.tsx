@@ -30,6 +30,6 @@ export default function CreditsPage() {
     <section aria-labelledby="catalog-parodies"><h2 id="catalog-parodies">Original catalog parodies</h2><p>The opening chapter reinterprets three recognizable screen worlds to examine the invitation to keep watching. These are original procedural illustrations and invented titles, not official Netflix posters or actual catalog listings. Their reference works and creators are credited below; the original production images were studied, not embedded in these drawings.</p>
       <div className={styles.sources}>{coverReferences.map(cover=><article key={cover.id} id={cover.id}><h3>{cover.title}</h3><p>{cover.detail}</p><p className={styles.credit}>Reference work: {cover.original} · {cover.creator}</p><p><a href={cover.source} target="_blank" rel="noreferrer">Netflix Tudum — original production reference ↗</a></p></article>)}</div>
     </section>
-    <footer><p>For a source correction or rights concern, identify the image and the chapter through <a href="https://github.com/stepan-o/fruitful-lab/issues">the project’s issue tracker</a>. No confidential material is needed.</p><Link href={chapterHref("the-fork")}>Return to the study →</Link></footer>
+    <footer><p>For a source correction or rights concern, identify the image and the chapter through <a href="https://github.com/stepan-o/fruitful-lab/issues">the project’s issue tracker</a>. No confidential material is needed.</p><Link href={chapterHref("insert-coin")}>Return to the study →</Link></footer>
   </main>;
 }

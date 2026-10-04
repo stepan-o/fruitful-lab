@@ -22,9 +22,11 @@ import {
   Evidence,
 } from "./plates/Contracts";
 import { ProbabilityLab, PriceLab } from "./Experiments";
+import ArcadeExchange from "./plates/ArcadeExchange";
 import AfterPurchase from "./plates/AfterPurchase";
 import s from "./exhibits.module.css";
 const instruments = {
+  "insert-coin": ArcadeExchange,
   "the-fork": AfterPurchase,
   "six-games": PromiseAtlas,
   "the-reset": Transfer,

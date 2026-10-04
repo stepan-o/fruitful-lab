@@ -1,7 +1,11 @@
 .factory { position:absolute; inset:0; width:100%; pointer-events:none; z-index:0; }
 .scene { position:absolute; inset:0 0 24px; overflow:hidden; }
 .canvas { position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0; }
-.fallback { position:absolute; bottom:0; width:100%; height:320px; display:block; }
+.fallback { position:absolute; inset:0; overflow:hidden; }
+.stillForge { position:absolute; inset:0; background:var(--forge-large) center bottom / max(1150px,100%) auto no-repeat; mask-image:linear-gradient(transparent 35%,#000 70%); }
+.stillBrains { position:absolute; display:flex; justify-content:space-around; gap:30px; left:-40px; right:-40px; bottom:132px; }
+.stillBrains i { flex:0 0 190px; height:190px; background-image:var(--brain-large); background-size:300% 200%; }
+@media(max-width:640px) { .stillForge { background-image:var(--forge-small); background-size:auto 440px; }.stillBrains { bottom:95px; gap:25px; }.stillBrains i { flex-basis:155px; height:155px; background-image:var(--brain-small); } }
 .factory[data-ready="true"] .canvas { opacity:1; }
 .factory[data-ready="true"] .fallback { visibility:hidden; }
 .identifier { display:none!important; position:absolute; z-index:2; left:clamp(22px,4vw,64px); right:clamp(22px,4vw,64px); bottom:310px; display:flex; justify-content:space-between; gap:20px; color:#919b7a; font:8px/1.5 monospace; letter-spacing:.18em; }

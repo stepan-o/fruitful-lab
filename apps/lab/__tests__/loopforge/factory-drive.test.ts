@@ -4,12 +4,13 @@ function advance(d: ReturnType<typeof createDrive>, seconds: number) {
   for (let i=0; i<Math.ceil(seconds*30); i++) stepDrive(d, 1/30);
 }
 
-test("the drive visibly holds between pulls, then jams without slipping or restarting itself", () => {
+test("the loaded drive keeps advancing at uneven speed until a real jam", () => {
   const d=createDrive(), speeds=[];
-  for(let i=0;i<60;i++) { stepDrive(d,1/30); speeds.push(d.velocity); }
-  expect(speeds.filter(v=>v===0).length).toBeGreaterThan(10);
+  for(let i=0;i<540;i++) { const previous=d.distance; stepDrive(d,1/30); speeds.push(d.velocity); expect(d.distance).toBeGreaterThan(previous); }
+  expect(Math.min(...speeds)).toBeGreaterThan(8);
+  expect(Math.max(...speeds)-Math.min(...speeds)).toBeGreaterThan(25);
   expect(Math.max(...speeds)).toBeGreaterThan(50);
-  advance(d,18);
+  advance(d,2);
   expect(d.status).toBe("jammed");
   const distance=d.distance;
   advance(d,60);

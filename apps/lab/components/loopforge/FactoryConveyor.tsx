@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, useId, type PointerEvent } from "react";
+import { useEffect, useRef, useState, useId, type PointerEvent, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import { playClang } from "@/lib/stepanoskin/audio";
 import { motionKey, usePreference } from "@/lib/stepanoskin/preferences";
 import { createDrive, restartDrive, stepDrive, type Drive } from "./factory-drive";
 import { createFactoryRenderer } from "./factory-renderer";
+import { factoryArt } from "./factory-art";
 import styles from "./factory-conveyor.module.css";
 
 /** A decorative factory line. It has no connection to simulation state or model calls. */
@@ -33,7 +34,7 @@ export default function FactoryConveyor({ controlTarget }: { controlTarget?: HTM
     const renderer = createFactoryRenderer(target);
     if (!renderer) return;
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0, last = 0, visible = false, active = false;
+    let frame = 0, last = 0, visible = false, active = false, loaded = false, disposed = false;
     function drawStill() { renderer!.draw(drive.current, true); }
     function tick(now: number) {
       if (!active) return;
@@ -50,7 +51,7 @@ export default function FactoryConveyor({ controlTarget }: { controlTarget?: HTM
     }
     function sync() {
       cancelAnimationFrame(frame); last = 0;
-      active = motionRef.current && !media.matches && visible && !document.hidden;
+      active = loaded && motionRef.current && !media.matches && visible && !document.hidden;
       element!.dataset.animating = String(active);
       if (controlsRef.current) controlsRef.current.dataset.animating = String(active);
       if (active) frame = requestAnimationFrame(tick);
@@ -72,7 +73,7 @@ export default function FactoryConveyor({ controlTarget }: { controlTarget?: HTM
     };
     const mediaChanged = () => { setReduced(media.matches); sync(); };
     const observer = new IntersectionObserver(([entry]) => {
-      setReady(true); setReduced(media.matches);
+      setReduced(media.matches);
       visible = entry.isIntersecting; sync();
     }, { threshold: .12 });
     observer.observe(target);
@@ -81,8 +82,9 @@ export default function FactoryConveyor({ controlTarget }: { controlTarget?: HTM
     media.addEventListener("change", mediaChanged);
     document.addEventListener("visibilitychange", sync);
     resize(); sync();
+    renderer.ready.then(ok => { if (disposed) return; loaded=ok; setReady(ok); resize(); sync(); });
     return () => {
-      active = false; cancelAnimationFrame(frame);
+      disposed = true; active = false; cancelAnimationFrame(frame);
       observer.disconnect(); sizing.disconnect();
       media.removeEventListener("change", mediaChanged);
       document.removeEventListener("visibilitychange", sync);
@@ -112,7 +114,7 @@ export default function FactoryConveyor({ controlTarget }: { controlTarget?: HTM
         <div className={styles.readout}>
           <span className={styles.micro}>LINE 01 · MANUAL OVERRIDE</span>
           <p role="status" aria-live="polite" aria-atomic="true"><i aria-hidden="true"/>{status === "jammed" ? "LINE JAMMED" : status === "restarting" ? "DRIVE ENGAGING" : stoppedMotion || !ready ? "LINE AT REST" : "PRODUCTION IN PROGRESS"}</p>
-          <span className={styles.hint} id={hintId}>{status === "jammed" ? "Pull down to restart." : status === "restarting" ? "Taking up the slack. Stand clear." : "Continuity not guaranteed."}</span>
+          <span className={styles.hint} id={hintId}>{status === "jammed" ? "Pull down to restart." : status === "restarting" ? "Taking up the slack. Stand clear." : "If it jams, pull the lever down."}</span>
         </div>
         <div className={styles.station}>
           <button className={styles.motion} onClick={() => setMotion(!motion)} aria-label={motion ? "Pause factory motion" : "Resume factory motion"} aria-pressed={motion} disabled={reduced}>
@@ -138,13 +140,15 @@ export default function FactoryConveyor({ controlTarget }: { controlTarget?: HTM
     <section ref={root} className={styles.factory} data-state={status} data-ready={ready} data-animating="false" lang="en" aria-label="Loopforge cortex assembly line">
       <div className={styles.identifier} aria-hidden="true"><span>CORTEX ASSEMBLY</span><span>LINE 01 / CONTINUOUS IMPROVEMENT*</span></div>
       <div className={styles.scene}>
-        <svg className={styles.fallback} viewBox="0 0 1200 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs><linearGradient id="lf-still-metal" x2="0" y2="1"><stop stopColor="#8b8460"/><stop offset=".3" stopColor="#243b2d"/><stop offset="1" stopColor="#0d1914"/></linearGradient></defs>
-          <path d="M0 177H1200V249H0z" fill="url(#lf-still-metal)" stroke="#706a45"/>
-          {Array.from({length:8},(_,i)=><g key={i} transform={`translate(${i*180-35} 174)`}><path d="M-68 0l14-12H57L70 0v13H-68z" fill="#465140" stroke="#a09467"/><path d="M-48-14C-75-42-40-78-18-76C5-103 50-80 55-62C82-39 56-9 34-11C8 0-25-2-48-14Z" fill="#a57a4d" stroke="#493c25" strokeWidth="4"/><path d="M0-77C-16-58 15-47-2-25M-33-63q-22 15 3 23t-4 20M23-64q23 5 10 21t10 17" fill="none" stroke="#4b3e2b" strokeWidth="5"/><path d="M-21-72C-58-67-60-24-29-11M11-73C-10-48 45-48 35-16M-35-37C-7-35-7-3 27-9" fill="none" stroke="#1b5048" strokeWidth="5"/><path d="M-21-72C-58-67-60-24-29-11M11-73C-10-48 45-48 35-16M-35-37C-7-35-7-3 27-9" fill="none" stroke="#5bc9bd" strokeWidth="2"/></g>)}
-          {Array.from({length:15},(_,i)=><circle key={i} cx={i*86} cy="264" r="23" fill="#15271e" stroke="#797955" strokeWidth="4"/>)}
-          <path d="M584 317v-22a16 16 0 0132 0v22z" fill="#b78433"/><path d="M577 317h46v12h-46z" fill="#6b674b"/>
-        </svg>
+        <div className={styles.fallback} aria-hidden="true" style={{
+          "--forge-small": `url("${factoryArt.lattice.variants[0].src}")`,
+          "--forge-large": `url("${factoryArt.lattice.variants[1].src}")`,
+          "--brain-small": `url("${factoryArt.specimens.variants[0].src}")`,
+          "--brain-large": `url("${factoryArt.specimens.variants[1].src}")`,
+        } as CSSProperties}>
+          <div className={styles.stillForge}/>
+          <div className={styles.stillBrains}>{[0,1,2,3,4,5].map(i=><i key={i} style={{backgroundPosition:`${(i%3)*50}% ${Math.floor(i/3)*100}%`}}/>)}</div>
+        </div>
         <canvas ref={canvas} className={styles.canvas} aria-hidden="true" />
       </div>
       {controlTarget ? createPortal(controls, controlTarget) : controlTarget === undefined ? controls : null}

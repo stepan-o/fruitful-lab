@@ -3,13 +3,16 @@ import { type NeuralWeave } from "./factory-neural";
 export const specimenSlots = [0, 1, 2, 3, 5, 4, 3, 5, 1, 4, 2, 0] as const;
 // Authored against the six 512px atlas cells: fibres enter the cortical folds
 // and terminate at the actual fittings. No shared perimeter cable template.
+// The lower atlas row sits 59 source pixels higher; normalize the physical
+// contact plane in both the cached sprite and its registered neural paths.
+export const specimenLift = (variant: number) => variant >= 3 ? 59 : 0;
 const fibres = [
-  [[110,286,104,255,138,248,130,218], [373,329,354,313,369,288,353,271]],
-  [[91,277,109,263,93,239,121,222], [337,328,350,307,325,284,342,267]],
-  [[184,299,201,279,184,264,205,244], [410,249,390,261,389,283,369,297]],
-  [[340,260,367,278,346,303,382,319], [129,207,150,199,140,182,169,169]],
-  [[367,232,353,259,382,275,382,300], [142,268,129,245,157,230,151,210]],
-  [[131,277,149,266,130,245,160,227], [380,295,365,274,395,257,379,235]],
+  [[155,249,172,265,160,282,181,298], [335,218,359,227,343,253,355,272]],
+  [[101,275,119,253,101,233,128,216], [337,320,350,300,331,282,350,266]],
+  [[299,275,268,302,284,351,218,375], [322,260,300,252,260,262,235,249]],
+  [[322,246,337,272,360,306,381,320], [139,181,158,176,143,157,163,146]],
+  [[396,224,415,248,420,276,433,307], [140,260,125,243,152,226,147,210]],
+  [[136,228,157,218,139,198,165,184], [364,205,342,193,370,172,360,154]],
 ];
 export function specimenWeave(variant: number, seed: number): NeuralWeave {
   const routes = fibres[variant].map(v => {
@@ -17,7 +20,7 @@ export function specimenWeave(variant: number, seed: number): NeuralWeave {
     const t=k/192,u=1-t;
     const x=u*u*u*v[0]+3*u*u*t*v[2]+3*u*t*t*v[4]+t*t*t*v[6];
     const y=u*u*u*v[1]+3*u*u*t*v[3]+3*u*t*t*v[5]+t*t*t*v[7];
-    return [x/512*210-105,y/512*210-172];
+    return [x/512*210-105,(y+specimenLift(variant))/512*210-172];
   });
     const lengths=[0];
     for(let k=1;k<samples.length;k++)lengths.push(lengths[k-1]+Math.hypot(samples[k][0]-samples[k-1][0],samples[k][1]-samples[k-1][1]));

@@ -1,6 +1,25 @@
+export const beaconSpeed = { idle: .78, alarm: 3.9 } as const;
+export type BeaconRotor = { phase: number; speed: number; time: number };
+export function createBeaconRotor(): BeaconRotor { return { phase: 2.45, speed: beaconSpeed.idle, time: 0 }; }
+
+/** Integrate the motor, rather than multiplying time by a new speed at a jam.
+ * The exact exponential integral keeps both angle and speed continuous across
+ * acceleration/restart, and repeated resize/still draws cannot advance it. */
+export function stepBeaconRotor(rotor: BeaconRotor, time: number, alarm: boolean, still = false) {
+  if (still) return beaconOrbit(2.45);
+  const dt = Math.max(0, Math.min(.08, time - rotor.time));
+  rotor.time = time;
+  const target = alarm ? beaconSpeed.alarm : beaconSpeed.idle;
+  const response = alarm ? .18 : .7;
+  const decay = Math.exp(-dt / response);
+  rotor.phase = (rotor.phase + target * dt + (rotor.speed - target) * response * (1 - decay)) % (Math.PI * 2);
+  rotor.speed = target + (rotor.speed - target) * decay;
+  return beaconOrbit(rotor.phase);
+}
+
 /** One continuous revolution about a vertical shaft, projected onto the stage. */
-export function beaconOrbit(seconds: number, still = false) {
-  const phase = still ? 2.45 : seconds * .78;
+export function beaconOrbit(radians: number, still = false) {
+  const phase = still ? 2.45 : radians;
   const lateral = Math.sin(phase), depth = Math.cos(phase);
   return {
     phase,
@@ -9,7 +28,7 @@ export function beaconOrbit(seconds: number, still = false) {
     // Perspective compresses the front/back axis. This travels through a full
     // turn; it is not a sine-driven pendulum around the vertical screen axis.
     angle: Math.atan2(lateral, -depth * .46),
-    facing: Math.pow(Math.max(0, depth), 9),
+    facing: Math.pow(Math.max(0, depth), 14),
   };
 }
 

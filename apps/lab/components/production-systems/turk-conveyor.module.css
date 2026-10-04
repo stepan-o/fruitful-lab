@@ -14,8 +14,9 @@
   opacity: var(--still-opacity);
   animation: exhale var(--cycle-period) linear var(--delay) infinite;
 }
-.smokeValue { fill: #58615a; font: italic 17px Georgia, serif; }
-.smokeVerdict { fill: #58615a; font: italic 14px Georgia, serif; }
+.smokeLift { font: 18px Georgia, serif; }
+.smokeValue { fill: #746c5f; font: italic 12.5px Georgia, serif; }
+.smokeVerdict { fill: #665f51; font: italic 13px Georgia, serif; }
 .belt, .returnBelt, .driveChain, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack { animation-play-state: paused !important; }
 :global([data-playing="true"]) :is(.belt, .returnBelt, .driveChain, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack) { animation-play-state: running !important; }
 @keyframes register { to { transform: translateY(85px); } }
@@ -39,11 +40,11 @@
 /* Only three short-lived emissions occupy the plume at once. No blur filter,
    particle engine, per-frame JavaScript, or text beneath the illustration. */
 @keyframes exhale {
-  0% { transform: translate(-3px, -18px); opacity: 0; }
-  1% { transform: translate(-4px, -22px); opacity: .96; }
-  9% { transform: translate(-17px, -62px); opacity: .96; }
-  17% { transform: translate(-34px, -109px) rotate(-2deg); opacity: .72; }
-  28%, 100% { transform: translate(-55px, -177px) rotate(-5deg); opacity: 0; }
+  0% { transform: translate(-3px, -46px); opacity: 0; }
+  1% { transform: translate(-4px, -51px); opacity: .96; }
+  9% { transform: translate(-17px, -110px); opacity: .96; }
+  17% { transform: translate(-34px, -172px) rotate(-2deg); opacity: .72; }
+  28%, 100% { transform: translate(-55px, -249px) rotate(-5deg); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .belt, .returnBelt, .driveChain, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack { animation: none; }

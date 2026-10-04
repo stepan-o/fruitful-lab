@@ -1,12 +1,12 @@
-.scene { width: 100%; margin-top: 22px !important; color: #59635f; }
+.scene { width: 100%; margin-top: 22px !important; color: var(--muted); }
 .art { width: 100%; height: auto; display: block; overflow: visible; }
-.scene figcaption { display: flex; gap: 12px; border-top: 1px solid #c8c2b0; padding-top: 13px; font-family: Georgia, serif; font-style: italic; font-size: 15px; line-height: 1.5; }
-.figureNumber { font-size: 11px; padding-top: 3px; color: #78602c; font-style: normal; flex: 0 0 20px; }
+.scene figcaption { display: flex; gap: 12px; border-top: 1px solid var(--line); padding-top: 13px; font-family: Georgia, serif; font-style: italic; font-size: 15px; line-height: 1.5; }
+.figureNumber { font-size: 11px; padding-top: 3px; color: var(--accent); font-style: normal; flex: 0 0 20px; }
 .compact { max-width: 330px; }
-.motionBar { visibility: hidden; max-width: 1184px; margin: 12px auto -38px; display: flex; justify-content: flex-end; align-items: center; gap: 22px; color: #59635f; font-size: 11px; }
+.motionBar { visibility: hidden; max-width: 1184px; margin: 12px auto -38px; display: flex; justify-content: flex-end; align-items: center; gap: 22px; color: var(--muted); font-size: 11px; }
 :global([data-motion-ready="true"]) .motionBar { visibility: visible; }
 .motionBar > span { font-family: Georgia, serif; font-style: italic; }
-.motionBar button { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; padding: 7px 0 7px 10px; border: 0; background: transparent; color: #78602c; font-size: 11px; }
+.motionBar button { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; padding: 7px 0 7px 10px; border: 0; background: transparent; color: var(--accent); font-size: 11px; }
 .motionBar button:hover { text-decoration: underline; text-underline-offset: 4px; }
 .motionBar button span { width: 13px; text-align: center; }
 .wheel, .wheelReverse, .flame, .glow, .operatorArm, .turkHand, .knight, .comparator, .press, .roller, .conveyorCard { animation-play-state: paused !important; }

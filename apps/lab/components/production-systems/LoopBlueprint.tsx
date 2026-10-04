@@ -7,6 +7,7 @@ import motion from "./turk-conveyor.module.css";
 import TurkConveyor from "./TurkConveyor";
 import TurkMovement from "./TurkMovement";
 import TurkCabinet from "./TurkCabinet";
+import ConveyorPace from "./ConveyorPace";
 
 const ink = "#463a30";
 const paper = "#f4f2eb";
@@ -16,7 +17,8 @@ const figure = figureStudies.studies.automaton;
 const trayPeriod = 2.4;
 const outfeedLead = 58 / 88 * trayPeriod;
 
-// Synthetic normal-model examples: estimate ± 1.96 SE and two-sided p-values.
+// Synthetic normal-model examples: chart units are tenths of a percent
+// relative lift. Scaling estimate and SE equally preserves the two-sided p-values.
 // Most estimates sit near zero; one large gain and two losses punctuate the run.
 // Cases 2 and 7 have fictional underlying effects of 0 and +61 respectively.
 // Their hindsight labels are narrative facts, not inferences from p-values.
@@ -63,7 +65,7 @@ function ResultRegister() {
     <path d="M399 352H575V472Q574 481 567 483H392Q402 478 399 466Z" fill="#f0e7d0" stroke={ink} strokeWidth="1" />
     <path d="M400 356H574M404 478H567" stroke="#cbbb96" strokeWidth=".7" />
     <path d="M406 374H565M456 371V468" stroke="#8f826b" strokeWidth=".8" />
-    <text x="408" y="365" fill={ink} fontFamily="Georgia, serif" fontSize="9" fontStyle="italic">Effect B − A</text>
+    <text x="408" y="365" fill={ink} fontFamily="Georgia, serif" fontSize="9" fontStyle="italic">Relative lift (%)</text>
     <text x="561" y="370" fill="#766c5c" fontFamily="Georgia, serif" fontSize="9" textAnchor="end">p</text>
     <text x="456" y="373" fill={ink} fontFamily="Georgia, serif" fontSize="9" textAnchor="middle">0</text>
     <path d="M406 376v90M535 376v90" stroke="#b6a98c" strokeWidth=".5" strokeDasharray="1 3" />
@@ -95,7 +97,8 @@ function ResultRegister() {
 
 /** Verdicts are carried by the exhaust itself, not by a caption or dashboard.
  * The sequence follows the outfeed's reversed order as trays move to the right.
- * Each ten-result period takes 24 seconds, with one emission per 2.4-second tray.
+ * The logical period is 24 seconds, with one emission per 2.4-second tray.
+ * Medium playback gives ~21.82 seconds per cycle and ~2.18 seconds per tray.
  */
 function ResultExhalation() {
   const verdicts = [
@@ -107,16 +110,19 @@ function ResultExhalation() {
     {outcomes.map((result, index) => <g key={index} className={motion.smoke} data-outcome={index} style={{
       "--delay": `${round(outfeedLead + ((6 - index + outcomes.length) % outcomes.length) * trayPeriod - outcomes.length * trayPeriod)}s`,
       "--still-x": index === 0 ? "-14px" : index === 3 ? "-39px" : "-60px",
-      "--still-y": index === 0 ? "-29px" : index === 3 ? "-92px" : "-154px",
+      "--still-y": index === 0 ? "-48px" : index === 3 ? "-126px" : "-204px",
       "--still-opacity": [0, 3, 6].includes(index) ? .88 : 0,
     } as CSSProperties}>
       <g fill="none" stroke="#90928a" strokeWidth=".7" opacity=".2">
         <path d="M-14 17C-43 7-22-5-34-17S-63-32-45-46M17 22C44 9 14-8 32-20S58-39 45-53" />
         <path d="M-1 23C-18 12 7 2-5-10M23-26c-10-14 5-18 13-24" strokeWidth=".45" />
       </g>
-      <text className={motion.smokeValue} textAnchor="middle" y="-7">p {result.p.startsWith("<") ? result.p : `= ${result.p}`}</text>
-      <text className={motion.smokeVerdict} textAnchor="middle" y="11">
-        {verdicts[index].map((line, row) => <tspan key={line} x="0" dy={row === 0 ? 0 : 16}>{line}</tspan>)}
+      <text className={motion.smokeLift} textAnchor="middle" y="-12" fill={result.estimate >= 0 ? "#52694d" : "#87564b"}>
+        {result.estimate >= 0 ? "+" : "−"}{(Math.abs(result.estimate) / 10).toFixed(1)}% lift
+      </text>
+      <text className={motion.smokeValue} textAnchor="middle" y="5">p {result.p.startsWith("<") ? result.p : `= ${result.p}`}</text>
+      <text className={motion.smokeVerdict} textAnchor="middle" y="21">
+        {verdicts[index].map((line, row) => <tspan key={line} x="0" dy={row === 0 ? 0 : 14}>{line}</tspan>)}
       </text>
     </g>)}
   </g>;
@@ -171,14 +177,15 @@ export default function LoopBlueprint() {
   return (
     <figure className={styles.blueprint} aria-labelledby="loop-title" data-engraving="conveyor" data-playing="false" style={{ "--tray-period": `${trayPeriod}s`, "--cycle-period": `${outcomes.length * trayPeriod}s` } as CSSProperties}>
       <div className={styles.plateHeader}><span>Fig. 01 / The experiment engine</span><span>Illustrative experiments</span></div>
+      <ConveyorPace />
       <svg className={styles.loopSvg} viewBox="0 0 680 550" role="img" aria-labelledby="loop-title loop-description">
         <title id="loop-title">The Mechanical Turk operating an A/B experiment conveyor</title>
-        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a finely joined walnut cabinet, with a molded base, turned feet, recessed paneling and an open door on small brass hinges. Its forearms reach over a continuously moving conveyor of jointed chessboard slats, supported by bolted brackets and end bearings. Inside the open cabinet, eleven brass and dark steel wheels turn at different speeds: a large slow flywheel, fast small pinions and an overlapping reduction train. Recessed bearings leave the gears exposed. The output wheel shares an axle with a guarded chain that drives the conveyor’s head drum; a return run travels beneath the fixed frame. The Turk stamps paired A/B specimens into effect estimates. P-values and verdicts exhale from the outfeed in clear lettering that rises and gradually dissolves into smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
+        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a finely joined walnut cabinet, with a molded base, turned feet, recessed paneling and an open door on small brass hinges. Its forearms reach over a continuously moving conveyor of jointed chessboard slats, supported by bolted brackets and end bearings. Inside the open cabinet, eleven brass and dark steel wheels turn at different speeds: a large slow flywheel, fast small pinions and an overlapping reduction train. Recessed bearings leave the gears exposed. The output wheel shares an axle with a guarded chain that drives the conveyor’s head drum; a return run travels beneath the fixed frame. The Turk stamps paired A/B specimens into effect estimates. Signed relative lifts, p-values and verdicts exhale from the outfeed in clear lettering that rises and gradually dissolves into smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples in relative percent lift and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
         <defs>
           <pattern id="turk-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke={ink} strokeWidth=".55" opacity=".45" /></pattern>
           <pattern id="turk-crosshatch" width="5" height="5" patternUnits="userSpaceOnUse"><path d="m0 0 5 5M0 5 5 0" stroke={ink} strokeWidth=".5" opacity=".45" /></pattern>
           <pattern id="turk-checker" width="44" height="32" patternUnits="userSpaceOnUse"><rect width="44" height="32" fill="#c4b08b" /><path d="M0 0H22V16H0ZM22 16H44V32H22Z" fill="#827b60" /><path d="M4 0V32M9 0V32M15 0V32M26 0V32M31 0V32M37 0V32" stroke={ink} strokeWidth=".45" opacity=".25" /><path d="M0 0V32M22 0V32M44 0V32" stroke="#504737" strokeWidth="1.3" /><path d="M1.5 0V32M23.5 0V32" stroke="#e2cca1" strokeWidth=".6" /></pattern>
-          <clipPath id="turk-belt-window"><path d="M63 0H463V64H63Z" /></clipPath>
+          <clipPath id="turk-belt-window"><path d="M68.95 0H463V64H68.95Z" /></clipPath>
           <clipPath id="turk-results-window"><path d="M463 0H628V64H463Z" /></clipPath>
           <g id="turk-engraved-figure"><TurkFigure /></g>
           <clipPath id="turk-figure-silhouette"><path d={figure.outline} /></clipPath>

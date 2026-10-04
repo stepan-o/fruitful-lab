@@ -14,17 +14,15 @@ import { localeCookieName, localeNames, locales, translations, type Locale } fro
 import FactoryConveyor from "@/components/loopforge/FactoryConveyor";
 
 const menuItems = [
-    { id: "loopforge-overview", href: "/stepanoskin/loopforge/overview/the-factory", title: "Loopforge — the game", description: "Inside the artificial brain factory. Presentation in English." },
-    { id: "loopforge-engine", href: "/stepanoskin/loopforge/architecture/the-thesis", title: "Loopforge — the engine", description: "Truth stays clean. Story gets messy. Presentation in English." },
-    { id: "loopforge-play", href: "/stepanoskin/loopforge/play", title: "Enter the factory", description: "Take the director’s chair. Eight-shift prototype in English." },
+    { id: "loopforge-overview", href: "/stepanoskin/loopforge/overview/the-factory", title: "The game", description: "Inside the artificial brain factory. Presentation in English." },
+    { id: "loopforge-engine", href: "/stepanoskin/loopforge/architecture/the-thesis", title: "The engine", description: "Truth stays clean. Story gets messy. Presentation in English." },
+    { id: "loopforge-play", href: "/stepanoskin/loopforge/play", title: "Enter factory", description: "Take the director’s chair. Eight-shift prototype in English." },
 ] as const;
 
 const assets = parseManifest(manifest, "stepanoskin");
 const assetStyles = {
     "--asset-logo": `url("${assetUrl(assets, "logo")}")`,
     "--asset-noise": `url("${assetUrl(assets, "noise")}")`,
-    "--asset-gunmetal": `url("${assetUrl(assets, "gunmetal")}")`,
-    "--asset-glare": `url("${assetUrl(assets, "glare")}")`,
 } as CSSProperties;
 export default function LoopforgeLanding({ initialLocale }: { initialLocale: Locale }) {
     const router = useRouter();
@@ -32,6 +30,7 @@ export default function LoopforgeLanding({ initialLocale }: { initialLocale: Loc
     const [soundEnabled, setSoundEnabled] = usePreference(soundKey);
     const [motionEnabled] = usePreference(motionKey);
     const [isActivating, setIsActivating] = useState(false);
+    const [controlTarget, setControlTarget] = useState<HTMLDivElement | null>(null);
     const pointerFrameRef = useRef<number | null>(null);
     const logoFxRef = useRef<HTMLDivElement | null>(null);
     const copy = translations[locale];
@@ -118,14 +117,16 @@ export default function LoopforgeLanding({ initialLocale }: { initialLocale: Loc
                 </div>
             </header>
 
+            <FactoryConveyor controlTarget={controlTarget} />
             <section className={styles.stage}>
+                <h1 className={styles.srOnly}>Loopforge — AI Brain Factory</h1>
                 <div className={styles.logoWrap}>
                     <div className={styles.logoGlow} aria-hidden="true" />
                     <AssetImage
                         className={styles.logo}
                         asset={imageAsset(assets, "logo")}
                         alt="Loopforge — AI Brain Factory"
-                        sizes="(max-width: 720px) 94vw, 760px"
+                        sizes="(max-width: 640px) 280px, 440px"
                         preload
                     />
                     <div className={styles.logoFx} ref={logoFxRef} aria-hidden="true">
@@ -140,10 +141,8 @@ export default function LoopforgeLanding({ initialLocale }: { initialLocale: Loc
                 </div>
 
                 <div className={styles.menuShell}>
-                    <div className={styles.menuHeader}>
-                        <span className={styles.eyebrow}>{copy.menuEyebrow}</span>
-                        <h1>{copy.menuTitle}</h1>
-                    </div>
+                    <span className={styles.eyebrow}>{copy.menuEyebrow}</span>
+                    <div className={styles.menuRow}>
 
                     <nav className={styles.menuList} aria-label={copy.menuTitle}>
                         {menuItems.map((item, index) => (
@@ -158,18 +157,15 @@ export default function LoopforgeLanding({ initialLocale }: { initialLocale: Loc
                                     <strong>{item.title}</strong>
                                     <small>{item.description}</small>
                                 </span>
-                                <span className={styles.itemAction}>
-                                    <small>{copy.available}</small>
-                                    <strong>{copy.enter}</strong>
-                                    <span aria-hidden="true">›</span>
-                                </span>
+
                             </Link>
                         ))}
                     </nav>
+                    <div className={styles.resetDock} ref={setControlTarget} />
+                    </div>
                 </div>
             </section>
 
-            <FactoryConveyor />
             <footer className={styles.footer}>
                 <span>LOOPFORGE // 2026</span>
                 <span className={styles.systemStatus}><i /> {copy.systemOnline}</span>

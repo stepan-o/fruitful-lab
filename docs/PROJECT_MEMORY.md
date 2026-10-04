@@ -719,29 +719,26 @@ and `docs/brands/lab/production-systems-evidence/engraving-verification.md` for 
 - Pass history and delivery constraints: `docs/sanctuary/CINEMA_CATALOG_ART_PASSES.md`.
   This draft is being submitted for PR review; later chapters remain iterative.
 
-## Loopforge entrance conveyor · 2026-10-03
+## Loopforge entrance conveyor · 2026-10-04
 
-The `/stepanoskin/loopforge` entrance uses `FactoryConveyor`, a bounded Canvas2D
-scene with cached machinery and twelve seeded cargo sprites. Decorative drive
-state is isolated in `factory-drive.ts`: uneven pulls, a jam after 19 seconds of
-active viewing, manual lever restart, then 33–55 seconds between later jams.
-An amber beacon beneath the belt becomes red on a jam. Pointer drag, click and
-keyboard activation share the reset action; the shared sound preference gates
-the user-triggered clang. Motion obeys the shared manual preference, OS reduced
-motion, intersection and document visibility; a static SVG remains if canvas
-is unavailable. No model requests or new runtime media/dependencies. Compact
-reader/play conveyors remain separate. Overview chapter `the-factory` has no
-Working Exhibit; `Chapter.exhibit` is optional and other chapters retain theirs.
-References, visual checks and rendering limits: `docs/loopforge/CONVEYOR_REFINEMENT.md`.
+The entrance preserves the restored Canvas2D factory illustration. It now fills
+one responsive stage with a compact horizontal text menu and menu-side reset
+station. The full conveyor stays visible in the initial desktop/phone viewport;
+short landscape uses a compact composition. Brain folds retain illustrated
+material shading, seeded variants, damaged cases and cyan braided fibres.
 
-Brain refinement: `factory-neural.ts` caches seeded three-core cyan braid
-geometry/material/emission layers. Each specimen has independent travelling
-signals; one scene-wide discharge may appear at a time, with irregular starts
-at least 4.6s apart and a 1.15s decay. Static and reduced-motion views retain lit
-braids without packets or bursts. This remains decorative and shares the
-existing visibility, frame, pixel and manual-pause limits.
+`factory-light.ts` projects a continuous vertical-shaft beacon revolution.
+Its housing stays upright below the belt. Cached soft fans, projected cargo
+silhouettes, local metal reflections and a viewer-facing flare share its phase;
+subtle amber becomes red on a jam. The held line periodically takes up slack,
+strains and releases without advancing. The nearby handle tugs and its instruction
+is linked to the button. Pointer pull, click and keyboard share one restart action.
 
-Rollback · 2026-10-04: the owner rejected the Three.js stage rebuild. The entrance
-is restored to the Canvas2D version from 34425c4, including cyan neural braids.
-This restoration is not visual acceptance; later layout and lighting requests
-remain unresolved.
+There are no new dependencies or runtime image assets. Decorative state remains
+separate from simulation/model calls. Cached sprites and a reduced-resolution
+light layer run within the shared 30fps, 1800×1100 buffer and 1.25× resolution
+limits. Manual/OS preferences, offscreen and hidden-document suspension remain;
+pause reuses the renderer. Compact reader/play conveyors are unchanged, and
+chapter 01 still has no Working Exhibit. Implementation and measured evidence:
+`docs/loopforge/ILLUSTRATED_STAGE.md`. Field/physical-phone performance remains
+unmeasured; owner visual acceptance is separate from implementation checks.

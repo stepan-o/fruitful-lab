@@ -98,7 +98,7 @@ function ResultRegister() {
 /** Verdicts are carried by the exhaust itself, not by a caption or dashboard.
  * The sequence follows the outfeed's reversed order as trays move to the right.
  * The logical period is 24 seconds, with one emission per 2.4-second tray.
- * Medium playback stretches these to 30 seconds and 3 seconds respectively.
+ * Medium playback gives ~21.82 seconds per cycle and ~2.18 seconds per tray.
  */
 function ResultExhalation() {
   const verdicts = [

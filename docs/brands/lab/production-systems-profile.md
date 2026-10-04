@@ -360,3 +360,20 @@ linked. The control does not simulate accuracy or FDR; synthetic outcomes remain
 fixed at every pace. Professional claims and employer details are unchanged.
 
 Validation: [instrument finish evidence](production-systems-evidence/instrument-finish-verification.md).
+
+
+### Experiment pace tuning · 4 October 2026
+
+Owner feedback moves the previous Fast speed to the default Medium position.
+Rates are now Slow 0.55×, Medium 1.1× and Fast 3×: approximately 4.36, 2.18 and
+0.8 seconds per test. All 35 parts share the same rate, preserving their phase,
+result order and existing motion preferences. The approved illustration and
+page styling are unchanged. Guidelines v1.8.1 record the new timings; the
+original instrument-finish captures/report describe the earlier pace settings.
+
+
+The same follow-up relocates the long diagonal brace that visually crossed the
+open door. A short knee now bolts to the fixed central stile between the mechanism
+and register, and meets the stationary conveyor rail. The continuous rail and
+cabinet crown pads carry the left overhang. Door hinges and the eleven-wheel
+movement retain their geometry; the bracket does not move with the belt.

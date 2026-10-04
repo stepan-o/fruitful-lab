@@ -69,17 +69,23 @@ export default function TurkConveyor({ children }: { children: ReactNode }) {
       <clipPath id="turk-chain-inspection"><path d="M340 324H404V340H340ZM419 324H483V340H419ZM498 324H562V340H498Z" /></clipPath>
     </defs>
 
-    {/* The outboard bed is carried by bolted triangular brackets, not by the door. */}
+    {/* The inboard knee is bolted to the fixed centre stile, clear of the open door.
+        The continuous frame and crown pads carry the left overhang. */}
     <g fill={iron} stroke={ink} strokeWidth="1.1" data-conveyor-part="mounts">
-      <path d="M62 341H158V382H146V359L62 350Z" />
-      <path d="M71 348 146 378V365L94 348Z" fill={brass} />
-      <path d="M146 354H158V386H146Z" fill={brass} />
+      <g data-conveyor-part="frame-brace" data-support-base="centre-stile">
+        <path d="M352 344H392V354H386V383H379V363L352 352Z" />
+        <path d="M358 352 379 377V364L368 352Z" fill={brass} />
+        <path d="M381 353H391V385H381Z" fill={brass} />
+        <path d="M382 354H390M382 354V383M358 353 379 375" fill="none" stroke={edge} strokeWidth=".65" />
+        <Screw x={357} y={351} r={2} />
+        <Screw x={386} y={359} r={2} /><Screw x={386} y={379} r={2} />
+      </g>
       <path d="M577 340H600V355L589 373H577V360L591 348H577Z" />
       <path d="M579 352H589V377H579Z" fill={brass} />
-      <path d="M190 341H214V354H190ZM349 341H373V354H349Z" fill={brass} />
+      <path d="M190 341H214V354H190Z" fill={brass} />
       <path d="M116 342H594V349H116Z" fill="#635239" />
       <path d="M122 344H588" stroke={edge} strokeWidth=".6" />
-      {[[78,345],[123,345],[152,360],[152,379],[584,357],[584,371],[592,345],[197,348],[366,348]].map(([x,y]) => <Screw key={`${x}-${y}`} x={x} y={y} r={2.2} />)}
+      {[[584,357],[584,371],[592,345],[197,348]].map(([x,y]) => <Screw key={`${x}-${y}`} x={x} y={y} r={2.2} />)}
     </g>
 
     {/* Rear drive plane: the existing cabinet shaft passes through a real collar.

@@ -31,10 +31,10 @@ it("starts at Medium and changes every part's rate without seeking or unpausing"
   getAnimations.mockReturnValue(parts);
   render(<figure data-engraving="conveyor"><ConveyorPace /></figure>);
   expect(screen.getByRole("radio", { name: "Medium" })).toBeChecked();
-  parts.forEach(part => expect(part.updatePlaybackRate).toHaveBeenLastCalledWith(.8));
+  parts.forEach(part => expect(part.updatePlaybackRate).toHaveBeenLastCalledWith(1.1));
   fireEvent.click(screen.getByRole("radio", { name: "Fast" }));
   parts.forEach(part => {
-    expect(part.updatePlaybackRate).toHaveBeenLastCalledWith(1.1);
+    expect(part.updatePlaybackRate).toHaveBeenLastCalledWith(3);
     expect(part.currentTime).toBe(1700);
     expect(part.playState).toBe("paused");
     expect(part.play).not.toHaveBeenCalled();

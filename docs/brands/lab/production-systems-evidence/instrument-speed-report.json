@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-04",
+  "settings": {
+    "slow": {
+      "rate": 0.55,
+      "secondsPerTest": 4.363636363636363
+    },
+    "medium": {
+      "rate": 1.1,
+      "secondsPerTest": 2.1818181818181817
+    },
+    "fast": {
+      "rate": 3,
+      "secondsPerTest": 0.8
+    }
+  },
+  "ci": {
+    "suites": 46,
+    "tests": 202,
+    "build": "passed",
+    "eslint": "passed"
+  },
+  "initial": {
+    "medium": true,
+    "animations": 35,
+    "rates": [
+      1.1
+    ]
+  },
+  "rates": [
+    {
+      "name": "Slow",
+      "rate": 0.55,
+      "actualRates": [
+        0.55
+      ],
+      "elapsed": 265.8249000000005,
+      "phaseSpread": 0
+    },
+    {
+      "name": "Medium",
+      "rate": 1.1,
+      "actualRates": [
+        1.1
+      ],
+      "elapsed": 659.9626000000003,
+      "phaseSpread": 0
+    },
+    {
+      "name": "Fast",
+      "rate": 3,
+      "actualRates": [
+        3
+      ],
+      "elapsed": 1499.9100000000008,
+      "phaseSpread": 0
+    }
+  ],
+  "paused": [
+    {
+      "name": "Slow",
+      "allPaused": true,
+      "maxSeek": 0
+    },
+    {
+      "name": "Medium",
+      "allPaused": true,
+      "maxSeek": 0
+    },
+    {
+      "name": "Fast",
+      "allPaused": true,
+      "maxSeek": 0
+    }
+  ],
+  "reduced": {
+    "disabled": true,
+    "animations": 0
+  },
+  "recreatedRates": [
+    3
+  ],
+  "keyboard": true,
+  "touch": true,
+  "phone": {
+    "width": 390,
+    "scroll": 390,
+    "targets": [
+      {
+        "text": "Slow",
+        "width": 47,
+        "height": 44
+      },
+      {
+        "text": "Medium",
+        "width": 47,
+        "height": 44
+      },
+      {
+        "text": "Fast",
+        "width": 47,
+        "height": 44
+      },
+      {
+        "text": "i",
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  "axeViolations": [],
+  "errors": [],
+  "support": {
+    "320": {
+      "scroll": 300,
+      "width": 320
+    },
+    "390": {
+      "scroll": 370,
+      "width": 390
+    },
+    "768": {
+      "scroll": 748,
+      "width": 768
+    },
+    "support": "centre-stile",
+    "gears": 11,
+    "animations": 35,
+    "oldMount": 0,
+    "printRates": [
+      3
+    ]
+  }
+}

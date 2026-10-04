@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 1.8 · 4 October 2026 · Mechanical Turk direction
+Version 1.8.1 · 4 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. The owner accepted the opening
 illustration after its cabinet pass (PR #70). **That opening is now the visual
@@ -175,7 +175,7 @@ anchors. The conveyor is the chessboard work surface itself, supported by the
 same cabinet and brackets. Paired specimens keep A and B together as one unit;
 the outfeed reveals the uneven evidence they produce. Most estimates cluster near
 zero, with noise, some losses and a rare large positive effect. The hand
-works an attached lever with a brisk stamping gesture every 3 seconds at the default Medium pace; the
+works an attached lever with a brisk stamping gesture every 2.18 seconds at the default Medium pace; the
 belt, rollers and meshing drive run continuously through that gesture. Layer
 the chair and torso behind the tabletop, with only the forearms and hands
 crossing it. The body must never appear to emerge from the moving work surface.
@@ -195,7 +195,7 @@ the pattern. The paper advances one row for each test: the result leaving the
 outfeed, entering the register and appearing in the smoke share one outcome.
 Use mild gray, oxblood and green row washes with matching interval marks,
 respectively; keep the paper and plot geometry dominant. Ten outcomes repeat
-every 30 seconds at Medium (24 seconds of shared animation time). This mix is an editorial choice, not an estimated industry
+every 21.82 seconds at Medium (24 seconds of shared animation time). This mix is an editorial choice, not an estimated industry
 success rate.
 
 Each plume carries **signed percentage lift → p-value → verdict**, so its first
@@ -206,8 +206,8 @@ gray `#746C5F`; verdicts are 13 units in `#665F51`. Their independent wisps stay
 faint. Direction is not significance: a small green estimate can remain null, and
 an apparent positive can be the explicitly fictional false-positive example.
 
-At Medium, text reaches 96% opacity within 300 ms, stays there through 2.7 seconds
-and then gradually dissolves. Emissions are 3 seconds apart, with at most three
+At Medium, text reaches 96% opacity within 218 ms, stays there through 1.96 seconds
+and then gradually dissolves. Emissions are about 2.18 seconds apart, with at most three
 visible plumes, more vertical space and distinct baselines for all three lines.
 The owner rejected text that began already dissolved. Preserve this readable
 window as the entire machine speeds up or slows down. No bottom caption, legend
@@ -240,8 +240,11 @@ wood/iron/brass treatment rather than adopting the factory’s lighting or mater
   the loaded run moves right; the frame, bearings and adjustment screw stay fixed.
 - A continuous side loop wraps the drums. Separate stationary rails carry split
   bearing blocks, visible collars, a slotted tail adjustment and a tension screw.
-  Riveted triangular brackets terminate in bolted mounting plates on the case;
-  the open cabinet door does not support the conveyor.
+  The short left-facing knee now mounts to the solid central stile at x=381–391,
+  y=353–385, with visible bolts at (386, 359) and (386, 379). Its upper cleat meets
+  the stationary rail at x=352–392; the continuous frame and crown pads carry the
+  outboard tail. The former diagonal over the open door is removed. Keep the
+  hinge jamb and door swing visually clear; the door carries no conveyor load.
 - The existing right cabinet shaft at (322, 415) supplies a narrow vertical chain
   to a compound jackshaft at (322, 332). A second guarded chain, visible through
   three inspection openings, drives the right end drum at (591.05, 332).
@@ -272,7 +275,7 @@ supersedes the first watch-bridge treatment in PR #68.
   centre arbor and drives a separate reduction wheel. Overlap has a physical
   explanation, with an exposed spacer and open spokes revealing the deeper train.
 - Use a 74-tooth, radius-37 flywheel and pinions down to 18 teeth, radius 9.
-  At Medium, rotation periods range from 1.875 to approximately 7.71 seconds
+  At Medium, rotation periods range from 1.36 to approximately 5.61 seconds
   (the geometry module uses a 1.5–6.17-second logical timebase). Neighboring
   gears counter-rotate, compound wheels share an angular speed, and the separate
   reduction adds a slower counter-rotation. A small eccentric marks a fast pinion.
@@ -311,8 +314,8 @@ structural apron. This is original casework, not a historical restoration.
   construction at normal reading size.
 - The open door has thickness, a framed raised panel, subtle figured veneer,
   two brass pin hinges, a small keyhole escutcheon and a hanging pull. Place the
-  upper hinge below the conveyor bracket: both attach separately to the fixed
-  jamb, and the door never carries the belt. Draw it in front of the base.
+  hinges on the fixed jamb. The conveyor brace has its own base on the central
+  stile, separate from the hinge jamb and open door. Draw the door in front of the base.
 - Grain follows each board. Long fibres run up stiles and around the side; the
   apron runs horizontally. Nested cathedral cuts belong to the door panel.
   Keep grain quieter than contours and reserve dark shading for actual recesses.
@@ -322,7 +325,8 @@ structural apron. This is original casework, not a historical restoration.
   competing with the motion. Both hinges and the base should still read on a
   phone even when individual incisions disappear.
 - Keep all eleven gears exposed within the existing (158, 354)–(369, 469) chamber.
-  Preserve the conveyor mounts, (322, 415) output, paper register, stamp and smoke.
+  Preserve the revised fixed-stile conveyor mount, (322, 415) output, paper
+  register, stamp and smoke.
   The shell is static, server-rendered SVG: no new client code, animation, image,
   font or dependency.
 
@@ -418,7 +422,9 @@ plate's quiet upper-left area, away from the figure and rising results. The near
 information disclosure explains the methodological trade-off and cites sources.
 
 The CSS machine retains one 2.4-second logical test period. Playback rates are
-0.55 / 0.8 / 1.1, giving approximately **4.36 / 3.00 / 2.18 seconds per test**.
+0.55 / 1.1 / 3, giving approximately **4.36 / 2.18 / 0.80 seconds per test**.
+Owner speed tuning: the original Fast pace is now Medium; the new Fast is
+approximately 2.73 times faster than Medium. Slow remains the inspection pace.
 Apply the rate to all 35 hero animations together: stamp, belt, slat edges, gears,
 chains, specimens, paper and smoke. Preserve phase and paused state; never restart
 parts or change their individual periods. `Animation.updatePlaybackRate` preserves

@@ -2,6 +2,16 @@
 
 4 October 2026 · `/stepanoskin/production-systems`
 
+**Pace follow-up:** after accepting this finish, the owner requested the original
+Fast speed as Medium and a much quicker Fast. Current rates are 0.55 / 1.1 / 3,
+or approximately 4.36 / 2.18 / 0.80 seconds per test. The original measurements
+and captures below retain their initial pace context. See the
+[speed follow-up report](instrument-speed-report.json) for verification of the
+new rates. The same follow-up moves the ambiguous diagonal over the open door to
+a short knee bolted onto the fixed central stile. The conveyor rail, crown pads
+and upright now form the visible support path. The page layout is unchanged;
+[updated support detail](instrument-support-detail.webp) records the relocation.
+
 ## Result
 
 The accepted opening is the quality standard in design guidelines v1.8. Muted

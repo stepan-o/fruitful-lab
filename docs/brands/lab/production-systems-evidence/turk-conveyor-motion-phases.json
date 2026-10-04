@@ -1,0 +1,259 @@
+{
+  "phases": [
+    {
+      "name": "rest",
+      "time": 0,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "belt",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "results",
+          "duration": 80000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "hand",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ]
+    },
+    {
+      "name": "push",
+      "time": 4400,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(-1, 0, 0, -1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(0.309017, -0.951057, 0.951057, 0.309017, 0, 0)"
+        },
+        {
+          "part": "belt",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 88, 0)"
+        },
+        {
+          "part": "results",
+          "duration": 80000,
+          "transform": "matrix(1, 0, 0, 1, 88, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 8000,
+          "transform": "matrix(0.913545, 0.406737, -0.406737, 0.913545, 0, 0)"
+        },
+        {
+          "part": "hand",
+          "duration": 8000,
+          "transform": "matrix(0.991445, -0.130526, 0.130526, 0.991445, 0, 0)"
+        }
+      ]
+    },
+    {
+      "name": "return",
+      "time": 7600,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(-1, 0, 0, -1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(0.309017, -0.951057, 0.951057, 0.309017, 0, 0)"
+        },
+        {
+          "part": "belt",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 88, 0)"
+        },
+        {
+          "part": "results",
+          "duration": 80000,
+          "transform": "matrix(1, 0, 0, 1, 88, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 8000,
+          "transform": "matrix(0.999869, 0.0161716, -0.0161716, 0.999869, 0, 0)"
+        },
+        {
+          "part": "hand",
+          "duration": 8000,
+          "transform": "matrix(0.999987, -0.00505382, 0.00505382, 0.999987, 0, 0)"
+        }
+      ]
+    },
+    {
+      "name": "cycle-end",
+      "time": 79999,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(-1, 0, 0, -1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(0.309017, -0.951057, 0.951057, 0.309017, 0, 0)"
+        },
+        {
+          "part": "belt",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 88, 0)"
+        },
+        {
+          "part": "results",
+          "duration": 80000,
+          "transform": "matrix(1, 0, 0, 1, 880, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 8000,
+          "transform": "matrix(1, 9.54447e-08, -9.54447e-08, 1, 0, 0)"
+        },
+        {
+          "part": "hand",
+          "duration": 8000,
+          "transform": "matrix(1, -2.98265e-08, 2.98265e-08, 1, 0, 0)"
+        }
+      ]
+    },
+    {
+      "name": "cycle-start",
+      "time": 80000,
+      "parts": [
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "gear",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "belt",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "results",
+          "duration": 80000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "roller",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "feedHandle",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "part": "hand",
+          "duration": 8000,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ]
+    }
+  ]
+}

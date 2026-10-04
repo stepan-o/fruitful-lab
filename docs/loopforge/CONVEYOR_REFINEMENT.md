@@ -1,5 +1,70 @@
 # Factory entrance conveyor · 3 October 2026
 
+## Active visual rebuild after owner review
+
+The previous flat specimens and braid pass are rejected as too sloppy. The new
+acceptance bar is a carefully composed, dimensional factory with cinematic
+lighting. Performance remains important; it must not excuse unfinished visuals.
+
+- [x] Fit logo, horizontal three-path menu, adjacent reset lever and prominent
+  conveyor into the first viewport on desktop and phones, including short screens.
+- [x] Replace flat cargo with shaded procedural 3D cortex forms and restrained,
+  accurately seated cyan wiring. Preserve damaged specimens and factory oddities.
+- [x] Rotate the beacon reflector continuously 360 degrees about its vertical
+  shaft. The housing stays upright; it must not rock from side to side.
+- [x] Use the same light orientation for lens, beam, stage-wide reflections,
+  glare and projected shadows. Running amber stays quiet; a jam turns it red.
+- [x] Review multiple phases in motion, compare original factory art, iterate.
+- [x] Measure the GPU scene's bounded geometry, resolution and frame work; verify
+  motion preferences, keyboard/phone controls, first viewport and production CI.
+- [ ] Update PR #59 and verify the hosted result.
+
+## Current implementation
+
+This procedural WebGL2 scene replaces the Canvas2D passes documented below.
+Three.js 0.186.1 is scoped to the landing. It uses generated cortex/harness geometry,
+a procedural reflection environment, one 1024px rotating shadow map, bounded
+volumetric/flare geometry, generated grain and merged/instanced stationary parts.
+No external reference pixels, models, textures or new runtime raster art ship.
+
+The belt holds its decorative distance during a jam. Periodic carrier/roller
+strain and a tugging, glowing reset handle give the stopped machine tension.
+The instruction is beside the menu-mounted lever, including on phones. It is
+associated with that button for screen readers. Reset works by drag, click or
+keyboard; restart releases the strain. Reduced motion retains a readable still
+state. Pause reuses the renderer; graphics loss stops work and shows a fallback.
+
+Output is capped at 1800 × 1100 pixels, 1.5× CSS resolution and 30 submissions/s.
+Static geometry is batched by material; belt/rollers/bolts are instanced. Shader
+preparation is asynchronous. Geometry, textures and materials are disposed, and
+resizing releases the previous merged frame. This is a larger delivery/runtime
+budget than Canvas2D, accepted to support dimensional surfaces and coherent light.
+Actual-phone and field performance remain unmeasured. Older measurements below
+belong to superseded implementations.
+
+## Verification for the 3D stage
+
+- Required CI: 43 suites / 190 tests, asset validation and optimized Next/TypeScript
+  build passed after merging master f6467a8. Focused ESLint passed. Two added tests
+  cover menu-local reset instructions/renderer reuse and graphics loss/recovery.
+- Browser checks: desktop 1280 × 720, 320 × 568, 390 × 844, 768 × 1024 and short
+  landscape 844 × 390. Conveyor and control stay in the first viewport. Keyboard
+  reset and a 43px pointer pull both enter DRIVE ENGAGING. A late landscape
+  alignment correction and viewport-dependent support fix are in the final build.
+- No browser console errors in the optimized build. Pause/hidden/reduced-motion
+  and teardown behavior have automated coverage; pause does not recreate Three.
+- Three-containing production chunk: 619,122 bytes raw / 156,197 bytes gzip in
+  the first optimized build (not the total route payload). The prior Canvas2D
+  renderer chunk was approximately 13KB gzip; this is an explicit cost for depth,
+  surface lighting, coherent shadows and a reusable scene foundation.
+- Representative cold desktop submission sample: 1280 × 720, 1800 × 1013 buffer,
+  120 frames, 10.12ms mean / 427.70ms maximum including initialization. 176 draw
+  calls / about 401k triangles at the captured phase. Shadow/visibility phases
+  change these counts. This is CPU submission on a shared desktop, not GPU/FPS,
+  actual-phone or field evidence. The startup outlier is retained.
+- Hosted preview verification is pending publication of the final lens-color
+  correction. Production is not changed until the owner merges the draft PR.
+
 ## Brief and checklist
 
 - [x] Inspect the original assembly-line, three-lane and conveyor-character art.

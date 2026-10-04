@@ -277,22 +277,25 @@ cover dialogs provide enlargement. See `docs/sanctuary/CINEMA_CATALOG_ART_PASSES
 
 ## Loopforge entrance conveyor · 2026-10-03
 
-The `/stepanoskin/loopforge` entrance uses `FactoryConveyor`, a bounded Canvas2D
-scene with cached machinery and twelve seeded cargo sprites. Decorative drive
-state is isolated in `factory-drive.ts`: uneven pulls, a jam after 19 seconds of
-active viewing, manual lever restart, then 33–55 seconds between later jams.
-An amber beacon beneath the belt becomes red on a jam. Pointer drag, click and
-keyboard activation share the reset action; the shared sound preference gates
-the user-triggered clang. Motion obeys the shared manual preference, OS reduced
-motion, intersection and document visibility; a static SVG remains if canvas
-is unavailable. No model requests or new runtime media/dependencies. Compact
-reader/play conveyors remain separate. Overview chapter `the-factory` has no
-Working Exhibit; `Chapter.exhibit` is optional and other chapters retain theirs.
-References, visual checks and rendering limits: `docs/loopforge/CONVEYOR_REFINEMENT.md`.
+The Loopforge entrance is a first-viewport factory stage with horizontal text
+navigation and an adjacent reset station. FactoryConveyor uses scoped Three.js
+0.186.1/WebGL2: procedural cortex forms, cyan helical harnesses, instanced belt
+and rollers, batched metalwork and a fixed beacon housing below the belt. Its
+reflector completes full revolutions about the vertical shaft; one rotating
+spotlight supplies stage-wide amber/red light and mesh shadows. Jammed cargo and
+rollers strain periodically; the glowing reset handle tugs beside its instruction.
+Pointer drag, click and keyboard share the reset action and existing sound setting.
 
-Brain refinement: `factory-neural.ts` caches seeded three-core cyan braid
-geometry/material/emission layers. Each specimen has independent travelling
-signals; one scene-wide discharge may appear at a time, with irregular starts
-at least 4.6s apart and a 1.15s decay. Static and reduced-motion views retain lit
-braids without packets or bursts. This remains decorative and shares the
-existing visibility, frame, pixel and manual-pause limits.
+The decorative drive remains separate from simulation/model calls: uneven pulls,
+first jam after 19 active seconds and 33–55 seconds between later jams. Pure seeded
+neural timing allows one discharge at a time, at least 4.6s between onsets and at
+most 1.15s decay. Manual/OS motion preferences, visibility and intersection gate
+work. Pause reuses the renderer; graphics loss shows the static SVG fallback.
+
+The scene caps output at 1800 × 1100 pixels, 1.5× CSS resolution and 30 submissions/s.
+Three.js is a deliberate landing-only dependency; no external models/textures or
+new runtime art downloads are added. Geometry/materials/textures are disposed;
+resized merged frame geometry is replaced. Actual-phone and field performance are
+unmeasured. See docs/loopforge/CONVEYOR_REFINEMENT.md for evidence and tradeoffs.
+Compact reader/play conveyors remain separate. Overview chapter the-factory has
+no Working Exhibit; other chapter exhibits remain.

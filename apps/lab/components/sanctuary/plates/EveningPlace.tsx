@@ -1,5 +1,7 @@
 import { memo, useId, useState } from "react";
 import { Choices } from "./Controls";
+import EveningVenue from "./EveningVenue";
+import { useLivingPlate } from "./useLivingPlate";
 import s from "./evening-place.module.css";
 
 function Person({x,y,tone,turn=false,cloak=false}:{x:number;y:number;tone:string;turn?:boolean;cloak?:boolean}) {
@@ -18,6 +20,7 @@ function Person({x,y,tone,turn=false,cloak=false}:{x:number;y:number;tone:string
 /** Original composite scenes: no claim to reproduce a historical venue or game. */
 const PlaceScene = memo(function PlaceScene({world}:{world:boolean}) {
   const id=useId().replaceAll(":","");
+  if (!world) return <EveningVenue/>;
   return <svg viewBox="0 0 800 430" role="img" aria-label={world?"An invented online meeting place: travelers gather in a lantern-lit courtyard beside an adventure gate":"An imagined venue: conversation, spectators and a game share a warmly lit room"}>
     <defs>
       <linearGradient id={`${id}-wall`} x2="0" y2="1"><stop stopColor={world?"#243a40":"#3b3229"}/><stop offset="1" stopColor="#101c20"/></linearGradient>
@@ -39,7 +42,7 @@ const PlaceScene = memo(function PlaceScene({world}:{world:boolean}) {
       <path d={`M${x-88} 243V163Q${x-88} 89 ${x} 83Q${x+88} 89 ${x+88} 163V243Z`} fill="#101e24" stroke="#817c60" strokeWidth="4"/>
       <path d={`M${x-77} 242V160Q${x-77} 102 ${x} 95Q${x+77} 102 ${x+77} 160V242`} fill="none" stroke="#a49470" opacity=".42"/>
     </g>)}
-    {world?<>
+    <>
       <path d="M93 228L116 193L146 207L180 162L219 202L245 188V242H93Z" fill="#304a4a"/>
       <path d="M107 242L131 215L172 231L194 209L238 235" fill="none" stroke="#90a79b" opacity=".42"/>
       <circle cx="204" cy="144" r="19" fill="#b4b997" opacity=".7"/>
@@ -51,26 +54,7 @@ const PlaceScene = memo(function PlaceScene({world}:{world:boolean}) {
       <path d="M579 245V176Q579 135 636 125Q693 135 693 176V245M590 248L617 204L644 221L676 172L687 248" fill="none" stroke="#c3c8a0" opacity=".5"/>
       <path d="M567 249H706L719 270H554Z" fill="#46534a" stroke="#a29b75"/>
       <path d="M620 87l17 -22 17 22-17 16Z" fill="#c19c62"/>
-    </>:<>
-      <path d="M104 199H247V240H104Z" fill="#3b3b30" stroke="#9a835a"/>
-      {[114,146,180,215].map((x,i)=><g key={x}><path d={`M${x} 189v-20h10v20M${x-2} 176h14v17h-14Z`} fill={["#5c7660","#9e724c","#778b76","#75674f"][i]} stroke="#b1a17b" strokeWidth=".7"/></g>)}
-      <path d="M96 197H255V207H96Z" fill="#a18a5c"/>
-      <path d="M94 237H259V250H94Z" fill="#4b4634" stroke="#b39863"/>
-      <path d="M344 136H460V217H344Z" fill="#424b3f" stroke="#8e805c"/>
-      <path d="M353 144H451V208H353Z" fill="#1c2b2b"/>
-      <path d="M366 197L386 170L405 188L425 156L443 198Z" fill="#6b7460"/>
-      <circle cx="376" cy="160" r="8" fill="#bfa16b"/>
-      <path d="M586 117H669L692 153L677 242L696 272L682 337H569L560 274L577 238L566 151Z" fill="#1b2e31" stroke="#b39a63" strokeWidth="2"/>
-      <path d="M585 128H666L676 148H579Z" fill="#bba273" opacity=".5"/>
-      <path d="M580 161H675L665 233H589Z" fill="#050e14" stroke="#8e9b79"/>
-      <path d="M594 177H650V219H606V194H640M623 177V186" fill="none" stroke="#91ac8c" strokeWidth="4"/>
-      <path d="M579 247H675L686 269H568Z" fill="#56604a" stroke="#b39a63"/>
-      <path d="M596 260v-10M633 260v-10" stroke="#c09f79" strokeWidth="3"/>
-      <circle cx="596" cy="249" r="4" fill="#be705a"/><circle cx="633" cy="249" r="4" fill="#85bbb0"/>
-      <path d="M609 286h23v31h-23Z" fill="#0b1a21" stroke="#96835f"/>
-      <path d="M619 293v10" stroke="#ceb27a" strokeWidth="3"/>
-      <ellipse cx="625" cy="204" rx="91" ry="100" fill={`url(#${id}-gate)`}/>
-    </>}
+        </>
     {[165,407].map(x=><g key={x}><ellipse cx={x} cy="231" rx="127" ry="137" fill={`url(#${id}-warm)`}/><path d={`M${x} 61v35M${x-12} 97h24l-4 30h-16Z`} fill="#bb9761" stroke="#ddc088"/><path d={`M${x-7} 103h14v17h-14Z`} fill="#efd5a0"/><path d={`M${x-16} 96l16 -9 16 9Z`} fill="#786746"/></g>)}
     <Person x={126} y={314} tone="#718477" cloak={world}/>
     <Person x={228} y={322} tone="#9a6c52" turn cloak={world}/>
@@ -100,12 +84,13 @@ const views=[{
  payment:"Sales can fund the world through copies, expansions, access or extras. Social value alone does not decide which offer fits.",
 }];
 export default function EveningPlace({initialWorld=false,opening=false}:{initialWorld?:boolean;opening?:boolean}) {
+ const livingRef=useLivingPlate<HTMLElement>();
  const [selected,setSelected]=useState(initialWorld?1:0); const view=views[selected];
- if (opening) return <figure className={`${s.place} ${s.opening}`} aria-label="Study: the place around the game" data-opening>
+ if (opening) return <figure ref={livingRef} data-living-venue className={`${s.place} ${s.opening}`} aria-label="Study: the place around the game" data-opening>
    <div className={s.scene}><PlaceScene world={false}/></div>
    <figcaption>Original illustration · an imagined venue</figcaption>
  </figure>;
- return <figure className={s.place} aria-label="Study: the place around the game">
+ return <figure ref={livingRef} data-living-venue className={s.place} aria-label="Study: the place around the game">
    <div className={s.heading}><span>A PLACE IN THE EVENING</span><h2>{view.title}</h2></div>
    <Choices label="Where does the gathering happen?" items={views.map(v=>v.name)} value={selected} onChange={setSelected}/>
    <div className={s.scene}><PlaceScene world={selected===1}/></div>

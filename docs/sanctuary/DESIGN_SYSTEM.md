@@ -527,3 +527,28 @@ demand rather than synthesizing image detail.
 `sanctuary-arcade` holds five reviewed images, their responsive derivatives and a
 versioned pointer. Source masters are non-public build inputs. The server combines
 reviewed packs, then sends only active-chapter image metadata to the reader.
+
+## Coherent craft across subjects — 4 October 2026
+
+The owner’s illustration benchmarks are the approved journey/world diptych and
+the current Mechanical Turk/conveyor on the professional Data Science pages.
+Carry their depth of construction into every original plate. Each key element
+receives its own focused styling pass before the assembled composition is
+reviewed: architecture, furniture, people, equipment, light and atmosphere.
+A pass must resolve silhouette, material, connections/contact, useful detail and
+reading-size legibility. A general glow or texture overlay is not a substitute.
+
+Sanctuary Economics remains the common visual identity: dark teal recesses,
+warm focal light, brass edges, directional engraving, layered depth and bounded
+motion. Adapt the subject’s own construction and period vocabulary. A pub,
+electronic cabinet, mountain gate and mechanical instrument should be visibly
+different things, while belonging to the same illustrated essay. Do not copy
+clockwork, Japanese architecture or a single palette indiscriminately.
+
+The first arcade craft adoption is recorded in
+[Arcade craft passes](ARCADE_CRAFT_PASSES.md). `EveningVenue` composes separate
+architecture, furnishings and patron modules; its cabinet is the same original
+component used in the later cutaway. `ArcadeMaterials` stays local to Sanctuary.
+The venue and instrument reuse `useLivingPlate` for preference/visibility gating.
+The original scene remains ahead of prose; archival citations retain their
+source pixels and have a different job from the authored illustrations.

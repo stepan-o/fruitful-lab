@@ -1,0 +1,16 @@
+/* Small, independent light/air layers. The scene remains fully drawn when paused. */
+.machine{display:block;width:100%;height:auto;overflow:visible}
+.lampHalo{opacity:.72;animation:venue-lamp 7.3s ease-in-out infinite;animation-play-state:paused}
+.lampCore{opacity:.94;animation:venue-core 5.9s ease-in-out infinite;animation-play-state:paused}
+.screenBreath{opacity:.7;animation:venue-screen 6.7s ease-in-out infinite;animation-play-state:paused}
+.screenGlint{opacity:.8;animation:venue-glint 5.1s ease-in-out infinite;animation-play-state:paused}
+.mote{opacity:.35;animation:venue-mote 12s ease-in-out infinite;animation-play-state:paused}
+.steam{opacity:0;animation:venue-steam 9s ease-out infinite;animation-play-state:paused;transform-box:fill-box;transform-origin:50% 100%}
+:global([data-playing=true]) .lampHalo,:global([data-playing=true]) .lampCore,:global([data-playing=true]) .screenBreath,:global([data-playing=true]) .screenGlint,:global([data-playing=true]) .mote,:global([data-playing=true]) .steam{animation-play-state:running}
+@keyframes venue-lamp{0%,100%{opacity:.61}42%{opacity:.9}67%{opacity:.73}}
+@keyframes venue-core{0%,100%{opacity:.9}55%{opacity:1}}
+@keyframes venue-screen{0%,100%{opacity:.48}46%{opacity:.95}72%{opacity:.68}}
+@keyframes venue-glint{0%,75%,100%{opacity:.6}82%{opacity:1}88%{opacity:.65}92%{opacity:.95}}
+@keyframes venue-mote{0%,100%{transform:translate(0,0);opacity:.12}32%{opacity:.65}50%{transform:translate(6px,-11px);opacity:.28}76%{opacity:.55}}
+@keyframes venue-steam{0%{transform:translate(0,2px) scale(.75,.6);opacity:0}22%{opacity:.18}70%{opacity:.07}100%{transform:translate(5px,-24px) scale(1.1,1.35);opacity:0}}
+@media(prefers-reduced-motion:reduce){.lampHalo,.lampCore,.screenBreath,.screenGlint,.mote,.steam{animation:none!important}.steam{opacity:.09}}

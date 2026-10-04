@@ -155,7 +155,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                     )}
                   </p>
                   {current.id === "the-fork" && paragraphIndex === 5 ? <EveningPlace initialWorld/> : null}
-                  {current.id === "insert-coin" && paragraphIndex === 3 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+                  {current.id === "insert-coin" && paragraphIndex === 2 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
                   {current.figures?.map((figure,i)=>figure.afterParagraph === paragraphIndex ? renderFigure(figure,i) : null)}
                   {current.id === "the-fork" && paragraphIndex === 2 ? <AudienceEconomy/> : null}
                   {current.id === "the-fork" && paragraphIndex === 6 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}

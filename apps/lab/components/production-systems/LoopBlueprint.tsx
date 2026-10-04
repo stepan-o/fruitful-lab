@@ -4,6 +4,7 @@ import figureStudies from "@/lib/production-systems/figure-studies.json";
 
 import { Grain, Screw, round } from "./engraving-primitives";
 import motion from "./turk-conveyor.module.css";
+import TurkConveyor from "./TurkConveyor";
 
 const ink = "#463a30";
 const paper = "#f4f2eb";
@@ -105,9 +106,9 @@ function ResultExhalation() {
       "--delay": `${round(outfeedLead + ((6 - index + outcomes.length) % outcomes.length) * trayPeriod - outcomes.length * trayPeriod)}s`,
       "--still-x": index === 0 ? "-14px" : index === 3 ? "-39px" : "-60px",
       "--still-y": index === 0 ? "-29px" : index === 3 ? "-92px" : "-154px",
-      "--still-opacity": [0, 3, 6].includes(index) ? .62 : 0,
+      "--still-opacity": [0, 3, 6].includes(index) ? .88 : 0,
     } as CSSProperties}>
-      <g fill="none" stroke="#90928a" strokeWidth=".7" opacity=".25">
+      <g fill="none" stroke="#90928a" strokeWidth=".7" opacity=".2">
         <path d="M-14 17C-43 7-22-5-34-17S-63-32-45-46M17 22C44 9 14-8 32-20S58-39 45-53" />
         <path d="M-1 23C-18 12 7 2-5-10M23-26c-10-14 5-18 13-24" strokeWidth=".45" />
       </g>
@@ -188,11 +189,11 @@ export default function LoopBlueprint() {
       <div className={styles.plateHeader}><span>Fig. 01 / The experiment engine</span><span>Illustrative experiments</span></div>
       <svg className={styles.loopSvg} viewBox="0 0 680 550" role="img" aria-labelledby="loop-title loop-description">
         <title id="loop-title">The Mechanical Turk operating an A/B experiment conveyor</title>
-        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a walnut cabinet. Its forearms reach over a continuously moving chessboard conveyor, stamping paired A/B specimens into effect estimates. P-values and verdicts exhale from the outfeed as pale rising smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
+        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a walnut cabinet. Its forearms reach over a continuously moving conveyor of jointed chessboard slats, supported by bolted brackets and end bearings. A return run travels beneath the fixed frame, and a guarded chain joins the cabinet shaft to the head drum. The Turk stamps paired A/B specimens into effect estimates. P-values and verdicts exhale from the outfeed in clear lettering that rises and gradually dissolves into smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
         <defs>
           <pattern id="turk-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke={ink} strokeWidth=".55" opacity=".45" /></pattern>
           <pattern id="turk-crosshatch" width="5" height="5" patternUnits="userSpaceOnUse"><path d="m0 0 5 5M0 5 5 0" stroke={ink} strokeWidth=".5" opacity=".45" /></pattern>
-          <pattern id="turk-checker" width="22" height="16" patternUnits="userSpaceOnUse"><rect width="22" height="16" fill="#c6b999" /><path d="M0 0H11V8H0ZM11 8H22V16H11Z" fill="#7e7b61" /><path d="M1 0V16M4 0V16M7 0V16M10 0V16M13 0V16M16 0V16M19 0V16" stroke={ink} strokeWidth=".45" opacity=".25" /></pattern>
+          <pattern id="turk-checker" width="44" height="32" patternUnits="userSpaceOnUse"><rect width="44" height="32" fill="#c4b08b" /><path d="M0 0H22V16H0ZM22 16H44V32H22Z" fill="#827b60" /><path d="M4 0V32M9 0V32M15 0V32M26 0V32M31 0V32M37 0V32" stroke={ink} strokeWidth=".45" opacity=".25" /><path d="M0 0V32M22 0V32M44 0V32" stroke="#504737" strokeWidth="1.3" /><path d="M1.5 0V32M23.5 0V32" stroke="#e2cca1" strokeWidth=".6" /></pattern>
           <clipPath id="turk-belt-window"><path d="M63 0H463V64H63Z" /></clipPath>
           <clipPath id="turk-results-window"><path d="M463 0H628V64H463Z" /></clipPath>
           <g id="turk-engraved-figure"><TurkFigure /></g>
@@ -235,8 +236,6 @@ export default function LoopBlueprint() {
           <path d="M200 377H210V384H200ZM313 377H323V384H313Z" fill={brass} stroke={ink} />
           <Screw x={209} y={416} r={4} /><Screw x={322} y={415} r={4} />
         </g>
-        <path d="M172 343 182 337 216 398M166 346 177 343 206 400" fill="none" stroke="#b39766" strokeWidth="2" />
-        <path d="M175 344 209 398" stroke={ink} strokeWidth="1.2" />
         {/* The left door opens toward the reader, with real hinges and a recessed panel. */}
         <path d="M145 344 89 363V493L145 480Z" fill="#73533d" stroke={ink} strokeWidth="1.4" />
         <path d="M136 355 99 369V481L136 471Z" fill="#a08058" stroke={ink} />
@@ -252,37 +251,22 @@ export default function LoopBlueprint() {
         <path d="M130 482H587M127 494H591" stroke="#cfb88a" strokeWidth="1" />
         <ResultRegister />
 
-        {/* Supported extensions make the chessboard itself the moving test bed. */}
-        <path d="m64 335 72 48v-12l-62-43Z" fill={brass} stroke={ink} />
-        <path d="M113 319H592V341H113Z" fill={wood} stroke={ink} strokeWidth="1.3" />
-        <Grain x={117} y={322} w={471} h={14} />
-        <path d="M58 248H627L591 317H22Z" fill="#7c6e50" stroke={ink} strokeWidth="1.4" />
-        <path d="M58 242H627V249H58Z" fill={brass} stroke={ink} />
-        <path d="M64 245H619" stroke="#e0c99a" strokeWidth=".8" />
-        <g transform="translate(0 250) skewX(-30)">
-          <g clipPath="url(#turk-belt-window)">
-            <g className={motion.belt}>
-              <path d="M-44 0H748V64H-44Z" fill="url(#turk-checker)" stroke={ink} />
-              {Array.from({ length: 9 }, (_, i) => <ExperimentTray key={i} x={-26 + i * 88} />)}
+        <TurkConveyor>
+          <g transform="translate(0 250) skewX(-30)">
+            <g clipPath="url(#turk-belt-window)">
+              <g className={motion.belt}>
+                <path d="M-44 0H748V64H-44Z" fill="url(#turk-checker)" stroke={ink} />
+                {Array.from({ length: 9 }, (_, i) => <ExperimentTray key={i} x={-26 + i * 88} />)}
+              </g>
+            </g>
+            <g clipPath="url(#turk-results-window)">
+              <g className={motion.results}>
+                <path d="M-924 0H748V64H-924Z" fill="url(#turk-checker)" stroke={ink} />
+                {Array.from({ length: 19 }, (_, i) => <ResultTray key={i} x={-906 + i * 88} index={i} />)}
+              </g>
             </g>
           </g>
-          <g clipPath="url(#turk-results-window)">
-            <g className={motion.results}>
-              <path d="M-924 0H748V64H-924Z" fill="url(#turk-checker)" stroke={ink} />
-              {Array.from({ length: 19 }, (_, i) => <ResultTray key={i} x={-906 + i * 88} index={i} />)}
-            </g>
-          </g>
-        </g>
-        <path d="M26 314H590a12 12 0 0 1 0 24H26a12 12 0 0 1 0-24Z" fill="#3e3b30" stroke={ink} strokeWidth="1.3" />
-        <path d="M26 317H590M26 335H590" stroke={brass} strokeWidth="1.6" />
-        <path d={Array.from({ length: 45 }, (_, i) => `M${36 + i * 12} 316v3m0 14v3`).join("")} stroke="#d4c49a" strokeWidth=".7" />
-        {[32, 587].map(x => <g key={x} transform={`translate(${x} 326)`}>
-          <circle r="15" fill={brass} stroke={ink} /><circle r="11" fill="#4e4b39" stroke={ink} />
-          <g className={motion.roller} stroke="#ccb785" strokeWidth="1.2"><path d="M-10 0H10M0-10V10m-7-7 14 14m0-14L-7 7" /></g>
-          <circle r="4" fill={brass} stroke={ink} /><circle r="1" fill={ink} />
-        </g>)}
-        <path d="M33 341 172 351Q185 351 187 338M33 337 172 347Q181 347 183 337" fill="none" stroke={ink} strokeWidth="1.2" />
-        <path d="M39 314H579" stroke="#eadbbb" strokeWidth="1" />
+        </TurkConveyor>
 
         {/* The tabletop occludes the seated torso. Only the left forearm and the
             working right hand are redrawn in front of the moving specimens. */}

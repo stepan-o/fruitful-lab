@@ -236,3 +236,27 @@ Still/reduced-motion states, persistent pause and offscreen/hidden-document
 suspension remain supported. These refinements use the existing server-rendered
 SVG and CSS only. The seven later scenes and professional claims are unchanged.
 Validation: [continuous conveyor evidence](production-systems-evidence/turk-continuous-verification.md).
+
+
+## Conveyor assembly and readable emissions · 4 October 2026
+
+Owner direction: focus on a visually complete, mechanically coherent conveyor,
+with a slight Loopforge reference and explicit connection points to the cabinet.
+The box mechanism itself is the next iteration. Branch
+`codex/turk-conveyor-mechanics` starts from merged master `8e29edc`.
+
+`TurkConveyor.tsx` now contains the dedicated server-rendered conveyor assembly:
+checker-inlaid slats, matching drum depth, a reverse lower return, stationary
+rails, split bearings, a slotted tension adjustment, gussets and bolted mounts.
+Two chain planes connect the existing cabinet shaft through a compound jackshaft
+to the right drum. The shaft, sprockets and effective drum pitch share the same
+speed relationship. The synthetic specimens, moving register, fast hand gesture
+and outcomes retain their timing; the existing cabinet internals await their pass.
+
+Results now reach near-full opacity in 240 ms and hold through 2.16 seconds before
+fading. Slightly larger, darker lettering stays distinct from the faint wisps.
+The original pause, reduced-motion, no-JS and visibility behavior covers the new
+parts. The public artwork disclosure links the functional Dorner reference;
+no drawings, images or client dependencies were copied or added.
+
+Validation: [conveyor assembly evidence](production-systems-evidence/turk-mechanics-verification.md).

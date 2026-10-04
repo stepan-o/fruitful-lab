@@ -429,6 +429,83 @@ const manuscript: Omit<Chapter, "visual">[] = [
     ],
     "figures": [
       {
+        "asset": "pong-cabinet",
+        "label": "Pong · the production cabinet",
+        "presentation": "archive",
+        "alt": "Yellow Pong cabinet with a shared screen, two rotary controls and a coin slot",
+        "caption": "The controls ask very little of a newcomer. Each player turns one knob; the other person supplies the opposition. This is the production cabinet that followed the tavern prototype.",
+        "credit": "Photo © Rob Boudon · adapted by Ubcule · CC BY 2.0",
+        "afterParagraph": 1
+      },
+      {
+        "asset": "pong-doubles-social-1973",
+        "label": "Pong Doubles · a familiar invitation, 1973",
+        "presentation": "archive",
+        "alt": "Two people in tennis clothes pose with rackets beside a Pong Doubles cabinet in a 1973 German advertisement",
+        "caption": "The four-player follow-up borrowed tennis’s social world to introduce an electronic one. Rackets and sportswear make the invitation familiar before anyone touches a control. A staged promotional photograph, from the German brochure.",
+        "credit": "© Atari / Löwen Automaten · International Arcade Museum",
+        "afterParagraph": 1
+      },
+      {
+        "asset": "gauntlet-gameplay-1985",
+        "label": "Gauntlet · inside the paid adventure",
+        "presentation": "pixels",
+        "alt": "Gauntlet arcade gameplay with Warrior score and health, three INSERT COIN prompts, and 1 COIN 700 HEALTH",
+        "caption": "The dungeon and the offer occupy the same screen. Look at the right-hand column: it records the adventure already under way while leaving room for someone else to join.",
+        "credit": "© Atari Games · Atarimuseum.de",
+        "afterParagraph": 2,
+        "details": [
+          {
+            "label": "Score & health",
+            "text": "Score records achievement; health is the reserve that permits continued play. Money replenishes the latter. The two counters keep those roles distinct.",
+            "rect": [
+              70,
+              13,
+              29,
+              17
+            ]
+          },
+          {
+            "label": "Room to join",
+            "text": "The Warrior is already playing. The other three character positions still invite a coin, so joining does not require waiting for the current run to finish.",
+            "rect": [
+              70,
+              30,
+              29,
+              50
+            ]
+          },
+          {
+            "label": "The exchange rate",
+            "text": "This capture offers 700 health for one coin. The operator could change that allowance; 700 is a visible setting here, not a fixed price across every cabinet.",
+            "rect": [
+              68,
+              82,
+              31,
+              12
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "gauntlet-flyer-front-1985",
+        "label": "The invitation · Atari Games, 1985",
+        "presentation": "archive",
+        "alt": "Gauntlet sales flyer with fantasy lettering and a cabinet with four color-coded player positions",
+        "caption": "Four control positions turn the cabinet into a small gathering place. The fantasy belongs on its sides as well as its screen: the machine advertises the adventure across the room.",
+        "credit": "© Atari Games · International Arcade Museum",
+        "afterParagraph": 4
+      },
+      {
+        "asset": "gauntlet-flyer-back-1985",
+        "label": "The offer to the operator · 1985",
+        "presentation": "archive",
+        "alt": "Reverse of the Gauntlet sales flyer showing people playing and headings Four quarters at once and More options, more profits",
+        "caption": "“Four quarters at once!” is the manufacturer’s own heading. The same sheet promotes cooperation, joining a game in progress and adjustable health allowances. Social play and the earnings pitch arrive together.",
+        "credit": "© Atari Games · International Arcade Museum",
+        "afterParagraph": 4
+      },
+      {
         "asset": "gauntlet-options-manual-p3-4",
         "alt": "Gauntlet operator manual: difficulty and health per coin in the same settings table",
         "caption": "The operator’s controls, 1985. Health per coin ranges from 100 to 2,000; difficulty has a separate setting. Enlarge to inspect the original table.",
@@ -1478,7 +1555,7 @@ export const chapters: Chapter[] = manuscript.map((chapter) => {
       ...(chapter.figures ?? []).filter(
         (figure) => figure.asset !== visual.screenshot.asset,
       ),
-    ],
+    ].sort((a,b)=>(a.placement === "opening" ? -1 : a.afterParagraph ?? Infinity) - (b.placement === "opening" ? -1 : b.afterParagraph ?? Infinity)),
   };
 });
 

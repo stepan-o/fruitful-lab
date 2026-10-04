@@ -1,0 +1,99 @@
+{
+  "reviewed": "2026-10-04",
+  "assets": {
+    "pong-cabinet": {
+      "title": "Pong — production cabinet",
+      "owner": "Rob Boudon (photograph); Atari (cabinet and marks)",
+      "source": "Wikimedia Commons — Atari Pong arcade game cabinet",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Atari_Pong_arcade_game_cabinet.jpg",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Atari_Pong_arcade_game_cabinet.jpg",
+      "sourceDate": "Photographed 3 June 2011; derivative published 12 March 2013",
+      "sourceCredit": "Photograph by Rob Boudon; crop and retouching by Ubcule.",
+      "displayCredit": "Photo © Rob Boudon · adapted by Ubcule · CC BY 2.0",
+      "license": "Creative Commons Attribution 2.0 Generic",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "basis": "The photograph is offered under CC BY 2.0 with credit, a license link and modifications identified. The depicted cabinet and marks are reproduced for contextual criticism and identification.",
+      "purpose": "Show the production cabinet, shared display and minimal controls that made a paid match an immediately approachable social activity.",
+      "treatment": "Source derivative retained in full, including its existing crop and retouching. Our changes: proportional resizing, WebP compression and metadata removal. No recoloring, added branding or content retouching.",
+      "reviewed": "2026-10-04",
+      "publication": "editorial",
+      "sourceSha256": "36ef780e32b6c9c534994ab8cb6a510e4560435581cc51f2b892d68ecf12ea29",
+      "chapters": [
+        "insert-coin"
+      ]
+    },
+    "pong-doubles-social-1973": {
+      "title": "Pong Doubles — German promotional photograph, 1973",
+      "owner": "Atari / Löwen Automaten",
+      "source": "International Arcade Museum — Pong Doubles German brochure, inside page 2",
+      "sourceUrl": "https://flyers.arcade-museum.com/videogames/show/5116",
+      "assetUrl": "https://flyers.arcade-museum.com/videogame-flyers/5/pong-doubles-05109-04.jpg",
+      "sourceDate": "1973, as catalogued by the archive",
+      "sourceCredit": "Archive contributors: Steffen and Laschek. Photographer not identified in the brochure or record.",
+      "purpose": "Examine the tennis clothing and rackets used to make a new electronic pastime recognizable as social recreation. This is staged advertising, not a documentary photograph of tavern customers.",
+      "provenanceNote": "Pong Doubles is the four-player follow-up, not the 1972 prototype or the original two-player cabinet. The adjacent inside page discusses partners, rematches and public venues; those are sales claims, not measured player behavior.",
+      "reviewed": "2026-10-04",
+      "publication": "editorial",
+      "sourceSha256": "663134dc3dc8710ff34d84219ff51a3c3585d2185c6229651c0adb2d57dd03f7",
+      "chapters": [
+        "insert-coin"
+      ],
+      "basis": "Contextual criticism and review of the pictured design and commercial offer. This records the editorial rationale, not bespoke permission from the publisher or archive.",
+      "treatment": "Full source image and visible notices retained; proportionally resized and compressed to responsive WebP. No AI reconstruction, added marks or cropping of the source."
+    },
+    "gauntlet-gameplay-1985": {
+      "title": "Gauntlet — arcade gameplay",
+      "owner": "Atari Games",
+      "source": "Atarimuseum.de — Gauntlet, gameplay image",
+      "sourceUrl": "https://www.atarimuseum.de/443.htm",
+      "assetUrl": "https://www.atarimuseum.de/bilder/arcade/gauntlet_screen.png",
+      "sourceDate": "1985 game; capture date not supplied",
+      "sourceCredit": "Game credited to Ed Logg, Bob Flanagan and the Atari Games team. Capture author not named by the archive.",
+      "purpose": "Inspect distinct score/health readouts, empty character slots inviting entry, and a visible one-coin-to-700-health exchange. The number is this capture’s configured allowance, not a universal default.",
+      "treatment": "Complete native 336 × 240 frame, lossless WebP. CSS preserves the pixel grid. Optional labeled outlines sit above the image; the source file is unchanged and can be inspected without overlays.",
+      "reviewed": "2026-10-04",
+      "publication": "editorial",
+      "sourceSha256": "c9bbb6d08e2542a854dbbb1a958bbce5fdfb874db7c2d0ad5de2c73e28526400",
+      "chapters": [
+        "insert-coin"
+      ],
+      "basis": "Contextual criticism and review of the pictured design and commercial offer. This records the editorial rationale, not bespoke permission from the publisher or archive."
+    },
+    "gauntlet-flyer-front-1985": {
+      "title": "Gauntlet — four-player sales flyer, front",
+      "owner": "Atari Games",
+      "source": "International Arcade Museum — Gauntlet US sales flyer, front",
+      "sourceUrl": "https://flyers.arcade-museum.com/videogames/show/409",
+      "assetUrl": "https://flyers.arcade-museum.com/videogame-flyers/0/gauntlet-00410-01.jpg",
+      "sourceDate": "1985",
+      "sourceCredit": "Archive contributor: Dphower. Individual artwork/photography credits not supplied in the flyer record.",
+      "purpose": "Read the four color-coded control positions and fantasy presentation as the invitation to a shared adventure.",
+      "reviewed": "2026-10-04",
+      "publication": "editorial",
+      "sourceSha256": "877df54434ac0f73bd30bf8660e9e023a2689a44510b2c71822dca31a45b5a88",
+      "chapters": [
+        "insert-coin"
+      ],
+      "basis": "Contextual criticism and review of the pictured design and commercial offer. This records the editorial rationale, not bespoke permission from the publisher or archive.",
+      "treatment": "Full source image and visible notices retained; proportionally resized and compressed to responsive WebP. No AI reconstruction, added marks or cropping of the source."
+    },
+    "gauntlet-flyer-back-1985": {
+      "title": "Gauntlet — four-player sales flyer, reverse",
+      "owner": "Atari Games",
+      "source": "International Arcade Museum — Gauntlet US sales flyer, reverse",
+      "sourceUrl": "https://flyers.arcade-museum.com/videogames/show/409",
+      "assetUrl": "https://flyers.arcade-museum.com/videogame-flyers/0/gauntlet-00410-02.jpg",
+      "sourceDate": "1985",
+      "sourceCredit": "Archive contributor: Dphower. Individual artwork/photography credits not supplied in the flyer record.",
+      "purpose": "Examine the manufacturer’s explicit conjunction of cooperation, entry during play, health-per-coin settings and earnings. Promotional claims are evidence of the pitch, not proof of realized profits.",
+      "reviewed": "2026-10-04",
+      "publication": "editorial",
+      "sourceSha256": "21a03b61c45aea8cbd6ba54d689c205712433e3f4382f2204d3f94f95050d5bb",
+      "chapters": [
+        "insert-coin"
+      ],
+      "basis": "Contextual criticism and review of the pictured design and commercial offer. This records the editorial rationale, not bespoke permission from the publisher or archive.",
+      "treatment": "Full source image and visible notices retained; proportionally resized and compressed to responsive WebP. No AI reconstruction, added marks or cropping of the source."
+    }
+  }
+}

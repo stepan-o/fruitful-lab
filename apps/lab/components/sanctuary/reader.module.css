@@ -1169,3 +1169,29 @@
 /* The entry is one invitation; reading/navigation chrome begins with a chapter. */
 .landingLayout{display:block;max-width:1600px}.landingLayout .cover{min-height:max(600px,100svh);padding:80px clamp(24px,7vw,112px) 72px;border-bottom:0;justify-content:center}.landingLayout .primary{margin-top:32px}.landingLayout .coverMural{width:58%;right:0;top:0;height:100%}.landingLayout .cover h1{font-size:clamp(52px,8vw,112px)}
 @media(max-width:560px){.landingLayout .cover{padding:70px 24px 46px;justify-content:flex-end}.landingLayout .coverMural{width:110%;height:590px;right:-28%;top:0;opacity:.65}.landingLayout .coverLede{max-width:21ch;font-size:22px}.landingLayout .primary{margin-top:28px}}
+
+/* Archive sheets keep their full composition; the frame belongs to the essay. */
+.archivePair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:42px 0; align-items:start; }
+.archivePair .figure { margin:0!important; min-width:0; }
+.archiveLabel { padding:15px 18px; min-height:62px; display:flex; align-items:center; border-bottom:1px solid var(--line); color:#d1bc89; font:11px/1.5 ui-monospace,monospace; letter-spacing:.09em; text-transform:uppercase; }
+.archivePair .figureButton img { aspect-ratio:3/4; max-height:none; object-fit:contain; }
+.archivePair figcaption { padding:18px; }
+.archivePair figcaption small { font-size:11px; }
+.figure[data-presentation="pixels"] .figureButton img { image-rendering:pixelated; max-height:none; }
+.figure[data-presentation="pixels"] .zoomLabel { top:12px; bottom:auto; left:12px; right:auto; }
+.evidenceOutline { position:absolute; border:2px solid #f1c974; box-shadow:0 0 0 2px #121614,0 0 20px #d1a34b44; pointer-events:none; }
+.evidenceDetails { padding:20px 22px 0; border-top:1px solid var(--line); background:#101a1a; }
+.evidenceControls { display:flex; flex-wrap:wrap; gap:8px; }
+.evidenceControls button { flex:1 1 155px; min-height:44px; border:1px solid #5b5944; background:#171c19; padding:10px 12px; color:#d4cdbc; text-align:left; font:12px/1.5 Arial,sans-serif; }
+.evidenceControls button span { margin-right:9px; color:#a69463; font:11px ui-monospace,monospace; }
+.evidenceControls button[aria-pressed="true"] { border-color:#e6c278; background:#2b2b1e; color:#f6e6c1; }
+.evidenceReading { margin:0!important; padding:17px 0; min-height:110px; color:#c8cabb; font:15px/1.7 Georgia,serif; }
+.lightbox .pixelInspection { width:1008px; max-width:none; image-rendering:pixelated; }
+@media(max-width:720px) {
+  .archivePair { grid-template-columns:1fr; gap:24px; }
+  .archivePair .figureButton img { aspect-ratio:auto; max-height:none; }
+  .archiveLabel { min-height:0; padding:13px 16px; }
+  .evidenceDetails { padding:16px 16px 0; }
+  .evidenceControls button { flex-basis:100%; }
+  .evidenceReading { min-height:160px; }
+}

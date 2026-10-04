@@ -12,6 +12,9 @@ export type Figure = {
   credit: string;
   sourceUrl?: string;
   placement?: "opening";
+  label?: string;
+  presentation?: "archive" | "pixels";
+  details?: { label: string; text: string; rect: [number, number, number, number] }[];
   afterParagraph?: number;
 };
 export type Panel = {

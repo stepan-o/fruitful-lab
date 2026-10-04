@@ -15,6 +15,16 @@ for (const id of new Set([...Object.keys(context.assets), ...Object.keys(context
   const source = contextCatalog.assets[id]?.source;
   if (!source || digest(await readFile(new URL(`../${source}`, import.meta.url))) !== decision.sourceSha256) throw new Error(`Context source identity mismatch: ${id}`);
 }
+// The small arcade selection is reproducible without the optional research archive.
+const arcade = await read('../lib/assets/generated/sanctuary-arcade.json');
+const arcadeDecisions = await read('../lib/sanctuary/arcade-media.json');
+const arcadeCatalog = await read('../assets/sanctuary-arcade.json');
+for (const id of new Set([...Object.keys(arcade.assets), ...Object.keys(arcadeDecisions.assets), ...Object.keys(arcadeCatalog.assets)])) {
+  const decision = arcadeDecisions.assets[id];
+  if (!arcade.assets[id] || decision?.publication !== 'editorial' || !decision.owner || !decision.sourceUrl || !decision.purpose || !decision.basis || !decision.reviewed) throw new Error(`Incomplete arcade visual record: ${id}`);
+  const source = arcadeCatalog.assets[id]?.source;
+  if (!source || digest(await readFile(new URL(`../${source}`, import.meta.url))) !== decision.sourceSha256) throw new Error(`Arcade source identity mismatch: ${id}`);
+}
 const published = new Set();
 for (const [id, asset] of Object.entries(editorial.assets)) {
   const decision = decisions.assets[id];

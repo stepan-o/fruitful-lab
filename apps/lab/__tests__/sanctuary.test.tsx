@@ -3,12 +3,11 @@ import Reader from "@/components/sanctuary/Reader";
 import { PriceLab, ProbabilityLab } from "@/components/sanctuary/Experiments";
 import { appendix, chapters, parts, sources } from "@/lib/sanctuary/content";
 import { chapterHref, successProbability } from "@/lib/sanctuary/types";
-import { parseManifest } from "@/lib/assets/types";
-import rawManifest from "@/lib/assets/generated/sanctuary-editorial.json";
+import { sanctuaryMedia as manifest } from "@/lib/sanctuary/media";
 import { readerCopy } from "@/lib/sanctuary/ui";
 import { locales } from "@/app/(stepanoskin)/stepanoskin/translations";
 import landingManifest from "@/lib/assets/generated/stepanoskin.json";
-import { assetUrl } from "@/lib/assets/types";
+import { assetUrl, parseManifest } from "@/lib/assets/types";
 
 const play = jest.fn().mockResolvedValue(undefined);
 const audio = { play, volume: 0, currentTime: 0 };
@@ -32,7 +31,6 @@ Object.defineProperty(window, "matchMedia", {
 });
 jest.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(null);
 jest.mock("next/navigation", () => ({ useRouter: () => ({ refresh }) }));
-const manifest = parseManifest(rawManifest, "sanctuary-editorial");
 const navigation = chapters.map(({ id, title, part }) => ({ id, title, part }));
 const props = {
   locale: "en" as const,
@@ -65,7 +63,7 @@ describe("Sanctuary reader", () => {
       expect(chapter.evidence.length).toBeGreaterThan(30);
       expect(chapter.visual.diagram.nodes).toHaveLength(4);
       expect(chapter.visual.sceneTitle.length).toBeGreaterThan(3);
-      expect(chapter.figures?.[0].asset).toBe(chapter.visual.screenshot.asset);
+      expect(chapter.figures?.some(figure=>figure.asset === chapter.visual.screenshot.asset)).toBe(true);
       for (const [paragraphIndex, ids] of Object.entries(
         chapter.paragraphCitations ?? {},
       )) {
@@ -140,12 +138,20 @@ describe("Sanctuary reader", () => {
     expect(screen.queryByRole("group", {name:"Where does the gathering happen?"})).not.toBeInTheDocument();
     expect(container.querySelector("blockquote")).toBeNull();
     expect(screen.queryByRole("img", {name:"Netflix"})).not.toBeInTheDocument();
-    expect(container.querySelectorAll("img")).toHaveLength(1);
+    expect(container.querySelectorAll("img")).toHaveLength(6);
     expect(screen.getByRole("navigation", {name:"Chapter"}).querySelector("a:last-child"))
       .toHaveAttribute("href", chapterHref("several-histories"));
     const evidence = screen.getByRole("img", {name:current.figures![0].alt});
     const nextParagraph = screen.getByText(current.paragraphs[current.figures![0].afterParagraph!+1]);
     expect(evidence.compareDocumentPosition(nextParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    for (const image of container.querySelectorAll("img")) expect(image).toHaveAttribute("loading", "lazy");
+    const exchange = screen.getByRole("button", {name:"The exchange rate"});
+    fireEvent.click(exchange);
+    expect(exchange).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByText(/700 is a visible setting here/)).toBeVisible();
+    fireEvent.click(screen.getByRole("button", {name:"Room to join"}));
+    expect(exchange).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByText(/joining does not require waiting/)).toBeVisible();
     fireEvent.change(screen.getByRole("combobox", {name:"Health per coin"}), {target:{value:"2000"}});
     expect(screen.getByText(/2,000 health per coin selected/)).toBeVisible();
     expect(screen.getByRole("img", {name:"An original arcade cabinet with its coin door open to show the health-per-coin setting"})).toBeVisible();

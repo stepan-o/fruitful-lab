@@ -25,3 +25,25 @@ Take the game home in a box and a different bargain becomes possible. A characte
 [^1]: Computer History Museum, [50 Years of Fun With Pong](https://computerhistory.org/blog/50-years-of-fun-with-pong/) (2022).
 [^2]: Atari Games, [Gauntlet operator manual](https://files.stardustarcade.com/PDF_Arcade_Atari_Kee/Gauntlet/Gauntlet_TM-284_1st_Printing.pdf) (1985), printed pages 2–2, 2–3 and 3–4.
 [^3]: Ed Logg, [Gauntlet postmortem](https://media.gdcvault.com/gdc2012/slides/Design%20Track/Logg_Ed_Gauntlet_Postmortem.pdf), GDC 2012, PDF pages 6, 8, 15–16, 31 and 40.
+
+## Visual reading sequence · 4 October 2026
+
+The prose above is unchanged. After paragraph two, the production Pong cabinet
+and a staged photograph from the German 1973 Pong Doubles brochure move from a
+recognizable object to its social invitation. The second is explicitly a later
+four-player game and promotional scene, not the tavern prototype or documentary
+bar photography.
+
+The Gauntlet introduction now leads into the actual 336 × 240 arcade frame.
+Optional outlines isolate score versus health, unoccupied character slots and
+the displayed one-coin/700-health allowance. These observations connect to the
+later engagement and transaction chapters without introducing their taxonomy
+here. The original cabinet instrument follows the subsequent participation
+paragraph, so a source image and a model have separate jobs.
+
+The cooperation paragraph is followed by the front and reverse of Atari Games’
+1985 four-player flyer. The front sells the fantasy and the gathering; the reverse
+openly combines cooperation, additional players and operator earnings. The manual
+still follows the operator argument. Source images remain intact and inspectable;
+our labels and outlines are separate. Per-image provenance and credits are in
+`apps/lab/lib/sanctuary/arcade-media.json` and the public credits page.

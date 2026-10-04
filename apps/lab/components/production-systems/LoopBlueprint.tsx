@@ -5,6 +5,7 @@ import figureStudies from "@/lib/production-systems/figure-studies.json";
 import { Grain, Screw, round } from "./engraving-primitives";
 import motion from "./turk-conveyor.module.css";
 import TurkConveyor from "./TurkConveyor";
+import TurkMovement from "./TurkMovement";
 
 const ink = "#463a30";
 const paper = "#f4f2eb";
@@ -152,24 +153,6 @@ function ExperimentTray({ x }: { x: number }) {
   </g>;
 }
 
-function Gear({ x, y, r, teeth, reverse = false, sweep = 180, spokes = 6 }: { x: number; y: number; r: number; teeth: number; reverse?: boolean; sweep?: number; spokes?: number }) {
-  const tooth = Array.from({ length: teeth }, (_, i) => {
-    const a = i * Math.PI * 2 / teeth;
-    return [0, .22, .7, .92].map((f, j) => {
-      const radius = r + (j === 1 || j === 2 ? 2 : -1);
-      return `${i === 0 && j === 0 ? "M" : "L"}${round(Math.cos(a + f * Math.PI * 2 / teeth) * radius)} ${round(Math.sin(a + f * Math.PI * 2 / teeth) * radius)}`;
-    }).join("");
-  }).join("") + "Z";
-  return <g transform={`translate(${x} ${y})`}>
-    <g className={motion.gear} style={{ "--sweep": `${reverse ? -sweep : sweep}deg` } as CSSProperties} stroke={ink} strokeWidth=".8">
-      <path d={tooth} fill={brass} /><circle r={r - 4} fill="#41372d" /><circle r={r - 7} fill="none" stroke="#b8a277" strokeWidth=".6" />
-      {Array.from({ length: spokes }, (_, i) => <path key={i} transform={`rotate(${i * 360 / spokes})`} d={`M-2-4 -3 ${-r + 6}H3L2-4Z`} fill={brass} />)}
-      <circle r="7" fill={brass} /><circle r="3" fill="#5b4935" />
-    </g>
-    <circle r="1.2" fill="#e8d4a1" />
-  </g>;
-}
-
 /** Racknitz's figure is three batched vector paths, reused by the cabinet study. */
 function TurkFigure() {
   return <g strokeLinecap="round" strokeLinejoin="round">
@@ -189,7 +172,7 @@ export default function LoopBlueprint() {
       <div className={styles.plateHeader}><span>Fig. 01 / The experiment engine</span><span>Illustrative experiments</span></div>
       <svg className={styles.loopSvg} viewBox="0 0 680 550" role="img" aria-labelledby="loop-title loop-description">
         <title id="loop-title">The Mechanical Turk operating an A/B experiment conveyor</title>
-        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a walnut cabinet. Its forearms reach over a continuously moving conveyor of jointed chessboard slats, supported by bolted brackets and end bearings. A return run travels beneath the fixed frame, and a guarded chain joins the cabinet shaft to the head drum. The Turk stamps paired A/B specimens into effect estimates. P-values and verdicts exhale from the outfeed in clear lettering that rises and gradually dissolves into smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
+        <desc id="loop-description">An engraved Mechanical Turk sits in a chair behind a walnut cabinet. Its forearms reach over a continuously moving conveyor of jointed chessboard slats, supported by bolted brackets and end bearings. Inside the open cabinet, eleven brass and dark steel wheels turn at different speeds: a large slow flywheel, fast small pinions and an overlapping reduction train. Recessed bearings leave the gears exposed. The output wheel shares an axle with a guarded chain that drives the conveyor’s head drum; a return run travels beneath the fixed frame. The Turk stamps paired A/B specimens into effect estimates. P-values and verdicts exhale from the outfeed in clear lettering that rises and gradually dissolves into smoke: mostly uncertain or near-zero outcomes, some negatives and a rare large gain. The paper register advances with each test, with mild gray, red and green highlights matching uncertain, negative and positive effects. Occasional hindsight reads “false positive” or “great thing we dropped.” These are synthetic normal-model examples and fictional hindsight, not employer results or conclusions inferred from p-values.</desc>
         <defs>
           <pattern id="turk-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke={ink} strokeWidth=".55" opacity=".45" /></pattern>
           <pattern id="turk-crosshatch" width="5" height="5" patternUnits="userSpaceOnUse"><path d="m0 0 5 5M0 5 5 0" stroke={ink} strokeWidth=".5" opacity=".45" /></pattern>
@@ -222,20 +205,7 @@ export default function LoopBlueprint() {
         <path d="M158 354H369V469H158Z" fill="url(#turk-crosshatch)" />
         <path d="M160 356 179 370H369M179 370V468" fill="none" stroke="#79664a" strokeWidth="1" />
 
-        {/* The exposed transmission connects the feed lever to the conveyor axle. */}
-        <g clipPath="url(#turk-chamber)">
-          <path d="M163 394H367M164 451H367" stroke="#1e1b17" strokeWidth="8" />
-          <path d="M163 391H367M164 448H367" stroke={brass} strokeWidth="3" />
-          <path d="M166 388H367M166 445H367" stroke="#e0c796" strokeWidth=".7" />
-          <Gear x={209} y={416} r={43} teeth={32} sweep={180} />
-          <Gear x={274} y={415} r={20} teeth={16} reverse sweep={360} />
-          <Gear x={322} y={415} r={26} teeth={20} sweep={288} spokes={5} />
-          <path d="M190 416H331" stroke={ink} strokeWidth="5" />
-          <path d="M190 414H331" stroke={brass} strokeWidth="2" />
-          <path d="M205 382V464M317 381V464" stroke="#d3ba85" strokeWidth="3" />
-          <path d="M200 377H210V384H200ZM313 377H323V384H313Z" fill={brass} stroke={ink} />
-          <Screw x={209} y={416} r={4} /><Screw x={322} y={415} r={4} />
-        </g>
+        <TurkMovement />
         {/* The left door opens toward the reader, with real hinges and a recessed panel. */}
         <path d="M145 344 89 363V493L145 480Z" fill="#73533d" stroke={ink} strokeWidth="1.4" />
         <path d="M136 355 99 369V481L136 471Z" fill="#a08058" stroke={ink} />

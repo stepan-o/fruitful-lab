@@ -260,3 +260,42 @@ parts. The public artwork disclosure links the functional Dorner reference;
 no drawings, images or client dependencies were copied or added.
 
 Validation: [conveyor assembly evidence](production-systems-evidence/turk-mechanics-verification.md).
+
+
+## Initial watch-finished cabinet movement · 4 October 2026
+
+Superseded by the owner’s open-clockwork correction below.
+
+Owner direction: focus on intricate, premium clockwork and keep the conveyor’s
+power connection mechanically legible. Branch `codex/turk-clockwork-movement`
+starts from merged master `7c974c2` in the existing isolated profile worktree.
+
+The left chamber now contains a five-wheel transmission beneath shaped silver
+bridges, with fine brass teeth, jewel bearings, inset screws and a circular-grained
+mainplate. The barrel has a finished lid and a separate winding ratchet/click.
+Patek Philippe’s official 30-255 image and finishing guide informed the construction
+and material hierarchy; links are in the public artwork disclosure and guidelines.
+The mechanism is an original editorial interpretation.
+
+Gear centers, tooth phases and rotation periods come from one server-side geometry
+module. Four external meshes end at the existing (322, 415) takeoff, with a bearing
+flange exposed around the conveyor sprocket. The conveyor speed, stamp, paper
+register, result smoke and all other scenes retain their accepted behavior.
+
+Validation: [clockwork evidence](production-systems-evidence/turk-clockwork-verification.md).
+
+
+## Open clockwork correction · 4 October 2026
+
+The owner rejected the literal watch architecture: too much visible support,
+not enough gear variety and motion. PR #68 is revised in place with eleven exposed
+wheels, a large slow flywheel, faster small pinions, recessed rear bearings and a
+foreground compound reduction. Broad bridge plates and jewel settings are removed.
+The complete conveyor coupling remains at the original position and speed.
+
+The fastest wheel turns over four times faster than the slowest. All contacts,
+phases, compound-arbor speed and same-plane clearances are checked. Fine finishing
+remains a material influence; the page no longer cites the 30-255 as its layout.
+
+Current evidence replaces the first-pass captures and reports at
+[clockwork verification](production-systems-evidence/turk-clockwork-verification.md).

@@ -7,7 +7,7 @@
 .results { animation: results var(--cycle-period) linear infinite; }
 .hand { transform-origin: 432px 235px; animation: stamp var(--tray-period) linear infinite; }
 .feedHandle { transform-origin: 510px 309px; animation: handle var(--tray-period) linear infinite; }
-.gear { transform-origin: 0 0; animation: turn var(--tray-period) linear infinite; }
+.gear { transform-origin: 0 0; animation: turn var(--wheel-period) linear infinite; }
 .roller { transform-origin: 0 0; animation: roller var(--tray-period) linear infinite; }
 .smoke {
   transform: translate(var(--still-x), var(--still-y));

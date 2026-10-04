@@ -8,7 +8,7 @@ const head = 628 - depthX;
 const shaftY = 332;
 
 /** Equal sprockets keep the cabinet takeoff, jackshaft and head drum in phase.
- * The existing 20-tooth cabinet wheel turns 4/5 revolution per tray. A drum
+ * The cabinet output wheel turns 4/5 revolution per tray. A drum
  * pitch radius of 88 / (2π × .8) = 17.507 carries one 88-unit tray per stroke.
  * Ten-tooth, radius-seven chain sprockets advance eight links in that interval.
  */
@@ -56,7 +56,7 @@ function Drum({ x }: { x: number }) {
 
 /** An original, period-material end-drive conveyor, built around a complete
  * belt loop. The two chain planes share a compound jackshaft at (322, 332).
- * Only its takeoff attaches to the existing cabinet mechanism in this pass.
+ * The lower sprocket shares the movement’s output arbor at (322, 415).
  */
 export default function TurkConveyor({ children }: { children: ReactNode }) {
   return <g data-conveyor-assembly="end-drive" strokeLinejoin="round">

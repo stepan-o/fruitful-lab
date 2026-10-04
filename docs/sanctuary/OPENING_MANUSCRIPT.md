@@ -4,7 +4,7 @@ A quarter bought life. The bargain shaped the adventure.
 
 A game can occupy someone for years after they bought it. Its studio still has salaries to cover and another release to finance. Books, films and music pose versions of the same problem: how to make the success of one work pay for the time and uncertainty of making another.
 
-In 1972, Atari tested its Pong prototype—a two-player paddle-and-ball contest—at Andy Capp’s Tavern in California. Around an arcade game, manufacturers sold cabinets, operators sold turns, and venues gained an attraction. The same creative work had to appeal to a player and earn its place in someone else’s business. [^1][^3]
+Arcades are a revealing place to start because they brought payment into the act of playing. A game had to make another turn worth buying; a cabinet had to justify its price and the floor space it occupied. In 1972, Atari tested its Pong prototype—a two-player paddle-and-ball contest—at Andy Capp’s Tavern in California. Around that game, manufacturers sold cabinets, operators sold turns, and venues gained an attraction. The appeal of playing connected these different businesses. [^1][^3]
 
 Gauntlet, released in 1985, let its players explore monster-filled mazes as fantasy adventurers. Each had a health counter. Time and injuries wore it down; food replenished it. So did money. Put in another coin and your character could stay alive longer. The machine sold a resource that existed only inside its fiction, helping determine how long you could take part. [^2]
 

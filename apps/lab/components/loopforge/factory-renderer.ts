@@ -1,919 +1,295 @@
-import * as T from "three";
-import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
-import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
-import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { cargoFor, noise, type Drive } from "./factory-drive";
-import { neuralDischarge, neuralPulse } from "./factory-neural";
+import { cargoFor, noise, type CargoKind, type Drive } from "./factory-drive";
+import { createNeuralWeave, drawNeuralSignals, neuralDischarge, neuralPulse, paintNeuralWeave, type NeuralWeave } from "./factory-neural";
 
+type Ctx = CanvasRenderingContext2D;
 const TAU = Math.PI * 2;
-type Material = T.MeshStandardMaterial;
+function surface(w: number, h: number) {
+  const c = document.createElement("canvas"); c.width = Math.ceil(w); c.height = Math.ceil(h);
+  return c;
+}
+function line(c: Ctx, points: number[], color: string, width = 1) {
+  c.strokeStyle = color; c.lineWidth = width; c.beginPath(); c.moveTo(points[0], points[1]);
+  for (let i = 2; i < points.length; i += 2) c.lineTo(points[i], points[i + 1]); c.stroke();
+}
+function polygon(c: Ctx, points: number[], fill: string | CanvasGradient, stroke?: string) {
+  c.beginPath(); c.moveTo(points[0], points[1]);
+  for (let i = 2; i < points.length; i += 2) c.lineTo(points[i], points[i + 1]);
+  c.closePath(); c.fillStyle = fill; c.fill(); if (stroke) { c.strokeStyle = stroke; c.lineWidth = 1; c.stroke(); }
+}
+function ellipse(c: Ctx, x: number, y: number, rx: number, ry: number, fill: string | CanvasGradient, stroke?: string) {
+  c.beginPath(); c.ellipse(x, y, Math.max(.01, rx), Math.max(.01, ry), 0, 0, TAU);
+  c.fillStyle = fill; c.fill(); if (stroke) { c.strokeStyle = stroke; c.lineWidth = 1; c.stroke(); }
+}
+function gradient(c: Ctx, x: number, y: number, x2: number, y2: number, stops: [number, string][]) {
+  const g = c.createLinearGradient(x, y, x2, y2); stops.forEach(([at, color]) => g.addColorStop(at, color)); return g;
+}
+function glow(c: Ctx, x: number, y: number, r: number, color: string, power = 1) {
+  c.save(); c.globalAlpha *= power;
+  const g = c.createRadialGradient(x, y, 0, x, y, r); g.addColorStop(0, color); g.addColorStop(1, "transparent");
+  c.fillStyle = g; c.fillRect(x - r, y - r, r * 2, r * 2); c.restore();
+}
+function bolt(c: Ctx, x: number, y: number, r = 3) {
+  ellipse(c, x + 1, y + 2, r + 1, r + 1, "#030606");
+  ellipse(c, x, y, r, r, gradient(c, x, y - r, x, y + r, [[0,"#bca47c"],[.35,"#696b55"],[1,"#212824"]]), "#1c201b");
+  line(c,[x-r*.55,y,x+r*.55,y],"#1e2824",.8);
+}
+function pipe(c: Ctx, x: number, y: number, w: number) {
+  c.fillStyle = gradient(c,0,y,0,y+11,[[0,"#111b19"],[.3,"#526154"],[.48,"#839078"],[.62,"#303d34"],[1,"#070e0d"]]);
+  c.fillRect(x,y,w,11);
+  for(let a=x+8;a<x+w;a+=72) { c.fillStyle="#252e26";c.fillRect(a,y-2,8,15);line(c,[a+1,y-1,a+1,y+12],"#777c5e"); }
+}
+function brainOutline(c: Ctx) {
+  c.beginPath();c.moveTo(-56,11);c.bezierCurveTo(-69,-9,-56,-37,-36,-44);
+  c.bezierCurveTo(-28,-61,-6,-59,3,-51);c.bezierCurveTo(24,-61,49,-45,56,-27);
+  c.bezierCurveTo(72,-14,70,11,55,21);c.bezierCurveTo(36,37,18,30,4,31);
+  c.bezierCurveTo(-19,38,-48,29,-56,11);c.closePath();
+}
+function drawBrain(c: Ctx, seed: number, kind: CargoKind) {
+  const damaged = kind === "rejected" || kind === "cracked";
+  const skin = damaged ? ["#7f8564","#454e37","#152721"] : ["#bc946a","#805336","#30251c"];
+  c.save(); brainOutline(c);
+  c.fillStyle=gradient(c,-35,-55,32,36,[[0,skin[0]],[.5,skin[1]],[1,skin[2]]]);c.fill();
+  c.lineWidth=3;c.strokeStyle="#211d17";c.stroke();c.clip();
+  // Dense asymmetric lobules, deep sulci and broken highlights: cast tissue,
+  // with the worn bronze / cold cyan contrast of the original forge paintings.
+  c.lineCap="round";c.lineJoin="round";
+  for(let row=0;row<9;row++) for(let column=0;column<10;column++) {
+    const id=seed+row*113+column*71,n=noise(id);
+    const x=-68+column*14+(row%2)*6+Math.sin(row*1.4+column)*3;
+    const y=-59+row*11+Math.sin(column*.8+row)*4;
+    c.save();c.translate(x,y);c.rotate((n-.5)*1.4);c.scale(.8+noise(id+4)*.5,.7+noise(id+9)*.6);
+    c.beginPath();c.moveTo(-6,4);c.bezierCurveTo(-12,-4,-4,-10,2,-7);
+    c.bezierCurveTo(13,-7,12,2,6,6);c.bezierCurveTo(2,10,-1,6,1,1);
+    c.strokeStyle="#171b15";c.lineWidth=7.9;c.stroke();
+    c.strokeStyle=damaged?"#6b7353":"#9b724b";c.lineWidth=5.1;c.stroke();
+    c.save();c.translate(-.6,-1.3);c.strokeStyle=damaged?"#9ea17a":"#ccaa78";c.lineWidth=1.25;c.stroke();c.restore();
+    c.restore();
+  }
+  // Broad form lighting and subtle pores give the folds a rounded, warm material.
+  c.fillStyle=gradient(c,-65,-15,66,28,[[0,"#19190f90"],[.3,"#f5c78713"],[.6,"#1b17040b"],[1,"#091712ac"]]);c.fillRect(-75,-70,150,110);
+  c.fillStyle=gradient(c,0,-53,0,36,[[0,"#eac18239"],[.3,"#dea26106"],[.65,"#181b1017"],[1,"#09120dc9"]]);c.fillRect(-75,-70,150,110);
+  for(let i=0;i<1500;i++){c.fillStyle=i%3?"#f3d3a016":"#1a211128";c.fillRect(-67+noise(seed+i*31)*137,-61+noise(seed+i*67)*99,.65,.65);}
+  c.beginPath();c.moveTo(0,-52);c.bezierCurveTo(-12,-30,17,-18,5,3);c.bezierCurveTo(-2,14,12,20,6,34);
+  c.strokeStyle="#201b16";c.lineWidth=3.4;c.stroke();
+  if(kind==="cracked") {
+    polygon(c,[17,-45,3,-19,20,-5,5,23,30,4,17,-12,33,-41],"#0e1613");
+    line(c,[18,-44,4,-19,21,-5,7,22],"#edb154",1.5);
+    for(let i=0;i<9;i++) { const x=18+noise(i+2)*20,y=-30+i*6;ellipse(c,x,y,2,1,"#71ae9a"); }
+  }
+  if(kind==="augmented") {
+    polygon(c,[13,-57,51,-36,62,-4,38,8,17,-5],gradient(c,15,-45,50,8,[[0,"#6d8980"],[.4,"#263e3b"],[1,"#071917"]]),"#9d9270");
+    for(let i=0;i<4;i++)line(c,[22+i*7,-37,34+i*6,-29,31+i*6,-10],"#8bb8a274",1.5);
+    bolt(c,32,-39,2);bolt(c,49,-8,2);ellipse(c,40,-22,4,4,"#b5f6d3");
+  }
+  c.restore();
+}
+function skull(c: Ctx) {
+  c.beginPath();c.moveTo(-31,12);c.bezierCurveTo(-59,-7,-48,-46,-16,-51);
+  c.bezierCurveTo(18,-62,49,-39,46,-6);c.lineTo(28,8);c.lineTo(23,28);c.lineTo(-20,28);c.closePath();
+  c.fillStyle=gradient(c,-20,-45,30,27,[[0,"#c3af7e"],[.55,"#877653"],[1,"#36382d"]]);c.fill();c.strokeStyle="#292820";c.lineWidth=3;c.stroke();
+  ellipse(c,-18,-13,13,14,"#0b1412","#635738");ellipse(c,20,-14,13,15,"#0b1412","#6c5d3c");
+  polygon(c,[-1,-9,-7,9,7,8],"#15201a");
+  for(let i=0;i<7;i++){c.fillStyle="#b7a477";c.fillRect(-20+i*6,16,4,9);}
+  line(c,[-18,-44,-10,-34,-16,-24],"#514b36",1.2);glow(c,20,-14,10,"#78c5b4",.3);ellipse(c,20,-14,2,2,"#aae4cc");
+}
+function cargoSprite(kind: CargoKind, seed: number, weave: NeuralWeave) {
+  const sprite=surface(340,280),c=sprite.getContext("2d")!;c.scale(2,2);c.translate(85,95);
+  ellipse(c,0,19,74,15,"#0009");
+  polygon(c,[-67,13,-49,-2,62,-2,77,14,59,29,-70,29],gradient(c,0,0,0,29,[[0,"#777456"],[.2,"#2d3932"],[.6,"#181f1a"],[1,"#050d0d"]]),"#7d7954");
+  polygon(c,[-60,9,-45,1,54,1,65,11,49,20,-63,20],"#071410","#54665a");
+  c.save();c.translate(0,-9);
+  if(kind==="skull")skull(c);
+  else if(kind==="twin") {c.save();c.translate(-24,0);c.scale(.64,.7);drawBrain(c,seed,"cortex");c.restore();c.save();c.translate(24,-5);c.scale(.67,.8);drawBrain(c,seed+7,"cortex");c.restore();}
+  else {c.save();if(kind==="rejected"){c.rotate(-.17);c.scale(1.04,.72);c.translate(0,12);}drawBrain(c,seed,kind);c.restore();}
+  paintNeuralWeave(c,weave);
+  if(kind==="glass") {
+    c.beginPath();c.moveTo(-65,23);c.lineTo(-65,-31);c.bezierCurveTo(-67,-91,66,-91,66,-31);c.lineTo(66,23);c.closePath();
+    c.fillStyle=gradient(c,-66,0,66,0,[[0,"#9befce30"],[.13,"#c3fff317"],[.35,"#9efde904"],[.74,"#4c8e7814"],[.91,"#afffea38"],[1,"#24574d33"]]);c.fill();c.strokeStyle="#74a29299";c.lineWidth=1.5;c.stroke();
+    c.beginPath();c.moveTo(-54,6);c.lineTo(-54,-29);c.bezierCurveTo(-56,-54,-43,-64,-27,-67);c.strokeStyle="#c0f1d8a8";c.lineWidth=2.5;c.stroke();
+    ellipse(c,0,23,67,8,"#213b3233","#9d9c6b");
+    for(let i=0;i<4;i++)ellipse(c,47+noise(i+4)*5,-20-i*10,1.5,2,"#bbe3cc40");
+  }
+  if(kind==="halo") {ellipse(c,0,-76,29,5,"#bca54b18","#d8c377");ellipse(c,0,-76,23,3,"transparent","#6f6d45");}
+  if(kind==="sprout") {line(c,[3,-54,4,-75],"#96a67c",2);c.save();c.translate(3,-72);c.rotate(-.5);ellipse(c,-7,-3,9,4,"#647c52","#a3ae77");c.rotate(.9);ellipse(c,6,-7,9,4,"#7a925c","#b1bc84");c.restore();}
+  if(kind==="augmented" || kind==="cracked") {
+    c.beginPath();c.moveTo(44,-1);c.bezierCurveTo(79,-12,78,18,54,27);c.strokeStyle="#171c16";c.lineWidth=6;c.stroke();c.strokeStyle="#8b8560";c.lineWidth=1.3;c.stroke();
+  }
+  c.restore();
+  // Clamps connect the specimen to its cradle rather than letting it float.
+  for(const x of [-56,57]) {polygon(c,[x-6,12,x-4,-3,x+2,-5,x+5,13],"#3c493b","#978f62");bolt(c,x,14,2.5);}
+  c.fillStyle="#837651";c.fillRect(-23,23,48,9);c.fillStyle="#17231e";c.font="bold 5px monospace";c.textAlign="center";
+  c.fillText(kind==="rejected"?"RETURN TO SENDER":kind==="skull"?"LEGACY MODEL":kind==="halo"?"SAINT-0":kind==="sprout"?"GROWTH MINDSET":`LF / ${String(seed).padStart(4,"0")}`,1,29);
+  if(kind==="rejected") {line(c,[29,-17,47,1,29,1,47,-17],"#b45039",2.5);}
+  return sprite;
+}
+function neuralSprite(weave: NeuralWeave) {
+  const sprite=surface(340,280),c=sprite.getContext("2d")!;
+  c.scale(2,2);c.translate(85,86);paintNeuralWeave(c,weave,true);return sprite;
+}
+function slatSprite() {
+  const s=surface(44,55),c=s.getContext("2d")!;
+  polygon(c,[12,0,43,0,31,49,0,49],gradient(c,0,0,0,52,[[0,"#38453d"],[.14,"#666b4c"],[.25,"#2f3930"],[.9,"#272e25"],[1,"#868063"]]),"#121a14");
+  for(let y=5;y<48;y+=5)line(c,[13-y*.24,y,39-y*.24,y],y%2?"#aaa07935":"#060e1280");
+  for(let i=0;i<9;i++){const x=13+noise(i*7)*18,y=4+noise(i*17)*39;line(c,[x,y,x+5,y-1],"#b8a1743c",.5);}
+  bolt(c,16,5,1.5);bolt(c,20,41,1.5);return s;
+}
 
-/** One procedural GPU stage: real surface normals, one rotating shadow-casting light. */
-export type FactoryRenderer = {
-  resize: (w: number, h: number) => void;
-  draw: (drive: Drive, still?: boolean) => void;
-  dispose: () => void;
-  prepare?: () => Promise<void>;
-};
-export function createFactoryRenderer(
-  canvas: HTMLCanvasElement,
-): FactoryRenderer | null {
-  const context = canvas.getContext("webgl2", {
-    alpha: true,
-    antialias: true,
-    powerPreference: "high-performance",
-  });
-  if (!context) return null;
-  const renderer = new T.WebGLRenderer({
-    canvas,
-    context,
-    alpha: true,
-    antialias: true,
-  });
-  renderer.setPixelRatio(1);
-  renderer.setClearColor(0x000000, 0);
-  renderer.outputColorSpace = T.SRGBColorSpace;
-  renderer.toneMapping = T.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.3;
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = T.PCFShadowMap;
-  const scene = new T.Scene();
-  scene.fog = new T.FogExp2(0x020605, 0.00022);
-  const room = new RoomEnvironment(),
-    environmentGenerator = new T.PMREMGenerator(renderer);
-  const environment = environmentGenerator.fromScene(room, 0.04);
-  room.dispose();
-  environmentGenerator.dispose();
-  const camera = new T.OrthographicCamera(-600, 600, 340, -340, 0.1, 2400);
-  const geometries = new Set<T.BufferGeometry>(),
-    materials = new Set<T.Material>(),
-    textures = new Set<T.Texture>();
-  const instances = new Set<T.InstancedMesh>();
-  const keep = <G extends T.BufferGeometry>(g: G) => {
-    geometries.add(g);
-    return g;
-  };
-  const material = (color: number, metalness = 0.6, roughness = 0.45) => {
-    const m = new T.MeshStandardMaterial({
-      color,
-      metalness,
-      roughness,
-      envMap: environment.texture,
-      envMapIntensity: 0.35,
-    });
-    materials.add(m);
-    return m;
-  };
-  const steel = material(0x394d3e, 0.55, 0.4),
-    edge = material(0xa39264, 0.7, 0.32),
-    dark = material(0x071610, 0.7, 0.53),
-    rubber = material(0x080e0d, 0.15, 0.8);
-  const tissue = material(0x97704f, 0.05, 0.42),
-    sick = material(0x586854, 0.08, 0.66),
-    bone = material(0xaca17c, 0.04, 0.6);
-  tissue.envMapIntensity = 0.18;
-  sick.envMapIntensity = 0.15;
-  bone.envMapIntensity = 0.2;
-  tissue.vertexColors = true;
-  tissue.emissive.set(0x482614);
-  tissue.emissiveIntensity = 0.12;
-  const cyan = material(0x034644, 0.15, 0.3);
-  cyan.emissive.set(0x00dbf6);
-  cyan.toneMapped = false;
-  cyan.envMapIntensity = 0.05;
-  cyan.emissiveIntensity = 0.95;
-  const glass = material(0x458e80, 0.14, 0.18);
-  glass.transparent = true;
-  glass.opacity = 0.15;
-  glass.depthWrite = false;
-  const bronze = material(0x775334, 0.8, 0.31);
-  for (const m of [steel, edge, bronze])
-    m.onBeforeCompile = (shader) => {
-      shader.vertexShader = shader.vertexShader
-        .replace(
-          "#include <common>",
-          "#include <common>\nvarying vec3 vMetalPoint;",
-        )
-        .replace(
-          "#include <worldpos_vertex>",
-          "#include <worldpos_vertex>\nvMetalPoint=(modelMatrix*vec4(transformed,1.)).xyz;",
-        );
-      shader.fragmentShader = shader.fragmentShader
-        .replace(
-          "#include <common>",
-          "#include <common>\nvarying vec3 vMetalPoint;\nfloat grit(vec3 p){return fract(sin(dot(p,vec3(12.9898,78.233,45.164)))*43758.5453);}",
-        )
-        .replace(
-          "#include <color_fragment>",
-          "#include <color_fragment>\nfloat wear=grit(floor(vMetalPoint*1.8));float bands=sin(vMetalPoint.y*2.4+sin(vMetalPoint.x*.02));diffuseColor.rgb*=.8+wear*.24+bands*.06;",
-        );
-    };
-
-  const unitBox = keep(new RoundedBoxGeometry(1, 1, 1, 2, 0.035)),
-    unitCylinder = keep(new T.CylinderGeometry(1, 1, 1, 20));
-  const dummy = new T.Object3D();
-  function mesh(
-    g: T.BufferGeometry,
-    m: T.Material,
-    parent: T.Object3D = scene,
-    cast = true,
-  ) {
-    const o = new T.Mesh(g, m);
-    o.castShadow = cast;
-    o.receiveShadow = true;
-    parent.add(o);
-    return o;
+export function createFactoryRenderer(canvas: HTMLCanvasElement) {
+  const c=canvas.getContext("2d",{alpha:false});if(!c)return null;
+  let width=1200,height=370,beltY=190;
+  const background=surface(1,1),front=surface(1,1);
+  const weaves=Array.from({length:12},(_,i)=>{const q=cargoFor(i);return createNeuralWeave(q.kind,q.seed);});
+  const cargo=weaves.map((weave,i)=>{const q=cargoFor(i);return cargoSprite(q.kind,q.seed,weave);});
+  const neural=weaves.map(neuralSprite);
+  const slat=slatSprite();let count=0,totalMs=0,maxMs=0;
+  let burstCycle=-1,burstCarrier:number|null=null;
+  function build() {
+    background.width=front.width=Math.ceil(width);background.height=front.height=Math.ceil(height);
+    const b=background.getContext("2d")!,f=front.getContext("2d")!;
+    b.fillStyle=gradient(b,0,0,0,height,[[0,"#020504"],[.32,"#07110e"],[.7,"#101b17"],[1,"#030807"]]);b.fillRect(0,0,width,height);
+    glow(b,width*.24,beltY-38,280,"#9d6b2727");glow(b,width*.82,beltY-20,210,"#44877820");
+    for(let x=-30;x<width+100;x+=120) {
+      b.fillStyle=gradient(b,x,0,x+80,0,[[0,"#0a120f"],[.4,"#18241b"],[1,"#09120f"]]);b.fillRect(x,beltY-113,88,108);
+      line(b,[x+2,beltY-108,x+2,beltY-6],"#72715035");line(b,[x+6,beltY-106,x+77,beltY-106],"#55613c36");
+      bolt(b,x+9,beltY-100,2);bolt(b,x+75,beltY-12,2);
+      for(let k=0;k<4;k++) {b.fillStyle="#010b0a";b.fillRect(x+20,beltY-81+k*8,48,3);line(b,[x+20,beltY-78+k*8,x+67,beltY-78+k*8],"#66674728");}
+    }
+    pipe(b,0,beltY-6,width);pipe(b,0,beltY+104,width);
+    // The bed shows its upper plane, with a recessed lower return and weight-bearing legs.
+    b.fillStyle="#070d0b";b.fillRect(0,beltY+5,width,120);
+    for(let x=42;x<width+140;x+=248) {
+      polygon(b,[x,beltY+54,x+24,beltY+55,x+41,height-8,x-11,height-8],gradient(b,x,0,x+40,0,[[0,"#0b1816"],[.5,"#3d4a3c"],[1,"#101d18"]]),"#454c34");
+      b.fillStyle="#1d2921";b.fillRect(x-16,height-13,70,9);bolt(b,x-8,height-9,2);bolt(b,x+45,height-9,2);
+      line(b,[x+6,beltY+72,x+19,height-20],"#95926838",2);
+    }
+    for(let x=-30;x<width+70;x+=82) {
+      ellipse(b,x,beltY+78,31,29,gradient(b,x-20,beltY+49,x+20,beltY+108,[[0,"#6b7054"],[.25,"#172723"],[.7,"#2f3a2d"],[1,"#090e0d"]]),"#686342");
+      ellipse(b,x,beltY+78,24,23,"#071310","#485743");
+      ellipse(b,x,beltY+78,8,8,"#5e6147","#908364");
+    }
+    // Front fascia with repeated plates, seams, inspection windows and bracket ears.
+    f.fillStyle=gradient(f,0,beltY+32,0,beltY+74,[[0,"#b0a475"],[.05,"#666e50"],[.17,"#2c3b2d"],[.56,"#17271f"],[.85,"#344233"],[1,"#070e0c"]]);f.fillRect(0,beltY+32,width,37);
+    for(let x=-80;x<width+180;x+=190) {
+      line(f,[x,beltY+34,x,beltY+66],"#070d0b",3);line(f,[x+2,beltY+35,x+2,beltY+65],"#aaa27344");
+      bolt(f,x+12,beltY+42);bolt(f,x+168,beltY+57);
+      polygon(f,[x+42,beltY+39,x+122,beltY+39,x+127,beltY+62,x+36,beltY+62],"#0c1712","#746c45");
+      for(let k=0;k<6;k++)line(f,[x+48+k*11,beltY+44,x+44+k*11,beltY+58],"#4d604236",3);
+      f.fillStyle="#c6ad76";f.font="6px monospace";f.fillText(`LF // ${String(Math.round(x+80)/190+1).padStart(2,"0")}`,x+48,beltY+54);
+      f.fillStyle="#8e793b";f.fillRect(x+143,beltY+39,13,19);for(let k=0;k<4;k++)line(f,[x+143,beltY+41+k*5,x+156,beltY+45+k*5],"#263023",3);
+    }
+    for(let i=0;i<width*2;i++) {
+      const x=noise(i*29+3)*width,y=beltY+33+noise(i*11)*34;
+      f.fillStyle=i%3?"#9b865621":"#020b0866";f.fillRect(x,y,noise(i+7)*10+1,.6);
+    }
+    line(f,[0,beltY+34,width,beltY+34],"#d3bd8166",1);line(f,[0,beltY+71,width,beltY+71],"#93855a",2);
   }
-  function box(
-    x: number,
-    y: number,
-    z: number,
-    w: number,
-    h: number,
-    d: number,
-    m: Material,
-    parent: T.Object3D = scene,
-  ) {
-    const o = mesh(unitBox, m, parent);
-    o.position.set(x, y, z);
-    o.scale.set(w, h, d);
-    return o;
+  function resize(cssWidth: number, cssHeight: number) {
+    const artScale=Math.max(.68,Math.min(1,cssWidth/1050));
+    width=Math.min(1800,cssWidth/artScale);height=cssHeight/artScale;beltY=height-178;
+    const resolution=Math.min(1.25,1600/cssWidth,540/cssHeight);
+    canvas.width=Math.round(cssWidth*resolution);canvas.height=Math.round(cssHeight*resolution);build();
   }
-  function cylinder(
-    x: number,
-    y: number,
-    z: number,
-    r: number,
-    h: number,
-    m: Material,
-    parent: T.Object3D = scene,
-  ) {
-    const o = mesh(unitCylinder, m, parent);
-    o.position.set(x, y, z);
-    o.scale.set(r, h, r);
-    return o;
+  function draw(d: Drive, still=false) {
+    const start=performance.now(),t=d.time,jammed=d.status==="jammed";
+    c!.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);
+    c!.drawImage(background,0,0);
+    const lampX=width*.5,lampY=height-43;
+    const phase=still ? 0.72 :t*(jammed?1.12:.65),angle=Math.sin(phase)*1.3;
+    const beam=(x:number,y:number)=>Math.pow(Math.max(0,Math.cos(Math.atan2(x-lampX,lampY-y)-angle)),18);
+    const beamColor=jammed?"#ff321e":"#ffa83f";
+    // Light exists behind the machine first. The opaque fascia and cargo occlude it.
+    c!.save();c!.globalCompositeOperation="screen";
+    glow(c!,lampX,lampY,width*.7,jammed?"#d629174c":"#9f651611",1);
+    c!.translate(lampX,lampY);c!.rotate(angle);
+    const light=gradient(c!,0,0,0,-height,[[0,jammed?"#ff3b24aa":"#d5963328"],[.3,jammed?"#ea281964":"#d5963317"],[1,"#641a0700"]]);
+    polygon(c!,[-12,0,-width*.48,-height,width*.48,-height,12,0],light);c!.restore();
+    for(let x=-50;x<width+80;x+=82) {
+      c!.save();c!.translate(x,beltY+78);c!.rotate(d.distance/25);
+      for(let k=0;k<6;k++){c!.rotate(TAU/6);line(c!,[10,0,21,0],"#828568",2.5);}c!.restore();
+    }
+    c!.save();c!.beginPath();c!.rect(0,beltY-17,width,54);c!.clip();
+    const pitch=32,offset=d.distance%pitch;
+    for(let x=-55+offset;x<width+55;x+=pitch)c!.drawImage(slat,x,beltY-17);
+    c!.restore();
+    c!.save();c!.globalAlpha=.44;
+    for(let x=-44-(d.distance%pitch);x<width+44;x+=pitch)c!.drawImage(slat,x,beltY+102,44,12);
+    c!.restore();
+    // Each carrier belongs to an unbounded world index; recycling happens offscreen.
+    const spacing=194,first=Math.floor((-d.distance-100)/spacing),last=Math.ceil((width-d.distance+100)/spacing);
+    const discharge=neuralDischarge(t,still);
+    // Pick a carrier using its world index at onset, so a burst stays attached
+    // while the belt moves. Selection is fixed until this bounded event ends.
+    const onBeltFirst=Math.ceil(-d.distance/spacing),onBeltLast=Math.floor((width-d.distance)/spacing);
+    if(discharge.cycle!==burstCycle) {burstCycle=discharge.cycle;burstCarrier=null;}
+    if(discharge.strength>0 && burstCarrier===null) burstCarrier=onBeltFirst+Math.floor(discharge.choice*(onBeltLast-onBeltFirst+1));
+    const kick=d.status==="restarting"?Math.sin(d.stateAge*36)*Math.exp(-d.stateAge*3):jammed?Math.sin(d.stateAge*43)*Math.exp(-d.stateAge*9):0;
+    for(let i=first;i<=last;i++) {
+      const x=i*spacing+d.distance, q=cargoFor(i),slot=((i%12)+12)%12;
+      const chatter=still?0:Math.sin(t*24+i*1.7)*Math.min(.5,d.velocity/120)+kick*2;
+      const settle=still?0:Math.sin(t*18+i)*Math.max(0,1-d.velocity/30)*.3;
+      ellipse(c!,x+9,beltY+14,72*q.scale,10,"#000c");
+      c!.save();c!.translate(x,beltY+chatter);c!.rotate((chatter+settle)*.006);
+      c!.drawImage(cargo[slot],-85*q.scale,-119*q.scale,170*q.scale,140*q.scale);
+      c!.save();c!.globalCompositeOperation="screen";
+      c!.globalAlpha=neuralPulse(t,q.seed,0,still).light;
+      c!.drawImage(neural[slot],-85*q.scale,-119*q.scale,170*q.scale,140*q.scale);c!.restore();
+      c!.scale(q.scale,q.scale);c!.translate(0,-33);
+      drawNeuralSignals(c!,weaves[slot],t,still,i===burstCarrier?discharge:null);c!.restore();
+      // Sparse grazing highlights retain the brain's material instead of a red veil.
+      const incident=beam(x,beltY-42)*(jammed ? .8 : .16);
+      if(incident>.02){glow(c!,x+27,beltY-55,46,beamColor,incident*.35);line(c!,[x-64,beltY+19,x+55,beltY+19],jammed?`rgba(255,100,57,${incident})`:`rgba(239,182,92,${incident})`,1.6);}
+      // Long cast shadows diverge from the beacon, broken by the specimen profile.
+      c!.save();c!.globalAlpha=jammed ? .13 : .07;
+      const spread=(x-lampX)*.65;
+      polygon(c!,[x-40,beltY-13,x+42,beltY-13,x+spread+57,0,x+spread-61,0],"#000");c!.restore();
+    }
+    c!.drawImage(front,0,0);
+    // A travelling specular streak is clipped to metal, with bearing shadows below.
+    c!.save();c!.globalCompositeOperation="screen";
+    const specX=lampX+Math.tan(angle)*135;
+    const spec=c!.createRadialGradient(specX,beltY+46,0,specX,beltY+46,jammed?245:135);
+    spec.addColorStop(0,jammed?"#f32e1460":"#c1781325");spec.addColorStop(1,"transparent");c!.fillStyle=spec;c!.fillRect(0,beltY+32,width,39);c!.restore();
+    for(let x=42;x<width;x+=248){const dx=(x-lampX)*.23;polygon(c!,[x-1,beltY+70,x+23,beltY+70,x+dx+43,height,x+dx-21,height],jammed?"#0009":"#0005");}
+    // Conduit and ribbed beacon housing sit BELOW the carrying bed.
+    const by=height-65;
+    c!.strokeStyle="#090f0b";c!.lineWidth=8;c!.beginPath();c!.moveTo(lampX+19,by+34);c!.bezierCurveTo(lampX+95,by+47,lampX+91,beltY+105,lampX+166,beltY+105);c!.stroke();
+    c!.strokeStyle="#555b3f";c!.lineWidth=1.3;c!.stroke();
+    glow(c!,lampX,by+12,jammed?125:47,jammed?"#ff321fe0":"#d48b2355");
+    c!.fillStyle=gradient(c!,lampX-28,0,lampX+28,0,[[0,"#17231c"],[.35,"#8b8260"],[.5,"#b0a378"],[.8,"#394336"],[1,"#0e1b16"]]);c!.fillRect(lampX-31,by+30,62,17);
+    ellipse(c!,lampX,by+30,31,6,"#766c49","#aa9567");
+    c!.beginPath();c!.moveTo(lampX-24,by+28);c!.lineTo(lampX-22,by);c!.bezierCurveTo(lampX-21,by-25,lampX+21,by-25,lampX+22,by);c!.lineTo(lampX+24,by+28);c!.closePath();
+    c!.fillStyle=gradient(c!,lampX-24,0,lampX+24,0,[[0,jammed?"#390e0b":"#36280e"],[.26,jammed?"#8f281b":"#7e5b1e"],[.54,jammed?"#d25234":"#b98d3a"],[.82,jammed?"#6e150f":"#64400c"],[1,"#1b1b0f"]]);c!.fill();c!.strokeStyle=jammed?"#f0784777":"#e7bc6477";c!.lineWidth=1;c!.stroke();
+    c!.save();c!.clip();
+    const bulbX=lampX+Math.sin(phase)*15;
+    glow(c!,bulbX,by+7,19,jammed?"#ff5332":"#ffa840",jammed?1:.55);
+    ellipse(c!,bulbX,by+7,4+Math.max(0,Math.cos(phase))*5,21,jammed?"#ffddafd9":"#ffe4a744");
+    for(let k=-20;k<=20;k+=4)line(c!,[lampX+k,by-17,lampX+k,by+28],k%8?"#19090470":"#f8c49844",1);
+    c!.restore();
+    for(const dx of [-21,21]){line(c!,[lampX+dx,by-5,lampX+dx,by+31],"#15221b",2);bolt(c!,lampX+dx,by+39,2.7);}
+    ellipse(c!,lampX,by+29,25,4,"#4e4932","#b49b61");
+    if(jammed) {
+      // Anamorphic glare spans the screen only as the reflector faces the reader.
+      const facing=.15+.85*Math.pow(Math.max(0,Math.cos(phase)),5);
+      c!.save();c!.globalCompositeOperation="screen";c!.globalAlpha=facing;
+      c!.fillStyle=gradient(c!,0,0,width,0,[[0,"#ff271300"],[.3,"#e9371615"],[.49,"#ff703866"],[.5,"#ffd8aabb"],[.51,"#ff703866"],[.7,"#e9371615"],[1,"#ff271300"]]);
+      c!.fillRect(0,by+5,width,2);
+      glow(c!,lampX,by+6,52,"#ff4a2899");
+      c!.restore();
+    }
+    // Brief, finite sparks on the jam impact or after pulling the mechanical reset.
+    const impact=jammed?d.stateAge:d.status==="restarting"?d.stateAge:10;
+    if(!still && impact<.75) for(let i=0;i<14;i++) {
+      const u=impact, vx=(noise(i*67)-.5)*210,vy=-40-noise(i*89)*120;
+      const sx=width*.75+vx*u,sy=beltY+64+vy*u+170*u*u;
+      line(c!,[sx-vx*.018,sy-vy*.012,sx,sy],`rgba(255,${180-Math.round(u*100)},65,${1-u/.75})`,1+noise(i)*.7);
+    }
+    // A few dim dust particles lend depth; they never cover the menu above.
+    if(!still)for(let i=0;i<11;i++) {
+      const px=(noise(i*39)*width+t*(2+noise(i)*3))%width, py=beltY-30-noise(i*47)*120+Math.sin(t*.7+i)*6;
+      ellipse(c!,px,py,.6+noise(i),.6+noise(i),`rgba(161,143,91,${.06+beam(px,py)*.18})`);
+    }
+    const ms=performance.now()-start;totalMs+=ms;maxMs=Math.max(maxMs,ms);count++;
+    if(count%60===0){canvas.dataset.drawMeanMs=(totalMs/count).toFixed(2);canvas.dataset.drawMaxMs=maxMs.toFixed(2);canvas.dataset.distance=d.distance.toFixed(2);canvas.dataset.frames=String(count);}
   }
-  function combined(parts: T.BufferGeometry[]) {
-    const g = keep(mergeGeometries(parts)!);
-    parts.forEach((p) => p.dispose());
-    return g;
-  }
-  function tube(points: T.Vector3[], radius: number, segments = 64) {
-    return new T.TubeGeometry(
-      new T.CatmullRomCurve3(points),
-      segments,
-      radius,
-      5,
-      false,
-    );
-  }
-  function bolts(parent: T.Object3D, positions: T.Vector3[], radius = 2.5) {
-    const g = unitCylinder;
-    const bolts = new T.InstancedMesh(g, edge, positions.length);
-    instances.add(bolts);
-    positions.forEach((p, i) => {
-      dummy.position.copy(p);
-      dummy.rotation.set(Math.PI / 2, 0, 0);
-      dummy.scale.set(radius, 2, radius);
-      dummy.updateMatrix();
-      bolts.setMatrixAt(i, dummy.matrix);
-    });
-    parent.add(bolts);
-    return bolts;
-  }
-  function stampTexture() {
-    const c = document.createElement("canvas");
-    c.width = c.height = 128;
-    const q = c.getContext("2d")!;
-    const g = q.createRadialGradient(64, 64, 0, 64, 64, 64);
-    g.addColorStop(0, "#fffef0");
-    g.addColorStop(0.055, "#fffbd3");
-    g.addColorStop(0.16, "#ffffff70");
-    g.addColorStop(0.43, "#ffffff16");
-    g.addColorStop(1, "#ffffff00");
-    q.fillStyle = g;
-    q.fillRect(0, 0, 128, 128);
-    const t = new T.CanvasTexture(c);
-    textures.add(t);
-    return t;
-  }
-  // Bake stationary pieces into one draw per material; moving bodies remain separate.
-  function bake(parent: T.Object3D) {
-    const batches = new Map<T.Material, T.Mesh[]>(),
-      baked: T.BufferGeometry[] = [];
-    for (const child of [...parent.children])
-      if (
-        child instanceof T.Mesh &&
-        !(child instanceof T.InstancedMesh) &&
-        !Array.isArray(child.material)
-      ) {
-        const group = batches.get(child.material) ?? [];
-        group.push(child);
-        batches.set(child.material, group);
-      }
-    for (const [mat, parts] of batches) {
-      if (parts.length < 2) continue;
-      const transformed = parts.map((p) => {
-        p.updateMatrix();
-        return (
-          p.geometry.index ? p.geometry.toNonIndexed() : p.geometry.clone()
-        ).applyMatrix4(p.matrix);
-      });
-      const geometry = combined(transformed);
-      baked.push(geometry);
-      parts.forEach((p) => parent.remove(p));
-      mesh(
-        geometry,
-        mat,
-        parent,
-        parts.some((p) => p.castShadow),
-      );
-    }
-    return baked;
-  }
-  const glowMap = stampTexture();
-  function glow(color: number, size: number, parent: T.Object3D = scene) {
-    const m = new T.SpriteMaterial({
-      map: glowMap,
-      color,
-      transparent: true,
-      blending: T.AdditiveBlending,
-      depthWrite: false,
-    });
-    materials.add(m);
-    const s = new T.Sprite(m);
-    s.scale.set(size, size, 1);
-    parent.add(s);
-    return s;
-  }
-
-  // A granular surface map is generated once. Real geometry supplies the large folds.
-  const grain = document.createElement("canvas");
-  grain.width = grain.height = 128;
-  const gc = grain.getContext("2d")!,
-    pixels = gc.createImageData(128, 128);
-  for (let i = 0; i < 128 * 128; i++) {
-    const v = 110 + noise(i * 37) * 70;
-    pixels.data.set([v, v, v, 255], i * 4);
-  }
-  gc.putImageData(pixels, 0, 0);
-  const grainMap = new T.CanvasTexture(grain);
-  grainMap.wrapS = grainMap.wrapT = T.RepeatWrapping;
-  grainMap.repeat.set(5, 5);
-  textures.add(grainMap);
-  tissue.bumpMap = grainMap;
-  tissue.bumpScale = 0.4;
-  steel.bumpMap = grainMap;
-  steel.bumpScale = 0.12;
-
-  function hemisphere(side: number, seed: number) {
-    const g = new T.SphereGeometry(1, 72, 52),
-      p = g.attributes.position;
-    const colors = new Float32Array(p.count * 3),
-      color = new T.Color();
-    for (let i = 0; i < p.count; i++) {
-      const x = p.getX(i),
-        y = p.getY(i),
-        z = p.getZ(i);
-      const wave =
-        Math.sin(x * 11 + Math.sin(z * 7) * 1.6 + Math.sin(y * 6)) +
-        0.38 * Math.sin(z * 13 + Math.sin(y * 8) * 1.6 + seed * 0.003);
-      const fold = Math.pow(Math.min(1, Math.abs(wave)), 0.4),
-        detail = Math.sin(y * 35 + z * 13) * Math.sin(x * 27 - z * 11) * 0.23;
-      const r = 0.84 + fold * 0.16 + detail * 0.008;
-      p.setXYZ(i, side * (19 + x * 24 * r), 25 + y * 30 * r, z * 36 * r);
-      color.setRGB(0.65 + fold * 0.35, 0.58 + fold * 0.42, 0.52 + fold * 0.48);
-      color.toArray(colors, i * 3);
-    }
-    g.setAttribute("color", new T.BufferAttribute(colors, 3));
-    g.computeVertexNormals();
-    return g;
-  }
-  const cortexGeometry = combined([hemisphere(-1, 47), hemisphere(1, 47)]);
-  const damagedGeometry = combined([hemisphere(-1, 937), hemisphere(1, 937)]);
-  function specimen(slot: number) {
-    const q = cargoFor(slot),
-      group = new T.Group(),
-      body = new T.Group();
-    group.add(body);
-    const bad = q.kind === "cracked" || q.kind === "rejected";
-    // Carriers have a black ceramic seat, cast corners and threaded brass retainers.
-    box(0, 0, 0, 108, 7, 93, dark, group);
-    box(0, 4, 0, 99, 5, 84, steel, group);
-    box(0, 8, 0, 87, 3, 73, rubber, group);
-    for (const x of [-47, 47]) {
-      box(x, 13, 0, 6, 14, 83, bronze, group);
-      box(x, 22, 20, 6, 8, 16, edge, group);
-      box(x, 22, -20, 6, 8, 16, edge, group);
-    }
-    bolts(
-      group,
-      [-39, 39].flatMap((x) => [
-        new T.Vector3(x, 2, 48),
-        new T.Vector3(x, 15, 44),
-      ]),
-      2,
-    );
-    body.position.y = 12;
-    body.rotation.y = (noise(q.seed) - 0.5) * 0.35;
-    if (q.kind === "skull") {
-      const head = mesh(keep(new T.SphereGeometry(1, 32, 24)), bone, body);
-      head.scale.set(28, 32, 23);
-      head.position.set(0, 27, -4);
-      const face = new T.Shape();
-      face.moveTo(-23, 10);
-      face.bezierCurveTo(-35, 30, -29, 57, -9, 61);
-      face.bezierCurveTo(16, 70, 35, 50, 29, 26);
-      face.lineTo(22, 13);
-      face.lineTo(13, 10);
-      face.lineTo(14, 0);
-      face.lineTo(-14, 0);
-      face.lineTo(-14, 10);
-      face.closePath();
-      for (const side of [-1, 1]) {
-        const socket = new T.Path();
-        socket.absellipse(side * 12, 30, 9, 10, 0, TAU, true);
-        face.holes.push(socket);
-      }
-      const nose = new T.Path();
-      nose.moveTo(0, 24);
-      nose.lineTo(5, 12);
-      nose.lineTo(-4, 12);
-      nose.closePath();
-      face.holes.push(nose);
-      const mask = mesh(
-        keep(
-          new T.ExtrudeGeometry(face, {
-            depth: 3,
-            bevelEnabled: true,
-            bevelSize: 2,
-            bevelThickness: 2,
-            bevelSegments: 3,
-            curveSegments: 24,
-          }),
-        ),
-        bone,
-        body,
-      );
-      mask.position.z = 23;
-      for (const x of [-12, 12]) {
-        const eye = mesh(keep(new T.SphereGeometry(1, 16, 12)), dark, body);
-        eye.position.set(x, 30, 20);
-        eye.scale.set(9, 10, 3);
-      }
-      for (let i = 0; i < 7; i++)
-        box(-12 + i * 4, 0, 28, 2.8, 6 + Math.sin(i) * 2, 4, bone, body);
-    } else if (q.kind === "twin") {
-      for (const x of [-21, 21]) {
-        const b = mesh(cortexGeometry, tissue, body);
-        b.scale.setScalar(0.58);
-        b.position.set(x, 2, 0);
-      }
-    } else {
-      const b = mesh(
-        bad ? damagedGeometry : cortexGeometry,
-        bad ? sick : tissue,
-        body,
-      );
-      if (q.kind === "rejected") {
-        b.scale.set(1.08, 0.68, 1);
-        b.rotation.z = 0.18;
-      }
-      if (q.kind === "augmented") {
-        const plate = mesh(
-          keep(new T.SphereGeometry(29, 24, 16, 0, 1.7, 0, 1.6)),
-          steel,
-          body,
-        );
-        plate.position.set(10, 21, 0);
-        plate.rotation.z = -0.3;
-      }
-      if (q.kind === "cracked") {
-        const split = box(8, 30, 34, 4, 35, 4, dark, body);
-        split.rotation.z = -0.25;
-      }
-    }
-    // Two routed harnesses, each with a pair of helically interwoven filaments.
-    const wires: T.BufferGeometry[] = [],
-      jackets: T.BufferGeometry[] = [],
-      curves: T.CatmullRomCurve3[] = [];
-    for (const side of [-1, 1]) {
-      const pts = [
-        [-32, 0, 24],
-        [-35, 14, 26],
-        [-31, 36, 18],
-        [-17, 48, 9],
-        [-7, 40, 29],
-        [-10, 19, 37],
-      ].map(([x, y, z]) => new T.Vector3(x * side, y, z));
-      if (q.kind === "skull")
-        pts.forEach((p) => {
-          p.x *= 1.15;
-          p.z -= 18;
-        });
-      if (bad) {
-        pts[5].x += side * 10;
-        pts[5].y += 14;
-      }
-      const curve = new T.CatmullRomCurve3(pts);
-      curves.push(curve);
-      jackets.push(new T.TubeGeometry(curve, 64, 1.3, 6, false));
-      for (let strand = 0; strand < 2; strand++) {
-        const helix = Array.from({ length: 121 }, (_, i) => {
-          const u = i / 120,
-            p = curve.getPoint(u),
-            t = curve.getTangent(u),
-            n = new T.Vector3(t.y, -t.x, 0).normalize();
-          const a = u * TAU * 14 + strand * Math.PI;
-          p.addScaledVector(n, Math.cos(a) * 1.25);
-          p.z += Math.sin(a) * 1.25;
-          return p;
-        });
-        wires.push(tube(helix, 0.5, 120));
-      }
-      for (const p of [pts[0], pts[5]]) {
-        const ferrule = cylinder(p.x, p.y, p.z, 2.3, 4.2, bronze, body);
-        ferrule.rotation.x = Math.PI / 2;
-      }
-    }
-    mesh(combined(jackets), dark, body);
-    const neuralMat = cyan.clone();
-    materials.add(neuralMat);
-    mesh(combined(wires), neuralMat, body, false);
-    const packets = curves.map(() => {
-      const p = glow(0x79ffee, 8, body);
-      p.material.opacity = 0.65;
-      return p;
-    });
-    if (q.kind === "glass") {
-      const bell = mesh(
-        keep(new T.SphereGeometry(53, 28, 18, 0, TAU, 0, Math.PI / 2)),
-        glass,
-        group,
-        false,
-      );
-      bell.position.y = 12;
-      bell.scale.set(1, 1.15, 0.85);
-      const ring = mesh(keep(new T.TorusGeometry(51, 1.3, 6, 48)), edge, group);
-      ring.rotation.x = Math.PI / 2;
-      ring.position.y = 12;
-      ring.scale.y = 0.84;
-    }
-    if (q.kind === "halo") {
-      const ring = mesh(keep(new T.TorusGeometry(22, 0.7, 5, 48)), edge, body);
-      ring.rotation.x = Math.PI / 2;
-      ring.position.y = 75;
-    }
-    if (q.kind === "sprout") {
-      const stem = tube(
-        [
-          new T.Vector3(0, 49, 0),
-          new T.Vector3(3, 62, 0),
-          new T.Vector3(0, 69, 0),
-        ],
-        0.65,
-        12,
-      );
-      mesh(keep(stem), sick, body);
-      for (const side of [-1, 1]) {
-        const leaf = mesh(keep(new T.SphereGeometry(1, 10, 8)), sick, body);
-        leaf.scale.set(8, 2, 3);
-        leaf.position.set(side * 6, 65 + side * 3, 0);
-        leaf.rotation.z = side * 0.5;
-      }
-    }
-    bake(group);
-    bake(body);
-    group.scale.setScalar(q.scale);
-    scene.add(group);
-    return { group, body, neuralMat, curves, packets, seed: q.seed, bad };
-  }
-  const cargo = Array.from({ length: 12 }, (_, i) => specimen(i));
-  const belt = new T.InstancedMesh(
-    keep(new T.BoxGeometry(18, 7, 112)),
-    steel,
-    130,
-  );
-  belt.castShadow = true;
-  belt.receiveShadow = true;
-  scene.add(belt);
-  const wheelGeometry = keep(new T.CylinderGeometry(20, 20, 12, 24)),
-    wheels = new T.InstancedMesh(wheelGeometry, bronze, 32);
-  wheels.castShadow = true;
-  wheels.receiveShadow = true;
-  scene.add(wheels);
-  const hubs = new T.InstancedMesh(
-    keep(new T.CylinderGeometry(8, 8, 14, 12)),
-    dark,
-    32,
-  );
-  scene.add(hubs);
-  [belt, wheels, hubs].forEach((m) => instances.add(m));
-  const frame = new T.Group();
-  scene.add(frame);
-  const wallMaterial = material(0x060a08, 0.3, 0.8),
-    wall = mesh(
-      keep(new T.PlaneGeometry(3000, 1400)),
-      wallMaterial,
-      scene,
-      false,
-    );
-  wall.position.set(0, 500, -190);
-  wallMaterial.envMapIntensity = 0;
-  const floor = mesh(
-    keep(new T.PlaneGeometry(3000, 700)),
-    material(0x172018, 0.66, 0.32),
-    scene,
-    false,
-  );
-  (floor.material as Material).envMapIntensity = 0.08;
-  floor.rotation.x = -Math.PI / 2;
-  floor.position.y = -8;
-  const pipeMetal = material(0x122019, 0.8, 0.55);
-  pipeMetal.envMapIntensity = 0.15;
-  const backdrop = new T.Group();
-  scene.add(backdrop);
-  for (const side of [-1, 1])
-    for (let i = 0; i < 4; i++) {
-      cylinder(
-        side * (380 + i * 75),
-        300,
-        -140,
-        5 + i,
-        700,
-        pipeMetal,
-        backdrop,
-      );
-      for (let j = 0; j < 5; j++)
-        cylinder(
-          side * (380 + i * 75),
-          j * 155,
-          -140,
-          8 + i,
-          9,
-          bronze,
-          backdrop,
-        );
-    }
-  bake(backdrop);
-  // Permanent housing. Only the reflector inside rotates about the upright shaft.
-  const lamp = new T.Group();
-  lamp.position.set(0, 0, 115);
-  scene.add(lamp);
-  cylinder(0, 13, 0, 25, 8, steel, lamp);
-  cylinder(0, 18, 0, 20, 4, edge, lamp);
-  const beaconGlass = glass.clone();
-  materials.add(beaconGlass);
-  beaconGlass.opacity = 0.3;
-  beaconGlass.envMapIntensity = 0;
-  beaconGlass.toneMapped = false;
-  cylinder(0, 38, 0, 16, 36, beaconGlass, lamp);
-  cylinder(0, 57, 0, 17, 3, bronze, lamp);
-  const cap = mesh(
-    keep(new T.SphereGeometry(16, 24, 12, 0, TAU, 0, Math.PI / 2)),
-    beaconGlass,
-    lamp,
-    false,
-  );
-  cap.position.y = 56;
-  cap.scale.y = 0.38;
-  for (let i = 0; i < 24; i++) {
-    const a = (i / 24) * TAU;
-    cylinder(
-      Math.sin(a) * 16.2,
-      38,
-      Math.cos(a) * 16.2,
-      0.32,
-      34,
-      beaconGlass,
-      lamp,
-    );
-  }
-  cylinder(0, 35, 0, 2.3, 34, edge, lamp);
-  bake(lamp);
-  const rotor = new T.Group();
-  rotor.position.y = 38;
-  lamp.add(rotor);
-  const reflector = mesh(
-    keep(new T.SphereGeometry(12, 24, 12, 0, Math.PI)),
-    edge,
-    rotor,
-    false,
-  );
-  reflector.rotation.y = Math.PI / 2;
-  reflector.scale.y = 1.15;
-  const filamentMat = material(0xffd58a, 0.1, 0.15);
-  filamentMat.toneMapped = false;
-  filamentMat.envMapIntensity = 0;
-  filamentMat.emissive.set(0xffd28a);
-  filamentMat.emissiveIntensity = 4;
-  const filament = mesh(
-    keep(new T.SphereGeometry(3, 12, 10)),
-    filamentMat,
-    rotor,
-    false,
-  );
-  filament.position.z = 8;
-  filament.scale.y = 2.8;
-  const lampGlow = glow(0xffa333, 135, lamp);
-  lampGlow.position.y = 38;
-  const flare = glow(0xffa333, 1000, lamp);
-  flare.position.y = 38;
-  flare.material.depthTest = false;
-  flare.scale.y = 4;
-  const point = new T.PointLight(0xff9837, 900, 200, 2);
-  point.position.set(0, 40, 125);
-  scene.add(point);
-  const spot = new T.SpotLight(0xffa94d, 220000, 0, 0.85, 1, 2);
-  spot.position.set(0, 40, 122);
-  spot.castShadow = true;
-  spot.shadow.mapSize.set(1024, 1024);
-  spot.shadow.bias = -0.0001;
-  spot.shadow.normalBias = 0.8;
-  spot.shadow.camera.near = 3;
-  spot.shadow.camera.far = 1500;
-  scene.add(spot, spot.target);
-  scene.add(new T.HemisphereLight(0xa8ccbf, 0x241c12, 1.8));
-  const key = new T.DirectionalLight(0xffdaa5, 3.5);
-  key.position.set(-240, 500, 250);
-  scene.add(key);
-  const rim = new T.DirectionalLight(0x59bbae, 1.8);
-  rim.position.set(250, 240, -250);
-  scene.add(rim);
-  const volumeMat = new T.ShaderMaterial({
-    transparent: true,
-    depthWrite: false,
-    blending: T.AdditiveBlending,
-    side: T.DoubleSide,
-    uniforms: {
-      tint: { value: new T.Color(0xff9c42) },
-      power: { value: 0.035 },
-    },
-    vertexShader: `varying vec2 vUv;varying vec3 vN;varying vec3 vP;void main(){vUv=uv;vN=normalize(mat3(modelMatrix)*normal);vP=(modelMatrix*vec4(position,1.)).xyz;gl_Position=projectionMatrix*viewMatrix*vec4(vP,1.);}`,
-    fragmentShader: `varying vec2 vUv;varying vec3 vN;varying vec3 vP;uniform vec3 tint;uniform float power;void main(){float rim=pow(abs(dot(normalize(vN),normalize(cameraPosition-vP))),1.7);float fade=pow(vUv.y,1.15)*(1.-smoothstep(.82,1.,vUv.y));gl_FragColor=vec4(tint,rim*fade*power);}`,
-  });
-  materials.add(volumeMat);
-  const cone = mesh(
-    keep(
-      new T.CylinderGeometry(0, 700, 1200, 48, 1, true).translate(0, -600, 0),
-    ),
-    volumeMat,
-    scene,
-    false,
-  );
-  cone.position.copy(spot.position);
-  cone.renderOrder = 3;
-  const down = new T.Vector3(0, -1, 0),
-    direction = new T.Vector3();
-  // One finite neural discharge, attached to its specimen until the fade completes.
-  const arcsGeometry = keep(new T.BufferGeometry()),
-    arcPositions = new Float32Array(3 * 12 * 3);
-  arcsGeometry.setAttribute("position", new T.BufferAttribute(arcPositions, 3));
-  const arcMaterial = new T.LineBasicMaterial({
-    color: 0xaaffec,
-    transparent: true,
-    blending: T.AdditiveBlending,
-  });
-  materials.add(arcMaterial);
-  const arcs = new T.LineSegments(arcsGeometry, arcMaterial);
-  scene.add(arcs);
-  const arcGlow = glow(0x34ffdf, 75);
-  let width = 1200,
-    height = 680,
-    cssW = 1200,
-    cssH = 680,
-    frames = 0,
-    total = 0,
-    max = 0,
-    burstCycle = -1,
-    burstSlot = 0;
-  const positions: T.Vector3[] = [],
-    projected = new T.Vector3();
-  let frameGeometry: T.BufferGeometry[] = [];
-  function rebuildFrame() {
-    for (const child of frame.children)
-      if (child instanceof T.InstancedMesh) {
-        child.dispose();
-        instances.delete(child);
-      }
-    frame.clear();
-    frameGeometry.forEach((g) => {
-      g.dispose();
-      geometries.delete(g);
-    });
-    const w = width + 250;
-    box(0, 107, 60, w, 27, 9, steel, frame);
-    box(0, 126, 61, w, 3, 6, edge, frame);
-    box(0, 107, -60, w, 27, 9, steel, frame);
-    box(0, 88, 62, w, 3, 5, edge, frame);
-    box(0, 64, -15, w, 6, 74, dark, frame);
-    for (let x = -w / 2; x < w / 2; x += 148) {
-      box(x, 108, 66, 82, 14, 3, dark, frame);
-      box(x, 108, 68, 71, 1, 1, bronze, frame);
-      box(x + 60, 108, 67, 10, 18, 3, bronze, frame);
-      for (let n = 0; n < 5; n++)
-        box(x - 28 + n * 14, 108, 68, 1, 10, 1, edge, frame);
-      const brace = box(x + 28, 42, -18, 5, 94, 9, steel, frame);
-      brace.rotation.z = -0.65;
-      if (Math.abs(x) > 45) {
-        box(x, 35, 2, 13, 100, 30, steel, frame);
-        box(x, -4, 8, 52, 5, 61, bronze, frame);
-      }
-    }
-    positions.length = 0;
-    for (let x = -w / 2; x < w / 2; x += 74)
-      positions.push(new T.Vector3(x, 117, 67), new T.Vector3(x, 96, 67));
-    bolts(frame, positions, 2);
-    frameGeometry = bake(frame);
-  }
-  function resize(w: number, h: number) {
-    cssW = w;
-    cssH = h;
-    height = 680;
-    width = (height * w) / h;
-    const ratio = Math.min(1.5, 1800 / w, 1100 / h);
-    renderer.setSize(Math.round(w * ratio), Math.round(h * ratio), false);
-    camera.left = -width / 2;
-    camera.right = width / 2;
-    camera.top = height / 2;
-    camera.bottom = -height / 2;
-    camera.position.set(0, height / 2 + 370, 1000);
-    camera.lookAt(0, height / 2 - 30, 0);
-    camera.updateProjectionMatrix();
-    backdrop.scale.x = Math.max(0.5, width / 1200);
-    flare.scale.x = width * 2;
-    rebuildFrame();
-  }
-  function draw(d: Drive, still = false) {
-    const started = performance.now(),
-      jam = d.status === "jammed",
-      phase = d.time * 0.78;
-    const red = jam
-      ? 1
-      : d.status === "restarting"
-        ? Math.max(0, 1 - d.stateAge)
-        : 0;
-    const tint = new T.Color(0xffa13a).lerp(new T.Color(0xff0000), red);
-    rotor.rotation.y = phase;
-    direction.set(Math.sin(phase), 0.34, Math.cos(phase)).normalize();
-    spot.target.position.copy(spot.position).addScaledVector(direction, 700);
-    cone.quaternion.setFromUnitVectors(down, direction);
-    beaconGlass.color.copy(tint);
-    beaconGlass.emissive.copy(tint);
-    beaconGlass.emissiveIntensity = 0.25 + red * 0.6;
-    spot.color.copy(tint);
-    spot.intensity = 1200000 + red * 14000000;
-    point.color.copy(tint);
-    point.intensity = 6000 + red * 24000;
-    volumeMat.uniforms.tint.value.copy(tint);
-    volumeMat.uniforms.power.value = 0.035 + red * 0.16;
-    lampGlow.material.color.copy(tint);
-    lampGlow.material.opacity = 0.32 + red * 0.45;
-    flare.material.color.copy(tint);
-    flare.material.opacity =
-      (0.1 + red * 0.7) * Math.pow(Math.max(0, Math.cos(phase)), 22);
-    filamentMat.color.copy(tint);
-    filamentMat.emissive.copy(tint);
-    filamentMat.emissiveIntensity = 3 + red * 4;
-    const tension =
-      jam && !still
-        ? Math.pow(Math.max(0, Math.sin(d.stateAge * 2.6)), 18) *
-          Math.sin(d.stateAge * 45)
-        : 0;
-    const slats = Math.min(130, Math.ceil((width + 200) / 21));
-    belt.count = slats;
-    for (let i = 0; i < slats; i++) {
-      dummy.position.set(-width / 2 - 100 + i * 21 + (d.distance % 21), 130, 0);
-      dummy.rotation.set(0, 0, 0);
-      dummy.scale.set(1, 1, 1);
-      dummy.updateMatrix();
-      belt.setMatrixAt(i, dummy.matrix);
-    }
-    belt.instanceMatrix.needsUpdate = true;
-    const nWheels = Math.min(32, Math.ceil((width + 180) / 68));
-    wheels.count = hubs.count = nWheels;
-    for (let i = 0; i < nWheels; i++) {
-      dummy.position.set(-width / 2 - 70 + i * 68, 87, 57);
-      dummy.rotation.set(Math.PI / 2, d.distance / 20 + tension * 0.11, 0);
-      dummy.updateMatrix();
-      wheels.setMatrixAt(i, dummy.matrix);
-      hubs.setMatrixAt(i, dummy.matrix);
-    }
-    wheels.instanceMatrix.needsUpdate = true;
-    hubs.instanceMatrix.needsUpdate = true;
-    const spacing = 151,
-      cycleLength = spacing * 12,
-      discharge = neuralDischarge(d.time, still),
-      visible: number[] = [];
-    for (let i = 0; i < 12; i++) {
-      const item = cargo[i],
-        x =
-          ((i * spacing + d.distance + cycleLength / 2) % cycleLength) -
-          cycleLength / 2;
-      item.group.position.set(x, 137, 0);
-      item.group.visible = Math.abs(x) < width / 2 + 110;
-      if (!item.group.visible) continue;
-      visible.push(i);
-      const strain = jam
-        ? Math.pow(Math.max(0, Math.sin(d.stateAge * 2.6)), 18)
-        : 0;
-      const kick =
-        d.status === "restarting"
-          ? Math.sin(d.stateAge * 28) * Math.exp(-d.stateAge * 3)
-          : jam
-            ? Math.sin(d.stateAge * 45) * strain * 0.8
-            : 0;
-      item.group.rotation.z = still ? 0 : kick * 0.017;
-      item.group.position.x += still
-        ? 0
-        : strain * Math.sin(d.stateAge * 45) * 0.65;
-      item.group.position.y += still
-        ? 0
-        : Math.sin(d.time * 23 + i) * Math.min(0.23, d.velocity / 180);
-      item.neuralMat.emissiveIntensity =
-        0.8 + neuralPulse(d.time, item.seed, 0, still).light;
-      item.packets.forEach((p, j) => {
-        const pulse = neuralPulse(d.time, item.seed, j, still);
-        p.visible = !still && pulse.position > 0 && pulse.position < 1;
-        if (p.visible) p.position.copy(item.curves[j].getPoint(pulse.position));
-      });
-    }
-    if (discharge.cycle !== burstCycle) {
-      burstCycle = discharge.cycle;
-      burstSlot = visible[Math.floor(discharge.choice * visible.length)] ?? 0;
-    }
-    const item = cargo[burstSlot];
-    arcs.visible = arcGlow.visible =
-      discharge.strength > 0 && item.group.visible;
-    if (arcs.visible) {
-      item.group.updateMatrixWorld(true);
-      const origin = item.curves[1].getPoint(item.bad ? 1 : 0.45);
-      item.body.localToWorld(origin);
-      let index = 0;
-      for (let b = 0; b < 3; b++) {
-        let last = origin.clone();
-        for (let n = 1; n <= 6; n++) {
-          const p = origin
-            .clone()
-            .add(
-              new T.Vector3(
-                (b - 1) * n * 4 +
-                  (noise(n * 17 + b * 37 + burstCycle) - 0.5) * 8,
-                n * 4,
-                Math.sin(n) * 3,
-              ),
-            );
-          last.toArray(arcPositions, index);
-          p.toArray(arcPositions, index + 3);
-          index += 6;
-          last = p;
-        }
-      }
-      arcsGeometry.attributes.position.needsUpdate = true;
-      arcsGeometry.computeBoundingSphere();
-      arcMaterial.opacity = discharge.strength;
-      arcGlow.position.copy(origin);
-      arcGlow.material.opacity = discharge.strength * 0.6;
-    }
-    renderer.render(scene, camera);
-    // Shared orientation also lights the text UI and draws attention to the reset.
-    const page = canvas.closest("main");
-    if (page) {
-      page.dataset.factoryState = d.status;
-      page.style.setProperty(
-        "--beacon-wash",
-        String(red * (0.12 + 0.5 * Math.pow(Math.max(0, -Math.cos(phase)), 2))),
-      );
-    }
-    if (++frames % 60 === 0) {
-      projected.copy(spot.position).project(camera);
-      canvas.dataset.beaconY = String(((1 - projected.y) * cssH) / 2);
-      canvas.dataset.beaconAngle = (phase % TAU).toFixed(3);
-      canvas.dataset.frames = String(frames);
-      canvas.dataset.drawCalls = String(renderer.info.render.calls);
-      canvas.dataset.triangles = String(renderer.info.render.triangles);
-      canvas.dataset.viewport = `${cssW}x${cssH}`;
-      canvas.dataset.drawMeanMs = (total / frames).toFixed(2);
-      canvas.dataset.drawMaxMs = max.toFixed(2);
-    }
-    const elapsed = performance.now() - started;
-    total += elapsed;
-    max = Math.max(max, elapsed);
-  }
-  return {
-    resize,
-    draw,
-    async prepare() {
-      await renderer.compileAsync(scene, camera);
-    },
-    dispose() {
-      instances.forEach((m) => m.dispose());
-      spot.shadow.dispose();
-      geometries.forEach((g) => g.dispose());
-      materials.forEach((m) => m.dispose());
-      textures.forEach((t) => t.dispose());
-      environment.dispose();
-      renderer.dispose();
-    },
-  };
+  return {resize,draw,dispose(){[background,front,slat,...cargo,...neural].forEach(s=>{s.width=0;s.height=0;});}};
 }

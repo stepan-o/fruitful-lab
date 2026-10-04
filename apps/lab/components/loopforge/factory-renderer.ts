@@ -564,7 +564,9 @@ export function createFactoryRenderer(
   cylinder(0, 18, 0, 20, 4, edge, lamp);
   const beaconGlass = glass.clone();
   materials.add(beaconGlass);
-  beaconGlass.opacity = 0.25;
+  beaconGlass.opacity = 0.3;
+  beaconGlass.envMapIntensity = 0;
+  beaconGlass.toneMapped = false;
   cylinder(0, 38, 0, 16, 36, beaconGlass, lamp);
   cylinder(0, 57, 0, 17, 3, bronze, lamp);
   const cap = mesh(
@@ -601,6 +603,8 @@ export function createFactoryRenderer(
   reflector.rotation.y = Math.PI / 2;
   reflector.scale.y = 1.15;
   const filamentMat = material(0xffd58a, 0.1, 0.15);
+  filamentMat.toneMapped = false;
+  filamentMat.envMapIntensity = 0;
   filamentMat.emissive.set(0xffd28a);
   filamentMat.emissiveIntensity = 4;
   const filament = mesh(
@@ -749,7 +753,7 @@ export function createFactoryRenderer(
       : d.status === "restarting"
         ? Math.max(0, 1 - d.stateAge)
         : 0;
-    const tint = new T.Color(0xffa13a).lerp(new T.Color(0xff0802), red);
+    const tint = new T.Color(0xffa13a).lerp(new T.Color(0xff0000), red);
     rotor.rotation.y = phase;
     direction.set(Math.sin(phase), 0.34, Math.cos(phase)).normalize();
     spot.target.position.copy(spot.position).addScaledVector(direction, 700);

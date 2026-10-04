@@ -12,7 +12,7 @@ Date: 4 October 2026. Follow-up to the accepted lattice-forge rebuild in PR #71.
 - [x] Add viewer-facing bloom, a narrow horizontal streak and restrained internal lens ghosts.
 - [x] Visually inspect the running / jammed / restarted scene on desktop and phone.
 - [x] Complete build, interaction, motion-preference and performance checks.
-- [ ] Publish a draft PR and verify its exact hosted preview.
+- [x] Publish a draft PR and verify its exact hosted preview.
 
 ## Optical references
 
@@ -78,7 +78,21 @@ The richer shadow mask is 80% of world resolution (formerly 55%), with cached
 beam/bloom/streak/ghost textures. The primary canvas retains its pixel cap and
 30fps scheduling. Field performance and cold/warm network timings are unmeasured.
 
-Hosted verification is recorded in the PR after deployment.
+Hosted verification: PR #75, runtime commit
+`459008070493ff05cb4de5baa614aac28ff75be7`, Vercel deployment
+`dpl_3e8QAZfcBxhkQU5pN15SgUT9BdC4` READY. The hosted desktop and phone
+showed no console errors or horizontal overflow. A real 46px pointer pull changed
+LINE JAMMED to DRIVE ENGAGING on the hosted 390×844 phone. The alarm settled at
+3.90 rad/s, and the jam held the drive distance. Phone CPU mean 1.92ms / max
+112.7ms over 780 frames; the startup outlier is retained, not hidden. Artwork
+cache creation measured 48.1ms in that sample. Warm navigation rendered correctly;
+network timing and field performance remain unmeasured.
+
+The final evidence-only commit changes this note and adds the hosted phone image;
+runtime files are identical to that verified deployment. The two global memory
+updates remain local pending their earlier explicit-publication approval.
 
 ![Alarm projected across the stage](evidence/optics-desktop-sweep.webp)
 ![Reflector facing the viewer](evidence/optics-desktop-glare.webp)
+
+![Hosted phone alarm](evidence/optics-phone-hosted.webp)

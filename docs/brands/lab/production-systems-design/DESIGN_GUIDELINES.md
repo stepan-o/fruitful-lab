@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 1.8.1 · 4 October 2026 · Mechanical Turk direction
+Version 1.9 · 4 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. The owner accepted the opening
 illustration after its cabinet pass (PR #70). **That opening is now the visual
@@ -38,6 +38,43 @@ informs the atmosphere; technical claims remain explicit and verifiable.
 
 Priority order: **professional credibility → readable argument → material craft
 → theatrical detail.** The reference must strengthen the first two.
+
+## Light and depth contract · opening refinement
+
+Use one broad key above and in front of the machine, toward the viewer's left.
+Its direction must govern the lit bevels, face shading and every cast shadow.
+Do not tune shadow offsets independently to make individual parts look deeper.
+The hero uses an analytic orthographic approximation, not a full physical renderer.
+
+- **Shared space:** world height rises from the floor at SVG y=523. One depth unit
+  projects (+1/√3, −1), matching the accepted belt and case returns. The incoming
+  key ray is (x .06, depth .30, height −1). Project a ray from each caster onto
+  its receiving plane; reject intersections behind the caster.
+- **Explicit receivers:** floor, cabinet front, recessed movement wall, paper
+  face and belt are distinct surfaces. Clip to the receiving face. The floor
+  silhouette includes the cabinet, belt overhang and opened door. Foot contact
+  shading stays at the actual soles; it does not drift with a decorative offset.
+- **Softness follows distance:** seven small area-direction samples provide a
+  bounded penumbra on the floor and under the overhang. Samples converge at
+  contact and spread with separation. This adapts the area-light principle in
+  PBRT [S15] to low-cost engraving; it is not numerical path tracing.
+- **Moving occluders:** pierced gear silhouettes turn with their physical wheels
+  and cast through their openings onto the back wall. Hand shadows use the same
+  stamp animation and project onto the horizontal belt. No detached drop-shadow
+  rings. The 47 hero animations share the existing pace/pause controller.
+- **Material response:** favor narrow, stationary light-facing bevel arcs, warm
+  walnut faces and a cooler, darker right return. Engraved marks turn with the
+  material; the directional key does not turn with a wheel. Avoid broad glossy
+  washes, large blur filters, bright halos or lost gear detail.
+- **Delivery:** all geometry is computed on the server. No new client boundary,
+  per-frame JavaScript, raster texture, canvas, WebGL or filter. Preserve still,
+  reduced-motion, offscreen and print behavior. Verify mobile scale and measure
+  production payload and animation cost before publication.
+
+Later scenes inherit this reasoning and material restraint. Their light position
+may change when a visible candle motivates it, but every source–caster–receiver
+relationship within a scene must agree. The seven later studies still need their
+own focused passes; this change only refines Fig. 01.
 
 ## 2. The visual anchors
 
@@ -425,8 +462,8 @@ The CSS machine retains one 2.4-second logical test period. Playback rates are
 0.55 / 1.1 / 3, giving approximately **4.36 / 2.18 / 0.80 seconds per test**.
 Owner speed tuning: the original Fast pace is now Medium; the new Fast is
 approximately 2.73 times faster than Medium. Slow remains the inspection pace.
-Apply the rate to all 35 hero animations together: stamp, belt, slat edges, gears,
-chains, specimens, paper and smoke. Preserve phase and paused state; never restart
+Apply the rate to all 47 hero animations together: stamp, belt, slat edges, gears,
+chains, specimens, paper, smoke and moving cast shadows. Preserve phase and paused state; never restart
 parts or change their individual periods. `Animation.updatePlaybackRate` preserves
 the current position [S14]. One scheduled update per selection/preference change
 is sufficient; there is no per-frame JavaScript loop.
@@ -596,6 +633,11 @@ its material and type specimens are our original design interpretation.
 - **S14 — MDN, `Animation.updatePlaybackRate()`.** Asynchronous rate changes keep
   the current position rather than jumping the animation. Consulted 4 October 2026.
   https://developer.mozilla.org/en-US/docs/Web/API/Animation/updatePlaybackRate
+
+- **S15 — Pharr, Jakob and Humphreys, _Physically Based Rendering_, 4th edition,
+  “Area Lights.”** Consulted 4 October 2026. Extended emitters motivate soft
+  penumbrae; the opening uses a deliberately bounded vector approximation.
+  https://www.pbr-book.org/4ed/Light_Sources/Area_Lights
 
 Local references: Sanctuary's `docs/sanctuary/DESIGN_SYSTEM.md`, Loopforge's
 `docs/loopforge/VISUAL_REVIEW.md`, and this profile's revised opening. Their

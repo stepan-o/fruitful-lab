@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { OverhangShadow } from "./TurkLighting";
 import { Grain, round } from "./engraving-primitives";
 
 const ink = "#49382b", walnut = "#79573e", edge = "#c0a076", brass = "#ab8b59";
@@ -41,6 +42,7 @@ function SideReturn() {
     <path d="M9 146V17H55M17 136V27H47M2 2V162" fill="none" stroke={edge} strokeWidth=".8" />
     <path d="M7 15 18 28M57 15 46 28M7 148 18 135M57 148 46 135" fill="none" strokeWidth=".6" />
     <path d="M0 7H64M0 11H64" stroke="#b19165" strokeWidth=".65" />
+    <path d="M0 0H64V165H0Z" fill="#273b32" opacity=".13" stroke="none" />
     </g>
     {/* Each molding returns to the same front corner and depth as its apron. */}
     <g data-cabinet-part="base-return" strokeWidth=".7">
@@ -145,7 +147,8 @@ function OpenDoor() {
 export default function TurkCabinet({ children }: { children: ReactNode }) {
   return <g data-cabinet="finished-walnut" strokeLinejoin="round">
     <defs>
-      <linearGradient id="turk-walnut" x1="0" y1="0" x2="1" y2="0">
+      <clipPath id="turk-case-receiver"><path d="M129 327H589V492H129ZM158 354V469H369V354Z" clipRule="evenodd" /></clipPath>
+      <linearGradient id="turk-walnut" x1="0" y1="0" x2="1" y2=".35">
         <stop stopColor="#674631" /><stop offset=".28" stopColor="#93704c" />
         <stop offset=".65" stopColor="#805b3e" /><stop offset="1" stopColor="#634631" />
       </linearGradient>
@@ -159,8 +162,6 @@ export default function TurkCabinet({ children }: { children: ReactNode }) {
         <path d="M22 123C24 90 17 68 26 44C35 68 28 90 30 123" stroke="#c2a072" strokeWidth=".7" opacity=".36" fill="none" />
       </pattern>
     </defs>
-    <path d="M94 510 169 537 622 468 556 478Z" fill="#b7ad94" opacity=".13" />
-    <path d="M118 520 177 530 606 469M138 516 180 524 591 470M181 518 576 475" fill="none" stroke="#938775" strokeWidth=".65" opacity=".25" />
     <g transform="translate(36.95 -64)"><Foot x={559} y={499} /></g>
     <Foot x={158} y={499} /><Foot x={559} y={499} />
     <SideReturn />
@@ -177,6 +178,7 @@ export default function TurkCabinet({ children }: { children: ReactNode }) {
     <path d="M581 344V480M586 344V480M133 346V478" stroke={edge} strokeWidth=".6" />
     <path d="M584 346V477M135 346V478" stroke="#402f24" strokeWidth="1" />
     <Plinth />
+    <g clipPath="url(#turk-case-receiver)"><OverhangShadow /></g>
     {children}
     <OpenDoor />
   </g>;

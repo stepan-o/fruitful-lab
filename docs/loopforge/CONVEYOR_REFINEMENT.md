@@ -15,7 +15,8 @@
 - [x] Remove the entire Working Exhibit from overview chapter 01 only.
 - [x] Verify the actual landing on desktop and phones, time-separated movement,
   jam/restart, reduced motion, hidden/offscreen suspension and render cost.
-- [ ] Run required CI; publish an isolated PR and verify its hosted preview.
+- [x] Run required CI; publish an isolated PR and verify its hosted preview.
+  Completed in PR #57; merged as `6ba00fe` and verified in production.
 
 ## References and interpretation
 
@@ -96,3 +97,58 @@ Screenshots from the optimized production build:
 Phone-width production sample (390px, DPR 1, desktop browser emulation): 1,020 draws,
 1.05ms mean / 17.50ms maximum CPU submission time. Real mobile hardware remains
 unmeasured. Phone-size click restart passed with no browser errors.
+
+## Cyan neural braids · follow-up
+
+Owner direction: make the specimens read as Loopforge brains, including cyan
+braids that pulse and occasionally burst. The reference forge paintings have
+dense, deeply shadowed folds, bronze machinery and cold cyan equipment.
+
+- [x] Reinspect the owner's cortex assembly, three-lane factory,
+  `04_loopforge_rooms_neural_lattice_converyor_1` and
+  `08_loopforge_rooms_brain_forge_10` paintings.
+- [x] Replace shallow regular ridges with dense, asymmetric rounded lobules.
+- [x] Weave three cyan fibre cores around each specimen, with dark casing,
+  brass ferrules, variant-specific routing and loose damaged ends.
+- [x] Add independent travelling signal packets, slow emission pulses and
+  infrequent branching discharges with short cooling fragments.
+- [x] Keep static/reduced-motion brains lit; reuse the existing visibility,
+  pause, 30fps and pixel limits. Preserve all cargo variants and lever behavior.
+- [x] Review the finished production build at desktop, 320, 390 and 768px.
+- [ ] Record performance, screenshots and CI; publish a focused PR/preview.
+
+Additional moving reference: Colin's
+[plasma globe filmed from above](https://commons.wikimedia.org/wiki/File:Plasma_globe_23s.webm)
+(2013, viewed in the browser). Thin, wandering filaments terminate in brighter
+knots; local bloom surrounds a narrow light core. The procedural interpretation
+uses a slower single discharge envelope, not the video's continuous flicker.
+No reference pixels or video are shipped.
+
+`factory-neural.ts` builds the braid geometry once for each of the 12 cached
+specimens. Static material and emission sprites are separate. Only packets and
+a maximum of one scene-wide discharge are drawn dynamically. Discharge onsets
+are seeded and irregular, at least 4.6 seconds apart; each lasts at most 1.15
+seconds and fades without high-frequency flashes. Geometry and timing have no
+relationship to authoritative game state or model calls. No dependencies,
+downloaded textures or runtime media bytes are added.
+
+Verification: all 43 suites / 188 tests, asset checks, optimized Next/TypeScript
+build and focused ESLint pass. Desktop, 320, 390 and 768px views have no horizontal
+overflow. Time-separated browser views show travelling packets and a localized
+branching burst. Phone-size click restart and manual pause/resume pass; the paused
+view keeps the cyan material. Offscreen animation reports inactive; existing
+automated coverage also checks reduced motion, hidden documents and teardown.
+No browser console errors. Cold production navigation and subsequent warm
+navigation/resizing were reviewed; no field-loading claim is made.
+
+CPU draw-submission samples from this shared desktop host (DPR 1): desktop
+1280 × 720 / 1575 × 413 drawing surface, 300 frames: 3.67ms mean / 21.80ms max.
+Phone emulation at 390 × 844 / 463 × 325, 1,380 frames: 5.64ms mean / 253.70ms
+max. The large phone-sample outlier is retained; these observations are not GPU,
+FPS, actual-device or field-performance measurements. The renderer-containing
+production JS chunk is 12,743 bytes gzip; this is not the complete route payload.
+New emission layers use twelve fixed 340 × 280 cached surfaces, disposed on
+teardown. Field Core Web Vitals and real-phone performance remain unmeasured.
+
+- [Desktop brain refinement](evidence/cyan-brains-desktop.webp)
+- [Phone brain refinement](evidence/cyan-brains-phone.webp)

@@ -289,3 +289,10 @@ is unavailable. No model requests or new runtime media/dependencies. Compact
 reader/play conveyors remain separate. Overview chapter `the-factory` has no
 Working Exhibit; `Chapter.exhibit` is optional and other chapters retain theirs.
 References, visual checks and rendering limits: `docs/loopforge/CONVEYOR_REFINEMENT.md`.
+
+Brain refinement: `factory-neural.ts` caches seeded three-core cyan braid
+geometry/material/emission layers. Each specimen has independent travelling
+signals; one scene-wide discharge may appear at a time, with irregular starts
+at least 4.6s apart and a 1.15s decay. Static and reduced-motion views retain lit
+braids without packets or bursts. This remains decorative and shares the
+existing visibility, frame, pixel and manual-pause limits.

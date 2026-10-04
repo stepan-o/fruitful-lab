@@ -1,4 +1,5 @@
 import { cargoFor, noise, type CargoKind, type Drive } from "./factory-drive";
+import { createNeuralWeave, drawNeuralSignals, neuralDischarge, neuralPulse, paintNeuralWeave, type NeuralWeave } from "./factory-neural";
 
 type Ctx = CanvasRenderingContext2D;
 const TAU = Math.PI * 2;
@@ -45,24 +46,24 @@ function brainOutline(c: Ctx) {
 }
 function drawBrain(c: Ctx, seed: number, kind: CargoKind) {
   const damaged = kind === "rejected" || kind === "cracked";
-  const skin = damaged ? ["#8a8460","#514936","#202a26"] : ["#dbab76","#a97447","#4b3825"];
+  const skin = damaged ? ["#7f8564","#454e37","#152721"] : ["#bc946a","#805336","#30251c"];
   c.save(); brainOutline(c);
   c.fillStyle=gradient(c,-35,-55,32,36,[[0,skin[0]],[.5,skin[1]],[1,skin[2]]]);c.fill();
   c.lineWidth=3;c.strokeStyle="#211d17";c.stroke();c.clip();
-  // Seeded wandering ridges follow each hemisphere; no repeated tile pattern.
+  // Dense asymmetric lobules, deep sulci and broken highlights: cast tissue,
+  // with the worn bronze / cold cyan contrast of the original forge paintings.
   c.lineCap="round";c.lineJoin="round";
-  for(const side of [-1,1]) for(let row=0;row<8;row++) {
-    const y=-52+row*11, n=noise(seed+row*117+side*81);
-    c.beginPath();c.moveTo(side*(3+n*3),y);
-    for(let segment=0;segment<4;segment++) {
-      const x=side*(6+segment*16),bend=noise(seed+row*53+segment*199+side*13);
-      const yy=y+Math.sin(segment*1.8+row)*6;
-      c.bezierCurveTo(x+side*14,yy-10-bend*5,x-side*8,yy+11,x+side*(12+bend*7),yy+4);
-    }
-    c.strokeStyle="#30271c";c.lineWidth=11;c.stroke();
-    c.strokeStyle=damaged?"#7e7756":"#b58a5d";c.lineWidth=8.1;c.stroke();
-    c.save();c.translate(-1,-1.8);c.strokeStyle=damaged?"#a3986c":"#dfb17b";c.lineWidth=2.1;c.stroke();c.restore();
-    c.save();c.translate(.8,1.5);c.strokeStyle="#342e2259";c.lineWidth=2;c.stroke();c.restore();
+  for(let row=0;row<9;row++) for(let column=0;column<10;column++) {
+    const id=seed+row*113+column*71,n=noise(id);
+    const x=-68+column*14+(row%2)*6+Math.sin(row*1.4+column)*3;
+    const y=-59+row*11+Math.sin(column*.8+row)*4;
+    c.save();c.translate(x,y);c.rotate((n-.5)*1.4);c.scale(.8+noise(id+4)*.5,.7+noise(id+9)*.6);
+    c.beginPath();c.moveTo(-6,4);c.bezierCurveTo(-12,-4,-4,-10,2,-7);
+    c.bezierCurveTo(13,-7,12,2,6,6);c.bezierCurveTo(2,10,-1,6,1,1);
+    c.strokeStyle="#171b15";c.lineWidth=7.9;c.stroke();
+    c.strokeStyle=damaged?"#6b7353":"#9b724b";c.lineWidth=5.1;c.stroke();
+    c.save();c.translate(-.6,-1.3);c.strokeStyle=damaged?"#9ea17a":"#ccaa78";c.lineWidth=1.25;c.stroke();c.restore();
+    c.restore();
   }
   // Broad form lighting and subtle pores give the folds a rounded, warm material.
   c.fillStyle=gradient(c,-65,-15,66,28,[[0,"#19190f90"],[.3,"#f5c78713"],[.6,"#1b17040b"],[1,"#091712ac"]]);c.fillRect(-75,-70,150,110);
@@ -91,7 +92,7 @@ function skull(c: Ctx) {
   for(let i=0;i<7;i++){c.fillStyle="#b7a477";c.fillRect(-20+i*6,16,4,9);}
   line(c,[-18,-44,-10,-34,-16,-24],"#514b36",1.2);glow(c,20,-14,10,"#78c5b4",.3);ellipse(c,20,-14,2,2,"#aae4cc");
 }
-function cargoSprite(kind: CargoKind, seed: number) {
+function cargoSprite(kind: CargoKind, seed: number, weave: NeuralWeave) {
   const sprite=surface(340,280),c=sprite.getContext("2d")!;c.scale(2,2);c.translate(85,95);
   ellipse(c,0,19,74,15,"#0009");
   polygon(c,[-67,13,-49,-2,62,-2,77,14,59,29,-70,29],gradient(c,0,0,0,29,[[0,"#777456"],[.2,"#2d3932"],[.6,"#181f1a"],[1,"#050d0d"]]),"#7d7954");
@@ -100,6 +101,7 @@ function cargoSprite(kind: CargoKind, seed: number) {
   if(kind==="skull")skull(c);
   else if(kind==="twin") {c.save();c.translate(-24,0);c.scale(.64,.7);drawBrain(c,seed,"cortex");c.restore();c.save();c.translate(24,-5);c.scale(.67,.8);drawBrain(c,seed+7,"cortex");c.restore();}
   else {c.save();if(kind==="rejected"){c.rotate(-.17);c.scale(1.04,.72);c.translate(0,12);}drawBrain(c,seed,kind);c.restore();}
+  paintNeuralWeave(c,weave);
   if(kind==="glass") {
     c.beginPath();c.moveTo(-65,23);c.lineTo(-65,-31);c.bezierCurveTo(-67,-91,66,-91,66,-31);c.lineTo(66,23);c.closePath();
     c.fillStyle=gradient(c,-66,0,66,0,[[0,"#9befce30"],[.13,"#c3fff317"],[.35,"#9efde904"],[.74,"#4c8e7814"],[.91,"#afffea38"],[1,"#24574d33"]]);c.fill();c.strokeStyle="#74a29299";c.lineWidth=1.5;c.stroke();
@@ -120,6 +122,10 @@ function cargoSprite(kind: CargoKind, seed: number) {
   if(kind==="rejected") {line(c,[29,-17,47,1,29,1,47,-17],"#b45039",2.5);}
   return sprite;
 }
+function neuralSprite(weave: NeuralWeave) {
+  const sprite=surface(340,280),c=sprite.getContext("2d")!;
+  c.scale(2,2);c.translate(85,86);paintNeuralWeave(c,weave,true);return sprite;
+}
 function slatSprite() {
   const s=surface(44,55),c=s.getContext("2d")!;
   polygon(c,[12,0,43,0,31,49,0,49],gradient(c,0,0,0,52,[[0,"#38453d"],[.14,"#666b4c"],[.25,"#2f3930"],[.9,"#272e25"],[1,"#868063"]]),"#121a14");
@@ -132,8 +138,11 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
   const c=canvas.getContext("2d",{alpha:false});if(!c)return null;
   let width=1200,height=370,beltY=190;
   const background=surface(1,1),front=surface(1,1);
-  const cargo=Array.from({length:12},(_,i)=>{const q=cargoFor(i);return cargoSprite(q.kind,q.seed);});
+  const weaves=Array.from({length:12},(_,i)=>{const q=cargoFor(i);return createNeuralWeave(q.kind,q.seed);});
+  const cargo=weaves.map((weave,i)=>{const q=cargoFor(i);return cargoSprite(q.kind,q.seed,weave);});
+  const neural=weaves.map(neuralSprite);
   const slat=slatSprite();let count=0,totalMs=0,maxMs=0;
+  let burstCycle=-1,burstCarrier:number|null=null;
   function build() {
     background.width=front.width=Math.ceil(width);background.height=front.height=Math.ceil(height);
     const b=background.getContext("2d")!,f=front.getContext("2d")!;
@@ -207,6 +216,12 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     c!.restore();
     // Each carrier belongs to an unbounded world index; recycling happens offscreen.
     const spacing=194,first=Math.floor((-d.distance-100)/spacing),last=Math.ceil((width-d.distance+100)/spacing);
+    const discharge=neuralDischarge(t,still);
+    // Pick a carrier using its world index at onset, so a burst stays attached
+    // while the belt moves. Selection is fixed until this bounded event ends.
+    const onBeltFirst=Math.ceil(-d.distance/spacing),onBeltLast=Math.floor((width-d.distance)/spacing);
+    if(discharge.cycle!==burstCycle) {burstCycle=discharge.cycle;burstCarrier=null;}
+    if(discharge.strength>0 && burstCarrier===null) burstCarrier=onBeltFirst+Math.floor(discharge.choice*(onBeltLast-onBeltFirst+1));
     const kick=d.status==="restarting"?Math.sin(d.stateAge*36)*Math.exp(-d.stateAge*3):jammed?Math.sin(d.stateAge*43)*Math.exp(-d.stateAge*9):0;
     for(let i=first;i<=last;i++) {
       const x=i*spacing+d.distance, q=cargoFor(i),slot=((i%12)+12)%12;
@@ -214,7 +229,12 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
       const settle=still?0:Math.sin(t*18+i)*Math.max(0,1-d.velocity/30)*.3;
       ellipse(c!,x+9,beltY+14,72*q.scale,10,"#000c");
       c!.save();c!.translate(x,beltY+chatter);c!.rotate((chatter+settle)*.006);
-      c!.drawImage(cargo[slot],-85*q.scale,-119*q.scale,170*q.scale,140*q.scale);c!.restore();
+      c!.drawImage(cargo[slot],-85*q.scale,-119*q.scale,170*q.scale,140*q.scale);
+      c!.save();c!.globalCompositeOperation="screen";
+      c!.globalAlpha=neuralPulse(t,q.seed,0,still).light;
+      c!.drawImage(neural[slot],-85*q.scale,-119*q.scale,170*q.scale,140*q.scale);c!.restore();
+      c!.scale(q.scale,q.scale);c!.translate(0,-33);
+      drawNeuralSignals(c!,weaves[slot],t,still,i===burstCarrier?discharge:null);c!.restore();
       // Sparse grazing highlights retain the brain's material instead of a red veil.
       const incident=beam(x,beltY-42)*(jammed ? .8 : .16);
       if(incident>.02){glow(c!,x+27,beltY-55,46,beamColor,incident*.35);line(c!,[x-64,beltY+19,x+55,beltY+19],jammed?`rgba(255,100,57,${incident})`:`rgba(239,182,92,${incident})`,1.6);}
@@ -271,5 +291,5 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     const ms=performance.now()-start;totalMs+=ms;maxMs=Math.max(maxMs,ms);count++;
     if(count%60===0){canvas.dataset.drawMeanMs=(totalMs/count).toFixed(2);canvas.dataset.drawMaxMs=maxMs.toFixed(2);canvas.dataset.distance=d.distance.toFixed(2);canvas.dataset.frames=String(count);}
   }
-  return {resize,draw,dispose(){[background,front,slat,...cargo].forEach(s=>{s.width=0;s.height=0;});}};
+  return {resize,draw,dispose(){[background,front,slat,...cargo,...neural].forEach(s=>{s.width=0;s.height=0;});}};
 }

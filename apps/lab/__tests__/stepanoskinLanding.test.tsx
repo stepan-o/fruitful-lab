@@ -70,9 +70,9 @@ describe("Stepanoskin landing", () => {
     it("keeps the factory entrance focused on Loopforge and links back to all projects", () => {
         render(<LoopforgeLanding initialLocale="en" />);
         expect(screen.getByRole("link", { name: /all projects/i })).toHaveAttribute("href", "/stepanoskin");
-        expect(screen.getByRole("link", { name: /Loopforge — the game/i })).toHaveAttribute("href", "/stepanoskin/loopforge/overview/the-factory");
-        expect(screen.getByRole("link", { name: /Loopforge — the engine/i })).toHaveAttribute("href", "/stepanoskin/loopforge/architecture/the-thesis");
-        expect(screen.getByRole("link", { name: /Enter the factory/i })).toHaveAttribute("href", "/stepanoskin/loopforge/play");
+        expect(screen.getByRole("link", { name: /The game/i })).toHaveAttribute("href", "/stepanoskin/loopforge/overview/the-factory");
+        expect(screen.getByRole("link", { name: /The engine/i })).toHaveAttribute("href", "/stepanoskin/loopforge/architecture/the-thesis");
+        expect(screen.getByRole("link", { name: /Enter factory/i })).toHaveAttribute("href", "/stepanoskin/loopforge/play");
         expect(screen.queryByRole("link", { name: /Game Monetization/i })).not.toBeInTheDocument();
     });
 
@@ -90,7 +90,7 @@ describe("Stepanoskin landing", () => {
         const play = jest.fn().mockResolvedValue(undefined);
         const audio = jest.spyOn(window, "Audio").mockImplementation(() => ({ play, currentTime: 0 }) as unknown as HTMLAudioElement);
         render(<LoopforgeLanding initialLocale="en" />);
-        const link = screen.getByRole("link", { name: /Loopforge — the game/i });
+        const link = screen.getByRole("link", { name: /The game/i });
         fireEvent.pointerEnter(link);
         fireEvent.focus(link);
         expect(audio).not.toHaveBeenCalled();

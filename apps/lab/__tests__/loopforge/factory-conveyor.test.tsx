@@ -61,3 +61,19 @@ test("the static fallback remains meaningful when canvas is unavailable",()=>{
   expect(container.querySelector('section')).toHaveAttribute("data-ready","false");
   expect(screen.getByRole("status")).toHaveTextContent("LINE AT REST");expect(frames.size).toBe(0);
 });
+
+test("the menu reset owns its hint and retains the renderer through pause and resume", async()=>{
+  const dock=document.createElement("div");document.body.append(dock);
+  const {unmount}=render(<FactoryConveyor controlTarget={dock}/>);
+  intersect(true);advance(20);
+  const lever=screen.getByRole("button",{name:"Pull lever to restart conveyor"});
+  expect(dock).toContainElement(lever);
+  expect(lever).toHaveAccessibleDescription("Pull down to restart.");
+  expect(dock).toContainElement(screen.getByText("Pull down to restart."));
+  const user=userEvent.setup();lever.focus();await user.keyboard(" ");
+  expect(screen.getByRole("status")).toHaveTextContent("DRIVE ENGAGING");
+  fireEvent.click(screen.getByRole("button",{name:"Pause factory motion"}));
+  fireEvent.click(screen.getByRole("button",{name:"Resume factory motion"}));
+  expect(createFactoryRenderer).toHaveBeenCalledTimes(1);
+  unmount();dock.remove();
+});

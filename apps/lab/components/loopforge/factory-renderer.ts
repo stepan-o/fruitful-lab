@@ -1,6 +1,8 @@
 import { cargoFor, noise, type CargoKind, type Drive } from "./factory-drive";
 import { createNeuralWeave, drawNeuralSignals, neuralDischarge, neuralPulse, paintNeuralWeave, type NeuralWeave } from "./factory-neural";
 
+import { beaconOrbit, jamStrain } from "./factory-light";
+
 type Ctx = CanvasRenderingContext2D;
 const TAU = Math.PI * 2;
 function surface(w: number, h: number) {
@@ -60,9 +62,9 @@ function drawBrain(c: Ctx, seed: number, kind: CargoKind) {
     c.save();c.translate(x,y);c.rotate((n-.5)*1.4);c.scale(.8+noise(id+4)*.5,.7+noise(id+9)*.6);
     c.beginPath();c.moveTo(-6,4);c.bezierCurveTo(-12,-4,-4,-10,2,-7);
     c.bezierCurveTo(13,-7,12,2,6,6);c.bezierCurveTo(2,10,-1,6,1,1);
-    c.strokeStyle="#171b15";c.lineWidth=7.9;c.stroke();
-    c.strokeStyle=damaged?"#6b7353":"#9b724b";c.lineWidth=5.1;c.stroke();
-    c.save();c.translate(-.6,-1.3);c.strokeStyle=damaged?"#9ea17a":"#ccaa78";c.lineWidth=1.25;c.stroke();c.restore();
+    c.strokeStyle="#202219";c.lineWidth=7.6;c.stroke();
+    c.strokeStyle=gradient(c,-5,-6,5,8,[[0,damaged?"#a3a27b":"#c9b08a"],[.35,damaged?"#777e59":"#a1865c"],[1,damaged?"#3c4936":"#57432d"]]);c.lineWidth=5.7;c.stroke();
+    c.save();c.translate(-.6,-1.3);c.strokeStyle=damaged?"#b1b38b":"#d5c49a";c.lineWidth=.7;c.stroke();c.restore();
     c.restore();
   }
   // Broad form lighting and subtle pores give the folds a rounded, warm material.
@@ -84,14 +86,39 @@ function drawBrain(c: Ctx, seed: number, kind: CargoKind) {
   c.restore();
 }
 function skull(c: Ctx) {
-  c.beginPath();c.moveTo(-31,12);c.bezierCurveTo(-59,-7,-48,-46,-16,-51);
-  c.bezierCurveTo(18,-62,49,-39,46,-6);c.lineTo(28,8);c.lineTo(23,28);c.lineTo(-20,28);c.closePath();
-  c.fillStyle=gradient(c,-20,-45,30,27,[[0,"#c3af7e"],[.55,"#877653"],[1,"#36382d"]]);c.fill();c.strokeStyle="#292820";c.lineWidth=3;c.stroke();
-  ellipse(c,-18,-13,13,14,"#0b1412","#635738");ellipse(c,20,-14,13,15,"#0b1412","#6c5d3c");
-  polygon(c,[-1,-9,-7,9,7,8],"#15201a");
-  for(let i=0;i<7;i++){c.fillStyle="#b7a477";c.fillRect(-20+i*6,16,4,9);}
-  line(c,[-18,-44,-10,-34,-16,-24],"#514b36",1.2);glow(c,20,-14,10,"#78c5b4",.3);ellipse(c,20,-14,2,2,"#aae4cc");
+  c.save();c.rotate(-.08);
+  c.beginPath();c.moveTo(-32,11);c.bezierCurveTo(-42,6,-48,-12,-44,-29);
+  c.bezierCurveTo(-42,-55,-10,-61,13,-51);c.bezierCurveTo(38,-46,45,-24,37,-7);
+  c.lineTo(30,3);c.lineTo(24,8);c.lineTo(20,23);c.quadraticCurveTo(0,32,-19,22);
+  c.lineTo(-23,7);c.lineTo(-32,11);c.closePath();
+  c.fillStyle=gradient(c,-24,-51,28,27,[[0,"#c9b994"],[.25,"#b3a582"],[.63,"#796d50"],[1,"#2e3328"]]);c.fill();
+  c.strokeStyle="#343629";c.lineWidth=2;c.stroke();
+  c.save();c.clip();
+  glow(c,-17,-32,32,"#e1d2ac5e");
+  for(let i=0;i<700;i++){c.fillStyle=i%3?"#efe0b216":"#302a1b35";c.fillRect(-48+noise(i*19)*93,-58+noise(i*29)*90,.7,.7);}
+  c.restore();
+  // Unequal orbital cavities, brow ridges, temples and cheek arches give the
+  // occasional legacy specimen anatomy instead of an emoji face.
+  polygon(c,[-33,-24,-19,-30,-7,-23,-8,-8,-22,-3,-34,-10],gradient(c,-22,-29,-22,-3,[[0,"#080e0c"],[.65,"#151b13"],[1,"#564b31"]]),"#776849");
+  polygon(c,[8,-24,24,-27,32,-20,28,-6,15,-5,8,-12],gradient(c,18,-28,21,-5,[[0,"#080e0c"],[.7,"#1b2016"],[1,"#685237"]]),"#726348");
+  line(c,[-36,-24,-24,-32,-10,-29,-6,-24],"#d4c198",2.3);
+  line(c,[8,-27,24,-30,33,-23],"#bcb18a",2);
+  polygon(c,[0,-18,-7,3,-1,8,4,3,8,5,7,-3],"#182019","#77694b");
+  line(c,[-37,-6,-27,3,-24,13],"#d0bd8b",2.3);
+  line(c,[33,-5,25,4,22,15],"#a09367",2);
+  c.beginPath();c.moveTo(-19,11);c.quadraticCurveTo(-1,5,22,10);c.lineTo(18,21);c.quadraticCurveTo(0,28,-17,20);c.closePath();c.fillStyle="#332d20";c.fill();
+  for(let i=0;i<7;i++) {
+    const x=-18+i*5.4,y=12+Math.sin(i*.56)*1.5;
+    polygon(c,[x,y,x+4.5,y-.5,x+4,21-Math.abs(i-3)*.6,x+.6,20.5-Math.abs(i-3)*.5],gradient(c,x,y,x,22,[[0,"#d5c399"],[.65,"#a3946f"],[1,"#574d35"]]));
+  }
+  line(c,[-20,22,-13,28,4,29,19,24],"#867958",2);
+  line(c,[-15,-53,-10,-43,-15,-35,-9,-30],"#5e5540",1);
+  line(c,[-11,-44,-4,-41],"#766345",.7);
+  line(c,[25,-43,21,-35,24,-31],"#655b42",.8);
+  glow(c,20,-15,8,"#78c5b4",.18);ellipse(c,20,-15,1,1,"#b1d9b9");
+  c.restore();
 }
+
 function cargoSprite(kind: CargoKind, seed: number, weave: NeuralWeave) {
   const sprite=surface(340,280),c=sprite.getContext("2d")!;c.scale(2,2);c.translate(85,95);
   ellipse(c,0,19,74,15,"#0009");
@@ -134,19 +161,42 @@ function slatSprite() {
   bolt(c,16,5,1.5);bolt(c,20,41,1.5);return s;
 }
 
+/** Soft optical fan, baked once. The outer falloff has no visible cone edge. */
+function opticalFan(red: boolean) {
+  const s=surface(256,512), c=s.getContext("2d")!;
+  const rgb=red?"248,48,21":"206,136,51";
+  for(let y=0;y<512;y++) {
+    const distance=(512-y)/512, half=distance*124+2;
+    const falloff=.12+.6*Math.pow(1-distance,.8);
+    const g=c.createLinearGradient(128-half,0,128+half,0);
+    for(const [at,power] of [[0,0],[.15,.055],[.35,.36],[.5,.6],[.65,.36],[.85,.055],[1,0]])
+      g.addColorStop(at,`rgba(${rgb},${power*falloff})`);
+    c.fillStyle=g;c.fillRect(128-half,y,half*2,1);
+  }
+  return s;
+}
+function silhouette(sprite: HTMLCanvasElement) {
+  const s=surface(sprite.width,sprite.height), c=s.getContext("2d")!;
+  c.drawImage(sprite,0,0);c.globalCompositeOperation="source-in";c.fillStyle="#000";c.fillRect(0,0,s.width,s.height);
+  return s;
+}
+
 export function createFactoryRenderer(canvas: HTMLCanvasElement) {
   const c=canvas.getContext("2d",{alpha:false});if(!c)return null;
   let width=1200,height=370,beltY=190;
-  const background=surface(1,1),front=surface(1,1);
+  const background=surface(1,1),front=surface(1,1),lightLayer=surface(1,1);
+  const redFan=opticalFan(true),amberFan=opticalFan(false);
   const weaves=Array.from({length:12},(_,i)=>{const q=cargoFor(i);return createNeuralWeave(q.kind,q.seed);});
   const cargo=weaves.map((weave,i)=>{const q=cargoFor(i);return cargoSprite(q.kind,q.seed,weave);});
   const neural=weaves.map(neuralSprite);
+  const shadows=cargo.map(silhouette);
   const slat=slatSprite();let count=0,totalMs=0,maxMs=0;
   let burstCycle=-1,burstCarrier:number|null=null;
   function build() {
     background.width=front.width=Math.ceil(width);background.height=front.height=Math.ceil(height);
+    lightLayer.width=Math.ceil(width*.65);lightLayer.height=Math.ceil(height*.65);
     const b=background.getContext("2d")!,f=front.getContext("2d")!;
-    b.fillStyle=gradient(b,0,0,0,height,[[0,"#020504"],[.32,"#07110e"],[.7,"#101b17"],[1,"#030807"]]);b.fillRect(0,0,width,height);
+    b.fillStyle=gradient(b,0,0,0,height,[[0,"#010302"],[.55,"#020604"],[.8,"#08130e"],[1,"#020605"]]);b.fillRect(0,0,width,height);
     glow(b,width*.24,beltY-38,280,"#9d6b2727");glow(b,width*.82,beltY-20,210,"#44877820");
     for(let x=-30;x<width+100;x+=120) {
       b.fillStyle=gradient(b,x,0,x+80,0,[[0,"#0a120f"],[.4,"#18241b"],[1,"#09120f"]]);b.fillRect(x,beltY-113,88,108);
@@ -184,47 +234,65 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     line(f,[0,beltY+34,width,beltY+34],"#d3bd8166",1);line(f,[0,beltY+71,width,beltY+71],"#93855a",2);
   }
   function resize(cssWidth: number, cssHeight: number) {
-    const artScale=Math.max(.68,Math.min(1,cssWidth/1050));
-    width=Math.min(1800,cssWidth/artScale);height=cssHeight/artScale;beltY=height-178;
-    const resolution=Math.min(1.25,1600/cssWidth,540/cssHeight);
+    const artScale=cssWidth<=640 && cssHeight<480 ? Math.max(.42,(cssHeight-140)/400) : cssWidth<=640 ? Math.max(.68,Math.min(.92,(cssHeight-100)/780)) : cssHeight>cssWidth*1.1 ? Math.min(1.2,cssHeight/840) : Math.max(.64,Math.min(1,cssWidth/1050,cssHeight/600));
+    width=Math.min(1800,cssWidth/artScale);height=cssHeight/artScale;beltY=height-190;
+    const resolution=Math.min(1.25,1800/cssWidth,1100/cssHeight);
     canvas.width=Math.round(cssWidth*resolution);canvas.height=Math.round(cssHeight*resolution);build();
   }
   function draw(d: Drive, still=false) {
     const start=performance.now(),t=d.time,jammed=d.status==="jammed";
     c!.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);
     c!.drawImage(background,0,0);
-    const lampX=width*.5,lampY=height-43;
-    const phase=still ? 0.72 :t*(jammed?1.12:.65),angle=Math.sin(phase)*1.3;
-    const beam=(x:number,y:number)=>Math.pow(Math.max(0,Math.cos(Math.atan2(x-lampX,lampY-y)-angle)),18);
-    const beamColor=jammed?"#ff321e":"#ffa83f";
-    // Light exists behind the machine first. The opaque fascia and cargo occlude it.
-    c!.save();c!.globalCompositeOperation="screen";
-    glow(c!,lampX,lampY,width*.7,jammed?"#d629174c":"#9f651611",1);
-    c!.translate(lampX,lampY);c!.rotate(angle);
-    const light=gradient(c!,0,0,0,-height,[[0,jammed?"#ff3b24aa":"#d5963328"],[.3,jammed?"#ea281964":"#d5963317"],[1,"#641a0700"]]);
-    polygon(c!,[-12,0,-width*.48,-height,width*.48,-height,12,0],light);c!.restore();
+    const lampX=width*.5,lampY=height-78;
+    const orbit=beaconOrbit(t,still),{phase,angle}=orbit;
+    const alarm=jammed?Math.min(1,d.stateAge/.35):d.status==="restarting"?Math.max(0,1-d.stateAge/.8):0;
+    const strain=jammed?jamStrain(d.stateAge,still):0;
+    const travel=d.distance+strain*2.4;
+    const spacing=194,first=Math.floor((-travel-100)/spacing),last=Math.ceil((width-travel+100)/spacing);
+    const beam=(x:number,y:number)=>Math.pow(Math.max(0,Math.cos(Math.atan2(x-lampX,lampY-y)-angle)),28);
+    const beamColor=alarm>.5?"#ff3b22":"#ffa83f";
+    // Low-resolution light layer: the beam moves through a full projected orbit.
+    // Cargo and support silhouettes remove light before the machinery is drawn.
+    const l=lightLayer.getContext("2d")!;
+    l.setTransform(lightLayer.width/width,0,0,lightLayer.height/height,0,0);l.clearRect(0,0,width,height);
+    l.save();l.translate(lampX,lampY);l.rotate(angle);
+    const reach=Math.hypot(width,height)*1.4;
+    l.globalAlpha=.35+alarm*.65;
+    l.drawImage(alarm>.5?redFan:amberFan,-reach*.52,-reach,reach*1.04,reach);
+    l.globalAlpha*=.13;l.rotate(Math.PI);l.drawImage(alarm>.5?redFan:amberFan,-reach*.7,-reach,reach*1.4,reach);l.restore();
+    l.save();l.globalCompositeOperation="destination-out";
+    l.beginPath();l.rect(0,0,width,beltY+10);l.clip();
+    for(let i=first;i<=last;i++) {
+      const x=i*spacing+travel,q=cargoFor(i),slot=((i%12)+12)%12;
+      const stretch=Math.min(6,(beltY+100)/105), skew=-(x-lampX-orbit.lateral*13)/height*.65;
+      l.save();l.translate(x,beltY+12);l.transform(1,0,skew,1,0,0);l.globalAlpha=.5;
+      l.drawImage(shadows[slot],-105*q.scale,-119*q.scale*stretch,210*q.scale,140*q.scale*stretch);l.restore();
+    }
+    l.restore();
+    c!.save();c!.globalCompositeOperation="screen";c!.drawImage(lightLayer,0,0,width,height);
+    // Broad reflected atmosphere has a gradual tail, never a solid spotlight disk.
+    glow(c!,lampX,lampY,width*.6,alarm>.5?"#b324131d":"#84602608");c!.restore();
     for(let x=-50;x<width+80;x+=82) {
-      c!.save();c!.translate(x,beltY+78);c!.rotate(d.distance/25);
+      c!.save();c!.translate(x,beltY+78);c!.rotate((travel+strain*1.5)/25);
       for(let k=0;k<6;k++){c!.rotate(TAU/6);line(c!,[10,0,21,0],"#828568",2.5);}c!.restore();
     }
     c!.save();c!.beginPath();c!.rect(0,beltY-17,width,54);c!.clip();
-    const pitch=32,offset=d.distance%pitch;
+    const pitch=32,offset=travel%pitch;
     for(let x=-55+offset;x<width+55;x+=pitch)c!.drawImage(slat,x,beltY-17);
     c!.restore();
     c!.save();c!.globalAlpha=.44;
-    for(let x=-44-(d.distance%pitch);x<width+44;x+=pitch)c!.drawImage(slat,x,beltY+102,44,12);
+    for(let x=-44-(travel%pitch);x<width+44;x+=pitch)c!.drawImage(slat,x,beltY+102,44,12);
     c!.restore();
     // Each carrier belongs to an unbounded world index; recycling happens offscreen.
-    const spacing=194,first=Math.floor((-d.distance-100)/spacing),last=Math.ceil((width-d.distance+100)/spacing);
     const discharge=neuralDischarge(t,still);
     // Pick a carrier using its world index at onset, so a burst stays attached
     // while the belt moves. Selection is fixed until this bounded event ends.
     const onBeltFirst=Math.ceil(-d.distance/spacing),onBeltLast=Math.floor((width-d.distance)/spacing);
     if(discharge.cycle!==burstCycle) {burstCycle=discharge.cycle;burstCarrier=null;}
     if(discharge.strength>0 && burstCarrier===null) burstCarrier=onBeltFirst+Math.floor(discharge.choice*(onBeltLast-onBeltFirst+1));
-    const kick=d.status==="restarting"?Math.sin(d.stateAge*36)*Math.exp(-d.stateAge*3):jammed?Math.sin(d.stateAge*43)*Math.exp(-d.stateAge*9):0;
+    const kick=d.status==="restarting"?Math.sin(d.stateAge*36)*Math.exp(-d.stateAge*3):jammed?strain*.7:0;
     for(let i=first;i<=last;i++) {
-      const x=i*spacing+d.distance, q=cargoFor(i),slot=((i%12)+12)%12;
+      const x=i*spacing+travel, q=cargoFor(i),slot=((i%12)+12)%12;
       const chatter=still?0:Math.sin(t*24+i*1.7)*Math.min(.5,d.velocity/120)+kick*2;
       const settle=still?0:Math.sin(t*18+i)*Math.max(0,1-d.velocity/30)*.3;
       ellipse(c!,x+9,beltY+14,72*q.scale,10,"#000c");
@@ -238,38 +306,40 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
       // Sparse grazing highlights retain the brain's material instead of a red veil.
       const incident=beam(x,beltY-42)*(jammed ? .8 : .16);
       if(incident>.02){glow(c!,x+27,beltY-55,46,beamColor,incident*.35);line(c!,[x-64,beltY+19,x+55,beltY+19],jammed?`rgba(255,100,57,${incident})`:`rgba(239,182,92,${incident})`,1.6);}
-      // Long cast shadows diverge from the beacon, broken by the specimen profile.
-      c!.save();c!.globalAlpha=jammed ? .13 : .07;
-      const spread=(x-lampX)*.65;
-      polygon(c!,[x-40,beltY-13,x+42,beltY-13,x+spread+57,0,x+spread-61,0],"#000");c!.restore();
+
     }
     c!.drawImage(front,0,0);
     // A travelling specular streak is clipped to metal, with bearing shadows below.
     c!.save();c!.globalCompositeOperation="screen";
-    const specX=lampX+Math.tan(angle)*135;
+    const specX=lampX+orbit.lateral*width*.6;
     const spec=c!.createRadialGradient(specX,beltY+46,0,specX,beltY+46,jammed?245:135);
-    spec.addColorStop(0,jammed?"#f32e1460":"#c1781325");spec.addColorStop(1,"transparent");c!.fillStyle=spec;c!.fillRect(0,beltY+32,width,39);c!.restore();
+    spec.addColorStop(0,jammed?"#f32e1460":"#c1781325");spec.addColorStop(1,"transparent");c!.fillStyle=spec;c!.globalAlpha=.25+Math.max(0,-orbit.depth)*.75;c!.fillRect(0,beltY+32,width,39);c!.restore();
     for(let x=42;x<width;x+=248){const dx=(x-lampX)*.23;polygon(c!,[x-1,beltY+70,x+23,beltY+70,x+dx+43,height,x+dx-21,height],jammed?"#0009":"#0005");}
     // Conduit and ribbed beacon housing sit BELOW the carrying bed.
-    const by=height-65;
+    const by=height-85;
     c!.strokeStyle="#090f0b";c!.lineWidth=8;c!.beginPath();c!.moveTo(lampX+19,by+34);c!.bezierCurveTo(lampX+95,by+47,lampX+91,beltY+105,lampX+166,beltY+105);c!.stroke();
     c!.strokeStyle="#555b3f";c!.lineWidth=1.3;c!.stroke();
-    glow(c!,lampX,by+12,jammed?125:47,jammed?"#ff321fe0":"#d48b2355");
+    glow(c!,lampX,by+12,jammed?95:47,jammed?"#ff321fe0":"#d48b2355");
     c!.fillStyle=gradient(c!,lampX-28,0,lampX+28,0,[[0,"#17231c"],[.35,"#8b8260"],[.5,"#b0a378"],[.8,"#394336"],[1,"#0e1b16"]]);c!.fillRect(lampX-31,by+30,62,17);
     ellipse(c!,lampX,by+30,31,6,"#766c49","#aa9567");
     c!.beginPath();c!.moveTo(lampX-24,by+28);c!.lineTo(lampX-22,by);c!.bezierCurveTo(lampX-21,by-25,lampX+21,by-25,lampX+22,by);c!.lineTo(lampX+24,by+28);c!.closePath();
     c!.fillStyle=gradient(c!,lampX-24,0,lampX+24,0,[[0,jammed?"#390e0b":"#36280e"],[.26,jammed?"#8f281b":"#7e5b1e"],[.54,jammed?"#d25234":"#b98d3a"],[.82,jammed?"#6e150f":"#64400c"],[1,"#1b1b0f"]]);c!.fill();c!.strokeStyle=jammed?"#f0784777":"#e7bc6477";c!.lineWidth=1;c!.stroke();
     c!.save();c!.clip();
-    const bulbX=lampX+Math.sin(phase)*15;
-    glow(c!,bulbX,by+7,19,jammed?"#ff5332":"#ffa840",jammed?1:.55);
-    ellipse(c!,bulbX,by+7,4+Math.max(0,Math.cos(phase))*5,21,jammed?"#ffddafd9":"#ffe4a744");
+    // Reflector turns about an upright central spindle. Its back crosses and
+    // occludes the bulb for half the orbit; casing and ribs never lean.
+    line(c!,[lampX,by-10,lampX,by+28],"#c49d6999",2);
+    const bulbX=lampX+orbit.lateral*14;
+    const reflectorWidth=3+Math.abs(orbit.depth)*13;
+    ellipse(c!,bulbX,by+8,reflectorWidth,20,gradient(c!,bulbX-reflectorWidth,0,bulbX+reflectorWidth,0,[[0,"#35150c"],[.3,jammed?"#a23e2b":"#9a7043"],[.58,jammed?"#ff8d72":"#f3c086"],[1,"#352116"]]));
+    glow(c!,bulbX,by+7,19,jammed?"#ff5332":"#ffa840",(jammed?1:.55)*(.12+Math.max(0,orbit.depth)*.88));
+    ellipse(c!,bulbX,by+7,4+Math.max(0,Math.cos(phase))*5,21,orbit.depth>0?(jammed?"#ffd2c9d9":"#ffe4a766"):"#7e37152a");
     for(let k=-20;k<=20;k+=4)line(c!,[lampX+k,by-17,lampX+k,by+28],k%8?"#19090470":"#f8c49844",1);
     c!.restore();
     for(const dx of [-21,21]){line(c!,[lampX+dx,by-5,lampX+dx,by+31],"#15221b",2);bolt(c!,lampX+dx,by+39,2.7);}
     ellipse(c!,lampX,by+29,25,4,"#4e4932","#b49b61");
     if(jammed) {
       // Anamorphic glare spans the screen only as the reflector faces the reader.
-      const facing=.15+.85*Math.pow(Math.max(0,Math.cos(phase)),5);
+      const facing=.03+.97*orbit.facing;
       c!.save();c!.globalCompositeOperation="screen";c!.globalAlpha=facing;
       c!.fillStyle=gradient(c!,0,0,width,0,[[0,"#ff271300"],[.3,"#e9371615"],[.49,"#ff703866"],[.5,"#ffd8aabb"],[.51,"#ff703866"],[.7,"#e9371615"],[1,"#ff271300"]]);
       c!.fillRect(0,by+5,width,2);
@@ -277,8 +347,8 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
       c!.restore();
     }
     // Brief, finite sparks on the jam impact or after pulling the mechanical reset.
-    const impact=jammed?d.stateAge:d.status==="restarting"?d.stateAge:10;
-    if(!still && impact<.75) for(let i=0;i<14;i++) {
+    const impact=jammed?d.stateAge%2.8:d.status==="restarting"?d.stateAge:10;
+    if(!still && impact<.55) for(let i=0;i<10;i++) {
       const u=impact, vx=(noise(i*67)-.5)*210,vy=-40-noise(i*89)*120;
       const sx=width*.75+vx*u,sy=beltY+64+vy*u+170*u*u;
       line(c!,[sx-vx*.018,sy-vy*.012,sx,sy],`rgba(255,${180-Math.round(u*100)},65,${1-u/.75})`,1+noise(i)*.7);
@@ -289,7 +359,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
       ellipse(c!,px,py,.6+noise(i),.6+noise(i),`rgba(161,143,91,${.06+beam(px,py)*.18})`);
     }
     const ms=performance.now()-start;totalMs+=ms;maxMs=Math.max(maxMs,ms);count++;
-    if(count%60===0){canvas.dataset.drawMeanMs=(totalMs/count).toFixed(2);canvas.dataset.drawMaxMs=maxMs.toFixed(2);canvas.dataset.distance=d.distance.toFixed(2);canvas.dataset.frames=String(count);}
+    if(count%60===0){canvas.dataset.beaconPhase=(phase%TAU).toFixed(3);canvas.dataset.strain=strain.toFixed(2);canvas.dataset.drawMeanMs=(totalMs/count).toFixed(2);canvas.dataset.drawMaxMs=maxMs.toFixed(2);canvas.dataset.distance=d.distance.toFixed(2);canvas.dataset.frames=String(count);}
   }
-  return {resize,draw,dispose(){[background,front,slat,...cargo,...neural].forEach(s=>{s.width=0;s.height=0;});}};
+  return {resize,draw,dispose(){[background,front,lightLayer,redFan,amberFan,slat,...cargo,...neural,...shadows].forEach(s=>{s.width=0;s.height=0;});}};
 }

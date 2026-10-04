@@ -1,0 +1,604 @@
+{
+  "samples": [
+    {
+      "time": 0,
+      "wheels": [
+        {
+          "name": "barrel",
+          "period": 3.9545454545454546,
+          "cssPeriod": 3.95455,
+          "direction": 1,
+          "teeth": 58,
+          "angle": 0,
+          "center": [
+            193.16000366210938,
+            429
+          ]
+        },
+        {
+          "name": "intermediate",
+          "period": 2.3181818181818183,
+          "cssPeriod": 2.31818,
+          "direction": -1,
+          "teeth": 34,
+          "angle": 0,
+          "center": [
+            217.5500030517578,
+            390
+          ]
+        },
+        {
+          "name": "centre",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 0,
+          "center": [
+            256.3399963378906,
+            394
+          ]
+        },
+        {
+          "name": "transfer",
+          "period": 3.8181818181818183,
+          "cssPeriod": 3.81818,
+          "direction": -1,
+          "teeth": 56,
+          "angle": 0,
+          "center": [
+            278.1400146484375,
+            439
+          ]
+        },
+        {
+          "name": "takeoff",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 0,
+          "center": [
+            322,
+            415
+          ]
+        }
+      ]
+    },
+    {
+      "time": 600,
+      "wheels": [
+        {
+          "name": "barrel",
+          "period": 3.9545454545454546,
+          "cssPeriod": 3.95455,
+          "direction": 1,
+          "teeth": 58,
+          "angle": 54.620682406461015,
+          "center": [
+            193.16000366210938,
+            429
+          ]
+        },
+        {
+          "name": "intermediate",
+          "period": 2.3181818181818183,
+          "cssPeriod": 2.31818,
+          "direction": -1,
+          "teeth": 34,
+          "angle": -93.17647076589468,
+          "center": [
+            217.5500030517578,
+            390
+          ]
+        },
+        {
+          "name": "centre",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 72.00000825765157,
+          "center": [
+            256.3399963378906,
+            394
+          ]
+        },
+        {
+          "name": "transfer",
+          "period": 3.8181818181818183,
+          "cssPeriod": 3.81818,
+          "direction": -1,
+          "teeth": 56,
+          "angle": -56.57141967603477,
+          "center": [
+            278.1400146484375,
+            439
+          ]
+        },
+        {
+          "name": "takeoff",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 72.00000825765157,
+          "center": [
+            322,
+            415
+          ]
+        }
+      ]
+    },
+    {
+      "time": 1200,
+      "wheels": [
+        {
+          "name": "barrel",
+          "period": 3.9545454545454546,
+          "cssPeriod": 3.95455,
+          "direction": 1,
+          "teeth": 58,
+          "angle": 109.24139397497471,
+          "center": [
+            193.16000366210938,
+            429
+          ]
+        },
+        {
+          "name": "intermediate",
+          "period": 2.3181818181818183,
+          "cssPeriod": 2.31818,
+          "direction": -1,
+          "teeth": 34,
+          "angle": 173.64703984127146,
+          "center": [
+            217.5500030517578,
+            390
+          ]
+        },
+        {
+          "name": "centre",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 144.0000118840185,
+          "center": [
+            256.3399963378906,
+            394
+          ]
+        },
+        {
+          "name": "transfer",
+          "period": 3.8181818181818183,
+          "cssPeriod": 3.81818,
+          "direction": -1,
+          "teeth": 56,
+          "angle": -113.14285035332951,
+          "center": [
+            278.1400146484375,
+            439
+          ]
+        },
+        {
+          "name": "takeoff",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 144.0000118840185,
+          "center": [
+            322,
+            415
+          ]
+        }
+      ]
+    },
+    {
+      "time": 1800,
+      "wheels": [
+        {
+          "name": "barrel",
+          "period": 3.9545454545454546,
+          "cssPeriod": 3.95455,
+          "direction": 1,
+          "teeth": 58,
+          "angle": 163.8620439812457,
+          "center": [
+            193.16000366210938,
+            429
+          ]
+        },
+        {
+          "name": "intermediate",
+          "period": 2.3181818181818183,
+          "cssPeriod": 2.31818,
+          "direction": -1,
+          "teeth": 34,
+          "angle": 80.47058363555122,
+          "center": [
+            217.5500030517578,
+            390
+          ]
+        },
+        {
+          "name": "centre",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": -144.0000118840185,
+          "center": [
+            256.3399963378906,
+            394
+          ]
+        },
+        {
+          "name": "transfer",
+          "period": 3.8181818181818183,
+          "cssPeriod": 3.81818,
+          "direction": -1,
+          "teeth": 56,
+          "angle": -169.71428399242322,
+          "center": [
+            278.1400146484375,
+            439
+          ]
+        },
+        {
+          "name": "takeoff",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": -144.0000118840185,
+          "center": [
+            322,
+            415
+          ]
+        }
+      ]
+    },
+    {
+      "time": 2400,
+      "wheels": [
+        {
+          "name": "barrel",
+          "period": 3.9545454545454546,
+          "cssPeriod": 3.95455,
+          "direction": 1,
+          "teeth": 58,
+          "angle": -141.5172302090504,
+          "center": [
+            193.16000366210938,
+            429
+          ]
+        },
+        {
+          "name": "intermediate",
+          "period": 2.3181818181818183,
+          "cssPeriod": 2.31818,
+          "direction": -1,
+          "teeth": 34,
+          "angle": -12.70586194879782,
+          "center": [
+            217.5500030517578,
+            390
+          ]
+        },
+        {
+          "name": "centre",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": -72.00000825765157,
+          "center": [
+            256.3399963378906,
+            394
+          ]
+        },
+        {
+          "name": "transfer",
+          "period": 3.8181818181818183,
+          "cssPeriod": 3.81818,
+          "direction": -1,
+          "teeth": 56,
+          "angle": 133.7142948590722,
+          "center": [
+            278.1400146484375,
+            439
+          ]
+        },
+        {
+          "name": "takeoff",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": -72.00000825765157,
+          "center": [
+            322,
+            415
+          ]
+        }
+      ]
+    },
+    {
+      "time": 2999,
+      "wheels": [
+        {
+          "name": "barrel",
+          "period": 3.9545454545454546,
+          "cssPeriod": 3.95455,
+          "direction": 1,
+          "teeth": 58,
+          "angle": -86.98758681281613,
+          "center": [
+            193.16000366210938,
+            429
+          ]
+        },
+        {
+          "name": "intermediate",
+          "period": 2.3181818181818183,
+          "cssPeriod": 2.31818,
+          "direction": -1,
+          "teeth": 34,
+          "angle": -105.72705298162282,
+          "center": [
+            217.5500030517578,
+            390
+          ]
+        },
+        {
+          "name": "centre",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": -0.1199997721953574,
+          "center": [
+            256.3399963378906,
+            394
+          ]
+        },
+        {
+          "name": "transfer",
+          "period": 3.8181818181818183,
+          "cssPeriod": 3.81818,
+          "direction": -1,
+          "teeth": 56,
+          "angle": 77.23716227615085,
+          "center": [
+            278.1400146484375,
+            439
+          ]
+        },
+        {
+          "name": "takeoff",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": -0.1199997721953574,
+          "center": [
+            322,
+            415
+          ]
+        }
+      ]
+    },
+    {
+      "time": 3000,
+      "wheels": [
+        {
+          "name": "barrel",
+          "period": 3.9545454545454546,
+          "cssPeriod": 3.95455,
+          "direction": 1,
+          "teeth": 58,
+          "angle": -86.89655093158676,
+          "center": [
+            193.16000366210938,
+            429
+          ]
+        },
+        {
+          "name": "intermediate",
+          "period": 2.3181818181818183,
+          "cssPeriod": 2.31818,
+          "direction": -1,
+          "teeth": 34,
+          "angle": -105.88234789333595,
+          "center": [
+            217.5500030517578,
+            390
+          ]
+        },
+        {
+          "name": "centre",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 0,
+          "center": [
+            256.3399963378906,
+            394
+          ]
+        },
+        {
+          "name": "transfer",
+          "period": 3.8181818181818183,
+          "cssPeriod": 3.81818,
+          "direction": -1,
+          "teeth": 56,
+          "angle": 77.1428545733451,
+          "center": [
+            278.1400146484375,
+            439
+          ]
+        },
+        {
+          "name": "takeoff",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 0,
+          "center": [
+            322,
+            415
+          ]
+        }
+      ]
+    },
+    {
+      "time": 6000,
+      "wheels": [
+        {
+          "name": "barrel",
+          "period": 3.9545454545454546,
+          "cssPeriod": 3.95455,
+          "direction": 1,
+          "teeth": 58,
+          "angle": -173.79310476312045,
+          "center": [
+            193.16000366210938,
+            429
+          ]
+        },
+        {
+          "name": "intermediate",
+          "period": 2.3181818181818183,
+          "cssPeriod": 2.31818,
+          "direction": -1,
+          "teeth": 34,
+          "angle": 148.23529795810856,
+          "center": [
+            217.5500030517578,
+            390
+          ]
+        },
+        {
+          "name": "centre",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 0,
+          "center": [
+            256.3399963378906,
+            394
+          ]
+        },
+        {
+          "name": "transfer",
+          "period": 3.8181818181818183,
+          "cssPeriod": 3.81818,
+          "direction": -1,
+          "teeth": 56,
+          "angle": 154.28570410242511,
+          "center": [
+            278.1400146484375,
+            439
+          ]
+        },
+        {
+          "name": "takeoff",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 0,
+          "center": [
+            322,
+            415
+          ]
+        }
+      ]
+    },
+    {
+      "time": 24000,
+      "wheels": [
+        {
+          "name": "barrel",
+          "period": 3.9545454545454546,
+          "cssPeriod": 3.95455,
+          "direction": 1,
+          "teeth": 58,
+          "angle": 24.827591022131088,
+          "center": [
+            193.16000366210938,
+            429
+          ]
+        },
+        {
+          "name": "intermediate",
+          "period": 2.3181818181818183,
+          "cssPeriod": 2.31818,
+          "direction": -1,
+          "teeth": 34,
+          "angle": -127.0588480028769,
+          "center": [
+            217.5500030517578,
+            390
+          ]
+        },
+        {
+          "name": "centre",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 0,
+          "center": [
+            256.3399963378906,
+            394
+          ]
+        },
+        {
+          "name": "transfer",
+          "period": 3.8181818181818183,
+          "cssPeriod": 3.81818,
+          "direction": -1,
+          "teeth": 56,
+          "angle": -102.85714542665491,
+          "center": [
+            278.1400146484375,
+            439
+          ]
+        },
+        {
+          "name": "takeoff",
+          "period": 3,
+          "cssPeriod": 3,
+          "direction": 1,
+          "teeth": 44,
+          "angle": 0,
+          "center": [
+            322,
+            415
+          ]
+        }
+      ]
+    }
+  ],
+  "pause": {
+    "allStopped": true,
+    "count": 28
+  },
+  "markup": {
+    "wheels": 5,
+    "bridges": 5,
+    "bearings": 4,
+    "outputBearing": 1,
+    "animations": 28
+  },
+  "reduced": {
+    "running": 0,
+    "wheels": 5
+  }
+}

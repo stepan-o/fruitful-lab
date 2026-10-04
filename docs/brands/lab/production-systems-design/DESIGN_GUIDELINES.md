@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 1.4 · 4 October 2026 · Mechanical Turk direction
+Version 1.5 · 4 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. The owner accepted the revised
 engraved illustration as an improvement and selected the historical Mechanical
@@ -210,8 +210,8 @@ cites the ASA distinction between significance, effect size and practical value.
 
 ### Conveyor construction · 4 October 2026
 
-The conveyor is a complete, supported assembly; the cabinet mechanism’s deeper
-redesign is the next pass. Loopforge supplies a light reference for substantial
+The conveyor is a complete, supported assembly. The watch-finished cabinet
+movement below now meets the coupling boundary established by this pass. Loopforge supplies a light reference for substantial
 rails, bracing, inspection openings and fasteners. Retain this page’s engraved
 wood/iron/brass treatment rather than adopting the factory’s lighting or materials.
 
@@ -225,8 +225,8 @@ wood/iron/brass treatment rather than adopting the factory’s lighting or mater
 - The existing right cabinet shaft at (322, 415) supplies a narrow vertical chain
   to a compound jackshaft at (322, 332). A second guarded chain, visible through
   three inspection openings, drives the right end drum at (591.05, 332).
-  Equal sprockets preserve direction and speed. This connection is the boundary
-  for the next cabinet iteration; do not redesign the internal gear train here.
+  Equal sprockets preserve direction and speed. The clockwork pass retains these
+  centers and the same output speed.
 - Drum and chain motion match the existing shaft’s 288 degrees per 2.4 seconds.
   An effective drum pitch radius of 17.507 SVG units corresponds to 88 units of
   belt travel. Ten-tooth radius-seven sprockets advance eight links per period.
@@ -235,6 +235,42 @@ wood/iron/brass treatment rather than adopting the factory’s lighting or mater
   return rollers and bearings in Dorner’s end-drive manual [S8]. This is an
   original period-material illustration, not a manufacturer drawing, fabrication
   plan or authenticated historical reconstruction.
+
+### Watch-finished cabinet movement · 4 October 2026
+
+Owner direction: intricate clockwork with the care of a high-end Swiss movement,
+while preserving a legible, plausible drive to the accepted conveyor. Refine the
+opening’s left chamber only; the paper register and seated Turk remain the anchors.
+
+Reference study: Patek Philippe’s 30-255 movement [S9] places shaped bridges over
+individual functions. Its hand-finishing guide [S10] describes polished bevels,
+recessed settings and overlapping circular graining. These inform material and
+construction, not a reproduction of that caliber. No manufacturer insignia or
+performance claim belongs on the profile’s original illustration.
+
+- Compose five wheels as a compact, rising-and-falling train, with four visible
+  contacts. Give the barrel a concentrically finished lid and separate stationary
+  winding ratchet/click. Keep its arbor in a bearing rather than an unsupported hub.
+- Distinguish three depths: a dark, circular-grained mainplate; warm brass wheels;
+  pale striped bearing bridges. Each bridge has a broad screw-fastened foot,
+  curved neck, bright chamfer and inset jewel. A very small oxblood bearing and
+  subdued blue-gray screw head provide color; no glow or jewel-like UI chrome.
+- The transmission uses module-one, 20° sampled involute teeth, with pitch radii
+  29, 17, 22, 28 and 22 SVG units. Centers are calculated from tangent pitch
+  circles; phases place teeth opposite gaps. Adjacent wheels counter-rotate at
+  equal pitch-line speed. These are illustration constraints, not toleranced CAD.
+- The last wheel’s center is exactly (322, 415). A visible bearing flange supports
+  the coaxial front sprocket, which carries power up to the conveyor jackshaft
+  and then to the head drum. Four meshes preserve clockwise output: 288° per
+  2.4 seconds, unchanged from the accepted conveyor. Gear relationships follow
+  the standard spur-gear geometry summarized by KHK [S11].
+- Each wheel completes full revolutions on its own linear CSS period; asymmetric
+  spokes therefore never jump when the tray cycle repeats. All five wheels use
+  the existing pause, visibility and reduced-motion lifecycle. No new client
+  bundle, external artwork, texture image, filter or frame-by-frame JS.
+- At phone size, the gold wheels, light bridges, dark recesses and continuous
+  drive path must remain distinct. Fine graining rewards closer inspection but
+  must not turn the whole compartment into an equally weighted texture.
 
 The conveyor and its transmission are our editorial invention. Racknitz's
 figure is source-derived vector geometry, with a clipped forearm used for the
@@ -428,6 +464,18 @@ its material and type specimens are our original design interpretation.
   list (p. 5), mounts/returns (pp. 8–9), and tension/bearings (pp. 13–17). The manual
   identifies the functional relationships; no source diagram is reproduced.
   https://www.dornerconveyors.com/wp-content/uploads/2017/09/851-452j.pdf
+
+- **S9 — Patek Philippe, caliber 30-255.** Consulted 4 October 2026; visually
+  inspected the official movement photograph in the browser, including its
+  separate sculpted bridges, bearing settings and visible brass wheel train.
+  https://www.patek.com/en/collection/movements/30-255
+- **S10 — Patek Philippe, “Hand finishing.”** Consulted 4 October 2026; beveling,
+  circular satin finish, sinks and perlage are the relevant sections. Original
+  procedural interpretation; no source photography shipped with the page.
+  https://www.patek.com/en/manufacture/artisans-of-time/hand-finishing
+- **S11 — KHK, “Calculation of Gear Dimensions.”** Standard spur-gear module,
+  reference diameter and center-distance relationships; consulted 4 October 2026.
+  https://khkgears.net/new/gear_knowledge/gear_technical_reference/calculation_gear_dimensions.html
 
 Local references: Sanctuary's `docs/sanctuary/DESIGN_SYSTEM.md`, Loopforge's
 `docs/loopforge/VISUAL_REVIEW.md`, and this profile's revised opening. Their

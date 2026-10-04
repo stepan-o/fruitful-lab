@@ -260,3 +260,24 @@ parts. The public artwork disclosure links the functional Dorner reference;
 no drawings, images or client dependencies were copied or added.
 
 Validation: [conveyor assembly evidence](production-systems-evidence/turk-mechanics-verification.md).
+
+
+## Watch-finished cabinet movement · 4 October 2026
+
+Owner direction: focus on intricate, premium clockwork and keep the conveyor’s
+power connection mechanically legible. Branch `codex/turk-clockwork-movement`
+starts from merged master `7c974c2` in the existing isolated profile worktree.
+
+The left chamber now contains a five-wheel transmission beneath shaped silver
+bridges, with fine brass teeth, jewel bearings, inset screws and a circular-grained
+mainplate. The barrel has a finished lid and a separate winding ratchet/click.
+Patek Philippe’s official 30-255 image and finishing guide informed the construction
+and material hierarchy; links are in the public artwork disclosure and guidelines.
+The mechanism is an original editorial interpretation.
+
+Gear centers, tooth phases and rotation periods come from one server-side geometry
+module. Four external meshes end at the existing (322, 415) takeoff, with a bearing
+flange exposed around the conveyor sprocket. The conveyor speed, stamp, paper
+register, result smoke and all other scenes retain their accepted behavior.
+
+Validation: [clockwork evidence](production-systems-evidence/turk-clockwork-verification.md).

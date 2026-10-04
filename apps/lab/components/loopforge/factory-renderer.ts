@@ -1,8 +1,9 @@
 import { cargoFor, noise, type Drive } from "./factory-drive";
 import { drawNeuralSignals, neuralDischarge } from "./factory-neural";
-import { specimenSlots, specimenWeave, paintSpecimenFibres } from "./factory-specimens";
+import { specimenSlots, specimenLift, specimenWeave, paintSpecimenFibres } from "./factory-specimens";
 import { loadFactoryArt } from "./factory-art";
-import { beaconOrbit, jamStrain } from "./factory-light";
+import { createBeaconRotor, stepBeaconRotor, jamStrain } from "./factory-light";
+import { createFactoryOptics } from "./factory-optics";
 
 type Ctx = CanvasRenderingContext2D;
 const TAU = Math.PI * 2;
@@ -35,15 +36,6 @@ function atmosphereTexture() {
   }
   return s;
 }
-function opticalFan(red: boolean) {
-  const s=surface(256,512),c=s.getContext("2d")!,rgb=red?"244,53,25":"207,137,59";
-  for(let y=0;y<512;y++) {
-    const d=(512-y)/512, half=d*125+2, g=c.createLinearGradient(128-half,0,128+half,0);
-    for(const [at,power] of [[0,0],[.18,.03],[.4,.2],[.5,.36],[.6,.2],[.82,.03],[1,0]])g.addColorStop(at,`rgba(${rgb},${power*(.15+.65*(1-d))})`);
-    c.fillStyle=g;c.fillRect(128-half,y,half*2,1);
-  }
-  return s;
-}
 function tint(source: HTMLCanvasElement, color: string) {
   const s=surface(source.width,source.height),c=s.getContext("2d")!;
   c.drawImage(source,0,0);c.globalCompositeOperation="source-in";c.fillStyle=color;c.fillRect(0,0,s.width,s.height);
@@ -57,13 +49,13 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
   let plate: HTMLImageElement | undefined, beacon: HTMLImageElement | undefined;
   let redBeacon: HTMLCanvasElement | undefined;
   const background=surface(1,1),front=surface(1,1),lightLayer=surface(1,1),belt=surface(1,1);
-  const redFan=opticalFan(true),amberFan=opticalFan(false),fog=atmosphereTexture();
+  const optics=createFactoryOptics(),rotor=createBeaconRotor(),fog=atmosphereTexture();
   const cargo:HTMLCanvasElement[]=[],warm:HTMLCanvasElement[]=[],shadows:HTMLCanvasElement[]=[];
   const weaves=Array.from({length:12},(_,i)=>specimenWeave(specimenSlots[i],cargoFor(i).seed));
   let count=0,totalMs=0,maxMs=0,burstCycle=-1,burstCarrier:number|null=null;
   function build() {
     background.width=front.width=Math.ceil(width);background.height=front.height=Math.ceil(height);
-    lightLayer.width=Math.ceil(width*.55);lightLayer.height=Math.ceil(height*.55);
+    lightLayer.width=Math.ceil(width*.8);lightLayer.height=Math.ceil(height*.8);
     const b=background.getContext("2d")!,f=front.getContext("2d")!;
     b.fillStyle="#020504";b.fillRect(0,0,width,height);
     if(!plate)return;
@@ -89,9 +81,9 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     const size=compact?256:420;
     for(let v=0;v<6;v++) {
       const s=surface(size,size),ctx=s.getContext("2d")!;
-      ctx.drawImage(atlas,(v%3)*cell,Math.floor(v/3)*cell,cell,cell,0,0,size,size);
+      ctx.drawImage(atlas,(v%3)*cell,Math.floor(v/3)*cell,cell,cell,0,specimenLift(v)/512*size,size,size);
       ctx.save();ctx.scale(size/210,size/210);ctx.translate(105,172);paintSpecimenFibres(ctx,specimenWeave(v,0));ctx.restore();
-      cargo.push(s);warm.push(tint(s,"#ed5437"));shadows.push(tint(s,"#000"));
+      cargo.push(s);warm.push(tint(s,"#ff563c"));shadows.push(tint(s,"#000"));
     }
     loaded=true;build();canvas.dataset.art="lattice-forge";
     canvas.dataset.bakeMs=(performance.now()-start).toFixed(2);return true;
@@ -106,7 +98,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     if(!loaded || disposed)return;
     const start=performance.now(),t=d.time,jammed=d.status==="jammed";
     c!.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c!.drawImage(background,0,0);
-    const lampX=width*.5,lampY=height-72,orbit=beaconOrbit(t,still),{phase,angle}=orbit;
+    const lampX=width*.5,lampY=height-72,orbit=stepBeaconRotor(rotor,t,jammed,still),{phase,angle}=orbit;
     const alarm=jammed?Math.min(1,d.stateAge/.5):d.status==="restarting"?Math.max(0,1-d.stateAge/1.2):0;
     const strain=jammed?jamStrain(d.stateAge,still):0,travel=d.distance+strain*1.7;
     const spacing=221,first=Math.floor((-travel-120)/spacing),last=Math.ceil((width-travel+120)/spacing);
@@ -124,13 +116,15 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     l.setTransform(lightLayer.width/width,0,0,lightLayer.height/height,0,0);l.clearRect(0,0,width,height);
     l.save();l.translate(lampX,lampY);l.rotate(angle);
     const reach=Math.hypot(width,height)*1.3;
-    l.globalAlpha=.35+alarm*.85;l.drawImage(alarm>.5?redFan:amberFan,-reach*.65,-reach,reach*1.3,reach);
-    l.rotate(Math.PI);l.globalAlpha*=.15;l.drawImage(alarm>.5?redFan:amberFan,-reach*.6,-reach,reach*1.2,reach);l.restore();
+    // Crossfade warm idle and vermilion alarm optics without a colour pop.
+    l.globalAlpha=.35*(1-alarm);l.drawImage(optics.amberFan,-reach*.65,-reach,reach*1.3,reach);
+    l.globalAlpha=alarm;l.drawImage(optics.redFan,-reach*.54,-reach,reach*1.08,reach);
+    l.rotate(Math.PI);l.globalAlpha=alarm*.1;l.drawImage(optics.redFan,-reach*.6,-reach,reach*1.2,reach);l.restore();
     l.save();l.globalCompositeOperation="destination-out";l.beginPath();l.rect(0,0,width,beltY);l.clip();
     for(let i=first;i<=last;i++) {
       const x=i*spacing+travel,slot=((i%12)+12)%12,q=cargoFor(i);
-      l.save();l.translate(x,beltY+20);l.transform(1,0,-(x-lampX)/height*.5,1,0,0);l.globalAlpha=.52;
-      l.drawImage(shadows[specimenSlots[slot]],-105*q.scale,-600*q.scale,210*q.scale,710*q.scale);l.restore();
+      l.save();l.translate(x,beltY+20);l.transform(1,0,-(x-lampX)/height*.5,1,0,0);l.globalAlpha=.9;
+      l.drawImage(shadows[specimenSlots[slot]],-105*q.scale,-height*1.625*q.scale,210*q.scale,height*1.8*q.scale);l.restore();
     }
     l.restore();c!.save();c!.globalCompositeOperation="screen";c!.drawImage(lightLayer,0,0,width,height);c!.restore();
     // The image-based tread and every specimen use the same drive distance.
@@ -148,14 +142,14 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
       c!.save();c!.translate(0,23);c!.scale(1,.15);c!.fillStyle=contact;c!.fillRect(-100,-100,200,200);c!.restore();
       c!.drawImage(cargo[specimenSlots[slot]],-105,-172,210,210);
       const incident=beam(x,beltY-55)*alarm;
-      if(incident>.015){c!.save();c!.globalCompositeOperation="screen";c!.globalAlpha=incident*.42;c!.drawImage(warm[specimenSlots[slot]],-105,-172,210,210);c!.restore();}
+      if(incident>.015){c!.save();c!.globalCompositeOperation="screen";c!.globalAlpha=incident*.68;c!.drawImage(warm[specimenSlots[slot]],-105,-172,210,210);c!.restore();}
       drawNeuralSignals(c!,weaves[slot],t,still,i===burstCarrier?discharge:null);
       c!.restore();
     }
     c!.drawImage(front,0,0);
     c!.save();c!.globalCompositeOperation="screen";
     const specX=lampX+orbit.lateral*width*.7;
-    glow(c!,specX,beltY+63,jammed?290:170,jammed?"#eb35142c":"#b5831812",.25+Math.max(0,-orbit.depth)*.75);
+    glow(c!,specX,beltY+63,jammed?380:170,jammed?"#ff351f62":"#b5831812",.25+Math.max(0,-orbit.depth)*.75);
     // A low cyan reflection anchors pulses to the oily carrying surface.
     glow(c!,width*.25,beltY+23,170,"#236f6c14");c!.restore();
     // Fixed iron cage and fluted glass, with a reflector travelling through
@@ -168,18 +162,14 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     c!.save();c!.beginPath();c!.roundRect(lampX-22,by-28,44,57,15);c!.clip();c!.globalCompositeOperation="screen";
     const bulbX=lampX+orbit.lateral*13;
     const facing=.1+.9*Math.max(0,orbit.depth);
-    ellipse(c!,bulbX,by+3,2+Math.abs(orbit.depth)*8,24,gradient(c!,bulbX-12,0,bulbX+12,0,[[0,"#ff853400"],[.5,jammed?"#ff8a6b75":"#eab97636"],[1,"#ff853400"]]));
-    glow(c!,bulbX,by+2,32,jammed?"#ff3c1fde":"#efa14d4a",facing);
+    ellipse(c!,bulbX,by+3,2+Math.abs(orbit.depth)*8,24,gradient(c!,bulbX-12,0,bulbX+12,0,[[0,"#ff853400"],[.5,jammed?"#ffc6a6cb":"#eab97636"],[1,"#ff853400"]]));
+    glow(c!,bulbX,by+2,32,jammed?"#ff321fff":"#efa14d4a",facing);
     line(c!,[bulbX,by-13,bulbX,by+22],jammed?`rgba(255,186,135,${facing*.9})`:`rgba(234,191,128,${facing*.45})`,1.6);
     c!.restore();
     // Cage occlusion remains in front of the rotating reflector.
     line(c!,[lampX,by-43,lampX,by+31],"#17201ccc",2);
     line(c!,[lampX-24,by-18,lampX+24,by-18],"#111a15aa",2);
-    if(jammed) {
-      c!.save();c!.globalCompositeOperation="screen";c!.globalAlpha=.04+.96*orbit.facing;
-      c!.fillStyle=gradient(c!,0,0,width,0,[[0,"#ff271300"],[.3,"#e9371615"],[.49,"#ff703866"],[.5,"#ffd8aabb"],[.51,"#ff703866"],[.7,"#e9371615"],[1,"#ff271300"]]);
-      c!.fillRect(0,by+3,width,1.5);glow(c!,lampX,by+3,65,"#ff472478");c!.restore();
-    }
+    optics.drawGlare(c!,width,height,lampX,by+3,orbit,alarm);
     const impact=jammed?d.stateAge%2.8:d.status==="restarting"?d.stateAge:10;
     if(!still && impact<.55)for(let i=0;i<8;i++) {
       const vx=(noise(i*67)-.5)*180,vy=-40-noise(i*89)*95;
@@ -191,7 +181,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
       ellipse(c!,px,py,.35+noise(i)*.55,.35+noise(i)*.55,`rgba(161,172,149,${.08+beam(px,py)*.25})`);
     }
     const ms=performance.now()-start;totalMs+=ms;maxMs=Math.max(maxMs,ms);count++;
-    if(count%60===0){canvas.dataset.beaconPhase=(phase%TAU).toFixed(3);canvas.dataset.strain=strain.toFixed(2);canvas.dataset.drawMeanMs=(totalMs/count).toFixed(2);canvas.dataset.drawMaxMs=maxMs.toFixed(2);canvas.dataset.distance=d.distance.toFixed(2);canvas.dataset.frames=String(count);}
+    if(count%60===0){canvas.dataset.beaconPhase=(phase%TAU).toFixed(3);canvas.dataset.beaconSpeed=rotor.speed.toFixed(2);canvas.dataset.strain=strain.toFixed(2);canvas.dataset.drawMeanMs=(totalMs/count).toFixed(2);canvas.dataset.drawMaxMs=maxMs.toFixed(2);canvas.dataset.distance=d.distance.toFixed(2);canvas.dataset.frames=String(count);}
   }
-  return {ready,resize,draw,dispose(){disposed=true;[background,front,lightLayer,belt,redFan,amberFan,fog,...cargo,...warm,...shadows,...(redBeacon?[redBeacon]:[])].forEach(s=>{s.width=0;s.height=0;});}};
+  return {ready,resize,draw,dispose(){disposed=true;optics.dispose();[background,front,lightLayer,belt,fog,...cargo,...warm,...shadows,...(redBeacon?[redBeacon]:[])].forEach(s=>{s.width=0;s.height=0;});}};
 }

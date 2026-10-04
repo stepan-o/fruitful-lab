@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 1.6 · 4 October 2026 · Mechanical Turk direction
+Version 1.7 · 4 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. The owner accepted the revised
 engraved illustration as an improvement and selected the historical Mechanical
@@ -272,6 +272,40 @@ supersedes the first watch-bridge treatment in PR #68.
   and crisp tooth profiles. Do not reproduce a watch caliber or brand marks.
 - At phone size, the dominant flywheel, small gears, layered motion and continuous
   conveyor drive should read before the engraved surface detail.
+
+### Finished cabinet casework · 4 October 2026
+
+The final opening-illustration pass brings the enclosing furniture up to the
+accepted conveyor and open clockwork. Windisch's 1783 plate [S2], inspected again
+for this pass, supplies projecting edges, framed compartments, paneled doors and
+strong recesses. Its pulled drawer is a depth reference; our case has a continuous
+structural apron. This is original casework, not a historical restoration.
+
+- Keep the broad, grounded silhouette. Layer a restrained cornice beneath the
+  conveyor, a rebated mechanical opening, a slender fluted central stile and a
+  continuous apron over a stepped plinth. Small turned feet finish the corners.
+- Project the right side with the conveyor's exact (+36.95, −64) depth vector.
+  Every base molding must meet its front counterpart and wrap around the corner.
+  A recessed side panel, bevels, miter seams and thin edge highlights explain
+  construction at normal reading size.
+- The open door has thickness, a framed raised panel, subtle figured veneer,
+  two brass pin hinges, a small keyhole escutcheon and a hanging pull. Place the
+  upper hinge below the conveyor bracket: both attach separately to the fixed
+  jamb, and the door never carries the belt. Draw it in front of the base.
+- Grain follows each board. Long fibres run up stiles and around the side; the
+  apron runs horizontally. Nested cathedral cuts belong to the door panel.
+  Keep grain quieter than contours and reserve dark shading for actual recesses.
+  A restrained walnut tonal range gives depth without a glossy rendered finish.
+- Pale stringing and edge lines belong to casework; brass belongs to working
+  fittings. Avoid broad gold plates, unrelated filigree or carved decoration
+  competing with the motion. Both hinges and the base should still read on a
+  phone even when individual incisions disappear.
+- Keep all eleven gears exposed within the existing (158, 354)–(369, 469) chamber.
+  Preserve the conveyor mounts, (322, 415) output, paper register, stamp and smoke.
+  The shell is static, server-rendered SVG: no new client code, animation, image,
+  font or dependency.
+
+[Cabinet production captures and verification](../production-systems-evidence/turk-cabinet-verification.md)
 
 The conveyor and its transmission are our editorial invention. Racknitz's
 figure is source-derived vector geometry, with a clipped forearm used for the

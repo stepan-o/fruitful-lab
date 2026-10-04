@@ -1,3 +1,12 @@
+Sanctuary editorial authority (2026-10-04): `docs/sanctuary/NARRATIVE_SPINE.md`
+supersedes the earlier evening/venue implementation map below. The first chapter
+opens with creative production and funding, then develops Gauntlet through
+cooperation, operator settings and its ending. No autobiographical setup. The
+complete reading manuscript is `docs/sanctuary/OPENING_MANUSCRIPT.md`. Opening art
+precedes prose; captions/controls do not restate the essay, and takeaways are
+optional. Later chapters remain under editorial review; the previous inventory
+is not a quality sign-off. Routes and media contracts are unchanged.
+
 Sanctuary evening/venue revision (2026-10-03): the current narrative authority is
 `docs/sanctuary/EVENING_NARRATIVE_MAP.md`. The opening is now “Insert coin. Join
 in.”: an imagined venue and documented Pong setting precede Gauntlet and the

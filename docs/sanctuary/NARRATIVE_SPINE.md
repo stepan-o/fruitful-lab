@@ -11,8 +11,10 @@ to sell. A commercial arrangement can fund a pleasure, shape it, preserve it or
 undermine it. Begin with actual decisions and their consequences; do not turn this
 into a repeated people/work/payment formula or a catalogue of villains.
 
-The owner's arcade conversation changed the scale of the question. The player
-buys a turn; an operator collects coins; a venue may gain a livelier evening.
+The opening establishes the creative economy: a work can remain valuable to its
+audience while its makers must finance further work. The arcade gives that
+relationship a concrete setting. A player buys a turn; an operator collects
+coins; a venue gains an attraction.
 Those are related, but the receipt does not exhaust the experience's value.
 Gauntlet then supplies concrete surprises: simultaneous cooperative play had an
 earnings argument, monster generation could change the paid opportunity without
@@ -70,8 +72,9 @@ Introduce products, studios and systems for unfamiliar readers without a generic
 
 Chapter one is now a complete new essay. Its continuous manuscript is
 `OPENING_MANUSCRIPT.md`; the same paragraphs and citations render from `content.ts`.
-It enters through the owner's real anecdote, develops Gauntlet through three
-concrete design decisions, and exits at the purchased copy. It does not preview
+It enters through the funding of creative work, develops Gauntlet through three
+concrete design decisions, and exits at the purchased copy. Personal details and
+the story of how the author arrived at an idea do not belong in this opening. It does not preview
 all the transaction categories, services or contemporary comparisons.
 
 The existing 22-chapter route sequence is preserved in this change. The next
@@ -83,20 +86,23 @@ their existence or the whole deck's narrative has been completed by this opening
 
 1. Recover the relevant argument from this document and the whole conversation,
    not only the latest correction. Review the neighbouring chapters' jobs.
-2. Write a complete chapter outside the component layout. Every paragraph must
+2. Use conversation details to recover ideas, not as autobiographical material
+   for publication. Keep the economic implications; do not narrate the feedback
+   process or repeat a literal scene to explain them.
+3. Write a complete chapter outside the component layout. Every paragraph must
    change what the reader understands; an abstract summary is not a new discovery.
-3. Read the draft continuously. Challenge its causal claims, transitions,
+4. Read the draft continuously. Challenge its causal claims, transitions,
    redundancies and assumptions about the reader. Verify historical particulars
    against original sources. Keep methodological qualifications in evidence notes
    unless the argument itself depends on them.
-4. Edit the whole draft before placing it on the page. Do not patch individual
+5. Edit the whole draft before placing it on the page. Do not patch individual
    blocks in response to a conceptual correction while retaining a broken arc.
-5. Assign each visual a different job: establish a setting, reveal a mechanism,
+6. Assign each visual a different job: establish a setting, reveal a mechanism,
    compare conditions or show evidence. Remove prose that merely feeds empty UI.
    A caption, diagram and takeaway must not repeat the same paragraph four times.
-6. Preserve the visual-first opening and performance/accessibility rules. A good
+7. Preserve the visual-first opening and performance/accessibility rules. A good
    manuscript is not a reason to place a wall of text before the first image.
-7. Verify the rendered reading sequence as well as the code. Tests can protect
+8. Verify the rendered reading sequence as well as the code. Tests can protect
    placement and controls; they cannot establish that an essay is good.
 
 The new opening uses the arcade room as a still plate, the cutaway as a health-setting

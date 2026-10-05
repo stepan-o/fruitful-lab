@@ -1,9 +1,9 @@
 import type { CSSProperties } from "react";
-import { Board, Piece, Screw } from "./engraving-primitives";
+import { Board, Piece } from "./engraving-primitives";
 import { chessTransforms, foreLength, innerBoard, innerPieceScale, mainBoard, mainPieceScale, move, position, shoulder, squareCenter, upperLength, type ChessBoard } from "@/lib/production-systems/operator-chess";
 import styles from "./turk-operator.module.css";
 
-const ink="#463a30", brass="#ae9365";
+const ink="#463a30";
 export function moveStyle(id:string, part:keyof ReturnType<typeof chessTransforms>):CSSProperties {
   return {animationName:`${id}-${part}`,transform:chessTransforms(0)[part]};
 }
@@ -57,28 +57,5 @@ export function TurkArm({id}:{id:string}) {
       <path d="M20-10 14-9 8-7M19-6 12-5M20-3 15-3" fill="none" stroke="#9a815c" strokeWidth=".55"/>
       <g className={styles.chess} style={moveStyle(id,"finger")}><path d="M10-6Q4-8 0-4L-5 1Q-6 4-3 5L1 3 4 0 10-1" fill="#dfcba2"/><path d="M1-1 4 0M-2 2 1 3" stroke="#a78c64" fill="none" strokeWidth=".5"/></g>
     </g>
-  </g>;
-}
-export function OperatorControl({id}:{id:string}) {
-  return <g data-operator-part="operator-control" strokeLinejoin="round">
-    {/* Roof transmission, guide, input bell crank and the visible driven arbor. */}
-    <path d="M319 136V121H476V96M476 121V268" fill="none" stroke="#302c22" strokeWidth="5"/>
-    <path d="M319 136V121H476V96M476 121V268" fill="none" stroke={brass} strokeWidth="2.8"/>
-    <path d="M321 119H474M474 126V267" stroke="#d1b985" strokeWidth=".65" fill="none"/>
-    <path d="M310 126H328V145H310Z" fill="#726448" stroke={ink}/>
-    <path d="M315 128V144M323 128V144" stroke="#c6ae78" strokeWidth=".8"/>
-    <path d="M340 244H357V259H338Z" fill="#706047" stroke={ink}/>
-    <g className={styles.chess} style={{...moveStyle(id,"lever"),transformOrigin:"340px 244px"}}>
-      <path d="M340 244 334 182" stroke="#332d23" strokeWidth="5"/>
-      <path d="M340 244 334 182" stroke={brass} strokeWidth="2.7"/>
-      <path d="M338 238 333 190" stroke="#dbc491" strokeWidth=".7"/>
-      <Screw x={334} y={182} r={3}/>
-    </g>
-    <g className={styles.chess} style={moveStyle(id,"rod")}><path d="M0-2H50V2H0Z" fill={brass} stroke={ink} strokeWidth=".65"/><path d="M2-1H47" stroke="#e0c899" strokeWidth=".5"/></g>
-    <Screw x={319} y={136} r={2.8}/><Screw x={340} y={244} r={3.2}/>
-    <g className={styles.chess} style={{...moveStyle(id,"drive"),transformOrigin:"476px 121px"}}><circle cx="476" cy="121" r="9" fill="#796849" stroke={ink}/><path d="M469 121H483M476 114V128" stroke="#cbb17b" strokeWidth="1.1"/></g>
-    <Screw x={476} y={121} r={2.4}/>
-    <path d="M469 249H483V259H469ZM472 89V98M480 89V98" stroke={ink} fill={brass} strokeWidth="1"/>
-    <path d="M467 94H485V99H467Z" fill={brass} stroke={ink} strokeWidth=".8"/>
   </g>;
 }

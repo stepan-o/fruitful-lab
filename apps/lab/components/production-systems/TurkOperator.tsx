@@ -5,7 +5,8 @@ import OperatorTurk from "./OperatorTurk";
 import { CabinetFinish, CabinetWoodDefs, CutawayFinish, SidePanel } from "./OperatorCabinet";
 import { operatorLamp, operatorShadowTransform, operatorLightKeyframes } from "@/lib/production-systems/operator-light";
 import { chessKeyframes, indicatorBoard, move, position, squareCenter } from "@/lib/production-systems/operator-chess";
-import { moveStyle, OperatorControl, TurkArm, WorkingBoard } from "./OperatorChess";
+import { moveStyle, TurkArm, WorkingBoard } from "./OperatorChess";
+import { OperatorControl, OperatorLeverArm } from "./OperatorControl";
 import styles from "./turk-operator.module.css";
 
 const ink = "#463a30", brass = "#ae9365", edge = "#c9aa78";
@@ -22,7 +23,7 @@ function PersonLayer({id,silhouette=false}:{id:string;silhouette?:boolean}) {
   const study=<use href={`#${id}-${silhouette?"person":"person-engraving"}`} transform={bodyTransform}/>;
   return <g data-operator-part={silhouette?undefined:"engraved-character"}>
     <g clipPath={`url(#${id}-body-still)`}>{study}</g>
-    <g className={styles.chess} style={{...moveStyle(id,"lever"),transformOrigin:"340px 244px"}}><g clipPath={`url(#${id}-lever-hand)`}>{study}</g></g>
+    <OperatorLeverArm id={id} silhouette={silhouette}/>
     <g className={styles.chess} style={moveStyle(id,"operatorHand")}><g clipPath={`url(#${id}-board-hand)`}>{study}</g></g>
   </g>;
 }
@@ -151,9 +152,8 @@ export default function TurkOperator({ id }: { id: string }) {
         <path d={person.mid} stroke="#6e5c43" strokeWidth=".7" fill="none"/>
         <path d={person.ink} stroke="#342d25" strokeWidth=".9" fill="none"/>
       </g>
-      <clipPath id={`${id}-lever-hand`}><path d="M310 163H348L356 249H310Z"/></clipPath>
       <clipPath id={`${id}-board-hand`}><path d="M286 263 389 252 394 283 335 307H286Z"/></clipPath>
-      <clipPath id={`${id}-body-still`}><path clipRule="evenodd" d="M280 115H430V310H280ZM310 163H348L356 249H310ZM286 263 389 252 394 283 335 307H286Z"/></clipPath>
+      <clipPath id={`${id}-body-still`}><path clipRule="evenodd" d="M280 115H430V310H280ZM310 163H350L357 215 376 227 358 249H310ZM286 263 389 252 394 283 335 307H286Z"/></clipPath>
       <g id={`${id}-moving-silhouette`}><PersonLayer id={id} silhouette/></g>
       <linearGradient id={`${id}-walnut`} x1="0" y1="0" x2="1" y2=".3"><stop stopColor="#7b583d" /><stop offset=".35" stopColor="#97734d" /><stop offset="1" stopColor="#60432f" /></linearGradient>
       <radialGradient id={`${id}-wall-light`} gradientUnits="userSpaceOnUse" cx={operatorLamp.x} cy={operatorLamp.y} r="265"><stop stopColor="#d1ab68" stopOpacity=".88" /><stop offset=".3" stopColor="#b29556" stopOpacity=".6" /><stop offset=".7" stopColor="#87905c" stopOpacity=".18" /><stop offset="1" stopColor="#71825a" stopOpacity="0" /></radialGradient>
@@ -170,9 +170,9 @@ export default function TurkOperator({ id }: { id: string }) {
     <g clipPath={`url(#${id}-inside)`}>
       <OperatorMovement />
       <IndicatorBoard id={id}/>
+      <OperatorControl id={id}/>
       <SeatedCoat id={id} />
       <PrivateBoard id={id}/>
-      <OperatorControl id={id}/>
       <PersonLayer id={id}/>
       <g clipPath={`url(#${id}-person-clip)`}><g className={styles.illumination} style={{ animationName: `${id}-candle` }}><path d="M200 117H460V361H200Z" fill={`url(#${id}-skin-light)`} /></g></g>
       <Candle id={id} />

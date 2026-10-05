@@ -478,3 +478,17 @@ board, keeping their squares aligned as the layout changes. Both boards and the
 operator still share the same legal e2–e4 demonstration. No additional animation
 or runtime code. Guidelines v2.3 document the revised proportions.
 [Current validation](production-systems-evidence/operator-proportions-verification.md).
+
+
+### Figure 2 — attached control chain (5 October 2026)
+
+The human control now sits on the far wall to the operator's right, on a shallow
+fixed frame with four screws and bearing collars. The operator's new articulated
+arm keeps its hand wrapped around the handle throughout a visible 28-degree
+pull. Equal cranks and a constant-length coupling rod transmit that pull to the
+shaft entering the Turk's seat. Pull, hold and return follow the existing chess
+move; both boards preserve the same e2–e4 demonstration. Source-arm remnants are
+removed and the moving silhouette uses the same new arm geometry.
+
+Guidelines v2.4 capture this attachment and motion contract.
+[Current validation](production-systems-evidence/operator-control-verification.md).

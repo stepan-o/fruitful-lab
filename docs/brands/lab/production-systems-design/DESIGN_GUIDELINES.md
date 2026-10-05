@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 2.3 · 5 October 2026 · Mechanical Turk direction
+Version 2.4 · 5 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. **Figure 1 is complete and accepted
 by the owner**, including the casework, conveyor, pace/results, palette and coherent
@@ -186,8 +186,17 @@ are our composition; the museum replica uses an electric headlamp [S17]. Both
 figure studies retain their existing Racknitz attribution.
 
 **Working relationship:** show a human decision travelling through an attached
-mechanism. The operator's raised hand pulls a pivoted input lever; a telescoping
-link, roof transmission and driven arbor connect toward the automaton's arm.
+mechanism. A shallow brass-and-green linkage is bolted to the far wall, to the
+operator's right. His hand wraps a walnut grip on its lower crank and visibly
+pulls through 28 degrees while the pawn lifts and travels; it holds through
+placement and returns as the chess hand withdraws. Both arm segments keep fixed
+lengths and the wrist follows the grip exactly. Remove the former raised source
+arm so the figure has only two working arms. Two equal-radius cranks at (471, 253)
+and (471, 163) are joined by a rigid 90-unit coupling rod. The upper crank drives
+a short shaft held by two bearing collars and entering the Turk's seat. Four
+fixings and close contact shadows attach the mechanism to the wall; no free rod
+end or unsupported roof elbow. The pivot, pins, grip, wrist and rod endpoints
+share one geometry model. Do not animate them independently.
 His board hand and the Turk's articulated sleeve/pinching hand repeat the same
 move. Both 8×8 boards have a light h1 corner, matching file/rank orientation,
 turned ivory/dark pieces, board-bound shadows and one sparse legal position:
@@ -237,8 +246,8 @@ Fixed rim highlights face this scene's candle, not Figure 1's upper-left key.
 
 **Motion and cost:** nine wheels plus five light layers (a quiet 6.4-second
 irregular cycle) and the linked chess gesture make
-31 animated SVG groups, which use the existing pause/offscreen/reduced-motion lifecycle; Figure 1's pace does not drive this
-scene. Only the working forearms move; the head and body remain attentive and still.
+35 animated SVG groups, which use the existing pause/offscreen/reduced-motion lifecycle; Figure 1's pace does not drive this
+scene. Only the working arms move; the head and body remain attentive and still.
 No new observer, client boundary, dependency,
 filter or per-frame code. The initial server render is a complete still. Crop
 source scan-line geometry on the server, rather than shipping hidden detail.
@@ -246,7 +255,8 @@ Reuse the original engraved character via SVG references for its segmented arms
 and animated silhouette. Sample joint geometry once on the server at 1% cycle
 intervals; the browser only interpolates CSS transforms/opacity.
 
-[Current Figure 2 proportion verification](../production-systems-evidence/operator-proportions-verification.md)
+[Current Figure 2 control-chain verification](../production-systems-evidence/operator-control-verification.md)
+· [Earlier proportion verification](../production-systems-evidence/operator-proportions-verification.md)
 · [Earlier complete-figure finish verification](../production-systems-evidence/operator-complete-verification.md)
 · [Earlier linked-move and candle verification](../production-systems-evidence/operator-linked-verification.md)
 · [Earlier composition pass](../production-systems-evidence/operator-composition-verification.md)

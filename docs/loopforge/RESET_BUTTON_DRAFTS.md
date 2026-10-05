@@ -15,28 +15,25 @@ gate; expression, factory materials and small-size clarity decided the fit.
 
 | Draft | Strength | Decision |
 | --- | --- | --- |
-| 1 · Circular mushroom | Most overtly tactile; cap, stem and socket agree | Rejected: steep overhead angle and tall stem read as a tabletop push-down control. |
+| **1 · Circular mushroom** | **Most overtly tactile; cap, stem and socket agree** | **Current selection: user requested this design for the landing. Original camera and raised stem retained.** |
 | 2 · Guarded station | Strong red center and protective shoulders | Rejected: opposing guard facets and top/bottom casing bevels repeat the ambiguous depth. |
 | 3 · Octagonal instrument | Expressive silhouette and broad red face | Rejected: nested bevels compete; large hinge makes it resemble a hatch. |
 | 4 · Riveted override | Strong industrial construction and lateral projection | Runner-up: lower casing edges retain a possible competing underside cue; connector consumes thumbnail space. |
-| **5 · Cylindrical socket** | **One clear depth axis, compact mounting ears and distinct crimson/brass silhouette** | **Selected. Closest to the near-frontal scene while resolving the primary geometry concern.** |
+| 5 · Cylindrical socket | One clear depth axis, compact mounting ears and distinct crimson/brass silhouette | Initial agent selection; retained as a comparison. |
 
-Two independent reviewers preferred 5 overall; the third preferred 4 for factory
-character but confirmed 5 remained clear at 62 px after seeing the comparison.
-The main agent selected 5 because the repeated perspective complaint outweighs
-4’s extra casing detail. Its larger exposed upper barrel was explicitly reviewed
-rather than assumed invisible; the small-size result remained legible and compact.
+The initial agent review preferred draft 5; the user has now chosen to try draft 1.
+This trial uses its exact idle artwork, with new matching hover and pressed states.
+The stronger raised-cap silhouette is the intended difference.
 
 ![Five alternatives at enlarged, desktop and phone sizes against the scene](evidence/reset-five-drafts.webp)
 
 ## Production asset
 
-Only draft 5 and its registered hover/pressed derivatives enter the deployed
-media pack. Unselected full-size drafts and their exact prompts remain in the
-local visual review artifact. [Selected prompts](RESET_ASSET_PROMPTS.md) preserve
-the idle generation, targeted camera correction and final state edits.
-The interaction code, jam timing, page layout and factory renderer are unchanged.
+Draft 1 and its hover/pressed derivatives are now selected by the deployed media
+pointer. Previously published releases remain available under their immutable URLs.
+The full-size alternatives and their exact prompts remain in the local visual review
+artifact. [Current prompts](RESET_ASSET_PROMPTS.md) preserve draft 1's idle generation
+and final state edits. Interaction code, jam timing, layout and renderer are unchanged.
 
-The circular design’s rear barrel recedes upward behind the collar; its cap
-advances slightly downward toward the viewer. Pressing travels back into that
-socket. No square plate or conflicting corner extrusion remains.
+The mushroom cap projects upward from its socket in this view. Pressing moves it
+down into the collar along the same axis; the three bolted mounting ears stay fixed.

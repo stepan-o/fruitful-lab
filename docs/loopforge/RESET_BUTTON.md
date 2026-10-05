@@ -26,25 +26,24 @@ Source references in the Loopforge concept-art collection:
 - `rooms/04_loopforge_rooms_neural_lattice_converyor_1.png`: industrial surface texture and machinery.
 - `characters/conveyor_operations/stiletto_conveyor_failure_overdrive.png`: warm highlights against red and black.
 
-The selected control is draft 5 from five independent subagent studies. Its
-compact cylindrical socket and two mounting lugs replace the rejected rectangular
-plate. The exposed rear barrel, brass collar and projecting red cap share one
-coaxial depth cue. It avoids the competing top/bottom box edges that made the
-previous rendering ambiguous. All states retain a plain red cap with no arrow,
-icon or lettering. The original worn metal, enamel and cyan edge reflections
-match the factory art.
+The current control is draft 1, selected by the user for this trial from the five
+subagent studies. Its broad worn-crimson mushroom cap, exposed stem and three-ear
+blackened-brass socket share one axis. The idle frame is the exact original draft;
+its camera and silhouette have not been redesigned. The blank cap contains no
+arrow, icon or lettering.
 
-[Five-draft selection and rationale](RESET_BUTTON_DRAFTS.md) records the comparison.
-Hover brightens the cap and inner socket; the pressed state seats it into the
-collar. The same housing and camera are retained in all three frames.
+[Five-draft comparison](RESET_BUTTON_DRAFTS.md) records the alternatives.
+Hover adds warm enamel and collar highlights. Pressing seats the cap down into
+its socket while the mounting base remains fixed. Both states were generated
+from the original draft 1 master, preserving its perspective and materials.
 
 The source is `apps/lab/assets/loopforge-controls/reset.webp`, a lossless
 1152×384 atlas with three 384×384 frames (idle, hover, pressed). Prompts are
 recorded in [RESET_ASSET_PROMPTS.md](RESET_ASSET_PROMPTS.md). Original generated
 PNGs remain outside the deployment. Rejected intermediate assets are not shipped.
 
-The existing media pipeline produces 384×128 (13,698 bytes) and 768×256
-(45,014 bytes) WebP variants with lossless alpha. All states use the same selected
+The existing media pipeline produces 384×128 (17,234 bytes) and 768×256
+(55,652 bytes) WebP variants with lossless alpha. All states use the same selected
 URL, so first hover/click needs no additional request. At DPR 1 the tested desktop
 and phone both selected the smaller variant. Higher-density displays can select
 the larger one. The factory scene pack is unchanged (219,984 bytes phone /
@@ -77,19 +76,20 @@ remains available.
 
 ## Validation
 
-Full CI passes: 224 tests across 49 suites, asset-integrity checks (10 retained
+Full CI passes: 224 tests across 49 suites, asset-integrity checks (11 retained
 releases) and the optimized production build. Scoped ESLint also passes. Tests
 cover jam timing, random intervals, duplicate reset, keyboard/touch activation,
 delayed artwork, hidden/offscreen suspension, pause, reduced motion and media
 failure after a responsive image reload.
 
-The selected circular control was visually inspected on the production build at
+The selected draft 1 mushroom control was visually inspected on the production build at
 1280×720, 768×1024, 390×844, 320×568 and 640×360. No horizontal overflow or
 obscured controls. Reset targets are 92×112 desktop, 76×112 tablet, 62×80 phone
 and 50×80 narrow landscape; pause remains at least 44×44. Real hover selected
 the lit frame at opacity 1. Space activation displayed the pressed frame at
 opacity 1 and restarted the line. A phone-size click also restarted a real jam.
-Before/after button bounds were identical on desktop and 320 px phone.
+Desktop button bounds were identical before and after activation; the 390 px
+phone retained its 62×80 target and restarted successfully.
 All three frames were fully loaded from the same atlas before interaction.
 No browser console errors were observed.
 
@@ -98,5 +98,5 @@ covered automatically; OS settings were not changed. Earlier vector-delivery
 CPU timings do not constitute a new raster-pass benchmark. Field Core Web Vitals
 and cold/warm network timing remain unmeasured. The renderer itself is unchanged.
 
-![Selected circular control on desktop](evidence/reset-selected-desktop.webp)
-![Selected circular control on phone](evidence/reset-selected-phone.webp)
+![Selected circular control on desktop](evidence/reset-draft1-desktop.webp)
+![Selected circular control on phone](evidence/reset-draft1-phone.webp)

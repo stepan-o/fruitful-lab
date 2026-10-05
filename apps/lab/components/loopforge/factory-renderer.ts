@@ -8,6 +8,8 @@ import { createReflector } from "./factory-reflector";
 import { createReceiverRelief } from "./factory-relief";
 import { alphaSilhouette, shadowTransform, emitterSamples } from "./factory-shadow";
 
+import { factoryViewport } from "./factory-viewport";
+
 type Ctx = CanvasRenderingContext2D;
 const TAU = Math.PI * 2;
 function surface(w: number, h: number) {
@@ -58,10 +60,13 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
   let count=0,totalMs=0,maxMs=0,burstCycle=-1,burstCarrier:number|null=null;
   const recentDraws=new Float32Array(120);
   function build() {
-    background.width=front.width=Math.ceil(width);background.height=front.height=Math.ceil(height);
+    const plateResolution=Math.min(1,1800/width,1400/height);
+    background.width=front.width=Math.ceil(width*plateResolution);
+    background.height=front.height=Math.ceil(height*plateResolution);
     const lightResolution=Math.min(.8,1400/width,900/height);
     for(const layer of [lightLayer,beamField,shadowMask]){layer.width=Math.ceil(width*lightResolution);layer.height=Math.ceil(height*lightResolution);}
     const b=background.getContext("2d")!,f=front.getContext("2d")!;
+    for(const ctx of [b,f])ctx.setTransform(background.width/width,0,0,background.height/height,0,0);
     b.fillStyle="#020504";b.fillRect(0,0,width,height);
     if(!plate)return;
     relief.bake(width,height,{x:width*.5,y:height-72});
@@ -107,15 +112,14 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     canvas.dataset.bakeMs=(performance.now()-start).toFixed(2);return true;
   }).catch(()=>{canvas.dataset.art="unavailable";return false;});
   function resize(cssWidth:number,cssHeight:number) {
-    const artScale=cssWidth<=640 && cssHeight<480 ? Math.max(.42,(cssHeight-140)/400) : cssWidth<=640 ? Math.max(.68,Math.min(.92,(cssHeight-100)/780)) : cssHeight>cssWidth*1.1 ? Math.min(1.2,cssHeight/840) : Math.max(.64,Math.min(1,cssWidth/1050,cssHeight/600));
-    width=Math.min(1800,cssWidth/artScale);height=cssHeight/artScale;beltY=height-154;
-    const resolution=Math.min(1.5,2100/cssWidth,1400/cssHeight);
-    canvas.width=Math.round(cssWidth*resolution);canvas.height=Math.round(cssHeight*resolution);build();
+    const viewport=factoryViewport(cssWidth,cssHeight);
+    width=viewport.width;height=viewport.height;beltY=height-154;
+    canvas.width=viewport.pixelWidth;canvas.height=viewport.pixelHeight;build();
   }
   function draw(d:Drive,still=false) {
     if(!loaded || disposed)return;
     const start=performance.now(),t=d.time,jammed=d.status==="jammed";
-    c!.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c!.drawImage(background,0,0);
+    c!.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c!.drawImage(background,0,0,width,height);
     const lampX=width*.5,lampY=height-72,orbit=stepBeaconRotor(rotor,t,jammed,still),{phase,angle}=orbit;
     const alarm=jammed?Math.min(1,d.stateAge/.5):d.status==="restarting"?Math.max(0,1-d.stateAge/1.2):0;
     const strain=jammed?jamStrain(d.stateAge,still):0,travel=d.distance+strain*1.7;
@@ -192,7 +196,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
       drawNeuralSignals(c!,weaves[slot],t,still,i===burstCarrier?discharge:null);
       c!.restore();
     }
-    c!.drawImage(front,0,0);
+    c!.drawImage(front,0,0,width,height);
     c!.save();c!.globalCompositeOperation="screen";
     // Foreground iron is a receiver in front of the cargo: the same beam
     // reveals its baked texture. No unrelated sliding red spotlight.

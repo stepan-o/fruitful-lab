@@ -256,3 +256,17 @@
  .itemCopy strong { font-size:13px; white-space:normal; }
  .resetDock { width:154px; min-height:92px; }
 }
+
+/* Reserve the uniformly scaled production line, then center the entrance above it.
+   Height limits match the renderer so shallow ultrawide windows keep both visible. */
+@media(min-width:1600px) and (min-height:900px) {
+ .stage { display:flex; flex-direction:column; justify-content:center; padding-top:0; padding-bottom:calc(min(18.112vw,38.81svh) + 24px); }
+ .logoWrap { flex-shrink:0; width:clamp(440px,min(27vw,46svh),620px); }
+ .menuShell { width:100%; max-width:1480px; flex-shrink:0; }
+ .menuRow { grid-template-columns:minmax(0,1fr) 240px; }
+ .menuItem { min-height:104px; }
+ .itemCopy strong { font-size:clamp(26px,1.25vw,34px); }
+ .itemCopy small { max-width:260px; font-size:13px; }
+ .itemIndex { font-size:9px; }
+ .eyebrow { font-size:9px; }
+}

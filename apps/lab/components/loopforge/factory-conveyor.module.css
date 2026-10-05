@@ -88,3 +88,8 @@
  .hint { font-size:9px; }
  .motion { grid-column:2; grid-row:2; flex-direction:row; font-size:7px; }
 }
+
+/* Match the larger live specimens while artwork is loading or canvas is absent. */
+@media(min-width:1800px) {
+ .fallback { --still-size:max(210px,min(11.666667vw,calc((100svh - 24px) * .25))); }
+}

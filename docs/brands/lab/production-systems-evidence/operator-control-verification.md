@@ -1,5 +1,7 @@
 # Figure 2 — an attached control chain
 
+**Rejected by the owner:** the backward-reaching arm and moved handle broke the approved operator pose. The checks below did not establish visual acceptance. Superseded by [the restored-pose pass](operator-restored-verification.md).
+
 5 October 2026. Scope: `/stepanoskin/production-systems#experience`, Figure 2.
 The proportion pass remains; this replaces its loose roof rod and barely moving
 control with a far-wall mechanism to the operator's right.

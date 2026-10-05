@@ -480,7 +480,7 @@ or runtime code. Guidelines v2.3 document the revised proportions.
 [Current validation](production-systems-evidence/operator-proportions-verification.md).
 
 
-### Figure 2 — attached control chain (5 October 2026)
+### Figure 2 — attached control chain (5 October 2026, rejected pose)
 
 The human control now sits on the far wall to the operator's right, on a shallow
 fixed frame with four screws and bearing collars. The operator's new articulated
@@ -492,3 +492,15 @@ removed and the moving silhouette uses the same new arm geometry.
 
 Guidelines v2.4 capture this attachment and motion contract.
 [Current validation](production-systems-evidence/operator-control-verification.md).
+
+
+### Figure 2 — restore the approved operator (5 October 2026)
+
+The owner rejected the backward-reaching replacement arm and wall-side handle.
+Restore the original engraved operator and forward lever position from the
+accepted proportion pass. The original hand and lever now rotate together toward
+the body through 14 degrees as the move proceeds. A rigid short link and roof
+rocker connect to supported downstream machinery on the far wall. The wall
+mechanism remains visually subordinate and does not determine the person's pose.
+
+Guidelines v2.5 record this explicit correction. [Current validation](production-systems-evidence/operator-restored-verification.md).

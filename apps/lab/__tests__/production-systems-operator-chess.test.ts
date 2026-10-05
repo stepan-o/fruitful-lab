@@ -1,4 +1,4 @@
-import { control, leverArmPose, leverState, armPose, chessTransforms, foreLength, gripPoint, indicatorBoard, innerBoard, innerPieceScale, mainBoard, mainPieceScale, move, moveState, pawnPoint, position, shoulder, squareCenter, upperLength, wristPoint } from "@/lib/production-systems/operator-chess";
+import { control, leverState, armPose, chessTransforms, foreLength, gripPoint, indicatorBoard, innerBoard, innerPieceScale, mainBoard, mainPieceScale, move, moveState, pawnPoint, position, shoulder, squareCenter, upperLength, wristPoint } from "@/lib/production-systems/operator-chess";
 
 function boardCoordinates(p:{x:number;y:number},board:typeof mainBoard,lift:number) {
   const row=(p.y+lift-board.y)/(board.depth/8);
@@ -59,38 +59,28 @@ describe("one decision on two chess boards",()=>{
     }
   });
 
-  it("keeps the operator gripping the lever and both cranks attached to one rigid rod",()=>{
+  it("preserves the forward operator grip and keeps its link rigid through the pull",()=>{
+    expect(control.pivot).toEqual({x:340,y:244});
+    expect(leverState(0).tip).toEqual({x:334,y:182});
     for(let i=0;i<=100;i++) {
-      const t=i/100,lever=leverState(t),arm=leverArmPose(t),css=chessTransforms(t);
-      expect(distance(control.shoulder,arm.elbow)).toBeCloseTo(control.upperLength,8);
-      expect(distance(arm.elbow,arm.wrist)).toBeCloseTo(control.foreLength,8);
-      expect(arm.wrist.x+7).toBeCloseTo(lever.tip.x,8);
-      expect(arm.wrist.y-5).toBeCloseTo(lever.tip.y,8);
-      expect(distance(control.input,lever.inputPin)).toBeCloseTo(control.crankRadius,8);
-      expect(distance(control.output,lever.outputPin)).toBeCloseTo(control.crankRadius,8);
-      const rodLength=control.input.y-control.output.y;
-      expect(distance(lever.inputPin,lever.outputPin)).toBeCloseTo(rodLength,8);
-      const rod=matrix(css.rod);
-      expect(rod[4]+rod[0]*rodLength).toBeCloseTo(lever.inputPin.x,1);
-      expect(rod[5]+rod[1]*rodLength).toBeCloseTo(lever.inputPin.y,1);
-      const upper=matrix(css.controlUpper),fore=matrix(css.controlFore);
-      expect(upper[4]+upper[0]*control.upperLength).toBeCloseTo(fore[4],1);
-      expect(upper[5]+upper[1]*control.upperLength).toBeCloseTo(fore[5],1);
-      expect(fore[4]+fore[0]*control.foreLength).toBeCloseTo(arm.wrist.x,1);
-      expect(fore[5]+fore[1]*control.foreLength).toBeCloseTo(arm.wrist.y,1);
+      const t=i/100,state=leverState(t),rod=matrix(chessTransforms(t).rod);
+      expect(distance(state.pin,state.tip)).toBeCloseTo(control.linkLength,8);
+      expect(distance(control.roof,state.pin)).toBeCloseTo(control.crankRadius,8);
+      expect(distance(control.pivot,state.tip)).toBeCloseTo(distance(control.pivot,control.grip),8);
+      expect(state.tip.x).toBeLessThan(355); // stays in front of the face, never behind the body
+      expect(rod[4]+rod[0]*control.linkLength).toBeCloseTo(state.tip.x,1);
+      expect(rod[5]+rod[1]*control.linkLength).toBeCloseTo(state.tip.y,1);
     }
   });
 
-  it("pulls during the move, holds through placement and returns with hand withdrawal",()=>{
+  it("pulls toward the body during the move, holds through placement and returns with withdrawal",()=>{
     expect(leverState(.1).angle).toBe(0);
-    expect(leverState(.28).angle).toBeLessThan(-8);
-    expect(leverState(.48).angle).toBe(-28);
-    expect(leverState(.65).angle).toBe(-28);
-    expect(Math.abs(leverState(.9).angle)).toBe(0);
-    expect(leverState(.8).angle).toBeGreaterThan(-28);
-    const rest=leverState(0).tip,pulled=leverState(.48).tip;
-    expect(rest.x-pulled.x).toBeGreaterThan(19);
-    expect(pulled.y-rest.y).toBeGreaterThan(19);
+    expect(leverState(.28).angle).toBeGreaterThan(4);
+    expect(leverState(.48).angle).toBe(14);
+    expect(leverState(.65).angle).toBe(14);
+    expect(leverState(.8).angle).toBeLessThan(14);
+    expect(leverState(.9).angle).toBe(0);
+    expect(leverState(.48).tip.x-leverState(0).tip.x).toBeGreaterThan(14);
   });
 
   it("withdraws the hand before resetting and never shows the pawn sliding backwards",()=>{

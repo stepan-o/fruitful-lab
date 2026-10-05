@@ -55,49 +55,30 @@ export function forearmMatrix(t: number) {
   const norm=u.x*u.x+u.y*u.y, a=(u.x*v.x+u.y*v.y)/norm,b=(u.x*v.y-u.y*v.x)/norm;
   return `matrix(${n(a)},${n(b)},${n(-b)},${n(a)},${n(origin.x-a*origin.x+b*origin.y)},${n(origin.y-b*origin.x-a*origin.y)})`;
 }
-// The far-wall control is a parallelogram linkage: two equal cranks, one
-// rigid coupling rod. Both pivots are bolted to the same wall-mounted frame.
-export const control = {
-  input: {x:471,y:253}, output: {x:471,y:163},
-  handle: {x:-29,y:-51}, crankRadius:16,
-  shoulder: {x:386,y:211}, upperLength:44, foreLength:36,
-} as const;
-function rotateOffset(pivot:Point,offset:Point,angle:number):Point {
-  const r=angle*Math.PI/180;
-  return {x:pivot.x+offset.x*Math.cos(r)-offset.y*Math.sin(r),y:pivot.y+offset.x*Math.sin(r)+offset.y*Math.cos(r)};
-}
+// Preserve the approved operator's forward grip and elbow. The raised lever
+// drives a short rigid link and a roof rocker; the wall movement is downstream.
+export const control = { pivot:{x:340,y:244}, grip:{x:334,y:182}, roof:{x:319,y:136}, crankRadius:20, linkLength:38 } as const;
 export function leverState(t:number) {
-  // Pull through lift and travel, hold through placement, then reset only as
-  // the chess hands withdraw. A readable 28° stroke replaces the tiny twitch.
-  const pull=ramp(t,.12,.48)*(1-moveState(t).handReturn), angle=pull?-28*pull:0;
-  return { angle, tip:rotateOffset(control.input,control.handle,angle),
-    inputPin:rotateOffset(control.input,{x:-control.crankRadius,y:0},angle),
-    outputPin:rotateOffset(control.output,{x:-control.crankRadius,y:0},angle) };
-}
-export function leverArmPose(t:number) {
-  const tip=leverState(t).tip, wrist={x:tip.x-7,y:tip.y+5}, root=control.shoulder;
-  const dx=wrist.x-root.x,dy=wrist.y-root.y,d=Math.hypot(dx,dy);
-  const upper=control.upperLength,fore=control.foreLength;
-  if(d>upper+fore||d<Math.abs(upper-fore)) throw new Error("Control grip is outside the operator's reach");
-  const angle=Math.atan2(dy,dx)+Math.acos((upper*upper+d*d-fore*fore)/(2*upper*d));
-  return {wrist,elbow:{x:root.x+upper*Math.cos(angle),y:root.y+upper*Math.sin(angle)}};
+  const pull=ramp(t,.12,.48)*(1-moveState(t).handReturn), angle=14*pull, r=angle*Math.PI/180;
+  const {pivot,grip,roof,crankRadius:a,linkLength:b}=control;
+  const tip={x:pivot.x+(grip.x-pivot.x)*Math.cos(r)-(grip.y-pivot.y)*Math.sin(r),y:pivot.y+(grip.x-pivot.x)*Math.sin(r)+(grip.y-pivot.y)*Math.cos(r)};
+  const dx=tip.x-roof.x,dy=tip.y-roof.y,d=Math.hypot(dx,dy);
+  if(d>a+b||d<Math.abs(a-b)) throw new Error("Operator link is outside its roof rocker's reach");
+  const drive=Math.atan2(dy,dx)-Math.acos((a*a+d*d-b*b)/(2*a*d));
+  return {angle,tip,drive:drive*180/Math.PI,pin:{x:roof.x+a*Math.cos(drive),y:roof.y+a*Math.sin(drive)}};
 }
 export function chessTransforms(t:number) {
   const main=pawnPoint(t,mainBoard,20), inner=pawnPoint(t,innerBoard,10), grip=gripPoint(t,mainBoard,mainPieceScale,20);
-  const wrist=wristPoint(t), arm=armPose(wrist), lever=leverState(t), operator=leverArmPose(t), s=moveState(t);
+  const wrist=wristPoint(t), arm=armPose(wrist), lever=leverState(t), s=moveState(t);
   return {
     mainShadow:`translate(${n(main.x+s.lift*3)}px,${n(main.y+s.lift*21)}px) scale(${n(1+s.lift*.3)})`,
     innerShadow:`translate(${n(inner.x+s.lift*2)}px,${n(inner.y+s.lift*11)}px) scale(${n(1+s.lift*.3)})`,
     mainPawn:`translate(${n(main.x)}px,${n(main.y)}px)`, innerPawn:`translate(${n(inner.x)}px,${n(inner.y)}px)`,
     upper:segmentMatrix(shoulder,arm.elbow,upperLength), fore:segmentMatrix(arm.elbow,wrist,foreLength),
     hand:`translate(${n(grip.x)}px,${n(grip.y)}px) scale(${handScale})`, finger:`rotate(${n((1-s.grip)*-18)}deg)`,
-    operatorHand:forearmMatrix(t),
-    controlUpper:segmentMatrix(control.shoulder,operator.elbow,control.upperLength),
-    controlFore:segmentMatrix(operator.elbow,operator.wrist,control.foreLength),
-    controlHand:`translate(${n(lever.tip.x)}px,${n(lever.tip.y)}px)`,
-    lever:`rotate(${n(lever.angle)}deg)`,
-    rod:segmentMatrix(lever.outputPin,lever.inputPin,control.input.y-control.output.y),
-    drive:`rotate(${n(lever.angle)}deg)`,
+    operatorHand:forearmMatrix(t), lever:`rotate(${n(lever.angle)}deg)`,
+    rod:segmentMatrix(lever.pin,lever.tip,control.linkLength),
+    rocker:`rotate(${n(lever.drive)}deg)`, drive:`rotate(${n(lever.drive-leverState(0).drive)}deg)`,
   };
 }
 export function chessKeyframes(id:string) {

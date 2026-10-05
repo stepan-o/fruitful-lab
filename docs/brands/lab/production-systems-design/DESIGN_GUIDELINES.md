@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 2.4 · 5 October 2026 · Mechanical Turk direction
+Version 2.5 · 5 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. **Figure 1 is complete and accepted
 by the owner**, including the casework, conveyor, pace/results, palette and coherent
@@ -186,17 +186,17 @@ are our composition; the museum replica uses an electric headlamp [S17]. Both
 figure studies retain their existing Racknitz attribution.
 
 **Working relationship:** show a human decision travelling through an attached
-mechanism. A shallow brass-and-green linkage is bolted to the far wall, to the
-operator's right. His hand wraps a walnut grip on its lower crank and visibly
-pulls through 28 degrees while the pawn lifts and travels; it holds through
-placement and returns as the chess hand withdraws. Both arm segments keep fixed
-lengths and the wrist follows the grip exactly. Remove the former raised source
-arm so the figure has only two working arms. Two equal-radius cranks at (471, 253)
-and (471, 163) are joined by a rigid 90-unit coupling rod. The upper crank drives
-a short shaft held by two bearing collars and entering the Turk's seat. Four
-fixings and close contact shadows attach the mechanism to the wall; no free rod
-end or unsupported roof elbow. The pivot, pins, grip, wrist and rod endpoints
-share one geometry model. Do not animate them independently.
+mechanism. Preserve the approved forward-facing operator, raised source arm and
+lever at grip (334, 182), elbow/pivot (340, 244). The control belongs in front of
+the person. The October 5 attempt to move his hand behind him to a tall wall-mounted
+handle was rejected by the owner; do not reuse that pose or its replacement arm.
+The raised source hand and lever rotate together through 14 degrees toward the
+body during lift/travel, hold through placement and return with withdrawal.
+A rigid 38-unit link meets a 20-unit roof rocker at (319, 136). Only the downstream
+machinery occupies the far wall on the person's right: a narrow recessed mounting,
+bearing collars, a small open wheel and a supported shaft entering the Turk's seat.
+Keep it subordinate to the person. Do not relocate the working hand to explain
+that far-wall connection. Every rod ends at a joint, bearing or case penetration.
 His board hand and the Turk's articulated sleeve/pinching hand repeat the same
 move. Both 8×8 boards have a light h1 corner, matching file/rank orientation,
 turned ivory/dark pieces, board-bound shadows and one sparse legal position:
@@ -246,7 +246,7 @@ Fixed rim highlights face this scene's candle, not Figure 1's upper-left key.
 
 **Motion and cost:** nine wheels plus five light layers (a quiet 6.4-second
 irregular cycle) and the linked chess gesture make
-35 animated SVG groups, which use the existing pause/offscreen/reduced-motion lifecycle; Figure 1's pace does not drive this
+32 animated SVG groups, which use the existing pause/offscreen/reduced-motion lifecycle; Figure 1's pace does not drive this
 scene. Only the working arms move; the head and body remain attentive and still.
 No new observer, client boundary, dependency,
 filter or per-frame code. The initial server render is a complete still. Crop
@@ -255,7 +255,7 @@ Reuse the original engraved character via SVG references for its segmented arms
 and animated silhouette. Sample joint geometry once on the server at 1% cycle
 intervals; the browser only interpolates CSS transforms/opacity.
 
-[Current Figure 2 control-chain verification](../production-systems-evidence/operator-control-verification.md)
+[Current Figure 2 restored-pose verification](../production-systems-evidence/operator-restored-verification.md)
 · [Earlier proportion verification](../production-systems-evidence/operator-proportions-verification.md)
 · [Earlier complete-figure finish verification](../production-systems-evidence/operator-complete-verification.md)
 · [Earlier linked-move and candle verification](../production-systems-evidence/operator-linked-verification.md)

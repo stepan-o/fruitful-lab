@@ -6,11 +6,32 @@ import s from "./business-chains.module.css";
 
 const sourceIds = Object.keys(chainSources);
 const groups = [
-  {id:"all",label:"All eight routes",title:"The roles persist. The purchases change.",text:"Work is made, supplied, discovered and operated before an audience can enjoy it. Those jobs survive. What changes is the thing being sold, the party carrying the costs and the point at which payment becomes necessary."},
-  {id:"screen",label:"Arcade · cinema · Netflix",title:"A turn. A showing. A catalog.",text:"All three assemble an audience around creative work. The arcade operator buys equipment; the cinema books exhibition rights; Netflix commissions or licenses a catalog. Their customers buy different forms of access."},
-  {id:"bg3",label:"BG3 · three ways to play",title:"The same adventure, different bills.",text:"Larian’s game can remain a purchased work while the machinery around it changes. Steam sells the game; GeForce NOW adds remote computing; PlayStation combines the store and console, with a separate requirement for online multiplayer. A subscription can pay for the surroundings of play."},
-  {id:"diablo",label:"Diablo IV · two Xbox offers",title:"The same world, a different entry payment.",text:"Buying the base game and subscribing to a catalog lead into the same online game. Paid additions can sit beside either. Since Blizzard is part of Microsoft, these routes also show commercial roles joining within one company group."},
+  {
+    "id": "all",
+    "label": "All eight routes",
+    "title": "The player is not always the buyer who funds production.",
+    "text": "The cabinet maker sells to an operator; a producer can make a series for a commissioning service. The audience pays later, under another arrangement. Keeping those transactions separate helps explain how a popular work supports the businesses around it."
+  },
+  {
+    "id": "screen",
+    "label": "Arcade · cinema · Netflix",
+    "title": "An attraction can support more than one business.",
+    "text": "An arcade or film can help a venue earn from food and drinks. A series can help a catalog keep a subscriber. The value of a work to its distributor can extend beyond a separately priced turn, ticket or episode."
+  },
+  {
+    "id": "bg3",
+    "label": "BG3 · three ways to play",
+    "title": "Another month of streaming is not another game sale.",
+    "text": "Paying NVIDIA for another month does not create another Steam purchase for Larian. A service can earn from continued play even when the developer sells the game once."
+  },
+  {
+    "id": "diablo",
+    "label": "Diablo IV · two Xbox offers",
+    "title": "Two offers can fund the same game.",
+    "text": "A purchase and an eligible Game Pass subscription lead into the same Diablo IV service. Microsoft owns both the platform and Blizzard, so an assumed payment to an outside studio would give the wrong account of where the money goes."
+  }
 ];
+
 const marks = ["I","II","III"];
 
 export default function BusinessChains() {
@@ -37,7 +58,7 @@ export default function BusinessChains() {
     <div className={s.heading}>
       <p className={s.eyebrow}>Across the years · eight routes to an audience</p>
       <h2 id="business-chains-title">Who makes it.<br/><em>Who gets paid.</em></h2>
-      <p>Follow the work toward the audience, then follow the money back. The same company can occupy several places in the chain.</p>
+      <p>Compare the same questions across eight arrangements. Use the selector to follow one game through different offers, or compare games with film and television.</p>
     </div>
     <div className={s.controls}>
       <label htmlFor="chain-comparison">Put side by side</label>

@@ -25,8 +25,8 @@ it("keeps bandwidth separate from latency when choosing a cloud mode",()=>{
 it("connects each layer selection to the relevant offer and measurement question",()=>{
  render(<BusinessMap/>);
  fireEvent.click(screen.getByRole("button",{name:"Equip & render"}));
- expect(screen.getByRole("heading",{name:"Somebody must supply the machine."})).toBeVisible();
+ expect(screen.getByRole("heading",{name:"Buying the game does not supply the computer."})).toBeVisible();
  expect(screen.getByText(/Capacity, queues and cost per streamed hour/)).toBeVisible();
  fireEvent.click(screen.getByRole("button",{name:"Own & license"}));
- expect(screen.getByRole("heading",{name:"Making a game need not mean owning its world."})).toBeVisible();
+ expect(screen.getByRole("heading",{name:"Who owns what the game uses?"})).toBeVisible();
 });

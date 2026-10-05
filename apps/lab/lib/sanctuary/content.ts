@@ -24,6 +24,7 @@ export const sources: EvidenceSource[] = [
   {"id": "cloud-rights", "title": "UK CMA — restructured Microsoft acquisition cleared, 13 Oct 2023", "url": "https://www.gov.uk/government/news/microsoft-concession-a-gamechanger-that-will-promote-competition", "note": "Final approval and Ubisoft cloud-rights arrangement outside the EEA; do not confuse this with the earlier blocked proposal."},
   {"id": "gfn-reach-2021", "title": "NVIDIA — Q1 FY2022 Form 10-Q", "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000064/nvda-20210502.htm", "note": "Over 10 million GeForce NOW members reported for the quarter ended 2 May 2021. Not a paying-user or monthly-active-user measure."},
   {"id": "gfn-reach-2023", "title": "NVIDIA — GeForce NOW third anniversary, 2 Feb 2023", "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2/", "note": "More than 25 million members. Historical reported reach; no current user count, growth rate or revenue per member is inferred."},
+  {...chainSources["steam-pay"], id:"steam-settlement"},
   {...chainSources["amc"], id:"chain-cinema"},
   {...chainSources["netflix"], id:"chain-netflix"},
   {...chainSources["steam-bg3"], id:"chain-bg3"},
@@ -470,70 +471,83 @@ const manuscript: Omit<Chapter, "visual">[] = [
     "id": "studio-to-screen",
     "part": 0,
     "title": "From studio to screen",
-    "lede": "The game reaches us through a chain of other businesses. Each sells something different. Each leaves a mark on what can be made and how we get to play.",
+    "lede": "Making the game, selling it and running it are different jobs. They can lead to different bills—even for the same evening of play.",
     "paragraphs": [
-      "A player buys a game, but a great deal has already been bought to bring it to that point: people’s time, production tools, permission to use a fictional world, a route to market. After release, somebody must still provide the equipment and services on which it runs. The company whose name appears on the box may do several of these jobs. It may also depend on businesses the player never sees.",
-      "Cinema makes the separation easier to recognize. A production company makes a film; a distributor arranges its release and campaign; an exhibitor runs the cinema. The audience buys admission from the exhibitor, which settles with the distributor under its exhibition agreement. Netflix rearranges that chain: it commissions or licenses work and operates the service through which subscribers find and watch it. Advertising can introduce another customer, buying access to that audience. A screen at the end of the chain does not imply the same business behind it.",
-      "Games add another movable part. Their worlds have to be computed as someone plays. The cabinet operator once supplied that machinery. At home, the player usually buys it. A cloud service can supply it again from a data center. Keep that distinction separate from access to the game: buying a copy, subscribing to a catalog and renting remote computing are different transactions, even when one company packages them together.",
-      "The comparison below holds those questions steady across eight routes. Follow Baldur’s Gate 3, Larian Studios’ party-based fantasy role-playing game, through a local PC, GeForce NOW and PlayStation. The adventure remains recognizable while the surrounding bills change. Then compare buying Diablo IV on Xbox with accessing its base game through Game Pass. The subscription changes the entry offer; it does not turn every additional purchase inside the game into an included benefit.",
-      "Before any of those sales, someone has to carry the production risk. A studio can use its own funds, raise investment or agree with a publisher to finance the work. These arrangements grant different claims on its eventual success. Epic’s 2020 publishing offer provides a concrete example: it announced full development funding, developer ownership of the intellectual property, and at least half the profits for the developer after costs were recovered. Funding a game, owning its fictional world and receiving its sales revenue are separable rights.",
-      "Publishing also brings work that a player rarely calls game design: localization, testing, release planning, platform submissions and promotion. A licensed setting adds another relationship. Larian develops and publishes Baldur’s Gate 3; its Dungeons & Dragons setting belongs to Wizards of the Coast, part of Hasbro. Hasbro reports digital licensing revenue from the game. A purchase can therefore support both the people making this particular work and the owner of the world on which it draws.",
-      "Being available is only the beginning of distribution. Storefront recommendations, trailers, reviews, creators and friends help a game find its audience. These channels have different economics. Steam says it does not sell paid placement in its store; a publisher can still buy advertising elsewhere. The cost of reaching a buyer should not be confused with the store’s share of a sale. Nor does a conspicuous launch tell us what its campaign cost.",
-      "A platform can occupy several places at once. Sony sells PlayStation hardware, operates its store and membership service, and publishes games through its own studios. Microsoft owns both Xbox and Blizzard, Diablo IV’s developer. A first-party title belongs to the platform holder’s own business; a third-party title comes from another company. The distinction matters when following receipts: an external publishing payment and an internal investment in a studio are not the same transaction.",
-      "Sony’s reported revenue makes that range tangible. Consoles are only one part of its Game & Network Services segment. Full-game downloads, add-on content and network services form distinct businesses beside them. These are company accounts, not a breakdown of an average player’s spending: for example, the physical-software category includes royalties from other publishers’ discs. The categories tell us what Sony earns from, without telling us what any one game ought to sell.",
-      "Cloud gaming moves the rendering machine away from the player. With GeForce NOW, an eligible PC game can run on NVIDIA’s hardware while the player’s device sends inputs and receives a video stream. Steam’s Cloud Play documentation says game purchases and publisher payouts remain on their existing terms. A paid GeForce NOW membership adds a computing service around that purchase. A free tier also exists. This is a different offer from a catalog subscription that grants access to games.",
-      "The potential audience changes with that move. Someone without a powerful gaming PC may be able to use a compatible lighter device instead. But the demanding work has moved rather than vanished. The provider must provision rendering capacity; the connection must carry the stream quickly and reliably. NVIDIA’s requirements make that exchange visible: higher resolutions and frame rates ask for more bandwidth, while network delay remains a separate constraint.",
-      "For a studio, this creates another route to players, not permission to ignore every other machine. A PC game offered both locally and through GeForce NOW still needs to serve its local customers. The streamed version must also handle accounts, saved progress, input devices and the service’s supported configuration. Valve’s onboarding guidance requires publisher opt-in and attention to cloud saves. A game designed exclusively around remote infrastructure could make different assumptions; adding an existing PC game to a streaming service does not by itself make it that kind of game.",
-      "Permission to stream is itself a business layer. In the restructured Microsoft–Activision Blizzard acquisition approved in October 2023, Ubisoft obtained cloud streaming rights outside the European Economic Area for the relevant existing games and new releases over the following fifteen years. Ownership of a studio did not automatically settle who could supply its games to cloud services. The route to the player was valuable enough to be negotiated separately.",
-      "Usage now has a cost even when the player has already bought the work. NVIDIA’s standard Performance and Ultimate memberships include 100 premium hours per month, with options for extra time; the base Founders membership has different terms. This limit concerns access to remote machinery. It does not refill a character’s health. That distinction will matter when we return to Gauntlet: payment can govern the circumstances in which a world is available, or become a rule inside the world itself."
+      "Baldur’s Gate 3 is a fantasy role-playing game made by Larian Studios, in which a player leads a party of adventurers through a story shaped by their decisions. Buy it on Steam, the PC storefront run by Valve, and you can download it to your own computer. The game purchase and the computer purchase pay for different parts of the evening: Larian supplies the adventure; your machine does the work of bringing it to the screen.",
+      "Now play that same Steam copy through GeForce NOW, NVIDIA’s cloud gaming service. A computer in a data center runs the game and sends a video stream to your device, which sends your actions back. A paid membership buys use of that equipment; it does not buy Baldur’s Gate 3. Valve says the game purchase and its payments to the publisher remain on their existing terms. A recurring bill can therefore appear around a game without becoming part of the way its studio sells it.",
+      "Before the game can earn anything, somebody has to pay for production. A studio can fund the work itself, seek investors or work with a publisher—a company that helps finance and bring games to market. The agreement determines what the financier receives in return. When Epic Games announced its publishing business in 2020, it offered to cover up to the full development and publishing cost while leaving ownership of the game’s intellectual property with the developer. Once those costs were recovered, the developer would receive at least half the profits. Money could reach the team before release without giving it an immediate share of profit from the first sale.",
+      "Ownership introduces another claim on the proceeds. Larian develops and publishes Baldur’s Gate 3 using material from Dungeons & Dragons, the tabletop role-playing game owned by Wizards of the Coast, part of Hasbro. A license grants permission to use that material under agreed terms. Hasbro reports licensing income from the game. The people who make a particular adventure and the people who own the world it draws on can be paid through different agreements—even when the player encounters one apparently unified work.",
+      "Bringing that work to market involves more than finishing it. Translations, testing, store submissions and release planning all need people and money. Promotion has a further job: helping a potential buyer discover the game and decide whether it is for them. Trailers, reviews, friends and store recommendations can all contribute. Some attention is bought through advertising; some is earned through people choosing to talk about the work. Valve says Steam does not sell advertising placement in its store, so visibility there should not automatically be read as a campaign expense.",
+      "The checkout brings these arrangements together without making them visible. Steam collects the buyer’s payment, accounts for adjustments such as refunds and taxes, and pays its partner the agreed share of net revenue. The studio may still have production costs, financing commitments and licensing obligations to meet. A large sales total and enough money for the next project are different achievements. For an analyst, the question is not only how much players spent, but how much reached the business whose future we are trying to understand.",
+      "Cinema makes another version of the arrangement easy to see. A production company makes the film; a distributor brings it to market; an exhibitor runs the cinema. The exhibitor sells tickets and pays the distributor for the right to show the work. Like a bar with an arcade machine, the venue can also earn from drinks and food. But it has acquired permission to screen a film, rather than a cabinet it can keep operating. Similar evenings out can depend on different purchases behind the counter.",
+      "Netflix sells a different invitation: access to a catalog, with no new ticket required for the next episode. It pays for commissioned productions and licensed titles, while subscriptions—and advertising on its ad-supported plans—fund the service. Game catalogs bring a related offer to players. An eligible Xbox Game Pass subscription includes access to Diablo IV, Blizzard Entertainment’s online fantasy action game; the base game can also be bought separately. The catalog changes how someone gets in. Expansions and other paid additions can still be sold alongside it.",
+      "These roles need not belong to separate companies. Sony sells PlayStation consoles, operates their digital store and subscription services, and makes games through its own studios. Microsoft owns both Xbox and Blizzard. In industry language, a platform’s own games are first-party titles; games from other companies are third-party. That distinction changes how we follow the money. A sale of Larian’s game through Sony’s store involves two businesses settling with each other. A sale of Diablo IV through Xbox brings money into a group that contains both the store and the studio.",
+      "Those combined roles show up in Sony’s accounts. In the year ending March 2026, its gaming business reported about ¥1.36 trillion from add-on content, compared with ¥0.94 trillion from console hardware. Selling the machine is only one way that business earns from its place in the living room. These figures describe Sony’s revenue, including different kinds of sales and royalties; they are not a model of an individual player’s spending. Counting consoles alone would leave much of the business out of view.",
+      "Cloud gaming changes who supplies that machine. For someone whose computer cannot run a demanding game well, GeForce NOW can provide a way to play without buying a more powerful PC. NVIDIA takes on the rendering work, while the player still needs a suitable device and connection. The exchange creates new limits. Instead of downloading the game and generating its images locally, the device must keep receiving a stream quickly enough for actions to feel responsive. Bandwidth measures how much data the connection can carry; latency measures delay. A connection can have plenty of one and too much of the other.",
+      "For a developer, this can widen the set of devices through which people reach the game. It also introduces practical work. Valve warns that a player may receive a different virtual PC each session, so saved progress must live somewhere that survives the change. Its Cloud Play program requires publisher opt-in and an online save system. Meanwhile, customers who run the game locally still need it to work on their machines. Adding a streaming route does not remove those customers or make their hardware irrelevant to production decisions.",
+      "The right to offer that route can have an owner of its own. When the UK’s Competition and Markets Authority approved Microsoft’s restructured purchase of Activision Blizzard in 2023, the deal gave Ubisoft, another game publisher, cloud streaming rights outside the European Economic Area for the covered games, including new releases over the following fifteen years. Microsoft could own the studios while another publisher controlled those streaming rights. A game’s route to the audience had become valuable enough to negotiate separately from ownership of its maker.",
+      "It helps here to separate three things often gathered under the word “online.” Diablo IV can run on a player’s own Xbox while depending on Blizzard’s online game service. Game Pass can grant access to a downloaded game without streaming it. GeForce NOW can stream a game the player has already bought elsewhere. One service keeps the game world running, another sells catalog access, and another supplies remote computing. Combining them in one offer does not make their costs—or their reasons for charging—the same.",
+      "A cloud operator keeps paying to provide computing while its customer plays. NVIDIA’s standard Performance and Ultimate plans include 100 hours of premium playtime each month. After that allowance is used, a member can buy more premium hours or continue with basic access until it resets. The charge concerns the service running the game; it does not buy a stronger character or a better chance in a fight. To understand how payment can change those things too, we need to move from the businesses around a game to the rules inside it. That brings us back to the arcade, and to Gauntlet."
     ],
     "sections": [
       {
+        "at": 2,
+        "title": "Who pays before the player does?"
+      },
+      {
         "at": 4,
-        "title": "Before the first copy is sold"
+        "title": "Getting the work to an audience"
       },
       {
-        "at": 6,
-        "title": "The road to an audience"
+        "at": 8,
+        "title": "When the platform does several jobs"
       },
       {
-        "at": 9,
-        "title": "The machine moves out of the room"
+        "at": 10,
+        "title": "A game you own, a machine you hire"
       },
       {
-        "at": 12,
-        "title": "A new right to sell"
+        "at": 13,
+        "title": "Three services behind one screen"
       }
     ],
     "paragraphCitations": {
+      "0": [
+        "chain-bg3"
+      ],
       "1": [
-        "chain-cinema",
-        "chain-netflix"
+        "steam-cloud",
+        "gfn-service"
       ],
-      "3": [
-        "chain-bg3",
-        "chain-xbox"
-      ],
-      "4": [
+      "2": [
         "epic-publishing"
       ],
-      "5": [
-        "chain-bg3",
+      "3": [
         "chain-hasbro"
       ],
-      "6": [
+      "4": [
+        "epic-publishing",
         "steam-discovery"
       ],
+      "5": [
+        "steam-settlement"
+      ],
+      "6": [
+        "chain-cinema"
+      ],
       "7": [
-        "chain-microsoft"
+        "chain-netflix",
+        "chain-xbox"
       ],
       "8": [
-        "sony-revenue"
+        "sony-revenue",
+        "chain-microsoft"
       ],
       "9": [
-        "steam-cloud"
+        "sony-revenue"
       ],
       "10": [
+        "gfn-service",
         "gfn-requirements"
       ],
       "11": [
@@ -543,6 +557,10 @@ const manuscript: Omit<Chapter, "visual">[] = [
         "cloud-rights"
       ],
       "13": [
+        "chain-xbox",
+        "steam-cloud"
+      ],
+      "14": [
         "gfn-service"
       ]
     },
@@ -554,6 +572,7 @@ const manuscript: Omit<Chapter, "visual">[] = [
       "epic-publishing",
       "chain-hasbro",
       "steam-discovery",
+      "steam-settlement",
       "chain-microsoft",
       "sony-revenue",
       "sony-accounting",
@@ -568,12 +587,12 @@ const manuscript: Omit<Chapter, "visual">[] = [
       {
         "asset": "bg3-official-key-art",
         "alt": "Baldur’s Gate 3 companions beneath a mind flayer ship",
-        "caption": "The same creative work can pass through several commercial routes. Larian’s game uses Wizards of the Coast’s Dungeons & Dragons world; a PC purchase and a cloud-computing membership pay for different parts of the experience.",
+        "caption": "Baldur’s Gate 3 (2023) · official promotional artwork.",
         "credit": "© Wizards of the Coast / Larian Studios",
-        "afterParagraph": 5
+        "afterParagraph": 0
       }
     ],
-    "evidence": "The chain is an analytical model of selected offers, not a universal contractual structure. Private royalties, commissions, recoupment and per-title subscription payments are not estimated. Epic’s public 2020 terms are a dated example, not the terms of every publishing deal. Sony figures use its FY2025 Q4 supplement (printed p. 12); FY24 and FY25 end 31 March 2025 and 2026. Amounts are reported segment sales, include intersegment activity and follow Sony’s revenue-recognition rules, not gross player spending. GeForce NOW bandwidth values are selected Windows-client modes checked 5 October 2026. Member milestones are historical company claims, not active or paying users; they cannot establish a market share, profit or causal effect on game sales. Cloud-rights geography follows the final CMA announcement. Our production implications are an inference from the documented delivery architecture, not a claim that studios have abandoned local hardware targets."
+    "evidence": "The comparisons distinguish financing, ownership, distribution, promotion, catalog access, online game operation and remote rendering. Epic’s announced terms are a specific 2020 publishing offer, not a standard contract. Sony’s reported revenue is not gross consumer spending or a cloud-revenue estimate. GeForce NOW’s historical membership milestones do not establish active or paid users, current reach, or an increase in game sales. Its bandwidth figures are service requirements, not measured performance. The connection between these commercial arrangements and design incentives is our analysis; undisclosed commissions, royalties and per-title subscription allocations are not estimated."
   },
   {
     "id": "how-many-lives",

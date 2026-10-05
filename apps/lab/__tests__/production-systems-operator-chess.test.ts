@@ -1,4 +1,4 @@
-import { armPose, chessTransforms, foreLength, gripPoint, innerBoard, innerPieceScale, mainBoard, mainPieceScale, move, moveState, pawnPoint, position, shoulder, squareCenter, upperLength } from "@/lib/production-systems/operator-chess";
+import { armPose, chessTransforms, foreLength, gripPoint, indicatorBoard, innerBoard, innerPieceScale, mainBoard, mainPieceScale, move, moveState, pawnPoint, position, shoulder, squareCenter, upperLength, wristPoint } from "@/lib/production-systems/operator-chess";
 
 function boardCoordinates(p:{x:number;y:number},board:typeof mainBoard,lift:number) {
   const row=(p.y+lift-board.y)/(board.depth/8);
@@ -33,7 +33,7 @@ describe("one decision on two chess boards",()=>{
 
   it("keeps both rigid arm segments attached and within reach throughout the gesture",()=>{
     for(let i=0;i<=100;i++) {
-      const t=i/100,grip=gripPoint(t,mainBoard,mainPieceScale,20),wrist={x:grip.x+22,y:grip.y-7},pose=armPose(wrist),css=chessTransforms(t);
+      const t=i/100,wrist=wristPoint(t),pose=armPose(wrist),css=chessTransforms(t);
       expect(distance(shoulder,pose.elbow)).toBeCloseTo(upperLength,8);
       expect(distance(pose.elbow,wrist)).toBeCloseTo(foreLength,8);
       const upper=matrix(css.upper),fore=matrix(css.fore);
@@ -41,6 +41,21 @@ describe("one decision on two chess boards",()=>{
       expect(upper[5]+upper[1]*upperLength).toBeCloseTo(fore[5],1);
       expect(fore[4]+fore[0]*foreLength).toBeCloseTo(wrist.x,1);
       expect(fore[5]+fore[1]*foreLength).toBeCloseTo(wrist.y,1);
+    }
+  });
+
+  it("fits the upper board under a relaxed reach and keeps its indicators vertically aligned",()=>{
+    for(let i=0;i<64;i++) {
+      const top=squareCenter(i,mainBoard),below=squareCenter(i,indicatorBoard);
+      expect(below.x).toBeCloseTo(top.x,8);
+      expect(below.y-top.y).toBe(69);
+    }
+    for(let i=0;i<=100;i++) {
+      const wrist=wristPoint(i/100),pose=armPose(wrist);
+      // A real bend remains even at maximum reach; elbow stays outside the torso.
+      expect(distance(shoulder,wrist)).toBeLessThan((upperLength+foreLength)*.94);
+      expect(pose.elbow.x).toBeLessThan(shoulder.x);
+      expect(pose.elbow.y).toBeLessThan(30);
     }
   });
 

@@ -1,9 +1,11 @@
 /** One demonstration, sampled once on the server for every linked part. */
 export type Point = { x: number; y: number };
 export type ChessBoard = Point & { width: number; depth: number; skew: number };
-export const mainBoard: ChessBoard = { x: 145, y: 40, width: 226, depth: 42, skew: -42/Math.sqrt(3) };
+export const mainBoard: ChessBoard = { x: 250, y: 33, width: 170, depth: 40, skew: -40/Math.sqrt(3) };
 export const innerBoard: ChessBoard = { x: 230, y: 277, width: 145, depth: 32, skew: -32/Math.sqrt(3) };
-export const mainPieceScale=.4, innerPieceScale=.27;
+export const mainPieceScale=.36, innerPieceScale=.27;
+export const indicatorBoard: ChessBoard = { ...mainBoard, y: mainBoard.y + 69 };
+export const handScale = .8;
 export const move = { from: 52, to: 36 }; // e2 → e4, viewed from White's side.
 export const position = [{ square: 7, kind: "king", dark: true }, { square: 10, kind: "pawn", dark: true }, { square: 56, kind: "king", dark: false }] as const;
 export function squareCenter(square: number, board: ChessBoard): Point {
@@ -28,7 +30,12 @@ export function gripPoint(t: number, board: ChessBoard, scale: number, lift: num
   const clear=10*ramp(t,.64,.70)*(1-ramp(t,.88,.98));
   return { x:mix(p.x,a.x,s.handReturn), y:mix(p.y,a.y,s.handReturn)-39*scale-clear };
 }
-export const shoulder = { x: 420, y: -58 }, upperLength=102, foreLength=108;
+// Fit the board to the seated figure's natural reach, not the limbs to a distant board.
+export const shoulder = { x: 416, y: -48 }, upperLength=68, foreLength=62;
+export function wristPoint(t: number): Point {
+  const grip = gripPoint(t,mainBoard,mainPieceScale,20);
+  return { x:grip.x+22*handScale, y:grip.y-7*handScale };
+}
 export function armPose(wrist: Point) {
   const dx=wrist.x-shoulder.x, dy=wrist.y-shoulder.y, d=Math.hypot(dx,dy);
   if (d>upperLength+foreLength || d<Math.abs(upperLength-foreLength)) throw new Error("Turk wrist is outside its articulated reach");
@@ -55,13 +62,13 @@ export function leverState(t:number) {
 }
 export function chessTransforms(t:number) {
   const main=pawnPoint(t,mainBoard,20), inner=pawnPoint(t,innerBoard,10), grip=gripPoint(t,mainBoard,mainPieceScale,20);
-  const wrist={x:grip.x+22,y:grip.y-7}, arm=armPose(wrist), lever=leverState(t), s=moveState(t);
+  const wrist=wristPoint(t), arm=armPose(wrist), lever=leverState(t), s=moveState(t);
   return {
     mainShadow:`translate(${n(main.x+s.lift*3)}px,${n(main.y+s.lift*21)}px) scale(${n(1+s.lift*.3)})`,
     innerShadow:`translate(${n(inner.x+s.lift*2)}px,${n(inner.y+s.lift*11)}px) scale(${n(1+s.lift*.3)})`,
     mainPawn:`translate(${n(main.x)}px,${n(main.y)}px)`, innerPawn:`translate(${n(inner.x)}px,${n(inner.y)}px)`,
     upper:segmentMatrix(shoulder,arm.elbow,upperLength), fore:segmentMatrix(arm.elbow,wrist,foreLength),
-    hand:`translate(${n(grip.x)}px,${n(grip.y)}px)`, finger:`rotate(${n((1-s.grip)*-18)}deg)`,
+    hand:`translate(${n(grip.x)}px,${n(grip.y)}px) scale(${handScale})`, finger:`rotate(${n((1-s.grip)*-18)}deg)`,
     operatorHand:forearmMatrix(t), lever:`rotate(${n(lever.angle)}deg)`,
     rod:segmentMatrix({x:319,y:136},lever.tip,50), drive:`rotate(${n(lever.angle*2)}deg)`,
   };

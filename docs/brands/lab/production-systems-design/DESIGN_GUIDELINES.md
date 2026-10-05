@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 2.2 · 5 October 2026 · Mechanical Turk direction
+Version 2.3 · 5 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. **Figure 1 is complete and accepted
 by the owner**, including the casework, conveyor, pace/results, palette and coherent
@@ -156,7 +156,16 @@ joinery. Do not reintroduce schematic legs. The private board remains a separate
 working surface above the cut edge; the visible cushion supports the coat.
 Nine display gears stay at the left margin. The complete seated Turk now has a
 wrapped ivory turban, muted cap, source-engraved face, waistcoat, green outer robe
-and resting arm. The playing shoulder stays at its established linkage origin.
+and resting arm. Fit the board to a believable human reach. The upper board is
+170 × 40 at (250, 33); it is narrower and closer to the seated figure than in the
+initial full-body pass. Its underside indicator grid derives every corner, cell
+and fixing from the same board geometry, rather than keeping old screen offsets.
+The playing shoulder is (416, −48); upper arm and forearm are 68 and 62 units,
+with a 0.8-scale hand. Both rigid segments stay attached, and the elbow remains
+outside the torso with a visible bend throughout the move. The other arm uses a
+smaller source study at 0.52 scale. A shaped waist and curved, folded lap establish
+a seated body. Taper the sleeve and use irregular cloth folds; do not turn the
+arm into a long ribbed tube or add a second cuff at the elbow.
 A visible chair, seat and output pedestal support the figure above the tabletop.
 The extended viewBox is `0 -172 600 592`; preserve the machine's original scale
 and proportions within it, with breathing room above the turban.
@@ -228,7 +237,7 @@ Fixed rim highlights face this scene's candle, not Figure 1's upper-left key.
 
 **Motion and cost:** nine wheels plus five light layers (a quiet 6.4-second
 irregular cycle) and the linked chess gesture make
-31 animated SVG groups use the existing pause/offscreen/reduced-motion lifecycle; Figure 1's pace does not drive this
+31 animated SVG groups, which use the existing pause/offscreen/reduced-motion lifecycle; Figure 1's pace does not drive this
 scene. Only the working forearms move; the head and body remain attentive and still.
 No new observer, client boundary, dependency,
 filter or per-frame code. The initial server render is a complete still. Crop
@@ -237,7 +246,8 @@ Reuse the original engraved character via SVG references for its segmented arms
 and animated silhouette. Sample joint geometry once on the server at 1% cycle
 intervals; the browser only interpolates CSS transforms/opacity.
 
-[Current Figure 2 finish verification](../production-systems-evidence/operator-complete-verification.md)
+[Current Figure 2 proportion verification](../production-systems-evidence/operator-proportions-verification.md)
+· [Earlier complete-figure finish verification](../production-systems-evidence/operator-complete-verification.md)
 · [Earlier linked-move and candle verification](../production-systems-evidence/operator-linked-verification.md)
 · [Earlier composition pass](../production-systems-evidence/operator-composition-verification.md)
 

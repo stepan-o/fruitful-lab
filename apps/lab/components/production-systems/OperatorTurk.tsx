@@ -23,7 +23,7 @@ const strokes = Object.fromEntries(Object.entries(regions).map(([key, r]) => [ke
   mid: studyRegion(turk.mid, r.left, r.top, r.right, r.bottom),
   ink: studyRegion(turk.ink, r.left, r.top, r.right, r.bottom),
 }]));
-const robe = "M429-75Q440-82 459-79L474-76 492-69 504-54 509-30 506-5 522 53Q459 65 400 54L414 15 404-18 407-47Q412-64 429-75Z";
+const robe = "M431-76Q420-74 413-65Q408-58 411-45L415-25Q418-8 425 5L420 21Q409 34 404 49Q443 65 505 56L521 50Q515 29 500 15L494 2Q499-13 505-32L503-54Q495-69 474-76Q451-81 431-76Z";
 const head = "M238 134 238 127 234 115 221 112 213 102 208 87 209 69 215 58 218 48 218 20 252 10 272 6 289 17 292 40 310 52 318 75 316 98 306 110 307 125 319 132 289 137 260 136Z";
 const restingArm = "M347 145 373 177 398 200 426 210 447 222 455 245 460 269 460 289 455 308 455 326 449 342 445 349 440 344 440 329 436 345 431 348 430 334 425 346 420 346 422 326 422 313 428 301 428 288 422 271 416 258 410 252 400 250 389 243 372 234 355 224 348 235 338 202Z";
 function Incisions({ region }: { region: keyof typeof regions }) {
@@ -34,7 +34,7 @@ function Incisions({ region }: { region: keyof typeof regions }) {
 }
 
 /** Racknitz's likeness, HNF's seated exterior: a complete automaton supported
- * by a chair, with its playing shoulder kept at the existing linkage origin.
+ * by a chair. A shaped waist and seated lap balance the shorter articulated reach.
  */
 export default function OperatorTurk({ id }: { id: string }) {
   return <g data-operator-part="complete-turk" stroke={ink} strokeLinejoin="round">
@@ -52,15 +52,16 @@ export default function OperatorTurk({ id }: { id: string }) {
     <path d="M397 55Q457 61 529 54L524 64Q459 72 398 64Z" fill="#69573d" strokeWidth="1" />
     <path d={robe} fill="#7e8b71" strokeWidth="1.1" />
     <g clipPath={`url(#${id}-robe)`}>
-      <path d="M428-70 444-64 457-39 476-73 488-67 472-12 493 55H423L444-15Z" fill="#c0b08c" strokeWidth=".7" />
+      <path d="M431-73 444-64 457-39 476-73 486-67 472-12 493 51Q455 58 422 48L444-15Z" fill="#c0b08c" strokeWidth=".7" />
       <path d="M429-71 442-67 453-36 443-11 416 52M482-72 470-28 472-11 502 53" fill="none" stroke="#4b5944" strokeWidth="2.2" />
       <path d="M431-70 444-67 455-35 445-10 419 54M484-71 473-29 475-11 505 53" fill="none" stroke="#c1b485" strokeWidth=".75" />
       <g transform="translate(274 -157) scale(.65)"><Incisions region="coat" /></g>
-      <path d="M411 10Q456 18 508 6L509 18Q459 29 408 22Z" fill="#927b50" strokeWidth=".8" />
-      <path d="M412 13Q456 22 508 10M410 20Q456 28 509 17" fill="none" stroke="#d9c193" strokeWidth=".65" />
+      <path d="M423 8Q458 16 498 7L503 18Q460 28 419 21Z" fill="#927b50" strokeWidth=".8" />
+      <path d="M424 11Q458 20 499 10M421 19Q459 26 502 17" fill="none" stroke="#d9c193" strokeWidth=".65" />
+      <path d="M425 27Q443 34 454 46M434 27Q457 32 479 46M488 25Q495 37 502 49M416 43Q454 57 504 51" fill="none" stroke="#43503c" strokeWidth=".75" />
       <path d="M447-36 451-27 450-19M456-32l5-1m-6 9 5-1m-5 9 5-1" fill="none" strokeWidth="1" />
     </g>
-    <g transform="translate(274 -157) scale(.65)" data-operator-part="turk-resting-arm">
+    <g transform="translate(319.56 -129.4) scale(.52)" data-operator-part="turk-resting-arm">
       <path d={restingArm} fill="#7d896f" strokeWidth="1.4" />
       <g clipPath={`url(#${id}-resting-arm)`}>
         <path d="M418 297H466V355H415Z" fill="#dac9a5" stroke="none" />

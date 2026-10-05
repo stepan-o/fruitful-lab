@@ -4,7 +4,7 @@ import OperatorMovement from "./OperatorMovement";
 import OperatorTurk from "./OperatorTurk";
 import { CabinetFinish, CabinetWoodDefs, CutawayFinish, SidePanel } from "./OperatorCabinet";
 import { operatorLamp, operatorShadowTransform, operatorLightKeyframes } from "@/lib/production-systems/operator-light";
-import { chessKeyframes, mainBoard, move, position, squareCenter } from "@/lib/production-systems/operator-chess";
+import { chessKeyframes, indicatorBoard, move, position, squareCenter } from "@/lib/production-systems/operator-chess";
 import { moveStyle, OperatorControl, TurkArm, WorkingBoard } from "./OperatorChess";
 import styles from "./turk-operator.module.css";
 
@@ -68,15 +68,15 @@ function Casework({ id }: { id: string }) {
 }
 
 function IndicatorBoard({id}:{id:string}) {
-  const underside={...mainBoard,y:mainBoard.y+69};
+  const board=indicatorBoard, {x,y,width:w,depth:d,skew:k}=board;
   return <g data-operator-part="underside-indicators" stroke={ink} strokeWidth=".6">
-    <path d="M138 109H375L347 156H113Z" fill="#292a22"/>
-    <path d="M145 109H371L346.75 151H120.75Z" fill="#8f815a"/>
-    <path d={Array.from({length:9},(_,i)=>`M${145+i*226/8} 109l${mainBoard.skew} 42M${145+i*mainBoard.skew/8} ${109+i*42/8}h226`).join("")} fill="none" stroke="#423e2b" strokeWidth=".4"/>
-    {Array.from({length:64},(_,i)=>{ const p=squareCenter(i,underside),active=position.some(piece=>piece.square===i), moving=i===move.from||i===move.to;
+    <path d={`M${x-5} ${y-3}h${w+10}l${k} ${d+7}H${x+k-5}Z`} fill="#292a22"/>
+    <path d={`M${x} ${y}h${w}l${k} ${d}H${x+k}Z`} fill="#8f815a"/>
+    <path d={Array.from({length:9},(_,i)=>`M${x+i*w/8} ${y}l${k} ${d}M${x+i*k/8} ${y+i*d/8}h${w}`).join("")} fill="none" stroke="#423e2b" strokeWidth=".4"/>
+    {Array.from({length:64},(_,i)=>{ const p=squareCenter(i,board),active=position.some(piece=>piece.square===i), moving=i===move.from||i===move.to;
       return <g key={i}><path d={`M${p.x} ${p.y}v3l-1.5 1.2h3l-1.5-1.2`} fill="none" stroke={active?"#d2b572":"#746e4e"} strokeWidth=".7"/>{moving&&<circle className={styles.chess} style={{animationName:`${id}-${i===move.from?"origin":"destination"}`,opacity:i===move.from?1:.18}} cx={p.x} cy={p.y+2} r="1.8" fill="#e0c78a" stroke="none"/>}</g>;
     })}
-    <path d="M123 154H346M143 112V106M369 112V106" fill="none" stroke={brass} strokeWidth="1.1"/>
+    <path d={`M${x+k+2} ${y+d+3}h${w-4}M${x-2} ${y+3}v-6M${x+w-2} ${y+3}v-6`} fill="none" stroke={brass} strokeWidth="1.1"/>
   </g>;
 }
 

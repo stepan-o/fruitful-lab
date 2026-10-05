@@ -33,17 +33,23 @@ function Coordinates({board,inside}:{board:ChessBoard;inside:boolean}) {
   </g>;
 }
 function Sleeve({length,fore=false}:{length:number;fore?:boolean}) {
-  return <g stroke={ink} strokeLinejoin="round">
-    <path d={`M0-12Q${length*.5}-17 ${length-8}-${fore?8:11}L${length+3}-5V7L${length-9} ${fore?9:13}Q${length*.5} 19 0 12Q-8 0 0-12Z`} fill={fore?"#7e866f":"#69795f"} strokeWidth="1.1"/>
-    <path d={Array.from({length:20},(_,i)=>{const x=5+i*(length-12)/20;return `M${x}-11q-4 9 0 23`;}).join("")} stroke="#3f4937" strokeWidth=".6" fill="none" opacity=".65"/>
-    <path d={`M4-10Q${length*.5}-13 ${length-10}-6M8 10Q${length*.5} 15 ${length-12} 7`} fill="none" stroke="#b0ae87" strokeWidth=".7"/>
-    <path d={`M${length-9}-9l-2 18h8l2-18Z`} fill="#c5aa74" strokeWidth=".6"/>
-    <path d={`M${length-7}-7l-2 14`} stroke="#f0d6a0" strokeWidth=".55"/>
+  const root=fore?10:13, end=fore?7:9;
+  // Tapered cloth with long tension folds and gathered elbow creases; avoid
+  // identical ribs, which make the human sleeve read as an extensible hose.
+  return <g stroke={ink} strokeLinejoin="round" strokeLinecap="round">
+    <path d={`M0-${root}Q${length*.3}-${root+4} ${length-8}-${end}L${length+2}-${end-2}Q${length+5} 0 ${length+2} ${end-2}L${length-8} ${end}Q${length*.32} ${root+3} 0 ${root}Q-7 0 0-${root}Z`} fill={fore?"#819075":"#7b896e"} strokeWidth="1"/>
+    <path d={Array.from({length:14},(_,i)=>{
+      const x=4+i*(length-12)/14, half=root+(end-root)*x/length;
+      return `M${x} ${-half+1+(i%3)*1.2}q${-2+(i%4)} ${half*.8} ${1+(i%3)} ${half*1.5-(i%2)*2}`;
+    }).join("")} stroke="#46513c" strokeWidth=".5" fill="none" opacity=".65"/>
+    <path d={`M6 ${-root+3}Q${length*.36} -6 ${length-11} ${-end+3}M10 ${root-3}Q${length*.5} 5 ${length-12} ${end-3}M${length-19} ${-end+1}q-7 5-3 12m7-14q-4 5-2 12`} fill="none" stroke="#4c5842" strokeWidth=".65"/>
+    <path d={`M5 ${-root+1}Q${length*.3} ${-root-1} ${length-12} ${-end+1}M8 ${root-2}Q${length*.4} ${root-1} ${length-14} ${end-1}`} fill="none" stroke="#c0bb95" strokeWidth=".6"/>
+    {fore&&<g><path d={`M${length-7}-8l-1 16h7l1-16Z`} fill="#c5aa74" strokeWidth=".6"/><path d={`M${length-5}-6l-1 12`} stroke="#f0d6a0" strokeWidth=".55"/></g>}
   </g>;
 }
 export function TurkArm({id}:{id:string}) {
   return <g data-operator-part="turk-playing-arm">
-    <ellipse cx={shoulder.x+3} cy={shoulder.y+3} rx="17" ry="14" fill="#303e30" opacity=".3"/>
+    <ellipse cx={shoulder.x+3} cy={shoulder.y+3} rx="13" ry="12" fill="#303e30" opacity=".3"/>
     <g className={styles.chess} style={moveStyle(id,"upper")}><Sleeve length={upperLength}/></g>
     <g className={styles.chess} style={moveStyle(id,"fore")}><Sleeve length={foreLength} fore/></g>
     <g className={styles.chess} style={moveStyle(id,"hand")} stroke={ink} strokeWidth=".8" strokeLinejoin="round">

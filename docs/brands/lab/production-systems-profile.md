@@ -462,3 +462,19 @@ The operator, candle and sightlines retain their clear working space.
 Guidelines v2.2 record the design contract. No new client loop or dependency;
 seven additional transform animations bring this scene to 31.
 [Current captures and verification](production-systems-evidence/operator-complete-verification.md).
+
+
+### Figure 2 proportion and reach refinement · 5 October 2026
+
+Owner feedback identified disproportionate limbs and allowed a smaller or moved
+upper board. The board is now 170 units wide (was 226), moved nearer the Turk.
+The playing arm is 68 + 62 units (was 102 + 108), with a smaller hand and a
+relaxed elbow. The resting arm is shortened, the robe has a shaped waist and
+seated lap, and tapered cloth folds replace uniform sleeve ribs. Only the wrist
+has a cuff. The source-derived face and character remain recognizable.
+
+The underside indicator grid now derives its full geometry from the public
+board, keeping their squares aligned as the layout changes. Both boards and the
+operator still share the same legal e2–e4 demonstration. No additional animation
+or runtime code. Guidelines v2.3 document the revised proportions.
+[Current validation](production-systems-evidence/operator-proportions-verification.md).

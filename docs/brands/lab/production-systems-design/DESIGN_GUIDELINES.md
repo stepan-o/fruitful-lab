@@ -1,18 +1,17 @@
 # Production systems profile — design guidelines
 
-Version 1.9 · 4 October 2026 · Mechanical Turk direction
+Version 2.0 · 5 October 2026 · Mechanical Turk direction
 
-Applies to `/stepanoskin/production-systems`. The owner accepted the opening
-illustration after its cabinet pass (PR #70). **That opening is now the visual
-quality standard for every later scene.** Preserve its coherent construction,
-engraved detail, restrained materials and meaningful motion. The seven later
-studies remain first-pass compositions awaiting their own focused refinements;
-their existence does not imply that they meet the accepted hero's finish.
+Applies to `/stepanoskin/production-systems`. **Figure 1 is complete and accepted
+by the owner**, including the casework, conveyor, pace/results, palette and coherent
+lighting through PR #77. It is the quality bar, not a template to copy. Preserve
+it while bringing each subsequent scene to the same construction and finish
+standard. Figure 2 is the first focused composition pass under this system;
+Figures 3–8 remain initial studies. A shipped pass is not owner acceptance.
 
-This pass extends the opening's muted deep green through the page's typography,
-links, navigation and controls, refines the belt's depth, adds signed lift values
-and introduces a synchronized experiment-pace selector. These changes establish
-the current page palette and behavior, not a historical restoration.
+This revision captures the shared system and records Figure 2's original seated
+cutaway, informed by museum reconstruction evidence. It changes neither the
+professional claims nor the accepted opening.
 
 [Visual reference sheet](reference.html) · [Profile brief and implementation evidence](../production-systems-profile.md)
 
@@ -39,7 +38,31 @@ informs the atmosphere; technical claims remain explicit and verifiable.
 Priority order: **professional credibility → readable argument → material craft
 → theatrical detail.** The reference must strengthen the first two.
 
-## Light and depth contract · opening refinement
+## Accepted system · what carries across figures
+
+| Shared requirement | Freedom within each scene | Review at reading size |
+| --- | --- | --- |
+| One coherent object and projection | Front section, oblique board, close still life or shallow panorama | Follow every supporting edge to its parent; no floating parts or intersecting solids |
+| One readable focal action | Feed, consider, connect, move, inspect, release, consult, rest | The relationship reads before individual incisions; props do not compete with the action |
+| Warm walnut, ivory, restrained brass, deep green | Change the relative areas and depth, not the pigment family | Green remains the page highlight; brass marks working joints; paper stays quiet |
+| Outer contour → construction → fine engraving | Grain follows wood; incisions follow fabric and turned metal | Read the silhouette on a phone, then discover detail at desktop scale |
+| Declared light and receiving surfaces | Broad workshop key or a visible local candle | Source, obstacle and shadow agree; bright edges face the light; contact stays attached |
+| Motion with a purpose and one lifecycle | Each figure owns its tempo; stillness is a valid state | Attached parts move together; pause, offscreen, hidden-tab and reduced-motion rules hold |
+| Procedural, server-rendered SVG | Bounded paths, reusable silhouettes and local CSS | No raster dependency, new client loop, large blur or ornament added to fill empty space |
+| Explicit provenance and a professional reading flow | Historical anatomy can anchor an original composition | Evidence and inference are distinguished; captions connect art to the section's argument |
+
+**Originality is mandatory.** Figure 1 is an outward, busy production engine.
+Figure 2 is an inward, intimate moment of judgment. Figure 3 should be an
+architectural explanation; Figure 4 a precise geometric decision; the remaining
+scenes become progressively quieter. Do not transplant the hero's gear train,
+conveyor, smoke, controls or lighting setup into every scene.
+
+Construction order: block the whole silhouette and usable space; place the actor
+and working surfaces; connect the mechanism; assign light and receivers; add
+material detail; only then add motion. Check all three scales: whole page,
+normal section width and phone. Enlarged engraving cannot rescue bad composition.
+
+## Light and depth contract · accepted opening
 
 Use one broad key above and in front of the machine, toward the viewer's left.
 Its direction must govern the lit bevels, face shading and every cast shadow.
@@ -73,8 +96,8 @@ The hero uses an analytic orthographic approximation, not a full physical render
 
 Later scenes inherit this reasoning and material restraint. Their light position
 may change when a visible candle motivates it, but every source–caster–receiver
-relationship within a scene must agree. The seven later studies still need their
-own focused passes; this change only refines Fig. 01.
+relationship within a scene must agree. Figure 2 uses its own candle source; the opening remains unchanged. Subsequent
+scenes need the same source–caster–receiver reasoning within their own viewpoint.
 
 ## 2. The visual anchors
 
@@ -122,18 +145,46 @@ joinery, material family, mechanisms and lighting logic across viewpoints.
 | References / evidence | **The open folio.** Source pages and annotated plates rest beside a measuring tool; an index tab connects the illustration to the real source list. | Claims have a traceable basis and an inspectable record. | A light still life and a quiet caption. Real citations stay in readable HTML, not fictional text in the artwork. |
 | Contact / closing | **The worktable at rest.** An open cabinet, a place to sit and a carefully set-down instrument leave the work ready to continue. | An invitation to collaborate on a real system. | A small closing vignette or shallow panorama, lower in contrast and detail. It must support the LinkedIn action, not compete with it. |
 
-### The operator scene
+### Figure 2 · the operator by candlelight
 
-Make the candlelight purposeful: a visible candle and holder, a locally illuminated
-working surface, attached cast shadows and a darker enclosing volume. The figure
-needs convincing posture, hands and scale relative to the cabinet. It should read
-as concentration and competence. Draw the means of control clearly enough to
-follow from the operator toward the board/figure above.
+**Composition:** an original side cutaway, with the person low in the right-hand
+working bay and the small board extending toward the left. The head, hand and
+control form the focal triangle. Bent knees, both boots, a cushioned sliding seat
+and rails make the body fit within the enclosure. The working shelf ends before
+the torso; it does not become a counter hiding missing anatomy. Shallow display
+gears sit at the left margin, clear of the operator's elbow and sightline.
 
-The owner's “pulling the Turk's strings” can be expressed through visible cords
-or linkages in this original metaphor. If we claim to show the historical
-mechanism, use the documented mechanical arrangement instead and identify the
-source. No caption should present an invented string layout as historical fact.
+**Research distinction:** HNF documents a pantograph, magnetic indicators and an
+internal board in its reconstruction [S16–S17]. It explicitly identifies scale
+and seating-direction errors in Racknitz [S17]. Retain Racknitz's engraved
+character as an artistic source, not a layout authority. HNF also notes the lack
+of complete original construction plans [S16]. This drawing makes no restoration
+claim. The camera, seated lower body, casework, simplified controls and candle
+are our composition; the museum replica uses an electric headlamp [S17].
+
+**Working relationship:** the top board and its underside share one projection
+and vertical alignment. One four-piece position is repeated on the public board,
+indicator matrix and private pegboard. The raised hand meets a jointed control;
+its transmission follows the roof and rear upright to a sectioned output above.
+Keep the face unobstructed and show anchor points. Do not draw unrelated cords
+across the person or treat display gears as the source of chess intelligence.
+
+**Material and light:** the walnut frame and recessed right return inherit the
+accepted opening's finish. The cavity is muted green, with selective hatching and
+quiet wall area around the face. A visible flame at (190, 216) motivates warm
+falloff and the enlarged silhouette projected onto the rear wall. The static
+shadow is a parallel-plane approximation: source-to-caster depth 55,
+source-to-receiver depth 70; scale 70/55 around the flame. Clip it to the cavity.
+Keep tiny flame variation inside that fixed source region, with no roaming glow.
+
+**Motion and cost:** two small wheels mesh with 1.5-unit module, pitch radii 24/15
+and 39-unit center spacing. Opposite rotations use 24/15-second periods. Three
+small flame/light layers breathe over 4.8 seconds. The operator's deliberate
+pose is still. Five animations use the existing lifecycle; Figure 1's experiment
+pace does not drive the human scene. No new observer, client boundary, dependency,
+filter or per-frame code. The initial server render is a complete still.
+
+[Figure 2 composition and verification](../production-systems-evidence/operator-composition-verification.md)
 
 ### Rhythm and content ownership
 
@@ -567,7 +618,7 @@ focus and the act of inspection.
 
 ## Sources and observed evidence
 
-Checked 3–4 October 2026. Historical observations above and our design choices are
+Checked 3–5 October 2026. Historical observations above and our design choices are
 separated deliberately. The visual sheet embeds source-hosted reference images;
 its material and type specimens are our original design interpretation.
 
@@ -638,6 +689,17 @@ its material and type specimens are our original design interpretation.
   “Area Lights.”** Consulted 4 October 2026. Extended emitters motivate soft
   penumbrae; the opening uses a deliberately bounded vector approximation.
   https://www.pbr-book.org/4ed/Light_Sources/Area_Lights
+
+- **S16 — Heinz Nixdorf MuseumsForum, “The reconstruction of the HNF’s Chess
+  Turk.”** Consulted 5 October 2026. Primary account of the reconstruction and
+  uncertainty about the original. Board sensing and pantograph inform the
+  functional relationships, not an exact cabinet blueprint.
+  https://www.hnf.de/en/permanent-exhibition/exhibition-areas/the-mechanization-of-information-technology/early-automatons-miracles-of-technology/the-reconstruction-of-the-hnfs-chess-turk.html
+- **S17 — HNF, “Zwanzig Jahre HNF-Schachtürke,” 22 March 2024.** Consulted
+  5 October 2026; visually inspected the pantograph, uncovered tabletop and
+  display-clockwork photographs. Corrects the Racknitz layout. Photographs are
+  research references only; none is redistributed or fetched by the public page.
+  https://blog.hnf.de/zwanzig-jahre-hnf-schachtuerke/
 
 Local references: Sanctuary's `docs/sanctuary/DESIGN_SYSTEM.md`, Loopforge's
 `docs/loopforge/VISUAL_REVIEW.md`, and this profile's revised opening. Their

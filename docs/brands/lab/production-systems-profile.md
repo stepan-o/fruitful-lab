@@ -396,3 +396,22 @@ phase and pause handling; no new client code or dependency is introduced. Design
 Guidelines v1.9 record the lighting contract and the PBRT area-light reference.
 
 Validation: [lighting evidence](production-systems-evidence/turk-lighting-verification.md).
+
+
+## Figure 2 composition and design-system capture · 5 October 2026
+
+The owner accepted Figure 1 as complete and requested that it establish the
+quality bar for the remaining scenes. [Design guidelines v2.0](production-systems-design/DESIGN_GUIDELINES.md)
+record the shared construction, material, lighting, engraving and motion rules,
+with a distinct focal action and viewpoint required for each figure.
+
+Figure 2 becomes an original seated side cutaway. The retained engraved likeness
+now has a lower coat, bent legs, boots and a supported sliding seat. A small
+pegboard sits within reach; indicators under the upper board echo the same
+position. Controls follow the roof and rear upright, leaving the face clear.
+The recess stays green and quiet around a visible candle. Public artwork notes
+link the HNF reconstruction research and identify the drawing as an interpretation.
+
+Only Figure 2 and its source notes change in the public page. Figure 1, the other
+six scenes, professional facts, selectors and profile lifecycle stay intact.
+[Composition captures and verification](production-systems-evidence/operator-composition-verification.md).

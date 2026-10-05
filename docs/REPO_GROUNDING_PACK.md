@@ -325,6 +325,15 @@ There are now 47 synchronized hero animations; Slow/Medium/Fast remain
 Guidelines v1.9 and `production-systems-evidence/turk-lighting-verification.md`
 record the contract and production checks. No new client boundary or frame loop.
 
+Operator composition (2026-10-05): Figure 1 is accepted as complete. Design
+Guidelines v2.0 capture its shared quality bar while requiring each later figure
+to own its composition. `TurkOperator.tsx` replaces the first-pass operator with
+a seated side cutaway: working clearance, connected controls, aligned board and
+indicator planes, a matching private pegboard and candle-directed shadow. HNF
+reconstruction sources distinguish functional evidence from Racknitz's character
+study. Five local CSS animations use the existing lifecycle; no new client code.
+See `production-systems-evidence/operator-composition-verification.md`.
+
 
 Sanctuary opening art (local draft, 3 October): cinema and catalog geometry lives
 under `components/sanctuary/plates/`; shared reference credits are in

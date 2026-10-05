@@ -5,12 +5,15 @@ function advance(d: ReturnType<typeof createDrive>, seconds: number) {
 }
 
 test("the loaded drive keeps advancing at uneven speed until a real jam", () => {
-  const d=createDrive(), speeds=[];
+  const d=createDrive(123), speeds=[];
+  advance(d,3.1);
+  restartDrive(d);
+  advance(d,2);
   for(let i=0;i<540;i++) { const previous=d.distance; stepDrive(d,1/30); speeds.push(d.velocity); expect(d.distance).toBeGreaterThan(previous); }
   expect(Math.min(...speeds)).toBeGreaterThan(8);
   expect(Math.max(...speeds)-Math.min(...speeds)).toBeGreaterThan(25);
   expect(Math.max(...speeds)).toBeGreaterThan(50);
-  advance(d,2);
+  advance(d,56);
   expect(d.status).toBe("jammed");
   const distance=d.distance;
   advance(d,60);
@@ -19,10 +22,40 @@ test("the loaded drive keeps advancing at uneven speed until a real jam", () => 
   expect(d.velocity).toBe(0);
 });
 
-test("only a jammed drive accepts the lever, restarts gently, then can jam again", () => {
+test("the first jam occurs at three active seconds for every visit seed", () => {
+  for (const seed of [0, 123, 4278910321]) {
+    const d=createDrive(seed);
+    for (let i=0;i<59;i++) stepDrive(d,.05);
+    expect(d.status).toBe("running");
+    expect(d.untilJam).toBeCloseTo(.05);
+    stepDrive(d,.051);
+    expect(d.status).toBe("jammed");
+    expect(d.time).toBeCloseTo(3.001);
+  }
+});
+
+test("later fault intervals vary by visit and restart, within 33–55 active seconds", () => {
+  function intervals(seed: number) {
+    const d=createDrive(seed), result=[];
+    for(let i=0;i<6;i++) {
+      advance(d,56);
+      expect(restartDrive(d)).toBe(true);
+      expect(d.untilJam).toBeGreaterThanOrEqual(33);
+      expect(d.untilJam).toBeLessThan(55);
+      result.push(d.untilJam);
+    }
+    return result;
+  }
+  const a=intervals(123);
+  expect(new Set(a).size).toBe(6);
+  expect(a).toEqual(intervals(123));
+  expect(a).not.toEqual(intervals(456));
+});
+
+test("only a jammed drive accepts reset, restarts gently, then can jam again", () => {
   const d=createDrive();
   expect(restartDrive(d)).toBe(false);
-  advance(d,20); const distance=d.distance;
+  advance(d,3.1); const distance=d.distance;
   expect(restartDrive(d)).toBe(true);
   expect(restartDrive(d)).toBe(false);
   expect(d.status).toBe("restarting");

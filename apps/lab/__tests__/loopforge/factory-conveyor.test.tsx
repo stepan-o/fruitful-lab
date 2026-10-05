@@ -30,10 +30,12 @@ beforeEach(()=>{
 afterEach(()=>{cleanup();jest.restoreAllMocks();});
 
 test("jam is announced and keyboard activation restarts the line without repeated reset sounds",async()=>{
-  const user=userEvent.setup();render(<FactoryConveyor/>);await intersect(true);advance(20);
+  const user=userEvent.setup();render(<FactoryConveyor/>);await intersect(true);advance(2.9);
+  expect(screen.getByRole("status")).toHaveTextContent("PRODUCTION IN PROGRESS");
+  advance(.2);
   expect(screen.getByRole("status")).toHaveTextContent("LINE JAMMED");
-  const lever=screen.getByRole("button",{name:"Pull lever to restart conveyor"});
-  lever.focus(); await user.keyboard("{Enter}");
+  const resetButton=screen.getByRole("button",{name:"Restart conveyor"});
+  resetButton.focus(); await user.keyboard("{Enter}");
   expect(screen.getByRole("status")).toHaveTextContent("DRIVE ENGAGING");
   expect(playClang).toHaveBeenCalledTimes(1);
   await user.keyboard("{Enter}");expect(playClang).toHaveBeenCalledTimes(1);
@@ -66,17 +68,48 @@ test("the static fallback remains meaningful when canvas is unavailable",()=>{
 test("the menu reset owns its hint and retains the renderer through pause and resume", async()=>{
   const dock=document.createElement("div");document.body.append(dock);
   const {unmount}=render(<FactoryConveyor controlTarget={dock}/>);
-  await intersect(true);advance(20);
-  const lever=screen.getByRole("button",{name:"Pull lever to restart conveyor"});
-  expect(dock).toContainElement(lever);
-  expect(lever).toHaveAccessibleDescription("Pull down to restart.");
-  expect(dock).toContainElement(screen.getByText("Pull down to restart."));
-  const user=userEvent.setup();lever.focus();await user.keyboard(" ");
+  await intersect(true);advance(3.1);
+  const resetButton=screen.getByRole("button",{name:"Restart conveyor"});
+  expect(dock).toContainElement(resetButton);
+  expect(resetButton).toHaveAccessibleDescription("Press RESET to restart.");
+  expect(dock).toContainElement(screen.getByText("Press RESET to restart."));
+  const user=userEvent.setup();resetButton.focus();await user.keyboard(" ");
   expect(screen.getByRole("status")).toHaveTextContent("DRIVE ENGAGING");
   fireEvent.click(screen.getByRole("button",{name:"Pause factory motion"}));
   fireEvent.click(screen.getByRole("button",{name:"Resume factory motion"}));
   expect(createFactoryRenderer).toHaveBeenCalledTimes(1);
   unmount();dock.remove();
+});
+
+test("a single touch press resets a jam; pressing during production does nothing",async()=>{
+  const user=userEvent.setup();render(<FactoryConveyor/>);await intersect(true);
+  const button=screen.getByRole("button",{name:"Restart conveyor"});
+  await user.pointer([{keys:"[TouchA>]",target:button},{keys:"[/TouchA]",target:button}]);
+  expect(playClang).not.toHaveBeenCalled();
+  advance(3.1);
+  expect(button).toHaveAttribute("aria-disabled","false");
+  await user.pointer([{keys:"[TouchA>]",target:button},{keys:"[/TouchA]",target:button}]);
+  expect(screen.getByRole("status")).toHaveTextContent("DRIVE ENGAGING");
+  expect(playClang).toHaveBeenCalledTimes(1);
+  expect(button).toHaveAttribute("aria-disabled","true");
+  advance(5);
+  expect(screen.getByRole("status")).toHaveTextContent("PRODUCTION IN PROGRESS");
+});
+
+test("the first-jam countdown waits for artwork and suspends while hidden",async()=>{
+  let resolve!:(ok:boolean)=>void;const ready=new Promise<boolean>(done=>{resolve=done;});
+  jest.mocked(createFactoryRenderer).mockReturnValue({draw,dispose,resize:jest.fn(),ready});
+  render(<FactoryConveyor/>);await intersect(true);advance(20);
+  expect(screen.getByRole("status")).toHaveTextContent("LINE AT REST");
+  await act(async()=>resolve(true));advance(2);
+  act(()=>{hidden=true;document.dispatchEvent(new Event("visibilitychange"));});
+  advance(20);
+  expect(screen.getByRole("status")).toHaveTextContent("PRODUCTION IN PROGRESS");
+  act(()=>{hidden=false;document.dispatchEvent(new Event("visibilitychange"));});
+  advance(.9);
+  expect(screen.getByRole("status")).toHaveTextContent("PRODUCTION IN PROGRESS");
+  advance(.3);
+  expect(screen.getByRole("status")).toHaveTextContent("LINE JAMMED");
 });
 
 // Artwork is an asynchronous prerequisite: a failed or abandoned load must

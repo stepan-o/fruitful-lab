@@ -1,10 +1,10 @@
 /** Decorative machine state, deliberately separate from the game kernel. */
 export type Drive = {
   time: number; distance: number; velocity: number; untilJam: number;
-  status: "running" | "jammed" | "restarting"; stateAge: number; restarts: number;
+  status: "running" | "jammed" | "restarting"; stateAge: number; restarts: number; jamSeed: number;
 };
-export function createDrive(): Drive {
-  return { time: 0, distance: 83, velocity: 34, untilJam: 19, status: "running", stateAge: 0, restarts: 0 };
+export function createDrive(jamSeed = 0): Drive {
+  return { time: 0, distance: 83, velocity: 34, untilJam: 3, status: "running", stateAge: 0, restarts: 0, jamSeed };
 }
 export function noise(seed: number) {
   let n = Math.imul(seed ^ (seed >>> 16), 0x45d9f3b);
@@ -37,7 +37,7 @@ export function restartDrive(d: Drive) {
   if (d.status !== "jammed") return false;
   d.restarts += 1;
   d.status = "restarting"; d.stateAge = 0;
-  d.untilJam = 33 + noise(d.restarts * 73) * 22;
+  d.untilJam = 33 + noise(d.jamSeed + d.restarts * 73) * 22;
   return true;
 }
 

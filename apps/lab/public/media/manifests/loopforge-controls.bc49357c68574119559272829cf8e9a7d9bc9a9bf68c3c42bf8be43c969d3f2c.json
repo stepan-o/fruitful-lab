@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-controls",
+  "assets": {
+    "reset": {
+      "kind": "image",
+      "width": 1152,
+      "height": 384,
+      "variants": [
+        {
+          "src": "/media/files/f063cb8c0503716586cfa770c4ed502a420f84c5f37f1f23980cb8653ca3e9a7.webp",
+          "mime": "image/webp",
+          "bytes": 13698,
+          "sha256": "f063cb8c0503716586cfa770c4ed502a420f84c5f37f1f23980cb8653ca3e9a7",
+          "width": 384,
+          "height": 128
+        },
+        {
+          "src": "/media/files/75a4f45a53f8c42483b668053ca4197204b6be0b24f9ccbeb4de42133f6d2b13.webp",
+          "mime": "image/webp",
+          "bytes": 45014,
+          "sha256": "75a4f45a53f8c42483b668053ca4197204b6be0b24f9ccbeb4de42133f6d2b13",
+          "width": 768,
+          "height": 256
+        }
+      ]
+    }
+  }
+}

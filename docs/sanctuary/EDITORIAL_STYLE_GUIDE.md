@@ -36,6 +36,8 @@ Use cross-industry comparisons to explain a particular relationship. State their
 
 ## Prose and visuals share the explanation
 
+Public visual documentation records the source, attribution, applicable license or use rationale, and the analytical purpose of borrowed material. It does not explain our compositions, animations or visual metaphors. Keep those production notes in the internal atlas. The chapter's compact source index points to the full rights record instead of repeating its caption or the essay.
+
 Retain the established visual-first opening. Illustrations introduce the setting; captions add identification, evidence or a detail the image alone cannot supply. Diagrams let a reader inspect a relationship. Their labels and captions should not repeat the nearby prose. Use each medium for the part of the explanation it carries best.
 
 Before presenting a draft, read it without the illustrations: does the argument still develop? Then read the combined page: does each visual add something, and does the prose let the reader understand why it is there? That is the standard set by the finalized first chapter, not a sentence count or a fixed paragraph formula.

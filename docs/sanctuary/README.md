@@ -107,6 +107,21 @@ Removing files from the active deployment does not erase earlier Git history,
 old deployments or copies already cached by browsers. This explicit rights-driven
 withdrawal is an exception to the usual append-only public asset retention rule.
 
+## Visual provenance and internal design notes
+
+The chapter's collapsed **Visual sources & use** section is an index of cited
+works, including embedded logos and identifiable reference works used by the
+original catalog parodies. It links to primary source pages where known and to
+stable entries in `/stepanoskin/game-monetization/credits`. The register holds
+credits, source dates, licenses or editorial-use rationales, analytical purposes,
+review dates, modifications and provenance limits. Chapter backlinks are derived
+from the actual chapter references rather than historical inventory labels.
+
+Descriptions, art interpretation and animation decisions remain in
+`graphic-descriptions.json`, `visual-notes.ts` and [the internal atlas](VISUAL_ATLAS.md).
+They are not serialized to the reader or published as an atlas on the credits
+page. This supersedes the previous “About the visuals” design commentary.
+
 ## Media and performance
 
 The public editorial pack contains 24 images and 76 optimized WebP

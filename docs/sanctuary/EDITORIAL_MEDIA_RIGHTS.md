@@ -144,6 +144,24 @@ remain disclosed in the register rather than invented. No fan-gallery art is add
   Do not export these images into Loopforge or present the register as a media
   licensing/download library. Revisit the basis if monetization or scope changes.
 
+### Public source records — clarified 5 October 2026
+
+The reader's “Visual sources & use” disclosure is a compact index, not a design
+commentary. Each item links to its primary source where known and to the full
+rights/use record. Keep the owner and any named creator, source and source date,
+license or claimed editorial basis, date of that review, modifications, specific
+analytical purpose and provenance gaps in the register. A recorded editorial
+rationale is distinct from permission from the rights holder. Do not invent a
+source URL, authorship or license when the handoff did not identify one.
+
+Credits already displayed beside a figure remain there. Do not copy captions,
+describe visible details again or explain the construction of our graphics in
+the chapter disclosure. Keep original-art production notes in the internal
+visual atlas. Identifiable works referenced by original catalog parodies retain
+their source and creator records without the composition/animation explanations.
+This revision changes presentation of existing records, not the underlying
+publisher permissions, statutory excerpts or asset publication decisions.
+
 ### Fixed public acknowledgment
 
 The public page `/stepanoskin/game-monetization/credits` includes ownership and

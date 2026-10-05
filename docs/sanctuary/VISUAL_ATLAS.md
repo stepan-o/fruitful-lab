@@ -1,42 +1,57 @@
-# Sanctuary visual atlas
+# Sanctuary visual atlas — internal production reference
 
-The public reading edition carries a closed **About the visuals** notebook at
-the end of each chapter. It identifies each original scene, explanatory
-instrument, supplementary comparison and visual citation in that chapter.
-The rights page also carries a complete original-art atlas and the pre-existing
-source-image register. Descriptions are editorial English, like the manuscript;
-reader navigation retains its six-language support.
+Updated 5 October 2026. Descriptions, interpretive choices, construction and
+animation notes are project documentation. They do not appear in the public
+reader or credits page. This supersedes the original public “About the visuals”
+notebook; the earlier pass's verification below is historical.
 
 ## Where the records live
 
-- `apps/lab/lib/sanctuary/graphic-descriptions.json`: authored scene descriptions,
-  visual interpretation, motion, instrument operation and model boundaries for
-  every chapter. Stable chapter IDs are the keys; no generic fallback.
-- `apps/lab/lib/sanctuary/visual-notes.ts`: typed assembly;
-  cinema, gathering-place and funding comparisons; cover/atmosphere/typography
-  notes. Only the current chapter is serialized into the interactive reader.
-- `art-direction.ts`: scene titles and immediate reader-facing captions.
-- `cover-references.ts`: individual sources and creator credits for all three
-  original catalog parodies; these feed both notebooks and credits.
+- `apps/lab/lib/sanctuary/graphic-descriptions.json`: scene descriptions,
+  interpretation, motion, instrument operation and model boundaries.
+- `visual-notes.ts`: the typed internal assembly, including cover, atmosphere,
+  typography and supplementary comparisons. Tests retain coverage of these notes.
+- `art-direction.ts`: immediate reader-facing captions and scene titles.
+- `cover-references.ts`: source works and named creators for the three original
+  catalog parodies, plus internal composition notes.
 - `editorial-media.json`, `arcade-media.json`, `context-media.json`: source,
-  ownership, purpose, date, treatment and use records for every cited asset.
-- `content.ts`: the primary-source register. Links marked “Context” explain the
-  historical or theoretical reference; they do not authenticate invented art.
+  owner, named credits, analytical purpose, dates, treatment and use basis.
+- `visual-sources.ts`: derives only compact source/rights links for the actual
+  works used in the active chapter, including embedded logos and cover references.
 
-These records are the detailed descriptions. Keep them beside the code rather
-than maintaining a second prose copy in this document. `VisualNotes.tsx` renders
-them with native disclosures and real links, without additional fetching.
-Tests require every chapter instrument, displayed chapter illustration and cited
-figure to resolve to a unique, populated entry with references.
+## Public reading hierarchy
 
-## Reading hierarchy
+The graphic and its short caption stay in the narrative. The native **Visual
+sources & use** disclosure contains titles, source links where known, and links
+to full records. It adds no image description, design interpretation, motion
+explanation or repeated caption. The credits page is the full provenance and
+rights record, not a downloadable collection or a commentary on original art.
+Original geometry needs no public explanation. Keep attribution to recognizable
+reference works when it is relevant to documenting an adaptation's use.
 
-The graphic and its short caption stay in the main narrative. The notebook
-explains what is shown, why the composition was chosen, how motion/interaction
-works, and what the evidence can establish. Provenance detail stays here and in
-credits rather than becoming a repeated caption over the artwork. Decorative
-cover, ambient and typographic layers are documented in the public atlas so the
-landing remains a hero, study-entry action and menu-return navigation.
+## Verification of the source-index revision
+
+The focused checks cover complete chapter references (including embedded marks
+and cover references), omission of original-art commentary/captions, unknown
+source URLs, retained named credits and CC license links, and correct chapter
+backlinks after Gauntlet's move. No artwork, image bytes, motion behavior, legal
+excerpts or chapter prose changes in this revision. The compact reader metadata
+replaces the much larger descriptions; the full original atlas is no longer sent
+in the credits-page response.
+
+Validation, 5 October 2026:
+- Full Lab CI on the integrated branch: 55 suites / 248 tests, all 11 retained
+  asset releases, and the production build passed. The final direct-link change
+  also passed the four focused source-record tests and scoped lint.
+- Production browser checks at the default desktop viewport, 390px and 320px
+  found no horizontal overflow. The disclosure starts closed, opens with Enter,
+  and exposes 44px-high links. Named photographer/adapter credit, the CC BY 2.0
+  link, analytical purpose and use-review date remain visible in the register.
+- Use native page anchors for the cross-route rights links. Repeated client-side
+  navigation had duplicated the URL fragment; source records need stable,
+  directly reopenable addresses.
+- No new image requests, animation loops or dependencies were introduced by
+  this component. This is a structural review, not a field Core Web Vitals claim.
 
 ## Arcade pass — 4 October 2026
 

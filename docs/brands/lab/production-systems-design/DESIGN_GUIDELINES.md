@@ -1,18 +1,18 @@
 # Production systems profile — design guidelines
 
-Version 2.6 · 5 October 2026 · Mechanical Turk direction
+Version 2.7 · 5 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. **Figure 1 is complete and accepted
 by the owner**, including the casework, conveyor, pace/results, palette and coherent
 lighting through PR #77. It is the quality bar, not a template to copy. Preserve
 it while bringing each subsequent scene to the same construction and finish
-standard. Figure 2 is the first focused composition pass under this system;
-Figures 3–8 remain initial studies. A shipped pass is not owner acceptance.
+standard. Figure 2 is the detailed operator cutaway; Figure 3 is now an
+unoccupied cabinet study. Figures 4–8 remain initial studies. A shipped pass is not owner acceptance.
 
-This revision preserves the shared system and refines Figure 2's original
-cutaway with deliberate lower-body occlusion, a complete seated automaton above, and
-source-coupled candlelight and a synchronized move on two boards, informed by museum reconstruction evidence. It changes neither the
-professional claims nor the accepted opening.
+This revision applies the shared system to Figure 3: the casework and connected
+mechanism carry the scene, with both Turk and operator removed. It preserves
+Figure 2's candlelit human decision and matching chessboards, and changes neither
+the professional claims nor the accepted opening.
 
 [Visual reference sheet](reference.html) · [Profile brief and implementation evidence](../production-systems-profile.md)
 
@@ -139,12 +139,50 @@ joinery, material family, mechanisms and lighting logic across viewpoints.
 | --- | --- | --- | --- |
 | Opening / identity | **The Turk’s experiment conveyor.** A recognizable automaton sits behind the cabinet and stamps briskly; paired A/B specimens move continuously and emerge as uncertain effects. The paper register advances with each test and its verdict exhales as smoke. | Repeated item-level experiments form one learning system guided by human judgment. | One figure over one broad case, one shared work surface, one connected drive. 680×550 master; no detached gauges or floating process symbols. |
 | Background / experience | **The operator by candlelight.** A cutaway reveals a person seated inside the cabinet, studying the position and guiding the mechanism. One hand works a linkage or control; the other attends to the decision. | Human judgment is part of production infrastructure. | The most intimate scene. A small warm pool of light on face, hands and working surface; credible seated anatomy and usable space; deep local recess, paper caption. |
-| Capabilities / whole stack | **The opened cabinet.** A three-quarter sectional view connects the board above, the transmission beneath and the operating position. | Interfaces, measurement, data and services must work together. | Architectural plate with coherent supports and attachment points; two or three clearly separated depths; no cloud architecture labels painted onto furniture. |
+| Capabilities / whole stack | **The opened cabinet.** An unoccupied open cabinet connects the board above, the transmission beneath and a guided output carriage. | Interfaces, measurement, data and services must work together. | Architectural plate with two opened panelled doors, clearly separated depths and joined mechanisms; no figures or cloud architecture labels painted onto furniture. |
 | Applications / catalog decisions | **The chessboard.** A close, oblique view makes individual squares and the whole position visible. One considered move connects the foreground unit to the wider arrangement. | Local decisions must be evaluated against global objectives and constraints. | A precise geometric scene: convincing perspective, one focal piece or hand, long quiet diagonals. Explanation must work for readers who do not know chess. |
 | Method / trustworthy evidence | **The inspection bench.** A focused lamp and comparator examine two candidate pieces beside a reference. | Baselines, careful observation and uncertainty precede a decision. | A closer, calmer vignette. Honest measuring geometry, a visible reference and room for the eye to rest. No fabricated performance readings. |
 | Production perspective | **The release bench.** Candidate trays, a review station and an outgoing drawer make the transition from created work to approved release tangible. | Generation is one stage; validation, versioning and delivery complete the process. | A lateral workshop view, distinct from the opening conveyor. Three meaningful states, one focal release action, minimal ornamental tooling. |
 | References / evidence | **The open folio.** Source pages and annotated plates rest beside a measuring tool; an index tab connects the illustration to the real source list. | Claims have a traceable basis and an inspectable record. | A light still life and a quiet caption. Real citations stay in readable HTML, not fictional text in the artwork. |
 | Contact / closing | **The worktable at rest.** An open cabinet, a place to sit and a carefully set-down instrument leave the work ready to continue. | An invitation to collaborate on a real system. | A small closing vignette or shallow panorama, lower in contrast and detail. It must support the LinkedIn action, not compete with it. |
+
+### Figure 3 · the cabinet as architecture
+
+The owner requested the Turk and operator be removed. This is an **unoccupied
+cabinet study**, not another performer scene. The two opened doors frame an
+accessible movement and quiet service space; an empty chessboard remains the
+working surface. The finished object is the focal point. Keep Figures 1–2 intact.
+
+- Inherit walnut grain, mitred bevels, narrow brass highlights, deep-green recesses,
+  panel stringing, turned feet, fitted drawers and purposeful hardware. Grain
+  follows each door or board, including in its projected local plane.
+- The front case is x=126…466, y=134…354, with a 72-unit depth returning
+  (+72/√3, −72). The viewBox expands sideways to fit the opened leaves rather
+  than compressing the machinery or filling the removed figure with ornament.
+- Each door is 151 units wide, the pair closing the 302-unit opening. Fixed
+  hinges at x=145/447 and y=154 govern the leaf transforms and ground shadows.
+  Leaves open outwards with 10 degrees of projected forward depth; panel,
+  escutcheon, ring pull and edge thickness follow that same plane.
+- Ten module-one wheels form an original compound transmission. The rear winding
+  train is dense on the left; a foreground reduction continues into an open
+  output wheel. Tooth counts govern spacing, opposing rotation, phase and speed.
+  A 12-unit crank pin and 60-unit connecting rod drive a guided slider with a
+  visible 24-unit stroke. Every moving link ends at a physical joint.
+- Use restrained, fixed rear bearings. Avoid broad watch-like plates and
+  decorative support clutter. The right service frame is quiet and stationary.
+- The source direction matches the opening's studio key; the cabinet has its
+  own floor origin at y=380. Gear silhouettes cast from depth 25/27 onto the
+  recessed wall at depth 30. Cornice and door/case floor shadows use that same
+  source. Bounded source samples soften floor shadows; no blur filter.
+- Reuse the wood pattern and board surface vocabulary as server components.
+  Give the scene its own geometry and CSS motion. Pierced wheel geometry is
+  defined once and reused by the wheel and its moving shadow. Respect the
+  existing pause, visibility, reduced-motion and print lifecycle.
+
+This is an original architectural interpretation of Windisch's cabinet [S2],
+not a claim that the historic Turk contained this driven slider mechanism.
+No figure-study geometry or new raster asset belongs in Figure 3. Inspect the
+complete scene at reading size and on a phone before considering fine detail done.
 
 ### Figure 2 · the operator by candlelight
 

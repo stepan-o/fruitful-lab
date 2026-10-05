@@ -1,0 +1,199 @@
+{
+  "desktop": {
+    "animated": 23,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figures": 0,
+    "linkage": [
+      {
+        "name": "profile-cabinet-slider",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 419.478, 243)"
+      },
+      {
+        "name": "profile-cabinet-rod",
+        "state": "running",
+        "transform": "matrix(0.994379, -0.105609, 0.105609, 0.994379, 359.815, 249.338)"
+      }
+    ],
+    "nodes": 570,
+    "rect": {
+      "height": 280.703125,
+      "width": 423.296875,
+      "x": 128,
+      "y": 226.4375
+    },
+    "running": 23,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "paused": {
+    "animated": 23,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figures": 0,
+    "linkage": [
+      {
+        "name": "profile-cabinet-slider",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 438.995, 243)"
+      },
+      {
+        "name": "profile-cabinet-rod",
+        "state": "paused",
+        "transform": "matrix(0.99237, 0.123167, -0.123167, 0.99237, 379.452, 235.612)"
+      }
+    ],
+    "nodes": 570,
+    "rect": {
+      "height": 280.703125,
+      "width": 423.296875,
+      "x": 128,
+      "y": 377.4375
+    },
+    "running": 0,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "keyboardResume": {
+    "animated": 23,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figures": 0,
+    "linkage": [
+      {
+        "name": "profile-cabinet-slider",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 424.84, 243)"
+      },
+      {
+        "name": "profile-cabinet-rod",
+        "state": "running",
+        "transform": "matrix(0.982153, -0.187942, 0.187942, 0.982153, 365.91, 254.277)"
+      }
+    ],
+    "nodes": 570,
+    "rect": {
+      "height": 280.703125,
+      "width": 423.296875,
+      "x": 128,
+      "y": 377.4375
+    },
+    "running": 23,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "tablet": {
+    "animated": 23,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figures": 0,
+    "linkage": [
+      {
+        "name": "profile-cabinet-slider",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 422.594, 243)"
+      },
+      {
+        "name": "profile-cabinet-rod",
+        "state": "running",
+        "transform": "matrix(0.985844, 0.167443, -0.167443, 0.985844, 363.442, 232.952)"
+      }
+    ],
+    "nodes": 570,
+    "rect": {
+      "height": 212.21875,
+      "width": 265.59375,
+      "x": 38,
+      "y": 649.25
+    },
+    "running": 23,
+    "scrollWidth": 748,
+    "width": 768
+  },
+  "phone": {
+    "animated": 23,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figures": 0,
+    "linkage": [
+      {
+        "name": "profile-cabinet-slider",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 418.027, 243)"
+      },
+      {
+        "name": "profile-cabinet-rod",
+        "state": "running",
+        "transform": "matrix(0.999877, 0.0141762, -0.0141762, 0.999877, 358.034, 242.151)"
+      }
+    ],
+    "nodes": 570,
+    "rect": {
+      "height": 244.0625,
+      "width": 326,
+      "x": 32,
+      "y": 244.9375
+    },
+    "running": 23,
+    "scrollWidth": 370,
+    "width": 390
+  },
+  "narrow": {
+    "animated": 23,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figures": 0,
+    "linkage": [
+      {
+        "name": "profile-cabinet-slider",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 440.622, 243)"
+      },
+      {
+        "name": "profile-cabinet-rod",
+        "state": "running",
+        "transform": "matrix(0.996356, -0.0855133, 0.0855133, 0.996356, 380.843, 248.132)"
+      }
+    ],
+    "nodes": 570,
+    "rect": {
+      "height": 203.6875,
+      "width": 256,
+      "x": 32,
+      "y": 306.046875
+    },
+    "running": 23,
+    "scrollWidth": 300,
+    "width": 320
+  },
+  "offscreen": {
+    "animated": 23,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figures": 0,
+    "linkage": [
+      {
+        "name": "profile-cabinet-slider",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 439.878, 243)"
+      },
+      {
+        "name": "profile-cabinet-rod",
+        "state": "paused",
+        "transform": "matrix(0.994455, -0.104935, 0.104935, 0.994455, 380.21, 249.297)"
+      }
+    ],
+    "nodes": 570,
+    "rect": {
+      "height": 280.703125,
+      "width": 423.296875,
+      "x": 128,
+      "y": -3040.5625
+    },
+    "running": 0,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "errors": []
+}

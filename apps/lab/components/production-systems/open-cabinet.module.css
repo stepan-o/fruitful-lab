@@ -1,0 +1,7 @@
+.wheel, .link { animation-play-state: paused !important; transform-origin: 0 0; }
+:global([data-playing="true"]) :is(.wheel, .link) { animation-play-state: running !important; }
+.wheel { animation: turn var(--period) linear infinite; }
+.link { animation-duration: var(--period); animation-timing-function: linear; animation-iteration-count: infinite; }
+@keyframes turn { to { transform: rotate(var(--turn)); } }
+@media(prefers-reduced-motion:reduce) { .wheel, .link { animation: none !important; } }
+@media print { .wheel, .link { animation: none !important; } }

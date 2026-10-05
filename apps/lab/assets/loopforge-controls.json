@@ -1,0 +1,16 @@
+{
+  "pack": "loopforge-controls",
+  "assets": {
+    "reset": {
+      "kind": "image",
+      "source": "assets/loopforge-controls/reset.webp",
+      "widths": [
+        384,
+        768
+      ],
+      "quality": 86,
+      "alphaQuality": 100,
+      "maxBytes": 90000
+    }
+  }
+}

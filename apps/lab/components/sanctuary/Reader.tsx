@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import AuthorLink from "./AuthorLink";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useRef, useState } from "react";
 import Atmosphere from "./Atmosphere";
@@ -85,7 +86,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
   return <main className={styles.reader} lang={locale} data-motion={motion?"on":"off"} data-media-mode="editorial" onClickCapture={transitionSound}>
     {current ? <a href="#reading" className={styles.skip}>{copy.skip}</a> : null}
     <header className={styles.header}>
-      <Link className={styles.brand} href="/stepanoskin"><span aria-hidden="true">←</span> {soundCopy.backToMenu}</Link>
+      <AuthorLink backLabel={soundCopy.backToMenu}/>
       {current ? <div className={styles.headerControls}>
         <button className={styles.contentsButton} type="button" onClick={()=>contents.current?.showModal()} aria-haspopup="dialog" aria-label={copy.contents}>☰ <span>{copy.contents}</span></button>
         <button className={styles.preferenceButton} type="button" aria-label={sound?soundCopy.soundOn:soundCopy.soundOff} title={sound?soundCopy.soundOn:soundCopy.soundOff} aria-pressed={sound} onClick={()=>setSound(!sound)}>{sound?"◖))":"◖×"}</button>

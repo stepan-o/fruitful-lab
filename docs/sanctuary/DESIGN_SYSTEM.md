@@ -580,3 +580,13 @@ Motion must belong to the depicted activity: sprites follow passages, paddles
 meet the ball, and unheld cabinet controls do not move on their own.
 Dark experiences must theme the root canvas and browser chrome, respect safe
 areas and provide a visible top-level return path even on a minimal cover.
+
+
+### Author navigation — 5 October 2026
+
+The cover, chapter reader and credits carry the Loopforge-style diamond SO mark
+and visible **← STEPAN OSKIN** link to `/stepanoskin`, in Sanctuary’s muted brass
+palette. The full author name remains visible on small phones; the controls move
+to a second row below 480px instead of hiding the identity or shrinking touch
+areas. The accessible return label follows the reader’s selected language.
+`AuthorLink.tsx` owns this small shared element within Sanctuary.

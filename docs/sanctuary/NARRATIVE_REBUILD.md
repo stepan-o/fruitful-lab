@@ -259,3 +259,25 @@ Local visual captures are under
 `world-desktop.png` and `financial-inscriptions-desktop.png`. The local preview
 uses the production build on port 3106; PID and log are recorded in
 `/tmp/sanctuary-evening-production.pid` and `.log`.
+
+
+### Opening bridge — 5 October 2026
+
+The first prose paragraph starts with the economics of creative work, then uses
+the long life of a purchased game to make the funding problem concrete. The
+second begins “To understand…” and follows the need to earn into a cabinet that
+collects money per turn. Introduce Atari as a newly founded American game company
+and name Al Alcorn alongside the 1972 Pong prototype; preserve the distinction
+between manufacturers selling cabinets, operators selling turns and venues
+hosting an attraction. The original scene stays before all prose.
+
+Atari’s present-day activity belongs in the source notes here. Its current games,
+hardware and licensing make the name a useful connection to the present, but it
+is not an unchanged studio from 1972. The official history records the ownership
+changes and Infogrames’ 2009 renaming. Sources checked 5 October 2026:
+- https://computerhistory.org/blog/50-years-of-fun-with-pong/
+- https://atari.com/pages/history
+- https://atari.com/pages/about
+
+The current manuscript remains in `apps/lab/lib/sanctuary/content.ts`; do not keep
+a second editable prose copy in the design documents.

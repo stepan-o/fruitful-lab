@@ -12,6 +12,8 @@ export const parts = [
 ];
 export const revision = "2026-10-03";
 export const sources: EvidenceSource[] = [
+  {id:"atari-history",title:"Atari — Company history (accessed 5 October 2026)",url:"https://atari.com/pages/history",note:"Atari was founded by Nolan Bushnell and Ted Dabney in 1972; Al Alcorn built Pong. The Atari name later passed through different owners and corporate structures. Infogrames adopted the name Atari SA in 2009. This is a history of a brand and its businesses, not an unchanged studio operating since 1972."},
+  {id:"atari-today",title:"Atari — The business today (accessed 5 October 2026)",url:"https://atari.com/pages/about",note:"Atari remains active in 2026. Its business includes video-game publishing, consumer hardware and licensing. Its studios include Nightdive, which restores classic games such as System Shock, and Digital Eclipse, which makes interactive game-history collections. Its wider portfolio includes RollerCoaster Tycoon. This is the company’s description of its current activities, not evidence of continuous profitability since Pong."},
   {"id":"pong-tavern","title":"Computer History Museum — 50 Years of Fun With Pong (2022)","url":"https://computerhistory.org/blog/50-years-of-fun-with-pong/","note":"The museum preserves the prototype and documents its 1972 installation at Andy Capp’s Tavern. Used for the setting and game description, not as evidence of the venue owner’s motives or additional beverage sales."},
   {"id":"alone-together","title":"Ducheneaut, Yee, Nickell & Moore — Alone Together? (CHI 2006)","url":"https://www.nickyee.com/pubs/Ducheneaut,%20Yee,%20Nickell,%20Moore%20-%20Alone%20Together%20(2006).pdf","note":"Observational study of World of Warcraft distinguishes grouping from other players’ roles as audience and social presence. Its findings and interpretations concern that game and period, not all online worlds or Diablo IV specifically."},
   { id: "gauntlet-logg", title: "Ed Logg — Gauntlet postmortem, GDC 2012 (PDF pp. 6, 8, 15–16, 31, 40)", url: "https://media.gdcvault.com/gdc2012/slides/Design%20Track/Logg_Ed_Gauntlet_Postmortem.pdf", note: "The designer’s retrospective connects quarter-price resistance to simultaneous and drop-in play, records marketing’s doubt about four strangers playing together, distinguishes cabinet sales from coin collections, and explains the ending decision. Dungeons & Dragons and Dandy were also creative inspirations (p. 10). A retrospective, not an audited financial account." },
@@ -393,8 +395,8 @@ const manuscript: Omit<Chapter, "visual">[] = [
     "title": "Insert coin. Join in.",
     "lede": "A quarter bought life. The bargain shaped the adventure.",
     "paragraphs": [
-      "A game can occupy someone for years after they bought it. Its studio still has salaries to cover and another release to finance. Books, films and music pose versions of the same problem: how to make the success of one work pay for the time and uncertainty of making another.",
-      "Arcades are a revealing place to start because they brought payment into the act of playing. A game had to make another turn worth buying; a cabinet had to justify its price and the floor space it occupied. In 1972, Atari tested its Pong prototype—a two-player paddle-and-ball contest—at Andy Capp’s Tavern in California. Around that game, manufacturers sold cabinets, operators sold turns, and venues gained an attraction. The appeal of playing connected these different businesses.",
+      "Books, films and music all face the problem of making the success of one work pay for the time and uncertainty of making another. A game can give someone years of enjoyment after a single purchase. Its studio still has salaries to cover and another release to finance.",
+      "To understand how that need can shape the experience of playing, start with the arcade cabinet. It collected money one turn at a time. In 1972, Atari, a newly founded American game company, tested Pong—a two-player paddle-and-ball game built by engineer Al Alcorn—at Andy Capp’s Tavern in California. The game had to make another turn worth buying; the cabinet had to justify its price and its place in the room. Manufacturers sold cabinets, operators sold turns, and venues gained an attraction. The appeal of playing connected these different businesses.",
       "Gauntlet, released in 1985, let its players explore monster-filled mazes as fantasy adventurers. Each had a health counter. Time and injuries wore it down; food replenished it. So did money. Put in another coin and your character could stay alive longer. The machine sold a resource that existed only inside its fiction, helping determine how long you could take part.",
       "Call it selling “air,” if you like. Yet buying another stretch of imaginary life could mean getting farther with the people beside you. A cinema ticket also buys something that is over at the end of the evening. We understand the value of being there while it happens. The unusual thing about Gauntlet is how directly it made that participation a resource inside the adventure.",
       "Four-player cooperation had a business argument behind it. Designer Ed Logg recalled resistance to charging more than the customary quarter. More players at once offered another route to higher earnings, especially if they could join and leave without interrupting everyone else. Marketing was unconvinced: “Marketing believed I could not get four strangers to play together.” Making the gathering work promised both a distinctive pleasure for players and a better-earning cabinet.",
@@ -407,6 +409,8 @@ const manuscript: Omit<Chapter, "visual">[] = [
     "paragraphCitations": {
       "1": [
         "pong-tavern",
+        "atari-history",
+        "atari-today",
         "gauntlet-logg"
       ],
       "2": [
@@ -424,6 +428,8 @@ const manuscript: Omit<Chapter, "visual">[] = [
     },
     "sources": [
       "pong-tavern",
+      "atari-history",
+      "atari-today",
       "gauntlet",
       "gauntlet-logg"
     ],

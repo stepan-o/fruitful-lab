@@ -2,6 +2,7 @@
  --bone:#f1edc9; --acid:#e7df55; --amber:#bca476; --muted:#929488;
  --shift-x:0px; --shift-y:0px;
  position:relative; isolation:isolate; min-height:540px; height:100svh;
+ padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);
  overflow:hidden; display:flex; flex-direction:column; background:#020504; color:var(--bone);
 }
 .srOnly { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
@@ -239,7 +240,9 @@
 }
 @media(prefers-reduced-motion:reduce) { .logoFx { display:none; } .page *, .page *::before,.page *::after { animation:none!important; transition:none!important; } .logoWrap { transform:none; } }
 .page[data-motion="off"] *, .page[data-motion="off"] *::before,.page[data-motion="off"] *::after { animation:none!important; transition:none!important; }
-:global(html):has(.page) { background:#020504; scrollbar-gutter:auto; scrollbar-color:#746b47 #020504; }
+/* Safari samples the document surface beyond the scene, including overscroll. */
+:global(html):has(.page), :global(body):has(.page) { background:#020504; color-scheme:dark; }
+:global(html):has(.page) { scrollbar-gutter:auto; scrollbar-color:#746b47 #020504; }
 
 @media(min-width:641px) and (min-height:850px) { .stage { padding-top:clamp(32px,8vh,90px); } .logoWrap { width:440px; } }
 

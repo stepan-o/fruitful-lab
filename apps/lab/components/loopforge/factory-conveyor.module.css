@@ -1,5 +1,5 @@
 .factory { position:absolute; inset:0; width:100%; pointer-events:none; z-index:0; }
-.scene { position:absolute; inset:0 0 24px; overflow:hidden; }
+.scene { position:absolute; inset:0 0 calc(24px + env(safe-area-inset-bottom,0px)); overflow:hidden; }
 .canvas { position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0; }
 .fallback { --still-size:210px; --still-line-bottom:calc(var(--still-size) * .733333); position:absolute; inset:0; overflow:hidden; }
 .stillForge { position:absolute; inset:0; background:var(--forge-large) center bottom calc(var(--still-line-bottom) - max(1150px,100vw) * .295573) / max(1150px,100%) auto no-repeat; mask-image:linear-gradient(transparent 35%,#000 70%); }

@@ -396,3 +396,111 @@ phase and pause handling; no new client code or dependency is introduced. Design
 Guidelines v1.9 record the lighting contract and the PBRT area-light reference.
 
 Validation: [lighting evidence](production-systems-evidence/turk-lighting-verification.md).
+
+
+## Figure 2 composition and design-system capture · 5 October 2026
+
+The owner accepted Figure 1 as complete and requested that it establish the
+quality bar for the remaining scenes. [Design guidelines v2.0](production-systems-design/DESIGN_GUIDELINES.md)
+record the shared construction, material, lighting, engraving and motion rules,
+with a distinct focal action and viewpoint required for each figure.
+
+Figure 2 becomes an original seated side cutaway. The retained engraved likeness
+now has a lower coat, bent legs, boots and a supported sliding seat. A small
+pegboard sits within reach; indicators under the upper board echo the same
+position. Controls follow the roof and rear upright, leaving the face clear.
+The recess stays green and quiet around a visible candle. Public artwork notes
+link the HNF reconstruction research and identify the drawing as an interpretation.
+
+Only Figure 2 and its source notes change in the public page. Figure 1, the other
+six scenes, professional facts, selectors and profile lifecycle stay intact.
+[Composition captures and verification](production-systems-evidence/operator-composition-verification.md).
+
+
+### Figure 2 candle, wall section and automaton presence · 5 October 2026
+
+Owner feedback requested credible lower anatomy or deliberate concealment, a
+clearer and brighter candle, a hint of the Turk above the box, and a dancing
+shadow. The revision chooses concealment: a finished, stepped wall section hides
+the legs while leaving the board and hands clear. A cropped lower robe and seat
+continue above the tabletop. The existing engraved studies remain credited.
+
+The candle now stands alone on a brass bracket at (222, 200). Layered flame and
+radial halos establish the light source; wall and figure warmth share its cycle.
+A 1.4× projected shadow responds inversely to the flame's movement. Three nearby
+silhouette samples soften the edge without blur. Seven local CSS animations
+inherit the existing lifecycle; no new client code. Guidelines v2.1 replace the
+previous bent-leg/static-shadow contract. The earlier evidence remains a record
+of that pass, not the current visual state.
+
+The same revision now links operator and automaton through one repeating e2–e4
+pawn move on matching boards. The operator's lever and board hand, jointed Turk
+arm, both pawns and overhead indicators share one 12-second choreography. Pieces
+lift before travelling, settle before release and remain placed during the hand's
+withdrawal; a brief dissolve resets the illustration without showing a backwards
+chess move. Joint poses are sampled on the server; the scene has 24 animated
+groups and uses no new client loop. Engraved character paths are reused rather
+than duplicated for moving arms and shadows.
+
+[Current captures and verification](production-systems-evidence/operator-linked-verification.md).
+
+
+### Figure 2 complete Turk, clockwork and case finish · 5 October 2026
+
+The next owner request completes the seated Turk with its source-engraved head,
+wrapped turban, waistcoat and resting arm. HNF's head/exterior photographs were
+visually consulted; Racknitz remains the credited likeness source. The playing
+shoulder and complete two-board choreography retain their established coordinates.
+
+Nine gears replace the two-wheel sketch: seven meshing rear wheels and a compound
+foreground pair. Pierced rims, tapered spokes, brass/steel contrast and fixed
+candle-facing bevels inherit the opening's finish. Walnut casework gains fluted
+stiles, layered rebates, recessed return panels, drawers, fine grain, stepped
+mouldings and turned feet. Every return shares the cabinet's depth projection.
+The operator, candle and sightlines retain their clear working space.
+
+Guidelines v2.2 record the design contract. No new client loop or dependency;
+seven additional transform animations bring this scene to 31.
+[Current captures and verification](production-systems-evidence/operator-complete-verification.md).
+
+
+### Figure 2 proportion and reach refinement · 5 October 2026
+
+Owner feedback identified disproportionate limbs and allowed a smaller or moved
+upper board. The board is now 170 units wide (was 226), moved nearer the Turk.
+The playing arm is 68 + 62 units (was 102 + 108), with a smaller hand and a
+relaxed elbow. The resting arm is shortened, the robe has a shaped waist and
+seated lap, and tapered cloth folds replace uniform sleeve ribs. Only the wrist
+has a cuff. The source-derived face and character remain recognizable.
+
+The underside indicator grid now derives its full geometry from the public
+board, keeping their squares aligned as the layout changes. Both boards and the
+operator still share the same legal e2–e4 demonstration. No additional animation
+or runtime code. Guidelines v2.3 document the revised proportions.
+[Current validation](production-systems-evidence/operator-proportions-verification.md).
+
+
+### Figure 2 — attached control chain (5 October 2026, rejected pose)
+
+The human control now sits on the far wall to the operator's right, on a shallow
+fixed frame with four screws and bearing collars. The operator's new articulated
+arm keeps its hand wrapped around the handle throughout a visible 28-degree
+pull. Equal cranks and a constant-length coupling rod transmit that pull to the
+shaft entering the Turk's seat. Pull, hold and return follow the existing chess
+move; both boards preserve the same e2–e4 demonstration. Source-arm remnants are
+removed and the moving silhouette uses the same new arm geometry.
+
+Guidelines v2.4 capture this attachment and motion contract.
+[Current validation](production-systems-evidence/operator-control-verification.md).
+
+
+### Figure 2 — restore the approved operator (5 October 2026)
+
+The owner rejected the backward-reaching replacement arm and wall-side handle.
+Restore the original engraved operator and forward lever position from the
+accepted proportion pass. The original hand and lever now rotate together toward
+the body through 14 degrees as the move proceeds. A rigid short link and roof
+rocker connect to supported downstream machinery on the far wall. The wall
+mechanism remains visually subordinate and does not determine the person's pose.
+
+Guidelines v2.5 record this explicit correction. [Current validation](production-systems-evidence/operator-restored-verification.md).

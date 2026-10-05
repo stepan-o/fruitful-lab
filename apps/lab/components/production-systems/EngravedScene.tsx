@@ -1,10 +1,11 @@
 import { Board, Candle, Floor, Frame, Grain, Hatch, Piece, Screw, Wheel, tones } from "./engraving-primitives";
 import figureStudies from "@/lib/production-systems/figure-studies.json";
 import styles from "./engravings.module.css";
+import TurkOperator from "./TurkOperator";
 
 export type SceneName = "operator" | "cabinet" | "board" | "inspection" | "release" | "folio" | "rest";
 const descriptions: Record<SceneName, { number: string; title: string; caption: string; alt: string }> = {
-  operator: { number: "II", title: "The judgment within", caption: "A system still needs someone to ask the right question.", alt: "An engraved cabinet cutaway, after Racknitz's 1789 plate. A seated operator studies a small chessboard by candlelight and works a linkage connected to the machine above." },
+  operator: { number: "II", title: "The judgment within", caption: "A system still needs someone to ask the right question.", alt: "A candlelit cabinet cutaway. Behind a sectioned wooden wall, the operator pulls the raised lever in front of him. A short link and roof rocker connect his forward grip to supported machinery on the far wall, then into the complete seated Turk above, with a wrapped turban, engraved face, waistcoat and green robe. His other hand and the Turk's articulated arm make the same pawn move, e2 to e4, on matching eight-by-eight boards: grip, lift, advance, place and release. The overhead position indicators follow the move. A clear candle on a brass bracket casts warm light and a gently dancing, aligned shadow. Nine meshing brass and dark steel wheels turn inside finely moulded walnut casework. Original interpretive machinery with credited figure studies after Racknitz; the repeating demonstration is not a complete game." },
   cabinet: { number: "III", title: "An architecture made visible", caption: "The surface, the mechanism and the decision belong together.", alt: "An open wooden chess automaton, reinterpreting Windisch's 1783 engraving. Doors reveal connected wheels, transmission rods and the working compartment beneath the board." },
   board: { number: "IV", title: "The position, not just the piece", caption: "Each local move changes the position of the whole board.", alt: "A precisely projected eight-by-eight chessboard with turned wooden pieces. A knight moves between two positions while the surrounding arrangement remains visible; an illustration of local decisions within a global objective, not a game analysis." },
   inspection: { number: "V", title: "The discipline of comparison", caption: "A reference makes an observation useful.", alt: "An engraved inspection table with two candidate chess pieces, a reference piece and a pivoting brass comparator. The instrument illustrates comparison without claiming measured results." },
@@ -21,39 +22,6 @@ function FigureStudy({ study }: { study: "operator" | "automaton" }) {
     <path d={data.mid} stroke="#72614a" strokeWidth=".7" fill="none" />
     <path d={data.ink} stroke="#352e27" strokeWidth=".9" fill="none" />
   </g>;
-}
-
-function OperatorScene({ id }: { id: string }) {
-  return <>
-    <Floor id={id} />
-    <path d="M62 73 103 47H552V340L533 366H62Z" fill={tones.edge} stroke={tones.ink} strokeWidth="1.7" />
-    <Hatch id={`${id}-side`} d="M533 74 552 47V340L533 366Z" gap={3} cross />
-    <Frame x={62} y={74} w={472} h={293} />
-    <path d="M82 347V94H513V347Z" fill="#42392d" />
-    <Hatch id={`${id}-back`} d="M82 347V94H513V347Z" gap={5} light cross />
-    <defs><radialGradient id={`${id}-warmth`} cx="27%" cy="58%" r="80%"><stop stopColor="#987a4a" /><stop offset=".6" stopColor="#493c2d" /><stop offset="1" stopColor="#2f2a24" /></radialGradient></defs>
-    <path d="M215 96H508V348H215Z" fill={`url(#${id}-warmth)`} />
-    <Hatch id={`${id}-warm-wall`} d="M218 98H508V348H218Z" gap={3.5} light />
-    <path d="M222 102H505V114H222Z" fill={tones.wood} /><Grain x={224} y={103} w={278} h={10} />
-    <path d="M93 115H202V129H93ZM99 137V330M192 137V330M91 330H204V340H91Z" fill={tones.brass} stroke={tones.ink} />
-    <path d="M105 149H190M105 252H190M109 316H190M145 135V330" stroke={tones.brass} strokeWidth="2" />
-    <Wheel x={144} y={182} r={37} /><Wheel x={174} y={235} r={24} reverse /><Wheel x={139} y={287} r={34} />
-    <path d="M177 182H243L309 146H427V120M144 287H224L311 204L309 146" stroke={tones.brass} strokeWidth="2" fill="none" />
-    <path d="M188 182 311 204 353 135M241 181 353 135V119" stroke="#bdab7d" strokeWidth="1" fill="none" />
-    {[[243,182],[311,204],[309,146],[353,135],[427,121]].map(([x,y],i)=><Screw key={i} x={x} y={y} r={3} />)}
-    <path d="M387 238v79m-44-38v38m-10-39h61v8h-61Z" fill={tones.edge} stroke={tones.brass} strokeWidth="1" />
-
-    <g transform="translate(277 152) scale(.58)"><FigureStudy study="operator" /></g>
-    <path d="M222 313H504V347H222Z" fill="#716044" stroke={tones.ink} /><Grain x={225} y={316} w={275} h={28} />
-    <path d="M222 304H504V313H222Z" fill={tones.wood} stroke={tones.ink} /><Grain x={226} y={305} w={274} h={7} />
-    <Board x={325} y={288} width={122} depth={12} skew={15} />
-    {[0,1,2,3,4].map(i=><Piece key={i} x={351+i*18} y={297} scale={.2} />)}
-    <Candle x={261} y={302} id={`${id}-candle`} scale={.9} />
-    <path d="M205 86H216V359H205Z" fill={tones.wood} stroke={tones.ink} /><path d="M209 91V354" stroke={tones.ivory} opacity=".5" />
-    <path d="M57 73V60H537V73ZM62 369H538V380H62Z" fill="#a88d69" stroke={tones.ink} strokeWidth="1.5" /><Grain x={64} y={62} w={465} h={10} />
-    <path d="M76 380v12h19v-12m413 0v12h19v-12" fill={tones.edge} stroke={tones.ink} />
-    <path d="M548 87 578 103V354L548 335Z" fill={tones.wood} stroke={tones.ink} /><Hatch id={`${id}-door`} d="M554 101 572 113V338L554 330Z" gap={3} cross />
-  </>;
 }
 
 function CabinetScene({ id }: { id: string }) {
@@ -169,9 +137,9 @@ function RestScene({ id }: { id: string }) {
 export default function EngravedScene({ scene, compact = false }: { scene: SceneName; compact?: boolean }) {
   const id = `profile-${scene}`, data = descriptions[scene];
   return <figure className={`${styles.scene} ${compact ? styles.compact : ""}`} data-engraving={scene} data-playing="false">
-    <svg viewBox="0 0 600 420" role="img" aria-labelledby={`${id}-title ${id}-desc`} className={styles.art}>
+    <svg viewBox={scene === "operator" ? "0 -172 600 592" : "0 0 600 420"} role="img" aria-labelledby={`${id}-title ${id}-desc`} className={styles.art}>
       <title id={`${id}-title`}>{data.title}</title><desc id={`${id}-desc`}>{data.alt}</desc>
-      {scene === "operator" ? <OperatorScene id={id} /> : scene === "cabinet" ? <CabinetScene id={id} /> : scene === "board" ? <ChessScene id={id} /> : scene === "inspection" ? <InspectionScene id={id} /> : scene === "release" ? <ReleaseScene id={id} /> : scene === "folio" ? <FolioScene id={id} /> : <RestScene id={id} />}
+      {scene === "operator" ? <TurkOperator id={id} /> : scene === "cabinet" ? <CabinetScene id={id} /> : scene === "board" ? <ChessScene id={id} /> : scene === "inspection" ? <InspectionScene id={id} /> : scene === "release" ? <ReleaseScene id={id} /> : scene === "folio" ? <FolioScene id={id} /> : <RestScene id={id} />}
     </svg>
     <figcaption><span className={styles.figureNumber}>{data.number}</span><span>{data.caption}</span></figcaption>
   </figure>;

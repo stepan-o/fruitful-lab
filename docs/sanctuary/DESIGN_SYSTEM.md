@@ -1,3 +1,5 @@
+**Writing benchmark · 5 October 2026:** the owner has finalized chapter 1, “Insert coin. Join in.” Use its approved copy in [Opening manuscript](OPENING_MANUSCRIPT.md) and the [Editorial style guide](EDITORIAL_STYLE_GUIDE.md) for the rest of the presentation. This is the current prose authority; earlier narrative experiments below are historical. Preserve the chapter during later revisions.
+
 **Sequence revision · 5 October 2026:** the opening historical detour now leads to a dedicated business overview and then Gauntlet. The complete copy is in [Opening manuscript](OPENING_MANUSCRIPT.md); chart definitions and boundaries are in [Business overview](BUSINESS_OVERVIEW.md). BG3/D4 and cinema/catalog artwork remain at their existing stable `the-fork` route (now chapter five). Treat chapter numbers in earlier dated notes as historical. Quantitative exhibits must identify their period, units, population/accounting basis, source and derived calculations. Use visible values and zero baselines for these magnitude comparisons; do not turn reported membership into paying users or platform revenue into consumer expenditure.
 
 # Sanctuary design system

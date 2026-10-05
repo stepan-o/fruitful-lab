@@ -55,9 +55,9 @@ beforeAll(() => {
 });
 
 describe("Sanctuary reader", () => {
-  it("has a complete navigable 22-chapter edition with resolvable evidence and media", () => {
-    expect(chapters).toHaveLength(22);
-    expect(new Set(chapters.map((c) => c.id)).size).toBe(22);
+  it("has a complete navigable 24-chapter edition with resolvable evidence and media", () => {
+    expect(chapters).toHaveLength(24);
+    expect(new Set(chapters.map((c) => c.id)).size).toBe(24);
     expect(new Set(chapters.map((c) => c.part)).size).toBe(7);
     for (const chapter of chapters) {
       expect(chapter.paragraphs.length).toBeGreaterThanOrEqual(3);
@@ -145,7 +145,7 @@ describe("Sanctuary reader", () => {
     expect(screen.queryByText(/INTERNAL REFERENCE/)).not.toBeInTheDocument();
   });
   it("opens at the arcade, keeps its evidence inline and continues through the purchase history", () => {
-    expect(chapters.slice(0,4).map(c=>c.id)).toEqual(["insert-coin","several-histories","the-fork","concord"]);
+    expect(chapters.slice(0,6).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","how-many-lives","several-histories","the-fork","concord"]);
     const current = chapters[0];
     const { container } = render(<Reader {...props} current={current} index={0}/>);
     expect(screen.getByRole("heading", { level:1, name:"Insert coin. Join in." })).toBeVisible();
@@ -155,13 +155,18 @@ describe("Sanctuary reader", () => {
     expect(screen.queryByRole("group", {name:"Where does the gathering happen?"})).not.toBeInTheDocument();
     expect(container.querySelector("blockquote")).toBeNull();
     expect(screen.queryByRole("img", {name:"Netflix"})).not.toBeInTheDocument();
-    expect(container.querySelectorAll("img")).toHaveLength(6);
+    expect(container.querySelectorAll("img")).toHaveLength(2);
     expect(screen.getByRole("navigation", {name:"Chapter"}).querySelector("a:last-child"))
-      .toHaveAttribute("href", chapterHref("several-histories"));
+      .toHaveAttribute("href", chapterHref("studio-to-screen"));
     const evidence = screen.getByRole("img", {name:current.figures![0].alt});
     const nextParagraph = screen.getByText(current.paragraphs[current.figures![0].afterParagraph!+1]);
     expect(evidence.compareDocumentPosition(nextParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     for (const image of container.querySelectorAll("img")) expect(image).toHaveAttribute("loading", "lazy");
+  });
+  it("keeps Gauntlet’s paid-health evidence in its own chapter after the overview", () => {
+    const index=chapters.findIndex(c=>c.id==="how-many-lives");
+    render(<Reader {...props} current={chapters[index]} index={index}/>);
+    expect(screen.getByRole("heading",{level:1,name:"How many lives does a coin buy?"})).toBeVisible();
     const exchange = screen.getByRole("button", {name:"The exchange rate"});
     fireEvent.click(exchange);
     expect(exchange).toHaveAttribute("aria-pressed", "true");

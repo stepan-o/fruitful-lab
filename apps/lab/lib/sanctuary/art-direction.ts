@@ -3,6 +3,8 @@ export const artDirection: Record<
   string,
   { title: string; reference?: string; read: string; motifs?: string[]; alt?: string }
 > = {
+  "studio-to-screen": {title:"From work to play",read:"Production, permission, distribution and operation connect a creative work with its audience. The paths represent roles, not measured cash flows."},
+  "how-many-lives": {title:"The coin slot and the dungeon",read:"The cabinet holds a paid adventure and the controls that shape it."},
   "insert-coin": {
     title: "The coin slot and the dungeon",
     read: "The commercial machine and the adventure share a boundary. The original cutaway below makes both sides available to inspect.",

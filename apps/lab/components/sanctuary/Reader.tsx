@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
+import AuthorLink from "./AuthorLink";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useRef, useState } from "react";
 import Atmosphere from "./Atmosphere";
@@ -35,7 +37,12 @@ export type ReaderProps = {
   visualNotes?: VisualNote[];
 };
 
-const roman = (n:number) => ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI","XXII"][n];
+const BusinessMap = dynamic(() => import("./BusinessMap"));
+const PlatformRevenue = dynamic(() => import("./BusinessCharts").then(m=>m.PlatformRevenue));
+const CloudFigures = dynamic(() => import("./BusinessCharts").then(m=>m.CloudFigures));
+const BusinessChains = dynamic(() => import("./BusinessChains"));
+
+const roman = (n:number) => ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI","XXII","XXIII","XXIV"][n];
 
 export default function Reader({locale,current,index,navigation,parts,assets,sources,rules,visualNotes=[]}:ReaderProps) {
   const copy = readerCopy[locale];
@@ -85,7 +92,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
   return <main className={styles.reader} lang={locale} data-motion={motion?"on":"off"} data-media-mode="editorial" onClickCapture={transitionSound}>
     {current ? <a href="#reading" className={styles.skip}>{copy.skip}</a> : null}
     <header className={styles.header}>
-      <Link className={styles.brand} href="/stepanoskin"><span aria-hidden="true">←</span> {soundCopy.backToMenu}</Link>
+      <AuthorLink backLabel={soundCopy.backToMenu}/>
       {current ? <div className={styles.headerControls}>
         <button className={styles.contentsButton} type="button" onClick={()=>contents.current?.showModal()} aria-haspopup="dialog" aria-label={copy.contents}>☰ <span>{copy.contents}</span></button>
         <button className={styles.preferenceButton} type="button" aria-label={sound?soundCopy.soundOn:soundCopy.soundOff} title={sound?soundCopy.soundOn:soundCopy.soundOff} aria-pressed={sound} onClick={()=>setSound(!sound)}>{sound?"◖))":"◖×"}</button>
@@ -98,7 +105,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
       {current ? <aside className={styles.rail} aria-label={copy.contents}>
         <Link href={chapterHref()} className={styles.railTitle} aria-current={!current?"page":undefined}>SANCTUARY<br/><em>ECONOMICS</em></Link>
         {parts.map((part,p)=><div className={styles.railPart} key={part}><p lang="en"><span>0{p+1}</span> {part}</p>{navigation.map((chapter,i)=>chapter.part===p?<Link key={chapter.id} href={chapterHref(chapter.id)} prefetch={false} aria-current={current?.id===chapter.id?"page":undefined}><span>{roman(i)}</span><span lang="en">{chapter.title}</span></Link>:null)}</div>)}
-        <span className={styles.railEdition}>{copy.edition}<br/>03 OCT 2026</span>
+        <span className={styles.railEdition}>{copy.edition}<br/>05 OCT 2026</span>
       </aside> : null}
 
       <div className={styles.body} id="reading" tabIndex={-1}>
@@ -125,8 +132,10 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
               </figure>)}</div>
               <p className={styles.referenceReading}>Two role-playing traditions, with different plans for what comes after release.</p>
             </section>:null}
-            {current.id !== "the-fork" && current.id !== "insert-coin" ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
+            {!["the-fork","insert-coin","studio-to-screen","how-many-lives"].includes(current.id) ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
             {current.id === "insert-coin" ? <EveningPlace opening/> : null}
+            {current.id === "studio-to-screen" ? <BusinessMap/> : null}
+            {current.id === "how-many-lives" ? <ChapterDiagram chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
             <div className={styles.prose}>
               {current.paragraphs.map((paragraph, paragraphIndex) => (
                 <Fragment key={`${current.id}-${paragraphIndex}`}>
@@ -164,15 +173,17 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                     )}
                   </p>
                   {current.id === "the-fork" && paragraphIndex === 5 ? <EveningPlace initialWorld/> : null}
-                  {current.id === "insert-coin" && paragraphIndex === 3 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
                   {renderInlineFigures(paragraphIndex)}
+                  {current.id === "studio-to-screen" && paragraphIndex === 3 ? <BusinessChains/> : null}
+                  {current.id === "studio-to-screen" && paragraphIndex === 8 ? <PlatformRevenue/> : null}
+                  {current.id === "studio-to-screen" && paragraphIndex === 10 ? <CloudFigures/> : null}
                   {current.id === "the-fork" && paragraphIndex === 2 ? <AudienceEconomy/> : null}
                   {current.id === "the-fork" && paragraphIndex === 6 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
                   {current.id === "shape-of-money" && paragraphIndex === 1 ? <FundingDiagram/> : null}
                 </Fragment>
               ))}
             </div>
-            {current.id !== "the-fork" && current.id !== "insert-coin" ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+            {!["the-fork","insert-coin","studio-to-screen","how-many-lives"].includes(current.id) ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
             {current.table?<div className={styles.tableWrap} tabIndex={0} aria-label={current.table.caption}><table><caption>{current.table.caption}</caption><thead><tr>{current.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{current.table.rows.map(row=><tr key={row[0]}>{row.map((cell,i)=>i===0?<th scope="row" key={i}>{cell}</th>:<td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>:null}
             {current.figures?.map((figure,i)=>figure.placement !== "opening" && figure.afterParagraph === undefined ? renderFigure(figure,i) : null)}
             {current.takeaway ? <blockquote className={styles.takeaway}><span aria-hidden="true">◇</span>{current.takeaway}</blockquote> : null}

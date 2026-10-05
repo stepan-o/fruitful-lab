@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AuthorLink from "@/components/sanctuary/AuthorLink";
 import media from "@/lib/sanctuary/editorial-media.json";
 import { coverReferences } from "@/lib/sanctuary/cover-references";
 import contextMedia from "@/lib/sanctuary/context-media.json";
@@ -14,7 +15,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = { title: "Rights & visual credits — Sanctuary Economics", description: "Sources, ownership credits and the publication rationale for Sanctuary Economics’ visual citations." };
 export default function CreditsPage() {
   return <main className={styles.page} lang="en">
-    <Link className={styles.back} href={chapterHref()}>← Sanctuary Economics</Link>
+    <nav className={styles.topnav} aria-label="Author and study"><AuthorLink/><Link className={styles.back} href={chapterHref()}>← Sanctuary Economics</Link></nav>
     <header><p className={styles.eyebrow}>THE EDITORIAL RECORD · 04 OCT 2026</p><h1>Rights &<br/><em>visual credits.</em></h1>
       <p className={styles.lede}>We show the games we study. Their creators’ work remains their own.</p></header>
     <section aria-labelledby="independence"><h2 id="independence">An independent study</h2>

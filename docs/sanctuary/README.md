@@ -1,7 +1,9 @@
-Current narrative: [the life around the game](EVENING_NARRATIVE_MAP.md). The
-22-chapter edition opens with “Insert coin. Join in.” and follows purpose,
-provision and payment from the physical venue to purchased copies and online
-worlds. The local production preview remains on port 3106.
+Current opening: [Opening manuscript](OPENING_MANUSCRIPT.md). Chapter 1,
+“Insert coin. Join in.”, was finalized by the owner on 5 October 2026 and is the
+writing benchmark for the rest of the presentation. Read the
+[Editorial style guide](EDITORIAL_STYLE_GUIDE.md) before writing or revising any
+chapter. Earlier narrative maps remain background; the approved copy takes
+precedence. The local production preview remains on port 3106.
 
 # Sanctuary Economics: editorial edition
 
@@ -21,12 +23,12 @@ Audience direction, revised 3 October 2026: the essay keeps its industry depth
 while introducing key games, organizations and systems for readers unfamiliar
 with games. See [Audience and wider context](AUDIENCE_AND_CONTEXT.md) for the
 research brief, bounded comparisons and chapter-level introduction audit.
-[Narrative reconstruction](NARRATIVE_REBUILD.md) now governs a section-by-section
-rebuild. The opening now begins at Gauntlet’s coin slot, follows the purchased-copy
-bargain, then reaches creative economics, BG3/D4 and Concord. Later chapters remain working material.
-Review this copy locally before another publication PR.
+[Narrative reconstruction](NARRATIVE_REBUILD.md) records the broader section-by-section
+rebuild. The current sequence opens with Pong and the venue, then the business
+overview, then a dedicated Gauntlet chapter. Chapter 1 is finalized; the remaining
+chapters remain working material. Review their prose locally before publication.
 
-`apps/lab/lib/sanctuary/content.ts` contains 22 self-contained chapters in seven
+`apps/lab/lib/sanctuary/content.ts` contains 24 self-contained chapters in seven
 parts, source notes, figures and ten closing rules. `types.ts` owns the chapter
 contract and URL helper. `ui.ts` has the six-language navigation dictionary.
 The manuscript is an English editorial edition, disclosed in every UI language.
@@ -151,3 +153,10 @@ image zoom, keyboard dismissal and the landing menu route in the browser.
 Further content iterations can add the current Rebirth confirmation, exact
 seasonal objective requirements and Reliquary purchase/claim screens. Those
 claims are intentionally absent or bounded until the evidence is available.
+
+
+### Business overview · 5 October 2026
+
+The opening sequence is now `insert-coin` → `studio-to-screen` → `how-many-lives` → `several-histories`. Chapter one ends with Al Alcorn’s documented collection-round anecdote. The overview separates production funding, IP, publishing, promotion, store settlement, hardware/rendering and ongoing operation before Gauntlet opens the cabinet.
+
+The eight-route comparison is chapter-local, with three keyboard-operated column tabs and comparison filters. Charts use Sony’s FY2025 Q4 supplement and NVIDIA requirements / historical member disclosures. See [business overview evidence](BUSINESS_OVERVIEW.md). No asset pack was added: the overview reuses the existing optimized BG3 visual citation and uses lightweight original SVG/CSS.

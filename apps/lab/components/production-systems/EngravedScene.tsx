@@ -1,49 +1,18 @@
-import { Board, Candle, Floor, Frame, Grain, Hatch, Piece, Screw, Wheel, tones } from "./engraving-primitives";
-import figureStudies from "@/lib/production-systems/figure-studies.json";
+import { Board, Candle, Floor, Frame, Grain, Hatch, Piece, tones } from "./engraving-primitives";
+import OpenCabinet from "./OpenCabinet";
 import styles from "./engravings.module.css";
 import TurkOperator from "./TurkOperator";
 
 export type SceneName = "operator" | "cabinet" | "board" | "inspection" | "release" | "folio" | "rest";
 const descriptions: Record<SceneName, { number: string; title: string; caption: string; alt: string }> = {
   operator: { number: "II", title: "The judgment within", caption: "A system still needs someone to ask the right question.", alt: "A candlelit cabinet cutaway. Behind a sectioned wooden wall, the operator pulls the raised lever in front of him. A short link and roof rocker connect his forward grip to supported machinery on the far wall, then into the complete seated Turk above, with a wrapped turban, engraved face, waistcoat and green robe. His other hand and the Turk's articulated arm make the same pawn move, e2 to e4, on matching eight-by-eight boards: grip, lift, advance, place and release. The overhead position indicators follow the move. A clear candle on a brass bracket casts warm light and a gently dancing, aligned shadow. Nine meshing brass and dark steel wheels turn inside finely moulded walnut casework. Original interpretive machinery with credited figure studies after Racknitz; the repeating demonstration is not a complete game." },
-  cabinet: { number: "III", title: "An architecture made visible", caption: "The surface, the mechanism and the decision belong together.", alt: "An open wooden chess automaton, reinterpreting Windisch's 1783 engraving. Doors reveal connected wheels, transmission rods and the working compartment beneath the board." },
+  cabinet: { number: "III", title: "An architecture made visible", caption: "The surface, the mechanism and the decision belong together.", alt: "An unoccupied walnut cabinet with two opened panelled doors, fine mitred mouldings, brass hinges, fitted drawers and turned feet. An empty chessboard is inlaid into the top. Inside, ten pierced brass and dark steel wheels transmit motion through a compound gear train to a crank and guided slider. Deep green recesses, aligned cast shadows and directional wood grain make the construction visible. Original interpretive machinery inspired by Windisch's open-cabinet engraving; no Turk or operator is present." },
   board: { number: "IV", title: "The position, not just the piece", caption: "Each local move changes the position of the whole board.", alt: "A precisely projected eight-by-eight chessboard with turned wooden pieces. A knight moves between two positions while the surrounding arrangement remains visible; an illustration of local decisions within a global objective, not a game analysis." },
   inspection: { number: "V", title: "The discipline of comparison", caption: "A reference makes an observation useful.", alt: "An engraved inspection table with two candidate chess pieces, a reference piece and a pivoting brass comparator. The instrument illustrates comparison without claiming measured results." },
   release: { number: "VI", title: "From candidate to edition", caption: "Creation becomes production through review and controlled release.", alt: "A small wooden production bench with a screw press, candidate sheets, an inspection surface and a drawer holding an approved edition." },
   folio: { number: "VII", title: "An inspectable record", caption: "Keep the reasoning close to the evidence.", alt: "An open engraved folio with ruled annotations, a diagram, dividers and a candle. The real sources are listed beside the illustration." },
   rest: { number: "VIII", title: "The next useful question", caption: "A place to continue the work.", alt: "A quiet workshop table, an empty chair, an open notebook and a candle: an invitation to continue the work." },
 };
-
-/** Offline scan-line geometry retains the source plate's anatomy and curved incisions. */
-function FigureStudy({ study }: { study: "operator" | "automaton" }) {
-  const data = figureStudies.studies[study];
-  return <g strokeLinecap="round" strokeLinejoin="round">
-    <path d={data.outline} fill="#dcc9a2" stroke={tones.ink} strokeWidth="1.1" />
-    <path d={data.mid} stroke="#72614a" strokeWidth=".7" fill="none" />
-    <path d={data.ink} stroke="#352e27" strokeWidth=".9" fill="none" />
-  </g>;
-}
-
-function CabinetScene({ id }: { id: string }) {
-  return <>
-    <Floor id={id} /><g transform="translate(225 8) scale(.47)"><FigureStudy study="automaton" /></g>
-    <path d="M127 201 159 156H478V331L450 376H127Z" fill={tones.edge} stroke={tones.ink} strokeWidth="1.5" />
-    <Board x={153} y={158} width={288} depth={41} skew={-23} />
-    <Frame x={127} y={210} w={320} h={137} />
-    <Hatch id={`${id}-interior`} d="M138 221H437V337H138Z" gap={4} light />
-    <path d="M244 220V337M164 224V326M215 224V326" stroke={tones.brass} strokeWidth="3" />
-    <Wheel x={184} y={256} r={25} /><Wheel x={217} y={291} r={21} reverse /><Wheel x={176} y={314} r={19} />
-    <path d="M214 257 301 274 374 232 402 271 301 274 327 318M374 232V221M402 271V221" stroke={tones.brass} strokeWidth="1.8" fill="none" />
-    {[[301,274],[374,232],[402,271],[327,318]].map(([x,y],i)=><Screw key={i} x={x} y={y} />)}
-    <path d="M272 326 320 296H427V328Z" fill="#6a5b45" stroke={tones.wood} /><Hatch id={`${id}-floor-inset`} d="M272 326 320 296H427V328Z" gap={5} light />
-    <path d="M127 214 83 242V354L127 340Z" fill={tones.wood} stroke={tones.ink} /><Hatch id={`${id}-leftdoor`} d="M119 229 91 247V339L119 331Z" gap={3} cross />
-    <path d="M446 214 511 241V356L446 339Z" fill={tones.wood} stroke={tones.ink} /><Hatch id={`${id}-rightdoor`} d="M455 230 501 248V340L455 331Z" gap={3} cross />
-    <path d="M127 351H448L425 382H107Z" fill="#675640" stroke={tones.ink} /><path d="M107 374H425V394H107Z" fill={tones.wood} stroke={tones.ink} /><Grain x={112} y={377} w={307} h={13} />
-    <path d="M253 376V392M174 381q11 11 23 0m111 0q11 11 23 0" stroke={tones.ink} fill="none" strokeWidth="1.8" />
-    {[0,1,2,3,4,5].map(i=><Piece key={i} x={139+i*16} y={371} scale={.2} />)}
-    <path d="M129 395v9h17v-9m264 0v9h17v-9" fill={tones.edge} stroke={tones.ink} />
-  </>;
-}
 
 function ChessScene({ id }: { id: string }) {
   return <>
@@ -137,9 +106,9 @@ function RestScene({ id }: { id: string }) {
 export default function EngravedScene({ scene, compact = false }: { scene: SceneName; compact?: boolean }) {
   const id = `profile-${scene}`, data = descriptions[scene];
   return <figure className={`${styles.scene} ${compact ? styles.compact : ""}`} data-engraving={scene} data-playing="false">
-    <svg viewBox={scene === "operator" ? "0 -172 600 592" : "0 0 600 420"} role="img" aria-labelledby={`${id}-title ${id}-desc`} className={styles.art}>
+    <svg viewBox={scene === "operator" ? "0 -172 600 592" : scene === "cabinet" ? "-38 30 650 375" : "0 0 600 420"} role="img" aria-labelledby={`${id}-title ${id}-desc`} className={styles.art}>
       <title id={`${id}-title`}>{data.title}</title><desc id={`${id}-desc`}>{data.alt}</desc>
-      {scene === "operator" ? <TurkOperator id={id} /> : scene === "cabinet" ? <CabinetScene id={id} /> : scene === "board" ? <ChessScene id={id} /> : scene === "inspection" ? <InspectionScene id={id} /> : scene === "release" ? <ReleaseScene id={id} /> : scene === "folio" ? <FolioScene id={id} /> : <RestScene id={id} />}
+      {scene === "operator" ? <TurkOperator id={id} /> : scene === "cabinet" ? <OpenCabinet id={id} /> : scene === "board" ? <ChessScene id={id} /> : scene === "inspection" ? <InspectionScene id={id} /> : scene === "release" ? <ReleaseScene id={id} /> : scene === "folio" ? <FolioScene id={id} /> : <RestScene id={id} />}
     </svg>
     <figcaption><span className={styles.figureNumber}>{data.number}</span><span>{data.caption}</span></figcaption>
   </figure>;

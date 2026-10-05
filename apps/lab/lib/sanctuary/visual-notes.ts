@@ -40,7 +40,7 @@ function sourceNote(asset:string,alt:string,caption:string):VisualNote {
  };
 }
 
-/** Server-side catalog: only the active chapter’s entries enter the reader. */
+/** Internal art-direction notebook. Descriptions and motion rationale are not public reader content. */
 export function chapterVisualNotes(chapter:Chapter,sources:EvidenceSource[]):VisualNote[] {
  const detail=descriptions[chapter.id as keyof typeof descriptions];
  if(!detail) throw new Error(`Missing original visual notes: ${chapter.id}`);

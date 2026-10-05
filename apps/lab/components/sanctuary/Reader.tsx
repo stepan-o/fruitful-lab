@@ -14,8 +14,8 @@ import InfernalTerm from "./InfernalTerm";
 import AudienceEconomy from "./plates/AudienceEconomy";
 import EveningPlace from "./plates/EveningPlace";
 import EvidenceFigure from "./EvidenceFigure";
-import VisualNotes from "./VisualNotes";
-import type { VisualNote } from "@/lib/sanctuary/visual-notes";
+import VisualSources from "./VisualSources";
+import type { VisualSourceLink } from "@/lib/sanctuary/visual-sources";
 import { playClang } from "@/lib/stepanoskin/audio";
 import { motionKey,soundKey,usePreference } from "@/lib/stepanoskin/preferences";
 import AssetImage from "@/components/media/AssetImage";
@@ -34,7 +34,7 @@ export type ReaderProps = {
   assets: AssetManifest;
   sources: EvidenceSource[];
   rules: string[];
-  visualNotes?: VisualNote[];
+  visualSources?: VisualSourceLink[];
 };
 
 const BusinessMap = dynamic(() => import("./BusinessMap"));
@@ -44,7 +44,7 @@ const BusinessChains = dynamic(() => import("./BusinessChains"));
 
 const roman = (n:number) => ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI","XXII","XXIII","XXIV"][n];
 
-export default function Reader({locale,current,index,navigation,parts,assets,sources,rules,visualNotes=[]}:ReaderProps) {
+export default function Reader({locale,current,index,navigation,parts,assets,sources,rules,visualSources=[]}:ReaderProps) {
   const copy = readerCopy[locale];
   const soundCopy = translations[locale];
   const [sound,setSound] = usePreference(soundKey);
@@ -187,7 +187,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             {current.table?<div className={styles.tableWrap} tabIndex={0} aria-label={current.table.caption}><table><caption>{current.table.caption}</caption><thead><tr>{current.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{current.table.rows.map(row=><tr key={row[0]}>{row.map((cell,i)=>i===0?<th scope="row" key={i}>{cell}</th>:<td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>:null}
             {current.figures?.map((figure,i)=>figure.placement !== "opening" && figure.afterParagraph === undefined ? renderFigure(figure,i) : null)}
             {current.takeaway ? <blockquote className={styles.takeaway}><span aria-hidden="true">◇</span>{current.takeaway}</blockquote> : null}
-            <VisualNotes notes={visualNotes}/>
+            <VisualSources records={visualSources}/>
             <details className={styles.evidence}><summary lang={locale}>{copy.sourceNotes} <span aria-hidden="true">+</span></summary><p>{current.evidence}</p>{sources.length?<ol>{sources.map(source=><li key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><p>{source.note}</p></li>)}</ol>:<p>Source: the stated mathematical model or owner-provided research capture. Original scene studies accompany selected visual citations.</p>}</details>
             {index===navigation.length-1?<>
               <section className={styles.coda}>

@@ -576,10 +576,16 @@ while Sanctuary supplies the procedural rendering language.
 
 ## Visual explanations and mobile frame — 2026-10-04
 
-Every new graphic needs an atlas record: composition/description, narrative role,
-references, meaningful motion/interaction and limits of the evidence. Keep long
-notes in the chapter’s native “About the visuals” disclosure, with the complete
-original-art atlas on the credits page. See [VISUAL_ATLAS.md](VISUAL_ATLAS.md).
+Every new graphic needs an internal atlas record: composition/description,
+narrative role, references, meaningful motion/interaction and evidence limits.
+Public documentation is for provenance and rights, not an explanation of our
+art. The chapter's “Visual sources & use” disclosure is a compact index; the
+credits register owns named credits, sources, license/use basis, review dates,
+changes made, analytical purpose and known provenance gaps. Avoid repeating
+captions or visible content. Original geometry needs no public design commentary;
+record borrowed reference works where they are relevant to rights or attribution.
+This 5 October 2026 direction supersedes the public-notebook approach.
+See [VISUAL_ATLAS.md](VISUAL_ATLAS.md).
 Motion must belong to the depicted activity: sprites follow passages, paddles
 meet the ball, and unheld cabinet controls do not move on their own.
 Dark experiences must theme the root canvas and browser chrome, respect safe

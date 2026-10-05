@@ -1,9 +1,13 @@
-Sanctuary visual notebook (2026-10-04): `lib/sanctuary/graphic-descriptions.json`
-and `visual-notes.ts` hold the description, interpretation, motion and references
-for original chapter art and instruments. Source images join from the existing
-media registers. The server passes only active-chapter notes to `Reader`;
-“About the visuals” is collapsed by default, with the original-art atlas also
-in `/stepanoskin/game-monetization/credits`. Add a record when adding a graphic.
+Sanctuary visual provenance (2026-10-05): the reader's collapsed “Visual sources
+& use” index links only the active chapter's cited images, embedded marks and
+referenced cover works to their source and stable rights-register anchors.
+`lib/sanctuary/visual-sources.ts` derives that list; `Reader.visualSources` carries
+only compact link records. `/stepanoskin/game-monetization/credits` retains named
+credits, source, license/use basis, review date, treatment, analytical purpose and
+provenance limits. It no longer publishes the original-art atlas. Descriptions,
+composition and motion rationale remain internal in `graphic-descriptions.json`,
+`visual-notes.ts` and `docs/sanctuary/VISUAL_ATLAS.md`. Do not repeat captions or
+explain our graphics in public source records. Chapter 1's approved prose is unchanged.
 Arcade screen loops are CSS transforms gated by `useLivingPlate`; they are
 original demonstrations, not game emulation. Sanctuary has its own dark viewport
 metadata/safe-area treatment and a menu-return link on its cover and chapters.

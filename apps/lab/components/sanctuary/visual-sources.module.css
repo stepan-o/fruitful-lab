@@ -1,0 +1,7 @@
+.sources{margin:40px 0 20px;border-block:1px solid #4c4938;color:#cbc8b8;scroll-margin-top:24px}
+.sources summary{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px;min-height:58px;padding:16px 8px;cursor:pointer;color:#d3c194;font:20px/1.4 Georgia,serif;list-style:none}
+.sources summary::-webkit-details-marker{display:none}.sources summary span::before{content:"+";display:inline-block;width:25px;color:#8bafa8}.sources[open] summary span::before{content:"−"}.sources summary small{font:11px/1.5 ui-monospace,monospace;color:#a6aea1}
+.sources summary:focus-visible,.links a:focus-visible{outline:2px solid #aadaca;outline-offset:3px}
+.records{list-style:none;margin:0;padding:0 8px 16px}.records li{padding:16px 0;border-top:1px solid #64745744;min-width:0}.records h3{font:18px/1.5 Georgia,serif;color:#ddccaa;margin:0 0 4px;overflow-wrap:anywhere}
+.links{display:flex;flex-wrap:wrap;gap:0 24px}.links a{display:inline-flex;align-items:center;min-height:44px;color:#b9c9af;font:13px/1.6 system-ui,sans-serif;text-decoration:underline;text-decoration-color:#718778;text-underline-offset:3px;overflow-wrap:anywhere}
+@media(max-width:560px){.sources summary{font-size:19px}.records h3{font-size:17px}}

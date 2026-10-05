@@ -1,28 +1,44 @@
-# Loopforge reset control — generation prompts
+# Loopforge reset — selected circular control
 
-5 October 2026. Final assets generated with the built-in image_gen tool, not the API/CLI fallback.
+5 October 2026. Built-in image generation only; no API/CLI fallback.
+Five independent drafts were compared with the actual scene at 92 and 62 pixels.
+Draft 5 was selected; the rectangular predecessor is superseded.
+Saved source atlas: `apps/lab/assets/loopforge-controls/reset.webp`.
 
-Saved atlas: `apps/lab/assets/loopforge-controls/reset.webp` (idle, hover, pressed).
-The idle frame uses a shared 3D projection guide for both the housing and the cap;
-the previous curved housing and circular-arrow variants were rejected and are not published.
-The other input is a material reference from the earlier Loopforge-painted control.
+## Selected idle master — two-lug cylindrical reset socket
 
-## Idle
+Mode: built-in image generation. True transparent PNG.
 
-Use case: sketch-to-render. Image 1 is the ABSOLUTE GEOMETRY AND CAMERA reference for a Loopforge industrial reset button. Image 2 is MATERIAL / FINISH reference only; its geometry was WRONG and must NOT be reused.
-Paint image 1 into a richly detailed dark realistic game asset, using image 2's worn gunmetal, old brass and scratched red lacquer. Preserve image 1's outer outline, four face corners, projected plane angles, straight parallel front edges, corner bolt positions, circular socket positions, and cap placement EXACTLY. Keep its same framing and transparent margins.
-CRITICAL: the housing and the cylinder cap share the same three-dimensional extrusion axis and projection. Like the guide, the housing reveals ONLY narrow TOP and RIGHT thickness; the cap's cylindrical sidewall also reveals ONLY the UPPER and RIGHT arc, behind its front face. There must be NO thick red cylindrical sidewall along the lower arc. Do not reinterpret the button from a separate camera angle. The front face of the red cap is parallel to the front face of the housing.
-Add fine etched mechanical trim within the existing brass rings, restrained seams within the rigid plate, deeply inset hexagonal bolts, irregular brass wear, scratches, dark edge patina. NO extraneous hoses or protrusions outside the exact guide silhouette. Edges straight, no pincushion, no warped or curved plate. Avoid broad bevels that suggest a second bottom face.
-Plain unmarked crimson-red cap, rich dark red enamel with wear and a small subtle warm upper-left reflection. No arrow, text, symbol, logo. IDLE state with cap raised as shown in guide. Low-key Loopforge factory lighting, not toy plastic, cartoon or clean CAD. No aura or sparks.
-One complete isolated asset, genuine transparent alpha, no scene or floor or external shadows. The guide controls geometry; reference 2 controls surface textures ONLY.
+Nominated image: `draft-5.png`. Initial comparison preserved as `draft-5-first-camera-below.png`.
 
-## Hover
+## Initial generation prompt
 
-Use case: precise-object-edit. Make the HOVER interaction frame of this exact Loopforge reset button. Strict registration: keep the exact canvas, silhouette, framing, camera, straight housing edges, four bolts, all socket rings, every scratch and the cap's geometry and position unchanged. The housing and cap share one consistent perspective, with thickness along the TOP/RIGHT; do not move or rebuild them.
-Change ONLY the red cap illumination and a small amount of reflected light immediately inside its socket. Enrich its crimson-red glow and lacquer highlight so hover reads clearly at 90 pixels. A thin hot crimson rim light may trace inside the socket, with restrained spill on the inner brass. Preserve unmarked cap: NO arrow, icon, text, logo. Cap stays raised. Keep outer plate shading unchanged, all metal texture intact. No large aura, sparks, new objects or extra marks. Genuinely transparent background remains unchanged.
+Use case: stylized-concept
+Asset type: transparent isolated reset-button game UI sprite, draft 5 for the Loopforge factory landing, shown at 62–92 pixels.
+Create ONE compact, physically believable industrial red push-button assembly, painted with the dense grimy etched metal realism of the supplied Loopforge factory and logo references. These references are MATERIAL / ART-DIRECTION REFERENCES ONLY. Do not copy any previous button; create a distinctive new functional machine part.
+Design: a broad richly saturated carmine/crimson enamel push cap, inset just inside a thick dark brass concentric mechanical collar. A short ribbed cylindrical blackened-metal socket sits behind the collar and attaches to two compact heavy mounting lugs at left and right. Rounded mechanical silhouette, no square rectangular plate. The cap is the strong simple focal shape, occupying about half the overall width. Tiny real screws, oily black recesses, irregular burnished brass wear, subtle engraved tooling and cool muted teal reflected light; no decorative glyphs. Serious, tactile, richly textured AAA industrial illustration, not a cartoon, clean CAD render, toy, medallion, gem or decorative artifact.
+CRITICAL PHYSICAL CAMERA: one camera, almost exactly front-facing, just 8 degrees above the axis, ZERO side azimuth. The cap front, ring faces and back mounting flange are ALL parallel planes with identical ellipse orientation and foreshortening. Every cylinder, collar and rear socket shares ONE common coaxial centerline. Because the camera is slightly above, the red cap's front center projects a LITTLE LOWER than the ring and rear socket centers; the further-back mounting flange center is highest. All extrusion proceeds in this one same direction, never opposing. Only very subtle top-surface depth is visible; do not make a bottom-facing cap on a top-facing housing. Do not invent multiple conflicting vanishing points. Keep all rings geometrically consistent, mechanically concentric in 3D.
+Cap surface: completely plain crimson/red enamel with nuanced curved highlight and fine handling scratches, slight near-flat convexity, no arrow, no lettering, no circular-arrow marking, no symbols, no icons, no pictogram. Idle raised position, with a fine deep-red shadow line beneath its lip.
+Lighting: low-key moody factory lighting, restrained warm amber highlight upper left, cool cyan ambient bounce at right edge, deep occlusion between mechanical layers. Bright enough to read on near black; no huge bloom, no exterior cast shadow onto a background.
+Composition: centered square canvas, entire silhouette including lugs intact, generous equal transparent margins around object. Actual transparent alpha background. No scene, no hands, no pedestal, no floor, no labels, no text, no watermark.
 
-## Pressed
+## Targeted camera correction (final selected draft)
 
-Use case: precise-object-edit. Make the physically PRESSED interaction frame of this exact Loopforge reset button. Keep exact canvas size, transparent silhouette, framing, camera, straight rectangular plate, every bolt, every socket ring and all outer housing texture unchanged. No redesign or rescaling.
-Change ONLY the central red cap and contact shadows inside its socket. Push the cap into the panel along its existing mechanical axis: the cap front shifts slightly UP AND RIGHT toward the center of the concentric socket (roughly 20 pixels right and 18 pixels up on this canvas). The raised cap's visible UPPER/RIGHT cylindrical sidewall must disappear as the face becomes nearly flush with the collar. Keep the circular cap diameter and its projected plane unchanged; don't shrink/squash the cap. Deep narrow contact shadow around the socket, red face a little darker under pressure, tiny restrained crimson rim reflection in the socket.
-CRITICAL preserve consistent projection: panel and cap are parallel and share one 3D axis. Do NOT invent a lower cap sidewall or alter the camera. Cap remains PLAIN red with the same existing scratches, no arrow, icon, lettering or logo. No fingers, sparks, blur, external glow, new objects. True transparent background. This must register with the original for a subtle 90-pixel UI frame swap.
+Use case: precise-object-edit
+Edit this button sprite with ONE targeted camera correction. Preserve the expressive two-lug mounting silhouette, deeply worn brass and blackened ribbed steel, plain crimson enamel cap, subtle cyan bounce, texture detail and transparent background. No text, icons, arrows or symbols.
+THE CURRENT IMAGE IS VIEWED FROM BELOW: its cap is offset upward and its long lower barrel projects down. Reverse this to an ELEVATED near-front camera so it matches a conveyor viewed from slightly above.
+The entire physical assembly must be built around ONE straight coaxial line. Looking down at it by just 8 degrees, we see a narrow strip of the UPPER surface of every depth element. The furthest rear flange and ribbed barrel project UPWARD behind the nearer front collar. The cap projects DOWNWARD toward us from that collar. Thus the plain red cap front center must be slightly lower in the image than the collar front center, and the collar front center slightly lower than the rear flange center. Make all parallel circular faces have identical foreshortening and plane orientation. Eliminate the large lower barrel extension: the existing lower ribbed depth belongs ABOVE the front face instead. There must be NO lower-facing extrusion of the housing while cap extends otherwise. Keep perspective subtle, close to frontal, no side azimuth, no dramatic top-down view.
+A short barrel is sufficient. Keep the overall button compact and easy to read at 62–92px. Center the finished silhouette on a square transparent canvas with generous even margins. No background or floor shadow.
+
+The five-draft review and final small-size assessment are recorded in [RESET_BUTTON_DRAFTS.md](RESET_BUTTON_DRAFTS.md).
+
+## Hover — selected draft 5
+
+Use case: precise-object-edit. This is the chosen Loopforge red reset button. Create its HOVER frame. Strictly preserve exact canvas dimensions, transparent alpha silhouette, every housing and mounting-lug edge, screws, vented upper barrel, collar rings, camera, scale and cap position. Do not rebuild or move anything. The coherent depth in this reference is mandatory.
+Change ONLY the lighting of the plain crimson cap and immediately adjacent socket. A richer hot crimson core with a crisp lacquer highlight, a restrained fine red rim reflection just inside the brass collar. Make hover clearly brighter at a 62–92 px final size, but keep realistic worn enamel and scratches, not neon plastic. Outer casing unchanged; no oversized glow outside the object. Cap remains raised. NO arrows, text, symbols, logos, hands, sparks or new features. True transparent background. Exact registration for an asset swap.
+
+## Pressed — selected draft 5
+
+Use case: precise-object-edit. Create the PRESSED / mouse-down frame of this exact chosen Loopforge reset control. Preserve the exact canvas, transparent silhouette, camera, housing, mounting ears, bolts, vented barrel, brass collar rings, scale and all textures. Do not redesign or move the outer unit.
+Change ONLY the red cap and its contact shadow. Mechanically depress the cap backwards into its existing socket, following the same projected axis as the rear barrel: the front face moves slightly UP (about 28 pixels on this canvas) toward the center of the fixed brass collar. Keep its face diameter and orientation. Eliminate its projecting upper sidewall, seat the front nearly flush inside the collar. A narrow dark lower contact gap and restrained edge reflection should make the physical inward travel clear. Darken the red cap slightly compared to idle, retain its worn enamel texture and subtle glints. Do not shrink, bulge or squash the cap; no change to outer geometry.
+The assembly remains one consistent physical projection. Plain red cap with NO arrow, lettering, icon or logo. No hand, motion blur, sparks, new elements or glow outside. Genuinely transparent background remains. It must align with the idle frame for a quick tactile asset swap at 62–92 pixels.

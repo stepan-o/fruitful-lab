@@ -8,7 +8,7 @@
 - [x] First jam after three active seconds; later intervals vary.
 - [x] Replace the lever with a native red push button and nearby instructions.
 - [x] Produce painted idle, hover and pressed assets with no circular arrow.
-- [x] Correct housing and cap using one shared camera and extrusion axis.
+- [x] Compare five subagent drafts; select the most coherent expressive scene fit.
 - [x] Package responsive immutable media; retain a usable failed-image fallback.
 - [x] Verify keyboard activation, phone-size activation and fixed control geometry.
 - [x] Inspect desktop, 320 px, 390 px, tablet and landscape production layouts.
@@ -26,21 +26,25 @@ Source references in the Loopforge concept-art collection:
 - `rooms/04_loopforge_rooms_neural_lattice_converyor_1.png`: industrial surface texture and machinery.
 - `characters/conveyor_operations/stiletto_conveyor_failure_overdrive.png`: warm highlights against red and black.
 
-Original painted raster artwork, generated with the built-in image_gen tool,
-matches the conveyor and logo. Three registered states share a worn gunmetal and
-brass plate: a plain raised crimson cap, an illuminated hover state and a pressed
-cap seated inside its socket. There is no circular arrow, icon or lettering on
-the cap. A common 3D projection guide gives the housing and cap parallel faces
-and matching top/right thickness. Straight plate edges avoid the previous
-inward-curving geometry; pressing follows the same mechanical axis.
+The selected control is draft 5 from five independent subagent studies. Its
+compact cylindrical socket and two mounting lugs replace the rejected rectangular
+plate. The exposed rear barrel, brass collar and projecting red cap share one
+coaxial depth cue. It avoids the competing top/bottom box edges that made the
+previous rendering ambiguous. All states retain a plain red cap with no arrow,
+icon or lettering. The original worn metal, enamel and cyan edge reflections
+match the factory art.
+
+[Five-draft selection and rationale](RESET_BUTTON_DRAFTS.md) records the comparison.
+Hover brightens the cap and inner socket; the pressed state seats it into the
+collar. The same housing and camera are retained in all three frames.
 
 The source is `apps/lab/assets/loopforge-controls/reset.webp`, a lossless
 1152×384 atlas with three 384×384 frames (idle, hover, pressed). Prompts are
 recorded in [RESET_ASSET_PROMPTS.md](RESET_ASSET_PROMPTS.md). Original generated
 PNGs remain outside the deployment. Rejected intermediate assets are not shipped.
 
-The existing media pipeline produces 384×128 (14,464 bytes) and 768×256
-(48,918 bytes) WebP variants with lossless alpha. All states use the same selected
+The existing media pipeline produces 384×128 (13,698 bytes) and 768×256
+(45,014 bytes) WebP variants with lossless alpha. All states use the same selected
 URL, so first hover/click needs no additional request. At DPR 1 the tested desktop
 and phone both selected the smaller variant. Higher-density displays can select
 the larger one. The factory scene pack is unchanged (219,984 bytes phone /
@@ -73,13 +77,13 @@ remains available.
 
 ## Validation
 
-Full CI passes: 224 tests across 49 suites, asset-integrity checks (9 retained
+Full CI passes: 224 tests across 49 suites, asset-integrity checks (10 retained
 releases) and the optimized production build. Scoped ESLint also passes. Tests
 cover jam timing, random intervals, duplicate reset, keyboard/touch activation,
 delayed artwork, hidden/offscreen suspension, pause, reduced motion and media
 failure after a responsive image reload.
 
-The final painted control was visually inspected on the production build at
+The selected circular control was visually inspected on the production build at
 1280×720, 768×1024, 390×844, 320×568 and 640×360. No horizontal overflow or
 obscured controls. Reset targets are 92×112 desktop, 76×112 tablet, 62×80 phone
 and 50×80 narrow landscape; pause remains at least 44×44. Real hover selected
@@ -94,5 +98,5 @@ covered automatically; OS settings were not changed. Earlier vector-delivery
 CPU timings do not constitute a new raster-pass benchmark. Field Core Web Vitals
 and cold/warm network timing remain unmeasured. The renderer itself is unchanged.
 
-![Painted reset control on desktop](evidence/reset-painted-desktop.webp)
-![Painted reset control on phone](evidence/reset-painted-phone.webp)
+![Selected circular control on desktop](evidence/reset-selected-desktop.webp)
+![Selected circular control on phone](evidence/reset-selected-phone.webp)

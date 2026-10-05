@@ -1,4 +1,5 @@
-import type { beaconOrbit } from './factory-light';
+import { beamVariation, type beaconOrbit } from './factory-light';
+export const alarmPalette={hot:'#ff1830',rgb:'255,24,48',edge:'#a1071b',core:'#fff1d9',material:'#ff3c42'} as const;
 type Ctx = CanvasRenderingContext2D;
 function surface(w: number, h: number) {
   const canvas = document.createElement('canvas'); canvas.width=w; canvas.height=h;
@@ -6,25 +7,29 @@ function surface(w: number, h: number) {
 }
 /** Baked optics: only blits/transforms/opacity run each frame. */
 export function createFactoryOptics() {
-  function fan(alarm: boolean) {
+  function fan(alarm: boolean, variant: number) {
     const s=surface(384,768),c=s.getContext('2d')!;
     for(let y=0;y<s.height;y++) {
-      const d=(s.height-y)/s.height, half=d*188+2;
-      const g=c.createLinearGradient(192-half,0,192+half,0);
-      const falloff=.48+.52*(1-d);
+      const d=(s.height-y)/s.height;
+      // Distorted glass produces an uneven envelope and fine refractive lanes.
+      // Every displacement collapses at the emitter; the beam stays attached.
+      const ripple=Math.sin(y*.024+variant*2.1)*3+Math.sin(y*.067+variant)*1.1;
+      const center=192+ripple*d*d,half=(188+ripple*1.4)*d+1;
+      const g=c.createLinearGradient(center-half,0,center+half,0);
+      const falloff=(.62+.38*(1-d))*(.96+.04*Math.sin(y*.039+variant));
       const stops=alarm
-        ? [[0,0],[.12,.03],[.32,.18],[.43,.4],[.475,.67],[.5,.82],[.525,.67],[.57,.4],[.68,.18],[.88,.03],[1,0]]
-        : [[0,0],[.18,.03],[.4,.12],[.5,.23],[.6,.12],[.82,.03],[1,0]];
-      for(const [at,a] of stops) g.addColorStop(at,`rgba(${alarm?'255,43,29':'207,137,59'},${a*falloff})`);
-      c.fillStyle=g;c.fillRect(192-half,y,half*2,1);
+        ? [[0,0],[.10,.025],[.26,.17],[.38,.32],[.435,.55],[.46,.46],[.485,.86],[.51,.95],[.533,.61],[.558,.67],[.62,.34],[.75,.12],[.91,.025],[1,0]]
+        : [[0,0],[.18,.025],[.37,.1],[.46,.16],[.51,.26],[.56,.19],[.64,.11],[.82,.025],[1,0]];
+      for(const [at,a] of stops) g.addColorStop(at,`rgba(${alarm?alarmPalette.rgb:'207,137,59'},${a*falloff})`);
+      c.fillStyle=g;c.fillRect(center-half,y,half*2,1);
     }
     return s;
   }
   function flare(red: boolean) {
     const halo=surface(256,256),c=halo.getContext('2d')!;
     const g=c.createRadialGradient(128,128,0,128,128,128);
-    const rgb=red?'255,44,28':'255,168,65';
-    g.addColorStop(0,'#fff3dc');g.addColorStop(.025,'#ffe1be');
+    const rgb=red?alarmPalette.rgb:'255,168,65';
+    g.addColorStop(0,alarmPalette.core);g.addColorStop(.025,red?'#ffb6a0':'#ffe1be');
     g.addColorStop(.08,`rgba(${rgb},.78)`);g.addColorStop(.2,`rgba(${rgb},.28)`);
     g.addColorStop(.48,`rgba(${rgb},.09)`);g.addColorStop(1,`rgba(${rgb},0)`);
     c.fillStyle=g;c.fillRect(0,0,256,256);
@@ -43,9 +48,22 @@ export function createFactoryOptics() {
     gc.fillStyle=ring;gc.fillRect(0,0,128,128);
     return {halo,streak,ghost};
   }
-  const redFan=fan(true),amberFan=fan(false),red=flare(true),amber=flare(false);
+  const redFans=[fan(true,0),fan(true,1)],amberFans=[fan(false,0),fan(false,1)],red=flare(true),amber=flare(false);
   return {
-    redFan,amberFan,
+    drawBeam(c:Ctx,x:number,y:number,angle:number,reach:number,alarm:number,time:number,still:boolean) {
+      const variation=beamVariation(time,still);
+      c.save();c.translate(x,y);c.rotate(angle);c.scale(variation.width,1);c.globalCompositeOperation="lighter";
+      for(let i=0;i<2;i++) {
+        const blend=i?variation.mix:1-variation.mix;
+        c.globalAlpha=.35*(1-alarm)*blend*variation.power;
+        c.drawImage(amberFans[i],-reach*.65,-reach,reach*1.3,reach);
+        c.globalAlpha=alarm*blend*variation.power;
+        c.drawImage(redFans[i],-reach*.54,-reach,reach*1.08,reach);
+      }
+      // Weak glass scatter behind the opaque reflector, not a second beam.
+      c.rotate(Math.PI);c.globalAlpha=alarm*.045;c.drawImage(redFans[0],-reach*.6,-reach,reach*1.2,reach);
+      c.restore();
+    },
     /** Lens response is tied to the forward-facing reflector, not a timer flash. */
     drawGlare(c:Ctx,width:number,height:number,x:number,y:number,orbit:ReturnType<typeof beaconOrbit>,alarm:number) {
       const shoulder=Math.pow(Math.max(0,orbit.depth),5),core=orbit.facing;
@@ -72,6 +90,6 @@ export function createFactoryOptics() {
       }
       c.restore();
     },
-    dispose(){[redFan,amberFan,...Object.values(red),...Object.values(amber)].forEach(s=>{s.width=0;s.height=0;});}
+    dispose(){[...redFans,...amberFans,...Object.values(red),...Object.values(amber)].forEach(s=>{s.width=0;s.height=0;});}
   };
 }

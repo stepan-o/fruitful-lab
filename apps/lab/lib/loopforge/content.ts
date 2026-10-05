@@ -25,14 +25,14 @@ export type Chapter = {
   sources?: { label: string; href: string }[];
 };
 export const deckNames: Record<Deck, string> = {
-  overview: "Inside the factory",
+  overview: "The factory",
   architecture: "Inside the engine",
 };
 export const overview: Chapter[] = [
   {
     id: "the-factory",
     title: "The factory",
-    kicker: "A workplace dystopia, with a production quota",
+    kicker: "A workplace dystopia with a production drama and quota",
     heading: "Manufacture minds.\nManage the consequences.",
     lead: "You run a factory that builds artificial brains. The machines have opinions. The supervisors have agendas. Tomorrow’s quota has already arrived.",
     art: "entrance",

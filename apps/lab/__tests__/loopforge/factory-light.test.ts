@@ -1,4 +1,4 @@
-import { beaconOrbit, createBeaconRotor, stepBeaconRotor, beaconSpeed, jamStrain } from "@/components/loopforge/factory-light";
+import { beaconOrbit, createBeaconRotor, stepBeaconRotor, beaconSpeed, jamStrain, reflectorPose, beamVariation } from "@/components/loopforge/factory-light";
 
 test("the beacon visits front, both sides and rear continuously in a full revolution",()=>{
   const revolution=Math.PI*2;
@@ -67,4 +67,28 @@ test("viewer glare belongs only to the forward lobe and remains angularly contin
   expect(beaconOrbit(Math.PI/2).facing).toBeLessThan(.0001);
   expect(beaconOrbit(Math.PI).facing).toBe(0);
   expect(beaconOrbit(-.2).facing).toBeCloseTo(beaconOrbit(.2).facing);
+});
+
+
+test("the rear half-turn exposes opaque metal, with no luminous aperture",()=>{
+  for(let phase=0;phase<Math.PI*2;phase+=.03) {
+    const orbit=beaconOrbit(phase),pose=reflectorPose(orbit);
+    expect(pose.apertureX).toBeCloseTo(orbit.lateral*13);
+    if(orbit.depth<=0){expect(pose.front).toBe(false);expect(pose.emission).toBe(0);}
+    else {expect(pose.front).toBe(true);expect(pose.emission).toBeGreaterThan(0);}
+  }
+  expect(reflectorPose(beaconOrbit(Math.PI/2)).width).toBeCloseTo(2);
+  expect(reflectorPose(beaconOrbit(Math.PI/2)).apertureX-reflectorPose(beaconOrbit(Math.PI/2)).rearX).toBeCloseTo(18);
+  expect(reflectorPose(beaconOrbit(0)).width).toBeCloseTo(27);
+});
+
+test("refractive variation is continuous and bounded; reduced motion freezes it",()=>{
+  for(let t=0;t<80;t+=.03) {
+    const a=beamVariation(t),b=beamVariation(t+.03);
+    expect(a.mix).toBeGreaterThanOrEqual(0);expect(a.mix).toBeLessThanOrEqual(1);
+    expect(a.width).toBeGreaterThan(.98);expect(a.width).toBeLessThan(1.02);
+    expect(a.power).toBeGreaterThan(.93);expect(a.power).toBeLessThan(1);
+    expect(Math.abs(a.power-b.power)).toBeLessThan(.018);
+    expect(beamVariation(t,true)).toEqual(beamVariation(0,true));
+  }
 });

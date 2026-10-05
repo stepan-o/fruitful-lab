@@ -1,4 +1,4 @@
-import { control, leverState, armPose, chessTransforms, foreLength, gripPoint, indicatorBoard, innerBoard, innerPieceScale, mainBoard, mainPieceScale, move, moveState, pawnPoint, position, shoulder, squareCenter, upperLength, wristPoint } from "@/lib/production-systems/operator-chess";
+import { boardOutline, mainLift, innerLift, control, leverState, armPose, chessTransforms, foreLength, gripPoint, indicatorBoard, innerBoard, innerPieceScale, mainBoard, mainPieceScale, move, moveState, pawnPoint, position, shoulder, squareCenter, upperLength, wristPoint } from "@/lib/production-systems/operator-chess";
 
 function boardCoordinates(p:{x:number;y:number},board:typeof mainBoard,lift:number) {
   const row=(p.y+lift-board.y)/(board.depth/8);
@@ -14,17 +14,36 @@ describe("one decision on two chess boards",()=>{
     expect(move.to).toBe(move.from-16);
     expect(position.some(p=>[move.from,move.from-8,move.to].includes(p.square))).toBe(false);
     expect(position.filter(p=>p.kind==="king")).toHaveLength(2);
+    // Supporting rooks must not put a king in check before the demonstration.
+    for(const king of position.filter(p=>p.kind==="king")) for(const rook of position.filter(p=>p.kind==="rook"&&p.dark!==king.dark)) {
+      expect(rook.square%8).not.toBe(king.square%8);
+      expect(Math.floor(rook.square/8)).not.toBe(Math.floor(king.square/8));
+    }
     for(const board of [mainBoard,innerBoard]) {
       expect(pawnPoint(0,board,20)).toEqual(squareCenter(move.from,board));
       expect(pawnPoint(.65,board,20)).toEqual(squareCenter(move.to,board));
     }
   });
 
+  it("keeps both boards and their mitred frames on one cabinet projection",()=>{
+    expect(mainBoard.depth/mainBoard.width).toBeCloseTo(innerBoard.depth/innerBoard.width,10);
+    for(const board of [mainBoard,innerBoard]) {
+      const [a,b,c,d]=boardOutline(board,.3,.55);
+      expect(a.y).toBe(b.y);expect(c.y).toBe(d.y);
+      expect((d.x-a.x)/(d.y-a.y)).toBeCloseTo(-1/Math.sqrt(3),10);
+      expect(b.x-a.x).toBeCloseTo(c.x-d.x,10);
+    }
+    const mainRim=boardOutline(mainBoard,.3,.55),innerRim=boardOutline(innerBoard,.3,.55);
+    expect(mainRim[0].y).toBeGreaterThan(37); // rear rail rests inside the tabletop
+    expect(mainRim[3].y+4.5).toBeLessThan(97); // front lip remains on its support
+    expect(innerRim[3].y+3.5).toBeLessThan(315); // visible above the sectioned wall
+  });
+
   it("keeps the boards at identical file/rank progress and both hands on their held pawn",()=>{
     for(let i=0;i<=100;i++) {
-      const t=i/100,state=moveState(t),a=boardCoordinates(pawnPoint(t,mainBoard,20),mainBoard,state.lift*20),b=boardCoordinates(pawnPoint(t,innerBoard,10),innerBoard,state.lift*10);
+      const t=i/100,state=moveState(t),a=boardCoordinates(pawnPoint(t,mainBoard,mainLift),mainBoard,state.lift*mainLift),b=boardCoordinates(pawnPoint(t,innerBoard,innerLift),innerBoard,state.lift*innerLift);
       expect(a.col).toBeCloseTo(b.col,8);expect(a.row).toBeCloseTo(b.row,8);
-      if(t>=.16&&t<=.6) for(const [board,scale,lift] of [[mainBoard,mainPieceScale,20],[innerBoard,innerPieceScale,10]] as const) {
+      if(t>=.16&&t<=.6) for(const [board,scale,lift] of [[mainBoard,mainPieceScale,mainLift],[innerBoard,innerPieceScale,innerLift]] as const) {
         const pawn=pawnPoint(t,board,lift),grip=gripPoint(t,board,scale,lift);
         expect(grip.x).toBeCloseTo(pawn.x);expect(grip.y).toBeCloseTo(pawn.y-39*scale);
       }

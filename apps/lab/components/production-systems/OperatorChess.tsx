@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import { Board, Piece } from "./engraving-primitives";
-import { chessTransforms, foreLength, innerBoard, innerPieceScale, mainBoard, mainPieceScale, move, position, shoulder, squareCenter, upperLength, type ChessBoard } from "@/lib/production-systems/operator-chess";
+import { BoardSurface, ChessMan } from "./OperatorBoard";
+import { chessTransforms, foreLength, innerBoard, innerPieceScale, mainBoard, mainPieceScale, move, position, shoulder, squareCenter, upperLength } from "@/lib/production-systems/operator-chess";
 import styles from "./turk-operator.module.css";
 
 const ink="#463a30";
@@ -15,21 +15,14 @@ export function WorkingBoard({id,inside=false}:{id:string;inside?:boolean}) {
     return `M${x} ${y}h${board.width/8}l${board.skew/8} ${board.depth/8}h${-board.width/8}Z`;
   };
   return <g data-operator-part={inside?"private-pegboard":"public-chessboard"}>
-    <Board {...board}/>
-    {[move.from,move.to].map((square,i)=><path key={square} d={cell(square)} fill={i?"#77916c":"#c0aa70"} fillOpacity=".32" stroke="#5c7154" strokeWidth=".75"/>)}
+    <BoardSurface board={board} inside={inside}/>
+    {[move.from,move.to].map((square,i)=><path key={square} d={cell(square)} fill={i?"#77916c":"#c0aa70"} fillOpacity=".2" stroke="#475f4d" strokeWidth=".85"/>)}
     {inside&&<path d={Array.from({length:64},(_,i)=>{const p=squareCenter(i,board);return `M${p.x-.45} ${p.y}h.9`;}).join("")} stroke={ink} strokeWidth="1" strokeLinecap="round"/>}
     {/* Rear pieces first; the near king remains in front of the moving pawn. */}
-    {position.filter(p=>p.square<move.from).map(p=><Piece key={p.square} {...squareCenter(p.square,board)} scale={scale} kind={p.kind} dark={p.dark}/>)}
-    <g className={styles.chess} style={moveStyle(id,inside?"innerShadow":"mainShadow")}><ellipse cy="1" rx={19*scale} ry={5*scale} fill="#352d27" opacity=".23"/></g>
-    <g className={styles.chess} style={moveStyle(id,inside?"innerPawn":"mainPawn")} data-chess-pawn={inside?"private":"public"}><Piece x={0} y={0} scale={scale}/></g>
-    {position.filter(p=>p.square>move.from).map(p=><Piece key={p.square} {...squareCenter(p.square,board)} scale={scale} kind={p.kind} dark={p.dark}/>)}
-    <Coordinates board={board} inside={inside}/>
-  </g>;
-}
-function Coordinates({board,inside}:{board:ChessBoard;inside:boolean}) {
-  return <g fill="#64513a" fontFamily="Georgia, serif" fontSize={inside?4.2:5.7} textAnchor="middle" stroke="none" aria-hidden="true">
-    {Array.from({length:8},(_,i)=>{const p=squareCenter(56+i,board);return <text key={i} x={p.x+board.skew/16} y={board.y+board.depth+(inside?4:6)}>{"abcdefgh"[i]}</text>;})}
-    {!inside&&Array.from({length:8},(_,i)=>{const p=squareCenter(i*8,board);return <text key={i} x={p.x-board.width/16-5} y={p.y+2}>{8-i}</text>;})}
+    {position.filter(p=>p.square<move.from).map(p=><ChessMan key={p.square} {...squareCenter(p.square,board)} scale={scale} kind={p.kind} dark={p.dark}/>)}
+    <g className={styles.chess} style={moveStyle(id,inside?"innerShadow":"mainShadow")}><ellipse cy="1" rx={19*scale} ry={5*scale} fill="#302c20" opacity=".3"/></g>
+    <g className={styles.chess} style={moveStyle(id,inside?"innerPawn":"mainPawn")} data-chess-pawn={inside?"private":"public"}><ChessMan x={0} y={0} scale={scale}/></g>
+    {position.filter(p=>p.square>move.from).map(p=><ChessMan key={p.square} {...squareCenter(p.square,board)} scale={scale} kind={p.kind} dark={p.dark}/>)}
   </g>;
 }
 function Sleeve({length,fore=false}:{length:number;fore?:boolean}) {

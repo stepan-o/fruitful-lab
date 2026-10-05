@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 2.5 · 5 October 2026 · Mechanical Turk direction
+Version 2.6 · 5 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. **Figure 1 is complete and accepted
 by the owner**, including the casework, conveyor, pace/results, palette and coherent
@@ -157,8 +157,11 @@ working surface above the cut edge; the visible cushion supports the coat.
 Nine display gears stay at the left margin. The complete seated Turk now has a
 wrapped ivory turban, muted cap, source-engraved face, waistcoat, green outer robe
 and resting arm. Fit the board to a believable human reach. The upper board is
-170 × 40 at (250, 33); it is narrower and closer to the seated figure than in the
-initial full-body pass. Its underside indicator grid derives every corner, cell
+180 × 42 at (246, 42); the private board is 150 × 35 at (232, 269).
+Both share the cabinet return slope −1/√3 and the same depth/width ratio.
+Build cells, mitred rails, front/side thickness and support contacts from this
+one plane. The top rim must stay within the tabletop; the private front lip
+must clear the cutaway wall. Its underside indicator grid derives every corner, cell
 and fixing from the same board geometry, rather than keeping old screen offsets.
 The playing shoulder is (416, −48); upper arm and forearm are 68 and 62 units,
 with a 0.8-scale hand. Both rigid segments stay attached, and the elbow remains
@@ -200,9 +203,21 @@ that far-wall connection. Every rod ends at a joint, bearing or case penetration
 His board hand and the Turk's articulated sleeve/pinching hand repeat the same
 move. Both 8×8 boards have a light h1 corner, matching file/rank orientation,
 turned ivory/dark pieces, board-bound shadows and one sparse legal position:
-White king a1 and pawn e2, Black king h8 and pawn c7. The unobstructed initial
+White king a1, rook g1 and pawn e2; Black rook b8, king d8 and pawn c7. The unobstructed initial
 pawn advance e2–e4 follows FIDE article 3.7.2 [S18]. Coordinates come from each
 board's projection; do not move pieces by arbitrary screen offsets.
+
+**Chess readability:** the chessmen use dedicated Figure 2 geometry at 0.52
+(public) and 0.44 (private) scale. Warm ivory with a dark contour and deep-green
+ebony with a fine light edge must remain distinct against both maple and muted
+olive inlays. Turned collars, flared bases, rook crenellations and king crosses
+establish recognizable silhouettes before fine detail. Keep bases within their
+file width; quiet the square texture around them. The active pawn lifts 24/13
+units above the public/private board, with a shadow that stays on its board.
+The pawn crown remains at local y=−39, the shared hand-contact coordinate.
+Do not solve contrast by applying a bright glow to the whole board or enlarging
+the actors. These boards and chessmen are scoped to Figure 2; other scenes keep
+their existing components.
 
 The 12-second demonstration has distinct approach/grip, lift, travel, placement,
 release and withdrawal phases, then a quiet hold. The pawn dissolves for the

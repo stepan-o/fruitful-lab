@@ -4,7 +4,7 @@ import OperatorMovement from "./OperatorMovement";
 import OperatorTurk from "./OperatorTurk";
 import { CabinetFinish, CabinetWoodDefs, CutawayFinish, SidePanel } from "./OperatorCabinet";
 import { operatorLamp, operatorShadowTransform, operatorLightKeyframes } from "@/lib/production-systems/operator-light";
-import { chessKeyframes, indicatorBoard, move, position, squareCenter } from "@/lib/production-systems/operator-chess";
+import { boardOutline, boardPoint, chessKeyframes, indicatorBoard, innerBoard, move, position, squareCenter } from "@/lib/production-systems/operator-chess";
 import { moveStyle, TurkArm, WorkingBoard } from "./OperatorChess";
 import { OperatorControl } from "./OperatorControl";
 import styles from "./turk-operator.module.css";
@@ -70,8 +70,9 @@ function Casework({ id }: { id: string }) {
 
 function IndicatorBoard({id}:{id:string}) {
   const board=indicatorBoard, {x,y,width:w,depth:d,skew:k}=board;
+  const rim=boardOutline(board,.22,.4);
   return <g data-operator-part="underside-indicators" stroke={ink} strokeWidth=".6">
-    <path d={`M${x-5} ${y-3}h${w+10}l${k} ${d+7}H${x+k-5}Z`} fill="#292a22"/>
+    <path d={`M${rim.map(p=>`${p.x} ${p.y}`).join("L")}Z`} fill="#292a22"/>
     <path d={`M${x} ${y}h${w}l${k} ${d}H${x+k}Z`} fill="#8f815a"/>
     <path d={Array.from({length:9},(_,i)=>`M${x+i*w/8} ${y}l${k} ${d}M${x+i*k/8} ${y+i*d/8}h${w}`).join("")} fill="none" stroke="#423e2b" strokeWidth=".4"/>
     {Array.from({length:64},(_,i)=>{ const p=squareCenter(i,board),active=position.some(piece=>piece.square===i), moving=i===move.from||i===move.to;
@@ -106,10 +107,10 @@ function CutawayWall({ id }: { id: string }) {
 }
 
 function PrivateBoard({id}:{id:string}) {
+  const supports=[.3,7.7].map(file=>({front:boardPoint(innerBoard,file,8),back:boardPoint(innerBoard,file,1)}));
   return <g stroke={ink}>
-    <path d="M226 299V318L244 288M348 304V319L362 292" fill="none" stroke="#816444" strokeWidth="3"/>
+    <path d={supports.map(({front:a,back:b})=>`M${a.x} ${a.y+4}V322L${b.x} ${b.y+4}`).join("")} fill="none" stroke="#816444" strokeWidth="3"/>
     <WorkingBoard id={id} inside/>
-    <path d="M216 313H367" stroke={edge} strokeWidth=".65"/>
   </g>;
 }
 

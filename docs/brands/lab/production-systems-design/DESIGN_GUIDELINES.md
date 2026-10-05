@@ -1,18 +1,18 @@
 # Production systems profile — design guidelines
 
-Version 2.7 · 5 October 2026 · Mechanical Turk direction
+Version 2.8 · 5 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. **Figure 1 is complete and accepted
 by the owner**, including the casework, conveyor, pace/results, palette and coherent
 lighting through PR #77. It is the quality bar, not a template to copy. Preserve
 it while bringing each subsequent scene to the same construction and finish
 standard. Figure 2 is the detailed operator cutaway; Figure 3 is now an
-unoccupied cabinet study. Figures 4–8 remain initial studies. A shipped pass is not owner acceptance.
+unoccupied cabinet study. Figure 4 is the candlelit chess study; Figures 5–8 remain initial studies. A shipped pass is not owner acceptance.
 
-This revision applies the shared system to Figure 3: the casework and connected
-mechanism carry the scene, with both Turk and operator removed. It preserves
-Figure 2's candlelit human decision and matching chessboards, and changes neither
-the professional claims nor the accepted opening.
+This revision applies the shared system to Figure 4: a precisely joined board,
+readable ivory/green chessmen and a candle behind the position. The original
+sad-faced knight remains its focal character. Figures 1–3 and the professional
+claims are preserved.
 
 [Visual reference sheet](reference.html) · [Profile brief and implementation evidence](../production-systems-profile.md)
 
@@ -145,6 +145,57 @@ joinery, material family, mechanisms and lighting logic across viewpoints.
 | Production perspective | **The release bench.** Candidate trays, a review station and an outgoing drawer make the transition from created work to approved release tangible. | Generation is one stage; validation, versioning and delivery complete the process. | A lateral workshop view, distinct from the opening conveyor. Three meaningful states, one focal release action, minimal ornamental tooling. |
 | References / evidence | **The open folio.** Source pages and annotated plates rest beside a measuring tool; an index tab connects the illustration to the real source list. | Claims have a traceable basis and an inspectable record. | A light still life and a quiet caption. Real citations stay in readable HTML, not fictional text in the artwork. |
 | Contact / closing | **The worktable at rest.** An open cabinet, a place to sit and a carefully set-down instrument leave the work ready to continue. | An invitation to collaborate on a real system. | A small closing vignette or shallow panorama, lower in contrast and detail. It must support the LinkedIn action, not compete with it. |
+
+### Figure 4 · a position by candlelight
+
+The owner requested a complete polish pass, preserving the sad horse's face,
+removing unexplained shapes below the board, and adding a candle with coherent
+moving shadows. Keep this an intimate geometric still life in the same workshop.
+
+- A single inlaid board has 64 measured squares, mitred walnut rails, fine
+  stringing, continuous front moulding, four small turned feet and discreet
+  file letters. Grain follows the board plane. No detached hatch strip,
+  floating drafting line or arbitrary shadow polygon belongs beneath it.
+- Preserve the original knight's long muzzle, lowered eyelid, ear and curved
+  mane. Add engraved modelling and turned base details without replacing its
+  character. Ivory and forest-green chessmen remain readable on both inlays.
+  Sparse placement uses square centres; c3–e4 is one knight move, followed by
+  a quiet hold and return. This is a repeating position study, not a full game.
+- World projection is `(x − .26d, 378 − .58d − h)`. The board is 400 × 250
+  world units at height 38, with 17 units of case thickness and a 13-unit rim.
+  Its four feet reach the receiving surface. Candle source is `(518,305,148)`;
+  the brass holder and ivory wax sit behind the board, clear of the army.
+- Project each occluder through that source onto the declared horizontal
+  receiver: board at height 38 or working surface at height 0. The intersection
+  is `L + ((Lh − receiver)/(Lh − Ph)) × (P − L)`. Reject backwards intersections.
+  The cabinet's studio light is not reused for this candle scene.
+- A shared 18-second clock coordinates the flame, light strength, knight pose
+  and shadow pose. The visible flame bends from its wick. Source translation
+  produces the opposite movement in each shadow; contacts do not drift.
+  Stationary piece silhouettes use an analytic shear for lateral flame travel.
+  Only the moving knight's two projected silhouettes need bounded path poses.
+  Poses are precomputed server-side; the browser interpolates them without a
+  frame callback or React state updates. A still state remains a complete scene.
+- Three lateral emitter samples supply a small penumbra. Each visibility mask
+  unions its silhouettes before illumination is averaged, so overlapping pieces
+  do not multiply darkness. Shadows remove direct light while retaining the
+  muted ambient material. The surface vignette fades to paper without hard
+  rectangular boundaries. No animated blur, turbulence, canvas or WebGL.
+- Loopforge's current landing is a **technical reference only**: its light field
+  reveals fixed surface texture and the occlusion mask interrupts that light.
+  Apply that relationship with matte walnut, ivory, brass and deep green; do
+  not import its red siren, lens streaks, industrial imagery or dark stage.
+  Local reference: `components/loopforge/factory-renderer.ts` and
+  `factory-optics.ts`, inspected 5 October 2026 at merged PR #85.
+- This is an analytic 2.5D engraving model, not full ray tracing or a claim of
+  historically exact chess furniture. Silhouettes approximate curved solids;
+  bounded interpolation approximates travel between sampled poses. Extended
+  emitters motivate the small penumbra [S15], reread 5 October 2026.
+
+Check source → obstacle → receiver at the start, during lift, in flight and at
+placement. Review the full applications section, including scenario controls,
+at 1440, 768, 390 and 320 pixels. Preserve the shared pause, offscreen, hidden-tab,
+reduced-motion and print lifecycle. A good isolated render is not final acceptance.
 
 ### Figure 3 · the cabinet as architecture
 

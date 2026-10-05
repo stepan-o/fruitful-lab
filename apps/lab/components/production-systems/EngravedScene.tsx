@@ -1,4 +1,5 @@
-import { Board, Candle, Floor, Frame, Grain, Hatch, Piece, tones } from "./engraving-primitives";
+import { Candle, Floor, Frame, Grain, Hatch, Piece, tones } from "./engraving-primitives";
+import ChessStudy from "./ChessStudy";
 import OpenCabinet from "./OpenCabinet";
 import styles from "./engravings.module.css";
 import TurkOperator from "./TurkOperator";
@@ -7,30 +8,13 @@ export type SceneName = "operator" | "cabinet" | "board" | "inspection" | "relea
 const descriptions: Record<SceneName, { number: string; title: string; caption: string; alt: string }> = {
   operator: { number: "II", title: "The judgment within", caption: "A system still needs someone to ask the right question.", alt: "A candlelit cabinet cutaway. Behind a sectioned wooden wall, the operator pulls the raised lever in front of him. A short link and roof rocker connect his forward grip to supported machinery on the far wall, then into the complete seated Turk above, with a wrapped turban, engraved face, waistcoat and green robe. His other hand and the Turk's articulated arm make the same pawn move, e2 to e4, on matching eight-by-eight boards: grip, lift, advance, place and release. The overhead position indicators follow the move. A clear candle on a brass bracket casts warm light and a gently dancing, aligned shadow. Nine meshing brass and dark steel wheels turn inside finely moulded walnut casework. Original interpretive machinery with credited figure studies after Racknitz; the repeating demonstration is not a complete game." },
   cabinet: { number: "III", title: "An architecture made visible", caption: "The surface, the mechanism and the decision belong together.", alt: "An unoccupied walnut cabinet with two opened panelled doors, fine mitred mouldings, brass hinges, fitted drawers and turned feet. An empty chessboard is inlaid into the top. Inside, ten pierced brass and dark steel wheels transmit motion through a compound gear train to a crank and guided slider. Deep green recesses, aligned cast shadows and directional wood grain make the construction visible. Original interpretive machinery inspired by Windisch's open-cabinet engraving; no Turk or operator is present." },
-  board: { number: "IV", title: "The position, not just the piece", caption: "Each local move changes the position of the whole board.", alt: "A precisely projected eight-by-eight chessboard with turned wooden pieces. A knight moves between two positions while the surrounding arrangement remains visible; an illustration of local decisions within a global objective, not a game analysis." },
+  board: { number: "IV", title: "The position, not just the piece", caption: "Each local move changes the position of the whole board.", alt: "An inlaid maple and deep-green chessboard with mitred walnut edges and small turned feet. Ivory and dark-green chessmen occupy exact square centres; the sad-faced knight lifts from c3 to e4, rests and returns. Behind the board, a wax candle in a brass candlestick casts gently dancing shadows from the pieces onto the board and from the board onto the working surface. One shared source governs the flame, light and shadows. An original engraved study of local decisions within a global position, not a complete game." },
   inspection: { number: "V", title: "The discipline of comparison", caption: "A reference makes an observation useful.", alt: "An engraved inspection table with two candidate chess pieces, a reference piece and a pivoting brass comparator. The instrument illustrates comparison without claiming measured results." },
   release: { number: "VI", title: "From candidate to edition", caption: "Creation becomes production through review and controlled release.", alt: "A small wooden production bench with a screw press, candidate sheets, an inspection surface and a drawer holding an approved edition." },
   folio: { number: "VII", title: "An inspectable record", caption: "Keep the reasoning close to the evidence.", alt: "An open engraved folio with ruled annotations, a diagram, dividers and a candle. The real sources are listed beside the illustration." },
   rest: { number: "VIII", title: "The next useful question", caption: "A place to continue the work.", alt: "A quiet workshop table, an empty chair, an open notebook and a candle: an invitation to continue the work." },
 };
 
-function ChessScene({ id }: { id: string }) {
-  return <>
-    <Floor id={id} />
-    <Board x={57} y={159} width={415} depth={159} skew={65} />
-    <Hatch id={`${id}-edge`} d="M117 326H560V342H117Z" gap={3.2} />
-    <path d="M63 141H475M43 160l64 160M40 156l8 2m55 162 8-1" stroke={tones.brass} strokeWidth=".8" fill="none" />
-    {Array.from({length:9},(_,i)=><path key={i} d={`M${57+i*415/8} 137v7`} stroke={tones.brass} strokeWidth=".7" />)}
-    <Piece x={292} y={172} kind="king" scale={1.1} dark />
-    <Piece x={392} y={191} scale={.75} dark /><Piece x={184} y={191} scale={.75} dark />
-    <Piece x={149} y={251} scale={.95} /><Piece x={468} y={250} scale={.95} dark />
-    <path d="M231.38 268.31 335.13 268.31 327 248.44" stroke={tones.brass} strokeWidth="1.2" fill="none" strokeDasharray="3 5" opacity=".8" />
-    <g className={styles.knight}><Piece x={231.38} y={268.31} kind="knight" scale={1.25} /></g>
-    <Piece x={434} y={310} kind="king" scale={1.35} />
-    <path d="M139 365H497M139 361v8m358-8v8" stroke={tones.brass} strokeWidth=".8" />
-    <path d="M310 359l6 6-6 6-6-6Z" fill={tones.brass} />
-  </>;
-}
 
 function Bench({ id }: { id: string }) {
   return <g stroke={tones.ink} strokeWidth="1.3">
@@ -108,7 +92,7 @@ export default function EngravedScene({ scene, compact = false }: { scene: Scene
   return <figure className={`${styles.scene} ${compact ? styles.compact : ""}`} data-engraving={scene} data-playing="false">
     <svg viewBox={scene === "operator" ? "0 -172 600 592" : scene === "cabinet" ? "-38 30 650 375" : "0 0 600 420"} role="img" aria-labelledby={`${id}-title ${id}-desc`} className={styles.art}>
       <title id={`${id}-title`}>{data.title}</title><desc id={`${id}-desc`}>{data.alt}</desc>
-      {scene === "operator" ? <TurkOperator id={id} /> : scene === "cabinet" ? <OpenCabinet id={id} /> : scene === "board" ? <ChessScene id={id} /> : scene === "inspection" ? <InspectionScene id={id} /> : scene === "release" ? <ReleaseScene id={id} /> : scene === "folio" ? <FolioScene id={id} /> : <RestScene id={id} />}
+      {scene === "operator" ? <TurkOperator id={id} /> : scene === "cabinet" ? <OpenCabinet id={id} /> : scene === "board" ? <ChessStudy id={id} /> : scene === "inspection" ? <InspectionScene id={id} /> : scene === "release" ? <ReleaseScene id={id} /> : scene === "folio" ? <FolioScene id={id} /> : <RestScene id={id} />}
     </svg>
     <figcaption><span className={styles.figureNumber}>{data.number}</span><span>{data.caption}</span></figcaption>
   </figure>;

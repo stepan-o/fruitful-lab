@@ -8,6 +8,51 @@
 2. **From studio to screen.** Creative work, rights, production finance, publishing, promotion, distribution/settlement, equipment/rendering, operations and audience payments. Cross-industry and repeated-game comparisons hold the questions steady.
 3. **How many lives does a coin buy?** The existing Gauntlet case and complete cabinet instrument are preserved at their own stable route. Further narrative iteration follows the owner’s review of the opening pair.
 
+## Editorial pass — 5 October 2026, review draft
+
+Chapter 2 now follows a concrete game through the surrounding businesses. BG3
+introduces the difference between a game purchase and a computing service; the
+chapter then follows production funding, ownership, publishing, discovery and
+settlement. Cinema and Netflix clarify the objects bought at different points
+in the chain. Sony shows several roles inside one company and provides an
+observable revenue comparison. Cloud gaming returns to the opening example with
+its production, connection, rights and operating-cost consequences.
+
+The closing separates online game operation, catalog access and remote rendering
+before moving to Gauntlet’s rules of play. Recurring revenue around a purchased
+game is not silently attributed to the game’s developer. Historical membership
+counts remain reach measures, not evidence of active use or extra game sales.
+
+The continuous draft is mirrored in `OPENING_MANUSCRIPT.md`; Chapter 1 and the
+Gauntlet chapter are unchanged. This is an editorial review draft, not owner
+sign-off. Apply `EDITORIAL_STYLE_GUIDE.md` to later revisions. Chart headings and
+interactive explanatory copy were edited for clarity; source data, controls,
+geometry, assets and motion behavior were retained. Figure positions follow the
+new paragraph sequence. No public production commentary was added.
+
+Targeted primary-source recheck: Epic’s 26 March 2020 publishing offer; Valve’s
+Steam payment, discovery and Cloud Play documentation; NVIDIA’s membership FAQ;
+Netflix’s investor explanations of commissioning and licensing; Sony’s FY2025
+Q4 supplement, page 12; and the CMA’s 13 October 2023 acquisition decision.
+Steam’s settlement source now also appears beside the relevant narrative paragraph.
+
+### Editorial-pass validation
+
+- Full Lab CI passed: 55 suites / 249 tests, all 11 retained asset releases,
+  and production build. Scoped lint passed. A final build includes the clarified
+  introduction of Dungeons & Dragons as a tabletop role-playing game.
+- The production preview on port 3106 was checked at 1280, 768, 390 and 320px.
+  No horizontal overflow or browser console errors were observed. Verified the
+  BG3 comparison filter, keyboard tab navigation, revised layer readouts, Sony
+  revenue-unit controls, cloud mode selection and the next-chapter link.
+- Source data and optimized image files are unchanged. Chapter 1 and the Gauntlet
+  content objects were compared with the merged version and are unchanged.
+  No new continuous effects, dependencies or runtime requests were added.
+- Prepared for PR review at the owner’s request; Chapter 2 remains under editorial
+  review. Screenshots are in the task output
+  directory under `sanctuary-chapter-two-editorial`. Field performance was not
+  remeasured for this copy revision.
+
 ## Comparative instrument
 
 Eight selected routes, six questions, three column-pair tabs. Filters compare screen entertainment (Gauntlet / Dune Part Two / Stranger Things), BG3 (Steam local / Steam + paid GeForce NOW / PS5 download), and Diablo IV (Xbox purchase / eligible Game Pass download). Roles are not necessarily separate companies. The source register dates and bounds each example. Private royalty, revenue-share and subscription settlement rates are not invented.

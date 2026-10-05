@@ -174,8 +174,8 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                   </p>
                   {current.id === "the-fork" && paragraphIndex === 5 ? <EveningPlace initialWorld/> : null}
                   {renderInlineFigures(paragraphIndex)}
-                  {current.id === "studio-to-screen" && paragraphIndex === 3 ? <BusinessChains/> : null}
-                  {current.id === "studio-to-screen" && paragraphIndex === 8 ? <PlatformRevenue/> : null}
+                  {current.id === "studio-to-screen" && paragraphIndex === 7 ? <BusinessChains/> : null}
+                  {current.id === "studio-to-screen" && paragraphIndex === 9 ? <PlatformRevenue/> : null}
                   {current.id === "studio-to-screen" && paragraphIndex === 10 ? <CloudFigures/> : null}
                   {current.id === "the-fork" && paragraphIndex === 2 ? <AudienceEconomy/> : null}
                   {current.id === "the-fork" && paragraphIndex === 6 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}

@@ -3,14 +3,64 @@ import {useId,useState} from "react";
 import {Plate,brass,teal,bone} from "./plates/Engraving";
 import s from "./business-atlas.module.css";
 const layers=[
- {name:"Fund & make",title:"Money arrives before the game does.",exchange:"A studio pays employees and suppliers. An investor buys a claim on the company; a publisher may advance production funds under a publishing agreement. A self-funded studio carries that risk itself.",measure:"Track committed cost, cash runway and the milestones still needed to finish. Sales revenue and money available to make the game are different quantities.",link:"https://store.epicgames.com/news/epic-games-publishing-announcement?lang=en-US",source:"Example: Epic’s publishing offer"},
- {name:"Own & license",title:"Making a game need not mean owning its world.",exchange:"An IP owner grants defined rights to a developer or publisher. Fees or royalties compensate that permission. Larian’s Baldur’s Gate 3 and Hasbro’s Dungeons & Dragons rights illustrate separate roles.",measure:"Identify the licensed territory, platforms, term and royalty basis before attributing all receipts to the studio. Private rates are not inferred here.",link:"https://investor.hasbro.com/static-files/0e548540-ae0c-49a2-83ed-053cd009623a",source:"Example: Hasbro’s digital licensing"},
- {name:"Publish & reach",title:"A finished work still needs to find somebody.",exchange:"Publishers coordinate release and promotion. Agencies and ad channels may sell campaign services; press coverage, friends and organic store discovery can reach players without a placement purchase.",measure:"Measure discovery, conversion and acquisition cost separately. A trailer view, a wishlist and a paid sale are not interchangeable outcomes.",link:"https://partner.steamgames.com/doc/marketing/tools",source:"Example: Steam’s discovery tools"},
- {name:"Sell & settle",title:"The checkout is a junction, not the destination.",exchange:"A store collects from the buyer and settles with its commercial partner. Refunds, taxes, revenue shares and later royalties affect what reaches each party. Catalog access is supplied under its own agreements.",measure:"Distinguish gross sales, net receipts and profit. Recoupment may repay an earlier advance before later proceeds are shared.",link:"https://partner.steamgames.com/doc/finance/payments_salesreporting/faq",source:"Example: Steam settlement"},
- {name:"Equip & render",title:"Somebody must supply the machine.",exchange:"Local players buy a PC or console and supply its power. In a paid GeForce NOW route, the player instead adds remote-computing access to an eligible game. The provider operates the rendering hardware.",measure:"Compare the installed hardware audience with reachable streaming users. Capacity, queues and cost per streamed hour matter to a cloud operator.",link:"https://www.nvidia.com/en-us/geforce-now/how-to-play/",source:"Example: GeForce NOW"},
- {name:"Operate & maintain",title:"A running game can have several operators.",exchange:"A studio maintains the game; a backend provider may sell hosting, authentication or storage. Remote rendering is another service. An online game running on your own PC is not therefore a cloud-streamed game.",measure:"Separate account/service availability, game-server performance and stream performance. Each failure has a different owner and a different cost.",link:"https://partner.steamgames.com/doc/features/cloudgaming",source:"Example: Cloud Play integration"},
- {name:"Play & pay",title:"The audience’s experience joins the layers.",exchange:"Players may buy a game, catalog membership, computing service or optional addition. Advertisers can fund access too. One evening can rely on several purchases made at different times.",measure:"Track what was actually purchased. More play does not automatically produce another payment, and more payments do not establish a better experience.",link:"https://www.xbox.com/en-US/games/diablo-iv",source:"Example: Diablo IV on Xbox"},
+  {
+    "name": "Fund & make",
+    "title": "The team must be paid before release.",
+    "exchange": "A studio pays its staff and suppliers. Investors can provide money in return for a stake in the company; a publisher can fund a project in return for agreed rights and proceeds. Using the studio’s own money leaves it carrying the risk.",
+    "measure": "How long can the team keep working with the money available? Compare the cost of finishing with the next source of funding, not just the hoped-for sales total.",
+    "link": "https://store.epicgames.com/news/epic-games-publishing-announcement?lang=en-US",
+    "source": "Example: Epic’s publishing offer"
+  },
+  {
+    "name": "Own & license",
+    "title": "Who owns what the game uses?",
+    "exchange": "Permission to use an existing world, character or other protected work comes from its rights holder. A license defines the permitted use and payment. Larian makes Baldur’s Gate 3; Wizards of the Coast owns the Dungeons & Dragons material it uses.",
+    "measure": "Which rights were acquired, for how long, and on what payment terms? A royalty paid to a rights holder is different from income earned for developing the game.",
+    "link": "https://investor.hasbro.com/static-files/0e548540-ae0c-49a2-83ed-053cd009623a",
+    "source": "Example: Hasbro’s digital licensing"
+  },
+  {
+    "name": "Publish & reach",
+    "title": "A release still has to find its players.",
+    "exchange": "Publishers organize a release and its promotion. An advertising channel sells exposure; a reviewer, friend or store recommendation may bring a player to the game without a paid placement.",
+    "measure": "Where did buyers discover the game, and what did reaching them cost? A trailer view shows attention; a purchase answers a different question.",
+    "link": "https://partner.steamgames.com/doc/marketing/tools",
+    "source": "Example: Steam’s discovery tools"
+  },
+  {
+    "name": "Sell & settle",
+    "title": "What reaches the studio from a sale?",
+    "exchange": "The store collects payment and pays its commercial partner under their agreement. Taxes, refunds and the store’s share affect the amount paid out. The recipient may then owe payments to a financier or rights holder.",
+    "measure": "Keep the sale price, the amount received and the profit separate. If an agreement repays earlier production funding first, the first sale need not produce a profit payment.",
+    "link": "https://partner.steamgames.com/doc/finance/payments_salesreporting/faq",
+    "source": "Example: Steam settlement"
+  },
+  {
+    "name": "Equip & render",
+    "title": "Buying the game does not supply the computer.",
+    "exchange": "A local player supplies a PC or console. GeForce NOW supplies a remote computer, while the player still supplies a receiving device and connection. A paid plan charges for use of that computing service.",
+    "measure": "Which players can the available equipment serve? Capacity, queues and cost per streamed hour matter to the provider; device compatibility and connection quality matter to the player.",
+    "link": "https://www.nvidia.com/en-us/geforce-now/how-to-play/",
+    "source": "Example: GeForce NOW"
+  },
+  {
+    "name": "Operate & maintain",
+    "title": "What has to keep working after launch?",
+    "exchange": "The developer supplies fixes and updates. An online world also needs running services, which may use rented hosting. A cloud gaming provider does another job: running and streaming the game’s images.",
+    "measure": "When play fails, which service failed? A game server, an account service and a video stream have different operators, costs and measures of reliability.",
+    "link": "https://partner.steamgames.com/doc/features/cloudgaming",
+    "source": "Example: Cloud Play integration"
+  },
+  {
+    "name": "Play & pay",
+    "title": "What does this payment let the player do?",
+    "exchange": "A game purchase, a catalog subscription, multiplayer access and remote computing buy different things. Several can be needed for one evening. Optional purchases inside the game add further offers.",
+    "measure": "Identify the offer before interpreting its revenue. Another hour of play can matter differently to a studio selling copies, a catalog seeking renewals and a provider paying to run the hardware.",
+    "link": "https://www.xbox.com/en-US/games/diablo-iv",
+    "source": "Example: Diablo IV on Xbox"
+  }
 ];
+
 function Station({kind}:{kind:number}) {
  return <g stroke={brass} strokeWidth="1.3" fill="#18292b">
   {kind===0?<><path d="M15 95V36l55-22 48 22v59Z"/><path d="M8 38 70 9 127 37M70 15v80M17 76h100M17 83h100" fill="none"/>{[29,48,83,101].map(x=><g key={x}><path d={`M${x} 47v18h11V43Z`} fill="#b88e52"/><path d={`M${x+5} 44v21`} stroke="#263839"/></g>)}<path d="m42 96 7-18h46l7 18M53 79l3 15m26-15 4 15"/><path d="m57 72 17-8 13 7-17 8Z" fill={bone}/><path d="m68 68 11 5"/></>:null}
@@ -35,6 +85,6 @@ export default function BusinessMap(){
   <div className={s.mobileMap} role="img" aria-label="Production, permission, distribution, computing and the player: the same roles, sometimes combined in one company.">{["Production","Permission","Distribution","Computing","The player"].map((label,i)=><div key={label}><svg viewBox="0 0 140 125" aria-hidden="true"><Station kind={i}/></svg><span>{label}</span></div>)}</div>
   <div className={s.layers} role="group" aria-label="Inspect a business layer">{layers.map((item,i)=><button type="button" key={item.name} aria-pressed={i===active} onClick={()=>setActive(i)}><span aria-hidden="true">{String(i+1).padStart(2,"0")} </span>{item.name}</button>)}</div>
   <div className={s.layerReading} aria-live="polite"><div><p className={s.kicker}>Who buys what from whom</p><h3>{layer.title}</h3><p>{layer.exchange}</p></div><div className={s.measure}><p className={s.kicker}>The analytical question</p><p>{layer.measure}</p><a href={layer.link} target="_blank" rel="noreferrer">{layer.source} ↗</a></div></div>
-  <p className={s.footnote}>A map of roles, not seven compulsory companies. One business may combine them. Measurement questions are our analytical framework.</p>
+  <p className={s.footnote}>These are jobs, not a required number of companies. One business can do several. The analytical questions are ours; the linked examples document particular arrangements.</p>
  </section>;
 }

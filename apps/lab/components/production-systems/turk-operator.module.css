@@ -1,11 +1,17 @@
-.wheel, .pinion, .flame, .light { animation-play-state: paused !important; }
-:global([data-playing="true"]) :is(.wheel, .pinion, .flame, .light) { animation-play-state: running !important; }
+.wheel, .pinion, .flame, .illumination, .shadow, .chess { animation-play-state: paused !important; }
+:global([data-playing="true"]) :is(.wheel, .pinion, .flame, .illumination, .shadow, .chess) { animation-play-state: running !important; }
 .wheel { animation: turn 24s linear infinite; transform-origin: 0 0; }
 .pinion { animation: turn 15s linear infinite reverse; transform-origin: 0 0; }
-.flame { animation: flame 4.8s ease-in-out infinite; transform-origin: 190px 226px; }
-.light { animation: breathe 4.8s ease-in-out infinite; }
+.flame, .illumination, .shadow {
+  animation-duration: 6.4s;
+  animation-timing-function: cubic-bezier(.45, 0, .55, 1);
+  animation-iteration-count: infinite;
+}
+.shadow { opacity: .34; }
 @keyframes turn { to { transform: rotate(360deg); } }
-@keyframes flame { 0%,100% { transform: scaleX(1) rotate(-2deg); } 38% { transform: scaleX(.9) rotate(2deg); } 70% { transform: scaleX(1.05) rotate(-1deg); } }
-@keyframes breathe { 0%,100% { opacity: .85; } 38% { opacity: .95; } 70% { opacity: 1; } }
-@media(prefers-reduced-motion:reduce) { .wheel, .pinion, .flame, .light { animation: none !important; } }
-@media print { .wheel, .pinion, .flame, .light { animation: none !important; } }
+@media(prefers-reduced-motion:reduce) { .wheel, .pinion, .flame, .illumination, .shadow, .chess { animation: none !important; } }
+@media print { .wheel, .pinion, .flame, .illumination, .shadow, .chess { animation: none !important; } }
+
+.chess { animation-duration: 12s; animation-timing-function: linear; animation-iteration-count: infinite; transform-origin: 0 0; }
+
+.chess[data-chess-pawn] > g > ellipse:first-child { display: none; }

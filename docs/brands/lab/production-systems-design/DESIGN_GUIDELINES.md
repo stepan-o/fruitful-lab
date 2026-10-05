@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 2.0 · 5 October 2026 · Mechanical Turk direction
+Version 2.1 · 5 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. **Figure 1 is complete and accepted
 by the owner**, including the casework, conveyor, pace/results, palette and coherent
@@ -9,8 +9,9 @@ it while bringing each subsequent scene to the same construction and finish
 standard. Figure 2 is the first focused composition pass under this system;
 Figures 3–8 remain initial studies. A shipped pass is not owner acceptance.
 
-This revision captures the shared system and records Figure 2's original seated
-cutaway, informed by museum reconstruction evidence. It changes neither the
+This revision preserves the shared system and refines Figure 2's original
+cutaway with deliberate lower-body occlusion, a cropped automaton above, and
+source-coupled candlelight and a synchronized move on two boards, informed by museum reconstruction evidence. It changes neither the
 professional claims nor the accepted opening.
 
 [Visual reference sheet](reference.html) · [Profile brief and implementation evidence](../production-systems-profile.md)
@@ -147,44 +148,74 @@ joinery, material family, mechanisms and lighting logic across viewpoints.
 
 ### Figure 2 · the operator by candlelight
 
-**Composition:** an original side cutaway, with the person low in the right-hand
+**Composition:** an original side cutaway, with the person in the right-hand
 working bay and the small board extending toward the left. The head, hand and
-control form the focal triangle. Bent knees, both boots, a cushioned sliding seat
-and rails make the body fit within the enclosure. The working shelf ends before
-the torso; it does not become a counter hiding missing anatomy. Shallow display
-gears sit at the left margin, clear of the operator's elbow and sightline.
+control form the focal triangle. The lower body is deliberately concealed by a
+retained front wall with a stepped cut edge, visible wood thickness and finished
+joinery. Do not reintroduce schematic legs. The private board remains a separate
+working surface above the cut edge; the visible cushion supports the coat.
+Shallow display gears stay at the left margin. A cropped lower green robe, seat
+and output pedestal above the case hint at the larger automaton outside the plate.
+The robe is supported by the seat; it does not grow from the tabletop.
 
 **Research distinction:** HNF documents a pantograph, magnetic indicators and an
 internal board in its reconstruction [S16–S17]. It explicitly identifies scale
 and seating-direction errors in Racknitz [S17]. Retain Racknitz's engraved
 character as an artistic source, not a layout authority. HNF also notes the lack
 of complete original construction plans [S16]. This drawing makes no restoration
-claim. The camera, seated lower body, casework, simplified controls and candle
-are our composition; the museum replica uses an electric headlamp [S17].
+claim. The camera, sectioned wall, casework, simplified controls and candle
+are our composition; the museum replica uses an electric headlamp [S17]. Both
+figure studies retain their existing Racknitz attribution.
 
-**Working relationship:** the top board and its underside share one projection
-and vertical alignment. One four-piece position is repeated on the public board,
-indicator matrix and private pegboard. The raised hand meets a jointed control;
-its transmission follows the roof and rear upright to a sectioned output above.
-Keep the face unobstructed and show anchor points. Do not draw unrelated cords
-across the person or treat display gears as the source of chess intelligence.
+**Working relationship:** show a human decision travelling through an attached
+mechanism. The operator's raised hand pulls a pivoted input lever; a telescoping
+link, roof transmission and driven arbor connect toward the automaton's arm.
+His board hand and the Turk's articulated sleeve/pinching hand repeat the same
+move. Both 8×8 boards have a light h1 corner, matching file/rank orientation,
+turned ivory/dark pieces, board-bound shadows and one sparse legal position:
+White king a1 and pawn e2, Black king h8 and pawn c7. The unobstructed initial
+pawn advance e2–e4 follows FIDE article 3.7.2 [S18]. Coordinates come from each
+board's projection; do not move pieces by arbitrary screen offsets.
 
-**Material and light:** the walnut frame and recessed right return inherit the
-accepted opening's finish. The cavity is muted green, with selective hatching and
-quiet wall area around the face. A visible flame at (190, 216) motivates warm
-falloff and the enlarged silhouette projected onto the rear wall. The static
-shadow is a parallel-plane approximation: source-to-caster depth 55,
-source-to-receiver depth 70; scale 70/55 around the flame. Clip it to the cavity.
-Keep tiny flame variation inside that fixed source region, with no roaming glow.
+The 12-second demonstration has distinct approach/grip, lift, travel, placement,
+release and withdrawal phases, then a quiet hold. The pawn dissolves for the
+loop reset; it never visibly makes an illegal backwards move. Both boards,
+hands, input lever and output arm use the same phase model. Overhead indicators
+respond to occupied squares as the main pawn leaves and lands. The Turk's two
+arm segments retain fixed lengths and meet at a computed elbow; the operator's
+source forearm receives a small projected rotation/foreshortening. Keep the
+face and candle clear. The simplified machinery is an original interpretation,
+not a measured replica of HNF's pantograph.
 
-**Motion and cost:** two small wheels mesh with 1.5-unit module, pitch radii 24/15
-and 39-unit center spacing. Opposite rotations use 24/15-second periods. Three
-small flame/light layers breathe over 4.8 seconds. The operator's deliberate
-pose is still. Five animations use the existing lifecycle; Figure 1's experiment
-pace does not drive the human scene. No new observer, client boundary, dependency,
-filter or per-frame code. The initial server render is a complete still.
+**Material and light:** the walnut frame, sectioned wall and recessed right return
+inherit the accepted opening's finish. The cavity is muted green. A brass bracket
+bolted to the left partition holds the candle in open space at (222, 200), clear
+of gears, board and hands. Ivory wax, a layered flame and two bounded radial
+halos make the source legible at reading size. Warm falloff touches the wall,
+face and hands without washing out the engraving.
 
-[Figure 2 composition and verification](../production-systems-evidence/operator-composition-verification.md)
+The cast silhouette uses one parallel-plane point-light approximation:
+source-to-caster depth 50, source-to-receiver depth 70, giving 1.4× enlargement.
+For source L and caster P, the wall hit is L + 1.4(P − L). Flame motion ΔL moves
+the shadow by −0.4ΔL. Flame, light pools and shadow use the same irregular
+keyframe times and easing, so alignment also holds between keyframes. Keep the
+receiver and person clips fixed. Three nearby silhouette samples soften the
+edge without filters. This is an analytic engraving model, not full ray tracing.
+
+**Motion and cost:** the two wheels retain 24/15-second opposite rotations,
+1.5-unit module, pitch radii 24/15 and 39-unit center spacing. Five light layers
+share a quiet 6.4-second irregular cycle. Together with the linked chess gesture,
+24 animated SVG groups use the existing pause/offscreen/reduced-motion lifecycle; Figure 1's pace does not drive this
+scene. Only the working forearms move; the head and body remain attentive and still.
+No new observer, client boundary, dependency,
+filter or per-frame code. The initial server render is a complete still. Crop
+source scan-line geometry on the server, rather than shipping hidden detail.
+Reuse the original engraved character via SVG references for its segmented arms
+and animated silhouette. Sample joint geometry once on the server at 1% cycle
+intervals; the browser only interpolates CSS transforms/opacity.
+
+[Figure 2 linked-move and candle verification](../production-systems-evidence/operator-linked-verification.md)
+· [Earlier composition pass](../production-systems-evidence/operator-composition-verification.md)
 
 ### Rhythm and content ownership
 
@@ -724,3 +755,10 @@ material and editorial identity.
   notes are available beside the methodology bibliography.
 - Sanctuary's approved opening was visually inspected and its engraving/motion
   components were read as references. No Sanctuary or Loopforge code was changed.
+
+
+**S18 · FIDE, Laws of Chess, article 3.7.2 and Appendix C.**
+<https://handbook.fide.com/chapter/e012023>
+Checked 5 October 2026. A pawn's initial two-square advance requires an empty
+intermediate and destination square; file/rank notation is described in Appendix
+C. Used to make Figure 2's repeated e2–e4 demonstration a legal chess action.

@@ -415,3 +415,31 @@ link the HNF reconstruction research and identify the drawing as an interpretati
 Only Figure 2 and its source notes change in the public page. Figure 1, the other
 six scenes, professional facts, selectors and profile lifecycle stay intact.
 [Composition captures and verification](production-systems-evidence/operator-composition-verification.md).
+
+
+### Figure 2 candle, wall section and automaton presence · 5 October 2026
+
+Owner feedback requested credible lower anatomy or deliberate concealment, a
+clearer and brighter candle, a hint of the Turk above the box, and a dancing
+shadow. The revision chooses concealment: a finished, stepped wall section hides
+the legs while leaving the board and hands clear. A cropped lower robe and seat
+continue above the tabletop. The existing engraved studies remain credited.
+
+The candle now stands alone on a brass bracket at (222, 200). Layered flame and
+radial halos establish the light source; wall and figure warmth share its cycle.
+A 1.4× projected shadow responds inversely to the flame's movement. Three nearby
+silhouette samples soften the edge without blur. Seven local CSS animations
+inherit the existing lifecycle; no new client code. Guidelines v2.1 replace the
+previous bent-leg/static-shadow contract. The earlier evidence remains a record
+of that pass, not the current visual state.
+
+The same revision now links operator and automaton through one repeating e2–e4
+pawn move on matching boards. The operator's lever and board hand, jointed Turk
+arm, both pawns and overhead indicators share one 12-second choreography. Pieces
+lift before travelling, settle before release and remain placed during the hand's
+withdrawal; a brief dissolve resets the illustration without showing a backwards
+chess move. Joint poses are sampled on the server; the scene has 24 animated
+groups and uses no new client loop. Engraved character paths are reused rather
+than duplicated for moving arms and shadows.
+
+[Current captures and verification](production-systems-evidence/operator-linked-verification.md).

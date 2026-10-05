@@ -1,0 +1,2238 @@
+{
+  "pausedInitial": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.3788, 0.9255, -0.9255, -0.3788, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.9901, 0.1401, -0.1401, -0.9901, 381.358, 36.3971)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 58.525)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.951057, -0.309017, 0.309017, 0.951057, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.86",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.341",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.18",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.3, 0.92, -0.92, 0.3, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.86",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.86",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.86",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 644.859375,
+      "height": 392.765625,
+      "left": 128,
+      "right": 551.296875,
+      "top": 252.09375,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1430
+  },
+  "runningA": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.3788, 0.9255, -0.9255, -0.3788, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.9901, 0.1401, -0.1401, -0.9901, 381.358, 36.3971)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 58.525)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.951057, -0.309017, 0.309017, 0.951057, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.86",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.341",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.18",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "1",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.3, 0.92, -0.92, 0.3, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.86",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.86",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.86",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 644.859375,
+      "height": 392.765625,
+      "left": 128,
+      "right": 551.296875,
+      "top": 252.09375,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1430
+  },
+  "integrity": {
+    "brokenUses": 0,
+    "duplicateIds": [],
+    "errorOverlay": false,
+    "rasterOrFilter": 0,
+    "scenes": 8
+  },
+  "runningB": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.992565, -0.121716, 0.121716, 0.992565, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.888148, 0.196152, -0.196152, 0.888148, 94.7718, -46.7937)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1.3, 0, 0, 1.3, 261.463, 64.6628)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.463, 43.6628)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.323149, 0.94635, -0.94635, -0.323149, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.98685, -0.161703, 0.161703, -0.98685, 387.042, 38.5285)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.463, 28.0628)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.922465",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 1.49939, -0.974545)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.369984",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.599757, 0.389818)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.078351, -0.996926, 0.996926, -0.078351, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.425622, -0.904901, 0.904901, 0.425622, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.18",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1.3, 0, 0, 1.3, 303.154, 296.029)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.154, 285.029)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.992565, -0.121716, 0.121716, 0.992565, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.149999, 0.94385, -0.94385, 0.149999, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.97037, -0.241623, 0.241623, 0.97037, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.992565, -0.121716, 0.121716, 0.992565, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.888148, 0.196152, -0.196152, 0.888148, 94.7718, -46.7937)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.922465",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 1.49939, -0.974545)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.922465",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 1.49939, -0.974545)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.922465",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 1.49939, -0.974545)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 644.859375,
+      "height": 392.765625,
+      "left": 128,
+      "right": 551.296875,
+      "top": 252.09375,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1430
+  },
+  "desktop": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.992565, -0.121716, 0.121716, 0.992565, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.888148, 0.196152, -0.196152, 0.888148, 94.7718, -46.7937)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1.3, 0, 0, 1.3, 261.463, 64.6628)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.463, 43.6628)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.323149, 0.94635, -0.94635, -0.323149, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.98685, -0.161703, 0.161703, -0.98685, 387.042, 38.5285)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.463, 28.0628)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.922465",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 1.49939, -0.974545)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.369984",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.599757, 0.389818)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.078351, -0.996926, 0.996926, -0.078351, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.425622, -0.904901, 0.904901, 0.425622, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.18",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1.3, 0, 0, 1.3, 303.154, 296.029)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.154, 285.029)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.992565, -0.121716, 0.121716, 0.992565, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.149999, 0.94385, -0.94385, 0.149999, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.97037, -0.241623, 0.241623, 0.97037, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.992565, -0.121716, 0.121716, 0.992565, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.888148, 0.196152, -0.196152, 0.888148, 94.7718, -46.7937)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.922465",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 1.49939, -0.974545)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.922465",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 1.49939, -0.974545)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.922465",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 1.49939, -0.974545)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 644.859375,
+      "height": 392.765625,
+      "left": 128,
+      "right": 551.296875,
+      "top": 252.09375,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1430
+  },
+  "pauseA": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 260.193, 64.1942)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 52.2414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.312823, 0.949793, -0.949793, -0.312823, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.996382, -0.0855126, 0.0855126, -0.996382, 388.089, 38.8798)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 36.6414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.314011",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.239837, -0.239877)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.0938268, -0.995589, 0.995589, 0.0938268, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.163084, -0.986612, 0.986612, 0.163084, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.53323",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 302.309, 295.569)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 289.308)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.191486, 0.935323, -0.935323, 0.191486, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.984566, -0.175014, 0.175014, 0.984566, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 644.859375,
+      "height": 392.765625,
+      "left": 128,
+      "right": 551.296875,
+      "top": 252.09375,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1430
+  },
+  "pauseB": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 260.193, 64.1942)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 52.2414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.312823, 0.949793, -0.949793, -0.312823, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.996382, -0.0855126, 0.0855126, -0.996382, 388.089, 38.8798)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 36.6414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.314011",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.239837, -0.239877)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.0938268, -0.995589, 0.995589, 0.0938268, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.163084, -0.986612, 0.986612, 0.163084, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.53323",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 302.309, 295.569)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 289.308)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.191486, 0.935323, -0.935323, 0.191486, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.984566, -0.175014, 0.175014, 0.984566, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 644.859375,
+      "height": 392.765625,
+      "left": 128,
+      "right": 551.296875,
+      "top": 252.09375,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1430
+  },
+  "width768": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 260.193, 64.1942)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 52.2414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.312823, 0.949793, -0.949793, -0.312823, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.996382, -0.0855126, 0.0855126, -0.996382, 388.089, 38.8798)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 36.6414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.314011",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.239837, -0.239877)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.0938268, -0.995589, 0.995589, 0.0938268, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.163084, -0.986612, 0.986612, 0.163084, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.53323",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 302.309, 295.569)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 289.308)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.191486, 0.935323, -0.935323, 0.191486, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.984566, -0.175014, 0.175014, 0.984566, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 504.515625,
+      "height": 282.53125,
+      "left": 38,
+      "right": 303.59375,
+      "top": 221.984375,
+      "width": 265.59375,
+      "x": 38,
+      "y": 221.984375
+    },
+    "scrollWidth": 748,
+    "width": 758
+  },
+  "width390": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 260.193, 64.1942)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 52.2414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.312823, 0.949793, -0.949793, -0.312823, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.996382, -0.0855126, 0.0855126, -0.996382, 388.089, 38.8798)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 36.6414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.314011",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.239837, -0.239877)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.0938268, -0.995589, 0.995589, 0.0938268, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.163084, -0.986612, 0.986612, 0.163084, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.53323",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 302.309, 295.569)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 289.308)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.191486, 0.935323, -0.935323, 0.191486, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.984566, -0.175014, 0.175014, 0.984566, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 505.453125,
+      "height": 330.375,
+      "left": 32,
+      "right": 358,
+      "top": 175.078125,
+      "width": 326,
+      "x": 32,
+      "y": 175.078125
+    },
+    "scrollWidth": 370,
+    "width": 380
+  },
+  "width320": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 260.193, 64.1942)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 52.2414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.312823, 0.949793, -0.949793, -0.312823, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.996382, -0.0855126, 0.0855126, -0.996382, 388.089, 38.8798)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 36.6414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.314011",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.239837, -0.239877)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.0938268, -0.995589, 0.995589, 0.0938268, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.163084, -0.986612, 0.986612, 0.163084, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.53323",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 302.309, 295.569)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 289.308)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.191486, 0.935323, -0.935323, 0.191486, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.984566, -0.175014, 0.175014, 0.984566, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 483.84375,
+      "height": 271.453125,
+      "left": 32,
+      "right": 288,
+      "top": 212.390625,
+      "width": 256,
+      "x": 32,
+      "y": 212.390625
+    },
+    "scrollWidth": 300,
+    "width": 310
+  },
+  "resumed": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 260.193, 64.1942)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 52.2414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.312823, 0.949793, -0.949793, -0.312823, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.996382, -0.0855126, 0.0855126, -0.996382, 388.089, 38.8798)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 36.6414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.314011",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.239837, -0.239877)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.0938268, -0.995589, 0.995589, 0.0938268, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.163084, -0.986612, 0.986612, 0.163084, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.53323",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 302.309, 295.569)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 289.308)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.191486, 0.935323, -0.935323, 0.191486, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.984566, -0.175014, 0.175014, 0.984566, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 644.859375,
+      "height": 392.765625,
+      "left": 128,
+      "right": 551.296875,
+      "top": 252.09375,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1430
+  },
+  "consoleErrors": [],
+  "offscreen": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 260.193, 64.1942)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 52.2414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.312823, 0.949793, -0.949793, -0.312823, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(-0.996382, -0.0855126, 0.0855126, -0.996382, 388.089, 38.8798)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 36.6414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.314011",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.239837, -0.239877)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.0938268, -0.995589, 0.995589, 0.0938268, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.163084, -0.986612, 0.986612, 0.163084, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.53323",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 302.309, 295.569)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 289.308)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.191486, 0.935323, -0.935323, 0.191486, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.984566, -0.175014, 0.175014, 0.984566, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "paused",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": -4196.140625,
+      "height": 392.765625,
+      "left": 128,
+      "right": 551.296875,
+      "top": -4588.90625,
+      "width": 423.296875,
+      "x": 128,
+      "y": -4588.90625
+    },
+    "scrollWidth": 1420,
+    "width": 1430
+  },
+  "resumedSettled": {
+    "motion": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 260.193, 64.1942)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 52.2414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.312823, 0.949793, -0.949793, -0.312823, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(-0.996382, -0.0855126, 0.0855126, -0.996382, 388.089, 38.8798)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 36.6414)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "opacity": "0.314011",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0.239837, -0.239877)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.0938268, -0.995589, 0.995589, 0.0938268, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.163084, -0.986612, 0.986612, 0.163084, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "opacity": "0.53323",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "opacity": "0.18",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1.17075, 0, 0, 1.17075, 302.309, 295.569)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 289.308)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.191486, 0.935323, -0.935323, 0.191486, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.984566, -0.175014, 0.175014, 0.984566, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.996134, -0.0878474, 0.0878474, 0.996134, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "opacity": "1",
+        "state": "running",
+        "transform": "matrix(0.902461, 0.152221, -0.152221, 0.902461, 77.7215, -33.4947)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "opacity": "0.800024",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.599592, 0.599694)"
+      }
+    ],
+    "nodes": 693,
+    "rect": {
+      "bottom": 638.671875,
+      "height": 386.390625,
+      "left": 58,
+      "right": 473.71875,
+      "top": 252.28125,
+      "width": 415.71875,
+      "x": 58,
+      "y": 252.28125
+    },
+    "scrollWidth": 1260,
+    "width": 1270
+  },
+  "derivedChecks": {
+    "mainMoveProgress": 0.9963544635232408,
+    "privateMoveProgress": 0.9964936461774113,
+    "mainLiftFraction": 1.000023906650299,
+    "privateLiftFraction": 0.99990508305807,
+    "pauseStable": true,
+    "sourceShadowInverse": true
+  }
+}

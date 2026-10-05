@@ -1,29 +1,63 @@
 import figureStudies from "@/lib/production-systems/figure-studies.json";
-import { Board, Grain, Piece, Screw, round } from "./engraving-primitives";
+import { Grain, Screw, round } from "./engraving-primitives";
 import { wheelOutline } from "@/lib/production-systems/turk-movement";
+import { operatorLamp, operatorShadowTransform, operatorLightKeyframes } from "@/lib/production-systems/operator-light";
+import { chessKeyframes, mainBoard, move, position, squareCenter } from "@/lib/production-systems/operator-chess";
+import { moveStyle, OperatorControl, TurkArm, WorkingBoard } from "./OperatorChess";
 import styles from "./turk-operator.module.css";
 
 const ink = "#463a30", brass = "#ae9365", edge = "#c9aa78";
 const person = figureStudies.studies.operator;
-// One position is repeated above, in the indicators and on the private board.
-const position = [3, 14, 35, 57];
-const publicBoard = { x: 140, y: 48, width: 190, depth: 37, skew: -21.36 };
-const privateBoard = { x: 237, y: 269, width: 105, depth: 22, skew: -12.7 };
-function squareCenter(index: number, board: typeof publicBoard) {
-  const col = index % 8 + .5, row = Math.floor(index / 8) + .5;
-  return { x: round(board.x + col * board.width / 8 + row * board.skew / 8), y: round(board.y + row * board.depth / 8) };
-}
 const bodyTransform = "translate(294 122) scale(.67)";
-// Source anatomy stops at the arms. Original coat, bent legs and seated support
-// complete the posture; Racknitz is not treated as a reliable cabinet plan.
-const coat = "M382 250Q400 258 400 277L410 306Q389 317 359 307L365 284Z";
-const farLeg = "M389 302Q374 298 351 309L338 322 340 342 332 353 348 356 359 338 361 327 407 320 411 307Z";
-const nearLeg = "M381 300Q351 286 321 296Q299 301 299 315L311 333 299 349 313 355 330 332Q335 324 326 315L374 322 396 314Z";
-const nearBoot = "M299 345 315 351 312 359Q299 363 273 361L270 357 284 352Z";
-const farBoot = "M335 348 349 352 346 360H318L315 357 326 353Z";
-
+// The source ends at the forearms. Continue only the coat into the concealed
+// seating bay; the retained wall deliberately occludes the lower anatomy.
+const coat = "M382 250Q400 258 400 280L405 332H358L365 284Z";
 function HumanSilhouette({ id }: { id: string }) {
-  return <><path d={coat + farLeg + nearLeg + farBoot + nearBoot} /><use href={`#${id}-person`} transform={bodyTransform} /></>;
+  return <><path d={coat} /><use href={`#${id}-moving-silhouette`} /></>;
+}
+
+// Crop the source's torso scan lines offline on the server. The head and the
+// original static arm are excluded; the articulated sleeve owns the gesture.
+function lowerCoat(path: string) {
+  return [...path.matchAll(/M([\d.]+) ([\d.]+)h([\d.]+)/g)].flatMap(([,xx,yy,ww]) => {
+    const x=+xx,y=+yy,end=x + +ww;
+    return y>=126 && y<=324 && end>174 && x<381
+      ? [`M${Math.max(174,x)} ${y}h${round(Math.min(381,end)-Math.max(174,x))}`] : [];
+  }).join("");
+}
+const turk=figureStudies.studies.automaton;
+const turkCoatMid=lowerCoat(turk.mid),turkCoatInk=lowerCoat(turk.ink);
+const robe="M413-85H509L507-48 506-5 522 53Q459 65 400 54L414 15 404-18Z";
+
+function PersonLayer({id,silhouette=false}:{id:string;silhouette?:boolean}) {
+  const study=<use href={`#${id}-${silhouette?"person":"person-engraving"}`} transform={bodyTransform}/>;
+  return <g data-operator-part={silhouette?undefined:"engraved-character"}>
+    <g clipPath={`url(#${id}-body-still)`}>{study}</g>
+    <g className={styles.chess} style={{...moveStyle(id,"lever"),transformOrigin:"340px 244px"}}><g clipPath={`url(#${id}-lever-hand)`}>{study}</g></g>
+    <g className={styles.chess} style={moveStyle(id,"operatorHand")}><g clipPath={`url(#${id}-board-hand)`}>{study}</g></g>
+  </g>;
+}
+
+function TurkPresence({ id }: { id: string }) {
+  return <g data-operator-part="turk-lower-figure" stroke={ink}>
+    {/* The plate deliberately crops at the waist. A seat and short plinth keep
+        the robe supported above the case instead of growing out of its top. */}
+    <path d="M404-85V49M521-85V48M400 47H523L530 57H399Z" fill="#594330" strokeWidth="2" />
+    <path d="M407-82V45M518-82V45" stroke={edge} strokeWidth=".6" />
+    <path d="M397 55Q457 61 529 54L524 64Q459 72 398 64Z" fill="#69573d" strokeWidth="1" />
+    <path d={robe} fill="#7e8b71" strokeWidth="1.1"/>
+    <g clipPath={`url(#${id}-turk-crop)`}>
+      <g transform="translate(274 -157) scale(.65)" strokeWidth=".8">
+
+        <path d={turkCoatMid} fill="none" stroke="#665c44" strokeWidth=".65" />
+        <path d={turkCoatInk} fill="none" stroke="#3e4032" strokeWidth=".8" />
+      </g>
+    </g>
+    <path d="M396 58Q452 66 523 58M399 62Q460 70 523 62" fill="none" stroke={edge} strokeWidth=".7" />
+    <path d="M422 67V73M507 66V72M421 74H508" stroke="#504130" strokeWidth="2" />
+    <path d="M465 76H486V89H465Z" fill="#5f644b" strokeWidth=".8" />
+    <path d="M469 77V87M475 77V87M481 77V87" stroke={brass} strokeWidth=".7" />
+  </g>;
 }
 
 /** The exposed bay is a side cutaway, not a collection of front-facing boxes. */
@@ -32,8 +66,9 @@ function Casework({ id }: { id: string }) {
     <path d="M54 97 88.64 37H565.64L531 97Z" fill="#ad8b5d" strokeWidth="1" />
     <path d="M61 95 92 42H558L527 95Z" fill={`url(#${id}-walnut)`} strokeWidth=".6" />
     <path d="M75 90 99 48H547M90 58H546M86 65H542" fill="none" stroke={edge} strokeWidth=".5" />
-    <Board {...publicBoard} />
-    {position.map((index, i) => <Piece key={index} {...squareCenter(index, publicBoard)} scale={.23} dark={i % 2 === 0} />)}
+    <TurkPresence id={id} />
+    <WorkingBoard id={id}/>
+    <TurkArm id={id}/>
     <path d="M531 97 565.64 37V318L531 378Z" fill="#503d2d" strokeWidth="1.2" />
     <path d="M538 113 558.64 77V311L538 347Z" fill="#755437" strokeWidth=".8" />
     <path d="M541 122 555.64 97V306L541 331Z" fill="#392f25" />
@@ -46,17 +81,20 @@ function Casework({ id }: { id: string }) {
     <path d="M76 116 71 112M510 116 514 112M76 357 71 360M510 357 514 360" strokeWidth=".7" />
     <g clipPath={`url(#${id}-inside)`} stroke="none">
       <path d="M76 116H510V357H76Z" fill="#2e352b" />
-      <path d="M96.78 80H531V322H96.78Z" fill={`url(#${id}-wall-light)`} />
+      <path d="M96.78 80H531V322H96.78Z" fill="#293a2e" />
+      <g className={styles.illumination} style={{ animationName: `${id}-candle` }}>
+        <path d="M96.78 80H531V322H96.78Z" fill={`url(#${id}-wall-light)`} />
+      </g>
       <path d="M76 116 96.78 80V322L76 358Z" fill="#302b23" />
       <path d="M76 358 96.78 322H531L510 358Z" fill="#6b5940" />
       <path d="M76 358 96.78 322H531L510 358Z" fill={`url(#${id}-floor-grain)`} />
       <path d="M97 119V322H532" fill="none" stroke="#aa8654" strokeWidth=".65" opacity=".5" />
       <path d="M98 121H510V322H98Z" fill={`url(#${id}-hatch)`} opacity=".12" />
       <path d="M100 159H181M100 161H181M194 313H466M194 315H466M427 124V309M430 124V309" fill="none" stroke="#9b8459" strokeWidth=".5" opacity=".28" />
-      {/* One point source, a caster plane at depth 55 and receiver at 70.
-          In an orthographic view, projection is a homothety about the flame. */}
-      <g transform="translate(-51.82 -58.91) scale(1.272727)" fill="#141e18" opacity=".37" data-operator-part="projected-person-shadow">
-        <HumanSilhouette id={id} />
+      {/* Fixed receiver clip; only the source-derived shadow offset dances.
+          Three close source samples soften the edge without a blur/filter. */}
+      <g className={styles.shadow} style={{ animationName: `${id}-shadow` }} fill="#111e17" data-operator-part="projected-person-shadow">
+        {[{x:0,y:0},{x:.6,y:-.3},{x:-.6,y:.3}].map((p,i)=><g key={i} transform={`translate(${p.x} ${p.y})`} opacity=".42"><g transform={operatorShadowTransform}><HumanSilhouette id={id} /></g></g>)}
       </g>
       <path d="M185 116H192V329L185 340Z" fill="#453827" />
       <path d="M188 121V331" stroke="#b18c57" strokeWidth=".65" />
@@ -80,7 +118,7 @@ function Casework({ id }: { id: string }) {
 }
 
 function candleFacingArc(x: number, y: number, radius: number) {
-  const angle = Math.atan2(216 - y, 190 - x), r = radius - 1;
+  const angle = Math.atan2(operatorLamp.y - y, operatorLamp.x - x), r = radius - 1;
   const point = (a: number) => `${round(r * Math.cos(a))} ${round(r * Math.sin(a))}`;
   return `M${point(angle - .7)}A${r} ${r} 0 0 1 ${point(angle + .7)}`;
 }
@@ -105,109 +143,103 @@ function DisplayMovement() {
   </g>;
 }
 
-function IndicatorBoard() {
-  // The underside is directly below the public board in the same projection.
-  const underside = { ...publicBoard, y: publicBoard.y + 69 };
+function IndicatorBoard({id}:{id:string}) {
+  const underside={...mainBoard,y:mainBoard.y+69};
   return <g data-operator-part="underside-indicators" stroke={ink} strokeWidth=".6">
-    <path d="M135 112H335L311 158H111Z" fill="#292a22" />
-    <path d="M140 117H330L308.64 154H118.64Z" fill="#8f815a" />
-    <path d={Array.from({ length: 9 }, (_, i) => {
-      const x = round(140 + i * 190 / 8), y = round(117 + i * 37 / 8), skew = round(i * -21.36 / 8);
-      return `M${x} 117l-21.36 37M${140 + skew} ${y}h190`;
-    }).join("")} fill="none" stroke="#423e2b" strokeWidth=".4" />
-    {Array.from({length:64},(_,i)=>{
-      const {x,y} = squareCenter(i, underside), occupied = position.includes(i);
-      return <path key={i} d={`M${x} ${y}v${occupied?1:3}l-1.5 1.2h3l-1.5-1.2`} fill="none" stroke={occupied?"#d2b572":"#746e4e"} strokeWidth=".7" />;
+    <path d="M138 109H375L347 156H113Z" fill="#292a22"/>
+    <path d="M145 109H371L346.75 151H120.75Z" fill="#8f815a"/>
+    <path d={Array.from({length:9},(_,i)=>`M${145+i*226/8} 109l${mainBoard.skew} 42M${145+i*mainBoard.skew/8} ${109+i*42/8}h226`).join("")} fill="none" stroke="#423e2b" strokeWidth=".4"/>
+    {Array.from({length:64},(_,i)=>{ const p=squareCenter(i,underside),active=position.some(piece=>piece.square===i), moving=i===move.from||i===move.to;
+      return <g key={i}><path d={`M${p.x} ${p.y}v3l-1.5 1.2h3l-1.5-1.2`} fill="none" stroke={active?"#d2b572":"#746e4e"} strokeWidth=".7"/>{moving&&<circle className={styles.chess} style={{animationName:`${id}-${i===move.from?"origin":"destination"}`,opacity:i===move.from?1:.18}} cx={p.x} cy={p.y+2} r="1.8" fill="#e0c78a" stroke="none"/>}</g>;
     })}
-    <path d="M121 157H309M139 115V107M333 115V106" fill="none" stroke={brass} strokeWidth="1.1" />
+    <path d="M123 154H346M143 112V106M369 112V106" fill="none" stroke={brass} strokeWidth="1.1"/>
   </g>;
 }
 
-function SeatAndLegs({ id }: { id: string }) {
-  return <g stroke={ink} strokeLinejoin="round" data-operator-part="seated-clearance">
-    <path d="M287 348H461L458.7 352H284.7ZM301 337H475L472.7 341H298.7Z" fill="#635c43" strokeWidth=".7" />
-    <path d="M286 350H459M300 339H473" stroke="#bba577" strokeWidth=".6" />
-    <path d="M378 308V337H425V308M383 310V334M420 310V334" fill="#755638" strokeWidth="1" />
-    {[382,422].map(x=><g key={x}><circle cx={x} cy="337" r="5" fill="#a98f5e" strokeWidth=".8" /><circle cx={x} cy="337" r="1.5" fill={ink} /></g>)}
-    <path d="M361 300H421L435 306V314H361Z" fill="#765239" strokeWidth=".8" />
-    <path d="M360 299Q388 293 420 299L434 304Q395 311 361 305Z" fill="#6a4638" strokeWidth=".8" />
-    <path d="M365 303Q393 307 428 303" fill="none" stroke="#b28561" strokeWidth=".7" />
-    <path d={farLeg} fill="#777460" strokeWidth=".9" />
-    <path d={farBoot} fill="#4c3c30" strokeWidth="1" />
-    <path d={nearLeg} fill="#a59777" strokeWidth="1.1" />
+function SeatedCoat({ id }: { id: string }) {
+  return <g stroke={ink} data-operator-part="concealed-seat">
+    <path d="M360 299Q388 293 420 299L434 304V319H360Z" fill="#6a4638" strokeWidth=".8" />
+    <path d="M402 306H432M404 310H430" stroke="#b28561" strokeWidth=".7" />
     <path d={coat} fill="#837051" strokeWidth="1" />
-    <path d={nearBoot} fill="#503c2e" strokeWidth=".9" />
-    <path d="M309 308q25-12 51-3m-48 9 12 15-16 21m46-35-7 15-1 14M374 287l-8 16m13-13 4 16m7-21 6 21m-113 51q12 2 27-1m12 1h23" fill="none" stroke="#44382b" strokeWidth=".75" />
-    <path d="M305 310q26-13 51-4M310 347l7-15M278 357l17-3M323 358h21" fill="none" stroke="#cbbb91" strokeWidth=".7" />
-    <path d={nearLeg+farLeg+coat} fill={`url(#${id}-hatch)`} opacity=".48" stroke="none" />
-    <path d="M403 286H419V299M417 276V299" fill="none" stroke="#aa8a56" strokeWidth="1.2" />
+    <path d="M375 284q-8 17-7 35m11-32 3 34m6-36q8 15 8 35" fill="none" stroke="#44382b" strokeWidth=".75" />
+    <path d={coat} fill={`url(#${id}-hatch)`} opacity=".35" stroke="none" />
   </g>;
 }
 
-function PrivateBoard() {
-  return <g data-operator-part="private-pegboard" stroke={ink}>
-    {/* A cantilevered shelf ends at the player's hand; it never bisects the legs. */}
-    <path d="M226 294V318L244 286M317 294V320L332 285" fill="none" stroke="#816444" strokeWidth="3" />
-    <Board {...privateBoard} />
-    {Array.from({length:64},(_,i)=>{
-      const {x,y} = squareCenter(i, privateBoard);
-      return <ellipse key={i} cx={x} cy={y} rx=".8" ry=".48" fill="#413c2e" stroke="none" />;
-    })}
-    {position.map((index,i)=>{ const {x,y} = squareCenter(index, privateBoard); return <g key={index} strokeWidth=".6">
-      <path d={`M${x-2} ${y}v-6h4v6Z`} fill={i%2?"#d9c9a0":"#53634e"} /><ellipse cx={x} cy={y-6} rx="2.4" ry="1.1" fill={i%2?"#ede0be":"#7c8765"} />
-    </g>; })}
-    <path d="M226 302H343" stroke={edge} strokeWidth=".65" />
-    <path d="M332 298h11" stroke="#b89c67" strokeWidth="1" />
+function CutawayWall({ id }: { id: string }) {
+  const face = "M76 294H186V315H434V294H510V357H76Z";
+  const section = "M76 294H186V315H434V294H510L513.46 288H437.46V309H189.46V288H79.46Z";
+  return <g data-operator-part="cutaway-wall" stroke={ink} strokeLinejoin="round">
+    <defs><clipPath id={`${id}-retained-wall`}><path d={face} /></clipPath></defs>
+    <path d={face} fill={`url(#${id}-walnut)`} strokeWidth="1.1" />
+    <g clipPath={`url(#${id}-retained-wall)`}><Grain x={79} y={296} w={430} h={61} /></g>
+    <path d={section} fill="#b69b6d" strokeWidth=".8" />
+    <path d={section} fill={`url(#${id}-hatch)`} opacity=".22" stroke="none" />
+    <path d="M78 293H187V314H435V293H509" fill="none" stroke="#e0c391" strokeWidth=".8" />
+    <path d="M85 329H501V350H85Z" fill="#664a33" strokeWidth=".65" />
+    <path d="M88 332H498V347H88Z" fill="#89653f" strokeWidth=".55" />
+    <path d="M90 334H496M87 348H499" stroke={edge} strokeWidth=".5" />
+    <Grain x={92} y={337} w={400} h={9} />
+    {[91,494].map(x=><Screw key={x} x={x} y={341} r={1.6} />)}
   </g>;
 }
 
-function ControlLinkage() {
-  return <g data-operator-part="pantograph" fill="none" strokeLinejoin="round">
-    {/* A compact four-bar control stays in front of the working hand; the
-        transmission follows the roof and rear upright, clear of the face. */}
-    <path d="M300 160 319 136 353 158 334 182Z" stroke="#302c22" strokeWidth="4.2" />
-    <path d="M300 160 319 136 353 158 334 182Z" stroke={brass} strokeWidth="2.4" />
-    <path d="M319 136V121H476V96M476 121V268" stroke="#302c22" strokeWidth="5" />
-    <path d="M319 136V121H476V96M476 121V268" stroke="#9d8a60" strokeWidth="2.8" />
-    <path d="M321 119H474M474 126V267" stroke="#d1b985" strokeWidth=".65" />
-    <path d="M331 181 327 199M336 183 332 201" stroke="#b39a67" strokeWidth="1" />
-    {[[300,160],[319,136],[353,158],[334,182],[476,121]].map(([x,y])=><Screw key={`${x}-${y}`} x={x} y={y} r={2.4} />)}
-    <path d="M469 141H483V150H469ZM469 249H483V259H469Z" fill="#78664a" stroke={ink} strokeWidth=".8" />
-    <path d="M470 89V46H482V89" fill="#6b6d56" stroke={ink} strokeWidth="1" />
-    <ellipse cx="476" cy="45" rx="8" ry="3" fill={brass} stroke={ink} strokeWidth=".8" />
-    <path d="M472 45V22M480 45V22" stroke="#73745b" strokeWidth="2.5" />
-    {/* Section break: the cropped output continues to the automaton above. */}
-    <path d="M471 17H481V27H471Z" stroke={ink} fill={brass} strokeWidth=".8" />
-    <path d="M468 19 484 15M468 23 484 19" stroke={ink} strokeWidth=".85" />
-    <path d="M470 24H482M471 33H481" stroke={edge} strokeWidth=".6" />
-    <path d="M467 94H485V99H467Z" fill={brass} stroke={ink} strokeWidth=".8" />
+function PrivateBoard({id}:{id:string}) {
+  return <g stroke={ink}>
+    <path d="M226 299V318L244 288M348 304V319L362 292" fill="none" stroke="#816444" strokeWidth="3"/>
+    <WorkingBoard id={id} inside/>
+    <path d="M216 313H367" stroke={edge} strokeWidth=".65"/>
   </g>;
 }
 
 function Candle({ id }: { id: string }) {
   return <g data-operator-part="candle" stroke={ink} strokeWidth=".85">
-    <path d="M175 276H209V282H175ZM199 282V308L181 282" fill="#8b704c" />
-    <path d="M177 277H207" stroke={edge} strokeWidth=".65" />
-    <ellipse cx="190" cy="272" rx="11" ry="3.2" fill="#a68956" />
-    <path d="M182 271q7-3 6-13h4q-1 10 6 13Z" fill={brass} />
-    <ellipse cx="190" cy="257" rx="7" ry="2" fill="#cab185" />
-    <path d="M187 257V230q3-2 6 0v27Z" fill="#e0d1ae" />
-    <path d="M188 233v12q2 2 2-1v-10m2 3v15" stroke="#b1986c" fill="none" strokeWidth=".55" />
-    <path d="M190 230v-5" strokeWidth=".7" />
-    <g className={styles.flame} stroke="none"><path d="M190 226q-6-5-2-11l3-6q-1 7 3 10q2 5-4 7Z" fill="#d2a45e" /><path d="M190 224q-3-4 1-8q3 5-1 8Z" fill="#fff0bd" /></g>
-    <g className={styles.light} clipPath={`url(#${id}-inside)`} stroke="none"><ellipse cx="190" cy="216" rx="35" ry="47" fill={`url(#${id}-flame-halo)`} /></g>
+    {/* The wall-mounted arm leaves a clear silhouette around wax and flame. */}
+    <path d="M184 244H193V267H184Z" fill="#806844" />
+    <Screw x={188.5} y={248} r={1.6} /><Screw x={188.5} y={263} r={1.6} />
+    <path d="M193 258Q220 274 222 244" fill="none" stroke="#392f22" strokeWidth="5" />
+    <path d="M193 257Q218 272 221 244" fill="none" stroke={brass} strokeWidth="3" />
+    <path d="M194 256Q217 268 220 246" fill="none" stroke="#dec08a" strokeWidth=".65" />
+    <path d="M210 244Q211 251 222 251Q233 251 234 244Z" fill="#a68b55" />
+    <ellipse cx="222" cy="243" rx="13" ry="3.1" fill="#d5b679" />
+    <ellipse cx="222" cy="242" rx="9" ry="1.8" fill="#f3ddb0" strokeWidth=".55" />
+    <path d="M218 241V215Q222 212 226 215V241Z" fill="#eee1ba" />
+    <path d="M219 218v12q2 3 2-1v-12m4 4v15" stroke="#b49a69" fill="none" strokeWidth=".65" />
+    <path d="M219 215Q222 218 226 215" fill="none" stroke="#fff1cb" strokeWidth="1.2" />
+    <path d="M222 215v-7" stroke="#574128" strokeWidth="1.2" />
+    <g className={styles.illumination} style={{ animationName: `${id}-candle` }} stroke="none">
+      <ellipse cx="222" cy="200" rx="62" ry="76" fill={`url(#${id}-flame-halo)`} />
+      <ellipse cx="222" cy="200" rx="18" ry="25" fill={`url(#${id}-flame-core)`} />
+    </g>
+    <g className={styles.flame} style={{ animationName: `${id}-candle` }} stroke="none">
+      <path d="M222 210Q212 205 217 195L224 184Q221 193 227 198Q231 207 222 210Z" fill="#d8a34f" />
+      <path d="M222 208Q217 203 222 195Q229 203 222 208Z" fill="#ffe4a2" />
+      <path d="M222 206Q219 202 222 199Q225 203 222 206Z" fill="#fff7da" />
+    </g>
   </g>;
 }
 
 export default function TurkOperator({ id }: { id: string }) {
   return <g data-operator="candlelit-cutaway">
+    <style>{operatorLightKeyframes(id)+chessKeyframes(id)}</style>
     <defs>
       <clipPath id={`${id}-inside`}><path d="M76 116H510V357H76Z" /></clipPath>
+      <clipPath id={`${id}-turk-crop`}><path d={robe}/></clipPath>
       <path id={`${id}-person`} d={person.outline} />
+      <g id={`${id}-person-engraving`} strokeLinecap="round" strokeLinejoin="round">
+        <use href={`#${id}-person`} fill="#bfae86" stroke={ink} strokeWidth="1.1"/>
+        <path d={person.mid} stroke="#6e5c43" strokeWidth=".7" fill="none"/>
+        <path d={person.ink} stroke="#342d25" strokeWidth=".9" fill="none"/>
+      </g>
+      <clipPath id={`${id}-lever-hand`}><path d="M310 163H348L356 249H310Z"/></clipPath>
+      <clipPath id={`${id}-board-hand`}><path d="M286 263 389 252 394 283 335 307H286Z"/></clipPath>
+      <clipPath id={`${id}-body-still`}><path clipRule="evenodd" d="M280 115H430V310H280ZM310 163H348L356 249H310ZM286 263 389 252 394 283 335 307H286Z"/></clipPath>
+      <g id={`${id}-moving-silhouette`}><PersonLayer id={id} silhouette/></g>
       <linearGradient id={`${id}-walnut`} x1="0" y1="0" x2="1" y2=".3"><stop stopColor="#7b583d" /><stop offset=".35" stopColor="#97734d" /><stop offset="1" stopColor="#60432f" /></linearGradient>
-      <radialGradient id={`${id}-wall-light`} gradientUnits="userSpaceOnUse" cx="190" cy="216" r="330"><stop stopColor="#9a7c48" /><stop offset=".45" stopColor="#565740" /><stop offset="1" stopColor="#29382f" /></radialGradient>
-      <radialGradient id={`${id}-flame-halo`}><stop stopColor="#ffe3a0" stopOpacity=".24" /><stop offset="1" stopColor="#ebc879" stopOpacity="0" /></radialGradient>
-      <radialGradient id={`${id}-skin-light`} gradientUnits="userSpaceOnUse" cx="190" cy="216" r="280"><stop stopColor="#f5d798" stopOpacity=".34" /><stop offset="1" stopColor="#ead29e" stopOpacity="0" /></radialGradient>
+      <radialGradient id={`${id}-wall-light`} gradientUnits="userSpaceOnUse" cx={operatorLamp.x} cy={operatorLamp.y} r="265"><stop stopColor="#d1ab68" stopOpacity=".88" /><stop offset=".3" stopColor="#b29556" stopOpacity=".6" /><stop offset=".7" stopColor="#87905c" stopOpacity=".18" /><stop offset="1" stopColor="#71825a" stopOpacity="0" /></radialGradient>
+      <radialGradient id={`${id}-flame-halo`}><stop stopColor="#ffdc8c" stopOpacity=".45" /><stop offset=".35" stopColor="#f4cc72" stopOpacity=".15" /><stop offset="1" stopColor="#edbb66" stopOpacity="0" /></radialGradient>
+      <radialGradient id={`${id}-flame-core`}><stop stopColor="#fff1b9" stopOpacity=".48" /><stop offset="1" stopColor="#ffe0a0" stopOpacity="0" /></radialGradient>
+      <radialGradient id={`${id}-skin-light`} gradientUnits="userSpaceOnUse" cx={operatorLamp.x} cy={operatorLamp.y} r="295"><stop stopColor="#ffe0a0" stopOpacity=".58" /><stop offset="1" stopColor="#ead29e" stopOpacity="0" /></radialGradient>
       <clipPath id={`${id}-person-clip`}><HumanSilhouette id={id} /></clipPath>
       <pattern id={`${id}-hatch`} width="5" height="5" patternUnits="userSpaceOnUse"><path d="M-1 1 4 6M1-1 6 4" stroke="#141d17" strokeWidth=".6" /><path d="M0 5 5 0" stroke="#bba476" strokeWidth=".35" opacity=".45" /></pattern>
       <pattern id={`${id}-floor-grain`} width="43" height="8" patternUnits="userSpaceOnUse"><path d="M0 2q11-2 22 0t21 0M3 5h31" stroke="#b08b59" strokeWidth=".5" fill="none" opacity=".5" /></pattern>
@@ -217,17 +249,14 @@ export default function TurkOperator({ id }: { id: string }) {
     <Casework id={id} />
     <g clipPath={`url(#${id}-inside)`}>
       <DisplayMovement />
-      <IndicatorBoard />
-      <SeatAndLegs id={id} />
-      <PrivateBoard />
-      <g transform={bodyTransform} data-operator-part="engraved-character" strokeLinecap="round" strokeLinejoin="round">
-        <use href={`#${id}-person`} fill="#bfae86" stroke={ink} strokeWidth="1.1" />
-        <path d={person.mid} stroke="#6e5c43" strokeWidth=".7" fill="none" />
-        <path d={person.ink} stroke="#342d25" strokeWidth=".9" fill="none" />
-      </g>
-      <g className={styles.light} clipPath={`url(#${id}-person-clip)`}><path d="M200 117H460V361H200Z" fill={`url(#${id}-skin-light)`} /></g>
+      <IndicatorBoard id={id}/>
+      <SeatedCoat id={id} />
+      <PrivateBoard id={id}/>
+      <OperatorControl id={id}/>
+      <PersonLayer id={id}/>
+      <g clipPath={`url(#${id}-person-clip)`}><g className={styles.illumination} style={{ animationName: `${id}-candle` }}><path d="M200 117H460V361H200Z" fill={`url(#${id}-skin-light)`} /></g></g>
       <Candle id={id} />
     </g>
-    <ControlLinkage />
+    <CutawayWall id={id} />
   </g>;
 }

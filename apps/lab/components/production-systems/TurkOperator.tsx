@@ -1,6 +1,8 @@
 import figureStudies from "@/lib/production-systems/figure-studies.json";
-import { Grain, Screw, round } from "./engraving-primitives";
-import { wheelOutline } from "@/lib/production-systems/turk-movement";
+import { Grain, Screw } from "./engraving-primitives";
+import OperatorMovement from "./OperatorMovement";
+import OperatorTurk from "./OperatorTurk";
+import { CabinetFinish, CabinetWoodDefs, CutawayFinish, SidePanel } from "./OperatorCabinet";
 import { operatorLamp, operatorShadowTransform, operatorLightKeyframes } from "@/lib/production-systems/operator-light";
 import { chessKeyframes, mainBoard, move, position, squareCenter } from "@/lib/production-systems/operator-chess";
 import { moveStyle, OperatorControl, TurkArm, WorkingBoard } from "./OperatorChess";
@@ -16,19 +18,6 @@ function HumanSilhouette({ id }: { id: string }) {
   return <><path d={coat} /><use href={`#${id}-moving-silhouette`} /></>;
 }
 
-// Crop the source's torso scan lines offline on the server. The head and the
-// original static arm are excluded; the articulated sleeve owns the gesture.
-function lowerCoat(path: string) {
-  return [...path.matchAll(/M([\d.]+) ([\d.]+)h([\d.]+)/g)].flatMap(([,xx,yy,ww]) => {
-    const x=+xx,y=+yy,end=x + +ww;
-    return y>=126 && y<=324 && end>174 && x<381
-      ? [`M${Math.max(174,x)} ${y}h${round(Math.min(381,end)-Math.max(174,x))}`] : [];
-  }).join("");
-}
-const turk=figureStudies.studies.automaton;
-const turkCoatMid=lowerCoat(turk.mid),turkCoatInk=lowerCoat(turk.ink);
-const robe="M413-85H509L507-48 506-5 522 53Q459 65 400 54L414 15 404-18Z";
-
 function PersonLayer({id,silhouette=false}:{id:string;silhouette?:boolean}) {
   const study=<use href={`#${id}-${silhouette?"person":"person-engraving"}`} transform={bodyTransform}/>;
   return <g data-operator-part={silhouette?undefined:"engraved-character"}>
@@ -38,42 +27,16 @@ function PersonLayer({id,silhouette=false}:{id:string;silhouette?:boolean}) {
   </g>;
 }
 
-function TurkPresence({ id }: { id: string }) {
-  return <g data-operator-part="turk-lower-figure" stroke={ink}>
-    {/* The plate deliberately crops at the waist. A seat and short plinth keep
-        the robe supported above the case instead of growing out of its top. */}
-    <path d="M404-85V49M521-85V48M400 47H523L530 57H399Z" fill="#594330" strokeWidth="2" />
-    <path d="M407-82V45M518-82V45" stroke={edge} strokeWidth=".6" />
-    <path d="M397 55Q457 61 529 54L524 64Q459 72 398 64Z" fill="#69573d" strokeWidth="1" />
-    <path d={robe} fill="#7e8b71" strokeWidth="1.1"/>
-    <g clipPath={`url(#${id}-turk-crop)`}>
-      <g transform="translate(274 -157) scale(.65)" strokeWidth=".8">
-
-        <path d={turkCoatMid} fill="none" stroke="#665c44" strokeWidth=".65" />
-        <path d={turkCoatInk} fill="none" stroke="#3e4032" strokeWidth=".8" />
-      </g>
-    </g>
-    <path d="M396 58Q452 66 523 58M399 62Q460 70 523 62" fill="none" stroke={edge} strokeWidth=".7" />
-    <path d="M422 67V73M507 66V72M421 74H508" stroke="#504130" strokeWidth="2" />
-    <path d="M465 76H486V89H465Z" fill="#5f644b" strokeWidth=".8" />
-    <path d="M469 77V87M475 77V87M481 77V87" stroke={brass} strokeWidth=".7" />
-  </g>;
-}
-
 /** The exposed bay is a side cutaway, not a collection of front-facing boxes. */
 function Casework({ id }: { id: string }) {
   return <g stroke={ink} strokeLinejoin="round">
     <path d="M54 97 88.64 37H565.64L531 97Z" fill="#ad8b5d" strokeWidth="1" />
     <path d="M61 95 92 42H558L527 95Z" fill={`url(#${id}-walnut)`} strokeWidth=".6" />
     <path d="M75 90 99 48H547M90 58H546M86 65H542" fill="none" stroke={edge} strokeWidth=".5" />
-    <TurkPresence id={id} />
+    <OperatorTurk id={id} />
     <WorkingBoard id={id}/>
     <TurkArm id={id}/>
-    <path d="M531 97 565.64 37V318L531 378Z" fill="#503d2d" strokeWidth="1.2" />
-    <path d="M538 113 558.64 77V311L538 347Z" fill="#755437" strokeWidth=".8" />
-    <path d="M541 122 555.64 97V306L541 331Z" fill="#392f25" />
-    <path d="M543 126 553.64 108V303L543 321Z" fill="#614a34" />
-    <path d="M540 116 559 83M538 348 559 312M533 101V370" fill="none" stroke={edge} strokeWidth=".6" />
+    <SidePanel id={id} />
     <path d="M54 97H531V378H54Z" fill={`url(#${id}-walnut)`} strokeWidth="1.3" />
     <path d="M71 112H514V360H71Z" fill="#b99460" strokeWidth=".6" />
     <path d="M76 116H510V357H76Z" fill="#29332b" />
@@ -100,46 +63,7 @@ function Casework({ id }: { id: string }) {
       <path d="M188 121V331" stroke="#b18c57" strokeWidth=".65" />
       <path d="M204 324H490M230 333H479M250 343H466M283 353H453" stroke="#362e23" strokeWidth=".65" opacity=".55" />
     </g>
-    {/* Quiet border grain follows the actual rails, leaving the cavity clear. */}
-    <Grain x={60} y={99} w={467} h={12} /><Grain x={59} y={361} w={469} h={15} />
-    <g transform="translate(56 353) rotate(-90)"><Grain x={0} y={0} w={235} h={12} /></g>
-    <g transform="translate(516 353) rotate(-90)"><Grain x={0} y={0} w={235} h={12} /></g>
-    <path d="M50 93H534V102H50ZM50 371H535V381H50Z" fill="#96714c" strokeWidth=".9" />
-    <path d="M51 94H532M52 374H533" stroke="#d4b17b" strokeWidth=".7" />
-    <path d="M50 381H535V386H50Z" fill="#493629" />
-    <path d="M535 371 569.64 311V326L535 386Z" fill="#62452f" strokeWidth=".8" />
-    <path d="M535 374 569.64 314" stroke={edge} strokeWidth=".65" />
-    {[84,496].map(x => <g key={x} transform={`translate(${x} 385)`} strokeWidth=".7">
-      <path d="M-9 0H9V5L6 8V13Q0 18-6 13V8L-9 5Z" fill={`url(#${id}-walnut)`} />
-      <path d="M-8 3H8M-6 8H6M-5 13H5" stroke={edge} strokeWidth=".55" />
-    </g>)}
-    {[64,521].flatMap(x=>[106,365].map(y=><Screw key={`${x}-${y}`} x={x} y={y} r={1.9} />))}
-  </g>;
-}
-
-function candleFacingArc(x: number, y: number, radius: number) {
-  const angle = Math.atan2(operatorLamp.y - y, operatorLamp.x - x), r = radius - 1;
-  const point = (a: number) => `${round(r * Math.cos(a))} ${round(r * Math.sin(a))}`;
-  return `M${point(angle - .7)}A${r} ${r} 0 0 1 ${point(angle + .7)}`;
-}
-
-function DisplayMovement() {
-  // Two meshing wheels occupy a shallow side bay; they never cross the player.
-  return <g data-operator-part="display-movement" stroke={ink}>
-    <path d="M104 166H166V293H104Z" fill="none" stroke="#7f6c48" strokeWidth="1.5" />
-    <path d="M108 190H163M108 256H163" stroke="#9c8458" strokeWidth="1.2" />
-    {[{ x: 132, y: 223, teeth: 32, r: 24, phase: 0, cls: styles.wheel }, { x: 151, y: 188.941, teeth: 20, r: 15, phase: 12.80395, cls: styles.pinion }].map(({x,y,teeth,r,phase,cls})=><g key={r} transform={`translate(${x} ${y})`}>
-      <circle r={r+1} fill="#18221b" opacity=".3" />
-      <g className={cls}><g transform={`rotate(${phase})`}>
-        <path transform="scale(1.5)" d={`${wheelOutline(teeth)}M${teeth/2-3} 0a${teeth/2-3} ${teeth/2-3} 0 1 0 ${-(teeth-6)} 0a${teeth/2-3} ${teeth/2-3} 0 1 0 ${teeth-6} 0Z`} fillRule="evenodd" fill="#a08b5e" strokeWidth=".5" />
-        {[0,60,120,180,240,300].map(a=><path key={a} transform={`rotate(${a})`} d={`M-1.4-2 -2 ${-r+3}H2L1.4-2Z`} fill="#a99365" strokeWidth=".45" />)}
-        <circle r="4" fill={brass} strokeWidth=".7" /><path d="M-2 0H2" stroke="#d3b984" strokeWidth=".6" />
-      </g></g>
-      <path d={candleFacingArc(x, y, r)} fill="none" stroke="#d1b780" strokeWidth=".6" />
-    </g>)}
-    <path d="M118 277H161V295H118Z" fill="#726046" strokeWidth=".8" />
-    <path d="M121 279V293M126 279V293M131 279V293M136 279V293M141 279V293M146 279V293M151 279V293M156 279V293" stroke="#c0a474" strokeWidth=".5" />
-    <path d="M113 286H166M132 247V271" stroke={brass} strokeWidth="1.5" />
+    <CabinetFinish id={id} />
   </g>;
 }
 
@@ -176,11 +100,7 @@ function CutawayWall({ id }: { id: string }) {
     <path d={section} fill="#b69b6d" strokeWidth=".8" />
     <path d={section} fill={`url(#${id}-hatch)`} opacity=".22" stroke="none" />
     <path d="M78 293H187V314H435V293H509" fill="none" stroke="#e0c391" strokeWidth=".8" />
-    <path d="M85 329H501V350H85Z" fill="#664a33" strokeWidth=".65" />
-    <path d="M88 332H498V347H88Z" fill="#89653f" strokeWidth=".55" />
-    <path d="M90 334H496M87 348H499" stroke={edge} strokeWidth=".5" />
-    <Grain x={92} y={337} w={400} h={9} />
-    {[91,494].map(x=><Screw key={x} x={x} y={341} r={1.6} />)}
+    <CutawayFinish />
   </g>;
 }
 
@@ -224,7 +144,7 @@ export default function TurkOperator({ id }: { id: string }) {
     <style>{operatorLightKeyframes(id)+chessKeyframes(id)}</style>
     <defs>
       <clipPath id={`${id}-inside`}><path d="M76 116H510V357H76Z" /></clipPath>
-      <clipPath id={`${id}-turk-crop`}><path d={robe}/></clipPath>
+      <CabinetWoodDefs id={id} />
       <path id={`${id}-person`} d={person.outline} />
       <g id={`${id}-person-engraving`} strokeLinecap="round" strokeLinejoin="round">
         <use href={`#${id}-person`} fill="#bfae86" stroke={ink} strokeWidth="1.1"/>
@@ -244,11 +164,11 @@ export default function TurkOperator({ id }: { id: string }) {
       <pattern id={`${id}-hatch`} width="5" height="5" patternUnits="userSpaceOnUse"><path d="M-1 1 4 6M1-1 6 4" stroke="#141d17" strokeWidth=".6" /><path d="M0 5 5 0" stroke="#bba476" strokeWidth=".35" opacity=".45" /></pattern>
       <pattern id={`${id}-floor-grain`} width="43" height="8" patternUnits="userSpaceOnUse"><path d="M0 2q11-2 22 0t21 0M3 5h31" stroke="#b08b59" strokeWidth=".5" fill="none" opacity=".5" /></pattern>
     </defs>
-    <path d="M67 398 519 400 557 337 545 332 501 386H77Z" fill="#666048" opacity=".12" />
-    <ellipse cx="84" cy="400" rx="10" ry="2.5" fill="#453c2d" opacity=".2" /><ellipse cx="496" cy="400" rx="10" ry="2.5" fill="#453c2d" opacity=".2" />
+    <path d="M67 405 519 407 557 344 545 339 501 393H77Z" fill="#666048" opacity=".12" />
+    <ellipse cx="84" cy="407" rx="10" ry="2.5" fill="#453c2d" opacity=".2" /><ellipse cx="496" cy="407" rx="10" ry="2.5" fill="#453c2d" opacity=".2" />
     <Casework id={id} />
     <g clipPath={`url(#${id}-inside)`}>
-      <DisplayMovement />
+      <OperatorMovement />
       <IndicatorBoard id={id}/>
       <SeatedCoat id={id} />
       <PrivateBoard id={id}/>

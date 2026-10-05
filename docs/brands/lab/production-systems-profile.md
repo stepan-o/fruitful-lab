@@ -443,3 +443,22 @@ groups and uses no new client loop. Engraved character paths are reused rather
 than duplicated for moving arms and shadows.
 
 [Current captures and verification](production-systems-evidence/operator-linked-verification.md).
+
+
+### Figure 2 complete Turk, clockwork and case finish · 5 October 2026
+
+The next owner request completes the seated Turk with its source-engraved head,
+wrapped turban, waistcoat and resting arm. HNF's head/exterior photographs were
+visually consulted; Racknitz remains the credited likeness source. The playing
+shoulder and complete two-board choreography retain their established coordinates.
+
+Nine gears replace the two-wheel sketch: seven meshing rear wheels and a compound
+foreground pair. Pierced rims, tapered spokes, brass/steel contrast and fixed
+candle-facing bevels inherit the opening's finish. Walnut casework gains fluted
+stiles, layered rebates, recessed return panels, drawers, fine grain, stepped
+mouldings and turned feet. Every return shares the cabinet's depth projection.
+The operator, candle and sightlines retain their clear working space.
+
+Guidelines v2.2 record the design contract. No new client loop or dependency;
+seven additional transform animations bring this scene to 31.
+[Current captures and verification](production-systems-evidence/operator-complete-verification.md).

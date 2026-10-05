@@ -1,0 +1,1617 @@
+{
+  "desktop": {
+    "animations": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.99907, -0.0431221, 0.0431221, 0.99907, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.921538, 0.0943664, -0.0943664, 0.921538, 55.1642, -16.0409)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "state": "running",
+        "transform": "matrix(1.00142, 0, 0, 1.00142, 258.499, 63.6297)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 63.5306)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.30918, 0.951, -0.951, -0.30918, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-0.999822, 0.0178287, -0.0178287, -0.999822, 388.468, 39.0037)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 47.9306)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -2.99682, 0.239045)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 1.19873, -0.0956179)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.272872, 0.96205, -0.96205, -0.272872, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.479666, 0.877451, -0.877451, -0.479666, 0, 0)"
+      },
+      {
+        "duration": "21s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.721619, -0.692291, 0.692291, -0.721619, 0, 0)"
+      },
+      {
+        "duration": "10s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.999388, 0.0349795, -0.0349795, -0.999388, 0, 0)"
+      },
+      {
+        "duration": "23s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.785221, -0.619216, 0.619216, -0.785221, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.851082, 0.525033, -0.525033, -0.851082, 0, 0)"
+      },
+      {
+        "duration": "17s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.0717577, 0.997422, -0.997422, 0.0717577, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.272872, 0.96205, -0.96205, -0.272872, 0, 0)"
+      },
+      {
+        "duration": "48s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.602963, -0.797769, 0.797769, 0.602963, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "state": "running",
+        "transform": "matrix(1.00142, 0, 0, 1.00142, 301.18, 295.005)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 294.953)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.99907, -0.0431221, 0.0431221, 0.99907, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(0.246634, 0.926361, -0.926361, 0.246634, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(0.996281, -0.0861636, 0.0861636, 0.996281, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.99907, -0.0431221, 0.0431221, 0.99907, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.921538, 0.0943664, -0.0943664, 0.921538, 55.1642, -16.0409)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -2.99682, 0.239045)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -2.99682, 0.239045)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -2.99682, 0.239045)"
+      }
+    ],
+    "gears": 9,
+    "nodes": 1003,
+    "playing": "true",
+    "rect": {
+      "height": 454.140625,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "integrity": {
+    "brokenUses": [],
+    "duplicates": [],
+    "filters": 0,
+    "rasters": 0
+  },
+  "paused": {
+    "animations": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "paused",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "state": "paused",
+        "transform": "matrix(-0.3788, 0.9255, -0.9255, -0.3788, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "state": "paused",
+        "transform": "matrix(-0.9901, 0.1401, -0.1401, -0.9901, 381.358, 36.3971)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 58.525)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "state": "paused",
+        "transform": "matrix(0.951057, -0.309017, 0.309017, 0.951057, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -1.37048, 0.654397)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.548191, -0.261759)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.999918, 0.0127888, -0.0127888, 0.999918, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.328412, 0.944535, -0.944535, 0.328412, 0, 0)"
+      },
+      {
+        "duration": "21s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.907214, 0.420669, -0.420669, -0.907214, 0, 0)"
+      },
+      {
+        "duration": "10s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.279684, -0.960092, 0.960092, 0.279684, 0, 0)"
+      },
+      {
+        "duration": "23s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.672739, -0.739879, 0.739879, 0.672739, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.999673, -0.0255755, 0.0255755, 0.999673, 0, 0)"
+      },
+      {
+        "duration": "17s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.074276, 0.997238, -0.997238, 0.074276, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.999918, 0.0127888, -0.0127888, 0.999918, 0, 0)"
+      },
+      {
+        "duration": "48s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.99998, 0.00639454, -0.00639454, -0.99998, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "state": "paused",
+        "transform": "matrix(0.3, 0.92, -0.92, 0.3, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "paused",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -1.37048, 0.654397)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -1.37048, 0.654397)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -1.37048, 0.654397)"
+      }
+    ],
+    "gears": 9,
+    "nodes": 1003,
+    "playing": "false",
+    "rect": {
+      "height": 454.140625,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "pausedAgain": {
+    "animations": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "paused",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "state": "paused",
+        "transform": "matrix(-0.3788, 0.9255, -0.9255, -0.3788, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "state": "paused",
+        "transform": "matrix(-0.9901, 0.1401, -0.1401, -0.9901, 381.358, 36.3971)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 58.525)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "state": "paused",
+        "transform": "matrix(0.951057, -0.309017, 0.309017, 0.951057, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -1.37048, 0.654397)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.548191, -0.261759)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.999918, 0.0127888, -0.0127888, 0.999918, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.328412, 0.944535, -0.944535, 0.328412, 0, 0)"
+      },
+      {
+        "duration": "21s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.907214, 0.420669, -0.420669, -0.907214, 0, 0)"
+      },
+      {
+        "duration": "10s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.279684, -0.960092, 0.960092, 0.279684, 0, 0)"
+      },
+      {
+        "duration": "23s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.672739, -0.739879, 0.739879, 0.672739, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.999673, -0.0255755, 0.0255755, 0.999673, 0, 0)"
+      },
+      {
+        "duration": "17s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.074276, 0.997238, -0.997238, 0.074276, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.999918, 0.0127888, -0.0127888, 0.999918, 0, 0)"
+      },
+      {
+        "duration": "48s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.99998, 0.00639454, -0.00639454, -0.99998, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "state": "paused",
+        "transform": "matrix(0.3, 0.92, -0.92, 0.3, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "paused",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -1.37048, 0.654397)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -1.37048, 0.654397)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -1.37048, 0.654397)"
+      }
+    ],
+    "gears": 9,
+    "nodes": 1003,
+    "playing": "false",
+    "rect": {
+      "height": 454.140625,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "phone390": {
+    "animations": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.999086, -0.0427475, 0.0427475, 0.999086, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.900536, 0.158399, -0.158399, 0.900536, 80.121, -35.3514)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 63.625)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 63.625)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.309883, 0.950739, -0.950739, -0.309883, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-0.999231, -0.0393109, 0.0393109, -0.999231, 388.395, 38.98)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 258.485, 41.7328)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "state": "running",
+        "transform": "matrix(0.95297, -0.303064, 0.303064, 0.95297, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -2.04011, -0.237509)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0.816045, 0.0950035)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.523483, 0.852036, -0.852036, -0.523483, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.537386, -0.843336, 0.843336, -0.537386, 0, 0)"
+      },
+      {
+        "duration": "21s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.394239, -0.919008, 0.919008, 0.394239, 0, 0)"
+      },
+      {
+        "duration": "10s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.997849, -0.0655569, 0.0655569, 0.997849, 0, 0)"
+      },
+      {
+        "duration": "23s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.994166, -0.107857, 0.107857, -0.994166, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.451931, 0.892053, -0.892053, -0.451931, 0, 0)"
+      },
+      {
+        "duration": "17s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.236351, -0.971668, 0.971668, -0.236351, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.523483, 0.852036, -0.852036, -0.523483, 0, 0)"
+      },
+      {
+        "duration": "48s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.488117, 0.872778, -0.872778, -0.488117, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 295)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 295)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.999086, -0.0427475, 0.0427475, 0.999086, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(0.2471, 0.9263, -0.9263, 0.2471, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(0.996345, -0.0854169, 0.0854169, 0.996345, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.999086, -0.0427475, 0.0427475, 0.999086, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.900536, 0.158399, -0.158399, 0.900536, 80.121, -35.3514)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -2.04011, -0.237509)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -2.04011, -0.237509)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -2.04011, -0.237509)"
+      }
+    ],
+    "gears": 9,
+    "nodes": 1003,
+    "playing": "true",
+    "rect": {
+      "height": 377.640625,
+      "width": 326,
+      "x": 32,
+      "y": 175.078125
+    },
+    "scrollWidth": 370,
+    "width": 390
+  },
+  "phone320": {
+    "animations": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.996005, -0.0892998, 0.0892998, 0.996005, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.94486, 0.14551, -0.14551, 0.94486, 59.5096, -42.0066)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "state": "running",
+        "transform": "matrix(1.3, 0, 0, 1.3, 256.842, 72.6679)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 253.842, 51.6679)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.357524, 0.933857, -0.933857, -0.357524, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-0.997141, -0.0758548, 0.0758548, -0.997141, 383.53, 37.2571)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 253.842, 36.0679)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -1.43343, -0.229972)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0.573371, 0.0919888)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.474195, 0.88042, -0.88042, 0.474195, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.458512, 0.888688, -0.888688, -0.458512, 0, 0)"
+      },
+      {
+        "duration": "21s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.108357, -0.994112, 0.994112, 0.108357, 0, 0)"
+      },
+      {
+        "duration": "10s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.997486, -0.0708583, 0.0708583, 0.997486, 0, 0)"
+      },
+      {
+        "duration": "23s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.601592, -0.798803, 0.798803, -0.601592, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.550278, -0.834982, 0.834982, -0.550278, 0, 0)"
+      },
+      {
+        "duration": "17s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.766462, -0.64229, 0.64229, 0.766462, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.474195, 0.88042, -0.88042, 0.474195, 0, 0)"
+      },
+      {
+        "duration": "48s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.858544, -0.51274, 0.51274, 0.858544, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "state": "running",
+        "transform": "matrix(1.3, 0, 0, 1.3, 299.632, 302.128)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 297.632, 291.128)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.996005, -0.0892998, 0.0892998, 0.996005, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(0.189742, 0.935666, -0.935666, 0.189742, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(0.984051, -0.177886, 0.177886, 0.984051, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.996005, -0.0892998, 0.0892998, 0.996005, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.94486, 0.14551, -0.14551, 0.94486, 59.5096, -42.0066)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -1.43343, -0.229972)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -1.43343, -0.229972)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -1.43343, -0.229972)"
+      }
+    ],
+    "gears": 9,
+    "nodes": 1003,
+    "playing": "true",
+    "rect": {
+      "height": 308.578125,
+      "width": 256,
+      "x": 32,
+      "y": 212.671875
+    },
+    "scrollWidth": 300,
+    "width": 320
+  },
+  "tablet768": {
+    "animations": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 74.125)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.3788, 0.9255, -0.9255, -0.3788, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-0.9901, 0.1401, -0.1401, -0.9901, 381.358, 36.3971)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 252.423, 58.525)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "state": "running",
+        "transform": "matrix(0.999878, -0.0156061, 0.0156061, 0.999878, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 2.40654, -1.01452)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.962616, 0.405807)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.89185, -0.452331, 0.452331, -0.89185, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.423083, -0.906091, 0.906091, -0.423083, 0, 0)"
+      },
+      {
+        "duration": "21s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.136341, 0.990662, -0.990662, 0.136341, 0, 0)"
+      },
+      {
+        "duration": "10s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.991545, 0.129763, -0.129763, 0.991545, 0, 0)"
+      },
+      {
+        "duration": "23s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.147765, 0.989023, -0.989023, 0.147765, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.590793, -0.806824, 0.806824, 0.590793, 0, 0)"
+      },
+      {
+        "duration": "17s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.966043, 0.258382, -0.258382, -0.966043, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.89185, -0.452331, 0.452331, -0.89185, 0, 0)"
+      },
+      {
+        "duration": "48s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.23254, -0.972587, 0.972587, -0.23254, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(0.3, 0.92, -0.92, 0.3, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.9961, 0.0274, -0.0274, 0.9961, 8.7234, -9.6159)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 2.40654, -1.01452)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 2.40654, -1.01452)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 2.40654, -1.01452)"
+      }
+    ],
+    "gears": 9,
+    "nodes": 1003,
+    "playing": "true",
+    "rect": {
+      "height": 321.046875,
+      "width": 265.59375,
+      "x": 38,
+      "y": 221.984375
+    },
+    "scrollWidth": 748,
+    "width": 768
+  },
+  "errors": [],
+  "offscreen": {
+    "animations": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(0.996517, -0.0833937, 0.0833937, 0.996517, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "paused",
+        "transform": "matrix(0.955159, 0.136323, -0.136323, 0.955159, 53.0975, -41.1361)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "state": "paused",
+        "transform": "matrix(1.3, 0, 0, 1.3, 256.001, 74.1235)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 253.001, 53.1235)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "state": "paused",
+        "transform": "matrix(-0.364639, 0.931121, -0.931121, -0.364639, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "state": "paused",
+        "transform": "matrix(-0.998242, -0.0597831, 0.0597831, -0.998242, 382.808, 36.9776)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 253.001, 37.5235)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.0916931, 0.0893527)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0.0366772, -0.0357411)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.541105, -0.840955, 0.840955, -0.541105, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.942141, -0.335217, 0.335217, 0.942141, 0, 0)"
+      },
+      {
+        "duration": "21s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.979136, 0.203205, -0.203205, -0.979136, 0, 0)"
+      },
+      {
+        "duration": "10s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.871397, 0.490579, -0.490579, -0.871397, 0, 0)"
+      },
+      {
+        "duration": "23s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.827245, 0.561841, -0.561841, 0.827245, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.41441, -0.91009, 0.91009, -0.41441, 0, 0)"
+      },
+      {
+        "duration": "17s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.99769, -0.0679269, 0.0679269, 0.99769, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.541105, -0.840955, 0.840955, -0.541105, 0, 0)"
+      },
+      {
+        "duration": "48s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.479007, 0.877811, -0.877811, 0.479007, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "state": "paused",
+        "transform": "matrix(1.3, 0, 0, 1.3, 298.992, 303.237)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 296.992, 292.237)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(0.996517, -0.0833937, 0.0833937, 0.996517, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "state": "paused",
+        "transform": "matrix(0.197039, 0.934321, -0.934321, 0.197039, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "state": "paused",
+        "transform": "matrix(0.986091, -0.166207, 0.166207, 0.986091, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(0.996517, -0.0833937, 0.0833937, 0.996517, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "paused",
+        "transform": "matrix(0.955159, 0.136323, -0.136323, 0.955159, 53.0975, -41.1361)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.0916931, 0.0893527)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.0916931, 0.0893527)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, -0.0916931, 0.0893527)"
+      }
+    ],
+    "gears": 9,
+    "nodes": 1003,
+    "playing": "false",
+    "rect": {
+      "height": 446.671875,
+      "width": 415.71875,
+      "x": 58,
+      "y": -3901.71875
+    },
+    "scrollWidth": 1260,
+    "width": 1280
+  },
+  "resumed": {
+    "animations": [
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.996334, -0.0855456, 0.0855456, 0.996334, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.951455, 0.139628, -0.139628, 0.951455, 55.4335, -41.4532)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainShadow",
+        "state": "running",
+        "transform": "matrix(1.3, 0, 0, 1.3, 256.307, 73.5933)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 253.307, 52.5933)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.362036, 0.932182, -0.932182, -0.362036, 420, -58)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-0.997882, -0.0656097, 0.0656097, -0.997882, 383.074, 37.0814)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 253.307, 36.9933)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-finger",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.594903, 0.596177)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-shadow",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0.237961, -0.238471)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.514397, 0.857552, -0.857552, 0.514397, 0, 0)"
+      },
+      {
+        "duration": "15s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.972242, -0.233979, 0.233979, -0.972242, 0, 0)"
+      },
+      {
+        "duration": "21s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.383046, 0.923729, -0.923729, 0.383046, 0, 0)"
+      },
+      {
+        "duration": "10s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.34689, -0.937906, 0.937906, 0.34689, 0, 0)"
+      },
+      {
+        "duration": "23s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.988162, -0.153415, 0.153415, -0.988162, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.470791, -0.882245, 0.882245, -0.470791, 0, 0)"
+      },
+      {
+        "duration": "17s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.754691, 0.656081, -0.656081, 0.754691, 0, 0)"
+      },
+      {
+        "duration": "24s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.514397, 0.857552, -0.857552, 0.514397, 0, 0)"
+      },
+      {
+        "duration": "48s",
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.870172, 0.492749, -0.492749, -0.870172, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-destination",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-origin",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerShadow",
+        "state": "running",
+        "transform": "matrix(1.3, 0, 0, 1.3, 299.225, 302.833)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 297.225, 291.833)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.996334, -0.0855456, 0.0855456, 0.996334, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(0.194356, 0.934801, -0.934801, 0.194356, 319, 136)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(0.985364, -0.170464, 0.170464, 0.985364, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.996334, -0.0855456, 0.0855456, 0.996334, 0, 0)"
+      },
+      {
+        "duration": "12s",
+        "name": "profile-operator-operatorHand",
+        "state": "running",
+        "transform": "matrix(0.951455, 0.139628, -0.139628, 0.951455, 55.4335, -41.4532)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.594903, 0.596177)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.594903, 0.596177)"
+      },
+      {
+        "duration": "6.4s",
+        "name": "profile-operator-candle",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, -0.594903, 0.596177)"
+      }
+    ],
+    "gears": 9,
+    "nodes": 1003,
+    "playing": "true",
+    "rect": {
+      "height": 446.671875,
+      "width": 415.71875,
+      "x": 58,
+      "y": 252.28125
+    },
+    "scrollWidth": 1260,
+    "width": 1280
+  }
+}

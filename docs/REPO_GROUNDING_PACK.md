@@ -326,16 +326,18 @@ Guidelines v1.9 and `production-systems-evidence/turk-lighting-verification.md`
 record the contract and production checks. No new client boundary or frame loop.
 
 Operator composition (2026-10-05): Figure 1 is accepted as complete. Design
-Guidelines v2.1 capture its shared quality bar while requiring each later figure
+Guidelines v2.2 capture its shared quality bar while requiring each later figure
 to own its composition. `TurkOperator.tsx` supplies a side cutaway with a sectioned
-front wall concealing the lower body, cropped automaton robe above, connected
+front wall concealing the lower body, complete engraved Turk above, connected
 controls and matching public/indicator/private boards. One 12-second e2–e4
 move coordinates operator hands, input lever, Turk arm, both pawns and indicators. The visible candle at
 (222, 200) casts a 1.4× silhouette; shared light keyframes move it opposite the
 flame while keeping source/caster/receiver aligned. HNF reconstruction evidence
-is distinguished from Racknitz's credited character studies. Twenty-four local CSS
-animations use the existing lifecycle; no new client code or filters.
-See `production-systems-evidence/operator-linked-verification.md`.
+is distinguished from Racknitz's credited character studies. Nine meshing display gears
+in two planes and finished walnut joinery inherit Figure 1's material language.
+Thirty-one local CSS animations use the existing lifecycle; no new client code
+or filters. Head/costume references are recorded in guidelines v2.2.
+See `production-systems-evidence/operator-complete-verification.md`.
 
 
 Sanctuary opening art (local draft, 3 October): cinema and catalog geometry lives

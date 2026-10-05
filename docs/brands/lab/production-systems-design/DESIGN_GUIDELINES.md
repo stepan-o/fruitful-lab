@@ -1,6 +1,6 @@
 # Production systems profile — design guidelines
 
-Version 2.1 · 5 October 2026 · Mechanical Turk direction
+Version 2.2 · 5 October 2026 · Mechanical Turk direction
 
 Applies to `/stepanoskin/production-systems`. **Figure 1 is complete and accepted
 by the owner**, including the casework, conveyor, pace/results, palette and coherent
@@ -10,7 +10,7 @@ standard. Figure 2 is the first focused composition pass under this system;
 Figures 3–8 remain initial studies. A shipped pass is not owner acceptance.
 
 This revision preserves the shared system and refines Figure 2's original
-cutaway with deliberate lower-body occlusion, a cropped automaton above, and
+cutaway with deliberate lower-body occlusion, a complete seated automaton above, and
 source-coupled candlelight and a synchronized move on two boards, informed by museum reconstruction evidence. It changes neither the
 professional claims nor the accepted opening.
 
@@ -154,9 +154,18 @@ control form the focal triangle. The lower body is deliberately concealed by a
 retained front wall with a stepped cut edge, visible wood thickness and finished
 joinery. Do not reintroduce schematic legs. The private board remains a separate
 working surface above the cut edge; the visible cushion supports the coat.
-Shallow display gears stay at the left margin. A cropped lower green robe, seat
-and output pedestal above the case hint at the larger automaton outside the plate.
-The robe is supported by the seat; it does not grow from the tabletop.
+Nine display gears stay at the left margin. The complete seated Turk now has a
+wrapped ivory turban, muted cap, source-engraved face, waistcoat, green outer robe
+and resting arm. The playing shoulder stays at its established linkage origin.
+A visible chair, seat and output pedestal support the figure above the tabletop.
+The extended viewBox is `0 -172 600 592`; preserve the machine's original scale
+and proportions within it, with breathing room above the turban.
+
+The likeness and cloth incisions remain source-derived from Racknitz [S3]. HNF's
+head study and seated exterior photographs [S17] clarify the turban, moustached
+face and layered costume. The restrained pigment is our interpretation, not a
+historical color claim. Do not add a second static playing arm behind the animated
+one. Select only the visible source regions at build time.
 
 **Research distinction:** HNF documents a pantograph, magnetic indicators and an
 internal board in its reconstruction [S16–S17]. It explicitly identifies scale
@@ -188,7 +197,12 @@ face and candle clear. The simplified machinery is an original interpretation,
 not a measured replica of HNF's pantograph.
 
 **Material and light:** the walnut frame, sectioned wall and recessed right return
-inherit the accepted opening's finish. The cavity is muted green. A brass bracket
+inherit the accepted opening's finish: fluted stiles with corner blocks, mitred
+recessed panels, fine stringing, drawer pulls, a stepped base and turned feet.
+Long fibres follow each board; cathedral cuts belong inside panels. Use one
+(+34.64, −60) projection for the side panel and every moulding return. Avoid
+floating trim, grain across openings, and bright metal on every joint.
+The cavity is muted green. A brass bracket
 bolted to the left partition holds the candle in open space at (222, 200), clear
 of gears, board and hands. Ivory wax, a layered flame and two bounded radial
 halos make the source legible at reading size. Warm falloff touches the wall,
@@ -202,10 +216,19 @@ keyframe times and easing, so alignment also holds between keyframes. Keep the
 receiver and person clips fixed. Three nearby silhouette samples soften the
 edge without filters. This is an analytic engraving model, not full ray tracing.
 
-**Motion and cost:** the two wheels retain 24/15-second opposite rotations,
-1.5-unit module, pitch radii 24/15 and 39-unit center spacing. Five light layers
-share a quiet 6.4-second irregular cycle. Together with the linked chess gesture,
-24 animated SVG groups use the existing pause/offscreen/reduced-motion lifecycle; Figure 1's pace does not drive this
+**Clockwork:** nine module-one wheels in two planes use the opening's pierced
+rims, tapered spokes, concentric bevels, dark steel/brass alternation and engraved
+hub details. Seven rear wheels form one meshing train; a shared centre arbor
+carries a small foreground pinion and reduction. Pitch radii span 8–24 units and
+periods span 10–48 seconds. Tooth phases, opposite rotations, surface speeds and
+non-mating clearances are checked numerically. The shallow display train remains
+separate from the human-operated chess linkage, reflecting HNF's distinction
+between theatrical clockwork and the actual controls [S17]. Supports recede.
+Fixed rim highlights face this scene's candle, not Figure 1's upper-left key.
+
+**Motion and cost:** nine wheels plus five light layers (a quiet 6.4-second
+irregular cycle) and the linked chess gesture make
+31 animated SVG groups use the existing pause/offscreen/reduced-motion lifecycle; Figure 1's pace does not drive this
 scene. Only the working forearms move; the head and body remain attentive and still.
 No new observer, client boundary, dependency,
 filter or per-frame code. The initial server render is a complete still. Crop
@@ -214,7 +237,8 @@ Reuse the original engraved character via SVG references for its segmented arms
 and animated silhouette. Sample joint geometry once on the server at 1% cycle
 intervals; the browser only interpolates CSS transforms/opacity.
 
-[Figure 2 linked-move and candle verification](../production-systems-evidence/operator-linked-verification.md)
+[Current Figure 2 finish verification](../production-systems-evidence/operator-complete-verification.md)
+· [Earlier linked-move and candle verification](../production-systems-evidence/operator-linked-verification.md)
 · [Earlier composition pass](../production-systems-evidence/operator-composition-verification.md)
 
 ### Rhythm and content ownership
@@ -727,8 +751,8 @@ its material and type specimens are our original design interpretation.
   functional relationships, not an exact cabinet blueprint.
   https://www.hnf.de/en/permanent-exhibition/exhibition-areas/the-mechanization-of-information-technology/early-automatons-miracles-of-technology/the-reconstruction-of-the-hnfs-chess-turk.html
 - **S17 — HNF, “Zwanzig Jahre HNF-Schachtürke,” 22 March 2024.** Consulted
-  5 October 2026; visually inspected the pantograph, uncovered tabletop and
-  display-clockwork photographs. Corrects the Racknitz layout. Photographs are
+  5 October 2026; visually inspected the pantograph, uncovered tabletop,
+  display-clockwork, head study and seated exterior photographs. Corrects the Racknitz layout. Photographs are
   research references only; none is redistributed or fetched by the public page.
   https://blog.hnf.de/zwanzig-jahre-hnf-schachtuerke/
 

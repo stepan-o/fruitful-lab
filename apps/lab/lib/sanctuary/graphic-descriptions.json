@@ -6,9 +6,9 @@
       "behavior": "The near screen runs a paddle-and-ball rally; the two smaller screens show figures circling a maze. The screen planes follow the cabinets’ perspective. Rain falls outside the glazed door, with occasional soft distant lightning confined to its panes. The bartender supports a glass with one hand while the other polishes it. Furniture, feet and seated bodies remain still; the existing motion controls pause every animated layer."
     },
     "diagram": {
-      "description": "The upright is shown from the front and side so that its marquee, speaker grille, curved CRT, four control stations and hinged service door remain separate manufactured parts. Inside the open door, a deliberately enlarged settings panel connects the machine’s commercial setting to the adventure above it.",
-      "reading": "Change health per coin between 100, 600 and 2,000. These are documented options; 600 is the manual’s recommended setting. The selected amount changes the readout and comparison bar. Health is a reserve consumed under the game’s rules, so the bar never converts it into a fabricated number of minutes.",
-      "boundary": "The original dungeon runs a ten-second attract loop. Four color-coded figures travel a clear passage around a central island; a guard, a projectile and a small treasure glint add distinct rhythms. The floor plan, electronics and animation timing are invented, not a reproduction of Atari’s circuitry or game code."
+      "description": "Cabinets recede along the left wall; a timber counter and seated customers occupy the right. Two players share the nearest cabinet, each using one rotary control. The open aisle leads toward a rain-lit rear door. A single perspective sets the furniture, people and hand-to-control contact. Warm lamps belong to the room; cooler light belongs to the games.",
+      "reading": "The spatial diagram keeps the game, the bar and the people doing different things in one room. Its role is to establish the occasion before the next chapter separates the businesses that support it.",
+      "boundary": "A single opening plate supplies this chapter’s scene and relationship map. It is not an additional cabinet-settings exhibit."
     }
   },
   "several-histories": {
@@ -261,6 +261,30 @@
       "description": "Three parallel tracks follow the player, the studio and payment from an initial purchase into what happens afterward. The controls switch among exploring an existing work, buying an expansion and an ongoing program.",
       "reading": "Read across all three tracks after each change. More play, more production and another sale need not occur together. The stable layout lets those differences remain visible.",
       "boundary": "These are possible arrangements, not mutually exclusive game categories, measured revenue paths or timelines. The paths have no financial scale."
+    }
+  },
+  "how-many-lives": {
+    "scene": {
+      "description": "The upright is shown from the front and side so that its marquee, speaker grille, curved CRT, four control stations and hinged service door remain separate manufactured parts. Inside the open door, a deliberately enlarged settings panel connects the machine’s commercial setting to the adventure above it.",
+      "reading": "Change health per coin between 100, 600 and 2,000. These are documented options; 600 is the manual’s recommended setting. The selected amount changes the readout and comparison bar. Health is a reserve consumed under the game’s rules, so the bar never converts it into a fabricated number of minutes.",
+      "boundary": "The original dungeon runs a ten-second attract loop. Four color-coded figures travel a clear passage around a central island; a guard, a projectile and a small treasure glint add distinct rhythms. The floor plan, electronics and animation timing are invented, not a reproduction of Atari’s circuitry or game code."
+    },
+    "diagram": {
+      "description": "The upright is shown from the front and side so that its marquee, speaker grille, curved CRT, four control stations and hinged service door remain separate manufactured parts. Inside the open door, a deliberately enlarged settings panel connects the machine’s commercial setting to the adventure above it.",
+      "reading": "Change health per coin between 100, 600 and 2,000. These are documented options; 600 is the manual’s recommended setting. The selected amount changes the readout and comparison bar. Health is a reserve consumed under the game’s rules, so the bar never converts it into a fabricated number of minutes.",
+      "boundary": "The original dungeon runs a ten-second attract loop. Four color-coded figures travel a clear passage around a central island; a guard, a projectile and a small treasure glint add distinct rhythms. The floor plan, electronics and animation timing are invented, not a reproduction of Atari’s circuitry or game code."
+    }
+  },
+  "studio-to-screen": {
+    "scene": {
+      "description": "Five engraved stations show a workshop, a rights ledger, a storefront, computing equipment and a player’s screen. Paired paths distinguish creative work moving outward from receipts returning.",
+      "reading": "The map names roles rather than forcing every game through five separate companies. Select a layer below to inspect its offer, counterparties and a useful measurement question.",
+      "boundary": "An original schematic with no monetary scale. Geometry and line widths do not encode revenue."
+    },
+    "diagram": {
+      "description": "An eight-route comparison uses three pairs of columns to follow production, supply, discovery, operation, collection and settlement. A filter holds one game constant across different delivery routes.",
+      "reading": "Compare the thing sold and the party supplying it. A computing subscription can sit around a bought game without changing the game’s own sales model.",
+      "boundary": "Source-linked routes and public offers, not an estimate of private revenue shares."
     }
   }
 }

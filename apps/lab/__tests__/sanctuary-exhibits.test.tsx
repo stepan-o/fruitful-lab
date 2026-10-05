@@ -2,6 +2,8 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { chapters } from "@/lib/sanctuary/content";
 import { artDirection } from "@/lib/sanctuary/art-direction";
 import ChapterDiagram from "@/components/sanctuary/ChapterDiagram";
+import BusinessMap from "@/components/sanctuary/BusinessMap";
+import EveningPlace from "@/components/sanctuary/plates/EveningPlace";
 import ChapterScene from "@/components/sanctuary/ChapterScene";
 import {
   Checklist,
@@ -29,6 +31,15 @@ describe("Sanctuary exhibits", () => {
       chapters.map((c) => c.id).sort(),
     );
     for (const [index, c] of chapters.entries()) {
+      if(c.id==="insert-coin" || c.id==="studio-to-screen" || c.id==="how-many-lives") {
+        const {container,unmount}=render(c.id==="insert-coin"?<EveningPlace opening/>:c.id==="studio-to-screen"?<BusinessMap/>:<ChapterDiagram chapter={c.id} index={index} diagram={c.visual.diagram}/>);
+        expect(container.querySelector("svg")).not.toBeNull();
+        expect(container.querySelector("img,video,audio,image")).toBeNull();
+        if(c.id==="studio-to-screen") expect(screen.getByRole("group",{name:"Inspect a business layer"})).toBeVisible();
+        if(c.id==="how-many-lives") expect(screen.getByRole("combobox",{name:"Health per coin"})).toBeVisible();
+        unmount();
+        continue;
+      }
       const { container, unmount } = render(
         <>
           <ChapterScene chapter={c.id} index={index} />
@@ -53,7 +64,7 @@ describe("Sanctuary exhibits", () => {
     }
   });
   it("mounts the enlarged illustration only on request and removes it when closed", () => {
-    render(<ChapterScene chapter={chapters[0].id} index={0} />);
+    render(<ChapterScene chapter="the-reset" index={0} />);
     fireEvent.click(
       screen.getByRole("button", { name: /Enlarge illustration:/ }),
     );

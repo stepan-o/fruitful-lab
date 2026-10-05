@@ -1,5 +1,5 @@
 Current narrative: [the life around the game](EVENING_NARRATIVE_MAP.md). The
-22-chapter edition opens with “Insert coin. Join in.” and follows purpose,
+24-chapter edition opens with “Insert coin. Join in.” and follows purpose,
 provision and payment from the physical venue to purchased copies and online
 worlds. The local production preview remains on port 3106.
 
@@ -151,3 +151,10 @@ image zoom, keyboard dismissal and the landing menu route in the browser.
 Further content iterations can add the current Rebirth confirmation, exact
 seasonal objective requirements and Reliquary purchase/claim screens. Those
 claims are intentionally absent or bounded until the evidence is available.
+
+
+### Business overview · 5 October 2026
+
+The opening sequence is now `insert-coin` → `studio-to-screen` → `how-many-lives` → `several-histories`. Chapter one ends with Al Alcorn’s documented collection-round anecdote. The overview separates production funding, IP, publishing, promotion, store settlement, hardware/rendering and ongoing operation before Gauntlet opens the cabinet.
+
+The eight-route comparison is chapter-local, with three keyboard-operated column tabs and comparison filters. Charts use Sony’s FY2025 Q4 supplement and NVIDIA requirements / historical member disclosures. See [business overview evidence](BUSINESS_OVERVIEW.md). No asset pack was added: the overview reuses the existing optimized BG3 visual citation and uses lightweight original SVG/CSS.

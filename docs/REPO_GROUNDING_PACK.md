@@ -354,3 +354,14 @@ pause reuses the renderer. Compact reader/play conveyors are unchanged, and
 chapter 01 still has no Working Exhibit. Implementation and measured evidence:
 `docs/loopforge/ILLUSTRATED_STAGE.md`. Field/physical-phone performance remains
 unmeasured; owner visual acceptance is separate from implementation checks.
+
+
+### Sanctuary opening sequence — 5 October 2026
+
+The `apps/lab` Sanctuary reader has 24 chapters. Stable opening routes are
+`insert-coin` (Pong / the occasion), `studio-to-screen` (business chain and
+source-backed platform/cloud charts), and `how-many-lives` (the existing Gauntlet
+case). Earlier routes remain valid; navigation derives from the chapter catalog.
+Only active-chapter media/notes are serialized; new comparison/charts load for the
+business chapter. No backend, auth, asset cache contract or other app changed.
+See `docs/sanctuary/BUSINESS_OVERVIEW.md` for data definitions and validation.

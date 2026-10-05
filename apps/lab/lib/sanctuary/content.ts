@@ -1,5 +1,6 @@
 import type { Chapter, EvidenceSource } from "./types";
 import { chapterVisuals } from "./visual-content";
+import { chainSources } from "./business-chains";
 
 export const parts = [
   "Play, payment and the next purchase",
@@ -10,8 +11,28 @@ export const parts = [
   "The purchase path",
   "What counts as success",
 ];
-export const revision = "2026-10-03";
+export const revision = "2026-10-05";
 export const sources: EvidenceSource[] = [
+  {"id": "alcorn-oral", "title": "Al Alcorn — oral history, Computer History Museum, 2008, p. 13", "url": "https://archive.computerhistory.org/resources/access/text/2012/09/102658257-05-01-acc.pdf", "note": "Collection rounds, rear coin access and the several-customers observation. Recollection recorded in 2008; our closing interpretation is separate."},
+  {"id": "epic-publishing", "title": "Epic Games Publishing — announced terms, 2020", "url": "https://store.epicgames.com/news/epic-games-publishing-announcement?lang=en-US", "note": "Full funding, developer IP ownership and a profit share after recoupment. A specific public offer, not a universal publishing contract."},
+  {"id": "steam-cloud", "title": "Valve — Steam Cloud Play (Beta)", "url": "https://partner.steamgames.com/doc/features/cloudgaming", "note": "Separate purchase and streaming-service relationship; publisher opt-in, cloud saves and unchanged Steam payouts."},
+  {"id": "steam-discovery", "title": "Valve — Marketing tools", "url": "https://partner.steamgames.com/doc/marketing/tools", "note": "Steam does not sell advertising placement. Distinguishes store discovery from paid campaigns elsewhere."},
+  {"id": "sony-revenue", "title": "Sony — FY2025 Q4 supplement, p. 12", "url": "https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/25q4_supplement.pdf", "note": "Reported Game & Network Services segment sales. Network Services includes PlayStation Plus and advertising; physical software includes royalties. Figures are not consumer spending or cloud revenue."},
+  {"id": "sony-accounting", "title": "Sony — FY2024 Form 20-F, revenue accounting", "url": "https://www.sony.com/en/SonyInfo/IR/library/FY2024_20F_PDF.pdf", "note": "The report distinguishes sales of products, licensing revenue and recognition of subscription fees over time."},
+  {"id": "gfn-requirements", "title": "NVIDIA — GeForce NOW Windows requirements, accessed 5 Oct 2026", "url": "https://www.nvidia.com/en-us/geforce-now/system-reqs./", "note": "Selected published stream bandwidth requirements, not measured throughput. The sub-80 ms criterion is network latency to a data center, not total input-to-display latency. Plan and client support vary."},
+  {"id": "gfn-service", "title": "NVIDIA — GeForce NOW FAQ, accessed 5 Oct 2026", "url": "https://www.nvidia.com/en-us/geforce-now/faq/", "note": "Membership, premium playtime allowance and Founders exception. Terms describe NVIDIA-operated service; alliance partners can differ."},
+  {"id": "cloud-rights", "title": "UK CMA — restructured Microsoft acquisition cleared, 13 Oct 2023", "url": "https://www.gov.uk/government/news/microsoft-concession-a-gamechanger-that-will-promote-competition", "note": "Final approval and Ubisoft cloud-rights arrangement outside the EEA; do not confuse this with the earlier blocked proposal."},
+  {"id": "gfn-reach-2021", "title": "NVIDIA — Q1 FY2022 Form 10-Q", "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000064/nvda-20210502.htm", "note": "Over 10 million GeForce NOW members reported for the quarter ended 2 May 2021. Not a paying-user or monthly-active-user measure."},
+  {"id": "gfn-reach-2023", "title": "NVIDIA — GeForce NOW third anniversary, 2 Feb 2023", "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2/", "note": "More than 25 million members. Historical reported reach; no current user count, growth rate or revenue per member is inferred."},
+  {...chainSources["amc"], id:"chain-cinema"},
+  {...chainSources["netflix"], id:"chain-netflix"},
+  {...chainSources["steam-bg3"], id:"chain-bg3"},
+  {...chainSources["diablo"], id:"chain-xbox"},
+  {...chainSources["hasbro"], id:"chain-hasbro"},
+  {...chainSources["microsoft"], id:"chain-microsoft"},
+
+  {id:"arcade-route",title:"Play Meter — Operator survey, 1 November 1984, p. 42",url:"https://elibrary.arcade-museum.com/magazines/pm/PlayMeter-1984-11-01/PlayMeter-1984-11-01-042.pdf",note:"Documents operator/location collection splits. The comparative instrument distinguishes these arrangements from owner-operated venues; neither is attributed to the Pong prototype’s tavern without evidence."},
+
   {id:"atari-history",title:"Atari — Company history (accessed 5 October 2026)",url:"https://atari.com/pages/history",note:"Atari was founded by Nolan Bushnell and Ted Dabney in 1972; Al Alcorn built Pong. The Atari name later passed through different owners and corporate structures. Infogrames adopted the name Atari SA in 2009. This is a history of a brand and its businesses, not an unchanged studio operating since 1972."},
   {id:"atari-today",title:"Atari — The business today (accessed 5 October 2026)",url:"https://atari.com/pages/about",note:"Atari remains active in 2026. Its business includes video-game publishing, consumer hardware and licensing. Its studios include Nightdive, which restores classic games such as System Shock, and Digital Eclipse, which makes interactive game-history collections. Its wider portfolio includes RollerCoaster Tycoon. This is the company’s description of its current activities, not evidence of continuous profitability since Pong."},
   {"id":"pong-tavern","title":"Computer History Museum — 50 Years of Fun With Pong (2022)","url":"https://computerhistory.org/blog/50-years-of-fun-with-pong/","note":"The museum preserves the prototype and documents its 1972 installation at Andy Capp’s Tavern. Used for the setting and game description, not as evidence of the venue owner’s motives or additional beverage sales."},
@@ -393,45 +414,34 @@ const manuscript: Omit<Chapter, "visual">[] = [
     "id": "insert-coin",
     "part": 0,
     "title": "Insert coin. Join in.",
-    "lede": "A quarter bought life. The bargain shaped the adventure.",
+    "lede": "An evening out, a game in the corner—and a new business taking shape.",
     "paragraphs": [
       "Books, films and music all face the problem of making the success of one work pay for the time and uncertainty of making another. A game can give someone years of enjoyment after a single purchase. Its studio still has salaries to cover and another release to finance.",
-      "To understand how that need can shape the experience of playing, start with the arcade cabinet. It collected money one turn at a time. In 1972, Atari, a newly founded American game company, tested Pong—a two-player paddle-and-ball game built by engineer Al Alcorn—at Andy Capp’s Tavern in California. The game had to make another turn worth buying; the cabinet had to justify its price and its place in the room. Manufacturers sold cabinets, operators sold turns, and venues gained an attraction. The appeal of playing connected these different businesses.",
-      "Gauntlet, released in 1985, let its players explore monster-filled mazes as fantasy adventurers. Each had a health counter. Time and injuries wore it down; food replenished it. So did money. Put in another coin and your character could stay alive longer. The machine sold a resource that existed only inside its fiction, helping determine how long you could take part.",
-      "Call it selling “air,” if you like. Yet buying another stretch of imaginary life could mean getting farther with the people beside you. A cinema ticket also buys something that is over at the end of the evening. We understand the value of being there while it happens. The unusual thing about Gauntlet is how directly it made that participation a resource inside the adventure.",
-      "Four-player cooperation had a business argument behind it. Designer Ed Logg recalled resistance to charging more than the customary quarter. More players at once offered another route to higher earnings, especially if they could join and leave without interrupting everyone else. Marketing was unconvinced: “Marketing believed I could not get four strangers to play together.” Making the gathering work promised both a distinctive pleasure for players and a better-earning cabinet.",
-      "The operator could make further design choices after the cabinet arrived. Atari’s manual placed these under the heading “Maximizing Earnings.” For US quarter play, it recommends more health when average play falls below 90 seconds. Above 180 seconds, it recommends harder difficulty first: more frequent monsters, before a reduction in the visible health allowance that might discourage players. The price at the coin slot stays the same. The conditions under which the purchased health must last have changed.",
-      "A harder fight might be exactly what a player enjoys. A turn that feels over before it has begun might send them elsewhere. The operator is adjusting a commercial offer through the rules of the world; players encounter the adjustment as monsters, danger and a dwindling chance of survival. Keeping the machine earning and making the evening worth coming out for are related ambitions. They are not interchangeable measures of success.",
-      "The most revealing decision concerned the ending. Logg recalled that the team considered a final monster, then rejected it: “we did not want players coins lost with a game over.” Someone could reach the end with purchased health still remaining. Instead, the levels recirculated. The game could continue taking money, but it also continued honoring money already taken. The purchase reached all the way into the shape of the adventure.",
-      "There is something strikingly contemporary in that old cabinet. An imaginary resource for sale; a design built to accommodate repeated payments; a shared experience whose appeal makes those payments possible. These negotiations were already under way near the beginning of commercial video games. They helped shape features we might remember fondly, as well as terms we might question. The interesting history lies in how those arrangements changed—and how much could change while the familiar pleasures of playing survived.",
-      "Take the game home in a box and a different bargain becomes possible. A character can die, an adventure can end, and its owner can begin again without buying another turn. A studio can earn from new buyers or from making something else its existing audience wants to buy. An evening can become years of play without those years being sold one turn at a time."
+      "To understand how that need can shape the experience of playing, start with the arcade cabinet. It collected money one turn at a time. In 1972, Atari, a newly founded American game company, tested Pong—a two-player paddle-and-ball game built by engineer Al Alcorn—at Andy Capp’s Tavern in California. The game had to make another turn worth buying; the cabinet had to justify its price and its place in the room. Manufacturers sold cabinets. Their buyers earned from play, either running a venue themselves or supplying another owner’s bar for a share of the takings.",
+      "The prototype’s first famous breakdown was a peculiar kind of success: its coin container had filled up. People had found something worth paying to do together, using two knobs and a moving spot of light. The surviving cabinet and the advertisements that followed make the distance feel small. Long before elaborate virtual worlds, a game could change the life of a room.",
+      "Alcorn also encountered his invention from the other side. In his oral history, he recalls collecting money from Pong machines on his way home. The early cabinet made that awkward: the coins were reached from the back, so the machine had to be moved. Building a good game had left a surprisingly ordinary problem for the person who kept it earning. “There are several customers when you make a product,” he observed, describing the player, the distributor and the place where the machine stood.",
+      "The people at the controls could be absorbed in a rally while all of this stayed out of sight. That is part of what a working entertainment business makes possible: an occasion someone can simply enjoy. As games moved into homes and onto networks, the room, the equipment and the responsibility for keeping things running would be divided up again. Follow those responsibilities and a different history comes into view—one that helps explain how the games themselves came to change."
     ],
     "paragraphCitations": {
       "1": [
         "pong-tavern",
+        "arcade-route",
         "atari-history",
-        "atari-today",
-        "gauntlet-logg"
+        "atari-today"
       ],
       "2": [
-        "gauntlet"
+        "pong-tavern"
       ],
-      "4": [
-        "gauntlet-logg"
-      ],
-      "5": [
-        "gauntlet"
-      ],
-      "7": [
-        "gauntlet-logg"
+      "3": [
+        "alcorn-oral"
       ]
     },
     "sources": [
       "pong-tavern",
+      "arcade-route",
       "atari-history",
       "atari-today",
-      "gauntlet",
-      "gauntlet-logg"
+      "alcorn-oral"
     ],
     "figures": [
       {
@@ -451,7 +461,153 @@ const manuscript: Omit<Chapter, "visual">[] = [
         "caption": "The four-player follow-up borrowed tennis’s social world to introduce an electronic one. Rackets and sportswear make the invitation familiar before anyone touches a control. A staged promotional photograph, from the German brochure.",
         "credit": "© Atari / Löwen Automaten · International Arcade Museum",
         "afterParagraph": 1
+      }
+    ],
+    "evidence": "Pong’s prototype installation and overflowing coin container are documented by the Computer History Museum. Alcorn’s 2008 oral history, printed page 13, supplies the collection-round anecdote and the short quotation. The argument about the work behind an enjoyable occasion is our interpretation. The illustrated bar is an imagined contemporary setting, not a reconstruction of Andy Capp’s Tavern. Operator/location arrangements varied; no revenue split or drink-sales effect is assigned to that venue. Atari’s later corporate history is distinguished from the original company."
+  },
+  {
+    "id": "studio-to-screen",
+    "part": 0,
+    "title": "From studio to screen",
+    "lede": "The game reaches us through a chain of other businesses. Each sells something different. Each leaves a mark on what can be made and how we get to play.",
+    "paragraphs": [
+      "A player buys a game, but a great deal has already been bought to bring it to that point: people’s time, production tools, permission to use a fictional world, a route to market. After release, somebody must still provide the equipment and services on which it runs. The company whose name appears on the box may do several of these jobs. It may also depend on businesses the player never sees.",
+      "Cinema makes the separation easier to recognize. A production company makes a film; a distributor arranges its release and campaign; an exhibitor runs the cinema. The audience buys admission from the exhibitor, which settles with the distributor under its exhibition agreement. Netflix rearranges that chain: it commissions or licenses work and operates the service through which subscribers find and watch it. Advertising can introduce another customer, buying access to that audience. A screen at the end of the chain does not imply the same business behind it.",
+      "Games add another movable part. Their worlds have to be computed as someone plays. The cabinet operator once supplied that machinery. At home, the player usually buys it. A cloud service can supply it again from a data center. Keep that distinction separate from access to the game: buying a copy, subscribing to a catalog and renting remote computing are different transactions, even when one company packages them together.",
+      "The comparison below holds those questions steady across eight routes. Follow Baldur’s Gate 3, Larian Studios’ party-based fantasy role-playing game, through a local PC, GeForce NOW and PlayStation. The adventure remains recognizable while the surrounding bills change. Then compare buying Diablo IV on Xbox with accessing its base game through Game Pass. The subscription changes the entry offer; it does not turn every additional purchase inside the game into an included benefit.",
+      "Before any of those sales, someone has to carry the production risk. A studio can use its own funds, raise investment or agree with a publisher to finance the work. These arrangements grant different claims on its eventual success. Epic’s 2020 publishing offer provides a concrete example: it announced full development funding, developer ownership of the intellectual property, and at least half the profits for the developer after costs were recovered. Funding a game, owning its fictional world and receiving its sales revenue are separable rights.",
+      "Publishing also brings work that a player rarely calls game design: localization, testing, release planning, platform submissions and promotion. A licensed setting adds another relationship. Larian develops and publishes Baldur’s Gate 3; its Dungeons & Dragons setting belongs to Wizards of the Coast, part of Hasbro. Hasbro reports digital licensing revenue from the game. A purchase can therefore support both the people making this particular work and the owner of the world on which it draws.",
+      "Being available is only the beginning of distribution. Storefront recommendations, trailers, reviews, creators and friends help a game find its audience. These channels have different economics. Steam says it does not sell paid placement in its store; a publisher can still buy advertising elsewhere. The cost of reaching a buyer should not be confused with the store’s share of a sale. Nor does a conspicuous launch tell us what its campaign cost.",
+      "A platform can occupy several places at once. Sony sells PlayStation hardware, operates its store and membership service, and publishes games through its own studios. Microsoft owns both Xbox and Blizzard, Diablo IV’s developer. A first-party title belongs to the platform holder’s own business; a third-party title comes from another company. The distinction matters when following receipts: an external publishing payment and an internal investment in a studio are not the same transaction.",
+      "Sony’s reported revenue makes that range tangible. Consoles are only one part of its Game & Network Services segment. Full-game downloads, add-on content and network services form distinct businesses beside them. These are company accounts, not a breakdown of an average player’s spending: for example, the physical-software category includes royalties from other publishers’ discs. The categories tell us what Sony earns from, without telling us what any one game ought to sell.",
+      "Cloud gaming moves the rendering machine away from the player. With GeForce NOW, an eligible PC game can run on NVIDIA’s hardware while the player’s device sends inputs and receives a video stream. Steam’s Cloud Play documentation says game purchases and publisher payouts remain on their existing terms. A paid GeForce NOW membership adds a computing service around that purchase. A free tier also exists. This is a different offer from a catalog subscription that grants access to games.",
+      "The potential audience changes with that move. Someone without a powerful gaming PC may be able to use a compatible lighter device instead. But the demanding work has moved rather than vanished. The provider must provision rendering capacity; the connection must carry the stream quickly and reliably. NVIDIA’s requirements make that exchange visible: higher resolutions and frame rates ask for more bandwidth, while network delay remains a separate constraint.",
+      "For a studio, this creates another route to players, not permission to ignore every other machine. A PC game offered both locally and through GeForce NOW still needs to serve its local customers. The streamed version must also handle accounts, saved progress, input devices and the service’s supported configuration. Valve’s onboarding guidance requires publisher opt-in and attention to cloud saves. A game designed exclusively around remote infrastructure could make different assumptions; adding an existing PC game to a streaming service does not by itself make it that kind of game.",
+      "Permission to stream is itself a business layer. In the restructured Microsoft–Activision Blizzard acquisition approved in October 2023, Ubisoft obtained cloud streaming rights outside the European Economic Area for the relevant existing games and new releases over the following fifteen years. Ownership of a studio did not automatically settle who could supply its games to cloud services. The route to the player was valuable enough to be negotiated separately.",
+      "Usage now has a cost even when the player has already bought the work. NVIDIA’s standard Performance and Ultimate memberships include 100 premium hours per month, with options for extra time; the base Founders membership has different terms. This limit concerns access to remote machinery. It does not refill a character’s health. That distinction will matter when we return to Gauntlet: payment can govern the circumstances in which a world is available, or become a rule inside the world itself."
+    ],
+    "sections": [
+      {
+        "at": 4,
+        "title": "Before the first copy is sold"
       },
+      {
+        "at": 6,
+        "title": "The road to an audience"
+      },
+      {
+        "at": 9,
+        "title": "The machine moves out of the room"
+      },
+      {
+        "at": 12,
+        "title": "A new right to sell"
+      }
+    ],
+    "paragraphCitations": {
+      "1": [
+        "chain-cinema",
+        "chain-netflix"
+      ],
+      "3": [
+        "chain-bg3",
+        "chain-xbox"
+      ],
+      "4": [
+        "epic-publishing"
+      ],
+      "5": [
+        "chain-bg3",
+        "chain-hasbro"
+      ],
+      "6": [
+        "steam-discovery"
+      ],
+      "7": [
+        "chain-microsoft"
+      ],
+      "8": [
+        "sony-revenue"
+      ],
+      "9": [
+        "steam-cloud"
+      ],
+      "10": [
+        "gfn-requirements"
+      ],
+      "11": [
+        "steam-cloud"
+      ],
+      "12": [
+        "cloud-rights"
+      ],
+      "13": [
+        "gfn-service"
+      ]
+    },
+    "sources": [
+      "chain-cinema",
+      "chain-netflix",
+      "chain-bg3",
+      "chain-xbox",
+      "epic-publishing",
+      "chain-hasbro",
+      "steam-discovery",
+      "chain-microsoft",
+      "sony-revenue",
+      "sony-accounting",
+      "steam-cloud",
+      "gfn-requirements",
+      "cloud-rights",
+      "gfn-service",
+      "gfn-reach-2021",
+      "gfn-reach-2023"
+    ],
+    "figures": [
+      {
+        "asset": "bg3-official-key-art",
+        "alt": "Baldur’s Gate 3 companions beneath a mind flayer ship",
+        "caption": "The same creative work can pass through several commercial routes. Larian’s game uses Wizards of the Coast’s Dungeons & Dragons world; a PC purchase and a cloud-computing membership pay for different parts of the experience.",
+        "credit": "© Wizards of the Coast / Larian Studios",
+        "afterParagraph": 5
+      }
+    ],
+    "evidence": "The chain is an analytical model of selected offers, not a universal contractual structure. Private royalties, commissions, recoupment and per-title subscription payments are not estimated. Epic’s public 2020 terms are a dated example, not the terms of every publishing deal. Sony figures use its FY2025 Q4 supplement (printed p. 12); FY24 and FY25 end 31 March 2025 and 2026. Amounts are reported segment sales, include intersegment activity and follow Sony’s revenue-recognition rules, not gross player spending. GeForce NOW bandwidth values are selected Windows-client modes checked 5 October 2026. Member milestones are historical company claims, not active or paying users; they cannot establish a market share, profit or causal effect on game sales. Cloud-rights geography follows the final CMA announcement. Our production implications are an inference from the documented delivery architecture, not a claim that studios have abandoned local hardware targets."
+  },
+  {
+    "id": "how-many-lives",
+    "part": 0,
+    "title": "How many lives does a coin buy?",
+    "lede": "In Gauntlet, the business outside the cabinet reaches into the rules of the world.",
+    "paragraphs": [
+      "Gauntlet, released in 1985, let its players explore monster-filled mazes as fantasy adventurers. Each had a health counter. Time and injuries wore it down; food replenished it. So did money. Put in another coin and your character could stay alive longer. The machine sold a resource that existed only inside its fiction, helping determine how long you could take part.",
+      "Call it selling “air,” if you like. Yet buying another stretch of imaginary life could mean getting farther with the people beside you. A cinema ticket also buys something that is over at the end of the evening. We understand the value of being there while it happens. The unusual thing about Gauntlet is how directly it made that participation a resource inside the adventure.",
+      "Four-player cooperation had a business argument behind it. Designer Ed Logg recalled resistance to charging more than the customary quarter. More players at once offered another route to higher earnings, especially if they could join and leave without interrupting everyone else. Marketing was unconvinced: “Marketing believed I could not get four strangers to play together.” Making the gathering work promised both a distinctive pleasure for players and a better-earning cabinet.",
+      "The operator could make further design choices after the cabinet arrived. Atari’s manual placed these under the heading “Maximizing Earnings.” For US quarter play, it recommends more health when average play falls below 90 seconds. Above 180 seconds, it recommends harder difficulty first: more frequent monsters, before a reduction in the visible health allowance that might discourage players. The price at the coin slot stays the same. The conditions under which the purchased health must last have changed.",
+      "A harder fight might be exactly what a player enjoys. A turn that feels over before it has begun might send them elsewhere. The operator is adjusting a commercial offer through the rules of the world; players encounter the adjustment as monsters, danger and a dwindling chance of survival. Keeping the machine earning and making the evening worth coming out for are related ambitions. They are not interchangeable measures of success.",
+      "The most revealing decision concerned the ending. Logg recalled that the team considered a final monster, then rejected it: “we did not want players coins lost with a game over.” Someone could reach the end with purchased health still remaining. Instead, the levels recirculated. The game could continue taking money, but it also continued honoring money already taken. The purchase reached all the way into the shape of the adventure.",
+      "There is something strikingly contemporary in that old cabinet. An imaginary resource for sale; a design built to accommodate repeated payments; a shared experience whose appeal makes those payments possible. These negotiations were already under way near the beginning of commercial video games. They helped shape features we might remember fondly, as well as terms we might question. The interesting history lies in how those arrangements changed—and how much could change while the familiar pleasures of playing survived.",
+      "Take the game home in a box and a different bargain becomes possible. A character can die, an adventure can end, and its owner can begin again without buying another turn. A studio can earn from new buyers or from making something else its existing audience wants to buy. An evening can become years of play without those years being sold one turn at a time."
+    ],
+    "paragraphCitations": {
+      "0": [
+        "gauntlet"
+      ],
+      "2": [
+        "gauntlet-logg"
+      ],
+      "3": [
+        "gauntlet"
+      ],
+      "5": [
+        "gauntlet-logg"
+      ]
+    },
+    "sources": [
+      "gauntlet",
+      "gauntlet-logg"
+    ],
+    "figures": [
       {
         "asset": "gauntlet-gameplay-1985",
         "label": "Gauntlet · inside the paid adventure",
@@ -459,7 +615,7 @@ const manuscript: Omit<Chapter, "visual">[] = [
         "alt": "Gauntlet arcade gameplay with Warrior score and health, three INSERT COIN prompts, and 1 COIN 700 HEALTH",
         "caption": "The dungeon and the offer occupy the same screen. Look at the right-hand column: it records the adventure already under way while leaving room for someone else to join.",
         "credit": "© Atari Games · Atarimuseum.de",
-        "afterParagraph": 2,
+        "afterParagraph": 0,
         "details": [
           {
             "label": "Score & health",
@@ -500,7 +656,7 @@ const manuscript: Omit<Chapter, "visual">[] = [
         "alt": "Gauntlet sales flyer with fantasy lettering and a cabinet with four color-coded player positions",
         "caption": "Four control positions turn the cabinet into a small gathering place. The fantasy belongs on its sides as well as its screen: the machine advertises the adventure across the room.",
         "credit": "© Atari Games · International Arcade Museum",
-        "afterParagraph": 4
+        "afterParagraph": 2
       },
       {
         "asset": "gauntlet-flyer-back-1985",
@@ -509,17 +665,17 @@ const manuscript: Omit<Chapter, "visual">[] = [
         "alt": "Reverse of the Gauntlet sales flyer showing people playing and headings Four quarters at once and More options, more profits",
         "caption": "“Four quarters at once!” is the manufacturer’s own heading. The same sheet promotes cooperation, joining a game in progress and adjustable health allowances. Social play and the earnings pitch arrive together.",
         "credit": "© Atari Games · International Arcade Museum",
-        "afterParagraph": 4
+        "afterParagraph": 2
       },
       {
         "asset": "gauntlet-options-manual-p3-4",
         "alt": "Gauntlet operator manual: difficulty and health per coin in the same settings table",
         "caption": "The operator’s controls, 1985. Health per coin ranges from 100 to 2,000; difficulty has a separate setting. Enlarge to inspect the original table.",
         "credit": "Atari Games · manual preserved by Stardust Arcade",
-        "afterParagraph": 6
+        "afterParagraph": 4
       }
     ],
-    "evidence": "The opening frames a funding problem shared by creative businesses. It does not claim that every studio relies on revenue from one release alone. The venue illustration is an imagined setting, not a reconstruction of Andy Capp’s Tavern or evidence of measured drink-sales uplift. The Computer History Museum documents Pong’s 1972 tavern test. Gauntlet is a later case, not the first commercial video game. Atari’s manual supplies health/food/continuation rules (printed 2–2), earnings guidance for US 25¢ play (2–3), and settings (3–4); its recommendations do not establish a universal optimum or guarantee duration. Ed Logg’s GDC 2012 retrospective describes the sales chain (PDF pp. 6, 8), price resistance and simultaneous/drop-in play (15–16), marketing’s doubt (31), and the final-monster decision (40). His creative inspirations also included Dungeons & Dragons and Dandy (10); the essay does not assign cooperation a solely financial origin. Roles could overlap or share receipts. These are a designer’s recollections, not audited financial findings. The implications for creative form and audience value are the essay’s analysis. Original explanatory art is not a reconstruction of a historical venue or licensed cabinet."
+    "evidence": "Gauntlet is a later case, not the first commercial video game. Atari’s manual supplies health/food/continuation rules (printed 2–2), earnings guidance for US 25¢ play (2–3), and settings (3–4); its recommendations do not establish a universal optimum or guarantee duration. Ed Logg’s GDC 2012 retrospective describes the sales chain (PDF pp. 6, 8), price resistance and simultaneous/drop-in play (15–16), marketing’s doubt (31), and the final-monster decision (40). His creative inspirations also included Dungeons & Dragons and Dandy (10); the essay does not assign cooperation a solely financial origin. Roles could overlap or share receipts. These are a designer’s recollections, not audited financial findings. The implications for creative form and audience value are the essay’s analysis. Original explanatory art is not a reconstruction of a historical venue or licensed cabinet."
   },
   {
     "id": "several-histories",

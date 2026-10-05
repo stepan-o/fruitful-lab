@@ -1,0 +1,122 @@
+{
+  "desktop": {
+    "animated": 61,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figure": {
+      "height": 413.6875,
+      "width": 552,
+      "x": 750,
+      "y": 334.421875
+    },
+    "horseTransform": "matrix(1, 0, 0, 1, 0, -7.87133)",
+    "nodes": 420,
+    "running": 61,
+    "scrollWidth": 1420,
+    "shadowShape": "path(\"M 73.5548 392.138 L 49.6591 404.64 L 43.1561 408.661 L 38.5029 412.155 L 35.8413 415.06 L 35.2",
+    "width": 1440
+  },
+  "phone": {
+    "animated": 61,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figure": {
+      "height": 275,
+      "width": 326,
+      "x": 32,
+      "y": 320.71875
+    },
+    "horseTransform": "matrix(1, 0, 0, 1, 91.875, -18.125)",
+    "nodes": 420,
+    "running": 61,
+    "scrollWidth": 370,
+    "shadowShape": "path(\"M 223.915 353.759 L 210.976 362.955 L 207.931 365.893 L 206.21 368.439 L 205.891 370.55 L 207.",
+    "width": 390
+  },
+  "narrow": {
+    "animated": 61,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figure": {
+      "height": 226,
+      "width": 256,
+      "x": 32,
+      "y": 302.796875
+    },
+    "horseTransform": "matrix(1, 0, 0, 1, 91.875, -18.125)",
+    "nodes": 420,
+    "running": 61,
+    "scrollWidth": 300,
+    "shadowShape": "path(\"M 223.915 353.759 L 210.976 362.955 L 207.931 365.893 L 206.21 368.439 L 205.891 370.55 L 207.",
+    "width": 320
+  },
+  "tablet": {
+    "animated": 61,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figure": {
+      "height": 283.59375,
+      "width": 334,
+      "x": 396,
+      "y": 407.671875
+    },
+    "horseTransform": "matrix(1, 0, 0, 1, 6.84878, -13.3513)",
+    "nodes": 420,
+    "running": 61,
+    "scrollWidth": 748,
+    "shadowShape": "path(\"M 69.2074 397.784 L 44.0375 411.182 L 37.1508 415.505 L 32.2001 419.266 L 29.3398 422.398 L 28",
+    "width": 768
+  },
+  "paused": {
+    "animated": 61,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figure": {
+      "height": 283.59375,
+      "width": 334,
+      "x": 396,
+      "y": 407.671875
+    },
+    "horseTransform": "matrix(1, 0, 0, 1, 14.5228, -14.8652)",
+    "nodes": 420,
+    "running": 0,
+    "scrollWidth": 748,
+    "shadowShape": "path(\"M 80.7971 395.497 L 56.4163 408.74 L 49.7847 413.012 L 45.0551 416.73 L 42.3797 419.825 L 41.8",
+    "width": 768
+  },
+  "keyboardResume": {
+    "animated": 61,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figure": {
+      "height": 283.59375,
+      "width": 334,
+      "x": 396,
+      "y": 407.671875
+    },
+    "horseTransform": "matrix(1, 0, 0, 1, 56.115, -23.0702)",
+    "nodes": 420,
+    "running": 61,
+    "scrollWidth": 748,
+    "shadowShape": "path(\"M 143.61 383.106 L 123.509 395.503 L 118.258 399.504 L 114.73 402.985 L 113.054 405.882 L 113.",
+    "width": 768
+  },
+  "offscreen": {
+    "animated": 61,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "figure": {
+      "height": 283.59375,
+      "width": 334,
+      "x": 396,
+      "y": -2650.328125
+    },
+    "horseTransform": "matrix(1, 0, 0, 1, 60.7129, -23.9773)",
+    "nodes": 420,
+    "running": 0,
+    "scrollWidth": 748,
+    "shadowShape": "path(\"M 150.554 381.736 L 130.926 394.04 L 125.827 398.011 L 122.432 401.466 L 120.867 404.341 L 121",
+    "width": 768
+  },
+  "errors": []
+}

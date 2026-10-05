@@ -3,7 +3,9 @@ import { drawNeuralSignals, neuralDischarge } from "./factory-neural";
 import { specimenSlots, specimenLift, specimenWeave, paintSpecimenFibres } from "./factory-specimens";
 import { loadFactoryArt } from "./factory-art";
 import { createBeaconRotor, stepBeaconRotor, jamStrain } from "./factory-light";
-import { createFactoryOptics } from "./factory-optics";
+import { createFactoryOptics, alarmPalette } from "./factory-optics";
+import { createReflector } from "./factory-reflector";
+import { createReceiverRelief } from "./factory-relief";
 import { alphaSilhouette, shadowTransform, emitterSamples } from "./factory-shadow";
 
 type Ctx = CanvasRenderingContext2D;
@@ -50,7 +52,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
   let plate: HTMLImageElement | undefined, beacon: HTMLImageElement | undefined;
   let redBeacon: HTMLCanvasElement | undefined;
   const background=surface(1,1),front=surface(1,1),lightLayer=surface(1,1),beamField=surface(1,1),shadowMask=surface(1,1),frontWarm=surface(1,1),belt=surface(1,1),material=surface(256,256);
-  const optics=createFactoryOptics(),rotor=createBeaconRotor(),fog=atmosphereTexture();
+  const optics=createFactoryOptics(),reflector=createReflector(),relief=createReceiverRelief(),rotor=createBeaconRotor(),fog=atmosphereTexture();
   const cargo:HTMLCanvasElement[]=[],warm:HTMLCanvasElement[]=[],silhouettes:Path2D[]=[];
   const weaves=Array.from({length:12},(_,i)=>specimenWeave(specimenSlots[i],cargoFor(i).seed));
   let count=0,totalMs=0,maxMs=0,burstCycle=-1,burstCarrier:number|null=null;
@@ -62,6 +64,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     const b=background.getContext("2d")!,f=front.getContext("2d")!;
     b.fillStyle="#020504";b.fillRect(0,0,width,height);
     if(!plate)return;
+    relief.bake(width,height,{x:width*.5,y:height-72});
     const factor=plate.naturalWidth/1536, span=Math.max(1150,width),left=(width-span)/2;
     const depth=span/1536;
     b.drawImage(plate,0,0,1536*factor,570*factor,left,beltY-18-570*depth,span,570*depth);
@@ -73,7 +76,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     f.fillStyle=gradient(f,0,height-85,0,height,[[0,"#02050400"],[1,"#020504dd"]]);f.fillRect(0,height-85,width,85);
     frontWarm.width=front.width;frontWarm.height=front.height;
     const fw=frontWarm.getContext("2d")!;fw.drawImage(front,0,0);fw.globalCompositeOperation="source-in";
-    fw.fillStyle="#ff563c";fw.fillRect(0,0,width,height);fw.globalCompositeOperation="multiply";fw.drawImage(front,0,0);
+    fw.fillStyle=alarmPalette.material;fw.fillRect(0,0,width,height);fw.globalCompositeOperation="multiply";fw.drawImage(front,0,0);
     fw.globalCompositeOperation="destination-in";fw.drawImage(front,0,0);
     belt.width=Math.round(span);belt.height=45;
     belt.getContext("2d")!.drawImage(plate,0,570*factor,1536*factor,45*factor,0,0,span,45);
@@ -83,7 +86,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     if(disposed)return false;
     const start=performance.now();plate=scene;beacon=lamp;
     redBeacon=surface(lamp.naturalWidth,lamp.naturalHeight);
-    const ruby=redBeacon.getContext("2d")!;ruby.filter="hue-rotate(-38deg) saturate(1.4)";ruby.drawImage(lamp,0,0);
+    const ruby=redBeacon.getContext("2d")!;ruby.filter="hue-rotate(-24deg) saturate(1.65)";ruby.drawImage(lamp,0,0);
     const cell=atlas.naturalWidth/3;
     const size=compact?256:420;
     // Read alpha on a dedicated CPU surface. Reading the six GPU sprite
@@ -94,7 +97,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
       const s=surface(size,size),ctx=s.getContext("2d")!;
       ctx.drawImage(atlas,(v%3)*cell,Math.floor(v/3)*cell,cell,cell,0,specimenLift(v)/512*size,size,size);
       ctx.save();ctx.scale(size/210,size/210);ctx.translate(105,172);paintSpecimenFibres(ctx,specimenWeave(v,0));ctx.restore();
-      cargo.push(s);warm.push(tint(s,"#ff563c"));
+      cargo.push(s);warm.push(tint(s,alarmPalette.material));
       const outline=alphaSilhouette(pixels.getImageData((v%3)*cell,Math.floor(v/3)*cell,cell,cell).data,cell,cell),path=new Path2D();
       const lift=specimenLift(v)/512*210;
       outline.forEach((p,i)=>{if(i===0)path.moveTo(p.x,p.y+lift);else path.lineTo(p.x,p.y+lift);});path.closePath();silhouettes.push(path);
@@ -138,12 +141,7 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     c!.restore();
     const field=beamField.getContext("2d")!;
     field.setTransform(beamField.width/width,0,0,beamField.height/height,0,0);field.clearRect(0,0,width,height);
-    field.save();field.translate(source.x,source.y);field.rotate(angle);
-    const reach=Math.hypot(width,height)*1.3;
-    // Crossfade warm idle and vermilion alarm optics without a colour pop.
-    field.globalAlpha=.35*(1-alarm);field.drawImage(optics.amberFan,-reach*.65,-reach,reach*1.3,reach);
-    field.globalAlpha=alarm;field.drawImage(optics.redFan,-reach*.54,-reach,reach*1.08,reach);
-    field.rotate(Math.PI);field.globalAlpha=alarm*.1;field.drawImage(optics.redFan,-reach*.6,-reach,reach*1.2,reach);field.restore();
+    optics.drawBeam(field,source.x,source.y,angle,Math.hypot(width,height)*1.3,alarm,t,still);
     // Average visibility from a small finite filament. Each sample is one
     // nonzero-winding union, so overlapping brains cannot multiply darkness.
     const mask=shadowMask.getContext("2d")!;
@@ -160,7 +158,11 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     }
     const l=lightLayer.getContext("2d")!;
     l.setTransform(1,0,0,1,0,0);l.clearRect(0,0,lightLayer.width,lightLayer.height);
-    l.drawImage(beamField,0,0);l.globalCompositeOperation="destination-out";l.drawImage(shadowMask,0,0);l.globalCompositeOperation="source-over";
+    l.drawImage(beamField,0,0);
+    // Stationary relief only modulates this lamp's direct illumination. The
+    // shadow mask is applied last, so texture cannot leak into occluded regions.
+    l.globalCompositeOperation="destination-in";l.drawImage(relief.surface,0,0,lightLayer.width,lightLayer.height);
+    l.globalCompositeOperation="destination-out";l.drawImage(shadowMask,0,0);l.globalCompositeOperation="source-over";
     c!.save();c!.globalCompositeOperation="screen";c!.drawImage(lightLayer,0,0,width,height);c!.restore();
     // The image-based tread and every specimen use the same drive distance.
     const offset=((travel%belt.width)+belt.width)%belt.width;
@@ -208,12 +210,15 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     c!.strokeStyle="#030605";c!.lineWidth=6;c!.stroke();c!.strokeStyle="#56644855";c!.lineWidth=1;c!.stroke();
     if(beacon)c!.drawImage(beacon,lampX-36,by-46,72,112);
     if(redBeacon && alarm>0){c!.save();c!.globalAlpha=alarm;c!.drawImage(redBeacon,lampX-36,by-46,72,112);c!.restore();}
-    c!.save();c!.beginPath();c!.roundRect(lampX-22,by-28,44,57,15);c!.clip();c!.globalCompositeOperation="screen";
-    const bulbX=source.x;
-    const facing=.1+.9*Math.max(0,orbit.depth);
-    ellipse(c!,bulbX,by+3,2+Math.abs(orbit.depth)*8,24,gradient(c!,bulbX-12,0,bulbX+12,0,[[0,"#ff853400"],[.5,jammed?"#ffc6a6cb":"#eab97636"],[1,"#ff853400"]]));
-    glow(c!,bulbX,by+2,32,jammed?"#ff321fff":"#efa14d4a",facing);
-    line(c!,[bulbX,by-13,bulbX,by+22],jammed?`rgba(255,186,135,${facing*.9})`:`rgba(234,191,128,${facing*.45})`,1.6);
+    c!.save();c!.beginPath();c!.roundRect(lampX-22,by-28,44,57,15);c!.clip();
+    // Suppress the painted, stationary aperture inside the glass. The actual
+    // moving bowl is opaque source-over metal, including on its rear half-turn.
+    c!.fillStyle="rgba(3,10,7,.72)";c!.fillRect(lampX-22,by-28,44,57);
+    reflector.draw(c!,lampX,source.y,orbit,alarm);
+    c!.globalCompositeOperation="screen";
+    glow(c!,source.x,source.y,30,jammed?alarmPalette.hot+"b0":"#efa14d32",Math.max(0,orbit.depth));
+    // Fixed glass flutes catch restrained highlights over the moving mechanism.
+    for(let i=-2;i<=2;i++)line(c!,[lampX+i*8,by-25,lampX+i*8,by+26],"#a7986340",.55);
     c!.restore();
     // Cage occlusion remains in front of the rotating reflector.
     line(c!,[lampX,by-43,lampX,by+31],"#17201ccc",2);
@@ -232,5 +237,5 @@ export function createFactoryRenderer(canvas: HTMLCanvasElement) {
     const ms=performance.now()-start;totalMs+=ms;maxMs=Math.max(maxMs,ms);recentDraws[count%120]=ms;count++;
     if(count%60===0){const sample=Array.from(recentDraws.slice(0,Math.min(120,count))).sort((a,b)=>a-b);canvas.dataset.drawP95Ms=sample[Math.floor((sample.length-1)*.95)].toFixed(2);canvas.dataset.beaconPhase=(phase%TAU).toFixed(3);canvas.dataset.beaconSpeed=rotor.speed.toFixed(2);canvas.dataset.strain=strain.toFixed(2);canvas.dataset.drawMeanMs=(totalMs/count).toFixed(2);canvas.dataset.drawMaxMs=maxMs.toFixed(2);canvas.dataset.distance=d.distance.toFixed(2);canvas.dataset.frames=String(count);}
   }
-  return {ready,resize,draw,dispose(){disposed=true;optics.dispose();[background,front,frontWarm,lightLayer,beamField,shadowMask,material,belt,fog,...cargo,...warm,...(redBeacon?[redBeacon]:[])].forEach(s=>{s.width=0;s.height=0;});}};
+  return {ready,resize,draw,dispose(){disposed=true;optics.dispose();reflector.dispose();relief.dispose();[background,front,frontWarm,lightLayer,beamField,shadowMask,material,belt,fog,...cargo,...warm,...(redBeacon?[redBeacon]:[])].forEach(s=>{s.width=0;s.height=0;});}};
 }

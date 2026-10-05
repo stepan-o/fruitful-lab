@@ -41,3 +41,24 @@ export function jamStrain(age: number, still = false) {
   if (t < .68) return Math.exp(-(t - .44) * 20) * Math.cos((t - .44) * 36);
   return 0;
 }
+
+/** Front aperture and opaque bowl are different surfaces, not mirrored sprites. */
+export function reflectorPose(orbit: ReturnType<typeof beaconOrbit>) {
+  return {
+    front: orbit.depth > 0,
+    apertureX: orbit.lateral * 13,
+    rearX: -orbit.lateral * 5,
+    width: 2 + Math.abs(orbit.depth) * 25,
+    emission: Math.max(0, orbit.depth),
+  };
+}
+
+/** Slow refractive breathing plus small filament variation, without a strobe. */
+export function beamVariation(time: number, still = false) {
+  const t = still ? 0 : time;
+  return {
+    mix: .5 + .5 * Math.sin(t * .83),
+    width: 1 + .012 * Math.sin(t * 2.1) + .004 * Math.sin(t * 5.7),
+    power: .965 + .022 * Math.sin(t * 9.3) + .012 * Math.sin(t * 23.1),
+  };
+}

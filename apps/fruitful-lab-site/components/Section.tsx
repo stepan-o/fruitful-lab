@@ -7,7 +7,7 @@ type SectionProps = {
 };
 
 export function Section({ children, className = "", surface = "background" }: SectionProps) {
-  const background = surface === "surface" ? "bg-[var(--surface)]" : "bg-[var(--background)]";
+  const background = surface === "surface" ? "section-soft" : "section-plain";
 
   return <section className={`${background} ${className}`}>{children}</section>;
 }

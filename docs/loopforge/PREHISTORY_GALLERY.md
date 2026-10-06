@@ -69,7 +69,7 @@ No new dependencies, narration calls, simulation behavior or global style change
 - [x] Produce responsive, immutable artwork variants.
 - [x] Complete production build and HTTP/media integrity review.
 - [x] Complete browser interaction and responsive screenshot review (6 October).
-- [ ] Publish a draft PR and verify the exact preview deployment.
+- [x] Publish a draft PR and verify the exact preview deployment.
 
 ## Validation
 
@@ -108,3 +108,13 @@ No new dependencies, narration calls, simulation behavior or global style change
 ![Desktop pair](evidence/prehistory-desktop.jpg)
 
 ![Phone direction](evidence/prehistory-mobile.jpg)
+
+## Publication
+
+[Draft PR #91](https://github.com/stepan-o/fruitful-lab/pull/91) contains the gallery.
+[Verified preview](https://fruitful-4na84dki3-stepan-oskins-projects.vercel.app/stepanoskin/loopforge/overview/before-the-factory)
+is READY for runtime commit `0e38dfc14461afa4a80e819e875e5f060a17d16e`.
+The hosted browser check confirmed twelve paintings, responsive image loading,
+no desktop overflow, inspector opening and Escape dismissal. Desktop and phone
+layout checks above used the same runtime source. This record is a docs-only
+follow-up; current deployment status is also recorded in the PR.

@@ -2,16 +2,116 @@
 .circuit:before,.circuit:after{content:"";position:absolute;top:8px;width:5px;height:5px;border:1px solid #a38c58;transform:rotate(45deg);background:#1c2a2a}.circuit:before{left:8px}.circuit:after{right:8px}
 .heading{padding:0 27px}.circuit .kicker{margin:0 0 7px;font:10px/1.6 ui-monospace,monospace;letter-spacing:.13em;text-transform:uppercase;color:#b9a579}.circuit h2{margin:0;font:normal clamp(27px,3.2vw,39px)/1.16 Georgia,serif;color:#ecdcb9;letter-spacing:-.025em}
 .routes{display:flex;gap:5px;padding:18px 27px 0;flex-wrap:wrap}.routes button{flex:1;min-height:44px;border:1px solid #73827366;background:linear-gradient(150deg,#243833,#13262a);padding:9px 11px;color:#bbc7b8;font:12px/1.3 Arial,sans-serif;cursor:pointer;box-shadow:inset 0 1px #7d947626,0 2px 0 #040e12}.routes button[aria-pressed=true]{border-color:#c5a575;color:#f6ddad;background:linear-gradient(145deg,#4a4731,#293c35);box-shadow:inset 0 -2px #c5a575}.routes button:hover{border-color:#d2b480}.circuit button:focus-visible,.circuit summary:focus-visible,.circuit a:focus-visible{outline:2px solid #acddc3;outline-offset:4px}
-.circuit .context{font:12px/1.5 Arial,sans-serif;color:#a9baad;margin:12px 27px 0;min-height:36px}.stage{position:relative;background:radial-gradient(ellipse at 50% 55%,#32453b33,transparent 65%);padding:0 12px}.legend{display:flex;justify-content:space-between;gap:12px;padding:5px 16px 10px;font:10px/1.5 ui-monospace,monospace;color:#a0b8a6}.legend span{display:flex;align-items:center;gap:7px}.legend span+span{color:#ceb285}.legend i{display:block;width:17px;height:1px;background:#7faaa0;position:relative}.legend i:after{content:"";position:absolute;right:0;top:-2px;border-right:1px solid currentColor;border-top:1px solid currentColor;width:4px;height:4px;transform:rotate(45deg)}.legend span+span i{background:#cfa574;transform:rotate(180deg)}
-.panorama{display:block;width:100%;height:auto;overflow:visible}.parties{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative}.parties button{min-width:0;background:transparent;color:#e0cfad;border:0;border-top:2px solid transparent;min-height:78px;padding:10px 5px 8px;cursor:pointer;text-align:center;position:relative}.parties button[aria-pressed=true]{background:linear-gradient(#9a835d17,#172b2933);border-color:#c7a06a}.parties button:hover{background:#a4966133}.partyNumber{display:block;font:10px/1.5 ui-monospace,monospace;color:#9f936e}.parties strong{display:block;font:normal clamp(13px,1.5vw,19px)/1.25 Georgia,serif;margin:3px 0 5px}.parties small{display:block;font:10px/1.4 Arial,sans-serif;color:#9cb2a6}.mobileScene{display:none}.returnPaths{display:block;width:100%;height:auto;overflow:visible}.paymentRoute{transition:opacity .2s}.paymentRoute:not([data-active=true]){opacity:.58}
-.receipts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:0 27px}.receipts button{position:relative;min-width:0;min-height:77px;padding:11px 9px 11px 31px;text-align:left;border:1px solid #7e795344;background:#112025;color:#cfc6ab;cursor:pointer}.receipts button>span{position:absolute;left:10px;top:12px;font:12px/1 ui-monospace,monospace;color:#a9956c}.receipts strong{display:block;font:normal 14px/1.25 Georgia,serif}.receipts small{display:block;font:10px/1.5 Arial,sans-serif;color:#9caf9e;margin-top:7px}.receipts button[aria-pressed=true]{border-color:#b89966;background:linear-gradient(130deg,#48433180,#1d302a);box-shadow:inset 0 -2px #b89864}.receipts button[aria-pressed=true] span{color:#f4d7a2}.receipts button:hover{border-color:#c5a26c}.circuit .transfer{min-height:77px;margin:0;padding:18px 27px;font:15px/1.6 Georgia,serif;color:#c7ceba}
+.circuit .context{font:12px/1.5 Arial,sans-serif;color:#a9baad;margin:12px 27px 0;min-height:36px}.stage{position:relative;background:radial-gradient(ellipse at 50% 55%,#32453b33,transparent 65%);padding:0 12px}.legend{display:flex;gap:12px;padding:10px 16px 4px;font:12px/1.5 ui-monospace,monospace;color:#b0d1bd;letter-spacing:.02em}.legend span{display:flex;align-items:center;gap:10px}.legend i{display:block;width:25px;height:2px;background:#a3cfb8;position:relative}.legend i:after{content:"";position:absolute;right:0;top:-3px;border-right:2px solid currentColor;border-top:2px solid currentColor;width:6px;height:6px;transform:rotate(45deg)}.paymentLegend{color:#dec18e;padding-top:18px}.paymentLegend i{background:#dec18e;transform:rotate(180deg)}
+.supplyMap{height:142px;position:relative}.branched{height:212px}.supplyMap>svg{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:visible}.supplyLabels{list-style:none;margin:0;padding:0}.supplyLabels li{position:absolute;transform:translate(-50%,-50%);width:21%}.supplyLabels button{display:block;width:100%;min-height:48px;padding:7px 6px;box-sizing:border-box;text-align:center;background:#132423;border:1px solid #698f7866;border-radius:2px;box-shadow:inset 0 1px #bfd6a312,0 3px 0 #07171c;cursor:pointer}.supplyLabels button[aria-pressed=true]{border-color:#9ed8c2;background:linear-gradient(130deg,#385b4d,#1d302a);box-shadow:inset 0 -2px #85bba6,0 3px 0 #07171c}.supplyLabels button:hover{border-color:#9ed8c2}.supplyLabels strong{display:block;color:#e0ecd5;font:normal 15px/1.25 Georgia,serif}.supplyLabels button>span{display:block;margin-top:4px;color:#bbd3bd;font:11px/1.35 Arial,sans-serif}.supplyLabels b{font-weight:normal;color:#c9e7c9;margin:0 2px}.srOnly{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+
+.panorama{display:block;width:100%;height:auto;overflow:visible}.parties{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative}.parties button{min-width:0;background:transparent;color:#e0cfad;border:0;border-top:2px solid transparent;min-height:78px;padding:10px 5px 8px;cursor:pointer;text-align:center;position:relative}.parties button[data-highlighted=true]{background:linear-gradient(#af8b4644,#35463980);border-color:#f1cc84;box-shadow:inset 0 0 20px #efd19a14,0 5px 20px #dcab6210}.parties button[data-highlighted=true] strong{color:#fff0c6;text-shadow:0 0 14px #edbd7577}.parties button[data-highlighted=true] small,.parties button[data-highlighted=true] .partyNumber{color:#e9cea1}.parties button:hover:not([data-highlighted=true]){background:#a4966133}.partyNumber{display:block;font:10px/1.5 ui-monospace,monospace;color:#9f936e}.parties strong{display:block;font:normal clamp(13px,1.5vw,19px)/1.25 Georgia,serif;margin:3px 0 5px}.parties small{display:block;font:10px/1.4 Arial,sans-serif;color:#9cb2a6}.mobileScene{display:none}.returnPaths{display:block;width:100%;height:auto;overflow:visible}.flowRoute{--trace:#c59765;--idle:#71674e;--pulse:#ffe0a8;transition:opacity .2s}.supplyRoute{--trace:#92c3ae;--idle:#64887b;--pulse:#d5ffe9}.flowRoute:not([data-active=true]){opacity:.58}.track{stroke:var(--idle)}.flowRoute[data-active=true] .track{stroke:var(--trace)}.flowPulse{stroke:var(--pulse)}
+.receipts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:0 calc(12.5% + 9px)}.receipts button{position:relative;min-width:0;min-height:77px;padding:11px 9px 11px 31px;text-align:left;border:1px solid #7e795344;background:#112025;color:#cfc6ab;cursor:pointer}.receipts button>span{position:absolute;left:10px;top:12px;font:12px/1 ui-monospace,monospace;color:#a9956c}.receipts strong{display:block;font:normal 14px/1.25 Georgia,serif}.receipts small{display:block;font:10px/1.5 Arial,sans-serif;color:#9caf9e;margin-top:7px}.receipts button[aria-pressed=true]{border-color:#b89966;background:linear-gradient(130deg,#48433180,#1d302a);box-shadow:inset 0 -2px #b89864}.receipts button[aria-pressed=true] span{color:#f4d7a2}.receipts button:hover{border-color:#c5a26c}.circuit .transfer{min-height:77px;margin:0;padding:18px 27px;font:15px/1.6 Georgia,serif;color:#c7ceba}
 .readout{padding:20px 27px 25px;border-block:1px solid #7c795644;background:linear-gradient(120deg,#223b3455,#142126);display:grid;grid-template-columns:1fr 3fr;gap:18px 24px}.readoutTitle>span{font:13px ui-monospace,monospace;color:#b99868}.readoutTitle h3{font:normal 27px/1.15 Georgia,serif;color:#e6d4ac;margin:7px 0}.circuit .readoutTitle p{font:11px/1.5 Arial,sans-serif;color:#a3b8a6;margin:0}.readout dl{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:0}.readout dl>div+div{border-left:1px solid #7e8a6544;padding-left:23px}.readout dt{font:10px/1.5 ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#b8a578;margin-bottom:8px}.readout dd{font:14px/1.55 Georgia,serif;color:#c0cdb9;margin:0}.next{grid-column:1/-1;padding-top:15px;border-top:1px solid #8b84533d}.circuit .next p:last-child{font:18px/1.5 Georgia,serif;color:#ddcfaa;margin:4px 0 0}
 .sources{padding:0 27px}.sources summary{cursor:pointer;min-height:48px;display:list-item;align-content:center;list-style-position:inside;font:11px/1.5 Arial,sans-serif;color:#a1ad99}.sources[open]{padding-bottom:17px}.circuit .sources p{font:12px/1.65 Arial,sans-serif;margin:0 0 12px;color:#a5b4a4}.sources ul{display:flex;gap:2px 20px;flex-wrap:wrap;margin:0;padding:0;list-style:none}.sources a{display:inline-flex;align-items:center;min-height:44px;font:11px/1.5 Arial,sans-serif;color:#c2b18a;text-underline-offset:4px}
 /* Sparse mechanical motion; no JS frames, filters or movement of reading surfaces. */
-.moneyPulse{animation:receipts 5s linear infinite;animation-play-state:paused}.fan{transform-box:fill-box;transform-origin:center;animation:spin 9s linear infinite;animation-play-state:paused}.signal,.screenGlow{animation:signal 4.8s ease-in-out infinite;animation-play-state:paused}.lamplight{animation:lamplight 7s ease-in-out infinite;animation-play-state:paused}.pong{animation:pong 3.8s linear infinite;animation-play-state:paused}
-.circuit[data-playing=true] :is(.moneyPulse,.fan,.signal,.screenGlow,.lamplight,.pong){animation-play-state:running}
-@keyframes receipts{to{stroke-dashoffset:-180}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes signal{0%,100%{opacity:.55}45%,68%{opacity:1}}@keyframes lamplight{0%,100%{opacity:.055}50%{opacity:.085}}@keyframes pong{0%,100%{transform:translate(0,0)}30%{transform:translate(10px,-5px)}72%{transform:translate(-5px,5px)}}
-@media(max-width:700px){.circuit{padding-top:22px}.heading{padding:0 18px}.routes{padding:17px 18px 0;gap:5px}.routes button{font-size:11px;padding:9px 7px}.circuit .context{margin-inline:18px}.stage{padding:0 7px}.legend{padding-inline:11px;font-size:9px}.receipts{margin:0 18px;gap:5px}.receipts button{padding-left:23px}.receipts button>span{left:7px}.receipts strong{font-size:13px}.circuit .transfer{padding-inline:18px;min-height:100px}.readout{padding:20px 18px;grid-template-columns:1fr;gap:17px}.readoutTitle{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px}.readoutTitle h3{margin:0}.readoutTitle p{margin-left:auto!important}.next{grid-column:auto}.sources{padding:0 18px}}
-@media(max-width:520px){.routes{display:grid;grid-template-columns:1fr 1fr}.circuit h2{font-size:28px}.panorama,.returnPaths{display:none}.legend{padding-block:5px 7px;flex-wrap:wrap;font-size:9px;gap:6px}.parties{grid-template-columns:1fr 1fr;margin-bottom:14px}.parties button{padding:0 8px 12px;border-top:0;border-bottom:1px solid #7b7c5855;min-height:182px}.parties button[aria-pressed=true]{border-bottom-color:#d7b37e}.mobileScene{display:block;width:min(100%,170px);margin:0 auto;height:auto}.partyNumber{display:none}.parties strong{font-size:17px;line-height:1.25;margin-top:2px}.parties small{font-size:10px}.receipts{grid-template-columns:1fr;gap:5px}.receipts button{min-height:54px;padding:10px 10px 10px 31px;display:flex;flex-wrap:wrap;align-items:center;gap:5px 10px}.receipts button>span{left:11px;top:16px}.receipts strong{font-size:15px;flex:1;min-width:90px}.receipts small{font-size:10px;margin:0}.circuit .transfer{font-size:14px;min-height:115px;padding-block:15px}.readout dl{gap:14px}.readout dl>div+div{padding-left:13px}.readout dd{font-size:14px}.readoutTitle h3{font-size:24px}.circuit .next p:last-child{font-size:17px}.sources summary{font-size:11px}}
-@media(prefers-reduced-motion:reduce){.circuit :is(.moneyPulse,.fan,.signal,.screenGlow,.lamplight,.pong){animation:none!important}.paymentRoute{transition:none}}
+.flowPulse{animation:receipts 5s linear infinite;animation-play-state:paused}.fan{transform-box:fill-box;transform-origin:center;animation:spin 22s linear infinite;animation-play-state:paused}.signal,.screenGlow{animation:signal-idle 9.6s ease-in-out infinite;animation-play-state:paused}.lamplight{animation:lamplight 7s ease-in-out infinite;animation-play-state:paused}.pong{animation:pong 9s linear infinite;animation-play-state:paused}
+.circuit[data-playing=true] :is(.flowPulse,.fan,.signal,.screenGlow,.lamplight,.pong,.workshopFlicker,.repairSpark,.sparkCore,.repairArc,.repairFlash,.glassSlide,.bartenderArm,.controlPull,.playerPose){animation-play-state:running}
+@keyframes receipts{to{stroke-dashoffset:-180}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes signal-idle{0%,100%{opacity:.78}45%,68%{opacity:.9}}@keyframes signal-focus{0%,100%{opacity:.55}45%,68%{opacity:1}}@keyframes lamplight{0%,100%{opacity:.055}50%{opacity:.085}}@keyframes pong{0%,100%{transform:translate(0,0)}30%{transform:translate(10px,-5px)}72%{transform:translate(-5px,5px)}}
+@media(max-width:700px){.circuit{padding-top:22px}.heading{padding:0 18px}.routes{padding:17px 18px 0;gap:5px}.routes button{font-size:11px;padding:9px 7px}.circuit .context{margin-inline:18px}.stage{padding:0 7px}.legend{padding-inline:11px;font-size:12px}.receipts{margin:0 calc(12.5% + 5.25px);gap:5px}.receipts button{padding-left:23px}.receipts button>span{left:7px}.receipts strong{font-size:13px}.circuit .transfer{padding-inline:18px;min-height:100px}.readout{padding:20px 18px;grid-template-columns:1fr;gap:17px}.readoutTitle{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px}.readoutTitle h3{margin:0}.readoutTitle p{margin-left:auto!important}.next{grid-column:auto}.sources{padding:0 18px}}
+@media(max-width:520px){.routes{display:grid;grid-template-columns:1fr 1fr}.circuit h2{font-size:28px}.panoramaWrap,.returnPaths{display:none}.legend{padding-block:12px 10px;font-size:12px;gap:6px}.parties{grid-template-columns:1fr 1fr;margin-bottom:14px}.parties button{padding:0 8px 12px;border-top:0;border-bottom:1px solid #7b7c5855;min-height:182px}.parties button[data-highlighted=true]{border-bottom-color:#f1cc84}.mobileScene{display:block;width:min(100%,170px);margin:0 auto;height:auto}.partyNumber{display:none}.parties strong{font-size:17px;line-height:1.25;margin-top:2px}.parties small{font-size:10px}.receipts{grid-template-columns:1fr;gap:5px;margin:0 18px}.receipts button{min-height:54px;padding:10px 10px 10px 31px;display:flex;flex-wrap:wrap;align-items:center;gap:5px 10px}.receipts button>span{left:11px;top:16px}.receipts strong{font-size:15px;flex:1;min-width:90px}.receipts small{font-size:10px;margin:0}.circuit .transfer{font-size:14px;min-height:115px;padding-block:15px}.readout dl{gap:14px}.readout dl>div+div{padding-left:13px}.readout dd{font-size:14px}.readoutTitle h3{font-size:24px}.circuit .next p:last-child{font-size:17px}.sources summary{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.circuit :is(.flowPulse,.fan,.signal,.screenGlow,.lamplight,.pong,.workshopFlicker,.repairSpark,.sparkCore,.repairArc,.repairFlash,.glassSlide,.bartenderArm,.controlPull,.playerPose){animation:none!important}.flowRoute{transition:none}}
 @media print{.circuit{break-inside:avoid}.circuit *{animation:none!important}.routes,.sources{display:none}}
+
+/* Labels keep their CSS font size while the scene scales. Small screens retain
+   every named supply relationship without squeezing arrows between room cards. */
+@media(max-width:700px){.supplyMap{height:auto;margin:8px 11px 18px}.supplyMap>svg{display:none}.supplyLabels{display:grid;gap:6px}.supplyLabels li{position:static;transform:none;width:100%}.supplyLabels button{min-height:50px;padding:9px 12px;text-align:left;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px}.supplyLabels strong{font-size:16px;flex:1;min-width:110px}.supplyLabels button>span{font-size:12px;margin:0}.paymentLegend{padding-top:6px}}
+
+/* Idle rooms keep restrained ambient motion. Discharge particles do not run
+   until highlighted; clearing selection removes them instead of freezing a burst.
+   Every activity still shares the visibility/preference gate. No new frame loop. */
+.workshopFlicker{animation:workshop-idle 12.7s steps(1,end) infinite paused}
+.faultCone{opacity:.1}.faultFootprint{opacity:.055}
+.repairField{--spark-period:5.23s;opacity:.28;transform:scale(.45);transform-origin:0 0}
+.repairSpark{opacity:0;transform-origin:0 0;animation:none var(--spark-period) linear infinite paused;animation-delay:calc(var(--spark-period) * var(--launch))}
+.sparkCore{animation:none var(--spark-period) linear infinite paused;animation-delay:calc(var(--spark-period) * var(--launch))}
+.repairFlash{opacity:0;animation:contact-idle 12.6s linear infinite paused}
+.repairArc{opacity:0;animation:none var(--spark-period) steps(1,end) infinite paused}
+.glassSlide{animation:glass-slide 10.8s ease-in-out infinite paused}
+.bartenderArm{transform-origin:0 0;animation:glass-arm 10.8s ease-in-out infinite paused}
+.room{--player-period:8.9s}
+.controlPull{transform-origin:0 0}
+.playerPose{transform-origin:0 0;transform:var(--pose-rest);animation:player-pose-idle var(--player-period) ease-in-out infinite paused;animation-delay:calc(var(--player-period) * var(--player-phase,0))}
+.playerTorso{transform-origin:0 25px}
+@keyframes glass-slide{0%,16%,84%,100%{transform:translate(0,0)}42%,58%{transform:translate(2.64px,1.05px)}}
+@keyframes glass-arm{0%,16%,84%,100%{transform:scaleX(1)}42%,58%{transform:scaleX(.875)}}
+@keyframes player-pose-idle{0%,18%,74%,100%{transform:var(--pose-rest)}30%,42%{transform:var(--pose-idle-a)}55%,63%{transform:var(--pose-idle-b)}}
+
+/* One spotlight state drives the scene, its caption and activity, regardless of
+   whether a room, participant, delivery or payment supplied the interaction. */
+.panoramaWrap{position:relative}
+.sceneTargets{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.sceneTargets button{border:0;background:transparent;cursor:pointer;border-radius:8px;margin:6px}
+.sceneTargets button:focus-visible{outline:2px solid #f1cc84;outline-offset:-3px}
+.sceneHalo,.sceneOutline{opacity:0;transition:opacity .22s ease;pointer-events:none}
+.room[data-highlighted=true] .sceneHalo{opacity:1}
+.room[data-highlighted=true] .sceneOutline{opacity:.65}
+.circuit .legendNote{margin:3px 16px 0;font:12px/1.55 Arial,sans-serif;color:#a9c9b9;max-width:570px}
+.circuit .paymentNote{color:#c6b491;margin-bottom:8px}
+.room[data-highlighted=true] .workshopFlicker{animation-name:workshop-contact;animation-duration:4.73s}
+.room[data-highlighted=true] .faultCone{opacity:.24}
+.room[data-highlighted=true] .faultFootprint{opacity:.16}
+.room[data-highlighted=true] .lamplight{animation-name:lamplight-focus}
+.room[data-highlighted=true] .repairField{opacity:1;transform:scale(1)}
+.room[data-highlighted=true] .repairSpark{animation-name:spark-flight}
+.room[data-highlighted=true] .sparkCore{animation-name:spark-cooling}
+.room[data-highlighted=true] .repairArc{animation-name:contact-arc}
+.room[data-highlighted=true] .repairFlash{animation-name:contact-flash;animation-duration:var(--spark-period);animation-timing-function:steps(1,end)}
+.room[data-highlighted=true] :is(.glassSlide,.bartenderArm){animation-duration:4.8s}
+.room[data-highlighted=true] .glassSlide{animation-name:glass-slide-focus}
+.room[data-highlighted=true] .bartenderArm{animation-name:glass-arm-focus}
+.room[data-highlighted=true]{--player-period:3.2s}
+.room[data-highlighted=true] .playerPose{animation-name:player-pose-focus;animation-timing-function:linear}
+.room[data-highlighted=true] .screenGlow{animation-name:screen-focus;animation-duration:3.2s}
+.room[data-highlighted=true] .fan{animation-duration:3.8s}
+.room[data-highlighted=true] .signal{animation-name:signal-focus;animation-duration:2.8s}
+.room[data-highlighted=true] .pong{animation-duration:3.8s}
+@keyframes lamplight-focus{0%,100%{opacity:.12}42%,64%{opacity:.24}73%{opacity:.09}79%{opacity:.2}}
+@keyframes glass-slide-focus{0%,16%,84%,100%{transform:translate(0,0)}42%,58%{transform:translate(15.84px,6.3px)}}
+@keyframes glass-arm-focus{0%,16%,84%,100%{transform:scaleX(1)}42%,58%{transform:scaleX(.25)}}
+/* Sampled easing keeps connected elbows and grips together between large poses. */
+@keyframes player-pose-focus{
+ 0%,6%,78%,100%{transform:var(--pose-rest)}
+ 9.5%{transform:var(--pose-focus-in-1)}13%{transform:var(--pose-focus-in-2)}16.5%{transform:var(--pose-focus-in-3)}20%,32%{transform:var(--pose-focus-a)}
+ 36.25%{transform:var(--pose-focus-cross-1)}40.5%{transform:var(--pose-focus-cross-2)}44.75%{transform:var(--pose-focus-cross-3)}49%,60%{transform:var(--pose-focus-b)}
+ 64.5%{transform:var(--pose-focus-out-1)}69%{transform:var(--pose-focus-out-2)}73.5%{transform:var(--pose-focus-out-3)}
+}
+@keyframes screen-focus{0%,100%{opacity:.55}35%,70%{opacity:1}}
+@media(max-width:700px){.circuit .legendNote{margin-inline:11px;font-size:12px}.circuit .paymentNote{margin-bottom:12px}}
+@media(prefers-reduced-motion:reduce){.sceneHalo,.sceneOutline{transition:none}}
+
+/* Idle electrical activity is rare and dim; the full fault belongs to the spotlight. */
+@keyframes workshop-idle{0%,47.6%,49.1%,100%{opacity:1}47%{opacity:.8}48.4%{opacity:.92}}
+@keyframes contact-idle{0%,47%,50%,100%{opacity:0}48%{opacity:.5}49%{opacity:.12}}
+/* Contact chatter is abrupt and irregular; only the lamp and its small light pool drop out. */
+@keyframes workshop-contact{
+ 0%,5.1%,11.5%,15%,41.2%,47.2%,72.5%,84.1%,100%{opacity:1}
+ 4%{opacity:.12}7.2%{opacity:.06}8.5%{opacity:.57}10.3%{opacity:.2}12.9%{opacity:.38}
+ 40.1%{opacity:.08}44.1%{opacity:.45}70.8%{opacity:.24}78.4%{opacity:.035}82.3%{opacity:.62}
+}
+/* Each streak moves independently, turns with its velocity and falls as it cools.
+   The remaining 90% of its period is dark. No expanding radial star or frame loop. */
+@keyframes spark-flight{
+ 0%{opacity:0;transform:var(--flight-0)}
+ .3%{opacity:1;transform:var(--flight-0)}
+ 1.5%{opacity:1;transform:var(--flight-1)}
+ 3.8%{opacity:.86;transform:var(--flight-2)}
+ 6.8%{opacity:.5;transform:var(--flight-3)}
+ 10%,100%{opacity:0;transform:var(--flight-4)}
+}
+@keyframes contact-flash{
+ 0%,3%,6%,43.8%,46.6%,79.1%,81.4%,100%{opacity:0}
+ 1.2%{opacity:1}2.1%{opacity:.35}4.1%{opacity:.55}
+ 42.1%{opacity:.85}42.9%{opacity:.25}45.1%{opacity:.48}
+ 77.3%{opacity:.7}78.1%{opacity:.2}80.2%{opacity:.35}
+}
+@keyframes contact-arc{
+ 0%,2.1%,4.9%,42.9%,45.8%,78.1%,80.8%,100%{opacity:0}
+ 1.2%{opacity:1}4.1%{opacity:.62}42.1%{opacity:.95}45.1%{opacity:.5}77.3%{opacity:.8}80.2%{opacity:.4}
+}
+@keyframes spark-cooling{0%,1.5%{opacity:1}3.8%{opacity:.35}6.8%,100%{opacity:0}}

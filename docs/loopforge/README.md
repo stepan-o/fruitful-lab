@@ -70,6 +70,8 @@ motion does not introduce automatic machinery audio.
 
 - Factory entrance: `/stepanoskin/loopforge` (overview, engine and play menu).
 - Overview: `/stepanoskin/loopforge/overview/the-factory` (8 chapters).
+- Story workshop: `/stepanoskin/loopforge/overview/before-the-factory`
+  ([six prehistory directions, twelve concept paintings](PREHISTORY_GALLERY.md)).
 - Engine: `/stepanoskin/loopforge/architecture/the-thesis` (16 chapters).
 - Play: `/stepanoskin/loopforge/play` (8-shift teaching prototype).
 

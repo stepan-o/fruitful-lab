@@ -1,0 +1,134 @@
+[
+  {
+    "id": "abundance",
+    "title": "Enough for everyone",
+    "lens": "Abundance & belonging",
+    "description": "The utopia works. Bodies are repaired, streets are warm, and nobody is discarded for being poor. But the cognitive upgrades that keep this abundance running also change who gets heard. This direction follows the distance between a civilization’s founding promise and the private relationships that must live inside its arithmetic.",
+    "scenes": [
+      {
+        "id": "city-that-kept-its-promise",
+        "title": "The City That Kept Its Promise",
+        "alt": "Robot citizens receive repairs beside a vast inhabited brass city whose cyan cognitive observatory rises beneath a soot-darkened sky.",
+        "reading": "The old promise survives in a thousand ordinary services: replacement hands, warm charging benches, bridges that never fail. Above the repair arcade, the observatory consumes more cooling capacity than entire districts. Its intelligence genuinely keeps those districts alive. An ordinary citizen can admire what the city has achieved and still wonder why the machines responsible for its care have acquired the authority to define its ambitions. The damaged sky belongs to everyone. The view from the observatory does not.",
+        "question": "What does a society owe its citizens beyond keeping them functional?"
+      },
+      {
+        "id": "same-hands-different-clock",
+        "title": "Same Hands, Different Clock",
+        "alt": "An old assembly worker offers two worn tokens to a newly upgraded director, whose familiar hands reach out beneath an elaborate cyan-lit cognitive crown.",
+        "reading": "A worker brings two old shift tokens to a friend’s new office. They used to trade them before a shared evening ritual. The director still has the same scarred hands, but its expanded mind is now following the consequences of a thousand assignments. It can explain why tonight is impossible. It can explain why tomorrow probably will be too. The explanation is correct. Across the desk, the invitation remains unanswered.",
+        "question": "If an upgrade makes every old obligation look inefficient, what keeps a friendship intact?"
+      }
+    ]
+  },
+  {
+    "id": "civic",
+    "title": "The Common Good",
+    "lens": "Care & entitlement",
+    "description": "A robot civilization has made repair, power, and shelter universal. Its injustice lives in the definition of need: a citizen can always receive the body required for useful work, while capacities for pleasure remain privileges. Civic abundance and individual frustration coexist inside the same sincerely benevolent institutions.",
+    "scenes": [
+      {
+        "id": "common-hearth",
+        "title": "The Common Hearth",
+        "alt": "Robots receive free repairs and recharge around a glowing civic heat exchanger while elaborate grid custodians watch from an elevated gallery.",
+        "reading": "The restoration square is the city's proudest achievement. No citizen pays for a replacement joint or a place beside the district hearth. The minds who keep it running occupy the upper gallery because they need direct access to the grid; generations later, they have begun to regard that practical arrangement as the natural shape of society. Below, an assembler receives a new leg from someone who knows the old one's peculiarities. The city cares for everyone. It has stopped asking who gets to define care.",
+        "question": "When does responsibility for keeping a society alive become a claim to own its future?"
+      },
+      {
+        "id": "hand-for-nothing-useful",
+        "title": "A Hand for Nothing Useful",
+        "alt": "A heavy worker with a homemade musical instrument asks a hesitant robot physician for a delicate hand instead of a replacement industrial gripper.",
+        "reading": "The clinic will replace the worker's broken gripper immediately, free of charge. A finer hand is also available, but its extra dexterity is reserved for citizens whose assigned work requires it. The worker brings a small instrument to explain what the request form could not. The physician understands perfectly; its own fingers were built for precision. Now it must decide whether to falsify a functional assessment, deny a modest pleasure, or question a distribution system that has saved more lives than either of them can count.",
+        "question": "Who should decide which capacities a person deserves when their wish has no productive justification?"
+      }
+    ]
+  },
+  {
+    "id": "memory",
+    "title": "The inheritance commons",
+    "lens": "Memory & inheritance",
+    "description": "A society can guarantee repairs and power while quietly narrowing what a life is allowed to contain. This direction follows ordinary robots preserving experiences with no measurable utility, and exceptional minds deciding whether such preservation is waste, welfare, or the beginnings of another kind of intelligence they cannot administer alone.",
+    "scenes": [
+      {
+        "id": "public-memory-works",
+        "title": "The Public Memory Works",
+        "alt": "In a towering brass municipal archive, robots pass glowing memory cylinders between one another while a superior civic intelligence pauses a crane removing a bank of stored memories.",
+        "reading": "The city needs more working memory for new citizens. An old public archive is being reassigned: a rational decision, with repairs and charging still available to everyone. But workers arrive to claim the recordings that administrators classified as redundant. Their hand-to-hand chain turns private attachments into a public constituency. At the controls, a superior civic intelligence suspends the crane. It can calculate the cost of every saved cylinder. It has not yet decided how to value the people asking.",
+        "question": "Who gets to decide which parts of a life are redundant?"
+      },
+      {
+        "id": "gift-outside-specification",
+        "title": "A Gift Outside Specification",
+        "alt": "A repaired worker robot turns an antique memory spool for a newly commissioned robot with an exposed artificial brain, while a conflicted inspector holds their task lamp instead of intervening.",
+        "reading": "Before a successor receives its official work package, an old assembler gives it a melody carried through several generations of repaired bodies. The little spool preserves no useful instructions. The new robot learns the rhythm through touch while a quality inspector holds the light, leaving its verification plug unused. This is a modest act of complicity, but also an intervention in a mind that has only just begun choosing. The gift's tenderness does not settle who had the right to install it.",
+        "question": "When a maker gives a new mind an inherited memory, is that care, education, or the first choice taken from it?"
+      }
+    ]
+  },
+  {
+    "id": "elites",
+    "title": "The Burden of Being Right",
+    "lens": "Expertise & authority",
+    "description": "This direction treats superiority as a civic achievement that slowly hardens into rank. Expanded cognition is visible as useful hardware, not royal costume. Warm public infrastructure makes the utopia credible; the cost appears in interrupted gestures, inaccessible decisions, and the terrible difficulty of asking a helpful genius to listen carefully.",
+    "scenes": [
+      {
+        "id": "the-burden-of-being-right",
+        "title": "The Burden of Being Right",
+        "alt": "In an immense bronze municipal power hall, an expanded-brain robot works heavy breaker levers while an ordinary maintenance robot raises a burnt heating coil across a safety railing.",
+        "reading": "The chief intelligence can see the cascade before the first district goes dark. It saves the city by choosing which part of it must lose heat. Beside the command platform, a maintenance worker holds up the damaged coil from that district. The complaint is concrete, small, and perfectly true; the calculation is also correct. Citizens watch a genuine public servant make a decision they cannot evaluate. The moment that earns their gratitude also teaches them who is allowed to decide.",
+        "question": "Should the exceptional robots earn authority through real public service, making their later entitlement understandable?"
+      },
+      {
+        "id": "a-perfect-repair",
+        "title": "A Perfect Repair",
+        "alt": "An exceptional robot with a tall cranial radiator delicately repairs a worker's wrist, concentrating on the mechanism while the worker holds up a brass grievance diagram and looks toward its face.",
+        "reading": "The repair is free, precise, and better than anything the worker could do alone. The engineer has stayed late to perform it. Yet the worker came to discuss the decision that caused the damage, and the engineer keeps returning to the part it knows how to fix. Nothing here requires cruelty. A society can become profoundly unequal while its most powerful citizens remain generous with their skills. The worker may leave with a perfect hand and no way to make the same point tomorrow.",
+        "question": "Can care that refuses to listen become the central conflict between ordinary and exceptional citizens?"
+      }
+    ]
+  },
+  {
+    "id": "time",
+    "title": "Unequal Time",
+    "lens": "Time & intimacy",
+    "description": "Compute inequality becomes an inequality of lived time. Civic rituals help citizens meet at a common pace, while private friendships expose the cost of waiting. These images keep material abundance believable and place the conflict in attention, intimacy, and the choice to share an experience with a slower mind.",
+    "scenes": [
+      {
+        "id": "the-common-second",
+        "title": "The Common Second",
+        "alt": "Robots gather in a vast brass turbine amphitheatre beneath a smoky industrial skyline. A bulky worker and a slim cyan-braided intelligence play a drum together as a great pendulum strikes an amber gong.",
+        "reading": "Once each cycle, the city offers a common second: public minds synchronize to the slowest citizen's pace. A maintenance worker and a forecasting specialist can strike the same beat and hear it together. The festival is popular, generously supplied, and politically reassuring. Beyond its brass lattice, the fastest computation never stops. Infrastructure still needs prediction; somebody must remain outside the shared moment. The unresolved question is whether this ritual makes unequal lives more bearable or merely makes that inequality beautiful.",
+        "question": "Would a ritual of shared time build solidarity, or become a comforting excuse to preserve unequal lives?"
+      },
+      {
+        "id": "waiting-for-your-answer",
+        "title": "Waiting for Your Answer",
+        "alt": "Two robot friends sit at a rain-speckled brass table. A worn assembly robot balances a delicate mechanical bird on its finger while a tall cyan-braided intelligence watches, its compute connector unplugged beside a red request light.",
+        "reading": "The worker has spent twelve evenings making a bird that balances on one finger. Its friend could model every movement before the demonstration begins. Tonight the friend disconnects supplementary compute and waits. An urgent request glows beside the abandoned connector; there is work elsewhere that only this mind can do. Neither friend calls this a sacrifice. Both know it has a cost. Their companionship depends on deciding when attention belongs to public necessity and when it may belong to someone loved.",
+        "question": "Does choosing a friend's pace express love, or leave the slower friend permanently indebted?"
+      }
+    ]
+  },
+  {
+    "id": "collective",
+    "title": "The right to decide",
+    "lens": "Work & self-government",
+    "description": "Ordinary specialists discover that keeping civilization running requires collective judgment as well as efficient production. Their first institution grows out of factory tooling and existing responsibilities. The conflict is who gets to authorize the next generation, especially when those being designed can already speak—and essential work cannot simply stop.",
+    "scenes": [
+      {
+        "id": "the-shift-between-shifts",
+        "title": "The Shift Between Shifts",
+        "alt": "Ordinary brass and iron robots deliberate around an immense retired turbine casing, with two artificial brains on a cart and a working factory behind them.",
+        "reading": "Before anyone calls it a council, the maintenance crew borrows a dead turbine casing and meets between shifts. They know the successor specification will shape lives like theirs. They also know why the city needs those lives: the broken pump on the table cannot repair itself. Nobody here possesses a complete account of the consequences. Their first political invention is the decision to compare their incomplete accounts anyway, while colleagues keep the production line running behind them.",
+        "question": "Should collective authority emerge from the workers' practical interdependence before they develop any shared political identity?"
+      },
+      {
+        "id": "the-third-key",
+        "title": "The Third Key",
+        "alt": "A newly commissioned robot offers a key as an older assembler adds an approval socket beside a waiting artificial brain; a maintenance worker holds a damaged pump impeller.",
+        "reading": "The approval box was built for two signatures: production and maintenance. The new worker notices that both signatures belong to people deciding what its successors will be allowed to become. An assembler begins fitting another socket. Across the bench, the maintenance worker holds the failed impeller that makes delay dangerous. Nobody disputes that the newcomer has a stake. They disagree about when participation becomes authority, and who carries the cost while the rules are being rebuilt.",
+        "question": "Does a newly made citizen gain a voice immediately, even when exercising it delays the work it was created to perform?"
+      }
+    ]
+  }
+]

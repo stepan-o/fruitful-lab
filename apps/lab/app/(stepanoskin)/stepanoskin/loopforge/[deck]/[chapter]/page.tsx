@@ -63,6 +63,7 @@ export default async function Page({
                 <i />
               </Link>
             ))}
+            {deck === "overview" && <Link href="/stepanoskin/loopforge/overview/before-the-factory"><span>↗</span>Before the factory<i /></Link>}
           </nav>
           <div className={styles.sidebarFoot}>
             <span>RESEARCH → PLAY</span>
@@ -108,6 +109,9 @@ export default async function Page({
           </section>
           <Conveyor />
           <div className={styles.chapterBody}>
+            {deck === "overview" && chapter.id === "the-factory" && <Link href="/stepanoskin/loopforge/overview/before-the-factory" className={styles.workshopLink}>
+              <span>STORY WORKSHOP</span><strong>Before the factory ↗</strong><small>Six possible histories. Twelve concept paintings. Explore the robot society behind Loopforge.</small>
+            </Link>}
             {chapter.exhibit && <>
             <div className={styles.sectionHeading}>
               <span className={styles.eyebrow}>WORKING EXHIBIT</span>

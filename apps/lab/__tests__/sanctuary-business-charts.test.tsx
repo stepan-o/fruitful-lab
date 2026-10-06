@@ -24,6 +24,7 @@ it("keeps bandwidth separate from latency when choosing a cloud mode",()=>{
 });
 it("connects each layer selection to the relevant offer and measurement question",()=>{
  render(<BusinessMap/>);
+ fireEvent.click(screen.getByText("Inspect the seven business layers"));
  fireEvent.click(screen.getByRole("button",{name:"Equip & render"}));
  expect(screen.getByRole("heading",{name:"Buying the game does not supply the computer."})).toBeVisible();
  expect(screen.getByText(/Capacity, queues and cost per streamed hour/)).toBeVisible();

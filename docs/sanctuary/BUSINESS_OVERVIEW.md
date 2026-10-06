@@ -57,7 +57,7 @@ Steam’s settlement source now also appears beside the relevant narrative parag
 
 Eight selected routes, six questions, three column-pair tabs. Filters compare screen entertainment (Gauntlet / Dune Part Two / Stranger Things), BG3 (Steam local / Steam + paid GeForce NOW / PS5 download), and Diablo IV (Xbox purchase / eligible Game Pass download). Roles are not necessarily separate companies. The source register dates and bounds each example. Private royalty, revenue-share and subscription settlement rates are not invented.
 
-The business atlas adds seven selectable layers, each naming counterparties, what is sold and the analytical question. Its arrows are schematic direction, never a Sankey flow or implied percentage. They do not imply all receipts must pass through every depicted role.
+The opening procedural circuit compares an arcade route, a purchased PC game, the same game through GeForce NOW, and Netflix. Its selectable participants identify costs, income and the next sale or renewal each business needs. Separate payment paths expose counterparties without implying amounts or timing. The seven-layer atlas remains available in a disclosure below it. See `BUSINESS_CIRCUIT.md` for composition, sources, behavior and verification.
 
 ## Numbers and interpretation
 
@@ -69,7 +69,7 @@ Cloud can broaden access while adding rendering capacity, network, integration a
 
 ## Visual documentation and performance
 
-Each map/chart has a detailed entry in `visual-notes.ts`, alongside primary references and limits. All source values are local, immutable within the application build. No runtime third-party fetch, new raster image, chart library, per-frame React state or animation is added. Chapter-specific components are dynamically imported. Mobile rearranges the original map into labeled stations and stacks comparison cells; charts retain real zero baselines and readable values.
+Each map/chart has a detailed entry in `visual-notes.ts`, alongside primary references and limits. All source values are local, immutable within the application build. No runtime third-party fetch, new raster image, chart library or per-frame React state is added. The opening circuit uses a few CSS-driven mechanical details gated by the existing motion lifecycle. Chapter-specific components are dynamically imported. Mobile rearranges the original map into labeled stations and stacks comparison cells; charts retain real zero baselines and readable values.
 
 ## Validation — 5 October 2026
 

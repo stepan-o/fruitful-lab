@@ -35,7 +35,7 @@ describe("Sanctuary exhibits", () => {
         const {container,unmount}=render(c.id==="insert-coin"?<EveningPlace opening/>:c.id==="studio-to-screen"?<BusinessMap/>:<ChapterDiagram chapter={c.id} index={index} diagram={c.visual.diagram}/>);
         expect(container.querySelector("svg")).not.toBeNull();
         expect(container.querySelector("img,video,audio,image")).toBeNull();
-        if(c.id==="studio-to-screen") expect(screen.getByRole("group",{name:"Inspect a business layer"})).toBeVisible();
+        if(c.id==="studio-to-screen") expect(screen.getByRole("group",{name:"Compare business arrangements"})).toBeVisible();
         if(c.id==="how-many-lives") expect(screen.getByRole("combobox",{name:"Health per coin"})).toBeVisible();
         unmount();
         continue;

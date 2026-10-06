@@ -389,3 +389,15 @@ case). Earlier routes remain valid; navigation derives from the chapter catalog.
 Only active-chapter media/notes are serialized; new comparison/charts load for the
 business chapter. No backend, auth, asset cache contract or other app changed.
 See `docs/sanctuary/BUSINESS_OVERVIEW.md` for data definitions and validation.
+
+
+### Loopforge prehistory story workshop — 5 October 2026
+
+`/stepanoskin/loopforge/overview/before-the-factory` is a dedicated concept-art
+review gallery within The Game. It is linked from the opening chapter and game
+chapter navigation, without renumbering the eight overview chapters. Twelve
+original paintings explore six alternative social histories, explicitly outside
+established canon. The server-rendered gallery uses its own `loopforge-prehistory`
+immutable media pack and on-demand native image dialogs; existing chapters do not
+import the gallery manifest or content. Brief, provenance and verification:
+`docs/loopforge/PREHISTORY_GALLERY.md`.

@@ -1,0 +1,564 @@
+{
+  "sourceRepository": "stepan-o/loopforge",
+  "sourceCommit": "3267ea7",
+  "images": [
+    {
+      "id": "cathexis-brewery",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/cathexis_brewery.png",
+      "sha256": "0cebf6ff525c204ffecef0a9d218d83adaef5a5488a9661359e3d0abd7c8b19e",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-brewery-fiasco-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/limen_brewery_fiasco_1.png",
+      "sha256": "80190fcd0fd48f7c86720a45b3bd71335e8b377f47438df0b251ee4f4d024140",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-brewery-fiasco-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/limen_brewery_fiasco_2.png",
+      "sha256": "1d1a163e0ff426a4c90959d1983390ad13ab3d18e87324b39491ace2fbd4976a",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-brewery-success",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/limen_brewery_success.png",
+      "sha256": "cd76e77793c253bd66a1510ae3a1a8e385bbc9c26cd27114f2e0c4c19f6cc29d",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-brewery-success-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/rivet_witch_brewery_success_1.png",
+      "sha256": "1a2cdcd94d96947abeb9f71047f0b43b800fb2e1540d839cd5e2868d122449dc",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-brewery-success-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/rivet_witch_brewery_success_2.png",
+      "sha256": "14a12bdb2ab1f7f8e9eeb60982b035124f1415a1fd680082b2b1e701f6776b05",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-brewery-wicked-experiment-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/rivet_witch_brewery_wicked_experiment_1.png",
+      "sha256": "8194223a9324798f6d43a53589b27195c9740e0e21a1f2d86cc3f4ae30ac42c4",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-brewery-wicked-experiment-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/rivet_witch_brewery_wicked_experiment_2.png",
+      "sha256": "ad3dfd6d64a9a453affe9a199935ba86cef1ca628522a8aec4f72864179baa34",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-brewery-fiasco-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/stiletto_brewery_fiasco_1.png",
+      "sha256": "9e69985d59e17cbba4751e83d5a29d436632270f6305a1560c0d649658d6a35c",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-brewery-fiasco-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/stiletto_brewery_fiasco_2.png",
+      "sha256": "560ce256670e762b28d92b798705ffd17f2cbf8edd1bd165ff9caf051b63ea12",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-brewery-success",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/stiletto_brewery_success.png",
+      "sha256": "96ad1a7aa8076a1ca23191af268505f0b4dd92fe86b7fbaecd18790c700aa4c8",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "thrum-brewery",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/brewery operations/thrum_brewery.png",
+      "sha256": "0bb36f9b47abdc03b9a6acab29cf2514325c5b59a59df0569930f3a08ddb29a3",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "cathexis-conveyor-failure",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/cathexis_conveyor_failure.png",
+      "sha256": "e7b5aa12dcc19eb9849ae1572a06bf09b97d77cda8e703f29afa6ff3d6cbfd7f",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "cathexis-conveyor-success",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/cathexis_conveyor_success.png",
+      "sha256": "24ae8fc8f2b5be0e79046a4a702a7747a28ac7e7ff9f7263ed61393590ac1ce8",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-conveyor",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/limen_conveyor.png",
+      "sha256": "991e1babaca3c7aee187389b047835664eaf6d8de2ec5149899cd96d075cd4fc",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-conveyor",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/rivet_witch_conveyor.png",
+      "sha256": "ae6d2849772532e36da7e420b0956a61b7cee6771bec6a36fbab4aebf060c277",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-conveyor-repair",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/rivet_witch_conveyor_repair.png",
+      "sha256": "28d32e2e93ff8ad39e7e9eef3d6a44e91a2a64e5c20d5a1a055a6694e5c7613b",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-conveyor-failure-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/stiletto_conveyor_failure_1.png",
+      "sha256": "dfe59b026fdf305dbc03d42841d594510293437730d85da30b446bc6b8f1384e",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-conveyor-failure-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/stiletto_conveyor_failure_2.png",
+      "sha256": "6b3c99a9e9a9e17d2d5c41741f11d98b5e449a595a7ae23325a5a9861e7e8b3d",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-conveyor-failure-overdrive",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/stiletto_conveyor_failure_overdrive.png",
+      "sha256": "1399658a085d19b37fb697bcb7ee63960bd3767b4ffb6f073b25ac16896f34da",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-conveyor-success-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/stiletto_conveyor_success_1.png",
+      "sha256": "d1af926c749502043a32f8a071feb10afa9acc223b84c64164416a0815cdb1c1",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-conveyor-success-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/stiletto_conveyor_success_2.png",
+      "sha256": "73e3329e698dab0e07a8ddbd0421b1a1d4f913525c76695a0af575b1abc65b39",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "thrum-conveyor",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/conveyor_operations/thrum_conveyor.png",
+      "sha256": "01ce95ccb80a393cf7394e85e23d322553edd2fc04f044a135de615e318a95c4",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "argue-limen-cathexis-conveyor",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/interactions/argue_limen_cathexis_conveyor.png",
+      "sha256": "c29db0ac46970c2e7e34f151d2b0fa95c8016d105d919882d9852843f23bf973",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "argue-limen-cathexis-security",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/interactions/argue_limen_cathexis_security.png",
+      "sha256": "dd4b1d325d41a0aef4cf2d04f7d4a89fe7a0e7678be9b376e2fc4f3a5ee4f132",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "argue-limen-stiletto-conveyor",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/interactions/argue_limen_stiletto_conveyor.png",
+      "sha256": "63ea00800d20a63a128d68b8e72764bdf2d71be0315389af93314e14eb0f8717",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "argue-limen-stiletto-security",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/interactions/argue_limen_stiletto_security.png",
+      "sha256": "543f23413e87db80dcb269aa3434a9ef1c7fee0f07bc861446d74eee699af9bb",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "argue-stiletto-cathexis-conveyor",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/interactions/argue_stiletto_cathexis_conveyor.png",
+      "sha256": "c559d4964e50f3a257a704c617e88641c5e12f59ff30baf141d43df66667d0f7",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "argue-stiletto-rivet-witch-conveyor",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/interactions/argue_stiletto_rivet_witch_conveyor.png",
+      "sha256": "41a3c4b937d28424bbaf5aea3b37c2b58efeca635dc668e0a85b43be3ead3bed",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "cathexis-security",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/security_operations/cathexis_security.png",
+      "sha256": "1a054b2ea74b24e82de48f1dcd5dc8248d7a9879954a2b69cb750bc3055c904c",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-security",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/security_operations/limen_security.png",
+      "sha256": "7463047503842a340ec37403156d300a71da1f791db4499f2f7f4b6c51ec8ab8",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-security-lockdown",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/security_operations/limen_security_lockdown.png",
+      "sha256": "648e3c7b86355665880d78057a506bc07cbd27df5a183f52176ad622496e8f12",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-security",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/security_operations/rivet_witch_security.png",
+      "sha256": "8d0e3e7e49db3a86073707e04eb5beb9a1203cd2df47068a8169a1f9a50362e6",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-security",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/security_operations/stiletto_security.png",
+      "sha256": "8cbe8faff5888e4810bc8d8630503a97a8bae8d73bc22b4159cb55531a8690cb",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "thrum-security-fiasco",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/security_operations/thrum_security_fiasco.png",
+      "sha256": "fda907a9770287de253749fbca9b125180e3e3e2bbd6a431fead43cb3899beae",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "thrum-security-success",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/security_operations/thrum_security_success.png",
+      "sha256": "76f3ff9663925fc7c3b4e6404ead0f0d393162a64cea92eefc62f9b90bfe9d56",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "cathexis-theatre-revolution",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/cathexis_theatre_revolution.png",
+      "sha256": "8d6ccbee78457107e7912d68c83455f8485a3ff949c9d6afd16f7bad2e2b091b",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "cathexis-theatre-revolution-alt",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/cathexis_theatre_revolution_alt.png",
+      "sha256": "100a3a6a7d7df482ea8ef4a3b94311c6a9c65f6bc27d905d779f0307e98329a2",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "cathexis-theatre-success-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/cathexis_theatre_success_1.png",
+      "sha256": "a8f905d5fa4e31c6bdff7d77f962367ba2ec1b17a1993f983025647370341482",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "cathexis-theatre-success-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/cathexis_theatre_success_2.png",
+      "sha256": "d337fdf4e0b27c9222314dd8fbdc1de6541ed1fe876d1367f8d4316676eea48d",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-theatre-fiasco-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/limen_theatre_fiasco_1.png",
+      "sha256": "7e66ecc8b6f2bd0aeb4a1279a5eccf3927c7fa3b6eb12aebdea5a42d6b520c3a",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-theatre-fiasco-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/limen_theatre_fiasco_2.png",
+      "sha256": "17caa32c4a7dcbf7968e92564820dc31cc046cb7188230d728bdd03a07d15e60",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-theatre-success-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/limen_theatre_success_1.png",
+      "sha256": "2d75cfba59859fe9dcfe11ee63809cbc17dca240596a2e17eff6d60509ceeeb1",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-theatre-success-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/limen_theatre_success_2.png",
+      "sha256": "1d76334f6feb87e79a3a9dec73b556eead01bb354fe84f72fd99e8ea80ee2217",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-theatre-failure-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/rivet_witch_theatre_failure_1.png",
+      "sha256": "ce254e2f4026f4b46306d60896f3ac04e551ec307667f37172d772fab317b2a4",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-theatre-failure-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/rivet_witch_theatre_failure_2.png",
+      "sha256": "70fa79cfb2c341d7871affe9eafcb3787d2958a201937307c29e155a01e54d76",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-theatre-success",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/rivet_witch_theatre_success.png",
+      "sha256": "0283f7d3fdf8ac9378fd374e7f26feaadda7fc22876b66f4520572b39a85181c",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-theatre-fiasco-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/stiletto_theatre_fiasco_1.png",
+      "sha256": "8cafbd163cc0de89d7a64310862b13d037fc2f0ad50c137b5c08a2cdacaaf221",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-theatre-fiasco-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/stiletto_theatre_fiasco_2.png",
+      "sha256": "2846440950e1978e93df0c0b7712d71dd1c607aadc52ee9f6c7e4cb0d27dfbe4",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-theatre-success-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/stiletto_theatre_success_1.png",
+      "sha256": "0e4ffcefb8c418a25b8263e6cb427549fae422fbf508c95ba5b13e5134a5b6af",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-theatre-success-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/stiletto_theatre_success_2.png",
+      "sha256": "836d0bffd1034f7653c49e8865bfd82d4bb1b5ec20a0527e487f4da13b4d628a",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "thrum-theatre",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/theatre_operations/thrum_theatre.png",
+      "sha256": "f08fbc1421e57eaaf38691472fa3257f1a6daf57c24e712a8ddb3bc70534c806",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "cathexis-weaving",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/cathexis_weaving.png",
+      "sha256": "2929fa5e91fa57ad349203487a6f8c3335c0e7eb29f2d6a15de13b03b6dfecd9",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-weaving-fiasco-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/limen_weaving_fiasco_1.png",
+      "sha256": "c755935b52f9a0bc3fb4d9e72262aeca42a3d548ca2a59dae70a0e764991859a",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-weaving-fiasco-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/limen_weaving_fiasco_2.png",
+      "sha256": "0b4a47a609d56f0fc6a6af14a65b62cdb8e52d8d52dbac56da6caace09abe92f",
+      "width": 1024,
+      "height": 1536,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "limen-weaving-success",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/limen_weaving_sucess.png",
+      "sha256": "d1144cd8bc2d268f0f3f4c7d4c90ef70193e284e6eab9f9c5dfe1c645c3d71a5",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-weaving-fixup",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/rivet_witch_weaving_fixup.png",
+      "sha256": "5d445adaea65b155878e314dac5c1cfc052234bcf54c65ad5f7045966b4bdc37",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "rivet-witch-weaving-repair",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/rivet_witch_weaving_repair.png",
+      "sha256": "eee5cc8638ccca47a7c3e3437ab55885f331bdcb8e17b6b5b1bffd95b8ba7b1c",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-weaving-fiasco-1",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/stiletto_weaving_fiasco_1.png",
+      "sha256": "edd99120427e5763295def614835ed4470a4c7f78e693b7140b2b7e6045480ae",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-weaving-fiasco-2",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/stiletto_weaving_fiasco_2.png",
+      "sha256": "ca33f02da6b5de9de989173701220f381efe51ad800a90bb6fea0b032731bcd8",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "stiletto-weaving-success",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/stiletto_weaving_success.png",
+      "sha256": "a94eb2f38c7e28bcd220c82cbba55ba2a09df2858fa3c1cbbc07a7a46b8aae5a",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    },
+    {
+      "id": "thrum-weaving",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/weaving_operations/thrum_weaving.png",
+      "sha256": "416209cc4decd1362d2ffaafca9e243b1ca940d64134e8aee8a8d991cf6a3dd6",
+      "width": 1536,
+      "height": 1024,
+      "review": "Visually inspected in room contact sheet, 6 October 2026",
+      "publication": "Original owner-provided Loopforge concept art; owner requested reuse in the game overview."
+    }
+  ]
+}

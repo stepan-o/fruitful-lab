@@ -5,6 +5,16 @@ prototype are implemented. Paid narration is implemented but awaits configuratio
 and real-provider validation. This document preserves the original design brief;
 the [delivery checklist](DELIVERY_CHECKLIST.md) records current completion status.
 
+## Story development
+
+The [story bible](STORY_BIBLE.md) is the living narrative reference, started
+6 October 2026. It opens with the global robot world after an undefined event;
+Loopforge is a later consequence of that world’s history. Confirmed direction is
+separated from proposed founding events, personnel histories and the player loop.
+The workplace dystopia and established character art constrain that history;
+Loopforge has not been established as a benevolent civic project. The earlier
+prehistory galleries remain exploratory art, pending selection and tone review.
+
 ## Confirmed direction
 
 - Continue within the public Stepanoskin route group in `apps/lab`.
@@ -70,6 +80,8 @@ motion does not introduce automatic machinery audio.
 
 - Factory entrance: `/stepanoskin/loopforge` (overview, engine and play menu).
 - Overview: `/stepanoskin/loopforge/overview/the-factory` (8 chapters).
+- Supervisor scene library: `/stepanoskin/loopforge/overview/the-cast`
+  ([five supervisors, room and pair tables, 62 original paintings](SUPERVISOR_ATLAS.md)).
 - Story workshop: `/stepanoskin/loopforge/overview/before-the-factory`
   ([six prehistory directions, twelve concept paintings](PREHISTORY_GALLERY.md)).
 - Engine: `/stepanoskin/loopforge/architecture/the-thesis` (16 chapters).

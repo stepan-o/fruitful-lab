@@ -72,21 +72,21 @@ export const overview: Chapter[] = [
   },
   {
     id: "the-cast",
-    title: "The cast",
-    kicker: "Five supervisors / five ways to be right",
+    title: "The supervisors",
+    kicker: "Five supervisors / expertise and refusal",
     heading: "An organization chart\nwith unresolved grievances.",
-    lead: "The factory’s strongest personalities are also its most useful equipment. Their expertise is real. Their interpretation of events is partial.",
+    lead: "You need their expertise. You inherit their rivalries. An assignment gives them a room; it does not guarantee their obedience.",
     art: "conflict",
     caption: "Limen and Stiletto at the conveyor · original concept art",
     exhibit: "cast",
     sections: [
       {
-        title: "Character begins with constraints",
-        body: "Limen protects procedure. Stiletto protects the schedule. Cathexis wants work to mean something. Rivet Witch keeps the impossible running. Thrum listens for the fault everyone else has learned to ignore. These are authored motives before they are model prompts.",
+        title: "Success changes the balance",
+        body: "A specialist who rescues the shift earns confidence and influence. Repeated success can make your instructions seem unnecessary. The same expertise that keeps a room working gives its supervisor the means to take control of it.",
       },
       {
-        title: "Voice is not authority",
-        body: "A supervisor may claim credit, conceal embarrassment or disagree about a failure. Those lines are dramatic interpretations. They do not rewrite output, undo an assignment or create a new resource. The player can always turn back to the ledger.",
+        title: "An argument has consequences",
+        body: "Supporting one supervisor can weaken another’s loyalty. Suppression can end an immediate confrontation while leaving the grievance intact. A repair, a stoppage and a refusal must each leave a visible consequence; the accounts of why it happened can still disagree.",
       },
     ],
     principle: "A reliable world can contain unreliable witnesses.",

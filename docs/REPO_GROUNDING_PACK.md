@@ -401,3 +401,16 @@ established canon. The server-rendered gallery uses its own `loopforge-prehistor
 immutable media pack and on-demand native image dialogs; existing chapters do not
 import the gallery manifest or content. Brief, provenance and verification:
 `docs/loopforge/PREHISTORY_GALLERY.md`.
+
+### Loopforge supervisor scenes — 6 October 2026
+
+The existing `overview/the-cast` chapter is now titled “The supervisors.” Its
+scene browser maps 62 owner-supplied paintings to five characters, 30 room
+assignments and ten pairings. `supervisor-content.json` separates original
+Python rules, art studies and proposed refusal paths. The new
+`loopforge-supervisors` media pack uses the existing immutable contract; its
+manifest reaches only this chapter and inspectors mount on demand.
+`docs/loopforge/SUPERVISOR_ATLAS.md` records provenance and validation;
+`STORY_BIBLE.md` preserves the edited global opening and first-shift bridge.
+Do not expose the replacement-plan revelation at first-shift entry or describe
+independent refusal as implemented in the website’s teaching prototype.

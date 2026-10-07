@@ -1,0 +1,687 @@
+{
+  "pack": "loopforge-supervisors",
+  "assets": {
+    "cathexis-brewery": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/cathexis-brewery.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-brewery-fiasco-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-brewery-fiasco-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-brewery-fiasco-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-brewery-fiasco-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-brewery-success": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-brewery-success.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-brewery-success-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-brewery-success-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-brewery-success-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-brewery-success-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-brewery-wicked-experiment-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-brewery-wicked-experiment-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-brewery-wicked-experiment-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-brewery-wicked-experiment-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-brewery-fiasco-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-brewery-fiasco-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-brewery-fiasco-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-brewery-fiasco-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-brewery-success": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-brewery-success.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "thrum-brewery": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/thrum-brewery.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "cathexis-conveyor-failure": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/cathexis-conveyor-failure.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "cathexis-conveyor-success": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/cathexis-conveyor-success.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-conveyor": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-conveyor.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-conveyor": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-conveyor.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-conveyor-repair": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-conveyor-repair.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-conveyor-failure-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-conveyor-failure-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-conveyor-failure-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-conveyor-failure-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-conveyor-failure-overdrive": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-conveyor-failure-overdrive.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-conveyor-success-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-conveyor-success-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-conveyor-success-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-conveyor-success-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "thrum-conveyor": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/thrum-conveyor.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "argue-limen-cathexis-conveyor": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/argue-limen-cathexis-conveyor.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "argue-limen-cathexis-security": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/argue-limen-cathexis-security.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "argue-limen-stiletto-conveyor": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/argue-limen-stiletto-conveyor.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "argue-limen-stiletto-security": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/argue-limen-stiletto-security.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "argue-stiletto-cathexis-conveyor": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/argue-stiletto-cathexis-conveyor.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "argue-stiletto-rivet-witch-conveyor": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/argue-stiletto-rivet-witch-conveyor.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "cathexis-security": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/cathexis-security.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-security": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-security.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-security-lockdown": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-security-lockdown.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-security": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-security.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-security": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-security.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "thrum-security-fiasco": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/thrum-security-fiasco.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "thrum-security-success": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/thrum-security-success.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "cathexis-theatre-revolution": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/cathexis-theatre-revolution.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "cathexis-theatre-revolution-alt": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/cathexis-theatre-revolution-alt.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "cathexis-theatre-success-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/cathexis-theatre-success-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "cathexis-theatre-success-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/cathexis-theatre-success-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-theatre-fiasco-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-theatre-fiasco-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-theatre-fiasco-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-theatre-fiasco-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-theatre-success-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-theatre-success-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-theatre-success-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-theatre-success-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-theatre-failure-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-theatre-failure-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-theatre-failure-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-theatre-failure-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-theatre-success": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-theatre-success.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-theatre-fiasco-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-theatre-fiasco-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-theatre-fiasco-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-theatre-fiasco-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-theatre-success-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-theatre-success-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-theatre-success-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-theatre-success-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "thrum-theatre": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/thrum-theatre.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "cathexis-weaving": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/cathexis-weaving.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-weaving-fiasco-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-weaving-fiasco-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-weaving-fiasco-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-weaving-fiasco-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "limen-weaving-success": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/limen-weaving-success.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-weaving-fixup": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-weaving-fixup.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "rivet-witch-weaving-repair": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/rivet-witch-weaving-repair.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-weaving-fiasco-1": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-weaving-fiasco-1.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-weaving-fiasco-2": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-weaving-fiasco-2.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "stiletto-weaving-success": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/stiletto-weaving-success.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    },
+    "thrum-weaving": {
+      "kind": "image",
+      "source": "assets/loopforge-supervisors/thrum-weaving.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 82,
+      "maxBytes": 650000
+    }
+  }
+}

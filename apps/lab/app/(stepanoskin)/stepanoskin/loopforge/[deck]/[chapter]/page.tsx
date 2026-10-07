@@ -1,4 +1,5 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { decks, deckNames, type Deck } from "@/lib/loopforge/content";
 import Chrome from "@/components/loopforge/Chrome";
@@ -6,6 +7,8 @@ import Art from "@/components/loopforge/Art";
 import Conveyor from "@/components/loopforge/Conveyor";
 import Exhibits from "@/components/loopforge/Exhibits";
 import styles from "@/components/loopforge/loopforge.module.css";
+const SupervisorAtlas = dynamic(() => import("@/components/loopforge/SupervisorAtlas"));
+
 export function generateStaticParams() {
   return Object.entries(decks).flatMap(([deck, chapters]) =>
     chapters.map((c) => ({ deck, chapter: c.id })),
@@ -38,6 +41,8 @@ export default async function Page({
   const index = chapters.findIndex((c) => c.id === p.chapter);
   if (index < 0) notFound();
   const chapter = chapters[index];
+  const isCast = deck === "overview" && chapter.id === "the-cast";
+  const atlasAssets = isCast ? (await import("@/lib/loopforge/supervisor-assets")).supervisorAssets : null;
   const url = (id: string) => `/stepanoskin/loopforge/${deck}/${id}`;
   return (
     <div className={styles.page}>
@@ -112,7 +117,8 @@ export default async function Page({
             {deck === "overview" && chapter.id === "the-factory" && <Link href="/stepanoskin/loopforge/overview/before-the-factory" className={styles.workshopLink}>
               <span>STORY WORKSHOP</span><strong>Before the factory ↗</strong><small>Six possible histories. Twelve concept paintings. Explore the robot society behind Loopforge.</small>
             </Link>}
-            {chapter.exhibit && <>
+            {atlasAssets && <SupervisorAtlas assets={atlasAssets} />}
+            {chapter.exhibit && !isCast && <>
             <div className={styles.sectionHeading}>
               <span className={styles.eyebrow}>WORKING EXHIBIT</span>
               <span>Explore the idea ↓</span>

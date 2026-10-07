@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bloom Whispers Editorial Review - Marigold Draft V2</title>
+  <style>
+    :root {
+      --bg: #f7f2e8;
+      --paper: #fffdf8;
+      --ink: #251f1a;
+      --muted: #766a5e;
+      --line: #e5d4bd;
+      --marigold: #d97920;
+      --gold: #f1c85c;
+      --leaf: #48644e;
+      --sage: #dce8d6;
+      --rose: #f1ded6;
+      --blue: #dce8eb;
+      --warn: #8a521d;
+      --danger: #893a2d;
+      --shadow: 0 18px 48px rgba(81, 48, 18, 0.09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0)),
+        var(--bg);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--leaf);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(72, 100, 78, 0.35);
+    }
+
+    .shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 34px 22px 70px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.8fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+
+    .panel,
+    .card {
+      background: rgba(255, 253, 248, 0.96);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .panel { border-radius: 18px; }
+    .card { border-radius: 14px; padding: 18px; }
+
+    .hero-main {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main:after {
+      content: "";
+      position: absolute;
+      right: -54px;
+      top: -64px;
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      border: 1px solid rgba(217, 121, 32, 0.26);
+      background: radial-gradient(circle, rgba(241, 200, 92, 0.26), rgba(241, 200, 92, 0));
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin: 12px 0 14px;
+      font-size: clamp(2.1rem, 4vw, 4.3rem);
+      line-height: 0.98;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.45rem;
+      line-height: 1.18;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.04rem;
+      line-height: 1.2;
+    }
+
+    p { margin: 0; }
+    ul { margin: 0; padding-left: 20px; }
+
+    .dek {
+      max-width: 780px;
+      color: #4f453b;
+      font-size: 1.08rem;
+    }
+
+    .hero-side {
+      padding: 22px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .decision {
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(72, 100, 78, 0.25);
+      background: var(--sage);
+    }
+
+    .decision strong {
+      display: block;
+      margin-top: 2px;
+      color: var(--leaf);
+      font-size: 1.25rem;
+    }
+
+    .scorebox {
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(217, 121, 32, 0.24);
+      background: #fff2cf;
+    }
+
+    .score {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      color: var(--warn);
+    }
+
+    .score .num {
+      font-size: 3rem;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .mini-links {
+      display: grid;
+      gap: 7px;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .section { margin-top: 24px; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 12px;
+    }
+
+    .note {
+      color: var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: #eee3d3;
+      color: #5e5146;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .tag.fix { background: var(--rose); color: var(--danger); }
+    .tag.warn { background: #f6e2aa; color: var(--warn); }
+    .tag.ok { background: var(--sage); color: #39593f; }
+    .tag.blue { background: var(--blue); color: #315964; }
+
+    .metric {
+      display: grid;
+      gap: 7px;
+      min-height: 132px;
+    }
+
+    .metric .scoreline {
+      color: var(--marigold);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .linebox {
+      margin-top: 9px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--marigold);
+      background: #fff8ea;
+      color: #56483b;
+      font-size: 0.94rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f3eadc;
+      color: #493b2d;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .quote {
+      color: #4d4034;
+      font-style: italic;
+    }
+
+    .callout {
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(217, 121, 32, 0.28);
+      background: linear-gradient(135deg, #fff4d8, #fffdf8);
+      box-shadow: var(--shadow);
+    }
+
+    .sample {
+      white-space: pre-wrap;
+      margin-top: 10px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #f7efe4;
+      color: #493c31;
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .cols-2,
+      .cols-3,
+      .cols-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main { padding: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="panel hero-main">
+        <div class="eyebrow">Bloom Whispers Editor Agent</div>
+        <h1>Marigold Draft V2 Editorial Review</h1>
+        <p class="dek">V2 is a strong revision. The story is now visible, the fun fact appears early, and the article has real Bloom Whispers texture. Final polish is still needed to remove internal workflow language from the public body.</p>
+      </div>
+      <aside class="panel hero-side">
+        <div class="decision">
+          <div class="eyebrow">Editorial Decision</div>
+          <strong>Minor Final Polish</strong>
+          <p class="note">No major rewrite. Fix the remaining public-body language and formatting issues.</p>
+        </div>
+        <div class="scorebox">
+          <div class="eyebrow">Current Score</div>
+          <div class="score"><span class="num">8.2</span><span>/ 10 publish readiness</span></div>
+        </div>
+        <div class="mini-links">
+          <a href="editorial-review-v2.md">Full markdown review</a>
+          <a href="writer-draft-v2.md">Writer draft V2</a>
+          <a href="editorial-review-v1.md">Previous review</a>
+          <a href="../../marigold-research-dossier-2026-06-08.md">Research dossier</a>
+          <a href="../../marigold-visual-dossier-2026-06-08.html">Visual dossier</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>At A Glance</h2>
+          <p class="note">What changed, and what still needs fixing.</p>
+        </div>
+      </div>
+      <div class="grid cols-4">
+        <article class="card">
+          <span class="tag ok">Fixed</span>
+          <h3>Fun fact promise</h3>
+          <p>The Tonalxochitl solar-warmth detail now appears on the first screen and in key takeaways.</p>
+        </article>
+        <article class="card">
+          <span class="tag ok">Fixed</span>
+          <h3>H1 and hook</h3>
+          <p>The title now has keyword spine, cempasúchil, ritual gold, and emotional payoff.</p>
+        </article>
+        <article class="card">
+          <span class="tag fix">Still Fix</span>
+          <h3>Internal language</h3>
+          <p>Lines 150, 154, 162, 216, and 226 still expose writer/editor process inside the public article.</p>
+        </article>
+        <article class="card">
+          <span class="tag warn">Format</span>
+          <h3>Module notes</h3>
+          <p>The Bloom Whisper should become a pullout module, and the safety note should become a visible callout.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Scorecard</h2>
+          <p class="note">The article is now close. Remaining problems are final-polish blockers, not rebuild blockers.</p>
+        </div>
+      </div>
+      <div class="grid cols-4">
+        <article class="card metric"><span class="tag warn">Publish</span><div class="scoreline">8.2/10</div><p>Close, but public-body process language blocks final approval.</p></article>
+        <article class="card metric"><span class="tag ok">Promise</span><div class="scoreline">9/10</div><p>The memorable marigold discovery is now clear and early.</p></article>
+        <article class="card metric"><span class="tag ok">Hook</span><div class="scoreline">8.5/10</div><p>Strong opening. Line 31 still needs a less generic reader promise.</p></article>
+        <article class="card metric"><span class="tag ok">Research</span><div class="scoreline">9/10</div><p>Dossier facts are integrated accurately and usefully.</p></article>
+        <article class="card metric"><span class="tag warn">Translation</span><div class="scoreline">8/10</div><p>Mostly reader-facing, with a few visible source-process phrases.</p></article>
+        <article class="card metric"><span class="tag ok">Safety</span><div class="scoreline">9/10</div><p>Food, herbal, recipe, foraging, and medical boundaries are strong.</p></article>
+        <article class="card metric"><span class="tag ok">Voice</span><div class="scoreline">8.5/10</div><p>Magical and specific. Keep the best original lines.</p></article>
+        <article class="card metric"><span class="tag ok">Originality</span><div class="scoreline">8.5/10</div><p>Ritual gold, placement, and small stored suns now carry the article.</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Writer Action Board</h2>
+          <p class="note">These are the exact fixes needed for the final polish pass.</p>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Priority</th>
+            <th>Line(s)</th>
+            <th>Current Draft Text</th>
+            <th>Editor Direction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag fix">1</span></td>
+            <td>31</td>
+            <td class="quote">By the end, you will know which marigold you mean...</td>
+            <td>Replace generic blog signposting with a Bloom Whispers-style reader promise.</td>
+          </tr>
+          <tr>
+            <td><span class="tag fix">2</span></td>
+            <td>25, 54</td>
+            <td class="quote">Tonalxochitl flowers preserved the warmth of the sun's rays...</td>
+            <td>Keep the detail, but make the caveat clearer: reported Malinalco-linked belief, not a universal marigold claim.</td>
+          </tr>
+          <tr>
+            <td><span class="tag fix">3</span></td>
+            <td>150</td>
+            <td class="quote">This pillar keeps the South Asian layer compact.</td>
+            <td>Remove content-format language. Say the overview stays brief because deeper cultural detail needs stronger sources.</td>
+          </tr>
+          <tr>
+            <td><span class="tag fix">4</span></td>
+            <td>154, 162, 216</td>
+            <td class="quote">The dossier connects... / Because the dossier does not include... / the dossier flags...</td>
+            <td>Remove "the dossier" from public prose. Name the source or use a graceful source-limit caveat.</td>
+          </tr>
+          <tr>
+            <td><span class="tag fix">5</span></td>
+            <td>226</td>
+            <td class="quote">For Bloom Whispers, the safest symbolic language...</td>
+            <td>Public article should not talk about Bloom Whispers as an outside editor. Make it direct prose.</td>
+          </tr>
+          <tr>
+            <td><span class="tag warn">6</span></td>
+            <td>220</td>
+            <td class="quote">Safety box: this article does not provide...</td>
+            <td>Format as an actual callout or blockquote in the final draft.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Title / H1 Decision</h2>
+          <p class="note">Approved. Do not reopen title ideation unless Susy asks.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <span class="tag ok">Approved H1</span>
+        <h3>Marigold Meaning: Cempasúchil, Ritual Gold, And The Flower That Guides Memory Home</h3>
+        <p>It keeps the search spine, names cempasúchil, keeps the approved ritual-gold metaphor, and points to the article's strongest emotional payoff.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Fun Fact Promise</h2>
+          <p class="note">This requirement is now met. Only wording precision remains.</p>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <article class="card">
+          <span class="tag ok">Yes</span>
+          <h3>V2 fulfills the promise</h3>
+          <p>The reader now gets a specific, memorable discovery: a Malinalco-linked belief around Tonalxochitl and solar warmth.</p>
+          <div class="linebox">Line 44: "The most memorable discovery..."</div>
+        </article>
+        <article class="card">
+          <span class="tag warn">Tighten</span>
+          <h3>Keep the caveat close</h3>
+          <p>The detail should always be framed as a reported belief from the source, not as a universal botanical or cultural fact about every marigold.</p>
+          <div class="linebox">Line 25 and line 54 need the tightest wording.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Sample Rewrites</h2>
+          <p class="note">Use as direction, not mandatory final copy.</p>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <article class="card">
+          <span class="tag blue">Line 31</span>
+          <h3>Replace generic signposting</h3>
+          <div class="sample">So the better question is not only what marigold means. It is which gold you are looking at: cempasúchil on an altar path, calendula in an old flower-language book, a wedding garland, or a vine patterned across a room.</div>
+        </article>
+        <article class="card">
+          <span class="tag blue">Line 25</span>
+          <h3>Tonalxochitl calibration</h3>
+          <div class="sample">CONABIO/EncicloVida also preserves a Malinalco-linked belief around Tonalxochitl: yellow flowers associated with the sun were believed to hold the warmth of solar rays in their corollas.</div>
+        </article>
+        <article class="card">
+          <span class="tag blue">Lines 154/162</span>
+          <h3>Remove dossier language</h3>
+          <div class="sample">The source set also connects Tagetes erecta with Nepal during Tihar, while the China/Qingming note should remain a brief bridge because this article does not yet have a deep country-specific source for China.</div>
+        </article>
+        <article class="card">
+          <span class="tag blue">Line 226</span>
+          <h3>Remove brand self-reference</h3>
+          <div class="sample">The safest symbolic language is also the most beautiful: marigold can be an image of memory, warmth, devotion, threshold, and meaningful brightness.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Original Content Curation</h2>
+          <p class="note">The original Bloom Whispers layer is now strong. Preserve it.</p>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Bucket</th>
+            <th>Lines</th>
+            <th>Text / Idea</th>
+            <th>Direction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag ok">Keep</span></td>
+            <td>23, 52, 56</td>
+            <td class="quote">A marigold does not enter quietly. / its gold is never empty / It wakes up where people place it.</td>
+            <td>Strong article spine. Keep.</td>
+          </tr>
+          <tr>
+            <td><span class="tag ok">Keep</span></td>
+            <td>92, 110, 112, 122</td>
+            <td class="quote">stops being a color and becomes a path / placed, petal by petal / It points / I prepared a place for you</td>
+            <td>Best cempasúchil section texture. Keep.</td>
+          </tr>
+          <tr>
+            <td><span class="tag ok">Keep</span></td>
+            <td>130, 260, 298</td>
+            <td class="quote">the meaning is cultivated / know where your brightness belongs / light placed with intention</td>
+            <td>Strong Bloom Wisdom. Keep.</td>
+          </tr>
+          <tr>
+            <td><span class="tag warn">Rephrase</span></td>
+            <td>29, 31, 54, 256</td>
+            <td class="quote">Not plain cheerfulness... / By the end... / solar feeling... / long placement list</td>
+            <td>Mostly good, but smooth the rhythm and avoid overextension.</td>
+          </tr>
+          <tr>
+            <td><span class="tag blue">Reserve</span></td>
+            <td>373-382</td>
+            <td class="quote">Original Quote Bank</td>
+            <td>Strong for Pinterest and pull quotes. Keep in handoff, not public article body.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Fact And Safety Board</h2>
+          <p class="note">No major fact problems found. Keep careful language.</p>
+        </div>
+      </div>
+      <div class="grid cols-3">
+        <article class="card">
+          <span class="tag ok">Approved</span>
+          <h3>Plant distinction</h3>
+          <p>Cempasúchil / Tagetes and calendula remain clearly separated.</p>
+        </article>
+        <article class="card">
+          <span class="tag warn">Caveat</span>
+          <h3>Tonalxochitl</h3>
+          <p>Frame as reported Malinalco-linked belief. Do not universalize.</p>
+        </article>
+        <article class="card">
+          <span class="tag ok">Approved</span>
+          <h3>Protection</h3>
+          <p>V2 correctly treats protection as secondary symbolic language in the FAQ.</p>
+        </article>
+        <article class="card">
+          <span class="tag warn">Brief Only</span>
+          <h3>Global sections</h3>
+          <p>South Asian, Nepal, and China mentions are fine as compact overview. Do not expand without sources.</p>
+        </article>
+        <article class="card">
+          <span class="tag ok">Approved</span>
+          <h3>William Morris</h3>
+          <p>Correctly framed as design history, not ancient symbolism.</p>
+        </article>
+        <article class="card">
+          <span class="tag ok">Approved</span>
+          <h3>Food and herbs</h3>
+          <p>Safety boundaries are strong. UNICACH remains follow-up, not recipe proof.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>AI Voice And Human Texture</h2>
+          <p class="note">Lower risk than V1. The article has specificity and a real spine.</p>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <article class="card">
+          <span class="tag ok">Risk 8/10</span>
+          <h3>What to fix</h3>
+          <ul>
+            <li>Line 31 generic "By the end..." signposting.</li>
+            <li>Internal process terms in the public body.</li>
+            <li>Slightly mechanical "Here is..." repetition at lines 64 and 86.</li>
+            <li>Possible overuse of the gold metaphor when a sentence adds no new meaning.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag ok">Keep</span>
+          <h3>Do not flatten</h3>
+          <p>Keep the poetic and strange details. The issue is not voice; it is the few places where the article still lets the scaffolding show.</p>
+          <div class="linebox">AI-writing discussion checked: Search Engine Land AI tics study, Search Engine Journal AI cadence article, Washington Post em dash discussion.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>SEO / Pinterest / Publisher</h2>
+          <p class="note">Strategy is strong. Handoff needs clarity.</p>
+        </div>
+      </div>
+      <div class="grid cols-3">
+        <article class="card">
+          <span class="tag ok">SEO/AIO</span>
+          <h3>Approved</h3>
+          <p>H1, slug, quick meaning, takeaways, FAQ, and safety-sensitive search coverage are strong.</p>
+        </article>
+        <article class="card">
+          <span class="tag ok">Pinterest</span>
+          <h3>Approved</h3>
+          <p>Meaning, symbolism, weddings, decor, wallpaper, quote-card, and cautious uses/benefits clusters are covered.</p>
+        </article>
+        <article class="card">
+          <span class="tag warn">Publisher Note</span>
+          <h3>Non-public package</h3>
+          <p>Line 365 onward is handoff only unless selected for modules, metadata, or media. Do not publish it as article body.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Final Writer Checklist</h2>
+          <p class="note">One final polish pass. Preserve the structure; do not expand.</p>
+        </div>
+      </div>
+      <div class="card">
+        <ul>
+          <li>Replace line 31 with a less generic reader promise.</li>
+          <li>Tighten lines 25 and 54 so Tonalxochitl is clearly a reported Malinalco-linked belief.</li>
+          <li>Remove public-body phrases: "this pillar," "the dossier," and "For Bloom Whispers."</li>
+          <li>Convert line 220 into a real safety callout.</li>
+          <li>Keep the Bloom Whisper as a short pullout/module.</li>
+          <li>Preserve the current structure and strongest lines.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,543 @@
+.guidePage {
+  background:
+    radial-gradient(circle at 14% 22%, rgba(197, 99, 183, 0.14), transparent 30%),
+    radial-gradient(circle at 86% 16%, rgba(92, 159, 130, 0.16), transparent 34%),
+    var(--moon-cream);
+  color: var(--night-garden);
+  overflow: hidden;
+}
+
+.hero {
+  isolation: isolate;
+  min-height: auto;
+  padding: clamp(78px, 9vw, 128px) clamp(20px, 5vw, 76px) clamp(56px, 6vw, 82px);
+  position: relative;
+}
+
+.hero::before {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(92, 159, 130, 0.22), transparent 26%),
+    radial-gradient(circle at 78% 28%, rgba(197, 99, 183, 0.18), transparent 24%),
+    linear-gradient(180deg, rgba(1, 14, 15, 0.72), rgba(1, 64, 71, 0.42));
+  content: "";
+  height: clamp(190px, 29vw, 370px);
+  inset: 0 0 auto;
+  position: absolute;
+  z-index: -3;
+}
+
+.hero::after {
+  background: var(--moon-cream);
+  border-top: 2px solid rgba(231, 167, 103, 0.7);
+  border-top-left-radius: 50% 10%;
+  border-top-right-radius: 50% 10%;
+  content: "";
+  height: clamp(120px, 15vw, 210px);
+  inset: clamp(120px, 20vw, 260px) -8% auto;
+  position: absolute;
+  z-index: -1;
+}
+
+.heroGarden {
+  height: clamp(190px, 29vw, 370px) !important;
+  object-fit: cover;
+  object-position: 70% 54%;
+  opacity: 0.9;
+  z-index: -4;
+}
+
+.heroWhiteBloom {
+  height: auto;
+  left: clamp(500px, 45vw, 690px);
+  max-width: 210px;
+  pointer-events: none;
+  position: absolute;
+  top: clamp(310px, 27vw, 390px);
+  transform: rotate(-8deg);
+  width: clamp(132px, 12vw, 190px);
+  z-index: 1;
+}
+
+.heroShell {
+  align-items: start;
+  display: grid;
+  gap: clamp(28px, 5vw, 74px);
+  grid-template-columns: minmax(0, 1.22fr) minmax(360px, 0.78fr);
+  margin: 0 auto;
+  max-width: 1580px;
+  position: relative;
+  z-index: 2;
+}
+
+.copyColumn {
+  padding-top: clamp(148px, 12vw, 198px);
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow,
+.occasionHeader strong,
+.insideHeader h2,
+.guideForm label {
+  color: var(--pollen-gold);
+  font-family: var(--font-body), Poppins, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before,
+.eyebrow::after,
+.insideHeader h2::before,
+.insideHeader h2::after {
+  color: #f4c27d;
+  content: "✦";
+  margin: 0 0.6em;
+}
+
+.copyColumn h1 {
+  font-size: clamp(3.15rem, 4.15vw, 5rem);
+  letter-spacing: 0;
+  line-height: 0.98;
+  margin: 0 0 24px;
+  max-width: 650px;
+}
+
+.copyColumn > p {
+  color: rgba(0, 24, 27, 0.86);
+  font-family: var(--font-body), Poppins, sans-serif;
+  font-size: clamp(1.02rem, 1.2vw, 1.25rem);
+  line-height: 1.75;
+  max-width: 560px;
+}
+
+.occasionHeader {
+  align-items: center;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(40px, 1fr) auto minmax(40px, 1fr);
+  margin: clamp(34px, 4vw, 58px) 0 22px;
+  max-width: 840px;
+}
+
+.occasionHeader span,
+.insideHeader span {
+  background: linear-gradient(90deg, transparent, rgba(184, 116, 46, 0.72), transparent);
+  height: 1px;
+}
+
+.occasionGrid {
+  display: grid;
+  gap: clamp(12px, 1.25vw, 20px);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  max-width: 1000px;
+}
+
+.occasionCard {
+  background: rgba(255, 252, 246, 0.74);
+  border: 1px solid rgba(1, 64, 71, 0.14);
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(42, 22, 31, 0.08);
+  display: grid;
+  grid-template-rows: 98px minmax(44px, auto);
+  min-height: 178px;
+  padding: 14px 12px 16px;
+  place-items: center;
+  text-align: center;
+}
+
+.occasionCard img {
+  height: 96px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.occasionCard p {
+  font-family: var(--font-display), "Cormorant Garamond", serif;
+  font-size: clamp(0.98rem, 1vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.08;
+  margin: 0;
+  max-width: 11ch;
+}
+
+.alsoHelpful {
+  font-family: var(--font-display), "Cormorant Garamond", serif !important;
+  font-size: clamp(1.05rem, 1.3vw, 1.35rem) !important;
+  line-height: 1.7 !important;
+  margin: 22px auto 0 0;
+  max-width: 840px !important;
+  text-align: center;
+}
+
+.alsoHelpful span + span::before {
+  color: var(--pollen-gold);
+  content: "✦";
+  margin: 0 12px;
+}
+
+.signupCard {
+  background:
+    linear-gradient(180deg, rgba(2, 15, 15, 0.18), transparent 44%),
+    radial-gradient(circle at 80% 10%, rgba(231, 167, 103, 0.18), transparent 28%),
+    linear-gradient(145deg, #021616 0%, #014047 45%, #46043c 130%);
+  border: 1px solid rgba(231, 167, 103, 0.7);
+  border-radius: 18px;
+  box-shadow: 0 28px 70px rgba(1, 20, 22, 0.28);
+  color: var(--moon-cream);
+  display: grid;
+  gap: 18px 24px;
+  grid-template-areas:
+    "copy cover"
+    "form form"
+    "note note";
+  grid-template-columns: minmax(0, 1fr) clamp(154px, 13vw, 210px);
+  overflow: hidden;
+  padding: clamp(24px, 2.5vw, 34px);
+  position: relative;
+  margin-top: clamp(84px, 8.5vw, 130px);
+}
+
+.signupCard::after {
+  background: linear-gradient(0deg, rgba(1, 14, 15, 0.72), transparent 55%);
+  content: "";
+  inset: auto 0 0;
+  height: 34%;
+  pointer-events: none;
+  position: absolute;
+}
+
+.signupCopy,
+.guideForm,
+.formNote {
+  position: relative;
+  z-index: 2;
+}
+
+.signupCopy {
+  grid-area: copy;
+  max-width: min(100%, 390px);
+}
+
+.signupCopy h2 {
+  color: var(--moon-cream);
+  font-size: clamp(2rem, 2.35vw, 3.05rem);
+  line-height: 1;
+  margin: 14px 0 16px;
+  max-width: 11ch;
+}
+
+.signupCopy p {
+  color: rgba(249, 241, 228, 0.86);
+  font-family: var(--font-body), Poppins, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 370px;
+}
+
+.guideCover {
+  filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.38));
+  grid-area: cover;
+  height: auto;
+  justify-self: end;
+  margin-top: 4px;
+  position: relative;
+  right: auto;
+  top: auto;
+  transform: rotate(4deg);
+  width: min(100%, 205px);
+  z-index: 3;
+}
+
+.guideForm {
+  display: grid;
+  gap: 11px;
+  grid-area: form;
+  margin-top: 10px;
+}
+
+.guideForm input {
+  background: rgba(249, 241, 228, 0.98);
+  border: 1px solid rgba(231, 167, 103, 0.38);
+  border-radius: 10px;
+  color: var(--night-garden);
+  font-family: var(--font-body), Poppins, sans-serif;
+  font-size: 1rem;
+  min-height: 56px;
+  padding: 0 18px;
+}
+
+.guideForm button {
+  align-items: center;
+  background: linear-gradient(180deg, #e7a767, #d58c2c);
+  border: 1px solid rgba(249, 241, 228, 0.36);
+  border-radius: 12px;
+  color: var(--night-garden);
+  display: inline-flex;
+  font-family: var(--font-display), "Cormorant Garamond", serif;
+  font-size: clamp(1.25rem, 1.5vw, 1.55rem);
+  font-weight: 700;
+  gap: 12px;
+  justify-content: center;
+  min-height: 62px;
+  padding: 0 18px;
+}
+
+.guideForm button:hover {
+  box-shadow: 0 0 28px rgba(231, 167, 103, 0.3);
+  transform: translateY(-1px);
+}
+
+.formNote {
+  color: rgba(249, 241, 228, 0.78);
+  font-family: var(--font-body), Poppins, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+  text-align: center;
+}
+
+.insideSection {
+  padding: 22px clamp(20px, 5vw, 76px) clamp(42px, 6vw, 82px);
+  position: relative;
+}
+
+.insideShell {
+  margin: 0 auto;
+  max-width: 1480px;
+  position: relative;
+  z-index: 1;
+}
+
+.insideHeader {
+  align-items: center;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(70px, 1fr) auto minmax(70px, 1fr);
+  margin-bottom: clamp(26px, 4vw, 46px);
+}
+
+.insideHeader h2 {
+  margin: 0;
+  text-align: center;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.featureCard {
+  align-content: start;
+  border-right: 1px solid rgba(184, 116, 46, 0.32);
+  display: grid;
+  justify-items: center;
+  min-height: 230px;
+  padding: 8px clamp(14px, 2vw, 30px);
+  text-align: center;
+}
+
+.featureCard:last-child {
+  border-right: 0;
+}
+
+.featureIcon {
+  align-items: center;
+  background: linear-gradient(145deg, #021616, #014047);
+  border: 1px solid rgba(231, 167, 103, 0.7);
+  border-radius: 999px;
+  color: var(--pollen-gold);
+  display: inline-flex;
+  height: 72px;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 72px;
+}
+
+.featureIcon svg {
+  fill: none;
+  height: 38px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.45;
+  width: 38px;
+}
+
+.featureCard h3 {
+  font-family: var(--font-body), Poppins, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.featureCard p {
+  color: rgba(0, 24, 27, 0.72);
+  font-family: var(--font-body), Poppins, sans-serif;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.bottomPurple,
+.bottomRose {
+  bottom: -90px;
+  height: auto;
+  opacity: 0.92;
+  pointer-events: none;
+  position: absolute;
+  width: clamp(180px, 24vw, 360px);
+}
+
+.bottomPurple {
+  left: -70px;
+}
+
+.bottomRose {
+  right: -70px;
+}
+
+@media (max-width: 1180px) {
+  .heroShell {
+    grid-template-columns: 1fr;
+  }
+
+  .signupCard {
+    grid-template-areas:
+      "copy"
+      "cover"
+      "form"
+      "note";
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    max-width: 720px;
+    width: 100%;
+  }
+
+  .occasionGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .featureGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 28px;
+  }
+
+  .featureCard:nth-child(3) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding-top: 110px;
+  }
+
+  .hero::after {
+    border-top-left-radius: 50% 4%;
+    border-top-right-radius: 50% 4%;
+  }
+
+  .heroWhiteBloom {
+    left: auto;
+    right: 11%;
+    top: 278px;
+    width: 120px;
+  }
+
+  .copyColumn {
+    padding-top: 132px;
+    text-align: center;
+  }
+
+  .copyColumn > p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .occasionGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .occasionCard p {
+    max-width: 13ch;
+  }
+
+  .occasionHeader,
+  .insideHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .occasionHeader span,
+  .insideHeader span {
+    display: none;
+  }
+
+  .guideCover {
+    margin: -8px auto 0;
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: rotate(2deg);
+    width: min(240px, 56vw);
+  }
+
+  .signupCopy {
+    max-width: none;
+    text-align: center;
+  }
+
+  .signupCopy h2 {
+    max-width: none;
+  }
+
+  .guideForm {
+    margin-top: 0;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featureCard,
+  .featureCard:nth-child(3) {
+    border-bottom: 1px solid rgba(184, 116, 46, 0.24);
+    border-right: 0;
+    min-height: 0;
+    padding: 24px 0;
+  }
+
+  .featureCard:last-child {
+    border-bottom: 0;
+  }
+
+  .bottomPurple,
+  .bottomRose {
+    opacity: 0.36;
+    width: 190px;
+  }
+}
+
+@media (max-width: 520px) {
+  .occasionGrid {
+    gap: 10px;
+  }
+
+  .occasionCard {
+    grid-template-rows: 76px minmax(42px, auto);
+    min-height: 148px;
+  }
+
+  .occasionCard img {
+    height: 72px;
+  }
+
+  .signupCard {
+    border-radius: 14px;
+  }
+}
+  grid-area: note;

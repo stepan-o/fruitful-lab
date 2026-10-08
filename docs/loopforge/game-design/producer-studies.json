@@ -1,0 +1,85 @@
+{
+  "version": "8 October 2026 · four integrated runtime skins",
+  "status": "Four implemented skins · local review complete · owner review pending",
+  "intro": "Four distinct machines now share the same first shift: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Compare each wide concept with its implemented portrait runtime plate, or open the playable console. Runtime adds original room feeds, live facts, native controls and local light. All four portrait plates are generated and catalogued; responsive layouts and first-shift flow have been checked locally; owner review remains open.",
+  "studies": [
+    {
+      "id": "foundry-desk",
+      "name": "Foundry desk",
+      "by": "Lead draft",
+      "medium": "Cinematic material realism",
+      "layout": "Six equal panes · horizontal deck",
+      "summary": "Heavy enamel, worn brass and one continuous camera window. A telephone, rotary intercom and guarded production lever form three distinct instruments.",
+      "strength": "Closest to the landing’s material world. A useful strip between glass and controls reserves space for live factory facts.",
+      "watch": "Runtime replaces sample feeds and facts with original rooms and live text. Check whether the incoming cue remains dominant amid brass detail, the beacon fits its mount and moving crops avoid duplicate edges. Source-study robot silhouettes are not runtime identities.",
+      "mobile": "Dedicated portrait art is implemented with 2×3 glass and a control bay; local responsive review is recorded in the implementation notes. Wide view keeps all six cameras; small/short view uses one camera plus six channels; compact landscape places the camera left and controls right. Preserve selected camera, run and pending decision during resize.",
+      "layers": "Clean chassis plate; registered receiver, selector and lever fragments cropped via CSS from that plate; independent original feeds, labels and facts; localized beacon overlays. No separately generated alpha handset.",
+      "alt": "Dark brass and black enamel producer console with shared six-camera glass, amber leadership telephone, central robot contacts and a guarded production lever.",
+      "portraitAlt": "Foundry portrait runtime plate: worn brass and black enamel, six empty panes in two columns, a pale handset, rotary selector and red production lever below."
+    },
+    {
+      "id": "broadcast-control",
+      "name": "Broadcast control",
+      "by": "Independent brief · broadcast desk",
+      "medium": "Severe analog realism",
+      "layout": "Six equal panes · protected channel keys",
+      "summary": "Broad black-steel and ivory bands. Surveillance sits above communication; the leadership phone and five covered supervisor keys read like real broadcast equipment.",
+      "strength": "Fastest separation of jobs. Large, simple hardware avoids relying on ornate detail to explain an action.",
+      "watch": "The source study's warehouses and generated slogans are not runtime content. Runtime uses original room feeds and authored facts/labels; verify the local beacon source, added production access and protected selector at desktop and phone sizes.",
+      "mobile": "Portrait art is implemented with 2×3 glass above the phone/key bay; local responsive review is recorded in the implementation notes. Small or short displays use one camera and six channels; compact landscape puts camera left, controls right. Preserve the selected camera, run and acknowledgement during resize; keys unlock only after the mandate.",
+      "layers": "Clean shared plate; registered phone/key/guard fragments cropped via CSS; original room feeds inside calibrated glass; semantic control states and source-aligned local light. Hardware crops share the plate, not separate alpha artwork.",
+      "alt": "Rectilinear black-steel and ivory broadcast console with six CCTV panes, a large receive-call button and five supervisor keys under a locked cover.",
+      "portraitAlt": "Broadcast portrait runtime plate: ivory and black steel, one empty glass area with six divisions, a black vertical handset, five square keys and a pale production lever below."
+    },
+    {
+      "id": "dispatch-office",
+      "name": "Dispatch office",
+      "by": "Independent brief · mechanical dispatch",
+      "medium": "Drypoint, woodcut and gouache",
+      "layout": "One large camera + five channels · asymmetric desk",
+      "summary": "An enormous oxblood telephone interrupts a severe illustrated dispatch desk. A main camera owns the image; the other five remain in a narrow channel strip.",
+      "strength": "Strongest incoming-call hierarchy and the clearest departure in illustration style. The absurd scale of official communication gives the bureaucracy character.",
+      "watch": "The implemented profile preserves one primary camera plus five channels and uses original room feeds. Verify small-channel readability, the internal selector's meaning and crop motion around the oversized receiver. Source-study Security art is illustrative only.",
+      "mobile": "Wide view retains the one-plus-five composition. Dedicated portrait art is implemented with 2×3 feeds and a control bay; local responsive review is recorded in the implementation notes. Small/short view uses one feed and six channels, with camera left/controls right in compact landscape. Resize preserves camera selection, run and pending decision.",
+      "layers": "Clean desk plate; registered receiver, selector and production fragments cropped via CSS; one-plus-five original feed masks; native incoming/acknowledgement states, read-only facts and local beacon light. No separately generated transparent handset.",
+      "alt": "Graphic woodcut and gouache dispatch console with one large brain-factory camera, five side channels, an oversized red incoming-call telephone and an amber beacon.",
+      "portraitAlt": "Dispatch portrait runtime plate: graphic red, black and ivory housing, six empty panes in two columns, a red telephone, rotary selector and red roller lever below."
+    },
+    {
+      "id": "obedience-organ",
+      "name": "Obedience organ",
+      "by": "Independent brief · cognitive instrument",
+      "medium": "Practical-prop photography",
+      "layout": "Curved glass · vertical phone column",
+      "summary": "A cracked porcelain pressure shell treats the console as an instrument for handling minds. Rotary contacts, a captive lever and a red handset share one sculpted body.",
+      "strength": "Strongest standalone silhouette. The curved shell, phone and recessed light feel manufactured together; local reflections make the material convincing.",
+      "watch": "Runtime restores original room feeds and authored facts. Check that the pale shell does not overpower them, that the vertical receiver crop remains registered, and that localized light fits the recessed source. The source study's room scenes are illustrative.",
+      "mobile": "Dedicated porcelain portrait art is implemented with 2×3 glass and a lower control bay; local responsive review is recorded in the implementation notes. Wide view keeps six feeds; small/short view keeps one active camera plus six channels, camera left/controls right in compact landscape. Preserve selected camera, run and decision through resize.",
+      "layers": "Clean porcelain plate; registered vertical receiver, contact-ring and production-bar fragments cropped via CSS; separate original feeds, reflections and semantic text; local beacon overlays. Crops reuse the plate rather than separately generated alpha parts.",
+      "alt": "Curved ivory porcelain control instrument with six camera panes, an integrated vertical red leadership handset, rotary supervisor contacts and an amber recessed beacon.",
+      "portraitAlt": "Obedience portrait runtime plate: curved cracked porcelain, six empty glass panes in two columns, a vertical red handset, five-contact rotary selector and white production bar below."
+    }
+  ],
+  "beats": [
+    {
+      "title": "Arrive at the console",
+      "text": "Two cameras live. Four screens off. No assignments. A ringing leadership receiver is the only gameplay action.",
+      "signal": "Amber receiver pulse, brief local beacon glare. Other controls physically held."
+    },
+    {
+      "title": "Answer leadership",
+      "text": "Activate the receiver. The ring stops; the full-screen leadership artwork takes over for the opening handover and weekly quota.",
+      "signal": "Handset motion → contact sound → cinematic fade. No simulation tick."
+    },
+    {
+      "title": "Acknowledge quota",
+      "text": "Reach the quota topic and explicitly acknowledge it. Closing early returns to the waiting console without unlocking gameplay.",
+      "signal": "Choose adviser becomes available. Settings, skin changes and menu/resume preserve acknowledgement and drafts. No invented prior-week results."
+    },
+    {
+      "title": "Choose your adviser",
+      "text": "Use the internal selector to open the dedicated roster. Read the current pitches, compare priorities and explicitly appoint.",
+      "signal": "LIMEN and Stiletto available on day one. Their briefing and assignments follow on focused screens."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Loopforge — learning through the first shift
 
-8 October 2026. Current screen ownership with proposed later onboarding. Owner direction: remove persistent explanatory instructions from the main console. Speech bubbles and purposeful visual feedback guide the player; short contextual help remains available when needed.
+8 October 2026, updated for [producer console direction](PRODUCER_CONSOLE_DIRECTION.md). All four integrated skins are approved for implementation; delivery and verification are underway without a winner-selection gate. Purposeful equipment states, speech and optional contextual help replace persistent explanatory prose. The preceding direct-to-call baseline is being replaced by console-first arrival and explicit quota acknowledgement; the sequence below is the delivery contract, not a claim that every path has passed validation.
 
 ## What the references actually show
 
@@ -14,7 +14,9 @@ These are developer accounts, inspected published UI examples and sampled footag
 
 ## General guidance, specific play
 
-The tutorial teaches the kinds of choices and their tradeoffs. It must not narrate a fixed first-turn script. The current supervisor pitches, structured briefing, proposal, event choices and outcome review communicate the particular day's stakes. Later, those voices can have agendas; the operating rules remain truthful.
+The tutorial teaches choices and tradeoffs without prescribing which adviser or plan to choose. The opening leadership-call gate is an authored interaction sequence, not a tutorial that can silently be skipped to unlock gameplay. Supervisor pitches, briefing, proposal, event choices and outcome review communicate the day's stakes. Later, those voices can have agendas; the operating rules remain truthful.
+
+Required opening: **Start → producer console → Answer leadership → existing full-screen weekly call → Acknowledge quota → producer console → Choose adviser → dedicated roster/appointment → brief → placements**. Before acknowledgement, receiving/resuming the call is the sole gameplay action. Settings, mute and exit remain usable; early close leaves gameplay locked and the call recoverable. Muting or reduced motion never counts as acknowledgement. Settings, skin switching and menu/resume preserve acknowledgement and unconfirmed choices. Incoming leadership and internal supervision are distinct equipment. Every profile starts with two live original feeds and four off; Dispatch office uses one primary plus five, while Foundry, Broadcast and porcelain Obedience use their calibrated six-pane layouts.
 
 Each guide topic answers four questions: What am I choosing? What does committing change? What can I still override? What cost or uncertainty should I consider? It does not recommend a supervisor, spoil a future betrayal or predict hidden state.
 
@@ -35,8 +37,9 @@ The following table locates assistance in the interface. It is an implementation
 
 | Moment | What leads attention | What is explained, where | What disappears / remains |
 | --- | --- | --- | --- |
-| Opening weekly call | Full-screen leadership illustration; short topics for handover and mandate | First-week opening state and quota. Later weeks will use real previous-week results. General control tutorials stay in Help. | Return restores the factory; compact quota reopens the call. |
-| Factory entry | Six cameras and one amber Choose adviser control | No duplicated pitches or assignment explanation. | Selection gets its own screen. |
+| Start / producer-console entry | Native ringing leadership receiver; the sole highlighted gameplay control, reinforced visually when muted | The equipment communicates an incoming call. Other gameplay controls, including the internal selector, are visibly unavailable; settings, mute and exit remain usable. | Shared glass shows two live feeds and four off. No competing adviser prompt or standing manual. |
+| Answered weekly call | Existing full-screen leadership illustration; short topics for handover and mandate | First-week opening state and quota. Later weeks require real previous-week results. Explicit acknowledgement receives the mandate. | Return after acknowledgement enables gameplay. Early close preserves the lock and recoverable call; no fabricated prior-week report. |
+| Console after acknowledgement | Distinct internal supervisor selector becomes available | No duplicated pitches or assignment explanation. The compact quota can reopen the completed call without changing facts. | Selector opens the dedicated roster; incoming leadership and internal communication remain separate. |
 | Adviser selection | Five-channel roster, current speech on available tokens; one inspected candidate gets detail | Priority, known gain/cost and delegated authority before explicit appointment. Two available on day one; no hidden trait scores. | All candidates remain comparable until Appoint; Help expands general principles. |
 | First proposal | Recommended tokens arrive in the two room sockets | One brief local explanation at the adviser's assigned socket: automatic authority in this room. It appears before orders are committed, so delegation is not a surprise penalty. | A small authority mark remains; its explanation is recoverable on tap/focus. |
 | First override | Selected token, valid receiving socket and proposed before/after arrangement | The known objection/authority change appears beside the revision before confirmation. | Feedback becomes a recorded decision; no constant swap tutorial. |
@@ -51,13 +54,13 @@ The following table locates assistance in the interface. It is an implementation
 - Character speech is attributed and may be biased. It communicates personality and intent, not authoritative control rules.
 - Interface explanations are truthful and concise. Essential scope of a commitment must be available before it is made, even if the character withholds other information.
 - Event records preserve what happened. Guide entries explain how to operate. Link between them at relevant moments without turning every log item into a tutorial.
-- Show at most one teaching callout at a time. Never compete with an unresolved consequential decision. Dismissal/Escape preserves game state and focus; help is available on touch and keyboard, not only hover.
+- Show at most one teaching callout at a time. Never compete with an unresolved consequential decision. Dismissal/Escape preserves game state and focus; help is available on touch and keyboard, not only hover. Dismissing help or the opening call does not acknowledge the mandate or unlock gameplay.
 - No repeated bounce, flashing instruction or countdown to coerce a choice. Idle assistance can be offered after hesitation, but does not appoint an adviser or advance the shift.
-- Seen/dismissed help is presentation state, versioned separately from simulation state. Reopening help never changes the seed, commands, beliefs or clock. Skip/replay controls belong in Help/Settings.
+- Seen/dismissed help is presentation state, versioned separately from simulation state. Reopening help never changes the seed, commands, beliefs or clock. Optional help can be skipped/replayed through Help/Settings; those controls do not bypass the distinct mandate gate.
 - Reduced motion keeps a clear static selection/attention treatment. Sound reinforces a change after opt-in, but no rule depends on hearing it.
 
 ## Validation questions
 
-An unfamiliar player should be able to identify the first choice, explain the two advisers' priorities, know where they are delegating authority, start the shift, recognize when a decision is required and understand dispatch finality. Observe the playthrough before adding hints: confusion may call for a clearer control/composition, not more prose.
+An unfamiliar player should first identify the receiver, acknowledge the mandate, then distinguish the internal selector. Test early close, reopening, settings/mute/exit, skin switching and menu/resume without accidentally unlocking play or losing choices. They should then explain both advisers' priorities, know where they delegate authority, start the shift, recognize a required decision and understand dispatch finality. Observe each of the four profiles before adding hints: confusion may require clearer equipment or composition. These validation questions remain open until the delivered revision is exercised; concept images and scope approval do not prove the flow.
 
 The initial prototype should log presentation-only help exposure/dismissal locally for author review if needed, without adding an analytics integration. User enjoyment and comprehension remain unverified until the owner plays it.

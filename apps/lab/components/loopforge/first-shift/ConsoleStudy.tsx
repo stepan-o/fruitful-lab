@@ -7,7 +7,7 @@ import { ConsoleBeacon, ConsoleSignals } from "./ConsoleSignals";
 import { FactoryWall } from "./ConsoleWorkspaces";
 import AdviserSelection, {firstDayCandidates, type AdviserCandidate} from "./AdviserSelection";
 import { Control, Kicker, materialStyle, type Media } from "./ConsoleParts";
-import { THEMES, type ThemeId } from "@/lib/loopforge/first-shift/themes";
+import { CONSOLES, recipeForConsole, type ProducerSkinId } from "@/lib/loopforge/first-shift/themes";
 import s from "./first-shift.module.css";
 function Study({ media, view }: { media: Media; view: PlayerView }) {
   const t = useConsoleTheme()!;
@@ -24,23 +24,19 @@ function Study({ media, view }: { media: Media; view: PlayerView }) {
       <ConsoleBeacon />
       <header className={s.topbar}>
         <div>
-          <Kicker>Author composition fixture / no game commands</Kicker>
+          <Kicker>Historical camera fixture / no game commands</Kicker>
           <b>
             {roster ? "Five supervisors / selection study" : full ? "Six feeds / future density" : "Two feeds / first turn"}
           </b>
         </div>
         <select
           aria-label="Study theme"
-          value={t.recipe.shell}
+          value={t.recipe.console}
           onChange={(e) =>
-            void t.apply({
-              version: 1,
-              shell: e.target.value as ThemeId,
-              controls: e.target.value as ThemeId,
-            })
+            void t.apply(recipeForConsole(e.target.value as ProducerSkinId))
           }
         >
-          {THEMES.map((x) => (
+          {CONSOLES.map((x) => (
             <option value={x.id} key={x.id}>
               {x.name}
             </option>

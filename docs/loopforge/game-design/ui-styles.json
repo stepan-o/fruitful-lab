@@ -1,6 +1,6 @@
 {
-  "status": "Six runtime presets · no winner selected",
-  "intro": "One Loopforge console, six material directions. All remain available in the game menu and in-run Settings, with authored frames and control states. Compare the same playthrough, or combine equipment in the design workbench.",
+  "status": "Historical material studies · internal focused-screen assets",
+  "intro": "These six sheets record the earlier material pass. Their frames, sockets and control states remain internal resources for focused screens and legacy preference migration. Player Settings now offers only Foundry desk, Broadcast control, Dispatch office and Obedience organ; the old six choices and mixer are removed.",
   "styles": [
     {
       "id": "baseline",

@@ -14,14 +14,16 @@ import {
   THEME_STORAGE_KEY,
   parseRecipe,
   prepareTheme,
+  producerConsole,
   recipeFromQuery,
   theme,
   themeFiles,
   type ThemeRecipe,
+  type ResolvedThemeRecipe,
 } from "@/lib/loopforge/first-shift/themes";
 
 type ThemeContextValue = {
-  recipe: ThemeRecipe;
+  recipe: ResolvedThemeRecipe;
   style: CSSProperties;
   loading: boolean;
   message: string;
@@ -79,7 +81,7 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
     const request = ++generation.current;
     setLoading(true);
     setError(false);
-    setMessage(`Loading ${theme(recipe.shell).name}…`);
+    setMessage(`Loading ${producerConsole(recipe.console).name}…`);
     try {
       const files = await prepareTheme(
         recipe,
@@ -87,11 +89,7 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
       );
       if (request !== generation.current) return;
       setState({ recipe, style: materials(recipe, files) });
-      setMessage(
-        recipe.shell === recipe.controls
-          ? `${theme(recipe.shell).name} applied.`
-          : "Mixed equipment applied.",
-      );
+      setMessage(`${producerConsole(recipe.console).name} applied.`);
       try {
         localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(recipe));
       } catch {
@@ -101,7 +99,7 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
       if (request !== generation.current) return;
       setError(true);
       setMessage(
-        "Equipment could not load. Your previous theme and shift are intact. Select a theme to retry.",
+        "Console could not load. Your previous console and shift are intact. Select a console to retry.",
       );
     } finally {
       if (request === generation.current) setLoading(false);

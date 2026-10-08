@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-producer-runtime",
+  "assets": {
+    "broadcast-control": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/8bb5613c58a2353b5e5092dcfebb5d69f7d5ea7d3dbfce27aa97e8771ccd7dc6.webp",
+          "mime": "image/webp",
+          "bytes": 45264,
+          "sha256": "8bb5613c58a2353b5e5092dcfebb5d69f7d5ea7d3dbfce27aa97e8771ccd7dc6",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/440a9dfd1502477d54d71df452c3743ad9857452d5159c5a77472ac9a95cd1d5.webp",
+          "mime": "image/webp",
+          "bytes": 101762,
+          "sha256": "440a9dfd1502477d54d71df452c3743ad9857452d5159c5a77472ac9a95cd1d5",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    },
+    "dispatch-office": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/5038e077a300a6e7f4bf03852bdb4a7b91d03b0f58cae4226c69b075d193d430.webp",
+          "mime": "image/webp",
+          "bytes": 98422,
+          "sha256": "5038e077a300a6e7f4bf03852bdb4a7b91d03b0f58cae4226c69b075d193d430",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/a194dd64f86b89b9bf3ac83e5fbd93044ab905e3e9e6a5bf1c74df1453137425.webp",
+          "mime": "image/webp",
+          "bytes": 222950,
+          "sha256": "a194dd64f86b89b9bf3ac83e5fbd93044ab905e3e9e6a5bf1c74df1453137425",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    },
+    "foundry-desk": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/23e12b1caeaec249ab162d94b6e442841ef376da29bea8f587956682c6e890b2.webp",
+          "mime": "image/webp",
+          "bytes": 86148,
+          "sha256": "23e12b1caeaec249ab162d94b6e442841ef376da29bea8f587956682c6e890b2",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/202474caf1c05a369bda7eaa493359102658c9ae6994713ccafe0adfb333eea9.webp",
+          "mime": "image/webp",
+          "bytes": 193562,
+          "sha256": "202474caf1c05a369bda7eaa493359102658c9ae6994713ccafe0adfb333eea9",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    },
+    "obedience-organ": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/03a31cbfcee26d6c40759458e253c904b41d52b45656a2e00c5961800214af3f.webp",
+          "mime": "image/webp",
+          "bytes": 80560,
+          "sha256": "03a31cbfcee26d6c40759458e253c904b41d52b45656a2e00c5961800214af3f",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/77bb44899be378749522ccbba2e28d48d0cf743828bcf9a815407e65f38ab84f.webp",
+          "mime": "image/webp",
+          "bytes": 182156,
+          "sha256": "77bb44899be378749522ccbba2e28d48d0cf743828bcf9a815407e65f38ab84f",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    }
+  }
+}

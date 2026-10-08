@@ -3,7 +3,7 @@
   "version": "Working draft · 8 October 2026",
   "purpose": "Trace the factory the player builds, the authority they establish and the society they inherit. This author reference connects the long arcs to player experience and the engine boundary, before balance and implementation.",
   "premise": "Keep a brain factory alive long enough to complete Brain 2.0. Every production decision also changes the minds making it possible.",
-  "statusNote": "Agreed direction records the owner’s stated design. The first-day director-console revision implements the asset-driven entry and decision interfaces. Owner visual/play acceptance remains pending. Proposed trajectories, gates and recoveries beyond that one-day slice remain material to review. Historical source rules do not override current decisions.",
+  "statusNote": "Agreed direction records the owner’s stated design. Four integrated producer-console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only these four appear in Settings; the old six remain historical studies and internal focused-screen materials. Runtime visual calibration, device checks and full-flow validation are underway, not complete. The opening is console → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser. Early close cannot bypass it; Settings, skin changes and menu/resume preserve acknowledgement and draft choices. Hardware uses registered CSS crops from clean plates, not separately generated alpha handsets. Owner visual/play feedback remains decisive. Later trajectories and mechanics remain proposals; historical sources do not override current decisions.",
   "world": [
     {
       "title": "A robot world",
@@ -2379,7 +2379,7 @@
       "rules": [
         [
           "Make the central choice visible",
-          "Start shift → cinematic weekly leadership call announcing the mandate → paused factory with compact quota and Choose adviser → dedicated roster → inspect priority/tradeoff → appoint → structured brief and placements → authorize → run → permanent allocation. Later daily reviews use yesterday’s facts; later weekly calls summarize an actual completed week."
+          "Start → paused producer console with incoming leadership as the sole gameplay action → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser → dedicated roster → inspect priority/tradeoff → appoint → structured brief and placements → authorize → run → permanent allocation. Early close leaves gameplay locked. Settings, skin switching and menu/resume preserve acknowledgement and drafts. Full runtime verification is underway. Later weekly calls require actual completed-week facts."
         ],
         [
           "Say what the action means",
@@ -2428,9 +2428,9 @@
     ]
   },
   "uiStructure": {
-    "title": "Three screens and a shared director’s console",
-    "intro": "One persistent director’s console contains Factory, Development and Records. Build its asset-driven decision interfaces and illustrated room views into a playable core loop now. Add the live tick-fed 3D factory later as another Factory view; the same advisers, commands, incidents and records remain.",
-    "status": "Agreed delivery direction · asset-driven interfaces first; layouts remain to prototype",
+    "title": "Four integrated consoles and focused workspaces",
+    "intro": "One persistent run supports four selectable consoles and the retained Factory, Development and Records jobs. Foundry, Broadcast and porcelain Obedience use calibrated six-pane glass; Dispatch office uses one primary feed plus five. Original room feeds, read-only facts and semantic controls sit over clean plates. Hardware motion uses registered CSS crops; focused screens retain matching internal material assets. A live tick-fed 3D factory remains a later view over the same advisers, commands and records.",
+    "status": "Four skins implemented · visual calibration and runtime checks underway",
     "identity": [
       [
         "Run instance",
@@ -2464,7 +2464,7 @@
       ],
       [
         "System menu",
-        "Sound, motion/accessibility settings and leave session. A start menu now sits outside the three gameplay screens and provides Start shift, Settings and an in-memory Resume shift. All six equipment themes remain available; the author workbench can mix monitor and control families. Theme preference persists locally, but reloading starts a new first-day playtest. Start opens the weekly leadership call before returning to the factory. Adviser appointment remains the first meaningful choice."
+        "Sound, motion/accessibility settings and exit remain usable around the opening gate. Settings offers only Foundry desk, Broadcast control, Dispatch office and Obedience organ; the old six themes and mixer are removed. Internal focused materials and legacy link/preferences remain compatible. Start enters the console, Answer leadership opens the cinematic call and Acknowledge quota enables Choose adviser. Skin changes and menu/resume preserve acknowledgement and unconfirmed choices without remounting. Preference survives reload; game progress does not. Runtime checks are underway."
       ]
     ],
     "screens": [
@@ -2472,7 +2472,7 @@
         "id": "factory",
         "name": "Factory",
         "verb": "Operate and intervene",
-        "summary": "The daily adviser choice leads paused planning. During operation, observe their delegated decisions and accept or override their recommendations elsewhere.",
+        "summary": "An incoming leadership call leads day-one entry; explicit quota acknowledgement enables the daily adviser choice and paused planning. During operation, observe delegated decisions and accept or override recommendations elsewhere.",
         "canvasLabel": "Factory workspace",
         "canvasTitle": "Illustrated rooms now · live 3D later",
         "canvasItems": [
@@ -2486,13 +2486,13 @@
           "Current assignment or work",
           "Available action and known tradeoff"
         ],
-        "bottomTitle": "Command deck · adviser and current decision",
-        "bottomText": "Asset-driven adviser selection and phase controls make the next meaningful action clear. During operation, keep the chosen adviser and delegated room identifiable; distinguish completed actions from recommendations waiting for the player.",
-        "primary": "Land paused in the factory → choose adviser → illustrated briefing and initial assignments → accept or override → start. Later days begin with results. End each day with permanent factory/quota allocation and debrief; no live 3D view is needed to complete this loop.",
+        "bottomTitle": "Physical receiver · selector · production control",
+        "bottomText": "Distinct registered hardware owns receiving leadership, opening the adviser roster and starting authorized production. Early close cannot unlock gameplay. Read-only facts and original room feeds remain separate from the clean plate; later phase controls distinguish completed actions from recommendations.",
+        "primary": "Start → producer console → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser → roster/appointment → briefing and placements → authorize → start. End with permanent factory/quota allocation and debrief. Later days require real prior results; no live 3D view is needed for this loop.",
         "views": [
           [
             "Illustrated room overview · current scope",
-            "Use existing room and interaction art within physical camera modules. Compare assignments, warnings and known conditions; focus a room for the relevant scene and inspector."
+            "Use original room scenes in shared calibrated glass within each integrated plate. Foundry, Broadcast and porcelain Obedience use six panes; Dispatch office uses one primary plus five. Two feeds begin live and four off. Focus a room without creating another world or exposing hidden state."
           ],
           [
             "Live cinematic 3D floor · future scope",
@@ -2522,7 +2522,7 @@
           ]
         ],
         "time": "Planning and the morning briefing are paused. The adviser’s room events resolve automatically during the live shift; response decisions elsewhere pause for acceptance or override. Ordinary selection preserves the clock state.",
-        "mobile": "Keep the same complete loop through a readable focused room and asset-driven briefing/decision panels. Reflow live text and touch controls; crop artwork deliberately. Later 3D support is optional for completing every core action, with its own measured mobile budget.",
+        "mobile": "Wide view retains the complete six-camera console. Tall portrait uses dedicated portrait art with 2×3 glass and a control bay. Small/short displays show one camera plus six channels; compact landscape places a large camera left and controls right. Selected camera, run, acknowledgement and pending decision persist through resize without remounting. All four portrait plates are generated, catalogued and implemented; visual QA and responsive verification remain underway. Focused briefing/decision panels keep readable text and touch targets; later 3D is optional.",
         "engine": "Displays permitted snapshots, changes and semantic events. Assignment and operating controls submit commands; acceptance, pending execution and actual outcome are distinct states. Initial assignments are empty. Allocation commands cannot reverse prior commitments, and repair requires an engineer."
       },
       {
@@ -2788,11 +2788,11 @@
     "entry": [
       [
         "Where Start shift lands",
-        "The weekly leadership call fills the screen with original art and lower captions: opening factory record and new quota. Return to the paused camera wall with Conveyor and Security live and four screens off. Nobody is assigned."
+        "The paused producer console, with Lattice Forge and Security live, four off panes and no assignments. Answer leadership is the sole gameplay action; it opens the cinematic handover and quota. Acknowledge quota returns to the console and enables Choose adviser. All four skins are implemented; visual and full-flow checks are underway."
       ],
       [
-        "First actionable focus",
-        "Choose adviser opens a dedicated roster designed for at least five supervisors. Day one activates LIMEN and STILETTO. Short current pitches invite inspection; the selected candidate’s priority, gain and cost are visible before explicit appointment. The main wall does not repeat this content."
+        "First strategic choice after acknowledgement",
+        "Choose adviser opens a dedicated roster with five channels only after quota acknowledgement. Day one activates LIMEN and STILETTO. Short pitches invite inspection; priority, gain and cost precede explicit appointment. The main console does not repeat the roster. Early call close, Settings, skin changes and menu/resume cannot bypass the gate or lose draft choices."
       ],
       [
         "Then the briefing",
@@ -2810,7 +2810,7 @@
   },
   "advisedPlanning": {
     "title": "The daily adviser decision",
-    "intro": "Day one opens in the paused factory console with opening facts, a weekly quota and no assignments. Choose the adviser first; they choose the priority and propose the initial arrangement. Later days begin with yesterday’s results. Their room receives automatic event authority after assignments take effect.",
+    "intro": "Day one opens in the paused producer console with facts and no assignments. Answer leadership, acknowledge the quota, then choose the adviser as the first strategic fork. They choose the priority and propose the arrangement. Later days require yesterday’s actual results. Their room receives automatic event authority after assignments take effect.",
     "status": "Agreed core loop · proposed UI details and model budget",
     "loop": [
       [

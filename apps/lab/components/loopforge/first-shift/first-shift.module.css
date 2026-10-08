@@ -2504,3 +2504,13 @@
 .tokenFace[data-sheet="cathexis"] img {width:415%;left:-305%;top:0;margin-top:-177%;}
 .tokenFace[data-sheet="witch"] img {width:400%;left:-270%;top:0;}
 .tokenFace[data-sheet="thrum"] img {width:640%;left:-237%;top:0;margin-top:-70%;}
+
+/* One integrated physical machine owns the factory workspace. */
+.shell[data-workspace="factory"]{padding:0;background:#030605;min-height:360px;}
+.shell[data-workspace="factory"] .workspace{padding:0;}
+/* The factory pauses behind decisions; their speech must never pause before fading in. */
+.shell .modal .speech{opacity:1;animation:none;}
+.producerSystem{display:flex;align-items:center;justify-content:space-between;flex:none;padding:0 20px;min-height:40px;color:#b3a57d;font:12px var(--font-instrument),monospace;}
+.producerSystem b{font-weight:500;letter-spacing:.14em}.producerSystem small{font-size:9px;margin-left:16px;color:#8a9c90;}
+.producerSystem nav{display:flex;align-items:center;gap:8px;}.producerSystem button{min-height:40px;color:#bdbba7;background:none;border:0;padding:6px 10px;font-size:12px;}
+@media(max-width:700px){.producerSystem{padding:0 12px;min-height:44px;font-size:10px}.producerSystem small{display:none}.producerSystem nav{gap:0}.producerSystem button{font-size:11px;padding:6px 8px;min-height:44px}.shell[data-workspace="factory"]{min-height:360px;}}

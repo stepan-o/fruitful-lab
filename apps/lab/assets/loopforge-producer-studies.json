@@ -1,0 +1,49 @@
+{
+  "pack": "loopforge-producer-studies",
+  "assets": {
+    "foundry-desk": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer/foundry-desk.png",
+      "widths": [
+        480,
+        960,
+        1672
+      ],
+      "quality": 85,
+      "maxBytes": 800000
+    },
+    "broadcast-control": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer/broadcast-control.png",
+      "widths": [
+        480,
+        960,
+        1672
+      ],
+      "quality": 85,
+      "maxBytes": 800000
+    },
+    "dispatch-office": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer/dispatch-office.png",
+      "widths": [
+        480,
+        960,
+        1672
+      ],
+      "quality": 85,
+      "maxBytes": 800000
+    },
+    "obedience-organ": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer/obedience-organ.png",
+      "widths": [
+        480,
+        960,
+        1672
+      ],
+      "quality": 85,
+      "maxBytes": 800000
+    }
+  }
+}

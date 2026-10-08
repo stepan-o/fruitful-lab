@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   SHIFT_TICKS,
   type PlayerView,
@@ -22,7 +22,6 @@ import {
   Debrief,
   Development,
   Dispatch,
-  FactoryWall,
   IncidentPanel,
   Intercom,
   Planning,
@@ -33,6 +32,7 @@ import {
 import AdviserSelection, { firstDayCandidates } from "./AdviserSelection";
 import LeadershipCall from "./LeadershipCall";
 import ThemeSettings from "./ThemeSettings";
+import ProducerConsole from "./ProducerConsole";
 import { useConsoleTheme } from "./ThemeProvider";
 import { ConsoleBeacon, useConsoleSignals } from "./ConsoleSignals";
 import s from "./first-shift.module.css";
@@ -96,7 +96,11 @@ export default function FirstShift({
     signals = useConsoleSignals(),
     run = useRun();
   const v = run.view,
-    { send, pending, error } = run;
+    { pending, error } = run;
+  const [mandateAcknowledged,setMandateAcknowledged]=useState(false);
+  const incoming=Boolean(v?.phase === "choose" && !mandateAcknowledged);
+  const rawSend=run.send;
+  const send: typeof run.send = useCallback((...args) => incoming ? Promise.resolve(false) : rawSend(...args),[incoming,rawSend]);
   const [candidate,setCandidate]=useState<string|null>(null);
   const [openingRecord,setOpeningRecord]=useState<PlayerView|null>(null);
   const [screen, setScreen] = useState<Workspace>("factory"),
@@ -145,7 +149,8 @@ export default function FirstShift({
   if (v && phase !== v.phase) {
     setPhase(v.phase);
     if (v.phase === "choose") {
-      setScreen("leadership");
+      setScreen("factory");
+      setMandateAcknowledged(false);
       setOpeningRecord(v);
       setCandidate(null);
       setSwap(false);
@@ -245,13 +250,12 @@ export default function FirstShift({
     setScreen("records");
   }
   function restart() {
+    setMandateAcknowledged(false);
+    setPhase(null);
     setPaused(false);
     setModal(null);
     void run.restart();
   }
-  const latest = v?.events
-    .filter((e) => e.kind === "resolution" || e.kind === "incident")
-    .at(-1);
   return (
     <main
       className={`${s.shell} ${l.console}`}
@@ -264,8 +268,8 @@ export default function FirstShift({
       data-workspace={screen}
       data-alarm={v?.phase === "decision"}
     >
-      {screen !== "leadership" && <ConsoleBeacon active={!modal && !suspended} />}
-      {screen !== "leadership" && <header className={s.topbar}>
+      {screen !== "leadership" && screen !== "factory" && <ConsoleBeacon active={!modal && !suspended} />}
+      {screen !== "leadership" && screen !== "factory" && <header className={s.topbar}>
         <div className={s.dayMark}>
           <Kicker>Loopforge / Floor 01</Kicker>
           <b>
@@ -293,6 +297,7 @@ export default function FirstShift({
           )}
         </div>
       </header>}
+      {screen === "factory" && <header className={s.producerSystem}><b>LOOPFORGE <small>DAY 01 / 07</small></b><nav aria-label="System controls"><button onClick={()=>openHelp()}>Help</button><button onClick={()=>setModal("settings")}>Settings</button>{onOpenMenu&&<button disabled={pending} onClick={onOpenMenu}>Menu</button>}</nav></header>}
       {error && (
         <div className={s.error} role="alert">
           <span>
@@ -320,19 +325,17 @@ export default function FirstShift({
                 ← Camera wall
               </button>
             )}
-            {screen === "factory" && (
-              <>
-                <FactoryWall
-                  media={media}
-                  view={v}
-                  onRoom={(id) => {
-                    setRoom(id);
-                    setScreen("room");
-                  }}
-                />
-              </>
-            )}
-            {screen === "leadership" && <LeadershipCall media={media} view={openingRecord ?? v} effects={effects} onContinue={() => setScreen("factory")} />}
+            {screen === "factory" && <ProducerConsole
+              media={media} view={v} skin={theme?.recipe.console ?? "foundry-desk"}
+              incoming={incoming} busy={busy} effects={effects} active={!modal&&!suspended&&!hidden} ticking={Boolean(ticking)} speed={speed}
+              primaryLabel={v.phase === "ready" ? "Start the line" : v.phase === "running" ? paused ? "Resume" : "Pause" : v.phase === "decision" ? "Respond to incident" : v.phase === "allocation" ? "Dispatch output" : v.phase === "complete" ? "Shift debrief" : "Awaiting orders"}
+              onLeadership={()=>{audio.current?.cue("connect");setScreen("leadership");}}
+              onAdviser={()=>{if(incoming)return;if(v.adviser){setPerson(v.adviser);setScreen(v.phase==="briefing"?"planning":"intercom");}else setScreen("advisers");}}
+              onPrimary={()=>{if(incoming)return;if(v.phase==="ready")void send({type:"start_shift"});else if(v.phase==="running")setPaused(!paused);else if(v.phase==="decision")setModal("incident");else if(v.phase==="allocation")setScreen("dispatch");else if(v.phase==="complete")setScreen("debrief");}}
+              onRoom={id=>{if(!incoming){setRoom(id);setScreen("room");}}}
+              onInspect={id=>{if(incoming)return;if(id==="quota")setScreen("leadership");else{setFact(id);setModal("fact");}}}
+              onNavigate={id=>{if(!incoming)setScreen(id);}} onSpeed={()=>setSpeed(speed===1?3:1)} />}
+            {screen === "leadership" && <LeadershipCall media={media} view={openingRecord ?? v} effects={effects} onClose={()=>setScreen("factory")} onContinue={()=>{setMandateAcknowledged(true);audio.current?.cue("commit");setScreen("factory");signals?.impulse("attention");}} />}
             {screen === "advisers" && <AdviserSelection selectedId={candidate} onInspect={setCandidate} media={media} candidates={firstDayCandidates(v)} busy={busy} onHelp={() => openHelp()} onAppoint={(id) => {
               if (id === "limen" || id === "stiletto") void send({type:"choose_adviser", adviser:id});
             }} />}
@@ -417,7 +420,7 @@ export default function FirstShift({
           </div>
         )}
       </div>
-      {v && screen !== "leadership" && (
+      {v && screen !== "leadership" && screen !== "factory" && (
         <footer className={s.commandRail}>
           <nav className={s.consoleNav} aria-label="Director console">
             {(["factory", "development", "records"] as const).map((id) => (
@@ -461,17 +464,12 @@ export default function FirstShift({
             </div>
             <small key={v.produced}>{v.produced} COMPLETED</small>
           </div>
-          <div className={`${s.primaryOrder} ${l.order}`} data-required={(v.phase === "choose" && screen === "factory") || v.phase === "ready" || v.phase === "decision"}>
+          <div className={`${s.primaryOrder} ${l.order}`} data-required={v.phase === "choose" || v.phase === "ready" || v.phase === "decision"}>
             {v.phase === "ready" && <span className={l.orderContext}>Orders accepted · line waiting</span>}
             {v.phase === "choose" && screen !== "advisers" && (
               <Control tone="primary" onClick={() => setScreen("advisers")}>
                 <span className={l.callLamp} aria-hidden="true" /> Choose adviser
               </Control>
-            )}
-            {v.adviser && screen === "factory" && v.phase !== "briefing" && (
-              <button className={l.adviserChannel} onClick={() => {setPerson(v.adviser!); setScreen("intercom");}}>
-                {v.adviser.toUpperCase()} <small>Adviser ↗</small>
-              </button>
             )}
             {v.phase === "briefing" &&
               screen !== "intercom" &&
@@ -504,13 +502,13 @@ export default function FirstShift({
                   className={s.transportKey}
                   aria-pressed={paused}
                   onClick={() => {
-                    if (screen !== "factory" && screen !== "room") {
+                    if (screen !== "room") {
                       setScreen("factory");
                       setPaused(false);
                     } else setPaused(!paused);
                   }}
                 >
-                  {paused || (screen !== "factory" && screen !== "room")
+                  {paused || screen !== "room"
                     ? "Resume"
                     : "Pause"}
                 </button>
@@ -539,14 +537,6 @@ export default function FirstShift({
               </Control>
             )}
           </div>
-          {latest && screen === "factory" && (
-            <button
-              className={s.lastReceipt}
-              onClick={() => records(latest.id)}
-            >
-              {latest.title} <span>→</span>
-            </button>
-          )}
         </footer>
       )}
       <div className={s.srOnly} role="status" aria-live="polite">

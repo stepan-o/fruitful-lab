@@ -1,12 +1,14 @@
 # Loopforge camera console — art direction
 
-8 October 2026. Current owner direction for the interface rebuild. This supersedes the prior generic gunmetal skin and illustrated locked-room cards. Runtime replacement is not yet complete.
+8 October 2026, updated for the approved delivery of all four integrated console skins. [Producer console direction](PRODUCER_CONSOLE_DIRECTION.md) is current authority. No winner-selection gate remains. The old six themes and mixer leave the player selector; their focused-screen materials and historical studies remain internal. Implementation and verification are underway. The preceding repeated monitor housings and broad beacon sweep are historical construction, not the delivery target.
 
 ## Physical premise
 
-A working security camera console in the Loopforge factory. It has been used, marked, repaired and kept going. Painted steel, heavy glass, worn brass fasteners, dark rubber, grime in seams and hand-written adhesive tape belong to one physical object. Its character comes from the original factory and supervisors, not an unrelated science-fiction HUD.
+A working producer console in the Loopforge factory. It has been used, marked, repaired and kept going. Material choices belong to one physically coherent object; the current baseline uses painted steel, heavy glass, worn fasteners, dark rubber, grime in seams and hand-written tape. New concepts must differ in architecture and authored visual style, rather than reproducing the same detailed render with another palette. Character comes from the factory and supervisors, with purposeful, readable equipment.
 
-Six monitor positions persist. On the first turn two show the available rooms. The four locked rooms show only unpowered glass and their names on tape. No interior, silhouette, static transmission, padlock, commissioning hint or operating readout appears inside a locked monitor. Glare is a reflection of the console environment, not a video feed.
+Six room views persist within shared housing/glass. Foundry desk, Broadcast control and porcelain Obedience organ have calibrated six-pane profiles; Dispatch office retains one primary plus five. Six repeated monitor cabinets are excluded. Two first-turn feeds show original available-room art, independently of the console plate. Four locked rooms show only unpowered glass and names: no interiors, silhouettes, transmission/static, padlocks or readouts. Glare reflects the equipment environment, not a video feed.
+
+Incoming leadership and internal supervision are separate functional objects. Start reveals the native ringing receiver as the sole highlighted gameplay action: **Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser**. Early close leaves gameplay locked; settings, mute and exit remain usable. The selector opens the retained roster, appointment, brief and placements sequence. Settings, skin changes and menu/resume preserve acknowledgement and unconfirmed choices. This is the approved implementation contract; complete runtime verification is still required.
 
 Tape labels look hand-written in dark pen by a hurried security guard: slight baseline drift, uneven pressure, torn fibres, thumb grime and lightly lifted corners. Keep every name immediately readable. Names remain semantic accessible text in the interface even when the visible lettering is baked into the artwork. Mess belongs to the material, not to the information hierarchy.
 
@@ -25,19 +27,21 @@ Owner's original repository, `frontend/loopforge-webview/public/assets/`:
 
 All listed images were inspected. No outside game's artwork is included. Frostpunk/XCOM/IXION/Lobotomy references inform interface responsibilities in `INTERFACE_JOB_STUDY.md`, not the asset style.
 
-## Six directions under review
+## Four approved console skins; six historical material directions
 
-The owner liked the baseline and requested five additional agent-generated alternatives before selecting or prototyping a direction. The design board's **UI style studies** tab presents Factory Original, Field Instrument (PIP-Boy-inspired equipment), Broadcast Desk, Foundry Switchboard, Submarine Watch and Neural Diagnostics. Each has a full-size view, comparison controls and implementation concerns. No direction has been selected as winner. All six now have separate production monitor frames and complete button state families, selectable in the game Settings. Shared icons, glass and portraits remain the first comparison baseline. Remaining specimens on each sheet are future asset work, not implemented merely because they appear there. The sheets explore material and construction, not new mechanics or finished screen layouts.
+The owner has authorized all four fundamentally different compositions as runtime skins: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Deliver their individual geometry and visual identity without awaiting one winner. The concept paintings remain references; runtime prepares clean plates and separately renders original feeds, live semantic controls, read-only projected facts and localized light. Generated text or controls in a concept do not establish implemented behavior. Settings must expose these four skins only.
 
-Originals and exact generation records are in `apps/lab/assets/sources/loopforge-camera/`. The immutable `loopforge-ui-studies` pack serves only the author-facing review. The playable UI does not load these sheets or change its skin. Alternative palettes in their provenance records are proposals; the table below remains the baseline palette.
+The preceding material study produced Factory Original, Field Instrument, Broadcast Desk, Foundry Switchboard, Submarine Watch and Neural Diagnostics, with monitor frames, portrait sockets and button states. These old six are removed from the player selector. Internal focused-screen pairing remains: Foundry desk → baseline, Broadcast control → broadcast-desk, Dispatch office → foundry-switchboard, Obedience organ → neural-diagnostics. Legacy preferences can retain compatible internal mappings. Historical studies and source assets remain available; sheet specimens do not imply implemented mechanics.
 
-## Typography proposal
+Originals and exact generation records for the preceding material study are in `apps/lab/assets/sources/loopforge-camera/`. The immutable `loopforge-ui-studies` pack serves the author-facing review; runtime uses separately prepared kit assets, never the style sheets. Alternative palettes are recorded in their provenance. The table below is the Factory Original baseline, not a restriction that forces the four current concepts into one palette.
 
-Use [Barlow Semi Condensed](https://github.com/jpt/barlow) Medium for live speech, in sentence case with short lines; use [IBM Plex Mono](https://github.com/IBM/plex) for instrument readouts. These are proposed, not newly bundled fonts. The selected composition must test actual phrases at phone size before approval. Tape lettering is separately authored messy pen art with a semantic text equivalent. No distressed font for changing numbers, long dialogue or critical consequences. Both font projects publish open font licenses; retain the relevant license when bundling.
+## Readable typography
+
+The existing theme system uses [Barlow Semi Condensed](https://github.com/jpt/barlow) for live speech, [IBM Plex Mono](https://github.com/IBM/plex) for instruments and live Caveat lettering on blank tape. Retain semantic text and font-license records. The selected composition must test actual phrases at phone size. Concept lettering is illustrative, not production UI text. No distressed font for changing numbers, long dialogue or critical consequences.
 
 ## Palette and use
 
-These values are authored rendering tokens, not claimed exact pixel samples from the references. Generated paint should remain within this family; final dynamic text/indicators use these explicit tokens.
+These values are authored baseline rendering tokens, not exact pixel samples from the references. New compositions may establish a different material palette. Semantic signal roles remain consistent across themes and concepts.
 
 | Token | Colour | Role |
 | --- | --- | --- |
@@ -47,25 +51,27 @@ These values are authored rendering tokens, not claimed exact pixel samples from
 | Old brass | `#8C704B` | Fasteners, contacts, instrument trims |
 | Tape | `#CFC3A0` | Aged adhesive room labels |
 | Readable light | `#ECE5D2` | Live labels and numbers on dark surfaces |
-| Signal | `#91DAD5` | Selected channel, accepted connection; small area |
+| Signal | `#91DAD5` | Small selected-channel cue; cyan beacon means sparse idle life |
 | Caution | `#E3A04F` | Pending attention, not every live feed |
-| Alarm | `#F04437` | Consequential incident; localized bright source and reflected red |
+| Alarm | `#F04437` | Confirmed accident; localized bright source and nearby reflected red |
+
+Confirmed production uses green feedback. A pending decision or incoming leadership call uses amber attention, not an invented accident; colour is always paired with visible state and readable labels.
 
 Do not encode state with colour alone. Pair a light with a label, placement or distinct silhouette. Do not add stress/confidence/loyalty indicators to justify a decorative dial. Every invented gauge would imply a mechanic we have not exposed.
 
 ## Asset construction
 
-Generate a shared material/style sheet first. Inspect it against the original character sheets and factory. Then generate each production asset separately from that sheet, preserving the same camera angle, top-left key light, edge wear scale and material response.
+Build each approved composition from a coherent material/style reference, preserving its perspective, source lighting, wear scale and response. Prepare runtime plates and semantic overlay geometry for all four. Do not replace distinct architectures with repeated monitor frames or four minor colour variants. Keep selection previews separate from runtime plates and original room scenes.
 
-The monitor frame and glass are separate layers. Frame corners keep their proportions. The picture and all state overlays sit inside the opening. Tape sits on the lower physical bezel, never floats over the room picture. Supervisor tokens dock in purposeful sockets outside the glass. Controls that commit a decision have physical travel/pressed feedback; ordinary navigation does not look like an emergency stop.
+The shared console housing and glass are separate layers. Corners keep their proportions; feeds and state overlays sit inside calibrated openings. Room labels belong to the physical equipment. Supervisor tokens dock in purposeful sockets outside the glass. The leadership receiver and internal selector keep distinct silhouettes and ownership. The low-profile beacon is physically integrated: bright local lens glare, nearby material response and cast shadows must agree with its source and the console perspective. Controls that commit a decision have physical travel/pressed feedback; ordinary navigation does not look like an emergency stop.
 
-Asset order:
+Production asset families for every approved skin:
 
 1. Shared material/style sheet and palette.
-2. Modular monitor bezel, without a baked screen, controls or lettering.
+2. Shared console housing and glass geometry, without baked live feed content or interface text; no six repeated cabinets.
 3. Powered-off glass, with subtle soft reflections and dust confined to edges.
 4. Six individual room-name tapes: LATTICE FORGE, SECURITY, BURN-IN THEATRE, COGNITIVE SUBSTRATE BREWERY, WEAVING GALLERY, CORTEX ASSEMBLY.
-5. Supervisor socket / intercom hardware, blank centre for identity art.
+5. Distinct leadership receiver and internal supervisor-selector assemblies; sockets/intercom retain blank centres for identity art. Include the integrated beacon and local-light/occlusion layers.
 6. Replacement resource symbols: funds, workers, line condition, weekly delivery. They must share relief, lighting and scale. No extra currency or hidden-state symbol.
 7. Main control face and consistent interaction states; remaining assets follow the focused screen layouts.
 
@@ -75,17 +81,19 @@ Only selected optimized derivatives enter runtime. Preserve prompt/reference rec
 
 Supervisor tokens carry their current short statement in a speech bubble visibly attached to that character. Speech stays live semantic text on an asset-based bubble, rather than being baked into a portrait. The bubble can express indifference, impatience or an objection; it must not imply an available decision when it is only feedback. Portrait/token motion is a bounded entrance, selection response or new-report cue, not continuous competing bobbing. At first choice both advisers receive equal visual prominence; art direction must not recommend one playstyle by making one token glow more.
 
-The next available action is conveyed through local light, physical travel, composition and state: adviser sockets invite the first choice; proposed tokens settle into receiving room sockets; a confirmed plan arms the shift control. Retain readable action labels and keyboard focus. No persistent instructional paragraph on the factory wall. Contextual learning belongs in dismissible help at a relevant action, the briefing, an event notice and a recoverable guide. See `ONBOARDING_DESIGN.md`.
+The next available action is conveyed through local light, physical travel, composition and state: the leadership receiver alone invites the opening action; acknowledging the mandate enables the internal selector; roster appointment precedes briefing and proposed room placements; a confirmed plan arms shift control. Retain readable labels and keyboard focus. No persistent instructional paragraph belongs on the console. Contextual learning belongs in dismissible help, the briefing, an event notice and a recoverable guide. See `ONBOARDING_DESIGN.md`.
 
-- Review the same six positions in first-turn and full-floor states. First turn has no assignments, two adviser choices and four genuinely black screens. The full-floor authoring fixture must not be presented as a working later-act simulation.
+- Review all six room identities in first-turn and full-floor compositions. First turn has no assignments, two live feeds and four genuinely black panes. The internal roster contains two available advisers but cannot be opened before mandate acknowledgement. The full-floor fixture is not a working later-act simulation.
 - The room labels must survive phone scale. Long names can occupy two hand-written lines; do not abbreviate into unfamiliar acronyms. All six summaries remain available together.
-- A glance finds the day/quota, operating rooms and adviser choice. Scratches, rivets, glare and idling motion rank below these.
+- On arrival a glance finds the incoming leadership call. After acknowledgement it finds day/quota, operating rooms and the internal selector. Scratches, rivets, glare and idling motion rank below the current task.
 - One shared light direction; no independently tilted housing/button layers. Keep the camera nearly front-on for readable equipment.
 - No permanently flashing alarm, fake waveform or animated counter. REC belongs only to an available camera. A locked camera has no powered activity.
 - Subtle grain/line interference on active feeds; occasional mechanical response to confirmed game events. Respect reduced motion, manual pause and hidden-page lifecycle. No broad animated blur or per-frame React updates.
 - Check individual assets at target size and together against the existing landing art. Passing an asset inspection does not clear the complete UI gate.
 
-## Execution checklist
+## Historical material/rebuild checklist
+
+This records the preceding asset passes. Completed entries do not establish current four-skin acceptance; runtime implementation and verification are underway.
 
 - [x] Inspect five supervisor sheets, factory/security scenes and original chrome/style sheet.
 - [x] Record the powered-off room rule and material/colour roles.
@@ -94,9 +102,9 @@ The next available action is conveyed through local light, physical travel, comp
 - [x] Owner requests all six directions remain available as working presets.
 - [x] Generate and inspect six separate monitor/control production kits.
 - [x] Integrate each kit into the current comparison console; final responsive evidence lives in review/theme-system.
-- [ ] Integrate into the focused interface rebuild; verify the complete first-day flow.
-- [ ] Clear the complete playable UI gate before marking the rebuild ready. The style-review tab can be published separately on the draft PR; it does not clear that gate.
+- [x] Integrate the six kits into the preceding focused-interface rebuild; see its dated verification evidence.
+- [ ] Verify all four integrated skins and the common opening gate. Historical material/rebuild checks do not clear this delivery.
 
 ## Runtime comparison and light
 
-All six presets and the controlled frame/control mixer are implemented. See `UI_THEME_ASSET_SYSTEM.md` for ownership, source records, immutable delivery and composition boundaries. The shared beacon uses a nearly flat overhead asset and is dark between brief triggered rotations; the first elevated/isometric draft was rejected. See `CONSOLE_LIGHT_FEEDBACK.md`. This does not clear the broader gameplay composition gate.
+The four-skin selector replaces the old six choices and mixer. Matching focused-screen assets remain internal; see `UI_THEME_ASSET_SYSTEM.md` for recipe mapping, migration and immutable delivery. Integrated hardware and local glare replace the preceding overhead fixture/broad beam while retaining cyan/green/red/amber meanings and dark rest. See `CONSOLE_LIGHT_FEEDBACK.md`. Neither historical checks nor the four source paintings establish acceptance of the running interface; record validation for the final delivery.

@@ -5,6 +5,8 @@ import broadcast from "@/lib/assets/generated/loopforge-theme-broadcast-desk.jso
 import foundry from "@/lib/assets/generated/loopforge-theme-foundry-switchboard.json";
 import submarine from "@/lib/assets/generated/loopforge-theme-submarine-watch.json";
 import neural from "@/lib/assets/generated/loopforge-theme-neural-diagnostics.json";
+import producerStudies from "@/lib/assets/generated/loopforge-producer-studies.json";
+import { producerPlate, producerMobilePlate } from "./producer-art";
 
 // Bundled manifests pin one immutable release. No independently moving latest pointers.
 export const THEMES = [
@@ -16,26 +18,57 @@ export const THEMES = [
   { id: "neural-diagnostics", name: "Neural Diagnostics", material: "Cracked porcelain · copper", accent: "#e2d9bf", signal: "#93d9d2", surface: "#242c2b", manifest: neural },
 ] as const;
 export type ThemeId = (typeof THEMES)[number]["id"];
-export type ThemeRecipe = Readonly<{ version: 1; shell: ThemeId; controls: ThemeId }>;
-export const DEFAULT_RECIPE: ThemeRecipe = { version: 1, shell: "baseline", controls: "baseline" };
+// Legacy material families remain internal to focused screens; players select these consoles.
+export const CONSOLES = [
+  { id: "foundry-desk", name: "Foundry desk", material: "Black enamel · brass machinery", defaultLegacyShell: "baseline" },
+  { id: "broadcast-control", name: "Broadcast control", material: "Black steel · ivory keys", defaultLegacyShell: "broadcast-desk" },
+  { id: "dispatch-office", name: "Dispatch office", material: "Etched iron · oxblood receiver", defaultLegacyShell: "foundry-switchboard" },
+  { id: "obedience-organ", name: "Obedience organ", material: "Porcelain shell · copper contacts", defaultLegacyShell: "neural-diagnostics" },
+] as const satisfies ReadonlyArray<{ id: string; name: string; material: string; defaultLegacyShell: ThemeId }>;
+export type ProducerSkinId = (typeof CONSOLES)[number]["id"];
+export type ThemeRecipe = Readonly<{ version: 1; shell: ThemeId; controls: ThemeId; console?: ProducerSkinId }>;
+export type ResolvedThemeRecipe = ThemeRecipe & Readonly<{ console: ProducerSkinId }>;
+export const DEFAULT_CONSOLE_ID: ProducerSkinId = "foundry-desk";
+export const DEFAULT_RECIPE: ResolvedThemeRecipe = { version: 1, shell: "baseline", controls: "baseline", console: DEFAULT_CONSOLE_ID };
 export const THEME_STORAGE_KEY = "loopforge-console-theme-v1";
 export const theme = (id: ThemeId) => THEMES.find(t => t.id === id)!;
 export const isThemeId = (value: unknown): value is ThemeId => THEMES.some(t => t.id === value);
-export function parseRecipe(value: unknown): ThemeRecipe {
+export const isProducerSkinId = (value: unknown): value is ProducerSkinId => CONSOLES.some(c => c.id === value);
+export const producerConsole = (id: ProducerSkinId = DEFAULT_CONSOLE_ID) => CONSOLES.find(c => c.id === id)!;
+const legacyConsoles: Record<ThemeId, ProducerSkinId> = {
+  baseline: "foundry-desk",
+  "field-instrument": "foundry-desk",
+  "broadcast-desk": "broadcast-control",
+  "foundry-switchboard": "dispatch-office",
+  "submarine-watch": "broadcast-control",
+  "neural-diagnostics": "obedience-organ",
+};
+export function recipeForConsole(id: ProducerSkinId): ResolvedThemeRecipe {
+  const shell = producerConsole(id).defaultLegacyShell;
+  return { version: 1, shell, controls: shell, console: id };
+}
+export function parseRecipe(value: unknown): ResolvedThemeRecipe {
   if (typeof value !== "object" || value === null) return DEFAULT_RECIPE;
   const v = value as Partial<ThemeRecipe>;
-  return v.version === 1 && isThemeId(v.shell) && isThemeId(v.controls)
-    ? { version: 1, shell: v.shell, controls: v.controls } : DEFAULT_RECIPE;
+  if (v.version !== 1 || !isThemeId(v.shell) || !isThemeId(v.controls)) return DEFAULT_RECIPE;
+  if (v.console !== undefined && !isProducerSkinId(v.console)) return DEFAULT_RECIPE;
+  return { version: 1, shell: v.shell, controls: v.controls, console: v.console ?? legacyConsoles[v.shell] };
 }
-export function recipeFromQuery(search: string): ThemeRecipe | null {
+export function recipeFromQuery(search: string): ResolvedThemeRecipe | null {
   const p = new URLSearchParams(search);
+  if (p.has("console")) {
+    const id = p.get("console");
+    return isProducerSkinId(id) ? recipeForConsole(id) : DEFAULT_RECIPE;
+  }
   if (!p.has("theme")) return null;
   const shell = p.get("theme"), controls = p.get("controls") ?? shell;
   return parseRecipe({ version: 1, shell, controls });
 }
 export function recipeLink(recipe: ThemeRecipe) {
-  return `/stepanoskin/loopforge/play?theme=${recipe.shell}${recipe.controls === recipe.shell ? "" : `&controls=${recipe.controls}`}`;
+  return `/stepanoskin/loopforge/play?console=${parseRecipe(recipe).console}`;
 }
+const studies = parseManifest(producerStudies, "loopforge-producer-studies");
+export const consolePreview = (id: ProducerSkinId) => imageAsset(studies, id).variants[0];
 const packs = new Map(THEMES.map(t => [t.id, parseManifest(t.manifest, `loopforge-theme-${t.id}`)]));
 export function themeMedia(recipe: ThemeRecipe): Record<string, ImageAsset> {
   const shell = packs.get(recipe.shell)!, controls = packs.get(recipe.controls)!;
@@ -75,6 +108,13 @@ export function decodeThemeImage(src: string): Promise<void> {
 }
 export async function prepareTheme(recipe: ThemeRecipe, compact: boolean) {
   const files = themeFiles(recipe, compact);
-  await Promise.all(Object.values(files).map(file => decodeThemeImage(file.src)));
+  const plate = producerPlate(parseRecipe(recipe).console);
+  // The integrated console renders the full plate; commit only once that exact image decodes.
+  const plateFile = plate.variants[plate.variants.length - 1];
+  await Promise.all([
+    ...Object.values(files).map(file => decodeThemeImage(file.src)),
+    decodeThemeImage(plateFile.src),
+    decodeThemeImage(producerMobilePlate(parseRecipe(recipe).console).variants.at(-1)!.src),
+  ]);
   return files;
 }

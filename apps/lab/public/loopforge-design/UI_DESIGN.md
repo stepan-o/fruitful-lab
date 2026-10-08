@@ -2,7 +2,7 @@
 
 Working draft · 8 October 2026
 
-Asset-driven decision interfaces now; a live cinematic 3D factory later. This reference separates the updated design target from the current first-day implementation. The prior director-console composition was rejected. All six camera-console themes are now selectable in the game menu and in-run Settings. The material layer is implemented; the broader focused-interface composition remains in review.
+Four integrated console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only those four appear in Settings; the old six studies remain historical and their focused-screen materials remain internal. Start at the console, Answer leadership, Acknowledge quota, then Choose adviser. Hardware uses registered CSS fragments cropped from clean plates, not separate alpha handsets. Runtime visual and full-flow checks are underway. All four dedicated portrait plates are generated, catalogued and implemented; visual QA is underway. Adaptive wide, portrait, small/short and compact-landscape modes preserve the selected camera, run and pending decision through resize. A live cinematic 3D factory remains later work.
 
 ## Opening rules and what unlocks later
 
@@ -20,15 +20,15 @@ Asset-driven decision interfaces now; a live cinematic 3D factory later. This re
 
 ## UI structure
 
-One persistent director’s console contains Factory, Development and Records. Build its asset-driven decision interfaces and illustrated room views into a playable core loop now. Add the live tick-fed 3D factory later as another Factory view; the same advisers, commands, incidents and records remain.
+One persistent run supports four selectable consoles and the retained Factory, Development and Records jobs. Foundry, Broadcast and porcelain Obedience use calibrated six-pane glass; Dispatch office uses one primary feed plus five. Original room feeds, read-only facts and semantic controls sit over clean plates. Hardware motion uses registered CSS crops; focused screens retain matching internal material assets. A live tick-fed 3D factory remains a later view over the same advisers, commands and records.
 
-*Agreed delivery direction · asset-driven interfaces first; layouts remain to prototype*
+*Four skins implemented · visual calibration and runtime checks underway*
 
 ### Where the first shift begins
 
-**Where Start shift lands.** The weekly leadership call fills the screen with original art and lower captions: opening factory record and new quota. Return to the paused camera wall with Conveyor and Security live and four screens off. Nobody is assigned.
+**Where Start shift lands.** The paused producer console, with Lattice Forge and Security live, four off panes and no assignments. Answer leadership is the sole gameplay action; it opens the cinematic handover and quota. Acknowledge quota returns to the console and enables Choose adviser. All four skins are implemented; visual and full-flow checks are underway.
 
-**First actionable focus.** Choose adviser opens a dedicated roster designed for at least five supervisors. Day one activates LIMEN and STILETTO. Short current pitches invite inspection; the selected candidate’s priority, gain and cost are visible before explicit appointment. The main wall does not repeat this content.
+**First strategic choice after acknowledgement.** Choose adviser opens a dedicated roster with five channels only after quota acknowledgement. Day one activates LIMEN and STILETTO. Short pitches invite inspection; priority, gain and cost precede explicit appointment. The main console does not repeat the roster. Early call close, Settings, skin changes and menu/resume cannot bypass the gate or lose draft choices.
 
 **Then the briefing.** Inspecting a candidate is not appointment. Appointing opens their dedicated structured brief: assessment, attributed context and priority. Proposed placements have their own workspace; authorization changes named people’s work and delegated authority.
 
@@ -54,11 +54,11 @@ One persistent director’s console contains Factory, Development and Records. B
 
 **Clock and decisions.** Show Running, Planning paused, Inspection paused or Decision required. A pending decision remains reachable from every screen.
 
-**System menu.** Sound, motion/accessibility settings and leave session. A start menu now sits outside the three gameplay screens and provides Start shift, Settings and an in-memory Resume shift. All six equipment themes remain available; the author workbench can mix monitor and control families. Theme preference persists locally, but reloading starts a new first-day playtest. Start opens the weekly leadership call before returning to the factory. Adviser appointment remains the first meaningful choice.
+**System menu.** Sound, motion/accessibility settings and exit remain usable around the opening gate. Settings offers only Foundry desk, Broadcast control, Dispatch office and Obedience organ; the old six themes and mixer are removed. Internal focused materials and legacy link/preferences remain compatible. Start enters the console, Answer leadership opens the cinematic call and Acknowledge quota enables Choose adviser. Skin changes and menu/resume preserve acknowledgement and unconfirmed choices without remounting. Preference survives reload; game progress does not. Runtime checks are underway.
 
 ### Factory — Operate and intervene
 
-The daily adviser choice leads paused planning. During operation, observe their delegated decisions and accept or override their recommendations elsewhere.
+An incoming leadership call leads day-one entry; explicit quota acknowledgement enables the daily adviser choice and paused planning. During operation, observe delegated decisions and accept or override recommendations elsewhere.
 
 #### Workspace
 
@@ -74,15 +74,15 @@ Illustrated rooms now · live 3D later
 - Current assignment or work
 - Available action and known tradeoff
 
-#### Command deck · adviser and current decision
+#### Physical receiver · selector · production control
 
-Asset-driven adviser selection and phase controls make the next meaningful action clear. During operation, keep the chosen adviser and delegated room identifiable; distinguish completed actions from recommendations waiting for the player.
+Distinct registered hardware owns receiving leadership, opening the adviser roster and starting authorized production. Early close cannot unlock gameplay. Read-only facts and original room feeds remain separate from the clean plate; later phase controls distinguish completed actions from recommendations.
 
-Land paused in the factory → choose adviser → illustrated briefing and initial assignments → accept or override → start. Later days begin with results. End each day with permanent factory/quota allocation and debrief; no live 3D view is needed to complete this loop.
+Start → producer console → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser → roster/appointment → briefing and placements → authorize → start. End with permanent factory/quota allocation and debrief. Later days require real prior results; no live 3D view is needed for this loop.
 
 #### Views and panels
 
-**Illustrated room overview · current scope.** Use existing room and interaction art within physical camera modules. Compare assignments, warnings and known conditions; focus a room for the relevant scene and inspector.
+**Illustrated room overview · current scope.** Use original room scenes in shared calibrated glass within each integrated plate. Foundry, Broadcast and porcelain Obedience use six panes; Dispatch office uses one primary plus five. Two feeds begin live and four off. Focus a room without creating another world or exposing hidden state.
 
 **Live cinematic 3D floor · future scope.** Continuous machinery, workers and consequential activity over authoritative ticks. Shares entity/event IDs, selection and existing decision interfaces. Its arrival adds observation rather than replacing the core loop.
 
@@ -98,7 +98,7 @@ Land paused in the factory → choose adviser → illustrated briefing and initi
 
 **Clock behaviour.** Planning and the morning briefing are paused. The adviser’s room events resolve automatically during the live shift; response decisions elsewhere pause for acceptance or override. Ordinary selection preserves the clock state.
 
-**Mobile.** Keep the same complete loop through a readable focused room and asset-driven briefing/decision panels. Reflow live text and touch controls; crop artwork deliberately. Later 3D support is optional for completing every core action, with its own measured mobile budget.
+**Mobile.** Wide view retains the complete six-camera console. Tall portrait uses dedicated portrait art with 2×3 glass and a control bay. Small/short displays show one camera plus six channels; compact landscape places a large camera left and controls right. Selected camera, run, acknowledgement and pending decision persist through resize without remounting. All four portrait plates are generated, catalogued and implemented; visual QA and responsive verification remain underway. Focused briefing/decision panels keep readable text and touch targets; later 3D is optional.
 
 **Engine contract.** Displays permitted snapshots, changes and semantic events. Assignment and operating controls submit commands; acceptance, pending execution and actual outcome are distinct states. Initial assignments are empty. Allocation commands cannot reverse prior commitments, and repair requires an engineer.
 
@@ -622,7 +622,7 @@ The old Sim Sim Director Console is the visual starting point: illustrated CCTV 
 
 ## The daily adviser decision
 
-Day one opens in the paused factory console with opening facts, a weekly quota and no assignments. Choose the adviser first; they choose the priority and propose the initial arrangement. Later days begin with yesterday’s results. Their room receives automatic event authority after assignments take effect.
+Day one opens in the paused producer console with facts and no assignments. Answer leadership, acknowledge the quota, then choose the adviser as the first strategic fork. They choose the priority and propose the arrangement. Later days require yesterday’s actual results. Their room receives automatic event authority after assignments take effect.
 
 *Agreed core loop · proposed UI details and model budget*
 
@@ -891,7 +891,7 @@ First slice: the paused factory console with unassigned Limen and Stiletto, Conv
 
 Players should understand why they are choosing, what they are authorizing and how to read the result. The simulation can contain much more than the interface reveals. Its depth earns its place by creating decisions and consequences that are enjoyable to play.
 
-**Make the central choice visible.** Start shift → cinematic weekly leadership call announcing the mandate → paused factory with compact quota and Choose adviser → dedicated roster → inspect priority/tradeoff → appoint → structured brief and placements → authorize → run → permanent allocation. Later daily reviews use yesterday’s facts; later weekly calls summarize an actual completed week.
+**Make the central choice visible.** Start → paused producer console with incoming leadership as the sole gameplay action → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser → dedicated roster → inspect priority/tradeoff → appoint → structured brief and placements → authorize → run → permanent allocation. Early close leaves gameplay locked. Settings, skin switching and menu/resume preserve acknowledgement and drafts. Full runtime verification is underway. Later weekly calls require actual completed-week facts.
 
 **Say what the action means.** Use concrete labels such as Accept Stiletto’s arrangement or Stop the Brewery for Witch’s repair. Explain the known operational sacrifice and who is being overruled. Avoid vague dialogue stances whose mechanical commitment is impossible to infer.
 
@@ -952,11 +952,13 @@ Keep the complete adviser → plan → incident → allocation loop usable on a 
 
 # Loopforge interface themes and asset system
 
-8 October 2026. Owner direction: keep all six generated styles available and implement them in the game. Styles 01, 03 and 04 are promising, not an exclusion of the others. A game start menu and in-run settings expose the same theme selection. This record distinguishes the current implementation from later kit expansion.
+8 October 2026, latest owner scope: implement all four integrated console drafts as selectable skins and remove the old six themes/mixer from the player selector. [Producer console direction](PRODUCER_CONSOLE_DIRECTION.md) governs opening, geometry and native light. No winner selection is required. Matching legacy materials remain internal for focused screens and migration. Delivery and verification are underway; historical material checks do not establish complete four-skin acceptance.
 
-## One game, six presentations
+## One game, four integrated consoles
 
-Factory Original, Field Instrument, Broadcast Desk, Foundry Switchboard, Submarine Watch and Neural Diagnostics use the same interface hierarchy, readable text, hit targets, rules, scenes and character identities. Each has its own authored camera chrome, portrait socket and control states. Theme selection changes material presentation; it never changes production, supervisor motives, knowledge or difficulty.
+Foundry desk, Broadcast control, Dispatch office and Obedience organ are the only player-selectable skins. Each has calibrated plate/glass/control geometry; Dispatch office retains one primary camera plus five, while the others use their six-pane profiles. All share the same rules, original room art, character identities, readable facts and task ownership. Skin changes do not alter production, motives, knowledge or difficulty.
+
+`CONSOLES` owns the four IDs, names, material descriptions and default focused-screen mappings: foundry-desk → baseline; broadcast-control → broadcast-desk; dispatch-office → foundry-switchboard; obedience-organ → neural-diagnostics. `ThemeId` retains the six old values internally so existing focused primitives and valid historical recipes still resolve. Those values are not six extra choices in Settings.
 
 The stack remains Next.js, React, TypeScript, native controls, CSS Modules and Web Audio. A new renderer or animation framework is unnecessary for equipment skins. A future tick-fed 3D factory remains a separate view over the same knowledge-filtered protocol. It can reuse semantic asset references without inheriting DOM layout or CSS.
 
@@ -974,17 +976,22 @@ The run controller is mounted above visual changes. Never key the game or its co
 
 ## Where the player chooses
 
-The start menu uses the original factory lobby with its Loopforge floor insignia, physical Start shift and Settings controls, and return to the Loopforge landing. The floor logo remains visible at desktop and phone sizes; narrow layouts place controls above the scene rather than cropping away the floor. Start opens a full-screen weekly leadership call with original artwork, soot framing and live lower captions. It announces the quota and returns to the paused factory with no assignments. Choosing an adviser remains the first meaningful decision. The factory shows compact facts and the Choose adviser control. Roster selection accommodates at least five candidates, with two available initially; the selected detail precedes explicit appointment. The appointed adviser’s brief and proposed placements are separate focused screens. Factory, Development and Records remain durable navigation destinations. Weekly-call artwork is shared across themes and deliberately hides monitor housings, instruments and the beacon. Coherence comes from palette, character art, type and physical controls rather than identical chrome on every interface.
+The start menu retains the original lobby, visible Loopforge floor insignia, Start shift, Settings and return to the landing. The preceding baseline's direct-to-call opening and six-housing wall are historical; the approved delivery enters an integrated producer console first.
 
-In-run Settings pauses advance requests and exposes the same six themes. Menu access preserves an active in-memory run. Resume means that existing session, not a promised cloud save; reloading currently begins a new first-day prototype. Theme preference can persist locally even though game progress does not. Restarting a run is a separate explicit action.
+The delivery contract is **Start → producer console → Answer leadership → existing cinematic call → Acknowledge quota → console → Choose adviser → roster/appointment → brief → placements**. Receiving the native ringing call is the sole opening gameplay action. Early close cannot unlock the selector or other gameplay; settings, mute and exit remain usable. Receiver and selector have distinct ownership. All four custom profiles share original live room feeds, read-only projected facts and local light; two feeds start live and four off. Final runtime verification remains to be recorded.
 
-Show all six names and material previews. Display loading, success and failure honestly. Do not mark a theme active until its required assets are ready. The old complete presentation remains usable if loading fails. Applying a theme must not accidentally start or resume the conveyor. Sound, motion and readability preferences are independent of theme.
+Retain the current full-screen original call artwork, soot framing, live lower captions and choreography across themes. It hides console equipment and beacon; first week uses the opening mandate, never fabricated prior-week results. The dedicated roster has five channels, two initially available; inspection precedes explicit appointment. Briefing and placements keep separate focused screens. Factory, Development and Records retain their jobs after the opening gate. Coherence comes from palette, character art, type and purposeful controls, not identical chrome on every interface.
+
+In-run Settings pauses advance requests and exposes the same four skins as the menu. Menu/resume preserves the active in-memory session, not a promised cloud save; reload still begins a new playtest. Skin preference can persist locally. Restart is explicit. Acknowledgement and unconfirmed placement/dispatch choices must survive Settings, skin changes and menu/resume without a keyed remount. Changing equipment neither dismisses a pending call nor unlocks gameplay.
+
+Show all four names and compact concept previews. Display loading, success and failure honestly. Do not mark a skin active until its full runtime plate and paired focused-screen assets decode. Failed or superseded requests keep the previous complete presentation. Applying a skin must not start/resume the conveyor. Sound, motion and readability preferences remain independent.
 
 ## Replace assemblies, preserve semantics
 
 | Assembly | What can change | What stays fixed |
 | --- | --- | --- |
-| Console and monitors | Authored bezel, surface palette, glass treatment and compatible framing geometry | Six positions, room identity, active/off state, camera art chosen from permitted facts |
+| Console and camera region | Authored shared housing, material palette, glass and calibrated geometry for each of the four profiles | Six room identities, two-live/four-off opening state, camera art chosen from permitted facts; no six repeated cabinets |
+| Leadership receiver / supervisor selector | Coherent physical assemblies and bounded local feedback | Distinct incoming versus internal communication, sole opening receive action, acknowledgement gate and dedicated roster ownership |
 | Intercom | Frame treatment, portrait socket, speech-surface material | Character identity, current statement, selection/authority meaning, readable native text |
 | Controls | Matching resting, hover/focus and pressed artwork; bounded physical response | Accessible name, action, disabled/pending state, focus order, minimum target size |
 | Instruments | Material plate and a coherent icon family | Funds, workforce, condition and weekly delivery definitions; no invented gauges |
@@ -994,15 +1001,19 @@ Treat a button's housing and all its interaction states as one assembly. Do not 
 
 The current release includes six separately generated portrait sockets, shared original portraits and glass, cropped relief symbols from the baseline sheet, and separately generated blank tape and speech surfaces. Additional symbols must be explicitly catalogued; a style sheet is not evidence that every illustrated component has been implemented. The review boards themselves are never the playable scene or runtime sprite sheet.
 
+Main-console hardware uses registered fragments cropped via CSS from the clean runtime plate. Do not describe these as separately generated transparent handsets or independent alpha control assets. Their motion, clipping and occlusion must retain registration and avoid duplicate edges. The separate sockets and button-state sheets above belong to the retained focused-screen material system.
+
 ## Asset contracts and delivery
 
 Keep the existing immutable media pipeline. Each theme has a catalog of logical asset IDs, optimized responsive derivatives, a content-hashed manifest and a short-cached release pointer. Source masters and generation records live outside public media. Production consumes the published derivatives.
 
-The theme registry owns stable IDs, display names, palette tokens, compatible geometry, preview references and a pinned build-time manifest. The theme adapter maps these to semantic presentation slots. The generic asset manifest remains a file-delivery contract; do not insert UI geometry or game rules into it. Geometry belongs to the typed presentation adapter alongside the registry. Whole monitor stage dimensions preserve a 1.65 aspect ratio inside responsive cells; calibrated safe openings cover each theme’s differently shaped bezel. The implementation bundles the six immutable manifest snapshots as small metadata imports; no runtime latest-pointer fetch can silently change a recipe. The asset check verifies file/manifest hashes at build time.
+The registries own stable IDs, material palettes, compatible geometry and pinned build-time manifests. Generic asset manifests deliver files; geometry belongs in typed presentation adapters, never game rules. Each producer profile has calibrated glass, receiver, selector, production, fact and light regions. The old 1.65-ratio monitor openings remain internal to focused components, not the main console. `loopforge-producer-studies` supplies compact previews; `loopforge-producer-runtime` supplies plates keyed by the four console IDs. Existing focused material manifests remain pinned. No latest-pointer fetch silently changes a recipe; build-time checks verify hashes.
+
+`ThemeRecipe` remains version 1 with additive optional `console`; `parseRecipe` returns a resolved ID. Foundry desk is the default. New `?console=` links take precedence and select a complete mapped recipe. Legacy `?theme=`/`controls` and saved version-1 choices retain valid internal material pairs and gain the corresponding console (baseline/field → Foundry, broadcast/submarine → Broadcast, foundry-switchboard → Dispatch, neural → Obedience). Invalid schema/IDs fall back to the default. Query strings cannot supply arbitrary asset URLs.
 
 For each new asset retain: source and generation prompt, reference images, rights/use record, content hash, intended slot, state family, source dimensions, crop/trim recipe, scale variants, safe content inset, corner/slice geometry and review status. Control sheets are split into three equal-height rows, then transparent gutters are trimmed. Each control state renders in the same fixed native target and does not move its text or hit area when the image changes. Per-state source dimensions and exact crop regions remain in the preparation record. Keep cut lines out of corners and lettering. Do not stretch a complete monitor or character portrait to fit arbitrary aspect ratios.
 
-Load only the selected theme's required files. Keep ordinary room/portrait assets shared and let content hashes deduplicate bytes. Prepare interaction states before enabling a newly selected control family so first hover does not flash. Large style sheets load only in the design review. Do not prefetch all six full kits at game entry.
+Load only the selected skin's runtime plate and required focused family. Keep room/portrait assets shared and let hashes deduplicate bytes. Prepare interaction states before enabling the new family. Large style sheets remain author-only; do not prefetch four full plates or six legacy kits at entry. `prepareTheme` waits for the exact full plate used by the console even when focused assets use compact variants.
 
 Resolve and validate a complete release before applying it. In-run switching stops advance requests, waits for the one pending command to settle, prepares the replacement material set, and commits it together. Failed or superseded loads never replace part of the screen. Keep the previous kit, expose retry and retain the user's run. A theme change does not replay factory sounds or past events.
 
@@ -1010,27 +1021,31 @@ Pinned recipes prevent a hybrid from silently combining three independently movi
 
 Font files need their own license records and self-hosted delivery. The current image/data manifest parser does not accept font extensions; do not pretend a font is an image. Font selection and readable sizes stay common during the first skin comparison.
 
-## Combining themes
+## Historical combinations and retained internal compatibility
 
-Player Settings offers complete named themes. An explicitly labelled author mixer combines a monitor-and-socket kit with a complete control family using only registered compatible sets. It is presentation tooling, not a new game mechanic. Begin by comparing the six complete themes; then vary one assembly at a time.
+Player Settings offers four complete console skins and no material mixer. The preceding author mixer combined monitor/socket and control families; that is historical tooling, not the current player flow. Valid old recipes may retain their internal focused-screen mappings through migration without exposing those assemblies as new choices.
 
-A useful currently supported candidate is Factory Original's monitors and sockets with Foundry Switchboard's controls. Independent socket mixing can be added later with its own validated recipe version. This is an experiment, not a chosen final direction. A successful combination becomes a named, versioned recipe after checking light direction, material scale, corner geometry, icon readability and mobile composition. Avoid a permanent collection of arbitrary per-element overrides.
+Factory Original monitors/sockets with Foundry Switchboard controls was one historical comparison. Retaining such a saved mapping does not select a new integrated-console hybrid. New player selections use their approved default pairing and avoid arbitrary per-element overrides.
 
-The first mixer may expose only assemblies actually implemented; label shared or unavailable families honestly. Never imply the small style-sheet specimens are usable production assets merely because their names appear in a selector. Invalid recipe IDs fall back to a known complete theme; query strings cannot supply arbitrary asset URLs or executable styles.
+Historical style-sheet specimens remain references, not proof of production completeness. New plate/control geometry must be checked in the complete running skin; adding a selector card or loading an asset alone does not establish acceptance.
 
 ## A fair practical comparison
 
-Hold content, layout, type size, sound mix, event timing and commands constant for the first pass. Record engine/schema version, seed and command transcript separately from theme/asset revision, viewport, density, motion and sound settings. The same transcript must yield the same state hash under every theme. Side-by-side review uses frozen projections, not two live clients issuing competing commands.
+Compare all four integrated profiles with the same state, commands and interaction requirements, allowing their approved architecture and visual style to differ. Record engine/schema version, seed and transcript separately from skin/asset revision, viewport, density, motion and sound. The same transcript must yield the same state hash under every skin. Side-by-side author review uses frozen projections, not competing clients.
 
 Use the unassigned first turn, adviser briefing, a changed assignment, an adviser-owned automatic event, a director decision, dispatch and debrief. Include long text, keyboard focus, loading failure, disabled controls, sound-off and reduced-motion states. A six-active-room composition can test later visual density, but remains an author fixture, not a claim that later progression is implemented. Do not expose private worker/supervisor components in a player snapshot to make a richer demo.
 
-Judge whether the player finds adviser choice, understands delegated authority, sees the affected room and consequence, can read speech, recognizes a committed action and enjoys the physical response. Record missed controls, hesitation, mistaken expectations and preference; do not confuse faster clicking with better decisions. Counterbalance the order of themes so familiarity does not automatically favour the last one. Owner judgment leads until real audience testing exists.
+For every skin, verify the receiver is discoverable and only explicit quota acknowledgement unlocks gameplay. Exercise early close, Settings/skin switching/menu preservation, roster choice, delegation, affected-room feedback and readable speech. Record hesitation, mistaken expectations and preference; faster clicking is not necessarily better decisions. Existing material tests do not establish this new flow. Owner judgment remains decisive without imposing another pre-implementation selection gate.
 
 Test 320, 390, 768 and desktop widths; fit common desktop heights without hiding the core action. Preserve at least 44px targets, visible focus, semantic labels and no accidental horizontal page overflow. Closed rooms remain unpowered glass with only their tape name. Off/disabled states cannot depend only on colour. No theme may disclose hidden stats or obscure known consequences.
 
+Responsive delivery combines four dedicated portrait-art plates with adaptive modes: wide shows the full six-camera console; tall portrait uses native 2×3 glass plus control bay; small/short shows one selected camera with six channels; compact landscape places the large camera left and controls right. All four portrait plates are generated, catalogued under `<skin-id>-mobile` in `loopforge-producer-runtime`, and implemented; final calibration and visual QA remain underway. The review gallery uses the smallest optimized portrait variant for thumbnails and opens the full variant on demand. The selected camera, run, acknowledgement, pending decision and draft choices survive resizing/rotation without a keyed remount. Plate/geometry choice belongs to presentation; it never issues a command or changes world state. Validate transitions in both directions while a call or decision is pending, including image readiness and touch/focus continuity.
+
 Measure the complete opening, not just individual file sizes: selected image bytes, decoded image memory, first visible frame, first hover, switch latency, layout shifts and interaction response. Initial image targets remain 350 KB on a typical phone and 800 KB on desktop; document measured exceptions and remedy them. Use bounded transform/opacity effects, stop hidden/offscreen work and preserve a complete still state. These are lab checks; field Core Web Vitals remain unmeasured until traffic supports them.
 
-## Implementation sequence and gate
+## Historical material-system implementation sequence
+
+The sequence below describes the preceding six-kit implementation. It does not mark the four-skin delivery, receiver gate or integrated geometry complete.
 
 1. Record this contract and preserve the immutable asset pipeline.
 2. Generate and inspect six matching monitor/control sets from the six sheets; retain prompts and crop recipes.
@@ -1042,23 +1057,29 @@ Measure the complete opening, not just individual file sizes: selected image byt
 
 The broader playable UI quality gate remains separate from “six themes load.” The owner judges the final composition and enjoyment. Material changes must not be presented as completed Act 1 mechanics or a live 3D factory.
 
-## Rotating light feedback
+## Beacon feedback: retained semantics, revised construction
 
-The shared overhead beacon is a separate semantic feedback layer across all themes. It is dark between event-driven rotations: cyan for sparse inactivity, green for confirmed production, red for actual accidents, ember/amber for attention. The design workbench can preview all four impulses without creating a game event. See [the light contract](CONSOLE_LIGHT_FEEDBACK.md) for priorities, geometry, timing and accessibility.
+The almost-flat overhead fixture and broad sweep are historical baseline construction. Each integrated skin needs a native local beacon: lens glare, reflections and shadows agree with its source and perspective. It is dark most of the time; cyan means idle life, green confirmed output, red actual accident, amber attention. Signal previews create no game event and do not validate alignment. See [the light contract](CONSOLE_LIGHT_FEEDBACK.md).
 
 
-## Focused console composition release
+## Preceding focused-console composition release
 
-The former material-only revision retained the rejected action column. That composition is superseded by `FOCUSED_CONSOLE_REBUILD.md`. Six cameras and compact action access are now the default; the roster is a separate workspace. The active workspace uses its own composition; it does not accumulate additional columns beside the wall. Portrait socket masters and the shared surfaces live in `apps/lab/assets/sources/loopforge-focused/`, with exact prompts, references and derivative recipes. Original dispatch, logistics and lobby scenes are reused outside the six-room management grid. Read-only `/play/console-study` compares first-turn, six-active-feed and five-adviser density under every kit without starting a run.
+The material-only action column was replaced by the preceding focused rebuild. Its separate roster, briefing, placements, incidents, dispatch and records remain, now paired with each console's internal material family. Its repeated-monitor overview is being replaced by the approved four profiles. Socket masters and shared surfaces stay in `apps/lab/assets/sources/loopforge-focused/`. Dispatch/logistics/lobby scenes are not extra managed rooms. Read-only `/play/console-study` records historical density studies and does not validate the current runtime delivery.
 
 
 # Console beacon and visual feedback
 
-8 October 2026. Owner direction: a dedicated rotary light belongs above every game interface. Its housing is seen almost flat from directly above. The elevated/isometric first draft was rejected.
+8 October 2026, updated for the approved four-skin delivery in [producer console direction](PRODUCER_CONSOLE_DIRECTION.md). Every profile needs a native integrated beacon, bright local lens glare and physically consistent nearby illumination, off most of the time. Foundry desk, Broadcast control, Dispatch office and porcelain Obedience organ are all being implemented; no winner-selection gate remains. The old overhead fixture and broad beam are historical baseline construction. Final alignment, performance and accessibility verification is not claimed here.
+
+## Target: source and console form one object
+
+The beacon's base, housing and lens visibly belong to each console plate. Perspective, rotating aperture, light origin, material response and occlusion agree with calibrated nearby geometry. The housing stays fixed while a bounded rotation moves emission around that source. A bright lens can make small, intense local glare and reveal adjoining edges; it must not become a detached glow or broad wash over the cameras. Verify rest and peak for every profile, including Dispatch office's one-primary-plus-five region and the other three six-pane glass regions.
+
+On Start, the native leadership receiver owns the sole gameplay action. An incoming call uses attention semantics and a readable equipment state; it is not an accident. The internal supervisor selector remains locked until the answered full-screen weekly call's mandate is explicitly acknowledged. Early close does not unlock it. Settings, mute and exit remain usable. Cinematic calls retain their accepted full-screen choreography and hide console equipment, including the beacon. The lighting concept does not replace that scene or add simulation authority.
 
 ## Default: dark
 
-Rotations fire as bounded impulses. Between impulses, no beam or coloured glare remains. The screens and choices hold attention. A sparse cyan idle impulse gives the equipment a little life without implying that a paused simulation is advancing.
+Feedback remains bounded. Between impulses, no coloured beam or glare remains. Screens and the current action hold attention. Cyan idle life never implies simulation advance. The meanings below carry forward; durations and rotary-sweep descriptions record the preceding baseline and must be checked against each local-light profile during implementation.
 
 | Trigger | Colour | Behaviour |
 | --- | --- | --- |
@@ -1067,40 +1088,42 @@ Rotations fire as bounded impulses. Between impulses, no beam or coloured glare 
 | Accident confirmed | Strong red | One 1.35-second sweep; takes priority over lower signals. |
 | Choice or event requiring attention | Ember / amber | One 1.6-second sweep when the request arrives. The decision remains labelled after the light extinguishes. Orders accepted also lights the ready-to-start control. |
 
-These timings and intensity values are initial presentation tuning, not simulation constants. Repeated lower-priority signals are coalesced during the current sweep and one second of darkness. Accident outranks attention, which outranks production, which outranks idle. No replay of old lights when reopening a menu, restoring a projection, changing theme or switching interfaces.
+These timings and intensity values are baseline presentation tuning, not simulation constants or acceptance of broad beam geometry. Repeated lower-priority signals are coalesced during the current impulse and one second of darkness. Accident outranks attention, which outranks production, which outranks idle. No replay of old lights when reopening a menu, restoring a projection, changing theme or switching interfaces. An idle cue must not visually compete with the pending opening call.
 
 In the current first-day slice, new worker losses establish an actual accident. An incident record by itself may be a warning or a paperwork dispute; it is not evidence of physical harm. Later equipment-only accidents should receive an explicit public outcome tag when that mechanic exists. Do not infer an accident from arbitrary prose. Production is currently batched basic-robot completion, so a batch receipt produces one green pulse; a later per-brain completion event can use the same presentation vocabulary.
 
-## Physical construction
+## Implemented construction — historical baseline to replace
 
-The housing, collar and glass are an authored overhead asset. Concentric circular construction replaces the earlier tall side-wall view. A directional light aperture turns through one full circle about the same source used for the beam. The housing stays fixed. The beam moves continuously around that point, not through a mirrored left/right oscillation.
+The preceding housing, collar and glass used an authored overhead asset. Circular construction replaced an earlier tall side-wall view. A directional aperture turned around the beam source while the housing stayed fixed. This records historical behavior, not evidence of physical integration in the four new profiles.
 
-One lightweight Canvas 2D surface draws the stage-wide sweep. Raised corner fittings on visible camera, portrait and menu frames act as screen-space occluders. Their tangent rays originate at the measured beacon centre; those rays remove light behind the obstruction. This is inexpensive planar occlusion, not a claim of full 3D shadow mapping. The background retains the actual asset texture. No fabricated shadows should cut across a beam from an unrelated source.
+The preceding Canvas 2D surface drew a broad stage-wide sweep, using raised frame fittings and tangent rays from a measured centre for inexpensive planar occlusion. This was not full 3D shadow mapping. Retaining that historical helper for other surfaces does not justify a broad beam across the new main console. Each approved profile needs source-aligned local light and occlusion; do not fabricate shadows from unrelated geometry.
 
 Geometry is measured once at the start of an impulse. Scroll or resize ends the current effect rather than continuing with stale geometry; the next impulse measures again. Maximum canvas width is 1280 logical pixels, maximum 32 fittings, and drawing is capped around 30 fps. No per-frame React state or simulation work. Between impulses no animation frame is scheduled. Hidden pages stop drawing.
 
-Console workspaces share the mounted source. Full-screen cinematic leadership calls deliberately hide the entire console and source. The menu and modal settings have their own visible mount using the same language. An inactive or covered surface does not draw. Sound and readable text still communicate consequences independently.
+The preceding workspaces shared a mounted source, with separate menu/settings mounts. Full-screen leadership still hides the console and source. Place light where physical equipment exists, rather than require a floating beacon over every interface. Inactive/covered surfaces do not draw. Settings, skin changes and menu/resume preserve the call's acknowledgement and pending choices without replaying old light events. Sound and readable text communicate consequences independently.
 
 ## Accessibility and review
 
 Reduced motion replaces the sweeping beam with a brief stationary lens indication. Disabling camera atmosphere disables the light effects. No screen-filling flash, constant strobe, colour-only decision or mandatory sound. Light previews live under the explicitly labelled design workbench and create no game event.
 
-Review cyan, green, red and amber on every material set; bright ivory and dark iron will catch light differently. Check source/obstacle/background alignment at desktop and phone sizes. Inspect both the peak and the dark rest state. The light supports the player's current job; it is not a reason to keep the whole page animated.
+Review cyan, green, red and amber on all four skins; ivory and iron catch light differently. Check local glare, source/obstacle/background alignment and perspective at desktop/phone sizes. Inspect peak, dark rest, muted/reduced-motion opening, early close and Settings/skin/menu preservation. Historical tests and static concepts do not validate this delivery. The light supports the current job; it is not a reason to animate the whole page.
 
 
-# Focused console rebuild — implementation contract
+# Focused console rebuild — retained interfaces and implementation baseline
 
-8 October 2026. The owner rejected the material-only revision because it retained the old two-column webpage. This pass must deliver the previously authorized interface composition, not mark it as a later task. Scope: Loopforge in apps/lab and its design/engine documentation; no other brand, kernel or HTTP contract change.
+8 October 2026, updated for the approved implementation of all four integrated console skins. The focused responsibilities below remain accepted. [Producer console direction](PRODUCER_CONSOLE_DIRECTION.md) supersedes repeated-monitor geometry and direct-to-call opening. No winner-selection gate remains. The old six themes leave the player selector, while their matching focused-screen assets remain internal. Delivery and verification are underway; scope remains Loopforge in apps/lab and its documentation, with no other brand, kernel or HTTP contract change.
+
+Historical baseline: Start opened the full-screen call directly, followed by six repeated monitor housings and a broad sweep. That build is being replaced by the receiver-first integrated console and acknowledgement gate. The checklist below records the earlier build and does not prove completion of the current delivery.
 
 ## Screen map and physical composition
 
-The start menu remains optional navigation. Start shift opens the weekly leadership call, then the **factory wall**. The call is a full-screen illustration with lower captions; routine console chrome recedes. A compact instrument rail carries the day, funds, workers, known condition and weekly quota. Factory, Development and Records are durable destinations. The console source light is shared, overhead and dark between impulses.
+The start menu remains optional navigation. Target flow: **Start → producer console → answer leadership receiver → existing full-screen weekly call → acknowledge mandate → console enables supervisor selector → roster/appointment → brief → placements**. Receiving the native ringing call is the sole opening gameplay action; settings, mute and exit remain usable. An early close does not unlock gameplay. A compact instrument rail carries day, funds, workers, known condition and weekly quota. Factory, Development and Records retain their jobs after the gate. The beacon is integrated into the selected console geometry, with bright local lens glare, coherent nearby shadows and darkness between bounded impulses.
 
 | Interface | Composition | Entry / exit |
 | --- | --- | --- |
-| Factory | Six substantial camera housings in stable positions; two live feeds, four empty unpowered glass screens with only handwritten room names. Only compact current-action and adviser access remain around the wall. No permanent command-prose column. | Default after the call. Room tap opens focus; Choose adviser opens the dedicated roster. |
-| Weekly leadership call | Full-screen original leadership artwork, asymmetric soot vignette, short attributed speech and separate confirmed figures/mandate. Later weeks need actual performance records. | Start → call → factory; quota instrument reopens without changing world state. |
-| Adviser selection | At least five readable roster entries, short pitches and one focused priority/tradeoff panel. Day one activates only LIMEN/STILETTO. | Choose adviser → inspect candidates freely → explicitly appoint. |
+| Producer console / factory | Four calibrated plate profiles: Foundry desk, Broadcast control, Dispatch office with one primary plus five, and porcelain Obedience organ. Original room feeds share glass; two live, four off. Native receiver and selector, read-only facts, local light; no permanent prose column. | Default after Start. Answer leadership is the only opening gameplay action; Acknowledge quota enables Choose adviser and later room/workspace actions. |
+| Weekly leadership call | Retained full-screen original art, asymmetric soot vignette, short attributed speech and separate confirmed figures/mandate. Later weeks need actual performance records. | Answer receiver → call → acknowledge → console. Early close preserves the lock; quota can reopen the completed call without changing world state. |
+| Adviser selection | At least five readable roster entries, short pitches and one focused priority/tradeoff panel. Day one activates only LIMEN/STILETTO. | Enabled internal supervisor selector → inspect candidates freely → explicitly appoint. |
 | Adviser intercom | Large selected identity, attached live speech, clear output/safety tradeoff. Appointment is explicit. After appointment the comic briefing separates factory assessment, attributed context and priority. | Appointment → structured briefing → placements. |
 | Placements | Room receiving sockets and proposed supervisor tokens. Both room fit and delegated authority are visible. Tap/swap produces a local revision and visible objection before authorization. | Briefing → plan; confirm returns to factory and arms shift control. |
 | Room focus | One enlarged camera, operator token, known condition/output and relevant attributed action/report. | Open live feed; close returns to wall. Shift continues here. |
@@ -1113,19 +1136,21 @@ The start menu remains optional navigation. Start shift opens the weekly leaders
 
 ## Geometry before paint
 
-- Desktop/laptop: fixed viewport console. Compact header and bottom transport/navigation; 3×2 monitor wall; one primary next-action control. Opened intercom, placement, incident and dispatch occupy the workspace rather than adding columns to the wall.
-- Phone: 2×3 monitor wall, compact instruments, compact quota and current action, persistent lower navigation. Focused interfaces use their own space; longer records/help scroll inside their surface. Do not stack the whole desktop page.
-- Monitor housings render as whole authored objects with calibrated inner openings, not squeezed decorative border images. Token hardware remains large enough to read at its actual display size. Labels sit on the physical bezel.
-- First-turn and full-floor composition use the same six locations. A separate clearly labelled author fixture demonstrates the latter; it cannot send commands or imply later progression is implemented.
-- Local selected adviser, proposed placements, dispatch edits, focus and help are presentation state. Confirmed player projections remain the only world authority.
+- Desktop/laptop: all four profiles use integrated shared glass and one clear current action. Dispatch office retains one primary plus five; the other profiles use their calibrated six-pane regions. Intercom, placement, incident and dispatch keep focused workspaces with paired internal materials.
+- Phone: adapt each profile so its receiver, six room states and later selector remain legible and touchable. The prior 2×3 repeated-monitor wall is historical evidence, not a geometry requirement. Focused interfaces keep their own space; records/help scroll within their surface.
+- Shared housing/glass must preserve authored perspective and calibrated openings. Six copies of a monitor asset do not satisfy the target. Token hardware stays readable, labels belong to equipment, and the integrated beacon shares the console's source geometry.
+- First-turn and full-floor compositions preserve the same six room identities, with stable locations within the selected layout. The existing labelled full-floor fixture documents the old geometry; it cannot send commands or imply later progression is implemented.
+- Call acknowledgement, local selected adviser, proposed placements, dispatch edits, focus and help are presentation state. Settings, skin changes and menu/resume preserve acknowledgement and drafts. Confirmed projections remain the only world authority.
 
 ## Asset pass
 
-Reuse all six material directions and their complete control states. Add a purpose-built supervisor socket for each direction, a shared textured speech surface and tape, and coherent resource reliefs. Original portraits retain identity. The old dispatch office supplies dispatch, shipping/logistics supplies the debrief, and the factory lobby supplies the menu. None becomes a seventh managed room. Text, counters and decisions remain semantic live controls. Grain, REC, token seating, production changes and the shared beacon have bounded effects tied to visibility and confirmed receipts.
+Implement all four prepared console plates with coherent housing, receiver, selector and native beacon geometry. Remove the six old themes and mixer from player Settings; keep legacy assets internally for focused screens, historical studies and preference migration. New selections pair Foundry with baseline, Broadcast with broadcast-desk, Dispatch with foundry-switchboard and Obedience with neural-diagnostics. Original portraits and room art retain identity. The old dispatch office supplies dispatch, shipping/logistics supplies debrief and the lobby supplies the menu; none becomes a seventh managed room. Text, counters and decisions remain semantic controls, with read-only facts from the projection. Effects remain bounded by visibility and confirmed receipts.
 
 The lobby's Loopforge floor insignia is a required focal point. Desktop controls sit to its left; phone controls occupy the upper area while the doorway and floor remain visible below. Do not center-crop the scene or bury the floor under the menu gradient. The separate floating logo is omitted on phones.
 
-## Checklist / gate
+## Historical implementation checklist — preceding focused rebuild
+
+Completed entries below apply to the six-housing baseline, not the four-skin implementation now underway or its pending verification.
 
 - [x] Re-read scope, references, style sheets and current engine boundary.
 - [x] Specify focused jobs, navigation, geometry and ownership before implementation.
@@ -1139,20 +1164,24 @@ The lobby's Loopforge floor insignia is a required focal point. Desktop controls
 - [x] Run required checks, update source docs/tabs and capture evidence.
 - [x] Publish and verify the updated PR #99 preview: hosted first shift, override, dispatch seal and debrief completed. See the review record for the exact tested revision.
 
-The gate fails if the result is still a camera beside a permanent prose/action column, if sealed rooms reveal interiors, if tokens are absent, or if hardware is reduced to illegible trim. Passing tests alone does not pass this gate.
+The current target also fails if six repeated monitor cabinets remain, the leadership call opens without answering the receiver, early close unlocks gameplay, the internal selector competes with the incoming call, or the beacon floats apart from its physical source. Preserve the earlier requirements: no permanent prose/action column, no sealed-room interiors, readable supervisor identities and functional hardware. Passing the historical checks or reviewing four images does not pass the new playable UI gate.
 
 
 # Living console: hierarchy, attention and motion
 
-8 October 2026. Follow-up to the focused-interface rebuild. The owner accepts the improved direction, but the opening still fails to direct attention and the console feels inert. This record supersedes the earlier motion cadence; screen responsibilities and engine authority remain intact.
+8 October 2026, updated for the approved four-skin delivery. [Producer console direction](PRODUCER_CONSOLE_DIRECTION.md) is the current authority: implement Foundry desk, Broadcast control, Dispatch office and Obedience organ as selectable integrated consoles. No winner selection is required. The old six themes leave the player selector while their focused-screen materials remain internal. Full-screen leadership choreography and focused interfaces are retained. Implementation and verification are underway; the historical checklist is not acceptance evidence for this delivery.
+
+The preceding runtime started directly in the cinematic call, then showed six separately housed monitors and a broad sweep; its return control did not enforce acknowledgement. That historical baseline is being replaced. Completion of the receiver gate, all four profiles and local light must be established against the final delivered revision.
 
 ## Main screen owns the factory
 
-The wall is the largest uninterrupted surface. Six physical monitors keep stable positions. Live screens carry light, texture and readable local status; unpowered screens recede, with only their tape names remaining. No persistent right-hand prose column. The camera wall, not a stack of text panels, is the visual identity.
+The camera region is the largest uninterrupted surface within one coherent producer console. Shared glass replaces six repeated housings. Foundry, Broadcast and porcelain Obedience profiles use calibrated six-pane layouts; Dispatch office uses one primary feed plus five smaller channels. Original room art fills the permitted feeds, independently of each plate. All six rooms remain identifiable from turn one: two live, four unpowered with room names only. No persistent prose column; sealed rooms reveal no interiors.
 
-The opening weekly leadership call occupies a cinematic full-screen surface. It announces the mandate, then returns to the factory. There is no previous-week performance report on first entry. The main wall retains only the compact quota instrument and **Choose adviser** action; tapping quota reopens the call.
+The required opening is **Start → producer console → Answer leadership → full-screen weekly call → Acknowledge quota → producer console → Choose adviser**. Receiving the native ringing call is the sole available gameplay action on arrival. Incoming leadership and the internal selector are distinct equipment. Settings, mute and exit remain usable. Early close leaves gameplay locked and the call recoverable. Settings, skin changes and menu/resume preserve acknowledgement and unconfirmed choices without remounting the run. Sound-off retains a clear visual incoming-call state.
 
-**Choose adviser → inspect the roster → explicitly appoint → structured morning brief → placements.** Choice context lives on the dedicated selection screen, before commitment. Build for at least five available supervisors: stable readable roster tokens with short current pitches, plus one focused detail area. Day one has two active candidates and three unavailable channels. An author-only five-person study exercises density without inventing later simulation. Phone uses a scrollable roster strip and a focused detail region, rather than shrinking five full briefings.
+The existing full-screen call artwork, soot framing, lower captions and transitions are retained. There is no previous-week performance report on first entry. After acknowledgement, the compact quota instrument can reopen the call without issuing a simulation command. Do not make opening the internal roster the first available action.
+
+**Enabled supervisor selector → inspect the dedicated roster → explicitly appoint → structured morning brief → placements.** Choice context lives on the dedicated selection screen, before commitment. Build for a five-channel selector and at least five readable roster entries: stable tokens with short current pitches, plus one focused detail area. Day one has two active candidates and three unavailable channels. An author-only five-person study exercises density without inventing later simulation. Phone uses a scrollable roster strip and a focused detail region, rather than shrinking five full briefings.
 
 After appointment, the current order takes priority: review placements, start the line, respond, dispatch. A compact adviser channel reopens their briefing. No duplicate pitches or full quota explanation on the wall. The clock states why the line is waiting. There is no repair instruction before engineering exists.
 
@@ -1161,11 +1190,11 @@ After appointment, the current order takes priority: review placements, start th
 | Layer | Belongs here | Does not belong here |
 | --- | --- | --- |
 | Persistent perimeter | Day, funds, workers, condition, weekly quota; compact navigation and transport | Biographies, tutorial paragraphs, event histories |
-| Largest surface | Six-camera overview; selected room can occupy a focused workspace | Four visible locked-room interiors; simultaneous full-screen art for unrelated decisions |
+| Largest surface | Shared camera glass with six room views; Dispatch office retains a primary-plus-five profile | Six repeated monitor cabinets; four visible locked-room interiors; simultaneous full-screen art for unrelated decisions |
 | Anchored overlay | Camera telemetry, one latest room receipt, incoming-channel indicator, hover/focus inspect cue | Unrelated alerts floating far from their source; text that obscures the entire scene |
 | Non-blocking notice | Completed delegated action, production confirmation; persistent record link | Asking permission for an action already taken |
 | Focused workspace | Adviser roster/selection, intercom, plan comparison, development, dispatch, debrief, records | A narrow universal sidebar forced to handle every job |
-| Cinematic takeover | Weekly leadership call: full artwork, uneven soot framing, lower captions and facts; no console chrome | Routine monitoring; invented prior-week results |
+| Cinematic takeover | Answered weekly leadership call: full artwork, uneven soot framing, lower captions and mandate acknowledgement; no console chrome | Automatic takeover before answering; routine monitoring; invented prior-week results |
 | Modal | Consequential incident, settings, instrument context, optional guidance | Ordinary output; mandatory first-entry tutorial; stacked dialogs |
 
 Only one consequential decision can own the foreground. Closing it preserves the pending request and paused world. Source camera remains marked. A transient effect ends; the outcome stays in counters and records. Details are available by click/touch/keyboard, never exclusively on hover.
@@ -1174,8 +1203,8 @@ Only one consequential decision can own the foreground. Closing it preserves the
 
 - **Optical life:** restrained phosphor travel, small grain drift, occasional short horizontal tracking tear, CRT edge falloff and REC lamp. Stagger the two powered feeds. No full-screen shake or white flash. Off screens have reflected glass only. Cosmetic camera interference never claims an accident or fault.
 - **Factory feedback:** a confirmed production receipt lights its source camera green; an attributed order receives a short receipt overlay. Known low condition increases localized conveyor interference. Never fabricate sensor values or production to animate the screen. Labels and decision text stay still.
-- **Calls:** the factory’s Choose adviser command has a local attention lamp. Roster selection and detail transitions occur on their dedicated surface. The weekly call uses the separate cinematic choreography in `CINEMATIC_INTERFACE_DIRECTION.md`.
-- **Beacon:** cyan idle sweep after 12 seconds without input, recurring at most every 18 seconds, with at least 6 seconds since another signal. A 2.8-second revolution leaves most time dark. Ignore pointer movement as input; clicks/keys reset quiet time. Confirmed amber/green/red impulses retain priority and never stack. Ready-to-start is also an amber attention transition. No catch-up sweep after returning from a hidden tab.
+- **Calls:** the incoming leadership receiver owns opening attention. The internal supervisor selector stays inactive until mandate acknowledgement, then leads into the dedicated roster. The weekly call retains the cinematic choreography in `CINEMATIC_INTERFACE_DIRECTION.md`.
+- **Beacon:** a native fixture integrated into the console housing, with a bright local lens and restrained nearby glare. Its perspective, source geometry, material reflections and occlusion agree with the surrounding hardware. It is off most of the time. Cyan is sparse idle life, green confirmed production, red an actual accident, amber attention. The current 12-second quiet-entry / 18-second repeat and bounded impulse timings are baseline tuning, not approval of the broad stage-wide beam. See `CONSOLE_LIGHT_FEEDBACK.md` for the distinction. Signals never stack or catch up after a hidden tab.
 - **Interruption:** incident arrival pauses production; effects behind foreground reading surfaces pause. Camera atmosphere continues during ordinary planning wait without advancing simulation time. Hidden tabs and manual effects-off stop decorative animation.
 
 ## Reference findings and applications
@@ -1191,9 +1220,11 @@ These are source-informed design decisions, not a claim to have playtested these
 
 ## Implementation and performance boundary
 
-No engine, command, hidden-state or protocol change. Receipts and publicly projected condition drive meaningful cues. Presentation timing uses CSS and a bounded beacon; no per-frame React state. Reuse current asset packs and add two original leadership/cinematic assets; no new runtime framework or model calls. Clip motion to powered glass; never animate expensive blur across the whole stage. Six-theme switching must preserve run and drafts. The future live 3D factory can replace feed content without replacing these priorities or interactions.
+This delivery changes presentation, not engine commands, hidden state or protocol. The receiver and acknowledgement lifecycle sit above the existing run controller. Confirmed receipts and projected condition drive meaningful cues and read-only facts. Retain the leadership artwork and soot overlay; prepared console plates use calibrated glass, original room feeds, native controls and local light. Four-skin switching must decode the replacement plate/assets before committing and preserve the run, drafts and acknowledgement. No new framework, model calls or whole-stage animated blur. Future live 3D feed content can use the same priorities and authority boundaries.
 
-## Checklist and acceptance
+## Historical implementation checklist — preceding baseline
+
+These completed checks apply to the earlier living-console implementation and its recorded revision. They do not validate the new receiver gate, shared housing or local beacon target.
 
 - [x] Diagnose opening hierarchy and compare primary-source design accounts.
 - [x] Record surface ownership, signal meanings and first-action hierarchy.
@@ -1204,26 +1235,32 @@ No engine, command, hidden-state or protocol change. Receipts and publicly proje
 - [x] Verify first choice and whole shift, reduced motion/effects-off, keyboard, 320/390/768/desktop and all themes.
 - [x] Run asset validation and the complete test suite; verify the production build.
 
-Delivery gate: publish to PR #99 and verify its exact-SHA hosted preview. The PR records that result after deployment. [Local visual evidence and limits](review/living-console/README.md).
+Historical delivery record: PR #99 and [local visual evidence and limits](review/living-console/README.md). Hosted evidence belongs to the exact tested revision; it is not proof that the four-skin delivery now underway passes.
 
-Opening review questions: can the player find Choose adviser on the wall, then understand a candidate’s tradeoff before appointing them? During a shift, can they locate the source of an outcome? Can they distinguish signal life from factory progress? Is the decision still understandable with motion and sound off? Owner comprehension/enjoyment remains the final test; no automated test can establish it.
+Current verification questions: in every skin, is receiving leadership the unmistakable sole opening gameplay action? Does early close preserve the lock while system controls remain usable? Do Settings, skin switching and menu/resume preserve acknowledgement and drafts? After acknowledgement, can the player identify the selector and understand a candidate before appointment? Do shared glass and beacon form one credible console? Can outcomes be located without confusing signal life with factory progress? Meaning must survive motion and sound off. These checks remain to be evidenced for the delivered revision; owner comprehension/enjoyment is unverified.
 
 
 # Cinematic interfaces — a different surface, the same factory
 
-8 October 2026. Owner correction: weekly leadership calls need not wear the console. The artwork can fill the screen, with captions/results occupying its darker lower area. Console chrome is a job-specific surface, not a universal wrapper.
+8 October 2026. The accepted full-screen leadership treatment remains: artwork fills the screen, with captions/results in its darker lower area. [Producer console direction](PRODUCER_CONSOLE_DIRECTION.md) governs the approved implementation of all four console skins and their common call lifecycle. Delivery and verification are underway; no winner selection is required. Console chrome remains a job-specific surface, not a universal wrapper.
+
+## Entry and acknowledgement target
+
+Start first reveals the producer console with a native ringing leadership receiver. Answering that receiver is the sole available gameplay action and opens this existing full-screen scene. Settings, mute and exit remain usable. The internal supervisor selector and other gameplay controls stay locked until the player explicitly acknowledges the mandate and returns to the console. Closing, escaping or leaving before acknowledgement does not unblock them; the call remains recoverable. After acknowledgement the selector opens the dedicated roster, then explicit appointment, briefing and placements. The quota instrument can subsequently reopen the call without changing simulation state.
+
+The gate is part of the approved delivery now underway, not an additional selection decision. The preceding baseline entered this scene directly and allowed Return to factory without acknowledgement. Replace that route with **Start → producer console → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser**. Preserve acknowledgement through Settings, skin changes and menu/resume, alongside unconfirmed gameplay choices. Verify early-close and alternate-entry behavior against the final build. No new kernel command, quota settlement or invented previous-week result is implied.
 
 ## Reference and interpretation
 
 [11 bit studios' visual-design account](https://news.xbox.com/en-us/2021/07/21/how-the-visual-identity-of-frostpunk-changed/) describes coal-like dark splashes on story-event and law screens, weathered screen edges and coordinated colour, particles and environmental materials. This is a primary-source description of their visual language. It supports irregular material framing rather than a clean modal rectangle. It does not specify animation durations; the timing below is our own tuning, not measured Frostpunk timing. No reference footage was successfully sampled frame by frame in this pass.
 
-## Choreography implemented for review
+## Retained choreography implemented in the preceding baseline
 
 1. A weekly call occupies the full viewport; routine instruments, transport, camera housings and rotary beacon recede entirely. The world is paused. Scene identity and return control remain clear.
 2. The scene fades in over 650 ms. A single 1.025-to-1 art settle ends after 1.1 seconds. No endless zoom or full-screen shader. Native caption controls remain usable during the entrance.
 3. A generated transparent soot vignette adds asymmetric worn edges. A separate dark lower wash supports readable live type. The centre and robot faces remain uncovered. No baked text or Frostpunk assets.
 4. Short labelled topics separate leadership's interpretation from confirmed figures and the weekly mandate. First week uses an opening handover, never a fabricated prior-week performance report. Later weeks require real completed-week records before they can be implemented.
-5. Topic changes use a 320 ms local fade; no repeated full-art entrance. Return fades out over 240 ms, then restores the console without issuing a simulation command. Reduced motion and effects-off skip travel and exit delay.
+5. Topic changes use a 320 ms local fade; no repeated full-art entrance. Return fades out over 240 ms, then restores the console without issuing a simulation command. Reduced motion and effects-off skip travel and exit delay. These transitions remain; the target must distinguish a return after explicit mandate acknowledgement from an early close that leaves gameplay locked.
 
 Desktop places speech and facts across the lower part of one large image. Phone holds the director's face in the upper area and gives the lower caption region its own bounded scroll. At small heights, readable content takes precedence over showing the entire painting. Persistent factory facts return with the console. Other future story/event screens can use this surface when the job calls for illustration and reflection; routine room inspection still belongs to the console.
 
@@ -1245,3 +1282,106 @@ Built-in image-generation mode. Source: `apps/lab/assets/sources/loopforge-focus
 ## Final generation prompt
 
 Use case: stylized-concept. Create a new Loopforge game scene for a weekly video call with factory leadership. Use the two reference images in the conversation ONLY as material, palette, illustration and world style references. Rich hand etched painterly industrial dystopia, robot-only world, old brass, verdigris, olive black soot, warm practical amber lamps, tiny cold cyan optics. A formidable senior robot director sits behind a worn boardroom desk, two subordinate executive robots set further back on either side. The central director has a sophisticated exposed brass-caged cortex and a rigid mechanical face, expressive intimidating intelligent industrial design, not a human in armor. All robot anatomy reads distinctly mechanical. Weathered metal, intricate cabling and engraved circuit machinery, bureaucratic factory atmosphere. Cinematic medium-wide eye-level FRONT FACING communication camera looking directly toward leadership, not an isometric room map. Make the central director and hands large, readable, upper two thirds of scene; keep lower fifth dark desk texture for game captions. 1536 by 1024 landscape. Original leadership character concept, consistent with Loopforge reference artwork. No words, labels, numbers, logos, UI frames, speech bubbles or watermarks. Not cartoon, not glossy generic 3D, not anime. Serious richly textured factory game artwork.
+
+
+# Producer console — four selectable integrated skins
+
+8 October 2026, latest owner approval: implement all four integrated console drafts as selectable skins. No winner or further selection approval is required before delivery. The six old material themes leave the player selector; their matching focused-screen assets and historical studies remain internal. This record supersedes six repeated monitor housings, the automatic opening call and broad console beam, while preserving the separate roster, brief, placements, incidents, dispatch and cinematic leadership interfaces.
+
+**Status:** implementation and verification in progress. All four skins are authorized; this record does not claim complete browser, performance or first-shift validation. The concept paintings remain provenance and comparison references at `/stepanoskin/loopforge/design#producer-console`. Runtime uses prepared console plates, calibrated geometry, original room feeds and live semantic controls. Sample concept camera imagery and generated labels are not new factory canon. No kernel or API command is added by this presentation delivery.
+
+## What the machine must do
+
+The producer sits at a single credible piece of factory equipment. Its CCTV glass owns the largest coherent area. A leadership receiver, internal supervisor selector and guarded production control have distinct physical identities. Comedy comes from the disproportionate authority of an official telephone and the machinery of compliance; avoid decorative clutter, joke captions and arbitrary gauges.
+
+All six rooms remain represented. Lattice Forge and Security are initially live. Burn-in Theatre, Cognitive Substrate Brewery, Weaving Gallery and Cortex Assembly show black unpowered glass with faint environmental reflection and handwritten tape names only. No locked-room interiors, explanatory padlocks or production readouts. Foundry desk, Broadcast control and Obedience organ use their own calibrated shared-glass six-pane profiles; Dispatch office retains its one-primary-plus-five composition. Each is an integrated machine, never six repeated monitor cabinets.
+
+Compact read-only instruments report money, workers, known line condition and weekly quota from the player projection. They do not compete with the main action or pretend to measure hidden worker psychology. Prepared plates reserve space for live text; generated numbers and labels are not balance values.
+
+## Opening action and the first real choice
+
+| Beat | Player sees and does | Control state / feedback |
+| --- | --- | --- |
+| Arrive | The paused producer console. Two cameras live, four off, nobody assigned. A leadership call is incoming. | Receiver movement, a local amber indicator and one brief beacon impulse identify **Answer leadership**. All other gameplay controls are visibly held. No persistent instruction paragraph. |
+| Answer | Activate the receiver with pointer, touch or keyboard. | Receiver depresses/lifts, the ring stops, a connection cue plays. Fade into the existing full-screen leadership scene. No simulation advance. |
+| Hear mandate | Opening handover and weekly quota in short labelled topics over the leadership artwork. | No fabricated previous-week results. Routine console chrome and light are absent. Caption controls remain usable during transitions. |
+| Acknowledge | Activate **Acknowledge quota** after reaching the mandate topic. | Return to console; **Choose adviser** becomes available on the internal selector. A bounded release cue can reinforce the change. This is acknowledgement, not negotiation or spending. |
+| Choose adviser | Activate the internal selector to open the dedicated roster. | All available supervisors have current short pitches; inspect before appointing. LIMEN and Stiletto are the two initial candidates. Five channels accommodate the later cast. |
+| Commit and plan | Appoint → structured comic briefing → proposed placements → accept or override → authorize → start. | Adviser appointment remains the first strategic fork. The console provides access, not a duplicated roster or briefing. |
+
+The required sequence is **Start → producer console with incoming call as sole gameplay action → Answer leadership → cinematic call → Acknowledge quota → producer console → Choose adviser → roster/appointment → brief → placements**. Closing before acknowledgement returns to the still-waiting console and cannot unlock adviser selection or production. Help about receiving the call, mute, settings and menu/exit remain usable. Reopening an acknowledged mandate does not lock an active run again. Settings, skin switching and menu/resume preserve acknowledgement and all unconfirmed placement/dispatch choices; they never remount or restart the run.
+
+For the single-day prototype, separate presentation state records `incoming / connected / acknowledged`; a pending acknowledgement disables gameplay entry points, not just the visible button. A later multi-week engine needs an explicit run/week mandate identity and validated acknowledgement before dependent commands. That server contract is future implementation work, not an unimplemented guarantee attributed to today's HTTP API.
+
+## Four authorized console profiles
+
+| Skin | Fundamental approach | Profile and retained strengths | Main implementation concern |
+| --- | --- | --- | --- |
+| 01 — Foundry desk | Dense black enamel and brass. Shared 3×2 glass above a shallow continuous deck. Telephone, detented selector and guarded lever. | Closest material continuity with the landing; tactile controls and a compact factual instrument strip. | Recessive receiver and too much evenly distributed micro-detail. Enlarge the call target and quiet nonfunctional texture. |
+| 02 — Broadcast control | Severe rectilinear black steel and ivory enamel, restrained cold photographic camera treatment, five protected channel keys. | Fast separation of surveillance and communication; large simple actions that survive small display sizes. | Generic warehouse feeds and a warning strip instead of a readable rotary source. Needs original room scenes, a native beacon mount and a compact production/instrument area. |
+| 03 — Dispatch office | Asymmetric one-plus-five camera hierarchy; oversized oxblood telephone; drypoint/woodcut and gouache rather than photoreal brass. | Strongest immediate call hierarchy and a cinematic focal camera. Bureaucracy becomes a visible machine. | Camera strip is too small for simultaneous status; five levers could suggest five assignments. Replace with a selector and test how lost overview affects play. |
+| 04 — Obedience organ | Curved porcelain pressure shell, one black-glass surface, rotary contacts and a vertical handset. Practical-prop photography. | Unsettling cognitive machinery; strong shape identity and an integrated light/phone column. | Pale shell can dominate dark feeds. Keep current factory/character art coherent and protect space for confirmed instruments. |
+
+These began as distinct composition and medium studies: three independent agents received separate briefs and the lead authored Foundry desk. The owner now authorizes all four as runtime skins. Settings offers only Foundry desk, Broadcast control, Dispatch office and Obedience organ. Foundry desk is the default, not an owner-selected winner. The old six material choices and mixer are removed from the player selector.
+
+Focused interfaces retain matching internal asset families: Foundry desk → Factory Original (`baseline`), Broadcast control → Broadcast Desk, Dispatch office → Foundry Switchboard, Obedience organ → Neural Diagnostics. The other legacy families remain available only to historical assets and preference/link migration. These mappings do not reintroduce a six-theme player choice. Every skin preserves one coherent perspective, source geometry and semantic interaction contract.
+
+## Native light and motion
+
+The beacon is designed into a shoulder or recessed portion of the console. Its view angle follows that surface. The rotating aperture, emission and receiving surface share one measured source. The housing remains fixed. A small white-hot core and saturated local reflection can feel bright without tinting all the cameras. Beam falloff, raised fittings and cast shadows agree spatially. The existing page-wide sweep is a historical implementation, not the new target.
+
+Amber requests attention; cyan supplies a sparse idle movement; green follows confirmed output; red follows an actual accident. Most time is dark. Incoming calls may repeat a quiet local receiver pulse while unanswered, with a slower bounded beacon impulse; they do not demand a permanent spinning light. Text and an accessible control still identify the action after the effect ends. Red paint on a handset is a material, not a red accident signal.
+
+Use separated overlays and transform/opacity animation for receiver movement, lens rotation and state transitions. A small bounded canvas can provide local light and obstacle masks; avoid whole-screen blur and per-frame React work. Effects pause when hidden or covered, respect reduced motion and effects-off, and never consume simulation randomness. Tune cadence and intensity against each runtime plate; a concept painting does not prove source alignment or animation quality.
+
+## Runtime asset and layering contract
+
+The current implementation animates registered hardware fragments cropped via CSS from each clean console plate. Receiver, selector and production motion reuse that plate's geometry; they are not separately generated alpha handsets or a finished transparent-parts atlas. The state families below describe the interaction contract. Cropping, occlusion, duplicate-edge avoidance and registration during motion require inspection in the delivered runtime.
+
+| Layer / asset family | Required states and contract |
+| --- | --- |
+| Chassis | Clean unlit master, foreground occlusion and contact shadows; desktop and phone composition. No baked counters, portraits or room content. |
+| CCTV | Separate screen masks, reflection overlays, tape surfaces and original room scenes. Four off panes stay black. Shared outer housing avoids repeated bulky chrome. |
+| Leadership receiver | Seated idle, incoming, hover/focus, pressed/picked-up, connected and returned; fixed pivot and compatible silhouette. Separate cradle, cord and cast shadow where motion needs them. |
+| Supervisor selector | Held, available, hover/focus, selected and pressed. Five readable channels open the roster; this control does not silently appoint anyone. |
+| Production mechanism | Held, armed, hover/focus, pressed, running and paused. Start remains unavailable until the existing plan is authorized. |
+| Beacon | Fixed mount/glass, directional emitter, local emission and reflection masks, nearby raised occluders. A complete rotation must read through every angle. |
+| Instruments | Blank mounts, tape and paper receipt surfaces. Live accessible money/workers/condition/quota; typography and exact wording authored separately. |
+| Audio | Incoming ring, answer/contact, connection, selector unlock, select/press and production clutch. Existing approved library/fallbacks can cover temporary cues. |
+
+Asset records carry semantic IDs, source/prompt provenance, revision hash, dimensions, crop/anchor coordinates, active area, state family, emission region and occlusion geometry. Use the immutable manifest pipeline. All siblings in a moving state family share geometry; no independently regenerated framing jump on hover. `loopforge-producer-studies` supplies compact selection/review previews; `loopforge-producer-runtime` supplies the prepared plates keyed by the four skin IDs. Original room scenes, live facts and semantic controls are separate from the plate. Selecting a skin must decode the full plate used by the console and its paired focused-screen assets before committing the recipe. Failed or superseded loads retain the complete previous presentation and run.
+
+The recipe keeps version 1 with an additive console ID. New `?console=` links select one of the four profiles. Valid legacy theme preferences and links migrate to a corresponding console while retaining permitted internal shell/control mappings; arbitrary IDs or asset URLs fall back to Foundry desk. Preference storage is presentation-only and does not promise a persistent game save.
+
+The approved responsive policy combines dedicated mobile art with adaptive layout. All four portrait plates are generated, catalogued as `<skin-id>-mobile` in `loopforge-producer-runtime`, and implemented; local visual and interaction QA is recorded in `review/producer-console/README.md`; hosted verification and owner review remain separate. The design gallery pairs each wide source concept with its optimized portrait runtime plate for inspection.
+
+| Available space | Composition |
+| --- | --- |
+| Wide | Full integrated console with all six cameras; preserve each skin's authored profile, including Dispatch office's one-plus-five hierarchy. |
+| Tall portrait | Native portrait artwork with 2×3 camera glass and a dedicated control bay. Do not simply scale or crop the desktop plate. |
+| Small or short | One readable selected camera plus a six-channel selector and compact current-action controls. |
+| Compact landscape | Large selected camera on the left, controls on the right, with access to all six channels. |
+
+Resizing or rotating the device preserves selected camera, run, acknowledgement, pending decision and unconfirmed choices. It must not remount the run, reset the selected channel, acknowledge a call or resume production. Native labels, off-room state and at least 44 px targets survive every mode. Camera inspection, roster and brief retain focused interfaces. Keep the receiver reachable and avoid horizontal document overflow or art covering action text. Validate both resize directions during a pending call and consequential decision.
+
+## Delivery and verification gate
+
+Owner authorization covers all four skins; there is no pending winner-selection gate. The completed items below record the preceding concept pass. Local delivery and verification evidence is recorded below and in the review note. Owner acceptance remains separate.
+
+- [x] Independent briefs differ in silhouette, control arrangement, medium and materials.
+- [x] Four concept paintings generated and inspected; exact prompts and source images retained.
+- [x] Concept corrections bring the foundry, dispatch and porcelain drafts toward the day-one two-live/four-off state.
+- [x] Presentation provides full-size inspection, paired comparison, strengths, gaps and the opening flow.
+- [x] Deliver all four calibrated runtime plates and responsive control-state families; replace the six-choice selector with four skins.
+- [x] Implement console-first entry and the acknowledgement gate; verify all alternative entry points.
+- [ ] Test real desktop/phone screens, keyboard/focus, reduced motion, sound-off and theme switching without losing the run.
+- [ ] Validate complete first shift and measured rendering/loading performance after integration.
+- [ ] Owner confirms the interface feels like Loopforge and makes the next action clear.
+
+Concept readiness and scope approval do not establish runtime acceptance. Owner feedback on the actual game remains decisive; it is not an extra permission gate before implementing the approved four-skin scope.
+
+### Delivered boundary and evidence
+
+All four skins have wide and portrait runtime plates. Current handset/selector/production hover and press states animate registered plate fragments; they do not yet have independent alpha cords, separate cast-shadow atlases or a long pickup animation. The incoming receiver has a short mechanical tremor and amber attention, and answering uses the existing connection cue. A distinct sampled telephone ring remains an audio follow-up. These refinements do not block the implemented opening call and selectable compositions.
+
+Local review covered all four desktop and portrait compositions, one-camera and short-landscape modes, acknowledgement and early-close behavior, changing equipment while an assignment override was still a draft, keyboard Settings dismissal, effects-off, and a complete first shift. Reduced-motion handling was inspected in CSS/canvas code; this pass is not a hardware performance benchmark. See `review/producer-console/README.md` for outcomes, encoded asset sizes and limitations.

@@ -58,6 +58,8 @@
 
 ## Argument and evidence boundaries
 
+Chapter 2 maps who builds, buys and sells what to whom across production, publishing/promotion, distribution, access and computing. Its two diagrams move from selected arrangements to compatible combinations; it does not substitute studio financing for this industry map. Chapter 3 follows Valve’s update problem, distribution business, library and discovery relationships, and compatible hardware. Its claim is the commercial reuse of work around games, supported by specific decisions and primary evidence, not game-plot summaries.
+
 The companies share late-1990s game milestones, not identical founding dates or exclusive business models. Valve still makes games; Epic operates games as well as tools and distribution; Rockstar combines authored releases and continuing online production. Their next customers and commitments differ.
 
 Diablo is the continuous historical thread: inherited role-playing ideas become immediate action; the purchased adventure supports repeated play; D2 expands the journey and later formalizes seasonal ladder competition; D3 exposes a conflict between obtaining equipment and enjoying the hunt; D4 combines a campaign with a continuing production calendar. Gauntlet then shows that selling continued life is older than these worlds. Replayability never serves as a synonym for recurring revenue.

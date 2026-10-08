@@ -28,95 +28,81 @@ Evidence boundary: Pong’s prototype installation and overflowing coin containe
 
 ## 2. From studio to screen
 
-How we pay for games helps shape which games get made—and what they ask of us in return.
+A game has one title. The businesses behind it have different things to sell.
 
-A studio deciding what to make next faces more than a creative choice. Another complete game, an expansion and a world kept running for years require different commitments of people and money. There is also a practical limit on who can join in: the equipment needed to play. Building a more demanding game can mean asking part of its audience to buy a better machine before buying the adventure.
+The name on a game’s cover rarely tells you everyone doing business behind it. A development studio makes the game; a publisher brings it to market, organizing release and publicity and often financing production. A store connects it with buyers. Equipment suppliers provide the machines needed to play. These are roles, which one company can combine. The opening diagram separates them: click through its examples to compare what each participant supplies, buys and earns from.
 
-Evidence: steam-hardware-survey.
+Evidence: epic-publishing, steam-settlement.
 
-At the arcade, the operator carried that equipment bill and charged players for turns. At home, the player could buy a computer or console once, then build a library of games around it. Each new game could be sold to an audience that already owned the machine. A purchase could provide years of play, but another evening with it was not another sale for its maker. The studio still needed new buyers, paid additions or another agreement involving the work.
+Some arrangements are familiar outside gaming. A cinema sells admission and provides the screen; Netflix pays for productions and licences, then sells access to a catalog. An arcade operator buys equipment and sells turns on it. At home, the player buys the computer or console instead. Game sellers can then reach that audience without supplying a machine with every game.
 
-Evidence: alcorn-oral, steam-settlement, cdpr-catalog-economics.
+Evidence: chain-cinema, chain-netflix, arcade-route.
 
-Xbox Game Pass and PlayStation Plus sell temporary access to a selection of games. For these services, a title can help attract or retain a subscriber even if that person would never buy it individually. An agreement to include the game gives its publisher another way to earn from an existing release. A finished adventure can help sell an ongoing service without having to become one itself.
+A player can pay for temporary access to the games, the computing, or both. Xbox Game Pass sells temporary access to a game catalog, which subscribers can use on equipment they own. NVIDIA’s GeForce NOW offers the reverse arrangement: buy a supported game from Steam, Valve’s PC store, and pay NVIDIA to run it on a remote computer. Game access and computing are separate services, even when they arrive on the same screen.
 
-Evidence: circuit-game-pass, cyberpunk-ps-offer, cdpr-catalog-economics.
+Evidence: circuit-game-pass, steam-cloud, gfn-membership-terms.
 
-Cloud gaming changes who must own the powerful machine. NVIDIA’s GeForce NOW runs supported games on remote computers and streams them to a player’s device. A game bought through Steam, Valve’s PC store, can reach someone whose own computer could not run it. A paid NVIDIA membership buys use of the remote hardware while the game remains a separate purchase. This changes the requirements rather than removing them: the player still needs a suitable device and a fast, responsive connection.
+The first diagram follows selected arrangements so those roles stay legible. The map below lets them overlap: Sony and Microsoft can make games, sell them, offer catalogs and supply local or cloud hardware. Other routes cross company boundaries. Choose a game, then change its store, access and computing options. The available combinations depend on agreements and compatibility; a purchase or subscription on one platform does not unlock every route.
 
-Evidence: steam-cloud, gfn-membership-terms, gfn-requirements.
+Evidence: sony-accounting, chain-microsoft, gfn-game-pass, cyberpunk-xbox-offer.
 
-### What the deal is worth
+### One game, different agreements
 
-CD PROJEKT RED’s Cyberpunk 2077 shows why a publisher might want several of these arrangements at once. The game entered PlayStation Plus in July 2025 and Xbox Game Pass in March 2026 while remaining on sale individually. Giving subscribers access meant accepting that some would no longer buy a copy.
+Cyberpunk 2077 makes the distinction concrete. It remained on sale when it entered PlayStation Plus in July 2025. Its maker and publisher, CD PROJEKT RED, expected Sony’s agreement to outweigh lost purchases and bring new buyers to the separately sold Phantom Liberty expansion. CD PROJEKT recorded the agreement’s revenue in one quarter. Sony’s customers paid subscriptions; the game’s publisher earned under a different contract. A recurring payment at one end of the chain need not recur at every step.
 
-Evidence: cyberpunk-plus-entry, cyberpunk-pass-entry, cdpr-catalog-economics.
+Evidence: cyberpunk-plus-entry, cdpr-catalog-economics.
 
-In a November 2025 earnings call, CD PROJEKT co-CEO Michał Nowakowski acknowledged that cost. The company believed its Sony agreement would earn more than keeping the game outside the catalog. It also included only the base game. New players could still buy Phantom Liberty, its separately sold expansion. The decision weighed lost purchases against licensing income and the chance to sell those players something more.
-
-Evidence: cdpr-catalog-economics.
-
-Finance chief Piotr Nielubowicz called this “conscious life cycle management.” A similar PlayStation Plus agreement involving The Witcher games had brought in revenue a year earlier. Cyberpunk’s Sony agreement was recorded as revenue entirely in one quarter, even though players paid subscriptions. The service needed people to stay subscribed; the publisher had made an agreement concerning one work. Their income did not follow the same schedule.
-
-Evidence: cdpr-catalog-economics.
-
-An earlier release can therefore help pay for a later one through more than its original sales. It can also become part of somebody else’s continuing business. The companies bringing games to an audience can earn across many studios’ releases while each studio prepares its next production. Steam gives Valve that position on computers its customers already own. The next game that brings customers through its store need not be one Valve made. Valve’s handheld Steam Deck extends that relationship into equipment. A company introduced here as a store also makes a machine on which its customers can play.
-
-Evidence: cdpr-catalog-economics, steam-settlement, valve-about.
-
-Evidence boundary: Selected purchase and subscription routes, not a ranking of how most customers pay. GeForce NOW’s bring-your-own-games model is distinct from catalog membership; the optional PC Game Pass route is separately sourced. The comparison does not claim that every cloud service follows NVIDIA’s model or that every hardware upgrade is compulsory. Affordability, retention and publisher incentives are analytical questions, not estimated causal effects. Steam documents unchanged publisher payment terms for Cloud Play. Company roles and internal funding arrows remain schematic; no private budget, catalog royalty or transfer price is inferred. The Cyberpunk worked example separates Sony catalog economics, Xbox console catalog eligibility and NVIDIA PC computing. CD PROJEKT’s evaluation of its Sony agreement is attributed to management; its Q3 revenue recognition is not a cash-payment schedule. The amounts and reasons for excluding PC catalog access are not disclosed. No Sony compensation terms are assigned to Microsoft. The opening and closing connect these arrangements to a studio’s production choices as editorial analysis. Catalog inclusion may help attract or retain subscribers; this chapter does not estimate that effect or claim that a business model determines one kind of game design. Broader PC/catalog compatibility remains in the interactive map rather than being repeated in the narrative. Hardware ownership, capability and cost are treated as conditions of audience access, not merely another payment category. The arcade/home comparison describes selected arrangements, not a universal chronology or a claim that one machine lasts forever. Valve’s survey states that hardware information informs product and technology decisions; no survey percentage or causal estimate is used. Cloud play shifts computing to the provider but retains device and network requirements.
-
-## 3. Valve: the studio becomes the store
-
-A maker of boxed PC games became part of the machinery through which other games reach their buyers.
-
-Valve released its first game, Half-Life, in 1998. Nearly three decades later, it still makes games, but it also operates a store through which thousands of other creators reach their audience. That expansion gives us another way to understand the economics of creative work: a company can build its future around selling the next work, or around helping many others sell theirs. Valve’s history brings us from the boxed PC game to the library, community and marketplace that grew around it.
+This leaves us with a different way to read a company’s place in gaming: through the jobs it does for players and for other businesses. Valve began making games, then built Steam to distribute them, and later supplied hardware too. Its history shows how a studio can come to occupy several positions on this map.
 
 Evidence: valve-history, valve-about.
 
-Half-Life put the player inside a research facility after an experiment goes wrong. It was a PC game with a story to follow and multiplayer matches to return to. Valve came from the world of retail software: when Half-Life 2 arrived in 2004, it was sold both in shops and through the company’s new online service, Steam.
+Evidence boundary: The diagrams distinguish production, publishing and promotion, distribution, game access and computing. Roles can be combined within a company; selected routes are comparisons, not a universal chronology, exhaustive market inventory or claims about the most common purchase. Publisher funding and rights vary by agreement. Internal arrows do not disclose budgets or transfer prices. Catalogs and cloud services have title, device, region and plan restrictions; the market map records selected sourced combinations. The cinema and Netflix comparison concerns who supplies the work, venue/equipment and access, not identical contracts. CD PROJEKT’s assessment of its Sony agreement is management’s judgment, not an independent estimate. Revenue recognition is distinct from cash collection. Its Sony terms are not assigned to Microsoft or NVIDIA. Broader financing and design consequences are developed in later chapters.
 
-Evidence: valve-half-life, valve-history.
+## 3. Valve: the studio becomes the store
 
-The audience could outlive the release by decades. Counter-Strike grew out of the community modifying Half-Life and became a game built around repeated team matches. Its continuing series gives returning players familiar objectives and opponents who make each round different. Half-Life itself received new multiplayer maps in its 25th-anniversary update. A purchased game could become a lasting gathering place; that did not make every visit another sale.
+Steam began by delivering updates. Selling games changed whose success Valve could earn from.
 
-Evidence: valve-history, valve-cs2, valve-half-life25.
+In 2002, Valve had a practical problem: its multiplayer games required players to use the same software version, but getting updates to everyone was unreliable. This was the studio behind Half-Life, released in 1998, and Counter-Strike, which had grown from a community-made modification of it. People wanted to keep playing. Valve needed a dependable way to keep their games working together. Its answer was Steam, launched in 2003 with automatic updates.
 
-Serving that audience created work beyond designing the next game. Valve’s history describes Steam as tools and services originally built for its own titles, including Half-Life and Counter-Strike. Steam launched in 2003; third-party commercial releases followed in 2005. The important expansion was in who could use the service. Infrastructure around Valve’s games became a route to market for other developers.
+Evidence: valve-deck-booklet, valve-history.
+
+The same connection could deliver a new game as well as a repair. Half-Life 2 went on sale through Steam and in shops in 2004; the first third-party games arrived on Steam in 2005. Valve had built another route to the customer, then offered it to other studios. In 2008, it opened the platform’s business and technical tools to developers through Steamworks. Selling through the service also meant being able to maintain a game through it.
 
 Evidence: valve-history.
 
-### The customer on each side of the store
+### The next sale can belong to another studio
 
-At the checkout, Valve now had two different relationships with players. A sale of its own game paid for work it had made. A sale of another publisher’s game paid for distribution through Steam, with the store collecting the money and settling with its partner under their agreement. The developer, publisher and store could remain separate businesses. Valve did not have to acquire a studio to become part of its commercial life.
+That changed Valve’s interest in somebody else’s next release. On a Steam sale, Valve collects the payment and pays the selling partner its agreed share after adjustments such as refunds and taxes. A player can finish one studio’s game and buy another studio’s game while remaining Valve’s customer. The store earns across those transitions. Its commercial relationship can continue even when the individual works it sells have endings.
 
 Evidence: steam-settlement.
 
-For the buyer, Steam also became the place where purchases accumulated: a library, updates, friends and the next game to consider. Developers encountered the other side of that gathering—people they hoped would discover their work. Recommendations and discovery tools help connect those interests. Valve says it does not sell paid advertising placement in the Steam store; appearing there should not automatically be treated as an advertising purchase.
+For players, those separate purchases accumulate into a library alongside friends, saved progress and familiar ways to install and update games. For a developer, the same service offers an audience already equipped to buy and play. Each side makes the other more valuable: more games give players reasons to use Steam; more prospective buyers give developers reasons to release there. A competing shop must persuade people to add another destination to habits and collections they have already built.
 
-Evidence: steam-discovery, valve-about.
+Evidence: valve-deck-software, valve-about.
 
-### The old business keeps changing
+Reaching the store is only part of reaching that audience. Steam’s recommendations, wishlists and release lists influence which games people encounter. Valve says it does not sell advertising placement there. Its visibility documentation instead describes exposure responding to player interest and sales. A developer gains distribution and still has to win attention; the platform’s decisions about what to show become part of that developer’s route to a customer.
 
-The games business continued alongside the store. Counter-Strike 2 is free to play and sells a Prime Status upgrade, so the franchise’s longevity is not a story of one unchanged box sale lasting forever.
+Evidence: steam-discovery, steam-visibility.
 
-Evidence: valve-cs2, valve-about.
+Valve also gained a way to observe what happened after release. Its 2012 handbook calls Steam “a conduit for constant communication between us and them,” referring to its customers, and describes testing assumptions about pricing, marketing and player behavior. Updates and offers could be changed and their results examined through the same service. The distributor was now involved in an ongoing process of learning how to sell and support the work.
 
-### Selling the machine, too
+Evidence: valve-history.
 
-Valve also began making some of the equipment. Steam Controller and Steam Link explored ways to play PC games away from a conventional desk setup. Steam Deck takes another step: it is a handheld PC with the controls, screen and computer in one device. Players sign into their existing Steam account and find the library they have already built. Compatible games can travel with them without another purchase of the same title.
+### A machine for the library
 
-Evidence: valve-about, valve-deck-software, valve-deck-verified.
+The move into hardware extended that relationship. Steam Deck, released in 2022, is a handheld PC that opens a player’s existing Steam library. The difficult part was making that library usable on a new kind of machine. Valve credits its earlier Steam Controller work with helping PC games accept handheld controls, and its Steam Machines project with lessons that led to Proton: software that lets many Windows games run on Linux, the foundation of SteamOS.
 
-That gives past purchases a new significance. A library accumulated over years can help make a new device worth buying; the device gives those games another place to be played and the store another place to sell. Valve now shapes the machine, its SteamOS operating system and the shop inside it. The hardware also brings work around games Valve did not create: its Deck Verified program checks controls, display and software compatibility. Steam remains the built-in store, but the device can run non-Steam games too.
+Evidence: valve-deck-booklet.
+
+A buyer therefore does not start with an empty shelf. Compatible games already purchased can help justify buying the device; the device supplies another place to use the library and shop for additions. That is our economic reading of the combination. Compatibility still requires work—Valve’s Deck Verified program checks it—and the machine can run non-Steam games. Valve combines hardware and distribution without making its store the only permitted source of software.
 
 Evidence: valve-deck-software, valve-deck-verified, valve-deck-faq.
 
-Valve’s expansion connects three products that can support one another: games people want, a store where their libraries grow, and equipment on which to enjoy them. NVIDIA can supply the computer without taking over the Steam sale; Valve can also supply its own computer. A developer has gained several ways to participate in the lives of other developers’ games. Epic took another route out of the same era: the technology behind a game became something other studios could build with.
+It can also remain the store when somebody else supplies the machine. With supported Steam purchases played through GeForce NOW, NVIDIA runs the remote computer while Steam’s publisher payouts remain unchanged. Valve can participate in the sale without owning the hardware or making the game. That is the turn its history brings into view: work first undertaken around its own releases became a service for other creators. Epic would build a substantial business further upstream, supplying the engine with which those creators make their games.
 
-Evidence: steam-cloud, valve-deck-software, epic-unreal-tools.
+Evidence: steam-cloud, epic-unreal-tools.
 
-Evidence boundary: Valve’s handbook records the retail/Steam overlap for Half-Life 2, services built for its own games, Steam’s 2003 release and third-party expansion in 2005. Counter-Strike’s continuing franchise and Half-Life’s anniversary support establish longevity, not a claim that Valve outlasted every competing shooter or that its business model stayed unchanged. The economic reading is ours. No profit estimate, acquisition-funding claim or private distribution commission is inferred. Steam Deck is a worked hardware example, not a complete hardware history. The library/device relationship is an economic interpretation; no sales uplift, subsidy, margin or exclusive-store requirement is claimed. Existing library membership does not establish universal Deck compatibility. The developer panel distinguishes released games, community collaborations and an unreleased playtest.
+Evidence boundary: Valve’s 2022 Steam Deck booklet supplies its account of the update-distribution problem, Steam’s launch and the hardware projects leading to Steam Deck. The 2012 handbook dates Half-Life, Steam, third-party releases and Steamworks, and provides the short communication quotation in the context of measurement and testing. These are Valve’s accounts, not independent causal evaluations. The library’s value to players, the mutual appeal of creators and audiences, and the commercial logic of compatible hardware are our analysis; no switching-cost estimate, sales uplift, market share, profit or private commission is claimed. Steam’s payment documentation establishes revenue sharing, not a commission on every item in a library. The visibility account describes Valve’s stated system and does not establish equal exposure or a guarantee of success. Deck compatibility is title-dependent; non-Steam software is allowed. Cloud Play requires supported games and publisher participation. The developer catalog distinguishes releases, collaborations and an unreleased playtest. No game-plot summary or claim that Valve stopped making games is used to explain the business transition.
 
 ## 4. Epic: the studio becomes the engine
 

@@ -97,6 +97,16 @@
       ],
       "quality": 84,
       "maxBytes": 180000
+    },
+    "half-life-promo": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/half-life-promo.jpg",
+      "widths": [
+        320,
+        616
+      ],
+      "quality": 88,
+      "maxBytes": 90000
     }
   }
 }

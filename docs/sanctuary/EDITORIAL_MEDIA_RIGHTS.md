@@ -218,7 +218,10 @@ source excerpts are in `rights-sources.ts`.
   We use the publicly displayed 800×600 image, not a premium original download.
   The contributor is named beside the image. The full frame is preserved;
   optional overlays separately point to Find Servers and the Steam mark.
-- Half-Life’s existing official gallery image remains the gameplay reference.
+- Updated 8 October: Half-Life’s official Steam promotional capsule replaces the
+  gameplay image. It identifies the release and its brand in the studio-to-store
+  history. The full composition and mark are preserved, with 320/616px WebP
+  derivatives and no upscaling. The retired gameplay record remains for provenance.
   Each image has a specific analytical role rather than repeated wallpaper use.
   No soundtrack, game distribution, fan recreation or extracted asset collection
   is included. Source availability/credit is not treated as permission.

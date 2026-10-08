@@ -154,7 +154,7 @@ describe("Sanctuary reader", () => {
     render(<Reader {...props} current={current} index={index}/>);
     await screen.findByRole("region",{name:"What has to keep selling?"});
     const map = await screen.findByRole("region",{name:"One game. Many routes to the player."});
-    const heading = screen.getByRole("heading",{name:"What the deal is worth"});
+    const heading = screen.getByRole("heading",{name:"One game, different agreements"});
     expect(map.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     const picture = screen.getByRole("img",{name:figure.alt});
     expect(picture).toHaveAttribute("loading","lazy");

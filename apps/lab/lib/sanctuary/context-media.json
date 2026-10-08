@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-07",
+  "reviewed": "2026-10-08",
   "assets": {
     "netflix-wordmark": {
       "title": "Netflix — official red wordmark",
@@ -46,11 +46,9 @@
       "reviewed": "2026-10-06",
       "publication": "editorial",
       "basis": "Bounded visual citation in independent analysis of the named work and business. Editorial rationale, not bespoke permission or endorsement.",
-      "purpose": "Introduce Valve’s work as a developer before examining Steam’s role in distributing other studios’ work.",
+      "purpose": "Retained source record for a retired visual. The Valve business chapter now uses official promotional identification instead of gameplay.",
       "treatment": "Full composition retained, with proportional responsive WebP compression and metadata removal. No crop, recoloring, or removal of visible legal marks. Lazy loaded through content-hashed files and a versioned manifest.",
-      "chapters": [
-        "valve-platform"
-      ]
+      "chapters": []
     },
     "rockstar-los-santos": {
       "title": "GTA Online — The Doomsday Heist promotional frame",
@@ -154,6 +152,23 @@
       "treatment": "One complete historical promotional image, without cropping, recoloring, compositing or changes to marks, rating or offer notice. Proportional WebP variants at 480, 960 and 1440 pixels; source master excluded from runtime delivery. Lazy loaded via content-hashed files and the existing versioned manifest. Dated caption; historical promotional pricing is not presented as current.",
       "chapters": [
         "studio-to-screen"
+      ]
+    },
+    "half-life-promo": {
+      "title": "Half-Life — official store promotional artwork",
+      "owner": "Valve Corporation",
+      "source": "Half-Life official Steam listing, store capsule",
+      "sourceUrl": "https://store.steampowered.com/app/70/HalfLife/",
+      "assetUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/70/capsule_616x353.jpg?t=1745368462",
+      "sourceDate": "Retrieved 8 October 2026; original artwork publication date not supplied",
+      "sourceSha256": "141c0554485652f87dddc62ee66748cd500d9fecb407161c5bc9367e7b558ec8",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Bounded visual citation identifying the release discussed in independent business history. Editorial rationale, not bespoke permission, a general reuse licence or endorsement. Valve’s video policy does not license this still image.",
+      "purpose": "Identify Valve’s debut product and its recognizable brand before the chapter follows the transition from selling its own games to distributing other studios’ work. No gameplay claim is made from the artwork.",
+      "treatment": "Full 616×353 store capsule retained, including logo, title and character. Proportional WebP derivatives at 320 and 616 pixels; no upscaling, crop, recoloring, animation on the mark or removed legal notices. Lazy loaded through immutable content-hashed files and a versioned manifest.",
+      "chapters": [
+        "valve-platform"
       ]
     }
   }

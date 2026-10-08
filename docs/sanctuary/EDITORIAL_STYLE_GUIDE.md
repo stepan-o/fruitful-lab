@@ -45,3 +45,9 @@ Public visual documentation records the source, attribution, applicable license 
 Retain the established visual-first opening. Illustrations introduce the setting; captions add identification, evidence or a detail the image alone cannot supply. Diagrams let a reader inspect a relationship. Their labels and captions should not repeat the nearby prose. Use each medium for the part of the explanation it carries best.
 
 Before presenting a draft, read it without the illustrations: does the argument still develop? Then read the combined page: does each visual add something, and does the prose let the reader understand why it is there? That is the standard set by the finalized first chapter, not a sentence count or a fixed paragraph formula.
+
+## Company histories and visual identification
+
+Introduce a game through the role it plays in the argument. In a chapter about distribution, its release, customer relationship and route to market matter; a plot synopsis usually does not. Prefer its official logo, menu or promotional artwork when identifying the product. Use gameplay when the mechanics or play experience are actually being examined.
+
+Explain company transitions through documented problems, decisions and consequences. Valve’s update distribution, third-party sales and work on compatibility are examples. Generic claims about innovation or enduring success cannot substitute for the mechanism. Keep our economic interpretation distinct from a company’s own account.

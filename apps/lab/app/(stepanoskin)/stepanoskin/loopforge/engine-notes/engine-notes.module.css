@@ -1,3 +1,10 @@
+.shell,
+:global(html):has(.shell),
+:global(body):has(.shell) {
+  background: #0a100f;
+  color-scheme: dark;
+  scrollbar-color: #746b4b #0a100f;
+}
 .shell {
   min-height: 100svh;
   background: #0a100f;

@@ -83,12 +83,15 @@ placeholders in the submitted build.
 - [x] Rebuild briefing, assignments and physical shift controls.
 - [x] Rebuild running feedback, automatic-action presentation and incident decisions.
 - [x] Rebuild allocation, debrief, records, development context and settings.
-- [ ] Complete keyboard, mobile, reduced-motion, sound and recovery behavior.
-- [ ] Validate both adviser trajectories and meaningful overrides against authoritative results.
-- [ ] Run production checks, measure delivery and capture visual evidence.
-- [ ] Iterate failures; write the final gate assessment and update implementation docs.
+- [x] Complete keyboard, mobile, reduced-motion, sound and recovery behavior.
+- [x] Validate both adviser trajectories and meaningful overrides against authoritative results.
+- [x] Run production checks, measure delivery and capture visual evidence.
+- [x] Iterate failures; write the final gate assessment and update implementation docs.
 - [ ] Publish a scoped PR only after the agent-controlled gates pass; verify its preview.
 
 ## Evidence and final assessment
 
-Pending execution. Do not interpret this plan as a shipped design or acceptance.
+Agent-controlled implementation gates pass. See [the validation record](UI_REBUILD_VALIDATION.md)
+for exercised paths, responsive screenshots, image payloads, tests and limits.
+Owner enjoyment approval remains a separate playtest judgment. The scoped PR
+and its hosted preview are the final delivery step.

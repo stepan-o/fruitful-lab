@@ -242,7 +242,7 @@ function RunningDeck({ media, view, onRecords }: Props) {
 function DecisionDeck({ media, view, busy, send }: Props) {
   const problem = view.pending!;
   return (
-    <div className={s.decisionDeck}>
+    <div>
       <div className={s.incidentObservation}>
         <Kicker>{roomName(problem.room)} / crew report</Kicker>
         <p>{problem.observation}</p>

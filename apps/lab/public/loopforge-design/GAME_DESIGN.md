@@ -4,7 +4,7 @@ Working draft · 8 October 2026
 
 Trace the factory the player builds, the authority they establish and the society they inherit. This author reference connects the long arcs to player experience and the engine boundary, before balance and implementation.
 
-Agreed direction records the owner’s stated design. The current first-day build establishes a functional baseline; its entrance and visual treatment were rejected in owner review. The asset-driven interface revision described here is a design target, not a claim that it has shipped. Proposed trajectories, gates and recoveries remain material to review. Historical source rules do not override current decisions.
+Agreed direction records the owner’s stated design. The first-day director-console revision implements the asset-driven entry and decision interfaces. Owner visual/play acceptance remains pending. Proposed trajectories, gates and recoveries beyond that one-day slice remain material to review. Historical source rules do not override current decisions.
 
 ## World and story grounding
 
@@ -1589,7 +1589,7 @@ A replay is defined by initial state, rules version, random seed and ordered acc
 
 Late responses cannot alter committed history. Requests carry their context revision and admissible boundary; the host records acceptance, rejection or fallback. Slow verbal delivery can arrive later as presentation only when it cannot change the choice or its meaning.
 
-The first-day build already uses a pure TypeScript kernel, explicit HTTP snapshots/diffs and a React viewer. The current redesign targets asset-driven decision interfaces that carry the loop independently of 3D. A separate model adapter can be added when it earns its place. Later, a live tick-fed 3D client joins against the same versioned semantic contract; spatial data additions require explicit schema evolution. No renderer dependency enters the kernel, and no microservice fleet is required.
+The first-day build already uses a pure TypeScript kernel, explicit HTTP snapshots/diffs and a React viewer. The director-console revision provides asset-driven decision interfaces that carry the loop independently of 3D. A separate model adapter can be added when it earns its place. Later, a live tick-fed 3D client joins against the same versioned semantic contract; spatial data additions require explicit schema evolution. No renderer dependency enters the kernel, and no microservice fleet is required.
 
 ### Boundary checks
 
@@ -2501,7 +2501,7 @@ Players should understand why they are choosing, what they are authorizing and h
 
 **Enjoyment is the acceptance criterion.** A readable interface and a consistent simulation are necessary but do not establish that the game is fun. The first end-to-end prototype must be played and judged by the owner; revise the loop around that experience before expanding it for a real audience.
 
-Play the complete loop with the live 3D view absent. Ask whether adviser choice matters, briefings are enjoyable and easy to follow, the plan is worth considering, overrides are tempting despite their cost, feedback feels physical and the result creates interest in another day. The owner rejected the current entrance’s presentation-screen feel; passing checks did not establish visual or play acceptance. Later assess the cinematic view as an improvement to this working loop.
+Play the complete loop with the live 3D view absent. Ask whether adviser choice matters, briefings are enjoyable and easy to follow, the plan is worth considering, overrides are tempting despite their cost, feedback feels physical and the result creates interest in another day. The owner rejected the preceding entrance’s presentation-screen feel; passing checks did not establish visual or play acceptance. Later assess the cinematic view as an improvement to this working loop.
 
 ## Production and population
 

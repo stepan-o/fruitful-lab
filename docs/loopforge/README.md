@@ -2,8 +2,8 @@
 
 Project index · updated 8 October 2026. The presentations, older teaching demo,
 first-day prototype and game design board are implemented. The first-day build
-is a functional baseline; its entrance and visual treatment have not met owner
-acceptance. The [first-shift checklist](FIRST_SHIFT_CHECKLIST.md) records the
+now has an asset-driven director-console interface. Owner visual/play acceptance
+remains separate from agent verification. The [first-shift checklist](FIRST_SHIFT_CHECKLIST.md) records the
 current revision; the [original delivery checklist](DELIVERY_CHECKLIST.md)
 retains the earlier presentation/teaching-demo history.
 
@@ -19,8 +19,10 @@ responsive; generic web panels are not the visual target.
 
 Enter factory should open the paused factory console with opening facts, the
 weekly quota and unassigned LIMEN/STILETTO. Adviser choice is the first action.
-The welcome and separate handover gates in the current build are superseded
-design, awaiting implementation of this revision.
+The welcome and handover gates have been removed. The current candidate uses
+authored materials and portraits throughout the daily loop. See
+[rebuild plan and gates](UI_REBUILD_PLAN.md) and
+[validation evidence](UI_REBUILD_VALIDATION.md).
 
 A live tick-fed **3D factory comes later**, alongside these interfaces. It adds
 continuous cinematic observation of the same world without owning its rules.

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "@/components/loopforge/first-shift/first-shift.module.css";
+import styles from "./engine-notes.module.css";
 export const metadata = {
   title: "First-shift engine notes · Loopforge",
   robots: { index: false, follow: false },
@@ -23,7 +23,7 @@ const boundaries = [
   ],
   [
     "Viewer",
-    "The current React viewer displays illustrated cameras, briefings, decisions and records. The revised design makes these asset-driven interfaces a complete playable loop. A later live 3D view joins through the same semantic boundary; neither presentation layer chooses outcomes or imports the kernel.",
+    "The current React viewer displays illustrated cameras, briefings, decisions and records. The director-console revision makes these asset-driven interfaces a complete playable loop. A later live 3D view joins through the same semantic boundary; neither presentation layer chooses outcomes or imports the kernel.",
   ],
 ];
 export default function EngineNotes() {
@@ -70,9 +70,18 @@ export default function EngineNotes() {
           not supply Rust’s borrow checker; ownership is enforced here through
           pure transitions, boundaries and tests.
         </p>
-    <h2>Workers are people beneath the count.</h2>
-    <p style={{ margin: "20px 0 32px" }}>Every robot has a stable identity and separate body, assignment, stress, conditioning and history components from the first shift. Work changes the workers doing it; accidents target a particular robot and affect the crew present to witness them. Production creates new identities, and allocation retains or dispatches those same robots. The interface receives permitted totals, not their hidden component records. The same deterministic systems are tested with 10, 24 and 100 starting workers; the playable opening uses 24.</p>
-    <h2>What KVP means here.</h2>
+        <h2>Workers are people beneath the count.</h2>
+        <p style={{ margin: "20px 0 32px" }}>
+          Every robot has a stable identity and separate body, assignment,
+          stress, conditioning and history components from the first shift. Work
+          changes the workers doing it; accidents target a particular robot and
+          affect the crew present to witness them. Production creates new
+          identities, and allocation retains or dispatches those same robots.
+          The interface receives permitted totals, not their hidden component
+          records. The same deterministic systems are tested with 10, 24 and 100
+          starting workers; the playable opening uses 24.
+        </p>
+        <h2>What KVP means here.</h2>
         <p style={{ margin: "20px 0 32px" }}>
           The original Kernel ↔ Viewer Protocol establishes sovereignty,
           replaceable viewers and explicit snapshots and differences. This slice
@@ -113,11 +122,12 @@ export default function EngineNotes() {
         <p style={{ margin: "20px 0 20px" }}>
           Adviser selection, structured briefing, assignment approval and
           overrides, incidents, permanent allocation and debrief must carry the
-          core loop with illustrated factory context. The new entry target is
-          the paused factory console: opening facts, the weekly quota and two
-          unassigned advisers. The current welcome/handover screens and visual
-          treatment have not met owner acceptance; this documentation describes
-          the revision to build, not a completed redesign.
+          core loop with illustrated factory context. The console now opens
+          directly on the weekly quota, factory facts and two unassigned
+          advisers. Authored portraits, metal, glass and control states carry
+          the daily decisions. The previous welcome/handover gates have been
+          removed. The engine and protocol are unchanged; owner visual and play
+          acceptance remains separate from implementation checks.
         </p>
         <p style={{ marginBottom: 32 }}>
           The future live tick-fed 3D factory adds cinematic observation beside

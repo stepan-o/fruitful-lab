@@ -1,5 +1,6 @@
 import FirstShift from "@/components/loopforge/first-shift/FirstShift";
 import { firstShiftMedia } from "@/lib/loopforge/first-shift/media";
+export const viewport = { themeColor: "#070b0b", colorScheme: "dark" };
 export const metadata = {
   title: "The first shift · Loopforge",
   description:

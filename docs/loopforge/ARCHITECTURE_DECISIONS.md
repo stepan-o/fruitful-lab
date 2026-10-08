@@ -18,7 +18,11 @@ for cameras, plates, resource symbols, character dialogue, controls and
 settlement. Native layout, text, semantics and hit areas provide usability;
 CSS handles placement, slicing, state transitions and supporting effects.
 Almost every visible game element needs authored material and shape. The
-existing entrance and generic panel treatment were rejected in owner review.
+previous entrance and generic panel treatment were rejected in owner review.
+The director-console revision now uses these assets across all day-one phases,
+with a separate immutable `loopforge-console` pack, two new portraits and
+authored normal/hover/pressed control states. It adds no rendering dependency
+and changes no kernel or viewer protocol. See `UI_REBUILD_VALIDATION.md`.
 
 The future **live tick-fed 3D factory** is a separate presentation layer. It must
 join the same adviser/incident/allocation interfaces and knowledge-filtered

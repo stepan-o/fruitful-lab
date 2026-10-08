@@ -47,7 +47,7 @@ CSS and code position, mask, slice and animate these assets; they also provide t
 
 Procedural effects support the authored surfaces: transitions, restrained light, glare, grain and feedback from confirmed events. A genuine future live 3D view can render geometry, materials and spatial lighting. Decorative animation is not a substitute for that view, and is not needed to prove the current loop.
 
-These are updated requirements, not a statement that the current `/play` UI meets them. The owner rejected its entry composition and web-app feel. Earlier functional/browser verification is not visual or enjoyment approval.
+The director-console revision implements this direction in `/play`: immediate adviser choice, authored frames/control states and portraits, a persistent factory scene, and dedicated briefing, incident, dispatch and debrief surfaces. The [rebuild gate report](UI_REBUILD_VALIDATION.md) records the agent assessment. The owner rejected the preceding PR #94 composition; neither that baseline’s checks nor this revision’s checks substitute for owner enjoyment approval.
 
 ## Borrow pacing, preserve identity
 

@@ -1,0 +1,106 @@
+.shell {
+  min-height: 100svh;
+  background: #0a100f;
+  color: #e1dfcf;
+  padding: 24px clamp(20px, 6vw, 100px) 80px;
+  font:
+    15px/1.7 Arial,
+    sans-serif;
+}
+.shell a {
+  color: #cebb8a;
+  text-underline-offset: 4px;
+}
+.shell a:focus-visible {
+  outline: 2px solid #b1ded1;
+  outline-offset: 5px;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #454736;
+  padding-bottom: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+.brand {
+  font:
+    22px Georgia,
+    serif;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
+.brand small {
+  display: block;
+  font: 9px monospace;
+  margin-top: 7px;
+  letter-spacing: 0.2em;
+}
+.records {
+  max-width: 900px;
+  margin: 60px auto 0;
+}
+.records h1 {
+  font:
+    clamp(36px, 5vw, 64px) / 1.08 Georgia,
+    serif;
+  letter-spacing: -0.03em;
+  margin: 18px 0;
+}
+.records h2 {
+  font:
+    29px/1.2 Georgia,
+    serif;
+  margin-top: 38px;
+}
+.records h3 {
+  font:
+    23px Georgia,
+    serif;
+  margin: 0 0 9px;
+}
+.records ol {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0;
+}
+.records li {
+  display: flex;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid #3c4538;
+}
+.records p {
+  color: #bfc6b7;
+}
+.kicker,
+.recordTime {
+  font: 10px/1.5 monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c5b17c;
+}
+.recordTime {
+  padding-top: 5px;
+}
+.note {
+  font-size: 12px;
+  margin-top: 28px;
+}
+.shell code {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 500px) {
+  .topbar {
+    align-items: flex-start;
+  }
+  .topbar > a:last-child {
+    font-size: 12px;
+    max-width: 115px;
+  }
+  .records {
+    margin-top: 35px;
+  }
+}

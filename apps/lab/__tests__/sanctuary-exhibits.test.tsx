@@ -176,7 +176,7 @@ describe("Sanctuary exhibits", () => {
     ).toBeVisible();
     expect(screen.getByText("UNCHANGED")).toBeVisible();
     fireEvent.click(
-      screen.getByRole("button", { name: "Collection", exact: true }),
+      screen.getByRole("button", { name: "Collection" }),
     );
     expect(
       screen.getByText(/This belongs in a collection I care about/),

@@ -12,9 +12,9 @@ test("separates a cabinet purchase from collections and the venue’s income",()
 
 test("holds the store purchase constant while local equipment becomes a separate cloud service",()=>{
  render(<BusinessCircuit cloudOnly/>);
- fireEvent.click(screen.getByRole("button",{name:"Local PC",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"Local PC"}));
  expect(screen.getByRole("button",{name:/Equipment purchase Player.* → PC store/})).toHaveAttribute("aria-pressed","true");
- fireEvent.click(screen.getByRole("button",{name:"Cloud play",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"Cloud play"}));
  expect(screen.getByRole("button",{name:/Cloud membership Player.* → NVIDIA/})).toHaveAttribute("aria-pressed","true");
  expect(screen.getByText(/separate payment to NVIDIA/)).toBeVisible();
  fireEvent.click(screen.getByRole("button",{name:/Game purchase Player.* → Steam/}));
@@ -26,11 +26,11 @@ test("holds the store purchase constant while local equipment becomes a separate
 
 test("explains Netflix production payments without inventing a per-view royalty",()=>{
  render(<BusinessCircuit/>);
- fireEvent.click(screen.getByRole("button",{name:"Netflix",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"Netflix"}));
  fireEvent.click(screen.getByRole("button",{name:/Production & licenses Netflix.* → Producers/}));
  expect(screen.getByText(/not a per-view allocation of the viewer’s fee/)).toBeVisible();
  expect(screen.getByRole("heading",{name:"Producers (studios & rights holders)"})).toBeVisible();
- fireEvent.click(screen.getByRole("button",{name:"Arcade",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"Arcade"}));
  expect(screen.getByRole("button",{name:/Coins for play Players.* → Bar/})).toHaveAttribute("aria-pressed","true");
  expect(screen.queryByText(/not a per-view allocation/)).not.toBeInTheDocument();
 });
@@ -46,7 +46,7 @@ test.each([
  ["Netflix", [["Productions & rights", "Production & licenses", [0,1], [0,1]], ["Catalog & discovery", "Membership", [1,3], [1,3]], ["Connection & delivery", "Broadband", [2,3], [2,3]]]],
 ] as const)("links supply and payment selections in %s", (arrangement, pairs)=>{
  render(<BusinessCircuit/>);
- fireEvent.click(screen.getByRole("button",{name:arrangement,exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:arrangement}));
  const supplies=within(screen.getByRole("list",{name:"What each participant supplies"}));
  const payments=within(screen.getByRole("group",{name:"Follow a payment"}));
  const captions=within(screen.getByRole("group",{name:"Inspect a business or its customer"})).getAllByRole("button");
@@ -108,7 +108,7 @@ test("room, caption, supply and payment controls share the same visual spotlight
 test("an arrangement switch clears the previous room preview and retains row explanations",()=>{
  render(<BusinessCircuit/>);
  fireEvent.pointerEnter(screen.getByRole("button",{name:"Inspect Atari (manufacturer) scene"}));
- fireEvent.click(screen.getByRole("button",{name:"Cloud play",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"Cloud play"}));
  expect(screen.getByRole("button",{name:/NVIDIA.* Runs & streams/})).toHaveAttribute("data-highlighted","true");
  expect(screen.getByRole("list",{name:"What each participant supplies"})).toHaveAccessibleDescription(/Products & services.*supplier → recipient/);
  expect(screen.getByRole("group",{name:"Follow a payment"})).toHaveAccessibleDescription(/Purchases, fees & revenue shares.*payer → recipient/);
@@ -139,21 +139,21 @@ test("connection previews restore both selected endpoints and room selection rem
 
 test("console access terms stay distinct from where the game runs",()=>{
  render(<BusinessCircuit/>);
- expect(screen.queryByRole("button",{name:"Self-published",exact:true})).not.toBeInTheDocument();
- fireEvent.click(screen.getByRole("button",{name:"Xbox",exact:true}));
- expect(screen.getByRole("button",{name:"Purchased game",exact:true})).toHaveAttribute("aria-pressed","true");
+ expect(screen.queryByRole("button",{name:"Self-published"})).not.toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Xbox"}));
+ expect(screen.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
  expect(screen.getByText("Individual game purchase")).toBeVisible();
- fireEvent.click(screen.getByRole("button",{name:"Catalog membership",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"Catalog membership"}));
  expect(screen.getByText("Game Pass catalog subscription")).toBeVisible();
  expect(screen.getByText("Your Xbox runs the game")).toBeVisible();
  expect(screen.getByRole("link",{name:"Xbox Cloud Gaming ↗"})).toHaveAttribute("href","https://www.xbox.com/en-US/cloud-gaming");
  expect(screen.getByText(/a subscription does not necessarily mean cloud gaming/)).toBeVisible();
- fireEvent.click(screen.getByRole("button",{name:"PlayStation",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"PlayStation"}));
  expect(screen.getByText("Individual game purchase")).toBeVisible();
  expect(screen.getByText("Your PS5 runs the game")).toBeVisible();
  expect(screen.getByRole("link",{name:"PlayStation cloud streaming ↗"})).toHaveAttribute("href","https://www.playstation.com/ps5-game-cloud-streaming");
  expect(screen.getByText(/PlayStation Plus is not required for this single-player purchase route/)).toBeVisible();
- fireEvent.click(screen.getByRole("button",{name:"Cloud play",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"Cloud play"}));
  expect(screen.getByText("Individual game purchase")).toBeVisible();
  expect(screen.getByText("GeForce NOW computing subscription")).toBeVisible();
 });
@@ -171,12 +171,12 @@ test("cloud play starts with a bought game, can switch to a catalog, and resets 
  render(<BusinessCircuit/>);
  const routes=within(screen.getByRole("group",{name:"Compare business arrangements"}));
  expect(routes.getAllByRole("button").map(button=>button.textContent)).toEqual(["Arcade","PC purchase","PlayStation","Xbox","Cloud play","Netflix"]);
- fireEvent.click(routes.getByRole("button",{name:"Cloud play",exact:true}));
+ fireEvent.click(routes.getByRole("button",{name:"Cloud play"}));
  const choices=within(screen.getByRole("group",{name:"Choose how to access the game"}));
  expect(choices.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
  expect(screen.getByText("Individual game purchase")).toBeVisible();
  expect(screen.getByText("GeForce NOW computing subscription")).toBeVisible();
- fireEvent.click(choices.getByRole("button",{name:"Catalog membership",exact:true}));
+ fireEvent.click(choices.getByRole("button",{name:"Catalog membership"}));
  expect(screen.getByText("PC Game Pass catalog subscription")).toBeVisible();
  expect(screen.getByRole("button",{name:/^Content funding PC Game Pass/})).toBeVisible();
  expect(screen.queryByRole("button",{name:/Game purchase Player.*Steam/})).not.toBeInTheDocument();
@@ -184,9 +184,9 @@ test("cloud play starts with a bought game, can switch to a catalog, and resets 
  expect(screen.getByText(/The player pays Microsoft for PC Game Pass access/)).toBeVisible();
  const captions=within(screen.getByRole("group",{name:"Inspect a business or its customer"})).getAllByRole("button");
  captions.forEach((button,index)=>expect(button).toHaveAttribute("data-highlighted",String([2,4].includes(index))));
- fireEvent.click(routes.getByRole("button",{name:"PlayStation",exact:true}));
- fireEvent.click(routes.getByRole("button",{name:"Cloud play",exact:true}));
- expect(screen.getByRole("button",{name:"Purchased game",exact:true})).toHaveAttribute("aria-pressed","true");
+ fireEvent.click(routes.getByRole("button",{name:"PlayStation"}));
+ fireEvent.click(routes.getByRole("button",{name:"Cloud play"}));
+ expect(screen.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
  expect(screen.getByRole("button",{name:/Cloud membership Player.*NVIDIA/})).toHaveAttribute("aria-pressed","true");
  expect(screen.queryByText("PC Game Pass catalog subscription")).not.toBeInTheDocument();
 });
@@ -199,8 +199,8 @@ test("the dedicated cloud chapter retains a same-game comparison without catalog
 
 test("cloud access changes the offer while holding the game, production team and computing fixed",()=>{
  render(<BusinessCircuit/>);
- fireEvent.click(screen.getByRole("button",{name:"Cloud play",exact:true}));
- fireEvent.click(screen.getByRole("button",{name:"Catalog membership",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"Cloud play"}));
+ fireEvent.click(screen.getByRole("button",{name:"Catalog membership"}));
  const captions=within(screen.getByRole("group",{name:"Inspect a business or its customer"})).getAllByRole("button");
  expect(captions).toHaveLength(5);
  expect(captions[0]).toHaveTextContent("Playground Games (studio)");
@@ -213,7 +213,7 @@ test("cloud access changes the offer while holding the game, production team and
   fireEvent.click(supplies.getByRole("button",{name:new RegExp(`^${name} `)}));
   captions.forEach((button,index)=>expect(button).toHaveAttribute("data-highlighted",String(endpoints.includes(index))));
  }
- fireEvent.click(screen.getByRole("button",{name:"Purchased game",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"Purchased game"}));
  expect(screen.getByRole("button",{name:"Inspect Playground Games (studio) scene"})).toBeVisible();
  expect(screen.getByRole("button",{name:"Inspect Xbox Game Studios (publisher) scene"})).toBeVisible();
  expect(screen.getByText(/^Forza Horizon 5 ·/)).toBeVisible();
@@ -230,7 +230,7 @@ test.each([
  ["Xbox","Xbox Store","Game Pass","Your Xbox runs the game","Forza Horizon 5","Game Pass membership"],
 ])("%s compares buying and catalog access without changing the game or hardware",(platform,store,catalog,compute,game,membership)=>{
  render(<BusinessCircuit/>);
- fireEvent.click(screen.getByRole("button",{name:platform,exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:platform}));
  const options=within(screen.getByRole("group",{name:"Choose how to access the game"}));
  const parties=within(screen.getByRole("group",{name:"Inspect a business or its customer"}));
  const payments=within(screen.getByRole("group",{name:"Follow a payment"}));
@@ -238,8 +238,8 @@ test.each([
  const originalPeople=parties.getAllByRole("button").slice(0,2).map(button=>button.textContent);
  const expectEndpoints=(indices:number[])=>parties.getAllByRole("button").forEach((button,index)=>expect(button).toHaveAttribute("data-highlighted",String(indices.includes(index))));
  for(const catalogSelected of [false,true,false]){
-  fireEvent.click(options.getByRole("button",{name:catalogSelected?"Catalog membership":"Purchased game",exact:true}));
-  expect(options.getByRole("button",{name:catalogSelected?"Catalog membership":"Purchased game",exact:true})).toHaveAttribute("aria-pressed","true");
+  fireEvent.click(options.getByRole("button",{name:catalogSelected?"Catalog membership":"Purchased game"}));
+  expect(options.getByRole("button",{name:catalogSelected?"Catalog membership":"Purchased game"})).toHaveAttribute("aria-pressed","true");
   expect(screen.getByText(compute)).toBeVisible();
   expect(screen.getByText(new RegExp(`^${game} ·`))).toBeVisible();
   expect(parties.getAllByRole("button")).toHaveLength(5);
@@ -262,18 +262,18 @@ test.each([
 
 test("access alternatives reset cleanly between console, cloud and non-catalog examples",()=>{
  render(<BusinessCircuit/>);
- fireEvent.click(screen.getByRole("button",{name:"PlayStation",exact:true}));
- fireEvent.click(screen.getByRole("button",{name:"Catalog membership",exact:true}));
- fireEvent.click(screen.getByRole("button",{name:"Xbox",exact:true}));
- expect(screen.getByRole("button",{name:"Purchased game",exact:true})).toHaveAttribute("aria-pressed","true");
- expect(screen.getByRole("button",{name:"Catalog membership",exact:true})).toHaveAttribute("aria-pressed","false");
- fireEvent.click(screen.getByRole("button",{name:"Catalog membership",exact:true}));
- fireEvent.click(screen.getByRole("button",{name:"PlayStation",exact:true}));
- expect(screen.getByRole("button",{name:"Purchased game",exact:true})).toHaveAttribute("aria-pressed","true");
+ fireEvent.click(screen.getByRole("button",{name:"PlayStation"}));
+ fireEvent.click(screen.getByRole("button",{name:"Catalog membership"}));
+ fireEvent.click(screen.getByRole("button",{name:"Xbox"}));
+ expect(screen.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
+ expect(screen.getByRole("button",{name:"Catalog membership"})).toHaveAttribute("aria-pressed","false");
+ fireEvent.click(screen.getByRole("button",{name:"Catalog membership"}));
+ fireEvent.click(screen.getByRole("button",{name:"PlayStation"}));
+ expect(screen.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
  expect(screen.queryByRole("button",{name:/Inspect Xbox Store/})).not.toBeInTheDocument();
- fireEvent.click(screen.getByRole("button",{name:"PC purchase",exact:true}));
+ fireEvent.click(screen.getByRole("button",{name:"PC purchase"}));
  expect(screen.queryByRole("group",{name:"Choose how to access the game"})).not.toBeInTheDocument();
- fireEvent.click(screen.getByRole("button",{name:"Cloud play",exact:true}));
- expect(screen.getByRole("button",{name:"Purchased game",exact:true})).toHaveAttribute("aria-pressed","true");
+ fireEvent.click(screen.getByRole("button",{name:"Cloud play"}));
+ expect(screen.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
  expect(screen.getByRole("button",{name:/Cloud membership Player.*NVIDIA/})).toHaveAttribute("aria-pressed","true");
 });

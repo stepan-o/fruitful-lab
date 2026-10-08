@@ -24,7 +24,7 @@ describe("The rebuilt historical argument",()=>{
  it("keeps the Valve catalog with the developer and shows a handheld for the equipment role",()=>{
   render(<CompanyEvolution chapter="valve-platform"/>);
   fireEvent.click(screen.getByText("Explore games bearing Valve’s developer credit"));
-  expect(screen.getByRole("link",{name:"Half-Life",exact:true})).toBeVisible();
+  expect(screen.getByRole("link",{name:"Half-Life"})).toBeVisible();
   expect(screen.getByRole("link",{name:/Counter-Strike 2/})).toBeVisible();
   fireEvent.click(screen.getByRole("button",{name:/Equipment supplier/}));
   expect(screen.queryByText("Explore games bearing Valve’s developer credit")).not.toBeInTheDocument();

@@ -1,3 +1,38 @@
+# Platform-history selector update — 8 October 2026
+
+The financial exhibit now switches between PlayStation, Xbox and NVIDIA.
+Microsoft and NVIDIA have source-backed total revenue/YoY histories and
+milestones. Xbox adds hardware/content growth selection; earlier uncovered
+category years are explicitly absent. No undisclosed category-dollar amounts,
+cloud revenue or matching profit splits are inferred. Sony’s interactions and
+composition calculations are retained. The publisher copy-count figure is a
+separate exhibit after the two new comparison paragraphs. See
+[financial case methodology](PLATFORM_FINANCIAL_CASES.md).
+
+Verification for this update:
+
+- Required app CI: 67 suites, 348 tests and one snapshot pass; 22 retained asset
+  releases verify; Next.js production build passes. The focused financial tests
+  cover company switching, missingness, negative/category growth, exact reported
+  totals, fiscal dates, milestones and independent figure placement.
+- Scoped React/TypeScript lint and whitespace checks pass. React review confirms
+  native controls, static data, existing chapter-level dynamic loading, no new
+  dependency or asset and no continuous animation or network request.
+- Local production browser checks at 1280, 768, 390 and 320 pixels cover the
+  selector, year selection, positive/negative bars, keyboard activation and the
+  standalone publisher figure. No horizontal page overflow. NVIDIA correctly
+  says its Gaming total is not cloud revenue; the publisher figure appears once,
+  immediately after the NVIDIA comparison paragraph, outside the chart selector.
+- A final visual correction replaces early Xbox category dashes with “No rate”
+  labels at the foot of the plot, avoiding the appearance of a measured value.
+- The broader standalone `tsc --noEmit` check still reports four existing test
+  typing errors in Pinterest route tests (readonly NODE_ENV) and GrowthBook
+  middleware mocks (incomplete FeatureResult). No errors remain in the edited
+  files. The production build’s TypeScript check succeeds. Unrelated test files
+  are preserved.
+
+The earlier checkpoints below describe the preceding iterations of this PR.
+
 # Business chapters — editorial revision, 8 October 2026
 
 PR #98 contains chapters 2 and 3, their manuscript/source records, and the

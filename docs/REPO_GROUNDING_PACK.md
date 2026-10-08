@@ -1,3 +1,14 @@
+Sanctuary platform financial comparison (2026-10-08): chapter 2’s existing
+`sony-history` exhibit / `#playstation-history` anchor now offers PlayStation,
+Xbox and NVIDIA cases. Sony controls remain; Microsoft FY2017–FY2026 and NVIDIA
+FY2020–FY2026 add revenue/YoY histories, selected-year details and sourced
+milestones. Xbox category growth is available from FY2021, with no inferred
+category dollar split. NVIDIA Gaming is explicitly broader than GeForce NOW;
+undisclosed cloud revenue/profit stays absent. Fiscal calendars and revenue
+scopes differ. `publisher-ecosystem` is a separate copy-count figure after the
+Xbox/NVIDIA comparison prose. Sources and placement:
+`docs/sanctuary/PLATFORM_FINANCIAL_CASES.md`.
+
 Sanctuary PlayStation history (2026-10-08): chapter 2 adds the typed `sony-history`
 exhibit after the PS5 opening and FY2025 revenue-scale paragraph (paragraph 1). Original interactive charts show Sony G&NS
 revenue by broad category and operating profit for FY2016–FY2025, with separately

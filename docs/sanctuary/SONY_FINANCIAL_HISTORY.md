@@ -1,3 +1,9 @@
+Current integration (8 October 2026): the Sony chart is now the default case in
+the PlayStation / Xbox / NVIDIA financial selector. Its publisher-copy figure
+follows the comparative prose as a separate exhibit. See
+[platform financial cases](PLATFORM_FINANCIAL_CASES.md) for additional sources
+and disclosure boundaries. All Sony calculations below remain unchanged.
+
 # PlayStation financial history exhibit
 
 Placement: chapter 2, **From studio to screen**, after the PS5 opening and

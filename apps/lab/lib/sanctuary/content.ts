@@ -18,6 +18,9 @@ export const parts = [
 ];
 export const revision = "2026-10-08";
 export const sources: EvidenceSource[] = [
+  {"id": "microsoft-acquisition-scale", "title": "Microsoft — 2024 annual report, Gaming and acquisition note", "url": "https://www.microsoft.com/investor/reports/ar24/", "note": "Activision Blizzard acquisition completed 13 October 2023; reported purchase price US$75.4bn. FY2024 Gaming revenue +39%, hardware −13%, content/services +50% including 44 percentage points of acquisition net impact. Scope change, not organic audience growth. Its portfolio includes Activision, Blizzard and King."},
+  {"id": "nvidia-gaming-history", "title": "NVIDIA — FY2026 Form 10-K, Gaming end market", "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm", "note": "FY2026 ended 25 January 2026. Gaming revenue US$16,042m; management attributes 41% growth to Blackwell demand. Gaming includes GeForce GPUs, GeForce NOW and console chips/development services. No separate cloud revenue or matching Gaming profit is disclosed. The Graphics reporting segment is broader than this end market."},
+
   {"id": "sony-fy2025-scale", "title": "Sony — FY2025 financial supplement, pp. 3–4 and 12", "url": "https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/25q4_supplement.pdf", "note": "Year ending March 2026. G&NS sales ¥4,685,651m and operating income ¥463,258m; Music ¥2,120,110m and Pictures ¥1,499,290m. The approximate US$31bn illustration divides yen revenue by the reported annual average ¥150.7 per dollar; it is not Sony-reported dollar revenue. Chapter/chart grouping places ¥100,612m of Other Software with Others, giving games/add-ons ¥2,540,411m and Other ¥437,688m. Add-on content includes digital in-game currency, items and expansion packages, not full-game downloads or PlayStation Plus. Segment sales include intersegment transactions; the cross-business comparison is reported revenue, not an industry market-size or profit comparison."},
   {"id": "sony-digital-gross", "title": "Sony — FY2026 Q1 supplement, p. 11, notes 3–4", "url": "https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/26q1_supplement.pdf#page=11", "note": "Explicit gross retail revenue recognition for full-game downloads and add-on content, including the outside publisher’s share. The whole segment combines different recognition bases; operating income is not net income, cash flow or the platform commission."},
   {"id": "sony-game-origins", "title": "Sony — Annual Report 1998, printed pp. 70–71 (PDF pp. 72–73)", "url": "https://www.sony.com/en/SonyInfo/IR/library/ar/ar_sony_1998.pdf#page=72", "note": "The 1998 report separates Game from Electronics and restates earlier years. Game sales, including intersegment: ¥203,911m for the year ending March 1996 (FY1995), ¥419,278m for March 1997 and ¥722,551m for March 1998. Nominal contemporary figures; no inflation-adjusted growth rate or continuous comparable category series is inferred. Licensing to third-party developers is part of the documented segment."},
@@ -511,6 +514,8 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "One part of that market deserves a closer look. Add-on content means purchases for a game beyond the full game itself: an expansion that adds another adventure, an outfit that changes a character’s appearance, or virtual currency to spend in its shop. Sony recorded roughly US$9.0 billion from these purchases alone, more than from consoles. Diablo IV’s paid expansions and cosmetic shop belong to this wider pattern. Later, we will look at what each purchase offers the player and why the game is built to keep making those offers.",
       "These billions are revenue, not money Sony keeps. Digital game and add-on sales include the share owed to outside publishers; manufacturing, development and running the service also have to be paid for. After the gaming segment’s costs, Sony reported operating profit equivalent to US$3.1 billion. One company’s accounts record a business sustained by the work of many creators.",
       "That relationship predates the online store. In its original yen accounts, Sony’s Game business reported ¥204 billion in sales for the year ending March 1996, rising to ¥723 billion two years later. Its 1997 annual report credited cheaper consoles and hit games with PlayStation’s growth, naming Final Fantasy VII from Square and Tekken from Namco alongside Sony’s own releases. Other creators were already helping make Sony’s machine worth buying. Downloads, add-ons and memberships would give that relationship more ways to earn.",
+      "Microsoft also sells a console, but it has spent heavily to own more of the games that make people want to play. Its October 2023 purchase of Activision Blizzard cost US$75.4 billion and brought the publisher of Call of Duty, Diablo and Candy Crush into the Xbox business. In the fiscal year containing that deal, gaming revenue rose 39% even as hardware revenue fell 13%. Much of the growth came from buying an existing business. The owner of a machine and a subscription catalog had also become the owner of more of the attractions inside them.",
+      "NVIDIA earns from another part of the same evening. Its GeForce processors help bring games to the screen; GeForce NOW lets players rent that computing power remotely. The company reported US$16.0 billion in Gaming revenue for the year ending January 2026, attributing its growth to demand for a new generation of graphics hardware. Cloud play sits inside that total, but its earnings are not disclosed separately. Where Microsoft bought more of the creative work, NVIDIA sells the capacity to run it. Both still depend on games that people want to play, including games made by other companies.",
       "A game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it. The publisher sells copies, while the hardware maker and catalog operator earn from different purchases connected to the same work.",
       "Cyberpunk 2077, a game sold for PCs and consoles, lets us follow those relationships through one work. CD PROJEKT RED, the studio that makes and publishes it, pays for the development team and brings the finished work to market through launch campaigns and store agreements. Selling it through Steam, the PC store operated by Valve, brings another business into the arrangement. Valve provides the shop, checkout and downloads, then pays CD PROJEKT its agreed share after adjustments such as refunds and taxes. Buy through PlayStation Store instead, and Sony occupies that position while also supplying the console on which the game runs.",
       "Sony can also become a customer for the game. In July 2025, it added Cyberpunk to PlayStation Plus, a subscription catalog that let members play while it remained included, without buying an individual copy. CD PROJEKT knew that giving players this alternative would cost it some purchases. Asked about the effect, co-CEO Michał Nowakowski was direct: “So, there’s always a hit to current sales of the game when you launch on a subscription basis.”",
@@ -539,36 +544,47 @@ const manuscript: Omit<Chapter,"visual">[] = [
         "sony-game-origins",
         "sony-ps1-creators"
       ],
-      "6": [
+      "8": [
         "cdpr-business",
         "steam-settlement",
         "cyberpunk-ps-offer"
       ],
-      "7": [
+      "9": [
         "cyberpunk-plus-entry",
         "cdpr-catalog-economics"
       ],
-      "8": [
+      "10": [
         "cdpr-catalog-economics"
       ],
-      "9": [
+      "11": [
         "steam-cloud",
         "gfn-membership-terms",
         "gfn-requirements"
       ],
-      "11": [
+      "13": [
         "valve-history",
         "valve-about",
         "valve-deck-booklet"
+      ],
+      "5": [
+        "microsoft-acquisition-scale"
+      ],
+      "6": [
+        "nvidia-gaming-history",
+        "gfn-membership-terms"
       ]
     },
     "sections": [
       {
-        "at": 7,
-        "title": "The deal behind the subscription"
+        "at": 5,
+        "title": "Three ways to earn from the same worlds"
       },
       {
         "at": 9,
+        "title": "The deal behind the subscription"
+      },
+      {
+        "at": 11,
         "title": "A game you buy, a machine you hire"
       }
     ],
@@ -579,7 +595,7 @@ const manuscript: Omit<Chapter,"visual">[] = [
         "alt": "PlayStation Plus promotional image featuring the Cyberpunk 2077 logo and key art alongside Game Catalog, Premium and Extra branding",
         "caption": "Cyberpunk 2077 in Sony’s July 2025 PlayStation Plus promotion. Catalog access covered the base game; the expansion remained a separate offer.",
         "credit": "Sony Interactive Entertainment / CD PROJEKT RED; other pictured games belong to their respective rights holders",
-        "afterParagraph": 8
+        "afterParagraph": 10
       }
     ],
     "sources": [
@@ -588,6 +604,8 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "sony-digital-gross",
       "sony-game-origins",
       "sony-ps1-creators",
+      "microsoft-acquisition-scale",
+      "nvidia-gaming-history",
       "d4-season-philosophy",
       "d4-expansion-structure",
       "alcorn-oral",
@@ -617,14 +635,18 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "microsoft-ecosystem",
       "valve-deck-booklet"
     ],
-    "evidence": "Sony’s February 2021 earnings presentation, printed pages 7–8, describes the PS5 launch quarter ending December 2020: hardware priced below manufacturing cost, higher gaming-segment operating income and the contribution of software and network services. This is a historical segment result, not a claim about current hardware margins, a measured lifetime return per console or Cyberpunk’s contribution to those profits. The current diagrams use Cyberpunk across PC, PlayStation, Xbox and NVIDIA routes; these are not all versions of one transferable purchase. CD PROJEKT performs both development and publishing. Console catalog access does not supply a Windows PC entitlement for GeForce NOW. Sony’s and Microsoft’s catalog agreements are distinct; only CD PROJEKT’s account of the Sony deal is discussed. Nowakowski’s quotation is the complete opening sentence of his answer to question 5 in the Q3 2025 earnings transcript (PDF page 6, 18 words). His judgment of the deal’s return and expansion opportunity is management’s assessment, not an independently measured causal effect. No contract amount, commission rate, internal transfer price or per-play payment is inferred. The relationship between audience appeal and the surrounding businesses is our economic interpretation. Distribution helps establish the commercial context for later design analysis; it does not determine one game design. The financial passage uses the FY2025 supplement’s reported segment sales, including intersegment revenue. Its US-dollar amounts are conversions using the year’s average ¥150.7/USD, not reported dollar segment figures. The chart converts each year using its own annual average rate; YoY compares those nominal USD values, without inflation adjustment. Games/add-ons and Other match the chart’s disclosed regrouping. Gaming exceeds Music plus Pictures in reported revenue, not in combined profit or whole-industry scale. The add-on total spans games across PlayStation; no Diablo IV contribution is disclosed or estimated. The early Game figures are FY1995 and FY1997 as retrospectively separated in the 1998 report, in nominal yen. No constant-scope growth multiple is calculated across thirty years. Sony’s accounts illustrate the economic attraction of distribution; they do not establish Valve’s motive or imply Valve stopped developing games.",
+    "evidence": "Sony’s February 2021 earnings presentation, printed pages 7–8, describes the PS5 launch quarter ending December 2020: hardware priced below manufacturing cost, higher gaming-segment operating income and the contribution of software and network services. This is a historical segment result, not a claim about current hardware margins, a measured lifetime return per console or Cyberpunk’s contribution to those profits. The current diagrams use Cyberpunk across PC, PlayStation, Xbox and NVIDIA routes; these are not all versions of one transferable purchase. CD PROJEKT performs both development and publishing. Console catalog access does not supply a Windows PC entitlement for GeForce NOW. Sony’s and Microsoft’s catalog agreements are distinct; only CD PROJEKT’s account of the Sony deal is discussed. Nowakowski’s quotation is the complete opening sentence of his answer to question 5 in the Q3 2025 earnings transcript (PDF page 6, 18 words). His judgment of the deal’s return and expansion opportunity is management’s assessment, not an independently measured causal effect. No contract amount, commission rate, internal transfer price or per-play payment is inferred. The relationship between audience appeal and the surrounding businesses is our economic interpretation. Distribution helps establish the commercial context for later design analysis; it does not determine one game design. The financial passage uses the FY2025 supplement’s reported segment sales, including intersegment revenue. Its US-dollar amounts are conversions using the year’s average ¥150.7/USD, not reported dollar segment figures. The chart converts each year using its own annual average rate; YoY compares those nominal USD values, without inflation adjustment. Games/add-ons and Other match the chart’s disclosed regrouping. Gaming exceeds Music plus Pictures in reported revenue, not in combined profit or whole-industry scale. The add-on total spans games across PlayStation; no Diablo IV contribution is disclosed or estimated. The early Game figures are FY1995 and FY1997 as retrospectively separated in the 1998 report, in nominal yen. No constant-scope growth multiple is calculated across thirty years. Sony’s accounts illustrate the economic attraction of distribution; they do not establish Valve’s motive or imply Valve stopped developing games. Microsoft’s acquisition cost is the completed transaction’s reported purchase price, not the earlier announcement’s enterprise value. Xbox history includes acquired businesses from their consolidation dates and is not an organic-growth series. NVIDIA Gaming includes GPUs, GeForce NOW and console chips/development services; it is neither total NVIDIA revenue nor a cloud-revenue measure. Xbox category dollar amounts, Game Pass/cloud revenue and separate Xbox profit are not inferred from growth rates or the wider reporting segment. Fiscal year ends differ across companies. The standalone publisher figure uses Sony full-game copies, not a split of revenue; no comparable Xbox/NVIDIA copy split is invented.",
     "exhibits": [
       {
         "afterParagraph": 1,
         "kind": "sony-history"
       },
       {
-        "afterParagraph": 9,
+        "afterParagraph": 6,
+        "kind": "publisher-ecosystem"
+      },
+      {
+        "afterParagraph": 11,
         "kind": "market-map"
       }
     ]

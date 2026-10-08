@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import PublisherEcosystem from "@/components/sanctuary/PublisherEcosystem";
 import SonyHistory from "@/components/sanctuary/SonyHistory";
 import { sonyCategories, sonyComposition, sonyUsd, sonyGrowth, sonyGrowthView, sonyHistory, sonyMix, sonyPublisherContext, sonyRevenueView } from "@/lib/sanctuary/sony-history";
 import { platformRows, platformTotals } from "@/lib/sanctuary/industry-data";
@@ -34,12 +35,12 @@ it("connects milestone, year picker, exact figures and category readout", () => 
   fireEvent.click(within(annotations).getByRole("button", { name: /News of PS5 weakens PS4 demand/ }));
   expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2019");
   expect(screen.getByRole("link", { name: /Sony’s demand explanation/ })).toHaveAttribute("href", expect.stringContaining("19q1_sonyspeech.pdf#page=9"));
-  fireEvent.click(screen.getByRole("button", { name: "Console hardware", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Console hardware" }));
   fireEvent.click(within(annotations).getByRole("button", { name: /PS5 launches/ }));
   expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2020");
-  expect(screen.getByRole("button", { name: "Console hardware", exact: true })).toHaveAttribute("aria-pressed", "true");
+  expect(screen.getByRole("button", { name: "Console hardware" })).toHaveAttribute("aria-pressed", "true");
   expect(screen.getByRole("link", { name: "PlayStation’s launch announcement ↗" })).toBeVisible();
-  fireEvent.click(screen.getByRole("button", { name: "All revenue", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "All revenue" }));
   fireEvent.click(screen.getByRole("button", { name: /2025 Latest full year/ }));
   expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2025");
   expect(screen.getByRole("button", { name: "Next fiscal year" })).toBeDisabled();
@@ -59,7 +60,7 @@ it("connects milestone, year picker, exact figures and category readout", () => 
 
 it("places the Sony exhibit after chapter two's revenue-scale paragraph", () => {
   const chapter = chapters.find(item => item.id === "studio-to-screen")!;
-  expect(chapter.exhibits).toEqual([{ afterParagraph: 1, kind: "sony-history" }, { afterParagraph: 9, kind: "market-map" }]);
+  expect(chapter.exhibits).toEqual([{ afterParagraph: 1, kind: "sony-history" }, { afterParagraph: 6, kind: "publisher-ecosystem" }, { afterParagraph: 11, kind: "market-map" }]);
 });
 
 
@@ -68,7 +69,7 @@ it("isolates each revenue series, rescales from zero and keeps the selected year
   fireEvent.change(screen.getByRole("combobox", { name: "Fiscal year" }), { target: { value: "2025" } });
   const latestTotals = ["6.27", "16.86", "5.06", "2.90"];
   sonyCategories.forEach((category, index) => {
-    fireEvent.click(screen.getByRole("button", { name: category.label, exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: category.label }));
     const chart = screen.getByRole("group", { name: new RegExp(`Ten years of ${category.label} revenue only`) });
     const columns = within(chart).getAllByRole("button").filter(button => button.hasAttribute("data-year"));
     expect(columns).toHaveLength(10);
@@ -85,7 +86,7 @@ it("isolates each revenue series, rescales from zero and keeps the selected year
     expect(sonyHistory.every(row => sonyUsd(sonyMix(row)[index], row) <= view.max)).toBe(true);
     expect(fy25.querySelector<HTMLElement>(".segment")).toHaveStyle({ height: "100%" });
   });
-  fireEvent.click(screen.getByRole("button", { name: "All revenue", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "All revenue" }));
   expect(container.querySelectorAll(".segment")).toHaveLength(40);
   expect(container.querySelectorAll(".profitArea")).toHaveLength(10);
   expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2025");
@@ -96,11 +97,12 @@ it("keeps the publisher comparison in copies and exposes the gross-revenue bound
   render(<SonyHistory/>);
   expect(sonyPublisherContext.totalUnits).toBe(317.9);
   expect(sonyPublisherContext.firstPartyUnits).toBe(32.1);
+  render(<PublisherEcosystem/>);
   expect(screen.getByText("32.1m copies")).toBeVisible();
   expect(screen.getByText("285.8m copies")).toBeVisible();
   expect(screen.getByText("10.1% of full-game copies")).toBeVisible();
   expect(screen.getByText("89.9% of full-game copies")).toBeVisible();
-  expect(screen.getByText(/not a division of the money above/)).toBeVisible();
+  expect(screen.getByText(/not a division of platform revenue/)).toBeVisible();
   expect(screen.getByText(/Digital game and add-on revenue includes the amount paid to outside publishers/)).toBeVisible();
   expect(screen.getByRole("link", { name: /Figures & scope/ })).toHaveAttribute("href", sonyPublisherContext.source);
 });
@@ -126,7 +128,7 @@ it("uses each year's own annual FX rate and keeps converted totals reconciled", 
 
 it("groups annual changes around zero, preserves filters and links supply events", () => {
   const { container } = render(<SonyHistory/>);
-  fireEvent.click(screen.getByRole("button", { name: "Year-over-year change", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Year-over-year change" }));
   expect(container.querySelectorAll(".growthBar")).toHaveLength(36);
   expect(container.querySelector(".profitArea")).toBeNull();
   expect(container.querySelector(".stack")).toBeNull();
@@ -137,15 +139,15 @@ it("groups annual changes around zero, preserves filters and links supply events
   const bars2022 = screen.getByRole("button", { name: /^FY2022: year-over-year/ }).querySelectorAll<HTMLElement>(".growthBar");
   expect(parseFloat(bars2022[0].style.top)).toBeLessThan(80 / 120 * 100);
   expect(parseFloat(bars2022[0].style.height)).toBeCloseTo(58.0836 / 120 * 100, 3);
-  fireEvent.click(screen.getByRole("button", { name: "Console hardware", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Console hardware" }));
   expect(container.querySelectorAll(".growthBar")).toHaveLength(9);
   fireEvent.click(within(screen.getByRole("group", { name: "Console transition annotations" })).getByRole("button", { name: /Chip shortages/ }));
   expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2021");
   expect(screen.getByRole("heading", { name: "Demand outruns the supply of consoles" })).toBeVisible();
-  expect(screen.getByRole("button", { name: "Console hardware", exact: true })).toHaveAttribute("aria-pressed", "true");
+  expect(screen.getByRole("button", { name: "Console hardware" })).toHaveAttribute("aria-pressed", "true");
   fireEvent.click(screen.getByRole("button", { name: /2022 PS5 supply improves/ }));
   expect(screen.getByText("+58.1%", { selector: ".totals strong" })).toBeVisible();
-  fireEvent.click(screen.getByRole("button", { name: "Revenue", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Revenue" }));
   expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2022");
   expect(container.querySelectorAll(".segment")).toHaveLength(10);
   expect(screen.getByText("US$8.30", { exact: false, selector: ".totals strong" })).toBeVisible();
@@ -177,10 +179,10 @@ it("compares revenue shares in percentage points, independent of FX and filterin
   const prior = container.querySelector<HTMLElement>('.shareGhost[data-category="0"]')!;
   expect(parseFloat(current.style.height)).toBeCloseTo(30.82705, 4);
   expect(parseFloat(prior.style.height)).toBeCloseTo(21.51507, 4);
-  fireEvent.click(screen.getByRole("button", { name: "Console hardware", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Console hardware" }));
   expect(container.querySelectorAll(".shareFill")).toHaveLength(4);
   expect(parseFloat(current.style.height)).toBeCloseTo(30.82705, 4);
-  fireEvent.click(screen.getByRole("button", { name: "Year-over-year change", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Year-over-year change" }));
   expect(within(detail).getByText("Revenue YoY: +58.1%")).toBeVisible();
   expect(within(detail).getByText("(+9.3 pp)")).toBeVisible();
   fireEvent.change(screen.getByRole("combobox", { name: "Fiscal year" }), { target: { value: "2016" } });

@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
-import { type SonyYear, sonyAccountingSource, sonyComposition, sonyGrowth, sonyGrowthView, sonyUsd, sonyChartAnnotations, sonyCategories, sonyHistory, sonyPublisherContext, sonyRevenueView, sonyMilestones, sonyMix, sonySources, sonyYearNoteLinks, sonyYearNotes } from "@/lib/sanctuary/sony-history";
+import { type SonyYear, sonyAccountingSource, sonyComposition, sonyGrowth, sonyGrowthView, sonyUsd, sonyChartAnnotations, sonyCategories, sonyHistory, sonyRevenueView, sonyMilestones, sonyMix, sonySources, sonyYearNoteLinks, sonyYearNotes } from "@/lib/sanctuary/sony-history";
 import s from "./sony-history.module.css";
 
 const billions = (n: number) => (n / 1000).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -33,7 +33,6 @@ export default function SonyHistory() {
   const showProfit = !growth && category === null;
   const axis = growth ? sonyGrowthView : revenueView;
   const selectedRevenue = category === null ? row.revenue : values[category];
-  const publisherUnits = [sonyPublisherContext.firstPartyUnits, Number((sonyPublisherContext.totalUnits - sonyPublisherContext.firstPartyUnits).toFixed(1))];
 
   function selectYear(value: number) {
     setYear(value);
@@ -44,7 +43,7 @@ export default function SonyHistory() {
     }
   }
 
-  return <figure className={s.figure} id="playstation-history" aria-labelledby="sony-history-title">
+  return <figure className={s.figure} aria-labelledby="sony-history-title">
     <figcaption>
       <p className={s.kicker}>Sony · Game & Network Services · FY2016–FY2025</p>
       <h2 id="sony-history-title">PlayStation,<br/><em>beyond the console.</em></h2>
@@ -142,19 +141,6 @@ export default function SonyHistory() {
         </dl></details>
       </div>
     </div>
-
-    <section className={s.publishers} aria-labelledby="sony-publishers-title">
-      <p className={s.kicker}>A separate measure · full-game copies sold · FY{sonyPublisherContext.year}</p>
-      <h3 id="sony-publishers-title">Whose games fill the ecosystem?</h3>
-      <p>Sony reports first-party titles separately by copies sold. The financial reports used here combine their revenue with other publishers’ games, so these bars show copies—not a division of the money above.</p>
-      <dl className={s.unitRows}>{publisherUnits.map((units, i) => <div key={i} style={{ "--series": i === 0 ? "#d2b377" : "#79b3b2" } as CSSProperties}>
-        <dt>{i === 0 ? "Sony first-party titles" : "Other publishers’ titles"}</dt>
-        <dd><strong>{units.toFixed(1)}m copies</strong><span>{share(units, sonyPublisherContext.totalUnits)} of full-game copies</span></dd>
-        <div className={s.unitTrack} aria-hidden="true"><span style={{ width: `${units / sonyPublisherContext.totalUnits * 100}%` }}/></div>
-      </div>)}</dl>
-      <p className={s.unitScope}>{sonyPublisherContext.totalUnits}m PS4/PS5 full-game copies, including bundles. Other publishers = total minus Sony’s reported first-party units. Add-ons and subscriptions are outside this count; free-to-play spending cannot be inferred from it. First-party describes Sony’s title category, not just studios it owns or every game it helps fund. <a href={sonyPublisherContext.source} target="_blank" rel="noreferrer">Figures & scope · p. 12 ↗</a></p>
-      <blockquote>“most of the value of our ecosystem is driven by third-party publishers”<cite><a href={sonyPublisherContext.discussion} target="_blank" rel="noreferrer">Sony Interactive Entertainment · June 2026 investor Q&A, pp. 3–4 ↗</a></cite></blockquote>
-    </section>
 
     <p className={s.notes}>Fiscal years end the following March; FY2025 ended March 2026. Nominal US dollars, converted from yen at each year’s average rate; not inflation-adjusted or constant currency. YoY compares those converted values. FY2016 has no preceding year in this series. The accounting basis changes between FY2019 and the restated FY2020. Release markers provide context; they do not assign a sales lift to an individual product.</p>
     <details className={s.method}><summary>Sources, definitions & exact figures</summary>

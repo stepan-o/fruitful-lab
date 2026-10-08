@@ -47,7 +47,8 @@ const BusinessMap = dynamic(() => import("./BusinessMap"));
 const MarketMap = dynamic(() => import("./MarketMap"));
 const BusinessLayers = dynamic(() => import("./BusinessMap").then(m=>m.BusinessLayers));
 const CloudCircuit = dynamic(() => import("./BusinessCircuit"));
-const SonyHistory = dynamic(() => import("./SonyHistory"));
+const PlatformHistory = dynamic(() => import("./PlatformHistory"));
+const PublisherEcosystem = dynamic(() => import("./PublisherEcosystem"));
 const PlatformRevenue = dynamic(() => import("./BusinessCharts").then(m=>m.PlatformRevenue));
 const CloudFigures = dynamic(() => import("./BusinessCharts").then(m=>m.CloudFigures));
 const BusinessChains = dynamic(() => import("./BusinessChains"));
@@ -195,7 +196,8 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                   {renderInlineFigures(paragraphIndex)}
                   {current.exhibits?.filter(exhibit=>exhibit.afterParagraph === paragraphIndex).map(exhibit=>{
                     switch(exhibit.kind){
-                      case "sony-history": return <SonyHistory key={exhibit.kind}/>;
+                      case "sony-history": return <PlatformHistory key={exhibit.kind}/>;
+                      case "publisher-ecosystem": return <PublisherEcosystem key={exhibit.kind}/>;
                       case "market-map": return <MarketMap key={exhibit.kind} initialGameId="cyberpunk"/>;
                       case "world-workshop": return <WorldWorkshop key={exhibit.kind}/>;
                       case "epic-spending": return <EpicSpending key={exhibit.kind}/>;

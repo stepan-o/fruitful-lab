@@ -2,10 +2,10 @@ import { act, cleanup, fireEvent, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event";
 import FactoryConveyor from "@/components/loopforge/FactoryConveyor";
 import { createFactoryRenderer } from "@/components/loopforge/factory-renderer";
-import { playClang } from "@/lib/stepanoskin/audio";
+import { playLandingSound } from "@/lib/loopforge/landing-audio";
 
 jest.mock("@/components/loopforge/factory-renderer",()=>({createFactoryRenderer:jest.fn()}));
-jest.mock("@/lib/stepanoskin/audio",()=>({playClang:jest.fn()}));
+jest.mock("@/lib/loopforge/landing-audio",()=>({playLandingSound:jest.fn()}));
 const draw=jest.fn(),dispose=jest.fn();
 let notify: IntersectionObserverCallback,mediaChange:()=>void;
 let reduced=false,hidden=false,now=1000,id=0;
@@ -37,8 +37,10 @@ test("jam is announced and keyboard activation restarts the line without repeate
   const resetButton=screen.getByRole("button",{name:"Restart conveyor"});
   resetButton.focus(); await user.keyboard("{Enter}");
   expect(screen.getByRole("status")).toHaveTextContent("DRIVE ENGAGING");
-  expect(playClang).toHaveBeenCalledTimes(1);
-  await user.keyboard("{Enter}");expect(playClang).toHaveBeenCalledTimes(1);
+  expect(playLandingSound).toHaveBeenCalledTimes(1);
+  expect(playLandingSound).toHaveBeenCalledWith("contactor");
+  await user.keyboard("{Enter}");expect(playLandingSound).toHaveBeenCalledTimes(1);
+  expect(playLandingSound).toHaveBeenCalledWith("contactor");
   advance(2);expect(screen.getByRole("status")).toHaveTextContent("PRODUCTION IN PROGRESS");
 });
 
@@ -85,12 +87,13 @@ test("a single touch press resets a jam; pressing during production does nothing
   const user=userEvent.setup();render(<FactoryConveyor/>);await intersect(true);
   const button=screen.getByRole("button",{name:"Restart conveyor"});
   await user.pointer([{keys:"[TouchA>]",target:button},{keys:"[/TouchA]",target:button}]);
-  expect(playClang).not.toHaveBeenCalled();
+  expect(playLandingSound).not.toHaveBeenCalled();
   advance(3.1);
   expect(button).toHaveAttribute("aria-disabled","false");
   await user.pointer([{keys:"[TouchA>]",target:button},{keys:"[/TouchA]",target:button}]);
   expect(screen.getByRole("status")).toHaveTextContent("DRIVE ENGAGING");
-  expect(playClang).toHaveBeenCalledTimes(1);
+  expect(playLandingSound).toHaveBeenCalledTimes(1);
+  expect(playLandingSound).toHaveBeenCalledWith("contactor");
   expect(button).toHaveAttribute("aria-disabled","true");
   advance(5);
   expect(screen.getByRole("status")).toHaveTextContent("PRODUCTION IN PROGRESS");

@@ -69,6 +69,7 @@
   function openPanel(id,updateHash=true){
     const panel=document.getElementById(id);if(!panel||!panel.classList.contains('panel'))return;
     document.querySelectorAll('.panel').forEach(el=>el.hidden=el.id!==id);
+    document.dispatchEvent(new Event('design:panelchange'));
     document.querySelectorAll('[data-panel]').forEach(el=>el.setAttribute('aria-current',String(el.dataset.panel===id)));
     if(updateHash)history.replaceState(null,'','#'+id);
     announce(panel.querySelector('h2').textContent);

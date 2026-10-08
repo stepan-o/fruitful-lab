@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useId, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
-import { playClang } from "@/lib/stepanoskin/audio";
+import { playLandingSound } from "@/lib/loopforge/landing-audio";
 import { motionKey, usePreference } from "@/lib/stepanoskin/preferences";
 import { createDrive, restartDrive, stepDrive, type Drive } from "./factory-drive";
 import { createFactoryRenderer } from "./factory-renderer";
@@ -72,7 +72,7 @@ export default function FactoryConveyor({ controlTarget }: { controlTarget?: HTM
       if (!active) { drive.current.status = "running"; drive.current.stateAge = 0; }
       setStatus(drive.current.status);
       renderer.draw(drive.current, !active);
-      playClang();
+      playLandingSound("contactor");
     };
     const mediaChanged = () => { setReduced(media.matches); sync(); };
     const observer = new IntersectionObserver(([entry]) => {

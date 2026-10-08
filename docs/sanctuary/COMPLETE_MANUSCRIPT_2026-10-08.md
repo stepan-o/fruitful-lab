@@ -30,7 +30,7 @@ Evidence boundary: Pong’s prototype installation and overflowing coin containe
 
 A game can sell more than copies of itself.
 
-The game in the trailer may cost less than the machine you buy to play it. Later, it might appear in a subscription you already pay for. For the player, these look like questions of price and convenience. Behind them are businesses asking the same game to do different jobs.
+The game in the trailer may cost less than the machine you buy to play it. Later, it might appear in a subscription you already pay for. For the player, these look like questions of price and convenience. A game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it. The publisher sells copies, while the hardware maker and catalog operator earn from different purchases connected to the same work.
 
 A promising prototype still needs a team, a budget and time. The development studio has to turn it into a game people will want to play. A publisher can back that work and take on the release: finding an audience, organizing promotion and arranging sales. In return, its contract sets out how the investment is recovered and the proceeds shared. A studio that publishes itself takes on both sets of decisions.
 

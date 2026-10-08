@@ -92,9 +92,9 @@ context, not estimates of individual products’ causal revenue contributions.
 ## Narrative and interaction placement
 
 The financial selector follows paragraph 1. Sony’s historical prose is followed
-by the new Microsoft and NVIDIA comparison (paragraphs 5–6). The independent
-publisher figure follows paragraph 6; the Cyberpunk promotion follows paragraph
-10; the existing market map follows paragraph 11. Sections/citations shifted with
+by the Microsoft acquisition, release/production decisions and NVIDIA comparison
+(paragraphs 5–9). The independent publisher figure follows paragraph 9; the
+Cyberpunk promotion follows paragraph 13; the existing market map follows paragraph 14. Sections/citations shifted with
 the content. Both manuscripts mirror the runtime order. Chapter 1 is unchanged.
 
 Year bars, year selectors and milestone buttons update the same readout.
@@ -156,3 +156,40 @@ as non-proportional. Sony’s continuous four-category series remains unchanged.
 
 Chart dollar labels round from integer millions before formatting billions,
 avoiding binary floating-point rounding of US$23.455bn to US$23.45bn.
+
+## Editorial selection: scale still has to earn its keep
+
+The main reading passage retains three connected decisions: Call of Duty’s
+subseries release cadence, Obsidian’s production time and reuse, and Microsoft’s
+choice to delay future Call of Duty releases in Game Pass. It introduces the
+games only as needed for the argument. US rankings, rival release dates, the
+longer list of reported misses and speculative title-by-title loss estimates
+are omitted. Charts retain the annual financial detail.
+
+Sources (checked 8 October 2026):
+
+- [Circana / Mat Piscatella](https://bsky.app/profile/matpiscatella.bsky.social/post/3ma6t4rn5w22w):
+  November 2025 US tracked full-game dollar sales versus November 2024. This
+  excludes subscriptions and add-ons, and is not a global revenue measure.
+- [Call of Duty team, 9 December 2025](https://www.callofduty.com/blog/2025/12/call-of-duty-message-from-the-team/):
+  no back-to-back Black Ops or Modern Warfare releases; annual release cadence
+  remains. Distinctiveness is the team’s stated rationale.
+- [PC Gamer, 3 February 2026](https://www.pcgamer.com/games/rpg/avowed-and-the-outer-worlds-2-failed-to-meet-expectations-for-obsidian-but-grounded-2-was-a-hit-and-the-future-is-looking-positive-for-the-pillars-of-eternity-universe/):
+  reporting on Bloomberg’s Obsidian interviews. The chapter uses Urquhart’s
+  complete 20-word inventory-screen question, attributed to him. The shorter
+  Grounded 2 production is a counterexample within the studio, not a universal
+  causal claim. Missed forecasts are not evidence of losses. Avowed’s original
+  release is in FY2025, so the story does not assign it an FY2026 revenue loss.
+- [Xbox, 21 April 2026](https://news.xbox.com/en-us/2026/04/21/xbox-game-pass-update/):
+  reduced Ultimate/PC subscription prices and delayed future Call of Duty catalog
+  entry, with existing titles retained. The interpretation concerns balancing
+  sales and subscription access; neither churn nor cannibalization is quantified.
+- [Microsoft FY2026 Q2 call](https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2):
+  management explicitly identifies first-party content below expectations. The
+  chart’s annual percentages remain from the FY2026 10-K, not this quarter.
+
+The comparison does not attribute Xbox’s whole FY2026 decline to these releases
+or suggest a different console launch generation from Sony’s. Sony’s FY2025
+ends March 2026; Microsoft’s FY2026 ends June 2026. Sony called its latest
+yen-denominated annual gaming sales essentially flat; the USD trend also includes
+currency translation. Chapter 1 and the downstream chapter texts are preserved.

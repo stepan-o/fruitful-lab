@@ -288,3 +288,26 @@ No page overflow or clipped caption text. Tablet checking exposed leader
 misalignment when the plot was wider than its scroll viewport: a container query
 now removes fixed-caption connectors below the plot’s minimum width while the
 year guides remain attached to their columns.
+
+## Xbox: production decisions behind the chart
+
+The chapter now follows the acquisition with Call of Duty’s release cadence,
+Obsidian’s production choices and the changed timing of Call of Duty in Game
+Pass. Chapter 1 supplies the editorial benchmark: a concrete event, enough
+context to understand it, then its business consequence. The chart carries the
+annual percentages; the reading passage omits the extended list of reported
+misses, rankings and speculative attribution of revenue loss to individual games.
+
+Checked the original Call of Duty and Xbox announcements, Circana’s sales post,
+and PC Gamer’s account of Bloomberg’s Obsidian interview. The inventory-screen
+quotation retains the complete 20-word sentence. Source notes distinguish US
+full-game spending, missed forecasts and fiscal reporting periods. The production
+examples are not presented as a decomposition of Microsoft’s annual decline.
+
+Required app CI passed: 67 suites, 348 tests, one snapshot, all 22 retained asset
+releases and production build. Scoped ESLint and whitespace checks passed.
+Existing figure-placement and citation checks were updated for the added prose.
+Both manuscript copies match every runtime chapter-2 paragraph; a comparison
+against the previous commit confirms all other chapter data, including the
+approved chapter 1, are unchanged. No chart behavior, media, dependency or
+animation changed. Deployment verification is recorded on PR #98.

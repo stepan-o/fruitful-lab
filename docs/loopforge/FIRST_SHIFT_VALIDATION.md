@@ -33,4 +33,8 @@ This is a response-paced HTTP prototype. Internet latency affects elapsed viewin
 
 ## Delivery
 
-The PR retains the old teaching console at `/stepanoskin/loopforge/play/teaching` and does not change its existing model endpoint, quotas or credentials. Hosted commit/URL and final review evidence are recorded during publication.
+The PR retains the old teaching console at `/stepanoskin/loopforge/play/teaching` and does not change its existing model endpoint, quotas or credentials.
+
+[PR #94](https://github.com/stepan-o/fruitful-lab/pull/94) is a draft for owner review. Vercel deployment `dpl_DGLah5eMzFYZDRuYXZRVPfQfwY5Z` is READY for application commit `56898dd9d64dc12c55309f40ce390837bd15e945`. The verified [first-shift preview](https://fruitful-frrc1vujp-stepan-oskins-projects.vercel.app/stepanoskin/loopforge/play) completed the full Stiletto flow with a Security override: 22 produced, 2 retained, 20 committed, 26 remaining workers and condition 67. Causal-record expansion worked after the commitment; allocation controls were no longer available.
+
+The hosted mobile briefing was reviewed at 390×844 with no horizontal overflow or broken images; the desktop decision composition was reviewed at 1440×900. The deployed engine notes accurately describe individual worker components, and their design-board deep link opens the Engine boundary tab. Existing browser authorization sufficed; no new access link or protection change was needed. This verifies the preview, not a merge or production promotion. The local desktop screenshot is retained at `/tmp/loopforge-first-shift-hosted-desktop.png` for the review handoff.

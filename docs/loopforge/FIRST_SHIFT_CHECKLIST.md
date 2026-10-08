@@ -11,6 +11,6 @@ Scope: Loopforge in `apps/lab`, plus its design and engine documentation. Branch
 - [x] Verify both advisers, overrides, own-room authority, irreversible commitments and information boundaries.
 - [x] Visually review desktop and mobile, keyboard access, reduced motion and production delivery.
 - [x] Document engine, candidate balance, source reuse and future LLM admission/evaluation seam.
-- [ ] Run required app checks, publish a scoped PR and verify its preview.
+- [x] Run required app checks, publish a scoped PR and verify its preview. PR #94; hosted application commit `56898dd9d64dc12c55309f40ce390837bd15e945` verified on Vercel.
 
 Candidate first-day numbers and incidents are playtest fixtures, not settled balance or a completed Act 1. No new model calls are required for this slice.

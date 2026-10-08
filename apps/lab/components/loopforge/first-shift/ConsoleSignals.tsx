@@ -74,7 +74,9 @@ export function ConsoleBeacon({ active = true }: { active?: boolean }) {
     if (age >= light.duration) { clear();return; }
     const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const texture=reduced ? null : beamTexture(pulse.kind);
-    const bounds=lamp.getBoundingClientRect(), source={ x:bounds.left+bounds.width*.5,y:bounds.top+bounds.height*.5 };
+    const bounds=lamp.getBoundingClientRect(), surfaceBounds=surface.getBoundingClientRect();
+    // Top-layer dialogs can offset a fixed canvas. All rays use its actual origin.
+    const source={ x:bounds.left+bounds.width*.5-surfaceBounds.left,y:bounds.top+bounds.height*.5-surfaceBounds.top };
     const width=window.innerWidth,height=window.innerHeight,scale=Math.min(1,1280/width);
     surface.width=Math.ceil(width*scale);surface.height=Math.ceil(height*scale);
     ctx.scale(scale,scale);
@@ -84,7 +86,7 @@ export function ConsoleBeacon({ active = true }: { active?: boolean }) {
     scope.querySelectorAll<HTMLElement>("[data-light-frame]").forEach(node => {
       const r=node.getBoundingClientRect();
       if (!r.width || r.bottom<0 || r.top>height) return;
-      for(const x of [r.left+8,r.right-15]) for(const y of [r.top+8,r.bottom-15]) blockers.push({x,y,width:7,height:7});
+      for(const x of [r.left+8,r.right-15]) for(const y of [r.top+8,r.bottom-15]) blockers.push({x:x-surfaceBounds.left,y:y-surfaceBounds.top,width:7,height:7});
     });
     const reach=Math.hypot(width,height)*1.4, shadows=blockers.slice(0,32).map(b=>shadowPolygon(source,b,reach));
     let drawn=0;

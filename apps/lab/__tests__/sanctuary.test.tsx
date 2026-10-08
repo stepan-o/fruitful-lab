@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { within, fireEvent, render, screen } from "@testing-library/react";
 import Reader from "@/components/sanctuary/Reader";
 import { PriceLab, ProbabilityLab } from "@/components/sanctuary/Experiments";
 import { appendix, chapters, parts, sources } from "@/lib/sanctuary/content";
@@ -146,7 +146,7 @@ describe("Sanctuary reader", () => {
     );
     expect(screen.queryByText(/INTERNAL REFERENCE/)).not.toBeInTheDocument();
   });
-  it("retains the Cyberpunk visual citation inside the worked example after the market-map introduction", async () => {
+  it("keeps Cyberpunk’s catalog evidence before the wider market map", async () => {
     const index = chapters.findIndex(c=>c.id==="studio-to-screen");
     const current = chapters[index];
     const figure = current.figures!.find(f=>f.asset==="cyberpunk-catalog-promo")!;
@@ -154,11 +154,12 @@ describe("Sanctuary reader", () => {
     render(<Reader {...props} current={current} index={index}/>);
     await screen.findByRole("region",{name:"What has to keep selling?"});
     const map = await screen.findByRole("region",{name:"One game. Many routes to the player."});
-    const heading = screen.getByRole("heading",{name:"One game, different agreements"});
-    expect(map.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    const heading = screen.getByRole("heading",{name:"The deal behind the subscription"});
+    expect(within(map).getByRole("button",{name:/^Cyberpunk 2077/})).toHaveAttribute("aria-pressed","true");
     const picture = screen.getByRole("img",{name:figure.alt});
     expect(picture).toHaveAttribute("loading","lazy");
     expect(heading.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(picture.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     const nextParagraph = screen.getByText(current.paragraphs[figure.afterParagraph!+1]);
     expect(picture.compareDocumentPosition(nextParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });

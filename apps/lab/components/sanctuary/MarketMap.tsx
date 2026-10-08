@@ -6,8 +6,8 @@ import {RoleEngraving, ComputingGlyph} from "./MarketIconography";
 import {useLivingPlate} from "./plates/useLivingPlate";
 import s from "./market-map.module.css";
 
-export default function MarketMap(){
- const [selection,setSelection]=useState(initialSelection);
+export default function MarketMap({initialGameId}:{initialGameId?:string}){
+ const [selection,setSelection]=useState(()=>initialGameId?selectGame(initialSelection,initialGameId):initialSelection);
  const [role,setRole]=useState<MarketRole | "route">("route");
  const [notice,setNotice]=useState("");
  const [presetId,setPresetId]=useState("");

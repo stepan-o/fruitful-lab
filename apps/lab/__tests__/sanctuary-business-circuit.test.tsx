@@ -39,8 +39,8 @@ test("explains Netflix production payments without inventing a per-view royalty"
 // side of an exchange highlights the same two participants.
 test.each([
  ["Arcade", [["A cabinet", "Cabinet purchase", [0,1], [0,1]], ["Placement & upkeep", "Collection split", [1,2], [1,2]], ["A place to play", "Coins for play", [2,3], [2,3]]]],
- ["Xbox", [["Game development","Development budget",[0,1],[0,1]],["Published release","Game sales revenue",[1,2],[1,2]],["Store & download","Game purchase",[2,4],[2,4]],["Local computing","Console purchase",[3,4],[3,4]]]],
- ["PlayStation", [["Game development","Development budget",[0,1],[0,1]],["Published release","Game sales revenue",[1,2],[1,2]],["Store & download","Game purchase",[2,4],[2,4]],["Local computing","Console purchase",[3,4],[3,4]]]],
+ ["Xbox", [["Game development","Development budget",[0,1],[0,1]],["Published release","Store settlement",[1,2],[1,2]],["Store & download","Game purchase",[2,4],[2,4]],["Local computing","Console purchase",[3,4],[3,4]]]],
+ ["PlayStation", [["Game development","Development budget",[0,1],[0,1]],["Published release","Store settlement",[1,2],[1,2]],["Store & download","Game purchase",[2,4],[2,4]],["Local computing","Console purchase",[3,4],[3,4]]]],
  ["PC purchase", [["Game development","Development budget",[0,1],[0,1]],["Published release","Store settlement",[1,2],[1,2]],["Store & download","Game purchase",[2,4],[2,4]],["Local computing","Equipment purchase",[3,4],[3,4]]]],
  ["Cloud play", [["Game development","Development budget",[0,1],[0,1]],["Published release","Store settlement",[1,2],[1,2]],["Game access","Game purchase",[2,4],[2,4]],["Remote computing","Cloud membership",[3,4],[3,4]]]],
  ["Netflix", [["Productions & rights", "Production & licenses", [0,1], [0,1]], ["Catalog & discovery", "Membership", [1,3], [1,3]], ["Connection & delivery", "Broadband", [2,3], [2,3]]]],
@@ -144,7 +144,7 @@ test("console access terms stay distinct from where the game runs",()=>{
  expect(screen.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
  expect(screen.getByText("Individual game purchase")).toBeVisible();
  fireEvent.click(screen.getByRole("button",{name:"Catalog membership"}));
- expect(screen.getByText("Game Pass catalog subscription")).toBeVisible();
+ expect(screen.getByText("Game Pass Premium catalog subscription")).toBeVisible();
  expect(screen.getByText("Your Xbox runs the game")).toBeVisible();
  expect(screen.getByRole("link",{name:"Xbox Cloud Gaming ↗"})).toHaveAttribute("href","https://www.xbox.com/en-US/cloud-gaming");
  expect(screen.getByText(/a subscription does not necessarily mean cloud gaming/)).toBeVisible();
@@ -167,28 +167,21 @@ test("the dedicated cloud comparison holds Cyberpunk constant and does not intro
 });
 
 
-test("cloud play starts with a bought game, can switch to a catalog, and resets when leaving the route",()=>{
+test("console catalog access does not leak into Cyberpunk’s NVIDIA route",()=>{
  render(<BusinessCircuit/>);
  const routes=within(screen.getByRole("group",{name:"Compare business arrangements"}));
  expect(routes.getAllByRole("button").map(button=>button.textContent)).toEqual(["Arcade","PC purchase","PlayStation","Xbox","Cloud play","Netflix"]);
+ fireEvent.click(routes.getByRole("button",{name:"Xbox"}));
+ fireEvent.click(screen.getByRole("button",{name:"Catalog membership"}));
  fireEvent.click(routes.getByRole("button",{name:"Cloud play"}));
- const choices=within(screen.getByRole("group",{name:"Choose how to access the game"}));
- expect(choices.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
+ expect(screen.queryByRole("group",{name:"Choose how to access the game"})).not.toBeInTheDocument();
  expect(screen.getByText("Individual game purchase")).toBeVisible();
  expect(screen.getByText("GeForce NOW computing subscription")).toBeVisible();
- fireEvent.click(choices.getByRole("button",{name:"Catalog membership"}));
- expect(screen.getByText("PC Game Pass catalog subscription")).toBeVisible();
- expect(screen.getByRole("button",{name:/^Content funding PC Game Pass/})).toBeVisible();
- expect(screen.queryByRole("button",{name:/Game purchase Player.*Steam/})).not.toBeInTheDocument();
- fireEvent.click(within(screen.getByRole("group",{name:"Follow a payment"})).getByRole("button",{name:/Catalog membership Player.*PC Game Pass/}));
- expect(screen.getByText(/The player pays Microsoft for PC Game Pass access/)).toBeVisible();
- const captions=within(screen.getByRole("group",{name:"Inspect a business or its customer"})).getAllByRole("button");
- captions.forEach((button,index)=>expect(button).toHaveAttribute("data-highlighted",String([2,4].includes(index))));
- fireEvent.click(routes.getByRole("button",{name:"PlayStation"}));
- fireEvent.click(routes.getByRole("button",{name:"Cloud play"}));
- expect(screen.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
+ expect(screen.getByText(/console catalog memberships do not include the PC edition/)).toBeVisible();
+ expect(screen.getByRole("button",{name:/Game purchase Player.*Steam/})).toBeVisible();
  expect(screen.getByRole("button",{name:/Cloud membership Player.*NVIDIA/})).toHaveAttribute("aria-pressed","true");
- expect(screen.queryByText("PC Game Pass catalog subscription")).not.toBeInTheDocument();
+ fireEvent.click(routes.getByRole("button",{name:"Xbox"}));
+ expect(screen.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
 });
 
 test("the dedicated cloud chapter retains a same-game comparison without catalog switching",()=>{
@@ -197,37 +190,25 @@ test("the dedicated cloud chapter retains a same-game comparison without catalog
  expect(screen.getByText(/Cyberpunk 2077 · a purchased Steam copy/)).toBeVisible();
 });
 
-test("cloud access changes the offer while holding the game, production team and computing fixed",()=>{
+test("the four game arrangements hold Cyberpunk and its makers fixed",()=>{
  render(<BusinessCircuit/>);
- fireEvent.click(screen.getByRole("button",{name:"Cloud play"}));
- fireEvent.click(screen.getByRole("button",{name:"Catalog membership"}));
- const captions=within(screen.getByRole("group",{name:"Inspect a business or its customer"})).getAllByRole("button");
- expect(captions).toHaveLength(5);
- expect(captions[0]).toHaveTextContent("Playground Games (studio)");
- expect(captions[1]).toHaveTextContent("Xbox Game Studios (publisher)");
- expect(screen.getByText(/^Forza Horizon 5 ·/)).toBeVisible();
- const fixedParties=[0,1,3].map(index=>captions[index].textContent);
- const supplies=within(screen.getByRole("list",{name:"What each participant supplies"}));
- expect(supplies.queryByRole("button",{name:/PC Game Pass.*NVIDIA/})).not.toBeInTheDocument();
- for(const [name,endpoints] of [["Catalog access",[2,4]],["Remote computing",[3,4]]] as [string,number[]][]){
-  fireEvent.click(supplies.getByRole("button",{name:new RegExp(`^${name} `)}));
-  captions.forEach((button,index)=>expect(button).toHaveAttribute("data-highlighted",String(endpoints.includes(index))));
+ for(const route of ["PC purchase","PlayStation","Xbox","Cloud play"]){
+  fireEvent.click(screen.getByRole("button",{name:route}));
+  const captions=within(screen.getByRole("group",{name:"Inspect a business or its customer"})).getAllByRole("button");
+  expect(captions).toHaveLength(5);
+  expect(captions[0]).toHaveTextContent("CD PROJEKT RED (studio)");
+  expect(captions[1]).toHaveTextContent("CD PROJEKT RED (publisher)");
+  expect(screen.getByText(/^Cyberpunk 2077 ·/)).toBeVisible();
  }
- fireEvent.click(screen.getByRole("button",{name:"Purchased game"}));
- expect(screen.getByRole("button",{name:"Inspect Playground Games (studio) scene"})).toBeVisible();
- expect(screen.getByRole("button",{name:"Inspect Xbox Game Studios (publisher) scene"})).toBeVisible();
- expect(screen.getByText(/^Forza Horizon 5 ·/)).toBeVisible();
- expect(screen.getByText("GeForce NOW computing subscription")).toBeVisible();
- const purchasedParties=within(screen.getByRole("group",{name:"Inspect a business or its customer"})).getAllByRole("button");
- expect([0,1,3].map(index=>purchasedParties[index].textContent)).toEqual(fixedParties);
- expect(screen.queryByText(/Cyberpunk 2077/)).not.toBeInTheDocument();
+ const supplies=within(screen.getByRole("list",{name:"What each participant supplies"}));
  expect(supplies.queryByRole("button",{name:/Steam.*NVIDIA/})).not.toBeInTheDocument();
  expect(supplies.getByRole("button",{name:/^Game access Steam.*Player/})).toBeVisible();
+ expect(supplies.getByRole("button",{name:/^Remote computing NVIDIA.*Player/})).toBeVisible();
 });
 
 test.each([
- ["PlayStation","PlayStation Store","PlayStation Plus","Your PS5 runs the game","Marvel’s Spider-Man 2","Catalog membership"],
- ["Xbox","Xbox Store","Game Pass","Your Xbox runs the game","Forza Horizon 5","Game Pass membership"],
+ ["PlayStation","PlayStation Store","PlayStation Plus","Your PS5 runs the game","Cyberpunk 2077","Catalog membership"],
+ ["Xbox","Xbox Store","Game Pass","Your Xbox runs the game","Cyberpunk 2077","Catalog membership"],
 ])("%s compares buying and catalog access without changing the game or hardware",(platform,store,catalog,compute,game,membership)=>{
  render(<BusinessCircuit/>);
  fireEvent.click(screen.getByRole("button",{name:platform}));
@@ -274,6 +255,6 @@ test("access alternatives reset cleanly between console, cloud and non-catalog e
  fireEvent.click(screen.getByRole("button",{name:"PC purchase"}));
  expect(screen.queryByRole("group",{name:"Choose how to access the game"})).not.toBeInTheDocument();
  fireEvent.click(screen.getByRole("button",{name:"Cloud play"}));
- expect(screen.getByRole("button",{name:"Purchased game"})).toHaveAttribute("aria-pressed","true");
+ expect(screen.queryByRole("group",{name:"Choose how to access the game"})).not.toBeInTheDocument();
  expect(screen.getByRole("button",{name:/Cloud membership Player.*NVIDIA/})).toHaveAttribute("aria-pressed","true");
 });

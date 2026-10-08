@@ -28,51 +28,41 @@ Evidence boundary: Pong’s prototype installation and overflowing coin containe
 
 ## 2. From studio to screen
 
-A game can sell more than copies of itself.
+One creative work can sustain several businesses around it.
 
-The game in the trailer may cost less than the machine you buy to play it. Later, it might appear in a subscription you already pay for. For the player, these look like questions of price and convenience. A game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it. The publisher sells copies, while the hardware maker and catalog operator earn from different purchases connected to the same work.
+In the first months after the PlayStation 5 launched in November 2020, Sony was selling its new console for less than it cost to manufacture. That did not stop its gaming division from reporting higher profit: stronger sales of games and network services helped outweigh losses on the hardware and other launch costs. Putting the machine in someone’s living room was the beginning of a commercial relationship that could last for years.
 
-A promising prototype still needs a team, a budget and time. The development studio has to turn it into a game people will want to play. A publisher can back that work and take on the release: finding an audience, organizing promotion and arranging sales. In return, its contract sets out how the investment is recovered and the proceeds shared. A studio that publishes itself takes on both sets of decisions.
+Evidence: sony-ps5-launch-economics.
 
-Evidence: epic-publishing, cdpr-business.
+A game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it. The publisher sells copies, while the hardware maker and catalog operator earn from different purchases connected to the same work.
 
-Then the game has to get noticed among everything else on sale. Steam, Valve’s PC store, gathers releases from many publishers into a place where people discover, buy and keep games. The publisher gains a route to that audience; Valve earns an agreed share of sales. Their interests overlap without being identical. The publisher is selling its release; Valve can earn from the next purchase even if the player chooses somebody else’s.
+Cyberpunk 2077, a game sold for PCs and consoles, lets us follow those relationships through one work. CD PROJEKT RED, the studio that makes and publishes it, pays for the development team and brings the finished work to market through launch campaigns and store agreements. Selling it through Steam, the PC store operated by Valve, brings another business into the arrangement. Valve provides the shop, checkout and downloads, then pays CD PROJEKT its agreed share after adjustments such as refunds and taxes. Buy through PlayStation Store instead, and Sony occupies that position while also supplying the console on which the game runs.
 
-Evidence: steam-visibility, steam-settlement.
+Evidence: cdpr-business, steam-settlement, cyberpunk-ps-offer.
 
-A studio’s grandest world is of little use to players whose machines cannot run it. Hardware suppliers sell the equipment that makes those ambitions reachable; cloud operators can sell access to a remote machine instead. Either way, the equipment shapes who can play and what the studio can build for them. Streaming also makes a suitable device and connection part of the bargain.
+### The deal behind the subscription
 
-Evidence: steam-hardware-survey, gfn-membership-terms, gfn-requirements.
-
-### When a game sells the machine
-
-Put several of these businesses under one roof, and a game can do more than earn back its own production budget. Sony’s PlayStation and Microsoft’s Xbox each combine studios, publishing, a store, consoles and subscriptions. They also carry other publishers’ games. A desirable release can help sell the machine; buying the machine brings a player within reach of its store and services. The game is part of the attraction of an entire ecosystem.
-
-Evidence: sony-accounting, microsoft-ecosystem.
-
-NVIDIA’s GeForce NOW shows how the roles can stay separate. It runs supported Steam purchases on remote computers. Valve still handles the game sale; NVIDIA charges for computing on its paid plans. Renting the machine has not turned the purchased game into a rental. The opening diagram keeps selected arrangements apart so we can see their workings. The map below reconnects them: hold a game steady, then change where it is bought or accessed and whose machine runs it. Each route needs the appropriate agreements and technical support.
-
-Evidence: steam-cloud, gfn-membership-terms, gfn-game-pass.
-
-### One game, different agreements
-
-A catalog asks something else of the game: help make the collection worth subscribing to. Its operator becomes another customer for the publisher, paying for permission to include the title. Players pay for access to the collection, which lasts only while they subscribe and the game remains included. The publisher has gained a buyer, but also given players an alternative to buying its game.
-
-Evidence: circuit-game-pass, cyberpunk-plus-entry.
-
-When Cyberpunk 2077 joined Sony’s PlayStation Plus catalog in July 2025, its developer and publisher, CD PROJEKT RED, accepted that trade-off. Co-CEO Michał Nowakowski put it plainly: “So, there’s always a hit to current sales of the game when you launch on a subscription basis.”
+Sony can also become a customer for the game. In July 2025, it added Cyberpunk to PlayStation Plus, a subscription catalog that let members play while it remained included, without buying an individual copy. CD PROJEKT knew that giving players this alternative would cost it some purchases. Asked about the effect, co-CEO Michał Nowakowski was direct: “So, there’s always a hit to current sales of the game when you launch on a subscription basis.”
 
 Evidence: cyberpunk-plus-entry, cdpr-catalog-economics.
 
-He judged the deal worthwhile anyway. Sony’s agreement added revenue, and the base game could bring new players to Phantom Liberty, the expansion left outside the catalog. The arrangement gave Sony another reason for people to subscribe and CD PROJEKT another chance to sell an addition to its game.
+He nevertheless judged the agreement worthwhile. Sony paid for the right to include the base game; Phantom Liberty, its expansion, remained a separate purchase. CD PROJEKT believed the deal improved its overall return and brought more people within reach of that additional sale. Sony gained another attraction for its membership, while the publisher found another buyer for work it had already made. Fewer individual purchases could coexist with a better business result.
 
 Evidence: cdpr-catalog-economics.
 
-Valve began on one side of this exchange, making games. Steam put it between other creators and their players. What could the company sell once its audience was coming for far more than Valve’s own releases? Eventually, it would make a machine for that library, too.
+### A game you buy, a machine you hire
+
+Even the computer can become a separate service. A player can buy Cyberpunk through Steam, then pay NVIDIA’s GeForce NOW to run it on a remote machine. Their device receives the picture and sends back the controls; a suitable device and connection are still required. Valve handles the game sale, CD PROJEKT receives its share, and NVIDIA earns from providing the computing. Here the recurring payment rents the machinery. It does not turn the purchased game into a catalog subscription.
+
+Evidence: steam-cloud, gfn-membership-terms, gfn-requirements.
+
+These arrangements widen the business of creative work beyond the next copy sold. A publisher can reach individual buyers through a store, license a game to a catalog, or use both routes at different points in its life. Around that work, other companies sell equipment, computing and access to collections. Their agreements determine how the audience’s interest becomes income for each of them—and how much of that income can finance the work still to come.
+
+There is another possibility here for a game maker: build part of the route to the audience, and earn from other creators’ work as well as your own. Valve took that path with Steam. Its history follows a studio into distribution, and eventually back to the hardware in the player’s hands.
 
 Evidence: valve-history, valve-about, valve-deck-booklet.
 
-Evidence boundary: The opening describes possible purchase situations, not a particular player’s experience or a universal release sequence. The diagrams separate functions, not necessarily companies, and show selected arrangements and supported routes. Publisher funding, ownership and payment terms vary by agreement; Epic’s published offer is one example, not a standard contract. Store revenue sharing and the companies’ combined activities are documented; the different uses of a game for a publisher, store, hardware supplier or catalog are our economic reading, not measured effects on sales or creative decisions. Cloud delivery retains device, network, title, region and plan restrictions. The Steam purchase/GeForce NOW example does not describe all cloud services or require catalog membership. No private commission, internal transfer price or per-play publisher payment is inferred. Nowakowski’s quotation is the complete opening sentence of his answer to question 5 in CD PROJEKT’s Q3 2025 earnings transcript (PDF page 6). His judgment of the Sony deal and expansion opportunity is management’s assessment, not an independent estimate of displaced purchases or additional sales. The Sony agreement is not assigned to Microsoft or NVIDIA. Valve still makes games; its move into distribution is an expansion of roles.
+Evidence boundary: Sony’s February 2021 earnings presentation, printed pages 7–8, describes the PS5 launch quarter ending December 2020: hardware priced below manufacturing cost, higher gaming-segment operating income and the contribution of software and network services. This is a historical segment result, not a claim about current hardware margins, a measured lifetime return per console or Cyberpunk’s contribution to those profits. The current diagrams use Cyberpunk across PC, PlayStation, Xbox and NVIDIA routes; these are not all versions of one transferable purchase. CD PROJEKT performs both development and publishing. Console catalog access does not supply a Windows PC entitlement for GeForce NOW. Sony’s and Microsoft’s catalog agreements are distinct; only CD PROJEKT’s account of the Sony deal is discussed. Nowakowski’s quotation is the complete opening sentence of his answer to question 5 in the Q3 2025 earnings transcript (PDF page 6, 18 words). His judgment of the deal’s return and expansion opportunity is management’s assessment, not an independently measured causal effect. No contract amount, commission rate, internal transfer price or per-play payment is inferred. The relationship between audience appeal and the surrounding businesses is our economic interpretation. Distribution helps establish the commercial context for later design analysis; it does not determine one game design.
 
 ## 3. Valve: the studio becomes the store
 

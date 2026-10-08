@@ -1,4 +1,4 @@
-import { studioCopy, publisherCopy, storefrontCopy, catalogCopy, hardwareRetailerCopy, cloudProviderCopy, localPlayerCopy, cloudPlayerCopy, catalogCloudPlayerCopy } from "./business-role-copy";
+import { studioCopy, publisherCopy, storefrontCopy, hardwareRetailerCopy, cloudProviderCopy, localPlayerCopy, cloudPlayerCopy } from "./business-role-copy";
 import { consoleCircuits, consoleAccessOptions } from "./console-business-circuits";
 /** Selected arrangements, not a universal supply chain or measured money flow. */
 export type CircuitScene = "factory" | "operator" | "bar" | "arcade-player" | "studio" | "engine" | "epic-store" | "publisher" | "store" | "hardware" | "home" | "pc-home" | "servers" | "film" | "catalog" | "network" | "viewer" | "xbox-store" | "playstation-store" | "xbox-hardware" | "playstation-hardware" | "xbox-home" | "playstation-home";
@@ -9,7 +9,7 @@ export type BusinessCircuit = { id: string; label: string; context: string; defa
 export const partyTitle = (party: CircuitParty) => `${party.name} (${party.category})`;
 const studio: CircuitParty = {name:"CD PROJEKT RED",category:"studio",scene:"studio",gameTitle:"CYBERPUNK 2077",...studioCopy};
 const publisher: CircuitParty = {name:"CD PROJEKT RED",category:"publisher",scene:"publisher",gameTitle:"CYBERPUNK 2077",...publisherCopy};
-const steam: CircuitParty = {name:"Steam",category:"storefront",scene:"store",...storefrontCopy};
+const steam: CircuitParty = {name:"Steam",category:"storefront",scene:"store",gameTitle:"CYBERPUNK 2077",...storefrontCopy};
 // Studio, publisher, game access, computing and player keep the same positions
 // in the local/cloud comparison. Role separation does not imply separate owners.
 const steamSupplies: CircuitSupply[] = [
@@ -45,29 +45,10 @@ const circuits: BusinessCircuit[] = [
   sources:[{label:"Al Alcorn: making & operating Pong",url:"https://archive.computerhistory.org/resources/access/text/2012/09/102658257-05-01-acc.pdf"},{label:"Operator / location splits, 1984",url:"https://elibrary.arcade-museum.com/magazines/pm/PlayMeter-1984-11-01/PlayMeter-1984-11-01-042.pdf"},{label:"Operator arrangements",url:"https://www.betson.com/are-arcades-profitable/"}],
  },
  {
-  id:"pc",label:"PC purchase",defaultPayment:1,play:{access:"Individual game purchase",compute:"Your PC runs the game"},context:"Grand Theft Auto V · a city crime adventure. Studio and publisher are distinct roles within the Rockstar group; Steam is the separate storefront.",
-  parties:[
-   {name:"Rockstar North",category:"studio",scene:"studio",gameTitle:"GRAND THEFT AUTO V",...studioCopy},
-   {name:"Rockstar Games",category:"publisher",scene:"publisher",gameTitle:"GRAND THEFT AUTO V",...publisherCopy},
-   {...steam,gameTitle:"GRAND THEFT AUTO V"},
-   {name:"PC store",category:"hardware retailer",scene:"hardware",...hardwareRetailerCopy},
-   {name:"Player",category:"customer",scene:"pc-home",gameTitle:"GRAND THEFT AUTO V",...localPlayerCopy},
-  ],
-  supplies:[{name:"Game development",from:0,to:1,payment:0},{name:"Published release",from:1,to:2,payment:1},{name:"Store & download",from:2,to:4,payment:2},{name:"Local computing",from:3,to:4,payment:3}],
-  payments:[
-   {name:"Development budget",from:1,to:0,explanation:"Rockstar’s studio and publishing roles sit within the same group. This line represents production funding, not a documented invoice or royalty payment between independent companies. Other publishers fund independent studios under contracts."},
-   {name:"Store settlement",from:2,to:1,explanation:"Steam settles with its publishing partner under their distribution agreement. That recipient is not necessarily the team that developed the game. Store deductions and the publisher’s remaining obligations come before profit."},
-   {name:"Game purchase",from:4,to:2,explanation:"The player buys the game through Steam. This is the purchase route for GTA V; online currency, subscriptions and other later offers are outside this diagram."},
-   {name:"Equipment purchase",from:4,to:3,explanation:"The player pays the PC retailer separately. That machine can run many games; its price is not part of the publisher’s game receipts."},
-  ],
-  note:"The original PC release, now listed as GTA V Legacy, credits Rockstar North as developer and Rockstar Games as publisher. Both belong to Take-Two’s Rockstar business; separate boxes identify responsibilities, not independent ownership. Other contributors, regional distributors and Rockstar’s account/launcher services are omitted. No private budget or contract rate is inferred.",
-  sources:[{label:"Steam: GTA V credits",url:"https://store.steampowered.com/app/271590/"},{label:"Take-Two: publishing labels & internal development, FY2025",url:"https://ir.take2games.com/static-files/1e8d3004-75ab-48d7-b705-7b44fe45694e"},steamSources[1]],
- },
- {
-  id:"local-pc",label:"Local PC",defaultPayment:3,play:{access:"Individual game purchase",compute:"Your PC runs the game"},context:"Cyberpunk 2077 · a futuristic action adventure, bought on Steam and run on the player’s PC",
+  id:"local-pc",label:"Local PC",defaultPayment:3,play:{access:"Individual game purchase",compute:"Your PC runs the game"},context:"Cyberpunk 2077 · bought on Steam and run on the player’s PC",
   parties:[studio,publisher,steam,
    {name:"PC store",category:"hardware retailer",scene:"hardware",...hardwareRetailerCopy},
-   {name:"Player",category:"customer",scene:"pc-home",...localPlayerCopy},
+   {name:"Player",category:"customer",scene:"pc-home",gameTitle:"CYBERPUNK 2077",...localPlayerCopy},
   ],
   supplies:[...steamSupplies,{name:"Local computing",from:3,to:4,payment:3}],
   payments:[...steamPayments,{name:"Equipment purchase",from:4,to:3,explanation:"The player buys a computer or components from hardware sellers. The purchase can serve many games and other tasks; it is not a fee for this particular session."}],
@@ -81,8 +62,8 @@ const circuits: BusinessCircuit[] = [
   ],
   supplies:[...steamSupplies,{name:"Remote computing",from:3,to:4,payment:3}],
   payments:[...steamPayments,{name:"Cloud membership",from:4,to:3,explanation:"This is a separate payment to NVIDIA for its computing service. Valve says Cloud Play leaves the game purchase and publisher payout on their existing terms."}],
-  note:"A paid GeForce NOW route, not every cloud service. Steam supplies game access to the player; NVIDIA supplies remote computing to that same player. Store sign-in and publisher opt-in enable supported streaming; NVIDIA is not buying the game from Steam and reselling it. A receiving device and connection are still needed. Other membership options exist; private contracts and rates are not inferred.",
-  sources:[...steamSources,{label:"NVIDIA: Cyberpunk on Steam & GeForce NOW",url:"https://www.nvidia.com/en-gb/geforce/news/cyberpunk-2077-rtx-dlss-out-now/"},{label:"Valve: Cloud Play",url:"https://partner.steamgames.com/doc/features/cloudgaming"},{label:"NVIDIA: membership",url:"https://www.nvidia.com/en-us/geforce-now/faq/"}],
+  note:"A paid GeForce NOW route, not every cloud service. Steam supplies game access to the player; NVIDIA supplies remote computing to that same player. Store sign-in and publisher opt-in enable supported streaming; NVIDIA is not buying the game from Steam and reselling it. A receiving device and connection are still needed. Cyberpunk requires a supported paid GeForce NOW tier. Private contracts and rates are not inferred.",
+  sources:[...steamSources,{label:"NVIDIA: Cyberpunk on Steam & GeForce NOW",url:"https://www.nvidia.com/en-gb/geforce/news/cyberpunk-2077-rtx-dlss-out-now/"},{label:"Valve: Cloud Play",url:"https://partner.steamgames.com/doc/features/cloudgaming"},{label:"NVIDIA: Cyberpunk paid-tier requirement from April 2026",url:"https://blogs.nvidia.com/blog/geforce-now-thursday-virtual-reality-update/"},{label:"NVIDIA: membership",url:"https://www.nvidia.com/en-us/geforce-now/faq/"}],
  },
  {
   id:"netflix",label:"Netflix",context:"An ad-free membership · commissioned and licensed screen entertainment",
@@ -105,46 +86,12 @@ const circuits: BusinessCircuit[] = [
 
 export const localCloudCircuits = circuits.filter(route=>route.id==="local-pc"||route.id==="cloud");
 
-const xboxCatalogCircuit = consoleAccessOptions.xbox.catalog;
-
-/** An optional second cloud arrangement, not the default meaning of cloud play. */
-export const cloudCatalogCircuit: BusinessCircuit = {
- id:"cloud-catalog",label:"Cloud play",defaultPayment:3,accessMode:"catalog",
- context:"Forza Horizon 5 · PC Game Pass supplies catalog access; a paid GeForce NOW membership supplies the remote computer.",
- play:{access:"PC Game Pass catalog subscription",compute:"GeForce NOW computing subscription"},
- parties:[
-  ...xboxCatalogCircuit.parties.slice(0,2),
-  {name:"PC Game Pass",category:"catalog service",scene:"xbox-store",catalogAccess:true,...catalogCopy},
-  {name:"NVIDIA",category:"cloud provider",scene:"servers",...cloudProviderCopy},
-  {name:"Player",category:"subscriber",scene:"home",...catalogCloudPlayerCopy},
- ],
- supplies:[{name:"Game development",from:0,to:1,payment:0},{name:"Published release",from:1,to:2,payment:1},{name:"Catalog access",from:2,to:4,payment:2},{name:"Remote computing",from:3,to:4,payment:3}],
- payments:[
-  ...xboxCatalogCircuit.payments.slice(0,2),
-  {name:"Catalog membership",from:4,to:2,explanation:"The player pays Microsoft for PC Game Pass access. This fee supports a catalog, not a permanent individual purchase of Forza Horizon 5. Microsoft supplies access directly to the player; GeForce NOW computing is a separate service."},
-  {name:"Cloud membership",from:4,to:3,explanation:"The player pays NVIDIA separately for remote computing. This membership supplies the machine’s work in either access option; the game comes from Steam or PC Game Pass, not from NVIDIA."},
- ],
- note:"Supported Forza Horizon 5 PC Game Pass route checked 7 October 2026. Paid GeForce NOW is selected for the comparison; NVIDIA also offers other membership options. Catalog eligibility, regional availability and membership conditions apply. No Microsoft–NVIDIA revenue split or private internal payment is asserted.",
- sources:[{label:"NVIDIA: Forza Horizon 5, including PC Game Pass",url:"https://blogs.nvidia.com/blog/geforce-now-thursday-forza-horizon/"},{label:"NVIDIA: Microsoft games & PC Game Pass support",url:"https://nvidia.custhelp.com/app/answers/detail/a_id/5462/kw/basics"},{label:"GeForce NOW: membership and game access",url:"https://www.nvidia.com/en-us/geforce-now/faq/"}],
+// Keep Cyberpunk fixed throughout the overview. Its console catalog licences do
+// not supply the PC entitlement required by NVIDIA; broader routes live in MarketMap.
+const pcPurchaseCircuit:BusinessCircuit={...localCloudCircuits[0],id:"pc",label:"PC purchase",defaultPayment:1,supplies:localCloudCircuits[0].supplies.map((supply,index)=>index===2?{...supply,name:"Store & download"}:supply)};
+const cloudPurchaseCircuit:BusinessCircuit={
+ ...localCloudCircuits[1],
+ alternative:{text:"Cyberpunk’s console catalog memberships do not include the PC edition used by GeForce NOW. This route keeps the Steam purchase; the market map includes other games with supported PC catalog access.",label:"Xbox: Cyberpunk’s console/cloud catalog scope",url:"https://news.xbox.com/en-us/2026/03/03/xbox-game-pass-march-2026-wave-1/"},
 };
-
-
-// The overview compares access offers for one game. The dedicated cloud chapter
-// above keeps Cyberpunk’s Steam purchase fixed while comparing local/cloud hardware.
-export const cloudPurchaseCircuit: BusinessCircuit = {
- ...cloudCatalogCircuit,id:"cloud",accessMode:"purchase",
- context:"Forza Horizon 5 · a purchased Steam copy, run remotely through a paid GeForce NOW membership.",
- play:{access:"Individual game purchase",compute:"GeForce NOW computing subscription"},
- parties:cloudCatalogCircuit.parties.map((party,index)=>index===1?{...party,...publisherCopy}:index===2?{...steam,gameTitle:"FORZA HORIZON 5"}:index===4?{...party,category:"customer",...cloudPlayerCopy}:party),
- supplies:cloudCatalogCircuit.supplies.map((supply,index)=>index===2?{...supply,name:"Game access"}:supply),
- payments:cloudCatalogCircuit.payments.map((payment,index)=>index===1?steamPayments[1]:index===2?{...payment,name:"Game purchase",explanation:"The player buys Forza Horizon 5 through Steam. This payment buys the game; it does not pay for a computer or a streaming membership. The game licence belongs to the player’s Steam account."}:payment),
- note:"Forza Horizon 5 supports both Steam and PC Game Pass routes on GeForce NOW. This selector holds the title, studio, publisher and computing provider fixed while comparing access offers. Steam supplies the purchased game to the player; NVIDIA supplies remote computing on a separate branch. Store licences and save progress are not assumed to transfer between versions. Supported stores, catalog inclusion, regions and membership conditions apply; no private rates are inferred.",
- sources:[{label:"Steam: Forza Horizon 5, developer & publisher",url:"https://store.steampowered.com/app/1551360/Forza_Horizon_5/"},steamSources[1],...cloudCatalogCircuit.sources,{label:"Valve: Cloud Play",url:"https://partner.steamgames.com/doc/features/cloudgaming"}],
-};
-
-export const businessCircuits = [...circuits.filter(route=>route.id==="arcade"||route.id==="pc"),...consoleCircuits,cloudPurchaseCircuit,...circuits.filter(route=>route.id==="netflix")];
-
-export const circuitAccessOptions: Partial<Record<string, Record<"purchase"|"catalog",BusinessCircuit>>> = {
- ...consoleAccessOptions,
- cloud:{purchase:cloudPurchaseCircuit,catalog:cloudCatalogCircuit},
-};
+export const businessCircuits=[...circuits.filter(route=>route.id==="arcade"),pcPurchaseCircuit,...consoleCircuits,cloudPurchaseCircuit,...circuits.filter(route=>route.id==="netflix")];
+export const circuitAccessOptions:Partial<Record<string,Record<"purchase"|"catalog",BusinessCircuit>>>=consoleAccessOptions;

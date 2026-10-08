@@ -390,7 +390,7 @@ function CoverArt({index}:{index:number}){return <>
  </>;}
 /** Editorial interpretation of the PS Store web hierarchy, inspected 7 October 2026.
  * Its light navigation, panoramic feature and separate action strip differ from Steam. */
-function PlayStationStorefront({catalog=false}:{catalog?:boolean}){return <>
+function PlayStationStorefront({catalog=false,gameTitle="CYBERPUNK 2077"}:{catalog?:boolean;gameTitle?:string}){return <>
  <ellipse cx="110" cy="190" rx="88" ry="11" fill="#061318" opacity=".6"/>
  <g transform="matrix(1 .08 -.08 1 22 20)">
   <rect x="3" y="4" width="174" height="160" rx="4" fill="#050f17" opacity=".7"/>
@@ -407,16 +407,16 @@ function PlayStationStorefront({catalog=false}:{catalog?:boolean}){return <>
   <path d="M0 39h174" stroke="#9caeab" strokeWidth=".6"/>
   <svg x="0" y="43" width="174" height="58" viewBox="0 0 174 58" overflow="hidden">
    <rect width="174" height="58" fill="#283b4b"/>
-   <g transform="translate(48 0) scale(2.44 1.94)"><ConsoleGameArt racing={false}/></g>
+   <g transform="translate(48 0) scale(2.44 1.94)"><AdventureArt gameTitle={gameTitle}/></g>
    <path d="M0 0h64l17 58H0Z" fill="#1b3040"/>
    <path d="M0 56h174" stroke="#d6b57b" strokeWidth=".6"/>
-   <text x="8" y="21" fill="#e2d5ad" fontSize="8" fontWeight="bold" fontFamily="Arial,sans-serif">SPIDER-MAN</text>
-   <text x="10" y="44" fill="#db9675" fontSize="23" fontFamily="Georgia,serif">2</text>
-   <path d="M33 34h25m-25 4h19m-19 4h22" stroke="#829cac" strokeWidth=".7"/>
+   <text x="8" y="21" fill="#e2d5ad" fontSize="8" fontWeight="bold" fontFamily="Arial,sans-serif">CYBERPUNK</text>
+   <text x="10" y="44" fill="#db9675" fontSize="20" fontFamily="Georgia,serif">2077</text>
+
    <rect className={s.storeFocus} x="1" y="1" width="172" height="56" fill="none" stroke="#ede3bd" strokeWidth="1.2"/>
   </svg>
   <path d="M0 102h174v21H0Z" fill="#d3d4c1"/>
-  <text x="8" y="111" fill="#293e46" fontSize="5.6" fontFamily="Arial,sans-serif">Marvel’s Spider-Man 2</text>
+  <text x="8" y="111" fill="#293e46" fontSize="5.6" fontFamily="Arial,sans-serif">Cyberpunk 2077</text>
   <text x="8" y="118" fill="#587075" fontSize="4" fontFamily="Arial,sans-serif">{catalog?"PS5 · Game Catalog":"PS5 · Digital game"}</text>
   <rect x="121" y="107" width="45" height="11" rx="5.5" fill="#386d8b"/>
   <rect className={s.cartGlow} x="120" y="106" width="47" height="13" rx="6.5" fill="#a9d2e1" fillOpacity=".25" stroke="#719baa"/>
@@ -430,7 +430,7 @@ function PlayStationStorefront({catalog=false}:{catalog?:boolean}){return <>
  </g>
 </>;}
 function DigitalStorefront({gameTitle="CYBERPUNK 2077",epic=false,platform,catalog=false}:{gameTitle?:string;epic?:boolean;platform?:"xbox"|"playstation";catalog?:boolean}){
- const headlines=platform==="xbox"||gameTitle==="FORZA HORIZON 5"?["FORZA HORIZON","5"]:platform==="playstation"?["SPIDER-MAN","2"]:epic?["CREATOR","GAMES"]:gameTitle==="CYBERPUNK 2077"?["CYBERPUNK","2077"]:["GRAND THEFT","AUTO V"];
+ const headlines=gameTitle==="FORZA HORIZON 5"?["FORZA HORIZON","5"]:gameTitle==="SPIDER-MAN 2"?["SPIDER-MAN","2"]:epic?["CREATOR","GAMES"]:gameTitle==="CYBERPUNK 2077"?["CYBERPUNK","2077"]:["GRAND THEFT","AUTO V"];
  return <>
  <ellipse cx="109" cy="188" rx="88" ry="11" fill="#061318" opacity=".6"/>
  <g transform="matrix(1 .08 -.08 1 22 22)">
@@ -596,12 +596,12 @@ function Controller({light=false}:{light?:boolean}){return <g>
  <path d="M-6-1v4m-2-2h4" stroke={light?"#374e51":"#c6c8a1"} strokeWidth="1"/>
  <circle cx="5" cy="0" r=".8" fill="#9bbb95"/><circle cx="8" cy="2" r=".8" fill="#b58c6d"/><circle cx="0" cy="2" r="1.1" fill="#101f29"/>
  </g>;}
-function ConsoleHardware({platform}:{platform:ConsolePlatform}){return <>
+function ConsoleHardware({platform,gameTitle}:{platform:ConsolePlatform;gameTitle?:string}){return <>
  <Wall/><Lamp u={23} v={52}/>
  <Side v={103} z={104}><rect width="88" height="20" fill="#1a383d" stroke="#b2a473"/><text x="8" y="13" fontSize="8" fontFamily="Arial,sans-serif" fill="#ddd2ac">{platform==="xbox"?"XBOX SERIES X":"PLAYSTATION 5"}</text></Side>
  <Box u={6} v={18} w={27} d={77} h={31} top="#6d806c" front="#294541"/>
  {[28,70].map(v=><ConsoleUnit key={v} u={10} v={v} z={32} platform={platform}/>)}
- <Front u={41} v={1} z={101}><rect width="61" height="38" fill="#425f5b" stroke="#c2b484"/><g transform="translate(3 3) scale(1.05 .98)"><ConsoleGameArt racing={platform==="xbox"} editor/></g></Front>
+ <Front u={41} v={1} z={101}><rect width="61" height="38" fill="#425f5b" stroke="#c2b484"/><g transform="translate(3 3) scale(1.05 .98)"><AdventureArt gameTitle={gameTitle} editor/></g></Front>
  <Box u={47} v={15} w={45} d={18} h={31} top="#7d856c" front="#304b45"/>
  <Plane u={52} v={21} z={32}><g transform="translate(14 4)"><Controller light={platform==="playstation"}/></g></Plane>
  <Box u={39} v={67} w={62} d={26} h={34} top="#8c8762" front="#2c4644" side="#213a3b"/>
@@ -610,7 +610,7 @@ function ConsoleHardware({platform}:{platform:ConsolePlatform}){return <>
  <Front u={70} v={88.2} z={57}><rect width="20" height="20" fill="#aeb391"/><path d={platform==="xbox"?"M7 3h7v14H7Z":"M6 2q4 4 1 15h9q-3-11 1-15Z"} fill="#2b464a"/><path d="M3 19h14" stroke="#4b6352"/></Front>
  <Front u={44} v={78} z={48}><rect width="13" height="13" rx="1" fill="#183039" stroke="#a6af8d"/><rect x="2" y="2" width="9" height="6" fill="#597c69"/><g className={s.terminalReady}><path d="m3 5 2 2 5-4" fill="none" stroke="#d9e3b4" strokeWidth="1.4"/></g><path d="M3 10h7" stroke="#9b9c73"/></Front>
  </>;}
-function ConsoleHome({platform}:{platform:ConsolePlatform}){
+function ConsoleHome({platform,gameTitle}:{platform:ConsolePlatform;gameTitle?:string}){
  const [x,y]=p(60,84);
  return <>
  <Wall/><HomeWindow/>
@@ -619,7 +619,7 @@ function ConsoleHome({platform}:{platform:ConsolePlatform}){
  <Box u={18} v={4} w={81} d={28} h={23} top="#80806a" front="#334b45" side="#223b3c"/>
  <Front u={23} v={32.2} z={19}><path d="M0 0h68v12H0Zm34 0v12" fill="none" stroke="#859273"/><path d="M11 5h8m30 0h8" stroke="#c9b985"/></Front>
  <ConsoleUnit u={81} v={9} z={24} platform={platform}/>
- <Front u={15} v={8} z={99}><rect x="-2" y="-2" width="75" height="48" rx="1.5" fill="#11262e" stroke="#a8b195" strokeWidth="1"/><g transform="scale(1.36 1.4)"><ConsoleGameArt racing={platform==="xbox"}/></g><path d="M4 44h57" stroke="#b1ba91" strokeWidth=".5"/><circle cx="67" cy="44" r=".8" fill="#9fc7ad" className={s.pcLed}/></Front>
+ <Front u={15} v={8} z={99}><rect x="-2" y="-2" width="75" height="48" rx="1.5" fill="#11262e" stroke="#a8b195" strokeWidth="1"/><g transform="scale(1.36 1.4)"><AdventureArt gameTitle={gameTitle}/></g><path d="M4 44h57" stroke="#b1ba91" strokeWidth=".5"/><circle cx="67" cy="44" r=".8" fill="#9fc7ad" className={s.pcLed}/></Front>
  <Box u={30} v={71} w={60} d={25} z={4} h={17} top="#697a64" front="#354d44"/>
  <Box u={25} v={70} w={6} d={32} z={4} h={29} top="#909475" front="#4c6454"/>
  <Box u={90} v={70} w={6} d={32} z={4} h={29} top="#909475" front="#4c6454"/>
@@ -638,5 +638,5 @@ function ConsoleHome({platform}:{platform:ConsolePlatform}){
 
 /** Deterministic geometry. CSS animates only lifecycle-gated screen/mechanical details. */
 export const CircuitVignette = memo(function CircuitVignette({kind,gameTitle,catalogAccess=false}:{kind:CircuitScene;gameTitle?:string;catalogAccess?:boolean}){
- return <g strokeLinejoin="round" strokeLinecap="round"><Floor/>{kind==="playstation-store"?<PlayStationStorefront catalog={catalogAccess}/>:kind==="xbox-store"?<DigitalStorefront platform="xbox" gameTitle="FORZA HORIZON 5" catalog={catalogAccess}/>:kind==="xbox-hardware"||kind==="playstation-hardware"?<ConsoleHardware platform={kind==="xbox-hardware"?"xbox":"playstation"}/>:kind==="xbox-home"||kind==="playstation-home"?<ConsoleHome platform={kind==="xbox-home"?"xbox":"playstation"}/>:kind==="factory"?<Factory/>:kind==="operator"?<Operator/>:kind==="bar"?<Bar/>:kind==="arcade-player"?<ArcadePlayers/>:kind==="studio"||kind==="engine"?<Studio gameTitle={gameTitle}/>:kind==="epic-store"?<DigitalStorefront epic/>:kind==="publisher"?<PublisherOffice gameTitle={gameTitle}/>:kind==="store"?<Store gameTitle={gameTitle}/>:kind==="hardware"?<Hardware/>:kind==="pc-home"?<PcHome gameTitle={gameTitle}/>:kind==="home"?<Home/>:kind==="servers"?<Servers/>:kind==="film"?<Film/>:kind==="catalog"?<Store catalog/>:kind==="network"?<Servers network/>:<Home viewer/>}</g>;
+ return <g strokeLinejoin="round" strokeLinecap="round"><Floor/>{kind==="playstation-store"?<PlayStationStorefront gameTitle={gameTitle} catalog={catalogAccess}/>:kind==="xbox-store"?<DigitalStorefront platform="xbox" gameTitle={gameTitle} catalog={catalogAccess}/>:kind==="xbox-hardware"||kind==="playstation-hardware"?<ConsoleHardware gameTitle={gameTitle} platform={kind==="xbox-hardware"?"xbox":"playstation"}/>:kind==="xbox-home"||kind==="playstation-home"?<ConsoleHome gameTitle={gameTitle} platform={kind==="xbox-home"?"xbox":"playstation"}/>:kind==="factory"?<Factory/>:kind==="operator"?<Operator/>:kind==="bar"?<Bar/>:kind==="arcade-player"?<ArcadePlayers/>:kind==="studio"||kind==="engine"?<Studio gameTitle={gameTitle}/>:kind==="epic-store"?<DigitalStorefront epic/>:kind==="publisher"?<PublisherOffice gameTitle={gameTitle}/>:kind==="store"?<Store gameTitle={gameTitle}/>:kind==="hardware"?<Hardware/>:kind==="pc-home"?<PcHome gameTitle={gameTitle}/>:kind==="home"?<Home/>:kind==="servers"?<Servers/>:kind==="film"?<Film/>:kind==="catalog"?<Store catalog/>:kind==="network"?<Servers network/>:<Home viewer/>}</g>;
 });

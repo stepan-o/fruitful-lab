@@ -144,3 +144,30 @@ The browser error log is empty. Temporary viewport override was reset.
 Evidence screenshots (local review artifacts):
 - `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-prose-desktop.png`
 - `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-prose-mobile.png`
+
+
+## USD history, grouped YoY view and PS5 annotations
+
+Required `API_BASE_URL=http://localhost:8000 npm run ci` exited 0: 66 suites,
+343 tests, one snapshot, 22 retained asset releases and production build pass.
+Scoped ESLint and `git diff --check` pass. Added checks cover per-year FX,
+converted reconciliation, shared growth bounds, missing baseline, negative-bar
+geometry, category isolation, retained selections and the supply annotations.
+
+Local production browser checks at 1280×900, 768×1024, 390×844 and 320×760:
+no horizontal page overflow; Revenue and Year-over-year change controls work;
+four category bars per comparison year, no invented FY2016 growth; gains and
+losses share the zero line; keyboard category selection and mode switching
+retain FY2022; supply annotation/milestone selects its sourced explanation;
+2022 hardware displays +58.1% / US$8.30bn. All mobile chart buttons meet 44px
+height. Fixed axes remain legible while years scroll, and source disclosure
+retains JPY values and each annual FX link. Browser error log is empty.
+No new dependency, asset, network request or continuous animation was added.
+
+Review captures:
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-usd-yoy-desktop.png`
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-usd-yoy-mobile.png`
+
+Currency and source boundaries are documented in `SONY_FINANCIAL_HISTORY.md`.
+FY2025 chapter prose and manuscript copies now match the USD display. The early
+1990s source-currency historical figures remain explicitly identified as yen.

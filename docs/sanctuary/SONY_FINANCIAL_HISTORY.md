@@ -179,14 +179,14 @@ Chapter prose now follows the figure with four paragraphs explaining the money:
 - FY2025 G&NS sales: ¥4,685,651m. The roughly **US$31bn** illustration is our
   conversion at Sony’s FY2025 average **¥150.7/USD** (supplement p. 3):
   4,685,651 / 150.7 / 1,000 = **US$31.0926bn**. This is not a reported USD
-  segment result, and does not change the charts’ nominal-yen basis.
+  segment result. The subsequent chart update below applies annual USD conversion throughout.
 - Same-period Music sales ¥2,120,110m + Pictures ¥1,499,290m = ¥3,619,400m,
   below gaming revenue. All three use the segment table (p. 4), including
   intersegment sales. This compares Sony businesses, not entire entertainment
   industries or their profit. Pictures includes more than theatrical films.
 - Chart-aligned components: hardware ¥944.425bn; PlayStation games/add-ons
   ¥2,540.411bn; network services ¥763.126bn; regrouped Other ¥437.688bn.
-  Rounded prose says ¥944bn, ¥2.54tn, ¥763bn and ¥438bn.
+  Current prose converts these to US$6.3bn, US$16.9bn, US$5.1bn and US$2.9bn.
 - Add-ons **¥1,359.617bn** are included within games/add-ons, never added a
   second time to the total. Sony’s p. 12 definition covers digital content
   other than full games, including currency, items and expansion packages.
@@ -229,3 +229,82 @@ Sony illustrates the economic attraction of distribution; these accounts are
 not evidence of Valve’s motives. The revised closing preserves Valve’s own
 update-delivery origin and continued game development. Chapter 3 retains the
 primary-source account. No new image, animation, dependency or asset release.
+
+
+## PS5 transition annotations (8 October 2026)
+
+Three persistent, selectable labels share the bars’ year grid and mobile scroll:
+FY2019 “News of PS5 weakens PS4 demand”, FY2020 “PS5 launches · 12 & 19 Nov”,
+and 2021–22 “Chip shortages & disrupted shipping”, noting recovery during 2022.
+They select the same sourced year readout as the bars and year picker and remain
+visible in the revenue and YoY views. FY2022 has a separate recovery milestone.
+
+- Sony’s [July 2019 presentation, p. 9](https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/19q1_sonyspeech.pdf#page=9)
+  attributes below-expectation Q1 PS4 sales primarily to news of its next console.
+  This is not a quantified explanation of the entire full-year decline.
+- The [official launch announcement](https://blog.playstation.com/2020/09/16/playstation-5-launches-in-november-starting-at-399-for-ps5-digital-edition-and-499-for-ps5-with-ultra-hd-blu-ray-disc-drive/)
+  gives 12 November 2020 for the first seven markets and 19 November for the
+  wider rollout. This is the release date, not the announcement date.
+- The FY2022 readout now explains supply recovery. Sony’s
+  [July 2022 report, p. 9](https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/22q1_sonyspeech.pdf#page=9)
+  connects recovery from Shanghai lockdown and component availability with
+  improved production; its [November report, p. 9](https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/22q2_sonyspeech.pdf#page=9)
+  says restrictions on materials and logistics eased significantly.
+- Sony’s [FY2021 annual filing](https://www.sec.gov/Archives/edgar/data/313838/000119312522183263/d207380d20f.htm)
+  identifies semiconductor/other-component constraints and logistics disruption.
+  Its [2022 business briefing, p. 12](https://www.sony.com/en/SonyInfo/IR/library/presen/irday/pdf/2022/GNS_E.pdf#page=12)
+  names Shanghai parts-inventory risk, Russia-related logistics risk, multiple
+  suppliers and delivery-route negotiations. It does not identify a single
+  chip model, supplier or port as the decisive PS5 bottleneck, or quantify each
+  factor’s contribution. Do not substitute speculation about AMD chips for
+  this disclosure.
+- Hardware revenue growth FY2021→FY2022: 1,123,522 / 589,462 − 1 = 90.60%.
+  PS5 unit growth: 19.1 / 11.5 − 1 = 66.09%. These are different measures;
+  currency, price and mix affect revenue, and hardware includes PS4 too.
+
+
+## USD display and grouped annual change — 8 October 2026
+
+Both revenue and operating profit now display **nominal US dollars**. Divide
+original JPY millions by the corresponding fiscal year's annual-average JPY/USD
+rate to obtain USD millions; divide by 1,000 for the displayed USD billions.
+These are derived conversions, not USD segment totals published by Sony. No
+inflation adjustment, today's exchange rate or constant-currency claim is made.
+The original JPY table remains available with clickable FX sources for audit.
+
+| FY | JPY per USD | Sony supplement, printed page |
+| --- | ---: | --- |
+| 2016 | 108.4 | 18q4, 2 |
+| 2017 | 110.9 | 18q4, 2 |
+| 2018 | 110.9 | 18q4, 2 |
+| 2019 | 108.7 | 20q4, 3 |
+| 2020 | 106.1 | 20q4, 3 |
+| 2021 | 112.3 | 22q4, 3 |
+| 2022 | 135.4 | 22q4, 3 |
+| 2023 | 144.4 | 24q4, 3 |
+| 2024 | 152.5 | 25q4, 3 |
+| 2025 | 150.7 | 25q4, 3 |
+
+Documents are under Sony's [quarterly results archive](https://www.sony.com/en/SonyInfo/IR/library/presen/er/).
+The source data links directly to each PDF and page. FY2024 **152.5** is the full
+year rate, not the fourth quarter's 152.6. FY2020's monetary totals retain the
+later IFRS restatement; its conversion uses that year's 106.1 average.
+
+The second chart view groups the four category bars within each year and plots
+`100 × (current converted USD / prior converted USD − 1)`. It is percentage
+change, not percentage-point change or change in revenue share. Negative bars
+extend below a visible zero line. All categories use the same −40% to +80% scale,
+including when isolated. FY2016 is marked **Base year**, with no invented zero
+or previous-year estimate. Operating profit is excluded from this view. Year,
+category and annotation selections persist when switching views; exact growth
+and revenue are in the selected-year readout and accessible year descriptions.
+
+FY2021→FY2022 hardware: (1,123,522 / 135.4) / (589,462 / 112.3) − 1 ≈ **58.1%**.
+Its 90.6% original JPY growth is not the USD chart's growth. FY2018→FY2019
+hardware declines about **28.1% in USD**. Exchange rates, accounting changes and
+category regrouping remain disclosed; this view is not organic growth or a
+causal estimate of the console announcements and shortages.
+
+FY2025 chapter prose is synchronized to USD, including the US$9.0bn add-on total
+and US$3.1bn operating profit. The 1990s historical paragraph explicitly retains
+its original yen figures; no unsupported historical FX is inferred.

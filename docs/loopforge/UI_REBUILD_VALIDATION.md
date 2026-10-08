@@ -133,3 +133,19 @@ and CLS remain unmeasured; existing Speed Insights is unchanged.
 The reviewable scope is the first-day interface. It does not claim that later
 Act 1 mechanics, a soundtrack, live 3D, long-run balance or model-generated
 adviser dialogue are implemented. Preview deployment is checked after publication.
+
+## Hosted delivery
+
+[PR #99](https://github.com/stepan-o/fruitful-lab/pull/99) is a mergeable draft
+against `master`. Vercel deployment `dpl_EnSkRtod6L4KZMKBh2bbGt1k7HwV` reached
+READY for application commit `2e073a679b6bfa2e36689d33622c00ab24c410b6`.
+[Open the verified console](https://fruitful-audhnq2ms-stepan-oskins-projects.vercel.app/stepanoskin/loopforge/play).
+
+The hosted browser completed LIMEN selection, original placements, continuous
+playback, automatic conveyor easing, the Security decision, a 5/5 dispatch and
+debrief. Final confirmed totals: 10 produced, 29 factory workers, 5/60 delivered,
+condition 76%, no workers lost. Both supervisors' reactions appeared. No browser
+errors or warnings were captured. Existing preview access worked; no protection
+change or new share link was needed. `hosted-opening.jpg` and
+`hosted-dispatch.jpg` capture that deployment. The subsequent delivery-record
+commit changes documentation/evidence only.

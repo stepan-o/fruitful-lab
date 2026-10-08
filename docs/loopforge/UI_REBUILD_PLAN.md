@@ -87,11 +87,12 @@ placeholders in the submitted build.
 - [x] Validate both adviser trajectories and meaningful overrides against authoritative results.
 - [x] Run production checks, measure delivery and capture visual evidence.
 - [x] Iterate failures; write the final gate assessment and update implementation docs.
-- [ ] Publish a scoped PR only after the agent-controlled gates pass; verify its preview.
+- [x] Publish a scoped PR only after the agent-controlled gates pass; verify its preview.
 
 ## Evidence and final assessment
 
 Agent-controlled implementation gates pass. See [the validation record](UI_REBUILD_VALIDATION.md)
 for exercised paths, responsive screenshots, image payloads, tests and limits.
-Owner enjoyment approval remains a separate playtest judgment. The scoped PR
-and its hosted preview are the final delivery step.
+Owner enjoyment approval remains a separate playtest judgment.
+[PR #99](https://github.com/stepan-o/fruitful-lab/pull/99) is open; the hosted
+preview was exercised through a full first shift and permanent dispatch.

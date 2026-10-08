@@ -14,6 +14,8 @@ screens, not mockups. They are review evidence and are not served by the app.
 | Structured STILETTO briefing | [Briefing](briefing.jpg) |
 | Security intervention | [Decision](decision.jpg) |
 | Sealed development context | [Development](development.jpg) |
+| Hosted opening | [Vercel console](hosted-opening.jpg) |
+| Hosted dispatch confirmation | [Vercel dispatch](hosted-dispatch.jpg) |
 
 The JSON files record actual selected image URLs and active CSS texture URLs.
 Local origins identify the measurement environment, not a deployed dependency.

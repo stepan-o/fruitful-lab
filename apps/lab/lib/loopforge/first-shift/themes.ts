@@ -41,6 +41,7 @@ export function themeMedia(recipe: ThemeRecipe): Record<string, ImageAsset> {
   const shell = packs.get(recipe.shell)!, controls = packs.get(recipe.controls)!;
   return {
     "monitor-frame": imageAsset(shell, "monitor-frame"),
+    "supervisor-socket": imageAsset(shell, "supervisor-socket"),
     ...Object.fromEntries(["button-rest", "button-hover", "button-pressed"].map(id => [id, imageAsset(controls, id)])),
   };
 }

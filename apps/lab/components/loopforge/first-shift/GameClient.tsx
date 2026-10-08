@@ -21,7 +21,7 @@ function GameSession({ media }: { media: Media }) {
   return <div className={s.game} style={{ ...materialStyle(media), ...theme.style }} data-theme={theme.recipe.shell}>
     {menu && <main className={s.menu} aria-label="Loopforge start menu">
       <ConsoleBeacon active={!settings} />
-      <div className={s.menuScene}><Art media={media} id="forge" sizes="100vw" priority /></div>
+      <div className={s.menuScene}><Art media={media} id="lobby-room" sizes="100vw" priority /></div>
       <div className={s.menuGlass} aria-hidden="true" />
       <section className={s.menuPanel} data-light-frame>
         <Kicker>DIRECTOR ACCESS / LOOPFORGE</Kicker>

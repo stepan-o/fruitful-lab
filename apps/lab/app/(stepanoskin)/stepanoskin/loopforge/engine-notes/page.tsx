@@ -23,7 +23,7 @@ const boundaries = [
   ],
   [
     "Viewer",
-    "The current React viewer displays illustrated cameras, briefings, decisions and records. The director-console revision makes these asset-driven interfaces a complete playable loop. A later live 3D view joins through the same semantic boundary; neither presentation layer chooses outcomes or imports the kernel.",
+    "The React viewer separates the six-camera wall, adviser intercom, placements, room focus, dispatch, debrief and records into focused workspaces. Illustrated assets carry those jobs within one persistent console. A later live 3D view joins through the same semantic boundary; neither presentation layer chooses outcomes or imports the kernel.",
   ],
 ];
 export default function EngineNotes() {
@@ -60,6 +60,27 @@ export default function EngineNotes() {
             </li>
           ))}
         </ol>
+        <h2>One console. Focused interfaces.</h2>
+        <p>
+          The first turn opens on two live cameras, four unpowered screens and
+          two speaking supervisor tokens. Choosing a token opens an intercom;
+          appointment, briefing and placements each get their own space.
+          Incidents pause the shift. Dispatch uses the original office artwork,
+          and the results are filed against the logistics hall. Those settings
+          do not add managed rooms.
+        </p>
+        <p>
+          Confirmed facts remain on the instrument rail. Workspace focus, help,
+          theme choices and unconfirmed placement or dispatch drafts stay in the
+          viewer. Time advances only while the factory wall or a room camera is
+          active, with the window visible and no modal or consequential decision
+          pending.
+        </p>
+        <p>
+          <Link href="/stepanoskin/loopforge/design#focused-console">
+            Focused interface contract and screen map →
+          </Link>
+        </p>
         <h2>Six consoles, one world.</h2>
         <p>
           The game menu and Settings expose all six equipment themes. A typed
@@ -77,7 +98,11 @@ export default function EngineNotes() {
           default is dark. Screen-space occlusion uses the same measured source
           as the light, with no per-frame kernel or React updates.
         </p>
-        <p><Link href="/stepanoskin/loopforge/design#themes-assets">Themes, assets and feedback contract →</Link></p>
+        <p>
+          <Link href="/stepanoskin/loopforge/design#themes-assets">
+            Themes, assets and feedback contract →
+          </Link>
+        </p>
         <h2>Rust-native logic, TypeScript implementation.</h2>
         <p style={{ margin: "20px 0 32px" }}>
           The domain uses owned plain records, discriminated unions, bounded

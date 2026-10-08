@@ -1,3 +1,5 @@
+Current delivery contract: [Focused console rebuild](FOCUSED_CONSOLE_REBUILD.md). Its focused workspace implementation replaces the rejected composition below. The historical completed checklist records the earlier attempted delivery, not owner acceptance of that attempt.
+
 # Director console rebuild
 
 8 October 2026 · scope: Loopforge first shift in `apps/lab`.
@@ -9,7 +11,7 @@ baseline; the visual gate is not cleared. The next pass starts with
 full-floor screen design, a separate asset pass and implementation. All six rooms
 must be visible in the factory overview from turn one, with four initially sealed.
 
-**Current material release:** all six generated directions are implemented as runtime monitor/control kits, with a menu, in-run selector and author mixer. See `UI_THEME_ASSET_SYSTEM.md` and `CONSOLE_LIGHT_FEEDBACK.md`. This comparison layer does not accept or replace the rejected overall composition. The complete six-camera wall, pen-written tapes, speaking tokens and focused interfaces remain the broader composition gate described below.
+**Historical material-only release (superseded by the focused console rebuild):** all six generated directions are implemented as runtime monitor/control kits, with a menu, in-run selector and author mixer. See `UI_THEME_ASSET_SYSTEM.md` and `CONSOLE_LIGHT_FEEDBACK.md`. This comparison layer does not accept or replace the rejected overall composition. The complete six-camera wall, pen-written tapes, speaking tokens and focused interfaces remain the broader composition gate described below.
 
 ## Brief and delivery boundary
 

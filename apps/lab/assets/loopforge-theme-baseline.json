@@ -40,6 +40,16 @@
       ],
       "quality": 84,
       "maxBytes": 240000
+    },
+    "supervisor-socket": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/baseline-socket.png",
+      "widths": [
+        240,
+        480
+      ],
+      "quality": 88,
+      "maxBytes": 240000
     }
   }
 }

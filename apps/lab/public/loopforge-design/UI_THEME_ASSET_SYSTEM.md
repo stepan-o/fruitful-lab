@@ -4,7 +4,7 @@
 
 ## One game, six presentations
 
-Factory Original, Field Instrument, Broadcast Desk, Foundry Switchboard, Submarine Watch and Neural Diagnostics use the same interface hierarchy, readable text, hit targets, rules, scenes and character identities. Each has its own authored camera chrome and control states. Theme selection changes material presentation; it never changes production, supervisor motives, knowledge or difficulty.
+Factory Original, Field Instrument, Broadcast Desk, Foundry Switchboard, Submarine Watch and Neural Diagnostics use the same interface hierarchy, readable text, hit targets, rules, scenes and character identities. Each has its own authored camera chrome, portrait socket and control states. Theme selection changes material presentation; it never changes production, supervisor motives, knowledge or difficulty.
 
 The stack remains Next.js, React, TypeScript, native controls, CSS Modules and Web Audio. A new renderer or animation framework is unnecessary for equipment skins. A future tick-fed 3D factory remains a separate view over the same knowledge-filtered protocol. It can reuse semantic asset references without inheriting DOM layout or CSS.
 
@@ -22,7 +22,7 @@ The run controller is mounted above visual changes. Never key the game or its co
 
 ## Where the player chooses
 
-The start menu is a physical Loopforge console with Start shift, Settings and return to the Loopforge landing. It precedes the first turn; it does not replace adviser choice with an introductory dialogue or a second handover screen. Once started, the first turn still opens paused, with no assignments and the two advisers' pitches. Factory, Development and Records remain gameplay screens.
+The start menu is a physical Loopforge console with Start shift, Settings and return to the Loopforge landing. It precedes the first turn; it does not replace adviser choice with an introductory dialogue or a second handover screen. Once started, the first turn still opens paused, with no assignments and the two advisers' pitches. Factory, Development and Records are durable navigation destinations. Intercom, briefing, placement, room focus, dispatch and debrief each occupy the focused workspace; incidents, guidance, instrument details and settings are temporary dialogs.
 
 In-run Settings pauses advance requests and exposes the same six themes. Menu access preserves an active in-memory run. Resume means that existing session, not a promised cloud save; reloading currently begins a new first-day prototype. Theme preference can persist locally even though game progress does not. Restarting a run is a separate explicit action.
 
@@ -38,17 +38,17 @@ Show all six names and material previews. Display loading, success and failure h
 | Instruments | Material plate and a coherent icon family | Funds, workforce, condition and weekly delivery definitions; no invented gauges |
 | Shared content | Room scenes, character portraits, room-label content, fonts and sounds | Shared across the first comparison so theme results are comparable |
 
-Treat a button's housing and all its interaction states as one assembly. Do not mix one theme's resting button with another's pressed state. A portrait is separate from its socket. A room scene is separate from its bezel. Text never lives in a full-screen raster. Tapes may carry authored handwriting, with a semantic name retained for assistive technology.
+Treat a button's housing and all its interaction states as one assembly. Do not mix one theme's resting button with another's pressed state. A portrait is separate from its socket. A room scene is separate from its bezel. Text never lives in a full-screen raster. Generated blank tapes carry live Caveat handwriting, preserving semantic names and responsive wrapping. Speech uses Barlow Semi Condensed; instruments use IBM Plex Mono, self-hosted by Next font.
 
-The initial theme release can reuse shared original portrait/icon/glass assets while replacing the monitor and control families. Additional per-theme intercoms and symbols must be explicitly catalogued; a style sheet is not evidence that every illustrated component has been implemented. The review boards themselves are never the playable scene or runtime sprite sheet.
+The current release includes six separately generated portrait sockets, shared original portraits and glass, cropped relief symbols from the baseline sheet, and separately generated blank tape and speech surfaces. Additional symbols must be explicitly catalogued; a style sheet is not evidence that every illustrated component has been implemented. The review boards themselves are never the playable scene or runtime sprite sheet.
 
 ## Asset contracts and delivery
 
 Keep the existing immutable media pipeline. Each theme has a catalog of logical asset IDs, optimized responsive derivatives, a content-hashed manifest and a short-cached release pointer. Source masters and generation records live outside public media. Production consumes the published derivatives.
 
-The theme registry owns stable IDs, display names, palette tokens, compatible geometry, preview references and a pinned build-time manifest. The theme adapter maps these to semantic presentation slots. The generic asset manifest remains a file-delivery contract; do not insert UI geometry or game rules into it. Geometry belongs to the typed presentation contract alongside the registry. The implementation bundles the six immutable manifest snapshots as small metadata imports; no runtime latest-pointer fetch can silently change a recipe. The asset check verifies file/manifest hashes at build time.
+The theme registry owns stable IDs, display names, palette tokens, compatible geometry, preview references and a pinned build-time manifest. The theme adapter maps these to semantic presentation slots. The generic asset manifest remains a file-delivery contract; do not insert UI geometry or game rules into it. Geometry belongs to the typed presentation adapter alongside the registry. Whole monitor stage dimensions preserve a 1.65 aspect ratio inside responsive cells; calibrated safe openings cover each theme’s differently shaped bezel. The implementation bundles the six immutable manifest snapshots as small metadata imports; no runtime latest-pointer fetch can silently change a recipe. The asset check verifies file/manifest hashes at build time.
 
-For each new asset retain: source and generation prompt, reference images, rights/use record, content hash, intended slot, state family, source dimensions, crop/trim recipe, scale variants, safe content inset, corner/slice geometry and review status. Control sheets are split into three equal-height rows, then transparent gutters are trimmed. Each state uses the same normalized nine-slice geometry; fixed native targets do not jump when the state image changes. Per-state source dimensions and exact crop regions remain in the preparation record. Keep cut lines out of corners and lettering. Do not stretch a complete monitor or character portrait to fit arbitrary aspect ratios.
+For each new asset retain: source and generation prompt, reference images, rights/use record, content hash, intended slot, state family, source dimensions, crop/trim recipe, scale variants, safe content inset, corner/slice geometry and review status. Control sheets are split into three equal-height rows, then transparent gutters are trimmed. Each control state renders in the same fixed native target and does not move its text or hit area when the image changes. Per-state source dimensions and exact crop regions remain in the preparation record. Keep cut lines out of corners and lettering. Do not stretch a complete monitor or character portrait to fit arbitrary aspect ratios.
 
 Load only the selected theme's required files. Keep ordinary room/portrait assets shared and let content hashes deduplicate bytes. Prepare interaction states before enabling a newly selected control family so first hover does not flash. Large style sheets load only in the design review. Do not prefetch all six full kits at game entry.
 
@@ -60,9 +60,9 @@ Font files need their own license records and self-hosted delivery. The current 
 
 ## Combining themes
 
-Player Settings offers complete named themes. An explicitly labelled author mixer can override monitor/intercom/control assemblies using only registered compatible sets. It is presentation tooling, not a new game mechanic. Begin by comparing the six complete themes; then vary one assembly at a time.
+Player Settings offers complete named themes. An explicitly labelled author mixer combines a monitor-and-socket kit with a complete control family using only registered compatible sets. It is presentation tooling, not a new game mechanic. Begin by comparing the six complete themes; then vary one assembly at a time.
 
-A useful candidate is Factory Original's console, Broadcast Desk's intercom treatment and Foundry Switchboard's controls. This is an experiment, not a chosen final direction. A successful combination becomes a named, versioned recipe after checking light direction, material scale, corner geometry, icon readability and mobile composition. Avoid a permanent collection of arbitrary per-element overrides.
+A useful currently supported candidate is Factory Original's monitors and sockets with Foundry Switchboard's controls. Independent socket mixing can be added later with its own validated recipe version. This is an experiment, not a chosen final direction. A successful combination becomes a named, versioned recipe after checking light direction, material scale, corner geometry, icon readability and mobile composition. Avoid a permanent collection of arbitrary per-element overrides.
 
 The first mixer may expose only assemblies actually implemented; label shared or unavailable families honestly. Never imply the small style-sheet specimens are usable production assets merely because their names appear in a selector. Invalid recipe IDs fall back to a known complete theme; query strings cannot supply arbitrary asset URLs or executable styles.
 
@@ -93,3 +93,8 @@ The broader playable UI quality gate remains separate from “six themes load.�
 ## Rotating light feedback
 
 The shared overhead beacon is a separate semantic feedback layer across all themes. It is dark between event-driven rotations: cyan for sparse inactivity, green for confirmed production, red for actual accidents, ember/amber for attention. The design workbench can preview all four impulses without creating a game event. See [the light contract](CONSOLE_LIGHT_FEEDBACK.md) for priorities, geometry, timing and accessibility.
+
+
+## Focused console composition release
+
+The former material-only revision retained the rejected action column. That composition is superseded by `FOCUSED_CONSOLE_REBUILD.md`. Six cameras and speaking tokens are now the default. The active workspace uses its own composition; it does not accumulate additional columns beside the wall. Portrait socket masters and the shared surfaces live in `apps/lab/assets/sources/loopforge-focused/`, with exact prompts, references and derivative recipes. Original dispatch, logistics and lobby scenes are reused outside the six-room management grid. Read-only `/play/console-study` compares first-turn and six-active-feed density under every kit without starting a run.

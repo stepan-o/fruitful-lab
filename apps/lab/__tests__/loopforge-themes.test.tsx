@@ -32,11 +32,11 @@ function Harness() {
   const t = useConsoleTheme()!;
   return <><output aria-label="Active recipe">{t.recipe.shell}/{t.recipe.controls}</output><ThemeSettings /></>;
 }
-it("registers every study as a complete four-part family and bounds malformed recipes", () => {
+it("registers every study as a complete five-part family and bounds malformed recipes", () => {
   expect(THEMES).toHaveLength(6);
   for (const t of THEMES) {
     const files = themeFiles({ version: 1, shell: t.id, controls: t.id }, false);
-    expect(Object.keys(files).sort()).toEqual(["button-hover", "button-pressed", "button-rest", "monitor-frame"]);
+    expect(Object.keys(files).sort()).toEqual(["button-hover", "button-pressed", "button-rest", "monitor-frame", "supervisor-socket"]);
     for (const file of Object.values(files)) expect(file.src).toMatch(/^\/media\/files\/[a-f0-9]{64}\.webp$/);
   }
   expect(parseRecipe({ version: 2, shell: "baseline", controls: "baseline" })).toEqual(DEFAULT_RECIPE);
@@ -74,11 +74,11 @@ it("keeps an uncommitted dispatch choice through theme changes and a menu round-
   fireEvent.click(screen.getByRole("button", { name: /Start shift/ }));
   fireEvent.click(screen.getByRole("button", { name: "Split output" }));
   fireEvent.click(screen.getByRole("button", { name: "Review dispatch order" }));
-  fireEvent.click(screen.getByRole("button", { name: "Settings", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Settings" }));
   fireEvent.click(screen.getByRole("button", { name: /Submarine Watch/ }));
   await screen.findByText("Submarine Watch applied.");
   fireEvent.click(screen.getByRole("button", { name: "Return to the console" }));
-  fireEvent.click(screen.getByRole("button", { name: "Menu", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Menu" }));
   fireEvent.click(screen.getByRole("button", { name: /Resume shift/ }));
   expect(screen.getByRole("group", { name: "Confirm permanent allocation" })).toBeVisible();
   expect(send).not.toHaveBeenCalled(); expect(restart).not.toHaveBeenCalled();

@@ -1,3 +1,4 @@
+from focused_console import render_focused_console
 from theme_system import render_theme_system
 from pathlib import Path
 import html, json, re, shutil, subprocess, hashlib
@@ -265,10 +266,11 @@ sounds+=p(sound_data['licenseNote'])+detail('Direction and playback rules',table
 sound_script='<script src="sound-library.js?v='+hashlib.sha256((ROOT/'sound-library.js').read_bytes()).hexdigest()[:12]+'"></script>'
 
 theme_system=render_theme_system(ROOT)
+focused_console=render_focused_console()
 style_review=render_style_review(ROOT, OUT.parents[1]/'lib/assets/generated/loopforge-ui-studies.json')
 style_script='<script src="style-review.js?v='+hashlib.sha256((ROOT/'style-review.js').read_bytes()).hexdigest()[:12]+'"></script>'
 
-panels=[('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('ui-styles','UI style studies',style_review),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+panels=[('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 head=head.replace('</head>','<link rel="stylesheet" href="style-review.css?v='+hashlib.sha256((ROOT/'style-review.css').read_bytes()).hexdigest()[:12]+'"></head>')
@@ -306,10 +308,10 @@ full+='<section>'+loops_full+'</section><section>'+stress_full+'</section><secti
 # Keep the full reading copy complete without requiring disclosure interactions.
 full=full.replace('<details>','<details open>')
 full=re.sub(r'<button class="link-button" data-panel="([^"]+)">(.*?)</button>', r'<a class="link-button" href="index.html#\1">\2</a>', full)
-full=full.replace('</main>','<section>'+sounds+'</section><section>'+style_review+'</section><section>'+theme_system+'</section></main>').replace('</body>',sound_script+style_script+'</body>')
+full=full.replace('</main>','<section>'+sounds+'</section><section>'+style_review+'</section><section>'+focused_console+'</section><section>'+theme_system+'</section></main>').replace('</body>',sound_script+style_script+'</body>')
 (OUT/'full-record.html').write_text(full)
 ui_record=head.replace('<title>Loopforge — Game design</title>','<title>Loopforge — UI design</title>')+'<main class="record"><a href="index.html#ui-mechanics">← Interactive UI and mechanics board</a><header class="hero" style="display:block"><span class="kicker">Design direction · 8 October 2026</span><h1>Loopforge UI design</h1>'+p('Asset-driven decision interfaces now; a live cinematic 3D factory later. This reference separates the updated design target from the current first-day implementation. The prior director-console composition was rejected. All six camera-console themes are now selectable in the game menu and in-run Settings. The material layer is implemented; the broader focused-interface composition remains in review.')+'</header>'+early_rules+structure_full+ui_full+advice_full+'<p><a href="index.html#ui-styles">Review the six camera-console style studies →</a></p><section><h2>Delivery scope</h2>'+table(d['experience']['scope'])+'</section><section><h2>Approved shift rhythm</h2>'+table(d['experience']['rhythm'])+'</section><section><h2>Attention horizons</h2>'+table([(s['time'],s['question']) for s in lp['scales']])+p(lp['boundary'])+'<a href="index.html#loops">Inspect the core loops and session design →</a></section><section><h2>Mobile and art</h2>'+p(d['experience']['mobile'])+table(d['experience']['art'])+'</section></main></body></html>'
-ui_record=ui_record.replace('</main>', '<section>'+theme_system+'</section></main>')
+ui_record=ui_record.replace('</main>', '<section>'+focused_console+'</section><section>'+theme_system+'</section></main>')
 ui_record=ui_record.replace('<details>','<details open>')
 ui_record=re.sub(r'<button class="link-button" data-panel="([^"]+)">(.*?)</button>',r'<a class="link-button" href="index.html#\1">\2</a>',ui_record)
 (OUT/'UI_DESIGN.html').write_text(ui_record)
@@ -447,3 +449,10 @@ with (OUT/"UI_DESIGN.md").open("a") as f: f.write("\n\n"+theme_contract)
 
 (OUT/"CONSOLE_LIGHT_FEEDBACK.md").write_text((ROOT.parent/"CONSOLE_LIGHT_FEEDBACK.md").read_text())
 with (OUT/"UI_DESIGN.md").open("a") as f: f.write("\n\n"+(ROOT.parent/"CONSOLE_LIGHT_FEEDBACK.md").read_text())
+
+focused_contract=(ROOT.parent/"FOCUSED_CONSOLE_REBUILD.md").read_text()
+(OUT/"FOCUSED_CONSOLE_REBUILD.md").write_text(focused_contract)
+for name in ["UI_DESIGN.md","GAME_DESIGN.md"]:
+    target=OUT/name
+    if target.exists():
+        with target.open("a") as f: f.write("\n\n"+focused_contract)

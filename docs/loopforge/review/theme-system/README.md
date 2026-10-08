@@ -1,3 +1,5 @@
+> Historical material-only checkpoint. The completed focused-interface pass and current evidence are in [focused-console](../focused-console/README.md).
+
 # Six equipment themes and overhead beacon — review
 
 8 October 2026. Scope: selectable equipment, menu/session presentation, asset contracts and outcome light. The broader six-camera/focused-interface composition remains in review; this release does not claim that redesign is finished.

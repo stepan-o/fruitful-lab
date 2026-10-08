@@ -1,6 +1,5 @@
 "use client";
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
-import { useEffect, useRef, useState } from "react";
 import AssetImage from "@/components/media/AssetImage";
 import type { ImageAsset } from "@/lib/assets/types";
 import type {
@@ -17,7 +16,16 @@ export const roomName = (id: RoomId) =>
   id === "conveyor" ? "Lattice Forge" : "Security";
 export const time = (tick: number) =>
   `${String(6 + Math.floor(tick / 4)).padStart(2, "0")}:${String((tick % 4) * 15).padStart(2, "0")}`;
-
+export const ROOMS = [
+  { id: "conveyor", title: "Lattice Forge", art: "forge" },
+  { id: "security", title: "Security", art: "security" },
+  { id: "theatre", title: "Burn-in Theatre", art: "theatre" },
+  { id: "brewery", title: "Cognitive Substrate Brewery", art: "brewery" },
+  { id: "weaving", title: "Weaving Gallery", art: "weaving" },
+  { id: "cortex", title: "Cortex Assembly", art: "cortex" },
+] as const;
+export type CameraId = (typeof ROOMS)[number]["id"];
+export const sealedRooms = ROOMS.slice(2).map((r) => r.title);
 export function materialStyle(media: Media): CSSProperties {
   return Object.fromEntries(
     [
@@ -29,14 +37,18 @@ export function materialStyle(media: Media): CSSProperties {
       "button-rest",
       "button-hover",
       "button-pressed",
-    ].map((id) => [`--${id}`, `url("${media[id].variants.at(-1)!.src}")`]),
+      "tape",
+      "speech",
+    ]
+      .filter((id) => media[id])
+      .map((id) => [`--${id}`, `url("${media[id].variants.at(-1)!.src}")`]),
   ) as CSSProperties;
 }
 export function Art({
   media,
   id,
   className,
-  sizes = "(max-width: 760px) 90vw, 45vw",
+  sizes = "(max-width: 900px) 90vw, 45vw",
   priority = false,
 }: {
   media: Media;
@@ -75,274 +87,237 @@ export function Control({
 export function Kicker({ children }: { children: ReactNode }) {
   return <span className={s.kicker}>{children}</span>;
 }
+export function Tape({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return <span className={`${s.tape} ${className}`}>{children}</span>;
+}
+export function Speech({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <blockquote className={`${s.speech} ${className}`}>{children}</blockquote>
+  );
+}
+
+export function Token({
+  media,
+  person,
+  large = false,
+  active = false,
+  empty = false,
+}: {
+  media: Media;
+  person?: SupervisorId;
+  large?: boolean;
+  active?: boolean;
+  empty?: boolean;
+}) {
+  return (
+    <span
+      className={s.token}
+      data-large={large}
+      data-selected={active}
+      data-empty={empty}
+      aria-hidden="true"
+    >
+      {person && (
+        <span className={s.tokenFace}>
+          <Art
+            media={media}
+            id={`${person}-portrait`}
+            sizes={
+              large
+                ? "(max-width:900px) 170px, 330px"
+                : "(max-width:900px) 90px, 150px"
+            }
+          />
+        </span>
+      )}
+      <span className={s.tokenSocket} />
+    </span>
+  );
+}
+
+/** A whole authored housing retains its proportions; content uses its calibrated opening. */
+export function Monitor({
+  media,
+  view,
+  room,
+  index = 0,
+  onOpen,
+  operator,
+  fullFloor = false,
+  focus = false,
+  proposal = false,
+}: {
+  media: Media;
+  view: PlayerView;
+  room: CameraId;
+  index?: number;
+  onOpen?: () => void;
+  operator?: SupervisorId;
+  fullFloor?: boolean;
+  focus?: boolean;
+  proposal?: boolean;
+}) {
+  const spec = ROOMS.find((r) => r.id === room)!;
+  const open = fullFloor || room === "conveyor" || room === "security";
+  const incident = view.pending?.room === room;
+  const person =
+    operator ??
+    (open && (room === "conveyor" || room === "security")
+      ? view.assignments?.[room]
+      : undefined);
+  const content = (
+    <>
+      <span className={s.monitorGlass}>
+        {open && (
+          <Art
+            media={media}
+            id={spec.art}
+            className={s.feedPicture}
+            sizes={
+              focus
+                ? "(max-width:900px) 94vw, 72vw"
+                : "(max-width:900px) 43vw, 30vw"
+            }
+            priority={index < 2}
+          />
+        )}
+        <span className={s.glassReflection} />
+        {open && (
+          <>
+            <span className={s.feedGrain} aria-hidden="true" />
+            <span className={s.feedReadout}>
+              <span>
+                <i /> {view.phase === "running" ? "REC" : "LIVE"} · 0{index + 1}
+              </span>
+              <span>{time(view.shiftTick)}</span>
+            </span>
+            {incident && (
+              <span className={s.feedAttention}>Response required</span>
+            )}
+            {!incident && (
+              <span className={s.feedState}>
+                {proposal
+                  ? "Proposed placement"
+                  : person
+                    ? `${name(person)}${person === view.adviser ? " · delegated" : ""}`
+                    : "No supervisor assigned"}
+              </span>
+            )}
+          </>
+        )}
+      </span>
+      <span className={s.monitorHousing} />
+      <Tape className={s.roomTape}>{spec.title}</Tape>
+      {open && !focus && (
+        <span className={s.monitorSocket}>
+          <Token media={media} person={person} empty={!person} />
+        </span>
+      )}
+    </>
+  );
+  return onOpen && open ? (
+    <button
+      className={s.monitor}
+      onClick={onOpen}
+      data-open={open}
+      data-attention={incident}
+      data-focus={focus}
+      aria-label={`${spec.title} · ${proposal ? "change proposed assignment" : "open camera"}`}
+    >
+      <span className={s.monitorStage} data-light-frame>{content}</span>
+    </button>
+  ) : (
+    <div
+      className={s.monitor}
+      data-open={open}
+      data-attention={incident}
+      data-focus={focus}
+      role="img"
+      aria-label={
+        open ? `${spec.title} camera` : `${spec.title}, unpowered camera`
+      }
+    >
+      <span className={s.monitorStage} data-light-frame>{content}</span>
+    </div>
+  );
+}
 
 export function Instruments({
   media,
   view,
+  onInspect,
 }: {
   media: Media;
   view: PlayerView;
+  onInspect?: (id: string) => void;
 }) {
+  const items = [
+    {
+      id: "funds",
+      icon: "funds-relief",
+      title: "Funds",
+      value: `¤ ${view.cash}`,
+    },
+    {
+      id: "workers",
+      icon: "workers-relief",
+      title: "Workers",
+      value: String(view.workers),
+    },
+    {
+      id: "condition",
+      icon: "condition-relief",
+      title: "Line",
+      value: `${view.condition}%`,
+    },
+    {
+      id: "quota",
+      icon: "delivery-relief",
+      title: "Week 01",
+      value: `${view.committed} / ${view.quota}`,
+    },
+  ];
   return (
-    <dl className={s.instruments} aria-label="Confirmed factory facts">
-      {[
-        {
-          id: "funds-icon",
-          title: "Funds",
-          value: `¤ ${view.cash}`,
-          note: "Development reserve",
-        },
-        {
-          id: "worker-icon",
-          title: "Workforce",
-          value: view.workers,
-          note: "Basic workers",
-        },
-        {
-          id: "condition-icon",
-          title: "Line condition",
-          value: `${view.condition}%`,
-          note: view.condition < 75 ? "Wear accumulating" : "Operational",
-        },
-      ].map((f) => (
-        <div key={f.id} className={s.instrument}>
-          <Art media={media} id={f.id} sizes="44px" />
-          <div>
-            <dt>{f.title}</dt>
-            <dd key={String(f.value)}>{f.value}</dd>
-            <small>{f.note}</small>
-          </div>
-        </div>
-      ))}
-      <div className={`${s.instrument} ${s.quota}`}>
-        <div>
-          <dt>Weekly delivery</dt>
-          <dd>
-            {view.committed}
-            <span> / {view.quota}</span>
-          </dd>
-          <small>Due at the end of day 7</small>
-        </div>
-        <div
-          className={s.quotaTrack}
-          role="progressbar"
-          aria-label="Weekly quota committed"
-          aria-valuenow={view.committed}
-          aria-valuemin={0}
-          aria-valuemax={view.quota}
+    <div className={s.instruments} aria-label="Confirmed factory facts">
+      {items.map((item) => (
+        <button
+          key={item.id}
+          className={s.instrument}
+          onClick={() => onInspect?.(item.id)}
+          aria-label={`${item.title}: ${item.value}. Inspect`}
         >
-          <i
-            style={{
-              transform: `scaleX(${Math.min(1, view.committed / view.quota)})`,
-            }}
-          />
-        </div>
-      </div>
-    </dl>
-  );
-}
-
-/** Only known room/operator context chooses the illustration. It does not predict outcomes. */
-export function Camera({
-  media,
-  view,
-  room,
-}: {
-  media: Media;
-  view: PlayerView;
-  room: RoomId;
-}) {
-  const frame = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const node = frame.current;
-    if (!node) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      node.dataset.onScreen = String(entry.isIntersecting);
-    });
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-  const operator = view.assignments?.[room];
-  // Use the neutral room scene during operation. Character art belongs to the
-  // intercom; a legacy "success" painting is not proof of a successful shift.
-  const image = room === "conveyor" ? "forge" : "security";
-  const [loadedImage, setLoadedImage] = useState<string | null>(null);
-  const [failedImage, setFailedImage] = useState<string | null>(null);
-  const [attempt, setAttempt] = useState(0);
-  const incoming = media[image];
-  const imagePending = loadedImage !== image;
-  const incident = view.pending?.room === room;
-  const latest = view.events
-    .filter((e) => e.room === room && e.kind === "resolution")
-    .at(-1);
-  return (
-    <div ref={frame} className={s.camera} data-alert={incident} data-light-frame>
-      {loadedImage && (
-        <div className={s.cameraPicture} key={loadedImage}>
           <Art
             media={media}
-            id={loadedImage}
-            sizes="(max-width: 760px) 96vw, (max-width: 1100px) 48vw, 51vw"
+            id={item.icon}
+            sizes="(max-width:900px) 28px, 52px"
           />
-        </div>
-      )}
-      {imagePending && (
-        <>
-          {/* Load the requested scene before replacing the last available image. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            key={`${image}-${attempt}`}
-            className={s.incomingImage}
-            src={incoming.variants.at(-1)!.src}
-            srcSet={incoming.variants
-              .map((file) => `${file.src} ${file.width}w`)
-              .join(", ")}
-            sizes="(max-width: 760px) 96vw, (max-width: 1100px) 48vw, 51vw"
-            width={incoming.width}
-            height={incoming.height}
-            alt=""
-            loading="eager"
-            decoding="async"
-            fetchPriority={loadedImage ? "auto" : "high"}
-            onLoad={() => {
-              setLoadedImage(image);
-              setFailedImage(null);
-            }}
-            onError={() => setFailedImage(image)}
-          />
-          <div className={s.imagePending} role="status">
-            {failedImage === image ? (
-              <>
-                <span>Camera image unavailable.</span>
-                <button
-                  onClick={() => {
-                    setFailedImage(null);
-                    setAttempt((n) => n + 1);
-                  }}
-                >
-                  Retry image
-                </button>
-              </>
-            ) : (
-              `Connecting ${roomName(room)} camera…`
-            )}
-          </div>
-        </>
-      )}
-      <div className={s.glass} aria-hidden="true" />
-      <div className={s.scan} aria-hidden="true" />
-      <div className={s.cameraTop}>
-        <span>
-          <i className={s.rec} /> CAM {room === "conveyor" ? "01" : "02"} ·{" "}
-          {view.phase === "running" ? "REC" : "STANDBY"}
-        </span>
-        <span>{time(view.shiftTick)}</span>
-      </div>
-      <div className={s.cameraCrosshair} aria-hidden="true" />
-      <div className={s.cameraCaption}>
-        <Kicker>
-          {room === "conveyor"
-            ? "Floor 01 / production"
-            : "Floor 01 / access control"}
-        </Kicker>
-        <h2>{roomName(room)}</h2>
-        <span>
-          {operator
-            ? `${name(operator)} · ${operator === view.adviser ? "adviser has authority here" : "room supervisor"}`
-            : "No supervisor assigned"}
-        </span>
-      </div>
-      {incident && <div className={s.cameraAlert}>● RESPONSE REQUIRED</div>}
-      {!incident && latest && (
-        <div className={s.cameraReceipt} key={latest.id}>
-          <Kicker>
-            {latest.actor === "director"
-              ? "Your order carried out"
-              : `${name(latest.actor === "factory" ? null : latest.actor)} acted automatically`}
-          </Kicker>
-          <span>{latest.title}</span>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export const sealedRooms = [
-  "Burn-in Theatre",
-  "Substrate Brewery",
-  "Weaving Gallery",
-  "Cortex Assembly",
-];
-export function Channels({
-  view,
-  room,
-  onRoom,
-}: {
-  view: PlayerView;
-  room: RoomId;
-  onRoom: (id: RoomId) => void;
-}) {
-  return (
-    <div className={s.channels} aria-label="Factory room cameras">
-      {(["conveyor", "security"] as const).map((id, i) => (
-        <button
-          type="button"
-          key={id}
-          className={s.channel}
-          aria-pressed={room === id}
-          onClick={() => onRoom(id)}
-        >
           <span>
-            0{i + 1}
-            <i />
+            <small>{item.title}</small>
+            <strong key={item.value}>{item.value}</strong>
+            {item.id === "quota" && (
+              <span className={s.quotaRail} aria-hidden="true">
+                <i
+                  style={{
+                    width: `${Math.min(100, (view.committed / view.quota) * 100)}%`,
+                  }}
+                />
+              </span>
+            )}
           </span>
-          <b>{id === "conveyor" ? "Conveyor" : "Security"}</b>
-          <small>{name(view.assignments?.[id])}</small>
         </button>
       ))}
-      {sealedRooms.map((title, i) => (
-        <div
-          className={`${s.channel} ${s.sealed}`}
-          key={title}
-          aria-label={`${title}, sealed`}
-        >
-          <span>0{i + 3}</span>
-          <b>{title}</b>
-          <small>SEALED</small>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export function Speaker({
-  media,
-  view,
-  compact = false,
-}: {
-  media: Media;
-  view: PlayerView;
-  compact?: boolean;
-}) {
-  if (!view.adviser) return null;
-  const person = view.people.find((p) => p.id === view.adviser)!;
-  return (
-    <div
-      className={`${s.speaker} ${compact ? s.compactSpeaker : ""}`}
-      data-person={view.adviser}
-    >
-      <div className={s.speakerPortrait}>
-        <Art
-          media={media}
-          id={`${view.adviser}-portrait`}
-          sizes={compact ? "80px" : "(max-width: 760px) 28vw, 180px"}
-        />
-      </div>
-      <div>
-        <Kicker>Today’s adviser</Kicker>
-        <h3>{name(view.adviser)}</h3>
-        <p>“{person.remark}”</p>
-      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@
 - [x] Author a phone arrangement using the same art parts with readable controls, six-channel awareness and separate focused views.
 - [x] Validate the first-day flow, switching without losing drafts, all four skins, keyboard, small phones, effects-off and local light.
 - [x] Update system/UI/design records from concept proposals to the actual delivered boundary. Keep remaining omissions explicit.
-- [ ] Run required checks, publish the existing scoped PR and inspect its hosted preview.
+- [x] Run required checks, publish the existing scoped PR and inspect its hosted preview.
 
 ## Acceptance boundary
 
@@ -30,3 +30,5 @@ The owner explicitly requested mobile-specific art plus adaptation to arbitrary 
 Local rendered checks so far: 1440×900 wide Foundry/Broadcast/Dispatch/Organ; 390×844 portrait Foundry/Organ; 320×740 one-feed view; 844×390 compact landscape. Exact page scroll bounds equal the viewport in the tested responsive cases. Opening call, acknowledgement, adviser selection and cross-skin state retention were exercised. Remaining publication checks are tracked above.
 
 The full suite passed: 371 tests across 71 suites, one snapshot, immutable asset checks and production build. A final CSS-only rebuild follows fixes found during play: Dispatch operator/REC labels in compact modes, and adviser speech in a paused decision dialog. Server-backed browser run: STILETTO / unchanged proposal / delegated conveyor response / Security override / 22 produced / 11 retained / 11 delivered / condition 82 → 67 / all workers survived. A stopped local server also exercised reconnection without losing the approved plan. Hardware/animation limitations are explicit in the direction doc.
+
+Hosted verification on `b27fb02`: Vercel READY; 2555×1310 console and 320×740 / 390×844 phone modes fit the viewport. Mandate acknowledgement persisted through resize. A complete STILETTO run with Security override reached debrief with the same 22 / 11 / 11 outcome. Decision speech remained visible; no browser errors recorded. PR #99 is ready for owner review.

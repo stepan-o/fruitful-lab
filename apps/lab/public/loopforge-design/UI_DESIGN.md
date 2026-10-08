@@ -2,7 +2,7 @@
 
 Working draft · 8 October 2026
 
-Four integrated console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only those four appear in Settings; the old six studies remain historical and their focused-screen materials remain internal. Start at the console, Answer leadership, Acknowledge quota, then Choose adviser. Hardware uses registered CSS fragments cropped from clean plates, not separate alpha handsets. Runtime visual and full-flow checks are underway. All four dedicated portrait plates are generated, catalogued and implemented; visual QA is underway. Adaptive wide, portrait, small/short and compact-landscape modes preserve the selected camera, run and pending decision through resize. A live cinematic 3D factory remains later work.
+Four integrated console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only those four appear in Settings; the old six studies remain historical and their focused-screen materials remain internal. Start at the console, Answer leadership, Acknowledge quota, then Choose adviser. Hardware uses registered CSS fragments cropped from clean plates, not separate alpha handsets. Local visual and full-flow checks passed; the hosted first shift was also completed. All four dedicated portrait plates are generated, catalogued and implemented. Owner review remains pending. Adaptive wide, portrait, small/short and compact-landscape modes preserve the selected camera, run and pending decision through resize. A live cinematic 3D factory remains later work.
 
 ## Opening rules and what unlocks later
 

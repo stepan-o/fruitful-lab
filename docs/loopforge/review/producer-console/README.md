@@ -9,7 +9,7 @@
 - A real browser run on the production build completed STILETTO → briefing → placement desk → production → delegated conveyor response → Security override → permanent dispatch → debrief. Result: 22 produced, 11 retained, 11 delivered, 35 workers, condition 82 → 67, all workers survived.
 - Switching Broadcast → Dispatch while a swapped assignment was unconfirmed preserved the revised plan. Escape returned keyboard focus to Settings. Restoring the adviser proposal and approving it continued the same run.
 - A stopped local preview exercised Reconnect: the approved adviser/plan was retained and the line could start after reconnection.
-- All four wide and portrait skins inspected. 390×844 uses six portrait feeds; 320×740 uses one selected feed and six named channels; 844×390 uses camera-left/controls-right. Selection and acknowledgement survived resize. Page scroll bounds equaled viewport bounds in measured phone and landscape cases. Desktop 1440×900 checked; larger hosted check follows.
+- All four wide and portrait skins inspected. 390×844 uses six portrait feeds; 320×740 uses one selected feed and six named channels; 844×390 uses camera-left/controls-right. Selection and acknowledgement survived resize. Page scroll bounds equaled viewport bounds in measured phone and landscape cases. Desktop 1440×900 and hosted 2555×1310 checked; the larger console fit the viewport.
 - Effects-off preserved all information and produced `animation-name: none` for recording lamps. CSS and canvas reduced-motion paths use stable emphasis instead of rotational motion; no device-level reduced-motion benchmark is claimed.
 - Review caught and fixed mismatched screen/glass calibration, undersized phone room names, rectangular hover highlights, hidden Dispatch operator overlays in compact modes, and decision speech frozen at zero opacity by the background pause.
 
@@ -35,3 +35,7 @@ The local light draws only during bounded impulses, caps its raster width at 128
 [Foundry portrait](foundry-portrait.png) · [Broadcast portrait](broadcast-portrait.png). These captures precede the final Dispatch-label/dialog-speech CSS corrections. Hosted review confirms the final build separately.
 
 Art is an adaptive layered console, not a live 3D factory. Hover/press use registered fragments of the same plate; fully separated handsets/cords/occlusion atlases and a dedicated sampled ring remain future polish. The unchanged deterministic first-day kernel still has two working rooms and two available supervisors. Later weekly progression and owner enjoyment acceptance remain open.
+
+## Hosted publication
+
+Implementation commit `b27fb02` deployed READY to [Vercel preview](https://fruitful-lbbj6q7ua-stepan-oskins-projects.vercel.app/stepanoskin/loopforge/play). The hosted first shift completed STILETTO → Security override → 11 retained / 11 delivered → debrief, matching the local result. Final decision speech was visibly present. Hosted Dispatch portrait at 320×740 and 390×844 restored live/operator labels and retained the mandate gate across resize; 2555×1310 had no page overflow. No browser errors were recorded. The published Producer console gallery exposes all four wide/portrait pairs. PR #99 remains unmerged for owner review.

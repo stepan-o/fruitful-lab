@@ -68,7 +68,6 @@ Day 01 has EXACTLY TWO live camera channels and FOUR switched-off channels:
 Keep exactly six total camera views: one large main 01 frame and exactly five adjacent stacked thin cells numbered 02 through 06. No extra views. Camera names should be sober condensed cream lettering, clean and readable, integrated inside each corresponding existing glass frame near the top. Longer names may wrap; do not widen or move the existing film strip. There must be no visible factory or room artwork behind labels in cells 03, 04, 05, or 06. No additions elsewhere.
 
 
-
 ---
 
 # foundry-desk — exact imagegen prompts
@@ -90,7 +89,6 @@ Loopforge style: dense tactile late-industrial soot, cracked near-black olive en
 ## Inspected correction prompt
 
 Edit this Loopforge producer-console concept. Preserve the entire composition, perspective, detailed dark brass/enamel materials, six shared-glass camera panes, telephone, selector and start lever. Only fix these concept inaccuracies: remove all slogans, invented small lettering and numerical counters, leave blank plate/window textures in those positions. Preserve the LOOPFORGE header and the three main labels LEADERSHIP, INTERCOM, START. In the first two live feeds preserve the brain factory and security room. On the four dark off screens replace the paper names with these handwritten tape labels in reading order: BURN-IN THEATRE, COGNITIVE SUBSTRATE BREWERY, WEAVING GALLERY, CORTEX ASSEMBLY. Leave those four screens black with faint glare. In the five portrait sockets replace human head silhouettes with five distinct unmistakably mechanical robot-head silhouettes. On the rotary selector use five unnumbered detent dots. Show the selector and start lever physically locked with small closed retaining bars, because the incoming leadership call must be answered first. Keep amber receiver light as the sole strong call to action. Don't change or repaint the overall art style.
-
 
 
 ---

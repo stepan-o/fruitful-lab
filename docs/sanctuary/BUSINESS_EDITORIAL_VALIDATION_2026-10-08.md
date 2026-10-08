@@ -171,3 +171,31 @@ Review captures:
 Currency and source boundaries are documented in `SONY_FINANCIAL_HISTORY.md`.
 FY2025 chapter prose and manuscript copies now match the USD display. The early
 1990s source-currency historical figures remain explicitly identified as yen.
+
+
+## Yearly composition and chart introduction
+
+The detailed readout now shows a solid 100% revenue stack beside category
+amounts, with dashed prior-year outlines/boundaries, previous shares, and signed
+share changes in percentage points. The full-year denominator and all four
+categories remain visible when the main chart is filtered; the selected category
+is emphasized. The grouped-growth view separately labels revenue YoY. FY2016
+omits a fabricated comparison. The revenue-scale paragraph now immediately
+precedes the chart (`afterParagraph: 1`), confirmed in the rendered chapter;
+its wording and the approved chapter 1 remain unchanged.
+
+Required CI exited 0: 66 suites, 344 tests, one snapshot, 22 retained asset
+releases and production build. Scoped lint and diff whitespace checks passed.
+Added quantitative checks verify current/prior shares, pp shifts, reconciliation,
+FX invariance, fixed proportions under filtering, and first-year missingness.
+
+Production browser checks: desktop, 768×1024, 390×844 and 320×760. Solid/dashed
+bars, signed pp labels and previous shares were inspected; no page or composition
+region overflow. Keyboard category selection and mode/year changes keep the
+comparison coherent; first-year missingness and FY2022/FY2025 details were
+checked. Browser errors: none. Viewport override reset. The graphic is static,
+so no additional motion, media or runtime dependency was introduced.
+
+Review captures:
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-proportions-desktop.png`
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-proportions-mobile.png`

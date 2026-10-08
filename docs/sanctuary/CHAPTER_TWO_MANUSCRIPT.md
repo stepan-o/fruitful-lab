@@ -10,11 +10,11 @@ In the first months after the PlayStation 5 launched in November 2020, Sony was 
 
 Evidence: sony-ps5-launch-economics.
 
-Exhibit: Sony’s FY2016–FY2025 revenue and operating-profit history. See [sources and methodology](SONY_FINANCIAL_HISTORY.md).
-
 By the year ending March 2026, Sony’s gaming business was reporting annual revenue equivalent to roughly US$31.1 billion at that year’s average exchange rate. That was more than its music and pictures businesses combined. Consoles accounted for US$6.3 billion. PlayStation games and add-ons brought in US$16.9 billion, while network services, including PlayStation Plus and advertising, supplied another US$5.1 billion. Peripherals, games sold on other platforms and the remaining business contributed roughly US$2.9 billion. The machine was the beginning of a much larger market around it.
 
 Evidence: sony-fy2025-scale.
+
+Exhibit: Sony’s FY2016–FY2025 revenue and operating-profit history. See [sources and methodology](SONY_FINANCIAL_HISTORY.md).
 
 One part of that market deserves a closer look. Add-on content means purchases for a game beyond the full game itself: an expansion that adds another adventure, an outfit that changes a character’s appearance, or virtual currency to spend in its shop. Sony recorded roughly US$9.0 billion from these purchases alone, more than from consoles. Diablo IV’s paid expansions and cosmetic shop belong to this wider pattern. Later, we will look at what each purchase offers the player and why the game is built to keep making those offers.
 
@@ -60,4 +60,4 @@ Evidence boundary: Sony’s February 2021 earnings presentation, printed pages 7
 
 ## PlayStation historical exhibit
 
-The category chart remains immediately after paragraph 0. Four paragraphs then explain FY2025 scale and composition, define add-on content, distinguish revenue from profit, and establish the original PlayStation’s dependence on other creators. The later map follows paragraph 9. The detailed chart remains FY2016–FY2025; earlier Game totals are historical context, not a backfilled category series.
+The category chart follows paragraph 1: the PS5 opening and FY2025 scale-and-composition paragraph introduce it. Three paragraphs after the figure define add-on content, distinguish revenue from profit, and establish the original PlayStation’s dependence on other creators. The later map follows paragraph 9. The detailed chart remains FY2016–FY2025; earlier Game totals are historical context, not a backfilled category series.

@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import SonyHistory from "@/components/sanctuary/SonyHistory";
-import { sonyCategories, sonyUsd, sonyGrowth, sonyGrowthView, sonyHistory, sonyMix, sonyPublisherContext, sonyRevenueView } from "@/lib/sanctuary/sony-history";
+import { sonyCategories, sonyComposition, sonyUsd, sonyGrowth, sonyGrowthView, sonyHistory, sonyMix, sonyPublisherContext, sonyRevenueView } from "@/lib/sanctuary/sony-history";
 import { platformRows, platformTotals } from "@/lib/sanctuary/industry-data";
 import { chapters } from "@/lib/sanctuary/content";
 
@@ -57,9 +57,9 @@ it("connects milestone, year picker, exact figures and category readout", () => 
   expect(within(table).getByText("463,258")).toBeVisible();
 });
 
-it("places the Sony exhibit immediately after chapter two's first paragraph", () => {
+it("places the Sony exhibit after chapter two's revenue-scale paragraph", () => {
   const chapter = chapters.find(item => item.id === "studio-to-screen")!;
-  expect(chapter.exhibits).toEqual([{ afterParagraph: 0, kind: "sony-history" }, { afterParagraph: 9, kind: "market-map" }]);
+  expect(chapter.exhibits).toEqual([{ afterParagraph: 1, kind: "sony-history" }, { afterParagraph: 9, kind: "market-map" }]);
 });
 
 
@@ -149,4 +149,43 @@ it("groups annual changes around zero, preserves filters and links supply events
   expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2022");
   expect(container.querySelectorAll(".segment")).toHaveLength(10);
   expect(screen.getByText("US$8.30", { exact: false, selector: ".totals strong" })).toBeVisible();
+});
+
+
+it("compares revenue shares in percentage points, independent of FX and filtering", () => {
+  const row = sonyHistory.find(item => item.year === 2022)!;
+  const mix = sonyComposition(row);
+  expect(mix[0].percent).toBeCloseTo(30.82705, 4);
+  expect(mix[0].previousPercent).toBeCloseTo(21.51507, 4);
+  expect(mix[0].shift).toBeCloseTo(9.31198, 4);
+  expect(sonyComposition({ ...row, yenPerUsd: 1 })).toEqual(mix);
+  for (const row of sonyHistory) {
+    const shares = sonyComposition(row);
+    expect(shares.reduce((sum, item) => sum + item.percent, 0)).toBeCloseTo(100, 3);
+    if (row.year > 2016) expect(shares.reduce((sum, item) => sum + item.shift!, 0)).toBeCloseTo(0, 3);
+    else expect(shares.every(item => item.shift === null && item.previousPercent === null)).toBe(true);
+  }
+
+  const { container } = render(<SonyHistory/>);
+  fireEvent.change(screen.getByRole("combobox", { name: "Fiscal year" }), { target: { value: "2022" } });
+  const detail = screen.getByRole("region", { name: "FY2022 revenue proportions" });
+  expect(within(detail).getByText("30.8%")).toBeVisible();
+  expect(within(detail).getByText("(+9.3 pp)")).toBeVisible();
+  expect(within(detail).getByText("was 21.5%")).toBeVisible();
+  expect(within(detail).getByRole("img")).toHaveAccessibleName(expect.stringContaining("dashed FY2021"));
+  const current = container.querySelector<HTMLElement>('.shareFill[data-category="0"]')!;
+  const prior = container.querySelector<HTMLElement>('.shareGhost[data-category="0"]')!;
+  expect(parseFloat(current.style.height)).toBeCloseTo(30.82705, 4);
+  expect(parseFloat(prior.style.height)).toBeCloseTo(21.51507, 4);
+  fireEvent.click(screen.getByRole("button", { name: "Console hardware", exact: true }));
+  expect(container.querySelectorAll(".shareFill")).toHaveLength(4);
+  expect(parseFloat(current.style.height)).toBeCloseTo(30.82705, 4);
+  fireEvent.click(screen.getByRole("button", { name: "Year-over-year change", exact: true }));
+  expect(within(detail).getByText("Revenue YoY: +58.1%")).toBeVisible();
+  expect(within(detail).getByText("(+9.3 pp)")).toBeVisible();
+  fireEvent.change(screen.getByRole("combobox", { name: "Fiscal year" }), { target: { value: "2016" } });
+  expect(container.querySelectorAll(".shareGhost")).toHaveLength(0);
+  expect(screen.getByText(/prior-year proportions and changes are unavailable/)).toBeVisible();
+  expect(container.querySelectorAll(".mixShift")).toHaveLength(4);
+  expect(screen.queryByText("(+0.0 pp)")).not.toBeInTheDocument();
 });

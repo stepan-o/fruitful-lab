@@ -1,8 +1,8 @@
 # PlayStation financial history exhibit
 
-Placement: chapter 2, **From studio to screen**, immediately after the first
-paragraph (zero-based `afterParagraph: 0`). Added 8 October 2026. The accepted
-prose and chapter 1 are unchanged.
+Placement: chapter 2, **From studio to screen**, after the PS5 opening and
+FY2025 revenue-scale paragraph (zero-based `afterParagraph: 1`). The revenue
+paragraph now introduces the chart. Added 8 October 2026; chapter 1 is unchanged.
 
 ## Editorial purpose
 
@@ -121,7 +121,7 @@ chapters selecting the typed `sony-history` exhibit.
 Automated checks cover category reconciliation, software-detail reconciliation,
 agreement with the existing FY2024–2025 exhibit, missing early add-on values,
 the IFRS restatement, off-platform regrouping, year controls, milestone and
-category selection, exact-data disclosure, and paragraph-0 placement. Browser
+category selection, exact-data disclosure, and placement after the revenue-scale paragraph. Browser
 and final CI results are recorded in the editorial validation log after review.
 
 
@@ -308,3 +308,26 @@ causal estimate of the console announcements and shortages.
 FY2025 chapter prose is synchronized to USD, including the US$9.0bn add-on total
 and US$3.1bn operating profit. The 1990s historical paragraph explicitly retains
 its original yen figures; no unsupported historical FX is inferred.
+
+
+## Selected-year composition — 8 October 2026
+
+The detailed year readout pairs its category amounts with a slim vertical 100%
+stack. Solid segments show the selected year; dashed outlines show the preceding
+year on the same scale and in the same bottom-to-top order as the main chart.
+Dashed guides cross the solid bar at the prior year's cumulative boundaries;
+each outlined segment's height, not its cumulative endpoint, is that category's
+share. The list gives current shares, previous shares, and bracketed YoY shifts
+in **percentage points**. In growth mode, dollar-revenue YoY is separately named.
+
+`share = 100 × category / full segment revenue`; `pp shift = share − prior share`.
+Calculations use unrounded figures. Annual FX cancels within each year's share.
+The full four-category composition remains visible and uses the full segment
+denominator when the main chart isolates a category; that category is highlighted.
+FY2016 has no previous-year comparison: no dashed outline or invented zero shift.
+Reporting-rounding discrepancies remain at sub-pixel size; original data is not
+changed to force an exact sum. No new assets, animation or dependency.
+
+Worked verification: FY2022 hardware 30.8270%, FY2021 hardware 21.5151%, shift
++9.3120 pp (displayed 30.8%, 21.5%, +9.3 pp). This is distinct from the 58.1%
+USD hardware-revenue growth shown in the annual-growth chart.

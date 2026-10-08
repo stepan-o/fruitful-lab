@@ -71,6 +71,18 @@ export function sonyGrowth(row: SonyYear, category: number | null) {
   return (sonyUsd(value, row) / sonyUsd(prior, previous) - 1) * 100;
 }
 
+// Revenue composition uses the full segment total, never the filtered category.
+// A common annual FX rate cancels in this ratio. Keep precision until display.
+export function sonyComposition(row: SonyYear) {
+  const previous = sonyHistory.find(item => item.year === row.year - 1);
+  const priorValues = previous ? sonyMix(previous) : null;
+  return sonyMix(row).map((value, i) => {
+    const percent = value / row.revenue * 100;
+    const previousPercent = previous && priorValues ? priorValues[i] / previous.revenue * 100 : null;
+    return { percent, previousPercent, shift: previousPercent === null ? null : percent - previousPercent };
+  });
+}
+
 // One domain for all categories and years, so filtering never exaggerates a lift.
 export const sonyGrowthView = {
   min: -40, max: 80, unit: "year-over-year change · USD basis",

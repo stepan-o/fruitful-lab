@@ -1,13 +1,18 @@
 "use client";
 
 import { useRef, useState, type CSSProperties } from "react";
-import { sonyAccountingSource, sonyGrowth, sonyGrowthView, sonyUsd, sonyChartAnnotations, sonyCategories, sonyHistory, sonyPublisherContext, sonyRevenueView, sonyMilestones, sonyMix, sonySources, sonyYearNoteLinks, sonyYearNotes } from "@/lib/sanctuary/sony-history";
+import { sonyAccountingSource, sonyComposition, sonyGrowth, sonyGrowthView, sonyUsd, sonyChartAnnotations, sonyCategories, sonyHistory, sonyPublisherContext, sonyRevenueView, sonyMilestones, sonyMix, sonySources, sonyYearNoteLinks, sonyYearNotes } from "@/lib/sanctuary/sony-history";
 import s from "./sony-history.module.css";
 
 const billions = (n: number) => (n / 1000).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const millions = (n: number) => n.toLocaleString("en-US");
 const share = (n: number, total: number) => `${(100 * n / total).toFixed(1)}%`;
 const growthLabel = (value: number | null) => value === null ? "Base year" : `${value > 0 ? "+" : value < 0 ? "−" : ""}${Math.abs(value).toFixed(1)}%`;
+const ppLabel = (value: number | null) => {
+  if (value === null) return "—";
+  const rounded = Number(value.toFixed(1));
+  return `${rounded > 0 ? "+" : rounded < 0 ? "−" : ""}${Math.abs(rounded).toFixed(1)} pp`;
+};
 const profitMax = 4_000; // USD millions, independent from revenue and growth.
 const growthRange = sonyGrowthView.max - sonyGrowthView.min;
 const growthZero = sonyGrowthView.max / growthRange * 100;
@@ -19,6 +24,8 @@ export default function SonyHistory() {
   const scroll = useRef<HTMLDivElement>(null);
   const row = sonyHistory.find(item => item.year === year)!;
   const values = sonyMix(row);
+  const composition = sonyComposition(row);
+  const hasPrevious = composition[0].previousPercent !== null;
   const milestone = sonyMilestones.find(item => item.year === year);
   const source = sonySources[row.source];
   const revenueView = sonyRevenueView(category);
@@ -120,7 +127,28 @@ export default function SonyHistory() {
           <div><small>{category === null ? growth ? "Total revenue YoY" : "Sales revenue" : `${sonyCategories[category].label} ${growth ? "YoY" : "revenue"}`}</small><strong>{growth ? growthLabel(sonyGrowth(row, category)) : <>US${billions(sonyUsd(selectedRevenue, row))}<span>bn</span></>}</strong></div>
           {showProfit ? <div><small>Operating profit</small><strong>US${billions(sonyUsd(row.profit, row))}<span>bn</span></strong></div> : growth ? <div><small>{category === null ? "Sales revenue" : "Category revenue"}</small><strong>US${billions(sonyUsd(selectedRevenue, row))}<span>bn</span></strong></div> : <div><small>Share of gaming revenue</small><strong>{share(selectedRevenue, row.revenue)}</strong></div>}
         </div>
-        {category === null && <dl className={s.mix}>{sonyCategories.map((item, i) => <div key={item.label} style={{ "--series": item.color } as CSSProperties}><dt><i/>{item.label}</dt><dd>{growth ? growthLabel(sonyGrowth(row, i)) : `US$${billions(sonyUsd(values[i], row))}bn`} <span>{growth ? `US$${billions(sonyUsd(values[i], row))}bn` : share(values[i], row.revenue)}</span></dd></div>)}</dl>}
+        <section className={s.composition} aria-label={`FY${year} revenue proportions`}>
+          <p className={s.mixHeading}>Share of total revenue</p>
+          <div className={s.mixKey}><span><i className={s.solidKey}/>FY{year}</span>{hasPrevious && <span><i className={s.dashedKey}/>FY{year - 1}</span>}</div>
+          <div className={s.mixBody}>
+            <div className={s.mixVisual} role="img" aria-label={`100% stacked revenue bar for FY${year}${hasPrevious ? `, with dashed FY${year - 1} proportions` : ""}. Category amounts, shares and changes are listed alongside.`}>
+              <span className={s.mixCeiling} aria-hidden="true">100%</span>
+              {hasPrevious && <div className={s.shareTrack} data-period="previous" aria-hidden="true">
+                {composition.map((item, i) => <span key={sonyCategories[i].label} className={s.shareGhost} data-category={i} style={{ bottom: `${composition.slice(0, i).reduce((sum, entry) => sum + entry.previousPercent!, 0)}%`, height: `${item.previousPercent}%`, "--series": sonyCategories[i].color } as CSSProperties}/>)}
+              </div>}
+              <div className={s.shareTrack} data-period="current" aria-hidden="true">
+                {composition.map((item, i) => <span key={sonyCategories[i].label} className={s.shareFill} data-category={i} data-muted={category !== null && category !== i} style={{ bottom: `${composition.slice(0, i).reduce((sum, entry) => sum + entry.percent, 0)}%`, height: `${item.percent}%`, "--series": sonyCategories[i].color } as CSSProperties}/>)}
+              </div>
+              <span className={s.mixFloor} aria-hidden="true">0%</span>
+            </div>
+            <dl className={s.mixBreakdown}>{sonyCategories.map((item, i) => <div key={item.label} data-selected={category === i} style={{ "--series": item.color } as CSSProperties}>
+              <dt><i/>{item.label}</dt>
+              <dd className={s.mixAmount}>US${billions(sonyUsd(values[i], row))}bn{growth && <small>Revenue YoY: {growthLabel(sonyGrowth(row, i))}</small>}</dd>
+              <dd className={s.mixShare}><strong>{composition[i].percent.toFixed(1)}%</strong> <span className={s.mixShift}>({ppLabel(composition[i].shift)})</span>{hasPrevious && <small>was {composition[i].previousPercent!.toFixed(1)}%</small>}</dd>
+            </div>)}</dl>
+          </div>
+          <p className={s.mixNote}>{hasPrevious ? `Brackets: change in share from FY${year - 1}, in percentage points (pp).` : "First year in this series; prior-year proportions and changes are unavailable."}</p>
+        </section>
         <p className={s.fxNote}><a href={row.fxSource} target="_blank" rel="noreferrer">FY{year} average: ¥{row.yenPerUsd.toFixed(1)} per US$1 ↗</a>{growth && " · Change compares each year at its own average rate; this is not constant-currency growth."}</p>
         <p className={s.margin}>{category === null ? <>Operating margin: <strong>{share(row.profit, row.revenue)}</strong>. Profit is for the whole gaming segment; Sony does not provide a matching profit split by these categories.</> : <>Sony does not disclose operating profit for this category. Choose All revenue to see the whole gaming segment’s profit.</>}</p>
       </div>

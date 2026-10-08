@@ -272,3 +272,9 @@ CD PROJEKT RED are credited; background covers remain credited to their respecti
 rights holders and are not extracted for separate use. The original stays outside
 runtime delivery; lazy responsive WebP derivatives use the existing asset contract.
 Source, hash and full treatment: `context-media.json`, `cyberpunk-catalog-promo`.
+
+## Activision / Blizzard / King portfolio — reviewed 8 October 2026
+
+Ten official source assets/marks are added to the contextual pack. The poster comparison identifies three acquired businesses; optional gameplay views compare the activities their products offer. King’s standalone chapter examines the board on which assistance is sold. Infinity Ward is credited for the original Call of Duty; Treyarch and Raven for Black Ops 6; Blizzard North for the original Diablo, and Blizzard Entertainment for Diablo IV; King for Candy Crush. The unaltered marks identify creators and publishers and do not become Sanctuary branding.
+
+King’s terms §§5.11 and 11 and Activision’s terms §3 do not grant a blanket public-republication licence. Public press materials are not treated as unrestricted assets. The use basis is bounded criticism/review under the policy above, with full source composition, visible attribution, per-work analytical purpose, and removable media. No music, trailer, fan artwork or standalone source-download collection is included. See the dated policy excerpts on the public credits page and the exact URL/hash records in `context-media.json`. This documents the use rationale, not a guarantee that no rights holder could object.

@@ -1,6 +1,6 @@
 # Sanctuary Economics — complete editorial manuscript
 
-8 October 2026. The approved opening is preserved. This is the authoritative manuscript for the rebuilt 33-chapter edition.
+8 October 2026. The approved opening is preserved. This is the authoritative manuscript for the rebuilt 34-chapter edition.
 
 ## 1. Insert coin. Join in.
 
@@ -38,13 +38,15 @@ By the year ending March 2026, Sony’s gaming business was reporting annual rev
 
 Evidence: sony-fy2025-scale.
 
-Exhibit: PlayStation / Xbox / NVIDIA financial-history selector. See [sources and methodology](PLATFORM_FINANCIAL_CASES.md).
-
 ### Three ways to earn from the same worlds
 
-The games that make PlayStation worth owning can also make money for its rival. In 2023, Microsoft, the company behind Xbox, paid US$75.4 billion for Activision Blizzard, acquiring the publisher behind Call of Duty and Diablo. A Call of Duty purchase through PlayStation Store now paid Sony for distributing the game and Microsoft for publishing it. Microsoft could earn from that customer without selling them an Xbox.
+The games that make PlayStation worth owning can also make money for its rival. In 2023, Microsoft, the company behind Xbox, paid US$75.4 billion for Activision Blizzard. The name covered several established businesses: Activision’s blockbuster Call of Duty releases, Blizzard’s long-running franchises such as Diablo, and King’s mobile games, led by Candy Crush. Microsoft was buying routes into different parts of everyday life—from an evening at a console to a puzzle on the phone already in someone’s pocket.
 
-Evidence: microsoft-acquisition-scale, microsoft-cod-launch.
+Evidence: microsoft-acquisition-scale, microsoft-mobile-rationale.
+
+King had joined Activision Blizzard in 2016, bringing a business built around games people could begin without buying a copy. Microsoft’s gaming chief Phil Spencer explicitly connected the later acquisition to reaching mobile players and learning from those teams. Meanwhile, Call of Duty could earn for Microsoft even when someone bought it through PlayStation Store: Sony was paid for distribution, and its console rival was now paid for publishing the game. Owning the work could matter more than owning the machine on which someone played it.
+
+Evidence: king-acquisition, microsoft-mobile-rationale.
 
 Call of Duty also gave Microsoft another reason for players to join Game Pass, its subscription catalog. In October 2024, Black Ops 6, that year’s release in the shooter series, arrived in the catalog on launch day. Eligible subscribers could play without buying a separate copy. Days later, Microsoft’s chief executive Satya Nadella had two kinds of success to report: record new Game Pass subscriptions on launch day, and unit sales on PlayStation and Steam more than 60% higher than a year earlier. The same game was attracting subscribers while selling copies on a rival’s console and an independent PC store.
 
@@ -57,8 +59,6 @@ Evidence: xbox-game-pass-reset.
 NVIDIA can earn from those games without owning the studios that make them. Its GeForce processors help bring games to the screen; GeForce NOW lets players rent that computing power remotely. The company reported US$16.0 billion in Gaming revenue for the year ending January 2026, attributing its growth to demand for a new generation of graphics hardware. Cloud play sits inside that total, but its earnings are not disclosed separately. Where Microsoft bought more of the creative work, NVIDIA sells the capacity to run it. Both still depend on games that people want to play, including games made by other companies.
 
 Evidence: nvidia-gaming-history, gfn-membership-terms.
-
-Exhibit: Whose games fill the ecosystem? Sony FY2025 full-game copies, first-party versus other publishers.
 
 Across PlayStation, Xbox and NVIDIA, a game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it, or pays NVIDIA to run a copy they already own. The publisher sells the work, while the hardware maker, store and catalog operator earn from different purchases connected to it. By the time we reach a shop inside a game, several businesses already have an interest in what its players will buy next.
 
@@ -76,25 +76,72 @@ He nevertheless judged the agreement worthwhile. Sony paid for the right to incl
 
 Evidence: cdpr-catalog-economics.
 
-Visual: Cyberpunk 2077 in Sony’s July 2025 PlayStation Plus promotion. Catalog access covered the base game; the expansion remained a separate offer.
-
 ### A game you buy, a machine you hire
 
 Even the computer can become a separate service. A player can buy Cyberpunk through Steam, then pay NVIDIA’s GeForce NOW to run it on a remote machine. Their device receives the picture and sends back the controls; a suitable device and connection are still required. Valve handles the game sale, CD PROJEKT receives its share, and NVIDIA earns from providing the computing. Here the recurring payment rents the machinery. It does not turn the purchased game into a catalog subscription.
 
 Evidence: steam-cloud, gfn-membership-terms, gfn-requirements.
 
-Exhibit: Current market routes, separating game access from computing.
-
 These arrangements widen the business of creative work beyond the next copy sold. A publisher can reach individual buyers through a store, license a game to a catalog, or use both routes at different points in its life. Around that work, other companies sell equipment, computing and access to collections. Their agreements determine how the audience’s interest becomes income for each of them—and how much of that income can finance the work still to come.
 
-Owning part of that route changes whose next success a business can earn from. Sony benefits when players choose games made outside its own studios. On the PC, Valve built a similar position through Steam: a customer could finish a Valve game and buy another studio’s release without leaving its store. Valve continued making games, but its next sale no longer had to be a game it had made. That commercial possibility gives Steam’s history its importance here. The story begins with a narrower task: getting updates to Valve’s players.
+King takes that separation further. Its best-known game could reach someone who had never bought an Xbox, a PlayStation or a full-price PC release. Candy Crush asked for no admission price at all. Yet Microsoft’s acquisition brought it a business that had been earning from that invitation for more than a decade. To understand what the company was buying, we need to leave the console behind for a moment and look at a much smaller screen.
 
-Evidence: valve-history, valve-about, valve-deck-booklet.
+Evidence: king-twenty, candy-offer.
 
-Evidence boundary: Sony’s February 2021 earnings presentation, printed pages 7–8, describes the PS5 launch quarter ending December 2020: hardware priced below manufacturing cost, higher gaming-segment operating income and the contribution of software and network services. This is a historical segment result, not a claim about current hardware margins, a measured lifetime return per console or Cyberpunk’s contribution to those profits. The current diagrams use Cyberpunk across PC, PlayStation, Xbox and NVIDIA routes; these are not all versions of one transferable purchase. CD PROJEKT performs both development and publishing. Console catalog access does not supply a Windows PC entitlement for GeForce NOW. Sony’s and Microsoft’s catalog agreements are distinct; only CD PROJEKT’s account of the Sony deal is discussed. Nowakowski’s quotation is the complete opening sentence of his answer to question 5 in the Q3 2025 earnings transcript (PDF page 6, 18 words). His judgment of the deal’s return and expansion opportunity is management’s assessment, not an independently measured causal effect. No contract amount, commission rate, internal transfer price or per-play payment is inferred. The relationship between audience appeal and the surrounding businesses is our economic interpretation. Distribution helps establish the commercial context for later design analysis; it does not determine one game design. The financial passage uses the FY2025 supplement’s reported segment sales, including intersegment revenue. Its US-dollar amounts are conversions using the year’s average ¥150.7/USD, not reported dollar segment figures. The chart converts each year using its own annual average rate; YoY compares those nominal USD values, without inflation adjustment. Games/add-ons and Other match the chart’s disclosed regrouping. Gaming exceeds Music plus Pictures in reported revenue, not in combined profit or whole-industry scale. Sony’s accounts illustrate the economic attraction of distribution; they do not establish Valve’s motive or imply Valve stopped developing games. Microsoft’s acquisition cost is the completed transaction’s reported purchase price, not the earlier announcement’s enterprise value. Xbox history includes acquired businesses from their consolidation dates and is not an organic-growth series. NVIDIA Gaming includes GPUs, GeForce NOW and console chips/development services; it is neither total NVIDIA revenue nor a cloud-revenue measure. Xbox category dollar amounts, Game Pass/cloud revenue and separate Xbox profit are not inferred from growth rates or the wider reporting segment. Fiscal year ends differ across companies. The standalone publisher figure uses Sony full-game copies, not a split of revenue; no comparable Xbox/NVIDIA copy split is invented. Microsoft’s 30 October 2024 earnings call reports launch-day Game Pass subscriber additions and PlayStation/Steam unit sales, not retention, profit or an annual sales total. The reported increase is over 60% year-on-year across the named sales channels; we do not assign a separate rate to each store or infer an effect caused by Game Pass. Xbox’s October announcement identifies Ultimate and PC Game Pass as the eligible launch plans. Its April 2026 announcement lowers those plans’ prices and moves future Call of Duty titles to the following holiday season, about a year after launch. The possibility of one offer replacing another is our economic interpretation, not Microsoft’s stated cause for that change or a quantified estimate of lost sales. No title-level contribution to the annual revenue decline is inferred. The acquisition did not create Microsoft’s first cross-platform publishing business; the example explains the larger ownership position that it bought. PlayStation, Xbox and NVIDIA are three selected ecosystems, not an exhaustive market ranking or mutually exclusive business models. Sony and Microsoft both develop and publish games as well as supplying stores, hardware and subscriptions. The NVIDIA contrast concerns the disclosed Gaming business, not the whole corporation. The connection to later in-game offers is our economic interpretation, not a claim that a platform dictates a particular design.
+## 3. Candy Crush: the price comes later
 
-## 3. Valve: the studio becomes the store
+A few spare minutes became a business worth buying twice.
+
+When Candy Crush Saga arrived on Facebook in 2012, it offered 65 levels. Eleven years later, its maker King was preparing level 15,000. By company tradition, the newest designers got to make the milestone level. A game that fit into a few spare minutes had become a continuing production: new puzzles for people who had been playing for years, made by colleagues who had only just arrived.
+
+Evidence: king-launch, king-twenty.
+
+King had been making browser games since 2003. Facebook brought its puzzles into a place where people already spent time with friends; phones let the same kind of play travel with them. Candy Crush Saga reached mobile in late 2012. There was no console to buy, and no need to decide whether a game deserved the price of a boxed release before trying it. The invitation was small enough to accept almost casually: swap a few sweets, clear a board, see what comes next.
+
+Evidence: king-mobile-launch.
+
+That invitation describes the pleasure, but also the business. Candy Crush is a match-three puzzle: line up candies to clear them, working toward a level’s goal with a limited supply of moves. Entry is free. Optional purchases can provide extra moves or tools called boosters that help clear a difficult board. This is freemium: the game can be enjoyed without paying, while particular advantages are offered for sale within it. By the time someone considers a purchase, they already know what another chance would mean.
+
+Evidence: candy-offer.
+
+### Most players did not pay
+
+King’s early accounts contain a useful surprise. It stopped selling advertising space in 2013, yet reported US$2.26 billion in revenue and US$575 million in profit the following year. Most of its audience was not buying anything in a typical month. In the final quarter of 2014, King reported an average of 356 million monthly unique users and 8.3 million monthly unique payers across its games—about 2.3%. A small paying share could sustain a very large business when the invitation reached enough people.
+
+Evidence: king-platform-costs, king-2014.
+
+The creative task had changed with the offer. A boxed game had to persuade someone that the whole work was worth buying. Here, the work could make its case through play, with a purchase available at a particular moment inside it. The studio needed puzzles people wanted to solve and reasons to keep solving them. It also needed to decide what help to sell. Challenge, satisfaction and the value of assistance now met on the same board. Their relationship is something we will examine, rather than assume that every obstacle exists to force a payment.
+
+### The company inside the acquisition
+
+By 2016, King was valuable enough for Activision Blizzard to buy the entire company. The deal announced a US$5.9 billion equity value and brought an established mobile publisher alongside the businesses behind Call of Duty and Diablo. Microsoft acquired that larger group in 2023; it did not buy Candy Crush from the Diablo team. The ownership followed two acquisitions, while the game and the people making it belonged to King.
+
+Evidence: king-acquisition, microsoft-acquisition-scale.
+
+Nor was Microsoft arriving at the birth of a mobile craze. Just before its deal closed, King reported that the Candy Crush franchise had earned more than US$20 billion over its lifetime. Microsoft was buying an audience that had endured and teams experienced in serving it. Its gaming chief Phil Spencer had explained the ambition while the acquisition was being reviewed: “While we love consoles, we recognize that they are not the only way that people play games.” A company known for Xbox wanted to reach people who might never buy one.
+
+Evidence: king-twenty, microsoft-mobile-rationale.
+
+The business kept evolving around the same puzzle. Advertising returned: by 2022, King reported earning from both in-game purchases and ads. Its 2026 Candy Crush All Stars competition offered a US$1 million prize pool and a live final in London. A game designed for short sessions could also organize an occasion around which players gathered. Continued production meant more than adding levels; it could give an old game new reasons to become part of someone’s day.
+
+Evidence: king-later-model, candy-offer.
+
+The resemblance to later chapters lies beneath the different artwork. New content, events and offers can turn a released game into continuing work for its maker. Diablo IV also combines an ongoing game with additional things to buy, but it charges for entry and separates its cosmetic shop from character power. Candy Crush sells assistance with play itself. Those differences matter: sustaining a game through repeated purchases does not tell us what should be for sale, or what buying it does to the experience.
+
+Evidence: d4-season-philosophy.
+
+### Free to play. Costly to reach.
+
+Even this enormous audience did not give King an independent route to its customers. Its 2014 accounts recorded US$685 million paid to social and mobile platforms, plus US$422 million spent on marketing and advertising. Apple, Google and Facebook handled nearly all its virtual-currency purchases that year. The game could be free to its players while access to those players remained costly to its maker.
+
+Evidence: king-platform-costs.
+
+That is where another studio’s history becomes revealing. King made games that people found through other companies’ platforms. Valve made games, then built a store through which other developers could reach its audience. The next chapter follows that move: from creating something people want to play to operating a place where many creators can sell their work.
+
+Evidence: valve-history, valve-about.
+
+
+## 4. Valve: the studio becomes the store
 
 Steam began by delivering updates. Selling games changed whose success Valve could earn from.
 
@@ -140,7 +187,7 @@ Evidence: steam-cloud, epic-unreal-tools.
 
 Evidence boundary: Valve’s 2022 Steam Deck booklet supplies its account of the update-distribution problem, Steam’s launch and the hardware projects leading to Steam Deck. The 2012 handbook dates Half-Life, Steam, third-party releases and Steamworks, and provides the short communication quotation in the context of measurement and testing. These are Valve’s accounts, not independent causal evaluations. The library’s value to players, the mutual appeal of creators and audiences, and the commercial logic of compatible hardware are our analysis; no switching-cost estimate, sales uplift, market share, profit or private commission is claimed. Steam’s payment documentation establishes revenue sharing, not a commission on every item in a library. The visibility account describes Valve’s stated system and does not establish equal exposure or a guarantee of success. Deck compatibility is title-dependent; non-Steam software is allowed. Cloud Play requires supported games and publisher participation. The developer catalog distinguishes releases, collaborations and an unreleased playtest. No game-plot summary or claim that Valve stopped making games is used to explain the business transition.
 
-## 4. Epic: the studio becomes the engine
+## 5. Epic: the studio becomes the engine
 
 A game can leave behind more than a world people want to revisit. Its makers may have built tools that other worlds need.
 
@@ -184,7 +231,7 @@ Evidence: epic-store-2025.
 
 Evidence boundary: The 1998 launch announcement credits Epic MegaGames and Digital Extremes and describes the included level editor. Engine access in 2014 is a historical subscription offer, not current pricing. The Fortnite example concerns its December 2022 release and Epic’s January 2023 technical account; particular visual features depended on platform support. The longer-term dependence of studios on their tools is our production-economics interpretation. Publishing terms are the 2020 public offer; store terms are the June 2025 standard-terms announcement. Engine royalties and store distribution charges have different bases, exclusions and optional programs. The chart reports 2025 consumer spending, inclusive of tax, not revenue, profit or overall company performance. The comparison establishes several businesses built around creative work; it does not rank Valve and Epic, infer funding sources or declare Epic a failed company.
 
-## 5. Rockstar: worlds built to last
+## 6. Rockstar: worlds built to last
 
 A recognizable world can give players reasons to return and a studio something to build on for decades.
 
@@ -218,7 +265,7 @@ Evidence: valve-about, epic-about, take-two-labels.
 
 Evidence boundary: The 1997 GTA origin, 1998 Half-Life/Unreal releases, 2013 GTA V/Online launch and Take-Two’s FY2025 strategy are sourced separately. These are franchise milestones, not identical company founding dates. The links between theme, recurring actions and franchise identity are our critical interpretation, not measured causes of retention or revenue. Repeated play is not assumed to produce repeated payment. The three company chapters compare business emphases; each company has multiple activities.
 
-## 6. The business of keeping a world alive
+## 7. The business of keeping a world alive
 
 Two adventures can occupy the same years of a player’s life while asking very different things of the people who make them.
 
@@ -254,7 +301,7 @@ A studio making those commitments needs more than a popular world. It needs agre
 
 Evidence boundary: The comparison concerns production commitments and offers, not complete studio accounts or a claim that one model causes a particular experience. Larian’s April 2025 announcement ended major content updates, not all support. Blizzard’s August 2022 statement records its pre-launch plan, not current pass products or prices. Campaigns and seasonal play overlap; neither replayability nor sociability implies recurring payment. The returning-player examples are interpretive possibilities, not findings about the share of Diablo IV players who feel a particular way. The social research concerns other online games and is used to widen the questions, not to impute results to Diablo IV.
 
-## 7. The work behind a purchase
+## 8. The work behind a purchase
 
 A popular game can earn money for several businesses before its creator can afford another one.
 
@@ -292,7 +339,7 @@ A company supplying several layers can pursue a game for more than its direct sa
 
 Evidence boundary: Epic’s 2020 public terms are one publishing offer, not a universal contract. The WGA passage concerns the historical 2023 agreement and qualifying productions, not all streaming compensation. Sony’s figures are reported segment revenue, including differing accounting treatments; they are neither gross consumer spending nor profit margins or cloud revenue. The final paragraph identifies possible strategic contributions, not a private valuation of any named game. This chapter uses no assumed commissions, recoupment balances or catalog fees.
 
-## 8. A game you buy, a machine you hire
+## 9. A game you buy, a machine you hire
 
 The most expensive object needed for the evening can be somewhere else. Someone still has to supply it.
 
@@ -330,7 +377,7 @@ Moving the computer can change who reaches a world and what the evening costs. I
 
 Evidence boundary: The example holds a supported Steam game purchase constant while changing the computer running it. It does not treat NVIDIA as the game seller or generalize its offer to all cloud services. Requirements are published conditions, not measured performance. Membership milestones do not count active or paying players. Storage, regional availability, publisher support and plan exceptions vary; terms were checked 8 October 2026. The Ubisoft arrangement concerns the covered rights and territories, not ownership of Activision Blizzard or a universal right to all its games. No claim is made about how many studios changed production targets because of cloud access.
 
-## 9. What it takes to make a world
+## 10. What it takes to make a world
 
 A convincing place has to answer the player. Every answer has work behind it.
 
@@ -392,7 +439,7 @@ The shared constraint is attention: the team’s care has to become something a 
 
 Evidence boundary: The production comparison is critical interpretation, not a ranking or a claim that each studio uses only one method. Developer accounts describe intentions and work, not measured player effects. CD PROJEKT’s private Unreal agreement is not assigned standard public royalty terms. The Witcher 4 demonstration is not a finished-game benchmark. Loopforge is the author’s project. Its implemented teaching model, authored exhibit dialogue, concept art and developing story are distinct. The comparison uses recorded outcomes from the same starting state with one changed decision; it does not establish workplace effects, production savings or narrative-model reliability.
 
-## 10. Concord: the future that did not arrive
+## 11. Concord: the future that did not arrive
 
 The equipment, the publisher and the production were in place. The launch did not secure the future planned around them.
 
@@ -424,7 +471,7 @@ Successful worlds make those commitments look natural in retrospect. We see the 
 
 Evidence boundary: Launch terms and the acquisition, withdrawal and closure dates come from contemporary Sony and Firewalk statements. Two weeks is the elapsed time from the standard launch to shutdown, excluding early access. The chapter makes no production-budget, sales-volume or profitability estimate. Audience switching costs and the counterfactual comparison with surviving franchises are analytical framing; they do not establish a cause of Concord’s failure. Management’s explanation is attributed rather than treated as an independent causal finding.
 
-## 11. The cathedral and the computer
+## 12. The cathedral and the computer
 
 Diablo made an old kind of adventure feel immediate. Its dungeon could keep surprising you, even after you knew where the story ended.
 
@@ -460,7 +507,7 @@ The distinction matters. A design offers possibilities; a release chooses among 
 
 Evidence boundary: The 1994 Condor proposal is evidence of intended design and contemplated marketing, not a description of the shipped game. Brevik’s retrospective establishes the turn-based-to-real-time development change. Wichman describes Rogue’s own procedural-design intent; this is an antecedent comparison rather than a claim that Diablo invented randomized dungeons or all action RPG conventions. Blizzard’s retrospective dates Diablo to 31 December 1996, while other Blizzard pages call it a 1997 release; the prose deliberately says the turn of 1996–97. Battle.net was free to users, not costless to operate.
 
-## 12. A bigger world inside the box
+## 13. A bigger world inside the box
 
 Diablo II gave its owners more ways to play for years. Serving that audience already required work long after a copy had been sold.
 
@@ -496,7 +543,7 @@ This is the inheritance that later Diablo games had to negotiate. Players could 
 
 Evidence boundary: This describes the original Diablo II and Lord of Destruction, not the later Resurrected catalog. October 2003 dates the introduction of seasonal ladder characters, not the first leaderboard. The evidence for production effort and free-service responsibilities is a contemporary developer account; it does not disclose the exact revenue assigned to those costs. Replayability, continued service and recurring purchases are deliberately kept separate. Buying an original release does not mean acquiring every future expansion or an unconditional guarantee of perpetual online access.
 
-## 13. When the market competed with the monsters
+## 14. When the market competed with the monsters
 
 Diablo III made equipment easier to buy from other players. Blizzard later decided that convenience was weakening the reason to seek it in the first place.
 
@@ -534,7 +581,7 @@ Evidence: d3-mosqueira.
 
 Evidence boundary: This chapter concerns the historical PC auction houses, their announced March 18, 2014 closure and the 2014 redesign. Hight’s explanation is Blizzard’s stated assessment, not proof of every player’s response or a financial estimate. The World of Warcraft comparison establishes business experience within Blizzard, not a documented causal account of why any Diablo feature was chosen. The season paragraph describes the original 2014 PC introduction; console timing differed. Auction-house analysis is introduced here historically and can be unpacked later in the power chapter without repeating the announcement.
 
-## 14. A familiar world, another production calendar
+## 15. A familiar world, another production calendar
 
 Diablo IV arrived with a campaign to finish and a team committed to making the next season. Those promises share a world, but ask different things of its creators.
 
@@ -580,7 +627,7 @@ Evidence: gauntlet.
 
 Evidence boundary: Launch structure, 2025 Reliquaries and September 2026 anniversary content are separately dated. The campaign/realm distinction avoids treating campaign and seasonal play as mutually exclusive modes. The launch account of creating new seasonal characters is historical; September 2026 Rebirth also permits an Eternal character identity to enter a fresh level-one seasonal progression. No private revenue targets, funding allocation, player motivations or causal effects of Microsoft ownership are asserted. The optional-purchase summary is not a claim that every future expansion feature is available to every base-game owner.
 
-## 15. How many lives does a coin buy?
+## 16. How many lives does a coin buy?
 
 Long before a seasonal shop, a purchase could change the rules inside the adventure.
 
@@ -612,7 +659,7 @@ Modern games spread this negotiation across more systems. Some purchases open ad
 
 Evidence boundary: The manual describes operator controls and earnings advice; it is not a measured result showing how a particular setting affected revenue or satisfaction. Logg’s 2012 retrospective supplies the commercial design account and ending decision. The reading of average playtime is original analysis, not a reconstructed cabinet dataset. Health purchases in Gauntlet are distinguished from Diablo IV’s other paid goods; the historical comparison does not imply identical mechanics or claim Gauntlet invented paid play.
 
-## 16. Paying for the years between releases
+## 17. Paying for the years between releases
 
 A successful release buys a studio time. What it promises next determines how much work that time must support.
 
@@ -636,7 +683,7 @@ This is the pressure behind the next offer: a business needs another source of i
 
 Evidence boundary: The CD PROJEKT figures are direct expenditure disclosed in October 2023, in PLN, not total project profitability or the budget for repairing the base game. Riot documents its own 2020 service architecture. Larian and Blizzard provide dated production commitments. Funding alternatives are explanatory possibilities, not a reconstruction of either studio’s accounts.
 
-## 17. What the next purchase adds
+## 18. What the next purchase adds
 
 Six role-playing games put different boundaries around the work they sell.
 
@@ -662,7 +709,7 @@ The distinction reaches beyond price. A purchase can add possibilities now or cr
 
 Evidence boundary: Selected official products illustrate distinct package boundaries, not a complete catalog, financial ranking or equivalence of their gameplay. The Witcher bundle and Expedition update are dated examples. Reliquaries refer to the April 2025 design. Conclusions about future commitments are the essay’s comparison.
 
-## 18. What a new season keeps
+## 19. What a new season keeps
 
 A fresh character begins with little. The person controlling it may bring years.
 
@@ -686,7 +733,7 @@ The transfer diagram separates these kinds of continuity. Its important conseque
 
 Evidence boundary: The transfer and temporary-mechanics account is anchored to Blizzard’s 2023 seasonal explanation. It does not promise that every historical seasonal feature, item or benefit follows the same rules today. The two-player comparison and sports analogy are explanatory models; the owner-supplied tooltip provides a separate captured interface example.
 
-## 19. A reason to be here
+## 20. A reason to be here
 
 The activity log can record a completed dungeon. It cannot say what made that evening matter.
 
@@ -710,7 +757,7 @@ This changes how we assess a reward system. A deadline that sends friends into s
 
 Evidence boundary: The three friends are an invented scenario. SDT supplies a theory and empirical studies; Yee supplies a genre-specific motivation survey; Koster offers a design argument. These do not establish a universal player taxonomy or identify the motives of Diablo IV’s audience.
 
-## 20. Do the points mean progress?
+## 21. Do the points mean progress?
 
 INDIKA places familiar game arithmetic inside a story that gives us reasons to distrust it.
 
@@ -730,7 +777,7 @@ The point carries back to Diablo without making the two games interchangeable. A
 
 Evidence boundary: This is a close reading of the two supplied screenshots in the context of the publisher’s premise. It does not claim an unseen ending, universal player response or verified causal effect of the counter. The interpretation is the author’s, not a quotation of the developer’s intent.
 
-## 21. The same attack, a different decision
+## 22. The same attack, a different decision
 
 A game can keep its familiar controls while changing what it asks a player to notice.
 
@@ -748,7 +795,7 @@ This gives us a more precise way to compare the old Diablo screenshot with the n
 
 Evidence boundary: The tactical layouts are original teaching models. Juul provides the emergence/progression distinction; the historical screenshots establish visible resemblance, not identical systems or a causal effect of monetization on design.
 
-## 22. What comes back through the loop
+## 23. What comes back through the loop
 
 Fight, find, improve, repeat. The appeal depends on what is different the next time around.
 
@@ -772,7 +819,7 @@ This is where tuning reaches beyond pacing. If a change doubles the number of ru
 
 Evidence boundary: MDA is a design framework, not a demonstrated revenue model. The heavy-attack example and session timescales are original analytical constructions. The seasonal rationale is attributed to Blizzard’s 2023 explanation. No actual damage balance or causal claim about D4 retention is inferred.
 
-## 23. The player who is still waiting
+## 24. The player who is still waiting
 
 An average reward rate can conceal a very long evening for the unlucky player.
 
@@ -794,7 +841,7 @@ The proper comparison also includes what each unsuccessful run contains. A good 
 
 Evidence boundary: Loot Reborn is a dated 2024 design announcement, not a measured outcome. All displayed odds are hypothetical, fixed and independent: 1 − (1 − p)^n. At p=.05 and n=20 the result is about .6415; the geometric mean wait is 20. No D4 drop rates, paid-draw equivalence or psychological diagnosis is asserted. The smallest integer n with 1 − .95^n ≥ .9 is 45.
 
-## 24. When the game enters the calendar
+## 25. When the game enters the calendar
 
 A reward track can give an evening direction. Its expiry date can give the rest of the week a deadline.
 
@@ -818,7 +865,7 @@ Deadlines can still do useful work. A tournament needs a common occasion; a seas
 
 Evidence boundary: Halo’s rules are scoped to the May 2022 premium/free distinction. Deep Rock Galactic is described through its April 2024 developer proposal, including exceptions. The missed-week comparison is hypothetical and supplies no claim of measured pressure, retention or revenue.
 
-## 25. Buying the door
+## 26. Buying the door
 
 A receipt can grant access to an adventure without making the character ready to enter it.
 
@@ -836,7 +883,7 @@ Clear requirements need not weaken an enticing invitation. A difficult entrance 
 
 Evidence boundary: The two Erdtree prerequisites are documented in a June 2024 publisher guide. The course analogy and decision questions are analysis. The D4 campaign-selection figure records the photographed account’s access state; it is not evidence that D4 uses the same boss gates.
 
-## 26. A character worth inhabiting
+## 27. A character worth inhabiting
 
 An appearance can leave combat unchanged while giving someone another reason to care about the character.
 
@@ -858,7 +905,7 @@ A sale records that the buyer accepted an offer. It does not explain whether the
 
 Evidence boundary: The crown and wardrobe scenarios are invented. Lehdonvirta’s study is exploratory; the Proteus studies involve assigned appearances in brief virtual interactions. Neither estimates D4 cosmetic demand or effects of purchasing. The earned/paid wardrobe comparison is a proposed design assessment.
 
-## 27. Buying a different route
+## 28. Buying a different route
 
 The item at the end can be identical while the purchase changes the evening required to reach it.
 
@@ -882,7 +929,7 @@ Once two routes are offered, they become part of one design. Players compare the
 
 Evidence boundary: Official Warframe sources establish crafting, direct purchase and eligible currency trading, with transaction restrictions. The Path of Exile example is a dated developer support explanation of public premium stash tabs. No current prices, matched acquisition times or necessary purchase for every trade are asserted.
 
-## 28. When the market replaces the hunt
+## 29. When the market replaces the hunt
 
 An efficient way to acquire equipment can compete with the activity that made the equipment desirable.
 
@@ -906,7 +953,7 @@ A transaction can work flawlessly and still weaken a larger design. The item arr
 
 Evidence boundary: Blizzard and Grinding Gear Games supply historical design diagnoses, not controlled causal results. The imagined acquisition routes explain their relevance. No deliberate loot manipulation, universal harm from trading or claim that D4 sells the same power is made.
 
-## 29. The price on the screen
+## 30. The price on the screen
 
 A token price and the money needed at checkout can be different numbers.
 
@@ -926,7 +973,7 @@ The arcade token and the virtual coin both place another unit between money and 
 
 Evidence boundary: The CAD pack price is from an owner-supplied historical capture with unknown date, not a current quote. The item is hypothetical. The model has zero starting balance, one selected pack, no tax and no optimization across pack combinations. Payment-form research supplies no D4-specific effect size.
 
-## 30. Pay to begin earning
+## 31. Pay to begin earning
 
 One purchase opens a collection. Playing supplies another currency used to claim its contents.
 
@@ -952,7 +999,7 @@ Start the evaluation with the reward someone actually wants. Work backward throu
 
 Evidence boundary: Historical April 2025 Reliquary rules, not a current-season guide. The 99→69→94 example invents the spending and earning amounts and makes no claim about earning speed. References to value, intention and interruption are analytical questions, not measured D4 player outcomes.
 
-## 31. A purchase you can explain
+## 32. A purchase you can explain
 
 The art can make an offer irresistible. The interface still has to make its terms understandable.
 
@@ -976,7 +1023,7 @@ Conversion, the proportion who complete a purchase, is one outcome of that test.
 
 Evidence boundary: The purchase path and proposed comprehension task are original analytical examples. The medium-maximization pilot used questionnaire choices, not observed completion of the described tasks. Service-enrollment findings are not D4 findings or a legal diagnosis. No game-specific effect size is inferred.
 
-## 32. What the instrument missed
+## 33. What the instrument missed
 
 Outer Wilds offers a small lesson in why activity can look healthy while the intended experience is failing.
 
@@ -1000,7 +1047,7 @@ This discipline matters most while a consequential choice can still change. A po
 
 Evidence boundary: The signalscope and path-clue revisions are documented 2016 development accounts. The hypothetical usage metric and reward-catalog examples are original explanations of measurement ambiguity. No actual D4 telemetry or Outer Wilds A/B-test result is claimed.
 
-## 33. An evening worth sustaining
+## 34. An evening worth sustaining
 
 The business needs another sale. Its audience needs a reason to welcome the next invitation.
 

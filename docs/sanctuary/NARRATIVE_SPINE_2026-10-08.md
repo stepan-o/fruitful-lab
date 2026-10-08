@@ -1,11 +1,12 @@
 # Sanctuary Economics — implemented narrative spine
 
-8 October 2026. This is the implemented 33-chapter sequence. The approved opening remains the editorial benchmark. The [complete manuscript](COMPLETE_MANUSCRIPT_2026-10-08.md) supersedes earlier partial drafts.
+8 October 2026. This is the implemented 34-chapter sequence. The approved opening remains the editorial benchmark. The [complete manuscript](COMPLETE_MANUSCRIPT_2026-10-08.md) supersedes earlier partial drafts.
 
 ## The businesses around a game
 
 - `insert-coin`
 - `studio-to-screen`
+- `mobile-freemium`
 - `valve-platform`
 - `epic-infrastructure`
 - `rockstar-world`
@@ -69,3 +70,7 @@ The final acts follow what the player is trying to do, how rules structure that 
 New original history scenes and comparison controls share the established stone, brass, ember and muted teal palette. Motion is CSS based and pauses offscreen, on hidden pages, under the global motion preference and with reduced motion. Source images use responsive, locally hosted derivatives; rights records state the source, owner, analytical purpose and limitations without claiming blanket permission.
 
 The production/engine chapter includes Loopforge using the project’s own assets. Original art and primary-source visual citations serve specific arguments rather than decorating chapter boundaries.
+
+## The mobile bridge
+
+The ecosystem overview introduces three acquired audiences with official brand art, keeping the makers visible. King then establishes free entry, optional purchases, continuing production and dependence on distribution. Its platform bill makes Valve’s move into running a store a concrete next question. Mobile is a business model case, not a claim that casual games are simple or that Diablo copied King. The new chapter uses a complete continuous manuscript and preserves the approved Pong opening.

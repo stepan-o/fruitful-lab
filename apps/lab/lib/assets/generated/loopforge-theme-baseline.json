@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-theme-baseline",
+  "assets": {
+    "button-hover": {
+      "kind": "image",
+      "width": 1549,
+      "height": 277,
+      "variants": [
+        {
+          "src": "/media/files/aca8dd7e4e583233036bce9b3c046c23e53708efbaf8b9c7c8946c3515945114.webp",
+          "mime": "image/webp",
+          "bytes": 14388,
+          "sha256": "aca8dd7e4e583233036bce9b3c046c23e53708efbaf8b9c7c8946c3515945114",
+          "width": 480,
+          "height": 86
+        },
+        {
+          "src": "/media/files/a614d5ef1314244844b185907653a4b20d37f695b17a17fcf5ca809f9047c048.webp",
+          "mime": "image/webp",
+          "bytes": 31270,
+          "sha256": "a614d5ef1314244844b185907653a4b20d37f695b17a17fcf5ca809f9047c048",
+          "width": 720,
+          "height": 129
+        }
+      ]
+    },
+    "button-pressed": {
+      "kind": "image",
+      "width": 1549,
+      "height": 277,
+      "variants": [
+        {
+          "src": "/media/files/e510bdccbdb79a7c4f90ffcb30c67fc2ccdb49759a9d6ee19fbef19fb554e4b3.webp",
+          "mime": "image/webp",
+          "bytes": 13854,
+          "sha256": "e510bdccbdb79a7c4f90ffcb30c67fc2ccdb49759a9d6ee19fbef19fb554e4b3",
+          "width": 480,
+          "height": 86
+        },
+        {
+          "src": "/media/files/a36721e0fc8f8c4c5a0c58f5b8ad31f239b37ca51f5813e8287a50206567dac7.webp",
+          "mime": "image/webp",
+          "bytes": 29738,
+          "sha256": "a36721e0fc8f8c4c5a0c58f5b8ad31f239b37ca51f5813e8287a50206567dac7",
+          "width": 720,
+          "height": 129
+        }
+      ]
+    },
+    "button-rest": {
+      "kind": "image",
+      "width": 1549,
+      "height": 276,
+      "variants": [
+        {
+          "src": "/media/files/661a35f9b17d6911674856894bdc1f2eb1cf396ebd907586124074a61ea9e336.webp",
+          "mime": "image/webp",
+          "bytes": 13724,
+          "sha256": "661a35f9b17d6911674856894bdc1f2eb1cf396ebd907586124074a61ea9e336",
+          "width": 480,
+          "height": 86
+        },
+        {
+          "src": "/media/files/866c82562bbca11f785a41016459fd0ebc4668361719e0a7b356e8169127de61.webp",
+          "mime": "image/webp",
+          "bytes": 30842,
+          "sha256": "866c82562bbca11f785a41016459fd0ebc4668361719e0a7b356e8169127de61",
+          "width": 720,
+          "height": 128
+        }
+      ]
+    },
+    "monitor-frame": {
+      "kind": "image",
+      "width": 1539,
+      "height": 930,
+      "variants": [
+        {
+          "src": "/media/files/453467772dcd563e8112591cf1c5f5f1105d639e3f75ad3b17da26fa00bdde98.webp",
+          "mime": "image/webp",
+          "bytes": 32940,
+          "sha256": "453467772dcd563e8112591cf1c5f5f1105d639e3f75ad3b17da26fa00bdde98",
+          "width": 480,
+          "height": 290
+        },
+        {
+          "src": "/media/files/0143f8145f8e43aa511d2255fd42b5effad6f020f52eb7b1ad87b9478ef36cea.webp",
+          "mime": "image/webp",
+          "bytes": 118166,
+          "sha256": "0143f8145f8e43aa511d2255fd42b5effad6f020f52eb7b1ad87b9478ef36cea",
+          "width": 960,
+          "height": 580
+        }
+      ]
+    },
+    "supervisor-socket": {
+      "kind": "image",
+      "width": 1180,
+      "height": 1203,
+      "variants": [
+        {
+          "src": "/media/files/dfbc2581ab2703bdd7b0981f4b29609dc67d980ecd67b2ca52951911db0dfbae.webp",
+          "mime": "image/webp",
+          "bytes": 21526,
+          "sha256": "dfbc2581ab2703bdd7b0981f4b29609dc67d980ecd67b2ca52951911db0dfbae",
+          "width": 240,
+          "height": 245
+        },
+        {
+          "src": "/media/files/a046d057a43741e0a446608ea16cb89785af6bcb8e202a6a74b999d2b0be1958.webp",
+          "mime": "image/webp",
+          "bytes": 71398,
+          "sha256": "a046d057a43741e0a446608ea16cb89785af6bcb8e202a6a74b999d2b0be1958",
+          "width": 480,
+          "height": 489
+        }
+      ]
+    }
+  }
+}

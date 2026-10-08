@@ -1,3 +1,20 @@
+# Activision, Blizzard and King — mobile interlude, 8 October 2026
+
+Chapter 2 now identifies the distinct businesses inside Microsoft's acquisition through an official-art triptych. Each card separates the original franchise studio from the pictured release's makers and publisher: Infinity Ward / Treyarch and Raven, Blizzard North / Blizzard Entertainment, and King. Gameplay mounts only when selected. Source and use links accompany every plate; embedded media are included in the chapter credit index and its server-filtered asset manifest.
+
+The new third chapter follows Candy Crush from 65 Facebook levels in 2012 to continuing production, optional assistance, King's financial model, two parent acquisitions and its dependence on mobile/social platforms. King precedes Valve; the presentation now has 34 chapters. The approved first chapter is unchanged. Historical company/portfolio figures, the dated franchise milestone and the two different acquisition measures are distinguished explicitly. The comparison with Diablo is an editorial interpretation, not a claim of direct borrowing.
+
+Verification:
+
+- Required app CI passes before base synchronization (68 suites, 351 tests, 23 retained releases) and after it (74 suites, 387 tests, one snapshot, 45 retained releases and production build). The additional tests/releases come from the current main branch. Two shared-memory conflicts were resolved by preserving Sanctuary notes and the latest Loopforge record; no Loopforge implementation was edited.
+- Focused checks cover chapter placement, cited asset completeness, original-studio credits, optional free-play route and on-demand gameplay. Scoped lint and whitespace checks pass.
+- Desktop and 390px review verified the new opening, official art, gameplay selection and the free/purchase switch. Production checks at 320px verified stacked poster cards, 44px controls and no page overflow. The phone diagram uses larger text; closing gameplay restores keyboard focus to its trigger.
+- Ten new source assets yield 23 WebP variants totaling 489,318 bytes across every size; the largest individual file is 86,254 bytes. Above-fold Candy art is prioritized; other images stay lazy. No external image request, added dependency or animation loop. Publisher art remains complete and unmodified apart from proportional optimization.
+- Source snapshots, ownership, analytical purpose and use limits are in the asset register and public credits. Official availability is not represented as permission or a copyright guarantee. The existing bounded editorial-use decision is retained.
+- The known standalone TypeScript errors in unrelated Pinterest/GrowthBook test mocks are unchanged; production TypeScript succeeds.
+
+The previous checkpoints below document earlier iterations.
+
 # Platform-history selector update — 8 October 2026
 
 The financial exhibit now switches between PlayStation, Xbox and NVIDIA.

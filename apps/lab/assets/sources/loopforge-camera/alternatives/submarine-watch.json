@@ -1,0 +1,139 @@
+{
+  "id": "submarine-watch",
+  "title": "Loopforge / Submarine Watch",
+  "status": "Alternative concept for owner review; not implemented or approved",
+  "generated_at": "2026-10-08",
+  "generator": "Built-in image_gen.imagegen",
+  "mode": "Reference-guided original generation; one sheet",
+  "original_path": "/home/stpn/.codex/generated_images/01a11b95-34ce-7c21-8338-d8b4bcf925ff/exec-cc33bbd7-c23e-423c-a2d6-dc8db012746b.png",
+  "selected_path": "apps/lab/assets/sources/loopforge-camera/alternatives/submarine-watch.png",
+  "preview_path": "apps/lab/assets/sources/loopforge-camera/alternatives/submarine-watch.webp",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024,
+    "aspect_ratio": "3:2"
+  },
+  "prompt": "Use case: stylized-concept.\nAsset type: one alternative game-camera-console art-direction and material sheet; a landscape 3:2 board, 1536 by 1024 minimum, beautifully rendered serious realistic industrial concept design. This is a NEW alternative design, not an edit of the baseline.\nPrimary request: LOOPFORGE / SUBMARINE WATCH. A believable worn pressure-contained naval optical instrument adapted to the original Loopforge factory. Smoke-blue and nearly black vitreous enamel, restrained rubbed brass at contact edges, thick sealed convex black glass, black rubber gaskets, cream ceramic inserts, dim amber and cyan working light. Distinctive sealed capsule silhouette with rounded shoulders and stepped pressure flanges, not a generic rectangular panel and not olive military wrist-computer styling. Loopforge identities and detailed mechanical construction dominate; no sailor uniforms, ship wheels, naval badges, nautical cosplay, or steampunk ornament.\nInput images, reference roles:\n1 LIMEN character sheet: preserve exact cracked metallic skull, black segmented mechanical jaw, cyan eyes and layered dark armour for one recognizable head-and-shoulders supervisor token.\n2 STILETTO character sheet: preserve exact closed dark metal helmet and red-orange T-shaped visor, elegant sharp mechanical shoulders; absolutely no exposed human face for the second token.\n3 THRUM character sheet: borrow only credible concentric optical housing construction and the depth of glass and metals, not a third portrait.\n4 original factory painting: borrow used machinery, aged hand-worked surfaces, slight oily reflected amber warmth; do not show its room or characters inside the monitor.\n5 baseline style sheet: a checklist of required study components and Loopforge realism; deliberately change silhouette and material balance. Do not reproduce its generic square monitor or overly brassy distressed plate layout.\nComposition: carefully composed authoring board on a quiet dark desaturated charcoal-blue paper ground. Slim editorial header outside equipment says exactly \"LOOPFORGE / SUBMARINE WATCH\". Large hero monitor occupies upper left approximately 58% of the board. Nearly front-on camera, very slight three-quarter depth only, one shared soft upper-left key light over ALL objects. Broad horizontal capsule viewing glass seated inside a thick smoke-blue sealed cast housing, rounded shoulders, stepped pressure flange, purposefully spaced broad clamps and few flush brass fasteners, slight side depth. A small ceramic mechanical switch can sit below the glass but no fake instrument banks. The screen is entirely powered OFF: near-black empty convex glass, faint soft upper-left room-light reflection, dust only at edges, no interior scene, no figures, no static, no text, no LOCKED label, no padlock, no glowing indicator in the glass. Lower physical bezel carries ragged cream adhesive tape with \"LATTICE FORGE\" handwritten in dark pen, readable uneven pressure and slight baseline drift. Tape is stuck to the bezel, not on the screen.\nBelow the monitor, two generously sized equal-prominence LIMEN and STILETTO portrait/intercom token studies, recognizable vivid cyan eyes and vivid red-orange T visor amid detailed realistic dark bodies. Each portrait is held by a smaller sealed optical mount with purpose-built bottom intercom grille, one rotary communication control and ceramic insert, dark blue enamel and worn brass rim. Each has a blank cream speech balloon visibly attached by a clear tail to that portrait; quiet clean generous text area with no words, no speckles or scratches in the writing area. These are supervisor portraits, not coins with stylized skull logos.\nRight column: a clean row of seven physical palette chips and beneath them three close-up material studies showing smoke-blue enamel over steel, fine rubbed brass around black rubber and deep sealed glass, aged cream ceramic beside torn pen-marked tape. Keep labels small and sparse outside the equipment. Lower right: matching main COMMIT control study, a substantial cream ceramic push plunger with brass protective shoulders, warm amber inset and convincing travel, not an emergency mushroom button. Beside/below it four consistently scaled embossed dark-enamel-and-brass resource icon studies in a single row: stacked currency discs for FUNDS; a clearly mechanical worker head for WORKERS; a conveyor belt and simple inspection notch for CONDITION; a secured shipping crate for DELIVERY. No extra gauges, pressure dials, radar, compass, waveform, invented stats or decorative HUD.\nRendering: mature high-detail game concept art with physically credible material response, optical depth and tactile weight, restrained honest wear only on edges/touch surfaces. Highlights never blow out. Clean readable hierarchy and useful dark negative space. The original characters are the strongest coloured identity accents. No cartoon, vector, flat UI, glossy toy, neon HUD, cute faces or borrowed game logos. Do not add tutorial prose or explanatory paragraphs. This sheet must read as a coherent new material/silhouette option, not an already implemented game screen.",
+  "references": [
+    {
+      "path": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/limen_character_sheet_1.png",
+      "role": "LIMEN identity: cracked metallic skull, cyan eyes, layered dark armour.",
+      "reviewed": true
+    },
+    {
+      "path": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/stiletto_character_sheet_1.png",
+      "role": "STILETTO identity: closed helmet, red-orange T visor, sharp mechanical shoulders.",
+      "reviewed": true
+    },
+    {
+      "path": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/thrum_character_sheet_1.png",
+      "role": "THRUM construction: optical housings, sealed glass depth, concentric joinery; not a third portrait.",
+      "reviewed": true
+    },
+    {
+      "path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge/forge.webp",
+      "role": "Factory material response: soot, amber reflection, use-wear; no factory interior baked into glass.",
+      "reviewed": true
+    },
+    {
+      "path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/style-sheet.png",
+      "role": "Baseline component checklist and Loopforge realism; deliberately diverge in silhouette/material balance.",
+      "reviewed": true
+    }
+  ],
+  "external_artwork": "None. No other game's artwork used.",
+  "palette_note": "Authored follow-on color proposal, not exact samples from the generated bitmap.",
+  "palette": [
+    {
+      "name": "Recess black",
+      "hex": "#090F14",
+      "role": "Off glass and deep cavities"
+    },
+    {
+      "name": "Smoke-blue enamel",
+      "hex": "#253746",
+      "role": "Primary sealed housing"
+    },
+    {
+      "name": "Worn steel",
+      "hex": "#5F6563",
+      "role": "Edge wear and understated hardware"
+    },
+    {
+      "name": "Rubbed brass",
+      "hex": "#A58B56",
+      "role": "Contact rims and clamps"
+    },
+    {
+      "name": "Cream ceramic",
+      "hex": "#D8CCAB",
+      "role": "Readable inserts and tape"
+    },
+    {
+      "name": "Cyan identity",
+      "hex": "#75D4E7",
+      "role": "LIMEN optics and limited channel accents"
+    },
+    {
+      "name": "Amber work light",
+      "hex": "#D89538",
+      "role": "Commit control and available-system illumination"
+    },
+    {
+      "name": "Red-orange identity",
+      "hex": "#D74130",
+      "role": "STILETTO visor, separate from incident meaning"
+    }
+  ],
+  "font_proposal": [
+    {
+      "usage": "Instrument labels and numerals",
+      "proposal": "IBM Plex Sans Condensed Medium; uppercase labels with modest tracking, tabular numerals where available."
+    },
+    {
+      "usage": "Live dialogue and body copy",
+      "proposal": "IBM Plex Sans Regular/Medium, readable at small sizes; render as semantic live text."
+    },
+    {
+      "usage": "Room-name tape",
+      "proposal": "Custom dark-pen lettering with slight baseline drift; semantic accessible room name remains separate."
+    }
+  ],
+  "rationale": [
+    "The wide capsule and pressure flange create a distinct sealed optical silhouette while retaining a usable horizontal camera aperture.",
+    "Blue-black enamel, black rubber and limited rubbed brass echo LIMEN and THRUM construction, linking the naval influence to existing Loopforge material identities.",
+    "Cream ceramic control surfaces separate touchpoints from structure. The commit plunger implies physical travel without copying an emergency stop.",
+    "Equal-size cyan-eyed LIMEN and red-visored STILETTO intercom portraits carry character identity, with clean blank speech regions for later live text.",
+    "Only requested resource categories are represented; no decorative pressure gauges, radar, hidden psychology readings, or other invented game mechanics."
+  ],
+  "inspection": {
+    "viewed_generated_original": true,
+    "confirmed": [
+      "Landscape 3:2 sheet",
+      "Empty nearly black monitor glass with soft reflected glare and no interior/static/LOCKED label",
+      "Legible LATTICE FORGE tape on physical lower bezel",
+      "Recognizable LIMEN cracked skull/cyan eyes",
+      "Recognizable STILETTO closed helmet/red T visor",
+      "Two clean blank attached speech balloons",
+      "Distinctive sealed smoke-blue housing",
+      "Material samples and palette chips",
+      "Commit-control study",
+      "Funds/workers/conveyor-condition/delivery icon studies",
+      "Coherent upper-left lighting and subdued worn surfaces"
+    ],
+    "concerns": [
+      "The rendered LIMEN study caption contains an unintended accent (LIMÉN). This is a board-caption defect; use canonical LIMEN in future authored labels.",
+      "The monitor's outer top amber lamp is lit even though its glass is off. For sealed/locked production monitors, omit or disable this lamp to keep the unpowered state unambiguous.",
+      "The sealed frame is heavier than the baseline; six-camera composition and phone aperture size need review before selecting this direction.",
+      "The commit control is shown at a slightly more oblique study angle than the nearly front-on monitor. Production slices must normalize the camera.",
+      "The condition study includes a check mark, suitable only for a known healthy state; a neutral base symbol needs separate condition states if selected."
+    ]
+  },
+  "tradeoffs": [
+    "More specific optical/pressure construction and ceramic touchpoints, at the cost of a larger bezel footprint.",
+    "Cool enamel frames the original character identity colors well but provides less factory warmth than an amber-heavy direction.",
+    "Fine chips and fittings support close inspection; simplify their frequency in small runtime assets to preserve clarity and delivery budgets.",
+    "This flattened board is an authoring reference only. If chosen, generate modular independent production assets and live semantic text rather than shipping the board as UI."
+  ],
+  "implementation": "No code, shared docs, mechanics, git operations, deployment, or runtime assets changed."
+}

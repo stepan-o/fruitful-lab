@@ -1,0 +1,11 @@
+{
+  "pack":"loopforge-ui-studies",
+  "assets":{
+    "baseline":{"kind":"image","source":"assets/sources/loopforge-camera/style-sheet.png","widths":[480,960,1536],"quality":84,"maxBytes":650000},
+    "field-instrument":{"kind":"image","source":"assets/sources/loopforge-camera/alternatives/field-instrument.png","widths":[480,960,1536],"quality":84,"maxBytes":650000},
+    "broadcast-desk":{"kind":"image","source":"assets/sources/loopforge-camera/alternatives/broadcast-desk.png","widths":[480,960,1536],"quality":84,"maxBytes":650000},
+    "foundry-switchboard":{"kind":"image","source":"assets/sources/loopforge-camera/alternatives/foundry-switchboard.png","widths":[480,960,1536],"quality":84,"maxBytes":650000},
+    "submarine-watch":{"kind":"image","source":"assets/sources/loopforge-camera/alternatives/submarine-watch.png","widths":[480,960,1536],"quality":84,"maxBytes":650000},
+    "neural-diagnostics":{"kind":"image","source":"assets/sources/loopforge-camera/alternatives/neural-diagnostics.png","widths":[480,960,1536],"quality":84,"maxBytes":650000}
+  }
+}

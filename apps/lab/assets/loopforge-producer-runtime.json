@@ -1,0 +1,85 @@
+{
+  "pack": "loopforge-producer-runtime",
+  "assets": {
+    "foundry-desk": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer-runtime/foundry-desk.png",
+      "widths": [
+        960,
+        1672
+      ],
+      "quality": 87,
+      "maxBytes": 800000
+    },
+    "broadcast-control": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer-runtime/broadcast-control.png",
+      "widths": [
+        960,
+        1672
+      ],
+      "quality": 87,
+      "maxBytes": 800000
+    },
+    "dispatch-office": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer-runtime/dispatch-office.png",
+      "widths": [
+        960,
+        1672
+      ],
+      "quality": 87,
+      "maxBytes": 800000
+    },
+    "obedience-organ": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer-runtime/obedience-organ.png",
+      "widths": [
+        960,
+        1672
+      ],
+      "quality": 87,
+      "maxBytes": 800000
+    },
+    "foundry-desk-mobile": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer-runtime/foundry-desk-mobile.png",
+      "widths": [
+        540,
+        1086
+      ],
+      "quality": 87,
+      "maxBytes": 800000
+    },
+    "dispatch-office-mobile": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer-runtime/dispatch-office-mobile.png",
+      "widths": [
+        540,
+        1086
+      ],
+      "quality": 87,
+      "maxBytes": 800000
+    },
+    "obedience-organ-mobile": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer-runtime/obedience-organ-mobile.png",
+      "widths": [
+        540,
+        1024
+      ],
+      "quality": 87,
+      "maxBytes": 800000
+    },
+    "broadcast-control-mobile": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-producer-runtime/broadcast-control-mobile.png",
+      "widths": [
+        540,
+        1024
+      ],
+      "quality": 87,
+      "maxBytes": 800000
+    }
+  }
+}

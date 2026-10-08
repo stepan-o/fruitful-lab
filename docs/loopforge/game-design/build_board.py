@@ -1,5 +1,10 @@
+from producer_console import render_producer_console
+from cinematic_console import render_cinematic_console
+from focused_console import render_focused_console
+from theme_system import render_theme_system
 from pathlib import Path
 import html, json, re, shutil, subprocess, hashlib
+from style_review import render_style_review
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT.parents[2]/'apps/lab/public/loopforge-design'
@@ -210,7 +215,7 @@ l=d['llm']
 foundations+='<div class="section-divider"></div><h3>Where LLMs and BDI belong</h3>'+p(l['role'])+p(l['bdi'])+ul(l['boundaries'])+'<div class="callout"><strong>A real distinction in the old documents.</strong> '+e(l['sourceTension'])+'</div>'
 foundations+=detail('When model reasoning improves the game',table(l['proof']))
 foundations+=p('The system preserves Rust-native discipline through explicit state, typed boundaries and controlled effects in any implementation language. OpenAI is the initial model provider. The engine boundary records provider portability, replay and evaluation requirements; the player experience section compares rendering options. The renderer recommendation does not bind the simulation.')+'<button class="link-button" data-panel="engine-boundary">Read the engine boundary →</button>'
-foundations+=detail('Source library and evidence boundaries','<p>Original Loopforge repository at commit <code>3267ea7</code>. These local copies preserve the source context. Historical prompts are reference material, not instructions for this design. Source rules do not establish that the new game is implemented.</p><div class="source-list">'+''.join('<article class="source-item"><h4>'+e(s['title'])+'</h4>'+p(s['use'])+('<blockquote>'+e(s['quote'])+'</blockquote>' if s.get('quote') else '')+f'<a href="sources/{s["id"]}.{Path(s["path"]).suffix[1:]}" target="_blank" rel="noopener">Read source ↗</a></article>' for s in d['sources'])+'</div><p class="small">The board also draws on the current story bible, the supervisor atlas and the owner’s game-design discussion. Original artwork is reused from the approved local media library; no new concept art was generated.</p>')
+foundations+=detail('Source library and evidence boundaries','<p>Original Loopforge repository at commit <code>3267ea7</code>. These local copies preserve the source context. Historical prompts are reference material, not instructions for this design. Source rules do not establish that the new game is implemented.</p><div class="source-list">'+''.join('<article class="source-item"><h4>'+e(s['title'])+'</h4>'+p(s['use'])+('<blockquote>'+e(s['quote'])+'</blockquote>' if s.get('quote') else '')+f'<a href="sources/{s["id"]}.{Path(s["path"]).suffix[1:]}" target="_blank" rel="noopener">Read source ↗</a></article>' for s in d['sources'])+'</div><p class="small">The board also draws on the current story bible, the supervisor atlas and the owner’s game-design discussion. Original factory and character artwork is reused from the approved local media library; new producer-console source art has separate prompt and provenance records.</p>')
 
 decisions=heading('Before implementing a shift','Decisions still worth making','The long arcs now connect to a proposed player experience. Paused planning, continuous shifts and decision pauses are agreed; balance, intervention details and the final interface still need design.')
 decisions+='<div class="decisions-grid">'+''.join('<article class="decision"><span class="status open">Open</span><h3>'+e(x['title'])+'</h3>'+p(x['text'])+'</article>' for x in d['decisions'])+'</div>'
@@ -262,16 +267,26 @@ sounds+='<div class="sound-grid">'+''.join(sound_card(c) for c in sound_data['cl
 sounds+=p(sound_data['licenseNote'])+detail('Direction and playback rules',table(sound_data['direction']))+'<h3>What the library still needs</h3>'+table(sound_data['gaps'])
 sound_script='<script src="sound-library.js?v='+hashlib.sha256((ROOT/'sound-library.js').read_bytes()).hexdigest()[:12]+'"></script>'
 
-panels=[('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+theme_system=render_theme_system(ROOT)
+focused_console=render_focused_console()
+style_review=render_style_review(ROOT, OUT.parents[1]/'lib/assets/generated/loopforge-ui-studies.json')
+style_script='<script src="style-review.js?v='+hashlib.sha256((ROOT/'style-review.js').read_bytes()).hexdigest()[:12]+'"></script>'
+
+producer_review=render_producer_console(ROOT, OUT.parents[1]/'lib/assets/generated/loopforge-producer-studies.json', OUT.parents[1]/'lib/assets/generated/loopforge-producer-runtime.json')
+producer_script='<script src="producer-review.js?v='+hashlib.sha256((ROOT/'producer-review.js').read_bytes()).hexdigest()[:12]+'"></script>'
+
+panels=[('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
+head=head.replace('</head>','<link rel="stylesheet" href="style-review.css?v='+hashlib.sha256((ROOT/'style-review.css').read_bytes()).hexdigest()[:12]+'"></head>')
+head=head.replace('</head>','<link rel="stylesheet" href="producer-review.css?v='+hashlib.sha256((ROOT/'producer-review.css').read_bytes()).hexdigest()[:12]+'"></head>')
 nav='<nav class="nav" aria-label="Design board sections">'+''.join(f'<button data-panel="{id}" aria-current="{str(i==0).lower()}">{e(title)}</button>' for i,(id,title,_) in enumerate(panels))+'</nav>'
 legend='<div class="legend"><p><span class="status agreed">Agreed direction</span><br>Owner’s stated design.</p><p><span class="status">Proposed</span><br>Paths and mechanisms to review.</p><p><span class="status open">Open</span><br>A decision still to make.</p><p>Design reference. No balance values or playable game UI are implemented here.</p></div>'
 payload=json.dumps(d,ensure_ascii=False).replace('</',r'<\/')
 artpayload=json.dumps(art).replace('</',r'<\/')
-page=head+'<a class="skip" href="#main">Skip to design content</a><div class="shell"><div class="masthead"><span class="wordmark">LOOPFORGE / DESIGN</span><div class="mast-links"><a href="/stepanoskin/loopforge/play">Play the first shift ↗</a><span class="meta">'+e(d['version']).upper()+'</span><a href="full-record.html" target="_blank" rel="noopener">Full reading copy ↗</a></div></div><header class="hero"><div><span class="kicker">Author reference · contains story spoilers</span><h1>Game design</h1><p>'+e(d['premise'])+'</p></div><figure class="hero-image">'+pic('factory','Loopforge factory overview',lazy=False)+'</figure></header><div class="layout"><aside class="sidebar">'+nav+legend+'</aside><main class="main" id="main">'+''.join(f'<section class="panel" id="{id}" aria-label="{e(title)}"'+(' hidden' if i else '')+'>'+body+'</section>' for i,(id,title,body) in enumerate(panels))+'</main></div><footer class="footer"><span>Local concept review · '+e(d['version'])+'</span><a href="GAME_DESIGN.md" download>Download the design record</a></footer></div><div id="announcement" class="sr-only" aria-live="polite"></div><noscript><div class="noscript">The interactive board requires JavaScript. <a href="full-record.html">Read the complete design record.</a></div></noscript><script id="design-data" type="application/json">'+payload+'</script><script id="art-data" type="application/json">'+artpayload+'</script><script src="board.js"></script></body></html>'
+page=head+'<a class="skip" href="#main">Skip to design content</a><div class="shell"><div class="masthead"><span class="wordmark">LOOPFORGE / DESIGN</span><div class="mast-links"><a href="/stepanoskin/loopforge/play">Play the first shift ↗</a><span class="meta">'+e(d['version']).upper()+'</span><a href="full-record.html" target="_blank" rel="noopener">Full reading copy ↗</a></div></div><header class="hero"><div><span class="kicker">Author reference · contains story spoilers</span><h1>Game design</h1><p>'+e(d['premise'])+'</p></div><figure class="hero-image">'+pic('factory','Loopforge factory overview',lazy=False)+'</figure></header><div class="layout"><aside class="sidebar">'+nav+legend+'</aside><main class="main" id="main">'+''.join(f'<section class="panel" id="{id}" aria-label="{e(title)}"'+(' hidden' if i else '')+'>'+body+'</section>' for i,(id,title,body) in enumerate(panels))+'</main></div><footer class="footer"><span>Design record · '+e(d['version'])+'</span><a href="GAME_DESIGN.md" download>Download the design record</a></footer></div><div id="announcement" class="sr-only" aria-live="polite"></div><noscript><div class="noscript">The interactive board requires JavaScript. <a href="full-record.html">Read the complete design record.</a></div></noscript><script id="design-data" type="application/json">'+payload+'</script><script id="art-data" type="application/json">'+artpayload+'</script><script src="board.js"></script></body></html>'
 page=page.replace('src="board.js"','src="board.js?v='+hashlib.sha256((ROOT/'board.js').read_bytes()).hexdigest()[:12]+'"')
-page=page.replace('</body>',sound_script+'</body>')
+page=page.replace('</body>',sound_script+style_script+producer_script+'</body>')
 (OUT/'index.html').write_text(page)
 
 # A complete, static copy has every path and character, including text that the board reveals on selection.
@@ -299,11 +314,13 @@ full+='<section>'+loops_full+'</section><section>'+stress_full+'</section><secti
 # Keep the full reading copy complete without requiring disclosure interactions.
 full=full.replace('<details>','<details open>')
 full=re.sub(r'<button class="link-button" data-panel="([^"]+)">(.*?)</button>', r'<a class="link-button" href="index.html#\1">\2</a>', full)
-full=full.replace('</main>','<section>'+sounds+'</section></main>').replace('</body>',sound_script+'</body>')
+full=full.replace('</main>','<section>'+sounds+'</section><section>'+style_review+'</section><section>'+producer_review+'</section><section>'+focused_console+'</section><section>'+theme_system+'</section></main>').replace('</body>',sound_script+style_script+producer_script+'</body>')
 (OUT/'full-record.html').write_text(full)
-ui_record=head.replace('<title>Loopforge — Game design</title>','<title>Loopforge — UI design</title>')+'<main class="record"><a href="index.html#ui-mechanics">← Interactive UI and mechanics board</a><header class="hero" style="display:block"><span class="kicker">Design direction · 8 October 2026</span><h1>Loopforge UI design</h1>'+p('Asset-driven decision interfaces now; a live cinematic 3D factory later. This reference separates the updated design target from the current first-day implementation. The interface redesign is not yet shipped.')+'</header>'+early_rules+structure_full+ui_full+advice_full+'<section><h2>Delivery scope</h2>'+table(d['experience']['scope'])+'</section><section><h2>Approved shift rhythm</h2>'+table(d['experience']['rhythm'])+'</section><section><h2>Attention horizons</h2>'+table([(s['time'],s['question']) for s in lp['scales']])+p(lp['boundary'])+'<a href="index.html#loops">Inspect the core loops and session design →</a></section><section><h2>Mobile and art</h2>'+p(d['experience']['mobile'])+table(d['experience']['art'])+'</section></main></body></html>'
+ui_record=head.replace('<title>Loopforge — Game design</title>','<title>Loopforge — UI design</title>')+'<main class="record"><a href="index.html#ui-mechanics">← Interactive UI and mechanics board</a><header class="hero" style="display:block"><span class="kicker">Design direction · 8 October 2026</span><h1>Loopforge UI design</h1>'+p('Four integrated console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only those four appear in Settings; the old six studies remain historical and their focused-screen materials remain internal. Start at the console, Answer leadership, Acknowledge quota, then Choose adviser. Hardware uses registered CSS fragments cropped from clean plates, not separate alpha handsets. Local visual and full-flow checks passed; the hosted first shift was also completed. All four dedicated portrait plates are generated, catalogued and implemented. Owner review remains pending. Adaptive wide, portrait, small/short and compact-landscape modes preserve the selected camera, run and pending decision through resize. A live cinematic 3D factory remains later work.')+'</header>'+early_rules+structure_full+ui_full+advice_full+'<p><a href="index.html#ui-styles">View the historical six material studies →</a></p><section><h2>Delivery scope</h2>'+table(d['experience']['scope'])+'</section><section><h2>Approved shift rhythm</h2>'+table(d['experience']['rhythm'])+'</section><section><h2>Attention horizons</h2>'+table([(s['time'],s['question']) for s in lp['scales']])+p(lp['boundary'])+'<a href="index.html#loops">Inspect the core loops and session design →</a></section><section><h2>Mobile and art</h2>'+p(d['experience']['mobile'])+table(d['experience']['art'])+'</section></main></body></html>'
+ui_record=ui_record.replace('</main>', '<section>'+producer_review+'</section><section>'+focused_console+'</section><section>'+theme_system+'</section></main>')
 ui_record=ui_record.replace('<details>','<details open>')
 ui_record=re.sub(r'<button class="link-button" data-panel="([^"]+)">(.*?)</button>',r'<a class="link-button" href="index.html#\1">\2</a>',ui_record)
+ui_record=ui_record.replace('</body>',producer_script+'</body>')
 (OUT/'UI_DESIGN.html').write_text(ui_record)
 
 # Human-editable companion record. It intentionally contains all design content, not a summary of the board.
@@ -392,7 +409,7 @@ for c in ap['cases']:
     mh(c['name']+' — '+c['label'],4);fields([('Assessment of yesterday',c['assessment']),('Additional context',c['context']),('Priority they choose',c['priority'])]);mp('> '+c['quote']);fields(c['changes']);mp('**Operating tradeoff.** '+c['tradeoff']);mp('**Author-only causal interpretation.**');fields(c['trace'])
 mh('Internal decision record',3);fields(ap['trace']);mh('Optimization and engine boundary',3);fields(ap['engine']);mh('Generated prose and budget',3);fields(ap['modelBudget']);mh('Guardrails',3);ml(ap['guardrails']);mh('First playable test',3);mp(ap['test']);mh('Open decisions',3);ml(ap['open'])
 mh(ui['playability']['title']);mp(ui['playability']['intro']);fields(ui['playability']['rules']);mp(ui['playability']['review'])
-ui_md=['# Loopforge UI design' ,d['version'],'Asset-driven decision interfaces now; a live cinematic 3D factory later. This reference separates the updated design target from the current first-day implementation. The interface redesign is not yet shipped.']+md[ui_start:]
+ui_md=['# Loopforge UI design' ,d['version'],'Four integrated console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only those four appear in Settings; the old six studies remain historical and their focused-screen materials remain internal. Start at the console, Answer leadership, Acknowledge quota, then Choose adviser. Hardware uses registered CSS fragments cropped from clean plates, not separate alpha handsets. Local visual and full-flow checks passed; the hosted first shift was also completed. All four dedicated portrait plates are generated, catalogued and implemented. Owner review remains pending. Adaptive wide, portrait, small/short and compact-landscape modes preserve the selected camera, run and pending decision through resize. A live cinematic 3D factory remains later work.']+md[ui_start:]
 ui_md+=['## Delivery scope']+['**'+k+'.** '+v for k,v in d['experience']['scope']]
 ui_md+=['## Approved shift rhythm']+['**'+k+'.** '+v for k,v in d['experience']['rhythm']]
 ui_md+=['## Attention horizons']+['**'+s['time']+'.** '+s['question'] for s in lp['scales']]+[lp['boundary'],'[Core loops and sessions](GAME_DESIGN.md#core-loops-and-sessions)','## Mobile and art',d['experience']['mobile']]+['**'+k+'.** '+v for k,v in d['experience']['art']]
@@ -428,6 +445,31 @@ for path in OUT.glob('*.html'):
     content = path.read_text()
     content = re.sub(r'(href|src)="(?![a-z]+:|/|#)([^" ]+)"', lambda m: m[1]+'="/loopforge-design/'+m[2]+'"', content)
     path.write_text(content)
-for name in ['styles.css','board.js','sound-library.js','art-provenance.json']:
+for name in ['styles.css','board.js','sound-library.js','style-review.js','style-review.css','producer-review.js','producer-review.css','art-provenance.json']:
     shutil.copyfile(ROOT/name,OUT/name)
 print('Generated app design board and complete reading copies; original sources retained.')
+
+# The implementation contract is available with both static and interactive UI records.
+theme_contract=(ROOT.parent/"UI_THEME_ASSET_SYSTEM.md").read_text()
+(OUT/"UI_THEME_ASSET_SYSTEM.md").write_text(theme_contract)
+with (OUT/"UI_DESIGN.md").open("a") as f: f.write("\n\n"+theme_contract)
+
+(OUT/"CONSOLE_LIGHT_FEEDBACK.md").write_text((ROOT.parent/"CONSOLE_LIGHT_FEEDBACK.md").read_text())
+with (OUT/"UI_DESIGN.md").open("a") as f: f.write("\n\n"+(ROOT.parent/"CONSOLE_LIGHT_FEEDBACK.md").read_text())
+
+focused_contract=(ROOT.parent/"FOCUSED_CONSOLE_REBUILD.md").read_text()
+(OUT/"FOCUSED_CONSOLE_REBUILD.md").write_text(focused_contract)
+for name in ["UI_DESIGN.md","GAME_DESIGN.md"]:
+    target=OUT/name
+    if target.exists():
+        with target.open("a") as f: f.write("\n\n"+focused_contract)
+
+for contract_name in ["LIVING_CONSOLE_DIRECTION.md","CINEMATIC_INTERFACE_DIRECTION.md","LEADERSHIP_CALL_ART.md","PRODUCER_CONSOLE_DIRECTION.md"]:
+    content=(ROOT.parent/contract_name).read_text()
+    (OUT/contract_name).write_text(content)
+    for name in ["UI_DESIGN.md","GAME_DESIGN.md"]:
+        with (OUT/name).open("a") as f: f.write("\n\n"+content)
+
+# Preserve exact authored prompts alongside review-size art; no image bytes in this record.
+prompt_root=OUT.parents[1]/'assets/sources/loopforge-producer'
+(OUT/'PRODUCER_CONCEPT_PROMPTS.md').write_text('# Producer console — exact generation prompts\n\nBuilt-in imagegen; four concept treatments, reviewed 8 October 2026.\n\n'+'\n\n---\n\n'.join(p.read_text() for p in sorted(prompt_root.glob('*-prompts.md'))))

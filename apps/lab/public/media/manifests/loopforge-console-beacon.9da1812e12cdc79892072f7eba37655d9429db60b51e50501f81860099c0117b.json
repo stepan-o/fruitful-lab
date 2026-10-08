@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-console-beacon",
+  "assets": {
+    "beacon": {
+      "kind": "image",
+      "width": 1254,
+      "height": 1254,
+      "variants": [
+        {
+          "src": "/media/files/e51153e25ddf3588cfdd219dd385aa25c3deee4bba73b2ee477bcaa62b8ee37d.webp",
+          "mime": "image/webp",
+          "bytes": 8728,
+          "sha256": "e51153e25ddf3588cfdd219dd385aa25c3deee4bba73b2ee477bcaa62b8ee37d",
+          "width": 144,
+          "height": 144
+        },
+        {
+          "src": "/media/files/575407b55268f2ba4f939a351a99d2a0fd357b59b16280e8ddf8051f719fe4ea.webp",
+          "mime": "image/webp",
+          "bytes": 25736,
+          "sha256": "575407b55268f2ba4f939a351a99d2a0fd357b59b16280e8ddf8051f719fe4ea",
+          "width": 288,
+          "height": 288
+        }
+      ]
+    }
+  }
+}

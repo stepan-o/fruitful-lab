@@ -1,0 +1,76 @@
+{
+  "created": "2026-10-08",
+  "purpose": "Loopforge director console",
+  "files": [
+    {
+      "file": "button-hover.webp",
+      "sha256": "288ff340e4ef2b138a18a7aef0fccef80f4840a23a3c80dc2abd304a779b3f5c",
+      "bytes": 117834
+    },
+    {
+      "file": "button-pressed.webp",
+      "sha256": "237fa0e4269011fdc71d4b581844e1888e06dbfb4905ab4262fb24e955bf5430",
+      "bytes": 88954
+    },
+    {
+      "file": "button-rest.webp",
+      "sha256": "96cb960555548508b0719c9d9aada428dcb161c9b462c8fd828cae55a822c5e5",
+      "bytes": 93570
+    },
+    {
+      "file": "condition-icon.webp",
+      "sha256": "5c9bcecefae1ac6f2022baea8043511a566eb241d56de72e6f37be369f000840",
+      "bytes": 14926
+    },
+    {
+      "file": "funds-icon.webp",
+      "sha256": "49767ed7a00e9777e2b19d8fe742e1e6505634ac9be9118eb6a7f983ffb586c0",
+      "bytes": 9842
+    },
+    {
+      "file": "glass.webp",
+      "sha256": "f9185c6d5eadd059a5d1469177d77fce40d610f98746a348c9a070ab8c250bf4",
+      "bytes": 42754
+    },
+    {
+      "file": "grain.webp",
+      "sha256": "ea9ba6e7975325a8fc0bb7c8bec3a74895bc17b84e8114ef9c3f4020abc46c3d",
+      "bytes": 4398
+    },
+    {
+      "file": "gunmetal.webp",
+      "sha256": "1b5ad97134f818b8d5962061ad80edeb3b4cf076c15b7c8f8ad4fdc641b41509",
+      "bytes": 35866
+    },
+    {
+      "file": "instrument-plate.webp",
+      "sha256": "b50aa69e3bc8c7feada50709df16a12dd0da3ea2ea170ae1983eddd2fe740031",
+      "bytes": 84248
+    },
+    {
+      "file": "limen-portrait.webp",
+      "sha256": "04cdac82e20d865ed06b85f885b76194bcebd672b5bf1b933a9f33e3dc6a68a2",
+      "bytes": 457944
+    },
+    {
+      "file": "monitor-frame.webp",
+      "sha256": "3093ae712bc8d839d0f0392c5e4983d598269c58ed31f13d3b5ac9db9ffcd466",
+      "bytes": 191398
+    },
+    {
+      "file": "signal-icon.webp",
+      "sha256": "7bef0ed21b328f897c66f1e6b89260dbf15ddc062ffbf8cb47734813c2eff601",
+      "bytes": 14080
+    },
+    {
+      "file": "stiletto-portrait.webp",
+      "sha256": "3a181d2a643562f22e3c66ec70bbfb56765eaa44a589ad12fcd1726f68895f6b",
+      "bytes": 393548
+    },
+    {
+      "file": "worker-icon.webp",
+      "sha256": "4fe30f90ee0bd4091eeda2021000e3648c37ce51c4ab9a976813956b4ec59e15",
+      "bytes": 13398
+    }
+  ]
+}

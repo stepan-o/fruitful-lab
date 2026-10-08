@@ -44,6 +44,11 @@ function sourceNote(asset:string,alt:string,caption:string):VisualNote {
 
 /** Internal art-direction notebook. Descriptions and motion rationale are not public reader content. */
 export function chapterVisualNotes(chapter:Chapter,sources:EvidenceSource[]):VisualNote[] {
+ if(chapter.id==="mobile-freemium") return [
+  {id:"scene-mobile-freemium",title:"A little game. A very long life.",kind:"Editorial artwork and historical comparison",description:"King’s complete official Candy Crush promotion stands beside its studio mark and a compact editorial title. A responsive split places the work before the opening paragraph.",reading:"The recognizable brand introduces the game before the prose traces its continuing production. The dated level counts belong in the adjacent narrative, not repeated in the caption.",references:sourceLinks(sources)},
+  {id:"diagram-mobile-freemium",title:"You are already playing.",kind:"Original explanatory diagram",description:"An original brass-and-teal route joins free entry to play, with a continuing unpaid path and a separate optional purchase branch. A switch highlights either route beside King’s attributed promotional gameplay plate.",reading:"The diagram distinguishes entry from assistance within a known experience. It neither models conversion rates nor makes payment compulsory. A separate ownership sequence shows King’s two changes of parent.",behavior:"Buttons update the qualitative highlighted path. There is no continuous animation or external request; publisher images are never animated or recolored.",references:sourceLinks(sources)},
+  ...(chapter.embeddedAssets??[]).map(id=>sourceNote(id,records[id].title,records[id].purpose))
+ ];
  const detail=descriptions[chapter.id as keyof typeof descriptions];
  if(!detail) throw new Error(`Missing original visual notes: ${chapter.id}`);
  const references=sourceLinks(sources);

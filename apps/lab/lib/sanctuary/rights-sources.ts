@@ -1,7 +1,25 @@
 /** Dated, deliberately short verbatim excerpts. Never silently refresh these from live URLs. */
-export const rightsReviewDate = "3 October 2026; Valve and world-building material reviewed 7 October 2026";
+export const rightsReviewDate = "3 October 2026; Valve and world-building material reviewed 7 October 2026; Activision / King reviewed 8 October 2026";
 export const bg3Notice = "Sanctuary Economics is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards.";
 export const rightsSources = [
+{
+  "id": "king-materials",
+  "kind": "Publisher policy · rights reserved",
+  "title": "King — Terms and Conditions, §5.11",
+  "url": "https://www.king.com/termsAndConditions",
+  "version": "Public terms checked 8 October 2026",
+  "quote": "King reserves all rights in and to the Materials not expressly granted herein.",
+  "reading": "The public press kit is a source, not an unrestricted republication licence. These terms limit ordinary use to personal use and restrict public display. Our limited images and marks are assessed separately as contextual criticism and review, with creator/source credit and unaltered composition. No bespoke permission or guaranteed clearance is claimed."
+},
+{
+  "id": "activision-marks",
+  "kind": "Publisher policy · identifying marks",
+  "title": "Activision — Terms of Use, §3",
+  "url": "https://www.activision.com/legal/terms-of-use",
+  "version": "Public terms checked 8 October 2026; excerpt from §3",
+  "quote": "You may not remove or alter Activision's or its licensors trademarks or logos",
+  "reading": "This excerpt is part of the longer prohibition on altering marks and legal notices. The personal noncommercial product licence is not a general editorial-image licence. The Black Ops 6 artwork, interface and creator marks retain their source composition; their separate criticism/review rationale is recorded below."
+},
 {
   "id": "cdpr-fan",
   "kind": "Publisher policy · conditional",

@@ -1,3 +1,5 @@
+import {FreemiumOffer} from "@/components/sanctuary/AcquiredWorlds";
+import {sanctuaryMedia} from "@/lib/sanctuary/media";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { chapters } from "@/lib/sanctuary/content";
 import { artDirection } from "@/lib/sanctuary/art-direction";
@@ -37,6 +39,12 @@ describe("Sanctuary exhibits", () => {
       chapters.map((c) => c.id).sort(),
     );
     for (const [index, c] of chapters.entries()) {
+      if(c.id==="mobile-freemium"){
+        const {container,unmount}=render(<FreemiumOffer assets={sanctuaryMedia}/>);
+        expect(container.querySelector("svg")).not.toBeNull();
+        expect(screen.getByRole("group",{name:"Compare free play and an optional purchase"})).toBeVisible();
+        unmount(); continue;
+      }
       if(historyIds.includes(c.id as HistoryId)){
         const {container,unmount}=render(<><HistoryScene chapter={c.id as HistoryId}/><HistoryComparison chapter={c.id as HistoryId}/></>);
         expect(container.querySelector("svg")).not.toBeNull();

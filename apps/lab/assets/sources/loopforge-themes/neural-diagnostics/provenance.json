@@ -1,0 +1,53 @@
+{
+  "id": "neural-diagnostics",
+  "name": "Neural Diagnostics",
+  "ref": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/alternatives/neural-diagnostics.png",
+  "material": "worn cracked ivory porcelain enamel over black steel, oxidized copper seams, industrial brain diagnostics machinery",
+  "frame": {
+    "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-edce90bc-df62-4a9a-a265-f63c090920cc.png",
+    "prompt": "Use case: stylized-concept. Production raster UI asset for Loopforge: ONE EMPTY CAMERA MONITOR BEZEL. Reference image is the approved Neural Diagnostics material study, style reference only. Generate a separate finished asset, not a style sheet. Match its worn cracked ivory porcelain enamel over black steel, oxidized copper seams, industrial brain diagnostics machinery. Nearly front-on orthographic, level and symmetrical rectangular monitor frame, outer aspect ratio 16:10. Strong authentic factory materials, fine realistic edge wear, same soft upper-left key light as source. Outer frame fills canvas with a small transparent margin. A large empty rectangular opening occupies roughly 76% width and 70% height. Interior and exterior truly transparent. The physical frame has four continuous sides with mostly straight central lengths so it can be nine-sliced without stretching corner fittings. Keep decoration within the rim. No glass, screen contents, characters, text, lettering, symbols, sticky labels, status lamps or controls. No glowing lights. No copied study page elements. This is foreground chrome for a functional game camera; detailed but legible at small sizes.",
+    "source": "frame-master.png"
+  },
+  "controls": {
+    "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-b856d0fe-9dd2-48d5-b2a8-64b2d7bca2ef.png",
+    "prompt": "Use case: stylized-concept. Loopforge production UI asset: exactly THREE vertically stacked wide rectangular control plates, the SAME button design in rest, hover, pressed states from top to bottom. The reference is the Neural Diagnostics style study only. Each is a wide 5:1 rectangular mechanical push plate with worn cracked ivory porcelain enamel over black steel, oxidized copper seams, industrial brain diagnostics machinery. Front-on orthographic viewpoint, consistent upper-left lighting, no perspective warping. Solid very dark charcoal centre large enough for a readable native text label later. Hardware and material are concentrated along the perimeter. A subtle amber edge contact is unlit on top, warm on middle hover, compressed/down on bottom press. The mechanical shape, placement, dimensions, corner fixtures and label-safe area must align exactly across states; no separate circular red knob. 3 equal-height rows, each plate centred and filling 88% canvas width, separated by generous transparent gutters. Transparent canvas outside each plate, opaque dark label face. No text, lettering, numbers, icons, captions, titles, swatches, arrow, symbols, people or other objects. High detail realistic painted industrial metal, no cartoon style. This is a three-state sprite sheet to slice into separate assets, not a design board.",
+    "source": "controls-master.png"
+  },
+  "reference": "assets/sources/loopforge-camera/alternatives/neural-diagnostics.png",
+  "preparation": {
+    "script": "scripts/prepare-loopforge-themes.mjs",
+    "frameTrimThreshold": 12,
+    "controlCrops": [
+      {
+        "state": "rest",
+        "region": {
+          "left": 0,
+          "top": 0,
+          "width": 1661,
+          "height": 315
+        },
+        "trimThreshold": 12
+      },
+      {
+        "state": "hover",
+        "region": {
+          "left": 0,
+          "top": 315,
+          "width": 1661,
+          "height": 316
+        },
+        "trimThreshold": 12
+      },
+      {
+        "state": "pressed",
+        "region": {
+          "left": 0,
+          "top": 631,
+          "width": 1661,
+          "height": 316
+        },
+        "trimThreshold": 12
+      }
+    ]
+  }
+}

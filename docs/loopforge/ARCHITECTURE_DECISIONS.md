@@ -18,7 +18,11 @@ for cameras, plates, resource symbols, character dialogue, controls and
 settlement. Native layout, text, semantics and hit areas provide usability;
 CSS handles placement, slicing, state transitions and supporting effects.
 Almost every visible game element needs authored material and shape. The
-existing entrance and generic panel treatment were rejected in owner review.
+previous entrance and generic panel treatment were rejected in owner review.
+That director-console composition was also rejected; its functional baseline uses assets across all day-one phases,
+with a separate immutable `loopforge-console` pack, two new portraits and
+authored normal/hover/pressed control states. It adds no rendering dependency
+and changes no kernel or viewer protocol. See `UI_REBUILD_VALIDATION.md`.
 
 The future **live tick-fed 3D factory** is a separate presentation layer. It must
 join the same adviser/incident/allocation interfaces and knowledge-filtered
@@ -107,3 +111,7 @@ The legacy Python host, broader ECS world, Godot client and Sim4 replay assets
 remain reference material. They are not silently rewritten or removed.
 
 https://vercel.com/docs/functions/limitations
+
+## Equipment themes and outcome light — 8 October
+
+All six style directions remain selectable. React/CSS Modules consume authored, immutable monitor and control-state packs through a typed recipe; no new rendering dependency is needed. The build pins pack snapshots, the active recipe is persisted locally, and the run stays mounted during atomic theme changes. Shared world art and character identities do not vary with equipment. A separate bounded Canvas 2D beacon responds to public receipt changes; it is dark between impulses. The kernel remains presentation-agnostic. See `UI_THEME_ASSET_SYSTEM.md` and `CONSOLE_LIGHT_FEEDBACK.md`.

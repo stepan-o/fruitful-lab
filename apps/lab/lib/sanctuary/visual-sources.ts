@@ -23,7 +23,7 @@ const registerHref = (id: string) => `/stepanoskin/game-monetization/credits#${i
 
 /** Only works actually cited in this chapter, including embedded marks/references. */
 export function chapterVisualSources(chapter: Chapter): VisualSourceLink[] {
-  const ids = new Set((chapter.figures ?? []).map(figure => figure.asset));
+  const ids = new Set([...(chapter.figures ?? []).map(figure => figure.asset), ...(chapter.embeddedAssets ?? [])]);
   for (const [id, record] of Object.entries(contextRecords)) {
     if (record.chapters.includes(chapter.id)) ids.add(id);
   }

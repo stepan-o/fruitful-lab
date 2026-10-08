@@ -1,0 +1,116 @@
+{
+  "pack": "loopforge-focused",
+  "assets": {
+    "speech": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/speech.png",
+      "widths": [
+        480,
+        960
+      ],
+      "quality": 88,
+      "maxBytes": 240000
+    },
+    "tape": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/tape.png",
+      "widths": [
+        480,
+        960
+      ],
+      "quality": 88,
+      "maxBytes": 240000
+    },
+    "dispatch-room": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/dispatch-room.png",
+      "widths": [
+        640,
+        1280,
+        1920
+      ],
+      "quality": 84,
+      "maxBytes": 900000
+    },
+    "logistics-room": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/logistics-room.png",
+      "widths": [
+        640,
+        1280,
+        1920
+      ],
+      "quality": 84,
+      "maxBytes": 900000
+    },
+    "lobby-room": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/lobby-room.png",
+      "widths": [
+        640,
+        1280,
+        1920
+      ],
+      "quality": 84,
+      "maxBytes": 900000
+    },
+    "funds-relief": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/funds-relief.png",
+      "widths": [
+        111
+      ],
+      "quality": 90,
+      "maxBytes": 50000
+    },
+    "workers-relief": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/workers-relief.png",
+      "widths": [
+        111
+      ],
+      "quality": 90,
+      "maxBytes": 50000
+    },
+    "condition-relief": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/condition-relief.png",
+      "widths": [
+        111
+      ],
+      "quality": 90,
+      "maxBytes": 50000
+    },
+    "delivery-relief": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/delivery-relief.png",
+      "widths": [
+        111
+      ],
+      "quality": 90,
+      "maxBytes": 50000
+    },
+    "leadership-call": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/leadership-call.png",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 84,
+      "maxBytes": 700000
+    },
+    "cinematic-soot": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-focused/cinematic-soot.png",
+      "widths": [
+        640,
+        1280,
+        1536
+      ],
+      "quality": 80,
+      "maxBytes": 350000
+    }
+  }
+}

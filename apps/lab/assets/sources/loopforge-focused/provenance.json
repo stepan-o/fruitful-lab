@@ -1,0 +1,133 @@
+[
+  {
+    "id": "baseline-socket",
+    "prompt": "Create ONE production game UI asset derived from the attached Loopforge style sheet. Extract its supervisor intercom construction as a NEW HIGH DETAIL front-facing empty portrait socket: oval black enamel and aged brass ring, heavy lower intercom grille. NOT a style sheet, not a whole interface. The central opening is transparent and empty for a separately composited character portrait. No character, text, letters, speech bubble or glowing light. The outer silhouette also has transparent background. Heavy tangible industrial hardware, recognizable at 110 CSS px, precise rich edge highlights, credible grime at joints, coherent subtle upper-left light. Near orthographic frontal camera with no isometric tilt. Large central portrait opening filling 65% width and 70% height; substantial surround and lower mechanical grille. Entire object centered, isolated, fills 90% of a square canvas. Preserve the material language and construction of the character sockets in the reference. Native transparent alpha.",
+    "generatedMaster": "exec-b25018e2-d285-41e3-877d-b0bc96416229.png",
+    "reference": "loopforge-camera/style-sheet.png",
+    "method": "Built-in image generation; master retained, alpha trim only for production."
+  },
+  {
+    "id": "field-instrument-socket",
+    "prompt": "Create ONE production game UI asset derived from the attached Loopforge style sheet. Extract its supervisor intercom construction as a NEW HIGH DETAIL front-facing empty portrait socket: square olive enamel and bakelite intercom, compact speaker grille on the lower side. NOT a style sheet, not a whole interface. The central opening is transparent and empty for a separately composited character portrait. No character, text, letters, speech bubble or glowing light. The outer silhouette also has transparent background. Heavy tangible industrial hardware, recognizable at 110 CSS px, precise rich edge highlights, credible grime at joints, coherent subtle upper-left light. Near orthographic frontal camera with no isometric tilt. Large central portrait opening filling 65% width and 70% height; substantial surround and lower mechanical grille. Entire object centered, isolated, fills 90% of a square canvas. Preserve the material language and construction of the character sockets in the reference. Native transparent alpha.",
+    "generatedMaster": "exec-345af7c7-0629-490b-b085-34e1f7bb8ae5.png",
+    "reference": "loopforge-camera/alternatives/field-instrument.png",
+    "method": "Built-in image generation; master retained, alpha trim only for production."
+  },
+  {
+    "id": "broadcast-desk-socket",
+    "prompt": "Create ONE production game UI asset derived from the attached Loopforge style sheet. Extract its supervisor intercom construction as a NEW HIGH DETAIL front-facing empty portrait socket: rectangular ribbed black steel portrait cartridge, ivory lower identification plate. NOT a style sheet, not a whole interface. The central opening is transparent and empty for a separately composited character portrait. No character, text, letters, speech bubble or glowing light. The outer silhouette also has transparent background. Heavy tangible industrial hardware, recognizable at 110 CSS px, precise rich edge highlights, credible grime at joints, coherent subtle upper-left light. Near orthographic frontal camera with no isometric tilt. Large central portrait opening filling 65% width and 70% height; substantial surround and lower mechanical grille. Entire object centered, isolated, fills 90% of a square canvas. Preserve the material language and construction of the character sockets in the reference. Native transparent alpha.",
+    "generatedMaster": "exec-59eb2539-f4f4-4747-b0d9-08acafdd251f.png",
+    "reference": "loopforge-camera/alternatives/broadcast-desk.png",
+    "method": "Built-in image generation; master retained, alpha trim only for production."
+  },
+  {
+    "id": "foundry-switchboard-socket",
+    "prompt": "Create ONE production game UI asset derived from the attached Loopforge style sheet. Its supervisor intercom socket as a separate empty portrait frame: U-shaped cast iron cradle, thick protective side rails, porcelain insulation, copper contacts. NOT a style sheet or whole interface. The central portrait opening is transparent and empty for a separately composited character portrait. No character, text, letters, speech bubble, background plate or glowing light. The outer silhouette also has transparent alpha. Heavy tangible industrial hardware, readable at 110 CSS px, rich precise edge highlights, credible grime at joints, subtle upper-left light. Near orthographic front camera, no isometric angle. Central opening fills 65% width and 70% height; substantial surround and lower mechanical grille. Entire object isolated, centered, fills 90% of square canvas. Preserve character-socket construction and materials of the attached sheet.",
+    "generatedMaster": "exec-3aff1060-35a2-4f26-9c92-db728f8071e1.png",
+    "reference": "loopforge-camera/alternatives/foundry-switchboard.png",
+    "method": "Built-in image generation; master retained, alpha trim only for production."
+  },
+  {
+    "id": "submarine-watch-socket",
+    "prompt": "Create ONE production game UI asset derived from the attached Loopforge style sheet. Its supervisor intercom socket as a separate empty portrait frame: oval smoke-blue enamel and rubbed brass porthole intercom, thick pressure seal and lower speaker grille. NOT a style sheet or whole interface. The central portrait opening is transparent and empty for a separately composited character portrait. No character, text, letters, speech bubble, background plate or glowing light. The outer silhouette also has transparent alpha. Heavy tangible industrial hardware, readable at 110 CSS px, rich precise edge highlights, credible grime at joints, subtle upper-left light. Near orthographic front camera, no isometric angle. Central opening fills 65% width and 70% height; substantial surround and lower mechanical grille. Entire object isolated, centered, fills 90% of square canvas. Preserve character-socket construction and materials of the attached sheet.",
+    "generatedMaster": "exec-29bf086b-a9f3-44cb-96ef-c7e4aaebe998.png",
+    "reference": "loopforge-camera/alternatives/submarine-watch.png",
+    "method": "Built-in image generation; master retained, alpha trim only for production."
+  },
+  {
+    "id": "neural-diagnostics-socket",
+    "prompt": "Create ONE production game UI asset derived from the attached Loopforge style sheet. Its supervisor intercom socket as a separate empty portrait frame: oval cracked ivory enamel and black steel diagnostic intercom with restrained oxidized copper seams. NOT a style sheet or whole interface. The central portrait opening is transparent and empty for a separately composited character portrait. No character, text, letters, speech bubble, background plate or glowing light. The outer silhouette also has transparent alpha. Heavy tangible industrial hardware, readable at 110 CSS px, rich precise edge highlights, credible grime at joints, subtle upper-left light. Near orthographic front camera, no isometric angle. Central opening fills 65% width and 70% height; substantial surround and lower mechanical grille. Entire object isolated, centered, fills 90% of square canvas. Preserve character-socket construction and materials of the attached sheet.",
+    "generatedMaster": "exec-a801b0bc-0f24-4446-9ade-f49f583b8f5a.png",
+    "reference": "loopforge-camera/alternatives/neural-diagnostics.png",
+    "method": "Built-in image generation; master retained, alpha trim only for production."
+  },
+  {
+    "id": "speech",
+    "prompt": "Create a production Loopforge game UI asset. ONE empty wide comic dialogue balloon / physical cream paper speech card, proportions 3:1. Weathered warm ivory stock with restrained grain, slight dirty corners, thin black ink edge, small downward pointing tail near lower left. Broad perfectly blank clean pale center for typeset dialogue (no lettering whatsoever). Front-on orthographic, no perspective, no folded bevel, no objects. Rich hand painted Loopforge texture but quietly blank. Object fills canvas tightly, transparent outside. Not UI screenshot.",
+    "generatedMaster": "exec-b17c3ed7-670a-4453-80a7-a2bf7b257336.png",
+    "reference": "loopforge-camera/style-sheet.png",
+    "method": "Built-in image generation; master retained, alpha trim only for production."
+  },
+  {
+    "id": "tape",
+    "prompt": "Create a production Loopforge game UI asset. ONE long strip of aged pale cream masking tape for a handwritten camera label, 5:1 proportions, roughly hand torn irregular ends, slight fibre texture and small stained edges, broad empty blank center with NO letters. Photoreal painterly industrial texture matching Loopforge brass camera console. Front-on flat orthographic no perspective no curled edges. Isolated strip tightly filling canvas on transparent background. No other objects.",
+    "generatedMaster": "exec-cd542e63-d81f-466c-afa7-3b3b1d5d8dc4.png",
+    "reference": "loopforge-camera/style-sheet.png",
+    "method": "Built-in image generation; master retained, alpha trim only for production."
+  },
+  {
+    "id": "dispatch-room",
+    "original": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/02_loopforge_rooms_dispatch.png",
+    "method": "Unaltered original Loopforge concept art; user authorized reuse."
+  },
+  {
+    "id": "logistics-room",
+    "original": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/10_loopforge_rooms_shipping_2.png",
+    "method": "Unaltered original Loopforge concept art; user authorized reuse."
+  },
+  {
+    "id": "lobby-room",
+    "original": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/01_loopforge_factory_rooms_lobby.png",
+    "method": "Unaltered original Loopforge concept art; user authorized reuse."
+  },
+  {
+    "id": "funds-relief",
+    "original": "../loopforge-camera/style-sheet.png",
+    "crop": {
+      "left": 1052,
+      "top": 486,
+      "width": 111,
+      "height": 145
+    },
+    "method": "Mechanical crop of our generated style sheet; no semantic image editing."
+  },
+  {
+    "id": "workers-relief",
+    "original": "../loopforge-camera/style-sheet.png",
+    "crop": {
+      "left": 1164,
+      "top": 486,
+      "width": 111,
+      "height": 145
+    },
+    "method": "Mechanical crop of our generated style sheet; no semantic image editing."
+  },
+  {
+    "id": "condition-relief",
+    "original": "../loopforge-camera/style-sheet.png",
+    "crop": {
+      "left": 1278,
+      "top": 486,
+      "width": 111,
+      "height": 145
+    },
+    "method": "Mechanical crop of our generated style sheet; no semantic image editing."
+  },
+  {
+    "id": "delivery-relief",
+    "original": "../loopforge-camera/style-sheet.png",
+    "crop": {
+      "left": 1391,
+      "top": 486,
+      "width": 111,
+      "height": 145
+    },
+    "method": "Mechanical crop of our generated style sheet; no semantic image editing."
+  },
+  {
+    "id": "leadership-call",
+    "date": "2026-10-08",
+    "prompt": "Use case: stylized-concept. Create a new Loopforge game scene for a weekly video call with factory leadership. Use the two reference images in the conversation ONLY as material, palette, illustration and world style references. Rich hand etched painterly industrial dystopia, robot-only world, old brass, verdigris, olive black soot, warm practical amber lamps, tiny cold cyan optics. A formidable senior robot director sits behind a worn boardroom desk, two subordinate executive robots set further back on either side. The central director has a sophisticated exposed brass-caged cortex and a rigid mechanical face, expressive intimidating intelligent industrial design, not a human in armor. All robot anatomy reads distinctly mechanical. Weathered metal, intricate cabling and engraved circuit machinery, bureaucratic factory atmosphere. Cinematic medium-wide eye-level FRONT FACING communication camera looking directly toward leadership, not an isometric room map. Make the central director and hands large, readable, upper two thirds of scene; keep lower fifth dark desk texture for game captions. 1536 by 1024 landscape. Original leadership character concept, consistent with Loopforge reference artwork. No words, labels, numbers, logos, UI frames, speech bubbles or watermarks. Not cartoon, not glossy generic 3D, not anime. Serious richly textured factory game artwork.",
+    "method": "Built-in image generation; original master retained, existing immutable media pipeline supplies responsive WebP variants.",
+    "status": "Original concept for owner review; no third-party reference pixels shipped.",
+    "reference": "Original Loopforge lobby and dispatch artwork"
+  },
+  {
+    "id": "cinematic-soot",
+    "date": "2026-10-08",
+    "prompt": "Use case: stylized-concept. Production game overlay asset for Loopforge's full-screen cinematic event artwork: an uneven organic soot-and-ink vignette frame, black and very dark olive charcoal, wispy painted carbon at edges, subtle worn etched industrial grain. Landscape 1536x1024. Actual transparent alpha across the broad central 75 percent of the canvas. Asymmetric dark feathered edges, top corners a little denser, lower edge gently irregular with very small wisps. Gentle gradients into transparency, detailed natural soot fibres, cinematic tasteful almost invisible framing. No rectangles, no hard frame, no metal, no rivets, no objects, no text, no logo, no checkerboard. Only dark organic edge pigment on transparent background. It will overlay another image; keep center fully transparent and unobstructed.",
+    "method": "Built-in image generation; original master retained, existing immutable media pipeline supplies responsive WebP variants.",
+    "status": "Original concept for owner review; no third-party reference pixels shipped.",
+    "reference": "Loopforge palette and soot material direction"
+  }
+]

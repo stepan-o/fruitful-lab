@@ -2,6 +2,8 @@
 
 Owner direction, 8 October 2026. Applies to the landing, playable console, camera views, briefings and future live factory. Read alongside the repository’s [design and performance standards](../DESIGN_AND_PERFORMANCE_STANDARDS.md).
 
+**Latest owner review:** the focused-screen/material direction is improved. This pass separates the adviser roster and weekly leadership call, strengthens factory feedback and tests a five-supervisor selection layout. The call may drop console chrome entirely. See [living-console direction](LIVING_CONSOLE_DIRECTION.md) and [cinematic surfaces](CINEMATIC_INTERFACE_DIRECTION.md). Automated checks do not establish owner visual/enjoyment acceptance.
+
 ## The guiding principle
 
 **Visceral conveyor and factory operations are the foundation of the interface.** The accepted landing conveyor is the reference: weight, uneven momentum, friction, light crossing machinery, stoppage, and a deliberate act that restarts the line. Carry that physical logic through the game UI. It must feel responsive *with* the factory.
@@ -20,9 +22,9 @@ The old working world viewer is the Sim4/KVP **Pixi isometric renderer**, with w
 
 ## Entry and visual hierarchy
 
-Enter factory should land directly in the **paused director’s console**. Show the illustrated factory context, Conveyor and Security available, four sealed bays, opening funds/workforce/condition and the weekly quota. Nobody has an assignment. The immediate actionable focus is choosing LIMEN or STILETTO as the day’s adviser, each with expressive art, a short personal pitch and an understandable operating tradeoff.
+Start shift opens an illustrated weekly planning call with leadership. Its original art fills the viewport, with an uneven soot vignette and lower captions/results. It presents the opening handover and quota; later weeks should review real prior performance. Returning reveals the paused six-camera console, two rooms live and four dark, with no assignments. Only a compact quota summary and Choose adviser action belong on this wall.
 
-Bring the chosen adviser’s briefing forward over the same console: assessment, additional context, priority, proposed assignments. Approval or override visibly assigns the supervisors and establishes delegated authority. A physical Start shift control then releases the line. Opening context belongs in this scene and conversation; separate marketing-style welcome and handover pages are superseded.
+Adviser selection has a dedicated five-or-more-person roster. Current pitches and focused priority/tradeoff details explain the choice before appointment. Once committed, the selected adviser’s structured brief owns the screen, followed by placements and explicit authorization. A physical Start the line control then releases production. No duplicated full briefings or persistent tutorial column on the factory view.
 
 Keep the factory identifiable without burying the next decision under a panorama, a large title or explanatory prose. On a phone, recompose the same scene and action; do not shrink a desktop wall until its instruments become illegible.
 
@@ -47,7 +49,7 @@ CSS and code position, mask, slice and animate these assets; they also provide t
 
 Procedural effects support the authored surfaces: transitions, restrained light, glare, grain and feedback from confirmed events. A genuine future live 3D view can render geometry, materials and spatial lighting. Decorative animation is not a substitute for that view, and is not needed to prove the current loop.
 
-These are updated requirements, not a statement that the current `/play` UI meets them. The owner rejected its entry composition and web-app feel. Earlier functional/browser verification is not visual or enjoyment approval.
+The director-console revision implements this direction in `/play`: dedicated adviser choice, authored frames/control states and portraits, a persistent factory scene, and dedicated briefing, incident, dispatch and debrief surfaces. The [rebuild gate report](UI_REBUILD_VALIDATION.md) records the agent assessment. The owner rejected the preceding PR #94 composition; neither that baseline’s checks nor this revision’s checks substitute for owner enjoyment approval.
 
 ## Borrow pacing, preserve identity
 
@@ -61,7 +63,7 @@ Loopforge retains soot, worn brass, industrial green-black, cyan cognition and S
 
 | Factory beat | Visual and interface response | Sound direction | Mechanical meaning |
 | --- | --- | --- | --- |
-| Arrive | The paused factory console establishes the place, quota and unassigned advisers. Opening context stays in that scene. | Distant power and room tone only after sound activation. | Choosing the adviser is the first meaningful action. |
+| Arrive | The weekly leadership call establishes the mandate. The paused factory then presents compact facts and adviser-selection access. | Distant power and room tone only after sound activation. | Choosing the adviser is the first meaningful action. |
 | Choose an adviser | The chosen figure comes forward; their competing colleague recedes. Briefing topics appear as readable comic panels. | Intercom relay and a distinct supervisor signature. | One adviser is committed for the day; no placements yet. |
 | Approve a plan | Assignments lock into the room labels. The delegated room’s authority is explicit. | A weighted latch, not a celebratory reward sting. | Your order is accepted; a supervisor remembers an override. |
 | Start the shift | Contact indicators engage; confirmed activity updates the illustrated cameras and instruments. The future 3D view adds continuous spatial execution. | Contactor, motor spin-up, low machinery bed. | The accepted plan begins producing outcomes. |
@@ -111,3 +113,9 @@ Every important sound has visible text or a readable state change. Reduced motio
 6. Does the owner enjoy playing it and want to try the other adviser? Visual polish does not answer that playtest question by itself.
 7. Can the asset-driven interfaces carry the complete loop with the future 3D view absent?
 8. Do the actual control surfaces, character treatment and scene composition share Loopforge’s material identity, rather than merely borrowing its background images?
+
+## Equipment and feedback update — 8 October
+
+The owner requested all six generated themes be implemented and kept in the selector. A game start menu and in-run Settings now provide those material sets; the first gameplay action remains adviser choice. An author workbench combines implemented monitor and control families without resetting the run. These changes do not accept the prior composition or complete the broader focused-interface redesign. See `UI_THEME_ASSET_SYSTEM.md`.
+
+The overhead console beacon is dark by default. A confirmed production batch fires green; an actual accident fires red; an attention request fires ember/amber. Sparse cyan impulses occur only after inactivity. Each performs one rotation, then extinguishes; no constant sweep or continuous alarm wash. Shared effects respect reduced motion and atmosphere settings. See `CONSOLE_LIGHT_FEEDBACK.md`.

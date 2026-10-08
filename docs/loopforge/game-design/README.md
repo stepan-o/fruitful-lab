@@ -1,5 +1,13 @@
 # Loopforge game design board
 
+8 October style review: **UI style studies** (`#ui-styles`) includes six separately generated directions: the parent baseline and five requested agent alternatives. `ui-styles.json` owns names and review notes; `style_review.py`, `style-review.js` and `style-review.css` build the responsive gallery and accessible comparison dialog. Images use the `loopforge-ui-studies` immutable pack. This review does not choose the production style or update the playable interface. See `../CAMERA_CONSOLE_ART_DIRECTION.md` and `../ONBOARDING_DESIGN.md` for the latest visual and tutorial rules.
+
+8 October interface follow-up: [game interface job study](../INTERFACE_JOB_STUDY.md)
+records the reference pass after the owner rejected PR #99's composition. It
+precedes the next full-floor layouts, asset generation and first-turn rebuild.
+The six-room overview and 10–20 minute capability-unlock target are the latest
+owner direction; earlier shift-duration estimates require a new pacing test.
+
 The accepted local design board now lives at `/stepanoskin/loopforge/design` in the Lab app. This is an author-facing concept document with spoilers, proposals and open decisions; the playable first-day slice is `/stepanoskin/loopforge/play`.
 
 - `design-data.json` is the authored source. It was preserved during migration and continues to receive design revisions here.
@@ -23,7 +31,7 @@ Current delivery checks are recorded in [First-shift validation](../FIRST_SHIFT_
 
 The **Player experience**, **UI structure**, **UI & mechanics**, **Engine boundary**, **Core loops** and **Foundations / open decisions** sections distinguish the current asset-driven interfaces from the future live 3D factory. Adviser selection, illustrated structured briefing, assignments, incidents, allocation and debrief must carry a playable core loop with room artwork. The 3D view will add continuous cinematic observation of the same simulation; it is not a prerequisite or replacement for those interfaces.
 
-Almost every visible game element should use authored assets, starting with the original sim-sim UI materials and modules. Native text, semantics and responsive controls remain. The first entry target is the paused factory console, with opening facts, weekly quota, no assignments and the adviser choice. Separate welcome/handover gates are superseded. Current visual treatment has not met owner acceptance; these updates are requirements, not a claim that the redesign has shipped.
+Almost every visible game element should use authored assets, starting with the original sim-sim UI materials and modules. Native text, semantics and responsive controls remain. The first entry target is the paused factory console, with opening facts, weekly quota, no assignments and the adviser choice. Separate welcome/handover gates are superseded. The director-console implementation now follows this entry/material direction. Agent verification is recorded in `../UI_REBUILD_VALIDATION.md`; owner visual/play acceptance remains pending. The board continues to describe the broader game, beyond this one-day slice.
 
 The generated board, complete HTML/Markdown record and UI HTML/Markdown document must be regenerated together. Historical `sources/` snapshots and prior validation evidence retain their original wording. The approved long arcs and simulation rules are unchanged; a stale station-staffing example in the minute loop was corrected to match the existing no-station-staffing decision.
 

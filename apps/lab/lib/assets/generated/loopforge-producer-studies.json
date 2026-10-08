@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-producer-studies",
+  "assets": {
+    "broadcast-control": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/169ad00068df4c3468d40257e6df81dbe250981891267946889fab875e51dc22.webp",
+          "mime": "image/webp",
+          "bytes": 19342,
+          "sha256": "169ad00068df4c3468d40257e6df81dbe250981891267946889fab875e51dc22",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/31397d85dc6ddd350aff954bd01cd3f70465e3ec11425d51488104648f55020d.webp",
+          "mime": "image/webp",
+          "bytes": 58830,
+          "sha256": "31397d85dc6ddd350aff954bd01cd3f70465e3ec11425d51488104648f55020d",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/1f93d1649200179deded9ac29a4bed421e98b83ccce7f9ffae094bc552a62723.webp",
+          "mime": "image/webp",
+          "bytes": 126978,
+          "sha256": "1f93d1649200179deded9ac29a4bed421e98b83ccce7f9ffae094bc552a62723",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    },
+    "dispatch-office": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/6a27c184aaed268d91bbdc91573a1f2c79d27c22b4b5e67228c59767ca48ff8d.webp",
+          "mime": "image/webp",
+          "bytes": 49174,
+          "sha256": "6a27c184aaed268d91bbdc91573a1f2c79d27c22b4b5e67228c59767ca48ff8d",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/206a4605d87325c44592387d51ac838795c17d2d05a12d1f0aab13ead1705a9c.webp",
+          "mime": "image/webp",
+          "bytes": 151410,
+          "sha256": "206a4605d87325c44592387d51ac838795c17d2d05a12d1f0aab13ead1705a9c",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/44f090bcddd3432d8f668f52e7ad5cf07ebd8e489c4b7fc84e14ad70cde763c0.webp",
+          "mime": "image/webp",
+          "bytes": 324876,
+          "sha256": "44f090bcddd3432d8f668f52e7ad5cf07ebd8e489c4b7fc84e14ad70cde763c0",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    },
+    "foundry-desk": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/6ac0f107544b7791366bd4334e6c6e1865a539dd2914bb0e83fb777d427c84a1.webp",
+          "mime": "image/webp",
+          "bytes": 28180,
+          "sha256": "6ac0f107544b7791366bd4334e6c6e1865a539dd2914bb0e83fb777d427c84a1",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/a612f7c8c635c4b8a2ba3d3bbf86a4f80f3629d64cf6655f5248383dd39310ef.webp",
+          "mime": "image/webp",
+          "bytes": 96638,
+          "sha256": "a612f7c8c635c4b8a2ba3d3bbf86a4f80f3629d64cf6655f5248383dd39310ef",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/bddc17fb99b2eb80c64b83049afa806fcbede306f9bd6621b82430e19aa9f6b8.webp",
+          "mime": "image/webp",
+          "bytes": 221080,
+          "sha256": "bddc17fb99b2eb80c64b83049afa806fcbede306f9bd6621b82430e19aa9f6b8",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    },
+    "obedience-organ": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/7adf538487f1a036826714d97fd419aff7dc85606a4875351b4add143d24a98b.webp",
+          "mime": "image/webp",
+          "bytes": 30366,
+          "sha256": "7adf538487f1a036826714d97fd419aff7dc85606a4875351b4add143d24a98b",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/d51961830540990bf2d32351b541d7daf5f8b93450400bfddd5396945675a082.webp",
+          "mime": "image/webp",
+          "bytes": 100026,
+          "sha256": "d51961830540990bf2d32351b541d7daf5f8b93450400bfddd5396945675a082",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/0f8cac0066d83a12c31d9c0931b3e0949917e75ab69e8fb638ce5414e14c2891.webp",
+          "mime": "image/webp",
+          "bytes": 223770,
+          "sha256": "0f8cac0066d83a12c31d9c0931b3e0949917e75ab69e8fb638ce5414e14c2891",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    }
+  }
+}

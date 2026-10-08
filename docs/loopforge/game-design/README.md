@@ -7,6 +7,7 @@ The accepted local design board now lives at `/stepanoskin/loopforge/design` in 
 - `build_board.py`, `board.js` and `styles.css` generate the board and reading copies in `apps/lab/public/loopforge-design/`.
 - The published directory contains the interactive board, `full-record.html`, `GAME_DESIGN.md`, `UI_DESIGN.html`, `UI_DESIGN.md` and historical `sources/` snapshots.
 - The UI document describes the full proposed design, not only features implemented by the first-day prototype.
+- `sound-library.json` adds the playable **Sound library** tab (`#sound-library`). It joins authored cue roles and remaining gaps with the cropped-source provenance and the generated `loopforge-sfx` manifest. Six previews, source credits, exact crop notes and a `SOUND_LIBRARY.md` export are included. The gate and dark-room loop are audition-only; the other four edits are assigned in this revision. `sound-library.js` limits audition playback to one clip and pauses it when leaving the section or hiding the page.
 
 From the repository root, regenerate with:
 

@@ -4,7 +4,7 @@ import AssetImage from "@/components/media/AssetImage";
 import manifest from "@/lib/assets/generated/stepanoskin.json";
 import { assetUrl, imageAsset, parseManifest } from "@/lib/assets/types";
 import Link from "next/link";
-import { playClang } from "@/lib/stepanoskin/audio";
+import { playLandingSound } from "@/lib/loopforge/landing-audio";
 import { soundKey, motionKey, usePreference } from "@/lib/stepanoskin/preferences";
 import { useSignalGlitch } from "@/components/stepanoskin/useSignalGlitch";
 import { useRouter } from "next/navigation";
@@ -49,7 +49,7 @@ export default function LoopforgeLanding({ initialLocale }: { initialLocale: Loc
         event.preventDefault();
         if (isActivating) return;
         setIsActivating(true);
-        playClang();
+        playLandingSound("menu-clang");
         navigator.vibrate?.(24);
         window.setTimeout(() => router.push(href), 210);
     }

@@ -52,7 +52,9 @@ SFX categories: console relays; supervisor intercom signatures; briefing handlin
 
 Music is a separate authored layer, not continuous reinforcement of every click. Plan stems for the working pulse, mounting pressure, deliberation space and aftermath. Crossfade from known episode states; duck under intercom and critical signals. Avoid triumphant rewards for output whose human—or robot—cost is still unresolved. The first build has optional original procedural SFX and machinery ambience. It does **not** claim a finished recorded sound library or soundtrack.
 
-Use separate effects and music controls once music exists. Start silent until the player enables sound. Cap concurrent one-shots, normalize source levels, stop hidden-tab work and suspend audio. A future audio asset pack can replace the cue sink without changing the kernel, protocol or decision rules.
+The first recorded pass adds the `loopforge-sfx` pack: metal clang for landing navigation, contactor for RESET / shift startup, engagement ratchet for commitment and release latch for shift shutdown. The gate and dark-room loop remain audition-only. The playable [Sound library](/stepanoskin/loopforge/design#sound-library) documents crops, CC0 sources, intended roles and missing cues. Source recipes and measurements live in `apps/lab/assets/sources/loopforge-sfx/`. A recorded cue replaces its procedural counterpart only when decoded and ready; failed or slow loads use the immediate fallback, never a delayed replay. No kernel, protocol or decision rules change.
+
+Use separate effects and music controls once music exists. Start silent until the player enables sound. Cap concurrent one-shots, set prepared source levels and tune the final mix, stop hidden-tab work and suspend audio. The sound library requires explicit preview playback and does not preload its clips. Final timbre and mix approval require listening in context; waveform and peak checks alone do not establish that judgment.
 
 ## Causality and accessibility
 

@@ -1,0 +1,11 @@
+{
+  "pack": "loopforge-sfx",
+  "assets": {
+    "menu-clang": { "kind": "audio", "source": "assets/sources/loopforge-sfx/menu-clang.mp3", "maxBytes": 40000 },
+    "contactor": { "kind": "audio", "source": "assets/sources/loopforge-sfx/contactor.mp3", "maxBytes": 10000 },
+    "ratchet-engage": { "kind": "audio", "source": "assets/sources/loopforge-sfx/ratchet-engage.mp3", "maxBytes": 8000 },
+    "ratchet-release": { "kind": "audio", "source": "assets/sources/loopforge-sfx/ratchet-release.mp3", "maxBytes": 18000 },
+    "gate-close-review": { "kind": "audio", "source": "assets/sources/loopforge-sfx/gate-close-review.mp3", "maxBytes": 60000 },
+    "dark-room-review": { "kind": "audio", "source": "assets/sources/loopforge-sfx/dark-room-review.mp3", "maxBytes": 500000 }
+  }
+}

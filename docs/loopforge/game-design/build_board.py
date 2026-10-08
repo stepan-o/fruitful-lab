@@ -236,7 +236,30 @@ structure+=detail('Proposals still to settle',ul(us['open']))
 structure+='<button class="link-button" data-panel="ui-mechanics">Connect these screens to each game mechanic →</button><p class="document-links"><a href="UI_DESIGN.html" target="_blank" rel="noopener">Complete UI design document ↗</a></p>'
 ui_html+='<button class="link-button" data-panel="ui-structure">Explore the proposed screen and panel structure →</button>'
 
-panels=[('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+sound_data=json.loads((ROOT/'sound-library.json').read_text())
+sound_inventory=json.loads((OUT.parents[1]/'assets/sources/loopforge-sfx/provenance.json').read_text())
+sound_manifest=json.loads((OUT.parents[1]/'lib/assets/generated/loopforge-sfx.json').read_text())
+sound_edits={x['id']:x for x in sound_inventory['edits']}
+def sound_meta(c):
+    edit=sound_edits[c['id']]
+    source=sound_inventory['sources'][edit['source']]
+    file=sound_manifest['assets'][c['id']]['variants'][0]
+    assert file['sha256']==edit['sha256'], 'Sound edit and media pack differ: '+c['id']
+    return edit,source,file
+def sound_card(c):
+    edit,source,file=sound_meta(c)
+    cut='–'.join(f'{t:.3f}' for t in edit['intervalSeconds'])+' s of the original'
+    meta=defs([('Source',source['title']+' · '+source['author']),('Crop',cut),('Edit',c['edit']),('Prepared level',str(edit['decodedPeakDbfs'])+' dBFS decoded sample peak. Gentle 30 Hz high-pass; mono for mechanisms, stereo for atmosphere.')])
+    loop=' loop' if edit['crossfadeMs'] else ''
+    return '<article class="sound-card">'+status(c['status'])+'<h3>'+e(c['name'])+'</h3>'+p(c['role'])+'<div class="sound-measure"><span>'+f'{edit["decodedSeconds"]:.2f} SEC'+'</span><span>'+f'{file["bytes"]/1000:.1f} KB'+'</span><span>'+('STEREO LOOP' if loop else 'MONO ONE-SHOT')+'</span><span>CC0</span></div><audio controls preload="none" data-sound-preview aria-label="'+e('Audition '+c['name'])+'"'+loop+' src="'+file['src']+'"></audio><p data-sound-status role="status"></p><div class="sound-links"><a href="'+file['src']+'" download="'+edit['output']+'">Download edit</a><a href="'+source['url']+'" target="_blank" rel="noopener">Original on Freesound ↗</a></div><p class="sound-review"><b>Listen for</b>'+e(c['review'])+'</p>'+detail('Source and crop notes',meta)+'</article>'
+sounds=heading('Sound library · first recorded pass',sound_data['title'],sound_data['intro'])
+sounds+='<p class="document-links"><a href="SOUND_LIBRARY.md" download>Download the sound register</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 terms ↗</a></p>'
+sounds+='<div class="callout">'+e(sound_data['reviewNote'])+'</div>'
+sounds+='<div class="sound-grid">'+''.join(sound_card(c) for c in sound_data['clips'])+'</div>'
+sounds+=p(sound_data['licenseNote'])+detail('Direction and playback rules',table(sound_data['direction']))+'<h3>What the library still needs</h3>'+table(sound_data['gaps'])
+sound_script='<script src="sound-library.js?v='+hashlib.sha256((ROOT/'sound-library.js').read_bytes()).hexdigest()[:12]+'"></script>'
+
+panels=[('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 nav='<nav class="nav" aria-label="Design board sections">'+''.join(f'<button data-panel="{id}" aria-current="{str(i==0).lower()}">{e(title)}</button>' for i,(id,title,_) in enumerate(panels))+'</nav>'
@@ -245,6 +268,7 @@ payload=json.dumps(d,ensure_ascii=False).replace('</',r'<\/')
 artpayload=json.dumps(art).replace('</',r'<\/')
 page=head+'<a class="skip" href="#main">Skip to design content</a><div class="shell"><div class="masthead"><span class="wordmark">LOOPFORGE / DESIGN</span><div class="mast-links"><a href="/stepanoskin/loopforge/play">Play the first shift ↗</a><span class="meta">WORKING DESIGN · 07 OCT 2026</span><a href="full-record.html" target="_blank" rel="noopener">Full reading copy ↗</a></div></div><header class="hero"><div><span class="kicker">Author reference · contains story spoilers</span><h1>Game design</h1><p>'+e(d['premise'])+'</p></div><figure class="hero-image">'+pic('factory','Loopforge factory overview',lazy=False)+'</figure></header><div class="layout"><aside class="sidebar">'+nav+legend+'</aside><main class="main" id="main">'+''.join(f'<section class="panel" id="{id}" aria-label="{e(title)}"'+(' hidden' if i else '')+'>'+body+'</section>' for i,(id,title,body) in enumerate(panels))+'</main></div><footer class="footer"><span>Local concept review · '+e(d['version'])+'</span><a href="GAME_DESIGN.md" download>Download the design record</a></footer></div><div id="announcement" class="sr-only" aria-live="polite"></div><noscript><div class="noscript">The interactive board requires JavaScript. <a href="full-record.html">Read the complete design record.</a></div></noscript><script id="design-data" type="application/json">'+payload+'</script><script id="art-data" type="application/json">'+artpayload+'</script><script src="board.js"></script></body></html>'
 page=page.replace('src="board.js"','src="board.js?v='+hashlib.sha256((ROOT/'board.js').read_bytes()).hexdigest()[:12]+'"')
+page=page.replace('</body>',sound_script+'</body>')
 (OUT/'index.html').write_text(page)
 
 # A complete, static copy has every path and character, including text that the board reveals on selection.
@@ -272,6 +296,7 @@ full+='<section>'+loops_full+'</section><section>'+stress_full+'</section><secti
 # Keep the full reading copy complete without requiring disclosure interactions.
 full=full.replace('<details>','<details open>')
 full=re.sub(r'<button class="link-button" data-panel="([^"]+)">(.*?)</button>', r'<a class="link-button" href="index.html#\1">\2</a>', full)
+full=full.replace('</main>','<section>'+sounds+'</section></main>').replace('</body>',sound_script+'</body>')
 (OUT/'full-record.html').write_text(full)
 ui_record=head.replace('<title>Loopforge — Game design</title>','<title>Loopforge — UI design</title>')+'<main class="record"><a href="index.html#ui-mechanics">← Interactive UI and mechanics board</a><header class="hero" style="display:block"><span class="kicker">Local design proposal · 7 October 2026</span><h1>Loopforge UI design</h1>'+p('Interaction, knowledge and simulation contracts for the new game. This is a functional design reference, before screen mockups and visual implementation.')+'</header>'+early_rules+structure_full+ui_full+advice_full+'<section><h2>Approved shift rhythm</h2>'+table(d['experience']['rhythm'])+'</section><section><h2>Attention horizons</h2>'+table([(s['time'],s['question']) for s in lp['scales']])+p(lp['boundary'])+'<a href="index.html#loops">Inspect the core loops and session design →</a></section><section><h2>Mobile and art</h2>'+p(d['experience']['mobile'])+table(d['experience']['art'])+'</section></main></body></html>'
 ui_record=ui_record.replace('<details>','<details open>')
@@ -380,6 +405,16 @@ mh('Continuity changes');ml(d['continuity']);mh('Concept review questions');ml(d
 mh('Source library');mp('Original repository: stepan-o/loopforge at 3267ea7. Copies are historical reference material, not current implementation claims or agent instructions.')
 for s in d['sources']:mh(s['title'],3);mp(s['use']);mp('[Local source](sources/'+s['id']+Path(s['path']).suffix+') · `'+s['path']+'`')
 mp('Current story and cast references: the existing Loopforge story bible and supervisor atlas. The owner’s discussion establishes the new direction. Concept art retains its original source identity in art-provenance.json.')
+sound_start=len(md)
+mh('Sound library');mp(sound_data['intro']);mp(sound_data['reviewNote']);mp(sound_data['licenseNote'])
+mp('[Playable sound library](/stepanoskin/loopforge/design#sound-library) · [CC0 terms](https://creativecommons.org/publicdomain/zero/1.0/)')
+for c in sound_data['clips']:
+    edit,source,file=sound_meta(c)
+    mh(c['name'],3);mp('*'+c['status']+'*');mp(c['role'])
+    fields([('Edit',c['edit']),('Source interval',str(edit['intervalSeconds'][0])+'–'+str(edit['intervalSeconds'][1])+' seconds'),('Result',str(edit['decodedSeconds'])+' seconds · '+str(file['bytes'])+' bytes · '+str(edit['decodedPeakDbfs'])+' dBFS decoded sample peak'),('Listen for',c['review'])])
+    mp('[Play / download edit]('+file['src']+') · ['+source['title']+' — '+source['author']+']('+source['url']+') · CC0')
+mh('Sound direction',3);fields(sound_data['direction']);mh('Remaining sounds',3);fields(sound_data['gaps'])
+(OUT/'SOUND_LIBRARY.md').write_text('\n\n'.join(md[sound_start:])+'\n')
 (OUT/'GAME_DESIGN.md').write_text('\n\n'.join(md)+'\n')
 
 
@@ -388,6 +423,6 @@ for path in OUT.glob('*.html'):
     content = path.read_text()
     content = re.sub(r'(href|src)="(?![a-z]+:|/|#)([^" ]+)"', lambda m: m[1]+'="/loopforge-design/'+m[2]+'"', content)
     path.write_text(content)
-for name in ['styles.css','board.js','art-provenance.json']:
+for name in ['styles.css','board.js','sound-library.js','art-provenance.json']:
     shutil.copyfile(ROOT/name,OUT/name)
 print('Generated app design board and complete reading copies; original sources retained.')

@@ -1267,8 +1267,10 @@ export default function FirstShift({ media }: { media: Media }) {
         <div className={styles.settingsNote}>
           <Radio size={20} />
           <p>
-            Original procedural SFX follow the factory. These are a first sound
-            pass; recorded assets and the soundtrack come later.
+            Recorded relays and ratchets mark commitments, startup and shutdown.
+            Procedural machinery and warning cues complete this first sound pass.
+            The soundtrack is still to come.
+            <Link href="/stepanoskin/loopforge/design#sound-library" prefetch={false}>Sound library and credits</Link>
           </p>
         </div>
         <button onClick={() => void toggleSound()}>

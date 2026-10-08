@@ -1,3 +1,5 @@
+import { RecordedAudio } from "./recorded-audio";
+
 /** Replaceable presentation sink. Never schedules or resolves simulation commands. */
 export type SoundCue =
   | "connect"
@@ -12,12 +14,14 @@ export class FactoryAudio {
   private master: GainNode;
   private motor: GainNode;
   private noise: AudioBuffer;
+  private recorded: RecordedAudio;
   private voices = 0;
   constructor() {
     this.context = new AudioContext();
     this.master = this.context.createGain();
     this.master.gain.value = 0.18;
     this.master.connect(this.context.destination);
+    this.recorded = new RecordedAudio(this.context, this.master);
     this.motor = this.context.createGain();
     this.motor.gain.value = 0;
     const filter = this.context.createBiquadFilter();
@@ -46,10 +50,12 @@ export class FactoryAudio {
   }
   async enable() {
     await this.context.resume();
+    this.recorded.load();
   }
   machine(running: boolean, hidden: boolean, strain: boolean) {
     if (this.context.state === "closed") return;
     if (hidden) {
+      this.recorded.stop();
       void this.context.suspend();
       return;
     }
@@ -63,6 +69,9 @@ export class FactoryAudio {
   }
   cue(cue: SoundCue) {
     if (this.context.state !== "running" || this.voices >= 8) return;
+    if (cue === "commit" && this.recorded.play("ratchet-engage", 1.25)) return;
+    if (cue === "release" && this.recorded.play("contactor", 1.4)) return;
+    if (cue === "end" && this.recorded.play("ratchet-release", 1.3)) return;
     const t = this.context.currentTime;
     const tone = (
       hz: number,
@@ -149,6 +158,7 @@ export class FactoryAudio {
     }
   }
   close() {
+    this.recorded.close();
     if (this.context.state !== "closed")
       void this.context.close().catch(() => {});
   }

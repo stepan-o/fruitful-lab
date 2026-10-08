@@ -329,3 +329,21 @@ indices match the new order; both manuscripts match every runtime paragraph.
 Other chapters remain unchanged. No media, chart data, calculations, selection
 behavior, dependency or animation changed. Preview verification is recorded on
 PR #98.
+
+## Microsoft: one work, competing offers
+
+Replaced the disconnected acquisition/underperformance/production sequence with
+one sourced story: Microsoft earning as publisher on Sony’s console, Black Ops
+6 attracting Game Pass subscribers while selling through PlayStation and Steam,
+and the later decision to delay future Call of Duty catalog entry. The link to
+Sony is cross-company income from the same purchase; the link to NVIDIA is the
+equipment business benefiting without owning the creative work. The narrative
+distinguishes our sales/subscription interpretation from Microsoft’s published
+announcements. Obsidian and subseries-cadence research remain in the source notes.
+
+All Microsoft paragraphs now precede NVIDIA and the standalone publisher figure.
+Both manuscripts, source IDs, evidence boundaries and figure indices are aligned.
+No chart values, controls, assets, animation, dependency or other chapter changes.
+Validation results and deployed revision are recorded in PR #98.
+
+Validation for this revision: required app CI passes (67 suites, 348 tests, one snapshot, 22 asset releases and production build). Scoped lint and whitespace checks pass. The prior figure-position assertion was updated to the new paragraph indices before the successful CI run. Both manuscript copies match the runtime chapter, and all other manuscript chapter objects are unchanged. Preview verification is recorded in PR #98.

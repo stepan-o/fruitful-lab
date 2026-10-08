@@ -91,13 +91,13 @@ context, not estimates of individual products’ causal revenue contributions.
 
 ## Narrative and interaction placement
 
-The financial selector follows paragraph 1. The reading passage moves directly
-from PlayStation’s scale to Microsoft’s acquisition (paragraph 2) and NVIDIA’s
-computing business (paragraph 3). The independent publisher figure follows
-paragraph 3. Paragraph 4 names the three ecosystems and connects them to the
-later in-game offers; the Xbox production stories follow at paragraphs 5–7.
-The Cyberpunk promotion follows paragraph 10; the market map follows paragraph
-11. Both manuscripts mirror the runtime order. Chapter 1 is unchanged.
+The financial selector follows paragraph 1. PlayStation’s scale leads into
+Microsoft’s acquisition, cross-platform publishing and Call of Duty’s changing
+catalog offer (paragraphs 2–4), then NVIDIA’s computing business (paragraph 5).
+The independent publisher figure follows paragraph 5. Paragraph 6 names the
+three ecosystems and connects them to later in-game offers. Cyberpunk begins
+at paragraph 7; its promotion follows paragraph 9 and the market map follows
+paragraph 10. Both manuscripts mirror the runtime order. Chapter 1 is unchanged.
 
 The former add-on, profit and 1990s Sony detour is removed from the reading
 passage. Add-on definitions sit inside the chart’s game-revenue disclosure;
@@ -165,16 +165,41 @@ as non-proportional. Sony’s continuous four-category series remains unchanged.
 Chart dollar labels round from integer millions before formatting billions,
 avoiding binary floating-point rounding of US$23.455bn to US$23.45bn.
 
-## Editorial selection: scale still has to earn its keep
+## Editorial selection: a rival’s console, your game
 
-The main reading passage retains three connected decisions: Call of Duty’s
-subseries release cadence, Obsidian’s production time and reuse, and Microsoft’s
-choice to delay future Call of Duty releases in Game Pass. It introduces the
-games only as needed for the argument. US rankings, rival release dates, the
-longer list of reported misses and speculative title-by-title loss estimates
-are omitted. Charts retain the annual financial detail.
+The reading passage now develops one Microsoft story from the Sony example:
+owning the publisher lets Xbox’s parent earn from a purchase on PlayStation;
+owning a catalog lets it use the same work to attract subscriptions. Black Ops
+6’s 2024 launch demonstrates both routes. The April 2026 change to future Call
+of Duty access demonstrates a different sequence for the two offers. It is a
+concrete bridge from the platform economy to later monetization decisions.
 
-Sources (checked 8 October 2026):
+Primary sources checked 8 October 2026:
+
+- [Microsoft’s 2024 annual report](https://www.microsoft.com/investor/reports/ar24/):
+  completed acquisition cost of US$75.4bn. This was not Microsoft’s first
+  cross-platform publishing business; it enlarged the portfolio it owned.
+- [Xbox, 15 October 2024](https://news.xbox.com/en-us/2024/10/15/xbox-game-pass-october-2024-wave-2/):
+  Black Ops 6 at launch on 25 October via Ultimate and PC Game Pass.
+- [Satya Nadella, 30 October 2024](https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q1):
+  record Game Pass subscriber additions on launch day and PlayStation/Steam
+  unit sales over 60% higher year-on-year. This is the CEO’s launch comparison,
+  not annual revenue, retention or profit; no separate store growth rates or
+  causal effect of catalog inclusion are inferred.
+- [Xbox, 21 April 2026](https://news.xbox.com/en-us/2026/04/21/xbox-game-pass-update/):
+  lower Ultimate/PC prices and future Call of Duty releases joining the catalog
+  the following holiday season, about a year later. The sales/subscription
+  tradeoff is our interpretation, not a reported reason or quantified loss.
+
+NVIDIA follows as the equipment/computing contrast; Sony and Microsoft also
+make hardware and games. These are selected relationships, not exclusive
+business identities. The chart’s annual figures and scope notes are unchanged.
+
+### Retained research, outside the reading passage
+
+The following material remains available for production-cost and release-cadence
+analysis, but its separate thread interrupted this chapter’s platform comparison.
+These stories are not a decomposition of Xbox’s annual revenue decline.
 
 - [Circana / Mat Piscatella](https://bsky.app/profile/matpiscatella.bsky.social/post/3ma6t4rn5w22w):
   November 2025 US tracked full-game dollar sales versus November 2024. This
@@ -183,7 +208,7 @@ Sources (checked 8 October 2026):
   no back-to-back Black Ops or Modern Warfare releases; annual release cadence
   remains. Distinctiveness is the team’s stated rationale.
 - [PC Gamer, 3 February 2026](https://www.pcgamer.com/games/rpg/avowed-and-the-outer-worlds-2-failed-to-meet-expectations-for-obsidian-but-grounded-2-was-a-hit-and-the-future-is-looking-positive-for-the-pillars-of-eternity-universe/):
-  reporting on Bloomberg’s Obsidian interviews. The chapter uses Urquhart’s
+  reporting on Bloomberg’s Obsidian interviews. The earlier draft used Urquhart’s
   complete 20-word inventory-screen question, attributed to him. The shorter
   Grounded 2 production is a counterexample within the studio, not a universal
   causal claim. Missed forecasts are not evidence of losses. Avowed’s original

@@ -23,7 +23,7 @@ const boundaries = [
   ],
   [
     "Viewer",
-    "React displays cameras, briefings, decisions and records. It interpolates presentation and plays event cues. It neither chooses outcomes nor imports the kernel. A different renderer can use the same contract.",
+    "The current React viewer displays illustrated cameras, briefings, decisions and records. The revised design makes these asset-driven interfaces a complete playable loop. A later live 3D view joins through the same semantic boundary; neither presentation layer chooses outcomes or imports the kernel.",
   ],
 ];
 export default function EngineNotes() {
@@ -95,17 +95,38 @@ export default function EngineNotes() {
         <h2>The interface belongs to the factory.</h2>
         <p style={{ margin: "20px 0 20px" }}>
           The landing conveyor guides the feel: weight, uneven momentum,
-          pressure, interruption and deliberate restart. Camera atmosphere,
-          image transitions, readouts and original procedural SFX respond to the
-          same event. A decision quiets the machinery; a commitment engages it
-          again. Consequences remain in the ledger after the cue ends. Recorded
-          sound assets and an immersive soundtrack are future layers.
+          pressure, interruption and deliberate restart. The revised direction
+          starts from the old sim-sim console’s authored room scenes, character
+          art, metal and glass, instrument plates and controls. These assets
+          should define almost every visible game element; native text and
+          interaction preserve readability and access. Recorded and procedural
+          SFX support commitments and factory feedback. The soundtrack remains
+          future work.
         </p>
         <p style={{ marginBottom: 32 }}>
           Frostpunk informs the composition and pacing of illustrated decisions.
           Loopforge’s own machinery and artwork establish its identity. All
           meaningful audio feedback also remains visible. Motion and sound can
           be disabled independently.
+        </p>
+        <h2>Playable interfaces now. Live 3D later.</h2>
+        <p style={{ margin: "20px 0 20px" }}>
+          Adviser selection, structured briefing, assignment approval and
+          overrides, incidents, permanent allocation and debrief must carry the
+          core loop with illustrated factory context. The new entry target is
+          the paused factory console: opening facts, the weekly quota and two
+          unassigned advisers. The current welcome/handover screens and visual
+          treatment have not met owner acceptance; this documentation describes
+          the revision to build, not a completed redesign.
+        </p>
+        <p style={{ marginBottom: 32 }}>
+          The future live tick-fed 3D factory adds cinematic observation beside
+          those interfaces. The old Sim4/KVP implementation is a Pixi isometric
+          viewer, while Sim5 includes broader viewer plans. A future renderer
+          shares the knowledge-filtered event and command boundary, with any
+          spatial schema extensions explicitly versioned. The core loop must
+          remain playable with that view absent. Babylon.js is a research
+          candidate, not an installed dependency or final selection.
         </p>
         <h2>Current limits.</h2>
         <p style={{ margin: "20px 0 32px" }}>

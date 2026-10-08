@@ -2,6 +2,8 @@
 
 Scope: the first-day interaction prototype, migrated design board and engine/experience documentation. This is a playtest slice; enjoyment, long-term balance and the full Act 1 remain owner-review questions.
 
+**Subsequent owner review, 8 October:** the entry and interface appearance were rejected. The checks below remain a record of functional and responsive verification of PR #94; they are not approval of the visual direction or game feel. The revised asset-driven interface scope and pending work are in `EXPERIENCE_DIRECTION.md` and `FIRST_SHIFT_CHECKLIST.md`. The later 3D view is not a prerequisite for that redesign.
+
 ## Automated checks
 
 - Final app CI passed after the entity revision: 61 Jest suites, 302 tests, one golden snapshot, asset-release validation and the optimized Next.js production build. The focused first-shift suite has 21 passing tests. Focused ESLint and authored-code whitespace checks pass; historical source snapshots retain their original Markdown hard-break spaces.

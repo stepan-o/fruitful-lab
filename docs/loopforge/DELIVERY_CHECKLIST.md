@@ -4,6 +4,12 @@ Started 2026-10-03. Owner approved autonomous implementation, research, redesign
 of legacy implementation choices, visual iteration and a small hosted live demo.
 This checklist is the execution record. Unchecked means unfinished.
 
+This is the historical presentation and eight-shift teaching-demo checklist.
+The current one-day prototype and the owner-requested asset-driven interface
+revision are tracked in [FIRST_SHIFT_CHECKLIST.md](FIRST_SHIFT_CHECKLIST.md).
+Its decision interfaces must carry the core loop before the later live 3D
+factory view. Completed checks here do not establish acceptance of that UI.
+
 ## Brief and boundaries
 
 Build two illustrated, interactive presentations inside the Stepanoskin routing

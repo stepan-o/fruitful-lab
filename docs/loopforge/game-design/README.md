@@ -2,7 +2,7 @@
 
 The accepted local design board now lives at `/stepanoskin/loopforge/design` in the Lab app. This is an author-facing concept document with spoilers, proposals and open decisions; the playable first-day slice is `/stepanoskin/loopforge/play`.
 
-- `design-data.json` is the authored source, preserved unchanged during migration.
+- `design-data.json` is the authored source. It was preserved during migration and continues to receive design revisions here.
 - `art.json` maps the original selected art to optimized immutable assets. `art-provenance.json` retains its source references.
 - `build_board.py`, `board.js` and `styles.css` generate the board and reading copies in `apps/lab/public/loopforge-design/`.
 - The published directory contains the interactive board, `full-record.html`, `GAME_DESIGN.md`, `UI_DESIGN.html`, `UI_DESIGN.md` and historical `sources/` snapshots.
@@ -18,6 +18,16 @@ python docs/loopforge/game-design/build_board.py
 When changing the selected optimized artwork, run `node apps/lab/scripts/publish-loopforge-design.mjs` afterward. It validates content hashes and registers the existing derivatives in the `loopforge-design` pack; it does not require or republish source masters. The migration adds only the Cortex plate's two derivatives; other illustrations reuse published files. No local repository or machine path is required to build the board.
 
 Current delivery checks are recorded in [First-shift validation](../FIRST_SHIFT_VALIDATION.md). The notes below preserve the local design review history; their old localhost addresses and screenshots describe that earlier review, not required production dependencies.
+
+## Current direction — 8 October 2026
+
+The **Player experience**, **UI structure**, **UI & mechanics**, **Engine boundary**, **Core loops** and **Foundations / open decisions** sections distinguish the current asset-driven interfaces from the future live 3D factory. Adviser selection, illustrated structured briefing, assignments, incidents, allocation and debrief must carry a playable core loop with room artwork. The 3D view will add continuous cinematic observation of the same simulation; it is not a prerequisite or replacement for those interfaces.
+
+Almost every visible game element should use authored assets, starting with the original sim-sim UI materials and modules. Native text, semantics and responsive controls remain. The first entry target is the paused factory console, with opening facts, weekly quota, no assignments and the adviser choice. Separate welcome/handover gates are superseded. Current visual treatment has not met owner acceptance; these updates are requirements, not a claim that the redesign has shipped.
+
+The generated board, complete HTML/Markdown record and UI HTML/Markdown document must be regenerated together. Historical `sources/` snapshots and prior validation evidence retain their original wording. The approved long arcs and simulation rules are unchanged; a stale station-staffing example in the minute loop was corrected to match the existing no-station-staffing decision.
+
+Verification for this documentation revision: repeated generation produced identical files; all three HTML exports have unique IDs and all five reading/interactive exports contain the new scope, entry and asset sections. Browser review covered Player experience, UI structure and UI & mechanics on desktop and a 390-pixel phone viewport, with no horizontal overflow or broken visible images. Asset checks and all 62 test suites / 310 tests passed. The initial CI process was interrupted during the build; the production build passed when rerun separately with `API_BASE_URL=http://localhost:8000`. These checks validate the documentation delivery, not the pending game-interface redesign.
 
 ## Prior local review history
 

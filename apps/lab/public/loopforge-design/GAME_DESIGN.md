@@ -1,10 +1,10 @@
 # Loopforge game design
 
-Working draft · 7 October 2026
+Working draft · 8 October 2026
 
 Trace the factory the player builds, the authority they establish and the society they inherit. This author reference connects the long arcs to player experience and the engine boundary, before balance and implementation.
 
-Agreed direction records the owner's stated design. Proposed trajectories, gates and recoveries are material to review, not approved balance or implemented gameplay. Old source rules are evidence, not constraints on the new game.
+Agreed direction records the owner’s stated design. The current first-day build establishes a functional baseline; its entrance and visual treatment were rejected in owner review. The asset-driven interface revision described here is a design target, not a claim that it has shipped. Proposed trajectories, gates and recoveries remain material to review. Historical source rules do not override current decisions.
 
 ## World and story grounding
 
@@ -32,7 +32,7 @@ Day one starts unassigned: read the factory totals and weekly quota, then choose
 
 One second, one minute and thirty minutes describe player attention and payoff. They are not simulation tick rates, forced event intervals or room-unlock timers. Session design stops before the full-run structure.
 
-**Review.** Read the opening handover on day one; later, review yesterday’s direct facts and progress toward the weekly quota.
+**Review.** Read opening facts and the weekly quota in the paused factory console on day one; later, review yesterday’s direct results. This is context within the game, not a separate welcome/handover page.
 
 **Choose.** Select today’s adviser; their priorities and assigned room determine advice and automatic authority.
 
@@ -52,13 +52,13 @@ Is this working as I intended?
 
 **World activity.** Batches advance, output accumulates, equipment changes condition and supervisors act. Visible activity follows state and intentions; station animations do not introduce a station-staffing simulation.
 
-**Feedback.** Orders acknowledge promptly as accepted, queued or rejected. Physical execution takes its actual time. Belt cadence, queue shape, posture, alarm, sound and a persistent event cue make the result readable without exposing hidden scores. Resolved events in the adviser’s room remain visible in the feed; decisions elsewhere present their proposed response when player input is required.
+**Feedback.** In the current prototype, artwork state, readable instruments, physical control response, sound and persistent incident cues show accepted, queued, rejected and completed actions. Resolved adviser-room events remain visible; decisions elsewhere bring forward a response interface. The future 3D view adds continuous belt, queue and posture changes over the same events.
 
 **Payoff.** The pleasure of a dense machine working, and recognition of a person’s characteristic behaviour. Visual variation helps identify meaningful changes.
 
 **Carried outward.** A visible hesitation or growing queue becomes a question for the minute loop. Inspection retains the event and its source rather than demanding the player remember a fleeting animation.
 
-**Example.** The line slows under Limen’s procedure or accelerates under Stiletto’s approach. Completed units reach the output count. A warning, if earned by the state, remains attached to the room for inspection.
+**Example.** Limen’s procedure or Stiletto’s output policy changes the confirmed production and condition readouts. A matching illustrated room state and recorded report ground the result. Future spatial motion can show the different cadence; present feedback must work without it.
 
 **Design trap.** A constant spectacle with no readable state is noise. A click required every second turns direction into busywork. Neither should be the main source of difficulty.
 
@@ -72,11 +72,11 @@ Which problem should I solve, and what will that cost?
 
 **Feedback.** Show an intervention’s output effect alongside known operating consequences. In Parts 01–02, slowing or stopping can prevent further damage but does not restore equipment. From Part 03, engineering progress can appear.
 
-**Payoff.** A hypothesis tested: “the problem was outtake, not intake.” A supervisor’s approach becomes useful, troubling or newly understandable.
+**Payoff.** A hypothesis tested: easing load preserves equipment at a production cost, or maintaining pace completes more output with greater exposure. The supervisor’s method becomes useful, troubling or newly understandable.
 
 **Carried outward.** The chosen remedy leaves output, wear, a witnessed precedent or a promise. Those alter the next operating problem and the next consultation.
 
-**Example.** An intake queue grows. Faster intake would worsen it. The player authorizes a temporary staffing change at outtake, accepting a cost elsewhere. After the transfer and several completed batches, throughput recovers; the displaced work is still waiting.
+**Example.** A line-load warning appears outside the adviser’s delegated room. The player accepts or overrides their recommendation to ease the line. Subsequent output, condition and the supervisor’s reaction show the price of that response. No station-by-station staffing is introduced.
 
 **Design trap.** A universal best intervention solves the loop; unrelated random punishment makes it unreadable. Stable operation must be a valid reason to leave things alone. Early play does not require a repair action.
 
@@ -102,7 +102,7 @@ What kind of factory did my successful decisions create?
 
 A shift connects local experiments to lasting consequences. It is the repeatable decision cycle inside a session, not another mandatory thirty-minute unit.
 
-**Paused plan.** Day one has a handover, weekly quota and no assignments. Choose an adviser before any arrangement. On later days, review results and choose again; the existing roster is a proposal baseline. Hear the adviser’s priority, then accept or override placements.
+**Paused plan.** Day one opens in the paused factory console with opening facts, the weekly quota and no assignments. Choose an adviser before any arrangement. On later days, review results and choose again; the existing roster is a proposal baseline. Hear the adviser’s priority, then accept or override placements.
 
 **Continuous operation.** The chosen adviser recommends responses throughout continuous operation and automatically resolves events in their assigned room. Routine notices record those actions. Other supervisors retain their roles, interpretations and ability to respond.
 
@@ -271,6 +271,7 @@ Production ticks and routine event resolution need no model call. Morning briefi
 - Can they distinguish yesterday’s direct facts from the adviser’s additional claims, and later recognize how an override affected different supervisors?
 - Does the opening foreground adviser choice before any assignments, without exposing repair or station-staffing controls?
 - Does daily allocation clearly show irreversible factory/weekly-quota commitments without implying payment at an unagreed time?
+- Can the asset-driven interfaces and illustrated scenes carry the entire loop, its atmosphere and understandable consequences with no live 3D viewer?
 
 ## Foundational principles
 
@@ -279,6 +280,12 @@ Production ticks and routine event resolution need no model call. Morning briefi
 *Agreed direction*
 
 The player should understand the purpose of a choice and enjoy making it, seeing it unfold and living with its consequences. The simulation may contain deeper feedbacks than the UI reveals. The owner judges the first working prototype before the game is expanded for a wider audience.
+
+### The decision interfaces must carry the game
+
+*Agreed direction*
+
+Build a playable core loop with asset-driven adviser briefings, assignments, incidents, allocation and debrief. The factory’s authored materials define almost every visible element. The future live 3D view adds cinematic observation of the same simulation; it is not a prerequisite for these interfaces to be enjoyable.
 
 ### Truth stays clean. Story gets messy.
 
@@ -901,7 +908,7 @@ A sophisticated vibration specialist and techno-monk. His sensitivity to structu
 
 **Unknown conditioning history.** Workers made before the Theatre opens lack indoctrination. An informed supervisor can discover or infer this and disclose, misinterpret or withhold it. The player receives an attributed account in Act 1; direct inspection is an Act 2 capability.
 
-Day one begins with the factual handover and no assignments. Choose an adviser before their initial proposal. Later days begin with yesterday’s direct results and a new adviser choice. The adviser selects the priority, adds attributed context and proposes assignments, then guides events for the day. Their own room resolves automatically; placements and responses elsewhere can be overridden with remembered consequences.
+Day one opens in the paused factory console with opening facts and no assignments. Choose an adviser before their initial proposal. Later days begin with yesterday’s direct results and a new adviser choice. The adviser selects the priority, adds attributed context and proposes assignments, then guides events for the day. Their own room resolves automatically; placements and responses elsewhere can be overridden with remembered consequences.
 
 The player can question an explanation, reassure, blame, make a promise or override an action within the chosen adviser interaction. They cannot supply a different priority to that adviser. The adviser dislikes being overruled; every supervisor interprets relevant resolutions through their knowledge, relationships and history. Respect, loyalty and confidence change independently.
 
@@ -1415,37 +1422,45 @@ The Producer Vision supplies the dramatic north star and demand for observabilit
 
 ## Player experience
 
-One factory history, several useful views. The interface must make pressure legible, show consequences as they occur and leave enough uncertainty for the supervisors to matter.
+Build the playable decision interfaces first: choose an adviser, hear their brief, authorize assignments, respond to incidents and commit output. Illustrated factory cameras give those choices a place and show their consequences. A later live 3D factory adds continuous cinematic observation to the same loop.
 
 *Agreed direction · paused planning, continuous shifts, decision pauses*
 
-**Plan while paused.** On day one, show the handover, weekly quota and empty assignments; choose the adviser first. On later days, review yesterday’s facts before choosing. Hear the adviser’s assessment and priority, accept or override their arrangement, then start the shift.
+### Playable interfaces now. Live 3D later.
 
-**Run the shift.** The factory advances on authoritative simulation ticks. Production, movement, wear, stress and information exchange resolve during the shift.
+**Build now: the playable interfaces.** Asset-driven adviser selection, structured comic-style briefings, assignment approval and overrides, incident decisions, daily allocation and debrief. Together with illustrated room views and the simulation, these must carry an enjoyable core loop without a 3D scene.
+
+**Add later: live cinematic factory.** A tick-fed 3D view of workers, machinery, batches and interventions, following the old Sim4/KVP viewer’s world-observation direction. It adds spatial continuity and cinematic feedback; it does not replace the decision interfaces or own the rules.
+
+**Share the same world.** Both layers consume knowledge-filtered state and semantic events and submit commands through the same boundary. No scene, animation, sound or model response can make an unaccepted action true. The prototype remains playable with the 3D view absent.
+
+**Plan while paused.** Land in the paused factory console on day one. Show opening facts, the weekly quota and empty assignments there; choose the adviser first. On later days, review yesterday’s facts before choosing. Hear the adviser’s assessment and priority, accept or override their arrangement, then start the shift.
+
+**Run the shift.** The simulation advances during the shift. In the current prototype, room artwork, readouts, attributed reports, effects and sound communicate committed production, wear and actions. Later, the 3D viewer also shows their continuous spatial execution.
 
 **Pause for a decision.** Events in the chosen adviser’s assigned room resolve automatically under their authority. A response decision elsewhere or at factory level pauses at a defined boundary with their recommendation selected; the player accepts or overrides, then watches the consequences.
 
-**Close the shift.** Review output, losses, commitments and unresolved tensions. Their consequences become the next shift’s starting conditions. Exact end-of-shift decisions remain to design.
+**Close the shift.** Review output and known losses, preview the factory/quota split and confirm its permanent effect. Carry commitments, condition and supervisor reactions into the debrief. Payment timing and additional settlement actions remain open.
 
 ### Three views of one history
 
-**Room overview.** Six art-led rooms show assignments, operating conditions, warnings and available interventions. This is the clearest place to compare competing needs. Locked rooms reveal progressively.
+**Illustrated room overview · now.** Six room positions establish the factory: Conveyor and Security are available at entry; four bays are sealed. Asset-based camera scenes show permitted activity, assignments and consequences. A focused room and the decision interfaces carry the prototype without a live 3D renderer.
 
-**Animated factory.** A controlled isometric view shows workers, batches, breakdowns, repairs and supervisor interventions in continuous motion. Select an entity or event to inspect the same record used by the room overview.
+**Live 3D factory · later.** A controlled spatial view shows workers, batches, breakdowns and supervisor interventions over authoritative ticks; repair activity appears only when engineering is available. Select a known entity or event to reach the same inspector and decision interfaces.
 
-**Episode and evidence.** A timeline connects a visible incident to earlier warnings, reports and player commitments. The player sees only permitted evidence; the development inspector can expose the full causal trace.
+**Episode and evidence.** A timeline connects visible incidents to earlier warnings, reports and commitments. Illustrated accounts support the first prototype; spatial replays can join later. Player evidence stays knowledge-filtered, while development tools can inspect complete traces.
 
-Switching views keeps the selected room, event and simulation time. Assignments and decisions use the same command path everywhere. No view owns a separate version of production or supervisor behaviour.
+Room scenes, decision interfaces and the later 3D view share room/event identity, committed state and the command path. Switching views preserves context. Closing or disabling a visual layer cannot create a second simulation, lose a pending decision or remove the means to finish the shift.
 
 ### A jam becomes a decision
 
-**Notice.** Later Act 1 example, with Witch available: a known conveyor hazard becomes a jam. The overview flags the room; the animated view shows the halt and response. Unseen events cannot leak through an omniscient camera cut.
+**Notice.** Later Act 1 example, with Witch available: a known conveyor hazard becomes a jam. The illustrated room shows a matching stopped-line scene and a persistent incident entry. The future 3D view can depict the same halt. Neither view may reveal an unseen event through an omniscient cut.
 
 **Understand.** The inspector separates observed damage, prior warnings and a supervisor’s account. Act 1 does not expose hidden loyalty, internal stress scores or true motives.
 
 **Intervene.** If the event belongs to the chosen adviser’s assigned room, their response resolves automatically and is recorded. Otherwise pause for a player response with the adviser’s recommendation selected. A restart, repair or override is validated and recorded; disclosure choices determine who learns what.
 
-**Watch the consequence.** Resume the shift. The repair, lost output, changed behaviour and later reports appear through ordinary factory activity. A later consultation can respond to the supervisor’s experience.
+**Watch the consequence.** Resume the shift. Committed work, lost output and attributed reactions update the room scene, instruments and record. A later consultation can respond to that experience. The future 3D layer animates the same recorded execution; it is not required to understand the consequence.
 
 ### Three clocks
 
@@ -1457,35 +1472,37 @@ Switching views keeps the selected room, event and simulation time. Assignments 
 
 Routine reports belong in the event feed. Reserve decision pauses for a choice that matters now. The exact interrupt rules, manual pause/speed controls and whether a replay pauses a live run remain open.
 
-On mobile, the room overview reflows into readable cards and a focused room. The animated view offers pan, zoom and selection with a reachable inspector. Preserve the full decision loop when motion is reduced or the graphics view is unavailable.
+Keep the complete adviser → plan → incident → allocation loop usable on a phone through focused, asset-driven panels. Preserve the quota, current speaker, affected room and pause state; avoid shrinking a desktop console into unreadable controls. Artwork can crop or use dedicated variants while text and touch targets reflow. The future 3D view needs its own device budget and can be unavailable without blocking play.
 
 ### Migration from the old viewer
 
-**Reuse.** The old PixiJS viewer contains the six-room console, room-card loading, supervisor placement and snapshot/diff reconstruction. A separate renderer already animates agents and camera movement.
+**Sim-sim: reuse the interface direction.** The original Director Console spec and implementation provide six illustrated camera feeds, gunmetal and glass textures, a status plate, resource icon variants, a command deck and focused incident surfaces. Audit and adapt those actual assets and modules before inventing replacements.
 
-**Adapt.** The two renderers use different state models. Give both views the new projection contract; replace exposed Act 1 psychology with permitted evidence and replace the fixed desktop layout with responsive controls.
+**Sim4: reference for the later live view.** The existing Sim4 plugin reconstructs snapshots/diffs; its Pixi scene uses world positions, room bounds, floor selection and interpolated movement. That is an implemented isometric viewer, not an existing finished 3D renderer. Sim5 documents describe broader viewer plans.
 
-**Rebuild selectively.** The six-room scene rebuilds children on state updates. A frequent-tick view should retain scene objects and apply changes. Existing movement smoothing is presentation, not proof of continuous game resolution.
+**Keep accepted mechanics.** Reuse visual language and boundary patterns, not the old fixed desktop layout, exposed Act 1 psychology, token-swapping loop, day-based unlocks or economy. Day one remains unassigned and adviser-first.
 
-**Art coverage.** The current room backdrop loader selects six room cards. The larger supervisor interaction collection needs an explicit semantic mapping; its existence does not mean every state is already wired.
+**Map art to meaning.** Room-card loading and the supervisor interaction archive are sources, not a complete state-to-scene map. Identify room, participants, action, visible outcome and permitted knowledge for each selection. Never show unrelated disaster art merely because it looks dramatic.
 
 ### Art and placeholders
 
-**Preserve the art direction.** Weathered metal, dense machinery, convincing material and light. Use a bounded camera so painted rooms and characters retain their intended perspective.
+**Assets define the interface.** Use authored artwork for almost every visible game element: rooms, supervisors, bezels, plates, controls, resource symbols, meters, dossiers, incident framing and allocation machinery. Begin with sim-sim assets. Native text, semantics and hit areas remain for legibility, keyboard access and responsive layout.
 
-**Give light something to hit.** Use simple real geometry for floors, walls, major machines and occluders. Layer existing artwork where it holds up. A flat, already-lit image cannot automatically produce correct moving shadows or new camera angles.
+**Materials and states belong together.** Prepare coherent normal, hover/focus, pressed, selected, disabled and alarm treatments where meaningful. Preserve perspective, light direction and material scale. Reuse textures and sliced frames rather than stretching a whole painted panel; a generic card with a texture pasted behind it is not the target.
 
-**Use honest placeholders.** Each missing scene has a slot tied to room, participants, action, visible outcome and camera. Show a neutral placeholder with an accurate event description instead of unrelated success or disaster art.
+**Procedure supports the artwork.** Use code for layout, masking, transitions, restrained lighting, glass/noise, indicators and event feedback. These support authored surfaces. A future genuine live 3D scene may render geometry, materials and spatial light procedurally; that exception does not justify replacing the present interface art with generic CSS shapes.
 
-**Generate to actual need.** Cover ordinary work, warnings and incident consequences in the first rooms. Introduce repair scenes with Witch in Part 03. Reuse suitable assets; generate gaps exposed by real trajectories rather than a full Cartesian product.
+**Generate gaps against the loop.** Inventory missing assets by interface role and state. Reuse suitable art, then generate what adviser choice, briefings, incidents and allocation actually require. A clearly marked neutral placeholder with accurate event text is acceptable during development; unrelated art and polished-looking fake outcomes are not.
 
-### Babylon.js for the first animated factory
+**Future 3D: give light geometry.** When building the live view, use real floors, walls, machines and occluders where spatial lighting needs them. Painted images cannot supply arbitrary camera angles or correct moving shadows by themselves. This is future scene work, not a prerequisite for the current playable interfaces.
 
-*Proposed · capability research as of 7 October 2026*
+### Future live 3D view: a renderer candidate, not a prototype dependency
 
-Use Babylon.js for a small, art-directed 3D stage beneath a mostly fixed isometric camera, with HTML/React for the interface. Its integrated lighting, material, particle and inspection tools are a strong fit for the factory’s visual demands. The simulation remains independent.
+*Future research · comparison dated 7 October 2026 · selection unconfirmed*
 
-**Babylon.js 9 — Preferred first scene.** Integrated 3D scene and authoring tools, including the current lighting and Inspector improvements. The attraction is a coherent visual toolset; scene performance still needs measurement. [Official reference](https://www.babylonjs.com/)
+The present prototype uses asset-driven interfaces and illustrated cameras in the existing React application. For the later cinematic factory, Babylon.js remains the first proposed 3D candidate under a controlled camera; Three.js / React Three Fiber is an alternative. Recheck the dated capability research and benchmark representative art before choosing. No 3D framework is selected or required for this interface pass.
+
+**Babylon.js 9 — Future 3D spike candidate.** Integrated 3D scene and authoring tools, including the current lighting and Inspector improvements. The attraction is a coherent visual toolset; scene performance still needs measurement. [Official reference](https://www.babylonjs.com/)
 
 **Three.js + React Three Fiber — Strong alternative.** A flexible 3D scene composed within React. Three supports WebGPU with a WebGL 2 backend fallback; Fiber supports supplying that renderer. Attractive for bespoke scene composition, with effects and addon compatibility to verify. [Official reference](https://r3f.docs.pmnd.rs/api/canvas)
 
@@ -1495,14 +1512,14 @@ Use Babylon.js for a small, art-directed 3D stage beneath a mostly fixed isometr
 
 **Phaser 4 — Lower fit for this brief.** A capable 2D game framework with a new WebGL renderer and lighting system. Our external simulation and spatial lighting favour a rendering-focused 3D choice; Phaser 4’s migration guide lists removal of its former 3D helpers. [Official reference](https://phaser.io/news/2026/04/migrating-from-phaser-3-to-phaser-4-what-you-need-to-know)
 
-This is a recommendation for the concrete viewer, not a commitment of the sim engine. No Loopforge performance comparison has been run. Babylon Lite is not the recommendation; its own documentation describes a younger, WebGPU-only API.
+This dated research is neither an installed stack nor a delivery requirement for the first playable. The old live viewer supplies protocol and observation patterns, not proof of 3D readiness. A later renderer must pass visual and device tests against the same engine contract; no Loopforge renderer benchmark has been run.
 
 Budget the expensive effects around the focal event: a few shadow-casting lights, reusable worker instances, restrained transparent smoke, cached static detail and bounded render resolution. Offer measured quality tiers with the same visual identity. Verify WebGL 2 and WebGPU paths on target devices; neither the API label nor a feature list establishes speed.
 
-### First scene proof
+### Future 3D scene proof
 
 - Build one representative conveyor bay with existing art, proxy geometry, workers, a moving batch and the alarm light. Test source–obstacle–surface alignment and moving reflections before adding more effects.
-- Drive it from a recorded command/state/event fixture. Show the same event in the room overview and animated scene, pause for a decision, then replay without changing the outcome.
+- After the interface prototype is useful on its own, drive the 3D bay from a recorded state/event fixture. Show the same event and identifiers in the illustrated overview and live scene, open the same decision interface, and replay without changing the outcome.
 - Inspect desktop and mobile frame times, memory, initial loading, input response and graphics recovery. Check the busiest credible incident, not an empty demo.
 - Compare a Three.js alternative only if this scene exposes a material limitation. Approve the visual result and device budget before expanding the factory.
 
@@ -1522,7 +1539,7 @@ The engine owns the factory. KVP exposes an explicit view of it. Model services 
 
 **Viewer contract.** Versioned KVP messages: permitted snapshots, ordered diffs, events, decisions and command results.
 
-**Presentation clients.** Room overview, animated factory, replay and developer inspector. They reconstruct and present delivered state.
+**Presentation clients.** Current asset-driven adviser, order, incident, allocation and record interfaces with illustrated rooms; later a live 3D factory and spatial replay. Every client reconstructs permitted state and submits commands through the same boundary.
 
 **Model boundary.** Context requests leave through a separate service contract. Recorded, validated proposals may enter only at specified decision boundaries.
 
@@ -1572,18 +1589,18 @@ A replay is defined by initial state, rules version, random seed and ordered acc
 
 Late responses cannot alter committed history. Requests carry their context revision and admissible boundary; the host records acceptance, rejection or fallback. Slow verbal delivery can arrive later as presentation only when it cannot change the choice or its meaning.
 
-A practical first implementation can use TypeScript for the headless kernel, a separate model adapter service and the web client. Modules and explicit message boundaries are enough initially; this does not require a fleet of microservices. Rust, another viewer or another model service can later replace one side against the same conformance fixtures.
+The first-day build already uses a pure TypeScript kernel, explicit HTTP snapshots/diffs and a React viewer. The current redesign targets asset-driven decision interfaces that carry the loop independently of 3D. A separate model adapter can be added when it earns its place. Later, a live tick-fed 3D client joins against the same versioned semantic contract; spatial data additions require explicit schema evolution. No renderer dependency enters the kernel, and no microservice fleet is required.
 
 ### Boundary checks
 
-- Replay one fixture headlessly and through both visual views; authoritative results match.
+- Now: replay a fixture headlessly and through the illustrated decision interfaces; authoritative results match and the complete loop works without a graphics scene. Later: run the same fixture through the 3D view and compare the same event/command results.
 - Disable or delay the model service; the factory continues with recorded fallback behaviour.
 - Run without a graphics context; production, knowledge and supervisor actions still resolve.
 - Recover a viewer from a fresh snapshot and ordered diffs without changing the run.
 - Verify that an Act 1 client never receives hidden worker statistics or privileged causal traces.
 - Measure visual performance independently from simulation correctness and model quality.
 
-The old Sim4 specification already describes a Rust-aligned kernel, narrative sidecar and integration phase. Current code shows phased scheduling and command buffers, but some integration phases are described as stubs. Preserve the boundary doctrine; do not assume the complete new BDI or live-model pipeline already exists.
+The old Sim4 specification already describes a Rust-aligned kernel, narrative sidecar and integration phase. Current code shows phased scheduling and command buffers, but some integration phases are described as stubs. Preserve the boundary doctrine; do not assume the complete new BDI or live-model pipeline already exists. The working old world viewer is Sim4/KVP feeding a Pixi isometric scene; Sim5’s Web/Godot/Unreal documents are strategy drafts. Preserve their replaceable-viewer doctrine without claiming a finished inherited 3D implementation.
 
 ## Opening rules and what unlocks later
 
@@ -1601,9 +1618,21 @@ The old Sim4 specification already describes a Rust-aligned kernel, narrative si
 
 ## UI structure
 
-Factory is where the work happens. Development changes what the factory can do. Records explain what has happened and what people claim. Contextual panels connect them to the same world, people and decisions.
+One persistent director’s console contains Factory, Development and Records. Build its asset-driven decision interfaces and illustrated room views into a playable core loop now. Add the live tick-fed 3D factory later as another Factory view; the same advisers, commands, incidents and records remain.
 
-*Proposed interface structure · functional diagrams, not game mockups*
+*Agreed delivery direction · asset-driven interfaces first; layouts remain to prototype*
+
+### Where the first shift begins
+
+**Where Enter factory lands.** The main factory console, paused before the first shift. Establish the illustrated room context, with Conveyor and Security available and four bays sealed. Show funds, workforce, equipment condition and weekly quota together. Nobody is assigned.
+
+**First actionable focus.** Choose today’s adviser. LIMEN and STILETTO use expressive art, a short personal pitch and a clear operating tradeoff. The factory stays identifiable around the choice; decorative controls do not compete with it.
+
+**Then the briefing.** Selecting the adviser brings their focused illustrated briefing over the same console. Separate assessment, additional context, priority and proposed assignments. Approval or override changes named people’s work and delegated authority.
+
+**Then release the shift.** Accepted assignments appear in the room view. A physical Start shift control begins operation. Illustrated scenes, facts, reports, sound and bounded effects carry feedback now; the future 3D scene adds continuous spatial execution.
+
+**Context without extra gates.** Fold opening context into the factory and briefing. Do not send the player through a marketing-style welcome screen and a second handover screen before the first real choice. Keep development/debug explanations in author docs or optional settings.
 
 ### Instance and interface hierarchy
 
@@ -1611,7 +1640,7 @@ Factory is where the work happens. Development changes what the factory can do. 
 
 **Interface.** The web director’s console observes the run through KVP and submits commands. Other frontends can use the same engine contract.
 
-**Screen and view.** Factory, Development and Records are navigation destinations. Animated floor and six-room overview are alternative Factory views. A room close-up changes scene focus.
+**Screen and view.** Factory, Development and Records are navigation destinations. The illustrated room overview is the current Factory view; a live 3D floor joins later. A room close-up changes focus without creating another simulation or a separate decision system.
 
 **Context and overlays.** Selection opens an inspector. A decision or consultation opens a focused panel. Modals, popovers and notifications have specific interaction roles; “popup” is not a component type.
 
@@ -1623,7 +1652,7 @@ Factory is where the work happens. Development changes what the factory can do. 
 
 **Clock and decisions.** Show Running, Planning paused, Inspection paused or Decision required. A pending decision remains reachable from every screen.
 
-**System menu.** Resume, save/checkpoint status, sound, motion/accessibility settings and leave session. Entry offers new run or resume; these are outside the three gameplay screens. Storage implementation remains open.
+**System menu.** Sound, motion/accessibility settings and leave session. A future new-run/resume menu can live outside the three gameplay screens once persistence exists. The current first-day playtest reloads into a new run; no extra arrival or handover gate is required.
 
 ### Factory — Operate and intervene
 
@@ -1631,11 +1660,11 @@ The daily adviser choice leads paused planning. During operation, observe their 
 
 #### Workspace
 
-Animated floor ↔ six-room overview
+Illustrated rooms now · live 3D later
 
-- Select room, worker, supervisor or incident
-- Observe flow, condition and current visible activity
-- Focus a room without leaving the Factory screen
+- Asset-based room scenes, known condition and assignments
+- Conveyor + Security available; four bays sealed at entry
+- Future 3D view shares selection, events and decision interfaces
 
 #### Context inspector
 
@@ -1643,17 +1672,17 @@ Animated floor ↔ six-room overview
 - Current assignment or work
 - Available action and known tradeoff
 
-#### Chosen adviser, delegated room and incident feed
+#### Command deck · adviser and current decision
 
-Keep today’s adviser and the room under automatic authority identifiable. Persistent incidents distinguish already resolved actions from recommendations waiting for the player.
+Asset-driven adviser selection and phase controls make the next meaningful action clear. During operation, keep the chosen adviser and delegated room identifiable; distinguish completed actions from recommendations waiting for the player.
 
-Day one: handover → choose adviser → proposed initial assignments → accept or override → start. Later days begin with results. Each day ends with permanent factory/quota allocation; live events follow delegated authority.
+Land paused in the factory → choose adviser → illustrated briefing and initial assignments → accept or override → start. Later days begin with results. End each day with permanent factory/quota allocation and debrief; no live 3D view is needed to complete this loop.
 
 #### Views and panels
 
-**Animated floor.** Continuous machinery, workers and consequential activity. Camera pan/zoom and room focus change presentation only.
+**Illustrated room overview · current scope.** Use existing room and interaction art within physical camera modules. Compare assignments, warnings and known conditions; focus a room for the relevant scene and inspector.
 
-**Six-room overview.** Compare assignments, warnings and operating conditions. The same entity IDs and commands support both views.
+**Live cinematic 3D floor · future scope.** Continuous machinery, workers and consequential activity over authoritative ticks. Shares entity/event IDs, selection and existing decision interfaces. Its arrival adds observation rather than replacing the core loop.
 
 **Room inspector.** Production function, room workforce, equipment and available actions. Parts 01–02 do not show repair controls; Part 03 introduces engineering work. No station staffing interface.
 
@@ -1667,7 +1696,7 @@ Day one: handover → choose adviser → proposed initial assignments → accept
 
 **Clock behaviour.** Planning and the morning briefing are paused. The adviser’s room events resolve automatically during the live shift; response decisions elsewhere pause for acceptance or override. Ordinary selection preserves the clock state.
 
-**Mobile.** Default to a readable focused room or the reflowed room overview. The inspector becomes a bottom sheet or full-height panel; the selected room and clock status remain identifiable.
+**Mobile.** Keep the same complete loop through a readable focused room and asset-driven briefing/decision panels. Reflow live text and touch controls; crop artwork deliberately. Later 3D support is optional for completing every core action, with its own measured mobile budget.
 
 **Engine contract.** Displays permitted snapshots, changes and semantic events. Assignment and operating controls submit commands; acceptance, pending execution and actual outcome are distinct states. Initial assignments are empty. Allocation commands cannot reverse prior commitments, and repair requires an engineer.
 
@@ -1784,11 +1813,11 @@ The author map can show the complete progression. The player sees only discovera
 
 ### Component vocabulary
 
-**HUD.** Persistent status and clock. It orients rather than exposing every engine variable.
+**HUD.** Persistent status and clock presented as authored factory instruments. Live text and accessible labels expose only the facts needed to orient the player.
 
 **Inspector / drawer.** Selection-bound detail and actions. Replaces the prior ordinary selection; does not silently pause or spend resources.
 
-**Focused panel.** Consultation, decision or settlement. May expand on mobile. Its presentation does not determine whether the world is paused.
+**Focused panel.** An asset-driven briefing, incident decision or settlement interface. It can occupy the foreground or expand on mobile; “side interface” describes its role beside the world view, not a mandatory narrow sidebar. Presentation does not decide pause semantics.
 
 **Decision gate.** A gameplay state requiring a choice. The decision panel may be minimized to inspect evidence while the world remains paused.
 
@@ -1830,7 +1859,7 @@ The author map can show the complete progression. The player sees only discovera
 
 **Fund a capability.** Development → project inspector → inspect requirements and shared costs → commit eligible project → active-project state → return to Factory → explicit resume.
 
-**Choose the daily adviser.** Day one: handover and weekly quota with empty assignments → choose adviser → hear their priority and initial arrangement → accept or override → start. On later days, review yesterday first. The adviser then resolves own-room events and recommends responses elsewhere.
+**Choose the daily adviser.** Enter the paused factory with opening facts, weekly quota and empty assignments → choose adviser → illustrated structured briefing → accept or override the initial arrangement → start. Later days begin with yesterday’s results. Their own-room authority and other-room recommendations remain explicit.
 
 **Review a session.** Preview and commit daily output permanently to factory or quota → factual debrief → optional Records inspection → next day with the unchanged commitments. Historical playback never reverses an allocation.
 
@@ -1846,7 +1875,7 @@ The author map can show the complete progression. The player sees only discovera
 
 **Act 2 delegation.** Add floor selection within Factory. The first floor becomes a summary plus exceptions while its simulation continues. New supervisors use the same dossier and assignment structure.
 
-UI state holds selection, camera, open panels and presentation playback. Engine state holds money, workers, projects, consultation usage, decisions and pause reasons. KVP and the separate model contract preserve that boundary across every screen.
+The asset-driven interfaces and future 3D view are clients of one knowledge-filtered simulation. UI state holds selection, camera, open panels and presentation playback. Engine state owns workers, production, beliefs, commitments and decisions. The host enforces admitted timing and pause rules; the current HTTP slice pauses by withholding advance requests. No UI skin, mesh, clip or provider object belongs in canonical state.
 
 ### Open structure decisions
 
@@ -1859,7 +1888,7 @@ UI state holds selection, camera, open panels and presentation playback. Engine 
 
 ## UI and simulation complexity
 
-The interface must make the player’s next decision understandable and interesting. The engine can model deeper beliefs, stress, relationships and feedbacks while the UI reveals the facts, claims, costs and consequences needed to play meaningfully.
+The asset-driven decision interfaces must make the core loop understandable, tangible and enjoyable before the live 3D factory exists. Engine depth, player knowledge, interface load and visual fidelity are separate axes. The later cinematic view enriches observation while preserving the same choices and consequences.
 
 *Agreed separation · proposed interaction contracts*
 
@@ -1870,6 +1899,8 @@ The interface must make the player’s next decision understandable and interest
 **Player agency.** Which interventions are available, whose cooperation they need and when they can take effect. Knowledge does not automatically grant control.
 
 **Interface load.** How much the player must read, compare or operate at once. Group, prioritize and progressively reveal detail without erasing the underlying state.
+
+**Visual fidelity.** Authored art, physical materials, responsive controls, sound and later spatial animation. High visual quality does not require more player chores, more revealed statistics or a more complicated simulation.
 
 True system complexity, revealed information and the effort required to play are different things. Brain 2.0 can reveal more of an existing society without making every hidden variable a gauge. Keep communication as simple as the decision allows, and judge the result by the playing experience.
 
@@ -1889,7 +1920,7 @@ True system complexity, revealed information and the effort required to play are
 
 **Persistent orientation.** Current day and phase, weekly quota progress and deadline, money, workforce counts and foreground issue. Do not reveal repair controls or worker conditioning state before their intended unlocks.
 
-**Factory or room overview.** Spatial work and local condition, supervisor assignment, warnings and current visible activity. Both views select the same entities and events.
+**Illustrated factory overview · now.** Asset-based room scenes, supervisor assignments, visible condition and incident markers ground the decisions. The later live 3D view selects the same known entities and events; it does not replace these interfaces.
 
 **Context inspector.** The selected problem, its known evidence, available actions and relevant history. It expands on demand rather than placing every trait in the main view.
 
@@ -1898,6 +1929,18 @@ True system complexity, revealed information and the effort required to play are
 **Consultation.** A primary daily adviser selection followed by assessment, context, their priority and proposed arrangement. Responses and placement overrides affect relationships. The adviser continues proposing event responses during the shift.
 
 **Debrief and episode.** A compact accomplishment, cost and unresolved thread, with optional causal inspection. A developer view can go deeper than the player’s knowledge permits.
+
+### Assets define the interface
+
+**Factory instruments.** Asset-based status plates, resource symbols and readable meters show day, phase, workforce, money, condition and quota. Labels and changing values stay live text; decorative gauges cannot imply unimplemented sensors.
+
+**Adviser and briefing.** Expressive character artwork and short selection pitches lead to a focused, illustrated conversation. Clearly separated assessment, context, priority and proposed moves read like comic dialogue, not a prose page. Character and material identity persist between selection and briefing.
+
+**Orders and incidents.** Authored controls and scene-specific framing make approval, override, delegated action and a required decision distinct. Press, sound and state acknowledgement reinforce the same commitment; completed automatic actions never look like choices awaiting approval.
+
+**Allocation and debrief.** A physical dispatch/retention interface previews the permanent split and seals it on confirmation. Illustrated aftermath and supervisor reactions connect output to cost. Keep both totals and irreversibility explicit.
+
+**Delivery and accessibility.** Use optimized versioned assets, state variants, reusable sliced frames and bounded effects. Preserve native labels, focus, hit areas, responsive layout, reduced motion and independent sound control. Visual assets are the material system, not a flattened screenshot of the UI.
 
 ### Mechanic to UI to engine
 
@@ -1961,7 +2004,7 @@ True system complexity, revealed information and the effort required to play are
 
 *First playable slice with minimal BDI*
 
-**Player perceives.** The opening handover and weekly quota precede the first adviser choice; later days show yesterday’s hard facts. Briefings distinguish assessment and attributed context from those facts, including any supervisor claim about missing worker conditioning.
+**Player perceives.** The paused factory console shows opening facts and the weekly quota alongside the first adviser choice; later days show yesterday’s hard facts. Briefings separate assessment and attributed context from those facts, including any informed claim about worker conditioning.
 
 **Player can influence.** Choose one adviser for the day. Hear their judgment, ask permitted follow-ups and accept or override placements. During the shift, their own room resolves automatically; accept or override their proposals elsewhere. The player cannot supply a priority to the adviser.
 
@@ -2121,7 +2164,7 @@ True system complexity, revealed information and the effort required to play are
 
 **Projection.** Publish permitted changes, an attributed report and any actionable decision. Private confidence, loyalty and undisclosed knowledge remain off the player stream.
 
-**Presentation.** Both factory views show the same stoppage and its physical progress. A later scene depicts the resulting initiative or dispute, using the event’s participants and outcome.
+**Presentation.** The illustrated camera changes only to art consistent with the recorded stoppage and known participants. Instruments, incident text and audio communicate the consequence. The future 3D view animates that same history through the same interface boundary.
 
 **Next shift.** The consultation can address the incident. A future stop or refusal links back to the stored precedent; the episode inspector can expose that link when the player is allowed to know it.
 
@@ -2154,7 +2197,7 @@ True system complexity, revealed information and the effort required to play are
 ### Playable slice checks
 
 - Implement enough hidden state for one earlier decision to change a later supervisor action. A generic “relationship” score or flavour-only quote does not prove this.
-- Test the same command/event contract through a room view, a minimal animated view and a headless replay. Placeholders are adequate for missing scenes.
+- Complete the adviser → plan → shift → incident → allocation → debrief loop using asset-driven interfaces, illustrated cameras and a headless replay. A live 3D scene is not an acceptance dependency. Later, verify that it reproduces the same fixture and opens the same decision surfaces.
 - Include a safe route, a risk route and one recoverable setback with a visible cost. Use controlled fixtures to exercise branches without forcing them in every run.
 - Check the complete chain: order → physical result → witnessed evidence → interpretation → later intention → new action → player-visible consequence.
 - Add engine state only when it supports a behaviour, consequence, observation or test. Deferring a feature is different from fabricating its history at an unlock.
@@ -2163,7 +2206,7 @@ True system complexity, revealed information and the effort required to play are
 
 ### Legacy and new direction
 
-The old Sim Sim UX and Director Console UI specs are useful sources for the six-room view, phase clarity and tactile art direction. Their short days, swap budget, visible stress/discipline gauges, automated-only worker assignment and permanently sealed Cortex are not adopted by default. The new design uses continuous shifts, progressive rooms and restricted Act 1 knowledge.
+The old Sim Sim Director Console is the visual starting point: illustrated CCTV rooms, textured metal/glass, instrument plates, resource icons and a command deck. Its asset loading and focused interaction patterns deserve direct reuse or adaptation. Its old economy, short days, swap budget, exposed stress/discipline values, fixed desktop layout and permanently sealed Cortex are not adopted. Sim4’s separate Pixi world viewer informs the future tick-fed 3D view; these are distinct sources and delivery layers.
 
 [Original UX](sources/legacy-ux.md) · [Original UI](sources/legacy-ui.md)
 
@@ -2177,7 +2220,7 @@ The old Sim Sim UX and Director Console UI specs are useful sources for the six-
 
 ## The daily adviser decision
 
-Day one begins with the handover, a weekly quota and no assignments. Choose the adviser first; they choose the priority and propose the initial arrangement. Later days begin with yesterday’s results. Their room receives automatic event authority after assignments take effect.
+Day one opens in the paused factory console with opening facts, a weekly quota and no assignments. Choose the adviser first; they choose the priority and propose the initial arrangement. Later days begin with yesterday’s results. Their room receives automatic event authority after assignments take effect.
 
 *Agreed core loop · proposed UI details and model budget*
 
@@ -2215,7 +2258,7 @@ Day one begins with the handover, a weekly quota and no assignments. Choose the 
 
 ### Interface
 
-**Morning hierarchy.** Paused Factory planning opens with the handover and weekly quota, then Choose today’s adviser. No assignments exist until the adviser proposes them and orders are accepted. Later days show Yesterday’s results first; placement controls remain secondary.
+**Morning hierarchy.** Paused Factory planning shows opening facts and the weekly quota alongside Choose today’s adviser. No assignments exist until the adviser proposes them and orders are accepted. Later days show Yesterday’s results first; placement controls remain secondary.
 
 **Choosing with usable evidence.** Each candidate shows a portrait, a short known specialty, a familiar tendency and its usual cost, plus a recent observed example when available. Open a dossier for more. No hidden loyalty scores, omniscient suitability ranking or previews of every candidate’s actual briefing.
 
@@ -2431,7 +2474,7 @@ Authored comparison after all five initial supervisors have arrived and engineer
 
 ### First playable test
 
-First slice: unassigned Limen and Stiletto, Conveyor and Security, the factual handover and weekly quota. Test adviser-first planning, own-room authority, overrides elsewhere and irreversible daily allocation without repair controls. Carry different early histories to Witch’s engineering unlock, and test a supervisor’s earned discovery of missing indoctrination. The owner judges clarity and enjoyment in the actual playable loop.
+First slice: the paused factory console with unassigned Limen and Stiletto, Conveyor and Security, opening facts and the weekly quota. Test adviser-first planning, own-room authority, overrides elsewhere and irreversible daily allocation without repair controls. Carry different early histories to Witch’s engineering unlock, and test a supervisor’s earned discovery of missing indoctrination. The owner judges clarity and enjoyment in the actual playable loop.
 
 ### Open decisions
 
@@ -2446,7 +2489,7 @@ First slice: unassigned Limen and Stiletto, Conveyor and Security, the factual h
 
 Players should understand why they are choosing, what they are authorizing and how to read the result. The simulation can contain much more than the interface reveals. Its depth earns its place by creating decisions and consequences that are enjoyable to play.
 
-**Make the central choice visible.** Day one: handover and weekly quota → choose adviser → hear priority and first arrangement → accept or override → run → permanently allocate output. Later days substitute yesterday’s results for the opening handover.
+**Make the central choice visible.** Land directly in the paused factory console: opening facts and weekly quota → choose adviser → hear priority and first arrangement → accept or override → run → permanently allocate output. Put first-day context in that scene, without separate welcome and handover pages. Later days start with yesterday’s results.
 
 **Say what the action means.** Use concrete labels such as Accept Stiletto’s arrangement or Stop the Brewery for Witch’s repair. Explain the known operational sacrifice and who is being overruled. Avoid vague dialogue stances whose mechanical commitment is impossible to infer.
 
@@ -2458,7 +2501,7 @@ Players should understand why they are choosing, what they are authorizing and h
 
 **Enjoyment is the acceptance criterion.** A readable interface and a consistent simulation are necessary but do not establish that the game is fun. The first end-to-end prototype must be played and judged by the owner; revise the loop around that experience before expanding it for a real audience.
 
-In the first playtest, ask the owner whether choosing an adviser feels consequential, their plan is worth considering, overrides are tempting despite their cost, the factory is enjoyable to watch and the result creates interest in the next day. Observe confusion and unwanted reading or clicking; a complete specification or a passed automated test cannot substitute for that judgement.
+Play the complete loop with the live 3D view absent. Ask whether adviser choice matters, briefings are enjoyable and easy to follow, the plan is worth considering, overrides are tempting despite their cost, feedback feels physical and the result creates interest in another day. The owner rejected the current entrance’s presentation-screen feel; passing checks did not establish visual or play acceptance. Later assess the cinematic view as an improvement to this working loop.
 
 ## Production and population
 
@@ -2665,7 +2708,7 @@ Paused planning, continuous shifts and consequential decision pauses are agreed.
 
 ### Visual scene and device budget
 
-Babylon.js with a controlled isometric stage is the proposed starting point. Validate one representative bay, art/geometry treatment and mobile performance before committing the full factory.
+First prove the asset-driven decision interfaces as a playable loop using sim-sim visual sources. The future 3D view has a separate scene and device budget; Babylon.js is a dated research candidate, not a committed dependency. Validate a representative conveyor bay before expanding it.
 
 ### Session pacing and live interventions
 
@@ -2685,6 +2728,7 @@ The daily adviser choice sets the assessment, priority, arrangement and response
 - The website's current teaching prototype is not the complete game described here. The six alternative prehistories and twenty bridge paintings remain explorations, not established canon.
 - The accident aftermath is now a major Act 1 fork alongside Cathexis. It is likely on many operating paths but must be avoidable through sustained safety; no mastery gate should demand a disaster. BDI will affect actions, extending beyond the old read-only cognitive diagnostic layer.
 - Day one has no inherited assignments. The first adviser proposes them. Quotas are weekly, daily output allocations are permanent, and engineering begins with Witch in Part 03. Earlier repair purchases and station-staffing examples are superseded.
+- 8 October: the current first-day build is a functional baseline, but its entrance and visual treatment were rejected by the owner. The new target lands directly in the paused factory console and uses authored assets across the decision interfaces. Live 3D visualization is a later layer; old welcome/handover gates and a required animated-view prototype are superseded.
 
 ## Concept review questions
 
@@ -2696,6 +2740,7 @@ The daily adviser choice sets the assessment, priority, arrangement and response
 - Can we explain why an outcome happened without making every future outcome predictable?
 - Can a rumour genuinely fail, and can Thrum genuinely help, without either outcome being overridden by a prewritten crisis?
 - Does each proposed arc create a character collision whose competing commitments and causal history can be watched and inspected?
+- Can the asset-driven interface prototype carry an enjoyable, legible core loop without the future live 3D factory, while leaving a clean place for that viewer to join?
 
 ## Source library
 

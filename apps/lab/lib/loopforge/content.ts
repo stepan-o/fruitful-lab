@@ -446,18 +446,22 @@ export const architecture: Chapter[] = [
     title: "Rendering & motion",
     kicker: "One visual language / several possible renderers",
     heading: "The renderer sells the world.\nIt does not own the world.",
-    lead: "Readable HTML, engineered SVG and carefully prepared art make the first factory tangible. A larger scene can earn a different renderer later.",
+    lead: "Asset-driven briefings, orders, incidents and allocation must carry a playable core loop now. A live 3D factory later adds a cinematic view of the same simulation.",
     art: "lanes",
     caption: "Art direction comes before the graphics API",
     exhibit: "factory",
     sections: [
       {
-        title: "Choose against a scene budget",
-        body: "Native layout and SVG keep this console readable and accessible. PixiJS is a candidate for a sprite-heavy 2D factory; Three.js becomes useful when lighting, depth and real 3D matter. Benchmark representative content before migration.",
+        title: "Build the decision interfaces first",
+        body: "Start from the old sim-sim console: illustrated cameras, character art, metal and glass, instrument plates and physical controls. Authored assets define almost every visible game element; native text, hit areas and layout keep them readable and accessible. Enter the paused factory with facts, the weekly quota and unassigned advisers. Briefing, assignments, incidents and permanent allocation must work without a live 3D scene. This is the revised design target; the current entrance has not met owner acceptance.",
+      },
+      {
+        title: "Add the live cinematic view later",
+        body: "The old Sim4/KVP viewer supplies tick-fed isometric observation patterns. The future 3D factory joins the same knowledge-filtered state, events and decision interfaces. Babylon.js remains a research candidate, with Three.js / React Three Fiber an alternative; neither is a committed dependency. Benchmark an actual conveyor bay and mobile workload before selecting. Scene nodes and animation never own game state.",
       },
       {
         title: "Motion is a shared resource",
-        body: "A conveyor has a carrying surface, return path, rollers and supported cargo. Pause when offscreen, hidden or reduced motion is requested. Frame time, decode cost and memory belong in the budget. Experimental WebGPU is not a blanket performance promise.",
+        body: "Use procedural light, transitions, grain and sound to reinforce authored interface materials and confirmed events. The future 3D layer can render continuous machinery and spatial light. Stop offscreen or hidden work, preserve reduced-motion play, and budget frame time, asset decoding and memory. A graphics API name is not a performance guarantee.",
       },
     ],
     principle: "Use new technology when it improves a measured experience.",

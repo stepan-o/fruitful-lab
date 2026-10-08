@@ -19,7 +19,7 @@ describe("Sanctuary business-chain comparison",()=>{
   it("isolates the same game across three routes without losing the selected layer",()=>{
     render(<BusinessChains/>);
     fireEvent.click(screen.getByRole("tab",{name:/Collect & settle/}));
-    fireEvent.change(screen.getByLabelText("Put side by side"),{target:{value:"bg3"}});
+    fireEvent.change(screen.getByLabelText("Put side by side"),{target:{value:"cyberpunk"}});
     const table=within(screen.getByRole("table"));
     expect(table.getAllByRole("rowheader")).toHaveLength(3);
     expect(table.getByText(/Two payments buy two different things/)).toBeVisible();

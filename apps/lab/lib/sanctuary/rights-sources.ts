@@ -1,7 +1,34 @@
 /** Dated, deliberately short verbatim excerpts. Never silently refresh these from live URLs. */
-export const rightsReviewDate = "3 October 2026";
+export const rightsReviewDate = "3 October 2026; Valve and world-building material reviewed 7 October 2026";
 export const bg3Notice = "Sanctuary Economics is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards.";
 export const rightsSources = [
+{
+  "id": "cdpr-fan",
+  "kind": "Publisher policy · conditional",
+  "title": "CD PROJEKT RED — Fan Content Guidelines",
+  "url": "https://www.cdprojektred.com/en/fan-content",
+  "version": "10 December 2020 edition; checked 7 October 2026",
+  "quote": "This is an unofficial fan work and is not approved/endorsed by CD PROJEKT RED",
+  "reading": "The policy permits qualifying screenshot sharing but requires non-commercial use, unofficial identification and separation from other products. The source register records a criticism/review assessment for the Witcher image in this mixed analysis and author-project chapter; it does not claim unrestricted promotional permission."
+},
+{
+  "id": "rockstar-posting",
+  "kind": "Publisher policy · scope exclusion",
+  "title": "Rockstar — Policy on posting copyrighted material",
+  "url": "https://support.rockstargames.com/articles/7bNaeoMFTV0iUDGhStTXvz/policy-on-posting-copyrighted-rockstar-games-material",
+  "version": "10 January 2025 edition; checked 7 October 2026",
+  "quote": "use the material as part of a promotion for a product or service",
+  "reading": "This is excluded from the policy’s definition of non-commercial use. The policy also excludes digital publishing from its fan allowance and reserves removal rights. Our selected RDR2 still uses a separate criticism/review rationale, not policy clearance. It appears with analysis of Rockstar’s work, away from the Loopforge invitation."
+},
+{
+  "id": "ludeon-eula",
+  "kind": "Publisher terms · statutory-rights distinction",
+  "title": "Ludeon — RimWorld EULA",
+  "url": "https://rimworldgame.com/eula/",
+  "version": "7 April 2022 edition; checked 7 October 2026",
+  "quote": "only to the extent that the law applicable to you expressly says",
+  "reading": "The EULA distinguishes statutory exceptions from its conditional, revocable User Content permission, which includes a disclaimer and a licence-back. This selected review screenshot relies on the former assessment. Attribution does not authorize asset extraction, merchandise or use of Ludeon marks as another product’s identity."
+},
   {
     id: "canada-review", kind: "Law · Canada", title: "Copyright Act, section 29.1",
     url: "https://laws-lois.justice.gc.ca/eng/acts/c-42/Section-29.1.html?wbdisable=true",
@@ -37,6 +64,23 @@ export const rightsSources = [
     version: "Guidelines checked 3 October 2026; no revision date displayed",
     quote: "alter a Blizzard logo other than to adjust the overall size of the logo;",
     reading: "This excerpt is an item under ‘Do Not’. The permission is tied to qualifying activity policies and also requires appropriate ownership credits and avoids implied sponsorship. It is not a blanket license for every image. We preserve marks inside cited images; any separately displayed identifying logo needs its own recorded basis. Publisher marks are not our masthead, favicon or product identity.",
+  },
+  {
+    id: "valve-video", kind: "Publisher policy · videos", title: "Valve Video Policy",
+    url: "https://store.steampowered.com/video_policy", version: "Checked 7 October 2026; no revision date displayed",
+    quote: "We encourage our users to make videos using Valve game content",
+    reading: "This policy concerns qualifying videos. It is not a blanket still-image licence. The Half-Life screenshot and Counter-Strike menu in this essay are bounded visual citations for criticism and review, with their actual source and named contributor retained. No game files, textures or music are distributed.",
+  },
+  {
+    id: "steam-marks", kind: "Brand guidance · not a licence", title: "Steam Brand Guidelines, December 2024",
+    url: "https://shared.akamai.steamstatic.com/community_assets/images/steamworks_docs/english/steam_brandGuidelines.pdf", version: "December 2024 edition, page 5; checked 7 October 2026",
+    quote: "Nothing in these guidelines conveys any rights to use any Steam trademarks or logos.",
+    reading: "The marks identify the company and service being analyzed. We retain their official appearance, clear space and attribution, and keep them separate from Sanctuary’s identity. This is an editorial identification rationale, not a claim of a Valve licence, sponsorship or approval. ©2026 Valve Corporation. Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.",
+  },
+  {
+    id: "valve-site", kind: "Website terms · limited grant", title: "Valve Site Terms of Use",
+    url: "https://www.valvesoftware.com/en/legal", version: "Checked 7 October 2026; no revision date displayed", quote: null,
+    reading: "The site’s materials are not offered under a general republication licence. Its restrictions and any applicable contractual obligations are distinct from a context-dependent statutory criticism or review argument. The register records the latter editorial rationale; it does not claim that the site terms cleared these reproductions.",
   },
   {
     id: "vercel", kind: "Hosting procedure", title: "Vercel DMCA Policy",

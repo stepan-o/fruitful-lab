@@ -1,3 +1,5 @@
+import {HistoryScene} from "./DiabloHistory";
+import {historyIds,type HistoryId} from "@/lib/sanctuary/history-ids";
 import { useEffect, useRef, useState } from "react";
 import { artDirection } from "@/lib/sanctuary/art-direction";
 import ScenePlate from "./plates/ScenePlate";
@@ -16,6 +18,7 @@ export default function ChapterScene({
   useEffect(() => {
     if (expanded) dialog.current?.showModal();
   }, [expanded]);
+  if(historyIds.includes(chapter as HistoryId)) return <HistoryScene chapter={chapter as HistoryId}/>;
   const label = art.alt ?? `${art.title} ${art.read}`;
   return (
     <figure className={styles.scene}>

@@ -1,7 +1,13 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { chapters } from "@/lib/sanctuary/content";
 import { artDirection } from "@/lib/sanctuary/art-direction";
+import {HistoryComparison,HistoryScene} from "@/components/sanctuary/DiabloHistory";
+import {historyIds,type HistoryId} from "@/lib/sanctuary/history-ids";
+import WorldWorkshop from "@/components/sanctuary/WorldWorkshop";
 import ChapterDiagram from "@/components/sanctuary/ChapterDiagram";
+import CompanyEvolution, {type CompanyChapter} from "@/components/sanctuary/CompanyEvolution";
+import BusinessChains from "@/components/sanctuary/BusinessChains";
+import BusinessCircuit from "@/components/sanctuary/BusinessCircuit";
 import BusinessMap from "@/components/sanctuary/BusinessMap";
 import EveningPlace from "@/components/sanctuary/plates/EveningPlace";
 import ChapterScene from "@/components/sanctuary/ChapterScene";
@@ -31,6 +37,19 @@ describe("Sanctuary exhibits", () => {
       chapters.map((c) => c.id).sort(),
     );
     for (const [index, c] of chapters.entries()) {
+      if(historyIds.includes(c.id as HistoryId)){
+        const {container,unmount}=render(<><HistoryScene chapter={c.id as HistoryId}/><HistoryComparison chapter={c.id as HistoryId}/></>);
+        expect(container.querySelector("svg")).not.toBeNull();
+        expect(screen.getByRole("group",{name:"Compare Diablo history"})).toBeVisible();
+        expect(container.querySelector("img,video,audio,image")).toBeNull();
+        unmount();continue;
+      }
+      if(["valve-platform","epic-infrastructure","rockstar-world","platform-business","cloud-gaming","making-worlds"].includes(c.id)){
+        const {container,unmount}=render(c.id==="making-worlds"?<WorldWorkshop/>:c.id==="platform-business"?<BusinessChains/>:c.id==="cloud-gaming"?<BusinessCircuit cloudOnly/>:<CompanyEvolution chapter={c.id as CompanyChapter}/>);
+        expect(container.querySelector("img,video,audio,image")).toBeNull();
+        expect(screen.getAllByRole(c.id==="platform-business"?"tab":"button").length).toBeGreaterThan(1);
+        unmount();continue;
+      }
       if(c.id==="insert-coin" || c.id==="studio-to-screen" || c.id==="how-many-lives") {
         const {container,unmount}=render(c.id==="insert-coin"?<EveningPlace opening/>:c.id==="studio-to-screen"?<BusinessMap/>:<ChapterDiagram chapter={c.id} index={index} diagram={c.visual.diagram}/>);
         expect(container.querySelector("svg")).not.toBeNull();
@@ -157,7 +176,7 @@ describe("Sanctuary exhibits", () => {
     ).toBeVisible();
     expect(screen.getByText("UNCHANGED")).toBeVisible();
     fireEvent.click(
-      screen.getByRole("button", { name: "Collection", exact: true }),
+      screen.getByRole("button", { name: "Collection" }),
     );
     expect(
       screen.getByText(/This belongs in a collection I care about/),

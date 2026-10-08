@@ -1,8 +1,20 @@
 /** Recognition comes from a game's design vocabulary, never traced publisher art. */
 export const artDirection: Record<
   string,
-  { title: string; reference?: string; read: string; motifs?: string[]; alt?: string }
+  {
+ title: string; reference?: string; read: string; motifs?: string[]; alt?: string }
 > = {
+"several-histories":{"title": "A dungeon within reach", "read": "The original game combines a directed descent with changing encounters and equipment.", "reference": "Diablo · a history of play and production", "alt": "A dungeon within reach. An original isometric engraving of the historical relationship, not a game screenshot."},
+"diablo-second-life":{"title": "The road can be travelled again", "read": "An authored journey can sustain many builds and a shared restart without selling another run.", "reference": "Diablo · a history of play and production", "alt": "The road can be travelled again. An original isometric engraving of the historical relationship, not a game screenshot."},
+"diablo-market":{"title": "Two routes to the same equipment", "read": "A market can supply equipment while weakening the activity that made obtaining it satisfying.", "reference": "Diablo · a history of play and production", "alt": "Two routes to the same equipment. An original isometric engraving of the historical relationship, not a game screenshot."},
+"diablo-service":{"title": "An adventure, and a production calendar", "read": "The campaign belongs to a larger program of seasons, expansions, services and optional offers.", "reference": "Diablo · a history of play and production", "alt": "An adventure, and a production calendar. An original isometric engraving of the historical relationship, not a game screenshot."},
+
+  "making-worlds": {title:"The work of making a world",read:"Specific visual citations lead to an original instrument separating simulated consequences from a character’s account."},
+  "platform-business": {title:"The work behind the offer",read:"Follow production, rights and settlement through different entertainment businesses."},
+  "cloud-gaming": {title:"A game you own, a machine you hire",read:"Cloud streaming changes who supplies computing while the supported game purchase remains separate."},
+  "valve-platform": {title:"Valve: the studio becomes the store",read:"One company can supply several different parts of the evening. Select a role to follow the relationship."},
+  "epic-infrastructure": {title:"Epic: selling the means to make and sell",read:"One company can supply several different parts of the evening. Select a role to follow the relationship."},
+  "rockstar-world": {title:"Rockstar: a release becomes a world",read:"One company can supply several different parts of the evening. Select a role to follow the relationship."},
   "studio-to-screen": {title:"From work to play",read:"Production, permission, distribution and operation connect a creative work with its audience. The paths represent roles, not measured cash flows."},
   "how-many-lives": {title:"The coin slot and the dungeon",read:"The cabinet holds a paid adventure and the controls that shape it."},
   "insert-coin": {
@@ -26,16 +38,6 @@ export const artDirection: Record<
     reference: "Diablo IV · campaign and seasons",
     read: "The campaign gives an adventure a resolution; a season gathers players around a fresh set of possibilities. Both belong to Diablo IV, and a seasonal character can follow the campaign. Their overlap raises the next question: which parts of an earlier adventure accompany the player into a new one?",
     alt: "An engraved diptych. A traveler follows a mountain road toward a sunlit gate; several travelers inhabit a city encircled by a returning path.",
-  },
-  "several-histories": {
-    title: "The arcade never really closed",
-    reference: "Gauntlet, TF2, Dota 2, Crossy Road · selected history",
-    read: "Coin slot, equipment shop, tournament book and optional screen occupy the same crooked arcade.",
-    motifs: [
-      "Coin-operated cabinet",
-      "Operator switches",
-      "Coexisting payment mechanisms",
-    ],
   },
   concord: {
     title: "The arena needs somebody else",

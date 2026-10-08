@@ -1,3 +1,37 @@
+## 7 October: hold the cloud game fixed
+
+The overview’s Cloud play tab uses Forza Horizon 5 in both access modes:
+Steam purchase or PC Game Pass catalog membership, each run through GeForce NOW.
+Playground Games, Xbox Game Studios, the cloud provider and its computing fee
+remain fixed. Only the access service and related funding/readouts change.
+NVIDIA documents both routes; Steam confirms the title’s production credits.
+The dedicated cloud chapter retains its separate Cyberpunk local/cloud
+comparison, where the store purchase remains fixed and computing changes.
+No account, licence or save-progress transfer is implied by the selector.
+
+Cyberpunk was not retained for the overview toggle because its announced Game
+Pass inclusion covers Xbox console and Xbox Cloud Gaming, not PC Game Pass.
+That entitlement does not provide a PC copy for NVIDIA. Comparing its purchased
+PC copy with its catalog offer would also change the computing provider.
+Source: [Xbox’s 3 March 2026 announcement](https://news.xbox.com/en-us/2026/03/03/xbox-game-pass-march-2026-wave-1/),
+read alongside NVIDIA’s PC entitlement rules linked below.
+
+Sources: [NVIDIA’s Forza announcement](https://blogs.nvidia.com/blog/geforce-now-thursday-forza-horizon/),
+[current PC Game Pass support](https://nvidia.custhelp.com/app/answers/detail/a_id/5462/kw/basics),
+[Steam title and credits](https://store.steampowered.com/app/1551360/Forza_Horizon_5/).
+Checked 7 October 2026. No new media; existing original racing art is reused.
+
+## 6 October: publisher and act split
+
+Current narrative authority: [Business act](BUSINESS_ACT.md). The overview now
+contains this circuit and four paragraphs. The seven-layer detail, comparison
+table and source-backed charts move into dedicated platform/cloud chapters.
+The PC purchase route has five participants and four exchanges; all linked
+selection mechanisms highlight both endpoints. Rockstar development funding
+is internal, not an assumed independent royalty contract. On small screens,
+five participants become legible cards with explicit relationship labels.
+Original planning, release, store and player scenes use the same projection.
+
 # The businesses behind an evening of play
 
 5 October 2026. Chapter 2, `studio-to-screen`. Local visual revision following
@@ -11,7 +45,7 @@ which work, who receives a payment, and what each business needs to sell next.
 Equipment location alone cannot carry the chapter’s argument.
 
 Four selected arrangements share a stage. The arcade comes first, continuing
-chapter 1. PC purchase and cloud play keep Larian’s game and Steam distribution
+chapter 1. PC purchase and cloud play keep Cyberpunk 2077 and Steam distribution
 constant. Netflix offers a cross-industry comparison. This is not a chronology
 in which one model replaces another.
 
@@ -50,7 +84,7 @@ disclosure below the opening illustration.
   https://elibrary.arcade-museum.com/magazines/pm/PlayMeter-1984-11-01/PlayMeter-1984-11-01-042.pdf
   Betson documents the same distinction in current operation:
   https://www.betson.com/are-arcades-profitable/
-- PC: Larian’s official Steam listing establishes developer and publisher;
+- PC: Cyberpunk 2077’s official Steam listing establishes developer and publisher;
   Steam’s reporting/payment documentation defines settlement. Private royalty
   or store-share percentages are not inferred.
 - Cloud: Valve’s Cloud Play documentation preserves the game purchase and
@@ -530,3 +564,395 @@ range and less than 0.05 CSS pixel of grip-to-stick separation. The 390px phone
 view has no overflow; no console warnings/errors were captured. Normal viewport
 was restored and localhost:3106 refreshed. Evidence: `short-arm-strokes-desktop.png`
 and `short-arm-strokes-phone.png` in the task's business-circuit output folder.
+
+### PC purchase — scene craft pass (6 October)
+
+The PC purchase arrangement receives four distinct compositions while retaining
+its selected supply/payment relationships. The same Larian and Steam scenes are
+also used in Cloud play, where those businesses and the game purchase remain
+constant. The cloud player’s existing monitor now uses the same original game
+scenery too. The purchased-PC room has its own `pc-home` scene key, so its local
+tower is not silently added to the cloud receiving-device illustration.
+
+**Larian / production.** A seated artist faces an editor viewport. A large concept
+sheet, a branching design board and a strip of storyboard panels establish the
+work surrounding the image on screen. Paper, a pencil and a mug sit on a supported
+desk. The screen combines original fantasy scenery with editing guides and a
+cursor; selection makes the cursor's travel and wireframe overlay more visible.
+The rear-facing head and short keyboard/mouse gestures keep the person directed
+toward the work. There is no claim to depict a particular Larian office or tool.
+
+**Steam / distribution.** The store is an illustrated digital service, not another
+desk or a purported Valve office. An original storefront has featured scenery,
+three distinct miniature covers, navigation, a purchase affordance and a separate
+download strip. Three delivery bays sit beneath the display. Selection brightens
+the featured work and runs the download indicator; idle movement is limited.
+This separates finding/buying a copy from the machinery delivering it. Neither
+the drawn interface nor its invented catalog is represented as Steam's exact UI.
+
+**PC supplier / equipment.** A technician works on a motherboard beside an open
+case on an assembly bench. The case has a frame, front fans, a side motherboard,
+expansion card, cable and mounting feet. Tools hang from a pegboard; a taped carton
+on the floor suggests the separate physical sale. The screwdriver turns about its
+contact point, while the chassis stays still. Selection increases tool activity
+and fan speed. These illustrate assembly and testing, not a specific manufacturer,
+benchmark or measured relationship between load and rotation speed.
+
+**Player / use.** The same fantasy scene now fills a game viewport in a domestic
+room. A rear-facing seated player uses a keyboard and mouse; headphones, a rug,
+small task lamp, framed print, plant and night window distinguish the home from
+production. A normally sized tower sits beneath the desk. Head turns and finger
+taps are bounded; the cursor, tiny screen fire and slowly drifting shaped clouds
+carry most of the life. Selecting the player increases activity without rocking
+the entire body or moving the surrounding reading surface.
+
+**References and limits.** Visual construction follows this document's approved
+arcade rooms and the journey/world diptych: one projection, dark teal recesses,
+brass edges, restrained paper/wood colors and small warm lights. The existing
+Steam product and settlement sources above establish the business roles; the
+geometry supplies an original illustration of them. Concept drawings, cover art,
+room details and screen scenery are invented. No photograph, publisher screenshot,
+logo, asset download or external font was added. Public provenance and prose do
+not need another explanation of the visible artwork.
+
+**Motion and delivery.** New activity uses CSS transforms/opacity beneath the
+existing `useLivingPlate` gate. Selection changes shared room variables; there
+is no JavaScript frame loop, animated filter, new dependency or recurring fetch.
+Still states preserve each composition. Both desktop and mobile instances inherit
+manual pause, offscreen/document visibility and reduced-motion behavior.
+
+Validation: scoped ESLint, 13 circuit/lifecycle tests and the production build
+passed; all 12 retained asset releases verified. The initial build caught a
+chair-foot tuple typing error, corrected before the successful final build.
+Desktop plus 320, 390 and 768px viewport checks found no page overflow. Visible
+phone controls meet the existing 44px minimum. Keyboard focus previews the correct
+pair, and manual pause removes all scene animation. The existing lifecycle tests
+cover reduced motion and visibility; OS preference emulation was not performed.
+
+Twelve browser samples over 7.78 seconds verified distinct editing/download poses
+and restrained unselected activity. Three further production screenshots across
+3.89 seconds show the selected assembly and player gestures. The hidden desktop
+copy has no running animations on phones, and the hidden mobile copy has none on
+desktop. Browser warnings/errors were empty. Normal viewport and motion-on state
+were restored; the production preview is running on localhost:3106.
+
+The production chunk containing this instrument, its data and the retained
+business-layer explanations is 79,016 bytes / 24,136 bytes gzip. This is the whole
+chunk, not an incremental payload or field speed measurement. No runtime media
+was added; field performance remains unmeasured.
+
+Evidence in the task workspace’s `outputs/sanctuary-business-circuit/`:
+`pc-scenes-desktop.png`, `pc-scenes-phone.png`, `pc-motion-samples.json`,
+`pc-focus-samples.json`, and `pc-selected-frame-{0,1,2}.png`. This pass remains
+local for visual review.
+
+
+### Participant roles, recognizable stores and active play (6 October)
+
+This revision supersedes the PC craft-pass descriptions above where they differ.
+The participant title has a separate business-role field, visible in each room
+caption and detail heading, and included in the supply/payment endpoint labels
+and accessible names. This applies to Arcade, PC purchase, Cloud play and Netflix.
+The action beneath the name still explains what that participant does.
+
+The opening now uses **Cyberpunk 2077** throughout chapter 2’s diagram, prose,
+seven-layer disclosure and three-route comparison. Its first diagram caption
+introduces it as a futuristic action adventure. CD PROJEKT RED is labeled as the
+studio; Steam as the storefront; the PC store as the retailer; and the player as
+the customer. Valve is introduced in the operating explanation, not the title.
+The BG3 promotional figure is removed from this chapter; BG3’s later comparison
+and its other assets remain in place. One bounded official Night City gallery image replaces it through the existing
+context asset pack; its public source/use record explains its analytical role. A license’s role is explained using the chapter’s Dune adaptation
+example, without inventing a current Cyberpunk royalty arrangement.
+
+Sources checked for the substitution:
+
+- [Steam listing](https://store.steampowered.com/app/1091500/Cyberpunk_2077/)
+  identifies the game, developer and publisher.
+- [NVIDIA’s launch support](https://www.nvidia.com/en-gb/geforce/news/cyberpunk-2077-rtx-dlss-out-now/)
+  explicitly includes Steam copies alongside GOG and Epic.
+- [NVIDIA’s March 2026 notice](https://blogs.nvidia.com/blog/geforce-now-thursday-virtual-reality-update/)
+  excludes Cyberpunk from basic/free rigs from 1 April 2026. The final chapter
+  paragraph now distinguishes this from the general fallback after premium hours.
+- [PlayStation’s listing](https://store.playstation.com/en-us/product/UP4497-PPSA03974_00-0000000000000CP1/)
+  identifies one-player use and distinct purchase/catalog offers. The previous
+  BG3 multiplayer condition was not carried into the replacement.
+
+**Steam.** A floating browser page replaces the room and equipment console.
+Browser chrome, an address bar, navigation, search, featured game, cover tiles
+and an Add to cart affordance identify a website. Original city scenery provides
+a genre reference for the featured game; no game screenshot, Steam logo or exact
+interface is reproduced. The name and address identify the analyzed storefront.
+Selection brightens the featured panel and animates the small delivery strip.
+The page is an illustrative arrangement, not a recorded price or current UI.
+
+**Equipment retail.** Display monitors and a laptop, a modest desktop tower,
+boxed stock and a counter with a payment terminal identify a computer store.
+There is no technician, hand assembly or oversized cooler. The role is retail:
+it pays for stock, premises, staff and support and earns on equipment sales.
+Consoles can occupy the equivalent hardware layer, but this selected route buys
+a PC; Sony and Microsoft’s additional platform roles are explained separately.
+
+**Player.** The seated body remains stable. One elbow is the pivot for a short
+mouse gesture; the forearm, hand and mouse are in the same transform group so
+contact cannot drift apart. Rain streaks pass behind a clipped window pane;
+the room and frame remain dry. Two staggered screen-local explosions grow,
+throw a few flecks and cool out, with long quiet gaps. The original city scene
+is shared between the editing viewport, store, local play and cloud screen.
+It is a genre illustration, not claimed gameplay footage.
+
+Motion strength follows selection. Rain, mouse travel and screen bursts remain
+quiet at rest, stop with the existing visibility/motion gate and respect reduced
+motion. All new animation uses transforms and opacity. No per-frame React state,
+animated filter, external font or dependency is introduced. The one gallery image
+is lazy loaded in three hashed WebP sizes; it is not part of the animated SVG.
+
+**Verification.** Focused circuit, chain, living-plate, exhibit and visual-source
+checks passed (5 suites, 29 tests), along with lint and the production build.
+The asset check retained all 13 releases. The Night City derivatives are 14,046,
+42,888 and 109,820 bytes. Browser review covered desktop, 320/390 px phones and
+768 px tablet layout, selected/idle motion, the global motion pause, source
+credits and image enlargement. Wider spacing between branched supply lanes
+keeps long role labels separate on tablets. Local preview remains on port 3106.
+
+**Player furniture refinement (6 October).** The small desk lamp now stands
+clear of the monitor, with a rounded shade, articulated arm and weighted base.
+The player has a racing-style bucket chair: high back, shoulder wings, headrest
+openings, restrained rust upholstery, stitched bolsters, armrests and a five-leg
+caster base. The studio keeps its ordinary office chair. Both refinements are
+static geometry and add no animation work or media requests.
+Rain is clipped to the exposed glass beneath the raised blind; the blind has an
+opaque backing and is drawn in front of the weather. The sill and frame remain dry.
+
+### Selected PC scene activity — 6 October 2026
+
+The spotlight now reveals a distinct, larger action in each PC scene. It is
+triggered by the same participant, delivery and payment selection state, including
+both ends of an exchange. Bodies and furniture keep their established geometry.
+
+- Studio: the editing playhead scrubs forward, backs up for a revision, and
+  resumes. Review panels on the wall take turns lighting; the work screen spills
+  a little light onto the desk. The original coastal driving scene also carries
+  the editing wireframe, matching the other game's editing viewport.
+- Publisher: staggered schedule bars fill beneath a moving date marker, then the
+  campaign proof lights and its review marks appear. This is an illustrative
+  release workflow, not a representation of a company's internal software.
+- Storefront: the cursor moves from browsing to Add to cart; the button responds,
+  the delivery bar fills, and a completion mark appears. The sequence is confined
+  to the original website illustration. It does not depict current purchase UI
+  or a measured download speed.
+- Equipment retailer: showroom displays alternate their emphasis while running
+  original demo scenes; the counter terminal briefly confirms a transaction.
+- Player: road markings approach in perspective and the car makes a modest lane
+  correction. Screen action casts a brief warm reflection across the desk. The
+  existing connected mouse gesture and rain remain; no extra torso movement.
+
+All new motion uses SVG with CSS transforms and opacity, without new media,
+filters, runtime dependencies or per-frame React state. The large actions exist
+only while highlighted; clearing the spotlight restores the complete static
+composition. Offscreen/document-hidden scenes and the global motion preference
+pause playback. OS reduced motion disables it, and responsive hidden duplicates
+remain non-animated. These are visual illustrations, not measured process times.
+
+Validation for this pass: lint, all 59 suites / 279 tests, asset checks and the
+production build passed. The rebuilt local route returns HTTP 200. Final browser
+motion sampling could not be completed: the in-app browser control connection
+repeatedly timed out on both the existing tab and a fresh tab. Desktop/mobile
+motion and screenshot review remain unverified for this pass.
+
+
+## 6 October: console routes replace the self-publishing comparison
+
+The overview now offers Arcade, PC purchase, Xbox, PlayStation, Cloud play and
+Netflix (console tabs moved directly after PC purchase on 7 October 2026). Separate development/publishing boxes identify work, not a claim that
+the two companies are independent. The dedicated cloud chapter keeps its
+Cyberpunk local-versus-GeForce NOW comparison; it has no console tabs.
+
+Xbox follows Forza Horizon 5: Playground Games develops, Xbox Game Studios
+publishes, Game Pass supplies catalog access/downloads, a retailer sells the
+console, and the subscriber plays on their Xbox. PlayStation follows Spider-Man
+2: Insomniac develops, Sony publishes, PlayStation Store sells/delivers, a retailer
+sells the console, and the customer plays on PS5. Studio, publisher and platform
+are internal to Microsoft/Sony respectively. No private allocation, royalty or
+store commission within either group is inferred.
+
+The interface names access and computing separately. Both console tabs have
+visible, source-linked cloud alternatives. Buying versus subscribing does not
+determine where a game runs. These specific routes are checked against official
+US product offers on 6 October 2026, not a universal catalog or plan comparison.
+
+### Original console artwork
+
+- Studios retain the development desk and editing timeline. A miniature hill
+  road/racing car or a city/rope-swing scene identifies the selected genre.
+- Publishers retain a release schedule and campaign proof, with matching
+  original genre art. Neither workplace is a reconstruction of a real office.
+- The Game Pass and PlayStation Store panels are simplified website
+  illustrations, with distinct install/buy actions and selection-gated delivery
+  animation. Official sites inform the business role, not an exact UI trace.
+- Console stores use demonstration shelves, two product silhouettes, a gamepad,
+  boxed hardware and a checkout counter. Series X top vents and PS5 pale curved
+  plates make equipment recognizable in Sanctuary’s brass/teal material system.
+- Console players sit on a sofa facing a wall television; short forearms meet a
+  controller. Screen motion, thumb taps, indicator lights and rain enliven the
+  selected room. Genre scenes are original geometry, not official game art.
+
+References are carried by console-business-circuits.ts: Xbox’s Forza, Game Pass
+and Series X pages; Microsoft acquisition history; PlayStation’s Spider-Man 2
+product/store and PS5 pages; Sony’s Insomniac acquisition announcement; the
+official Xbox Cloud Gaming and PlayStation cloud-streaming explainers. These
+support product identification and business roles. They are not asset licences
+or evidence of any private revenue allocation. No proprietary raster asset is
+added by this pass.
+
+The two new five-party arrangements inherit paired endpoint highlights, keyboard
+controls and the mobile card layout. Screens animate with transform/opacity CSS;
+useLivingPlate pauses motion offscreen/hidden and respects global/OS preferences.
+Hidden responsive duplicates remain animation-free. No new animation loop,
+image download, runtime library or external font is introduced.
+
+### Console revision validation
+
+Full frontend CI passed: 59 suites / 282 tests, asset-pipeline tests, validation
+of 14 retained media releases, and the production build. ESLint and diff checks
+passed. Tests cover every supply/payment endpoint pair on Xbox and PlayStation,
+access-versus-compute labels, visible cloud references, and the two-route
+Cyberpunk-only comparison. The local production preview was rebuilt/restarted.
+
+All ten new/reused console vignettes were rendered directly from the SVG component
+and inspected in a static contact sheet at
+`outputs/sanctuary-business-circuit/console-art-still.png` in the task workspace.
+This is artwork inspection, not a browser screenshot or animation verification.
+The in-app browser inspection connection continued to time out on both the
+existing tab and a fresh tab, so final responsive layout and live motion checks
+for this console revision remain unverified. No claim of measured Web Vitals.
+
+
+### Access and computing revision — 7 October 2026
+
+The main order is Arcade, PC purchase, PlayStation, Xbox, Cloud play, Netflix.
+Within Cloud play, Purchased game is the initial selection. Catalog membership
+switches to supported Forza Horizon 5 via PC Game Pass + paid GeForce NOW.
+A route switch resets both this sub-selection and the highlighted payment, so
+five-party selections cannot leak into four-party routes. The dedicated cloud
+chapter keeps its original same-game Cyberpunk local/remote comparison.
+
+PlayStation has its own original storefront composition, referenced against
+`https://store.playstation.com/en-us/pages/latest` on 7 October 2026: light layered
+navigation, wide hero, separate title/action strip and game cards. Steam retains
+its dark compact storefront. These are analytical miniatures, not live storefronts
+or captured offers. Existing selection, viewport and reduced-motion gates apply.
+
+
+### Comparable role descriptions — 7 October 2026
+
+`business-role-copy.ts` supplies shared role, pays, earns and next descriptions
+for the four video-game routes and their local/cloud variants. Identical roles
+use identical wording: group-funded studios, purchase-funded publishers,
+hardware retailers, storefront operations and the player's reason to return.
+The combined studio/publisher retains both responsibilities in one box.
+
+Differences in catalog revenue, store ownership, purchased versus catalog
+access, and owned versus rented computing remain explicit. Company/game names,
+route examples, transaction explanations and source limits retain their context.
+This is an editorial consistency rule: a wording difference should indicate a
+business difference, rather than variation for its own sake. Arcade and Netflix
+are unchanged. No illustration, selection, payment-routing or media contract
+changed. The chapter 2 edit also reaches the dedicated same-game cloud comparison
+through the shared records.
+
+Validation for this copy pass: edited data modules passed ESLint; all 16
+existing circuit tests passed; asset integrity and production build passed.
+Browser checked the studio and player readouts across all four game tabs, plus
+the longest cloud-player copy at 390px without horizontal page overflow. Normal
+viewport restored; no browser errors observed. Preview refreshed on port 3106.
+
+
+### Cloud access and computing correction — 7 October 2026
+
+All game arrangements now retain five roles: studio, publisher, store/catalog,
+computing supplier and player. CD PROJEKT RED appears as both studio and
+publisher, with a clear same-business funding explanation. The local Cyberpunk
+comparison retains those roles; the catalog cloud version retains Playground
+Games and Xbox Game Studios separately. This supersedes the earlier combined
+studio/publisher and four-box cloud descriptions above.
+
+The former Steam → NVIDIA “Supported store copy” edge mixed a technical
+integration with a customer offer and misleadingly implied resale. It is removed.
+Steam → player supplies game access; NVIDIA → player supplies remote computing.
+The player pays each separately. PC Game Pass catalog access follows the same
+two-branch structure. Developer opt-in, account sign-in and supported-game
+conditions remain in the source/limits explanation, not a fictitious sale edge.
+
+The upper route layout now derives its raised branch from the actual endpoints,
+including both cloud modes. Payment defaults use each model's declared selection.
+Paired highlights therefore illuminate Steam + player for game access and NVIDIA
++ player for computing. Tests cover both sides and switching catalog/purchase.
+
+Verified against [Valve Cloud Play](https://partner.steamgames.com/doc/features/cloudgaming)
+(purchases and publisher payouts unchanged) and
+[NVIDIA FAQ](https://www.nvidia.com/en-us/geforce-now/faq/)
+(games accessed through stores; ownership verified by sign-in). No private
+provider/publisher payment is inferred. Existing scene artwork and motion gates
+are reused; no media bytes, dependencies or new continuous effects were added.
+
+Validation for this correction: focused circuit suite passed (17 tests); scoped ESLint passed; asset checks and production build passed. Rebuilt and restarted the local preview on port 3106. Browser inspection confirmed separate game-access and computing branches, the corresponding participant highlights, and the five roles in both purchased-game and catalog cloud routes. At 390 × 844, the labels stack without horizontal overflow. Screenshot: `/home/stpn/Documents/Codex/outputs/sanctuary-worlds/cloud-direct-access.jpg`. Local review only; no commit, push or PR.
+
+
+## Console purchase and catalog alternatives — 7 October 2026
+
+PlayStation and Xbox now have the same Game access selector as Cloud play.
+Spider-Man 2 remains fixed across PlayStation Store purchase / PlayStation Plus
+Extra catalog download; Forza Horizon 5 remains fixed across Xbox Store purchase /
+Game Pass download. The console is owned hardware in both modes. Studio,
+publisher and hardware roles remain fixed; publisher income, access provider,
+player terms, supply labels and payment explanations change with the offer.
+The miniature storefront switches its identity and action to match.
+
+Catalog access lasts while membership is active and the game remains included.
+Availability is title-, tier- and region-specific. Neither selector implies that
+every game is in a subscription catalog. Forza's purchase retains separate
+online-console-multiplayer requirements. Sony's Extra example uses a download;
+the existing cloud link describes a different computing route. Internal content
+funding is schematic, not an invented per-session royalty or transfer price.
+
+Sources checked 7 October 2026:
+- Sony's [US Spider-Man 2 listing](https://store.playstation.com/en-us/concept/10002456)
+  offers purchase and PlayStation Plus Extra Game Catalog access.
+- Microsoft's [Forza Horizon 5 page](https://www.xbox.com/en-US/games/forza-horizon-5)
+  offers an individual purchase and inclusion in Game Pass, with console online
+  multiplayer terms stated separately.
+
+Tab order is preserved. As of 8 October, PlayStation, Xbox and Cloud play all
+start with Purchased game. Changing tabs resets to that common comparison point;
+Catalog membership is an explicit alternative on each. Dedicated Cyberpunk
+local/cloud comparison remains focused on the purchased game. Assets and gated
+animation geometry are reused; no continuous work or media is added.
+
+Validation: 20 circuit tests passed; scoped ESLint, asset checks and production build passed. Browser verified both console access modes, keyboard activation, and 320/390/768-pixel layouts without horizontal overflow; access buttons remain at least 44 pixels tall. Store artwork and payment explanations switch with the offer. React review: static variant data, derived active model, memoized scene reuse, no added effects, requests or animation loops. Preview rebuilt on port 3106. Screenshots: `/home/stpn/Documents/Codex/outputs/sanctuary-worlds/console-access-desktop.jpg` and `console-access-mobile.jpg` in the same folder. Local review only; no commit, push or PR.
+
+Terminology correction (7 October 2026): use “Published release” for the publisher-to-store/catalog supply in every game arrangement. The previous “Catalog release” label implied a different edition or production release. Purchase and catalog membership are different access offers for the same game; those differences belong in the access and payment labels. Joining a catalog can occur at a different date, but this diagram does not depict a separate build or launch.
+
+Release-label validation: all 20 existing circuit tests and the production build passed. Browser confirmed Published release in PlayStation, Xbox and cloud catalog modes. Port 3106 restarted with the correction. Local review only.
+
+
+### Reader orientation — 8 October 2026
+
+The chapter-2 overview now has a compact introduction above its tabs. It states
+what comparing arrangements reveals, how scene/exchange selection works, and
+that the boxes separate roles which one company can combine. These are selected
+offers; a native anchor links to the later game-first market map for compatible
+combinations. This introduction is omitted from the dedicated local/cloud
+comparison, where that second diagram does not exist. No interaction, animation
+or asset-delivery contract changes. The chapter opening first establishes game
+access and computing as separately supplied needs; Steam is introduced when its
+store is used in the next paragraph. See CHAPTER_TWO_MANUSCRIPT.md.
+
+### Consistent access defaults — 8 October 2026
+
+Xbox now opens on the same Purchased game option as PlayStation and Cloud play.
+Its earlier catalog default was a narrative choice, not a difference in available
+models. Switching tabs resets to purchase; selecting Catalog membership updates
+the store, publisher income and player terms together. The cloud catalog variant
+now takes its production/funding data explicitly from Xbox’s catalog variant, so
+a change to the console default cannot turn catalog funding into sales revenue.

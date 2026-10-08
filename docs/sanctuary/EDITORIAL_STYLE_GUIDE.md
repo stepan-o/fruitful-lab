@@ -12,6 +12,8 @@ The reader should be able to say what a paragraph means after reading it once. D
 
 Write the chapter as a continuous argument before assigning its text to components. Each paragraph should add a fact, distinction, consequence or question that the preceding paragraph makes useful. Repeating the same proposition in the lede, body, caption and closing makes the reading shallower. Review the whole passage after an edit; do not accumulate isolated fixes around the last piece of feedback.
 
+Motivate the reader with a consequential choice or a stake in the subject. “Follow the money,” “understand the chain,” and “explore the combinations” describe our method, not the reader’s reason to care. Here the stake is how the business of entertainment shapes what can be made and what audiences are asked to pay for. Let concrete decisions establish that connection; do not recite every diagram label or substitute technical complexity for narrative development.
+
 ## Let the evidence carry the warmth
 
 Use specific, sourced events with an intelligible consequence. The approved Pong anecdote turns on a simple reversal: “Pong’s first famous failure was a sign of success.” The full coin container makes that reversal tangible. Its warmth comes from the event, not invented dialogue, imagined emotions or a lesson announced before the story earns it.
@@ -31,6 +33,8 @@ Preserve the difference between documented events, the speaker's interpretation 
 Give each chapter a job. Chapter 1 is a historical invitation that reveals the businesses surrounding play. Its closing expands the frame from a cabinet to changing responsibilities, costs and purchases. Chapter 2 can then inspect that chain; Gauntlet can later show payment becoming a rule inside the game. Introduce the question before unpacking its machinery.
 
 A closing should carry a discovered relationship into the next chapter. It should not retell the chapter, append a compulsory moral or promise unspecified revelations. The approved closing names what changes as play moves from tavern to living room to cloud: who supplies the work and equipment, who carries the costs, and what the player buys.
+
+When hardware is part of the argument, connect it to who can play, what they must spend before buying a game, and which technical ambitions a studio can bring to an audience. Preserve that layer as the narrative moves from cabinets to home computers and consoles to cloud services. Equipment ownership is part of the historical explanation; a bare list of hardware bills is not enough.
 
 Use cross-industry comparisons to explain a particular relationship. State their limits when needed. Replayability is not recurring revenue; the duration of enjoyment is not the frequency of payment. A campaign can be replayed, a purchased game can support years of play, and a service can contain a campaign. Avoid binaries that erase these distinctions or cast one business model as inherently virtuous or villainous.
 

@@ -13,14 +13,14 @@
   },
   "several-histories": {
     "scene": {
-      "description": "A coin-operated cabinet, adjustable switches and several commercial stalls occupy the same engraved arcade. Their shared architectural setting holds different offers together instead of depicting one machine turning into the next.",
-      "reading": "The image prepares a history of coexisting arrangements. A bought copy, an item economy and paid participation answer different questions about who pays and what they receive. The architecture is a metaphor, not a historical venue.",
-      "behavior": "The engraving is still; the adjacent historical selector supplies the change of emphasis."
+      "description": "An original isometric stone relief locates the chapter’s particular mechanism: a descent, a revisitable road, a market balance or a city with recurring offers. Stone faces, worn brass and restrained emissive light carry Sanctuary’s shared art direction.",
+      "reading": "The original game combines a directed descent with changing encounters and equipment.",
+      "behavior": "Small CSS light, mote and route animations pause offscreen, in hidden tabs, with reduced motion or the global motion preference. Geometry is deterministic and contains no borrowed game textures."
     },
     "diagram": {
-      "description": "Five dated examples form a vertical historical register. A selector illuminates paid participation, the purchased copy, an additional offer or advertising while leaving the other examples visible.",
-      "reading": "Compare Gauntlet with Diablo II: another attempt can be covered by a purchase already made. The later examples add other participants or offers. Highlighting changes the reading of the register, not the underlying dates.",
-      "boundary": "These are selected anchors rather than invention dates, an exhaustive timeline or stages every game must pass through."
+      "description": "Four dated columns compare the series through a selector for the player’s evening, the studio’s work and the next payment. The current chapter remains marked while the other columns supply context.",
+      "reading": "The same franchise can retain a recognizable activity while changing production and payment. The selector keeps these layers separate rather than implying that every replay is another sale.",
+      "boundary": "The original diagrams synthesize the cited historical record. They do not reconstruct the game interface, estimate revenue, or imply one compulsory historical path."
     }
   },
   "concord": {
@@ -30,9 +30,9 @@
       "behavior": "The empty scene stays still. Motion would undermine the absence the composition is built around."
     },
     "diagram": {
-      "description": "Three dated stops show launch, the closure announcement and the service going offline. A separate receipt records refunds. Below, a sieve lists region, mode, skill, platform and time as ways a large audience can become a smaller matching pool.",
-      "reading": "Read the timeline as documented events and the sieve as an explanation of matchmaking constraints. They answer different questions; neither supplies an audited player count.",
-      "boundary": "The official notice establishes dates and refunds. The queue sketch does not isolate why Concord closed or establish a universal minimum audience."
+      "description": "Three dated columns follow the 2024 release, service shutdown and studio closure. The historical US standard price and promised updates identify the offer that ended.",
+      "reading": "A continuing production plan can close shortly after its first public sale. The timeline establishes the events without a budget, sales estimate or causal attribution.",
+      "behavior": "A static, responsive timeline; no queue, matchmaking or invented population model appears in this business chapter."
     }
   },
   "what-decides": {
@@ -277,14 +277,119 @@
   },
   "studio-to-screen": {
     "scene": {
-      "description": "Five engraved stations show a workshop, a rights ledger, a storefront, computing equipment and a player’s screen. Paired paths distinguish creative work moving outward from receipts returning.",
-      "reading": "The map names roles rather than forcing every game through five separate companies. Select a layer below to inspect its offer, counterparties and a useful measurement question.",
-      "boundary": "An original schematic with no monetary scale. Geometry and line widths do not encode revenue."
+      "description": "Original cutaway workspaces and storefronts compare an arcade arrangement, a PC purchase, GeForce NOW, Xbox, PlayStation and Netflix. Each selected route names the work, equipment, access and payments behind an evening of play.",
+      "reading": "Select a product, service, payment or participant to inspect both sides of its exchange. Development and publishing are distinct responsibilities that may belong to the same group. Access to a game and the place where it runs are separate questions.",
+      "boundary": "An original schematic with no monetary scale. Console tabs show specific local-play routes and link to their cloud alternatives. Line widths do not encode revenue; private internal allocations are not asserted."
     },
     "diagram": {
-      "description": "An eight-route comparison uses three pairs of columns to follow production, supply, discovery, operation, collection and settlement. A filter holds one game constant across different delivery routes.",
-      "reading": "Compare the thing sold and the party supplying it. A computing subscription can sit around a bought game without changing the game’s own sales model.",
-      "boundary": "Source-linked routes and public offers, not an estimate of private revenue shares."
+      "description": "Paired teal supply paths and brass payment paths connect the selected business roles. Five-party console routes include a studio, publisher, store or catalog service, hardware retailer and player.",
+      "reading": "A subscription can provide a game downloaded to a console, while a purchased game can run on remote equipment. The detailed production-to-consumer comparison continues in the following chapters.",
+      "boundary": "Source-linked offers checked on 6 October 2026. The dedicated cloud chapter compares the same Cyberpunk purchase locally and through GeForce NOW."
+    }
+  },
+  "valve-platform": {
+    "scene": {
+      "description": "The studio and storefront miniatures are joined by an original three-quarter product study of a Steam Deck on a solid angled display stand. The handheld has a central screen, paired thumbsticks and trackpads, directional and face controls, vents, seams and visible body depth. Brass edge light and muted teal materials match the surrounding dimetric scenes. The screen landscape is invented; no game frame or Valve mark is copied.",
+      "reading": "The third role is a device maker, not another PC retailer. The existing library becomes relevant to buying and using the handheld. Official Steam Deck product views supply the functional silhouette and control positions; the illustration is not a manufacturing drawing or publisher endorsement.",
+      "behavior": "The selected hardware has a brighter screen, drifting screen motes and a slow reflection. Only opacity and transforms change. The shared visibility/manual/reduced-motion gate pauses the animation; the object stays complete at rest."
+    },
+    "diagram": {
+      "description": "Three selectable business relationships identify customers, payments and continuing obligations. The developer role also shows a chronological catalog, with separate credited collaborations and an unreleased playtest. The equipment role shows the Steam Deck product study.",
+      "reading": "A successful product can become part of another creator’s route to an audience. Separate contracts before combining the money.",
+      "behavior": "Native controls update the active relationship without timers or automatic cycling."
+    }
+  },
+  "epic-infrastructure": {
+    "scene": {
+      "description": "Original miniature workspaces connect creative production with publishing, distribution and continuing operation. The materials and dimetric projection follow the chapter-two business circuit.",
+      "reading": "The selected view distinguishes business roles that one company can combine. The rooms are illustrative, not depictions of real company offices.",
+      "behavior": "Explicit selection changes the highlighted role; motion follows the existing visibility and preference gate."
+    },
+    "diagram": {
+      "description": "Four selectable business relationships identify the engine customer, game audience, publishing partner and store customer. The engine leads because tools built for one game can become a product for other creators.",
+      "reading": "A successful product can become part of another creator’s route to an audience. Separate contracts before combining the money.",
+      "behavior": "Native controls update the active relationship without timers or automatic cycling."
+    }
+  },
+  "rockstar-world": {
+    "scene": {
+      "description": "Original miniature workspaces connect creative production with publishing, distribution and continuing operation. The materials and dimetric projection follow the chapter-two business circuit.",
+      "reading": "The selected view distinguishes business roles that one company can combine. The rooms are illustrative, not depictions of real company offices.",
+      "behavior": "Explicit selection changes the highlighted role; motion follows the existing visibility and preference gate."
+    },
+    "diagram": {
+      "description": "Three selectable business relationships identify the customer, the payment and the continuing obligation. Dated context comes from the chapter sources.",
+      "reading": "A successful product can become part of another creator’s route to an audience. Separate contracts before combining the money.",
+      "behavior": "Native controls update the active relationship without timers or automatic cycling."
+    }
+  },
+  "platform-business": {
+    "scene": {
+      "description": "Comparative production-to-consumer table and Sony revenue chart. Original geometry and labeled connections distinguish providers, audiences and agreements.",
+      "reading": "The same evening depends on several kinds of work and payment; these visual comparisons make those responsibilities inspectable."
+    },
+    "diagram": {
+      "description": "Comparative production-to-consumer table and Sony revenue chart. Controls reveal definitions and keep numerical units and source dates visible.",
+      "reading": "Business roles and reported measures must be identified before comparing their size, incentives or changes over time."
+    }
+  },
+  "cloud-gaming": {
+    "scene": {
+      "description": "Remote computing circuit and sourced network and membership charts. Original geometry and labeled connections distinguish providers, audiences and agreements.",
+      "reading": "The same evening depends on several kinds of work and payment; these visual comparisons make those responsibilities inspectable."
+    },
+    "diagram": {
+      "description": "Remote computing circuit and sourced network and membership charts. Controls reveal definitions and keep numerical units and source dates visible.",
+      "reading": "Business roles and reported measures must be identified before comparing their size, incentives or changes over time."
+    }
+  },
+  "making-worlds": {
+    "scene": {
+      "description": "Official Witcher 3 and Red Dead Redemption 2 full-frame screenshots establish two richly staged worlds. An original Loopforge confrontation painting introduces the author’s own project later.",
+      "reading": "The comparison concerns different investments in making a place responsive. No screenshot is evidence of a whole studio’s budget or a universal design identity.",
+      "behavior": "Responsive still images open in the existing accessible inspector. Only opening images preload; later citations remain lazy."
+    },
+    "diagram": {
+      "description": "A bolted brass simulation housing, mechanical event recorder and original robot bust connect in one direction. Policy controls select two captured fourth-shift outcomes; an account control changes authored speech without changing the event.",
+      "reading": "Rules determine consequences. A character’s expression is a separate output with no authority over the recorded state.",
+      "behavior": "Gears and small light changes use CSS transforms/opacity, pause offscreen or in hidden documents, and respect both motion controls. On phones the three stations stack in reading order.",
+      "boundary": "Captured lf-teaching-1 outputs, seed 42, after three balanced shifts with native assignments. This is a two-case model comparison, not an embedded full game or live LLM call. Dialogue is explicitly authored for the exhibit."
+    }
+  },
+  "diablo-second-life": {
+    "scene": {
+      "description": "An original isometric stone relief locates the chapter’s particular mechanism: a descent, a revisitable road, a market balance or a city with recurring offers. Stone faces, worn brass and restrained emissive light carry Sanctuary’s shared art direction.",
+      "reading": "An authored journey can sustain many builds and a shared restart without selling another run.",
+      "behavior": "Small CSS light, mote and route animations pause offscreen, in hidden tabs, with reduced motion or the global motion preference. Geometry is deterministic and contains no borrowed game textures."
+    },
+    "diagram": {
+      "description": "Four dated columns compare the series through a selector for the player’s evening, the studio’s work and the next payment. The current chapter remains marked while the other columns supply context.",
+      "reading": "The same franchise can retain a recognizable activity while changing production and payment. The selector keeps these layers separate rather than implying that every replay is another sale.",
+      "boundary": "The original diagrams synthesize the cited historical record. They do not reconstruct the game interface, estimate revenue, or imply one compulsory historical path."
+    }
+  },
+  "diablo-market": {
+    "scene": {
+      "description": "An original isometric stone relief locates the chapter’s particular mechanism: a descent, a revisitable road, a market balance or a city with recurring offers. Stone faces, worn brass and restrained emissive light carry Sanctuary’s shared art direction.",
+      "reading": "A market can supply equipment while weakening the activity that made obtaining it satisfying.",
+      "behavior": "Small CSS light, mote and route animations pause offscreen, in hidden tabs, with reduced motion or the global motion preference. Geometry is deterministic and contains no borrowed game textures."
+    },
+    "diagram": {
+      "description": "Four dated columns compare the series through a selector for the player’s evening, the studio’s work and the next payment. The current chapter remains marked while the other columns supply context.",
+      "reading": "The same franchise can retain a recognizable activity while changing production and payment. The selector keeps these layers separate rather than implying that every replay is another sale.",
+      "boundary": "The original diagrams synthesize the cited historical record. They do not reconstruct the game interface, estimate revenue, or imply one compulsory historical path."
+    }
+  },
+  "diablo-service": {
+    "scene": {
+      "description": "An original isometric stone relief locates the chapter’s particular mechanism: a descent, a revisitable road, a market balance or a city with recurring offers. Stone faces, worn brass and restrained emissive light carry Sanctuary’s shared art direction.",
+      "reading": "The campaign belongs to a larger program of seasons, expansions, services and optional offers.",
+      "behavior": "Small CSS light, mote and route animations pause offscreen, in hidden tabs, with reduced motion or the global motion preference. Geometry is deterministic and contains no borrowed game textures."
+    },
+    "diagram": {
+      "description": "Four dated columns compare the series through a selector for the player’s evening, the studio’s work and the next payment. The current chapter remains marked while the other columns supply context.",
+      "reading": "The same franchise can retain a recognizable activity while changing production and payment. The selector keeps these layers separate rather than implying that every replay is another sale.",
+      "boundary": "The original diagrams synthesize the cited historical record. They do not reconstruct the game interface, estimate revenue, or imply one compulsory historical path."
     }
   }
 }

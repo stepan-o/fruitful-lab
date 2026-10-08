@@ -1,6 +1,6 @@
 import {render,screen,fireEvent} from "@testing-library/react";
 import {PlatformRevenue,CloudFigures} from "@/components/sanctuary/BusinessCharts";
-import BusinessMap from "@/components/sanctuary/BusinessMap";
+import {BusinessLayers} from "@/components/sanctuary/BusinessMap";
 import {platformRows,platformTotals} from "@/lib/sanctuary/industry-data";
 it("reconciles reported detail to totals within Sony’s one-million-yen rounding",()=>{
  for(let year=0;year<2;year++) expect(Math.abs(platformRows.reduce((sum,row)=>sum+row.values[year],0)-platformTotals[year])).toBeLessThanOrEqual(1);
@@ -23,7 +23,7 @@ it("keeps bandwidth separate from latency when choosing a cloud mode",()=>{
  expect(screen.getByText(/not a current user count/)).toBeVisible();
 });
 it("connects each layer selection to the relevant offer and measurement question",()=>{
- render(<BusinessMap/>);
+ render(<BusinessLayers/>);
  fireEvent.click(screen.getByText("Inspect the seven business layers"));
  fireEvent.click(screen.getByRole("button",{name:"Equip & render"}));
  expect(screen.getByRole("heading",{name:"Buying the game does not supply the computer."})).toBeVisible();

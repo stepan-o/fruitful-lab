@@ -2,6 +2,12 @@
 
 Owner direction, 8 October 2026. Applies to the landing, playable console, camera views, briefings and future live factory. Read alongside the repository’s [design and performance standards](../DESIGN_AND_PERFORMANCE_STANDARDS.md).
 
+**Latest owner review:** PR #99 also failed the game-interface and visual-coherence
+bar. Study [how game interfaces divide their jobs](INTERFACE_JOB_STUDY.md) before
+the next composition or asset pass. Design for the complete first floor, then
+show its first-turn state: all six cameras visible, two rooms available and four
+sealed. The earlier implementation description below is not visual acceptance.
+
 ## The guiding principle
 
 **Visceral conveyor and factory operations are the foundation of the interface.** The accepted landing conveyor is the reference: weight, uneven momentum, friction, light crossing machinery, stoppage, and a deliberate act that restarts the line. Carry that physical logic through the game UI. It must feel responsive *with* the factory.

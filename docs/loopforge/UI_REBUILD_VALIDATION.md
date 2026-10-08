@@ -1,5 +1,11 @@
 # Director console — implementation and gate record
 
+**Style review addition, 8 October:** the new design-board tab has six inspected material sheets, enlarged viewing and two-sheet comparison. Gallery and dialogs checked at desktop, 390px and 320px; Escape returns focus, all six images open, and local references/unique IDs validate. Required CI: 340 tests in 66 suites, one snapshot, asset-release checks and production build passed. Review images are 30–39 KB at 480px and 195–354 KB at full detail. This validates the review tool only. The playable interface visual gate remains open. Evidence: `review/camera-console/`.
+
+**Owner review update, 8 October:** PR #99's composition and visual coherence were
+rejected. This is technical evidence for the previous revision, not a cleared
+visual gate. The corrective pass begins with [the interface job study](INTERFACE_JOB_STUDY.md).
+
 8 October 2026. Branch `codex/loopforge-director-console`, based on merged PR #96
 and integrated with `b61796d` (merged Sanctuary PR #97).
 This record distinguishes the agent’s implementation/quality assessment from

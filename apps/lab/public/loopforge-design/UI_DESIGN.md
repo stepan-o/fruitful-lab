@@ -2,7 +2,7 @@
 
 Working draft · 8 October 2026
 
-Asset-driven decision interfaces now; a live cinematic 3D factory later. This reference separates the updated design target from the current first-day implementation. The director-console revision implements the day-one interface direction; owner visual/play acceptance remains pending.
+Asset-driven decision interfaces now; a live cinematic 3D factory later. This reference separates the updated design target from the current first-day implementation. The prior director-console composition was rejected. Six new camera-console style studies are available for review before the next implementation pass.
 
 ## Opening rules and what unlocks later
 

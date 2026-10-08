@@ -1,5 +1,13 @@
 # Loopforge game design board
 
+8 October style review: **UI style studies** (`#ui-styles`) includes six separately generated directions: the parent baseline and five requested agent alternatives. `ui-styles.json` owns names and review notes; `style_review.py`, `style-review.js` and `style-review.css` build the responsive gallery and accessible comparison dialog. Images use the `loopforge-ui-studies` immutable pack. This review does not choose the production style or update the playable interface. See `../CAMERA_CONSOLE_ART_DIRECTION.md` and `../ONBOARDING_DESIGN.md` for the latest visual and tutorial rules.
+
+8 October interface follow-up: [game interface job study](../INTERFACE_JOB_STUDY.md)
+records the reference pass after the owner rejected PR #99's composition. It
+precedes the next full-floor layouts, asset generation and first-turn rebuild.
+The six-room overview and 10–20 minute capability-unlock target are the latest
+owner direction; earlier shift-duration estimates require a new pacing test.
+
 The accepted local design board now lives at `/stepanoskin/loopforge/design` in the Lab app. This is an author-facing concept document with spoilers, proposals and open decisions; the playable first-day slice is `/stepanoskin/loopforge/play`.
 
 - `design-data.json` is the authored source. It was preserved during migration and continues to receive design revisions here.

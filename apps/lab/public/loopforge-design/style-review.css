@@ -1,0 +1,30 @@
+.style-review-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 24px}
+.style-review-bar button,.style-review-bar .status{margin:0}
+.style-review-bar button,#style-viewer button{min-height:44px;border:1px solid #6d735e;background:#242b25;color:#eee9d7;padding:10px 16px;border-radius:3px;font:inherit;cursor:pointer}
+.style-review-bar button:hover,#style-viewer button:hover{background:#343f34}
+.style-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.style-card{min-width:0;border:1px solid #384438;background:#101712;border-radius:5px;overflow:hidden}
+.style-image{display:block;position:relative;color:#f1e9d4;background:#080c0b}
+.style-image img{display:block;width:100%;height:auto;aspect-ratio:3/2}
+.style-image>span{position:absolute;right:10px;bottom:10px;font:11px/1.2 var(--mono,monospace);background:#090e0df0;padding:8px 10px;border:1px solid #566053;border-radius:3px}
+.style-copy{padding:20px}.style-copy .kicker{font-size:10px;line-height:1.7}.style-copy h3{font-size:24px;margin:8px 0 12px}.style-copy p{font-size:14px;line-height:1.65}.style-copy details{margin:14px 0 0}.style-copy summary{font-size:12px}.style-copy details p{font-size:13px}
+.style-rules{margin-top:42px;border-top:1px solid #3a4639;padding-top:22px}.style-rules h4{margin:8px 0}.style-rules p{font-size:14px}.style-next{color:#c9bf9b;border-left:2px solid #b9a369;padding-left:16px}
+.style-modal-open{overflow:hidden}
+#style-viewer{width:min(1700px,calc(100vw - 40px));max-width:none;max-height:calc(100dvh - 40px);padding:0;background:#0c1210;color:#e8e5d7;border:1px solid #68725e;border-radius:5px;box-shadow:0 20px 100px #000b}
+#style-viewer::backdrop{background:#020705e8}
+#style-viewer[open]{display:flex;flex-direction:column}
+#style-viewer header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 20px;flex-shrink:0}
+#style-viewer h2{font:24px/1.2 var(--serif,Georgia,serif);margin:0}
+#close-style-viewer{white-space:nowrap;flex-shrink:0}
+.style-comparison-controls{display:flex;gap:20px;padding:0 20px 16px;flex-shrink:0}.style-comparison-controls[hidden]{display:none}
+.style-comparison-controls label{display:flex;flex-direction:column;gap:6px;flex:1;font-size:12px;min-width:0}.style-comparison-controls select{min-height:44px;width:100%;background:#202a23;color:#eee9d7;border:1px solid #6d735e;border-radius:3px;padding:6px;font:inherit}
+#style-viewer-images{overflow:auto;min-height:0;padding:0 16px 8px;display:grid;gap:16px}
+#style-viewer-images.is-comparing{grid-template-columns:repeat(2,minmax(0,1fr))}
+#style-viewer-images figure{margin:0;min-width:0}#style-viewer-images figcaption{font:12px/1.5 var(--mono,monospace);color:#b5c0ad;padding:6px 0}
+#style-viewer-images img{display:block;width:100%;height:auto;max-height:calc(100dvh - 215px);object-fit:contain;object-position:top center}
+#style-viewer-images.is-zoomed{display:flex;align-items:flex-start}#style-viewer-images.is-zoomed figure{flex:0 0 1536px}#style-viewer-images.is-zoomed img{width:1536px;max-height:none}
+#style-viewer footer{padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-shrink:0;border-top:1px solid #303c31}
+#style-viewer footer p{max-width:1000px;font-size:12px;line-height:1.6;margin:0;color:#c1c7b6}#style-viewer footer button{flex-shrink:0}
+.style-image:focus-visible,.style-review-bar button:focus-visible,#style-viewer :focus-visible{outline:2px solid #a3ded4;outline-offset:3px}
+@media(max-width:720px){.style-gallery{grid-template-columns:1fr}.style-copy{padding:16px}.style-review-bar{align-items:flex-start;gap:12px}.style-review-bar button{width:100%}#style-viewer{width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}#style-viewer header{padding:12px}#style-viewer h2{font-size:20px}#style-viewer-images{padding:0 10px 8px}#style-viewer-images.is-comparing{grid-template-columns:1fr}#style-viewer-images img{max-height:none}.style-comparison-controls{gap:10px;padding:0 12px 12px}#style-viewer footer{padding:10px 12px;gap:10px;flex-wrap:wrap}#style-viewer footer p{font-size:11px}#style-viewer footer button{width:100%}}
+@media(prefers-reduced-motion:reduce){#style-viewer-images{scroll-behavior:auto}}

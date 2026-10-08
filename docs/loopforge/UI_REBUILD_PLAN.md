@@ -2,6 +2,15 @@
 
 8 October 2026 · scope: Loopforge first shift in `apps/lab`.
 
+**Superseded composition:** the owner rejected this revision as a styled webpage
+rather than a coherent game interface. The technical evidence below remains a
+baseline; the visual gate is not cleared. The next pass starts with
+[interface responsibilities and reference study](INTERFACE_JOB_STUDY.md), then
+full-floor screen design, a separate asset pass and implementation. All six rooms
+must be visible in the factory overview from turn one, with four initially sealed.
+
+**Current review gate:** the owner requested five additional style-sheet agents after liking the initial sheet. Six alternatives now live in the design board's UI style studies tab. Choose or prototype competing material directions before producing the final asset kit. See `CAMERA_CONSOLE_ART_DIRECTION.md` and `ONBOARDING_DESIGN.md` for the powered-off monitors, pen-written tapes, speaking tokens and general guidance requirements. This review does not accept or replace the rejected playable interface.
+
 ## Brief and delivery boundary
 
 Deliver the complete first-day game interface: entry, adviser selection, briefing,
@@ -91,8 +100,9 @@ placeholders in the submitted build.
 
 ## Evidence and final assessment
 
-Agent-controlled implementation gates pass. See [the validation record](UI_REBUILD_VALIDATION.md)
-for exercised paths, responsive screenshots, image payloads, tests and limits.
-Owner enjoyment approval remains a separate playtest judgment.
+The previous agent assessment passed its implementation checks, but the owner
+subsequently rejected the interface composition and visual coherence. See
+[the validation record](UI_REBUILD_VALIDATION.md) for the technical baseline and
+[the new study](INTERFACE_JOB_STUDY.md) for the corrective design work.
 [PR #99](https://github.com/stepan-o/fruitful-lab/pull/99) is open; the hosted
 preview was exercised through a full first shift and permanent dispatch.

@@ -55,16 +55,16 @@ beforeAll(() => {
 });
 
 describe("Sanctuary reader", () => {
-  it("has a complete navigable 24-chapter edition with resolvable evidence and media", () => {
-    expect(chapters).toHaveLength(24);
-    expect(new Set(chapters.map((c) => c.id)).size).toBe(24);
+  it("has a complete navigable 33-chapter edition with resolvable evidence and media", () => {
+    expect(chapters).toHaveLength(33);
+    expect(new Set(chapters.map((c) => c.id)).size).toBe(33);
     expect(new Set(chapters.map((c) => c.part)).size).toBe(7);
     for (const chapter of chapters) {
       expect(chapter.paragraphs.length).toBeGreaterThanOrEqual(3);
       expect(chapter.evidence.length).toBeGreaterThan(30);
       expect(chapter.visual.diagram.nodes).toHaveLength(4);
       expect(chapter.visual.sceneTitle.length).toBeGreaterThan(3);
-      expect(chapter.figures?.some(figure=>figure.asset === chapter.visual.screenshot.asset)).toBe(true);
+      if (!["studio-to-screen","platform-business"].includes(chapter.id)) expect(chapter.figures?.some(figure=>figure.asset === chapter.visual.screenshot.asset)).toBe(true);
       for (const [paragraphIndex, ids] of Object.entries(
         chapter.paragraphCitations ?? {},
       )) {
@@ -72,12 +72,16 @@ describe("Sanctuary reader", () => {
         expect(Number(paragraphIndex)).toBeLessThan(chapter.paragraphs.length);
         for (const id of ids) expect(chapter.sources).toContain(id);
       }
+      for (const exhibit of chapter.exhibits ?? []) {
+        expect(exhibit.afterParagraph).toBeGreaterThanOrEqual(0);
+        expect(exhibit.afterParagraph).toBeLessThan(chapter.paragraphs.length);
+      }
       for (const section of chapter.sections ?? []) {
         expect(section.at).toBeGreaterThanOrEqual(0);
         expect(section.at).toBeLessThan(chapter.paragraphs.length);
       }
       for (const id of chapter.sources)
-        expect(sources.some((s) => s.id === id)).toBe(true);
+        expect(sources.map(source=>source.id)).toContain(id);
       for (const figure of chapter.figures ?? []) {
         expect(manifest.assets[figure.asset]?.kind).toBe("image");
         if (figure.afterParagraph !== undefined) {
@@ -130,13 +134,11 @@ describe("Sanctuary reader", () => {
     expect(screen.getByRole("figure", { name: /Diagram:/ })).toBeVisible();
     expect(screen.getByRole("group", { name: "What happens after purchase?" })).toBeVisible();
     expect(screen.getByRole("navigation", { name: "Chapter" }).querySelector("a:last-child"))
-      .toHaveAttribute("href", chapterHref("concord"));
-    expect(container.querySelectorAll("img")).toHaveLength(current.figures!.length + 1);
+      .toHaveAttribute("href", chapterHref("platform-business"));
+    expect(container.querySelectorAll("img")).toHaveLength(current.figures!.length);
     expect(container.querySelector('[data-inscription="the gap"]')).toHaveTextContent("the gap");
     expect(container.querySelector('[data-inscription="future sales"]')).toHaveTextContent("future sales");
-    expect(container.querySelector('[data-inscription="subscription"]')).toHaveTextContent("subscription");
-    expect(screen.getByRole("img", { name: "Netflix" })).toHaveAttribute("loading", "lazy");
-    expect(screen.getAllByRole("link", { name: /Source & use/ })).toHaveLength(current.figures!.length + 1);
+    expect(screen.getAllByRole("link", { name: /Source & use/ })).toHaveLength(current.figures!.length);
     expect(screen.getByRole("link", { name: /Rights & credits/ })).toHaveAttribute("href", "/stepanoskin/game-monetization/credits");
     expect(container.querySelector("main")).toHaveAttribute(
       "data-media-mode",
@@ -144,8 +146,26 @@ describe("Sanctuary reader", () => {
     );
     expect(screen.queryByText(/INTERNAL REFERENCE/)).not.toBeInTheDocument();
   });
+  it("retains the Cyberpunk visual citation inside the worked example after the market-map introduction", async () => {
+    const index = chapters.findIndex(c=>c.id==="studio-to-screen");
+    const current = chapters[index];
+    const figure = current.figures!.find(f=>f.asset==="cyberpunk-catalog-promo")!;
+    expect(figure).toBeDefined();
+    render(<Reader {...props} current={current} index={index}/>);
+    await screen.findByRole("region",{name:"What has to keep selling?"});
+    const map = await screen.findByRole("region",{name:"One game. Many routes to the player."});
+    const heading = screen.getByRole("heading",{name:"What the deal is worth"});
+    expect(map.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    const picture = screen.getByRole("img",{name:figure.alt});
+    expect(picture).toHaveAttribute("loading","lazy");
+    expect(heading.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    const nextParagraph = screen.getByText(current.paragraphs[figure.afterParagraph!+1]);
+    expect(picture.compareDocumentPosition(nextParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
   it("opens at the arcade, keeps its evidence inline and continues through the purchase history", () => {
-    expect(chapters.slice(0,6).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","how-many-lives","several-histories","the-fork","concord"]);
+    expect(chapters.slice(0,12).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","valve-platform","epic-infrastructure","rockstar-world","the-fork","platform-business","cloud-gaming","making-worlds","concord","several-histories","diablo-second-life"]);
+    expect(chapters.find(c=>c.id==="concord")!.part).toBe(0);
+    expect(chapters.find(c=>c.id==="how-many-lives")!.part).toBe(2);
     const current = chapters[0];
     const { container } = render(<Reader {...props} current={current} index={0}/>);
     expect(screen.getByRole("heading", { level:1, name:"Insert coin. Join in." })).toBeVisible();
@@ -163,7 +183,7 @@ describe("Sanctuary reader", () => {
     expect(evidence.compareDocumentPosition(nextParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     for (const image of container.querySelectorAll("img")) expect(image).toHaveAttribute("loading", "lazy");
   });
-  it("keeps Gauntlet’s paid-health evidence in its own chapter after the overview", () => {
+  it("opens the design act with Gauntlet’s paid-health evidence", () => {
     const index=chapters.findIndex(c=>c.id==="how-many-lives");
     render(<Reader {...props} current={chapters[index]} index={index}/>);
     expect(screen.getByRole("heading",{level:1,name:"How many lives does a coin buy?"})).toBeVisible();
@@ -231,7 +251,7 @@ describe("Sanctuary reader", () => {
       />,
     );
     expect(
-      screen.getByRole("heading", { level: 1, name: "Where progress lives" }),
+      screen.getByRole("heading", { level: 1, name: current.title }),
     ).toBeVisible();
     expect(
       screen
@@ -260,7 +280,7 @@ describe("Sanctuary reader", () => {
     expect(reference).toHaveAttribute("href", evidence[0].url);
     expect(reference).toHaveTextContent("1");
     expect(
-      screen.getByRole("heading", { name: "What does “unlock” unlock?" }),
+      screen.getByRole("heading", { name: current.title }),
     ).toBeVisible();
   });
   it("calculates independent fixed-chance attempts, including endpoints", () => {

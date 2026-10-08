@@ -14,10 +14,10 @@ const layers=[
   {
     "name": "Own & license",
     "title": "Who owns what the game uses?",
-    "exchange": "Permission to use an existing world, character or other protected work comes from its rights holder. A license defines the permitted use and payment. Larian makes Baldur’s Gate 3; Wizards of the Coast owns the Dungeons & Dragons material it uses.",
+    "exchange": "Permission to use an existing world, character or other protected work comes from its rights holder. A license defines the permitted use and payment. The same issue appears in film: Legendary and Warner Bros. adapted Frank Herbert’s novel for Dune: Part Two. Production and permission are separate requirements.",
     "measure": "Which rights were acquired, for how long, and on what payment terms? A royalty paid to a rights holder is different from income earned for developing the game.",
-    "link": "https://investor.hasbro.com/static-files/0e548540-ae0c-49a2-83ed-053cd009623a",
-    "source": "Example: Hasbro’s digital licensing"
+    "link": "https://www.legendary.com/warner-bros-pictures-and-legendary-pictures-return-to-arrakis-for-denis-villeneuves-dune-part-two/",
+    "source": "Example: Dune’s adaptation credits"
   },
   {
     "name": "Publish & reach",
@@ -61,10 +61,11 @@ const layers=[
   }
 ];
 
-export default function BusinessMap(){
+export default function BusinessMap(){return <BusinessCircuit/>;}
+
+export function BusinessLayers(){
  const [active,setActive]=useState(0);const id=useId().replace(/:/g,"");const layer=layers[active];
  return <>
-  <BusinessCircuit/>
   <details className={s.layerDetails}>
    <summary>Inspect the seven business layers</summary>
    <section className={s.atlas} aria-labelledby={`${id}-layers-title`}>

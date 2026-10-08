@@ -1,0 +1,39 @@
+{
+  "reviewed": "2026-10-08",
+  "assets": {
+    "diablo-original-combat": {
+      "title": "Diablo \u2014 original dungeon combat",
+      "owner": "Blizzard Entertainment, Inc.",
+      "source": "GOG authorized Diablo + Hellfire gallery",
+      "sourceUrl": "https://www.gog.com/en/game/diablo",
+      "assetUrl": "https://images.gog-statics.com/f66bae7e2f47ee455c12d7e56fc092502876db6b3026cd8e47f953947ed73286.jpg",
+      "sourceDate": "Retrieved 8 October 2026; historical gameplay frame, exact capture date and build unconfirmed.",
+      "sourceSha256": "04d5dc79679b21bc87444ac36b82ed3037cd64f79756f2b7e88e1b432ae932e8",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Bounded criticism/review reproduction in an independently authored analysis. No bespoke permission obtained; Blizzard\u2019s video and personal-use wording is not treated as blanket still-image permission. Source and named author are credited, and the actual frame is needed to examine the interface and its history.",
+      "purpose": "The original game\u2019s isometric encounter, health and mana reservoirs and immediately available controls establish what persists beneath the series\u2019 changing business.",
+      "treatment": "One complete source frame per historical subject, preserved without removal of marks or color alteration. Responsive WebP derivatives; no ripped textures, game models, soundtrack or downloadable gallery.",
+      "chapters": [
+        "several-histories"
+      ]
+    },
+    "diablo-three-items": {
+      "title": "Diablo III \u2014 item comparison before Loot 2.0",
+      "owner": "Blizzard Entertainment, Inc.",
+      "source": "Blizzard News, Nevalistis \u2014 Diablo Then & Now: Item Comparison Evolution (2016)",
+      "sourceUrl": "https://news.blizzard.com/en-us/article/20120910/diablo-then-now-item-comparison-evolution",
+      "assetUrl": "https://bnetcmsus-a.akamaihd.net/cms/gallery/B9WOB5SAQ8DU1463101447204.jpg",
+      "sourceDate": "Retrieved 8 October 2026; historical gameplay frame, exact capture date and build unconfirmed.",
+      "sourceSha256": "d1e02afe39dd77d33a474e0b4264a29c7b0bfeb6cc7c69c2f425011f6dd8dee1",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Bounded criticism/review reproduction in an independently authored analysis. No bespoke permission obtained; Blizzard\u2019s video and personal-use wording is not treated as blanket still-image permission. Source and named author are credited, and the actual frame is needed to examine the interface and its history.",
+      "purpose": "The official retrospective shows that a legendary label did not guarantee an upgrade. The figure accompanies the distinction between finding useful equipment and acquiring it through a market. It is not a screenshot of an auction house.",
+      "treatment": "One complete source frame per historical subject, preserved without removal of marks or color alteration. Responsive WebP derivatives; no ripped textures, game models, soundtrack or downloadable gallery.",
+      "chapters": [
+        "diablo-market"
+      ]
+    }
+  }
+}

@@ -9,6 +9,12 @@ import Atmosphere from "./Atmosphere";
 import DevilMural from "./DevilMural";
 import ChapterDiagram from "./ChapterDiagram";
 import ChapterScene from "./ChapterScene";
+import {historyIds, type HistoryId} from "@/lib/sanctuary/history-ids";
+const HistoryScene=dynamic(()=>import("./DiabloHistory").then(m=>m.HistoryScene));
+const HistoryComparison=dynamic(()=>import("./DiabloHistory").then(m=>m.HistoryComparison));
+const WorldWorkshop=dynamic(()=>import("./WorldWorkshop"));
+const CompanyEvolution=dynamic(()=>import("./CompanyEvolution"));
+const EpicSpending=dynamic(()=>import("./CompanyEvolution").then(m=>m.EpicSpending));
 import FundingDiagram from "./plates/FundingDiagram";
 import InfernalTerm from "./InfernalTerm";
 import AudienceEconomy from "./plates/AudienceEconomy";
@@ -38,11 +44,18 @@ export type ReaderProps = {
 };
 
 const BusinessMap = dynamic(() => import("./BusinessMap"));
+const MarketMap = dynamic(() => import("./MarketMap"));
+const BusinessLayers = dynamic(() => import("./BusinessMap").then(m=>m.BusinessLayers));
+const CloudCircuit = dynamic(() => import("./BusinessCircuit"));
 const PlatformRevenue = dynamic(() => import("./BusinessCharts").then(m=>m.PlatformRevenue));
 const CloudFigures = dynamic(() => import("./BusinessCharts").then(m=>m.CloudFigures));
 const BusinessChains = dynamic(() => import("./BusinessChains"));
 
-const roman = (n:number) => ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI","XXII","XXIII","XXIV"][n];
+const roman = (index:number) => {
+  let n=index+1, result="";
+  for(const [value,glyph] of [[1000,"M"],[900,"CM"],[500,"D"],[400,"CD"],[100,"C"],[90,"XC"],[50,"L"],[40,"XL"],[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]] as const) while(n>=value){result+=glyph;n-=value;}
+  return result;
+};
 
 export default function Reader({locale,current,index,navigation,parts,assets,sources,rules,visualSources=[]}:ReaderProps) {
   const copy = readerCopy[locale];
@@ -56,6 +69,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
   const first = navigation[0];
   const previous = navigation[index-1];
   const next = navigation[index+1];
+  const isHistory = !!current && historyIds.includes(current.id as HistoryId);
 
   useEffect(()=>{document.documentElement.lang=locale;},[locale]);
   useEffect(()=>{
@@ -105,7 +119,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
       {current ? <aside className={styles.rail} aria-label={copy.contents}>
         <Link href={chapterHref()} className={styles.railTitle} aria-current={!current?"page":undefined}>SANCTUARY<br/><em>ECONOMICS</em></Link>
         {parts.map((part,p)=><div className={styles.railPart} key={part}><p lang="en"><span>0{p+1}</span> {part}</p>{navigation.map((chapter,i)=>chapter.part===p?<Link key={chapter.id} href={chapterHref(chapter.id)} prefetch={false} aria-current={current?.id===chapter.id?"page":undefined}><span>{roman(i)}</span><span lang="en">{chapter.title}</span></Link>:null)}</div>)}
-        <span className={styles.railEdition}>{copy.edition}<br/>05 OCT 2026</span>
+        <span className={styles.railEdition}>{copy.edition}<br/>08 OCT 2026</span>
       </aside> : null}
 
       <div className={styles.body} id="reading" tabIndex={-1}>
@@ -125,16 +139,21 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
               <div className={styles.titleRow}><span className={styles.chapterNumeral} aria-hidden="true">{roman(index)}</span><h1>{current.title}</h1></div>
               <p className={styles.lede}>{current.lede}</p>
             </div>
-            {current.figures?.some(figure=>figure.placement === "opening") ? <section className={styles.referenceComparison} aria-label="The two games in view">
+            {current.figures?.some(figure=>figure.placement === "identity") ? <div className={styles.archivePair}>{current.figures.map((figure,i)=>figure.placement === "identity" ? renderFigure(figure,i,true) : null)}</div> : null}
+            {current.figures?.some(figure=>figure.placement === "opening") ? <section className={styles.referenceComparison} aria-label={current.id === "making-worlds" ? "Two worlds to inhabit" : "The two games in view"}>
               <div className={styles.referencePair}>{current.figures.filter(figure=>figure.placement === "opening").map(figure=><figure key={figure.asset}>
                 <button type="button" className={styles.figureButton} aria-label={`${copy.zoom}: ${figure.alt}`} onClick={()=>setZoom(figure)}><AssetImage asset={imageAsset(assets,figure.asset)} alt={figure.alt} sizes="(max-width:720px) 94vw, (max-width:1100px) 40vw, 450px" preload/><span className={styles.zoomLabel}>{copy.zoom} ↗</span></button>
                 <figcaption><p>{figure.caption}</p><small>{figure.credit} · <Link prefetch={false} href={`/stepanoskin/game-monetization/credits#${figure.asset}`}>Source & use ↗</Link></small></figcaption>
               </figure>)}</div>
-              <p className={styles.referenceReading}>Two role-playing traditions, with different plans for what comes after release.</p>
+              <p className={styles.referenceReading}>{current.id === "making-worlds" ? "Both worlds combine authored scenes and interacting systems. Their production choices are the subject of this chapter." : "Two role-playing traditions, with different plans for what comes after release."}</p>
             </section>:null}
-            {!["the-fork","insert-coin","studio-to-screen","how-many-lives"].includes(current.id) ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
+            {!isHistory && !["the-fork","insert-coin","studio-to-screen","how-many-lives","platform-business","cloud-gaming","valve-platform","epic-infrastructure","rockstar-world","making-worlds"].includes(current.id) ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
+            {isHistory ? <HistoryScene key={current.id} chapter={current.id as HistoryId}/> : null}
             {current.id === "insert-coin" ? <EveningPlace opening/> : null}
             {current.id === "studio-to-screen" ? <BusinessMap/> : null}
+            {current.id === "platform-business" ? <BusinessChains/> : null}
+            {current.id === "cloud-gaming" ? <CloudCircuit key="cloud" cloudOnly/> : null}
+            {current.id === "valve-platform" || current.id === "epic-infrastructure" || current.id === "rockstar-world" ? <CompanyEvolution key={current.id} chapter={current.id}/> : null}
             {current.id === "how-many-lives" ? <ChapterDiagram chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
             <div className={styles.prose}>
               {current.paragraphs.map((paragraph, paragraphIndex) => (
@@ -145,7 +164,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       <h2 key={section.title}>{section.title}</h2>
                     ))}
                   <p>
-                    {current.id === "the-fork" && paragraphIndex <= 2
+                    {["the-fork","platform-business"].includes(current.id)
                       ? paragraph.split(/\b(subscription|future sales|the gap)\b/).map((text, segment) => text === "subscription" || text === "future sales" || text === "the gap"
                         ? <InfernalTerm key={segment} tone={text === "the gap" ? "abyss" : text === "future sales" ? "spectral" : "subscription"}>{text}</InfernalTerm>
                         : text)
@@ -172,43 +191,32 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       },
                     )}
                   </p>
-                  {current.id === "the-fork" && paragraphIndex === 5 ? <EveningPlace initialWorld/> : null}
                   {renderInlineFigures(paragraphIndex)}
-                  {current.id === "studio-to-screen" && paragraphIndex === 7 ? <BusinessChains/> : null}
-                  {current.id === "studio-to-screen" && paragraphIndex === 9 ? <PlatformRevenue/> : null}
-                  {current.id === "studio-to-screen" && paragraphIndex === 10 ? <CloudFigures/> : null}
-                  {current.id === "the-fork" && paragraphIndex === 2 ? <AudienceEconomy/> : null}
-                  {current.id === "the-fork" && paragraphIndex === 6 ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
-                  {current.id === "shape-of-money" && paragraphIndex === 1 ? <FundingDiagram/> : null}
+                  {current.exhibits?.filter(exhibit=>exhibit.afterParagraph === paragraphIndex).map(exhibit=>{
+                    switch(exhibit.kind){
+                      case "market-map": return <MarketMap key={exhibit.kind}/>;
+                      case "world-workshop": return <WorldWorkshop key={exhibit.kind}/>;
+                      case "epic-spending": return <EpicSpending key={exhibit.kind}/>;
+                      case "gathering-place": return <EveningPlace key={exhibit.kind} initialWorld/>;
+                      case "business-layers": return <BusinessLayers key={exhibit.kind}/>;
+                      case "platform-revenue": return <PlatformRevenue key={exhibit.kind}/>;
+                      case "cloud-figures": return <CloudFigures key={exhibit.kind}/>;
+                      case "audience-economy": return <AudienceEconomy key={exhibit.kind}/>;
+                      case "chapter-diagram": return <ChapterDiagram key={exhibit.kind} chapter={current.id} diagram={current.visual.diagram} index={index}/>;
+                      case "funding": return <FundingDiagram key={exhibit.kind}/>;
+                    }
+                  })}
                 </Fragment>
               ))}
             </div>
-            {!["the-fork","insert-coin","studio-to-screen","how-many-lives"].includes(current.id) ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+            {!isHistory && !["the-fork","insert-coin","studio-to-screen","how-many-lives","platform-business","cloud-gaming","valve-platform","epic-infrastructure","rockstar-world","making-worlds"].includes(current.id) ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+            {isHistory ? <HistoryComparison key={current.id} chapter={current.id as HistoryId}/> : null}
             {current.table?<div className={styles.tableWrap} tabIndex={0} aria-label={current.table.caption}><table><caption>{current.table.caption}</caption><thead><tr>{current.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{current.table.rows.map(row=><tr key={row[0]}>{row.map((cell,i)=>i===0?<th scope="row" key={i}>{cell}</th>:<td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>:null}
-            {current.figures?.map((figure,i)=>figure.placement !== "opening" && figure.afterParagraph === undefined ? renderFigure(figure,i) : null)}
+            {current.figures?.map((figure,i)=>figure.placement === undefined && figure.afterParagraph === undefined ? renderFigure(figure,i) : null)}
             {current.takeaway ? <blockquote className={styles.takeaway}><span aria-hidden="true">◇</span>{current.takeaway}</blockquote> : null}
             <VisualSources records={visualSources}/>
             <details className={styles.evidence}><summary lang={locale}>{copy.sourceNotes} <span aria-hidden="true">+</span></summary><p>{current.evidence}</p>{sources.length?<ol>{sources.map(source=><li key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><p>{source.note}</p></li>)}</ol>:<p>Source: the stated mathematical model or owner-provided research capture. Original scene studies accompany selected visual citations.</p>}</details>
             {index===navigation.length-1?<>
-              <section className={styles.coda}>
-                <p className={styles.eyebrow}>Coda</p>
-                <h2>The orchard</h2>
-                <p>
-                  An orchard takes work before it bears fruit, and care
-                  after the first harvest. The work needs to be paid for.
-                  It also needs to leave the trees capable of another
-                  season. For a game, the lasting resource is people’s
-                  willingness to spend part of their lives there.
-                </p>
-                <p>
-                  Sometimes the right next step is another adventure.
-                  Sometimes it is another evening in a familiar world.
-                  A business can support either. Its model deserves to be
-                  judged by the experience it makes possible, including
-                  whether someone can finish, take a break or return on
-                  terms they understand.
-                </p>
-              </section>
               <section className={styles.rules}><h2>Ten rules that travel</h2><ol>{rules.map(rule=><li key={rule}>{rule}</li>)}</ol></section>
             </>:null}
           </article>

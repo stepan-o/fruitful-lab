@@ -58,17 +58,11 @@ export const chainSources: Record<string,ChainSource> = {
     "url": "https://help.netflix.com/en/node/100639/",
     "note": "Personalized discovery inside the service; not a claim that producers pay for placement."
   },
-  "steam-bg3": {
-    "id": "steam-bg3",
-    "title": "Larian · Baldur’s Gate 3 on Steam",
-    "url": "https://store.steampowered.com/app/1086940/Baldur_s_Gate_3/",
-    "note": "Larian as developer/publisher, purchase and edition information, Dungeons & Dragons setting."
-  },
-  "hasbro": {
-    "id": "hasbro",
-    "title": "Hasbro · 2023 annual report",
-    "url": "https://investor.hasbro.com/static-files/0e548540-ae0c-49a2-83ed-053cd009623a",
-    "note": "Baldur’s Gate 3 contributes to digital licensing revenue. The Larian royalty rate is not asserted."
+  "steam-cyberpunk": {
+    "id": "steam-cyberpunk",
+    "title": "CD PROJEKT RED · Cyberpunk 2077 on Steam",
+    "url": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/",
+    "note": "CD PROJEKT RED as developer/publisher, purchase and edition information, Futuristic setting."
   },
   "steam-pay": {
     "id": "steam-pay",
@@ -82,10 +76,10 @@ export const chainSources: Record<string,ChainSource> = {
     "url": "https://partner.steamgames.com/doc/marketing/tools",
     "note": "Store visibility is not sold as advertising space. External marketing and advertising are distinct channels."
   },
-  "gfn-bg3": {
-    "id": "gfn-bg3",
-    "title": "NVIDIA · Baldur’s Gate 3, local or GeForce NOW",
-    "url": "https://www.nvidia.com/en-us/geforce/news/baldurs-gate-3-and-even-more-dlss-games-this-august/",
+  "gfn-cyberpunk": {
+    "id": "gfn-cyberpunk",
+    "title": "NVIDIA · Cyberpunk 2077, local or GeForce NOW",
+    "url": "https://www.nvidia.com/en-gb/geforce/news/cyberpunk-2077-rtx-dlss-out-now/",
     "note": "Confirms the same game can run locally or through GeForce NOW. Historical GPU performance claims are not reused."
   },
   "gfn": {
@@ -100,17 +94,17 @@ export const chainSources: Record<string,ChainSource> = {
     "url": "https://www.nvidia.com/en-us/geforce-now/faq/",
     "note": "Free and paid options; this comparison selects a paid membership, without quoting prices or implying all cloud access is paid."
   },
-  "ps-bg3": {
-    "id": "ps-bg3",
-    "title": "PlayStation Store · Baldur’s Gate 3",
-    "url": "https://store.playstation.com/en-us/product/UP3526-PPSA14001_00-0507384846053057/",
-    "note": "Larian’s PS5 edition; PS Plus for online multiplayer. A Premium trial is not the full game in a subscription catalog."
+  "ps-cyberpunk": {
+    "id": "ps-cyberpunk",
+    "title": "PlayStation Store · Cyberpunk 2077",
+    "url": "https://store.playstation.com/en-us/product/UP4497-PPSA03974_00-0000000000000CP1/",
+    "note": "CD PROJEKT RED’s single-player PS5 edition. Purchase and subscription-catalog access are distinct offers."
   },
   "sony": {
     "id": "sony",
     "title": "Sony · FY2025 Q3 supplemental information",
     "url": "https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/25q3_supplement.pdf",
-    "note": "Separates console hardware, digital software, add-ons and network-service revenue. Larian’s store settlement is not public here."
+    "note": "Separates console hardware, digital software, add-ons and network-service revenue. CD PROJEKT RED’s store settlement is not public here."
   },
   "diablo": {
     "id": "diablo",
@@ -289,48 +283,46 @@ export const chainModels: ChainModel[] = [
   {
     "id": "pc",
     "label": "PC · local",
-    "example": "Baldur’s Gate 3 · Steam purchase",
+    "example": "Cyberpunk 2077 · Steam purchase",
     "tag": "A game licence",
-    "group": "bg3",
+    "group": "cyberpunk",
     "cells": [
       {
-        "text": "Larian develops and publishes BG3, paying for its team and production. Wizards of the Coast / Hasbro supplies the licensed Dungeons & Dragons world; Hasbro reports digital licensing income.",
+        "text": "CD PROJEKT RED develops and publishes Cyberpunk 2077, paying for its team and production.",
         "sources": [
-          "steam-bg3",
-          "hasbro"
+          "steam-cyberpunk"
         ]
       },
       {
-        "text": "Larian supplies the game to Valve for sale through Steam under a distribution agreement. The customer buys a personal game licence; Steam is not buying a cabinet to resell turns.",
+        "text": "CD PROJEKT RED supplies the game to Valve for sale through Steam under a distribution agreement. The customer buys a personal game licence; Steam is not buying a cabinet to resell turns.",
         "sources": [
-          "steam-bg3",
+          "steam-cyberpunk",
           "steam-pay"
         ]
       },
       {
-        "text": "Larian’s publicity and community work bring attention; Steam adds search, recommendations, reviews and promotions. Valve says it does not sell store advertising space. External campaigns are separate spending.",
+        "text": "CD PROJEKT RED’s publicity and community work bring attention; Steam adds search, recommendations, reviews and promotions. Valve says it does not sell store advertising space. External campaigns are separate spending.",
         "sources": [
           "steam-reach",
-          "steam-bg3"
+          "steam-cyberpunk"
         ]
       },
       {
         "text": "Valve delivers files, updates and store services. The player supplies a PC and runs the game locally; hardware, electricity and internet have their own suppliers and bills.",
         "sources": [
-          "steam-bg3"
+          "steam-cyberpunk"
         ]
       },
       {
-        "text": "Player → Steam checkout: payment for BG3. Replaying that purchased edition creates no new base-game charge. Optional editions/add-ons remain separate offers.",
+        "text": "Player → Steam checkout: payment for Cyberpunk 2077. Replaying that purchased edition creates no new base-game charge. Optional editions/add-ons remain separate offers.",
         "sources": [
-          "steam-bg3"
+          "steam-cyberpunk"
         ]
       },
       {
-        "text": "Valve → Larian: sales proceeds after adjustments and Valve’s agreed share. Larian separately pays production costs and its IP-licensing obligations. The actual BG3 platform and royalty rates are not assumed.",
+        "text": "Valve → CD PROJEKT RED: sales proceeds after adjustments and Valve’s agreed share. CD PROJEKT RED pays its production and business costs. The actual Cyberpunk 2077 store settlement is not assumed.",
         "sources": [
-          "steam-pay",
-          "hasbro"
+          "steam-pay"
         ]
       }
     ],
@@ -341,29 +333,28 @@ export const chainModels: ChainModel[] = [
   {
     "id": "cloud",
     "label": "PC · cloud",
-    "example": "Baldur’s Gate 3 · Steam + GeForce NOW",
+    "example": "Cyberpunk 2077 · Steam + GeForce NOW",
     "tag": "Game + machine time",
-    "group": "bg3",
+    "group": "cyberpunk",
     "cells": [
       {
-        "text": "Larian develops and publishes BG3, paying for its team and production. Wizards of the Coast / Hasbro supplies the licensed Dungeons & Dragons world; Hasbro reports digital licensing income.",
+        "text": "CD PROJEKT RED develops and publishes Cyberpunk 2077, paying for its team and production.",
         "sources": [
-          "steam-bg3",
-          "hasbro"
+          "steam-cyberpunk"
         ]
       },
       {
-        "text": "The Steam game licence follows the same purchase route as local PC play. A paid GeForce NOW membership supplies access to remote gaming hardware; it does not include a BG3 purchase.",
+        "text": "The Steam game licence follows the same purchase route as local PC play. A paid GeForce NOW membership supplies access to remote gaming hardware; it does not include a Cyberpunk 2077 purchase.",
         "sources": [
           "gfn",
-          "gfn-bg3"
+          "gfn-cyberpunk"
         ]
       },
       {
-        "text": "Larian and Steam still introduce the game. NVIDIA also promotes supported titles to attract customers to its streaming service: the game becomes a reason to buy access to the equipment.",
+        "text": "CD PROJEKT RED and Steam still introduce the game. NVIDIA also promotes supported titles to attract customers to its streaming service: the game becomes a reason to buy access to the equipment.",
         "sources": [
           "steam-reach",
-          "gfn-bg3"
+          "gfn-cyberpunk"
         ]
       },
       {
@@ -381,68 +372,66 @@ export const chainModels: ChainModel[] = [
         ]
       },
       {
-        "text": "Steam settles the game sale with Larian; NVIDIA collects the service fee and funds its operation. No undisclosed per-session payment from NVIDIA to Larian is inferred.",
+        "text": "Steam settles the game sale with CD PROJEKT RED; NVIDIA collects the service fee and funds its operation. No undisclosed per-session payment from NVIDIA to CD PROJEKT RED is inferred.",
         "sources": [
           "steam-pay",
           "gfn"
         ]
       }
     ],
-    "stays": "The same BG3 work and Steam licence can support local or cloud play.",
+    "stays": "The same Cyberpunk 2077 work and Steam licence can support local or cloud play.",
     "changes": "A specialist operator returns between the player and the machine. Recurring payment can pay for computing without changing the game into a seasonal service.",
     "boundary": "Paid NVIDIA-operated GeForce NOW route, using a supported Steam copy. Free tiers, partner-operated regions and other stores are outside this example."
   },
   {
     "id": "ps5",
     "label": "PlayStation",
-    "example": "Baldur’s Gate 3 · PS5 download",
-    "tag": "Game + optional network",
-    "group": "bg3",
+    "example": "Cyberpunk 2077 · PS5 download",
+    "tag": "Game + console",
+    "group": "cyberpunk",
     "cells": [
       {
-        "text": "Larian develops and publishes BG3, paying for its team and production. Wizards of the Coast / Hasbro supplies the licensed Dungeons & Dragons world; Hasbro reports digital licensing income.",
+        "text": "CD PROJEKT RED develops and publishes Cyberpunk 2077, paying for its team and production.",
         "sources": [
-          "steam-bg3",
-          "hasbro"
+          "steam-cyberpunk"
         ]
       },
       {
-        "text": "Larian publishes the PS5 edition through PlayStation Store. The player buys a game licence from Sony’s storefront and separately buys or already has a PS5.",
+        "text": "CD PROJEKT RED publishes the PS5 edition through PlayStation Store. The player buys a game licence from Sony’s storefront and separately buys or already has a PS5.",
         "sources": [
-          "ps-bg3",
+          "ps-cyberpunk",
           "sony"
         ]
       },
       {
-        "text": "Larian’s publicity meets PlayStation’s storefront, trailers and platform promotion. These are discovery channels; this record does not disclose a paid placement deal or campaign fee.",
+        "text": "CD PROJEKT RED’s publicity meets PlayStation’s storefront, trailers and platform promotion. These are discovery channels; this record does not disclose a paid placement deal or campaign fee.",
         "sources": [
-          "ps-bg3"
+          "ps-cyberpunk"
         ]
       },
       {
-        "text": "The player’s console runs BG3. Sony operates downloads and network services; Larian supplies the game and updates. Sony is both hardware supplier and platform operator.",
+        "text": "The player’s console runs Cyberpunk 2077. Sony operates downloads and network services; CD PROJEKT RED supplies the game and updates. Sony is both hardware supplier and platform operator.",
         "sources": [
-          "ps-bg3",
+          "ps-cyberpunk",
           "sony"
         ]
       },
       {
-        "text": "Player → PlayStation Store: BG3 purchase. Online multiplayer additionally requires PS Plus; local single-player does not. Hardware is another transaction. A Premium trial is not catalog ownership.",
+        "text": "Player → PlayStation Store: Cyberpunk 2077 purchase. This single-player game does not require a PS Plus multiplayer subscription. Hardware is another transaction. The separately offered catalog route depends on subscription terms.",
         "sources": [
-          "ps-bg3"
+          "ps-cyberpunk"
         ]
       },
       {
-        "text": "Sony receives the store payment and settles with Larian under their publishing agreement; Larian has separate production and IP costs. Sony also earns hardware and network-service revenue. Exact BG3 settlement terms are not public here.",
+        "text": "Sony receives the store payment and settles with CD PROJEKT RED under their publishing agreement; CD PROJEKT RED has separate production and business costs. Sony also earns hardware and network-service revenue. Exact Cyberpunk 2077 settlement terms are not public here.",
         "sources": [
           "sony",
-          "ps-bg3",
-          "hasbro"
+          "ps-cyberpunk"
         ]
       }
     ],
     "stays": "The same producer and adventure can be sold through a different storefront.",
-    "changes": "The platform combines hardware, distribution and paid network access. A subscription can sit beside a purchased game without replacing its purchase.",
+    "changes": "Sony supplies both the console and its store. This purchase route buys the game separately; subscription catalog access is another offer with different terms.",
     "boundary": "Downloaded PS5 edition. Cloud streaming and disc resale would form different routes."
   },
   {

@@ -1,3 +1,99 @@
+Sanctuary complete narrative rebuild (2026-10-08): the reader now has 33 chapters
+in seven acts. The approved Pong opening is preserved. The business chain leads
+through Valve, Epic, Rockstar, BG3/Diablo IV, production economics, cloud delivery,
+world creation and Concord. Four consecutive Diablo history chapters establish
+the original game, D2, D3 and D4 before Gauntlet opens the system analysis.
+All downstream prose has been rebuilt around player experience, production
+commitments, the next offer and the evidence needed to assess it. Existing IDs
+remain valid; diablo-second-life, diablo-market and diablo-service are new.
+Inline exhibits use typed chapter metadata. Four original history illustrations,
+an interactive history comparison and a Valve handheld study augment sourced
+art. New media uses the existing immutable manifest/file and short-pointer
+pipeline, with per-work provenance and editorial-use records. English editorial
+prose remains English; the existing six-language navigation contract is unchanged.
+The full manuscript is docs/sanctuary/COMPLETE_MANUSCRIPT_2026-10-08.md;
+the implemented sequence and evidence boundaries are in NARRATIVE_SPINE_2026-10-08.md.
+
+Earlier implementation notes below are historical checkpoints; the complete
+edition above supersedes their chapter counts and pending-rewrite status.
+
+Sanctuary company chapters (2026-10-08, local): Valve → Epic → Rockstar now
+occupy chapters 3–5, followed by platform agreements, cloud and purchase history.
+Chapter 2 hints at Valve’s move into hardware; chapter 3 explains the existing
+library/device relationship, lists its game catalog with credit/status boundaries,
+and replaces the generic equipment shop with an original Steam Deck study.
+Epic opens with Unreal’s 1998 origin and technology becoming a creator product.
+Rockstar develops durable worlds/franchises through core loop and theme. Shared
+1997–1998 game milestones are not claims of identical company founding dates.
+Chapter IDs, chapter count, chapter 1 and asset/cache contracts are unchanged.
+
+Sanctuary chapter 2 editorial pass (2026-10-08, local): eight paragraphs connect
+creative choices to production funding and to the hardware an audience can use.
+The operator-owned cabinet → household computer/console → provider-owned cloud
+machine thread is explicit, including the separate game purchase/catalog choice.
+Hardware cost and capability affect reach; streaming retains device and network
+requirements. Valve’s hardware survey supplies an additional primary citation.
+CD PROJEKT’s catalog decision and the bridge to Steam remain. The market map
+follows paragraph 3; the Cyberpunk promo follows paragraph 4. Manuscript and
+editorial guide preserve this hardware layer for the later history. Diagram
+behavior and chapter 1 are unchanged. See CHAPTER_TWO_MANUSCRIPT.md.
+
+
+Sanctuary Cyberpunk worked example (2026-10-07, local): after chapter 2’s
+market map, the essay explains console catalog access, NVIDIA’s separate PC
+computing service, and the published Sony-deal rationale. Xbox’s Cyberpunk
+catalog route now appears in the map for console/Xbox cloud only. No private
+contract amounts or PC-exclusion motive are inferred. The worked example uses Sony’s dated Cyberpunk / PlayStation Plus catalog
+promotion, with optimized derivatives and a specific rights-use record. Night
+City art remains in the dedicated cloud chapter. Manuscript and citations align.
+
+Sanctuary cloud access comparison (2026-10-07, local): chapter 2 now holds
+Forza Horizon 5, Playground Games, Xbox Game Studios and GeForce NOW fixed
+between Steam purchase and PC Game Pass access. Store art, prose and citations
+match. The dedicated cloud chapter still compares Cyberpunk local/cloud play
+with a fixed Steam purchase. No new assets or animation work. This supersedes
+the overview’s previous Cyberpunk purchase / Forza catalog pairing.
+
+Sanctuary console access options (2026-10-07, local): PlayStation, Xbox and
+Cloud play share Purchased game / Catalog membership controls. Console examples
+hold Spider-Man 2 + PS5 and Forza Horizon 5 + Xbox constant; access, payment,
+publisher readout and illustrated storefront change together. Hardware remains a
+separate purchase. PlayStation, Xbox and Cloud play now open on Purchased game as a common
+comparison point; catalog access remains an explicit alternative (8 October). Availability and scope are recorded in
+`docs/sanctuary/BUSINESS_CIRCUIT.md`. No asset/cache contract changes.
+
+Sanctuary cloud circuit correction (2026-10-07, local): all video-game routes
+now show five separate roles, including CD PROJEKT RED as both studio and
+publisher. Purchased and catalog cloud access each reach the player directly;
+NVIDIA supplies computing on a parallel branch, with no store-to-NVIDIA resale
+edge. The dedicated Cyberpunk local/cloud comparison retains the same five
+roles. Sources, paired selection tests and layout are aligned. See
+`docs/sanctuary/BUSINESS_CIRCUIT.md`. This supersedes earlier four-box cloud notes.
+
+Sanctuary market routes (2026-10-07, local): chapter 2 closes with a game-first
+interactive map before the Valve bridge. Developer/publisher stay fixed; access
+and computing choices preserve compatible selections. Diablo IV, Cyberpunk,
+Forza Horizon 5, Fortnite and Spider-Man 2 expose cross-company purchase, catalog,
+local/cloud and bundled/free routes. Sony/Microsoft presets retain integrated
+studio-to-console or studio-to-cloud examples. Alternate connections stay visible.
+This replaces the earlier company-footprint map. Sources and compatibility scope
+are documented in `docs/sanctuary/MARKET_MAP.md`. No media/cache contract changed.
+
+Sanctuary business-act revision (2026-10-07, local): 29 chapters. Chapter 2
+uses the business circuit to distinguish the game purchase/catalog bill from
+hardware purchase/computing access. Tabs: Arcade → PC purchase → PlayStation →
+Xbox → Cloud play → Netflix. Cloud defaults to a bought Steam copy + paid
+GeForce NOW; an optional PC Game Pass route shows two recurring bills. These
+are selected offers, not exclusive platform identities. Valve immediately
+follows chapter 2, then platform agreements → cloud → history → Epic → Rockstar
+→ Concord. Gauntlet opens the next act, followed by `the-fork`. Stable IDs and
+chapter-scoped versioned media remain intact. Valve/Steam marks and the credited
+Counter-Strike 1.6 menu join the Half-Life citation; public rights records state
+an editorial rationale rather than publisher clearance. PlayStation’s original
+store illustration has a distinct source-informed web composition. See
+`docs/sanctuary/BUSINESS_ACT.md` and the two chapter manuscripts. Chapter 1 is
+unchanged; this supersedes older order/count notes below.
+
 Sanctuary visual provenance (2026-10-05): the reader's collapsed “Visual sources
 & use” index links only the active chapter's cited images, embedded marks and
 referenced cover works to their source and stable rights-register anchors.
@@ -825,3 +921,8 @@ established canon. The server-rendered gallery uses its own `loopforge-prehistor
 immutable media pack and on-demand native image dialogs; existing chapters do not
 import the gallery manifest or content. Brief, provenance and verification:
 `docs/loopforge/PREHISTORY_GALLERY.md`.
+
+
+### Sanctuary world-building chapter · 7 October 2026 · local draft
+
+The reader now has 30 chapters. `making-worlds` follows `rockstar-world` and precedes `concord` within the first act. It compares production approaches, explains CDPR’s Unreal partnership, and introduces the author’s Loopforge experiment. The chapter manuscript is `docs/sanctuary/WORLD_BUILDING_MANUSCRIPT.md`. A separate `sanctuary-worlds` asset pack holds three bounded game citations and one owner-authorized Loopforge concept painting. Per-image rights records are in `world-media.json`; the public register distinguishes policy scope from criticism/review rationale. `WorldWorkshop` switches captured fourth-shift outcomes from the actual Loopforge teaching engine (seed 42, same three prior shifts); changing the authored account does not alter the event. It makes no live model request. Wider character agency remains a design ambition. Chapter 1 and other project worktrees are preserved.

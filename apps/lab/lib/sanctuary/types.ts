@@ -11,9 +11,9 @@ export type Figure = {
   caption: string;
   credit: string;
   sourceUrl?: string;
-  placement?: "opening";
+  placement?: "opening" | "identity";
   label?: string;
-  presentation?: "archive" | "pixels";
+  presentation?: "archive" | "pixels" | "identity";
   details?: { label: string; text: string; rect: [number, number, number, number] }[];
   afterParagraph?: number;
 };
@@ -22,6 +22,7 @@ export type Panel = {
   items: { label: string; text: string }[];
   flow?: boolean;
 };
+export type InlineExhibit = { afterParagraph: number; kind: "market-map" | "world-workshop" | "epic-spending" | "gathering-place" | "business-layers" | "platform-revenue" | "cloud-figures" | "audience-economy" | "chapter-diagram" | "funding" };
 export type Chapter = {
   id: string;
   visual: VisualSpec;
@@ -31,6 +32,7 @@ export type Chapter = {
   paragraphs: string[];
   sections?: { at: number; title: string }[];
   paragraphCitations?: Record<string, string[]>;
+  exhibits?: InlineExhibit[];
   takeaway?: string;
   figures?: Figure[];
   panel?: Panel;

@@ -1,3 +1,5 @@
+import {HistoryComparison} from "./DiabloHistory";
+import {historyIds,type HistoryId} from "@/lib/sanctuary/history-ids";
 import type { VisualSpec } from "@/lib/sanctuary/visual-content";
 import {
   PromiseAtlas,
@@ -58,6 +60,7 @@ export default function ChapterDiagram({
   index: number;
   chapter: string;
 }) {
+  if(historyIds.includes(chapter as HistoryId)) return <figure className={s.exhibit} aria-label={`Diagram: ${diagram.title}`}><HistoryComparison chapter={chapter as HistoryId}/></figure>;
   const Instrument = instruments[chapter as keyof typeof instruments];
   if (!Instrument) throw new Error(`Missing Sanctuary exhibit: ${chapter}`);
   return (

@@ -190,3 +190,82 @@ manifest alone is insufficient to retract an already-public immutable file:
 remove affected bytes/old manifests as appropriate, purge CDN caches and address
 host notices deliberately. A statutory counter-notice requires a separate legal
 decision. Never automatically respond to a complaint with one.
+
+
+## Valve chapter — 7 October 2026
+
+The owner requested Valve/Steam marks, the classic Counter-Strike menu and
+Half-Life imagery for the chapter immediately following the business circuit.
+The bounded uses and exact hashes are in `context-media.json`; the fixed public
+source excerpts are in `rights-sources.ts`.
+
+- [Valve’s video policy](https://store.steampowered.com/video_policy) concerns
+  videos, not a blanket still-image licence. Do not describe these stills as
+  explicitly licensed by that policy.
+- [Valve’s site terms](https://www.valvesoftware.com/en/legal) do not grant broad
+  republication rights. Their restrictions/applicability remain distinct from
+  the existing criticism/review assessment; no publisher clearance is claimed.
+- [Steam’s branding guidance](https://partner.steamgames.com/doc/marketing/branding)
+  and its December 2024 PDF require unchanged approved marks, separate placement,
+  clear space and no implied endorsement. The PDF explicitly says the guidelines
+  convey no rights. Our use identifies the subjects of analysis; it is not a
+  co-branded product. Full Steam trademark attribution is on the public register.
+- Valve’s company SVG and Steam symbol come from its corporate site. The SVG’s
+  published fill/clipping styles are embedded so standalone rendering is faithful.
+- The Counter-Strike **1.6** menu is Yearman’s public MobyGames capture,
+  [uploaded 6 January 2011](https://www.mobygames.com/game/165613/counter-strike/screenshots/windows/487947/).
+  It is not the first 1999 beta or a pre-Steam menu; the Steam mark is visible.
+  We use the publicly displayed 800×600 image, not a premium original download.
+  The contributor is named beside the image. The full frame is preserved;
+  optional overlays separately point to Find Servers and the Steam mark.
+- Half-Life’s existing official gallery image remains the gameplay reference.
+  Each image has a specific analytical role rather than repeated wallpaper use.
+  No soundtrack, game distribution, fan recreation or extracted asset collection
+  is included. Source availability/credit is not treated as permission.
+
+This is the owner-authorized public editorial approach under the earlier
+publication decision, with context-dependent fair-dealing reasoning and the
+existing removal procedure. It is not legal clearance or a guarantee.
+
+
+## World-building chapter — 7 October 2026
+
+The new `sanctuary-worlds` pack contains three publisher-supplied gallery frames
+(The Witcher 3, Red Dead Redemption 2 and RimWorld) and one owner-authorized
+Loopforge concept painting. Each has a source URL, original file hash, retrieval
+date, owner, analytical purpose and bounded treatment in `world-media.json`.
+The public register renders those records; `rights-sources.ts` preserves dated
+short policy excerpts and links to the full policies.
+
+The chapter also invites readers to inspect the author's Loopforge project.
+That mixed context is disclosed. Do not treat a noncommercial fan policy as
+automatic permission for it: CDPR's conditions matter; Rockstar expressly
+excludes digital publishing and product promotion from its allowance; Ludeon's
+conditional User Content licence is distinct from applicable statutory rights.
+The selected stills rely on the existing context-dependent criticism/review
+assessment, not bespoke permission or blanket publisher clearance. Each is
+adjacent to analysis of its own game, credited, retained as a complete frame,
+and absent from the Loopforge invitation and interactive prototype. There is
+no extracted game-asset library, music or in-game reuse.
+
+The owner expressly authorized Loopforge art reuse and new derivative work.
+That authorization does not grant a general licence to site visitors. The
+concept painting is identified as such, not a gameplay capture. The new
+mechanical exhibit is original SVG artwork and uses only recorded Loopforge
+teaching-model outcomes. See WORLD_BUILDING_IMPLEMENTATION.md for provenance.
+
+
+### Cyberpunk catalog promotion — 7 October 2026
+
+Chapter 2 cites the complete Cyberpunk / PlayStation Plus promotional image from
+Sony’s 9 July 2025 Game Catalog announcement. The analysis concerns the commercial
+packaging and licensing of an individually sold game inside a subscription. The
+source’s game logo, service mark, tier labels and offer notice are relevant to
+that argument; all remain intact. The caption dates the promotion and distinguishes
+the included base game from the separately sold expansion. This is a bounded
+criticism/review assessment, not a licence inferred from the download link or a
+claim that attribution alone permits reuse. Sony Interactive Entertainment and
+CD PROJEKT RED are credited; background covers remain credited to their respective
+rights holders and are not extracted for separate use. The original stays outside
+runtime delivery; lazy responsive WebP derivatives use the existing asset contract.
+Source, hash and full treatment: `context-media.json`, `cyberpunk-catalog-promo`.

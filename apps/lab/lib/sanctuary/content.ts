@@ -1,18 +1,43 @@
+import {narrativeSources} from "./narrative-sources";
+import {diabloHistoryChapters} from "./diablo-history-chapters";
 import type { Chapter, EvidenceSource } from "./types";
+import { worldBuildingChapter, worldBuildingSources } from "./world-building-chapter";
+import { companyChapters, companySources } from "./company-chapters";
+import { businessOverviewChapters } from "./business-overview-chapters";
 import { chapterVisuals } from "./visual-content";
 import { chainSources } from "./business-chains";
 
 export const parts = [
-  "Play, payment and the next purchase",
-  "Studios, games and players",
-  "Why people play",
-  "How play takes shape",
-  "What money buys",
-  "The purchase path",
-  "What counts as success",
+  "The businesses around a game",
+  "How Sanctuary changed",
+  "Keeping the world alive",
+  "What makes play worthwhile",
+  "What the purchase changes",
+  "The offer in front of the player",
+  "Evidence of a better evening"
 ];
-export const revision = "2026-10-05";
+export const revision = "2026-10-08";
 export const sources: EvidenceSource[] = [
+  ...narrativeSources,
+  {"id": "steam-hardware-survey", "title": "Valve — Steam Hardware & Software Survey, September 2026", "url": "https://store.steampowered.com/hwsurvey/", "note": "Checked 8 October 2026. Valve states that its optional, anonymous hardware survey informs technology investment and product decisions. Cited for that stated purpose, not for any hardware-market percentage or a measured causal effect on game design. The page updates monthly."},
+  {"id": "cyberpunk-plus-entry", "title": "PlayStation — Cyberpunk joins the Game Catalog, 9 July 2025", "url": "https://blog.playstation.com/2025/07/09/playstation-plus-game-catalog-for-july-cyberpunk-2077-abiotic-factor-banishers-ghosts-of-new-eden-and-more/", "note": "Base-game inclusion in Extra and Premium; Phantom Liberty was a separate discounted purchase. The historical promotional discount is not presented as current."},
+  {"id": "cyberpunk-pass-entry", "title": "Xbox — Cyberpunk joins Game Pass, March 2026", "url": "https://news.xbox.com/en-us/2026/03/03/xbox-game-pass-march-2026-wave-1/", "note": "Lists Cyberpunk for Cloud and Console from 10 March, under Premium and Ultimate. It does not list PC access; no reason for that negotiated scope is disclosed."},
+  {"id": "cyberpunk-ps-offer", "title": "PlayStation — Cyberpunk purchase, catalog and cloud offers", "url": "https://www.playstation.com/en-us/games/cyberpunk-2077/", "note": "US offer checked 7 October 2026: Extra catalog access; Premium required for supported PS5 and Portal cloud play. Base game and expansion are distinct offers."},
+  {"id": "cyberpunk-xbox-offer", "title": "Xbox — Cyberpunk supported platforms and catalog offers", "url": "https://www.xbox.com/en-us/games/store/game/BX3M8L83BBRW", "note": "US listing checked 7 October 2026: Xbox One, Xbox Series and Xbox Cloud Gaming; Premium/Ultimate catalog inclusion. These console offers do not grant a Windows PC licence."},
+  {"id": "cdpr-catalog-economics", "title": "CD PROJEKT — Q3 2025 earnings call, questions 1, 4 and 5", "url": "https://www.cdprojekt.com/en/wp-content/uploads-en/2025/11/transcript-q3-2025-earnings.pdf", "note": "PDF pages 5–6: management’s Sony-deal rationale, recognised revenue, undisclosed compensation and potential expansion sales. The four-word quotation is an excerpt from Nielubowicz’s answer. Management’s assessment is attributed; no amount, cash-payment schedule, independent causal estimate or Xbox contract terms are inferred."},
+  {"id": "gfn-membership-terms", "title": "NVIDIA — GeForce NOW membership terms: virtual PC and content rights", "url": "https://www.nvidia.com/en-us/geforce-now/membership-terms/", "note": "The service rents virtual computing; the member needs sufficient rights to supported games. Store, device, region and publisher support can vary. Read alongside the PC Game Pass support article."},
+  ...companySources,
+  ...worldBuildingSources,
+  {"id": "gfn-game-pass", "title": "NVIDIA — Microsoft games and PC Game Pass on GeForce NOW", "url": "https://nvidia.custhelp.com/app/answers/detail/a_id/5462/kw/basics", "note": "Supported Microsoft Store and PC Game Pass routes; not the whole Game Pass catalog or an included NVIDIA entitlement. Checked 7 October 2026."},
+  {id:"steam-forza",title:"Steam — Forza Horizon 5: purchase, developer and publisher",url:"https://store.steampowered.com/app/1551360/Forza_Horizon_5/",note:"Purchase offer and Playground Games / Xbox Game Studios credits checked 7 October 2026. Used with NVIDIA’s support documentation to compare the same title through Steam and PC Game Pass on GeForce NOW."},
+  {"id": "gfn-forza", "title": "NVIDIA — Forza Horizon on GeForce NOW, 14 December 2023", "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-forza-horizon/", "note": "Specifically identifies Forza Horizon 5 via Steam, Xbox and PC Game Pass. Historical launch evidence, paired with current service and game offers; no current promotional bundle or price is assumed."},
+  {id:"circuit-forza",title:"Xbox — Forza Horizon 5: game, credits and purchase/catalog offers",url:"https://www.xbox.com/en-US/games/forza-horizon-5",note:"Selected offer checked 6 October 2026. The diagram uses a local console download through an eligible Game Pass plan; separate purchase and cloud routes also exist."},
+  {id:"circuit-game-pass",title:"Xbox — Game Pass access and membership terms",url:"https://www.xbox.com/en-US/xbox-game-pass",note:"Catalog access depends on the active subscription and title availability. No membership price, per-play compensation or private internal transfer is inferred."},
+  {id:"circuit-spider-man",title:"PlayStation Store — Marvel’s Spider-Man 2 for PS5",url:"https://store.playstation.com/concept/10002456",note:"Selected US offer checked 6 October 2026: individual purchase, one-player game, and separate catalog/cloud options. The diagram follows purchase and local PS5 play."},
+  {"id": "concord-offer", "title": "Firewalk — Concord pre-order offer, 6 June 2024", "url": "https://blog.playstation.com/2024/06/06/concord-is-now-available-to-pre-order-early-access-and-beta-detailed/", "note": "Historical US standard-edition list price and the promise of regular updates at no extra cost; not proof of why the release failed."},
+  {"id": "concord-acquisition", "title": "Sony — Firewalk acquisition announcement, 20 April 2023", "url": "https://sonyinteractive.com/en/press-releases/2023/sony-interactive-entertainment-to-acquire-firewalk-studios-from-probablymonsters-inc/", "note": "Records the 2021 publishing partnership and the announced acquisition; price and terms were not disclosed."},
+  {"id": "concord-closure", "title": "Sony — PlayStation Studios update, 29 October 2024", "url": "https://sonyinteractive.com/en/news/blog/an-update-from-playstation-studios/", "note": "Permanent sunset, studio closure and stated portfolio priorities. Management’s account is not an independent causal study."},
+
   {"id": "alcorn-oral", "title": "Al Alcorn — oral history, Computer History Museum, 2008, p. 13", "url": "https://archive.computerhistory.org/resources/access/text/2012/09/102658257-05-01-acc.pdf", "note": "Collection rounds, rear coin access and the several-customers observation. Recollection recorded in 2008; our closing interpretation is separate."},
   {"id": "epic-publishing", "title": "Epic Games Publishing — announced terms, 2020", "url": "https://store.epicgames.com/news/epic-games-publishing-announcement?lang=en-US", "note": "Full funding, developer IP ownership and a profit share after recoupment. A specific public offer, not a universal publishing contract."},
   {"id": "steam-cloud", "title": "Valve — Steam Cloud Play (Beta)", "url": "https://partner.steamgames.com/doc/features/cloudgaming", "note": "Separate purchase and streaming-service relationship; publisher opt-in, cloud saves and unchanged Steam payouts."},
@@ -27,10 +52,12 @@ export const sources: EvidenceSource[] = [
   {...chainSources["steam-pay"], id:"steam-settlement"},
   {...chainSources["amc"], id:"chain-cinema"},
   {...chainSources["netflix"], id:"chain-netflix"},
-  {...chainSources["steam-bg3"], id:"chain-bg3"},
+  {...chainSources["steam-cyberpunk"], id:"chain-cyberpunk"},
   {...chainSources["diablo"], id:"chain-xbox"},
-  {...chainSources["hasbro"], id:"chain-hasbro"},
+  {...chainSources["dune"], id:"chain-dune"},
   {...chainSources["microsoft"], id:"chain-microsoft"},
+  {...chainSources["gfn-cyberpunk"], id:"gfn-cyberpunk"},
+  {id:"gfn-cyberpunk-tier",title:"NVIDIA — GeForce NOW tier compatibility, March 2026",url:"https://blogs.nvidia.com/blog/geforce-now-thursday-virtual-reality-update/",note:"Cyberpunk 2077 requires a paid tier from 1 April 2026; basic access after the premium-hours allowance is exhausted is not available for this title."},
 
   {id:"arcade-route",title:"Play Meter — Operator survey, 1 November 1984, p. 42",url:"https://elibrary.arcade-museum.com/magazines/pm/PlayMeter-1984-11-01/PlayMeter-1984-11-01-042.pdf",note:"Documents operator/location collection splits. The comparative instrument distinguishes these arrangements from owner-operated venues; neither is attributed to the Pong prototype’s tavern without evidence."},
 
@@ -410,7 +437,7 @@ export const sources: EvidenceSource[] = [
   },
 ];
 
-const manuscript: Omit<Chapter, "visual">[] = [
+const manuscript: Omit<Chapter,"visual">[] = [
   {
     "id": "insert-coin",
     "part": 0,
@@ -471,155 +498,342 @@ const manuscript: Omit<Chapter, "visual">[] = [
     "id": "studio-to-screen",
     "part": 0,
     "title": "From studio to screen",
-    "lede": "Making the game, selling it and running it are different jobs. They can lead to different bills—even for the same evening of play.",
+    "lede": "How we pay for games helps shape which games get made—and what they ask of us in return.",
     "paragraphs": [
-      "Baldur’s Gate 3 is a fantasy role-playing game made by Larian Studios, in which a player leads a party of adventurers through a story shaped by their decisions. Buy it on Steam, the PC storefront run by Valve, and you can download it to your own computer. The game purchase and the computer purchase pay for different parts of the evening: Larian supplies the adventure; your machine does the work of bringing it to the screen.",
-      "Now play that same Steam copy through GeForce NOW, NVIDIA’s cloud gaming service. A computer in a data center runs the game and sends a video stream to your device, which sends your actions back. A paid membership buys use of that equipment; it does not buy Baldur’s Gate 3. Valve says the game purchase and its payments to the publisher remain on their existing terms. A recurring bill can therefore appear around a game without becoming part of the way its studio sells it.",
-      "Before the game can earn anything, somebody has to pay for production. A studio can fund the work itself, seek investors or work with a publisher—a company that helps finance and bring games to market. The agreement determines what the financier receives in return. When Epic Games announced its publishing business in 2020, it offered to cover up to the full development and publishing cost while leaving ownership of the game’s intellectual property with the developer. Once those costs were recovered, the developer would receive at least half the profits. Money could reach the team before release without giving it an immediate share of profit from the first sale.",
-      "Ownership introduces another claim on the proceeds. Larian develops and publishes Baldur’s Gate 3 using material from Dungeons & Dragons, the tabletop role-playing game owned by Wizards of the Coast, part of Hasbro. A license grants permission to use that material under agreed terms. Hasbro reports licensing income from the game. The people who make a particular adventure and the people who own the world it draws on can be paid through different agreements—even when the player encounters one apparently unified work.",
-      "Bringing that work to market involves more than finishing it. Translations, testing, store submissions and release planning all need people and money. Promotion has a further job: helping a potential buyer discover the game and decide whether it is for them. Trailers, reviews, friends and store recommendations can all contribute. Some attention is bought through advertising; some is earned through people choosing to talk about the work. Valve says Steam does not sell advertising placement in its store, so visibility there should not automatically be read as a campaign expense.",
-      "The checkout brings these arrangements together without making them visible. Steam collects the buyer’s payment, accounts for adjustments such as refunds and taxes, and pays its partner the agreed share of net revenue. The studio may still have production costs, financing commitments and licensing obligations to meet. A large sales total and enough money for the next project are different achievements. For an analyst, the question is not only how much players spent, but how much reached the business whose future we are trying to understand.",
-      "Cinema makes another version of the arrangement easy to see. A production company makes the film; a distributor brings it to market; an exhibitor runs the cinema. The exhibitor sells tickets and pays the distributor for the right to show the work. Like a bar with an arcade machine, the venue can also earn from drinks and food. But it has acquired permission to screen a film, rather than a cabinet it can keep operating. Similar evenings out can depend on different purchases behind the counter.",
-      "Netflix sells a different invitation: access to a catalog, with no new ticket required for the next episode. It pays for commissioned productions and licensed titles, while subscriptions—and advertising on its ad-supported plans—fund the service. Game catalogs bring a related offer to players. An eligible Xbox Game Pass subscription includes access to Diablo IV, Blizzard Entertainment’s online fantasy action game; the base game can also be bought separately. The catalog changes how someone gets in. Expansions and other paid additions can still be sold alongside it.",
-      "These roles need not belong to separate companies. Sony sells PlayStation consoles, operates their digital store and subscription services, and makes games through its own studios. Microsoft owns both Xbox and Blizzard. In industry language, a platform’s own games are first-party titles; games from other companies are third-party. That distinction changes how we follow the money. A sale of Larian’s game through Sony’s store involves two businesses settling with each other. A sale of Diablo IV through Xbox brings money into a group that contains both the store and the studio.",
-      "Those combined roles show up in Sony’s accounts. In the year ending March 2026, its gaming business reported about ¥1.36 trillion from add-on content, compared with ¥0.94 trillion from console hardware. Selling the machine is only one way that business earns from its place in the living room. These figures describe Sony’s revenue, including different kinds of sales and royalties; they are not a model of an individual player’s spending. Counting consoles alone would leave much of the business out of view.",
-      "Cloud gaming changes who supplies that machine. For someone whose computer cannot run a demanding game well, GeForce NOW can provide a way to play without buying a more powerful PC. NVIDIA takes on the rendering work, while the player still needs a suitable device and connection. The exchange creates new limits. Instead of downloading the game and generating its images locally, the device must keep receiving a stream quickly enough for actions to feel responsive. Bandwidth measures how much data the connection can carry; latency measures delay. A connection can have plenty of one and too much of the other.",
-      "For a developer, this can widen the set of devices through which people reach the game. It also introduces practical work. Valve warns that a player may receive a different virtual PC each session, so saved progress must live somewhere that survives the change. Its Cloud Play program requires publisher opt-in and an online save system. Meanwhile, customers who run the game locally still need it to work on their machines. Adding a streaming route does not remove those customers or make their hardware irrelevant to production decisions.",
-      "The right to offer that route can have an owner of its own. When the UK’s Competition and Markets Authority approved Microsoft’s restructured purchase of Activision Blizzard in 2023, the deal gave Ubisoft, another game publisher, cloud streaming rights outside the European Economic Area for the covered games, including new releases over the following fifteen years. Microsoft could own the studios while another publisher controlled those streaming rights. A game’s route to the audience had become valuable enough to negotiate separately from ownership of its maker.",
-      "It helps here to separate three things often gathered under the word “online.” Diablo IV can run on a player’s own Xbox while depending on Blizzard’s online game service. Game Pass can grant access to a downloaded game without streaming it. GeForce NOW can stream a game the player has already bought elsewhere. One service keeps the game world running, another sells catalog access, and another supplies remote computing. Combining them in one offer does not make their costs—or their reasons for charging—the same.",
-      "A cloud operator keeps paying to provide computing while its customer plays. NVIDIA’s standard Performance and Ultimate plans include 100 hours of premium playtime each month. After that allowance is used, a member can buy more premium hours or continue with basic access until it resets. The charge concerns the service running the game; it does not buy a stronger character or a better chance in a fight. To understand how payment can change those things too, we need to move from the businesses around a game to the rules inside it. That brings us back to the arcade, and to Gauntlet."
+      "A studio deciding what to make next faces more than a creative choice. Another complete game, an expansion and a world kept running for years require different commitments of people and money. There is also a practical limit on who can join in: the equipment needed to play. Building a more demanding game can mean asking part of its audience to buy a better machine before buying the adventure.",
+      "At the arcade, the operator carried that equipment bill and charged players for turns. At home, the player could buy a computer or console once, then build a library of games around it. Each new game could be sold to an audience that already owned the machine. A purchase could provide years of play, but another evening with it was not another sale for its maker. The studio still needed new buyers, paid additions or another agreement involving the work.",
+      "Xbox Game Pass and PlayStation Plus sell temporary access to a selection of games. For these services, a title can help attract or retain a subscriber even if that person would never buy it individually. An agreement to include the game gives its publisher another way to earn from an existing release. A finished adventure can help sell an ongoing service without having to become one itself.",
+      "Cloud gaming changes who must own the powerful machine. NVIDIA’s GeForce NOW runs supported games on remote computers and streams them to a player’s device. A game bought through Steam, Valve’s PC store, can reach someone whose own computer could not run it. A paid NVIDIA membership buys use of the remote hardware while the game remains a separate purchase. This changes the requirements rather than removing them: the player still needs a suitable device and a fast, responsive connection.",
+      "CD PROJEKT RED’s Cyberpunk 2077 shows why a publisher might want several of these arrangements at once. The game entered PlayStation Plus in July 2025 and Xbox Game Pass in March 2026 while remaining on sale individually. Giving subscribers access meant accepting that some would no longer buy a copy.",
+      "In a November 2025 earnings call, CD PROJEKT co-CEO Michał Nowakowski acknowledged that cost. The company believed its Sony agreement would earn more than keeping the game outside the catalog. It also included only the base game. New players could still buy Phantom Liberty, its separately sold expansion. The decision weighed lost purchases against licensing income and the chance to sell those players something more.",
+      "Finance chief Piotr Nielubowicz called this “conscious life cycle management.” A similar PlayStation Plus agreement involving The Witcher games had brought in revenue a year earlier. Cyberpunk’s Sony agreement was recorded as revenue entirely in one quarter, even though players paid subscriptions. The service needed people to stay subscribed; the publisher had made an agreement concerning one work. Their income did not follow the same schedule.",
+      "An earlier release can therefore help pay for a later one through more than its original sales. It can also become part of somebody else’s continuing business. The companies bringing games to an audience can earn across many studios’ releases while each studio prepares its next production. Steam gives Valve that position on computers its customers already own. The next game that brings customers through its store need not be one Valve made. Valve’s handheld Steam Deck extends that relationship into equipment. A company introduced here as a store also makes a machine on which its customers can play."
+    ],
+    "paragraphCitations": {
+      "0": [
+        "steam-hardware-survey"
+      ],
+      "1": [
+        "alcorn-oral",
+        "steam-settlement",
+        "cdpr-catalog-economics"
+      ],
+      "2": [
+        "circuit-game-pass",
+        "cyberpunk-ps-offer",
+        "cdpr-catalog-economics"
+      ],
+      "3": [
+        "steam-cloud",
+        "gfn-membership-terms",
+        "gfn-requirements"
+      ],
+      "4": [
+        "cyberpunk-plus-entry",
+        "cyberpunk-pass-entry",
+        "cdpr-catalog-economics"
+      ],
+      "5": [
+        "cdpr-catalog-economics"
+      ],
+      "6": [
+        "cdpr-catalog-economics"
+      ],
+      "7": [
+        "cdpr-catalog-economics",
+        "steam-settlement",
+        "valve-about"
+      ]
+    },
+    "sections": [
+      {
+        "at": 4,
+        "title": "What the deal is worth"
+      }
+    ],
+    "figures": [
+      {
+        "asset": "cyberpunk-catalog-promo",
+        "label": "PlayStation Plus · July 2025",
+        "alt": "PlayStation Plus promotional image featuring the Cyberpunk 2077 logo and key art alongside Game Catalog, Premium and Extra branding",
+        "caption": "Sony made Cyberpunk part of PlayStation Plus’s 15th-anniversary promotion. The base game entered the catalog; Phantom Liberty remained a separate purchase, with a temporary member discount.",
+        "credit": "Sony Interactive Entertainment / CD PROJEKT RED; other pictured games belong to their respective rights holders",
+        "afterParagraph": 4
+      }
+    ],
+    "sources": [
+      "alcorn-oral",
+      "steam-settlement",
+      "circuit-game-pass",
+      "steam-cloud",
+      "gfn-membership-terms",
+      "gfn-forza",
+      "gfn-game-pass",
+      "cyberpunk-ps-offer",
+      "cyberpunk-xbox-offer",
+      "cyberpunk-plus-entry",
+      "cyberpunk-pass-entry",
+      "cdpr-catalog-economics",
+      "valve-about",
+      "steam-hardware-survey",
+      "gfn-requirements"
+    ],
+    "evidence": "Selected purchase and subscription routes, not a ranking of how most customers pay. GeForce NOW’s bring-your-own-games model is distinct from catalog membership; the optional PC Game Pass route is separately sourced. The comparison does not claim that every cloud service follows NVIDIA’s model or that every hardware upgrade is compulsory. Affordability, retention and publisher incentives are analytical questions, not estimated causal effects. Steam documents unchanged publisher payment terms for Cloud Play. Company roles and internal funding arrows remain schematic; no private budget, catalog royalty or transfer price is inferred. The Cyberpunk worked example separates Sony catalog economics, Xbox console catalog eligibility and NVIDIA PC computing. CD PROJEKT’s evaluation of its Sony agreement is attributed to management; its Q3 revenue recognition is not a cash-payment schedule. The amounts and reasons for excluding PC catalog access are not disclosed. No Sony compensation terms are assigned to Microsoft. The opening and closing connect these arrangements to a studio’s production choices as editorial analysis. Catalog inclusion may help attract or retain subscribers; this chapter does not estimate that effect or claim that a business model determines one kind of game design. Broader PC/catalog compatibility remains in the interactive map rather than being repeated in the narrative. Hardware ownership, capability and cost are treated as conditions of audience access, not merely another payment category. The arcade/home comparison describes selected arrangements, not a universal chronology or a claim that one machine lasts forever. Valve’s survey states that hardware information informs product and technology decisions; no survey percentage or causal estimate is used. Cloud play shifts computing to the provider but retains device and network requirements.",
+    "exhibits": [
+      {
+        "afterParagraph": 3,
+        "kind": "market-map"
+      }
+    ]
+  },
+  {
+    "id": "the-fork",
+    "part": 0,
+    "title": "The business of keeping a world alive",
+    "lede": "Two adventures can occupy the same years of a player’s life while asking very different things of the people who make them.",
+    "figures": [
+      {
+        "asset": "bg3-official-key-art",
+        "alt": "Baldur’s Gate 3 official key art: companions gathered beneath a mind flayer ship",
+        "caption": "Baldur’s Gate 3 · Larian Studios. A fantasy adventure in which a group of companions faces decisions that change their story.",
+        "credit": "© Wizards of the Coast / Larian Studios",
+        "sourceUrl": "https://baldursgate3.game/",
+        "placement": "opening"
+      },
+      {
+        "asset": "legacy-d4-key",
+        "alt": "Diablo IV key art: Lilith above the game’s title in a field of red",
+        "caption": "Diablo IV · Blizzard Entertainment. A dark fantasy world built around fighting monsters, finding equipment and developing a character.",
+        "credit": "© Blizzard Entertainment",
+        "placement": "opening"
+      }
+    ],
+    "paragraphs": [
+      "Baldur’s Gate 3 and Diablo IV arrived in 2023 carrying names that had belonged to role-playing games for decades. In an RPG, a character’s abilities and equipment develop as the player acts through them. Larian Studios builds BG3 around a party of companions, consequential conversations and battles fought in turns. Blizzard Entertainment’s Diablo IV puts one character under direct control, fighting monsters and searching for better equipment. Both sell an adventure; both give their owners reasons to begin it again.",
+      "A long game is not necessarily a continuing sale. Another class, a different decision or a group of friends can make the same purchase worthwhile for years. Larian’s offer for BG3 includes no in-game purchases. The studio added substantial features after launch, then announced its final major content patch in April 2025. It could keep revising the game indefinitely, the announcement explained: “But then we’d never be able to create something new.” Finishing that work left players with possibilities still to explore.",
+      "Diablo IV contains another shape of play alongside its campaign, the main story adventure. Seasons give players a shared starting point for fresh characters, alongside changing goals and rewards. The campaign moves through events toward a resolution; a season supplies a new occasion to develop a character and pursue a chosen ambition. These experiences coexist. A player can finish the story and join a season, return to an older character or leave satisfied. A fresh run is an invitation, not evidence that the previous adventure lacked replayability.",
+      "The difference becomes clearer on the studio’s side of the screen. Before launch, Blizzard described a large team devoted to ongoing seasons, accompanied by optional cosmetic sales and paid reward tracks. “Diablo IV will be supported by an army of developers for years to come,” its 2022 update promised. The plan joined a purchased game to a continuing schedule of creative work and further offers. Playing another season and buying its paid rewards remained separate decisions.",
+      "That is the fork. Where will the studio put its next years of work, and what will it next ask its audience to buy? A new game, an expansion and an ongoing program inside an existing world each require a different production commitment. They can also coexist within one company. Whatever the choice, wages arrive before the next release does. Earlier earnings, new customers and financing against future sales have to cover the gap. Affection for an old game can help a new offer find an audience; it cannot pay the team by itself.",
+      "For the player, that affection has a different shape. It may belong to a story, an unfinished character or the friends who are available on Friday. Researchers studying online worlds have distinguished playing in a group from simply enjoying a populated place: other players can be company, an audience or a reassuring presence without becoming teammates. Maintaining such a world involves more than manufacturing rewards. It involves keeping different kinds of evenings possible.",
+      "Diablo IV brings those expectations together. Someone returning to finish an adventure can meet a calendar organized around beginning again. For friends eager to try new characters together, that calendar can make the reunion easier. For someone attached to an older character, the same invitation can raise a question: where does my unfinished game belong? The tension is between the activity the studio is organizing and the experience a particular person came back for.",
+      "A studio making those commitments needs more than a popular world. It needs agreements that turn the audience’s interest into money available for further work. Games share that problem with films, books and the services through which we encounter them. Looking across those arrangements will help us distinguish the success of a work from the business that can afford to keep making it."
     ],
     "sections": [
       {
         "at": 2,
-        "title": "Who pays before the player does?"
+        "title": "A campaign, a season, an unfinished character"
       },
       {
         "at": 4,
-        "title": "Getting the work to an audience"
-      },
-      {
-        "at": 8,
-        "title": "When the platform does several jobs"
-      },
-      {
-        "at": 10,
-        "title": "A game you own, a machine you hire"
-      },
-      {
-        "at": 13,
-        "title": "Three services behind one screen"
+        "title": "What the studio makes next"
       }
     ],
     "paragraphCitations": {
       "0": [
-        "chain-bg3"
+        "bg3",
+        "bg-lineage",
+        "d4-expansion-structure"
       ],
       "1": [
-        "steam-cloud",
-        "gfn-service"
+        "bg3",
+        "bg3-patch8"
       ],
       "2": [
-        "epic-publishing"
+        "d4-expansion-structure",
+        "d4-season-philosophy"
       ],
       "3": [
-        "chain-hasbro"
-      ],
-      "4": [
-        "epic-publishing",
-        "steam-discovery"
+        "d4-season-philosophy"
       ],
       "5": [
-        "steam-settlement"
-      ],
-      "6": [
-        "chain-cinema"
-      ],
-      "7": [
-        "chain-netflix",
-        "chain-xbox"
-      ],
-      "8": [
-        "sony-revenue",
-        "chain-microsoft"
-      ],
-      "9": [
-        "sony-revenue"
-      ],
-      "10": [
-        "gfn-service",
-        "gfn-requirements"
-      ],
-      "11": [
-        "steam-cloud"
-      ],
-      "12": [
-        "cloud-rights"
-      ],
-      "13": [
-        "chain-xbox",
-        "steam-cloud"
-      ],
-      "14": [
-        "gfn-service"
+        "third-places",
+        "alone-together"
       ]
     },
     "sources": [
-      "chain-cinema",
-      "chain-netflix",
-      "chain-bg3",
-      "chain-xbox",
-      "epic-publishing",
-      "chain-hasbro",
-      "steam-discovery",
-      "steam-settlement",
-      "chain-microsoft",
-      "sony-revenue",
-      "sony-accounting",
-      "steam-cloud",
-      "gfn-requirements",
-      "cloud-rights",
-      "gfn-service",
-      "gfn-reach-2021",
-      "gfn-reach-2023"
+      "bg3",
+      "bg-lineage",
+      "bg3-patch8",
+      "d4-season-philosophy",
+      "d4-expansion-structure",
+      "third-places",
+      "alone-together"
+    ],
+    "takeaway": "A world can remain valuable to its players after its makers move on. Continuing production makes a different promise—and requires a way to pay for it.",
+    "evidence": "The comparison concerns production commitments and offers, not complete studio accounts or a claim that one model causes a particular experience. Larian’s April 2025 announcement ended major content updates, not all support. Blizzard’s August 2022 statement records its pre-launch plan, not current pass products or prices. Campaigns and seasonal play overlap; neither replayability nor sociability implies recurring payment. The returning-player examples are interpretive possibilities, not findings about the share of Diablo IV players who feel a particular way. The social research concerns other online games and is used to widen the questions, not to impute results to Diablo IV.",
+    "exhibits": [
+      {
+        "afterParagraph": 2,
+        "kind": "gathering-place"
+      },
+      {
+        "afterParagraph": 4,
+        "kind": "chapter-diagram"
+      }
+    ]
+  },
+  {
+    "id": "concord",
+    "part": 0,
+    "title": "Concord: the future that did not arrive",
+    "lede": "The equipment, the publisher and the production were in place. The launch did not secure the future planned around them.",
+    "paragraphs": [
+      "Concord reached PlayStation 5 and PC on 23 August 2024 with a clear offer. For a US standard-edition list price of $39.99, players received Firewalk Studios’ team shooting game and the promise of regular additions at no extra charge. Sony supplied the publishing support. The release was intended to open a continuing relationship: players would learn the world, gather there with others and return as it grew.",
+      "Sony had announced a publishing partnership with Firewalk in 2021, then an agreement to acquire it in 2023. A company selling consoles, operating a store and running subscription services was bringing another developer inside the group. It had several ways to benefit from a successful game and the means to bring one to market. Concord shows why occupying those positions cannot, by itself, secure the result.",
+      "The scarce thing was an evening people wanted to spend there. A new multiplayer release competes with games that already contain someone’s friends, practiced skills and familiar routines. Its price is only part of the invitation. Trying a new place may mean persuading a group to leave another one, then giving them reasons to stay. This is our reading of the business challenge, not a finding that identifies why any particular player declined Concord.",
+      "On 3 September, Firewalk announced that sales would stop and the game would go offline on 6 September. Refunds followed. Two weeks separated the standard launch from the shutdown. The offer changed from access to a developing world into the return of the purchase price. The refund could reverse a transaction. It could not supply the future evenings that transaction had anticipated.",
+      "Sony announced the permanent closure of the game and Firewalk on 29 October. It said Concord had missed its targets in a competitive market and described sustainable finances as essential to continuing experimentation. The same statement reaffirmed its pursuit of online experiences. A failed release did not settle the business model for the whole industry. It settled which team and which world would no longer receive further investment.",
+      "The distinction matters when we look back from the result. A shutdown is evidence that the business failed to continue; it is not an experiment isolating price, promotion, release timing or the quality of particular mechanics. Public announcements do not provide a reliable production budget or a complete account of the decisions. Treating one visible weakness as the explanation can conceal the harder problem: several individually plausible commitments can depend on an audience that never becomes large or durable enough.",
+      "Successful worlds make those commitments look natural in retrospect. We see the familiar characters and the years of additions, less often the earlier decision to employ a team before the audience existed. Diablo is one of the worlds that survived long enough to accumulate that history. Before inspecting its current economy, we need to understand what people first found there—and what the studio had to preserve or change as its audience, technology and business grew."
+    ],
+    "paragraphCitations": {
+      "0": [
+        "concord-offer",
+        "concord"
+      ],
+      "1": [
+        "concord-acquisition"
+      ],
+      "3": [
+        "concord"
+      ],
+      "4": [
+        "concord-closure"
+      ]
+    },
+    "sections": [
+      {
+        "at": 2,
+        "title": "A place in an evening"
+      },
+      {
+        "at": 5,
+        "title": "What the failure can tell us"
+      }
     ],
     "figures": [
       {
-        "asset": "bg3-official-key-art",
-        "alt": "Baldur’s Gate 3 companions beneath a mind flayer ship",
-        "caption": "Baldur’s Gate 3 (2023) · official promotional artwork.",
-        "credit": "© Wizards of the Coast / Larian Studios",
-        "afterParagraph": 0
+        "asset": "concord-gameplay-reveal-2024",
+        "alt": "Concord gameplay screenshot from the May 2024 PlayStation reveal",
+        "caption": "Firewalk’s May 2024 gameplay reveal. It shows the announced game before launch; the closure timeline is sourced separately.",
+        "credit": "Firewalk / Sony Interactive Entertainment · PlayStation Blog, 30 May 2024",
+        "afterParagraph": 3
+      },
+      {
+        "asset": "concord-shutdown-announcement-art",
+        "alt": "Concord promotional artwork with a group of characters",
+        "caption": "Artwork accompanying the shutdown notice. The launch had offered a continuing world; the notice offered refunds.",
+        "credit": "Firewalk / PlayStation · September 2024",
+        "afterParagraph": 3
       }
     ],
-    "evidence": "The comparisons distinguish financing, ownership, distribution, promotion, catalog access, online game operation and remote rendering. Epic’s announced terms are a specific 2020 publishing offer, not a standard contract. Sony’s reported revenue is not gross consumer spending or a cloud-revenue estimate. GeForce NOW’s historical membership milestones do not establish active or paid users, current reach, or an increase in game sales. Its bandwidth figures are service requirements, not measured performance. The connection between these commercial arrangements and design incentives is our analysis; undisclosed commissions, royalties and per-title subscription allocations are not estimated."
+    "sources": [
+      "concord-offer",
+      "concord",
+      "concord-acquisition",
+      "concord-closure",
+      "concord-reveal"
+    ],
+    "evidence": "Launch terms and the acquisition, withdrawal and closure dates come from contemporary Sony and Firewalk statements. Two weeks is the elapsed time from the standard launch to shutdown, excluding early access. The chapter makes no production-budget, sales-volume or profitability estimate. Audience switching costs and the counterfactual comparison with surviving franchises are analytical framing; they do not establish a cause of Concord’s failure. Management’s explanation is attributed rather than treated as an independent causal finding.",
+    "takeaway": "A plan to keep making a world commits resources before it establishes a lasting place in people’s lives."
+  },
+  {
+    "id": "several-histories",
+    "part": 1,
+    "title": "The cathedral and the computer",
+    "lede": "Diablo made an old kind of adventure feel immediate. Its dungeon could keep surprising you, even after you knew where the story ended.",
+    "paragraphs": [
+      "Before Diablo was a franchise, it was a proposal for a game about going downstairs. Condor, the small California studio that became Blizzard North, imagined a town above a dungeon, one adventurer below it, and a confrontation with the devil at the bottom. The 1994 pitch already put replayability beside that destination. A story could have an ending while the machine kept making new routes through it.",
+      "That possibility had a history. In Rogue, developed for university computers around 1980, letters and symbols represented an adventurer and the dungeon around them. Its creators wanted an adventure they could enjoy themselves without already knowing its puzzles. Glenn Wichman recalled their decision to let the program “build the dungeon.” The computer could arrange unfamiliar situations from familiar ingredients. A designer could make rules that produced surprises, rather than author every surprise separately.",
+      "Diablo brought that tradition into an atmospheric world a player could reach through the mouse. A warrior, rogue or sorcerer descended beneath Tristram, a village overshadowed by its cathedral. Rooms, monsters and treasure varied between games; the route downward still led toward a recognizable confrontation. Darkness concealed what lay ahead. Finding better equipment changed what the character could attempt. The repeated actions belonged to a place, with a sound and an atmosphere worth remembering.",
+      "The proposal had been turn-based: the player would act, then the creatures would respond. During development, that became real-time combat. The released game joined character growth and unpredictable discovery to the immediacy of moving, striking and retreating while enemies kept coming. Its achievement was the combination and the ease of entering it. The ingredients did not need to be unprecedented for the experience to feel new.",
+      "The room around the player was changing too. Diablo arrived at the turn of 1996–97 with Battle.net, Blizzard’s integrated online service, which let owners meet and play together without a separate subscription. The computer supplied the images and action; the network helped supply the company. A purchased game could become a social occasion at home without returning to the arcade’s payment for each attempt. Hellfire, a 1997 expansion developed separately by Synergistic Software, also shows that the franchise was never the work of one unchanging team. It added areas and a class to an adventure people already owned.",
+      "One page of the original proposal complicates any story of a commercially innocent past. Condor considered small expansion disks containing collectible additions, inspired by the card game Magic: The Gathering. They might sit beside shop registers at about $4.95 each. This was a proposal, not the business that the released Diablo actually delivered. But the desire to sell a player another contribution to an existing game was present before that game existed.",
+      "The distinction matters. A design offers possibilities; a release chooses among them. Diablo’s lasting invention was a relationship between familiar actions, uncertain discoveries and a character becoming more capable. That relationship could support another expedition, another class, another evening with friends. The sequel would enlarge almost everything around it—and show how much work it could take to preserve the same pleasure."
+    ],
+    "sections": [
+      {
+        "at": 3,
+        "title": "A different rhythm for the same ingredients"
+      },
+      {
+        "at": 5,
+        "title": "An older idea of the next sale"
+      }
+    ],
+    "paragraphCitations": {
+      "0": [
+        "d1-pitch",
+        "d2-postmortem"
+      ],
+      "1": [
+        "rogue-wichman"
+      ],
+      "2": [
+        "d1-return",
+        "diablo-story"
+      ],
+      "3": [
+        "d1-pitch",
+        "d1-brevik"
+      ],
+      "4": [
+        "d1-gog-release",
+        "blizzard-bnet-history",
+        "diablo-hellfire"
+      ],
+      "5": [
+        "d1-pitch"
+      ]
+    },
+    "sources": [
+      "d1-pitch",
+      "d2-postmortem",
+      "rogue-wichman",
+      "d1-return",
+      "diablo-story",
+      "d1-brevik",
+      "d1-gog-release",
+      "blizzard-bnet-history",
+      "diablo-hellfire"
+    ],
+    "figures": [
+      {
+        "asset": "diablo-original-combat",
+        "alt": "Diablo: a warrior inside a crowded stone dungeon, above the health and mana interface",
+        "caption": "The original Diablo: danger, equipment and the character’s resources share one view. The cathedral’s changing rooms lead toward a fixed confrontation.",
+        "credit": "Blizzard Entertainment · authorized GOG gallery",
+        "afterParagraph": 2
+      }
+    ],
+    "takeaway": "Returning to a game is not the same event as buying something from its creator.",
+    "evidence": "The 1994 Condor proposal is evidence of intended design and contemplated marketing, not a description of the shipped game. Brevik’s retrospective establishes the turn-based-to-real-time development change. Wichman describes Rogue’s own procedural-design intent; this is an antecedent comparison rather than a claim that Diablo invented randomized dungeons or all action RPG conventions. Blizzard’s retrospective dates Diablo to 31 December 1996, while other Blizzard pages call it a 1997 release; the prose deliberately says the turn of 1996–97. Battle.net was free to users, not costless to operate."
   },
   {
     "id": "how-many-lives",
-    "part": 0,
+    "part": 2,
     "title": "How many lives does a coin buy?",
-    "lede": "In Gauntlet, the business outside the cabinet reaches into the rules of the world.",
+    "lede": "Long before a seasonal shop, a purchase could change the rules inside the adventure.",
     "paragraphs": [
-      "Gauntlet, released in 1985, let its players explore monster-filled mazes as fantasy adventurers. Each had a health counter. Time and injuries wore it down; food replenished it. So did money. Put in another coin and your character could stay alive longer. The machine sold a resource that existed only inside its fiction, helping determine how long you could take part.",
-      "Call it selling “air,” if you like. Yet buying another stretch of imaginary life could mean getting farther with the people beside you. A cinema ticket also buys something that is over at the end of the evening. We understand the value of being there while it happens. The unusual thing about Gauntlet is how directly it made that participation a resource inside the adventure.",
-      "Four-player cooperation had a business argument behind it. Designer Ed Logg recalled resistance to charging more than the customary quarter. More players at once offered another route to higher earnings, especially if they could join and leave without interrupting everyone else. Marketing was unconvinced: “Marketing believed I could not get four strangers to play together.” Making the gathering work promised both a distinctive pleasure for players and a better-earning cabinet.",
-      "The operator could make further design choices after the cabinet arrived. Atari’s manual placed these under the heading “Maximizing Earnings.” For US quarter play, it recommends more health when average play falls below 90 seconds. Above 180 seconds, it recommends harder difficulty first: more frequent monsters, before a reduction in the visible health allowance that might discourage players. The price at the coin slot stays the same. The conditions under which the purchased health must last have changed.",
-      "A harder fight might be exactly what a player enjoys. A turn that feels over before it has begun might send them elsewhere. The operator is adjusting a commercial offer through the rules of the world; players encounter the adjustment as monsters, danger and a dwindling chance of survival. Keeping the machine earning and making the evening worth coming out for are related ambitions. They are not interchangeable measures of success.",
-      "The most revealing decision concerned the ending. Logg recalled that the team considered a final monster, then rejected it: “we did not want players coins lost with a game over.” Someone could reach the end with purchased health still remaining. Instead, the levels recirculated. The game could continue taking money, but it also continued honoring money already taken. The purchase reached all the way into the shape of the adventure.",
-      "There is something strikingly contemporary in that old cabinet. An imaginary resource for sale; a design built to accommodate repeated payments; a shared experience whose appeal makes those payments possible. These negotiations were already under way near the beginning of commercial video games. They helped shape features we might remember fondly, as well as terms we might question. The interesting history lies in how those arrangements changed—and how much could change while the familiar pleasures of playing survived.",
-      "Take the game home in a box and a different bargain becomes possible. A character can die, an adventure can end, and its owner can begin again without buying another turn. A studio can earn from new buyers or from making something else its existing audience wants to buy. An evening can become years of play without those years being sold one turn at a time."
+      "Before looking inside Diablo IV’s offers, return to an older dungeon. Atari’s Gauntlet, released in 1985, let up to four people fight through mazes as fantasy adventurers. Their health diminished with time and injury. Food restored it; another coin did too. A player bought a resource in the imagined world, and that resource helped determine how long they could remain in it.",
+      "Selling “air” was already a workable business. But the coin could also buy more time alongside the people at the next controls. Designer Ed Logg recalled resistance to charging more than a quarter for play. Having several people pay at once offered another way for the cabinet to earn, while letting them join and leave independently kept the gathering going. The commercial constraint helped give the game a distinctive social form.",
+      "Atari also gave the operator instructions for adjusting the bargain. Under “Maximizing Earnings,” the manual recommended increasing the health allowance when US quarter play averaged less than 90 seconds. Above 180 seconds, it advised making the game harder first, increasing monster activity before cutting the visible amount of health. The amount at the coin slot could stay unchanged while the purchased reserve lasted for a different time.",
+      "That is a small but consequential piece of analytics. Average playtime becomes a reading from the machine; the operator has settings that can change it. Yet the same average can contain quite different evenings: a skilled player advancing confidently, a beginner losing quickly, friends buying time to stay together. The measure makes an adjustment possible. It does not, by itself, tell the operator whether the experience became more satisfying or merely shorter.",
+      "One decision reached beyond difficulty to the possibility of an ending. Logg said the team considered a final monster but rejected it because “we did not want players coins lost with a game over.” Levels instead recirculated. A player could arrive at the conclusion with purchased health still unused; the design avoided taking that remainder away. Repeated payment supported a continuing adventure, but the obligation to honor payment also helped prevent the adventure from ending.",
+      "The relationships are more interesting than a verdict on whether the coin was good or bad. A player might welcome another dangerous room, resent a turn that ended too quickly or simply want to stay with friends. An operator needed the cabinet to earn its place. Those interests met in the health counter, but no one number represented all of them. Raising earnings and improving the evening could coincide; an analyst would still need to establish both.",
+      "Modern games spread this negotiation across more systems. Some purchases open additional adventures. Others change an appearance or grant access to rewards that still have to be earned. We should not assign them Gauntlet’s function merely because all are paid. What the old cabinet supplies is the right starting question: what does this purchase actually change for the person playing—and what evidence would show whether that change makes the relationship worth continuing?"
     ],
     "paragraphCitations": {
       "0": [
         "gauntlet"
       ],
-      "2": [
+      "1": [
         "gauntlet-logg"
       ],
-      "3": [
+      "2": [
         "gauntlet"
       ],
-      "5": [
+      "4": [
         "gauntlet-logg"
       ]
     },
@@ -676,7 +890,7 @@ const manuscript: Omit<Chapter, "visual">[] = [
         "alt": "Gauntlet sales flyer with fantasy lettering and a cabinet with four color-coded player positions",
         "caption": "Four control positions turn the cabinet into a small gathering place. The fantasy belongs on its sides as well as its screen: the machine advertises the adventure across the room.",
         "credit": "© Atari Games · International Arcade Museum",
-        "afterParagraph": 2
+        "afterParagraph": 1
       },
       {
         "asset": "gauntlet-flyer-back-1985",
@@ -685,497 +899,239 @@ const manuscript: Omit<Chapter, "visual">[] = [
         "alt": "Reverse of the Gauntlet sales flyer showing people playing and headings Four quarters at once and More options, more profits",
         "caption": "“Four quarters at once!” is the manufacturer’s own heading. The same sheet promotes cooperation, joining a game in progress and adjustable health allowances. Social play and the earnings pitch arrive together.",
         "credit": "© Atari Games · International Arcade Museum",
-        "afterParagraph": 2
+        "afterParagraph": 1
       },
       {
         "asset": "gauntlet-options-manual-p3-4",
         "alt": "Gauntlet operator manual: difficulty and health per coin in the same settings table",
         "caption": "The operator’s controls, 1985. Health per coin ranges from 100 to 2,000; difficulty has a separate setting. Enlarge to inspect the original table.",
         "credit": "Atari Games · manual preserved by Stardust Arcade",
-        "afterParagraph": 4
-      }
-    ],
-    "evidence": "Gauntlet is a later case, not the first commercial video game. Atari’s manual supplies health/food/continuation rules (printed 2–2), earnings guidance for US 25¢ play (2–3), and settings (3–4); its recommendations do not establish a universal optimum or guarantee duration. Ed Logg’s GDC 2012 retrospective describes the sales chain (PDF pp. 6, 8), price resistance and simultaneous/drop-in play (15–16), marketing’s doubt (31), and the final-monster decision (40). His creative inspirations also included Dungeons & Dragons and Dandy (10); the essay does not assign cooperation a solely financial origin. Roles could overlap or share receipts. These are a designer’s recollections, not audited financial findings. The implications for creative form and audience value are the essay’s analysis. Original explanatory art is not a reconstruction of a historical venue or licensed cabinet."
-  },
-  {
-    "id": "several-histories",
-    "part": 0,
-    "title": "The next attempt is already paid for",
-    "lede": "Buying a copy changes the bargain. A character can die and a story can end without the player having to buy another turn.",
-    "paragraphs": [
-      "Bring the game home and the room around it changes. The purchaser supplies a screen, a place to sit and occasions to play. Friends may still join in; someone may prefer an evening alone. A bought copy can furnish either sort of occasion repeatedly. Its commercial promise concerns access to the work, while the life people build around it remains their own.",
-      "Blizzard Entertainment released Diablo II in 2000. An action role-playing game, it lets the player guide a hero through a dark fantasy adventure while developing abilities and finding equipment. It expanded the original Diablo’s descent beneath a cathedral into four acts, the major sections of its journey. Cinematic sequences connected the places and conflicts. The adventure had a destination, but reaching it did not exhaust the game.",
-      "Five character classes offered different abilities, with choices within each class. Randomized maps, equipment and harder versions of the adventure supported repeated play. Designer Erich Schaefer described the appeal of “strategies that can be debated and experimented with.” You could try another class or build the same one differently. Replayability belonged to the product you had bought.",
-      "That purchase included the classes, acts and item systems of the release. Equipment came through play and trade; Battle.net, Blizzard’s online service, charged no subscription. A purchased product could therefore include a place to connect with others. Lord of Destruction added a fifth act and two classes in 2001 for another purchase. The smaller box sold additional work, while repeated play of what was already owned remained part of the earlier bargain.",
-      "Three endings have come apart. A death may end an attempt. A final encounter may resolve the story. Neither necessarily ends the paid opportunity to play. A reader can finish a book and reread it; a player can finish an adventure and explore a different way through. A work with an ending can still occupy someone for years.",
-      "Even a deliberately renewed competition need not collect a new payment. A ladder ranks online characters by experience earned through play. Diablo II’s patch 1.10, released on 28 October 2003, introduced seasonal ladder characters: new heroes in a separate economy, without their owners’ accumulated equipment. The fresh start renewed the race. Returning to it and buying something from Blizzard were different events.",
-      "Online play brings some responsibility for the meeting place back to a provider. Early text-based worlds already faced connection costs: Richard Bartle’s MUD Advanced Project Report compared hourly charges with a fixed fee for unlimited access over a period. Diablo II’s free Battle.net illustrates a different offer. A service has work to fund even when it has no separate subscription bill; the player’s price does not describe the provider’s whole business.",
-      "Internet distribution made some commercial relationships easier to maintain. Economists Avi Goldfarb and Catherine Tucker describe falling costs of searching, copying, transporting, tracking and verifying information. In games, those changes help explain how a studio can deliver updates and offers directly to people already playing. Creating worthwhile new work still takes resources.",
-      "Netflix offers a useful parallel. It already mailed physical DVDs to subscribers when it added internet viewing in January 2007. Delivery changed within an existing subscription. Watching at home had not removed the business relationship around the film. In games too, the place where people play, the service that connects them and the thing they purchase can change independently.",
-      "The next offer also need not sell access. Valve made its team shooter Team Fortress 2 free to enter in 2011, alongside an item economy. Its 2013 Dota 2 Compendium sold a companion to a tournament, with predictions, rewards and a contribution to the prize pool. These gave existing players another thing to buy without first taking away the ability to play.",
-      "Advertising adds a different payer. Crossy Road, a mobile game about crossing roads and other hazards, combined character sales with optional rewarded video: the player could watch an advertisement for a benefit in the game. An advertiser paid to reach the audience. Looking only at what the player paid would miss part of the exchange.",
-      "A cabinet can sell turns; a copy can support years of play; a connected game can add offers inside an activity already under way. None of these tells us what makes the activity worthwhile. They tell us where to look for the exchange. Now the scale of the question expands: who keeps making and maintaining the things that give people a reason to spend their time here?"
-    ],
-    "sections": [
-      {
-        "at": 4,
-        "title": "Three different endings"
-      },
-      {
-        "at": 6,
-        "title": "Connection is not a payment model"
-      },
-      {
-        "at": 9,
-        "title": "Another offer inside the same activity"
-      }
-    ],
-    "paragraphCitations": {
-      "1": [
-        "diablo-story",
-        "d2-postmortem"
-      ],
-      "2": [
-        "d2-postmortem",
-        "d2-retrospective"
-      ],
-      "3": [
-        "d2-postmortem",
-        "d2-expansion"
-      ],
-      "5": [
-        "d2-ladder-ranking",
-        "d2-110-launch",
-        "d2-ladder"
-      ],
-      "6": [
-        "hist-bartle"
-      ],
-      "7": [
-        "digital-economics"
-      ],
-      "8": [
-        "netflix-2007"
-      ],
-      "9": [
-        "tf2",
-        "dota"
-      ],
-      "10": [
-        "crossy"
-      ]
-    },
-    "sources": [
-      "diablo-story",
-      "d2-postmortem",
-      "d2-retrospective",
-      "d2-expansion",
-      "d2-ladder-ranking",
-      "d2-110-launch",
-      "d2-ladder",
-      "hist-bartle",
-      "digital-economics",
-      "netflix-2007",
-      "tf2",
-      "dota",
-      "crossy",
-      "gauntlet",
-      "reliquary"
-    ],
-    "figures": [
-      {
-        "asset": "legacy-d2-heroes",
-        "alt": "Diablo II’s five original character classes gathered around a campfire",
-        "caption": "Five classes inside one purchase. Their different abilities—and the choices within each class—gave the same owner reasons to begin again.",
-        "credit": "Blizzard Entertainment",
         "afterParagraph": 2
       }
     ],
-    "takeaway": "Returning to a game is not the same event as buying something from its creator.",
-    "evidence": "These examples compare overlapping arrangements; they are not stages every game passed through. The original Diablo II purchase is distinguished from its expansion and later Resurrected editions. Patch 1.10 dates seasonal ladder characters, not the first leaderboard. A purchased game is not a guarantee of perpetual online availability. Goldfarb and Tucker supply a general economic framework; its application to games is our synthesis. Netflix’s 2007 announcement separates delivery from an existing DVD subscription. Valve and Crossy Road examples are dated historical offers. The exhibit compares these documented examples; it is not an invention timeline or a complete history."
-  },
-  {
-    "id": "the-fork",
-    "part": 0,
-    "title": "The business of keeping a world alive",
-    "lede": "A game can supply an adventure and become a place in someone’s life. Keeping that place worthwhile takes work. The business has to decide which work it will keep doing—and what it will sell.",
-    "figures": [
+    "evidence": "The manual describes operator controls and earnings advice; it is not a measured result showing how a particular setting affected revenue or satisfaction. Logg’s 2012 retrospective supplies the commercial design account and ending decision. The reading of average playtime is original analysis, not a reconstructed cabinet dataset. Health purchases in Gauntlet are distinguished from Diablo IV’s other paid goods; the historical comparison does not imply identical mechanics or claim Gauntlet invented paid play.",
+    "sections": [
       {
-        "asset": "bg3-official-key-art",
-        "alt": "Baldur’s Gate 3 official key art: companions gathered beneath a mind flayer ship",
-        "caption": "Baldur’s Gate 3 · Larian Studios. A fantasy adventure in which a group of companions faces decisions that change their story.",
-        "credit": "© Wizards of the Coast / Larian Studios",
-        "sourceUrl": "https://baldursgate3.game/",
-        "placement": "opening"
+        "at": 2,
+        "title": "The operator gets a design control"
       },
       {
-        "asset": "legacy-d4-key",
-        "alt": "Diablo IV key art: Lilith above the game’s title in a field of red",
-        "caption": "Diablo IV · Blizzard Entertainment. A dark fantasy world built around fighting monsters, finding equipment and developing a character.",
-        "credit": "© Blizzard Entertainment",
-        "placement": "opening"
+        "at": 4,
+        "title": "A purchase can change the ending"
       }
     ],
+    "takeaway": "A payment can alter a resource, a rhythm or the shape of an adventure. Its value has to be judged through the change it makes."
+  },
+  {
+    "id": "shape-of-money",
+    "part": 2,
+    "title": "Paying for the years between releases",
+    "lede": "A successful release buys a studio time. What it promises next determines how much work that time must support.",
     "paragraphs": [
-      "At the arcade cabinet, making the game and running the venue were different jobs. An online studio can inherit parts of both. It creates encounters and characters, but may also maintain the connection through which people arrange an evening together. The audience may keep enjoying a purchased game for years. The studio’s wages fall due while its next work is still taking shape. Someone has to finance the gap.",
-      "What survives a purchase is attachment: a remembered story, a character we have learned to play, a familiar place or people we meet there. It can give the next release an audience and an older work new buyers. Earlier earnings and financing against future sales can also pay for production. Affection matters to the business, but affection is not a payment schedule. The next offer still has to earn its place in that relationship.",
-      "Cinema makes the distinction familiar. A ticket admits someone to a showing, while the value of going might include the occasion: company, a large screen, time set aside for a film. In a subscription service such as Netflix, a work also helps make a catalog worth keeping. Netflix’s July 2024 shareholder letter connects viewing with satisfaction and retention. Viewing is something it can count; what a particular film means in someone’s life takes more explaining.",
-      "That changes the terms under which creative work is valued and paid for. In 2023, the Writers Guild of America negotiated a new bonus for qualifying streaming films and series that reached a specified share of a service’s subscribers. It also secured access to viewing data. A hit inside a subscription catalog needed a way to become visible in its writers’ compensation.",
-      "The tools used to make that work offer another comparison. Adobe, the company behind Photoshop, announced in 2013 that new creative features would go to Creative Cloud subscribers; Creative Suite 6 would be its last major release for perpetual licenses. Editing a photograph remained a familiar activity. Access to the newest releases became a continuing purchase. These are different ways of selling ongoing work, rather than a single destination that every digital product must reach.",
-      "Some online games become gathering places themselves. Steinkuehler and Williams used the idea of “third places”—informal settings beyond home and work—to examine sociability in particular online worlds. Another 2006 study, by Ducheneaut and colleagues, found extensive solo activity in World of Warcraft. Other players could still supply an audience and a sense of a populated world. Shared space, friendship and playing in a group are different experiences.",
-      "That range gives the creator more to maintain than a stream of new rewards. Can friends find an activity they can enter together? Can someone pursue a private project among others? Does returning after a break make sense? The studio also chooses where to put its next creative work: another game, an expansion, or a continuing program in this one. Those decisions connect the place people value to the business’s next offer.",
-      "Baldur’s Gate 3 and Diablo IV bring that production choice into view. Both are role-playing games: players develop characters whose abilities and equipment change what they can do. Larian Studios builds BG3 around companions, conversations with consequences and battles fought in turns. Blizzard Entertainment’s Diablo IV puts a character under the player’s direct control, fighting crowds of monsters in search of better equipment. Each offers a campaign—the main story adventure—and reasons to play again.",
-      "In Baldur’s Gate 3, the purchase opens a substantial adventure with many possible routes through it. Larian’s stated offer includes no in-game purchases. The studio continued adding features after release, then announced its final major content update in April 2025. It could keep working on the game indefinitely, the announcement explained: “But then we’d never be able to create something new.” Players could continue exploring its possibilities while the studio turned to another project.",
-      "Blizzard described a different future for Diablo IV in its August 2022 development update: “Diablo IV will be supported by an army of developers for years to come.” Alongside the purchased adventure, it planned seasons: recurring cycles of new activities and changes to play. Optional sales of character appearances and paid reward tracks would accompany that continuing program. A dedicated team would keep creating reasons to return and further things to buy. Unlike the coin in Gauntlet, buying a cosmetic appearance would not replenish a resource needed to stay in the game. Continuing to play and accepting the next offer remained separate choices.",
-      "Here is the fork: what will the studio keep making, and what will the audience next be asked to buy? Larian described turning from major BG3 additions toward another project. Blizzard planned continuing production and further offers inside Diablo IV. This is a choice about the organization of work and sales. It does not divide social games from solitary ones, or replayable games from finished ones. A completed release can sustain a friendship; a seasonal game can be someone’s private pastime.",
-      "Diablo IV holds several expectations in the same world. One player wants to finish the campaign, its main story adventure. Another wants a fresh seasonal run with friends. A third is still attached to an older character. A new season can coordinate a welcome reunion, yet leave someone else unsure where their unfinished adventure belongs. The tension appears when the program the studio is maintaining and the evening the player intended stop fitting together.",
-      "An ongoing game also makes promises that no amount of finished scenery can fulfill on its own. The connection must work. In games that depend on other participants, suitable people must turn up. The audience helps produce the experience being offered to the audience. Concord shows how abruptly that arrangement can fail—and why a studio’s anxiety reaches far beyond selling the next cosmetic."
+      "An expansion has a beginning as a production project and an ending as something ready to sell. An operated game also has work that must happen next Tuesday. People need to connect, recover an account, find their friends and receive what they bought. Diablo IV combines these obligations: another adventure to make, a seasonal program to maintain and a service that must keep functioning while both are under construction.",
+      "The costs do not all follow the same calendar. CD PROJEKT reported roughly PLN 275 million in direct production expenditure on Phantom Liberty, Cyberpunk 2077’s expansion, and another PLN 95 million for its own global launch campaign. The disclosure gives us two separate investments before considering what later sales return. Making additional creative work and persuading people to buy it each require financing.",
+      "Operating costs bring a different rhythm. Riot’s engineering account of VALORANT, its team shooting game, describes services for parties, matchmaking, results and purchases. It notes that players join parties much more often than they buy things, so those services need different amounts of capacity. The busiest machinery in the business need not be its checkout. Much of the work keeps an evening possible without producing a sale at that moment.",
+      "A long-lived game can pay for that work in several ways. New customers keep buying an older release; existing customers buy additions; platform agreements supply other income. A studio can also draw on reserves, investors or other products. Years of repeat play do not tell us which arrangement funded them. Nor does a studio’s need for another sale establish that every hour already purchased should become another transaction.",
+      "An ongoing game also has several kinds of work competing for that income. Keeping accounts and connections reliable preserves access to what has already been sold. A new season gives existing players another project. An expansion makes additional work available for another purchase. Those demands belong in the same budget, but success looks different in each: a quiet, reliable service can be valuable without producing an announcement or a new item in the shop.",
+      "This is the pressure behind the next offer: a business needs another source of income before its existing money runs out. The offer still needs a purpose for the person receiving it. A new place to explore, a character to imagine differently and a project to finish are not interchangeable reasons to spend. The useful next step is to examine exactly what additional work each purchase puts into the player’s hands."
+    ],
+    "takeaway": "Separate the work a sale pays for from the reason a player wants to buy it.",
+    "sources": [
+      "cyberpunk",
+      "hist-valorant",
+      "bg3-patch8",
+      "d4-season-philosophy"
+    ],
+    "evidence": "The CD PROJEKT figures are direct expenditure disclosed in October 2023, in PLN, not total project profitability or the budget for repairing the base game. Riot documents its own 2020 service architecture. Larian and Blizzard provide dated production commitments. Funding alternatives are explanatory possibilities, not a reconstruction of either studio’s accounts.",
+    "paragraphCitations": {
+      "1": [
+        "cyberpunk"
+      ],
+      "2": [
+        "hist-valorant"
+      ],
+      "4": []
+    },
+    "figures": [
+      {
+        "asset": "legacy-d4-shop-grid",
+        "alt": "Diablo IV cosmetic storefront with bundles and a refresh timer",
+        "caption": "Diablo IV’s cosmetic shop. A historical offer within a game that also sells its base release and expansions.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
     ],
     "sections": [
       {
         "at": 2,
-        "title": "What the next payment buys"
-      },
-      {
-        "at": 5,
-        "title": "When the audience inhabits the work"
-      },
-      {
-        "at": 7,
-        "title": "Two worlds, different futures"
-      },
-      {
-        "at": 12,
-        "title": "A promise that needs an audience"
+        "title": "The work between purchases"
       }
     ],
-    "paragraphCitations": {
-      "2": [
-        "netflix-engagement"
-      ],
-      "3": [
-        "wga-streaming-2023"
-      ],
-      "4": [
-        "adobe-2013",
-        "digital-economics"
-      ],
-      "5": [
-        "third-places",
-        "alone-together"
-      ],
-      "7": [
-        "bg3",
-        "d4-expansion-structure"
-      ],
-      "8": [
-        "bg3",
-        "bg3-patch8"
-      ],
-      "9": [
-        "d4-season-philosophy"
-      ],
-      "11": [
-        "d4-expansion-structure",
-        "d4-season-philosophy"
-      ]
-    },
-    "sources": [
-      "netflix-engagement",
-      "netflix-2007",
-      "wga-streaming-2023",
-      "adobe-2013",
-      "digital-economics",
-      "third-places",
-      "bg3",
-      "bg3-patch8",
-      "d4-season-philosophy",
-      "d4-expansion-structure",
-      "alone-together"
-    ],
-    "takeaway": "The studio makes an offer inside a relationship people already have with the game. Its next work can strengthen that relationship, change it or ask too much of it.",
-    "evidence": "The opening offers an interpretive lens, not a reconstruction of private studio finances. Attachment names what a work means to people; it is not equated with viewing hours, time played, spending or wellbeing. Netflix’s July 2024 letter explains its own use of viewing as a proxy, not proof that more viewing always means greater satisfaction. The cinema/catalog illustration compares two payment relationships, not mutually exclusive industries: films have multiple release and licensing channels, and streaming did not invent subscriptions. Netflix’s 2007 announcement added streaming to an existing DVD subscription. The WGA passage describes the historical 2023 agreement and qualifying high-budget subscription streaming productions, not all writers or current contract terms. Adobe’s 2013 transition concerns access to new creative releases, not removal of previously purchased perpetual licenses. Digital Economics supplies the broader cost framework; the cross-industry argument is our synthesis. Online social relationships vary across games and players. Larian’s April 2025 statement concerns major content updates, not the end of support. Blizzard’s August 2022 plan records pre-launch intent, not today’s catalog or prices. D4 seasons and optional purchases remain separate choices; neither game is a Netflix-style subscription. The exhibits are qualitative, not financial forecasts."
-  },
-  {
-    id: "concord",
-    part: 0,
-    title: "Concord",
-    lede: "For a multiplayer world, other players are part of what the product has to deliver.",
-    paragraphs: [
-      "Concord was a team shooting game made by Firewalk Studios and published by Sony’s PlayStation business. Two teams of five players competed using characters with different abilities. Its 2024 reveal promised further maps and modes alongside weekly story scenes: an evolving world to learn and inhabit. The game launched on 23 August. On 3 September, Firewalk announced that it would go offline on 6 September, with sales stopped and refunds offered.",
-      "A continuing world asks people to bring more than the entry price. They learn its rules, make time for it and may persuade friends to come along. Concord’s shutdown turned that invitation into a refund process within weeks. The dates establish the rupture without a speculative budget attached. Returning the purchase price addressed one commitment; the anticipated evenings and the work of assembling a group were another.",
-      "The bar in our opening could have conversation, music and other reasons to stay after someone stopped playing. A team shooting game depends more tightly on the activity it organizes. Its designers can build the arena and supply the rules, but players supply opponents and teammates. A local sports club faces a similar dependency: the ground can be ready while the match cannot begin.",
-      "Activision’s 2024 matchmaking paper makes the underlying tradeoffs explicit for Call of Duty, its military shooting series. Matchmaking is the process of finding participants for a match. Its system considers connection quality and time to match alongside skill, playlists, input and platform. The paper describes loosening some constraints as it gathers players before a match. These particulars belong to Call of Duty. It explains why “how many people?” needs companions: where, when, in which mode and under which matching rules?",
-      "Consider a hypothetical launch test that attracts a busy weekend crowd. It can demonstrate that matches form under those conditions. It leaves another question open: what happens when those people spread across ordinary working days, regions and preferred modes? The promotional peak and the routine evening are different operating conditions. A useful launch plan needs to know how much those conditions differ.",
-      "The shutdown statement says parts of the game and launch did not land as intended. It does not isolate price, art direction, timing, differentiation or execution as the decisive cause. Treating the failure as proof of whichever complaint we already preferred would turn a striking case into weak evidence. The useful problem is more specific: how can a project discover whether its promised experience remains available when the audience behaves like real people?",
-      "This is the practical anxiety behind the promise of a living world. A studio needs to learn whether it can repeatedly provide the experience it is inviting people to organize their time around. Testing that dependency early leaves room to change the plan. Once the world is presented as somebody’s future meeting place, failure reaches beyond a disappointing feature."
-    ],
-    takeaway:
-      "Test the ordinary conditions in which players must find one another, as well as the launch event.",
-    figures: [
+    "exhibits": [
       {
-        asset: "concord-shutdown-announcement-art",
-        alt: "Concord promotional artwork with a group of characters",
-        caption:
-          "Key art accompanying the shutdown announcement. The linked statement, rather than this artwork, establishes the dates and refund policy.",
-        credit: "Firewalk / PlayStation · September 2024",
-      },
-    ],
-    sources: ["concord-reveal", "concord", "hist-matchmaking"],
-    evidence:
-      "The launch/closure chronology comes from Firewalk’s announcements. Matchmaking mechanisms come from a separate Call of Duty developer paper. The launch-test example is hypothetical. No budget, total-sales estimate, minimum population or single-factor explanation for Concord is asserted.",
-    paragraphCitations: {
-      "0": ["concord-reveal", "concord"],
-      "3": ["hist-matchmaking"],
-      "5": ["concord"],
-    },
+        "afterParagraph": 1,
+        "kind": "funding"
+      }
+    ]
   },
   {
-    id: "what-decides",
-    part: 1,
-    title: "What a studio can learn in time",
-    lede: "The useful prototype is the one that catches your beautiful idea lying to you.",
-    paragraphs: [
-      "Outer Wilds is a space-exploration game in which following clues changes what the player understands. Its developer, Mobius Digital, described a revealing design problem in 2016. The signalscope, a handheld receiver for locating distant sounds, was meant to turn a sound into a destination. Players instead mistook signals from far away for noises coming from the rock in front of them. The team added clearer aiming feedback, separated frequencies and supplied distance information. A tool intended to produce curiosity had been producing a misunderstanding about space.",
-      "A venue owner can see a busy corner and still misunderstand why people are there. A studio has a similar problem with a usage chart. Imagine measuring only how often the signalscope was opened: a confused player might open it repeatedly, while an informed one locates a destination and puts it away. Mobius needed to know what the player believed the sound meant and where that belief sent them. The desired experience gave the observation its meaning.",
-      "Mobius described a related problem in its pathing. At forks, players were choosing routes without enough information to become curious about a destination. The response was to give paths suggestive clues. This protected the game’s larger promise—following your own questions—by improving a small decision on the ground. The developer account makes the revision legible: an intended experience, an observed obstacle, a change that addressed it.",
-      "There is a production discipline hiding inside that little instrument. Before polishing the brass, decide what would make you rebuild the receiver. For a combat prototype, it might be that players cannot explain why they died. For a purchase screen, it might be that they mistake access to a catalog for ownership of its contents. For a cooperative service, it might be that the proposed audience cannot reliably find a match. Each uncertainty needs its own encounter with reality.",
-      "A playable hour can reveal a confusing encounter. It cannot contain a year of obligations to friends, shifting tastes or unfinished rewards. Conversely, a large audience survey can establish interest in a premise without showing whether the thing feels good under a thumb. The tempting mistake is to promote whichever evidence is available into permission for every commitment that follows.",
-      "Ask a sharper question at the milestone: what can still change because of what we learned? If the answer is only the tutorial text, the expensive parts of the design have already become immune to the test. Keep the promise clear and its implementation negotiable. A studio that intends to keep selling new reasons to return will need that freedom repeatedly; the financial plan inherits the same obligation to keep learning."
+    "id": "six-games",
+    "part": 2,
+    "title": "What the next purchase adds",
+    "lede": "Six role-playing games put different boundaries around the work they sell.",
+    "paragraphs": [
+      "A player who enjoyed an adventure may want another hundred hours in its world. That desire leaves the studio with a choice. It can make a sequel, extend the existing game, offer a new way to inhabit the same world or simply let the original keep finding new buyers. These six games help separate those decisions. They share an interest in characters and adventures; their products draw the next purchase around different things.",
+      "Baldur’s Gate 3 puts many possible playthroughs inside one campaign purchase. A different party or decision can reveal material the player missed without requiring another sale. Elden Ring and Cyberpunk 2077 illustrate a further offer: their Shadow of the Erdtree and Phantom Liberty expansions add substantial adventures to a game the customer already owns. Replaying and expanding are different uses of that continuing interest.",
+      "Packaging changes the boundary again. The Witcher 3’s 2022 Complete Edition collected its main adventure, two expansions and earlier additions into one purchase. A later customer could buy together what earlier customers had bought at different times. A collected edition of books works much the same way: the bundle tells us what is included at the checkout, not when each part was made.",
+      "Additional work can also arrive without an additional charge. Sandfall Interactive’s December 2025 Thank You update added material to Clair Obscur: Expedition 33, its fantasy role-playing game. This matters to the comparison because neither an update nor continued play, by itself, proves a recurring-payment model. We need to inspect the offer rather than infer it from the fact that a game changes.",
+      "Diablo IV puts several kinds of offer beside one another. Its expansion sells an addition to the adventure; its shop can sell an appearance; its historical Reliquary system sold premium access to collections whose rewards still had to be earned. An expansion asks whether someone wants the additional work. A reward catalog also asks whether they want a new project within the game they already play.",
+      "The distinction reaches beyond price. A purchase can add possibilities now or create an intention that occupies future evenings. Before deciding whether either is good value, we need to know what survives when the player’s circumstances change. A finished campaign, an unfinished character and an expiring reward collection leave different things waiting for someone who comes back."
     ],
-    takeaway:
-      "Give every important test a decision it is still allowed to change.",
-    panel: {
-      title: "A decision can remain reversible",
-      flow: true,
-      items: [
-        { label: "Promise", text: "What experience is being offered?" },
-        {
-          label: "Evidence",
-          text: "Which observation could disprove the plan?",
-        },
-        {
-          label: "Decision",
-          text: "What can still change after that observation?",
-        },
+    "takeaway": "The contents of a purchase and the future it asks the player to plan are both part of its value.",
+    "table": {
+      "caption": "Selected product structures, with historical scope where specified. This is not a current price or complete DLC catalog.",
+      "headers": [
+        "Game",
+        "Design emphasis",
+        "Commercial example"
       ],
-    },
-    sources: ["outer", "lit-outer-pathing"],
-    evidence:
-      "Mobius’s 2016 development accounts establish the signalscope and pathing revisions. The dashboard counterexample and production-review cases are original hypothetical analysis; they do not reconstruct another studio’s decisions.",
-    paragraphCitations: {
-      "0": ["outer"],
-      "2": ["lit-outer-pathing"],
-    },
-  },
-  {
-    id: "shape-of-money",
-    part: 1,
-    title: "The shape of the money",
-    lede: "A lasting game needs work, and that work needs funding. The next sale can come from a new player, an expansion or someone already inside the world.",
-    paragraphs: [
-      "A worthwhile evening needs someone to provide its conditions. In a bar that includes a room, equipment and staff; in an online game it can include software, connections, support and new creative work. Some costs arrive before anybody plays, and others recur while the service operates. The cabinet’s manufacturer and its operator had different accounts. A studio running an ongoing game must understand the several jobs within its own.",
-      "A purchased book can keep earning because new readers discover it. Games have that possibility too. Returning players can recommend an older release without each replay generating another payment. Expansions sell additional work to existing owners. A studio may also draw on other games, reserves or outside funding. If its next project takes eight years, it needs a way to finance that interval; the release dates alone cannot tell us which source paid the bills.",
-      "Software offers a useful parallel. Adobe’s 2013 annual report described moving new creative features into Creative Cloud subscriptions, with CS6 its last major perpetual-license release. People still edited images and designed pages, but updates and payment now belonged to a continuing arrangement. Diablo IV uses a different mixture of sales. The comparison concerns a familiar activity inside a changed commercial relationship, not identical pricing.",
-      "Larian’s April 2025 BG3 update explained a different decision: major additions would end so the team could make something new. Blizzard’s 2022 D4 plan committed to an ongoing seasonal team alongside optional purchases. These statements expose different production commitments. They do not reveal either project’s complete finances, and they do not tell us that every proposed feature was chosen because of its likely revenue.",
-      "Sony’s 2022 investor presentation placed more of its planned PlayStation Studios investment into live-service games. It shows a publisher seeking ongoing business alongside individual releases. The continuing work is concrete. Riot Games’ engineering account of VALORANT, its team shooting game, describes the systems for grouping players, finding matches, running them in data centers, recording results and handling purchases. Those systems must work together whenever players arrive.",
-      "New adventures have their own costs. CD PROJEKT’s 2023 disclosure separated production of Cyberpunk 2077’s Phantom Liberty expansion from its marketing campaign. Developing content, reaching an audience and operating a service are different demands on money. A purchase may help support several at once. We should not draw a direct line from one cosmetic sale to one feature without evidence of the actual allocation.",
-      "Consider a hypothetical choice between helping friends return together and producing a purchasable collection. The collection has a visible sales line. Reworking an invitation flow or explaining an old character’s status may create value through fewer failed evenings, lower support costs or later recommendations. Those benefits need evidence too. If immediate sales are the only accepted measure, the team can neglect conditions that make any future sale welcome.",
-      "The funding question is therefore also a question about care: which parts of the experience can the business afford to maintain, and which can it recognize as worth maintaining? A good answer must connect the players’ reasons to be there with the costs of providing the place. The next comparisons separate those reasons from the packages in which games sell them."
-    ],
-    takeaway:
-      "Examine the continuing work and player value that must support the continuing offer.",
-    panel: {
-      title: "Two schematic cost profiles",
-      items: [
-        {
-          label: "Release-led",
-          text: "Production → launch → support and future releases",
-        },
-        {
-          label: "Service-led",
-          text: "Production → ongoing content, operations and acquisition",
-        },
-      ],
-    },
-    sources: ["adobe-2013", "bg3-patch8", "d4-season-philosophy", "sony", "hist-valorant", "cyberpunk"],
-    evidence: "The eight-year interval and staffing choice are illustrative scenarios, not Blizzard financial history. Adobe documents a different industry’s 2013 subscription transition; D4 is not described as the same model. Larian and Blizzard provide dated production intentions. Sony’s investment figures are forecasts, Riot supplies a specific operating example, and CD PROJEKT separates production and marketing costs. No audited revenue allocation or inevitable relationship between payment and artistic decisions is asserted.",
-    paragraphCitations: {
-      "2": ["adobe-2013"],
-      "3": ["bg3-patch8", "d4-season-philosophy"],
-      "4": ["sony", "hist-valorant"],
-      "5": ["cyberpunk"],
-    },
-  },
-  {
-    id: "six-games",
-    part: 1,
-    title: "Six games, different promises",
-    lede: "Similar pleasures can sit inside very different packages. The useful comparison is what each game invites us to do—and what the purchase includes.",
-    paragraphs: [
-      "A game can be a private adventure, a project with friends or a familiar place to spend an hour. The same title can serve different purposes on different evenings. These six role-playing games connect an adventure to a developing character, but package their work differently. An expansion adds to an existing game; an edition bundles a particular set of content. Comparing those packages helps us see what a purchase promises without pretending it explains every reason to play.",
-      "Baldur’s Gate 3 asks players to guide a group of companions through a story shaped by their choices. Its purchase includes different paths through that campaign. The analogy to a novel is useful at the checkout: revisiting the work does not require another purchase. During play, the analogy becomes less exact. We can make choices that were absent from our first experience.",
-      "Elden Ring, FromSoftware’s fantasy action role-playing game, emphasizes exploration and demanding combat. CD PROJEKT RED’s Cyberpunk 2077 places its character in a futuristic city of jobs and conflicting loyalties. Their Shadow of the Erdtree and Phantom Liberty expansions offer another substantial adventure for another purchase. Like a new volume, each has a named scope; unlike an independent book, an expansion can require the original game and progress within it.",
-      "The Witcher 3 follows a professional monster hunter through a world of authored quests. Its 2022 Complete Edition bundled the main game with Hearts of Stone, Blood and Wine and earlier additions. A collected edition of novels works similarly: material sold at different times becomes one package for a later reader. The world has not changed simply because the contents of the box have.",
-      "Clair Obscur: Expedition 33, from Sandfall Interactive, follows a group on a fantasy expedition. Its battles combine taking turns with actions timed by the player. The studio released a free Thank You update in December 2025. An adventure sold as a release can receive additional material; an update schedule does not, by itself, create a recurring payment obligation.",
-      "Diablo IV combines its campaign with a seasonal program and a shop. Its 2025 Reliquary system added reward catalogs: collections whose premium access could be bought, while their contents required a resource earned by playing. We will examine that transaction later. Here it establishes a different kind of offer from an expansion: permission to pursue specified rewards within the game already being played.",
-      "Compare three things separately: the experience someone wants, what the game enables and what the purchase includes. A friendship can grow around a completed adventure. A new update need not ask for payment. A sold addition can be worthwhile without becoming a permanent destination. When the world changes, the next question is what parts of someone’s earlier investment still have a place in it."
-    ],
-    takeaway:
-      "Compare the reason to return, the next purchase and the progress that remains usable.",
-    table: {
-      caption:
-        "Selected product structures, with historical scope where specified. This is not a current price or complete DLC catalog.",
-      headers: ["Game", "Design emphasis", "Commercial example"],
-      rows: [
+      "rows": [
         [
           "Baldur’s Gate 3",
           "Authored campaign and branching choices",
-          "Base game; Larian states no microtransactions",
+          "Base game; Larian states no microtransactions"
         ],
         [
           "Elden Ring",
           "Exploration, combat and build mastery",
-          "Base game + Shadow of the Erdtree",
+          "Base game + Shadow of the Erdtree"
         ],
         [
           "Clair Obscur: Expedition 33",
           "Authored RPG campaign",
-          "Premium game; no sales or budget estimate used here",
+          "Premium game; no sales or budget estimate used here"
         ],
         [
           "The Witcher 3",
           "Authored quests in an open world",
-          "2022 Complete Edition bundles two story expansions",
+          "2022 Complete Edition bundles two story expansions"
         ],
         [
           "Cyberpunk 2077",
           "Authored open-world RPG",
-          "Phantom Liberty as a separately produced expansion",
+          "Phantom Liberty as a separately produced expansion"
         ],
         [
           "Diablo IV",
           "Campaign plus repeatable progression",
-          "Base game, expansions, shop and seasonal catalogs",
-        ],
-      ],
+          "Base game, expansions, shop and seasonal catalogs"
+        ]
+      ]
     },
-    sources: [
+    "sources": [
       "bg3",
       "elden",
       "cyberpunk",
       "witcher",
       "expedition",
       "hist-expedition-update",
-      "hist-season-design",
       "reliquary",
+      "d4-expansion-structure"
     ],
-    evidence:
-      "The comparison uses selected official product descriptions, a dated bundle announcement and expansion disclosure. It is not a financial ranking, a complete DLC catalog or a guarantee of permanent offline availability.",
-    paragraphCitations: {
-      "1": ["bg3"],
-      "2": ["elden", "cyberpunk"],
-      "3": ["witcher"],
-      "4": ["expedition", "hist-expedition-update"],
-      "5": ["hist-season-design", "reliquary"],
+    "evidence": "Selected official products illustrate distinct package boundaries, not a complete catalog, financial ranking or equivalence of their gameplay. The Witcher bundle and Expedition update are dated examples. Reliquaries refer to the April 2025 design. Conclusions about future commitments are the essay’s comparison.",
+    "paragraphCitations": {
+      "1": [
+        "bg3",
+        "elden",
+        "cyberpunk"
+      ],
+      "2": [
+        "witcher"
+      ],
+      "3": [
+        "expedition",
+        "hist-expedition-update"
+      ],
+      "4": [
+        "reliquary",
+        "d4-expansion-structure"
+      ]
     },
+    "figures": [
+      {
+        "asset": "legacy-d4-corridor",
+        "alt": "Diablo IV character in the Hell-Touched Corridors",
+        "caption": "Diablo IV, Hell-Touched Corridors. One encounter sits inside a game with several distinct kinds of paid addition.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
+    ],
+    "sections": []
   },
   {
-    id: "the-reset",
-    part: 1,
-    title: "Where progress lives",
-    lede: "The character can be saved while the occasion for playing it changes.",
-    paragraphs: [
-      "Diablo IV combines a campaign, its main story adventure, with seasons: recurring periods of new activities and changes to character development. The campaign reaches a resolution; a season offers a fresh run through a changing set of possibilities. These structures overlap, since a seasonal character can also follow the campaign. Before examining their rewards, it helps to distinguish what a new beginning preserves.",
-      "Diablo IV lets characters take part in a season, a period of shared changes and goals, or continue outside that cycle in the Eternal Realm. Realm here means the version of the game world to which the character belongs. Blizzard’s first-season explanation in 2023 said seasonal characters and their progress would move to Eternal afterward, while season-specific features could disappear. The newer character-selection capture also describes that transfer. Beginning another season does not mean the previous character has been deleted.",
-      "Several things can survive in different places. The saved character holds equipment, completed tasks and levels—stages of development reached by earning experience through play. The account records purchased access and other shared benefits. Knowledge and skill belong to the person: recognizing a useful item, understanding an enemy or timing a move. A new sports season provides a useful comparison. The standings can start over; the competitors have still learned from last year.",
-      "That is why two nominally fresh characters can begin from very different positions. Imagine a veteran who recognizes a useful modifier immediately and a newcomer who must read every item. Give them identical starting equipment and their decisions will still diverge. The reset has equalized part of the saved state. It has left the history of learning intact. The shared starting line preserves a considerable difference in preparation.",
-      "Outer Wilds, a space-exploration game by Mobius Digital, puts learning at the center of progress. Its solar system repeats while discoveries change where the player wants to go. In the developer’s account of an early prototype, testers began keeping notes, reinforcing the need for a ship computer that recorded discoveries. Saving a clue and understanding it are different achievements.",
-      "Blizzard described seasons as room to experiment with temporary mechanics without balancing every new theme against all earlier ones forever. For players, a restart can also serve as an invitation with a date: begin together again. Yet synchronizing the occasion does not synchronize people’s lives. One friend may be ready for a new project while another still values the character they were building. The game must make both intentions legible.",
-      "The commercial consequence appears when rewards and purchases follow different luggage rules. An account appearance may travel differently from a seasonal power; a catalog may have its own period of availability. The design must explain the relevant boundaries at the moment of commitment. “You keep your progress” is inadequate if the listener and the designer mean different kinds of progress.",
-      "The transfer exhibit below keeps the categories separate. End the season and watch where the character goes, then consider what the player brings to a new beginning. Deciding what to preserve depends on understanding what that person values. The following chapters examine those reasons for playing."
+    "id": "the-reset",
+    "part": 2,
+    "title": "What a new season keeps",
+    "lede": "A fresh character begins with little. The person controlling it may bring years.",
+    "paragraphs": [
+      "A Diablo IV season invites players to begin new characters under a shared set of changes. The Eternal Realm holds characters outside that seasonal cycle; “realm” names the version of the game in which they can participate. Blizzard’s first-season explanation said characters would move to Eternal when the season ended. A restart therefore creates another beginning without simply erasing the earlier character.",
+      "What has been preserved is more complicated than a save file. Equipment and levels belong to a character. Purchased access and some shared benefits belong to an account. Recognizing a dangerous attack belongs to the player. Friends may share a history that none of those records captures. When someone says they do not want to start again, any of these investments could be what they are trying to protect.",
+      "Consider two people creating the same class. One has already learned which abilities work together; the other must discover what the descriptions mean. Their starting characters can be identical while their practical starting points remain far apart. Resetting recorded strength does not reset understanding. This is one reason a familiar climb can become a new experience without every encounter being newly produced.",
+      "Blizzard’s 2023 account also presented seasonal mechanics as experiments that need not remain forever. That gives the studio room to alter a run without supporting every earlier addition indefinitely. The production advantage and the player’s investment meet at the boundary: what will transfer, what will disappear and what will still be useful? Those are material terms of the invitation to begin.",
+      "A sports season offers a partial analogy. The standings restart, but the competitors retain what they learned. A game adds possessions and purchased access to the question, often with different transfer rules. Saying that progress is “kept” is insufficient if a character remains available but cannot join the activity friends have chosen, or if an appearance survives while the power associated with a season does not.",
+      "The transfer diagram separates these kinds of continuity. Its important consequence is social as well as technical: preserving a character and preserving a reason to use it are different achievements. The player may want to continue an unfinished adventure, learn another class or join a shared restart. To judge the invitation, we first need to understand which of those evenings they hoped to have."
     ],
-    takeaway:
-      "Ask where each kind of progress survives and in which activity it can still be used.",
-    panel: {
-      title: "Four places change accumulates",
-      items: [
-        { label: "Knowledge", text: "What the player understands" },
-        { label: "Skill", text: "What the player can execute" },
-        { label: "Character", text: "Levels, equipment and quest state" },
-        { label: "Account", text: "Owned access and cosmetics" },
-      ],
-    },
-    figures: [
+    "takeaway": "Preserving a saved character does not automatically preserve its place in a player’s plans.",
+    "figures": [
       {
-        asset: "d4-seasonal-tooltip",
-        alt: "Diablo IV Seasonal Character tooltip states that the character becomes Eternal at the end of the season",
-        caption:
-          "The Seasonal tooltip explicitly describes transfer to Eternal. Owner reports the current season and version at capture, 1 October 2026.",
-        credit: "Blizzard",
-      },
-      {
-        asset: "outer-wilds-signalscope-prototype",
-        alt: "Early Outer Wilds signalscope interface facing Riebeck",
-        caption:
-          "The signalscope directs curiosity toward a place to investigate. This image is a 2016 prototype, not the released interface.",
-        credit: "Mobius Digital · 2016 design article",
-      },
+        "asset": "d4-seasonal-tooltip",
+        "alt": "Diablo IV Seasonal Character tooltip states that the character becomes Eternal at the end of the season",
+        "caption": "Diablo IV character selection, 1 October 2026. The tooltip says seasonal characters move to Eternal after the season.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
     ],
-    sources: [
-      "d4-expansion-structure",
+    "sources": [
       "hist-season-design",
-      "hist-outer-product",
-      "hist-outer-demake",
-      "outer",
+      "season"
     ],
-    evidence:
-      "The detailed season rationale is attributed to Blizzard’s 2023 announcement, not projected onto current-season rules. The present capture supports transfer wording only. No undocumented Rebirth preservation rules are asserted.",
-    paragraphCitations: {
-      "0": ["d4-expansion-structure"],
-      "1": ["hist-season-design"],
-      "4": ["hist-outer-product", "hist-outer-demake"],
-      "5": ["hist-season-design"],
+    "evidence": "The transfer and temporary-mechanics account is anchored to Blizzard’s 2023 seasonal explanation. It does not promise that every historical seasonal feature, item or benefit follows the same rules today. The two-player comparison and sports analogy are explanatory models; the owner-supplied tooltip provides a separate captured interface example.",
+    "paragraphCitations": {
+      "0": [
+        "hist-season-design"
+      ],
+      "3": [
+        "hist-season-design"
+      ]
     },
+    "sections": [
+      {
+        "at": 2,
+        "title": "The part of progress outside the save file"
+      }
+    ]
   },
   {
-    id: "why-people-play",
-    part: 2,
-    title: "What players want",
-    lede: "Three people can finish the same dungeon and take home three different things.",
-    paragraphs: [
-      "Picture three players returning from a dungeon, an area of enemies and challenges they tackled together. One has learned to anticipate the final enemy’s attack. Another spent the run talking with an old friend. A third found equipment that completes a character they have been imagining for weeks. The game records a completed activity, possessions and time spent. The group leaves with a new skill, an evening together and a more convincing fiction.",
-      "Ryan, Rigby and Przybylski’s 2006 studies offer a useful vocabulary for this difference. Self-determination theory examines autonomy, competence and relatedness: willing participation, effective action and connection with others. Their game research linked perceived need satisfaction with enjoyment and future play, while also examining well-being. These are qualities of an experience. Counting available choices, awarded levels or names on a friends list does not directly measure them.",
-      "The first question is therefore what the person came to do. A difficult fight can be welcome when learning it is tonight’s project. The same fight can be an obstacle when the plan was to show a new friend the world. A menu that offers twenty activities may still leave that pair searching for one they can enjoy together. Variety has to become usable possibility somewhere.",
-      "Nick Yee’s survey of roughly 3,000 players of massively multiplayer online role-playing games offers another lens. These are games where many people share a persistent world. The study grouped reported motives into achievement, social and immersion components, which could overlap. Someone perfecting a character may care deeply about friends; someone drawn to the fiction may enjoy winning. The useful unit is a person with several reasons to play, rather than a permanent marketing label.",
-      "Learning adds another complication. In the opening of A Theory of Fun, Raph Koster describes his children losing interest in tic-tac-toe as its patterns became familiar. His design argument helps explain why increasing a counter can eventually cease to feel like progress. It also suggests a productive question for an RPG: is the next session changing what the player can notice or do, or mainly extending an already settled routine?",
-      "The meeting-place comparison also has limits. Steinkuehler and Williams examined informal sociability in particular online worlds. Ducheneaut and colleagues showed that a populated world could matter even during solo play. Being among people, relying on teammates and sustaining a friendship place different demands on design. A friends-list count cannot stand in for all three.",
-      "Settled routines can be wanted. Our imaginary friends may prefer an easy route precisely because it leaves room to talk. The collector may enjoy careful repetition. The task is to discover which purpose the repetition serves and whether the surrounding rewards preserve it. If a deadline sends the group into separate activities, the economy has changed the evening even when everyone completes more objectives.",
-      "A useful offer begins with the purpose it could serve. It might help someone express a character, share a challenge or make time for a demanding hobby. It can also compete with what that person had intended to do. We need an account of those intentions before choosing what to sell or what to count. Even then, some works deliberately make us question the value of their counters."
+    "id": "why-people-play",
+    "part": 3,
+    "title": "A reason to be here",
+    "lede": "The activity log can record a completed dungeon. It cannot say what made that evening matter.",
+    "paragraphs": [
+      "Imagine three friends finishing a Diablo dungeon, an area of enemies and challenges. One finally reads a difficult attack correctly. Another mostly wanted an hour together. The third finds an item for a character they have been imagining all week. The group completed one activity, but its members valued different parts of it. A design that improves the evening for one could interfere with what another came to do.",
+      "Game research gives us ways to ask about those differences. Ryan, Rigby and Przybylski’s 2006 studies applied self-determination theory: autonomy, competence and relatedness concern willing participation, effective action and connection with others. The studies linked perceived need satisfaction with enjoyment and future play. These are qualities people experience, so a count of menu choices, character levels or friends is not a direct measure of them.",
+      "A menu with twenty activities may still leave our group unable to find one they want to share. A hard encounter may offer one person a welcome lesson and prevent another from accompanying a less experienced friend. The relevant question is how the available possibilities fit the people present. Difficulty and variety acquire their meaning within that occasion.",
+      "Nick Yee’s survey of roughly 3,000 online role-playing-game players found overlapping motives involving achievement, social life and immersion. The overlap is useful: the person studying equipment statistics can also care about the fiction and the company. A marketing label such as “collector” can help organize a question, but becomes misleading when treated as a permanent description of everything that person wants.",
+      "Repetition has the same ambiguity. Raph Koster’s account of his children learning the patterns of tic-tac-toe helps explain why a once-interesting problem can lose its pull. Yet our friends might deliberately choose familiar, undemanding play so they can talk. More novelty is not always the right response to a routine. We need to know whether the routine has become empty or is making room for something else.",
+      "This changes how we assess a reward system. A deadline that sends friends into separate tasks may increase completed objectives while damaging the evening they arranged. A cosmetic might earn little use in combat and still make a character feel more personal. The purpose of the session supplies the missing context. Even a score, the most apparently unambiguous sign of success, needs to be read in the world that gives it meaning."
     ],
-    takeaway:
-      "Follow the purpose of the session before treating its events as evidence of value.",
-    panel: {
-      title: "Three questions about the same session",
-      items: [
-        { label: "Autonomy", text: "Did I want to do this?" },
-        {
-          label: "Competence",
-          text: "Could I understand and affect the outcome?",
-        },
-        { label: "Relatedness", text: "Did I feel connected to someone?" },
-      ],
-    },
-    sources: [
+    "takeaway": "Ask what the player came to do before treating completed activities as evidence that the design succeeded.",
+    "sources": [
       "sdt",
       "yee",
-      "koster",
-      "third-places",
-      "alone-together"
+      "koster"
     ],
-    evidence:
-      "The opening party is an invented example. SDT findings, Yee’s genre-specific motivation study and Koster’s design argument are distinct kinds of evidence; the chapter does not turn them into a universal player taxonomy or a diagnostic questionnaire.",
-    paragraphCitations: {
+    "evidence": "The three friends are an invented scenario. SDT supplies a theory and empirical studies; Yee supplies a genre-specific motivation survey; Koster offers a design argument. These do not establish a universal player taxonomy or identify the motives of Diablo IV’s audience.",
+    "paragraphCitations": {
       "1": [
         "sdt"
       ],
@@ -1184,555 +1140,621 @@ const manuscript: Omit<Chapter, "visual">[] = [
       ],
       "4": [
         "koster"
-      ],
-      "5": [
-        "third-places",
-        "alone-together"
       ]
     },
+    "figures": [
+      {
+        "asset": "legacy-social",
+        "alt": "Diablo IV social interface",
+        "caption": "Diablo IV’s social interface. An invitation begins the practical work of turning separate players into a shared evening.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
+    ],
+    "sections": []
   },
   {
-    id: "play-beyond-score",
-    part: 2,
-    title: "Play beyond the score",
-    lede: "INDIKA puts a bright little accounting system inside a world that gives us reasons to question it.",
-    paragraphs: [
-      "INDIKA, made by Odd Meter and published by 11 bit studios, is a story-driven game about a young nun. In one reference screenshot, she stands before a scene torn open by red light, with an instruction to hold a control to pray. Beside it sits a precise score: 1330 / 1470. A second image puts a luminous reward symbol above worn fabric, wood and a candle. The contrast invites us to ask what this accounting is doing inside the story.",
-      "The publisher describes a journey through religious belief and harsh reality, with the devil accompanying the protagonist. Against that premise, the numerical display invites a particular reading. Prayer has entered a system that accepts an input and makes progress legible. We can ask whether the count measures anything the character actually needs, whether its authority is trustworthy, and why we are so ready to understand the next threshold as a desirable destination.",
-      "This reading depends on the relationship between the elements. Remove the score and the scene still contains a figure, a threat and an instruction. Remove the figure and the counter could belong to a harmless collection task. Together, they put an ordinary game habit under pressure: the willingness to treat a sign of advancement as proof that advancing is worthwhile. The cheerful arithmetic becomes a small, suspicious witness.",
-      "A screenshot cannot tell us how the input feels over time or how every player interprets the sequence. It can support a close reading of the invitation on screen. Holding a control assigns the player a part in the ritual; observing a character pray would assign a different part. The interface brings the action under a hand, while the story supplies reasons to question the action’s meaning. The reading here rests on that tension between action, measurement and meaning.",
-      "An evening can be worthwhile because a work unsettles us. A difficult novel or film may leave an argument to think about rather than an appetite for an immediate repeat. Games can do this too. INDIKA’s score belongs inside an authored experience that questions what is being counted. Completion, pleasure, admiration and a wish to return need separate descriptions.",
-      "When we inspect an economy, we need to describe what its signals mean within the work. A coveted sword, a souvenir from friends and a deliberately dubious score can all produce an acquisition event. Their roles are different enough that substituting one for another would change the game’s argument. An acquisition loop can leave behind understanding—including understanding that its counter deserves a raised eyebrow."
+    "id": "play-beyond-score",
+    "part": 3,
+    "title": "Do the points mean progress?",
+    "lede": "INDIKA places familiar game arithmetic inside a story that gives us reasons to distrust it.",
+    "paragraphs": [
+      "In INDIKA, a story-driven game made by Odd Meter and published by 11 bit studios, the protagonist is a young nun accompanied by the devil. One supplied screenshot places a prompt to pray beside a precise numerical score. The setting is distressed, the imagery threatening, and the counter reassuringly familiar. We know how to read a number getting closer to a threshold before we know whether that threshold deserves our faith.",
+      "That contrast supports a reading of the interface as part of the story’s argument. Prayer becomes an action performed through a control; the score offers an apparently orderly account of progress. The publisher describes a conflict between belief and harsh reality. Within that premise, numerical certainty looks suspicious. What could these points actually establish about the person earning them?",
+      "The image alone cannot settle the game’s complete argument. It does let us inspect how action and accounting sit together. Watching a character pray and holding a button to make her pray assign the audience different roles. Adding a score recruits another familiar habit: pursuing the next increment. The player is asked to participate in a system that the surrounding fiction makes questionable.",
+      "This is a useful interruption to the language of engagement. An authored work may be worthwhile because it disturbs a habit, complicates a belief or leaves an uncomfortable question. A difficult film need not make its audience immediately want another screening to have succeeded. A game can likewise earn admiration through an experience someone is glad to have completed.",
+      "The point carries back to Diablo without making the two games interchangeable. A reward can be a useful tool, a sign of belonging, a personal ambition or a deliberate provocation. Its collection event does not tell us which role it played. Before adding another reward to keep a loop moving, we need to understand what the existing activity means—and how its rules produce that experience."
     ],
-    takeaway: "Read the reward signal in the context of the work that uses it.",
-    figures: [
+    "takeaway": "A score can be part of an artwork’s argument; increasing it need not be the player’s ultimate achievement.",
+    "figures": [
       {
-        asset: "legacy-indika-pray",
-        alt: "INDIKA shows a Hold LT to pray prompt in a red-lit scene",
-        caption:
-          "A held input makes prayer an action the player performs. The screenshot establishes the prompt, not the complete experience of holding it.",
-        credit: "Odd Meter / 11 bit studios",
+        "asset": "legacy-indika-pray",
+        "alt": "INDIKA shows a Hold LT to pray prompt in a red-lit scene",
+        "caption": "INDIKA pairs a prayer prompt with a score. The player performs the ritual through a held input.",
+        "credit": "Odd Meter / 11 bit studios",
+        "afterParagraph": 2
       },
       {
-        asset: "legacy-indika-points",
-        alt: "INDIKA shows a glowing reward symbol and a numerical score",
-        caption:
-          "The visible score invites a reading of what is being counted and why. Its expressive role is discussed here as interpretation.",
-        credit: "Odd Meter / 11 bit studios",
-      },
+        "asset": "legacy-indika-points",
+        "alt": "INDIKA shows a glowing reward symbol and a numerical score",
+        "caption": "INDIKA’s numerical progression sits beside imagery of belief and doubt.",
+        "credit": "Odd Meter / 11 bit studios",
+        "afterParagraph": 2
+      }
     ],
-    sources: ["lit-indika-official"],
-    evidence:
-      "Original close reading of the owner-supplied prayer and points captures, with the premise checked against the publisher. No unseen ending, invented playthrough, universal emotional response or blanket claim about the usefulness of INDIKA’s points is asserted.",
-    paragraphCitations: {
-      "0": ["lit-indika-official"],
-      "1": ["lit-indika-official"],
-    },
-  },
-  {
-    id: "anatomy-of-loop",
-    part: 3,
-    title: "Anatomy of a loop",
-    lede: "The arrow back to the beginning conceals the important question: what is different when we get there?",
-    paragraphs: [
-      "Fight, collect equipment, improve a character, then fight again: this repeated sequence is a core loop. It describes a mechanism inside Diablo, rather as a description of Pong’s paddles describes the machine in the bar. It leaves out the occasion around the activity. The same loop can support a hard-won lesson, an easy conversation with a friend or an evening of repetition someone regrets. We need to follow how the rules become that experience.",
-      "Hunicke, LeBlanc and Zubek’s MDA framework helps unpack that shortcut. It distinguishes mechanics, the rules and implementation; dynamics, the behavior that develops as the system is played; and aesthetics, the experience the design seeks to produce. The value of the distinction is the work it demands between those layers. A rule on a design sheet still has to become a situation someone can read, act within and care about.",
-      "Consider an invented dungeon with a slow, heavy attack. Its recovery time is a mechanical constraint. A narrow doorway and two enemies can turn that constraint into a decision about when to commit. Reading the opening, risking the swing and surviving can produce a feeling of control earned under pressure. Increase the damage until every enemy dies before that decision matters and the animation survives, while the encounter’s question disappears.",
-      "Now move outward. The player may leave the room with a better weapon, a clearer reading of the enemy, or a story about a spectacularly mistimed swing. Over the session, those changes can become a new route or a revised build, the combination of equipment and abilities they use. Across weeks, they can become a personal project shared with friends. These timescales are our explanatory model, rather than a fixed anatomy every game must possess. Their purpose is to make the transfers visible.",
-      "Diablo IV’s campaign and seasonal characters put these timescales to different uses. In the campaign, growing strength helps carry a character through an unfolding adventure. A new skill or weapon matters in the next encounter; that encounter also matters because of where the story is taking the player. Progress has a destination in the campaign, even though the character can have further goals after its ending.",
-      "A fresh seasonal character makes the climb itself available again. Equipment that an established character has outgrown can become a useful early upgrade; another combination of abilities becomes a project to assemble and test. Blizzard’s original season rationale emphasized experimenting with classes and builds, temporary mechanics and a shared starting point. The design task is to give familiar actions worthwhile consequences again. The account of character transfer earlier in this essay explains how that fresh start can coexist with preserving the previous character.",
-      "A reward schedule can support those transfers. A new tool might invite a tactic the player has never tried. It can also sit beside them like an unrelated meter, recording hours without opening another decision. The distinction becomes especially useful when tuning an economy: if a change makes the player repeat the dungeon twice as often, what happens inside those additional runs? More experiments, more conversations and more identical chores are all compatible with that count.",
-      "The MDA paper itself uses Monopoly’s accumulating advantage to show how rules can change the course and tension of play. That example suggests a way to inspect our imaginary dungeon: follow the feedback. Does success broaden the player’s options? Does failure supply information? Does the next reward make yesterday’s learning useful or bypass it? These questions reach the experience through the workings of the system.",
-      "The loop earns its next turn when something worth carrying forward comes out of the previous one. That can be modest: a clean dodge, an amusing mishap, a small improvement to a cherished character. Random loot makes the transfer more complicated, because effort and the desired object no longer arrive on the same schedule. The machine can keep turning while one player is still waiting."
+    "sources": [
+      "sys-indika-product"
     ],
-    takeaway:
-      "Inspect what changes between repetitions: capability, knowledge, relationships and usable choices.",
-    panel: {
-      title: "Nested reasons to continue",
-      flow: true,
-      items: [
-        { label: "Moment", text: "Act → perceive the result" },
-        { label: "Encounter", text: "Read a situation → adapt" },
-        { label: "Session", text: "Choose and complete a goal" },
-        {
-          label: "Longer project",
-          text: "Learn, explore, build or coordinate",
-        },
+    "evidence": "This is a close reading of the two supplied screenshots in the context of the publisher’s premise. It does not claim an unseen ending, universal player response or verified causal effect of the counter. The interpretation is the author’s, not a quotation of the developer’s intent.",
+    "paragraphCitations": {
+      "0": [
+        "sys-indika-product"
       ],
+      "1": [
+        "sys-indika-product"
+      ]
     },
-    sources: ["mda", "season"],
-    evidence:
-      "MDA supplies the three-level framework and Monopoly example. The dungeon, timescales and proposed review questions are original explanatory models, not measurements of Diablo IV or validated causal claims. The campaign/season comparison interprets the game’s progression structure using Blizzard’s 2023 account of seasonal design; it does not infer that repeat play requires repeat payment.",
-    sections: [
-      {
-        at: 3,
-        title: "What survives the turn",
-      },
-      { at: 4, title: "The campaign and the seasonal climb" },
-      { at: 6, title: "What the next reward changes" },
-    ],
-    paragraphCitations: {
-      "1": ["mda"],
-      "5": ["season"],
-      "7": ["mda"],
-    },
+    "sections": []
   },
   {
-    id: "loot-table",
-    part: 3,
-    title: "The loot table",
-    lede: "A one-in-twenty chance does not promise a reward on the twentieth attempt.",
-    paragraphs: [
-      "Loot is the equipment and other items found through play. When a monster leaves an item behind—a drop—the player stops to inspect it, compare it with what they have and imagine a use for it. A loot table defines possible rewards and their chances. Finding a rare object and deciding whether it suits the character are different pieces of the experience.",
-      "Blizzard’s 2024 Loot Reborn announcement makes that relationship unusually explicit. The stated aim was to make dropped upgrades easier to recognize, reduce the quantity of items to sort and move some complexity into Tempering and Masterworking, systems for modifying and improving equipment. This was a historical redesign of where item decisions happened. Changing the number of drops was only one part of changing the player’s work around them.",
-      "The simplest possible loot model strips that work away so we can inspect one problem clearly. Suppose every attempt has a fixed 5% chance of awarding our imaginary target, independently of previous attempts. After twenty attempts, the probability of at least one success is about 64.2%. More than a third of otherwise identical players would still have nothing. Twenty attempts is also the mean waiting time in this model; it is emphatically not a delivery guarantee.",
-      "Our unfortunate player can complete twenty more attempts without receiving credit for the first twenty in the next roll. The probability of the next success remains 5%. A designer looking at aggregate item output and a player looking at an empty slot can therefore both describe the same system accurately. One sees its rate of production. The other experiences the uncertain length of a personal project.",
-      "Now give the player alternatives in a hypothetical redesign. A guaranteed award after a fixed number of attempts puts a ceiling on this particular wait. A material earned on every failure can turn an unwanted result into partial progress. A trade route allows effort elsewhere to purchase the object. A targetable source lets the player narrow the search. Each change redistributes uncertainty, choice and commitment; none can be described adequately by the rarity label alone.",
-      "The stakes also depend on what happens during the search. An enjoyable encounter with friends and a compulsory payment for each attempt have different costs, even if a probability calculation looks identical. Our model knows nothing about enjoyment, prices, changing odds, duplicates or the rest of an inventory. It is here to make the unlucky tail visible, not to diagnose players from a curve.",
-      "Randomness therefore allocates more than equipment. It can change how long a personal project takes and whether friends remain on the same route. The probability model shows variation in attempts; it cannot tell us whether those attempts are welcome. Ask what people can choose while they wait, what a run offers without the target drop, and whether the search still fits the time they intended to give it."
+    "id": "familiar-verbs",
+    "part": 3,
+    "title": "The same attack, a different decision",
+    "lede": "A game can keep its familiar controls while changing what it asks a player to notice.",
+    "paragraphs": [
+      "Across Diablo generations, we still move a character into danger, attack and inspect what falls. That continuity can make a new game look deceptively close to an old one. The comparison needs more than a list of actions. Chess has kept a small vocabulary of moves for centuries; the position supplies the problem. In a combat game, space, enemies and resources can do similar work around a familiar button.",
+      "Take the spare encounter in the diagram. On an open floor, the player can approach and retreat. Place a hazard behind them and the retreat becomes a commitment. Add cover between the figures and the direct attack needs another route. Nothing new has appeared on the controller. What changed is the information needed before pressing a button and the consequences afterward.",
+      "This distinguishes another decision from another piece of content. A differently dressed enemy can demand exactly the same response. An old enemy in unfamiliar terrain can demand a new one. Neither result is automatically better: recognition can be pleasurable, and a comfortable encounter may be welcome. But counting enemies or abilities will not tell us how much the player’s actual problem has changed.",
+      "Jesper Juul describes a related distinction between emergence, where rules generate situations, and progression through specifically arranged challenges. His analysis allows both within a game. An authored quest can guide a character into a situation whose outcome still depends on abilities, cooperation and improvisation. The question is what these structures enable together, rather than which single label belongs on the box.",
+      "This gives us a more precise way to compare the old Diablo screenshot with the new one. What can the player anticipate? Which choices does their equipment open or close? What does a failed attempt teach? Familiar framing is evidence of a shared visual language; answering those questions requires observing encounters. The next layer follows what an encounter leaves behind, and why someone would choose to begin another."
     ],
-    takeaway:
-      "Judge a reward system by the unlucky route through it, as well as its average output.",
-    interactive: "probability",
-    sources: ["lit-loot-reborn"],
-    evidence:
-      "The 2024 itemization example is dated developer documentation. The calculator and 5% example use independent, fixed hypothetical odds: 1 − (1 − p)ⁿ. No Diablo drop rates, paid-draw equivalence or psychological effect is inferred.",
-    sections: [
+    "takeaway": "Compare the decisions an action creates, rather than counting the buttons available to perform it.",
+    "figures": [
       {
-        at: 2,
-        title: "The player in the tail",
+        "asset": "legacy-d2-combat",
+        "alt": "Diablo II combat near the Cairn Stones with Rakanishu",
+        "caption": "Diablo II, near the Cairn Stones and Rakanishu. Enemies and terrain give familiar attacks their immediate context.",
+        "credit": "Blizzard",
+        "afterParagraph": 2
       },
+      {
+        "asset": "legacy-d4-corridor",
+        "alt": "Diablo IV character in the Hell-Touched Corridors with health and resource displays",
+        "caption": "Diablo IV, Hell-Touched Corridors. The visual family resemblance leaves the encounter’s decisions to be compared through play.",
+        "credit": "Blizzard",
+        "afterParagraph": 2
+      }
     ],
-    paragraphCitations: {
-      "1": ["lit-loot-reborn"],
+    "sources": [
+      "juul"
+    ],
+    "evidence": "The tactical layouts are original teaching models. Juul provides the emergence/progression distinction; the historical screenshots establish visible resemblance, not identical systems or a causal effect of monetization on design.",
+    "paragraphCitations": {
+      "3": [
+        "juul"
+      ]
     },
+    "sections": []
   },
   {
-    id: "the-checklist",
-    part: 3,
-    title: "The checklist",
-    lede: "A list can help you enter a world. Add a deadline and it also begins arranging your week.",
-    paragraphs: [
-      "In a game that leaves many places and activities open, “what shall we do tonight?” can be a tiring question. A checklist gives the group a route: complete these objectives, then claim this reward. A reward track arranges such rewards along a series of milestones. That structure can guide newcomers or fit an activity into the time friends have available. Add a deadline, however, and the game also starts arranging their week.",
-      "The bargain changes when the list expires. The objective now has two properties: what it asks someone to do and the date by which they must do it. A player choosing between an interesting side path and an expiring task is weighing a consequence outside the immediate adventure. Even a purely cosmetic reward can organize that choice if it matters enough to the person who wants it.",
-      "Imagine a four-week track, with a desired item near the end. In one version, unfinished progress stays available. In another, the track closes. Missing week three leaves different options in the two versions, although the tasks and reward are identical. This is the point of the exhibit: remove one week of participation and inspect the remaining path. The clock is a rule with consequences, not decoration around the reward.",
-      "Halo Infinite, a science-fiction shooting game, separated two policies in its May 2022 Season 2 article. Purchased premium passes remained available, and players could switch between them; returning to an earlier free pass required its premium entitlement. The policy separates the arrival of a new season from a purchased track’s expiry, while preserving a meaningful difference between the free and paid conditions. That exact scope matters when comparing the promise.",
-      "Ghost Ship Games makes Deep Rock Galactic, a cooperative game about miners exploring hostile caves. Its April 2024 proposal went further toward treating seasons as a selectable library. It described reactivating older passes and branching collections of appearance rewards with previous progress intact, while people with different seasons selected could still play together. Some season-specific assignments would not return.",
-      "Keeping a track available does not automatically make its tasks interesting. Expiration is also only one source of commitment: friends, a competitive event or a shared launch can give a date a real purpose. The design review should identify what the deadline contributes to this experience. Does it make a collective occasion possible? Does it keep the activity coherent? Does it mainly make postponement costly? Different answers justify different clocks.",
-      "A shared date can make an evening possible: everyone knows when to return. A personal deadline can also make the same evening harder to share, if friends need different activities to finish their rewards. Evaluate the calendar against the occasion it organizes. After a missed week, can people still play together, understand what remains and leave comfortably when their time is up? Those are different questions from whether the checklist increased completed tasks."
+    "id": "anatomy-of-loop",
+    "part": 3,
+    "title": "What comes back through the loop",
+    "lede": "Fight, find, improve, repeat. The appeal depends on what is different the next time around.",
+    "paragraphs": [
+      "“Fight monsters, collect equipment, become stronger” describes Diablo’s core loop: a sequence of actions and consequences that returns the player to another encounter. It is a useful sketch of the machinery, but a poor description of why someone loves it. The pleasure might be the impact of an attack, recognizing a valuable item or discovering a combination that transforms an awkward character. The same arrows can carry very different evenings.",
+      "The MDA framework, developed by Robin Hunicke, Marc LeBlanc and Robert Zubek, separates mechanics, dynamics and aesthetics. Mechanics are the implemented rules; dynamics are what happens as people play with them; aesthetics concern the experience those interactions produce. The framework asks a designer to connect a numerical rule to a lived situation. Increasing damage is easy to specify. Understanding what that increase does to an encounter requires another step.",
+      "Imagine a heavy attack with a long recovery. A player learns to wait for an opening before committing. A stronger weapon might let them take a calculated risk against two enemies. Make it powerful enough to end every fight immediately and the old decision disappears. The statistic went up in both cases; the opportunities created by the increase were different.",
+      "An encounter can leave several things behind. Equipment changes the character’s capability. Failure can teach the player to recognize a warning. A ridiculous escape can become a story friends retell. Across a session, these consequences can support a larger project: assembling a build, the combination of abilities and equipment that makes a character work in a particular way. That project gives later encounters a purpose before they begin.",
+      "A seasonal restart rearranges these relationships. An ordinary early weapon becomes useful again, and knowledge from the previous run can guide a different build. Blizzard’s first-season explanation explicitly connected fresh characters with trying classes and combinations. The production challenge is to make familiar actions produce worthwhile decisions again, without needing to replace every action or location.",
+      "This is where tuning reaches beyond pacing. If a change doubles the number of runs needed for an item, it creates more encounters but does not establish their value. The extra runs may support experimentation, company or a settled routine. A useful assessment follows what changes during them. Random rewards make that question especially urgent, because the run that completes one person’s project may leave another still at the beginning."
     ],
-    takeaway:
-      "Take a week out of the schedule and inspect the player’s remaining choices.",
-    figures: [
+    "takeaway": "A repetition can add capability, understanding or company. Count those consequences as well as the repetitions.",
+    "sources": [
+      "mda",
+      "season"
+    ],
+    "evidence": "MDA is a design framework, not a demonstrated revenue model. The heavy-attack example and session timescales are original analytical constructions. The seasonal rationale is attributed to Blizzard’s 2023 explanation. No actual damage balance or causal claim about D4 retention is inferred.",
+    "sections": [
       {
-        asset: "legacy-season-rank",
-        alt: "Diablo IV Death Awakening season ranks interface with a time remaining indicator",
-        caption:
-          "A historical Death Awakening season screen makes ranks and remaining time visible. It is not evidence of the current season’s objective requirements.",
-        credit: "Blizzard",
-      },
-      {
-        asset: "drg-season-selection-proposal-2024",
-        alt: "Deep Rock Galactic proposed season selection menu marked work in progress",
-        caption:
-          "Ghost Ship’s April 2024 season-selection proposal, visibly marked WORK IN PROGRESS. Use the developer’s documented policy separately from the mockup’s exact UI.",
-        credit: "Ghost Ship Games · 2024 proposal",
-      },
-      {
-        asset: "halo-premium-pass-rewards-2022",
-        alt: "Halo Infinite Season 2 promotional reward lineup",
-        caption:
-          "A 2022 promotional reward lineup. The accompanying launch article documents ongoing premium-pass access; the artwork itself does not establish that policy or the free track’s rules.",
-        credit: "343 Industries / Xbox · 2022 promotional art",
-      },
+        "at": 3,
+        "title": "From an encounter to a project"
+      }
     ],
-    sources: ["halo", "drg"],
-    evidence:
-      "Halo’s policy is scoped to its documented 2022 premium/free distinction. Deep Rock Galactic is described through the April 2024 proposal and its stated exceptions. The four-week track is hypothetical, not a reconstruction of either game’s progression.",
-    sections: [
-      {
-        at: 3,
-        title: "A release date and an expiry date",
-      },
-    ],
-    paragraphCitations: {
-      "3": ["halo"],
-      "4": ["drg"],
-    },
-  },
-  {
-    id: "familiar-verbs",
-    part: 3,
-    title: "Familiar verbs, changing decisions",
-    lede: "Attack, move, dodge: a short vocabulary can still support a long conversation.",
-    paragraphs: [
-      "In Diablo II and Diablo IV, a player moves a character through danger, attacks enemies and inspects equipment. Designers often call actions such as moving, attacking and dodging the game’s verbs. The family resemblance is visible even in a screenshot. As in chess, a small set of familiar moves can support very different situations; the important comparison is what decisions those moves make possible.",
-      "To see what a screenshot leaves out, build a deliberately small example. The player faces an enemy across an open floor, with room to approach and retreat. Put a hazard behind the player and backing away becomes dangerous. Put cover between the two figures and the direct approach closes; the player has to go around it. The attack button remains exactly where it was. The floor has changed what must happen before and after the press.",
-      "We have added no new verb to the player’s move set. We have changed the information needed before acting, the cost of a mistake and the alternatives after it. Try the three layouts in the tactical exhibit. Its deliberately spare geometry makes the changed decision visible before textures, animation and spectacle can distract us from it.",
-      "Jesper Juul’s account of emergence and progression gives the comparison a useful foundation. Games can combine rules that generate varied situations with sequences of authored challenges. His analysis of EverQuest, an online role-playing world, shows both structures in one world: a general system of character abilities and cooperation alongside individually specified quests. Reusing an action within a new relationship between rules can produce a different problem, while adding more destinations can leave an old problem largely intact.",
-      "That distinction also prevents novelty from becoming its own bureaucratic target. A new button may add a decision; it may add another step to the same answer. A familiar enemy can become interesting through terrain, scarcity or an unexpected companion. For any claimed improvement, describe a situation in which the player notices different information and makes a consequential choice. If no such situation can be found, the change may belong mainly to presentation, content volume or convenience.",
-      "The fair comparison between Diablo generations would therefore follow actual encounters: what the player could anticipate, what a build made possible, how failure taught the next attempt, and which choices disappeared once the character became powerful. The combat screenshots in this study’s reference archive begin that inquiry by showing continuity in the visual language. They cannot finish it, and they cannot identify monetization as the cause of continuity.",
-      "The familiar action is only the beginning of the comparison. A purchase can change which places a group can enter, how an item is acquired or which encounter a character can handle. Each reaches a different part of the activity people came for. Following those consequences gives us a practical way to examine what a game sells, starting with access."
-    ],
-    takeaway:
-      "Compare the information, commitments and consequences around an action.",
-    figures: [
-      {
-        asset: "legacy-d2-combat",
-        alt: "Diablo II combat near the Cairn Stones with Rakanishu",
-        caption:
-          "Diablo II: a historical combat interface. The image demonstrates visual vocabulary, not the complete combat system.",
-        credit: "Blizzard",
-      },
-      {
-        asset: "legacy-d4-corridor",
-        alt: "Diablo IV character in the Hell-Touched Corridors with health and resource displays",
-        caption:
-          "Diablo IV: familiar framing and resources. Understanding the differences requires observing play, builds and encounters.",
-        credit: "Blizzard",
-      },
-    ],
-    sources: ["juul"],
-    evidence:
-      "The combat comparison begins with owner-provided historical captures. The sword-swing encounter is an invented teaching model. Juul supplies the emergence/progression distinction; no unseen Diablo mechanics or causal account of genre development is asserted.",
-    paragraphCitations: {
-      "3": ["juul"],
-    },
-  },
-  {
-    id: "access",
-    part: 4,
-    title: "Access",
-    lede: "You can own the expansion and still be standing outside its door.",
-    paragraphs: [
-      "Shadow of the Erdtree adds an adventure to Elden Ring, a fantasy game built around exploration and demanding combat. Buying the expansion is only one requirement for entering it. Publisher Bandai Namco’s June 2024 guide also requires defeating two major enemies, Starscourge Radahn and Mohg. Payment adds the destination; progress through the game makes it reachable.",
-      "Booking an advanced course does not supply the preparation it requires. An expansion can make a similar distinction between paying for access and being ready to use it. Its prerequisites may connect the new adventure to the old one or ensure that the player has learned enough to proceed. They can also frustrate someone who expected to join friends immediately. The offer needs to explain the remaining work before the buyer commits.",
-      "The exhibit separates ownership from readiness. Open the first gate and the second remains closed. This is a small piece of accounting that shop language often compresses into one inviting verb: unlock. The word can mean receiving a finished object, receiving permission to attempt an activity, or receiving access to a collection whose objects require further work. Those are different purchases even when their confirmation buttons look identical.",
-      "For a worked example, imagine buying entry to a new fortress. One offer opens its campaign immediately. A second opens a challenge whose equipment must be earned. A third opens a reward catalog, with a deadline for claiming its contents. Each can contain appealing work. Yet a player deciding whether to spend needs to picture a different future: an evening of exploration, a demanding project, or a schedule that now has an expiry date attached.",
-      "This is where the distinction between content and commitment becomes useful. A list of included maps tells us what the studio produced. It tells us less about what the buyer must bring: a suitable character, knowledge of earlier systems, other players, repeated sessions. If those requirements remain invisible until after checkout, the game has sold a destination while leaving the journey to be discovered as an administrative surprise.",
-      "A stronger offer lets the player rehearse that journey before paying. Show where the entrance is, what condition is still unmet and whether waiting changes anything. The appeal can survive this clarity. A difficult door is often exactly what an experienced player wants to buy. They need to recognize the door they are choosing, including the work on the other side.",
-    ],
-    takeaway:
-      "Ownership and readiness are separate states; the offer should make both visible.",
-    figures: [
-      {
-        asset: "d4-campaign-state",
-        alt: "Diablo IV campaign selection with an Endgame recommendation and locked expansion entries",
-        caption:
-          "Campaign selection captured on 1 October 2026. The owner reports the current version/season; locked entries show this account’s access state.",
-        credit: "Blizzard",
-      },
-    ],
-    sources: ["txn-erdtree-entry"],
-    evidence:
-      "The Erdtree prerequisites are documented in a June 2024 publisher guide. The fortress offers are invented comparisons, not claims about Diablo IV expansion gating or current prices.",
-    sections: [
-      {
-        at: 2,
-        title: "What does “unlock” unlock?",
-      },
-    ],
-    paragraphCitations: {
-      "0": ["txn-erdtree-entry"],
-    },
-  },
-  {
-    id: "identity",
-    part: 4,
-    title: "Identity",
-    lede: "A helmet can change nothing on the damage sheet and still change the character you want to inhabit.",
-    paragraphs: [
-      "A cosmetic changes a character’s appearance without changing its combat abilities. Imagine two versions of one character at a campfire: one in plain iron, another wearing a crown that looks confiscated from a cathedral. Their attacks are identical, but they suggest different people. Clothing, team shirts and souvenirs work through similar meanings outside games. The appearance can matter even when its audience is only the person wearing it.",
-      "Vili Lehdonvirta’s 2009 study gives that intuition more useful language than the usual functional-versus-cosmetic split. His exploratory analysis of fourteen virtual-goods platforms distinguishes practical utility, aesthetic pleasure and social meaning. Several can inhabit one object. The point is to ask what makes this particular object desirable, rather than treating everything without a damage bonus as the same kind of purchase.",
-      "Research on avatars, the figures that represent people in virtual spaces, also gives us a reason to take representation seriously. In Yee and Bailenson’s 2007 experiments, participants were assigned different virtual appearances; changes in attractiveness or height were associated with differences in social interaction and negotiation. These were short laboratory encounters, not a study of buying armor in Diablo. They establish a narrower possibility worth carrying into design: the figure representing us can participate in how we act, as well as how we are seen.",
-      "The wardrobe below holds mechanical capability steady while changing appearance. Try looking at the same outfit as a collector, a role-player and a member of a group. A collector may care about completing a visual set. A role-player may reject the most elaborate option because it contradicts the character. A group may choose something recognizably shared. A single sales event would flatten those intentions into one identical row in a purchase log.",
-      "The same question extends beyond this simplified wardrobe: how much authorship remains after purchase? Imagine a system that lets someone change the crown’s finish, removing its brightest ornament, or pairing it with the plainest coat in the inventory. The buyer begins arranging a character rather than simply equipping a complete advertisement. A rigid matching set and a flexible collection can contain equally elaborate art while allowing very different degrees of personal composition.",
-      "The earned wardrobe therefore deserves as much care as the paid one. Learning the world and making a character should already give someone a convincing identity within it. A purchased appearance can add authorship, pleasure or a way to mark belonging. Its value grows within a world the player has reasons to inhabit. Making the unpaid character feel inadequate would change that relationship as well as the next offer."
-    ],
-    takeaway:
-      "Judge an appearance by the fantasy and expression it supports, alongside its mechanical effects.",
-    figures: [
-      {
-        asset: "legacy-d4-shop-grid",
-        alt: "Diablo IV shop with cosmetic bundles, a refresh countdown and an Ancient Hydra preview",
-        caption:
-          "A historical shop screen groups appearance items and displays a refresh timer. Its offers and prices are not presented as current.",
-        credit: "Blizzard",
-      },
-    ],
-    sources: ["goods", "txn-proteus"],
-    evidence:
-      "The virtual-goods study is exploratory; the Proteus experiments examine assigned avatars in brief VR interactions. Neither measures Diablo IV cosmetic purchases. The campfire, crown and wardrobe interpretations are original thought experiments.",
-    sections: [
-      {
-        at: 3,
-        title: "The story attached to the object",
-      },
-    ],
-    paragraphCitations: {
-      "1": ["goods"],
-      "2": ["txn-proteus"],
-    },
-  },
-  {
-    id: "time",
-    part: 4,
-    title: "Time",
-    lede: "The thing for sale may be a weapon. The practical purchase is a different route to having it.",
-    paragraphs: [
-      "Warframe is Digital Extremes’ science-fiction action game. Its Foundry is a workshop where players build equipment from blueprints and collected resources. The developer’s guide describes that route alongside buying finished equipment with Platinum, a purchasable currency. Making and buying lead toward the same object through different experiences. For one person, assembling it is the project; for another, the unfinished project stands between tonight’s plans and the equipment they want to use.",
-      "A sentence such as ‘you can earn it’ leaves most of that difference unresolved. Where are the required materials? Can the player deliberately seek them? Does the activity teach something useful or merely need repeating? What happens during a crafting wait? The complete route includes information, inventory decisions and interruptions as well as minutes. A stopwatch records duration while missing much of the experience that makes that duration welcome or unwelcome.",
-      "Trade adds a third route. Warframe’s support rules allow eligible Platinum to move between players, including currency previously received through trade; starting and promotional Platinum have restrictions. That means the person using Platinum need not be the person who originally paid for it. A player can turn desirable finds into purchasing capacity. This creates another form of work: knowing what others want, finding a counterpart and deciding what to part with.",
-      "The routes in the exhibit therefore end at a shared destination but carry different obligations. Purchasing can remove a search or a wait. Crafting can make the item the culmination of an expedition. Trading can turn an unwanted drop into progress toward a chosen build. None of those descriptions tells us which route a particular person enjoys. It tells us what must be compared before calling a payment a harmless shortcut or a necessary escape.",
-      "Path of Exile, Grinding Gear Games’ action role-playing game, provides another example. A stash tab is a page of storage for the player’s items. In a January 2022 support reply, the developer explained how a public premium stash tab lets its owner price items individually or price the tab’s contents together. The purchase changes an interface used to offer goods to other players. More storage and easier selling can overlap. This is a specific convenience, not evidence that all trading requires a paid tab.",
-      "Convenience deserves close attention precisely because it can be valuable. Removing repetitive sorting may leave more room for experimenting with a build. Removing an entire acquisition journey may remove the reason to use that build tomorrow. The design question is which friction carries the game’s meaning and which friction merely consumes the evening. Once a studio sells relief, it has two versions of that evening to maintain. Inspect both: what the paying player skips, and what everyone else is still being asked to enjoy.",
-    ],
-    takeaway:
-      "Trace every route to the reward, including the work that a convenience purchase removes.",
-    panel: {
-      title: "One item, several commitments",
-      items: [
-        {
-          label: "Play and craft",
-          text: "Time, materials, knowledge and inventory capacity",
-        },
-        { label: "Purchase", text: "Currency and any remaining prerequisites" },
-        {
-          label: "Trade",
-          text: "Another player, eligible goods and transaction rules",
-        },
+    "paragraphCitations": {
+      "1": [
+        "mda"
       ],
+      "4": [
+        "season"
+      ]
     },
-    sources: ["warframe", "trade", "poe"],
-    evidence:
-      "Warframe and the dated Path of Exile support reply establish specific acquisition and listing features. No matched-item completion time, current price, universal trade eligibility or required purchase for all trading is claimed.",
-    paragraphCitations: {
-      "0": ["warframe"],
-      "2": ["trade"],
-      "4": ["poe"],
-    },
+    "figures": [
+      {
+        "asset": "legacy-d4-corridor",
+        "alt": "Diablo IV character in the Hell-Touched Corridors",
+        "caption": "Diablo IV, Hell-Touched Corridors. The encounter connects immediate combat to a character’s longer development.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
+    ]
   },
   {
-    id: "power",
-    part: 4,
-    title: "Power",
-    lede: "The sword’s statistics tell us what it can do. Its acquisition route tells us what the game has rewarded.",
-    paragraphs: [
-      "An auction house is a market where players list items for others to buy. Picture someone searching it for a weapon before choosing a dungeon to explore. They compare prices and acquire an upgrade. The dungeon may still be enjoyable, but buying now competes with finding for the practical job of improving the character. The question is how that market changes the activity that gives the equipment its appeal.",
-      "Blizzard confronted that conflict publicly in September 2013. John Hight’s Diablo III announcement said the auction houses had been intended to make trading convenient and secure, yet were undermining the core experience of killing monsters for desirable loot. Both the gold and real-money houses were scheduled for removal in March 2014. Including the gold house matters: the stated design problem extended beyond the presence of a cash payment.",
-      "The useful question is what an efficient player learns to do next. In the imagined dungeon route, a disappointing drop leaves a problem of encounter choice, build adjustment or another attempt. In the market route, it may leave a pricing problem. The sword arrives with the same combat properties, but the sequence that produced it trains attention elsewhere. A game can support that economy deliberately. It needs to understand that the economy is now one of its main activities.",
-      "Grinding Gear Games, the developer of Path of Exile, addressed a related tension in its 2017 Trade Manifesto. The studio defended trade as part of what made items valuable while arguing that very easy exchange could compress the number of upgrades on the way to a final build. This is a developer’s historical design argument, not an experimental demonstration that every faster market damages enjoyment. It is useful because it identifies the scarce resource under discussion: the journey between an inadequate item and an excellent one.",
-      "Power itself also needs a context. An increase in damage can shorten a private encounter, help a cooperative group or alter a competitive ranking. Access to a new option may matter more than a percentage bonus if it bypasses a constraint the encounter relies on. To compare purchases, hold the situation still: same opponent, same rules, same skill, then ask which possibilities changed and who else experiences the consequence.",
-      "A route can succeed at delivering an upgrade and still weaken the activity that was supposed to make the upgrade satisfying. Evaluating the sale therefore requires following the player after acquisition. Do they have a new problem they are eager to tackle, or have they purchased their way past the most interesting problem the game had left?",
+    "id": "loot-table",
+    "part": 3,
+    "title": "The player who is still waiting",
+    "lede": "An average reward rate can conceal a very long evening for the unlucky player.",
+    "paragraphs": [
+      "A desirable drop can make the previous fight feel different in retrospect. The player stops, reads the item and imagines what it might let their character do. A loot table governs which objects can appear and with what probabilities. Its output is therefore both a supply of equipment and a timetable for personal ambitions—one whose uncertainty falls differently on different players.",
+      "Diablo IV’s 2024 Loot Reborn redesign addressed more than rarity. Blizzard described reducing the items and attributes players had to inspect while moving customization into Tempering and Masterworking, systems for modifying equipment. The intended change concerned where the interesting decision happened: recognizing an upgrade on the ground, then shaping it. More objects were not automatically more useful choices.",
+      "Our calculator removes those decisions to isolate the wait. Give an imaginary item a fixed, independent 5% chance on each attempt. After twenty attempts, about 64.2% of players would have found at least one. More than a third would still be waiting. Twenty is the mean waiting time in this model; it is not a promise that the twentieth attempt delivers. Reaching a 90% chance takes 45 attempts—more than twice that average wait.",
+      "The next roll still has a 5% chance, however long the earlier wait. A designer can see the expected number of items entering the economy while a particular player sees an unfinished project. Both are observing the same system accurately. The average becomes misleading when used to describe what a typical commitment guarantees.",
+      "Different rules distribute that uncertainty differently. A guaranteed award after a set number of failures puts a ceiling on the wait. A material awarded every run preserves partial progress. A targeted source narrows the search; trade lets activity elsewhere contribute to the purchase. These options change which decisions remain available when the desired object fails to appear.",
+      "The proper comparison also includes what each unsuccessful run contains. A good encounter with friends can be worthwhile without the target item. A run undertaken only to complete an overdue build has another cost. Before adjusting a drop rate, inspect the long tail of attempts and the alternatives along it. The number tells us how uneven the wait can become; players must tell us what that wait is doing to their evenings."
     ],
-    takeaway:
-      "A powerful item also rewards the route used to acquire it; examine what that route teaches the player to prioritize.",
-    panel: {
-      title: "Two routes to the same reward",
-      items: [
-        { label: "Play route", text: "Encounter → uncertainty → acquisition" },
-        { label: "Market route", text: "Search → exchange → acquisition" },
+    "takeaway": "Inspect the unlucky route through the system, including what remains worthwhile before the item arrives.",
+    "interactive": "probability",
+    "sources": [
+      "lit-loot-reborn"
+    ],
+    "evidence": "Loot Reborn is a dated 2024 design announcement, not a measured outcome. All displayed odds are hypothetical, fixed and independent: 1 − (1 − p)^n. At p=.05 and n=20 the result is about .6415; the geometric mean wait is 20. No D4 drop rates, paid-draw equivalence or psychological diagnosis is asserted. The smallest integer n with 1 − .95^n ≥ .9 is 45.",
+    "sections": [
+      {
+        "at": 2,
+        "title": "Twenty attempts is not a guarantee"
+      }
+    ],
+    "paragraphCitations": {
+      "1": [
+        "lit-loot-reborn"
+      ]
+    },
+    "figures": [
+      {
+        "asset": "legacy-d2-item",
+        "alt": "Diablo II item tooltip",
+        "caption": "A Diablo II item tooltip. The useful object is a combination of properties, not simply a rarity label.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
+    ]
+  },
+  {
+    "id": "the-checklist",
+    "part": 3,
+    "title": "When the game enters the calendar",
+    "lede": "A reward track can give an evening direction. Its expiry date can give the rest of the week a deadline.",
+    "paragraphs": [
+      "An open world offers possibilities, but choosing among them takes effort. A checklist can turn “what shall we do?” into an achievable plan. A reward track places prizes along that plan, making progress easy to see. For someone learning a game or coordinating friends, this direction can be part of the service they value.",
+      "An expiry date adds another rule. The choice is now between activities with different consequences for waiting. A side quest may remain available next week while a desired appearance will not. Even if the reward changes no combat statistic, the calendar can change tonight’s route. The system is allocating attention as well as distributing objects.",
+      "Remove one week from the hypothetical schedule in the diagram. Keep the tasks and reward identical, then compare an expiring track with one that remains available. The difference appears after the interruption: how much time is left, what can still be finished and whether catching up displaces other plans. A total number of completed tasks cannot show those consequences on its own.",
+      "Other games demonstrate that a season’s arrival and a pass’s expiry are separate design decisions. Halo Infinite’s May 2022 announcement said purchased premium passes would remain available and could be switched between. Returning to an older free pass required its premium entitlement. The distinction preserves an ongoing purchase without extending the same promise to every free reward.",
+      "Ghost Ship Games proposed another arrangement for Deep Rock Galactic, its cooperative mining game. Its April 2024 season-selection account described returning to earlier reward tracks with retained progress, while people choosing different seasons could still play together. Some season-specific assignments were excluded. The useful idea is a library of projects that does not require friends to share the same unfinished one.",
+      "Deadlines can still do useful work. A tournament needs a common occasion; a seasonal launch can help friends arrange a return. The question is what a particular clock contributes and who bears the cost of missing it. Evaluate a track after an interruption, not only along its intended schedule. A game made to last for years will repeatedly meet people whose lives have changed since last week."
+    ],
+    "takeaway": "An interruption is part of a long-term player relationship; test what the schedule permits afterward.",
+    "figures": [
+      {
+        "asset": "legacy-season-rank",
+        "alt": "Diablo IV Death Awakening season ranks interface with a time remaining indicator",
+        "caption": "Diablo IV’s historical Death Awakening season screen places remaining time beside progression.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      },
+      {
+        "asset": "drg-season-selection-proposal-2024",
+        "alt": "Deep Rock Galactic proposed season selection menu marked work in progress",
+        "caption": "Deep Rock Galactic’s April 2024 season-selection proposal. The published mockup is marked work in progress.",
+        "credit": "Ghost Ship Games · 2024 proposal",
+        "afterParagraph": 3
+      },
+      {
+        "asset": "halo-premium-pass-rewards-2022",
+        "alt": "Halo Infinite Season 2 promotional reward lineup",
+        "caption": "Halo Infinite’s 2022 premium reward lineup. Purchased passes remained available after the season; free access followed different rules.",
+        "credit": "343 Industries / Xbox · 2022 promotional art",
+        "afterParagraph": 3
+      }
+    ],
+    "sources": [
+      "halo",
+      "drg"
+    ],
+    "evidence": "Halo’s rules are scoped to the May 2022 premium/free distinction. Deep Rock Galactic is described through its April 2024 developer proposal, including exceptions. The missed-week comparison is hypothetical and supplies no claim of measured pressure, retention or revenue.",
+    "sections": [
+      {
+        "at": 3,
+        "title": "A season need not erase the unfinished project"
+      }
+    ],
+    "paragraphCitations": {
+      "3": [
+        "halo"
       ],
-    },
-    sources: ["auction", "txn-trade-manifesto"],
-    evidence:
-      "Blizzard’s closure announcement and GGG’s 2017 manifesto are primary statements of design intent and diagnosis, not controlled causal studies. No deliberate drop-rate manipulation or universal judgment about player markets is asserted.",
-    sections: [
-      {
-        at: 2,
-        title: "The market becomes an activity",
-      },
-    ],
-    paragraphCitations: {
-      "1": ["auction"],
-      "3": ["txn-trade-manifesto"],
-    },
+      "4": [
+        "drg"
+      ]
+    }
   },
   {
-    id: "what-things-cost",
-    part: 5,
-    title: "What things actually cost",
-    lede: "The item has a token price. Your bank account encounters a different number.",
-    paragraphs: [
-      "Platinum is Diablo IV’s purchased virtual currency. It works like a prepaid balance: cash buys a quantity that can then be spent in the game. A historical Canadian store capture lists 1,000 Platinum for CAD 13.49. Imagine an item costing 900 Platinum and a player starting with none. Buying that single pack requires CAD 13.49 now and leaves 100 Platinum after the item purchase. The displayed item price and the cash needed to obtain it answer different questions.",
-      "It is tempting to multiply 900 by the pack’s per-token rate and call the result the item’s price. That yields an allocation of the pack’s cost, useful for some comparisons. It still cannot be paid on its own in this example. The player must choose the full pack. Conversely, charging the entire pack to this one item ignores the remaining currency’s possible future use. The arithmetic needs two visible lines: cash committed today, currency remaining tomorrow.",
-      "The calculator keeps the situation deliberately small: one selected pack, one hypothetical item and no starting balance. Change the pack and watch how affordability and remainder move together. A more favorable token rate can require a larger cash commitment. Whether that is useful depends on purchases the player actually intended to make, rather than on the size of the discount alone.",
-      "Research gives us reasons to study the representation of payment, while leaving the size of any game-specific effect open. Raghubir and Srivastava’s 2008 experiments compared cash with other payment forms, including stored-value certificates. They found differences in spending under their tested conditions; making the parting with money more salient could reduce some differences. These were consumer experiments, not measurements of Diablo’s Platinum shop. Their relevance is the mechanism to investigate, not a percentage to paste onto game revenue.",
-      "A prepaid balance also changes the next decision’s starting point. In this example, the next item is encountered by someone already holding 100 Platinum. The balance can be useful toward a purchase they wanted anyway. It can also make the question ‘Do I want another item?’ arrive tangled with ‘What should I do with this remainder?’ We cannot infer which thought wins from the existence of the balance. We can design the interface so that both the new cash outlay and the resulting balance are easy to inspect.",
-      "Arcade tokens and Platinum both put an internal unit between money and an activity. Their actual terms still need separate inspection: what the unit buys, how it is acquired and what happens to the remainder. The calculator keeps the cash commitment and leftover balance visible together. The game can make its currency feel like treasure while giving the person paying a receipt they can understand."
+    "id": "access",
+    "part": 4,
+    "title": "Buying the door",
+    "lede": "A receipt can grant access to an adventure without making the character ready to enter it.",
+    "paragraphs": [
+      "Buying Shadow of the Erdtree, Elden Ring’s expansion, did not by itself open its entrance. Bandai Namco’s June 2024 guide required players to defeat two major enemies, Radahn and Mohg. Money granted access to the product; progress satisfied a condition inside the game. The distinction can be welcome to someone seeking a hard new challenge and surprising to someone expecting to join friends immediately.",
+      "That is why “unlock” is an inadequate description of a purchase on its own. It may mean receiving an object now, obtaining permission to begin an adventure or becoming eligible to pursue rewards. Each can be a worthwhile offer. They leave the buyer with different things to do after payment.",
+      "The two gates in the diagram separate ownership from readiness. Opening the first does not operate the second. This is familiar elsewhere: paying for an advanced course does not provide the preparation it requires. In a game, the necessary preparation may be a character, knowledge, earlier progress or companions. The purchase page needs to make those demands visible while there is still a choice about committing.",
+      "A list of included maps describes production from the studio’s side. A prospective player also needs to picture the route from their current position to the first useful evening. Can they enter with the character they have? Is the new activity designed for the people they want to play with? What remains available if they postpone it? These details can matter more than the volume of additional content.",
+      "Clear requirements need not weaken an enticing invitation. A difficult entrance may be part of the appeal. They make the invitation more specific: this is the adventure, this is what ownership supplies, and this is what the player still needs to bring. Once inside, another kind of purchase changes the character’s place in that world without opening a new destination at all."
     ],
-    takeaway:
-      "Show today’s cash outlay and tomorrow’s remaining currency as separate quantities.",
-    interactive: "price",
-    figures: [
+    "takeaway": "Describe the route from payment to participation, including the conditions the purchase does not satisfy.",
+    "figures": [
       {
-        asset: "legacy-d4-platinum",
-        alt: "Diablo IV Platinum packs with cash prices from the owner’s Canadian-dollar store",
-        caption:
-          "Diablo IV’s Platinum packs, priced in CAD. Historical prices.",
-        credit: "Blizzard",
-      },
+        "asset": "d4-campaign-state",
+        "alt": "Diablo IV campaign selection with an Endgame recommendation and locked expansion entries",
+        "caption": "Diablo IV campaign selection, 1 October 2026. Locked entries reflect this account’s expansion access.",
+        "credit": "Blizzard",
+        "afterParagraph": 2
+      }
     ],
-    sources: ["txn-payment-form"],
-    evidence:
-      "Prices come from the owner-supplied historical CAD capture; capture date is unknown. The 900-Platinum item is invented. The model assumes zero starting balance and one pack, without tax or combination optimization. Payment research is not a game-specific spending estimate.",
-    paragraphCitations: {
-      "3": ["txn-payment-form"],
-    },
+    "sources": [
+      "txn-erdtree-entry"
+    ],
+    "evidence": "The two Erdtree prerequisites are documented in a June 2024 publisher guide. The course analogy and decision questions are analysis. The D4 campaign-selection figure records the photographed account’s access state; it is not evidence that D4 uses the same boss gates.",
+    "sections": [],
+    "paragraphCitations": {
+      "0": [
+        "txn-erdtree-entry"
+      ]
+    }
   },
   {
-    id: "two-key-lock",
-    part: 5,
-    title: "The two-key lock",
-    lede: "One key opens the catalog. Another pays for what you take from it.",
-    paragraphs: [
-      "Diablo IV introduced Reliquaries, catalogs of cosmetic rewards, in April 2025. Premium catalogs required access bought with Platinum, its purchased currency. Claiming their contents required Favor, tokens earned by playing. Paying opened the catalog; it did not automatically deliver every object inside. The distinction resembles enrolling in a course: the payment opens an opportunity whose completion still asks something of the participant.",
-      "The 99-token limit constrained the balance held at once. Spending created room to earn again; up to 99 could carry forward. Think of a reservoir: its capacity and the total water passing through it answer different questions.",
-      "Try an invented arithmetic example. Use the earning control to fill the reservoir to 99, unlock access, then claim something costing 30; the balance becomes 69. Earn another 25 and it rises to 94, while cumulative earnings reach 124. The balance stays below the cap while the total passing through it exceeds the cap. In the exhibit, watch held and lifetime-earned values separately as the machine refills. The example illustrates capacity and flow, without asserting an actual item price or earning speed.",
-      "Claim order was flexible; completion unlocked bonuses, while unclaimed rewards expired. A person seeking one object could prioritize it. A completionist had to plan for the set.",
-      "The two keys are therefore not independent in the player’s life. Buying access today can make a future evening feel differently allocated: there is now a paid opportunity waiting to be used. Whether that becomes satisfying direction or an unwelcome appointment depends on the person’s intentions, the remaining work and the time available. A completed catalog alone cannot distinguish those experiences. Ask what the player had hoped to do and whether the route left room to do it.",
-      "For a designer, the practical unit of explanation is the complete journey to the desired reward. Begin with the item a person actually wants, then work backwards through catalog eligibility, required play, any completion condition and the deadline. This may reveal a perfectly reasonable project. It may reveal that a modest-looking purchase recruits several future sessions. Either way, the player should be able to see that future before turning the first key.",
+    "id": "identity",
+    "part": 4,
+    "title": "A character worth inhabiting",
+    "lede": "An appearance can leave combat unchanged while giving someone another reason to care about the character.",
+    "paragraphs": [
+      "Put the same character in plain iron and then in a crown that looks stolen from a cathedral. Keep every combat statistic identical. The two figures suggest different people, even if nobody but the player sees them. This is the value a cosmetic can offer: an appearance through which someone inhabits the fiction. Clothing, souvenirs and team shirts carry comparable meanings outside games.",
+      "Vili Lehdonvirta’s exploratory study of virtual-goods businesses distinguishes practical utility, aesthetic pleasure and social attributes. These qualities can coexist in one object. The distinction improves on calling everything without a damage bonus “just cosmetic.” An item can be mechanically optional and still matter greatly to its owner’s pleasure or sense of belonging.",
+      "Representation can also affect an interaction. In Yee and Bailenson’s 2007 experiments, people assigned different virtual appearances behaved differently in brief social encounters. These were laboratory studies, not evidence that buying a particular armor set changes a Diablo player’s personality. They give us a reason to study what an avatar, the figure representing a person, enables them to feel or do rather than treating it as inert decoration.",
+      "A wardrobe’s design determines how much of that representation the player can author. A collector might want a complete set. Someone inhabiting a particular role might prefer to combine a worn coat with an elaborate helmet. Friends might choose a shared detail. Selling a fixed ensemble and offering pieces that mix well can involve equally elaborate art but allow different kinds of expression.",
+      "The earned wardrobe belongs in the comparison. Progress through the world already teaches a player who their character could become; its visual rewards help make that development tangible. Paid additions can enlarge the possibilities, but the assessment should include the unpaid character too. Does playing already produce a convincing inhabitant of this world, and what does the purchase add to that experience?",
+      "A sale records that the buyer accepted an offer. It does not explain whether they wanted personal authorship, recognition or a souvenir of a shared occasion. Understanding that value matters when deciding what to make next. It also helps separate selling a new appearance from selling relief from an inconvenient route to the equipment itself."
     ],
-    takeaway:
-      "Treat the offer as a purchase plus a future play commitment; distinguish balance capacity from total earnings.",
-    panel: {
-      title: "Documented 2025 structure",
-      flow: true,
-      items: [
-        { label: "Platinum", text: "Unlock eligible premium catalog access" },
-        { label: "Play", text: "Earn Favor, up to the held-balance limit" },
-        {
-          label: "Favor",
-          text: "Claim accessible rewards; spending makes room to earn again",
-        },
+    "takeaway": "Mechanical optionality does not make an appearance emotionally trivial; inspect the expression it makes possible.",
+    "figures": [
+      {
+        "asset": "legacy-d4-shop-grid",
+        "alt": "Diablo IV shop with cosmetic bundles, a refresh countdown and an Ancient Hydra preview",
+        "caption": "Diablo IV appearance bundles and a shop-refresh countdown. Historical offers and prices.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
+    ],
+    "sources": [
+      "goods",
+      "txn-proteus"
+    ],
+    "evidence": "The crown and wardrobe scenarios are invented. Lehdonvirta’s study is exploratory; the Proteus studies involve assigned appearances in brief virtual interactions. Neither estimates D4 cosmetic demand or effects of purchasing. The earned/paid wardrobe comparison is a proposed design assessment.",
+    "sections": [],
+    "paragraphCitations": {
+      "1": [
+        "goods"
       ],
-    },
-    figures: [
-      {
-        asset: "legacy-favor-tutorial",
-        alt: "Favor Tokens tutorial explains that players can hold 99 tokens, spend them and earn more",
-        caption:
-          "The tutorial distinguishes the maximum held balance from how much can be earned over time. This is a historical capture.",
-        credit: "Blizzard",
-      },
-    ],
-    sources: ["reliquary"],
-    evidence:
-      "Historical April 2025 mechanics. The 99→69→94 sequence uses illustrative earning and claim amounts; earning speed and current offers are not estimated.",
-    sections: [
-      {
-        at: 1,
-        title: "Capacity is not a quota",
-      },
-    ],
-    paragraphCitations: {
-      "0": ["reliquary"],
-      "1": ["reliquary"],
-      "3": ["reliquary"],
-    },
+      "2": [
+        "txn-proteus"
+      ]
+    }
   },
   {
-    id: "abstraction-and-surface",
-    part: 5,
-    title: "Abstraction and surface",
-    lede: "A beautiful offer can be easy to want and surprisingly difficult to explain.",
-    paragraphs: [
-      "Imagine an online purchase that sends you to separate screens for the item, its price, eligibility and the deadline. A game’s reward shop can distribute the decision in exactly that way. One screen shows armor; another sells currency; a catalog panel explains access; a smaller view supplies the claim requirements. Each piece may be legible. The buyer still has to assemble the whole commitment in memory.",
-      "Abstraction is part of the attraction of a game. We want a coin to feel like treasure and an unlocked vault to feel like an event. Trouble arises when the same theatrical shorthand has to carry an ordinary purchasing decision. ‘Unlock’ compresses several possible meanings. A shining token can represent money already spent, effort already supplied or permission still missing. Keeping the visual language coherent does not make those meanings interchangeable.",
-      "Hsee and colleagues’ 2003 research on medium maximization supplies a particularly strange lens. In one questionnaire study, participants chose between tasks leading to different ice-cream flavors. Introducing points between task and reward changed choices toward the longer task, even though the points had no independent use. It is a small experimental setting, far from a persistent game economy. Its useful provocation is precise: people may evaluate the intermediate score as though improving it were the final objective.",
-      "That helps formulate a question for the reward altar below. With the terms scattered, which fact becomes easiest to attend to: the largest number, the rarest-looking object or the shortest route to the glowing button? Gather the same terms together and ask again. No offer has become cheaper. No reward has changed. The exhibit changes the work required to understand the relationship among them. That difference deserves testing on its own.",
-      "Interface experiments also caution against diagnosing effects by appearance alone. Luguri and Strahilevitz’s 2021 studies of online service enrollment found that some manipulative presentations changed choices, while their countdown-timer condition did not significantly increase purchases. An angry-looking clock is not a measurement of pressure, just as a quiet button is not proof of neutrality. Their results come from a particular enrollment task; a game needs evidence from its own decision path.",
-      "A useful review gives someone a concrete intention—obtain this appearance, within this budget, without committing to another week—and lets them inspect the offer. Before confirmation, ask them to describe what payment delivers, what remains to be done and what happens if they stop. Then compare their account with the actual rules. A fast checkout with a wrong explanation is a failure of understanding, even when the proportion completing a purchase—its conversion rate—rises. This is where the interface’s craft becomes consequential: the same precision that makes a sword feel heavy can make a decision feel graspable.",
+    "id": "time",
+    "part": 4,
+    "title": "Buying a different route",
+    "lede": "The item at the end can be identical while the purchase changes the evening required to reach it.",
+    "paragraphs": [
+      "Warframe, Digital Extremes’ science-fiction action game, offers equipment through several routes. Its Foundry lets players build from blueprints and collected resources; its market also sells finished equipment for Platinum, a purchasable currency. For someone planning an expedition to assemble an item, acquiring the parts is the project. For someone hoping to use that item with friends tonight, the same unfinished work can stand in the way.",
+      "Calling the purchase a shortcut leaves the interesting question unanswered: what is being skipped? Searching for a material might reveal a new location, teach an encounter or simply repeat a task whose decisions are settled. Crafting can involve knowledge, inventory limits and waiting as well as active play. A number of saved hours cannot tell us whether the removed activity was the game’s pleasure or an obstacle around it.",
+      "Trade adds another route. Warframe allows eligible goods to be exchanged for purchased Platinum. The person eventually spending that currency need not be the person who paid money for it. Valuable finds can become purchasing capacity, but earning that capacity involves its own work: recognizing demand, finding another player and agreeing an exchange. The game contains a market as well as missions.",
+      "Convenience can operate on that market too. Path of Exile, Grinding Gear Games’ action role-playing game, sells premium stash tabs: pages of item storage that can also be made public for sale listings. A developer support explanation describes setting prices for individual items or the tab’s contents. The purchase changes how someone organizes and offers their inventory; it does not establish that every form of trading requires a paid tab.",
+      "These cases expose a difficult production choice. Removing repetitive sorting may preserve more time for experimenting with equipment. Removing the whole acquisition journey may remove the project that made the equipment desirable. A convenience feature should be judged against the specific friction it changes, with the experience of people who do not buy it still in view.",
+      "Once two routes are offered, they become part of one design. Players compare them, and the attractive route teaches them where to direct effort next. A market can be so effective at supplying equipment that it begins competing with the monsters for that role. Diablo III made this conflict unusually explicit."
     ],
-    takeaway:
-      "Test the player’s explanation of the whole commitment, alongside their ability to complete checkout.",
-    panel: {
-      title: "Before confirming",
-      items: [
-        { label: "Ownership", text: "What exactly will become mine?" },
-        {
-          label: "Remaining effort",
-          text: "What must I still earn or complete?",
-        },
-        { label: "Time", text: "What expires, and when?" },
-        {
-          label: "Balance",
-          text: "What cash leaves, and what currency remains?",
-        },
+    "takeaway": "Assess the activity removed by a convenience purchase, and the route left for people who do not take it.",
+    "sources": [
+      "warframe",
+      "sys-warframe-trade",
+      "poe"
+    ],
+    "evidence": "Official Warframe sources establish crafting, direct purchase and eligible currency trading, with transaction restrictions. The Path of Exile example is a dated developer support explanation of public premium stash tabs. No current prices, matched acquisition times or necessary purchase for every trade are asserted.",
+    "paragraphCitations": {
+      "0": [
+        "warframe"
       ],
+      "2": [
+        "sys-warframe-trade"
+      ],
+      "3": [
+        "poe"
+      ]
     },
-    sources: ["txn-medium", "txn-dark-patterns"],
-    evidence:
-      "The shop path and review task are original analytical examples. Medium-maximization and service-enrollment experiments support specific questions about representation, not a diagnosis of Diablo players or a universal timer effect. No legal conclusion is drawn.",
-    sections: [
+    "figures": [
       {
-        at: 3,
-        title: "Bring the terms into one view",
-      },
+        "asset": "legacy-poe-store",
+        "alt": "Path of Exile store showing purchasable offerings",
+        "caption": "Path of Exile’s store. Its paid conveniences operate alongside the game’s equipment and trading systems.",
+        "credit": "Grinding Gear Games",
+        "afterParagraph": 3
+      }
     ],
-    paragraphCitations: {
-      "2": ["txn-medium"],
-      "4": ["txn-dark-patterns"],
-    },
+    "sections": []
   },
   {
-    id: "does-it-work",
-    part: 6,
-    title: "Does any of it work?",
-    lede: "The coin box, the activity log and the receipt can all be full. We still need to know whether the evening was worth having.",
-    paragraphs: [
-      "Return to the small question that began this study: what did someone hope to do with their evening? Stepan’s level-eight Barbarian, funduck, supplies one concrete case. A Barbarian is a close-combat character in Diablo IV; this one belongs to the Eternal Realm, outside the seasonal restart. Its owner comes back to an unfinished adventure in a game also offering another fresh beginning. Before asking which route retains the player longer, ask which route they intended to take.",
-      "This one case cannot stand in for a population. It can expose a question worth investigating. Ask returning players what they intend to do, watch how they interpret the available routes, and ask what they believe will happen to their character. Then look at where the session actually goes. A fast route into play may help; a fast route into the wrong activity can merely postpone the confusion.",
-      "The wider literature gives us reason to keep experience beside behavior. Ballou and colleagues’ 2025 study combined Nintendo play records with surveys from 703 casually engaged US adults. Their estimates did not establish a relationship between hours played and well-being, but were too uncertain to demonstrate its absence. Players’ assessments of how gaming fitted into their lives were associated with well-being. The study is observational and its population specific; it supports asking richer questions, without proving a particular design will improve anyone’s life.",
-      "A studio needs several accounts of the same evening. Behavior tells it whether people returned or bought something. Experience tells it what they understood, enjoyed or regretted. Operations tells it whether connections, invitations and activities worked. The business account asks whether the work can be funded again. These answers can support one another, but none can safely substitute for all the others.",
-      "Controlled experiments can help determine whether a particular change caused a measured difference. They require sound assignment, measurement and interpretation. Microsoft’s research on long-running experiments warns about selection, survivorship and changing populations over time; simply leaving a test running does not settle those problems. An increase in the chosen outcome also needs a reason to count as improvement. The experiment estimates an effect. The team remains responsible for deciding which effects it values.",
-      "Consider a test of a clearer returning-player screen. Define success before launch: people can identify a suitable realm and activity, understand what persists and begin the session they intended. Include someone returning alone and friends returning together. Observe wrong turns, failed attempts to join, support needs and what people say afterward. Follow revenue and costs too. The point is to find a workable relationship among these outcomes, with room to learn when they disagree.",
-      "We began with a cabinet in a room. The manufacturer sold a machine, the operator sold turns and the venue could offer an evening worth coming out for. Online, parts of those jobs can meet inside one product. The old commercial question survives, surrounded by new creative possibilities and new obligations. What do people value here, what does providing it require, and how can payment help sustain it?",
-      "That is the standard this study proposes. A game may leave us with a skill, a story, an object, a friendship or simply a good hour. A viable business can keep making those possibilities available. Its offers deserve to be judged by how they fit the experience they draw their value from. The next sale matters. So does the life around it."
+    "id": "power",
+    "part": 4,
+    "title": "When the market replaces the hunt",
+    "lede": "An efficient way to acquire equipment can compete with the activity that made the equipment desirable.",
+    "paragraphs": [
+      "The Diablo III auction-house episode now has a place in the series’ history. It also gives us a concrete design problem to examine. Imagine wanting a stronger weapon and discovering that searching listings is the most promising next step. The market has solved acquisition. It may have done so by moving attention away from the encounters that were supposed to supply the upgrade.",
+      "Blizzard’s September 2013 removal announcement described this conflict in those terms: the auction houses had been intended to make trading convenient and secure, but were undermining the core loot experience. It scheduled both its real-money and gold houses for removal in March 2014. Including the gold market is essential to the analysis. Payment by cash was not the only way an acquisition system could compete with finding loot.",
+      "The two routes in the diagram end with an improved character but reward different judgments along the way. A player searching a dungeon studies enemies, build choices and reward sources. A player searching a market studies prices and available supply. Trading can be an absorbing game of its own. The designer needs to decide how that activity relates to the one the product originally invited its audience to enjoy.",
+      "Grinding Gear Games expressed a related concern in its 2017 Path of Exile Trade Manifesto. The studio valued exchange while arguing that very easy trade could reduce the sequence of incremental upgrades: a player could move quickly toward the desired final item. This is a developer’s design argument, not a controlled experiment. Its useful distinction is between the value of possessing equipment and the value of gradually becoming the character who uses it.",
+      "Stronger equipment also has consequences beyond its owner. It may let friends attempt another challenge, trivialize an encounter or alter competitive standing. “Power” needs that context. Compare the same situation before and after acquisition: which constraints disappeared, what decisions remain and who else experiences the change?",
+      "A transaction can work flawlessly and still weaken a larger design. The item arrives, the character improves, and a formerly meaningful activity becomes unnecessary. Evaluating monetization therefore extends past the receipt to the player’s next ambition. The next question is how clearly the receipt itself describes what was paid."
     ],
-    takeaway:
-      "What makes the experience worth having—and can the way it is funded keep that value intact?",
-    panel: {
-      title: "Four kinds of evidence",
-      items: [
-        { label: "Behavior", text: "What did people do?" },
-        { label: "Experience", text: "How did they describe it?" },
-        { label: "Business", text: "What value and costs resulted?" },
-        { label: "Causality", text: "Which change produced which effect?" },
+    "takeaway": "An acquisition system changes what players learn to pursue, even when the resulting item stays the same.",
+    "sources": [
+      "auction",
+      "txn-trade-manifesto"
+    ],
+    "evidence": "Blizzard and Grinding Gear Games supply historical design diagnoses, not controlled causal results. The imagined acquisition routes explain their relevance. No deliberate loot manipulation, universal harm from trading or claim that D4 sells the same power is made.",
+    "sections": [
+      {
+        "at": 2,
+        "title": "What the efficient player does next"
+      }
+    ],
+    "paragraphCitations": {
+      "1": [
+        "auction"
       ],
+      "3": [
+        "txn-trade-manifesto"
+      ]
     },
-    figures: [
+    "figures": [
       {
-        asset: "legacy-d4-char-select",
-        alt: "Diablo IV Season Info popup over the owner’s character selection screen",
-        caption:
-          "The Season Info prompt distinguishes a new seasonal character from continuing in Eternal. This is not the missing Rebirth confirmation.",
-        credit: "Blizzard",
-      },
-    ],
-    sources: ["lit-life-fit", "lit-experimentation", "experiment"],
-    evidence:
-      "funduck and the return uncertainty come from Stepan’s supplied handoff. The proposed onboarding evaluation is hypothetical. Ballou et al. (2025) is observational, uses a specific adult sample and has inconclusive equivalence tests; it establishes no causal design benefit. Experiment-method references supply methodological limits, not a Diablo result.",
-    sections: [
-      {
-        at: 4,
-        title: "Let the result change the decision",
-      },
-    ],
-    paragraphCitations: {
-      "2": ["lit-life-fit"],
-      "4": ["lit-experimentation", "experiment"],
-    },
+        "asset": "diablo-three-items",
+        "alt": "Diablo III rare and legendary boots shown in equipment comparison panels",
+        "caption": "Diablo III equipment comparison, reproduced from Blizzard’s 2016 retrospective. The stats describe the object; finding it and buying it can produce different experiences.",
+        "credit": "Blizzard Entertainment · Nevalistis, 2016",
+        "afterParagraph": 2
+      }
+    ]
   },
+  {
+    "id": "what-things-cost",
+    "part": 5,
+    "title": "The price on the screen",
+    "lede": "A token price and the money needed at checkout can be different numbers.",
+    "paragraphs": [
+      "Diablo IV’s Platinum is a purchased virtual currency: money buys a balance, and that balance can buy eligible items in the game. A supplied Canadian store capture offers 1,000 Platinum for CAD 13.49. Suppose a player with no balance wants an imaginary item priced at 900 Platinum. That pack requires CAD 13.49 now and leaves 100 Platinum afterward. The item price describes the deduction; the pack price describes the immediate cash commitment.",
+      "Multiplying 900 by the pack’s exchange rate gives an allocated cost of CAD 12.14, rounded to cents. That is a useful accounting number, but it is not an amount the player can pay by itself in this example. Calling the item CAD 13.49 is incomplete in another way: some of that purchase remains in the account. The two quantities belong together, without pretending they answer the same question.",
+      "The calculator deliberately keeps one pack, one item and a zero starting balance. Larger packs may offer more currency per dollar while requiring more dollars today. Whether that is a better purchase depends on what the player actually intends to use. A favorable unit rate does not establish that the extra balance is useful to its buyer.",
+      "Payment research suggests why the representation deserves attention. Raghubir and Srivastava’s 2008 experiments found differences in spending across payment forms under their tested conditions, including cash and stored-value instruments. Making the cash sacrifice more salient could reduce some differences. The study does not tell us how much Platinum changes Diablo spending; it identifies a question that can be tested in the game’s own purchasing path.",
+      "A remaining balance also becomes part of the next offer. The player may welcome it toward something already wanted, or begin browsing for a way to use it. We cannot tell which from the balance alone. An interface can at least make the decision inspectable: cash required now, existing currency used and currency remaining afterward.",
+      "The arcade token and the virtual coin both place another unit between money and an experience. Each system still has its own terms. Understanding a Platinum purchase is only the first step when that currency buys access to a reward catalog rather than the reward itself."
+    ],
+    "takeaway": "Show the cash required and the balance left behind; a per-token rate is only one part of the purchase.",
+    "interactive": "price",
+    "figures": [
+      {
+        "asset": "legacy-d4-platinum",
+        "alt": "Diablo IV Platinum packs with cash prices from the owner’s Canadian-dollar store",
+        "caption": "Historical Diablo IV Platinum packs, priced in Canadian dollars.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
+    ],
+    "sources": [
+      "txn-payment-form"
+    ],
+    "evidence": "The CAD pack price is from an owner-supplied historical capture with unknown date, not a current quote. The item is hypothetical. The model has zero starting balance, one selected pack, no tax and no optimization across pack combinations. Payment-form research supplies no D4-specific effect size.",
+    "paragraphCitations": {
+      "3": [
+        "txn-payment-form"
+      ]
+    },
+    "sections": []
+  },
+  {
+    "id": "two-key-lock",
+    "part": 5,
+    "title": "Pay to begin earning",
+    "lede": "One purchase opens a collection. Playing supplies another currency used to claim its contents.",
+    "paragraphs": [
+      "Diablo IV’s April 2025 Reliquary design combined two transactions. Platinum opened premium reward catalogs. Favor, earned through play, claimed their contents. Paying for access therefore left work to do before the player possessed every desired appearance. The product was an opportunity to pursue rewards as well as a collection of art.",
+      "Favor also had a held-balance limit of 99, with up to 99 transferable to future seasons. Spending created room to earn again. That is a capacity limit, not a ceiling on everything a player could earn across a season. Confusing the two produces a mistaken picture of both the required effort and the amount of reward passing through the system.",
+      "The reservoir makes the arithmetic visible. In our invented example, earn 99, spend 30 and earn another 25. The balance moves from 99 to 69 to 94; total earnings reach 124. Nothing exceeded the capacity of 99 at one moment. A screenshot of the final balance would conceal part of the activity that produced it.",
+      "The historical catalogs allowed flexible claim order, attached some bonuses to completing a collection and limited the period in which rewards were available. A player interested in one object and someone seeking the full set therefore faced different projects. The most attractive object on the screen might carry requirements beyond its own displayed token cost.",
+      "The purchase changes the significance of future play. An activity the player already enjoys can now advance an additional project, which may make the offer appealing. An interrupted schedule can leave a paid opportunity unused. Neither outcome follows automatically from the design. What matters is whether the proposed commitment matches the player’s intention and remains understandable after payment.",
+      "Start the evaluation with the reward someone actually wants. Work backward through access, earning, claim conditions and time remaining. This is the complete offer they are deciding about. Its several parts can be reasonable individually while difficult to hold together when spread across different screens."
+    ],
+    "takeaway": "A premium catalog sells eligibility; evaluate the remaining play commitment as part of the same offer.",
+    "figures": [
+      {
+        "asset": "legacy-favor-tutorial",
+        "alt": "Favor Tokens tutorial explains that players can hold 99 tokens, spend them and earn more",
+        "caption": "The Favor tutorial explains a held-balance limit of 99. Spending makes room to earn again.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
+    ],
+    "sources": [
+      "reliquary"
+    ],
+    "evidence": "Historical April 2025 Reliquary rules, not a current-season guide. The 99→69→94 example invents the spending and earning amounts and makes no claim about earning speed. References to value, intention and interruption are analytical questions, not measured D4 player outcomes.",
+    "sections": [
+      {
+        "at": 1,
+        "title": "A balance is not the amount that passed through it"
+      }
+    ],
+    "paragraphCitations": {
+      "0": [
+        "reliquary"
+      ],
+      "1": [
+        "reliquary"
+      ],
+      "3": [
+        "reliquary"
+      ]
+    }
+  },
+  {
+    "id": "abstraction-and-surface",
+    "part": 5,
+    "title": "A purchase you can explain",
+    "lede": "The art can make an offer irresistible. The interface still has to make its terms understandable.",
+    "paragraphs": [
+      "Picture the complete path to an appearance: one screen presents the armor, another sells currency, a third opens the catalog and a fourth explains how to claim the item. Every screen can be readable while the whole purchase remains difficult to describe. The buyer has to reconstruct the relationship among them from memory.",
+      "Theatrical shorthand makes this harder. “Unlock” can announce an item received, access purchased or a requirement satisfied. A glowing token can represent money already spent or effort still needed. Games need abstractions to make an invented world feel natural. At the point of purchase, those abstractions also need an ordinary explanation of what the person is agreeing to do.",
+      "In a 2003 study, Christopher Hsee and colleagues examined choices in which intermediate points stood between effort and a final reward. One questionnaire example involved tasks leading to different ice-cream flavors. Adding points changed choices even though the points had no separate use. The setting is distant from Diablo, but the question travels well: are people evaluating the outcome they want, or a more prominent number on the way to it?",
+      "The offer in the diagram can be inspected with its terms scattered or gathered. Its price and rewards do not change. What changes is the work of understanding them together. A useful test would ask someone to obtain a particular appearance within a budget, then explain what payment supplies, what remains to be earned and what happens if they stop.",
+      "Appearance alone cannot establish the effect. Luguri and Strahilevitz’s service-enrollment experiments found that some obstructive or misleading presentations changed choices, while their scarcity countdown did not significantly raise purchases. The lesson is to investigate the actual decision path. A timer is a feature to examine, not a result already measured in every setting.",
+      "Conversion, the proportion who complete a purchase, is one outcome of that test. Correct understanding is another. A faster checkout accompanied by mistaken expectations can look successful until customers try to use what they bought. The work of evaluation begins before payment, but it has to continue after the interface has handed the person back to the game."
+    ],
+    "takeaway": "Measure whether the buyer can explain the commitment, as well as whether they can complete checkout.",
+    "sources": [
+      "txn-medium",
+      "txn-dark-patterns"
+    ],
+    "evidence": "The purchase path and proposed comprehension task are original analytical examples. The medium-maximization pilot used questionnaire choices, not observed completion of the described tasks. Service-enrollment findings are not D4 findings or a legal diagnosis. No game-specific effect size is inferred.",
+    "sections": [
+      {
+        "at": 3,
+        "title": "Put the whole offer within reach"
+      }
+    ],
+    "paragraphCitations": {
+      "2": [
+        "txn-medium"
+      ],
+      "4": [
+        "txn-dark-patterns"
+      ]
+    },
+    "figures": [
+      {
+        "asset": "legacy-d4-confirm",
+        "alt": "Diablo IV purchase confirmation interface",
+        "caption": "This Diablo IV confirmation marks the appearance FREE, names a weapon-type restriction and displays the remaining Platinum balance.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
+    ]
+  },
+  {
+    "id": "what-decides",
+    "part": 6,
+    "title": "What the instrument missed",
+    "lede": "Outer Wilds offers a small lesson in why activity can look healthy while the intended experience is failing.",
+    "paragraphs": [
+      "The signalscope in Outer Wilds, Mobius Digital’s space-exploration game, is meant to turn a distant sound into a question worth pursuing. During development, players sometimes pointed it at a nearby rock and believed the sound came from that rock. It could actually be coming from the other side of the planet. The instrument was receiving a signal. The player was receiving the wrong idea.",
+      "Mobius’s 2016 account describes adding distance information, clearer aiming feedback and separated frequencies. These revisions helped connect an audible clue with its location. The problem had required the team to understand what players thought the tool was telling them, not merely whether they used it.",
+      "Imagine a dashboard that counted how often the signalscope opened. Confusion might increase that number: the player checks repeatedly because the result makes no sense. Understanding might reduce it: the player identifies a destination and puts the instrument away. Either movement in the metric could accompany improvement, depending on what was happening in the experience.",
+      "The same mistake is possible in an economy. Repeatedly visiting a catalog might mean anticipation, comparison or uncertainty about whether its contents are owned. A longer session might include a satisfying challenge or an avoidable struggle to join friends. The event record becomes evidence of success only after the intended experience has been defined and the competing explanations investigated.",
+      "Mobius described another revision to the clues along paths, so players could choose a direction for a reason instead of guessing at a fork. Together, these accounts show how a design promise becomes testable: identify the intended decision, observe what obstructs it, then change a part of the game that could remove that obstacle.",
+      "This discipline matters most while a consequential choice can still change. A polished prototype cannot answer every question about years of play, but it can reveal whether people understand an encounter or an offer. A large usage dataset cannot replace that observation; it can show how widely a problem occurs once we know what to look for. To assess Diablo IV’s systems, we need both the close account of an evening and a sound way to compare many of them."
+    ],
+    "takeaway": "Define the intended experience before deciding which change in a usage metric counts as improvement.",
+    "sources": [
+      "outer",
+      "lit-outer-pathing"
+    ],
+    "evidence": "The signalscope and path-clue revisions are documented 2016 development accounts. The hypothetical usage metric and reward-catalog examples are original explanations of measurement ambiguity. No actual D4 telemetry or Outer Wilds A/B-test result is claimed.",
+    "paragraphCitations": {
+      "0": [
+        "outer"
+      ],
+      "1": [
+        "outer"
+      ],
+      "4": [
+        "lit-outer-pathing"
+      ]
+    },
+    "figures": [
+      {
+        "asset": "outer-wilds-signalscope-prototype",
+        "alt": "Outer Wilds early signalscope facing Riebeck",
+        "caption": "Outer Wilds signalscope during development, 2016. Mobius added distance information to distinguish a nearby object from a signal beyond it.",
+        "credit": "Mobius Digital · 2016 design article",
+        "afterParagraph": 3
+      }
+    ],
+    "sections": []
+  },
+  {
+    "id": "does-it-work",
+    "part": 6,
+    "title": "An evening worth sustaining",
+    "lede": "The business needs another sale. Its audience needs a reason to welcome the next invitation.",
+    "paragraphs": [
+      "Consider the returning player in the supplied Diablo IV captures: an unfinished level-eight Barbarian, a close-combat character, and a menu offering new seasonal beginnings. The character survives outside the seasonal cycle in Eternal. The immediate question is modest: how does someone resume the evening they intended to have? Before deciding which route keeps them longer, we need to know whether the available routes make sense to them.",
+      "One return cannot represent an audience. It can identify a useful test. Ask people arriving after a break what they want to do, observe the route they choose and check what they believe will happen to their existing progress. Then inspect wrong turns, failed attempts to join friends and whether the session they planned becomes possible. These observations connect the interface to an actual purpose.",
+      "Population research gives another reason to keep purpose beside duration. Ballou and colleagues’ 2025 study combined Nintendo play records with surveys from 703 casually engaged US adults. Hours played did not show a clear relationship with well-being in their estimates; the uncertainty also prevented a confident claim that no relationship existed. Players’ assessments of how gaming fitted into their lives were associated with well-being. It is an observational result about a particular population, not a recipe for improving everyone’s life by changing a game.",
+      "A studio still needs business evidence. Revenue pays for work; refunds, support and service costs affect what remains to fund it. Retention measures whether a defined group returns within a specified period. Neither quantity tells us, alone, whether the return was satisfying. A sensible evaluation puts commercial outcomes beside comprehension, enjoyment and operational reliability, and makes disagreements visible.",
+      "Controlled experiments can help estimate whether a particular change caused a difference in those measured outcomes. They need appropriate random assignment, reliable measurement and a comparison that survives scrutiny. Microsoft’s research on long-running tests shows why duration alone is insufficient: selection, survivorship and changing populations can distort the apparent effect. A test also cannot choose the values of the team conducting it. A measured increase still needs a reason to count as improvement.",
+      "For the returning-player screen, define the intended improvement before launch: people can find a suitable activity, understand what persists and begin the session they wanted. Follow short-term comprehension and errors, then later return, regret and spending, with costs alongside them. If money rises while understanding falls, the disagreement is part of the result. It should not disappear inside a single success score.",
+      "Pong’s coin container answered one early question: people would pay for another turn. The rest of this study has followed what grew around that answer—studios, stores, machines, worlds and increasingly elaborate offers within them. Their success makes creative work possible. It also depends on experiences whose value is larger than a transaction: a lesson learned, a story finished, a character made one’s own or an evening shared. Keeping a world alive means finding an arrangement that can continue paying for those possibilities while giving people reasons to keep wanting them."
+    ],
+    "takeaway": "A sustainable offer needs both a viable business and an experience people remain glad to have chosen.",
+    "figures": [
+      {
+        "asset": "legacy-d4-char-select",
+        "alt": "Diablo IV Season Info popup over the owner’s character selection screen",
+        "caption": "Diablo IV’s character selection introduces the seasonal route beside an existing character.",
+        "credit": "Blizzard",
+        "afterParagraph": 3
+      }
+    ],
+    "sources": [
+      "lit-life-fit",
+      "lit-experimentation",
+      "experiment"
+    ],
+    "evidence": "The returning character is an owner-supplied observation, not a representative sample or verified onboarding defect. The proposed evaluation is hypothetical. Ballou et al. is observational, population-specific and inconclusive on equivalence; it supports no causal design benefit. Experimental-method references establish conditions for inference, not results from D4. No private profit or player-outcome data is available.",
+    "sections": [
+      {
+        "at": 3,
+        "title": "What would count as an improvement?"
+      }
+    ],
+    "paragraphCitations": {
+      "2": [
+        "lit-life-fit"
+      ],
+      "4": [
+        "lit-experimentation",
+        "experiment"
+      ]
+    }
+  }
 ];
 
-// Every chapter has a scene, a conceptual diagram, and a reference screenshot.
-export const chapters: Chapter[] = manuscript.map((chapter) => {
+// Stable IDs survive editorial reordering; overview chapters use only explicitly placed figures.
+const openingOrder = ["insert-coin", "studio-to-screen", "valve-platform", "epic-infrastructure", "rockstar-world", "the-fork", "platform-business", "cloud-gaming", "making-worlds", "concord", "several-histories", "diablo-second-life", "diablo-market", "diablo-service", "how-many-lives", "shape-of-money", "six-games", "the-reset", "why-people-play", "play-beyond-score", "familiar-verbs", "anatomy-of-loop", "loot-table", "the-checklist", "access", "identity", "time", "power", "what-things-cost", "two-key-lock", "abstraction-and-surface", "what-decides", "does-it-work"];
+const allChapters = [...diabloHistoryChapters, ...manuscript, ...businessOverviewChapters, ...companyChapters, worldBuildingChapter];
+const orderedChapters = [...openingOrder.map(id=>allChapters.find(chapter=>chapter.id===id)!), ...allChapters.filter(chapter=>!openingOrder.includes(chapter.id))];
+export const chapters: Chapter[] = orderedChapters.map((chapter) => {
   const visual = chapterVisuals[chapter.id];
   return {
     ...chapter,
+    part: chapter.part,
     visual,
-    figures: [
+    figures: ["studio-to-screen","platform-business"].includes(chapter.id) ? chapter.figures ?? [] : [
       chapter.figures?.find((figure) => figure.asset === visual.screenshot.asset) ?? visual.screenshot,
       ...(chapter.figures ?? []).filter(
         (figure) => figure.asset !== visual.screenshot.asset,

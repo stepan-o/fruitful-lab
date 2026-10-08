@@ -4,9 +4,99 @@
     "netflix-wordmark": {
       "kind": "image",
       "source": "assets/sources/sanctuary-context/netflix-wordmark.svg",
-      "widths": [154, 309],
+      "widths": [
+        154,
+        309
+      ],
       "quality": 96,
       "maxBytes": 6000
+    },
+    "cyberpunk-night-city": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/cyberpunk-night-city.jpg",
+      "widths": [
+        320,
+        640,
+        1138
+      ],
+      "quality": 82,
+      "maxBytes": 180000
+    },
+    "valve-half-life": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/valve-half-life.jpg",
+      "widths": [
+        320,
+        640,
+        1024
+      ],
+      "quality": 82,
+      "maxBytes": 180000
+    },
+    "rockstar-los-santos": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/rockstar-los-santos.jpg",
+      "widths": [
+        320,
+        640,
+        1280
+      ],
+      "quality": 82,
+      "maxBytes": 180000
+    },
+    "epic-web-shop": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/epic-web-shop.png",
+      "widths": [
+        320,
+        640,
+        1280
+      ],
+      "quality": 82,
+      "maxBytes": 180000
+    },
+    "valve-wordmark": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/valve-wordmark.svg",
+      "widths": [
+        180,
+        360
+      ],
+      "quality": 96,
+      "maxBytes": 10000
+    },
+    "steam-symbol": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/steam-symbol.png",
+      "widths": [
+        80,
+        160,
+        233
+      ],
+      "quality": 96,
+      "maxBytes": 15000
+    },
+    "counter-strike-menu": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/counter-strike-menu.png",
+      "widths": [
+        320,
+        640,
+        800
+      ],
+      "quality": 90,
+      "maxBytes": 150000
+    },
+    "cyberpunk-catalog-promo": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/cyberpunk-catalog-promo.jpg",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "quality": 84,
+      "maxBytes": 180000
     }
   }
 }

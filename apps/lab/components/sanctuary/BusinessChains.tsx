@@ -19,8 +19,8 @@ const groups = [
     "text": "An arcade or film can help a venue earn from food and drinks. A series can help a catalog keep a subscriber. The value of a work to its distributor can extend beyond a separately priced turn, ticket or episode."
   },
   {
-    "id": "bg3",
-    "label": "BG3 · three ways to play",
+    "id": "cyberpunk",
+    "label": "Cyberpunk 2077 · three ways to play",
     "title": "Another month of streaming is not another game sale.",
     "text": "Paying NVIDIA for another month does not create another Steam purchase for Larian. A service can earn from continued play even when the developer sells the game once."
   },

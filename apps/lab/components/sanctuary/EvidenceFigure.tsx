@@ -18,6 +18,11 @@ export default function EvidenceFigure({ figure, asset, number, zoomLabel, paire
   const [selected, setSelected] = useState<number | null>(null);
   const detailId = useId();
   const detail = selected === null ? null : figure.details?.[selected];
+  if(figure.presentation === "identity") return <figure className={`${styles.figure} ${styles.identityFigure}`}>
+    <div className={styles.archiveLabel}>{figure.label}</div>
+    <div className={styles.identityMark}><AssetImage asset={asset} alt={figure.alt} sizes={asset.width>asset.height*2?"180px":"72px"}/></div>
+    <figcaption><p>{figure.caption}</p><small><Link prefetch={false} href={`/stepanoskin/game-monetization/credits#${figure.asset}`}>Creator, source & use ↗</Link></small></figcaption>
+  </figure>;
   return <figure className={styles.figure} data-presentation={figure.presentation}>
     {figure.label ? <div className={styles.archiveLabel}>{figure.label}</div> : null}
     <button type="button" className={styles.figureButton} aria-label={`${zoomLabel}: ${figure.alt}`} onClick={onInspect}>
@@ -28,7 +33,7 @@ export default function EvidenceFigure({ figure, asset, number, zoomLabel, paire
       <span className={styles.zoomLabel}>{zoomLabel} ↗</span>
     </button>
     {figure.details ? <div className={styles.evidenceDetails}>
-      <div className={styles.evidenceControls} role="group" aria-label="Inspect the Gauntlet interface">
+      <div className={styles.evidenceControls} role="group" aria-label={`Inspect ${figure.label ?? "the pictured interface"}`}>
         {figure.details.map((item,i)=><button type="button" key={item.label} aria-pressed={selected === i} aria-controls={detailId} onClick={()=>setSelected(selected === i ? null : i)}><span aria-hidden="true">0{i+1}</span>{item.label}</button>)}
       </div>
       <p id={detailId} className={styles.evidenceReading} aria-live="polite">{detail?.text ?? "Select a detail to trace its role in the offer. The outlines are ours; the screenshot is unchanged."}</p>

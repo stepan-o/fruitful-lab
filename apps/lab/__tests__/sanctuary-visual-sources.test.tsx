@@ -9,7 +9,7 @@ const chapter = (id: string) => chapters.find(chapter => chapter.id === id)!;
 
 it("indexes only cited works, including embedded wordmarks and reference illustrations", () => {
   expect(chapterVisualSources(chapter("insert-coin")).map(record => record.id)).toEqual(["pong-cabinet", "pong-doubles-social-1973"]);
-  const fork = chapterVisualSources(chapter("the-fork"));
+  const fork = chapterVisualSources(chapter("platform-business"));
   expect(fork.map(record => record.id)).toEqual(expect.arrayContaining(["netflix-wordmark", ...coverReferences.map(cover => cover.id)]));
   for (const item of chapters) {
     const records = chapterVisualSources(item);

@@ -135,53 +135,14 @@ export function Histories() {
   </>;
 }
 export function ConcordTimeline() {
-  return (
-    <>
-      <div className={s.timeline}>
-        <div>
-          <time>23 AUG</time>
-          <span className={s.timelineDot} />
-          <h3>Launch</h3>
-          <p>The service opens.</p>
-        </div>
-        <div>
-          <time>03 SEP</time>
-          <span className={s.timelineDot} />
-          <h3>Notice</h3>
-          <p>Closure is announced.</p>
-        </div>
-        <div>
-          <time>06 SEP</time>
-          <span className={s.timelineDot} />
-          <h3>Offline</h3>
-          <p>Servers close.</p>
-        </div>
-      </div>
-      <div className={s.receipt}>
-        <span>2024 · OFFICIAL CLOSURE NOTICE</span>
-        <strong>Purchases refunded</strong>
-        <p>
-          The short public window is documented. Its cause is not isolated by
-          this timeline.
-        </p>
-      </div>
-      <div className={s.sieve}>
-        <span>Worldwide population</span>
-        <i>↓</i>
-        <div>
-          {["Region", "Mode", "Skill", "Platform", "Time"].map((t) => (
-            <span key={t}>{t}</span>
-          ))}
-        </div>
-        <i>↓</i>
-        <strong>People available for this match</strong>
-      </div>
-      <p className={s.footnote}>
-        These are queue constraints, not a measured Concord funnel. No player
-        counts or universal viability threshold are asserted.
-      </p>
-    </>
-  );
+  return <>
+    <div className={s.timeline}>
+      <div><time>23 AUG 2024</time><span className={s.timelineDot}/><h3>Release</h3><p>A US $39.99 standard edition, with continuing additions promised.</p></div>
+      <div><time>06 SEP 2024</time><span className={s.timelineDot}/><h3>Offline</h3><p>Sales stopped and refunds offered in the 3 September notice.</p></div>
+      <div><time>29 OCT 2024</time><span className={s.timelineDot}/><h3>Studio closure</h3><p>Sony permanently ends the game and closes Firewalk.</p></div>
+    </div>
+    <p className={s.footnote}>Fourteen days from standard launch to shutdown. These dated events describe the collapse of the continuing offer; they do not establish a budget, sales total or single cause.</p>
+  </>;
 }
 export function Probe() {
   const [v, set] = useState(0);

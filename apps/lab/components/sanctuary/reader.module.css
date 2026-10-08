@@ -1191,3 +1191,13 @@
  .header:has(.headerControls){height:auto;min-height:112px;flex-wrap:wrap;gap:4px;padding-block:8px}
  .headerControls{width:100%;justify-content:flex-end}
 }
+
+/* Identifying marks stay compact, unchanged and separate from the study’s identity. */
+.archivePair:has(.identityFigure){gap:18px;margin:24px 0}
+.identityFigure{margin:0!important;padding:18px 22px;background:#0d191c;border:1px solid #35443e;border-radius:6px}
+.identityMark{height:100px;display:flex;align-items:center;justify-content:center;margin:9px 0 12px}
+.identityMark img{max-width:180px;max-height:72px;width:auto;height:auto;object-fit:contain}
+.identityFigure figcaption{border:0;padding:0;text-align:center}
+.identityFigure figcaption p{font:14px/1.55 Arial,sans-serif!important;margin:0 0 8px!important;color:#c6c6b4}
+.identityFigure .archiveLabel{text-align:center;margin:0;font-size:10px}
+@media(max-width:480px){.archivePair:has(.identityFigure){display:grid;grid-template-columns:1fr;gap:10px}.identityFigure{padding:14px}.identityMark{height:78px;margin:6px 0}}

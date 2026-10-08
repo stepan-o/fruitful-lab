@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-03",
+  "reviewed": "2026-10-07",
   "assets": {
     "netflix-wordmark": {
       "title": "Netflix — official red wordmark",
@@ -14,7 +14,147 @@
       "basis": "Contextual identification of the business directly analyzed in the adjacent prose and shareholder quotation. Editorial rationale, not bespoke permission or a claim of partnership.",
       "purpose": "Identify Netflix in a comparison of theatrical admissions and subscription catalog economics, grounded in its July 2024 shareholder letter.",
       "treatment": "Official red shape and proportions retained; responsive WebP derivatives at 154 and 309 pixels. No effects on the mark. Original surrounding cinema and catalog drawings use Sanctuary’s engraved style. Three invented cover parodies cite their production references separately; the catalog is an editorial illustration, not an operational Netflix interface.",
-      "chapters": ["the-fork"]
+      "chapters": [
+        "platform-business"
+      ]
+    },
+    "cyberpunk-night-city": {
+      "title": "Cyberpunk 2077 — Night City",
+      "owner": "CD PROJEKT RED S.A.",
+      "source": "Cyberpunk 2077 official site — Night City gallery",
+      "sourceUrl": "https://www.cyberpunk.net/us/en/cyberpunk-2077",
+      "assetUrl": "https://cdn-l-cyberpunk.cdprojektred.com/cyberpunk2077/nightcity/Cyberpunk2077_Above_it_all_RGB%401x.jpg",
+      "sourceDate": "Retrieved 6 October 2026; original image publication date not supplied",
+      "sourceSha256": "0424192a7210da571eea72fd9ff7ba135d6e9a21c8a3ff2b9f58cbe763040035",
+      "reviewed": "2026-10-06",
+      "publication": "editorial",
+      "basis": "Bounded visual citation in independent criticism and analysis of the named game’s distribution and rendering arrangements. This is an editorial rationale, not bespoke permission or a claim of endorsement.",
+      "purpose": "Introduce Cyberpunk 2077 to an unfamiliar reader and identify the same detailed game environment that local PCs and remote cloud computers render. The image makes the content distinct from the businesses supplying access and computing. It is not evidence of frame rate, hardware requirements or a particular session.",
+      "treatment": "One official gallery image retained in full. Proportional WebP derivatives at 320, 640 and 1138 pixels, metadata removed. No cropping, recoloring, overlays or altered legal marks. Lazy loaded through the versioned asset manifest.",
+      "chapters": [
+        "cloud-gaming"
+      ]
+    },
+    "valve-half-life": {
+      "title": "Half-Life — official gameplay gallery",
+      "owner": "Valve",
+      "source": "Official game gallery",
+      "sourceUrl": "https://store.steampowered.com/app/70/HalfLife/",
+      "assetUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/70/0000002354.1920x1080.jpg?t=1745368462",
+      "sourceDate": "Retrieved 6 October 2026; gallery publication date not supplied",
+      "sourceSha256": "cfb536527a43437c18e182f732eb3890567b9c48c1e139c59d797ca37560a86e",
+      "reviewed": "2026-10-06",
+      "publication": "editorial",
+      "basis": "Bounded visual citation in independent analysis of the named work and business. Editorial rationale, not bespoke permission or endorsement.",
+      "purpose": "Introduce Valve’s work as a developer before examining Steam’s role in distributing other studios’ work.",
+      "treatment": "Full composition retained, with proportional responsive WebP compression and metadata removal. No crop, recoloring, or removal of visible legal marks. Lazy loaded through content-hashed files and a versioned manifest.",
+      "chapters": [
+        "valve-platform"
+      ]
+    },
+    "rockstar-los-santos": {
+      "title": "GTA Online — The Doomsday Heist promotional frame",
+      "owner": "Rockstar Games / Take-Two Interactive",
+      "source": "Official game gallery",
+      "sourceUrl": "https://store.steampowered.com/app/271590/",
+      "assetUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/ss_32aa18ab3175e3002217862dd5917646d298ab6b.1920x1080.jpg?t=1765387725",
+      "sourceDate": "Retrieved 6 October 2026; gallery publication date not supplied",
+      "sourceSha256": "399aa5b245a1758e6df524b67a38eae4a12a7739dc6f3b1ed1a384882beae7c4",
+      "reviewed": "2026-10-06",
+      "publication": "editorial",
+      "basis": "Bounded visual citation in independent analysis of the named work and business. Editorial rationale, not bespoke permission or endorsement.",
+      "purpose": "Show the later online production program attached to GTA V, distinct from the original campaign release. The artwork identifies an actual addition; it does not establish spending or engagement effects.",
+      "treatment": "Full composition retained, with proportional responsive WebP compression and metadata removal. No crop, recoloring, or removal of visible legal marks. Lazy loaded through content-hashed files and a versioned manifest.",
+      "chapters": [
+        "rockstar-world"
+      ]
+    },
+    "epic-web-shop": {
+      "title": "Epic Games Store — web-shop mockup",
+      "owner": "Epic Games; embedded Idle Champions material belongs to its respective creators and rights holders, including Codename Entertainment",
+      "source": "Epic Games Store 2025 review",
+      "sourceUrl": "https://store.epicgames.com/news/epic-games-store-2025-year-in-review?lang=en-US",
+      "assetUrl": "https://cdn2.unrealengine.com/02-mockup-offer-and-listing-desktop-and-mobile-dark-background-3200x1800-0ccdebd58380.png",
+      "sourceDate": "Published 3 February 2026; retrieved 6 October 2026",
+      "sourceSha256": "dbc71529c5d380f5655017c424dde931056fd3c46e7f664705d1130bef10015a",
+      "reviewed": "2026-10-06",
+      "publication": "editorial",
+      "basis": "Bounded visual citation in independent analysis of the named work and business. Editorial rationale, not bespoke permission or endorsement.",
+      "purpose": "Show Epic’s selling infrastructure operating behind another game’s identity. This official promotional mockup is not a live offer or evidence of a completed transaction.",
+      "treatment": "Full composition retained, with proportional responsive WebP compression and metadata removal. No crop, recoloring, or removal of visible legal marks. Lazy loaded through content-hashed files and a versioned manifest.",
+      "chapters": [
+        "epic-infrastructure"
+      ]
+    },
+    "valve-wordmark": {
+      "title": "Valve — official company wordmark",
+      "owner": "Valve Corporation",
+      "source": "Valve corporate site header, including its published fill and clipping rules",
+      "sourceUrl": "https://www.valvesoftware.com/en/about",
+      "assetUrl": "https://www.valvesoftware.com/en/about",
+      "sourceDate": "Retrieved 7 October 2026; original publication date not supplied",
+      "purpose": "Identify the developer being examined and distinguish the company from its Steam service. The mark is a small subject identifier beside the analysis, not Sanctuary branding.",
+      "treatment": "Official SVG geometry and red fill preserved. External display styles inlined for faithful standalone rendering. Proportional WebP derivatives at 180 and 360 pixels. No glitch, tint, crop, combination into a new mark or implied sponsorship.",
+      "sourceSha256": "60fe774062763335b9f5848c466446f742c23b69f47db5726eb476061087be88",
+      "reviewed": "2026-10-07",
+      "publication": "editorial",
+      "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve’s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
+      "chapters": [
+        "valve-platform"
+      ]
+    },
+    "steam-symbol": {
+      "title": "Steam — official service symbol",
+      "owner": "Valve Corporation",
+      "displayCredit": "© 2026 Valve Corporation. Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.",
+      "source": "Valve corporate site — Steam section",
+      "sourceUrl": "https://www.valvesoftware.com/en/about",
+      "assetUrl": "https://cdn.akamai.steamstatic.com/valvesoftware/images/about/steam_logo.png",
+      "sourceDate": "Retrieved 7 October 2026; original publication date not supplied",
+      "purpose": "Identify Steam as a distribution service operated by the company introduced beside it. Supports the chapter’s distinction between making games and operating a store for other makers.",
+      "treatment": "Unchanged official symbol, proportional WebP sizes at 80, 160 and 233 pixels. Open space around mark; Steam® named in caption. No recoloring, animation, overlay or combined identity. Full trademark attribution retained.",
+      "sourceSha256": "79eb0ccd6a6d1cd0c80f8d9cb07e1498d4343e3c0c9052901d581b70a775643d",
+      "reviewed": "2026-10-07",
+      "publication": "editorial",
+      "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve’s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
+      "chapters": [
+        "valve-platform"
+      ]
+    },
+    "counter-strike-menu": {
+      "title": "Counter-Strike 1.6 — Windows main menu",
+      "owner": "Valve Corporation; screenshot contributed by Yearman",
+      "displayCredit": "© Valve Corporation · capture: Yearman / MobyGames",
+      "source": "MobyGames, Windows screenshot 487947, contributed by Yearman on 6 January 2011",
+      "sourceUrl": "https://www.mobygames.com/game/165613/counter-strike/screenshots/windows/487947/",
+      "assetUrl": "https://cdn.mobygames.com/screenshots/16726753-counter-strike-windows-main-menu.png",
+      "sourceDate": "Public gallery upload: 6 January 2011; menu from the original Counter-Strike / 1.6 Windows release, not the 1999 beta. Exact capture build/date not supplied.",
+      "purpose": "Analyze the visible Find Servers entry as the doorway into repeated multiplayer sessions, before explaining Steam’s wider distribution role. The menu’s Steam mark also avoids suggesting this 1.6 capture predates Steam. Its actual visual identity is the evidence; an invented substitute would not show this interface.",
+      "treatment": "The publicly displayed 800×600 gallery image, not a premium original download or fan reconstruction. Full frame and embedded marks preserved. WebP at 320, 640 and 800 pixels; metadata removed. Optional reversible outlines identify New Game / Find Servers and the visible Steam mark without modifying the screenshot. No game software, extracted textures, music or asset library is distributed.",
+      "sourceSha256": "a8de5bb43c5922f84c67f5f5b207004d8bbae27692820e381f96221fe8dcb9b6",
+      "reviewed": "2026-10-07",
+      "publication": "editorial",
+      "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve’s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
+      "chapters": [
+        "valve-platform"
+      ]
+    },
+    "cyberpunk-catalog-promo": {
+      "title": "Cyberpunk 2077 — PlayStation Plus catalog promotion",
+      "owner": "Sony Interactive Entertainment / CD PROJEKT RED S.A.; background game covers and marks belong to their respective rights holders",
+      "source": "PlayStation.Blog — July 2025 Game Catalog announcement; post by Adam Michel, Sony Interactive Entertainment",
+      "sourceUrl": "https://blog.playstation.com/2025/07/09/playstation-plus-game-catalog-for-july-cyberpunk-2077-abiotic-factor-banishers-ghosts-of-new-eden-and-more/",
+      "assetUrl": "https://blog.playstation.com/tachyon/2025/07/0ac79419a30439ab0c0613ee3d4a6e306a0dcb4c.jpg",
+      "sourceDate": "Published 9 July 2025; retrieved 7 October 2026",
+      "sourceSha256": "89b8f94212cd71984bbf651086fff95075062a13b6ea9cfc7270f2ce8229e976",
+      "reviewed": "2026-10-07",
+      "publication": "editorial",
+      "basis": "Bounded reproduction of the specific commercial promotion analyzed in the adjacent criticism and review. Editorial rationale, not a publisher licence or endorsement. The source’s download link does not grant general republication rights; embedded third-party covers remain part of the cited promotion, not separately reused assets.",
+      "purpose": "Document how Sony presented an individually sold game as an attraction for its subscription catalog, directly beside analysis of CD PROJEKT’s catalog licensing decision. The game logo, subscription branding and tier labels identify the actual offer. The image does not establish contract amounts, performance or current catalog availability.",
+      "treatment": "One complete historical promotional image, without cropping, recoloring, compositing or changes to marks, rating or offer notice. Proportional WebP variants at 480, 960 and 1440 pixels; source master excluded from runtime delivery. Lazy loaded via content-hashed files and the existing versioned manifest. Dated caption; historical promotional pricing is not presented as current.",
+      "chapters": [
+        "studio-to-screen"
+      ]
     }
   }
 }

@@ -25,7 +25,7 @@ bottom with the category list; direct percentages and hover/focus/tap tooltips
 identify each segment and its prior-year comparison. A separate FY2025 first-party/other-publisher comparison uses copies
 sold, with the unavailable money split and gross digital revenue basis explicit.
 No new asset pack or runtime dependency. Dataset and methodology:
-`docs/sanctuary/SONY_FINANCIAL_HISTORY.md`. The accompanying prose explains FY2025 scale, add-on content, gross revenue versus profit, original PlayStation history and the economic bridge to Valve.
+`docs/sanctuary/SONY_FINANCIAL_HISTORY.md`. The accompanying prose moves from PlayStation’s scale directly to Xbox and NVIDIA, connecting these three ecosystems to later monetization choices before the production stories and economic bridge to Valve. Add-on definitions and revenue/profit boundaries remain with the chart; the early Sony-history detour is omitted from the reading passage.
 
 Sanctuary chapter 2 editorial revision (2026-10-08): the current narrative follows
 one creative work supporting connected businesses, through Sony’s early PS5

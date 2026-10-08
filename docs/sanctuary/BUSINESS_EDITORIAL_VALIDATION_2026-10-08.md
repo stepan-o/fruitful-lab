@@ -311,3 +311,21 @@ Both manuscript copies match every runtime chapter-2 paragraph; a comparison
 against the previous commit confirms all other chapter data, including the
 approved chapter 1, are unchanged. No chart behavior, media, dependency or
 animation changed. Deployment verification is recorded on PR #98.
+
+## Direct ecosystem comparison
+
+Removed the three-paragraph Sony add-on/accounting/1990s detour. PlayStation’s
+scale now leads straight into Xbox’s acquisition and NVIDIA’s computing
+business. The publisher figure follows that comparison; the bridge names all
+three ecosystems and connects them to later monetization decisions. The Xbox
+production stories then follow under “Making the next release pay.” Body copy
+is 179 words shorter. The chart retains revenue/profit boundaries, with the
+add-on definition inside its game-revenue disclosure. Shared memory summaries
+were corrected only to describe this reading order.
+
+Required CI passed: 67 suites, 348 tests, one snapshot, all 22 asset releases and
+production build. Scoped lint and whitespace checks passed. Figure/citation
+indices match the new order; both manuscripts match every runtime paragraph.
+Other chapters remain unchanged. No media, chart data, calculations, selection
+behavior, dependency or animation changed. Preview verification is recorded on
+PR #98.

@@ -91,11 +91,19 @@ context, not estimates of individual products’ causal revenue contributions.
 
 ## Narrative and interaction placement
 
-The financial selector follows paragraph 1. Sony’s historical prose is followed
-by the Microsoft acquisition, release/production decisions and NVIDIA comparison
-(paragraphs 5–9). The independent publisher figure follows paragraph 9; the
-Cyberpunk promotion follows paragraph 13; the existing market map follows paragraph 14. Sections/citations shifted with
-the content. Both manuscripts mirror the runtime order. Chapter 1 is unchanged.
+The financial selector follows paragraph 1. The reading passage moves directly
+from PlayStation’s scale to Microsoft’s acquisition (paragraph 2) and NVIDIA’s
+computing business (paragraph 3). The independent publisher figure follows
+paragraph 3. Paragraph 4 names the three ecosystems and connects them to the
+later in-game offers; the Xbox production stories follow at paragraphs 5–7.
+The Cyberpunk promotion follows paragraph 10; the market map follows paragraph
+11. Both manuscripts mirror the runtime order. Chapter 1 is unchanged.
+
+The former add-on, profit and 1990s Sony detour is removed from the reading
+passage. Add-on definitions sit inside the chart’s game-revenue disclosure;
+its visible gross-revenue note and selected-year profit figures remain. The
+comparison uses three selected ecosystems, not a claim that these exhaust the
+market or that their business models are mutually exclusive.
 
 Year bars, year selectors and milestone buttons update the same readout.
 Arrow/year controls move only the chart’s horizontal viewport. Small screens

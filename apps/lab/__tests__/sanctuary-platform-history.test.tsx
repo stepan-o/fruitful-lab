@@ -73,9 +73,9 @@ it("switches company, measure and category without fabricating a dollar split", 
 it("positions the independent publisher figure after sourced Xbox/NVIDIA prose", () => {
   const chapter = chapters.find(item => item.id === "studio-to-screen")!;
   const publisher = chapter.exhibits!.find(item => item.kind === "publisher-ecosystem")!;
-  expect(chapter.paragraphs[publisher.afterParagraph - 1]).toMatch(/^In April 2026, Microsoft/);
+  expect(chapter.paragraphs[publisher.afterParagraph - 1]).toMatch(/^Microsoft’s Xbox/);
   expect(chapter.paragraphs[publisher.afterParagraph]).toMatch(/^NVIDIA earns/);
-  for (const paragraph of [5, 6, 7, 8, 9]) {
+  for (const paragraph of [2, 3, 5, 6, 7]) {
     for (const id of chapter.paragraphCitations![paragraph]) expect(sources.some(source => source.id === id)).toBe(true);
   }
   const { container } = render(<PublisherEcosystem/>);

@@ -134,7 +134,7 @@ export default function SonyHistory() {
         <h3>{milestone?.title ?? `Inside FY${year}`}</h3>
         <p>{milestone?.text ?? sonyYearNotes[year]}</p>
         {(milestone?.links ?? [{ label: "Sony’s results and explanation", url: sonyYearNoteLinks[year] ?? source.url }]).map(link => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label} ↗</a>)}
-        <details className={s.software}><summary>Inside game revenue</summary><dl>
+        <details className={s.software}><summary>Inside game revenue</summary><p>Add-on content includes expansions, cosmetic items and virtual currency bought for a game, beyond the full-game purchase.</p><dl>
           <div><dt>Physical games / royalties</dt><dd>US${billions(sonyUsd(row.physical, row))}bn</dd></div>
           {row.digitalCombined !== undefined ? <><div><dt>Downloads + add-ons</dt><dd>US${billions(sonyUsd(row.digitalCombined, row))}bn</dd></div><p>The older report combines these. No separate add-on figure is inferred.</p></> : <><div><dt>Full-game downloads</dt><dd>US${billions(sonyUsd(row.digital!, row))}bn</dd></div><div><dt>Add-on content</dt><dd>US${billions(sonyUsd(row.addons!, row))}bn</dd></div></>}
           {row.otherSoftware !== undefined ? <div><dt>Off-platform software (in Other above)</dt><dd>US${billions(sonyUsd(row.otherSoftware, row))}bn</dd></div> : null}

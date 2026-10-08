@@ -88,7 +88,7 @@ describe("Stepanoskin landing", () => {
 
     it("loads the versioned sound only on activation, with silent hover and focus", () => {
         const play = jest.fn().mockResolvedValue(undefined);
-        const audio = jest.spyOn(window, "Audio").mockImplementation(() => ({ play, currentTime: 0 }) as unknown as HTMLAudioElement);
+        const audio = jest.spyOn(window, "Audio").mockImplementation(() => Object.assign(new EventTarget(), { play, pause: jest.fn(), currentTime: 0 }) as unknown as HTMLAudioElement);
         render(<LoopforgeLanding initialLocale="en" />);
         const link = screen.getByRole("link", { name: /The game/i });
         fireEvent.pointerEnter(link);

@@ -4,7 +4,7 @@ import AssetImage from "@/components/media/AssetImage";
 import manifest from "@/lib/assets/generated/stepanoskin.json";
 import { assetUrl, imageAsset, parseManifest } from "@/lib/assets/types";
 import Link from "next/link";
-import { playClang } from "@/lib/stepanoskin/audio";
+import { playLandingSound } from "@/lib/loopforge/landing-audio";
 import { soundKey, motionKey, usePreference } from "@/lib/stepanoskin/preferences";
 import { useSignalGlitch } from "@/components/stepanoskin/useSignalGlitch";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ import FactoryConveyor from "@/components/loopforge/FactoryConveyor";
 const menuItems = [
     { id: "loopforge-overview", href: "/stepanoskin/loopforge/overview/the-factory", title: "The game", description: "Inside the artificial brain factory. Presentation in English." },
     { id: "loopforge-engine", href: "/stepanoskin/loopforge/architecture/the-thesis", title: "The engine", description: "Truth stays clean. Story gets messy. Presentation in English." },
-    { id: "loopforge-play", href: "/stepanoskin/loopforge/play", title: "Enter factory", description: "Take the director’s chair. Eight-shift prototype in English." },
+    { id: "loopforge-play", href: "/stepanoskin/loopforge/play", title: "Enter factory", description: "Take the director’s chair. First-shift prototype in English." },
 ] as const;
 
 const assets = parseManifest(manifest, "stepanoskin");
@@ -49,7 +49,7 @@ export default function LoopforgeLanding({ initialLocale }: { initialLocale: Loc
         event.preventDefault();
         if (isActivating) return;
         setIsActivating(true);
-        playClang();
+        playLandingSound("menu-clang");
         navigator.vibrate?.(24);
         window.setTimeout(() => router.push(href), 210);
     }

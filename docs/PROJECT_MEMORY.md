@@ -1,3 +1,7 @@
+Loopforge first-turn prototype (2026-10-08): `/stepanoskin/loopforge/play` now serves the adviser-first day: intro/handover, LIMEN or Stiletto briefing, placements, continuous camera shift, authority-sensitive decisions, permanent daily output allocation and causal records. The previous teaching console remains at `/stepanoskin/loopforge/play/teaching`. `/stepanoskin/loopforge/design` rewrites to the migrated static design board; authored `docs/loopforge/game-design/design-data.json` is unchanged. `/stepanoskin/loopforge/engine-notes` explains implementation boundaries.
+
+`POST /api/loopforge/first-shift` owns bounded deterministic replay through `lib/loopforge/first-shift/`. The pure integer kernel uses per-robot identities and component tables from the opening; counts are derived. Ten-, 24- and 100-worker scenarios share the same systems. The private player projection, versioned HTTP snapshots/ordered operations and viewer reconstruction are separate. This is a new KVP application profile, not legacy wire compatibility. No LLM calls, repair, daily cash settlement, cloud save or account integrity in this one-day slice. Original immutable artwork and optional recorded/procedural SFX support the console. The `loopforge-sfx` pack supplies cropped CC0 menu, RESET and shift mechanism cues; slow/failed sample loads retain the procedural fallback. `/stepanoskin/loopforge/design#sound-library` provides six user-activated previews, crop/source notes and remaining sound needs. Its gate and ambience are audition-only. Source inventory and reproduction recipes live in `apps/lab/assets/sources/loopforge-sfx/`; no simulation contract changes. `docs/loopforge/EXPERIENCE_DIRECTION.md` establishes the landing conveyor's physical behavior as the guiding UI/audio principle. Read `FIRST_SHIFT_ENGINE.md` and `FIRST_SHIFT_VALIDATION.md` before extending this path.
+
 Sanctuary complete narrative rebuild (2026-10-08): the reader now has 33 chapters
 in seven acts. The approved Pong opening is preserved. The business chain leads
 through Valve, Epic, Rockstar, BG3/Diablo IV, production economics, cloud delivery,
@@ -921,6 +925,19 @@ established canon. The server-rendered gallery uses its own `loopforge-prehistor
 immutable media pack and on-demand native image dialogs; existing chapters do not
 import the gallery manifest or content. Brief, provenance and verification:
 `docs/loopforge/PREHISTORY_GALLERY.md`.
+
+### Loopforge supervisor scenes — 6 October 2026
+
+The existing `overview/the-cast` chapter is now titled “The supervisors.” Its
+scene browser maps 62 owner-supplied paintings to five characters, 30 room
+assignments and ten pairings. `supervisor-content.json` separates original
+Python rules, art studies and proposed refusal paths. The new
+`loopforge-supervisors` media pack uses the existing immutable contract; its
+manifest reaches only this chapter and inspectors mount on demand.
+`docs/loopforge/SUPERVISOR_ATLAS.md` records provenance and validation;
+`STORY_BIBLE.md` preserves the edited global opening and first-shift bridge.
+Do not expose the replacement-plan revelation at first-shift entry or describe
+independent refusal as implemented in the website’s teaching prototype.
 
 
 ### Sanctuary world-building chapter · 7 October 2026 · local draft

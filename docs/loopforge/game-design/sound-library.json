@@ -1,0 +1,73 @@
+{
+  "title": "The factory, heard through its machinery",
+  "intro": "A working library of cropped recordings for Loopforge. Each sound should make an action or a change in the factory tangible: contact, load, resistance, release. Keep ordinary interaction quiet enough that a jam or a consequential decision can take the foreground.",
+  "reviewNote": "Play each edit to review it. These are the prepared source levels; the game mixes them more quietly. Only one preview plays at a time. Leaving this tab or hiding the page pauses playback. Crop timing, fades and decoded peaks have been checked; final timbre and mix approval needs a listening pass in the game.",
+  "licenseNote": "Five owner-selected Freesound recordings, all marked CC0 when checked on 8 October 2026. The six edits retain their source credits, exact crop intervals and processing recipe. The original downloads remain untouched. No Freesound audio is fetched at runtime.",
+  "clips": [
+    {
+      "id": "menu-clang",
+      "name": "Menu · metal meets concrete",
+      "status": "Wired in this revision",
+      "role": "Confirm a main-menu destination with a physical clang. No hover sound. Its decay continues through the page transition.",
+      "edit": "Removed the leading silence; retained both contacts and the falling metallic resonance. Short attack fade and an 80 ms tail fade. No arbitrary playback offset.",
+      "review": "Does this carry the same weight as the landing artwork without becoming tiring on repeat visits?"
+    },
+    {
+      "id": "contactor",
+      "name": "RESET · motor contactor",
+      "status": "Wired in this revision",
+      "role": "The red RESET button energizes the drive. The same contactor marks first-shift startup. A distinct mechanism from the menu clang.",
+      "edit": "Removed just over one second of idle recording. Kept the small movement before contact, the sharp main hit and its short decay; 45 ms tail fade.",
+      "review": "The button should engage immediately. A sustained motor rising under it is still a separate sound to source."
+    },
+    {
+      "id": "ratchet-engage",
+      "name": "Commitment · ratchet locks",
+      "status": "Wired in this revision",
+      "role": "A compact mechanical confirmation for approving a plan, resolving a decision and committing the output allocation in the first shift.",
+      "edit": "Isolated the complete engagement stroke, including its individual teeth. Removed the long wait before the later release; 25 ms tail fade.",
+      "review": "It should feel like a choice engaging a mechanism. Follow, override and irreversible allocation still need more distinct treatments."
+    },
+    {
+      "id": "ratchet-release",
+      "name": "Shutdown · latch releases",
+      "status": "Wired in this revision",
+      "role": "Release the working shift into the output-allocation stage. A small opening click followed by the mechanism settling.",
+      "edit": "Kept the release click, the physical interval and the settling thud as one action. Removed the surrounding dead time; 45 ms tail fade.",
+      "review": "Does this read as machinery disengaging, rather than another reward or approval?"
+    },
+    {
+      "id": "gate-close-review",
+      "name": "Heavy gate · hinge and latch",
+      "status": "Audition only",
+      "role": "Candidate for a security gate, a heavy room closure or a substantial mechanical transition. No gameplay assignment yet.",
+      "edit": "The source was already trimmed. Kept the full hinge-and-latch gesture instead of cutting it into an unexplained impact. Added 4 ms / 100 ms boundary fades.",
+      "review": "Find a visible moving mechanism that justifies the whole gesture; avoid playing three seconds of gate motion for a small UI click."
+    },
+    {
+      "id": "dark-room-review",
+      "name": "Dark room · feedback atmosphere",
+      "status": "Audition only",
+      "role": "A candidate environmental texture from the long synthetic soundscape. This is neither the conveyor drive nor the future soundtrack.",
+      "edit": "Selected 01:00–01:26 of the 20-minute recording. A two-second overlap produces a 24-second loop; held at a lower level with stereo retained.",
+      "review": "Listen across the loop boundary. Judge whether its unease fits a particular room and whether it leaves space for mechanisms and speech."
+    }
+  ],
+  "direction": [
+    ["Action before decoration", "Synchronize the strike with the visible contact. Mechanical settling can continue after an order is accepted; sound must never delay the command or invent a game outcome."],
+    ["One foreground event", "Let routine production sit underneath decisions and accidents. Coalesce repeated cues at faster playback; leave room for the factory to fall quiet."],
+    ["State, not random noise", "Load, strain, jam and restart should sound related. Their timing comes from resolved world events and presentation state, independently of model calls."],
+    ["Music has its own job", "Later stems can carry working rhythm, mounting pressure, deliberation and aftermath. Do not turn every produced robot into a musical victory."],
+    ["Bounded and optional", "No automatic preview playback. Gameplay sound is user-enabled, hidden-page work stops, and readable visual feedback carries every important state. Review-only recordings are never loaded by the playable shift."]
+  ],
+  "gaps": [
+    ["Conveyor under load", "Procedural low motor bed exists. Still need chain/roller motion, load variations, coast-down and restart rise."],
+    ["Jam and alarm", "Visual jam/alarm exists on the landing. Recorded strain, jam impact and a restrained repeating alarm are still missing there."],
+    ["Supervisor voices and intercom", "A procedural connection cue exists. Distinct supervisor signatures, relay opening/closing and transmission texture are still to develop."],
+    ["Follow versus override", "Both currently share the commitment ratchet. Develop a legible difference in transmission and response without making override sound automatically wrong."],
+    ["Production and allocation", "Procedural batch cue exists. Outtake clatter, quota dispatch and retained-worker activation need distinct sounds and synchronization."],
+    ["Accident and aftermath", "Procedural warning and impact exist. A coordinated impact, machine cutoff, quiet gap and restart remain to be directed."],
+    ["Room identity", "Gate and dark-room crops are audition candidates. No dedicated per-room ambience is implemented."],
+    ["Soundtrack", "Not sourced or implemented. Plan separate music control, stems and ducking under important signals."]
+  ]
+}

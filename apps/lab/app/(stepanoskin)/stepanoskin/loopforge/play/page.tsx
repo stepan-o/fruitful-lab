@@ -1,24 +1,10 @@
-import Conveyor from "@/components/loopforge/Conveyor";
-import Chrome from "@/components/loopforge/Chrome";
-import Director from "@/components/loopforge/Director";
-import styles from "@/components/loopforge/loopforge.module.css";
+import FirstShift from "@/components/loopforge/first-shift/FirstShift";
+import { firstShiftMedia } from "@/lib/loopforge/first-shift/media";
 export const metadata = {
-  title: "Director’s console · Loopforge",
+  title: "The first shift · Loopforge",
   description:
-    "An eight-shift factory simulation. Truth stays clean. Story gets messy.",
+    "Choose your adviser. Release the line. Live with the first consequences.",
 };
 export default function Page() {
-  return (
-    <div className={styles.page}>
-      <Chrome />
-      <Director />
-      <footer className={styles.footer}>
-        <span>LOOPFORGE / TEACHING PROTOTYPE</span>
-        <span>Truth stays clean. Story gets messy.</span>
-      </footer>
-      <div className={styles.perimeter}>
-        <Conveyor quiet />
-      </div>
-    </div>
-  );
+  return <FirstShift media={firstShiftMedia()} />;
 }

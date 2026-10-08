@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-design",
+  "assets": {
+    "factory": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/e5c0475ffa5fccd5edabe9841477a0089f68e3bad9b75a889ecf918dc125e6e6.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 34578,
+          "sha256": "e5c0475ffa5fccd5edabe9841477a0089f68e3bad9b75a889ecf918dc125e6e6",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/b5ac0e7c563f27d49589d5a7fdc288742585d50616af233cd2e302a9a4e255af.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 128904,
+          "sha256": "b5ac0e7c563f27d49589d5a7fdc288742585d50616af233cd2e302a9a4e255af",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "forge": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/792a58608743384fd8b625f141302deefb964c3b2ad6881c2fd55fe763894561.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 42376,
+          "sha256": "792a58608743384fd8b625f141302deefb964c3b2ad6881c2fd55fe763894561",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/17710217e74501f70a6f273fdf708d80ec3b8ce89e3e3786a856c783568604a2.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 140356,
+          "sha256": "17710217e74501f70a6f273fdf708d80ec3b8ce89e3e3786a856c783568604a2",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "theatre": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/329142cf7eeac0328257fe5ee20e9ffbd04dd3b4d1c29c4e19a60884a08d8476.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 30364,
+          "sha256": "329142cf7eeac0328257fe5ee20e9ffbd04dd3b4d1c29c4e19a60884a08d8476",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/74724b8818f09f670a4cd8a0a2ce2d1788bb1dff7d21ce25ae7dbf06d4466dde.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 102690,
+          "sha256": "74724b8818f09f670a4cd8a0a2ce2d1788bb1dff7d21ce25ae7dbf06d4466dde",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "brewery": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/47dec69a5e88922f8dc60fda2d86ae0bb87fa69ed2a3e5406dc0f24d8cad07aa.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 39544,
+          "sha256": "47dec69a5e88922f8dc60fda2d86ae0bb87fa69ed2a3e5406dc0f24d8cad07aa",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/20c0342bfc1ede3d3aeef674440a566e3c356a1aa0927a99fee55cf938442af5.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 128488,
+          "sha256": "20c0342bfc1ede3d3aeef674440a566e3c356a1aa0927a99fee55cf938442af5",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "weaving": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/ede29e8a79771ac4e86b78ac0280e723c591f43426bd76cc8102dffa93d1abfd.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 37386,
+          "sha256": "ede29e8a79771ac4e86b78ac0280e723c591f43426bd76cc8102dffa93d1abfd",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/16897a9cdac4ec0c61f57aefeb3f23d5f5c3d05820c081c26a93dbb8a6c26788.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 128956,
+          "sha256": "16897a9cdac4ec0c61f57aefeb3f23d5f5c3d05820c081c26a93dbb8a6c26788",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "limen": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/3a38873d5abab52028410258ae10d5a97c8823dc820b99d62f25f6f696f3862e.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 45862,
+          "sha256": "3a38873d5abab52028410258ae10d5a97c8823dc820b99d62f25f6f696f3862e",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/8a79c49780be45958aff19bb43a4eef1ab21515bd5108de1a0fd69ef913a7868.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 161810,
+          "sha256": "8a79c49780be45958aff19bb43a4eef1ab21515bd5108de1a0fd69ef913a7868",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "stiletto": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/aed268e4fe31455cb682d2576e3fa7c67c79cd0b66bdfdd2bc60c9546c63b8a8.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 45448,
+          "sha256": "aed268e4fe31455cb682d2576e3fa7c67c79cd0b66bdfdd2bc60c9546c63b8a8",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/6e8c68d3b06b24e7f44da6e44dc73d439183456e6935b7c23a0aa24d132ddfb5.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 166498,
+          "sha256": "6e8c68d3b06b24e7f44da6e44dc73d439183456e6935b7c23a0aa24d132ddfb5",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "cathexis": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/8556273d73e6c7166b95db967cc2a700b10268bfd49ab87609aa8a182cc4ba3a.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 34878,
+          "sha256": "8556273d73e6c7166b95db967cc2a700b10268bfd49ab87609aa8a182cc4ba3a",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/e4e1b237360dd886574352303cf781aa22d8d840b9db194eb2f9e8aca957f906.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 108838,
+          "sha256": "e4e1b237360dd886574352303cf781aa22d8d840b9db194eb2f9e8aca957f906",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "witch": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/6b4ae0f8c3cebb1168f4b8c6a16ff16d7c4d8f105a68b6f4b6d9096a5359edec.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 41694,
+          "sha256": "6b4ae0f8c3cebb1168f4b8c6a16ff16d7c4d8f105a68b6f4b6d9096a5359edec",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/42b7929323dae3d7a1e8953e05e6fc552fdac6ec45b4d9e5a2d406e4e380dc4b.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 133018,
+          "sha256": "42b7929323dae3d7a1e8953e05e6fc552fdac6ec45b4d9e5a2d406e4e380dc4b",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "thrum": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/fd5198184e81c6333e7ca6a946332a0cb4238c02bccf0e464bcce01fc28fbf9f.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 36162,
+          "sha256": "fd5198184e81c6333e7ca6a946332a0cb4238c02bccf0e464bcce01fc28fbf9f",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/26f01c4fede7e9259294c662abc576434f0fab9c16874bd3d462627b686169ab.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 123346,
+          "sha256": "26f01c4fede7e9259294c662abc576434f0fab9c16874bd3d462627b686169ab",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "cathexis-theatre-success-1": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/f3be03d6f60ae742fffa85b3fe5d73b170d76b8fd09e2f9c54388da332cce84f.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 36054,
+          "sha256": "f3be03d6f60ae742fffa85b3fe5d73b170d76b8fd09e2f9c54388da332cce84f",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/d9677eaee34313f07fad5e5bb777d67ff1b489937ff0dda44a4ee685e07cc665.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 111464,
+          "sha256": "d9677eaee34313f07fad5e5bb777d67ff1b489937ff0dda44a4ee685e07cc665",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "cathexis-theatre-revolution": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/7ba185d5b3452b139a3ead4fe8141a66abe673657c2293e9f8aca76166bd1700.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 36206,
+          "sha256": "7ba185d5b3452b139a3ead4fe8141a66abe673657c2293e9f8aca76166bd1700",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/41e02cb54b7cfc251aa15452d2e1d845ff2f54aa1f17adb9b73472996318e442.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 110104,
+          "sha256": "41e02cb54b7cfc251aa15452d2e1d845ff2f54aa1f17adb9b73472996318e442",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "argue-limen-stiletto-conveyor": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/3d0d47aab46c907c78dd06472dca3e96d13b1cc0076e2b8c1c335ac7b9d97ef1.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 48276,
+          "sha256": "3d0d47aab46c907c78dd06472dca3e96d13b1cc0076e2b8c1c335ac7b9d97ef1",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/8c87a74a08d49b3e5989a38723fe7c5ceb2602a0ea6bf652659513cfef8934b5.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 147430,
+          "sha256": "8c87a74a08d49b3e5989a38723fe7c5ceb2602a0ea6bf652659513cfef8934b5",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "argue-limen-stiletto-security": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/00257933348f139e4ed4329de1c35518160d6a7410b2e5ba46503eb131882c7b.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 43002,
+          "sha256": "00257933348f139e4ed4329de1c35518160d6a7410b2e5ba46503eb131882c7b",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/62aa2b0c7b15ae43be882d44c43be5e339d74f91926dfa8486d7c0d18b6668ab.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 132170,
+          "sha256": "62aa2b0c7b15ae43be882d44c43be5e339d74f91926dfa8486d7c0d18b6668ab",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "cathexis-conveyor-failure": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/3203621feeec115365dcf8c8afbc38ba751c169dcedbea3c432065539a5b8486.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 42782,
+          "sha256": "3203621feeec115365dcf8c8afbc38ba751c169dcedbea3c432065539a5b8486",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/8afa72988fdd38dbe476023528376806846ec61ecdf281e8c7bf5dc7c5e8df9b.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 126464,
+          "sha256": "8afa72988fdd38dbe476023528376806846ec61ecdf281e8c7bf5dc7c5e8df9b",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "rivet-witch-brewery-wicked-experiment-1": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/6f69b7ef426541653f863659d15015b5736189467dab13dda28f26fca6ab5c25.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 46264,
+          "sha256": "6f69b7ef426541653f863659d15015b5736189467dab13dda28f26fca6ab5c25",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/de5463e30adffc32b8d7ea3e971d7eae22d11611961c07346216dca3784a5853.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 143924,
+          "sha256": "de5463e30adffc32b8d7ea3e971d7eae22d11611961c07346216dca3784a5853",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "thrum-weaving": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/12d03434903ebd96bf0069ecef3841a83c04cc472f1c95442b2c79df79662308.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 47064,
+          "sha256": "12d03434903ebd96bf0069ecef3841a83c04cc472f1c95442b2c79df79662308",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/99752caebfeb78715aa30425b741befc0632f3254a143c6741b56051c342e23f.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 165750,
+          "sha256": "99752caebfeb78715aa30425b741befc0632f3254a143c6741b56051c342e23f",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "thrum-brewery": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/94395494baba7cd99b9dd80e7d5bfd9b45f821b1fd962a9fd85cf9e4324ec581.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 46464,
+          "sha256": "94395494baba7cd99b9dd80e7d5bfd9b45f821b1fd962a9fd85cf9e4324ec581",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/4b237451736c72a2d1cb4c31cc877369b2b616d8256ced3960d03e6ca7991b95.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 139292,
+          "sha256": "4b237451736c72a2d1cb4c31cc877369b2b616d8256ced3960d03e6ca7991b95",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "thrum-conveyor": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/2d83ccdeece9f03e1f98d1158197c34893722ac2de4535a4dd619fc4fb69e608.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 34336,
+          "sha256": "2d83ccdeece9f03e1f98d1158197c34893722ac2de4535a4dd619fc4fb69e608",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/d210674a4e9b74febe097750d7be5a07f008e455836479c0fe756855fb1c2653.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 94654,
+          "sha256": "d210674a4e9b74febe097750d7be5a07f008e455836479c0fe756855fb1c2653",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "thrum-theatre": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/93d186dc1036b678dbdd28a8a1df353f8ee38b07b840a258f866dedc05ffcb5d.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 48034,
+          "sha256": "93d186dc1036b678dbdd28a8a1df353f8ee38b07b840a258f866dedc05ffcb5d",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/0788dbf9cae8f512875164389d3940bc52cfbe11c710364b5ca0df0aaac58644.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 142078,
+          "sha256": "0788dbf9cae8f512875164389d3940bc52cfbe11c710364b5ca0df0aaac58644",
+          "mime": "image/webp"
+        }
+      ]
+    },
+    "cortex": {
+      "kind": "image",
+      "width": 960,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/1be5db9f10b2edf613487a2ec5b93cb656a6ea2989c1025da84dffe71e72e6fa.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 53080,
+          "sha256": "1be5db9f10b2edf613487a2ec5b93cb656a6ea2989c1025da84dffe71e72e6fa",
+          "mime": "image/webp"
+        },
+        {
+          "src": "/media/files/eb258c2840c2426dfdbffc67486fc0cb9dda979b49e3accb3bd4bda3de5d06b6.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 195176,
+          "sha256": "eb258c2840c2426dfdbffc67486fc0cb9dda979b49e3accb3bd4bda3de5d06b6",
+          "mime": "image/webp"
+        }
+      ]
+    }
+  }
+}

@@ -72,3 +72,35 @@
 .startControl:hover:not(:disabled){background-image:var(--button-hover)}.startControl:active:not(:disabled){background-image:var(--button-pressed)}
 .menuDialog{border:1px solid #9c875a77;border-image:none;padding:75px 30px 30px}
 @media(max-width:600px){.menu{height:100svh;padding:50px 15px 20px}.menuPanel{padding:0 15px}.menuLogo{max-height:160px}.menuMotto{margin-bottom:15px}.menuPanel h1{font-size:34px}.sessionNote{font-size:9px}.menuPanel .sessionNote:first-of-type{margin-top:10px}}
+
+/* The lobby's floor insignia is part of the title composition, not disposable background. */
+.menuScene img { filter: brightness(.74); }
+.menuGlass { background:linear-gradient(90deg,#040909ed,#04090999 34%,#03080808 72%),linear-gradient(0deg,#03070738,transparent 38%); }
+@media (min-width:601px) and (max-height:800px) {
+  .menu { height:100svh; padding-top:60px; padding-bottom:18px; }
+  .menuLogo { max-height:135px; margin:4px 0; }
+  .menuPanel h1 { font-size:38px; margin:8px 0; }
+  .menuMotto { margin-bottom:16px; }
+  .startControl { min-height:76px; }
+  .menuSetting { margin:5px 0 8px; min-height:54px; }
+  .menuPanel .sessionNote:first-of-type { margin-top:8px; }
+}
+@media (max-width:600px) {
+  .menu { align-items:flex-start; padding-top:76px; }
+  .menuPanel { width:100%; }
+  .menuLogo { display:none; }
+  .menuPanel h1 { margin:12px 0; font-size:42px; }
+  .menuMotto { margin-bottom:20px; }
+  .menuScene { inset:auto 0 0; height:65svh; }
+  .menuScene img { object-position:78% bottom; filter:brightness(.84); }
+  .menuGlass { background:linear-gradient(180deg,#040909 0%,#040909ee 25%,#04090999 49%,#04090918 73%,transparent); }
+  .menuSetting { min-height:52px; margin:6px 0; }
+  .menuPanel .sessionNote:first-of-type { margin-top:8px; }
+  .sessionNote { font-size:9px; }
+}
+@media (max-width:600px) and (max-height:750px) {
+  .menu { padding-top:63px; }
+  .menuPanel h1 { font-size:35px; margin:8px 0; }
+  .menuMotto { margin-bottom:12px; }
+  .startControl { min-height:75px; }
+}

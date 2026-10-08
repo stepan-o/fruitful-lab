@@ -10,6 +10,7 @@ All six equipment families have whole monitor housings, supervisor sockets and c
 
 ## Browser evidence
 
+- Hosted preview at revision `bc6dcdf2df8ba8efacacf2ebf73a2178c310a220` completed STILETTO's default plan, automatic conveyor response, Security override to verify records, dispatch seal and debrief: 22 produced, condition 67%, all workers survived, 11 retained and 11 delivered (35 workers). This exercises the deployed UI → command API → confirmed projection flow.
 - Actual server-backed first shift completed with LIMEN: default placements, automatic conveyor response, director override at Security, 11 produced, condition 76%, 5 retained and 6 delivered.
 - Actual server-backed STILETTO shift completed with revised placements: LIMEN on conveyor, STILETTO in Security. Left the conveyor decision to inspect records, returned to the unresolved request, accepted the recommendation; automatic Security resolution followed. 12 produced, condition 73%, 6 retained and 6 delivered. No worker injury occurred in either reviewed seeded path.
 - Adviser preview does not appoint; appointment is explicit. Proposed placement and dispatch edits remain local until confirmation. Existing tests verify draft preservation across theme/menu/navigation changes and failed connections.
@@ -29,6 +30,8 @@ The saved DOM media inventories record 16 distinct visible files / 556.6 KiB at 
 
 ## Evidence files
 
+- `lobby-desktop.jpg`, `lobby-phone.jpg`, `lobby-320.jpg`: start menu with the original floor insignia visible at 1280×720, 390×844 and 320×740. These include the final responsive framing refinement.
+- `hosted-debrief.jpg`: completed hosted first shift at the revision above, with confirmed allocation and supervisor reactions.
 - `factory-desktop.jpg`: default camera wall with two speaking tokens.
 - `dispatch-desktop.jpg`: original dispatch office and reversible allocation preview.
 - `incident-desktop.jpg`: room report, adviser recommendation and override.
@@ -41,4 +44,4 @@ The saved DOM media inventories record 16 distinct visible files / 556.6 KiB at 
 
 The requested first-turn interface structure and asset pass are implemented and visually reviewed. The owner still determines whether it is enjoyable and whether the art direction is accepted. This remains a one-day prototype: no later-shift progression, live 3D factory, cloud save, paid model call or new repair mechanic is claimed.
 
-Validation: full repository asset tests and all 348 tests / 68 suites / one snapshot passed. Production build passed with the playable route and author composition fixture prerendered. Targeted React/TypeScript lint and `git diff --check` are clean. Hosted verification follows the pushed preview.
+Validation: full repository asset tests and all 348 tests / 68 suites / one snapshot passed. Production build passed with the playable route and author composition fixture prerendered. Targeted React/TypeScript lint and `git diff --check` are clean. The hosted preview completed the full first-day flow described above. Owner play and art-direction acceptance remain pending.

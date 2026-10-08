@@ -31,6 +31,8 @@ The start menu remains optional navigation. Start shift opens the **factory wall
 
 Reuse all six material directions and their complete control states. Add a purpose-built supervisor socket for each direction, a shared textured speech surface and tape, and coherent resource reliefs. Original portraits retain identity. The old dispatch office supplies dispatch, shipping/logistics supplies the debrief, and the factory lobby supplies the menu. None becomes a seventh managed room. Text, counters and decisions remain semantic live controls. Grain, REC, token seating, production changes and the shared beacon have bounded effects tied to visibility and confirmed receipts.
 
+The lobby's Loopforge floor insignia is a required focal point. Desktop controls sit to its left; phone controls occupy the upper area while the doorway and floor remain visible below. Do not center-crop the scene or bury the floor under the menu gradient. The separate floating logo is omitted on phones.
+
 ## Checklist / gate
 
 - [x] Re-read scope, references, style sheets and current engine boundary.
@@ -43,6 +45,6 @@ Reuse all six material directions and their complete control states. Add a purpo
 - [x] Play both advisers, revised placements, automatic actions, an override and split dispatch.
 - [x] Check responsive bounds, keyboard dismissal/focus, manual motion-off, sound-off, failure and state preservation; review OS reduced-motion implementation. See evidence limitations in `review/focused-console/README.md`.
 - [x] Run required checks, update source docs/tabs and capture evidence.
-- [ ] Publish and verify the updated PR #99 preview.
+- [x] Publish and verify the updated PR #99 preview: hosted first shift, override, dispatch seal and debrief completed. See the review record for the exact tested revision.
 
 The gate fails if the result is still a camera beside a permanent prose/action column, if sealed rooms reveal interiors, if tokens are absent, or if hardware is reduced to illegible trim. Passing tests alone does not pass this gate.

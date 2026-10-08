@@ -10,6 +10,45 @@ Direct artwork, transitions, typography, lighting, motion, SFX and eventually mu
 
 The player’s central first-day choice is whom to trust with authority. The resulting production line gives that choice tangible meaning. The quota supplies continuing pressure; the workforce and equipment reveal what output costs. Clear information and enjoyable play take priority over exposing the whole simulation.
 
+## Current delivery: the interfaces carry the game
+
+Owner clarification, 8 October 2026: build the **asset-driven decision interfaces** now. Adviser selection, structured briefing, assignment approval and overrides, incident responses, permanent allocation and debrief must carry the core loop as a playable prototype on their own, supported by illustrated room scenes and the authoritative simulation. They are substantive game interfaces, not temporary menus waiting for a renderer to make the game interesting.
+
+The **live, tick-fed 3D factory is a later cinematic view** of that same simulation. It will show continuous machinery, workers, batches and interventions, following the old world viewer’s observation direction. It joins the existing interfaces; it does not replace them or supply their game rules. “Side interfaces” describes their relationship to this future world view, not a requirement to squeeze them into a narrow sidebar. A briefing or incident can occupy the foreground while preserving factory context.
+
+The old working world viewer is the Sim4/KVP **Pixi isometric renderer**, with world positions, room bounds, floor selection and interpolated movement. Sim5 contains broader viewer strategy documents. Neither establishes an already finished 3D implementation. Babylon.js remains a research candidate for the future scene, not a dependency of this interface revision.
+
+## Entry and visual hierarchy
+
+Enter factory should land directly in the **paused director’s console**. Show the illustrated factory context, Conveyor and Security available, four sealed bays, opening funds/workforce/condition and the weekly quota. Nobody has an assignment. The immediate actionable focus is choosing LIMEN or STILETTO as the day’s adviser, each with expressive art, a short personal pitch and an understandable operating tradeoff.
+
+Bring the chosen adviser’s briefing forward over the same console: assessment, additional context, priority, proposed assignments. Approval or override visibly assigns the supervisors and establishes delegated authority. A physical Start shift control then releases the line. Opening context belongs in this scene and conversation; separate marketing-style welcome and handover pages are superseded.
+
+Keep the factory identifiable without burying the next decision under a panorama, a large title or explanatory prose. On a phone, recompose the same scene and action; do not shrink a desktop wall until its instruments become illegible.
+
+## Assets define almost every visible element
+
+Use the original sim-sim Director Console as the visual starting point. Inspect and adapt its actual assets and modules before inventing replacements:
+
+- `docs/sim_sim/sim_sim_ui_spec_v1.md` and its style sheet: CCTV wall, director’s console, phase-specific primary action and focused incident surfaces.
+- `frontend/loopforge-webview/public/assets/ui/`: gunmetal, glass, noise, instrument plate and resource icon variants.
+- `frontend/loopforge-webview/public/assets/cards/rooms/` and the interaction-art archive: illustrated rooms and character-grounded outcomes.
+- `src/viewers/sim_sim/ui/{assets,bezelPanel,topStrip,roomArt}.ts`: loading, material layering, instruments and room selection patterns. These paths are in the original Loopforge repository.
+
+| Interface element | Authored material | Responsive behaviour |
+| --- | --- | --- |
+| Room camera | Scene art, physical bezel and glass | Select a matching scene; crop deliberately; layer permitted event cues |
+| Adviser and briefing | Expressive character art, dialogue framing and physical dossier/intercom surfaces | Reveal short labelled topics; keep speaker and attribution clear |
+| HUD and meters | Instrument plates, resource symbols and meter artwork | Render changing values and labels as readable native text |
+| Buttons and orders | Coherent control art and meaningful state variants | Normal, hover/focus, pressed, selected, disabled and alarm states where needed; immediate press response, explicit accepted state |
+| Incident and allocation | Scene-specific framing, dispatch/retention apparatus and aftermath art | Preview the commitment and its consequences; preserve the record after the effect ends |
+
+CSS and code position, mask, slice and animate these assets; they also provide text, hit areas, focus, semantics and reflow. They are not a substitute for authored material, perspective and lighting. Do not return to generic cards, line icons and flat gradient buttons with a factory picture behind them. Reuse sliced frames and tiles without distorting rivets, corners or material scale. Generate missing art against a specific interface role and state, retaining neutral, clearly identified placeholders during development.
+
+Procedural effects support the authored surfaces: transitions, restrained light, glare, grain and feedback from confirmed events. A genuine future live 3D view can render geometry, materials and spatial lighting. Decorative animation is not a substitute for that view, and is not needed to prove the current loop.
+
+These are updated requirements, not a statement that the current `/play` UI meets them. The owner rejected its entry composition and web-app feel. Earlier functional/browser verification is not visual or enjoyment approval.
+
 ## Borrow pacing, preserve identity
 
 Frostpunk is a reference for connecting a central machine and survival pressure to emotional decisions; for foregrounding an illustrated account while the world remains behind it; and for coordinating image entrance, sound, pause and commitment. Its lead designer explicitly connects the console interface to the generator’s central spatial role and argues for clearer presentation rather than reducing underlying complexity. [Developer account](https://blog.playstation.com/2019/10/10/adapting-frostpunks-complex-city-building-for-ps4-out-tomorrow/).
@@ -22,10 +61,10 @@ Loopforge retains soot, worn brass, industrial green-black, cyan cognition and S
 
 | Factory beat | Visual and interface response | Sound direction | Mechanical meaning |
 | --- | --- | --- | --- |
-| Arrive | Factory emerges through darkness; type settles after the image establishes the place. | Distant power and room tone; music enters only with permission. | You inherit an operating system with demands already in place. |
+| Arrive | The paused factory console establishes the place, quota and unassigned advisers. Opening context stays in that scene. | Distant power and room tone only after sound activation. | Choosing the adviser is the first meaningful action. |
 | Choose an adviser | The chosen figure comes forward; their competing colleague recedes. Briefing topics appear as readable comic panels. | Intercom relay and a distinct supervisor signature. | One adviser is committed for the day; no placements yet. |
 | Approve a plan | Assignments lock into the room labels. The delegated room’s authority is explicit. | A weighted latch, not a celebratory reward sting. | Your order is accepted; a supervisor remembers an override. |
-| Start the shift | Contact indicators engage; the same cameras become live. Movement acquires an uneven machine cadence. | Contactor, motor spin-up, low machinery bed. | The accepted plan begins producing outcomes. |
+| Start the shift | Contact indicators engage; confirmed activity updates the illustrated cameras and instruments. The future 3D view adds continuous spatial execution. | Contactor, motor spin-up, low machinery bed. | The accepted plan begins producing outcomes. |
 | Complete a batch | Output advances once; a restrained local highlight connects the batch to the ledger. | Outtake latch, capped so production never becomes notification spam. | Real produced units, still awaiting allocation. |
 | Accumulate strain | The relevant camera and condition readout show load. Disturbance is localized, not random across the whole UI. | Irregular knocks, electrical chatter, more stressed motor texture. | Exposure and equipment condition have changed. |
 | Adviser acts autonomously | Briefly foreground their action and its result; leave a durable record. Do not offer a fake approval button. | Intercom intervention followed by the relevant machinery response. | Authority belongs to the adviser in their actual assigned room. |
@@ -50,7 +89,7 @@ Loopforge retains soot, worn brass, industrial green-black, cyan cognition and S
 
 SFX categories: console relays; supervisor intercom signatures; briefing handling; shift contactor/motor; batch outtake; line strain; decision warning/duck; accident impact/silence; override transmission; allocation seal/dispatch/activation; shift-end ledger.
 
-Music is a separate authored layer, not continuous reinforcement of every click. Plan stems for the working pulse, mounting pressure, deliberation space and aftermath. Crossfade from known episode states; duck under intercom and critical signals. Avoid triumphant rewards for output whose human—or robot—cost is still unresolved. The first build has optional original procedural SFX and machinery ambience. It does **not** claim a finished recorded sound library or soundtrack.
+Music is a separate authored layer, not continuous reinforcement of every click. Plan stems for the working pulse, mounting pressure, deliberation space and aftermath. Crossfade from known episode states; duck under intercom and critical signals. Avoid triumphant rewards for output whose human—or robot—cost is still unresolved. Recorded and procedural SFX currently cover part of the feedback. The recorded library and final mix remain incomplete; a soundtrack has not shipped.
 
 The first recorded pass adds the `loopforge-sfx` pack: metal clang for landing navigation, contactor for RESET / shift startup, engagement ratchet for commitment and release latch for shift shutdown. The gate and dark-room loop remain audition-only. The playable [Sound library](/stepanoskin/loopforge/design#sound-library) documents crops, CC0 sources, intended roles and missing cues. Source recipes and measurements live in `apps/lab/assets/sources/loopforge-sfx/`. A recorded cue replaces its procedural counterpart only when decoded and ready; failed or slow loads use the immediate fallback, never a delayed replay. No kernel, protocol or decision rules change.
 
@@ -70,3 +109,5 @@ Every important sound has visible text or a readable state change. Reduced motio
 4. Does a bad outcome remain legible after the dramatic effect ends?
 5. Does it stay clear with sound off, reduced motion, a narrow phone and an interrupted connection?
 6. Does the owner enjoy playing it and want to try the other adviser? Visual polish does not answer that playtest question by itself.
+7. Can the asset-driven interfaces carry the complete loop with the future 3D view absent?
+8. Do the actual control surfaces, character treatment and scene composition share Loopforge’s material identity, rather than merely borrowing its background images?

@@ -4,12 +4,14 @@
 
 ## Screen map and physical composition
 
-The start menu remains optional navigation. Start shift opens the **factory wall**. A compact instrument rail carries the day, funds, workers, known condition and weekly quota. Factory, Development and Records are durable destinations. The console source light is shared, overhead and dark between impulses.
+The start menu remains optional navigation. Start shift opens the weekly leadership call, then the **factory wall**. The call is a full-screen illustration with lower captions; routine console chrome recedes. A compact instrument rail carries the day, funds, workers, known condition and weekly quota. Factory, Development and Records are durable destinations. The console source light is shared, overhead and dark between impulses.
 
 | Interface | Composition | Entry / exit |
 | --- | --- | --- |
-| Factory | Six substantial camera housings in stable positions; two live feeds, four empty unpowered glass screens with only handwritten room names. Speaking adviser tokens occupy a dock below. No permanent command-prose column. | Default after Start. Room tap opens focus; adviser token opens intercom. |
-| Adviser intercom | Large selected identity, attached live speech, clear output/safety tradeoff. Appointment is explicit. After appointment the comic briefing separates factory assessment, attributed context and priority. | Token → preview → appoint → structured briefing → placements. |
+| Factory | Six substantial camera housings in stable positions; two live feeds, four empty unpowered glass screens with only handwritten room names. Only compact current-action and adviser access remain around the wall. No permanent command-prose column. | Default after the call. Room tap opens focus; Choose adviser opens the dedicated roster. |
+| Weekly leadership call | Full-screen original leadership artwork, asymmetric soot vignette, short attributed speech and separate confirmed figures/mandate. Later weeks need actual performance records. | Start → call → factory; quota instrument reopens without changing world state. |
+| Adviser selection | At least five readable roster entries, short pitches and one focused priority/tradeoff panel. Day one activates only LIMEN/STILETTO. | Choose adviser → inspect candidates freely → explicitly appoint. |
+| Adviser intercom | Large selected identity, attached live speech, clear output/safety tradeoff. Appointment is explicit. After appointment the comic briefing separates factory assessment, attributed context and priority. | Appointment → structured briefing → placements. |
 | Placements | Room receiving sockets and proposed supervisor tokens. Both room fit and delegated authority are visible. Tap/swap produces a local revision and visible objection before authorization. | Briefing → plan; confirm returns to factory and arms shift control. |
 | Room focus | One enlarged camera, operator token, known condition/output and relevant attributed action/report. | Open live feed; close returns to wall. Shift continues here. |
 | Incident | Foreground room scene, source, adviser recommendation and alternatives with known consequences. Factory pauses authoritatively. Evidence/records can be inspected without resolving. | Confirmed pending incident; decision or inspect; unresolved request remains accessible. |
@@ -21,8 +23,8 @@ The start menu remains optional navigation. Start shift opens the **factory wall
 
 ## Geometry before paint
 
-- Desktop/laptop: fixed viewport console. Compact header and bottom transport/navigation; 3×2 monitor wall; two speaking adviser tokens below. Opened intercom, placement, incident and dispatch occupy the workspace rather than adding columns to the wall.
-- Phone: 2×3 monitor wall, compact instruments, two adviser tokens with attached readable speech, persistent lower navigation. Focused interfaces use their own space; longer records/help scroll inside their surface. Do not stack the whole desktop page.
+- Desktop/laptop: fixed viewport console. Compact header and bottom transport/navigation; 3×2 monitor wall; one primary next-action control. Opened intercom, placement, incident and dispatch occupy the workspace rather than adding columns to the wall.
+- Phone: 2×3 monitor wall, compact instruments, compact quota and current action, persistent lower navigation. Focused interfaces use their own space; longer records/help scroll inside their surface. Do not stack the whole desktop page.
 - Monitor housings render as whole authored objects with calibrated inner openings, not squeezed decorative border images. Token hardware remains large enough to read at its actual display size. Labels sit on the physical bezel.
 - First-turn and full-floor composition use the same six locations. A separate clearly labelled author fixture demonstrates the latter; it cannot send commands or imply later progression is implemented.
 - Local selected adviser, proposed placements, dispatch edits, focus and help are presentation state. Confirmed player projections remain the only world authority.
@@ -38,7 +40,7 @@ The lobby's Loopforge floor insignia is a required focal point. Desktop controls
 - [x] Re-read scope, references, style sheets and current engine boundary.
 - [x] Specify focused jobs, navigation, geometry and ownership before implementation.
 - [x] Produce/inspect missing assets and record provenance.
-- [x] Replace the default layout with the six-camera wall and speaking tokens.
+- [x] Replace the default layout with the six-camera wall and separate adviser selection.
 - [x] Implement intercom, plans, room focus, incidents, dispatch and debrief as distinct compositions.
 - [x] Integrate records, development, recoverable guidance and all six themes.
 - [x] Verify material thickness and readability against the sheets at actual viewport size.

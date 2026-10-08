@@ -1,6 +1,6 @@
 # Loopforge — learning through the first shift
 
-8 October 2026. Design proposal, not a claim of implemented onboarding. Owner direction: remove persistent explanatory instructions from the main console. Speech bubbles and purposeful visual feedback guide the player; short contextual help remains available when needed.
+8 October 2026. Current screen ownership with proposed later onboarding. Owner direction: remove persistent explanatory instructions from the main console. Speech bubbles and purposeful visual feedback guide the player; short contextual help remains available when needed.
 
 ## What the references actually show
 
@@ -35,8 +35,9 @@ The following table locates assistance in the interface. It is an implementation
 
 | Moment | What leads attention | What is explained, where | What disappears / remains |
 | --- | --- | --- | --- |
-| First entry | Two equally prominent supervisor tokens, attached character pitches, brief settling motion and visible select affordance | Optional first-use callout at the adviser tray: choose one adviser for today. No introductory modal or standing paragraph about every responsibility. | Dismissible callout; the two pitches remain part of the choice. |
-| Adviser preview | Selected portrait comes forward; the other remains available until appointment | The character's priority and known tradeoff are gameplay, not tutorial copy. Appointment is explicit and labelled for today. | No instruction telling the player which adviser is correct. |
+| Opening weekly call | Full-screen leadership illustration; short topics for handover and mandate | First-week opening state and quota. Later weeks will use real previous-week results. General control tutorials stay in Help. | Return restores the factory; compact quota reopens the call. |
+| Factory entry | Six cameras and one amber Choose adviser control | No duplicated pitches or assignment explanation. | Selection gets its own screen. |
+| Adviser selection | Five-channel roster, current speech on available tokens; one inspected candidate gets detail | Priority, known gain/cost and delegated authority before explicit appointment. Two available on day one; no hidden trait scores. | All candidates remain comparable until Appoint; Help expands general principles. |
 | First proposal | Recommended tokens arrive in the two room sockets | One brief local explanation at the adviser's assigned socket: automatic authority in this room. It appears before orders are committed, so delegation is not a surprise penalty. | A small authority mark remains; its explanation is recoverable on tap/focus. |
 | First override | Selected token, valid receiving socket and proposed before/after arrangement | The known objection/authority change appears beside the revision before confirmation. | Feedback becomes a recorded decision; no constant swap tutorial. |
 | Orders accepted | Confirmed tokens lock in; shift-start control becomes available and gets one short light cue | The button says what it does. Optional pause/speed help appears at transport controls when the shift begins. | No additional mandatory confirmation just to repeat the order. |

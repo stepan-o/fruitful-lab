@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import type { PlayerView } from "@/lib/loopforge/first-shift/contract";
-import { LIGHTS, receiptLight, shadowPolygon, type Blocker, type LightKind } from "@/lib/loopforge/first-shift/console-light";
+import { LIGHTS, idleLightDue, receiptLight, shadowPolygon, type Blocker, type LightKind } from "@/lib/loopforge/first-shift/console-light";
 import { usePreference } from "@/lib/stepanoskin/preferences";
 import AssetImage from "@/components/media/AssetImage";
 import { imageAsset, parseManifest } from "@/lib/assets/types";
@@ -12,6 +12,7 @@ type Pulse = { serial: number; kind: LightKind; at: number };
 const Signals = createContext<{ pulse: Pulse | null; publish: (view: PlayerView) => void; impulse: (kind: LightKind, preview?: boolean) => void } | null>(null);
 export const useConsoleSignals = () => useContext(Signals);
 export function ConsoleSignals({ children }: { children: ReactNode }) {
+  const [effects] = usePreference("loopforge-first-shift-effects");
   const previous = useRef<PlayerView | null>(null), latest = useRef<Pulse | null>(null);
   const [pulse, setPulse] = useState<Pulse | null>(null);
   const impulse = useCallback((kind: LightKind, preview = false) => {
@@ -27,16 +28,27 @@ export function ConsoleSignals({ children }: { children: ReactNode }) {
     if (kind) impulse(kind);
   }, [impulse]);
   useEffect(() => {
-    let lastInput=performance.now(), timer: ReturnType<typeof setTimeout>;
-    const check = () => {
-      if (performance.now()-lastInput >= 45000) { impulse("idle");lastInput=performance.now()+45000; }
-      timer=setTimeout(check,15000);
-    };
+    if (!effects) return;
+    let lastInput=performance.now(), lastIdle=-Infinity, timer: ReturnType<typeof setTimeout> | undefined;
     const input = () => { lastInput=performance.now(); };
-    window.addEventListener("pointerdown",input,{passive:true});window.addEventListener("keydown",input);window.addEventListener("pointermove",input,{passive:true});
-    timer=setTimeout(check,15000);
-    return () => { clearTimeout(timer);window.removeEventListener("pointerdown",input);window.removeEventListener("keydown",input);window.removeEventListener("pointermove",input); };
-  }, [impulse]);
+    const check = () => {
+      if (document.hidden) return;
+      const now=performance.now();
+      // Don't sweep behind a foreground reading task or draw attention away from it.
+      if (!document.querySelector("dialog[open]") && idleLightDue(now,lastInput,lastIdle,latest.current?.at ?? -Infinity)) {
+        impulse("idle");lastIdle=now;
+      }
+      timer=setTimeout(check,2000);
+    };
+    const visibility = () => {
+      clearTimeout(timer);
+      if (!document.hidden) { lastInput=performance.now();timer=setTimeout(check,12000); }
+    };
+    window.addEventListener("pointerdown",input,{passive:true});window.addEventListener("keydown",input);
+    document.addEventListener("visibilitychange",visibility);
+    if (!document.hidden) timer=setTimeout(check,12000);
+    return () => { clearTimeout(timer);window.removeEventListener("pointerdown",input);window.removeEventListener("keydown",input);document.removeEventListener("visibilitychange",visibility); };
+  }, [impulse,effects]);
   return <Signals.Provider value={{ pulse, publish, impulse }}>{children}</Signals.Provider>;
 }
 const beacon = imageAsset(parseManifest(manifest,"loopforge-console-beacon"),"beacon");

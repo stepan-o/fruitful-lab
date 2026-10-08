@@ -2,7 +2,7 @@
 
 8 October 2026. Reference study and design implications for the next first-turn rebuild.
 
-The owner rejected PR #99's composition and visual coherence. Its technical checks remain useful, but its visual gate is not cleared. The next design must accommodate the complete first factory floor, then present its first-turn state. Six rooms remain visible in the overview from entry; four begin sealed. The owner's current pacing target is to unlock all six within roughly 10–20 minutes of play, through mastery rather than elapsed-time gates.
+The owner rejected the earlier PR #99 composition. The subsequent focused-screen pass improved the direction; current refinements are recorded in LIVING_CONSOLE_DIRECTION.md. The next design must accommodate the complete first factory floor, then present its first-turn state. Six rooms remain visible in the overview from entry; four begin sealed. The owner's current pacing target is to unlock all six within roughly 10–20 minutes of play, through mastery rather than elapsed-time gates.
 
 The central finding is that **the player needs one recognizable factory, with several interfaces organized around different jobs**. A persistent frame does not require a persistent two-column layout. A conversation, a placement comparison and an accident decision need different compositions.
 
@@ -132,3 +132,7 @@ Before generating the replacement kit or rebuilding components:
 7. Then build and visually assess the complete loop. Passing rendering and automated tests cannot clear a failed composition or visual-coherence gate.
 
 This study establishes the interface responsibilities. The spatial sketches, asset pass, implementation and renewed quality assessment remain the next stages of the authorized rebuild.
+
+## Weekly calls and roster scale
+
+Selection must accommodate at least five advisers, not a two-character conversation toggle. A stable roster shows their short pitches; one detailed priority/tradeoff inspection precedes appointment. The camera wall only provides access. Weekly leadership announcements use the cinematic surface in CINEMATIC_INTERFACE_DIRECTION.md: full art and lower captions, no mandatory camera housing. The Frostpunk primary-source account and our independently tuned transition sequence are recorded there.

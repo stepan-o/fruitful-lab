@@ -7,6 +7,7 @@ it("uses confirmed outcomes, never interpreting every incident as an accident", 
   expect(receiptLight(before,{...before,tick:1,produced:1,losses:1})).toBe("accident");
   expect(receiptLight(before,{...before,tick:1,phase:"decision",pending:{id:"paperwork"} as never})).toBe("attention");
   expect(receiptLight(before,{...before,tick:1,phase:"allocation"})).toBe("attention");
+  expect(receiptLight(before,{...before,tick:1,phase:"ready"})).toBe("attention");
   expect(receiptLight(before,{...before,produced:1})).toBeNull();
   expect(receiptLight(null,{...before,tick:48,phase:"complete",produced:12,losses:2})).toBeNull();
 });

@@ -1,7 +1,7 @@
 import type { PlayerView } from "./contract";
 export type LightKind = "idle" | "production" | "accident" | "attention";
 export const LIGHTS = {
-  idle: { rgb: "105, 205, 219", duration: 2400, power: .07, label: "Idle signal", priority: 0 },
+  idle: { rgb: "105, 205, 219", duration: 2800, power: .11, label: "Idle signal", priority: 0 },
   production: { rgb: "114, 235, 156", duration: 1150, power: .17, label: "New production confirmed", priority: 1 },
   attention: { rgb: "255, 169, 74", duration: 1600, power: .16, label: "Your attention is required", priority: 2 },
   accident: { rgb: "255, 48, 75", duration: 1350, power: .23, label: "Worker accident confirmed", priority: 3 },
@@ -13,9 +13,14 @@ export function receiptLight(before: PlayerView | null, next: PlayerView): Light
   // In this slice an incident can be paperwork or a warning, not an accident.
   if (next.losses > before.losses) return "accident";
   if ((next.phase === "decision" && before.pending?.id !== next.pending?.id) ||
-      (next.phase === "allocation" && before.phase !== "allocation")) return "attention";
+      (next.phase === "allocation" && before.phase !== "allocation") ||
+      (next.phase === "ready" && before.phase !== "ready")) return "attention";
   if (next.produced > before.produced) return "production";
   return null;
+}
+/** Presentation cadence: input and higher-priority cues create dark rest periods. */
+export function idleLightDue(now: number, lastInput: number, lastIdle: number, lastSignal: number): boolean {
+  return now - lastInput >= 12000 && now - lastIdle >= 18000 && now - lastSignal >= 6000;
 }
 export type Point = { x: number; y: number };
 export type Blocker = { x: number; y: number; width: number; height: number };

@@ -19,7 +19,6 @@ import {
   type Media,
 } from "./ConsoleParts";
 import {
-  AdviserDock,
   Debrief,
   Development,
   Dispatch,
@@ -31,10 +30,13 @@ import {
   RoomFocus,
   type Workspace,
 } from "./ConsoleWorkspaces";
+import AdviserSelection, { firstDayCandidates } from "./AdviserSelection";
+import LeadershipCall from "./LeadershipCall";
 import ThemeSettings from "./ThemeSettings";
 import { useConsoleTheme } from "./ThemeProvider";
 import { ConsoleBeacon, useConsoleSignals } from "./ConsoleSignals";
 import s from "./first-shift.module.css";
+import l from "./living-console.module.css";
 const subscribeVisibility = (listener: () => void) => {
   document.addEventListener("visibilitychange", listener);
   return () => document.removeEventListener("visibilitychange", listener);
@@ -95,6 +97,8 @@ export default function FirstShift({
     run = useRun();
   const v = run.view,
     { send, pending, error } = run;
+  const [candidate,setCandidate]=useState<string|null>(null);
+  const [openingRecord,setOpeningRecord]=useState<PlayerView|null>(null);
   const [screen, setScreen] = useState<Workspace>("factory"),
     [person, setPerson] = useState<SupervisorId>("limen"),
     [room, setRoom] = useState<RoomId>("conveyor");
@@ -141,7 +145,9 @@ export default function FirstShift({
   if (v && phase !== v.phase) {
     setPhase(v.phase);
     if (v.phase === "choose") {
-      setScreen("factory");
+      setScreen("leadership");
+      setOpeningRecord(v);
+      setCandidate(null);
       setSwap(false);
       setRetain(0);
       setConfirm(false);
@@ -248,28 +254,32 @@ export default function FirstShift({
     .at(-1);
   return (
     <main
-      className={s.shell}
+      className={`${s.shell} ${l.console}`}
       style={{ ...materialStyle(media), ...theme?.style }}
       data-theme={theme?.recipe.shell}
       data-quiet={!ticking || !effects}
       data-effects={effects}
+      data-suspended={hidden || suspended || Boolean(modal)}
+      data-phase={v?.phase}
+      data-workspace={screen}
       data-alarm={v?.phase === "decision"}
     >
-      <ConsoleBeacon active={!modal && !suspended} />
-      <header className={s.topbar}>
+      {screen !== "leadership" && <ConsoleBeacon active={!modal && !suspended} />}
+      {screen !== "leadership" && <header className={s.topbar}>
         <div className={s.dayMark}>
           <Kicker>Loopforge / Floor 01</Kicker>
           <b>
             DAY 01 <span>/ 07</span>
           </b>
+          <span className={l.phaseLabel}>{!v ? "CONNECTING TO FLOOR 01" : v.phase === "choose" || v.phase === "briefing" || v.phase === "ready" ? "PRE-SHIFT / AWAITING ORDERS" : v?.phase === "decision" ? "SHIFT HELD / DECISION" : v?.phase === "running" ? ticking ? "SHIFT IN PROGRESS" : "SHIFT PAUSED" : "END OF SHIFT"}</span>
         </div>
         {v && (
           <Instruments
             media={media}
             view={v}
             onInspect={(id) => {
-              setFact(id);
-              setModal("fact");
+              if (id === "quota") setScreen("leadership");
+              else { setFact(id); setModal("fact"); }
             }}
           />
         )}
@@ -282,7 +292,7 @@ export default function FirstShift({
             </button>
           )}
         </div>
-      </header>
+      </header>}
       {error && (
         <div className={s.error} role="alert">
           <span>
@@ -302,7 +312,7 @@ export default function FirstShift({
       >
         {v ? (
           <>
-            {screen !== "factory" && (
+            {screen !== "factory" && screen !== "leadership" && (
               <button
                 className={s.backToWall}
                 onClick={() => setScreen("factory")}
@@ -320,18 +330,12 @@ export default function FirstShift({
                     setScreen("room");
                   }}
                 />
-                <AdviserDock
-                  media={media}
-                  view={v}
-                  busy={busy}
-                  onTalk={(id) => {
-                    setPerson(id);
-                    setScreen("intercom");
-                  }}
-                  onHelp={() => openHelp()}
-                />
               </>
             )}
+            {screen === "leadership" && <LeadershipCall media={media} view={openingRecord ?? v} effects={effects} onContinue={() => setScreen("factory")} />}
+            {screen === "advisers" && <AdviserSelection selectedId={candidate} onInspect={setCandidate} media={media} candidates={firstDayCandidates(v)} busy={busy} onHelp={() => openHelp()} onAppoint={(id) => {
+              if (id === "limen" || id === "stiletto") void send({type:"choose_adviser", adviser:id});
+            }} />}
             {screen === "intercom" && (
               <Intercom
                 key={`${person}-${Boolean(v.adviser)}`}
@@ -413,7 +417,7 @@ export default function FirstShift({
           </div>
         )}
       </div>
-      {v && (
+      {v && screen !== "leadership" && (
         <footer className={s.commandRail}>
           <nav className={s.consoleNav} aria-label="Director console">
             {(["factory", "development", "records"] as const).map((id) => (
@@ -457,9 +461,17 @@ export default function FirstShift({
             </div>
             <small key={v.produced}>{v.produced} COMPLETED</small>
           </div>
-          <div className={s.primaryOrder}>
-            {v.phase === "choose" && (
-              <span className={s.nextSocket}>● ADVISER CHANNELS OPEN</span>
+          <div className={`${s.primaryOrder} ${l.order}`} data-required={(v.phase === "choose" && screen === "factory") || v.phase === "ready" || v.phase === "decision"}>
+            {v.phase === "ready" && <span className={l.orderContext}>Orders accepted · line waiting</span>}
+            {v.phase === "choose" && screen !== "advisers" && (
+              <Control tone="primary" onClick={() => setScreen("advisers")}>
+                <span className={l.callLamp} aria-hidden="true" /> Choose adviser
+              </Control>
+            )}
+            {v.adviser && screen === "factory" && v.phase !== "briefing" && (
+              <button className={l.adviserChannel} onClick={() => {setPerson(v.adviser!); setScreen("intercom");}}>
+                {v.adviser.toUpperCase()} <small>Adviser ↗</small>
+              </button>
             )}
             {v.phase === "briefing" &&
               screen !== "intercom" &&

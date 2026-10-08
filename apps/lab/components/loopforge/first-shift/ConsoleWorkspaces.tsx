@@ -23,9 +23,12 @@ import {
   type Media,
 } from "./ConsoleParts";
 import s from "./first-shift.module.css";
+import l from "./living-console.module.css";
 
 export type Workspace =
   | "factory"
+  | "advisers"
+  | "leadership"
   | "intercom"
   | "planning"
   | "room"
@@ -56,7 +59,7 @@ export function FactoryWall({
   fullFloor?: boolean;
 }) {
   return (
-    <div className={s.cameraWall} aria-label="Six factory cameras">
+    <div className={`${s.cameraWall} ${l.wall}`} aria-label="Six factory cameras">
       {ROOMS.map((room, index) => (
         <Monitor
           key={room.id}
@@ -73,71 +76,6 @@ export function FactoryWall({
         />
       ))}
     </div>
-  );
-}
-export function AdviserDock({
-  media,
-  view,
-  onTalk,
-  busy,
-  onHelp,
-}: {
-  media: Media;
-  view: PlayerView;
-  busy: boolean;
-  onTalk: (id: SupervisorId) => void;
-  onHelp: () => void;
-}) {
-  return (
-    <section
-      className={s.adviserDock}
-      aria-label={view.adviser ? "Supervisor channels" : "Choose your adviser"}
-    >
-      <div className={s.dockHeading}>
-        <Kicker>
-          {view.adviser ? "Supervisor channels" : "Choose your adviser"}
-        </Kicker>
-        <button
-          className={s.helpLink}
-          disabled={busy}
-          onClick={onHelp}
-          aria-label="Help with choosing an adviser"
-        >
-          ?
-        </button>
-      </div>
-      <div className={s.dockVoices}>
-        {view.people.map((person) => (
-          <button
-            key={person.id}
-            className={s.voiceToken}
-            disabled={busy}
-            onClick={() => onTalk(person.id)}
-            aria-label={`Talk to ${name(person.id)}`}
-            data-chosen={view.adviser === person.id}
-          >
-            <Token
-              media={media}
-              person={person.id}
-              active={view.adviser === person.id}
-            />
-            <span className={s.voiceText}>
-              <Speech key={person.remark}>{person.remark}</Speech>
-              <span className={s.voiceName}>
-                {name(person.id)}
-                <small>
-                  {view.adviser === person.id
-                    ? "TODAY’S ADVISER"
-                    : person.id === "limen"
-                      ? "PROTOCOLS / SAFETY"
-                      : "PRODUCTION / PACE"}
-                </small>
-              </span>
-            </span>
-          </button>
-        ))}
-      </div>
-    </section>
   );
 }
 export function Intercom({

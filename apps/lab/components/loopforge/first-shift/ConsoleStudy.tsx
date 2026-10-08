@@ -4,13 +4,16 @@ import { useState } from "react";
 import type { PlayerView } from "@/lib/loopforge/first-shift/contract";
 import ThemeProvider, { useConsoleTheme } from "./ThemeProvider";
 import { ConsoleBeacon, ConsoleSignals } from "./ConsoleSignals";
-import { FactoryWall, AdviserDock } from "./ConsoleWorkspaces";
+import { FactoryWall } from "./ConsoleWorkspaces";
+import AdviserSelection, {firstDayCandidates, type AdviserCandidate} from "./AdviserSelection";
 import { Control, Kicker, materialStyle, type Media } from "./ConsoleParts";
 import { THEMES, type ThemeId } from "@/lib/loopforge/first-shift/themes";
 import s from "./first-shift.module.css";
 function Study({ media, view }: { media: Media; view: PlayerView }) {
   const t = useConsoleTheme()!;
   const [full, setFull] = useState(true);
+  const [roster,setRoster]=useState(false);
+  const candidates: AdviserCandidate[] = firstDayCandidates(view).map(p=> p.available ? p : {...p, available:true, sheet:p.id as "cathexis" | "witch" | "thrum", pitch:p.id === "cathexis" ? "They need a reason to keep going." : p.id === "witch" ? "That noise is a warning. Listen to it." : "Let them find their rhythm.", priority:p.id === "cathexis" ? "Give the workers a common purpose." : p.id === "witch" ? "Stabilize the machinery." : "Relieve the strain.",gain:p.id === "cathexis" ? "A more committed workforce." : p.id === "witch" ? "Fewer unresolved mechanical faults." : "Less worker stress.", cost:p.id === "cathexis" ? "Her influence grows with their conviction." : p.id === "witch" ? "Production time spent on engineering." : "Less output and weaker discipline."});
   return (
     <main
       className={s.shell}
@@ -23,7 +26,7 @@ function Study({ media, view }: { media: Media; view: PlayerView }) {
         <div>
           <Kicker>Author composition fixture / no game commands</Kicker>
           <b>
-            {full ? "Six feeds / future density" : "Two feeds / first turn"}
+            {roster ? "Five supervisors / selection study" : full ? "Six feeds / future density" : "Two feeds / first turn"}
           </b>
         </div>
         <select
@@ -45,17 +48,11 @@ function Study({ media, view }: { media: Media; view: PlayerView }) {
         </select>
       </header>
       <div className={s.workspace}>
-        <FactoryWall media={media} view={view} fullFloor={full} />
-        <AdviserDock
-          media={media}
-          view={view}
-          busy
-          onTalk={() => {}}
-          onHelp={() => {}}
-        />
+        {roster ? <AdviserSelection media={media} candidates={candidates} study onAppoint={()=>{}} onHelp={()=>{}} /> : <FactoryWall media={media} view={view} fullFloor={full} />}
       </div>
       <footer className={s.commandRail}>
-        <Control onClick={() => setFull(!full)}>
+        <Control onClick={()=>setRoster(!roster)}>{roster ? "Camera study" : "Five-person roster"}</Control>
+        <Control onClick={() => setFull(!full)} disabled={roster}>
           {full ? "First-turn composition" : "Full-floor composition"}
         </Control>
         <span className={s.smallPrint}>

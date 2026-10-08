@@ -13,7 +13,7 @@ export function firstShiftMedia(): Record<string, ImageAsset> {
       "logo",
       imageAsset(parseManifest(identityManifest, "stepanoskin"), "logo"),
     ],
-    ...["forge", "security", "theatre", "brewery", "weaving"].map((id) => [
+    ...["forge", "security", "theatre", "brewery", "weaving", "cathexis", "witch", "thrum"].map((id) => [
       id,
       art(id),
     ]),

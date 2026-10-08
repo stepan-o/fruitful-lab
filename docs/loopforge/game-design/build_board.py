@@ -1,3 +1,4 @@
+from cinematic_console import render_cinematic_console
 from focused_console import render_focused_console
 from theme_system import render_theme_system
 from pathlib import Path
@@ -270,7 +271,7 @@ focused_console=render_focused_console()
 style_review=render_style_review(ROOT, OUT.parents[1]/'lib/assets/generated/loopforge-ui-studies.json')
 style_script='<script src="style-review.js?v='+hashlib.sha256((ROOT/'style-review.js').read_bytes()).hexdigest()[:12]+'"></script>'
 
-panels=[('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+panels=[('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 head=head.replace('</head>','<link rel="stylesheet" href="style-review.css?v='+hashlib.sha256((ROOT/'style-review.css').read_bytes()).hexdigest()[:12]+'"></head>')
@@ -456,3 +457,9 @@ for name in ["UI_DESIGN.md","GAME_DESIGN.md"]:
     target=OUT/name
     if target.exists():
         with target.open("a") as f: f.write("\n\n"+focused_contract)
+
+for contract_name in ["LIVING_CONSOLE_DIRECTION.md","CINEMATIC_INTERFACE_DIRECTION.md","LEADERSHIP_CALL_ART.md"]:
+    content=(ROOT.parent/contract_name).read_text()
+    (OUT/contract_name).write_text(content)
+    for name in ["UI_DESIGN.md","GAME_DESIGN.md"]:
+        with (OUT/name).open("a") as f: f.write("\n\n"+content)

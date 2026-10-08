@@ -1,3 +1,11 @@
+/* The viewport console does not use the site's two reserved page-scroll gutters. */
+:global(html):has(.shell) {
+  scrollbar-gutter: auto;
+  background: #040806;
+}
+:global(body):has(.shell) {
+  background: #040806;
+}
 .shell {
   --brass: #d7bb80;
   --cyan: #8ecac7;
@@ -1356,8 +1364,8 @@
     filter: brightness(1);
   }
 }
-.shell[data-quiet="true"] .feedReadout i {
-  animation: none;
+.shell[data-suspended="true"] * {
+  animation-play-state: paused !important;
 }
 .shell[data-effects="false"] * {
   animation: none !important;
@@ -2490,3 +2498,9 @@
 .shell[data-study="true"] .voiceToken:disabled { opacity: 1; cursor: default; }
 
 @media (min-width: 1700px) { .cameraWall { width: min(100%, 2100px); max-width: 2100px; } }
+
+/* Author roster study: inspect original character-sheet faces without duplicating assets. */
+.tokenFace[data-sheet] img {position:absolute;max-width:none;height:auto;object-fit:initial;transform:none;}
+.tokenFace[data-sheet="cathexis"] img {width:415%;left:-305%;top:0;margin-top:-177%;}
+.tokenFace[data-sheet="witch"] img {width:400%;left:-270%;top:0;}
+.tokenFace[data-sheet="thrum"] img {width:640%;left:-237%;top:0;margin-top:-70%;}

@@ -113,5 +113,21 @@
       "height": 145
     },
     "method": "Mechanical crop of our generated style sheet; no semantic image editing."
+  },
+  {
+    "id": "leadership-call",
+    "date": "2026-10-08",
+    "prompt": "Use case: stylized-concept. Create a new Loopforge game scene for a weekly video call with factory leadership. Use the two reference images in the conversation ONLY as material, palette, illustration and world style references. Rich hand etched painterly industrial dystopia, robot-only world, old brass, verdigris, olive black soot, warm practical amber lamps, tiny cold cyan optics. A formidable senior robot director sits behind a worn boardroom desk, two subordinate executive robots set further back on either side. The central director has a sophisticated exposed brass-caged cortex and a rigid mechanical face, expressive intimidating intelligent industrial design, not a human in armor. All robot anatomy reads distinctly mechanical. Weathered metal, intricate cabling and engraved circuit machinery, bureaucratic factory atmosphere. Cinematic medium-wide eye-level FRONT FACING communication camera looking directly toward leadership, not an isometric room map. Make the central director and hands large, readable, upper two thirds of scene; keep lower fifth dark desk texture for game captions. 1536 by 1024 landscape. Original leadership character concept, consistent with Loopforge reference artwork. No words, labels, numbers, logos, UI frames, speech bubbles or watermarks. Not cartoon, not glossy generic 3D, not anime. Serious richly textured factory game artwork.",
+    "method": "Built-in image generation; original master retained, existing immutable media pipeline supplies responsive WebP variants.",
+    "status": "Original concept for owner review; no third-party reference pixels shipped.",
+    "reference": "Original Loopforge lobby and dispatch artwork"
+  },
+  {
+    "id": "cinematic-soot",
+    "date": "2026-10-08",
+    "prompt": "Use case: stylized-concept. Production game overlay asset for Loopforge's full-screen cinematic event artwork: an uneven organic soot-and-ink vignette frame, black and very dark olive charcoal, wispy painted carbon at edges, subtle worn etched industrial grain. Landscape 1536x1024. Actual transparent alpha across the broad central 75 percent of the canvas. Asymmetric dark feathered edges, top corners a little denser, lower edge gently irregular with very small wisps. Gentle gradients into transparency, detailed natural soot fibres, cinematic tasteful almost invisible framing. No rectangles, no hard frame, no metal, no rivets, no objects, no text, no logo, no checkerboard. Only dark organic edge pigment on transparent background. It will overlay another image; keep center fully transparent and unobstructed.",
+    "method": "Built-in image generation; original master retained, existing immutable media pipeline supplies responsive WebP variants.",
+    "status": "Original concept for owner review; no third-party reference pixels shipped.",
+    "reference": "Loopforge palette and soot material direction"
   }
 ]

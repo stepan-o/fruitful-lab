@@ -2379,7 +2379,7 @@
       "rules": [
         [
           "Make the central choice visible",
-          "After Start shift, land directly in the paused factory console: opening facts and weekly quota → choose adviser → hear priority and first arrangement → accept or override → run → permanently allocate output. Put first-day context in that scene, without separate welcome and handover pages. Later days start with yesterday’s results."
+          "Start shift → cinematic weekly leadership call announcing the mandate → paused factory with compact quota and Choose adviser → dedicated roster → inspect priority/tradeoff → appoint → structured brief and placements → authorize → run → permanent allocation. Later daily reviews use yesterday’s facts; later weekly calls summarize an actual completed week."
         ],
         [
           "Say what the action means",
@@ -2464,7 +2464,7 @@
       ],
       [
         "System menu",
-        "Sound, motion/accessibility settings and leave session. A start menu now sits outside the three gameplay screens and provides Start shift, Settings and an in-memory Resume shift. All six equipment themes remain available; the author workbench can mix monitor and control families. Theme preference persists locally, but reloading starts a new first-day playtest. This menu does not add an in-fiction arrival or handover gate."
+        "Sound, motion/accessibility settings and leave session. A start menu now sits outside the three gameplay screens and provides Start shift, Settings and an in-memory Resume shift. All six equipment themes remain available; the author workbench can mix monitor and control families. Theme preference persists locally, but reloading starts a new first-day playtest. Start opens the weekly leadership call before returning to the factory. Adviser appointment remains the first meaningful choice."
       ]
     ],
     "screens": [
@@ -2788,15 +2788,15 @@
     "entry": [
       [
         "Where Start shift lands",
-        "The main factory console, paused before the first shift. Establish the illustrated room context, with Conveyor and Security available and four bays sealed. Show funds, workforce, equipment condition and weekly quota together. Nobody is assigned."
+        "The weekly leadership call fills the screen with original art and lower captions: opening factory record and new quota. Return to the paused camera wall with Conveyor and Security live and four screens off. Nobody is assigned."
       ],
       [
         "First actionable focus",
-        "Choose today’s adviser. LIMEN and STILETTO use expressive art, a short personal pitch and a clear operating tradeoff. The factory stays identifiable around the choice; decorative controls do not compete with it."
+        "Choose adviser opens a dedicated roster designed for at least five supervisors. Day one activates LIMEN and STILETTO. Short current pitches invite inspection; the selected candidate’s priority, gain and cost are visible before explicit appointment. The main wall does not repeat this content."
       ],
       [
         "Then the briefing",
-        "Selecting the adviser brings their focused illustrated briefing over the same console. Separate assessment, additional context, priority and proposed assignments. Approval or override changes named people’s work and delegated authority."
+        "Inspecting a candidate is not appointment. Appointing opens their dedicated structured brief: assessment, attributed context and priority. Proposed placements have their own workspace; authorization changes named people’s work and delegated authority."
       ],
       [
         "Then release the shift",
@@ -2804,7 +2804,7 @@
       ],
       [
         "Context without extra gates",
-        "Fold opening context into the factory and briefing. Do not send the player through a marketing-style welcome screen and a second handover screen before the first real choice. Keep development/debug explanations in author docs or optional settings."
+        "The weekly call is an in-world illustrated mandate, not a tutorial slideshow. Routine console chrome is absent. The camera wall offers summary facts; dedicated selection and briefing surfaces carry their own context. General help remains optional and recoverable."
       ]
     ]
   },

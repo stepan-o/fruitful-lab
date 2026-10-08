@@ -8,6 +8,7 @@ import type {
   SupervisorId,
 } from "@/lib/loopforge/first-shift/contract";
 import s from "./first-shift.module.css";
+import l from "./living-console.module.css";
 
 export type Media = Record<string, ImageAsset>;
 export const name = (id: SupervisorId | null | undefined) =>
@@ -114,12 +115,14 @@ export function Token({
   large = false,
   active = false,
   empty = false,
+  sheet,
 }: {
   media: Media;
   person?: SupervisorId;
   large?: boolean;
   active?: boolean;
   empty?: boolean;
+  sheet?: "cathexis" | "witch" | "thrum";
 }) {
   return (
     <span
@@ -129,13 +132,13 @@ export function Token({
       data-empty={empty}
       aria-hidden="true"
     >
-      {person && (
-        <span className={s.tokenFace}>
+      {(person || sheet) && (
+        <span className={s.tokenFace} data-sheet={sheet}>
           <Art
             media={media}
-            id={`${person}-portrait`}
+            id={sheet || `${person}-portrait`}
             sizes={
-              large
+              sheet ? (large ? "1080px" : "480px") : large
                 ? "(max-width:900px) 170px, 330px"
                 : "(max-width:900px) 90px, 150px"
             }
@@ -172,6 +175,11 @@ export function Monitor({
   const spec = ROOMS.find((r) => r.id === room)!;
   const open = fullFloor || room === "conveyor" || room === "security";
   const incident = view.pending?.room === room;
+  const roomReceipts = open ? view.events.filter(e => e.room === room &&
+    (e.kind === "production" || e.kind === "resolution")) : [];
+  const recentOrder = roomReceipts.findLast(e => e.kind === "resolution" && view.shiftTick - e.shiftTick < 5);
+  const receipt = recentOrder ?? roomReceipts.at(-1);
+  const strain = room === "conveyor" && view.condition < 75;
   const person =
     operator ??
     (open && (room === "conveyor" || room === "security")
@@ -179,12 +187,12 @@ export function Monitor({
       : undefined);
   const content = (
     <>
-      <span className={s.monitorGlass}>
+      <span className={`${s.monitorGlass} ${l.glass}`} data-powered={open} data-strain={strain}>
         {open && (
           <Art
             media={media}
             id={spec.art}
-            className={s.feedPicture}
+            className={`${s.feedPicture} ${l.picture}`}
             sizes={
               focus
                 ? "(max-width:900px) 94vw, 72vw"
@@ -196,7 +204,14 @@ export function Monitor({
         <span className={s.glassReflection} />
         {open && (
           <>
-            <span className={s.feedGrain} aria-hidden="true" />
+            <span className={`${s.feedGrain} ${l.noise}`} aria-hidden="true" />
+            <span className={l.phosphor} aria-hidden="true" />
+            <span className={l.tracking} aria-hidden="true" />
+            {!proposal && <span className={l.inspectCue} aria-hidden="true">Inspect ↗</span>}
+            {receipt && !incident && <span key={receipt.id} className={l.feedReceipt} data-kind={receipt.kind}>
+              <small>{receipt.kind === "production" ? "OUTTAKE CONFIRMED" : `${receipt.actor === "director" ? "DIRECTOR" : receipt.actor === "factory" ? "FACTORY" : name(receipt.actor)} · ORDER FILED`}</small>
+              <b>{receipt.title}</b>
+            </span>}
             <span className={s.feedReadout}>
               <span>
                 <i /> {view.phase === "running" ? "REC" : "LIVE"} · 0{index + 1}
@@ -218,7 +233,7 @@ export function Monitor({
           </>
         )}
       </span>
-      <span className={s.monitorHousing} />
+      <span className={`${s.monitorHousing} ${l.housing}`} />
       <Tape className={s.roomTape}>{spec.title}</Tape>
       {open && !focus && (
         <span className={s.monitorSocket}>
@@ -229,21 +244,23 @@ export function Monitor({
   );
   return onOpen && open ? (
     <button
-      className={s.monitor}
+      className={`${s.monitor} ${l.monitor}`}
       onClick={onOpen}
       data-open={open}
       data-attention={incident}
       data-focus={focus}
+      style={{ "--feed-delay": `${index * -5.7}s` } as CSSProperties}
       aria-label={`${spec.title} · ${proposal ? "change proposed assignment" : "open camera"}`}
     >
       <span className={s.monitorStage} data-light-frame>{content}</span>
     </button>
   ) : (
     <div
-      className={s.monitor}
+      className={`${s.monitor} ${l.monitor}`}
       data-open={open}
       data-attention={incident}
       data-focus={focus}
+      style={{ "--feed-delay": `${index * -5.7}s` } as CSSProperties}
       role="img"
       aria-label={
         open ? `${spec.title} camera` : `${spec.title}, unpowered camera`
@@ -285,7 +302,7 @@ export function Instruments({
     {
       id: "quota",
       icon: "delivery-relief",
-      title: "Week 01",
+      title: "Weekly quota",
       value: `${view.committed} / ${view.quota}`,
     },
   ];
@@ -295,6 +312,7 @@ export function Instruments({
         <button
           key={item.id}
           className={s.instrument}
+          data-instrument={item.id}
           onClick={() => onInspect?.(item.id)}
           aria-label={`${item.title}: ${item.value}. Inspect`}
         >

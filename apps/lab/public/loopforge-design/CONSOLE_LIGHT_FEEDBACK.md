@@ -8,10 +8,10 @@ Rotations fire as bounded impulses. Between impulses, no beam or coloured glare 
 
 | Trigger | Colour | Behaviour |
 | --- | --- | --- |
-| No player input for 45 seconds | Light cyan | One slow 2.4-second revolution. At most once per 90 seconds of continued inactivity. |
+| No click/key input for 12 seconds | Light cyan | One slow 2.8-second revolution. At most once per 18 seconds, at least 6 seconds after another signal. Pointer movement does not continually postpone it. |
 | New production confirmed | Green | One 1.15-second sweep. Several units in the same receipt share one impulse. |
 | Accident confirmed | Strong red | One 1.35-second sweep; takes priority over lower signals. |
-| Choice or event requiring attention | Ember / amber | One 1.6-second sweep when the request arrives. The decision remains labelled after the light extinguishes. |
+| Choice or event requiring attention | Ember / amber | One 1.6-second sweep when the request arrives. The decision remains labelled after the light extinguishes. Orders accepted also lights the ready-to-start control. |
 
 These timings and intensity values are initial presentation tuning, not simulation constants. Repeated lower-priority signals are coalesced during the current sweep and one second of darkness. Accident outranks attention, which outranks production, which outranks idle. No replay of old lights when reopening a menu, restoring a projection, changing theme or switching interfaces.
 
@@ -25,7 +25,7 @@ One lightweight Canvas 2D surface draws the stage-wide sweep. Raised corner fitt
 
 Geometry is measured once at the start of an impulse. Scroll or resize ends the current effect rather than continuing with stale geometry; the next impulse measures again. Maximum canvas width is 1280 logical pixels, maximum 32 fittings, and drawing is capped around 30 fps. No per-frame React state or simulation work. Between impulses no animation frame is scheduled. Hidden pages stop drawing.
 
-Every gameplay screen shares the console-mounted source. The menu and modal settings have their own visible mount using the same language. An inactive or covered surface does not draw. Sound and readable text still communicate consequences independently.
+Console workspaces share the mounted source. Full-screen cinematic leadership calls deliberately hide the entire console and source. The menu and modal settings have their own visible mount using the same language. An inactive or covered surface does not draw. Sound and readable text still communicate consequences independently.
 
 ## Accessibility and review
 

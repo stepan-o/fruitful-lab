@@ -39,3 +39,10 @@ There is another possibility here for a game maker: build part of the route to t
 Evidence: valve-history, valve-about, valve-deck-booklet.
 
 Evidence boundary: Sony’s February 2021 earnings presentation, printed pages 7–8, describes the PS5 launch quarter ending December 2020: hardware priced below manufacturing cost, higher gaming-segment operating income and the contribution of software and network services. This is a historical segment result, not a claim about current hardware margins, a measured lifetime return per console or Cyberpunk’s contribution to those profits. The current diagrams use Cyberpunk across PC, PlayStation, Xbox and NVIDIA routes; these are not all versions of one transferable purchase. CD PROJEKT performs both development and publishing. Console catalog access does not supply a Windows PC entitlement for GeForce NOW. Sony’s and Microsoft’s catalog agreements are distinct; only CD PROJEKT’s account of the Sony deal is discussed. Nowakowski’s quotation is the complete opening sentence of his answer to question 5 in the Q3 2025 earnings transcript (PDF page 6, 18 words). His judgment of the deal’s return and expansion opportunity is management’s assessment, not an independently measured causal effect. No contract amount, commission rate, internal transfer price or per-play payment is inferred. The relationship between audience appeal and the surrounding businesses is our economic interpretation. Distribution helps establish the commercial context for later design analysis; it does not determine one game design.
+
+## PlayStation historical exhibit
+
+The Sony FY2016–FY2025 revenue and operating-profit charts follow the first
+paragraph (zero-based paragraph 0), before “A game’s appeal can help sell other
+products.” See [dataset, definitions and sources](SONY_FINANCIAL_HISTORY.md).
+The chart is an inserted exhibit; this manuscript’s prose is unchanged.

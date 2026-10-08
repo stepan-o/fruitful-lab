@@ -1,3 +1,10 @@
+Sanctuary PlayStation history (2026-10-08): chapter 2 adds the typed `sony-history`
+exhibit immediately after paragraph 0. Original interactive charts show Sony G&NS
+revenue by broad category and operating profit for FY2016–FY2025, with separately
+labeled scales, source-backed milestones, fiscal/accounting boundaries and exact
+data. No new asset pack or runtime dependency. Dataset and methodology:
+`docs/sanctuary/SONY_FINANCIAL_HISTORY.md`. The chapter prose remains unchanged.
+
 Sanctuary chapter 2 editorial revision (2026-10-08): the current narrative follows
 one creative work supporting connected businesses, through Sony’s early PS5
 hardware losses and CD PROJEKT’s Cyberpunk catalog deal. Both diagrams open their

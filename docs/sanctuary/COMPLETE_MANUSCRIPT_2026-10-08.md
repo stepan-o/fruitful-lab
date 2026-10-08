@@ -34,6 +34,8 @@ In the first months after the PlayStation 5 launched in November 2020, Sony was 
 
 Evidence: sony-ps5-launch-economics.
 
+Exhibit: Sony’s FY2016–FY2025 revenue and operating-profit history. See [sources and methodology](SONY_FINANCIAL_HISTORY.md).
+
 A game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it. The publisher sells copies, while the hardware maker and catalog operator earn from different purchases connected to the same work.
 
 Cyberpunk 2077, a game sold for PCs and consoles, lets us follow those relationships through one work. CD PROJEKT RED, the studio that makes and publishes it, pays for the development team and brings the finished work to market through launch campaigns and store agreements. Selling it through Steam, the PC store operated by Valve, brings another business into the arrangement. Valve provides the shop, checkout and downloads, then pays CD PROJEKT its agreed share after adjustments such as refunds and taxes. Buy through PlayStation Store instead, and Sony occupies that position while also supplying the console on which the game runs.

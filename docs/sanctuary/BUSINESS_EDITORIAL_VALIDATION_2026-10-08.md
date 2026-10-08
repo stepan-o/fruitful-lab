@@ -21,7 +21,9 @@ the Q3 2025 earnings transcript (PDF page 6). The deal’s return and expansion
 opportunity are management’s assessment. No private rate, contract amount,
 per-play payment or measured causal sales effect is invented.
 
-The promotional image follows paragraph 4; the market map follows paragraph 5
+The Sony FY2016–FY2025 history exhibit follows paragraph 0. Its original charts
+separate revenue by category from operating profit, with interactive years,
+release/business milestones, source links and reporting boundaries. The promotional image follows paragraph 4; the market map follows paragraph 5
 (zero-based). Both manuscripts match every runtime paragraph and all citation
 IDs resolve. The close leads into Valve’s expansion from making games into
 distribution and hardware.
@@ -34,7 +36,7 @@ first diagram retains its arcade opening as the continuation from chapter 1.
 
 ## Verification
 
-- Full app CI passes: 65 suites, 335 tests, one snapshot, asset checks and the
+- Required app checks pass: 66 suites, 339 tests, one snapshot, asset checks and the
   Next.js production build. All 22 retained asset releases verify.
 - Scoped ESLint and whitespace checks pass. Updated interaction regressions
   verify fixed game/studio/publisher identity, store settlements, separate game
@@ -61,3 +63,30 @@ The established bounded editorial-use decision remains. Attribution and source
 availability are not represented as a blanket licence. No new third-party art
 was introduced by the latest chapter 2 revision. The retired Half-Life gameplay
 record remains for provenance and is omitted from the chapter’s visual index.
+
+## Sony history exhibit verification
+
+`sony-history` is a typed inline exhibit; only chapter 2 requests it, after its
+first paragraph. The prose and approved first chapter are unchanged. Financial
+sources, transformations and event annotations are recorded in
+[Sony financial history](SONY_FINANCIAL_HISTORY.md).
+
+- Final suite: 66 suites / 339 tests / one snapshot; all pass. Asset validation
+  verifies all 22 retained releases. Scoped lint and whitespace checks pass.
+- Both revenue and profit have zero-based, separately labeled scales. Selecting
+  a year highlights both; category highlighting preserves the total context.
+  Source figures reconcile within published rounding and match the existing
+  latest-year exhibit. No early add-on split is invented. FY2020 uses the IFRS
+  restatement; off-platform software is harmonized explicitly.
+- Local production browser checks at 1280, 768, 390 and 320 CSS pixels: no page
+  overflow; native keyboard controls, year picker, category highlight, milestone
+  selection and disclosure work. Every chart button meets the 44px target.
+  Mobile axes remain fixed while the year columns scroll inside the panel.
+- The exact-source table and accounting/category notes remain accessible in a
+  disclosure. Source links stay with the historical interpretation they support.
+- React review: static ten-row dataset, event-driven state, scoped DOM scroll,
+  dynamically imported component. No new dependency, image/audio asset,
+  continuous animation, observer or external data request. Field performance
+  has not been measured; no Core Web Vitals claim is made.
+
+Final standalone production build exited successfully after the mobile axis-label spacing refinement.

@@ -22,7 +22,7 @@ export type Panel = {
   items: { label: string; text: string }[];
   flow?: boolean;
 };
-export type InlineExhibit = { afterParagraph: number; kind: "market-map" | "world-workshop" | "epic-spending" | "gathering-place" | "business-layers" | "platform-revenue" | "cloud-figures" | "audience-economy" | "chapter-diagram" | "funding" };
+export type InlineExhibit = { afterParagraph: number; kind: "sony-history" | "market-map" | "world-workshop" | "epic-spending" | "gathering-place" | "business-layers" | "platform-revenue" | "cloud-figures" | "audience-economy" | "chapter-diagram" | "funding" };
 export type Chapter = {
   id: string;
   visual: VisualSpec;

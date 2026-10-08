@@ -1,0 +1,33 @@
+{
+  "dpr": 1,
+  "height": 844,
+  "images": [
+    {
+      "src": "http://localhost.:3189/media/files/b6e7a3ca25b1fa8c6f9c482602057bc78761dd0128fe6e8beb05e374ebfbf6ed.webp",
+      "w": 31
+    },
+    {
+      "src": "http://localhost.:3189/media/files/9d9f1ecccdde455a197f44e7ffa6d77521cce364f4c0dd34140bab34bc0866dc.webp",
+      "w": 31
+    },
+    {
+      "src": "http://localhost.:3189/media/files/2741c4f651d7cfa2a3fa0d65fc78b3d954148fe053d86b9cc1db56248c072d2e.webp",
+      "w": 31
+    },
+    {
+      "src": "http://localhost.:3189/media/files/792a58608743384fd8b625f141302deefb964c3b2ad6881c2fd55fe763894561.webp",
+      "w": 314
+    },
+    {
+      "src": "http://localhost.:3189/media/files/07a7a6f28b8aa1232a92fc9a20ab9306cf6af3f3cf4e447555b1818014c80719.webp",
+      "w": 142
+    },
+    {
+      "src": "http://localhost.:3189/media/files/8a41271075dc9847956aa2d7436166e72d6ffc2cb750dfc63f5fe08b66c97db6.webp",
+      "w": 142
+    }
+  ],
+  "scroll": 370,
+  "smallButtons": [],
+  "width": 390
+}

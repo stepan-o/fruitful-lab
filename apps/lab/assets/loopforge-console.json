@@ -1,0 +1,139 @@
+{
+  "pack": "loopforge-console",
+  "assets": {
+    "limen-portrait": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/limen-portrait.webp",
+      "widths": [
+        240,
+        480,
+        720
+      ],
+      "quality": 84,
+      "maxBytes": 500000
+    },
+    "stiletto-portrait": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/stiletto-portrait.webp",
+      "widths": [
+        240,
+        480,
+        720
+      ],
+      "quality": 84,
+      "maxBytes": 500000
+    },
+    "monitor-frame": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/monitor-frame.webp",
+      "widths": [
+        768
+      ],
+      "quality": 88,
+      "maxBytes": 500000
+    },
+    "button-rest": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/button-rest.webp",
+      "widths": [
+        600
+      ],
+      "quality": 88,
+      "maxBytes": 500000
+    },
+    "button-hover": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/button-hover.webp",
+      "widths": [
+        600
+      ],
+      "quality": 88,
+      "maxBytes": 500000
+    },
+    "button-pressed": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/button-pressed.webp",
+      "widths": [
+        600
+      ],
+      "quality": 88,
+      "maxBytes": 500000
+    },
+    "instrument-plate": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/instrument-plate.webp",
+      "widths": [
+        1024
+      ],
+      "quality": 85,
+      "maxBytes": 500000
+    },
+    "gunmetal": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/gunmetal.webp",
+      "widths": [
+        384
+      ],
+      "quality": 80,
+      "maxBytes": 500000
+    },
+    "glass": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/glass.webp",
+      "widths": [
+        640
+      ],
+      "quality": 78,
+      "maxBytes": 500000
+    },
+    "grain": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/grain.webp",
+      "widths": [
+        192
+      ],
+      "quality": 65,
+      "maxBytes": 500000
+    },
+    "funds-icon": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/funds-icon.webp",
+      "widths": [
+        72,
+        144
+      ],
+      "quality": 85,
+      "maxBytes": 500000
+    },
+    "worker-icon": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/worker-icon.webp",
+      "widths": [
+        72,
+        144
+      ],
+      "quality": 85,
+      "maxBytes": 500000
+    },
+    "signal-icon": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/signal-icon.webp",
+      "widths": [
+        72,
+        144
+      ],
+      "quality": 85,
+      "maxBytes": 500000
+    },
+    "condition-icon": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-console/condition-icon.webp",
+      "widths": [
+        72,
+        144
+      ],
+      "quality": 85,
+      "maxBytes": 500000
+    }
+  }
+}

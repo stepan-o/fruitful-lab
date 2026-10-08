@@ -1,0 +1,105 @@
+{
+  "title": "Loopforge / Neural Diagnostics",
+  "status": "Review alternative only; not selected or implemented",
+  "date": "2026-10-08",
+  "generator": "Built-in image_gen.imagegen",
+  "mode": "Reference-informed stylized-concept generation",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": "3:2"
+  },
+  "originalGeneratedPath": "/home/stpn/.codex/generated_images/01a11b97-e5ee-7f52-9ff1-950d02c2ec07/exec-802b489d-0048-4490-9076-5e66153df9eb.png",
+  "selectedMasterPath": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/alternatives/neural-diagnostics.png",
+  "prompt": "Use case: stylized-concept\nAsset type: ONE professional Loopforge camera-console art-direction sheet for review, landscape 3:2, 1536 x 1024 composition.\nPrimary request: Create a distinct NEURAL DIAGNOSTICS visual alternative: unsettling old electrophysiology and surgical equipment transformed into the control apparatus of Loopforge's brain factory. Cracked aged porcelain and off-white enamel panels over black steel, thick smoked glass, dirty bone paper, exposed dark copper seams, narrow cool-cyan indicator lamps, highly restrained surgical red. Clinical apparatus degraded through years of use. Authored, serious, physical and recognizably Loopforge. One sheet only.\n\nInput images and roles:\nImage 1, LIMEN character sheet: identity reference. Preserve his cracked mechanical skull, exposed mechanical teeth, hollow nose, cyan eyes, layered dark gunmetal face and cable neck.\nImage 2, STILETTO character sheet: identity reference. Preserve the closed smooth angular armored helmet and single continuous red T-shaped visor. No mouth, no skull, no exposed human face.\nImage 3, CATHEXIS character sheet: material/painting reference only. Study cracked porcelain over mechanical construction and dense realistic etched/painterly finish. Do not add Cathexis to this sheet.\nImage 4, forge painting: world/detail reference only, the oppressive crafted mechanical world and purposeful physical wear. Do not paint this room into the monitor.\nImage 5, baseline style sheet: object/function inventory reference only. Preserve useful overview of off camera monitor, two character sockets with attached blank speech balloons, commit control, four resource icons and material studies. Develop NEW bone-enamel/copper clinical equipment, not its black/brass palette.\n\nComposition: A dark coal/green-black textured backing, clear aligned professional sheet layout with calm gutters. Large front-on off camera monitor dominates upper-left. Lower-left holds two portrait socket assemblies, each with its own attached quiet BLANK dirty-bone speech balloon that has a short obvious pointer toward its speaker. Right side holds 7 authored palette swatches, three large close material studies, one matching commit control and the four resource icon concepts. Use real physical object depth with coherent shallow perspective; no arbitrary rotated elements. All objects fully in frame. Leave enough negative space for readable controls and labels; detail follows construction, not random greebles.\nMonitor: squarish thick smoked convex glass, entirely OFF, black with only restrained top-left soft reflection. No room, scene, figure, blue screen, display graphics, scan lines, powered noise, text inside glass or LOCKED badge. Outer housing is aged warm off-white enamel and fractured ceramic plates with dark exposed steel under chipped edges. Dark-copper seams and thin copper fasteners. One narrow cyan edge lamp belongs to the chassis, NOT the glass. Along the housing below the glass, worn adhesive tape bears the exact words \"LATTICE FORGE\", hand-written in dark pen by a messy guard, slightly uneven hurried capitals but unmistakably legible. Spell exactly L A T T I C E  F O R G E.\nPortrait sockets: LIMEN and STILETTO head-and-neck busts faithful to images 1 and 2, realistic painted metal, dark circular smoked-glass recesses set within chipped bone-enamel fittings and black iron collars. Enamel/screw/gasket construction visibly matches the monitor. Nameplates read \"LIMEN\" and \"STILETTO\". Portraits retain the original cast's identities, not generic robots. Speech balloons are blank and quiet, not text cards; no example dialogue.\nControl: broad tactile recessed deep surgical-red pushbutton in black steel under a chipped bone-enamel surround, labeled \"COMMIT\" on the stationary faceplate. Clearly purposeful, sober and pressable.\nFour resource icon concepts: coherent relief/enamel physical inset tiles with dark-copper/black marks: stacked exchange tokens for FUNDS; unmistakable small mechanical robot head for WORKFORCE; belt rollers plus cog for CONDITION (conveyor condition); outbound shipment crate for DELIVERY (weekly delivery). Short exact labels only. No numeric values, gauges or fake readouts. Each distinct at small size.\nPalette swatches: coal black, smoked blue-black, oxidized copper, aged bone enamel, dirty bone paper, desaturated cool cyan, deep surgical red. Material closeups: fractured ENAMEL, black reflective GLASS, oxidized COPPER. Tiny compact uppercase technical type in neutral bone, letterpress or utilitarian engraved labeling.\nText: title at top \"LOOPFORGE / NEURAL DIAGNOSTICS\"; tape \"LATTICE FORGE\"; character names \"LIMEN\", \"STILETTO\"; material labels \"ENAMEL\", \"GLASS\", \"COPPER\"; control \"COMMIT\"; four resource labels \"FUNDS\", \"WORKFORCE\", \"CONDITION\", \"DELIVERY\". No other prose.\nStyle/medium: same dense realistic etched/painterly material fidelity as original cast, controlled brushwork, fine abrasions, crazing, porcelain chips, heavy rubber gaskets and tarnished hardware. Not a 3D toy or cartoon. Neither white website nor clean modern hospital. No olive military-hardware palette, no yellow-brass steampunk ornament.\nLighting: one soft top-left keylight drives all metal edges, reflection and shadows. Cyan and red are restrained local emissive accents; shadows coherent. Contrast preserves object silhouettes and usable reading areas.\nAvoid: borrowed franchise artwork, medical logos, crosses, physiological gauges, ECG traces, brain/stress/loyalty meters, hidden-state readouts, tutorial text, fake data, currency amounts, hazard decoration, gore, room scenes inside the OFF monitor, gradients masquerading as interface, watermark.",
+  "references": [
+    {
+      "path": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/limen_character_sheet_1.png",
+      "role": "LIMEN identity reference"
+    },
+    {
+      "path": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/stiletto_character_sheet_1.png",
+      "role": "STILETTO identity reference"
+    },
+    {
+      "path": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/cathexis_character_sheet_1.png",
+      "role": "Cracked porcelain and painterly material reference only; character excluded"
+    },
+    {
+      "path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge/forge.webp",
+      "role": "Loopforge world/material density reference; no room inside monitor"
+    },
+    {
+      "path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/style-sheet.png",
+      "role": "Baseline object inventory and sheet-organization reference; palette deliberately changed"
+    }
+  ],
+  "palette": [
+    {
+      "name": "Coal black",
+      "hex": "#111819",
+      "role": "Backing, chassis and mechanical recesses"
+    },
+    {
+      "name": "Smoked blue-black",
+      "hex": "#263035",
+      "role": "Unpowered glass and cool cast shadows"
+    },
+    {
+      "name": "Oxidized copper",
+      "hex": "#80573C",
+      "role": "Exposed seams, connectors and restrained edge wear"
+    },
+    {
+      "name": "Aged bone enamel",
+      "hex": "#CFC5AD",
+      "role": "Main equipment panels and fittings"
+    },
+    {
+      "name": "Dirty bone paper",
+      "hex": "#BEB196",
+      "role": "Tape labels and speech balloons"
+    },
+    {
+      "name": "Desaturated cool cyan",
+      "hex": "#71BCC3",
+      "role": "Narrow chassis lamp and Limen eyes"
+    },
+    {
+      "name": "Surgical red",
+      "hex": "#87322E",
+      "role": "Commit button; brighter localized Stiletto visor"
+    }
+  ],
+  "paletteNote": "Authored direction targets, not measured samples or final runtime accessibility tokens.",
+  "fontProposal": {
+    "instrumentLabels": "Narrow utilitarian sans-serif capitals with squared terminals, moderate tracking; engraved or stamped finish restricted to large static labels.",
+    "liveReadingText": "Plain humanist sans-serif, medium weight, normal case, clean without distress. Final family should use existing self-hosted project fonts or a reviewed compact subset.",
+    "tapeLabels": "Original irregular dark-pen handwritten capitals; image treatment only for fixed room names, with a matching accessible DOM label in a future implementation.",
+    "rationale": "Compact instruments retain apparatus character while dialogue and operational labels stay readable."
+  },
+  "rationale": "Worn ivory enamel gives the brain factory a disquieting clinical origin, linked to Cathexis's porcelain construction. Black smoked glass keeps sealed rooms truly unreadable. Copper links machine anatomy to the factory without brass ornament. The cast's dark recognizable faces remain strong against their pale fittings.",
+  "tradeoffs": [
+    "Pale enamel increases immediate silhouette and label contrast but can dominate a six-camera wall; larger implementation should reduce repetitive edge damage and preserve dark reading gutters.",
+    "Fine cracks and screws reward close inspection but must be simplified for phone-size components.",
+    "Speech balloons are intentionally blank and compact in this style sheet; actual live dialogue needs separate responsive sizing and semantic text.",
+    "The DELIVERY concept shows a crate; the weekly deadline needs an adjacent factual text label in an implementation.",
+    "This sheet defines material and component language, not a complete gameplay layout, final font choice or production-ready asset atlas."
+  ],
+  "validation": {
+    "inspected": true,
+    "offMonitor": "Pass: black glass with restrained reflection; no room, powered noise, badge or display text.",
+    "tapeLabel": "Pass: LATTICE FORGE legible in irregular dark handwritten capitals.",
+    "identities": "Pass: LIMEN skull/cyan eyes; STILETTO closed angular red T visor.",
+    "speech": "Pass: separate attached blank quiet speech balloons.",
+    "resources": "Pass: four distinct resource concepts; no numbers, psychological gauges or fake readouts.",
+    "lighting": "Pass: coherent top-left keylight and restrained local emissive accents.",
+    "revisions": 0,
+    "concerns": [
+      "Very dense enamel crazing may need simplification at UI sizes.",
+      "Copper hardware trends slightly warm; retain dark oxidized copper rather than yellow brass during implementation."
+    ],
+    "codeTests": "Not applicable: artwork and provenance only; no code/runtime changed."
+  },
+  "sha256": "d9482e3e8d0bb3a73372fb465609a77339a428eba3fcc6b100b2c20a64371b81"
+}

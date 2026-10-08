@@ -1,0 +1,13 @@
+Use case: precise-object-edit.
+Create a faithful clean runtime backplate from this EXACT broadcast-console Loopforge reference. Preserve exact frame size, 16:9 crop, perspective, proportions, all hero-object geometry and locations, the straight broad screen, sloping lower control face, black Bakelite telephone and cradle, five supervisor keys, speaker grille, aged cream enamel and black metal. Preserve the meticulous practical-prop photographic style and original wear. Do not recompose or redesign the console.
+
+Targeted clean-plate changes only:
+- All SIX camera apertures must be completely empty, deep black, with NO camera scene imagery, text, labels, numbers, icons or symbols. Preserve the existing 3-column by 2-row layout and thin divider lines. The screen must read as six off panes in one shared black-glass window.
+- Remove EVERY baked word, logo, letter, number, glyph and slogan from every surface, including LOOPFORGE / PRODUCER, LEADERSHIP, SUPERVISORS, RECEIVE CALL, key numerals, LOCKED, INTERNAL COMMS STAND BY, all slogans, and all tape inscriptions. Leave their underlying physical texture unchanged. Keep all existing paper tapes as entirely BLANK worn paper.
+- Remove the transparent locked cover and its locking guard/hardware from above the five supervisor keys. Expose all FIVE keys so they are physically accessible. Keep these five keys in their exact original positions and dimensions, now completely blank.
+- Replace the glowing RECTANGULAR warning lamp assembly in the existing top-left shoulder area directly above the telephone with ONE small native recessed CIRCULAR amber-glass beacon lens in that same region. It must be dark and unlit, low-profile, realistically integrated into the metal shoulder. Keep the new beacon small enough to fit the existing region without moving anything else.
+- Turn EVERY indicator completely OFF. No emitted light, no red/orange glow, no signal flare, no residual cast colored light on the phone, glass, plate or panel. Preserve only neutral ambient specular reflections.
+- Add one very thin native blank instrument strip in the existing blank lower face, below the supervisor keys, without moving any hero objects. The strip has four small unlit dark rectangular odometer windows, without digits, labels or icons; semantic metrics will be overlaid later.
+- Keep the telephone handset in its cradle at exactly the same position, scale and angle. Retain the coiled cord and all other functional structural elements.
+
+This is production background artwork onto which live video and semantic UI controls will be composited. No text of any kind and no active lighting/effects baked into the image. One full-stage opaque landscape clean backplate only.

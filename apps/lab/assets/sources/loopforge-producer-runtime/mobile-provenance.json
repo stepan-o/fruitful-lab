@@ -1,0 +1,26 @@
+[
+  {
+    "skin": "foundry-desk",
+    "source": "/home/stpn/.codex/generated_images/01a11cdb-b03e-71b2-a6f8-340714142a83/exec-1275b9e0-3f64-4fba-8aea-2ff7eb06006a.png",
+    "sha256": "f0371919de1f52a1d118647530c1f15818bae4d734aa883cdc0e828745efd9e0",
+    "method": "Built-in imagegen adaptation of the matching wide runtime plate. No baked state; readouts, feeds and controls overlaid by responsive UI."
+  },
+  {
+    "skin": "dispatch-office",
+    "source": "/home/stpn/.codex/generated_images/01a11cdb-b03e-71b2-a6f8-340714142a83/exec-8a1d1c67-b4c1-4f32-8459-788f99eecb07.png",
+    "sha256": "c69e9c9d2ae0977aa2e48257df07fd94485951f5b8b4117499288d526ef7ba21",
+    "method": "Built-in imagegen adaptation of the matching wide runtime plate. No baked state; readouts, feeds and controls overlaid by responsive UI."
+  },
+  {
+    "skin": "obedience-organ",
+    "source": "/home/stpn/.codex/generated_images/01a11cdc-3331-7c61-bfbe-9635d2b5ccb6/exec-86c08fdc-ac59-44b1-8018-66d53cd6e8fc.png",
+    "sha256": "e5c45dea5f15f9f8fe998160b3b8a3326575950bbcecb06b240a234b8c31b648",
+    "method": "Built-in imagegen adaptation of the matching wide runtime plate. No baked state; readouts, feeds and controls overlaid by responsive UI."
+  },
+  {
+    "skin": "broadcast-control",
+    "source": "/home/stpn/.codex/generated_images/01a11cdc-3331-7c61-bfbe-9635d2b5ccb6/exec-cb181286-0427-4f9d-8eaf-895e1aa56a02.png",
+    "sha256": "cdf3faf0d59bf88d74161a831be58e3b0ef15e69ed14f6bc125329aecc13eece",
+    "method": "Built-in imagegen adaptation of the matching wide runtime plate. No baked state; readouts, feeds and controls overlaid by responsive UI."
+  }
+]

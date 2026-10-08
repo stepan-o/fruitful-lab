@@ -1,0 +1,139 @@
+{
+  "id": "broadcast-desk",
+  "title": "Loopforge / Broadcast Desk",
+  "status": "Alternative art-direction exploration for owner review; not selected, implemented, or a production asset kit",
+  "date": "2026-10-08",
+  "scope": "Loopforge camera console",
+  "generator": {
+    "mode": "built-in image_gen",
+    "transparent_background": false,
+    "calls": 2
+  },
+  "output_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/alternatives/broadcast-desk.png",
+  "provenance_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/alternatives/broadcast-desk.json",
+  "references": [
+    {
+      "path": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/limen_character_sheet_1.png",
+      "role": "Character identity reference: LIMEN cracked mechanical skull, cyan optics"
+    },
+    {
+      "path": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/stiletto_character_sheet_1.png",
+      "role": "Character identity reference: STILETTO closed red T-visor helmet"
+    },
+    {
+      "path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge/forge.webp",
+      "role": "Factory material and lighting reference, not copied as room content"
+    },
+    {
+      "path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge/security.webp",
+      "role": "Industrial equipment and operator wear reference, not copied as room content"
+    },
+    {
+      "path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/style-sheet.png",
+      "role": "Functional ingredient reference; an alternative material and form language was requested"
+    }
+  ],
+  "source_basis": "Existing project images supplied for this task. No third-party artwork or external broadcast photograph was incorporated. This record documents task inputs, not an independent copyright audit of older project files.",
+  "prompts": [
+    {
+      "kind": "generate",
+      "use_case": "stylized-concept",
+      "prompt": "Use case: stylized-concept\nAsset type: One original Loopforge camera-console art-direction authoring board, landscape 3:2. This is an alternative concept exploration called BROADCAST DESK, not a finished game screen. Deliver a cohesive, beautiful, premium industrial concept art sheet, rendered with detailed materially credible realism.\n\nInput references, all project-owned visual direction:\n1 LIMEN character sheet: preserve the exact cracked mechanical skull construction, bony cheek silhouette, mechanical jaw/teeth and restrained cyan eyes.\n2 STILETTO character sheet: preserve the closed dark metallic helmet, continuous red-orange T-shaped visor, sharp swept brow and narrow chin. No exposed human face.\n3 forge room: use its worn factory credibility, heavy material surfaces and restrained amber light; do not reproduce any room scene.\n4 security room: use the industrial operator equipment and accumulated physical wear; do not reproduce the room or signage.\n5 existing camera style sheet: preserve the functional ingredient list ONLY. Deliberately choose a DIFFERENT material and shape language: late analogue broadcast control room and patchbay, black ribbed CRT casings, aged ivory instrument keys, oxidized steel, smoked glass, grease-pencil/tape. Avoid the baseline's brass ornament and circular medallions.\n\nComposition: A carefully spaced 3:2 landscape authoring board on a very dark charcoal matte drafting surface. Crisp, large readable headings with strong graphic hierarchy; artwork fills the board without clutter. One large FRONT-ON CRT monitor occupies the upper left and is the unmistakable focal object. Right upper section contains a restrained palette strip and four excellent large macro material samples. Along the lower third, two equal-size supervisor intercom-token concepts with attached blank speech bubbles sit to the left; one commit control and four matching resource icon studies sit to the right. Nothing overlaps unintentionally or is cropped by the page. All equipment uses the same front-on perspective and soft upper-left workshop key light, shallow depth and believable contact shadows. This is one art-direction board, not a collage of borrowed artwork.\n\nMonitor: square/rectangular ribbed black molded housing, thick corner radii and horizontal ventilation ribs, simple worn steel mount, rubber seals, dark oxidized screw heads. Lower bezel has a short row of aged ivory rectangular instrument keys, a few small dark patch sockets and an unlit power indicator. The camera monitor is SWITCHED OFF: the entire glass is EMPTY near-black smoked reflective glass, with a very faint broad reflected softbox highlight confined to the upper edge. No recognizable room reflection, no room picture, no machinery, no interior silhouette, no glow, no static, no scan lines, no LOCKED badge, no numbers, no waveform, no screen text. It is deeply quiet black glass. A worn cream adhesive tape strip is stuck to the physical lower bezel BELOW the glass, handwritten in black pen exactly \"LATTICE FORGE\". Messy hurried security-guard capitals, uneven pressure and baseline but instantly legible; torn fibres and thumb grime at its margins. Keep the working glass clean and spacious; concentrated wear at seams and handling points. No brass baroque filigree, no decorative skulls on the monitor.\n\nMaterial sample group: four close-up square samples of ribbed black housing; smoked reflective glass edge; oxidized steel; aged ivory instrument key with cream tape at the corner. Small restrained swatches for near-black charcoal, blue-black, neutral steel, aged ivory, amber, muted cyan, red-orange. No chemical or numeric labels. Labels exactly \"RIBBED CASE\", \"SMOKED GLASS\", \"STEEL\", \"IVORY\". The visual palette is black charcoal #141716, smoke #232C2C, steel #62665F, ivory #D5CCAA, restrained amber #D9913F; character-specific cyan #8BD2D6 and red #E04F37 only in small accents.\n\nSupervisor tokens: two substantial rounded-square removable intercom cartridges in the same ribbed-black and oxidized-steel material language, NOT circular brass medallions. Equal hierarchy and physical size. One portrait of LIMEN and one portrait of STILETTO, chest-up, faithfully retaining reference identities and the serious dense industrial rendering. A modest ivory name plate under each portrait reads exactly \"LIMEN\" or \"STILETTO\". Each token has its OWN generous cream/ivory speech bubble plate visibly attached by a short angled tail pointing to that portrait. The two speech bubble interiors are completely blank, calm, light, smooth, and large enough for later native dynamic text. No sample text, ellipsis, statistics or emotion gauge. Weathering only at bubble edges. The identity optics are the only bright light on the tokens.\n\nControls: one large tactile aged ivory long rectangular commit key recessed into a sturdy black patchbay base, with a localized warm amber mechanical tally lamp BESIDE it. Label on the key exactly \"COMMIT\". It should look decisive and pressable, without a red emergency-stop mushroom. Four separate small matching rectangular ivory instrument key icon studies, mechanically consistent with the commit key. Icons are bold dark engraved relief, readable simple silhouettes, not brass sculptures. Funds = stacked round coins; robot workforce = a clearly mechanical worker head; conveyor condition = short belt and maintenance spanner; weekly delivery = shipping crate with small calendar page. Exactly four icon studies, no numeric values, fake gauges or additional stats. Labels exactly \"FUNDS\", \"WORKFORCE\", \"CONVEYOR\", \"DELIVERY\".\n\nTypography: compact bold industrial condensed grotesk lettering with generous spacing; sturdy off-white ink. Main heading exactly \"LOOPFORGE / BROADCAST DESK\". Small headings exactly \"MATERIALS\", \"SUPERVISORS\", \"CONTROLS\". Minimal headings and component labels only, no tutorial prose, no rationale paragraphs in the artwork. Include subtle grease-pencil handling strokes and one tiny torn blank tape tab around peripheral hardware, never through text or glass.\n\nOverall: rich serious industrial realism, matte charcoal and aged ivory graphic contrast, rhythm of horizontal ribs and rectangular keys, convincing old analogue broadcast equipment transplanted into the Loopforge factory. Calm readable working areas framed by localized beautiful art detail. Avoid clean futuristic sci-fi dashboard, generic HUD, neon cyan rims, cyberpunk rainbow lights, plastic toy look, cartoon, medieval ornament, brass baroque, excessive rust, excessive grime, busy screens, tiny fake text, duplicated icons, unknown stats, numerical gauges and logos. No third-party branding or borrowed copyrighted artwork.",
+      "referenced_image_paths": [
+        "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/limen_character_sheet_1.png",
+        "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/stiletto_character_sheet_1.png",
+        "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge/forge.webp",
+        "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge/security.webp",
+        "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/style-sheet.png"
+      ],
+      "generated_output_path": "/home/stpn/.codex/generated_images/01a11b90-dcc2-7c20-959c-52158463f10c/exec-750fda29-370b-4650-b775-e329b211c8cd.png"
+    },
+    {
+      "kind": "targeted defect correction",
+      "use_case": "precise-object-edit",
+      "prompt": "Use case: precise-object-edit. Edit this Loopforge BROADCAST DESK art-direction sheet. Make ONLY ONE targeted correction: remove the extra unrequested tiny slogan text from the top-right corner ('FACTORY EYES / A CLEARER / TOMORROW') and remove the tiny footer slogans along the very bottom ('IRON DISCIPLINE // CONTINUOUS OUTPUT' and the tiny footer 'LOOPFORGE'). Fill those locations seamlessly with the same existing dark charcoal board material and leave any surrounding thin rules intact. Keep the large main heading, all component labels, material labels, LIMEN and STILETTO names, handwritten LATTICE FORGE label and COMMIT label exactly unchanged. Preserve every object, every portrait identity, every empty speech bubble, the switched-off empty near-black glass, composition, 3:2 landscape dimensions, colors, lighting, textures, shadows, and all other details without redesign. Do not add any text or marks.",
+      "referenced_image_paths": [
+        "/home/stpn/.codex/generated_images/01a11b90-dcc2-7c20-959c-52158463f10c/exec-750fda29-370b-4650-b775-e329b211c8cd.png"
+      ],
+      "generated_output_path": "/home/stpn/.codex/generated_images/01a11b90-dcc2-7c20-959c-52158463f10c/exec-d67f1847-c059-40fa-928c-105e8e9518a4.png",
+      "reason": "Remove unsolicited tiny slogans in the first output; retain all component art and required labels."
+    }
+  ],
+  "palette": [
+    {
+      "name": "Charcoal",
+      "hex": "#141716",
+      "role": "Ribbed casing and deep recesses"
+    },
+    {
+      "name": "Smoke",
+      "hex": "#232C2C",
+      "role": "Unpowered smoked glass"
+    },
+    {
+      "name": "Steel",
+      "hex": "#62665F",
+      "role": "Oxidized steel edges and fasteners"
+    },
+    {
+      "name": "Ivory",
+      "hex": "#D5CCAA",
+      "role": "Instrument keycaps, speech plates, tape"
+    },
+    {
+      "name": "Amber",
+      "hex": "#D9913F",
+      "role": "Localized tally at commit control"
+    },
+    {
+      "name": "Cyan",
+      "hex": "#8BD2D6",
+      "role": "LIMEN identity optics"
+    },
+    {
+      "name": "Red-orange",
+      "hex": "#E04F37",
+      "role": "STILETTO identity visor"
+    }
+  ],
+  "palette_note": "Authored targets, not exact pixel samples or guarantees that every generated pixel matches.",
+  "typography_suggestions": {
+    "headings": "Barlow Condensed Bold or a similar sturdy condensed industrial grotesk",
+    "dynamic_text": "IBM Plex Sans Condensed, or the project's accessible native text family",
+    "room_labels": "Original hand-lettered pen marks, keeping names semantically present as native accessible text",
+    "note": "Suggestions only; fonts were neither installed nor bundled. Raster lettering in this authoring sheet is generated, not proof of font usage."
+  },
+  "rationale": "The rectangular intercom cartridges, horizontal cooling ribs, ivory key faces and practical patch sockets make a recognizable analogue broadcast-console family. Black glass remains visually quiet; ivory surfaces carry the readable hierarchy. Supervisor portraits retain their factory construction and identity optics. Amber emphasizes the single commitment control. Localized physical wear connects the equipment to Loopforge without using the baseline's dominant circular brass medallions.",
+  "tradeoffs": [
+    "High-contrast ivory controls increase legibility but can visually compete with a lit room feed; future composition must restrain their area.",
+    "Square supervisor cartridges are mechanically clear but occupy more rectangular space than small portrait medallions.",
+    "Speech bubbles are blank and usable for short native copy; longer dialogue needs a separate expanded layout.",
+    "The generated factory wear remains pronounced. A runtime kit should keep working glass and text surfaces calm at small sizes.",
+    "The sheet inherits some of the baseline's broad board structure so alternatives stay comparable; the principal variation is broadcast equipment material and component geometry."
+  ],
+  "verification": {
+    "method": "Visual inspection of both generated results against all five supplied references",
+    "results": [
+      "One large front-on monitor is off, with near-black empty reflective glass and no room picture, static or locked badge.",
+      "LATTICE FORGE is legible on worn adhesive tape below the glass.",
+      "LIMEN retains a cracked mechanical skull and cyan eyes; STILETTO retains a closed red T-visor helmet.",
+      "Two equal-size square supervisor tokens each have a distinct attached blank speech bubble.",
+      "Commit control and exactly four matched icon studies are present: funds, workforce, conveyor condition and weekly delivery.",
+      "Unrequested margin slogans in the first result were removed in a targeted second built-in edit.",
+      "No numerical stats, invented gauges or tutorial prose appear."
+    ]
+  },
+  "limitations": [
+    "Authoring board only. It is not a six-room runtime layout, asset atlas, layered source or working interface.",
+    "No implementation, responsive/mobile test, accessibility test, performance test or game-state validation was performed.",
+    "Final native text and independently generated frame/glass/control states are needed if this direction is selected.",
+    "No web reference research was used; the analogue broadcast interpretation is an original design synthesis from the supplied project imagery."
+  ],
+  "output_file": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 2384769,
+    "sha256": "55a0c8257cc9bdcd994b87d6c04b96ca1ac28420dca5456babd65d7d443dbb16",
+    "format": "PNG"
+  }
+}

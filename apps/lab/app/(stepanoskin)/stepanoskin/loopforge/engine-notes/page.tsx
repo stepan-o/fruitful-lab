@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "@/components/loopforge/first-shift/first-shift.module.css";
+import styles from "./engine-notes.module.css";
 export const metadata = {
   title: "First-shift engine notes · Loopforge",
   robots: { index: false, follow: false },
@@ -23,7 +23,7 @@ const boundaries = [
   ],
   [
     "Viewer",
-    "The current React viewer displays illustrated cameras, briefings, decisions and records. The revised design makes these asset-driven interfaces a complete playable loop. A later live 3D view joins through the same semantic boundary; neither presentation layer chooses outcomes or imports the kernel.",
+    "The React viewer separates the six-camera wall, adviser intercom, placements, room focus, dispatch, debrief and records into focused workspaces. Illustrated assets carry those jobs within one persistent console. A later live 3D view joins through the same semantic boundary; neither presentation layer chooses outcomes or imports the kernel.",
   ],
 ];
 export default function EngineNotes() {
@@ -60,6 +60,49 @@ export default function EngineNotes() {
             </li>
           ))}
         </ol>
+        <h2>One console. Focused interfaces.</h2>
+        <p>
+          The first turn opens on two live cameras, four unpowered screens and
+          two speaking supervisor tokens. Choosing a token opens an intercom;
+          appointment, briefing and placements each get their own space.
+          Incidents pause the shift. Dispatch uses the original office artwork,
+          and the results are filed against the logistics hall. Those settings
+          do not add managed rooms.
+        </p>
+        <p>
+          Confirmed facts remain on the instrument rail. Workspace focus, help,
+          theme choices and unconfirmed placement or dispatch drafts stay in the
+          viewer. Time advances only while the factory wall or a room camera is
+          active, with the window visible and no modal or consequential decision
+          pending.
+        </p>
+        <p>
+          <Link href="/stepanoskin/loopforge/design#focused-console">
+            Focused interface contract and screen map →
+          </Link>
+        </p>
+        <h2>Six consoles, one world.</h2>
+        <p>
+          The game menu and Settings expose all six equipment themes. A typed
+          presentation recipe selects pinned asset manifests, framing geometry
+          and control-state families. It never changes the run controller,
+          commands, random stream or knowledge projection. The author workbench
+          can combine monitor and control families while preserving the active
+          shift. Equipment preference persists locally; game progress currently
+          lasts only while the page stays open.
+        </p>
+        <p>
+          The console beacon also lives on this side of the boundary. Confirmed
+          production, accidents and attention requests trigger brief green, red
+          and amber rotations; a sparse cyan impulse marks inactivity. The
+          default is dark. Screen-space occlusion uses the same measured source
+          as the light, with no per-frame kernel or React updates.
+        </p>
+        <p>
+          <Link href="/stepanoskin/loopforge/design#themes-assets">
+            Themes, assets and feedback contract →
+          </Link>
+        </p>
         <h2>Rust-native logic, TypeScript implementation.</h2>
         <p style={{ margin: "20px 0 32px" }}>
           The domain uses owned plain records, discriminated unions, bounded
@@ -70,9 +113,18 @@ export default function EngineNotes() {
           not supply Rust’s borrow checker; ownership is enforced here through
           pure transitions, boundaries and tests.
         </p>
-    <h2>Workers are people beneath the count.</h2>
-    <p style={{ margin: "20px 0 32px" }}>Every robot has a stable identity and separate body, assignment, stress, conditioning and history components from the first shift. Work changes the workers doing it; accidents target a particular robot and affect the crew present to witness them. Production creates new identities, and allocation retains or dispatches those same robots. The interface receives permitted totals, not their hidden component records. The same deterministic systems are tested with 10, 24 and 100 starting workers; the playable opening uses 24.</p>
-    <h2>What KVP means here.</h2>
+        <h2>Workers are people beneath the count.</h2>
+        <p style={{ margin: "20px 0 32px" }}>
+          Every robot has a stable identity and separate body, assignment,
+          stress, conditioning and history components from the first shift. Work
+          changes the workers doing it; accidents target a particular robot and
+          affect the crew present to witness them. Production creates new
+          identities, and allocation retains or dispatches those same robots.
+          The interface receives permitted totals, not their hidden component
+          records. The same deterministic systems are tested with 10, 24 and 100
+          starting workers; the playable opening uses 24.
+        </p>
+        <h2>What KVP means here.</h2>
         <p style={{ margin: "20px 0 32px" }}>
           The original Kernel ↔ Viewer Protocol establishes sovereignty,
           replaceable viewers and explicit snapshots and differences. This slice
@@ -113,11 +165,12 @@ export default function EngineNotes() {
         <p style={{ margin: "20px 0 20px" }}>
           Adviser selection, structured briefing, assignment approval and
           overrides, incidents, permanent allocation and debrief must carry the
-          core loop with illustrated factory context. The new entry target is
-          the paused factory console: opening facts, the weekly quota and two
-          unassigned advisers. The current welcome/handover screens and visual
-          treatment have not met owner acceptance; this documentation describes
-          the revision to build, not a completed redesign.
+          core loop with illustrated factory context. The console now opens
+          directly on the weekly quota, factory facts and two unassigned
+          advisers. Authored portraits, metal, glass and control states carry
+          the daily decisions. The previous welcome/handover gates have been
+          removed. The engine and protocol are unchanged; owner visual and play
+          acceptance remains separate from implementation checks.
         </p>
         <p style={{ marginBottom: 32 }}>
           The future live tick-fed 3D factory adds cinematic observation beside

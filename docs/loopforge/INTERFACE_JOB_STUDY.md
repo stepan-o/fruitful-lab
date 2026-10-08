@@ -115,7 +115,7 @@ The first-turn wall is the full factory in an early state. It is not a special r
 
 The Part 05 design stress test should place all six rooms, five original supervisors, basic and smart output, an engineering commitment, a programme tradeoff, a known report and Cortex progress into the same navigation structure. Only the active question comes forward. This is an author review fixture, not a playable future state or a licence to expose hidden psychology.
 
-The new 10–20 minute room-unlock target supersedes the earlier pacing hypothesis of roughly three shifts in thirty minutes for this progression test. The later implementation plan must reconcile shift length, briefing length and mastery gates with that target. Merely displaying six rooms does not establish that pacing works.
+The new 10–20 minute room-unlock target supersedes the earlier pacing hypothesis of roughly three shifts in thirty minutes for this progression test. The owner subsequently fixed the whole-day cadence at about one minute routine and two to three minutes at most for heavier days, including reading and transitions. Reconcile briefing length and mastery gates with both targets; the former long-shift proposal is discarded. See ONE_MINUTE_LOOP.md. Merely displaying six rooms does not establish that pacing works.
 
 On phones, keep all six room summaries visible together in a compact overview; open art and decisions in focused views with readable controls. Preserve meaningful labels, selected context and a return route. Do not stack all desktop panels into a long webpage or reduce them to illegible miniatures. Expanded records may scroll; the primary operational view should fit the available viewport.
 

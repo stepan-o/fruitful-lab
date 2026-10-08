@@ -4,6 +4,10 @@
 
 **Status:** implementation and verification in progress. All four skins are authorized; this record does not claim complete browser, performance or first-shift validation. The concept paintings remain provenance and comparison references at `/stepanoskin/loopforge/design#producer-console`. Runtime uses prepared console plates, calibrated geometry, original room feeds and live semantic controls. Sample concept camera imagery and generated labels are not new factory canon. No kernel or API command is added by this presentation delivery.
 
+## Next pass: the one-minute day
+
+The owner considers the one-second console loop a good baseline. The next design unit is the complete game day: about one minute routine, two to three at most for heavier days. Daily adviser selection, concise briefing/plan, operation, consequential responses and permanent allocation share that budget. Preserve this console as the operating home while focused interfaces carry their own choices; do not make every interface a mandatory daily visit. The [daily-loop inventory](ONE_MINUTE_LOOP.md) separates agreed rules, proposed shortcuts and existing implementation gaps. This requirement does not silently retune the playable slice.
+
 ## What the machine must do
 
 The producer sits at a single credible piece of factory equipment. Its CCTV glass owns the largest coherent area. A leadership receiver, internal supervisor selector and guarded production control have distinct physical identities. Comedy comes from the disproportionate authority of an official telephone and the machinery of compliance; avoid decorative clutter, joke captions and arbitrary gauges.

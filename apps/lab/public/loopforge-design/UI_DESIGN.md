@@ -20,17 +20,61 @@ Four integrated console skins are implemented: Foundry desk, Broadcast control, 
 
 ## UI structure
 
-One persistent run supports four selectable consoles and the retained Factory, Development and Records jobs. Foundry, Broadcast and porcelain Obedience use calibrated six-pane glass; Dispatch office uses one primary feed plus five. Original room feeds, read-only facts and semantic controls sit over clean plates. Hardware motion uses registered CSS crops; focused screens retain matching internal material assets. A live tick-fed 3D factory remains a later view over the same advisers, commands and records.
+A whole game day targets about one minute; a heavier day takes two to three minutes at most. Count ordinary review, adviser choice, briefing, plan approval, production, decisions, allocation and transitions. Leadership calls and onboarding use the longer-day allowance. This is a normal-play target, not a forced-answer timer.
+
+**Producer console.** Recurring home: compact facts, current adviser and delegation, room activity, pending decisions and recoverable outcome receipts.
+
+**Leadership call.** Opening/weekly mandate and relevant performance report. Fits the longer-day allowance; not repeated every day.
+
+**Adviser roster.** Dedicated daily choice. At least five channels later, two available on day one; short pitches before appointment, no five simultaneous full briefings.
+
+**Brief and placement controls.** Structured speech and proposed arrangement. A quicker approval path is proposed, not implemented. Detailed changes remain available and still require authorization.
+
+**Room focus and incident dialog.** Room inspection is optional. A consequential decision carries the source, local operator, adviser recommendation, concrete alternatives and known costs. Closing for inspection does not resolve it.
+
+**Outcome receipt and records.** Automatic acts and accepted orders lead to an attributed result. Keep records optional and link problem, advice, order and consequence; do not expose hidden motives.
+
+**Dispatch and daily result.** Explicit irreversible output split, before/after totals and concise consequence. Reuse this result as the next day’s context.
+
+**Development and help.** Open at a relevant milestone or on demand; not required visits in every daily loop.
+
+- Budget all required reading, clicks and cinematic transitions. A minute of running plus several minutes of menus misses the requirement.
+- Keep adviser choice prominent. Inspection is free; explicit appointment fixes the adviser for the day. The player cannot supply a different priority.
+- Separate facts, attributed claims and uncertain forecasts. Reveal relevant tradeoffs without hidden loyalty, confidence or worker-state meters.
+- Distinguish “the adviser already acted” from “your order is required.” Automatic actions need no confirmation and no retroactive veto.
+- Let a safe, uneventful day be satisfying. Use warranted decisions, not an event quota or mandatory accident.
+- Return a visible benefit/cost and meaningful reaction to the console. A missed light or sound must not erase the result.
+- Reading pauses are not factory stoppages: only an accepted in-world stop consumes production opportunity. Slowing is not repair; engineering enters in Part 03.
+- Avoid duplicate debrief/morning reports and compulsory visits to every focused screen. Keep detailed inspection and edits available.
+- One-second motion supports this short day; it must not delay interaction or substitute for an understandable consequence.
+
+### Part 01 interface obligations
+
+**Console / daily context.** Show the relevant change from yesterday, remaining quota and days left. Do not restart each morning with an unchanged generic introduction.
+
+**Adviser roster.** Current short statements reflect relevant past support, overrides or outcomes. Make continued trust as legible as switching; do not expose hidden loyalty or secretly rank the best adviser.
+
+**Brief / proposed arrangement.** Explain today’s priority in response to inherited conditions. Show the concrete arrangement and delegation. An unchanged plan can be sensible; avoid rearrangement for its own sake.
+
+**Operation / decision / aftermath.** Make at least one benefit or known cost of the chosen method legible. Automatic authority and player-controlled decisions have different presentations. Quiet safe operation can provide the evidence; an accident is not compulsory.
+
+**Dispatch / next-day handoff.** Show irreversible growth-versus-delivery totals and carry the same workers, wear and memories forward. A repeated-day prototype is required; replaying the opening fixture three times is insufficient.
+
+**Development / arrival.** Explain the visible readiness and investment requirements, then show actual eligibility and commissioning. Introduce Cathexis and the powered Theatre together as a new decision family. Exact unlock controls and costs need design.
+
+Three days is a design hypothesis, not an implemented schedule. The current one-day kernel cannot validate this arc. Do not gate “mastery” on an invisible judgment of player understanding; use explicit world requirements, while comprehension is evaluated in the playtest. The funding path must also permit this arrival: if income settles only weekly, Theatre investment needs an affordable reserve or another explicitly designed source. Payment timing is still open; a nominal day-four handoff cannot depend on money unavailable until day seven.
+
+One persistent run supports four selectable consoles and the retained Factory, Development and Records jobs. Foundry, Broadcast and porcelain Obedience use calibrated six-pane glass; Dispatch office uses one primary feed plus five. Original room feeds, read-only facts and semantic controls sit over clean plates. Hardware motion uses registered CSS crops; focused screens retain matching internal material assets. A live tick-fed 3D factory remains a later view over the same advisers, commands and records. The one-minute budget belongs to the whole day; these interface jobs do not require visiting every screen each day.
 
 *Four skins implemented · visual calibration and runtime checks underway*
 
 ### Where the first shift begins
 
-**Where Start shift lands.** The paused producer console, with Lattice Forge and Security live, four off panes and no assignments. Answer leadership is the sole gameplay action; it opens the cinematic handover and quota. Acknowledge quota returns to the console and enables Choose adviser. All four skins are implemented; visual and full-flow checks are underway.
+**Where Start shift lands.** The paused producer console, with Lattice Forge and Security live, four off panes and no assignments. Answer leadership is the sole gameplay action; it opens the cinematic handover and quota. Acknowledge quota returns to the console and enables Choose adviser. All four skins are implemented and the first-day flow has been verified; the owner considers the one-second loop a good baseline.
 
 **First strategic choice after acknowledgement.** Choose adviser opens a dedicated roster with five channels only after quota acknowledgement. Day one activates LIMEN and STILETTO. Short pitches invite inspection; priority, gain and cost precede explicit appointment. The main console does not repeat the roster. Early call close, Settings, skin changes and menu/resume cannot bypass the gate or lose draft choices.
 
-**Then the briefing.** Inspecting a candidate is not appointment. Appointing opens their dedicated structured brief: assessment, attributed context and priority. Proposed placements have their own workspace; authorization changes named people’s work and delegated authority.
+**Then the briefing.** Explicit appointment opens the structured brief: assessment, attributed context, priority and proposed arrangement. The current prototype has a separate placement workspace. Proposed for the short daily loop: show the plan and approval in the brief, retaining that workspace for detailed edits. Authorization still changes named people’s work and delegated authority.
 
 **Then release the shift.** Accepted assignments appear in the room view. A physical Start shift control begins operation. Illustrated scenes, facts, reports, sound and bounded effects carry feedback now; the future 3D scene adds continuous spatial execution.
 
@@ -241,7 +285,7 @@ The author map can show the complete progression. The player sees only discovera
 
 **Consequential decision.** The adviser’s room-local events resolve automatically and are recorded. For response decisions elsewhere, pause with the adviser’s recommendation selected. The player can inspect evidence then accept or override; closing the panel does not resolve the choice.
 
-**Consultation.** Selecting and hearing the adviser’s briefing commits the daily choice under the proposed UI rule. Portrait inspection is free. Follow-ups do not change adviser or supply a new priority. The same adviser proposes daytime responses; those are not additional daily consultations.
+**Consultation.** Inspecting a portrait or pitch does not appoint anyone. Explicit appointment commits the daily adviser and opens their briefing. Follow-ups do not change adviser or supply another priority; event recommendations are part of the same daily role.
 
 **Confirmation modal.** At most one modal at a time, with keyboard focus contained inside it. Cancel or Escape performs no action and restores focus. A confirmed command is still subject to engine validation.
 
@@ -253,6 +297,8 @@ The author map can show the complete progression. The player sees only discovera
 
 **Accessible feedback.** Critical state uses text and shape as well as colour or sound. Keyboard and touch can reach every action. Reduced motion retains the same information and decisions.
 
+**Daily reading and navigation.** Keep the primary adviser choice deliberate, the briefing structured and the result concise. Proposed: approve a visible plan summary from the brief, with detailed edits on demand. No repeated morning/debrief report or compulsory Records visit. Count every required transition in the whole-day budget.
+
 ### Five interface journeys
 
 **Assign a supervisor.** After the daily briefing, inspect proposed placements → accept or override a placement → validate and issue orders → record the adviser’s and other informed supervisors’ reactions → observe actual execution. Overrides are consequential choices, not free replanning requests.
@@ -261,9 +307,9 @@ The author map can show the complete progression. The player sees only discovera
 
 **Fund a capability.** Development → project inspector → inspect requirements and shared costs → commit eligible project → active-project state → return to Factory → explicit resume.
 
-**Choose the daily adviser.** Enter the paused factory with opening facts, weekly quota and empty assignments → choose adviser → illustrated structured briefing → accept or override the initial arrangement → start. Later days begin with yesterday’s results. Their own-room authority and other-room recommendations remain explicit.
+**Choose the daily adviser.** Day one: console → leadership call → acknowledge quota → adviser roster → inspect priority and tradeoff → explicitly appoint → structured brief and proposed arrangement → authorize → run. Later days replace the opening mandate with concise yesterday context. The entire day, including settlement, targets about one minute or two to three for heavier days.
 
-**Review a session.** Preview and commit daily output permanently to factory or quota → factual debrief → optional Records inspection → next day with the unchanged commitments. Historical playback never reverses an allocation.
+**Review a session.** Commit daily output permanently → read the short factual result → optional Records inspection → use that result as next day’s context. The weekly obligation and previous commitments persist; historical playback does not reverse allocation.
 
 ### Growth across the acts
 
@@ -290,7 +336,7 @@ The asset-driven interfaces and future 3D view are clients of one knowledge-filt
 
 ## UI and simulation complexity
 
-The asset-driven decision interfaces must make the core loop understandable, tangible and enjoyable before the live 3D factory exists. Engine depth, player knowledge, interface load and visual fidelity are separate axes. The later cinematic view enriches observation while preserving the same choices and consequences.
+The asset-driven decision interfaces must make the core loop understandable, tangible and enjoyable before the live 3D factory exists. Engine depth, player knowledge, interface load and visual fidelity are separate axes. The later cinematic view enriches observation while preserving the same choices and consequences. The daily interface budget covers the whole one-minute day, with two to three minutes for heavier days; revealing more engine complexity must not require a longer mandatory reading route.
 
 *Agreed separation · proposed interaction contracts*
 
@@ -614,15 +660,16 @@ The old Sim Sim Director Console is the visual starting point: illustrated CCTV 
 
 ### Open UI decisions
 
+- How many meaningful two-room days precede the Theatre? Test two, three and four completed days; three with Cathexis for day four is the starting hypothesis, conditional on visible readiness and investment.
 - Which staffing orders are direct, and which are requests mediated by Security or another supervisor?
 - Which situations require a decision pause, which can be delegated, and how do manual pause/speed controls behave?
 - How much can the director infer from a room before consulting someone, and what evidence becomes available after Brain 2.0?
 - Which follow-up questions and reassurance/blame responses fit into the daily adviser briefing without allowing a player-defined priority or a second adviser?
-- Which conditions count as mastery and viable recovery? Decide these before fixing shift duration or session unlock expectations.
+- Which conditions count as mastery and viable recovery? Test these against the agreed one-minute routine day, two-to-three-minute heavier day and roughly 10–20 minute full-floor unlock target.
 
 ## The daily adviser decision
 
-Day one opens in the paused producer console with facts and no assignments. Answer leadership, acknowledge the quota, then choose the adviser as the first strategic fork. They choose the priority and propose the arrangement. Later days require yesterday’s actual results. Their room receives automatic event authority after assignments take effect.
+Day one opens in the paused producer console with facts and no assignments. Answer leadership, acknowledge the quota, then choose the adviser as the first strategic fork. They choose the priority and propose the arrangement. Later days require yesterday’s actual results. Their room receives automatic event authority after assignments take effect. Adviser choice, briefing and plan approval share the whole-day budget: about one minute for routine play, two to three for heavier days.
 
 *Agreed core loop · proposed UI details and model budget*
 
@@ -660,7 +707,7 @@ Day one opens in the paused producer console with facts and no assignments. Answ
 
 ### Interface
 
-**Morning hierarchy.** Paused Factory planning shows opening facts and the weekly quota alongside Choose today’s adviser. No assignments exist until the adviser proposes them and orders are accepted. Later days show Yesterday’s results first; placement controls remain secondary.
+**Morning hierarchy.** Day one answers and acknowledges the leadership call before adviser selection; no assignments exist until orders are accepted. Later days show a concise change/remaining-quota summary drawn from yesterday’s result, not a second complete debrief. Adviser choice remains the primary action.
 
 **Choosing with usable evidence.** Each candidate shows a portrait, a short known specialty, a familiar tendency and its usual cost, plus a recent observed example when available. Open a dossier for more. No hidden loyalty scores, omniscient suitability ranking or previews of every candidate’s actual briefing.
 
@@ -668,7 +715,7 @@ Day one opens in the paused producer console with facts and no assignments. Answ
 
 **The briefing.** Keep a compact factual strip above the attributed assessment, additional context, Today’s priority and Proposed moves. Claims and forecasts are visibly attributed to the speaker; the UI does not label an undiscovered lie. Use their portrait, voice and tone to carry personality.
 
-**Player actions.** Choose and hear briefing → inspect their plan → Accept arrangement or Override assignments → Start shift. There is no priority picker. Follow-up questions concern their reasoning; they do not request a new optimization goal.
+**Player actions.** Inspect pitch → explicitly appoint → compact structured brief and proposed arrangement → accept or edit → authorize → run. Proposed fast path: approve from the visible briefing plan; detailed placement editing remains separate. No priority picker. Follow-up limits must fit the whole-day budget.
 
 **During the shift.** Keep the chosen adviser and their delegated room visible. Their room’s decisions enter the feed as resolved with an explanation and consequence. Other-room response decisions open with their recommendation selected; the player accepts or overrides. Consequential choices pause; simulation ticks and decorative events do not each demand a prompt.
 
@@ -873,6 +920,7 @@ Authored comparison after all five initial supervisors have arrived and engineer
 - Do not display every possible allocation, every private motive or a graph of rumour sources. Clear facts, a legible adviser choice and a few consequential actions carry the first playable loop.
 - Show automatic decisions and their effects clearly. Missing a brief animation must not prevent learning what the delegated adviser did.
 - The later reveal must explain earlier events from stored evidence, including the player’s own edits and other supervisors’ actual execution. It must not blame advice for a different plan the player imposed.
+- The entire routine day targets about a minute; heavier days take two to three. Generate/read only the selected briefing, avoid repeating unchanged context, and never make inspecting all candidates’ full briefs a requirement.
 
 ### First playable test
 
@@ -891,7 +939,7 @@ First slice: the paused factory console with unassigned Limen and Stiletto, Conv
 
 Players should understand why they are choosing, what they are authorizing and how to read the result. The simulation can contain much more than the interface reveals. Its depth earns its place by creating decisions and consequences that are enjoyable to play.
 
-**Make the central choice visible.** Start → paused producer console with incoming leadership as the sole gameplay action → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser → dedicated roster → inspect priority/tradeoff → appoint → structured brief and placements → authorize → run → permanent allocation. Early close leaves gameplay locked. Settings, skin switching and menu/resume preserve acknowledgement and drafts. Full runtime verification is underway. Later weekly calls require actual completed-week facts.
+**Make the central choice visible.** Start → paused producer console with incoming leadership as the sole gameplay action → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser → dedicated roster → inspect priority/tradeoff → appoint → structured brief and placements → authorize → run → permanent allocation. Early close leaves gameplay locked. Settings, skin switching and menu/resume preserve acknowledgement and drafts. The first-day flow is verified; the new daily pacing and proposed briefing/plan shortcut remain to be tested. Later weekly calls require actual completed-week facts.
 
 **Say what the action means.** Use concrete labels such as Accept Stiletto’s arrangement or Stop the Brewery for Witch’s repair. Explain the known operational sacrifice and who is being overruled. Avoid vague dialogue stances whose mechanical commitment is impossible to infer.
 
@@ -902,6 +950,8 @@ Players should understand why they are choosing, what they are authorizing and h
 **Let consequences teach.** Show a recognizable change in work, a specific reaction or a remembered incident. A brief later explanation connects it to the choice. Delayed revelations deepen the player’s understanding without pretending the missing information was available earlier.
 
 **Enjoyment is the acceptance criterion.** A readable interface and a consistent simulation are necessary but do not establish that the game is fun. The first end-to-end prototype must be played and judged by the owner; revise the loop around that experience before expanding it for a real audience.
+
+**Fit the whole day.** Preserve the primary adviser choice while reducing duplicate reports, mandatory inspections and repeated confirmations. A routine day targets about 60 seconds; a heavier day takes two to three minutes at most, including normal reading and transitions.
 
 Play the complete loop with the live 3D view absent. Ask whether adviser choice matters, briefings are enjoyable and easy to follow, the plan is worth considering, overrides are tempting despite their cost, feedback feels physical and the result creates interest in another day. The owner rejected the preceding entrance’s presentation-screen feel; passing checks did not establish visual or play acceptance. Later assess the cinematic view as an improvement to this working loop.
 
@@ -915,23 +965,23 @@ Play the complete loop with the live 3D view absent. Ask whether adviser choice 
 
 ## Approved shift rhythm
 
-**Plan while paused.** Land in the paused factory console on day one. Show opening facts, the weekly quota and empty assignments there; choose the adviser first. On later days, review yesterday’s facts before choosing. Hear the adviser’s assessment and priority, accept or override their arrangement, then start the shift.
+**Plan while paused.** Day one starts at the console: answer leadership, acknowledge quota, then choose an adviser before any assignments. Later days reuse yesterday’s result as concise context. Hear the adviser’s assessment and arrangement, accept or override, then start operation. Reading and transitions count toward the daily budget.
 
 **Run the shift.** The simulation advances during the shift. In the current prototype, room artwork, readouts, attributed reports, effects and sound communicate committed production, wear and actions. Later, the 3D viewer also shows their continuous spatial execution.
 
 **Pause for a decision.** Events in the chosen adviser’s assigned room resolve automatically under their authority. A response decision elsewhere or at factory level pauses at a defined boundary with their recommendation selected; the player accepts or overrides, then watches the consequences.
 
-**Close the shift.** Review output and known losses, preview the factory/quota split and confirm its permanent effect. Carry commitments, condition and supervisor reactions into the debrief. Payment timing and additional settlement actions remain open.
+**Close the shift.** Preview and permanently commit the factory/quota split. Show one useful benefit, known cost and live issue, then reuse that result as tomorrow’s context instead of repeating the full report. Payment timing remains open.
 
 ## Attention horizons
 
 **1 second.** Is this working as I intended?
 
-**1 minute.** Which problem should I solve, and what will that cost?
+**1 minute.** Whose judgment will I back today, and what did it cost?
 
 **30 minutes.** What kind of factory did my successful decisions create?
 
-One second, one minute and thirty minutes describe player attention and payoff. They are not simulation tick rates, forced event intervals or room-unlock timers. Session design stops before the full-run structure.
+One second describes immediate feedback. One minute is the whole game day: ordinary review, adviser choice, plan approval, production, decisions and permanent output allocation. Target about 60 seconds for a routine day and two to three minutes at most for a heavier day. These are experience targets, not forced response timers or room-unlock clocks. Thirty minutes spans multiple days and delivery cycles; exact progression remains to be tested.
 
 [Core loops and sessions](GAME_DESIGN.md#core-loops-and-sessions)
 
@@ -1289,6 +1339,10 @@ Use case: stylized-concept. Create a new Loopforge game scene for a weekly video
 8 October 2026, latest owner approval: implement all four integrated console drafts as selectable skins. No winner or further selection approval is required before delivery. The six old material themes leave the player selector; their matching focused-screen assets and historical studies remain internal. This record supersedes six repeated monitor housings, the automatic opening call and broad console beam, while preserving the separate roster, brief, placements, incidents, dispatch and cinematic leadership interfaces.
 
 **Status:** implementation and verification in progress. All four skins are authorized; this record does not claim complete browser, performance or first-shift validation. The concept paintings remain provenance and comparison references at `/stepanoskin/loopforge/design#producer-console`. Runtime uses prepared console plates, calibrated geometry, original room feeds and live semantic controls. Sample concept camera imagery and generated labels are not new factory canon. No kernel or API command is added by this presentation delivery.
+
+## Next pass: the one-minute day
+
+The owner considers the one-second console loop a good baseline. The next design unit is the complete game day: about one minute routine, two to three at most for heavier days. Daily adviser selection, concise briefing/plan, operation, consequential responses and permanent allocation share that budget. Preserve this console as the operating home while focused interfaces carry their own choices; do not make every interface a mandatory daily visit. The [daily-loop inventory](ONE_MINUTE_LOOP.md) separates agreed rules, proposed shortcuts and existing implementation gaps. This requirement does not silently retune the playable slice.
 
 ## What the machine must do
 

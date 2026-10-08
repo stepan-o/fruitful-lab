@@ -2,6 +2,10 @@
 
 Implementation: `apps/lab/lib/loopforge/first-shift/`. Public experience: `/stepanoskin/loopforge/play`. API: `POST /api/loopforge/first-shift`. Author-facing explanation: `/stepanoskin/loopforge/engine-notes`. The former eight-shift teaching console remains at `/stepanoskin/loopforge/play/teaching`; its engine and narration endpoint are separate and unchanged.
 
+## Whole-day cadence — design target
+
+The owner sets the entire game day at about one minute for routine play and two to three minutes at most for heavier days. Include adviser choice, briefing/approval, running, warranted decisions, allocation and normal reading/transitions. The current 48-beat slice, 900ms normal advance delay and two scheduled incidents remain unchanged; it does not establish repeatable daily/weekly pacing. Do not meet a wall-time target by changing outcomes on slower clients. Reading pauses consume no in-world production opportunity; an accepted stop order does. Future daily carry-forward and weekly settlement need explicit engine/projection contracts. See [daily-loop inventory](ONE_MINUTE_LOOP.md).
+
 ## Intent and limits
 
 A complete first-day interaction slice for testing adviser choice, authority, output versus wear, permanent allocation and the readability of consequences. It is not a replacement for the whole old sim-sim, a completed ECS, a balanced Act 1, a persistent multiplayer world, or a general BDI implementation.

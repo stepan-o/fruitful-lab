@@ -11,6 +11,7 @@ OUT = ROOT.parents[2]/'apps/lab/public/loopforge-design'
 OUT.mkdir(parents=True, exist_ok=True)
 d = json.loads((ROOT/'design-data.json').read_text())
 art = json.loads((ROOT/'art.json').read_text())
+daily = d['dailyLoop']
 e = html.escape
 def p(t): return '<p>'+e(t)+'</p>'
 def ul(items): return '<ul>'+''.join('<li>'+e(t)+'</li>' for t in items)+'</ul>'
@@ -41,6 +42,7 @@ early_rules=detail(early['title'],table(early['rules']))
 early_combinations=detail('How supervisor combinations change the next stage',table(early['combinations'])+p(early['boundary']))
 arc+=detail('The world behind the factory',world)
 arc+=early_rules
+arc+=detail('Part 01: when the third room should enter',status(daily['partOne']['status'])+p(daily['partOne']['principle'])+p(daily['partOne']['target'])+table(daily['partOne']['days'])+p(daily['partOne']['gate'])+p(daily['partOne']['week'])+table(daily['partOne']['mustDeliver'])+p(daily['partOne']['test'])+p(daily['partOne']['boundary']))
 arc+='<div class="phase-strip" role="group" aria-label="Explore Act 1 stages">'+''.join(f'<button class="phase-button" data-stage="{s["id"]}" aria-pressed="{str(i==0).lower()}"><span class="phase-number">{i+1:02}</span><b>{e(s["name"])}</b><small>{e(s["arrivals"])}</small></button>' for i,s in enumerate(d['stages']))+'</div><div id="stage-detail"></div>'
 arc+='<p class="small" style="color:var(--muted);margin-top:16px">Stages indicate demonstrated capability, not numbered shifts. Select a stage to inspect its pressure and lasting effects.</p>'+act2
 arc+='<button class="link-button" data-panel="trajectories">Explore possible trajectories through this arc →</button>'
@@ -136,6 +138,7 @@ def flow_cards(items,cls='information-flow'):
 experience=heading('The player experience',x['title'],x['intro'])+status(x['rhythmStatus'])
 experience+='<h3>Playable interfaces now. Live 3D later.</h3>'+table(x['scope'])
 experience+=flow_cards(x['rhythm'],'shift-flow')
+experience+='<h3>The whole-day pacing contract</h3>'+p(daily['cadence'])+detail('Required flow and optional depth',table(daily['interfaces']))
 experience+='<div class="section-divider"></div><h3>Three views of one history</h3>'+flow_cards(x['views'])+p(x['shared'])
 experience+=detail('Example: a jam becomes a decision',defs(x['example']))
 experience+=detail('Three clocks, one authoritative sequence',table(x['clocks'])+p(x['pauseBoundary']))
@@ -170,13 +173,19 @@ loops=heading('Core loop and session design',lp['title'],lp['intro'])+status(lp[
 loops+='<div class="horizon-picker" role="group" aria-label="Explore attention horizons">'+''.join('<button class="choice" data-horizon="'+s['id']+'" aria-pressed="'+str(i==1).lower()+'"><span class="horizon-time">'+e(s['time'])+'</span><b>'+e(s['name'])+'</b></button>' for i,s in enumerate(lp['scales']))+'</div><div id="loop-detail"></div>'
 loops+='<div class="callout">'+e(lp['boundary'])+'</div>'
 loops+=detail('The shared decision cycle',defs(lp['cycle']))
-loops+='<div class="section-divider"></div><h3>The shift inside the session</h3>'+p(lp['shift']['intro'])+flow_cards(lp['shift']['beats'],'shift-flow')+'<div class="inheritance"><span class="kicker">First pacing hypothesis</span>'+p(lp['shift']['target'])+'</div>'+p(lp['shift']['density'])
+loops+='<div class="section-divider"></div><h3>One day: review to next shift</h3>'+flow_cards(daily['flow'],'shift-flow')+'<div class="inheritance"><span class="kicker">Agreed daily cadence</span>'+p(daily['cadence'])+'</div>'+p(lp['shift']['density'])
+loops+=detail('Interfaces and their jobs',table(daily['interfaces']))
+loops+=detail('Requirements for a satisfying short day',ul(daily['requirements']))
+loops+=detail('What exists and what the next pass must prove',table(daily['gaps'])+ul(daily['checks'])+p(daily['boundary']))
+loops+='<h3>Part 01 sets the requirements for this loop</h3>'+status(daily['partOne']['status'])+p(daily['partOne']['principle'])+p(daily['partOne']['target'])+flow_cards(daily['partOne']['days'],'shift-flow')
+loops+=detail('Readiness, weekly quota and required interface delivery',p(daily['partOne']['gate'])+p(daily['partOne']['week'])+table(daily['partOne']['mustDeliver'])+p(daily['partOne']['test'])+p(daily['partOne']['boundary']))
 loops+=detail('The player’s recurring levers',table(lp['controls']))
 loops+=detail('Six connected layers','<div class="layer-list">'+''.join('<article><h4>'+e(name)+'</h4><p><strong>'+e(question)+'</strong></p>'+p(body)+p(reveal)+'</article>' for name,question,body,reveal in lp['layers'])+'</div>'+p(lp['coupling']))
 loops+=detail('Feedback loops that produce the pressure',table(lp['feedbacks']))
 op=lp['opening']
 loops+='<div class="section-divider"></div><h3>'+e(op['title'])+'</h3>'+p(op['note'])+defs(op['beats'])
 loops+='<div class="fork-list">'+''.join('<article class="fork-option"><span class="kicker">'+e(b0['short'])+'</span><h3>'+e(b0['name'])+'</h3>'+defs([('Choice',b0['choice']),('Gain',b0['gain']),('Cost',b0['cost']),('Later echo',b0['echo']),('Design check',b0['test'])])+'</article>' for b0 in op['branches'])+'</div>'
+loops+=detail('The whole day shares a minute',p('Illustrative pacing budget; not a forced countdown. Heavier days, weekly calls and introductions can use two to three minutes in total.')+table(lp['shift']['dayBudget'])+'<p><a href="ONE_MINUTE_LOOP.md">Read the flow, interface inventory and implementation gaps →</a></p>')
 loops+=detail('How later Act 1 sessions deepen the same loop',table(lp['laterSessions']))
 loops+=detail('Where the model contributes',p(lp['llm']))
 loops+=detail('Avoiding busywork and disconnected drama',ul(lp['guardrails']))
@@ -184,6 +193,7 @@ loops+=detail('What to test before increasing scope',ul(lp['tests']))
 loops+='<button class="link-button" data-panel="ui-mechanics">Connect each mechanic to its UI and engine →</button>'
 
 ui_html=heading('The player and the underlying world',ui['title'],ui['intro'])+status(ui['status'])
+ui_html+='<div class="callout">'+e(daily['cadence'])+'</div>'+detail('Daily-loop requirements',ul(daily['requirements']))
 ui_html+='<p class="document-links"><a href="UI_DESIGN.html" target="_blank" rel="noopener">Read the complete UI design ↗</a> · <a href="UI_DESIGN.md" download>Download UI design</a></p>'
 ui_html+='<div class="complexity-axes">'+''.join('<article><h4>'+e(k)+'</h4>'+p(v)+'</article>' for k,v in ui['axes'])+'</div><div class="callout">'+e(ui['principle'])+'</div>'
 ui_html+=detail(ui['playability']['title'],p(ui['playability']['intro'])+table(ui['playability']['rules'])+p(ui['playability']['review']))
@@ -227,6 +237,8 @@ us=d['uiStructure'];ud=us['development']
 def structure_screen(sc):
     return '<article class="structure-screen" data-screen-detail="'+sc['id']+'"'+(' hidden' if sc['id']!='factory' else '')+'><div class="structure-caption"><h3>'+e(sc['name'])+'</h3>'+p(sc['summary'])+'</div><figure class="console-map" aria-label="'+e(sc['name'])+' screen structure"><div class="console-hud"><span class="kicker">Persistent HUD</span><span>Day / phase · money · workers · weekly quota + deadline</span><strong>Clock + pending decision</strong></div><div class="console-body"><div class="console-workspace"><span class="kicker">'+e(sc['canvasLabel'])+'</span><h4>'+e(sc['canvasTitle'])+'</h4>'+ul(sc['canvasItems'])+'</div><div class="console-inspector"><span class="kicker">Selection opens</span><h4>'+e(sc['inspectorTitle'])+'</h4>'+ul(sc['inspectorItems'])+'</div></div><div class="console-bottom"><h4>'+e(sc['bottomTitle'])+'</h4>'+p(sc['bottomText'])+'</div><figcaption><strong>Action area.</strong> '+e(sc['primary'])+'</figcaption></figure><div class="structure-clock"><span class="kicker">What happens to time</span>'+p(sc['time'])+'</div>'+detail('Views and contextual panels',table(sc['views'])+table(sc['panels']))+detail('Mobile behaviour and engine contract',defs([('On a small screen',sc['mobile']),('World authority',sc['engine'])]))+'</article>'
 structure=heading('Interface hierarchy',us['title'],us['intro'])+status(us['status'])
+structure+='<h3>Daily flow and interface ownership</h3>'+p(daily['cadence'])+table(daily['interfaces'])
+structure+=detail('What Part 01 requires from each interface',table(daily['partOne']['mustDeliver'])+p(daily['partOne']['boundary']))
 structure+='<h3>Where the first shift begins</h3>'+table(us['entry'])
 structure+='<div class="structure-root"><span>One run instance</span><span aria-hidden="true">→</span><span>Web director’s console</span><span aria-hidden="true">→</span><strong>Three main screens</strong></div>'
 structure+='<div class="screen-picker" role="group" aria-label="Explore proposed game screens">'+''.join('<button class="choice" data-screen="'+sc['id']+'" aria-controls="screen-diagrams" aria-pressed="'+str(i==0).lower()+'"><span class="phase-number">'+str(i+1).zfill(2)+'</span><b>'+e(sc['name'])+'</b><small>'+e(sc['verb'])+'</small></button>' for i,sc in enumerate(us['screens']))+'</div><div id="screen-diagrams">'+''.join(structure_screen(sc) for sc in us['screens'])+'</div>'
@@ -335,6 +347,7 @@ for x in d['world']:mh(x['title'],3);mp(x['text'])
 mh('Core loops and sessions');mp(lp['intro']);mp('*'+lp['status']+'*');mp(lp['boundary']);fields(lp['cycle'])
 for s in lp['scales']:
     mh(s['time']+' · '+s['name'],3);mp(s['question']);fields([('Player activity',s['player']),('World activity',s['system']),('Feedback',s['feedback']),('Payoff',s['reward']),('Carried outward',s['carry']),('Example',s['example']),('Design trap',s['failure'])])
+mh('One day: flow and interface ownership',3);mp(daily['cadence']);fields(daily['flow']);fields(daily['interfaces']);mh('Daily-loop requirements',3);ml(daily['requirements']);mh('Part 01: when the third room should enter',3);mp(daily['partOne']['status']);mp(daily['partOne']['principle']);mp(daily['partOne']['target']);fields(daily['partOne']['days']);mp(daily['partOne']['gate']);mp(daily['partOne']['week']);fields(daily['partOne']['mustDeliver']);mp(daily['partOne']['test']);mp(daily['partOne']['boundary']);mh('Current implementation and remaining work',3);fields(daily['gaps']);mp(daily['boundary']);mh('Illustrative seconds budget',3);fields(lp['shift']['dayBudget']);mp('Proposed split for testing, not an agreed timer.');
 mh('The shift inside the session',3);mp(lp['shift']['intro']);fields(lp['shift']['beats']);mp(lp['shift']['target']);mp(lp['shift']['density']);mh('Recurring levers',3);fields(lp['controls'])
 mh('Connected layers',3)
 for name,question,body,reveal in lp['layers']:mh(name,4);mp(question);mp(body);mp(reveal)
@@ -394,7 +407,7 @@ for title,url in xr['references']:mp('['+title+']('+url+')')
 mh('Engine boundary');mp(en['intro']);mp('*'+en['status']+'*');fields(en['planes']);mh('Rust-native discipline',3);fields(en['rust']);mh('KVP boundary',3);fields(en['kvp']);mh('Decoupled model services',3);fields(en['llm']);mh('Replay and timing',3);mp(en['determinism']);mp(en['timing']);mp(en['prototype']);mh('Boundary checks',3);ml(en['proof']);mp(en['sourceBoundary'])
 ui_start=len(md)
 mh(early['title']);fields(early['rules'])
-mh('UI structure');mp(us['intro']);mp('*'+us['status']+'*');mh('Where the first shift begins',3);fields(us['entry']);mh('Instance and interface hierarchy',3);fields(us['identity']);mh('Shared director’s console',3);fields(us['shared'])
+mh('UI structure');mp(daily['cadence']);fields(daily['interfaces']);ml(daily['requirements']);mh('Part 01 interface obligations',3);fields(daily['partOne']['mustDeliver']);mp(daily['partOne']['boundary']);mp(us['intro']);mp('*'+us['status']+'*');mh('Where the first shift begins',3);fields(us['entry']);mh('Instance and interface hierarchy',3);fields(us['identity']);mh('Shared director’s console',3);fields(us['shared'])
 for sc in us['screens']:
     mh(sc['name']+' — '+sc['verb'],3);mp(sc['summary']);mh('Workspace',4);mp(sc['canvasTitle']);ml(sc['canvasItems']);mh(sc['inspectorTitle'],4);ml(sc['inspectorItems']);mh(sc['bottomTitle'],4);mp(sc['bottomText']);mp(sc['primary']);mh('Views and panels',4);fields(sc['views']);fields(sc['panels']);fields([('Clock behaviour',sc['time']),('Mobile',sc['mobile']),('Engine contract',sc['engine'])])
 mh('Development and base currencies',3);mp(ud['intro']);fields(ud['types']);mp(' → '.join(ud['order']));mp(ud['orderNote']);mh('Every project must explain',4);ml(ud['node']);mp(ud['states']);mp(ud['example']);mp(ud['knowledge'])
@@ -473,3 +486,6 @@ for contract_name in ["LIVING_CONSOLE_DIRECTION.md","CINEMATIC_INTERFACE_DIRECTI
 # Preserve exact authored prompts alongside review-size art; no image bytes in this record.
 prompt_root=OUT.parents[1]/'assets/sources/loopforge-producer'
 (OUT/'PRODUCER_CONCEPT_PROMPTS.md').write_text('# Producer console — exact generation prompts\n\nBuilt-in imagegen; four concept treatments, reviewed 8 October 2026.\n\n'+'\n\n---\n\n'.join(p.read_text() for p in sorted(prompt_root.glob('*-prompts.md'))))
+
+# Current daily-loop working brief; the authored source remains beside the design docs.
+(OUT/"ONE_MINUTE_LOOP.md").write_text((ROOT.parent/"ONE_MINUTE_LOOP.md").read_text())

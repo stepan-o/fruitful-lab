@@ -264,3 +264,27 @@ Viewport override reset. No new asset, dependency or continuous animation.
 Review captures:
 - `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-tooltip-desktop.png`
 - `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-tooltip-mobile.png`
+
+## Platform captions and isolated revenue disclosures
+
+Added actionable Xbox/NVIDIA timeline captions, the dated Activision Blizzard
+callout naming Call of Duty and Diablo, and distinct PlayStation/Xbox headings.
+Xbox year details now explain FY2021, FY2025 and FY2026. FY2024 displays the
+reported US$5.729bn net acquisition effect; FY2025 displays Microsoft’s nearly
+US$5bn Game Pass disclosure with approximate shares. Source definitions and
+calculation limits are in PLATFORM_FINANCIAL_CASES.md.
+
+Required app CI passes: 67 suites, 348 tests, one snapshot, asset checks and
+production build. Scoped lint and whitespace checks pass. Existing interaction
+tests now exercise captions in revenue/growth views, exact and approximate
+disclosures, and their absence from NVIDIA. React review: no new hooks, network
+requests, dependencies or animation loops; controls retain native keyboard
+behavior and share existing selection state.
+
+Local production checks covered desktop, 768px, 390px and 320px layouts. Captions
+select the correct fiscal year; FY2024 persists across hardware growth mode;
+Game Pass is about 21% of its total and the displayed bar matches that share.
+No page overflow or clipped caption text. Tablet checking exposed leader
+misalignment when the plot was wider than its scroll viewport: a container query
+now removes fixed-caption connectors below the plot’s minimum width while the
+year guides remain attached to their columns.

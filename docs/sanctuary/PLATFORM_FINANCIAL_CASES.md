@@ -52,7 +52,8 @@ exhibit’s collected series and render as missing, never zero. Their common plo
 range is −40% to +100%, including the launch-year hardware increase.
 
 No category dollar amounts are reverse-engineered from rounded growth. No
-Game Pass/cloud revenue or separate Xbox profit is fabricated. More Personal
+cloud revenue or separate Xbox profit is fabricated. Isolated Game Pass and
+acquisition disclosures are shown only for the fiscal years they describe. More Personal
 Computing includes other businesses and its profit is not Xbox profit.
 
 The October 2023 Activision Blizzard acquisition enters FY2024. Microsoft reports
@@ -100,3 +101,58 @@ Year bars, year selectors and milestone buttons update the same readout.
 Arrow/year controls move only the chart’s horizontal viewport. Small screens
 keep the axis visible while the bars scroll. Native buttons/selects provide
 keyboard and touch controls; absent data and base years do not draw zero bars.
+
+### Xbox acquisition annotation
+
+The Xbox chart directly marks **13 October 2023 / FY2024**, naming Activision
+Blizzard and its Call of Duty / Diablo franchises. A gold leader meets the
+FY2024 column; it marks entry into consolidated accounts, not a separate
+purchase of each franchise or their release dates. Selecting the callout opens
+the FY2024 readout in either revenue or growth mode. On narrow screens the
+captions stack outside the horizontal scroller and gold year guides remain
+attached to their years. Xbox also marks the FY2021 launch and the FY2025–26
+change; NVIDIA marks FY2021, FY2023 and FY2026. Desktop leaders connect the
+caption cards to those columns. Source: Microsoft’s 2024 report, Note 8, already
+listed above. Each caption selects its associated year; the FY2025–26 caption
+selects FY2026, while the FY2025 milestone remains independently selectable.
+
+### Case-study framing and year context
+
+PlayStation’s heading is “The console is only the first sale.” Xbox’s heading is
+“Xbox’s expansion, built and bought.” Each names the economic story in its chart.
+FY2021 now separates the Series X/S launch and higher console prices (hardware
++92%) from growth in games and Game Pass (content/services +23%). FY2025 gets its
+own milestone: total revenue +9%, content/services +16%, hardware −25%, and the
+first full year of Activision Blizzard consolidation. FY2026 contrasts that year
+with declines in both hardware (−29%) and content/services (−5%), partly offset
+by Game Pass growth. These explanations use Microsoft’s respective annual
+reports already cited above; fiscal years end in June. They do not attribute
+the total movement to a single title, subscription, or console generation.
+
+### Isolated Xbox revenue disclosures
+
+- **FY2024 acquisition bridge:** Microsoft’s 2024 annual report, Note 8, reports
+  a **US$5,729m net revenue impact** of the acquisition from 13 October 2023 to
+  30 June 2024. It explicitly includes the change of Activision Blizzard content
+  from third-party to first-party. Against total Gaming revenue of US$21,503m,
+  that is 26.6%; the calculated remainder is US$15,774m / 73.4%. This is **not**
+  Activision Blizzard standalone gross sales, a hardware/software split, or an
+  organic-growth calculation. The visual says “net acquisition effect.”
+- **FY2025 Game Pass snapshot:** Satya Nadella’s [30 July 2025 earnings-call
+  statement](https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q4)
+  says Game Pass annual revenue was **nearly US$5bn**. Against US$23,455m total
+  Gaming revenue, the visual uses approximately 21% / 79%, with “nearly” and
+  approximation signs on amounts and shares. The remaining revenue is about
+  US$18.5bn. The US$5bn plotting value is a rounded illustration, not an exact
+  observation. Game Pass is a subset of content/services and may include cloud
+  access; it is not a cloud-only series.
+
+These two views use different disclosure bases, appear only in their selected
+years, and never become stacked history categories. Other years have no invented
+shares. NVIDIA’s annual end-market reporting supplies Gaming totals but no
+GeForce GPU / GeForce NOW / console-chip revenue split. The main NVIDIA figure
+therefore remains total revenue, with the product-family list explicitly marked
+as non-proportional. Sony’s continuous four-category series remains unchanged.
+
+Chart dollar labels round from integer millions before formatting billions,
+avoiding binary floating-point rounding of US$23.455bn to US$23.45bn.

@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import SonyHistory from "./SonyHistory";
-import { financialCases, platformGrowth, platformHistorySources } from "@/lib/sanctuary/platform-history";
+import { financialCases, platformAnnotations, xboxRevenueSnapshots, platformGrowth, platformHistorySources } from "@/lib/sanctuary/platform-history";
 import s from "./sony-history.module.css";
 import p from "./platform-history.module.css";
 
-const usd = (value: number) => (value / 1000).toFixed(2);
+const usd = (value: number) => (Math.round(value / 10) / 100).toFixed(2);
 const percent = (value: number | null) => value === null ? "Base year" : `${value > 0 ? "+" : value < 0 ? "−" : ""}${Math.abs(value).toFixed(1)}%`;
 const choices = [{ id: "sony", name: "PlayStation", detail: "Sony · console, games & services" }, { id: "xbox", name: "Xbox", detail: "Microsoft · hardware & publishing" }, { id: "nvidia", name: "NVIDIA", detail: "Graphics hardware & cloud play" }] as const;
 type Company = typeof choices[number]["id"];
@@ -32,6 +32,8 @@ function FinancialCase({ company }: { company: "xbox" | "nvidia" }) {
   const row = data.rows.find(item => item.year === year)!;
   const growth = mode === "growth";
   const selectedGrowth = platformGrowth(data.rows, year);
+  const annotations = platformAnnotations[company];
+  const snapshot = company === "xbox" ? xboxRevenueSnapshots[year] : undefined;
   const milestone = data.milestones.find(event => event.year === year);
   const source = platformHistorySources[row.source];
   // Fixed dollar range matches Sony's all-revenue chart. Growth fits the 92% hardware launch.
@@ -61,6 +63,17 @@ function FinancialCase({ company }: { company: "xbox" | "nvidia" }) {
     </div>}
     <p className={s.guide}>{growth ? category === "total" ? "Change from the preceding fiscal year. The first bar is a base year; it is not zero growth." : "Reported annual category growth, available here from FY2021. Blank earlier years are not zero. These percentages describe change, not the share of revenue." : "Select a year for the figures and context. The zero-based US$35bn scale matches PlayStation’s total-revenue view."}</p>
     <div className={p.chart}>
+      <div className={p.annotationRail} role="group" aria-label={`${data.name} chart captions`}>
+        {annotations.map(event => <button key={event.title} type="button" className={p.annotation} aria-pressed={event.years.some(value => value === year)} onClick={() => selectYear(event.years[event.years.length - 1])}>
+          <small>{event.date}</small><strong>{event.title}</strong><span>{event.detail}</span><em>{event.context} ↓</em>
+        </button>)}
+      </div>
+      <svg className={p.connectors} viewBox="0 0 1000 30" preserveAspectRatio="none" aria-hidden="true">
+        {annotations.flatMap((event, index) => event.years.map(eventYear => {
+          const x = (data.rows.findIndex(item => item.year === eventYear) + .5) / data.rows.length * 1000;
+          return <path key={eventYear} d={`M ${(index + .5) / annotations.length * 1000} 0 V 8 L ${x} 24 V 30`}/>;
+        }))}
+      </svg>
       <div className={p.axis} aria-hidden="true">{ticks.map(tick => <span key={tick} style={{ top: `${y(tick)}%` }}>{growth ? `${tick > 0 ? "+" : ""}${tick}%` : tick ? `$${tick}bn` : "0"}</span>)}</div>
       <div className={p.scroll} ref={scroll} tabIndex={0} role="group" aria-label={`${data.name} ${growth ? label + " annual change" : "Gaming revenue history"}; scroll for all years`}>
         <div className={p.plot} style={{ "--count": data.rows.length } as CSSProperties}>
@@ -69,7 +82,7 @@ function FinancialCase({ company }: { company: "xbox" | "nvidia" }) {
             const value = amount(entry);
             const detail = growth ? percent(value) : `US$${usd(entry.revenue)}bn`;
             return <button key={entry.year} type="button" className={p.column} data-year={entry.year} aria-pressed={year === entry.year} aria-label={`FY${entry.year}, ended ${entry.end}: ${label} ${value === null && category !== "total" ? "not included in this series" : detail}. Show year.`} onClick={() => setYear(entry.year)}>
-              <span className={p.barArea} aria-hidden="true">{value === null ? <span className={p.unavailable}>{category === "total" ? "Base year" : "No rate"}</span> : <span className={p.bar} data-negative={value < 0} style={{ top: `${y(Math.max(value, 0))}%`, height: `${Math.abs(value) / (max - min) * 100}%`, "--case-color": colors[category === "hardware" ? 1 : category === "content" ? 2 : 0] } as CSSProperties}><span className={p.barNumber} data-negative={value < 0}>{growth ? percent(value) : usd(entry.revenue)}</span></span>}</span>
+              <span className={p.barArea} aria-hidden="true">{annotations.some(event => event.years.some(value => value === entry.year)) && <span className={p.eventGuide}/>}{value === null ? <span className={p.unavailable}>{category === "total" ? "Base year" : "No rate"}</span> : <span className={p.bar} data-negative={value < 0} style={{ top: `${y(Math.max(value, 0))}%`, height: `${Math.abs(value) / (max - min) * 100}%`, "--case-color": colors[category === "hardware" ? 1 : category === "content" ? 2 : 0] } as CSSProperties}><span className={p.barNumber} data-negative={value < 0}>{growth ? percent(value) : usd(entry.revenue)}</span></span>}</span>
               <span className={p.year}>’{String(entry.year).slice(2)}{data.milestones.some(event => event.year === entry.year) && <i/>}</span>
             </button>;
           })}</div>
@@ -85,6 +98,16 @@ function FinancialCase({ company }: { company: "xbox" | "nvidia" }) {
     <div className={s.readout} aria-live="polite" aria-atomic="true">
       <div><p className={s.kicker}>FY{year} · ended {row.end}</p><div className={s.totals}><div><small>Gaming revenue</small><strong>US${usd(row.revenue)}<span>bn</span></strong></div><div><small>Total revenue YoY</small><strong>{percent(selectedGrowth)}</strong></div></div>
         {company === "xbox" ? <><h3 className={p.subhead}>Hardware and content can move apart</h3><dl className={p.rates}><div><dt>Hardware revenue YoY</dt><dd>{row.hardwareGrowth === undefined ? "Not included" : percent(row.hardwareGrowth)}</dd></div><div><dt>Content & services revenue YoY</dt><dd>{row.contentGrowth === undefined ? "Not included" : percent(row.contentGrowth)}</dd></div></dl><p className={s.margin}>{row.hardwareGrowth === undefined ? "Category growth coverage starts in FY2021 in this exhibit." : <>Company-reported rates, rounded to whole percentages. <a href={platformHistorySources[row.growthSource ?? row.source].url} target="_blank" rel="noreferrer">Annual report ↗</a></>}</p></> : <><h3 className={p.subhead}>Inside this reported total</h3><ul className={p.products}><li>GeForce graphics processors for PCs</li><li>GeForce NOW cloud gaming</li><li>Console chips and development services</li></ul><p className={s.margin}>Product families, not proportional shares. The report does not split their revenue.</p></>}
+        {snapshot && <section className={p.snapshot} aria-label={`FY${year} revenue disclosure`}>
+          <h3>{snapshot.title}</h3>
+          <div className={p.snapshotBar} role="img" aria-label={`${snapshot.part}: ${snapshot.approximate ? "approximately " : ""}${(snapshot.amount / row.revenue * 100).toFixed(snapshot.approximate ? 0 : 1)}% of Gaming revenue; the remainder is ${snapshot.remainder.toLowerCase()}.`}>
+            <span style={{ width: `${snapshot.amount / row.revenue * 100}%` }}/>
+          </div>
+          <dl>{[{ label: snapshot.part, amount: snapshot.amount }, { label: snapshot.remainder, amount: row.revenue - snapshot.amount }].map((part, index) => <div key={part.label} data-part={index}>
+            <dt><i/>{part.label}</dt><dd>{snapshot.approximate ? index === 0 ? "Nearly US$5bn" : `≈US$${(part.amount / 1000).toFixed(1)}bn` : `US$${usd(part.amount)}bn`}<small>{snapshot.approximate ? "≈" : ""}{(part.amount / row.revenue * 100).toFixed(snapshot.approximate ? 0 : 1)}%</small></dd>
+          </div>)}</dl>
+          <p>{snapshot.note} <a href={platformHistorySources[snapshot.source].url} target="_blank" rel="noreferrer">Reported disclosure ↗</a></p>
+        </section>}
         <p className={p.disclosure}>{data.missing}</p>
       </div>
       <div className={s.event}><h3>{milestone?.title ?? `Inside FY${year}`}</h3><p>{milestone?.text ?? `Reported Gaming revenue ${selectedGrowth === null ? "provides the starting point for this series" : `${selectedGrowth >= 0 ? "rose" : "fell"} ${Math.abs(selectedGrowth).toFixed(1)}% from the previous year`}. The annual report below records the company's explanation and the wider business context.`}</p><a href={platformHistorySources[milestone?.source ?? row.source].url} target="_blank" rel="noreferrer">{milestone ? "Results and explanation" : source.label} ↗</a></div>

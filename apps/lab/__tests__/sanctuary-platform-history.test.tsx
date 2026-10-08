@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import PlatformHistory from "@/components/sanctuary/PlatformHistory";
 import PublisherEcosystem from "@/components/sanctuary/PublisherEcosystem";
-import { platformGrowth, xboxHistory, nvidiaHistory } from "@/lib/sanctuary/platform-history";
+import { platformGrowth, xboxHistory, nvidiaHistory, xboxRevenueSnapshots } from "@/lib/sanctuary/platform-history";
 import { chapters, sources } from "@/lib/sanctuary/content";
 
 it("preserves reported totals, fiscal boundaries and unavailable category data", () => {
@@ -19,14 +19,20 @@ it("preserves reported totals, fiscal boundaries and unavailable category data",
 it("switches company, measure and category without fabricating a dollar split", () => {
   const { container } = render(<PlatformHistory/>);
   const choices = screen.getByRole("group", { name: "Choose a financial case study" });
-  expect(screen.getByRole("heading", { name: /PlayStation, beyond/ })).toBeVisible();
+  expect(screen.getByRole("heading", { name: /The console is only the first sale/ })).toBeVisible();
   expect(screen.queryByRole("heading", { name: "Whose games fill the ecosystem?" })).not.toBeInTheDocument();
   fireEvent.click(within(choices).getByRole("button", { name: /^Xbox/ }));
   expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2026");
   expect(screen.getByText(/not revenue from Xbox consoles alone/)).toBeVisible();
   expect(screen.getByText(/separate Xbox operating-profit figure/)).toBeVisible();
+  const acquisition = screen.getByRole("button", { name: /13 October 2023 · FY2024 Microsoft buys Activision Blizzard Call of Duty · Diablo/ });
+  fireEvent.click(acquisition);
+  expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2024");
+  expect(acquisition).toHaveAttribute("aria-pressed", "true");
+  expect(screen.getByRole("button", { name: /FY2024, ended/ }).querySelector(".eventGuide")).toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "Year-over-year change" }));
   fireEvent.click(screen.getByRole("button", { name: "Xbox hardware" }));
+  expect(acquisition).toBeVisible();
   const chart = screen.getByRole("group", { name: /Xbox Xbox hardware annual change/ });
   expect(within(chart).getByRole("button", { name: /FY2021.*\+92.0%/ })).toBeVisible();
   expect(within(chart).getByRole("button", { name: /FY2017.*not included/ }).querySelector(".bar")).toBeNull();
@@ -36,15 +42,25 @@ it("switches company, measure and category without fabricating a dollar split", 
   fireEvent.click(screen.getByRole("button", { name: /FY2024 Activision/ }));
   expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2024");
   expect(screen.getByText(/44 percentage points/)).toBeVisible();
+  const acquisitionSplit = screen.getByRole("region", { name: "FY2024 revenue disclosure" });
+  expect(within(acquisitionSplit).getByText("US$5.73bn")).toBeVisible();
+  expect(within(acquisitionSplit).getByText("26.6%")).toBeVisible();
+  fireEvent.change(screen.getByRole("combobox", { name: "Fiscal year" }), { target: { value: "2025" } });
+  expect(screen.getByText("Nearly US$5bn")).toBeVisible();
+  expect(screen.getByText("≈21%")).toBeVisible();
+  expect(xboxRevenueSnapshots[2024]?.amount).toBe(5729);
+  expect(xboxRevenueSnapshots[2026]).toBeUndefined();
   fireEvent.click(screen.getByRole("button", { name: "Revenue" }));
   expect(screen.queryByRole("group", { name: "Choose an Xbox growth series" })).not.toBeInTheDocument();
   expect(container.querySelectorAll(".bar")).toHaveLength(10);
   expect(screen.getByRole("button", { name: /FY2024.*US\$21.50bn/ })).toBeVisible();
   fireEvent.click(within(choices).getByRole("button", { name: /^NVIDIA/ }));
+  expect(screen.queryByRole("region", { name: /revenue disclosure/ })).not.toBeInTheDocument();
   expect(screen.getByText(/These bars are not cloud-gaming revenue/)).toBeVisible();
+  expect(screen.queryByRole("button", { name: /Microsoft buys Activision Blizzard/ })).not.toBeInTheDocument();
   expect(screen.getByText(/GeForce NOW revenue, its share of Gaming and its profit are not separately disclosed/)).toBeVisible();
   expect(screen.queryByText(/44 percentage points/)).not.toBeInTheDocument();
-  fireEvent.click(screen.getByRole("button", { name: /FY2023 Inventory/ }));
+  fireEvent.click(within(screen.getByRole("group", { name: "NVIDIA chart captions" })).getByRole("button", { name: /FY2023 Inventory/ }));
   expect(screen.getByRole("heading", { name: /Games still need machines/ })).toBeVisible();
   fireEvent.click(screen.getByRole("button", { name: "Year-over-year change" }));
   expect(screen.getByRole("button", { name: /FY2023.*−27.2%/ })).toBeVisible();

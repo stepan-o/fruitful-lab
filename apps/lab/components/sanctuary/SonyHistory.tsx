@@ -46,7 +46,7 @@ export default function SonyHistory() {
   return <figure className={s.figure} aria-labelledby="sony-history-title">
     <figcaption>
       <p className={s.kicker}>Sony · Game & Network Services · FY2016–FY2025</p>
-      <h2 id="sony-history-title">PlayStation,<br/><em>beyond the console.</em></h2>
+      <h2 id="sony-history-title">The console is<br/><em>only the first sale.</em></h2>
       <p>In FY2025, about four fifths of Sony’s gaming revenue came from something other than the consoles themselves.</p>
     </figcaption>
 

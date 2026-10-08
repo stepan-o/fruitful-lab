@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import SonyHistory from "@/components/sanctuary/SonyHistory";
-import { sonyHistory, sonyMix } from "@/lib/sanctuary/sony-history";
+import { sonyCategories, sonyHistory, sonyMix, sonyPublisherContext, sonyRevenueView } from "@/lib/sanctuary/sony-history";
 import { platformRows, platformTotals } from "@/lib/sanctuary/industry-data";
 import { chapters } from "@/lib/sanctuary/content";
 
@@ -50,4 +50,47 @@ it("connects milestone, year picker, exact figures and category readout", () => 
 it("places the Sony exhibit immediately after chapter two's first paragraph", () => {
   const chapter = chapters.find(item => item.id === "studio-to-screen")!;
   expect(chapter.exhibits).toEqual([{ afterParagraph: 0, kind: "sony-history" }, { afterParagraph: 5, kind: "market-map" }]);
+});
+
+
+it("isolates each revenue series, rescales from zero and keeps the selected year", () => {
+  const { container } = render(<SonyHistory/>);
+  fireEvent.change(screen.getByRole("combobox", { name: "Fiscal year" }), { target: { value: "2025" } });
+  const latestTotals = ["944.4", "2,540.4", "763.1", "437.7"];
+  sonyCategories.forEach((category, index) => {
+    fireEvent.click(screen.getByRole("button", { name: category.label, exact: true }));
+    const chart = screen.getByRole("group", { name: new RegExp(`Ten years of ${category.label} revenue only`) });
+    const columns = within(chart).getAllByRole("button");
+    expect(columns).toHaveLength(10);
+    expect(within(chart).getByRole("button", { name: `FY2025: ${category.label} revenue ${latestTotals[index]} billion yen. Show year.` })).toHaveAttribute("aria-pressed", "true");
+    expect(container.querySelectorAll(".segment")).toHaveLength(10);
+    expect(container.querySelector(".profitArea")).toBeNull();
+    expect(screen.getByText(`${category.label} revenue`, { selector: "small" })).toBeVisible();
+    expect(screen.getByText(`¥${latestTotals[index]}`, { exact: false, selector: ".totals strong" })).toBeVisible();
+    const view = sonyRevenueView(index);
+    expect(view.ticks.at(-1)?.label).toBe("0");
+    expect(view.unit).toBe("billions of yen");
+    const fy25 = columns[9].querySelector<HTMLElement>(".stack")!;
+    expect(parseFloat(fy25.style.height)).toBeCloseTo(sonyMix(sonyHistory[9])[index] / view.max * 100);
+    expect(sonyHistory.every(row => sonyMix(row)[index] <= view.max)).toBe(true);
+    expect(fy25.querySelector<HTMLElement>(".segment")).toHaveStyle({ height: "100%" });
+  });
+  fireEvent.click(screen.getByRole("button", { name: "All revenue", exact: true }));
+  expect(container.querySelectorAll(".segment")).toHaveLength(40);
+  expect(container.querySelectorAll(".profitArea")).toHaveLength(10);
+  expect(screen.getByRole("combobox", { name: "Fiscal year" })).toHaveValue("2025");
+  expect(screen.getByRole("button", { name: /^FY2025: revenue 4,685.7 billion yen; operating profit 463.3/ })).toHaveAttribute("aria-pressed", "true");
+});
+
+it("keeps the publisher comparison in copies and exposes the gross-revenue boundary", () => {
+  render(<SonyHistory/>);
+  expect(sonyPublisherContext.totalUnits).toBe(317.9);
+  expect(sonyPublisherContext.firstPartyUnits).toBe(32.1);
+  expect(screen.getByText("32.1m copies")).toBeVisible();
+  expect(screen.getByText("285.8m copies")).toBeVisible();
+  expect(screen.getByText("10.1% of full-game copies")).toBeVisible();
+  expect(screen.getByText("89.9% of full-game copies")).toBeVisible();
+  expect(screen.getByText(/not a division of the money above/)).toBeVisible();
+  expect(screen.getByText(/Digital game and add-on revenue includes the amount paid to outside publishers/)).toBeVisible();
+  expect(screen.getByRole("link", { name: /Figures & scope/ })).toHaveAttribute("href", sonyPublisherContext.source);
 });

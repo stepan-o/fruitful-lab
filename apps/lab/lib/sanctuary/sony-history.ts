@@ -71,3 +71,28 @@ export const sonyYearNotes: Record<number, string> = {
   2023: "Sony shipped 20.8 million PS5s. Hardware brought in ¥1,211.5bn; PlayStation games and add-ons contributed ¥2,114.8bn, with network services and other sales alongside them.",
 };
 export const sonyYearNoteLinks: Record<number, string> = { 2019: `${ir}19q4_sonyspeech.pdf` };
+
+
+// Fixed domains span every reviewed year; the zero baseline is never cropped.
+// Category-only views use billions to keep sub-trillion categories readable.
+export function sonyRevenueView(category: number | null) {
+  const max = category === null ? 5_000_000 : [1_500_000, 3_000_000, 800_000, 500_000][category];
+  const divisor = category === null ? 1_000_000 : 1_000;
+  return {
+    max,
+    unit: category === null ? "trillions of yen" : "billions of yen",
+    ticks: Array.from({ length: 6 }, (_, i) => ({
+      fraction: i / 5,
+      label: i === 5 ? "0" : `¥${Number((max * (5 - i) / 5 / divisor).toFixed(2))}${category === null ? "tn" : "bn"}`,
+    })),
+  };
+}
+
+export const sonyAccountingSource = `${ir}26q1_supplement.pdf#page=11`;
+export const sonyPublisherContext = {
+  year: 2025,
+  totalUnits: 317.9,
+  firstPartyUnits: 32.1,
+  source: `${ir}25q4_supplement.pdf#page=12`,
+  discussion: "https://www.sony.com/en/SonyInfo/IR/library/presen/business_segment_meeting/pdf/2026/GNS_QA_E.pdf#page=3",
+} as const;

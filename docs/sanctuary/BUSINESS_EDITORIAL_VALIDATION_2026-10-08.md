@@ -36,7 +36,7 @@ first diagram retains its arcade opening as the continuation from chapter 1.
 
 ## Verification
 
-- Required app checks pass: 66 suites, 339 tests, one snapshot, asset checks and the
+- Required app checks pass: 66 suites, 341 tests, one snapshot, asset checks and the
   Next.js production build. All 22 retained asset releases verify.
 - Scoped ESLint and whitespace checks pass. Updated interaction regressions
   verify fixed game/studio/publisher identity, store settlements, separate game
@@ -71,10 +71,10 @@ first paragraph. The prose and approved first chapter are unchanged. Financial
 sources, transformations and event annotations are recorded in
 [Sony financial history](SONY_FINANCIAL_HISTORY.md).
 
-- Final suite: 66 suites / 339 tests / one snapshot; all pass. Asset validation
+- Final suite: 66 suites / 341 tests / one snapshot; all pass. Asset validation
   verifies all 22 retained releases. Scoped lint and whitespace checks pass.
 - Both revenue and profit have zero-based, separately labeled scales. Selecting
-  a year highlights both; category highlighting preserves the total context.
+  a year highlights both; category selection now isolates its revenue and rescales from zero (see the follow-up below).
   Source figures reconcile within published rounding and match the existing
   latest-year exhibit. No early add-on split is invented. FY2020 uses the IFRS
   restatement; off-platform software is harmonized explicitly.
@@ -90,3 +90,31 @@ sources, transformations and event annotations are recorded in
   has not been measured; no Core Web Vitals claim is made.
 
 Final standalone production build exited successfully after the mobile axis-label spacing refinement.
+
+
+## Category isolation / publisher comparison follow-up
+
+Required `API_BASE_URL=http://localhost:8000 npm run ci` exited 0: 66 suites,
+341 tests, one snapshot, all asset checks and production build pass. Scoped
+ESLint and whitespace checks pass. Targeted regressions verify all four isolated
+series, own totals and units, domain coverage and zero baseline, removal of
+whole-segment profit in isolated views, year preservation, restoration of the
+full stack, and first-party/other-publisher copy counts and scope.
+
+Production browser checks at 1280×900, 768×1024, 390×844 and 320×760 showed no
+horizontal page overflow. Hardware selection works with keyboard Enter; year
+selection stays consistent when the category changes. Category-only bars,
+value labels, fixed narrow-screen axes, category totals and All revenue restore
+were inspected. All chart buttons meet the 44px target at 320px. The separate
+publisher comparison was inspected at 1280px and 320px. Console error log was
+empty. Temporary viewport override reset. No animation or external request added.
+
+Evidence screenshots (local review artifacts):
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-category-desktop.png`
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-category-mobile.png`
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-publisher-comparison.png`
+
+The financial evidence does not support dividing the money bars by publisher
+ownership/funding. Public notes distinguish gross digital revenue from retained
+income, and first-party copy share from revenue, profit and publisher payouts.
+Reviewed definitions and source boundaries are in `SONY_FINANCIAL_HISTORY.md`.

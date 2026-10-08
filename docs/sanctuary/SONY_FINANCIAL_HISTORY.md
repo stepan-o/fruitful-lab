@@ -106,7 +106,7 @@ hardware, gold game revenue, clay network services, slate other. Two aligned
 zero-based bar charts have separate, explicit scales. A selected column is
 highlighted in both. No publisher artwork, logo or screenshot is reproduced;
 Sony is credited for the factual data, with original-source links at the point
-of inspection. No quoted prose from Sony is used in this exhibit.
+of inspection. A short excerpt from Sony’s June 2026 investor Q&A is attributed in the publisher comparison below.
 
 Native buttons and a year selector work with keyboard/touch. On narrow screens,
 the charts scroll inside their panel to preserve readable axes and 44px column
@@ -123,3 +123,51 @@ agreement with the existing FY2024–2025 exhibit, missing early add-on values,
 the IFRS restatement, off-platform regrouping, year controls, milestone and
 category selection, exact-data disclosure, and paragraph-0 placement. Browser
 and final CI results are recorded in the editorial validation log after review.
+
+
+## Category-only views and publisher boundaries — 8 October 2026
+
+Selecting a category removes the other stacks and the whole-segment profit plot.
+Each annual bar starts at zero and labels its own value. The selected-year
+readout gives category revenue and its share of segment revenue. `All revenue`
+restores the stacked composition and profit plot without changing the year.
+The scale is fixed across all ten years within each selected category: hardware
+¥1,500bn, PlayStation games/add-ons ¥3,000bn, network ¥800bn, other ¥500bn.
+Overall revenue retains ¥5tn. The chart states that the scale changes, uses
+billions in isolated views, and never labels segment profit as category profit.
+No financial values in the historical dataset have changed.
+
+### What the publisher evidence can establish
+
+The [FY2025 Q4 supplement, p. 12](https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/25q4_supplement.pdf#page=12)
+reports **317.9m PS4/PS5 full-game units**, of which **32.1m are first-party**.
+The remainder is derived, **285.8m**. Shares of the same denominator are
+**10.1% and 89.9%**. These include bundled copies, not add-ons or subscription
+revenue, and do not measure free-to-play spending. The two original horizontal
+bars have a common 0–317.9m baseline; they are a fixed FY2025 comparison,
+explicitly separate from the year/category revenue controls above.
+
+Reviewed the regular financial supplements, FY2025 annual-report G&NS section,
+[2025 segment presentation](https://www.sony.com/en/SonyInfo/IR/library/presen/business_segment_meeting/pdf/2025/GNS_E.pdf)
+and [June 2026 investor Q&A](https://www.sony.com/en/SonyInfo/IR/library/presen/business_segment_meeting/pdf/2026/GNS_QA_E.pdf).
+These sources do not provide the consistent annual first-party/third-party
+revenue or publisher-payout series needed to split the existing money bars.
+A split by units cannot estimate that: prices, discounts, add-ons, subscriptions,
+free-to-play games and contract terms differ. First-party is Sony’s title
+classification, not a complete studio-ownership or funding classification.
+The Q&A describes both internal teams and external partners in its first-party
+portfolio (question 8, p. 6). It does not disclose their financial split.
+
+Question 3 (pp. 3–4) supplies the exact 13-word excerpt used publicly:
+“most of the value of our ecosystem is driven by third-party publishers”.
+This is Sony management’s assessment, not a measured share of profit. The
+surrounding answer describes first-party titles as an attraction to the platform
+even while a minority of SIE sales; the quote supports the chapter’s argument
+without turning the unit share into an earnings estimate.
+
+The [FY2026 Q1 supplement, p. 11, notes 3–4](https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/26q1_supplement.pdf#page=11)
+explicitly states gross retail recognition for digital software and add-ons.
+A prominent note now explains that outside publishers’ share is included in
+those revenues before costs. Physical third-party software continues to be
+royalty-based; the total is not a uniform gross transaction value or Sony’s
+retained commission.

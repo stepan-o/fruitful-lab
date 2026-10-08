@@ -2,7 +2,10 @@ Sanctuary PlayStation history (2026-10-08): chapter 2 adds the typed `sony-histo
 exhibit immediately after paragraph 0. Original interactive charts show Sony G&NS
 revenue by broad category and operating profit for FY2016–FY2025, with separately
 labeled scales, source-backed milestones, fiscal/accounting boundaries and exact
-data. No new asset pack or runtime dependency. Dataset and methodology:
+data. Selecting a category isolates and rescales its revenue; All revenue restores
+the stack. A separate FY2025 first-party/other-publisher comparison uses copies
+sold, with the unavailable money split and gross digital revenue basis explicit.
+No new asset pack or runtime dependency. Dataset and methodology:
 `docs/sanctuary/SONY_FINANCIAL_HISTORY.md`. The chapter prose remains unchanged.
 
 Sanctuary chapter 2 editorial revision (2026-10-08): the current narrative follows

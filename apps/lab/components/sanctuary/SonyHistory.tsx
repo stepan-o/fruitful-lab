@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState, type CSSProperties } from "react";
-import { sonyAccountingSource, sonyComposition, sonyGrowth, sonyGrowthView, sonyUsd, sonyChartAnnotations, sonyCategories, sonyHistory, sonyPublisherContext, sonyRevenueView, sonyMilestones, sonyMix, sonySources, sonyYearNoteLinks, sonyYearNotes } from "@/lib/sanctuary/sony-history";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import { createPortal } from "react-dom";
+import { type SonyYear, sonyAccountingSource, sonyComposition, sonyGrowth, sonyGrowthView, sonyUsd, sonyChartAnnotations, sonyCategories, sonyHistory, sonyPublisherContext, sonyRevenueView, sonyMilestones, sonyMix, sonySources, sonyYearNoteLinks, sonyYearNotes } from "@/lib/sanctuary/sony-history";
 import s from "./sony-history.module.css";
 
 const billions = (n: number) => (n / 1000).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -24,8 +25,7 @@ export default function SonyHistory() {
   const scroll = useRef<HTMLDivElement>(null);
   const row = sonyHistory.find(item => item.year === year)!;
   const values = sonyMix(row);
-  const composition = sonyComposition(row);
-  const hasPrevious = composition[0].previousPercent !== null;
+
   const milestone = sonyMilestones.find(item => item.year === year);
   const source = sonySources[row.source];
   const revenueView = sonyRevenueView(category);
@@ -127,28 +127,7 @@ export default function SonyHistory() {
           <div><small>{category === null ? growth ? "Total revenue YoY" : "Sales revenue" : `${sonyCategories[category].label} ${growth ? "YoY" : "revenue"}`}</small><strong>{growth ? growthLabel(sonyGrowth(row, category)) : <>US${billions(sonyUsd(selectedRevenue, row))}<span>bn</span></>}</strong></div>
           {showProfit ? <div><small>Operating profit</small><strong>US${billions(sonyUsd(row.profit, row))}<span>bn</span></strong></div> : growth ? <div><small>{category === null ? "Sales revenue" : "Category revenue"}</small><strong>US${billions(sonyUsd(selectedRevenue, row))}<span>bn</span></strong></div> : <div><small>Share of gaming revenue</small><strong>{share(selectedRevenue, row.revenue)}</strong></div>}
         </div>
-        <section className={s.composition} aria-label={`FY${year} revenue proportions`}>
-          <p className={s.mixHeading}>Share of total revenue</p>
-          <div className={s.mixKey}><span><i className={s.solidKey}/>FY{year}</span>{hasPrevious && <span><i className={s.dashedKey}/>FY{year - 1}</span>}</div>
-          <div className={s.mixBody}>
-            <div className={s.mixVisual} role="img" aria-label={`100% stacked revenue bar for FY${year}${hasPrevious ? `, with dashed FY${year - 1} proportions` : ""}. Category amounts, shares and changes are listed alongside.`}>
-              <span className={s.mixCeiling} aria-hidden="true">100%</span>
-              {hasPrevious && <div className={s.shareTrack} data-period="previous" aria-hidden="true">
-                {composition.map((item, i) => <span key={sonyCategories[i].label} className={s.shareGhost} data-category={i} style={{ bottom: `${composition.slice(0, i).reduce((sum, entry) => sum + entry.previousPercent!, 0)}%`, height: `${item.previousPercent}%`, "--series": sonyCategories[i].color } as CSSProperties}/>)}
-              </div>}
-              <div className={s.shareTrack} data-period="current" aria-hidden="true">
-                {composition.map((item, i) => <span key={sonyCategories[i].label} className={s.shareFill} data-category={i} data-muted={category !== null && category !== i} style={{ bottom: `${composition.slice(0, i).reduce((sum, entry) => sum + entry.percent, 0)}%`, height: `${item.percent}%`, "--series": sonyCategories[i].color } as CSSProperties}/>)}
-              </div>
-              <span className={s.mixFloor} aria-hidden="true">0%</span>
-            </div>
-            <dl className={s.mixBreakdown}>{sonyCategories.map((item, i) => <div key={item.label} data-selected={category === i} style={{ "--series": item.color } as CSSProperties}>
-              <dt><i/>{item.label}</dt>
-              <dd className={s.mixAmount}>US${billions(sonyUsd(values[i], row))}bn{growth && <small>Revenue YoY: {growthLabel(sonyGrowth(row, i))}</small>}</dd>
-              <dd className={s.mixShare}><strong>{composition[i].percent.toFixed(1)}%</strong> <span className={s.mixShift}>({ppLabel(composition[i].shift)})</span>{hasPrevious && <small>was {composition[i].previousPercent!.toFixed(1)}%</small>}</dd>
-            </div>)}</dl>
-          </div>
-          <p className={s.mixNote}>{hasPrevious ? `Brackets: change in share from FY${year - 1}, in percentage points (pp).` : "First year in this series; prior-year proportions and changes are unavailable."}</p>
-        </section>
+        <SonyRevenueMix key={year} row={row} category={category} growth={growth}/>
         <p className={s.fxNote}><a href={row.fxSource} target="_blank" rel="noreferrer">FY{year} average: ¥{row.yenPerUsd.toFixed(1)} per US$1 ↗</a>{growth && " · Change compares each year at its own average rate; this is not constant-currency growth."}</p>
         <p className={s.margin}>{category === null ? <>Operating margin: <strong>{share(row.profit, row.revenue)}</strong>. Profit is for the whole gaming segment; Sony does not provide a matching profit split by these categories.</> : <>Sony does not disclose operating profit for this category. Choose All revenue to see the whole gaming segment’s profit.</>}</p>
       </div>
@@ -188,4 +167,127 @@ export default function SonyHistory() {
       <p>Data checked 8 October 2026. Completed fiscal years only; no forecasts. <a href={source.url} target="_blank" rel="noreferrer">Selected year’s financial source ↗</a></p>
     </details>
   </figure>;
+}
+
+
+function SonyRevenueMix({ row, category, growth }: { row: SonyYear; category: number | null; growth: boolean }) {
+  const composition = sonyComposition(row);
+  const values = sonyMix(row);
+  const previous = sonyHistory.find(item => item.year === row.year - 1);
+  const previousValues = previous ? sonyMix(previous) : null;
+  const [active, setActive] = useState<{ index: number; anchor: DOMRect } | null>(null);
+  const [position, setPosition] = useState<{ left: number; top: number } | null>(null);
+  const root = useRef<HTMLElement>(null);
+  const popup = useRef<HTMLDivElement>(null);
+  const delay = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pinned = useRef(false);
+  const tooltipId = useId();
+
+  function keepOpen() {
+    if (delay.current) clearTimeout(delay.current);
+  }
+  function close() {
+    keepOpen();
+    pinned.current = false;
+    setActive(null);
+    setPosition(null);
+  }
+  function inspect(index: number, anchor: HTMLElement, pin = false) {
+    keepOpen();
+    if (pinned.current && !pin) return;
+    pinned.current = pin;
+    setPosition(null);
+    setActive({ index, anchor: anchor.getBoundingClientRect() });
+  }
+  function leave() {
+    keepOpen();
+    if (!pinned.current) delay.current = setTimeout(close, 120);
+  }
+  function toggle(index: number, anchor: HTMLElement) {
+    if (pinned.current && active?.index === index) close();
+    else inspect(index, anchor, true);
+  }
+
+  useEffect(() => () => { if (delay.current) clearTimeout(delay.current); }, []);
+  useEffect(() => {
+    if (!active) return;
+    const dismiss = () => {
+      if (delay.current) clearTimeout(delay.current);
+      pinned.current = false;
+      setActive(null);
+      setPosition(null);
+    };
+    const outside = (event: PointerEvent) => {
+      if (event.target instanceof Node && !root.current?.contains(event.target) && !popup.current?.contains(event.target)) dismiss();
+    };
+    const escape = (event: KeyboardEvent) => { if (event.key === "Escape") dismiss(); };
+    window.addEventListener("pointerdown", outside);
+    window.addEventListener("keydown", escape);
+    window.addEventListener("scroll", dismiss, true);
+    window.addEventListener("resize", dismiss);
+    return () => {
+      window.removeEventListener("pointerdown", outside);
+      window.removeEventListener("keydown", escape);
+      window.removeEventListener("scroll", dismiss, true);
+      window.removeEventListener("resize", dismiss);
+    };
+  }, [active]);
+  useLayoutEffect(() => {
+    if (!active || !popup.current) return;
+    const rect = popup.current.getBoundingClientRect();
+    const margin = 12;
+    let left = active.anchor.right + margin;
+    let top = active.anchor.top + active.anchor.height / 2 - rect.height / 2;
+    if (left + rect.width > window.innerWidth - margin) {
+      left = active.anchor.left - rect.width - margin;
+      if (left < margin) {
+        left = margin;
+        top = active.anchor.bottom + margin;
+        if (top + rect.height > window.innerHeight - margin) top = active.anchor.top - rect.height - margin;
+      }
+    }
+    setPosition({ left: Math.max(margin, Math.min(left, window.innerWidth - rect.width - margin)), top: Math.max(margin, Math.min(top, window.innerHeight - rect.height - margin)) });
+  }, [active]);
+
+  const highlighted = active?.index ?? category;
+  const detail = active ? composition[active.index] : null;
+  return <section ref={root} className={s.composition} aria-label={`FY${row.year} revenue proportions`} onPointerLeave={leave}>
+    <p className={s.mixHeading}>Share of total revenue</p>
+    <div className={s.mixKey}>{previous && <span><i className={s.dashedKey}/>FY{previous.year}</span>}<span><i className={s.solidKey}/>FY{row.year}</span></div>
+    <p className={s.mixHint}>Hover or tap a segment or category to inspect.</p>
+    <div className={s.mixBody}>
+      <div className={s.mixVisual} role="img" aria-label={`100% stacked revenue bar for FY${row.year}${previous ? `, with dashed FY${previous.year} proportions` : ""}. Read top to bottom, matching the category list.`}>
+        {previous && <div className={s.shareTrack} data-period="previous" aria-hidden="true">
+          {composition.map((item, i) => <span key={sonyCategories[i].label} className={s.shareGhost} data-category={i} data-active={highlighted === i}
+            onPointerEnter={event => { if (event.pointerType !== "touch") inspect(i, event.currentTarget); }} onClick={event => toggle(i, event.currentTarget)}
+            style={{ top: `${composition.slice(0, i).reduce((sum, entry) => sum + entry.previousPercent!, 0)}%`, height: `${item.previousPercent}%`, "--series": sonyCategories[i].color } as CSSProperties}/>)}
+        </div>}
+        <div className={s.shareTrack} data-period="current" aria-hidden="true">
+          {composition.map((item, i) => <span key={sonyCategories[i].label} className={s.shareFill} data-category={i} data-active={highlighted === i} data-muted={highlighted !== null && highlighted !== i}
+            onPointerEnter={event => { if (event.pointerType !== "touch") inspect(i, event.currentTarget); }} onClick={event => toggle(i, event.currentTarget)}
+            style={{ top: `${composition.slice(0, i).reduce((sum, entry) => sum + entry.percent, 0)}%`, height: `${item.percent}%`, "--series": sonyCategories[i].color } as CSSProperties}><span>{item.percent.toFixed(1)}%</span></span>)}
+        </div>
+      </div>
+      <ul className={s.mixBreakdown}>{sonyCategories.map((item, i) => <li key={item.label} style={{ "--series": item.color } as CSSProperties}>
+        <button type="button" className={s.mixCategory} data-active={highlighted === i} aria-label={`Inspect ${item.label} revenue share`} aria-describedby={active?.index === i ? tooltipId : undefined}
+          onPointerEnter={event => { if (event.pointerType !== "touch") inspect(i, event.currentTarget); }}
+          onFocus={event => { pinned.current = false; inspect(i, event.currentTarget); }} onBlur={close} onClick={event => toggle(i, event.currentTarget)}>
+          <span className={s.mixName}><i/>{item.label}</span>
+          <span className={s.mixAmount}>US${billions(sonyUsd(values[i], row))}bn{growth && <small>Revenue YoY: {growthLabel(sonyGrowth(row, i))}</small>}</span>
+          <span className={s.mixShare}><strong>{composition[i].percent.toFixed(1)}%</strong> <span className={s.mixShift}>({ppLabel(composition[i].shift)})</span>{previous && <small>was {composition[i].previousPercent!.toFixed(1)}%</small>}</span>
+        </button>
+      </li>)}</ul>
+    </div>
+    <p className={s.mixNote}>{previous ? `Solid: FY${row.year}. Dashed: FY${previous.year}. Brackets show the change in share, in percentage points (pp).` : "First year in this series; prior-year proportions and changes are unavailable."}</p>
+    {active && detail && createPortal(<div ref={popup} id={tooltipId} role="tooltip" className={s.mixTooltip} onPointerEnter={keepOpen} onPointerLeave={leave}
+      style={{ left: position?.left ?? 0, top: position?.top ?? 0, visibility: position ? "visible" : "hidden", "--series": sonyCategories[active.index].color } as CSSProperties}>
+      <p className={s.tooltipKicker}>FY{row.year} · Revenue mix</p>
+      <h4><i/>{sonyCategories[active.index].label}</h4>
+      <div className={s.tooltipValue}><strong>{detail.percent.toFixed(1)}%</strong><span>of gaming revenue</span></div>
+      <p className={s.tooltipAmount}>US${billions(sonyUsd(values[active.index], row))}bn <span>of US${billions(sonyUsd(row.revenue, row))}bn</span></p>
+      {previous && previousValues ? <><div className={s.tooltipPrevious}><span><i/>FY{previous.year}</span><strong>{detail.previousPercent!.toFixed(1)}%</strong><span>US${billions(sonyUsd(previousValues[active.index], previous))}bn</span></div>
+        <p className={s.tooltipChange}><strong>{ppLabel(detail.shift)}</strong><span>change in revenue share</span></p></> : <p className={s.tooltipFoot}>No previous year in this series.</p>}
+      <p className={s.tooltipFoot}>Share changes use unrounded values. Esc or tap outside to close.</p>
+    </div>, document.body)}
+  </section>;
 }

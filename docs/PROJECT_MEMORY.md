@@ -9,7 +9,9 @@ one shared percentage scale; FY2016 is a base year. Chart annotations mark PS5
 news, launch and supply constraints, with sourced year details. Raw JPY and FX
 remain in the disclosure table. The year readout includes a solid 100% revenue
 stack, dashed prior-year proportions and bracketed share shifts in percentage
-points, preserving the full total under filtering. A separate FY2025 first-party/other-publisher comparison uses copies
+points, preserving the full total under filtering. Its detail stack reads top to
+bottom with the category list; direct percentages and hover/focus/tap tooltips
+identify each segment and its prior-year comparison. A separate FY2025 first-party/other-publisher comparison uses copies
 sold, with the unavailable money split and gross digital revenue basis explicit.
 No new asset pack or runtime dependency. Dataset and methodology:
 `docs/sanctuary/SONY_FINANCIAL_HISTORY.md`. The accompanying prose explains FY2025 scale, add-on content, gross revenue versus profit, original PlayStation history and the economic bridge to Valve.

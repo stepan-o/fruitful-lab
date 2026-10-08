@@ -199,3 +199,33 @@ so no additional motion, media or runtime dependency was introduced.
 Review captures:
 - `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-proportions-desktop.png`
 - `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-proportions-mobile.png`
+
+
+## Composition order and popup inspection
+
+Corrected the selected-year stack to read top to bottom in the same order as its
+category list. Direct percentage labels identify each solid segment. Hover,
+keyboard focus and tap open a viewport-bounded tooltip; the current segment,
+prior outline and matching category highlight together. The tooltip is outside
+the readout's live region, and full-width category buttons provide accessible
+alternatives to the small segments. Escape, loss of focus, another year, scrolling
+and outside interaction dismiss stale detail.
+
+Required CI passed: 66 suites, 345 tests, one snapshot, 22 retained asset releases
+and production build. Scoped ESLint and whitespace checks passed. The new test
+covers current/prior amounts and shares, pp shifts, matching highlights,
+first-year missingness, keyboard focus, Escape, tap and stale-detail dismissal.
+FY2025 measured solid heights on desktop were hardware 63.1875px and Other
+29.28125px, consistent with 20.1557% / 9.3410% subject to subpixel rounding.
+The earlier heights were also correct; opposite bar/list order caused ambiguity.
+
+Browser verification at the normal desktop viewport, 768×1024, 390×844 and
+320×760: no horizontal page overflow; popup remains inside the viewport;
+category buttons exceed 44px in both dimensions; keyboard focus advances to the
+next category, Escape closes, repeat tap unpins, changing year removes stale
+content, and FY2016 shows no fabricated prior comparison. Browser errors: none.
+Viewport override reset. No new asset, dependency or continuous animation.
+
+Review captures:
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-tooltip-desktop.png`
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-tooltip-mobile.png`

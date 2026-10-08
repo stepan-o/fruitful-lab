@@ -314,7 +314,8 @@ its original yen figures; no unsupported historical FX is inferred.
 
 The detailed year readout pairs its category amounts with a slim vertical 100%
 stack. Solid segments show the selected year; dashed outlines show the preceding
-year on the same scale and in the same bottom-to-top order as the main chart.
+year on the same scale. The detail stack now reads top to bottom in the same
+order as its category list, with percentages printed inside the solid segments.
 Dashed guides cross the solid bar at the prior year's cumulative boundaries;
 each outlined segment's height, not its cumulative endpoint, is that category's
 share. The list gives current shares, previous shares, and bracketed YoY shifts
@@ -331,3 +332,26 @@ changed to force an exact sum. No new assets, animation or dependency.
 Worked verification: FY2022 hardware 30.8270%, FY2021 hardware 21.5151%, shift
 +9.3120 pp (displayed 30.8%, 21.5%, +9.3 pp). This is distinct from the 58.1%
 USD hardware-revenue growth shown in the annual-growth chart.
+
+
+## Composition identification and inspection — 8 October 2026
+
+The former bottom-to-top stack opposed the adjacent top-to-bottom legend. Its
+heights were numerically correct, but the ordering made categories easy to
+misidentify. The detail now starts with hardware at the top, matching the list.
+The prior-year key and narrow dashed bar sit left of the current solid bar.
+Dashed guides mark prior cumulative boundaries, not current category separators.
+
+Hovering a segment or category opens a styled tooltip with fiscal year, category,
+USD revenue, share of full gaming revenue, prior share and revenue, and the
+percentage-point shift. Both bars and the matching category highlight together.
+Click or tap pins the detail; Escape, outside click, scrolling, changing year or
+leaving keyboard focus dismisses it. Full-width category buttons provide larger
+keyboard and touch targets than the small proportional segments. Popup placement
+is bounded to the viewport and does not change the page layout. No motion loop,
+new dependency, asset or data request is introduced.
+
+FY2025 verification: hardware is 944,425 / 4,685,651 = **20.1557%**, displayed
+**20.2%**; Other is 437,688 / 4,685,651 = **9.3410%**, displayed **9.3%**.
+Hardware must therefore render **2.1578 times** as tall as Other. Prior hardware
+share is 24.2543%; the change is **−4.1 pp**, using unrounded values.

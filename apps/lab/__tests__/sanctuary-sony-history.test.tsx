@@ -169,7 +169,7 @@ it("compares revenue shares in percentage points, independent of FX and filterin
   const { container } = render(<SonyHistory/>);
   fireEvent.change(screen.getByRole("combobox", { name: "Fiscal year" }), { target: { value: "2022" } });
   const detail = screen.getByRole("region", { name: "FY2022 revenue proportions" });
-  expect(within(detail).getByText("30.8%")).toBeVisible();
+  expect(within(detail).getByText("30.8%", { selector: "strong" })).toBeVisible();
   expect(within(detail).getByText("(+9.3 pp)")).toBeVisible();
   expect(within(detail).getByText("was 21.5%")).toBeVisible();
   expect(within(detail).getByRole("img")).toHaveAccessibleName(expect.stringContaining("dashed FY2021"));
@@ -188,4 +188,47 @@ it("compares revenue shares in percentage points, independent of FX and filterin
   expect(screen.getByText(/prior-year proportions and changes are unavailable/)).toBeVisible();
   expect(container.querySelectorAll(".mixShift")).toHaveLength(4);
   expect(screen.queryByText("(+0.0 pp)")).not.toBeInTheDocument();
+});
+
+
+it("identifies each proportional segment and dismisses stale or unfocused tooltips", () => {
+  const { container } = render(<SonyHistory/>);
+  const picker = screen.getByRole("combobox", { name: "Fiscal year" });
+  fireEvent.change(picker, { target: { value: "2025" } });
+  const hardware = container.querySelector<HTMLElement>('.shareFill[data-category="0"]')!;
+  const other = container.querySelector<HTMLElement>('.shareFill[data-category="3"]')!;
+  expect(hardware.style.top).toBe("0%");
+  expect(parseFloat(hardware.style.height)).toBeCloseTo(20.1557, 3);
+  expect(parseFloat(other.style.height)).toBeCloseTo(9.3410, 3);
+  expect(parseFloat(hardware.style.height) / parseFloat(other.style.height)).toBeCloseTo(944425 / 437688, 4);
+  expect(parseFloat(other.style.top) + parseFloat(other.style.height)).toBeCloseTo(100, 4);
+  fireEvent.pointerEnter(hardware, { pointerType: "mouse" });
+  let tooltip = screen.getByRole("tooltip");
+  expect(within(tooltip).getByText("Console hardware")).toBeVisible();
+  expect(within(tooltip).getByText("20.2%")).toBeVisible();
+  expect(within(tooltip).getByText("24.3%")).toBeVisible();
+  expect(within(tooltip).getByText("−4.1 pp")).toBeVisible();
+  expect(within(tooltip).getByText("US$6.27bn")).toBeVisible();
+  expect(tooltip.closest('[aria-live]')).toBeNull();
+  fireEvent.keyDown(window, { key: "Escape" });
+  expect(screen.queryByRole("tooltip")).toBeNull();
+  const control = screen.getByRole("button", { name: "Inspect Other revenue share" });
+  fireEvent.focus(control);
+  tooltip = screen.getByRole("tooltip");
+  expect(control).toHaveAttribute("aria-describedby", tooltip.id);
+  expect(within(tooltip).getByText("9.3%")).toBeVisible();
+  expect(other).toHaveAttribute("data-active", "true");
+  fireEvent.click(control);
+  fireEvent.blur(control);
+  expect(screen.queryByRole("tooltip")).toBeNull();
+  fireEvent.click(other);
+  fireEvent.pointerDown(document.body);
+  expect(screen.queryByRole("tooltip")).toBeNull();
+  fireEvent.click(other);
+  fireEvent.change(picker, { target: { value: "2016" } });
+  expect(screen.queryByRole("tooltip")).toBeNull();
+  fireEvent.focus(screen.getByRole("button", { name: "Inspect Console hardware revenue share" }));
+  expect(within(screen.getByRole("tooltip")).getByText("No previous year in this series.")).toBeVisible();
+  fireEvent.scroll(window);
+  expect(screen.queryByRole("tooltip")).toBeNull();
 });

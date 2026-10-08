@@ -118,3 +118,29 @@ The financial evidence does not support dividing the money bars by publisher
 ownership/funding. Public notes distinguish gross digital revenue from retained
 income, and first-party copy share from revenue, profit and publisher payouts.
 Reviewed definitions and source boundaries are in `SONY_FINANCIAL_HISTORY.md`.
+
+
+## Financial prose, add-ons and original PlayStation context
+
+The chapter now explains the FY2025 category totals in prose, defines add-on
+content through expansions, cosmetics and virtual currency, and connects those
+purchases to the later Diablo IV analysis. Revenue is distinguished from
+operating profit and outside publishers’ share. Original PlayStation figures
+reach FY1995; the category chart remains FY2016–FY2025 because earlier reporting
+boundaries differ. The Valve bridge describes platform economics without
+claiming Sony’s accounts explain Valve’s historical motives.
+
+Required `API_BASE_URL=http://localhost:8000 npm run ci` exited 0: 66 suites,
+341 tests, one snapshot, 22 retained asset releases and production build pass.
+Scoped ESLint and `git diff --check` pass. Chapter 1 is unchanged. No new asset,
+dependency, continuous animation or network request was introduced.
+
+The local production page was inspected at the normal desktop viewport and
+390×844. New paragraphs, citations and historical methodology render correctly;
+there is no horizontal page overflow at the phone width. The source disclosure
+opens and exposes the original-report links and the currency-conversion basis.
+The browser error log is empty. Temporary viewport override was reset.
+
+Evidence screenshots (local review artifacts):
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-prose-desktop.png`
+- `/home/stpn/Documents/Codex/outputs/sanctuary-editorial/sony-prose-mobile.png`

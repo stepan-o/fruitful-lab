@@ -171,3 +171,61 @@ A prominent note now explains that outside publishers’ share is included in
 those revenues before costs. Physical third-party software continues to be
 royalty-based; the total is not a uniform gross transaction value or Sony’s
 retained commission.
+
+## Scale, original PlayStation context and add-ons — 8 October 2026
+
+Chapter prose now follows the figure with four paragraphs explaining the money:
+
+- FY2025 G&NS sales: ¥4,685,651m. The roughly **US$31bn** illustration is our
+  conversion at Sony’s FY2025 average **¥150.7/USD** (supplement p. 3):
+  4,685,651 / 150.7 / 1,000 = **US$31.0926bn**. This is not a reported USD
+  segment result, and does not change the charts’ nominal-yen basis.
+- Same-period Music sales ¥2,120,110m + Pictures ¥1,499,290m = ¥3,619,400m,
+  below gaming revenue. All three use the segment table (p. 4), including
+  intersegment sales. This compares Sony businesses, not entire entertainment
+  industries or their profit. Pictures includes more than theatrical films.
+- Chart-aligned components: hardware ¥944.425bn; PlayStation games/add-ons
+  ¥2,540.411bn; network services ¥763.126bn; regrouped Other ¥437.688bn.
+  Rounded prose says ¥944bn, ¥2.54tn, ¥763bn and ¥438bn.
+- Add-ons **¥1,359.617bn** are included within games/add-ons, never added a
+  second time to the total. Sony’s p. 12 definition covers digital content
+  other than full games, including currency, items and expansion packages.
+  An expansion, cosmetic outfit and virtual shop currency make this legible;
+  PlayStation Plus and free updates are not purchases in that category.
+- Gross digital receipts include publishers’ shares. Segment operating income
+  is ¥463.258bn after its costs, not net income, the Sony commission, cash flow
+  or a studio-payout estimate. Diablo IV is an illustrative connection to the
+  later analysis; its contribution to Sony’s category is not disclosed.
+
+### How far the history goes
+
+[Sony’s historical archive](https://www.sony.com/en/SonyInfo/IR/library/historical/)
+goes back to FY1960 at company level. [Annual Report 1998, PDF pp. 72–73](https://www.sony.com/en/SonyInfo/IR/library/ar/ar_sony_1998.pdf#page=72)
+separates Game from Electronics and retrospectively presents:
+
+| Fiscal year | Year ended March | Segment sales, ¥m | Operating income, ¥m |
+| --- | --- | --- | --- |
+| FY1995 | 1996 | 203,911 | −8,938 |
+| FY1996 | 1997 | 419,278 | 57,045 |
+| FY1997 | 1998 | 722,551 | 116,936 |
+
+These establish available separate Game figures **at least back to FY1995**;
+not the earliest possible source or a claim that PlayStation began that year.
+The prose rounds the first and last sales figures to ¥204bn and ¥723bn.
+[Annual Report 1997, PDF p. 25](https://www.sony.com/en/SonyInfo/IR/library/ar/ar_sony_1997.pdf#page=25)
+attributes growth to affordable console pricing and hit releases, including
+Square’s Final Fantasy VII and Namco’s Tekken alongside Sony’s releases.
+This supports the platform’s dependence on other creators before downloads.
+
+The older totals extend historical context, **not the chart’s plotted range**.
+No CAGR, inflation-adjusted multiple or invented historical category split is
+published. In FY2009, for example, Game moved into Networked Products & Services
+alongside other operations; the [quarterly securities report](https://www.sony.com/en/SonyInfo/IR/library/Sony_Quarterly_Securities_Report_2009Q1.pdf)
+separates Game sales as a product category, while segment profit has wider scope.
+Building a full early revenue/profit series would require explicit bridges or
+gaps at these reorganizations, as well as the later GAAP/IFRS boundary.
+
+Sony illustrates the economic attraction of distribution; these accounts are
+not evidence of Valve’s motives. The revised closing preserves Valve’s own
+update-delivery origin and continued game development. Chapter 3 retains the
+primary-source account. No new image, animation, dependency or asset release.

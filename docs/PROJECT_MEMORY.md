@@ -6,7 +6,7 @@ data. Selecting a category isolates and rescales its revenue; All revenue restor
 the stack. A separate FY2025 first-party/other-publisher comparison uses copies
 sold, with the unavailable money split and gross digital revenue basis explicit.
 No new asset pack or runtime dependency. Dataset and methodology:
-`docs/sanctuary/SONY_FINANCIAL_HISTORY.md`. The chapter prose remains unchanged.
+`docs/sanctuary/SONY_FINANCIAL_HISTORY.md`. The accompanying prose explains FY2025 scale, add-on content, gross revenue versus profit, original PlayStation history and the economic bridge to Valve.
 
 Sanctuary chapter 2 editorial revision (2026-10-08): the current narrative follows
 one creative work supporting connected businesses, through Sony’s early PS5

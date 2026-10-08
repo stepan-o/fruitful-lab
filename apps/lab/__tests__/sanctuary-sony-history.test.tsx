@@ -49,7 +49,7 @@ it("connects milestone, year picker, exact figures and category readout", () => 
 
 it("places the Sony exhibit immediately after chapter two's first paragraph", () => {
   const chapter = chapters.find(item => item.id === "studio-to-screen")!;
-  expect(chapter.exhibits).toEqual([{ afterParagraph: 0, kind: "sony-history" }, { afterParagraph: 5, kind: "market-map" }]);
+  expect(chapter.exhibits).toEqual([{ afterParagraph: 0, kind: "sony-history" }, { afterParagraph: 9, kind: "market-map" }]);
 });
 
 

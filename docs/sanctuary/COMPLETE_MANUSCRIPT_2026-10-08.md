@@ -30,33 +30,43 @@ Evidence boundary: Pong’s prototype installation and overflowing coin containe
 
 A game has one title. The businesses behind it have different things to sell.
 
-The name on a game’s cover rarely tells you everyone doing business behind it. A development studio makes the game; a publisher brings it to market, organizing release and publicity and often financing production. A store connects it with buyers. Equipment suppliers provide the machines needed to play. These are roles, which one company can combine. The opening diagram separates them: click through its examples to compare what each participant supplies, buys and earns from.
+A development studio creates the game, combining design, code, art and sound into something people can play. A publisher organizes the commercial release, coordinating promotion and distribution and often funding production. When the two are separate businesses, their agreement determines how the studio is paid, which costs the publisher recovers and how they share the proceeds. A studio can also publish its own work, taking on both responsibilities.
 
-Evidence: epic-publishing, steam-settlement.
+Evidence: epic-publishing, cdpr-business.
 
-Some arrangements are familiar outside gaming. A cinema sells admission and provides the screen; Netflix pays for productions and licences, then sells access to a catalog. An arcade operator buys equipment and sells turns on it. At home, the player buys the computer or console instead. Game sellers can then reach that audience without supplying a machine with every game.
+The store brings that release to buyers. It gives players somewhere to discover games, purchase them and receive their copies; it gives publishers access to an audience and a system for collecting payment. Steam, the PC store run by Valve, earns from this relationship through revenue sharing. After adjustments such as refunds and taxes, Valve pays its publishing partner the share agreed in their contract.
 
-Evidence: chain-cinema, chain-netflix, arcade-route.
+Evidence: steam-visibility, steam-settlement.
 
-A player can pay for temporary access to the games, the computing, or both. Xbox Game Pass sells temporary access to a game catalog, which subscribers can use on equipment they own. NVIDIA’s GeForce NOW offers the reverse arrangement: buy a supported game from Steam, Valve’s PC store, and pay NVIDIA to run it on a remote computer. Game access and computing are separate services, even when they arrive on the same screen.
+Equipment supplies the computing that turns the software into images, sound and responses to the controls. A hardware retailer sells the player a machine; a cloud service provides access to a remote one. The player is paying for the means to run games, separately from permission to play a particular title. Hardware also sets a practical limit on the work: a studio’s visual ambitions must run on equipment its audience can use. Streaming moves that work elsewhere, but still requires a suitable device and connection.
 
-Evidence: circuit-game-pass, steam-cloud, gfn-membership-terms.
+Evidence: steam-hardware-survey, gfn-membership-terms, gfn-requirements.
 
-The first diagram follows selected arrangements so those roles stay legible. The map below lets them overlap: Sony and Microsoft can make games, sell them, offer catalogs and supply local or cloud hardware. Other routes cross company boundaries. Choose a game, then change its store, access and computing options. The available combinations depend on agreements and compatibility; a purchase or subscription on one platform does not unlock every route.
+### The ecosystem around a game
 
-Evidence: sony-accounting, chain-microsoft, gfn-game-pass, cyberpunk-xbox-offer.
+These roles fit together into ecosystems of games, stores, services and equipment. Sony’s PlayStation and Microsoft’s Xbox each combine development studios, publishing, a digital store, consoles and subscriptions within one corporate group. They also sell other publishers’ games. The parts support one another: a console purchase brings a customer to the store, while the available games help give someone a reason to buy the console.
+
+Evidence: sony-accounting, microsoft-ecosystem.
+
+The same functions can connect companies that remain separate. A player can buy a game from Steam, run it on a computer from an unrelated manufacturer, then use a supported purchase through NVIDIA’s GeForce NOW. NVIDIA supplies remote computing; Valve still handles the game sale. Adding a hardware subscription need not turn the game itself into a subscription. The opening diagram isolates selected arrangements; the map below lets you follow one game across compatible combinations. Store agreements, supported hardware and catalog inclusion determine which routes exist.
+
+Evidence: steam-cloud, gfn-membership-terms, gfn-game-pass.
 
 ### One game, different agreements
 
-Cyberpunk 2077 makes the distinction concrete. It remained on sale when it entered PlayStation Plus in July 2025. Its maker and publisher, CD PROJEKT RED, expected Sony’s agreement to outweigh lost purchases and bring new buyers to the separately sold Phantom Liberty expansion. CD PROJEKT recorded the agreement’s revenue in one quarter. Sony’s customers paid subscriptions; the game’s publisher earned under a different contract. A recurring payment at one end of the chain need not recur at every step.
+Those arrangements change what is being sold. A store offers individual games; a catalog membership offers temporary access to a collection. The catalog operator needs games worth including, so it becomes another customer for the publisher. One work can be sold to players and licensed to a platform, which uses it to sell memberships. Players gain access to more games through one payment, but that access depends on both their subscription and each title’s continued inclusion.
+
+Evidence: circuit-game-pass, cyberpunk-plus-entry.
+
+Cyberpunk 2077 remained on sale when it entered Sony’s PlayStation Plus catalog in July 2025. Its developer and publisher, CD PROJEKT RED, acknowledged that inclusion would displace some individual purchases. Management judged the agreement worthwhile anyway, and expected it to bring more buyers to Phantom Liberty, the separately sold expansion. The base game could help Sony sell memberships while introducing players to something its publisher still sold separately.
 
 Evidence: cyberpunk-plus-entry, cdpr-catalog-economics.
 
-This leaves us with a different way to read a company’s place in gaming: through the jobs it does for players and for other businesses. Valve began making games, then built Steam to distribute them, and later supplied hardware too. Its history shows how a studio can come to occupy several positions on this map.
+The store has something to offer both sides: access to games for players, and access to players for their makers. Valve built a business around that position. Its story takes us from selling its own work to distributing other people’s—and eventually to making hardware for the library assembled along the way.
 
-Evidence: valve-history, valve-about.
+Evidence: valve-history, valve-about, valve-deck-booklet.
 
-Evidence boundary: The diagrams distinguish production, publishing and promotion, distribution, game access and computing. Roles can be combined within a company; selected routes are comparisons, not a universal chronology, exhaustive market inventory or claims about the most common purchase. Publisher funding and rights vary by agreement. Internal arrows do not disclose budgets or transfer prices. Catalogs and cloud services have title, device, region and plan restrictions; the market map records selected sourced combinations. The cinema and Netflix comparison concerns who supplies the work, venue/equipment and access, not identical contracts. CD PROJEKT’s assessment of its Sony agreement is management’s judgment, not an independent estimate. Revenue recognition is distinct from cash collection. Its Sony terms are not assigned to Microsoft or NVIDIA. Broader financing and design consequences are developed in later chapters.
+Evidence boundary: The opening diagram separates functions, not necessarily companies. Publisher funding, ownership and payment terms vary by agreement; Epic’s published offer is one example, not a standard contract. The diagrams show selected arrangements and compatible routes, not an exhaustive market or a universal chronology. Console, store and catalog activities are documented in company reports; the way their products support one another is our economic interpretation, not a measured sales effect. Hardware affects technical reach; cloud delivery retains device, network, title, region and plan restrictions. The Steam purchase/GeForce NOW example does not describe all cloud services or require catalog membership. Catalog access and computing can be sold separately or bundled. No private commission, internal transfer price or per-play publisher payment is inferred. CD PROJEKT’s Sony-deal assessment is management’s judgment, not an independent estimate of displaced purchases or expansion sales. Revenue recognition is distinct from cash collection, and its Sony terms are not assigned to Microsoft or NVIDIA.
 
 ## 3. Valve: the studio becomes the store
 

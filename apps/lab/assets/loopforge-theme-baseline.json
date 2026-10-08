@@ -1,0 +1,45 @@
+{
+  "pack": "loopforge-theme-baseline",
+  "assets": {
+    "monitor-frame": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-themes/baseline/frame.png",
+      "widths": [
+        480,
+        960
+      ],
+      "quality": 84,
+      "maxBytes": 240000
+    },
+    "button-rest": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-themes/baseline/button-rest.png",
+      "widths": [
+        480,
+        720
+      ],
+      "quality": 84,
+      "maxBytes": 240000
+    },
+    "button-hover": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-themes/baseline/button-hover.png",
+      "widths": [
+        480,
+        720
+      ],
+      "quality": 84,
+      "maxBytes": 240000
+    },
+    "button-pressed": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-themes/baseline/button-pressed.png",
+      "widths": [
+        480,
+        720
+      ],
+      "quality": 84,
+      "maxBytes": 240000
+    }
+  }
+}

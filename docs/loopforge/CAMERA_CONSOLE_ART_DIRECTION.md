@@ -27,7 +27,7 @@ All listed images were inspected. No outside game's artwork is included. Frostpu
 
 ## Six directions under review
 
-The owner liked the baseline and requested five additional agent-generated alternatives before selecting or prototyping a direction. The design board's **UI style studies** tab presents Factory Original, Field Instrument (PIP-Boy-inspired equipment), Broadcast Desk, Foundry Switchboard, Submarine Watch and Neural Diagnostics. Each has a full-size view, comparison controls and implementation concerns. No direction has been selected; separate production assets wait for that review. The sheets explore material and construction, not new mechanics or finished screen layouts.
+The owner liked the baseline and requested five additional agent-generated alternatives before selecting or prototyping a direction. The design board's **UI style studies** tab presents Factory Original, Field Instrument (PIP-Boy-inspired equipment), Broadcast Desk, Foundry Switchboard, Submarine Watch and Neural Diagnostics. Each has a full-size view, comparison controls and implementation concerns. No direction has been selected as winner. All six now have separate production monitor frames and complete button state families, selectable in the game Settings. Shared icons, glass and portraits remain the first comparison baseline. Remaining specimens on each sheet are future asset work, not implemented merely because they appear there. The sheets explore material and construction, not new mechanics or finished screen layouts.
 
 Originals and exact generation records are in `apps/lab/assets/sources/loopforge-camera/`. The immutable `loopforge-ui-studies` pack serves only the author-facing review. The playable UI does not load these sheets or change its skin. Alternative palettes in their provenance records are proposals; the table below remains the baseline palette.
 
@@ -91,8 +91,12 @@ The next available action is conveyed through local light, physical travel, comp
 - [x] Record the powered-off room rule and material/colour roles.
 - [x] Generate and inspect the baseline plus five agent alternatives.
 - [x] Add all six to the design discussion page for comparison.
-- [ ] Owner chooses a direction or requests competing compositions.
-- [ ] Generate and inspect separate production assets from that sheet.
-- [ ] Assemble a review composition at desktop and phone sizes.
+- [x] Owner requests all six directions remain available as working presets.
+- [x] Generate and inspect six separate monitor/control production kits.
+- [x] Integrate each kit into the current comparison console; final responsive evidence lives in review/theme-system.
 - [ ] Integrate into the focused interface rebuild; verify the complete first-day flow.
 - [ ] Clear the complete playable UI gate before marking the rebuild ready. The style-review tab can be published separately on the draft PR; it does not clear that gate.
+
+## Runtime comparison and light
+
+All six presets and the controlled frame/control mixer are implemented. See `UI_THEME_ASSET_SYSTEM.md` for ownership, source records, immutable delivery and composition boundaries. The shared beacon uses a nearly flat overhead asset and is dark between brief triggered rotations; the first elevated/isometric draft was rejected. See `CONSOLE_LIGHT_FEEDBACK.md`. This does not clear the broader gameplay composition gate.

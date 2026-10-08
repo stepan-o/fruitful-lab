@@ -60,6 +60,24 @@ export default function EngineNotes() {
             </li>
           ))}
         </ol>
+        <h2>Six consoles, one world.</h2>
+        <p>
+          The game menu and Settings expose all six equipment themes. A typed
+          presentation recipe selects pinned asset manifests, framing geometry
+          and control-state families. It never changes the run controller,
+          commands, random stream or knowledge projection. The author workbench
+          can combine monitor and control families while preserving the active
+          shift. Equipment preference persists locally; game progress currently
+          lasts only while the page stays open.
+        </p>
+        <p>
+          The console beacon also lives on this side of the boundary. Confirmed
+          production, accidents and attention requests trigger brief green, red
+          and amber rotations; a sparse cyan impulse marks inactivity. The
+          default is dark. Screen-space occlusion uses the same measured source
+          as the light, with no per-frame kernel or React updates.
+        </p>
+        <p><Link href="/stepanoskin/loopforge/design#themes-assets">Themes, assets and feedback contract →</Link></p>
         <h2>Rust-native logic, TypeScript implementation.</h2>
         <p style={{ margin: "20px 0 32px" }}>
           The domain uses owned plain records, discriminated unions, bounded

@@ -1,0 +1,25 @@
+"""Runtime theme contract; keep asset geometry out of simulation and media schemas."""
+import html
+import json
+
+def render_theme_system(root):
+    e = html.escape
+    styles = json.loads((root / "ui-styles.json").read_text())["styles"]
+    links = ''.join(f'<li><a href="/stepanoskin/loopforge/play?theme={x["id"]}" target="_blank" rel="noopener">{e(x["name"])} ↗</a> — {e(x["summary"])}</li>' for x in styles)
+    return f'''<header class="section-head"><span class="kicker">Runtime architecture / interface equipment</span><h2>One factory. Six consoles.</h2><p>All six generated directions are available in the game's Settings. No winner has been selected. Each now has its own camera frame and resting, hover and pressed control assets.</p></header>
+    <p class="document-links"><a href="UI_THEME_ASSET_SYSTEM.md" download>Download the complete theme and asset contract</a> · <a href="/stepanoskin/loopforge/play">Open the game menu ↗</a></p>
+    <div class="callout">Start shift → paused factory → choose your adviser. Settings and the menu preserve the active session. Equipment preference survives reload; the first-day run currently does not.</div>
+    <h3>Try every direction</h3><ul>{links}</ul>
+    <div class="section-divider"></div><h3>Split the responsibilities</h3>
+    <div class="two-col"><div><h4>World and player knowledge</h4><p>The deterministic kernel owns workers, production, beliefs, decisions and consequences. The knowledge-filtered snapshot and diffs feed the same stable run controller in every theme. Changing equipment sends no command, spends no resources and consumes no simulation randomness.</p></div>
+    <div><h4>Equipment and composition</h4><p>React and native controls retain the same hit targets, text and hierarchy. A typed recipe selects versioned camera/socket chrome, a complete control-state family and material colours. CSS slices the authored assets around live content. A future 3D view remains a separate consumer of the same world protocol.</p></div></div>
+    <h3>Asset ownership</h3><div class="table-wrap"><table><tbody>
+    <tr><th>Per-theme kit</th><td>One authored monitor bezel and three control states; consistent top-left lighting. Camera, portrait, dialogue and modal frames consume the selected bezel geometry.</td></tr>
+    <tr><th>Shared content</th><td>Room scenes, portraits, instruments, icons, glass, typography and sound. The six material studies are author references, not runtime atlases. Their remaining illustrated specimens are not yet separate production assets.</td></tr>
+    <tr><th>Source record</th><td>Original generated masters, exact prompts and references, crop recipe and derivative catalog outside public media. Hash-named WebP derivatives and manifests in public media.</td></tr>
+    <tr><th>Release contract</th><td>Bundled manifest metadata pins one immutable release for each kit. Geometry and palettes live in the theme registry, outside the generic delivery schema. Old releases remain available for rollback.</td></tr>
+    <tr><th>Safe switching</th><td>Pause advance requests; block selections during an in-flight order. Decode the requested four-part kit, then apply it together. Failures and superseded requests retain the previous presentation and all current choices.</td></tr>
+    </tbody></table></div>
+    <h3>Combine, then compare</h3><p>Open Settings → Design workbench to combine monitors/sockets from one kit with controls from another. Button resting, hover and pressed states always travel together. Only implemented assemblies appear in this mixer. A link can carry the recipe into a fresh playtest; it does not carry game progress.</p>
+    <p>Compare the same seed, choices, adviser brief, incident, allocation and outcome. Change one assembly at a time. Review framing, legibility, reaction to input and mobile fit; a visual preference is not evidence of better game balance. A useful mixed candidate is Factory Original's frame with Foundry Switchboard's controls.</p>
+    <h3>Event-driven console beacon</h3><p>The directly overhead beacon is dark between impulses. Confirmed production fires one green sweep, actual accidents red, and requests for attention ember/amber. Sparse cyan rotations occur only after inactivity. Repeated signals are coalesced. The same measured source projects shadows behind visible frame fittings; this is bounded screen-space occlusion rather than a full 3D scene.</p><p><a href="CONSOLE_LIGHT_FEEDBACK.md" download>Read the complete light and feedback contract</a>. Try the four signals in Settings → Design workbench. These previews create no game events.</p><h3>Scope and acceptance</h3><p>Six functioning material presets do not finish the broader six-camera/focused-interface redesign or Act 1 progression. Per-theme icon families, additional portrait sockets and full-floor fixtures can follow without changing the kernel. The owner still judges composition and whether the loop is enjoyable.</p>'''

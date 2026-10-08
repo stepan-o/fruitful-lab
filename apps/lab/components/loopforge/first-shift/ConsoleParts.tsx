@@ -176,7 +176,7 @@ export function Camera({
     .filter((e) => e.room === room && e.kind === "resolution")
     .at(-1);
   return (
-    <div ref={frame} className={s.camera} data-alert={incident}>
+    <div ref={frame} className={s.camera} data-alert={incident} data-light-frame>
       {loadedImage && (
         <div className={s.cameraPicture} key={loadedImage}>
           <Art

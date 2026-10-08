@@ -23,6 +23,9 @@ import {
   type Media,
 } from "./ConsoleParts";
 import CommandDeck from "./CommandDeck";
+import ThemeSettings from "./ThemeSettings";
+import { useConsoleTheme } from "./ThemeProvider";
+import { ConsoleBeacon, useConsoleSignals } from "./ConsoleSignals";
 import s from "./first-shift.module.css";
 
 const subscribeVisibility = (listener: () => void) => {
@@ -43,7 +46,10 @@ const phaseTitle = (v: PlayerView) =>
   })[v.phase];
 type Screen = "factory" | "records" | "development";
 
-export default function FirstShift({ media }: { media: Media }) {
+export default function FirstShift({ media, suspended = false, onOpenMenu }: { media: Media; suspended?: boolean; onOpenMenu?: () => void }) {
+  const theme = useConsoleTheme();
+  const signals = useConsoleSignals();
+  const publish = signals?.publish;
   const run = useRun(),
     v = run.view;
   const { send, pending, error } = run;
@@ -73,9 +79,11 @@ export default function FirstShift({ media }: { media: Media }) {
     !error &&
     screen === "factory" &&
     !settings;
+  const ticking = active && !suspended;
   const strained = Boolean(v && v.condition < 75);
   const busy = pending || Boolean(error);
   const activeRoom = v?.pending?.room ?? room;
+  useEffect(() => { if (v) publish?.(v); }, [v, publish]);
 
   async function toggleSound() {
     if (sound) {
@@ -106,8 +114,8 @@ export default function FirstShift({ media }: { media: Media }) {
     [],
   );
   useEffect(() => {
-    audio.current?.machine(Boolean(active), hidden, strained);
-  }, [active, hidden, strained, sound]);
+    audio.current?.machine(Boolean(ticking), hidden || suspended, strained);
+  }, [ticking, hidden, suspended, strained, sound]);
   useEffect(() => {
     const before = prior.current;
     prior.current = v;
@@ -125,20 +133,21 @@ export default function FirstShift({ media }: { media: Media }) {
       }
   }, [v, sound, hidden]);
   useEffect(() => {
-    if (!active || pending) return;
+    if (!ticking || pending) return;
     const timer = window.setTimeout(
       () => void send({ type: "advance" }),
       speed === 1 ? 900 : 300,
     );
     return () => window.clearTimeout(timer);
-  }, [active, pending, v?.tick, send, speed]);
+  }, [ticking, pending, v?.tick, send, speed]);
   useEffect(() => {
+    if (suspended) return;
     heading.current?.focus({ preventScroll: true });
     if (window.matchMedia("(min-width: 761px)").matches)
       window.scrollTo({ top: 0, behavior: "instant" });
     else if (heading.current && heading.current.getBoundingClientRect().top < 0)
       heading.current.scrollIntoView({ block: "start", behavior: "instant" });
-  }, [v?.phase, screen]);
+  }, [v?.phase, screen, suspended]);
   useEffect(() => {
     if (settings) dialog.current?.showModal();
     else dialog.current?.close();
@@ -157,12 +166,14 @@ export default function FirstShift({ media }: { media: Media }) {
   return (
     <main
       className={s.shell}
-      style={materialStyle(media)}
+      style={{ ...materialStyle(media), ...theme?.style }}
+      data-theme={theme?.recipe.shell}
       data-quiet={!active || !effects}
       data-effects={effects}
       data-alarm={v?.phase === "decision"}
       data-strain={Boolean(v && v.condition < 75)}
     >
+      <ConsoleBeacon active={!settings && !suspended} />
       <div className={s.consoleBody}>
         <header className={s.topbar}>
           <Link
@@ -190,10 +201,11 @@ export default function FirstShift({ media }: { media: Media }) {
             <button
               ref={settingsButton}
               className={s.textButton}
-              onClick={() => setSettings(true)}
+              onClick={() => { if (v?.phase === "running") setPaused(true); setSettings(true); }}
             >
               Settings
             </button>
+            {onOpenMenu && <button className={s.textButton} disabled={pending} onClick={() => { if (v?.phase === "running") setPaused(true); onOpenMenu(); }}>Menu</button>}
           </div>
         </header>
         {v && <Instruments media={media} view={v} />}
@@ -487,7 +499,9 @@ export default function FirstShift({ media }: { media: Media }) {
         aria-labelledby="settings-title"
       >
         <Kicker>Console settings</Kicker>
+        <ConsoleBeacon active={settings} />
         <h2 id="settings-title">Keep the signal clear.</h2>
+        {settings && <ThemeSettings disabled={pending} onPreview={closeSettings} />}
         <label className={s.toggle}>
           <input
             type="checkbox"

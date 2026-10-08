@@ -39,7 +39,7 @@ export function AdviserChoice({ media, view, busy, send }: Props) {
             className={s.adviser}
             data-person={person.id}
           >
-            <div className={s.adviserArt}>
+            <div className={s.adviserArt} data-light-frame>
               <Art
                 media={media}
                 id={`${person.id}-portrait`}

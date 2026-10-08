@@ -2,7 +2,7 @@
 
 Working draft · 8 October 2026
 
-Asset-driven decision interfaces now; a live cinematic 3D factory later. This reference separates the updated design target from the current first-day implementation. The prior director-console composition was rejected. Six new camera-console style studies are available for review before the next implementation pass.
+Asset-driven decision interfaces now; a live cinematic 3D factory later. This reference separates the updated design target from the current first-day implementation. The prior director-console composition was rejected. All six camera-console themes are now selectable in the game menu and in-run Settings. The material layer is implemented; the broader focused-interface composition remains in review.
 
 ## Opening rules and what unlocks later
 
@@ -26,7 +26,7 @@ One persistent director’s console contains Factory, Development and Records. B
 
 ### Where the first shift begins
 
-**Where Enter factory lands.** The main factory console, paused before the first shift. Establish the illustrated room context, with Conveyor and Security available and four bays sealed. Show funds, workforce, equipment condition and weekly quota together. Nobody is assigned.
+**Where Start shift lands.** The main factory console, paused before the first shift. Establish the illustrated room context, with Conveyor and Security available and four bays sealed. Show funds, workforce, equipment condition and weekly quota together. Nobody is assigned.
 
 **First actionable focus.** Choose today’s adviser. LIMEN and STILETTO use expressive art, a short personal pitch and a clear operating tradeoff. The factory stays identifiable around the choice; decorative controls do not compete with it.
 
@@ -54,7 +54,7 @@ One persistent director’s console contains Factory, Development and Records. B
 
 **Clock and decisions.** Show Running, Planning paused, Inspection paused or Decision required. A pending decision remains reachable from every screen.
 
-**System menu.** Sound, motion/accessibility settings and leave session. A future new-run/resume menu can live outside the three gameplay screens once persistence exists. The current first-day playtest reloads into a new run; no extra arrival or handover gate is required.
+**System menu.** Sound, motion/accessibility settings and leave session. A start menu now sits outside the three gameplay screens and provides Start shift, Settings and an in-memory Resume shift. All six equipment themes remain available; the author workbench can mix monitor and control families. Theme preference persists locally, but reloading starts a new first-day playtest. This menu does not add an in-fiction arrival or handover gate.
 
 ### Factory — Operate and intervene
 
@@ -891,7 +891,7 @@ First slice: the paused factory console with unassigned Limen and Stiletto, Conv
 
 Players should understand why they are choosing, what they are authorizing and how to read the result. The simulation can contain much more than the interface reveals. Its depth earns its place by creating decisions and consequences that are enjoyable to play.
 
-**Make the central choice visible.** Land directly in the paused factory console: opening facts and weekly quota → choose adviser → hear priority and first arrangement → accept or override → run → permanently allocate output. Put first-day context in that scene, without separate welcome and handover pages. Later days start with yesterday’s results.
+**Make the central choice visible.** After Start shift, land directly in the paused factory console: opening facts and weekly quota → choose adviser → hear priority and first arrangement → accept or override → run → permanently allocate output. Put first-day context in that scene, without separate welcome and handover pages. Later days start with yesterday’s results.
 
 **Say what the action means.** Use concrete labels such as Accept Stiletto’s arrangement or Stop the Brewery for Witch’s repair. Explain the known operational sacrifice and who is being overruled. Avoid vague dialogue stances whose mechanical commitment is impossible to infer.
 
@@ -948,3 +948,136 @@ Keep the complete adviser → plan → incident → allocation loop usable on a 
 **Generate gaps against the loop.** Inventory missing assets by interface role and state. Reuse suitable art, then generate what adviser choice, briefings, incidents and allocation actually require. A clearly marked neutral placeholder with accurate event text is acceptable during development; unrelated art and polished-looking fake outcomes are not.
 
 **Future 3D: give light geometry.** When building the live view, use real floors, walls, machines and occluders where spatial lighting needs them. Painted images cannot supply arbitrary camera angles or correct moving shadows by themselves. This is future scene work, not a prerequisite for the current playable interfaces.
+
+
+# Loopforge interface themes and asset system
+
+8 October 2026. Owner direction: keep all six generated styles available and implement them in the game. Styles 01, 03 and 04 are promising, not an exclusion of the others. A game start menu and in-run settings expose the same theme selection. This record distinguishes the current implementation from later kit expansion.
+
+## One game, six presentations
+
+Factory Original, Field Instrument, Broadcast Desk, Foundry Switchboard, Submarine Watch and Neural Diagnostics use the same interface hierarchy, readable text, hit targets, rules, scenes and character identities. Each has its own authored camera chrome and control states. Theme selection changes material presentation; it never changes production, supervisor motives, knowledge or difficulty.
+
+The stack remains Next.js, React, TypeScript, native controls, CSS Modules and Web Audio. A new renderer or animation framework is unnecessary for equipment skins. A future tick-fed 3D factory remains a separate view over the same knowledge-filtered protocol. It can reuse semantic asset references without inheriting DOM layout or CSS.
+
+```text
+Deterministic world → knowledge-filtered snapshot/diffs → stable run controller
+                                                        ↓
+                                                semantic interface
+                                                        ↓
+                                       selected presentation recipe
+                                                        ↓
+                                  pinned assets + geometry + materials
+```
+
+The run controller is mounted above visual changes. Never key the game or its command surface by theme: doing so would reset the transcript, an unconfirmed assignment edit, dispatch selection, focus or event-cue history. The kernel and HTTP commands contain no theme, texture, DOM, sound or asset URL. Presentation changes do not increment the simulation tick or use its random stream.
+
+## Where the player chooses
+
+The start menu is a physical Loopforge console with Start shift, Settings and return to the Loopforge landing. It precedes the first turn; it does not replace adviser choice with an introductory dialogue or a second handover screen. Once started, the first turn still opens paused, with no assignments and the two advisers' pitches. Factory, Development and Records remain gameplay screens.
+
+In-run Settings pauses advance requests and exposes the same six themes. Menu access preserves an active in-memory run. Resume means that existing session, not a promised cloud save; reloading currently begins a new first-day prototype. Theme preference can persist locally even though game progress does not. Restarting a run is a separate explicit action.
+
+Show all six names and material previews. Display loading, success and failure honestly. Do not mark a theme active until its required assets are ready. The old complete presentation remains usable if loading fails. Applying a theme must not accidentally start or resume the conveyor. Sound, motion and readability preferences are independent of theme.
+
+## Replace assemblies, preserve semantics
+
+| Assembly | What can change | What stays fixed |
+| --- | --- | --- |
+| Console and monitors | Authored bezel, surface palette, glass treatment and compatible framing geometry | Six positions, room identity, active/off state, camera art chosen from permitted facts |
+| Intercom | Frame treatment, portrait socket, speech-surface material | Character identity, current statement, selection/authority meaning, readable native text |
+| Controls | Matching resting, hover/focus and pressed artwork; bounded physical response | Accessible name, action, disabled/pending state, focus order, minimum target size |
+| Instruments | Material plate and a coherent icon family | Funds, workforce, condition and weekly delivery definitions; no invented gauges |
+| Shared content | Room scenes, character portraits, room-label content, fonts and sounds | Shared across the first comparison so theme results are comparable |
+
+Treat a button's housing and all its interaction states as one assembly. Do not mix one theme's resting button with another's pressed state. A portrait is separate from its socket. A room scene is separate from its bezel. Text never lives in a full-screen raster. Tapes may carry authored handwriting, with a semantic name retained for assistive technology.
+
+The initial theme release can reuse shared original portrait/icon/glass assets while replacing the monitor and control families. Additional per-theme intercoms and symbols must be explicitly catalogued; a style sheet is not evidence that every illustrated component has been implemented. The review boards themselves are never the playable scene or runtime sprite sheet.
+
+## Asset contracts and delivery
+
+Keep the existing immutable media pipeline. Each theme has a catalog of logical asset IDs, optimized responsive derivatives, a content-hashed manifest and a short-cached release pointer. Source masters and generation records live outside public media. Production consumes the published derivatives.
+
+The theme registry owns stable IDs, display names, palette tokens, compatible geometry, preview references and a pinned build-time manifest. The theme adapter maps these to semantic presentation slots. The generic asset manifest remains a file-delivery contract; do not insert UI geometry or game rules into it. Geometry belongs to the typed presentation contract alongside the registry. The implementation bundles the six immutable manifest snapshots as small metadata imports; no runtime latest-pointer fetch can silently change a recipe. The asset check verifies file/manifest hashes at build time.
+
+For each new asset retain: source and generation prompt, reference images, rights/use record, content hash, intended slot, state family, source dimensions, crop/trim recipe, scale variants, safe content inset, corner/slice geometry and review status. Control sheets are split into three equal-height rows, then transparent gutters are trimmed. Each state uses the same normalized nine-slice geometry; fixed native targets do not jump when the state image changes. Per-state source dimensions and exact crop regions remain in the preparation record. Keep cut lines out of corners and lettering. Do not stretch a complete monitor or character portrait to fit arbitrary aspect ratios.
+
+Load only the selected theme's required files. Keep ordinary room/portrait assets shared and let content hashes deduplicate bytes. Prepare interaction states before enabling a newly selected control family so first hover does not flash. Large style sheets load only in the design review. Do not prefetch all six full kits at game entry.
+
+Resolve and validate a complete release before applying it. In-run switching stops advance requests, waits for the one pending command to settle, prepares the replacement material set, and commits it together. Failed or superseded loads never replace part of the screen. Keep the previous kit, expose retry and retain the user's run. A theme change does not replay factory sounds or past events.
+
+Pinned recipes prevent a hybrid from silently combining three independently moving “latest” pointers. Publish files and manifests first; update the compatible recipe/registry together; retain prior immutable files. Roll back with a new deployment that references a retained release, not by deleting current media. Browser image decoding is a readiness check, not a claim of runtime cryptographic verification of every image; manifest integrity and build-time file hashes provide the existing delivery checks.
+
+Font files need their own license records and self-hosted delivery. The current image/data manifest parser does not accept font extensions; do not pretend a font is an image. Font selection and readable sizes stay common during the first skin comparison.
+
+## Combining themes
+
+Player Settings offers complete named themes. An explicitly labelled author mixer can override monitor/intercom/control assemblies using only registered compatible sets. It is presentation tooling, not a new game mechanic. Begin by comparing the six complete themes; then vary one assembly at a time.
+
+A useful candidate is Factory Original's console, Broadcast Desk's intercom treatment and Foundry Switchboard's controls. This is an experiment, not a chosen final direction. A successful combination becomes a named, versioned recipe after checking light direction, material scale, corner geometry, icon readability and mobile composition. Avoid a permanent collection of arbitrary per-element overrides.
+
+The first mixer may expose only assemblies actually implemented; label shared or unavailable families honestly. Never imply the small style-sheet specimens are usable production assets merely because their names appear in a selector. Invalid recipe IDs fall back to a known complete theme; query strings cannot supply arbitrary asset URLs or executable styles.
+
+## A fair practical comparison
+
+Hold content, layout, type size, sound mix, event timing and commands constant for the first pass. Record engine/schema version, seed and command transcript separately from theme/asset revision, viewport, density, motion and sound settings. The same transcript must yield the same state hash under every theme. Side-by-side review uses frozen projections, not two live clients issuing competing commands.
+
+Use the unassigned first turn, adviser briefing, a changed assignment, an adviser-owned automatic event, a director decision, dispatch and debrief. Include long text, keyboard focus, loading failure, disabled controls, sound-off and reduced-motion states. A six-active-room composition can test later visual density, but remains an author fixture, not a claim that later progression is implemented. Do not expose private worker/supervisor components in a player snapshot to make a richer demo.
+
+Judge whether the player finds adviser choice, understands delegated authority, sees the affected room and consequence, can read speech, recognizes a committed action and enjoys the physical response. Record missed controls, hesitation, mistaken expectations and preference; do not confuse faster clicking with better decisions. Counterbalance the order of themes so familiarity does not automatically favour the last one. Owner judgment leads until real audience testing exists.
+
+Test 320, 390, 768 and desktop widths; fit common desktop heights without hiding the core action. Preserve at least 44px targets, visible focus, semantic labels and no accidental horizontal page overflow. Closed rooms remain unpowered glass with only their tape name. Off/disabled states cannot depend only on colour. No theme may disclose hidden stats or obscure known consequences.
+
+Measure the complete opening, not just individual file sizes: selected image bytes, decoded image memory, first visible frame, first hover, switch latency, layout shifts and interaction response. Initial image targets remain 350 KB on a typical phone and 800 KB on desktop; document measured exceptions and remedy them. Use bounded transform/opacity effects, stop hidden/offscreen work and preserve a complete still state. These are lab checks; field Core Web Vitals remain unmeasured until traffic supports them.
+
+## Implementation sequence and gate
+
+1. Record this contract and preserve the immutable asset pipeline.
+2. Generate and inspect six matching monitor/control sets from the six sheets; retain prompts and crop recipes.
+3. Add a typed theme registry, validated loader, shared semantic components and local presentation preference.
+4. Add the start menu and in-run selector. Keep the run controller alive and make switching transactional.
+5. Expose compatible assembly mixing for author review; keep ordinary player settings simple.
+6. Publish the runtime links in UI style studies and the architecture in a Themes & assets tab, UI document and engine notes.
+7. Verify complete first-day flow, all six presets, an actual hybrid, pending-command/failed-load behaviour, persisted preference and mobile/keyboard access. Run repo checks and update the draft PR.
+
+The broader playable UI quality gate remains separate from “six themes load.” The owner judges the final composition and enjoyment. Material changes must not be presented as completed Act 1 mechanics or a live 3D factory.
+
+## Rotating light feedback
+
+The shared overhead beacon is a separate semantic feedback layer across all themes. It is dark between event-driven rotations: cyan for sparse inactivity, green for confirmed production, red for actual accidents, ember/amber for attention. The design workbench can preview all four impulses without creating a game event. See [the light contract](CONSOLE_LIGHT_FEEDBACK.md) for priorities, geometry, timing and accessibility.
+
+
+# Console beacon and visual feedback
+
+8 October 2026. Owner direction: a dedicated rotary light belongs above every game interface. Its housing is seen almost flat from directly above. The elevated/isometric first draft was rejected.
+
+## Default: dark
+
+Rotations fire as bounded impulses. Between impulses, no beam or coloured glare remains. The screens and choices hold attention. A sparse cyan idle impulse gives the equipment a little life without implying that a paused simulation is advancing.
+
+| Trigger | Colour | Behaviour |
+| --- | --- | --- |
+| No player input for 45 seconds | Light cyan | One slow 2.4-second revolution. At most once per 90 seconds of continued inactivity. |
+| New production confirmed | Green | One 1.15-second sweep. Several units in the same receipt share one impulse. |
+| Accident confirmed | Strong red | One 1.35-second sweep; takes priority over lower signals. |
+| Choice or event requiring attention | Ember / amber | One 1.6-second sweep when the request arrives. The decision remains labelled after the light extinguishes. |
+
+These timings and intensity values are initial presentation tuning, not simulation constants. Repeated lower-priority signals are coalesced during the current sweep and one second of darkness. Accident outranks attention, which outranks production, which outranks idle. No replay of old lights when reopening a menu, restoring a projection, changing theme or switching interfaces.
+
+In the current first-day slice, new worker losses establish an actual accident. An incident record by itself may be a warning or a paperwork dispute; it is not evidence of physical harm. Later equipment-only accidents should receive an explicit public outcome tag when that mechanic exists. Do not infer an accident from arbitrary prose. Production is currently batched basic-robot completion, so a batch receipt produces one green pulse; a later per-brain completion event can use the same presentation vocabulary.
+
+## Physical construction
+
+The housing, collar and glass are an authored overhead asset. Concentric circular construction replaces the earlier tall side-wall view. A directional light aperture turns through one full circle about the same source used for the beam. The housing stays fixed. The beam moves continuously around that point, not through a mirrored left/right oscillation.
+
+One lightweight Canvas 2D surface draws the stage-wide sweep. Raised corner fittings on visible camera, portrait and menu frames act as screen-space occluders. Their tangent rays originate at the measured beacon centre; those rays remove light behind the obstruction. This is inexpensive planar occlusion, not a claim of full 3D shadow mapping. The background retains the actual asset texture. No fabricated shadows should cut across a beam from an unrelated source.
+
+Geometry is measured once at the start of an impulse. Scroll or resize ends the current effect rather than continuing with stale geometry; the next impulse measures again. Maximum canvas width is 1280 logical pixels, maximum 32 fittings, and drawing is capped around 30 fps. No per-frame React state or simulation work. Between impulses no animation frame is scheduled. Hidden pages stop drawing.
+
+Every gameplay screen shares the console-mounted source. The menu and modal settings have their own visible mount using the same language. An inactive or covered surface does not draw. Sound and readable text still communicate consequences independently.
+
+## Accessibility and review
+
+Reduced motion replaces the sweeping beam with a brief stationary lens indication. Disabling camera atmosphere disables the light effects. No screen-filling flash, constant strobe, colour-only decision or mandatory sound. Light previews live under the explicitly labelled design workbench and create no game event.
+
+Review cyan, green, red and amber on every material set; bright ivory and dark iron will catch light differently. Check source/obstacle/background alignment at desktop and phone sizes. Inspect both the peak and the dark rest state. The light supports the player's current job; it is not a reason to keep the whole page animated.

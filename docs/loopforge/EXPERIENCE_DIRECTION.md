@@ -117,3 +117,9 @@ Every important sound has visible text or a readable state change. Reduced motio
 6. Does the owner enjoy playing it and want to try the other adviser? Visual polish does not answer that playtest question by itself.
 7. Can the asset-driven interfaces carry the complete loop with the future 3D view absent?
 8. Do the actual control surfaces, character treatment and scene composition share Loopforge’s material identity, rather than merely borrowing its background images?
+
+## Equipment and feedback update — 8 October
+
+The owner requested all six generated themes be implemented and kept in the selector. A game start menu and in-run Settings now provide those material sets; the first gameplay action remains adviser choice. An author workbench combines implemented monitor and control families without resetting the run. These changes do not accept the prior composition or complete the broader focused-interface redesign. See `UI_THEME_ASSET_SYSTEM.md`.
+
+The overhead console beacon is dark by default. A confirmed production batch fires green; an actual accident fires red; an attention request fires ember/amber. Sparse cyan impulses occur only after inactivity. Each performs one rotation, then extinguishes; no constant sweep or continuous alarm wash. Shared effects respect reduced motion and atmosphere settings. See `CONSOLE_LIGHT_FEEDBACK.md`.

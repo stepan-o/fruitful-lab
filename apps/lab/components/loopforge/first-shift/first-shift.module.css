@@ -1,4 +1,6 @@
 .shell {
+  --frame-slice: 53;
+  --control-slice: 35 60;
   --ink: #eee8d6;
   --muted: #aaa99c;
   --brass: #d6bd83;
@@ -287,7 +289,7 @@
   flex: 1;
   background: #030707;
   border: 19px solid transparent;
-  border-image: var(--monitor-frame) 53 / 19px stretch;
+  border-image: var(--monitor-frame) var(--frame-slice) / 19px stretch;
   overflow: hidden;
   isolation: isolate;
   box-shadow: 0 8px 18px #0007;
@@ -556,7 +558,7 @@
   height: clamp(190px, 28svh, 350px);
   overflow: hidden;
   border: 12px solid transparent;
-  border-image: var(--monitor-frame) 53 / 12px stretch;
+  border-image: var(--monitor-frame) var(--frame-slice) / 12px stretch;
   background: #090e0e;
 }
 .adviserArt > img {
@@ -627,7 +629,7 @@
   min-width: 44px;
   background: none;
   border: 13px solid transparent;
-  border-image: var(--button-rest) 35 60 fill / 13px 20px stretch;
+  border-image: var(--button-rest) var(--control-slice) fill / 13px 20px stretch;
   padding: 3px 14px;
   font:
     700 12px/1.3 Arial,
@@ -684,7 +686,7 @@
   flex-shrink: 0;
   overflow: hidden;
   border: 9px solid transparent;
-  border-image: var(--monitor-frame) 53 / 9px stretch;
+  border-image: var(--monitor-frame) var(--frame-slice) / 9px stretch;
   background: #07100e;
 }
 .speakerPortrait img {
@@ -896,7 +898,7 @@
   flex-shrink: 0;
   overflow: hidden;
   border: 8px solid transparent;
-  border-image: var(--monitor-frame) 53 / 8px stretch;
+  border-image: var(--monitor-frame) var(--frame-slice) / 8px stretch;
 }
 .advicePortrait img {
   width: 100%;
@@ -1172,7 +1174,7 @@
   position: relative;
   background: var(--gunmetal);
   border: 13px solid transparent;
-  border-image: var(--monitor-frame) 53 / 13px stretch;
+  border-image: var(--monitor-frame) var(--frame-slice) / 13px stretch;
   overflow: hidden;
 }
 .bayArt img {
@@ -1259,7 +1261,7 @@
   background: linear-gradient(#0c1515e8, #0b1515f7), var(--gunmetal);
   color: var(--ink);
   border: 18px solid transparent;
-  border-image: var(--monitor-frame) 53 / 18px stretch;
+  border-image: var(--monitor-frame) var(--frame-slice) / 18px stretch;
   padding: 25px;
   max-height: 90svh;
   overflow-y: auto;
@@ -2279,7 +2281,7 @@
   position: relative;
   overflow: hidden;
   border: 10px solid transparent;
-  border-image: var(--monitor-frame) 53 / 10px stretch;
+  border-image: var(--monitor-frame) var(--frame-slice) / 10px stretch;
 }
 .briefingPortrait img {
   width: 100%;
@@ -2430,3 +2432,23 @@
   border: 1px solid #7d967e;
   padding: 8px;
 }
+
+/* Material recipes affect equipment only; geometry and game semantics stay shared. */
+.shell[data-theme] .consoleBody { background:linear-gradient(var(--theme-surface),#070d0dd9),var(--gunmetal); }
+.shell[data-theme] .settings { max-width:850px; }
+.shell[data-theme] .camera { border-width:28px; border-image-width:28px; }
+.shell[data-theme] .adviserArt { border-image-width:16px; }
+@media(max-width:760px) { .shell[data-theme] .camera { border-width:18px;border-image-width:18px; } .shell[data-theme] .settings { padding:18px 10px; } }
+
+.shell[data-theme] { position:relative;padding-top:74px; }
+.shell[data-theme] .settings { padding-top:76px; }
+.shell[data-theme] .settings { margin:auto;inset:0; }
+
+/* Attention is ember; a warning is not proof that an accident occurred. */
+.shell[data-theme] .camera[data-alert="true"] { border-color:#c79148; }
+.shell[data-theme] .cameraAlert { background:#674017e8;color:#ffddb0; }
+.shell[data-theme] .commandDeck[data-phase="decision"] .deckHeading { border-color:#b9854166; }
+.shell[data-theme] .commandDeck[data-phase="decision"] .deckHeading > .kicker { color:#efb970; }
+
+.shell[data-theme] .camera[data-alert="true"] { box-shadow:0 0 0 1px #b98438; }
+.shell[data-theme] .camera[data-alert="true"]::after { background:linear-gradient(#34291b44,transparent 28%,transparent 47%,#020504ed); }

@@ -1624,7 +1624,7 @@ One persistent director’s console contains Factory, Development and Records. B
 
 ### Where the first shift begins
 
-**Where Enter factory lands.** The main factory console, paused before the first shift. Establish the illustrated room context, with Conveyor and Security available and four bays sealed. Show funds, workforce, equipment condition and weekly quota together. Nobody is assigned.
+**Where Start shift lands.** The main factory console, paused before the first shift. Establish the illustrated room context, with Conveyor and Security available and four bays sealed. Show funds, workforce, equipment condition and weekly quota together. Nobody is assigned.
 
 **First actionable focus.** Choose today’s adviser. LIMEN and STILETTO use expressive art, a short personal pitch and a clear operating tradeoff. The factory stays identifiable around the choice; decorative controls do not compete with it.
 
@@ -1652,7 +1652,7 @@ One persistent director’s console contains Factory, Development and Records. B
 
 **Clock and decisions.** Show Running, Planning paused, Inspection paused or Decision required. A pending decision remains reachable from every screen.
 
-**System menu.** Sound, motion/accessibility settings and leave session. A future new-run/resume menu can live outside the three gameplay screens once persistence exists. The current first-day playtest reloads into a new run; no extra arrival or handover gate is required.
+**System menu.** Sound, motion/accessibility settings and leave session. A start menu now sits outside the three gameplay screens and provides Start shift, Settings and an in-memory Resume shift. All six equipment themes remain available; the author workbench can mix monitor and control families. Theme preference persists locally, but reloading starts a new first-day playtest. This menu does not add an in-fiction arrival or handover gate.
 
 ### Factory — Operate and intervene
 
@@ -2489,7 +2489,7 @@ First slice: the paused factory console with unassigned Limen and Stiletto, Conv
 
 Players should understand why they are choosing, what they are authorizing and how to read the result. The simulation can contain much more than the interface reveals. Its depth earns its place by creating decisions and consequences that are enjoyable to play.
 
-**Make the central choice visible.** Land directly in the paused factory console: opening facts and weekly quota → choose adviser → hear priority and first arrangement → accept or override → run → permanently allocate output. Put first-day context in that scene, without separate welcome and handover pages. Later days start with yesterday’s results.
+**Make the central choice visible.** After Start shift, land directly in the paused factory console: opening facts and weekly quota → choose adviser → hear priority and first arrangement → accept or override → run → permanently allocate output. Put first-day context in that scene, without separate welcome and handover pages. Later days start with yesterday’s results.
 
 **Say what the action means.** Use concrete labels such as Accept Stiletto’s arrangement or Stop the Brewery for Witch’s repair. Explain the known operational sacrifice and who is being overruled. Avoid vague dialogue stances whose mechanical commitment is impossible to infer.
 

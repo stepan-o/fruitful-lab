@@ -1,0 +1,15 @@
+{
+  "pack": "loopforge-console-beacon",
+  "assets": {
+    "beacon": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-themes/beacon/beacon-overhead-master.png",
+      "widths": [
+        144,
+        288
+      ],
+      "quality": 85,
+      "maxBytes": 90000
+    }
+  }
+}

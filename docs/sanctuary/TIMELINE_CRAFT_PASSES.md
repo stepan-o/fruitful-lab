@@ -4,6 +4,8 @@
 
 The opening now uses the approved caption: “From the arcade cabinet to the cloud, games have sustained businesses far beyond the studios that make them.” Each study carries its era through silhouette, material, interface and activity. The shared Sanctuary vocabulary is dark teal recesses, warm highlights, etched seams, restrained reflections, contact shadows and readable original geometry.
 
+The reader-facing labels name the business change: **Pay per play**, **One console, many games**, **Games sell consoles**, **Downloads and streaming**, **Subscribe to a catalog**, and **Rent a remote PC**.
+
 ## Focused passes
 
 | Milestone | Composition and period cues | Activity |
@@ -26,6 +28,6 @@ Reference photographs were inspected for physical cues only. No reference photog
 
 ## Motion, accessibility and performance
 
-Three columns at desktop/tablet and two on small phones keep the studies legible; chronological order remains in the DOM and numbered labels. Native buttons expose selection, keyboard activation and the associated polite detail panel. Decorative SVGs are hidden from assistive technology.
+A compact six-column row on wide screens (1100px+), three columns on narrower screens and two on small phones keep the studies legible. Illustrations are capped at 160px; chronological order remains in the DOM and numbered labels. Native buttons expose selection, keyboard activation and the associated polite detail panel. Decorative SVGs are hidden from assistive technology.
 
 Activity uses CSS transforms and opacity, with no per-frame React state, timers, canvas loops, animated blur or additional library. `useLivingPlate` gates the figure through viewport visibility, document visibility, the shared motion preference and OS reduced motion. The global pause control supplies a static readable state. All eras remain alive without selection; selection increases contrast and adds a restrained brass/teal frame. Static SVG subtrees are memoized. Clip paths keep game activity and streaming light inside screens. No new image downloads or asset manifests are needed.

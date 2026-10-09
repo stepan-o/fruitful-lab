@@ -43,7 +43,7 @@ export const businessHistory = [
   {
     "id": "coin",
     "date": "1972",
-    "label": "A turn in the room",
+    "label": "Pay per play",
     "example": "Pong · the arcade cabinet",
     "body": "The player buys a turn. The operator buys the machine, which earns its keep one game at a time.",
     "stake": "A game can make a venue more inviting—and give the equipment owner something to sell.",
@@ -55,7 +55,7 @@ export const businessHistory = [
   {
     "id": "cartridge",
     "date": "1977",
-    "label": "A library at home",
+    "label": "One console, many games",
     "example": "Atari VCS · interchangeable cartridges",
     "body": "One machine can play many separately purchased games. The player supplies the equipment; publishers compete for a place in the household’s collection.",
     "stake": "A successful console creates an audience for the next game, including games made by other companies.",
@@ -66,7 +66,7 @@ export const businessHistory = [
   {
     "id": "platform",
     "date": "1990s–2001",
-    "label": "A reason to buy in",
+    "label": "Games sell consoles",
     "example": "PlayStation · then Halo and Xbox",
     "body": "Sony’s early PlayStation business benefits from hits by Square and Namco. Microsoft acquires Bungie before Halo becomes an Xbox launch title.",
     "stake": "The value of a game includes the customers it can bring to someone’s platform.",
@@ -79,7 +79,7 @@ export const businessHistory = [
   {
     "id": "online",
     "date": "2003–2007",
-    "label": "The shelf goes online",
+    "label": "Downloads and streaming",
     "example": "Steam · Netflix streaming",
     "body": "Steam launches in 2003; Netflix adds streaming to its existing membership in 2007. The network becomes a way to deliver entertainment as well as promote it.",
     "stake": "An online library can sell individual works or access to a catalog. Digital delivery does not decide the business model.",
@@ -91,7 +91,7 @@ export const businessHistory = [
   {
     "id": "catalog",
     "date": "2017–2018",
-    "label": "A library by the month",
+    "label": "Subscribe to a catalog",
     "example": "Xbox Game Pass · launch-day releases",
     "body": "Game Pass launches in 2017. In 2018, Microsoft commits its new studio releases to the catalog on launch day, giving membership an attraction that once required another purchase.",
     "stake": "A new game can help sell the next month of access, as well as another copy.",
@@ -102,7 +102,7 @@ export const businessHistory = [
   {
     "id": "cloud",
     "date": "2020–2026",
-    "label": "More routes to play",
+    "label": "Rent a remote PC",
     "example": "GeForce NOW · Halo on PlayStation",
     "body": "GeForce NOW adds a remote-computing service to supported store libraries. Halo’s 2026 remake reaches PlayStation: even a platform’s emblem can become a product on a rival’s shelf.",
     "stake": "Equipment, game purchases and memberships can come from different businesses—or several arms of the same one.",

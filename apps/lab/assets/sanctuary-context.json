@@ -97,6 +97,119 @@
       ],
       "quality": 84,
       "maxBytes": 180000
+    },
+    "half-life-promo": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/half-life-promo.jpg",
+      "widths": [
+        320,
+        616
+      ],
+      "quality": 88,
+      "maxBytes": 90000
+    },
+    "cod-cover": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/cod-cover.jpg",
+      "widths": [
+        320,
+        640,
+        1200
+      ],
+      "quality": 83,
+      "maxBytes": 200000
+    },
+    "cod-hud": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/cod-hud.jpg",
+      "widths": [
+        320,
+        640,
+        1200
+      ],
+      "quality": 83,
+      "maxBytes": 200000
+    },
+    "candy-poster": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/candy-poster.jpg",
+      "widths": [
+        320,
+        640,
+        1200
+      ],
+      "quality": 83,
+      "maxBytes": 200000
+    },
+    "candy-phone": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/candy-phone.jpg",
+      "widths": [
+        240,
+        443
+      ],
+      "quality": 83,
+      "maxBytes": 200000
+    },
+    "king-logo": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/king-logo.svg",
+      "widths": [
+        120,
+        240
+      ],
+      "quality": 92,
+      "maxBytes": 30000
+    },
+    "infinity-ward-logo": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/infinity-ward-logo.png",
+      "widths": [
+        120,
+        240
+      ],
+      "quality": 92,
+      "maxBytes": 30000
+    },
+    "treyarch-logo": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/treyarch-logo.png",
+      "widths": [
+        120,
+        240
+      ],
+      "quality": 92,
+      "maxBytes": 30000
+    },
+    "raven-logo": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/raven-logo.png",
+      "widths": [
+        120,
+        240
+      ],
+      "quality": 92,
+      "maxBytes": 30000
+    },
+    "activision-logo": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/activision-logo.png",
+      "widths": [
+        120,
+        240
+      ],
+      "quality": 92,
+      "maxBytes": 30000
+    },
+    "blizzard-logo": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-context/blizzard-logo.svg",
+      "widths": [
+        120,
+        240
+      ],
+      "quality": 92,
+      "maxBytes": 30000
     }
   }
 }

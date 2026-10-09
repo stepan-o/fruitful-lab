@@ -22,7 +22,7 @@ export type Panel = {
   items: { label: string; text: string }[];
   flow?: boolean;
 };
-export type InlineExhibit = { afterParagraph: number; kind: "market-map" | "world-workshop" | "epic-spending" | "gathering-place" | "business-layers" | "platform-revenue" | "cloud-figures" | "audience-economy" | "chapter-diagram" | "funding" };
+export type InlineExhibit = { afterParagraph: number; kind: "acquired-worlds" | "freemium-offer" | "king-ownership" | "sony-history" | "publisher-ecosystem" | "market-map" | "world-workshop" | "epic-spending" | "gathering-place" | "business-layers" | "platform-revenue" | "cloud-figures" | "audience-economy" | "chapter-diagram" | "funding" };
 export type Chapter = {
   id: string;
   visual: VisualSpec;
@@ -30,11 +30,13 @@ export type Chapter = {
   title: string;
   lede: string;
   paragraphs: string[];
+  inscriptions?: Record<number, "subscription" | "future sales" | "the gap">;
   sections?: { at: number; title: string }[];
   paragraphCitations?: Record<string, string[]>;
   exhibits?: InlineExhibit[];
   takeaway?: string;
   figures?: Figure[];
+  embeddedAssets?: string[];
   panel?: Panel;
   interactive?: "probability" | "price";
   table?: { headers: string[]; rows: string[][]; caption: string };

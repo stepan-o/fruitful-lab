@@ -44,3 +44,7 @@
 @keyframes wheelTurn { to { rotate:360deg; } }
 @media(prefers-reduced-motion:reduce) { .renewal::after { animation:none; transform:scaleX(1); } }
 @media print { .renewal,.srOnly { display:none; } .subscription { margin-bottom:0; } }
+
+/* A warm crescent beneath the invitation; the billing rhythm remains visible. */
+.smile { opacity:.42; animation:heatBreath 7s ease-in-out infinite alternate paused; }
+.term[data-playing=true] .smile { animation-play-state:running; }

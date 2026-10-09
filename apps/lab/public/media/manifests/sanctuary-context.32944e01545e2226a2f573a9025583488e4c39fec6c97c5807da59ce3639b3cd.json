@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "pack": "sanctuary-context",
+  "assets": {
+    "counter-strike-menu": {
+      "kind": "image",
+      "width": 800,
+      "height": 600,
+      "variants": [
+        {
+          "src": "/media/files/784a9302cec4f554e48393c2dd0cf84c1c13686aca71e63a288c8a8cdc8cf2d1.webp",
+          "mime": "image/webp",
+          "bytes": 16946,
+          "sha256": "784a9302cec4f554e48393c2dd0cf84c1c13686aca71e63a288c8a8cdc8cf2d1",
+          "width": 320,
+          "height": 240
+        },
+        {
+          "src": "/media/files/12b5a5fd42f17d38ff813b768ee4730b33d8f0a68a103e8b6d2cc038937440ec.webp",
+          "mime": "image/webp",
+          "bytes": 48556,
+          "sha256": "12b5a5fd42f17d38ff813b768ee4730b33d8f0a68a103e8b6d2cc038937440ec",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "src": "/media/files/abef35422df95a33005c82ce9e359ec7f72cf8cbf49c4128c1c8f14cbb91aecf.webp",
+          "mime": "image/webp",
+          "bytes": 70030,
+          "sha256": "abef35422df95a33005c82ce9e359ec7f72cf8cbf49c4128c1c8f14cbb91aecf",
+          "width": 800,
+          "height": 600
+        }
+      ]
+    },
+    "cyberpunk-catalog-promo": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/c632f67123a14406b6928c042131be337069dd77374a0fc238433cced96d01b0.webp",
+          "mime": "image/webp",
+          "bytes": 21216,
+          "sha256": "c632f67123a14406b6928c042131be337069dd77374a0fc238433cced96d01b0",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/49470c5e06344aaf4efbeecfaf4187bf7c2427d5494ad4475a5005c2a50615dc.webp",
+          "mime": "image/webp",
+          "bytes": 62344,
+          "sha256": "49470c5e06344aaf4efbeecfaf4187bf7c2427d5494ad4475a5005c2a50615dc",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/3f1f99595d61beea91a062280a1131aef4ceed6779fc474a608261eb9b5ab0e6.webp",
+          "mime": "image/webp",
+          "bytes": 113352,
+          "sha256": "3f1f99595d61beea91a062280a1131aef4ceed6779fc474a608261eb9b5ab0e6",
+          "width": 1440,
+          "height": 810
+        }
+      ]
+    },
+    "cyberpunk-night-city": {
+      "kind": "image",
+      "width": 1138,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/62b2174f605047086d8d584f19e35245338793e6b9694ebea9591dcba6523566.webp",
+          "mime": "image/webp",
+          "bytes": 14046,
+          "sha256": "62b2174f605047086d8d584f19e35245338793e6b9694ebea9591dcba6523566",
+          "width": 320,
+          "height": 180
+        },
+        {
+          "src": "/media/files/5794e87d0e92d4a723ccf38d83ce15e41d41f215574300679dca07473be29dd2.webp",
+          "mime": "image/webp",
+          "bytes": 42888,
+          "sha256": "5794e87d0e92d4a723ccf38d83ce15e41d41f215574300679dca07473be29dd2",
+          "width": 640,
+          "height": 360
+        },
+        {
+          "src": "/media/files/64dedab42030a45ad1dbc46f0ffc6973cb4b688d32749259499b58654f843227.webp",
+          "mime": "image/webp",
+          "bytes": 109820,
+          "sha256": "64dedab42030a45ad1dbc46f0ffc6973cb4b688d32749259499b58654f843227",
+          "width": 1138,
+          "height": 640
+        }
+      ]
+    },
+    "epic-web-shop": {
+      "kind": "image",
+      "width": 3200,
+      "height": 1800,
+      "variants": [
+        {
+          "src": "/media/files/790d22c3941affe93a72f73e1ef86cf7d9c5d73077cb55bec8dd8287ee5f6d13.webp",
+          "mime": "image/webp",
+          "bytes": 4566,
+          "sha256": "790d22c3941affe93a72f73e1ef86cf7d9c5d73077cb55bec8dd8287ee5f6d13",
+          "width": 320,
+          "height": 180
+        },
+        {
+          "src": "/media/files/56fc34a875b2d29b3692bcd05e44fb2f9c24012d3b61ae07fdbc81de4015e8d1.webp",
+          "mime": "image/webp",
+          "bytes": 12410,
+          "sha256": "56fc34a875b2d29b3692bcd05e44fb2f9c24012d3b61ae07fdbc81de4015e8d1",
+          "width": 640,
+          "height": 360
+        },
+        {
+          "src": "/media/files/73822302bb082deda8ea1a5bbde60ffa1cd06b62bb33298c0af84970a0682458.webp",
+          "mime": "image/webp",
+          "bytes": 35632,
+          "sha256": "73822302bb082deda8ea1a5bbde60ffa1cd06b62bb33298c0af84970a0682458",
+          "width": 1280,
+          "height": 720
+        }
+      ]
+    },
+    "half-life-promo": {
+      "kind": "image",
+      "width": 616,
+      "height": 353,
+      "variants": [
+        {
+          "src": "/media/files/32a8b44f6e5d2b1b1239b52820f7bbb4abefd0da0cba27b43af7a43b02fd2cd3.webp",
+          "mime": "image/webp",
+          "bytes": 21646,
+          "sha256": "32a8b44f6e5d2b1b1239b52820f7bbb4abefd0da0cba27b43af7a43b02fd2cd3",
+          "width": 320,
+          "height": 183
+        },
+        {
+          "src": "/media/files/1859752d2a789d107436a415b28ab752f6813113bec623ede050c692665ee478.webp",
+          "mime": "image/webp",
+          "bytes": 54838,
+          "sha256": "1859752d2a789d107436a415b28ab752f6813113bec623ede050c692665ee478",
+          "width": 616,
+          "height": 353
+        }
+      ]
+    },
+    "netflix-wordmark": {
+      "kind": "image",
+      "width": 309,
+      "height": 83,
+      "variants": [
+        {
+          "src": "/media/files/23650a16a179547f827bc494a4ff4486564d91baa1fd7ccf10dbf9f7e0d35ea6.webp",
+          "mime": "image/webp",
+          "bytes": 1926,
+          "sha256": "23650a16a179547f827bc494a4ff4486564d91baa1fd7ccf10dbf9f7e0d35ea6",
+          "width": 154,
+          "height": 41
+        },
+        {
+          "src": "/media/files/aea36e4264e1ec9e207d1bddb7dc70b33dc2d6532449aec081dc086993d820fb.webp",
+          "mime": "image/webp",
+          "bytes": 3908,
+          "sha256": "aea36e4264e1ec9e207d1bddb7dc70b33dc2d6532449aec081dc086993d820fb",
+          "width": 309,
+          "height": 83
+        }
+      ]
+    },
+    "rockstar-los-santos": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/e1bfe02d44bdd10a71a9cba6a7dd8231a7b2751f84b005d0c840fdd0554f6c54.webp",
+          "mime": "image/webp",
+          "bytes": 6996,
+          "sha256": "e1bfe02d44bdd10a71a9cba6a7dd8231a7b2751f84b005d0c840fdd0554f6c54",
+          "width": 320,
+          "height": 180
+        },
+        {
+          "src": "/media/files/ed30c408f561b6f7456df7e4a0282dfa05a0b28086140bbe6bf5fdaeea48bc55.webp",
+          "mime": "image/webp",
+          "bytes": 16830,
+          "sha256": "ed30c408f561b6f7456df7e4a0282dfa05a0b28086140bbe6bf5fdaeea48bc55",
+          "width": 640,
+          "height": 360
+        },
+        {
+          "src": "/media/files/a712d9732846b77071ea0305bfd172ccdfc88a58cadbce5187df224759e0cb05.webp",
+          "mime": "image/webp",
+          "bytes": 39118,
+          "sha256": "a712d9732846b77071ea0305bfd172ccdfc88a58cadbce5187df224759e0cb05",
+          "width": 1280,
+          "height": 720
+        }
+      ]
+    },
+    "steam-symbol": {
+      "kind": "image",
+      "width": 233,
+      "height": 233,
+      "variants": [
+        {
+          "src": "/media/files/12856080b2bdbcc5a2c9d96342125654ac44561b45adf03a7b4bf68b74cc956f.webp",
+          "mime": "image/webp",
+          "bytes": 5030,
+          "sha256": "12856080b2bdbcc5a2c9d96342125654ac44561b45adf03a7b4bf68b74cc956f",
+          "width": 80,
+          "height": 80
+        },
+        {
+          "src": "/media/files/1ee4f68180bfd1d61c16065fb58c9fdd4dc725a4c510a99b725604c4c133e54b.webp",
+          "mime": "image/webp",
+          "bytes": 11658,
+          "sha256": "1ee4f68180bfd1d61c16065fb58c9fdd4dc725a4c510a99b725604c4c133e54b",
+          "width": 160,
+          "height": 160
+        },
+        {
+          "src": "/media/files/66fd5fede190ae06b325c7db9dbdd8e43fde155b788ab86be459afa2b4fc96ed.webp",
+          "mime": "image/webp",
+          "bytes": 12614,
+          "sha256": "66fd5fede190ae06b325c7db9dbdd8e43fde155b788ab86be459afa2b4fc96ed",
+          "width": 233,
+          "height": 233
+        }
+      ]
+    },
+    "valve-half-life": {
+      "kind": "image",
+      "width": 1024,
+      "height": 768,
+      "variants": [
+        {
+          "src": "/media/files/0e83e2b6590f0e4643582d595c42449091b2523083e16f288fc5e4830eb101f5.webp",
+          "mime": "image/webp",
+          "bytes": 9488,
+          "sha256": "0e83e2b6590f0e4643582d595c42449091b2523083e16f288fc5e4830eb101f5",
+          "width": 320,
+          "height": 240
+        },
+        {
+          "src": "/media/files/f4be97d0f95a6f1f68a3cab9a2c26786398c0c240867f526ec5caee2f7d3a448.webp",
+          "mime": "image/webp",
+          "bytes": 25324,
+          "sha256": "f4be97d0f95a6f1f68a3cab9a2c26786398c0c240867f526ec5caee2f7d3a448",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "src": "/media/files/9441c03ae86020b93998a7a9f0196254c3f35c3bc8c2e6621b3a0d48dd4eaef2.webp",
+          "mime": "image/webp",
+          "bytes": 48714,
+          "sha256": "9441c03ae86020b93998a7a9f0196254c3f35c3bc8c2e6621b3a0d48dd4eaef2",
+          "width": 1024,
+          "height": 768
+        }
+      ]
+    },
+    "valve-wordmark": {
+      "kind": "image",
+      "width": 436,
+      "height": 121,
+      "variants": [
+        {
+          "src": "/media/files/fa83a413f6463fcb444433fe07064f420de8d5906d5b29eb77138c7ffd7495f7.webp",
+          "mime": "image/webp",
+          "bytes": 2162,
+          "sha256": "fa83a413f6463fcb444433fe07064f420de8d5906d5b29eb77138c7ffd7495f7",
+          "width": 180,
+          "height": 50
+        },
+        {
+          "src": "/media/files/2daed2fcaed2a0b6efc98b2aa178748991c310ca110a5cec218bb58e0e053310.webp",
+          "mime": "image/webp",
+          "bytes": 4244,
+          "sha256": "2daed2fcaed2a0b6efc98b2aa178748991c310ca110a5cec218bb58e0e053310",
+          "width": 360,
+          "height": 100
+        }
+      ]
+    }
+  }
+}

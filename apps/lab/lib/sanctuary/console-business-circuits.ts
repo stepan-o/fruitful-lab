@@ -1,80 +1,52 @@
-import { studioCopy, publisherCopy, catalogPublisherCopy, integratedStorefrontCopy, catalogCopy, hardwareRetailerCopy, localPlayerCopy, catalogLocalPlayerCopy } from "./business-role-copy";
-import type { BusinessCircuit } from "./business-circuit";
+import { studioCopy, publisherCopy, catalogPublisherCopy, storefrontCopy, catalogCopy, hardwareRetailerCopy, localPlayerCopy, catalogLocalPlayerCopy } from "./business-role-copy";
+import type { BusinessCircuit, CircuitScene } from "./business-circuit";
 
-/** Specific console routes. Company roles are not separate ownership claims. */
-const consoleOfferBases: BusinessCircuit[] = [
- {
-  id:"playstation",label:"PlayStation",defaultPayment:2,accessMode:"purchase",
-  context:"Marvel’s Spider-Man 2 · a superhero adventure, bought on PlayStation Store and downloaded to a PS5.",
-  play:{access:"Individual game purchase",compute:"Your PS5 runs the game"},
-  alternative:{text:"PlayStation also offers cloud play through Plus Premium, including selected purchased PS5 games on PS5 and Portal. Availability depends on the game, device and region.",label:"PlayStation cloud streaming",url:"https://www.playstation.com/ps5-game-cloud-streaming"},
+type ConsoleOffer = {
+ id:"playstation"|"xbox"; label:string; owner:string; machine:string;
+ store:string; catalog:string; membership:string;
+ storeScene:CircuitScene; hardwareScene:CircuitScene; homeScene:CircuitScene;
+ offerUrl:string; hardwareUrl:string; cloudUrl:string; cloudLabel:string;
+};
+
+/** Same independent developer/publisher and game; different platform agreements. */
+function consoleOffers(config:ConsoleOffer):Record<"purchase"|"catalog",BusinessCircuit>{
+ const purchase:BusinessCircuit={
+  id:config.id,label:config.label,defaultPayment:2,accessMode:"purchase",
+  context:`Cyberpunk 2077 · bought through ${config.store} and downloaded to the player’s ${config.machine}.`,
+  play:{access:"Individual game purchase",compute:`Your ${config.id==="playstation"?"PS5":"Xbox"} runs the game`},
+  alternative:{text:`${config.label} also supports Cyberpunk through its own cloud service under eligible membership and device conditions. The route shown here uses an owned console.`,label:config.cloudLabel,url:config.cloudUrl},
   parties:[
-   {name:"Insomniac Games",category:"studio",scene:"studio",gameTitle:"SPIDER-MAN 2",...studioCopy},
-   {name:"Sony Interactive Entertainment",category:"publisher",scene:"publisher",gameTitle:"SPIDER-MAN 2",...publisherCopy},
-   {name:"PlayStation Store",category:"storefront",scene:"playstation-store",...integratedStorefrontCopy},
-   {name:"Console store",category:"hardware retailer",scene:"playstation-hardware",...hardwareRetailerCopy},
-   {name:"Player",category:"customer",scene:"playstation-home",...localPlayerCopy},
+   {name:"CD PROJEKT RED",category:"studio",scene:"studio",gameTitle:"CYBERPUNK 2077",...studioCopy},
+   {name:"CD PROJEKT RED",category:"publisher",scene:"publisher",gameTitle:"CYBERPUNK 2077",...publisherCopy},
+   {name:config.store,category:"storefront",scene:config.storeScene,gameTitle:"CYBERPUNK 2077",...storefrontCopy},
+   {name:"Console store",category:"hardware retailer",scene:config.hardwareScene,gameTitle:"CYBERPUNK 2077",...hardwareRetailerCopy},
+   {name:"Player",category:"customer",scene:config.homeScene,gameTitle:"CYBERPUNK 2077",...localPlayerCopy},
   ],
   supplies:[{name:"Game development",from:0,to:1,payment:0},{name:"Published release",from:1,to:2,payment:1},{name:"Store & download",from:2,to:4,payment:2},{name:"Local computing",from:3,to:4,payment:3}],
   payments:[
-   {name:"Development budget",from:1,to:0,explanation:"Insomniac belongs to Sony Interactive Entertainment. This line represents production funding within the group, not a fee negotiated between independent companies."},
-   {name:"Game sales revenue",from:2,to:1,explanation:"The storefront and publisher both belong to Sony. A sale contributes to the same group’s business; these boxes do not imply an external store commission between them."},
-   {name:"Game purchase",from:4,to:2,explanation:"The player buys Marvel’s Spider-Man 2 for PS5 through PlayStation Store. The downloaded game runs on their console; PlayStation Plus is not required for this single-player purchase route."},
-   {name:"Console purchase",from:4,to:3,explanation:"The PS5 is a separate hardware purchase, here through a retailer. The console stays in the home and can run many games, whether purchased individually or accessed through a catalog."},
+   {name:"Development budget",from:1,to:0,explanation:"CD PROJEKT RED develops and publishes Cyberpunk 2077. These boxes separate production from publishing responsibilities inside the same business. The line represents an allocated development budget, not an external publishing fee."},
+   {name:"Store settlement",from:2,to:1,explanation:`${config.owner} collects the store payment and settles with CD PROJEKT RED under their agreement. The publisher is independent of the platform owner; the diagram does not assume a commission rate or private contract terms.`},
+   {name:"Game purchase",from:4,to:2,explanation:`The player buys Cyberpunk 2077 through ${config.store}. The downloaded game runs on their console; ${config.id==="playstation"?"PlayStation Plus":"Game Pass"} is not required for this single-player purchase route.`},
+   {name:"Console purchase",from:4,to:3,explanation:`The ${config.machine} is a separate hardware purchase, here through a retailer. That machine can run many games, whether bought individually or accessed through a catalog.`},
   ],
-  note:"Selected US digital purchase, checked 6 October 2026. Spider-Man 2 also has a PlayStation Plus catalog offer and supported cloud-streaming options; this diagram chooses a purchase and local PS5 play. It does not equate PlayStation with purchases or Xbox with subscriptions. Insomniac, publisher and storefront sit within Sony. Marvel licensing, other production contributors and retail wholesale transactions are omitted; private terms are not inferred.",
-  sources:[{label:"Spider-Man 2: game & developer",url:"https://www.playstation.com/en-us/games/marvels-spider-man-2/"},{label:"Store: purchase, catalog & player count",url:"https://store.playstation.com/en-us/concept/10002456"},{label:"PS5: local hardware",url:"https://www.playstation.com/en-us/ps5/"},{label:"Insomniac joins PlayStation, 2019",url:"https://sonyinteractive.com/en/press-releases/2019/sony-interactive-entertainment-to-acquire-insomniac-games-developer-of-playstation4-top-selling-marvels-spider-man-ratchet-clank/"}],
- },
- {
-  id:"xbox",label:"Xbox",defaultPayment:2,accessMode:"catalog",
-  context:"Forza Horizon 5 · an open-world racing game, downloaded through Game Pass and run on an Xbox Series X.",
-  play:{access:"Game Pass catalog subscription",compute:"Your Xbox runs the game"},
-  alternative:{text:"Xbox also offers cloud play: supported games run on Microsoft’s servers and stream to a compatible device. That route uses provider-operated computing instead of a console in the home.",label:"Xbox Cloud Gaming",url:"https://www.xbox.com/en-US/cloud-gaming"},
-  parties:[
-   {name:"Playground Games",category:"studio",scene:"studio",gameTitle:"FORZA HORIZON 5",...studioCopy},
-   {name:"Xbox Game Studios",category:"publisher",scene:"publisher",gameTitle:"FORZA HORIZON 5",...catalogPublisherCopy},
-   {name:"Game Pass",category:"catalog service",scene:"xbox-store",catalogAccess:true,...catalogCopy},
-   {name:"Console store",category:"hardware retailer",scene:"xbox-hardware",...hardwareRetailerCopy},
-   {name:"Player",category:"subscriber",scene:"xbox-home",...catalogLocalPlayerCopy},
-  ],
-  supplies:[{name:"Game development",from:0,to:1,payment:0},{name:"Published release",from:1,to:2,payment:1},{name:"Access & download",from:2,to:4,payment:2},{name:"Local computing",from:3,to:4,payment:3}],
-  payments:[
-   {name:"Development budget",from:1,to:0,explanation:"Playground Games and Xbox Game Studios belong to Microsoft. This is a production-funding relationship within the group, not an external publishing contract."},
-   {name:"Content funding",from:2,to:1,explanation:"Microsoft funds its own releases and its catalog. This line identifies the content obligation behind the service; it does not assert a separate Game Pass royalty or a payment for each race."},
-   {name:"Game Pass membership",from:4,to:2,explanation:"The player pays for access to a catalog, then downloads Forza Horizon 5. The Xbox does the computing at home: a subscription does not necessarily mean cloud gaming."},
-   {name:"Console purchase",from:4,to:3,explanation:"The player buys the Xbox separately, here through a retailer. That purchase supplies local computing; payment for game access is separate."},
-  ],
-  note:"Selected US offer checked 6 October 2026: Forza Horizon 5 is sold separately and included in eligible Game Pass plans. This route chooses a local console download. Xbox also offers cloud play and PC access under applicable terms. The first three roles belong to Microsoft; arrows do not invent internal transfer prices or third-party catalog terms. Retail wholesale transactions and individual add-ons are outside this simplified view.",
-  sources:[{label:"Forza: developer, publisher & offers",url:"https://www.xbox.com/en-US/games/forza-horizon-5"},{label:"Game Pass: catalog access & terms",url:"https://www.xbox.com/en-US/xbox-game-pass"},{label:"Xbox Series X: local hardware",url:"https://www.xbox.com/en-US/consoles/xbox-series-x"},{label:"Playground joins Microsoft Studios, 2018",url:"https://www.microsoft.com/en-us/Investor/acquisition-history.aspx"}],
- },
-];
+  note:`Selected US offers checked 8 October 2026. Cyberpunk’s developer and publisher are CD PROJEKT RED, independent of ${config.owner}. The store, console manufacturer and catalog belong to ${config.owner}; the retailer is shown separately. The diagram separates responsibilities and omits wholesale hardware transactions, regional distribution and other contributors. No private commission or internal transfer price is inferred. Catalog access, cloud play and individual purchases have separate conditions; one platform’s purchase does not grant a licence on every other platform.`,
+  sources:[{label:"Cyberpunk: purchase, catalog & publisher",url:config.offerUrl},{label:`${config.machine}: local hardware`,url:config.hardwareUrl},{label:`${config.cloudLabel}: eligibility`,url:config.cloudUrl}],
+ };
+ const catalog:BusinessCircuit={
+  ...purchase,id:`${config.id}-catalog`,accessMode:"catalog",
+  context:`Cyberpunk 2077 · the same game, downloaded through ${config.catalog} and run on the player’s ${config.machine}.`,
+  play:{access:`${config.membership} catalog subscription`,compute:purchase.play!.compute},
+  parties:purchase.parties.map((party,index)=>index===1?{...party,...catalogPublisherCopy}:index===2?{...party,name:config.catalog,category:"catalog service",catalogAccess:true,...catalogCopy}:index===4?{...party,category:"subscriber",...catalogLocalPlayerCopy}:party),
+  supplies:purchase.supplies.map((supply,index)=>index===2?{...supply,name:"Access & download"}:supply),
+  payments:purchase.payments.map((payment,index)=>index===1?{...payment,name:"Catalog agreement",explanation:`${config.owner} licenses Cyberpunk 2077 from CD PROJEKT for its catalog. This is a separate publisher–platform agreement, not an internal payment or an assumed fee for each play session. The contract’s financial terms are not public here.`}:index===2?{...payment,name:"Catalog membership",explanation:`The player pays ${config.owner} for eligible ${config.catalog} catalog access, then downloads Cyberpunk 2077. Access lasts while the membership is active and the game remains included. The console does the computing at home; a subscription does not necessarily mean cloud gaming.`}:payment),
+  note:purchase.note+` This selects catalog access and local computing. Phantom Liberty remains a separate offer. ${config.id==="xbox"?"Cyberpunk’s Game Pass catalog offer covers Xbox consoles and Xbox Cloud Gaming, not PC Game Pass or a Windows licence for NVIDIA.":"Sony’s July 2025 catalog agreement is the deal discussed in the chapter; management’s published rationale is not assigned to Microsoft."}`,
+  sources:[...purchase.sources,{label:config.id==="playstation"?"Cyberpunk joins PlayStation Plus, July 2025":"Cyberpunk joins Xbox Game Pass, March 2026",url:config.id==="playstation"?"https://blog.playstation.com/2025/07/09/playstation-plus-game-catalog-for-july-cyberpunk-2077-abiotic-factor-banishers-ghosts-of-new-eden-and-more/":"https://news.xbox.com/en-us/2026/03/03/xbox-game-pass-march-2026-wave-1/"}],
+ };
+ return {purchase,catalog};
+}
 
-
-// Keep each console, game and production team fixed when comparing access offers.
-const [playstationPurchase,xboxCatalog] = consoleOfferBases;
-const playstationCatalog: BusinessCircuit = {
- ...playstationPurchase,id:"playstation-catalog",accessMode:"catalog",
- context:"Marvel’s Spider-Man 2 · the same PS5 game, downloaded through the PlayStation Plus Game Catalog and run on the player’s console.",
- play:{access:"PlayStation Plus Extra catalog subscription",compute:"Your PS5 runs the game"},
- parties:playstationPurchase.parties.map((party,index)=>index===1?{...party,...catalogPublisherCopy}:index===2?{...party,name:"PlayStation Plus",category:"catalog service",catalogAccess:true,...catalogCopy}:index===4?{...party,category:"subscriber",...catalogLocalPlayerCopy}:party),
- supplies:playstationPurchase.supplies.map((supply,index)=>index===2?{...supply,name:"Access & download"}:supply),
- payments:playstationPurchase.payments.map((payment,index)=>index===1?{...payment,name:"Content funding",explanation:"Sony funds its own releases and its catalog. This line identifies the content obligation behind the service; it does not assert a separate PlayStation Plus royalty or a payment for each play session."}:index===2?{...payment,name:"Catalog membership",explanation:"The player pays Sony for PlayStation Plus Extra catalog access, then downloads Marvel’s Spider-Man 2 to their PS5. Access lasts while the membership is active and the game remains included. The console still does the computing at home."}:payment),
- note:"Selected US catalog offer checked 7 October 2026. Spider-Man 2 is included in the PlayStation Plus Game Catalog at Extra and Premium tiers; inclusion, plans and regional availability can change. This selects an Extra download to an owned PS5, not Premium cloud streaming. Studio, publisher and catalog belong to Sony; no internal royalty or transfer price is inferred. Marvel licensing, other contributors, add-ons and retail wholesale transactions are omitted.",
- sources:[...playstationPurchase.sources,{label:"PlayStation Plus: catalog access conditions",url:"https://www.playstation.com/en-us/ps-plus/"}],
+export const consoleAccessOptions={
+ playstation:consoleOffers({id:"playstation",label:"PlayStation",owner:"Sony",machine:"PS5",store:"PlayStation Store",catalog:"PlayStation Plus",membership:"PlayStation Plus Extra",storeScene:"playstation-store",hardwareScene:"playstation-hardware",homeScene:"playstation-home",offerUrl:"https://www.playstation.com/en-us/games/cyberpunk-2077/",hardwareUrl:"https://www.playstation.com/en-us/ps5/",cloudUrl:"https://www.playstation.com/ps5-game-cloud-streaming",cloudLabel:"PlayStation cloud streaming"}),
+ xbox:consoleOffers({id:"xbox",label:"Xbox",owner:"Microsoft",machine:"Xbox Series X",store:"Xbox Store",catalog:"Game Pass",membership:"Game Pass Premium",storeScene:"xbox-store",hardwareScene:"xbox-hardware",homeScene:"xbox-home",offerUrl:"https://www.xbox.com/en-us/games/store/game/BX3M8L83BBRW",hardwareUrl:"https://www.xbox.com/en-US/consoles/xbox-series-x",cloudUrl:"https://www.xbox.com/en-US/cloud-gaming",cloudLabel:"Xbox Cloud Gaming"}),
 };
-const xboxPurchase: BusinessCircuit = {
- ...xboxCatalog,id:"xbox-purchase",accessMode:"purchase",
- context:"Forza Horizon 5 · the same racing game, bought through Xbox Store and downloaded to the player’s Xbox Series X.",
- play:{access:"Individual game purchase",compute:"Your Xbox runs the game"},
- parties:xboxCatalog.parties.map((party,index)=>index===1?{...party,...publisherCopy}:index===2?{...party,name:"Xbox Store",category:"storefront",catalogAccess:false,...integratedStorefrontCopy}:index===4?{...party,category:"customer",...localPlayerCopy}:party),
- supplies:xboxCatalog.supplies.map((supply,index)=>index===2?{...supply,name:"Store & download"}:supply),
- payments:xboxCatalog.payments.map((payment,index)=>index===1?{...payment,name:"Game sales revenue",explanation:"The storefront and publisher both belong to Microsoft. A sale contributes to the same group’s business; these boxes do not imply an external store commission between them."}:index===2?{...payment,name:"Game purchase",explanation:"The player buys Forza Horizon 5 through Xbox Store and downloads it to their console. The game purchase does not depend on continued catalog membership. Online console multiplayer requires an eligible Game Pass plan separately."}:payment),
- note:"Selected US digital purchase checked 7 October 2026. Forza Horizon 5 is sold separately and included in eligible Game Pass plans; the selector holds the game and owned Xbox constant. This digital purchase also supports Xbox Play Anywhere on Windows. The first three roles belong to Microsoft; no internal transfer price is inferred. Online console multiplayer, add-ons and retail wholesale transactions are outside the displayed base-game purchase.",
-};
-export const consoleAccessOptions = {
- playstation:{purchase:playstationPurchase,catalog:playstationCatalog},
- xbox:{purchase:xboxPurchase,catalog:xboxCatalog},
-};
-
-// Start both console comparisons with a purchase; catalog access is an explicit choice.
-export const consoleCircuits: BusinessCircuit[] = [playstationPurchase,{...xboxPurchase,id:"xbox"}];
+export const consoleCircuits:BusinessCircuit[]=[consoleAccessOptions.playstation.purchase,consoleAccessOptions.xbox.purchase];

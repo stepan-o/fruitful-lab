@@ -1,4 +1,42 @@
+Sanctuary platform financial comparison (2026-10-08): chapter 2’s existing
+`sony-history` exhibit / `#playstation-history` anchor now offers PlayStation,
+Xbox and NVIDIA cases. Sony controls remain; Microsoft FY2017–FY2026 and NVIDIA
+FY2020–FY2026 add revenue/YoY histories, selected-year details and sourced
+milestones. Xbox category growth is available from FY2021, with no inferred
+category dollar split. NVIDIA Gaming is explicitly broader than GeForce NOW;
+undisclosed cloud revenue/profit stays absent. Fiscal calendars and revenue
+scopes differ. `publisher-ecosystem` is a separate copy-count figure after the
+Xbox/NVIDIA comparison prose. Sources and placement:
+`docs/sanctuary/PLATFORM_FINANCIAL_CASES.md`.
+
+Sanctuary PlayStation history (2026-10-08): chapter 2 adds the typed `sony-history`
+exhibit after the PS5 opening and FY2025 revenue-scale paragraph (paragraph 1). Original interactive charts show Sony G&NS
+revenue by broad category and operating profit for FY2016–FY2025, with separately
+labeled scales, source-backed milestones, fiscal/accounting boundaries and exact
+data. Selecting a category isolates and rescales its revenue; All revenue restores
+the stack. Revenue and profit display USD converted with each year’s own annual
+average JPY/USD rate. A second view groups category YoY changes around zero on
+one shared percentage scale; FY2016 is a base year. Chart annotations mark PS5
+news, launch and supply constraints, with sourced year details. Raw JPY and FX
+remain in the disclosure table. The year readout includes a solid 100% revenue
+stack, dashed prior-year proportions and bracketed share shifts in percentage
+points, preserving the full total under filtering. Its detail stack reads top to
+bottom with the category list; direct percentages and hover/focus/tap tooltips
+identify each segment and its prior-year comparison. A separate FY2025 first-party/other-publisher comparison uses copies
+sold, with the unavailable money split and gross digital revenue basis explicit.
+No new asset pack or runtime dependency. Dataset and methodology:
+`docs/sanctuary/SONY_FINANCIAL_HISTORY.md`. The accompanying prose moves from PlayStation’s scale into Microsoft earning as publisher on Sony’s console, Call of Duty’s competing purchase/catalog offers, and NVIDIA’s computing business. These concrete choices connect the three ecosystems to later monetization analysis and the economic bridge to Valve. Add-on definitions and revenue/profit boundaries remain with the chart; the early Sony-history detour is omitted from the reading passage.
+
+Sanctuary chapter 2 editorial revision (2026-10-08): the current narrative follows
+one creative work supporting connected businesses, through Sony’s early PS5
+hardware losses and CD PROJEKT’s Cyberpunk catalog deal. Both diagrams open their
+modern examples on Cyberpunk; the first retains separate studio and publisher
+roles across PC, PlayStation, Xbox and NVIDIA. Console purchase/catalog choices
+do not imply a PC catalog entitlement for NVIDIA. The approved first chapter is
+unchanged. Current copy and evidence boundaries: `docs/sanctuary/CHAPTER_TWO_MANUSCRIPT.md`.
+
 Loopforge integrated producer consoles (2026-10-08, current implementation): `/stepanoskin/loopforge/play` now offers only four skins: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Each has a distinct wide composition and a newly authored portrait plate. Start shift lands at the console; Answer leadership is the first gameplay action. Acknowledge quota unlocks the internal selector and dedicated adviser/brief/placement screens; early dismissal stays locked. This is an in-memory presentation gate, not an engine command. Appearance switching pre-decodes both orientations and focused equipment without resetting the run or unfinished choices. `ResizeObserver` selects six-camera wide/tall-portrait arrangements or a single-camera channel selector for narrow/short space, including a camera-left/control-right landscape mode. Camera selection survives resizing. The native beacon uses bounded local impulses; room art, labels, facts and commands remain independent of the painted shell. The previous six themes remain historical/internal equipment only. No kernel or API change. Current authority: `docs/loopforge/PRODUCER_CONSOLE_DIRECTION.md`; execution/verification: `PRODUCER_CONSOLE_IMPLEMENTATION_PLAN.md`. Review gallery: `/stepanoskin/loopforge/design#producer-console`. Sources/prompts/provenance: `apps/lab/assets/sources/loopforge-producer/` and `loopforge-producer-runtime/`; immutable packs `loopforge-producer-studies` and `loopforge-producer-runtime`. Technical/visual checks do not imply owner acceptance.
+
 
 Loopforge focused console (2026-10-08, historical pre-integrated checkpoint): the material-only action-column composition is superseded. Start shift opens a six-camera wall with two active feeds, four unpowered glass screens carrying only handwritten room names, and speaking supervisor tokens. Intercom, placements, room focus, dispatch, debrief, development and records each use a focused workspace; incidents/help/instruments/settings are native dialogs. All six kits now have monitor, socket and three control-state assets. Original dispatch/logistics/lobby art provides separate interface settings without adding managed rooms. The read-only `/stepanoskin/loopforge/play/console-study` compares first-turn and six-feed density. Navigation and theme/menu changes retain draft choices above the unchanged deterministic KVP run controller. Source contract: `docs/loopforge/FOCUSED_CONSOLE_REBUILD.md`; production assets/provenance: `apps/lab/assets/sources/loopforge-focused/`. Technical/visual checks are recorded separately from owner acceptance.
 
@@ -19,9 +57,11 @@ Loopforge first-turn prototype (2026-10-08): `/stepanoskin/loopforge/play` now s
 
 `POST /api/loopforge/first-shift` owns bounded deterministic replay through `lib/loopforge/first-shift/`. The pure integer kernel uses per-robot identities and component tables from the opening; counts are derived. Ten-, 24- and 100-worker scenarios share the same systems. The private player projection, versioned HTTP snapshots/ordered operations and viewer reconstruction are separate. This is a new KVP application profile, not legacy wire compatibility. No LLM calls, repair, daily cash settlement, cloud save or account integrity in this one-day slice. Original immutable artwork and optional recorded/procedural SFX support the console. The `loopforge-sfx` pack supplies cropped CC0 menu, RESET and shift mechanism cues; slow/failed sample loads retain the procedural fallback. `/stepanoskin/loopforge/design#sound-library` provides six user-activated previews, crop/source notes and remaining sound needs. Its gate and ambience are audition-only. Source inventory and reproduction recipes live in `apps/lab/assets/sources/loopforge-sfx/`; no simulation contract changes. `docs/loopforge/EXPERIENCE_DIRECTION.md` establishes the landing conveyor's physical behavior as the guiding UI/audio principle. Read `FIRST_SHIFT_ENGINE.md` and `FIRST_SHIFT_VALIDATION.md` before extending this path.
 
-Sanctuary complete narrative rebuild (2026-10-08): the reader now has 33 chapters
+Sanctuary mobile interlude (2026-10-08): chapter 2 introduces the acquired Activision/Blizzard/King portfolio through official promo images and opt-in gameplay views. Creator credits distinguish Infinity Ward, Treyarch/Raven, Blizzard North/Blizzard Entertainment and King. Chapter 3, `mobile-freemium`, follows King’s browser origins into a business earning from offers inside an existing game. Its retention principle, long-term maintenance and two acquisitions connect the opportunity to the cost of preserving player attachment, then platform dependence bridges to Valve. Chapter 2 gives subscription one authored infernal inscription; optional `Chapter.inscriptions` selects the term by paragraph instead of decorating every mention. Subscriptions and freemium coexist; this reading order is not a claim of historical succession. `embeddedAssets` joins figure IDs in the server’s chapter-only media selection. Ten new contextual images/marks use immutable WebP variants and individual rights records; no remote image requests or continuous animation are added. See `docs/sanctuary/MOBILE_FREEMIUM_MANUSCRIPT.md`.
+
+Sanctuary complete narrative rebuild (2026-10-08): the reader now has 34 chapters
 in seven acts. The approved Pong opening is preserved. The business chain leads
-through Valve, Epic, Rockstar, BG3/Diablo IV, production economics, cloud delivery,
+through King/mobile freemium, Valve, Epic, Rockstar, BG3/Diablo IV, production economics, cloud delivery,
 world creation and Concord. Four consecutive Diablo history chapters establish
 the original game, D2, D3 and D4 before Gauntlet opens the system analysis.
 All downstream prose has been rebuilt around player experience, production

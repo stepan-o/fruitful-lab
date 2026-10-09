@@ -19,7 +19,7 @@ export const publisherCopy: RoleCopy = {
 };
 export const catalogPublisherCopy: RoleCopy = {
   ...publisherCopy,
-  earns: "Game sales and the game’s contribution to the group’s catalog business.",
+  earns: "Game sales and licensing payments from catalog operators.",
 };
 
 export const storefrontCopy: RoleCopy = {

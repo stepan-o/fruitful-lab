@@ -218,7 +218,10 @@ source excerpts are in `rights-sources.ts`.
   We use the publicly displayed 800×600 image, not a premium original download.
   The contributor is named beside the image. The full frame is preserved;
   optional overlays separately point to Find Servers and the Steam mark.
-- Half-Life’s existing official gallery image remains the gameplay reference.
+- Updated 8 October: Half-Life’s official Steam promotional capsule replaces the
+  gameplay image. It identifies the release and its brand in the studio-to-store
+  history. The full composition and mark are preserved, with 320/616px WebP
+  derivatives and no upscaling. The retired gameplay record remains for provenance.
   Each image has a specific analytical role rather than repeated wallpaper use.
   No soundtrack, game distribution, fan recreation or extracted asset collection
   is included. Source availability/credit is not treated as permission.
@@ -269,3 +272,9 @@ CD PROJEKT RED are credited; background covers remain credited to their respecti
 rights holders and are not extracted for separate use. The original stays outside
 runtime delivery; lazy responsive WebP derivatives use the existing asset contract.
 Source, hash and full treatment: `context-media.json`, `cyberpunk-catalog-promo`.
+
+## Activision / Blizzard / King portfolio — reviewed 8 October 2026
+
+Ten official source assets/marks are added to the contextual pack. The poster comparison identifies three acquired businesses; optional gameplay views compare the activities their products offer. King’s standalone chapter examines the board on which assistance is sold. Infinity Ward is credited for the original Call of Duty; Treyarch and Raven for Black Ops 6; Blizzard North for the original Diablo, and Blizzard Entertainment for Diablo IV; King for Candy Crush. The unaltered marks identify creators and publishers and do not become Sanctuary branding.
+
+King’s terms §§5.11 and 11 and Activision’s terms §3 do not grant a blanket public-republication licence. Public press materials are not treated as unrestricted assets. The use basis is bounded criticism/review under the policy above, with full source composition, visible attribution, per-work analytical purpose, and removable media. No music, trailer, fan artwork or standalone source-download collection is included. See the dated policy excerpts on the public credits page and the exact URL/hash records in `context-media.json`. This documents the use rationale, not a guarantee that no rights holder could object.

@@ -17,12 +17,14 @@ export type VisualSourceLink = {
 };
 
 const records: Record<string, { title: string; sourceUrl: string | null }> = visualSourceRecords;
+// Retired source records remain in the register with no active chapter references.
+const contextRecords: Record<string, { chapters: string[] }> = context.assets;
 const registerHref = (id: string) => `/stepanoskin/game-monetization/credits#${id}`;
 
 /** Only works actually cited in this chapter, including embedded marks/references. */
 export function chapterVisualSources(chapter: Chapter): VisualSourceLink[] {
-  const ids = new Set((chapter.figures ?? []).map(figure => figure.asset));
-  for (const [id, record] of Object.entries(context.assets)) {
+  const ids = new Set([...(chapter.figures ?? []).map(figure => figure.asset), ...(chapter.embeddedAssets ?? [])]);
+  for (const [id, record] of Object.entries(contextRecords)) {
     if (record.chapters.includes(chapter.id)) ids.add(id);
   }
   const links = [...ids].map(id => {

@@ -1201,3 +1201,6 @@
 .identityFigure figcaption p{font:14px/1.55 Arial,sans-serif!important;margin:0 0 8px!important;color:#c6c6b4}
 .identityFigure .archiveLabel{text-align:center;margin:0;font-size:10px}
 @media(max-width:480px){.archivePair:has(.identityFigure){display:grid;grid-template-columns:1fr;gap:10px}.identityFigure{padding:14px}.identityMark{height:78px;margin:6px 0}}
+
+/* Let the portfolio use the article width while keeping prose comfortably narrow. */
+.proseWide{max-width:none}.proseWide>p,.proseWide>h2{max-width:730px}

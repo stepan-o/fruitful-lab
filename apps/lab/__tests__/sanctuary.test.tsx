@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { within, fireEvent, render, screen } from "@testing-library/react";
 import Reader from "@/components/sanctuary/Reader";
 import { PriceLab, ProbabilityLab } from "@/components/sanctuary/Experiments";
 import { appendix, chapters, parts, sources } from "@/lib/sanctuary/content";
@@ -55,16 +55,16 @@ beforeAll(() => {
 });
 
 describe("Sanctuary reader", () => {
-  it("has a complete navigable 33-chapter edition with resolvable evidence and media", () => {
-    expect(chapters).toHaveLength(33);
-    expect(new Set(chapters.map((c) => c.id)).size).toBe(33);
+  it("has a complete navigable 34-chapter edition with resolvable evidence and media", () => {
+    expect(chapters).toHaveLength(34);
+    expect(new Set(chapters.map((c) => c.id)).size).toBe(34);
     expect(new Set(chapters.map((c) => c.part)).size).toBe(7);
     for (const chapter of chapters) {
       expect(chapter.paragraphs.length).toBeGreaterThanOrEqual(3);
       expect(chapter.evidence.length).toBeGreaterThan(30);
       expect(chapter.visual.diagram.nodes).toHaveLength(4);
       expect(chapter.visual.sceneTitle.length).toBeGreaterThan(3);
-      if (!["studio-to-screen","platform-business"].includes(chapter.id)) expect(chapter.figures?.some(figure=>figure.asset === chapter.visual.screenshot.asset)).toBe(true);
+      if (!["studio-to-screen","platform-business","mobile-freemium"].includes(chapter.id)) expect(chapter.figures?.some(figure=>figure.asset === chapter.visual.screenshot.asset)).toBe(true);
       for (const [paragraphIndex, ids] of Object.entries(
         chapter.paragraphCitations ?? {},
       )) {
@@ -82,6 +82,7 @@ describe("Sanctuary reader", () => {
       }
       for (const id of chapter.sources)
         expect(sources.map(source=>source.id)).toContain(id);
+      for (const id of chapter.embeddedAssets ?? []) expect(manifest.assets[id]?.kind).toBe("image");
       for (const figure of chapter.figures ?? []) {
         expect(manifest.assets[figure.asset]?.kind).toBe("image");
         if (figure.afterParagraph !== undefined) {
@@ -146,7 +147,7 @@ describe("Sanctuary reader", () => {
     );
     expect(screen.queryByText(/INTERNAL REFERENCE/)).not.toBeInTheDocument();
   });
-  it("retains the Cyberpunk visual citation inside the worked example after the market-map introduction", async () => {
+  it("keeps Cyberpunk’s catalog evidence before the wider market map", async () => {
     const index = chapters.findIndex(c=>c.id==="studio-to-screen");
     const current = chapters[index];
     const figure = current.figures!.find(f=>f.asset==="cyberpunk-catalog-promo")!;
@@ -154,16 +155,17 @@ describe("Sanctuary reader", () => {
     render(<Reader {...props} current={current} index={index}/>);
     await screen.findByRole("region",{name:"What has to keep selling?"});
     const map = await screen.findByRole("region",{name:"One game. Many routes to the player."});
-    const heading = screen.getByRole("heading",{name:"What the deal is worth"});
-    expect(map.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    const heading = screen.getByRole("heading",{name:"The deal behind the subscription"});
+    expect(within(map).getByRole("button",{name:/^Cyberpunk 2077/})).toHaveAttribute("aria-pressed","true");
     const picture = screen.getByRole("img",{name:figure.alt});
     expect(picture).toHaveAttribute("loading","lazy");
     expect(heading.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(picture.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     const nextParagraph = screen.getByText(current.paragraphs[figure.afterParagraph!+1]);
     expect(picture.compareDocumentPosition(nextParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
   it("opens at the arcade, keeps its evidence inline and continues through the purchase history", () => {
-    expect(chapters.slice(0,12).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","valve-platform","epic-infrastructure","rockstar-world","the-fork","platform-business","cloud-gaming","making-worlds","concord","several-histories","diablo-second-life"]);
+    expect(chapters.slice(0,13).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","mobile-freemium","valve-platform","epic-infrastructure","rockstar-world","the-fork","platform-business","cloud-gaming","making-worlds","concord","several-histories","diablo-second-life"]);
     expect(chapters.find(c=>c.id==="concord")!.part).toBe(0);
     expect(chapters.find(c=>c.id==="how-many-lives")!.part).toBe(2);
     const current = chapters[0];

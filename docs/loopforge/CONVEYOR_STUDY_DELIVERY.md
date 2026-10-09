@@ -11,7 +11,7 @@ Scope: design research, a proposal and a dedicated game-design tab; no gameplay 
 - [x] Regenerate and validate board/export consistency.
 - [x] Inspect desktop and mobile, layout selection, keyboard access and static reading copies.
 - [x] Complete relevant app validation.
-- [ ] Commit, push and open PR.
+- [x] Commit, push and open PR.
 
 Open design decisions: precise floor scale, construction costs/duration, quota payment timing, policy reversal costs and actual play balance. No numerical performance or owner fun approval is claimed.
 
@@ -25,3 +25,5 @@ Open design decisions: precise floor scale, construction costs/duration, quota p
 - The original explanatory diagrams are not production game art and do not report simulated numerical results. No new third-party artwork or renderer dependency was added.
 
 Production build: passed after one interrupted attempt. The successful run compiled, completed type checking and prerendered the app. Existing middleware deprecation warning remains unrelated.
+
+Published in [PR #102](https://github.com/stepan-o/fruitful-lab/pull/102). The built application route `/stepanoskin/loopforge/design#conveyor` was also checked locally. Preview deployment status is reported on the PR; no production release is claimed.

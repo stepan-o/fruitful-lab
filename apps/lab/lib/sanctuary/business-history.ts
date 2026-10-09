@@ -235,9 +235,9 @@ export const businessHistory = [
     "kind": "cloud",
     "date": "2020",
     "label": "Cloud PCs",
-    "example": "GeForce NOW · the gaming PC becomes a service",
-    "body": "The computer on your desk no longer has to be the computer that runs the game. GeForce NOW opens its commercial service in 2020, letting supported PC games run on NVIDIA’s servers while a laptop, Mac, phone or TV receives the picture and sends back the controls. A modest device can become the doorway to demanding games without buying a gaming PC.",
-    "stake": "The expensive machine—and the job of upgrading it—moves to the provider. Buying a gaming PC can become a recurring payment to NVIDIA, while the player keeps using supported games bought through Steam or another store. Pair that service with a separate subscription to a supported game catalog, and both purchases become recurring commitments: one payment for access to the games, another for the machine that runs them. Instead of buying a game and the computer to play it, the player rents continuing access to both from platform providers.",
+    "example": "GeForce NOW · bring your PC game library",
+    "body": "GeForce NOW leaves beta in 2020 with an invitation to bring your existing PC game library into the cloud. Supported games bought through stores such as Steam and Epic—including earlier purchases—can run on NVIDIA’s servers without being bought again. The store still sells the game; NVIDIA supplies the computer. Players can use their own gaming PC or stream to a less powerful device.",
+    "stake": "Cloud play can bring these stores customers who do not own a powerful gaming PC. NVIDIA, meanwhile, can turn the hardware purchase and its upgrades into a recurring payment for computing. Pair that service with a separate subscription to a supported game catalog, and the player pays two subscriptions: one for access to the games, another for the machine that runs them.",
     "sources": [
       "gfn-reach-2023",
       "gfn-hardware-upgrades",

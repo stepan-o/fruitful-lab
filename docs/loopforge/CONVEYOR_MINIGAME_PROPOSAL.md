@@ -90,13 +90,13 @@ More capacity. More coordination.
 
 ## The first floor · calibrated layout
 
-Implemented in the separate procedural study: the original 35 × 25 tile arrangement, six managed rooms and three support spaces. The first turn opens in the Lobby; only Security and Conveyor are unlocked.
+The original room proportions and connections now occupy 105 × 75 tiles: three times the width and depth, nine times the floor area. Workers stay approximately 1.9 m tall. The first turn opens in the Lobby; only Security and Conveyor are unlocked.
 
 **Northern wings.** Weaving Gallery at the northwest; Cognitive Substrate Brewery in the north centre; Burn-in Theatre at the northeast. All three are sealed on turn one.
 
 **Entry and production.** Lobby → Dispatch → Security is the arrival route. Conveyor occupies the southwest production bay below Dispatch and Security. Cortex Assembly occupies the original Brain Forge footprint to its east; Shipping remains the southeast support bay. Cortex is sealed.
 
-**A real shared boundary.** Security and Conveyor have a two-tile doorway. Their assigned supervisors can therefore become eligible for direct encounters. Being able to walk through another room to reach someone is not the same as being their neighbour. Adjacency permits an event; motives, history and current conditions must still explain it.
+**A real shared boundary.** Security and Conveyor have a six-tile architectural opening with a smaller clearance lane. Their assigned supervisors can therefore become eligible for direct encounters. Being able to walk through another room to reach someone is not the same as being their neighbour. Adjacency permits an event; motives, history and current conditions must still explain it.
 
 **What the player sees.** The whole floor exists from the opening. Later wings show closed shutters and covered interiors bearing their names. Overview frames the building; Floor plan selects any room location. Construction and production use the same camera.
 
@@ -104,7 +104,27 @@ Implemented in the separate procedural study: the original 35 × 25 tile arrange
 
 **Source reconciliation.** The original annotated plan and Sim4 rectangles anchor geography. Sim4 omitted the Security–Conveyor edge despite their shared boundary; the current owner direction and later sim_sim rule restore it. Other sim_sim edges that conflict with the physical map are not copied as invisible doorways. Short physical bridges preserve Sim4 connections across service gaps.
 
-**Boundary of this delivery.** Full layout, opening locks and navigable commissioning study are implemented. Later-room interiors, progression economics and supervisor encounter execution are not yet implemented in this fixture.
+**Boundary of this delivery.** Full layout, opening locks, commissioning flow and staged procedural equipment in all six rooms are implemented. Equipment study is a separate inspection mode; it neither purchases equipment nor unlocks later rooms. Production economics, free placement and supervisor encounter execution remain future work.
+
+## Working scale · equipment and encounters
+
+The room paintings establish relationships: workers reach controls, machines tower above them, and encounters need credible places to happen. These are prototype placements for scale calibration; future machinery will be bought and installed through Build.
+
+**Security · 12 × 18 m.** A clearance lane, records desk and holding cage leave a checkpoint where LIMEN and STILETTO can collide in front of waiting workers.
+
+**Lattice Forge · 30 × 21 m.** Intake press → live conveyor → outtake press. The scrap maw and process feeds occupy the rear; a continuous service aisle leaves room for Witch, the operator and witnesses. Belt surface is 1.43 m above the floor.
+
+**Brewery · 33 × 24 m.** A large open vat and suspended agitators dominate the room. A separate filtration bank, controls and clear apron support maintenance, a gathering or a visible spill.
+
+**Weaving · 30 × 24 m.** Paired looms and tall neural columns frame a raised harmonic instrument. Thrum has a central listening space; side aisles serve the machinery.
+
+**Theatre · 21 × 24 m.** Sixteen conditioning cradles face three projection screens. Cathexis has a podium, a shared forecourt and side access, so conditioning and defiance can use the same physical layout.
+
+**Cortex · 24 × 33 m.** A major assembly chamber, twin cooling banks, feed conveyor and controls provide multiple technician positions. Specific supervisor outcomes are still design work.
+
+**Builder contract.** Typed footprints, operating positions and encounter clearances are stored outside the renderer. Placement must eventually validate access, service clearances and hazards, not just whether the machine fits. Today these records describe the study layout only.
+
+**Rendering budget.** Room chunks batch static geometry by material. A repeated floor texture supplies metre-scale detail without thousands of tile meshes. Workers share GPU geometry; their individual state stays in the deterministic host.
 
 ## Night zero: enter, build, bring it to life
 

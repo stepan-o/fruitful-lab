@@ -1,15 +1,17 @@
-/** Floor 1, calibrated from the original 35 × 25 Sim4 tile plan.
+/** Floor 1, calibrated from the original Sim4 plan, expanded to worker-scale build tiles.
  * Coordinates are integer tiles, west→east / north→south; rectangles are half-open.
  * This module owns topology and admission. A renderer may project it, never redefine it.
  */
-export const FLOOR_VERSION = "loopforge-floor-1/1";
-export const FLOOR_SIZE = { width: 35, height: 25 } as const;
+export const FLOOR_VERSION = "loopforge-floor-1/2";
+export const FLOOR_SCALE = 3;
+export const FLOOR_SIZE = { width: 35 * FLOOR_SCALE, height: 25 * FLOOR_SCALE } as const;
+export const WORKER_HEIGHT = 1.9; // Metres; one design tile is one metre.
 export type ManagedRoomId = "security" | "conveyor" | "theatre" | "brewery" | "weaving" | "cortex";
 export type ZoneId = ManagedRoomId | "lobby" | "dispatch" | "shipping";
 export type Tile = Readonly<{ x: number; y: number }>;
 export type Rect = Readonly<{ x: number; y: number; w: number; h: number }>;
 export type FloorZone = Readonly<{ id: ZoneId; name: string; short: string; number: string; kind: "managed" | "support"; rect: Rect }>;
-export const ZONES: readonly FloorZone[] = [
+export const REFERENCE_ZONES: readonly FloorZone[] = [
   { id: "weaving", name: "Synapse Weaving Gallery", short: "Weaving Gallery", number: "05", kind: "managed", rect: { x: 5, y: 2, w: 10, h: 8 } },
   { id: "brewery", name: "Cognitive Substrate Brewery", short: "Substrate Brewery", number: "04", kind: "managed", rect: { x: 15, y: 2, w: 11, h: 8 } },
   { id: "theatre", name: "Burn-in Theatre", short: "Burn-in Theatre", number: "03", kind: "managed", rect: { x: 28, y: 4, w: 7, h: 8 } },
@@ -20,6 +22,7 @@ export const ZONES: readonly FloorZone[] = [
   { id: "cortex", name: "Cortex Assembly", short: "Cortex Assembly", number: "06", kind: "managed", rect: { x: 20, y: 14, w: 8, h: 11 } },
   { id: "shipping", name: "Shipping", short: "Shipping", number: "S", kind: "support", rect: { x: 30, y: 15, w: 5, h: 10 } },
 ];
+export const ZONES: readonly FloorZone[] = REFERENCE_ZONES.map(z => ({ ...z, rect: { x: z.rect.x * FLOOR_SCALE, y: z.rect.y * FLOOR_SCALE, w: z.rect.w * FLOOR_SCALE, h: z.rect.h * FLOOR_SCALE } }));
 export const MANAGED_ROOMS = [...ZONES.filter(z => z.kind === "managed")].sort((a, b) => a.number.localeCompare(b.number));
 export const INITIAL_UNLOCKED: readonly ManagedRoomId[] = ["security", "conveyor"];
 export function zone(id: ZoneId): FloorZone { return ZONES.find(z => z.id === id)!; }
@@ -32,7 +35,7 @@ export type Portal = Readonly<{ id: string; a: ZoneId; b: ZoneId; start: Tile; e
  * shared threshold required by the current design and the later sim_sim conflict rule.
  * Short bridges give the legacy across-gap edges actual walkable geometry.
  */
-export const PORTALS: readonly Portal[] = [
+const referencePortals: readonly Portal[] = [
   { id: "lobby-dispatch", a: "lobby", b: "dispatch", start: { x: 9, y: 12 }, end: { x: 10, y: 12 }, width: 2 },
   { id: "dispatch-security", a: "dispatch", b: "security", start: { x: 13, y: 12 }, end: { x: 14, y: 12 }, width: 2 },
   { id: "security-conveyor", a: "security", b: "conveyor", start: { x: 15, y: 15 }, end: { x: 15, y: 16 }, width: 2 },
@@ -47,6 +50,11 @@ export const PORTALS: readonly Portal[] = [
   { id: "cortex-shipping", a: "cortex", b: "shipping", start: { x: 27, y: 19 }, end: { x: 30, y: 19 }, width: 2 },
   { id: "theatre-shipping", a: "theatre", b: "shipping", start: { x: 32, y: 11 }, end: { x: 32, y: 15 }, width: 2 },
 ];
+export const PORTALS: readonly Portal[] = referencePortals.map(p => {
+  const horizontal = p.start.x !== p.end.x;
+  // Anchor to the final tile before the original boundary, not three tiles before it.
+  return { ...p, start: { x: p.start.x * FLOOR_SCALE + (horizontal ? FLOOR_SCALE - 1 : 0), y: p.start.y * FLOOR_SCALE + (horizontal ? 0 : FLOOR_SCALE - 1) }, end: { x: p.end.x * FLOOR_SCALE, y: p.end.y * FLOOR_SCALE }, width: p.width * FLOOR_SCALE };
+});
 export function portalRect(p: Portal): Rect {
   return p.start.x !== p.end.x
     ? { x: Math.min(p.start.x, p.end.x), y: p.start.y, w: Math.abs(p.end.x - p.start.x) + 1, h: p.width }
@@ -93,17 +101,22 @@ export function findTilePath(start: Tile, end: Tile, unlocked: readonly ManagedR
   return null;
 }
 
+export const LINE_ORIGIN = { x: 45, y: 59 } as const;
 export const FIXTURE_SOCKETS = {
-  terminal: { room: "security", x: 14.95, y: 11.6, scale: .65 },
-  gate: { room: "security", x: 16, y: 16, scale: .65 },
-  drive: { room: "conveyor", x: 16.368, y: 20.724, scale: .72 },
+  terminal: { room: "security", x: 45, y: 35, scale: 1 },
+  gate: { room: "security", x: 48.5, y: 48, scale: 1 },
+  drive: { room: "conveyor", x: 46.9, y: 60.7, scale: 1 },
 } as const;
 export const CREW_OBSTACLES: readonly Rect[] = [
-  { x: 14, y: 11, w: 2, h: 2 }, // Terminal footprint.
-  { x: 11, y: 19, w: 8, h: 2 }, // Conveyor and outtake.
-  { x: 15, y: 21, w: 3, h: 1 }, // Motor service envelope.
+  { x: 44, y: 34, w: 2, h: 3 }, // Terminal and operator envelope.
+  { x: 43, y: 41, w: 3, h: 5 }, // Holding cage.
+  { x: 50, y: 32, w: 3, h: 4 }, // Clearance records.
+  { x: 32, y: 57, w: 25, h: 4 }, // Intake → line → outtake.
+  { x: 45, y: 60, w: 4, h: 2 }, // Drive service envelope.
+  { x: 32, y: 50, w: 4, h: 4 }, // Scrap maw.
+  { x: 41, y: 53, w: 6, h: 3 }, // Process feed bank.
 ];
-const crewStops: readonly Tile[] = [{ x: 16, y: 13 }, { x: 16, y: 17 }, { x: 10, y: 17 }, { x: 10, y: 22 }, { x: 19, y: 22 }, { x: 19, y: 17 }, { x: 16, y: 17 }, { x: 16, y: 13 }];
+const crewStops: readonly Tile[] = [{ x: 48, y: 43 }, { x: 48, y: 51 }, { x: 37, y: 51 }, { x: 37, y: 55 }, { x: 31, y: 55 }, { x: 31, y: 64 }, { x: 58, y: 64 }, { x: 58, y: 55 }, { x: 48, y: 55 }, { x: 48, y: 43 }];
 export const CREW_ROUTE: readonly Tile[] = crewStops.flatMap((t, i) => i === 0 ? [] : findTilePath(crewStops[i - 1], t, INITIAL_UNLOCKED, CREW_OBSTACLES)!.slice(0, -1));
 export const ROUTE_LENGTH = CREW_ROUTE.length * 1000;
 export function crewPose(progress: number) {

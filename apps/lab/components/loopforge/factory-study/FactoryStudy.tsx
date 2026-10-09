@@ -7,8 +7,9 @@ import { FIXTURES, SHIFT_TICKS, initialStudy, type Command, type Fixture, type P
 import transitionAssets from "@/lib/assets/generated/loopforge-time-transitions.json";
 import type { FactoryScene, Focus, SceneReport } from "./scene";
 import type { FactoryAudio } from "../first-shift/audio";
-import { accessible, zone } from "@/lib/loopforge/spatial/floor";
+import { accessible, zone, FLOOR_SIZE, type ManagedRoomId } from "@/lib/loopforge/spatial/floor";
 import FloorPlan from "./FloorPlan";
+import { ROOM_STAGING } from "@/lib/loopforge/spatial/equipment";
 import styles from "./factory-study.module.css";
 
 const EQUIPMENT: Record<Fixture, { name: string; purpose: string; number: string }> = {
@@ -29,6 +30,9 @@ export default function FactoryStudy() {
   const soundPending = useRef(false);
   const tool = useRef<{ enabled: boolean; selected: Fixture | null }>({ enabled: false, selected: null });
   const blocked = useRef(true);
+  const inspecting = useRef(false);
+  const cameraFocus = useRef<Focus>("lobby");
+  const [inspection, setInspection] = useState(false);
   const [state, setState] = useState<StudyState>(() => initialStudy());
   const [ready, setReady] = useState(false);
   const [error, setError] = useState("");
@@ -60,7 +64,7 @@ export default function FactoryStudy() {
     if (result?.ok) setTool(true);
     else if (result) setNotice(result.reason);
   }, [setTool]);
-  const look = useCallback((where: Focus) => { if(where !== "wide" && !accessible(where, host.current?.snapshot.unlockedRooms ?? [])) setTool(false); world.current?.focus(where); setFocus(where); }, [setTool]);
+  const look = useCallback((where: Focus) => { if(where !== "wide" && !accessible(where, host.current?.snapshot.unlockedRooms ?? [])) setTool(false); cameraFocus.current = where; world.current?.focus(where); setFocus(where); }, [setTool]);
 
   useEffect(() => {
     if (!canvas.current) return;
@@ -88,7 +92,7 @@ export default function FactoryStudy() {
       if (disposed || !canvas.current) return;
       const renderer = createFactoryScene(canvas.current, place, setReport, look);
       world.current = renderer;
-      renderer.update(localHost.snapshot); renderer.focus("lobby");
+      renderer.update(localHost.snapshot); renderer.study(inspecting.current); renderer.focus(cameraFocus.current);
       fit();
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       renderer.motion(!reduced); setMotion(!reduced); setReady(true);
@@ -145,12 +149,19 @@ export default function FactoryStudy() {
     } catch { player?.close(); if (host.current) setNotice("Audio is unavailable. The scene can still run silently."); }
     finally { soundPending.current = false; }
   };
+  const inspect = () => {
+    const enabled = !inspecting.current; inspecting.current = enabled; setInspection(enabled); setTool(false); world.current?.study(enabled);
+    blocked.current = enabled;
+    if(enabled){host.current?.suspendClock();audio.current?.machine(false,false,false);look("conveyor");}
+    else if(!document.hidden) host.current?.resumeClock();
+  };
   const next = FIXTURES[state.installed.length];
   const progress = Math.min(100, state.shiftTick / SHIFT_TICKS * 100);
   const status = state.phase === "night" ? "PRODUCTION STOPPED" : state.phase === "morning" ? "CREW READY" : state.jammed ? "LINE HELD" : state.running ? "LINE RUNNING" : "PAUSED";
   const choose = (fixture: Fixture) => { setTool(true, fixture); look(fixture === "drive" ? "conveyor" : "security"); };
-  const sealed = focus !== "wide" && !accessible(focus, state.unlockedRooms);
+  const sealed = !inspection && focus !== "wide" && !accessible(focus, state.unlockedRooms);
   const focusedRoom = focus !== "wide" ? zone(focus) : null;
+  const staging = focus !== "wide" && focusedRoom?.kind === "managed" ? ROOM_STAGING[focus as ManagedRoomId] : null;
   const cardSrc = card ? images[card.phase] : undefined;
 
   return <main className={styles.stage} data-motion={motion ? "full" : "reduced"} data-jammed={state.jammed}>
@@ -165,15 +176,21 @@ export default function FactoryStudy() {
       <nav className={styles.rooms} aria-label="Camera focus">
         {([ ["wide", "↗", "Overview"], ["security", "01", "Security"], ["conveyor", "02", "Conveyor"] ] as const).map(([id, number, title]) => <button key={id} onClick={() => look(id)} aria-pressed={focus === id}><span>{number}</span>{title}</button>)}
         <button onClick={() => setMapOpen(true)} aria-haspopup="dialog"><span>⌗</span>Floor plan</button>
+        <button onClick={inspect} aria-pressed={inspection}><span>◇</span>{inspection ? "Opening view" : "Equipment study"}</button>
       </nav>
-      <div className={styles.readout}><span className={styles.liveDot} />{building ? "CONSTRUCTION TOOL" : "FACTORY VIEW"}<small>{focusedRoom ? `${focusedRoom.name} · ${sealed ? "sealed" : focusedRoom.kind === "support" ? "support space" : "online"}` : "Floor 01 · 2 / 6 rooms online"}</small></div>
-      <section ref={dock} className={styles.dock} aria-label={building ? "Construction controls" : "Factory controls"}>
-        <div className={styles.copy}>
+      <div className={styles.readout}><span className={styles.liveDot} />{inspection ? "EQUIPMENT SCALE STUDY" : building ? "CONSTRUCTION TOOL" : "FACTORY VIEW"}<small>{focusedRoom ? `${focusedRoom.name} · ${inspection ? "staged prototype" : sealed ? "sealed" : focusedRoom.kind === "support" ? "support space" : "online"}` : inspection ? "Study only · first-turn locks preserved" : "Floor 01 · 2 / 6 rooms online"}</small></div>
+      <section ref={dock} className={`${styles.dock} ${inspection ? styles.studyDock : ""}`} aria-label={building ? "Construction controls" : "Factory controls"}>
+        {inspection ? <div className={styles.copy}>
+          <span className={styles.eyebrow}>{focusedRoom ? `${focusedRoom.rect.w} × ${focusedRoom.rect.h} m` : `${FLOOR_SIZE.width} × ${FLOOR_SIZE.height} m`} / WORKER ≈ 1.9 m / STAGED EQUIPMENT</span>
+          <h1>{staging?.title ?? "The factory at working scale"}</h1>
+          <p>{staging?.premise ?? "Inspect the proposed equipment in all six rooms. First-turn admission and purchased equipment are unchanged."}</p>
+          {staging && <details className={styles.interactionNote}><summary>Supervisor interaction space</summary><p>{staging.interaction}</p></details>}
+        </div> : <div className={styles.copy}>
           <span className={styles.eyebrow}>{sealed ? "UNCOMMISSIONED WING" : state.phase === "night" ? `NIGHT WORK / ${state.installed.length} OF 3 INSTALLED` : state.phase === "morning" ? "COMMISSIONING CREW" : `TEST CRADLES / ${String(state.cycles).padStart(3,"0")}`}</span>
           <h1>{sealed ? focusedRoom?.name : focus === "lobby" && state.phase === "night" && state.installed.length === 0 ? "Enter the factory." : state.phase === "night" ? building ? selected ? `Place the ${EQUIPMENT[selected].name.toLowerCase()}` : next ? "Choose the next installation" : "The line is ready" : next ? "Bring the factory online" : "Night maintenance window" : state.phase === "morning" ? "Everything in its place." : state.jammed ? "The line has stopped." : state.running ? "Watch the chain work." : "Production paused."}</h1>
           <p>{sealed ? "This room is sealed. Its doors stay closed until the wing is commissioned." : focus === "lobby" && state.phase === "night" && state.installed.length === 0 ? "Pass through Dispatch to Security. Fit the clearance equipment, then bring the conveyor online." : state.phase === "night" ? selected ? "Click the illuminated socket, or confirm below. Escape cancels." : building ? next ? EQUIPMENT[next].purpose : "Leave build mode to begin the morning handover." : next ? "Enter build mode to fit Security’s clearance equipment." : "The crew charges for six hours. Equipment stays where you built it." : state.phase === "morning" ? "Run the test crew through Security and the conveyor. Eighteen factory hours play in one minute." : state.jammed ? "Release the test obstruction. Watch the gate, crew and drive respond together." : "Change the pace or test an obstruction. Every movement follows the live commissioning state."}</p>
-        </div>
-        <div className={styles.controls}>{sealed ? <div className={styles.actions}><button className={styles.primary} onClick={() => look("security")}>Return to Security →</button><button onClick={() => setMapOpen(true)}>Floor plan</button></div> : <>
+        </div>}
+        <div className={styles.controls}>{inspection ? <div className={styles.actions}><button className={styles.primary} onClick={() => setMapOpen(true)}>Inspect a room</button><button onClick={inspect}>Return to opening</button></div> : sealed ? <div className={styles.actions}><button className={styles.primary} onClick={() => look("security")}>Return to Security →</button><button onClick={() => setMapOpen(true)}>Floor plan</button></div> : <>
           {building && next && <div className={styles.equipment}>{FIXTURES.map((f, i) => <button key={f} disabled={f !== next} aria-pressed={selected === f} onClick={() => choose(f)}><span>{state.installed.includes(f) ? "✓" : EQUIPMENT[f].number}</span><b>{EQUIPMENT[f].name}</b><small>{state.installed.includes(f) ? "Installed" : i > state.installed.length ? "Next" : selected === f ? "Preview in place" : "Select to place"}</small></button>)}</div>}
           <div className={styles.actions}>
             {state.phase === "night" && <button className={building ? styles.secondary : styles.primary} onClick={() => { setTool(!building); if(!building) look(next === "drive" ? "conveyor" : "security"); }}>{building ? "Exit build" : "Build"}<kbd>B</kbd></button>}
@@ -186,11 +203,11 @@ export default function FactoryStudy() {
         </div>
         {state.phase === "shift" && <div className={styles.shiftProgress} role="progressbar" aria-label="Shift elapsed" aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}><i style={{ width: `${progress}%` }} /></div>}
       </section>
-      <footer className={styles.footer}><span>Drag to orbit · Right drag / two fingers to pan · Scroll / pinch to zoom</span><details className={styles.diagnostics}><summary>Study diagnostics</summary><div><b>{report ? `${report.fps} FPS · ${report.resolution}` : "Measuring renderer…"}</b><p>{report?.workers ?? 10} individual workers · {report?.active ?? "—"} active meshes<br />{report?.updateMs}ms pose · {report?.renderMs}ms render submission<br />{report?.renderer}<br />Tick {state.tick} · {state.unlockedRooms.length}/6 rooms online<br />35 × 25 tiles · Local public fixture · No quota output</p><button onClick={() => { host.current?.reset(state.workers.length === 10 ? 100 : 10); setTool(false); look("lobby"); setCard({ phase: "night", day: 1, key: `reset-${Date.now()}` }); blocked.current = true; }}>Restart with {state.workers.length === 10 ? 100 : 10} workers</button><Link href="/stepanoskin/loopforge/design#conveyor">Design & scope ↗</Link></div></details></footer>
+      <footer className={styles.footer}><span>Drag to orbit · Right drag / two fingers to pan · Scroll / pinch to zoom</span><details className={styles.diagnostics}><summary>Study diagnostics</summary><div><b>{report ? `${report.fps} FPS · ${report.resolution}` : "Measuring renderer…"}</b><p>{report?.workers ?? 10} individual workers · {report?.active ?? "—"} active meshes<br />{report?.updateMs}ms pose · {report?.renderMs}ms render submission<br />{report?.renderer}<br />Tick {state.tick} · {state.unlockedRooms.length}/6 rooms online<br />{FLOOR_SIZE.width} × {FLOOR_SIZE.height} tiles · Local public fixture · No quota output</p><button onClick={() => { if(inspecting.current) inspect(); host.current?.reset(state.workers.length === 10 ? 100 : 10); setTool(false); look("lobby"); setCard({ phase: "night", day: 1, key: `reset-${Date.now()}` }); blocked.current = true; }}>Restart with {state.workers.length === 10 ? 100 : 10} workers</button><Link href="/stepanoskin/loopforge/design#conveyor">Design & scope ↗</Link></div></details></footer>
       {notice && <p className={styles.notice} role="status">{notice}</p>}
       <span className={styles.sr} role="status">{state.events.at(-1)?.kind !== "cycle" ? state.events.at(-1)?.text : ""}</span>
     </div>
-    <FloorPlan open={mapOpen} unlocked={state.unlockedRooms} onSelect={look} onClose={() => setMapOpen(false)} />
+    <FloorPlan study={inspection} open={mapOpen} unlocked={state.unlockedRooms} onSelect={look} onClose={() => setMapOpen(false)} />
     {!ready && <div className={styles.loading}><span>LOOPFORGE</span><h1>{error || "Preparing the factory…"}</h1>{error && <Link href="/stepanoskin/loopforge/play">Return to the console</Link>}</div>}
     {ready && card && <div key={card.key} className={styles.timeCard} data-loaded={loadedCard === card.key} role="status" aria-label={`Day ${card.day}. ${PHASE_NAMES[card.phase]}.`}>
       {/* The authored transition is deliberately separate from the procedural world. */}

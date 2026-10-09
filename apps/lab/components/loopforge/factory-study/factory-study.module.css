@@ -23,3 +23,10 @@
 @media(max-width:600px){.floorPlan{padding:16px}.floorPlan h2{font-size:25px}.floorPlan p{font-size:12px}.floorPlan svg{max-height:32vh;padding:6px}.roomList{grid-template-columns:repeat(2,1fr)}.roomList b{font-size:12px}.roomList button{grid-template-columns:17px 1fr;gap:4px}.floorPlan header button{padding:8px}.supportLinks button{padding:8px}.mapLegend{font-size:8px;gap:8px;margin-bottom:12px}}
 
 @media(max-width:600px){.dock{padding:12px 14px;gap:10px}.copy h1{font-size:23px}.copy p{line-height:1.35}.equipment button{padding:8px;min-height:56px}.equipment b{font-size:11px;line-height:1.2;margin-top:3px}.equipment small{display:none}.actions kbd{display:none}.actions button{font-size:12px;padding:10px}.equipment{margin-bottom:8px}}
+
+.interactionNote { color: #a6b6a5; font-size: .8rem; margin-top: .5rem; }
+.interactionNote summary { cursor: pointer; padding: .4rem 0; }
+.interactionNote p { max-width: 55rem; margin-top: .3rem; }
+
+.studyDock{padding-top:12px;padding-bottom:12px;gap:20px}.studyDock .copy{flex:2}.studyDock .copy h1{font-size:25px;margin:5px 0}.studyDock .copy p{max-width:650px;font-size:12px}.studyDock .interactionNote{margin-top:2px;font-size:11px}.studyDock .interactionNote summary{padding:3px 0}
+@media(max-width:600px){.studyDock{gap:7px}.studyDock .copy h1{font-size:21px}.studyDock .copy p{font-size:11px}.studyDock .eyebrow{font-size:7px}}

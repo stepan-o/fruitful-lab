@@ -4,7 +4,7 @@ Route: `/stepanoskin/loopforge/play/factory-study`. Branch / draft PR: `codex/lo
 
 ## Implemented slice
 
-One persistent Babylon.js 9.30.0 scene now contains the complete calibrated 35 × 25 first floor: six managed rooms plus Lobby, Dispatch and Shipping. Only Security and Lattice Forge are unlocked on the first turn; the four later rooms have covered interiors and sealed entrances. The original Security corner and test line have been relocated into their original-map footprints. See [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md) for source reconciliation and exact connections. Room geometry, materials, surface grain/normal relief, brains, workers, equipment and moving light are procedural. Authored images appear only on the three phase interludes. The original console prototype is still available; this is an isolated commissioning fixture, not its replacement or a complete playable economy.
+One persistent Babylon.js 9.30.0 scene now contains the complete calibrated 105 × 75 first floor: six managed rooms plus Lobby, Dispatch and Shipping. Only Security and Lattice Forge are unlocked on the first turn; the four later rooms have covered interiors and sealed entrances. The reference floor is expanded uniformly by three in each direction. Security, the live segment and the new staged equipment use worker-scale dimensions within those enlarged footprints. An explicit Equipment study view exposes all six prototype layouts while preserving the opening locks. See [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md) for source reconciliation and exact connections. Room geometry, materials, surface grain/normal relief, brains, workers, equipment and moving light are procedural. Authored images appear only on the three phase interludes. The original console prototype is still available; this is an isolated commissioning fixture, not its replacement or a complete playable economy.
 
 1. Arrive in the Lobby at night; use Overview or Floor plan to inspect the entire layout. Move through Dispatch to Security; production is stopped. Explicitly enter **Build** (button or B).
 2. Select and confirm Security’s clearance terminal, then access gate, then the conveyor drive. A translucent equipment preview shows the fixed socket. Click it or use the confirmation button. Escape cancels the selection, then leaves the tool. Camera drags do not place machinery.
@@ -16,8 +16,10 @@ Camera orbit, pan, zoom and room focus use the same camera in both modes. The ca
 
 ## Architecture boundary
 
-- `lib/loopforge/spatial/floor.ts`: shared 35 × 25 tile map, nine room/support footprints, thirteen portals, first-turn access, direct interaction edges and deterministic tile routing.
+- `lib/loopforge/spatial/floor.ts`: shared 105 × 75 tile map, nine room/support footprints, thirteen portals, first-turn access, direct interaction edges and deterministic tile routing.
 - `lib/loopforge/factory-study/kernel.ts`: versioned plain-data snapshot, stable worker IDs, integer sub-tile worker positions and room membership, integer belt travel, immutable typed commands, deterministic 50ms ticks and bounded events. No React, renderer, random wall-clock decisions or LLM dependency.
+- `lib/loopforge/spatial/equipment.ts`: typed reference footprints, operator positions and encounter aprons for 21 staged equipment groups. These are not purchased equipment, live later-room machinery or build commands.
+- `floor-scene.ts` / `equipment-scene.ts`: disposable architecture and equipment models; floor area uses repeated textures rather than a mesh per tile.
 - `host.ts`: replaceable local clock/command adapter. The browser owns this public study fixture only.
 - `scene.ts`: snapshot consumption and interpolation. Babylon meshes, camera transforms, light animation and GPU buffers are disposable presentation data; they are never simulation authority.
 - `FactoryStudy.tsx`: contextual controls, lazy renderer import, four-per-second readout updates, phase cards, visibility/lifecycle handling and optional existing FactoryAudio cues.
@@ -55,12 +57,14 @@ Static geometry is merged by parent/material/vertex layout. Articulated workers 
 
 Motion preference disables decorative camera easing, specimen tremor, scan movement and rotating/flashing atmosphere; simulation and essential production movement remain visible. Sound is opt-in. Focus buttons and explicit placement confirmation supplement pointer gestures. Controls, tool state and phase changes have accessible labels. Rendering and clocks stop when hidden, and scene/observer/audio resources are disposed on exit.
 
-## Validation record
+## Initial study validation record
+
+These observations describe earlier revisions. The expanded floor and equipment pass has its own [current validation record](FACTORY_SCALE_AND_EQUIPMENT.md).
 
 - Kernel/host: five tests covering installation admission/order, immutable commands, pause/jam behavior, the 1,200-tick day boundary, deterministic replay of 100 individual workers, event bounds and clock cleanup.
 - Full app CI: 76 suites / 399 tests, immutable asset checks and production compilation passed during this change. Later renderer-only adjustments receive focused lint and a fresh production build.
 - Browser: explicit mode entry/exit, Escape cancellation, drag without placement, world/socket placement, the three-install sequence, Morning/Shift interludes, steady/push, obstruction/release, and mobile control/socket framing exercised. Layout inspected at 1440×900, 390×844 and 320×720; no page-width overflow.
-- Performance is measured on the available Intel HD Graphics 620 browser, not representative device certification. The initial per-part worker implementation fell to single-digit FPS at 100 workers and was replaced with GPU batching. Observed samples after batching: 29 FPS with 100 workers in the phone-sized view (253×548 internal pixels), and 18–21 FPS on the desktop view with 10 workers (936×585 to 1440×900 internal pixels). These development-browser samples fall short of a stable 30 FPS target; the final performance gate remains open. GPU timing and broader device profiling are still required. A 100-worker study is a rendering load test, not a claim that this small room offers plausible space for 100 bodies.
+- Performance is measured on the available Intel HD Graphics 620 browser, not representative device certification. The initial per-part worker implementation fell to single-digit FPS at 100 workers and was replaced with GPU batching. Observed samples after batching: 29 FPS with 100 workers in the phone-sized view (253×548 internal pixels), and 18–21 FPS on the desktop view with 10 workers (936×585 to 1440×900 internal pixels). These development-browser samples fall short of a stable 30 FPS target; the final performance gate remains open. GPU timing and broader device profiling are still required. A 100-worker study is a rendering load test, not a validated staffing plan.
 
 ## Delivery checklist
 

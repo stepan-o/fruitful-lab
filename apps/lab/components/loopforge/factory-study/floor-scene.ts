@@ -9,6 +9,7 @@ import type { PBRMaterial } from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 import type { Scene } from '@babylonjs/core/scene';
 import { accessible, FLOOR_SIZE, INITIAL_UNLOCKED, PORTALS, portalOpen, portalRect, worldPoint, zone, ZONES, type ZoneId } from '@/lib/loopforge/spatial/floor';
+import { CONSTRUCTION_RESERVES, DELIVERY_AISLES } from '@/lib/loopforge/spatial/capacity';
 export type V = [number,number,number];
 export type Mat = PBRMaterial | StandardMaterial;
 export type WorkshopTools = {
@@ -26,8 +27,10 @@ export type WorkshopTools = {
  * a mesh per tile. Each hall is a cullable, material-batched chunk. */
 export function buildFloor(scene:Scene,t:WorkshopTools){
   const {box,pipe,iron,dark,brass,copper,green,amber,quiet}=t;
-  const cornices:Record<ZoneId,number>={security:5,conveyor:7,theatre:7.5,brewery:9,weaving:9.5,cortex:10,lobby:5,dispatch:5,shipping:7};
+  const cornices:Record<ZoneId,number>={security:7,conveyor:11,theatre:10,brewery:13,weaving:14,cortex:15,lobby:7,dispatch:7,shipping:10};
   const roots:TransformNode[]=[], covers:TransformNode[]=[], shutters:TransformNode[]=[];
+  const northWalls=new Map<ZoneId,TransformNode>();
+  const surveyPaint=new StandardMaterial("worn construction paint",scene);surveyPaint.diffuseColor=new Color3(.42,.38,.26);surveyPaint.emissiveColor=new Color3(.24,.21,.14);surveyPaint.specularColor=Color3.Black();
   const at=(x:number,y:number,h=0):V=>{const p=worldPoint(x,y);p[1]=h;return p;};
   const parent=(name:string)=>{const n=new TransformNode(name,scene);roots.push(n);return n;};
   const texture=new DynamicTexture('four metre worn floor panels',1024,scene,true),ctx=texture.getContext() as CanvasRenderingContext2D;
@@ -51,22 +54,22 @@ export function buildFloor(scene:Scene,t:WorkshopTools){
   function wallRun(z:ZoneId,side:'north'|'south'|'west'|'east',p:TransformNode){
     const r=zone(z).rect,horizontal=side==='north'||side==='south',fixed=side==='north'?r.y:side==='south'?r.y+r.h:side==='west'?r.x:r.x+r.w;
     const start=horizontal?r.x:r.y,len=horizontal?r.w:r.h;
-    for(let i=0;i<len;i++){
-      const along=start+i+.5,x=horizontal?along:fixed,y=horizontal?fixed:along;
+    for(let i=0;i<len;i+=2){
+      const along=start+i+1,x=horizontal?along:fixed,y=horizontal?fixed:along;
       const opening=PORTALS.some(port=>{if(port.a!==z&&port.b!==z)return false;const q=portalRect(port);return x>=q.x&&x<=q.x+q.w&&y>=q.y&&y<=q.y+q.h;});
       if(opening)continue;
       const full=side==='north'||side==='west',height=full?cornices[z]:.7;
-      box('masonry bay',horizontal?[1,height,.32]:[.32,height,1],at(x,y,height/2),dark,p);
-      box('brass coping',horizontal?[1,.09,.42]:[.42,.09,1],at(x,y,height+.03),brass,p);
+      box('masonry bay',horizontal?[2,height,.32]:[.32,height,2],at(x,y,height/2),dark,p);
+      box('brass coping',horizontal?[2,.09,.42]:[.42,.09,2],at(x,y,height+.03),brass,p);
       if(full){
-        for(let j=0;j<Math.floor(height);j++)box('wall horizontal course',horizontal?[.94,.025,.05]:[.05,.025,.94],at(x+(horizontal?0:.18),y+(horizontal?.18:0),.4+j),iron,p);
+        for(let j=0;j<Math.floor(height);j+=2)box('wall horizontal course',horizontal?[1.94,.025,.05]:[.05,.025,1.94],at(x+(horizontal?0:.18),y+(horizontal?.18:0),.4+j),iron,p);
         if(i%4===0){box('structural pilaster',horizontal?[.32,height+.4,.6]:[.6,height+.4,.32],at(x,y,(height+.4)/2),green,p,true);box('column capital',[.7,.22,.7],at(x,y,height+.3),brass,p);}
         if(i%4===2){
           const px=x+(horizontal?0:.28),py=y+(horizontal?.28:0);
           pipe('vertical service riser',[at(px,py,.2),at(px,py,3.9),at(px+(horizontal?.5:0),py+(horizontal?0:.5),4.35)],.085,copper,p);
           for(const h of [.7,2.4,3.5])box('service strap',horizontal?[.35,.075,.22]:[.22,.075,.35],at(px,py,h),brass,p);
         }
-        if(i%3===1){const lx=x+(horizontal?0:.32),ly=y+(horizontal?.32:0);box('electrical cabinet',horizontal?[.8,1.3,.3]:[.3,1.3,.8],at(lx,ly,3.2),iron,p);for(let j=0;j<3;j++)box('cabinet slot',horizontal?[.48,.025,.035]:[.035,.025,.48],at(lx+(horizontal?0:.18),ly+(horizontal?.18:0),3+j*.2),brass,p);}
+        if(i%6===0){const lx=x+(horizontal?0:.32),ly=y+(horizontal?.32:0);box('electrical cabinet',horizontal?[.8,1.3,.3]:[.3,1.3,.8],at(lx,ly,3.2),iron,p);for(let j=0;j<3;j++)box('cabinet slot',horizontal?[.48,.025,.035]:[.035,.025,.48],at(lx+(horizontal?0:.18),ly+(horizontal?.18:0),3+j*.2),brass,p);}
       }
     }
     if(side==='north'){
@@ -79,7 +82,31 @@ export function buildFloor(scene:Scene,t:WorkshopTools){
     const slab=box('continuous slab',[r.w,.4,r.h],at(x,y,-.22),floorMat,p),uv=slab.getVerticesData('uv');if(uv){for(let i=0;i<uv.length;i+=2){uv[i]*=r.w/4;uv[i+1]*=r.h/4;}slab.setVerticesData('uv',uv);}
     // Perimeter trench and metre-scaled drain grilles make worker scale legible.
     for(let tx=r.x+2;tx<r.x+r.w-1;tx+=3){box('service trench',[2.85,.015,.48],at(tx,r.y+r.h-2,.015),dark,p);for(let i=0;i<10;i++)box('trench grille',[.055,.025,.42],at(tx-1.3+i*.27,r.y+r.h-2,.03),iron,p);}
-    for(const side of ['north','south','west','east'] as const)wallRun(z.id,side,p);
+    for(const side of ['north','south','west','east'] as const){
+      const wall=side==='north'?parent(z.id+' camera cutaway'):p;
+      if(side==='north')northWalls.set(z.id,wall);
+      wallRun(z.id,side,wall);
+    }
+    // Sparse floor-painted plots communicate construction capacity without filling it
+    // with decorative machinery. They are clear ground, not restrictive build slots.
+    for(const plot of CONSTRUCTION_RESERVES.filter(b=>b.room===z.id)){
+      const q=plot.rect;
+      for(const xx of [q.x,q.x+q.w])for(const yy of [q.y,q.y+q.h]){
+        box('plot corner',[2,.018,.09],at(xx+(xx===q.x?1:-1),yy,.04),surveyPaint,p);
+        box('plot corner',[.09,.018,2],at(xx,yy+(yy===q.y?1:-1),.04),surveyPaint,p);
+      }
+      for(let xx=q.x+5;xx<q.x+q.w;xx+=5)for(let yy=q.y+5;yy<q.y+q.h;yy+=5){
+        box('survey cross',[.5,.015,.04],at(xx,yy,.025),iron,p);
+        box('survey cross',[.04,.015,.5],at(xx,yy,.025),iron,p);
+      }
+      stencil(plot.label,`${q.w} × ${q.h} m / UNFITTED`,q.x+q.w/2,q.y+q.h/2,Math.min(20,q.w-2),3,.045,p,true);
+    }
+    for(const aisle of DELIVERY_AISLES.filter(a=>a.room===z.id)){
+      const q=aisle.rect,horizontal=q.w>q.h,length=horizontal?q.w:q.h;
+      for(let a=1;a<length;a+=3)for(const side of [0,1]){
+        box('delivery lane dash',horizontal?[1.6,.017,.1]:[.1,.017,1.6],at(q.x+(horizontal?a:side*q.w),q.y+(horizontal?side*q.h:a),.04),surveyPaint,p);
+      }
+    }
     stencil(z.short.toUpperCase(),z.kind==='support'?'LOOPFORGE / SERVICES':z.number+' / PRODUCTION FLOOR',x,r.y+r.h-3,Math.min(13,r.w-2),2,.032,p);
     if(!accessible(z.id,INITIAL_UNLOCKED)){const cover=parent(z.id+' sealed cover');covers.push(cover);
       box('uncommissioned roof',[r.w-.4,.5,r.h-.4],at(x,y,cornices[z.id]+.3),iron,cover);
@@ -99,11 +126,16 @@ export function buildFloor(scene:Scene,t:WorkshopTools){
     for(let i=0;i<p.width*3;i++)box('door hazard marking',horizontal?[.6,.016,.13]:[.13,.016,.6],at(x+(horizontal?0:-p.width/2+.2+i*.33),y+(horizontal?-p.width/2+.2+i*.33:0),.03),brass,transit);
   }
   const support=parent('support equipment');
-  // Lobby reception and clustered charging alcoves, not scaled-up toy furniture.
-  box('reception counter',[5,1.2,1.7],at(11,33.3,.6),green,support,true);box('countertop',[5.2,.12,1.9],at(11,33.3,1.27),brass,support);
-  stencil('LOOPFORGE','AI BRAIN FACTORY',16.5,40,13,3.4,.04,support);
-  for(let i=0;i<8;i++){const x=5+i*2.7;box('charging dock',[1.25,2.6,.75],at(x,46,1.3),green,support);box('charging contacts',[.4,.7,.1],at(x,45.55,1.5),brass,support);pipe('charging lead',[at(x+.3,45.5,1.7),at(x+.7,45.3,.9),at(x+.65,45.4,.1)],.04,copper,support);}
-  for(let i=0;i<3;i++){const x=32+i*2.8;box('dispatch desk',[2,1.1,1.35],at(x,33.5,.55),green,support);for(let j=0;j<6;j++)box('dispatch files',[.65,.2,.5],at(x+(j%2)*.7-.35,33.6,1.25+Math.floor(j/2)*.23),brass,support);}
-  for(let x=93;x<104;x+=3.2)for(let y=51;y<73;y+=5){box('loading pallet',[2,.18,3],at(x,y,.09),iron,support);box('packed units',[1.65,1.6,2.5],at(x,y,.98),green,support);for(const dx of [-.65,.65])box('shipping strap',[.1,1.66,2.6],at(x+dx,y,.97),brass,support);}
-  return {roots,study(enabled:boolean){for(const n of [...covers,...shutters])n.setEnabled(!enabled);},center(id:ZoneId){const r=zone(id).rect;return new Vector3(...at(r.x+r.w/2,r.y+r.h/2,1.7));},size:FLOOR_SIZE};
+  // Human-scale support stations occupy only a small part of each service hall.
+  box('reception counter',[5,1.2,1.7],at(66,97,.6),green,support,true);box('countertop',[5.2,.12,1.9],at(66,97,1.27),brass,support);
+  stencil('LOOPFORGE','AI BRAIN FACTORY',68,104,13,3.4,.04,support);
+  for(let i=0;i<8;i++){const x=58+i*2.7;box('charging dock',[1.25,2.6,.75],at(x,113,1.3),green,support);box('charging contacts',[.4,.7,.1],at(x,112.55,1.5),brass,support);pipe('charging lead',[at(x+.3,112.5,1.7),at(x+.7,112.3,.9),at(x+.65,112.4,.1)],.04,copper,support);}
+  for(let i=0;i<3;i++){const x=92+i*2.8;box('dispatch desk',[2,1.1,1.35],at(x,102,.55),green,support);for(let j=0;j<6;j++)box('dispatch files',[.65,.2,.5],at(x+(j%2)*.7-.35,102.1,1.25+Math.floor(j/2)*.23),brass,support);}
+  for(let x=246;x<261;x+=3.2)for(let y=145;y<163;y+=5){box('loading pallet',[2,.18,3],at(x,y,.09),iron,support);box('packed units',[1.65,1.6,2.5],at(x,y,.98),green,support);for(const dx of [-.65,.65])box('shipping strap',[.1,1.66,2.6],at(x+dx,y,.97),brass,support);}
+  return {roots,focus(id:ZoneId|"wide"){
+    // Cut away a foreground neighbour's north wall, never its floor or admission.
+    // A tall Forge wall must not hide Security when inspecting its checkpoint.
+    const focused=id==="wide"?null:zone(id).rect;
+    for(const [other,n] of northWalls){const r=zone(other).rect;n.setEnabled(!focused||!(r.y>=focused.y+focused.h/2&&r.x<focused.x+focused.w&&focused.x<r.x+r.w));}
+  },study(enabled:boolean){for(const n of [...covers,...shutters])n.setEnabled(!enabled);},center(id:ZoneId){const r=zone(id).rect;return new Vector3(...at(r.x+r.w/2,r.y+r.h/2,1.7));},size:FLOOR_SIZE};
 }

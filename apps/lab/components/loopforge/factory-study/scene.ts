@@ -31,9 +31,11 @@ import { SCALE_FIGURES } from "@/lib/loopforge/spatial/equipment";
 import { FIXTURE_SOCKETS, FLOOR_SIZE, LINE_ORIGIN, worldPoint, zone, ZONES, type ZoneId } from "@/lib/loopforge/spatial/floor";
 import { gateOpen, initialStudy, type Fixture, type StudyState } from "@/lib/loopforge/factory-study/kernel";
 
+import { WORK_AREAS } from '@/lib/loopforge/spatial/capacity';
+export type Framing = 'work' | 'room';
 export type Focus = ZoneId | "wide";
 export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number };
-export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; inset(bottom: number): void; build(enabled: boolean, selected: Fixture | null): void; motion(enabled: boolean): void; study(enabled: boolean): void; dispose(): void };
+export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number): void; build(enabled: boolean, selected: Fixture | null): void; motion(enabled: boolean): void; study(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
@@ -48,11 +50,11 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   scene.fogMode = Scene.FOGMODE_EXP2; scene.fogDensity = .0018; scene.fogColor = new Color3(.025, .041, .042);
   const camera = new ArcRotateCamera("director", -Math.PI / 2 + .32, .94, 27, new Vector3(-1, 1.7, 0), scene);
   camera.attachControl(canvas, true); camera.lowerBetaLimit = .52; camera.upperBetaLimit = 1.22;
-  camera.lowerRadiusLimit = 7; camera.upperRadiusLimit = 260; camera.wheelDeltaPercentage = .015;
+  camera.lowerRadiusLimit = 7; camera.upperRadiusLimit = 1100; camera.wheelDeltaPercentage = .015;
   camera.pinchDeltaPercentage = .012; camera.panningSensibility = 130; camera.inertia = .78;
-  camera.minZ = .15; camera.maxZ = 400; camera.fov = .8; camera.fovMode = 0;
+  camera.minZ = .15; camera.maxZ = 1600; camera.fov = .8; camera.fovMode = 0;
   let state = initialStudy(), lastTime = performance.now(), visualTravel = 0, moving = true;
-  let equipmentStudy = false;
+  let equipmentStudy = false, framing: Framing = "work";
   let building = false, selected: Fixture | null = null;
   let bottomInset = 180;
   let focus: Focus = "wide", targetRadius = 27, targetPoint = new Vector3(-1, 1.7, 0), transition = 1;
@@ -65,7 +67,8 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   hemi.diffuse = C("#729d96"); hemi.groundColor = C("#080e0b"); hemi.intensity = 1.15; hemi.renderPriority = 3;
   const shadow = new ShadowGenerator(1024, key); shadow.usePercentageCloserFiltering = true;
   shadow.filteringQuality = ShadowGenerator.QUALITY_LOW; shadow.bias = .001; shadow.normalBias = .04;
-  key.autoCalcShadowZBounds = true;
+  // Fixed local projection must not inherit the whole-floor camera clipping range.
+  key.autoCalcShadowZBounds = false; key.shadowMinZ = .1; key.shadowMaxZ = 500;
   const envFaces: Uint8Array[] = [];
   for (let face = 0; face < 6; face++) {
     const pixels = new Uint8Array(64 * 64 * 4);
@@ -401,11 +404,15 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   let resolutionScale=1,slowSamples=0,qualityAfter=performance.now()+8000;
   const frame=()=>{
     const viewportHeight=canvas.clientHeight*camera.viewport.height,aspect=canvas.clientWidth/Math.max(1,viewportHeight);
-    const r=focus==="wide"?{w:FLOOR_SIZE.width+2,h:FLOOR_SIZE.height}:zone(focus).rect;
-    targetPoint=focus==="wide"?new Vector3(1.5,1.8,-3):floor.center(focus);
+    floor.focus(focus);
+    const local=focus!=="wide"&&framing==="work"&&(equipmentStudy||state.unlockedRooms.includes(focus as typeof state.unlockedRooms[number])||zone(focus).kind==="support");
+    const r=focus==="wide"?{x:0,y:0,w:FLOOR_SIZE.width+2,h:FLOOR_SIZE.height}:local?WORK_AREAS[focus]:zone(focus).rect;
+    targetPoint=new Vector3(...worldPoint(r.x+r.w/2,r.y+r.h/2));targetPoint.y=1.7;
     const center=targetPoint;taskLight.position.set(center.x-4,7,center.z+3);localGlow.position.set(center.x+5,4,center.z-5);
     taskLight.diffuse=C(focus==="brewery"||focus==="weaving"?"#8eddd4":focus==="theatre"?"#b7d6cf":"#ffc073");
-    key.shadowFrustumSize=focus==="wide"?140:Math.max(r.w,r.h)*1.6;
+    key.position.copyFrom(center.subtract(key.direction.scale(100)));
+    key.shadowFrustumSize=Math.max(r.w,r.h)*1.6;
+    scene.fogDensity=focus==="wide"?.00045:local?.0018:.001;
     const projectedHeight=r.h*Math.cos(camera.beta)+4;
     targetRadius=Math.max(9,Math.max(r.w/aspect,projectedHeight)/(2*Math.tan(camera.fov/2))*1.04+r.h*.18);
     transition=1;
@@ -466,7 +473,8 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
     update(s){state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const e=s.events.at(-1);if(e&&e.id!==lastEvent){lastEvent=e.id;if(e.kind==="cycle"||e.kind==="jam"){flash=1;flashKind=e.kind;}if(e.kind==="release"){flash=0;flashKind="idle";}}},
-    focus(f){focus=f;camera.alpha=-Math.PI/2+.22;camera.beta=f==="wide"?.60:.86;frame();},
+    focus(f){focus=f;framing="work";camera.alpha=-Math.PI/2+.22;camera.beta=f==="wide"?.60:.86;frame();},
+    framing(mode){framing=mode;camera.beta=mode==="room"?.66:.86;frame();},
     inset(bottom){bottomInset=bottom;viewport();engine.resize();frame();},
     build(enabled,fixture){building=enabled;selected=fixture;},
     motion(enabled){moving=enabled;},

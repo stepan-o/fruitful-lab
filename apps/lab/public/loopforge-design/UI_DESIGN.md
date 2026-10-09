@@ -1128,7 +1128,7 @@ More capacity. More coordination.
 
 ## The first floor · calibrated layout
 
-The original room proportions and connections now occupy 105 × 75 tiles: three times the width and depth, nine times the floor area. Workers stay approximately 1.9 m tall. The first turn opens in the Lobby; only Security and Conveyor are unlocked.
+The original proportions and connections now span 280 × 200 one-metre tiles. That is 7.11 times the area of the previous study. Workers and machines stay the same size. Only Security and Conveyor are unlocked; the opening installation is one cell inside an expandable factory.
 
 **Northern wings.** Weaving Gallery at the northwest; Cognitive Substrate Brewery in the north centre; Burn-in Theatre at the northeast. All three are sealed on turn one.
 
@@ -1136,7 +1136,7 @@ The original room proportions and connections now occupy 105 × 75 tiles: three 
 
 **A real shared boundary.** Security and Conveyor have a six-tile architectural opening with a smaller clearance lane. Their assigned supervisors can therefore become eligible for direct encounters. Being able to walk through another room to reach someone is not the same as being their neighbour. Adjacency permits an event; motives, history and current conditions must still explain it.
 
-**What the player sees.** The whole floor exists from the opening. Later wings show closed shutters and covered interiors bearing their names. Overview frames the building; Floor plan selects any room location. Construction and production use the same camera.
+**What the player sees.** Work area frames a local installation closely. Whole room reveals its expansion capacity; Overview frames the floor; Floor plan changes rooms. Later wings stay covered and named in the normal opening. Build and production share the same world and camera.
 
 **What the engine owns.** Room IDs, tile footprints, portal spans, unlock state and valid worker routes are plain deterministic data. Individual workers now carry integer positions and room identity. The renderer follows these records rather than inventing a movement loop.
 
@@ -1146,21 +1146,21 @@ The original room proportions and connections now occupy 105 × 75 tiles: three 
 
 ## Working scale · equipment and encounters
 
-The room paintings establish relationships: workers reach controls, machines tower above them, and encounters need credible places to happen. These are prototype placements for scale calibration; future machinery will be bought and installed through Build.
+The previous scale still read as a display of equipment. Rooms now accommodate future building: each has more than 35% explicitly reserved clear construction ground, plus its initial installation, circulation and service spaces. Close working views keep workers readable; room views show where new production can go.
 
-**Security · 12 × 18 m.** A clearance lane, records desk and holding cage leave a checkpoint where LIMEN and STILETTO can collide in front of waiting workers.
+**Security · 32 × 48 m.** A clearance lane, records desk and holding cage leave a checkpoint where LIMEN and STILETTO can collide in front of waiting workers.
 
-**Lattice Forge · 30 × 21 m.** Intake press → live conveyor → outtake press. The scrap maw and process feeds occupy the rear; a continuous service aisle leaves room for Witch, the operator and witnesses. Belt surface is 1.43 m above the floor.
+**Lattice Forge · 80 × 56 m.** The 25 m starter chain occupies one cell of an 80 × 56 m hall. Four empty construction plots reserve 2,068 m² for extra feeds, buffers, longer lines and parallel production. A separate six-metre delivery aisle connects across the hall. The belt stays 1.43 m high and workers about 1.9 m tall.
 
-**Brewery · 33 × 24 m.** A large open vat and suspended agitators dominate the room. A separate filtration bank, controls and clear apron support maintenance, a gathering or a visible spill.
+**Brewery · 88 × 64 m.** The vat, agitators, filters and controls occupy an initial process cell. Empty feed, filtration and process expansion plots surround it. Maintenance and gathering space remain clear.
 
-**Weaving · 30 × 24 m.** Paired looms and tall neural columns frame a raised harmonic instrument. Thrum has a central listening space; side aisles serve the machinery.
+**Weaving · 80 × 64 m.** Paired looms and tall neural columns frame a raised harmonic instrument. Thrum has a central listening space; side aisles serve the machinery.
 
-**Theatre · 21 × 24 m.** Sixteen conditioning cradles face three projection screens. Cathexis has a podium, a shared forecourt and side access, so conditioning and defiance can use the same physical layout.
+**Theatre · 56 × 64 m.** Sixteen conditioning cradles face three projection screens. Cathexis has a podium, a shared forecourt and side access, so conditioning and defiance can use the same physical layout.
 
-**Cortex · 24 × 33 m.** A major assembly chamber, twin cooling banks, feed conveyor and controls provide multiple technician positions. Specific supervisor outcomes are still design work.
+**Cortex · 64 × 88 m.** A major assembly chamber, twin cooling banks, feed conveyor and controls provide multiple technician positions. Specific supervisor outcomes are still design work.
 
-**Builder contract.** Typed footprints, operating positions and encounter clearances are stored outside the renderer. Placement must eventually validate access, service clearances and hazards, not just whether the machine fits. Today these records describe the study layout only.
+**Builder contract.** Equipment footprints, operator positions, encounter clearances, construction reserves and delivery aisles are typed records outside the renderer. Seventeen empty plots across the six rooms are checked against equipment and circulation. Their outlines are a planning study, not restrictive placement slots or purchased equipment.
 
 **Rendering budget.** Room chunks batch static geometry by material. A repeated floor texture supplies metre-scale detail without thousands of tile meshes. Workers share GPU geometry; their individual state stays in the deterministic host.
 

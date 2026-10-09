@@ -2,8 +2,8 @@
  * Coordinates are integer tiles, west→east / north→south; rectangles are half-open.
  * This module owns topology and admission. A renderer may project it, never redefine it.
  */
-export const FLOOR_VERSION = "loopforge-floor-1/2";
-export const FLOOR_SCALE = 3;
+export const FLOOR_VERSION = "loopforge-floor-1/3";
+export const FLOOR_SCALE = 8;
 export const FLOOR_SIZE = { width: 35 * FLOOR_SCALE, height: 25 * FLOOR_SCALE } as const;
 export const WORKER_HEIGHT = 1.9; // Metres; one design tile is one metre.
 export type ManagedRoomId = "security" | "conveyor" | "theatre" | "brewery" | "weaving" | "cortex";
@@ -52,8 +52,10 @@ const referencePortals: readonly Portal[] = [
 ];
 export const PORTALS: readonly Portal[] = referencePortals.map(p => {
   const horizontal = p.start.x !== p.end.x;
-  // Anchor to the final tile before the original boundary, not three tiles before it.
-  return { ...p, start: { x: p.start.x * FLOOR_SCALE + (horizontal ? FLOOR_SCALE - 1 : 0), y: p.start.y * FLOOR_SCALE + (horizontal ? 0 : FLOOR_SCALE - 1) }, end: { x: p.end.x * FLOOR_SCALE, y: p.end.y * FLOOR_SCALE }, width: p.width * FLOOR_SCALE };
+  // Preserve the centre of each original opening, but keep a six-metre doorway.
+  // More construction tiles do not imply enormous gates or wider robots.
+  const width = 6, crossOffset = (p.width * FLOOR_SCALE - width) / 2;
+  return { ...p, start: { x: p.start.x * FLOOR_SCALE + (horizontal ? FLOOR_SCALE - 1 : crossOffset), y: p.start.y * FLOOR_SCALE + (horizontal ? crossOffset : FLOOR_SCALE - 1) }, end: { x: p.end.x * FLOOR_SCALE + (horizontal ? 0 : crossOffset), y: p.end.y * FLOOR_SCALE + (horizontal ? crossOffset : 0) }, width };
 });
 export function portalRect(p: Portal): Rect {
   return p.start.x !== p.end.x
@@ -101,22 +103,23 @@ export function findTilePath(start: Tile, end: Tile, unlocked: readonly ManagedR
   return null;
 }
 
-export const LINE_ORIGIN = { x: 45, y: 59 } as const;
+// The starter cell stays close to the shared threshold, inside an expandable hall.
+export const LINE_ORIGIN = { x: 123, y: 145 } as const;
 export const FIXTURE_SOCKETS = {
-  terminal: { room: "security", x: 45, y: 35, scale: 1 },
-  gate: { room: "security", x: 48.5, y: 48, scale: 1 },
-  drive: { room: "conveyor", x: 46.9, y: 60.7, scale: 1 },
+  terminal: { room: "security", x: 123, y: 115, scale: 1 },
+  gate: { room: "security", x: 126.5, y: 128, scale: 1 },
+  drive: { room: "conveyor", x: 124.9, y: 146.7, scale: 1 },
 } as const;
 export const CREW_OBSTACLES: readonly Rect[] = [
-  { x: 44, y: 34, w: 2, h: 3 }, // Terminal and operator envelope.
-  { x: 43, y: 41, w: 3, h: 5 }, // Holding cage.
-  { x: 50, y: 32, w: 3, h: 4 }, // Clearance records.
-  { x: 32, y: 57, w: 25, h: 4 }, // Intake → line → outtake.
-  { x: 45, y: 60, w: 4, h: 2 }, // Drive service envelope.
-  { x: 32, y: 50, w: 4, h: 4 }, // Scrap maw.
-  { x: 41, y: 53, w: 6, h: 3 }, // Process feed bank.
+  { x: 122, y: 114, w: 2, h: 3 },
+  { x: 121, y: 121, w: 3, h: 5 },
+  { x: 128, y: 112, w: 3, h: 4 },
+  { x: 110, y: 143, w: 25, h: 4 }, // Starter intake → line → outtake, not the entire hall.
+  { x: 123, y: 146, w: 4, h: 2 },
+  { x: 110, y: 136, w: 4, h: 4 },
+  { x: 119, y: 139, w: 6, h: 3 },
 ];
-const crewStops: readonly Tile[] = [{ x: 48, y: 43 }, { x: 48, y: 51 }, { x: 37, y: 51 }, { x: 37, y: 55 }, { x: 31, y: 55 }, { x: 31, y: 64 }, { x: 58, y: 64 }, { x: 58, y: 55 }, { x: 48, y: 55 }, { x: 48, y: 43 }];
+const crewStops: readonly Tile[] = [{ x: 126, y: 123 }, { x: 126, y: 133 }, { x: 115, y: 133 }, { x: 115, y: 141 }, { x: 109, y: 141 }, { x: 109, y: 152 }, { x: 136, y: 152 }, { x: 136, y: 141 }, { x: 126, y: 137 }, { x: 126, y: 123 }];
 export const CREW_ROUTE: readonly Tile[] = crewStops.flatMap((t, i) => i === 0 ? [] : findTilePath(crewStops[i - 1], t, INITIAL_UNLOCKED, CREW_OBSTACLES)!.slice(0, -1));
 export const ROUTE_LENGTH = CREW_ROUTE.length * 1000;
 export function crewPose(progress: number) {

@@ -12,19 +12,19 @@ Legacy Neural Lattice is the current Synaptic Lattice Forge / Conveyor. The orig
 
 ## Calibrated floor
 
-The reference plan is uniformly expanded by three in each direction: **105 × 75 tiles**. One tile is approximately one metre as a design convention. Room proportions and the thirteen portal relationships remain unchanged; equipment is not enlarged to fill the extra space.
+The reference plan is uniformly expanded by eight in each direction: **280 × 200 tiles**. One tile is approximately one metre as a design convention. Room proportions and the thirteen portal relationships remain unchanged. Door centres follow the enlarged map; architectural openings remain six metres wide. Equipment is not enlarged to fill the extra space. The Forge grows to 80 × 56 m with 2,068 m² of explicit construction reserve and a separate six-metre delivery aisle.
 
 | Zone | Tile rectangle (x, y, width, height) | First-turn state |
 | --- | --- | --- |
-| Weaving Gallery | 15, 6, 30, 24 | Sealed |
-| Substrate Brewery | 45, 6, 33, 24 | Sealed |
-| Burn-in Theatre | 84, 12, 21, 24 | Sealed |
-| Lobby | 3, 30, 27, 18 | Support / entry |
-| Dispatch | 30, 30, 12, 18 | Support / transit |
-| Security | 42, 30, 12, 18 | Unlocked |
-| Lattice Forge | 30, 48, 30, 21 | Unlocked |
-| Cortex Assembly | 60, 42, 24, 33 | Sealed |
-| Shipping | 90, 45, 15, 30 | Support / no active production; unreachable through sealed wings |
+| Weaving Gallery | 40, 16, 80, 64 | Sealed |
+| Substrate Brewery | 120, 16, 88, 64 | Sealed |
+| Burn-in Theatre | 224, 32, 56, 64 | Sealed |
+| Lobby | 8, 80, 72, 48 | Support / entry |
+| Dispatch | 80, 80, 32, 48 | Support / transit |
+| Security | 112, 80, 32, 48 | Unlocked |
+| Lattice Forge | 80, 128, 80, 56 | Unlocked |
+| Cortex Assembly | 160, 112, 64, 88 | Sealed |
+| Shipping | 240, 120, 40, 80 | Support / no active production; unreachable through sealed wings |
 
 Support spaces do not increase the managed-room count. Exactly Security and Conveyor are unlocked in the first-turn snapshot. Later rooms are covered and their shutters closed; the viewer can inspect their location and name without seeing a functioning interior or offering build actions there. There is no timed or debug unlock button in this study.
 
@@ -32,7 +32,7 @@ Direct managed-room edges: Security–Conveyor, Security–Brewery, Security–C
 
 ## Simulation and presentation
 
-- `loopforge-floor-1/2` owns geometry, portal spans and stable room IDs; `loopforge-commissioning/3` carries its version and the two unlocked room IDs.
+- `loopforge-floor-1/3` owns geometry, portal spans and stable room IDs; `loopforge-commissioning/4` carries its version and the two unlocked room IDs.
 - Four-neighbour tile pathfinding respects boundaries, actual portal widths, locks and reserved machinery footprints. Workers store integer sub-tile positions and their current room; the renderer interpolates them. No renderer-defined orbit supplies worker location.
 - The commissioning crew follows a deterministic, precomputed route through Security's actual threshold and around the line. The gate stops each worker at the crossing. This is a route fixture, not a complete task scheduler, collision-avoidance crowd or dynamic construction pathfinder.
 - Installation admission checks the owning room in the kernel. Camera orbit/pan/zoom and room focus remain the same in construction and production. Build mode is still restricted to night.

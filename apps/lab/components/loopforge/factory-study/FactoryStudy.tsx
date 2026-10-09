@@ -5,9 +5,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { StudyHost } from "@/lib/loopforge/factory-study/host";
 import { FIXTURES, SHIFT_TICKS, initialStudy, type Command, type Fixture, type Phase, type StudyState } from "@/lib/loopforge/factory-study/kernel";
 import transitionAssets from "@/lib/assets/generated/loopforge-time-transitions.json";
-import type { FactoryScene, Focus, SceneReport } from "./scene";
+import type { FactoryScene, Focus, Framing, SceneReport } from "./scene";
 import type { FactoryAudio } from "../first-shift/audio";
 import { accessible, zone, FLOOR_SIZE, type ManagedRoomId } from "@/lib/loopforge/spatial/floor";
+import { reservedArea } from "@/lib/loopforge/spatial/capacity";
 import FloorPlan from "./FloorPlan";
 import { ROOM_STAGING } from "@/lib/loopforge/spatial/equipment";
 import styles from "./factory-study.module.css";
@@ -32,6 +33,7 @@ export default function FactoryStudy() {
   const blocked = useRef(true);
   const inspecting = useRef(false);
   const cameraFocus = useRef<Focus>("lobby");
+  const [framing, setFraming] = useState<Framing>("work");
   const [inspection, setInspection] = useState(false);
   const [state, setState] = useState<StudyState>(() => initialStudy());
   const [ready, setReady] = useState(false);
@@ -64,7 +66,7 @@ export default function FactoryStudy() {
     if (result?.ok) setTool(true);
     else if (result) setNotice(result.reason);
   }, [setTool]);
-  const look = useCallback((where: Focus) => { if(where !== "wide" && !accessible(where, host.current?.snapshot.unlockedRooms ?? [])) setTool(false); cameraFocus.current = where; world.current?.focus(where); setFocus(where); }, [setTool]);
+  const look = useCallback((where: Focus) => { if(where !== "wide" && !accessible(where, host.current?.snapshot.unlockedRooms ?? [])) setTool(false); cameraFocus.current = where; world.current?.focus(where); setFocus(where); setFraming("work"); }, [setTool]);
 
   useEffect(() => {
     if (!canvas.current) return;
@@ -177,11 +179,12 @@ export default function FactoryStudy() {
         {([ ["wide", "↗", "Overview"], ["security", "01", "Security"], ["conveyor", "02", "Conveyor"] ] as const).map(([id, number, title]) => <button key={id} onClick={() => look(id)} aria-pressed={focus === id}><span>{number}</span>{title}</button>)}
         <button onClick={() => setMapOpen(true)} aria-haspopup="dialog"><span>⌗</span>Floor plan</button>
         <button onClick={inspect} aria-pressed={inspection}><span>◇</span>{inspection ? "Opening view" : "Equipment study"}</button>
+        {focus !== "wide" && <button onClick={() => { const mode = framing === "work" ? "room" : "work"; world.current?.framing(mode); setFraming(mode); }} aria-pressed={framing === "room"}><span>⤢</span>{framing === "work" ? "Whole room" : "Work area"}</button>}
       </nav>
       <div className={styles.readout}><span className={styles.liveDot} />{inspection ? "EQUIPMENT SCALE STUDY" : building ? "CONSTRUCTION TOOL" : "FACTORY VIEW"}<small>{focusedRoom ? `${focusedRoom.name} · ${inspection ? "staged prototype" : sealed ? "sealed" : focusedRoom.kind === "support" ? "support space" : "online"}` : inspection ? "Study only · first-turn locks preserved" : "Floor 01 · 2 / 6 rooms online"}</small></div>
       <section ref={dock} className={`${styles.dock} ${inspection ? styles.studyDock : ""}`} aria-label={building ? "Construction controls" : "Factory controls"}>
         {inspection ? <div className={styles.copy}>
-          <span className={styles.eyebrow}>{focusedRoom ? `${focusedRoom.rect.w} × ${focusedRoom.rect.h} m` : `${FLOOR_SIZE.width} × ${FLOOR_SIZE.height} m`} / WORKER ≈ 1.9 m / STAGED EQUIPMENT</span>
+          <span className={styles.eyebrow}>{focusedRoom ? `${focusedRoom.rect.w} × ${focusedRoom.rect.h} m` : `${FLOOR_SIZE.width} × ${FLOOR_SIZE.height} m`} / WORKER ≈ 1.9 m{focusedRoom && reservedArea(focusedRoom.id) > 0 ? ` / ${reservedArea(focusedRoom.id).toLocaleString("en-US")} m² RESERVED` : " / STAGED EQUIPMENT"}</span>
           <h1>{staging?.title ?? "The factory at working scale"}</h1>
           <p>{staging?.premise ?? "Inspect the proposed equipment in all six rooms. First-turn admission and purchased equipment are unchanged."}</p>
           {staging && <details className={styles.interactionNote}><summary>Supervisor interaction space</summary><p>{staging.interaction}</p></details>}

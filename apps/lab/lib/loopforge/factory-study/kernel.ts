@@ -1,7 +1,7 @@
 import { FLOOR_VERSION, INITIAL_UNLOCKED, FIXTURE_SOCKETS, accessible, crewPose, GATE_CROSSINGS, ROUTE_LENGTH, type ManagedRoomId } from "../spatial/floor";
 
 /** Public commissioning fixture. No framework, wall clock, rendering or private game state. */
-export const STUDY_VERSION = "loopforge-commissioning/3";
+export const STUDY_VERSION = "loopforge-commissioning/4";
 export const TICK_MS = 50;
 export const SHIFT_TICKS = 1200; // One-minute visual study; represents an eighteen-hour shift.
 export type Phase = "night" | "morning" | "shift";

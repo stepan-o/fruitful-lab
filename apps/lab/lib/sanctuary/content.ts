@@ -21,6 +21,7 @@ export const parts = [
 ];
 export const revision = "2026-10-08";
 export const sources: EvidenceSource[] = [
+  {"id": "xbox-d4-catalog-2024", "title": "Xbox — Diablo IV joins Game Pass and the multiplatform strategy, 15 February 2024", "url": "https://news.xbox.com/en-us/2024/02/15/xbox-promise-bring-more-games-to-more-players/", "note": "Announces Diablo IV catalog access from 28 March 2024 and explains reaching players across platforms while retaining investment in hardware. Historical announcement, not a current tier list or evidence that distribution alone caused Blizzard’s monetization design."},
   ...businessHistorySources,
   ...mobileSources,
   {"id": "microsoft-cod-launch", "title": "Satya Nadella — Microsoft FY2025 Q1 earnings call, 30 October 2024", "url": "https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q1", "note": "The CEO reports record Game Pass subscriber adds on Black Ops 6 launch day and PlayStation/Steam unit sales up over 60% year-on-year. Launch comparison, not annual revenue, retention or profit; no independent channel rates or causal Game Pass effect is inferred. It documents simultaneous subscription acquisition and sales through other platforms."},
@@ -517,8 +518,8 @@ const manuscript: Omit<Chapter,"visual">[] = [
   {
     "id": "studio-to-screen",
     "part": 0,
-    "title": "From studio to screen",
-    "lede": "From the arcade cabinet to the cloud, games have sustained businesses far beyond the studios that make them.",
+    "title": "Different roads to the same market",
+    "lede": "PCs and consoles grew into different businesses. Today, both mix game and hardware purchases with subscriptions to catalogs and cloud computing.",
     "paragraphs": [
       "Five years after Pong’s tavern debut, Atari’s VCS offered a different proposition: bring the machine home, then build a collection of games on interchangeable cartridges. Like records bought for a record player, each new work gave the equipment another use. A publisher could sell to households that already had the means to play. A console maker, in turn, needed enough desirable games to make its machine worth choosing.",
       "By the 1990s, that dependence had become a formidable business. Sony’s 1997 annual report credited PlayStation’s growth to cheaper consoles and hit games, naming Final Fantasy VII from Square and Tekken from Namco alongside its own releases. Other companies’ creative work helped sell Sony’s hardware. This is the useful meaning of an ecosystem here: businesses whose products become more valuable because of what the others supply.",
@@ -527,7 +528,7 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "The internet widened those possibilities without settling on one way to charge. Steam, launched in 2003, grew into a store for individually purchased PC games. Netflix added streaming to its DVD membership in 2007, bringing a different offer to the same household: access to a catalog for a recurring fee. In gaming, Xbox Game Pass carried that proposition further in 2018 by promising new Microsoft studio releases on launch day. A release could attract someone to a subscription instead of another boxed purchase. Its value to the catalog included the reason it gave people to join and stay.",
       "Cloud gaming loosened the remaining tie to the machine. OnLive launched on PCs and Macs in 2010, years before PlayStation Now began streaming PS3 games to PS4 in 2014. Sony’s more surprising invitation came in 2016: play selected PlayStation games on a Windows PC, without buying a PlayStation. Its announcement called the app “a new way for even more gamers to discover and play the service.” Series such as Uncharted and God of War, once reasons to choose Sony’s hardware, could now attract subscribers who did not own it. The library could earn beyond the audience for the box.",
       "Microsoft took its cloud offer to Android phones in September 2020, then to PC browsers in June 2021 through Game Pass Ultimate. The games ran on Xbox hardware in Microsoft’s data centers; the player no longer had to keep that hardware at home. NVIDIA’s GeForce NOW separates the offer differently: buy a supported PC game through a store such as Steam, then use NVIDIA’s remote computing to play it. The store keeps the game sale while NVIDIA can charge for the machine. The map below brings these arrangements together, separating access to a game from access to the hardware that runs it. Which routes are available depends on the game and its agreements.",
-      "A studio entering this market can negotiate with companies that need its game for different reasons: to sell copies, attract members or make their equipment worth using. The same audience’s enthusiasm can support all three. That helps explain why a game may be sold outright in one place, included in a membership elsewhere, and still offer paid additions of its own. To see what those arrangements have grown into, turn to Sony, Microsoft and NVIDIA—three businesses earning from the same desire to play."
+      "PC and console gaming have converged on a hybrid market. Games and hardware are still sold, while catalogs and cloud services offer access by subscription. A single release can take several of these routes, with different companies collecting different payments. Diablo IV’s combination of a game purchase, Game Pass access, paid expansions and a cosmetic shop belongs in that setting. Players can arrive through different businesses and encounter further purchases inside the same world. To see what those arrangements have grown into, turn to Sony, Microsoft and NVIDIA—three businesses earning from the same desire to play."
     ],
     "paragraphCitations": {
       "0": [
@@ -563,7 +564,11 @@ const manuscript: Omit<Chapter,"visual">[] = [
         "gfn-membership-terms"
       ],
       "7": [
-        "cdpr-catalog-economics"
+        "steam-cloud",
+        "gfn-game-pass",
+        "xbox-d4-catalog-2024",
+        "d4-season-philosophy",
+        "d4-expansion-structure"
       ]
     },
     "exhibits": [
@@ -625,9 +630,12 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "arcade-card-readers",
       "onlive-launch-2010",
       "ps-now-pc-announcement",
-      "xbox-cloud-pc-2021"
+      "xbox-cloud-pc-2021",
+      "xbox-d4-catalog-2024",
+      "d4-season-philosophy",
+      "d4-expansion-structure"
     ],
-    "evidence": "The timeline selects milestones in overlapping business arrangements; it is not an exhaustive history, a proportional time scale or a claim that subscriptions, cartridges or cloud play were invented on the dates shown. Atari VCS was neither the first home console nor the first cartridge console. Lehto’s six-word quotation characterizes Microsoft’s reaction in his 2025 recollection; it is not a contemporaneous company statement. Halo’s 2026 PlayStation release is a remake. The economic reading of these events is our analysis, not a claim about private acquisition motives or measured returns. The diagrams describe roles and supported routes rather than a quantitative ledger or every possible offer. No private revenue share, contract price or internal transfer is inferred. Store and console licenses do not automatically transfer to other platforms or GeForce NOW. A supported game, appropriate rights, a receiving device and a connection remain necessary. Financial comparisons and the CD PROJEKT catalog agreement continue in the following chapter. OnLive’s 2010 PC/Mac launch predates PS Now. The console lane follows the ecosystem, not the receiving device: PS Now reached Windows in 2016; Xbox cloud launched on Android in 2020 and expanded broadly to PC browsers in 2021. These are selected regional launches, not universal availability. Sony’s 13-word quotation is from its August 2016 announcement.",
+    "evidence": "The timeline selects milestones in overlapping business arrangements; it is not an exhaustive history, a proportional time scale or a claim that subscriptions, cartridges or cloud play were invented on the dates shown. Atari VCS was neither the first home console nor the first cartridge console. Lehto’s six-word quotation characterizes Microsoft’s reaction in his 2025 recollection; it is not a contemporaneous company statement. Halo’s 2026 PlayStation release is a remake. The economic reading of these events is our analysis, not a claim about private acquisition motives or measured returns. The diagrams describe roles and supported routes rather than a quantitative ledger or every possible offer. No private revenue share, contract price or internal transfer is inferred. Store and console licenses do not automatically transfer to other platforms or GeForce NOW. A supported game, appropriate rights, a receiving device and a connection remain necessary. Financial comparisons and the CD PROJEKT catalog agreement continue in the following chapter. OnLive’s 2010 PC/Mac launch predates PS Now. The console lane follows the ecosystem, not the receiving device: PS Now reached Windows in 2016; Xbox cloud launched on Android in 2020 and expanded broadly to PC browsers in 2021. These are selected regional launches, not universal availability. Sony’s 13-word quotation is from its August 2016 announcement. The hybrid-market framing describes convergence in available kinds of offer, not universal game availability, identical platform terms or transferable purchases. Diablo IV’s access and optional purchases illustrate overlapping commercial layers; distribution arrangements alone do not establish why Blizzard chose particular game mechanics.",
     "inscriptions": {
       "4": "subscription"
     }

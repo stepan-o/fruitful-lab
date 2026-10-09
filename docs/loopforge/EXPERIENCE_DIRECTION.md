@@ -4,6 +4,10 @@ Owner direction, 8 October 2026. Applies to the landing, playable console, camer
 
 **Latest owner review:** the focused-screen/material direction is improved. This pass separates the adviser roster and weekly leadership call, strengthens factory feedback and tests a five-supervisor selection layout. The call may drop console chrome entirely. See [living-console direction](LIVING_CONSOLE_DIRECTION.md) and [cinematic surfaces](CINEMATIC_INTERFACE_DIRECTION.md). Automated checks do not establish owner visual/enjoyment acceptance.
 
+## The whole day shares a minute
+
+Owner direction: one complete routine day takes about a minute; a heavier day takes two to three minutes at most. Reading, daily adviser choice, brief/plan approval, production, interruptions and permanent allocation all count. Give the primary choice room by removing repeated reports and compulsory inspection trips. Keep structured speech, recoverable outcomes and optional depth. Weekly calls and first-time explanations fit the longer-day allowance. Proposed: concise plan approval within the brief, detailed edits on demand, and a daily result reused as tomorrow’s context. These are design requirements for the next pass, not a change to the current runtime. See [flow and interface inventory](ONE_MINUTE_LOOP.md).
+
 ## The guiding principle
 
 **Visceral conveyor and factory operations are the foundation of the interface.** The accepted landing conveyor is the reference: weight, uneven momentum, friction, light crossing machinery, stoppage, and a deliberate act that restarts the line. Carry that physical logic through the game UI. It must feel responsive *with* the factory.

@@ -6,6 +6,8 @@ import { producerPlate, producerMobilePlate, PRODUCER_GEOMETRY, PRODUCER_MOBILE,
 import type { ProducerSkinId } from "@/lib/loopforge/first-shift/themes";
 import { consoleLayout, type ConsoleLayout } from "@/lib/loopforge/first-shift/console-layout";
 import { Art, ROOMS, Tape, name, time, type Media } from "./ConsoleParts";
+import { feedbackFor, type FeedbackId } from "@/lib/loopforge/first-shift/feedback";
+import { StatusToken, SupervisorSignal } from "./StatusFeedback";
 import { useConsoleSignals } from "./ConsoleSignals";
 import s from "./producer-console.module.css";
 
@@ -67,9 +69,10 @@ function ProducerLight({ skin, active, effects }: {skin:ProducerSkinId;active:bo
 }
 
 export default function ProducerConsole({media,view,skin,incoming,busy,effects,active,ticking,
-  onLeadership,onAdviser,onPrimary,onRoom,onInspect,onNavigate,onSpeed,speed,primaryLabel,
+  onLeadership,onAdviser,onPrimary,onRoom,onInspect,onFeedback,onNavigate,onSpeed,speed,primaryLabel,
 }:{media:Media;view:PlayerView;skin:ProducerSkinId;incoming:boolean;busy:boolean;effects:boolean;active:boolean;ticking:boolean;
   onLeadership:()=>void;onAdviser:()=>void;onPrimary:()=>void;onRoom:(id:RoomId)=>void;onInspect:(id:string)=>void;
+  onFeedback:(id:FeedbackId)=>void;
   onNavigate:(id:"development"|"records")=>void;onSpeed:()=>void;speed:number;primaryLabel:string;}) {
   const [selected,setSelected]=useState<string>("conveyor");
   const [layout,setLayout]=useState<ConsoleLayout>("wall");
@@ -105,14 +108,20 @@ export default function ProducerConsole({media,view,skin,incoming,busy,effects,a
           const powered=room.id==="conveyor"||room.id==="security";
           const operator=powered?view.assignments?.[room.id as RoomId]:undefined;
           const incident=view.pending?.room===room.id;
+          const signal=powered?feedbackFor(view,`room:${room.id as RoomId}`):null;
           const content=<><div className={s.feedGlass}>
             {powered&&<Art media={media} id={room.art} sizes={skin==="dispatch-office"&&i===0?"65vw":"(max-width:700px) 44vw, 32vw"} priority={i<2} />}
             <span className={s.reflection}/>
-            {powered&&<><span className={s.scan}/><span className={s.rec}><i/>{ticking?"REC":"LIVE"} · 0{ROOMS.indexOf(room)+1}</span><span className={s.operator}>{operator?name(operator):"No supervisor assigned"}{operator===view.adviser&&operator?" · adviser":""}</span>{incident&&<strong className={s.incident}>Response required</strong>}</>}
-          </div><Tape className={!powered&&(skin==='foundry-desk'||skin==='obedience-organ')?s.nativeTape:''}>{room.title}</Tape></>;
-          return powered?<button key={room.id} className={s.camera} style={{...rectStyle(g.panes[i]),...Object.fromEntries(["x","y","w","h"].map((key,index)=>[`--feed-${key}`,`${mobile.panes[ROOMS.indexOf(room)][index]}%`]))} as CSSProperties} data-selected={room.id===selected} data-live data-incident={incident} disabled={incoming} onClick={()=>{
-            if(skin==="dispatch-office"&&layout==='wall'&&i!==0)setSelected(room.id);else onRoom(room.id as RoomId);
-          }} aria-label={`Inspect ${room.title}`}>{content}</button>:<div key={room.id} className={s.camera} style={{...rectStyle(g.panes[i]),...Object.fromEntries(["x","y","w","h"].map((key,index)=>[`--feed-${key}`,`${mobile.panes[ROOMS.indexOf(room)][index]}%`]))} as CSSProperties} data-selected={room.id===selected} role="img" aria-label={`${room.title} — unpowered camera`}>{content}</div>;
+            {powered&&<><span className={s.scan}/><span className={s.rec}><i/>{ticking?"REC":"LIVE"} · 0{ROOMS.indexOf(room)+1}</span>{!operator&&<span className={s.operator}>No supervisor assigned</span>}</>}
+          </div><Tape className={`${s.cameraTape} ${!powered&&(skin==='foundry-desk'||skin==='obedience-organ')?s.nativeTape:''}`}>{room.title}</Tape></>;
+          const position={...rectStyle(g.panes[i]),...Object.fromEntries(["x","y","w","h"].map((key,index)=>[`--feed-${key}`,`${mobile.panes[ROOMS.indexOf(room)][index]}%`]))} as CSSProperties;
+          return powered?<div key={room.id} className={s.camera} style={position} data-selected={room.id===selected} data-live data-incident={incident}>
+            <button className={s.openCamera} data-selected={room.id===selected} disabled={incoming} onClick={()=>{
+              if(skin==="dispatch-office"&&layout==='wall'&&i!==0)setSelected(room.id);else onRoom(room.id as RoomId);
+            }} aria-label={`Inspect ${room.title}`}>{content}</button>
+            {!incoming&&signal&&<div className={s.cameraStatus}><StatusToken signal={signal} compact onOpen={onFeedback}/></div>}
+            {!incoming&&operator&&<div className={s.cameraVoice}><SupervisorSignal media={media} view={view} person={operator} compact onOpen={onFeedback}/></div>}
+          </div>:<div key={room.id} className={s.camera} style={position} data-selected={room.id===selected} role="img" aria-label={`${room.title} — unpowered camera`}>{content}</div>;
         })}
       </div>
       {single&&<nav className={s.channels} aria-label="Camera channels">{ROOMS.map((room,i)=><button key={room.id} disabled={incoming} aria-pressed={selected===room.id} data-pending={view.pending?.room===room.id} onClick={()=>setSelected(room.id)}><small>0{i+1}{i>1?' · OFF':''}</small><span>{room.title}</span></button>)}</nav>}

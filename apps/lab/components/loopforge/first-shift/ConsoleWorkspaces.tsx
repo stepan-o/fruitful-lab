@@ -22,6 +22,8 @@ import {
   time,
   type Media,
 } from "./ConsoleParts";
+import { feedbackFor, type FeedbackId } from "@/lib/loopforge/first-shift/feedback";
+import { OutcomeTokens, StatusToken, SupervisorSignal } from "./StatusFeedback";
 import s from "./first-shift.module.css";
 import l from "./living-console.module.css";
 
@@ -95,7 +97,7 @@ export function Intercom({
 }) {
   const [beat, setBeat] = useState(0);
   const chosen = view.adviser === person,
-    brief = chosen ? view.briefing : null;
+    brief = chosen && view.phase === "briefing" ? view.briefing : null;
   const remark = view.people.find((p) => p.id === person)!.remark;
   return (
     <section className={s.intercom} aria-label={`${name(person)} intercom`}>
@@ -113,7 +115,7 @@ export function Intercom({
               ? "Private channel / today’s adviser"
               : "Private channel / supervisor"}
           </Kicker>
-          <h1>{chosen ? "The morning brief" : "Hear them out."}</h1>
+          <h1>{brief ? "The morning brief" : view.adviser ? "On the channel" : "Hear them out."}</h1>
         </header>
         {brief ? (
           <>
@@ -283,11 +285,13 @@ export function RoomFocus({
   view,
   room,
   onRecord,
+  onFeedback,
 }: {
   media: Media;
   view: PlayerView;
   room: RoomId;
   onRecord: (id?: string) => void;
+  onFeedback: (id: FeedbackId) => void;
 }) {
   const person = view.assignments?.[room],
     latest = view.events
@@ -306,7 +310,6 @@ export function RoomFocus({
         focus
       />
       <div className={s.roomDesk}>
-        <Token media={media} person={person} empty={!person} />
         <div>
           <Kicker>
             {person
@@ -319,6 +322,8 @@ export function RoomFocus({
               ? `${view.condition}% line condition · ${view.produced} robots completed`
               : "Access control · reports and clearance"}
           </p>
+          <StatusToken signal={feedbackFor(view, `room:${room}`)} onOpen={onFeedback} />
+          {person && <SupervisorSignal media={media} view={view} person={person} onOpen={onFeedback} />}
           {latest && (
             <button
               className={s.receiptLink}
@@ -542,11 +547,15 @@ export function Debrief({
   view,
   onRecords,
   onRestart,
+  opening,
+  onFeedback,
 }: {
   media: Media;
   view: PlayerView;
   onRecords: () => void;
   onRestart: () => void;
+  opening: PlayerView | null;
+  onFeedback: (id: FeedbackId) => void;
 }) {
   return (
     <section className={s.debrief} aria-label="Shift debrief">
@@ -558,33 +567,9 @@ export function Debrief({
         <h1>The line moved. At a cost.</h1>
       </header>
       <div className={s.debriefContent}>
-        <div className={s.debriefTotals}>
-          {[
-            ["Produced", view.produced],
-            ["Retained", view.retained],
-            ["Delivered", view.committed],
-          ].map(([title, n]) => (
-            <div key={title}>
-              <small>{title}</small>
-              <b>{n}</b>
-            </div>
-          ))}
-        </div>
-        <p className={s.costReceipt}>
-          Line condition <b>82 → {view.condition}%</b> ·{" "}
-          {view.losses ? `${view.losses} worker lost` : "All workers survived"}
-        </p>
-        <div className={s.debriefVoices}>
-          {view.people.map((p) => (
-            <div key={p.id}>
-              <Token media={media} person={p.id} />
-              <span>
-                <Kicker>{name(p.id)}</Kicker>
-                <Speech>{p.remark}</Speech>
-              </span>
-            </div>
-          ))}
-        </div>
+        <OutcomeTokens view={view} opening={opening} onOpen={onFeedback}/>
+        <p className={s.costReceipt}>{view.losses ? `${view.losses} worker lost this shift.` : "All workers survived."} The factory carries today’s wear forward.</p>
+        <div className={s.debriefVoices}>{view.people.map(p=><SupervisorSignal key={p.id} media={media} view={view} person={p.id} onOpen={onFeedback}/>)}</div>
         <div className={s.workspaceActions}>
           <Control tone="primary" onClick={onRecords}>
             Inspect what happened

@@ -2,6 +2,10 @@
 
 8 October 2026, updated for [producer console direction](PRODUCER_CONSOLE_DIRECTION.md). All four integrated skins are approved for implementation; delivery and verification are underway without a winner-selection gate. Purposeful equipment states, speech and optional contextual help replace persistent explanatory prose. The preceding direct-to-call baseline is being replaced by console-first arrival and explicit quota acknowledgement; the sequence below is the delivery contract, not a claim that every path has passed validation.
 
+## Onboarding within the daily budget
+
+The whole routine day targets about one minute; heavier days take two to three at most, including required reading and transitions. The first leadership call and first-time explanations share the longer-day allowance rather than adding a separate tutorial sequence. Teach the current choice and its tradeoff; keep general help reopenable. Do not force a player to inspect every candidate or replay an understood briefing. The adviser is appointed explicitly, not by merely opening their portrait. Optional inspection is not required work in the normal-path budget. See [daily loop](ONE_MINUTE_LOOP.md).
+
 ## What the references actually show
 
 [Factorio's developer account of Tips and Tricks](https://www.factorio.com/blog/post/fff-361) describes moving from startup pages toward an indexed, reopenable guide, demonstrations and tips suggested when relevant dependencies/actions occur. It reserves that guide for topics that need it, leaving object-specific explanation at the object. [Its tutorial retrospective](https://www.factorio.com/blog/post/fff-342) also describes the attention cost of introducing another concept and the value of practicing the actual interaction.

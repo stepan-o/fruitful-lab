@@ -1,12 +1,19 @@
 # Loopforge game design board
 
+8 October expression-first pass: **Player desires & scenarios** (`#player-desires`) adds the owner’s seven expression anchors, three research frameworks, thirteen games and their developers, a qualitative player-discussion sample for four close references, and seven proposed situations mapped to UI, feedback and causal support. `player-desires.json` is the authored source; `player_desires.py` renders the tab and the generated `../PLAYER_DESIRES_AND_SCENARIOS.md`. The game and UI reading copies contain the same record. No gameplay implementation or representative audience survey is claimed.
+
+Part 01 now tests four or five complete two-room days, roughly six to eight minutes, instead of the earlier three-day hypothesis. Exact pacing and funding remain open; expression, distinct payoffs and readiness determine the test. See the new tab before designing further screens or extending the simulation.
+
+
+8 October next design pass: [one-minute loop inventory](../ONE_MINUTE_LOOP.md) gathers the whole-day flow, authority rules, interface ownership, implemented baseline and open decisions after the owner accepted the one-second loop as a good baseline. It is a working design brief, not a new implementation or balance decision.
+
 8 October style review: **UI style studies** (`#ui-styles`) includes six separately generated directions: the parent baseline and five requested agent alternatives. `ui-styles.json` owns names and review notes; `style_review.py`, `style-review.js` and `style-review.css` build the responsive gallery and accessible comparison dialog. Images use the `loopforge-ui-studies` immutable pack. This review does not choose the production style or update the playable interface. See `../CAMERA_CONSOLE_ART_DIRECTION.md` and `../ONBOARDING_DESIGN.md` for the latest visual and tutorial rules.
 
 8 October interface follow-up: [game interface job study](../INTERFACE_JOB_STUDY.md)
 records the reference pass after the owner rejected PR #99's composition. It
 precedes the next full-floor layouts, asset generation and first-turn rebuild.
 The six-room overview and 10–20 minute capability-unlock target are the latest
-owner direction; earlier shift-duration estimates require a new pacing test.
+owner direction; the whole day now targets about one minute routine, two to three for heavier days; earlier long-shift estimates are discarded.
 
 The accepted local design board now lives at `/stepanoskin/loopforge/design` in the Lab app. This is an author-facing concept document with spoilers, proposals and open decisions; the playable first-day slice is `/stepanoskin/loopforge/play`.
 
@@ -69,3 +76,16 @@ Rewrote the first three stages around an unassigned adviser-first opening, a wee
 Updated the related trajectories, forks, recovery examples, economy, adviser rules, UI contracts and generated reading copies. Added a compact opening-rules reference and four proposed supervisor combinations. Model reasoning must demonstrate value against authored deterministic BDI; generated prose alone is a separate comparison. Payment timing and excess-output terms remain open. No daily repair bill, retained-worker liquidation or station staffing controls are assumed.
 
 Validation: regenerated all documents; checked script syntax, unique HTML IDs, local file references, all stage fields and new rules in the complete records. Reviewed the three stage selectors and the new combination/model criteria disclosures in the browser. Visually checked desktop, 390px and 320px phone layouts, and the interface diagram at 768px; no page overflow at those widths. This is a local design revision, not a gameplay implementation or balance test.
+
+Validation for the expression-first addition: all seven scenarios, thirteen comparisons and four player-feedback summaries are present in the interactive board and complete game/UI reading copies. Generated HTML IDs and local links pass; regeneration is identical. Browser review checked expanded player evidence and a Part 02 scenario on desktop and phone, keyboard disclosure, tab navigation, and 320/390/768/1440 pixel widths without page overflow. These checks verify the design artifact, not gameplay balance or audience demand.
+
+
+## Core loop study and arc feedback — 8 October 2026
+
+The opening reading order is now Player desires → Core loop study → Long arc → Core loops and sessions. Existing deep links remain valid. `core-loop-study.json` authors nine overlapping loop patterns, examples and counterexamples, five gameplay figures across three comparative studies, and Loopforge conclusions. `core_loop_study.py` renders the early tab and complete HTML/Markdown game and UI records. The new `CORE_LOOP_STUDY.md` is generated, not a separate source to edit.
+
+The owner's emergence requirement is captured across all five Act 1 stages: player commitment → direct status → observable indirect evidence → hidden state → next meaningful choice. Status tokens project authorised observations, not private loyalty/belief values. The engine must retain causal event and information-delivery links so a later discovery can explain an earlier sign. Actual fun, viable approaches and repeated-day pacing still need playtesting; this work does not implement those systems.
+
+Research figures are editorial references only, separate from Loopforge game art and generation inputs. `core-loop-media.v1.json` records source URLs, owners, publication basis, dates, dimensions and hashes. Factorio explicitly permits website screenshots; selected Mega Crit/Torpor press stills support close criticism without claiming an unrestricted asset licence. Sources are kept outside the repository; uncropped 640/960/1600px WebP variants have immutable content-hashed filenames. Inspection loads its larger image on request; inactive tabs do not request the research figures. Keep credits and commentary with the images. Do not reinterpret these sources as a game-asset licence.
+
+Validation for the core-loop study: all nine patterns, five figures and five arc-feedback contracts are present in the board and complete game/UI HTML and Markdown records. IDs, local links and all 15 image hashes pass; generation is repeatable. Browser review covered desktop composition, phone figures/credits and token examples, modal close/Escape focus return, detail zoom, and 320/390/768/1440 widths without page overflow. Only nearby study figures loaded; the 1600px image loaded when explicitly inspected. A stopped local server was restarted before completing image checks. These are document/UI checks, not proof of gameplay balance, audience demand or a production performance benchmark.

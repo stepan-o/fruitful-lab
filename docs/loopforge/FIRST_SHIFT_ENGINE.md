@@ -2,6 +2,10 @@
 
 Implementation: `apps/lab/lib/loopforge/first-shift/`. Public experience: `/stepanoskin/loopforge/play`. API: `POST /api/loopforge/first-shift`. Author-facing explanation: `/stepanoskin/loopforge/engine-notes`. The former eight-shift teaching console remains at `/stepanoskin/loopforge/play/teaching`; its engine and narration endpoint are separate and unchanged.
 
+## Whole-day cadence — design target
+
+The owner sets the entire game day at about one minute for routine play and two to three minutes at most for heavier days. Include adviser choice, briefing/approval, running, warranted decisions, allocation and normal reading/transitions. The current 48-beat slice, 900ms normal advance delay and two scheduled incidents remain unchanged; it does not establish repeatable daily/weekly pacing. Do not meet a wall-time target by changing outcomes on slower clients. Reading pauses consume no in-world production opportunity; an accepted stop order does. Future daily carry-forward and weekly settlement need explicit engine/projection contracts. See [daily-loop inventory](ONE_MINUTE_LOOP.md).
+
 ## Intent and limits
 
 A complete first-day interaction slice for testing adviser choice, authority, output versus wear, permanent allocation and the readability of consequences. It is not a replacement for the whole old sim-sim, a completed ECS, a balanced Act 1, a persistent multiplayer world, or a general BDI implementation.
@@ -122,3 +126,27 @@ Room/character images retain the `loopforge`, `loopforge-supervisors` and `stepa
 `GameClient` owns menu/session visibility; `FirstShift` retains its run controller and call/draft state while equipment changes. `ThemeProvider` validates recipes, prepares the requested full console plate and focused asset family, then atomically replaces presentation. Version 1 gains an optional console field; parsing resolves it from a new `?console=` link or a valid migrated legacy preference. Four new selections use matching internal material pairs. Invalid IDs fall back to Foundry; failed/superseded loads preserve the previous complete recipe. No skin enters HTTP or kernel contracts. Settings pauses advances and blocks switching until an in-flight order settles; closing it never starts the conveyor.
 
 The beacon reads confirmed public receipts: production green, actual new losses red, required attention amber; ordinary incident prose does not prove an accident. Dark rest and cyan idle life do not imply simulation progress. Each new plate uses calibrated local light instead of the preceding broad main-console beam, with no model calls, simulation randomness or per-frame world updates. Incoming leadership uses attention semantics, not accident red. Verify source alignment and every opening/state transition during delivery. See `UI_THEME_ASSET_SYSTEM.md` and `CONSOLE_LIGHT_FEEDBACK.md`; no engine command changes are implied.
+
+
+## Expression scenarios — design handoff, 8 October 2026
+
+[Player desires and scenarios](PLAYER_DESIRES_AND_SCENARIOS.md) maps the owner’s expression goals to conditional Parts 01–02 situations and interface feedback. It is an authoring brief, not an extension of the implemented schema. Stable workers, accepted commands, physical consequences and received memories must support the eventual payoffs. A feeling of recognition cannot be supplied solely by generated dialogue.
+
+Expression labels belong to scenario coverage and playtest notes; do not add an inferred player personality or morality component. The same action can serve different intentions. Keep UI complexity independent from engine complexity: a concise commitment and known consequence can sit above detailed deterministic state. Preserve the existing authority, evidence and model-admission boundaries. Multi-day continuity, Theatre programmes and contextual public support remain implementation work.
+
+
+## Emergent arcs and visible status — design contract, 8 October 2026
+
+The core-loop study adds an authoring obligation, not an implemented runtime claim. Every Act 1 arc must connect a meaningful commitment to world changes, individual observations/interpretations, visible status and a next choice. See [CORE_LOOP_STUDY.md](CORE_LOOP_STUDY.md) for all five stage contracts and the UI presentation rules.
+
+Record stable subject IDs and causal links across commands, state transitions, seeded draws, information delivery, beliefs, intentions, actions and consequences. The player-facing status projection contains only permitted observations with source/time and available actions. Confirmed output, a supervisor's account and an unresolved rumour require distinct semantics. Hidden causes may produce observable behaviour, but no token may reveal a private loyalty number, a secret intention, or knowledge its audience has not received. Later authorised discoveries can explain earlier signs using the same event history.
+
+Presentation consumes these records; it does not create truth. A red accident impulse requires a physical accident, not merely a claim. A successful dispatch updates the quota and permanently commits those worker entities; a repair is unavailable until the first engineer arrives. Quiet success, failed rumours and absent evidence remain valid outcomes. LLM speech must earn its place against the authored baseline and cannot bypass recorded admission or knowledge limits. Replaying one day cannot validate the longer emergent trajectories.
+
+## Playable status feedback — 8 October 2026
+
+`feedback.ts` consumes only `PlayerView` plus an optional confirmed opening record. It returns typed token identity, knowledge label (Confirmed / Observed / Statement), tone, source, public event references and a navigation action. It neither imports the kernel nor simulates events. `StatusFeedback.tsx` renders shared camera status, portrait speech, evidence dialogs and debrief tokens. New remarks in the existing allowlist respond to load resolutions and actual losses; private trait values and worker conditioning remain absent.
+
+The integrated console’s active rooms display state and operator reaction; sealed rooms stay name-only. Selecting a token or instrument pauses advance requests and shows its full evidence. A pending incident routes back to the existing response; inspecting records never issues an order. Quota inspection reports the current dispatch ledger; the separate leadership receiver still owns the opening mandate. The intercom shows current speech after approval instead of replaying the morning brief. Dispatch/debrief reconcile production, retention, losses, condition and quota.
+
+No command, balance, transport schema or deterministic kernel changes. End-to-end snapshots and causal records remain authoritative; statements are explicitly attributed. Long-arc rumour propagation, discovery and multi-day state carry remain unimplemented. Implementation and validation: `STATUS_FEEDBACK_IMPLEMENTATION.md`.

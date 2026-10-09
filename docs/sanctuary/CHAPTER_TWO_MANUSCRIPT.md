@@ -2,7 +2,7 @@
 
 9 October 2026. A historical opening before the business diagrams.
 
-A hit can sell more than a game. It can make a machine, a store or a membership worth choosing.
+From the arcade cabinet to the cloud, games have sustained businesses far beyond the studios that make them.
 
 Five years after Pong’s tavern debut, Atari’s VCS offered a different proposition: bring the machine home, then build a collection of games on interchangeable cartridges. Like records bought for a record player, each new work gave the equipment another use. A publisher could sell to households that already had the means to play. A console maker, in turn, needed enough desirable games to make its machine worth choosing.
 

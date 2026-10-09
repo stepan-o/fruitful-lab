@@ -518,7 +518,7 @@ const manuscript: Omit<Chapter,"visual">[] = [
     "id": "studio-to-screen",
     "part": 0,
     "title": "From studio to screen",
-    "lede": "A hit can sell more than a game. It can make a machine, a store or a membership worth choosing.",
+    "lede": "From the arcade cabinet to the cloud, games have sustained businesses far beyond the studios that make them.",
     "paragraphs": [
       "Five years after Pong’s tavern debut, Atari’s VCS offered a different proposition: bring the machine home, then build a collection of games on interchangeable cartridges. Like records bought for a record player, each new work gave the equipment another use. A publisher could sell to households that already had the means to play. A console maker, in turn, needed enough desirable games to make its machine worth choosing.",
       "By the 1990s, that dependence had become a formidable business. Sony’s 1997 annual report credited PlayStation’s growth to cheaper consoles and hit games, naming Final Fantasy VII from Square and Tekken from Namco alongside its own releases. Other companies’ creative work helped sell Sony’s hardware. This is the useful meaning of an ecosystem here: businesses whose products become more valuable because of what the others supply.",

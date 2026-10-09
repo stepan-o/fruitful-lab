@@ -25,9 +25,11 @@ import { DirectionalLight } from "@babylonjs/core/Lights/directionalLight";
 import { ShadowGenerator } from "@babylonjs/core/Lights/Shadows/shadowGenerator";
 import { DefaultRenderingPipeline } from "@babylonjs/core/PostProcesses/RenderPipeline/Pipelines/defaultRenderingPipeline";
 import "@babylonjs/core/Lights/Shadows/shadowGeneratorSceneComponent";
+import { buildFloor } from "./floor-scene";
+import { FIXTURE_SOCKETS, worldPoint, zone, ZONES, accessible, type ZoneId } from "@/lib/loopforge/spatial/floor";
 import { gateOpen, initialStudy, type Fixture, type StudyState } from "@/lib/loopforge/factory-study/kernel";
 
-export type Focus = "security" | "line" | "wide";
+export type Focus = ZoneId | "wide";
 export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number };
 export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; inset(bottom: number): void; build(enabled: boolean, selected: Fixture | null): void; motion(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
@@ -35,29 +37,29 @@ type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
 const C = (hex: string) => Color3.FromHexString(hex);
 
-export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixture) => void, report: (r: SceneReport) => void): FactoryScene {
+export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixture) => void, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void): FactoryScene {
   const engine = new Engine(canvas, false, { stencil: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
   const scene = new Scene(engine);
   try {
   scene.clearColor = new Color4(.018, .025, .025, 1);
   scene.ambientColor = new Color3(.08, .10, .09);
-  scene.fogMode = Scene.FOGMODE_EXP2; scene.fogDensity = .014; scene.fogColor = new Color3(.025, .041, .042);
+  scene.fogMode = Scene.FOGMODE_EXP2; scene.fogDensity = .005; scene.fogColor = new Color3(.025, .041, .042);
   const camera = new ArcRotateCamera("director", -Math.PI / 2 + .32, .94, 27, new Vector3(-1, 1.7, 0), scene);
   camera.attachControl(canvas, true); camera.lowerBetaLimit = .52; camera.upperBetaLimit = 1.22;
-  camera.lowerRadiusLimit = 9; camera.upperRadiusLimit = 34; camera.wheelDeltaPercentage = .015;
+  camera.lowerRadiusLimit = 7; camera.upperRadiusLimit = 90; camera.wheelDeltaPercentage = .015;
   camera.pinchDeltaPercentage = .012; camera.panningSensibility = 130; camera.inertia = .78;
-  camera.minZ = .15; camera.maxZ = 85; camera.fov = .8; camera.fovMode = 1;
+  camera.minZ = .15; camera.maxZ = 150; camera.fov = .8; camera.fovMode = 0;
   let state = initialStudy(), lastTime = performance.now(), visualTravel = 0, moving = true;
   let building = false, selected: Fixture | null = null;
   let bottomInset = 180;
   let focus: Focus = "wide", targetRadius = 27, targetPoint = new Vector3(-1, 1.7, 0), transition = 1;
   let seed = 873121;
   const random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
-  const nodes: TransformNode[] = [], staticMeshes: Mesh[] = [];
+  const nodes: TransformNode[] = [];
   const key = new DirectionalLight("warm overhead", new Vector3(-.5, -1, .5), scene);
   key.position.set(3, 12, -7); key.diffuse = C("#ffc477"); key.intensity = 1.85; key.renderPriority = 4;
   const hemi = new HemisphericLight("cold factory bounce", new Vector3(0, 1, 0), scene);
-  hemi.diffuse = C("#729d96"); hemi.groundColor = C("#080e0b"); hemi.intensity = .33; hemi.renderPriority = 3;
+  hemi.diffuse = C("#729d96"); hemi.groundColor = C("#080e0b"); hemi.intensity = .52; hemi.renderPriority = 3;
   const shadow = new ShadowGenerator(1024, key); shadow.usePercentageCloserFiltering = true;
   shadow.filteringQuality = ShadowGenerator.QUALITY_LOW; shadow.bias = .001; shadow.normalBias = .04;
   key.autoCalcShadowZBounds = true;
@@ -158,69 +160,9 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     tex.update(true);const m=new StandardMaterial(text+" plate",scene);m.diffuseTexture=tex;m.emissiveColor=new Color3(.13,.13,.1);m.specularColor=Color3.Black();
     const plane=MeshBuilder.CreatePlane(text,{width,height:.64},scene);finish(plane,m,[pos[0],pos[1],pos[2]-.046],parent);
   }
-  // A cutaway built as physical layers: service void, floor plates, skirting, walls and pipes.
-  box("foundation",[23,.6,12],[0,-.48,0],dark);
-  for(let x=-11;x<11;x+=1) for(let z=-5;z<6;z+=1) {
-    const m=box("floor panel",[.975,.14,.975],[x+.5,-.06,z+.5],floorMat);staticMeshes.push(m);
-    if((x+z)%4===0)box("drain slot",[.55,.006,.06],[x+.5,.016,z+.5],dark);
-  }
-  box("back wall",[23,6,.35],[0,3,5.7],dark,undefined,true);
-  box("left wall",[.3,6,12],[-11.5,3,0],dark,undefined,true);
-  for(let x=-11;x<=11;x+=2.2){
-    box("wall panel",[2.08,4.3,.14],[x,2.5,5.46],iron);
-    box("rib",[.2,6,.42],[x-1.04,3,5.26],brass,undefined,true);
-    for(let y=.5;y<5.9;y+=.45)box("rib anchor",[.3,.09,.14],[x-1.04,y,5],dark);
-  }
-  for(let k=0;k<6;k++){
-    pipe("overhead service",[[-11,5.15+k*.12,4.85-k*.22],[-8,5.15+k*.12,4.85-k*.22],[-7.7,4.6,4.85-k*.22],[4,4.6,4.85-k*.22],[4.4,5.1,4.85-k*.22],[11.3,5.1,4.85-k*.22]],.045+k%2*.025,k%2?copper:iron);
-  }
-  for(let x=-9;x<11;x+=3.9){
-    const tall=pipe("riser",[[x,.1,5.1],[x,3.6,5.1],[x+.35,4,5.1],[x+.8,4,5.1]],.12,iron);shadow.addShadowCaster(tall);
-    for(let y=.4;y<3.7;y+=.65){const collar=ring("pipe collar",.15,.06,[x,y,5.1],brass);collar.rotation.x=0;}
-    const wheel=ring("isolation wheel",.29,.055,[x,1.3,4.82],copper);wheel.rotation.x=Math.PI/2;
-    for(let a=0;a<3;a++){const spoke=bar("wheel spoke",[x,1.3,4.82],[x+Math.cos(a*2.094)*.27,1.3+Math.sin(a*2.094)*.27,4.82],.025,copper);spoke.isPickable=false;}
-  }
-  for(let x=-8;x<11;x+=6){
-    box("light bracket",[1.7,.12,.8],[x,5.65,4.6],iron);
-    box("ceiling lamp",[1.3,.055,.45],[x,5.55,4.45],amber);
-    const lamp=new PointLight("local tungsten",new Vector3(x,4.7,3.5),scene);lamp.diffuse=C("#ff963e");lamp.intensity=6;lamp.range=8;
-  }
-  const localGlow=new PointLight("Security terminal bounce",new Vector3(-7.5,2.8,-1),scene);localGlow.diffuse=C("#69bab2");localGlow.intensity=3;localGlow.range=6;localGlow.renderPriority=2;
-  const taskLight=new PointLight("conveyor inspection light",new Vector3(3.5,3.5,-1.5),scene);taskLight.diffuse=C("#ffb362");taskLight.intensity=7;taskLight.range=8;taskLight.renderPriority=2;
-  sign("SECURITY", "01 / PERSONNEL CLEARANCE",3.7,[-7,4.7,5.15]);
-  sign("LATTICE FORGE", "02 / NEURAL PRODUCTION",5,[4,4.7,5.15]);
-  // Recessed intake door with mechanical frame.
-  box("door recess",[2.1,3.8,.12],[-7.2,1.9,5.2],dark);
-  for(const x of [-8.4,-6]){box("door upright",[.24,4.1,.6],[x,2.05,4.9],iron);pipe("door hydraulic",[[x,.2,4.5],[x,3.6,4.5]],.075,brass);}
-  box("door lintel",[2.75,.28,.7],[-7.2,4,4.9],brass);
-  for(let i=0;i<12;i++)box("shutter slat",[2.05,.25,.11],[-7.2,.25+i*.29,5.03],iron);
-  // Conduit follows the same floor connecting Security and the line.
-  for(let i=0;i<3;i++)pipe("floor cable",[[-9,.06,-1-i*.14],[-9,.06,2],[-2,.06,2],[-1,.06,1.2],[9,.06,1.2]],.035,i===1?copper:dark);
-  // Scars, drainage and cabinet layers bring the corner down to workshop scale.
-  for(let x=-10.5;x<10;x+=.65){box("walkway hatch",[.08,.013,.45],[x,.026,-3.85],x%2?brass:dark);}
-  for(let x=-10;x<11;x+=1.5)for(const z of [-4.3,3.8]){
-    box("drain frame",[1.1,.026,.45],[x,.023,z],iron);
-    for(let k=0;k<9;k++)box("drain aperture",[.055,.008,.32],[x-.43+k*.105,.04,z],dark);
-  }
-  for(let i=0;i<4;i++){
-    const n=root("service cabinet",[-10.9,0,2-i*1.5]);
-    box("cabinet body",[.6,2.5,1.15],[0,1.25,0],green,n,true);
-    box("cabinet door",[.04,2.12,.98],[.32,1.3,0],iron,n);
-    for(let k=0;k<7;k++)box("cabinet cooling slot",[.016,.025,.56],[.35,.7+k*.11,0],dark,n);
-    pipe("cabinet line",[[0,2.5,.4],[0,3.3,.4],[0,3.6,1]],.07,copper,n);
-  }
-  for(const x of [-9.8,-4.2,1.5,9.7]){
-    const cabinet=root("wall regulator",[x,0,4.9]);
-    box("regulator case",[.85,1.4,.3],[0,2.35,0],green,cabinet);
-    for(let y=0;y<3;y++){
-      const dial=cylinder("gauge",.15,.08,[0,2.7-y*.36,-.2],brass,cabinet,24);dial.rotation.x=Math.PI/2;
-      const face=cylinder("gauge inset",.115,.016,[0,2.7-y*.36,-.25],dark,cabinet,24);face.rotation.x=Math.PI/2;
-      bar("gauge needle",[0,2.7-y*.36,-.263],[.06,2.76-y*.36,-.263],.008,glyph,cabinet);
-    }
-    bolts(cabinet,[-.36,.36],[1.74,2.94],-.18);
-  }
-  const paper=material("oily paper", "#b49d66",0,.9);
-  for(let i=0;i<7;i++){const slip=box("pinned inspection slip",[.23,.32,.012],[-8.9+(i%3)*.31,2.3+Math.floor(i/3)*.4,5.28],paper);slip.rotation.z=(random()-.5)*.2;}
+  const floor = buildFloor(scene, { box, pipe, cylinder, iron, dark, brass, copper, green, floorMat, amber, quiet });
+  const localGlow=new PointLight("Security terminal bounce",new Vector3(-2.2,2.5,.6),scene);localGlow.diffuse=C("#69bab2");localGlow.intensity=3;localGlow.range=6;localGlow.renderPriority=2;
+  const taskLight=new PointLight("conveyor inspection light",new Vector3(-2.5,3.5,-7),scene);taskLight.diffuse=C("#ffb362");taskLight.intensity=7;taskLight.range=8;taskLight.renderPriority=2;
   const terminal=root("clearance terminal",[-8,0,.35]);
   box("terminal footing",[1.45,.2,1.35],[0,.1,0],iron,terminal,true);
   box("terminal pedestal",[.95,1.25,.85],[0,.77,0],green,terminal,true);
@@ -236,17 +178,17 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   for(let i=0;i<5;i++)box("terminal vents",[.65,.04,.016],[0,.4+i*.12,-.436],dark,terminal);
   pipe("terminal umbilical",[[.35,.2,.4],[.7,.2,.5],[.85,.1,.8],[1.7,.06,.8]],.08,dark,terminal);
   const gate=root("security access gate",[-5.5,0,.1]);
-  for(const x of [-1,1]){
+  for(const x of [-1.35,1.35]){
     box("gate base",[.65,.2,.72],[x,.1,0],brass,gate);
     box("gate column",[.43,2.9,.48],[x,1.55,0],iron,gate,true);
     pipe("exposed ram",[[x, .4,-.3],[x,2.65,-.3]],.055,brass,gate);
     box("clearance strip",[.08,1,.04],[x,1.9,-.26],cyan,gate);
     cylinder("post crown",.23,.15,[x,3.05,0],brass,gate);
   }
-  box("scanner lintel",[2.75,.35,.7],[0,3.2,0],green,gate,true);
+  box("scanner lintel",[3.2,.35,.7],[0,3.2,0],green,gate,true);
   sign("CLEARANCE", "PRESENT YOURSELF",1.8,[0,3.23,-.39],gate);
   const arm=root("gate actuator",[0,1.25,0]);arm.parent=gate;
-  box("gate arm",[1.65,.2,.18],[0,0,0],brass,arm,true);
+  box("gate arm",[2.4,.2,.18],[0,0,0],brass,arm,true);
   for(let x=-.65;x<.8;x+=.26){const stripe=box("gate hazard stripe",[.12,.205,.19],[x,0,0],dark,arm);stripe.rotation.z=-.3;}
   // A complete test segment: fixed infeed/outtake fixtures; player fits its drive.
   const line=root("conveyor test bed",[3,0,0]);
@@ -274,6 +216,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const flyring=ring("flywheel rim",.58,.1,[0,0,0],brass,flywheel);flyring.rotation.z=Math.PI/2;
   for(let a=0;a<6;a++)bar("flywheel spoke",[0,0,0],[0,Math.cos(a*Math.PI/3)*.53,Math.sin(a*Math.PI/3)*.53],.04,iron,flywheel);
   pipe("drive power",[[1,.3,.1],[1.5,.2,.1],[1.6,.09,.9],[2.4,.09,.9]],.075,dark,drive);
+  const beforeProcess = new Set(scene.meshes);
   // Production architecture and instruments supply depth above the live segment.
   for(const x of [-.6,7.3]){
     box("processing upright",[.32,3.3,.38],[x,1.7,.98],iron,undefined,true);
@@ -288,6 +231,8 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     for(const y of [.4,1.8])ring("tank retaining strap",.5,.07,[x,y,3.4],brass);
     pipe("tank manifold",[[x,2.2,3.4],[x,2.75,3.4],[x+.65,2.75,3.4],[x+.65,.1,3.4]],.07,copper);
   }
+  const processFrame=root("Lattice process instruments");
+  for(const mesh of scene.meshes)if(!beforeProcess.has(mesh)&&!mesh.parent)mesh.parent=processFrame;
   const specimens: TransformNode[]=[];
   function brain(index: number) {
     const n=root("specimen "+index,[0,1.5,0]);n.parent=line;
@@ -323,6 +268,12 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   box("nasal opening",[.10,.13,.04],[0,.11,-.24],dark,skull);
   for(let i=0;i<7;i++)box("skull grating tooth",[.055,.19,.14],[-.21+i*.07,-.08,-.18],brass,skull);
   for(const side of [-1,1])pipe("skull mandible",[[side*.36,.27,-.04],[side*.43,-.02,-.04],[side*.28,-.26,-.04],[0,-.27,-.04]],.055,iron,skull);
+  // Relocate the original procedural kit as a coherent group into calibrated tiles.
+  const lineOrigin = worldPoint(15,19.5), processOffset: V = [lineOrigin[0]-3*.72,0,lineOrigin[2]];
+  line.position.copyFrom(v(lineOrigin));line.scaling.setAll(.72);
+  processFrame.position.copyFrom(v(processOffset));processFrame.scaling.setAll(.72);
+  skull.position.copyFrom(v([processOffset[0]+8.15*.72,1.02*.72,processOffset[2]-1.22*.72]));skull.scaling.setAll(.72);
+  for(const [fixture,node] of [["terminal",terminal],["gate",gate],["drive",drive]] as const){const socket=FIXTURE_SOCKETS[fixture];node.position.copyFrom(v(worldPoint(socket.x,socket.y)));node.scaling.setAll(socket.scale);}
   // Articulated robots: one shared body template, individually identified poses.
   const workerTemplate=root("worker template");
   sphere("thorax",.58,[0,1.12,0],green,workerTemplate,[1,1.2,.62],12);
@@ -394,11 +345,16 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   for(const n of [terminal,gate,drive])for(const m of n.getChildMeshes())signalShadows.addShadowCaster(m);
   const beamMat=new StandardMaterial("airborne beam",scene);beamMat.emissiveColor=C("#47b4ae");beamMat.alpha=.012;beamMat.backFaceCulling=false;beamMat.disableLighting=true;beamMat.disableDepthWrite=true;
   const cone=MeshBuilder.CreateCylinder("light in dust",{diameterTop:.1,diameterBottom:5,height:12,tessellation:28,sideOrientation:Mesh.DOUBLESIDE},scene);cone.material=beamMat;cone.isPickable=false;
-  const ghostRoots: Record<Fixture,TransformNode>={terminal:root("terminal socket",[-8,0,.35]),gate:root("gate socket",[-5.5,0,.1]),drive:root("drive socket",[4.9,0,-1.7])};
+  // The beacon, its visible cone and shadow source move together with the line.
+  const beaconOriginal=beacon.position.clone();beacon.position.copyFrom(beaconOriginal.scale(.72).add(v(processOffset)));beacon.scaling.setAll(.72);
+  for(const m of scene.meshes)if(m.name==="signal mounting arm"||m.name==="signal footing"){m.parent=processFrame;}
+  signal.position.copyFrom(v([-2.6,3.68,2.6]).scale(.72).add(v(processOffset)));signal.range=17;
+  const ghostRoots: Record<Fixture,TransformNode>={terminal:root("terminal socket"),gate:root("gate socket"),drive:root("drive socket")};
+  for(const f of ["terminal","gate","drive"] as const){const socket=FIXTURE_SOCKETS[f];ghostRoots[f].position.copyFrom(v(worldPoint(socket.x,socket.y)));ghostRoots[f].scaling.setAll(socket.scale);}
   const installedRoots:Record<Fixture,TransformNode>={terminal,gate,drive};
   const projection=glow("construction hologram","#55bda6",.8);projection.alpha=.27;projection.disableLighting=true;
   for(const f of ["terminal","gate","drive"] as const){
-    const n=ghostRoots[f],size:V=f==="gate"?[2.8,3.3,.75]:f==="terminal"?[1.6,2.75,1.4]:[2.9,1.5,1.5];
+    const n=ghostRoots[f],size:V=f==="gate"?[3.2,3.3,.75]:f==="terminal"?[1.6,2.75,1.4]:[2.9,1.5,1.5];
     const ghost=box("fit "+f,size,[0,size[1]/2,0],transparent,n);ghost.isPickable=true;ghost.metadata={fixture:f};
     installedRoots[f].computeWorldMatrix(true);
     for(const source of installedRoots[f].getChildMeshes()){
@@ -410,15 +366,16 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     for(const side of [-1,1]){box("placement corner",[.28,.025,.04],[side*size[0]/2,.06,-size[2]/2],cyan,n);box("placement corner",[.04,.025,.28],[side*size[0]/2,.06,-size[2]/2],cyan,n);}
   }
   scene.onPointerObservable.add(info=>{
-    if(info.type!==PointerEventTypes.POINTERTAP||!building||!selected)return;
+    if(info.type!==PointerEventTypes.POINTERTAP)return;
+    if(!building||!selected){const pick=scene.pick(scene.pointerX,scene.pointerY,m=>!!m.metadata?.zone);const z=pick?.pickedMesh?.metadata?.zone as ZoneId|undefined;if(z)selectZone(z);return;}
     const hit=scene.pick(scene.pointerX,scene.pointerY,m=>m.isPickable&&m.metadata?.fixture===selected);
     const f=hit?.pickedMesh?.metadata?.fixture as Fixture|undefined;if(hit?.hit&&f===selected)install(f);
   });
   // Merge static construction by material/parent. Moving mechanisms keep their transforms.
-  const mergeParents:(TransformNode|null)[]=[null,terminal,gate,drive,line,...specimens];
+  const mergeParents:(TransformNode|null)[]=[null,terminal,gate,drive,line,processFrame,skull,...specimens];
   for(const parent of mergeParents){
     parent?.computeWorldMatrix(true);
-    const candidates=scene.meshes.filter(m=>m instanceof Mesh&&m.parent===parent&&m!==cone&&!plates.includes(m as Mesh)&&m.material!==transparent) as Mesh[];
+    const candidates=scene.meshes.filter(m=>m instanceof Mesh&&m.parent===parent&&m!==cone&&!plates.includes(m as Mesh)&&m.material!==transparent&&m.isEnabled()) as Mesh[];
     const groups=new Map<string,{mat:Mat;meshes:Mesh[]}>();for(const m of candidates){const mat=m.material as Mat;if(!mat)continue;const key=mat.uniqueId+"/"+m.getVerticesDataKinds().sort().join(",");const group=groups.get(key)??{mat,meshes:[]};group.meshes.push(m);groups.set(key,group);}
     for(const {mat,meshes} of groups.values()){if(meshes.length<2)continue;for(const m of meshes)m.computeWorldMatrix(true);
       const casts=meshes.some(m=>shadow.getShadowMap()?.renderList?.includes(m));
@@ -433,13 +390,20 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const pipeline=new DefaultRenderingPipeline("film",false,scene,[camera]);pipeline.samples=1;pipeline.fxaaEnabled=true;pipeline.bloomEnabled=true;pipeline.bloomThreshold=.85;pipeline.bloomWeight=.22;pipeline.bloomKernel=32;pipeline.bloomScale=.35;
   scene.imageProcessingConfiguration.toneMappingEnabled=true;scene.imageProcessingConfiguration.toneMappingType=1;scene.imageProcessingConfiguration.exposure=1.22;scene.imageProcessingConfiguration.contrast=1.12;
   let lastEvent=0,flash=0,flashKind:"cycle"|"jam"|"idle"="idle",motionClock=0;
-  const route:V[]=[[-9,.02,3.5],[-6.0,.02,2.7],[-5.5,.02,-1.1],[-3,.02,-2.8],[.7,.02,-2.8],[3,.02,-3.4],[8.6,.02,-2.8],[9.2,.02,2.4],[3,.02,2.6],[-3,.02,3.6],[-9,.02,3.5]];
-  function routePoint(p:number,id:number):{p:Vector3;angle:number}{
-    const phase=p/16000*(route.length-1),i=Math.min(route.length-2,Math.floor(phase)),a=v(route[i]),b=v(route[i+1]),point=Vector3.Lerp(a,b,phase-i);
-    point.x+=(id%3-1)*.28;point.z+=(Math.floor(id/3)%2)*.22;return{p:point,angle:Math.atan2(b.x-a.x,b.z-a.z)+Math.PI};
-  }
+  // Pick surfaces mirror room bounds. Locked rooms select their sealed roof, never an interior.
+  const pickMaterial=new StandardMaterial("room hit surfaces",scene);pickMaterial.alpha=0;pickMaterial.disableDepthWrite=true;
+  for(const z of ZONES){const r=z.rect,hit=box(z.name+" hit surface",[r.w-.2,.015,r.h-.2],[...worldPoint(r.x+r.w/2,r.y+r.h/2)] as V,pickMaterial);hit.position.y=accessible(z.id,state.unlockedRooms)?.02:1.35;hit.isPickable=true;hit.metadata={zone:z.id};}
   let resolutionScale=1,slowSamples=0,qualityAfter=performance.now()+8000;
-  const resize=()=>{const w=canvas.clientWidth,h=canvas.clientHeight;engine.setHardwareScalingLevel(1/(Math.min(w<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();const bottom=Math.min(.5,bottomInset/h);camera.viewport=new Viewport(0,bottom,1,1-bottom);if(w/h<.8){targetRadius=focus==="wide"?30:focus==="security"?11:16;}else{targetRadius=focus==="wide"?29:focus==="security"?12:16;}transition=1;};
+  const frame=()=>{
+    const viewportHeight=canvas.clientHeight*camera.viewport.height,aspect=canvas.clientWidth/Math.max(1,viewportHeight);
+    const r=focus==="wide"?{w:36,h:25}:zone(focus).rect;
+    targetPoint=focus==="wide"?new Vector3(.5,.5,-1):floor.center(focus);
+    const projectedHeight=r.h*Math.cos(camera.beta)+2.8;
+    targetRadius=Math.max(9,Math.max(r.w/aspect,projectedHeight)/(2*Math.tan(camera.fov/2))*1.12+r.h*.26);
+    transition=1;
+  };
+  const viewport=()=>{const h=Math.max(1,canvas.clientHeight),top=canvas.clientWidth<600?185:125,bottom=Math.min(h*.52,bottomInset);camera.viewport=new Viewport(0,bottom/h,1,Math.max(.25,(h-bottom-top)/h));};
+  const resize=()=>{const w=canvas.clientWidth;engine.setHardwareScalingLevel(1/(Math.min(w<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();viewport();frame();};
   const observer=new ResizeObserver(resize);observer.observe(canvas);resize();
   let hidden=document.hidden;
   const visibility=()=>{hidden=document.hidden;lastTime=performance.now();if(hidden)engine.stopRenderLoop(render);else engine.runRenderLoop(render);};
@@ -447,7 +411,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const keyMap=shadow.getShadowMap()!,signalMap=signalShadows.getShadowMap()!;keyMap.refreshRate=0;signalMap.refreshRate=0;
   function render(){
     if(hidden)return;const now=performance.now(),dt=Math.min(.06,(now-lastTime)/1000);lastTime=now;if(moving)motionClock+=dt;
-    if(transition>0){const speed=moving?1-Math.exp(-dt*4):1;camera.target=Vector3.Lerp(camera.target,targetPoint,speed);camera.radius+=(targetRadius-camera.radius)*speed;transition-=moving?dt*.8:1;}
+    if(transition>0){const speed=moving?1-Math.exp(-dt*4):1;camera.setTarget(Vector3.Lerp(camera.target,targetPoint,speed),false,false,true);camera.radius+=(targetRadius-camera.radius)*speed;transition-=moving?dt*.8:1;}
     const targetTravel=state.travel/1600;visualTravel+=(targetTravel-visualTravel)*Math.min(1,dt*18);
     for(const part of beltParts){for(let j=0;j<part.indices.length;j++){
       Matrix.TranslationToRef(-5+((part.indices[j]*10/36+visualTravel*1.8)%10),1.43,0,beltMatrix);part.buffer.set(beltMatrix.asArray(),j*16);
@@ -458,11 +422,12 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     scan.position.y=2.17+(moving?Math.sin(motionClock*1.8)*.29:0);
     for(const f of ["terminal","gate","drive"] as const){const placed=state.installed.includes(f);installedRoots[f].setEnabled(placed);ghostRoots[f].setEnabled(building&&!placed&&f===selected);}
     for(let i=0;i<state.workers.length;i++){
-      const w=state.workers[i],pos=robotPositions[i],dest=routePoint(w.progress,w.id);
+      const w=state.workers[i],pos=robotPositions[i];
+      const dest={p:new Vector3(...worldPoint(w.position.x/1000,w.position.y/1000)),angle:Math.atan2(w.position.dx,-w.position.dy)+Math.PI};
       if(Vector3.DistanceSquared(pos,dest.p)>4)pos.copyFrom(dest.p);else Vector3.LerpToRef(pos,dest.p,Math.min(1,dt*20),pos);
       const walking=state.running&&!w.waiting&&moving,phase=motionClock*(state.pace==="push"?7.8:5.6)+w.id*1.7,sway=walking?Math.sin(phase)*.17:0;
       pos.y=walking?Math.abs(Math.sin(phase))*.022:0;
-      robotScale.setAll(.8+(w.id%4)*.045);Quaternion.RotationYawPitchRollToRef(dest.angle,0,0,robotRotation);
+      robotScale.setAll(.6+(w.id%4)*.025);Quaternion.RotationYawPitchRollToRef(dest.angle,0,0,robotRotation);
       Matrix.ComposeToRef(robotScale,robotRotation,pos,robotMatrix);const matrix=robotMatrix.asArray(),offset=i*16;
       for(const part of robotParts){
         part.buffer.set(matrix,offset);
@@ -490,8 +455,8 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
     update(s){state=s;population(s.workers.length);const e=s.events.at(-1);if(e&&e.id!==lastEvent){lastEvent=e.id;if(e.kind==="cycle"||e.kind==="jam"){flash=1;flashKind=e.kind;}if(e.kind==="release"){flash=0;flashKind="idle";}}},
-    focus(f){focus=f;targetPoint=f==="security"?new Vector3(-6.8,1.5,1):f==="line"?new Vector3(3,1.4,0):new Vector3(-1,1.5,0);resize();},
-    inset(bottom){bottomInset=bottom;const part=Math.min(.5,bottom/Math.max(1,canvas.clientHeight));camera.viewport=new Viewport(0,part,1,1-part);engine.resize();},
+    focus(f){focus=f;camera.alpha=-Math.PI/2+.22;camera.beta=f==="wide"?.60:.86;frame();},
+    inset(bottom){bottomInset=bottom;viewport();engine.resize();frame();},
     build(enabled,fixture){building=enabled;selected=fixture;},
     motion(enabled){moving=enabled;},
     dispose(){observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);scene.dispose();engine.dispose();}

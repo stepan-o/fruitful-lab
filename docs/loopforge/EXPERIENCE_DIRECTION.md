@@ -1,5 +1,8 @@
 # Loopforge — the interface belongs to the factory
 
+**Full-floor follow-up, 9 October:** The separate procedural study now uses a calibrated 35 × 25 tile map with all six managed rooms plus Lobby, Dispatch and Shipping. Security and Conveyor alone are initially unlocked. Room bounds, portals, locks, pathfinding and direct interaction adjacency share a framework-free spatial definition; workers carry integer positions and room identity. The floor-plan dialog and camera consume the same map. The existing console protocol remains unchanged. See [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md).
+
+
 **9 October implementation update:** The procedural commissioning study now uses Babylon.js in a separate route. One persistent factory camera serves night construction and production playback. The eighteen-hour shift / six-hour charge baseline and three-second illustrated day/phase interludes are approved direction. The existing first-shift game protocol is unchanged. See [Procedural factory study](PROCEDURAL_FACTORY_STUDY.md) for the implemented boundaries and verification.
 
 9 October 2026 — [Conveyor mini-game proposal](CONVEYOR_MINIGAME_PROPOSAL.md) is the current direction for the next operating prototype. Each room is a distinct puzzle within a common cinematic 3D factory; the console handles overview and communications. Physical machinery, routes, shared policies applied per room and supervisor delegation supply player agency during production. This supersedes the earlier scope of a later observation-only 3D view. The illustrated-console game remains the canonical runtime baseline. The separate commissioning fixture exercises construction and motion without changing that game’s economic or supervisor rules.

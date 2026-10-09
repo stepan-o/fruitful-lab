@@ -1,3 +1,4 @@
+import { ROUTE_LENGTH } from "@/lib/loopforge/spatial/floor";
 import { command, FIXTURES, initialStudy, SHIFT_TICKS, step, type Command, type StudyState } from "@/lib/loopforge/factory-study/kernel";
 import { StudyHost } from "@/lib/loopforge/factory-study/host";
 
@@ -40,7 +41,7 @@ describe("procedural commissioning fixture", () => {
   it("replays identical commands and ticks for 100 distinct workers without mutating inputs", () => {
     const replay = () => { let s = start(100); for (let i = 0; i < 500; i++) { if (i === 50) s = apply(s, { type: "pace", value: "push" }); if (i === 110) s = apply(s, { type: "obstruct" }); if (i === 180) s = apply(s, { type: "release" }); const before = JSON.stringify(s); const next = step(s); expect(JSON.stringify(s)).toBe(before); s = next; } return s; };
     const a = replay(); expect(a).toEqual(replay()); expect(new Set(a.workers.map(w => w.id)).size).toBe(100);
-    expect(a.workers.every(w => Number.isInteger(w.progress) && w.progress >= 0 && w.progress < 16000)).toBe(true);
+    expect(a.workers.every(w => Number.isInteger(w.progress) && w.progress >= 0 && w.progress < ROUTE_LENGTH)).toBe(true);
     expect(a.events.length).toBeLessThanOrEqual(48);
   });
   it("has a disposable clock with no catch-up after suspension", () => {

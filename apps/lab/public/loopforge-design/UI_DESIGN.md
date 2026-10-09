@@ -1126,6 +1126,24 @@ More capacity. More coordination.
 
 **What carries forward.** Retaining the extra output grows the workforce faster. Before actual Theatre participation, that growth also enlarges the unindoctrinated cohort.
 
+## The first floor · calibrated layout
+
+Implemented in the separate procedural study: the original 35 × 25 tile arrangement, six managed rooms and three support spaces. The first turn opens in the Lobby; only Security and Conveyor are unlocked.
+
+**Northern wings.** Weaving Gallery at the northwest; Cognitive Substrate Brewery in the north centre; Burn-in Theatre at the northeast. All three are sealed on turn one.
+
+**Entry and production.** Lobby → Dispatch → Security is the arrival route. Conveyor occupies the southwest production bay below Dispatch and Security. Cortex Assembly occupies the original Brain Forge footprint to its east; Shipping remains the southeast support bay. Cortex is sealed.
+
+**A real shared boundary.** Security and Conveyor have a two-tile doorway. Their assigned supervisors can therefore become eligible for direct encounters. Being able to walk through another room to reach someone is not the same as being their neighbour. Adjacency permits an event; motives, history and current conditions must still explain it.
+
+**What the player sees.** The whole floor exists from the opening. Later wings show closed shutters and covered interiors bearing their names. Overview frames the building; Floor plan selects any room location. Construction and production use the same camera.
+
+**What the engine owns.** Room IDs, tile footprints, portal spans, unlock state and valid worker routes are plain deterministic data. Individual workers now carry integer positions and room identity. The renderer follows these records rather than inventing a movement loop.
+
+**Source reconciliation.** The original annotated plan and Sim4 rectangles anchor geography. Sim4 omitted the Security–Conveyor edge despite their shared boundary; the current owner direction and later sim_sim rule restore it. Other sim_sim edges that conflict with the physical map are not copied as invisible doorways. Short physical bridges preserve Sim4 connections across service gaps.
+
+**Boundary of this delivery.** Full layout, opening locks and navigable commissioning study are implemented. Later-room interiors, progression economics and supervisor encounter execution are not yet implemented in this fixture.
+
 ## Night zero: enter, build, bring it to life
 
 Owner direction: the build phase precedes the morning brief and supervisor assignments. The opening is a short spatial tutorial; subsequent nights reuse its controls for actual construction choices. This replaces the proposed console-first entry, not the currently implemented runtime.

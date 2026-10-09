@@ -4,9 +4,9 @@ Route: `/stepanoskin/loopforge/play/factory-study`. Branch / draft PR: `codex/lo
 
 ## Implemented slice
 
-One persistent Babylon.js 9.30.0 scene contains a Security corner and a short Lattice Forge test line. Room geometry, materials, surface grain/normal relief, brains, workers, equipment and moving light are procedural. Authored images appear only on the three phase interludes. The original console prototype is still available; this is an isolated commissioning fixture, not its replacement or a complete playable economy.
+One persistent Babylon.js 9.30.0 scene now contains the complete calibrated 35 × 25 first floor: six managed rooms plus Lobby, Dispatch and Shipping. Only Security and Lattice Forge are unlocked on the first turn; the four later rooms have covered interiors and sealed entrances. The original Security corner and test line have been relocated into their original-map footprints. See [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md) for source reconciliation and exact connections. Room geometry, materials, surface grain/normal relief, brains, workers, equipment and moving light are procedural. Authored images appear only on the three phase interludes. The original console prototype is still available; this is an isolated commissioning fixture, not its replacement or a complete playable economy.
 
-1. Arrive at night; production is stopped. Explicitly enter **Build** (button or B).
+1. Arrive in the Lobby at night; use Overview or Floor plan to inspect the entire layout. Move through Dispatch to Security; production is stopped. Explicitly enter **Build** (button or B).
 2. Select and confirm Security’s clearance terminal, then access gate, then the conveyor drive. A translucent equipment preview shows the fixed socket. Click it or use the confirmation button. Escape cancels the selection, then leaves the tool. Camera drags do not place machinery.
 3. Leave Build, finish the night, see the Morning interlude, then start the test shift.
 4. Watch the individual crew, gate, belt plates, cradles and drive follow live state. Choose steady/push, pause, introduce a test obstruction, or release it. Test cradles are explicitly **not** quota production.
@@ -16,7 +16,8 @@ Camera orbit, pan, zoom and room focus use the same camera in both modes. The ca
 
 ## Architecture boundary
 
-- `lib/loopforge/factory-study/kernel.ts`: versioned plain-data snapshot, stable worker IDs, integer travel, immutable typed commands, deterministic 50ms ticks and bounded events. No React, renderer, random wall-clock decisions or LLM dependency.
+- `lib/loopforge/spatial/floor.ts`: shared 35 × 25 tile map, nine room/support footprints, thirteen portals, first-turn access, direct interaction edges and deterministic tile routing.
+- `lib/loopforge/factory-study/kernel.ts`: versioned plain-data snapshot, stable worker IDs, integer sub-tile worker positions and room membership, integer belt travel, immutable typed commands, deterministic 50ms ticks and bounded events. No React, renderer, random wall-clock decisions or LLM dependency.
 - `host.ts`: replaceable local clock/command adapter. The browser owns this public study fixture only.
 - `scene.ts`: snapshot consumption and interpolation. Babylon meshes, camera transforms, light animation and GPU buffers are disposable presentation data; they are never simulation authority.
 - `FactoryStudy.tsx`: contextual controls, lazy renderer import, four-per-second readout updates, phase cards, visibility/lifecycle handling and optional existing FactoryAudio cues.
@@ -69,6 +70,7 @@ Motion preference disables decorative camera easing, specimen tremor, scan movem
 - [x] Add phase interludes, 18+6 schedule, optional sound and diagnostics.
 - [x] Exercise responsive placement and improve measured rendering workload.
 - [x] Update game/UI/system reading copies and reference gallery.
-- [ ] Complete final production/hosted checks and publish this revision to PR #102.
+- [x] Complete production/hosted checks and publish the initial two-room study to PR #102.
+- Full-floor follow-up checks are recorded in `FACTORY_FLOOR_CALIBRATION.md`.
 
 Remaining product work: connect real room economics/worker capabilities through the canonical host, supervisor assignment/briefing, meaningful construction costs, chain optimization, real accident consequences, broader device profiling, and further procedural art direction. These are not represented by fake completion badges in this fixture.

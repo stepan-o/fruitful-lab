@@ -1,13 +1,15 @@
+import { FLOOR_VERSION, INITIAL_UNLOCKED, FIXTURE_SOCKETS, accessible, crewPose, GATE_CROSSINGS, ROUTE_LENGTH, type ManagedRoomId } from "../spatial/floor";
+
 /** Public commissioning fixture. No framework, wall clock, rendering or private game state. */
-export const STUDY_VERSION = "loopforge-commissioning/1";
+export const STUDY_VERSION = "loopforge-commissioning/2";
 export const TICK_MS = 50;
 export const SHIFT_TICKS = 1200; // One-minute visual study; represents an eighteen-hour shift.
 export type Phase = "night" | "morning" | "shift";
 export type Fixture = "terminal" | "gate" | "drive";
 export type StudyEvent = { id: number; tick: number; kind: "installed" | "start" | "stop" | "cycle" | "jam" | "release" | "pace" | "phase"; text: string };
-export type Worker = { id: number; progress: number; waiting: boolean };
+export type Worker = { id: number; progress: number; waiting: boolean; position: ReturnType<typeof crewPose> };
 export type StudyState = {
-  version: typeof STUDY_VERSION; tick: number; day: number; phase: Phase; shiftTick: number; installed: Fixture[]; running: boolean;
+  version: typeof STUDY_VERSION; floorVersion: typeof FLOOR_VERSION; unlockedRooms: ManagedRoomId[]; tick: number; day: number; phase: Phase; shiftTick: number; installed: Fixture[]; running: boolean;
   jammed: boolean; pace: "steady" | "push"; travel: number; cycles: number;
   workers: Worker[]; events: StudyEvent[]; nextEvent: number;
 };
@@ -16,9 +18,9 @@ export type Command = { type: "install"; fixture: Fixture } | { type: "running";
 export type Result = { ok: true; state: StudyState } | { ok: false; reason: string };
 export const FIXTURES: readonly Fixture[] = ["terminal", "gate", "drive"];
 export function initialStudy(count: 10 | 100 = 10): StudyState {
-  return { version: STUDY_VERSION, tick: 0, day: 1, phase: "night", shiftTick: 0, installed: [], running: false, jammed: false,
+  return { version: STUDY_VERSION, floorVersion: FLOOR_VERSION, unlockedRooms: [...INITIAL_UNLOCKED], tick: 0, day: 1, phase: "night", shiftTick: 0, installed: [], running: false, jammed: false,
     pace: "steady", travel: 0, cycles: 0, nextEvent: 1, events: [],
-    workers: Array.from({ length: count }, (_, id) => ({ id, progress: Math.floor(id * 16000 / count), waiting: false })) };
+    workers: Array.from({ length: count }, (_, id) => ({ id, progress: Math.floor(id * ROUTE_LENGTH / count), waiting: false, position: crewPose(Math.floor(id * ROUTE_LENGTH / count)) })) };
 }
 function event(s: StudyState, kind: StudyEvent["kind"], text: string): StudyState {
   return { ...s, nextEvent: s.nextEvent + 1, events: [...s.events.slice(-47), { id: s.nextEvent, tick: s.tick, kind, text }] };
@@ -26,6 +28,7 @@ function event(s: StudyState, kind: StudyEvent["kind"], text: string): StudyStat
 export function command(s: StudyState, c: Command): Result {
   switch (c.type) {
     case "install":
+      if (!accessible(FIXTURE_SOCKETS[c.fixture].room, s.unlockedRooms)) return { ok: false, reason: "This room is sealed." };
       if (s.phase !== "night") return { ok: false, reason: "Construction happens at night, with production stopped." };
       if (FIXTURES[s.installed.length] !== c.fixture) return { ok: false, reason: "Commission the marked equipment in order." };
       return { ok: true, state: event({ ...s, installed: [...s.installed, c.fixture] }, "installed", `${c.fixture === "terminal" ? "Clearance terminal" : c.fixture === "gate" ? "Access gate" : "Conveyor drive"} commissioned.`) };
@@ -57,8 +60,11 @@ export function step(s: StudyState): StudyState {
   const advance = s.jammed ? 0 : (s.pace === "push" ? 66 : 39) + [0, 3, 7, 2, 0, -3, -7, -2][tick % 8];
   const travel = s.travel + advance;
   let next: StudyState = { ...s, tick, shiftTick: s.shiftTick + 1, travel, workers: s.workers.map(w => {
-    const waiting = s.jammed || (w.progress >= 2500 && w.progress < 3200 && !gateOpen(s));
-    return { ...w, waiting, progress: waiting ? w.progress : (w.progress + (s.pace === "push" ? 29 : 22)) % 16000 };
+    const candidate = w.progress + (s.pace === "push" ? 72 : 55);
+    const crossing = !gateOpen(s) ? GATE_CROSSINGS.find(p => w.progress < p && candidate >= p) : undefined;
+    const waiting = s.jammed || crossing !== undefined;
+    const progress = s.jammed ? w.progress : crossing !== undefined ? crossing - 1 : candidate % ROUTE_LENGTH;
+    return { ...w, waiting, progress, position: crewPose(progress) };
   }) };
   const cycles = Math.floor(travel / 1600);
   if (cycles > s.cycles) next = event({ ...next, cycles }, "cycle", `Test cradle ${cycles} passed the outtake. No quota output created.`);

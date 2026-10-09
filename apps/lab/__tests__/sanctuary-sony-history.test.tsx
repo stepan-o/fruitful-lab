@@ -62,7 +62,7 @@ it("opens the ecosystem comparison with the Sony history and keeps the market ma
   const chapter = chapters.find(item => item.id === "three-ecosystems")!;
   expect(chapter.exhibits).toEqual(expect.arrayContaining([{ afterParagraph: 0, kind: "sony-history" }, { afterParagraph: 5, kind: "publisher-ecosystem" }, { afterParagraph: 1, kind: "acquired-worlds" }]));
   expect(chapter.exhibits?.some(item=>item.kind==="market-map")).toBe(false);
-  expect(chapters.find(item=>item.id==="studio-to-screen")!.exhibits).toEqual([{afterParagraph:2,kind:"market-map"}]);
+  expect(chapters.find(item=>item.id==="studio-to-screen")!.exhibits).toEqual([{afterParagraph:3,kind:"business-map"},{afterParagraph:5,kind:"market-map"}]);
 });
 
 

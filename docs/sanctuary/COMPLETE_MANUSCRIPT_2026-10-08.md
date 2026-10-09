@@ -28,21 +28,37 @@ Evidence boundary: Pong’s prototype installation and overflowing coin containe
 
 ## 2. From studio to screen
 
-The game can stay the same while the business around it changes.
+A hit can sell more than a game. It can make a machine, a store or a membership worth choosing.
 
-A game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it. The publisher sells copies, while the hardware maker and catalog operator earn from different purchases connected to the same work.
+Five years after Pong’s tavern debut, Atari’s VCS offered a different proposition: bring the machine home, then build a collection of games on interchangeable cartridges. Like records bought for a record player, each new work gave the equipment another use. A publisher could sell to households that already had the means to play. A console maker, in turn, needed enough desirable games to make its machine worth choosing.
 
-Evidence: circuit-game-pass, steam-settlement.
+Evidence: home-cartridge-history.
 
-Cyberpunk 2077, made and published by CD PROJEKT RED, can be bought through Steam, the PC store run by Valve, and played on a computer the player owns. That same purchased game can also run through NVIDIA’s GeForce NOW. A remote computer does the work, sending a picture to the player’s device and receiving their controls. Valve still handles the game sale; NVIDIA charges for the computing. Another company can earn from the evening without selling another copy of the game.
+By the 1990s, that dependence had become a formidable business. Sony’s 1997 annual report credited PlayStation’s growth to cheaper consoles and hit games, naming Final Fantasy VII from Square and Tekken from Namco alongside its own releases. Other companies’ creative work helped sell Sony’s hardware. This is the useful meaning of an ecosystem here: businesses whose products become more valuable because of what the others supply.
 
-Evidence: cdpr-business, steam-cloud, gfn-membership-terms, gfn-requirements.
+Evidence: sony-ps1-creators.
 
-Those jobs can also belong to the same company. Sony and Microsoft sell consoles, operate stores and subscription catalogs, and publish games through their own studios. They also sell games made by other publishers. A player can therefore remain within one company’s services or combine several: buy the game from one business, use equipment supplied by another, and join a world maintained by its maker. The map below connects those possibilities, keeping access to the game separate from the machine that runs it.
+Halo makes the stakes unusually vivid. Bungie, the studio making it, first showed the game with Steve Jobs at Macworld in 1999. Its co-creator Marcus Lehto later recalled Microsoft’s reaction as “Steve Jobs can't have that.” Microsoft bought Bungie the following year, and Halo became a launch title for its first Xbox in 2001. A promising game had become a reason to choose an entire machine. Twenty-five years later, a remake of that same game arrived on PlayStation. Microsoft could now earn from players who had chosen its rival’s hardware.
 
-Evidence: microsoft-ecosystem, sony-accounting, circuit-game-pass.
+Evidence: halo-macworld-recollection, halo-bungie-acquisition, halo-playstation-release.
 
-The same creative work can sustain several businesses because each supplies something the player needs. Its appeal helps sell equipment, access and services as well as copies. A company can build around one of those positions or bring several under its own roof. Sony, Microsoft and NVIDIA have taken different paths through that opportunity.
+These are decisions about what a creative work is worth to the businesses around it. A company that makes games, runs a store and sells the machine can use one part to support another; this is vertical integration. The diagram below separates those jobs again. Switch examples to see what each participant supplies and what the player pays for. Each follows a selected arrangement; the later map opens up the combinations that can coexist.
+
+Evidence: microsoft-ecosystem, sony-accounting.
+
+The internet widened those possibilities without settling on one way to charge. Steam, launched in 2003, grew into a store for individually purchased PC games. Netflix added streaming to its DVD membership in 2007, bringing a different offer to the same household: access to a catalog for a recurring fee. In gaming, Xbox Game Pass carried that proposition further in 2018 by promising new Microsoft studio releases on launch day. A release could attract someone to a subscription instead of another boxed purchase. Its value to the catalog included the reason it gave people to join and stay.
+
+Evidence: valve-deck-booklet, netflix-streaming-launch, game-pass-release-history.
+
+Even the machine can be supplied as a service. With NVIDIA’s GeForce NOW, a player can buy a supported game through Steam and pay NVIDIA to run it remotely. The game sale and the computing bill belong to different businesses. Sony and Microsoft combine more of these roles, offering consoles, stores, catalogs and cloud play. The map below shows how today’s routes overlap, separating access to a game from access to the hardware that runs it. Available combinations depend on the title and its agreements.
+
+Evidence: steam-cloud, gfn-membership-terms, circuit-game-pass.
+
+A studio entering this market can negotiate with companies that need its game for different reasons: to sell copies, attract members or make their equipment worth using. The same audience’s enthusiasm can support all three. That helps explain why a game may be sold outright in one place, included in a membership elsewhere, and still offer paid additions of its own. To see what those arrangements have grown into, turn to Sony, Microsoft and NVIDIA—three businesses earning from the same desire to play.
+
+Evidence: cdpr-catalog-economics.
+
+Evidence boundary: The timeline selects milestones in overlapping business arrangements; it is not an exhaustive history, a proportional time scale or a claim that subscriptions, cartridges or cloud play were invented on the dates shown. Atari VCS was neither the first home console nor the first cartridge console. Lehto’s six-word quotation characterizes Microsoft’s reaction in his 2025 recollection; it is not a contemporaneous company statement. Halo’s 2026 PlayStation release is a remake. The economic reading of these events is our analysis, not a claim about private acquisition motives or measured returns. The diagrams describe roles and supported routes rather than a quantitative ledger or every possible offer. No private revenue share, contract price or internal transfer is inferred. Store and console licenses do not automatically transfer to other platforms or GeForce NOW. A supported game, appropriate rights, a receiving device and a connection remain necessary. Financial comparisons and the CD PROJEKT catalog agreement continue in the following chapter.
 
 ## 3. Three ways to earn from the same worlds
 

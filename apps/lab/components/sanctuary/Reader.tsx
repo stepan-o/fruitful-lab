@@ -13,6 +13,7 @@ import {historyIds, type HistoryId} from "@/lib/sanctuary/history-ids";
 const HistoryScene=dynamic(()=>import("./DiabloHistory").then(m=>m.HistoryScene));
 const HistoryComparison=dynamic(()=>import("./DiabloHistory").then(m=>m.HistoryComparison));
 const WorldWorkshop=dynamic(()=>import("./WorldWorkshop"));
+const BusinessHistory=dynamic(()=>import("./BusinessHistory"));
 const CompanyEvolution=dynamic(()=>import("./CompanyEvolution"));
 const EpicSpending=dynamic(()=>import("./CompanyEvolution").then(m=>m.EpicSpending));
 import FundingDiagram from "./plates/FundingDiagram";
@@ -169,7 +170,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             {!isHistory && !["the-fork","insert-coin","studio-to-screen","three-ecosystems","mobile-freemium","how-many-lives","platform-business","cloud-gaming","valve-platform","epic-infrastructure","rockstar-world","making-worlds"].includes(current.id) ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
             {isHistory ? <HistoryScene key={current.id} chapter={current.id as HistoryId}/> : null}
             {current.id === "insert-coin" ? <EveningPlace opening/> : null}
-            {current.id === "studio-to-screen" ? <BusinessMap/> : null}
+            {current.id === "studio-to-screen" ? <BusinessHistory sources={sources}/> : null}
             {current.id === "mobile-freemium" ? <CandyOpening assets={assets}/> : null}
             {current.id === "platform-business" ? <BusinessChains/> : null}
             {current.id === "cloud-gaming" ? <CloudCircuit key="cloud" cloudOnly/> : null}
@@ -219,6 +220,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       case "king-ownership": return <KingOwnership key={exhibit.kind} assets={assets}/>;
                       case "sony-history": return <PlatformHistory key={exhibit.kind}/>;
                       case "publisher-ecosystem": return <PublisherEcosystem key={exhibit.kind}/>;
+                      case "business-map": return <BusinessMap key={exhibit.kind}/>;
                       case "market-map": return <MarketMap key={exhibit.kind} initialGameId="cyberpunk"/>;
                       case "world-workshop": return <WorldWorkshop key={exhibit.kind}/>;
                       case "epic-spending": return <EpicSpending key={exhibit.kind}/>;

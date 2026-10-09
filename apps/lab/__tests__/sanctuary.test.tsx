@@ -151,7 +151,11 @@ describe("Sanctuary reader", () => {
   it("separates the business maps from the financial and subscription case studies", async () => {
     const overviewIndex = chapters.findIndex(c=>c.id==="studio-to-screen");
     const {unmount} = render(<Reader {...props} current={chapters[overviewIndex]} index={overviewIndex}/>);
-    await screen.findByRole("region",{name:"What has to keep selling?"});
+    const timeline = await screen.findByRole("region",{name:"From the coin slot to the cloud."});
+    const circuit = await screen.findByRole("region",{name:"What has to keep selling?"});
+    expect(timeline.compareDocumentPosition(circuit) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    const introduction = screen.getByText(/^These are decisions about what a creative work/);
+    expect(introduction.compareDocumentPosition(circuit) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     const map = await screen.findByRole("region",{name:"One game. Many routes to the player."});
     expect(within(map).getByRole("button",{name:/^Cyberpunk 2077/})).toHaveAttribute("aria-pressed","true");
     expect(screen.queryByRole("group",{name:"Choose a financial case study"})).not.toBeInTheDocument();

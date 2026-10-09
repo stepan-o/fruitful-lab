@@ -1000,3 +1000,8 @@ independent refusal as implemented in the website’s teaching prototype.
 ### Sanctuary world-building chapter · 7 October 2026 · local draft
 
 The reader now has 30 chapters. `making-worlds` follows `rockstar-world` and precedes `concord` within the first act. It compares production approaches, explains CDPR’s Unreal partnership, and introduces the author’s Loopforge experiment. The chapter manuscript is `docs/sanctuary/WORLD_BUILDING_MANUSCRIPT.md`. A separate `sanctuary-worlds` asset pack holds three bounded game citations and one owner-authorized Loopforge concept painting. Per-image rights records are in `world-media.json`; the public register distinguishes policy scope from criticism/review rationale. `WorldWorkshop` switches captured fourth-shift outcomes from the actual Loopforge teaching engine (seed 42, same three prior shifts); changing the authored account does not alter the event. It makes no live model request. Wider character agency remains a design ambition. Chapter 1 and other project worktrees are preserved.
+
+
+### Sanctuary chapter 2 historical opening · 9 October 2026
+
+The current 35-chapter reader opens `studio-to-screen` with `BusinessHistory`: six sourced, original SVG milestones from Pong to overlapping catalog/cloud arrangements. `business-map` is now an inline exhibit after the historical introduction; `market-map` follows the access/computing comparison. The motion hook gates only the selected illustration. `business-history.ts` owns the milestone data and new evidence records; the continuous chapter draft is in `docs/sanctuary/CHAPTER_TWO_MANUSCRIPT.md`. The approved chapter 1 and chapter 3 financial case studies are preserved. No asset cache, backend or auth contract changes.

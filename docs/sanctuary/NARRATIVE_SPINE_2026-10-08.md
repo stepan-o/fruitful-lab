@@ -5,7 +5,7 @@
 ## The businesses around a game
 
 - `insert-coin`
-- `studio-to-screen`
+- `studio-to-screen` — 1972–2026 timeline → how games make platforms valuable → business arrangement diagram → overlapping catalog/cloud routes → market map
 - `three-ecosystems`
 - `mobile-freemium`
 - `valve-platform`

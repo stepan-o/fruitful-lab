@@ -28,7 +28,7 @@ The old working world viewer is the Sim4/KVP **Pixi isometric renderer**, with w
 
 ## Entry and visual hierarchy
 
-Start shift lands at the producer console with an incoming leadership call as the only available action. Answering opens the illustrated weekly planning call. Its art can fill the viewport, with an uneven soot vignette and lower captions/results. It presents the opening handover and quota; later weeks should review real prior performance. Returning reveals two live cameras and four dark screens, with no assignments. Only a compact quota summary and Choose adviser action belong on this wall.
+Next-prototype entry, 9 October: arrive through the Lobby at night, place two Security items in predefined positions, then commission the first Conveyor element in Lattice Forge. The camera and build lesson precedes all supervisor assignments. Morning then reaches the producer console with the leadership call required before adviser selection. The existing runtime still opens directly at that console; night construction is design work. Answering opens the illustrated weekly planning call. Its art can fill the viewport, with an uneven soot vignette and lower captions/results. It presents the opening handover and quota; later weeks should review real prior performance. Returning reveals two live cameras and four dark screens, with no assignments. Only a compact quota summary and Choose adviser action belong on this wall.
 
 Adviser selection has a dedicated five-or-more-person roster. Current pitches and focused priority/tradeoff details explain the choice before appointment. Once committed, the selected adviser’s structured brief owns the screen, followed by placements and explicit authorization. A physical Start the line control then releases production. No duplicated full briefings or persistent tutorial column on the factory view.
 
@@ -69,7 +69,7 @@ Loopforge retains soot, worn brass, industrial green-black, cyan cognition and S
 
 | Factory beat | Visual and interface response | Sound direction | Mechanical meaning |
 | --- | --- | --- | --- |
-| Arrive | The weekly leadership call establishes the mandate. The paused factory then presents compact facts and adviser-selection access. | Distant power and room tone only after sound activation. | Choosing the adviser is the first meaningful action. |
+| Arrive and build | Lobby → guided Security setup → first Conveyor installation at night. Morning introduces the weekly mandate and adviser selection. | Quiet room tone, distinct placement clangs, gate movement and the first motor starting; sound only after activation. | See a physical piece of the factory come alive through your input before choosing who will run it. |
 | Choose an adviser | The chosen figure comes forward; their competing colleague recedes. Briefing topics appear as readable comic panels. | Intercom relay and a distinct supervisor signature. | One adviser is committed for the day; no placements yet. |
 | Approve a plan | Assignments lock into the room labels. The delegated room’s authority is explicit. | A weighted latch, not a celebratory reward sting. | Your order is accepted; a supervisor remembers an override. |
 | Start the shift | Contact indicators engage; confirmed activity updates the illustrated cameras and instruments. The future 3D view adds continuous spatial execution. | Contactor, motor spin-up, low machinery bed. | The accepted plan begins producing outcomes. |

@@ -1,5 +1,7 @@
 # Loopforge implementation decisions
 
+**Next opening, 9 October:** night construction precedes morning briefing and assignments. The proposed kernel phase order is night build/commissioning → morning mandate/advice → authorized operation → settlement. Stable construction jobs and equipment IDs survive phase transitions; tutorial/camera state stays in the viewer. Standard installation is separate from engineering repair. No runtime or protocol extension is implemented in this documentation pass. See [the conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md).
+
 9 October 2026 — [Conveyor mini-game proposal](CONVEYOR_MINIGAME_PROPOSAL.md) is the current direction for the next operating prototype. Each room is a distinct puzzle within a common cinematic 3D factory; the console handles overview and communications. Physical machinery, routes, shared policies applied per room and supervisor delegation supply player agency during production. This supersedes the earlier scope of a later observation-only 3D view. The existing illustrated-console runtime remains the implemented baseline; this study adds no simulation features.
 
 Started 3 October 2026; rendering scope updated 8 October. The original bounded

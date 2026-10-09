@@ -116,7 +116,7 @@
       "examples": "Factorio makes production routes and automation tangible. Oxygen Not Included couples colony construction to interdependent physical systems.",
       "counter": "Cookie Clicker also increases production. Buying a multiplier is a different kind of decision from arranging a network that must physically work.",
       "expression": "Elegant systems, redundancy, compactness, excess capacity or ambitious expansion.",
-      "loopforge": "Show which room constrains the chain and what an assignment changes. Supervisor capability and operating policy supply the arrangements; do not quietly introduce belt placement or station staffing.",
+      "loopforge": "Build the physical chain at night; observe it during the shift and use that evidence next night. Machines, routes, supervisors and room policy change the same operation. Worker tasks remain simulated, without per-station staffing sliders.",
       "sources": [
         [
           "Factorio · Wube",
@@ -349,8 +349,12 @@
   ],
   "conclusions": [
     [
+      "Build first; let evidence close the loop",
+      "Night construction → morning adviser and assignments → operation → permanent allocation → next night. The Security placement tutorial is a one-time arc teaching reusable controls. The Conveyor tab names the expectation, action, visible feedback and next decision for building, operation, delegation and growth. A sequence of screens alone is not a learning loop."
+    ],
+    [
       "Primary loop · leadership through production",
-      "Read yesterday’s facts → choose whose judgement to back → commit the plan and improve the chain when useful → operate and respond → permanently allocate output → meet the consequences next day. Adviser choice, spatial construction and live flow control connect different scales of agency."
+      "Build at night → choose whose judgment to back in the morning → authorize assignments → operate and respond → permanently allocate output → use the result next night. Construction, supervision and live control supply distinct decisions within that schedule."
     ],
     [
       "Three connected satisfactions",
@@ -409,7 +413,7 @@
     "arcs": [
       {
         "stage": "01 · Conveyor + Security",
-        "agency": "Back LIMEN or STILETTO; accept or override the arrangement; retain or dispatch today’s robots. Balance comes from concrete decisions across days, not a third generic adviser.",
+        "agency": "Build Security and the starter Conveyor before the first morning. On later nights, use operating evidence to improve or retain the floor. Back LIMEN or STILETTO; accept or override assignments; retain or deliver output.",
         "direct": "Room tokens: operating policy, assignment and observed condition. Workforce and quota tokens: count changes after allocation.",
         "indirect": "A backed-up line, wear warning, witnessed incident or changed supervisor statement makes the chosen pace felt. Safety needs a tangible avoided cost or coordination benefit.",
         "hidden": "Individual stress and unindoctrinated histories persist. Their raw values and meaning are not exposed. No repair action appears yet.",

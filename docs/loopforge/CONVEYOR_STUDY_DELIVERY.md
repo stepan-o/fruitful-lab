@@ -27,3 +27,15 @@ Open design decisions: precise floor scale, construction costs/duration, quota p
 Production build: passed after one interrupted attempt. The successful run compiled, completed type checking and prerendered the app. Existing middleware deprecation warning remains unrelated.
 
 Published in [PR #102](https://github.com/stepan-o/fruitful-lab/pull/102). The built application route `/stepanoskin/loopforge/design#conveyor` was also checked locally. Preview deployment status is reported on the PR; no production release is claimed.
+
+## Night-build follow-up
+
+- [x] Verify original annotated floor map and canonical Sim4 adjacency; inspect Security artwork.
+- [x] Place night building before morning briefing; distinguish the guided entry arc from repeatable learning loops.
+- [x] Align the current board, UI guidance, daily loop and future engine boundary; preserve implemented baseline.
+- [x] Regenerate and verify reading copies and responsive browser layout.
+Publication and preview status are tracked in PR #102.
+
+Security prop identities, starter funding, the first Conveyor module and minimum production chain remain proposals. No new game mechanics or assets are shipped by this follow-up.
+
+Follow-up validation: all authored proposal rows and reference entries appear in the board and reading copies; generated exports match; diff whitespace checks pass. The expanded night-zero section was visually checked at 1440px and 390px with no page overflow; the learning-loop disclosure opens with Enter. No runtime, styles or dependency changes, so the earlier complete app test/build result remains the baseline rather than a newly repeated test claim.

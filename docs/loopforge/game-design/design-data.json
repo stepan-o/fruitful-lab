@@ -140,9 +140,9 @@
       "arrivals": "Limen and Stiletto",
       "art": "argue-limen-stiletto-conveyor",
       "caption": "Limen and Stiletto disagree over who can stop the line and what justifies restarting it.",
-      "visible": "Begin with Conveyor and Security available and every assignment empty. Read the factory totals and the quota due at the end of the week. Choose Limen or Stiletto as the first adviser; their briefing proposes the initial arrangement.",
+      "visible": "First entry: Lobby → Security setup → Lattice Forge setup at night → morning leadership call → adviser selection → brief and assignments → operation. Security teaches placement with two fixed sockets. No supervisor has an assignment before morning orders are accepted. The first morning shows factory totals and the end-of-week quota; the adviser proposes the initial worker/supervisor arrangement.",
       "learn": "You can build a productive machine, protect workers, impose order or back someone you like. LIMEN’s caution and STILETTO’s drive offer different starting points; selective overrides and permanent output allocation make the approach yours. The factory and its people should give that commitment a recognizable return.",
-      "choice": "Choose the adviser, then accept or override the proposed assignments. At the daily allocation, permanently commit completed robots to the factory or the weekly quota. Balance can emerge from changing advisers and decisions as conditions change.",
+      "choice": "Prepare the physical chain at night, then choose the morning adviser and accept or override assignments. Subsequent nights let operating evidence guide purchases and layout changes. At daily allocation, permanently retain completed robots or commit them to the weekly quota.",
       "gate": "Proposed readiness uses completed operation, a viable workforce and line, irreversible output commitments and the capacity/investment required for the Theatre. Tune viable protective, productive and adaptive routes toward the four-to-five-day test window. Exact thresholds and funding remain open. Neither completing the week, trying both advisers, overriding someone nor suffering an accident is a prerequisite.",
       "hidden": "Robots produced while the Theatre is closed have no indoctrination history. Retained workers accumulate their own experiences; that absence does not automatically make them disobedient. Workers and supervisors remember whose methods you backed. Wear also accumulates beyond today’s output.",
       "carry": "Cathexis inherits the workforce you retained, its experiences, the condition of the line and the authority established between Limen and Stiletto.",
@@ -556,7 +556,7 @@
         "Workers made before the Theatre opens lack indoctrination. An informed supervisor can discover or infer this and disclose, misinterpret or withhold it. The player receives an attributed account in Act 1; direct inspection is an Act 2 capability."
       ]
     ],
-    "consultation": "Day one opens in the paused factory console with opening facts and no assignments. Choose an adviser before their initial proposal. Later days begin with yesterday’s direct results and a new adviser choice. The adviser selects the priority, adds attributed context and proposes assignments, then guides events for the day. Their own room resolves automatically; placements and responses elsewhere can be overridden with remembered consequences.",
+    "consultation": "After night construction, read the compact factory facts. On the first morning, answer leadership and acknowledge the weekly quota, then choose LIMEN or STILETTO. Their assessment and proposed assignments use the actual commissioned layout. Later mornings reuse yesterday’s result without repeating the full report. Their own room resolves automatically; placements and responses elsewhere can be overridden with remembered consequences.",
     "proposal": "The player can question an explanation, reassure, blame, make a promise or override an action within the chosen adviser interaction. They cannot supply a different priority to that adviser. The adviser dislikes being overruled; every supervisor interprets relevant resolutions through their knowledge, relationships and history. Respect, loyalty and confidence change independently.",
     "example": {
       "record": "Part 03 or later: Witch stops the line for engineering work. Earlier operation had damaged it. The necessity and scope of her refit can still be disputed.",
@@ -1494,8 +1494,12 @@
     "rhythmStatus": "Agreed: paused planning, continuous shifts and consequential decision pauses. Whole-day target: about one minute routine, two to three at most for heavier days.",
     "rhythm": [
       [
+        "Build at night",
+        "At night, use the last result to keep or change the physical arrangement. Preview and commit eligible construction before the morning briefing. A sound floor needs no compulsory purchase or edit. First entry is the guided Lobby–Security–Lattice setup."
+      ],
+      [
         "Plan while paused",
-        "Day one starts at the console: answer leadership, acknowledge quota, then choose an adviser before any assignments. Later days reuse yesterday’s result as concise context. Hear the adviser’s assessment and arrangement, accept or override, then start operation. Reading and transitions count toward the daily budget."
+        "After night construction, read the compact factory facts. On the first morning, answer leadership and acknowledge the weekly quota, then choose LIMEN or STILETTO. Their assessment and proposed assignments use the actual commissioned layout. Later mornings reuse yesterday’s result without repeating the full report. Reading and transitions count toward the daily budget."
       ],
       [
         "Run the shift",
@@ -1513,7 +1517,7 @@
     "views": [
       [
         "Producer console · communications and overview",
-        "Six room positions, compact facts, incoming leadership calls, supervisor communication and navigation. Day one lands at the console with the leadership call as the only available action. Locked room screens stay dark."
+        "Six room positions, compact facts, calls and supervisor communication. The next opening reaches this console on the morning after night setup. Leadership must be acknowledged before adviser selection. Locked room screens remain dark; the cinematic floor owns construction and operation."
       ],
       [
         "Cinematic factory · next operating prototype",
@@ -1574,7 +1578,7 @@
       ],
       [
         "Keep accepted mechanics",
-        "Reuse visual language and boundary patterns, not the old fixed desktop layout, exposed Act 1 psychology, token-swapping loop, day-based unlocks or economy. Day one remains unassigned and adviser-first."
+        "Reuse the old Lobby–Dispatch–Security and Dispatch–Neural Lattice spatial connections, visual language and protocol patterns. Do not inherit its day-based unlocks, economy or exposed psychology. Night construction precedes morning advice; no first-day assignments exist before authorization."
       ],
       [
         "Map art to meaning",
@@ -1789,29 +1793,33 @@
   },
   "loops": {
     "title": "From a second to a session",
-    "intro": "Choose whose judgment will run the factory today, see what their method produces, then commit the output. This complete daily cycle targets about one minute; heavier days take two to three. Day one establishes the quota through leadership; later days reuse yesterday’s result as context.",
+    "intro": "Build at night, choose whose judgment to trust in the morning, operate the prepared factory, then decide what output to keep. Evidence from that day informs the next night. The routine whole cycle targets about one minute; heavier days take two to three.",
     "status": "Agreed cadence · proposed interface budget · runtime unchanged",
-    "boundary": "One second describes immediate feedback. One minute is the whole game day: ordinary review, adviser choice, plan approval, production, decisions and permanent output allocation. Target about 60 seconds for a routine day and two to three minutes at most for a heavier day. These are experience targets, not forced response timers or room-unlock clocks. Thirty minutes spans multiple days and delivery cycles; exact progression remains to be tested.",
+    "boundary": "One second describes immediate feedback. One minute is the routine night-and-day cycle, including ordinary construction decisions, advice, approval, operation and allocation. The guided arrival is a one-time onboarding arc, measured explicitly in first-day elapsed time. Heavier days target two to three minutes; reading has no deadline. Thirty minutes spans multiple days and delivery cycles.",
     "cycle": [
       [
-        "Review",
-        "Read the useful result from yesterday and the remaining weekly obligation. Use a concise console summary; day one uses opening facts and the weekly leadership call. Do not repeat the full debrief."
+        "Build at night",
+        "At night, use the last result to keep or change the physical arrangement. Preview and commit eligible construction before the morning briefing. A sound floor needs no compulsory purchase or edit."
+      ],
+      [
+        "Morning context",
+        "Read the useful change, installed capacity and remaining weekly obligation. The first morning introduces the weekly mandate after the guided build; later mornings use the previous result."
       ],
       [
         "Choose adviser",
-        "Use the dedicated roster to compare current short pitches, inspect the known tradeoff and explicitly appoint one adviser. This remains the primary daily decision."
+        "Compare current short pitches, inspect the known tradeoff and appoint one adviser. This is the daily choice of whose judgment to trust, after preparing the physical factory."
       ],
       [
         "Hear and authorize",
-        "Read a compact structured assessment and proposed arrangement. Accept or revise assignments with delegated authority visible. Proposed fast path: plan summary and approval within the brief; open detailed placement controls when editing."
+        "Read the structured assessment and proposed arrangement for the prepared floor. Accept or override assignments with delegated authority visible. Detailed placement controls remain optional."
       ],
       [
         "Operate",
-        "Run the factory on the console. The adviser acts automatically in their assigned room; consequential decisions elsewhere pause for acceptance or override. Show physical consequences and attributed reactions."
+        "Watch the common cinematic factory, adjust flow and see physical consequences. The adviser acts automatically in their assigned room; consequential decisions elsewhere pause for acceptance or override."
       ],
       [
         "Commit and inherit",
-        "Permanently split completed robots between factory and weekly quota. Show the benefit, known cost and outstanding issue. That result supplies tomorrow’s context."
+        "Permanently split completed robots between factory and weekly quota. Known losses, queues, wear and people carry into the next night’s building decisions."
       ]
     ],
     "scales": [
@@ -1859,8 +1867,12 @@
       "intro": "One shift is the whole daily loop: about one minute for routine play, two to three for heavier days. Preparation, running, decisions and settlement all share that budget.",
       "beats": [
         [
+          "Night construction",
+          "At night, use the last result to keep or change the physical arrangement. Preview and commit eligible construction before the morning briefing. A sound floor needs no compulsory purchase or edit."
+        ],
+        [
           "Paused plan",
-          "Day one enters the console, answers leadership and acknowledges the weekly mandate. Choose an adviser before any assignments. On later days, reuse yesterday’s result as brief context and the existing arrangement as a proposal baseline. Hear the selected priority, then accept or override placements."
+          "After night construction, read the compact factory facts. On the first morning, answer leadership and acknowledge the weekly quota, then choose LIMEN or STILETTO. Their assessment and proposed assignments use the actual commissioned layout. Later mornings reuse yesterday’s result without repeating the full report. Accept or override placements before releasing the shift."
         ],
         [
           "Continuous operation",
@@ -1879,24 +1891,24 @@
       "density": "Each day has one primary adviser choice, a concise plan and enough visible work to feel its result. Add consequential interruptions only when warranted. The UI budget includes every required screen, caption and transition; do not spend it on repeated summaries or automatic-action confirmations.",
       "dayBudget": [
         [
-          "Read the situation · ~5s",
-          "Console summary or previous result; opening/weekly calls use the longer-day allowance."
+          "Night review / build · ~10s",
+          "Keep the working arrangement or commit one prepared change. Longer construction choices use the heavier-day allowance."
         ],
         [
-          "Choose adviser · ~10s",
-          "Current pitches and tradeoffs on the dedicated roster."
+          "Morning adviser and brief · ~15s",
+          "Current pitches, appointment and structured assessment of the prepared floor. Weekly calls add time."
         ],
         [
-          "Brief and authorize · ~10s",
-          "Structured advice plus proposed arrangement; detailed overrides remain available."
+          "Approve arrangement · ~5s",
+          "Accept the plan or open detailed overrides. No inherited day-one assignments."
         ],
         [
-          "Operate · ~25s",
-          "Continuous work, automatic actions and any warranted response; consequential reading can extend the day."
+          "Operate · ~20s",
+          "Watch actual work, intervene where useful and pause for warranted decisions."
         ],
         [
           "Allocate and inherit · ~10s",
-          "Explicit permanent output split, concise consequence and tomorrow’s starting context."
+          "Commit the permanent output split; reuse known consequences as next night’s context."
         ]
       ]
     },
@@ -2167,7 +2179,7 @@
         "name": "Conveyor and Security",
         "stage": "Next spatial prototype · proposed",
         "see": "Individual workers, machinery, intake/assembly/outtake queues, routes and crossings; Security changes who reaches a post and when.",
-        "do": "Choose an adviser and assignments, then build or improve the chain, set local policy and use pace/feed controls. Incident authority stays with the adviser in their own room; elsewhere responses can be overridden.",
+        "do": "Build or improve the chain at night. In the morning choose an adviser and accept or override assignments and local policy; during operation use pace/feed controls. Adviser-room incident authority remains automatic; responses elsewhere can be overridden.",
         "engine": "Explicit task, route, machine, batch and worker component state is required for the proposed spatial puzzle. Detailed processing is simulated; staffing remains automated. The current first-day kernel does not implement this room puzzle.",
         "carry": "Completed output, wear, delayed work and witnessed overrides change the next local problem.",
         "uiCost": "One focused floor, contextual machinery inspector and paused construction view. One operating question at a time; no per-worker or station staffing grid."
@@ -2512,7 +2524,7 @@
         "id": "factory",
         "name": "Factory",
         "verb": "Operate and intervene",
-        "summary": "Day one begins at the producer console with the leadership call required before adviser choice and paused planning. The next prototype operates through the common cinematic factory, with room puzzles and contextual controls; focused interfaces handle consequential decisions.",
+        "summary": "The next prototype enters the shared cinematic factory at night through the Lobby. Security teaches two fixed placements, then Lattice Forge introduces Conveyor construction. Morning moves to the console for leadership and adviser communication. Focused interfaces handle briefs, decisions and allocation; the current runtime still uses console-first entry.",
         "canvasLabel": "Factory workspace",
         "canvasTitle": "Common cinematic factory · focused room puzzles",
         "canvasItems": [
@@ -2669,7 +2681,7 @@
         ],
         [
           "Physical machinery",
-          "Alternative intake, assembly, outtake and protection projects alter the visible production chain. Standard installation consumes money and time; it cannot repair damage or grant engineering capability before Witch."
+          "Intake, assembly, outtake and protection projects visibly alter the chain. Purchase and install during the night build phase; preview cash and completion time. Standard installation does not repair existing damage or grant engineering capability before Witch."
         ],
         [
           "Shared policies, applied locally",
@@ -2795,7 +2807,7 @@
       ],
       [
         "Choose the daily adviser",
-        "Day one: console → leadership call → acknowledge quota → adviser roster → inspect priority and tradeoff → explicitly appoint → structured brief and proposed arrangement → authorize → run. Later days replace the opening mandate with concise yesterday context. The entire day, including settlement, targets about one minute or two to three for heavier days."
+        "First entry: Lobby → Security setup → Lattice Forge setup at night → morning leadership call → adviser selection → brief and assignments → operation. Security teaches placement with two fixed sockets. No supervisor has an assignment before morning orders are accepted. Later cycles begin with night review/construction. Routine night-and-day play targets about one minute; heavier days two to three. The guided arrival is measured explicitly, not hidden outside the first-day budget."
       ],
       [
         "Review a session",
@@ -2805,7 +2817,7 @@
     "progression": [
       [
         "First shift",
-        "Two available rooms, two unassigned supervisors, general factory stats and a weekly quota. Adviser choice is the first action. The chosen adviser proposes the first assignments; daily allocation follows production."
+        "Night zero teaches camera movement and build controls through two fixed Security placements, then a first Conveyor element. The morning shows two unassigned supervisors, facts and weekly quota. Adviser selection is the first leadership fork; physical construction already happened."
       ],
       [
         "New rooms",
@@ -2835,8 +2847,8 @@
     ],
     "entry": [
       [
-        "Where Start shift lands",
-        "The paused producer console, with Lattice Forge and Security live, four off panes and no assignments. Answer leadership is the sole gameplay action; it opens the cinematic handover and quota. Acknowledge quota returns to the console and enables Choose adviser. All four skins are implemented and the first-day flow has been verified; the owner considers the one-second loop a good baseline."
+        "New entry direction · night zero",
+        "First entry: Lobby → Security setup → Lattice Forge setup at night → morning leadership call → adviser selection → brief and assignments → operation. Security teaches placement with two fixed sockets. No supervisor has an assignment before morning orders are accepted. The original tile map supplies the Lobby–Dispatch–Security route and return through Dispatch to the lattice area. Construction completion and minimum-chain readiness are game state, not animation callbacks."
       ],
       [
         "First strategic choice after acknowledgement",
@@ -2853,12 +2865,16 @@
       [
         "Context without extra gates",
         "The weekly call is an in-world illustrated mandate, not a tutorial slideshow. Routine console chrome is absent. The camera wall offers summary facts; dedicated selection and briefing surfaces carry their own context. General help remains optional and recoverable."
+      ],
+      [
+        "Implemented baseline",
+        "The current runtime still begins at the paused console with the leadership call as its sole gameplay action. Four adaptive console skins and the call gate remain implemented. Night construction and spatial entry are the next proposal, not delivered gameplay."
       ]
     ]
   },
   "advisedPlanning": {
     "title": "The daily adviser decision",
-    "intro": "Day one opens in the paused producer console with facts and no assignments. Answer leadership, acknowledge the quota, then choose the adviser as the first strategic fork. They choose the priority and propose the arrangement. Later days require yesterday’s actual results. Their room receives automatic event authority after assignments take effect. Adviser choice, briefing and plan approval share the whole-day budget: about one minute for routine play, two to three for heavier days.",
+    "intro": "After night construction, read the compact factory facts. On the first morning, answer leadership and acknowledge the weekly quota, then choose LIMEN or STILETTO. Their assessment and proposed assignments use the actual commissioned layout. Later mornings reuse yesterday’s result without repeating the full report. Adviser selection remains the core daily authority choice. Physical setup precedes it; no supervisor assignment is inherited on the first morning.",
     "status": "Agreed core loop · proposed UI details and model budget",
     "loop": [
       [
@@ -2923,7 +2939,7 @@
     "ui": [
       [
         "Morning hierarchy",
-        "Day one answers and acknowledges the leadership call before adviser selection; no assignments exist until orders are accepted. Later days show a concise change/remaining-quota summary drawn from yesterday’s result, not a second complete debrief. Adviser choice remains the primary action."
+        "After night construction, read the compact factory facts. On the first morning, answer leadership and acknowledge the weekly quota, then choose LIMEN or STILETTO. Their assessment and proposed assignments use the actual commissioned layout. Later mornings reuse yesterday’s result without repeating the full report. No assignment exists until orders are accepted. The briefing must describe the commissioned floor rather than an assumed default layout."
       ],
       [
         "Choosing with usable evidence",
@@ -3151,7 +3167,7 @@
       "The later reveal must explain earlier events from stored evidence, including the player’s own edits and other supervisors’ actual execution. It must not blame advice for a different plan the player imposed.",
       "The entire routine day targets about a minute; heavier days take two to three. Generate/read only the selected briefing, avoid repeating unchanged context, and never make inspecting all candidates’ full briefs a requirement."
     ],
-    "test": "First slice: the paused factory console with unassigned Limen and Stiletto, Conveyor and Security, opening facts and the weekly quota. Test adviser-first planning, own-room authority, overrides elsewhere and irreversible daily allocation without repair controls. Carry different early histories to Witch’s engineering unlock, and test a supervisor’s earned discovery of missing indoctrination. The owner judges clarity and enjoyment in the actual playable loop.",
+    "test": "Next slice: guided night construction in Security and Lattice Forge, then the morning call, two unassigned supervisors and an actual commissioned chain. Test advice grounded in the prepared floor, own-room authority, overrides elsewhere and permanent allocation. No repair controls before Witch. The current console-first runtime remains a baseline, not evidence that the new entry works.",
     "open": [
       "Which room events deserve an explicit response, and which outside-room decisions can be grouped without hiding their consequences?",
       "How long is the daily briefing, and which follow-up questions or relationship responses fit within its budget?",
@@ -3298,7 +3314,7 @@
     "rules": [
       [
         "Day one",
-        "General factory statistics and a weekly quota appear beside Limen and Stiletto. All assignments are empty. Adviser choice comes first; the chosen adviser proposes the first arrangement. Later days can use the previous arrangement as a baseline."
+        "First entry: Lobby → Security setup → Lattice Forge setup at night → morning leadership call → adviser selection → brief and assignments → operation. Security teaches placement with two fixed sockets. No supervisor has an assignment before morning orders are accepted. Building is the first interaction; adviser choice is the first leadership fork. Later days can retain the previous arrangement as a proposal baseline."
       ],
       [
         "Daily commitment",
@@ -3347,24 +3363,28 @@
     "cadence": "A whole game day targets about one minute; a heavier day takes two to three minutes at most. Count ordinary review, adviser choice, briefing, plan approval, production, decisions, allocation and transitions. Leadership calls and onboarding use the longer-day allowance. This is a normal-play target, not a forced-answer timer.",
     "flow": [
       [
-        "Review",
-        "Read the useful result from yesterday and the remaining weekly obligation. Use a concise console summary; day one uses opening facts and the weekly leadership call. Do not repeat the full debrief."
+        "Build at night",
+        "At night, use the last result to keep or change the physical arrangement. Preview and commit eligible construction before the morning briefing. A sound floor needs no compulsory purchase or edit."
+      ],
+      [
+        "Morning context",
+        "Read the useful change, installed capacity and remaining weekly obligation. The first morning introduces the weekly mandate after the guided build; later mornings use the previous result."
       ],
       [
         "Choose adviser",
-        "Use the dedicated roster to compare current short pitches, inspect the known tradeoff and explicitly appoint one adviser. This remains the primary daily decision."
+        "Compare current short pitches, inspect the known tradeoff and appoint one adviser. This is the daily choice of whose judgment to trust, after preparing the physical factory."
       ],
       [
         "Hear and authorize",
-        "Read a compact structured assessment and proposed arrangement. Accept or revise assignments with delegated authority visible. Proposed fast path: plan summary and approval within the brief; open detailed placement controls when editing."
+        "Read the structured assessment and proposed arrangement for the prepared floor. Accept or override assignments with delegated authority visible. Detailed placement controls remain optional."
       ],
       [
         "Operate",
-        "Run the factory on the console. The adviser acts automatically in their assigned room; consequential decisions elsewhere pause for acceptance or override. Show physical consequences and attributed reactions."
+        "Watch the common cinematic factory, adjust flow and see physical consequences. The adviser acts automatically in their assigned room; consequential decisions elsewhere pause for acceptance or override."
       ],
       [
         "Commit and inherit",
-        "Permanently split completed robots between factory and weekly quota. Show the benefit, known cost and outstanding issue. That result supplies tomorrow’s context."
+        "Permanently split completed robots between factory and weekly quota. Known losses, queues, wear and people carry into the next night’s building decisions."
       ]
     ],
     "interfaces": [
@@ -3386,7 +3406,7 @@
       ],
       [
         "Cinematic floor and machinery inspector",
-        "Proposed shared operating view for each room puzzle. Show workers and machinery, expose pace/feed controls, and open construction or policy inspection on demand. Camera changes do not alter simulation."
+        "Shared factory: night construction with footprint/connection preview, then continuous worker and machine operation with pace/feed controls. Inspect through contextual overlays. Camera changes never mutate simulation state."
       ],
       [
         "Room focus and incident dialog",
@@ -3458,8 +3478,8 @@
       "target": "Revised proposal: four or five completed two-room days, roughly six to eight minutes including the opening and heavier decisions, before Cathexis joins a ready factory’s next planning cycle. The owner asked for a somewhat longer opening; these exact numbers remain a playtest hypothesis, not a timer or fixed unlock date.",
       "days": [
         [
-          "First day · choose a way to lead",
-          "After the leadership call, choose LIMEN or STILETTO, authorize the arrangement and see it work. Commit output to growth or the weekly obligation. Give the player a benefit they can enjoy and a cost they can recognize."
+          "First night and day · make it work, choose how to lead",
+          "Enter through the Lobby, place the two Security items, then commission the starter Conveyor setup. In the morning receive the quota, choose LIMEN or STILETTO and authorize their arrangement. Recognize your installed machinery operating under their method, then commit output to growth or quota."
         ],
         [
           "Second day · enjoy what you built",

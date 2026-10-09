@@ -88,7 +88,7 @@ Find a constraint → Change the arrangement → Observe flow → Reinvest or re
 
 **Room for expression.** Elegant systems, redundancy, compactness, excess capacity or ambitious expansion.
 
-**Loopforge inference.** Show which room constrains the chain and what an assignment changes. Supervisor capability and operating policy supply the arrangements; do not quietly introduce belt placement or station staffing.
+**Loopforge inference.** Build the physical chain at night; observe it during the shift and use that evidence next night. Machines, routes, supervisors and room policy change the same operation. Worker tasks remain simulated, without per-station staffing sliders.
 
 [Factorio · Wube](https://www.factorio.com/support/press-kit) · [Oxygen Not Included · Klei](https://store.steampowered.com/app/457140/) · [Cookie Clicker · Orteil / DashNet](https://store.steampowered.com/app/1454400/Cookie_Clicker/)
 
@@ -262,7 +262,9 @@ Loopforge inference: yesterday’s confirmed output, an adviser’s explanation 
 
 ## Conclusions for Loopforge
 
-**Primary loop · leadership through production.** Read yesterday’s facts → choose whose judgement to back → commit the plan and improve the chain when useful → operate and respond → permanently allocate output → meet the consequences next day. Adviser choice, spatial construction and live flow control connect different scales of agency.
+**Build first; let evidence close the loop.** Night construction → morning adviser and assignments → operation → permanent allocation → next night. The Security placement tutorial is a one-time arc teaching reusable controls. The Conveyor tab names the expectation, action, visible feedback and next decision for building, operation, delegation and growth. A sequence of screens alone is not a learning loop.
+
+**Primary loop · leadership through production.** Build at night → choose whose judgment to back in the morning → authorize assignments → operate and respond → permanently allocate output → use the result next night. Construction, supervision and live control supply distinct decisions within that schedule.
 
 **Three connected satisfactions.** Make the machine work. Shape what kind of leader you are. Discover what your choices have done to people. Each should feed the others; story cannot be interchangeable flavour pasted onto a production score.
 
@@ -296,7 +298,7 @@ Now in the first-day playable UI: active camera status, attributed supervisor po
 
 #### 01 · Conveyor + Security
 
-**Player agency.** Back LIMEN or STILETTO; accept or override the arrangement; retain or dispatch today’s robots. Balance comes from concrete decisions across days, not a third generic adviser.
+**Player agency.** Build Security and the starter Conveyor before the first morning. On later nights, use operating evidence to improve or retain the floor. Back LIMEN or STILETTO; accept or override assignments; retain or deliver output.
 
 **Direct status.** Room tokens: operating policy, assignment and observed condition. Workforce and quota tokens: count changes after allocation.
 

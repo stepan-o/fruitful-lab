@@ -10,6 +10,7 @@ import ChapterDiagram from "@/components/sanctuary/ChapterDiagram";
 import CompanyEvolution, {type CompanyChapter} from "@/components/sanctuary/CompanyEvolution";
 import BusinessChains from "@/components/sanctuary/BusinessChains";
 import BusinessCircuit from "@/components/sanctuary/BusinessCircuit";
+import PlatformHistory from "@/components/sanctuary/PlatformHistory";
 import BusinessMap from "@/components/sanctuary/BusinessMap";
 import EveningPlace from "@/components/sanctuary/plates/EveningPlace";
 import ChapterScene from "@/components/sanctuary/ChapterScene";
@@ -39,6 +40,12 @@ describe("Sanctuary exhibits", () => {
       chapters.map((c) => c.id).sort(),
     );
     for (const [index, c] of chapters.entries()) {
+      if(c.id==="three-ecosystems"){
+        const {container,unmount}=render(<PlatformHistory/>);
+        expect(screen.getByRole("group",{name:"Choose a financial case study"})).toBeVisible();
+        expect(container.querySelector("img,video,audio,image")).toBeNull();
+        unmount(); continue;
+      }
       if(c.id==="mobile-freemium"){
         const {container,unmount}=render(<FreemiumOffer assets={sanctuaryMedia}/>);
         expect(container.querySelector("svg")).not.toBeNull();

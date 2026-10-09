@@ -516,10 +516,67 @@ const manuscript: Omit<Chapter,"visual">[] = [
     "id": "studio-to-screen",
     "part": 0,
     "title": "From studio to screen",
-    "lede": "One creative work can sustain several businesses around it.",
+    "lede": "The game can stay the same while the business around it changes.",
     "paragraphs": [
-      "In the first months after the PlayStation 5 launched in November 2020, Sony was selling its new console for less than it cost to manufacture. That did not stop its gaming division from reporting higher profit: stronger sales of games and network services helped outweigh losses on the hardware and other launch costs. Putting the machine in someone’s living room was the beginning of a commercial relationship that could last for years.",
-      "By the year ending March 2026, Sony’s gaming business was reporting annual revenue equivalent to roughly US$31.1 billion at that year’s average exchange rate. That was more than its music and pictures businesses combined. Consoles accounted for US$6.3 billion. PlayStation games and add-ons brought in US$16.9 billion, while network services, including PlayStation Plus and advertising, supplied another US$5.1 billion. Peripherals, games sold on other platforms and the remaining business contributed roughly US$2.9 billion. Sales of the consoles themselves accounted for about a fifth of the total.",
+      "A game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it. The publisher sells copies, while the hardware maker and catalog operator earn from different purchases connected to the same work.",
+      "Cyberpunk 2077, made and published by CD PROJEKT RED, can be bought through Steam, the PC store run by Valve, and played on a computer the player owns. That same purchased game can also run through NVIDIA’s GeForce NOW. A remote computer does the work, sending a picture to the player’s device and receiving their controls. Valve still handles the game sale; NVIDIA charges for the computing. Another company can earn from the evening without selling another copy of the game.",
+      "Those jobs can also belong to the same company. Sony and Microsoft sell consoles, operate stores and subscription catalogs, and publish games through their own studios. They also sell games made by other publishers. A player can therefore remain within one company’s services or combine several: buy the game from one business, use equipment supplied by another, and join a world maintained by its maker. The map below connects those possibilities, keeping access to the game separate from the machine that runs it.",
+      "The same creative work can sustain several businesses because each supplies something the player needs. Its appeal helps sell equipment, access and services as well as copies. A company can build around one of those positions or bring several under its own roof. Sony, Microsoft and NVIDIA have taken different paths through that opportunity."
+    ],
+    "paragraphCitations": {
+      "0": [
+        "circuit-game-pass",
+        "steam-settlement"
+      ],
+      "1": [
+        "cdpr-business",
+        "steam-cloud",
+        "gfn-membership-terms",
+        "gfn-requirements"
+      ],
+      "2": [
+        "microsoft-ecosystem",
+        "sony-accounting",
+        "circuit-game-pass"
+      ]
+    },
+    "exhibits": [
+      {
+        "afterParagraph": 2,
+        "kind": "market-map"
+      }
+    ],
+    "figures": [],
+    "sources": [
+      "alcorn-oral",
+      "arcade-route",
+      "steam-settlement",
+      "circuit-game-pass",
+      "steam-cloud",
+      "gfn-membership-terms",
+      "gfn-game-pass",
+      "cyberpunk-ps-offer",
+      "cyberpunk-xbox-offer",
+      "cyberpunk-plus-entry",
+      "cyberpunk-pass-entry",
+      "gfn-requirements",
+      "chain-cinema",
+      "chain-netflix",
+      "sony-accounting",
+      "chain-microsoft",
+      "cdpr-business",
+      "steam-visibility",
+      "microsoft-ecosystem"
+    ],
+    "evidence": "The diagrams describe roles and supported routes, not a quantitative ledger or an exhaustive market census. A company may perform several roles. Cyberpunk’s purchased editions are not interchangeable licenses across stores and consoles. A console catalog entitlement does not supply the PC edition required by GeForce NOW. A supported game, suitable receiving device and connection remain necessary. No private revenue share, contract price or internal transfer payment is inferred. The surrounding businesses can earn from access, equipment and computing; this does not imply every player makes every purchase or that all non-hardware revenue is subscription income. The ecosystem financial comparisons and CD PROJEKT catalog agreement continue in the following chapter."
+  },
+  {
+    "id": "three-ecosystems",
+    "part": 0,
+    "title": "Three ways to earn from the same worlds",
+    "lede": "Sony, Microsoft and NVIDIA build different businesses around the desire to play.",
+    "paragraphs": [
+      "When the PlayStation 5 launched in November 2020, Sony sold it for less than it cost to manufacture. Its gaming division nevertheless reported higher profit: stronger sales of games and network services helped cover the hardware losses and other launch costs. By the year ending March 2026, Sony’s gaming business reported annual revenue equivalent to roughly US$31.1 billion, with consoles accounting for only about a fifth. Putting a machine in the living room had opened a much larger market around it.",
       "The games that make PlayStation worth owning can also make money for its rival. In 2023, Microsoft, the company behind Xbox, paid US$75.4 billion for Activision Blizzard. The name covered several established businesses: Activision’s blockbuster Call of Duty releases, Blizzard’s long-running franchises such as Diablo, and King’s mobile games, led by Candy Crush. Microsoft was buying routes into different parts of everyday life—from an evening at a console to a puzzle on the phone already in someone’s pocket.",
       "King had joined Activision Blizzard in 2016, bringing a business built around games people could begin without buying a copy. Microsoft’s gaming chief Phil Spencer explicitly connected the later acquisition to reaching mobile players and learning from those teams. Meanwhile, Call of Duty could earn for Microsoft even when someone bought it through PlayStation Store: Sony was paid for distribution, and its console rival was now paid for publishing the game. Owning the work could matter more than owning the machine on which someone played it.",
       "Call of Duty also gave Microsoft another reason for players to join Game Pass, its subscription catalog. In October 2024, Black Ops 6, that year’s release in the shooter series, arrived in the catalog on launch day. Eligible subscribers could play without buying a separate copy. Days later, Microsoft’s chief executive Satya Nadella had two kinds of success to report: record new Game Pass subscriptions on launch day, and unit sales on PlayStation and Steam more than 60% higher than a year earlier. The same game was attracting subscribers while selling copies on a rival’s console and an independent PC store.",
@@ -529,74 +586,66 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "A studio can earn from that relationship even when fewer players buy its game. Consider Cyberpunk 2077, made and published by CD PROJEKT RED. The company sells copies through Steam, the PC store run by Valve, and through console stores such as Sony’s PlayStation Store. Each store takes its agreed share of the sale. A catalog offers another route: its operator can pay for permission to include the game, then use it to attract and retain subscribers.",
       "Sony can also become a customer for the game. In July 2025, it added Cyberpunk to PlayStation Plus, a subscription catalog that let members play while it remained included, without buying an individual copy. CD PROJEKT knew that giving players this alternative would cost it some purchases. Asked about the effect, co-CEO Michał Nowakowski was direct: “So, there’s always a hit to current sales of the game when you launch on a subscription basis.”",
       "He nevertheless judged the agreement worthwhile. Sony paid for the right to include the base game; Phantom Liberty, its expansion, remained a separate purchase. CD PROJEKT believed the deal improved its overall return and brought more people within reach of that additional sale. Sony gained another attraction for its membership, while the publisher found another buyer for work it had already made. Fewer individual purchases could coexist with a better business result.",
-      "Even the computer can become a separate service. A player can buy Cyberpunk through Steam, then pay NVIDIA’s GeForce NOW to run it on a remote machine. Their device receives the picture and sends back the controls; a suitable device and connection are still required. Valve handles the game sale, CD PROJEKT receives its share, and NVIDIA earns from providing the computing. Here the recurring payment rents the machinery. It does not turn the purchased game into a catalog subscription.",
       "The same work can therefore help sell a console, sustain a catalog or keep a remote computer occupied. Those businesses have found ways to earn from the desire to play beyond selling another copy. The attraction of a subscription makes this visible: access to something you enjoy becomes a relationship both sides must want to continue. How that relationship is paid for can change again once the offer moves inside the game itself.",
       "King, the Candy Crush studio Microsoft acquired, asks for no admission price. It can sell extra moves after a player has encountered a challenge and wants to overcome it. The arcade already knew the value of another chance; mobile freemium built an enormous audience around making payment optional. Here the next sale can grow out of playing the work someone already enjoys. Keeping that work enjoyable, and keeping it earning, become decisions made on the same board."
     ],
     "paragraphCitations": {
       "0": [
-        "sony-ps5-launch-economics"
-      ],
-      "1": [
+        "sony-ps5-launch-economics",
         "sony-fy2025-scale"
       ],
-      "2": [
+      "1": [
         "microsoft-acquisition-scale",
         "microsoft-mobile-rationale"
       ],
-      "4": [
+      "3": [
         "cod-game-pass-launch",
         "microsoft-cod-launch"
       ],
-      "5": [
+      "4": [
         "xbox-game-pass-reset"
       ],
-      "6": [
+      "5": [
         "nvidia-gaming-history",
         "gfn-membership-terms"
       ],
-      "8": [
+      "7": [
         "cdpr-business",
         "steam-settlement",
         "cdpr-catalog-economics"
       ],
-      "9": [
+      "8": [
         "cyberpunk-plus-entry",
         "cdpr-catalog-economics"
       ],
-      "10": [
+      "9": [
         "cdpr-catalog-economics"
       ],
       "11": [
-        "steam-cloud",
-        "gfn-membership-terms",
-        "gfn-requirements"
-      ],
-      "13": [
         "candy-offer",
         "king-2014"
       ],
-      "3": [
+      "2": [
         "king-acquisition",
         "microsoft-mobile-rationale"
       ],
-      "7": [
+      "6": [
         "circuit-game-pass",
         "cyberpunk-plus-entry"
       ]
     },
     "sections": [
       {
-        "at": 2,
-        "title": "Three ways to earn from the same worlds"
+        "at": 1,
+        "title": "Owning the games people came for"
       },
       {
-        "at": 8,
+        "at": 5,
+        "title": "Supplying the computing"
+      },
+      {
+        "at": 7,
         "title": "The deal behind the subscription"
-      },
-      {
-        "at": 11,
-        "title": "A game you buy, a machine you hire"
       }
     ],
     "figures": [
@@ -606,7 +655,7 @@ const manuscript: Omit<Chapter,"visual">[] = [
         "alt": "PlayStation Plus promotional image featuring the Cyberpunk 2077 logo and key art alongside Game Catalog, Premium and Extra branding",
         "caption": "Cyberpunk 2077 in Sony’s July 2025 PlayStation Plus promotion. Catalog access covered the base game; the expansion remained a separate offer.",
         "credit": "Sony Interactive Entertainment / CD PROJEKT RED; other pictured games belong to their respective rights holders",
-        "afterParagraph": 10
+        "afterParagraph": 9
       }
     ],
     "sources": [
@@ -656,24 +705,20 @@ const manuscript: Omit<Chapter,"visual">[] = [
     "evidence": "Sony’s February 2021 earnings presentation, printed pages 7–8, describes the PS5 launch quarter ending December 2020: hardware priced below manufacturing cost, higher gaming-segment operating income and the contribution of software and network services. This is a historical segment result, not a claim about current hardware margins, a measured lifetime return per console or Cyberpunk’s contribution to those profits. The current diagrams use Cyberpunk across PC, PlayStation, Xbox and NVIDIA routes; these are not all versions of one transferable purchase. CD PROJEKT performs both development and publishing. Console catalog access does not supply a Windows PC entitlement for GeForce NOW. Sony’s and Microsoft’s catalog agreements are distinct; only CD PROJEKT’s account of the Sony deal is discussed. Nowakowski’s quotation is the complete opening sentence of his answer to question 5 in the Q3 2025 earnings transcript (PDF page 6, 18 words). His judgment of the deal’s return and expansion opportunity is management’s assessment, not an independently measured causal effect. No contract amount, commission rate, internal transfer price or per-play payment is inferred. The relationship between audience appeal and the surrounding businesses is our economic interpretation. Distribution helps establish the commercial context for later design analysis; it does not determine one game design. The financial passage uses the FY2025 supplement’s reported segment sales, including intersegment revenue. Its US-dollar amounts are conversions using the year’s average ¥150.7/USD, not reported dollar segment figures. The chart converts each year using its own annual average rate; YoY compares those nominal USD values, without inflation adjustment. Games/add-ons and Other match the chart’s disclosed regrouping. Gaming exceeds Music plus Pictures in reported revenue, not in combined profit or whole-industry scale. Sony’s accounts illustrate the economic attraction of distribution; they do not establish Valve’s motive or imply Valve stopped developing games. Microsoft’s acquisition cost is the completed transaction’s reported purchase price, not the earlier announcement’s enterprise value. Xbox history includes acquired businesses from their consolidation dates and is not an organic-growth series. NVIDIA Gaming includes GPUs, GeForce NOW and console chips/development services; it is neither total NVIDIA revenue nor a cloud-revenue measure. Xbox category dollar amounts, Game Pass/cloud revenue and separate Xbox profit are not inferred from growth rates or the wider reporting segment. Fiscal year ends differ across companies. The standalone publisher figure uses Sony full-game copies, not a split of revenue; no comparable Xbox/NVIDIA copy split is invented. Microsoft’s 30 October 2024 earnings call reports launch-day Game Pass subscriber additions and PlayStation/Steam unit sales, not retention, profit or an annual sales total. The reported increase is over 60% year-on-year across the named sales channels; we do not assign a separate rate to each store or infer an effect caused by Game Pass. Xbox’s October announcement identifies Ultimate and PC Game Pass as the eligible launch plans. Its April 2026 announcement lowers those plans’ prices and moves future Call of Duty titles to the following holiday season, about a year after launch. The possibility of one offer replacing another is our economic interpretation, not Microsoft’s stated cause for that change or a quantified estimate of lost sales. No title-level contribution to the annual revenue decline is inferred. The acquisition did not create Microsoft’s first cross-platform publishing business; the example explains the larger ownership position that it bought. PlayStation, Xbox and NVIDIA are three selected ecosystems, not an exhaustive market ranking or mutually exclusive business models. Sony and Microsoft both develop and publish games as well as supplying stores, hardware and subscriptions. The NVIDIA contrast concerns the disclosed Gaming business, not the whole corporation. The connection to later in-game offers is our economic interpretation, not a claim that a platform dictates a particular design. The portfolio separates franchise origins from the studios responsible for pictured releases: Infinity Ward began Call of Duty; Treyarch and Raven Software led Black Ops 6. Blizzard North made the original Diablo; Blizzard Entertainment makes Diablo IV. King created Candy Crush Saga. These are selected products, not exhaustive or mutually exclusive genre/payment categories. Publisher promotional art identifies the brands; optional gameplay views compare their activities. Microsoft’s stated interest in mobile is evidence of acquisition intent, not proof that any one franchise justified a particular share of the purchase price.",
     "exhibits": [
       {
-        "afterParagraph": 1,
+        "afterParagraph": 0,
         "kind": "sony-history"
       },
       {
-        "afterParagraph": 6,
-        "kind": "publisher-ecosystem"
-      },
-      {
-        "afterParagraph": 11,
-        "kind": "market-map"
-      },
-      {
-        "afterParagraph": 2,
+        "afterParagraph": 1,
         "kind": "acquired-worlds"
+      },
+      {
+        "afterParagraph": 5,
+        "kind": "publisher-ecosystem"
       }
     ],
     "inscriptions": {
-      "7": "subscription"
+      "6": "subscription"
     }
   },
 
@@ -1836,7 +1881,7 @@ const manuscript: Omit<Chapter,"visual">[] = [
 ];
 
 // Stable IDs survive editorial reordering; overview chapters use only explicitly placed figures.
-const openingOrder = ["insert-coin", "studio-to-screen", "mobile-freemium", "valve-platform", "epic-infrastructure", "rockstar-world", "the-fork", "platform-business", "cloud-gaming", "making-worlds", "concord", "several-histories", "diablo-second-life", "diablo-market", "diablo-service", "how-many-lives", "shape-of-money", "six-games", "the-reset", "why-people-play", "play-beyond-score", "familiar-verbs", "anatomy-of-loop", "loot-table", "the-checklist", "access", "identity", "time", "power", "what-things-cost", "two-key-lock", "abstraction-and-surface", "what-decides", "does-it-work"];
+const openingOrder = ["insert-coin", "studio-to-screen", "three-ecosystems", "mobile-freemium", "valve-platform", "epic-infrastructure", "rockstar-world", "the-fork", "platform-business", "cloud-gaming", "making-worlds", "concord", "several-histories", "diablo-second-life", "diablo-market", "diablo-service", "how-many-lives", "shape-of-money", "six-games", "the-reset", "why-people-play", "play-beyond-score", "familiar-verbs", "anatomy-of-loop", "loot-table", "the-checklist", "access", "identity", "time", "power", "what-things-cost", "two-key-lock", "abstraction-and-surface", "what-decides", "does-it-work"];
 const allChapters = [mobileChapter, ...diabloHistoryChapters, ...manuscript, ...businessOverviewChapters, ...companyChapters, worldBuildingChapter];
 const orderedChapters = [...openingOrder.map(id=>allChapters.find(chapter=>chapter.id===id)!), ...allChapters.filter(chapter=>!openingOrder.includes(chapter.id))];
 export const chapters: Chapter[] = orderedChapters.map((chapter) => {
@@ -1844,9 +1889,9 @@ export const chapters: Chapter[] = orderedChapters.map((chapter) => {
   return {
     ...chapter,
     part: chapter.part,
-    embeddedAssets: chapter.id === "studio-to-screen" ? portfolioAssets : chapter.embeddedAssets,
+    embeddedAssets: chapter.id === "three-ecosystems" ? portfolioAssets : chapter.embeddedAssets,
     visual,
-    figures: ["studio-to-screen","platform-business","mobile-freemium"].includes(chapter.id) ? chapter.figures ?? [] : [
+    figures: ["studio-to-screen","three-ecosystems","platform-business","mobile-freemium"].includes(chapter.id) ? chapter.figures ?? [] : [
       chapter.figures?.find((figure) => figure.asset === visual.screenshot.asset) ?? visual.screenshot,
       ...(chapter.figures ?? []).filter(
         (figure) => figure.asset !== visual.screenshot.asset,

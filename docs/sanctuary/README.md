@@ -1,3 +1,9 @@
+# Current opening sequence · 8 October 2026
+
+`insert-coin` → `studio-to-screen` → `three-ecosystems` → `mobile-freemium` → `valve-platform`.
+
+The business diagrams remain in chapter 2. Sony/Microsoft/NVIDIA financial histories, acquisition artwork and the subscription transition form chapter 3. King follows in chapter 4. The reader now has 35 chapters. See the current chapter manuscripts and `NARRATIVE_SPINE_2026-10-08.md`; dated implementation notes below describe earlier checkpoints.
+
 Current opening: [Opening manuscript](OPENING_MANUSCRIPT.md). Chapter 1,
 “Insert coin. Join in.”, was finalized by the owner on 5 October 2026 and is the
 writing benchmark for the rest of the presentation. Read the

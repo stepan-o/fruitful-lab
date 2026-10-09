@@ -20,6 +20,7 @@ beforeEach(() => {
 });
 
 const refresh = jest.fn();
+const replace = jest.fn();
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: jest
@@ -31,7 +32,7 @@ Object.defineProperty(window, "matchMedia", {
     })),
 });
 jest.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(null);
-jest.mock("next/navigation", () => ({ useRouter: () => ({ refresh }) }));
+jest.mock("next/navigation", () => ({ useRouter: () => ({ refresh, replace }) }));
 const navigation = chapters.map(({ id, title, part }) => ({ id, title, part }));
 const props = {
   locale: "en" as const,
@@ -55,16 +56,16 @@ beforeAll(() => {
 });
 
 describe("Sanctuary reader", () => {
-  it("has a complete navigable 34-chapter edition with resolvable evidence and media", () => {
-    expect(chapters).toHaveLength(34);
-    expect(new Set(chapters.map((c) => c.id)).size).toBe(34);
+  it("has a complete navigable 35-chapter edition with resolvable evidence and media", () => {
+    expect(chapters).toHaveLength(35);
+    expect(new Set(chapters.map((c) => c.id)).size).toBe(35);
     expect(new Set(chapters.map((c) => c.part)).size).toBe(7);
     for (const chapter of chapters) {
       expect(chapter.paragraphs.length).toBeGreaterThanOrEqual(3);
       expect(chapter.evidence.length).toBeGreaterThan(30);
       expect(chapter.visual.diagram.nodes).toHaveLength(4);
       expect(chapter.visual.sceneTitle.length).toBeGreaterThan(3);
-      if (!["studio-to-screen","platform-business","mobile-freemium"].includes(chapter.id)) expect(chapter.figures?.some(figure=>figure.asset === chapter.visual.screenshot.asset)).toBe(true);
+      if (!["studio-to-screen","three-ecosystems","platform-business","mobile-freemium"].includes(chapter.id)) expect(chapter.figures?.some(figure=>figure.asset === chapter.visual.screenshot.asset)).toBe(true);
       for (const [paragraphIndex, ids] of Object.entries(
         chapter.paragraphCitations ?? {},
       )) {
@@ -147,25 +148,42 @@ describe("Sanctuary reader", () => {
     );
     expect(screen.queryByText(/INTERNAL REFERENCE/)).not.toBeInTheDocument();
   });
-  it("keeps Cyberpunk’s catalog evidence before the wider market map", async () => {
-    const index = chapters.findIndex(c=>c.id==="studio-to-screen");
-    const current = chapters[index];
-    const figure = current.figures!.find(f=>f.asset==="cyberpunk-catalog-promo")!;
-    expect(figure).toBeDefined();
-    render(<Reader {...props} current={current} index={index}/>);
+  it("separates the business maps from the financial and subscription case studies", async () => {
+    const overviewIndex = chapters.findIndex(c=>c.id==="studio-to-screen");
+    const {unmount} = render(<Reader {...props} current={chapters[overviewIndex]} index={overviewIndex}/>);
     await screen.findByRole("region",{name:"What has to keep selling?"});
     const map = await screen.findByRole("region",{name:"One game. Many routes to the player."});
-    const heading = screen.getByRole("heading",{name:"The deal behind the subscription"});
     expect(within(map).getByRole("button",{name:/^Cyberpunk 2077/})).toHaveAttribute("aria-pressed","true");
+    expect(screen.queryByRole("group",{name:"Choose a financial case study"})).not.toBeInTheDocument();
+    expect(screen.getByRole("navigation",{name:"Chapter"}).querySelector("a:last-child")).toHaveAttribute("href",chapterHref("three-ecosystems"));
+    unmount();
+    const index = chapters.findIndex(c=>c.id==="three-ecosystems");
+    const current = chapters[index];
+    const figure = current.figures!.find(f=>f.asset==="cyberpunk-catalog-promo")!;
+    const {container} = render(<Reader {...props} current={current} index={index}/>);
+    await screen.findByRole("group",{name:"Choose a financial case study"});
+    expect(screen.queryByRole("region",{name:"What has to keep selling?"})).not.toBeInTheDocument();
+    expect(screen.queryByRole("region",{name:"One game. Many routes to the player."})).not.toBeInTheDocument();
     const picture = screen.getByRole("img",{name:figure.alt});
     expect(picture).toHaveAttribute("loading","lazy");
-    expect(heading.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(picture.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    const nextParagraph = screen.getByText(current.paragraphs[figure.afterParagraph!+1]);
-    expect(picture.compareDocumentPosition(nextParagraph) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getByRole("heading",{name:"The deal behind the subscription"}).compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(container.querySelectorAll('[data-inscription="subscription"]')).toHaveLength(1);
+    expect(screen.getByRole("navigation",{name:"Chapter"}).querySelector("a:last-child")).toHaveAttribute("href",chapterHref("mobile-freemium"));
+  });
+  it("preserves old financial deep links while keeping the market map in chapter two", () => {
+    const index = chapters.findIndex(c=>c.id==="studio-to-screen");
+    for(const hash of ["#playstation-history","#publisher-ecosystem","#acquired-worlds","#market-map"]){
+      window.history.replaceState(null,"",`${chapterHref("studio-to-screen")}${hash}`);
+      replace.mockClear();
+      const {unmount} = render(<Reader {...props} current={chapters[index]} index={index}/>);
+      if(hash==="#market-map") expect(replace).not.toHaveBeenCalled();
+      else expect(replace).toHaveBeenCalledWith(`${chapterHref("three-ecosystems")}${hash}`);
+      unmount();
+    }
+    window.history.replaceState(null,"","/");
   });
   it("opens at the arcade, keeps its evidence inline and continues through the purchase history", () => {
-    expect(chapters.slice(0,13).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","mobile-freemium","valve-platform","epic-infrastructure","rockstar-world","the-fork","platform-business","cloud-gaming","making-worlds","concord","several-histories","diablo-second-life"]);
+    expect(chapters.slice(0,14).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","three-ecosystems","mobile-freemium","valve-platform","epic-infrastructure","rockstar-world","the-fork","platform-business","cloud-gaming","making-worlds","concord","several-histories","diablo-second-life"]);
     expect(chapters.find(c=>c.id==="concord")!.part).toBe(0);
     expect(chapters.find(c=>c.id==="how-many-lives")!.part).toBe(2);
     const current = chapters[0];

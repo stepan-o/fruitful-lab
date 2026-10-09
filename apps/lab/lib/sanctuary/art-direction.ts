@@ -4,6 +4,7 @@ export const artDirection: Record<
   {
  title: string; reference?: string; read: string; motifs?: string[]; alt?: string }
 > = {
+ "mobile-freemium":{title:"A little game. A very long life.",read:"King’s original branding introduces a long-running mobile business; an original offer diagram separates free entry from optional assistance.",reference:"King · Candy Crush Saga",alt:"Credited Candy Crush promotional art alongside a historical production milestone."},
 "several-histories":{"title": "A dungeon within reach", "read": "The original game combines a directed descent with changing encounters and equipment.", "reference": "Diablo · a history of play and production", "alt": "A dungeon within reach. An original isometric engraving of the historical relationship, not a game screenshot."},
 "diablo-second-life":{"title": "The road can be travelled again", "read": "An authored journey can sustain many builds and a shared restart without selling another run.", "reference": "Diablo · a history of play and production", "alt": "The road can be travelled again. An original isometric engraving of the historical relationship, not a game screenshot."},
 "diablo-market":{"title": "Two routes to the same equipment", "read": "A market can supply equipment while weakening the activity that made obtaining it satisfying.", "reference": "Diablo · a history of play and production", "alt": "Two routes to the same equipment. An original isometric engraving of the historical relationship, not a game screenshot."},

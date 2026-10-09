@@ -25,7 +25,7 @@ export default async function GameMonetizationPage({ searchParams }: {
     const index = typeof id === "string" ? chapters.findIndex(chapter => chapter.id === id) : -1;
     if (id !== undefined && index < 0) notFound();
     const current = chapters[index] ?? null;
-    const ids = current ? (current.figures ?? []).filter(figure => manifest.assets[figure.asset]).map(figure => figure.asset) : [];
+    const ids = current ? [...new Set([...(current.figures ?? []).map(figure => figure.asset), ...(current.embeddedAssets ?? [])])].filter(id => manifest.assets[id]) : [];
     const chapter = current ? { ...current, figures: current.figures?.filter(figure => manifest.assets[figure.asset]).map(figure => ({ ...figure, credit: records[figure.asset].displayCredit ?? `© ${records[figure.asset].owner}`, sourceUrl: records[figure.asset].sourceUrl ?? undefined })) } : null;
     // Send only the current chapter and its media metadata to the client.
     const assets: AssetManifest = { ...manifest, assets: Object.fromEntries(ids.map(id => [id, manifest.assets[id]])) };

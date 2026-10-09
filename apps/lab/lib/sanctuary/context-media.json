@@ -1,10 +1,10 @@
 {
-  "reviewed": "2026-10-07",
+  "reviewed": "2026-10-08",
   "assets": {
     "netflix-wordmark": {
-      "title": "Netflix — official red wordmark",
+      "title": "Netflix \u2014 official red wordmark",
       "owner": "Netflix, Inc.",
-      "source": "Netflix Brand Site — Logos, Color section",
+      "source": "Netflix Brand Site \u2014 Logos, Color section",
       "sourceUrl": "https://brand.netflix.com/en/assets/logos/",
       "assetUrl": "https://images.ctfassets.net/y2ske730sjqp/821Wg4N9hJD8vs5FBcCGg/9eaf66123397cc61be14e40174123c40/Vector__3_.svg",
       "sourceDate": "Retrieved 3 October 2026; asset publication date not supplied",
@@ -13,22 +13,22 @@
       "publication": "editorial",
       "basis": "Contextual identification of the business directly analyzed in the adjacent prose and shareholder quotation. Editorial rationale, not bespoke permission or a claim of partnership.",
       "purpose": "Identify Netflix in a comparison of theatrical admissions and subscription catalog economics, grounded in its July 2024 shareholder letter.",
-      "treatment": "Official red shape and proportions retained; responsive WebP derivatives at 154 and 309 pixels. No effects on the mark. Original surrounding cinema and catalog drawings use Sanctuary’s engraved style. Three invented cover parodies cite their production references separately; the catalog is an editorial illustration, not an operational Netflix interface.",
+      "treatment": "Official red shape and proportions retained; responsive WebP derivatives at 154 and 309 pixels. No effects on the mark. Original surrounding cinema and catalog drawings use Sanctuary\u2019s engraved style. Three invented cover parodies cite their production references separately; the catalog is an editorial illustration, not an operational Netflix interface.",
       "chapters": [
         "platform-business"
       ]
     },
     "cyberpunk-night-city": {
-      "title": "Cyberpunk 2077 — Night City",
+      "title": "Cyberpunk 2077 \u2014 Night City",
       "owner": "CD PROJEKT RED S.A.",
-      "source": "Cyberpunk 2077 official site — Night City gallery",
+      "source": "Cyberpunk 2077 official site \u2014 Night City gallery",
       "sourceUrl": "https://www.cyberpunk.net/us/en/cyberpunk-2077",
       "assetUrl": "https://cdn-l-cyberpunk.cdprojektred.com/cyberpunk2077/nightcity/Cyberpunk2077_Above_it_all_RGB%401x.jpg",
       "sourceDate": "Retrieved 6 October 2026; original image publication date not supplied",
       "sourceSha256": "0424192a7210da571eea72fd9ff7ba135d6e9a21c8a3ff2b9f58cbe763040035",
       "reviewed": "2026-10-06",
       "publication": "editorial",
-      "basis": "Bounded visual citation in independent criticism and analysis of the named game’s distribution and rendering arrangements. This is an editorial rationale, not bespoke permission or a claim of endorsement.",
+      "basis": "Bounded visual citation in independent criticism and analysis of the named game\u2019s distribution and rendering arrangements. This is an editorial rationale, not bespoke permission or a claim of endorsement.",
       "purpose": "Introduce Cyberpunk 2077 to an unfamiliar reader and identify the same detailed game environment that local PCs and remote cloud computers render. The image makes the content distinct from the businesses supplying access and computing. It is not evidence of frame rate, hardware requirements or a particular session.",
       "treatment": "One official gallery image retained in full. Proportional WebP derivatives at 320, 640 and 1138 pixels, metadata removed. No cropping, recoloring, overlays or altered legal marks. Lazy loaded through the versioned asset manifest.",
       "chapters": [
@@ -36,7 +36,7 @@
       ]
     },
     "valve-half-life": {
-      "title": "Half-Life — official gameplay gallery",
+      "title": "Half-Life \u2014 official gameplay gallery",
       "owner": "Valve",
       "source": "Official game gallery",
       "sourceUrl": "https://store.steampowered.com/app/70/HalfLife/",
@@ -46,14 +46,12 @@
       "reviewed": "2026-10-06",
       "publication": "editorial",
       "basis": "Bounded visual citation in independent analysis of the named work and business. Editorial rationale, not bespoke permission or endorsement.",
-      "purpose": "Introduce Valve’s work as a developer before examining Steam’s role in distributing other studios’ work.",
+      "purpose": "Retained source record for a retired visual. The Valve business chapter now uses official promotional identification instead of gameplay.",
       "treatment": "Full composition retained, with proportional responsive WebP compression and metadata removal. No crop, recoloring, or removal of visible legal marks. Lazy loaded through content-hashed files and a versioned manifest.",
-      "chapters": [
-        "valve-platform"
-      ]
+      "chapters": []
     },
     "rockstar-los-santos": {
-      "title": "GTA Online — The Doomsday Heist promotional frame",
+      "title": "GTA Online \u2014 The Doomsday Heist promotional frame",
       "owner": "Rockstar Games / Take-Two Interactive",
       "source": "Official game gallery",
       "sourceUrl": "https://store.steampowered.com/app/271590/",
@@ -70,7 +68,7 @@
       ]
     },
     "epic-web-shop": {
-      "title": "Epic Games Store — web-shop mockup",
+      "title": "Epic Games Store \u2014 web-shop mockup",
       "owner": "Epic Games; embedded Idle Champions material belongs to its respective creators and rights holders, including Codename Entertainment",
       "source": "Epic Games Store 2025 review",
       "sourceUrl": "https://store.epicgames.com/news/epic-games-store-2025-year-in-review?lang=en-US",
@@ -80,14 +78,14 @@
       "reviewed": "2026-10-06",
       "publication": "editorial",
       "basis": "Bounded visual citation in independent analysis of the named work and business. Editorial rationale, not bespoke permission or endorsement.",
-      "purpose": "Show Epic’s selling infrastructure operating behind another game’s identity. This official promotional mockup is not a live offer or evidence of a completed transaction.",
+      "purpose": "Show Epic\u2019s selling infrastructure operating behind another game\u2019s identity. This official promotional mockup is not a live offer or evidence of a completed transaction.",
       "treatment": "Full composition retained, with proportional responsive WebP compression and metadata removal. No crop, recoloring, or removal of visible legal marks. Lazy loaded through content-hashed files and a versioned manifest.",
       "chapters": [
         "epic-infrastructure"
       ]
     },
     "valve-wordmark": {
-      "title": "Valve — official company wordmark",
+      "title": "Valve \u2014 official company wordmark",
       "owner": "Valve Corporation",
       "source": "Valve corporate site header, including its published fill and clipping rules",
       "sourceUrl": "https://www.valvesoftware.com/en/about",
@@ -98,60 +96,261 @@
       "sourceSha256": "60fe774062763335b9f5848c466446f742c23b69f47db5726eb476061087be88",
       "reviewed": "2026-10-07",
       "publication": "editorial",
-      "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve’s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
+      "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve\u2019s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
       "chapters": [
         "valve-platform"
       ]
     },
     "steam-symbol": {
-      "title": "Steam — official service symbol",
+      "title": "Steam \u2014 official service symbol",
       "owner": "Valve Corporation",
-      "displayCredit": "© 2026 Valve Corporation. Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.",
-      "source": "Valve corporate site — Steam section",
+      "displayCredit": "\u00a9 2026 Valve Corporation. Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.",
+      "source": "Valve corporate site \u2014 Steam section",
       "sourceUrl": "https://www.valvesoftware.com/en/about",
       "assetUrl": "https://cdn.akamai.steamstatic.com/valvesoftware/images/about/steam_logo.png",
       "sourceDate": "Retrieved 7 October 2026; original publication date not supplied",
-      "purpose": "Identify Steam as a distribution service operated by the company introduced beside it. Supports the chapter’s distinction between making games and operating a store for other makers.",
-      "treatment": "Unchanged official symbol, proportional WebP sizes at 80, 160 and 233 pixels. Open space around mark; Steam® named in caption. No recoloring, animation, overlay or combined identity. Full trademark attribution retained.",
+      "purpose": "Identify Steam as a distribution service operated by the company introduced beside it. Supports the chapter\u2019s distinction between making games and operating a store for other makers.",
+      "treatment": "Unchanged official symbol, proportional WebP sizes at 80, 160 and 233 pixels. Open space around mark; Steam\u00ae named in caption. No recoloring, animation, overlay or combined identity. Full trademark attribution retained.",
       "sourceSha256": "79eb0ccd6a6d1cd0c80f8d9cb07e1498d4343e3c0c9052901d581b70a775643d",
       "reviewed": "2026-10-07",
       "publication": "editorial",
-      "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve’s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
+      "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve\u2019s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
       "chapters": [
         "valve-platform"
       ]
     },
     "counter-strike-menu": {
-      "title": "Counter-Strike 1.6 — Windows main menu",
+      "title": "Counter-Strike 1.6 \u2014 Windows main menu",
       "owner": "Valve Corporation; screenshot contributed by Yearman",
-      "displayCredit": "© Valve Corporation · capture: Yearman / MobyGames",
+      "displayCredit": "\u00a9 Valve Corporation \u00b7 capture: Yearman / MobyGames",
       "source": "MobyGames, Windows screenshot 487947, contributed by Yearman on 6 January 2011",
       "sourceUrl": "https://www.mobygames.com/game/165613/counter-strike/screenshots/windows/487947/",
       "assetUrl": "https://cdn.mobygames.com/screenshots/16726753-counter-strike-windows-main-menu.png",
       "sourceDate": "Public gallery upload: 6 January 2011; menu from the original Counter-Strike / 1.6 Windows release, not the 1999 beta. Exact capture build/date not supplied.",
-      "purpose": "Analyze the visible Find Servers entry as the doorway into repeated multiplayer sessions, before explaining Steam’s wider distribution role. The menu’s Steam mark also avoids suggesting this 1.6 capture predates Steam. Its actual visual identity is the evidence; an invented substitute would not show this interface.",
-      "treatment": "The publicly displayed 800×600 gallery image, not a premium original download or fan reconstruction. Full frame and embedded marks preserved. WebP at 320, 640 and 800 pixels; metadata removed. Optional reversible outlines identify New Game / Find Servers and the visible Steam mark without modifying the screenshot. No game software, extracted textures, music or asset library is distributed.",
+      "purpose": "Analyze the visible Find Servers entry as the doorway into repeated multiplayer sessions, before explaining Steam\u2019s wider distribution role. The menu\u2019s Steam mark also avoids suggesting this 1.6 capture predates Steam. Its actual visual identity is the evidence; an invented substitute would not show this interface.",
+      "treatment": "The publicly displayed 800\u00d7600 gallery image, not a premium original download or fan reconstruction. Full frame and embedded marks preserved. WebP at 320, 640 and 800 pixels; metadata removed. Optional reversible outlines identify New Game / Find Servers and the visible Steam mark without modifying the screenshot. No game software, extracted textures, music or asset library is distributed.",
       "sourceSha256": "a8de5bb43c5922f84c67f5f5b207004d8bbae27692820e381f96221fe8dcb9b6",
       "reviewed": "2026-10-07",
       "publication": "editorial",
-      "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve’s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
+      "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve\u2019s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
       "chapters": [
         "valve-platform"
       ]
     },
     "cyberpunk-catalog-promo": {
-      "title": "Cyberpunk 2077 — PlayStation Plus catalog promotion",
+      "title": "Cyberpunk 2077 \u2014 PlayStation Plus catalog promotion",
       "owner": "Sony Interactive Entertainment / CD PROJEKT RED S.A.; background game covers and marks belong to their respective rights holders",
-      "source": "PlayStation.Blog — July 2025 Game Catalog announcement; post by Adam Michel, Sony Interactive Entertainment",
+      "source": "PlayStation.Blog \u2014 July 2025 Game Catalog announcement; post by Adam Michel, Sony Interactive Entertainment",
       "sourceUrl": "https://blog.playstation.com/2025/07/09/playstation-plus-game-catalog-for-july-cyberpunk-2077-abiotic-factor-banishers-ghosts-of-new-eden-and-more/",
       "assetUrl": "https://blog.playstation.com/tachyon/2025/07/0ac79419a30439ab0c0613ee3d4a6e306a0dcb4c.jpg",
       "sourceDate": "Published 9 July 2025; retrieved 7 October 2026",
       "sourceSha256": "89b8f94212cd71984bbf651086fff95075062a13b6ea9cfc7270f2ce8229e976",
       "reviewed": "2026-10-07",
       "publication": "editorial",
-      "basis": "Bounded reproduction of the specific commercial promotion analyzed in the adjacent criticism and review. Editorial rationale, not a publisher licence or endorsement. The source’s download link does not grant general republication rights; embedded third-party covers remain part of the cited promotion, not separately reused assets.",
-      "purpose": "Document how Sony presented an individually sold game as an attraction for its subscription catalog, directly beside analysis of CD PROJEKT’s catalog licensing decision. The game logo, subscription branding and tier labels identify the actual offer. The image does not establish contract amounts, performance or current catalog availability.",
+      "basis": "Bounded reproduction of the specific commercial promotion analyzed in the adjacent criticism and review. Editorial rationale, not a publisher licence or endorsement. The source\u2019s download link does not grant general republication rights; embedded third-party covers remain part of the cited promotion, not separately reused assets.",
+      "purpose": "Document how Sony presented an individually sold game as an attraction for its subscription catalog, directly beside analysis of CD PROJEKT\u2019s catalog licensing decision. The game logo, subscription branding and tier labels identify the actual offer. The image does not establish contract amounts, performance or current catalog availability.",
       "treatment": "One complete historical promotional image, without cropping, recoloring, compositing or changes to marks, rating or offer notice. Proportional WebP variants at 480, 960 and 1440 pixels; source master excluded from runtime delivery. Lazy loaded via content-hashed files and the existing versioned manifest. Dated caption; historical promotional pricing is not presented as current.",
+      "chapters": [
+        "studio-to-screen"
+      ]
+    },
+    "half-life-promo": {
+      "title": "Half-Life \u2014 official store promotional artwork",
+      "owner": "Valve Corporation",
+      "source": "Half-Life official Steam listing, store capsule",
+      "sourceUrl": "https://store.steampowered.com/app/70/HalfLife/",
+      "assetUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/70/capsule_616x353.jpg?t=1745368462",
+      "sourceDate": "Retrieved 8 October 2026; original artwork publication date not supplied",
+      "sourceSha256": "141c0554485652f87dddc62ee66748cd500d9fecb407161c5bc9367e7b558ec8",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Bounded visual citation identifying the release discussed in independent business history. Editorial rationale, not bespoke permission, a general reuse licence or endorsement. Valve\u2019s video policy does not license this still image.",
+      "purpose": "Identify Valve\u2019s debut product and its recognizable brand before the chapter follows the transition from selling its own games to distributing other studios\u2019 work. No gameplay claim is made from the artwork.",
+      "treatment": "Full 616\u00d7353 store capsule retained, including logo, title and character. Proportional WebP derivatives at 320 and 616 pixels; no upscaling, crop, recoloring, animation on the mark or removed legal notices. Lazy loaded through immutable content-hashed files and a versioned manifest.",
+      "chapters": [
+        "valve-platform"
+      ]
+    },
+    "cod-cover": {
+      "title": "Call of Duty: Black Ops 6 \u2014 reveal key art",
+      "owner": "Activision Publishing, Inc.; developed by Treyarch and Raven Software",
+      "displayCredit": "\u00a9 Activision Publishing, Inc.; developed by Treyarch and Raven Software",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://www.callofduty.com/blog/2024/06/call-of-duty-black-ops-6-worldwide-reveal-announcement",
+      "assetUrl": "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/hero/bo6/BO6-REVEAL-TOUT.jpg",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "199d2aac97b6a576c1194b1cec8f75d43260cee8124978af69a2480866be9d2e",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "The annual blockbuster in the acquired portfolio: identify the release used to test launch-day subscription access.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
+      "chapters": [
+        "studio-to-screen"
+      ]
+    },
+    "cod-hud": {
+      "title": "Black Ops 6 \u2014 official pre-release gameplay / HUD view",
+      "owner": "Activision Publishing, Inc.; developed by Treyarch and Raven Software",
+      "displayCredit": "\u00a9 Activision Publishing, Inc.; developed by Treyarch and Raven Software",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://www.callofduty.com/blog/2024/06/call-of-duty-black-ops-6-worldwide-reveal-announcement",
+      "assetUrl": "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/bo6/BO6-REVEAL-021.jpg",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "a5e12493e6f442612ab193ee21dbe10ba30d5e37bda54b75a8f27fc5e9941256",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "Compare the first-person action interface with Diablo\u2019s character combat and Candy Crush\u2019s touch puzzle; distinguish player activities within the acquired portfolio.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
+      "chapters": [
+        "studio-to-screen"
+      ]
+    },
+    "candy-poster": {
+      "title": "Candy Crush Saga \u2014 official promotional artwork",
+      "owner": "King.com Ltd",
+      "displayCredit": "\u00a9 King.com Ltd",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://candycrush.com/",
+      "assetUrl": "https://candycrush.com/ccs-og.jpg",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "66bda96c44dd39b1554e98bf387570fbf6909c880eb40b39c629a24fb27f19d7",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "Identify the casual mobile franchise in Microsoft\u2019s acquisition and compare its invitation with the two premium brands. The image is the subject of adjacent brand and business analysis.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
+      "chapters": [
+        "studio-to-screen",
+        "mobile-freemium"
+      ]
+    },
+    "candy-phone": {
+      "title": "Candy Crush Saga \u2014 King\u2019s App Store gameplay promotion",
+      "owner": "King.com Ltd",
+      "displayCredit": "\u00a9 King.com Ltd",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://apps.apple.com/us/app/candy-crush-saga/id553834731",
+      "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/1b/42/bd/1b42bd4f-d144-246a-3a4b-91e3316c51c0/26184b20-fd91-4296-8a58-d32d7134e1b4_563552_CCS_Taglines_Banner_Route_4_Resize_Screenshots_June_24_sta_ios-6.7_1290x2796_1.jpg/640x960bb.jpg",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "47bea97c9b765a4797651103823962e5ef9b2e04d54118c57ab4587ecedcf452",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "Show the board, remaining moves, lives and boosters that give the freemium offer its context. Publisher-composed promotional screenshot, not an unedited live capture.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
+      "chapters": [
+        "studio-to-screen",
+        "mobile-freemium"
+      ]
+    },
+    "king-logo": {
+      "title": "King \u2014 original studio mark",
+      "owner": "King.com Ltd",
+      "displayCredit": "\u00a9 King.com Ltd",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://www.king.com/corporate-and-media/press-kit/",
+      "assetUrl": "https://www.king.com/media/aplg20fk/logo.svg",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "95ccb572e81f99b6eebe7183d88352643857034ad1f1d6c7f629ec51c8005d49",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "Credit the actual maker of Candy Crush and distinguish it from its later corporate owners.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
+      "chapters": [
+        "studio-to-screen",
+        "mobile-freemium"
+      ]
+    },
+    "infinity-ward-logo": {
+      "title": "Infinity Ward \u2014 studio mark",
+      "owner": "Activision Publishing, Inc. / Infinity Ward",
+      "displayCredit": "\u00a9 Activision Publishing, Inc. / Infinity Ward",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://www.callofduty.com/blog/2024/06/call-of-duty-black-ops-6-worldwide-reveal-announcement",
+      "assetUrl": "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/infinity-ward-logo.png",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "8e20c881536a16f15f560ab8399996c07555c1621edd9c231f6e1fcdf1a37e98",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "Identify the original Call of Duty studio beside its 2003 origin credit; not attributed as Black Ops 6 lead developer.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
+      "chapters": [
+        "studio-to-screen"
+      ]
+    },
+    "treyarch-logo": {
+      "title": "Treyarch \u2014 studio mark",
+      "owner": "Activision Publishing, Inc. / Treyarch",
+      "displayCredit": "\u00a9 Activision Publishing, Inc. / Treyarch",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://www.callofduty.com/blog/2024/06/call-of-duty-black-ops-6-worldwide-reveal-announcement",
+      "assetUrl": "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/treyarch-logo.png",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "6c2cd12f2485626e3fa6b0ae707d3aaaefdae382c54d63f140879e05f1518b1b",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "Credit one of the two lead studios behind the pictured Black Ops 6 release.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
+      "chapters": [
+        "studio-to-screen"
+      ]
+    },
+    "raven-logo": {
+      "title": "Raven Software \u2014 studio mark",
+      "owner": "Activision Publishing, Inc. / Raven Software",
+      "displayCredit": "\u00a9 Activision Publishing, Inc. / Raven Software",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://www.callofduty.com/blog/2024/06/call-of-duty-black-ops-6-worldwide-reveal-announcement",
+      "assetUrl": "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/raven-logo.png",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "b7859c0b245c67c47a01c6821c710729a0ab8fecc794abdec4821cd20e4f8672",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "Credit one of the two lead studios behind the pictured Black Ops 6 release.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
+      "chapters": [
+        "studio-to-screen"
+      ]
+    },
+    "activision-logo": {
+      "title": "Activision \u2014 publisher mark",
+      "owner": "Activision Publishing, Inc.",
+      "displayCredit": "\u00a9 Activision Publishing, Inc.",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://www.callofduty.com/blog/2024/06/call-of-duty-black-ops-6-worldwide-reveal-announcement",
+      "assetUrl": "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/activision-logo.png",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "b248c9fb8482cd718b18ecd0bc9a143bb8839c903c6d4ab7215daf0783867358",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "Identify the publisher in the portfolio and acquisition timeline separately from the development studios.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
+      "chapters": [
+        "studio-to-screen",
+        "mobile-freemium"
+      ]
+    },
+    "blizzard-logo": {
+      "title": "Blizzard Entertainment \u2014 studio mark",
+      "owner": "Blizzard Entertainment, Inc.",
+      "displayCredit": "\u00a9 Blizzard Entertainment, Inc.",
+      "source": "Official publisher press material / identifying studio mark",
+      "sourceUrl": "https://diablo4.blizzard.com/en-us/",
+      "assetUrl": "https://forge.akamaized.net/icons/blizzard-entertainment-logo.svg",
+      "sourceDate": "Retrieved 8 October 2026; Black Ops 6 images published 9 June 2024; other publication dates not specified",
+      "sourceSha256": "2cd73ae8a00f70e56ef8ab2be5ef5eacbcea45ead770d6b70888dace9ab84ae3",
+      "reviewed": "2026-10-08",
+      "publication": "editorial",
+      "basis": "Limited visual quotation for criticism and review, with source and creator attribution. No bespoke permission or blanket press-asset licence is claimed. King terms \u00a7\u00a75.11 and 11, Activision terms \u00a73 and Blizzard logo guidelines restrict general reuse; the publication rationale relies on the specific analytical context and applicable statutory exceptions. This is not a guarantee of legal clearance.",
+      "purpose": "Identify Diablo IV\u2019s developer and publisher; the separate origin credit names Blizzard North for the original Diablo.",
+      "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
         "studio-to-screen"
       ]

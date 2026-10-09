@@ -1,3 +1,24 @@
+## 8 October: one work across the contemporary routes
+
+Chapter 2 now follows the commercial reach of one work through Sony’s PS5
+launch economics and CD PROJEKT’s Cyberpunk catalog agreement. These cases
+replace the previous generic survey. See CHAPTER_TWO_MANUSCRIPT.md for the
+continuous argument and its evidence boundaries.
+
+The opening circuit keeps Cyberpunk 2077 and CD PROJEKT RED fixed across PC
+purchase, PlayStation, Xbox and NVIDIA. Both consoles offer purchase/catalog
+choices with separate studio and publisher responsibilities and a licensing
+agreement with the independent publisher. NVIDIA retains a purchased PC copy:
+Cyberpunk’s console catalog entitlement does not provide the PC edition.
+The market map also opens on Cyberpunk and then permits broader comparisons.
+This supersedes the older Forza, Spider-Man and Rockstar overview choices below.
+Their historical implementation notes remain for context, not current behavior.
+
+Original store, console and player illustrations now identify the same product.
+No new image downloads, animation loops, dependencies or runtime requests were
+added. Desktop and mobile selection, paired highlights, reduced-motion and
+offscreen animation controls retain the existing contract.
+
 ## 7 October: hold the cloud game fixed
 
 The overview’s Cloud play tab uses Forza Horizon 5 in both access modes:

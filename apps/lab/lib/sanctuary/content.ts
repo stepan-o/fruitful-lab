@@ -1,3 +1,5 @@
+import { mobileChapter, mobileSources } from "./mobile-chapter";
+import { portfolioAssets } from "./acquired-portfolio";
 import {narrativeSources} from "./narrative-sources";
 import {diabloHistoryChapters} from "./diablo-history-chapters";
 import type { Chapter, EvidenceSource } from "./types";
@@ -18,13 +20,28 @@ export const parts = [
 ];
 export const revision = "2026-10-08";
 export const sources: EvidenceSource[] = [
+  ...mobileSources,
+  {"id": "microsoft-cod-launch", "title": "Satya Nadella — Microsoft FY2025 Q1 earnings call, 30 October 2024", "url": "https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q1", "note": "The CEO reports record Game Pass subscriber adds on Black Ops 6 launch day and PlayStation/Steam unit sales up over 60% year-on-year. Launch comparison, not annual revenue, retention or profit; no independent channel rates or causal Game Pass effect is inferred. It documents simultaneous subscription acquisition and sales through other platforms."},
+  {"id": "cod-game-pass-launch", "title": "Xbox — Black Ops 6 joins Game Pass at launch, 15 October 2024", "url": "https://news.xbox.com/en-us/2024/10/15/xbox-game-pass-october-2024-wave-2/", "note": "Lists 25 October 2024 launch-day access through Game Pass Ultimate and PC Game Pass. These eligible plans are not the whole subscription range. Paired with Microsoft’s 30 October launch report and the April 2026 change to future releases."},
+  {"id": "cod-november-2025-sales", "title": "Mat Piscatella / Circana — November 2025 US game sales", "url": "https://bsky.app/profile/matpiscatella.bsky.social/post/3ma6t4rn5w22w", "note": "The analyst reports a double-digit year-on-year decline in Call of Duty full-game dollar sales for November 2025. US tracked physical/digital purchases only; not units, global franchise revenue, add-ons or Game Pass revenue. No title-level contribution to Microsoft’s annual decline is assigned."},
+  {"id": "cod-release-cadence", "title": "Call of Duty team — release strategy update, 9 December 2025", "url": "https://www.callofduty.com/blog/2025/12/call-of-duty-message-from-the-team/", "note": "The team announces an end to back-to-back Black Ops or Modern Warfare releases, with distinct annual experiences as its stated goal. This changes subseries sequencing, not the commitment to annual releases. The relationship between cadence and repeat purchases is our interpretation."},
+  {"id": "obsidian-production-economics", "title": "Shaun Prescott / PC Gamer — Obsidian’s production decisions, 3 February 2026", "url": "https://www.pcgamer.com/games/rpg/avowed-and-the-outer-worlds-2-failed-to-meet-expectations-for-obsidian-but-grounded-2-was-a-hit-and-the-future-is-looking-positive-for-the-pillars-of-eternity-universe/", "note": "Coverage of Jason Schreier’s Bloomberg interviews with Obsidian leadership. Reports missed sales forecasts for Avowed and The Outer Worlds 2, seven years of Avowed development, Grounded 2’s shorter production and success, and a goal of shorter cycles/reuse. The inventory-screen question is Feargus Urquhart’s complete quoted sentence (20 words). Person-months measure aggregate effort, not elapsed development time. This does not establish either game’s profitability. Avowed launched in FY2025, not FY2026; these are production examples, not a decomposition of one year’s revenue decline."},
+  {"id": "xbox-game-pass-reset", "title": "Xbox — Game Pass pricing and Call of Duty access, 21 April 2026", "url": "https://news.xbox.com/en-us/2026/04/21/xbox-game-pass-update/", "note": "Ultimate and PC Game Pass prices were reduced. Future Call of Duty titles would enter these catalogs the following holiday season, about a year after release; existing included titles remained. This is a documented change of offer, not a quantified estimate of lost sales, subscriber churn or its contribution to FY2026 results."},
+  {"id": "microsoft-acquisition-scale", "title": "Microsoft — 2024 annual report, Gaming and acquisition note", "url": "https://www.microsoft.com/investor/reports/ar24/", "note": "Activision Blizzard acquisition completed 13 October 2023; reported purchase price US$75.4bn. FY2024 Gaming revenue +39%, hardware −13%, content/services +50% including 44 percentage points of acquisition net impact. Scope change, not organic audience growth. Its portfolio includes Activision, Blizzard and King."},
+  {"id": "nvidia-gaming-history", "title": "NVIDIA — FY2026 Form 10-K, Gaming end market", "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm", "note": "FY2026 ended 25 January 2026. Gaming revenue US$16,042m; management attributes 41% growth to Blackwell demand. Gaming includes GeForce GPUs, GeForce NOW and console chips/development services. No separate cloud revenue or matching Gaming profit is disclosed. The Graphics reporting segment is broader than this end market."},
+
+  {"id": "sony-fy2025-scale", "title": "Sony — FY2025 financial supplement, pp. 3–4 and 12", "url": "https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/25q4_supplement.pdf", "note": "Year ending March 2026. G&NS sales ¥4,685,651m and operating income ¥463,258m; Music ¥2,120,110m and Pictures ¥1,499,290m. The approximate US$31bn illustration divides yen revenue by the reported annual average ¥150.7 per dollar; it is not Sony-reported dollar revenue. Chapter/chart grouping places ¥100,612m of Other Software with Others, giving games/add-ons ¥2,540,411m and Other ¥437,688m. Add-on content includes digital in-game currency, items and expansion packages, not full-game downloads or PlayStation Plus. Segment sales include intersegment transactions; the cross-business comparison is reported revenue, not an industry market-size or profit comparison."},
+  {"id": "sony-digital-gross", "title": "Sony — FY2026 Q1 supplement, p. 11, notes 3–4", "url": "https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/26q1_supplement.pdf#page=11", "note": "Explicit gross retail revenue recognition for full-game downloads and add-on content, including the outside publisher’s share. The whole segment combines different recognition bases; operating income is not net income, cash flow or the platform commission."},
+  {"id": "sony-game-origins", "title": "Sony — Annual Report 1998, printed pp. 70–71 (PDF pp. 72–73)", "url": "https://www.sony.com/en/SonyInfo/IR/library/ar/ar_sony_1998.pdf#page=72", "note": "The 1998 report separates Game from Electronics and restates earlier years. Game sales, including intersegment: ¥203,911m for the year ending March 1996 (FY1995), ¥419,278m for March 1997 and ¥722,551m for March 1998. Nominal contemporary figures; no inflation-adjusted growth rate or continuous comparable category series is inferred. Licensing to third-party developers is part of the documented segment."},
+  {"id": "sony-ps1-creators", "title": "Sony — Annual Report 1997, printed p. 23 (PDF p. 25)", "url": "https://www.sony.com/en/SonyInfo/IR/library/ar/ar_sony_1997.pdf#page=25", "note": "Sony attributes PlayStation growth to affordable pricing and hit software, naming Square’s Final Fantasy VII and Namco’s Tekken alongside its own releases. This is Sony’s contemporary assessment, not a numerical sales attribution to individual games."},
+  {"id": "microsoft-ecosystem", "title": "Microsoft — 2025 annual report, Gaming", "url": "https://www.microsoft.com/investor/reports/ar25/", "note": "Describes owned studios and publishing, third-party content, Xbox hardware, Game Pass, cloud gaming and advertising. Used to identify functions within one group, not private internal settlements or a uniform subscription offer."},
   ...narrativeSources,
   {"id": "steam-hardware-survey", "title": "Valve — Steam Hardware & Software Survey, September 2026", "url": "https://store.steampowered.com/hwsurvey/", "note": "Checked 8 October 2026. Valve states that its optional, anonymous hardware survey informs technology investment and product decisions. Cited for that stated purpose, not for any hardware-market percentage or a measured causal effect on game design. The page updates monthly."},
   {"id": "cyberpunk-plus-entry", "title": "PlayStation — Cyberpunk joins the Game Catalog, 9 July 2025", "url": "https://blog.playstation.com/2025/07/09/playstation-plus-game-catalog-for-july-cyberpunk-2077-abiotic-factor-banishers-ghosts-of-new-eden-and-more/", "note": "Base-game inclusion in Extra and Premium; Phantom Liberty was a separate discounted purchase. The historical promotional discount is not presented as current."},
   {"id": "cyberpunk-pass-entry", "title": "Xbox — Cyberpunk joins Game Pass, March 2026", "url": "https://news.xbox.com/en-us/2026/03/03/xbox-game-pass-march-2026-wave-1/", "note": "Lists Cyberpunk for Cloud and Console from 10 March, under Premium and Ultimate. It does not list PC access; no reason for that negotiated scope is disclosed."},
   {"id": "cyberpunk-ps-offer", "title": "PlayStation — Cyberpunk purchase, catalog and cloud offers", "url": "https://www.playstation.com/en-us/games/cyberpunk-2077/", "note": "US offer checked 7 October 2026: Extra catalog access; Premium required for supported PS5 and Portal cloud play. Base game and expansion are distinct offers."},
   {"id": "cyberpunk-xbox-offer", "title": "Xbox — Cyberpunk supported platforms and catalog offers", "url": "https://www.xbox.com/en-us/games/store/game/BX3M8L83BBRW", "note": "US listing checked 7 October 2026: Xbox One, Xbox Series and Xbox Cloud Gaming; Premium/Ultimate catalog inclusion. These console offers do not grant a Windows PC licence."},
-  {"id": "cdpr-catalog-economics", "title": "CD PROJEKT — Q3 2025 earnings call, questions 1, 4 and 5", "url": "https://www.cdprojekt.com/en/wp-content/uploads-en/2025/11/transcript-q3-2025-earnings.pdf", "note": "PDF pages 5–6: management’s Sony-deal rationale, recognised revenue, undisclosed compensation and potential expansion sales. The four-word quotation is an excerpt from Nielubowicz’s answer. Management’s assessment is attributed; no amount, cash-payment schedule, independent causal estimate or Xbox contract terms are inferred."},
+  {"id": "cdpr-catalog-economics", "title": "CD PROJEKT — Q3 2025 earnings call, questions 1, 4 and 5", "url": "https://www.cdprojekt.com/en/wp-content/uploads-en/2025/11/transcript-q3-2025-earnings.pdf", "note": "PDF pages 5–6: management’s Sony-deal rationale, recognised revenue, undisclosed compensation and potential expansion sales. Chapter 2 quotes Nowakowski’s complete opening sentence in question 5 (page 6); the separate four-word life-cycle phrase, where used, comes from Nielubowicz’s answer to question 1. Management’s assessment is attributed; no amount, cash-payment schedule, independent causal estimate or Xbox contract terms are inferred."},
   {"id": "gfn-membership-terms", "title": "NVIDIA — GeForce NOW membership terms: virtual PC and content rights", "url": "https://www.nvidia.com/en-us/geforce-now/membership-terms/", "note": "The service rents virtual computing; the member needs sufficient rights to supported games. Store, device, region and publisher support can vary. Read alongside the PC Game Pass support article."},
   ...companySources,
   ...worldBuildingSources,
@@ -43,6 +60,7 @@ export const sources: EvidenceSource[] = [
   {"id": "steam-cloud", "title": "Valve — Steam Cloud Play (Beta)", "url": "https://partner.steamgames.com/doc/features/cloudgaming", "note": "Separate purchase and streaming-service relationship; publisher opt-in, cloud saves and unchanged Steam payouts."},
   {"id": "steam-discovery", "title": "Valve — Marketing tools", "url": "https://partner.steamgames.com/doc/marketing/tools", "note": "Steam does not sell advertising placement. Distinguishes store discovery from paid campaigns elsewhere."},
   {"id": "sony-revenue", "title": "Sony — FY2025 Q4 supplement, p. 12", "url": "https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/25q4_supplement.pdf", "note": "Reported Game & Network Services segment sales. Network Services includes PlayStation Plus and advertising; physical software includes royalties. Figures are not consumer spending or cloud revenue."},
+  {"id": "sony-ps5-launch-economics", "title": "Sony — PS5 launch-quarter economics, 3 February 2021, pp. 7–8", "url": "https://www.sony.com/en/SonyInfo/IR/library/presen/er/pdf/20q3_sonyspeech.pdf", "note": "Quarter ending December 2020. Reports PS5 prices below manufacturing cost and higher segment operating income, with software and network services contributing. Historical hardware losses are not a claim about current PS5 margins or the return on an individual console."},
   {"id": "sony-accounting", "title": "Sony — FY2024 Form 20-F, revenue accounting", "url": "https://www.sony.com/en/SonyInfo/IR/library/FY2024_20F_PDF.pdf", "note": "The report distinguishes sales of products, licensing revenue and recognition of subscription fees over time."},
   {"id": "gfn-requirements", "title": "NVIDIA — GeForce NOW Windows requirements, accessed 5 Oct 2026", "url": "https://www.nvidia.com/en-us/geforce-now/system-reqs./", "note": "Selected published stream bandwidth requirements, not measured throughput. The sub-80 ms criterion is network latency to a data center, not total input-to-display latency. Plan and client support vary."},
   {"id": "gfn-service", "title": "NVIDIA — GeForce NOW FAQ, accessed 5 Oct 2026", "url": "https://www.nvidia.com/en-us/geforce-now/faq/", "note": "Membership, premium playtime allowance and Founders exception. Terms describe NVIDIA-operated service; alliance partners can differ."},
@@ -498,57 +516,87 @@ const manuscript: Omit<Chapter,"visual">[] = [
     "id": "studio-to-screen",
     "part": 0,
     "title": "From studio to screen",
-    "lede": "How we pay for games helps shape which games get made—and what they ask of us in return.",
+    "lede": "One creative work can sustain several businesses around it.",
     "paragraphs": [
-      "A studio deciding what to make next faces more than a creative choice. Another complete game, an expansion and a world kept running for years require different commitments of people and money. There is also a practical limit on who can join in: the equipment needed to play. Building a more demanding game can mean asking part of its audience to buy a better machine before buying the adventure.",
-      "At the arcade, the operator carried that equipment bill and charged players for turns. At home, the player could buy a computer or console once, then build a library of games around it. Each new game could be sold to an audience that already owned the machine. A purchase could provide years of play, but another evening with it was not another sale for its maker. The studio still needed new buyers, paid additions or another agreement involving the work.",
-      "Xbox Game Pass and PlayStation Plus sell temporary access to a selection of games. For these services, a title can help attract or retain a subscriber even if that person would never buy it individually. An agreement to include the game gives its publisher another way to earn from an existing release. A finished adventure can help sell an ongoing service without having to become one itself.",
-      "Cloud gaming changes who must own the powerful machine. NVIDIA’s GeForce NOW runs supported games on remote computers and streams them to a player’s device. A game bought through Steam, Valve’s PC store, can reach someone whose own computer could not run it. A paid NVIDIA membership buys use of the remote hardware while the game remains a separate purchase. This changes the requirements rather than removing them: the player still needs a suitable device and a fast, responsive connection.",
-      "CD PROJEKT RED’s Cyberpunk 2077 shows why a publisher might want several of these arrangements at once. The game entered PlayStation Plus in July 2025 and Xbox Game Pass in March 2026 while remaining on sale individually. Giving subscribers access meant accepting that some would no longer buy a copy.",
-      "In a November 2025 earnings call, CD PROJEKT co-CEO Michał Nowakowski acknowledged that cost. The company believed its Sony agreement would earn more than keeping the game outside the catalog. It also included only the base game. New players could still buy Phantom Liberty, its separately sold expansion. The decision weighed lost purchases against licensing income and the chance to sell those players something more.",
-      "Finance chief Piotr Nielubowicz called this “conscious life cycle management.” A similar PlayStation Plus agreement involving The Witcher games had brought in revenue a year earlier. Cyberpunk’s Sony agreement was recorded as revenue entirely in one quarter, even though players paid subscriptions. The service needed people to stay subscribed; the publisher had made an agreement concerning one work. Their income did not follow the same schedule.",
-      "An earlier release can therefore help pay for a later one through more than its original sales. It can also become part of somebody else’s continuing business. The companies bringing games to an audience can earn across many studios’ releases while each studio prepares its next production. Steam gives Valve that position on computers its customers already own. The next game that brings customers through its store need not be one Valve made. Valve’s handheld Steam Deck extends that relationship into equipment. A company introduced here as a store also makes a machine on which its customers can play."
+      "In the first months after the PlayStation 5 launched in November 2020, Sony was selling its new console for less than it cost to manufacture. That did not stop its gaming division from reporting higher profit: stronger sales of games and network services helped outweigh losses on the hardware and other launch costs. Putting the machine in someone’s living room was the beginning of a commercial relationship that could last for years.",
+      "By the year ending March 2026, Sony’s gaming business was reporting annual revenue equivalent to roughly US$31.1 billion at that year’s average exchange rate. That was more than its music and pictures businesses combined. Consoles accounted for US$6.3 billion. PlayStation games and add-ons brought in US$16.9 billion, while network services, including PlayStation Plus and advertising, supplied another US$5.1 billion. Peripherals, games sold on other platforms and the remaining business contributed roughly US$2.9 billion. Sales of the consoles themselves accounted for about a fifth of the total.",
+      "The games that make PlayStation worth owning can also make money for its rival. In 2023, Microsoft, the company behind Xbox, paid US$75.4 billion for Activision Blizzard. The name covered several established businesses: Activision’s blockbuster Call of Duty releases, Blizzard’s long-running franchises such as Diablo, and King’s mobile games, led by Candy Crush. Microsoft was buying routes into different parts of everyday life—from an evening at a console to a puzzle on the phone already in someone’s pocket.",
+      "King had joined Activision Blizzard in 2016, bringing a business built around games people could begin without buying a copy. Microsoft’s gaming chief Phil Spencer explicitly connected the later acquisition to reaching mobile players and learning from those teams. Meanwhile, Call of Duty could earn for Microsoft even when someone bought it through PlayStation Store: Sony was paid for distribution, and its console rival was now paid for publishing the game. Owning the work could matter more than owning the machine on which someone played it.",
+      "Call of Duty also gave Microsoft another reason for players to join Game Pass, its subscription catalog. In October 2024, Black Ops 6, that year’s release in the shooter series, arrived in the catalog on launch day. Eligible subscribers could play without buying a separate copy. Days later, Microsoft’s chief executive Satya Nadella had two kinds of success to report: record new Game Pass subscriptions on launch day, and unit sales on PlayStation and Steam more than 60% higher than a year earlier. The same game was attracting subscribers while selling copies on a rival’s console and an independent PC store.",
+      "But a player who subscribes for a new release may otherwise have bought a copy. Owning both the publisher and the catalog brings those offers into the same business; it does not make them equally profitable. In April 2026, Microsoft lowered Game Pass prices and announced that future Call of Duty releases would enter the catalog about a year after launch. Playing at launch would again require a separate purchase, while subscribers willing to wait would receive the game later. Microsoft was changing when the same work earned as a product and when it helped sell a service.",
+      "NVIDIA can earn from those games without owning the studios that make them. Its GeForce processors help bring games to the screen; GeForce NOW lets players rent that computing power remotely. The company reported US$16.0 billion in Gaming revenue for the year ending January 2026, attributing its growth to demand for a new generation of graphics hardware. Cloud play sits inside that total, but its earnings are not disclosed separately. Where Microsoft bought more of the creative work, NVIDIA sells the capacity to run it. Both still depend on games that people want to play, including games made by other companies.",
+      "For the player, much of this business remains out of sight. Its most inviting offer is easy to recognize: a subscription puts a library within reach without asking you to buy every game you want to try. The operator has a different reason to value that abundance. Each appealing addition can help persuade someone to stay for another paid month. A game’s audience has become valuable to businesses selling an ongoing relationship with many games at once.",
+      "A studio can earn from that relationship even when fewer players buy its game. Consider Cyberpunk 2077, made and published by CD PROJEKT RED. The company sells copies through Steam, the PC store run by Valve, and through console stores such as Sony’s PlayStation Store. Each store takes its agreed share of the sale. A catalog offers another route: its operator can pay for permission to include the game, then use it to attract and retain subscribers.",
+      "Sony can also become a customer for the game. In July 2025, it added Cyberpunk to PlayStation Plus, a subscription catalog that let members play while it remained included, without buying an individual copy. CD PROJEKT knew that giving players this alternative would cost it some purchases. Asked about the effect, co-CEO Michał Nowakowski was direct: “So, there’s always a hit to current sales of the game when you launch on a subscription basis.”",
+      "He nevertheless judged the agreement worthwhile. Sony paid for the right to include the base game; Phantom Liberty, its expansion, remained a separate purchase. CD PROJEKT believed the deal improved its overall return and brought more people within reach of that additional sale. Sony gained another attraction for its membership, while the publisher found another buyer for work it had already made. Fewer individual purchases could coexist with a better business result.",
+      "Even the computer can become a separate service. A player can buy Cyberpunk through Steam, then pay NVIDIA’s GeForce NOW to run it on a remote machine. Their device receives the picture and sends back the controls; a suitable device and connection are still required. Valve handles the game sale, CD PROJEKT receives its share, and NVIDIA earns from providing the computing. Here the recurring payment rents the machinery. It does not turn the purchased game into a catalog subscription.",
+      "The same work can therefore help sell a console, sustain a catalog or keep a remote computer occupied. Those businesses have found ways to earn from the desire to play beyond selling another copy. The attraction of a subscription makes this visible: access to something you enjoy becomes a relationship both sides must want to continue. How that relationship is paid for can change again once the offer moves inside the game itself.",
+      "King, the Candy Crush studio Microsoft acquired, asks for no admission price. It can sell extra moves after a player has encountered a challenge and wants to overcome it. The arcade already knew the value of another chance; mobile freemium built an enormous audience around making payment optional. Here the next sale can grow out of playing the work someone already enjoys. Keeping that work enjoyable, and keeping it earning, become decisions made on the same board."
     ],
     "paragraphCitations": {
       "0": [
-        "steam-hardware-survey"
+        "sony-ps5-launch-economics"
       ],
       "1": [
-        "alcorn-oral",
+        "sony-fy2025-scale"
+      ],
+      "2": [
+        "microsoft-acquisition-scale",
+        "microsoft-mobile-rationale"
+      ],
+      "4": [
+        "cod-game-pass-launch",
+        "microsoft-cod-launch"
+      ],
+      "5": [
+        "xbox-game-pass-reset"
+      ],
+      "6": [
+        "nvidia-gaming-history",
+        "gfn-membership-terms"
+      ],
+      "8": [
+        "cdpr-business",
         "steam-settlement",
         "cdpr-catalog-economics"
       ],
-      "2": [
-        "circuit-game-pass",
-        "cyberpunk-ps-offer",
+      "9": [
+        "cyberpunk-plus-entry",
         "cdpr-catalog-economics"
       ],
-      "3": [
+      "10": [
+        "cdpr-catalog-economics"
+      ],
+      "11": [
         "steam-cloud",
         "gfn-membership-terms",
         "gfn-requirements"
       ],
-      "4": [
-        "cyberpunk-plus-entry",
-        "cyberpunk-pass-entry",
-        "cdpr-catalog-economics"
+      "13": [
+        "candy-offer",
+        "king-2014"
       ],
-      "5": [
-        "cdpr-catalog-economics"
-      ],
-      "6": [
-        "cdpr-catalog-economics"
+      "3": [
+        "king-acquisition",
+        "microsoft-mobile-rationale"
       ],
       "7": [
-        "cdpr-catalog-economics",
-        "steam-settlement",
-        "valve-about"
+        "circuit-game-pass",
+        "cyberpunk-plus-entry"
       ]
     },
     "sections": [
       {
-        "at": 4,
-        "title": "What the deal is worth"
+        "at": 2,
+        "title": "Three ways to earn from the same worlds"
+      },
+      {
+        "at": 8,
+        "title": "The deal behind the subscription"
+      },
+      {
+        "at": 11,
+        "title": "A game you buy, a machine you hire"
       }
     ],
     "figures": [
@@ -556,12 +604,20 @@ const manuscript: Omit<Chapter,"visual">[] = [
         "asset": "cyberpunk-catalog-promo",
         "label": "PlayStation Plus · July 2025",
         "alt": "PlayStation Plus promotional image featuring the Cyberpunk 2077 logo and key art alongside Game Catalog, Premium and Extra branding",
-        "caption": "Sony made Cyberpunk part of PlayStation Plus’s 15th-anniversary promotion. The base game entered the catalog; Phantom Liberty remained a separate purchase, with a temporary member discount.",
+        "caption": "Cyberpunk 2077 in Sony’s July 2025 PlayStation Plus promotion. Catalog access covered the base game; the expansion remained a separate offer.",
         "credit": "Sony Interactive Entertainment / CD PROJEKT RED; other pictured games belong to their respective rights holders",
-        "afterParagraph": 4
+        "afterParagraph": 10
       }
     ],
     "sources": [
+      "sony-ps5-launch-economics",
+      "sony-fy2025-scale",
+      "sony-digital-gross",
+      "microsoft-acquisition-scale",
+      "microsoft-cod-launch",
+      "cod-game-pass-launch",
+      "xbox-game-pass-reset",
+      "nvidia-gaming-history",
       "alcorn-oral",
       "steam-settlement",
       "circuit-game-pass",
@@ -576,16 +632,51 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "cdpr-catalog-economics",
       "valve-about",
       "steam-hardware-survey",
-      "gfn-requirements"
+      "gfn-requirements",
+      "epic-publishing",
+      "chain-cinema",
+      "chain-netflix",
+      "arcade-route",
+      "sony-accounting",
+      "chain-microsoft",
+      "valve-history",
+      "cdpr-business",
+      "steam-visibility",
+      "microsoft-ecosystem",
+      "valve-deck-booklet",
+      "king-acquisition",
+      "microsoft-mobile-rationale",
+      "king-twenty",
+      "candy-offer",
+      "cod-origin",
+      "cod-six-reveal",
+      "d4-season-philosophy",
+      "king-2014"
     ],
-    "evidence": "Selected purchase and subscription routes, not a ranking of how most customers pay. GeForce NOW’s bring-your-own-games model is distinct from catalog membership; the optional PC Game Pass route is separately sourced. The comparison does not claim that every cloud service follows NVIDIA’s model or that every hardware upgrade is compulsory. Affordability, retention and publisher incentives are analytical questions, not estimated causal effects. Steam documents unchanged publisher payment terms for Cloud Play. Company roles and internal funding arrows remain schematic; no private budget, catalog royalty or transfer price is inferred. The Cyberpunk worked example separates Sony catalog economics, Xbox console catalog eligibility and NVIDIA PC computing. CD PROJEKT’s evaluation of its Sony agreement is attributed to management; its Q3 revenue recognition is not a cash-payment schedule. The amounts and reasons for excluding PC catalog access are not disclosed. No Sony compensation terms are assigned to Microsoft. The opening and closing connect these arrangements to a studio’s production choices as editorial analysis. Catalog inclusion may help attract or retain subscribers; this chapter does not estimate that effect or claim that a business model determines one kind of game design. Broader PC/catalog compatibility remains in the interactive map rather than being repeated in the narrative. Hardware ownership, capability and cost are treated as conditions of audience access, not merely another payment category. The arcade/home comparison describes selected arrangements, not a universal chronology or a claim that one machine lasts forever. Valve’s survey states that hardware information informs product and technology decisions; no survey percentage or causal estimate is used. Cloud play shifts computing to the provider but retains device and network requirements.",
+    "evidence": "Sony’s February 2021 earnings presentation, printed pages 7–8, describes the PS5 launch quarter ending December 2020: hardware priced below manufacturing cost, higher gaming-segment operating income and the contribution of software and network services. This is a historical segment result, not a claim about current hardware margins, a measured lifetime return per console or Cyberpunk’s contribution to those profits. The current diagrams use Cyberpunk across PC, PlayStation, Xbox and NVIDIA routes; these are not all versions of one transferable purchase. CD PROJEKT performs both development and publishing. Console catalog access does not supply a Windows PC entitlement for GeForce NOW. Sony’s and Microsoft’s catalog agreements are distinct; only CD PROJEKT’s account of the Sony deal is discussed. Nowakowski’s quotation is the complete opening sentence of his answer to question 5 in the Q3 2025 earnings transcript (PDF page 6, 18 words). His judgment of the deal’s return and expansion opportunity is management’s assessment, not an independently measured causal effect. No contract amount, commission rate, internal transfer price or per-play payment is inferred. The relationship between audience appeal and the surrounding businesses is our economic interpretation. Distribution helps establish the commercial context for later design analysis; it does not determine one game design. The financial passage uses the FY2025 supplement’s reported segment sales, including intersegment revenue. Its US-dollar amounts are conversions using the year’s average ¥150.7/USD, not reported dollar segment figures. The chart converts each year using its own annual average rate; YoY compares those nominal USD values, without inflation adjustment. Games/add-ons and Other match the chart’s disclosed regrouping. Gaming exceeds Music plus Pictures in reported revenue, not in combined profit or whole-industry scale. Sony’s accounts illustrate the economic attraction of distribution; they do not establish Valve’s motive or imply Valve stopped developing games. Microsoft’s acquisition cost is the completed transaction’s reported purchase price, not the earlier announcement’s enterprise value. Xbox history includes acquired businesses from their consolidation dates and is not an organic-growth series. NVIDIA Gaming includes GPUs, GeForce NOW and console chips/development services; it is neither total NVIDIA revenue nor a cloud-revenue measure. Xbox category dollar amounts, Game Pass/cloud revenue and separate Xbox profit are not inferred from growth rates or the wider reporting segment. Fiscal year ends differ across companies. The standalone publisher figure uses Sony full-game copies, not a split of revenue; no comparable Xbox/NVIDIA copy split is invented. Microsoft’s 30 October 2024 earnings call reports launch-day Game Pass subscriber additions and PlayStation/Steam unit sales, not retention, profit or an annual sales total. The reported increase is over 60% year-on-year across the named sales channels; we do not assign a separate rate to each store or infer an effect caused by Game Pass. Xbox’s October announcement identifies Ultimate and PC Game Pass as the eligible launch plans. Its April 2026 announcement lowers those plans’ prices and moves future Call of Duty titles to the following holiday season, about a year after launch. The possibility of one offer replacing another is our economic interpretation, not Microsoft’s stated cause for that change or a quantified estimate of lost sales. No title-level contribution to the annual revenue decline is inferred. The acquisition did not create Microsoft’s first cross-platform publishing business; the example explains the larger ownership position that it bought. PlayStation, Xbox and NVIDIA are three selected ecosystems, not an exhaustive market ranking or mutually exclusive business models. Sony and Microsoft both develop and publish games as well as supplying stores, hardware and subscriptions. The NVIDIA contrast concerns the disclosed Gaming business, not the whole corporation. The connection to later in-game offers is our economic interpretation, not a claim that a platform dictates a particular design. The portfolio separates franchise origins from the studios responsible for pictured releases: Infinity Ward began Call of Duty; Treyarch and Raven Software led Black Ops 6. Blizzard North made the original Diablo; Blizzard Entertainment makes Diablo IV. King created Candy Crush Saga. These are selected products, not exhaustive or mutually exclusive genre/payment categories. Publisher promotional art identifies the brands; optional gameplay views compare their activities. Microsoft’s stated interest in mobile is evidence of acquisition intent, not proof that any one franchise justified a particular share of the purchase price.",
     "exhibits": [
       {
-        "afterParagraph": 3,
+        "afterParagraph": 1,
+        "kind": "sony-history"
+      },
+      {
+        "afterParagraph": 6,
+        "kind": "publisher-ecosystem"
+      },
+      {
+        "afterParagraph": 11,
         "kind": "market-map"
+      },
+      {
+        "afterParagraph": 2,
+        "kind": "acquired-worlds"
       }
-    ]
+    ],
+    "inscriptions": {
+      "7": "subscription"
+    }
   },
+
   {
     "id": "the-fork",
     "part": 0,
@@ -1745,16 +1836,17 @@ const manuscript: Omit<Chapter,"visual">[] = [
 ];
 
 // Stable IDs survive editorial reordering; overview chapters use only explicitly placed figures.
-const openingOrder = ["insert-coin", "studio-to-screen", "valve-platform", "epic-infrastructure", "rockstar-world", "the-fork", "platform-business", "cloud-gaming", "making-worlds", "concord", "several-histories", "diablo-second-life", "diablo-market", "diablo-service", "how-many-lives", "shape-of-money", "six-games", "the-reset", "why-people-play", "play-beyond-score", "familiar-verbs", "anatomy-of-loop", "loot-table", "the-checklist", "access", "identity", "time", "power", "what-things-cost", "two-key-lock", "abstraction-and-surface", "what-decides", "does-it-work"];
-const allChapters = [...diabloHistoryChapters, ...manuscript, ...businessOverviewChapters, ...companyChapters, worldBuildingChapter];
+const openingOrder = ["insert-coin", "studio-to-screen", "mobile-freemium", "valve-platform", "epic-infrastructure", "rockstar-world", "the-fork", "platform-business", "cloud-gaming", "making-worlds", "concord", "several-histories", "diablo-second-life", "diablo-market", "diablo-service", "how-many-lives", "shape-of-money", "six-games", "the-reset", "why-people-play", "play-beyond-score", "familiar-verbs", "anatomy-of-loop", "loot-table", "the-checklist", "access", "identity", "time", "power", "what-things-cost", "two-key-lock", "abstraction-and-surface", "what-decides", "does-it-work"];
+const allChapters = [mobileChapter, ...diabloHistoryChapters, ...manuscript, ...businessOverviewChapters, ...companyChapters, worldBuildingChapter];
 const orderedChapters = [...openingOrder.map(id=>allChapters.find(chapter=>chapter.id===id)!), ...allChapters.filter(chapter=>!openingOrder.includes(chapter.id))];
 export const chapters: Chapter[] = orderedChapters.map((chapter) => {
   const visual = chapterVisuals[chapter.id];
   return {
     ...chapter,
     part: chapter.part,
+    embeddedAssets: chapter.id === "studio-to-screen" ? portfolioAssets : chapter.embeddedAssets,
     visual,
-    figures: ["studio-to-screen","platform-business"].includes(chapter.id) ? chapter.figures ?? [] : [
+    figures: ["studio-to-screen","platform-business","mobile-freemium"].includes(chapter.id) ? chapter.figures ?? [] : [
       chapter.figures?.find((figure) => figure.asset === visual.screenshot.asset) ?? visual.screenshot,
       ...(chapter.figures ?? []).filter(
         (figure) => figure.asset !== visual.screenshot.asset,

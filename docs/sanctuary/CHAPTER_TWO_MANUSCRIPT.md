@@ -1,45 +1,65 @@
-> Historical draft. Superseded by [the complete 8 October manuscript](COMPLETE_MANUSCRIPT_2026-10-08.md). Retained as editorial history.
+# Sanctuary Economics — From studio to screen
 
-# From studio to screen
+8 October 2026. Current continuous manuscript. The business argument concerns how ongoing play can sustain ongoing work; the reading order does not imply that subscriptions preceded mobile freemium.
 
-Editorial draft · 8 October 2026. Rewritten around the reader’s stake in the economics of creative work; mirrored in the chapter content.
+One creative work can sustain several businesses around it.
 
-How we pay for games helps shape which games get made—and what they ask of us in return.
+In the first months after the PlayStation 5 launched in November 2020, Sony was selling its new console for less than it cost to manufacture. That did not stop its gaming division from reporting higher profit: stronger sales of games and network services helped outweigh losses on the hardware and other launch costs. Putting the machine in someone’s living room was the beginning of a commercial relationship that could last for years.
 
-[Opening instrument: the illustrated business chain. Compact introduction before its tabs:]
+Evidence: sony-ps5-launch-economics.
 
-Switch examples to see how the work, equipment and payments change hands. Select a scene or an exchange to inspect what each participant pays for, earns from and needs next. The boxes separate roles that one company may combine. Each tab shows selected offers; the second diagram explores compatible routes for the same game.
+By the year ending March 2026, Sony’s gaming business was reporting annual revenue equivalent to roughly US$31.1 billion at that year’s average exchange rate. That was more than its music and pictures businesses combined. Consoles accounted for US$6.3 billion. PlayStation games and add-ons brought in US$16.9 billion, while network services, including PlayStation Plus and advertising, supplied another US$5.1 billion. Peripherals, games sold on other platforms and the remaining business contributed roughly US$2.9 billion. Sales of the consoles themselves accounted for about a fifth of the total.
 
-[The second-diagram link targets #market-map. The following prose begins after the instrument.]
+Evidence: sony-fy2025-scale.
 
-A studio deciding what to make next faces more than a creative choice. Another complete game, an expansion and a world kept running for years require different commitments of people and money. There is also a practical limit on who can join in: the equipment needed to play. Building a more demanding game can mean asking part of its audience to buy a better machine before buying the adventure.
+### Three ways to earn from the same worlds
 
-At the arcade, the operator carried that equipment bill and charged players for turns. At home, the player could buy a computer or console once, then build a library of games around it. Each new game could be sold to an audience that already owned the machine. A purchase could provide years of play, but another evening with it was not another sale for its maker. The studio still needed new buyers, paid additions or another agreement involving the work.
+The games that make PlayStation worth owning can also make money for its rival. In 2023, Microsoft, the company behind Xbox, paid US$75.4 billion for Activision Blizzard. The name covered several established businesses: Activision’s blockbuster Call of Duty releases, Blizzard’s long-running franchises such as Diablo, and King’s mobile games, led by Candy Crush. Microsoft was buying routes into different parts of everyday life—from an evening at a console to a puzzle on the phone already in someone’s pocket.
 
-Xbox Game Pass and PlayStation Plus sell temporary access to a selection of games. For these services, a title can help attract or retain a subscriber even if that person would never buy it individually. An agreement to include the game gives its publisher another way to earn from an existing release. A finished adventure can help sell an ongoing service without having to become one itself.
+Evidence: microsoft-acquisition-scale, microsoft-mobile-rationale.
 
-Cloud gaming changes who must own the powerful machine. NVIDIA’s GeForce NOW runs supported games on remote computers and streams them to a player’s device. A game bought through Steam, Valve’s PC store, can reach someone whose own computer could not run it. A paid NVIDIA membership buys use of the remote hardware while the game remains a separate purchase. This changes the requirements rather than removing them: the player still needs a suitable device and a fast, responsive connection.
+King had joined Activision Blizzard in 2016, bringing a business built around games people could begin without buying a copy. Microsoft’s gaming chief Phil Spencer explicitly connected the later acquisition to reaching mobile players and learning from those teams. Meanwhile, Call of Duty could earn for Microsoft even when someone bought it through PlayStation Store: Sony was paid for distribution, and its console rival was now paid for publishing the game. Owning the work could matter more than owning the machine on which someone played it.
 
-[Second instrument: game-to-player route explorer. See MARKET_MAP.md.]
+Evidence: king-acquisition, microsoft-mobile-rationale.
 
-## What the deal is worth
+Call of Duty also gave Microsoft another reason for players to join Game Pass, its subscription catalog. In October 2024, Black Ops 6, that year’s release in the shooter series, arrived in the catalog on launch day. Eligible subscribers could play without buying a separate copy. Days later, Microsoft’s chief executive Satya Nadella had two kinds of success to report: record new Game Pass subscriptions on launch day, and unit sales on PlayStation and Steam more than 60% higher than a year earlier. The same game was attracting subscribers while selling copies on a rival’s console and an independent PC store.
 
-CD PROJEKT RED’s Cyberpunk 2077 shows why a publisher might want several of these arrangements at once. The game entered PlayStation Plus in July 2025 and Xbox Game Pass in March 2026 while remaining on sale individually. Giving subscribers access meant accepting that some would no longer buy a copy.
+Evidence: cod-game-pass-launch, microsoft-cod-launch.
 
-[Visual citation: Sony’s July 2025 Cyberpunk / PlayStation Plus catalog promotion, cyberpunk-catalog-promo. Existing caption, credits and rights record retained.]
+But a player who subscribes for a new release may otherwise have bought a copy. Owning both the publisher and the catalog brings those offers into the same business; it does not make them equally profitable. In April 2026, Microsoft lowered Game Pass prices and announced that future Call of Duty releases would enter the catalog about a year after launch. Playing at launch would again require a separate purchase, while subscribers willing to wait would receive the game later. Microsoft was changing when the same work earned as a product and when it helped sell a service.
 
-In a November 2025 earnings call, CD PROJEKT co-CEO Michał Nowakowski acknowledged that cost. The company believed its Sony agreement would earn more than keeping the game outside the catalog. It also included only the base game. New players could still buy Phantom Liberty, its separately sold expansion. The decision weighed lost purchases against licensing income and the chance to sell those players something more.
+Evidence: xbox-game-pass-reset.
 
-Finance chief Piotr Nielubowicz called this “conscious life cycle management.” A similar PlayStation Plus agreement involving The Witcher games had brought in revenue a year earlier. Cyberpunk’s Sony agreement was recorded as revenue entirely in one quarter, even though players paid subscriptions. The service needed people to stay subscribed; the publisher had made an agreement concerning one work. Their income did not follow the same schedule.
+NVIDIA can earn from those games without owning the studios that make them. Its GeForce processors help bring games to the screen; GeForce NOW lets players rent that computing power remotely. The company reported US$16.0 billion in Gaming revenue for the year ending January 2026, attributing its growth to demand for a new generation of graphics hardware. Cloud play sits inside that total, but its earnings are not disclosed separately. Where Microsoft bought more of the creative work, NVIDIA sells the capacity to run it. Both still depend on games that people want to play, including games made by other companies.
 
-An earlier release can therefore help pay for a later one through more than its original sales. It can also become part of somebody else’s continuing business. The companies bringing games to an audience can earn across many studios’ releases while each studio prepares its next production. Steam gives Valve that position on computers its customers already own. The next game that brings customers through its store need not be one Valve made. With Steam Deck, its handheld PC, Valve also began supplying the machine: a company introduced here as a store can move into another part of the chain.
+Evidence: nvidia-gaming-history, gfn-membership-terms.
 
-## Evidence boundaries
+For the player, much of this business remains out of sight. Its most inviting offer is easy to recognize: a subscription puts a library within reach without asking you to buy every game you want to try. The operator has a different reason to value that abundance. Each appealing addition can help persuade someone to stay for another paid month. A game’s audience has become valuable to businesses selling an ongoing relationship with many games at once.
 
-Selected purchase and subscription routes, not a ranking of how most customers pay. GeForce NOW’s bring-your-own-games model is distinct from catalog membership; the optional PC Game Pass route is separately sourced. The comparison does not claim that every cloud service follows NVIDIA’s model or that every hardware upgrade is compulsory. Affordability, retention and publisher incentives are analytical questions, not estimated causal effects. Steam documents unchanged publisher payment terms for Cloud Play. Company roles and internal funding arrows remain schematic; no private budget, catalog royalty or transfer price is inferred. The Cyberpunk worked example separates Sony catalog economics, Xbox console catalog eligibility and NVIDIA PC computing. CD PROJEKT’s evaluation of its Sony agreement is attributed to management; its Q3 revenue recognition is not a cash-payment schedule. The amounts and reasons for excluding PC catalog access are not disclosed. No Sony compensation terms are assigned to Microsoft. The opening and closing connect these arrangements to a studio’s production choices as editorial analysis. Catalog inclusion may help attract or retain subscribers; this chapter does not estimate that effect or claim that a business model determines one kind of game design. Broader PC/catalog compatibility remains in the interactive map rather than being repeated in the narrative. Hardware ownership, capability and cost are treated as conditions of audience access, not merely another payment category. The arcade/home comparison describes selected arrangements, not a universal chronology or a claim that one machine lasts forever. Valve’s survey states that hardware information informs product and technology decisions; no survey percentage or causal estimate is used. Cloud play shifts computing to the provider but retains device and network requirements.
+Evidence: circuit-game-pass, cyberpunk-plus-entry.
 
-Sources: alcorn-oral, steam-settlement, circuit-game-pass, steam-cloud, gfn-membership-terms, gfn-forza, gfn-game-pass, cyberpunk-ps-offer, cyberpunk-xbox-offer, cyberpunk-plus-entry, cyberpunk-pass-entry, cdpr-catalog-economics, valve-about, steam-hardware-survey, gfn-requirements.
+### The deal behind the subscription
 
-Editorial sequence: creative ambitions must reach people with suitable equipment; moving the equipment bill from operator to household supports a library of separately purchased games; catalog membership changes access to those games; cloud play moves the powerful machine to a provider while preserving device and network requirements. The market map carries the detailed combinations. Cyberpunk supplies the publisher’s consequential decision, and Valve’s distribution role connects the software market on player-owned computers to the next chapter.
+A studio can earn from that relationship even when fewer players buy its game. Consider Cyberpunk 2077, made and published by CD PROJEKT RED. The company sells copies through Steam, the PC store run by Valve, and through console stores such as Sony’s PlayStation Store. Each store takes its agreed share of the sale. A catalog offers another route: its operator can pay for permission to include the game, then use it to attract and retain subscribers.
 
-Reader payoff: understand how commercial arrangements create room and pressure for different kinds of creative work. Hardware is an active layer in this argument: it affects the price of joining, technical possibilities and the audience a studio can reach. That relationship prepares the later history and platform chapters. Following payments is the method, not the reason to read; the detailed offer inventory remains in the diagrams and their evidence notes.
+Evidence: cdpr-business, steam-settlement, cdpr-catalog-economics.
+
+Sony can also become a customer for the game. In July 2025, it added Cyberpunk to PlayStation Plus, a subscription catalog that let members play while it remained included, without buying an individual copy. CD PROJEKT knew that giving players this alternative would cost it some purchases. Asked about the effect, co-CEO Michał Nowakowski was direct: “So, there’s always a hit to current sales of the game when you launch on a subscription basis.”
+
+Evidence: cyberpunk-plus-entry, cdpr-catalog-economics.
+
+He nevertheless judged the agreement worthwhile. Sony paid for the right to include the base game; Phantom Liberty, its expansion, remained a separate purchase. CD PROJEKT believed the deal improved its overall return and brought more people within reach of that additional sale. Sony gained another attraction for its membership, while the publisher found another buyer for work it had already made. Fewer individual purchases could coexist with a better business result.
+
+Evidence: cdpr-catalog-economics.
+
+### A game you buy, a machine you hire
+
+Even the computer can become a separate service. A player can buy Cyberpunk through Steam, then pay NVIDIA’s GeForce NOW to run it on a remote machine. Their device receives the picture and sends back the controls; a suitable device and connection are still required. Valve handles the game sale, CD PROJEKT receives its share, and NVIDIA earns from providing the computing. Here the recurring payment rents the machinery. It does not turn the purchased game into a catalog subscription.
+
+Evidence: steam-cloud, gfn-membership-terms, gfn-requirements.
+
+The same work can therefore help sell a console, sustain a catalog or keep a remote computer occupied. Those businesses have found ways to earn from the desire to play beyond selling another copy. The attraction of a subscription makes this visible: access to something you enjoy becomes a relationship both sides must want to continue. How that relationship is paid for can change again once the offer moves inside the game itself.
+
+King, the Candy Crush studio Microsoft acquired, asks for no admission price. It can sell extra moves after a player has encountered a challenge and wants to overcome it. The arcade already knew the value of another chance; mobile freemium built an enormous audience around making payment optional. Here the next sale can grow out of playing the work someone already enjoys. Keeping that work enjoyable, and keeping it earning, become decisions made on the same board.
+
+Evidence: candy-offer, king-2014.

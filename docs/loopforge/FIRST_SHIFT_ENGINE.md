@@ -133,3 +133,12 @@ The beacon reads confirmed public receipts: production green, actual new losses 
 [Player desires and scenarios](PLAYER_DESIRES_AND_SCENARIOS.md) maps the owner’s expression goals to conditional Parts 01–02 situations and interface feedback. It is an authoring brief, not an extension of the implemented schema. Stable workers, accepted commands, physical consequences and received memories must support the eventual payoffs. A feeling of recognition cannot be supplied solely by generated dialogue.
 
 Expression labels belong to scenario coverage and playtest notes; do not add an inferred player personality or morality component. The same action can serve different intentions. Keep UI complexity independent from engine complexity: a concise commitment and known consequence can sit above detailed deterministic state. Preserve the existing authority, evidence and model-admission boundaries. Multi-day continuity, Theatre programmes and contextual public support remain implementation work.
+
+
+## Emergent arcs and visible status — design contract, 8 October 2026
+
+The core-loop study adds an authoring obligation, not an implemented runtime claim. Every Act 1 arc must connect a meaningful commitment to world changes, individual observations/interpretations, visible status and a next choice. See [CORE_LOOP_STUDY.md](CORE_LOOP_STUDY.md) for all five stage contracts and the UI presentation rules.
+
+Record stable subject IDs and causal links across commands, state transitions, seeded draws, information delivery, beliefs, intentions, actions and consequences. The player-facing status projection contains only permitted observations with source/time and available actions. Confirmed output, a supervisor's account and an unresolved rumour require distinct semantics. Hidden causes may produce observable behaviour, but no token may reveal a private loyalty number, a secret intention, or knowledge its audience has not received. Later authorised discoveries can explain earlier signs using the same event history.
+
+Presentation consumes these records; it does not create truth. A red accident impulse requires a physical accident, not merely a claim. A successful dispatch updates the quota and permanently commits those worker entities; a repair is unavailable until the first engineer arrives. Quiet success, failed rumours and absent evidence remain valid outcomes. LLM speech must earn its place against the authored baseline and cannot bypass recorded admission or knowledge limits. Replaying one day cannot validate the longer emergent trajectories.

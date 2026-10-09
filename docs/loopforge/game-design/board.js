@@ -90,5 +90,5 @@
   });
   window.addEventListener('hashchange',()=>openPanel(location.hash.slice(1),false));
   renderStage('line',false);renderRoute('order',false);renderPerson('limen',false);renderRumor('accident',false);renderBDI('blame',false);renderBeat('mandate',false);renderHorizon('minute',false);renderMechanic('flow',false);renderScreen('factory',false);renderAdviser('limen',false);
-  openPanel(location.hash.slice(1)||'arc',false);
+  openPanel(location.hash.slice(1)||'player-desires',false);
 })();

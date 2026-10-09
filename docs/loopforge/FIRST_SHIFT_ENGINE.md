@@ -1,5 +1,7 @@
 # First-shift engine and viewer contract
 
+Implementation boundary, 9 October 2026: this document describes the existing first-day kernel. The [conveyor room-puzzle proposal](CONVEYOR_MINIGAME_PROPOSAL.md) specifies a future spatial/tick extension; machinery placement, task routes and installation are not implemented by the documentation pass.
+
 Implementation: `apps/lab/lib/loopforge/first-shift/`. Public experience: `/stepanoskin/loopforge/play`. API: `POST /api/loopforge/first-shift`. Author-facing explanation: `/stepanoskin/loopforge/engine-notes`. The former eight-shift teaching console remains at `/stepanoskin/loopforge/play/teaching`; its engine and narration endpoint are separate and unchanged.
 
 ## Whole-day cadence — design target

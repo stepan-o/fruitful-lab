@@ -1,6 +1,6 @@
 {
   "title": "Loopforge game design",
-  "version": "Working draft · 8 October 2026",
+  "version": "Working draft · 9 October 2026",
   "purpose": "Trace the factory the player builds, the authority they establish and the society they inherit. This author reference connects the long arcs to player experience and the engine boundary, before balance and implementation.",
   "premise": "Keep a brain factory alive long enough to complete Brain 2.0. Every production decision also changes the minds making it possible.",
   "statusNote": "Agreed direction records the owner’s stated design. Four integrated producer-console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only these four appear in Settings; the old six remain historical studies and internal focused-screen materials. Runtime visual calibration, device checks and full-flow validation are underway, not complete. The opening is console → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser. Early close cannot bypass it; Settings, skin changes and menu/resume preserve acknowledgement and draft choices. Hardware uses registered CSS crops from clean plates, not separately generated alpha handsets. Owner visual/play feedback remains decisive. Later trajectories and mechanics remain proposals; historical sources do not override current decisions.",
@@ -29,9 +29,9 @@
       "text": "The player should understand the purpose of a choice and enjoy making it, seeing it unfold and living with its consequences. The simulation may contain deeper feedbacks than the UI reveals. The owner judges the first working prototype before the game is expanded for a wider audience."
     },
     {
-      "title": "The decision interfaces must carry the game",
+      "title": "Operate the factory; focus each decision",
       "status": "Agreed direction",
-      "text": "Build a playable core loop with asset-driven adviser briefings, assignments, incidents, allocation and debrief. The factory’s authored materials define almost every visible element. The future live 3D view adds cinematic observation of the same simulation; it is not a prerequisite for these interfaces to be enjoyable."
+      "text": "The common cinematic factory makes room puzzles and their consequences visible. Asset-driven adviser briefings, incidents, construction inspectors and dispatch handle distinct decisions around it. Both are parts of the core loop; the deterministic world is independent of either presentation."
     },
     {
       "title": "Truth stays clean. Story gets messy.",
@@ -639,12 +639,12 @@
       ]
     ],
     "economy": [
-      "Begin with one money-like resource and counts of basic and smart workers. Money funds development; daily operating purchases are not established.",
+      "Begin with money and basic/smart worker counts derived from worker entities. Machinery purchases compete with room unlocks and consume installation time; do not assume daily wages or another currency.",
       "The quota is due at the end of the week. Every day, allocate completed robots to the factory or the quota; the confirmed allocation is irreversible.",
-      "Payment timing, prices, excess deliveries and any later separate market remain open. Do not assume immediate payment, a weekly payday or daily wages from the quota deadline.",
+      "Payment timing, prices and excess deliveries remain open. The Conveyor mini-game study proposes opening funds plus daily quota progress payments to support early investment; this is not yet an accepted or implemented contract.",
       "Smart output is more valuable and retained smart workers improve advanced throughput. Define its place in the contract before adding another allocation destination.",
       "Engineering unlocks with Witch in Part 03. Repairs require engineering capability and time, with production forgone; a cash charge or purchased substitute engineer is not assumed.",
-      "Expose additional materials when their functions become relevant. The granularity of conveyor flow and buffers is still a systems choice; it does not require station staffing controls."
+      "Expose additional materials when their functions become relevant. The spatial conveyor proposal uses explicit batches, queues and worker task routes without per-station staffing controls."
     ],
     "workers": [
       "Every worker has an individual state from Act 1. Counts are an aggregate view of those individuals, not a substitute for them.",
@@ -811,7 +811,7 @@
     },
     {
       "title": "Visual scene and device budget",
-      "text": "First prove the asset-driven decision interfaces as a playable loop using sim-sim visual sources. The future 3D view has a separate scene and device budget; Babylon.js is a dated research candidate, not a committed dependency. Validate a representative conveyor bay before expanding it."
+      "text": "Prove the common cinematic factory with one spatial Conveyor puzzle and the existing focused decision interfaces. Select and benchmark a renderer using representative machinery, workers, lighting and small-screen interaction. Babylon.js remains a dated candidate, not a committed dependency; the deterministic kernel and KVP stay renderer-independent."
     },
     {
       "title": "Session pacing and live interventions",
@@ -831,7 +831,7 @@
     "The website's current teaching prototype is not the complete game described here. The six alternative prehistories and twenty bridge paintings remain explorations, not established canon.",
     "The accident aftermath is now a major Act 1 fork alongside Cathexis. It is likely on many operating paths but must be avoidable through sustained safety; no mastery gate should demand a disaster. BDI will affect actions, extending beyond the old read-only cognitive diagnostic layer.",
     "Day one has no inherited assignments. The first adviser proposes them. Quotas are weekly, daily output allocations are permanent, and engineering begins with Witch in Part 03. Earlier repair purchases and station-staffing examples are superseded.",
-    "8 October: the current first-day build is a functional baseline, but its entrance and visual treatment were rejected by the owner. The new target lands directly in the paused factory console and uses authored assets across the decision interfaces. Live 3D visualization is a later layer; old welcome/handover gates and a required animated-view prototype are superseded."
+    "9 October: the integrated producer-console baseline remains the entry and communications surface. The next prototype makes the common cinematic 3D factory an operating view for room puzzles, physical upgrades and worker feedback. Earlier observation-only 3D scope is superseded; asset-driven focused decision interfaces retain their jobs."
   ],
   "reviewQuestions": [
     "Can each trajectory reach Brain 2.0 for an understandable reason, rather than because its numbers were favoured?",
@@ -842,7 +842,7 @@
     "Can we explain why an outcome happened without making every future outcome predictable?",
     "Can a rumour genuinely fail, and can Thrum genuinely help, without either outcome being overridden by a prewritten crisis?",
     "Does each proposed arc create a character collision whose competing commitments and causal history can be watched and inspected?",
-    "Can the asset-driven interface prototype carry an enjoyable, legible core loop without the future live 3D factory, while leaving a clean place for that viewer to join?"
+    "Can the shared cinematic factory and focused decision interfaces make spatial changes, supervisor authority and individual consequences both enjoyable and legible, while other rooms keep operating?"
   ],
   "sources": [
     {
@@ -1490,7 +1490,7 @@
   },
   "experience": {
     "title": "Watch, understand, intervene",
-    "intro": "A whole daily cycle—not only production—targets about one minute, or two to three for heavier days. The asset-driven interfaces must carry adviser choice, structured advice, authorization, operation and permanent output allocation at that pace. The later live 3D factory observes the same world.",
+    "intro": "A whole routine day targets about one minute, two to three for heavier days. The next prototype centres operation in a common cinematic 3D factory: each room supplies a distinct puzzle, while adviser choice, structured briefings, incidents and allocation use focused interfaces. The Conveyor mini-game tab specifies the first proposal; the current runtime remains the earlier illustrated-console baseline.",
     "rhythmStatus": "Agreed: paused planning, continuous shifts and consequential decision pauses. Whole-day target: about one minute routine, two to three at most for heavier days.",
     "rhythm": [
       [
@@ -1512,12 +1512,12 @@
     ],
     "views": [
       [
-        "Illustrated room overview · now",
-        "Six room positions establish the factory: Conveyor and Security are available at entry; four bays are sealed. Asset-based camera scenes show permitted activity, assignments and consequences. A focused room and the decision interfaces carry the prototype without a live 3D renderer."
+        "Producer console · communications and overview",
+        "Six room positions, compact facts, incoming leadership calls, supervisor communication and navigation. Day one lands at the console with the leadership call as the only available action. Locked room screens stay dark."
       ],
       [
-        "Live 3D factory · later",
-        "A controlled spatial view shows workers, batches, breakdowns and supervisor interventions over authoritative ticks; repair activity appears only when engineering is available. Select a known entity or event to reach the same inspector and decision interfaces."
+        "Cinematic factory · next operating prototype",
+        "One shared 3D world shows room puzzles, worker tasks, machinery, queues and interventions over authoritative ticks. Room focus and build/inspection overlays support operation; switching views does not pause the world. Repair still requires engineering."
       ],
       [
         "Episode and evidence",
@@ -1639,7 +1639,7 @@
           "https://phaser.io/news/2026/04/migrating-from-phaser-3-to-phaser-4-what-you-need-to-know"
         ]
       ],
-      "boundary": "This dated research is neither an installed stack nor a delivery requirement for the first playable. The old live viewer supplies protocol and observation patterns, not proof of 3D readiness. A later renderer must pass visual and device tests against the same engine contract; no Loopforge renderer benchmark has been run.",
+      "boundary": "The dated renderer comparison is research, not an installed stack or a benchmark. The next prototype requires a common cinematic factory, while the final renderer selection still needs a representative room spike and device tests. The old viewer supplies protocol and observation patterns, not a finished 3D scene.",
       "performance": "Budget the expensive effects around the focal event: a few shadow-casting lights, reusable worker instances, restrained transparent smoke, cached static detail and bounded render resolution. Offer measured quality tiers with the same visual identity. Verify WebGL 2 and WebGPU paths on target devices; neither the API label nor a feature list establishes speed.",
       "spike": [
         "Build one representative conveyor bay with existing art, proxy geometry, workers, a moving batch and the alarm light. Test source–obstacle–surface alignment and moving reflections before adding more effects.",
@@ -1664,16 +1664,16 @@
     },
     "scope": [
       [
-        "Build now: the playable interfaces",
-        "Asset-driven adviser selection, structured comic-style briefings, assignment approval and overrides, incident decisions, daily allocation and debrief. Together with illustrated room views and the simulation, these must carry an enjoyable core loop without a 3D scene."
+        "Implemented baseline",
+        "Asset-driven leadership, adviser, briefing, assignment, incident and allocation interfaces exist with illustrated rooms. Preserve their functional contracts without treating that baseline as the full spatial game."
       ],
       [
-        "Add later: live cinematic factory",
-        "A tick-fed 3D view of workers, machinery, batches and interventions, following the old Sim4/KVP viewer’s world-observation direction. It adds spatial continuity and cinematic feedback; it does not replace the decision interfaces or own the rules."
+        "Next prototype: one spatial room puzzle",
+        "An editable conveyor chain, individual workers and machinery, real-time fixed ticks, physical upgrades, local policy and supervisor delegation. The common cinematic view becomes the operating surface. Prove one room before committing to five simultaneous puzzles."
       ],
       [
-        "Share the same world",
-        "Both layers consume knowledge-filtered state and semantic events and submit commands through the same boundary. No scene, animation, sound or model response can make an unaccepted action true. The prototype remains playable with the 3D view absent."
+        "Shared world, separate presentation",
+        "Focused interfaces and spatial views consume the same knowledge-filtered events and submit validated commands. A headless kernel remains possible; no animation, sound or model response creates world facts. The rendered operating prototype must prove spatial feedback, not rely on an unrelated decorative scene."
       ]
     ]
   },
@@ -1775,7 +1775,7 @@
     ],
     "determinism": "A replay is defined by initial state, rules version, random seed and ordered accepted external inputs—including model contributions and admission/fallback decisions. Replaying those records is deterministic. Calling a live model again is not promised to reproduce them. A stricter seed-and-player-inputs-only mode must freeze or exclude outcome-affecting model contributions.",
     "timing": "Late responses cannot alter committed history. Requests carry their context revision and admissible boundary; the host records acceptance, rejection or fallback. Slow verbal delivery can arrive later as presentation only when it cannot change the choice or its meaning. Player-facing cadence is a separate budget: the entire day targets about a minute, two to three for heavier days. Tick rate, simulation outcomes and model admission remain independent of that presentation target. UI reading pauses are not in-world lost production.",
-    "prototype": "The first-day build already uses a pure TypeScript kernel, explicit HTTP snapshots/diffs and a React viewer. The director-console revision provides asset-driven decision interfaces that carry the loop independently of 3D. A separate model adapter can be added when it earns its place. Later, a live tick-fed 3D client joins against the same versioned semantic contract; spatial data additions require explicit schema evolution. No renderer dependency enters the kernel, and no microservice fleet is required.",
+    "prototype": "The implemented first-day build uses a pure TypeScript kernel, explicit HTTP snapshots/diffs and a React viewer. The next conveyor proposal adds spatial machine/task state, fixed-tick operation, construction and shared policies behind a versioned contract. The common 3D operating view and existing focused decision interfaces consume that state; no renderer dependency enters the kernel. Model integration remains independent and must demonstrate value over the deterministic baseline.",
     "proof": [
       "Now: replay a fixture headlessly and through the illustrated decision interfaces; authoritative results match and the complete loop works without a graphics scene. Later: run the same fixture through the 3D view and compare the same event/command results.",
       "Disable or delay the model service; the factory continues with recorded fallback behaviour.",
@@ -1821,7 +1821,7 @@
         "name": "Read the living factory",
         "question": "Is this working as I intended?",
         "player": "Follow a batch or supervisor, notice a change, or select something to inspect. Most seconds require no input. Consequential decisions pause, so a missed visual cue is not a reflex penalty.",
-        "system": "Batches advance, output accumulates, equipment changes condition and supervisors act. Visible activity follows state and intentions; station animations do not introduce a station-staffing simulation.",
+        "system": "Batches, worker tasks, access routes, machine queues, equipment condition and supervisor actions drive continuous feedback. The next spatial conveyor proposal needs explicit station processing and worker task state, while keeping staffing automated rather than adding station allocation sliders.",
         "feedback": "In the current prototype, artwork state, readable instruments, physical control response, sound and persistent incident cues show accepted, queued, rejected and completed actions. Resolved adviser-room events remain visible; decisions elsewhere bring forward a response interface. The future 3D view adds continuous belt, queue and posture changes over the same events.",
         "reward": "The pleasure of a dense machine working, and recognition of a person’s characteristic behaviour. Visual variation helps identify meaningful changes.",
         "carry": "A visible hesitation or growing queue becomes a question for the minute loop. Inspection retains the event and its source rather than demanding the player remember a fleeting animation.",
@@ -1904,6 +1904,10 @@
       [
         "Assignment and operating mandate",
         "Choose the adviser, who selects the daily priority and proposes assignments. Accept or override particular placements. Overrides are remembered challenges to their judgment; the proposal remains distinct from the actual orders and their execution."
+      ],
+      [
+        "Physical line and local policy",
+        "Proposed next loop: place purchased machinery, alter connections and worker access, set a room policy, and operate pace/feed controls. Construction costs money and simulated downtime. General policies apply per room; repair remains unavailable until engineering."
       ],
       [
         "Intervention during the shift",
@@ -2084,7 +2088,7 @@
   },
   "uiDesign": {
     "title": "UI and simulation complexity",
-    "intro": "The asset-driven decision interfaces must make the core loop understandable, tangible and enjoyable before the live 3D factory exists. Engine depth, player knowledge, interface load and visual fidelity are separate axes. The later cinematic view enriches observation while preserving the same choices and consequences. The daily interface budget covers the whole one-minute day, with two to three minutes for heavier days; revealing more engine complexity must not require a longer mandatory reading route.",
+    "intro": "The next prototype combines a common cinematic operating view with focused asset-driven decision interfaces. Engine depth, player knowledge, interface load and visual fidelity are separate axes. Spatial machinery and worker tasks can be mechanically rich while the player sees one useful operating question. The whole routine day targets about one minute, two to three for heavier days; optional depth must not create a longer mandatory reading route.",
     "status": "Agreed separation · proposed interaction contracts",
     "axes": [
       [
@@ -2137,8 +2141,8 @@
         "Current day and phase, weekly quota progress and deadline, money, workforce counts and foreground issue. Do not reveal repair controls or worker conditioning state before their intended unlocks."
       ],
       [
-        "Illustrated factory overview · now",
-        "Asset-based room scenes, supervisor assignments, visible condition and incident markers ground the decisions. The later live 3D view selects the same known entities and events; it does not replace these interfaces."
+        "Cinematic factory and console overview",
+        "The common operating view shows actual worker tasks, machinery and room puzzles. The six-room console handles summary and communication. Both select the same known entities and events and lead to focused decision interfaces. This is the next prototype direction; the current runtime uses illustrated rooms."
       ],
       [
         "Context inspector",
@@ -2161,12 +2165,12 @@
       {
         "id": "flow",
         "name": "Conveyor and Security",
-        "stage": "First playable slice",
-        "see": "Room production, visible Conveyor activity, known equipment condition and each supervisor’s current action.",
-        "do": "Choose the adviser, then accept or override their proposed room assignments. During operation, inspect conditions and respond to available event recommendations outside their delegated room.",
-        "engine": "Resolve room operation, workforce availability, supervisor actions, equipment condition and completed output. Detailed station simulation is not required by the current core loop.",
+        "stage": "Next spatial prototype · proposed",
+        "see": "Individual workers, machinery, intake/assembly/outtake queues, routes and crossings; Security changes who reaches a post and when.",
+        "do": "Choose an adviser and assignments, then build or improve the chain, set local policy and use pace/feed controls. Incident authority stays with the adviser in their own room; elsewhere responses can be overridden.",
+        "engine": "Explicit task, route, machine, batch and worker component state is required for the proposed spatial puzzle. Detailed processing is simulated; staffing remains automated. The current first-day kernel does not implement this room puzzle.",
         "carry": "Completed output, wear, delayed work and witnessed overrides change the next local problem.",
-        "uiCost": "One room inspector and a clear operating question. No station staffing grid or station-by-station workforce allocation."
+        "uiCost": "One focused floor, contextual machinery inspector and paused construction view. One operating question at a time; no per-worker or station staffing grid."
       },
       {
         "id": "economy",
@@ -2508,13 +2512,13 @@
         "id": "factory",
         "name": "Factory",
         "verb": "Operate and intervene",
-        "summary": "An incoming leadership call leads day-one entry; explicit quota acknowledgement enables the daily adviser choice and paused planning. During operation, observe delegated decisions and accept or override recommendations elsewhere.",
+        "summary": "Day one begins at the producer console with the leadership call required before adviser choice and paused planning. The next prototype operates through the common cinematic factory, with room puzzles and contextual controls; focused interfaces handle consequential decisions.",
         "canvasLabel": "Factory workspace",
-        "canvasTitle": "Illustrated rooms now · live 3D later",
+        "canvasTitle": "Common cinematic factory · focused room puzzles",
         "canvasItems": [
-          "Asset-based room scenes, known condition and assignments",
-          "Conveyor + Security available; four bays sealed at entry",
-          "Future 3D view shares selection, events and decision interfaces"
+          "Actual workers, machines, queues, access routes and known condition",
+          "Conveyor + Security available; four rooms locked at entry",
+          "Console overview and focused decision interfaces share the same world"
         ],
         "inspectorTitle": "Context inspector",
         "inspectorItems": [
@@ -2524,15 +2528,15 @@
         ],
         "bottomTitle": "Physical receiver · selector · production control",
         "bottomText": "Distinct registered hardware owns receiving leadership, opening the adviser roster and starting authorized production. Early close cannot unlock gameplay. Read-only facts and original room feeds remain separate from the clean plate; later phase controls distinguish completed actions from recommendations.",
-        "primary": "Start → producer console → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser → roster/appointment → briefing and placements → authorize → start. End with permanent factory/quota allocation and debrief. Later days require real prior results; no live 3D view is needed for this loop.",
+        "primary": "Console → answer leadership → acknowledge quota → choose adviser → briefing and placements → authorize → operate the configured line. Inspect and improve machinery when useful; end with permanent factory/quota allocation and debrief. The spatial operating loop is proposed, not yet implemented.",
         "views": [
           [
             "Illustrated room overview · current scope",
             "Use original room scenes in shared calibrated glass within each integrated plate. Foundry, Broadcast and porcelain Obedience use six panes; Dispatch office uses one primary plus five. Two feeds begin live and four off. Focus a room without creating another world or exposing hidden state."
           ],
           [
-            "Live cinematic 3D floor · future scope",
-            "Continuous machinery, workers and consequential activity over authoritative ticks. Shares entity/event IDs, selection and existing decision interfaces. Its arrival adds observation rather than replacing the core loop."
+            "Live cinematic floor · next prototype",
+            "Continuous machinery and workers over authoritative ticks, with editable physical chain, room policy and pace/feed controls. The common view supports individual room puzzles without creating separate simulation instances."
           ]
         ],
         "panels": [
@@ -2558,7 +2562,7 @@
           ]
         ],
         "time": "Planning and the morning briefing are paused. The adviser’s room events resolve automatically during the live shift; response decisions elsewhere pause for acceptance or override. Ordinary selection preserves the clock state.",
-        "mobile": "Wide view retains the complete six-camera console. Tall portrait uses dedicated portrait art with 2×3 glass and a control bay. Small/short displays show one camera plus six channels; compact landscape places a large camera left and controls right. Selected camera, run, acknowledgement and pending decision persist through resize without remounting. All four portrait plates are generated, catalogued and implemented; visual QA and responsive verification remain underway. Focused briefing/decision panels keep readable text and touch targets; later 3D is optional.",
+        "mobile": "Wide view retains the complete six-camera console. Tall portrait uses dedicated portrait art with 2×3 glass and a control bay. Small/short displays show one camera plus six channels; compact landscape places a large camera left and controls right. Selected camera, run, acknowledgement and pending decision persist through resize without remounting. All four portrait plates are generated, catalogued and implemented; visual QA and responsive verification remain underway. Focused briefing/decision panels keep readable text and touch targets; the proposed spatial floor uses one focused room with a contextual bottom sheet rather than shrinking the complete factory.",
         "engine": "Displays permitted snapshots, changes and semantic events. Assignment and operating controls submit commands; acceptance, pending execution and actual outcome are distinct states. Initial assignments are empty. Allocation commands cannot reverse prior commitments, and repair requires an engineer."
       },
       {
@@ -2664,8 +2668,12 @@
           "Theatre, Brewery, Weaving and Cortex Assembly. Investment is combined with capability and commissioning requirements."
         ],
         [
-          "Process improvements",
-          "Candidate process improvements must alter a real tradeoff. Engineering capability is first introduced by Witch in Part 03; an early upgrade cannot quietly bypass that progression."
+          "Physical machinery",
+          "Alternative intake, assembly, outtake and protection projects alter the visible production chain. Standard installation consumes money and time; it cannot repair damage or grant engineering capability before Witch."
+        ],
+        [
+          "Shared policies, applied locally",
+          "A reusable catalog of checks, work rhythm and disclosure commitments applies per room where relevant. Persistent orders change task execution and information, not world truth. Policy points are not an added currency."
         ],
         [
           "Special projects",
@@ -3362,7 +3370,7 @@
     "interfaces": [
       [
         "Producer console",
-        "Recurring home: compact facts, current adviser and delegation, room activity, pending decisions and recoverable outcome receipts."
+        "Communications and factory overview: compact facts, incoming leadership calls, room state and navigation. The next prototype moves continuous room operation into the common cinematic factory."
       ],
       [
         "Leadership call",
@@ -3375,6 +3383,10 @@
       [
         "Brief and placement controls",
         "Structured speech and proposed arrangement. A quicker approval path is proposed, not implemented. Detailed changes remain available and still require authorization."
+      ],
+      [
+        "Cinematic floor and machinery inspector",
+        "Proposed shared operating view for each room puzzle. Show workers and machinery, expose pace/feed controls, and open construction or policy inspection on demand. Camera changes do not alter simulation."
       ],
       [
         "Room focus and incident dialog",

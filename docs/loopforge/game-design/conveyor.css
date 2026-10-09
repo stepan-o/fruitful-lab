@@ -1,0 +1,46 @@
+.conveyor-study{--cv-amber:#e6b773;--cv-cyan:#85c2bc;--cv-danger:#dc8767;min-width:0}
+.conveyor-study p{max-width:78ch}
+.conveyor-study h3{margin-top:34px}
+.conveyor-study h4{font-size:19px;line-height:1.35}
+.cv-direction{padding:16px 0;color:var(--muted);font-size:14px}
+.cv-thesis{border-left:3px solid var(--cv-amber);background:#d8b77c09;padding:22px 26px;margin:10px 0 28px}
+.cv-thesis p{font-family:var(--serif);font-size:25px;line-height:1.45;margin:10px 0 0}
+.cv-fun{display:grid;grid-template-columns:1fr 1fr;gap:12px 30px;margin:20px 0}
+.cv-fun article{border-top:1px solid var(--line);padding-top:16px}
+.cv-fun p,.cv-chain p{color:var(--muted);font-size:14px;line-height:1.65;margin:8px 0}
+.cv-chain{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+.cv-chain li{border-top:1px solid var(--line);padding:17px 0}
+.cv-chain strong{color:var(--cv-cyan);font-size:15px}
+.cv-layouts{margin:40px 0;padding-top:24px;border-top:1px solid var(--line)}
+.cv-layouts h3{margin-top:8px}
+.cv-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:22px 0}
+.cv-choices button{min-height:52px;text-align:left;padding:12px 14px;font:inherit;font-size:14px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.cv-choices button[aria-pressed=true]{background:#e6b77310;border-color:var(--cv-amber);color:var(--cv-amber)}
+.conveyor-study :focus-visible{outline:2px solid var(--cv-cyan);outline-offset:4px}
+.cv-map-scroll{overflow-x:auto;overscroll-behavior-inline:contain;border:1px solid var(--line);margin:18px 0 0;max-width:100%}
+.cv-map{display:block;width:100%;min-width:560px;height:auto;color:#dfdac7;font:15px var(--sans, sans-serif)}
+.cv-map text{fill:currentColor}.cv-map .cv-map-label{font-size:12px;letter-spacing:2px;fill:#aaa58c}
+.cv-machine{fill:#30352a;stroke:#c5ad78;stroke-width:1.5}
+.cv-belt{fill:none;stroke:#b99353;stroke-width:13;stroke-linejoin:round}
+.cv-walk{fill:none;stroke:#85c2bc;stroke-width:3;stroke-dasharray:7 5}
+.cv-risk{fill:#bf523b44;stroke:#dc8767;stroke-width:2}
+.cv-map .cv-note{fill:#d9b899;font-size:12px;letter-spacing:1px}
+.cv-leader{fill:none;stroke:#d9b899;stroke-width:1}
+.cv-guard{stroke:#c7c8a6;stroke-width:4;stroke-dasharray:4 2}
+.cv-worker{fill:#162723;stroke:#9de0d6;stroke-width:2}
+.cv-map-legend{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0;color:var(--muted);font-size:12px}
+.cv-map-legend span{display:flex;align-items:center;gap:8px}
+.cv-map-legend i{display:inline-block;width:19px;height:4px;background:var(--cv-amber)}
+.cv-map-legend .cv-key-worker{background:var(--cv-cyan)}.cv-map-legend .cv-key-risk{background:var(--cv-danger)}
+.conveyor-study .cv-caption{font-size:12px;color:var(--muted);margin:12px 0 22px}
+.cv-facts{margin:16px 0 24px}
+.cv-facts>div{display:grid;grid-template-columns:minmax(120px,23%) 1fr;gap:22px;border-top:1px solid var(--line);padding:15px 0}
+.cv-facts dt{color:var(--cv-amber);font-size:14px;font-weight:600}.cv-facts dd{margin:0;color:var(--muted);font-size:14px;line-height:1.7;overflow-wrap:anywhere}
+.cv-section{margin:0;border-top:1px solid var(--line);padding:0}
+.cv-section summary{display:flex;gap:14px;padding:19px 28px 19px 0;line-height:1.45;font-size:17px;cursor:pointer;color:var(--text)}
+.cv-section summary span{color:var(--cv-amber);font-size:12px;padding-top:4px}
+.cv-section>p{color:var(--muted);font-size:14px;line-height:1.7}
+.cv-source a{font-size:12px;overflow-wrap:anywhere}
+.record .conveyor-study .cv-map-scroll{margin:20px 0;break-inside:avoid}
+@media(max-width:600px){.cv-fun,.cv-chain{grid-template-columns:1fr}.cv-choices{grid-template-columns:1fr}.cv-choices button{min-height:48px}.cv-thesis{padding:18px}.cv-thesis p{font-size:22px}.cv-facts>div{grid-template-columns:1fr;gap:7px}.cv-facts dd{font-size:15px}.cv-section summary{font-size:16px}.cv-fun p,.cv-chain p{font-size:15px}}
+@media print{.cv-choices{display:none}.conveyor-study [data-conveyor-layout][hidden]{display:block!important}.cv-map{min-width:0}.cv-map-scroll{overflow:visible}.cv-section{break-inside:auto}.cv-fun{display:block}.cv-facts>div{break-inside:avoid}.cv-thesis{background:none}.cv-map-legend{color:#343d35}.cv-map-legend i{print-color-adjust:exact}}

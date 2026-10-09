@@ -1,6 +1,6 @@
 {
   "title": "Core loop study",
-  "date": "8 October 2026",
+  "date": "9 October 2026",
   "thesis": "What makes me want another turn?",
   "intro": "A useful core loop describes a recurring player decision, its consequence, and the reason to act again. The reward might be mastery, a working machine, a discovery, or a world that answers back. Loopforge needs the satisfaction of making a factory—and a way of leading—your own.",
   "status": "Research synthesis and design proposals. These are overlapping design lenses, not an official taxonomy, exhaustive genres or validated balance. The examples describe selected loops within each game.",
@@ -293,7 +293,7 @@
           "caption": "Parallel streams and repeated machines make scale readable without opening a report. Compare the composition with the smaller network; these are separate gallery examples, not a before/after save."
         }
       ],
-      "lesson": "Loopforge inference: the console should show where production is moving or backing up. A room status token should identify the constraint; opening that room should reveal the relevant evidence. We borrow legibility, not Factorio’s belt-building mechanic."
+      "lesson": "Loopforge inference: production should visibly move or back up around a real constraint. The 9 October conveyor proposal now includes physical chain construction and upgrades; the cinematic floor shows their consequences while the console summarizes them. Borrow legibility and spatial causality without inheriting Factorio’s full logistics scale."
     },
     {
       "title": "Put the commitment in the foreground",
@@ -350,7 +350,7 @@
   "conclusions": [
     [
       "Primary loop · leadership through production",
-      "Read yesterday’s facts → choose whose judgement to back → hear and commit the plan → watch the shift and handle exceptions → permanently allocate output → meet the consequences next day. The adviser choice stays central even as the factory expands."
+      "Read yesterday’s facts → choose whose judgement to back → commit the plan and improve the chain when useful → operate and respond → permanently allocate output → meet the consequences next day. Adviser choice, spatial construction and live flow control connect different scales of agency."
     ],
     [
       "Three connected satisfactions",

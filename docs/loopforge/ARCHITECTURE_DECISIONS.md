@@ -1,5 +1,7 @@
 # Loopforge implementation decisions
 
+9 October 2026 — [Conveyor mini-game proposal](CONVEYOR_MINIGAME_PROPOSAL.md) is the current direction for the next operating prototype. Each room is a distinct puzzle within a common cinematic 3D factory; the console handles overview and communications. Physical machinery, routes, shared policies applied per room and supervisor delegation supply player agency during production. This supersedes the earlier scope of a later observation-only 3D view. The existing illustrated-console runtime remains the implemented baseline; this study adds no simulation features.
+
 Started 3 October 2026; rendering scope updated 8 October. The original bounded
 teaching demo and the current first-day prototype are distinct implementations.
 Neither claims feature parity with the Python project. See
@@ -12,7 +14,7 @@ effects. Their editorial diagrams do not establish the material language of the
 game UI. The landing conveyor now combines authored assets and procedural
 motion/lighting; its physical feeling remains the game-interface reference.
 
-The current game deliverable is **asset-driven decision interfaces with
+The implemented baseline is **asset-driven decision interfaces with
 illustrated factory context**. Use the original sim-sim UI assets and patterns
 for cameras, plates, resource symbols, character dialogue, controls and
 settlement. Native layout, text, semantics and hit areas provide usability;
@@ -24,9 +26,7 @@ with a separate immutable `loopforge-console` pack, two new portraits and
 authored normal/hover/pressed control states. It adds no rendering dependency
 and changes no kernel or viewer protocol. See `UI_REBUILD_VALIDATION.md`.
 
-The future **live tick-fed 3D factory** is a separate presentation layer. It must
-join the same adviser/incident/allocation interfaces and knowledge-filtered
-protocol, while the core loop remains playable without it. The old Sim4/KVP
+The next **live tick-fed 3D factory** is a separate renderer but a central operating interface for the proposed room puzzles. It joins adviser/incident/allocation interfaces through a knowledge-filtered protocol. The kernel remains headless and independent of the renderer; the playable spatial prototype must prove its own visual feedback. The old Sim4/KVP
 viewer is an implemented Pixi isometric scene; Sim5's broader viewer stack is a
 strategy reference. Do not mistake either for an inherited finished 3D scene.
 
@@ -42,7 +42,7 @@ No claim that one choice is universally fastest. Performance depends on the
 scene, hardware, browser and implementation. The board retains the dated
 7 October capability comparison; recheck it before a future renderer selection.
 Visual quality, interface load, engine depth and model capability are separate
-axes. Prove the core decision loop now, and benchmark the later scene separately.
+axes. Prove the spatial operating loop with representative content and benchmark rendering independently of kernel correctness.
 
 Sources checked 2026-10-03:
 - https://pixijs.com/8.x/guides/components/renderers

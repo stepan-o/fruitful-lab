@@ -1,5 +1,7 @@
 # Loopforge — the interface belongs to the factory
 
+9 October 2026 — [Conveyor mini-game proposal](CONVEYOR_MINIGAME_PROPOSAL.md) is the current direction for the next operating prototype. Each room is a distinct puzzle within a common cinematic 3D factory; the console handles overview and communications. Physical machinery, routes, shared policies applied per room and supervisor delegation supply player agency during production. This supersedes the earlier scope of a later observation-only 3D view. The existing illustrated-console runtime remains the implemented baseline; this study adds no simulation features.
+
 Owner direction, 8 October 2026. Applies to the landing, playable console, camera views, briefings and future live factory. Read alongside the repository’s [design and performance standards](../DESIGN_AND_PERFORMANCE_STANDARDS.md).
 
 **Latest owner review:** the focused-screen/material direction is improved. This pass separates the adviser roster and weekly leadership call, strengthens factory feedback and tests a five-supervisor selection layout. The call may drop console chrome entirely. See [living-console direction](LIVING_CONSOLE_DIRECTION.md) and [cinematic surfaces](CINEMATIC_INTERFACE_DIRECTION.md). Automated checks do not establish owner visual/enjoyment acceptance.
@@ -16,7 +18,7 @@ Direct artwork, transitions, typography, lighting, motion, SFX and eventually mu
 
 The player’s central first-day choice is whom to trust with authority. The resulting production line gives that choice tangible meaning. The quota supplies continuing pressure; the workforce and equipment reveal what output costs. Clear information and enjoyable play take priority over exposing the whole simulation.
 
-## Current delivery: the interfaces carry the game
+## Earlier delivery: the asset-driven interface baseline
 
 Owner clarification, 8 October 2026: build the **asset-driven decision interfaces** now. Adviser selection, structured briefing, assignment approval and overrides, incident responses, permanent allocation and debrief must carry the core loop as a playable prototype on their own, supported by illustrated room scenes and the authoritative simulation. They are substantive game interfaces, not temporary menus waiting for a renderer to make the game interesting.
 
@@ -26,7 +28,7 @@ The old working world viewer is the Sim4/KVP **Pixi isometric renderer**, with w
 
 ## Entry and visual hierarchy
 
-Start shift opens an illustrated weekly planning call with leadership. Its original art fills the viewport, with an uneven soot vignette and lower captions/results. It presents the opening handover and quota; later weeks should review real prior performance. Returning reveals the paused six-camera console, two rooms live and four dark, with no assignments. Only a compact quota summary and Choose adviser action belong on this wall.
+Start shift lands at the producer console with an incoming leadership call as the only available action. Answering opens the illustrated weekly planning call. Its art can fill the viewport, with an uneven soot vignette and lower captions/results. It presents the opening handover and quota; later weeks should review real prior performance. Returning reveals two live cameras and four dark screens, with no assignments. Only a compact quota summary and Choose adviser action belong on this wall.
 
 Adviser selection has a dedicated five-or-more-person roster. Current pitches and focused priority/tradeoff details explain the choice before appointment. Once committed, the selected adviser’s structured brief owns the screen, followed by placements and explicit authorization. A physical Start the line control then releases production. No duplicated full briefings or persistent tutorial column on the factory view.
 

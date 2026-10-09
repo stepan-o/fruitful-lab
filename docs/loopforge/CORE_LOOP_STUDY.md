@@ -1,6 +1,6 @@
 # Core loop study
 
-8 October 2026
+9 October 2026
 
 *Generated from game-design/core-loop-study.json and core-loop-media.v1.json.*
 
@@ -210,7 +210,7 @@ Factorio · © Wube Software. All rights reserved.
 
 [Official source](https://www.factorio.com/game/screenshots)
 
-Loopforge inference: the console should show where production is moving or backing up. A room status token should identify the constraint; opening that room should reveal the relevant evidence. We borrow legibility, not Factorio’s belt-building mechanic.
+Loopforge inference: production should visibly move or back up around a real constraint. The 9 October conveyor proposal now includes physical chain construction and upgrades; the cinematic floor shows their consequences while the console summarizes them. Borrow legibility and spatial causality without inheriting Factorio’s full logistics scale.
 
 ### Put the commitment in the foreground
 
@@ -262,7 +262,7 @@ Loopforge inference: yesterday’s confirmed output, an adviser’s explanation 
 
 ## Conclusions for Loopforge
 
-**Primary loop · leadership through production.** Read yesterday’s facts → choose whose judgement to back → hear and commit the plan → watch the shift and handle exceptions → permanently allocate output → meet the consequences next day. The adviser choice stays central even as the factory expands.
+**Primary loop · leadership through production.** Read yesterday’s facts → choose whose judgement to back → commit the plan and improve the chain when useful → operate and respond → permanently allocate output → meet the consequences next day. Adviser choice, spatial construction and live flow control connect different scales of agency.
 
 **Three connected satisfactions.** Make the machine work. Shape what kind of leader you are. Discover what your choices have done to people. Each should feed the others; story cannot be interchangeable flavour pasted onto a production score.
 

@@ -1,3 +1,18 @@
+# Subscription and King — narrative revision, 8 October 2026
+
+Current checkpoint. Chapters 2–3 are organized around earning again from a work and an audience that already exist. King’s browser origins, small-team process, stated buyer’s-remorse principle, acquisitions and long-term maintenance replace the earlier sequence of product/business facts. The links to Diablo and Valve are explicitly comparative, with no unsupported direct-influence claim. Chapter 1 remains byte-for-byte equivalent as a content record.
+
+Chapter 2 has one explicitly selected subscription inscription, with a bounded crescent glow. Other mentions remain ordinary text. The existing visibility observer and motion preference control it; no new animation loop, request, dependency or image is introduced. Optional `Chapter.inscriptions` is editorial metadata, not inferred from every keyword occurrence.
+
+Verification:
+- Required app CI: 74 suites, 387 tests, one snapshot, asset release checks and production build pass.
+- Scoped React/TypeScript lint and whitespace checks pass. React skill review: existing deferred exhibits and chapter-scoped images preserved; no new fetching or per-frame React state; stable text/citation structure; motion gating retained.
+- Both chapter manuscripts and the complete manuscript match runtime paragraphs; paragraph citations and exhibit placements resolve. Approved chapter 1 matches the preceding commit.
+- Built production preview checked at normal desktop size and 390/320px widths. One inscription appears in chapter 2; it pauses with the global Motion control. No horizontal page overflow or broken loaded images was observed.
+- Candy Crush title, original studio artwork and revised copy render. The offer diagram still switches between free play and optional assistance. No console errors were observed.
+
+Primary research and interpretation boundaries: `KING_NARRATIVE_RESEARCH_2026-10-08.md`. The records below are earlier checkpoints, not the current paragraph counts or sequence.
+
 # Activision, Blizzard and King — mobile interlude, 8 October 2026
 
 Chapter 2 now identifies the distinct businesses inside Microsoft's acquisition through an official-art triptych. Each card separates the original franchise studio from the pictured release's makers and publisher: Infinity Ward / Treyarch and Raven, Blizzard North / Blizzard Entertainment, and King. Gameplay mounts only when selected. Source and use links accompany every plate; embedded media are included in the chapter credit index and its server-filtered asset manifest.

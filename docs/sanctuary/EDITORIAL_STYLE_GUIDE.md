@@ -51,3 +51,9 @@ Before presenting a draft, read it without the illustrations: does the argument 
 Introduce a game through the role it plays in the argument. In a chapter about distribution, its release, customer relationship and route to market matter; a plot synopsis usually does not. Prefer its official logo, menu or promotional artwork when identifying the product. Use gameplay when the mechanics or play experience are actually being examined.
 
 Explain company transitions through documented problems, decisions and consequences. Valve’s update distribution, third-party sales and work on compatibility are examples. Generic claims about innovation or enduring success cannot substitute for the mechanism. Keep our economic interpretation distinct from a company’s own account.
+
+## An economic argument, not two inventories
+
+Do not organize a chapter as player-visible facts followed by business facts. Identify what changes in the economics of creative work, then use the people, decisions, numbers and anecdotes needed to make that change intelligible. For King, the argument is that the next sale can happen inside an existing work: decisions about challenge and progress help create both enjoyment and the value of assistance. Its promise of avoiding buyer’s remorse and its continuing maintenance work expose the tension and cost behind that opportunity.
+
+Treat subscription, freemium and paid releases as coexisting arrangements. The order in which the essay introduces them is not their historical order. A visual “devil’s smile” emphasizes the attraction and recurring commitment of an offer; it does not establish that its seller is a villain or its customer was deceived.

@@ -172,8 +172,8 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       <h2 key={section.title}>{section.title}</h2>
                     ))}
                   <p>
-                    {["the-fork","platform-business"].includes(current.id)
-                      ? paragraph.split(/\b(subscription|future sales|the gap)\b/).map((text, segment) => text === "subscription" || text === "future sales" || text === "the gap"
+                    {(current.inscriptions?.[paragraphIndex] || ["the-fork","platform-business"].includes(current.id))
+                      ? paragraph.split(/\b(subscription|future sales|the gap)\b/).map((text, segment) => (text === "subscription" || text === "future sales" || text === "the gap") && (!current.inscriptions?.[paragraphIndex] || text === current.inscriptions[paragraphIndex])
                         ? <InfernalTerm key={segment} tone={text === "the gap" ? "abyss" : text === "future sales" ? "spectral" : "subscription"}>{text}</InfernalTerm>
                         : text)
                       : paragraph}

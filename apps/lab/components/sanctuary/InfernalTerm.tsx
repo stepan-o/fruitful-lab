@@ -65,6 +65,7 @@ export default function InfernalTerm({ children, tone = "subscription" }: { chil
         <path d="M111 55L115 63L120 58L125 63L129 55"/>
         <path d="M51 17l5 -3v6ZM189 47l-5 -3v6Z" fill="#edba7c"/>
       </g>
+      <path className={styles.smile} d="M88 49Q120 64 152 49Q139 61 120 62Q101 61 88 49Z" fill="#f4bc78"/>
       <path className={styles.seam} d="M32 52h51l37 7 37-7h51" fill="none" stroke="#e59950" strokeWidth="1"/>
       <g className={styles.sparks} fill="#e7b677"><circle cx="42" cy="18" r=".9"/><circle cx="194" cy="15" r=".8"/><circle cx="157" cy="9" r=".55"/></g>
     </svg>

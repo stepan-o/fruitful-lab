@@ -34,7 +34,7 @@ In the first months after the PlayStation 5 launched in November 2020, Sony was 
 
 Evidence: sony-ps5-launch-economics.
 
-By the year ending March 2026, Sony’s gaming business was reporting annual revenue equivalent to roughly US$31.1 billion at that year’s average exchange rate. That was more than its music and pictures businesses combined. Consoles accounted for US$6.3 billion. PlayStation games and add-ons brought in US$16.9 billion, while network services, including PlayStation Plus and advertising, supplied another US$5.1 billion. Peripherals, games sold on other platforms and the remaining business contributed roughly US$2.9 billion. The machine was the beginning of a much larger market around it.
+By the year ending March 2026, Sony’s gaming business was reporting annual revenue equivalent to roughly US$31.1 billion at that year’s average exchange rate. That was more than its music and pictures businesses combined. Consoles accounted for US$6.3 billion. PlayStation games and add-ons brought in US$16.9 billion, while network services, including PlayStation Plus and advertising, supplied another US$5.1 billion. Peripherals, games sold on other platforms and the remaining business contributed roughly US$2.9 billion. Sales of the consoles themselves accounted for about a fifth of the total.
 
 Evidence: sony-fy2025-scale.
 
@@ -60,13 +60,15 @@ NVIDIA can earn from those games without owning the studios that make them. Its 
 
 Evidence: nvidia-gaming-history, gfn-membership-terms.
 
-Across PlayStation, Xbox and NVIDIA, a game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it, or pays NVIDIA to run a copy they already own. The publisher sells the work, while the hardware maker, store and catalog operator earn from different purchases connected to it. By the time we reach a shop inside a game, several businesses already have an interest in what its players will buy next.
+For the player, much of this business remains out of sight. Its most inviting offer is easy to recognize: a subscription puts a library within reach without asking you to buy every game you want to try. The operator has a different reason to value that abundance. Each appealing addition can help persuade someone to stay for another paid month. A game’s audience has become valuable to businesses selling an ongoing relationship with many games at once.
+
+Evidence: circuit-game-pass, cyberpunk-plus-entry.
 
 ### The deal behind the subscription
 
-Cyberpunk 2077, a game sold for PCs and consoles, lets us follow those relationships through one work. CD PROJEKT RED, the studio that makes and publishes it, pays for the development team and brings the finished work to market through launch campaigns and store agreements. Selling it through Steam, the PC store operated by Valve, brings another business into the arrangement. Valve provides the shop, checkout and downloads, then pays CD PROJEKT its agreed share after adjustments such as refunds and taxes. Buy through PlayStation Store instead, and Sony occupies that position while also supplying the console on which the game runs.
+A studio can earn from that relationship even when fewer players buy its game. Consider Cyberpunk 2077, made and published by CD PROJEKT RED. The company sells copies through Steam, the PC store run by Valve, and through console stores such as Sony’s PlayStation Store. Each store takes its agreed share of the sale. A catalog offers another route: its operator can pay for permission to include the game, then use it to attract and retain subscribers.
 
-Evidence: cdpr-business, steam-settlement, cyberpunk-ps-offer.
+Evidence: cdpr-business, steam-settlement, cdpr-catalog-economics.
 
 Sony can also become a customer for the game. In July 2025, it added Cyberpunk to PlayStation Plus, a subscription catalog that let members play while it remained included, without buying an individual copy. CD PROJEKT knew that giving players this alternative would cost it some purchases. Asked about the effect, co-CEO Michał Nowakowski was direct: “So, there’s always a hit to current sales of the game when you launch on a subscription basis.”
 
@@ -82,64 +84,67 @@ Even the computer can become a separate service. A player can buy Cyberpunk thro
 
 Evidence: steam-cloud, gfn-membership-terms, gfn-requirements.
 
-These arrangements widen the business of creative work beyond the next copy sold. A publisher can reach individual buyers through a store, license a game to a catalog, or use both routes at different points in its life. Around that work, other companies sell equipment, computing and access to collections. Their agreements determine how the audience’s interest becomes income for each of them—and how much of that income can finance the work still to come.
+The same work can therefore help sell a console, sustain a catalog or keep a remote computer occupied. Those businesses have found ways to earn from the desire to play beyond selling another copy. The attraction of a subscription makes this visible: access to something you enjoy becomes a relationship both sides must want to continue. How that relationship is paid for can change again once the offer moves inside the game itself.
 
-King takes that separation further. Its best-known game could reach someone who had never bought an Xbox, a PlayStation or a full-price PC release. Candy Crush asked for no admission price at all. Yet Microsoft’s acquisition brought it a business that had been earning from that invitation for more than a decade. To understand what the company was buying, we need to leave the console behind for a moment and look at a much smaller screen.
+King, the Candy Crush studio Microsoft acquired, asks for no admission price. It can sell extra moves after a player has encountered a challenge and wants to overcome it. The arcade already knew the value of another chance; mobile freemium built an enormous audience around making payment optional. Here the next sale can grow out of playing the work someone already enjoys. Keeping that work enjoyable, and keeping it earning, become decisions made on the same board.
 
-Evidence: king-twenty, candy-offer.
+Evidence: candy-offer, king-2014.
 
-## 3. Candy Crush: the price comes later
+## 3. Candy Crush: a business inside the game
 
-A few spare minutes became a business worth buying twice.
+The next sale could come from the game someone already loved.
 
 When Candy Crush Saga arrived on Facebook in 2012, it offered 65 levels. Eleven years later, its maker King was preparing level 15,000. By company tradition, the newest designers got to make the milestone level. A game that fit into a few spare minutes had become a continuing production: new puzzles for people who had been playing for years, made by colleagues who had only just arrived.
 
 Evidence: king-launch, king-twenty.
 
-King had been making browser games since 2003. Facebook brought its puzzles into a place where people already spent time with friends; phones let the same kind of play travel with them. Candy Crush Saga reached mobile in late 2012. There was no console to buy, and no need to decide whether a game deserved the price of a boxed release before trying it. The invitation was small enough to accept almost casually: swap a few sweets, clear a board, see what comes next.
+King began in 2003 with games played in a web browser. Its early business included paid skill tournaments: players entered competitions, and King kept a commission. It made games and ran its own portal, while also reaching customers through sites such as Yahoo. Several jobs from our business diagram already belonged to the same company, long before Microsoft acquired it.
 
 Evidence: king-mobile-launch.
 
-That invitation describes the pleasure, but also the business. Candy Crush is a match-three puzzle: line up candies to clear them, working toward a level’s goal with a limited supply of moves. Entry is free. Optional purchases can provide extra moves or tools called boosters that help clear a difficult board. This is freemium: the game can be enjoyed without paying, while particular advantages are offered for sale within it. By the time someone considers a purchase, they already know what another chance would mean.
+King’s method was to try many small ideas. Its 2014 prospectus described teams of three developing new games in about twenty weeks, then testing them with its existing audience. Promising games could become a Saga: a sequence of challenges, with progress to carry between sessions and friends whose progress they could follow. Candy Crush Saga reached Facebook and then phones in 2012.
+
+Evidence: king-mobile-launch, king-launch.
+
+The phone gave that sequence somewhere to live throughout the day. Candy Crush is a match-three puzzle: line up sweets to clear them, pursuing a goal within a limited number of moves. Starting costs nothing. If a board proves difficult, extra moves or tools called boosters can be bought to help. This freemium offer lets the game establish its value through play before asking whether a particular purchase is worth making. The player has already met the challenge that gives the offer its meaning.
 
 Evidence: candy-offer.
 
-### Most players did not pay
+### The next sale is already inside
 
-King’s early accounts contain a useful surprise. It stopped selling advertising space in 2013, yet reported US$2.26 billion in revenue and US$575 million in profit the following year. Most of its audience was not buying anything in a typical month. In the final quarter of 2014, King reported an average of 356 million monthly unique users and 8.3 million monthly unique payers across its games—about 2.3%. A small paying share could sustain a very large business when the invitation reached enough people.
+Most of King’s audience did not pay in a typical month. In the final quarter of 2014, its average monthly figures were 356 million unique users and 8.3 million unique payers across its games—about 2.3%. Yet the company reported US$2.26 billion in annual revenue and US$575 million in profit. It had even stopped selling advertising the previous year. An audience could enjoy the work largely for free while a small paying share supported a substantial creative business.
 
-Evidence: king-platform-costs, king-2014.
+Evidence: king-2014, king-platform-costs.
 
-The creative task had changed with the offer. A boxed game had to persuade someone that the whole work was worth buying. Here, the work could make its case through play, with a purchase available at a particular moment inside it. The studio needed puzzles people wanted to solve and reasons to keep solving them. It also needed to decide what help to sell. Challenge, satisfaction and the value of assistance now met on the same board. Their relationship is something we will examine, rather than assume that every obstacle exists to force a payment.
+The scale matters because the sale now happened within the experience the studio was designing. A puzzle needed to be difficult enough to make solving it satisfying; that difficulty could also make help worth buying. Another level gave someone a reason to return, and another occasion on which a purchase might become useful. King could keep developing a successful game while continuing to earn from it. The same decisions about challenge and progress now served both the pleasure of playing and the value of the offer.
 
-### The company inside the acquisition
+King described the limit in plain terms: “We believe preventing buyer’s remorse drives long-term customer retention.” That was its stated principle, not proof that every player felt well served. But it identifies the problem a continuing business has to solve. A sale that leaves someone regretting their time with the game can cost more than the money it brings in.
 
-By 2016, King was valuable enough for Activision Blizzard to buy the entire company. The deal announced a US$5.9 billion equity value and brought an established mobile publisher alongside the businesses behind Call of Duty and Diablo. Microsoft acquired that larger group in 2023; it did not buy Candy Crush from the Diablo team. The ownership followed two acquisitions, while the game and the people making it belonged to King.
+Evidence: king-mobile-launch.
 
-Evidence: king-acquisition, microsoft-acquisition-scale.
+### Buying a relationship that lasted
 
-Nor was Microsoft arriving at the birth of a mobile craze. Just before its deal closed, King reported that the Candy Crush franchise had earned more than US$20 billion over its lifetime. Microsoft was buying an audience that had endured and teams experienced in serving it. Its gaming chief Phil Spencer had explained the ambition while the acquisition was being reviewed: “While we love consoles, we recognize that they are not the only way that people play games.” A company known for Xbox wanted to reach people who might never buy one.
+This was the business Activision Blizzard bought in 2016 for an announced equity value of US$5.9 billion. King joined the group behind Call of Duty and Diablo as an established mobile publisher. Microsoft acquired the larger group in 2023. By then, King said the Candy Crush franchise had earned more than US$20 billion over its lifetime. The acquisition brought Microsoft a game that could reach people who might never buy an Xbox, and a team that had spent years learning how to keep them playing.
 
-Evidence: king-twenty, microsoft-mobile-rationale.
+Evidence: king-acquisition, microsoft-acquisition-scale, king-twenty, microsoft-mobile-rationale.
 
-The business kept evolving around the same puzzle. Advertising returned: by 2022, King reported earning from both in-game purchases and ads. Its 2026 Candy Crush All Stars competition offered a US$1 million prize pool and a live final in London. A game designed for short sessions could also organize an occasion around which players gathered. Continued production meant more than adding levels; it could give an old game new reasons to become part of someone’s day.
+Keeping it alive had become an undertaking of its own. At a 2026 developer conference, King described spending two years rebuilding parts of its old code before it could add a new four-candy combination that creates a fish-shaped helper. The change then required rebalancing thousands of existing levels. Players complained that the fish chose the wrong targets; some called them “drunk”. A tiny new trick on the board reached back through years of work and expectations. The studio had to make an old game feel fresh without spoiling what its players already knew how to enjoy.
 
-Evidence: king-later-model, candy-offer.
+Evidence: king-evergreen-2026.
 
-The resemblance to later chapters lies beneath the different artwork. New content, events and offers can turn a released game into continuing work for its maker. Diablo IV also combines an ongoing game with additional things to buy, but it charges for entry and separates its cosmetic shop from character power. Candy Crush sells assistance with play itself. Those differences matter: sustaining a game through repeated purchases does not tell us what should be for sale, or what buying it does to the experience.
+This is why the candy belongs in Sanctuary Economics. Mobile freemium showed how continued play could support continued production, with the next purchase offered inside a game rather than reserved for its sequel. Diablo IV combines an upfront price with an ongoing audience for expansions, seasons and cosmetics. Its cosmetic shop does not sell help with a difficult fight; Candy Crush sells help with the puzzle itself. The common problem is how to keep earning from a game people care about. What is offered for sale—and what the game does to make it desirable—becomes a design decision with consequences for that relationship.
 
 Evidence: d4-season-philosophy.
 
-### Free to play. Costly to reach.
+### Who owns the counter?
 
-Even this enormous audience did not give King an independent route to its customers. Its 2014 accounts recorded US$685 million paid to social and mobile platforms, plus US$422 million spent on marketing and advertising. Apple, Google and Facebook handled nearly all its virtual-currency purchases that year. The game could be free to its players while access to those players remained costly to its maker.
+King still had to pay to reach that audience. Its 2014 accounts recorded US$685 million paid to social and mobile platforms, alongside US$422 million spent on marketing and advertising. Apple, Google and Facebook handled nearly all its virtual-currency purchases that year. King could make the game, operate it and decide what to sell inside it, while another company owned the counter through which the money passed.
 
 Evidence: king-platform-costs.
 
-That is where another studio’s history becomes revealing. King made games that people found through other companies’ platforms. Valve made games, then built a store through which other developers could reach its audience. The next chapter follows that move: from creating something people want to play to operating a place where many creators can sell their work.
+That counter brings us to Valve. King built games that could earn repeatedly through other companies’ platforms. Valve built games, then opened a store through which other creators could sell theirs. Both found a business beyond waiting for their next major release. One kept making offers inside its own work; the other became part of the route by which thousands of works reached their audience.
 
 Evidence: valve-history, valve-about.
-
 
 ## 4. Valve: the studio becomes the store
 

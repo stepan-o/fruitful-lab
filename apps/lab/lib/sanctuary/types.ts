@@ -30,6 +30,7 @@ export type Chapter = {
   title: string;
   lede: string;
   paragraphs: string[];
+  inscriptions?: Record<number, "subscription" | "future sales" | "the gap">;
   sections?: { at: number; title: string }[];
   paragraphCitations?: Record<string, string[]>;
   exhibits?: InlineExhibit[];

@@ -1,8 +1,6 @@
 # Sanctuary Economics — From studio to screen
 
-8 October 2026. Current chapter copy. Portfolio comparison follows the acquisition paragraph; the financial selector stays after paragraph 2.
-
-## From studio to screen
+8 October 2026. Current continuous manuscript. The business argument concerns how ongoing play can sustain ongoing work; the reading order does not imply that subscriptions preceded mobile freemium.
 
 One creative work can sustain several businesses around it.
 
@@ -10,7 +8,7 @@ In the first months after the PlayStation 5 launched in November 2020, Sony was 
 
 Evidence: sony-ps5-launch-economics.
 
-By the year ending March 2026, Sony’s gaming business was reporting annual revenue equivalent to roughly US$31.1 billion at that year’s average exchange rate. That was more than its music and pictures businesses combined. Consoles accounted for US$6.3 billion. PlayStation games and add-ons brought in US$16.9 billion, while network services, including PlayStation Plus and advertising, supplied another US$5.1 billion. Peripherals, games sold on other platforms and the remaining business contributed roughly US$2.9 billion. The machine was the beginning of a much larger market around it.
+By the year ending March 2026, Sony’s gaming business was reporting annual revenue equivalent to roughly US$31.1 billion at that year’s average exchange rate. That was more than its music and pictures businesses combined. Consoles accounted for US$6.3 billion. PlayStation games and add-ons brought in US$16.9 billion, while network services, including PlayStation Plus and advertising, supplied another US$5.1 billion. Peripherals, games sold on other platforms and the remaining business contributed roughly US$2.9 billion. Sales of the consoles themselves accounted for about a fifth of the total.
 
 Evidence: sony-fy2025-scale.
 
@@ -36,13 +34,15 @@ NVIDIA can earn from those games without owning the studios that make them. Its 
 
 Evidence: nvidia-gaming-history, gfn-membership-terms.
 
-Across PlayStation, Xbox and NVIDIA, a game’s appeal can help sell other products. Someone buys a console because they want to play that game; someone else joins a subscription because it includes it, or pays NVIDIA to run a copy they already own. The publisher sells the work, while the hardware maker, store and catalog operator earn from different purchases connected to it. By the time we reach a shop inside a game, several businesses already have an interest in what its players will buy next.
+For the player, much of this business remains out of sight. Its most inviting offer is easy to recognize: a subscription puts a library within reach without asking you to buy every game you want to try. The operator has a different reason to value that abundance. Each appealing addition can help persuade someone to stay for another paid month. A game’s audience has become valuable to businesses selling an ongoing relationship with many games at once.
+
+Evidence: circuit-game-pass, cyberpunk-plus-entry.
 
 ### The deal behind the subscription
 
-Cyberpunk 2077, a game sold for PCs and consoles, lets us follow those relationships through one work. CD PROJEKT RED, the studio that makes and publishes it, pays for the development team and brings the finished work to market through launch campaigns and store agreements. Selling it through Steam, the PC store operated by Valve, brings another business into the arrangement. Valve provides the shop, checkout and downloads, then pays CD PROJEKT its agreed share after adjustments such as refunds and taxes. Buy through PlayStation Store instead, and Sony occupies that position while also supplying the console on which the game runs.
+A studio can earn from that relationship even when fewer players buy its game. Consider Cyberpunk 2077, made and published by CD PROJEKT RED. The company sells copies through Steam, the PC store run by Valve, and through console stores such as Sony’s PlayStation Store. Each store takes its agreed share of the sale. A catalog offers another route: its operator can pay for permission to include the game, then use it to attract and retain subscribers.
 
-Evidence: cdpr-business, steam-settlement, cyberpunk-ps-offer.
+Evidence: cdpr-business, steam-settlement, cdpr-catalog-economics.
 
 Sony can also become a customer for the game. In July 2025, it added Cyberpunk to PlayStation Plus, a subscription catalog that let members play while it remained included, without buying an individual copy. CD PROJEKT knew that giving players this alternative would cost it some purchases. Asked about the effect, co-CEO Michał Nowakowski was direct: “So, there’s always a hit to current sales of the game when you launch on a subscription basis.”
 
@@ -58,8 +58,8 @@ Even the computer can become a separate service. A player can buy Cyberpunk thro
 
 Evidence: steam-cloud, gfn-membership-terms, gfn-requirements.
 
-These arrangements widen the business of creative work beyond the next copy sold. A publisher can reach individual buyers through a store, license a game to a catalog, or use both routes at different points in its life. Around that work, other companies sell equipment, computing and access to collections. Their agreements determine how the audience’s interest becomes income for each of them—and how much of that income can finance the work still to come.
+The same work can therefore help sell a console, sustain a catalog or keep a remote computer occupied. Those businesses have found ways to earn from the desire to play beyond selling another copy. The attraction of a subscription makes this visible: access to something you enjoy becomes a relationship both sides must want to continue. How that relationship is paid for can change again once the offer moves inside the game itself.
 
-King takes that separation further. Its best-known game could reach someone who had never bought an Xbox, a PlayStation or a full-price PC release. Candy Crush asked for no admission price at all. Yet Microsoft’s acquisition brought it a business that had been earning from that invitation for more than a decade. To understand what the company was buying, we need to leave the console behind for a moment and look at a much smaller screen.
+King, the Candy Crush studio Microsoft acquired, asks for no admission price. It can sell extra moves after a player has encountered a challenge and wants to overcome it. The arcade already knew the value of another chance; mobile freemium built an enormous audience around making payment optional. Here the next sale can grow out of playing the work someone already enjoys. Keeping that work enjoyable, and keeping it earning, become decisions made on the same board.
 
-Evidence: king-twenty, candy-offer.
+Evidence: candy-offer, king-2014.

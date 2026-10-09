@@ -5,7 +5,8 @@ import s from "./business-history.module.css";
 const animated = (name: string) => `${s.motion} ${name}`;
 
 /** Purposeful period studies, not authentic captures or exact product replicas. */
-function MilestoneObject({ kind, prefix }: { kind: string; prefix: string }) {
+function MilestoneObject({ kind, prefix, steamSrc }: { kind: string; prefix: string; steamSrc?: string }) {
+  const scene = kind === "coin-modern" ? "coin" : kind === "pc-box" || kind === "console-store" ? "online" : (kind === "cloud-console" || kind === "cloud-early") ? "cloud" : kind;
   const paint = (name: string) => `url(#${prefix}-${name})`;
   return <svg viewBox="0 0 320 230" aria-hidden="true" focusable="false" data-era={kind}>
     <defs>
@@ -30,14 +31,14 @@ function MilestoneObject({ kind, prefix }: { kind: string; prefix: string }) {
     <ellipse cx="161" cy="118" rx="146" ry="107" fill={paint(kind === "coin" || kind === "cartridge" ? "warm" : "cool")}/>
     <g fill="none" stroke="#9b8b67" strokeWidth=".7" opacity=".17"><path d="M18 194h284M28 209h264M60 220h200M160 173l-77 48M160 173l82 48"/><path d="M20 30V20h15m265 10V20h-15"/></g>
     <ellipse cx="163" cy="206" rx="115" ry="13" fill="#050c10" opacity=".8"/>
-    {kind === "coin" ? <g strokeLinejoin="round">
+    {scene === "coin" ? <g strokeLinejoin="round">
       <path d="M76 19l115-4 47 23v158l-41 21-117-17v-65l17-28-12-77Z" fill={paint("wood")} stroke="#b89762" strokeWidth="1.2"/>
       <path d="M191 15l47 23v158l-41 21v-72l15-31-18-86Z" fill="#302a23" stroke="#726143"/>
       <path d="M200 35l29 12v139l-26 13V149l14-33Z" fill={paint("hatch")}/>
       <path d="M76 19l115-4 47 23-44-8-115 4Z" fill="#1b2325" stroke="#847c62"/>
       <path d="M85 34l103-3 17 82-15 33-105-11 18-25Z" fill={paint("yellow")} stroke="#ebcc6d"/>
       <path d="M87 34l16 76-17 25M188 33l15 79-15 30" stroke="#e4c561" fill="none"/>
-      <text x="124" y="50" fontFamily="monospace" fontSize="12" fontWeight="700" letterSpacing="2" fill="#22251c">PONG</text>
+      <text x="124" y="50" fontFamily="monospace" fontSize="12" fontWeight="700" letterSpacing="2" fill="#22251c">{kind === "coin-modern" ? "PLAY" : "PONG"}</text>
       <rect x="99" y="57" width="89" height="68" rx="9" fill="#0c171a" stroke="#766d40" strokeWidth="2"/>
       <rect x="104" y="62" width="78" height="58" rx="7" fill="#061214"/>
       <g clipPath={paint("pong")}>
@@ -54,12 +55,12 @@ function MilestoneObject({ kind, prefix }: { kind: string; prefix: string }) {
       <path d="M84 145l106 11v48l-106-13Z" fill={paint("wood")} stroke="#79583a"/>
       <g transform="matrix(1 .11 0 1 85 147)"><WoodGrain x={0} y={0} w={103} h={42} vertical/></g>
       <path d="M169 157l15 2v29l-15-2Z" fill={paint("metal")} stroke="#c2ae82" strokeWidth=".6"/><path d="M173 165l7 1m-7 13l7 1" stroke="#152023" strokeWidth="2"/>
-      <Screw x={176} y={184} r={1}/><path d="M85 179l70 8" stroke="#bf8b56" strokeWidth=".6"/>
+      <Screw x={176} y={184} r={1}/>{kind === "coin-modern" ? <g><rect x="166" y="158" width="20" height="26" rx="2" fill="#15373b" stroke="#b3cbb4"/><path d="M171 168q8-7 11 0m-9 3q5-4 7 0m-5 3h2" fill="none" stroke="#b9dcac" strokeWidth="1.5" className={animated(s.statusLight)}/></g> : null}<path d="M85 179l70 8" stroke="#bf8b56" strokeWidth=".6"/>
       <ellipse cx="59" cy="205" rx="11" ry="3" fill="#bd954d" stroke="#e9c476"/><ellipse cx="59" cy="202" rx="11" ry="3" fill="#bb9953" stroke="#e9c476"/>
       <ellipse cx="44" cy="213" rx="10" ry="3" fill="#ba8c43" stroke="#e9c476"/>
       <path d="M240 190c21 7 17 22 37 20" fill="none" stroke="#807a60" strokeWidth="1.5"/>
     </g> : null}
-    {kind === "cartridge" ? <g strokeLinejoin="round">
+    {scene === "cartridge" ? <g strokeLinejoin="round">
       <path d="M139 28l-36-23m36 23l40-22" stroke="#b8bdad" strokeWidth="1.3"/><circle cx="139" cy="29" r="5" fill={paint("metal")}/>
       <path d="M61 29l174-4 24 19-2 99-178 9-20-17Z" fill={paint("wood")} stroke="#bc9665"/>
       <path d="M235 25l24 19-2 99-22 7Z" fill="#332f28"/>
@@ -88,7 +89,7 @@ function MilestoneObject({ kind, prefix }: { kind: string; prefix: string }) {
       <path d="M225 181l39-4 17 14-40 9-20-9Z" fill="#18252a" stroke="#a29879"/><path d="M221 191l20 9 40-9v8l-40 9-20-10Z" fill="#111b21"/>
       <ellipse cx="251" cy="188" rx="8" ry="4" fill="#3b4540"/><path d="M251 189v-20" stroke="#273436" strokeWidth="6"/><ellipse cx="251" cy="166" rx="5" ry="3.5" fill="#758377" stroke="#bac0a6"/><ellipse cx="233" cy="188" rx="4" ry="2.5" fill="#c17942"/>
     </g> : null}
-    {kind === "platform" ? <g strokeLinejoin="round">
+    {scene === "platform" ? <g strokeLinejoin="round">
       <path d="M85 20h162l22 14v99l-16 10H83Z" fill={paint("plastic")} stroke="#b4bb9f"/><path d="M247 20l22 14v99l-16 10Z" fill="#27393d"/>
       <rect x="92" y="27" width="151" height="96" rx="9" fill="#182d33" stroke="#adad8c"/>
       <g clipPath={paint("cd")}>
@@ -112,49 +113,99 @@ function MilestoneObject({ kind, prefix }: { kind: string; prefix: string }) {
       <path d="M94 191c-34 15-12 27 27 26s47 4 58-6" fill="none" stroke="#a1afa1" strokeWidth="1.7"/>
       <g transform="translate(186 189) scale(.75)"><path d="M0 0q4-9 16-7l14 5 15-5q13-2 17 7l10 20q2 14-9 14l-17-15H25L7 35q-11 0-8-14Z" fill={paint("plastic")} stroke="#c2c5ad"/><path d="M12 0v17M4 8h17" stroke="#233b43" strokeWidth="5"/><g fill="#293b42" stroke="#9ca28b"><circle cx="49" cy="1" r="3"/><circle cx="57" cy="9" r="3"/><circle cx="41" cy="9" r="3"/><circle cx="49" cy="17" r="3"/></g><circle cx="27" cy="22" r="6" fill="#273c42"/><circle cx="43" cy="22" r="6" fill="#273c42"/></g>
     </g> : null}
-    {kind === "online" ? <g strokeLinejoin="round">
+    {scene === "online" ? <g strokeLinejoin="round">
       <path d="M43 18h212l17 16v128l-21 12H41Z" fill={paint("plastic")} stroke="#adbaa6"/><path d="M255 18l17 16v128l-21 12Z" fill="#394a49"/>
       <rect x="51" y="25" width="207" height="132" rx="6" fill="#0d2127" stroke="#bbb99a"/>
       <g clipPath={paint("desktop")}>
-        <rect x="59" y="32" width="190" height="117" fill="#314f56"/>
-        <rect x="137" y="41" width="108" height="91" fill="#c2ba9e" stroke="#263d3d"/><path d="M137 41h108v15H137Z" fill="#854232"/><text x="146" y="52" fill="#ebd8b6" fontFamily="Arial" fontSize="8" fontWeight="700">WATCH INSTANTLY</text>
-        <rect x="147" y="63" width="85" height="46" fill="#14252c"/><path d="M153 104l21-26 12 12 12-21 27 36Z" fill="#9d8360"/><circle cx="214" cy="75" r="6" fill="#cda668"/><path d="M185 81l12 7-12 7Z" fill="#ead1a4" className={animated(s.playLight)}/>
-        <path d="M149 117h71m-71 5h49" stroke="#7c796c" strokeWidth="2"/>
-        <rect x="64" y="51" width="104" height="87" fill="#394334" stroke="#97a182"/><path d="M65 52h102v13H65Z" fill="#647054"/>
-        <text x="70" y="61" fontFamily="Arial" fontSize="7" fontWeight="700" fill="#e1ddc0">MY GAMES</text><path d="M152 57h5m5-2l4 4m-4 0l4-4" stroke="#c6ccb0"/>
-        {[0,1,2].map(i=><g key={i}><rect x="71" y={72+i*16} width="11" height="11" fill={['#a68b55','#63848a','#a26b51'][i]}/><path d={`M87 ${76+i*16}h66m-66 4h40`} stroke="#a9b495" strokeWidth="1.5"/><circle cx="158" cy={77+i*16} r="2" fill="#9ab476" className={i===1?animated(s.statusLight):undefined}/></g>)}
-        <rect x="72" y="124" width="82" height="5" fill="#1b2928"/><rect x="72" y="124" width="75" height="5" fill="#a5b989" className={animated(s.download)}/>
-        <path d="M160 114v13l4-4 5 6 3-2-5-6 5-1Z" fill="#dfdac3" stroke="#102029" strokeWidth=".6" className={animated(s.pointer)}/>
+        {kind === "online" ? <>
+          <rect x="59" y="32" width="190" height="117" fill="#454f3d"/>
+          <path d="M60 33h188v33H60Z" fill="#59664b"/>
+          <text x="98" y="56" fontFamily="Arial" fontWeight="700" fontSize="23" fill="#eef0d8" letterSpacing="1">STEAM</text>
+          <path d="M224 42h7m5-3l6 6m-6 0l6-6" stroke="#c5cbb3"/>
+          <text x="67" y="76" fontFamily="Arial" fontSize="8" fill="#e0e3ca">STORE</text>
+          <path d="M103 67h61v14h-61Z" fill="#6e7959" stroke="#9ca587" strokeWidth=".6"/>
+          <text x="109" y="77" fontFamily="Arial" fontSize="8" fill="#f0eed4">MY GAMES</text>
+          <text x="177" y="76" fontFamily="Arial" fontSize="8" fill="#d1d6bc">SETTINGS</text>
+          <path d="M65 83h178v46H65Z" fill="#30392d" stroke="#798468" strokeWidth=".6"/>
+          <path d="M66 86h176v17H66Z" fill="#61734e"/>
+          <circle cx="75" cy="94" r="5" fill="#b99456"/><text x="85" y="97" fontFamily="Arial" fontSize="9" fill="#ebe6c9">Half-Life</text>
+          <text x="172" y="97" fontFamily="Arial" fontSize="6" fill="#d3dec0">Updating…</text>
+          <circle cx="75" cy="113" r="5" fill="#a6b28b"/><text x="85" y="116" fontFamily="Arial" fontSize="9" fill="#d6dfbd">Counter-Strike</text>
+          <rect x="69" y="136" width="122" height="5" fill="#253122"/><rect x="69" y="136" width="116" height="5" fill="#b0bd86" className={animated(s.download)}/>
+          <text x="201" y="141" fontFamily="Arial" fontSize="6" fill="#bec8aa">ONLINE</text>
+          <path d="M169 104v13l4-4 5 6 3-2-5-6 5-1Z" fill="#dfdac3" stroke="#102029" strokeWidth=".6" className={animated(s.pointer)}/>
+        </> : kind === "pc-box" ? <>
+          <rect x="59" y="32" width="190" height="117" fill="#122d35"/>
+          <circle cx="202" cy="61" r="17" fill="#d9c695"/>
+          <path d="M59 123l29-37 27 15 35-43 21 29 24-10 54 59v13H59Z" fill="#537674"/>
+          <path d="M90 89l18 53 42-84 8 82" fill="#8ea38b"/>
+          <path d="M141 130V92h10V81h9v11h11v38m-27-19h24" fill="#142b30" stroke="#adab7b"/>
+          <path d="M65 142h56m83 0h35" stroke="#c6b574" strokeWidth="3" className={animated(s.playLight)}/>
+          <text x="89" y="49" fontFamily="Georgia" fontSize="11" fill="#ecdbb2" letterSpacing="1">IRON CITADEL</text>
+        </> : <>
+          <rect x="59" y="32" width="190" height="117" fill="#133448"/>
+          <path d="M59 32h190v31H59Z" fill="#195078"/>
+          <path d="M68 43h12v13H68Zm3 0v-3a3 3 0 016 0v3" fill="none" stroke="#d3e5df" strokeWidth="1.5"/>
+          <text x="86" y="52" fontFamily="Arial" fontSize="13" fill="#e0e9df">PlayStation Store</text>
+          {[0,1,2].map(i=><g key={i} transform={`translate(${68+i*59} 71)`}>
+            <rect width="52" height="56" fill={["#887349","#3e6476","#8a4b42"][i]} stroke="#7798a0"/>
+            <circle cx="32" cy="18" r="10" fill="#d4c196"/><path d="M3 50l12-24 10 13 10-20 14 31" fill="#162e3a"/>
+            <path d="M7 47h36" stroke="#d5c59c"/><rect y="61" width="52" height="11" fill="#316289"/><text x="16" y="69" fontFamily="Arial" fontSize="7" fill="#e1e8d5">BUY</text>
+          </g>)}
+          <rect x="68" y="71" width="52" height="56" fill="none" stroke="#c4d8a6" strokeWidth="2" className={animated(s.playLight)}/>
+        </>}
         <rect x="59" y="32" width="190" height="117" fill={paint("reflection")}/>
+        {kind === "online" && steamSrc ? <image href={steamSrc} x="68" y="36" width="24" height="24" preserveAspectRatio="xMidYMid meet"/> : null}
       </g>
       <path d="M123 174v11l-21 13h99l-19-14v-10" fill={paint("plastic")} stroke="#94a899"/>
       <circle cx="239" cy="163" r="2" fill="#afc18e"/>
       <path d="M53 201h157l18 18H37Z" fill={paint("plastic")} stroke="#b2b9a2"/><path d="M55 207h152m-145 5h148" stroke="#263c41" strokeWidth="3"/>
       <path d="M78 203v13m13-13v13m13-13v13m13-13v13m13-13v13m13-13v13m13-13v13m13-13v13m13-13v13" stroke="#6c8079"/>
+      {kind === "pc-box" ? <g transform="translate(8 99) rotate(-6)">
+        <path d="M0 3l8-5h55v103l-8 5H0Z" fill="#8b7250" stroke="#c5ac77"/><path d="M0 3h54v103H0Z" fill="#233a3e"/>
+        <path d="M8 12h39v78H8Z" fill="#657b70"/><circle cx="34" cy="29" r="10" fill="#d6c699"/>
+        <path d="M9 84l12-48 8 21 18-29v56Z" fill="#19333c"/><text x="11" y="23" fontFamily="Georgia" fontSize="8" fill="#eee0b9">CITADEL</text>
+        <path d="M7 95h40" stroke="#bea97d"/><path d="M70 78h34v30H70Z" fill="#2b3739" stroke="#bcb69c"/><path d="M76 79h20v11H76Zm0 20h23v9H76Z" fill="#aeb197"/>
+      </g> : null}
       <path d="M263 189c-12-9-22-3-19 5" fill="none" stroke="#8eab9c"/><ellipse cx="250" cy="205" rx="12" ry="17" fill={paint("plastic")} stroke="#b5bba4"/><path d="M250 189v12m-10-1h20" stroke="#405957"/>
     </g> : null}
-    {kind === "catalog" ? <g strokeLinejoin="round">
-      <path d="M66 155l-15 28m196-28l19 28" stroke="#718b87" strokeWidth="5"/>
-      <rect x="36" y="22" width="247" height="139" rx="4" fill="#122129" stroke="#97b3a4" strokeWidth="1.2"/>
-      <g clipPath={paint("catalog")}>
-        <rect x="43" y="29" width="234" height="124" fill="#102932"/>
-        <path d="M43 29h234v24H43Z" fill="#263e35"/><circle cx="58" cy="42" r="6" fill="#8da957"/><path d="M55 39l6 6m0-6l-6 6" stroke="#d5e0b4"/><text x="73" y="44" fontFamily="Arial" fontSize="8" letterSpacing="1" fill="#e2ddbd">GAME LIBRARY</text>
-        {[0,1,2,3].map(i=><g key={i} transform={`translate(${52+i*58} 61)`}>
-          <rect width="50" height="73" fill={['#4d615b','#3d535f','#674739','#575d36'][i]}/>
-          {i===0?<><circle cx="29" cy="19" r="11" fill="#bcb181"/><path d="M0 70l12-40 8 9 10-22 20 45" fill="#182f31"/><path d="M26 62l8-18 6 18" fill="#d0b77f"/></>:i===1?<><path d="M0 65V28h8v-9h9v19h10V12h7v32h7V23h9v50Z" fill="#8da599"/><path d="M21 73l7-21h8l7 21" fill="#182c34"/></>:i===2?<><circle cx="27" cy="24" r="14" fill="#c8a275"/><path d="M7 73l7-29 20-6 11 35" fill="#192c32"/><path d="M18 42l6-17 11 18" fill="#576a68"/></>:<><path d="M0 66l17-24 9 7 18-27 6 45" fill="#9fa675"/><path d="M5 73l20-17 25 17" fill="#1d3437"/></>}
-          <path d="M6 65h34m-34 4h22" stroke="#e0c8a0" strokeWidth="1.5"/>
-        </g>)}
-        <rect x="51" y="60" width="52" height="75" fill="none" stroke="#b8da88" strokeWidth="2" className={animated(s.catalogSelect)}/>
-        <path d="M54 145h40m8 0h7m7 0h7" stroke="#9aaf98" strokeWidth="2"/>
-        <rect x="43" y="29" width="234" height="124" fill={paint("reflection")}/>
-      </g>
-      <path d="M66 188l118-4 21 10-6 17-141 1v-15Z" fill={paint("plastic")} stroke="#b7c4ad"/><path d="M59 199l141-4-1 16-141 1Z" fill="#6f837d"/>
-      <path d="M70 203h65" stroke="#142830" strokeWidth="3"/>
-      {Array.from({length:16},(_,i)=><path key={i} d={`M${114+i*4} 190l7 4`} stroke="#31484b" strokeWidth=".7"/>)}
-      <circle cx="184" cy="202" r="3" fill="#d3d9b6"/>
-      <g transform="translate(219 184) scale(.8)"><path d="M0 0q4-8 15-6l12 4 15-4q12-1 16 9l8 20q1 11-8 11L43 20H22L6 34q-11 1-8-12Z" fill={paint("black")} stroke="#a4b8a0"/><circle cx="13" cy="6" r="6" fill="#81978c"/><circle cx="40" cy="17" r="6" fill="#81978c"/><path d="M21 12v12m-6-6h12" stroke="#a6b29b" strokeWidth="3"/><circle cx="47" cy="3" r="3" fill="#b6ba7b"/><circle cx="56" cy="10" r="3" fill="#8bbbac"/><circle cx="37" cy="3" r="2" fill="#8198ba"/></g>
+    {scene === "catalog" ? <g strokeLinejoin="round">
+      <path d="M31 45l242-8 15 140-251 9Z" fill="#162a2b" stroke="#5d7d70"/>
+      <path d="M42 32l231 7-4 135-236-5Z" fill="#29443b" stroke="#97a27b"/>
+      <text x="50" y="25" fontFamily="Arial" fontSize="14" letterSpacing="2" fill="#c3d3ad">THE GAME COLLECTION</text>
+      {[0,1,2].map(i=><g key={i} transform={`translate(${35+i*85} 52)`}>
+        <g className={animated(`${s.coverLift} ${i===1?s.coverSecond:i===2?s.coverThird:""}`)}>
+          <rect x="3" y="5" width="76" height="124" rx="2" fill="#071419" opacity=".8"/>
+          <rect width="76" height="120" rx="2" fill={["#765343","#274a59","#665a38"][i]} stroke="#b9ab7e" strokeWidth="1"/>
+          {i===0 ? <>
+            <circle cx="52" cy="24" r="17" fill="#d1b47b"/><path d="M0 77l14-40 9 23 17-41 17 35 19-18v71H0Z" fill="#403f3c"/>
+            <path d="M9 96V54h8v-9h8v9h10v-9h8v9h13v-9h8v9h6v42Z" fill="#172e32" stroke="#b59968" strokeWidth=".7"/>
+            <path d="M30 96V75a7 7 0 0114 0v21" fill="#bc8750"/><path d="M12 63h54m-54 10h13m22 0h19m-54 11h13m22 0h19" stroke="#5a6858"/>
+            <path d="M36 79v13" stroke="#ead394" className={animated(s.playLight)}/>
+            <text x="38" y="108" textAnchor="middle" fontFamily="Georgia" fontSize="10" fill="#ead4a3">ASHEN KEEP</text>
+          </> : i===1 ? <>
+            <circle cx="50" cy="28" r="22" fill="#9ba995"/><circle cx="56" cy="25" r="18" fill="#5c8180"/>
+            <path d="M4 89V32l13-9v49l11-8V45l14-11v37l12-8V46l17-11v65H4Z" fill="#122e3b" stroke="#8cb4af" strokeWidth=".8"/>
+            <path d="M14 40v15m20-5v10m26-10v12m-46 1v10" stroke="#b9d8bc" strokeWidth="2"/>
+            <path d="M33 90l5-24 8-1 8 25" fill="#b8a675"/><circle cx="42" cy="61" r="5" fill="#d9c699"/>
+            <path d="M8 18h4m8-6h3m47 10h3" stroke="#e4dab6" className={animated(s.statusOther)}/>
+            <text x="38" y="108" textAnchor="middle" fontFamily="Arial" fontSize="11" letterSpacing="1" fill="#d2e1ce">ORBITAL</text>
+          </> : <>
+            <circle cx="51" cy="28" r="18" fill="#c5a56f"/><path d="M0 64l15-34 19 19 16-26 26 37v36H0Z" fill="#3e5757"/>
+            <path d="M33 57h12l30 41H0Z" fill="#172f36" stroke="#9eaa82"/><path d="M39 62v10m0 5v13" stroke="#d8c580" strokeWidth="2"/>
+            <g className={animated(s.polygonCar)}><path d="M16 80l9-12h24l10 12-3 12H19Z" fill="#a96649" stroke="#d9b77b"/><path d="M27 71h20l4 8H23Z" fill="#193b47"/><path d="M22 85h7m17 0h7" stroke="#f2db9b" strokeWidth="2"/></g>
+            <text x="38" y="108" textAnchor="middle" fontFamily="Arial" fontSize="10" letterSpacing="1" fill="#eddbb2">NIGHT RUN</text>
+          </>}
+          <path d="M4 4h68v112H4Z" fill={paint("reflection")}/>
+        </g>
+      </g>)}
+      <path d="M40 181v8h240v-8m-120 8v8" fill="none" stroke="#9caf7f"/>
+      <rect x="73" y="198" width="174" height="24" rx="3" fill="#304b36" stroke="#a7b485"/>
+      <path d="M91 205a6 6 0 11-4 9m4-9h-5v-5" fill="none" stroke="#d4dfb4" strokeWidth="1.5"/>
+      <text x="111" y="214" fontFamily="Arial" fontSize="10" letterSpacing="1" fill="#e4dfb7">ONE MEMBERSHIP</text>
+      <path d="M35 179h76" stroke="#d5e3aa" strokeWidth="2" className={animated(s.catalogSelect)}/>
     </g> : null}
-    {kind === "cloud" ? <g strokeLinejoin="round">
+    {scene === "cloud" ? <g strokeLinejoin="round">
       <path d="M46 16h92l25 17v159l-22 17-96-13Z" fill={paint("black")} stroke="#73978f"/><path d="M138 16l25 17v159l-22 17Z" fill="#102129"/>
       <path d="M53 24h78v163H53Z" fill="#08161d" stroke="#63877f"/>
       {[0,1,2,3,4].map(i=><g key={i} transform={`translate(59 ${32+i*29})`}>
@@ -177,7 +228,12 @@ function MilestoneObject({ kind, prefix }: { kind: string; prefix: string }) {
         <path d="M230 184l5-17 7 2 2 18" fill="#cfac73"/>
         <path d="M191 132l89 10v7l-89-10Z" fill="#89c8bd" opacity=".13" className={animated(s.streamScan)}/>
       </g>
-      <path d="M184 191l111 14-17 19-120-18Z" fill={paint("plastic")} stroke="#b3c3ac"/><path d="M185 198l96 11m-101-6l96 11" stroke="#233d44" strokeWidth="2"/><path d="M205 210l28 4-3 4-31-5Z" fill="#6d9690"/>
+      {kind === "cloud-console" ? <>
+        <path d="M221 198l-8 13m62-7l10 12" stroke="#87a89e" strokeWidth="3"/>
+        <g transform="translate(176 187) scale(.6)"><path d="M0 0q4-8 15-6l12 4 15-4q12-1 16 9l8 20q1 11-8 11L43 20H22L6 34q-11 1-8-12Z" fill={paint("plastic")} stroke="#a4b8a0"/><path d="M12 0v17M4 8h17" stroke="#19343e" strokeWidth="4"/><circle cx="44" cy="5" r="3" fill="#254650"/><circle cx="53" cy="12" r="3" fill="#254650"/></g>
+      </> : <><path d="M184 191l111 14-17 19-120-18Z" fill={paint("plastic")} stroke="#b3c3ac"/><path d="M185 198l96 11m-101-6l96 11" stroke="#233d44" strokeWidth="2"/><path d="M205 210l28 4-3 4-31-5Z" fill="#6d9690"/></>}
+
+      {kind === "cloud-early" ? <text x="65" y="19" fontFamily="Arial" fontSize="10" fill="#d3b686">2010 · ONLIVE</text> : null}
       <path d="M186 77h87l12 13v14h-99Z" fill={paint("black")} stroke="#648e88"/><path d="M190 98h77m-77-5h77" stroke="#789f99" strokeWidth=".8"/><circle cx="276" cy="98" r="2" fill="#bad595" className={animated(s.statusLight)}/>
       <path d="M200 76l-8-34m68 34l7-34" stroke="#607c78" strokeWidth="3"/><path d="M231 69q-13-10-26 0m37-8q-24-18-46 0m37 15h-4" fill="none" stroke="#99c8b4" strokeWidth="1.5" className={animated(s.wifi)}/>
     </g> : null}

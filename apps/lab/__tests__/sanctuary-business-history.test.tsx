@@ -5,9 +5,9 @@ import { chapters, sources } from "@/lib/sanctuary/content";
 
 it("lets readers select historical milestones and follow their evidence", () => {
   render(<BusinessHistory sources={sources}/>);
-  const timeline = screen.getByRole("list", { name: "Explore the business history" });
+  const timeline = screen.getByRole("group", { name: "Explore the business history" });
   const buttons = within(timeline).getAllByRole("button");
-  expect(buttons).toHaveLength(6);
+  expect(buttons).toHaveLength(businessHistory.length);
   const reading = document.getElementById(buttons[0].getAttribute("aria-controls")!)!;
   for (const [i, era] of businessHistory.entries()) {
     fireEvent.click(buttons[i]);
@@ -19,4 +19,19 @@ it("lets readers select historical milestones and follow their evidence", () => 
     for (const id of era.sources) expect(chapters.find(chapter => chapter.id === "studio-to-screen")!.sources).toContain(id);
   }
   expect(screen.queryByRole("img")).not.toBeInTheDocument();
+});
+
+it("keeps mobile lane selection and the detail panel in sync", () => {
+  render(<BusinessHistory sources={sources}/>);
+  const choices = screen.getByRole("group", { name: "Choose a history lane" });
+  fireEvent.click(within(choices).getByRole("button", { name: "PC", exact: true }));
+  const pc = screen.getByRole("region", { name: "PC", exact: true });
+  expect(pc).toHaveAttribute("data-active", "true");
+  expect(within(pc).getByRole("button", { name: /Boxed PC games/ })).toHaveAttribute("aria-pressed", "true");
+  fireEvent.click(within(choices).getByRole("button", { name: "Consoles", exact: true }));
+  expect(pc).toHaveAttribute("data-active", "false");
+  const consoles = screen.getByRole("region", { name: "Consoles", exact: true });
+  fireEvent.click(within(consoles).getByRole("button", { name: /Console cloud play/ }));
+  expect(screen.getByRole("link", { name: /Windows app launch/ })).toHaveAttribute("href", "https://blog.playstation.com/2016/08/30/playstation-now-september-update-pc-streaming-6-greatest-hits/");
+  expect(screen.getByText(/without owning a PlayStation/)).toBeVisible();
 });

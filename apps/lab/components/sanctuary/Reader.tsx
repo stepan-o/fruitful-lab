@@ -170,7 +170,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
             {!isHistory && !["the-fork","insert-coin","studio-to-screen","three-ecosystems","mobile-freemium","how-many-lives","platform-business","cloud-gaming","valve-platform","epic-infrastructure","rockstar-world","making-worlds"].includes(current.id) ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
             {isHistory ? <HistoryScene key={current.id} chapter={current.id as HistoryId}/> : null}
             {current.id === "insert-coin" ? <EveningPlace opening/> : null}
-            {current.id === "studio-to-screen" ? <BusinessHistory sources={sources}/> : null}
+            {current.id === "studio-to-screen" ? <BusinessHistory sources={sources} steamSrc={assets.assets["steam-symbol"]?.variants[0].src}/> : null}
             {current.id === "mobile-freemium" ? <CandyOpening assets={assets}/> : null}
             {current.id === "platform-business" ? <BusinessChains/> : null}
             {current.id === "cloud-gaming" ? <CloudCircuit key="cloud" cloudOnly/> : null}

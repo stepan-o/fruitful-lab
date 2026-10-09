@@ -525,7 +525,8 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "Halo makes the stakes unusually vivid. Bungie, the studio making it, first showed the game with Steve Jobs at Macworld in 1999. Its co-creator Marcus Lehto later recalled Microsoft’s reaction as “Steve Jobs can't have that.” Microsoft bought Bungie the following year, and Halo became a launch title for its first Xbox in 2001. A promising game had become a reason to choose an entire machine. Twenty-five years later, a remake of that same game arrived on PlayStation. Microsoft could now earn from players who had chosen its rival’s hardware.",
       "These are decisions about what a creative work is worth to the businesses around it. A company that makes games, runs a store and sells the machine can use one part to support another; this is vertical integration. The diagram below separates those jobs again. Switch examples to see what each participant supplies and what the player pays for. Each follows a selected arrangement; the later map opens up the combinations that can coexist.",
       "The internet widened those possibilities without settling on one way to charge. Steam, launched in 2003, grew into a store for individually purchased PC games. Netflix added streaming to its DVD membership in 2007, bringing a different offer to the same household: access to a catalog for a recurring fee. In gaming, Xbox Game Pass carried that proposition further in 2018 by promising new Microsoft studio releases on launch day. A release could attract someone to a subscription instead of another boxed purchase. Its value to the catalog included the reason it gave people to join and stay.",
-      "Even the machine can be supplied as a service. With NVIDIA’s GeForce NOW, a player can buy a supported game through Steam and pay NVIDIA to run it remotely. The game sale and the computing bill belong to different businesses. Sony and Microsoft combine more of these roles, offering consoles, stores, catalogs and cloud play. The map below shows how today’s routes overlap, separating access to a game from access to the hardware that runs it. Available combinations depend on the title and its agreements.",
+      "Cloud gaming loosened the remaining tie to the machine. OnLive launched on PCs and Macs in 2010, years before PlayStation Now began streaming PS3 games to PS4 in 2014. Sony’s more surprising invitation came in 2016: play selected PlayStation games on a Windows PC, without buying a PlayStation. Its announcement called the app “a new way for even more gamers to discover and play the service.” Series such as Uncharted and God of War, once reasons to choose Sony’s hardware, could now attract subscribers who did not own it. The library could earn beyond the audience for the box.",
+      "Microsoft took its cloud offer to Android phones in September 2020, then to PC browsers in June 2021 through Game Pass Ultimate. The games ran on Xbox hardware in Microsoft’s data centers; the player no longer had to keep that hardware at home. NVIDIA’s GeForce NOW separates the offer differently: buy a supported PC game through a store such as Steam, then use NVIDIA’s remote computing to play it. The store keeps the game sale while NVIDIA can charge for the machine. The map below brings these arrangements together, separating access to a game from access to the hardware that runs it. Which routes are available depends on the game and its agreements.",
       "A studio entering this market can negotiate with companies that need its game for different reasons: to sell copies, attract members or make their equipment worth using. The same audience’s enthusiasm can support all three. That helps explain why a game may be sold outright in one place, included in a membership elsewhere, and still offer paid additions of its own. To see what those arrangements have grown into, turn to Sony, Microsoft and NVIDIA—three businesses earning from the same desire to play."
     ],
     "paragraphCitations": {
@@ -550,11 +551,18 @@ const manuscript: Omit<Chapter,"visual">[] = [
         "game-pass-release-history"
       ],
       "5": [
-        "steam-cloud",
-        "gfn-membership-terms",
-        "circuit-game-pass"
+        "onlive-launch-2010",
+        "ps-now-2014",
+        "ps-now-pc-announcement",
+        "ps-now-pc-2016"
       ],
       "6": [
+        "xbox-cloud-2020",
+        "xbox-cloud-pc-2021",
+        "steam-cloud",
+        "gfn-membership-terms"
+      ],
+      "7": [
         "cdpr-catalog-economics"
       ]
     },
@@ -564,11 +572,14 @@ const manuscript: Omit<Chapter,"visual">[] = [
         "kind": "business-map"
       },
       {
-        "afterParagraph": 5,
+        "afterParagraph": 6,
         "kind": "market-map"
       }
     ],
     "figures": [],
+    "embeddedAssets": [
+      "steam-symbol"
+    ],
     "sources": [
       "alcorn-oral",
       "arcade-route",
@@ -599,13 +610,27 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "game-pass-release-history",
       "cdpr-catalog-economics",
       "pong-tavern",
-      "gfn-reach-2023"
+      "gfn-reach-2023",
+      "pc-software-history",
+      "pc-compatible-history",
+      "windows-games-1996",
+      "ps-network-history",
+      "ps-plus-collection-2012",
+      "pc-game-pass-2019",
+      "ps-now-2014",
+      "ps-now-pc-2016",
+      "xbox-cloud-2020",
+      "arcade-card-readers",
+      "onlive-launch-2010",
+      "ps-now-pc-announcement",
+      "xbox-cloud-pc-2021"
     ],
-    "evidence": "The timeline selects milestones in overlapping business arrangements; it is not an exhaustive history, a proportional time scale or a claim that subscriptions, cartridges or cloud play were invented on the dates shown. Atari VCS was neither the first home console nor the first cartridge console. Lehto’s six-word quotation characterizes Microsoft’s reaction in his 2025 recollection; it is not a contemporaneous company statement. Halo’s 2026 PlayStation release is a remake. The economic reading of these events is our analysis, not a claim about private acquisition motives or measured returns. The diagrams describe roles and supported routes rather than a quantitative ledger or every possible offer. No private revenue share, contract price or internal transfer is inferred. Store and console licenses do not automatically transfer to other platforms or GeForce NOW. A supported game, appropriate rights, a receiving device and a connection remain necessary. Financial comparisons and the CD PROJEKT catalog agreement continue in the following chapter.",
+    "evidence": "The timeline selects milestones in overlapping business arrangements; it is not an exhaustive history, a proportional time scale or a claim that subscriptions, cartridges or cloud play were invented on the dates shown. Atari VCS was neither the first home console nor the first cartridge console. Lehto’s six-word quotation characterizes Microsoft’s reaction in his 2025 recollection; it is not a contemporaneous company statement. Halo’s 2026 PlayStation release is a remake. The economic reading of these events is our analysis, not a claim about private acquisition motives or measured returns. The diagrams describe roles and supported routes rather than a quantitative ledger or every possible offer. No private revenue share, contract price or internal transfer is inferred. Store and console licenses do not automatically transfer to other platforms or GeForce NOW. A supported game, appropriate rights, a receiving device and a connection remain necessary. Financial comparisons and the CD PROJEKT catalog agreement continue in the following chapter. OnLive’s 2010 PC/Mac launch predates PS Now. The console lane follows the ecosystem, not the receiving device: PS Now reached Windows in 2016; Xbox cloud launched on Android in 2020 and expanded broadly to PC browsers in 2021. These are selected regional launches, not universal availability. Sony’s 13-word quotation is from its August 2016 announcement.",
     "inscriptions": {
       "4": "subscription"
     }
   },
+
   {
     "id": "three-ecosystems",
     "part": 0,

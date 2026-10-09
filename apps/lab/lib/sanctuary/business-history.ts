@@ -36,80 +36,273 @@ export const businessHistorySources: EvidenceSource[] = [
     "title": "Phil Spencer — Xbox Game Pass expands to new releases, 23 January 2018",
     "url": "https://news.xbox.com/en-us/2018/01/23/xbox-game-pass-expands/",
     "note": "Dates Game Pass to June 2017 and announces Microsoft Studios releases entering on launch day. A historical commitment, not a description of every current tier or title. Catalog access is separate from cloud execution."
+  },
+  {
+    "id": "pc-software-history",
+    "title": "IBM — The floppy disk and the software industry",
+    "url": "https://www.ibm.com/history/floppy-disk",
+    "note": "Physical software distribution supported an independent software industry. The boxed-game category is an analytical description, not a claim that one company invented it."
+  },
+  {
+    "id": "pc-compatible-history",
+    "title": "IBM — The IBM PC",
+    "url": "https://www.ibm.com/history/personal-computer",
+    "note": "Documents published specifications, compatible machines made by other suppliers and the emergence of a shared PC architecture. This does not imply that every computer could run every game."
+  },
+  {
+    "id": "windows-games-1996",
+    "title": "Microsoft — Windows 95 gaming industry support, 16 May 1996",
+    "url": "https://news.microsoft.com/source/1996/05/16/unparalleled-industry-support-for-gaming-on-windows-95-makes-it-the-gaming-platform-of-choice-for-1996/",
+    "note": "Contemporaneous company announcement reports over 100 retail Windows 95 game titles and over 200 software, hardware and OEM partners. Used for the ecosystem structure, not its promotional market forecasts."
+  },
+  {
+    "id": "ps-network-history",
+    "title": "Sony — PS3 and PlayStation Network milestones, 16 November 2012",
+    "url": "https://www.sony.com/SonyInfo/IR/news/20121116E.pdf",
+    "note": "Dates PlayStation Network to November 2006 and describes game downloads and the PlayStation Store. The illustration is an original storefront study, not a screenshot."
+  },
+  {
+    "id": "ps-plus-collection-2012",
+    "title": "PlayStation — Instant Game Collection, 5 June 2012",
+    "url": "https://blog.playstation.com/2012/06/05/playstation-plus-e3-2012/",
+    "note": "The US launch announcement for the Instant Game Collection. Its claimed monthly games differ from later rotating catalogs; they are related membership offers, not identical entitlement systems."
+  },
+  {
+    "id": "pc-game-pass-2019",
+    "title": "Xbox — Game Pass for PC, 9 June 2019",
+    "url": "https://news.xbox.com/en-us/2019/06/09/how-to-experience-xbox-game-pass-for-pc/",
+    "note": "The PC beta and a PC-specific catalog. Membership alone is not a remote-computing service."
+  },
+  {
+    "id": "ps-now-2014",
+    "title": "PlayStation — PS Now open beta, 30 July 2014",
+    "url": "https://blog.playstation.com/2014/07/30/playstation-now-open-beta-our-journey-begins/",
+    "note": "US/Canada PS4 open beta began 31 July 2014 with streamed game rentals. Do not describe the launch as the later subscription offer or universal global availability."
+  },
+  {
+    "id": "xbox-cloud-2020",
+    "title": "Xbox — cloud gaming launch, 14 September 2020",
+    "url": "https://news.xbox.com/en-us/2020/09/14/cloud-gaming-with-xbox-game-pass-ultimate/",
+    "note": "Records the 15 September 2020 Android launch for eligible Game Pass Ultimate subscribers in 22 countries. Historical launch, not a current plan/price list."
+  },
+  {
+    "id": "arcade-card-readers",
+    "title": "Betson — arcade card readers",
+    "url": "https://www.betson.com/card-readers/",
+    "note": "Current operator equipment uses cashless RFID credits. Supports continuity of paid use of venue equipment, not a claim that arcade hardware, games or every venue business model stayed unchanged."
+  },
+  {
+    "id": "ps-now-pc-2016",
+    "title": "PlayStation — PS Now Windows app launch, 30 August 2016",
+    "url": "https://blog.playstation.com/2016/08/30/playstation-now-september-update-pc-streaming-6-greatest-hits/",
+    "note": "North American Windows app launch; streamed console games without requiring a locally owned PlayStation. This was an installed client with a controller, not a browser game or a native PC port."
+  },
+  {
+    "id": "onlive-launch-2010",
+    "title": "OnLive — US PC/Mac launch announcement, 15 June 2010 (press release archived by HEXUS)",
+    "url": "https://hexus.net/business/items/internet/25077-onlives-cloud-gaming-service-take-first-step-june-17/",
+    "note": "Company press release announces account activation on PC and Mac from 17 June 2010. Establishes cloud gaming on personal computers before PlayStation Now; not a claim that OnLive was the first experiment or that every announced game was immediately available."
+  },
+  {
+    "id": "ps-now-pc-announcement",
+    "title": "Eric Lempel, PlayStation — PS Now coming to Windows, 23 August 2016",
+    "url": "https://blog.playstation.com/2016/08/23/playstation-now-coming-to-pc-dualshock-4-usb-wireless-adaptor-unveiled/",
+    "note": "The 13-word quotation describes reaching more players. The service streamed selected PlayStation titles through an installed Windows client; it did not make the whole console catalog available or turn these games into native PC ports."
+  },
+  {
+    "id": "xbox-cloud-pc-2021",
+    "title": "Xbox — cloud gaming opens to PC and Apple browsers, 28 June 2021",
+    "url": "https://news.xbox.com/en-us/2021/06/28/xbox-cloud-gaming-now-running-on-xbox-series-x/",
+    "note": "Cloud access opened to all Game Pass Ultimate members in 22 supported countries on Windows PCs and Apple devices via browser. Earlier preview access and native PC game releases are distinct events."
   }
 ];
+
+export const businessHistoryLanes = [
+  {
+    "id": "arcade",
+    "title": "Arcades",
+    "caption": "The machine stays at the venue."
+  },
+  {
+    "id": "pc",
+    "title": "PC",
+    "caption": "Many computer makers. A shared software market."
+  },
+  {
+    "id": "console",
+    "title": "Consoles",
+    "caption": "Hardware and game distribution under one roof."
+  }
+] as const;
 
 export const businessHistory = [
   {
     "id": "coin",
+    "lane": "arcade",
+    "kind": "coin",
     "date": "1972",
     "label": "Pay per play",
-    "example": "Pong · the arcade cabinet",
-    "body": "The player buys a turn. The operator buys the machine, which earns its keep one game at a time.",
-    "stake": "A game can make a venue more inviting—and give the equipment owner something to sell.",
+    "example": "Pong · a game in the venue",
+    "body": "The operator buys a cabinet; the player buys a turn. The game has to earn enough to justify its machine, upkeep and place in the room. A good one gives people another reason to gather there.",
+    "stake": "The venue supplies the equipment. The player pays for an occasion to use it.",
     "sources": [
       "pong-tavern",
       "alcorn-oral"
     ]
   },
   {
+    "id": "arcade-today",
+    "lane": "arcade",
+    "kind": "coin-modern",
+    "date": "Today",
+    "label": "Still selling turns",
+    "example": "Modern arcades · cards and credits",
+    "body": "The coin slot can become a card reader, and the cabinet can become a driving simulator. The familiar arrangement survives: a business supplies the equipment and charges people to play it.",
+    "stake": "Games, payment systems and venues have changed. Paid use of a machine in a shared place remains a living business, alongside home and cloud gaming.",
+    "sources": [
+      "arcade-card-readers"
+    ]
+  },
+  {
+    "id": "pc-box",
+    "lane": "pc",
+    "kind": "pc-box",
+    "date": "1980s–1990s",
+    "label": "Boxed PC games",
+    "example": "Disks, manuals & home computers",
+    "body": "A game could sit on a shop shelf like a book or a record. Buy the copy, take it home and play it on a compatible computer. Returning to that game did not require another payment for another turn.",
+    "stake": "Publishers sold software to people who already owned the equipment. Compatible PCs came from many manufacturers; no single console maker owned the whole route to that audience.",
+    "sources": [
+      "pc-software-history",
+      "pc-compatible-history",
+      "windows-games-1996"
+    ]
+  },
+  {
+    "id": "online",
+    "lane": "pc",
+    "kind": "online",
+    "date": "2003",
+    "label": "Steam",
+    "example": "Valve · a service becomes a store",
+    "body": "Steam begins as a way for Valve to deliver and update its games, then grows into a store for other developers. The boxed purchase becomes a download inside a persistent account and library.",
+    "stake": "The player still buys individual games. Valve can now earn from distributing work made by many other studios, not just from selling its own next release.",
+    "sources": [
+      "valve-deck-booklet"
+    ]
+  },
+  {
+    "id": "pc-early-cloud",
+    "lane": "pc",
+    "kind": "cloud-early",
+    "date": "2010",
+    "label": "Early cloud play",
+    "example": "OnLive · games streamed to PC & Mac",
+    "body": "OnLive launches its US service on PCs and Macs in June 2010. Games run on remote servers and reach the player as a video stream; their controls travel back over the connection. Cloud play on personal computers predates PlayStation Now.",
+    "stake": "A demanding game can reach a computer that could not run it locally. The computing has moved to a service provider, though a suitable connection and access to the supported game are still needed.",
+    "sources": [
+      "onlive-launch-2010"
+    ]
+  },
+  {
+    "id": "pc-catalog",
+    "lane": "pc",
+    "kind": "catalog",
+    "date": "2019",
+    "label": "PC game catalogs",
+    "example": "PC Game Pass · a library by membership",
+    "body": "Game Pass arrives on PC with a separate collection of games. Instead of buying each title, members pay for access to the included selection while their membership and the relevant availability last.",
+    "stake": "These games can still run on the player’s own computer. Renting access to a catalog does not necessarily mean renting the hardware.",
+    "sources": [
+      "pc-game-pass-2019"
+    ]
+  },
+  {
+    "id": "pc-cloud",
+    "lane": "pc",
+    "kind": "cloud",
+    "date": "2020",
+    "label": "Cloud PCs",
+    "example": "GeForce NOW · remote computing",
+    "body": "GeForce NOW opens its commercial service in 2020. It runs supported PC games on NVIDIA’s machines and streams them to the player. A game bought through Steam can keep its place in that arrangement.",
+    "stake": "The store sells the game; NVIDIA supplies computing. The player can pay for a game once and for remote hardware access separately. Cloud play adds a route without replacing local PC gaming.",
+    "sources": [
+      "gfn-reach-2023",
+      "gfn-membership-terms",
+      "steam-cloud"
+    ]
+  },
+  {
     "id": "cartridge",
+    "lane": "console",
+    "kind": "cartridge",
     "date": "1977",
-    "label": "One console, many games",
-    "example": "Atari VCS · interchangeable cartridges",
-    "body": "One machine can play many separately purchased games. The player supplies the equipment; publishers compete for a place in the household’s collection.",
-    "stake": "A successful console creates an audience for the next game, including games made by other companies.",
+    "label": "Cartridge libraries",
+    "example": "Atari VCS · games sold separately",
+    "body": "The cartridge makes the console a player for a collection of works, much like a record player. A household buys the machine once, then chooses which games to buy for it. Each cartridge can be played again without feeding another coin into the machine.",
+    "stake": "This is the packaged-game business: selling copies for equipment already in the home. A larger library gives that equipment more uses—and gives publishers more things to sell.",
     "sources": [
       "home-cartridge-history"
     ]
   },
   {
     "id": "platform",
-    "date": "1990s–2001",
-    "label": "Games sell consoles",
+    "lane": "console",
+    "kind": "platform",
+    "date": "1994–2001",
+    "label": "Competing platforms",
     "example": "PlayStation · then Halo and Xbox",
-    "body": "Sony’s early PlayStation business benefits from hits by Square and Namco. Microsoft acquires Bungie before Halo becomes an Xbox launch title.",
-    "stake": "The value of a game includes the customers it can bring to someone’s platform.",
+    "body": "Once games are sold for a particular machine, a desirable game can help decide which machine a household buys. Sony credited hits from Square and Namco with PlayStation’s growth; Microsoft bought Bungie before Halo became an Xbox launch title.",
+    "stake": "This builds on the cartridge model rather than replacing it. The competition is now also for the audience that will buy the next games. PC gaming grows alongside it across hardware from many suppliers.",
     "sources": [
       "sony-ps1-creators",
       "halo-bungie-acquisition",
-      "halo-macworld-recollection"
+      "pc-compatible-history",
+      "windows-games-1996"
     ]
   },
   {
-    "id": "online",
-    "date": "2003–2007",
-    "label": "Downloads and streaming",
-    "example": "Steam · Netflix streaming",
-    "body": "Steam launches in 2003; Netflix adds streaming to its existing membership in 2007. The network becomes a way to deliver entertainment as well as promote it.",
-    "stake": "An online library can sell individual works or access to a catalog. Digital delivery does not decide the business model.",
+    "id": "console-store",
+    "lane": "console",
+    "kind": "console-store",
+    "date": "2006",
+    "label": "Console stores",
+    "example": "PlayStation Network · the online shelf",
+    "body": "PlayStation Network brings an online distribution service to the PS3 in 2006. Games and other content can reach the living room through the network, alongside the discs sold in shops.",
+    "stake": "The console company now operates a direct digital shop on the machine it sells. Publishers gain another route to customers inside that company’s ecosystem.",
     "sources": [
-      "valve-deck-booklet",
-      "netflix-streaming-launch"
+      "ps-network-history"
     ]
   },
   {
-    "id": "catalog",
-    "date": "2017–2018",
-    "label": "Subscribe to a catalog",
-    "example": "Xbox Game Pass · launch-day releases",
-    "body": "Game Pass launches in 2017. In 2018, Microsoft commits its new studio releases to the catalog on launch day, giving membership an attraction that once required another purchase.",
-    "stake": "A new game can help sell the next month of access, as well as another copy.",
+    "id": "console-catalog",
+    "lane": "console",
+    "kind": "catalog",
+    "date": "2012",
+    "label": "Membership libraries",
+    "example": "PlayStation Plus · later Game Pass",
+    "body": "PlayStation Plus introduces its Instant Game Collection in 2012. Xbox Game Pass launches in 2017 and, in 2018, commits new Microsoft studio releases to its catalog on launch day. The offers differ, but both make a collection of games a reason to keep paying for membership.",
+    "stake": "A game can help sell access to a wider library, as well as copies of itself. Membership access and individual purchases continue side by side.",
     "sources": [
+      "ps-plus-collection-2012",
       "game-pass-release-history"
     ]
   },
   {
-    "id": "cloud",
-    "date": "2020–2026",
-    "label": "Rent a remote PC",
-    "example": "GeForce NOW · Halo on PlayStation",
-    "body": "GeForce NOW adds a remote-computing service to supported store libraries. Halo’s 2026 remake reaches PlayStation: even a platform’s emblem can become a product on a rival’s shelf.",
-    "stake": "Equipment, game purchases and memberships can come from different businesses—or several arms of the same one.",
+    "id": "console-cloud",
+    "lane": "console",
+    "kind": "cloud-console",
+    "date": "2014–2021",
+    "label": "Console cloud play",
+    "example": "PS Now & Xbox · beyond the console",
+    "body": "PlayStation Now streams PS3 games to PS4 in its 2014 public beta. In 2016, a Windows app lets PC owners play through Sony’s servers without owning a PlayStation. Xbox cloud play reaches Android in 2020 and PC browsers in 2021. A console ecosystem can serve people who have not bought its console.",
+    "stake": "Cloud becomes part of the console ecosystem too. Catalog access, separately bought games and remote computing remain different rights; a console purchase is not automatically a PC copy for GeForce NOW.",
     "sources": [
-      "gfn-reach-2023",
-      "gfn-membership-terms",
-      "halo-playstation-release"
+      "ps-now-2014",
+      "ps-now-pc-2016",
+      "xbox-cloud-2020",
+      "xbox-cloud-pc-2021",
+      "gfn-membership-terms"
     ]
   }
 ];

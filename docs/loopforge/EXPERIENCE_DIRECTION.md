@@ -1,6 +1,8 @@
 # Loopforge — the interface belongs to the factory
 
-9 October 2026 — [Conveyor mini-game proposal](CONVEYOR_MINIGAME_PROPOSAL.md) is the current direction for the next operating prototype. Each room is a distinct puzzle within a common cinematic 3D factory; the console handles overview and communications. Physical machinery, routes, shared policies applied per room and supervisor delegation supply player agency during production. This supersedes the earlier scope of a later observation-only 3D view. The existing illustrated-console runtime remains the implemented baseline; this study adds no simulation features.
+**9 October implementation update:** The procedural commissioning study now uses Babylon.js in a separate route. One persistent factory camera serves night construction and production playback. The eighteen-hour shift / six-hour charge baseline and three-second illustrated day/phase interludes are approved direction. The existing first-shift game protocol is unchanged. See [Procedural factory study](PROCEDURAL_FACTORY_STUDY.md) for the implemented boundaries and verification.
+
+9 October 2026 — [Conveyor mini-game proposal](CONVEYOR_MINIGAME_PROPOSAL.md) is the current direction for the next operating prototype. Each room is a distinct puzzle within a common cinematic 3D factory; the console handles overview and communications. Physical machinery, routes, shared policies applied per room and supervisor delegation supply player agency during production. This supersedes the earlier scope of a later observation-only 3D view. The illustrated-console game remains the canonical runtime baseline. The separate commissioning fixture exercises construction and motion without changing that game’s economic or supervisor rules.
 
 Owner direction, 8 October 2026. Applies to the landing, playable console, camera views, briefings and future live factory. Read alongside the repository’s [design and performance standards](../DESIGN_AND_PERFORMANCE_STANDARDS.md).
 
@@ -24,7 +26,7 @@ Owner clarification, 8 October 2026: build the **asset-driven decision interface
 
 The **live, tick-fed 3D factory is a later cinematic view** of that same simulation. It will show continuous machinery, workers, batches and interventions, following the old world viewer’s observation direction. It joins the existing interfaces; it does not replace them or supply their game rules. “Side interfaces” describes their relationship to this future world view, not a requirement to squeeze them into a narrow sidebar. A briefing or incident can occupy the foreground while preserving factory context.
 
-The old working world viewer is the Sim4/KVP **Pixi isometric renderer**, with world positions, room bounds, floor selection and interpolated movement. Sim5 contains broader viewer strategy documents. Neither establishes an already finished 3D implementation. Babylon.js remains a research candidate for the future scene, not a dependency of this interface revision.
+The old working world viewer is the Sim4/KVP **Pixi isometric renderer**, with world positions, room bounds, floor selection and interpolated movement. Sim5 contains broader viewer strategy documents. Neither establishes an already finished 3D implementation. Babylon.js 9.30.0 now powers the separate commissioning study; the illustrated interfaces retain their own implementation.
 
 ## Entry and visual hierarchy
 

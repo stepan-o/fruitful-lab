@@ -2,7 +2,7 @@
   "title": "Build a line. Decide what it costs to keep it moving.",
   "date": "9 October 2026",
   "summary": "The conveyor is a small spatial factory inside the larger social factory. Build a working arrangement, watch individual robots operate it, improve the constraint, then live with the workforce and authority that arrangement creates.",
-  "status": "Design proposal · no new conveyor simulation is implemented by this study.",
+  "status": "Design proposal + separate playable commissioning study. The full conveyor economy, spatial optimization and policies remain proposed.",
   "direction": "Owner direction: each room has its own operating puzzle within a common cinematic 3D factory. Machinery is purchased and physically installed; space affects efficiency and danger. A shared policy catalog applies per room. Supervisors change performance, behaviour and the amount of attention a room needs.",
   "recommendation": "Build first. Arrive through the Lobby at night, place two Security items in fixed sockets, then install the first Conveyor element in Lattice Forge. Morning introduces leadership, the adviser and assignments; operation tests what was built. Later nights let the player improve or keep the arrangement. Exact starter hardware remains a proposal.",
   "fun": [
@@ -112,6 +112,36 @@
         [
           "Safe teaching, real ownership",
           "Propose a supplied starter kit for the required placements, so the guided lesson cannot consume expansion money and strand the opening. No quota clock runs while learning the camera or reading placement help. Once basic placement is understood, later construction introduces cash, footprint and time tradeoffs. Do not disguise the fixed Security sockets as a strategic choice."
+        ]
+      ]
+    },
+    {
+      "title": "One factory view: night construction and daily transitions",
+      "intro": "Navigation belongs to the factory view. Build mode adds placement tools to that same camera; leaving it never swaps maps or discards installed equipment. Production is stopped at night.",
+      "rows": [
+        [
+          "The familiar construction loop",
+          "Enter Build → select the next machine → inspect its ghost at the permitted socket → confirm. Escape clears the selection, then exits the tool. A camera drag must never place equipment. The first two Security placements teach the controls; fitting the conveyor drive reuses them."
+        ],
+        [
+          "Shared map navigation",
+          "Orbit, pan, zoom and room focus are identical during building and production. Preserve the camera when entering or leaving the tool. Focus a room when the player explicitly selects its equipment; do not repeatedly pull their camera back."
+        ],
+        [
+          "The factory day",
+          "Default world schedule: eighteen hours on shift, six hours charging. Faster chargers are a future research option. Night is a paused construction/planning window, not a six-hour real-time wait. The complete game retains morning leadership/adviser interfaces."
+        ],
+        [
+          "Time-change interludes",
+          "Night → Morning → Shift start → Night. Generated art fills the screen with just the day and phase. Each card automatically disappears after three seconds. Suspend the local simulation while the card is showing; never advance a private authoritative simulation merely because an animation finished."
+        ],
+        [
+          "Art scale",
+          "Use the old factory overview, entrance, lobby and Lattice Forge as references: a compact factory, fenced yard, low workshops and crowded rooms. Avoid monumental robot-city skylines and cathedral charging halls. The world is global; this workplace is in a town."
+        ],
+        [
+          "What the playable study proves",
+          "The factory-study route implements three ordered installations, the same procedural view in both modes, ten or one hundred individually tracked test workers, an uneven conveyor, pace and obstruction controls, a compressed test shift and automatic return to night. It does not implement the economy, adviser decisions, injuries, research, charging simulation or the full onboarding story."
         ]
       ]
     },
@@ -528,7 +558,44 @@
       "limit": "Calling the day a loop does not prove it is interesting. A solved arrangement may stay solved; introduce new demands through the actual factory and its people, not a compulsory daily emergency.",
       "url": "https://lostgarden.com/2012/04/30/loops-and-arcs/comment-page-1/",
       "source": "Designer essay · April 2012"
+    },
+    {
+      "game": "Factorio: teach a construction verb once",
+      "lesson": "The developers describe ordering tutorials around prerequisite concepts. The ordinary build ghost gives a player a visible placement preview before committing.",
+      "source": "Factorio Friday Facts #213",
+      "url": "https://www.factorio.com/blog/post/fff-213",
+      "extraSource": "Factorio official wiki: Ghost",
+      "extraUrl": "https://wiki.factorio.com/Ghost",
+      "map": "One objective at a time, explicit placement confirmation and a consistent camera. Security teaches the verb that Lattice Forge reuses.",
+      "limit": "Fixed commissioning sockets are an opening lesson. They do not define the eventual spatial optimization game."
+    },
+    {
+      "game": "Satisfactory: a distinct construction tool",
+      "lesson": "The build gun is an explicit tool state, and onboarding introduces concrete construction objectives. The community-maintained official wiki documents the flow.",
+      "source": "Satisfactory wiki: Build Gun",
+      "url": "https://satisfactory.wiki.gg/wiki/Build_Gun",
+      "extraSource": "Satisfactory wiki: Onboarding",
+      "extraUrl": "https://satisfactory.wiki.gg/wiki/Tutorial",
+      "map": "Make build entry, preview, confirm and cancel legible. Keep movement/navigation available while the tool is active.",
+      "limit": "Borrow the interaction grammar; Loopforge is a director view with paused night construction, not first-person exploration."
     }
   ],
-  "researchBoundary": "Sources checked 9 October 2026. The observations above come from developers or official descriptions; the mappings and recommendations are Loopforge design inferences. They are not audience research or evidence that this combination is already fun. No competitor screenshots or other new third-party artwork are republished; the floor diagrams are original explanatory schematics, not proposed game art."
+  "researchBoundary": "Sources checked 9 October 2026. The observations above come from developers or official descriptions; the mappings and recommendations are Loopforge design inferences. They are not audience research or evidence that this combination is already fun. No competitor screenshots or other new third-party artwork are republished; the floor diagrams are original explanatory schematics, not proposed game art.",
+  "timeArt": [
+    {
+      "name": "Night",
+      "src": "/media/files/e663990e6b225aa4e2bbc6719688c9d69494d331d0ef434a21f10721c9b7cc46.webp",
+      "caption": "Six hours charging. A cramped, improvised room inside the factory."
+    },
+    {
+      "name": "Morning",
+      "src": "/media/files/a3150dc1e3ef47137feaee79d7cee930d87f1f780ef51663e9e5a519393acce1.webp",
+      "caption": "The fenced factory yard in the town of Loopforge."
+    },
+    {
+      "name": "Shift start",
+      "src": "/media/files/4068638340c5b00d8d3cfe1d40853b66290e6b02394516b0c96b33b994d63ce4.webp",
+      "caption": "Eighteen hours on the line. A close, crowded Lattice Forge bay."
+    }
+  ]
 }

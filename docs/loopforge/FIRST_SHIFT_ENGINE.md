@@ -1,5 +1,7 @@
 # First-shift engine and viewer contract
 
+**9 October implementation update:** The procedural commissioning study now uses Babylon.js in a separate route. One persistent factory camera serves night construction and production playback. The eighteen-hour shift / six-hour charge baseline and three-second illustrated day/phase interludes are approved direction. The existing first-shift game protocol is unchanged. See [Procedural factory study](PROCEDURAL_FACTORY_STUDY.md) for the implemented boundaries and verification.
+
 **Next opening, 9 October:** night construction precedes morning briefing and assignments. The proposed kernel phase order is night build/commissioning → morning mandate/advice → authorized operation → settlement. Stable construction jobs and equipment IDs survive phase transitions; tutorial/camera state stays in the viewer. Standard installation is separate from engineering repair. No runtime or protocol extension is implemented in this documentation pass. See [the conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md).
 
 Implementation boundary, 9 October 2026: this document describes the existing first-day kernel. The [conveyor room-puzzle proposal](CONVEYOR_MINIGAME_PROPOSAL.md) specifies a future spatial/tick extension; machinery placement, task routes and installation are not implemented by the documentation pass.
@@ -47,7 +49,7 @@ The original dispatch office illustrates allocation, logistics illustrates debri
 
 The later live, tick-fed 3D factory is a cinematic observation layer alongside these interfaces. Both consume the same knowledge-filtered state/events and emit commands through the same boundary. The illustrated loop must work when the 3D layer is absent or unavailable. Camera selection, scene nodes, materials, animation clips and asset URLs remain outside the kernel. Future spatial facts require an explicitly versioned projection extension; the present HTTP profile is not silently declared sufficient for a full spatial world.
 
-Babylon.js remains a candidate for that future scene, not an installed dependency or final commitment. Validate actual art, lighting, moving production, input response and mobile performance before selecting it. The old Sim4/KVP implementation uses a Pixi isometric viewer; Sim5's broader viewer plans are design references, not an inherited finished 3D implementation. None of this changes simulation authority, BDI ownership or the model-service boundary.
+Babylon.js 9.30.0 is installed for the separate procedural commissioning study; broader renderer adoption remains subject to this scene’s quality and performance review. Validate actual art, lighting, moving production, input response and mobile performance before selecting it. The old Sim4/KVP implementation uses a Pixi isometric viewer; Sim5's broader viewer plans are design references, not an inherited finished 3D implementation. None of this changes simulation authority, BDI ownership or the model-service boundary.
 
 ## Clock and command semantics
 

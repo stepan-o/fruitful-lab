@@ -56,6 +56,12 @@ def research_html(item):
 
 def render_conveyor(d, interactive=True):
     out='<div class="conveyor-study"><header class="section-head"><span class="kicker">Room puzzle 01 · '+e(d['date'])+'</span><h2>'+e(d['title'])+'</h2>'+p(d['summary'])+'</header><span class="status">'+e(d['status'])+'</span><div class="cv-direction">'+p(d['direction'])+'</div><div class="cv-thesis"><span class="kicker">Recommended first experiment</span>'+p(d['recommendation'])+'</div>'
+    out+='<p><a class="link-button" href="/stepanoskin/loopforge/play/factory-study">Open the procedural commissioning study →</a></p>'
+    if d.get('timeArt'):
+        out+='<details class="cv-section"><summary>Time transitions · town-scale art direction</summary>'+p('Three-second automatic interludes. Titles are rendered by the UI; the factory itself remains procedural.')+'<div class="cv-time-art">'
+        for art in d['timeArt']:
+            out+='<figure><a href="'+e(art['src'],quote=True)+'" target="_blank" rel="noopener"><img loading="lazy" src="'+e(art['src'],quote=True)+'" alt="'+e(art['caption'],quote=True)+'" /></a><figcaption><strong>'+e(art['name'])+'</strong> · '+e(art['caption'])+'</figcaption></figure>'
+        out+='</div></details>'
     out+='<h3>Where the fun comes from</h3><div class="cv-fun">'+''.join('<article><h4>'+e(k)+'</h4>'+p(v)+'</article>' for k,v in d['fun'])+'</div>'
     out+='<h3>Two flows share one floor</h3><ol class="cv-chain">'+''.join('<li><strong>'+e(k)+'</strong>'+p(v)+'</li>' for k,v in d['chain'])+'</ol>'
     out+='<section class="cv-layouts"><span class="kicker">Compare three possible arrangements</span><h3>There is no best floor in isolation.</h3>'+p('These authored examples expose different constraints. Selecting one changes the design explanation; it does not run a simulation or choose a production theme.')

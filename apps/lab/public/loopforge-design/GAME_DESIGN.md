@@ -1544,7 +1544,7 @@ The Producer Vision supplies the dramatic north star and demand for observabilit
 
 ## Player experience
 
-A whole routine day targets about one minute, two to three for heavier days. The next prototype centres operation in a common cinematic 3D factory: each room supplies a distinct puzzle, while adviser choice, structured briefings, incidents and allocation use focused interfaces. The Conveyor mini-game tab specifies the first proposal; the current runtime remains the earlier illustrated-console baseline.
+A whole routine day targets about one minute, two to three for heavier days. The next prototype centres operation in a common cinematic 3D factory: each room supplies a distinct puzzle, while adviser choice, structured briefings, incidents and allocation use focused interfaces. The Conveyor mini-game tab specifies the first proposal; the current runtime remains the earlier illustrated-console baseline. The procedural commissioning study now uses Babylon.js in a separate route. One persistent factory camera serves night construction and production playback. The eighteen-hour shift / six-hour charge baseline and three-second illustrated day/phase interludes are approved direction. The existing first-shift game protocol is unchanged.
 
 *Agreed: paused planning, continuous shifts and consequential decision pauses. Whole-day target: about one minute routine, two to three at most for heavier days.*
 
@@ -1657,7 +1657,7 @@ Budget the expensive effects around the focal event: a few shadow-casting lights
 
 ## Engine boundary
 
-The engine owns the factory. KVP exposes an explicit view of it. Model services interpret permitted context and offer bounded contributions. A concrete end-to-end prototype must prove these separations.
+The engine owns the factory. KVP exposes an explicit view of it. Model services interpret permitted context and offer bounded contributions. A concrete end-to-end prototype must prove these separations. The visual fixture has its own pure typed command/tick kernel and a replaceable local host; it is public test state, not the private first-shift run.
 
 *Agreed direction · frontend independence and Rust-native logic*
 
@@ -2767,7 +2767,7 @@ PC press gallery labelled version 3.1 on 8 October 2026; navigation link still s
 
 *Generated from game-design/conveyor-proposal.json.*
 
-Design proposal · no new conveyor simulation is implemented by this study.
+Design proposal + separate playable commissioning study. The full conveyor economy, spatial optimization and policies remain proposed.
 
 ## Build a line. Decide what it costs to keep it moving.
 
@@ -2866,6 +2866,22 @@ Owner direction: the build phase precedes the morning brief and supervisor assig
 **Morning gives the machinery a human problem.** Answer leadership and receive the weekly quota. Choose LIMEN or STILETTO, hear their interpretation of the prepared factory, then approve or override assignments. During operation, Security’s gate and the new Conveyor element visibly affect the same workers. Adviser selection is the first leadership fork, not the first input in the game.
 
 **Safe teaching, real ownership.** Propose a supplied starter kit for the required placements, so the guided lesson cannot consume expansion money and strand the opening. No quota clock runs while learning the camera or reading placement help. Once basic placement is understood, later construction introduces cash, footprint and time tradeoffs. Do not disguise the fixed Security sockets as a strategic choice.
+
+## One factory view: night construction and daily transitions
+
+Navigation belongs to the factory view. Build mode adds placement tools to that same camera; leaving it never swaps maps or discards installed equipment. Production is stopped at night.
+
+**The familiar construction loop.** Enter Build → select the next machine → inspect its ghost at the permitted socket → confirm. Escape clears the selection, then exits the tool. A camera drag must never place equipment. The first two Security placements teach the controls; fitting the conveyor drive reuses them.
+
+**Shared map navigation.** Orbit, pan, zoom and room focus are identical during building and production. Preserve the camera when entering or leaving the tool. Focus a room when the player explicitly selects its equipment; do not repeatedly pull their camera back.
+
+**The factory day.** Default world schedule: eighteen hours on shift, six hours charging. Faster chargers are a future research option. Night is a paused construction/planning window, not a six-hour real-time wait. The complete game retains morning leadership/adviser interfaces.
+
+**Time-change interludes.** Night → Morning → Shift start → Night. Generated art fills the screen with just the day and phase. Each card automatically disappears after three seconds. Suspend the local simulation while the card is showing; never advance a private authoritative simulation merely because an animation finished.
+
+**Art scale.** Use the old factory overview, entrance, lobby and Lattice Forge as references: a compact factory, fenced yard, low workshops and crowded rooms. Avoid monumental robot-city skylines and cathedral charging halls. The world is global; this workplace is in a town.
+
+**What the playable study proves.** The factory-study route implements three ordered installations, the same procedural view in both modes, ten or one hundred individually tracked test workers, an uneven conveyor, pace and obstruction controls, a compressed test shift and automatic return to night. It does not implement the economy, adviser decisions, injuries, research, charging simulation or the full onboarding story.
 
 ## Four learning loops, beginning with building
 
@@ -3143,6 +3159,30 @@ Cook distinguishes repeated learning through action and feedback from an authore
 
 **Boundary / counterexample.** Calling the day a loop does not prove it is interesting. A solved arrangement may stay solved; introduce new demands through the actual factory and its people, not a compulsory daily emergency.
 
+### Factorio: teach a construction verb once
+
+The developers describe ordering tutorials around prerequisite concepts. The ordinary build ghost gives a player a visible placement preview before committing.
+
+[Factorio Friday Facts #213](https://www.factorio.com/blog/post/fff-213)
+
+[Factorio official wiki: Ghost](https://wiki.factorio.com/Ghost)
+
+**Borrow for Loopforge.** One objective at a time, explicit placement confirmation and a consistent camera. Security teaches the verb that Lattice Forge reuses.
+
+**Boundary / counterexample.** Fixed commissioning sockets are an opening lesson. They do not define the eventual spatial optimization game.
+
+### Satisfactory: a distinct construction tool
+
+The build gun is an explicit tool state, and onboarding introduces concrete construction objectives. The community-maintained official wiki documents the flow.
+
+[Satisfactory wiki: Build Gun](https://satisfactory.wiki.gg/wiki/Build_Gun)
+
+[Satisfactory wiki: Onboarding](https://satisfactory.wiki.gg/wiki/Tutorial)
+
+**Borrow for Loopforge.** Make build entry, preview, confirm and cancel legible. Keep movement/navigation available while the tool is active.
+
+**Boundary / counterexample.** Borrow the interaction grammar; Loopforge is a director view with paused night construction, not first-person exploration.
+
 
 ## Opening rules and what unlocks later
 
@@ -3206,7 +3246,7 @@ A whole game day targets about one minute; a heavier day takes two to three minu
 
 This is a proposed arc, not an implemented schedule. The one-day kernel cannot validate it. Use explicit world requirements for commissioning, never an invisible judgment of player understanding. Payment timing must allow investment when the factory is ready; do not require money that arrives only after the weekly deadline.
 
-One persistent run supports four selectable consoles and the retained Factory, Development and Records jobs. Foundry, Broadcast and porcelain Obedience use calibrated six-pane glass; Dispatch office uses one primary feed plus five. Original room feeds, read-only facts and semantic controls sit over clean plates. Hardware motion uses registered CSS crops; focused screens retain matching internal material assets. A live tick-fed 3D factory remains a later view over the same advisers, commands and records. The one-minute budget belongs to the whole day; these interface jobs do not require visiting every screen each day.
+One persistent run supports four selectable consoles and the retained Factory, Development and Records jobs. Foundry, Broadcast and porcelain Obedience use calibrated six-pane glass; Dispatch office uses one primary feed plus five. Original room feeds, read-only facts and semantic controls sit over clean plates. Hardware motion uses registered CSS crops; focused screens retain matching internal material assets. A live tick-fed 3D factory remains a later view over the same advisers, commands and records. The one-minute budget belongs to the whole day; these interface jobs do not require visiting every screen each day. Factory navigation is shared across production and explicit Build mode. Night stops production. Phase interludes briefly replace the view without replacing the scene.
 
 *Four skins implemented · visual calibration and runtime checks underway*
 

@@ -4,7 +4,7 @@
 
 *Generated from game-design/conveyor-proposal.json.*
 
-Design proposal · no new conveyor simulation is implemented by this study.
+Design proposal + separate playable commissioning study. The full conveyor economy, spatial optimization and policies remain proposed.
 
 ## Build a line. Decide what it costs to keep it moving.
 
@@ -103,6 +103,22 @@ Owner direction: the build phase precedes the morning brief and supervisor assig
 **Morning gives the machinery a human problem.** Answer leadership and receive the weekly quota. Choose LIMEN or STILETTO, hear their interpretation of the prepared factory, then approve or override assignments. During operation, Security’s gate and the new Conveyor element visibly affect the same workers. Adviser selection is the first leadership fork, not the first input in the game.
 
 **Safe teaching, real ownership.** Propose a supplied starter kit for the required placements, so the guided lesson cannot consume expansion money and strand the opening. No quota clock runs while learning the camera or reading placement help. Once basic placement is understood, later construction introduces cash, footprint and time tradeoffs. Do not disguise the fixed Security sockets as a strategic choice.
+
+## One factory view: night construction and daily transitions
+
+Navigation belongs to the factory view. Build mode adds placement tools to that same camera; leaving it never swaps maps or discards installed equipment. Production is stopped at night.
+
+**The familiar construction loop.** Enter Build → select the next machine → inspect its ghost at the permitted socket → confirm. Escape clears the selection, then exits the tool. A camera drag must never place equipment. The first two Security placements teach the controls; fitting the conveyor drive reuses them.
+
+**Shared map navigation.** Orbit, pan, zoom and room focus are identical during building and production. Preserve the camera when entering or leaving the tool. Focus a room when the player explicitly selects its equipment; do not repeatedly pull their camera back.
+
+**The factory day.** Default world schedule: eighteen hours on shift, six hours charging. Faster chargers are a future research option. Night is a paused construction/planning window, not a six-hour real-time wait. The complete game retains morning leadership/adviser interfaces.
+
+**Time-change interludes.** Night → Morning → Shift start → Night. Generated art fills the screen with just the day and phase. Each card automatically disappears after three seconds. Suspend the local simulation while the card is showing; never advance a private authoritative simulation merely because an animation finished.
+
+**Art scale.** Use the old factory overview, entrance, lobby and Lattice Forge as references: a compact factory, fenced yard, low workshops and crowded rooms. Avoid monumental robot-city skylines and cathedral charging halls. The world is global; this workplace is in a town.
+
+**What the playable study proves.** The factory-study route implements three ordered installations, the same procedural view in both modes, ten or one hundred individually tracked test workers, an uneven conveyor, pace and obstruction controls, a compressed test shift and automatic return to night. It does not implement the economy, adviser decisions, injuries, research, charging simulation or the full onboarding story.
 
 ## Four learning loops, beginning with building
 
@@ -379,3 +395,27 @@ Cook distinguishes repeated learning through action and feedback from an authore
 **Borrow for Loopforge.** Specify the expectation, action, visible response and next decision for build, operation, delegation and output allocation. Use the guided Security sequence to teach actions that later acquire meaningful alternatives.
 
 **Boundary / counterexample.** Calling the day a loop does not prove it is interesting. A solved arrangement may stay solved; introduce new demands through the actual factory and its people, not a compulsory daily emergency.
+
+### Factorio: teach a construction verb once
+
+The developers describe ordering tutorials around prerequisite concepts. The ordinary build ghost gives a player a visible placement preview before committing.
+
+[Factorio Friday Facts #213](https://www.factorio.com/blog/post/fff-213)
+
+[Factorio official wiki: Ghost](https://wiki.factorio.com/Ghost)
+
+**Borrow for Loopforge.** One objective at a time, explicit placement confirmation and a consistent camera. Security teaches the verb that Lattice Forge reuses.
+
+**Boundary / counterexample.** Fixed commissioning sockets are an opening lesson. They do not define the eventual spatial optimization game.
+
+### Satisfactory: a distinct construction tool
+
+The build gun is an explicit tool state, and onboarding introduces concrete construction objectives. The community-maintained official wiki documents the flow.
+
+[Satisfactory wiki: Build Gun](https://satisfactory.wiki.gg/wiki/Build_Gun)
+
+[Satisfactory wiki: Onboarding](https://satisfactory.wiki.gg/wiki/Tutorial)
+
+**Borrow for Loopforge.** Make build entry, preview, confirm and cancel legible. Keep movement/navigation available while the tool is active.
+
+**Boundary / counterexample.** Borrow the interaction grammar; Loopforge is a director view with paused night construction, not first-person exploration.

@@ -1490,7 +1490,7 @@
   },
   "experience": {
     "title": "Watch, understand, intervene",
-    "intro": "A whole routine day targets about one minute, two to three for heavier days. The next prototype centres operation in a common cinematic 3D factory: each room supplies a distinct puzzle, while adviser choice, structured briefings, incidents and allocation use focused interfaces. The Conveyor mini-game tab specifies the first proposal; the current runtime remains the earlier illustrated-console baseline.",
+    "intro": "A whole routine day targets about one minute, two to three for heavier days. The next prototype centres operation in a common cinematic 3D factory: each room supplies a distinct puzzle, while adviser choice, structured briefings, incidents and allocation use focused interfaces. The Conveyor mini-game tab specifies the first proposal; the current runtime remains the earlier illustrated-console baseline. The procedural commissioning study now uses Babylon.js in a separate route. One persistent factory camera serves night construction and production playback. The eighteen-hour shift / six-hour charge baseline and three-second illustrated day/phase interludes are approved direction. The existing first-shift game protocol is unchanged.",
     "rhythmStatus": "Agreed: paused planning, continuous shifts and consequential decision pauses. Whole-day target: about one minute routine, two to three at most for heavier days.",
     "rhythm": [
       [
@@ -1683,7 +1683,7 @@
   },
   "engineBoundary": {
     "title": "One simulation, replaceable viewers and models",
-    "intro": "The engine owns the factory. KVP exposes an explicit view of it. Model services interpret permitted context and offer bounded contributions. A concrete end-to-end prototype must prove these separations.",
+    "intro": "The engine owns the factory. KVP exposes an explicit view of it. Model services interpret permitted context and offer bounded contributions. A concrete end-to-end prototype must prove these separations. The visual fixture has its own pure typed command/tick kernel and a replaceable local host; it is public test state, not the private first-shift run.",
     "status": "Agreed direction · frontend independence and Rust-native logic",
     "planes": [
       [
@@ -2481,7 +2481,7 @@
   },
   "uiStructure": {
     "title": "Four integrated consoles and focused workspaces",
-    "intro": "One persistent run supports four selectable consoles and the retained Factory, Development and Records jobs. Foundry, Broadcast and porcelain Obedience use calibrated six-pane glass; Dispatch office uses one primary feed plus five. Original room feeds, read-only facts and semantic controls sit over clean plates. Hardware motion uses registered CSS crops; focused screens retain matching internal material assets. A live tick-fed 3D factory remains a later view over the same advisers, commands and records. The one-minute budget belongs to the whole day; these interface jobs do not require visiting every screen each day.",
+    "intro": "One persistent run supports four selectable consoles and the retained Factory, Development and Records jobs. Foundry, Broadcast and porcelain Obedience use calibrated six-pane glass; Dispatch office uses one primary feed plus five. Original room feeds, read-only facts and semantic controls sit over clean plates. Hardware motion uses registered CSS crops; focused screens retain matching internal material assets. A live tick-fed 3D factory remains a later view over the same advisers, commands and records. The one-minute budget belongs to the whole day; these interface jobs do not require visiting every screen each day. Factory navigation is shared across production and explicit Build mode. Night stops production. Phase interludes briefly replace the view without replacing the scene.",
     "status": "Four skins implemented · visual calibration and runtime checks underway",
     "identity": [
       [

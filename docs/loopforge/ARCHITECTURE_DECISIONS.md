@@ -1,8 +1,10 @@
 # Loopforge implementation decisions
 
+**9 October implementation update:** The procedural commissioning study now uses Babylon.js in a separate route. One persistent factory camera serves night construction and production playback. The eighteen-hour shift / six-hour charge baseline and three-second illustrated day/phase interludes are approved direction. The existing first-shift game protocol is unchanged. See [Procedural factory study](PROCEDURAL_FACTORY_STUDY.md) for the implemented boundaries and verification.
+
 **Next opening, 9 October:** night construction precedes morning briefing and assignments. The proposed kernel phase order is night build/commissioning → morning mandate/advice → authorized operation → settlement. Stable construction jobs and equipment IDs survive phase transitions; tutorial/camera state stays in the viewer. Standard installation is separate from engineering repair. No runtime or protocol extension is implemented in this documentation pass. See [the conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md).
 
-9 October 2026 — [Conveyor mini-game proposal](CONVEYOR_MINIGAME_PROPOSAL.md) is the current direction for the next operating prototype. Each room is a distinct puzzle within a common cinematic 3D factory; the console handles overview and communications. Physical machinery, routes, shared policies applied per room and supervisor delegation supply player agency during production. This supersedes the earlier scope of a later observation-only 3D view. The existing illustrated-console runtime remains the implemented baseline; this study adds no simulation features.
+9 October 2026 — [Conveyor mini-game proposal](CONVEYOR_MINIGAME_PROPOSAL.md) is the current direction for the next operating prototype. Each room is a distinct puzzle within a common cinematic 3D factory; the console handles overview and communications. Physical machinery, routes, shared policies applied per room and supervisor delegation supply player agency during production. This supersedes the earlier scope of a later observation-only 3D view. The illustrated-console game remains the canonical runtime baseline. The separate commissioning fixture exercises construction and motion without changing that game’s economic or supervisor rules.
 
 Started 3 October 2026; rendering scope updated 8 October. The original bounded
 teaching demo and the current first-day prototype are distinct implementations.
@@ -36,7 +38,7 @@ strategy reference. Do not mistake either for an inherited finished 3D scene.
 | --- | --- | --- |
 | React + native HTML/CSS + authored assets | Readable text, semantic controls and responsive material composition | Current decision interfaces and illustrated cameras; no generic SVG/CSS replacement for the required artwork |
 | PixiJS | Existing sim-sim and Sim4 viewer implementation; sprite and texture composition | Reuse source assets and architectural patterns selectively; no mandatory runtime migration for the current interfaces |
-| Babylon.js | Candidate integrated scene/lighting toolset | Proposed future 3D spike, not selected or installed; revisit dated research and measure representative content |
+| Babylon.js | Candidate integrated scene/lighting toolset | Installed for the isolated commissioning study; evaluate representative art, interaction and performance before expanding |
 | Three.js / React Three Fiber | Alternative 3D composition and ecosystem | Future scene alternative, to compare if the representative spike exposes a reason |
 | WebGPU | Modern graphics and compute capabilities | Progressive rendering option; never a prerequisite for reading or playing |
 

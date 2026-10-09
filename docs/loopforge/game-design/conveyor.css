@@ -44,3 +44,5 @@
 .record .conveyor-study .cv-map-scroll{margin:20px 0;break-inside:avoid}
 @media(max-width:600px){.cv-fun,.cv-chain{grid-template-columns:1fr}.cv-choices{grid-template-columns:1fr}.cv-choices button{min-height:48px}.cv-thesis{padding:18px}.cv-thesis p{font-size:22px}.cv-facts>div{grid-template-columns:1fr;gap:7px}.cv-facts dd{font-size:15px}.cv-section summary{font-size:16px}.cv-fun p,.cv-chain p{font-size:15px}}
 @media print{.cv-choices{display:none}.conveyor-study [data-conveyor-layout][hidden]{display:block!important}.cv-map{min-width:0}.cv-map-scroll{overflow:visible}.cv-section{break-inside:auto}.cv-fun{display:block}.cv-facts>div{break-inside:avoid}.cv-thesis{background:none}.cv-map-legend{color:#343d35}.cv-map-legend i{print-color-adjust:exact}}
+
+.cv-time-art{display:grid;gap:18px}.cv-time-art figure{margin:0}.cv-time-art img{width:100%;height:auto;display:block;border:1px solid #6b6045}.cv-time-art figcaption{font-size:13px;line-height:1.5;margin-top:9px;color:#aeb6a5}

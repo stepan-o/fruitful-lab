@@ -31,6 +31,7 @@ def render_core_loop_study(d,media,interactive=True):
     out+=detail('What does not fit neatly into a type',fields(d['boundaries']))
     out+='<div class="section-divider"></div><h3>Conclusions for Loopforge</h3>'+fields(d['conclusions'])
     em=d['emergence'];out+='<section class="study-emergence"><span class="kicker">Agency → evidence → another choice</span><h3>'+e(em['title'])+'</h3>'+p(em['intro'])+cycle(em['chain'])+fields(em['signals'])
+    out+=p(em['implementation'])+links([('Play the first shift','/stepanoskin/loopforge/play')])
     out+='<h4>A status-token contract for every arc</h4>'+p('These are design obligations, not claims about the current one-day prototype. Tokens reveal observable state and give access to action; they do not expose private engine variables.')
     for a in em['arcs']:
         tokens='<div class="study-tokens" aria-label="Illustrative status tokens">'+''.join('<div><small>'+e(who)+'</small><b>'+e(state)+'</b><span>'+e(basis)+'</span></div>' for who,state,basis in a['tokenExamples'])+'</div>'
@@ -60,6 +61,7 @@ def core_loop_markdown(d,media):
     out.append('## Boundaries of the taxonomy');rows(d['boundaries'])
     out.append('## Conclusions for Loopforge');rows(d['conclusions'])
     em=d['emergence'];out.extend(['## '+em['title'],em['intro'],' → '.join(em['chain'])]);rows(em['signals'])
+    out.append(em['implementation'])
     out.append('### A status-token contract for every arc')
     for a in em['arcs']:
         out.append('#### '+a['stage']);rows(arc_rows(a));out.append('Illustrative token vocabulary (not live state):');out.extend('- '+who+' · '+state+' · '+basis for who,state,basis in a['tokenExamples'])

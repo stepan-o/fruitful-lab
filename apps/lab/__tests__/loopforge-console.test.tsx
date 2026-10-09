@@ -101,7 +101,7 @@ async function acknowledgeOpeningQuota() {
   fireEvent.click(screen.getByRole("button", { name: "Receive the quota" }));
   fireEvent.click(screen.getByRole("button", { name: "Acknowledge quota" }));
   await waitFor(() =>
-    expect(screen.getByRole("button", { name: "Choose adviser", exact: true })).toBeEnabled(),
+    expect(screen.getByRole("button", { name: "Choose adviser" })).toBeEnabled(),
   );
 }
 it("opens on six cameras with answering leadership as the sole enabled gameplay action", () => {
@@ -113,7 +113,7 @@ it("opens on six cameras with answering leadership as the sole enabled gameplay 
   const answer = within(console).getByRole("button", { name: "Answer leadership" });
   expect(within(console).getAllByRole("button").filter(button => !button.hasAttribute("disabled"))).toEqual([answer]);
   for (const name of ["Choose adviser", "Development", "Records"]) {
-    expect(within(console).getByRole("button", { name, exact: true })).toBeDisabled();
+    expect(within(console).getByRole("button", { name })).toBeDisabled();
   }
   expect(screen.queryByRole("region", { name: "Weekly leadership call" })).not.toBeInTheDocument();
   resizeProducerConsole(320, 700);
@@ -153,7 +153,7 @@ it.each(["handover", "quota"])("dismissing the %s before acknowledgement leaves 
   fireEvent.click(screen.getByRole("button", { name: "Return to factory ↗" }));
   await waitFor(() => expect(screen.getByLabelText("Six factory cameras")).toBeVisible());
   expect(screen.getByRole("button", { name: "Answer leadership" })).toBeEnabled();
-  expect(screen.getByRole("button", { name: "Choose adviser", exact: true })).toBeDisabled();
+  expect(screen.getByRole("button", { name: "Choose adviser" })).toBeDisabled();
   expect(screen.getByRole("button", { name: "Records" })).toBeDisabled();
   expect(send).not.toHaveBeenCalled();
   await acknowledgeOpeningQuota();
@@ -163,10 +163,11 @@ it.each(["handover", "quota"])("dismissing the %s before acknowledgement leaves 
 it.each(["Leadership call", "Weekly quota: 0 / 60. Inspect"])("reopening through %s preserves an acknowledged mandate", async control => {
   render(<FirstShift media={media} />);
   await acknowledgeOpeningQuota();
-  fireEvent.click(screen.getByRole("button", { name: control, exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: control }));
+  if (control.startsWith("Weekly quota")) fireEvent.click(screen.getByRole("button", {name:"Read the weekly mandate"}));
   expect(screen.getByRole("region", { name: "Weekly leadership call" })).toBeVisible();
   fireEvent.click(screen.getByRole("button", { name: "Return to factory ↗" }));
-  await waitFor(() => expect(screen.getByRole("button", { name: "Choose adviser", exact: true })).toBeEnabled());
+  await waitFor(() => expect(screen.getByRole("button", { name: "Choose adviser" })).toBeEnabled());
   expect(screen.queryByRole("button", { name: "Answer leadership" })).not.toBeInTheDocument();
   expect(send).not.toHaveBeenCalled();
 });
@@ -174,6 +175,8 @@ it("reopening leadership only presents the mandate and preserves confirmed state
   setup({...project(initialState(7)),phase:"ready",adviser:"limen",committed:9});
   render(<FirstShift media={media} />);
   fireEvent.click(screen.getByRole("button",{name:"Weekly quota: 9 / 60. Inspect"}));
+  expect(screen.getByRole("dialog", {name:"Status evidence"})).toHaveTextContent("9 / 60");
+  fireEvent.click(screen.getByRole("button",{name:"Read the weekly mandate"}));
   fireEvent.click(screen.getByRole("button",{name:/The quota$/}));
   fireEvent.click(screen.getByRole("button",{name:"Acknowledge quota"}));
   await waitFor(()=>expect(screen.getByRole("button",{name:"Start the line"})).toBeVisible());
@@ -196,10 +199,10 @@ it("preserves the acknowledgement gate through console changes and menu round-tr
 
   await changeConsoleAndResume("Obedience organ");
   expect(screen.getByRole("button", { name: "Answer leadership" })).toBeEnabled();
-  expect(screen.getByRole("button", { name: "Choose adviser", exact: true })).toBeDisabled();
+  expect(screen.getByRole("button", { name: "Choose adviser" })).toBeDisabled();
   await acknowledgeOpeningQuota();
   await changeConsoleAndResume("Broadcast control");
-  expect(screen.getByRole("button", { name: "Choose adviser", exact: true })).toBeEnabled();
+  expect(screen.getByRole("button", { name: "Choose adviser" })).toBeEnabled();
   expect(screen.queryByRole("button", { name: "Answer leadership" })).not.toBeInTheDocument();
   expect(send).not.toHaveBeenCalled();
   expect(restart).not.toHaveBeenCalled();
@@ -209,7 +212,7 @@ it("preserves the acknowledged mandate, adviser and selected camera across avail
   const { rerender } = render(<FirstShift media={media} />);
   expect(resizeProducerConsole(1440, 860)).toHaveAttribute("data-layout", "wall");
   await acknowledgeOpeningQuota();
-  fireEvent.click(screen.getByRole("button", { name: "Choose adviser", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Choose adviser" }));
   fireEvent.click(screen.getByRole("button", { name: "Inspect LIMEN" }));
   fireEvent.click(screen.getByRole("button", { name: "Appoint LIMEN for today" }));
   expect(send).toHaveBeenLastCalledWith({ type: "choose_adviser", adviser: "limen" });
@@ -236,7 +239,7 @@ it("preserves the acknowledged mandate, adviser and selected camera across avail
     expect(console).toHaveAttribute("data-layout", layout);
     expect(screen.getByRole("button", { name: "Inspect Security" })).toHaveAttribute("data-selected", "true");
     expect(screen.getByRole("button", { name: "Inspect Lattice Forge" })).toHaveAttribute("data-selected", "false");
-    expect(screen.getByRole("button", { name: "Leadership call", exact: true })).toBeEnabled();
+    expect(screen.getByRole("button", { name: "Leadership call" })).toBeEnabled();
     expect(screen.queryByRole("button", { name: "Answer leadership" })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "LIMEN adviser channel" })).toBeEnabled();
     expect(screen.getByRole("button", { name: "Start the line" })).toBeEnabled();
@@ -328,7 +331,7 @@ it("keeps an allocation preview through records navigation and commits only afte
 it("keeps confirmed facts visible and blocks appointments until reconnection", async () => {
   const { rerender } = render(<FirstShift media={media} />);
   await acknowledgeOpeningQuota();
-  fireEvent.click(screen.getByRole("button", {name:"Choose adviser", exact:true}));
+  fireEvent.click(screen.getByRole("button", {name:"Choose adviser"}));
   const recover = setup(project(initialState(7)), "Connection interrupted");
   rerender(<FirstShift media={media} />);
   expect(screen.getByRole("alert")).toHaveTextContent(
@@ -339,4 +342,40 @@ it("keeps confirmed facts visible and blocks appointments until reconnection", a
   fireEvent.click(screen.getByRole("button", { name: "Reconnect" }));
   expect(recover).toHaveBeenCalledTimes(1);
   expect(send).not.toHaveBeenCalled();
+});
+
+it("links an attributed reaction to evidence without revealing private traits or repeating a stale morning brief", () => {
+  let state = step(initialState(7), { type: "choose_adviser", adviser: "limen" });
+  state = step(state, { type: "approve_plan", assignments: { conveyor: "stiletto", security: "limen" } });
+  setup(project(state));
+  render(<FirstShift media={media} />);
+  const token = screen.getByRole("button", { name: /LIMEN: I will follow the arrangement/ });
+  fireEvent.click(token);
+  const panel = screen.getByRole("dialog", { name: "Status evidence" });
+  expect(panel).toHaveTextContent("Statement / LIMEN");
+  expect(panel).toHaveTextContent("The director changed the arrangement");
+  expect(panel).not.toHaveTextContent(/loyalty|confidence|respect score/);
+  expect(send).not.toHaveBeenCalled();
+  fireEvent.click(within(panel).getByRole("button", { name: "Open LIMEN’s channel" }));
+  expect(screen.getByRole("heading", { name: "On the channel" })).toBeVisible();
+  expect(screen.queryByRole("heading", { name: "The morning brief" })).not.toBeInTheDocument();
+  expect(screen.getByText("I will follow the arrangement. My objection remains on record.")).toBeVisible();
+});
+it("pauses requests during status inspection and restores keyboard focus on dismissal", () => {
+  jest.useFakeTimers();
+  let state = step(initialState(7), { type: "choose_adviser", adviser: "limen" });
+  state = step(state, { type: "approve_plan", assignments: state.briefing!.assignments });
+  state = step(state, { type: "start_shift" });
+  setup(project(state));
+  render(<FirstShift media={media} />);
+  const token = screen.getByRole("button", { name: /Lattice Forge: 0 completed/ });
+  token.focus();
+  fireEvent.click(token);
+  act(() => { jest.advanceTimersByTime(4000); });
+  expect(send).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button", { name: "Close panel" }));
+  expect(token).toHaveFocus();
+  act(() => { jest.advanceTimersByTime(900); });
+  expect(send).toHaveBeenCalledWith({ type: "advance" });
+  jest.useRealTimers();
 });

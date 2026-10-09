@@ -2558,6 +2558,8 @@ Player intention → A real commitment → World change → Who notices / what t
 
 **Later understanding.** An authorised discovery can connect the earlier sign to its cause. The event record needs that connection from the start, even when the player could not inspect it. Hidden consequences may remain silent until there is observable evidence; do not manufacture a hint for every secret.
 
+Now in the first-day playable UI: active camera status, attributed supervisor portrait statements, current instrument evidence and an inspectable consequence summary after dispatch. Selecting a token pauses for its source, related record and available action. Immediate remarks respond to load decisions, overrides and actual losses without revealing private traits. This implements the first-day foundation; later arcs, rumours, discoveries and multi-day carry-forward remain design work.
+
 ### A status-token contract for every arc
 
 #### 01 · Conveyor + Security
@@ -4462,3 +4464,11 @@ Concept readiness and scope approval do not establish runtime acceptance. Owner 
 All four skins have wide and portrait runtime plates. Current handset/selector/production hover and press states animate registered plate fragments; they do not yet have independent alpha cords, separate cast-shadow atlases or a long pickup animation. The incoming receiver has a short mechanical tremor and amber attention, and answering uses the existing connection cue. A distinct sampled telephone ring remains an audio follow-up. These refinements do not block the implemented opening call and selectable compositions.
 
 Local review covered all four desktop and portrait compositions, one-camera and short-landscape modes, acknowledgement and early-close behavior, changing equipment while an assignment override was still a draft, keyboard Settings dismissal, effects-off, and a complete first shift. Reduced-motion handling was inspected in CSS/canvas code; this pass is not a hardware performance benchmark. See `review/producer-console/README.md` for outcomes, encoded asset sizes and limitations.
+
+## Playable status feedback — 8 October 2026
+
+`feedback.ts` consumes only `PlayerView` plus an optional confirmed opening record. It returns typed token identity, knowledge label (Confirmed / Observed / Statement), tone, source, public event references and a navigation action. It neither imports the kernel nor simulates events. `StatusFeedback.tsx` renders shared camera status, portrait speech, evidence dialogs and debrief tokens. New remarks in the existing allowlist respond to load resolutions and actual losses; private trait values and worker conditioning remain absent.
+
+The integrated console’s active rooms display state and operator reaction; sealed rooms stay name-only. Selecting a token or instrument pauses advance requests and shows its full evidence. A pending incident routes back to the existing response; inspecting records never issues an order. Quota inspection reports the current dispatch ledger; the separate leadership receiver still owns the opening mandate. The intercom shows current speech after approval instead of replaying the morning brief. Dispatch/debrief reconcile production, retention, losses, condition and quota.
+
+No command, balance, transport schema or deterministic kernel changes. End-to-end snapshots and causal records remain authoritative; statements are explicitly attributed. Long-arc rumour propagation, discovery and multi-day state carry remain unimplemented. Implementation and validation: `STATUS_FEEDBACK_IMPLEMENTATION.md`.

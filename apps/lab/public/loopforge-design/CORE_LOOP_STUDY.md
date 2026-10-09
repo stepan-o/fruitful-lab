@@ -290,6 +290,8 @@ Player intention → A real commitment → World change → Who notices / what t
 
 **Later understanding.** An authorised discovery can connect the earlier sign to its cause. The event record needs that connection from the start, even when the player could not inspect it. Hidden consequences may remain silent until there is observable evidence; do not manufacture a hint for every secret.
 
+Now in the first-day playable UI: active camera status, attributed supervisor portrait statements, current instrument evidence and an inspectable consequence summary after dispatch. Selecting a token pauses for its source, related record and available action. Immediate remarks respond to load decisions, overrides and actual losses without revealing private traits. This implements the first-day foundation; later arcs, rumours, discoveries and multi-day carry-forward remain design work.
+
 ### A status-token contract for every arc
 
 #### 01 · Conveyor + Security

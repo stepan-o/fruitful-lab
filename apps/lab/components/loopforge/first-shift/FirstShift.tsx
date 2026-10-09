@@ -35,6 +35,8 @@ import ThemeSettings from "./ThemeSettings";
 import ProducerConsole from "./ProducerConsole";
 import { useConsoleTheme } from "./ThemeProvider";
 import { ConsoleBeacon, useConsoleSignals } from "./ConsoleSignals";
+import { feedbackFor, type FeedbackId, type FeedbackAction } from "@/lib/loopforge/first-shift/feedback";
+import { EvidencePanel } from "./StatusFeedback";
 import s from "./first-shift.module.css";
 import l from "./living-console.module.css";
 const subscribeVisibility = (listener: () => void) => {
@@ -65,24 +67,6 @@ const HELP = [
     "Green marks completed production. Red marks an accident. Amber asks for attention. Occasional cyan is idle light. Every consequential signal also has a visible record; sound is optional.",
   ],
 ];
-const FACTS: Record<string, [string, string]> = {
-  funds: [
-    "Funds",
-    "Available factory funds. The first-day slice has no spending orders; later development introduces investment decisions.",
-  ],
-  workers: [
-    "Workers",
-    "Robots currently in your workforce. Retaining finished robots adds to this count. Accidents can reduce it.",
-  ],
-  condition: [
-    "Line condition",
-    "Known conveyor condition. Production wears the line; pushing harder increases wear and accident risk. Engineering repair arrives later with Rivet Witch.",
-  ],
-  quota: [
-    "Weekly delivery",
-    "Robots already committed toward the end-of-week quota. Today's unallocated output is not counted here. Dispatch decisions cannot be reversed.",
-  ],
-};
 export default function FirstShift({
   media,
   suspended = false,
@@ -115,10 +99,10 @@ export default function FirstShift({
   const [paused, setPaused] = useState(false),
     [speed, setSpeed] = useState(1),
     [modal, setModal] = useState<
-      "settings" | "help" | "incident" | "fact" | null
+      "settings" | "help" | "incident" | "feedback" | null
     >(null),
     [help, setHelp] = useState(0),
-    [fact, setFact] = useState("quota");
+    [feedbackId, setFeedbackId] = useState<FeedbackId>("quota");
   const [effects, setEffects] = usePreference("loopforge-first-shift-effects"),
     [sound, setSound] = useState(false),
     [audioError, setAudioError] = useState("");
@@ -181,8 +165,10 @@ export default function FirstShift({
   }, [ticking, pending, v?.tick, send, speed]);
   useEffect(() => {
     if (modal) {
-      lastFocus.current = document.activeElement as HTMLElement;
-      dialog.current?.showModal();
+      if (!dialog.current?.open) {
+        lastFocus.current = document.activeElement as HTMLElement;
+        dialog.current?.showModal();
+      }
     } else {
       dialog.current?.close();
       lastFocus.current?.focus({ preventScroll: true });
@@ -246,8 +232,22 @@ export default function FirstShift({
   }
   function records(id?: string) {
     setSelected(id ?? null);
+    if (id && v?.events.find(e => e.id === id)?.kind === "production") setShowBatches(true);
     setModal(null);
     setScreen("records");
+  }
+  function inspectFeedback(id: FeedbackId) {
+    if (incoming) return;
+    setFeedbackId(id);
+    setModal("feedback");
+  }
+  function feedbackAction(action: FeedbackAction) {
+    if (incoming) return;
+    if (action === "incident") { setModal("incident"); return; }
+    setModal(null);
+    if (action.startsWith("room:")) { setRoom(action.slice(5) as RoomId); setScreen("room"); }
+    else if (action.startsWith("person:")) { setPerson(action.slice(7) as SupervisorId); setScreen("intercom"); }
+    else setScreen(action as Workspace);
   }
   function restart() {
     setMandateAcknowledged(false);
@@ -282,8 +282,7 @@ export default function FirstShift({
             media={media}
             view={v}
             onInspect={(id) => {
-              if (id === "quota") setScreen("leadership");
-              else { setFact(id); setModal("fact"); }
+              inspectFeedback(id as FeedbackId);
             }}
           />
         )}
@@ -333,7 +332,7 @@ export default function FirstShift({
               onAdviser={()=>{if(incoming)return;if(v.adviser){setPerson(v.adviser);setScreen(v.phase==="briefing"?"planning":"intercom");}else setScreen("advisers");}}
               onPrimary={()=>{if(incoming)return;if(v.phase==="ready")void send({type:"start_shift"});else if(v.phase==="running")setPaused(!paused);else if(v.phase==="decision")setModal("incident");else if(v.phase==="allocation")setScreen("dispatch");else if(v.phase==="complete")setScreen("debrief");}}
               onRoom={id=>{if(!incoming){setRoom(id);setScreen("room");}}}
-              onInspect={id=>{if(incoming)return;if(id==="quota")setScreen("leadership");else{setFact(id);setModal("fact");}}}
+              onInspect={id=>inspectFeedback(id as FeedbackId)} onFeedback={inspectFeedback}
               onNavigate={id=>{if(!incoming)setScreen(id);}} onSpeed={()=>setSpeed(speed===1?3:1)} />}
             {screen === "leadership" && <LeadershipCall media={media} view={openingRecord ?? v} effects={effects} onClose={()=>setScreen("factory")} onContinue={()=>{setMandateAcknowledged(true);audio.current?.cue("commit");setScreen("factory");signals?.impulse("attention");}} />}
             {screen === "advisers" && <AdviserSelection selectedId={candidate} onInspect={setCandidate} media={media} candidates={firstDayCandidates(v)} busy={busy} onHelp={() => openHelp()} onAppoint={(id) => {
@@ -372,6 +371,7 @@ export default function FirstShift({
                 view={v}
                 room={room}
                 onRecord={records}
+                onFeedback={inspectFeedback}
               />
             )}
             {screen === "dispatch" && (
@@ -392,6 +392,8 @@ export default function FirstShift({
                 view={v}
                 onRecords={() => records()}
                 onRestart={restart}
+                opening={openingRecord}
+                onFeedback={inspectFeedback}
               />
             )}
             {screen === "records" && (
@@ -557,7 +559,7 @@ export default function FirstShift({
               ? "Console settings"
               : modal === "help"
                 ? "Operator guidance"
-                : "Factory instrument"
+                : "Status evidence"
         }
         onClick={(e) => {
           if (e.target === dialog.current) setModal(null);
@@ -636,16 +638,8 @@ export default function FirstShift({
             </Control>
           </>
         )}
-        {modal === "fact" && (
-          <>
-            <Kicker>Confirmed factory fact</Kicker>
-            <h1>{FACTS[fact][0]}</h1>
-            <p className={s.helpCopy}>{FACTS[fact][1]}</p>
-            <Control onClick={() => setModal(null)}>
-              Return to the console
-            </Control>
-          </>
-        )}
+        {modal === "feedback" && v && <EvidencePanel media={media} signal={feedbackFor(v, feedbackId, openingRecord)} onAction={feedbackAction} onRecord={records} />}
+
       </dialog>
     </main>
   );

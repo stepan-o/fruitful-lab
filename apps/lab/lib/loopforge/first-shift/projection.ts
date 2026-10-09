@@ -8,6 +8,20 @@ function remark(s: State, id: SupervisorId): string {
       ? "I have a procedure for meeting the quota. It does not require maximum speed."
       : "Give me the line. Let’s make the quota look small.";
   const lastResponse = s.minds[id].memories.at(-1) ?? "";
+  if (losses && s.phase !== "complete" && s.phase !== "allocation")
+    return id === "limen"
+      ? "A worker is out of service. That belongs in the report."
+      : "I saw the worker go down. Give me a moment.";
+  if (lastResponse.startsWith("belt-vibration:") && !losses) {
+    const eased = lastResponse.includes(":slow:");
+    if (lastResponse.endsWith(":overridden") && s.adviser === id)
+      return id === "limen"
+        ? "I asked you to ease the load. That was your decision."
+        : "You asked for output. Then you cut the load.";
+    return id === "limen"
+      ? eased ? "Three beats withheld. The line can wait." : "The batch cleared. That does not make the load safe."
+      : eased ? "Three beats gone. We still have a quota." : "It held. That’s why I kept it moving.";
+  }
   if (!losses && lastResponse.startsWith("clearance-mismatch:")) {
     const held = lastResponse.includes(":hold:");
     if (lastResponse.endsWith(":overridden") && s.adviser === id)

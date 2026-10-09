@@ -141,13 +141,13 @@
       "art": "argue-limen-stiletto-conveyor",
       "caption": "Limen and Stiletto disagree over who can stop the line and what justifies restarting it.",
       "visible": "Begin with Conveyor and Security available and every assignment empty. Read the factory totals and the quota due at the end of the week. Choose Limen or Stiletto as the first adviser; their briefing proposes the initial arrangement.",
-      "learn": "Whose judgment you choose changes how the factory operates. Limen favours safety and compliance at a cost to output; Stiletto favours production at a cost to equipment and accident exposure. Each day’s output can strengthen the factory or fulfil the weekly obligation. Proposed arc: first experience the commitment, then see its inherited effect, then make a more informed choice before the puzzle expands.",
+      "learn": "You can build a productive machine, protect workers, impose order or back someone you like. LIMEN’s caution and STILETTO’s drive offer different starting points; selective overrides and permanent output allocation make the approach yours. The factory and its people should give that commitment a recognizable return.",
       "choice": "Choose the adviser, then accept or override the proposed assignments. At the daily allocation, permanently commit completed robots to the factory or the weekly quota. Balance can emerge from changing advisers and decisions as conditions change.",
-      "gate": "Under review after the short-day requirement: requiring the whole weekly quota before the Theatre could delay retention-heavy paths, although full delivery may happen before day seven. Proposed test: viable operation, irreversible allocations and Theatre readiness/investment allow Cathexis around the third completed day, available for day four. Exact thresholds remain open; the calendar, trying both advisers and suffering an accident are not gates.",
+      "gate": "Proposed readiness uses completed operation, a viable workforce and line, irreversible output commitments and the capacity/investment required for the Theatre. Tune viable protective, productive and adaptive routes toward the four-to-five-day test window. Exact thresholds and funding remain open. Neither completing the week, trying both advisers, overriding someone nor suffering an accident is a prerequisite.",
       "hidden": "Robots produced while the Theatre is closed have no indoctrination history. Retained workers accumulate their own experiences; that absence does not automatically make them disobedient. Workers and supervisors remember whose methods you backed. Wear also accumulates beyond today’s output.",
       "carry": "Cathexis inherits the workforce you retained, its experiences, the condition of the line and the authority established between Limen and Stiletto.",
       "friction": "Retaining robots leaves more of the quota for later; committing them to the quota gives up their future contribution inside the factory. Caution limits growth. Pushing output can leave the line less capable on following days, even when no accident occurs.",
-      "status": "Agreed opening · proposed three-day learning arc and readiness gate"
+      "status": "Agreed opening and expression anchors · proposed four-to-five-day test and readiness gate"
     },
     {
       "id": "theatre",
@@ -815,7 +815,7 @@
     },
     {
       "title": "Session pacing and live interventions",
-      "text": "A whole game day targets about one minute, two to three at most for heavier days. Fit adviser choice, brief/plan, live operation, warranted pauses and permanent allocation into that experience. Discard the earlier three-shifts-per-thirty-minutes proposal; test the weekly delivery cycle and mastery-based room unlocks at this cadence. Part 01 must first establish how many useful two-room cycles players need before Cathexis. Test a three-day opening with a readiness-based day-four handoff; completing the whole first week is no longer the proposed prerequisite."
+      "text": "A whole game day targets about one minute, two to three at most for heavier days. Fit adviser choice, brief/plan, live operation, warranted pauses and permanent allocation into that experience. Discard the earlier three-shifts-per-thirty-minutes proposal; test the weekly delivery cycle and mastery-based room unlocks at this cadence. Part 01 must first establish how many useful two-room cycles players need before Cathexis. Test four or five two-room days with distinct expressive choices and payoffs, followed by a readiness-based Theatre handoff. Exact timing remains proposed; completing the whole week is not a prerequisite."
     },
     {
       "title": "Adviser-led staffing",
@@ -1782,7 +1782,8 @@
       "Run without a graphics context; production, knowledge and supervisor actions still resolve.",
       "Recover a viewer from a fresh snapshot and ordered diffs without changing the run.",
       "Verify that an Act 1 client never receives hidden worker statistics or privileged causal traces.",
-      "Measure visual performance independently from simulation correctness and model quality."
+      "Measure visual performance independently from simulation correctness and model quality.",
+      "Expression labels remain authoring/test coverage, not inferred player traits. A scenario’s physical outcome and received memories must produce its visible payoff; the UI or model cannot invent recognition to compensate for absent mechanics."
     ],
     "sourceBoundary": "The old Sim4 specification already describes a Rust-aligned kernel, narrative sidecar and integration phase. Current code shows phased scheduling and command buffers, but some integration phases are described as stubs. Preserve the boundary doctrine; do not assume the complete new BDI or live-model pipeline already exists. The working old world viewer is Sim4/KVP feeding a Pixi isometric scene; Sim5’s Web/Godot/Unreal documents are strategy drafts. Preserve their replaceable-viewer doctrine without claiming a finished inherited 3D implementation."
   },
@@ -2393,7 +2394,7 @@
     ],
     "legacy": "The old Sim Sim Director Console is the visual starting point: illustrated CCTV rooms, textured metal/glass, instrument plates, resource icons and a command deck. Its asset loading and focused interaction patterns deserve direct reuse or adaptation. Its old economy, short days, swap budget, exposed stress/discipline values, fixed desktop layout and permanently sealed Cortex are not adopted. Sim4’s separate Pixi world viewer informs the future tick-fed 3D view; these are distinct sources and delivery layers.",
     "open": [
-      "How many meaningful two-room days precede the Theatre? Test two, three and four completed days; three with Cathexis for day four is the starting hypothesis, conditional on visible readiness and investment.",
+      "How long does Part 01 sustain an enjoyable way to lead? Compare four and five completed two-room days, conditional on visible readiness and investment, then test Cathexis as a new temptation rather than a reward for memorizing mechanics.",
       "Which staffing orders are direct, and which are requests mediated by Security or another supervisor?",
       "Which situations require a decision pause, which can be delegated, and how do manual pause/speed controls behave?",
       "How much can the director infer from a room before consulting someone, and what evidence becomes available after Brain 2.0?",
@@ -2431,9 +2432,13 @@
         [
           "Fit the whole day",
           "Preserve the primary adviser choice while reducing duplicate reports, mandatory inspections and repeated confirmations. A routine day targets about 60 seconds; a heavier day takes two to three minutes at most, including normal reading and transitions."
+        ],
+        [
+          "Support self-expression",
+          "Offer concrete commitments with distinct viable payoffs: efficient growth, protection, order, attachment, risk, influence and experimentation. Show the resulting operation and character response; do not label the player’s morality or force every run through all seven anchors. See Player desires & scenarios for research and proposed situations."
         ]
       ],
-      "review": "Play the complete loop with the live 3D view absent. Ask whether adviser choice matters, briefings are enjoyable and easy to follow, the plan is worth considering, overrides are tempting despite their cost, feedback feels physical and the result creates interest in another day. The owner rejected the preceding entrance’s presentation-screen feel; passing checks did not establish visual or play acceptance. Later assess the cinematic view as an improvement to this working loop."
+      "review": "Play the complete loop with the live 3D view absent. Ask whether adviser choice matters, briefings are enjoyable and easy to follow, the plan is worth considering, overrides are tempting despite their cost, feedback feels physical and the result creates interest in another day. The owner rejected the preceding entrance’s presentation-screen feel; passing checks did not establish visual or play acceptance. Later assess the cinematic view as an improvement to this working loop. Ask what the player wanted to express, where the game let them do it and which result felt theirs. An understood but unwanted choice is a design problem, not an onboarding problem."
     },
     "visualContract": [
       [
@@ -3435,29 +3440,33 @@
     ],
     "boundary": "The earlier three-shifts-per-thirty-minutes proposal is discarded. The roughly 10–20 minute full-floor unlock target remains mastery-based and needs a joint pacing test. Interface shortcuts and the illustrative seconds budget are proposals; this documentation update changes no runtime timer, engine command or balance value.",
     "partOne": {
-      "title": "How long can two rooms and two supervisors carry the puzzle?",
-      "status": "Owner framing agreed · three-day sequence and day-four handoff proposed for playtest",
-      "principle": "Part 01 lasts only as long as its daily choices produce distinct learning and consequences. Design the number of useful cycles first; that sets what the daily interfaces must deliver before Cathexis and the Burn-in Theatre expand the puzzle.",
-      "target": "Starting hypothesis: three completed two-room days, with Cathexis and the Theatre available for the fourth day on a competent path. A two-to-three-minute opening plus two routine one-minute days puts the handoff around four to five minutes. This is a playtest target, not a fixed unlock date or an accepted final stage length.",
+      "title": "How long does Part 01 sustain a way to play?",
+      "status": "Agreed expression-first framing · proposed four-to-five-day test",
+      "principle": "Part 01 should let the player try a way to lead, enjoy a recognizable result and respond when that approach is tested. More days earn their place through new stakes and payoffs, not through lessons about mechanics.",
+      "target": "Revised proposal: four or five completed two-room days, roughly six to eight minutes including the opening and heavier decisions, before Cathexis joins a ready factory’s next planning cycle. The owner asked for a somewhat longer opening; these exact numbers remain a playtest hypothesis, not a timer or fixed unlock date.",
       "days": [
         [
-          "First day · learn the commitment",
-          "Choose LIMEN or STILETTO, understand the priority and delegated room, see work happen, and permanently split the output. The player should leave with one benefit and one known cost, not a lesson in every hidden variable."
+          "First day · choose a way to lead",
+          "After the leadership call, choose LIMEN or STILETTO, authorize the arrangement and see it work. Commit output to growth or the weekly obligation. Give the player a benefit they can enjoy and a cost they can recognize."
         ],
         [
-          "Second day · yesterday becomes relevant",
-          "Retained workforce, delivered quota and wear now affect the starting situation. Supervisor pitches and the selected brief acknowledge relevant prior choices. Staying with the same adviser is valid; a new adviser is not a compulsory tutorial action."
+          "Second day · enjoy what you built",
+          "Retained workers, delivery progress and equipment condition return. The roster acknowledges relevant history. Let sticking with a favourite or a successful method feel valid; do not force a switch."
         ],
         [
-          "Third day · make an informed commitment",
-          "The player backs, changes or selectively overrides the approach for a reason grounded in the previous results. Growth versus delivery and output versus exposure become a deliberate plan. The result should make the Theatre’s proposed coordination programme useful without making it a universal fix."
+          "Middle days · put that preference to a test",
+          "A condition created by the actual operation offers restraint, a justified exception or a tempting push. The player can double down or adjust. A quiet safe run is valid; no mandatory accident or sequence of scripted dilemmas."
         ],
         [
-          "Handoff · a third way of running the workforce",
-          "When readiness and commissioning requirements are met, Cathexis joins the next planning cycle and the Theatre becomes usable. Her pitch offers a new operating approach with a visible near-term benefit and sacrifice. Loyalty, confidence and worker influence develop underneath; no hidden conditioning history is exposed as a meter."
+          "Fourth or fifth result · own the consequences",
+          "Give the response time to pay off. A stronger line, preserved workers, disputed authority or a remembered act of support makes this factory feel different. Keep a fifth day only if it adds a distinct choice or return."
+        ],
+        [
+          "Handoff · Cathexis offers another kind of power",
+          "Readiness and commissioning bring Cathexis and the Theatre into the next planning cycle. Her ability to influence the workforce should tempt or unsettle the way the player already runs the place. Existing workers and memories persist."
         ]
       ],
-      "gate": "Replace the candidate “complete the weekly quota first” gate for this test. Full delivery can happen before its day-seven deadline, but tying the unlock to it can delay players who retain output. Proposed readiness uses actual completed operation, a still-viable workforce/line, irreversible output commitments and the capacity/investment needed to run the Theatre. Exact thresholds and payment/funding rules remain open. Tune viable safety, output and adaptive paths to reach readiness around the third result; do not require choosing both advisers, overriding someone or suffering an accident.",
+      "gate": "Proposed readiness uses completed operation, a viable workforce and line, irreversible output commitments and the capacity/investment required for the Theatre. Tune viable protective, productive and adaptive routes toward the four-to-five-day test window. Exact thresholds and funding remain open. Neither completing the week, trying both advisers, overriding someone nor suffering an accident is a prerequisite.",
       "week": "The first weekly quota remains due on day seven. Under this proposal, Cathexis enters while the same obligation is still active. The player learns what her programme changes under an existing pressure; a completed week is not a prerequisite for meeting her.",
       "mustDeliver": [
         [
@@ -3478,15 +3487,15 @@
         ],
         [
           "Dispatch / next-day handoff",
-          "Show irreversible growth-versus-delivery totals and carry the same workers, wear and memories forward. A repeated-day prototype is required; replaying the opening fixture three times is insufficient."
+          "Show irreversible growth-versus-delivery totals and carry the same workers, wear and memories forward. A persistent multi-day prototype is required; replaying the opening fixture is insufficient."
         ],
         [
           "Development / arrival",
           "Explain the visible readiness and investment requirements, then show actual eligibility and commissioning. Introduce Cathexis and the powered Theatre together as a new decision family. Exact unlock controls and costs need design."
         ]
       ],
-      "test": "Compare two, three and four completed two-room days in short owner playtests. If a second day cannot deliver new context, adding more days will not fix it. If three days leave players unable to explain authority or allocation, improve those interfaces before automatically extending the stage. Readiness failures need understandable recovery; do not auto-unlock merely to hit a stopwatch.",
-      "boundary": "Three days is a design hypothesis, not an implemented schedule. The current one-day kernel cannot validate this arc. Do not gate “mastery” on an invisible judgment of player understanding; use explicit world requirements, while comprehension is evaluated in the playtest. The funding path must also permit this arrival: if income settles only weekly, Theatre investment needs an affordable reserve or another explicitly designed source. Payment timing is still open; a nominal day-four handoff cannot depend on money unavailable until day seven."
+      "test": "Compare four and five completed two-room days in owner playtests. Ask what the player wanted, what felt like their achievement and what they want to try next. Remove a day that only repeats information. If authority or commitment is unclear, fix its presentation; if it is clear but uninteresting, revise the situation and payoff.",
+      "boundary": "This is a proposed arc, not an implemented schedule. The one-day kernel cannot validate it. Use explicit world requirements for commissioning, never an invisible judgment of player understanding. Payment timing must allow investment when the factory is ready; do not require money that arrives only after the weekly deadline."
     }
   }
 }

@@ -26,24 +26,29 @@ Proposed first pacing budget, to test rather than treat as balance: situation 5s
 
 ## Part 01 sets the daily interface requirements
 
-Part 01 lasts only as long as its daily choices produce distinct learning and consequences. Design the number of useful cycles first; that sets what the daily interfaces must deliver before Cathexis and the Burn-in Theatre expand the puzzle.
+Part 01 should let the player try a way to lead, enjoy a recognizable result and respond when that approach is tested. More days earn their place through new stakes and payoffs, not through lessons about mechanics.
 
-**Proposed first test:** Starting hypothesis: three completed two-room days, with Cathexis and the Theatre available for the fourth day on a competent path. A two-to-three-minute opening plus two routine one-minute days puts the handoff around four to five minutes. This is a playtest target, not a fixed unlock date or an accepted final stage length.
+**Proposed first test:** Revised proposal: four or five completed two-room days, roughly six to eight minutes including the opening and heavier decisions, before Cathexis joins a ready factory’s next planning cycle. The owner asked for a somewhat longer opening; these exact numbers remain a playtest hypothesis, not a timer or fixed unlock date.
 
-- **First day · learn the commitment.** Choose LIMEN or STILETTO, understand the priority and delegated room, see work happen, and permanently split the output. The player should leave with one benefit and one known cost, not a lesson in every hidden variable.
-- **Second day · yesterday becomes relevant.** Retained workforce, delivered quota and wear now affect the starting situation. Supervisor pitches and the selected brief acknowledge relevant prior choices. Staying with the same adviser is valid; a new adviser is not a compulsory tutorial action.
-- **Third day · make an informed commitment.** The player backs, changes or selectively overrides the approach for a reason grounded in the previous results. Growth versus delivery and output versus exposure become a deliberate plan. The result should make the Theatre’s proposed coordination programme useful without making it a universal fix.
-- **Handoff · a third way of running the workforce.** When readiness and commissioning requirements are met, Cathexis joins the next planning cycle and the Theatre becomes usable. Her pitch offers a new operating approach with a visible near-term benefit and sacrifice. Loyalty, confidence and worker influence develop underneath; no hidden conditioning history is exposed as a meter.
+**First day · choose a way to lead.** After the leadership call, choose LIMEN or STILETTO, authorize the arrangement and see it work. Commit output to growth or the weekly obligation. Give the player a benefit they can enjoy and a cost they can recognize.
 
-Replace the candidate “complete the weekly quota first” gate for this test. Full delivery may happen before day seven, but tying the unlock to it can delay players who retain output. Proposed readiness uses actual completed operation, a still-viable workforce/line, demonstrated irreversible output commitments and the capacity/investment required to run the Theatre. Exact thresholds and payment/funding rules remain open. Tune viable safety, output and adaptive paths to reach readiness around the third result; do not require choosing both advisers, overriding someone or suffering an accident.
+**Second day · enjoy what you built.** Retained workers, delivery progress and equipment condition return. The roster acknowledges relevant history. Let sticking with a favourite or a successful method feel valid; do not force a switch.
+
+**Middle days · put that preference to a test.** A condition created by the actual operation offers restraint, a justified exception or a tempting push. The player can double down or adjust. A quiet safe run is valid; no mandatory accident or sequence of scripted dilemmas.
+
+**Fourth or fifth result · own the consequences.** Give the response time to pay off. A stronger line, preserved workers, disputed authority or a remembered act of support makes this factory feel different. Keep a fifth day only if it adds a distinct choice or return.
+
+**Handoff · Cathexis offers another kind of power.** Readiness and commissioning bring Cathexis and the Theatre into the next planning cycle. Her ability to influence the workforce should tempt or unsettle the way the player already runs the place. Existing workers and memories persist.
+
+Proposed readiness uses completed operation, a viable workforce and line, irreversible output commitments and the capacity/investment required for the Theatre. Tune viable protective, productive and adaptive routes toward the four-to-five-day test window. Exact thresholds and funding remain open. Neither completing the week, trying both advisers, overriding someone nor suffering an accident is a prerequisite.
 
 The first weekly quota remains due on day seven. Under this proposal, Cathexis enters while the same obligation is still active. The player learns what her programme changes under an existing pressure; a completed week is not a prerequisite for meeting her.
 
-Compare two, three and four completed two-room days in short owner playtests. If a second day cannot deliver new context, adding more days will not fix it. If three days leave players unable to explain authority or allocation, improve those interfaces before automatically extending the stage. Readiness failures need understandable recovery; do not auto-unlock merely to hit a stopwatch.
+Compare four and five completed two-room days in owner playtests. Ask what the player wanted, what felt like their achievement and what they want to try next. Remove a day that only repeats information. If authority or commitment is unclear, fix its presentation; if it is clear but uninteresting, revise the situation and payoff.
 
-The funding path must permit this arrival: a nominal day-four handoff cannot depend on income that only becomes available at the end of the week. Payment timing and the cost of the Theatre remain open.
+This is a proposed arc, not an implemented schedule. The one-day kernel cannot validate it. Use explicit world requirements for commissioning, never an invisible judgment of player understanding. Payment timing must allow investment when the factory is ready; do not require money that arrives only after the weekly deadline.
 
-Three days is a design hypothesis, not an implemented schedule. The current one-day kernel cannot validate this arc. Do not gate “mastery” on an invisible judgment of player understanding; use explicit world requirements, while comprehension is evaluated in the playtest.
+See [Player desires and scenarios](PLAYER_DESIRES_AND_SCENARIOS.md) for the research, player feedback and seven conditional situations. The core question is how players express themselves through the factory. Understanding authority and allocation supports that experience; it is not its reward.
 
 ## Conditions established before operation
 

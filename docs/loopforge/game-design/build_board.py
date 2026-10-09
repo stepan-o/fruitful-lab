@@ -1,3 +1,4 @@
+from player_desires import render_player_desires, player_desires_markdown
 from producer_console import render_producer_console
 from cinematic_console import render_cinematic_console
 from focused_console import render_focused_console
@@ -12,6 +13,11 @@ OUT.mkdir(parents=True, exist_ok=True)
 d = json.loads((ROOT/'design-data.json').read_text())
 art = json.loads((ROOT/'art.json').read_text())
 daily = d['dailyLoop']
+desire_data = json.loads((ROOT/'player-desires.json').read_text())
+desires = render_player_desires(desire_data)
+desire_record = player_desires_markdown(desire_data)
+(ROOT.parent/'PLAYER_DESIRES_AND_SCENARIOS.md').write_text(desire_record)
+(OUT/'PLAYER_DESIRES_AND_SCENARIOS.md').write_text(desire_record)
 e = html.escape
 def p(t): return '<p>'+e(t)+'</p>'
 def ul(items): return '<ul>'+''.join('<li>'+e(t)+'</li>' for t in items)+'</ul>'
@@ -36,10 +42,11 @@ def stage(s):return '<article>'+status(s['status'])+'<h3>'+e(s['room'])+'</h3>'+
 world = '<div class="world-list">'+''.join('<article><h4>'+e(x['title'])+'</h4>'+p(x['text'])+'</article>' for x in d['world'])+'</div>'
 a=d['actTwo']
 act2=f'<div class="next-act"><span class="kicker">Act 2 · the inherited society</span><h3>{e(a["title"])}</h3>{p(a["text"])}<div class="two-col"><div><h4>What carries forward</h4>{ul(a["inherits"])}</div><div><h4>What becomes possible</h4>{ul(a["changes"])}</div></div><div class="callout">{e(a["boundary"])}</div></div>'
-arc=heading('The whole run','Build the factory. Inherit its society.','Act 1 teaches production and authority together. The same workers accumulate an inner history before Brain 2.0 makes it visible.')
+arc=heading('The whole run','Build the factory. Inherit its society.','Choose how to run this factory, then inherit what that choice does to its people. Workers accumulate an inner history before Brain 2.0 makes it visible.')
 early=d['earlyAct']
 early_rules=detail(early['title'],table(early['rules']))
 early_combinations=detail('How supervisor combinations change the next stage',table(early['combinations'])+p(early['boundary']))
+arc+='<button class="link-button" data-panel="player-desires">Start with player desires and playable situations →</button>'
 arc+=detail('The world behind the factory',world)
 arc+=early_rules
 arc+=detail('Part 01: when the third room should enter',status(daily['partOne']['status'])+p(daily['partOne']['principle'])+p(daily['partOne']['target'])+table(daily['partOne']['days'])+p(daily['partOne']['gate'])+p(daily['partOne']['week'])+table(daily['partOne']['mustDeliver'])+p(daily['partOne']['test'])+p(daily['partOne']['boundary']))
@@ -287,7 +294,13 @@ style_script='<script src="style-review.js?v='+hashlib.sha256((ROOT/'style-revie
 producer_review=render_producer_console(ROOT, OUT.parents[1]/'lib/assets/generated/loopforge-producer-studies.json', OUT.parents[1]/'lib/assets/generated/loopforge-producer-runtime.json')
 producer_script='<script src="producer-review.js?v='+hashlib.sha256((ROOT/'producer-review.js').read_bytes()).hexdigest()[:12]+'"></script>'
 
-panels=[('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+for_panel_link='<button class="link-button" data-panel="player-desires">Research, self-expression and scenario requirements →</button>'
+loops+=for_panel_link
+experience+=for_panel_link
+engine+=for_panel_link
+ui_html+=for_panel_link
+
+panels=[('arc','Long arc',arc),('player-desires','Player desires & scenarios',desires),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 head=head.replace('</head>','<link rel="stylesheet" href="style-review.css?v='+hashlib.sha256((ROOT/'style-review.css').read_bytes()).hexdigest()[:12]+'"></head>')
@@ -322,14 +335,14 @@ def remove_picker(body,cls):
 loops_full=remove_picker(loops.replace('<div id="loop-detail"></div>',''.join(loop_scale(s) for s in lp['scales'])),'horizon-picker')
 ui_full=remove_picker(ui_html.replace('<div id="mechanic-detail"></div>',''.join(mechanic(m) for m in ui['mechanics'])),'mechanic-picker')
 structure_full=remove_picker(structure,'screen-picker').replace(' hidden>','>')
-full+='<section>'+loops_full+'</section><section>'+stress_full+'</section><section>'+bdi_full+'</section><section>'+episodes_full+'</section><section>'+experience+'</section><section>'+structure_full+'</section><section>'+ui_full+'</section><section>'+engine+'</section><section>'+factory+'</section><section>'+foundations+'</section><section>'+decisions+'</section></main></body></html>'
+full+='<section>'+desires+'</section><section>'+loops_full+'</section><section>'+stress_full+'</section><section>'+bdi_full+'</section><section>'+episodes_full+'</section><section>'+experience+'</section><section>'+structure_full+'</section><section>'+ui_full+'</section><section>'+engine+'</section><section>'+factory+'</section><section>'+foundations+'</section><section>'+decisions+'</section></main></body></html>'
 # Keep the full reading copy complete without requiring disclosure interactions.
 full=full.replace('<details>','<details open>')
 full=re.sub(r'<button class="link-button" data-panel="([^"]+)">(.*?)</button>', r'<a class="link-button" href="index.html#\1">\2</a>', full)
 full=full.replace('</main>','<section>'+sounds+'</section><section>'+style_review+'</section><section>'+producer_review+'</section><section>'+focused_console+'</section><section>'+theme_system+'</section></main>').replace('</body>',sound_script+style_script+producer_script+'</body>')
 (OUT/'full-record.html').write_text(full)
 ui_record=head.replace('<title>Loopforge — Game design</title>','<title>Loopforge — UI design</title>')+'<main class="record"><a href="index.html#ui-mechanics">← Interactive UI and mechanics board</a><header class="hero" style="display:block"><span class="kicker">Design direction · 8 October 2026</span><h1>Loopforge UI design</h1>'+p('Four integrated console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only those four appear in Settings; the old six studies remain historical and their focused-screen materials remain internal. Start at the console, Answer leadership, Acknowledge quota, then Choose adviser. Hardware uses registered CSS fragments cropped from clean plates, not separate alpha handsets. Local visual and full-flow checks passed; the hosted first shift was also completed. All four dedicated portrait plates are generated, catalogued and implemented. Owner review remains pending. Adaptive wide, portrait, small/short and compact-landscape modes preserve the selected camera, run and pending decision through resize. A live cinematic 3D factory remains later work.')+'</header>'+early_rules+structure_full+ui_full+advice_full+'<p><a href="index.html#ui-styles">View the historical six material studies →</a></p><section><h2>Delivery scope</h2>'+table(d['experience']['scope'])+'</section><section><h2>Approved shift rhythm</h2>'+table(d['experience']['rhythm'])+'</section><section><h2>Attention horizons</h2>'+table([(s['time'],s['question']) for s in lp['scales']])+p(lp['boundary'])+'<a href="index.html#loops">Inspect the core loops and session design →</a></section><section><h2>Mobile and art</h2>'+p(d['experience']['mobile'])+table(d['experience']['art'])+'</section></main></body></html>'
-ui_record=ui_record.replace('</main>', '<section>'+producer_review+'</section><section>'+focused_console+'</section><section>'+theme_system+'</section></main>')
+ui_record=ui_record.replace('</main>', '<section>'+desires+'</section><section>'+producer_review+'</section><section>'+focused_console+'</section><section>'+theme_system+'</section></main>')
 ui_record=ui_record.replace('<details>','<details open>')
 ui_record=re.sub(r'<button class="link-button" data-panel="([^"]+)">(.*?)</button>',r'<a class="link-button" href="index.html#\1">\2</a>',ui_record)
 ui_record=ui_record.replace('</body>',producer_script+'</body>')
@@ -406,6 +419,7 @@ mp(xr['boundary']);mp(xr['performance']);mh('Future 3D scene proof',3);ml(xr['sp
 for title,url in xr['references']:mp('['+title+']('+url+')')
 mh('Engine boundary');mp(en['intro']);mp('*'+en['status']+'*');fields(en['planes']);mh('Rust-native discipline',3);fields(en['rust']);mh('KVP boundary',3);fields(en['kvp']);mh('Decoupled model services',3);fields(en['llm']);mh('Replay and timing',3);mp(en['determinism']);mp(en['timing']);mp(en['prototype']);mh('Boundary checks',3);ml(en['proof']);mp(en['sourceBoundary'])
 ui_start=len(md)
+mp(desire_record)
 mh(early['title']);fields(early['rules'])
 mh('UI structure');mp(daily['cadence']);fields(daily['interfaces']);ml(daily['requirements']);mh('Part 01 interface obligations',3);fields(daily['partOne']['mustDeliver']);mp(daily['partOne']['boundary']);mp(us['intro']);mp('*'+us['status']+'*');mh('Where the first shift begins',3);fields(us['entry']);mh('Instance and interface hierarchy',3);fields(us['identity']);mh('Shared director’s console',3);fields(us['shared'])
 for sc in us['screens']:

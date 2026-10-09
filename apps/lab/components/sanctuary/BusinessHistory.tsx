@@ -17,6 +17,7 @@ const sourceLabels: Record<string, string> = {
   "windows-games-1996": "PC gaming in 1996", "ps-network-history": "PlayStation Network",
   "ps-plus-collection-2012": "2012 game collection", "pc-game-pass-2019": "PC Game Pass launch",
   "ps-now-2014": "PS Now launch", "ps-now-pc-2016": "Windows app launch", "xbox-cloud-2020": "Xbox cloud launch",
+  "gfn-hardware-upgrades": "Hardware upgrades in the cloud", "gfn-device-requirements": "Devices & connection",
   "arcade-card-readers": "Today’s arcade payments",
   "onlive-launch-2010": "OnLive’s 2010 launch", "xbox-cloud-pc-2021": "Xbox in PC browsers",
 };

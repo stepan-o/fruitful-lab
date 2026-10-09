@@ -2,6 +2,18 @@ import type { EvidenceSource } from "./types";
 
 export const businessHistorySources: EvidenceSource[] = [
   {
+    "id": "gfn-hardware-upgrades",
+    "title": "NVIDIA — GeForce NOW server upgrades, 18 August 2025",
+    "url": "https://nvidianews.nvidia.com/news/nvidia-blackwell-architecture-comes-to-geforce-now",
+    "note": "Provider-side GPU upgrades, supported receiving devices and PC-store libraries. Used to explain the service model, not to promise a particular tier, benchmark or universal game availability."
+  },
+  {
+    "id": "gfn-device-requirements",
+    "title": "NVIDIA — GeForce NOW device and connection requirements",
+    "url": "https://www.nvidia.com/en-us/geforce-now/system-reqs/",
+    "note": "Compatible devices and connection requirements checked 9 October 2026. Streaming still requires a suitable client and low-latency connection; cloud computing does not remove every hardware limit."
+  },
+  {
     "id": "home-cartridge-history",
     "title": "Computer History Museum — Atari’s Roller-Coaster Ride",
     "url": "https://www.computerhistory.org/revolution/computer-games/16/185",
@@ -169,7 +181,7 @@ export const businessHistory = [
     "kind": "pc-box",
     "date": "1980s–1990s",
     "label": "Boxed PC games",
-    "example": "Disks, manuals & home computers",
+    "example": "Software shops · boxes, disks & manuals",
     "body": "A game could sit on a shop shelf like a book or a record. Buy the copy, take it home and play it on a compatible computer. Returning to that game did not require another payment for another turn.",
     "stake": "Publishers sold software to people who already owned the equipment. Compatible PCs came from many manufacturers; no single console maker owned the whole route to that audience.",
     "sources": [
@@ -223,13 +235,14 @@ export const businessHistory = [
     "kind": "cloud",
     "date": "2020",
     "label": "Cloud PCs",
-    "example": "GeForce NOW · remote computing",
-    "body": "GeForce NOW opens its commercial service in 2020. It runs supported PC games on NVIDIA’s machines and streams them to the player. A game bought through Steam can keep its place in that arrangement.",
-    "stake": "The store sells the game; NVIDIA supplies computing. The player can pay for a game once and for remote hardware access separately. Cloud play adds a route without replacing local PC gaming.",
+    "example": "GeForce NOW · the gaming PC becomes a service",
+    "body": "The computer on your desk no longer has to be the computer that runs the game. GeForce NOW opens its commercial service in 2020, letting supported PC games run on NVIDIA’s servers while a laptop, Mac, phone or TV receives the picture and sends back the controls. A modest device can become the doorway to demanding games without buying a gaming PC.",
+    "stake": "The expensive machine—and its upgrades—moves to the provider. NVIDIA can sell computing while Steam and other stores keep selling games; supported catalog memberships can supply game access too. Studios can reach players without powerful PCs, although the experience now depends on a fast, responsive connection and the service’s supported titles.",
     "sources": [
       "gfn-reach-2023",
-      "gfn-membership-terms",
-      "steam-cloud"
+      "gfn-hardware-upgrades",
+      "gfn-device-requirements",
+      "gfn-membership-terms"
     ]
   },
   {

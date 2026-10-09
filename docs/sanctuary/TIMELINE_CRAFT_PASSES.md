@@ -29,7 +29,7 @@ both PC and console ecosystems; it does not erase local play or transfer game ri
 | --- | --- | --- |
 | Arcade | Original yellow/woodgrain Pong study; continuing cabinet with a contactless reader | Clipped rally, paddles; reader signal |
 | Home cartridges | Woodgrain CRT, six-switch console, cartridge and wired controller | Discrete tank movement and projectile |
-| Boxed PC software | Desktop computer with original fantasy screen, illustrated software box and disk | Screen light |
+| Boxed PC software | Period software shop: cream slatwall, face-out illustrated boxes, shelf tickets, category fascia, low display island and checkout | Bounded strip-light flicker and a clipped demo-CRT racer |
 | Console platforms | Grey CD-era hardware, jewel case, wired controller and polygon racer | Road stripes and steering |
 | Steam | Olive client, Steam name, unchanged official service symbol, Half-Life and Counter-Strike listings, game/download controls | Download and pointer; logo stays static |
 | Console store | Blue PlayStation Store study with individual game offers | Selection light |
@@ -43,6 +43,7 @@ Reference photographs were inspected for physical cues only. No reference photog
 - [Espace Turing: Atari Pong cabinet](https://espaceturing.mathemarium.fr/Atari-lance-sa-borne-d-arcade-PONG.html): cabinet angle, yellow front, woodgrain enclosure, two-knob panel and low coin door.
 - [Centre for Computing History: 1977 VCS Heavy Sixer](https://www.computinghistory.org.uk/det/66273/Atari-VCS-%28Heavy-Sixer%29/): six switches, cartridge slot, black ribs and walnut fascia.
 - [Computer History Museum: 1995 PlayStation](https://www.computerhistory.org/timeline/1995/): grey disc-lid console, controller silhouette, front ports and wired connection. The drawing represents the broader 1990s–2001 period, not a launch-day configuration.
+- [Babbage’s shop photographs, collected by Neon Rocketship](https://www.neonrocketship.com/2022/01/babbages.html): inspected for face-out box walls, cream shelving, red category fascia and low retail islands. The page does not establish the photographer or exact date; its circa-1992 estimate is not adopted as a verified date. Our shop is an original composite, with invented cover motifs and no reproduced photograph, retail logo or game cover. The shop makes the physical sales channel visibly precede Steam.
 - [Steam anniversary](https://store.steampowered.com/sale/steam20) and the [Valve service mark](https://www.valvesoftware.com/en/about) identify the service. The existing `steam-symbol` source/use record now includes this chapter; the image is the 80px, 5,030-byte variant.
 - Economic claims and dated milestones remain sourced separately in `business-history.ts` and the chapter evidence register. The drawing dates do not claim the invention or replacement of a model.
 
@@ -57,3 +58,5 @@ buttons expose selection, keyboard activation and the associated polite detail
 panel. Decorative SVGs are hidden from assistive technology.
 
 Activity uses CSS transforms and opacity, with no per-frame React state, timers, canvas loops, animated blur or additional library. `useLivingPlate` gates the figure through viewport visibility, document visibility, the shared motion preference and OS reduced motion. The global pause control supplies a static readable state. Visible eras remain alive without selection; hidden mobile lanes are explicitly paused. Selection increases contrast and adds a restrained brass/teal frame. Static SVG subtrees are memoized. Clip paths keep game activity and streaming light inside screens. The only new image request on this chapter is the existing 5,030-byte Steam mark. Its manifest entry is serialized through the chapter-scoped media contract, not an imported client-side inventory. No new pack or dependency is introduced.
+
+Cloud-PC copy now explains the practical opening (demanding games on modest receiving devices), provider-side hardware upgrades and the larger potential audience for studios. It keeps computing separate from game purchases/catalog access and states the supported-title and connection boundaries. NVIDIA’s upgrade announcement and current device requirements are registered as evidence; no benchmark, universal compatibility or unlimited access is implied.

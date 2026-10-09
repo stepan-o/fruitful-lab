@@ -19,6 +19,8 @@
 .catalogSelect{animation:catalog 12s ease-in-out infinite}.coverLift{animation:cover-lift 12s ease-in-out infinite}.coverSecond{animation-delay:-8s}.coverThird{animation-delay:-4s}.fan{transform-origin:0px 0px;animation:fan 2.2s linear infinite}
 .statusLight{animation:status 3.7s steps(1,end) infinite}.statusOther{animation:status 4.7s steps(1,end) -1.2s infinite}
 .packet{animation:packet 5s linear infinite}.streamCloud{animation:cloud 13s ease-in-out infinite}.streamScan{animation:scan 6s linear infinite}.wifi{animation:play 4s ease-in-out infinite}
+.shopLight{animation:shop-light 11s linear infinite}.shopRoad{animation:road .9s linear infinite}
+@keyframes shop-light{0%,77%,79%,82%,100%{opacity:1}78%,81%{opacity:.45}}
 .motion{animation-play-state:paused!important}
 .history[data-playing=true] .motion{animation-play-state:running!important}
 @keyframes pong-ball{0%,100%{transform:translate(0,0)}25%{transform:translate(54px,12px)}50%{transform:translate(0,21px)}75%{transform:translate(54px,-10px)}}

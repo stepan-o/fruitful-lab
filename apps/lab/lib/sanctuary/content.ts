@@ -611,6 +611,8 @@ const manuscript: Omit<Chapter,"visual">[] = [
       "cdpr-catalog-economics",
       "pong-tavern",
       "gfn-reach-2023",
+      "gfn-hardware-upgrades",
+      "gfn-device-requirements",
       "pc-software-history",
       "pc-compatible-history",
       "windows-games-1996",

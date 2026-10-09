@@ -6,7 +6,7 @@ const animated = (name: string) => `${s.motion} ${name}`;
 
 /** Purposeful period studies, not authentic captures or exact product replicas. */
 function MilestoneObject({ kind, prefix, steamSrc }: { kind: string; prefix: string; steamSrc?: string }) {
-  const scene = kind === "coin-modern" ? "coin" : kind === "pc-box" || kind === "console-store" ? "online" : (kind === "cloud-console" || kind === "cloud-early") ? "cloud" : kind;
+  const scene = kind === "coin-modern" ? "coin" : kind === "console-store" ? "online" : (kind === "cloud-console" || kind === "cloud-early") ? "cloud" : kind;
   const paint = (name: string) => `url(#${prefix}-${name})`;
   return <svg viewBox="0 0 320 230" aria-hidden="true" focusable="false" data-era={kind}>
     <defs>
@@ -21,6 +21,7 @@ function MilestoneObject({ kind, prefix, steamSrc }: { kind: string; prefix: str
       <radialGradient id={`${prefix}-cool`}><stop stopColor="#438997" stopOpacity=".22"/><stop offset="1" stopColor="#326c78" stopOpacity="0"/></radialGradient>
       <pattern id={`${prefix}-hatch`} width="5" height="5" patternUnits="userSpaceOnUse"><path d="M-1 1l7 7M3-1l3 3" stroke="#d1b782" strokeWidth=".45" opacity=".14"/></pattern>
       <pattern id={`${prefix}-scan`} width="3" height="3" patternUnits="userSpaceOnUse"><path d="M0 1.5h3" stroke="#001015" strokeWidth=".7" opacity=".45"/></pattern>
+      <clipPath id={`${prefix}-shop-demo`}><path d="M207 134l35-2v25l-35 3Z"/></clipPath>
       <clipPath id={`${prefix}-pong`}><rect x="104" y="62" width="78" height="58" rx="7"/></clipPath>
       <clipPath id={`${prefix}-vcs`}><rect x="79" y="41" width="118" height="81" rx="14"/></clipPath>
       <clipPath id={`${prefix}-cd`}><rect x="98" y="32" width="138" height="84" rx="7"/></clipPath>
@@ -113,6 +114,74 @@ function MilestoneObject({ kind, prefix, steamSrc }: { kind: string; prefix: str
       <path d="M94 191c-34 15-12 27 27 26s47 4 58-6" fill="none" stroke="#a1afa1" strokeWidth="1.7"/>
       <g transform="translate(186 189) scale(.75)"><path d="M0 0q4-9 16-7l14 5 15-5q13-2 17 7l10 20q2 14-9 14l-17-15H25L7 35q-11 0-8-14Z" fill={paint("plastic")} stroke="#c2c5ad"/><path d="M12 0v17M4 8h17" stroke="#233b43" strokeWidth="5"/><g fill="#293b42" stroke="#9ca28b"><circle cx="49" cy="1" r="3"/><circle cx="57" cy="9" r="3"/><circle cx="41" cy="9" r="3"/><circle cx="49" cy="17" r="3"/></g><circle cx="27" cy="22" r="6" fill="#273c42"/><circle cx="43" cy="22" r="6" fill="#273c42"/></g>
     </g> : null}
+    {scene === "pc-box" ? <g strokeLinejoin="round">
+      {/* A shallow, open shop: shelving stays dominant at the timeline's small scale. */}
+      <path d="M24 24h253l20 18v130l-20-12H24Z" fill="#1d3335" stroke="#a18e68"/>
+      <path d="M277 24l20 18v130l-20-12Z" fill="#132529"/>
+      <path d="M24 160h253l29 47H8Z" fill="#35413c" stroke="#7e816a"/>
+      <path d="M24 172h262M18 187h277M92 160l-20 47m90-47v47m55-47l21 47" fill="none" stroke="#a39873" strokeWidth=".7" opacity=".32"/>
+      <path d="M28 30h245v23H28Z" fill="#703d32" stroke="#bd9c6a"/>
+      <path d="M32 33h237M31 51h239" stroke="#d0b787" strokeWidth=".7"/>
+      <text x="150" y="47" textAnchor="middle" fontFamily="Arial" fontWeight="700" fontSize="15" letterSpacing="2.2" fill="#ead8ad">COMPUTER GAMES</text>
+      <path d="M34 58h233v104H34Z" fill="#a6a88b" stroke="#cebc92"/>
+      {[64,73,82,91,100,109,118,127,136,145,154].map(y=><path key={y} d={`M35 ${y}h231`} stroke="#6e7b6b" strokeWidth=".6"/>)}
+      <path d="M35 59h231" stroke="#ede1b9" strokeWidth="2" className={animated(s.shopLight)}/>
+      {[0,1].map(row=><g key={row}>
+        {Array.from({length:8},(_,i)=><g key={i} transform={`translate(${41+i*28} ${row===0?64:111})`}>
+          <path d="M0 1l3-2h19v32l-3 2H0Z" fill="#d1bc8e" stroke="#323c37" strokeWidth=".7"/>
+          <path d="M19 1l3-2v32l-3 2Z" fill="#514a3b"/>
+          <rect y="1" width="19" height="32" fill={["#785447","#416d78","#9b7949","#585c72","#36615b","#a18f67","#715e3e","#7c4840"][(i+row*3)%8]}/>
+          {(i+row)%3===0 ? <>
+            <circle cx="13" cy="10" r="5" fill="#e2c797"/>
+            <path d="M2 27l4-14 4 8 7-14v20Z" fill="#203238"/>
+            <path d="M6 28V19h5v-5h3v14" fill="#b8a476"/>
+          </> : (i+row)%3===1 ? <>
+            <circle cx="9" cy="13" r="7" fill="none" stroke="#b5c9b3" strokeWidth="1.4"/>
+            <path d="M2 25L16 8l-5 16-3-5Z" fill="#d3b888"/><path d="M2 8h3m9 19h3" stroke="#dad6ae"/>
+          </> : <>
+            <path d="M2 25l7-17 8 17" fill="#263c41"/><path d="M10 10v5m0 3v4" stroke="#ddca9a"/>
+            <path d="M4 25l3-6h6l3 6Z" fill="#c0b085"/><path d="M6 23h8" stroke="#263c41"/>
+          </>}
+          <path d="M2 4h14m-13 25h12" stroke="#e0d0a3" strokeWidth="1.1"/>
+          <path d="M0 1h19v32H0Z" fill={paint("reflection")}/>
+        </g>)}
+        <path d={`M34 ${row===0?98:145}h233l5 4H30Z`} fill="#d3c09a" stroke="#685f4c" strokeWidth=".7"/>
+        <path d={`M30 ${row===0?102:149}h242v5H30Z`} fill="#7c7158"/>
+        {[54,111,170,226].map(x=><rect key={x} x={x} y={row===0?102:149} width="13" height="3" fill="#ece0ba"/>)}
+      </g>)}
+      <path d="M31 58v101m119-101v104m120-104v104" stroke="#dbcea9" strokeWidth="3"/>
+      {/* Low display island on the left; checkout and its demo CRT on the right. */}
+      <path d="M28 171l68-5 19 12-75 7Z" fill="#bea57a" stroke="#d8c59c"/>
+      <path d="M40 185l75-7v28l-75 6Z" fill="#70523a" stroke="#ae9164"/>
+      <path d="M28 171l12 14v27l-12-10Z" fill="#493b2d"/>
+      <path d="M46 190l63-6m-63 11l63-6" stroke="#bd9563" strokeWidth=".65" opacity=".55"/>
+      <g transform="translate(42 142) rotate(-4)">
+        <path d="M0 2l4-3h26v35l-4 3H0Z" fill="#b79a6a" stroke="#d5c196"/>
+        <path d="M0 2h26v35H0Z" fill="#384f52"/><circle cx="18" cy="13" r="6" fill="#d2b378"/>
+        <path d="M2 30l7-19 5 13 10-7v16H2Z" fill="#182e33"/><path d="M4 6h18m-18 26h18" stroke="#d6c391"/>
+      </g>
+      <path d="M82 166l13-1 8 10-15 1Z" fill="#e1d2a5" stroke="#816b4b"/><path d="M86 170l10-1m-7 4l9-1" stroke="#685c44"/>
+      <path d="M164 169l95-6 22 15-98 8Z" fill="#d0bd94" stroke="#e3d3ab"/>
+      <path d="M183 186l98-8v30l-98 8Z" fill={paint("wood")} stroke="#a58b63"/>
+      <path d="M164 169l19 17v30l-19-15Z" fill="#443b30" stroke="#8e7853"/>
+      <path d="M189 191l86-7v18l-86 7Z" fill="#273b3b" stroke="#ac9470"/>
+      <path d="M193 195l78-6" stroke="#668077" strokeWidth=".7"/>
+      <path d="M216 167v7l-9 3 42-3-9-3v-6" fill="#887f65" stroke="#c6b593"/>
+      <path d="M202 129l46-3 9 6v32l-10 5-45 3Z" fill="#b9ae8d" stroke="#ded1a6"/>
+      <path d="M248 126l9 6v32l-10 5Z" fill="#716f5d"/>
+      <path d="M207 134l35-2v25l-35 3Z" fill="#112a31" stroke="#686e59"/>
+      <g clipPath={paint("shop-demo")}>
+        <path d="M207 149l10-11 8 6 9-8 8 8v17h-35Z" fill="#4d7672"/>
+        <path d="M223 147l19 10h-35Z" fill="#263f43"/>
+        <path d="M223 148v4m0 3v4" stroke="#e4ca88" className={animated(s.shopRoad)}/>
+        <path d="M216 154l3-4h7l4 4v4h-14Z" fill="#c3905c"/>
+        <path d="M219 153h7" stroke="#162f38" strokeWidth="1.3"/>
+        <path d="M207 135l35-2v25l-35 3Z" fill={paint("reflection")} className={animated(s.playLight)}/>
+      </g>
+      <circle cx="242" cy="163" r="1.3" fill="#a6d19a"/>
+      <path d="M181 163l19-1 7 12-20 2Z" fill="#959782" stroke="#cfbf95"/><path d="M183 162v-8l13-1v9" fill="#344b47" stroke="#bfba97"/>
+      <path d="M187 168l12-1m-10 4l12-1" stroke="#3b504a" strokeWidth="1.5"/>
+    </g> : null}
     {scene === "online" ? <g strokeLinejoin="round">
       <path d="M43 18h212l17 16v128l-21 12H41Z" fill={paint("plastic")} stroke="#adbaa6"/><path d="M255 18l17 16v128l-21 12Z" fill="#394a49"/>
       <rect x="51" y="25" width="207" height="132" rx="6" fill="#0d2127" stroke="#bbb99a"/>
@@ -134,14 +203,6 @@ function MilestoneObject({ kind, prefix, steamSrc }: { kind: string; prefix: str
           <rect x="69" y="136" width="122" height="5" fill="#253122"/><rect x="69" y="136" width="116" height="5" fill="#b0bd86" className={animated(s.download)}/>
           <text x="201" y="141" fontFamily="Arial" fontSize="6" fill="#bec8aa">ONLINE</text>
           <path d="M169 104v13l4-4 5 6 3-2-5-6 5-1Z" fill="#dfdac3" stroke="#102029" strokeWidth=".6" className={animated(s.pointer)}/>
-        </> : kind === "pc-box" ? <>
-          <rect x="59" y="32" width="190" height="117" fill="#122d35"/>
-          <circle cx="202" cy="61" r="17" fill="#d9c695"/>
-          <path d="M59 123l29-37 27 15 35-43 21 29 24-10 54 59v13H59Z" fill="#537674"/>
-          <path d="M90 89l18 53 42-84 8 82" fill="#8ea38b"/>
-          <path d="M141 130V92h10V81h9v11h11v38m-27-19h24" fill="#142b30" stroke="#adab7b"/>
-          <path d="M65 142h56m83 0h35" stroke="#c6b574" strokeWidth="3" className={animated(s.playLight)}/>
-          <text x="89" y="49" fontFamily="Georgia" fontSize="11" fill="#ecdbb2" letterSpacing="1">IRON CITADEL</text>
         </> : <>
           <rect x="59" y="32" width="190" height="117" fill="#133448"/>
           <path d="M59 32h190v31H59Z" fill="#195078"/>
@@ -161,12 +222,7 @@ function MilestoneObject({ kind, prefix, steamSrc }: { kind: string; prefix: str
       <circle cx="239" cy="163" r="2" fill="#afc18e"/>
       <path d="M53 201h157l18 18H37Z" fill={paint("plastic")} stroke="#b2b9a2"/><path d="M55 207h152m-145 5h148" stroke="#263c41" strokeWidth="3"/>
       <path d="M78 203v13m13-13v13m13-13v13m13-13v13m13-13v13m13-13v13m13-13v13m13-13v13m13-13v13" stroke="#6c8079"/>
-      {kind === "pc-box" ? <g transform="translate(8 99) rotate(-6)">
-        <path d="M0 3l8-5h55v103l-8 5H0Z" fill="#8b7250" stroke="#c5ac77"/><path d="M0 3h54v103H0Z" fill="#233a3e"/>
-        <path d="M8 12h39v78H8Z" fill="#657b70"/><circle cx="34" cy="29" r="10" fill="#d6c699"/>
-        <path d="M9 84l12-48 8 21 18-29v56Z" fill="#19333c"/><text x="11" y="23" fontFamily="Georgia" fontSize="8" fill="#eee0b9">CITADEL</text>
-        <path d="M7 95h40" stroke="#bea97d"/><path d="M70 78h34v30H70Z" fill="#2b3739" stroke="#bcb69c"/><path d="M76 79h20v11H76Zm0 20h23v9H76Z" fill="#aeb197"/>
-      </g> : null}
+
       <path d="M263 189c-12-9-22-3-19 5" fill="none" stroke="#8eab9c"/><ellipse cx="250" cy="205" rx="12" ry="17" fill={paint("plastic")} stroke="#b5bba4"/><path d="M250 189v12m-10-1h20" stroke="#405957"/>
     </g> : null}
     {scene === "catalog" ? <g strokeLinejoin="round">

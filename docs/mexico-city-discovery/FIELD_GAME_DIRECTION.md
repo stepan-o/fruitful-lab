@@ -2,7 +2,9 @@
 
 Updated 10 October 2026. Product direction from the owner discussion: **play happens in the city**. Otra Vista helps a person choose something to do, document an experience, remember it and optionally compete with friends. A worthwhile session can involve a minute with the app and an hour outside.
 
-This principle governs subsequent mechanics, navigation and interface work. The flows below are proposed for the next implementation. The current preview remains the public, browser-local map and learning prototype described in [README.md](README.md); accounts, shared photo storage and peer review are not implemented by this document.
+This principle governs subsequent mechanics, navigation and interface work. **The immediate priority is the private multiplayer game for Susy and Stepan.** Build and refine something they enjoy playing together outside. The solo reflections and broader community concepts are later possibilities, not requirements for the first playable battle. The [collective discovery roadmap](COMMUNITY_ROADMAP.md) preserves the separate public experiment without expanding the current implementation scope.
+
+The current preview remains the public, browser-local map and learning prototype described in [README.md](README.md); accounts, shared photo storage and peer review are not implemented by this document.
 
 ## The central action
 
@@ -14,7 +16,7 @@ The central object is a dated discovery belonging to an account. Its minimum com
 
 A photo records the player's account of an experience. Neither a photo nor a location field establishes that the person was physically present at a particular time. Peer review is the agreed validation method for the friendly competition. Generated illustrations belong in editorial content and never stand in for a player's evidence.
 
-## Solo exploration and friendly battles
+## Friendly battles and the later solo mode
 
 | Moment | Solo exploration | Battle between Susy and Stepan |
 | --- | --- | --- |
@@ -25,7 +27,7 @@ A photo records the player's account of an experience. Neither a photo nor a loc
 | Reward | Show personal progress and preserve the memory immediately after saving. | Show pending entries separately; award battle points only after confirmation. |
 | Return | Browse collections and reflections, then choose another outing. | See confirmed standings and shared discoveries; choose another challenge. |
 
-Solo exploration is a complete mode, with no fictional rival or compulsory leaderboard. Battle participation is an optional context for selected discoveries. A pending or unsuccessful submission does not erase the private memory.
+The immediate experience is the friendly battle in the right-hand column. The left-hand column preserves a later solo direction, which should eventually stand on its own without a fictional rival or compulsory leaderboard. A pending or unsuccessful battle submission does not erase the private memory.
 
 ### The first battle
 
@@ -45,7 +47,7 @@ Reading, city-layout quizzes and Náhuatl games still earn learning points. A ta
 
 Account rewards must come from deduplicated server records. Retain submission, review and award history so pending, confirmed and corrected scores are explainable. Current browser scores and imported learning flags are prototype progress; they must not silently become trusted competition results.
 
-## Reflections that help a person explore
+## Later reflections that help a person explore
 
 Start with summaries of dated records: new places, categories, neighborhoods, return visits and discoveries outside the recent pattern. Describe the logged sample explicitly. “Registraste cuatro librerías nuevas este mes” says what the app knows; missing records do not establish what the person did with their life.
 
@@ -105,8 +107,8 @@ GPS can later suggest a pin with permission and a visible accuracy indication. A
 
 ## First implementation sequence
 
-1. **Account and personal record.** Add game return paths and registration, connect the existing session, then support arbitrary discoveries with a photo and manual location. Deliver create, view, edit and delete for the owner; retrieve records on another device. Preserve local journals and make importing explicit. Never assign both local profiles to whichever user signs in.
-2. **One complete friendly battle.** Susy and Stepan join the same prepared challenge, submit discoveries, review each other and see pending versus confirmed points. Keep invitations inside the app. Verify membership, no self-approval, evidence revisions and once-only rewards.
-3. **Field interface and reflection.** Make recording the primary action, replace the fixed-story journal with personal collections, and add prompts and honest summaries from dated records. Integrate historical and language context around outings. Refine GPS and offline recovery after photo-and-place recording works on the test phones.
+1. **One complete friendly battle.** Connect the existing Fruitful Lab accounts and game return paths, then let Susy and Stepan join the same prepared challenge, record a photo and manual location, submit discoveries, review each other and see pending versus confirmed points. Account-owned records and durable uploads are parts of this complete loop. Keep invitations inside the app. Verify membership, no self-approval, evidence revisions, recovery after sign-in and once-only rewards. Preserve local journals; any import is explicit and never assigns both local profiles to whoever signs in.
+2. **Refine their game through real outings.** Make recording quick, show useful challenge progress, improve prepared prompts and integrate map, historical and language context around the shared activity. Judge changes by whether both people want to go out and play again. Add GPS or stronger offline support when their experience demonstrates the need.
+3. **Later possibilities.** Revisit standalone solo collections and behavioral reflections, and separately consider the optional-account community experiment in [the roadmap](COMMUNITY_ROADMAP.md). Neither is a dependency of the two-person game; no public community launch is implied.
 
-Success is an actual trip followed by a record the person wants to revisit. The first acceptance exercise is for each player to sign in on their own phone, document an unscripted discovery outside, retrieve it after signing in again and submit one discovery for the other to review. Confirm that solo records never need approval, failed uploads preserve drafts, another account cannot read private media, and retries cannot inflate points. Test both languages, camera and library input, denied location permission, mobile layouts, keyboard access and reduced motion. More screen time is not a success criterion.
+Success is a shared challenge that both players enjoy enough to go out and play again. The first acceptance exercise is for each player to sign in on their own phone, join the same challenge, document an unscripted discovery outside, retrieve it after signing in again and submit it for the other to review. Confirm that private memories remain available while a submission is pending, failed uploads preserve drafts, another account cannot read private media, and retries cannot inflate points. Test both languages, camera and library input, denied location permission, mobile layouts, keyboard access and reduced motion. More screen time is not a success criterion.

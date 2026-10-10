@@ -4,7 +4,7 @@ Updated 10 October 2026. Public Lab route: `/mexico-city`. Working name: **Otra 
 
 ## Product direction
 
-The owner discussion on 10 October establishes **play in the actual city** as the guiding rule for subsequent work. The app helps choose an outing, save a photo and place, keep a personal record and optionally submit evidence for a friendly battle. Solo records need no approval; competition points require peer confirmation. [City exploration game direction](FIELD_GAME_DIRECTION.md) defines the proposed flow, account integration, prepared challenges and personal reflections. These are design changes for the next implementation; the current preview still behaves as described below.
+The owner discussion on 10 October establishes **play in the actual city** as the guiding rule, with **the private multiplayer game for Susy and Stepan as the immediate priority**. The first complete loop is a shared challenge, an outing, a photo and place, peer confirmation and visible points. [City exploration game direction](FIELD_GAME_DIRECTION.md) defines that flow and account integration. Standalone solo reflections are later possibilities. [The community roadmap](COMMUNITY_ROADMAP.md) separately records the future idea of an optional-account collective map and logbook, with research references. Neither later direction expands the first battle's scope. These remain design changes; the current preview still behaves as described below.
 
 ## Current prototype experience
 

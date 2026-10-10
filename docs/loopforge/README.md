@@ -114,7 +114,7 @@ motion does not introduce automatic machinery audio.
   ([five supervisors, room and pair tables, 62 original paintings](SUPERVISOR_ATLAS.md)).
 - Story workshop: `/stepanoskin/loopforge/overview/before-the-factory`
   ([six prehistory directions, twelve concept paintings](PREHISTORY_GALLERY.md)).
-- Engine: `/stepanoskin/loopforge/architecture/the-thesis` (16 chapters).
+- Engine: `/stepanoskin/loopforge/architecture/the-thesis` (17 chapters, including Webview & rendering).
 - Play: `/stepanoskin/loopforge/play` (adviser-first, one-day prototype).
 - Previous teaching demo: `/stepanoskin/loopforge/play/teaching` (8 shifts;
   its existing narration service is separate from the first-day slice).

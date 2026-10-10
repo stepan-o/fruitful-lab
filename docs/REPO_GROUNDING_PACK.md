@@ -435,7 +435,7 @@ Admin Pinterest stats contract:
 ## Loopforge learning prototype — 2026-10-03
 
 The Stepanoskin group now includes two English Loopforge readers (8 overview and
-16 architecture chapters) and an eight-shift director console at
+17 architecture chapters) and an eight-shift director console at
 `/stepanoskin/loopforge`. Routes/components/logic are scoped to `apps/lab`; owned
 art uses the versioned `loopforge` asset pack. See `docs/loopforge/README.md`,
 `DELIVERY_CHECKLIST.md`, `ARCHITECTURE_DECISIONS.md`, `BDI_AND_PROTOCOL_REVIEW.md`
@@ -604,3 +604,6 @@ Loopforge room refit (10 October 2026): the 280 × 200 scale remains, but room b
 The current 35-chapter reader opens `studio-to-screen` with `BusinessHistory`: separate continuing arcade, PC and console lanes. Twelve sourced milestones distinguish packaged software from platform competition, then stores, catalogs and cloud routes. Both PC and console histories reach cloud play; PS Now’s 2016 Windows app makes the ecosystem/device crossover explicit. The arcade rail preserves pay-per-play continuity without claiming unchanged hardware. Desktop shows all lanes; mobile selects one lane and wraps its milestones into two columns. The instruction precedes the controls. Original compact SVGs retain bounded, visibility-gated motion; Steam reuses its 5,030-byte unchanged official mark through chapter-scoped assets and the public rights register. The catalog is a collection of original covers with a membership band, not a TV screen. `business-map` remains after the introduction and `market-map` after the access/computing comparison. Composition, references and performance are recorded in `docs/sanctuary/TIMELINE_CRAFT_PASSES.md`. Chapter 1, chapter 3 and the asset/cache, backend and auth contracts are unchanged.
 
 - Chapter 2 cloud-history evidence now distinguishes OnLive on PC/Mac (2010), PS Now on PS4 (2014) and Windows (2016), and Xbox cloud on Android (2020) and PC browsers (2021). The prose connects Sony’s quoted invitation to earning from its library beyond console owners; the market map follows that account.
+
+
+Loopforge webview direction (10 October 2026): the accepted layout now leads into lobby art calibration. `/stepanoskin/loopforge/architecture/webview` documents Babylon.js hybrid rendering, frontend profiling and versioned asset/CDN delivery. Original lobby art anchors autonomous, modifiable pay-claim desks; worker wages and claims are new design direction, not implemented economy. `WEBVIEW_RENDERING_AND_ASSETS.md`, `LOBBY_ART_DIRECTION.md` and `ASSET_PREFAB_PIPELINE.md` distinguish existing procedural/image delivery from proposed authored 3D kits, lightmaps and GLB/KTX2 schema/tooling. No simulation, spatial or asset-schema change in this pass.

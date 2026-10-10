@@ -1,5 +1,7 @@
 # Procedural factory commissioning study
 
+**Next visual direction, 10 October:** the owner accepts the repacked layout. The lobby now leads room-specific art calibration using modeled structure/working objects plus authored materials and baked lighting. The current renderer remains procedural; this recommendation is not yet implemented. See [Lobby art direction](LOBBY_ART_DIRECTION.md), [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md) and [Asset/prefab pipeline](ASSET_PREFAB_PIPELINE.md).
+
 Route: `/stepanoskin/loopforge/play/factory-study`. Branch / draft PR: `codex/loopforge-conveyor-study` / #102. Updated 2026-10-09.
 
 ## Implemented slice

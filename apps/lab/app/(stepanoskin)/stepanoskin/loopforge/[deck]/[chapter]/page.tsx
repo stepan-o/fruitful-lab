@@ -7,6 +7,7 @@ import Art from "@/components/loopforge/Art";
 import Conveyor from "@/components/loopforge/Conveyor";
 import Exhibits from "@/components/loopforge/Exhibits";
 import styles from "@/components/loopforge/loopforge.module.css";
+import { imageAsset, parseManifest } from "@/lib/assets/types";
 const SupervisorAtlas = dynamic(() => import("@/components/loopforge/SupervisorAtlas"));
 
 export function generateStaticParams() {
@@ -42,6 +43,9 @@ export default async function Page({
   if (index < 0) notFound();
   const chapter = chapters[index];
   const isCast = deck === "overview" && chapter.id === "the-cast";
+  const isWebview = deck === "architecture" && chapter.id === "webview";
+  const webviewArt = isWebview ? imageAsset(parseManifest((await import("@/lib/assets/generated/loopforge-focused.json")).default, "loopforge-focused"), "lobby-room") : undefined;
+  const WebviewStudy = isWebview ? (await import("@/components/loopforge/WebviewStudy")).default : null;
   const atlasAssets = isCast ? (await import("@/lib/loopforge/supervisor-assets")).supervisorAssets : null;
   const url = (id: string) => `/stepanoskin/loopforge/${deck}/${id}`;
   return (
@@ -91,7 +95,7 @@ export default async function Page({
             </span>
           </div>
           <section className={styles.hero}>
-            <Art id={chapter.art} caption={chapter.caption} hero />
+            <Art id={chapter.art} asset={webviewArt} caption={chapter.caption} hero />
             <div className={styles.heroShade} />
             <div className={styles.heroCopy}>
               <p className={styles.eyebrow}>{chapter.kicker}</p>
@@ -118,6 +122,7 @@ export default async function Page({
               <span>STORY WORKSHOP</span><strong>Before the factory ↗</strong><small>Six possible histories. Twelve concept paintings. Explore the robot society behind Loopforge.</small>
             </Link>}
             {atlasAssets && <SupervisorAtlas assets={atlasAssets} />}
+            {WebviewStudy && <WebviewStudy />}
             {chapter.exhibit && !isCast && <>
             <div className={styles.sectionHeading}>
               <span className={styles.eyebrow}>WORKING EXHIBIT</span>

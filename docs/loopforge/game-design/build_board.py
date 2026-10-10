@@ -185,6 +185,7 @@ engine+=detail('Decoupling the LLM ecosystem',table(en['llm']))
 engine+='<div class="inheritance"><span class="kicker">What makes a replay deterministic</span>'+p(en['determinism'])+'</div>'+p(en['timing'])
 engine+=detail('A concrete prototype without premature infrastructure',p(en['prototype']))
 engine+=detail('How we prove the boundaries',ul(en['proof']))
+engine+='<div class="callout"><h3>Webview: the visible factory</h3>'+p('The lobby is the first hybrid rendering calibration: modeled furniture and major pipes, authored surface detail, baked atmosphere and selective live lighting. Worker claims and wages stay in simulation records. The reader chapter includes Babylon examples and the source-to-prefab production plan; the desk kit and payroll mechanics are not implemented yet.')+'<p><a href="/stepanoskin/loopforge/architecture/webview" target="_blank" rel="noopener">Open the Webview chapter and reference gallery ↗</a> · <a href="ASSET_PREFAB_PIPELINE.md" target="_blank" rel="noopener">Asset production plan ↗</a></p></div>'
 engine+=detail('Original doctrine and implementation limits',p(en['sourceBoundary'])+'<p><a href="sources/kvp.md" target="_blank" rel="noopener">KVP-0001 ↗</a> · <a href="sources/kvp-hashing.md" target="_blank" rel="noopener">Canonicalization ↗</a> · <a href="sources/rust-engine.md" target="_blank" rel="noopener">Rust-aligned Sim4 specification ↗</a> · <a href="sources/live-contract.md" target="_blank" rel="noopener">Existing live contract ↗</a></p>')
 engine+='<button class="link-button" data-panel="experience">Return to the player experience →</button>'
 
@@ -219,6 +220,8 @@ loops+='<button class="link-button" data-panel="ui-mechanics">Connect each mecha
 ui_html=heading('The player and the underlying world',ui['title'],ui['intro'])+status(ui['status'])
 ui_html+='<div class="callout">'+e(daily['cadence'])+'</div>'+detail('Daily-loop requirements',ul(daily['requirements']))
 ui_html+='<p class="document-links"><a href="UI_DESIGN.html" target="_blank" rel="noopener">Read the complete UI design ↗</a> · <a href="UI_DESIGN.md" download>Download UI design</a></p>'
+webview_links='<div class="callout"><h3>Lobby rendering and asset production</h3>'+p('The first room calibration combines authored surfaces and reusable 3D furniture in the existing Babylon view. Its desks support autonomous worker paperwork; claim and payment rules remain a separate simulation task. The accepted map and navigation stay intact.')+'<p><a href="/stepanoskin/loopforge/architecture/webview" target="_blank" rel="noopener">Webview chapter · examples and pipeline ↗</a> · <a href="LOBBY_ART_DIRECTION.md" target="_blank" rel="noopener">Lobby brief ↗</a> · <a href="ASSET_PREFAB_PIPELINE.md" target="_blank" rel="noopener">Production requirements ↗</a></p></div>'
+ui_html+=webview_links
 ui_html+='<div class="complexity-axes">'+''.join('<article><h4>'+e(k)+'</h4>'+p(v)+'</article>' for k,v in ui['axes'])+'</div><div class="callout">'+e(ui['principle'])+'</div>'
 ui_html+=detail(ui['playability']['title'],p(ui['playability']['intro'])+table(ui['playability']['rules'])+p(ui['playability']['review']))
 ui_html+='<h3>Assets define the interface</h3>'+table(ui['visualContract'])
@@ -377,7 +380,7 @@ full=re.sub(r'<button class="link-button" data-panel="([^"]+)">(.*?)</button>', 
 full=full.replace('</main>','<section>'+sounds+'</section><section>'+style_review+'</section><section>'+producer_review+'</section><section>'+focused_console+'</section><section>'+theme_system+'</section></main>').replace('</body>',sound_script+style_script+producer_script+'</body>')
 (OUT/'full-record.html').write_text(full)
 ui_record=head.replace('<title>Loopforge — Game design</title>','<title>Loopforge — UI design</title>')+'<main class="record"><a href="index.html#ui-mechanics">← Interactive UI and mechanics board</a><header class="hero" style="display:block"><span class="kicker">Design direction · 8 October 2026</span><h1>Loopforge UI design</h1>'+p('Four integrated console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only those four appear in Settings; the old six studies remain historical and their focused-screen materials remain internal. Start at the console, Answer leadership, Acknowledge quota, then Choose adviser. Hardware uses registered CSS fragments cropped from clean plates, not separate alpha handsets. Local visual and full-flow checks passed; the hosted first shift was also completed. All four dedicated portrait plates are generated, catalogued and implemented. Owner review remains pending. Adaptive wide, portrait, small/short and compact-landscape modes preserve the selected camera, run and pending decision through resize. That describes the implemented baseline. The 9 October conveyor proposal makes a common cinematic 3D factory the operating surface of the next prototype, with spatial machinery and room puzzles. Existing focused decision interfaces remain; the new room simulation is not implemented by this study.')+'</header>'+early_rules+structure_full+ui_full+advice_full+'<p><a href="index.html#ui-styles">View the historical six material studies →</a></p><section><h2>Delivery scope</h2>'+table(d['experience']['scope'])+'</section><section><h2>Approved shift rhythm</h2>'+table(d['experience']['rhythm'])+'</section><section><h2>Attention horizons</h2>'+table([(s['time'],s['question']) for s in lp['scales']])+p(lp['boundary'])+'<a href="index.html#loops">Inspect the core loops and session design →</a></section><section><h2>Mobile and art</h2>'+p(d['experience']['mobile'])+table(d['experience']['art'])+'</section></main></body></html>'
-ui_record=ui_record.replace('</main>', '<section>'+loop_study_full+'</section><section>'+conveyor_full+'</section><section>'+desires+'</section><section>'+producer_review+'</section><section>'+focused_console+'</section><section>'+theme_system+'</section></main>')
+ui_record=ui_record.replace('</main>', '<section>'+webview_links+'</section><section>'+loop_study_full+'</section><section>'+conveyor_full+'</section><section>'+desires+'</section><section>'+producer_review+'</section><section>'+focused_console+'</section><section>'+theme_system+'</section></main>')
 ui_record=ui_record.replace('<details>','<details open>')
 ui_record=re.sub(r'<button class="link-button" data-panel="([^"]+)">(.*?)</button>',r'<a class="link-button" href="index.html#\1">\2</a>',ui_record)
 ui_record=ui_record.replace('</body>',producer_script+'</body>')
@@ -540,3 +543,9 @@ prompt_root=OUT.parents[1]/'assets/sources/loopforge-producer'
 
 # Current daily-loop working brief; the authored source remains beside the design docs.
 (OUT/"ONE_MINUTE_LOOP.md").write_text((ROOT.parent/"ONE_MINUTE_LOOP.md").read_text())
+
+# Shared by the engine reader and the UI working record.
+for contract_name in ["WEBVIEW_RENDERING_AND_ASSETS.md", "LOBBY_ART_DIRECTION.md", "ASSET_PREFAB_PIPELINE.md"]:
+    content=(ROOT.parent/contract_name).read_text()
+    (OUT/contract_name).write_text(content)
+    with (OUT/"UI_DESIGN.md").open("a") as f: f.write("\n\n"+content)

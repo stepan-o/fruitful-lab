@@ -2,7 +2,11 @@
 
 Updated 10 October 2026. Public Lab route: `/mexico-city`. Working name: **Otra Vista** (another view). First players: Susy and Stepan.
 
-## The experience
+## Product direction
+
+The owner discussion on 10 October establishes **play in the actual city** as the guiding rule for subsequent work. The app helps choose an outing, save a photo and place, keep a personal record and optionally submit evidence for a friendly battle. Solo records need no approval; competition points require peer confirmation. [City exploration game direction](FIELD_GAME_DIRECTION.md) defines the proposed flow, account integration, prepared challenges and personal reflections. These are design changes for the next implementation; the current preview still behaves as described below.
+
+## Current prototype experience
 
 The city is the game board. Start with the sixteen real borough outlines, enter Cuauhtémoc or Miguel Hidalgo, choose a curated neighbourhood, approach a drawn landmark, and open its story. The camera and landmark sizes change together. The desktop composition pairs an open map with a short editorial invitation; phones use a compact invitation, a large map, and a floating field-journal control.
 
@@ -76,7 +80,7 @@ Deep links use `?borough=09015`, `?zone=centro`, or `?place=zocalo`. Invalid val
 
 This is a local, two-profile prototype. `otra-vista-journal-v1`, `otra-vista-player-v1`, and `otra-vista-language-v1` are browser storage keys. Journal version 1 now accepts optional, per-player `learning` flags; older exports remain valid. Unknown reward keys and non-boolean flags are discarded, and imports union earned rewards. Spanish is the default, with a persistent English option on the map and inside every dialog. There is no account authentication, server competition, social feed, automatic sync, GPS verification or background tracking. Native file selection allows an existing or new photograph depending on the device. Photos are decoded locally, resized to at most 960px, flattened to JPEG and capped at 260,000 data-URL characters. Notes are capped at 500 characters. The export contains both players' notes and photographs; it is a user-controlled file, not an upload to a service. Import unions activity flags and preserves existing nonempty local notes/photos. Imports cannot contain external image URLs or executable SVGs.
 
-For a later shared test, keep this UI and add authenticated memberships, a shared visit/photo store, immutable point events, and server-side deduplication. That will need a separate backend contract; browser scores must not be treated as authoritative multiplayer results.
+The next shared test follows [the city exploration direction](FIELD_GAME_DIRECTION.md): an account-owned record for any real-world discovery, durable photos, optional peer-reviewed battle submissions and an interface centered on outings. Authored stories become supporting context. This requires a new backend contract; browser scores must not become authoritative multiplayer results.
 
 ## Separate style pass
 

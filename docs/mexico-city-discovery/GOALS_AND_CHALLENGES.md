@@ -1,5 +1,7 @@
 # Goals and challenges for city play
 
+Status update: the later owner-approved full app scope and concrete prototype rules are specified in [EXPERIENCE_SPEC.md](EXPERIENCE_SPEC.md). This document retains the earlier discussion; its “later mode” boundaries are superseded where the new specification differs.
+
 Design discussion recorded 10 October 2026. **The private multiplayer game for Susy and Stepan remains the immediate priority.** Goals provide direction, player-issued challenges create changing opportunities and stakes, and wildcards change the available choices. Solo and public community variants remain later roadmap items. These are proposed mechanics; the preview has not implemented them.
 
 The owner introduced timed challenges, point gains and losses, temporary category blocks and shared activities. The timing, limits and counterplay below are recommendations for a first test, not settled owner decisions. The competing preferences about quizzes remain unresolved.

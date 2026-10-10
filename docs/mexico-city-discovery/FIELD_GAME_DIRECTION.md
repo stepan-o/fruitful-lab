@@ -1,5 +1,7 @@
 # Mexico city discovery game — field direction
 
+Status update: the later owner-approved full app scope and concrete prototype rules are specified in [EXPERIENCE_SPEC.md](EXPERIENCE_SPEC.md). This document retains the earlier discussion; its “later mode” boundaries are superseded where the new specification differs.
+
 Updated 10 October 2026. Product direction from the owner discussion: **play happens in the city**. Mexico city discovery game helps a person choose something to do, document an experience, remember it and optionally compete with friends. A worthwhile session can involve a minute with the app and an hour outside.
 
 This principle governs subsequent mechanics, navigation and interface work. **The immediate priority is the private multiplayer game for Susy and Stepan.** Build and refine something they enjoy playing together outside. The solo reflections and broader community concepts are later possibilities, not requirements for the first playable battle. The [collective discovery roadmap](COMMUNITY_ROADMAP.md) preserves the separate public experiment without expanding the current implementation scope.

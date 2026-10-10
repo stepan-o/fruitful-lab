@@ -31,7 +31,7 @@ try {
       new PerformanceObserver(list => { for (const entry of list.getEntries()) window.__metrics.lcp = entry.startTime; }).observe({ type: "largest-contentful-paint", buffered: true });
       new PerformanceObserver(list => { for (const entry of list.getEntries()) if (!entry.hadRecentInput) window.__metrics.cls += entry.value; }).observe({ type: "layout-shift", buffered: true });
     });
-    await page.goto(`${base}/mexico-city`);
+    await page.goto(`${base}/mexico-city/atlas`);
     await page.getByRole("button", { name: "Field journal", exact: false }).waitFor();
     await waitForArt(page);
     assert.equal(await page.locator(".ov-borough").count(), 16);
@@ -101,7 +101,7 @@ try {
     await download.saveAs(`${out}/journal-fixture-${width}.json`);
     const importer = await browser.newContext({ viewport: { width, height: 844 } });
     await importer.addInitScript(() => localStorage.setItem("otra-vista-language-v1", "en"));
-    const other = await importer.newPage(); await other.goto(`${base}/mexico-city`);
+    const other = await importer.newPage(); await other.goto(`${base}/mexico-city/atlas`);
     await other.getByRole("button", { name: "Field journal", exact: false }).click();
     await other.locator('.ov-journal-footer input[type="file"]').setInputFiles(`${out}/journal-fixture-${width}.json`);
     await other.getByRole("status").filter({ hasText: "Journals combined" }).waitFor();

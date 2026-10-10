@@ -29,7 +29,7 @@ export default function OverviewChapter({
 }: {
   close: () => void;
   learning: Learning;
-  award: (id: LearningId) => void;
+  award: (id: LearningId) => void | Promise<boolean>;
   player: string;
   total: number;
   nahuatl: () => void;
@@ -55,13 +55,11 @@ export default function OverviewChapter({
     setStep(next);
     setSelected(["west", "west", "09015", "2", "1", "MEX"][next]);
   }
-  function choose(index: number) {
+  async function choose(index: number) {
     if (answer !== null) return;
     setAnswer(index);
-    setReward(
-      index === q.correct && !learning[q.id] ? LEARNING_REWARDS[q.id] : 0,
-    );
-    if (index === q.correct) award(q.id);
+    const saved = index === q.correct ? await award(q.id) : false;
+    setReward(saved !== false && index === q.correct && !learning[q.id] ? LEARNING_REWARDS[q.id] : 0);
   }
   const mapStage = mode === "quiz" ? [0, 1, 2, 3, 4, 5][question] : step;
   const mapSelection =

@@ -1,4 +1,5 @@
 "use client";
+import GameName from "./GameName";
 import {
   useLocale,
   LanguageSwitch,
@@ -229,10 +230,11 @@ function Game() {
       <header className="ov-header">
         <button
           className="ov-wordmark"
-          aria-label={t("Otra Vista, return to city")}
+          aria-label={t("Mexico city discovery game, return to city")}
           onClick={() => go({ level: "city" })}
         >
-          otra vista<span>✳</span>
+          <GameName />
+          <span aria-hidden="true">✳</span>
           <small>{t("MEXICO CITY, RESEEN")}</small>
         </button>
         <LanguageSwitch />
@@ -627,8 +629,13 @@ function Game() {
           </h2>
           <p>
             {t(
-              "Otra Vista is an illustrated field guide and a friendly discovery game for Susy and Stepan. Explore four researched stories across three zones, keep a list, then bring your own photographs back.",
+              "Mexico city discovery game is an illustrated field guide and a friendly discovery game for Susy and Stepan. Explore four researched stories across three zones, keep a list, then bring your own photographs back.",
             )}
+          </p>
+          <p>
+            <a href="/mexico-city/game-design" className="ov-design-link">
+              {t("Game design and future direction")} ↗
+            </a>
           </p>
           <h3>{t("How discoveries count")}</h3>
           <p>

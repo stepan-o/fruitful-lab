@@ -1,5 +1,6 @@
 "use client";
 
+import GameName from "./GameName";
 import { useState } from "react";
 import { useLocale } from "@/lib/mexico-city/locale";
 import {
@@ -83,7 +84,8 @@ export default function OverviewChapter({
     >
       <header className="ov-learning-header">
         <span className="ov-wordmark">
-          otra vista<span>✳</span>
+          <GameName />
+          <span aria-hidden="true">✳</span>
         </span>
         <span className="ov-live-score">
           {player} <strong>{total}</strong> pts

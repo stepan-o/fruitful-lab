@@ -53,7 +53,7 @@ export default function FieldJournal({
     );
     const a = document.createElement("a");
     a.href = url;
-    a.download = `otra-vista-journal-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `mexico-city-discovery-game-journal-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
     setMessage(

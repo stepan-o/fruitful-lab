@@ -1,4 +1,4 @@
-# Otra Vista — editorial and map sources
+# Mexico city discovery game — editorial and map sources
 
 Reviewed 10 October 2026. The prototype separates geographic observations, historical interpretation, and present-day operator information. Link titles and short quotations belong to their credited sources; authored Spanish and English narratives synthesize the research.
 

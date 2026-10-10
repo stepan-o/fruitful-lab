@@ -1,4 +1,5 @@
 "use client";
+import GameName from "./GameName";
 import { useState } from "react";
 import { useLocale } from "@/lib/mexico-city/locale";
 import { WORDS, PLACE_PUZZLES } from "@/lib/mexico-city/nahuatl";
@@ -64,7 +65,8 @@ export default function NahuatlGames({
     >
       <header className="ov-learning-header">
         <span className="ov-wordmark">
-          otra vista<span>✳</span>
+          <GameName />
+          <span aria-hidden="true">✳</span>
         </span>
         <span className="ov-live-score">
           {player} <strong>{total}</strong> pts

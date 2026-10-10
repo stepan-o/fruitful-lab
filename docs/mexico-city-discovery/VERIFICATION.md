@@ -1,6 +1,19 @@
-# Otra Vista verification — 10 October 2026
+# Mexico city discovery game verification — 10 October 2026
 
-Scope: `/mexico-city` in `apps/lab`, branch `codex/mexico-city-discovery`, based on `origin/master` at `75c5469`. No backend, authentication, other app or runtime dependency changes. Technical checks support owner playtesting; they do not imply acceptance of the visual direction, historical editing or game balance.
+Scope: `/mexico-city` and `/mexico-city/game-design` in `apps/lab`, branch `codex/mexico-city-discovery`, based on `origin/master` at `75c5469`. No backend, authentication, other app or runtime dependency changes. Technical checks support owner playtesting; they do not imply acceptance of the visual direction, historical editing or game balance.
+
+## Design notebook and working reference update
+
+The new design route captures the city-first, private multiplayer direction in Spanish and English, including branding/style, map/learning, accounts/evidence, future modes and open decisions. Interactive challenge scenarios are simulations and cannot change a journal or score. Current game screens, metadata, import errors, export filenames and current design documentation now use the owner's working reference **Mexico city discovery game**. Storage keys and journal format remain compatible.
+
+- Re-ran full Lab CI: **76 suites, 400 tests and one snapshot**, asset checks and production build passed. Scoped ESLint and diff checks passed. A final production rebuild includes the small skip-link visibility correction found during screenshot review.
+- [Design browser checks](verify-game-design.mjs): 320/390/768/1440px, Spanish default, persisted English across reload/navigation, all five challenge outcomes, no journal mutation, all four scale descriptions, chapter anchors, expandable reading list, keyboard activation, phone touch, reduced motion and return links. No horizontal overflow, undersized buttons/summary controls or browser runtime errors.
+- Re-ran both existing exploration/journal and learning browser suites at all four widths after the working-reference changes. Both passed with zero page errors, preserving all prior gameplay and reward checks.
+- Opening design artwork: **130,966 body bytes** on 320/390px phones at DPR 2; **190,158 body bytes** observed at 1440px / DPR 1 including the browser's early lazy image request. Warm image transfers were zero. Immutable responsive variants, reserved image dimensions and lazy figures are reused; no new runtime dependency or media master was added.
+
+[Desktop design page](evidence/design-es-1440.webp) · [Phone design page](evidence/design-es-390.webp) · [English design page](evidence/design-en-1440.webp) · [Challenge walkthrough](evidence/challenge-es-1440.webp) · [Visual identity](evidence/identity-es-1440.webp) · [Phone game label](evidence/game-name-en-320.webp) · [Design image measurements](evidence/design-report.json).
+
+These are Chromium emulation and unthrottled localhost checks. Field performance, physical camera behavior and whether the proposed multiplayer rules are fun remain unmeasured. The older screenshots and timing samples below describe the earlier prototype revision; the linked design evidence above documents this update.
 
 ## Build and tests
 

@@ -54,7 +54,7 @@ export function parseJournal(input: unknown): Journal {
     !input.players ||
     typeof input.players !== "object"
   )
-    throw new Error("Choose an Otra Vista journal file.");
+    throw new Error("Choose a Mexico city discovery game journal file.");
   const result = blankJournal();
   for (const player of PLAYERS) {
     const incoming = (input as { learning?: Record<string, unknown> })

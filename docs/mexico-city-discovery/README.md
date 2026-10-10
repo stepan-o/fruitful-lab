@@ -1,6 +1,14 @@
-# Otra Vista — Mexico City discovery prototype
+# Mexico city discovery game
 
-Updated 10 October 2026. Public Lab route: `/mexico-city`. Working name: **Otra Vista** (another view). First players: Susy and Stepan.
+Updated 10 October 2026. Public Lab route: `/mexico-city`. Working reference: **Mexico city discovery game**; the final name is undecided. First players: Susy and Stepan.
+
+## Design reference page
+
+`/mexico-city/game-design` presents the discussion as a Spanish-default, fully bilingual illustrated design notebook: city-first play, goals/challenges/wildcards, peer validation, map and learning, visual identity and voice, app surfaces, future modes and unresolved decisions. The working reference **Mexico city discovery game** is used across current game screens; `/mexico-city` remains independent of the eventual name. Legacy browser storage keys stay unchanged to retain existing journals and language preferences.
+
+The challenge scenario and map-scale illustrations explain proposed rules and composition; they do not activate a battle or award points. The page distinguishes current browser-local capabilities from planned account-based multiplayer, agreed priorities from balancing proposals, and later solo/community ideas. Quiz prerequisites, large multipliers and “Atlas” remain unresolved. The About dialog links to the page; the design page links back to the prototype.
+
+Implementation: `GameDesign.tsx`, scoped `game-design.module.css`, and paired Spanish/English content in `lib/mexico-city/game-design.ts`. Existing immutable illustrations and credited archival/modern images provide the style board. Keep this public summary aligned with `FIELD_GAME_DIRECTION.md`, `GOALS_AND_CHALLENGES.md` and `COMMUNITY_ROADMAP.md` as decisions change. `verify-game-design.mjs` checks both languages, phone/desktop layouts, scenario isolation, map-scale selection, reduced motion, links and image delivery against a production build.
 
 ## Product direction
 

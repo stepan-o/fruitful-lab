@@ -1,4 +1,5 @@
 "use client";
+import GameName from "./GameName";
 import { useLocale } from "@/lib/mexico-city/locale";
 import { useState } from "react";
 import {
@@ -96,7 +97,8 @@ export default function StoryReader({
       >
         <header className="ov-story-header">
           <span className="ov-wordmark">
-            otra vista<span>✳</span>
+            <GameName />
+            <span aria-hidden="true">✳</span>
           </span>
           <span>{story.place}</span>
         </header>

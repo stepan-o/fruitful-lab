@@ -114,7 +114,7 @@ try {
     assert(await other.locator(".ov-journal-toggle").evaluate(el => document.activeElement === el));
     await importer.close();
     await page.keyboard.press("Escape");
-    await page.getByRole("button", { name: "Otra Vista, return to city" }).click();
+    await page.getByRole("button", { name: "Mexico city discovery game, return to city" }).click();
     await page.goBack();
     assert.equal(new URL(page.url()).searchParams.get("place"), "zocalo");
     report.flows.push({ width, result: "passed", checks: "map/keyboard/touch, all scales, story arrows/swipe, collect, save, visit, photo resize, independent players, note, reload, export/import, invalid import, Escape/focus, browser Back" });

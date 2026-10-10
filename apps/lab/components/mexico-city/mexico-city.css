@@ -3288,3 +3288,33 @@
 .ov-points-actions > button {
   min-height: 44px;
 }
+
+/* The descriptive working reference needs two readable lines at every scale. */
+.ov-wordmark > .ov-reference-name {
+  display: inline-block;
+  margin: 0;
+  color: var(--ink);
+  font: 21px/1.05 var(--serif);
+  letter-spacing: -0.6px;
+  text-align: left;
+  vertical-align: middle;
+}
+.ov-story-header .ov-wordmark {
+  max-width: 200px;
+}
+.ov-design-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+@media (max-width: 700px) {
+  .ov-wordmark > .ov-reference-name {
+    font-size: 18px;
+  }
+  .ov-dialog .ov-wordmark > .ov-reference-name {
+    font-size: 16px;
+  }
+  .ov-dialog .ov-wordmark > span:not(.ov-reference-name) {
+    display: none;
+  }
+}

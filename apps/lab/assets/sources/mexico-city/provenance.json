@@ -1,0 +1,66 @@
+{
+  "generator": "Built-in Codex image generation",
+  "created": "2026-10-09",
+  "use": "Original generated illustrations for the Otra Vista prototype. Historical images are interpretive reconstructions, not archival photographs. Architectural and scene details are not documentary evidence.",
+  "sharedArtDirection": "Original transparent landmark cutouts for a sophisticated Mexico City discovery game on pure white. Fine graphite and irregular ink, loose crosshatching, restrained watercolor pools of coral, jade, powder blue and warm ochre, tiny lively figures. Airy architectural travel sketches, oblique bird’s-eye view at about 35 degrees, soft pencil ground strokes fading out. No text, borders or UI; generous clear margins.",
+  "files": [
+    {
+      "id": "zocalo",
+      "workspaceSource": "assets/sources/mexico-city/zocalo.webp",
+      "generationOutput": "exec-02c8fc16-6b8e-4f48-8bb9-c13dbc6301a7.png",
+      "subjectDirection": "Zócalo, the Metropolitan Cathedral, open square and Mexican flag.",
+      "promptRecord": "Art and subject directions summarized"
+    },
+    {
+      "id": "ehecatl",
+      "workspaceSource": "assets/sources/mexico-city/ehecatl.webp",
+      "generationOutput": "exec-3ee209ed-c08c-45f2-99cf-5a4a9faba681.png",
+      "subjectDirection": "Small circular shrine in Pino Suárez Metro, modest masonry temple amid modern infrastructure.",
+      "promptRecord": "Art and subject directions summarized"
+    },
+    {
+      "id": "revolucion",
+      "workspaceSource": "assets/sources/mexico-city/revolucion.webp",
+      "generationOutput": "exec-07a61f8b-3e65-4cd7-b266-f5a89c2cab5c.png",
+      "subjectDirection": "Monumento a la Revolución with four massive arches and its copper dome.",
+      "promptRecord": "Art and subject directions summarized"
+    },
+    {
+      "id": "chapultepec",
+      "workspaceSource": "assets/sources/mexico-city/chapultepec.webp",
+      "generationOutput": "exec-cab92c70-e567-46bc-9de0-32445e8458d2.png",
+      "subjectDirection": "Baños de Moctezuma reservoir with stone waterworks among Chapultepec trees.",
+      "promptRecord": "Art and subject directions summarized"
+    },
+    {
+      "id": "zocalo-past",
+      "workspaceSource": "assets/sources/mexico-city/zocalo-past.webp",
+      "generationOutput": "exec-d6695b33-3153-4398-97d6-916d5380911b.png",
+      "prompt": "Use case: historical-scene. Asset type: wide story illustration for a white, airy Mexico City exploration game. Original interpretive reconstruction, NOT an archival photograph. Finely drawn ink and graphite urban sketch with joyous coral, powder blue, mustard and leafy jade watercolor accents. Elegant cinematic composition, tangible architecture, tiny period figures, open luminous WHITE background with edges dissolving into white paper, no dark vignette, no sepia wash. Draw only the described scene, no text, no labels, no border, no interface, no contemporary logos. Wide 3:2 composition, high detail and strong negative space. Mexico City Plaza de la Constitución in the mid 1840s: broad historic plaza, an unfinished LOW ROUND STONE PLINTH at the center with no statue or column above it. Modest scaffolding and stone blocks, a few nineteenth-century workers and pedestrians, cathedral towers suggested faintly far behind. The absent monument and abandoned base must be the visual punchline. Do not invent a completed column.",
+      "promptRecord": "Exact scene prompt"
+    },
+    {
+      "id": "ehecatl-past",
+      "workspaceSource": "assets/sources/mexico-city/ehecatl-past.webp",
+      "generationOutput": "exec-6df95061-c3a5-4e84-80c7-883f340fd7b2.png",
+      "prompt": "Use case: historical-scene. Asset type: wide story illustration for a white, airy Mexico City exploration game. Original interpretive reconstruction, NOT an archival photograph. Finely drawn ink and graphite urban sketch with joyous coral, powder blue, mustard and leafy jade watercolor accents. Elegant cinematic composition, tangible architecture, tiny period figures, open luminous WHITE background with edges dissolving into white paper, no dark vignette, no sepia wash. Draw only the described scene, no text, no labels, no border, no interface, no contemporary logos. Wide 3:2 composition, high detail and strong negative space. A careful illustrative interpretation of the 1969 Metro construction discovery in Mexico City: archaeologists with brushes examining a small round low stepped stone Ehécatl shrine exposed in an excavation pit, discreet industrial shoring and the beginning of a modern station structure around them. Composition emphasizes circular ancient masonry inside a rectangular modern engineering world. No giant pyramid, no ancient people, no train passing directly over ruins.",
+      "promptRecord": "Exact scene prompt",
+      "editPrompt": "Edit this generated historical interpretation for factual restraint. Preserve the watercolor and graphite style, horizontal composition, excavation workers, white-paper edges and small round stone stepped shrine. Remove the large invented carved face/sun relief on the shrine completely: replace it with plain weathered uncarved masonry. Remove the cathedral and church towers from the background and replace them with low nondescript urban buildings. Do not add any glyphs, sculptures, giant pyramid, readable text or decorative archaeological details. The ancient structure should be modest and undecorated. This is an illustrative Metro-construction excavation scene, not a literal archival photograph."
+    },
+    {
+      "id": "revolucion-past",
+      "workspaceSource": "assets/sources/mexico-city/revolucion-past.webp",
+      "generationOutput": "exec-5065408d-6023-4aee-b08d-b156f4eb3197.png",
+      "prompt": "Use case: historical-scene. Asset type: wide story illustration for a white, airy Mexico City exploration game. Original interpretive reconstruction, NOT an archival photograph. Finely drawn ink and graphite urban sketch with joyous coral, powder blue, mustard and leafy jade watercolor accents. Elegant cinematic composition, tangible architecture, tiny period figures, open luminous WHITE background with edges dissolving into white paper, no dark vignette, no sepia wash. Draw only the described scene, no text, no labels, no border, no interface, no contemporary logos. Wide 3:2 composition, high detail and strong negative space. Mexico City circa 1912: the unfinished steel frame and four great legs of the Federal Legislative Palace central dome under construction, surrounded by modest construction scaffolding, a few workers and stacked materials, the enormous dome skeleton open to the blue sky. Interpret the surviving framework that would later become the Monumento a la Revolución. No completed stone exterior, no modern skyscrapers.",
+      "promptRecord": "Exact scene prompt"
+    },
+    {
+      "id": "chapultepec-past",
+      "workspaceSource": "assets/sources/mexico-city/chapultepec-past.webp",
+      "generationOutput": "exec-6b696706-d31c-4d7e-98b7-2430a38c33de.png",
+      "prompt": "Use case: historical-scene. Asset type: wide story illustration for a white, airy Mexico City exploration game. Original interpretive reconstruction, NOT an archival photograph. Finely drawn ink and graphite urban sketch with joyous coral, powder blue, mustard and leafy jade watercolor accents. Elegant cinematic composition, tangible architecture, tiny period figures, open luminous WHITE background with edges dissolving into white paper, no dark vignette, no sepia wash. Draw only the described scene, no text, no labels, no border, no interface, no contemporary logos. Wide 3:2 composition, high detail and strong negative space. Chapultepec in the 1870s: a modest nineteenth-century public bathing establishment among trees, three rectangular open-air masonry bathing basins connected to a narrow water channel, a small stucco colonnade, fully clothed period visitors conversing on paths. Cheerful quiet setting. This is a public-baths reconstruction, not an Aztec emperor's bath. No royalty, no naked people, no giant palace.",
+      "promptRecord": "Exact scene prompt"
+    }
+  ],
+  "conversion": "Built-in generator PNGs converted to source WebP at quality94/alpha100; responsive immutable variants built by assets/mexico-city.json. A draft shrine with an invented face carving was edited to plain masonry before publication."
+}

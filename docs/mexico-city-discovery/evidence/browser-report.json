@@ -1,0 +1,235 @@
+{
+  "viewports": [
+    {
+      "width": 320,
+      "height": 844,
+      "dpr": 2,
+      "cold": {
+        "lcp": 552,
+        "cls": 0.015344865344444196,
+        "overflow": false,
+        "mapTop": 356,
+        "images": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "encodedBytes": 18446,
+            "transferBytes": 18746
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "encodedBytes": 14180,
+            "transferBytes": 14480
+          }
+        ],
+        "chosenImages": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "displayWidth": 110,
+            "naturalWidth": 110
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "displayWidth": 110,
+            "naturalWidth": 110
+          }
+        ],
+        "smallButtons": []
+      },
+      "warm": {
+        "lcp": 96,
+        "cls": 0.015345830478875139,
+        "images": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "encodedBytes": 18446,
+            "transferBytes": 0
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "encodedBytes": 14180,
+            "transferBytes": 0
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "cold": {
+        "lcp": 216,
+        "cls": 0.0132029382273649,
+        "overflow": false,
+        "mapTop": 357.3125,
+        "images": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "encodedBytes": 18446,
+            "transferBytes": 18746
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "encodedBytes": 14180,
+            "transferBytes": 14480
+          }
+        ],
+        "chosenImages": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "displayWidth": 124,
+            "naturalWidth": 124
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "displayWidth": 124,
+            "naturalWidth": 124
+          }
+        ],
+        "smallButtons": []
+      },
+      "warm": {
+        "lcp": 136,
+        "cls": 0.012936264159984426,
+        "images": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "encodedBytes": 18446,
+            "transferBytes": 0
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "encodedBytes": 14180,
+            "transferBytes": 0
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "height": 960,
+      "dpr": 1,
+      "cold": {
+        "lcp": 252,
+        "cls": 0.006515206231011285,
+        "overflow": false,
+        "mapTop": 176,
+        "images": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "encodedBytes": 18446,
+            "transferBytes": 18746
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "encodedBytes": 14180,
+            "transferBytes": 14480
+          }
+        ],
+        "chosenImages": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "displayWidth": 150,
+            "naturalWidth": 150
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "displayWidth": 150,
+            "naturalWidth": 150
+          }
+        ],
+        "smallButtons": []
+      },
+      "warm": {
+        "lcp": 116,
+        "cls": 0.006514766834400317,
+        "images": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "encodedBytes": 18446,
+            "transferBytes": 0
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "encodedBytes": 14180,
+            "transferBytes": 0
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "dpr": 1,
+      "cold": {
+        "lcp": 404,
+        "cls": 0.002234905478395062,
+        "overflow": false,
+        "mapTop": 176,
+        "images": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "encodedBytes": 18446,
+            "transferBytes": 18746
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "encodedBytes": 14180,
+            "transferBytes": 14480
+          }
+        ],
+        "chosenImages": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "displayWidth": 175,
+            "naturalWidth": 175
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "displayWidth": 175,
+            "naturalWidth": 175
+          }
+        ],
+        "smallButtons": []
+      },
+      "warm": {
+        "lcp": 132,
+        "cls": 0.002429537800604424,
+        "images": [
+          {
+            "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+            "encodedBytes": 18446,
+            "transferBytes": 0
+          },
+          {
+            "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+            "encodedBytes": 14180,
+            "transferBytes": 0
+          }
+        ]
+      }
+    }
+  ],
+  "flows": [
+    {
+      "width": 320,
+      "result": "passed",
+      "checks": "map/keyboard/touch, all scales, story arrows/swipe, collect, save, visit, photo resize, independent players, note, reload, export/import, invalid import, Escape/focus, browser Back"
+    },
+    {
+      "width": 390,
+      "result": "passed",
+      "checks": "map/keyboard/touch, all scales, story arrows/swipe, collect, save, visit, photo resize, independent players, note, reload, export/import, invalid import, Escape/focus, browser Back"
+    },
+    {
+      "width": 768,
+      "result": "passed",
+      "checks": "map/keyboard/touch, all scales, story arrows/swipe, collect, save, visit, photo resize, independent players, note, reload, export/import, invalid import, Escape/focus, browser Back"
+    },
+    {
+      "width": 1440,
+      "result": "passed",
+      "checks": "map/keyboard/touch, all scales, story arrows/swipe, collect, save, visit, photo resize, independent players, note, reload, export/import, invalid import, Escape/focus, browser Back"
+    }
+  ],
+  "errors": []
+}

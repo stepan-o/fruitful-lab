@@ -2,6 +2,8 @@
 
 Status: confirmed from local repository scan on 2026-05-15.
 
+2026-10-09 addendum: `/mexico-city` adds the public Otra Vista illustrated discovery prototype in `apps/lab`, with local two-player journals, source-backed stories and a dedicated immutable media pack. No auth, backend or experiment contracts change. See `docs/mexico-city-discovery/README.md` and `VERIFICATION.md` for current implementation and limits.
+
 2026-10-01 addendum: `apps/lab` now includes versioned media catalogs,
 content-addressed files/manifests, short-cached per-pack pointers, responsive
 WebP generation, and release integrity checks in frontend CI. See

@@ -601,21 +601,95 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
       y < size.height + padding
     );
   };
-  const labelPositions: { x: number; y: number }[] = [];
+  const labelBoxes: { x: number; y: number; width: number; height: number }[] =
+    [];
+  if (!picking) {
+    for (const point of [
+      ...STORIES.map((story) =>
+        project({ lng: story.coordinate[0], lat: story.coordinate[1] }),
+      ),
+      ...records.map(project),
+    ]) {
+      const x = point[0] * scale + tx,
+        y = point[1] * scale + ty;
+      labelBoxes.push({ x: x - 55, y: y - 100, width: 110, height: 120 });
+    }
+  }
+  // Estimate text bounds before rendering so long names and station captions
+  // never stack on each other or cover a photographic/illustrated pin.
+  const reserveLabel = (
+    point: readonly number[],
+    name: string,
+    height = 22,
+  ) => {
+    const x = point[0] * scale + tx,
+      y = point[1] * scale + ty;
+    const width = name.length * 6 + 18;
+    const box = { x: x - width / 2, y: y - height / 2, width, height };
+    if (
+      box.x < 8 ||
+      box.y < 8 ||
+      box.x + width > size.width - 8 ||
+      box.y + height > size.height - 8
+    )
+      return false;
+    if (
+      labelBoxes.some(
+        (b) =>
+          box.x < b.x + b.width + 6 &&
+          box.x + width + 6 > b.x &&
+          box.y < b.y + b.height + 6 &&
+          box.y + height + 6 > b.y,
+      )
+    )
+      return false;
+    labelBoxes.push(box);
+    return true;
+  };
+  const seenAreas = new Set<string>();
   const areaLabels =
     settings.areas && camera.zoom >= 13
-      ? layers.areas.filter((a) => {
-          if (!inView(a.point, -20)) return false;
-          const p = { x: a.point[0] * scale + tx, y: a.point[1] * scale + ty };
-          if (
-            labelPositions.some(
-              (q) => Math.abs(p.x - q.x) < 95 && Math.abs(p.y - q.y) < 30,
+      ? layers.areas
+          .map((a) => ({
+            ...a,
+            name: a.name.replace(/\s+(?:I|II|III|IV|V|VI|VII|VIII|IX|X)$/i, ""),
+          }))
+          .sort((a, b) => a.name.length - b.name.length)
+          .filter((a) => {
+            if (
+              seenAreas.size >= (size.width < 500 ? 5 : 18) ||
+              seenAreas.has(a.name) ||
+              !reserveLabel(a.point, a.name)
             )
+              return false;
+            seenAreas.add(a.name);
+            return true;
+          })
+      : [];
+  const streetLabels =
+    camera.zoom > 14
+      ? layers.streets
+          .filter(
+            (s) =>
+              s.points.length &&
+              reserveLabel(s.points[Math.floor(s.points.length / 2)], s.name),
           )
-            return false;
-          labelPositions.push(p);
-          return true;
-        })
+          .slice(0, 6)
+      : [];
+  const seenStations = new Set<string>();
+  const stationLabels =
+    settings.metro && camera.zoom >= 14
+      ? layers.stations
+          .filter((s) => {
+            if (
+              seenStations.has(s.name) ||
+              !reserveLabel(s.point, `Ⓜ ${s.name}`)
+            )
+              return false;
+            seenStations.add(s.name);
+            return true;
+          })
+          .slice(0, 30)
       : [];
   return (
     <div
@@ -691,42 +765,27 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
                 ))}
             {areaLabels.map((a) => (
               <span key={a.id} style={screenPoint(a.point)}>
-                {a.name.replace(/\s+(?:I|II|III|IV|V|VI|VII|VIII|IX|X)$/i, "")}
+                {a.name}
               </span>
             ))}
-            {camera.zoom > 14 &&
-              layers.streets
-                .filter(
-                  (s) =>
-                    s.points.length &&
-                    inView(s.points[Math.floor(s.points.length / 2)]),
-                )
-                .slice(0, 6)
-                .map((s) => (
-                  <span
-                    className="is-street"
-                    key={s.name}
-                    style={screenPoint(
-                      s.points[Math.floor(s.points.length / 2)],
-                    )}
-                  >
-                    {s.name}
-                  </span>
-                ))}
-            {settings.metro &&
-              camera.zoom >= 14 &&
-              layers.stations
-                .filter((s) => inView(s.point, -10))
-                .slice(0, 30)
-                .map((s) => (
-                  <span
-                    className="is-station"
-                    key={s.id}
-                    style={screenPoint(s.point)}
-                  >
-                    Ⓜ {s.name}
-                  </span>
-                ))}
+            {streetLabels.map((s) => (
+              <span
+                className="is-street"
+                key={s.name}
+                style={screenPoint(s.points[Math.floor(s.points.length / 2)])}
+              >
+                {s.name}
+              </span>
+            ))}
+            {stationLabels.map((s) => (
+              <span
+                className="is-station"
+                key={s.id}
+                style={screenPoint(s.point)}
+              >
+                Ⓜ {s.name}
+              </span>
+            ))}
           </div>
           {!picking && (
             <div className="mc-map-markers">

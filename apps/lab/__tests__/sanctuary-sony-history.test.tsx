@@ -58,9 +58,11 @@ it("connects milestone, year picker, exact figures and category readout", () => 
   expect(within(table).getByText("463,258")).toBeVisible();
 });
 
-it("places the Sony exhibit after chapter two's revenue-scale paragraph", () => {
-  const chapter = chapters.find(item => item.id === "studio-to-screen")!;
-  expect(chapter.exhibits).toEqual(expect.arrayContaining([{ afterParagraph: 1, kind: "sony-history" }, { afterParagraph: 6, kind: "publisher-ecosystem" }, { afterParagraph: 11, kind: "market-map" }, { afterParagraph: 2, kind: "acquired-worlds" }]));
+it("opens the ecosystem comparison with the Sony history and keeps the market map separate", () => {
+  const chapter = chapters.find(item => item.id === "three-ecosystems")!;
+  expect(chapter.exhibits).toEqual(expect.arrayContaining([{ afterParagraph: 0, kind: "sony-history" }, { afterParagraph: 5, kind: "publisher-ecosystem" }, { afterParagraph: 1, kind: "acquired-worlds" }]));
+  expect(chapter.exhibits?.some(item=>item.kind==="market-map")).toBe(false);
+  expect(chapters.find(item=>item.id==="studio-to-screen")!.exhibits).toEqual([{afterParagraph:3,kind:"business-map"},{afterParagraph:6,kind:"market-map"}]);
 });
 
 

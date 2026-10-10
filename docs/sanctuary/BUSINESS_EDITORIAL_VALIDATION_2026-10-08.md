@@ -1,3 +1,18 @@
+# Chapter 2 / 3 cut — 8 October 2026
+
+Current checkpoint. Chapter 2, **From studio to screen**, now has the opening business-chain diagram, four short paragraphs (266 words) and the market map. Chapter 3, **Three ways to earn from the same worlds**, holds the PlayStation/Xbox/NVIDIA financial comparison, the credited acquisition portfolio, publisher copy-count figure and Cyberpunk catalog example. Its opening keeps the PS5 launch-loss anecdote, US$31.1bn scale and roughly one-fifth console share; category amounts remain in the chart. The close leads to King, now chapter 4. The reader has 35 chapters.
+
+The split relocates existing components and optimized assets; it adds no media, dependency or animation. Chapter-scoped asset ownership follows the moved portfolio. Old chapter-2 links to `#playstation-history`, `#publisher-ecosystem` and `#acquired-worlds` redirect to chapter 3; `#market-map` remains in chapter 2. The approved first chapter is unchanged.
+
+Verification:
+- Required app CI: 74 suites, 388 tests, one snapshot, 45 retained asset releases and production build pass.
+- Scoped ESLint and whitespace checks pass. Reader changes preserve deferred exhibits, server-filtered media and existing motion/visibility controls. The legacy-anchor listener is cleaned up on chapter change.
+- Chapter 2 and 3 manuscripts match every runtime paragraph; citations and exhibit indices resolve. Chapter 1's content record matches the merged base.
+- Local production browser review confirms chapter 2 → chapter 3 → King, the moved financial selector and old chart-link redirect. Desktop and 390/320px checks show no horizontal page overflow. No broken loaded images or console errors observed. Viewport override reset after review.
+- PR #98 was merged during this task. The follow-up is isolated on `codex/sanctuary-ecosystem-chapter` from the identical merged tree; no other app or Loopforge implementation is edited.
+
+The records below are earlier checkpoints, not the current chapter numbering or figure locations.
+
 # Subscription and King — narrative revision, 8 October 2026
 
 Current checkpoint. Chapters 2–3 are organized around earning again from a work and an audience that already exist. King’s browser origins, small-team process, stated buyer’s-remorse principle, acquisitions and long-term maintenance replace the earlier sequence of product/business facts. The links to Diablo and Valve are explicitly comparative, with no unsupported direct-influence claim. Chapter 1 remains byte-for-byte equivalent as a content record.

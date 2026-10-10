@@ -5,7 +5,7 @@ import {chapters} from "@/lib/sanctuary/content";
 
 describe("The rebuilt historical argument",()=>{
  it("keeps the approved opening, company sequence and contiguous Diablo history",()=>{
-  expect(chapters.slice(0,7).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","mobile-freemium","valve-platform","epic-infrastructure","rockstar-world","the-fork"]);
+  expect(chapters.slice(0,8).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","three-ecosystems","mobile-freemium","valve-platform","epic-infrastructure","rockstar-world","the-fork"]);
   const start=chapters.findIndex(c=>c.id==="several-histories");
   expect(chapters.slice(start,start+5).map(c=>c.id)).toEqual(["several-histories","diablo-second-life","diablo-market","diablo-service","how-many-lives"]);
   expect(chapters.slice(-2).map(c=>c.id)).toEqual(["what-decides","does-it-work"]);

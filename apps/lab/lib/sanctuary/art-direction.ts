@@ -16,6 +16,7 @@ export const artDirection: Record<
   "valve-platform": {title:"Valve: the studio becomes the store",read:"One company can supply several different parts of the evening. Select a role to follow the relationship."},
   "epic-infrastructure": {title:"Epic: selling the means to make and sell",read:"One company can supply several different parts of the evening. Select a role to follow the relationship."},
   "rockstar-world": {title:"Rockstar: a release becomes a world",read:"One company can supply several different parts of the evening. Select a role to follow the relationship."},
+  "three-ecosystems": {title:"Three ways to earn from the same worlds",read:"A PS5 launch anecdote leads directly into the financial selector. Credited franchise posters put recognizable work beside the ownership comparison; subscription closes the route toward King."},
   "studio-to-screen": {title:"From work to play",read:"Production, permission, distribution and operation connect a creative work with its audience. The paths represent roles, not measured cash flows."},
   "how-many-lives": {title:"The coin slot and the dungeon",read:"The cabinet holds a paid adventure and the controls that shape it."},
   "insert-coin": {

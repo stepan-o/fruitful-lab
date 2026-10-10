@@ -30,8 +30,8 @@ it("keeps unpaid play available when inspecting optional assistance",()=>{
  expect(screen.getByText(/An unpaid player can progress/)).toBeVisible();
 });
 it("places King before Valve and resolves the embedded art and evidence",()=>{
- expect(chapters.slice(0,4).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","mobile-freemium","valve-platform"]);
- for(const id of ["studio-to-screen","mobile-freemium"]){
+ expect(chapters.slice(0,5).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","three-ecosystems","mobile-freemium","valve-platform"]);
+ for(const id of ["studio-to-screen","three-ecosystems","mobile-freemium"]){
   const chapter=chapters.find(c=>c.id===id)!;
   const credits=chapterVisualSources(chapter);
   for(const asset of chapter.embeddedAssets??[]){

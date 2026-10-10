@@ -13,6 +13,7 @@ import {historyIds, type HistoryId} from "@/lib/sanctuary/history-ids";
 const HistoryScene=dynamic(()=>import("./DiabloHistory").then(m=>m.HistoryScene));
 const HistoryComparison=dynamic(()=>import("./DiabloHistory").then(m=>m.HistoryComparison));
 const WorldWorkshop=dynamic(()=>import("./WorldWorkshop"));
+const BusinessHistory=dynamic(()=>import("./BusinessHistory"));
 const CompanyEvolution=dynamic(()=>import("./CompanyEvolution"));
 const EpicSpending=dynamic(()=>import("./CompanyEvolution").then(m=>m.EpicSpending));
 import FundingDiagram from "./plates/FundingDiagram";
@@ -79,6 +80,18 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
   const isHistory = !!current && historyIds.includes(current.id as HistoryId);
 
   useEffect(()=>{document.documentElement.lang=locale;},[locale]);
+  useEffect(()=>{
+    if(current?.id !== "studio-to-screen") return;
+    const preserveMovedAnchor = () => {
+      const hash = window.location.hash;
+      if(["#playstation-history", "#publisher-ecosystem", "#acquired-worlds"].includes(hash)) {
+        router.replace(`${chapterHref("three-ecosystems")}${hash}`);
+      }
+    };
+    preserveMovedAnchor();
+    window.addEventListener("hashchange", preserveMovedAnchor);
+    return () => window.removeEventListener("hashchange", preserveMovedAnchor);
+  },[current?.id,router]);
   useEffect(()=>{
     contents.current?.close();
     lightbox.current?.close();
@@ -154,16 +167,16 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
               </figure>)}</div>
               <p className={styles.referenceReading}>{current.id === "making-worlds" ? "Both worlds combine authored scenes and interacting systems. Their production choices are the subject of this chapter." : "Two role-playing traditions, with different plans for what comes after release."}</p>
             </section>:null}
-            {!isHistory && !["the-fork","insert-coin","studio-to-screen","mobile-freemium","how-many-lives","platform-business","cloud-gaming","valve-platform","epic-infrastructure","rockstar-world","making-worlds"].includes(current.id) ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
+            {!isHistory && !["the-fork","insert-coin","studio-to-screen","three-ecosystems","mobile-freemium","how-many-lives","platform-business","cloud-gaming","valve-platform","epic-infrastructure","rockstar-world","making-worlds"].includes(current.id) ? <ChapterScene key={`scene-${current.id}`} chapter={current.id} index={index}/> : null}
             {isHistory ? <HistoryScene key={current.id} chapter={current.id as HistoryId}/> : null}
             {current.id === "insert-coin" ? <EveningPlace opening/> : null}
-            {current.id === "studio-to-screen" ? <BusinessMap/> : null}
+            {current.id === "studio-to-screen" ? <BusinessHistory sources={sources} steamSrc={assets.assets["steam-symbol"]?.variants[0].src}/> : null}
             {current.id === "mobile-freemium" ? <CandyOpening assets={assets}/> : null}
             {current.id === "platform-business" ? <BusinessChains/> : null}
             {current.id === "cloud-gaming" ? <CloudCircuit key="cloud" cloudOnly/> : null}
             {current.id === "valve-platform" || current.id === "epic-infrastructure" || current.id === "rockstar-world" ? <CompanyEvolution key={current.id} chapter={current.id}/> : null}
             {current.id === "how-many-lives" ? <ChapterDiagram chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
-            <div className={`${styles.prose} ${["studio-to-screen","mobile-freemium"].includes(current.id) ? styles.proseWide : ""}`}>
+            <div className={`${styles.prose} ${["studio-to-screen","three-ecosystems","mobile-freemium"].includes(current.id) ? styles.proseWide : ""}`}>
               {current.paragraphs.map((paragraph, paragraphIndex) => (
                 <Fragment key={`${current.id}-${paragraphIndex}`}>
                   {current.sections
@@ -207,6 +220,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                       case "king-ownership": return <KingOwnership key={exhibit.kind} assets={assets}/>;
                       case "sony-history": return <PlatformHistory key={exhibit.kind}/>;
                       case "publisher-ecosystem": return <PublisherEcosystem key={exhibit.kind}/>;
+                      case "business-map": return <BusinessMap key={exhibit.kind}/>;
                       case "market-map": return <MarketMap key={exhibit.kind} initialGameId="cyberpunk"/>;
                       case "world-workshop": return <WorldWorkshop key={exhibit.kind}/>;
                       case "epic-spending": return <EpicSpending key={exhibit.kind}/>;
@@ -222,7 +236,7 @@ export default function Reader({locale,current,index,navigation,parts,assets,sou
                 </Fragment>
               ))}
             </div>
-            {!isHistory && !["the-fork","insert-coin","studio-to-screen","mobile-freemium","how-many-lives","platform-business","cloud-gaming","valve-platform","epic-infrastructure","rockstar-world","making-worlds"].includes(current.id) ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
+            {!isHistory && !["the-fork","insert-coin","studio-to-screen","three-ecosystems","mobile-freemium","how-many-lives","platform-business","cloud-gaming","valve-platform","epic-infrastructure","rockstar-world","making-worlds"].includes(current.id) ? <ChapterDiagram key={`diagram-${current.id}`} chapter={current.id} diagram={current.visual.diagram} index={index}/> : null}
             {isHistory ? <HistoryComparison key={current.id} chapter={current.id as HistoryId}/> : null}
             {current.table?<div className={styles.tableWrap} tabIndex={0} aria-label={current.table.caption}><table><caption>{current.table.caption}</caption><thead><tr>{current.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{current.table.rows.map(row=><tr key={row[0]}>{row.map((cell,i)=>i===0?<th scope="row" key={i}>{cell}</th>:<td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>:null}
             {current.figures?.map((figure,i)=>figure.placement === undefined && figure.afterParagraph === undefined ? renderFigure(figure,i) : null)}

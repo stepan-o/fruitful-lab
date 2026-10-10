@@ -1,65 +1,60 @@
-# Sanctuary Economics — From studio to screen
+# Sanctuary Economics — Different roads to the same market
 
-8 October 2026. Current continuous manuscript. The business argument concerns how ongoing play can sustain ongoing work; the reading order does not imply that subscriptions preceded mobile freemium.
+9 October 2026. The historical arc leads to the convergence of PC and console offers in a hybrid market. This framing revision preserves the historical paragraphs, their transitions and the bridge into the ecosystem comparison.
 
-One creative work can sustain several businesses around it.
+PCs and consoles grew into different businesses. Today, both mix game and hardware purchases with subscriptions to catalogs and cloud computing.
 
-In the first months after the PlayStation 5 launched in November 2020, Sony was selling its new console for less than it cost to manufacture. That did not stop its gaming division from reporting higher profit: stronger sales of games and network services helped outweigh losses on the hardware and other launch costs. Putting the machine in someone’s living room was the beginning of a commercial relationship that could last for years.
+Five years after Pong’s tavern debut, Atari’s VCS offered a different proposition: bring the machine home, then build a collection of games on interchangeable cartridges. Like records bought for a record player, each new work gave the equipment another use. A publisher could sell to households that already had the means to play. A console maker, in turn, needed enough desirable games to make its machine worth choosing.
 
-Evidence: sony-ps5-launch-economics.
+Evidence: home-cartridge-history, vcs-launch-catalog, combat-launch-museum.
 
-By the year ending March 2026, Sony’s gaming business was reporting annual revenue equivalent to roughly US$31.1 billion at that year’s average exchange rate. That was more than its music and pictures businesses combined. Consoles accounted for US$6.3 billion. PlayStation games and add-ons brought in US$16.9 billion, while network services, including PlayStation Plus and advertising, supplied another US$5.1 billion. Peripherals, games sold on other platforms and the remaining business contributed roughly US$2.9 billion. Sales of the consoles themselves accounted for about a fifth of the total.
+Historical image pair after this paragraph:
 
-Evidence: sony-fy2025-scale.
+**Atari VCS · the retailer’s pitch, 1977** — Atari addressed the retailer directly: “the more fun we make our games, the more games you’re going to sell.” The machine was offered with a promise of future cartridges—and future sales.
 
-### Three ways to earn from the same worlds
+© Atari · 1977 sales catalog · Atarimania
 
-The games that make PlayStation worth owning can also make money for its rival. In 2023, Microsoft, the company behind Xbox, paid US$75.4 billion for Activision Blizzard. The name covered several established businesses: Activision’s blockbuster Call of Duty releases, Blizzard’s long-running franchises such as Diablo, and King’s mobile games, led by Candy Crush. Microsoft was buying routes into different parts of everyday life—from an evening at a console to a puzzle on the phone already in someone’s pocket.
+**Combat · the game in the box, 1977** — Combat came with the VCS, giving two players something to play before they bought another cartridge. Its “27 video games” were variations on tanks, biplanes and jets: variety was already part of the sales pitch.
 
-Evidence: microsoft-acquisition-scale, microsoft-mobile-rationale.
+© Atari · cover art: Cliff Spohn · Atarimuseum.de
 
-King had joined Activision Blizzard in 2016, bringing a business built around games people could begin without buying a copy. Microsoft’s gaming chief Phil Spencer explicitly connected the later acquisition to reaching mobile players and learning from those teams. Meanwhile, Call of Duty could earn for Microsoft even when someone bought it through PlayStation Store: Sony was paid for distribution, and its console rival was now paid for publishing the game. Owning the work could matter more than owning the machine on which someone played it.
+By the 1990s, that dependence had become a formidable business. Sony’s 1997 annual report credited PlayStation’s growth to cheaper consoles and hit games, naming Final Fantasy VII from Square and Tekken from Namco alongside its own releases. Other companies’ creative work helped sell Sony’s hardware. This is the useful meaning of an ecosystem here: businesses whose products become more valuable because of what the others supply.
 
-Evidence: king-acquisition, microsoft-mobile-rationale.
+Evidence: sony-ps1-creators.
 
-Call of Duty also gave Microsoft another reason for players to join Game Pass, its subscription catalog. In October 2024, Black Ops 6, that year’s release in the shooter series, arrived in the catalog on launch day. Eligible subscribers could play without buying a separate copy. Days later, Microsoft’s chief executive Satya Nadella had two kinds of success to report: record new Game Pass subscriptions on launch day, and unit sales on PlayStation and Steam more than 60% higher than a year earlier. The same game was attracting subscribers while selling copies on a rival’s console and an independent PC store.
+Halo makes the stakes unusually vivid. Bungie, the studio making it, first showed the game with Steve Jobs at Macworld in 1999. Its co-creator Marcus Lehto later recalled Microsoft’s reaction as “Steve Jobs can't have that.” Microsoft bought Bungie the following year, and Halo became a launch title for its first Xbox in 2001. A promising game had become a reason to choose an entire machine. Twenty-five years later, a remake of that same game arrived on PlayStation. Microsoft could now earn from players who had chosen its rival’s hardware.
 
-Evidence: cod-game-pass-launch, microsoft-cod-launch.
+Evidence: halo-macworld-recollection, halo-bungie-acquisition, halo-playstation-release.
 
-But a player who subscribes for a new release may otherwise have bought a copy. Owning both the publisher and the catalog brings those offers into the same business; it does not make them equally profitable. In April 2026, Microsoft lowered Game Pass prices and announced that future Call of Duty releases would enter the catalog about a year after launch. Playing at launch would again require a separate purchase, while subscribers willing to wait would receive the game later. Microsoft was changing when the same work earned as a product and when it helped sell a service.
+These are decisions about what a creative work is worth to the businesses around it. A company that makes games, runs a store and sells the machine can use one part to support another; this is vertical integration. The diagram below separates those jobs again. Switch examples to see what each participant supplies and what the player pays for. Each follows a selected arrangement; the later map opens up the combinations that can coexist.
 
-Evidence: xbox-game-pass-reset.
+Evidence: microsoft-ecosystem, sony-accounting.
 
-NVIDIA can earn from those games without owning the studios that make them. Its GeForce processors help bring games to the screen; GeForce NOW lets players rent that computing power remotely. The company reported US$16.0 billion in Gaming revenue for the year ending January 2026, attributing its growth to demand for a new generation of graphics hardware. Cloud play sits inside that total, but its earnings are not disclosed separately. Where Microsoft bought more of the creative work, NVIDIA sells the capacity to run it. Both still depend on games that people want to play, including games made by other companies.
+The internet widened those possibilities without settling on one way to charge. Steam, launched in 2003, grew into a store for individually purchased PC games. Netflix added streaming to its DVD membership in 2007, bringing a different offer to the same household: access to a catalog for a recurring fee. In gaming, Xbox Game Pass carried that proposition further in 2018 by promising new Microsoft studio releases on launch day. A release could attract someone to a subscription instead of another boxed purchase. Its value to the catalog included the reason it gave people to join and stay.
 
-Evidence: nvidia-gaming-history, gfn-membership-terms.
+Evidence: valve-deck-booklet, netflix-streaming-launch, game-pass-release-history.
 
-For the player, much of this business remains out of sight. Its most inviting offer is easy to recognize: a subscription puts a library within reach without asking you to buy every game you want to try. The operator has a different reason to value that abundance. Each appealing addition can help persuade someone to stay for another paid month. A game’s audience has become valuable to businesses selling an ongoing relationship with many games at once.
+Cloud gaming loosened the remaining tie to the machine. OnLive launched on PCs and Macs in 2010, years before PlayStation Now began streaming PS3 games to PS4 in 2014. Sony’s more surprising invitation came in 2016: play selected PlayStation games on a Windows PC, without buying a PlayStation. Its announcement called the app “a new way for even more gamers to discover and play the service.” Series such as Uncharted and God of War, once reasons to choose Sony’s hardware, could now attract subscribers who did not own it. The library could earn beyond the audience for the box.
 
-Evidence: circuit-game-pass, cyberpunk-plus-entry.
+Evidence: onlive-launch-2010, ps-now-2014, ps-now-pc-announcement, ps-now-pc-2016.
 
-### The deal behind the subscription
+Microsoft took its cloud offer to Android phones in September 2020, then to PC browsers in June 2021 through Game Pass Ultimate. The games ran on Xbox hardware in Microsoft’s data centers; the player no longer had to keep that hardware at home. NVIDIA’s GeForce NOW separates the offer differently: buy a supported PC game through a store such as Steam, then use NVIDIA’s remote computing to play it. The store keeps the game sale while NVIDIA can charge for the machine. The map below brings these arrangements together, separating access to a game from access to the hardware that runs it. Which routes are available depends on the game and its agreements.
 
-A studio can earn from that relationship even when fewer players buy its game. Consider Cyberpunk 2077, made and published by CD PROJEKT RED. The company sells copies through Steam, the PC store run by Valve, and through console stores such as Sony’s PlayStation Store. Each store takes its agreed share of the sale. A catalog offers another route: its operator can pay for permission to include the game, then use it to attract and retain subscribers.
+Evidence: xbox-cloud-2020, xbox-cloud-pc-2021, steam-cloud, gfn-membership-terms.
 
-Evidence: cdpr-business, steam-settlement, cdpr-catalog-economics.
+PC and console gaming have converged on a hybrid market. Games and hardware are still sold, while catalogs and cloud services offer access by subscription. A single release can take several of these routes, with different companies collecting different payments. Diablo IV’s combination of a game purchase, Game Pass access, paid expansions and a cosmetic shop belongs in that setting. Players can arrive through different businesses and encounter further purchases inside the same world. To see what those arrangements have grown into, turn to Sony, Microsoft and NVIDIA—three businesses earning from the same desire to play.
 
-Sony can also become a customer for the game. In July 2025, it added Cyberpunk to PlayStation Plus, a subscription catalog that let members play while it remained included, without buying an individual copy. CD PROJEKT knew that giving players this alternative would cost it some purchases. Asked about the effect, co-CEO Michał Nowakowski was direct: “So, there’s always a hit to current sales of the game when you launch on a subscription basis.”
+Evidence: steam-cloud, gfn-game-pass, xbox-d4-catalog-2024, d4-season-philosophy, d4-expansion-structure.
 
-Evidence: cyberpunk-plus-entry, cdpr-catalog-economics.
+Opening visual: From the coin slot to the cloud. Business arrangement diagram follows paragraph 4; the market map follows paragraph 7.
 
-He nevertheless judged the agreement worthwhile. Sony paid for the right to include the base game; Phantom Liberty, its expansion, remained a separate purchase. CD PROJEKT believed the deal improved its overall return and brought more people within reach of that additional sale. Sony gained another attraction for its membership, while the publisher found another buyer for work it had already made. Fewer individual purchases could coexist with a better business result.
+Evidence boundary: The timeline selects milestones in overlapping business arrangements; it is not an exhaustive history, a proportional time scale or a claim that subscriptions, cartridges or cloud play were invented on the dates shown. Atari VCS was neither the first home console nor the first cartridge console. Lehto’s six-word quotation characterizes Microsoft’s reaction in his 2025 recollection; it is not a contemporaneous company statement. Halo’s 2026 PlayStation release is a remake. The economic reading of these events is our analysis, not a claim about private acquisition motives or measured returns. The diagrams describe roles and supported routes rather than a quantitative ledger or every possible offer. No private revenue share, contract price or internal transfer is inferred. Store and console licenses do not automatically transfer to other platforms or GeForce NOW. A supported game, appropriate rights, a receiving device and a connection remain necessary. Financial comparisons and the CD PROJEKT catalog agreement continue in the following chapter. OnLive’s 2010 PC/Mac launch predates PS Now. The console lane follows the ecosystem, not the receiving device: PS Now reached Windows in 2016; Xbox cloud launched on Android in 2020 and expanded broadly to PC browsers in 2021. These are selected regional launches, not universal availability. Sony’s 13-word quotation is from its August 2016 announcement. The hybrid-market framing describes convergence in available kinds of offer, not universal game availability, identical platform terms or transferable purchases. Diablo IV’s access and optional purchases illustrate overlapping commercial layers; distribution arrangements alone do not establish why Blizzard chose particular game mechanics.
 
-Evidence: cdpr-catalog-economics.
+## Opening figure revision · 9 October 2026
 
-### A game you buy, a machine you hire
-
-Even the computer can become a separate service. A player can buy Cyberpunk through Steam, then pay NVIDIA’s GeForce NOW to run it on a remote machine. Their device receives the picture and sends back the controls; a suitable device and connection are still required. Valve handles the game sale, CD PROJEKT receives its share, and NVIDIA earns from providing the computing. Here the recurring payment rents the machinery. It does not turn the purchased game into a catalog subscription.
-
-Evidence: steam-cloud, gfn-membership-terms, gfn-requirements.
-
-The same work can therefore help sell a console, sustain a catalog or keep a remote computer occupied. Those businesses have found ways to earn from the desire to play beyond selling another copy. The attraction of a subscription makes this visible: access to something you enjoy becomes a relationship both sides must want to continue. How that relationship is paid for can change again once the offer moves inside the game itself.
-
-King, the Candy Crush studio Microsoft acquired, asks for no admission price. It can sell extra moves after a player has encountered a challenge and wants to overcome it. The arcade already knew the value of another chance; mobile freemium built an enormous audience around making payment optional. Here the next sale can grow out of playing the work someone already enjoys. Keeping that work enjoyable, and keeping it earning, become decisions made on the same board.
-
-Evidence: candy-offer, king-2014.
+Three continuing lanes replace the single sequence: arcades; PC boxed software,
+Steam, early OnLive cloud play, catalog access and GeForce NOW; console cartridges, competing platforms,
+stores, membership libraries and cloud. Selected milestones follow their own
+chronology, not a shared time scale. PlayStation Now’s 2016 Windows app explicitly
+crosses the receiving-device boundary without becoming a native PC game. The full
+figure copy and evidence live in `apps/lab/lib/sanctuary/business-history.ts`.

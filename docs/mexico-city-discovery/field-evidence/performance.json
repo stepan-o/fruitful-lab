@@ -1,0 +1,384 @@
+[
+  {
+    "width": 390,
+    "dpr": 2,
+    "route": "/mexico-city",
+    "cold": {
+      "lcp": 340,
+      "cls": 0,
+      "images": [
+        {
+          "file": "/_next/static/media/3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "encoded": 43068,
+          "transfer": 43368
+        },
+        {
+          "file": "/_next/static/media/c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "encoded": 43120,
+          "transfer": 43420
+        },
+        {
+          "file": "/media/files/866433b55b70f99f10818b7cd86f278dc4b0af5e500798b40bc893634f7410de.webp",
+          "encoded": 161000,
+          "transfer": 161300
+        },
+        {
+          "file": "/media/files/bf8a2670055106ce84af2150a6bc0d53844d21dcfd3a14e08e9d13a0ef4af36c.webp",
+          "encoded": 49352,
+          "transfer": 49652
+        }
+      ],
+      "chosen": [
+        {
+          "file": "/media/files/866433b55b70f99f10818b7cd86f278dc4b0af5e500798b40bc893634f7410de.webp",
+          "width": 322,
+          "naturalWidth": 351
+        },
+        {
+          "file": "/media/files/bf8a2670055106ce84af2150a6bc0d53844d21dcfd3a14e08e9d13a0ef4af36c.webp",
+          "width": 99,
+          "naturalWidth": 150
+        }
+      ]
+    },
+    "warm": {
+      "lcp": 100,
+      "cls": 0,
+      "images": [
+        {
+          "file": "/_next/static/media/3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "encoded": 43068,
+          "transfer": 0
+        },
+        {
+          "file": "/_next/static/media/c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "encoded": 43120,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/866433b55b70f99f10818b7cd86f278dc4b0af5e500798b40bc893634f7410de.webp",
+          "encoded": 161000,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/bf8a2670055106ce84af2150a6bc0d53844d21dcfd3a14e08e9d13a0ef4af36c.webp",
+          "encoded": 49352,
+          "transfer": 0
+        }
+      ],
+      "chosen": [
+        {
+          "file": "/media/files/866433b55b70f99f10818b7cd86f278dc4b0af5e500798b40bc893634f7410de.webp",
+          "width": 322,
+          "naturalWidth": 351
+        },
+        {
+          "file": "/media/files/bf8a2670055106ce84af2150a6bc0d53844d21dcfd3a14e08e9d13a0ef4af36c.webp",
+          "width": 99,
+          "naturalWidth": 150
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "dpr": 2,
+    "route": "/mexico-city/play?guest=1",
+    "cold": {
+      "lcp": 336,
+      "cls": 0,
+      "images": [
+        {
+          "file": "/_next/static/media/3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "encoded": 43068,
+          "transfer": 43368
+        },
+        {
+          "file": "/_next/static/media/c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "encoded": 43120,
+          "transfer": 43420
+        },
+        {
+          "file": "/media/files/538204541b77d65fb4c8c61581abafdf4c1b8370d10e6f9507820dc84a239d5c.webp",
+          "encoded": 15072,
+          "transfer": 15372
+        },
+        {
+          "file": "/media/files/77eb286305a23ee64948c91bcb995bbf808b0d0393022ce305281b6f4944bed6.webp",
+          "encoded": 10564,
+          "transfer": 10864
+        },
+        {
+          "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+          "encoded": 18446,
+          "transfer": 18746
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "encoded": 14180,
+          "transfer": 14480
+        },
+        {
+          "file": "/media/files/3c5918ea9ec9ae7984de0625c21f9e078c7d2ed8f45384f304e5dda3cdfcab78.webp",
+          "encoded": 60264,
+          "transfer": 60564
+        }
+      ],
+      "chosen": [
+        {
+          "file": "/media/files/538204541b77d65fb4c8c61581abafdf4c1b8370d10e6f9507820dc84a239d5c.webp",
+          "width": 76,
+          "naturalWidth": 256
+        },
+        {
+          "file": "/media/files/77eb286305a23ee64948c91bcb995bbf808b0d0393022ce305281b6f4944bed6.webp",
+          "width": 76,
+          "naturalWidth": 256
+        },
+        {
+          "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+          "width": 76,
+          "naturalWidth": 256
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "width": 76,
+          "naturalWidth": 256
+        },
+        {
+          "file": "/media/files/3c5918ea9ec9ae7984de0625c21f9e078c7d2ed8f45384f304e5dda3cdfcab78.webp",
+          "width": 100,
+          "naturalWidth": 140
+        }
+      ]
+    },
+    "warm": {
+      "lcp": 312,
+      "cls": 0,
+      "images": [
+        {
+          "file": "/_next/static/media/3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "encoded": 43068,
+          "transfer": 0
+        },
+        {
+          "file": "/_next/static/media/c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "encoded": 43120,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/538204541b77d65fb4c8c61581abafdf4c1b8370d10e6f9507820dc84a239d5c.webp",
+          "encoded": 15072,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/77eb286305a23ee64948c91bcb995bbf808b0d0393022ce305281b6f4944bed6.webp",
+          "encoded": 10564,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+          "encoded": 18446,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "encoded": 14180,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/3c5918ea9ec9ae7984de0625c21f9e078c7d2ed8f45384f304e5dda3cdfcab78.webp",
+          "encoded": 60264,
+          "transfer": 0
+        }
+      ],
+      "chosen": []
+    }
+  },
+  {
+    "width": 1440,
+    "dpr": 1,
+    "route": "/mexico-city",
+    "cold": {
+      "lcp": 232,
+      "cls": 0,
+      "images": [
+        {
+          "file": "/_next/static/media/3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "encoded": 43068,
+          "transfer": 43368
+        },
+        {
+          "file": "/_next/static/media/c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "encoded": 43120,
+          "transfer": 43420
+        },
+        {
+          "file": "/media/files/866433b55b70f99f10818b7cd86f278dc4b0af5e500798b40bc893634f7410de.webp",
+          "encoded": 161000,
+          "transfer": 161300
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "encoded": 14180,
+          "transfer": 14480
+        }
+      ],
+      "chosen": [
+        {
+          "file": "/media/files/866433b55b70f99f10818b7cd86f278dc4b0af5e500798b40bc893634f7410de.webp",
+          "width": 609,
+          "naturalWidth": 540
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "width": 189,
+          "naturalWidth": 220
+        }
+      ]
+    },
+    "warm": {
+      "lcp": 100,
+      "cls": 0,
+      "images": [
+        {
+          "file": "/_next/static/media/3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "encoded": 43068,
+          "transfer": 0
+        },
+        {
+          "file": "/_next/static/media/c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "encoded": 43120,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/866433b55b70f99f10818b7cd86f278dc4b0af5e500798b40bc893634f7410de.webp",
+          "encoded": 161000,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "encoded": 14180,
+          "transfer": 0
+        }
+      ],
+      "chosen": [
+        {
+          "file": "/media/files/866433b55b70f99f10818b7cd86f278dc4b0af5e500798b40bc893634f7410de.webp",
+          "width": 609,
+          "naturalWidth": 540
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "width": 189,
+          "naturalWidth": 220
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "dpr": 1,
+    "route": "/mexico-city/play?guest=1",
+    "cold": {
+      "lcp": 264,
+      "cls": 0,
+      "images": [
+        {
+          "file": "/_next/static/media/3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "encoded": 43068,
+          "transfer": 43368
+        },
+        {
+          "file": "/_next/static/media/c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "encoded": 43120,
+          "transfer": 43420
+        },
+        {
+          "file": "/media/files/538204541b77d65fb4c8c61581abafdf4c1b8370d10e6f9507820dc84a239d5c.webp",
+          "encoded": 15072,
+          "transfer": 15372
+        },
+        {
+          "file": "/media/files/77eb286305a23ee64948c91bcb995bbf808b0d0393022ce305281b6f4944bed6.webp",
+          "encoded": 10564,
+          "transfer": 10864
+        },
+        {
+          "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+          "encoded": 18446,
+          "transfer": 18746
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "encoded": 14180,
+          "transfer": 14480
+        }
+      ],
+      "chosen": []
+    },
+    "warm": {
+      "lcp": 164,
+      "cls": 0,
+      "images": [
+        {
+          "file": "/_next/static/media/3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "encoded": 43068,
+          "transfer": 0
+        },
+        {
+          "file": "/_next/static/media/c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "encoded": 43120,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/538204541b77d65fb4c8c61581abafdf4c1b8370d10e6f9507820dc84a239d5c.webp",
+          "encoded": 15072,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/77eb286305a23ee64948c91bcb995bbf808b0d0393022ce305281b6f4944bed6.webp",
+          "encoded": 10564,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+          "encoded": 18446,
+          "transfer": 0
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "encoded": 14180,
+          "transfer": 0
+        }
+      ],
+      "chosen": [
+        {
+          "file": "/media/files/538204541b77d65fb4c8c61581abafdf4c1b8370d10e6f9507820dc84a239d5c.webp",
+          "width": 76,
+          "naturalWidth": 256
+        },
+        {
+          "file": "/media/files/77eb286305a23ee64948c91bcb995bbf808b0d0393022ce305281b6f4944bed6.webp",
+          "width": 76,
+          "naturalWidth": 256
+        },
+        {
+          "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+          "width": 76,
+          "naturalWidth": 256
+        },
+        {
+          "file": "/media/files/1e6c9058e803419a3076401e7a05aa77d77242c5c7a3e7001f3b8fd4fd219634.webp",
+          "width": 76,
+          "naturalWidth": 256
+        },
+        {
+          "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
+          "width": 100,
+          "naturalWidth": 140
+        }
+      ]
+    }
+  }
+]

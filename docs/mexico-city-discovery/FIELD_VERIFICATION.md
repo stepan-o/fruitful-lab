@@ -14,13 +14,28 @@ Scope: Fruitful Lab `apps/lab`, the additive discovery backend and game/platform
 ## Automated checks
 
 - Frontend complete suite: **78 suites, 406 tests, 1 snapshot passed**; retained asset integrity: **49 releases passed**.
-- Production Next.js build: **passed**. A subsequent final build is recorded in the PR checks after the small ranking/session refinements.
+- Production Next.js build: **passed**. Final source including the ranking/session refinements and north-up map configuration also builds successfully.
 - Scoped frontend lint: **0 errors, 9 image warnings**. Native image elements deliver already-normalized cookie-protected photos, in-memory guest images and fixed-size map pins; they intentionally bypass the public Next image optimizer.
 - New game unit tests: **3 passed** (scoring, expiry/idempotence and projection).
 - Backend complete suite before final refinements: **33 passed, 1 failed**. The unrelated existing `test_openai_api_key_is_present` requires `OPENAI_API_KEY`, unavailable in this local environment. Game code does not use OpenAI. After the final refinements, the targeted game suite passes **6 tests**, including successful cooperative completion requiring both photographs and both peer reviews.
 - Alembic PostgreSQL offline SQL generation: **passed**. This validates migration generation, not an applied remote migration or PostgreSQL concurrency behavior.
 
 Run the checked-in `verify-field-game.cjs`, `verify-field-mobile.cjs`, `verify-game-design.mjs` and `verify-learning.mjs` from the repository root. Supply `PLAYWRIGHT_MODULE` if using a supplied runtime, `TEST_BASE_URL=http://127.0.0.1:4182` for a local production server and `TEST_PHOTO=/path/to/disposable.jpg`. The account-flow script refuses non-local hosts. Start the frontend with `API_BASE_URL` pointing to a disposable local backend, whose database is separate from production. Scripts never need a real user's password or token.
+
+## Visual and interaction evidence
+
+The separate style pass uses a white/green/coral palette, spacious serif headings, a fixed four-destination navigation bar, photographic keepsakes and illustrated map pins. The interactive map viewport ends above the mobile sheet so the selected location and map attribution stay visible. Touch controls are at least 44px where interactive; short landscape screens use a compact control arrangement.
+
+- [Phone game](field-evidence/game-phone.webp), [phone landing](field-evidence/landing-phone.webp), [desktop friends](field-evidence/friends-desktop.webp), [private photo record](field-evidence/record-phone.webp), [landscape](field-evidence/game-landscape.webp).
+- Production-browser checks: real two-finger pinch, keyboard map operation, preserved zoom on mode change, denied GPS guidance, manual pin placement, browser Back, reduced motion and 844×390 landscape completed.
+- [Cold/warm measurements and chosen responsive files](field-evidence/performance.json), fresh browser context for each route, local production server, 390×844 at DPR 2 and 1440×844 at DPR 1. Includes preloaded media, not just image-initiated requests.
+
+| Route | Phone initial image bytes | Desktop initial image bytes |
+| --- | ---: | ---: |
+| Landing | 296,540 | 261,368 |
+| Guest game | 204,714 | 144,450 |
+
+Warm image transfer was zero in these runs. Observed localhost LCP was 232–340 ms and CLS zero; these unthrottled laboratory observations are **not** field performance or mobile-network claims. Google SDK/tile payload is excluded because no configured service was available locally.
 
 ## Deployment prerequisites and honest limits
 

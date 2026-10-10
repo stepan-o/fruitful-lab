@@ -22,3 +22,11 @@ Sources checked 10 October 2026:
 - https://developers.google.com/maps/documentation/javascript/map-ids/get-map-id
 - https://developers.google.com/maps/api-security-best-practices
 - https://developers.google.com/maps/documentation/javascript/cloud-customization
+
+## Current preview branch
+
+Branch: `codex/mexico-city-field-game`; draft PR #104. Vercel reports the stable branch alias as:
+
+`https://fruitful-lab-git-codex-mexico-cit-ca736c-stepan-oskins-projects.vercel.app`
+
+Authorize that exact hostname with `/*` in Google if using the branch alias. Unique deployment hosts change on rebuild; authorize only the additional exact hosts you actually use.

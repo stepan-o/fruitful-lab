@@ -21,6 +21,8 @@ export const parts = [
 ];
 export const revision = "2026-10-08";
 export const sources: EvidenceSource[] = [
+  {"id": "vcs-launch-catalog", "title": "Atari — 1977 sales catalog, preserved by Atarimania, p. 2", "url": "https://www.atarimania.com/catalog-atari-atari-usa-_523_2.html", "note": "Primary sales literature addressed to retailers. The caption quotes its connection between game appeal and software sales. Product claims and future plans remain historical sales claims."},
+  {"id": "combat-launch-museum", "title": "Science Museum Group — Combat, 1977 packaging (2007-5026/5)", "url": "https://collection.sciencemuseumgroup.org.uk/objects/co8225471", "note": "Museum object record identifies Combat as a launch game included with the console and explains its 27 gameplay variations. Supports the caption; no claim that all variants were separate cartridges."},
   {"id": "xbox-d4-catalog-2024", "title": "Xbox — Diablo IV joins Game Pass and the multiplatform strategy, 15 February 2024", "url": "https://news.xbox.com/en-us/2024/02/15/xbox-promise-bring-more-games-to-more-players/", "note": "Announces Diablo IV catalog access from 28 March 2024 and explains reaching players across platforms while retaining investment in hardware. Historical announcement, not a current tier list or evidence that distribution alone caused Blizzard’s monetization design."},
   ...businessHistorySources,
   ...mobileSources,
@@ -532,7 +534,9 @@ const manuscript: Omit<Chapter,"visual">[] = [
     ],
     "paragraphCitations": {
       "0": [
-        "home-cartridge-history"
+        "home-cartridge-history",
+        "vcs-launch-catalog",
+        "combat-launch-museum"
       ],
       "1": [
         "sony-ps1-creators"
@@ -581,11 +585,32 @@ const manuscript: Omit<Chapter,"visual">[] = [
         "kind": "market-map"
       }
     ],
-    "figures": [],
+    "figures": [
+      {
+        "asset": "atari-vcs-sales-1977",
+        "label": "Atari VCS · the retailer’s pitch, 1977",
+        "presentation": "archive",
+        "alt": "1977 Atari sales page showing a woodgrain VCS, two joysticks, a television and a stack of game cartridges",
+        "caption": "Atari addressed the retailer directly: “the more fun we make our games, the more games you’re going to sell.” The machine was offered with a promise of future cartridges—and future sales.",
+        "credit": "© Atari · 1977 sales catalog · Atarimania",
+        "afterParagraph": 0
+      },
+      {
+        "asset": "combat-box-1977",
+        "label": "Combat · the game in the box, 1977",
+        "presentation": "archive",
+        "alt": "Original red Combat package with Cliff Spohn’s tanks and aircraft illustration and the promise of 27 video games",
+        "caption": "Combat came with the VCS, giving two players something to play before they bought another cartridge. Its “27 video games” were variations on tanks, biplanes and jets: variety was already part of the sales pitch.",
+        "credit": "© Atari · cover art: Cliff Spohn · Atarimuseum.de",
+        "afterParagraph": 0
+      }
+    ],
     "embeddedAssets": [
       "steam-symbol"
     ],
     "sources": [
+      "vcs-launch-catalog",
+      "combat-launch-museum",
       "alcorn-oral",
       "arcade-route",
       "steam-settlement",

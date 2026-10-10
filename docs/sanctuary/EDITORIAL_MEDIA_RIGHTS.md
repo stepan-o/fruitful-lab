@@ -278,3 +278,30 @@ Source, hash and full treatment: `context-media.json`, `cyberpunk-catalog-promo`
 Ten official source assets/marks are added to the contextual pack. The poster comparison identifies three acquired businesses; optional gameplay views compare the activities their products offer. King’s standalone chapter examines the board on which assistance is sold. Infinity Ward is credited for the original Call of Duty; Treyarch and Raven for Black Ops 6; Blizzard North for the original Diablo, and Blizzard Entertainment for Diablo IV; King for Candy Crush. The unaltered marks identify creators and publishers and do not become Sanctuary branding.
 
 King’s terms §§5.11 and 11 and Activision’s terms §3 do not grant a blanket public-republication licence. Public press materials are not treated as unrestricted assets. The use basis is bounded criticism/review under the policy above, with full source composition, visible attribution, per-work analytical purpose, and removable media. No music, trailer, fan artwork or standalone source-download collection is included. See the dated policy excerpts on the public credits page and the exact URL/hash records in `context-media.json`. This documents the use rationale, not a guarantee that no rights holder could object.
+
+
+## Atari VCS and Combat — 9 October 2026
+
+Two historical print images follow chapter 2’s first paragraph, reusing chapter
+1’s paired archival figures and on-demand inspection. Atari’s 1977 retailer
+catalog page (Atarimania, catalog 523, page 2) explicitly connects game appeal to
+cartridge sales. Combat’s original 1977 package (Atarimuseum.de) identifies the
+launch pack-in and its offer of 27 variations. The Science Museum Group’s object
+record 2007-5026/5 corroborates the pack-in and variations; Cliff Spohn is credited
+for the cover, with the attribution source in the register. No claim that Space
+Invaders launched with the console is made.
+
+The archival availability of these scans grants no blanket reuse right. Atari’s
+current terms reserve rights and restrict republication of its service content;
+the public register preserves a short dated excerpt and its limited scope. These
+two uses follow the existing owner-authorized, context-dependent criticism/review
+assessment: one full sales page and one package face, beside analysis of their
+commercial promises. They are not wallpaper, downloadable originals, or extracted
+assets for another product. Visible notices and full compositions are retained.
+Original-scan and compact build-input hashes, URLs, dates, exact treatment and
+purpose are recorded in `arcade-media.json`. The original scans remain in the
+local research archive; full-composition build inputs are capped at 1200px. No bespoke permission or legal clearance is claimed.
+
+The images join the existing immutable `sanctuary-arcade` pack. Responsive WebPs
+are lazy loaded; inspection mounts only on demand. The historical prose and all
+existing illustrations remain unchanged.

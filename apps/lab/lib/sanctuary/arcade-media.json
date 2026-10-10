@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-04",
+  "reviewed": "2026-10-09",
   "assets": {
     "pong-cabinet": {
       "title": "Pong — production cabinet",
@@ -94,6 +94,48 @@
       ],
       "basis": "Contextual criticism and review of the pictured design and commercial offer. This records the editorial rationale, not bespoke permission from the publisher or archive.",
       "treatment": "Full source image and visible notices retained; proportionally resized and compressed to responsive WebP. No AI reconstruction, added marks or cropping of the source."
+    },
+    "atari-vcs-sales-1977": {
+      "owner": "Atari, Inc. (original publisher); Atari and its licensors",
+      "sourceDate": "1977",
+      "reviewed": "2026-10-09",
+      "publication": "editorial",
+      "chapters": [
+        "studio-to-screen"
+      ],
+      "basis": "Limited contextual criticism/review of the historical commercial offer, under the owner-authorized editorial policy. The archival source and attribution are not a republication licence; no bespoke permission or legal clearance is claimed. One complete page or package face is shown beside analysis, with no extracted artwork, wallpaper use or source-download gallery.",
+      "treatment": "Full composition and visible marks retained. A proportional, at-most-1200px WebP build input is prepared from the archived scan, then responsive WebP derivatives are generated. Compression and metadata removal only; no cropping, recoloring, retouching or AI reconstruction. Original scan hash retained separately.",
+      "title": "Atari VCS — 1977 sales catalog, inside front page",
+      "source": "Atarimania — Atari 1977 US sales catalog, page 2 of 12",
+      "sourceUrl": "https://www.atarimania.com/catalog-atari-atari-usa-_523_2.html",
+      "assetUrl": "https://www.atarimania.com/catalogues/hi_res/cat523001.jpg?v=2",
+      "sourceCredit": "Atari sales literature, preserved by Atarimania. Individual photographer and scan contributor are not named in the catalog record.",
+      "displayCredit": "© Atari · 1977 sales catalog · Atarimania",
+      "purpose": "Examine how Atari pitched the reusable home machine to retailers: its cartridge library and continuing software sales were part of the hardware offer. The staged console/TV photograph supplies the historical product context.",
+      "provenanceNote": "A period trade sales page, not a photograph of a household or a current product advertisement. Its future cartridge schedule and claims of superiority are promotional statements, not measured results.",
+      "sourceSha256": "13ef4d6e80ef18de6a018902756e469e60382944ee5bf4132f64468f3aea0991",
+      "originalSourceSha256": "75f84c2246f02460b1185aae89eeeeb16a6a1949ef6f3a4a8e35d9fb266c056f"
+    },
+    "combat-box-1977": {
+      "owner": "Atari, Inc. (original publisher); Atari and its licensors",
+      "sourceDate": "1977",
+      "reviewed": "2026-10-09",
+      "publication": "editorial",
+      "chapters": [
+        "studio-to-screen"
+      ],
+      "basis": "Limited contextual criticism/review of the historical commercial offer, under the owner-authorized editorial policy. The archival source and attribution are not a republication licence; no bespoke permission or legal clearance is claimed. One complete page or package face is shown beside analysis, with no extracted artwork, wallpaper use or source-download gallery.",
+      "treatment": "Full composition and visible marks retained. A proportional, at-most-1200px WebP build input is prepared from the archived scan, then responsive WebP derivatives are generated. Compression and metadata removal only; no cropping, recoloring, retouching or AI reconstruction. Original scan hash retained separately.",
+      "title": "Combat — original 1977 package front",
+      "source": "Atarimuseum.de — Combat, packaging labeled 1977",
+      "sourceUrl": "https://www.atarimuseum.de/cx2601.htm",
+      "assetUrl": "https://www.atarimuseum.de/games/2600boxart/cx2601n.png",
+      "sourceCredit": "Cover illustration: Cliff Spohn (also credited in MobyGames, https://www.mobygames.com/game/8851/combat/). Game: Larry Wagner and Joe Decuir with Atari’s development team. Scan contributor not individually named by the archive.",
+      "displayCredit": "© Atari · cover art: Cliff Spohn · Atarimuseum.de",
+      "purpose": "Identify the game included with the VCS at launch and examine its promise of variety: the package sells 27 game variations within one cartridge, making the initial hardware purchase immediately playable.",
+      "provenanceNote": "The archive identifies this as 1977 packaging. Combat’s inclusion with the launch console and 27 variations are independently documented by the Science Museum Group (object 2007-5026/5). Space Invaders was a later 1980 release, not the 1977 pack-in.",
+      "sourceSha256": "9c910d528c4854a43a69b83ad50acdacb9e0ddcb69ad599f1c373faabba350cb",
+      "originalSourceSha256": "52eaca70e649ddc9070c78beba9e724ef6642d470ca9dfef192cde125bb2577b"
     }
   }
 }

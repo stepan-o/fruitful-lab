@@ -1,7 +1,16 @@
 /** Dated, deliberately short verbatim excerpts. Never silently refresh these from live URLs. */
-export const rightsReviewDate = "3 October 2026; Valve and world-building material reviewed 7 October 2026; Activision / King reviewed 8 October 2026";
+export const rightsReviewDate = "3 October 2026; Valve and world-building material reviewed 7 October 2026; Activision / King reviewed 8 October 2026; Atari historical print material reviewed 9 October 2026";
 export const bg3Notice = "Sanctuary Economics is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards.";
 export const rightsSources = [
+{
+  "id": "atari-historical-print",
+  "kind": "Publisher policy · rights reserved",
+  "title": "Atari — Terms of Use, Intellectual Property Rights",
+  "url": "https://atari.com/pages/terms-conditions",
+  "version": "6 May 2025 edition; checked 9 October 2026",
+  "quote": "You are permitted to use the Services for your personal, non-commercial use only",
+  "reading": "This excerpt is qualified by the rest of the sentence and surrounding copying restrictions; it is not an editorial republication licence. The 1977 catalog page and Combat package are sourced from archival scans and assessed separately as limited criticism/review of the offers printed on them. Full compositions, identifying marks, creator and archive credits are retained. No publisher clearance is claimed."
+},
 {
   "id": "king-materials",
   "kind": "Publisher policy · rights reserved",

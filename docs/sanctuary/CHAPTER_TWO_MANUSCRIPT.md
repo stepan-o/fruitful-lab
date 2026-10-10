@@ -6,7 +6,17 @@ PCs and consoles grew into different businesses. Today, both mix game and hardwa
 
 Five years after Pong’s tavern debut, Atari’s VCS offered a different proposition: bring the machine home, then build a collection of games on interchangeable cartridges. Like records bought for a record player, each new work gave the equipment another use. A publisher could sell to households that already had the means to play. A console maker, in turn, needed enough desirable games to make its machine worth choosing.
 
-Evidence: home-cartridge-history.
+Evidence: home-cartridge-history, vcs-launch-catalog, combat-launch-museum.
+
+Historical image pair after this paragraph:
+
+**Atari VCS · the retailer’s pitch, 1977** — Atari addressed the retailer directly: “the more fun we make our games, the more games you’re going to sell.” The machine was offered with a promise of future cartridges—and future sales.
+
+© Atari · 1977 sales catalog · Atarimania
+
+**Combat · the game in the box, 1977** — Combat came with the VCS, giving two players something to play before they bought another cartridge. Its “27 video games” were variations on tanks, biplanes and jets: variety was already part of the sales pitch.
+
+© Atari · cover art: Cliff Spohn · Atarimuseum.de
 
 By the 1990s, that dependence had become a formidable business. Sony’s 1997 annual report credited PlayStation’s growth to cheaper consoles and hit games, naming Final Fantasy VII from Square and Tekken from Namco alongside its own releases. Other companies’ creative work helped sell Sony’s hardware. This is the useful meaning of an ecosystem here: businesses whose products become more valuable because of what the others supply.
 

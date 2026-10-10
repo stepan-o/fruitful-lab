@@ -57,6 +57,30 @@
       ],
       "quality": 86,
       "maxBytes": 240000
+    },
+    "atari-vcs-sales-1977": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-arcade/vcs-1977-sales-page.webp",
+      "widths": [
+        320,
+        480,
+        720,
+        1200
+      ],
+      "quality": 78,
+      "maxBytes": 330000
+    },
+    "combat-box-1977": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-arcade/combat-1977-box.webp",
+      "widths": [
+        320,
+        480,
+        720,
+        1200
+      ],
+      "quality": 78,
+      "maxBytes": 330000
     }
   }
 }

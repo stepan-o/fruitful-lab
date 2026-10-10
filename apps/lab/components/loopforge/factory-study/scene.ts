@@ -415,6 +415,16 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     scene.fogDensity=focus==="wide"?.00045:local?.0018:.001;
     const projectedHeight=r.h*Math.cos(camera.beta)+4;
     targetRadius=Math.max(9,Math.max(r.w/aspect,projectedHeight)/(2*Math.tan(camera.fov/2))*1.04+r.h*.18);
+    if(focus==="wide"){
+      // Fit all eight corners, including tall roofs and perspective foreshortening.
+      // A planar height estimate clipped the southern wing behind the control dock.
+      const ca=Math.cos(camera.alpha),sa=Math.sin(camera.alpha),cb=Math.cos(camera.beta),sb=Math.sin(camera.beta),tan=Math.tan(camera.fov/2)*.91;
+      targetRadius=9;
+      for(const x of [-r.w/2,r.w/2])for(const z of [-r.h/2,r.h/2])for(const y of [-1.7,14.3]){
+        const depth=x*ca*sb+y*cb+z*sa*sb,right=-x*sa+z*ca,up=-x*ca*cb+y*sb-z*sa*cb;
+        targetRadius=Math.max(targetRadius,depth+Math.max(Math.abs(right)/(tan*aspect),Math.abs(up)/tan));
+      }
+    }
     transition=1;
   };
   const viewport=()=>{const h=Math.max(1,canvas.clientHeight),top=canvas.clientWidth<600?185:125,bottom=Math.min(h*.52,bottomInset);camera.viewport=new Viewport(0,bottom/h,1,Math.max(.25,(h-bottom-top)/h));};

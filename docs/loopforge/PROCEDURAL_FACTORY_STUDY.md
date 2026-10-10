@@ -78,3 +78,7 @@ These observations describe earlier revisions. The expanded floor and equipment 
 - Full-floor follow-up checks are recorded in `FACTORY_FLOOR_CALIBRATION.md`.
 
 Remaining product work: connect real room economics/worker capabilities through the canonical host, supervisor assignment/briefing, meaningful construction costs, chain optimization, real accident consequences, broader device profiling, and further procedural art direction. These are not represented by fake completion badges in this fixture.
+
+## Continuous envelope and 2D plan · 10 October 2026
+
+The approved scale now forms a continuous building: five foundation bands, enclosed service blocks around the original passage routes, no internal voids. Spatial `loopforge-floor-1/4` retains all room rectangles and thirteen connections. The commissioning schema remains v4. Service structure does not alter admission or crew routing. The measured top-down plan is generated from the same spatial records and checked during production builds; see [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md).

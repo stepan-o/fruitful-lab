@@ -14,6 +14,10 @@ The owner found the preceding 105 × 75 study too small. Its single installation
 - **Work area** shows the local installation at readable scale; **Whole room** shows expansion ground; **Overview** shows geography. Orbit, pan and zoom continue to operate on the same scene in Build and production. Empty ground must be visible as future construction capacity, not filled with decorative equipment to disguise it.
 - Plot markings are a planning study, not hard building slots. Future placement must validate machinery, worker access, buffer/transport capacity, maintenance and room-specific hazards. Floor capacity alone does not implement the eventual logistics simulation.
 
+## Continuity adjustment — 10 October 2026
+
+The owner accepted this scale. The next adjustment closes the legacy gaps using one continuous building envelope and enclosed service blocks; all room dimensions and machinery remain fixed. The top-down plan and source contract are in [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md#continuous-building-envelope--10-october-2026).
+
 ## Revision checklist
 
 - [x] Enlarge all nine footprints; preserve the thirteen connections and first-turn locks.
@@ -58,7 +62,7 @@ Equipment-study objects are authored prototypes, not purchased assets or complet
 
 ## Implementation boundary
 
-`loopforge-floor-1/3` and `loopforge-commissioning/4` identify the expanded local fixture. The renderer consumes the same nine footprints and thirteen portals as routing and the floor-plan selector. `spatial/equipment.ts` supplies 21 equipment groups, operator tiles and room encounter rectangles; these records are validated for room containment, separation and unoccupied interaction ground. They are reference placements, not a finished build catalog.
+`loopforge-floor-1/4` and `loopforge-commissioning/4` identify the expanded local fixture. The renderer consumes the same nine footprints and thirteen portals as routing and the floor-plan selector. `spatial/equipment.ts` supplies 21 equipment groups, operator tiles and room encounter rectangles; these records are validated for room containment, separation and unoccupied interaction ground. They are reference placements, not a finished build catalog.
 
 The inspection toggle pauses the commissioning clock and exposes staged kits and worker-size reference figures in the later rooms. Returning to the opening restores covered wings and the same two-room admission. The six-metre doors stay centred on the original portal axes; the clearance gate itself remains a smaller worker-scale machine.
 

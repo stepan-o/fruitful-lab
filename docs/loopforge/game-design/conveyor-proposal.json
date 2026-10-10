@@ -1,6 +1,6 @@
 {
   "title": "Build a line. Decide what it costs to keep it moving.",
-  "date": "9 October 2026",
+  "date": "10 October 2026",
   "summary": "The conveyor is a small spatial factory inside the larger social factory. Build a working arrangement, watch individual robots operate it, improve the constraint, then live with the workforce and authority that arrangement creates.",
   "status": "Design proposal + separate playable commissioning study. The full conveyor economy, spatial optimization and policies remain proposed.",
   "direction": "Owner direction: each room has its own operating puzzle within a common cinematic 3D factory. Machinery is purchased and physically installed; space affects efficiency and danger. A shared policy catalog applies per room. Supervisors change performance, behaviour and the amount of attention a room needs.",
@@ -87,7 +87,7 @@
   "sections": [
     {
       "title": "The first floor · calibrated layout",
-      "intro": "The original proportions and connections now span 280 × 200 one-metre tiles. That is 7.11 times the area of the previous study. Workers and machines stay the same size. Only Security and Conveyor are unlocked; the opening installation is one cell inside an expandable factory.",
+      "intro": "The approved room proportions and scale span a 280 × 200 one-metre plan. A continuous stepped building envelope closes the old gaps with enclosed service structure. Workers, machines and room construction reserves stay at the approved scale. Only Security and Conveyor are unlocked.",
       "rows": [
         [
           "Northern wings",
@@ -96,6 +96,10 @@
         [
           "Entry and production",
           "Lobby → Dispatch → Security is the arrival route. Conveyor occupies the southwest production bay below Dispatch and Security. Cortex Assembly occupies the original Brain Forge footprint to its east; Shipping remains the southeast support bay. Cortex is sealed."
+        ],
+        [
+          "One continuous building",
+          "A 40,384 m² building footprint includes the nine approved zones and 6,208 m² of enclosed utility/service infill. Original six-metre connecting passages run through that structure. No floating bridges, empty interior gaps, extra managed rooms or new supervisor-contact edges."
         ],
         [
           "A real shared boundary",
@@ -107,11 +111,11 @@
         ],
         [
           "What the engine owns",
-          "Room IDs, tile footprints, portal spans, unlock state and valid worker routes are plain deterministic data. Individual workers now carry integer positions and room identity. The renderer follows these records rather than inventing a movement loop."
+          "Room IDs, tile footprints, portal spans, unlock state and valid worker routes are plain deterministic data. Individual workers now carry integer positions and room identity. The renderer follows these records rather than inventing a movement loop. The separate building envelope describes architecture; only existing room tiles and portals are walkable."
         ],
         [
           "Source reconciliation",
-          "The original annotated plan and Sim4 rectangles anchor geography. Sim4 omitted the Security–Conveyor edge despite their shared boundary; the current owner direction and later sim_sim rule restore it. Other sim_sim edges that conflict with the physical map are not copied as invisible doorways. Short physical bridges preserve Sim4 connections across service gaps."
+          "The original annotated plan and Sim4 rectangles anchor geography. Sim4 omitted the Security–Conveyor edge despite their shared boundary; the current owner direction and later sim_sim rule restore it. Other sim_sim edges that conflict with the physical map are not copied as invisible doorways. Enclosed passages preserve Sim4 connections through the service infill."
         ],
         [
           "Boundary of this delivery",

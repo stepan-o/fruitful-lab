@@ -57,6 +57,9 @@ def research_html(item):
 def render_conveyor(d, interactive=True):
     out='<div class="conveyor-study"><header class="section-head"><span class="kicker">Room puzzle 01 · '+e(d['date'])+'</span><h2>'+e(d['title'])+'</h2>'+p(d['summary'])+'</header><span class="status">'+e(d['status'])+'</span><div class="cv-direction">'+p(d['direction'])+'</div><div class="cv-thesis"><span class="kicker">Recommended first experiment</span>'+p(d['recommendation'])+'</div>'
     out+='<p><a class="link-button" href="/stepanoskin/loopforge/play/factory-study">Open the procedural commissioning study →</a></p>'
+    if d.get('floorPlan'):
+        plan=d['floorPlan']
+        out+='<section class="cv-floor-plan"><span class="kicker">Approved scale · continuous footprint</span><h3>The whole factory, from above.</h3>'+p('Nine zones share one enclosed building. Gold thresholds preserve the thirteen existing connections; hatched service blocks close the old gaps without adding new routes or managed rooms.')+'<figure><a href="'+e(plan['src'],quote=True)+'" target="_blank" rel="noopener" aria-label="Open the full-resolution top-down factory map"><img loading="lazy" decoding="async" width="'+str(plan['width'])+'" height="'+str(plan['height'])+'" src="'+e(plan['src'],quote=True)+'" alt="Top-down factory plan showing six managed rooms, Lobby, Dispatch and Shipping inside a continuous service envelope, with doors, machinery and clear building plots." /></a><figcaption>Generated from the actual spatial data · '+e(plan['version'])+' · <a href="'+e(plan['src'],quote=True)+'" target="_blank" rel="noopener">Open the full-size vector map ↗</a></figcaption></figure></section>'
     if d.get('timeArt'):
         out+='<details class="cv-section"><summary>Time transitions · town-scale art direction</summary>'+p('Three-second automatic interludes. Titles are rendered by the UI; the factory itself remains procedural.')+'<div class="cv-time-art">'
         for art in d['timeArt']:
@@ -87,6 +90,8 @@ def render_conveyor(d, interactive=True):
 
 def conveyor_markdown(d):
     out=['# Conveyor mini-game proposal',d['date'],'*Generated from game-design/conveyor-proposal.json.*',d['status'],'## '+d['title'],d['summary'],d['direction'],'**Recommendation.** '+d['recommendation'],'## Where the fun comes from']
+    if d.get('floorPlan'):
+        out.extend(['## Continuous first-floor plan', '![Top-down factory plan]('+d['floorPlan']['src']+')', 'Nine zones, thirteen connections and enclosed service infill. Hatched structure does not grant extra room access. Generated from the runtime spatial authority.'])
     def add(items):
         out.extend('**'+k+'.** '+v for k,v in items)
     add(d['fun']);out.append('## Two flows share one floor');add(d['chain'])

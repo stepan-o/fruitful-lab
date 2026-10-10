@@ -1,4 +1,6 @@
 import { accessible, canStep, CREW_OBSTACLES, CREW_ROUTE, crewPose, findTilePath, FLOOR_SIZE, FLOOR_SCALE, REFERENCE_ZONES, contains, GATE_CROSSINGS, INITIAL_UNLOCKED, interactionEdge, MANAGED_ROOMS, PORTALS, ROUTE_LENGTH, walkable, zone, zoneAt, ZONES } from "@/lib/loopforge/spatial/floor";
+import { BUILDING_AREA, BUILDING_BANDS, SERVICE_INFILL, SERVICE_BLOCKS, inBuilding } from "@/lib/loopforge/spatial/envelope";
+import { portalRect, portalAt } from "@/lib/loopforge/spatial/floor";
 import { CONSTRUCTION_RESERVES, DELIVERY_AISLES, reservedArea } from "@/lib/loopforge/spatial/capacity";
 import { EQUIPMENT_STUDY, ROOM_STAGING } from "@/lib/loopforge/spatial/equipment";
 import { command, initialStudy } from "@/lib/loopforge/factory-study/kernel";
@@ -17,6 +19,33 @@ describe("calibrated factory floor", () => {
       }
     }
     for (const p of PORTALS) { expect(zoneAt(p.start)?.id).toBe(p.a); expect(zoneAt(p.end)?.id).toBe(p.b); }
+  });
+  it("forms one filled building without holes while retaining the original admission graph", () => {
+    const area = (rects: readonly {w:number;h:number}[]) => rects.reduce((sum,r)=>sum+r.w*r.h,0);
+    expect(BUILDING_AREA).toBe(40384);
+    expect(area(ZONES.map(z=>z.rect))+area(SERVICE_INFILL)).toBe(BUILDING_AREA);
+    const occupied = new Set<string>(); let overlap = false, extraAccess = false;
+    for(const r of [...ZONES.map(z=>z.rect),...SERVICE_INFILL])for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++){
+      const key=`${x},${y}`; if(occupied.has(key))overlap=true;occupied.add(key);
+      if(!zoneAt({x,y})&&!portalAt({x,y})&&walkable({x,y},MANAGED_ROOMS.map(z=>z.id)))extraAccess=true;
+    }
+    expect(overlap).toBe(false);expect(extraAccess).toBe(false);
+    for(const r of BUILDING_BANDS)for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++)if(!occupied.has(`${x},${y}`))throw new Error(`Unfilled building tile ${x},${y}`);
+    const flood=(start:{x:number;y:number},inside:boolean)=>{
+      const seen=new Set<string>([`${start.x},${start.y}`]),queue=[start];
+      for(let i=0;i<queue.length;i++)for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
+        const n={x:queue[i].x+dx,y:queue[i].y+dy},key=`${n.x},${n.y}`;
+        if(n.x<0||n.y<0||n.x>280||n.y>200||seen.has(key)||inBuilding(n)!==inside)continue;
+        seen.add(key);queue.push(n);
+      }
+      return seen.size;
+    };
+    expect(flood({x:40,y:16},true)).toBe(BUILDING_AREA);
+    expect(flood({x:0,y:0},false)).toBe(281*201-BUILDING_AREA); // No enclosed voids.
+    for(const p of PORTALS){const r=portalRect(p);for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++){
+      expect(inBuilding({x,y})).toBe(true);expect(SERVICE_BLOCKS.some(b=>contains(b,{x,y}))).toBe(false);
+    }}
+    expect(PORTALS).toHaveLength(13);
   });
   it("opens only Security and Conveyor on turn one and enforces access below the UI", () => {
     const state = initialStudy(); expect(state.unlockedRooms).toEqual(["security", "conveyor"]);

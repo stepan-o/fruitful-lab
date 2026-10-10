@@ -2,7 +2,7 @@
  * Coordinates are integer tiles, west→east / north→south; rectangles are half-open.
  * This module owns topology and admission. A renderer may project it, never redefine it.
  */
-export const FLOOR_VERSION = "loopforge-floor-1/3";
+export const FLOOR_VERSION = "loopforge-floor-1/4";
 export const FLOOR_SCALE = 8;
 export const FLOOR_SIZE = { width: 35 * FLOOR_SCALE, height: 25 * FLOOR_SCALE } as const;
 export const WORKER_HEIGHT = 1.9; // Metres; one design tile is one metre.
@@ -33,7 +33,8 @@ export function accessible(id: ZoneId, unlocked: readonly ManagedRoomId[]): bool
 export type Portal = Readonly<{ id: string; a: ZoneId; b: ZoneId; start: Tile; end: Tile; width: number }>;
 /** All legacy physical neighbours are retained; Security–Conveyor adds the explicit
  * shared threshold required by the current design and the later sim_sim conflict rule.
- * Short bridges give the legacy across-gap edges actual walkable geometry.
+ * Enclosed passages through service infill give legacy separated rooms walkable geometry.
+ * The building envelope is defined separately; infill does not grant navigation access.
  */
 const referencePortals: readonly Portal[] = [
   { id: "lobby-dispatch", a: "lobby", b: "dispatch", start: { x: 9, y: 12 }, end: { x: 10, y: 12 }, width: 2 },

@@ -9,6 +9,7 @@ import type { PBRMaterial } from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 import type { Scene } from '@babylonjs/core/scene';
 import { accessible, FLOOR_SIZE, INITIAL_UNLOCKED, PORTALS, portalOpen, portalRect, worldPoint, zone, ZONES, type ZoneId } from '@/lib/loopforge/spatial/floor';
+import { BUILDING_BANDS, BUILDING_EDGES, SERVICE_INFILL, SERVICE_BLOCKS } from '@/lib/loopforge/spatial/envelope';
 import { CONSTRUCTION_RESERVES, DELIVERY_AISLES } from '@/lib/loopforge/spatial/capacity';
 export type V = [number,number,number];
 export type Mat = PBRMaterial | StandardMaterial;
@@ -114,11 +115,30 @@ export function buildFloor(scene:Scene,t:WorkshopTools){
       stencil(z.short.toUpperCase(),z.number+' / SEALED',x,y,r.w-2,3.2,cornices[z.id]+.61,cover,true);
     }
   }
-  const transit=parent('door thresholds and service bridges');
+  // One continuous foundation and enclosed utility blocks replace floating bridges.
+  // The caps stay in study mode: these are service structure, not unlockable rooms.
+  const shell=parent('continuous factory envelope');
+  for(const r of BUILDING_BANDS)box('continuous foundation',[r.w,.55,r.h],at(r.x+r.w/2,r.y+r.h/2,-.68),dark,shell);
+  for(const r of SERVICE_INFILL)box('service floor',[r.w,.4,r.h],at(r.x+r.w/2,r.y+r.h/2,-.22),floorMat,shell);
+  for(const r of SERVICE_BLOCKS){
+    const x=r.x+r.w/2,y=r.y+r.h/2,height=4.2;
+    box('enclosed utility block',[r.w,height,r.h],at(x,y,height/2),green,shell);
+    box('utility roof coping',[r.w,.12,r.h],at(x,y,height+.06),iron,shell);
+    for(let sx=r.x+2;sx<r.x+r.w;sx+=4)box('roof standing seam',[.06,.06,r.h],at(sx,y,height+.15),brass,shell);
+    if(r.w>=10&&r.h>=10){
+      box('service ventilation bank',[4,.5,2.8],at(x,y,height+.37),dark,shell);
+      for(let j=0;j<7;j++)box('vent louvre',[3.8,.09,.16],at(x,y-1.05+j*.35,height+.66),iron,shell);
+    }
+  }
+  for(const {start:a,end:b} of BUILDING_EDGES){
+    const horizontal=a.y===b.y;
+    box('continuous building plinth',horizontal?[Math.abs(a.x-b.x),.8,.38]:[.38,.8,Math.abs(a.y-b.y)],at((a.x+b.x)/2,(a.y+b.y)/2,-.18),iron,shell);
+  }
+  const transit=parent('door thresholds and enclosed service passages');
   for(const p of PORTALS){const a=zone(p.a).rect,b=zone(p.b).rect,horizontal=p.start.x!==p.end.x;
     const x=horizontal?a.x+a.w:p.start.x+p.width/2,y=horizontal?p.start.y+p.width/2:a.y+a.h;
-    if(horizontal&&b.x>a.x+a.w)box('service bridge',[b.x-a.x-a.w,.3,p.width],at((a.x+a.w+b.x)/2,y,-.15),floorMat,transit);
-    if(!horizontal&&b.y>a.y+a.h)box('service bridge',[p.width,.3,b.y-a.y-a.h],at(x,(a.y+a.h+b.y)/2,-.15),floorMat,transit);
+    if(horizontal&&b.x>a.x+a.w)box('enclosed passage floor',[b.x-a.x-a.w,.3,p.width],at((a.x+a.w+b.x)/2,y,-.15),floorMat,transit);
+    if(!horizontal&&b.y>a.y+a.h)box('enclosed passage floor',[p.width,.3,b.y-a.y-a.h],at(x,(a.y+a.h+b.y)/2,-.15),floorMat,transit);
     for(const side of [-1,1])box('door pilaster',[.45,4.8,.45],at(x+(horizontal?0:side*p.width/2),y+(horizontal?side*p.width/2:0),2.4),green,transit,true);
     box('door cornice',horizontal?[.55,.45,p.width+.6]:[p.width+.6,.45,.55],at(x,y,4.8),brass,transit);
     box('door indicator',horizontal?[.08,.14,1]:[1,.14,.08],at(x-(horizontal?.3:0),y+(horizontal?0:.3),4.85),portalOpen(p,INITIAL_UNLOCKED)?amber:quiet,transit);

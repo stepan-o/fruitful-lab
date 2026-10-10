@@ -1,6 +1,6 @@
 # Loopforge game design
 
-Working draft · 9 October 2026
+Working draft · 10 October 2026
 
 Trace the factory the player builds, the authority they establish and the society they inherit. This author reference connects the long arcs to player experience and the engine boundary, before balance and implementation.
 
@@ -2763,7 +2763,7 @@ PC press gallery labelled version 3.1 on 8 October 2026; navigation link still s
 
 # Conveyor mini-game proposal
 
-9 October 2026
+10 October 2026
 
 *Generated from game-design/conveyor-proposal.json.*
 
@@ -2778,6 +2778,12 @@ Owner direction: each room has its own operating puzzle within a common cinemati
 **Recommendation.** Build first. Arrive through the Lobby at night, place two Security items in fixed sockets, then install the first Conveyor element in Lattice Forge. Morning introduces leadership, the adviser and assignments; operation tests what was built. Later nights let the player improve or keep the arrangement. Exact starter hardware remains a proposal.
 
 ## Where the fun comes from
+
+## Continuous first-floor plan
+
+![Top-down factory plan](/loopforge-design/factory-floor-plan.e2415e4a8e3d.svg)
+
+Nine zones, thirteen connections and enclosed service infill. Hatched structure does not grant extra room access. Generated from the runtime spatial authority.
 
 **I made this work.** A queue shrinks because of a change I made. The limiting step moves somewhere else, giving me a new problem I can actually see.
 
@@ -2853,19 +2859,21 @@ More capacity. More coordination.
 
 ## The first floor · calibrated layout
 
-The original proportions and connections now span 280 × 200 one-metre tiles. That is 7.11 times the area of the previous study. Workers and machines stay the same size. Only Security and Conveyor are unlocked; the opening installation is one cell inside an expandable factory.
+The approved room proportions and scale span a 280 × 200 one-metre plan. A continuous stepped building envelope closes the old gaps with enclosed service structure. Workers, machines and room construction reserves stay at the approved scale. Only Security and Conveyor are unlocked.
 
 **Northern wings.** Weaving Gallery at the northwest; Cognitive Substrate Brewery in the north centre; Burn-in Theatre at the northeast. All three are sealed on turn one.
 
 **Entry and production.** Lobby → Dispatch → Security is the arrival route. Conveyor occupies the southwest production bay below Dispatch and Security. Cortex Assembly occupies the original Brain Forge footprint to its east; Shipping remains the southeast support bay. Cortex is sealed.
 
+**One continuous building.** A 40,384 m² building footprint includes the nine approved zones and 6,208 m² of enclosed utility/service infill. Original six-metre connecting passages run through that structure. No floating bridges, empty interior gaps, extra managed rooms or new supervisor-contact edges.
+
 **A real shared boundary.** Security and Conveyor have a six-tile architectural opening with a smaller clearance lane. Their assigned supervisors can therefore become eligible for direct encounters. Being able to walk through another room to reach someone is not the same as being their neighbour. Adjacency permits an event; motives, history and current conditions must still explain it.
 
 **What the player sees.** Work area frames a local installation closely. Whole room reveals its expansion capacity; Overview frames the floor; Floor plan changes rooms. Later wings stay covered and named in the normal opening. Build and production share the same world and camera.
 
-**What the engine owns.** Room IDs, tile footprints, portal spans, unlock state and valid worker routes are plain deterministic data. Individual workers now carry integer positions and room identity. The renderer follows these records rather than inventing a movement loop.
+**What the engine owns.** Room IDs, tile footprints, portal spans, unlock state and valid worker routes are plain deterministic data. Individual workers now carry integer positions and room identity. The renderer follows these records rather than inventing a movement loop. The separate building envelope describes architecture; only existing room tiles and portals are walkable.
 
-**Source reconciliation.** The original annotated plan and Sim4 rectangles anchor geography. Sim4 omitted the Security–Conveyor edge despite their shared boundary; the current owner direction and later sim_sim rule restore it. Other sim_sim edges that conflict with the physical map are not copied as invisible doorways. Short physical bridges preserve Sim4 connections across service gaps.
+**Source reconciliation.** The original annotated plan and Sim4 rectangles anchor geography. Sim4 omitted the Security–Conveyor edge despite their shared boundary; the current owner direction and later sim_sim rule restore it. Other sim_sim edges that conflict with the physical map are not copied as invisible doorways. Enclosed passages preserve Sim4 connections through the service infill.
 
 **Boundary of this delivery.** Full layout, opening locks, commissioning flow and staged procedural equipment in all six rooms are implemented. Equipment study is a separate inspection mode; it neither purchases equipment nor unlocks later rooms. Production economics, free placement and supervisor encounter execution remain future work.
 

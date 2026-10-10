@@ -2038,3 +2038,21 @@
     right: 115px;
   }
 }
+
+.mc-map-labels .mc-borough-label {
+  min-height: 44px;
+  min-width: 44px;
+}
+.mc-session-banner button {
+  position: relative;
+  min-width: 44px;
+}
+.mc-session-banner button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 44px;
+  transform: translateY(-50%);
+}

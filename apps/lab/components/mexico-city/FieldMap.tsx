@@ -224,8 +224,12 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
     const mapId = process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID;
     if (!key || !mapId) return;
     let cancelled = false;
+    let failedToLoad = false;
+    let tilesTimer: ReturnType<typeof setTimeout> | undefined;
     queueMicrotask(() => setProvider("loading"));
     const failed = () => {
+      failedToLoad = true;
+      clearTimeout(tilesTimer);
       if (!cancelled) setProvider("failed");
     };
     window.addEventListener("cdmx-map-auth-failed", failed);
@@ -235,7 +239,7 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
           "maps",
         )) as google.maps.MapsLibrary;
         await google.maps.importLibrary("marker");
-        if (cancelled || !googleContainer.current) return;
+        if (cancelled || failedToLoad || !googleContainer.current) return;
         const map = new Map(googleContainer.current, {
           center: cameraRef.current,
           zoom: cameraRef.current.zoom,
@@ -269,11 +273,20 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
         map.addListener("dragstart", () => {
           follow.current = false;
         });
-        setProvider("google");
+        // A loaded SDK does not mean the key/map is authorized. Wait for a
+        // rendered basemap before creating game overlays or Advanced Markers.
+        const ready = () => {
+          if (cancelled || failedToLoad) return;
+          clearTimeout(tilesTimer);
+          setProvider("google");
+        };
+        google.maps.event.addListenerOnce(map, "tilesloaded", ready);
+        tilesTimer = setTimeout(failed, 20_000);
       })
       .catch(failed);
     return () => {
       cancelled = true;
+      clearTimeout(tilesTimer);
       window.removeEventListener("cdmx-map-auth-failed", failed);
       if (googleMap.current)
         google.maps.event.clearInstanceListeners(googleMap.current);
@@ -727,7 +740,7 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
       <div
         ref={googleContainer}
         className="mc-google-canvas"
-        hidden={provider !== "google"}
+        hidden={provider === "reference" || provider === "failed"}
       />
       {provider !== "google" && (
         <>

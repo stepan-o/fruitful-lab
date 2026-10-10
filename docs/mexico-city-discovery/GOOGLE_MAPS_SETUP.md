@@ -30,3 +30,5 @@ Branch: `codex/mexico-city-field-game`; draft PR #104. Vercel reports the stable
 `https://fruitful-lab-git-codex-mexico-cit-ca736c-stepan-oskins-projects.vercel.app`
 
 Authorize that exact hostname with `/*` in Google if using the branch alias. Unique deployment hosts change on rebuild; authorize only the additional exact hosts you actually use.
+
+Verified 10 October 2026 on implementation commit `abc30d1`: the stable alias loads Google Maps with the configured browser key/map ID. Native pan/zoom, custom story markers, reference layers and manual photo placement passed hosted browser checks, including a 390×844 viewport. Use this alias when testing; the per-deployment URL may be outside the key’s allowed websites.

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-time-transitions",
+  "assets": {
+    "morning": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/31e4bf05ba8ce77b99194890050f077e58f434a79823c30ac7eb4bba00cace34.webp",
+          "mime": "image/webp",
+          "bytes": 123126,
+          "sha256": "31e4bf05ba8ce77b99194890050f077e58f434a79823c30ac7eb4bba00cace34",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/a3150dc1e3ef47137feaee79d7cee930d87f1f780ef51663e9e5a519393acce1.webp",
+          "mime": "image/webp",
+          "bytes": 441978,
+          "sha256": "a3150dc1e3ef47137feaee79d7cee930d87f1f780ef51663e9e5a519393acce1",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    },
+    "night": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/186266d0918c3fe68157032bf020463cf06c42498a41e77ca2d784a83cb74e92.webp",
+          "mime": "image/webp",
+          "bytes": 111234,
+          "sha256": "186266d0918c3fe68157032bf020463cf06c42498a41e77ca2d784a83cb74e92",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/e663990e6b225aa4e2bbc6719688c9d69494d331d0ef434a21f10721c9b7cc46.webp",
+          "mime": "image/webp",
+          "bytes": 379148,
+          "sha256": "e663990e6b225aa4e2bbc6719688c9d69494d331d0ef434a21f10721c9b7cc46",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    },
+    "shift": {
+      "kind": "image",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "src": "/media/files/85ec88f6d4abf7388f249e1b7f32b2c6b3bc6b6b7617e2d13060a695958fca04.webp",
+          "mime": "image/webp",
+          "bytes": 117828,
+          "sha256": "85ec88f6d4abf7388f249e1b7f32b2c6b3bc6b6b7617e2d13060a695958fca04",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/4068638340c5b00d8d3cfe1d40853b66290e6b02394516b0c96b33b994d63ce4.webp",
+          "mime": "image/webp",
+          "bytes": 377308,
+          "sha256": "4068638340c5b00d8d3cfe1d40853b66290e6b02394516b0c96b33b994d63ce4",
+          "width": 1672,
+          "height": 941
+        }
+      ]
+    }
+  }
+}

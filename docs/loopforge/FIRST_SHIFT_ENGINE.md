@@ -1,5 +1,14 @@
 # First-shift engine and viewer contract
 
+**Full-floor follow-up, 9 October:** The separate procedural study now uses a calibrated 280 × 200 tile map (8× the reference plan in each direction) with all six managed rooms plus Lobby, Dispatch and Shipping. Security and Conveyor alone are initially unlocked. Room bounds, portals, locks, pathfinding and direct interaction adjacency share a framework-free spatial definition; workers carry integer positions and room identity. The floor-plan dialog and camera consume the same map. The existing console protocol remains unchanged. An explicit Equipment study view reveals staged machinery and operator spaces in all six rooms without granting access or changing the host snapshot. Equipment dimensions stay at worker scale. The Forge now measures 80 × 56 m, with 2,068 m² reserved for construction. Whole room and Work area are camera framings of the same world; typed construction reserves and delivery aisles live outside the renderer. See [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md) and [Factory scale and equipment](FACTORY_SCALE_AND_EQUIPMENT.md).
+
+
+**9 October implementation update:** The procedural commissioning study now uses Babylon.js in a separate route. One persistent factory camera serves night construction and production playback. The eighteen-hour shift / six-hour charge baseline and three-second illustrated day/phase interludes are approved direction. The existing first-shift game protocol is unchanged. See [Procedural factory study](PROCEDURAL_FACTORY_STUDY.md) for the implemented boundaries and verification.
+
+**Next opening, 9 October:** night construction precedes morning briefing and assignments. The proposed kernel phase order is night build/commissioning → morning mandate/advice → authorized operation → settlement. Stable construction jobs and equipment IDs survive phase transitions; tutorial/camera state stays in the viewer. Standard installation is separate from engineering repair. No runtime or protocol extension is implemented in this documentation pass. See [the conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md).
+
+Implementation boundary, 9 October 2026: this document describes the existing first-day kernel. The [conveyor room-puzzle proposal](CONVEYOR_MINIGAME_PROPOSAL.md) specifies a future spatial/tick extension; machinery placement, task routes and installation are not implemented by the documentation pass.
+
 Implementation: `apps/lab/lib/loopforge/first-shift/`. Public experience: `/stepanoskin/loopforge/play`. API: `POST /api/loopforge/first-shift`. Author-facing explanation: `/stepanoskin/loopforge/engine-notes`. The former eight-shift teaching console remains at `/stepanoskin/loopforge/play/teaching`; its engine and narration endpoint are separate and unchanged.
 
 ## Whole-day cadence — design target
@@ -43,7 +52,7 @@ The original dispatch office illustrates allocation, logistics illustrates debri
 
 The later live, tick-fed 3D factory is a cinematic observation layer alongside these interfaces. Both consume the same knowledge-filtered state/events and emit commands through the same boundary. The illustrated loop must work when the 3D layer is absent or unavailable. Camera selection, scene nodes, materials, animation clips and asset URLs remain outside the kernel. Future spatial facts require an explicitly versioned projection extension; the present HTTP profile is not silently declared sufficient for a full spatial world.
 
-Babylon.js remains a candidate for that future scene, not an installed dependency or final commitment. Validate actual art, lighting, moving production, input response and mobile performance before selecting it. The old Sim4/KVP implementation uses a Pixi isometric viewer; Sim5's broader viewer plans are design references, not an inherited finished 3D implementation. None of this changes simulation authority, BDI ownership or the model-service boundary.
+Babylon.js 9.30.0 is installed for the separate procedural commissioning study; broader renderer adoption remains subject to this scene’s quality and performance review. Validate actual art, lighting, moving production, input response and mobile performance before selecting it. The old Sim4/KVP implementation uses a Pixi isometric viewer; Sim5's broader viewer plans are design references, not an inherited finished 3D implementation. None of this changes simulation authority, BDI ownership or the model-service boundary.
 
 ## Clock and command semantics
 

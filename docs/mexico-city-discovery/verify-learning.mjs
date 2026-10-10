@@ -57,7 +57,7 @@ try {
     const p = await context.newPage();
     p.setDefaultTimeout(15000);
     p.on("pageerror", (e) => report.errors.push(e.message));
-    await p.goto(`${base}/mexico-city`);
+    await p.goto(`${base}/mexico-city/atlas`);
     await p.locator(".ov-chapter-entry").waitFor();
     await settle(p);
     assert.equal(await p.locator("html").getAttribute("lang"), "es-MX");
@@ -266,7 +266,7 @@ try {
       await download.saveAs(`${out}/learning-journal.json`);
       const imported = await browser.newContext();
       const other = await imported.newPage();
-      await other.goto(`${base}/mexico-city`);
+      await other.goto(`${base}/mexico-city/atlas`);
       await other.locator(".ov-journal-toggle").click();
       await other
         .locator(".ov-journal-footer input")

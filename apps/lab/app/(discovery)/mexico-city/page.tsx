@@ -1,19 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import CityGame from "@/components/mexico-city/CityGame";
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+import FieldLanding from "@/components/mexico-city/FieldEntry";
 import "@/components/mexico-city/mexico-city.css";
-
-export const metadata: Metadata = {
-  title: "Mexico city discovery game · Descubre la Ciudad de México",
-  description:
-    "Una ciudad, otra mirada. Descubre la historia, los barrios y las palabras de la Ciudad de México con Susy y Stepan.",
-};
-
-export const viewport: Viewport = {
-  themeColor: "#ffffff",
-  width: "device-width",
-  initialScale: 1,
-};
-
-export default function MexicoCityPage() {
-  return <CityGame />;
+import "@/components/mexico-city/field-game.css";
+export const metadata: Metadata = { title: "Mexico city discovery game · Sal a descubrir", description: "Sal de tu ruta. Descubre la Ciudad de México, registra tus hallazgos y reta a tus amigos." };
+export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1 };
+export default async function Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const params = await searchParams;
+  for (const key of ["place", "zone", "borough"]) if (typeof params[key] === "string") redirect(`/mexico-city/atlas?${new URLSearchParams({ [key]: params[key] as string })}`);
+  return <FieldLanding signedIn={!!(await getCurrentUser())} />;
 }

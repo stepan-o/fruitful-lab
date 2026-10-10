@@ -2,7 +2,13 @@
 
 Updated 10 October 2026. Public Lab route: `/mexico-city`. Working reference: **Mexico city discovery game**; the final name is undecided. First players: Susy and Stepan.
 
-## Design reference page
+## Current field-game implementation
+
+See [the full experience specification](EXPERIENCE_SPEC.md), [Google Maps setup](GOOGLE_MAPS_SETUP.md) and [field-game verification](FIELD_VERIFICATION.md). The landing is `/mexico-city`; the game is `/mexico-city/play`. The design route is now the complete bilingual `ExperienceDesign.tsx` proposal. Account-backed solo, private groups and community screens are implemented; backend deployment/migration is required for shared play. Guest solo and the explicitly labeled all-modes demo are temporary sessions. The original illustrated/local-journal experience is preserved at `/mexico-city/atlas`.
+
+The following sections document the earlier atlas/design prototype and are historical context where they differ from EXPERIENCE_SPEC.md.
+
+## Earlier design reference page
 
 `/mexico-city/game-design` presents the discussion as a Spanish-default, fully bilingual illustrated design notebook: city-first play, goals/challenges/wildcards, peer validation, map and learning, visual identity and voice, app surfaces, future modes and unresolved decisions. The working reference **Mexico city discovery game** is used across current game screens; `/mexico-city` remains independent of the eventual name. Legacy browser storage keys stay unchanged to retain existing journals and language preferences.
 

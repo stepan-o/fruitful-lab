@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import GameDesign from "@/components/mexico-city/GameDesign";
+import GameDesign from "@/components/mexico-city/ExperienceDesign";
+import "@/components/mexico-city/mexico-city.css";
+import "@/components/mexico-city/field-game.css";
 
 export const metadata: Metadata = {
   title: "Mexico city discovery game · Diseño del juego",

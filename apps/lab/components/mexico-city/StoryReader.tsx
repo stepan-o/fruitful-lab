@@ -16,12 +16,14 @@ export default function StoryReader({
   collect,
   close,
   fieldwork,
+  outdoor = false,
 }: {
   id: StoryId;
   collected: boolean;
   collect: () => void;
   close: () => void;
   fieldwork: () => void;
+  outdoor?: boolean;
 }) {
   const { locale, t } = useLocale();
   const story = storyById(id, locale);
@@ -161,10 +163,10 @@ export default function StoryReader({
                   className="ov-primary"
                   onClick={collected ? fieldwork : collect}
                 >
-                  {collected
+                  {outdoor ? (locale === "es" ? "Salir a mirar · guardar una foto" : "Go look · keep a photo") : collected
                     ? t("Add a visit or photo")
                     : t("Collect this story")}
-                  <span>{collected ? "↗" : "+10"}</span>
+                  <span>{outdoor || collected ? "↗" : "+10"}</span>
                 </button>
                 {collected ? (
                   <span className="ov-collected">

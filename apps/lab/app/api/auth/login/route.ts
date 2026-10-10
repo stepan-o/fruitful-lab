@@ -18,7 +18,9 @@ function isSafeNext(next: unknown): next is string {
     return (
         typeof next === "string" &&
         next.startsWith("/") &&
-        !next.startsWith("//")
+        !next.startsWith("//") &&
+        !next.includes("\\") &&
+        !/[\u0000-\u0020]/.test(next)
     );
 }
 
@@ -29,6 +31,7 @@ function normalizePath(nextPathOrUrl: string): string {
 
 function isAllowedNextForRole(nextPath: string, role: "admin" | "contractor" | "general") {
     const p = normalizePath(nextPath);
+    if (p === "/mexico-city/play") return true;
 
     // Admins can go to admin area + tools + contractor area.
     // NOTE: tighten/expand as policy evolves.

@@ -1,5 +1,7 @@
 # Collective discovery of Mexico City
 
+Status update: the later owner-approved full app scope and concrete prototype rules are specified in [EXPERIENCE_SPEC.md](EXPERIENCE_SPEC.md). This document retains the earlier discussion; its “later mode” boundaries are superseded where the new specification differs.
+
 Roadmap idea recorded 10 October 2026. **The current priority remains the private multiplayer game for Susy and Stepan.** This complementary community experience is a later possibility to investigate, not an implementation commitment or a prerequisite for their game. Its appeal, participation and sustainability are untested.
 
 ## The invitation

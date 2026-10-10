@@ -15,7 +15,7 @@ export default function NahuatlGames({
 }: {
   close: () => void;
   learning: Learning;
-  award: (id: LearningId) => void;
+  award: (id: LearningId) => void | Promise<boolean>;
   player: string;
   total: number;
 }) {
@@ -41,9 +41,9 @@ export default function NahuatlGames({
     setChecked(false);
     setReward(0);
   };
-  function earn(id: LearningId, amount: number) {
-    setReward(learning[id] ? 0 : amount);
-    award(id);
+  async function earn(id: LearningId, amount: number) {
+    const saved = await award(id);
+    setReward(saved === false || learning[id] ? 0 : amount);
   }
   function switchMode(next: "learn" | "match" | "build") {
     setMode(next);

@@ -110,7 +110,9 @@ the public credits register. Its initial Netflix wordmark has lazy-loaded
 154/309px derivatives under 4 KB each. Source shape, color and proportions are
 preserved; surrounding schematic drawings are original.
 
-`sanctuary-arcade` contains the five opening-chapter historical images. Build with
+`sanctuary-arcade` contains the five opening-chapter historical images and the
+VCS / Combat pair in chapter 2. The latter use compact full-composition build
+inputs; source records retain both original-scan and build-input hashes. Build with
 `npm run assets:build -- assets/sanctuary-arcade.json`. The selected source masters
 are in `assets/sources/sanctuary-arcade` and never served directly. The independent
 `lib/sanctuary/arcade-media.json` records credits, publication rationale, hashes

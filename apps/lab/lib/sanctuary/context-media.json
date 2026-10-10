@@ -109,14 +109,15 @@
       "sourceUrl": "https://www.valvesoftware.com/en/about",
       "assetUrl": "https://cdn.akamai.steamstatic.com/valvesoftware/images/about/steam_logo.png",
       "sourceDate": "Retrieved 7 October 2026; original publication date not supplied",
-      "purpose": "Identify Steam as a distribution service operated by the company introduced beside it. Supports the chapter\u2019s distinction between making games and operating a store for other makers.",
+      "purpose": "Identify Steam as Valve\u2019s distribution service in the PC history lane and company chapter. The unchanged mark identifies the service inside an original, simplified period-interface illustration; it is not Sanctuary branding.",
       "treatment": "Unchanged official symbol, proportional WebP sizes at 80, 160 and 233 pixels. Open space around mark; Steam\u00ae named in caption. No recoloring, animation, overlay or combined identity. Full trademark attribution retained.",
       "sourceSha256": "79eb0ccd6a6d1cd0c80f8d9cb07e1498d4343e3c0c9052901d581b70a775643d",
       "reviewed": "2026-10-07",
       "publication": "editorial",
       "basis": "Bounded visual citation for criticism/review and contextual identification in this independent, free analysis. Editorial fair-dealing assessment under the existing publication decision, not a bespoke licence or blanket permission. Valve\u2019s video policy does not license still images; its site terms and brand guide do not provide a general republication grant. Named creator and source credited. No sponsorship implied.",
       "chapters": [
-        "valve-platform"
+        "valve-platform",
+        "studio-to-screen"
       ]
     },
     "counter-strike-menu": {
@@ -151,7 +152,7 @@
       "purpose": "Document how Sony presented an individually sold game as an attraction for its subscription catalog, directly beside analysis of CD PROJEKT\u2019s catalog licensing decision. The game logo, subscription branding and tier labels identify the actual offer. The image does not establish contract amounts, performance or current catalog availability.",
       "treatment": "One complete historical promotional image, without cropping, recoloring, compositing or changes to marks, rating or offer notice. Proportional WebP variants at 480, 960 and 1440 pixels; source master excluded from runtime delivery. Lazy loaded via content-hashed files and the existing versioned manifest. Dated caption; historical promotional pricing is not presented as current.",
       "chapters": [
-        "studio-to-screen"
+        "three-ecosystems"
       ]
     },
     "half-life-promo": {
@@ -186,7 +187,7 @@
       "purpose": "The annual blockbuster in the acquired portfolio: identify the release used to test launch-day subscription access.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen"
+        "three-ecosystems"
       ]
     },
     "cod-hud": {
@@ -204,7 +205,7 @@
       "purpose": "Compare the first-person action interface with Diablo\u2019s character combat and Candy Crush\u2019s touch puzzle; distinguish player activities within the acquired portfolio.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen"
+        "three-ecosystems"
       ]
     },
     "candy-poster": {
@@ -222,7 +223,7 @@
       "purpose": "Identify the casual mobile franchise in Microsoft\u2019s acquisition and compare its invitation with the two premium brands. The image is the subject of adjacent brand and business analysis.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen",
+        "three-ecosystems",
         "mobile-freemium"
       ]
     },
@@ -241,7 +242,7 @@
       "purpose": "Show the board, remaining moves, lives and boosters that give the freemium offer its context. Publisher-composed promotional screenshot, not an unedited live capture.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen",
+        "three-ecosystems",
         "mobile-freemium"
       ]
     },
@@ -260,7 +261,7 @@
       "purpose": "Credit the actual maker of Candy Crush and distinguish it from its later corporate owners.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen",
+        "three-ecosystems",
         "mobile-freemium"
       ]
     },
@@ -279,7 +280,7 @@
       "purpose": "Identify the original Call of Duty studio beside its 2003 origin credit; not attributed as Black Ops 6 lead developer.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen"
+        "three-ecosystems"
       ]
     },
     "treyarch-logo": {
@@ -297,7 +298,7 @@
       "purpose": "Credit one of the two lead studios behind the pictured Black Ops 6 release.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen"
+        "three-ecosystems"
       ]
     },
     "raven-logo": {
@@ -315,7 +316,7 @@
       "purpose": "Credit one of the two lead studios behind the pictured Black Ops 6 release.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen"
+        "three-ecosystems"
       ]
     },
     "activision-logo": {
@@ -333,7 +334,7 @@
       "purpose": "Identify the publisher in the portfolio and acquisition timeline separately from the development studios.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen",
+        "three-ecosystems",
         "mobile-freemium"
       ]
     },
@@ -352,7 +353,7 @@
       "purpose": "Identify Diablo IV\u2019s developer and publisher; the separate origin credit names Blizzard North for the original Diablo.",
       "treatment": "Complete image retained with proportional responsive WebP variants, no crop, recoloring, mark alteration or removed notices. Studio marks are separate attribution, not Sanctuary branding. Source masters are not delivered to the reader. Gameplay loads only on request in the portfolio.",
       "chapters": [
-        "studio-to-screen"
+        "three-ecosystems"
       ]
     }
   }

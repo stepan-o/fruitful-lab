@@ -71,7 +71,7 @@ it("switches company, measure and category without fabricating a dollar split", 
 });
 
 it("positions the independent publisher figure after sourced Xbox/NVIDIA prose", () => {
-  const chapter = chapters.find(item => item.id === "studio-to-screen")!;
+  const chapter = chapters.find(item => item.id === "three-ecosystems")!;
   const publisher = chapter.exhibits!.find(item => item.kind === "publisher-ecosystem")!;
   expect(chapter.paragraphCitations![publisher.afterParagraph - 1]).toContain("xbox-game-pass-reset");
   expect(chapter.paragraphs[publisher.afterParagraph]).toMatch(/^NVIDIA can earn/);

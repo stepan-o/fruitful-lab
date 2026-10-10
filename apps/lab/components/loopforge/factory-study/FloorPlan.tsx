@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { accessible, FLOOR_SCALE, FLOOR_SIZE, MANAGED_ROOMS, PORTALS, portalOpen, portalRect, ZONES, type ManagedRoomId, type ZoneId } from "@/lib/loopforge/spatial/floor";
+import { accessible, FIRST_FLOOR_HEIGHT, FLOOR_SCALE, FLOOR_SIZE, MANAGED_ROOMS, PORTALS, portalOpen, portalRect, ZONES, type ManagedRoomId, type ZoneId } from "@/lib/loopforge/spatial/floor";
 import { BUILDING_OUTLINE, SERVICE_BLOCKS } from "@/lib/loopforge/spatial/envelope";
 import { CONSTRUCTION_RESERVES } from "@/lib/loopforge/spatial/capacity";
 import styles from "./factory-study.module.css";
@@ -11,9 +11,9 @@ export default function FloorPlan({ open, unlocked, onSelect, onClose, study = f
   useEffect(() => { if (open) dialog.current?.showModal(); else dialog.current?.close(); }, [open]);
   const choose = (id: ZoneId) => { onSelect(id); onClose(); };
   return <dialog ref={dialog} className={styles.floorPlan} aria-labelledby="floor-plan-title" onCancel={onClose} onClose={onClose}>
-    <header><div><span>LOOPFORGE / FLOOR 01 · {FLOOR_SIZE.width} × {FLOOR_SIZE.height} m</span><h2 id="floor-plan-title">Factory plan</h2></div><button onClick={onClose} aria-label="Close floor plan">Close ×</button></header>
+    <header><div><span>FLOOR 01 · {FLOOR_SIZE.width} × {FLOOR_SIZE.height} m</span><h2 id="floor-plan-title">Factory plan</h2></div><button onClick={onClose} aria-label="Close floor plan">Close ×</button></header>
     <p>{study ? "Equipment study: inspect all six staged layouts. Only Security and Conveyor are unlocked in the opening." : "Two rooms online. Four wings sealed. Select a room to move the camera."}</p>
-    <svg viewBox={`0 0 ${FLOOR_SIZE.width} ${FLOOR_SIZE.height}`} role="img" aria-label="Continuous factory layout with enclosed service infill. Weaving, Brewery and Theatre to the north; Lobby, Dispatch and Security in the middle; Conveyor, Cortex and Shipping to the south. Security directly adjoins Conveyor.">
+    <svg viewBox={`0 0 ${FLOOR_SIZE.width} ${FLOOR_SIZE.height}`} role="img" aria-label="Repacked factory with narrow pipe walls and a Security to Theatre corridor. Weaving, Brewery and Theatre to the north; Lobby, Dispatch and Security in the middle; Conveyor, Cortex and Logistics to the south. Security directly adjoins Conveyor.">
       <defs><pattern id="floor-grid" width="1" height="1" patternUnits="userSpaceOnUse"><path d="M1 0H0V1" fill="none" stroke="#809788" strokeOpacity=".14" strokeWidth=".03" /></pattern></defs>
       <rect width={FLOOR_SIZE.width} height={FLOOR_SIZE.height} fill="url(#floor-grid)" />
       <polygon points={BUILDING_OUTLINE.map(p=>`${p.x},${p.y}`).join(" ")} fill="#30382f" stroke="#b39960" strokeWidth=".6" />
@@ -26,8 +26,9 @@ export default function FloorPlan({ open, unlocked, onSelect, onClose, study = f
       </g>; })}
       {CONSTRUCTION_RESERVES.map(p=><rect key={p.id} x={p.rect.x} y={p.rect.y} width={p.rect.w} height={p.rect.h} fill="none" stroke="#688477" strokeWidth=".35" strokeDasharray="1.5 1" pointerEvents="none" />)}
       {PORTALS.filter(p => p.id === "security-conveyor").map(p => <path key={p.id} d={`M${p.start.x+p.width/2} ${p.start.y-2}V${p.end.y+2}`} stroke="#e3bc61" strokeWidth={FLOOR_SCALE*.3} />)}
+      {PORTALS.filter(p=>p.id==='security-theatre').map(p=><g key={p.id} pointerEvents="none"><path d={`M${p.start.x+1} ${p.start.y+4}H${p.end.x}`} stroke="#d2bd79" strokeWidth=".6" strokeDasharray="2 1"/><text x={(p.start.x+p.end.x)/2} y={p.start.y+3} textAnchor="middle" fontSize="2.6" fill="#e3d1a0">THEATRE PASSAGE</text></g>)}
     </svg>
-    <div className={styles.mapLegend}><span>● Online</span><span>▧ Sealed</span><span>L / D / S — support spaces</span><span>▨ Service blocks · no extra room access</span></div>
+    <div className={styles.mapLegend}><span>● Online</span><span>▧ Sealed</span><span>L / D / S — support spaces</span><span>{FIRST_FLOOR_HEIGHT} m hall height</span><span>▨ Pipe walls</span><span>↔ Security–Theatre corridor</span></div>
     <div className={styles.roomList}>{MANAGED_ROOMS.map(z => <button key={z.id} onClick={() => choose(z.id)}><span>{z.number}</span><b>{z.short}</b><small>{accessible(z.id, unlocked) ? "ONLINE" : "SEALED"}</small></button>)}</div>
     <div className={styles.supportLinks}>{ZONES.filter(z => z.kind === "support").map(z => <button key={z.id} onClick={() => choose(z.id)}>{z.name}</button>)}</div>
   </dialog>;

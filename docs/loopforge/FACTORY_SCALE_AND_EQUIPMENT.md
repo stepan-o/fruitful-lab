@@ -6,17 +6,17 @@ Owner direction: preserve the original floor's room proportions and connections,
 
 The owner found the preceding 105 × 75 study too small. Its single installation almost filled each room. This revision treats that machinery as a starter cell within a substantially larger factory.
 
-- Floor envelope: **280 × 200 one-metre design tiles**, 8× the original reference plan in each direction and 7.11× the area of the preceding study. Room proportions and all thirteen connections are preserved. Metres remain a design convention, not a measurement of a painting.
-- **Workers and equipment do not grow.** Workers remain about 1.9 m tall; the conveyor surface remains 1.43 m; the current intake-to-outtake chain remains about 25 m long. Six-metre architectural doorways stay centred on their original openings.
+- Floor envelope: **280 × 200 one-metre design tiles**, 8× the original reference plan in each direction and 7.11× the area of the preceding study. The current refit retains geography and all thirteen prior connections, adjusts room bounds and adds a Security–Theatre corridor. Metres remain a design convention, not a measurement of a painting.
+- **Workers and equipment do not grow.** Workers remain about 1.9 m tall; the conveyor surface remains 1.43 m; the current intake-to-outtake chain remains about 25 m long. Ordinary doorways remain six metres wide; the new Security–Theatre corridor is eight metres wide.
 - **Lattice Forge: 80 × 56 m.** Its starter cell leaves four explicit empty plots: 22 × 22 m feed/buffer ground, 18 × 20 m extension ground, and two 34 × 18 m production bays. Total reserved ground: **2,068 m²**, separately from the six-metre cross-hall delivery aisle, service access and encounter apron. This is enough geometric space to prototype several chains; it is not a promised throughput or worker capacity.
-- Security 32 × 48 m; Brewery 88 × 64 m; Weaving 80 × 64 m; Theatre 56 × 64 m; Cortex 64 × 88 m. Each has more than 35% of its footprint explicitly reserved as clear construction plots, with further space for the initial installation and circulation. `capacity.ts` records 17 plots, separate aisle rectangles and local camera frames.
-- Hall cornices rise to 7–15 m, according to room function. Workstations retain their dimensions. Machine-height-to-worker relationships remain fixed rather than scaling every object together.
+- Security 44 × 32 m; Brewery 96 × 80 m; Weaving 72 × 64 m; Theatre 68 × 88 m; Cortex 64 × 92 m; Logistics 52 × 96 m. Each has more than 35% of its footprint explicitly reserved as clear construction plots, with further space for the initial installation and circulation. `capacity.ts` records 18 plots, separate aisle rectangles and local camera frames.
+- Every hall now uses a 15 m cornice, matched to the tallest first-floor room, Cortex. Workstations retain their dimensions. Machine-height-to-worker relationships remain fixed rather than scaling every object together.
 - **Work area** shows the local installation at readable scale; **Whole room** shows expansion ground; **Overview** shows geography. Orbit, pan and zoom continue to operate on the same scene in Build and production. Empty ground must be visible as future construction capacity, not filled with decorative equipment to disguise it.
 - Plot markings are a planning study, not hard building slots. Future placement must validate machinery, worker access, buffer/transport capacity, maintenance and room-specific hazards. Floor capacity alone does not implement the eventual logistics simulation.
 
 ## Continuity adjustment — 10 October 2026
 
-The owner accepted this scale. The next adjustment closes the legacy gaps using one continuous building envelope and enclosed service blocks; all room dimensions and machinery remain fixed. The top-down plan and source contract are in [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md#continuous-building-envelope--10-october-2026).
+The owner accepted the large scale and then asked to reclaim the broad filler blocks as rooms. Theatre and Logistics fill the eastern rectangles; Brewery, Security, Weaving and Cortex are repacked around an explicit Security–Theatre corridor. Only narrow process pipe walls remain. All halls share a 15 m structural height. Machinery keeps its scale. Current dimensions, the measured plan and checklist are in [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md).
 
 ## Revision checklist
 
@@ -62,11 +62,11 @@ Equipment-study objects are authored prototypes, not purchased assets or complet
 
 ## Implementation boundary
 
-`loopforge-floor-1/4` and `loopforge-commissioning/4` identify the expanded local fixture. The renderer consumes the same nine footprints and thirteen portals as routing and the floor-plan selector. `spatial/equipment.ts` supplies 21 equipment groups, operator tiles and room encounter rectangles; these records are validated for room containment, separation and unoccupied interaction ground. They are reference placements, not a finished build catalog.
+`loopforge-floor-1/5` and `loopforge-commissioning/4` identify the expanded local fixture. The renderer consumes the same nine footprints and fourteen portals as routing and the floor-plan selector. `spatial/equipment.ts` supplies 21 equipment groups, operator tiles and room encounter rectangles; these records are validated for room containment, separation and unoccupied interaction ground. They are reference placements, not a finished build catalog.
 
-The inspection toggle pauses the commissioning clock and exposes staged kits and worker-size reference figures in the later rooms. Returning to the opening restores covered wings and the same two-room admission. The six-metre doors stay centred on the original portal axes; the clearance gate itself remains a smaller worker-scale machine.
+The inspection toggle pauses the commissioning clock and exposes staged kits and worker-size reference figures in the later rooms. Returning to the opening restores covered wings and the same two-room admission. The six-metre doors follow the revised boundaries, and the new Theatre corridor is eight metres wide; the clearance gate itself remains a smaller worker-scale machine.
 
-## Construction-capacity revision validation
+## Construction-capacity revision validation (historical; before room refit)
 
 - All **77 suites / 406 tests** and the stored snapshot pass with the required API origin. The 12 focused spatial/commissioning checks include clear plot containment, no overlap with machines, encounter ground or delivery aisles, original portal topology and deterministic 100-worker replay. Focused lint and whitespace validation pass.
 - Optimized compilation, TypeScript checks and all 61 static routes completed locally; 46 retained asset releases verified. The final local build wrapper ended with signal 143 after producing its full successful route report; the generated production server was then used for the visual checks. The PR's hosted deployment is the independent final build gate.

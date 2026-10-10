@@ -1,8 +1,11 @@
 {
-  "version": "loopforge-floor-1/4",
-  "src": "/loopforge-design/factory-floor-plan.e2415e4a8e3d.svg",
+  "version": "loopforge-floor-1/5",
+  "src": "/loopforge-design/factory-floor-plan.193f23a74311.svg",
   "width": 1200,
   "height": 1040,
-  "buildingArea": 40384,
-  "serviceArea": 6208
+  "buildingArea": 41536,
+  "serviceArea": 1504,
+  "pipeWallArea": 984,
+  "hallHeight": 15,
+  "connections": 14
 }

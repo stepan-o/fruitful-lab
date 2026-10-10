@@ -1056,9 +1056,9 @@ Owner direction: each room has its own operating puzzle within a common cinemati
 
 ## Continuous first-floor plan
 
-![Top-down factory plan](/loopforge-design/factory-floor-plan.e2415e4a8e3d.svg)
+![Top-down factory plan](/loopforge-design/factory-floor-plan.193f23a74311.svg)
 
-Nine zones, thirteen connections and enclosed service infill. Hatched structure does not grant extra room access. Generated from the runtime spatial authority.
+Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. Hatching marks pipe walls. Generated from the runtime spatial authority.
 
 **I made this work.** A queue shrinks because of a change I made. The limiting step moves somewhere else, giving me a new problem I can actually see.
 
@@ -1134,13 +1134,15 @@ More capacity. More coordination.
 
 ## The first floor · calibrated layout
 
-The approved room proportions and scale span a 280 × 200 one-metre plan. A continuous stepped building envelope closes the old gaps with enclosed service structure. Workers, machines and room construction reserves stay at the approved scale. Only Security and Conveyor are unlocked.
+The first floor fills a 280 × 200 one-metre plan. Rooms have been repacked instead of surrounding the old rectangles with large filler blocks. Every hall uses the tallest first-floor cornice: 15 m. Workers and equipment keep their approved scale. Only Security and Conveyor are unlocked.
 
 **Northern wings.** Weaving Gallery at the northwest; Cognitive Substrate Brewery in the north centre; Burn-in Theatre at the northeast. All three are sealed on turn one.
 
-**Entry and production.** Lobby → Dispatch → Security is the arrival route. Conveyor occupies the southwest production bay below Dispatch and Security. Cortex Assembly occupies the original Brain Forge footprint to its east; Shipping remains the southeast support bay. Cortex is sealed.
+**Entry and production.** Lobby → Dispatch → Security remains the arrival route. Conveyor occupies the southwest production bay; Cortex Assembly sits to its east. Theatre now fills the northeast rectangle; the enlarged Logistics hall fills the southeast rectangle. Logistics keeps the shipping support role and is not a seventh managed room.
 
-**One continuous building.** A 40,384 m² building footprint includes the nine approved zones and 6,208 m² of enclosed utility/service infill. Original six-metre connecting passages run through that structure. No floating bridges, empty interior gaps, extra managed rooms or new supervisor-contact edges.
+**One continuous building.** The 41,536 m² footprint contains 40,032 m² of rooms, 984 m² of pipe walls and 520 m² of passages outside rooms. Four-metre process walls carry pipes around Brewery and Cortex. Broad empty infill blocks are removed; the stepped outside silhouette remains.
+
+**Security → Theatre.** A dedicated 8 m-wide corridor runs east from Security to Theatre, between Brewery and Cortex. It is part of the navigation and direct-contact graph, with both endpoint rooms required open. It stays sealed on turn one. A future encounter still needs shifts, motives and event conditions.
 
 **A real shared boundary.** Security and Conveyor have a six-tile architectural opening with a smaller clearance lane. Their assigned supervisors can therefore become eligible for direct encounters. Being able to walk through another room to reach someone is not the same as being their neighbour. Adjacency permits an event; motives, history and current conditions must still explain it.
 
@@ -1148,7 +1150,7 @@ The approved room proportions and scale span a 280 × 200 one-metre plan. A cont
 
 **What the engine owns.** Room IDs, tile footprints, portal spans, unlock state and valid worker routes are plain deterministic data. Individual workers now carry integer positions and room identity. The renderer follows these records rather than inventing a movement loop. The separate building envelope describes architecture; only existing room tiles and portals are walkable.
 
-**Source reconciliation.** The original annotated plan and Sim4 rectangles anchor geography. Sim4 omitted the Security–Conveyor edge despite their shared boundary; the current owner direction and later sim_sim rule restore it. Other sim_sim edges that conflict with the physical map are not copied as invisible doorways. Enclosed passages preserve Sim4 connections through the service infill.
+**Source reconciliation.** The old annotated plan and Sim4 rectangles anchor geography. The current owner-directed refit adjusts room bounds and door positions. All thirteen prior connections remain; the added Security–Theatre corridor brings the total to fourteen. The original Sim4 rectangles remain recorded as provenance, not current room dimensions.
 
 **Boundary of this delivery.** Full layout, opening locks, commissioning flow and staged procedural equipment in all six rooms are implemented. Equipment study is a separate inspection mode; it neither purchases equipment nor unlocks later rooms. Production economics, free placement and supervisor encounter execution remain future work.
 
@@ -1156,19 +1158,19 @@ The approved room proportions and scale span a 280 × 200 one-metre plan. A cont
 
 The previous scale still read as a display of equipment. Rooms now accommodate future building: each has more than 35% explicitly reserved clear construction ground, plus its initial installation, circulation and service spaces. Close working views keep workers readable; room views show where new production can go.
 
-**Security · 32 × 48 m.** A clearance lane, records desk and holding cage leave a checkpoint where LIMEN and STILETTO can collide in front of waiting workers.
+**Security · 44 × 32 m.** A clearance lane, records desk and holding cage leave a checkpoint where LIMEN and STILETTO can collide in front of waiting workers.
 
 **Lattice Forge · 80 × 56 m.** The 25 m starter chain occupies one cell of an 80 × 56 m hall. Four empty construction plots reserve 2,068 m² for extra feeds, buffers, longer lines and parallel production. A separate six-metre delivery aisle connects across the hall. The belt stays 1.43 m high and workers about 1.9 m tall.
 
-**Brewery · 88 × 64 m.** The vat, agitators, filters and controls occupy an initial process cell. Empty feed, filtration and process expansion plots surround it. Maintenance and gathering space remain clear.
+**Brewery · 96 × 80 m.** The vat, agitators, filters and controls occupy an initial process cell. Empty feed, filtration and process expansion plots surround it. Maintenance and gathering space remain clear.
 
-**Weaving · 80 × 64 m.** Paired looms and tall neural columns frame a raised harmonic instrument. Thrum has a central listening space; side aisles serve the machinery.
+**Weaving · 72 × 64 m.** Paired looms and tall neural columns frame a raised harmonic instrument. Thrum has a central listening space; side aisles serve the machinery.
 
-**Theatre · 56 × 64 m.** Sixteen conditioning cradles face three projection screens. Cathexis has a podium, a shared forecourt and side access, so conditioning and defiance can use the same physical layout.
+**Theatre · 68 × 88 m.** Sixteen conditioning cradles face three projection screens. Cathexis has a podium, a shared forecourt and side access, so conditioning and defiance can use the same physical layout.
 
-**Cortex · 64 × 88 m.** A major assembly chamber, twin cooling banks, feed conveyor and controls provide multiple technician positions. Specific supervisor outcomes are still design work.
+**Cortex · 64 × 92 m.** A major assembly chamber, twin cooling banks, feed conveyor and controls provide multiple technician positions. Specific supervisor outcomes are still design work.
 
-**Builder contract.** Equipment footprints, operator positions, encounter clearances, construction reserves and delivery aisles are typed records outside the renderer. Seventeen empty plots across the six rooms are checked against equipment and circulation. Their outlines are a planning study, not restrictive placement slots or purchased equipment.
+**Builder contract.** Equipment footprints, operator positions, encounter clearances, construction reserves and delivery aisles are typed records outside the renderer. Eighteen empty plots across the six rooms are checked against equipment and circulation. Their outlines are a planning study, not restrictive placement slots or purchased equipment.
 
 **Rendering budget.** Room chunks batch static geometry by material. A repeated floor texture supplies metre-scale detail without thousands of tile meshes. Workers share GPU geometry; their individual state stays in the deterministic host.
 

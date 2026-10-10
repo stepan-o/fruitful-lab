@@ -1,4 +1,4 @@
-import { accessible, canStep, CREW_OBSTACLES, CREW_ROUTE, crewPose, findTilePath, FLOOR_SIZE, FLOOR_SCALE, REFERENCE_ZONES, contains, GATE_CROSSINGS, INITIAL_UNLOCKED, interactionEdge, MANAGED_ROOMS, PORTALS, ROUTE_LENGTH, walkable, zone, zoneAt, ZONES } from "@/lib/loopforge/spatial/floor";
+import { accessible, canStep, CREW_OBSTACLES, CREW_ROUTE, crewPose, findTilePath, FLOOR_SIZE, FIRST_FLOOR_HEIGHT, contains, GATE_CROSSINGS, INITIAL_UNLOCKED, interactionEdge, MANAGED_ROOMS, PORTALS, ROUTE_LENGTH, walkable, zone, zoneAt, ZONES } from "@/lib/loopforge/spatial/floor";
 import { BUILDING_AREA, BUILDING_BANDS, SERVICE_INFILL, SERVICE_BLOCKS, inBuilding } from "@/lib/loopforge/spatial/envelope";
 import { portalRect, portalAt } from "@/lib/loopforge/spatial/floor";
 import { CONSTRUCTION_RESERVES, DELIVERY_AISLES, reservedArea } from "@/lib/loopforge/spatial/capacity";
@@ -6,12 +6,17 @@ import { EQUIPMENT_STUDY, ROOM_STAGING } from "@/lib/loopforge/spatial/equipment
 import { command, initialStudy } from "@/lib/loopforge/factory-study/kernel";
 
 describe("calibrated factory floor", () => {
-  it("expands the nine footprints to 280 × 200 tiles without changing their proportions", () => {
+  it("repacks nine metre-scale halls and fills the eastern rectangles", () => {
     expect(ZONES).toHaveLength(9); expect(MANAGED_ROOMS).toHaveLength(6);
-    expect(zone("security").rect).toEqual({ x: 112, y: 80, w: 32, h: 48 });
+    expect(zone("security").rect).toEqual({ x: 112, y: 96, w: 44, h: 32 });
     expect(zone("conveyor").rect).toEqual({ x: 80, y: 128, w: 80, h: 56 });
     expect(FLOOR_SIZE).toEqual({width:280,height:200});
-    for(const z of ZONES){const source=REFERENCE_ZONES.find(r=>r.id===z.id)!;for(const key of ["x","y","w","h"] as const) expect(z.rect[key]/FLOOR_SCALE).toBe(source.rect[key]);}
+    expect(FIRST_FLOOR_HEIGHT).toBe(15);
+    expect(EQUIPMENT_STUDY.every(e=>e.height<FIRST_FLOOR_HEIGHT)).toBe(true);
+    expect(zone('theatre').rect).toEqual({x:212,y:16,w:68,h:88});
+    expect(zone('shipping').rect).toEqual({x:228,y:104,w:52,h:96});
+    expect(zone('shipping').name).toBe('Logistics');
+    expect(zone('theatre').rect.y+zone('theatre').rect.h).toBe(zone('shipping').rect.y);
     for (const a of ZONES) {
       const r = a.rect; expect(r.x + r.w).toBeLessThanOrEqual(FLOOR_SIZE.width); expect(r.y + r.h).toBeLessThanOrEqual(FLOOR_SIZE.height);
       for (const b of ZONES) if (a.id !== b.id) {
@@ -20,9 +25,11 @@ describe("calibrated factory floor", () => {
     }
     for (const p of PORTALS) { expect(zoneAt(p.start)?.id).toBe(p.a); expect(zoneAt(p.end)?.id).toBe(p.b); }
   });
-  it("forms one filled building without holes while retaining the original admission graph", () => {
+  it("fills one building with rooms, explicit passages and narrow pipe walls", () => {
     const area = (rects: readonly {w:number;h:number}[]) => rects.reduce((sum,r)=>sum+r.w*r.h,0);
-    expect(BUILDING_AREA).toBe(40384);
+    expect(BUILDING_AREA).toBe(41536);
+    expect(SERVICE_INFILL.reduce((sum,r)=>sum+r.w*r.h,0)).toBeLessThan(BUILDING_AREA*.04);
+    expect(SERVICE_BLOCKS.every(r=>Math.min(r.w,r.h)<=4)).toBe(true);
     expect(area(ZONES.map(z=>z.rect))+area(SERVICE_INFILL)).toBe(BUILDING_AREA);
     const occupied = new Set<string>(); let overlap = false, extraAccess = false;
     for(const r of [...ZONES.map(z=>z.rect),...SERVICE_INFILL])for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++){
@@ -45,7 +52,7 @@ describe("calibrated factory floor", () => {
     for(const p of PORTALS){const r=portalRect(p);for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++){
       expect(inBuilding({x,y})).toBe(true);expect(SERVICE_BLOCKS.some(b=>contains(b,{x,y}))).toBe(false);
     }}
-    expect(PORTALS).toHaveLength(13);
+    expect(PORTALS).toHaveLength(14);
   });
   it("opens only Security and Conveyor on turn one and enforces access below the UI", () => {
     const state = initialStudy(); expect(state.unlockedRooms).toEqual(["security", "conveyor"]);
@@ -73,6 +80,26 @@ describe("calibrated factory floor", () => {
     expect(findTilePath({ x: 126, y: 133 }, { x: 159, y: 31 }, all)).not.toBeNull();
     expect(interactionEdge("conveyor", "brewery", all)).toBeNull(); // Reachable through Security, not direct neighbours.
     expect(interactionEdge("security", "brewery", all)).toBe("brewery-security");
+  });
+  it("opens the dedicated Security–Theatre corridor only with Theatre admission", () => {
+    const p=PORTALS.find(p=>p.id==='security-theatre')!;
+    expect(p.width).toBe(8);
+    const open=[...INITIAL_UNLOCKED,'theatre'] as typeof INITIAL_UNLOCKED;
+    expect(findTilePath(p.start,p.end,INITIAL_UNLOCKED)).toBeNull();
+    const route=findTilePath(p.start,p.end,open)!;
+    expect(route).not.toBeNull();
+    expect(route.every(t=>contains(portalRect(p),t))).toBe(true);
+    expect(route.length).toBe(p.end.x-p.start.x+1);
+    expect(interactionEdge('security','theatre',INITIAL_UNLOCKED)).toBeNull();
+    expect(interactionEdge('security','theatre',open)).toBe('security-theatre');
+    expect(canStep({x:180,y:100},{x:180,y:101},open)).toBe(true);
+    expect(canStep({x:180,y:103},{x:180,y:104},open)).toBe(false);
+    // All prior room relationships survive the changed physical boundaries.
+    expect(PORTALS.filter(p=>p.id!=='security-theatre').map(p=>p.id)).toEqual([
+      'lobby-dispatch','dispatch-security','security-conveyor','dispatch-conveyor',
+      'weaving-lobby','weaving-dispatch','weaving-brewery','brewery-security',
+      'brewery-theatre','security-cortex','conveyor-cortex','cortex-shipping','theatre-shipping',
+    ]);
   });
   it("fits staged machinery, operator positions and interaction aprons inside their rooms", () => {
     expect(new Set(EQUIPMENT_STUDY.map(e=>e.room)).size).toBe(6);
@@ -109,7 +136,7 @@ describe("calibrated factory floor", () => {
       expect(contains(r,q)&&contains(r,{x:q.x+q.w-1,y:q.y+q.h-1})).toBe(true);
       expect(EQUIPMENT_STUDY.some(e=>overlaps(q,e.footprint))).toBe(false);
     }
-    expect(PORTALS.every(p=>p.width===6)).toBe(true);
+    expect(PORTALS.every(p=>p.width===(p.id==="security-theatre"?8:6))).toBe(true);
   });
   it("routes the individual crew around machinery and across the same Security doorway", () => {
     expect(CREW_ROUTE.length).toBeGreaterThan(20); expect(GATE_CROSSINGS).toHaveLength(2);

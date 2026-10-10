@@ -18,7 +18,8 @@ export type ConstructionReserve = Readonly<{ id: string; room: ManagedRoomId; la
 /** Unoccupied construction plots, not purchased modules or gameplay placement locks.
  * A future builder may subdivide these freely; these remain distinct from delivery aisles. */
 export const CONSTRUCTION_RESERVES: readonly ConstructionReserve[] = [
-  { id: 'security-expansion', room: 'security', label: 'CLEARANCE EXPANSION', rect: { x: 115, y: 84, w: 26, h: 22 } },
+  { id: 'security-expansion', room: 'security', label: 'CLEARANCE EXPANSION', rect: { x: 136, y: 100, w: 16, h: 24 } },
+  { id: 'security-records', room: 'security', label: 'RECORDS', rect: { x: 115, y: 98, w: 15, h: 10 } },
   { id: 'forge-feed', room: 'conveyor', label: 'FEED / BUFFER', rect: { x: 84, y: 134, w: 22, h: 22 } },
   { id: 'forge-extension', room: 'conveyor', label: 'LINE EXTENSION', rect: { x: 138, y: 136, w: 18, h: 20 } },
   { id: 'forge-west', room: 'conveyor', label: 'PRODUCTION BAY B', rect: { x: 84, y: 162, w: 34, h: 18 } },
@@ -27,11 +28,11 @@ export const CONSTRUCTION_RESERVES: readonly ConstructionReserve[] = [
   { id: 'brew-process', room: 'brewery', label: 'PROCESS EXPANSION', rect: { x: 148, y: 52, w: 54, h: 24 } },
   { id: 'brew-filter', room: 'brewery', label: 'FILTRATION / STORAGE', rect: { x: 178, y: 20, w: 26, h: 27 } },
   { id: 'weave-west', room: 'weaving', label: 'LOOM HALL', rect: { x: 44, y: 20, w: 29, h: 54 } },
-  { id: 'weave-south', room: 'weaving', label: 'RIBBON HANDLING', rect: { x: 78, y: 55, w: 37, h: 21 } },
-  { id: 'theatre-west', room: 'theatre', label: 'AUDIENCE EXPANSION', rect: { x: 228, y: 36, w: 10, h: 54 } },
-  { id: 'theatre-east', room: 'theatre', label: 'CONDITIONING EXPANSION', rect: { x: 262, y: 36, w: 14, h: 30 } },
-  { id: 'theatre-east-south', room: 'theatre', label: 'CONDITIONING / SOUTH', rect: { x: 262, y: 70, w: 14, h: 20 } },
-  { id: 'theatre-south', room: 'theatre', label: 'ASSEMBLY / WAITING', rect: { x: 242, y: 70, w: 18, h: 20 } },
+  { id: 'weave-south', room: 'weaving', label: 'RIBBON HANDLING', rect: { x: 78, y: 55, w: 30, h: 21 } },
+  { id: 'theatre-west', room: 'theatre', label: 'AUDIENCE EXPANSION', rect: { x: 216, y: 20, w: 22, h: 78 } },
+  { id: 'theatre-east', room: 'theatre', label: 'CONDITIONING EXPANSION', rect: { x: 262, y: 20, w: 14, h: 46 } },
+  { id: 'theatre-east-south', room: 'theatre', label: 'CONDITIONING / SOUTH', rect: { x: 262, y: 70, w: 14, h: 30 } },
+  { id: 'theatre-south', room: 'theatre', label: 'ASSEMBLY / WAITING', rect: { x: 242, y: 70, w: 18, h: 30 } },
   { id: 'cortex-east', room: 'cortex', label: 'ASSEMBLY EXPANSION', rect: { x: 190, y: 116, w: 29, h: 50 } },
   { id: 'cortex-south', room: 'cortex', label: 'TEST / OUTFEED', rect: { x: 164, y: 172, w: 55, h: 24 } },
   { id: 'cortex-north', room: 'cortex', label: 'SUBASSEMBLY', rect: { x: 164, y: 116, w: 22, h: 16 } },

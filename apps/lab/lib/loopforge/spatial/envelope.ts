@@ -1,10 +1,9 @@
 import { contains, PORTALS, portalRect, ZONES, type Rect, type Tile } from './floor';
 
-/** The approved room rectangles sit inside one continuous building. Service infill
- * closes legacy map gaps; it is architecture, not an extra room or navigation edge. */
+/** Repacked halls fill the stepped shell. Only narrow piping walls and explicit
+ * passages remain outside rooms. Architecture never grants implicit navigation. */
 export const BUILDING_OUTLINE: readonly Tile[] = [
-  { x: 40, y: 16 }, { x: 208, y: 16 }, { x: 208, y: 32 },
-  { x: 280, y: 32 }, { x: 280, y: 200 }, { x: 160, y: 200 },
+  { x: 40, y: 16 }, { x: 280, y: 16 }, { x: 280, y: 200 }, { x: 160, y: 200 },
   { x: 160, y: 184 }, { x: 80, y: 184 }, { x: 80, y: 128 },
   { x: 8, y: 128 }, { x: 8, y: 80 }, { x: 40, y: 80 },
 ];
@@ -45,7 +44,8 @@ function complement(excluded: readonly Rect[]): Rect[] {
   return result;
 }
 export const SERVICE_INFILL: readonly Rect[] = complement(ZONES.map(z => z.rect));
-// Six-metre through-passages retain their existing portal identity and lock checks.
+// The new eight-metre Security–Theatre passage and existing six-metre doors stay clear.
 export const SERVICE_BLOCKS: readonly Rect[] = complement([...ZONES.map(z => z.rect), ...PORTALS.map(portalRect)]);
 export const BUILDING_AREA = BUILDING_BANDS.reduce((area, r) => area + r.w * r.h, 0);
 export const SERVICE_AREA = SERVICE_INFILL.reduce((area, r) => area + r.w * r.h, 0);
+export const PIPE_WALL_AREA = SERVICE_BLOCKS.reduce((area, r) => area + r.w * r.h, 0);

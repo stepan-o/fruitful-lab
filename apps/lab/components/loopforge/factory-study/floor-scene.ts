@@ -8,7 +8,7 @@ import { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 import type { PBRMaterial } from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 import type { Scene } from '@babylonjs/core/scene';
-import { accessible, FLOOR_SIZE, INITIAL_UNLOCKED, PORTALS, portalOpen, portalRect, worldPoint, zone, ZONES, type ZoneId } from '@/lib/loopforge/spatial/floor';
+import { accessible, FIRST_FLOOR_HEIGHT, FLOOR_SIZE, INITIAL_UNLOCKED, PORTALS, portalOpen, portalRect, worldPoint, zone, ZONES, type ZoneId } from '@/lib/loopforge/spatial/floor';
 import { BUILDING_BANDS, BUILDING_EDGES, SERVICE_INFILL, SERVICE_BLOCKS } from '@/lib/loopforge/spatial/envelope';
 import { CONSTRUCTION_RESERVES, DELIVERY_AISLES } from '@/lib/loopforge/spatial/capacity';
 export type V = [number,number,number];
@@ -28,7 +28,7 @@ export type WorkshopTools = {
  * a mesh per tile. Each hall is a cullable, material-batched chunk. */
 export function buildFloor(scene:Scene,t:WorkshopTools){
   const {box,pipe,iron,dark,brass,copper,green,amber,quiet}=t;
-  const cornices:Record<ZoneId,number>={security:7,conveyor:11,theatre:10,brewery:13,weaving:14,cortex:15,lobby:7,dispatch:7,shipping:10};
+
   const roots:TransformNode[]=[], covers:TransformNode[]=[], shutters:TransformNode[]=[];
   const northWalls=new Map<ZoneId,TransformNode>();
   const surveyPaint=new StandardMaterial("worn construction paint",scene);surveyPaint.diffuseColor=new Color3(.42,.38,.26);surveyPaint.emissiveColor=new Color3(.24,.21,.14);surveyPaint.specularColor=Color3.Black();
@@ -59,7 +59,7 @@ export function buildFloor(scene:Scene,t:WorkshopTools){
       const along=start+i+1,x=horizontal?along:fixed,y=horizontal?fixed:along;
       const opening=PORTALS.some(port=>{if(port.a!==z&&port.b!==z)return false;const q=portalRect(port);return x>=q.x&&x<=q.x+q.w&&y>=q.y&&y<=q.y+q.h;});
       if(opening)continue;
-      const full=side==='north'||side==='west',height=full?cornices[z]:.7;
+      const full=side==='north'||side==='west',height=full?FIRST_FLOOR_HEIGHT:.7;
       box('masonry bay',horizontal?[2,height,.32]:[.32,height,2],at(x,y,height/2),dark,p);
       box('brass coping',horizontal?[2,.09,.42]:[.42,.09,2],at(x,y,height+.03),brass,p);
       if(full){
@@ -74,7 +74,7 @@ export function buildFloor(scene:Scene,t:WorkshopTools){
       }
     }
     if(side==='north'){
-      const roof=cornices[z];
+      const roof=FIRST_FLOOR_HEIGHT;
       for(const h of [roof-1.35,roof-.8,roof-.35])pipe('continuous service main',[at(r.x+.4,r.y+.6,h),at(r.x+r.w-.4,r.y+.6,h)],h===roof-.8?.17:.085,copper,p);
       for(let x=r.x+2;x<r.x+r.w;x+=4){pipe('hanging cable loop',[at(x,r.y+.8,roof-.2),at(x+.2,r.y+1,roof-1.5),at(x+1,r.y+1,roof-1.8),at(x+1.5,r.y+.8,roof-.3)],.045,dark,p);box('caged wall light',[.62,.25,.5],at(x,r.y+.85,roof-1.65),brass,p);box('warm tube',[.44,.08,.27],at(x,r.y+.98,roof-1.76),amber,p);}
     }
@@ -110,9 +110,9 @@ export function buildFloor(scene:Scene,t:WorkshopTools){
     }
     stencil(z.short.toUpperCase(),z.kind==='support'?'LOOPFORGE / SERVICES':z.number+' / PRODUCTION FLOOR',x,r.y+r.h-3,Math.min(13,r.w-2),2,.032,p);
     if(!accessible(z.id,INITIAL_UNLOCKED)){const cover=parent(z.id+' sealed cover');covers.push(cover);
-      box('uncommissioned roof',[r.w-.4,.5,r.h-.4],at(x,y,cornices[z.id]+.3),iron,cover);
-      for(let tx=r.x+1;tx<r.x+r.w;tx+=3)box('roof seam',[.075,.08,r.h-.7],at(tx,y,cornices[z.id]+.6),brass,cover);
-      stencil(z.short.toUpperCase(),z.number+' / SEALED',x,y,r.w-2,3.2,cornices[z.id]+.61,cover,true);
+      box('uncommissioned roof',[r.w-.4,.5,r.h-.4],at(x,y,FIRST_FLOOR_HEIGHT+.3),iron,cover);
+      for(let tx=r.x+1;tx<r.x+r.w;tx+=3)box('roof seam',[.075,.08,r.h-.7],at(tx,y,FIRST_FLOOR_HEIGHT+.6),brass,cover);
+      stencil(z.short.toUpperCase(),z.number+' / SEALED',x,y,r.w-2,3.2,FIRST_FLOOR_HEIGHT+.61,cover,true);
     }
   }
   // One continuous foundation and enclosed utility blocks replace floating bridges.
@@ -121,20 +121,30 @@ export function buildFloor(scene:Scene,t:WorkshopTools){
   for(const r of BUILDING_BANDS)box('continuous foundation',[r.w,.55,r.h],at(r.x+r.w/2,r.y+r.h/2,-.68),dark,shell);
   for(const r of SERVICE_INFILL)box('service floor',[r.w,.4,r.h],at(r.x+r.w/2,r.y+r.h/2,-.22),floorMat,shell);
   for(const r of SERVICE_BLOCKS){
-    const x=r.x+r.w/2,y=r.y+r.h/2,height=4.2;
-    box('enclosed utility block',[r.w,height,r.h],at(x,y,height/2),green,shell);
+    const x=r.x+r.w/2,y=r.y+r.h/2,height=FIRST_FLOOR_HEIGHT;
+    box('pipe wall',[r.w,height,r.h],at(x,y,height/2),green,shell);
     box('utility roof coping',[r.w,.12,r.h],at(x,y,height+.06),iron,shell);
     for(let sx=r.x+2;sx<r.x+r.w;sx+=4)box('roof standing seam',[.06,.06,r.h],at(sx,y,height+.15),brass,shell);
-    if(r.w>=10&&r.h>=10){
-      box('service ventilation bank',[4,.5,2.8],at(x,y,height+.37),dark,shell);
-      for(let j=0;j<7;j++)box('vent louvre',[3.8,.09,.16],at(x,y-1.05+j*.35,height+.66),iron,shell);
+    const horizontal=r.w>r.h,length=horizontal?r.w:r.h;
+    // Bundled headers identify the remaining four-metre walls as process services.
+    for(const offset of [-.95,0,.95]){
+      pipe('process header',horizontal?[at(r.x+.3,y+offset,height+.35),at(r.x+r.w-.3,y+offset,height+.35)]:[at(x+offset,r.y+.3,height+.35),at(x+offset,r.y+r.h-.3,height+.35)],.24,copper,shell);
     }
+    for(let a=2;a<length;a+=5)box('header saddle',horizontal?[.18,.55,3]:[3,.55,.18],at(horizontal?r.x+a:x,horizontal?y:r.y+a,height+.28),iron,shell);
   }
   for(const {start:a,end:b} of BUILDING_EDGES){
     const horizontal=a.y===b.y;
     box('continuous building plinth',horizontal?[Math.abs(a.x-b.x),.8,.38]:[.38,.8,Math.abs(a.y-b.y)],at((a.x+b.x)/2,(a.y+b.y)/2,-.18),iron,shell);
   }
   const transit=parent('door thresholds and enclosed service passages');
+  const corridor=PORTALS.find(p=>p.id==='security-theatre')!;
+  const left=zone('security').rect.x+zone('security').rect.w,right=zone('theatre').rect.x;
+  for(const y of [corridor.start.y,corridor.start.y+corridor.width]){
+    box('corridor boundary',[right-left,.8,.32],at((left+right)/2,y,.4),green,transit);
+    pipe('corridor handrail',[at(left,y,1.1),at(right,y,1.1)],.07,brass,transit);
+    for(let x=left+2;x<right;x+=6){box('corridor rail post',[.12,1.1,.12],at(x,y,.55),iron,transit);box('corridor marker',[.55,.04,.2],at(x,y+(y===corridor.start.y?.3:-.3),.07),amber,transit);}
+  }
+  stencil('SECURITY  /  THEATRE','EAST PASSAGE', (left+right)/2,corridor.start.y+4,34,2.2,.04,transit);
   for(const p of PORTALS){const a=zone(p.a).rect,b=zone(p.b).rect,horizontal=p.start.x!==p.end.x;
     const x=horizontal?a.x+a.w:p.start.x+p.width/2,y=horizontal?p.start.y+p.width/2:a.y+a.h;
     if(horizontal&&b.x>a.x+a.w)box('enclosed passage floor',[b.x-a.x-a.w,.3,p.width],at((a.x+a.w+b.x)/2,y,-.15),floorMat,transit);

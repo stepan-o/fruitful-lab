@@ -2,9 +2,10 @@
  * Coordinates are integer tiles, west→east / north→south; rectangles are half-open.
  * This module owns topology and admission. A renderer may project it, never redefine it.
  */
-export const FLOOR_VERSION = "loopforge-floor-1/4";
+export const FLOOR_VERSION = "loopforge-floor-1/5";
 export const FLOOR_SCALE = 8;
 export const FLOOR_SIZE = { width: 35 * FLOOR_SCALE, height: 25 * FLOOR_SCALE } as const;
+export const FIRST_FLOOR_HEIGHT = 15; // Shared structural cornice, matched to Cortex.
 export const WORKER_HEIGHT = 1.9; // Metres; one design tile is one metre.
 export type ManagedRoomId = "security" | "conveyor" | "theatre" | "brewery" | "weaving" | "cortex";
 export type ZoneId = ManagedRoomId | "lobby" | "dispatch" | "shipping";
@@ -22,7 +23,21 @@ export const REFERENCE_ZONES: readonly FloorZone[] = [
   { id: "cortex", name: "Cortex Assembly", short: "Cortex Assembly", number: "06", kind: "managed", rect: { x: 20, y: 14, w: 8, h: 11 } },
   { id: "shipping", name: "Shipping", short: "Shipping", number: "S", kind: "support", rect: { x: 30, y: 15, w: 5, h: 10 } },
 ];
-export const ZONES: readonly FloorZone[] = REFERENCE_ZONES.map(z => ({ ...z, rect: { x: z.rect.x * FLOOR_SCALE, y: z.rect.y * FLOOR_SCALE, w: z.rect.w * FLOOR_SCALE, h: z.rect.h * FLOOR_SCALE } }));
+/** Owner-directed refit: retain geography and equipment scale, reclaim blank infill
+ * as room floor. The original Sim4 rectangles above remain provenance, not runtime bounds. */
+const FOOTPRINTS: Record<ZoneId, Rect> = {
+  weaving: { x: 40, y: 16, w: 72, h: 64 },
+  brewery: { x: 112, y: 16, w: 96, h: 80 },
+  theatre: { x: 212, y: 16, w: 68, h: 88 },
+  lobby: { x: 8, y: 80, w: 72, h: 48 },
+  dispatch: { x: 80, y: 80, w: 32, h: 48 },
+  security: { x: 112, y: 96, w: 44, h: 32 },
+  conveyor: { x: 80, y: 128, w: 80, h: 56 },
+  cortex: { x: 160, y: 108, w: 64, h: 92 },
+  shipping: { x: 228, y: 104, w: 52, h: 96 },
+};
+export const ZONES: readonly FloorZone[] = REFERENCE_ZONES.map(z => ({ ...z,
+  ...(z.id === "shipping" ? { name: "Logistics", short: "Logistics" } : {}), rect: FOOTPRINTS[z.id] }));
 export const MANAGED_ROOMS = [...ZONES.filter(z => z.kind === "managed")].sort((a, b) => a.number.localeCompare(b.number));
 export const INITIAL_UNLOCKED: readonly ManagedRoomId[] = ["security", "conveyor"];
 export function zone(id: ZoneId): FloorZone { return ZONES.find(z => z.id === id)!; }
@@ -31,33 +46,25 @@ export function zoneAt(t: Tile): FloorZone | undefined { return ZONES.find(z => 
 export function accessible(id: ZoneId, unlocked: readonly ManagedRoomId[]): boolean { return zone(id).kind === "support" || unlocked.includes(id as ManagedRoomId); }
 
 export type Portal = Readonly<{ id: string; a: ZoneId; b: ZoneId; start: Tile; end: Tile; width: number }>;
-/** All legacy physical neighbours are retained; Security–Conveyor adds the explicit
- * shared threshold required by the current design and the later sim_sim conflict rule.
- * Enclosed passages through service infill give legacy separated rooms walkable geometry.
- * The building envelope is defined separately; infill does not grant navigation access.
- */
-const referencePortals: readonly Portal[] = [
-  { id: "lobby-dispatch", a: "lobby", b: "dispatch", start: { x: 9, y: 12 }, end: { x: 10, y: 12 }, width: 2 },
-  { id: "dispatch-security", a: "dispatch", b: "security", start: { x: 13, y: 12 }, end: { x: 14, y: 12 }, width: 2 },
-  { id: "security-conveyor", a: "security", b: "conveyor", start: { x: 15, y: 15 }, end: { x: 15, y: 16 }, width: 2 },
-  { id: "dispatch-conveyor", a: "dispatch", b: "conveyor", start: { x: 11, y: 15 }, end: { x: 11, y: 16 }, width: 2 },
-  { id: "weaving-lobby", a: "weaving", b: "lobby", start: { x: 7, y: 9 }, end: { x: 7, y: 10 }, width: 2 },
-  { id: "weaving-dispatch", a: "weaving", b: "dispatch", start: { x: 11, y: 9 }, end: { x: 11, y: 10 }, width: 2 },
-  { id: "weaving-brewery", a: "weaving", b: "brewery", start: { x: 14, y: 5 }, end: { x: 15, y: 5 }, width: 2 },
-  { id: "brewery-security", a: "brewery", b: "security", start: { x: 15, y: 9 }, end: { x: 15, y: 10 }, width: 2 },
-  { id: "brewery-theatre", a: "brewery", b: "theatre", start: { x: 25, y: 7 }, end: { x: 28, y: 7 }, width: 2 },
-  { id: "security-cortex", a: "security", b: "cortex", start: { x: 17, y: 14 }, end: { x: 20, y: 14 }, width: 2 },
-  { id: "conveyor-cortex", a: "conveyor", b: "cortex", start: { x: 19, y: 19 }, end: { x: 20, y: 19 }, width: 2 },
-  { id: "cortex-shipping", a: "cortex", b: "shipping", start: { x: 27, y: 19 }, end: { x: 30, y: 19 }, width: 2 },
-  { id: "theatre-shipping", a: "theatre", b: "shipping", start: { x: 32, y: 11 }, end: { x: 32, y: 15 }, width: 2 },
+/** Thirteen existing relationships plus the owner-required Security–Theatre corridor.
+ * Endpoints are admitted room tiles; gaps contain only the explicitly authored passage.
+ * Passage access requires both endpoints unlocked, including the Theatre corridor. */
+export const PORTALS: readonly Portal[] = [
+  { id: "lobby-dispatch", a: "lobby", b: "dispatch", start: { x: 79, y: 101 }, end: { x: 80, y: 101 }, width: 6 },
+  { id: "dispatch-security", a: "dispatch", b: "security", start: { x: 111, y: 101 }, end: { x: 112, y: 101 }, width: 6 },
+  { id: "security-conveyor", a: "security", b: "conveyor", start: { x: 125, y: 127 }, end: { x: 125, y: 128 }, width: 6 },
+  { id: "dispatch-conveyor", a: "dispatch", b: "conveyor", start: { x: 93, y: 127 }, end: { x: 93, y: 128 }, width: 6 },
+  { id: "weaving-lobby", a: "weaving", b: "lobby", start: { x: 61, y: 79 }, end: { x: 61, y: 80 }, width: 6 },
+  { id: "weaving-dispatch", a: "weaving", b: "dispatch", start: { x: 93, y: 79 }, end: { x: 93, y: 80 }, width: 6 },
+  { id: "weaving-brewery", a: "weaving", b: "brewery", start: { x: 111, y: 45 }, end: { x: 112, y: 45 }, width: 6 },
+  { id: "brewery-security", a: "brewery", b: "security", start: { x: 125, y: 95 }, end: { x: 125, y: 96 }, width: 6 },
+  { id: "brewery-theatre", a: "brewery", b: "theatre", start: { x: 207, y: 61 }, end: { x: 212, y: 61 }, width: 6 },
+  { id: "security-cortex", a: "security", b: "cortex", start: { x: 155, y: 117 }, end: { x: 160, y: 117 }, width: 6 },
+  { id: "conveyor-cortex", a: "conveyor", b: "cortex", start: { x: 159, y: 157 }, end: { x: 160, y: 157 }, width: 6 },
+  { id: "cortex-shipping", a: "cortex", b: "shipping", start: { x: 223, y: 157 }, end: { x: 228, y: 157 }, width: 6 },
+  { id: "theatre-shipping", a: "theatre", b: "shipping", start: { x: 261, y: 103 }, end: { x: 261, y: 104 }, width: 6 },
+  { id: "security-theatre", a: "security", b: "theatre", start: { x: 155, y: 96 }, end: { x: 212, y: 96 }, width: 8 },
 ];
-export const PORTALS: readonly Portal[] = referencePortals.map(p => {
-  const horizontal = p.start.x !== p.end.x;
-  // Preserve the centre of each original opening, but keep a six-metre doorway.
-  // More construction tiles do not imply enormous gates or wider robots.
-  const width = 6, crossOffset = (p.width * FLOOR_SCALE - width) / 2;
-  return { ...p, start: { x: p.start.x * FLOOR_SCALE + (horizontal ? FLOOR_SCALE - 1 : crossOffset), y: p.start.y * FLOOR_SCALE + (horizontal ? crossOffset : FLOOR_SCALE - 1) }, end: { x: p.end.x * FLOOR_SCALE + (horizontal ? 0 : crossOffset), y: p.end.y * FLOOR_SCALE + (horizontal ? crossOffset : 0) }, width };
-});
 export function portalRect(p: Portal): Rect {
   return p.start.x !== p.end.x
     ? { x: Math.min(p.start.x, p.end.x), y: p.start.y, w: Math.abs(p.end.x - p.start.x) + 1, h: p.width }

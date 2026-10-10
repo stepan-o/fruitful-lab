@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -8,8 +7,6 @@ import {
   Compass,
   Swords,
   Paintbrush,
-  Mail,
-  LoaderCircle,
 } from "lucide-react";
 import {
   LocaleProvider,
@@ -18,22 +15,21 @@ import {
 } from "@/lib/mexico-city/locale";
 import Artwork from "./Artwork";
 import GameName from "./GameName";
-import { ERRORS } from "@/lib/mexico-city/field-game";
+import AccountForm, { type AuthMode } from "@/components/accounts/AccountForm";
 
 export function FieldLogin({
   next,
   success,
   guest,
+  initialMode = "login",
 }: {
   next: string;
   success: () => Promise<void>;
   guest: () => void;
+  initialMode?: AuthMode;
 }) {
   const { locale } = useLocale();
   const say = (es: string, en: string) => (locale === "es" ? es : en);
-  const [register, setRegister] = useState(false),
-    [busy, setBusy] = useState(false),
-    [error, setError] = useState("");
   return (
     <section className="mc-login">
       <Link href="/mexico-city" className="mc-brand">
@@ -51,12 +47,10 @@ export function FieldLogin({
         {say("Tu cuenta de Fruitful Lab", "Your Fruitful Lab account")}
       </p>
       <h1>
-        {register
-          ? say("Tu ciudad empieza aquí.", "Your city starts here.")
-          : say(
-              "Todavía hay mucho por descubrir.",
-              "There’s so much left to discover.",
-            )}
+        {say(
+          "Todavía hay mucho por descubrir.",
+          "There’s so much left to discover.",
+        )}
       </h1>
       <p>
         {say(
@@ -64,124 +58,7 @@ export function FieldLogin({
           "One account to keep your discoveries and play with your group.",
         )}
       </p>
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          if (busy) return;
-          setBusy(true);
-          setError("");
-          const data = new FormData(e.currentTarget);
-          const email = String(data.get("email")).trim().toLowerCase(),
-            password = String(data.get("password"));
-          try {
-            if (register) {
-              const response = await fetch("/api/mexico-city/register", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  email,
-                  password,
-                  full_name: data.get("name"),
-                }),
-              });
-              if (!response.ok) {
-                const data = await response.json();
-                throw new Error(
-                  typeof data.detail === "string"
-                    ? data.detail
-                    : "registration_invalid",
-                );
-              }
-            }
-            const response = await fetch("/api/auth/login", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email, password, next }),
-            });
-            if (!response.ok)
-              throw new Error(
-                response.status === 401
-                  ? "login_failed"
-                  : "service_unavailable",
-              );
-            await success();
-          } catch (error) {
-            const code =
-              error instanceof Error ? error.message : "service_unavailable";
-            setError(
-              code === "login_failed"
-                ? say(
-                    "Revisa tu correo y contraseña.",
-                    "Check your email and password.",
-                  )
-                : code === "registration_invalid"
-                  ? say(
-                      "Revisa tus datos. Usa una contraseña de al menos 10 caracteres.",
-                      "Check your details. Use a password with at least 10 characters.",
-                    )
-                  : (ERRORS[code] || ERRORS.service_unavailable)[
-                      locale === "es" ? 0 : 1
-                    ],
-            );
-          } finally {
-            setBusy(false);
-          }
-        }}
-      >
-        {register && (
-          <label>
-            {say("Cómo te llamas", "Your name")}
-            <input name="name" autoComplete="name" required maxLength={60} />
-          </label>
-        )}
-        <label>
-          {say("Correo electrónico", "Email")}
-          <input
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            maxLength={255}
-          />
-        </label>
-        <label>
-          {say("Contraseña", "Password")}
-          <input
-            name="password"
-            type="password"
-            autoComplete={register ? "new-password" : "current-password"}
-            required
-            minLength={register ? 10 : 1}
-            maxLength={128}
-          />
-        </label>
-        {error && (
-          <p className="mc-error" role="alert">
-            {error}
-          </p>
-        )}
-        <button className="mc-primary" disabled={busy}>
-          {busy ? (
-            <LoaderCircle className="mc-spin" size={18} />
-          ) : (
-            <Mail size={18} />
-          )}
-          {register
-            ? say("Crear cuenta y entrar", "Create account and enter")
-            : say("Entrar al juego", "Enter the game")}
-        </button>
-      </form>
-      <button
-        className="mc-text-button"
-        onClick={() => {
-          setRegister(!register);
-          setError("");
-        }}
-      >
-        {register
-          ? say("Ya tengo cuenta", "I have an account")
-          : say("Crear una cuenta", "Create an account")}
-      </button>
+      <AccountForm initialMode={initialMode} next={next} success={success} />
       <button className="mc-secondary" onClick={guest}>
         {say(
           "Probar una salida sin cuenta",
@@ -197,6 +74,7 @@ export function FieldLogin({
     </section>
   );
 }
+
 function Landing({ signedIn }: { signedIn: boolean }) {
   const { locale } = useLocale();
   const say = (es: string, en: string) => (locale === "es" ? es : en);

@@ -10,177 +10,230 @@ const DEFAULT_CONTRACTOR_LANDING = "/contractor";
 const DEFAULT_GENERAL_LANDING = "/tools";
 
 type MeResponse = {
-    is_admin: boolean;
-    groups: string[];
+  is_admin: boolean;
+  groups: string[];
 };
 
 function isSafeNext(next: unknown): next is string {
-    return (
-        typeof next === "string" &&
-        next.startsWith("/") &&
-        !next.startsWith("//") &&
-        !next.includes("\\") &&
-        !/[\u0000-\u0020]/.test(next)
-    );
+  return (
+    typeof next === "string" &&
+    next.startsWith("/") &&
+    !next.startsWith("//") &&
+    !next.includes("\\") &&
+    !/[\u0000-\u0020]/.test(next)
+  );
 }
 
 function normalizePath(nextPathOrUrl: string): string {
-    // dummy base so URL can parse relative paths + query
-    return new URL(nextPathOrUrl, "http://localhost").pathname;
+  // dummy base so URL can parse relative paths + query
+  return new URL(nextPathOrUrl, "http://localhost").pathname;
 }
 
-function isAllowedNextForRole(nextPath: string, role: "admin" | "contractor" | "general") {
-    const p = normalizePath(nextPath);
-    if (p === "/mexico-city/play") return true;
+function isAllowedNextForRole(
+  nextPath: string,
+  role: "admin" | "contractor" | "general",
+) {
+  const p = normalizePath(nextPath);
+  if (p === "/mexico-city/play") return true;
 
-    // Admins can go to admin area + tools + contractor area.
-    // NOTE: tighten/expand as policy evolves.
-    if (role === "admin") {
-        return (
-            p === "/admin" ||
-            p.startsWith("/admin/") ||
-            p === "/tools" ||
-            p.startsWith("/tools/") ||
-            p === "/contractor" ||
-            p.startsWith("/contractor/")
-        );
-    }
+  // Admins can go to admin area + tools + contractor area.
+  // NOTE: tighten/expand as policy evolves.
+  if (role === "admin") {
+    return (
+      p === "/admin" ||
+      p.startsWith("/admin/") ||
+      p === "/tools" ||
+      p.startsWith("/tools/") ||
+      p === "/contractor" ||
+      p.startsWith("/contractor/")
+    );
+  }
 
-    if (role === "contractor") {
-        return p === "/contractor" || p.startsWith("/contractor/");
-    }
+  if (role === "contractor") {
+    return p === "/contractor" || p.startsWith("/contractor/");
+  }
 
-    // general
-    return p === "/tools" || p.startsWith("/tools/");
+  // general
+  return p === "/tools" || p.startsWith("/tools/");
 }
 
 function appendQueryParam(pathWithQuery: string, key: string, value: string) {
-    // Works for relative paths by providing a dummy base.
-    const u = new URL(pathWithQuery, "http://localhost");
-    u.searchParams.set(key, value);
-    const out = u.pathname + u.search;
-    return out;
+  // Works for relative paths by providing a dummy base.
+  const u = new URL(pathWithQuery, "http://localhost");
+  u.searchParams.set(key, value);
+  const out = u.pathname + u.search;
+  return out;
 }
 
 function roleDefault(role: "admin" | "contractor" | "general") {
-    if (role === "admin") return DEFAULT_ADMIN_LANDING;
-    if (role === "contractor") return DEFAULT_CONTRACTOR_LANDING;
-    return DEFAULT_GENERAL_LANDING;
+  if (role === "admin") return DEFAULT_ADMIN_LANDING;
+  if (role === "contractor") return DEFAULT_CONTRACTOR_LANDING;
+  return DEFAULT_GENERAL_LANDING;
 }
 
 export async function POST(req: NextRequest) {
-    let apiOrigin: string;
+  const origin = req.headers.get("origin");
+  try {
+    if (origin && new URL(origin).host !== req.headers.get("host"))
+      return NextResponse.json({ detail: "origin_forbidden" }, { status: 403 });
+  } catch {
+    return NextResponse.json({ detail: "origin_forbidden" }, { status: 403 });
+  }
+  if (Number(req.headers.get("content-length") || 0) > 8192)
+    return NextResponse.json({ detail: "request_too_large" }, { status: 413 });
+  let apiOrigin: string;
 
-    try {
-        apiOrigin = getApiOrigin();
-    } catch (err) {
-        // Log server-side, but don't break internals to the client
-        console.error("Misconfigured API_BASE_URL", err);
-        return NextResponse.json(
-            { success: false, detail: "Server configuration error"},
-            { status: 500 }
-        );
-    }
+  try {
+    apiOrigin = getApiOrigin();
+  } catch (err) {
+    // Log server-side, but don't break internals to the client
+    console.error("Misconfigured API_BASE_URL", err);
+    return NextResponse.json(
+      { success: false, detail: "Server configuration error" },
+      { status: 500 },
+    );
+  }
 
-    const body = await req.json().catch(() => null);
+  const raw = await req.text();
+  if (raw.length > 8192)
+    return NextResponse.json({ detail: "request_too_large" }, { status: 413 });
+  let body;
+  try {
+    body = JSON.parse(raw);
+  } catch {
+    body = null;
+  }
 
-    if (!body || typeof body.email !== "string" || typeof body.password !== "string") {
-        return NextResponse.json(
-            { success: false, detail: "Email and password are required", redirectTo: "/tools?flash=login_failed" },
-            { status: 400 },
-        );
-    }
+  if (
+    !body ||
+    typeof body.email !== "string" ||
+    typeof body.password !== "string"
+  ) {
+    return NextResponse.json(
+      {
+        success: false,
+        detail: "Email and password are required",
+        redirectTo: "/tools?flash=login_failed",
+      },
+      { status: 400 },
+    );
+  }
 
-    // 1) Authenticate against backend /auth/login
-    const loginUrl = new URL("/auth/login", apiOrigin).toString();
+  // 1) Authenticate against backend /auth/login
+  const loginUrl = new URL("/auth/login", apiOrigin).toString();
 
-    const params = new URLSearchParams();
-    params.set("username", body.email);
-    params.set("password", body.password);
+  const params = new URLSearchParams();
+  params.set("username", body.email);
+  params.set("password", body.password);
 
-    const resp = await fetch(loginUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params.toString(),
-        cache: "no-store",
+  let resp: Response;
+  try {
+    resp = await fetch(loginUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: params.toString(),
+      cache: "no-store",
+      signal: AbortSignal.timeout(15_000),
+    });
+  } catch {
+    return NextResponse.json(
+      {
+        success: false,
+        detail: "Account service unavailable. Please try again shortly.",
+      },
+      { status: 503 },
+    );
+  }
+  // Infrastructure failures must not be disguised as an incorrect password.
+  if (resp.status !== 401 && resp.status !== 403 && !resp.ok) {
+    return NextResponse.json(
+      {
+        success: false,
+        detail: "Account service unavailable. Please try again shortly.",
+      },
+      { status: 503 },
+    );
+  }
+
+  if (!resp.ok) {
+    const detail = (await resp.json().catch(() => null)) ?? {};
+    // Contract: deterministic failure nav target
+    return NextResponse.json(
+      {
+        success: false,
+        detail: detail.detail ?? "Invalid email or password. Please try again.",
+        redirectTo: "/tools?flash=login_failed",
+      },
+      { status: 401 },
+    );
+  }
+
+  const data = await resp.json();
+
+  if (!data || typeof data.access_token !== "string") {
+    return NextResponse.json(
+      { success: false, detail: "Invalid auth response" },
+      { status: 502 },
+    );
+  }
+
+  const token = data.access_token as string;
+
+  // 2) Set cookie (server authority)
+  // NOTE: cookie must be set on the same response we return.
+  // We'll compute redirectTo first, but cookie will be attached to the final response.
+  let role: "admin" | "contractor" | "general" = "general";
+  const meUrl = new URL("/auth/me", apiOrigin).toString();
+
+  // 3) Identify role via /auth/me using the freshly issued token
+  try {
+    const meResp = await fetch(meUrl, {
+      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-store",
+      signal: AbortSignal.timeout(15_000),
     });
 
-    if (!resp.ok) {
-        const detail = (await resp.json().catch(() => null)) ?? {};
-        // Contract: deterministic failure nav target
-        return NextResponse.json(
-            {
-                success: false,
-                detail: detail.detail ?? "Invalid email or password. Please try again.",
-                redirectTo: "/tools?flash=login_failed",
-            },
-            { status: 401 },
-        );
+    if (meResp.ok) {
+      const me = (await meResp.json()) as MeResponse;
+      const groups = Array.isArray(me.groups) ? me.groups : [];
+      if (me.is_admin) role = "admin";
+      else if (groups.includes("contractor")) role = "contractor";
+      else role = "general";
+    } else {
+      // fail-closed to least privilege
+      role = "general";
     }
+  } catch {
+    // fail-closed to least privilege
+    role = "general";
+  }
 
-    const data = await resp.json();
+  // 4) Decide redirect target: allowed next OR role default
+  const requestedNext = isSafeNext(body.next) ? body.next : null;
 
-    if (!data || typeof data.access_token !== "string") {
-        return NextResponse.json({ success: false, detail: "Invalid auth response"},
-                                 { status: 502 });
-    }
+  let redirectTo = roleDefault(role);
 
-    const token = data.access_token as string;
+  if (requestedNext && isAllowedNextForRole(requestedNext, role)) {
+    redirectTo = requestedNext;
+  }
 
-    // 2) Set cookie (server authority)
-    // NOTE: cookie must be set on the same response we return.
-    // We'll compute redirectTo first, but cookie will be attached to the final response.
-    let role: "admin" | "contractor" | "general" = "general";
-    const meUrl = new URL("/auth/me", apiOrigin).toString();
+  // 5) Flash behavior:
+  // - success should show a banner only on /tools (as per your desired UX)
+  if (redirectTo === "/tools" || redirectTo.startsWith("/tools/")) {
+    redirectTo = appendQueryParam(redirectTo, "flash", "login_success");
+  }
 
-    // 3) Identify role via /auth/me using the freshly issued token
-    try {
-        const meResp = await fetch(meUrl, {
-            headers: { Authorization: `Bearer ${token}` },
-            cache: "no-store",
-        });
+  const res = NextResponse.json({ success: true, redirectTo });
 
-        if (meResp.ok) {
-            const me = (await meResp.json()) as MeResponse;
-            const groups = Array.isArray(me.groups) ? me.groups : [];
-            if (me.is_admin) role = "admin";
-            else if (groups.includes("contractor")) role = "contractor";
-            else role = "general";
-        } else {
-            // fail-closed to least privilege
-            role = "general";
-        }
-    } catch {
-        // fail-closed to least privilege
-        role = "general";
-    }
+  res.cookies.set({
+    name: COOKIE_NAME,
+    value: token,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 4, // 4 hours
+  });
 
-    // 4) Decide redirect target: allowed next OR role default
-    const requestedNext = isSafeNext(body.next) ? body.next : null;
-
-    let redirectTo = roleDefault(role);
-
-    if (requestedNext && isAllowedNextForRole(requestedNext, role)) {
-        redirectTo = requestedNext;
-    }
-
-    // 5) Flash behavior:
-    // - success should show a banner only on /tools (as per your desired UX)
-    if (redirectTo === "/tools" || redirectTo.startsWith("/tools/")) {
-        redirectTo = appendQueryParam(redirectTo, "flash", "login_success");
-    }
-
-    const res = NextResponse.json({ success: true, redirectTo });
-
-    res.cookies.set({
-        name: COOKIE_NAME,
-        value: token,
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/",
-        maxAge: 60 * 60 * 4, // 4 hours
-    });
-
-    return res;
+  return res;
 }

@@ -41,6 +41,7 @@ import {
   type Mode,
   type Copy,
 } from "@/lib/mexico-city/field-game";
+import { playerOverview } from "@/lib/mexico-city/player";
 import { STORIES, storyById } from "@/lib/mexico-city/content";
 import type { LearningId } from "@/lib/mexico-city/rewards";
 import { directions } from "@/lib/mexico-city/map-engine";
@@ -80,10 +81,18 @@ type Props = {
   guest: boolean;
   demo: boolean;
   initialMode: string;
+  initialAuth?: "login" | "register" | "forgot";
   invite: string;
 };
 const validModes = ["home", "solo", "friends", "community"];
-function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
+function Game({
+  initialUser,
+  guest,
+  demo,
+  initialMode,
+  initialAuth,
+  invite,
+}: Props) {
   const { locale } = useLocale();
   const say = (es: string, en: string) => (locale === "es" ? es : en);
   const copy = (value: Copy) => value[locale === "es" ? 0 : 1];
@@ -91,6 +100,7 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
     demo ? "demo" : guest ? "guest" : "account",
   );
   const [authenticated, setAuthenticated] = useState(!!initialUser);
+  const [ready, setReady] = useState(false);
   const [state, setState] = useState<FieldState>(() =>
     demo
       ? demoState()
@@ -122,7 +132,8 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
     sheetTouch = useRef<number | null>(null),
     demoLearning = useRef<Record<string, FieldState["learning"]>>({});
   const group = state.groups.find((g) => g.id === groupId) || state.groups[0];
-  const own = state.records.filter((r) => r.owner === state.me.id);
+  const overview = playerOverview(state);
+  const own = overview.own;
   const goal = GOALS.find((g) => g.id === state.goal);
   const points =
     mode === "friends" && group
@@ -233,6 +244,7 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
         clockOffset.current = data.serverTime - Date.now();
         setNow(data.serverTime);
         setState(data);
+        setReady(true);
         setError("");
         setAuthenticated(true);
       }
@@ -242,7 +254,7 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
           error instanceof Error ? error.message : "service_unavailable",
         );
     } finally {
-      setLoading(false);
+      if (version === generation.current) setLoading(false);
     }
   }, []);
   useEffect(() => {
@@ -299,7 +311,7 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
   const send: Send = async (command) => {
     if (mutation.current) return false;
     mutation.current = true;
-    generation.current++;
+    const version = ++generation.current;
     setBusy(true);
     setError("");
     try {
@@ -328,6 +340,7 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
               ? data.detail
               : "service_unavailable",
           );
+        if (version !== generation.current) return false;
         clockOffset.current = data.serverTime - Date.now();
         setNow(data.serverTime);
         setState(data);
@@ -335,7 +348,10 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
       retryCommand.current = null;
       return true;
     } catch (error) {
-      setError(error instanceof Error ? error.message : "service_unavailable");
+      if (version === generation.current)
+        setError(
+          error instanceof Error ? error.message : "service_unavailable",
+        );
       return false;
     } finally {
       mutation.current = false;
@@ -413,6 +429,7 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
     setDraft(null);
     setKind("account");
     setAuthenticated(false);
+    setReady(false);
     setPanel(null);
     window.history.replaceState({}, "", `/mexico-city/play?mode=${mode}`);
   }
@@ -432,13 +449,69 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
       <main className="mc-entry" lang={locale === "es" ? "es-MX" : "en"}>
         <LanguageSwitch />
         <FieldLogin
+          initialMode={initialAuth}
           next="/mexico-city/play"
           success={async () => {
+            setState(emptyState());
+            setReady(false);
+            setLoading(true);
+            setError("");
+            window.history.replaceState(
+              {},
+              "",
+              `/mexico-city/play?mode=${mode}`,
+            );
             setAuthenticated(true);
             await refresh();
           }}
           guest={startGuest}
         />
+      </main>
+    );
+  if (kind === "account" && !ready)
+    return (
+      <main
+        className="mc-entry mc-session-entry"
+        lang={locale === "es" ? "es-MX" : "en"}
+      >
+        <LanguageSwitch />
+        <section className="mc-login">
+          <Link href="/mexico-city" className="mc-brand">
+            <GameName />
+          </Link>
+          <Compass size={44} />
+          <h1>{say("Abriendo tu aventura.", "Opening your adventure.")}</h1>
+          {error ? (
+            <>
+              <p role="alert">
+                {copy(ERRORS[error] || ERRORS.service_unavailable)}
+              </p>
+              <button
+                className="mc-primary"
+                disabled={loading}
+                onClick={() => {
+                  setLoading(true);
+                  void refresh();
+                }}
+              >
+                {say("Volver a conectar", "Reconnect")}
+              </button>
+              <button
+                className="mc-text-button"
+                onClick={() => setAuthenticated(false)}
+              >
+                {say("Volver a entrar", "Back to login")}
+              </button>
+            </>
+          ) : (
+            <p role="status">
+              {say(
+                "Recuperando tus hallazgos, puntos y retos…",
+                "Loading your discoveries, points and challenges…",
+              )}
+            </p>
+          )}
+        </section>
       </main>
     );
   const liveChallenges =
@@ -550,11 +623,19 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
         <>
           <div className="mc-points-hud">
             <Sparkles size={18} />
-            <strong>{points}</strong>
+            <strong aria-live="polite">
+              {mode === "community"
+                ? scope === "global"
+                  ? overview.published
+                  : visibleRecords.filter((r) => r.owner === state.me.id).length
+                : points}
+            </strong>
             <span>
-              {mode === "friends"
-                ? say("en este grupo", "in this group")
-                : say("tu aventura", "your adventure")}
+              {mode === "community"
+                ? say("tus aportes", "your contributions")
+                : mode === "friends"
+                  ? say("pts · este grupo", "pts · this group")
+                  : say("pts · tu aventura", "pts · your adventure")}
             </span>
             <button
               onClick={() => show("journal")}
@@ -652,15 +733,96 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
                   <p className="mc-eyebrow">
                     {say("Hoy, un poquito más lejos", "A little further today")}
                   </p>
-                  <span className="mc-day-mark">CDMX / 01</span>
+                  <span className="mc-day-mark">
+                    {new Date(now).toLocaleDateString(
+                      locale === "es" ? "es-MX" : "en-US",
+                      {
+                        day: "numeric",
+                        month: "short",
+                        timeZone: "America/Mexico_City",
+                      },
+                    )}
+                  </span>
                 </div>
-                <h1>{say("¿Y si doblas aquí?", "What if you turn here?")}</h1>
+                <h1>
+                  {kind === "account"
+                    ? say(
+                        `Qué gusto verte, ${state.me.name.split(" ")[0]}.`,
+                        `Good to see you, ${state.me.name.split(" ")[0]}.`,
+                      )
+                    : say("¿Y si doblas aquí?", "What if you turn here?")}
+                </h1>
                 <p className="mc-intro">
                   {say(
                     "Tu siguiente hallazgo no está en esta pantalla.",
                     "Your next discovery is beyond this screen.",
                   )}
                 </p>
+                <div
+                  className="mc-player-progress"
+                  aria-label={say("Tu progreso", "Your progress")}
+                >
+                  <button onClick={() => show("journal")}>
+                    <b>{own.length}</b>
+                    <span>
+                      {own.length === 1
+                        ? say("hallazgo", "discovery")
+                        : say("hallazgos", "discoveries")}
+                    </span>
+                  </button>
+                  <button onClick={() => navigate("solo")}>
+                    <b>{overview.completedOutings}</b>
+                    <span>
+                      {overview.completedOutings === 1
+                        ? say("salida cumplida", "completed outing")
+                        : say("salidas cumplidas", "completed outings")}
+                    </span>
+                  </button>
+                  <button onClick={() => navigate("friends")}>
+                    <b>{overview.actions.length}</b>
+                    <span>{say("por jugar", "your next moves")}</span>
+                  </button>
+                </div>
+                {overview.actions.length > 0 && (
+                  <div
+                    className="mc-next-actions"
+                    aria-label={say("Te toca", "Your turn")}
+                  >
+                    <p className="mc-eyebrow">{say("Te toca", "Your turn")}</p>
+                    {overview.actions.slice(0, 3).map((action) => (
+                      <button
+                        key={`${action.group.id}-${action.challenge.id}`}
+                        onClick={() => {
+                          setGroupId(action.group.id);
+                          navigate("friends");
+                          setExpanded(true);
+                        }}
+                      >
+                        <span>
+                          <small>
+                            {action.kind === "review"
+                              ? say(
+                                  "Una foto espera tu revisión",
+                                  "A photo needs your review",
+                                )
+                              : action.kind === "invitation"
+                                ? say(
+                                    "Te llegó un reto",
+                                    "You have a challenge",
+                                  )
+                                : say(
+                                    "Tu reto sigue en juego",
+                                    "Your challenge is in play",
+                                  )}{" "}
+                            · {action.group.name}
+                          </small>
+                          <strong>{action.challenge.title}</strong>
+                        </span>
+                        <ArrowRight size={18} />
+                      </button>
+                    ))}
+                  </div>
+                )}
                 <button
                   className="mc-featured-goal"
                   onClick={() => {
@@ -668,15 +830,24 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
                     setExpanded(true);
                   }}
                 >
-                  <Artwork id={(goal || GOALS[0]).art} sizes="140px" />
+                  <Artwork
+                    id={(goal || overview.suggestion).art}
+                    sizes="140px"
+                  />
                   <div>
                     <span>
-                      {say("Una excusa para salir", "A reason to head out")}
+                      {goal
+                        ? say("Tu salida en curso", "Your current outing")
+                        : say("Una excusa para salir", "A reason to head out")}
                     </span>
-                    <h2>{copy((goal || GOALS[0]).title)}</h2>
-                    <small>{copy((goal || GOALS[0]).duration)}</small>
+                    <h2>{copy((goal || overview.suggestion).title)}</h2>
+                    <small>
+                      {copy((goal || overview.suggestion).duration)}
+                    </small>
                     <b>
-                      {say("Elegir mi salida", "Choose my outing")}{" "}
+                      {goal
+                        ? say("Continuar mi salida", "Continue my outing")
+                        : say("Elegir mi salida", "Choose my outing")}{" "}
                       <ArrowRight size={16} />
                     </b>
                   </div>
@@ -686,7 +857,7 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
                     <Swords size={20} />
                     <span>
                       {say(
-                        "Alguien tiene un reto para ti",
+                        "Tus retos entre amigos",
                         "A challenge between friends",
                       )}
                       <small>
@@ -1276,9 +1447,7 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
                 <Icon size={22} strokeWidth={mode === m ? 2.4 : 1.6} />
                 <span>{copy(labels[m])}</span>
                 {m === "friends" &&
-                  group?.challenges.some(
-                    (c) => c.target === state.me.id && c.status === "offered",
-                  ) && <i />}
+                  overview.actions.length > 0 && <i />}
               </button>
             );
           })}
@@ -1567,7 +1736,10 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
                       maxLength={100}
                       value={groupName}
                       onChange={(e) => setGroupName(e.target.value)}
-                      placeholder="Susy + Stepan"
+                      placeholder={say(
+                        "Nuestra próxima salida",
+                        "Our next outing",
+                      )}
                     />
                   </label>
                   <button className="mc-primary" disabled={busy}>
@@ -1609,12 +1781,46 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
             {panel === "settings" && (
               <>
                 <p className="mc-eyebrow">
-                  {say(
-                    "Mexico city discovery game · nombre de trabajo",
-                    "Mexico city discovery game · working reference",
-                  )}
+                  {say("Tu perfil de explorador", "Your explorer profile")}
                 </p>
                 <h2>{state.me.name}</h2>
+                {kind === "account" && state.me.email && (
+                  <p className="mc-account-email">{state.me.email}</p>
+                )}
+                <div className="mc-profile-score">
+                  <Sparkles size={25} />
+                  <strong>{personalPoints(state)}</strong>
+                  <span>{say("puntos de aventura", "adventure points")}</span>
+                </div>
+                <dl className="mc-score-breakdown">
+                  <div>
+                    <dt>{say("Hallazgos guardados", "Saved discoveries")}</dt>
+                    <dd>{overview.discoveryPoints} pts</dd>
+                  </div>
+                  <div>
+                    <dt>{say("Ciudad y náhuatl", "City and Nahuatl")}</dt>
+                    <dd>{overview.learningPoints} pts</dd>
+                  </div>
+                  <div>
+                    <dt>{say("Salidas cumplidas", "Completed outings")}</dt>
+                    <dd>{overview.completedOutings}</dd>
+                  </div>
+                </dl>
+                {state.groups.map((g) => (
+                  <button
+                    className="mc-profile-group"
+                    key={g.id}
+                    onClick={() => {
+                      setGroupId(g.id);
+                      navigate("friends");
+                    }}
+                  >
+                    <Swords size={18} />
+                    <span>{g.name}</span>
+                    <strong>{groupPoints(g, state.me.id)} pts</strong>
+                    <ArrowRight size={16} />
+                  </button>
+                ))}
                 <p>
                   {kind === "account"
                     ? say(
@@ -1627,15 +1833,22 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
                       )}
                 </p>
                 <div className="mc-settings-links">
+                  {kind === "account" && state.me.admin && (
+                    <Link href="/admin/users">
+                      {say("Administrar cuentas", "Manage accounts")} ↗
+                    </Link>
+                  )}
+                  {kind === "account" && (
+                    <Link href="/mexico-city/play?auth=forgot">
+                      {say(
+                        "Recuperar contraseña por correo",
+                        "Recover password by email",
+                      )}{" "}
+                      ↗
+                    </Link>
+                  )}
                   <Link href="/mexico-city/game-design">
                     {say("Diseño, reglas y alcance", "Design, rules and scope")}{" "}
-                    ↗
-                  </Link>
-                  <Link href="/mexico-city/atlas">
-                    {say(
-                      "Atlas ilustrado y fuentes",
-                      "Illustrated atlas and sources",
-                    )}{" "}
                     ↗
                   </Link>
                   <button onClick={() => show("chapter")}>
@@ -1651,6 +1864,7 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
                 {kind === "account" ? (
                   <button
                     className="mc-secondary"
+                    disabled={busy}
                     onClick={async () => {
                       const response = await fetch("/api/auth/logout", {
                         method: "POST",
@@ -1659,6 +1873,8 @@ function Game({ initialUser, guest, demo, initialMode, invite }: Props) {
                         setState(emptyState());
                         generation.current++;
                         setAuthenticated(false);
+                        setReady(false);
+                        retryCommand.current = null;
                         setDraft(null);
                         close();
                       } else setError("service_unavailable");

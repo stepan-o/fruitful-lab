@@ -2056,3 +2056,27 @@
   height: 44px;
   transform: translateY(-50%);
 }
+
+/* Shared account entry: actions stay explicit, including after a failed login. */
+.mc-auth-tabs { display: flex; gap: 6px; padding: 5px; border-radius: 15px; background: #f0f3e7; margin: 24px 0 20px; }
+.mc-auth-tabs button { flex: 1; min-height: 44px; border: 0; border-radius: 11px; background: transparent; color: #214d43; cursor: pointer; font-weight: 650; }
+.mc-auth-tabs button[aria-pressed="true"] { background: white; box-shadow: 0 2px 8px #244a4010; }
+.mc-account-form form > .mc-primary, .mc-recovery-sent .mc-primary { width: 100%; }
+.mc-account-form h2 { font: 400 25px/1.15 Georgia, serif; color: #214d43; }
+.mc-account-form .mc-text-button { display: flex; margin: 8px auto 14px; min-height: 44px; }
+.mc-account-form label small { font-size: 12px; color: #66776e; font-weight: 400; }
+.mc-recovery-sent { border-radius: 18px; background: #f3f5eb; padding: 24px; text-align: left; }
+.mc-recovery-sent p { font-size: 14px; line-height: 1.65; }
+.mc-account-form button:disabled { opacity: .55; cursor: wait; }
+
+/* Personal progress stays attached to the player, with group scores kept distinct. */
+.mc-player-progress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:18px 0}
+.mc-player-progress button{border:0;background:#f3f6ed;border-radius:15px;padding:13px 7px;display:grid;gap:3px;text-align:center;min-height:73px}
+.mc-player-progress b{font:500 27px/1 Georgia,serif;font-variant-numeric:tabular-nums}
+.mc-player-progress span{font-size:11px;line-height:1.25;color:var(--mc-muted)}
+.mc-next-actions{margin:20px 0}.mc-next-actions>button{display:flex;align-items:center;justify-content:space-between;gap:15px;background:#fff7ee;border:1px solid #efdac7;border-radius:14px;width:100%;padding:14px;text-align:left;margin-bottom:7px}
+.mc-next-actions strong,.mc-next-actions small{display:block}.mc-next-actions small{margin-bottom:4px}.mc-next-actions svg{flex-shrink:0}
+.mc-profile-score{background:#eff4e5;border-radius:18px;padding:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0}.mc-profile-score strong{font:40px/1 Georgia,serif}.mc-profile-score span{font-size:12px}
+.mc-score-breakdown{margin:0 0 24px}.mc-score-breakdown>div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--mc-line);padding:12px 0}.mc-score-breakdown dd{margin:0;font-weight:700;white-space:nowrap}
+.mc-profile-group{display:flex;align-items:center;gap:10px;width:100%;min-height:50px;padding:12px;border:1px solid var(--mc-line);border-radius:12px;background:#fff;margin-bottom:8px;text-align:left}.mc-profile-group span{flex:1;overflow-wrap:anywhere}.mc-profile-group strong{white-space:nowrap}.mc-profile-group svg{flex-shrink:0}
+.mc-account-email{overflow-wrap:anywhere}.mc-session-entry .mc-login{min-height:50svh;justify-content:center}.mc-session-entry .mc-login>.mc-brand{margin-bottom:40px}

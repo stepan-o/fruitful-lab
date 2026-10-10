@@ -134,6 +134,10 @@ export default function LoginPageClient() {
                         {submitting ? "Signing in…" : "Sign in"}
                     </button>
 
+                    <div className="flex flex-wrap justify-between gap-3 text-sm">
+                        <Link href="/mexico-city/play?auth=register" className="min-h-11 py-3 underline">Create an account</Link>
+                        <Link href="/mexico-city/play?auth=forgot" className="min-h-11 py-3 underline">Forgot password?</Link>
+                    </div>
                     {/* Back link */}
                     <div className="pt-2 text-center">
                         <Link

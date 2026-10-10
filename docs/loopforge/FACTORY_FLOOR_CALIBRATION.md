@@ -58,7 +58,13 @@ The renderer uses large floor slabs, material batching and repeated floor textur
 - [x] Limit residual structure to narrow pipe walls; draw their process headers.
 - [x] Regenerate room reserves, measured map and the design-deck explanation.
 - [x] Pass focused topology, corridor, containment and commissioning checks.
-- [ ] Complete final desktop/phone visual review and full CI.
-- [ ] Publish and verify the exact hosted revision on PR #102.
+- [x] Complete desktop/phone visual review and the required test/build checks.
+- Publication and hosted verification are recorded against the exact revision on PR #102.
 
 Earlier scale and continuity evidence is retained in Git history and [Factory scale and equipment](FACTORY_SCALE_AND_EQUIPMENT.md). It does not certify this new geometry. Final visual calibration, free construction, unlock economics and supervisor collision stories remain subsequent work.
+
+## Refit validation
+
+The integrated branch passes **78 suites / 411 tests / one snapshot**. Fourteen focused spatial/commissioning tests include the new corridor's shortest direct route, sealed admission, wall crossing rejection, retained earlier connections, room/pipe/passages coverage and equipment/reserve clearance. Asset-tool test, 47 retained asset releases, generated-map freshness and focused lint pass. The optimized production build completes with exit 0, including TypeScript and static route generation.
+
+The full suite was run sequentially after the default concurrent run was interrupted under local memory pressure; the same required test and build components passed. No test was omitted. Desktop review covers common-height Overview, the Security working view, enlarged Theatre and Logistics whole-room views, and the full-size vector plan. At 320 × 720 the map document stays 320 px wide and Escape restores focus to Floor plan. The phone header was shortened, with hall height moved to the legend. Final verification of that copy adjustment and hosted revision is recorded on the PR. Browser checks are not native-device performance certification; earlier frame-rate samples do not establish this refit's performance.

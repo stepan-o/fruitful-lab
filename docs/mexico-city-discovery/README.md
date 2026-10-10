@@ -6,6 +6,8 @@ Updated 10 October 2026. Public Lab route: `/mexico-city`. Working name: **Otra 
 
 The owner discussion on 10 October establishes **play in the actual city** as the guiding rule, with **the private multiplayer game for Susy and Stepan as the immediate priority**. The first complete loop is a shared challenge, an outing, a photo and place, peer confirmation and visible points. [City exploration game direction](FIELD_GAME_DIRECTION.md) defines that flow and account integration. Standalone solo reflections are later possibilities. [The community roadmap](COMMUNITY_ROADMAP.md) separately records the future idea of an optional-account collective map and logbook, with research references. Neither later direction expands the first battle's scope. These remain design changes; the current preview still behaves as described below.
 
+The latest [goals and challenges design](GOALS_AND_CHALLENGES.md) proposes opponent-issued timed tasks, gains and losses, temporary category blocks and cooperative bonuses for the next multiplayer version. Solo session goals and community milestones remain later modes. Quiz gates and large multipliers are unresolved. The implementation described below still uses the original local scoring.
+
 ## Current prototype experience
 
 The city is the game board. Start with the sixteen real borough outlines, enter Cuauhtémoc or Miguel Hidalgo, choose a curated neighbourhood, approach a drawn landmark, and open its story. The camera and landmark sizes change together. The desktop composition pairs an open map with a short editorial invitation; phones use a compact invitation, a large map, and a floating field-journal control.

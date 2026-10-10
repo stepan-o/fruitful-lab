@@ -8,6 +8,8 @@ A public map gradually gains color as people contribute discoveries from real ou
 
 The proposed emotional reward is: **“My small discovery helped us see another part of our city.”** Whether this motivates participation is the central question. People need not know each other, meet simultaneously or maintain accounts to contribute to the same result.
 
+The later [goals discussion](GOALS_AND_CHALLENGES.md) places the community's overall objective at the shared-map level. System-curated quests can help reach it; there is no required individual daily checklist, account or competitive penalty. Opponent-issued timed challenges belong to the private multiplayer mode.
+
 ## Ways to participate
 
 | Choice | Experience | Account requirement |

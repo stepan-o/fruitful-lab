@@ -6,6 +6,8 @@ This principle governs subsequent mechanics, navigation and interface work. **Th
 
 The current preview remains the public, browser-local map and learning prototype described in [README.md](README.md); accounts, shared photo storage and peer review are not implemented by this document.
 
+The subsequent [goals and challenges discussion](GOALS_AND_CHALLENGES.md) refines the next build: goals provide direction, opponents issue timed challenges with positive or negative outcomes, wildcards can temporarily block scoring categories, and joint activities can award both players. That document takes precedence for scoring and timing. Its balancing recommendations are provisional. Quizzes as prerequisites and large multipliers are disputed, not agreed.
+
 ## The central action
 
 **Choose an intention → do something in the city → record a photo and place → remember or share the discovery → choose another outing.**
@@ -20,30 +22,30 @@ A photo records the player's account of an experience. Neither a photo nor a loc
 
 | Moment | Solo exploration | Battle between Susy and Stepan |
 | --- | --- | --- |
-| Start | Choose a prompt, follow an interest or record something spontaneous. | Both join a challenge with dates, qualifying actions and scoring shown before starting. |
+| Start | The system offers goals for an outing, with a guest session or optional saved progress. | Agree a round and play window; opponents issue challenges under its stated rules. |
 | Act | Visit, notice, try, make or meet something in the city. | Do the qualifying activity during the challenge. |
 | Record | Save a photo, place, category and activity date; optionally add a note. | Create the same personal record, then choose to submit relevant evidence to the battle. |
 | Validate | A successful save completes the record. No approval queue. | The other participant reviews the submitted photo, place and challenge criteria. Nobody approves their own entry. |
-| Reward | Show personal progress and preserve the memory immediately after saving. | Show pending entries separately; award battle points only after confirmation. |
+| Reward | Save the memory; points follow the session goal's completion rules. | Show pending entries separately; confirmed success earns points and qualifying failure can lose points. |
 | Return | Browse collections and reflections, then choose another outing. | See confirmed standings and shared discoveries; choose another challenge. |
 
 The immediate experience is the friendly battle in the right-hand column. The left-hand column preserves a later solo direction, which should eventually stand on its own without a fictional rival or compulsory leaderboard. A pending or unsuccessful battle submission does not erase the private memory.
 
 ### The first battle
 
-Example: **“Taquerías por descubrir”**. During an agreed week, find taco stands or taquerías that are new to you. Record the place and a photo showing what caught your attention. Buying food is optional. Each distinct qualifying place counts once per player in that battle; both players may discover the same place. Public places do not become exclusive territory.
+Example round theme: **“Taquerías por descubrir”**. Within that theme, players can issue specific tasks, time limits and stakes from an agreed set of challenge rules. Record the place and a photo showing what caught your attention. Buying food can be optional under the task's criteria. Both players may discover the same place; public places do not become exclusive territory. A distinct-place objective counts each qualifying place once; uploading alone does not earn points.
 
-For the two-person test, the opponent chooses **“Confirmar hallazgo”** or **“Pedir un detalle”**, with a short reason for the latter. The submitter can add detail and resubmit, or withdraw. Changing confirmed evidence returns that submission to review and reverses its battle award until confirmed again. Retrying requests, approving twice or adding another image of the same place must not multiply points.
+For the two-person test, the opponent chooses **“Confirmar hallazgo”** or **“Pedir un detalle”**, with a short reason for the latter. The submitter can clarify existing evidence. Withdrawal from an active penalized challenge follows its stated forfeit rule. Changes to settled evidence require an explicit correction and review history. Retrying requests, approving twice or adding another image must not multiply rewards or penalties.
 
-Show a review deadline after the activity deadline. Eligibility follows the declared activity date and challenge rules. Unresolved entries remain pending; do not automatically approve them or declare a final winner while they could change the result. This first rule assumes a cooperative pair. Larger groups and disputed adjudication need a subsequent design pass.
+Show the action deadline, evidence cutoff and any upload grace before a challenge activates. Record submission receipt separately from the declared activity date. An on-time submission awaiting review must not time out into a penalty. Unresolved entries remain pending; do not automatically approve them or declare a final winner while they could change the result. See [the lifecycle and counterplay proposal](GOALS_AND_CHALLENGES.md) for offers, active challenges, losses, category blocks and joint activities.
 
 The system checks completeness, membership, reviewer identity, eligibility and duplicate awards. The reviewer judges whether the evidence meets the challenge. Call this **confirmed by the other player**, without implying automated presence verification.
 
 ## Points that support the activity
 
-Keep visible progress, with provisional values configured in one place. Separate personal exploration, learning and each battle's score so the player understands how they earned each one. A simple trial rule could give 10 battle points per confirmed distinct place; the numerical balance remains open.
+Keep visible progress, with provisional values configured in one place. Points settle a goal or challenge outcome; the photo is evidence. Show the stated reward, possible loss and pending result. Separate personal memories, learning progress and battle scores. The owner's example of +100 or −100 illustrates the stakes without settling the numerical balance.
 
-Reading, city-layout quizzes and Náhuatl games still earn learning points. A taco challenge's standings count its qualifying activities. Repeat visits can be meaningful memories even when a distinct-place challenge gives no additional reward.
+The existing prototype awards learning points for city-layout quizzes and Náhuatl games. Their role in the new battle rules remains open: compulsory reading and large quiz multipliers are not a shared decision. Preserve the learning content while testing optional knowledge challenges, clues or bounded bonuses only as explicit variants. Repeat visits can remain meaningful memories even when an objective gives no additional reward.
 
 Account rewards must come from deduplicated server records. Retain submission, review and award history so pending, confirmed and corrected scores are explainable. Current browser scores and imported learning flags are prototype progress; they must not silently become trusted competition results.
 
@@ -68,7 +70,7 @@ Retain the airy white composition, expressive type, colorful sketch assets and t
 
 Account and language controls stay secondary. Spanish remains the default; English covers the same actions, validation states, errors and content. Preserve personal notes in their original language.
 
-An active outing needs a short prompt, a place, useful access context and a record button. Long stories remain available when wanted. Motion should orient the person, acknowledge a saved memory or explain a historical relationship, then settle. Design for daylight, one-handed use, large touch areas and returning from the camera. Avoid timers, streak pressure and animation that demands attention while walking.
+An active outing needs a short prompt, a place, useful access context, visible stakes and deadline, and a record button. Long stories remain available when wanted. Timed challenges are now part of the owner's proposal; show their status without attention-demanding animation while walking. Motion can announce a challenge, rule change or outcome, then settle. Design for daylight, one-handed use, large touch areas and returning from the camera.
 
 Distinguish drafts from saved records. Upload failure or session expiry must preserve the selected photo and text for recovery and explain that the account has not received the record yet. Retry must not create a duplicate. A durable offline queue is a later capability until tested on the supported phones.
 
@@ -107,7 +109,7 @@ GPS can later suggest a pin with permission and a visible accuracy indication. A
 
 ## First implementation sequence
 
-1. **One complete friendly battle.** Connect the existing Fruitful Lab accounts and game return paths, then let Susy and Stepan join the same prepared challenge, record a photo and manual location, submit discoveries, review each other and see pending versus confirmed points. Account-owned records and durable uploads are parts of this complete loop. Keep invitations inside the app. Verify membership, no self-approval, evidence revisions, recovery after sign-in and once-only rewards. Preserve local journals; any import is explicit and never assigns both local profiles to whoever signs in.
+1. **One complete friendly battle.** Connect Fruitful Lab accounts and game return paths. Susy and Stepan agree a round, issue a prepared timed challenge, record a photo and place, review evidence and see once-only positive or negative outcomes. Test a limited category block, counter and cooperative bonus using [the proposed rules](GOALS_AND_CHALLENGES.md). Account-owned records and durable uploads belong to this loop. Keep invitations in the app. Verify membership, no self-approval, deadline versus review behavior, evidence corrections and recovery after sign-in. Preserve local journals with explicit ownership on import.
 2. **Refine their game through real outings.** Make recording quick, show useful challenge progress, improve prepared prompts and integrate map, historical and language context around the shared activity. Judge changes by whether both people want to go out and play again. Add GPS or stronger offline support when their experience demonstrates the need.
 3. **Later possibilities.** Revisit standalone solo collections and behavioral reflections, and separately consider the optional-account community experiment in [the roadmap](COMMUNITY_ROADMAP.md). Neither is a dependency of the two-person game; no public community launch is implied.
 

@@ -1,0 +1,33 @@
+{
+  "viewports": [
+    {
+      "width": 320,
+      "result": "passed",
+      "susyPoints": 225,
+      "stepanPoints": 10,
+      "checks": "Spanish default; ES/EN switching and reload; persistent layers across 4 scales; area/street/station captions; 6 interactive lessons; archive; 6 quiz rewards; wrong/retry; 5 word matches; 2 name puzzles; repeat award protection; independent players; licensed photo pair; 44px HTML controls; no overflow; reduced motion"
+    },
+    {
+      "width": 390,
+      "result": "passed",
+      "susyPoints": 225,
+      "stepanPoints": 10,
+      "checks": "Spanish default; ES/EN switching and reload; persistent layers across 4 scales; area/street/station captions; 6 interactive lessons; archive; 6 quiz rewards; wrong/retry; 5 word matches; 2 name puzzles; repeat award protection; independent players; licensed photo pair; 44px HTML controls; no overflow; reduced motion"
+    },
+    {
+      "width": 768,
+      "result": "passed",
+      "susyPoints": 225,
+      "stepanPoints": 10,
+      "checks": "Spanish default; ES/EN switching and reload; persistent layers across 4 scales; area/street/station captions; 6 interactive lessons; archive; 6 quiz rewards; wrong/retry; 5 word matches; 2 name puzzles; repeat award protection; independent players; licensed photo pair; 44px HTML controls; no overflow; reduced motion"
+    },
+    {
+      "width": 1440,
+      "result": "passed",
+      "susyPoints": 225,
+      "stepanPoints": 10,
+      "checks": "Spanish default; ES/EN switching and reload; persistent layers across 4 scales; area/street/station captions; 6 interactive lessons; archive; 6 quiz rewards; wrong/retry; 5 word matches; 2 name puzzles; repeat award protection; independent players; licensed photo pair; 44px HTML controls; no overflow; reduced motion"
+    }
+  ],
+  "errors": []
+}

@@ -1,5 +1,5 @@
 "use client";
-
+import { journalError, useLocale } from "@/lib/mexico-city/locale";
 import { useRef, useState } from "react";
 import { STORIES, storyById, type StoryId } from "@/lib/mexico-city/content";
 import {
@@ -14,7 +14,6 @@ import {
 } from "@/lib/mexico-city/journal";
 import Artwork from "./Artwork";
 import GameDialog from "./GameDialog";
-
 export default function FieldJournal({
   journal,
   player,
@@ -34,16 +33,18 @@ export default function FieldJournal({
   initialStory?: StoryId;
   explore: (id: StoryId) => void;
 }) {
+  const { locale, t } = useLocale();
   const [selected, setSelected] = useState<StoryId>(initialStory ?? "zocalo");
   const [savedOnly, setSavedOnly] = useState(false);
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const importInput = useRef<HTMLInputElement>(null);
   const entry = journal.players[player][selected] ?? blankEntry();
-  const story = storyById(selected);
+  const story = storyById(selected, locale);
   const rival = player === "Susy" ? "Stepan" : "Susy";
-  const score = points(journal.players[player]);
-  const difference = score - points(journal.players[rival]);
+  const score = points(journal.players[player], journal.learning?.[player]);
+  const difference =
+    score - points(journal.players[rival], journal.learning?.[rival]);
   function exportJournal() {
     const url = URL.createObjectURL(
       new Blob([JSON.stringify(journal, null, 2)], {
@@ -61,16 +62,19 @@ export default function FieldJournal({
   }
   return (
     <GameDialog
-      label="Field journal"
+      label={t("Field journal")}
       close={close}
       className="ov-journal-dialog"
     >
       <header className="ov-journal-heading">
-        <span className="ov-eyebrow">Little adventures, kept forever</span>
+        <span className="ov-eyebrow">
+          {t("Little adventures, kept forever")}
+        </span>
         <h2>
-          The field journal<span>✳</span>
+          {t("The field journal")}
+          <span>✳</span>
         </h2>
-        <p>Two curious people. One very big city.</p>
+        <p>{t("Two curious people. One very big city.")}</p>
       </header>
       <div className="ov-players">
         {PLAYERS.map((p) => (
@@ -84,10 +88,12 @@ export default function FieldJournal({
             </span>
             <span>
               {p}
-              <small>{player === p ? "Your journal" : "Switch explorer"}</small>
+              <small>
+                {player === p ? t("Your journal") : t("Switch explorer")}
+              </small>
             </span>
             <strong>
-              {points(journal.players[p])}
+              {points(journal.players[p], journal.learning?.[p])}
               <small>pts</small>
             </strong>
           </button>
@@ -95,22 +101,28 @@ export default function FieldJournal({
       </div>
       <p className="ov-rivalry">
         {difference === 0
-          ? "A beautiful tie. The next discovery is yours."
+          ? t("A beautiful tie. The next discovery is yours.")
           : difference > 0
-            ? `You’re ${difference} points ahead of ${rival}. Keep looking.`
-            : `${rival} is ${-difference} points ahead. There’s a city to catch up in.`}
+            ? t("You’re {difference} points ahead of {rival}. Keep looking.", {
+                difference,
+                rival,
+              })
+            : t(
+                "{rival} is {difference} points ahead. There’s a city to catch up in.",
+                { difference: -difference, rival },
+              )}
       </p>
       <div className="ov-journal-layout">
-        <nav className="ov-journal-index" aria-label="Journal discoveries">
+        <nav className="ov-journal-index" aria-label={t("Journal discoveries")}>
           <div className="ov-filter">
             <button
               aria-pressed={!savedOnly}
               onClick={() => setSavedOnly(false)}
             >
-              All discoveries
+              {t("All discoveries")}
             </button>
             <button aria-pressed={savedOnly} onClick={() => setSavedOnly(true)}>
-              Want to go
+              {t("Want to go")}
             </button>
           </div>
           {STORIES.filter(
@@ -124,13 +136,13 @@ export default function FieldJournal({
             >
               <Artwork id={s.id} sizes="90px" />
               <span>
-                {s.place}
+                {storyById(s.id, locale).place}
                 <small>
                   {journal.players[player][s.id]?.visited
-                    ? "Visited ✓"
+                    ? t("Visited \u2713")
                     : journal.players[player][s.id]?.read
-                      ? "Story collected"
-                      : "A story waiting"}
+                      ? t("Story collected")
+                      : t("A story waiting")}
                 </small>
               </span>
             </button>
@@ -138,7 +150,7 @@ export default function FieldJournal({
           {savedOnly &&
           !STORIES.some((s) => journal.players[player][s.id]?.saved) ? (
             <p className="ov-empty">
-              Your next little adventure starts with a saved place.
+              {t("Your next little adventure starts with a saved place.")}
             </p>
           ) : null}
         </nav>
@@ -151,19 +163,24 @@ export default function FieldJournal({
               onClick={() => update(selected, { saved: !entry.saved })}
               aria-pressed={entry.saved}
             >
-              {entry.saved ? "♥ On your list" : "♡ Want to go"}
+              {entry.saved ? t("\u2665 On your list") : t("\u2661 Want to go")}
             </button>
-            <button onClick={() => explore(selected)}>Find on map ↗</button>
+            <button onClick={() => explore(selected)}>
+              {t("Find on map \u2197")}
+            </button>
           </div>
           <div className="ov-rewards">
             <span className={entry.read ? "is-done" : ""}>
-              Story <b>{entry.read ? "✓" : "+10"}</b>
+              {t("Story")}
+              <b>{entry.read ? "✓" : "+10"}</b>
             </span>
             <span className={entry.visited ? "is-done" : ""}>
-              Visit <b>{entry.visited ? "✓" : "+25"}</b>
+              {t("Visit")}
+              <b>{entry.visited ? "✓" : "+25"}</b>
             </span>
             <span className={entry.photo ? "is-done" : ""}>
-              Photo <b>{entry.photo ? "✓" : "+15"}</b>
+              {t("Photo")}
+              <b>{entry.photo ? "✓" : "+15"}</b>
             </span>
           </div>
           <label className="ov-visit">
@@ -173,16 +190,19 @@ export default function FieldJournal({
               onChange={(e) => update(selected, { visited: e.target.checked })}
             />
             <span>
-              I went here<small>On your honour. No location tracking.</small>
+              {t("I went here")}
+              <small>{t("On your honour. No location tracking.")}</small>
             </span>
           </label>
           <label className="ov-note">
-            A detail I noticed
+            {t("A detail I noticed")}
             <textarea
               key={`${player}-${selected}`}
               maxLength={500}
               value={entry.note}
-              placeholder="The thing you’d have walked right past…"
+              placeholder={t(
+                "The thing you\u2019d have walked right past\u2026",
+              )}
               onChange={(e) => update(selected, { note: e.target.value })}
             />
           </label>
@@ -192,22 +212,25 @@ export default function FieldJournal({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={entry.photo}
-                alt={`${player}’s observation at ${story.place}`}
+                alt={t("{player}’s observation at {place}", {
+                  player,
+                  place: story.place,
+                })}
               />
               <figcaption>
-                Your field photograph{" "}
+                {t("Your field photograph")}{" "}
                 <button onClick={() => update(selected, { photo: "" })}>
-                  Remove
+                  {t("Remove")}
                 </button>
               </figcaption>
             </figure>
           ) : null}
           <label className={`ov-photo-button ${busy ? "is-busy" : ""}`}>
             {busy
-              ? "Preparing your photograph…"
+              ? t("Preparing your photograph\u2026")
               : entry.photo
-                ? "↻ Replace photograph"
-                : "＋ Add a field photograph"}
+                ? t("\u21BB Replace photograph")
+                : t("\uFF0B Add a field photograph")}
             <input
               type="file"
               accept="image/*"
@@ -227,9 +250,7 @@ export default function FieldJournal({
                   );
                 } catch (error) {
                   setMessage(
-                    error instanceof Error
-                      ? error.message
-                      : "Could not read this photograph.",
+                    journalError(error, "Could not read this photograph."),
                   );
                 } finally {
                   setBusy(false);
@@ -238,21 +259,24 @@ export default function FieldJournal({
             />
           </label>
           <small className="ov-storage-note">
-            Photos and notes stay in this browser. Points count once per place.
+            {t(
+              "Photos and notes stay in this browser. Points count once per place.",
+            )}
           </small>
         </section>
       </div>
       <footer className="ov-journal-footer">
         <p>
-          <strong>Saved on this device</strong>
+          <strong>{t("Saved on this device")}</strong>
           <br />
-          Export your journal before clearing browser data. Import a journal to
-          combine both players’ discoveries; existing notes and photos are kept.
+          {t(
+            "Export your journal before clearing browser data. Import a journal to combine both players\u2019 discoveries; existing notes and photos are kept.",
+          )}
         </p>
         <div>
-          <button onClick={exportJournal}>Export journal ↓</button>
+          <button onClick={exportJournal}>{t("Export journal \u2193")}</button>
           <button onClick={() => importInput.current?.click()}>
-            Import journal ↑
+            {t("Import journal \u2191")}
           </button>
         </div>
         <input
@@ -265,7 +289,7 @@ export default function FieldJournal({
             e.currentTarget.value = "";
             if (!file) return;
             try {
-              if (file.size > 3_000_000)
+              if (file.size > 3000000)
                 throw new Error("Please choose a journal under 3 MB.");
               const imported = parseJournal(JSON.parse(await file.text()));
               replace(imported);
@@ -274,16 +298,14 @@ export default function FieldJournal({
               );
             } catch (error) {
               setMessage(
-                error instanceof Error
-                  ? error.message
-                  : "This journal could not be imported.",
+                journalError(error, "This journal could not be imported."),
               );
             }
           }}
         />
       </footer>
       <p role="status" className="ov-journal-message">
-        {message}
+        {t(message)}
       </p>
     </GameDialog>
   );

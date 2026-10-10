@@ -7,16 +7,18 @@ export default function Artwork({
   sizes = "300px",
   preload = false,
   className = "",
+  alt = "",
 }: {
   id: string;
   sizes?: string;
   preload?: boolean;
   className?: string;
+  alt?: string;
 }) {
   return (
     <AssetImage
       asset={imageAsset(manifest as AssetManifest, id)}
-      alt=""
+      alt={alt}
       sizes={sizes}
       preload={preload}
       className={className}

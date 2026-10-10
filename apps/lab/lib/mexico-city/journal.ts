@@ -1,4 +1,10 @@
 import { STORIES, type StoryId } from "./content";
+import {
+  LEARNING_REWARDS,
+  learningPoints,
+  type Learning,
+  type LearningId,
+} from "./rewards";
 
 export const PLAYERS = ["Susy", "Stepan"] as const;
 export type Player = (typeof PLAYERS)[number];
@@ -12,6 +18,7 @@ export type Entry = {
 export type Journal = {
   version: 1;
   players: Record<Player, Partial<Record<StoryId, Entry>>>;
+  learning?: Record<Player, Learning>;
 };
 export const STORAGE_KEY = "otra-vista-journal-v1";
 export const blankEntry = (): Entry => ({
@@ -24,12 +31,16 @@ export const blankEntry = (): Entry => ({
 export const blankJournal = (): Journal => ({
   version: 1,
   players: { Susy: {}, Stepan: {} },
+  learning: { Susy: {}, Stepan: {} },
 });
-export function points(entries: Partial<Record<StoryId, Entry>>): number {
+export function points(
+  entries: Partial<Record<StoryId, Entry>>,
+  learning: Learning = {},
+): number {
   return Object.values(entries).reduce(
     (sum, e) =>
       sum + (e?.read ? 10 : 0) + (e?.visited ? 25 : 0) + (e?.photo ? 15 : 0),
-    0,
+    learningPoints(learning),
   );
 }
 
@@ -46,6 +57,14 @@ export function parseJournal(input: unknown): Journal {
     throw new Error("Choose an Otra Vista journal file.");
   const result = blankJournal();
   for (const player of PLAYERS) {
+    const incoming = (input as { learning?: Record<string, unknown> })
+      .learning?.[player];
+    if (incoming && typeof incoming === "object") {
+      for (const id of Object.keys(LEARNING_REWARDS) as LearningId[]) {
+        if ((incoming as Record<string, unknown>)[id] === true)
+          result.learning![player][id] = true;
+      }
+    }
     const raw = (input.players as Record<string, unknown>)[player];
     if (!raw || typeof raw !== "object")
       throw new Error("The journal is missing a player.");
@@ -75,7 +94,14 @@ export function parseJournal(input: unknown): Journal {
 
 export function mergeJournals(a: Journal, b: Journal): Journal {
   const result = blankJournal();
-  for (const player of PLAYERS)
+  for (const player of PLAYERS) {
+    for (const id of Object.keys(LEARNING_REWARDS) as LearningId[]) {
+      if (
+        a.learning?.[player][id] === true ||
+        b.learning?.[player][id] === true
+      )
+        result.learning![player][id] = true;
+    }
     for (const { id } of STORIES) {
       const x = a.players[player][id] ?? blankEntry(),
         y = b.players[player][id] ?? blankEntry();
@@ -87,6 +113,7 @@ export function mergeJournals(a: Journal, b: Journal): Journal {
         photo: x.photo || y.photo,
       };
     }
+  }
   return result;
 }
 

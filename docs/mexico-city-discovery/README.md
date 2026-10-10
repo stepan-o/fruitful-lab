@@ -1,6 +1,6 @@
 # Otra Vista — Mexico City discovery prototype
 
-9 October 2026. Public Lab route: `/mexico-city`. Working name: **Otra Vista** (another view). First players: Susy and Stepan.
+Updated 10 October 2026. Public Lab route: `/mexico-city`. Working name: **Otra Vista** (another view). First players: Susy and Stepan.
 
 ## The experience
 
@@ -8,7 +8,7 @@ The city is the game board. Start with the sixteen real borough outlines, enter 
 
 A story has four moments: the place today, its earlier life, the surprising fact, and something to notice or photograph in person. Present-day and historical illustrations share graphite, ink and restrained watercolor. White space is part of the map, not a panel background. Historical drawings are explicitly interpretive reconstructions. They are not archival photographs or archaeological evidence.
 
-The game loop is **discover → read → save → visit → photograph → compare**. Each player can earn 10 points for collecting a story, 25 for a self-reported visit, and 15 for a photograph. Each activity counts once per place; four complete discoveries total 200 points. Removing a visit or photograph removes those points. Saving and writing notes have no point value. There are no speed bonuses, territory claims, repeat-reading rewards or fabricated rival activity.
+The game loop is **discover → read → save → visit → photograph → compare**. Each player can earn 10 points for collecting a story, 25 for a self-reported visit, and 15 for a photograph. Each activity counts once per place; four complete discoveries total 200 points. Learning adds up to 225 points per person (15 for finishing the six-part orientation, six city challenges at 20 each, five Náhuatl word matches at 10 each, and two place-name puzzles at 20 each). Maximum authored prototype score: 425. Wrong answers and repeat practice add zero. Removing a visit or photograph removes those points. Saving and writing notes have no point value. There are no speed bonuses, territory claims, repeat-reading rewards or fabricated rival activity.
 
 ## References and decisions
 
@@ -41,8 +41,23 @@ Next editorial seeds, not yet implemented: [Casa de la Primera Imprenta](https:/
 - Streets: OpenStreetMap contributors, [ODbL attribution](https://www.openstreetmap.org/copyright). A bounded Overpass query collected primary, secondary and tertiary roads around the first three zones: `(19.411,-99.195,19.446,-99.121)`. The successful endpoint was `https://overpass.kumi.systems/api/interpreter`; query: `[out:json][timeout:25];way["highway"~"primary|secondary|tertiary"](19.411,-99.195,19.446,-99.121);out geom;`.
 - Coordinates are locally projected with a longitude cosine correction at 19.3° N. The map is an illustrated exploration surface, not navigation. Neighbourhood extents are curated approximate bounds, not administrative borders. Landmark illustrations have geographic anchors and may be displaced with leader lines to keep their labels readable.
 - Source geography is retained in `apps/lab/assets/sources/mexico-city/`. Regenerate the runtime geometry with `python3 apps/lab/scripts/mexico-city-map.py` from the repository root.
-- All eight artworks were made with the built-in image generator. [Provenance and prompt records](../../apps/lab/assets/sources/mexico-city/provenance.json) record generation outputs, historical prompts and the correction that removed an invented carving from a draft shrine.
+- Nine illustrations were made with the built-in image generator; three separately labeled archive/modern references accompany the stories. [Provenance and prompt records](../../apps/lab/assets/sources/mexico-city/provenance.json) record generation outputs, historical prompts and the correction that removed an invented carving from a draft shrine.
 - Masters are source WebPs. `apps/lab/assets/mexico-city.json` generates 256/512/960/1280px immutable variants. Source masters are not referenced by the route. Only the current map drawings or story scene mount; there is no runtime image-generation call and no external map SDK.
+
+
+## Opening chapter, layers, and language games
+
+The six-part opening chapter teaches **why the city has this shape**: the lake basin and island settlement; causeways and their surviving directions; present-day boroughs; geographic Metro corridors; Cablebús connections; and the different positions/access patterns of MEX, NLU and TLC. A lake/city slider, animated causeway selection, borough highlights, line isolation, and selectable airport connection diagrams reinforce each lesson. Six challenges test causal understanding, position, and useful connections. Every successful challenge awards points once per player; practice remains available.
+
+The lake silhouettes and causeway/airport links are explicitly **interpretive diagrams**. Contemporary borough boundaries, Metro routes/stations, and Cablebús lines use SGIRPC coordinates. Administrative boroughs are not presented as ancient boundaries. An archival 1524 map can be opened for comparison, with a warning about its orientation and European conventions. Transit references were checked on 10 October 2026; this is a static learning map without live service, travel-time or fare claims. Airport access links lead to the relevant operators.
+
+Map controls persist while moving between city, borough, zone and place. Metro and Cablebús can appear at all scales; station captions, neighborhood boundaries/names and twelve highlighted streets appear at closer scales where visible. Street and neighborhood coverage is bounded to the initial central exploration areas, not the entire metropolis. Retained SGIRPC neighborhood data contains administrative subdivisions such as Centro VII; labels preserve those names. Rendered captions avoid each other and illustrated landmarks. [Layer and editorial sources](SOURCES.md) describe coverage and limitations.
+
+Náhuatl is introduced through five sourced words (**atl, tepetl, xochitl, milli, ehecatl**), a meaning-matching game and two compound-name games (**Xochimilco, Xochitepec**). This is an introduction to historical central Nahuatl using source spellings, not a claim of uniform modern pronunciation. Compound stems are explained as specific examples. No synthetic or unverified pronunciation audio is included.
+
+Both language versions include richer local stories, short original Spanish quotations and English translations, source links, observation prompts and practical access wording. The Revolución story includes Guillermo Kahlo’s 1912 archive photograph and a credited 2018 reference photograph. The artwork and real photographs are clearly distinguished. [Image rights and transformations](../../apps/lab/assets/sources/mexico-city/references.json) are retained alongside [generated-art provenance](../../apps/lab/assets/sources/mexico-city/provenance.json).
+
+New modules: `MapDetails.tsx` (layers/labels), `OverviewChapter.tsx` and `LearningMap.tsx` (chapter/challenges), `NahuatlGames.tsx`, `PhotoReferences.tsx`, and `locale.tsx` (Spanish-default copy and preference). `learning.ts`, `nahuatl.ts`, and `rewards.ts` hold the authored material and reward contract. The native dialog resets its scroll and heading focus when changing lesson/game pages. All chapter graphics have equivalent named HTML controls; reduced-motion preferences disable route animation and transitions.
 
 ## Application structure
 
@@ -59,7 +74,7 @@ Next editorial seeds, not yet implemented: [Casa de la Primera Imprenta](https:/
 
 Deep links use `?borough=09015`, `?zone=centro`, or `?place=zocalo`. Invalid values return to the city. Browser Back restores the previous map scale. Other boroughs are selectable and honestly show that their stories are not yet authored.
 
-This is a local, two-profile prototype. `otra-vista-journal-v1` and `otra-vista-player-v1` are browser storage keys. There is no account authentication, server competition, social feed, automatic sync, GPS verification or background tracking. Native file selection allows an existing or new photograph depending on the device. Photos are decoded locally, resized to at most 960px, flattened to JPEG and capped at 260,000 data-URL characters. Notes are capped at 500 characters. The export contains both players' notes and photographs; it is a user-controlled file, not an upload to a service. Import unions activity flags and preserves existing nonempty local notes/photos. Imports cannot contain external image URLs or executable SVGs.
+This is a local, two-profile prototype. `otra-vista-journal-v1`, `otra-vista-player-v1`, and `otra-vista-language-v1` are browser storage keys. Journal version 1 now accepts optional, per-player `learning` flags; older exports remain valid. Unknown reward keys and non-boolean flags are discarded, and imports union earned rewards. Spanish is the default, with a persistent English option on the map and inside every dialog. There is no account authentication, server competition, social feed, automatic sync, GPS verification or background tracking. Native file selection allows an existing or new photograph depending on the device. Photos are decoded locally, resized to at most 960px, flattened to JPEG and capped at 260,000 data-URL characters. Notes are capped at 500 characters. The export contains both players' notes and photographs; it is a user-controlled file, not an upload to a service. Import unions activity flags and preserves existing nonempty local notes/photos. Imports cannot contain external image URLs or executable SVGs.
 
 For a later shared test, keep this UI and add authenticated memberships, a shared visit/photo store, immutable point events, and server-side deduplication. That will need a separate backend contract; browser scores must not be treated as authoritative multiplayer results.
 

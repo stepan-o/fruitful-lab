@@ -23,6 +23,7 @@ try {
   for (const width of [320, 390, 768, 1440]) {
     console.log(`Checking ${width}px…`);
     const context = await browser.newContext({ viewport: { width, height: width < 700 ? 844 : 960 }, deviceScaleFactor: width < 700 ? 2 : 1, hasTouch: width < 700 });
+    await context.addInitScript(() => localStorage.setItem("otra-vista-language-v1", "en"));
     const page = await context.newPage();
     page.on("pageerror", e => errors.push(e.message));
     await page.addInitScript(() => {
@@ -48,6 +49,7 @@ try {
     await page.getByRole("button", { name: "Explore Centro Histórico", exact: true }).click();
     await waitForArt(page); await screenshot(page, `zone-${width}`);
     for (const label of await page.locator(".ov-pin-label").all()) {
+      await label.scrollIntoViewIfNeeded();
       assert(await label.evaluate(element => { const r = element.getBoundingClientRect(); return document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)?.closest("button") === element.closest("button"); }), `overlapped place label at ${width}`);
     }
     await page.getByRole("button", { name: "Explore Zócalo", exact: true }).click();
@@ -98,6 +100,7 @@ try {
     const download = await downloadPromise;
     await download.saveAs(`${out}/journal-fixture-${width}.json`);
     const importer = await browser.newContext({ viewport: { width, height: 844 } });
+    await importer.addInitScript(() => localStorage.setItem("otra-vista-language-v1", "en"));
     const other = await importer.newPage(); await other.goto(`${base}/mexico-city`);
     await other.getByRole("button", { name: "Field journal", exact: false }).click();
     await other.locator('.ov-journal-footer input[type="file"]').setInputFiles(`${out}/journal-fixture-${width}.json`);
@@ -119,7 +122,8 @@ try {
     await context.close();
   }
   const context = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 390, height: 844 } });
-  const page = await context.newPage();
+  await context.addInitScript(() => localStorage.setItem("otra-vista-language-v1", "en"));
+    const page = await context.newPage();
   for (const id of ["ehecatl", "revolucion", "chapultepec"]) {
     await page.goto(`${base}/mexico-city?place=${id}`);
     await page.getByRole("button", { name: "Open the story" }).click();

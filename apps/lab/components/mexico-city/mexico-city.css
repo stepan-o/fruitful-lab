@@ -1973,3 +1973,1318 @@
     position: fixed;
   }
 }
+
+/* Chapter two: readable geographic layers and the learning game. */
+.ov-language {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.ov-language button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  opacity: 0.55;
+}
+.ov-language button[aria-pressed="true"] {
+  opacity: 1;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #d37850;
+  text-underline-offset: 7px;
+}
+.ov-language > span {
+  color: #b5bdb4;
+}
+.ov-header {
+  gap: 18px;
+}
+.ov-header > .ov-language {
+  margin-left: 14px;
+}
+.ov-dialog-language {
+  position: absolute;
+  top: 18px;
+  right: 76px;
+  z-index: 8;
+  background: #fffdf9e8;
+  border-radius: 30px;
+}
+.ov-story-header > span:last-child {
+  padding-right: 135px;
+}
+.ov-chapter-rail {
+  display: flex;
+  gap: 24px;
+  margin: 0 4.4%;
+  padding: 10px 0 18px;
+  border-bottom: 1px solid var(--line);
+  z-index: 2;
+}
+.ov-chapter-entry {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+  padding: 8px 0;
+  flex: 1;
+}
+.ov-chapter-number {
+  font: italic 32px var(--serif);
+  color: #c66b46;
+  border: 1px solid #ead9c8;
+  border-radius: 50%;
+  width: 53px;
+  height: 53px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.ov-chapter-entry small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ov-chapter-entry strong {
+  display: block;
+  font: 22px var(--serif);
+  margin-top: 4px;
+}
+.ov-chapter-entry > b {
+  font-size: 12px;
+  color: #b35b3d;
+  margin-left: 16px;
+  white-space: nowrap;
+}
+.ov-nahuatl-entry {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  border-left: 1px solid var(--line) !important;
+  padding-left: 28px;
+}
+.ov-nahuatl-entry > span:first-child {
+  font: italic 34px var(--serif);
+  color: #478a98;
+}
+.ov-nahuatl-entry small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+}
+.ov-layer-controls {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  z-index: 5;
+  width: max-content;
+  max-width: 100%;
+  padding: 3px 7px;
+  border: 1px solid #e2e7df;
+  border-radius: 28px;
+  background: #fffef9f2;
+  box-shadow: 0 3px 18px #34523b08;
+}
+.ov-layer-controls button {
+  font-size: 10px;
+  min-height: 44px;
+  padding: 6px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.ov-layer-controls button[aria-pressed="true"] {
+  color: #315f48;
+  background: #edf2e9;
+}
+.ov-layer-controls button > span {
+  font-size: 9px;
+}
+.ov-area-caption,
+.ov-street-caption,
+.ov-station-caption {
+  font:
+    11px Arial,
+    sans-serif;
+  paint-order: stroke;
+  stroke: #fffef9;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  fill: #465b4c;
+}
+.ov-area-caption {
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  fill: #6e7664;
+  font-size: 10px;
+  stroke-width: 3;
+}
+.ov-street-caption {
+  fill: #805c2b;
+  font-size: 10px;
+}
+.ov-station-caption {
+  fill: #29483e;
+  font-size: 11px;
+  font-weight: 600;
+}
+.ov-map-details {
+  transition: opacity 0.35s;
+}
+.ov-map--transit .ov-landmark {
+  width: 105px !important;
+}
+.ov-map--transit .ov-landmark img {
+  height: 78px !important;
+  width: 100%;
+  opacity: 0.92;
+}
+.ov-map--transit .ov-landmark .ov-pin-label strong {
+  font-size: 11px;
+}
+.ov-map--transit .ov-landmark .ov-pin-label small {
+  display: none;
+}
+.ov-map--transit .ov-map-watermark {
+  display: none;
+}
+.ov-transit-legend {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 94%;
+  border-radius: 14px;
+  padding: 9px 12px;
+  background: #fffef9ed;
+  z-index: 4;
+  text-align: center;
+}
+.ov-transit-legend > div {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ov-transit-legend > div > span {
+  font-size: 10px;
+  min-width: 18px;
+  line-height: 18px;
+  border-bottom: 3px solid;
+  display: inline-block;
+}
+.ov-transit-legend a,
+.ov-transit-legend small {
+  display: block;
+  font-size: 9px;
+  margin-top: 7px;
+  color: #56715e;
+  max-width: 300px;
+}
+.ov-map-credit {
+  z-index: 5;
+}
+.ov-points-trail {
+  margin: 24px 4.4% 10px;
+  padding: 25px 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.ov-points-trail > div:first-child {
+  min-width: 220px;
+}
+.ov-points-trail .ov-eyebrow {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+.ov-points-trail strong {
+  font: 48px var(--serif);
+  line-height: 1.2;
+}
+.ov-points-trail strong small {
+  font: 12px Arial;
+  color: var(--muted);
+}
+.ov-points-trail p {
+  margin: 3px 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+.ov-points-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px 23px;
+}
+.ov-points-actions > span,
+.ov-points-actions > button {
+  font-size: 12px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.ov-points-actions b {
+  color: #b55c3e;
+  font-weight: 500;
+}
+.ov-points-actions > small {
+  flex-basis: 100%;
+  font-size: 10px;
+  color: var(--muted);
+}
+.ov-story-quote {
+  margin: 20px 0;
+  border-left: 2px solid #ca7954;
+  padding: 4px 0 4px 18px;
+}
+.ov-story-quote > small {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ov-story-quote p {
+  font: italic 21px/1.4 var(--serif);
+  margin: 8px 0;
+}
+.ov-story-quote cite {
+  font:
+    10px/1.5 Arial,
+    sans-serif;
+  display: block;
+  color: var(--muted);
+}
+.ov-story-quote .ov-quote-translation {
+  font:
+    12px/1.5 Arial,
+    sans-serif;
+}
+.ov-word-aside {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  font-size: 12px !important;
+}
+.ov-word-aside > span {
+  font: italic 25px var(--serif);
+  color: #3c8492;
+}
+.ov-chapter-dialog,
+.ov-nahuatl-dialog {
+  width: min(1240px, 96vw);
+  max-width: 1240px;
+  padding: 28px 36px;
+  max-height: 94svh;
+  overflow: auto;
+}
+.ov-learning-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-right: 155px;
+  min-height: 48px;
+  margin-bottom: 18px;
+}
+.ov-learning-header .ov-wordmark {
+  font-size: 27px !important;
+}
+.ov-live-score {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 11px;
+  color: #65776d;
+}
+.ov-live-score strong {
+  font: 25px var(--serif);
+  color: var(--ink);
+}
+.ov-learning-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.ov-learning-tabs button {
+  min-height: 44px;
+  padding: 8px 2px;
+  border-bottom: 2px solid transparent !important;
+  font-size: 12px;
+}
+.ov-learning-tabs button[aria-pressed="true"] {
+  border-color: #cf7952 !important;
+}
+.ov-learning-tabs button > span {
+  color: #b35b3d;
+  margin-left: 8px;
+  font-size: 11px;
+}
+.ov-learning-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+.ov-learning-visual {
+  position: sticky;
+  top: 0;
+  min-width: 0;
+}
+.ov-learning-map {
+  width: 100%;
+  background: radial-gradient(ellipse at center, #fafbf7 20%, white 72%);
+}
+.ov-learning-map svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: hidden;
+}
+.ov-learning-map--3,
+.ov-learning-map--4 {
+  background: radial-gradient(ellipse at center, #f7faf3 20%, white 72%);
+}
+.ov-learning-label {
+  font:
+    11px Arial,
+    sans-serif;
+  fill: #304b3c;
+  paint-order: stroke;
+  stroke: #fffefa;
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+.ov-lake-name {
+  font:
+    italic 14px Georgia,
+    serif;
+  fill: #365e69;
+  paint-order: stroke;
+  stroke: #e7f3f0;
+  stroke-width: 3;
+}
+.ov-map-north {
+  font: 12px Arial;
+  letter-spacing: 2px;
+  fill: #5e7768;
+}
+.ov-learning-note {
+  font: 10px Arial;
+  fill: #65776d;
+}
+.ov-learning-route,
+.ov-learning-borough,
+.ov-lake-layer {
+  transition:
+    opacity 0.65s,
+    fill 0.65s,
+    stroke-width 0.5s;
+}
+.ov-causeway.is-traced {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: ov-trace 1s ease both;
+}
+@keyframes ov-trace {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.ov-airport-route {
+  animation: ov-route-appear 0.65s ease both;
+}
+@keyframes ov-route-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.ov-borough-target {
+  cursor: pointer;
+  outline: none;
+}
+.ov-borough-target:focus-visible > circle:first-child {
+  stroke: #bb603f;
+  stroke-width: 2;
+}
+.ov-time-scrubber {
+  display: block;
+  margin: 0 auto 12px;
+  max-width: 400px;
+  color: #46665e;
+}
+.ov-time-scrubber > span:first-child {
+  font: italic 20px var(--serif);
+  display: block;
+  text-align: center;
+  margin-bottom: 7px;
+}
+.ov-time-scrubber input {
+  width: 100%;
+  height: 44px;
+  accent-color: #498a97;
+  cursor: ew-resize;
+}
+.ov-time-scrubber > span:last-child {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+.ov-map-picks {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+.ov-map-picks button {
+  padding: 9px 12px;
+  min-height: 44px;
+  border: 1px solid #dce5d9 !important;
+  border-radius: 25px;
+  font-size: 11px;
+}
+.ov-map-picks button[aria-pressed="true"] {
+  background: #eaf1e4;
+  border-color: #6d8b68 !important;
+}
+.ov-line-picks {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.ov-line-picks button {
+  width: 44px;
+  height: 44px;
+  border-bottom: 4px solid !important;
+  font-size: 15px;
+  border-radius: 5px;
+}
+.ov-line-picks button[aria-pressed="true"] {
+  background: #eef1e7;
+  font-weight: 700;
+  box-shadow: 0 0 0 1px #b6c9b6;
+}
+.ov-learning-copy {
+  padding-top: 16px;
+}
+.ov-learning-copy h2,
+.ov-nahuatl-dialog > h2 {
+  font: 48px/1.03 var(--serif);
+  letter-spacing: -1.9px;
+  margin: 15px 0 22px;
+  max-width: 480px;
+}
+.ov-learning-copy > p,
+.ov-learning-copy .ov-chapter-detail {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #53665c;
+}
+.ov-learning-copy > .ov-eyebrow {
+  font-size: 10px;
+  color: #af6649;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+}
+.ov-learning-copy .ov-interaction-hint {
+  font: italic 18px/1.5 var(--serif);
+  color: #408291;
+  margin-top: 22px;
+}
+.ov-chapter-detail {
+  padding: 4px 18px;
+  border-left: 2px solid #d5e2d1;
+  margin: 18px 0;
+}
+.ov-chapter-detail p {
+  margin: 10px 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.ov-chapter-detail a {
+  font-size: 10px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ov-learning-copy blockquote {
+  font: italic 19px/1.5 var(--serif);
+  margin: 22px 0;
+  color: #3e706f;
+}
+.ov-learning-copy cite {
+  display: block;
+  font: 10px/1.6 Arial;
+  margin-top: 7px;
+  color: #65776d;
+}
+.ov-source-link {
+  font-size: 10px;
+  color: var(--muted);
+  display: block;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+.ov-chapter-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 26px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.ov-chapter-actions > span {
+  font-size: 11px;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.ov-chapter-actions .ov-primary {
+  margin-left: auto;
+  font-size: 12px;
+  padding: 12px 17px;
+}
+.ov-text-button {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 12px;
+}
+.ov-learning-copy h2.ov-question {
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+.ov-quiz-answers {
+  display: grid;
+  gap: 9px;
+}
+.ov-quiz-answers button {
+  border: 1px solid #dfe6da !important;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+  padding: 14px 16px;
+  min-height: 56px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.ov-quiz-answers small {
+  color: #b77b53;
+  font-size: 11px;
+}
+.ov-quiz-answers button > span {
+  margin-left: auto;
+  color: #c47b58;
+}
+.ov-quiz-answers button.is-correct {
+  background: #eaf2df;
+  border-color: #a8bf96 !important;
+  opacity: 1;
+}
+.ov-quiz-answers button.is-wrong {
+  background: #fff0e9;
+  border-color: #d4a387 !important;
+  opacity: 1;
+}
+.ov-answer-feedback {
+  border-left: 2px solid #86a370;
+  padding: 6px 0 6px 17px;
+  margin: 20px 0;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.ov-answer-feedback strong {
+  color: #456a35;
+}
+.ov-answer-feedback.is-wrong {
+  border-color: #cf9975;
+}
+.ov-answer-feedback.is-wrong strong {
+  color: #995c3e;
+}
+.ov-answer-feedback small,
+.ov-reward-hint {
+  font-size: 10px;
+  color: #687966;
+}
+.ov-learning-finish {
+  text-align: center;
+  padding: 45px 10px 60px;
+  max-width: 620px;
+  margin: auto;
+}
+.ov-finish-spark {
+  display: block;
+  font-size: 75px;
+  line-height: 1;
+  color: #cb7955;
+}
+.ov-learning-finish h2,
+.ov-learning-finish h3 {
+  font: 44px/1.1 var(--serif);
+  letter-spacing: -1.5px;
+  margin: 25px 0;
+}
+.ov-learning-finish p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #65776d;
+}
+.ov-learning-finish button {
+  display: block;
+  margin: 20px auto;
+}
+.ov-nahuatl-dialog > h2 {
+  max-width: 720px;
+  font-size: 50px;
+}
+.ov-language-note {
+  max-width: 710px;
+  color: #65776d;
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 0 0 25px;
+}
+.ov-word-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  margin: 30px 0;
+}
+.ov-word-cards article {
+  border-top: 1px solid #dfe6da;
+  padding: 15px 0;
+}
+.ov-word-mark {
+  font: 50px Georgia;
+  color: #5b9194;
+}
+.ov-word-cards h3 {
+  font: italic 31px var(--serif);
+  margin: 5px 0;
+}
+.ov-word-cards strong {
+  font-size: 12px;
+  font-weight: 500;
+  color: #b46646;
+}
+.ov-word-cards p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #65776d;
+  min-height: 58px;
+}
+.ov-word-cards a {
+  font-size: 10px;
+  color: #65776d;
+  text-decoration: underline;
+}
+.ov-word-game {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  padding: 25px 8% 40px;
+}
+.ov-word-prompt {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ov-word-prompt h3 {
+  font: italic 78px var(--serif);
+  letter-spacing: -3px;
+  margin: 20px 0;
+  color: #428998;
+}
+.ov-word-prompt p {
+  font-size: 13px;
+  color: #65776d;
+}
+.ov-name-game {
+  max-width: 670px;
+  margin: 30px auto 45px;
+  text-align: center;
+}
+.ov-name-game h3 {
+  font: 50px var(--serif);
+  letter-spacing: -2px;
+  margin: 18px 0;
+}
+.ov-name-game > p {
+  font-size: 13px;
+  color: #65776d;
+}
+.ov-name-slots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 25px 0;
+}
+.ov-name-slots button {
+  width: 31%;
+  min-height: 105px;
+  border: 1px dashed #aac0b4 !important;
+  border-radius: 14px;
+  background: #f7f9f3;
+}
+.ov-name-slots span {
+  display: block;
+  font: italic 32px var(--serif);
+  color: #3e8493;
+}
+.ov-name-slots small {
+  display: block;
+  font-size: 10px;
+  margin-top: 8px;
+  color: #65776d;
+}
+.ov-name-tiles {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.ov-name-tiles button {
+  min-width: 58px;
+  min-height: 50px;
+  padding: 10px 13px;
+  border-radius: 12px;
+  background: #f6e8d4;
+  font: italic 23px var(--serif);
+  box-shadow: 0 3px 0 #d8bea0;
+}
+.ov-name-game .ov-primary {
+  margin: 20px auto;
+}
+.ov-photo-reference {
+  margin: 20px 0;
+  border-top: 1px solid #e2e7df;
+  padding-top: 12px;
+}
+.ov-photo-reference summary {
+  cursor: pointer;
+  min-height: 44px;
+  font-size: 12px;
+  display: list-item;
+  padding: 10px 0;
+  color: #466b62;
+}
+.ov-photo-reference figure {
+  margin: 12px 0;
+  background: #f8f7f2;
+  padding: 10px;
+}
+.ov-photo-reference img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+}
+.ov-photo-reference figcaption {
+  font-size: 10px;
+  line-height: 1.6;
+  color: #68766c;
+  margin-top: 10px;
+}
+.ov-photo-reference a {
+  text-decoration: underline;
+}
+@media (max-width: 1000px) {
+  .ov-learning-layout {
+    gap: 23px;
+  }
+  .ov-learning-copy h2 {
+    font-size: 39px;
+  }
+  .ov-chapter-entry strong {
+    font-size: 20px;
+  }
+  .ov-nahuatl-entry {
+    padding-left: 18px;
+  }
+  .ov-word-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ov-learning-header {
+    gap: 15px;
+  }
+  .ov-header {
+    gap: 10px;
+  }
+  .ov-header > .ov-language {
+    margin-left: 0;
+  }
+}
+@media (max-width: 700px) {
+  .ov-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    height: auto;
+    min-height: 120px;
+    padding: 14px 0 10px;
+    gap: 6px 4px;
+  }
+  .ov-header > .ov-wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .ov-header > .ov-language {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+  .ov-header > .ov-scoreboard {
+    grid-column: 1;
+    grid-row: 2;
+    margin-left: 0;
+    gap: 6px;
+  }
+  .ov-header > .ov-journal-toggle {
+    grid-column: 2;
+    grid-row: 2;
+    border-left: 0 !important;
+    padding: 0;
+    justify-self: end;
+  }
+  .ov-scoreboard button {
+    gap: 5px;
+    padding: 4px 7px;
+  }
+  .ov-scoreboard .ov-player-name {
+    display: inline;
+    font-size: 10px;
+  }
+  .ov-scoreboard strong {
+    font-size: 13px;
+  }
+  .ov-scoreboard .ov-avatar {
+    width: 24px;
+    height: 24px;
+  }
+  .ov-header .ov-wordmark small {
+    display: block;
+    font-size: 7px;
+    margin-top: 6px;
+    letter-spacing: 1.3px;
+  }
+  .ov-chapter-rail {
+    gap: 12px;
+    padding: 8px 0 13px;
+  }
+  .ov-chapter-entry {
+    gap: 9px;
+    min-width: 0;
+  }
+  .ov-chapter-number {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+  }
+  .ov-chapter-entry small {
+    font-size: 8px;
+    letter-spacing: 0.025em;
+  }
+  .ov-chapter-entry strong {
+    font-size: 17px;
+    line-height: 1.15;
+  }
+  .ov-chapter-entry > b {
+    font-size: 10px;
+    margin-left: 0;
+  }
+  .ov-nahuatl-entry {
+    padding-left: 10px;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .ov-nahuatl-entry > span:first-child {
+    display: none;
+  }
+  .ov-nahuatl-entry > span {
+    font-size: 11px;
+  }
+  .ov-nahuatl-entry small {
+    font-size: 8px;
+    max-width: 50px;
+  }
+  .ov-game .ov-map,
+  .ov-game:not([data-level="city"]) .ov-map {
+    height: 450px;
+    min-height: 450px;
+  }
+  .ov-layer-controls {
+    top: 6px;
+    gap: 2px;
+    padding: 3px;
+  }
+  .ov-layer-controls button {
+    font-size: 9px;
+    padding: 5px 7px;
+  }
+  .ov-map-watermark {
+    top: auto;
+    bottom: 45px;
+  }
+  .ov-transit-legend {
+    bottom: 32px;
+  }
+  .ov-transit-legend > div {
+    gap: 4px;
+  }
+  .ov-transit-legend > div > span {
+    min-width: 13px;
+    font-size: 9px;
+  }
+  .ov-points-trail {
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 0;
+  }
+  .ov-points-trail > div:first-child {
+    min-width: 110px;
+    max-width: 120px;
+  }
+  .ov-points-trail strong {
+    font-size: 42px;
+  }
+  .ov-points-trail .ov-eyebrow {
+    font-size: 8px;
+  }
+  .ov-points-trail p {
+    font-size: 10px;
+  }
+  .ov-points-actions {
+    gap: 2px 16px;
+  }
+  .ov-points-actions > span,
+  .ov-points-actions > button {
+    font-size: 10px;
+    gap: 6px;
+    min-height: 38px;
+  }
+  .ov-points-actions > small {
+    font-size: 9px;
+  }
+  .ov-chapter-dialog,
+  .ov-nahuatl-dialog {
+    width: 100%;
+    max-width: none;
+    max-height: 100svh;
+    padding: 22px 20px 40px;
+    height: 100svh;
+  }
+  .ov-dialog-language {
+    position: fixed;
+    top: 9px;
+    right: 65px;
+  }
+  .ov-dialog-language .ov-language button {
+    min-width: 36px;
+  }
+  .ov-learning-header {
+    padding-right: 130px;
+    min-height: 80px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .ov-learning-header .ov-wordmark {
+    font-size: 24px !important;
+  }
+  .ov-live-score {
+    margin-top: 10px;
+    font-size: 10px;
+  }
+  .ov-live-score strong {
+    font-size: 22px;
+  }
+  .ov-learning-tabs {
+    gap: 20px;
+    margin-bottom: 0;
+  }
+  .ov-learning-tabs button {
+    font-size: 11px;
+  }
+  .ov-learning-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ov-learning-visual {
+    position: static;
+    width: 100%;
+    order: 1;
+  }
+  .ov-learning-copy {
+    display: contents;
+  }
+  .ov-learning-copy > .ov-eyebrow {
+    order: 0;
+    margin: 24px 0 0;
+  }
+  .ov-learning-copy > h2 {
+    order: 0;
+    margin: 8px 0 10px;
+    font-size: 35px;
+    line-height: 1.05;
+    max-width: 100%;
+    letter-spacing: -1px;
+  }
+  .ov-learning-copy > p:not(.ov-eyebrow) {
+    order: 2;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 8px 0;
+  }
+  .ov-learning-copy > p.ov-interaction-hint {
+    font: italic 17px/1.4 var(--serif);
+  }
+  .ov-learning-map {
+    max-width: 420px;
+    margin: auto;
+  }
+  .ov-learning-map svg {
+    max-height: 365px;
+  }
+  .ov-time-scrubber {
+    max-width: 320px;
+  }
+  .ov-time-scrubber > span:first-child {
+    font-size: 18px;
+  }
+  .ov-map-picks {
+    gap: 5px;
+  }
+  .ov-map-picks button {
+    font-size: 10px;
+    padding: 7px 10px;
+  }
+  .ov-line-picks {
+    gap: 3px;
+  }
+  .ov-line-picks button {
+    width: 44px;
+  }
+  .ov-learning-copy > .ov-chapter-detail,
+  .ov-learning-copy > blockquote,
+  .ov-learning-copy > .ov-source-link,
+  .ov-learning-copy > .ov-photo-reference {
+    order: 3;
+  }
+  .ov-learning-copy > .ov-chapter-actions {
+    order: 4;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .ov-chapter-actions .ov-primary {
+    font-size: 11px;
+    padding: 11px 12px;
+  }
+  .ov-chapter-detail {
+    margin: 10px 0;
+  }
+  .ov-learning-copy blockquote {
+    font-size: 17px;
+    margin: 10px 0;
+  }
+  .ov-learning-copy .ov-source-link {
+    margin-bottom: 12px;
+  }
+  .ov-learning-copy > .ov-quiz-answers,
+  .ov-learning-copy > .ov-answer-feedback,
+  .ov-learning-copy > .ov-primary,
+  .ov-learning-copy > .ov-reward-hint {
+    order: 3;
+    width: 100%;
+  }
+  .ov-learning-copy h2.ov-question {
+    font-size: 28px;
+    line-height: 1.15;
+  }
+  .ov-quiz-answers button {
+    font-size: 12px;
+    min-height: 56px;
+  }
+  .ov-learning-finish h2,
+  .ov-learning-finish h3 {
+    font-size: 35px;
+  }
+  .ov-nahuatl-dialog > h2 {
+    font-size: 38px;
+    line-height: 1.06;
+    letter-spacing: -1.2px;
+  }
+  .ov-language-note {
+    font-size: 11px;
+  }
+  .ov-word-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .ov-word-cards h3 {
+    font-size: 29px;
+  }
+  .ov-word-cards p {
+    font-size: 11px;
+    min-height: 0;
+  }
+  .ov-word-game {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  .ov-word-prompt h3 {
+    font-size: 63px;
+    margin: 4px 0;
+  }
+  .ov-word-prompt p {
+    margin: 5px 0;
+  }
+  .ov-name-game h3 {
+    font-size: 38px;
+  }
+  .ov-name-slots {
+    gap: 7px;
+  }
+  .ov-name-slots span {
+    font-size: 27px;
+  }
+  .ov-name-tiles {
+    gap: 9px;
+  }
+  .ov-name-tiles button {
+    min-width: 54px;
+  }
+  .ov-story-header > span:last-child {
+    padding-right: 0;
+    margin-top: 45px;
+  }
+  .ov-story-header {
+    align-items: flex-start;
+  }
+  .ov-story-header .ov-wordmark {
+    max-width: 110px;
+  }
+  .ov-story-quote p {
+    font-size: 19px;
+  }
+}
+@media (max-width: 350px) {
+  .ov-scoreboard .ov-player-name {
+    display: none;
+  }
+  .ov-chapter-entry strong {
+    font-size: 15px;
+  }
+  .ov-chapter-number {
+    display: none;
+  }
+  .ov-chapter-entry > b {
+    font-size: 9px;
+  }
+  .ov-chapter-rail {
+    gap: 9px;
+  }
+  .ov-learning-copy > h2 {
+    font-size: 31px;
+  }
+  .ov-layer-controls button {
+    padding: 5px;
+  }
+  .ov-points-trail {
+    gap: 12px;
+  }
+  .ov-points-trail > div:first-child {
+    min-width: 95px;
+  }
+  .ov-name-tiles {
+    gap: 7px;
+  }
+  .ov-name-tiles button {
+    min-width: 48px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ov-causeway.is-traced,
+  .ov-airport-route {
+    animation: none;
+  }
+  .ov-learning-route,
+  .ov-learning-borough,
+  .ov-lake-layer,
+  .ov-map-details {
+    transition: none;
+  }
+}
+
+.ov-learning-map {
+  position: relative;
+}
+.ov-island-vignette {
+  position: absolute;
+  left: 0;
+  top: 22%;
+  width: 39%;
+  margin: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.ov-island-vignette img {
+  width: 100%;
+  height: auto;
+}
+.ov-island-vignette figcaption {
+  font: italic 10px Georgia;
+  color: #628481;
+  text-align: center;
+  margin: 4px 0;
+}
+@media (max-width: 700px) {
+  .ov-learning-label {
+    font-size: 16px;
+  }
+  .ov-lake-name {
+    font-size: 19px;
+  }
+  .ov-learning-note {
+    font-size: 13px;
+  }
+  .ov-island-vignette {
+    width: 37%;
+    top: 24%;
+  }
+  .ov-island-vignette figcaption {
+    font-size: 8px;
+  }
+  .ov-learning-copy > .ov-photo-reference {
+    width: 100%;
+  }
+}
+
+.ov-dialog-language .ov-language button {
+  min-width: 44px;
+}
+.ov-points-actions > button {
+  min-height: 44px;
+}

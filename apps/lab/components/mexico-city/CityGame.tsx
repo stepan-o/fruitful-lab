@@ -1,5 +1,9 @@
 "use client";
-
+import {
+  useLocale,
+  LanguageSwitch,
+  LocaleProvider,
+} from "@/lib/mexico-city/locale";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -26,10 +30,11 @@ import {
 } from "@/lib/mexico-city/journal";
 import MapCanvas from "./MapCanvas";
 import GameDialog from "./GameDialog";
-
+import { LEARNING_REWARDS, type LearningId } from "@/lib/mexico-city/rewards";
 const StoryReader = dynamic(() => import("./StoryReader"));
+const OverviewChapter = dynamic(() => import("./OverviewChapter"));
+const NahuatlGames = dynamic(() => import("./NahuatlGames"));
 const FieldJournal = dynamic(() => import("./FieldJournal"));
-
 function viewFromUrl(): View {
   const query = new URLSearchParams(window.location.search);
   const place = query.get("place");
@@ -43,8 +48,15 @@ function viewFromUrl(): View {
     return { level: "borough", id: borough! };
   return { level: "city" };
 }
-
 export default function CityGame() {
+  return (
+    <LocaleProvider>
+      <Game />
+    </LocaleProvider>
+  );
+}
+function Game() {
+  const { locale, t } = useLocale();
   const [view, setView] = useState<View>({ level: "city" });
   const [journal, setJournal] = useState<Journal>(blankJournal);
   const currentJournal = useRef(journal);
@@ -52,8 +64,11 @@ export default function CityGame() {
   const [player, setActivePlayer] = useState<Player>("Susy");
   const [story, setStory] = useState<StoryId | null>(null);
   const [book, setBook] = useState(false);
+  const [chapter, setChapter] = useState(false);
+  const [nahuatl, setNahuatl] = useState(false);
   const [about, setAbout] = useState(false);
   const [message, setMessage] = useState("");
+  const [rewardNotice, setRewardNotice] = useState(0);
   useEffect(() => {
     let stored: Journal | null = null;
     let lastPlayer: Player = "Susy";
@@ -82,6 +97,8 @@ export default function CityGame() {
       setView(viewFromUrl());
       setStory(null);
       setBook(false);
+      setChapter(false);
+      setNahuatl(false);
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -123,10 +140,26 @@ export default function CityGame() {
     };
     save(next);
   }
+  function award(id: LearningId) {
+    const latest = currentJournal.current;
+    if (latest.learning?.[player][id]) return;
+    save({
+      ...latest,
+      learning: {
+        Susy: { ...latest.learning?.Susy },
+        Stepan: { ...latest.learning?.Stepan },
+        [player]: { ...latest.learning?.[player], [id]: true },
+      },
+    });
+    setRewardNotice(LEARNING_REWARDS[id]);
+    setMessage("+{points} discovery points");
+  }
   function go(next: View) {
     setView(next);
     setStory(null);
     setBook(false);
+    setChapter(false);
+    setNahuatl(false);
     const url = new URL(window.location.href);
     url.search =
       next.level === "city"
@@ -140,74 +173,87 @@ export default function CityGame() {
       : view.level === "zone"
         ? zoneById(view.id).borough
         : view.level === "place"
-          ? storyById(view.id).borough
+          ? storyById(view.id, locale).borough
           : null;
   const borough = geography.boroughs.find((b) => b.id === boroughId);
   const zone =
     view.level === "zone"
       ? zoneById(view.id)
       : view.level === "place"
-        ? zoneById(storyById(view.id).zone)
+        ? zoneById(storyById(view.id, locale).zone)
         : null;
-  const place = view.level === "place" ? storyById(view.id) : null;
+  const place = view.level === "place" ? storyById(view.id, locale) : null;
   const choices =
     view.level === "borough" ? ZONES.filter((z) => z.borough === view.id) : [];
   const title =
     view.level === "city" ? (
       <>
         <span className="ov-desktop-title">
-          A city.
-          <br />A thousand
+          {t("A city.")}
+          <br />
+          {t("A thousand")}
           <br />
         </span>
         <span className="ov-phone-title">
-          A city of
+          {t("A city of")}
           <br />
         </span>
-        <em>little surprises.</em>
+        <em>{t("little surprises.")}</em>
       </>
     ) : view.level === "borough" ? (
       <>
         {borough?.name}
-        <em> awaits.</em>
+        <em>{t(" awaits.")}</em>
       </>
     ) : view.level === "zone" ? (
       <>
         {zone?.name}
-        <em>Up close.</em>
+        <em>{t("Up close.")}</em>
       </>
     ) : (
       place?.title
     );
   const rival = player === "Susy" ? "Stepan" : "Susy";
-
+  const score = points(journal.players[player], journal.learning?.[player]);
+  const difference =
+    score - points(journal.players[rival], journal.learning?.[rival]);
   return (
-    <main className="ov-game" data-level={view.level}>
+    <main
+      lang={locale === "es" ? "es-MX" : "en"}
+      className="ov-game"
+      data-level={view.level}
+    >
       <a href="#ov-explore" className="ov-skip">
-        Skip to discoveries
+        {t("Skip to discoveries")}
       </a>
       <header className="ov-header">
         <button
           className="ov-wordmark"
-          aria-label="Otra Vista, return to city"
+          aria-label={t("Otra Vista, return to city")}
           onClick={() => go({ level: "city" })}
         >
           otra vista<span>✳</span>
-          <small>MEXICO CITY, RESEEN</small>
+          <small>{t("MEXICO CITY, RESEEN")}</small>
         </button>
-        <div className="ov-scoreboard" aria-label="Discovery points">
+        <LanguageSwitch />
+        <div className="ov-scoreboard" aria-label={t("Discovery points")}>
           {PLAYERS.map((p) => (
             <button
               key={p}
               onClick={() => setPlayer(p)}
               aria-pressed={player === p}
-              aria-label={`Play as ${p}, ${points(journal.players[p])} points`}
+              aria-label={t("Play as {player}, {points} points", {
+                player: p,
+                points: points(journal.players[p], journal.learning?.[p]),
+              })}
             >
               <span className={`ov-avatar ov-avatar--${p.toLowerCase()}`}>
                 {p[0]}
               </span>
               <span className="ov-player-name">{p}</span>
-              <strong>{points(journal.players[p])}</strong>
+              <strong>
+                {points(journal.players[p], journal.learning?.[p])}
+              </strong>
               <small>pts</small>
             </button>
           ))}
@@ -218,16 +264,16 @@ export default function CityGame() {
           disabled={!ready}
         >
           <span aria-hidden="true">▤</span>
-          <span>Field journal</span>
+          <span>{t("Field journal")}</span>
           <i>↗</i>
         </button>
       </header>
-      <nav className="ov-breadcrumb" aria-label="Map scale">
+      <nav className="ov-breadcrumb" aria-label={t("Map scale")}>
         <button
           onClick={() => go({ level: "city" })}
           aria-current={view.level === "city" ? "page" : undefined}
         >
-          The city
+          {t("The city")}
         </button>
         {borough ? (
           <>
@@ -241,7 +287,7 @@ export default function CityGame() {
           </>
         ) : (
           <span className="ov-breadcrumb-hint">
-            / a field guide for the curious
+            {t("/ a field guide for the curious")}
           </span>
         )}
         {zone ? (
@@ -258,10 +304,42 @@ export default function CityGame() {
         {place ? (
           <>
             <span>/</span>
-            <span className="ov-breadcrumb-place">A discovery</span>
+            <span className="ov-breadcrumb-place">{t("A discovery")}</span>
           </>
         ) : null}
       </nav>
+      <div className="ov-chapter-rail">
+        <button
+          className="ov-chapter-entry"
+          onClick={() => setChapter(true)}
+          disabled={!ready}
+        >
+          <span className="ov-chapter-number">01</span>
+          <span>
+            <small>{t("City layout, landmarks and history")}</small>
+            <strong>
+              {locale === "es"
+                ? "La ciudad que nació del agua"
+                : "The city that grew from water"}
+            </strong>
+          </span>
+          <b>{journal.learning?.[player].orientation ? "✓" : "+135"} ↗</b>
+        </button>
+        <button
+          className="ov-nahuatl-entry"
+          onClick={() => setNahuatl(true)}
+          disabled={!ready}
+        >
+          <span lang="nci">atl</span>
+          <span>
+            Náhuatl
+            <small>
+              {locale === "es" ? "Palabras y juegos" : "Words & games"}
+            </small>
+          </span>
+          <b>↗</b>
+        </button>
+      </div>
       <div className="ov-world">
         <section
           className="ov-intro"
@@ -272,33 +350,42 @@ export default function CityGame() {
           <div className="ov-kicker">
             <span />
             {view.level === "city"
-              ? "YOUR NEXT ADVENTURE IS AROUND THE CORNER"
+              ? t("YOUR NEXT ADVENTURE IS AROUND THE CORNER")
               : view.level === "borough"
-                ? "01 / PICK A LITTLE PART OF THE CITY"
+                ? t("01 / PICK A LITTLE PART OF THE CITY")
                 : view.level === "zone"
-                  ? "02 / FOLLOW YOUR CURIOSITY"
-                  : "03 / YOU’VE FOUND SOMETHING"}
+                  ? t("02 / FOLLOW YOUR CURIOSITY")
+                  : t("03 / YOU\u2019VE FOUND SOMETHING")}
           </div>
           <h1>{title}</h1>
           <p className="ov-intro-description">
             {view.level === "city" ? (
               <>
                 <span className="ov-desktop-title">
-                  Wander a little. Notice a little more. Uncover the stories
-                  hiding in plain sight, with someone you love exploring with.
+                  {t(
+                    "Wander a little. Notice a little more. Uncover the stories hiding in plain sight, with someone you love exploring with.",
+                  )}
                 </span>
                 <span className="ov-phone-title">
-                  Find the stories hiding in plain sight.
+                  {t("Find the stories hiding in plain sight.")}
                 </span>
               </>
             ) : view.level === "borough" ? (
               choices.length ? (
-                "Start with a neighbourhood. Let one discovery lead to another."
+                t(
+                  "Start with a neighbourhood. Let one discovery lead to another.",
+                )
               ) : (
-                "A whole district of untold stories. Our first field notes begin in Cuauhtémoc and Miguel Hidalgo."
+                t(
+                  "A whole district of untold stories. Our first field notes begin in Cuauht\u00E9moc and Miguel Hidalgo.",
+                )
               )
             ) : view.level === "zone" ? (
-              zone?.tagline
+              zone ? (
+                t(zone.tagline)
+              ) : (
+                ""
+              )
             ) : (
               place?.teaser
             )}
@@ -308,7 +395,8 @@ export default function CityGame() {
               className="ov-primary"
               onClick={() => go({ level: "borough", id: "09015" })}
             >
-              Let’s get a little lost <span>↗</span>
+              {t("Let\u2019s get a little lost")}
+              <span>↗</span>
             </button>
           ) : view.level === "borough" ? (
             choices.length ? (
@@ -329,7 +417,8 @@ export default function CityGame() {
                 className="ov-primary"
                 onClick={() => go({ level: "city" })}
               >
-                Find our first stories <span>↗</span>
+                {t("Find our first stories")}
+                <span>↗</span>
               </button>
             )
           ) : view.level === "zone" ? (
@@ -340,7 +429,7 @@ export default function CityGame() {
                   onClick={() => go({ level: "place", id: s.id })}
                 >
                   <small>0{i + 1}</small>
-                  <span>{s.place}</span>
+                  <span>{storyById(s.id, locale).place}</span>
                   <b>{journal.players[player][s.id]?.read ? "✓" : "↗"}</b>
                 </button>
               ))}
@@ -352,7 +441,8 @@ export default function CityGame() {
                 onClick={() => setStory(place.id)}
                 disabled={!ready}
               >
-                Open the story <span>↗</span>
+                {t("Open the story")}
+                <span>↗</span>
               </button>
               <button
                 className="ov-save-place"
@@ -365,8 +455,8 @@ export default function CityGame() {
                 aria-pressed={!!journal.players[player][place.id]?.saved}
               >
                 {journal.players[player][place.id]?.saved
-                  ? "♥ Saved for a wander"
-                  : "♡ Save for a wander"}
+                  ? t("\u2665 Saved for a wander")
+                  : t("\u2661 Save for a wander")}
               </button>
             </div>
           ) : null}
@@ -375,14 +465,14 @@ export default function CityGame() {
               <>
                 <span className="ov-spark">✳</span>
                 <p>
-                  Made for Susy & Stepan.
+                  {t("Made for Susy & Stepan.")}
                   <br />
-                  <strong>Four stories. A beginning.</strong>
+                  <strong>{t("Four stories. A beginning.")}</strong>
                 </p>
               </>
             ) : (
               <button className="ov-back" onClick={() => go(parentView(view))}>
-                ← Pull back a little
+                {t("\u2190 Pull back a little")}
               </button>
             )}
           </div>
@@ -391,12 +481,12 @@ export default function CityGame() {
         <div className="ov-scale">
           <span>
             {view.level === "city"
-              ? "16 boroughs / infinite curiosity"
+              ? t("16 boroughs / infinite curiosity")
               : view.level === "borough"
-                ? "A borough, one step closer"
+                ? t("A borough, one step closer")
                 : view.level === "zone"
-                  ? "A neighbourhood to wander"
-                  : "One place. Another perspective."}
+                  ? t("A neighbourhood to wander")
+                  : t("One place. Another perspective.")}
           </span>
           <div aria-hidden="true">
             {["city", "borough", "zone", "place"].map((level, i) => (
@@ -410,26 +500,89 @@ export default function CityGame() {
           </div>
         </div>
       </div>
+      <section className="ov-points-trail" aria-label={t("Discovery points")}>
+        <div>
+          <span className="ov-eyebrow">{t("Your discovery trail")}</span>
+          <strong>
+            {score} <small>pts</small>
+          </strong>
+          <p>
+            {difference === 0
+              ? t("Tied with {rival}", { rival })
+              : difference > 0
+                ? t("{count} points ahead of {rival}", {
+                    count: difference,
+                    rival,
+                  })
+                : t("{count} points to catch {rival}", {
+                    count: -difference,
+                    rival,
+                  })}
+          </p>
+        </div>
+        <div className="ov-points-actions">
+          <span>
+            {t("Story")} <b>+10</b>
+          </span>
+          <span>
+            {t("Visit")} <b>+25</b>
+          </span>
+          <span>
+            {t("Photo")} <b>+15</b>
+          </span>
+          <button onClick={() => setChapter(true)}>
+            {t("Quiz")} <b>+20 ↗</b>
+          </button>
+          <button onClick={() => setNahuatl(true)}>
+            Náhuatl <b>+10 / +20 ↗</b>
+          </button>
+          <small>{t("Prototype scoring · each reward counts once")}</small>
+        </div>
+      </section>
       <footer className="ov-bottom">
         <span>
           <i />
-          Playing as <strong>{player}</strong>
-          <span className="ov-bottom-extra"> · {rival} is exploring too</span>
+          {t("Playing as")} <strong>{player}</strong>
+          <span className="ov-bottom-extra">
+            {t(" · {rival} is exploring too", { rival })}
+          </span>
         </span>
         <button onClick={() => setAbout(true)}>
-          A note about this world ↗
+          {t("A note about this world \u2197")}
         </button>
       </footer>
       {message ? (
         <div className="ov-toast" role="status">
-          <span>{message}</span>
+          <span>{t(message, { points: rewardNotice })}</span>
           <button
             onClick={() => setMessage("")}
-            aria-label="Dismiss notification"
+            aria-label={t("Dismiss notification")}
           >
             ×
           </button>
         </div>
+      ) : null}
+      {chapter ? (
+        <OverviewChapter
+          close={() => setChapter(false)}
+          learning={journal.learning?.[player] ?? {}}
+          award={award}
+          player={player}
+          total={score}
+          nahuatl={() => {
+            setChapter(false);
+            setNahuatl(true);
+          }}
+        />
+      ) : null}
+      {nahuatl ? (
+        <NahuatlGames
+          close={() => setNahuatl(false)}
+          learning={journal.learning?.[player] ?? {}}
+          award={award}
+          player={player}
+          total={score}
+        />
       ) : null}
       {story ? (
         <StoryReader
@@ -462,59 +615,63 @@ export default function CityGame() {
       ) : null}
       {about ? (
         <GameDialog
-          label="About this world"
+          label={t("About this world")}
           close={() => setAbout(false)}
           className="ov-about"
         >
-          <span className="ov-eyebrow">A work in progress, for two</span>
+          <span className="ov-eyebrow">{t("A work in progress, for two")}</span>
           <h2>
-            A real city.
+            {t("A real city.")}
             <br />
-            <em>A curious eye.</em>
+            <em>{t("A curious eye.")}</em>
           </h2>
           <p>
-            Otra Vista is an illustrated field guide and a friendly discovery
-            game for Susy and Stepan. Explore four researched stories across
-            three zones, keep a list, then bring your own photographs back.
+            {t(
+              "Otra Vista is an illustrated field guide and a friendly discovery game for Susy and Stepan. Explore four researched stories across three zones, keep a list, then bring your own photographs back.",
+            )}
           </p>
-          <h3>How discoveries count</h3>
+          <h3>{t("How discoveries count")}</h3>
           <p>
-            Collect a story for 10 points, record a visit for 25, and add your
-            own photograph for 15. Each counts once per place, per person.
-            Visits are on your honour. Both profiles live in this browser; use
-            journal export and import to exchange discoveries between devices.
+            {t(
+              "Collect a story for 10 points, record a visit for 25, and add your own photograph for 15. Each counts once per place, per person. Visits are on your honour. Both profiles live in this browser; use journal export and import to exchange discoveries between devices.",
+            )}
           </p>
-          <h3>A map made for curiosity</h3>
           <p>
-            The sixteen borough outlines come from{" "}
+            {t(
+              "An overview earns 15 points; each correct challenge earns 20, once per person. Practice never subtracts points.",
+            )}
+          </p>
+          <h3>{t("A map made for curiosity")}</h3>
+          <p>
+            {t("The sixteen borough outlines come from")}{" "}
             <a
               href="https://serviciosatlas.sgirpc.cdmx.gob.mx/arcgis/rest/services/AtlasCapasPublicas/Limites/FeatureServer/2"
               target="_blank"
               rel="noreferrer"
             >
-              Mexico City’s SGIRPC
+              {t("Mexico City\u2019s SGIRPC")}
             </a>
-            . Places have geographic anchors; the drawings are enlarged, and
-            exploration zones are curated, approximate areas. This map is not a
-            walking-directions tool.
+            {t(
+              ". Places have geographic anchors; the drawings are enlarged, and exploration zones are curated, approximate areas. This map is not a walking-directions tool.",
+            )}
           </p>
-          <h3>History, with its sources</h3>
+          <h3>{t("History, with its sources")}</h3>
           <p>
-            All eight drawings were generated for this prototype. Historical
-            scenes are interpretations, not archival photographs. Every story
-            links to its historical source.
+            {t(
+              "The illustrations were generated for this prototype. Historical scenes are interpretations. Archive and modern reference photographs are labeled separately, with credits and licenses. Every story links to its historical source.",
+            )}
           </p>
           <ul>
             {STORIES.map((s) => (
               <li key={s.id}>
                 <a href={s.source.url} target="_blank" rel="noreferrer">
-                  {s.place} — {s.source.name} ↗
+                  {storyById(s.id, locale).place} — {t(s.source.name)} ↗
                 </a>
               </li>
             ))}
           </ul>
           <p className="ov-storage-note">
-            Prototype 01 · Mexico City · October 2026
+            {t("Prototype 01 \u00B7 Mexico City \u00B7 October 2026")}
           </p>
         </GameDialog>
       ) : null}

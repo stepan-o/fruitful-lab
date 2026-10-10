@@ -1,10 +1,14 @@
 "use client";
-
+import { useLocale } from "@/lib/mexico-city/locale";
 import { useState } from "react";
-import { storyById, type StoryId } from "@/lib/mexico-city/content";
+import {
+  storyById,
+  STORY_QUOTES,
+  type StoryId,
+} from "@/lib/mexico-city/content";
 import GameDialog from "./GameDialog";
 import Artwork from "./Artwork";
-
+import PhotoReferences from "./PhotoReferences";
 export default function StoryReader({
   id,
   collected,
@@ -18,43 +22,45 @@ export default function StoryReader({
   close: () => void;
   fieldwork: () => void;
 }) {
-  const story = storyById(id);
+  const { locale, t } = useLocale();
+  const story = storyById(id, locale);
+  const quote = STORY_QUOTES[id];
   const [step, setStep] = useState(0);
   const [touchX, setTouchX] = useState<number | null>(null);
   const scenes = [
     {
-      eyebrow: "01 / A place you might pass",
+      eyebrow: t("01 / A place you might pass"),
       title: story.title,
       body: story.today,
       image: id,
-      caption: "Present-day artist’s interpretation",
+      caption: t("Present-day artist\u2019s interpretation"),
     },
     {
-      eyebrow: `02 / Rewind to ${story.date}`,
-      title: "Before you arrived…",
+      eyebrow: t("02 / Rewind to {date}", { date: story.date }),
+      title: t("Before you arrived\u2026"),
       body: story.history,
       image: `${id}-past`,
-      caption: "Illustrated reconstruction · details are interpretive",
+      caption: t("Illustrated reconstruction \u00B7 details are interpretive"),
     },
     {
-      eyebrow: "03 / The little surprise",
+      eyebrow: t("03 / The little surprise"),
       title: story.short,
       body: story.twist,
       image: `${id}-past`,
-      caption: "Illustrated reconstruction · details are interpretive",
+      caption: t("Illustrated reconstruction \u00B7 details are interpretive"),
     },
     {
-      eyebrow: "04 / Your turn to look",
-      title: "Make it your discovery.",
+      eyebrow: t("04 / Your turn to look"),
+      title: t("Make it your discovery."),
       body: story.prompt,
       image: id,
-      caption: "Present-day artist’s interpretation",
+      caption: t("Present-day artist\u2019s interpretation"),
     },
   ];
   const scene = scenes[step];
   return (
     <GameDialog
-      label={story.place + " story"}
+      label={t("{place} story", { place: story.place })}
       close={close}
       className="ov-story-dialog"
       onKeyDown={(e) => {
@@ -96,13 +102,13 @@ export default function StoryReader({
         </header>
         <div
           className="ov-story-progress"
-          aria-label={`Chapter ${step + 1} of 4`}
+          aria-label={t("Chapter {number} of 4", { number: step + 1 })}
         >
           {scenes.map((s, i) => (
             <button
               key={s.eyebrow}
               onClick={() => setStep(i)}
-              aria-label={`Chapter ${i + 1}`}
+              aria-label={t("Chapter {number}", { number: i + 1 })}
               aria-current={step === i ? "step" : undefined}
             >
               <span className={i <= step ? "is-read" : ""} />
@@ -122,6 +128,30 @@ export default function StoryReader({
             <span className="ov-eyebrow">{scene.eyebrow}</span>
             <h2>{scene.title}</h2>
             <p>{scene.body}</p>
+            {step === 2 ? (
+              <blockquote className="ov-story-quote">
+                <small>{t("In the source’s own words")}</small>
+                <p lang="es">“{quote.text}”</p>
+                {locale === "en" ? (
+                  <p className="ov-quote-translation">
+                    {t("Translation")}: {quote.translation}
+                  </p>
+                ) : null}
+                <cite>
+                  <a href={quote.url} target="_blank" rel="noreferrer">
+                    {quote.credit} ↗
+                  </a>
+                </cite>
+              </blockquote>
+            ) : null}
+            {step === 3 && id === "ehecatl" ? (
+              <p className="ov-word-aside">
+                <span lang="nci">ehecatl</span> ·{" "}
+                {locale === "es"
+                  ? "viento · Una palabra para reconocer la ciudad."
+                  : "wind · A word to recognize the city by."}
+              </p>
+            ) : null}
             {step === 3 ? (
               <>
                 <p className="ov-practical">{story.practical}</p>
@@ -129,11 +159,15 @@ export default function StoryReader({
                   className="ov-primary"
                   onClick={collected ? fieldwork : collect}
                 >
-                  {collected ? "Add a visit or photo" : "Collect this story"}
+                  {collected
+                    ? t("Add a visit or photo")
+                    : t("Collect this story")}
                   <span>{collected ? "↗" : "+10"}</span>
                 </button>
                 {collected ? (
-                  <span className="ov-collected">✓ In your field journal</span>
+                  <span className="ov-collected">
+                    {t("\u2713 In your field journal")}
+                  </span>
                 ) : null}
               </>
             ) : (
@@ -141,14 +175,18 @@ export default function StoryReader({
                 className="ov-primary"
                 onClick={() => setStep((s) => s + 1)}
               >
-                Turn the page <span>→</span>
+                {t("Turn the page")}
+                <span>→</span>
               </button>
             )}
+            {id === "revolucion" && (step === 1 || step === 2) ? (
+              <PhotoReferences kind="revolucion" />
+            ) : null}
             <div className="ov-story-bottom">
               <button
                 onClick={() => setStep((s) => s - 1)}
                 disabled={step === 0}
-                aria-label="Previous chapter"
+                aria-label={t("Previous chapter")}
               >
                 ←
               </button>
@@ -156,7 +194,7 @@ export default function StoryReader({
                 {String(step + 1).padStart(2, "0")} <i>/ 04</i>
               </span>
               <a href={story.source.url} target="_blank" rel="noreferrer">
-                History source ↗
+                {t("History source \u2197")}
               </a>
             </div>
           </div>

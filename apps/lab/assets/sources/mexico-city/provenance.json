@@ -60,7 +60,20 @@
       "generationOutput": "exec-6b696706-d31c-4d7e-98b7-2430a38c33de.png",
       "prompt": "Use case: historical-scene. Asset type: wide story illustration for a white, airy Mexico City exploration game. Original interpretive reconstruction, NOT an archival photograph. Finely drawn ink and graphite urban sketch with joyous coral, powder blue, mustard and leafy jade watercolor accents. Elegant cinematic composition, tangible architecture, tiny period figures, open luminous WHITE background with edges dissolving into white paper, no dark vignette, no sepia wash. Draw only the described scene, no text, no labels, no border, no interface, no contemporary logos. Wide 3:2 composition, high detail and strong negative space. Chapultepec in the 1870s: a modest nineteenth-century public bathing establishment among trees, three rectangular open-air masonry bathing basins connected to a narrow water channel, a small stucco colonnade, fully clothed period visitors conversing on paths. Cheerful quiet setting. This is a public-baths reconstruction, not an Aztec emperor's bath. No royalty, no naked people, no giant palace.",
       "promptRecord": "Exact scene prompt"
+    },
+    {
+      "id": "tenochtitlan-island",
+      "workspaceSource": "assets/sources/mexico-city/tenochtitlan-island.webp",
+      "generationOutput": "exec-c9a2fbf7-f022-4181-b68c-08dccec56bed.png",
+      "referenceImages": [
+        "Public-domain 1524 Nuremberg map of Tenochtitlan, Newberry Library via Wikimedia Commons (historical context only)",
+        "Original generated chapultepec.webp (style reference)"
+      ],
+      "subjectDirection": "Transparent watercolor and fine-pencil vignette of an interpreted pre-conquest island settlement: flat plaster homes, canals, canoes, a central double-stair Mexica temple with two shrines, and narrow causeways. Oblique miniature-world composition, terracotta and sage, 3:2; no colonial domes, European buildings, modern features, flags, lettering, or UI. Use the 1524 map for island/canal/causeway context, not its European architectural conventions.",
+      "promptRecord": "Summarized generation direction; reference images inspected before generation",
+      "historicalLimit": "Interpretive vignette, not a literal reconstruction, footprint, or archaeological record. Shown separately from the geographic anchor."
     }
   ],
-  "conversion": "Built-in generator PNGs converted to source WebP at quality94/alpha100; responsive immutable variants built by assets/mexico-city.json. A draft shrine with an invented face carving was edited to plain masonry before publication."
+  "conversion": "Built-in generator PNGs converted to source WebP at quality94/alpha100; responsive immutable variants built by assets/mexico-city.json. A draft shrine with an invented face carving was edited to plain masonry before publication.",
+  "updated": "2026-10-10"
 }

@@ -104,6 +104,55 @@
       "quality": 76,
       "alphaQuality": 85,
       "maxBytes": 450000
+    },
+    "archive-tenochtitlan": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-tenochtitlan.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "maxBytes": 450000
+    },
+    "archive-legislativo": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-legislativo.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "maxBytes": 450000
+    },
+    "photo-revolucion": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/photo-revolucion.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "maxBytes": 450000
+    },
+    "tenochtitlan-island": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/tenochtitlan-island.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
     }
   }
 }

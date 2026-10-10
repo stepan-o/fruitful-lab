@@ -7,6 +7,45 @@ import {
 } from "./journal";
 
 describe("a two-person field journal", () => {
+  it("keeps old journals compatible and ignores unknown or unearned learning rewards", () => {
+    const legacy = parseJournal({
+      version: 1,
+      players: { Susy: {}, Stepan: {} },
+    });
+    expect(points(legacy.players.Susy, legacy.learning?.Susy)).toBe(0);
+    const imported = parseJournal({
+      version: 1,
+      players: { Susy: {}, Stepan: {} },
+      learning: {
+        Susy: {
+          orientation: true,
+          "city-lake": true,
+          "nahuatl-atl": "true",
+          invented: 99999,
+        },
+        Stepan: { "nahuatl-atl": true },
+      },
+    });
+    expect(points(imported.players.Susy, imported.learning?.Susy)).toBe(35);
+    expect(points(imported.players.Stepan, imported.learning?.Stepan)).toBe(10);
+    expect(imported.learning?.Susy).toEqual({
+      orientation: true,
+      "city-lake": true,
+    });
+  });
+  it("merges learning rewards once without losing either player’s discoveries", () => {
+    const local = blankJournal(),
+      incoming = blankJournal();
+    local.learning!.Susy = { orientation: true, "city-lake": true };
+    incoming.learning!.Susy = { "city-lake": true, "nahuatl-xochimilco": true };
+    incoming.learning!.Stepan = { "city-airport": true };
+    local.players.Susy.zocalo = { ...blankEntry(), read: true };
+    const result = mergeJournals(local, incoming);
+    const twice = mergeJournals(result, incoming);
+    expect(points(twice.players.Susy, twice.learning?.Susy)).toBe(65);
+    expect(points(twice.players.Stepan, twice.learning?.Stepan)).toBe(20);
+    expect(local.learning!.Susy["nahuatl-xochimilco"]).toBeUndefined();
+  });
   it("keeps players independent and awards each activity once", () => {
     const journal = blankJournal();
     journal.players.Susy.zocalo = {

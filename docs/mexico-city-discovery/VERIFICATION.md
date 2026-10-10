@@ -1,59 +1,58 @@
-# Otra Vista verification — 9 October 2026
+# Otra Vista verification — 10 October 2026
 
-Scope: the new `/mexico-city` route in `apps/lab`, branch `codex/mexico-city-discovery`, based on `origin/master` at `75c5469`. No backend, authentication, marketing-site or other app changes. This is technical verification for owner playtesting, not owner acceptance of the visual direction or game balance.
+Scope: `/mexico-city` in `apps/lab`, branch `codex/mexico-city-discovery`, based on `origin/master` at `75c5469`. No backend, authentication, other app or runtime dependency changes. Technical checks support owner playtesting; they do not imply acceptance of the visual direction, historical editing or game balance.
 
 ## Build and tests
 
-- `npm run assets:test`: passed, one asset-release test.
-- `API_BASE_URL=http://localhost:8000 npm run ci:test -- --runInBand`: **76 suites, 398 tests, one snapshot passed**. Includes four journal tests covering independent scoring, idempotent import, conservative merging and malicious/unsupported import payloads.
-- Final targeted journal rerun: four tests passed.
-- Scoped ESLint across the new page, components and logic: passed without warnings.
-- Final `API_BASE_URL=http://localhost:8000 npm run build`: passed, including TypeScript, 46 retained asset-release checks and static generation of `/mexico-city`.
-- `git diff --check`: passed.
-- All four geographic anchors were checked against the source borough polygons: the first three lie in Cuauhtémoc, and the reservoir lies in Miguel Hidalgo. The retained-source map generator rebuilt all 16 boroughs and 1,836 street ways.
+- Full `API_BASE_URL=http://localhost:8000 npm run ci`: passed — asset-release test, **76 suites / 400 tests / one snapshot**, production build and static generation.
+- Six journal tests cover independent scoring, old exports, strict reward validation, duplicate imports, conservative merges and unsupported image payloads.
+- Final production rebuild after map/dialog/copy refinements: passed, including TypeScript and **48 retained asset releases**.
+- Scoped ESLint across the route, components and logic: passed without warnings. `git diff --check`: passed.
+- Translation audit found no missing Spanish dictionary entry for a literal `t()` call; remaining direct JSX words are proper names, transit names, Náhuatl vocabulary or `pts`.
+- Static transit data: 12 Metro lines, 195 line-station records, 4 Cablebús line segments, 150 nonempty neighborhood geometries and 12 named streets. Source coverage and historical-diagram limits are documented in [SOURCES.md](SOURCES.md).
 
-The initial combined CI process was terminated by the local runner; its steps were then completed separately with one Jest worker. A first test invocation without the required API setting failed three unrelated auth/route suites; the correctly configured full run above passed. Build output retains the repository's existing middleware-convention warning and missing optional GrowthBook client-key notice. These do not prevent this route from building or running.
+The build retains existing middleware-convention and optional GrowthBook-key notices. No test or build failure remains. A separately invoked repository-wide `tsc` surfaced existing unrelated test-file typing errors; the configured Next.js build/type check and the full Jest run above passed. No unrelated files were changed to suppress them.
 
-## Production browser verification
+## Production browser checks
 
-The reproducible [browser script](verify.mjs) ran against `next start` serving the optimized build, with a supervised server. Chromium, Linux desktop host; phones are emulated viewport/touch/DPR configurations, not physical-device tests.
+Both [existing exploration/journal checks](verify.mjs) and [new bilingual learning checks](verify-learning.mjs) passed against the optimized `next start` build at all four widths, with **zero browser page errors**. Chromium on Linux; mobile configurations are emulations, not physical-device tests.
 
-| Viewport | DPR | Full flow | Initial image body bytes | Cold LCP | Cold CLS | Warm LCP |
-| --- | --- | --- | --- | --- | --- | --- |
-| 320 × 844 | 2 | Pass | 32,626 | 552 ms | 0.0153 | 96 ms |
-| 390 × 844 | 2 | Pass | 32,626 | 216 ms | 0.0132 | 136 ms |
-| 768 × 960 | 1 | Pass | 32,626 | 252 ms | 0.0065 | 116 ms |
-| 1440 × 960 | 1 | Pass | 32,626 | 404 ms | 0.0022 | 132 ms |
+| Viewport | Both flows | Initial image body bytes | Cold LCP | Cold CLS | Warm LCP |
+| --- | --- | --- | --- | --- | --- |
+| 320 × 844 | Pass | 32,626 | 796 ms | 0.0316 | 176 ms |
+| 390 × 844 | Pass | 32,626 | 464 ms | 0.0297 | 132 ms |
+| 768 × 960 | Pass | 32,626 | 572 ms | 0.0143 | 192 ms |
+| 1440 × 960 | Pass | 32,626 | 704 ms | 0.0040 | 160 ms |
 
-Each cold context requested two 256px WebPs: `94d6dc…00b3` (18,446 bytes) and `1e6c90…9634` (14,180 bytes). Combined cold transfer including Resource Timing's header allowance was 33,226 bytes. Both were served from browser cache on warm reload, with zero transferred bytes. All sizes are comfortably below the repository's initial-image budgets. Full filenames, chosen images, and cold/warm observations are in [the machine-readable report](evidence/browser-report.json).
+The opening still requests two 256px WebPs totaling **32,626 body bytes**. Warm reloads transfer zero artwork bytes. Archive/modern references mount only when their panel opens; learning artwork mounts when opening the chapter. Measurements are unthrottled localhost samples collected while the two browser suites ran; they do not establish real-device, cellular, regional-CDN or field performance. Field LCP/INP/CLS and physical camera behavior remain unmeasured. No offline/PWA claim is made.
 
-These are unthrottled localhost observations with one cold/warm sample per viewport. They do not establish real-device, cellular, regional-CDN or 75th-percentile field performance. Field LCP/INP/CLS are **unmeasured**; INP was not instrumented in this run. No claim of offline/PWA support is made.
+Exploration checks cover all four scales; actual visible label hit targets; touch and keyboard; four-part stories and swiping; story collection; saved places, visits, notes, resized photographs; independent players; reload; export/import; rejection of external-image payloads; Escape/focus return; browser Back; invalid deep links; empty borough states; and reduced motion.
 
-At all four widths the script checked:
+Learning checks cover:
 
-- Sixteen selectable boroughs, all four map scales, illustration/label hit targets, no horizontal page overflow, and minimum 44px HTML button targets.
-- Keyboard activation of map landmarks; native touch taps on phones; story arrows and phone swipe gestures.
-- Story collection, saved places, visits, notes and local photo resizing; no external upload of the fixture image.
-- Independent Susy and Stepan progress, active-player persistence and saved notes after reload.
-- Journal export into a file, import into a fresh browser, rejection of external-image payloads, and preservation of existing valid data after rejection.
-- Escape dismissal, trigger-focus restoration and browser Back to the previous map scale.
-- All other historical scenes and source links, the honest empty-state for unseeded boroughs, invalid deep-link fallback, and reduced-motion transition duration of zero.
-- No browser page errors.
+- Spanish default, English switching inside a dialog, translated controls and stories, document language, and persisted language after reload.
+- Persistent Metro/Cablebús overlays through city → borough → zone → place; visible area, street and station captions where applicable.
+- Lake slider, archive-map opening, causeway choice, borough selection, Metro line isolation, Cablebús selection and airport choice; advancing a lesson returns scroll/focus to its heading.
+- Six city quiz rewards, wrong-answer retry, five Náhuatl meaning matches, two name puzzles and replay protection. Susy reaches **225 learning points**; switching to Stepan starts at zero and a correct word gives him 10 while Susy keeps 225.
+- Export/import preserves both players’ learning flags; malformed JSON yields the Spanish error and leaves the valid journal intact.
+- The Revolución story opens its archive/modern photo pair with public-domain/CC BY-SA attribution, source links and successfully decoded images.
+- No horizontal overflow; minimum 44px HTML buttons, range control and reference-panel summaries; reduced-motion mode. SVG map targets have equivalent named HTML controls.
 
-An early phone run stopped when its separately launched local server was terminated. The final supervised run passed every viewport. Test photographs are generated-art fixtures in isolated browser contexts; they are not claims of real-world visits or user photographs.
+The checks exposed and resolved label crowding, map geometry extending over lesson controls, lesson scroll/focus behavior, and a desktop landmark’s transparent image box intercepting its neighbor’s caption. Test waits explicitly allow dynamic panels to mount and scroll offscreen labels into view before hit-testing. Generated fixture photographs in tests are not claims of actual visits or user photographs.
 
-## Reviewed screenshots
+## Reviewed evidence
 
-| Scene | Evidence |
+| Experience | Screenshots |
 | --- | --- |
-| City overview | [Desktop](evidence/city-1440.webp), [tablet](evidence/city-768.webp), [390px phone](evidence/city-390.webp), [320px phone](evidence/city-320.webp) |
-| Borough → neighbourhood → place | [Borough on phone](evidence/borough-390.webp), [Centro on desktop](evidence/zone-1440.webp), [Centro on phone](evidence/zone-390.webp), [320px labels](evidence/zone-320.webp), [place focus](evidence/place-1440.webp) |
-| Stories | [Present-day Zócalo](evidence/story-today-1440.webp), [1843 reconstruction](evidence/story-past-390.webp), [Metro discovery](evidence/ehecatl-past-390.webp), [unfinished palace framework](evidence/revolucion-past-390.webp), [Chapultepec baths](evidence/chapultepec-past-390.webp) |
-| Fieldwork | [Journal with scoring and a generated test-photo fixture](evidence/journal-1440.webp) |
-| Before the separate style pass | [Initial desktop](evidence/before-city-desktop.webp), [initial phone](evidence/before-city-phone.webp), [initial close-up](evidence/before-zone-desktop.webp) |
+| Spanish opening | [Desktop](evidence/city-es-1440.webp), [tablet](evidence/city-es-768.webp), [phone](evidence/city-es-390.webp), [320px](evidence/city-es-320.webp) |
+| Neighborhood/transit | [Desktop](evidence/metro-zone-es-1440.webp), [phone](evidence/metro-zone-es-390.webp), [320px](evidence/metro-zone-es-320.webp), [landmark hit spacing](evidence/zone-1440.webp) |
+| Opening chapter | [Water and island](evidence/water-1440.webp), [phone](evidence/water-390.webp), [causeways](evidence/chapter-2-1440.webp), [boroughs](evidence/chapter-3-1440.webp), [Metro](evidence/chapter-4-1440.webp), [Cablebús](evidence/chapter-5-1440.webp), [airports](evidence/chapter-6-1440.webp), [phone airports](evidence/chapter-6-390.webp) |
+| Games/points | [City quiz completion](evidence/city-quiz-finish-390.webp), [Náhuatl desktop](evidence/nahuatl-1440.webp), [Náhuatl phone](evidence/nahuatl-390.webp), [name puzzle](evidence/nahuatl-name-mil-320.webp) |
+| Photographs | [Archive/modern pair](evidence/revolution-photos-390.webp), [desktop](evidence/revolution-photos-1440.webp), [journal with test fixture](evidence/journal-1440.webp) |
+| Original style-pass comparison | [Initial desktop](evidence/before-city-desktop.webp), [initial phone](evidence/before-city-phone.webp), [initial close-up](evidence/before-zone-desktop.webp) |
 
-The second pass corrected the initial phone heading and excessive introduction height, reduced overcrowded labels, made room for both Centro discoveries, added real streets, and kept the phone close control fixed during journal scrolling. Motion is bounded and stops completely under reduced motion. The artwork remains explicitly labeled as generated interpretation.
+Machine-readable reports: [exploration/performance](evidence/browser-report.json) and [learning](evidence/learning-report.json). Test journal exports remain outside the repository.
 
 ## Release boundary
 
-Open as a draft PR for review. Do not merge or promote to production without owner approval. Preview deployment status is reported on the PR and in the delivery response. Scores and photographs remain local browser state with manual file transfer; this is not an authenticated multiplayer release.
+Draft PR for owner review; no merge or production promotion. The Vercel preview and commit are recorded on the PR. Scores, notes and photos stay in browser storage with manual file exchange; no authenticated multiplayer or automatic synchronization. Transit is a dated static learning reference, not live navigation. Historical drawings and lake/causeway/airport diagrams are identified as interpretations; archive and modern photographs retain separate credits and licenses.

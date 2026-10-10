@@ -5,10 +5,10 @@
       "height": 844,
       "dpr": 2,
       "cold": {
-        "lcp": 552,
-        "cls": 0.015344865344444196,
+        "lcp": 796,
+        "cls": 0.03159809328041823,
         "overflow": false,
-        "mapTop": 356,
+        "mapTop": 485.5,
         "images": [
           {
             "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
@@ -36,8 +36,8 @@
         "smallButtons": []
       },
       "warm": {
-        "lcp": 96,
-        "cls": 0.015345830478875139,
+        "lcp": 176,
+        "cls": 0.03171210197856068,
         "images": [
           {
             "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
@@ -57,10 +57,10 @@
       "height": 844,
       "dpr": 2,
       "cold": {
-        "lcp": 216,
-        "cls": 0.0132029382273649,
+        "lcp": 464,
+        "cls": 0.029723930337685646,
         "overflow": false,
-        "mapTop": 357.3125,
+        "mapTop": 491.40625,
         "images": [
           {
             "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
@@ -88,8 +88,8 @@
         "smallButtons": []
       },
       "warm": {
-        "lcp": 136,
-        "cls": 0.012936264159984426,
+        "lcp": 132,
+        "cls": 0.029705514942818683,
         "images": [
           {
             "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
@@ -109,10 +109,10 @@
       "height": 960,
       "dpr": 1,
       "cold": {
-        "lcp": 252,
-        "cls": 0.006515206231011285,
+        "lcp": 572,
+        "cls": 0.014315364978931568,
         "overflow": false,
-        "mapTop": 176,
+        "mapTop": 274,
         "images": [
           {
             "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
@@ -140,8 +140,8 @@
         "smallButtons": []
       },
       "warm": {
-        "lcp": 116,
-        "cls": 0.006514766834400317,
+        "lcp": 192,
+        "cls": 0.014199929413972075,
         "images": [
           {
             "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
@@ -161,10 +161,10 @@
       "height": 960,
       "dpr": 1,
       "cold": {
-        "lcp": 404,
-        "cls": 0.002234905478395062,
+        "lcp": 704,
+        "cls": 0.003995372513194143,
         "overflow": false,
-        "mapTop": 176,
+        "mapTop": 274,
         "images": [
           {
             "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",
@@ -192,8 +192,8 @@
         "smallButtons": []
       },
       "warm": {
-        "lcp": 132,
-        "cls": 0.002429537800604424,
+        "lcp": 160,
+        "cls": 0.0035151252982057167,
         "images": [
           {
             "file": "/media/files/94d6dcff1746c00bd1670544a3488505936bcedc9dc766e243009b5c5cdc00b3.webp",

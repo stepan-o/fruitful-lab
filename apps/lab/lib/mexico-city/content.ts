@@ -1,3 +1,7 @@
+import spanishStories from "./stories.es.json";
+import englishStories from "./stories.en.json";
+import type { Locale } from "./locale";
+
 export type StoryId = "zocalo" | "ehecatl" | "revolucion" | "chapultepec";
 export type ZoneId = "centro" | "tabacalera" | "bosque";
 export type Point = readonly [number, number];
@@ -181,8 +185,39 @@ export const ZONES: ReadonlyArray<{
   },
 ];
 
-export const storyById = (id: StoryId) =>
-  STORIES.find((story) => story.id === id)!;
+export const storyById = (id: StoryId, locale: Locale = "en") => {
+  const story = STORIES.find((s) => s.id === id)!;
+  return locale === "es"
+    ? { ...story, ...spanishStories[id] }
+    : { ...story, ...englishStories[id] };
+};
+export const STORY_QUOTES = {
+  zocalo: {
+    text: "columna y estatua jamás se erigieron",
+    translation: "column and statue were never erected",
+    credit: "INAH · Dirección de Medios de Comunicación, 2017",
+    url: "https://arqueologiamexicana.mx/node/2692",
+  },
+  ehecatl: {
+    text: "como si fueran las capas de una cebolla",
+    translation: "as though they were the layers of an onion",
+    credit: "Museo Nacional de Antropología · INAH",
+    url: "https://mna.inah.gob.mx/detalle_pieza_mes.php?id=285",
+  },
+  revolucion: {
+    text: "La estructura metálica del fallido palacio Legislativo porfiriano",
+    translation:
+      "The steel structure of the failed Porfirian Legislative Palace",
+    credit: "El Mirador · Secretaría de Comunicaciones y Transportes",
+    url: "https://elmirador.sct.gob.mx/reportajes-especiales/la-scop-sct-en-tiempos-de-lazaro-cardenas",
+  },
+  chapultepec: {
+    text: "Sin embargo, no fue baño privado de Moctezuma.",
+    translation: "However, it was not Moctezuma’s private bath.",
+    credit: "INAH · María de Lourdes López Camacho y equipo, 2023",
+    url: "https://inah.gob.mx/boletines/banos-de-chapultepec-las-albercas-de-aguas-curativas-del-siglo-xix-que-alimentaron-la-leyenda-de-los-banos-de-moctezuma",
+  },
+} as const;
 export const zoneById = (id: ZoneId) => ZONES.find((zone) => zone.id === id)!;
 export const project = ([lng, lat]: Point): [number, number] => [
   (lng + 99.38) * 1900 * Math.cos((19.3 * Math.PI) / 180),

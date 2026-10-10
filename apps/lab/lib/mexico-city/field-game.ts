@@ -60,11 +60,12 @@ export type Discovery = {
   createdAt: number;
   photo: string;
   publication: "private" | "pending" | "approved" | "rejected";
+  goalId?: string | null;
   challengeId?: string | null;
   groupId?: string | null;
 };
 export type FieldState = {
-  me: Member & { admin: boolean };
+  me: Member & { admin: boolean; email?: string };
   learning: Learning;
   goal: string | null;
   groups: Group[];
@@ -431,10 +432,11 @@ export function demoCommand(before: FieldState, c: Command): FieldState {
       photo: c.photo,
       createdAt: now,
       publication: c.publish ? "pending" : "private",
+      goalId: !c.challengeId && GOALS.find(g => g.id === state.goal)?.category === c.category ? state.goal : null,
       challengeId: c.challengeId,
       groupId: c.groupId,
     });
-    state.goal = null;
+    if (!c.challengeId && GOALS.find(g => g.id === state.goal)?.category === c.category) state.goal = null;
   }
   if (c.kind === "review" && challenge) {
     if (!["submitted", "clarification", "confirmed"].includes(challenge.status))
@@ -548,7 +550,7 @@ export const ERRORS: Record<string, Copy> = {
     "You already submitted evidence for this challenge.",
   ],
   record_limit: [
-    "Alcanzaste los 200 hallazgos de esta prueba.",
-    "You reached this prototype’s 200-discovery limit.",
+    "Tu bitácora llegó al límite actual de 200 hallazgos.",
+    "Your logbook reached the current 200-discovery limit.",
   ],
 };

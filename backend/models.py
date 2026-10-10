@@ -8,6 +8,7 @@ from sqlalchemy import (
     Integer,
     String,
     JSON,
+    ForeignKey,
     UniqueConstraint,
 )
 from sqlalchemy.sql import func
@@ -24,6 +25,7 @@ class User(Base):
     hashed_password = Column(String(255), nullable=False)
 
     is_active = Column(Boolean, default=True, nullable=False)
+    session_version = Column(Integer, default=0, server_default="0", nullable=False)
 
     is_admin = Column(Boolean, default=False, nullable=False)
 
@@ -79,3 +81,13 @@ class PinterestAccountStatsMonthly(Base):
         onupdate=func.now(),
         nullable=False,
     )
+
+
+class AccountAccessToken(Base):
+    __tablename__ = "account_access_tokens"
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    token_hash = Column(String(64), nullable=False, unique=True)
+    purpose = Column(String(12), nullable=False)
+    created_at = Column(DateTime(timezone=True), nullable=False)
+    expires_at = Column(DateTime(timezone=True), nullable=False)
+    created_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)

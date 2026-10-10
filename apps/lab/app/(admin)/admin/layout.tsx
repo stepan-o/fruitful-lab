@@ -1,4 +1,5 @@
 // frontend/app/(admin)/admin/layout.tsx
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
@@ -43,9 +44,9 @@ export default async function AdminLayout({ children }: { children: ReactNode })
                                 </p>
 
                                 <div className="mt-4 space-y-2 text-sm">
-                                    <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-[var(--foreground-muted)]">
-                                        Nav coming soon
-                                    </div>
+                                    <Link className="block min-h-11 rounded-lg px-3 py-2" href="/admin/analytics">Analytics</Link>
+                                    <Link className="block min-h-11 rounded-lg px-3 py-2" href="/admin/users">Accounts / Cuentas</Link>
+                                    <Link className="block min-h-11 rounded-lg px-3 py-2" href="/mexico-city/play">Mexico city discovery game ↗</Link>
                                 </div>
                             </div>
                         </aside>

@@ -21,8 +21,9 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, defer
 
 import models
-from discovery_models import DiscoveryProfile, DiscoveryGroup, DiscoveryRecord
-from security import get_current_active_user, get_db, hash_password
+from account_service import create_user
+from discovery_models import DiscoveryGroup, DiscoveryProfile, DiscoveryRecord
+from security import get_current_active_user, get_db
 
 router = APIRouter(prefix="/discovery", tags=["discovery"])
 CATEGORIES = {"art", "food", "books", "nature", "history"}
@@ -60,23 +61,8 @@ class Registration(BaseModel):
 
 @router.post("/register", status_code=201)
 def register(payload: Registration, db: Session = Depends(get_db)):
-    email = str(payload.email).strip().lower()
-    if db.query(models.User).filter_by(email=email).first():
-        fail("account_exists", 409)
-    user = models.User(
-        email=email,
-        full_name=payload.full_name.strip(),
-        hashed_password=hash_password(payload.password),
-        is_active=True,
-        is_admin=False,
-        groups=[],
-    )
-    db.add(user)
-    try:
-        db.commit()
-    except IntegrityError:
-        db.rollback()
-        fail("account_exists", 409)
+    create_user(db, str(payload.email), payload.full_name, payload.password)
+    db.commit()
     return {"success": True}
 
 
@@ -194,7 +180,7 @@ def snapshot(db, user):
         else []
     )
     result = {
-        "me": {**identity(user), "admin": bool(user.is_admin)},
+        "me": {**identity(user), "admin": bool(user.is_admin), "email": user.email},
         "learning": p.data["learning"],
         "goal": p.data.get("goal"),
         "groups": [{**g.data, "id": g.id, "invite": g.invite} for g in groups],
@@ -396,6 +382,18 @@ def command(
             # On-time evidence awaits review; together rewards require both on time.
             ch["status"] = "submitted"
             group.data = data
+        goal_categories = {
+            "mural": "art",
+            "books": "books",
+            "nature": "nature",
+            "taco": "food",
+            "history": "history",
+        }
+        completed_goal = (
+            pd.get("goal")
+            if not c.challengeId and goal_categories.get(pd.get("goal")) == c.category
+            else None
+        )
         record = DiscoveryRecord(
             id=cid,
             owner_id=user.id,
@@ -413,12 +411,14 @@ def command(
                 "lat": c.lat,
                 "lng": c.lng,
                 "createdAt": now,
+                "goalId": completed_goal,
                 "challengeId": c.challengeId,
                 "groupId": group.id if group else None,
             },
         )
         db.add(record)
-        pd["goal"] = None
+        if completed_goal:
+            pd["goal"] = None
     elif c.kind in {"publish", "moderate"}:
         record = (
             db.query(DiscoveryRecord).filter_by(id=c.recordId).with_for_update().first()

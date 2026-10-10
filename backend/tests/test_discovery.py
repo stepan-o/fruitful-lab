@@ -251,7 +251,7 @@ def test_registration_cannot_grant_privileges(game):
     )
     assert client.post("/discovery/register", json=registration).status_code == 201
     user = db.query(models.User).filter_by(email="new@example.com").one()
-    assert user.is_admin is False and user.groups == []
+    assert user.is_admin is False and user.groups == ["mexico-city"]
     assert client.post("/discovery/register", json=registration).status_code == 409
 
 
@@ -338,3 +338,27 @@ def test_together_needs_both_reviews_and_protects_on_time_evidence(game, monkeyp
     assert challenge["status"] == "confirmed"
     assert challenge["loss"] == 0
     assert all(e["status"] == "confirmed" for e in challenge["evidence"].values())
+
+
+def test_goal_completion_matches_real_discovery_and_survives_reload(game):
+    client, _, _, _, send = game
+    send("goal", goalId="books")
+    state = send(
+        "record", title="A mural", category="art", place="Roma", photo=picture()
+    )
+    assert state["goal"] == "books"
+    rid = str(uuid4())
+    state = send(
+        "record",
+        id=rid,
+        title="A bookshop",
+        category="books",
+        place="Roma",
+        photo=picture(),
+    )
+    assert state["goal"] is None
+    completed = next(r for r in state["records"] if r["id"] == rid)
+    assert completed["goalId"] == "books"
+    state = client.get("/discovery/state").json()
+    assert state["me"]["email"] == "player0@example.test"
+    assert sum(r.get("goalId") == "books" for r in state["records"]) == 1

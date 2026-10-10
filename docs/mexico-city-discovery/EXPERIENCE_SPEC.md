@@ -114,3 +114,11 @@ Run frontend CI and backend tests. Verify an actual production build, not just c
 - Google Places storage/display boundaries: https://developers.google.com/maps/documentation/places/web-service/policies
 - CDMX static GTFS: https://datos.cdmx.gob.mx/dataset/gtfs (inspect feed dates, not just portal modification date).
 - Existing geographic, historical and photographic provenance: SOURCES.md and assets/sources/mexico-city/references.json.
+
+## Account-native implementation update — 10 October 2026
+
+Entry now offers login, ordinary account creation and email recovery against the shared Fruitful Lab identity. Existing-email signup and wrong-password login lead to explicit retry/recovery choices. Administrator account controls live at `/admin/users`; private password setup uses `/account/reset`. Deployment/email prerequisites and security contracts are in `../user_management.md`.
+
+The signed-in game waits for authoritative personal state before rendering progress. Home greets the actual player and shows saved discoveries, completed outings and action prompts drawn from their groups: challenge offers, active outings and evidence awaiting their review. Empty accounts show honest zero/empty states. The profile identifies the account and separates discovery/learning points from each group's competition score; community contribution counts remain distinct. Saving a matching solo photo completes the active outing and records that goal in the logbook. Other discoveries preserve it. Recommendations prioritise less-explored categories. The player profile opens in-game learning rather than the legacy atlas with its separate local journal.
+
+Guest and explicit all-mode demo sessions remain available as separate experiences. They do not populate authenticated accounts, and logging out or switching accounts clears the current private game view. Verification and remaining production setup are recorded in `ACCOUNT_VERIFICATION.md`.

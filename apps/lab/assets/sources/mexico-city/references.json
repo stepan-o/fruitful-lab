@@ -1,0 +1,39 @@
+{
+  "checked": "2026-10-10",
+  "transformations": "Reduced to at most 1600px, converted to WebP; original framing retained. Responsive variants generated through the immutable asset pipeline. No generative edits to archival or modern reference images.",
+  "references": [
+    {
+      "id": "archive-tenochtitlan",
+      "file": "archive-tenochtitlan.webp",
+      "date": "1524",
+      "title": "Map of Tenochtitlan and Gulf of Mexico",
+      "credit": "Friedrich Peypus, Nuremberg; Newberry Library",
+      "source": "https://commons.wikimedia.org/wiki/File:Map_of_Tenochtitlan_and_Gulf_of_Mexico,_1524.jpg",
+      "collection": "https://collections.newberry.org/asset-management/2KXJ8ZRSNGFZ?BRPN=14",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "notes": "Published with the second letter of Cortés in Europe after the conquest. Historical conventions and orientation differ from a modern topographic map."
+    },
+    {
+      "id": "archive-legislativo",
+      "file": "archive-legislativo.webp",
+      "date": "1912-06-06",
+      "title": "Construcción del Palacio Legislativo",
+      "credit": "Guillermo Kahlo",
+      "source": "https://commons.wikimedia.org/wiki/File:Construcci%C3%B3n_del_Palacio_Legislativo.jpg",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    },
+    {
+      "id": "photo-revolucion",
+      "file": "photo-revolucion.webp",
+      "date": "2018-10-18",
+      "title": "MONUMENTO A LA REVOLUCION CON CIELO AZUL",
+      "credit": "CarlosGalvanMex",
+      "source": "https://commons.wikimedia.org/wiki/File:MONUMENTO_A_LA_REVOLUCION_CON_CIELO_AZUL.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "notes": "This photograph and resized WebP copies remain under CC BY-SA 4.0. It was not used as an image-generation reference."
+    }
+  ]
+}

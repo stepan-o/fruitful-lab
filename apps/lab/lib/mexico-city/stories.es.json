@@ -1,0 +1,43 @@
+{
+  "zocalo": {
+    "title": "El monumento que se quedó en puro nombre.",
+    "short": "Mucho Zócalo, poca columna",
+    "teaser": "La plaza más famosa de México lleva el nombre de un proyecto que nunca se terminó. Y la pista sigue bajo tus pies.",
+    "today": "Párate frente al asta y mira la plancha: la Catedral de un lado, Palacio Nacional del otro. Cuesta imaginar que el protagonista de esta historia sea algo que no ves. Busca con la mirada un monumento a la Independencia. ¿Dónde está? Ahí empieza el asunto.",
+    "history": "En 1843, Santa Anna impulsó un monumento a la Independencia. Iba a tener columna y estatua; quedó la base, el zócalo. El proyecto se atoró, pero el apodo prendió. La ciudad terminó llamando a toda la plaza por aquella obra inconclusa.",
+    "twist": "En 2017, arqueólogos del INAH encontraron parte de la plataforma: apenas ocho metros de diámetro y 28 centímetros de alto. Una base diminuta para semejante plaza. No está a la vista: se documentó y volvió a protegerse bajo el piso.",
+    "prompt": "Haz una foto de lo que falta. Usa el espacio vacío como protagonista y anota qué monumento te habrías imaginado aquí. Tu encuadre puede contar el proyecto que nunca llegó.",
+    "practical": "Plaza al aire libre; los eventos pueden modificar el acceso. La base enterrada no se exhibe."
+  },
+  "ehecatl": {
+    "title": "Próxima estación: un dios del viento.",
+    "short": "El vecino más antiguo del andén",
+    "teaser": "Entre transbordos y prisas, Pino Suárez guarda un templo. Pero lo que ves es apenas la última capa.",
+    "today": "Vas pensando en la Línea 1 o en la 2 y, de pronto, ahí está: un pequeño adoratorio redondo. Escaleras, pasillos, gente que va y viene. La escena pide bajar el ritmo. En Pino Suárez, cambiar de tren también puede ser cambiar de siglo.",
+    "history": "El Museo Nacional de Antropología sitúa el hallazgo en las excavaciones del Metro de 1969. El templo circular, levantado sobre una plataforma rectangular, se asocia con Ehécatl-Quetzalcóatl. Su forma podría evocar los remolinos: una posibilidad que explica el museo, no una certeza.",
+    "twist": "El adoratorio conserva estructuras anteriores en su interior. Para renovar un templo, los mexicas podían construir encima del anterior. Lo que parece una ruina pequeña es una historia apilada: el Metro arriba, el templo a la vista y otros tiempos adentro.",
+    "prompt": "Busca un encuadre con dos épocas: piedra antigua y estación de hoy. ¿Puedes contar el encuentro sin incluir rostros de pasajeros? Haz la foto y apunta el detalle que te hizo detenerte.",
+    "practical": "Está dentro de una estación en servicio. Respeta las indicaciones de acceso y fotografía; deja libres los pasos.",
+    "place": "Ehécatl en Pino Suárez"
+  },
+  "revolucion": {
+    "title": "Al palacio le cambió la revolución.",
+    "short": "La cúpula que se salvó de milagro",
+    "teaser": "Parece un monumento hecho para estar solo. En realidad, es el sobreviviente de un palacio descomunal.",
+    "today": "Desde la Plaza de la República, mira los cuatro arcos y la cúpula. Ahora imagínales un edificio alrededor. Mucho más edificio. Lo que hoy domina la Tabacalera iba a ser apenas una parte de un ambicioso Palacio Legislativo.",
+    "history": "La Revolución interrumpió el proyecto porfiriano. Su estructura metálica pasó años abandonada. Cuando comenzó el derribo, Carlos Obregón Santacilia propuso rescatar la cúpula del Salón de los Pasos Perdidos y darle otro destino. La transformación se realizó entre 1933 y 1938.",
+    "twist": "El edificio que iba a alojar al poder terminó recordando la revolución que trastocó aquel proyecto. También se volvió mausoleo: Venustiano Carranza llegó en 1942. Mira otra vez la cúpula. Ya no es una pieza incompleta; es una segunda vida.",
+    "prompt": "Encuadra uno de los arcos desde lejos. Deja espacio a los lados para ese palacio imaginario. Luego escribe una frase: «Aquí pudo haber…». La foto es tuya; el edificio ausente lo pone la historia.",
+    "practical": "El exterior se observa desde la Plaza de la República. Museo, interior y mirador requieren consultar su propio acceso."
+  },
+  "chapultepec": {
+    "title": "Con permiso, Moctezuma: éste no era tu baño.",
+    "short": "Una leyenda que hizo agua",
+    "teaser": "Un nombre real, una caja de agua y unos baños de moda: en Chapultepec se mezclaron las historias.",
+    "today": "Entre árboles y caminos, un contenedor de piedra presume un nombre irresistible: Baños de Moctezuma. Es fácil imaginar una alberca privada del gobernante. Antes de dar la leyenda por buena, acércate a mirar cómo está hecho. El agua tiene otra historia.",
+    "history": "El INAH distingue el contenedor prehispánico de los baños públicos que se construyeron enfrente en 1870. La caja abastecía de agua; no era la alberca privada de Moctezuma. La Casa Baños de Chapultepec, en cambio, ganó fama por sus aguas consideradas curativas.",
+    "twist": "Los baños decimonónicos desaparecieron y el nombre real se pegó al contenedor que sobrevivió. En 2018, arqueólogos localizaron restos de tres estanques de aquel establecimiento. Dos sitios, dos épocas y un apodo que terminó revolviéndolo todo.",
+    "prompt": "Sigue las pistas del agua: un borde, un canal, un desnivel. Fotografía un detalle que ayude a entender para qué servía este lugar. A veces una piedra cuenta más que la placa.",
+    "practical": "Observa desde los caminos públicos y respeta los cierres. La ilustración interpreta el lugar; no indica una ruta peatonal."
+  }
+}

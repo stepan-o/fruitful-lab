@@ -20,13 +20,13 @@ Spanish is the default, with complete English interface/content coverage. Place 
 - /mexico-city/play?demo=1: explicitly labeled interface rehearsal with sample Susy/Stepan identities, separate from the guest product. Demonstrates multiplayer and community without claiming shared persistence. Resettable, no backend writes.
 - /mexico-city/atlas: preserved illustrated learning experience and legacy local journal. Do not silently migrate old browser scores into authenticated competitive scores. Old borough/zone/place entry links continue to resolve into the atlas.
 
-Use query state for active mode, selected story and invitation where appropriate. Browser Back first dismisses the current task/detail and returns to the prior map context. The map stays mounted when changing mode/sheet; page reloads retain account progress and intended destination but may reacquire GPS.
+Use query state for active mode, selected story and invitation where appropriate. Browser Back first dismisses the current task/detail and returns to the prior map context. The map stays mounted when changing mode/dialog; page reloads retain account progress and intended destination but may reacquire GPS.
 
 ## 3. App navigation
 
-Four persistent bottom destinations: Inicio, Aventura, Amigos, Comunidad. English: Home, Adventure, Friends, Community. The full multiplayer label is Retos entre amigos / Challenges with friends. A camera/Registrar hallazgo action is always within reach on the exploration surface; it is an action, not a fifth destination. The personal Bitácora is accessible from the header. Settings include language, account/logout, source/service information and reduced motion.
+Four persistent bottom destinations: Mapa, Aventura, Amigos, Comunidad. English: Map, Adventure, Friends, Community. The full multiplayer label is Retos entre amigos / Challenges with friends. A camera/Registrar hallazgo action is always within reach on the exploration surface; it is an action, not a fifth destination. The personal Bitácora is accessible from the header. Settings include language, account/logout, source/service information and reduced motion.
 
-Inicio is a launch/resume surface: one useful next action, active challenge status and pending review count. Avoid a wall of dashboards. Empty state offers a short solo mission, create/join a group and a community mission. Returning players resume rather than repeat onboarding.
+Mapa is the launch/resume surface. A compact player/score token and one next-step tracker sit over the continuous play field. The other destinations open focused mode screens. Returning players see their active goal; empty state offers mission selection. No permanent home dashboard or desktop sidebar.
 
 Aventura owns saved personal discoveries, system-authored short goals, optional history and Náhuatl learning, collections and a journal. A signed-in account owns durable progress; a guest owns only the current outing. Solo photo/location is a record, not peer-verification theater. Pattern-aware suggestions are a later extension once enough authentic history exists; no fabricated behavioral analysis.
 
@@ -36,9 +36,9 @@ Comunidad has Mi grupo / Toda CDMX. My group displays the group's shared discove
 
 ## 4. Map contract
 
-Preferred foundation: Google Maps JavaScript API with vector map ID, cloud styling and Advanced Markers. Our application owns all game controls, bottom sheets, selected-state UI, photographic pins, illustrated landmarks, history layers, coverage and scoring. Google supplies the maintained basemap/camera and, when explicitly integrated, Places and routing. Its complete consumer app is not embedded automatically.
+Preferred foundation: Google Maps JavaScript API with vector map ID, cloud styling and Advanced Markers. Our application owns all game controls, focused dialogs, selected-state UI, photographic pins, illustrated landmarks, history layers, coverage and scoring. Google supplies the maintained basemap/camera and, when explicitly integrated, Places and routing. Its complete consumer app is not embedded automatically.
 
-The map reacts directly to touch: one finger pans; pinch zooms; no decorative layer steals background gestures. Explore at city, borough, neighborhood and street scales in one continuous geography. Area taps fit bounds with bottom-sheet padding; zoom-dependent density avoids label piles. Keep location/compass, layers and zoom controls usable by touch and keyboard. Recenter is explicit after the user pans away. Default north-up; elaborate tilt is optional rather than a navigation prerequisite.
+The map reacts directly to touch: one finger pans; pinch zooms; no decorative layer steals background gestures. Explore at city, borough, neighborhood and street scales in one continuous geography. Area taps fit bounds with HUD-aware framing; zoom-dependent density avoids label piles. Keep location/compass, layers and zoom controls usable by touch and keyboard. Recenter is explicit after the user pans away. Default north-up; elaborate tilt is optional rather than a navigation prerequisite.
 
 Three spatial mission types: exact destination, search area without revealed answers, spontaneous discovery at a new point. Street names, neighborhood captions, parks, landmarks and subway connections provide orientation. Metro and Cablebús toggles persist at every scale and become more detailed with zoom. Airports and the surrounding metropolitan region remain reachable rather than clipping exploration at the city boundary.
 
@@ -122,3 +122,32 @@ Entry now offers login, ordinary account creation and email recovery against the
 The signed-in game waits for authoritative personal state before rendering progress. Home greets the actual player and shows saved discoveries, completed outings and action prompts drawn from their groups: challenge offers, active outings and evidence awaiting their review. Empty accounts show honest zero/empty states. The profile identifies the account and separates discovery/learning points from each group's competition score; community contribution counts remain distinct. Saving a matching solo photo completes the active outing and records that goal in the logbook. Other discoveries preserve it. Recommendations prioritise less-explored categories. The player profile opens in-game learning rather than the legacy atlas with its separate local journal.
 
 Guest and explicit all-mode demo sessions remain available as separate experiences. They do not populate authenticated accounts, and logging out or switching accounts clears the current private game view. Verification and remaining production setup are recorded in `ACCOUNT_VERIFICATION.md`.
+
+
+## 12. Map-first interface pass (11 October 2026)
+
+This supersedes any persistent home sheet/sidebar described above. Play opens on the map. A compact player token displays the correct mode score (adventure points, group points, or contribution count); tapping it opens the existing profile and breakdown. Logbook and search remain one tap away. The bottom dock provides Mapa / Aventura / camera / Amigos / Comunidad, with pending friend actions on the Friends button. One short mission tracker is the only persistent content card. Demo/guest state stays visibly labeled, with session controls in the profile.
+
+Aventura, Amigos and Comunidad open focused mode screens, full-height on phones and bounded dialogs on larger screens. Closing or pressing Escape returns to the same map and mode; browser Back dismisses an open task. Selecting a solo mission immediately returns to exploration. Photographing, map pin placement and returning to the capture draft retain the continuous map instance. Safe-area padding and visible map attribution are required.
+
+### Interface inventory
+
+| Interface | Current treatment | Next work |
+| --- | --- | --- |
+| Map, layers, location | Persistent play field, small contextual controls | Nearby opportunities with category filters |
+| Score and player | Compact token → profile/breakdown dialog | Optional settlement celebration/history, based on actual rewards |
+| Outings | One-line tracker → illustrated mission screen | Multiple steps and destination selection |
+| Friend competition | Notification badge → challenges, scoreboard, composer, evidence review | Attach real destination coordinates to challenges |
+| Community | Five-category tracker → group/global progress, logbook and ranks | Geographic goals with explicit region completion criteria |
+| Camera and proof | Central shutter → capture → manual map pick → saved record | Object storage and richer media after prototype |
+| Logbook and places | Photo journal, record detail and landmark dialogs | Saved collections and multi-stop outing planner |
+| Learning | Existing stories, city chapter, Nahuatl games, optional | Location-linked prompts after a real visit |
+| Account | Existing login, signup, recovery, profile and demo controls | No new auth system required for this pass |
+
+### Goals on the map
+
+Shipped in this pass: use the existing geographic goal (Ehécatl/Pino Suárez) as a gold, required-priority Google Advanced Marker or equivalent fallback marker; suppress its duplicate story marker. A finite three-pulse beacon introduces the destination. The tracker provides a recenter action; Google uses its own pan transition unless reduced motion is requested. Score changes receive a short scale/color response. Free-roam bookshop, food, art and nature goals keep category/action guidance without invented coordinates or completion claims. Shared map colors continue to derive from recorded contributions.
+
+Next, in order: (1) a destination picker and stored challenge coordinates; (2) nearby place search with Places, user intent and provider attribution; (3) an outing planner with actual walking/transit route geometry and estimates from a routing API; (4) geographic community goals with explicit completion counts and a brief color reveal on confirmed contribution. Do not add a fake navigation line, inferred GPS proof, permanent confetti or a quiz gate. Acceptance/review and photo evidence remain authoritative. No extra Google API is required for the current HUD/marker pass.
+
+Motion is a cue, not background activity: finite marker pulses, brief score feedback, reduced-motion still states and no new rendering loop or animation dependency. The map is never remounted merely to switch modes or open a task.

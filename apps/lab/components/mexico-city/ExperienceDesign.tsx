@@ -10,6 +10,26 @@ import Artwork from "./Artwork";
 import type { Copy } from "@/lib/mexico-city/field-game";
 const chapters: { title: Copy; paragraphs: Copy[] }[] = [
   {
+    title: [
+      "El tablero y las próximas piezas",
+      "The play field and the next pieces",
+    ],
+    paragraphs: [
+      [
+        "Ya tenemos: mapa y capas, salidas, retos y revisión de fotos, grupos e invitaciones, captura con lugar, bitácora, perfil y puntuación, historias, capítulo de ciudad y juegos de náhuatl. Esta versión cambia su composición: marcador compacto, cámara central, una misión visible y pantallas que aparecen cuando las necesitas.",
+        "Already available: map and layers, outings, challenges and photo review, groups and invitations, capture with location, logbook, profile and score, stories, the city chapter and Nahuatl games. This version changes their composition: a compact score, central camera, one visible mission and screens that appear when needed.",
+      ],
+      [
+        "Lo siguiente: elegir un destino para un reto, ver oportunidades cercanas y armar recorridos de varias paradas. El mapa puede destacar lo pendiente, mostrar el próximo paso y colorear una zona al confirmar hallazgos. Las animaciones deben comunicar un cambio real, durar poco y dejarte volver a mirar la calle.",
+        "Next: choose a destination for a challenge, see nearby opportunities and build multi-stop outings. The map can highlight unfinished goals, show the next step and color an area when discoveries are confirmed. Animation should communicate a real change, be brief and let you look back at the street.",
+      ],
+      [
+        "Para hacerlo bien faltan un selector de destino y un planificador de recorridos. La búsqueda de comercios necesita Places; los trazos y tiempos de viaje necesitan una API de rutas. Los retos hoy no guardan coordenadas propias. No dibujamos líneas que parezcan caminos seguros ni damos puntos solo por acercarte: foto, lugar y revisión siguen siendo la evidencia.",
+        "This needs a destination picker and an outing planner. Business search needs Places; route geometry and travel times need a routing API. Challenges do not yet store destination coordinates. We do not draw lines that look like walkable routes or award points just for proximity: photo, place and review remain the evidence.",
+      ],
+    ],
+  },
+  {
     title: ["01 / El juego ocurre afuera", "01 / The game happens outside"],
     paragraphs: [
       [
@@ -33,12 +53,12 @@ const chapters: { title: Copy; paragraphs: Copy[] }[] = [
         "/mexico-city introduces the idea and offers Enter the game, Try without an account and this document. /mexico-city/play contains the game experience. It reuses the Fruitful Lab session; email/password forms live inside the game. New accounts use the same user database without internal privileges.",
       ],
       [
-        "Inicio propone una salida concreta y da acceso a los retos pendientes. La navegación inferior siempre muestra Inicio, Aventura, Amigos y Comunidad. La bitácora y la cuenta están a un toque. Los detalles se abren sobre el mapa; al cerrar, conservas la posición y la escala.",
-        "Home suggests a concrete outing and leads to pending challenges. Bottom navigation always shows Home, Adventure, Friends and Community. The logbook and account are one tap away. Details open over the map; closing them preserves its position and scale.",
+        "Entramos directo al mapa. Arriba están tu jugador, el marcador, la bitácora y la búsqueda; abajo, una sola salida activa y la cámara. Mapa, Aventura, Amigos y Comunidad siguen a un toque. Los modos abren pantallas dedicadas; cerrarlas conserva el mapa, su posición y su escala.",
+        "Enter directly onto the map. Your player, score, logbook and search sit above; one active outing and the camera sit below. Map, Adventure, Friends and Community remain one tap away. Modes open dedicated screens; closing them preserves the map, its position and scale.",
       ],
       [
-        "En móvil usamos pantalla completa del navegador, áreas seguras, controles grandes y un panel inferior ampliable. En escritorio, el panel pasa a un costado. No hace falta instalar una app. GPS se solicita al tocar Ubicarme; siempre puedes colocar el pin a mano.",
-        "On mobile we use the browser viewport, safe areas, large controls and an expandable bottom panel. On desktop the panel moves to the side. No installation required. GPS is requested when you tap Locate me; manual pin placement is always available.",
+        "El tablero ocupa el navegador, con áreas seguras y botones de pulgar. No hay un panel permanente tapando media ciudad ni una barra lateral fija en escritorio. Las misiones ocupan su propia pantalla en móvil; foto, lugar, perfil y bitácora se abren en diálogos. GPS se solicita al tocar Ubicarme; siempre puedes colocar el pin a mano.",
+        "The play field fills the browser, with safe areas and thumb-sized buttons. No permanent dashboard covers half the city, and desktop has no fixed sidebar. Missions get a dedicated mobile screen; photos, places, profiles and the logbook open in dialogs. GPS is requested when you tap Locate me; manual pin placement is always available.",
       ],
     ],
   },
@@ -151,8 +171,8 @@ const chapters: { title: Copy; paragraphs: Copy[] }[] = [
         "White backgrounds, deep green ink, coral actions and soft greens for territory. Large editorial type invites exploration; short, clear text supports action outdoors. Sketch-and-watercolour illustrations, photos as keepsakes, quiet stamps and readable numbers. The game should not become a grid of administrative cards.",
       ],
       [
-        "El mapa es la superficie continua. El panel se despliega sin reiniciar la cámara; registrar abre una tarea corta y colocar el pin vuelve al mismo mapa conservando el borrador. Movimiento breve comunica cambio de escala, selección y recompensa. Se respeta la preferencia de movimiento reducido. Los iconos tienen nombre accesible, los formularios etiquetas y los diálogos manejo de foco.",
-        "The map is the continuous surface. Expanding the panel does not reset the camera; recording opens a short task and pin placement returns to the same map with the draft intact. Brief motion communicates scale, selection and reward. Reduced-motion preferences are respected. Icons have accessible names, forms have labels and dialogs manage focus.",
+        "El mapa es la superficie continua. Elegir una salida devuelve al tablero; registrar abre una tarea corta y colocar el pin vuelve al mapa conservando el borrador. Un marcador dorado con un pulso breve destaca el punto de partida de una misión con ubicación. Las salidas libres no inventan destinos. El contador responde a cambios reales de puntuación. Se respeta la preferencia de movimiento reducido. Los iconos tienen nombre accesible, los formularios etiquetas y los diálogos manejo de foco.",
+        "The map is the continuous surface. Choosing an outing returns to play; recording opens a short task and pin placement returns to the map with the draft intact. A gold marker with a brief pulse highlights a located mission’s starting point. Open exploration does not invent destinations. The counter responds to actual score changes. Reduced-motion preferences are respected. Icons have accessible names, forms have labels and dialogs manage focus.",
       ],
     ],
   },

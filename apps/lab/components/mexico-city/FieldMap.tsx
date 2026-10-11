@@ -37,7 +37,7 @@ import {
   type Camera,
   type Coordinate,
 } from "@/lib/mexico-city/map-engine";
-import type { Discovery } from "@/lib/mexico-city/field-game";
+import type { Discovery, GOALS } from "@/lib/mexico-city/field-game";
 
 export type MapHandle = {
   focus: (point: Coordinate, zoom?: number) => void;
@@ -51,6 +51,8 @@ type MapLayers = {
 };
 type Props = {
   records: Discovery[];
+  objective?: (typeof GOALS)[number];
+  openObjective?: () => void;
   selected?: string;
   select: (id: string, kind: "story" | "record") => void;
   picking: boolean;
@@ -117,7 +119,17 @@ const Geometry = memo(function Geometry({
 });
 
 const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
-  { records, selected, select, picking, pick, painted, compact = false },
+  {
+    records,
+    selected,
+    select,
+    picking,
+    pick,
+    painted,
+    objective,
+    openObjective,
+    compact = false,
+  },
   ref,
 ) {
   const { locale } = useLocale();
@@ -146,10 +158,10 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
   const watch = useRef<number | null>(null),
     follow = useRef(false);
   const pointers = useRef(new Map<number, { x: number; y: number }>());
-  const currentProps = useRef({ select, pick, picking });
+  const currentProps = useRef({ select, pick, picking, openObjective });
   useEffect(() => {
-    currentProps.current = { select, pick, picking };
-  }, [select, pick, picking]);
+    currentProps.current = { select, pick, picking, openObjective };
+  }, [select, pick, picking, openObjective]);
   const providerRef = useRef(provider);
   useEffect(() => {
     providerRef.current = provider;
@@ -171,7 +183,7 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
   const center = project(camera),
     tx = size.width / 2 - center[0] * scale,
     ty = size.height / 2 - center[1] * scale;
-  function move(next: Camera) {
+  function move(next: Camera, animate = false) {
     const bounded = {
       ...next,
       zoom: Math.max(9, Math.min(19, next.zoom)),
@@ -180,8 +192,16 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
     };
     cameraRef.current = bounded;
     setCamera(bounded);
-    if (googleMap.current && providerRef.current === "google")
-      googleMap.current.moveCamera({ center: bounded, zoom: bounded.zoom });
+    if (googleMap.current && providerRef.current === "google") {
+      if (
+        animate &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        googleMap.current.setZoom(bounded.zoom);
+        googleMap.current.panTo(bounded);
+      } else
+        googleMap.current.moveCamera({ center: bounded, zoom: bounded.zoom });
+    }
   }
   function focusBorough(path: string) {
     const points = pathCoordinates(path).flat().map(project);
@@ -202,7 +222,7 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
   useImperativeHandle(ref, () => ({
     focus(point, zoom = 15) {
       follow.current = false;
-      move({ ...point, zoom });
+      move({ ...point, zoom }, true);
     },
     center() {
       return { lat: cameraRef.current.lat, lng: cameraRef.current.lng };
@@ -407,8 +427,9 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
       caption.textContent = title;
       content.appendChild(caption);
       content.addEventListener("click", () => {
-        if (!currentProps.current.picking)
+        if (!currentProps.current.picking) {
           currentProps.current.select(id, kind);
+        }
       });
       markers.push(
         new google.maps.marker.AdvancedMarkerElement({
@@ -422,7 +443,9 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
         }),
       );
     };
-    STORIES.forEach((s) =>
+    STORIES.filter(
+      (s) => !objective?.point || s.id !== objective.story,
+    ).forEach((s) =>
       add(
         s.id,
         { lng: s.coordinate[0], lat: s.coordinate[1] },
@@ -438,7 +461,42 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
       markers.forEach((m) => {
         m.map = null;
       });
-  }, [provider, records, locale, selected]);
+  }, [provider, records, locale, selected, objective]);
+  // Keep the beacon independent of record refreshes so it does not pulse again
+  // each time an account snapshot arrives.
+  useEffect(() => {
+    if (provider !== "google" || !googleMap.current || !objective?.point)
+      return;
+    const content = document.createElement("button");
+    content.type = "button";
+    content.className = "mc-map-pin mc-objective-pin";
+    content.setAttribute(
+      "aria-label",
+      locale === "es" ? "Abrir mi salida" : "Open my outing",
+    );
+    const img = document.createElement("img");
+    img.src = art(objective.art);
+    img.alt = "";
+    img.draggable = false;
+    const caption = document.createElement("span");
+    caption.textContent =
+      locale === "es" ? "Tu salida · +30 pts" : "Your outing · +30 pts";
+    content.append(img, caption);
+    content.addEventListener("click", () => {
+      if (!currentProps.current.picking) currentProps.current.openObjective?.();
+    });
+    const marker = new google.maps.marker.AdvancedMarkerElement({
+      map: googleMap.current,
+      position: objective.point,
+      content,
+      title: content.getAttribute("aria-label")!,
+      zIndex: 50,
+      collisionBehavior: google.maps.CollisionBehavior.REQUIRED,
+    });
+    return () => {
+      marker.map = null;
+    };
+  }, [provider, objective, locale]);
   useEffect(() => {
     const element = container.current;
     if (!element) return;
@@ -802,8 +860,25 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
           </div>
           {!picking && (
             <div className="mc-map-markers">
-              {STORIES.filter((s) =>
-                inView(project({ lng: s.coordinate[0], lat: s.coordinate[1] })),
+              {objective?.point && inView(project(objective.point)) && (
+                <button
+                  className="mc-map-pin mc-objective-pin"
+                  style={screenPoint(project(objective.point))}
+                  onClick={openObjective}
+                  aria-label={say("Abrir mi salida", "Open my outing")}
+                >
+                  <img src={art(objective.art)} alt="" draggable={false} />
+                  <span>
+                    {say("Tu salida · +30 pts", "Your outing · +30 pts")}
+                  </span>
+                </button>
+              )}
+              {STORIES.filter(
+                (s) =>
+                  (!objective?.point || s.id !== objective.story) &&
+                  inView(
+                    project({ lng: s.coordinate[0], lat: s.coordinate[1] }),
+                  ),
               ).map((s) => (
                 <button
                   key={s.id}

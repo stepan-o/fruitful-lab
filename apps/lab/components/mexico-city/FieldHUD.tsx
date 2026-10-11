@@ -48,8 +48,11 @@ export default function FieldHUD(props: Props) {
   const { mode, points, goal, action, navigate } = props;
   const challenge = action?.challenge;
   const minutesLeft = challenge?.deadline
-    ? Math.max(0, Math.ceil((challenge.deadline - props.now) / 60000))
+    ? Math.min(challenge.duration, Math.max(0, Math.ceil((challenge.deadline - props.now) / 60000)))
     : null;
+  const timeLeft = minutesLeft !== null && minutesLeft >= 60
+    ? `${Math.floor(minutesLeft / 60)} h ${minutesLeft % 60} min`
+    : `${minutesLeft ?? 0} min`;
   const solo = mode === "home" || mode === "solo";
   const destinations = [
     { mode: "home" as const, label: say("Mapa", "Map"), Icon: Map },
@@ -175,8 +178,8 @@ export default function FieldHUD(props: Props) {
               <span>
                 {action?.kind === "outing" && minutesLeft !== null
                   ? say(
-                      `${minutesLeft} min · +${challenge!.reward} / −${challenge!.loss} pts`,
-                      `${minutesLeft} min · +${challenge!.reward} / −${challenge!.loss} pts`,
+                      `${timeLeft} · +${challenge!.reward} / −${challenge!.loss} pts`,
+                      `${timeLeft} · +${challenge!.reward} / −${challenge!.loss} pts`,
                     )
                   : action?.kind === "review"
                     ? say(

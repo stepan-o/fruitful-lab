@@ -568,3 +568,7 @@
   z-index: 10;
   background: linear-gradient(#fff 80%, #ffffff00);
 }
+
+/* The shared site reserves desktop scrollbar gutters; the fixed play field does not scroll. */
+html:has(.mc-map-game) { scrollbar-gutter: auto; }
+.mc-mode-content .mc-goal-list { display: grid; gap: 10px; }

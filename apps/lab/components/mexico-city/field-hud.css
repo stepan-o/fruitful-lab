@@ -1,0 +1,570 @@
+/* Map-first play field. The HUD owns only small islands of the viewport. */
+.mc-map-game {
+  --mc-dock-space: calc(82px + env(safe-area-inset-bottom));
+  --mc-hud-shadow: 0 4px 0 #214c4115, 0 9px 24px #214c4117;
+}
+.mc-map-game .mc-field-map {
+  inset: 0 0 var(--mc-dock-space);
+}
+.mc-play-hud {
+  position: absolute;
+  z-index: 5;
+  top: calc(12px + env(safe-area-inset-top));
+  left: max(12px, env(safe-area-inset-left));
+  right: max(12px, env(safe-area-inset-right));
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+}
+.mc-play-hud button {
+  pointer-events: auto;
+}
+.mc-player-token {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #fffefb;
+  border: 2px solid #fff;
+  padding: 3px 14px 3px 3px;
+  border-radius: 30px 19px 19px 30px;
+  box-shadow: var(--mc-hud-shadow);
+  min-width: 0;
+  text-align: left;
+}
+.mc-player-portrait {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #255645;
+  color: #fff9dc;
+  font:
+    italic 25px Georgia,
+    serif;
+  border: 3px solid #e9dca9;
+}
+.mc-player-readout {
+  min-width: 0;
+}
+.mc-player-name {
+  display: block;
+  max-width: 135px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 700;
+}
+.mc-score-line {
+  display: flex;
+  gap: 4px;
+  align-items: baseline;
+  white-space: nowrap;
+}
+.mc-score-line svg {
+  color: #bb8222;
+  align-self: center;
+}
+.mc-score-line strong {
+  font:
+    800 23px/1.05 Arial,
+    sans-serif;
+  letter-spacing: -0.05em;
+  animation: mc-score-arrive 0.35s ease-out;
+}
+.mc-score-line small {
+  font-size: 9px;
+}
+.mc-hud-shortcuts {
+  display: flex;
+  gap: 7px;
+  padding-top: 3px;
+}
+.mc-hud-shortcuts button,
+.mc-map-game .mc-map-tools button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: #fffefbf5;
+  border: 2px solid white;
+  border-radius: 16px;
+  box-shadow: var(--mc-hud-shadow);
+}
+.mc-session-tag {
+  position: absolute;
+  z-index: 4;
+  top: calc(69px + env(safe-area-inset-top));
+  left: 15px;
+  border: 0;
+  background: #fffefbf0;
+  border-radius: 10px;
+  padding: 0 10px;
+  min-height: 44px;
+  font-size: 10px !important;
+  color: #57685d !important;
+}
+.mc-map-game .mc-map-tools {
+  top: calc(82px + env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  gap: 9px;
+  display: flex;
+}
+.mc-map-game .mc-layer-panel {
+  top: calc(82px + env(safe-area-inset-top));
+  right: 67px;
+  max-width: calc(100% - 80px);
+}
+.mc-map-game .mc-map-tools button[aria-pressed="true"] {
+  background: #255645;
+  color: white;
+}
+.mc-mission-tracker {
+  position: absolute;
+  z-index: 5;
+  bottom: calc(var(--mc-dock-space) + 33px);
+  left: max(12px, env(safe-area-inset-left));
+  right: max(12px, env(safe-area-inset-right));
+  display: flex;
+  align-items: center;
+  max-width: 420px;
+  margin-inline: auto;
+  border-radius: 21px;
+  background: #fffffff5;
+  border: 2px solid #fff;
+  box-shadow: var(--mc-hud-shadow);
+  overflow: hidden;
+}
+.mc-mission-tracker.has-mission {
+  border-color: #e9c875;
+}
+.mc-mission-summary {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: none;
+  border: 0;
+  text-align: left;
+}
+.mc-mission-art {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: #edf2e4;
+}
+.mc-mission-art picture,
+.mc-mission-art img {
+  display: block;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+.mc-mission-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+.mc-mission-copy > small {
+  color: #647451;
+  font:
+    700 9px/1.2 Arial,
+    sans-serif;
+  letter-spacing: 0.08em;
+}
+.mc-mission-copy > strong {
+  font:
+    700 14px/1.18 Arial,
+    sans-serif;
+  letter-spacing: -0.025em;
+}
+.mc-mission-copy > span {
+  font-size: 10px;
+  line-height: 1.2;
+  color: #66766c;
+}
+.mc-goal-locate {
+  width: 46px;
+  min-height: 52px;
+  margin-right: 6px;
+  background: #fbefcd;
+  border: 0;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+.mc-paint-progress {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.mc-paint-progress i {
+  width: 21px;
+  height: 5px;
+  border-radius: 3px;
+  background: #e4e8e2;
+}
+.mc-paint-progress b {
+  margin-left: 4px;
+  font-size: 9px;
+}
+.mc-play-dock {
+  position: absolute;
+  z-index: 6;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--mc-dock-space);
+  padding: 6px max(7px, env(safe-area-inset-right))
+    max(6px, env(safe-area-inset-bottom)) max(7px, env(safe-area-inset-left));
+  display: grid;
+  grid-template-columns: 1fr 1fr 72px 1fr 1fr;
+  align-items: center;
+  border-top: 1px solid #e5e9df;
+  background: #fffefb;
+}
+.mc-play-dock > button {
+  grid-row: 1;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 4px;
+  height: 60px;
+  min-width: 0;
+  border: 0;
+  border-radius: 18px;
+  background: none;
+}
+.mc-play-dock > button > span {
+  position: relative;
+  display: flex;
+}
+.mc-play-dock > button small {
+  font-size: 10px;
+  color: #69796e;
+  font-weight: 600;
+}
+.mc-play-dock > button[aria-current] {
+  background: #edf3e8;
+  color: #245340;
+}
+.mc-play-dock > button[aria-current] small {
+  color: #245340;
+}
+.mc-play-dock i {
+  position: absolute;
+  left: 16px;
+  top: -6px;
+  display: grid;
+  place-items: center;
+  background: #d96349;
+  border: 2px solid #fff;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 12px;
+  font: normal 700 9px Arial;
+  color: white;
+  padding: 0 3px;
+}
+.mc-play-dock > .mc-shutter {
+  grid-column: 3;
+  justify-self: center;
+  align-self: start;
+  margin-top: -18px;
+  width: 64px;
+  height: 70px;
+  border: 4px solid #fff;
+  border-radius: 24px;
+  background: #d86448;
+  color: white;
+  box-shadow:
+    0 4px 0 #a44530,
+    0 7px 15px #81412d30;
+  position: relative;
+}
+.mc-play-dock > .mc-shutter small {
+  color: white;
+  font-size: 9px;
+}
+.mc-play-dock > .mc-shutter:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #a44530;
+}
+.mc-map-game .mc-toast {
+  transform: none;
+  width: auto;
+  top: calc(122px + env(safe-area-inset-top));
+  bottom: auto;
+  left: 12px;
+  right: 68px;
+  max-width: 380px;
+  margin-inline: auto;
+  animation: mc-toast-arrive 0.3s ease-out;
+}
+.mc-connection-alert {
+  position: absolute;
+  z-index: 6;
+  top: calc(117px + env(safe-area-inset-top));
+  left: 12px;
+  right: 68px;
+  max-width: 420px;
+  background: #fff2df;
+  padding: 10px;
+  border: 1px solid #ddb875;
+  border-radius: 12px;
+  font-size: 12px !important;
+}
+.mc-map-game .mc-pick-back {
+  top: calc(12px + env(safe-area-inset-top));
+  bottom: auto;
+  left: 12px;
+  right: auto;
+}
+.mc-map-game.is-picking .mc-field-map {
+  inset: 0;
+}
+.mc-map-game .mc-task-dialog {
+  overscroll-behavior: contain;
+}
+.mc-map-game .mc-mode-dialog {
+  padding: 0;
+}
+.mc-mode-content {
+  padding: 78px 26px 30px;
+  outline: none;
+}
+.mc-mode-content > .mc-eyebrow:first-child {
+  color: #ad7630;
+}
+.mc-mode-content h1 {
+  font-size: 38px;
+  max-width: 15ch;
+}
+.mc-mode-content .mc-goal-list > button {
+  border-radius: 20px;
+  background: #f5f6ee;
+  border: 1px solid #e5e8dc;
+  min-height: 104px;
+  padding: 12px;
+  transition: transform 0.15s;
+}
+.mc-mode-content .mc-goal-list > button:active {
+  transform: scale(0.98);
+}
+.mc-mode-content .mc-goal-list > button:nth-child(2n) {
+  background: #fcf3e9;
+}
+.mc-mode-content .mc-goal-list strong {
+  font-size: 16px;
+}
+.mc-mode-content .mc-goal-list img {
+  transform: rotate(-5deg);
+}
+/* A goal marker is a starting point, never a fabricated route or GPS completion. */
+.mc-map-pin.mc-objective-pin {
+  z-index: 25;
+  isolation: isolate;
+}
+.mc-objective-pin::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 92px;
+  height: 92px;
+  top: -9px;
+  left: 50%;
+  margin-left: -46px;
+  border: 2px solid #c4922e;
+  border-radius: 50%;
+  background: #edc97135;
+  animation: mc-goal-beacon 1.8s ease-out 3;
+  pointer-events: none;
+}
+.mc-map-pin.mc-objective-pin img {
+  border: 3px solid #e1b443;
+  background: #fff9e8;
+  border-radius: 22px;
+  width: 67px;
+  height: 67px;
+  box-shadow: 0 5px 0 #ad812745;
+}
+.mc-map-pin.mc-objective-pin span {
+  background: #285640;
+  color: #fff;
+  padding: 6px 10px;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  font-size: 10px;
+  max-width: 150px;
+  white-space: normal;
+  line-height: 1.2;
+}
+@keyframes mc-goal-beacon {
+  from {
+    transform: scale(0.65);
+    opacity: 0.4;
+  }
+  55% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 0.45;
+  }
+}
+@keyframes mc-score-arrive {
+  from {
+    transform: scale(1.2);
+    color: #bc7c25;
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes mc-toast-arrive {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@media (min-width: 700px) {
+  .mc-play-hud {
+    left: 24px;
+    right: 24px;
+    top: calc(22px + env(safe-area-inset-top));
+  }
+  .mc-player-name {
+    max-width: 240px;
+  }
+  .mc-score-line small {
+    font-size: 11px;
+  }
+  .mc-session-tag {
+    top: calc(80px + env(safe-area-inset-top));
+    left: 26px;
+  }
+  .mc-play-dock {
+    max-width: 440px;
+    margin-inline: auto;
+    border: 1px solid #e5e9df;
+    border-radius: 24px;
+    bottom: 20px;
+    height: 74px;
+    padding: 6px 10px;
+  }
+  .mc-map-game .mc-field-map {
+    inset: 0;
+  }
+  .mc-mission-tracker {
+    bottom: 121px;
+  }
+  .mc-map-game .mc-map-tools {
+    top: 96px;
+    right: 24px;
+  }
+  .mc-map-game .mc-layer-panel {
+    top: 96px;
+    right: 79px;
+  }
+  .mc-map-game .mc-toast {
+    transform: none;
+    width: auto;
+    top: 100px;
+  }
+}
+@media (max-width: 699px) {
+  .mc-map-game .mc-mode-dialog {
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .mc-mode-content {
+    padding-inline: 22px;
+  }
+}
+@media (max-width: 359px) {
+  .mc-play-hud {
+    gap: 6px;
+    left: 8px;
+    right: 8px;
+  }
+  .mc-player-token {
+    gap: 5px;
+    padding-right: 8px;
+  }
+  .mc-score-line small {
+    font-size: 8px;
+  }
+  .mc-hud-shortcuts {
+    gap: 5px;
+  }
+  .mc-player-name {
+    max-width: 95px;
+  }
+  .mc-play-dock {
+    grid-template-columns: 1fr 1fr 64px 1fr 1fr;
+    padding-inline: 4px;
+  }
+  .mc-play-dock > button small {
+    font-size: 9px;
+  }
+  .mc-mission-copy > strong {
+    font-size: 13px;
+  }
+}
+@media (max-height: 540px) and (min-width: 600px) {
+  .mc-mission-tracker {
+    left: 20px;
+    right: auto;
+    bottom: 105px;
+    width: 290px;
+  }
+  .mc-play-dock {
+    left: 20px;
+    right: auto;
+    width: 350px;
+  }
+  .mc-map-game .mc-map-tools {
+    flex-direction: row;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mc-map-game *,
+  .mc-map-game *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mc-map-game:has(dialog[open]) .mc-objective-pin::before {
+    animation-play-state: paused;
+  }
+}
+
+.mc-mode-dialog .mc-dialog-controls {
+  position: sticky;
+  top: 0;
+  height: 66px;
+  margin-bottom: -66px;
+  z-index: 10;
+  background: linear-gradient(#fff 80%, #ffffff00);
+}

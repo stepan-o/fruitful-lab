@@ -74,7 +74,7 @@ export default function TurnFloor({view,media,room,onRoom,onBack,send,busy,visib
             <fieldset disabled={busy}><legend>Drive governor <span>EFFORT</span></legend><div className={s.switches}><button aria-pressed={view.floor.drive==='steady'} disabled={view.floor.drive==='steady'} onClick={()=>change(view.floor.feed,'steady')}>Steady<small>Preserve headroom</small></button><button aria-pressed={view.floor.drive==='push'} disabled={view.floor.drive==='push'} onClick={()=>change(view.floor.feed,'push')}>Push<small>+50% work · more wear</small></button></div></fieldset>
             <small className={s.receipt}>{busy?'Transmitting order…':`Confirmed · ${view.floor.feed} intake / ${view.floor.drive} drive`}</small>
             <button className={s.return} onClick={()=>setOperating(false)}>Return to CCTV →</button>
-          </>:<Control tone="primary" onClick={()=>{onRoom('conveyor');setOperating(true);}}>Take the line controls →</Control>:<p>Prepare the assignments and start the shift from the producer console.</p>}
+          </>:<Control tone="primary" onClick={()=>{onRoom('conveyor');setOperating(true);}}>Take the line controls →</Control>:<p>{view.phase==='allocation'?'The shift has ended. Return to the console to dispatch the finished robots.':view.phase==='complete'?'Dispatch is sealed. Review the consequences from the producer console.':'Prepare the assignments and start the shift from the producer console.'}</p>}
           <div className={s.totals}><span>COMPLETED <b>{view.produced}</b></span><span>LINE CONDITION <b>{view.condition}%</b></span></div>
           <small>{view.floor.attachment?'Outtake attachment · two per clearance cycle':'Standard outtake · one per clearance cycle'}</small>
         </>}

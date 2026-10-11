@@ -91,7 +91,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const environment = new RawCubeTexture(scene, envFaces, 64, Constants.TEXTUREFORMAT_RGBA, Constants.TEXTURETYPE_UNSIGNED_BYTE, true, false, Texture.TRILINEAR_SAMPLINGMODE);
   environment.gammaSpace = false; scene.environmentTexture = environment;
   function material(name: string, color: string, metal = .7, rough = .56) {
-    const m = new PBRMaterial(name, scene); m.albedoColor = C(color); m.metallic = metal; m.roughness = rough; m.environmentIntensity = .75; m.maxSimultaneousLights = 5;
+    const m = new PBRMaterial(name, scene); m.albedoColor = C(color); m.metallic = metal; m.roughness = rough; m.environmentIntensity = .75; m.maxSimultaneousLights = 4;
     const tex = new DynamicTexture(name + " generated grain", 256, scene, true);
     const ctx = tex.getContext() as CanvasRenderingContext2D; const data = ctx.createImageData(256, 256);
     for (let y = 0; y < 256; y++) for (let x = 0; x < 256; x++) {
@@ -266,7 +266,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     box("specimen cradle",[1.15,.11,1.3],[0,0,0],brass,n);
     for(const x of [-.55,.55]){box("cradle clamp",[.07,.3,.8],[x,.18,0],iron,n);for(const z of [-.48,.48])cylinder("clamp bolt",.07,.22,[x,.2,z],brass,n,6);}
     for(const side of [-1,1]){
-      const cortex=MeshBuilder.CreateSphere("folded cortex",{diameter:1,segments:48,updatable:true},scene);
+      const cortex=MeshBuilder.CreateSphere("folded cortex",{diameter:1,segments:28,updatable:true},scene);
       const positions=cortex.getVerticesData(VertexBuffer.PositionKind)!, normals=cortex.getVerticesData(VertexBuffer.NormalKind)!,colors:number[]=[];
       for(let j=0;j<positions.length;j+=3){
         const x=positions[j]*2,y=positions[j+1]*2,z=positions[j+2]*2;
@@ -303,20 +303,20 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   for(const [fixture,node] of [["terminal",terminal],["gate",gate],["drive",drive]] as const){const socket=FIXTURE_SOCKETS[fixture];node.position.copyFrom(v(worldPoint(socket.x,socket.y)));node.scaling.setAll(socket.scale);}
   // Articulated robots: one shared body template, individually identified poses.
   const workerTemplate=root("worker template");
-  sphere("thorax",.58,[0,1.12,0],green,workerTemplate,[1,1.2,.62],12);
+  sphere("thorax",.58,[0,1.12,0],green,workerTemplate,[1,1.2,.62],8);
   box("breastplate",[.38,.34,.10],[0,1.17,-.20],iron,workerTemplate);
   for(let i=0;i<4;i++)box("chest louvre",[.29,.021,.04],[0,1.3-i*.07,-.265],brass,workerTemplate);
   cylinder("neck piston",.075,.16,[0,1.55,0],brass,workerTemplate);
-  sphere("cranium",.43,[0,1.79,0],iron,workerTemplate,[.85,1.1,.83],10);
+  sphere("cranium",.43,[0,1.79,0],iron,workerTemplate,[.85,1.1,.83],8);
   box("brow",[.38,.07,.13],[0,1.86,-.16],brass,workerTemplate);
-  for(const x of [-.095,.095])sphere("optic",.063,[x,1.81,-.185],cyan,workerTemplate,[1,.7,.45],8);
+  for(const x of [-.095,.095])sphere("optic",.063,[x,1.81,-.185],cyan,workerTemplate,[1,.7,.45],6);
   box("jaw",[.22,.10,.16],[0,1.63,-.12],green,workerTemplate);
-  for(const x of [-.105,.105]){sphere("optic socket",.14,[x,1.81,-.14],dark,workerTemplate,[1,1,.7],8);const rim=ring("ear bearing",.1,.026,[x*2.0,1.78,0],brass,workerTemplate);rim.rotation.z=Math.PI/2;}
+  for(const x of [-.105,.105]){sphere("optic socket",.14,[x,1.81,-.14],dark,workerTemplate,[1,1,.7],6);const rim=ring("ear bearing",.1,.026,[x*2.0,1.78,0],brass,workerTemplate);rim.rotation.z=Math.PI/2;}
   for(let i=0;i<4;i++)box("jaw tooth",[.026,.063,.035],[-.06+i*.04,1.655,-.218],brass,workerTemplate);
   pipe("head conduit",[[.21,1.74,.04],[.28,1.56,.02],[.2,1.45,.1]],.021,copper,workerTemplate);
   for(let i=0;i<3;i++)ring("abdomen ring",.15,.03,[0,.81+i*.1,0],brass,workerTemplate);
   for(const side of [-1,1]){
-    sphere("shoulder",.23,[side*.39,1.35,0],brass,workerTemplate, [1,1,1],8);
+    sphere("shoulder",.23,[side*.39,1.35,0],brass,workerTemplate, [1,1,1],4);
     cylinder("spine stay",.037,.42,[side*.16,.88,.05],brass,workerTemplate,8);
   }
   cylinder("waist",.13,.17,[0,.77,0],dark,workerTemplate);
@@ -325,9 +325,9 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   function limb(name:string,a:V,b:V){const m=bar(name,a,b,.067,iron,workerTemplate);limbParts.push({mesh:m,name});return m;}
   for(const side of [-1,1]){
     const x=side*.145;
-    limb("thigh"+side,[x,.63,0],[x,.34,0]);sphere("knee"+side,.145,[x,.34,0],brass,workerTemplate,[1,1,1],6);
+    limb("thigh"+side,[x,.63,0],[x,.34,0]);sphere("knee"+side,.145,[x,.34,0],brass,workerTemplate,[1,1,1],4);
     limb("shin"+side,[x,.34,0],[x,.09,-.01]);box("foot"+side,[.17,.1,.31],[x,.055,-.075],dark,workerTemplate);
-    limb("upperarm"+side,[side*.39,1.34,0],[side*.46,1.02,-.035]);sphere("elbow"+side,.12,[side*.46,1.02,-.035],brass,workerTemplate,[1,1,1],6);
+    limb("upperarm"+side,[side*.39,1.34,0],[side*.46,1.02,-.035]);sphere("elbow"+side,.12,[side*.46,1.02,-.035],brass,workerTemplate,[1,1,1],4);
     limb("forearm"+side,[side*.46,1.02,-.035],[side*.43,.78,-.10]);box("hand"+side,[.12,.15,.10],[side*.43,.75,-.11],brass,workerTemplate);
   }
   // Keep worker identity in the snapshot, not thousands of per-part scene nodes.
@@ -415,6 +415,8 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
       if(!parent)merged.freezeWorldMatrix();
     }
   }
+  // Static batching replaces source meshes. Keep shadow iteration bounded to living geometry.
+  for(const generator of [shadow,signalShadows]){const target=generator.getShadowMap();if(target?.renderList)target.renderList=target.renderList.filter(m=>!m.isDisposed());}
   lobby.finalize();
   const pipeline=new DefaultRenderingPipeline("film",false,scene,[camera]);pipeline.samples=1;pipeline.fxaaEnabled=true;pipeline.bloomEnabled=true;pipeline.bloomThreshold=.85;pipeline.bloomWeight=.22;pipeline.bloomKernel=32;pipeline.bloomScale=.35;
   scene.imageProcessingConfiguration.toneMappingEnabled=true;scene.imageProcessingConfiguration.toneMappingType=1;scene.imageProcessingConfiguration.exposure=1.22;scene.imageProcessingConfiguration.contrast=1.12;
@@ -558,7 +560,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
     update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const fresh=s.events.filter(e=>e.id>lastEvent);if(fresh.length){lastEvent=fresh.at(-1)!.id;const signal=fresh.find(e=>e.kind==="jam")??fresh.find(e=>e.kind==="cycle");if(signal){flash=1;flashKind=signal.kind as "jam"|"cycle";}else if(fresh.some(e=>e.kind==="release")){flash=0;flashKind="idle";}}},
-    focus(f){posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
+    focus(f){frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
     framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},
     feeder(enabled){resourcesReady=false;renderDirty=true;lobby.feeder(enabled);keyMap.resetRefreshCounter();},
     inset(bottom,top){bottomInset=bottom;topInset=top;engine.resize();frame();viewport();},
@@ -567,7 +569,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     study(enabled){posesDirty=true;equipmentStudy=enabled;floor.study(enabled);equipment.study(enabled);population(state.workers.length+(enabled?SCALE_FIGURES.length:0));keyMap.resetRefreshCounter();frame();},
     cctv(enabled,angle,triple){cctvEnabled=enabled;cctvAngle=angle;tripleFeed=triple;renderDirty=true;configureFeeds();if(!enabled){viewport();frame();}},
     isolate(enabled){isolatedRoom=enabled;posesDirty=true;frame();},
-    active(enabled){visible=enabled;if(enabled&&!document.hidden){lastTime=performance.now();renderDirty=true;engine.resize();viewport();engine.runRenderLoop(render);}else engine.stopRenderLoop(render);},
+    active(enabled){visible=enabled;if(enabled&&!document.hidden){frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();lastTime=performance.now();renderDirty=true;engine.resize();viewport();engine.runRenderLoop(render);}else engine.stopRenderLoop(render);},
     dispose(){canvas.removeEventListener("keydown",input);observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);instrumentation.dispose();scene.dispose();engine.dispose();}
   };
   } catch(error) { scene.dispose(); engine.dispose(); throw error; }

@@ -8,7 +8,7 @@
 @media(max-width:600px){
  .feedFrame{position:sticky;top:6px;z-index:4;height:38svh;min-height:260px}
  .floor[data-operating=true] .deck{display:grid;grid-template-columns:1fr 1fr}
- .floor[data-operating=true] .deck>div:first-of-type,.floor[data-operating=true] .deck>small:first-child{display:none}
+ .floor[data-operating=true] .deck>button:first-of-type,.floor[data-operating=true] .deck>small:first-child{display:none}
  .floor[data-operating=true] .deck fieldset{grid-column:auto}
  .floor[data-operating=true] .deck>button,.floor[data-operating=true] .totals,.floor[data-operating=true] .quality{grid-column:1/-1}
  .switches button{font-size:14px}.switches button small{font-size:9px}

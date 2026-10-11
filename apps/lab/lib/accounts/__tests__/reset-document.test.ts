@@ -25,7 +25,7 @@ function choose(password: string, confirmation = password) {
 const settle = () => new Promise<void>((resolve) => setImmediate(resolve));
 afterEach(() => dom?.window.close());
 
-test.each(["es", "en"])("reset accepts a simple game password in %s", async (locale) => {
+test.each(["es", "en"])("reset accepts a simple password in %s", async (locale) => {
   await open(locale);
   request.mockResolvedValue({ ok: true, status: 200 });
   const document = dom.window.document;
@@ -42,23 +42,4 @@ test.each(["es", "en"])("reset accepts a simple game password in %s", async (loc
   expect(JSON.parse(request.mock.calls[0][1].body)).toEqual({ token, password: "a", locale });
   expect(document.getElementById("success")!.hidden).toBe(false);
   expect(dom.window.location.hash).toBe("");
-});
-
-test("shared-account password rejection keeps the private link usable for a retry", async () => {
-  await open();
-  request
-    .mockResolvedValueOnce({ ok: false, status: 422, json: async () => ({ detail: "password_too_short" }) })
-    .mockResolvedValueOnce({ ok: true, status: 200 });
-  choose("a");
-  await settle();
-  const document = dom.window.document;
-  expect(document.getElementById("form")!.hidden).toBe(false);
-  expect(document.getElementById("message")!.textContent).toContain("al menos 10 caracteres");
-  document.getElementById("language")!.click();
-  expect(document.getElementById("message")!.textContent).toContain("at least 10 characters");
-  choose("1234567890");
-  await settle();
-  expect(request).toHaveBeenCalledTimes(2);
-  expect(JSON.parse(request.mock.calls[1][1].body)).toEqual({ token, password: "1234567890", locale: "en" });
-  expect(document.getElementById("success")!.hidden).toBe(false);
 });

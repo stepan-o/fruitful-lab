@@ -16,7 +16,6 @@ const copy = {
  login: ['Entrar al juego', 'Enter the game'], footer: ['Una misma cuenta para Fruitful Lab y Mexico city discovery game.', 'One account for Fruitful Lab and Mexico city discovery game.']
 };
 const errors = {
- password_too_short: ['Esta cuenta de Fruitful Lab requiere al menos 10 caracteres. Elige una contraseña más larga.', 'This Fruitful Lab account requires at least 10 characters. Choose a longer password.'],
  invalid: ['Este enlace venció, ya se usó o fue reemplazado. Pide otro para continuar.', 'This link expired, was used or was replaced. Request another to continue.'],
  mismatch: ['Las contraseñas no coinciden. Revísalas antes de guardar.', 'The passwords do not match. Check them before saving.'],
  service: ['No pudimos guardar tu contraseña. Inténtalo de nuevo en un momento.', 'We couldn’t save your password. Try again shortly.']
@@ -43,10 +42,7 @@ document.getElementById('form').addEventListener('submit', async event => {
  busy = true; error = ''; render();
  try {
   const response = await fetch('/api/account/reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, password, locale }) });
-  if (!response.ok) {
-   const data = await response.json();
-   error = data.detail === 'password_too_short' ? 'password_too_short' : response.status === 400 || response.status === 422 ? 'invalid' : 'service';
-  }
+  if (!response.ok) { error = response.status === 400 || response.status === 422 ? 'invalid' : 'service'; }
   else {
    complete = true; token = ''; document.getElementById('form').reset(); document.getElementById('form').hidden = true;
    document.getElementById('intro').hidden = true; document.getElementById('retry').hidden = true;

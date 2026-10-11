@@ -376,7 +376,7 @@ def test_password_input_bounds_preserve_setup_link(system, password):
         (False, ["mexico-city", "other-access"]),
     ],
 )
-def test_shared_accounts_keep_existing_password_minimum(system, admin, groups):
+def test_all_account_types_accept_simple_passwords(system, admin, groups):
     client, Session, login, _ = system
     with Session() as db:
         user = service.find_user(db, "player@example.com")
@@ -384,9 +384,11 @@ def test_shared_accounts_keep_existing_password_minimum(system, admin, groups):
         user.groups = groups
         token, _ = service.issue_link(db, user)
         db.commit()
-    rejected = reset(client, token, "a")
-    assert rejected.status_code == 422
-    assert rejected.json()["detail"] == "password_too_short"
-    login("player@example.com", PASSWORD)
-    assert reset(client, token).status_code == 200
-    login("player@example.com", NEW_PASSWORD)
+    old_session = login("player@example.com", PASSWORD)
+    assert reset(client, token, "a").status_code == 200
+    assert reset(client, token, "a").status_code == 400
+    assert client.get("/auth/me", headers=old_session).status_code == 401
+    fresh_session = login("player@example.com", "a")
+    identity = client.get("/auth/me", headers=fresh_session).json()
+    assert identity["is_admin"] == admin
+    assert identity["groups"] == groups

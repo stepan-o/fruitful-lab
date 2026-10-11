@@ -7,11 +7,11 @@ export const SHIFT_TICKS = 1200; // One-minute visual study; represents an eight
 export type Phase = "night" | "morning" | "shift";
 export type Fixture = "terminal" | "gate" | "drive";
 export type StudyEvent = { id: number; tick: number; kind: "installed" | "start" | "stop" | "cycle" | "jam" | "release" | "pace" | "phase"; text: string };
-export type Worker = { id: number; progress: number; waiting: boolean; position: ReturnType<typeof crewPose> };
+export type Worker = { id: number; progress: number; waiting: boolean; position: ReturnType<typeof crewPose>; task?: "work"|"wait"|"carry"|"lost"; distance?: number };
 export type StudyState = {
   version: typeof STUDY_VERSION; floorVersion: typeof FLOOR_VERSION; unlockedRooms: ManagedRoomId[]; tick: number; day: number; phase: Phase; shiftTick: number; installed: Fixture[]; running: boolean;
   jammed: boolean; pace: "steady" | "push"; travel: number; cycles: number;
-  workers: Worker[]; events: StudyEvent[]; nextEvent: number;
+  process?: { intake: number; outtake: number; assembly: number; attachment?: boolean; blocked?: boolean }; workers: Worker[]; events: StudyEvent[]; nextEvent: number;
 };
 export type Command = { type: "install"; fixture: Fixture } | { type: "running"; value: boolean } |
   { type: "pace"; value: "steady" | "push" } | { type: "obstruct" } | { type: "release" } | { type: "morning" } | { type: "shift" };

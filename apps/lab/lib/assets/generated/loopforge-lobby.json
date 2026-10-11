@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-lobby",
+  "assets": {
+    "enamel": {
+      "kind": "image",
+      "width": 1254,
+      "height": 1254,
+      "variants": [
+        {
+          "src": "/media/files/999de0502f5270b38a25c97a37d5567f89cc282839cd7f6c89694ce007dfc6eb.webp",
+          "mime": "image/webp",
+          "bytes": 443112,
+          "sha256": "999de0502f5270b38a25c97a37d5567f89cc282839cd7f6c89694ce007dfc6eb",
+          "width": 1024,
+          "height": 1024
+        }
+      ]
+    },
+    "floor-emblem": {
+      "kind": "image",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "src": "/media/files/57e2529a168148c9b066a91f6698376b9256fc911b25299b9de0981da63d0d4e.webp",
+          "mime": "image/webp",
+          "bytes": 132916,
+          "sha256": "57e2529a168148c9b066a91f6698376b9256fc911b25299b9de0981da63d0d4e",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "src": "/media/files/0f8b7e50c1841e5b182a971de6494e28bd3d0b6914f2b0aba0ea32c7720a3ad3.webp",
+          "mime": "image/webp",
+          "bytes": 482888,
+          "sha256": "0f8b7e50c1841e5b182a971de6494e28bd3d0b6914f2b0aba0ea32c7720a3ad3",
+          "width": 1536,
+          "height": 1024
+        }
+      ]
+    },
+    "paperwork-wall": {
+      "kind": "image",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "src": "/media/files/bc118bc68e57770ae5ba9a3851a2bdd971d7543334b36f7f09a1ab3c34376623.webp",
+          "mime": "image/webp",
+          "bytes": 186732,
+          "sha256": "bc118bc68e57770ae5ba9a3851a2bdd971d7543334b36f7f09a1ab3c34376623",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "src": "/media/files/22ce24ddbd59a8068d6727225417580a46f77f1fb7500a85160d029184cf7742.webp",
+          "mime": "image/webp",
+          "bytes": 708608,
+          "sha256": "22ce24ddbd59a8068d6727225417580a46f77f1fb7500a85160d029184cf7742",
+          "width": 1536,
+          "height": 1024
+        }
+      ]
+    },
+    "stone-floor": {
+      "kind": "image",
+      "width": 1254,
+      "height": 1254,
+      "variants": [
+        {
+          "src": "/media/files/80df24d4b99dacff8736d56aad8226481c2ce5a5fb90ae969d393d06eaa9e0a5.webp",
+          "mime": "image/webp",
+          "bytes": 331592,
+          "sha256": "80df24d4b99dacff8736d56aad8226481c2ce5a5fb90ae969d393d06eaa9e0a5",
+          "width": 1024,
+          "height": 1024
+        }
+      ]
+    }
+  }
+}

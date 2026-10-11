@@ -4,15 +4,16 @@ import ThemeProvider, { useConsoleTheme } from "@/components/loopforge/first-shi
 import ThemeSettings from "@/components/loopforge/first-shift/ThemeSettings";
 import { CONSOLES, DEFAULT_RECIPE, THEMES, consolePreview, parseRecipe, prepareTheme, recipeForConsole, recipeFromQuery, recipeLink, themeFiles, THEME_STORAGE_KEY, type ThemeRecipe } from "@/lib/loopforge/first-shift/themes";
 import { firstShiftMedia } from "@/lib/loopforge/first-shift/media";
-import { useRun } from "@/components/loopforge/first-shift/useRun";
-import { initialState } from "@/lib/loopforge/first-shift/kernel";
-import { project } from "@/lib/loopforge/first-shift/projection";
+import { useFirstTurnRun } from "@/components/loopforge/first-shift/useFirstTurnRun";
+import { initialState,project } from "@/lib/loopforge/first-turn/kernel";
 import { producerPlate } from "@/lib/loopforge/first-shift/producer-art";
 
 jest.mock("@/lib/loopforge/first-shift/themes", () => ({
   ...jest.requireActual("@/lib/loopforge/first-shift/themes"), prepareTheme: jest.fn(),
 }));
-jest.mock("@/components/loopforge/first-shift/useRun");
+jest.mock("@/components/loopforge/first-shift/useFirstTurnRun");
+jest.mock("@/components/loopforge/first-shift/TurnFloor",()=>({__esModule:true,default:()=>null}));
+jest.mock("@/components/loopforge/first-shift/PhaseInterlude",()=>({__esModule:true,default:()=>null}));
 jest.mock("@/components/media/AssetImage", () => ({ __esModule: true, default: () => <span /> }));
 const prepared = jest.mocked(prepareTheme);
 const send = jest.fn().mockResolvedValue(true), restart = jest.fn();
@@ -28,7 +29,7 @@ beforeEach(() => {
   localStorage.clear(); jest.clearAllMocks();
   window.history.replaceState({}, "", "/stepanoskin/loopforge/play");
   prepared.mockImplementation(async (r, compact) => themeFiles(r, compact));
-  jest.mocked(useRun).mockReturnValue({ view: project(initialState(7)), pending: false, error: "", send, restart, recover: jest.fn(), download: jest.fn() });
+  jest.mocked(useFirstTurnRun).mockReturnValue({ view: project(initialState(7)), pending: false, error: "", send, restart, recover: jest.fn(), download: jest.fn() });
 });
 function Harness() {
   const t = useConsoleTheme()!;
@@ -156,7 +157,7 @@ it("does not surface an older load failure after a newer console is fitted", asy
   expect(JSON.parse(localStorage.getItem(THEME_STORAGE_KEY)!)).toEqual(recipeForConsole("broadcast-control"));
 });
 it("keeps an uncommitted dispatch choice through theme changes and a menu round-trip", async () => {
-  jest.mocked(useRun).mockReturnValue({ view: { ...project(initialState(7)), phase: "allocation", produced: 11 }, pending: false, error: "", send, restart, recover: jest.fn(), download: jest.fn() });
+  jest.mocked(useFirstTurnRun).mockReturnValue({ view: { ...project(initialState(7)), phase: "allocation", produced: 11, floor:{...initialState(7).floor,stage:"day"} }, pending: false, error: "", send, restart, recover: jest.fn(), download: jest.fn() });
   render(<GameClient media={firstShiftMedia()} />);
   await waitFor(() => expect(screen.getByRole("button", { name: /Start shift/ })).toBeEnabled());
   fireEvent.click(screen.getByRole("button", { name: /Start shift/ }));
@@ -183,12 +184,12 @@ it("migrates a saved legacy recipe without creating a run before Start shift", a
   localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(recipe));
   render(<GameClient media={firstShiftMedia()} />);
   await waitFor(() => expect(prepared).toHaveBeenCalledWith({ ...recipe, console: "obedience-organ" }, true));
-  expect(useRun).not.toHaveBeenCalled();
+  expect(useFirstTurnRun).not.toHaveBeenCalled();
 });
 it("opens an explicit console link ahead of a stored preference without starting a run", async () => {
   localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(recipeForConsole("obedience-organ")));
   window.history.replaceState({}, "", "/stepanoskin/loopforge/play?console=broadcast-control");
   render(<GameClient media={firstShiftMedia()} />);
   await waitFor(() => expect(prepared).toHaveBeenCalledWith(recipeForConsole("broadcast-control"), true));
-  expect(useRun).not.toHaveBeenCalled();
+  expect(useFirstTurnRun).not.toHaveBeenCalled();
 });

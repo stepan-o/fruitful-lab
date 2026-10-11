@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run assets:check && next build",
+    "floor:build": "API_BASE_URL=${API_BASE_URL:-http://localhost:8000} LOOPFORGE_LOW_MEMORY=1 NODE_OPTIONS=--max-old-space-size=1536 npm run build",
+    "floor:preview": "API_BASE_URL=${API_BASE_URL:-http://localhost:8000} NODE_OPTIONS=--max-old-space-size=512 next start --hostname 127.0.0.1 --port 3191",
     "assets:publish-editorial": "node scripts/publish-editorial.mjs",
     "assets:build": "node scripts/assets.mjs build",
     "assets:check": "node scripts/assets.mjs check && node scripts/research-assets.mjs && npm run floor-plan:check",

@@ -6,13 +6,13 @@
 
 **Build at night → morning context and adviser → approve assignments → operate and handle events → commit output → next night.**
 
-The opening now begins through the Lobby, with two guided Security placements followed by the first Conveyor element in Lattice Forge. This is a one-time teaching arc before the morning call, not a daily placement chore. Exact starter equipment and minimum-chain construction remain proposed in the [Conveyor tab](CONVEYOR_MINIGAME_PROPOSAL.md). The current playable runtime still starts at the console.
+The opening now begins through the Lobby, with two guided Security placements followed by the first Conveyor element in Lattice Forge. This is a one-time teaching arc before the morning call, not a daily placement chore. The first-turn implementation installs a terminal, gate and drive, then offers an optional outtake investment. It joins the mandatory morning call, adviser flow, live process controls and Dispatch. See [the executable contract](FIRST_TURN_ENGINE.md) and [build checklist](FIRST_TURN_BUILD_PLAN.md). The wider builder remains proposed.
 
 The one-minute loop is the **whole game day**, including its ordinary reading, choices and transitions. A routine day targets about 60 seconds; a heavier day targets two to three minutes at most. Giving production a minute and adding several minutes of briefing is outside this requirement. These are experience pacing targets, not an instruction to force a timed answer or penalize a player for reading slowly.
 
 A seven-day delivery cycle therefore has a nominal seven-minute routine-day baseline; if every day took three minutes it would be 21 minutes. That arithmetic explains why long mandatory briefings would undermine the weekly loop. Leadership calls, major developments and onboarding must fit into the longer-day allowance. Optional inspection and a player intentionally leaving the game paused do not establish the intended normal-path duration.
 
-The smaller operational beat is **notice the constraint → adjust or delegate → watch the material and worker consequence**. The [conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md) makes physical layout, installed machinery and local policy part of that loop; its mechanics remain proposed. It sits inside the day; it does not get its own minute or demand a compulsory incident. Quiet successful production is valid.
+The smaller operational beat is **notice the constraint → adjust or delegate → watch the material and worker consequence**. The [conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md) makes physical layout, installed machinery and local policy part of that loop; the bounded first-turn intake/assembly/outtake chain is now implemented; broader layout and policy choices remain proposed. It sits inside the day; it does not get its own minute or demand a compulsory incident. Quiet successful production is valid.
 
 ## Whole-day flow and interface ownership
 
@@ -22,7 +22,7 @@ The smaller operational beat is **notice the constraint → adjust or delegate �
 | Read the situation | Understand the useful result from yesterday, the remaining weekly obligation and today's concern | Console summary / previous debrief; leadership call at week start | Show the change that matters. Do not repeat the full report at both ends of the day. Day one uses opening facts instead. |
 | Choose the adviser | Compare current short pitches and choose whose priority to follow | Dedicated adviser roster | This is the primary daily decision. Recognizable tokens, meaningful pitches and inspectable tradeoffs; do not play five full briefings. |
 | Hear and authorize | Read structured advice, inspect the proposed arrangement, accept or override | Adviser brief with a concise plan; detailed placement desk when needed | Proposed fast path: approve from the briefing after showing assignments and delegation. Keep deliberate edits available without a compulsory extra trip. No priority picker. |
-| Operate | Watch the arrangement work; trust automatic decisions or respond where required | Common cinematic factory; focused room inspection/build controls; incident dialog when consequential | Allow enough operation to feel the choice. Routine receipts stay out of modal flow; a safe day does not need an invented interruption. |
+| Operate | Shape flow through available process controls; decide when to intervene or delegate; read the physical result | Console → selected room’s three CCTV angles → focused operating workspace or permitted incident response → console | Make a chosen adjustment tangible. Watching is feedback, not the whole activity. A sound arrangement needs no invented interruption or compulsory click. |
 | Commit and carry | Permanently split output between factory and quota; understand the day's benefit, cost and outstanding issue | Dispatch, with concise result/debrief | Clear before/after totals and explicit irreversible commitment. Feed the result into tomorrow's context, rather than another mandatory exposition screen. |
 
 Proposed first pacing budget, to test rather than treat as balance: situation 5s, adviser and brief 15s, one relevant adjustment 10s, operation 20s, allocation/result 10s. Total about 60s. A consequential decision, first-time explanation or weekly call can expand the day into the two-to-three-minute range. If normal play cannot meet that range, simplify the required route and reading before hiding the problem with a faster conveyor.
@@ -65,14 +65,14 @@ See [Player desires and scenarios](PLAYER_DESIRES_AND_SCENARIOS.md) for the rese
 
 | Beat | Player needs to understand or do | Interface | Required result |
 | --- | --- | --- | --- |
-| Read the operation | Is the arrangement working? Which room changed? | Producer console; selected camera on small screens | Room-specific activity and concise facts. Quiet operation is valid; routine output is not a popup. |
+| Read the operation | Is the arrangement working? Which room changed? | Producer console; one selected room, three angles, one primary feed on small screens | Room-specific activity and concise facts. Quiet operation is valid; routine output is not a popup. |
 | Notice an issue | Where is it, what is known, and does it need my decision? | Camera cue + attributed notice; local amber impulse | Separate **decision waiting** from **supervisor acted**. Cue remains recoverable after the sound/light ends. Red requires a confirmed accident, not merely an alarming claim. |
 | Inspect if useful | What happened here, who is operating, what supports the account? | Optional room focus; linked evidence/record | More room context without restarting, resolving or rerolling the event. Avoid requiring this detour to understand an ordinary decision. |
 | Resolve under authority | What does my adviser want, what does it cost, and can I disagree? | Automatic-action receipt in their assigned room; incident response dialog elsewhere or for a factory-wide decision | Own-room events resolve automatically. Other response decisions pause and present the recommendation plus meaningful legal alternatives. |
 | Read the consequence | Was the order accepted, what actually happened, and who reacted? | Return to the originating camera + concise outcome receipt; supervisor token/speech | Show execution and known immediate costs. Preserve pending consequences. An order, an attempted action and a successful outcome are different states. |
 | Judge and carry forward | Did the response help? What remains unresolved? | Live operation; optional causal record; later daily debrief | Allow enough observable work for a consequence to become legible. Link the outcome to its decision without claiming a counterfactual was observed. |
 
-**Proposed presentation emphasis:** construction and operation use the common cinematic factory. The console handles communication and summaries. A consequential event opens one focused decision surface and returns to its room. Automatic actions remain visible without forcing acknowledgement. Room focus and records deepen inspection; they should not be compulsory steps for every event.
+**Owner direction — observation and agency:** the producer console is the default entry/return hub. Its factory-floor view renders one selected room from three authored CCTV angles. Those feeds primarily show action and consequence, with limited permitted remote intervention. Focused construction, operating, adviser and allocation workspaces carry the player’s active decisions, using the same world and returning to the saved console room/angle. The day must not become a wait for incident popups. Three CCTV angles are not three zoom levels or three simulations. The guided night-zero arrival remains an onboarding exception. See [the camera and agency contract](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
 
 ## The decision surface's minimum content
 
@@ -109,8 +109,8 @@ These give us matched tests of the same problem under different judgment and aut
 | Adviser roster | Compare pitches, priorities and costs; make the primary daily choice | Once per day |
 | Adviser brief / intercom | Structured interpretation and proposed priority; later bounded conversation | Daily, with event advice carried into incidents |
 | Placement desk | Accept or revise assignments; make delegation visible | Planning; later handovers unresolved |
-| Cinematic factory / room focus | Build at night; operate, notice and inspect during the shift | Recurring |
-| Producer console | Receive calls, contact supervisors and read the room summary | When needed |
+| Focused room workspace | Build at night; adjust installed processes during production; preview and submit concrete changes | When shaping the room’s operation; related adjustments stay in context |
+| Producer console / live room feeds | Default observation hub; calls, supervisors, room selection and one room through three CCTV angles | Recurring entry and return; small screens promote one angle |
 | Incident response / outcome receipt | Resolve a meaningful decision and understand its aftermath | When warranted |
 | Records | Recover missed facts and trace a consequence to its source/order | Optional |
 | Dispatch | Permanently retain output or commit it to the weekly quota | End of shift |
@@ -138,7 +138,7 @@ No model call is necessary to make this loop complete. Structured authored advic
 | Decision | Room artwork, adviser speech, two actions and stated costs | Clear local-operator context, source/uncertainty treatment and concrete button labels |
 | Aftermath | Counts/condition change, a brief notice, room's latest receipt, records and debrief | A coherent immediate consequence beat; meaningful reactions without forcing a records visit |
 | Causality | Seeded rules, individual workers, private supervisor state and authored traces | Relevant history influencing subsequent problems; explicit links for multi-event arcs |
-| Content and timing | Two scheduled incidents at beats 12 and 30 in a 48-beat one-day fixture; normal advance delay is 900ms plus response time | Running alone takes roughly 43s plus transport/reading in this fixture. Measure the entire daily path against 60s routine / 2–3min heavier; current timings do not establish that target |
+| Content and timing | Current first turn: 48 production beats, 50 ms spatial ticks, incidents triggered by load/clearance. The older profile retains its scheduled fixtures only for regression. Normal advance delay is 900 ms plus response time | Measure the entire night/day path, including construction, reading and dispatch. Runtime alone does not establish the 2–3 minute first-play target |
 | Carry forward | Permanent dispatch and a terminal debrief | Later days, unresolved consequences and tomorrow's adviser choice are not yet playable |
 
 ## Decisions to settle before new interface work

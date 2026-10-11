@@ -31,7 +31,7 @@
     {
       "title": "Operate the factory; focus each decision",
       "status": "Agreed direction",
-      "text": "The common cinematic factory makes room puzzles and their consequences visible. Asset-driven adviser briefings, incidents, construction inspectors and dispatch handle distinct decisions around it. Both are parts of the core loop; the deterministic world is independent of either presentation."
+      "text": "The producer console shows one selected live room through three authored CCTV angles. Those views make work and consequences legible; focused building, operating, adviser and allocation interfaces carry player agency. Most play should feel like acting on the factory, not waiting for prompts. All views share the deterministic world."
     },
     {
       "title": "Truth stays clean. Story gets messy.",
@@ -811,7 +811,7 @@
     },
     {
       "title": "Visual scene and device budget",
-      "text": "Prove the common cinematic factory with one spatial Conveyor puzzle and the existing focused decision interfaces. Select and benchmark a renderer using representative machinery, workers, lighting and small-screen interaction. Babylon.js remains a dated candidate, not a committed dependency; the deterministic kernel and KVP stay renderer-independent."
+      "text": "Prove the console → room observation → focused action → console loop with one spatial Conveyor puzzle. Babylon.js 9.30.0 is installed in the factory-floor calibration route; the integrated three-angle console remains proposed. Benchmark the complete composition while keeping the kernel and KVP renderer-independent."
     },
     {
       "title": "Session pacing and live interventions",
@@ -831,7 +831,7 @@
     "The website's current teaching prototype is not the complete game described here. The six alternative prehistories and twenty bridge paintings remain explorations, not established canon.",
     "The accident aftermath is now a major Act 1 fork alongside Cathexis. It is likely on many operating paths but must be avoidable through sustained safety; no mastery gate should demand a disaster. BDI will affect actions, extending beyond the old read-only cognitive diagnostic layer.",
     "Day one has no inherited assignments. The first adviser proposes them. Quotas are weekly, daily output allocations are permanent, and engineering begins with Witch in Part 03. Earlier repair purchases and station-staffing examples are superseded.",
-    "9 October: the integrated producer-console baseline remains the entry and communications surface. The next prototype makes the common cinematic 3D factory an operating view for room puzzles, physical upgrades and worker feedback. Earlier observation-only 3D scope is superseded; asset-driven focused decision interfaces retain their jobs."
+    "11 October: the producer console is the default observation/return hub. Its factory-floor view presents one selected room through three authored CCTV angles. Focused construction, operating and decision interfaces carry the actor role. These share one world; three camera positions are distinct from rendering/detail levels. The night-zero guided arrival remains an onboarding exception."
   ],
   "reviewQuestions": [
     "Can each trajectory reach Brain 2.0 for an understandable reason, rather than because its numbers were favoured?",
@@ -1490,7 +1490,7 @@
   },
   "experience": {
     "title": "Watch, understand, intervene",
-    "intro": "A whole routine day targets about one minute, two to three for heavier days. The next prototype centres operation in a common cinematic 3D factory: each room supplies a distinct puzzle, while adviser choice, structured briefings, incidents and allocation use focused interfaces. The Conveyor mini-game tab specifies the first proposal; the current runtime remains the earlier illustrated-console baseline. The procedural commissioning study now uses Babylon.js in a separate route. One persistent factory camera serves night construction and production playback. The eighteen-hour shift / six-hour charge baseline and three-second illustrated day/phase interludes are approved direction. The existing first-shift game protocol is unchanged.",
+    "intro": "A routine day targets about one minute, two to three for heavier days. The producer console is the default observation hub: one selected room, three authored CCTV angles. Focused room controls and asset-driven adviser, incident and allocation interfaces let the player act, then return to see consequences. The separate Babylon factory-floor route is a calibration implementation; console integration is still proposed. Night construction and production reuse the same spatial state. The eighteen-hour shift / six-hour charge baseline and three-second day/phase interludes remain agreed direction.",
     "rhythmStatus": "Agreed: paused planning, continuous shifts and consequential decision pauses. Whole-day target: about one minute routine, two to three at most for heavier days.",
     "rhythm": [
       [
@@ -1516,12 +1516,12 @@
     ],
     "views": [
       [
-        "Producer console · communications and overview",
-        "Six room positions, compact facts, calls and supervisor communication. The next opening reaches this console on the morning after night setup. Leadership must be acknowledged before adviser selection. Locked room screens remain dark; the cinematic floor owns construction and operation."
+        "Producer console · default observation hub",
+        "Receive calls, choose rooms and return from focused actions. Retain compact six-room status and named dark screens for locked rooms. Selecting an accessible room opens its live floor view through three authored CCTV angles. The guided night-zero tutorial finishes here before the morning call."
       ],
       [
-        "Cinematic factory · next operating prototype",
-        "One shared 3D world shows room puzzles, worker tasks, machinery, queues and interventions over authoritative ticks. Room focus and build/inspection overlays support operation; switching views does not pause the world. Repair still requires engineering."
+        "Room floor feeds and active workspaces · next prototype",
+        "One selected room, three authored viewpoints over the same worker and machine state. Observe through CCTV; build or adjust processes in focused workspaces that return to the saved console context. Camera changes do not change time or authority. Repair still requires engineering."
       ],
       [
         "Episode and evidence",
@@ -1608,13 +1608,13 @@
       ]
     ],
     "renderer": {
-      "title": "Future live 3D view: a renderer candidate, not a prototype dependency",
-      "status": "Future research · comparison dated 7 October 2026 · selection unconfirmed",
-      "why": "The present prototype uses asset-driven interfaces and illustrated cameras in the existing React application. For the later cinematic factory, Babylon.js remains the first proposed 3D candidate under a controlled camera; Three.js / React Three Fiber is an alternative. Recheck the dated capability research and benchmark representative art before choosing. No 3D framework is selected or required for this interface pass.",
+      "title": "Shared room renderer: Babylon.js, with a three-angle console to prove",
+      "status": "Installed calibration stack · 11 October 2026 · console integration proposed",
+      "why": "The factory-floor route uses Babylon.js 9.30.0; the main console still uses illustrated rooms. Next, one renderer presents a selected room from three authored angles and supplies the corresponding action workspace. The table below retains the earlier framework research; it is not a new stack-selection decision.",
       "rows": [
         [
           "Babylon.js 9",
-          "Future 3D spike candidate",
+          "Installed factory-floor renderer",
           "Integrated 3D scene and authoring tools, including the current lighting and Inspector improvements. The attraction is a coherent visual toolset; scene performance still needs measurement.",
           "https://www.babylonjs.com/"
         ],
@@ -1643,7 +1643,7 @@
           "https://phaser.io/news/2026/04/migrating-from-phaser-3-to-phaser-4-what-you-need-to-know"
         ]
       ],
-      "boundary": "The dated renderer comparison is research, not an installed stack or a benchmark. The next prototype requires a common cinematic factory, while the final renderer selection still needs a representative room spike and device tests. The old viewer supplies protocol and observation patterns, not a finished 3D scene.",
+      "boundary": "One kernel and one room graph; update worker poses once and render the required camera passes within a total budget. The integrated console, camera coverage and actor-workspace loop still need implementation and device validation. The earlier comparison is research, not comparative performance evidence.",
       "performance": "Budget the expensive effects around the focal event: a few shadow-casting lights, reusable worker instances, restrained transparent smoke, cached static detail and bounded render resolution. Offer measured quality tiers with the same visual identity. Verify WebGL 2 and WebGPU paths on target devices; neither the API label nor a feature list establishes speed.",
       "spike": [
         "Build one representative conveyor bay with existing art, proxy geometry, workers, a moving batch and the alarm light. Test source–obstacle–surface alignment and moving reflections before adding more effects.",
@@ -1673,7 +1673,7 @@
       ],
       [
         "Next prototype: one spatial room puzzle",
-        "An editable conveyor chain, individual workers and machinery, real-time fixed ticks, physical upgrades, local policy and supervisor delegation. The common cinematic view becomes the operating surface. Prove one room before committing to five simultaneous puzzles."
+        "An editable Conveyor chain, individual workers and machinery over fixed ticks, physical upgrades, local policy and supervisor delegation. Prove console observation → focused process action → visible consequence in one room before expanding to five room puzzles."
       ],
       [
         "Shared world, separate presentation",
@@ -1815,7 +1815,7 @@
       ],
       [
         "Operate",
-        "Watch the common cinematic factory, adjust flow and see physical consequences. The adviser acts automatically in their assigned room; consequential decisions elsewhere pause for acceptance or override."
+        "Use the console’s room feeds to read the constraint, then change eligible machinery/flow in a focused workspace and see the physical result. Return to the same console context. The adviser’s own-room incident decisions remain automatic; elsewhere consequential responses allow acceptance or override. No forced busywork on a sound line."
       ],
       [
         "Commit and inherit",
@@ -2100,7 +2100,7 @@
   },
   "uiDesign": {
     "title": "UI and simulation complexity",
-    "intro": "The next prototype combines a common cinematic operating view with focused asset-driven decision interfaces. Engine depth, player knowledge, interface load and visual fidelity are separate axes. Spatial machinery and worker tasks can be mechanically rich while the player sees one useful operating question. The whole routine day targets about one minute, two to three for heavier days; optional depth must not create a longer mandatory reading route.",
+    "intro": "Separate the place for watching from the place for acting. The producer console shows one selected room from three CCTV angles; focused construction, operating and decision interfaces carry the core choices. Engine depth, player knowledge, interface load and visual fidelity remain separate axes. The whole routine day targets about one minute, heavier days two to three; observation and navigation must earn their time.",
     "status": "Agreed separation · proposed interaction contracts",
     "axes": [
       [
@@ -2153,8 +2153,8 @@
         "Current day and phase, weekly quota progress and deadline, money, workforce counts and foreground issue. Do not reveal repair controls or worker conditioning state before their intended unlocks."
       ],
       [
-        "Cinematic factory and console overview",
-        "The common operating view shows actual worker tasks, machinery and room puzzles. The six-room console handles summary and communication. Both select the same known entities and events and lead to focused decision interfaces. This is the next prototype direction; the current runtime uses illustrated rooms."
+        "Console observation and focused action",
+        "The default floor view is one selected room through three CCTV angles, reached from the producer console. Construction and room operation use focused workspaces; adviser and incident interfaces carry social/authority decisions. All select the same permitted entities/events and return to the saved console context. This is proposed integration, not delivered runtime."
       ],
       [
         "Context inspector",
@@ -2508,7 +2508,7 @@
       ],
       [
         "Navigation and selection",
-        "Three main screens preserve the run, selected entity/event and previous view. Returning to Factory restores its camera and focus."
+        "The producer console is the recurring hub. Room selection and CCTV angle selection are distinct. Returning from a focused action restores room, primary angle, entity/event and draft context. A workspace can retain related actions without forcing a hub round trip for every adjustment."
       ],
       [
         "Clock and decisions",
@@ -2523,14 +2523,14 @@
       {
         "id": "factory",
         "name": "Factory",
-        "verb": "Operate and intervene",
-        "summary": "The next prototype enters the shared cinematic factory at night through the Lobby. Security teaches two fixed placements, then Lattice Forge introduces Conveyor construction. Morning moves to the console for leadership and adviser communication. Focused interfaces handle briefs, decisions and allocation; the current runtime still uses console-first entry.",
+        "verb": "Observe, enter focused action, read consequences",
+        "summary": "The producer console is the default entry/return hub for factory viewing. Select one accessible room and watch it through three authored CCTV angles. Focused room construction and operating controls make the player the actor, then return to that console context. The one-time night-zero Lobby → Security → Forge tutorial remains a guided exception before the first morning call.",
         "canvasLabel": "Factory workspace",
-        "canvasTitle": "Common cinematic factory · focused room puzzles",
+        "canvasTitle": "One selected room · three CCTV angles",
         "canvasItems": [
-          "Actual workers, machines, queues, access routes and known condition",
-          "Conveyor + Security available; four rooms locked at entry",
-          "Console overview and focused decision interfaces share the same world"
+          "One live room and its real workers, machinery, queues and known condition",
+          "Three distinct angle IDs; one primary view on small screens",
+          "Focused action workspaces share that world and restore console context"
         ],
         "inspectorTitle": "Context inspector",
         "inspectorItems": [
@@ -2547,8 +2547,8 @@
             "Use original room scenes in shared calibrated glass within each integrated plate. Foundry, Broadcast and porcelain Obedience use six panes; Dispatch office uses one primary plus five. Two feeds begin live and four off. Focus a room without creating another world or exposing hidden state."
           ],
           [
-            "Live cinematic floor · next prototype",
-            "Continuous machinery and workers over authoritative ticks, with editable physical chain, room policy and pace/feed controls. The common view supports individual room puzzles without creating separate simulation instances."
+            "Live room floor · next integration",
+            "Three authored viewpoints of one room; proposed wide layout has one primary plus two alternate feeds, phone has one active feed with an angle selector. Construction and operating workspaces can use their own bounded camera. Rendering/detail scales are separate from the three angles."
           ]
         ],
         "panels": [
@@ -2574,7 +2574,7 @@
           ]
         ],
         "time": "Planning and the morning briefing are paused. The adviser’s room events resolve automatically during the live shift; response decisions elsewhere pause for acceptance or override. Ordinary selection preserves the clock state.",
-        "mobile": "Wide view retains the complete six-camera console. Tall portrait uses dedicated portrait art with 2×3 glass and a control bay. Small/short displays show one camera plus six channels; compact landscape places a large camera left and controls right. Selected camera, run, acknowledgement and pending decision persist through resize without remounting. All four portrait plates are generated, catalogued and implemented; visual QA and responsive verification remain underway. Focused briefing/decision panels keep readable text and touch targets; the proposed spatial floor uses one focused room with a contextual bottom sheet rather than shrinking the complete factory.",
+        "mobile": "Current console skins retain their existing responsive layouts. The new live-room proposal uses one readable active CCTV feed with three angle selectors and separate room selection. Desktop composition starts with one primary plus two smaller live feeds for comparison. Preserve room, angle, run, draft commands and pending decision across resizing; never shrink all three angles into unreadable phone panes.",
         "engine": "Displays permitted snapshots, changes and semantic events. Assignment and operating controls submit commands; acceptance, pending execution and actual outcome are distinct states. Initial assignments are empty. Allocation commands cannot reverse prior commitments, and repair requires an engineer."
       },
       {
@@ -3380,7 +3380,7 @@
       ],
       [
         "Operate",
-        "Watch the common cinematic factory, adjust flow and see physical consequences. The adviser acts automatically in their assigned room; consequential decisions elsewhere pause for acceptance or override."
+        "Use the console’s room feeds to read the constraint, then change eligible machinery/flow in a focused workspace and see the physical result. Return to the same console context. The adviser’s own-room incident decisions remain automatic; elsewhere consequential responses allow acceptance or override. No forced busywork on a sound line."
       ],
       [
         "Commit and inherit",
@@ -3390,7 +3390,7 @@
     "interfaces": [
       [
         "Producer console",
-        "Communications and factory overview: compact facts, incoming leadership calls, room state and navigation. The next prototype moves continuous room operation into the common cinematic factory."
+        "Default observation/return hub: calls, compact facts and room selection. Its floor view shows one room from three authored CCTV angles. Enter focused actions and return to the same room/angle; detailed rendering is limited to the selected room."
       ],
       [
         "Leadership call",
@@ -3405,8 +3405,8 @@
         "Structured speech and proposed arrangement. A quicker approval path is proposed, not implemented. Detailed changes remain available and still require authorization."
       ],
       [
-        "Cinematic floor and machinery inspector",
-        "Shared factory: night construction with footprint/connection preview, then continuous worker and machine operation with pace/feed controls. Inspect through contextual overlays. Camera changes never mutate simulation state."
+        "Room operating and building workspace",
+        "Act on the room: night construction with connection/clearance preview; eligible process controls during the shift with direct physical feedback. Same world as the console feeds, with its own useful framing. Related edits stay in context; returning restores the console."
       ],
       [
         "Room focus and incident dialog",

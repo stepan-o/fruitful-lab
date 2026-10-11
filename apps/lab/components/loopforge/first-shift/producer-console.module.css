@@ -122,3 +122,6 @@
 .producer[data-layout="portrait"] .cameraVoice{bottom:22%}.producer[data-layout="portrait"] .cameraVoice button q{font-size:12px}.producer[data-layout="portrait"] .cameraVoice button small{font-size:8px;white-space:nowrap}.producer[data-layout="portrait"] .cameraVoice button>span:first-child{width:38px;flex-basis:38px}.producer[data-layout="portrait"] .cameraVoice button{gap:0}.producer[data-layout="portrait"] .cameraVoice button>span:nth-child(2){padding:2px 4px}
 
 .producer .cameraStatus button strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.producer[data-layout="portrait"] .cameraStatus button strong{font-size:13px}.producer[data-layout="portrait"] .cameraVoice{bottom:20%}
+
+/* Keep the room-opening target on its taped label, clear of actionable evidence and speech. */
+.openCamera{inset:auto 0 0;height:22%;min-height:44px;z-index:4}.openCamera>span{position:absolute;right:4%;bottom:14%;font:24px var(--font-console),sans-serif;color:#e5d3a6;text-shadow:0 1px 4px #000}.openCamera:hover{background:linear-gradient(transparent,#af8d342b)}

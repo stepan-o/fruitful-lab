@@ -196,16 +196,16 @@
       ]
     },
     {
-      "title": "One factory view: night construction and daily transitions",
-      "intro": "Navigation belongs to the factory view. Build mode adds placement tools to that same camera; leaving it never swaps maps or discards installed equipment. Production is stopped at night.",
+      "title": "One world: console observation, active room controls and night construction",
+      "intro": "The producer console is the recurring entry/return hub. Its floor view shows one selected room through three authored CCTV angles. Focused construction and operating workspaces use the same geometry and installed equipment; they carry the actor role. Build mode pauses production at night and adds placement tools, without creating a separate world.",
       "rows": [
         [
           "The familiar construction loop",
           "Enter Build → select the next machine → inspect its ghost at the permitted socket → confirm. Escape clears the selection, then exits the tool. A camera drag must never place equipment. The first two Security placements teach the controls; fitting the conveyor drive reuses them."
         ],
         [
-          "Shared map navigation",
-          "Orbit, pan, zoom and room focus are identical during building and production. Preserve the camera when entering or leaving the tool. Focus a room when the player explicitly selects its equipment; do not repeatedly pull their camera back."
+          "Navigation and return",
+          "Console → selected room → focused action → console. Preserve room, angle, selected equipment and drafts. Build/inspection camera controls can differ from the authored CCTV angles while using the same spatial map. The guided night-zero Lobby–Security–Forge tutorial remains an explicit entry exception."
         ],
         [
           "The factory day",
@@ -221,7 +221,7 @@
         ],
         [
           "What the playable study proves",
-          "The factory-study route implements three ordered installations, the same procedural view in both modes, ten or one hundred individually tracked test workers, an uneven conveyor, pace and obstruction controls, a compressed test shift and automatic return to night. It does not implement the economy, adviser decisions, injuries, research, charging simulation or the full onboarding story."
+          "The factory-floor route implements three ordered installations, the same procedural view in both modes, ten or one hundred individually tracked test workers, an uneven conveyor, pace and obstruction controls, a compressed test shift and automatic return to night. It does not implement the economy, adviser decisions, injuries, research, charging simulation or the full onboarding story."
         ]
       ]
     },
@@ -475,11 +475,11 @@
         ],
         [
           "Producer console",
-          "Communications, six-room summary and navigation. In the next opening it follows night setup and receives the morning leadership call before adviser selection. The currently implemented prototype still starts here; this study does not change runtime entry."
+          "Default observation and navigation hub, with communication and a compact six-room summary. Select one accessible room to view its floor through three CCTV angles, then enter focused actions and return. The opening night tutorial precedes the morning call; the current runtime still begins at the console."
         ],
         [
-          "Cinematic factory",
-          "Shared spatial world for watching and operating. Select a room or object without changing simulation ownership. Room puzzles use the same visual language, navigation and event feedback."
+          "Room operating / building workspace",
+          "Act on the shared world: place and connect at night; adjust eligible machinery/flow during the shift. Use room geometry and actual entities. Observation supplies evidence and payoff, not a substitute for agency. Adviser authority still governs incident responses."
         ],
         [
           "Room inspector / build mode",

@@ -116,9 +116,9 @@ export default function ProducerConsole({media,view,skin,incoming,busy,effects,a
           </div><Tape className={`${s.cameraTape} ${!powered&&(skin==='foundry-desk'||skin==='obedience-organ')?s.nativeTape:''}`}>{room.title}</Tape></>;
           const position={...rectStyle(g.panes[i]),...Object.fromEntries(["x","y","w","h"].map((key,index)=>[`--feed-${key}`,`${mobile.panes[ROOMS.indexOf(room)][index]}%`]))} as CSSProperties;
           return powered?<div key={room.id} className={s.camera} style={position} data-selected={room.id===selected} data-live data-incident={incident}>
-            <button className={s.openCamera} data-selected={room.id===selected} disabled={incoming} onClick={()=>{
+            {content}<button className={s.openCamera} data-selected={room.id===selected} disabled={incoming} onClick={()=>{
               if(skin==="dispatch-office"&&layout==='wall'&&i!==0)setSelected(room.id);else onRoom(room.id as RoomId);
-            }} aria-label={`Inspect ${room.title}`}>{content}</button>
+            }} aria-label={`Inspect ${room.title}`}><span aria-hidden="true">↗</span></button>
             {!incoming&&signal&&<div className={s.cameraStatus}><StatusToken signal={signal} compact onOpen={onFeedback}/></div>}
             {!incoming&&operator&&<div className={s.cameraVoice}><SupervisorSignal media={media} view={view} person={operator} compact onOpen={onFeedback}/></div>}
           </div>:<div key={room.id} className={s.camera} style={position} data-selected={room.id===selected} role="img" aria-label={`${room.title} — unpowered camera`}>{content}</div>;

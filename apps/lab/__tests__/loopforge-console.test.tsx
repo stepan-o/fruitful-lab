@@ -4,10 +4,13 @@ import GameClient from "@/components/loopforge/first-shift/GameClient";
 import { firstShiftMedia } from "@/lib/loopforge/first-shift/media";
 import { initialState, step } from "@/lib/loopforge/first-shift/kernel";
 import { project } from "@/lib/loopforge/first-shift/projection";
-import { useRun } from "@/components/loopforge/first-shift/useRun";
+import { useFirstTurnRun } from "@/components/loopforge/first-shift/useFirstTurnRun";
+import { useEffect, useReducer } from "react";
+import { initialState as turnInitial } from "@/lib/loopforge/first-turn/kernel";
+import type { PlayerView as TurnView } from "@/lib/loopforge/first-turn/contract";
 import type { PlayerView } from "@/lib/loopforge/first-shift/contract";
 import { prepareTheme, themeFiles } from "@/lib/loopforge/first-shift/themes";
-jest.mock("@/components/loopforge/first-shift/useRun");
+jest.mock("@/components/loopforge/first-shift/useFirstTurnRun");
 jest.mock("@/lib/loopforge/first-shift/themes", () => ({
   ...jest.requireActual("@/lib/loopforge/first-shift/themes"),
   prepareTheme: jest.fn(),
@@ -16,6 +19,9 @@ jest.mock("@/components/media/AssetImage", () => ({
   __esModule: true,
   default: () => <span aria-hidden="true" />,
 }));
+jest.mock("@/components/loopforge/first-shift/TurnFloor",()=>({__esModule:true,default:()=>null}));
+jest.mock("@/components/loopforge/first-shift/PhaseInterlude",()=>({__esModule:true,default:function Interlude({onComplete}:{onComplete:()=>void}){useEffect(onComplete,[onComplete]);return null;}}));
+let acknowledged=false, notify:()=>void=()=>{}, mockView:TurnView, mockError='', mockRecover=jest.fn();
 const media = firstShiftMedia(),
   send = jest.fn().mockResolvedValue(true),
   restart = jest.fn();
@@ -50,20 +56,11 @@ function resizeProducerConsole(width: number, height: number) {
   return console;
 }
 function setup(view: PlayerView, error = "") {
-  const recover = jest.fn();
-  jest
-    .mocked(useRun)
-    .mockReturnValue({
-      view,
-      pending: false,
-      error,
-      send,
-      recover,
-      restart,
-      download: jest.fn(),
-    });
-  return recover;
+  mockRecover=jest.fn();mockError=error;
+  mockView={...view,floor:{...turnInitial(7).floor,installed:['terminal','gate','drive'],stage:view.phase==='choose'&&!acknowledged?'mandate':'day'}};
+  act(()=>notify());return mockRecover;
 }
+
 beforeAll(() => {
   window.matchMedia = jest
     .fn()
@@ -88,6 +85,15 @@ beforeAll(() => {
 });
 beforeEach(() => {
   jest.clearAllMocks();
+  acknowledged=false;notify=()=>{};
+  jest.mocked(useFirstTurnRun).mockImplementation(function useMockRun(){
+    const [,redraw]=useReducer(n=>n+1,0);
+    useEffect(()=>{notify=redraw;return()=>{notify=()=>{};};},[]);
+    return {view:mockView,pending:false,error:mockError,recover:mockRecover,restart,download:jest.fn(),send:async c=>{
+      if(c.type==='acknowledge_mandate'){acknowledged=true;mockView={...mockView,floor:{...mockView.floor,stage:'day'}};notify();return true;}
+      return send(c);
+    }};
+  });
   resizeObservers.length = 0;
   localStorage.clear();
   window.history.replaceState({}, "", "/stepanoskin/loopforge/play");
@@ -130,12 +136,12 @@ it("requires the weekly quota acknowledgement before the roster and explicit app
   fireEvent.click(screen.getByRole("button", {name:"Receive the quota"}));
   expect(screen.getByText("Due at the end of Day 07")).toBeVisible();
   fireEvent.click(screen.getByRole("button", {name:"Acknowledge quota"}));
-  await waitFor(()=>expect(screen.getByRole("button", {name:"Choose adviser",exact:true})).toBeEnabled());
+  await waitFor(()=>expect(screen.getByRole("button", {name:"Choose adviser"})).toBeEnabled());
   expect(screen.getAllByText("No supervisor assigned")).toHaveLength(2);
   expect(screen.getAllByRole("img",{name:/unpowered camera/})).toHaveLength(4);
   expect(screen.queryByRole("group",{name:"Supervisor roster"})).not.toBeInTheDocument();
   expect(screen.queryByText(/Give me the line/)).not.toBeInTheDocument();
-  fireEvent.click(screen.getByRole("button",{name:"Choose adviser",exact:true}));
+  fireEvent.click(screen.getByRole("button",{name:"Choose adviser"}));
   const roster=screen.getByRole("group",{name:"Supervisor roster"});
   expect(within(roster).getAllByRole("button")).toHaveLength(5);
   expect(screen.getByRole("button",{name:"CATHEXIS — not arrived"})).toBeDisabled();

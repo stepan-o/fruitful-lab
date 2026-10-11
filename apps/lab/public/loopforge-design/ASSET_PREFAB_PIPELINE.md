@@ -1,5 +1,7 @@
 # Producing room assets and prefabs
 
+**Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate the active work area before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
+
 Updated 11 October 2026. Production pipeline proposal, with a native lobby kit now implemented. Companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md). The native kit is a first production path, not a functioning model-generation/export pipeline.
 
 ## What is missing

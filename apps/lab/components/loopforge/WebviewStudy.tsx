@@ -35,10 +35,13 @@ export default function WebviewStudy() {
     <div className={styles.materials}>
       {surfaces.map(([title,objects,reason])=><article key={title}><h3>{title}</h3><p>{objects}</p><small>{reason}</small></article>)}
     </div>
-    <p className={styles.status}><strong>Current:</strong> shared spatial data, five native claim desks, authored lobby surfaces, staged clerk animation and a removable feeder. The image pack uses immutable CDN delivery. <strong>Next:</strong> baked room lighting and the typed imported-model/GPU-texture pipeline. Worker wages and pay claims are design direction, not implemented economy.</p>
+    <p className={styles.status}><strong>Current:</strong> shared spatial data, five native claim desks, authored lobby surfaces, staged clerk animation and a removable feeder. The image pack uses immutable CDN delivery. <strong>Next:</strong> reconcile physical scale, readable work areas, grain and animation before extending the kit. Worker wages and pay claims are design direction, not implemented economy.</p>
+    <h2>Before the next build: scale, grain and motion</h2>
+    <p>The large halls stay. The next pass makes a readable work area the normal playing scale, with overview and close interaction serving different jobs. Shape, material wear and camera grain get separate treatment; movement follows real task progress. Visual identity and sustained performance must pass together on the same candidate.</p>
+    <p><Link href="/stepanoskin/loopforge/design#floor-scale" prefetch={false}>Review the factory-floor design pass →</Link></p>
     <h2>From artwork to a reusable desk</h2>
     <p>Reference sheet → modeled parts → aligned material maps → attachment points and animation → validated export → in-engine inspection → immutable release. The first native kit now demonstrates five desks, two seated clerks and a swappable feeder. Inspect the desk close up, orbit it and compare the hall with the original artwork.</p>
-    <p>The next engineering work is a typed model/texture manifest, prefab validation, a compatible Babylon loader, reproducible export tools and an inspection scene. Image generation can supply surface artwork; clean geometry, matching material maps and reliable worker contact need controlled authoring. We can begin with the existing concept art.</p>
+    <p>After the scale calibration, the engineering plan covers a typed model/texture manifest, prefab validation, a compatible Babylon loader, reproducible export tools and an inspection scene. Image generation can supply surface artwork; clean geometry, matching material maps and reliable worker contact need controlled authoring. We can begin with the existing concept art.</p>
     <h2>Babylon in practice</h2>
     <p>Three running-demo screenshots captured on 10 October 2026. Each answers a different production question. They are reference figures, not Loopforge assets or performance benchmarks.</p>
     <div className={styles.gallery}>{demos.map((demo,index)=><article key={demo.id}>
@@ -48,6 +51,7 @@ export default function WebviewStudy() {
     </article>)}</div>
     <p className={styles.status}>For a richer cinematic example, see <a href="https://editor.babylonjs.com/experiments/mansion" target="_blank" rel="noreferrer">Mansion by Julien Moreau / Babylon.js Editor</a>: staged light, authored surfaces and deliberate framing. Its desktop-oriented 4K textures and advanced effects are not our mobile budget. The <a href="https://www.babylonjs.com/community/" target="_blank" rel="noreferrer">official community gallery</a> provides more examples. Verify each technique in our pinned Babylon version; Loopforge’s concept art remains the artistic authority.</p>
     <nav className={styles.links} aria-label="Webview design records">
+      <a href="/loopforge-design/FACTORY_FLOOR_VISUAL_SCALE_PLAN.md">Scale, grain & motion build plan ↗</a>
       <a href="/loopforge-design/WEBVIEW_RENDERING_AND_ASSETS.md">Rendering & delivery contract ↗</a>
       <a href="/loopforge-design/LOBBY_ART_DIRECTION.md">Lobby art brief ↗</a>
       <a href="/loopforge-design/ASSET_PREFAB_PIPELINE.md">Asset & prefab production plan ↗</a>

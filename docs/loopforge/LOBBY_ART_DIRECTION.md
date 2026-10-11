@@ -1,5 +1,7 @@
 # Lobby: the wage-claim hall
 
+**Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate the active work area before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
+
 Updated 11 October 2026. Visual brief and first implemented calibration slice. Room layout is accepted; see the dated visual-pass record for validation evidence. Technical companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md).
 
 ## What the room says

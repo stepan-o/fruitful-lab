@@ -1,5 +1,7 @@
 # Webview: rendering, assets and delivery
 
+**Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate the active work area before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
+
 Updated 11 October 2026. Rendering direction and first native lobby kit; implementation status is explicit below. Reader chapter: `/stepanoskin/loopforge/architecture/webview`. First calibration case: [Lobby art direction](LOBBY_ART_DIRECTION.md).
 
 ## Decision

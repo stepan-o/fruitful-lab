@@ -606,4 +606,29 @@ architecture.splice(
     ],
   },
 );
+architecture.splice(architecture.findIndex(c => c.id === "scale-and-scheduling"), 0, {
+  id: "webview",
+  title: "Webview & rendering",
+  kicker: "The visible factory / frontend engineering",
+  heading: "Make the world tangible.\nKeep its truth independent.",
+  lead: "A live factory needs the depth of a navigable world and the character of its concept art. Authored surfaces, reusable 3D objects and selective live lighting give each room its own identity.",
+  art: "factory",
+  caption: "Original Loopforge lobby concept · the visual target for a room-specific hybrid rendering pass",
+  sections: [
+    { title: "One simulation, focused interfaces", body: "Next.js and React provide the console, briefings, records and accessible controls. Babylon.js 9.30.0 runs the separate commissioning study with a shared camera for construction and production. A versioned player projection feeds the viewer; rendering interpolates it. Meshes, light and asset identifiers never become authoritative worker state. These views are not yet joined into a complete economy." },
+    { title: "Spend geometry where depth matters", body: "Model silhouettes, walkable structure, objects workers touch and parts that cast important moving shadows. Paint wall wear, paper, fine wiring and the floor emblem onto surfaces fixed in world space. Use authored normal and roughness maps for shallow relief. The lobby’s modifiable pay-claim desks need real geometry and stable object identities; rows can share one carefully made kit." },
+    { title: "Bake atmosphere; animate the change", body: "Bake steady indirect light and fixed architectural shadow. Keep desk lamps, screens and selected event lights responsive. Moving or replaceable furniture must not leave a permanent shadow in the floor bake. Restrict live shadow casters to meaningful nearby geometry; paint and lighting must not count the same shadow twice. Large pipes need depth; tiny pipes can remain surface detail." },
+    { title: "The lobby makes an economy visible", body: "Workers complete paperwork here to claim pay for hours worked. They act autonomously; the player may eventually modify their workspaces. A queue, an unfinished claim or a returning worker can carry meaning without another mandatory minigame. Earned hours, claimed hours, approved pay and money received need separate records. The current fixture implements none of that settlement, so its next art pass must label any task demonstrations as staged." },
+    { title: "Version the whole room package", body: "Our existing pipeline publishes hashed image files and immutable manifests through the Vercel CDN, with a short-cached discovery pointer and retained releases. The next extension needs typed model and GPU-texture entries, dependencies, units, pivots, material slots, animation names and compatibility versions. GLB and KTX2 are proposed formats; neither is supported by the current media schema. Publish all dependencies before activating a complete room package." },
+    { title: "Loading and rendering are different budgets", body: "WebP lowers image transfer cost; it does not stay compressed in GPU memory. Evaluate KTX2 for room textures, with verified fallbacks, mipmaps and correct colour space. Load the entry room first and prepare the adjacent room before entry; do not fetch every high-detail room at startup. Share materials, cull by room or bay, instance repeated objects and keep per-frame transforms outside React. Thin-instance batches need spatial grouping because their visibility is evaluated together." },
+    { title: "Profile the frontend before scaling the backend", body: "At this stage, most optimization work belongs in the webview. Measure first useful frame, cold/warm transfer, texture memory, draw calls, shadow passes and frame-time tails while moving the camera and changing rooms. Previous study samples fell below a stable 30 fps on the available integrated GPU. The hybrid lobby must prove its quality and speed with 10 and 100 workers; compression or batching alone is not a passed performance gate." },
+  ],
+  principle: "Procedural assembly and motion; authored visual identity; simulation-owned consequence.",
+  sources: [
+    { label: "Babylon.js: baked room lighting", href: "https://doc.babylonjs.com/guidedLearning/lightmaps/" },
+    { label: "Babylon.js: thin instances and visibility tradeoffs", href: "https://doc.babylonjs.com/features/featuresDeepDive/mesh/copies/thinInstances/" },
+    { label: "Babylon.js: GPU-compressed KTX2 textures", href: "https://doc.babylonjs.com/features/featuresDeepDive/materials/using/ktx2Compression/" },
+    { label: "Blender: baking materials and lighting", href: "https://docs.blender.org/manual/en/latest/render/cycles/baking.html" },
+  ],
+});
 export const decks: Record<Deck, Chapter[]> = { overview, architecture };

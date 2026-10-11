@@ -1,0 +1,8 @@
+{
+  "pack": "loopforge-webview-references",
+  "assets": {
+    "espilit": {"kind":"image","source":"assets/sources/loopforge-webview-references/espilit.png","widths":[480,960,1280],"quality":83,"maxBytes":350000},
+    "helmet": {"kind":"image","source":"assets/sources/loopforge-webview-references/helmet.png","widths":[480,960,1280],"quality":83,"maxBytes":350000},
+    "v8": {"kind":"image","source":"assets/sources/loopforge-webview-references/v8.png","widths":[480,960,1280],"quality":83,"maxBytes":350000}
+  }
+}

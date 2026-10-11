@@ -1,5 +1,7 @@
 # Loopforge game design board
 
+9 October conveyor pass: **Conveyor mini-game** (`#conveyor`) adds eight reference games, three selectable original floor schematics, the proposed spatial production loop, machinery/policy branches, supervision and delegation, pacing, UI and kernel contracts, and playtest gates. `conveyor-proposal.json` is authoritative; `conveyor_proposal.py` renders the tab and `../CONVEYOR_MINIGAME_PROPOSAL.md`. `conveyor.js` switches authored comparisons only; it is not a simulation. Both complete reading copies and UI records include all alternatives. See `../CONVEYOR_STUDY_DELIVERY.md` for validation.
+
 8 October expression-first pass: **Player desires & scenarios** (`#player-desires`) adds the owner’s seven expression anchors, three research frameworks, thirteen games and their developers, a qualitative player-discussion sample for four close references, and seven proposed situations mapped to UI, feedback and causal support. `player-desires.json` is the authored source; `player_desires.py` renders the tab and the generated `../PLAYER_DESIRES_AND_SCENARIOS.md`. The game and UI reading copies contain the same record. No gameplay implementation or representative audience survey is claimed.
 
 Part 01 now tests four or five complete two-room days, roughly six to eight minutes, instead of the earlier three-day hypothesis. Exact pacing and funding remain open; expression, distinct payoffs and readiness determine the test. See the new tab before designing further screens or extending the simulation.

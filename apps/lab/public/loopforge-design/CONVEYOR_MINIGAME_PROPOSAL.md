@@ -1,0 +1,469 @@
+# Conveyor mini-game proposal
+
+10 October 2026
+
+*Generated from game-design/conveyor-proposal.json.*
+
+Design proposal + separate playable commissioning study. The full conveyor economy, spatial optimization and policies remain proposed.
+
+## Build a line. Decide what it costs to keep it moving.
+
+The conveyor is a small spatial factory inside the larger social factory. Build a working arrangement, watch individual robots operate it, improve the constraint, then live with the workforce and authority that arrangement creates.
+
+Owner direction: each room has its own operating puzzle within a common cinematic 3D factory. Machinery is purchased and physically installed; space affects efficiency and danger. A shared policy catalog applies per room. Supervisors change performance, behaviour and the amount of attention a room needs.
+
+**Recommendation.** Build first. Arrive through the Lobby at night, place two Security items in fixed sockets, then install the first Conveyor element in Lattice Forge. Morning introduces leadership, the adviser and assignments; operation tests what was built. Later nights let the player improve or keep the arrangement. Exact starter hardware remains a proposal.
+
+## Where the fun comes from
+
+## Continuous first-floor plan
+
+![Top-down factory plan](/loopforge-design/factory-floor-plan.193f23a74311.svg)
+
+Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. Hatching marks pipe walls. Generated from the runtime spatial authority.
+
+**I made this work.** A queue shrinks because of a change I made. The limiting step moves somewhere else, giving me a new problem I can actually see.
+
+**This is my kind of factory.** Compact and aggressive, orderly and protected, or built around a favourite supervisor. Several arrangements work; each leaves different costs and people behind.
+
+**I know when to intervene.** I can hold the feed, change pace or authorize a response because I recognize a developing situation. Successful restraint can be as satisfying as a record batch.
+
+**It can run without me.** A stable line and a trusted operator free my attention for a new room. Delegation is a result of good design and a relationship, not an automatic loss of gameplay.
+
+## Two flows share one floor
+
+**Security → workers.** Clearance affects when particular workers reach the floor and how reliably they take assigned posts. Faster entry is useful; incorrect deployment can leave an expensive station waiting.
+
+**Intake → work in progress.** Accept brain workpieces into a finite buffer. A feed hold stops adding work without erasing what is already on the belt. Do not add a raw-material currency yet.
+
+**Assembly → completed brains.** Machines and workers process individual batches. A faster intake cannot compensate for an assembly station that is occupied, unattended or blocked.
+
+**Outtake → completed basic robots.** Finish and validate output against the same production contract. The art establishes brain handling; the final brain-to-robot activation step needs a specific visual treatment, not an assumed existing asset.
+
+**Rejects → waste.** Rejected work goes to the existing melting route. Brewery recovery becomes available later. Creating extra waste must not be a universally profitable shortcut.
+
+**Daily allocation → next shift.** Permanently commit completed robots to the weekly quota or retain them. Retained workers join next shift; sending output away does not secretly add it to the factory's population.
+
+## Three possible layouts
+
+### 01 · Compact line
+
+Save space. Accept exposure.
+
+**What it buys.** Short worker trips and little occupied floor. Leaves room and cash for the Theatre or later machinery.
+
+**What it costs.** A shared crossing between workers and the moving line couples hurried movement to hazard exposure. One blockage can obstruct several jobs.
+
+**What the player sees.** Workers wait at the crossing under orderly operation; under pressure some cross between loads. A small hesitation can be harmless until traffic grows.
+
+**Useful response.** Use slower feed or protected crossing rules now; later fund a separated aisle. An accident is possible, not compulsory.
+
+**Who changes it.** LIMEN enforces clearance and pacing. STILETTO can exploit the short route, with more missed checks and disordered arrivals.
+
+**What carries forward.** Early savings can open the Theatre sooner. Heavy use can also carry worn equipment and stressed witnesses into the next stage.
+
+### 02 · Protected aisle
+
+Spend room to protect flow.
+
+**What it buys.** A dedicated worker route avoids the main belt crossing and makes blocked access easy to diagnose. It is easier to operate predictably.
+
+**What it costs.** Guarding and aisle clearance consume money and floor area. Longer walking and material transit can delay the first completed batch.
+
+**What the player sees.** Workers use the aisle; stations wait if the longer trip matters. Material queues remain visible even when nobody is in immediate danger.
+
+**Useful response.** Improve the true slow station or add a local work position; do not speed the entire belt merely because a long route looks inefficient.
+
+**Who changes it.** LIMEN benefits from an arrangement that makes compliance practical. STILETTO may dislike its pace, but cannot walk through a physical guard.
+
+**What carries forward.** More reliable operation can preserve the workforce. The investment competes with new-room funding; protection is not free output.
+
+### 03 · Parallel assembly
+
+More capacity. More coordination.
+
+**What it buys.** A purchased second assembly cell can raise sustained output when assembly is the limiting step and workers can service both cells.
+
+**What it costs.** A splitter, merge and extra cell use space and installation time. Reaching Cell A from the lower aisle adds a service crossing. Outtake may become the new bottleneck; extra machines without workers can sit idle.
+
+**What the player sees.** Loads alternate between cells, then bunch at the merge. Workers yield at the service crossing; a worker at the wrong post creates a visibly uneven line rather than a hidden global penalty.
+
+**Useful response.** Hold intake, correct the operating arrangement or upgrade outtake next. A buffer buys time; it does not cure insufficient sustained outtake capacity.
+
+**Who changes it.** STILETTO can push a well-supported expansion. LIMEN can make merge discipline reliable. Neither grants missing machinery or invents workers.
+
+**What carries forward.** Retaining the extra output grows the workforce faster. Before actual Theatre participation, that growth also enlarges the unindoctrinated cohort.
+
+## The first floor · calibrated layout
+
+The first floor fills a 280 × 200 one-metre plan. Rooms have been repacked instead of surrounding the old rectangles with large filler blocks. Every hall uses the tallest first-floor cornice: 15 m. Workers and equipment keep their approved scale. Only Security and Conveyor are unlocked.
+
+**Northern wings.** Weaving Gallery at the northwest; Cognitive Substrate Brewery in the north centre; Burn-in Theatre at the northeast. All three are sealed on turn one.
+
+**Entry and production.** Lobby → Dispatch → Security remains the arrival route. Conveyor occupies the southwest production bay; Cortex Assembly sits to its east. Theatre now fills the northeast rectangle; the enlarged Logistics hall fills the southeast rectangle. Logistics keeps the shipping support role and is not a seventh managed room.
+
+**One continuous building.** The 41,536 m² footprint contains 40,032 m² of rooms, 984 m² of pipe walls and 520 m² of passages outside rooms. Four-metre process walls carry pipes around Brewery and Cortex. Broad empty infill blocks are removed; the stepped outside silhouette remains.
+
+**Security → Theatre.** A dedicated 8 m-wide corridor runs east from Security to Theatre, between Brewery and Cortex. It is part of the navigation and direct-contact graph, with both endpoint rooms required open. It stays sealed on turn one. A future encounter still needs shifts, motives and event conditions.
+
+**A real shared boundary.** Security and Conveyor have a six-tile architectural opening with a smaller clearance lane. Their assigned supervisors can therefore become eligible for direct encounters. Being able to walk through another room to reach someone is not the same as being their neighbour. Adjacency permits an event; motives, history and current conditions must still explain it.
+
+**What the player sees.** Work area frames a local installation closely. Whole room reveals its expansion capacity; Overview frames the floor; Floor plan changes rooms. Later wings stay covered and named in the normal opening. Build and production share the same world and camera.
+
+**What the engine owns.** Room IDs, tile footprints, portal spans, unlock state and valid worker routes are plain deterministic data. Individual workers now carry integer positions and room identity. The renderer follows these records rather than inventing a movement loop. The separate building envelope describes architecture; only existing room tiles and portals are walkable.
+
+**Source reconciliation.** The old annotated plan and Sim4 rectangles anchor geography. The current owner-directed refit adjusts room bounds and door positions. All thirteen prior connections remain; the added Security–Theatre corridor brings the total to fourteen. The original Sim4 rectangles remain recorded as provenance, not current room dimensions.
+
+**Boundary of this delivery.** Full layout, opening locks, commissioning flow and staged procedural equipment in all six rooms are implemented. Equipment study is a separate inspection mode; it neither purchases equipment nor unlocks later rooms. Production economics, free placement and supervisor encounter execution remain future work.
+
+## Working scale · equipment and encounters
+
+The previous scale still read as a display of equipment. Rooms now accommodate future building: each has more than 35% explicitly reserved clear construction ground, plus its initial installation, circulation and service spaces. Close working views keep workers readable; room views show where new production can go.
+
+**Security · 44 × 32 m.** A clearance lane, records desk and holding cage leave a checkpoint where LIMEN and STILETTO can collide in front of waiting workers.
+
+**Lattice Forge · 80 × 56 m.** The 25 m starter chain occupies one cell of an 80 × 56 m hall. Four empty construction plots reserve 2,068 m² for extra feeds, buffers, longer lines and parallel production. A separate six-metre delivery aisle connects across the hall. The belt stays 1.43 m high and workers about 1.9 m tall.
+
+**Brewery · 96 × 80 m.** The vat, agitators, filters and controls occupy an initial process cell. Empty feed, filtration and process expansion plots surround it. Maintenance and gathering space remain clear.
+
+**Weaving · 72 × 64 m.** Paired looms and tall neural columns frame a raised harmonic instrument. Thrum has a central listening space; side aisles serve the machinery.
+
+**Theatre · 68 × 88 m.** Sixteen conditioning cradles face three projection screens. Cathexis has a podium, a shared forecourt and side access, so conditioning and defiance can use the same physical layout.
+
+**Cortex · 64 × 92 m.** A major assembly chamber, twin cooling banks, feed conveyor and controls provide multiple technician positions. Specific supervisor outcomes are still design work.
+
+**Builder contract.** Equipment footprints, operator positions, encounter clearances, construction reserves and delivery aisles are typed records outside the renderer. Eighteen empty plots across the six rooms are checked against equipment and circulation. Their outlines are a planning study, not restrictive placement slots or purchased equipment.
+
+**Rendering budget.** Room chunks batch static geometry by material. A repeated floor texture supplies metre-scale detail without thousands of tile meshes. Workers share GPU geometry; their individual state stays in the deterministic host.
+
+## Night zero: enter, build, bring it to life
+
+Owner direction: the build phase precedes the morning brief and supervisor assignments. The opening is a short spatial tutorial; subsequent nights reuse its controls for actual construction choices. This replaces the proposed console-first entry, not the currently implemented runtime.
+
+**Lobby → Security.** Begin in the silent factory through the Lobby. Guide one camera movement toward Security, using the old map’s Lobby–Dispatch–Security connection. Dispatch is a passage, not a third managed room or an extra lesson. Camera guidance remains replayable and skippable.
+
+**Two placements, one lesson at a time.** Show one item and one valid socket, then the second. Proposed props: a clearance terminal and an access gate, grounded in the original paperwork-and-intake art. The terminal wakes; the installed gate cycles. These are standard installation actions, not repair, and imply no preassigned supervisor. Exact item identities remain open.
+
+**Security → Lattice Forge.** Follow the connected floor back through Dispatch into the old map’s Neural Lattice area, adapted as Lattice Forge. Keep spatial continuity. The old map supplies a rough layout reference, not a ready navigation mesh or a mandate to keep all its room names.
+
+**The first piece of the line.** Place the first Conveyor element and visibly commission it. Proposed first object: the intake/feed-drive unit. Its mechanism turns and a test cradle moves; no completed robot or quota credit appears from an incomplete chain. The minimum intake–assembly–outtake path must be ready before the production shift can start. How much is inherited and how much the player assembles remains to decide.
+
+**Morning gives the machinery a human problem.** Answer leadership and receive the weekly quota. Choose LIMEN or STILETTO, hear their interpretation of the prepared factory, then approve or override assignments. During operation, Security’s gate and the new Conveyor element visibly affect the same workers. Adviser selection is the first leadership fork, not the first input in the game.
+
+**Safe teaching, real ownership.** Propose a supplied starter kit for the required placements, so the guided lesson cannot consume expansion money and strand the opening. No quota clock runs while learning the camera or reading placement help. Once basic placement is understood, later construction introduces cash, footprint and time tradeoffs. Do not disguise the fixed Security sockets as a strategic choice.
+
+## One factory view: night construction and daily transitions
+
+Navigation belongs to the factory view. Build mode adds placement tools to that same camera; leaving it never swaps maps or discards installed equipment. Production is stopped at night.
+
+**The familiar construction loop.** Enter Build → select the next machine → inspect its ghost at the permitted socket → confirm. Escape clears the selection, then exits the tool. A camera drag must never place equipment. The first two Security placements teach the controls; fitting the conveyor drive reuses them.
+
+**Shared map navigation.** Orbit, pan, zoom and room focus are identical during building and production. Preserve the camera when entering or leaving the tool. Focus a room when the player explicitly selects its equipment; do not repeatedly pull their camera back.
+
+**The factory day.** Default world schedule: eighteen hours on shift, six hours charging. Faster chargers are a future research option. Night is a paused construction/planning window, not a six-hour real-time wait. The complete game retains morning leadership/adviser interfaces.
+
+**Time-change interludes.** Night → Morning → Shift start → Night. Generated art fills the screen with just the day and phase. Each card automatically disappears after three seconds. Suspend the local simulation while the card is showing; never advance a private authoritative simulation merely because an animation finished.
+
+**Art scale.** Use the old factory overview, entrance, lobby and Lattice Forge as references: a compact factory, fenced yard, low workshops and crowded rooms. Avoid monumental robot-city skylines and cathedral charging halls. The world is global; this workplace is in a town.
+
+**What the playable study proves.** The factory-study route implements three ordered installations, the same procedural view in both modes, ten or one hundred individually tracked test workers, an uneven conveyor, pace and obstruction controls, a compressed test shift and automatic return to night. It does not implement the economy, adviser decisions, injuries, research, charging simulation or the full onboarding story.
+
+## Four learning loops, beginning with building
+
+Apply Daniel Cook’s loops framework explicitly: the player has an expectation, acts, sees a system response and revises that expectation. The night/morning/day sequence schedules these loops; it is not itself evidence of learning or fun.
+
+**Build → test → redesign.** Expectation: this placement or machine will solve the constraint. Build at night; operate it next shift; see queues, walking and output change. Use that evidence next night. A working arrangement can be kept. The Security lesson introduces the action through a one-time arc; the repeatable loop begins when placement has alternatives and consequences.
+
+**Observe → control → observe again.** Expectation: holding feed or changing pace will relieve this pressure. Intervene during the shift; watch in-flight work and individual workers respond; adjust only if the new situation warrants it. The response must be visible before the day ends. A stable line can remain stable.
+
+**Back a supervisor → delegate → reassess trust.** Expectation: this supervisor can make the prepared factory work in the way I want. Appoint and assign them; see procedures, initiatives and incident responses; carry that evidence and relationship history into the next appointment. Their recommendation is biased advice, not an omniscient optimum.
+
+**Retain or deliver → inherit capacity and obligation → choose again.** Expectation: retaining this batch will improve tomorrow enough to justify delaying quota progress. Commit output permanently; see which real posts those workers can serve, what traffic they add and what remains due. The next allocation uses that evidence. More workers cannot bypass a machine constraint.
+
+**How the loops meet.** A new assembly cell changes the floor offered to the adviser. Their deployment changes the queue the player controls. Retaining output changes traffic and the next construction need. Each loop changes the conditions of the others; new rooms expand them after the player has something worth delegating.
+
+## What the player touches
+
+Construction is deliberate; operation is readable and mostly continuous. The challenge is choosing useful interventions, not clicking once per brain.
+
+**First entry.** First entry: Lobby → Security setup → Lattice Forge setup at night → morning leadership call → adviser selection → brief and assignments → operation. Security teaches placement with two fixed sockets. No supervisor has an assignment before morning orders are accepted.
+
+**Build / inspect.** At night, select machinery in the cinematic floor view. Preview footprint, ports, worker access, money and completion time before committing. During the shift, inspect and operate the installed chain; routine reconstruction belongs to the next night. The UI pause is free reading time, not simulated construction time.
+
+**During operation.** Initial controls: line pace and intake hold/resume. They affect future work, have real mechanical response time and preserve in-flight work. No rhythmic reset bonus, free repair, precision timing reward or per-station workforce sliders.
+
+**Incident decisions.** The daily adviser proposes responses everywhere and automatically resolves incidents in their assigned room. Elsewhere the player can accept or override. Routine flow controls remain available; once an incident is latched, pace changes cannot cancel its committed outcome.
+
+**Change a working plan.** Routine changes inside the accepted operating range are not constant personal insults. A material departure from a supervisor's plan is an attributable order with a specific reaction if they learn about it. Show that commitment before acceptance.
+
+**End the day.** Dispatch shows what actually finished, what is still in progress, injuries/losses, known wear and the next constraint. Outstanding construction and in-flight work persist; do not conjure a clean line between days.
+
+## Space must earn its complexity
+
+Use a small set of snap-fit machine footprints and explicit belt and walking connections. This is authored floor planning with room to experiment, not unrestricted civil engineering.
+
+**Hard placement constraints.** No overlapping machines, disconnected required ports, sealed exits or completely unreachable jobs. Show the invalid connection at the placement ghost. Impossible arrangements are blocked; legal but hazardous arrangements remain a choice.
+
+**Travel and throughput.** Belt length consumes space and increases transit time and work in progress. It does not automatically reduce steady throughput. Walking, blocked access, finite buffers and the slowest sustained processing step determine whether extra length actually hurts this shift.
+
+**Access and crossings.** Service sides need reachable standing positions. Shared aisles create queues; controlled crossings consume time; unprotected crossings create exposure when workers and moving loads coincide. Discipline changes route and procedure adherence, not a universal speed multiplier.
+
+**Readable construction.** At night, preview the footprint, connections and expected readiness. Standard bolt-on installations can use a commissioning crew before Witch arrives; the exact workforce/time rule remains proposed. Installation does not permit technical repairs or reset existing condition.
+
+**Freedom with commitment.** Edit ghosts freely before confirmation. Once installed, moving or removing machinery requires a stopped affected segment and time; refund and relocation costs need balance testing. Repositioning cannot reset wear, history or queued incidents.
+
+**Bounded growth.** Commission one basic line with a few spare bays during the opening. Later prefer one meaningful branch, buffer or crossing improvement over many nearly identical machines. Shared room power becomes a resource only if later puzzles justify it.
+
+## Machinery and policy: two kinds of development
+
+The room inspector combines physical projects and operating commitments. Their requirements and consequences remain distinct.
+
+**Progression structure.** Guided Security installation → first Conveyor element → commission the minimum working chain → operate and discover a constraint → fund and install a useful improvement on a later night. Feeder, assembly, outtake and protection remain alternative branches. Theatre commissioning follows mastery and funding, not purchase of every upgrade. Engineering projects remain capability-gated.
+
+**Intake branch.** Metered feeder or small buffer. Smooths uneven arrival and limits flooding of downstream jobs. Costs money, footprint and commissioning time; it does not increase assembly capacity.
+
+**Assembly branch.** Precision fixture or a second cell. One improves reliable processing; the other adds parallel capacity with access and merge requirements. Exact prices, speed and reject effects are unbalanced hypotheses.
+
+**Outtake branch.** Handling/activation equipment improves the finishing step. Valuable only when this is a real constraint. A striking new machine should visibly change the floor and worker tasks.
+
+**Safety branch.** Guards, marked crossings or separation barriers change physical routes and exposure. A procedure is weaker when the floor makes it difficult to follow; hardware and policy can reinforce each other.
+
+**Shared policy: checks.** Verify before action / abbreviated checks. Applied per room: clearance at Security, intake/transfer checks on Conveyor, process checks in later rooms. Same principle, explicit room-specific task effects; no invented effect where there is no relevant task.
+
+**Shared policy: work rhythm.** Protected pauses / sustained push. Trades recovery and orderly handover against operating opportunity. Stress, missed breaks and equipment load are separate effects. Thrum can later make relief more powerful and discipline less reliable.
+
+**Shared policy: incident disclosure.** Full account / restricted briefing. Changes who receives which report, never the physical accident. Witnesses, injuries and rumours can defeat concealment. Existing accident-response and information mechanics supply the consequence.
+
+**Commitment rules.** Policies persist until changed. Proposed initial rule: choose room policy during planning; emergency changes count as explicit orders. Briefing time, promises and remembered reversals create cost; do not add policy points as a second currency. Eligibility comes from relevant equipment, capability or events.
+
+**The Theatre competition.** Upgrades compete directly with new-room funding. A bigger retained workforce before conditioning can be immediately useful and politically consequential later. Opening the Theatre alone does not condition anyone; actual participation must occur.
+
+## Money, time and a reason to stop expanding
+
+Start with money and workers. Batches, machine wear and floor space are operational state, not a shopping list of currencies.
+
+**Proposed funding bridge.** Opening cash plus contract progress payments for accepted daily quota deliveries. This makes early machinery versus Theatre investment possible before the weekly deadline. It is a proposal: payment timing, prices and excess deliveries remain unapproved and must be tested.
+
+**The allocation tradeoff.** Delivered output advances the non-recallable weekly obligation and, under the payment proposal, funds investment. Retained output increases next-shift capacity and foregoes that immediate payment. Do not add a third sale destination or let the same robot earn both benefits.
+
+**Installation is a production decision.** Construction is scheduled at night before the morning brief. Proposed rule: finite simulated night capacity; projects that fit are ready for morning, while unfinished work leaves affected equipment unavailable. Preview completion and any next-shift downtime. Pausing to place or read consumes no work time. Standard installation cannot restore damaged equipment for free; engineering repair still begins with Witch.
+
+**Wear before repairs.** Pace, loads and accidents accumulate equipment condition changes in Parts 01–02. Prevention and reduced load can limit further damage. Only engineering capability from Witch in Part 03 enables repair; neither a cash button nor a new policy restores damage.
+
+**Economy guardrail.** The opening must remain viable after a modest, warned mistake. No repeated cash-free liquidation, overnight full restoration or mandatory early upgrade that prevents meeting the quota. Test both a protected line and a productive risk-taking line through the first unlock.
+
+## Supervisors make automation personal
+
+Separate the daily adviser, the local operator and the player's current camera. They can be three different places in the same factory.
+
+**Local operation.** Workers follow persistent job rules; a supervisor supplies competence, procedures, interventions and delegation capability. The player does not carry every brain. An unattended room follows its last valid plan where allowed; special tasks may require a qualified operator.
+
+**LIMEN.** Makes controlled access and orderly transfers dependable. Slow operation can reduce exposure; it can also miss opportunity or create queues elsewhere. Their value rises when an expanded layout needs coordination, not merely a speed penalty.
+
+**STILETTO.** Extracts output through rapid starts, abbreviated checks and decisive handling. Works well with spare capacity and a coherent line; congestion and disordered deployment can turn urgency against the factory.
+
+**Later characters.** Cathexis can influence workers without becoming a competent engineer. Witch diagnoses and repairs but has competing Brewery work. Thrum can relieve stress while loosening discipline. Exact room-specific actions remain grounded in the supervisor atlas, not interchangeable stat buffs.
+
+**Five rooms.** One common clock, one focused operating view. Previously configured rooms continue. Summaries show stable / constrained / needs a decision and the affected people. Related events aggregate; consequential choices pause. Do not stack five compulsory timed mini-games.
+
+**Priority and authority.** The adviser chooses a priority; the player can override placements and room orders, not select a secret optimizer objective for them. Default plans come from their permitted beliefs and motives. Explain the recommendation in character, with a logged internal cause.
+
+**Delegation is testable.** A sound line should complete an ordinary day while the player inspects another room. Attention should return for a meaningful change, a new opportunity or an incident—not because a hidden timer punishes looking away.
+
+## Feedback at the scale of a worker
+
+Let the player see why the queue exists before opening a number panel. Inspection supplies evidence; it should not be necessary to notice trouble.
+
+**Flow.** Empty cradles, waiting batches, idle tools and workers travelling to a post distinguish starvation, processing and blockage. A selected batch can reveal where it is waiting and for what.
+
+**Stress and discipline.** The same named robot hesitates, misses a handover, takes an unauthorized break or ignores a marked route when its state and action selection warrant it. Posture and behaviour are signals, not exact disclosure of every private stat.
+
+**Risk before injury.** Crowded crossings, repeated near misses, increasing vibration and hurried intervention show growing exposure. Some apparent risks remain tolerable; an accident is not owed because a warning appeared.
+
+**Confirmed events.** A finished unit triggers a bounded green light impulse; an accident triggers red; attention uses ember. Sparse cyan motion supports idle ambience. Batch nearby completions into readable pulses rather than flashing at every tick.
+
+**Consequences and provenance.** A hurt worker leaves a real empty post; witnesses remember the event; access to the report determines supervisor reactions. Cinematics and aftermath art attach to those same IDs and events. No decorative accident disconnected from the simulation.
+
+**Delayed cost.** Retained workers keep production origin, actual conditioning history, policy exposure, stress and witnessed events. Brain 2.0 can later reveal that history. A supervisor may hint earlier if they have learned it and choose to speak.
+
+## Three situations worth playing
+
+Use the same starting resources and a recorded seed when comparing approaches. These are fixtures to test agency, not scripted endings.
+
+**The queue moved.** A bought assembly cell works beautifully—until outtake fills. Hold the feed and accept a slower day, fund outtake, or keep pushing toward the deadline. Success means understanding and changing the constraint; a larger queue alone is not failure.
+
+**It still seems fine.** A compact crossing handles the opening workforce. Retaining more robots shortens one delay but creates foot traffic. Keep the profitable arrangement with stricter procedure, spend floor space on separation, or accept bounded risk. Physical danger and social reaction follow actual exposure and witnesses.
+
+**The line I can leave.** The Theatre is ready. A stable Conveyor runs under a supervisor while the player focuses on Cathexis. Rerouting the best operator, changing policy or postponing expansion each creates a different inheritance. The new room must add a choice rather than double the chore count.
+
+## One-minute rhythm and interface jobs
+
+Keep the whole routine day near one minute; heavier days can use two to three. The following is a playtest budget, not a timer imposed on reading.
+
+**Routine day · about 60 seconds.** Night review/build decision 10s → morning adviser and brief 15s → approval 5s → watch and operate 20s → allocation/result 10s. A working layout can be retained immediately. These are test budgets; heavy construction, onboarding and weekly calls use the longer allowance. Count them when measuring entry-to-first-production time; no response timer punishes reading.
+
+**Producer console.** Communications, six-room summary and navigation. In the next opening it follows night setup and receives the morning leadership call before adviser selection. The currently implemented prototype still starts here; this study does not change runtime entry.
+
+**Cinematic factory.** Shared spatial world for watching and operating. Select a room or object without changing simulation ownership. Room puzzles use the same visual language, navigation and event feedback.
+
+**Room inspector / build mode.** Focused machinery, layout and policies. Contextual overlay for one object; full usable floor for construction. On small screens use a focused room and a bottom sheet, not a shrunken six-room editor.
+
+**Adviser, incident and dispatch.** Dedicated interfaces keep choices intelligible. Optional explanation is inspectable; don't embed a permanent tutorial paragraph over machinery. Decisions and explicit planning pause; camera changes do not.
+
+**Art needed.** The Lobby and Security references ground the arrival. Add empty/installed Security sockets, terminal and gate states, connectable Lattice Forge machines, first-commissioning animation and worker task clips. Existing painted art supplies identity; the old tile map supplies rough spatial relationships. Neither is a finished modular 3D kit.
+
+## Engine contract: complex truth, legible surface
+
+A common room-puzzle contract lets later rooms differ without binding simulation to a renderer or an LLM. This describes the next kernel extension, not the current prototype's feature set.
+
+**Data.** Stable IDs for rooms, machines, workers, batches and construction jobs. Explicit component records for footprint/ports, routes, queue/process state, condition, capability, stress, discipline, belief and knowledge. Counts remain projections of actual workers.
+
+**Commands.** Propose/commit construction during the night phase; complete validated installation jobs; acknowledge the morning mandate; accept adviser assignments; control flow and resolve authorized incidents. Validate phase, funds, connectivity, capability, authority and stale state. Tutorial highlighting and camera motion cannot complete a build or advance the simulation.
+
+**Ticks.** Fixed simulation steps resolve access, worker tasks, processing, transfers, wear/exposure and supervisor action in a documented order. Use stable iteration and named seeded random streams. Log accident draws and causes; rendering frame rate must never change outcomes.
+
+**Room modules.** Each puzzle supplies task/recipe definitions, valid machinery, policy applicability and supervisor actions. Shared movement, construction, workforce, knowledge and event systems avoid five incompatible mini-engines. Cross-room flows and global quota use one authoritative state.
+
+**Events and KVP.** Snapshots/diffs carry knowledge-filtered public state plus semantic events with IDs, ticks and causes. World positions and queues require an explicit protocol version. Renderers interpolate between accepted states; animation completions cannot produce robots or clear accidents.
+
+**BDI and models.** Supervisors act from permitted observations, beliefs, priorities and commitments. Log why a plan or refusal was selected. First compare a deterministic baseline. A model may supply bounded tested interpretations or characterful structured speech; it cannot silently optimize from hidden truth or stall a tick.
+
+**Faithful abstraction.** Offscreen rooms follow the same rules. Any future aggregate fast path must preserve relevant worker outcomes and be checked against detailed execution. Changing camera, skin or renderer cannot change a shift.
+
+## Prototype gate before adding more mini-games
+
+Build the smallest comparison that can disprove the idea. The owner remains the first judge of whether it is enjoyable.
+
+**Playable scope.** Night-zero Lobby arrival, two guided Security placements, the first Conveyor installation and minimum-chain commissioning; then the morning briefing and two-supervisor operating loop. Carry layout, work in progress and people through at least two nights and days, with one upgrade branch and one route alternative.
+
+**Cause and control.** Can the player identify the actual constraint from workers and machinery before opening stats, and improve it with an intentional change? Can the replay explain a failure without attributing everything to a hidden random roll?
+
+**Different successful factories.** Protected and aggressive arrangements can both reach the first unlock; they differ in cash, retained workforce, condition and relationship history. No single supervisor or upgrade should dominate every tested starting condition.
+
+**Attention.** An established room operates while another is inspected. A five-room load fixture tests summaries and interruption frequency; it does not claim five finished mini-games. If repeated babysitting is necessary, redesign delegation before adding content.
+
+**Pacing and access.** Can the player make a physical part of the factory work before the adviser lesson, then recognize it operating under that adviser? Measure the guided entry separately and include it in first-day elapsed time. Test touch, keyboard, zoom, reduced motion and camera guidance; routine days still target about one minute.
+
+**Architecture.** Same seed and accepted commands reproduce the same state and event sequence headlessly and across camera changes. Invalid placement, unauthorized incident response and double-spent quota output are rejected. Installation preserves damage and worker history.
+
+**Open before balancing.** Confirm the two Security props, first Conveyor module and minimum starting chain. Choose starter funding, floor scale, footprints and night construction duration; decide contract payment timing and policy-reversal costs. Test whether pace/feed controls sustain useful agency without forced emergencies.
+
+## Reference study
+
+Sources checked 9 October 2026. The observations above come from developers or official descriptions; the mappings and recommendations are Loopforge design inferences. They are not audience research or evidence that this combination is already fun. No competitor screenshots or other new third-party artwork are republished; the floor diagrams are original explanatory schematics, not proposed game art.
+
+### Production Line
+
+Cliff Harris describes an optimization game whose bottleneck changes as the product and process change. The value is in finding a better arrangement and investing for future gains.
+
+[Developer interview](https://www.gamedeveloper.com/business/making-cars-and-writing-code-i-production-line-i-s-refreshing-dev-approach)
+
+**Borrow for Loopforge.** Moving constraints, visibly installed specialist machines and capital competing with expansion.
+
+**Boundary / counterexample.** Do not import its entire car-part economy. Loopforge needs people and authority to alter the same line, not merely a larger optimization spreadsheet.
+
+### Factorio
+
+In FFF-129, the developers describe recurring upkeep as a source of stagnation and discuss shifting effort toward more lasting construction. FFF-405 shows instrumentation and logistics controls being redesigned around readable factory context.
+
+[Developer diary · FFF-129](https://www.factorio.com/blog/post/fff-129)
+
+[Developer diary · FFF-405](https://www.factorio.com/blog/post/fff-405)
+
+**Borrow for Loopforge.** A solved room should stay solved long enough to enjoy and delegate it. Instruments belong beside the visible process they explain.
+
+**Boundary / counterexample.** These are dated design accounts, not proof that Factorio's full scale or logistics depth fits a one-minute Loopforge day.
+
+### Infinifactory
+
+Zachtronics frames the game as designing, running and optimizing factories in three dimensions, with performance comparisons after a solution works.
+
+[Official game description](https://www.zachtronics.com/infinifactory/)
+
+**Borrow for Loopforge.** Separate making the chain function from making it better. Let geometry, workers and actual flow explain the difference between two layouts.
+
+**Boundary / counterexample.** Do not make a perfect single solution or score histogram the purpose of Loopforge. Different social and operating outcomes should remain valuable.
+
+### Against the Storm
+
+The Rainpunk redesign replaced a broadly passive production burden with greater control over when to take power and its associated blight exposure.
+
+[Developer update · January 2023](https://eremitegames.com/rainpunk-update-1/)
+
+**Borrow for Loopforge.** Let the player choose to push a capable line and see why the added exposure exists. Risk should buy a real benefit rather than tax every action equally.
+
+**Boundary / counterexample.** Its fuel and blight systems do not map literally. Use existing wear, worker stress and hazardous tasks before inventing another resource.
+
+### Frostpunk
+
+The designers describe the Book of Laws evolving toward player-initiated decisions, with small commitments accumulating into a changed society.
+
+[Designer interview](https://www.pcgamer.com/frostpunk-developers-on-hope-misery-and-the-ultimately-terrifying-book-of-laws/)
+
+**Borrow for Loopforge.** Room policies should express leadership and leave a remembered history. Hardware and policy are complementary ways to change work.
+
+**Boundary / counterexample.** A room rule is not automatically a city law. Avoid a forced morality ladder where each efficient choice must be cruel or every reversal instantly resets behaviour.
+
+### IXION
+
+The official description connects six unlockable sectors, population trust, infrastructure development and emergencies within one station.
+
+[Official game description](https://store.steampowered.com/app/1113120/IXION/)
+
+**Borrow for Loopforge.** Use a shared factory with distinct room jobs and persistent local operating rules. The owner’s Loopforge direction is a reusable policy catalog applied per room.
+
+**Boundary / counterexample.** This source does not establish an exact policy implementation to copy. Loopforge policy effects must be defined against its own tasks and workers, not inferred from an IXION theme.
+
+### Mini Motorways
+
+Peter Curry describes showing network health at a glance and treating audio as information. The developer also discusses deterministic simulation for reproducible behaviour and debugging.
+
+[Developer interview](https://www.gamedeveloper.com/design/turning-road-noise-into-music-mini-motorways)
+
+**Borrow for Loopforge.** Queues, empty stations and work rhythms communicate the constraint before a diagnostic panel. Deterministic traces let us connect the visible problem to a cause.
+
+**Boundary / counterexample.** Readable traffic alone is insufficient: Loopforge workers have capabilities, private states and reasons to depart from a plan.
+
+### Overcooked — useful counterexample
+
+Phil Duncan explains how level geometry, handovers and constrained routes generate cooperation and disrupt static role assignments.
+
+[Developer design deep dive](https://www.gamedeveloper.com/design/game-design-deep-dive-building-truly-cooperative-play-in-i-overcooked-i-)
+
+**Borrow for Loopforge.** Walking and crossings can make spatial arrangements meaningful even with a short production recipe.
+
+**Boundary / counterexample.** Do not inherit its demand for constant coordinated manual handling. Five rooms of frantic task switching would fight Loopforge's adviser, policy and delegation loop.
+
+### Daniel Cook · Loops and Arcs
+
+Cook distinguishes repeated learning through action and feedback from an authored progression of experiences. A loop depends on what the player learns and can do next, not simply a repeated sequence of screens.
+
+[Designer essay · April 2012](https://lostgarden.com/2012/04/30/loops-and-arcs/comment-page-1/)
+
+**Borrow for Loopforge.** Specify the expectation, action, visible response and next decision for build, operation, delegation and output allocation. Use the guided Security sequence to teach actions that later acquire meaningful alternatives.
+
+**Boundary / counterexample.** Calling the day a loop does not prove it is interesting. A solved arrangement may stay solved; introduce new demands through the actual factory and its people, not a compulsory daily emergency.
+
+### Factorio: teach a construction verb once
+
+The developers describe ordering tutorials around prerequisite concepts. The ordinary build ghost gives a player a visible placement preview before committing.
+
+[Factorio Friday Facts #213](https://www.factorio.com/blog/post/fff-213)
+
+[Factorio official wiki: Ghost](https://wiki.factorio.com/Ghost)
+
+**Borrow for Loopforge.** One objective at a time, explicit placement confirmation and a consistent camera. Security teaches the verb that Lattice Forge reuses.
+
+**Boundary / counterexample.** Fixed commissioning sockets are an opening lesson. They do not define the eventual spatial optimization game.
+
+### Satisfactory: a distinct construction tool
+
+The build gun is an explicit tool state, and onboarding introduces concrete construction objectives. The community-maintained official wiki documents the flow.
+
+[Satisfactory wiki: Build Gun](https://satisfactory.wiki.gg/wiki/Build_Gun)
+
+[Satisfactory wiki: Onboarding](https://satisfactory.wiki.gg/wiki/Tutorial)
+
+**Borrow for Loopforge.** Make build entry, preview, confirm and cancel legible. Keep movement/navigation available while the tool is active.
+
+**Boundary / counterexample.** Borrow the interaction grammar; Loopforge is a director view with paused night construction, not first-person exploration.

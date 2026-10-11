@@ -2,27 +2,33 @@
 import { useRef, useState } from "react";
 import AssetImage from "@/components/media/AssetImage";
 import { art } from "@/lib/loopforge/assets";
+import type { ImageAsset } from "@/lib/assets/types";
 import styles from "./loopforge.module.css";
 export default function Art({
   id,
   caption,
   hero = false,
+  asset,
+  sizes,
 }: {
   id: string;
   caption: string;
   hero?: boolean;
+  asset?: ImageAsset;
+  sizes?: string;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
+  const image = asset ?? art(id);
   return (
     <figure className={hero ? styles.heroArt : styles.art}>
       <AssetImage
-        asset={art(id)}
+        asset={image}
         alt={caption}
         sizes={
-          hero
+          sizes ?? (hero
             ? "(max-width: 800px) 100vw, (max-width: 1100px) calc(100vw - 200px), (max-width: 1680px) calc(100vw - 238px), 1442px"
-            : "(max-width: 800px) 90vw, 900px"
+            : "(max-width: 800px) 90vw, 900px")
         }
         preload={hero}
       />
@@ -52,7 +58,7 @@ export default function Art({
         >
           Close ×
         </button>
-        {open && <AssetImage asset={art(id)} alt={caption} sizes="95vw" />}
+        {open && <AssetImage asset={image} alt={caption} sizes="95vw" />}
         <p>{caption}</p>
       </dialog>
     </figure>

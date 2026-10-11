@@ -20,6 +20,7 @@ export default function Chrome({ deck }: { deck?: Deck }) {
         >
           The game
         </Link>
+        <Link href="/stepanoskin/loopforge/design">Game design</Link>
         <Link
           aria-current={deck === "architecture" ? "page" : undefined}
           href="/stepanoskin/loopforge/architecture/the-thesis"

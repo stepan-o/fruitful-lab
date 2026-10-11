@@ -549,3 +549,6 @@ for contract_name in ["WEBVIEW_RENDERING_AND_ASSETS.md", "LOBBY_ART_DIRECTION.md
     content=(ROOT.parent/contract_name).read_text()
     (OUT/contract_name).write_text(content)
     with (OUT/"UI_DESIGN.md").open("a") as f: f.write("\n\n"+content)
+
+# Dated implementation/evidence companion linked from the living art contracts.
+(OUT/"LOBBY_VISUAL_PASS_2026-10-11.md").write_text((ROOT.parent/"LOBBY_VISUAL_PASS_2026-10-11.md").read_text())

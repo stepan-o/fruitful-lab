@@ -2964,7 +2964,7 @@ No command, balance, transport schema or deterministic kernel changes. End-to-en
 
 # Webview: rendering, assets and delivery
 
-10 October 2026. Recommended rendering direction; implementation status is explicit below. Reader chapter: `/stepanoskin/loopforge/architecture/webview`. First calibration case: [Lobby art direction](LOBBY_ART_DIRECTION.md).
+Updated 11 October 2026. Rendering direction and first native lobby kit; implementation status is explicit below. Reader chapter: `/stepanoskin/loopforge/architecture/webview`. First calibration case: [Lobby art direction](LOBBY_ART_DIRECTION.md).
 
 ## Decision
 
@@ -2979,12 +2979,12 @@ React/Next.js continues to own focused decision interfaces, semantic controls an
 | Already implemented | Proposed next |
 | --- | --- |
 | Integer 20 Hz commissioning kernel, local host and individual worker records | Economy/task records for pay claims, if gameplay design approves their rules |
-| Shared spatial map, build/production camera, procedural room and machine geometry | Room-specific authored materials and reusable model kits |
-| Static mesh batching, instanced workers/belt, adaptive pixel resolution, cached shadow maps | Room/bay visibility and detail tiers verified against representative camera movement |
+| Shared spatial map, build/production camera, native lobby desk kit and authored lobby surfaces | Extend calibrated kits to the other rooms; imported model pipeline |
+| Static mesh batching, instanced workers/belt, adaptive pixels, cached shadows, scoped desk lamps and idle/demand rendering | Room/bay visibility and detail tiers verified against representative camera movement |
 | Immutable image/audio/JSON media releases on Vercel CDN | Typed GLB/model and KTX2/texture asset support, including dependency validation |
-| Authored room images in the console | Fully navigable hybrid rooms, beginning with the lobby |
+| Authored console images and a navigable hybrid lobby calibration | Complete task-driven room behaviour and remaining authored rooms |
 
-The media schema currently rejects GLB/KTX2. Do not hide those bytes in image/JSON entries or imply the existing image optimizer can author game materials. No such pipeline extension is implemented by this documentation change.
+The media schema currently rejects GLB/KTX2. Do not hide those bytes in image/JSON entries or imply the existing image optimizer can author game materials. The first native kit deliberately uses supported image entries; the model/texture schema extension remains future work.
 
 ## Model, paint or animate
 
@@ -3057,10 +3057,18 @@ Checked 10 October 2026. These official sources establish available techniques; 
 
 Finish one lobby bay: two desk instances, a seated worker, a short queue, a wall of forms, the floor emblem and the hero doorway/pipe assembly. Compare the same camera against the original art, then orbit and move close. Check normal operation, a staged paper problem, a lighting impulse and a swapped desk attachment. Only after both artistic and performance review should this kit spread across the whole lobby and become the pattern for other rooms. This is a visual test; payroll rules remain a separate design task.
 
+## Local preview memory discipline — 11 October
+
+The 12 GB development machine experienced a kernel OOM kill of the Codex/ChatGPT process during this pass. This is evidence of host memory pressure, not proof that a scene alone leaked. Keep one task preview running; do not run a development compiler and production build together. Preserve other workstreams and user browser sessions.
+
+From `apps/lab`, `npm run floor:build` opts into one build worker, a 1,536 MiB Node heap limit and a 768 MiB Turbopack cache target. `npm run floor:preview` serves the production output on port 3191 with a 512 MiB Node heap limit. Stop that preview before rebuilding. These are bounded-memory aids, not hard limits on all native/GPU allocations. Normal Vercel builds retain their existing defaults. The first bounded compilation took 29.9 seconds; the earlier memory-pressured compilation took 2.2 minutes. These are observations from different warm/cache conditions, not a controlled speedup benchmark.
+
+The viewer retains hidden-tab suspension. Quiet scenes draw at about 30 Hz; camera interaction and running production are uncapped. A stopped scene with motion disabled draws only on state, camera, resize or resource changes. Local desk lights are restricted to their desk meshes and disabled outside the lobby. Rendering cadence never changes the 20 Hz kernel clock.
+
 
 # Lobby: the wage-claim hall
 
-10 October 2026. Visual brief and recommended first calibration slice. Room layout is accepted; this document does not claim a rebuilt lobby has shipped. Technical companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md).
+Updated 11 October 2026. Visual brief and first implemented calibration slice. Room layout is accepted; see the dated visual-pass record for validation evidence. Technical companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md).
 
 ## What the room says
 
@@ -3068,7 +3076,7 @@ The factory counts everything. A worker still has to sit down and prove what it 
 
 Owner direction: robot workers receive pay and need money; their economic circumstances can influence feelings and outcomes. Lobby desks are autonomous worker workspaces for filing hours/pay claims. They are among the objects the player can modify in this support room. This is not a seventh supervisor-managed production room or a compulsory per-claim player minigame.
 
-The original art already contains the right vocabulary: small worn desks under vast paperwork boards, CRTs, desk lamps, stools, clipped forms, overhead number panels, oppressive brass pipework, a luminous doorway and the Loopforge floor emblem. The current study has a generic counter, charging docks and a typed floor stencil; these are scale placeholders, not a faithful lobby reconstruction. The pay function is new owner direction, not a feature inferred to be implemented in the old art or code.
+The original art already contains the right vocabulary: small worn desks under vast paperwork boards, CRTs, desk lamps, stools, clipped forms, overhead number panels, oppressive brass pipework, a luminous doorway and the Loopforge floor emblem. The first hybrid kit replaces the generic counter, charging docks and typed floor stencil with five claim desks, authored form boards, a floor insignia and a pipe-framed Dispatch threshold. The pay function is new owner direction, not a feature inferred to be implemented in the old art or code.
 
 ## Source and visual anchors
 
@@ -3083,7 +3091,7 @@ Original: old Loopforge repository, `frontend/loopforge-webview/public/assets/co
 
 The Lobby stays 72 × 48 m, with a 15 m structural height. Preserve the current Lobby → Dispatch doorway and sealed northern connection. The painting is a close working corner, not a measured blueprint of the entire hall. Reproduce that corner at worker scale, then extend its architectural grammar around the perimeter. Do not stretch one desk, poster or floor texture across the hall to fill it.
 
-Use the existing 23 × 23 m local working frame near Dispatch for the first calibration. Put two or three desk bays along a readable rear wall and a short inward-facing row, with the emblem in the arrival sightline and a clear route to Dispatch. Treat exact prop positions as candidates to check against door and queue clearance. Keep the centre legible; peripheral filing bays, dark service recesses and repeated structural modules make the full hall feel occupied without overwhelming the opening camera.
+Use the 26 × 29 m local working frame near Dispatch for the first calibration. Put two or three desk bays along a readable rear wall and a short inward-facing row, with the emblem in the arrival sightline and a clear route to Dispatch. Treat exact prop positions as candidates to check against door and queue clearance. Keep the centre legible; peripheral filing bays, dark service recesses and repeated structural modules make the full hall feel occupied without overwhelming the opening camera.
 
 Keep desks approximately 1.8–2.2 m wide, 0.8–1.1 m deep and 0.9–1.1 m high as initial modeling targets for the existing 1.9 m robots. Check seated hand/foot contact and camera readability before finalizing them. Furniture remains human/robot scale beneath the common roof datum.
 
@@ -3133,16 +3141,22 @@ When implemented, the engine owns task assignment, queue slots, claims and settl
 4. Compare a still frame, slow orbit, close desk view, staged worker interaction and light sweep. Check seams, flat-looking large details, paper legibility, floating feet and stale shadows after swapping an attachment.
 5. Measure the renderer with 10 and 100 workers; inspect phone working views and room transitions. Extend the kit only when the result resembles the source without relying on one flattering screenshot.
 
-No user-supplied new art is required to begin. New wall/material and desk production assets still need to be authored. This pass records that work; it does not substitute documentation for its visual acceptance.
+## Implemented calibration kit — 11 October
+
+`/stepanoskin/loopforge/play/factory-floor` contains five native Babylon desk instances with shared authored enamel, paperwork and floor-emblem surfaces. Two seated clerks demonstrate hand, head, paper and stamp movement. The inspection camera and optional feeder attachment are available from the viewer. These cycles are explicitly staged, not payroll events.
+
+The desk body, drawers, CRT, lamp, stool and major pipes are real geometry. Wall paperwork and floor identity are world-space image surfaces. Desks retain independent transforms and their lamps affect only their own meshes; contact pools follow the furniture. This first kit uses no imported model, offline lightmap or generated normal map. GLB/KTX2 and baked room lighting remain pipeline work.
+
+See [Lobby visual pass](LOBBY_VISUAL_PASS_2026-10-11.md) for the review checklist, screenshots, performance observations and remaining limitations. No new user artwork is required.
 
 
 # Producing room assets and prefabs
 
-10 October 2026. Implementation proposal for the first lobby kit. Companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md). This is not an already functioning model-generation pipeline.
+Updated 11 October 2026. Production pipeline proposal, with a native lobby kit now implemented. Companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md). The native kit is a first production path, not a functioning model-generation/export pipeline.
 
 ## What is missing
 
-We have downstream image publication/CDN delivery and a procedural Babylon scene. We need the stages between concept art and a reliable game object: modeling, clean material maps, attachment/animation conventions, export, prefab validation and an in-engine review bench. The first milestone is one excellent desk and one wall bay.
+We have image publication/CDN delivery and a native Babylon lobby recipe with shared surfaces, desk sockets and articulated parts. We still need the imported-model stages between concept art and a reliable game object: modeling, clean material maps, attachment/animation conventions, export, prefab validation and an in-engine review bench. The first milestone is one excellent desk and one wall bay.
 
 | Stage | Output | Acceptance |
 | --- | --- | --- |
@@ -3184,6 +3198,8 @@ First complete one source → export → inspect → publish cycle. Then automat
 
 ## Delivery boundary
 
-This pass documents the pipeline and adds the Webview reader chapter/reference gallery. It does not install Blender, add a model loader, extend the schema or ship a desk prefab. Existing art is enough to begin; no new user artwork is required. Payroll economics remain separately designed.
+The first `lobby.pay-claim-desk` is a reproducible Babylon recipe, versioned as `lobby-claim-hall/1`. `spatial/lobby.ts` records dimensions, sockets and placements; `lobby-scene.ts` assembles five instances and animates two staged clerks. Its three authored image surfaces use the existing `loopforge-lobby` immutable pack. Original PNGs and provenance stay outside runtime delivery. The feeder is a separately toggleable attachment. This establishes an inspectable native kit without prematurely extending the asset schema.
+
+Blender, a GLB loader, KTX2, imported-model validation, formal clip/detail-tier metadata and automated export remain unimplemented. Payroll economics remain separately designed. The current calibration does not claim queued worker tasks or live settlement. See [the visual-pass record](LOBBY_VISUAL_PASS_2026-10-11.md).
 
 Primary references checked 10 October 2026: [Blender to Babylon via glTF](https://doc.babylonjs.com/features/featuresDeepDive/Exporters/Blender_to_glTF), [Khronos glTF Validator](https://github.com/KhronosGroup/glTF-Validator), [Babylon KTX2](https://doc.babylonjs.com/features/featuresDeepDive/materials/using/ktx2Compression/). Verify behavior against pinned export/runtime versions when implementing the first kit.

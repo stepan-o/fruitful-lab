@@ -9,7 +9,7 @@ export const WORK_AREAS: Record<ZoneId, Rect> = {
   weaving: { x: 77, y: 25, w: 27, h: 24 },
   theatre: { x: 238, y: 40, w: 21, h: 24 },
   cortex: { x: 162, y: 136, w: 25, h: 29 },
-  lobby: { x: 57, y: 94, w: 23, h: 23 },
+  lobby: { x: 55, y: 79, w: 26, h: 29 },
   dispatch: { x: 86, y: 98, w: 24, h: 20 },
   shipping: { x: 244, y: 141, w: 24, h: 26 },
 };

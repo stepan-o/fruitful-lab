@@ -28,17 +28,17 @@ export default function WebviewStudy() {
   return <section className={styles.study} aria-labelledby="webview-study-title">
     <p className={styles.kicker}>RENDERING DIRECTION · LOBBY CALIBRATION</p>
     <h2 id="webview-study-title">Build depth. Paint character. Animate consequence.</h2>
-    <p>The lobby painting above is the reference, not a screenshot of the current 3D study. The proposed hybrid keeps its bureaucratic clutter and pools of dirty gold light while letting workers and furniture occupy real space.</p>
+    <p>The lobby painting above is the reference, not a screenshot of the current 3D study. The first hybrid kit keeps its bureaucratic clutter and pools of dirty gold light while letting workers and furniture occupy real space.</p>
     <ol className={styles.flow}>
       {layers.map(([number,title,body])=><li key={number}><span>{number}</span><h3>{title}</h3><p>{body}</p></li>)}
     </ol>
     <div className={styles.materials}>
       {surfaces.map(([title,objects,reason])=><article key={title}><h3>{title}</h3><p>{objects}</p><small>{reason}</small></article>)}
     </div>
-    <p className={styles.status}><strong>Current:</strong> shared spatial data, procedural Babylon study, immutable image packs and CDN delivery. <strong>Next:</strong> lobby materials, reusable desk models, baked lighting and a typed model/texture asset extension. Worker wages and pay claims are design direction, not implemented economy.</p>
+    <p className={styles.status}><strong>Current:</strong> shared spatial data, five native claim desks, authored lobby surfaces, staged clerk animation and a removable feeder. The image pack uses immutable CDN delivery. <strong>Next:</strong> baked room lighting and the typed imported-model/GPU-texture pipeline. Worker wages and pay claims are design direction, not implemented economy.</p>
     <h2>From artwork to a reusable desk</h2>
-    <p>Reference sheet → modeled parts → aligned material maps → attachment points and animation → validated export → in-engine inspection → immutable release. The first package should prove two instances of one desk, a seated worker and a swappable attachment.</p>
-    <p>The engineering work is a typed model/texture manifest, prefab validation, a compatible Babylon loader, reproducible export tools and an inspection scene. Image generation can supply surface artwork; clean geometry, matching material maps and reliable worker contact need controlled authoring. We can begin with the existing concept art.</p>
+    <p>Reference sheet → modeled parts → aligned material maps → attachment points and animation → validated export → in-engine inspection → immutable release. The first native kit now demonstrates five desks, two seated clerks and a swappable feeder. Inspect the desk close up, orbit it and compare the hall with the original artwork.</p>
+    <p>The next engineering work is a typed model/texture manifest, prefab validation, a compatible Babylon loader, reproducible export tools and an inspection scene. Image generation can supply surface artwork; clean geometry, matching material maps and reliable worker contact need controlled authoring. We can begin with the existing concept art.</p>
     <h2>Babylon in practice</h2>
     <p>Three running-demo screenshots captured on 10 October 2026. Each answers a different production question. They are reference figures, not Loopforge assets or performance benchmarks.</p>
     <div className={styles.gallery}>{demos.map((demo,index)=><article key={demo.id}>
@@ -51,7 +51,7 @@ export default function WebviewStudy() {
       <a href="/loopforge-design/WEBVIEW_RENDERING_AND_ASSETS.md">Rendering & delivery contract ↗</a>
       <a href="/loopforge-design/LOBBY_ART_DIRECTION.md">Lobby art brief ↗</a>
       <a href="/loopforge-design/ASSET_PREFAB_PIPELINE.md">Asset & prefab production plan ↗</a>
-      <Link href="/stepanoskin/loopforge/play/factory-study" prefetch={false}>Current factory study ↗</Link>
+      <Link href="/stepanoskin/loopforge/play/factory-floor" prefetch={false}>Factory floor ↗</Link>
     </nav>
   </section>;
 }

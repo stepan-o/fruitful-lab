@@ -1,6 +1,6 @@
 # Webview: rendering, assets and delivery
 
-10 October 2026. Recommended rendering direction; implementation status is explicit below. Reader chapter: `/stepanoskin/loopforge/architecture/webview`. First calibration case: [Lobby art direction](LOBBY_ART_DIRECTION.md).
+Updated 11 October 2026. Rendering direction and first native lobby kit; implementation status is explicit below. Reader chapter: `/stepanoskin/loopforge/architecture/webview`. First calibration case: [Lobby art direction](LOBBY_ART_DIRECTION.md).
 
 ## Decision
 
@@ -15,12 +15,12 @@ React/Next.js continues to own focused decision interfaces, semantic controls an
 | Already implemented | Proposed next |
 | --- | --- |
 | Integer 20 Hz commissioning kernel, local host and individual worker records | Economy/task records for pay claims, if gameplay design approves their rules |
-| Shared spatial map, build/production camera, procedural room and machine geometry | Room-specific authored materials and reusable model kits |
-| Static mesh batching, instanced workers/belt, adaptive pixel resolution, cached shadow maps | Room/bay visibility and detail tiers verified against representative camera movement |
+| Shared spatial map, build/production camera, native lobby desk kit and authored lobby surfaces | Extend calibrated kits to the other rooms; imported model pipeline |
+| Static mesh batching, instanced workers/belt, adaptive pixels, cached shadows, scoped desk lamps and idle/demand rendering | Room/bay visibility and detail tiers verified against representative camera movement |
 | Immutable image/audio/JSON media releases on Vercel CDN | Typed GLB/model and KTX2/texture asset support, including dependency validation |
-| Authored room images in the console | Fully navigable hybrid rooms, beginning with the lobby |
+| Authored console images and a navigable hybrid lobby calibration | Complete task-driven room behaviour and remaining authored rooms |
 
-The media schema currently rejects GLB/KTX2. Do not hide those bytes in image/JSON entries or imply the existing image optimizer can author game materials. No such pipeline extension is implemented by this documentation change.
+The media schema currently rejects GLB/KTX2. Do not hide those bytes in image/JSON entries or imply the existing image optimizer can author game materials. The first native kit deliberately uses supported image entries; the model/texture schema extension remains future work.
 
 ## Model, paint or animate
 
@@ -92,3 +92,11 @@ Checked 10 October 2026. These official sources establish available techniques; 
 ## Next calibration gate
 
 Finish one lobby bay: two desk instances, a seated worker, a short queue, a wall of forms, the floor emblem and the hero doorway/pipe assembly. Compare the same camera against the original art, then orbit and move close. Check normal operation, a staged paper problem, a lighting impulse and a swapped desk attachment. Only after both artistic and performance review should this kit spread across the whole lobby and become the pattern for other rooms. This is a visual test; payroll rules remain a separate design task.
+
+## Local preview memory discipline — 11 October
+
+The 12 GB development machine experienced a kernel OOM kill of the Codex/ChatGPT process during this pass. This is evidence of host memory pressure, not proof that a scene alone leaked. Keep one task preview running; do not run a development compiler and production build together. Preserve other workstreams and user browser sessions.
+
+From `apps/lab`, `npm run floor:build` opts into one build worker, a 1,536 MiB Node heap limit and a 768 MiB Turbopack cache target. `npm run floor:preview` serves the production output on port 3191 with a 512 MiB Node heap limit. Stop that preview before rebuilding. These are bounded-memory aids, not hard limits on all native/GPU allocations. Normal Vercel builds retain their existing defaults. The first bounded compilation took 29.9 seconds; the earlier memory-pressured compilation took 2.2 minutes. These are observations from different warm/cache conditions, not a controlled speedup benchmark.
+
+The viewer retains hidden-tab suspension. Quiet scenes draw at about 30 Hz; camera interaction and running production are uncapped. A stopped scene with motion disabled draws only on state, camera, resize or resource changes. Local desk lights are restricted to their desk meshes and disabled outside the lobby. Rendering cadence never changes the 20 Hz kernel clock.

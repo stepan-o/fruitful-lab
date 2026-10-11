@@ -1,6 +1,6 @@
 # Factory floor calibration — 10 October 2026
 
-Scope: `/stepanoskin/loopforge/play/factory-study`, continued in PR #102. This is a procedural commissioning and scale fixture, separate from the canonical `/play` console and its economy.
+Scope: `/stepanoskin/loopforge/play/factory-floor`, continued in PR #102. This is a procedural commissioning and scale fixture, separate from the canonical `/play` console and its economy.
 
 ## Current direction: repacked halls, one height
 

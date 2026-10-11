@@ -1,10 +1,10 @@
 # Producing room assets and prefabs
 
-10 October 2026. Implementation proposal for the first lobby kit. Companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md). This is not an already functioning model-generation pipeline.
+Updated 11 October 2026. Production pipeline proposal, with a native lobby kit now implemented. Companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md). The native kit is a first production path, not a functioning model-generation/export pipeline.
 
 ## What is missing
 
-We have downstream image publication/CDN delivery and a procedural Babylon scene. We need the stages between concept art and a reliable game object: modeling, clean material maps, attachment/animation conventions, export, prefab validation and an in-engine review bench. The first milestone is one excellent desk and one wall bay.
+We have image publication/CDN delivery and a native Babylon lobby recipe with shared surfaces, desk sockets and articulated parts. We still need the imported-model stages between concept art and a reliable game object: modeling, clean material maps, attachment/animation conventions, export, prefab validation and an in-engine review bench. The first milestone is one excellent desk and one wall bay.
 
 | Stage | Output | Acceptance |
 | --- | --- | --- |
@@ -46,6 +46,8 @@ First complete one source → export → inspect → publish cycle. Then automat
 
 ## Delivery boundary
 
-This pass documents the pipeline and adds the Webview reader chapter/reference gallery. It does not install Blender, add a model loader, extend the schema or ship a desk prefab. Existing art is enough to begin; no new user artwork is required. Payroll economics remain separately designed.
+The first `lobby.pay-claim-desk` is a reproducible Babylon recipe, versioned as `lobby-claim-hall/1`. `spatial/lobby.ts` records dimensions, sockets and placements; `lobby-scene.ts` assembles five instances and animates two staged clerks. Its three authored image surfaces use the existing `loopforge-lobby` immutable pack. Original PNGs and provenance stay outside runtime delivery. The feeder is a separately toggleable attachment. This establishes an inspectable native kit without prematurely extending the asset schema.
+
+Blender, a GLB loader, KTX2, imported-model validation, formal clip/detail-tier metadata and automated export remain unimplemented. Payroll economics remain separately designed. The current calibration does not claim queued worker tasks or live settlement. See [the visual-pass record](LOBBY_VISUAL_PASS_2026-10-11.md).
 
 Primary references checked 10 October 2026: [Blender to Babylon via glTF](https://doc.babylonjs.com/features/featuresDeepDive/Exporters/Blender_to_glTF), [Khronos glTF Validator](https://github.com/KhronosGroup/glTF-Validator), [Babylon KTX2](https://doc.babylonjs.com/features/featuresDeepDive/materials/using/ktx2Compression/). Verify behavior against pinned export/runtime versions when implementing the first kit.

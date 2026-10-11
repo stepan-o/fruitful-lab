@@ -44,6 +44,7 @@ export default function FactoryStudy() {
   const [mapOpen, setMapOpen] = useState(false);
   const [sound, setSound] = useState(false);
   const [motion, setMotion] = useState(true);
+  const [feeder, setFeeder] = useState(false);
   const [report, setReport] = useState<SceneReport | null>(null);
   const [notice, setNotice] = useState("");
   const [card, setCard] = useState<{ phase: Phase; day: number; key: string } | null>({ phase: "night", day: 1, key: "1-night" });
@@ -176,13 +177,14 @@ export default function FactoryStudy() {
         <div className={styles.utilities}><button onClick={toggleSound} aria-pressed={sound}>Sound {sound ? "on" : "off"}</button><button onClick={() => { world.current?.motion(!motion); setMotion(!motion); }} aria-pressed={motion}>Motion {motion ? "on" : "reduced"}</button></div>
       </header>
       <nav className={styles.rooms} aria-label="Camera focus">
-        {([ ["wide", "↗", "Overview"], ["security", "01", "Security"], ["conveyor", "02", "Conveyor"] ] as const).map(([id, number, title]) => <button key={id} onClick={() => look(id)} aria-pressed={focus === id}><span>{number}</span>{title}</button>)}
+        {([ ["wide", "↗", "Overview"], ["lobby", "L", "Lobby"], ["security", "01", "Security"], ["conveyor", "02", "Conveyor"] ] as const).map(([id, number, title]) => <button key={id} onClick={() => look(id)} aria-pressed={focus === id}><span>{number}</span>{title}</button>)}
         <button onClick={() => setMapOpen(true)} aria-haspopup="dialog"><span>⌗</span>Floor plan</button>
         <button onClick={inspect} aria-pressed={inspection}><span>◇</span>{inspection ? "Opening view" : "Equipment study"}</button>
         {focus !== "wide" && <button onClick={() => { const mode = framing === "work" ? "room" : "work"; world.current?.framing(mode); setFraming(mode); }} aria-pressed={framing === "room"}><span>⤢</span>{framing === "work" ? "Whole room" : "Work area"}</button>}
+        {focus === "lobby" && <button onClick={() => { const mode = framing === "detail" ? "work" : "detail"; world.current?.framing(mode); setFraming(mode); }} aria-pressed={framing === "detail"}>{framing === "detail" ? "Back to hall" : "Inspect claim desk"}</button>}
       </nav>
       <div className={styles.readout}><span className={styles.liveDot} />{inspection ? "EQUIPMENT SCALE STUDY" : building ? "CONSTRUCTION TOOL" : "FACTORY VIEW"}<small>{focusedRoom ? `${focusedRoom.name} · ${inspection ? "staged prototype" : sealed ? "sealed" : focusedRoom.kind === "support" ? "support space" : "online"}` : inspection ? "Study only · first-turn locks preserved" : "Floor 01 · 2 / 6 rooms online"}</small></div>
-      <section ref={dock} className={`${styles.dock} ${inspection ? styles.studyDock : ""}`} aria-label={building ? "Construction controls" : "Factory controls"}>
+      <section ref={dock} className={`${styles.dock} ${inspection || focus === "lobby" ? styles.studyDock : ""}`} aria-label={building ? "Construction controls" : "Factory controls"}>
         {inspection ? <div className={styles.copy}>
           <span className={styles.eyebrow}>{focusedRoom ? `${focusedRoom.rect.w} × ${focusedRoom.rect.h} m` : `${FLOOR_SIZE.width} × ${FLOOR_SIZE.height} m`} / WORKER ≈ 1.9 m{focusedRoom && reservedArea(focusedRoom.id) > 0 ? ` / ${reservedArea(focusedRoom.id).toLocaleString("en-US")} m² RESERVED` : " / STAGED EQUIPMENT"}</span>
           <h1>{staging?.title ?? "The factory at working scale"}</h1>
@@ -206,7 +208,7 @@ export default function FactoryStudy() {
         </div>
         {state.phase === "shift" && <div className={styles.shiftProgress} role="progressbar" aria-label="Shift elapsed" aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}><i style={{ width: `${progress}%` }} /></div>}
       </section>
-      <footer className={styles.footer}><span>Drag to orbit · Right drag / two fingers to pan · Scroll / pinch to zoom</span><details className={styles.diagnostics}><summary>Study diagnostics</summary><div><b>{report ? `${report.fps} FPS · ${report.resolution}` : "Measuring renderer…"}</b><p>{report?.workers ?? 10} individual workers · {report?.active ?? "—"} active meshes<br />{report?.updateMs}ms pose · {report?.renderMs}ms render submission<br />{report?.renderer}<br />Tick {state.tick} · {state.unlockedRooms.length}/6 rooms online<br />{FLOOR_SIZE.width} × {FLOOR_SIZE.height} tiles · Local public fixture · No quota output</p><button onClick={() => { if(inspecting.current) inspect(); host.current?.reset(state.workers.length === 10 ? 100 : 10); setTool(false); look("lobby"); setCard({ phase: "night", day: 1, key: `reset-${Date.now()}` }); blocked.current = true; }}>Restart with {state.workers.length === 10 ? 100 : 10} workers</button><Link href="/stepanoskin/loopforge/design#conveyor">Design & scope ↗</Link></div></details></footer>
+      <footer className={styles.footer}><span>Drag to orbit · Right drag / two fingers to pan · Scroll / pinch to zoom</span><details className={styles.diagnostics}><summary>Study diagnostics</summary><div><b>{report ? `${report.fps} FPS · ${report.resolution}` : "Measuring renderer…"}</b><p>{report?.workers ?? 10} individual workers · {report?.active ?? "—"} active meshes<br />{report?.updateMs}ms pose · {report?.renderMs}ms render submission<br />{report?.renderer}<br />Tick {state.tick} · {state.unlockedRooms.length}/6 rooms online<br />{FLOOR_SIZE.width} × {FLOOR_SIZE.height} tiles · Local public fixture · No quota output</p><button onClick={() => { if(inspecting.current) inspect(); host.current?.reset(state.workers.length === 10 ? 100 : 10); setTool(false); look("lobby"); setCard({ phase: "night", day: 1, key: `reset-${Date.now()}` }); blocked.current = true; }}>Restart with {state.workers.length === 10 ? 100 : 10} workers</button><p>Lobby claim cycles are staged visual examples; no wages are paid by this study.</p><button aria-pressed={feeder} onClick={() => { world.current?.feeder(!feeder); setFeeder(!feeder); }}>{feeder ? "Remove paper feeders" : "Fit paper feeders"}</button><Link href="/stepanoskin/loopforge/design#conveyor">Design & scope ↗</Link></div></details></footer>
       {notice && <p className={styles.notice} role="status">{notice}</p>}
       <span className={styles.sr} role="status">{state.events.at(-1)?.kind !== "cycle" ? state.events.at(-1)?.text : ""}</span>
     </div>

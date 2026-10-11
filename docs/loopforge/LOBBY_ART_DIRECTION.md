@@ -1,6 +1,6 @@
 # Lobby: the wage-claim hall
 
-10 October 2026. Visual brief and recommended first calibration slice. Room layout is accepted; this document does not claim a rebuilt lobby has shipped. Technical companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md).
+Updated 11 October 2026. Visual brief and first implemented calibration slice. Room layout is accepted; see the dated visual-pass record for validation evidence. Technical companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md).
 
 ## What the room says
 
@@ -8,7 +8,7 @@ The factory counts everything. A worker still has to sit down and prove what it 
 
 Owner direction: robot workers receive pay and need money; their economic circumstances can influence feelings and outcomes. Lobby desks are autonomous worker workspaces for filing hours/pay claims. They are among the objects the player can modify in this support room. This is not a seventh supervisor-managed production room or a compulsory per-claim player minigame.
 
-The original art already contains the right vocabulary: small worn desks under vast paperwork boards, CRTs, desk lamps, stools, clipped forms, overhead number panels, oppressive brass pipework, a luminous doorway and the Loopforge floor emblem. The current study has a generic counter, charging docks and a typed floor stencil; these are scale placeholders, not a faithful lobby reconstruction. The pay function is new owner direction, not a feature inferred to be implemented in the old art or code.
+The original art already contains the right vocabulary: small worn desks under vast paperwork boards, CRTs, desk lamps, stools, clipped forms, overhead number panels, oppressive brass pipework, a luminous doorway and the Loopforge floor emblem. The first hybrid kit replaces the generic counter, charging docks and typed floor stencil with five claim desks, authored form boards, a floor insignia and a pipe-framed Dispatch threshold. The pay function is new owner direction, not a feature inferred to be implemented in the old art or code.
 
 ## Source and visual anchors
 
@@ -23,7 +23,7 @@ Original: old Loopforge repository, `frontend/loopforge-webview/public/assets/co
 
 The Lobby stays 72 × 48 m, with a 15 m structural height. Preserve the current Lobby → Dispatch doorway and sealed northern connection. The painting is a close working corner, not a measured blueprint of the entire hall. Reproduce that corner at worker scale, then extend its architectural grammar around the perimeter. Do not stretch one desk, poster or floor texture across the hall to fill it.
 
-Use the existing 23 × 23 m local working frame near Dispatch for the first calibration. Put two or three desk bays along a readable rear wall and a short inward-facing row, with the emblem in the arrival sightline and a clear route to Dispatch. Treat exact prop positions as candidates to check against door and queue clearance. Keep the centre legible; peripheral filing bays, dark service recesses and repeated structural modules make the full hall feel occupied without overwhelming the opening camera.
+Use the 26 × 29 m local working frame near Dispatch for the first calibration. Put two or three desk bays along a readable rear wall and a short inward-facing row, with the emblem in the arrival sightline and a clear route to Dispatch. Treat exact prop positions as candidates to check against door and queue clearance. Keep the centre legible; peripheral filing bays, dark service recesses and repeated structural modules make the full hall feel occupied without overwhelming the opening camera.
 
 Keep desks approximately 1.8–2.2 m wide, 0.8–1.1 m deep and 0.9–1.1 m high as initial modeling targets for the existing 1.9 m robots. Check seated hand/foot contact and camera readability before finalizing them. Furniture remains human/robot scale beneath the common roof datum.
 
@@ -73,4 +73,10 @@ When implemented, the engine owns task assignment, queue slots, claims and settl
 4. Compare a still frame, slow orbit, close desk view, staged worker interaction and light sweep. Check seams, flat-looking large details, paper legibility, floating feet and stale shadows after swapping an attachment.
 5. Measure the renderer with 10 and 100 workers; inspect phone working views and room transitions. Extend the kit only when the result resembles the source without relying on one flattering screenshot.
 
-No user-supplied new art is required to begin. New wall/material and desk production assets still need to be authored. This pass records that work; it does not substitute documentation for its visual acceptance.
+## Implemented calibration kit — 11 October
+
+`/stepanoskin/loopforge/play/factory-floor` contains five native Babylon desk instances with shared authored enamel, paperwork and floor-emblem surfaces. Two seated clerks demonstrate hand, head, paper and stamp movement. The inspection camera and optional feeder attachment are available from the viewer. These cycles are explicitly staged, not payroll events.
+
+The desk body, drawers, CRT, lamp, stool and major pipes are real geometry. Wall paperwork and floor identity are world-space image surfaces. Desks retain independent transforms and their lamps affect only their own meshes; contact pools follow the furniture. This first kit uses no imported model, offline lightmap or generated normal map. GLB/KTX2 and baked room lighting remain pipeline work.
+
+See [Lobby visual pass](LOBBY_VISUAL_PASS_2026-10-11.md) for the review checklist, screenshots, performance observations and remaining limitations. No new user artwork is required.

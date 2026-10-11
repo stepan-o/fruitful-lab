@@ -27,15 +27,16 @@ import { DefaultRenderingPipeline } from "@babylonjs/core/PostProcesses/RenderPi
 import "@babylonjs/core/Lights/Shadows/shadowGeneratorSceneComponent";
 import { buildFloor } from "./floor-scene";
 import { buildEquipment } from "./equipment-scene";
+import { buildLobby } from "./lobby-scene";
 import { SCALE_FIGURES } from "@/lib/loopforge/spatial/equipment";
 import { FIXTURE_SOCKETS, FLOOR_SIZE, LINE_ORIGIN, worldPoint, zone, ZONES, type ZoneId } from "@/lib/loopforge/spatial/floor";
 import { gateOpen, initialStudy, type Fixture, type StudyState } from "@/lib/loopforge/factory-study/kernel";
 
 import { WORK_AREAS } from '@/lib/loopforge/spatial/capacity';
-export type Framing = 'work' | 'room';
+export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
 export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number };
-export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number): void; build(enabled: boolean, selected: Fixture | null): void; motion(enabled: boolean): void; study(enabled: boolean): void; dispose(): void };
+export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number): void; build(enabled: boolean, selected: Fixture | null): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
@@ -50,10 +51,14 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   scene.fogMode = Scene.FOGMODE_EXP2; scene.fogDensity = .0018; scene.fogColor = new Color3(.025, .041, .042);
   const camera = new ArcRotateCamera("director", -Math.PI / 2 + .32, .94, 27, new Vector3(-1, 1.7, 0), scene);
   camera.attachControl(canvas, true); camera.lowerBetaLimit = .52; camera.upperBetaLimit = 1.22;
-  camera.lowerRadiusLimit = 7; camera.upperRadiusLimit = 1100; camera.wheelDeltaPercentage = .015;
+  camera.lowerRadiusLimit = 3.5; camera.upperRadiusLimit = 1100; camera.wheelDeltaPercentage = .015;
   camera.pinchDeltaPercentage = .012; camera.panningSensibility = 130; camera.inertia = .78;
   camera.minZ = .15; camera.maxZ = 1600; camera.fov = .8; camera.fovMode = 0;
   let state = initialStudy(), lastTime = performance.now(), visualTravel = 0, moving = true;
+  let renderDirty = true, posesDirty = true;
+  // Demand rendering must also redraw decoded textures and restored GPU resources.
+  scene.onDataLoadedObservable.add(() => { renderDirty = true; });
+  engine.onContextRestoredObservable.add(() => { renderDirty = true; });
   let equipmentStudy = false, framing: Framing = "work";
   let building = false, selected: Fixture | null = null;
   let bottomInset = 180;
@@ -169,6 +174,8 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const workshop = { box, pipe, cylinder, sphere, ring, bar, sign, iron, dark, brass, copper, green, floorMat, amber, quiet, cyan, ridge };
   const floor = buildFloor(scene, workshop);
   const equipment = buildEquipment(scene, workshop);
+  const lobby = buildLobby(scene, workshop);
+  lobby.feeder(false);
   const localGlow=new PointLight("Security terminal bounce",new Vector3(-2.2,2.5,.6),scene);localGlow.diffuse=C("#69bab2");localGlow.intensity=28;localGlow.range=25;localGlow.renderPriority=1;
   const taskLight=new PointLight("conveyor inspection light",new Vector3(-2.5,3.5,-7),scene);taskLight.diffuse=C("#ffb362");taskLight.intensity=95;taskLight.range=36;taskLight.renderPriority=2;
   const terminal=root("clearance terminal",[-8,0,.35]);
@@ -374,16 +381,17 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     for(const side of [-1,1]){box("placement corner",[.28,.025,.04],[side*size[0]/2,.06,-size[2]/2],cyan,n);box("placement corner",[.04,.025,.28],[side*size[0]/2,.06,-size[2]/2],cyan,n);}
   }
   scene.onPointerObservable.add(info=>{
+    renderDirty = true;
     if(info.type!==PointerEventTypes.POINTERTAP)return;
     if(!building||!selected){const pick=scene.pick(scene.pointerX,scene.pointerY,m=>!!m.metadata?.zone);const z=pick?.pickedMesh?.metadata?.zone as ZoneId|undefined;if(z)selectZone(z);return;}
     const hit=scene.pick(scene.pointerX,scene.pointerY,m=>m.isPickable&&m.metadata?.fixture===selected);
     const f=hit?.pickedMesh?.metadata?.fixture as Fixture|undefined;if(hit?.hit&&f===selected)install(f);
   });
   // Merge static construction by material/parent. Moving mechanisms keep their transforms.
-  const mergeParents:(TransformNode|null)[]=[null,terminal,gate,drive,line,processFrame,skull,...specimens,...floor.roots,...equipment.roots];
+  const mergeParents:(TransformNode|null)[]=[null,terminal,gate,drive,line,processFrame,skull,...specimens,...floor.roots,...equipment.roots,...lobby.roots];
   for(const parent of mergeParents){
     parent?.computeWorldMatrix(true);
-    const candidates=scene.meshes.filter(m=>m instanceof Mesh&&m.parent===parent&&m!==cone&&!plates.includes(m as Mesh)&&m.material!==transparent&&m.isEnabled()) as Mesh[];
+    const candidates=scene.meshes.filter(m=>m instanceof Mesh&&m.parent===parent&&m!==cone&&!m.metadata?.unbatched&&!plates.includes(m as Mesh)&&m.material!==transparent&&m.isEnabled()) as Mesh[];
     const groups=new Map<string,{mat:Mat;meshes:Mesh[]}>();for(const m of candidates){const mat=m.material as Mat;if(!mat)continue;const key=mat.uniqueId+"/"+m.getVerticesDataKinds().sort().join(",");const group=groups.get(key)??{mat,meshes:[]};group.meshes.push(m);groups.set(key,group);}
     for(const {mat,meshes} of groups.values()){if(meshes.length<2)continue;for(const m of meshes)m.computeWorldMatrix(true);
       const casts=meshes.some(m=>shadow.getShadowMap()?.renderList?.includes(m));
@@ -395,6 +403,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
       if(!parent)merged.freezeWorldMatrix();
     }
   }
+  lobby.finalize();
   const pipeline=new DefaultRenderingPipeline("film",false,scene,[camera]);pipeline.samples=1;pipeline.fxaaEnabled=true;pipeline.bloomEnabled=true;pipeline.bloomThreshold=.85;pipeline.bloomWeight=.22;pipeline.bloomKernel=32;pipeline.bloomScale=.35;
   scene.imageProcessingConfiguration.toneMappingEnabled=true;scene.imageProcessingConfiguration.toneMappingType=1;scene.imageProcessingConfiguration.exposure=1.22;scene.imageProcessingConfiguration.contrast=1.12;
   let lastEvent=0,flash=0,flashKind:"cycle"|"jam"|"idle"="idle",motionClock=0;
@@ -403,18 +412,30 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   for(const z of ZONES){const r=z.rect,hit=box(z.name+" hit surface",[r.w-.2,.015,r.h-.2],[...worldPoint(r.x+r.w/2,r.y+r.h/2)] as V,pickMaterial);hit.position.y=.02;hit.isPickable=true;hit.metadata={zone:z.id};}
   let resolutionScale=1,slowSamples=0,qualityAfter=performance.now()+8000;
   const frame=()=>{
+    renderDirty = true;
     const viewportHeight=canvas.clientHeight*camera.viewport.height,aspect=canvas.clientWidth/Math.max(1,viewportHeight);
     floor.focus(focus);
-    const local=focus!=="wide"&&framing==="work"&&(equipmentStudy||state.unlockedRooms.includes(focus as typeof state.unlockedRooms[number])||zone(focus).kind==="support");
-    const r=focus==="wide"?{x:0,y:0,w:FLOOR_SIZE.width+2,h:FLOOR_SIZE.height}:local?WORK_AREAS[focus]:zone(focus).rect;
+    signal.setEnabled(focus === "wide" || focus === "conveyor" || focus === "security");
+    localGlow.setEnabled(focus !== "lobby");
+    const local=focus!=="wide"&&framing!=="room"&&(equipmentStudy||state.unlockedRooms.includes(focus as typeof state.unlockedRooms[number])||zone(focus).kind==="support");
+    const r=focus==="wide"?{x:0,y:0,w:FLOOR_SIZE.width+2,h:FLOOR_SIZE.height}:focus==="lobby"&&framing==="detail"?{x:57.6,y:81.6,w:2.8,h:3.4}:local?WORK_AREAS[focus]:zone(focus).rect;
     targetPoint=new Vector3(...worldPoint(r.x+r.w/2,r.y+r.h/2));targetPoint.y=1.7;
     const center=targetPoint;taskLight.position.set(center.x-4,7,center.z+3);localGlow.position.set(center.x+5,4,center.z-5);
+    if(focus==="lobby"){
+      // The lobby's lights belong to fixtures, not to the moving camera.
+      taskLight.position.set(...worldPoint(78,104));taskLight.position.y=5.8;
+      taskLight.intensity=65;taskLight.range=13;localGlow.intensity=0;
+      key.intensity=2.3;hemi.intensity=1.05;
+      targetPoint.y=framing==="detail"?1.12:2.8;
+    }else{taskLight.intensity=95;taskLight.range=36;localGlow.intensity=28;key.intensity=2.1;hemi.intensity=1.15;}
     taskLight.diffuse=C(focus==="brewery"||focus==="weaving"?"#8eddd4":focus==="theatre"?"#b7d6cf":"#ffc073");
     key.position.copyFrom(center.subtract(key.direction.scale(100)));
     key.shadowFrustumSize=Math.max(r.w,r.h)*1.6;
     scene.fogDensity=focus==="wide"?.00045:local?.0018:.001;
     const projectedHeight=r.h*Math.cos(camera.beta)+4;
-    targetRadius=Math.max(9,Math.max(r.w/aspect,projectedHeight)/(2*Math.tan(camera.fov/2))*1.04+r.h*.18);
+    targetRadius=focus==="lobby"&&framing==="detail"
+      ? Math.max(4.4, 3.8/aspect/(2*Math.tan(camera.fov/2)))
+      : Math.max(9,Math.max(r.w/aspect,projectedHeight)/(2*Math.tan(camera.fov/2))*1.04+r.h*.18);
     if(focus==="wide"){
       // Fit all eight corners, including tall roofs and perspective foreshortening.
       // A planar height estimate clipped the southern wing behind the control dock.
@@ -431,11 +452,17 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const resize=()=>{const w=canvas.clientWidth;engine.setHardwareScalingLevel(1/(Math.min(w<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();viewport();frame();};
   const observer=new ResizeObserver(resize);observer.observe(canvas);resize();
   let hidden=document.hidden;
-  const visibility=()=>{hidden=document.hidden;lastTime=performance.now();if(hidden)engine.stopRenderLoop(render);else engine.runRenderLoop(render);};
+  const visibility=()=>{hidden=document.hidden;lastTime=performance.now();if(hidden)engine.stopRenderLoop(render);else {renderDirty=true;frames=0;reportTime=performance.now();engine.runRenderLoop(render);}};
   let frames=0,reportTime=performance.now(),shadowView="",shadowTravel=-1,shadowInstalled=-1,shadowArm=-1;
   const keyMap=shadow.getShadowMap()!,signalMap=signalShadows.getShadowMap()!;keyMap.refreshRate=0;signalMap.refreshRate=0;
   function render(){
-    if(hidden)return;const now=performance.now(),dt=Math.min(.06,(now-lastTime)/1000);lastTime=now;if(moving)motionClock+=dt;
+    if(hidden)return;
+    const now=performance.now();
+    const cameraMoving=transition>0||Math.abs(camera.inertialAlphaOffset)+Math.abs(camera.inertialBetaOffset)+Math.abs(camera.inertialRadiusOffset)+Math.abs(camera.inertialPanningX)+Math.abs(camera.inertialPanningY)>.0001;
+    // Quiet rooms need only a 30 Hz presentation cadence. Camera gestures and
+    // production remain uncapped; reduced-motion stills render only on changes.
+    if(!cameraMoving&&!state.running&&!renderDirty&&(!moving||now-lastTime<1000/30-1))return;
+    const dt=Math.min(.06,(now-lastTime)/1000);lastTime=now;renderDirty=false;if(moving)motionClock+=dt;
     if(transition>0){const speed=moving?1-Math.exp(-dt*4):1;camera.setTarget(Vector3.Lerp(camera.target,targetPoint,speed),false,false,true);camera.radius+=(targetRadius-camera.radius)*speed;transition-=moving?dt*.8:1;}
     const targetTravel=state.travel/1600;visualTravel+=(targetTravel-visualTravel)*Math.min(1,dt*18);
     for(const part of beltParts){for(let j=0;j<part.indices.length;j++){
@@ -446,6 +473,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     const open=gateOpen(state)?1:0;arm.position.y+=(1.25+open*1.4-arm.position.y)*Math.min(1,dt*5);
     scan.position.y=2.17+(moving?Math.sin(motionClock*1.8)*.29:0);
     for(const f of ["terminal","gate","drive"] as const){const placed=equipmentStudy||state.installed.includes(f);installedRoots[f].setEnabled(placed);ghostRoots[f].setEnabled(building&&!placed&&f===selected);}
+    if (state.running || posesDirty) {
     const figures=equipmentStudy?SCALE_FIGURES:[];
     for(let i=0;i<state.workers.length+figures.length;i++){
       const w=state.workers[i],figure=figures[i-state.workers.length],pos=robotPositions[i];
@@ -464,32 +492,38 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
       }
     }
     for(const part of robotParts)part.mesh.thinInstanceBufferUpdated("matrix");
+    posesDirty = false;
+    }
     if(state.jammed){flash=1;flashKind="jam";}else flash=Math.max(0,flash-dt*.72);
     const idle=flash===0&&moving&&motionClock%12<1.8;
     const power=flash>0?flash:idle?Math.sin(motionClock%12/1.8*Math.PI)*.2:0;
     const color=flashKind==="jam"&&flash>0?C("#ff183f"):flashKind==="cycle"&&flash>0?C("#65ffc1"):C("#49b5b6");
     const angle=motionClock*(state.jammed?5.8:2.1);rotor.rotation.y=angle;
     const direction=new Vector3(Math.sin(angle),-.24,-Math.cos(angle)).normalize();signal.direction=direction;signal.diffuse=color;signal.intensity=power*(state.jammed?48:17);lens.material=power>.05?(state.jammed?red:cyan):quiet;
-    cone.setEnabled(power>.02);cone.position.copyFrom(signal.position.add(direction.scale(6)));cone.rotationQuaternion=Quaternion.FromUnitVectorsToRef(new Vector3(0,-1,0),direction,new Quaternion());beamMat.emissiveColor=color;beamMat.alpha=power*(state.jammed?.026:.012);
+    cone.setEnabled(signal.isEnabled()&&power>.02);cone.position.copyFrom(signal.position.add(direction.scale(6)));cone.rotationQuaternion=Quaternion.FromUnitVectorsToRef(new Vector3(0,-1,0),direction,new Quaternion());beamMat.emissiveColor=color;beamMat.alpha=power*(state.jammed?.026:.012);
     if(!moving){signal.intensity=state.jammed?10:0;cone.setEnabled(false);}
     // Cached shadow maps: idle rooms do not redraw two depth passes every frame.
     const view=[camera.alpha,camera.beta,camera.radius,camera.target.x,camera.target.y,camera.target.z].map(x=>x.toFixed(3)).join(",");
     if(view!==shadowView||Math.abs(visualTravel-shadowTravel)>.003||state.installed.length!==shadowInstalled||Math.abs(arm.position.y-shadowArm)>.005){keyMap.resetRefreshCounter();shadowView=view;shadowTravel=visualTravel;shadowInstalled=state.installed.length;shadowArm=arm.position.y;}
-    if(signal.intensity>.01)signalMap.resetRefreshCounter();
+    if(signal.isEnabled()&&signal.intensity>.01)signalMap.resetRefreshCounter();
     equipment.animate(motionClock,moving,focus);
-    const beforeRender=performance.now();scene.render();const renderedAt=performance.now();frames++;if(now-reportTime>1200){const fps=Math.round(frames*1000/(now-reportTime));report({fps,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now)});if(now>qualityAfter&&fps<28&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=28)slowSamples=0;frames=0;reportTime=now;}
+    lobby.animate(motionClock,moving,focus==="lobby",framing!=="room");
+    const beforeRender=performance.now();scene.render();const renderedAt=performance.now();frames++;if(now-reportTime>1200){const fps=Math.round(frames*1000/(now-reportTime));report({fps,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now)});if((moving||state.running||cameraMoving)&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;frames=0;reportTime=now;}
   }
   equipment.study(false);
+  const input = () => { renderDirty = true; };
+  canvas.addEventListener("keydown", input);
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
-    update(s){state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const e=s.events.at(-1);if(e&&e.id!==lastEvent){lastEvent=e.id;if(e.kind==="cycle"||e.kind==="jam"){flash=1;flashKind=e.kind;}if(e.kind==="release"){flash=0;flashKind="idle";}}},
-    focus(f){focus=f;framing="work";camera.alpha=-Math.PI/2+.22;camera.beta=f==="wide"?.60:.86;frame();},
-    framing(mode){framing=mode;camera.beta=mode==="room"?.66:.86;frame();},
+    update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const e=s.events.at(-1);if(e&&e.id!==lastEvent){lastEvent=e.id;if(e.kind==="cycle"||e.kind==="jam"){flash=1;flashKind=e.kind;}if(e.kind==="release"){flash=0;flashKind="idle";}}},
+    focus(f){focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();},
+    framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},
+    feeder(enabled){renderDirty=true;lobby.feeder(enabled);keyMap.resetRefreshCounter();},
     inset(bottom){bottomInset=bottom;viewport();engine.resize();frame();},
-    build(enabled,fixture){building=enabled;selected=fixture;},
-    motion(enabled){moving=enabled;},
-    study(enabled){equipmentStudy=enabled;floor.study(enabled);equipment.study(enabled);population(state.workers.length+(enabled?SCALE_FIGURES.length:0));keyMap.resetRefreshCounter();frame();},
-    dispose(){observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);scene.dispose();engine.dispose();}
+    build(enabled,fixture){renderDirty=true;building=enabled;selected=fixture;},
+    motion(enabled){renderDirty=true;moving=enabled;},
+    study(enabled){posesDirty=true;equipmentStudy=enabled;floor.study(enabled);equipment.study(enabled);population(state.workers.length+(enabled?SCALE_FIGURES.length:0));keyMap.resetRefreshCounter();frame();},
+    dispose(){canvas.removeEventListener("keydown",input);observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);scene.dispose();engine.dispose();}
   };
   } catch(error) { scene.dispose(); engine.dispose(); throw error; }
 }

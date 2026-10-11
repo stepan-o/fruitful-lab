@@ -37,8 +37,8 @@ export default function AccountForm({
       "The email or password doesn’t match. Try again or reset your password.",
     ],
     registration_invalid: [
-      "Revisa tus datos. La contraseña debe tener al menos 10 caracteres.",
-      "Check your details. Your password needs at least 10 characters.",
+      "Revisa tu nombre, correo y contraseña.",
+      "Check your name, email and password.",
     ],
     email_unavailable: [
       "La recuperación por correo todavía no está disponible. Pide un enlace privado a quien administra Fruitful Lab.",
@@ -207,27 +207,16 @@ export default function AccountForm({
               <input
                 name="password"
                 type="password"
-                aria-describedby={
-                  mode === "register" ? "mc-password-hint" : undefined
-                }
                 autoComplete={
                   mode === "register" ? "new-password" : "current-password"
                 }
                 required
-                minLength={mode === "register" ? 10 : 1}
+                minLength={1}
                 maxLength={128}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
-          )}
-          {mode === "register" && (
-            <small id="mc-password-hint">
-              {say(
-                "Al menos 10 caracteres. Puedes usar una frase.",
-                "At least 10 characters. A passphrase works well.",
-              )}
-            </small>
           )}
           {mode === "forgot" && (
             <p className="mc-muted">

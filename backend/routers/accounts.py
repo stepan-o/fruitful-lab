@@ -70,7 +70,7 @@ class Recovery(Strict):
 
 class Reset(Strict):
     token: str = Field(min_length=32, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
-    password: str = Field(min_length=10, max_length=128)
+    password: str = Field(min_length=1, max_length=128)
     locale: Literal["es", "en"] = "es"
 
 
@@ -276,6 +276,9 @@ def reset_password(
         or (not user.is_active and access.purpose != "setup")
     ):
         raise HTTPException(400, "reset_link_invalid")
+    ordinary_game_account = not user.is_admin and set(user.groups or []) == {GAME_GROUP}
+    if not ordinary_game_account and len(payload.password) < 10:
+        raise HTTPException(422, "password_too_short")
     user.hashed_password = hash_password(payload.password)
     user.session_version += 1
     if access.purpose == "setup":

@@ -25,6 +25,13 @@
       "sha256": "209ce2b65f5d3477993cd938ea4b443f882667cf1cbea37fd909d9ac41c5037d",
       "generationBrief": "Square diffuse material, edge-to-edge worn soot-dark olive enamel with rubbed brass undertones, fine etched scratches and flaking paint. No objects, panels, text, illumination gradients or perspective. Restrained dirty khaki/charcoal, not uniform speckle noise. Intended shared albedo for modeled furniture and fittings.",
       "usage": "surface artwork, never gameplay state"
+    },
+    {
+      "id": "stone-floor",
+      "source": "stone-floor.png",
+      "sha256": "f1ae7d83d09805958da19feeeb0446eebd9241564f34156d210cad4cad70fdf6",
+      "generationBrief": "See stone-floor-prompt.txt for the exact built-in generation prompt. Original lobby art supplied as style reference.",
+      "usage": "Diffuse repeating floor surface; no relief or lighting inferred from brightness."
     }
   ]
 }

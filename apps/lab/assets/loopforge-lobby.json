@@ -29,6 +29,15 @@
       ],
       "quality": 88,
       "maxBytes": 700000
+    },
+    "stone-floor": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-lobby/stone-floor.png",
+      "widths": [
+        1024
+      ],
+      "quality": 80,
+      "maxBytes": 500000
     }
   }
 }

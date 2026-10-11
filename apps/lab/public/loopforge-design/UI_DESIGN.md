@@ -3034,7 +3034,7 @@ Track retained deployment storage separately from download traffic and GPU memor
 5. Budget live light and transparent effects. Keep the current hidden-tab suspension and reduced-motion controls. Frozen materials/matrices apply only to genuinely static compatible objects, not blindly to animated or swapped resources.
 6. Keep render interpolation and GPU buffer updates outside React. Publish UI readouts at a bounded frequency. A room swap must dispose meshes, textures, observers and audio without leaking or discarding still-shared assets.
 
-A 30 fps floor is an initial acceptance target on the agreed modest test device, with 60 fps desirable on capable desktop hardware. Measure frame-time tails and long stalls, not only average fps. Previous integrated-GPU samples were below a stable 30 fps; no current result establishes that the hybrid will pass. Start with 10 workers and then 100, including queues, camera movement, room changes and light impulses. Reserve browser/UI headroom within the 33.3 ms frame interval rather than spending it all on rendering.
+A 30 fps floor is an initial acceptance target on the agreed modest test device, with 60 fps desirable on capable desktop hardware. Measure frame-time tails and long stalls, not only average fps. The 11 October lobby pass sampled 30 fps at 1280 × 720 with 10 workers and after a 100-worker shift on Intel HD Graphics 620; the active 100-worker conveyor also sampled 30 fps. These are local samples, not frame-time-tail or physical-phone certification; see `LOBBY_VISUAL_PASS_2026-10-11.md`. Start with 10 workers and then 100, including queues, camera movement, room changes and light impulses. Reserve browser/UI headroom within the 33.3 ms frame interval rather than spending it all on rendering.
 
 Test desktop and 320/390/768 CSS-pixel layouts, actual touch hardware where available, cold/warm load, hidden/resumed tabs, motion disabled and repeated asset/room swaps. Report device, viewport, DPR, internal render resolution, quality tier and memory observations. Frontend optimization is the main present workstream; deterministic routing/systems must still be profiled as worker counts and tasks grow.
 
@@ -3053,9 +3053,9 @@ Checked 10 October 2026. These official sources establish available techniques; 
 - [Babylon: KTX2](https://doc.babylonjs.com/features/featuresDeepDive/materials/using/ktx2Compression/) — transfer compression versus GPU-resident compression.
 - [Blender: render baking](https://docs.blender.org/manual/en/latest/render/cycles/baking.html) — offline material, normal, AO and lighting baking.
 
-## Next calibration gate
+## Current calibration and next gate
 
-Finish one lobby bay: two desk instances, a seated worker, a short queue, a wall of forms, the floor emblem and the hero doorway/pipe assembly. Compare the same camera against the original art, then orbit and move close. Check normal operation, a staged paper problem, a lighting impulse and a swapped desk attachment. Only after both artistic and performance review should this kit spread across the whole lobby and become the pattern for other rooms. This is a visual test; payroll rules remain a separate design task.
+The first lobby kit now has five desk bays, two staged seated clerks, a wall of forms, the floor emblem and a modeled doorway/pipe assembly. Hall, close and orbit views, paper cues and a swapped feeder were inspected in the production renderer. Evidence and measured limits are in `LOBBY_VISUAL_PASS_2026-10-11.md`. Owner review is the next art-direction gate before extending this pattern to other rooms. Queues, actual claim tasks and their lighting feedback still require simulation records; payroll rules remain a separate design task.
 
 ## Local preview memory discipline — 11 October
 
@@ -3198,7 +3198,7 @@ First complete one source → export → inspect → publish cycle. Then automat
 
 ## Delivery boundary
 
-The first `lobby.pay-claim-desk` is a reproducible Babylon recipe, versioned as `lobby-claim-hall/1`. `spatial/lobby.ts` records dimensions, sockets and placements; `lobby-scene.ts` assembles five instances and animates two staged clerks. Its three authored image surfaces use the existing `loopforge-lobby` immutable pack. Original PNGs and provenance stay outside runtime delivery. The feeder is a separately toggleable attachment. This establishes an inspectable native kit without prematurely extending the asset schema.
+The first `lobby.pay-claim-desk` is a reproducible Babylon recipe, versioned as `lobby-claim-hall/1`. `spatial/lobby.ts` records dimensions, sockets and placements; `lobby-scene.ts` assembles five instances and animates two staged clerks. Its four authored image surfaces use the existing `loopforge-lobby` immutable pack. Original PNGs and provenance stay outside runtime delivery. The feeder is a separately toggleable attachment. This establishes an inspectable native kit without prematurely extending the asset schema.
 
 Blender, a GLB loader, KTX2, imported-model validation, formal clip/detail-tier metadata and automated export remain unimplemented. Payroll economics remain separately designed. The current calibration does not claim queued worker tasks or live settlement. See [the visual-pass record](LOBBY_VISUAL_PASS_2026-10-11.md).
 

@@ -34,7 +34,7 @@ export function buildLobby(scene: Scene, t: WorkshopTools) {
   const paper = new StandardMaterial('claim hall / yellowed forms', scene); paper.diffuseColor = Color3.FromHexString('#b7aa7b'); paper.specularColor = Color3.Black();
   const forms = new StandardMaterial('claim hall / authored paperwork wall', scene); forms.diffuseTexture = tex('paperwork-wall'); forms.specularColor = Color3.Black(); forms.emissiveColor = new Color3(.08, .073, .046);
   const filament = new StandardMaterial('claim hall / lamp filament', scene); filament.emissiveColor = Color3.FromHexString('#ffdb83'); filament.disableLighting = true;
-  const phosphor = new StandardMaterial('claim hall / green phosphor', scene); phosphor.emissiveColor = Color3.FromHexString('#86b990'); phosphor.disableLighting = true;
+  const phosphor = new StandardMaterial('claim hall / green phosphor', scene); phosphor.emissiveColor = Color3.FromHexString('#6c987a').scale(.7); phosphor.disableLighting = true;
   const crimson = new StandardMaterial('claim hall / returned indicator', scene); crimson.emissiveColor = Color3.FromHexString('#bb4432'); crimson.disableLighting = true;
   function root(name: string, x = 0, y = 0, yaw = 0) {
     const r = new TransformNode(name, scene); r.position.set(...worldPoint(x, y)); r.rotation.y = yaw; roots.push(r); return r;
@@ -49,7 +49,7 @@ export function buildLobby(scene: Scene, t: WorkshopTools) {
   sc.font = '9px monospace'; sc.fillText('LOOPFORGE / PAY CLAIM', 18, 48);
   for (let i = 0; i < 15; i++) { sc.strokeStyle = '#626146'; sc.strokeRect(18, 66 + i * 17, 219, 17); sc.fillRect(32, 73 + i * 17, 24 + i * 37 % 127, 1); }
   sc.strokeRect(149, 335, 87, 29); sheetTex.update();
-  const sheetMat = paper.clone('claim form print'); sheetMat.diffuseTexture = sheetTex; sheetMat.diffuseColor = Color3.White(); sheetMat.backFaceCulling = false;
+  const sheetMat = paper.clone('claim form print'); sheetMat.diffuseTexture = sheetTex; sheetMat.diffuseColor = new Color3(.64, .64, .60); sheetMat.backFaceCulling = false;
   // Analytic contact AO and baked pools remain cheap; physical lamps supply the
   // local view-dependent response. These are not transparent fog stacks.
   function radial(name: string, color: string, centerAlpha: number) {
@@ -103,7 +103,7 @@ export function buildLobby(scene: Scene, t: WorkshopTools) {
     box('CRT housing', [.61, .49, .44], [0, .22, 0], enamel, monitor, true);
     box('screen brass rim', [.56, .43, .06], [0, .25, -.245], brass, monitor);
     box('screen rubber', [.49, .35, .065], [0, .25, -.283], iron, monitor);
-    const screen = sphere('curved phosphor glass', .45, [0, .25, -.322], phosphor, monitor, [1, .65, .13], 12);
+    const screen = box('phosphor screen glass', [.44, .29, .025], [0, .25, -.326], phosphor, monitor);
     for (let i = 0; i < 6; i++) box('screen scanline', [.35 - i % 3 * .06, .009, .005], [-.015, .34 - i * .035, -.36], enamel, monitor);
     box('keyboard body', [.63, .045, .25], [-.50, 1.12, -.28], iron, r);
     for (let j = 0; j < 3; j++) for (let k = 0; k < 8; k++) box('typewriter key', [.048, .025, .048], [-.755 + k * .069, 1.15, -.35 + j * .062], brass, r);
@@ -177,6 +177,11 @@ export function buildLobby(scene: Scene, t: WorkshopTools) {
   box('portal warm overhead', [3.5, .12, .6], [0, 6.55, -.2], filament, entry);
   surface('threshold pool', 8, 9, [0, .029, -1.8], pool, entry, true);
   // Authored floor insignia, not a typed placeholder or oversized desk.
+  const stone = new PBRMaterial('claim hall / worn stone', scene);
+  const stoneTexture = tex('stone-floor'); stoneTexture.uScale = 18; stoneTexture.vScale = 12; stone.albedoTexture = stoneTexture;
+  stone.albedoColor = new Color3(.88, .90, .87); stone.metallic = .06; stone.roughness = .86; stone.maxSimultaneousLights = 3;
+  const floorRoot = root('claim hall / authored floor', 44, 104);
+  surface('worn flagstones', 71.6, 47.6, [0, .006, 0], stone, floorRoot, true);
   const ground = root('claim hall / floor identity', 65, 91.5);
   const emblem = new StandardMaterial('claim hall / floor inlay', scene); emblem.diffuseTexture = tex('floor-emblem'); emblem.diffuseTexture.hasAlpha = true; emblem.useAlphaFromDiffuseTexture = true; emblem.specularColor = Color3.Black();
   surface('Loopforge brass inlay', 8.5, 5.67, [0, .045, 0], emblem, ground, true);
@@ -185,7 +190,7 @@ export function buildLobby(scene: Scene, t: WorkshopTools) {
   const lamps = LOBBY_BAYS.slice(0, 3).map(b => {
     const p = worldPoint(b.x + .65, b.y + .04); p[1] = 1.63;
     const l = new SpotLight('claim hall / desk task light', new Vector3(...p), new Vector3(-.13, -1, -.16), 1.7, 1.6, scene);
-    l.diffuse = Color3.FromHexString('#ffd18a'); l.intensity = 5; l.range = 3.5; l.renderPriority = 2; return l;
+    l.diffuse = Color3.FromHexString('#ffd18a'); l.intensity = 1.1; l.range = 3.5; l.renderPriority = 2; return l;
   });
   return {
     roots,

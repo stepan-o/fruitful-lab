@@ -62,6 +62,21 @@
           "height": 1024
         }
       ]
+    },
+    "stone-floor": {
+      "kind": "image",
+      "width": 1254,
+      "height": 1254,
+      "variants": [
+        {
+          "src": "/media/files/80df24d4b99dacff8736d56aad8226481c2ce5a5fb90ae969d393d06eaa9e0a5.webp",
+          "mime": "image/webp",
+          "bytes": 331592,
+          "sha256": "80df24d4b99dacff8736d56aad8226481c2ce5a5fb90ae969d393d06eaa9e0a5",
+          "width": 1024,
+          "height": 1024
+        }
+      ]
     }
   }
 }

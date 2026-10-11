@@ -25,6 +25,7 @@ const images = Object.fromEntries(Object.entries(transitionAssets.assets).map(([
 export default function FactoryStudy() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const dock = useRef<HTMLElement>(null);
+  const navigation = useRef<HTMLElement>(null);
   const world = useRef<FactoryScene | null>(null);
   const host = useRef<StudyHost | null>(null);
   const audio = useRef<FactoryAudio | null>(null);
@@ -72,8 +73,8 @@ export default function FactoryStudy() {
   useEffect(() => {
     if (!canvas.current) return;
     let disposed = false;
-    const fit = () => { if(dock.current && canvas.current) world.current?.inset(canvas.current.clientHeight-dock.current.getBoundingClientRect().top+12); };
-    const size = new ResizeObserver(fit); if(dock.current) size.observe(dock.current);
+    const fit = () => { if(dock.current && canvas.current) world.current?.inset(canvas.current.clientHeight-dock.current.getBoundingClientRect().top+12, (navigation.current?.getBoundingClientRect().bottom ?? 113)+12); };
+    const size = new ResizeObserver(fit); if(dock.current) size.observe(dock.current); if(navigation.current) size.observe(navigation.current);
     const localHost = new StudyHost(); host.current = localHost;
     let lastEvent = 0, lastUiTick = -5, lastPhase = "1-night";
     const unsubscribe = localHost.subscribe(s => {
@@ -176,7 +177,7 @@ export default function FactoryStudy() {
         <div className={styles.clock}>DAY {String(state.day).padStart(2, "0")} <b>{state.phase === "shift" ? "SHIFT" : PHASE_NAMES[state.phase].toUpperCase()}</b><i>{status}</i></div>
         <div className={styles.utilities}><button onClick={toggleSound} aria-pressed={sound}>Sound {sound ? "on" : "off"}</button><button onClick={() => { world.current?.motion(!motion); setMotion(!motion); }} aria-pressed={motion}>Motion {motion ? "on" : "reduced"}</button></div>
       </header>
-      <nav className={styles.rooms} aria-label="Camera focus">
+      <nav ref={navigation} className={styles.rooms} aria-label="Camera focus">
         {([ ["wide", "↗", "Overview"], ["lobby", "L", "Lobby"], ["security", "01", "Security"], ["conveyor", "02", "Conveyor"] ] as const).map(([id, number, title]) => <button key={id} onClick={() => look(id)} aria-pressed={focus === id}><span>{number}</span>{title}</button>)}
         <button onClick={() => setMapOpen(true)} aria-haspopup="dialog"><span>⌗</span>Floor plan</button>
         <button onClick={inspect} aria-pressed={inspection}><span>◇</span>{inspection ? "Opening view" : "Equipment study"}</button>

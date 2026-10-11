@@ -17,7 +17,7 @@ The authenticated game waits for its own server snapshot before showing a score.
 
 ## Backend rollout and recovery email
 
-1. Keep the existing backend `DATABASE_URL` and `JWT_SECRET_KEY`. Apply `uv run --group dev alembic upgrade head` from `backend/` before running the new code. Head is `3acct101026`, following the game migration `2cdmx101026`. It adds `users.session_version` and `account_access_tokens`; existing accounts and passwords remain intact.
+1. Keep the existing backend `DATABASE_URL` and `JWT_SECRET_KEY`. Apply `uv run --group dev alembic upgrade head` from `backend/` before running the new code. Head is `3acct101026`, following the game migration `2cdmx101026`. Legacy databases at `c1a2b3c4d5e6` now pass through a schema-validated compatibility bridge; see [backend migration recovery](BACKEND_MIGRATIONS.md). It adds `users.session_version` and `account_access_tokens`; existing accounts and passwords remain intact.
 2. `backend/railway.json` includes this pre-deploy command. Confirm the Railway service uses this config file, the backend root and the intended database; otherwise set the same command in its deployment settings. Do not recreate or stamp an existing database to work around a migration error.
 3. For self-service recovery, configure **backend** environment variables:
    - `RESEND_API_KEY`: a Resend sending key, stored as a server secret.

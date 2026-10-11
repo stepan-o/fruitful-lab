@@ -8,7 +8,9 @@ import {
   type SupervisorId,
 } from "@/lib/loopforge/first-shift/contract";
 import { usePreference } from "@/lib/stepanoskin/preferences";
-import { useRun } from "./useRun";
+import { useFirstTurnRun } from "./useFirstTurnRun";
+import TurnFloor from "./TurnFloor";
+import PhaseInterlude from "./PhaseInterlude";
 import { FactoryAudio } from "./audio";
 import {
   Control,
@@ -26,7 +28,6 @@ import {
   Intercom,
   Planning,
   Records,
-  RoomFocus,
   type Workspace,
 } from "./ConsoleWorkspaces";
 import AdviserSelection, { firstDayCandidates } from "./AdviserSelection";
@@ -78,11 +79,15 @@ export default function FirstShift({
 }) {
   const theme = useConsoleTheme(),
     signals = useConsoleSignals(),
-    run = useRun();
+    run = useFirstTurnRun();
   const v = run.view,
     { pending, error } = run;
-  const [mandateAcknowledged,setMandateAcknowledged]=useState(false);
-  const incoming=Boolean(v?.phase === "choose" && !mandateAcknowledged);
+  const incoming=Boolean(v?.floor.stage === "mandate");
+  const [interlude,setInterlude]=useState<"night"|"morning"|"shift"|null>(null);
+  const [seenCards,setSeenCards]=useState<string[]>([]);
+  const closeInterlude=useCallback(()=>setInterlude(null),[]);
+  const cardKey=!v?null:v.floor.stage==="night"?"arrival":v.floor.stage==="mandate"?"morning":v.phase==="running"?"shift":v.phase==="complete"?"night":null;
+  if(cardKey&&!seenCards.includes(cardKey)){setSeenCards([...seenCards,cardKey]);setInterlude(cardKey==="arrival"?"night":cardKey as "night"|"morning"|"shift");}
   const rawSend=run.send;
   const send: typeof run.send = useCallback((...args) => incoming ? Promise.resolve(false) : rawSend(...args),[incoming,rawSend]);
   const [candidate,setCandidate]=useState<string|null>(null);
@@ -119,6 +124,7 @@ export default function FirstShift({
   const ticking =
       v?.phase === "running" &&
       !paused &&
+      !interlude &&
       !hidden &&
       !error &&
       !modal &&
@@ -134,7 +140,6 @@ export default function FirstShift({
     setPhase(v.phase);
     if (v.phase === "choose") {
       setScreen("factory");
-      setMandateAcknowledged(false);
       setOpeningRecord(v);
       setCandidate(null);
       setSwap(false);
@@ -147,7 +152,7 @@ export default function FirstShift({
     }
     if (v.phase === "ready") setScreen("factory");
     if (v.phase === "decision") setModal("incident");
-    if (v.phase === "running") setModal(null);
+    if (v.phase === "running") { setModal(null); if(phase === "ready"){setRoom("conveyor");setScreen("room");} }
     if (v.phase === "allocation") {
       setScreen("dispatch");
       setRetain(0);
@@ -250,7 +255,7 @@ export default function FirstShift({
     else setScreen(action as Workspace);
   }
   function restart() {
-    setMandateAcknowledged(false);
+    setSeenCards([]);
     setPhase(null);
     setPaused(false);
     setModal(null);
@@ -308,7 +313,9 @@ export default function FirstShift({
           </Control>
         </div>
       )}
+      {interlude&&<PhaseInterlude key={cardKey??"card"} phase={interlude} onComplete={closeInterlude}/>}
       <div
+        inert={Boolean(interlude)}
         className={s.workspace}
         ref={workspace}
         tabIndex={-1}
@@ -316,7 +323,8 @@ export default function FirstShift({
       >
         {v ? (
           <>
-            {screen !== "factory" && screen !== "leadership" && (
+            <TurnFloor view={v} media={media} room={room} onRoom={setRoom} onBack={()=>setScreen("factory")} send={rawSend} busy={busy} visible={(v.floor.stage==="night"||screen==="room")&&!suspended&&!hidden} playing={Boolean(ticking)} effects={effects} onIncident={()=>setModal("incident")} onPause={()=>setPaused(!paused)} onFeedback={()=>inspectFeedback(`room:${room}`)} />
+            {v.floor.stage!=="night"&&screen !== "factory" && screen !== "leadership" && screen!=="room" && (
               <button
                 className={s.backToWall}
                 onClick={() => setScreen("factory")}
@@ -324,7 +332,7 @@ export default function FirstShift({
                 ← Camera wall
               </button>
             )}
-            {screen === "factory" && <ProducerConsole
+            {v.floor.stage!=="night"&&screen === "factory" && <ProducerConsole
               media={media} view={v} skin={theme?.recipe.console ?? "foundry-desk"}
               incoming={incoming} busy={busy} effects={effects} active={!modal&&!suspended&&!hidden} ticking={Boolean(ticking)} speed={speed}
               primaryLabel={v.phase === "ready" ? "Start the line" : v.phase === "running" ? paused ? "Resume" : "Pause" : v.phase === "decision" ? "Respond to incident" : v.phase === "allocation" ? "Dispatch output" : v.phase === "complete" ? "Shift debrief" : "Awaiting orders"}
@@ -334,7 +342,7 @@ export default function FirstShift({
               onRoom={id=>{if(!incoming){setRoom(id);setScreen("room");}}}
               onInspect={id=>inspectFeedback(id as FeedbackId)} onFeedback={inspectFeedback}
               onNavigate={id=>{if(!incoming)setScreen(id);}} onSpeed={()=>setSpeed(speed===1?3:1)} />}
-            {screen === "leadership" && <LeadershipCall media={media} view={openingRecord ?? v} effects={effects} onClose={()=>setScreen("factory")} onContinue={()=>{setMandateAcknowledged(true);audio.current?.cue("commit");setScreen("factory");signals?.impulse("attention");}} />}
+            {screen === "leadership" && <LeadershipCall media={media} view={v} effects={effects} onClose={()=>setScreen("factory")} onContinue={()=>{if(!incoming){setScreen("factory");return;}void rawSend({type:"acknowledge_mandate"}).then(ok=>{if(ok){audio.current?.cue("commit");setScreen("factory");signals?.impulse("attention");}});}} />}
             {screen === "advisers" && <AdviserSelection selectedId={candidate} onInspect={setCandidate} media={media} candidates={firstDayCandidates(v)} busy={busy} onHelp={() => openHelp()} onAppoint={(id) => {
               if (id === "limen" || id === "stiletto") void send({type:"choose_adviser", adviser:id});
             }} />}
@@ -363,15 +371,6 @@ export default function FirstShift({
                 onSwap={() => setSwap(!swap)}
                 onBack={() => setScreen("intercom")}
                 onHelp={() => openHelp(1)}
-              />
-            )}
-            {screen === "room" && (
-              <RoomFocus
-                media={media}
-                view={v}
-                room={room}
-                onRecord={records}
-                onFeedback={inspectFeedback}
               />
             )}
             {screen === "dispatch" && (
@@ -422,7 +421,7 @@ export default function FirstShift({
           </div>
         )}
       </div>
-      {v && screen !== "leadership" && screen !== "factory" && (
+      {v && v.floor.stage!=="night" && screen !== "leadership" && screen !== "factory" && screen!=="room" && (
         <footer className={s.commandRail}>
           <nav className={s.consoleNav} aria-label="Director console">
             {(["factory", "development", "records"] as const).map((id) => (
@@ -504,15 +503,11 @@ export default function FirstShift({
                   className={s.transportKey}
                   aria-pressed={paused}
                   onClick={() => {
-                    if (screen !== "room") {
-                      setScreen("factory");
-                      setPaused(false);
-                    } else setPaused(!paused);
+                    setScreen("room");
+                    setPaused(false);
                   }}
                 >
-                  {paused || screen !== "room"
-                    ? "Resume"
-                    : "Pause"}
+                  Resume
                 </button>
                 <button
                   className={s.transportKey}

@@ -7,7 +7,7 @@ export const metadata = {
 const boundaries = [
   [
     "Commands",
-    "The viewer sends intent: choose an adviser, approve placements, start, advance one beat, respond to an incident, or commit output. The server validates the entire bounded command history.",
+    "The viewer sends intent: choose an adviser, approve placements, install equipment, start, advance a bounded fixed-tick batch, adjust intake/drive, respond to an incident, or commit output. The server validates the entire bounded command history.",
   ],
   [
     "Kernel",
@@ -23,7 +23,7 @@ const boundaries = [
   ],
   [
     "Viewer",
-    "The React viewer separates the six-camera wall, adviser intercom, placements, room focus, dispatch, debrief and records into focused workspaces. Illustrated assets carry those jobs within one persistent console. A later live 3D view joins through the same semantic boundary; neither presentation layer chooses outcomes or imports the kernel.",
+    "The React viewer separates the six-camera wall, adviser intercom, placements, room focus, dispatch, debrief and records into focused workspaces. Illustrated assets carry those jobs within one persistent console. One persistent Babylon scene now renders the chosen room from three authored CCTV angles and supplies focused construction/operating views; neither presentation layer chooses outcomes or imports the kernel.",
   ],
 ];
 export default function EngineNotes() {
@@ -37,7 +37,7 @@ export default function EngineNotes() {
       </header>
       <article className={styles.records}>
         <span className={styles.kicker}>
-          Implementation record / first-shift-1.0.0
+          Implementation record / first-turn-1.0.0
         </span>
         <h1>
           A small world.
@@ -62,12 +62,13 @@ export default function EngineNotes() {
         </ol>
         <h2>One console. Focused interfaces.</h2>
         <p>
-          The first turn opens on two live cameras, four unpowered screens and
-          two speaking supervisor tokens. Choosing a token opens an intercom;
-          appointment, briefing and placements each get their own space.
-          Incidents pause the shift. Dispatch uses the original office artwork,
-          and the results are filed against the logistics hall. Those settings
-          do not add managed rooms.
+          The opening night enters through the Lobby. Commission Security's
+          terminal and gate, then the Forge's drive. An optional outtake
+          investment competes with keeping cash. Morning returns to the producer
+          console, where the leadership call gates adviser selection. Appointment,
+          brief and assignments stay focused. The shift connects room cameras,
+          intake/drive controls and warranted incidents. Dispatch commits the
+          same produced workers to quota or workforce, then files the result.
         </p>
         <p>
           Confirmed facts remain on the instrument rail. Workspace focus, help,
@@ -81,9 +82,9 @@ export default function EngineNotes() {
             Focused interface contract and screen map →
           </Link>
         </p>
-        <h2>Six consoles, one world.</h2>
+        <h2>Four consoles, one world.</h2>
         <p>
-          The game menu and Settings expose all six equipment themes. A typed
+          The game menu and Settings expose the four integrated console skins. A typed
           presentation recipe selects pinned asset manifests, framing geometry
           and control-state families. It never changes the run controller,
           commands, random stream or knowledge projection. The author workbench
@@ -120,8 +121,8 @@ export default function EngineNotes() {
           changes the workers doing it; accidents target a particular robot and
           affect the crew present to witness them. Production creates new
           identities, and allocation retains or dispatches those same robots.
-          The interface receives permitted totals, not their hidden component
-          records. The same deterministic systems are tested with 10, 24 and 100
+          The interface receives permitted totals and observable body/task positions, while hidden component
+          records remain private. The same deterministic systems are tested with 10, 24 and 100
           starting workers; the playable opening uses 24.
         </p>
         <h2>What KVP means here.</h2>
@@ -129,11 +130,19 @@ export default function EngineNotes() {
           The original Kernel ↔ Viewer Protocol establishes sovereignty,
           replaceable viewers and explicit snapshots and differences. This slice
           uses a separately versioned HTTP application profile,{" "}
-          <code>loopforge-kvp-http/1</code>, with schema{" "}
-          <code>loopforge_first_shift_1</code>. It is not wire-compatible with
+          <code>loopforge-kvp-http/2</code>, with schema{" "}
+          <code>loopforge_first_turn_1</code>. It is not wire-compatible with
           the old KVP-0001 v0.1 live handshake or artifact manifest. Its fields,
           recovery behavior and differences are documented in the repository.
         </p>
+        <h2>Fixed ticks. Finite buffers.</h2>
+        <p>Each accepted advance runs twenty 50 ms steps. Assembly and clearance
+          update once per production beat; carriers and belt travel update on the
+          fixed clock. The viewer interpolates confirmed motion. A full outtake
+          stops useful assembly. Slow responses slow presentation rather than
+          skipping state. The first turn ends after 48 production beats and permanent
+          Dispatch; later days and free construction are not implemented yet.</p>
+        <p><Link href="/stepanoskin/loopforge/design#first-turn">Complete first-turn flow and execution checklist →</Link></p>
         <h2>Truth stays clean. Story gets messy.</h2>
         <p style={{ margin: "20px 0 32px" }}>
           The first-day advisers use authored, sincere policies. Their

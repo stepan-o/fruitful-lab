@@ -1,5 +1,7 @@
 # Webview: rendering, assets and delivery
 
+**11 October — current first-turn integration:** Main play now uses a separately versioned first-turn kernel for night commissioning → mandatory mandate → adviser/assignment → fixed-step room operation → paid permanent dispatch. One persistent Babylon scene supplies the room views. The old first-shift profile and standalone factory fixture remain regression/calibration tools. [Current implementation contract](FIRST_TURN_ENGINE.md) · [Execution checklist](FIRST_TURN_BUILD_PLAN.md). Earlier implementation descriptions below are historical where they conflict with this delivery.
+
 **Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate one selected room’s three CCTV angles inside the producer console and its focused action workspace before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
 
 Updated 11 October 2026. Rendering direction and first native lobby kit; implementation status is explicit below. Reader chapter: `/stepanoskin/loopforge/architecture/webview`. First calibration case: [Lobby art direction](LOBBY_ART_DIRECTION.md).

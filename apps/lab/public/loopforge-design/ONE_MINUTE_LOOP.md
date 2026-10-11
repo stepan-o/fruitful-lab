@@ -6,13 +6,13 @@
 
 **Build at night → morning context and adviser → approve assignments → operate and handle events → commit output → next night.**
 
-The opening now begins through the Lobby, with two guided Security placements followed by the first Conveyor element in Lattice Forge. This is a one-time teaching arc before the morning call, not a daily placement chore. Exact starter equipment and minimum-chain construction remain proposed in the [Conveyor tab](CONVEYOR_MINIGAME_PROPOSAL.md). The current playable runtime still starts at the console.
+The opening now begins through the Lobby, with two guided Security placements followed by the first Conveyor element in Lattice Forge. This is a one-time teaching arc before the morning call, not a daily placement chore. The first-turn implementation installs a terminal, gate and drive, then offers an optional outtake investment. It joins the mandatory morning call, adviser flow, live process controls and Dispatch. See [the executable contract](FIRST_TURN_ENGINE.md) and [build checklist](FIRST_TURN_BUILD_PLAN.md). The wider builder remains proposed.
 
 The one-minute loop is the **whole game day**, including its ordinary reading, choices and transitions. A routine day targets about 60 seconds; a heavier day targets two to three minutes at most. Giving production a minute and adding several minutes of briefing is outside this requirement. These are experience pacing targets, not an instruction to force a timed answer or penalize a player for reading slowly.
 
 A seven-day delivery cycle therefore has a nominal seven-minute routine-day baseline; if every day took three minutes it would be 21 minutes. That arithmetic explains why long mandatory briefings would undermine the weekly loop. Leadership calls, major developments and onboarding must fit into the longer-day allowance. Optional inspection and a player intentionally leaving the game paused do not establish the intended normal-path duration.
 
-The smaller operational beat is **notice the constraint → adjust or delegate → watch the material and worker consequence**. The [conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md) makes physical layout, installed machinery and local policy part of that loop; its mechanics remain proposed. It sits inside the day; it does not get its own minute or demand a compulsory incident. Quiet successful production is valid.
+The smaller operational beat is **notice the constraint → adjust or delegate → watch the material and worker consequence**. The [conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md) makes physical layout, installed machinery and local policy part of that loop; the bounded first-turn intake/assembly/outtake chain is now implemented; broader layout and policy choices remain proposed. It sits inside the day; it does not get its own minute or demand a compulsory incident. Quiet successful production is valid.
 
 ## Whole-day flow and interface ownership
 
@@ -138,7 +138,7 @@ No model call is necessary to make this loop complete. Structured authored advic
 | Decision | Room artwork, adviser speech, two actions and stated costs | Clear local-operator context, source/uncertainty treatment and concrete button labels |
 | Aftermath | Counts/condition change, a brief notice, room's latest receipt, records and debrief | A coherent immediate consequence beat; meaningful reactions without forcing a records visit |
 | Causality | Seeded rules, individual workers, private supervisor state and authored traces | Relevant history influencing subsequent problems; explicit links for multi-event arcs |
-| Content and timing | Two scheduled incidents at beats 12 and 30 in a 48-beat one-day fixture; normal advance delay is 900ms plus response time | Running alone takes roughly 43s plus transport/reading in this fixture. Measure the entire daily path against 60s routine / 2–3min heavier; current timings do not establish that target |
+| Content and timing | Current first turn: 48 production beats, 50 ms spatial ticks, incidents triggered by load/clearance. The older profile retains its scheduled fixtures only for regression. Normal advance delay is 900 ms plus response time | Measure the entire night/day path, including construction, reading and dispatch. Runtime alone does not establish the 2–3 minute first-play target |
 | Carry forward | Permanent dispatch and a terminal debrief | Later days, unresolved consequences and tomorrow's adviser choice are not yet playable |
 
 ## Decisions to settle before new interface work

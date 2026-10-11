@@ -15,8 +15,10 @@ export const name = (id: SupervisorId | null | undefined) =>
   id === "limen" ? "LIMEN" : id === "stiletto" ? "STILETTO" : "Unassigned";
 export const roomName = (id: RoomId) =>
   id === "conveyor" ? "Lattice Forge" : "Security";
-export const time = (tick: number) =>
-  `${String(6 + Math.floor(tick / 4)).padStart(2, "0")}:${String((tick % 4) * 15).padStart(2, "0")}`;
+export const time = (tick: number) => {
+  const minutes=360+Math.round(Math.max(0,Math.min(48,tick))*1080/48);
+  return `${String(Math.floor(minutes/60)).padStart(2,"0")}:${String(minutes%60).padStart(2,"0")}`;
+};
 export const ROOMS = [
   { id: "conveyor", title: "Lattice Forge", art: "forge" },
   { id: "security", title: "Security", art: "security" },

@@ -160,10 +160,13 @@ export function buildFloor(scene:Scene,t:WorkshopTools){
   // Lobby furniture and its authored surfaces live in the reusable claim-hall kit.
   for(let i=0;i<3;i++){const x=92+i*2.8;box('dispatch desk',[2,1.1,1.35],at(x,102,.55),green,support);for(let j=0;j<6;j++)box('dispatch files',[.65,.2,.5],at(x+(j%2)*.7-.35,102.1,1.25+Math.floor(j/2)*.23),brass,support);}
   for(let x=246;x<261;x+=3.2)for(let y=145;y<163;y+=5){box('loading pallet',[2,.18,3],at(x,y,.09),iron,support);box('packed units',[1.65,1.6,2.5],at(x,y,.98),green,support);for(const dx of [-.65,.65])box('shipping strap',[.1,1.66,2.6],at(x+dx,y,.97),brass,support);}
-  return {roots,focus(id:ZoneId|"wide"){
+  let studying=false;
+  return {roots,focus(id:ZoneId|"wide",isolated=false){
+    for(const n of roots)n.setEnabled(!isolated||id==="wide"||n.name.startsWith(id+" ")||n===transit);
+    for(const n of [...covers,...shutters])if(studying)n.setEnabled(false);
     // Cut away a foreground neighbour's north wall, never its floor or admission.
     // A tall Forge wall must not hide Security when inspecting its checkpoint.
     const focused=id==="wide"?null:zone(id).rect;
-    for(const [other,n] of northWalls){const r=zone(other).rect;n.setEnabled(!focused||!(r.y>=focused.y+focused.h/2&&r.x<focused.x+focused.w&&focused.x<r.x+r.w));}
-  },study(enabled:boolean){for(const n of [...covers,...shutters])n.setEnabled(!enabled);},center(id:ZoneId){const r=zone(id).rect;return new Vector3(...at(r.x+r.w/2,r.y+r.h/2,1.7));},size:FLOOR_SIZE};
+    for(const [other,n] of northWalls){const r=zone(other).rect;n.setEnabled((!isolated||id==="wide"||other===id)&&(!focused||!(r.y>=focused.y+focused.h/2&&r.x<focused.x+focused.w&&focused.x<r.x+r.w)));}
+  },study(enabled:boolean){studying=enabled;for(const n of [...covers,...shutters])n.setEnabled(!enabled);},center(id:ZoneId){const r=zone(id).rect;return new Vector3(...at(r.x+r.w/2,r.y+r.h/2,1.7));},size:FLOOR_SIZE};
 }

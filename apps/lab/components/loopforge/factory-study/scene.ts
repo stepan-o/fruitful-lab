@@ -1,3 +1,4 @@
+import { SceneInstrumentation } from "@babylonjs/core/Instrumentation/sceneInstrumentation";
 import { Engine } from "@babylonjs/core/Engines/engine";
 import { Scene } from "@babylonjs/core/scene";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
@@ -35,8 +36,8 @@ import { gateOpen, initialStudy, type Fixture, type StudyState } from "@/lib/loo
 import { WORK_AREAS } from '@/lib/loopforge/spatial/capacity';
 export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
-export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number };
-export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; build(enabled: boolean, selected: Fixture | null): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; dispose(): void };
+export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
+export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; build(enabled: boolean, selected: Fixture | null): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
@@ -45,6 +46,7 @@ const C = (hex: string) => Color3.FromHexString(hex);
 export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixture) => void, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void): FactoryScene {
   const engine = new Engine(canvas, false, { stencil: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
   const scene = new Scene(engine);
+  const instrumentation=new SceneInstrumentation(scene);
   try {
   scene.clearColor = new Color4(.018, .025, .025, 1);
   scene.ambientColor = new Color3(.08, .10, .09);
@@ -59,6 +61,9 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   // Demand rendering must also redraw decoded textures and restored GPU resources.
   scene.onDataLoadedObservable.add(() => { renderDirty = true; resourcesReady = false; });
   engine.onContextRestoredObservable.add(() => { renderDirty = true; resourcesReady = false; });
+  let visible = true, cctvEnabled = false, cctvAngle = 0, tripleFeed = false;
+  const alternateCameras = [1,2].map(n => new ArcRotateCamera(`room-angle-${n}`, 0, 1, 20, Vector3.Zero(), scene));
+  let isolatedRoom = false;
   let equipmentStudy = false, framing: Framing = "work";
   let building = false, selected: Fixture | null = null;
   let bottomInset = 180, topInset = 125;
@@ -91,7 +96,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     const ctx = tex.getContext() as CanvasRenderingContext2D; const data = ctx.createImageData(256, 256);
     for (let y = 0; y < 256; y++) for (let x = 0; x < 256; x++) {
       const k = (y * 256 + x) * 4, grain = random();
-      const shade = 200 + grain * 40;
+      const shade = 220 + grain * 12;
       data.data[k] = shade; data.data[k + 1] = shade * .96; data.data[k + 2] = shade * .88; data.data[k + 3] = 255;
     } ctx.putImageData(data, 0, 0);
     ctx.globalAlpha = .16;
@@ -101,7 +106,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     const bump=new DynamicTexture(name+" surface relief",256,scene,true),bc=bump.getContext() as CanvasRenderingContext2D;
     const source=ctx.getImageData(0,0,256,256),normal=bc.createImageData(256,256);
     for(let y=0;y<256;y++)for(let x=0;x<256;x++){const k=(y*256+x)*4;normal.data[k]=128+(source.data[(y*256+(x+1)%256)*4]-source.data[(y*256+(x+255)%256)*4])*.45;normal.data[k+1]=128+(source.data[(((y+1)%256)*256+x)*4]-source.data[(((y+255)%256)*256+x)*4])*.45;normal.data[k+2]=252;normal.data[k+3]=255;}
-    bc.putImageData(normal,0,0);bump.update(false);m.bumpTexture=bump;m.bumpTexture.level=.45;
+    bc.putImageData(normal,0,0);bump.update(false);m.bumpTexture=bump;m.bumpTexture.level=.08;
     return m;
   }
   function glow(name: string, color: string, strength = 1) {
@@ -155,7 +160,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     m.position.copyFrom(pa.add(pb).scale(.5)); m.rotationQuaternion = Quaternion.FromUnitVectorsToRef(Vector3.Up(), delta.normalize(), new Quaternion()); return m;
   }
   function ring(name: string, radius: number, thickness: number, pos: V, mat: Mat, parent?: TransformNode) {
-    return finish(MeshBuilder.CreateTorus(name, { diameter: radius * 2, thickness, tessellation: 24 }, scene), mat, pos, parent);
+    return finish(MeshBuilder.CreateTorus(name, { diameter: radius * 2, thickness, tessellation: radius<.3?8:20 }, scene), mat, pos, parent);
   }
   function bolts(parent: TransformNode | undefined, xs: number[], ys: number[], z: number) {
     for (const x of xs) for (const y of ys) { const b = cylinder("hex fixing", .045, .045, [x,y,z], brass, parent, 6); b.rotation.x = Math.PI / 2; }
@@ -222,6 +227,13 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   });
   const plates=beltParts.map(part=>part.mesh),beltMatrix=Matrix.Identity();
   for(const x of [-5.12,5.12]){box("end housing",[.5,1.55,2.5],[x,.8,0],green,line,true);for(const z of [-1,1]){const cap=cylinder("bearing cap",.3,.16,[x,1.22,z],brass,line);cap.rotation.x=Math.PI/2;}}
+  const intakeTrays:TransformNode[]=[];
+  const outtakeAttachment=root("paired outtake carriage");outtakeAttachment.parent=line;
+  box("outtake extension",[2.5,.24,2.8],[6.55,1.2,0],green,outtakeAttachment,true);
+  for(const z of [-1.15,1.15]){pipe("outtake guide",[[5.25,1.45,z],[7.8,1.45,z]],.06,brass,outtakeAttachment);box("extension leg",[.2,1.2,.2],[7.2,.6,z],iron,outtakeAttachment);}
+  for(let i=0;i<6;i++){const tray=root("incoming cradle "+i,[-6.7+(i%2)*1.3,.7+Math.floor(i/2)*.23,0]);tray.parent=line;box("empty carrier",[1.12,.1,1.32],[0,0,0],brass,tray);for(const z of [-.6,.6])box("carrier rim",[1.12,.12,.05],[0,.07,z],iron,tray);intakeTrays.push(tray);}
+  box("intake rack",[3,.16,1.7],[-6.05,.6,0],green,line,true);
+  for(const x of [-7.2,-4.9])box("rack leg",[.14,.6,1.5],[x,.3,0],iron,line);
   const drive=root("conveyor drive",[4.9,0,-1.7]);
   box("drive skid",[2.7,.2,1.3],[0,.1,0],iron,drive,true);
   const motor=cylinder("ribbed drive motor",.46,1.9,[0,.7,0],green,drive,32);motor.rotation.z=Math.PI/2;
@@ -239,7 +251,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     cylinder("instrument cap",.28,.18,[x,3.75,.7],green);
     pipe("tool feed",[[x,3.3,.5],[x,2.9,.4],[x+.3,2.5,.1]],.085,copper);
   }
-  sign("LATTICE / 01", "TEST SPECIMENS • NO QUOTA CREDIT",3.1,[3,3.9,2.8]);
+  sign("LATTICE / 01", "INTAKE / ASSEMBLY / OUTTAKE",3.1,[3,3.9,2.8]);
   for(const x of [0,6]){
     const tank=cylinder("pressure vessel",.47,2,[x,1.1,3.4],green,undefined,24);shadow.addShadowCaster(tank);
     sphere("tank shoulder",.95,[x,2.1,3.4],iron,undefined,[1,.45,1]);
@@ -295,11 +307,11 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   box("breastplate",[.38,.34,.10],[0,1.17,-.20],iron,workerTemplate);
   for(let i=0;i<4;i++)box("chest louvre",[.29,.021,.04],[0,1.3-i*.07,-.265],brass,workerTemplate);
   cylinder("neck piston",.075,.16,[0,1.55,0],brass,workerTemplate);
-  sphere("cranium",.43,[0,1.79,0],iron,workerTemplate,[.85,1.1,.83],16);
+  sphere("cranium",.43,[0,1.79,0],iron,workerTemplate,[.85,1.1,.83],10);
   box("brow",[.38,.07,.13],[0,1.86,-.16],brass,workerTemplate);
   for(const x of [-.095,.095])sphere("optic",.063,[x,1.81,-.185],cyan,workerTemplate,[1,.7,.45],8);
   box("jaw",[.22,.10,.16],[0,1.63,-.12],green,workerTemplate);
-  for(const x of [-.105,.105]){sphere("optic socket",.14,[x,1.81,-.14],dark,workerTemplate,[1,1,.7],12);const rim=ring("ear bearing",.1,.026,[x*2.0,1.78,0],brass,workerTemplate);rim.rotation.z=Math.PI/2;}
+  for(const x of [-.105,.105]){sphere("optic socket",.14,[x,1.81,-.14],dark,workerTemplate,[1,1,.7],8);const rim=ring("ear bearing",.1,.026,[x*2.0,1.78,0],brass,workerTemplate);rim.rotation.z=Math.PI/2;}
   for(let i=0;i<4;i++)box("jaw tooth",[.026,.063,.035],[-.06+i*.04,1.655,-.218],brass,workerTemplate);
   pipe("head conduit",[[.21,1.74,.04],[.28,1.56,.02],[.2,1.45,.1]],.021,copper,workerTemplate);
   for(let i=0;i<3;i++)ring("abdomen ring",.15,.03,[0,.81+i*.1,0],brass,workerTemplate);
@@ -313,9 +325,9 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   function limb(name:string,a:V,b:V){const m=bar(name,a,b,.067,iron,workerTemplate);limbParts.push({mesh:m,name});return m;}
   for(const side of [-1,1]){
     const x=side*.145;
-    limb("thigh"+side,[x,.63,0],[x,.34,0]);sphere("knee"+side,.145,[x,.34,0],brass,workerTemplate,[1,1,1],8);
+    limb("thigh"+side,[x,.63,0],[x,.34,0]);sphere("knee"+side,.145,[x,.34,0],brass,workerTemplate,[1,1,1],6);
     limb("shin"+side,[x,.34,0],[x,.09,-.01]);box("foot"+side,[.17,.1,.31],[x,.055,-.075],dark,workerTemplate);
-    limb("upperarm"+side,[side*.39,1.34,0],[side*.46,1.02,-.035]);sphere("elbow"+side,.12,[side*.46,1.02,-.035],brass,workerTemplate,[1,1,1],8);
+    limb("upperarm"+side,[side*.39,1.34,0],[side*.46,1.02,-.035]);sphere("elbow"+side,.12,[side*.46,1.02,-.035],brass,workerTemplate,[1,1,1],6);
     limb("forearm"+side,[side*.46,1.02,-.035],[side*.43,.78,-.10]);box("hand"+side,[.12,.15,.10],[side*.43,.75,-.11],brass,workerTemplate);
   }
   // Keep worker identity in the snapshot, not thousands of per-part scene nodes.
@@ -335,12 +347,12 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     const match=/^(thigh|shin|foot|upperarm|forearm|hand|elbow|knee)(-?1)$/.exec(mesh.name);
     return {mesh,buffer:new Float32Array(0),part:match?.[1]??"",side:Number(match?.[2]??0)};
   });
-  const robotPositions:Vector3[]=[];
+  const robotPositions:Vector3[]=[], robotDistances:number[]=[];
   let populationSize=0;
   function population(n:number){
     if(n===populationSize)return;populationSize=n;
-    while(robotPositions.length<n)robotPositions.push(new Vector3(0,0,0));
-    for(const part of robotParts){part.buffer=new Float32Array(n*16);part.mesh.thinInstanceSetBuffer("matrix",part.buffer,16,false);}
+    while(robotPositions.length<n){robotPositions.push(new Vector3(0,0,0));robotDistances.push(0);}
+    for(const part of robotParts){part.buffer=new Float32Array(n*16);part.mesh.thinInstanceSetBuffer("matrix",part.buffer,16,false);part.mesh.setEnabled(n>0);}
   }
   population(10);
   const robotMatrix=Matrix.Identity(),robotScale=Vector3.One(),robotRotation=Quaternion.Identity();
@@ -388,7 +400,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     const f=hit?.pickedMesh?.metadata?.fixture as Fixture|undefined;if(hit?.hit&&f===selected)install(f);
   });
   // Merge static construction by material/parent. Moving mechanisms keep their transforms.
-  const mergeParents:(TransformNode|null)[]=[null,terminal,gate,drive,line,processFrame,skull,...specimens,...floor.roots,...equipment.roots,...lobby.roots];
+  const mergeParents:(TransformNode|null)[]=[null,terminal,gate,drive,line,processFrame,skull,outtakeAttachment,...intakeTrays,...specimens,...floor.roots,...equipment.roots,...lobby.roots];
   for(const parent of mergeParents){
     parent?.computeWorldMatrix(true);
     const candidates=scene.meshes.filter(m=>m instanceof Mesh&&m.parent===parent&&m!==cone&&!m.metadata?.unbatched&&!plates.includes(m as Mesh)&&m.material!==transparent&&m.isEnabled()) as Mesh[];
@@ -406,7 +418,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   lobby.finalize();
   const pipeline=new DefaultRenderingPipeline("film",false,scene,[camera]);pipeline.samples=1;pipeline.fxaaEnabled=true;pipeline.bloomEnabled=true;pipeline.bloomThreshold=.85;pipeline.bloomWeight=.22;pipeline.bloomKernel=32;pipeline.bloomScale=.35;
   scene.imageProcessingConfiguration.toneMappingEnabled=true;scene.imageProcessingConfiguration.toneMappingType=1;scene.imageProcessingConfiguration.exposure=1.22;scene.imageProcessingConfiguration.contrast=1.12;
-  let lastEvent=0,flash=0,flashKind:"cycle"|"jam"|"idle"="idle",motionClock=0;
+  let lastEvent=0,flash=0,flashKind:"cycle"|"jam"|"attention"|"idle"="idle",motionClock=0;
   // Pick surfaces mirror room bounds. Locked rooms select their sealed roof, never an interior.
   const pickMaterial=new StandardMaterial("room hit surfaces",scene);pickMaterial.alpha=0;pickMaterial.disableDepthWrite=true;
   for(const z of ZONES){const r=z.rect,hit=box(z.name+" hit surface",[r.w-.2,.015,r.h-.2],[...worldPoint(r.x+r.w/2,r.y+r.h/2)] as V,pickMaterial);hit.position.y=.02;hit.isPickable=true;hit.metadata={zone:z.id};}
@@ -414,11 +426,14 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const frame=()=>{
     resourcesReady = false;renderDirty = true;
     const viewportHeight=canvas.clientHeight*camera.viewport.height,aspect=canvas.clientWidth/Math.max(1,viewportHeight);
-    floor.focus(focus);
+    floor.focus(focus,isolatedRoom);
+    for(const n of lobby.roots)if(!n.parent)n.setEnabled(!isolatedRoom||focus==='lobby');
+    for(const n of equipment.roots)n.setEnabled((!isolatedRoom||n.metadata?.room===focus)&&(!n.metadata?.room||equipmentStudy||state.unlockedRooms.includes(n.metadata.room)));
+    for(const n of [line,processFrame,skull,beacon])n.setEnabled(!isolatedRoom||focus==='conveyor');
     signal.setEnabled(focus === "wide" || focus === "conveyor" || focus === "security");
     localGlow.setEnabled(focus !== "lobby");
     const local=focus!=="wide"&&framing!=="room"&&(equipmentStudy||state.unlockedRooms.includes(focus as typeof state.unlockedRooms[number])||zone(focus).kind==="support");
-    const r=focus==="wide"?{x:0,y:0,w:FLOOR_SIZE.width+2,h:FLOOR_SIZE.height}:focus==="lobby"&&framing==="detail"?{x:57.6,y:81.6,w:2.8,h:3.4}:local?WORK_AREAS[focus]:zone(focus).rect;
+    const r=focus!=="wide"&&framing==="detail"&&focus!=="lobby"?(focus==="conveyor"?{x:115,y:139,w:17,h:12}:{x:120,y:112,w:8,h:8}):focus==="wide"?{x:0,y:0,w:FLOOR_SIZE.width+2,h:FLOOR_SIZE.height}:focus==="lobby"&&framing==="detail"?{x:57.6,y:81.6,w:2.8,h:3.4}:local?WORK_AREAS[focus]:zone(focus).rect;
     targetPoint=new Vector3(...worldPoint(r.x+r.w/2,r.y+r.h/2));targetPoint.y=1.7;
     const center=targetPoint;taskLight.position.set(center.x-4,7,center.z+3);localGlow.position.set(center.x+5,4,center.z-5);
     if(focus==="lobby"){
@@ -446,17 +461,32 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
         targetRadius=Math.max(targetRadius,depth+Math.max(Math.abs(right)/(tan*aspect),Math.abs(up)/tan));
       }
     }
+    if(building&&focus==='lobby'&&framing==='work'){targetPoint.set(...worldPoint(64,87));targetPoint.y=1.5;targetRadius=Math.max(17,19/aspect);camera.beta=1.05;}
+    if(building&&selected){const socket=FIXTURE_SOCKETS[selected];targetPoint.set(...worldPoint(socket.x,socket.y));targetPoint.y=1.25;targetRadius=Math.max(9,10/aspect);camera.beta=1.00;}
     transition=1;
   };
-  const viewport=()=>{const h=Math.max(1,canvas.clientHeight),top=topInset,bottom=Math.min(h*.52,bottomInset);camera.viewport=new Viewport(0,bottom/h,1,Math.max(.25,(h-bottom-top)/h));};
-  const resize=()=>{const w=canvas.clientWidth;engine.setHardwareScalingLevel(1/(Math.min(w<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();viewport();frame();};
+  const configureFeeds=()=>{
+    if(!cctvEnabled){scene.activeCameras=null;scene.activeCamera=camera;camera.attachControl(canvas,true);return;}
+    camera.detachControl();
+    const poses = focus==='security'
+      ? [{x:125,y:123,r:20,a:-1.45,b:.92},{x:123,y:115,r:10,a:-1.15,b:1.0},{x:126.5,y:128,r:11,a:-2.4,b:.94}]
+      : focus==='lobby'
+        ? [{x:64,y:89,r:25,a:-1.85,b:1.02},{x:59,y:83,r:9,a:-1.65,b:1.02},{x:74,y:100,r:18,a:-2.1,b:.95}]
+        : [{x:122,y:145,r:19,a:-1.36,b:.98},{x:116,y:144,r:12,a:-.75,b:1.00},{x:124,y:145,r:12,a:-2.65,b:.84}];
+    const cams=[camera,...alternateCameras];
+    cams.forEach((cam,i)=>{const p=poses[(cctvAngle+i)%3];cam.alpha=p.a;cam.beta=p.b;cam.radius=p.r;cam.setTarget(new Vector3(...worldPoint(p.x,p.y)).add(new Vector3(0,1.4,0)));cam.fov=.7;cam.minZ=.15;cam.maxZ=400;cam.viewport=!tripleFeed||i===0?new Viewport(0,0,tripleFeed?.70:1,1):new Viewport(.705,i===1?.505:0,.295,.495);});
+    scene.activeCameras=tripleFeed?cams:[camera];transition=0;
+  };
+  const viewport=()=>{if(cctvEnabled){configureFeeds();return;}const h=Math.max(1,canvas.clientHeight),top=topInset,bottom=Math.min(h*.52,bottomInset);camera.viewport=new Viewport(0,bottom/h,1,Math.max(.25,(h-bottom-top)/h));};
+  const resize=()=>{const w=canvas.clientWidth;engine.setHardwareScalingLevel(1/(Math.min(w<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();frame();viewport();};
   const observer=new ResizeObserver(resize);observer.observe(canvas);resize();
   let hidden=document.hidden;
-  const visibility=()=>{hidden=document.hidden;lastTime=performance.now();if(hidden)engine.stopRenderLoop(render);else {renderDirty=true;frames=0;reportTime=performance.now();engine.runRenderLoop(render);}};
+  const visibility=()=>{hidden=document.hidden;lastTime=performance.now();if(hidden||!visible)engine.stopRenderLoop(render);else {renderDirty=true;frames=0;reportTime=performance.now();engine.runRenderLoop(render);}};
+  const frameIntervals:number[]=[];let previousFrame=0;
   let frames=0,reportTime=performance.now(),shadowView="",shadowTravel=-1,shadowInstalled=-1,shadowArm=-1;
   const keyMap=shadow.getShadowMap()!,signalMap=signalShadows.getShadowMap()!;keyMap.refreshRate=0;signalMap.refreshRate=0;
   function render(){
-    if(hidden)return;
+    if(hidden||!visible)return;
     const now=performance.now();
     const cameraMoving=transition>0||Math.abs(camera.inertialAlphaOffset)+Math.abs(camera.inertialBetaOffset)+Math.abs(camera.inertialRadiusOffset)+Math.abs(camera.inertialPanningX)+Math.abs(camera.inertialPanningY)>.0001;
     // Quiet rooms need only a 30 Hz presentation cadence. Camera gestures and
@@ -464,26 +494,36 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     const quietFrame = !cameraMoving && !state.running;
     if(quietFrame&&!renderDirty&&(!moving||now<idleDue-2))return;
     idleDue = quietFrame ? Math.max(idleDue+1000/30, now) : now+1000/30;
+    if(previousFrame&&now-previousFrame<200){frameIntervals.push(now-previousFrame);if(frameIntervals.length>300)frameIntervals.shift();}previousFrame=now;
     const dt=Math.min(.06,(now-lastTime)/1000);lastTime=now;renderDirty=false;if(moving)motionClock+=dt;
     if(transition>0){const speed=moving?1-Math.exp(-dt*4):1;camera.setTarget(Vector3.Lerp(camera.target,targetPoint,speed),false,false,true);camera.radius+=(targetRadius-camera.radius)*speed;transition-=moving?dt*.8:1;}
-    const targetTravel=state.travel/1600;visualTravel+=(targetTravel-visualTravel)*Math.min(1,dt*18);
+    const targetTravel=state.travel/1600;visualTravel+=(targetTravel-visualTravel)*Math.min(1,dt*(state.process?3:18));
     for(const part of beltParts){for(let j=0;j<part.indices.length;j++){
       Matrix.TranslationToRef(-5+((part.indices[j]*10/36+visualTravel*1.8)%10),1.43,0,beltMatrix);part.buffer.set(beltMatrix.asArray(),j*16);
     }part.mesh.thinInstanceBufferUpdated("matrix");}
-    for(let i=0;i<specimens.length;i++){specimens[i].position.x=-4.5+((i*1.9+visualTravel*1.8)%9.5);specimens[i].position.y=1.5+(state.running&&!state.jammed&&moving?Math.sin(motionClock*13+i)*.004:0);}
+    for(let i=0;i<specimens.length;i++){
+      const process=state.process, specimen=specimens[i];
+      specimen.setEnabled(!process||(i===0?process.assembly>0:i<=process.outtake));
+      const dest=process?(i===0?-.6:1.3+(i-1)*1.35):-4.5+((i*1.9+visualTravel*1.8)%9.5);
+      specimen.position.x=dest;specimen.position.y=1.5+(state.running&&!state.jammed&&moving?Math.sin(motionClock*13+i)*.004:0);
+    }
+    for(let i=0;i<intakeTrays.length;i++)intakeTrays[i].setEnabled(!!state.process&&i<state.process.intake);
+    outtakeAttachment.setEnabled(!!state.process?.attachment);
     flywheel.rotation.x=-visualTravel*4;
     const open=gateOpen(state)?1:0;arm.position.y+=(1.25+open*1.4-arm.position.y)*Math.min(1,dt*5);
     scan.position.y=2.17+(moving?Math.sin(motionClock*1.8)*.29:0);
-    for(const f of ["terminal","gate","drive"] as const){const placed=equipmentStudy||state.installed.includes(f);installedRoots[f].setEnabled(placed);ghostRoots[f].setEnabled(building&&!placed&&f===selected);}
+    for(const f of ["terminal","gate","drive"] as const){const placed=(equipmentStudy||state.installed.includes(f))&&(!isolatedRoom||(f==="drive"?focus==="conveyor":focus==="security"));installedRoots[f].setEnabled(placed);ghostRoots[f].setEnabled(building&&!placed&&f===selected);}
     if (state.running || posesDirty) {
     const figures=equipmentStudy?SCALE_FIGURES:[];
     for(let i=0;i<state.workers.length+figures.length;i++){
       const w=state.workers[i],figure=figures[i-state.workers.length],pos=robotPositions[i];
       const dest=w?{p:new Vector3(...worldPoint(w.position.x/1000,w.position.y/1000)),angle:Math.atan2(w.position.dx,-w.position.dy)+Math.PI}:{p:new Vector3(...worldPoint(figure.x,figure.y)),angle:Math.PI};
-      if(Vector3.DistanceSquared(pos,dest.p)>4)pos.copyFrom(dest.p);else Vector3.LerpToRef(pos,dest.p,Math.min(1,dt*20),pos);
-      const walking=!!w&&state.running&&!w.waiting&&moving&&!equipmentStudy,phase=motionClock*(state.pace==="push"?7.8:5.6)+i*1.7,sway=walking?Math.sin(phase)*.17:0;
+      if(Vector3.DistanceSquared(pos,dest.p)>4)pos.copyFrom(dest.p);else Vector3.LerpToRef(pos,dest.p,Math.min(1,dt*(state.process?3:20)),pos);
+      robotDistances[i]+=((w?.distance??motionClock*1000)-robotDistances[i])*Math.min(1,dt*3);
+      const walking=!!w&&state.running&&!w.waiting&&moving&&!equipmentStudy, phase=(w?.distance!==undefined?robotDistances[i]:motionClock*1000)/280+i*1.7, working=w?.task==="work"&&state.running&&moving, sway=walking?Math.sin(phase)*.17:working?Math.sin(state.tick*.12+i)*.055:0;
       pos.y=walking?Math.abs(Math.sin(phase))*.022:0;
-      robotScale.setAll(.9+(i%4)*.025);Quaternion.RotationYawPitchRollToRef(dest.angle,0,0,robotRotation);
+      robotScale.setAll(isolatedRoom&&w?.position.room!==focus?0:.9+(i%4)*.025);Quaternion.RotationYawPitchRollToRef(dest.angle,0,w?.task==="lost"?1.5:0,robotRotation);
+      if(w?.task==="lost")pos.y=.28;
       Matrix.ComposeToRef(robotScale,robotRotation,pos,robotMatrix);const matrix=robotMatrix.asArray(),offset=i*16;
       for(const part of robotParts){
         part.buffer.set(matrix,offset);
@@ -496,10 +536,10 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     for(const part of robotParts)part.mesh.thinInstanceBufferUpdated("matrix");
     posesDirty = false;
     }
-    if(state.jammed){flash=1;flashKind="jam";}else flash=Math.max(0,flash-dt*.72);
+    if(state.jammed){flash=1;flashKind="jam";}else if(state.process?.blocked){flash=.55;flashKind="attention";}else flash=Math.max(0,flash-dt*.72);
     const idle=flash===0&&moving&&motionClock%12<1.8;
     const power=flash>0?flash:idle?Math.sin(motionClock%12/1.8*Math.PI)*.2:0;
-    const color=flashKind==="jam"&&flash>0?C("#ff183f"):flashKind==="cycle"&&flash>0?C("#65ffc1"):C("#49b5b6");
+    const color=flashKind==="jam"&&flash>0?C("#ff183f"):flashKind==="cycle"&&flash>0?C("#65ffc1"):flashKind==="attention"&&flash>0?C("#ffb353"):C("#49b5b6");
     const angle=motionClock*(state.jammed?5.8:2.1);rotor.rotation.y=angle;
     const direction=new Vector3(Math.sin(angle),-.24,-Math.cos(angle)).normalize();signal.direction=direction;signal.diffuse=color;signal.intensity=power*(state.jammed?48:17);lens.material=power>.05?(state.jammed?red:cyan):quiet;
     cone.setEnabled(signal.isEnabled()&&power>.02);cone.position.copyFrom(signal.position.add(direction.scale(6)));cone.rotationQuaternion=Quaternion.FromUnitVectorsToRef(new Vector3(0,-1,0),direction,new Quaternion());beamMat.emissiveColor=color;beamMat.alpha=power*(state.jammed?.026:.012);
@@ -510,22 +550,25 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     if(signal.isEnabled()&&signal.intensity>.01)signalMap.resetRefreshCounter();
     equipment.animate(motionClock,moving,focus);
     lobby.animate(motionClock,moving,focus==="lobby",framing!=="room");
-    const beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady;const renderedAt=performance.now();frames++;if(now-reportTime>1200){const fps=Math.round(frames*1000/(now-reportTime));report({fps,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now)});if((moving||state.running||cameraMoving)&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;frames=0;reportTime=now;}
+    const beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady;const renderedAt=performance.now();frames++;if(now-reportTime>1200){const fps=Math.round(frames*1000/(now-reportTime));report({fps,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),p95:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.95)]??0),p99:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.99)]??0),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});if((moving||state.running||cameraMoving)&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;frames=0;reportTime=now;}
   }
   equipment.study(false);
   const input = () => { renderDirty = true; };
   canvas.addEventListener("keydown", input);
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
-    update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const e=s.events.at(-1);if(e&&e.id!==lastEvent){lastEvent=e.id;if(e.kind==="cycle"||e.kind==="jam"){flash=1;flashKind=e.kind;}if(e.kind==="release"){flash=0;flashKind="idle";}}},
-    focus(f){focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();},
+    update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const fresh=s.events.filter(e=>e.id>lastEvent);if(fresh.length){lastEvent=fresh.at(-1)!.id;const signal=fresh.find(e=>e.kind==="jam")??fresh.find(e=>e.kind==="cycle");if(signal){flash=1;flashKind=signal.kind as "jam"|"cycle";}else if(fresh.some(e=>e.kind==="release")){flash=0;flashKind="idle";}}},
+    focus(f){posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
     framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},
     feeder(enabled){resourcesReady=false;renderDirty=true;lobby.feeder(enabled);keyMap.resetRefreshCounter();},
-    inset(bottom,top){bottomInset=bottom;topInset=top;viewport();engine.resize();frame();},
-    build(enabled,fixture){resourcesReady=false;renderDirty=true;building=enabled;selected=fixture;},
+    inset(bottom,top){bottomInset=bottom;topInset=top;engine.resize();frame();viewport();},
+    build(enabled,fixture){resourcesReady=false;renderDirty=true;building=enabled;selected=fixture;if(enabled&&(fixture||focus==='lobby'))frame();},
     motion(enabled){renderDirty=true;moving=enabled;},
     study(enabled){posesDirty=true;equipmentStudy=enabled;floor.study(enabled);equipment.study(enabled);population(state.workers.length+(enabled?SCALE_FIGURES.length:0));keyMap.resetRefreshCounter();frame();},
-    dispose(){canvas.removeEventListener("keydown",input);observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);scene.dispose();engine.dispose();}
+    cctv(enabled,angle,triple){cctvEnabled=enabled;cctvAngle=angle;tripleFeed=triple;renderDirty=true;configureFeeds();if(!enabled){viewport();frame();}},
+    isolate(enabled){isolatedRoom=enabled;posesDirty=true;frame();},
+    active(enabled){visible=enabled;if(enabled&&!document.hidden){lastTime=performance.now();renderDirty=true;engine.resize();viewport();engine.runRenderLoop(render);}else engine.stopRenderLoop(render);},
+    dispose(){canvas.removeEventListener("keydown",input);observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);instrumentation.dispose();scene.dispose();engine.dispose();}
   };
   } catch(error) { scene.dispose(); engine.dispose(); throw error; }
 }

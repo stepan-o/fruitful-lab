@@ -87,7 +87,7 @@ export function feedbackFor(view: PlayerView, id: FeedbackId, opening?: PlayerVi
     Object.assign(result, {
       label: "Available funds", value: `¤ ${view.cash}`, source: "Factory ledger",
       detail: opening ? `¤ ${opening.cash} at handover → ¤ ${view.cash} now.` : `¤ ${view.cash} available.`,
-      context: "No spending order is available in this first-day slice. Development investment enters with later rooms.",
+      context: "Construction commits funds at night. Dispatch pays for robots committed to the quota; retained output builds the workforce instead.",
     });
   }
   // Stable through unrelated ticks; changes cue the actual readout, not a polling heartbeat.

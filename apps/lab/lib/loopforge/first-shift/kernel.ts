@@ -316,7 +316,9 @@ function raise(s: State, room: RoomId) {
     s.phase = "decision";
   }
 }
-export function step(previous: State, command: Command): State {
+/** Internal domain input from the spatial first-turn kernel; never admitted from HTTP. */
+export type OperatingBeat = { releasedWork: number; wear: number; incident: RoomId | null; active?: boolean };
+export function stepWithOperation(previous: State, command: Command, operation?: OperatingBeat): State {
   const s: State = JSON.parse(JSON.stringify(previous));
   s.tick++;
   switch (command.type) {
@@ -397,9 +399,10 @@ export function step(previous: State, command: Command): State {
       if (!working) s.downtime--;
       else {
         s.workTicks++;
-        s.productionWork += workBeat(s.workers, fast);
+        const work = operation?.active === false ? 0 : workBeat(s.workers, fast);
+        s.productionWork += operation ? operation.releasedWork : work;
       }
-      if (working && s.workTicks % 4 === 0) {
+      if (working && (operation || s.workTicks % 4 === 0)) {
         const count = Math.floor(s.productionWork / 80);
         s.productionWork %= 80;
         for (let n = 0; n < count; n++)
@@ -420,10 +423,11 @@ export function step(previous: State, command: Command): State {
             s.assignments!.conveyor,
           );
       }
-      if (s.shiftTick % (fast ? 4 : 8) === 0)
-        s.condition = Math.max(0, s.condition - 1);
-      if (s.shiftTick === 12) raise(s, "conveyor");
-      if (s.shiftTick === 30) raise(s, "security");
+      if (operation) s.condition = Math.max(0, s.condition - operation.wear);
+      else if (s.shiftTick % (fast ? 4 : 8) === 0) s.condition = Math.max(0, s.condition - 1);
+      if (operation?.incident) raise(s, operation.incident);
+      if (!operation && s.shiftTick === 12) raise(s, "conveyor");
+      if (!operation && s.shiftTick === 30) raise(s, "security");
       if (s.shiftTick === SHIFT_TICKS) {
         s.phase = "allocation";
         event(
@@ -479,6 +483,7 @@ export function step(previous: State, command: Command): State {
   }
   return s;
 }
+export function step(previous: State, command: Command): State { return stepWithOperation(previous, command); }
 export function replay(
   seed: number,
   commands: Command[],

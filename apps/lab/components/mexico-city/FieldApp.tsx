@@ -10,11 +10,8 @@ import {
   Check,
   ChevronDown,
   Compass,
-  Home,
   MapPin,
-  Paintbrush,
   Plus,
-  Search,
   Sparkles,
   Swords,
   Trophy,
@@ -46,6 +43,7 @@ import { STORIES, storyById } from "@/lib/mexico-city/content";
 import type { LearningId } from "@/lib/mexico-city/rewards";
 import { directions } from "@/lib/mexico-city/map-engine";
 import FieldMap, { type MapHandle } from "./FieldMap";
+import FieldHUD from "./FieldHUD";
 import { FieldLogin } from "./FieldEntry";
 import {
   Capture,
@@ -63,6 +61,7 @@ const OverviewChapter = dynamic(() => import("./OverviewChapter"));
 const NahuatlGames = dynamic(() => import("./NahuatlGames"));
 const StoryReader = dynamic(() => import("./StoryReader"));
 type Panel =
+  | "hub"
   | "capture"
   | "journal"
   | "settings"
@@ -111,8 +110,7 @@ function Game({
   );
   const [panel, setPanel] = useState<Panel>(invite ? "group" : null),
     [groupId, setGroupId] = useState("");
-  const [scope, setScope] = useState<"group" | "global">("global"),
-    [expanded, setExpanded] = useState(false);
+  const [scope, setScope] = useState<"group" | "global">("global");
   const [draft, setDraft] = useState<Draft | null>(null),
     [picking, setPicking] = useState(false),
     [selected, setSelected] = useState("");
@@ -129,7 +127,6 @@ function Game({
     generation = useRef(0),
     clockOffset = useRef(0),
     retryCommand = useRef<{ signature: string; id: string } | null>(null),
-    sheetTouch = useRef<number | null>(null),
     demoLearning = useRef<Record<string, FieldState["learning"]>>({});
   const group = state.groups.find((g) => g.id === groupId) || state.groups[0];
   const overview = playerOverview(state);
@@ -160,12 +157,13 @@ function Game({
     .find((g) => g.id === draft?.groupId)
     ?.challenges.find((c) => c.id === draft?.challengeId);
   const labels: Record<Mode, Copy> = {
-    home: ["Inicio", "Home"],
+    home: ["Mapa", "Map"],
     solo: ["Aventura", "Adventure"],
     friends: ["Amigos", "Friends"],
     community: ["Comunidad", "Community"],
   };
   const panelTitles: Record<NonNullable<Panel>, Copy> = {
+    hub: labels[mode],
     capture: ["Guardar hallazgo", "Keep discovery"],
     journal: ["Mi bitácora", "My logbook"],
     settings: ["Tu cuenta", "Your account"],
@@ -193,7 +191,7 @@ function Game({
     if (nextPanel) url.searchParams.set("panel", nextPanel);
     if (item && nextPanel) url.searchParams.set("item", item);
     window.history[replace ? "replaceState" : "pushState"](
-      { cdmx: true },
+      { cdmx: true, overlay: !!nextPanel },
       "",
       url,
     );
@@ -201,7 +199,7 @@ function Game({
   function show(next: Panel, item = selected) {
     setPanel(next);
     setSelected(item);
-    updateUrl(mode, next, item);
+    updateUrl(mode, next, item, !!panel);
   }
   function close() {
     setPanel(null);
@@ -210,19 +208,35 @@ function Game({
   }
   function navigate(next: Mode) {
     setMode(next);
-    setPanel(null);
+    const destination = next === "home" ? null : "hub";
+    setPanel(destination);
     setPicking(false);
-    setExpanded(false);
-    updateUrl(next, null, "");
+    updateUrl(next, destination, "", !!panel);
   }
   useEffect(() => {
     const pop = () => {
       const params = new URLSearchParams(location.search);
       const m = params.get("mode");
       setMode(validModes.includes(m || "") ? (m as Mode) : "home");
-      setPanel(null);
+      const nextPanel = params.get("panel");
+      setPanel(
+        [
+          "hub",
+          "journal",
+          "settings",
+          "search",
+          "group",
+          "record",
+          "place",
+          "chapter",
+          "nahuatl",
+          "story",
+        ].includes(nextPanel || "")
+          ? (nextPanel as Panel)
+          : null,
+      );
       setPicking(false);
-      setSelected("");
+      setSelected(params.get("item") || "");
     };
     window.addEventListener("popstate", pop);
     return () => window.removeEventListener("popstate", pop);
@@ -537,21 +551,17 @@ function Game({
         return acc;
       }, {}),
     ).sort((a, b) => b.count - a.count);
-  const modeIcons = {
-    home: Home,
-    solo: Compass,
-    friends: Swords,
-    community: Paintbrush,
-  };
   return (
     <main
-      className={`mc-game ${expanded ? "is-expanded" : ""} ${picking ? "is-picking" : ""}`}
+      className={`mc-game mc-map-game ${picking ? "is-picking" : ""}`}
       lang={locale === "es" ? "es-MX" : "en"}
     >
       <FieldMap
         ref={map}
         records={visibleRecords}
         selected={selected}
+        objective={mode === "home" || mode === "solo" ? goal : undefined}
+        openObjective={() => navigate("solo")}
         select={selectRecord}
         painted={mode === "community"}
         picking={picking}
@@ -561,101 +571,42 @@ function Game({
           setPanel("capture");
         }}
       />
-      <header className="mc-game-header">
-        <Link href="/mexico-city" className="mc-brand">
-          <GameName />
-        </Link>
-        <div>
-          <LanguageSwitch />
-          <button
-            className="mc-icon-button"
-            onClick={() => show("search")}
-            aria-label={say("Buscar", "Search")}
-          >
-            <Search size={20} />
-          </button>
-          <button
-            className="mc-avatar"
-            onClick={() => show("settings")}
-            aria-label={say("Cuenta y ajustes", "Account and settings")}
-          >
-            {state.me.name.slice(0, 1)}
-          </button>
-        </div>
-      </header>
-      {kind !== "account" && (
-        <div className="mc-session-banner">
-          {kind === "demo"
-            ? say(
-                "Demo · datos de ejemplo · sin guardar",
-                "Demo · sample data · not saved",
-              )
-            : say(
-                "Salida de prueba · solo esta sesión",
-                "Trial outing · this session only",
-              )}
-          {kind === "demo" ? (
-            <button
-              onClick={() => {
-                const nextId = state.me.id === "susy" ? "stepan" : "susy";
-                demoLearning.current[state.me.id] = state.learning;
-                setState({
-                  ...state,
-                  me: {
-                    id: nextId,
-                    name: nextId === "susy" ? "Susy" : "Stepan",
-                    admin: true,
-                  },
-                  learning: demoLearning.current[nextId] || {},
-                  goal: null,
-                });
-              }}
-            >
-              {say("Jugar como", "Play as")}{" "}
-              {state.me.id === "susy" ? "Stepan" : "Susy"} ↔
-            </button>
-          ) : (
-            <button onClick={signIn}>{say("Entrar", "Sign in")} ↗</button>
-          )}
-        </div>
-      )}
       {!picking && (
-        <>
-          <div className="mc-points-hud">
-            <Sparkles size={18} />
-            <strong aria-live="polite">
-              {mode === "community"
-                ? scope === "global"
-                  ? overview.published
-                  : visibleRecords.filter((r) => r.owner === state.me.id).length
-                : points}
-            </strong>
-            <span>
-              {mode === "community"
-                ? say("tus aportes", "your contributions")
-                : mode === "friends"
-                  ? say("pts · este grupo", "pts · this group")
-                  : say("pts · tu aventura", "pts · your adventure")}
-            </span>
-            <button
-              onClick={() => show("journal")}
-              aria-label={say("Abrir bitácora", "Open logbook")}
-            >
-              <BookOpen size={18} />
-            </button>
-          </div>
-          <button
-            className="mc-capture-fab"
-            onClick={() => (draft ? show("capture") : capture())}
-            aria-label={
-              draft
-                ? say("Continuar hallazgo", "Continue discovery")
-                : say("Guardar un hallazgo", "Keep a discovery")
-            }
-          >
-            <Camera size={23} />
-          </button>
-        </>
+        <FieldHUD
+          name={state.me.name}
+          mode={mode}
+          points={
+            mode === "community"
+              ? scope === "global"
+                ? overview.published
+                : visibleRecords.filter((r) => r.owner === state.me.id).length
+              : points
+          }
+          groupName={group?.name}
+          goal={goal}
+          pending={overview.actions.length}
+          action={overview.actions.find((a) => a.group.id === group?.id)}
+          now={now}
+          communityProgress={categoriesFound}
+          kind={kind}
+          draft={!!draft}
+          navigate={navigate}
+          account={() => show("settings")}
+          journal={() => show("journal")}
+          search={() => show("search")}
+          capture={() => (draft ? show("capture") : capture())}
+          locateGoal={() => {
+            if (goal?.point) map.current?.focus(goal.point);
+          }}
+        />
+      )}
+      {error && !panel && (
+        <button
+          className="mc-connection-alert"
+          onClick={() => show("settings")}
+        >
+          {copy(ERRORS[error] || ERRORS.service_unavailable)}
+        </button>
       )}
       {picking && (
         <button
@@ -680,32 +631,14 @@ function Game({
           </button>
         </div>
       )}
-      {!picking && (
-        <section className="mc-game-sheet" aria-label={copy(labels[mode])}>
-          <button
-            className="mc-sheet-handle"
-            aria-label={
-              expanded
-                ? say("Reducir panel", "Collapse panel")
-                : say("Ampliar panel", "Expand panel")
-            }
-            aria-expanded={expanded}
-            onClick={() => setExpanded(!expanded)}
-            onTouchStart={(e) => {
-              sheetTouch.current = e.touches[0].clientY;
-            }}
-            onTouchEnd={(e) => {
-              if (
-                sheetTouch.current !== null &&
-                Math.abs(e.changedTouches[0].clientY - sheetTouch.current) > 25
-              )
-                setExpanded(e.changedTouches[0].clientY < sheetTouch.current);
-              sheetTouch.current = null;
-            }}
-          >
-            <span />
-          </button>
-          <div className="mc-sheet-scroll">
+      {panel === "hub" && !picking && (
+        <GameDialog
+          className="mc-task-dialog mc-mode-dialog"
+          label={copy(labels[mode])}
+          close={close}
+          pageKey={mode}
+        >
+          <div className="mc-mode-content" data-page-heading tabIndex={-1}>
             {error && (
               <div className="mc-error" role="alert">
                 <p>{copy(ERRORS[error] || ERRORS.service_unavailable)}</p>
@@ -726,164 +659,6 @@ function Game({
               <p role="status">
                 {say("Abriendo tu aventura…", "Opening your adventure…")}
               </p>
-            )}
-            {mode === "home" && (
-              <>
-                <div className="mc-row">
-                  <p className="mc-eyebrow">
-                    {say("Hoy, un poquito más lejos", "A little further today")}
-                  </p>
-                  <span className="mc-day-mark">
-                    {new Date(now).toLocaleDateString(
-                      locale === "es" ? "es-MX" : "en-US",
-                      {
-                        day: "numeric",
-                        month: "short",
-                        timeZone: "America/Mexico_City",
-                      },
-                    )}
-                  </span>
-                </div>
-                <h1>
-                  {kind === "account"
-                    ? say(
-                        `Qué gusto verte, ${state.me.name.split(" ")[0]}.`,
-                        `Good to see you, ${state.me.name.split(" ")[0]}.`,
-                      )
-                    : say("¿Y si doblas aquí?", "What if you turn here?")}
-                </h1>
-                <p className="mc-intro">
-                  {say(
-                    "Tu siguiente hallazgo no está en esta pantalla.",
-                    "Your next discovery is beyond this screen.",
-                  )}
-                </p>
-                <div
-                  className="mc-player-progress"
-                  aria-label={say("Tu progreso", "Your progress")}
-                >
-                  <button onClick={() => show("journal")}>
-                    <b>{own.length}</b>
-                    <span>
-                      {own.length === 1
-                        ? say("hallazgo", "discovery")
-                        : say("hallazgos", "discoveries")}
-                    </span>
-                  </button>
-                  <button onClick={() => navigate("solo")}>
-                    <b>{overview.completedOutings}</b>
-                    <span>
-                      {overview.completedOutings === 1
-                        ? say("salida cumplida", "completed outing")
-                        : say("salidas cumplidas", "completed outings")}
-                    </span>
-                  </button>
-                  <button onClick={() => navigate("friends")}>
-                    <b>{overview.actions.length}</b>
-                    <span>{say("por jugar", "your next moves")}</span>
-                  </button>
-                </div>
-                {overview.actions.length > 0 && (
-                  <div
-                    className="mc-next-actions"
-                    aria-label={say("Te toca", "Your turn")}
-                  >
-                    <p className="mc-eyebrow">{say("Te toca", "Your turn")}</p>
-                    {overview.actions.slice(0, 3).map((action) => (
-                      <button
-                        key={`${action.group.id}-${action.challenge.id}`}
-                        onClick={() => {
-                          setGroupId(action.group.id);
-                          navigate("friends");
-                          setExpanded(true);
-                        }}
-                      >
-                        <span>
-                          <small>
-                            {action.kind === "review"
-                              ? say(
-                                  "Una foto espera tu revisión",
-                                  "A photo needs your review",
-                                )
-                              : action.kind === "invitation"
-                                ? say(
-                                    "Te llegó un reto",
-                                    "You have a challenge",
-                                  )
-                                : say(
-                                    "Tu reto sigue en juego",
-                                    "Your challenge is in play",
-                                  )}{" "}
-                            · {action.group.name}
-                          </small>
-                          <strong>{action.challenge.title}</strong>
-                        </span>
-                        <ArrowRight size={18} />
-                      </button>
-                    ))}
-                  </div>
-                )}
-                <button
-                  className="mc-featured-goal"
-                  onClick={() => {
-                    navigate("solo");
-                    setExpanded(true);
-                  }}
-                >
-                  <Artwork
-                    id={(goal || overview.suggestion).art}
-                    sizes="140px"
-                  />
-                  <div>
-                    <span>
-                      {goal
-                        ? say("Tu salida en curso", "Your current outing")
-                        : say("Una excusa para salir", "A reason to head out")}
-                    </span>
-                    <h2>{copy((goal || overview.suggestion).title)}</h2>
-                    <small>
-                      {copy((goal || overview.suggestion).duration)}
-                    </small>
-                    <b>
-                      {goal
-                        ? say("Continuar mi salida", "Continue my outing")
-                        : say("Elegir mi salida", "Choose my outing")}{" "}
-                      <ArrowRight size={16} />
-                    </b>
-                  </div>
-                </button>
-                <div className="mc-home-links">
-                  <button onClick={() => navigate("friends")}>
-                    <Swords size={20} />
-                    <span>
-                      {say(
-                        "Tus retos entre amigos",
-                        "A challenge between friends",
-                      )}
-                      <small>
-                        {group
-                          ? group.name
-                          : say(
-                              "Crea tu primer grupo",
-                              "Create your first group",
-                            )}
-                      </small>
-                    </span>
-                    <ArrowUpRight size={18} />
-                  </button>
-                  <button onClick={() => navigate("community")}>
-                    <Paintbrush size={20} />
-                    <span>
-                      {say(
-                        "Lo que encontramos juntos",
-                        "What we find together",
-                      )}
-                      <small>{say("Pinta la ciudad", "Paint the city")}</small>
-                    </span>
-                    <ArrowUpRight size={18} />
-                  </button>
-                </div>
-              </>
             )}
             {mode === "solo" && (
               <>
@@ -915,7 +690,7 @@ function Game({
                           className="mc-secondary"
                           onClick={() => {
                             map.current?.focus(goal.point!);
-                            setExpanded(false);
+                            close();
                           }}
                         >
                           {say("Ubicar en el mapa", "Find on the map")}
@@ -947,7 +722,7 @@ function Game({
                         onClick={async () => {
                           if (await send({ kind: "goal", goalId: g.id })) {
                             if (g.point) map.current?.focus(g.point);
-                            setExpanded(false);
+                            close();
                           }
                         }}
                       >
@@ -1429,32 +1204,10 @@ function Game({
               </>
             )}
           </div>
-        </section>
-      )}
-      {!picking && (
-        <nav
-          className="mc-bottom-nav"
-          aria-label={say("Modos del juego", "Game modes")}
-        >
-          {(Object.keys(labels) as Mode[]).map((m) => {
-            const Icon = modeIcons[m];
-            return (
-              <button
-                key={m}
-                aria-current={mode === m ? "page" : undefined}
-                onClick={() => navigate(m)}
-              >
-                <Icon size={22} strokeWidth={mode === m ? 2.4 : 1.6} />
-                <span>{copy(labels[m])}</span>
-                {m === "friends" &&
-                  overview.actions.length > 0 && <i />}
-              </button>
-            );
-          })}
-        </nav>
+        </GameDialog>
       )}
       {panel &&
-        !["chapter", "nahuatl", "story"].includes(panel) &&
+        !["hub", "chapter", "nahuatl", "story"].includes(panel) &&
         !picking && (
           <GameDialog
             label={copy(panelTitles[panel])}
@@ -1832,6 +1585,29 @@ function Game({
                         "This session is temporary. Reloading or closing loses its discoveries and points.",
                       )}
                 </p>
+                {kind === "demo" && (
+                  <button
+                    className="mc-secondary"
+                    onClick={() => {
+                      const nextId = state.me.id === "susy" ? "stepan" : "susy";
+                      demoLearning.current[state.me.id] = state.learning;
+                      setState({
+                        ...state,
+                        me: {
+                          id: nextId,
+                          name: nextId === "susy" ? "Susy" : "Stepan",
+                          admin: true,
+                        },
+                        learning: demoLearning.current[nextId] || {},
+                        goal: null,
+                      });
+                      close();
+                    }}
+                  >
+                    {say("Jugar como", "Play as")}{" "}
+                    {state.me.id === "susy" ? "Stepan" : "Susy"} ↔
+                  </button>
+                )}
                 <div className="mc-settings-links">
                   {kind === "account" && state.me.admin && (
                     <Link href="/admin/users">

@@ -55,15 +55,17 @@ export default function GameDialog({
         close();
       }}
     >
-      <button
-        className="ov-close"
-        onClick={close}
-        aria-label={t("Close {label}", { label })}
-      >
-        ×
-      </button>
-      <div className="ov-dialog-language">
-        <LanguageSwitch />
+      <div className="mc-dialog-controls">
+        <button
+          className="ov-close"
+          onClick={close}
+          aria-label={t("Close {label}", { label })}
+        >
+          ×
+        </button>
+        <div className="ov-dialog-language">
+          <LanguageSwitch />
+        </div>
       </div>
       {children}
     </dialog>

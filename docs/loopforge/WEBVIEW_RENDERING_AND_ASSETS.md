@@ -1,12 +1,12 @@
 # Webview: rendering, assets and delivery
 
-**Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate the active work area before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
+**Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate one selected room’s three CCTV angles inside the producer console and its focused action workspace before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
 
 Updated 11 October 2026. Rendering direction and first native lobby kit; implementation status is explicit below. Reader chapter: `/stepanoskin/loopforge/architecture/webview`. First calibration case: [Lobby art direction](LOBBY_ART_DIRECTION.md).
 
 ## Decision
 
-Keep Babylon.js for the navigable factory. Build a hybrid of authored materials, reusable 3D kits, baked static lighting and bounded live animation/light. Procedural code assembles and animates the world; authored artwork establishes each room's identity. Animation does not require every visible detail to be generated in code.
+Keep Babylon.js for the shared factory world, rendered by default as one selected room through three authored CCTV angles in the producer console. Build a hybrid of authored materials, reusable 3D kits, baked static lighting and bounded live animation/light. Procedural code assembles and animates the world; authored artwork establishes each room's identity. Animation does not require every visible detail to be generated in code.
 
 This updates the earlier aspiration for a wholly procedural visual world. The owner now explicitly allows painted walls and objects alongside modeled objects. The accepted spatial layout, physical scale, room connections and common 15 m height remain fixed. Visual calibration must not silently redesign them.
 
@@ -28,7 +28,7 @@ The media schema currently rejects GLB/KTX2. Do not hide those bytes in image/JS
 
 Use real geometry when an element changes the silhouette, occludes a worker, defines navigation, can be modified or casts an important moving shadow. Use surface textures for small detail that stays attached to the same face. Use a normal map for shallow relief, not a replacement for a large protruding pipe or doorway.
 
-Painted elements are world-space materials or decals, not graphics fixed to the viewport. The factory retains shared orbit/pan/zoom controls. A single camera-projected concept image would break as the camera moves. Start from the concept's composition and reconstruct its visible structure; author previously unseen faces coherently. A cinematic default camera can favour the strongest angle without secretly disabling navigation.
+Painted elements are world-space materials or decals, not graphics fixed to the viewport. Default observation uses three authored room angles; construction and inspection may provide bounded orbit/pan/zoom. A single camera-projected concept image would break across these viewpoints. Reconstruct the concept’s structure and previously unseen faces coherently. Console → focused action → console is the recurring navigation; watching those feeds is not the main source of player agency.
 
 Author bevels and a few irregular silhouettes on hero objects. Bake high-detail modeling/procedural materials offline into low-complexity meshes and texture maps. Avoid one mesh/material per bolt or form. Repeated furniture uses shared kits; custom slots preserve wear, labels and individual task state. Do not merge a modifiable desk permanently into its wall.
 
@@ -59,7 +59,7 @@ Use lossless intermediate maps and inspect compressed normals, linework, letteri
 
 Publish and verify every dependency before switching the pointer. Pin a complete compatible release for the current scene; adopt updates at a safe scene boundary. Keep prior releases and provide rollback through a new deployment containing both versions. Failed downloads leave the previous complete kit or a legible fallback, never a room with missing walls or blocked input. Private snapshots, credentials and personalized results are not public asset cache entries.
 
-Load the lobby plus the shared worker kit first. Prepare adjacent Dispatch/Security as needed; fetch detailed later rooms on approach/unlock, not all at startup. Retain lightweight silhouettes for the whole-floor overview and use a bounded cache for revisited rooms. Keep loading independent of simulation tick ownership.
+Load the first selected room plus the shared worker kit; the one-time arrival tutorial can start with the Lobby. Fetch detailed rooms on selection/unlock, not all at startup. Use a bounded cache for revisits and a lightweight whole-floor summary. One engine and room graph supply all three camera passes; update simulation and poses once, and budget total passes/targets rather than treating each feed as a separate allowance. On small screens render only the active angle. Keep loading and camera choice independent of simulation tick ownership.
 
 Track retained deployment storage separately from download traffic and GPU memory. Shipping the public media library inside every preview also retains that deployment's static output. Batch preview publishing, audit output size and review retention of obsolete previews while preserving active reviews, production and needed rollback releases. Before large model/material packs multiply this footprint, evaluate a shared immutable media origin so code deployments reference versioned assets instead of carrying the whole library. An external origin still needs dependency validation, cache rules and a retention policy; it is not a substitute for them. See [Vercel deployment storage](https://vercel.com/docs/deployment-storage). No storage deletion or hosting migration is performed by this pass.
 

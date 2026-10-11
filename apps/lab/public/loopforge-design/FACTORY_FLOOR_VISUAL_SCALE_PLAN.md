@@ -4,7 +4,9 @@
 
 ## Decision
 
-Keep the large, connected factory. Make an **active work area** the normal unit of play and composition. Give factory overview, work and close interaction distinct visual responsibilities within one continuous, navigable world. Author detail for its projected size, rather than putting the same noisy material on every object and hoping zoom will resolve it.
+Keep the large, connected factory. **The producer console is the default entry and return point for factory observation. Select one room and see that same live room through three authored CCTV angles.** The room feeds show work and consequences; focused action workspaces carry construction, operating controls and consequential commitments. The core loop should feel like “I am the actor”, with observation helping the player decide and understand what they changed.
+
+This owner clarification supersedes the previous proposal of a freely navigable work-area camera as the default playing interface. Three CCTV angles are three physical viewpoints, not the overview/work/inspection detail levels. Author detail for its actual projected size in each feed and action workspace.
 
 The visual target is Loopforge's oppressive, engraved industrial realism: substantial machinery, recognisable robot bodies, bureaucratic clutter, deep recesses and selective hot light. Performance and that identity are joint acceptance gates. “100%” means every required gate passes on the declared devices and views; the design is not evidence that unbuilt scenes already pass. The owner judges the artistic result.
 
@@ -16,7 +18,7 @@ Reference authority: original lobby `01_loopforge_factory_rooms_lobby.png` and f
 
 | Current mismatch | Why it matters | Design response |
 | --- | --- | --- |
-| The 26 × 29 m lobby working frame spends much of its image on floor; desks and robots become punctuation | A room feels large but its activity is hard to read | Compose around an operating cluster; preserve the rest as navigable context |
+| The 26 × 29 m lobby working frame spends much of its image on floor; desks and robots become punctuation | A room feels large but its activity is hard to read | Compose authored room angles around operating clusters; preserve the rest as spatial context and usable build space |
 | The desk close-up is more legible but loses the doorway, arrival and queue relationship | Detail inspection alone cannot carry the operating loop | Add a middle composition that shows a full action and its immediate upstream/downstream connection |
 | Patina repeats across differently sized model faces; the floor has dense contrast at a similar visual strength | The image reads as mottling instead of machinery/materials | Calibrated world-scale UVs, distinct material values and authored macro/mid/micro detail |
 | Existing generic material code derives bump from generated colour noise; new lobby maps are diffuse-only | Relief can turn dirt into false geometry; the new surfaces can still look flat | Author/bake relief from intended form, separately from dirt and illumination |
@@ -29,31 +31,59 @@ The 72 × 48 m lobby, 15 m common hall height, 1.9 m nominal worker and accepted
 ## Four scales that must agree
 
 1. **World scale:** metres, paths, equipment footprints, worker contacts and admission. These affect simulation and construction.
-2. **Play scale:** the cluster the player currently operates—its input, work, buffer and exit. This establishes the normal camera composition.
+2. **Play scale:** the process the player can change—its input, work, buffer and exit. Compose both its room feeds and its action workspace to expose the relevant cause and effect.
 3. **Image scale:** projected pixels available for a worker, warning gesture, moving part or inscription. This determines detail, framing and material frequency.
 4. **Time scale:** tick-owned task/travel progress, the compressed shift calendar and the animation that depicts it. These cannot be one uniform speed multiplier.
 
 Changing camera, texture or detail tier must not alter world footprints, path costs, output, accidents, worker identity or the event log.
 
-## Camera and interface contract
+## Console, room feeds and player agency
 
-Use a restrained perspective camera in Babylon, with a consistent three-quarter working angle. Start calibration at 35–40° vertical field of view and roughly 35–45° above the floor. These are candidates, not final constants. Keep orbit/pan/zoom; provide authored starting angles, a return-to-work control and directional room transitions. Compare an orthographic candidate once in the calibration bench, but prefer perspective if it meets the same readability gates while retaining depth.
+The recurring route is **producer console → selected room’s live feeds → focused action → producer console and its room feeds**. Adviser selection, briefing, development and dispatch also depart from and return to this hub. Returning restores the room, primary angle, selected entity and pending issue. Do not add a mandatory trip through the hub between every related adjustment: a player can keep working inside the relevant workspace.
 
-| View | Player question | Required read | Initial projected worker target |
-| --- | --- | --- | --- |
-| Factory / room overview | Where is the problem, connection or free build space? | Room identity, process routes, blocked/open threshold, affected cluster | No individual-gesture promise; truthful aggregate cues lead to the relevant work area |
-| Work area — default operating view | What is moving, waiting or going wrong, and where can I act? | Several workers, one meaningful equipment sequence, immediate buffer/exit | Approximately 56–90 CSS px tall for standing workers near the action |
-| Interaction / inspection | What happened to this worker or mechanism? What am I changing? | Pose, contact, specific attachment and local consequence | Approximately 120–220 CSS px; worker identity survives the transition |
+The factory summary can retain all six room positions, including named unpowered screens for locked rooms. It does not render six detailed live 3D rooms. Selecting an accessible room opens its floor view: one room, three camera angles, one simulation. The one-time Lobby → Security → Forge construction tutorial remains an explicit guided exception to the recurring navigation; it finishes at the morning console. It does not establish free roaming as the default daily interface.
 
-These numbers are calibration starting points. Record the projected bounding box of the actual worker, not an estimate from camera radius. A required moving feature should span at least 3 internal render pixels at its smallest supported work view; make its action readable through a larger silhouette if it cannot. Important UI text remains native text, not a 5-pixel label baked into a wall.
+| Place | What the player does | Relationship to the live floor |
+| --- | --- | --- |
+| Producer console / room CCTV | Observe flow, notice warnings, inspect known evidence, choose where to act | Primarily a spectator view. May expose a few clearly legal remote controls; it cannot be the only source of agency |
+| Night builder | Place and connect machinery, reserve clearance, choose an investment over opening another room | Same room geometry and installed state, paused production, placement/connection previews and useful camera controls |
+| Room operating workspace | Adjust a meaningful process constraint, pace or feed using installed equipment; compare the result | Current proposal to prove with the Conveyor puzzle. Concrete command, opportunity cost and visible physical response; no manual per-worker station staffing |
+| Adviser and incident interfaces | Choose whose judgment to trust, authorize assignments, support or override a response where permitted | Advice, order, execution and outcome remain distinct; relationships react to actual known decisions |
+| Dispatch / development | Commit output to growth or quota; commit eligible funds and downtime | Irreversible or scheduled changes in the same factory, not isolated interface scores |
 
-The same view and navigation serve night construction and production. Build mode adds footprints, approach clearance and connection previews. It never swaps to a disconnected model of the room. Selected equipment, target and orientation survive mode changes.
+**Actor does not mean first-person, free camera or constant clicking.** It means the player can form an intention, take a consequential action and recognise its effect. Most substantive play must be making and testing those choices. Brief observation is the payoff and the information for the next move. A successful safe arrangement can run without busywork; delegation becomes more valuable as rooms open.
 
-In the normal view, aim for at least 70% unobscured scene height on desktop and 60% in portrait. These are proposed layout gates with drawers closed. Keep a compact status strip and contextual controls; use the existing focused interfaces for briefings, room policy and equipment purchase. Opening a drawer may temporarily reduce that space without silently zooming the action to an unreadable size.
+For the first Conveyor proof, test this proposed sequence: notice output accumulating in one camera → open that machinery’s operating controls → change an available feed/pace constraint → see the accepted command and its local response → return to the same room feeds and read the changed queue, throughput and wear exposure. If the only satisfying interaction is starting the shift and waiting for an incident popup, the loop fails this gate even if the scene is beautiful. Exact controls and numbers still need the room-puzzle design; this plan does not invent repair before Rivet Witch arrives.
 
-On phones, show fewer workstations at the same legible size. Pan along the process, with a small room locator and explicit previous/next work-area targets. Do not fit the entire desktop scene into portrait. Landscape, tablet and ultrawide preserve subject size; added width reveals context, rather than making the hero tiny or stretching it. A 44 × 44 CSS-pixel hit area can select a smaller object without enlarging its physical model. Close targets need an inspector/list alternative.
+The adviser still resolves events in their own effectively assigned room without asking. A CCTV cue there is a receipt, not a retroactive veto. In other rooms the player can accept or override permitted responses. Direct machinery controls cannot silently bypass a pending incident, adviser delegation or an authority restriction. Mode, room, camera and render cadence never change who has authority.
 
-Events may suggest a camera focus; ordinary production must not repeatedly steal the camera. A consequential paused event can offer a clear cut-in and return to the saved position. Reduced motion uses immediate or short fades and a complete readable pose.
+## Three authored angles per room
+
+Start with restrained perspective cameras in Babylon. Calibrate roughly 35–40° vertical field of view and 35–45° above the floor as candidates, varying placement to serve the room. The default CCTV positions are authored and recognisable; changing angle is a cut or short transition, not an uncontrolled orbit. Free pan/orbit/zoom can serve construction and close inspection within room bounds. Those tools are not required for ordinary observation.
+
+| Angle role · proposed starting coverage | Required read | Avoid |
+| --- | --- | --- |
+| A · Flow / arrival | The room’s process, incoming work and a meaningful operating cluster | Fitting an enormous hall into a tiny frame just to show every wall |
+| B · Work / contact | Workers operating the key mechanism; a queue, unsafe action or task response | A second shot that supplies no information beyond A |
+| C · Exit / reverse / threshold | Downstream accumulation, departure or a connected-room encounter that A/B obscure | An attractive empty corner or a contradictory invented doorway |
+
+These are composition jobs, not mandatory equal distances. Security may favour admission, verification and the Forge threshold; the Forge may favour intake/feed, assembly and outtake. Author each room’s coverage map against its actual equipment and portals. Player-built expansions must remain inspectable: bounded camera framing presets may adapt to occupied work areas, while retaining recognisable angle identity. If an important task is outside a default shot, offer an explicit focus target rather than inventing its visibility.
+
+**Proposed desktop layout:** one large primary feed and two smaller live alternate feeds, each promotable without reloading the room. This is a layout candidate to compare with equal panes, not a newly accepted constraint. **Phone/short layout:** one legible live feed with three angle selectors; inactive feeds need not render. Keep room selection separate from angle selection. Do not shrink three full views into unreadable phone tiles. Normal scene height targets remain ≥70% desktop / ≥60% portrait with drawers closed, measured for the room-feed composition as a whole.
+
+All visible feeds depict the same entity positions and committed event sequence. Update animation once, then render the room from its cameras. Signals lost to occlusion remain available as truthful room/event cues, not hidden-state highlights through walls. Ordinary production does not steal the selected angle. A consequential paused event may offer a cut-in and return to the saved room and angle. Reduced motion retains a readable still and all controls.
+
+### Readability levels are a separate axis
+
+| Rendering scale | Required read | Initial projected worker target |
+| --- | --- | --- |
+| Small alternate feed / room context | Flow, queue, affected area and a reason to promote this angle | No promise of individual facial/hand detail; preserve silhouettes and meaningful motion |
+| Primary feed / operating workspace | Several workers, one meaningful equipment sequence, immediate buffer/exit | Approximately 56–90 CSS px for standing workers near the action |
+| Focused inspection | Specific pose, contact, attachment and consequence | Approximately 120–220 CSS px; preserve entity identity |
+
+Record actual projected bounding boxes in the delivered console, not a standalone full-screen scene. A required moving feature should span at least 3 internal render pixels in its supported primary view; otherwise use a larger readable silhouette. Camera A, B or C can become the primary feed: these detail levels do not define their positions. Native text carries important instructions; do not depend on a 5-pixel inscription.
+
+Night construction and production reuse room geometry, equipment and entity IDs. A builder may use a different camera from the CCTV feed without creating another world. Remember both the build position and the console return position. Resize preserves the current room, angle, drafts and authority state. On ultrawide screens, use additional context rather than making the action smaller. Keep 44 × 44 CSS-pixel selection targets and an inspector/list alternative for crowded objects.
 
 ## Grain is a hierarchy, not an overlay
 
@@ -78,7 +108,7 @@ Compare a clean image first, then antialiasing, then selective bloom, then optio
 
 The worker kit also needs its own silhouette pass against the original factory art: cast head/face, recessed optics, a weighted torso, articulated limbs and recognisable hands/feet. Preserve machinery scale through joints, grip and gait; adding a textured sphere head to generic limbs is not an accepted final character. Test silhouette, mid-distance work pose and close contact separately.
 
-The normal lobby composition should contain a **complete action**: arrival → waiting space → desk and clerk → response → departure toward Dispatch. Start with two active desks in a roughly 10–14 m-wide local cluster. This is a framing/layout candidate inside the approved hall, not a new room size. Keep the actual passage clear and the central construction/movement space usable. Allow the broader hall to recede behind repeated architecture, softer contrast and controlled cutaways.
+The lobby’s primary feed should contain a **complete action**: arrival → waiting space → desk and clerk → response → departure toward Dispatch. Start with two active desks in a roughly 10–14 m-wide local cluster. This is a framing/layout candidate inside the approved hall, not a new room size. Keep the actual passage clear and the central construction/movement space usable. Allow the broader hall to recede behind repeated architecture, softer contrast and controlled cutaways.
 
 Carry the art's framing elements: the paperwork wall behind the activity, a substantial door/pipe mass on one side, and the floor insignia in the arrival composition. Exact placement may differ from the painting to respect the accepted portal. Do not create a false exit to mimic the artwork.
 
@@ -114,11 +144,13 @@ Keep Babylon.js and the renderer-independent, integer-tick kernel. Do not introd
 | Babylon view | Interpolation, geometry, materials, light, animation and picking proxies | Payroll, task completion or authoritative collisions |
 | React interfaces | Commands, accessible controls, dossiers, briefings and summaries | Per-frame transforms |
 
-Add versioned camera/work-area definitions, prefab metadata, physical material scale and presentation event recipes. Keep visual recipe versions separate from sim/schema versions. When a low-detail proxy becomes a close actor, bind the same entity ID, position, task and clip phase; do not reset it. Distant crowd summaries must derive from real entities. They are not invented extras that suggest false production.
+Add versioned per-room camera profiles (three angle IDs, poses, focus bounds and coverage), action-workspace return state, prefab metadata, physical material scale and presentation event recipes. Keep visual recipe versions separate from sim/schema versions. When a low-detail proxy becomes a close actor, bind the same entity ID, position, task and clip phase; do not reset it. Distant crowd summaries must derive from real entities. They are not invented extras that suggest false production.
 
 Partition static geometry and repeated instances by room/work area and material. The current batching is a useful baseline, but a whole-factory material batch would prevent effective visibility control. Thin instances are useful for stable repeated props; frequently changing actors need a measured approach. Prototype one rigged/paletted or cached-pose worker batch against the existing articulated-part approach. Choose by measured cost and contact quality; do not make GPU skinning an untested dependency.
 
-Load the active detailed area, shared actor kit and a bounded adjacent-area cache. Retain light room shells for overview. Visibility affects drawing, not simulation. Use a minimal placeholder with truthful footprints while assets load, and preserve commands/state on failure. Only adopting a complete compatible asset release may replace that placeholder.
+Use one Babylon engine/canvas and one room presentation graph for all three feeds. Tick the kernel once and update actor poses once; camera passes reuse that state, geometry and materials. Culling and postprocessing are still per-view costs. Reuse camera-independent lighting/shadow results only where valid. Never launch three engines, three worker populations or three clocks.
+
+Load the selected room’s required areas, shared actor kit and a bounded next-room cache. Retain a lightweight map/summary for room selection. Other rooms continue simulating; they do not need detailed rendering. Release unneeded render targets and meshes on switches without disposing shared resources. Stop inactive camera passes on phones. Visibility affects drawing, not simulation. Use a minimal placeholder with truthful footprints while assets load, and preserve commands/state on failure. Only adopting a complete compatible asset release may replace that placeholder.
 
 ## Acceptance budgets
 
@@ -135,7 +167,9 @@ These are proposed release gates and initial engineering envelopes, not claims a
 | Lifetime | After warmup, 20 area/attachment switches return to stable resource counts; no monotonic retained heap/texture growth or context loss |
 | UI delivery | Shared field goals remain LCP ≤2.5 s, INP ≤200 ms, CLS ≤0.1; field data is still unmeasured. A 3D canvas is not certified by Lighthouse alone |
 
-Draw calls/triangles are diagnostic envelopes, not portable FPS guarantees. Start the work-area prototype around ≤150 total draws including shadows/effects and ≤250k visible triangles on the modest tier, then replace those guesses with measured material/pass costs. Preserve room character, actor silhouette and required feedback on every tier; reduce distant microdetail, unimportant live lights, particle overdraw and resolution in that order, subject to the readability floor.
+**The budgets cover the entire console composition, not each camera.** Profile three simultaneously animated feeds on desktop as well as the single-feed phone layout. Start with one primary feed plus two smaller targets at the same presentation timestamp. Allocate resolution by actual panel size and account for every target, depth buffer, shadow and postprocess pass. Lowering auxiliary cadence is an experiment only if motion remains coherent and readable; it is not a claimed free optimisation or an accepted substitute for the requested animated angles. No invisible feed keeps rendering.
+
+Draw calls/triangles are diagnostic envelopes, not portable FPS guarantees. Start around ≤150 total draws including all camera, shadow and effect passes and ≤250k submitted triangles across those passes on the modest tier, then replace those guesses with measured material/pass costs. Preserve room character, actor silhouette and required feedback on every tier; reduce distant microdetail, unimportant live lights, particle overdraw and resolution in that order, subject to the readability floor.
 
 Use GPU timer queries where available, with disjoint results rejected. Otherwise mark GPU timing unavailable and rely on observed frame intervals without labelling `scene.render()` CPU duration as GPU time. Record actual browser memory where available and asset/resource ledgers elsewhere; WebP transfer size is not GPU memory.
 
@@ -145,20 +179,20 @@ The previous 30 fps samples at 1280 × 720 are encouraging baseline evidence, no
 
 | Step | Build output | Exit gate / failure response |
 | --- | --- | --- |
-| 0. Freeze the contract | References, target devices, camera candidates, required visible actions, baseline capture and repeatable replay | Measure actual actor pixels, frame intervals, startup and resource counts; no guessed acceptance |
-| 1. Find the playable composition | Grey/clean-material lobby cluster plus existing Security/Forge; wide/work/close and responsive framing | In five seconds, identify active work, waiting/blocked work and next action without help text. Correct composition before adding detail |
+| 0. Freeze the contract | References, devices, room/angle coverage, actor actions, baseline capture and repeatable replay | Measure actual actor pixels, frame intervals, startup and resource counts; no guessed acceptance |
+| 1. Find the playable composition | Clean-material lobby/Security/Forge; three authored angles per room, primary/alternate feed composition, action workspace and console return | In five seconds, read active/blocked work and where to act. On desktop and phone, enter an action workspace and return without losing context. Correct composition before detail |
 | 2. Calibrate the finish | Shared material sheet, macro/mid/micro controls, physical UVs, far/work/close variants and separate light/AA/bloom comparisons | Recognisable Loopforge from silhouette/light first; no crawling grain or mush on slow pan, 320/390/768 and desktop. Re-author maps/values if it fails |
 | 3. Prove bodies and machinery | One reusable worker, desk/feeder and Security–Forge transfer; walk/contact/work/wait/jam/release clips or procedural poses | Feet/hands remain attached, gait tracks distance, no toy vibration or invisible outcome. State is identical across views and render rates |
 | 4. Prove depth and feedback | Static light solution, movable contact treatment and one correctly placed beacon impulse | Source–obstacle–receiver alignment from several angles; event catches attention without flattening materials or hiding the action |
 | 5. Prove the delivery path | Typed prefab manifest, required sockets, visibility chunks, validated dependencies, detail tiers, bounded loading/disposal | Bad/missing asset fallback, repeated swaps and 100-worker replay meet the budgets. Choose imported GLB/KTX2 only after the measured need and quality check |
-| 6. Run the combined slice | Arrival → local task → blocked flow → player action → visible recovery, on desktop and actual phone | All visual, interaction, performance and truth gates pass together; owner approves the feel |
+| 6. Run the combined slice | Console → selected room → direct process adjustment → physical response → console consequence; night construction and adviser authority included, on desktop and actual phone | All visual, actor-agency, interaction, total multi-camera performance and truth gates pass together; owner approves the feel |
 | 7. Expand | Apply the approved kit grammar to later work areas and rooms | Re-run worst-case visibility and transitions after each room; do not fill the whole factory first |
 
 Implementation workstreams remain sequential on this memory-limited development machine: author/package → bounded build → production preview → capture/profile. Do not run multiple compilers and live 3D previews at once. Offline baking, when added, follows the same resource discipline.
 
 ## Evidence package and decision rule
 
-For each candidate, save the same clean still, final-lit still and 10–15 second slow pan; then a 60-second replay with 10 and 100 workers. Include overview → work → close transitions, selected-worker continuity, a purchase/attachment change, a jam, hidden/resumed tab and motion-off mode. Fixed inputs/seed permit frame and outcome comparison. Reference original art alongside the real renderer, never substitute a concept render for implementation evidence.
+For each candidate, save the same clean still, final-lit still and 10–15 second slow pan; then a 60-second replay with 10 and 100 workers. Include all three angles, primary/alternate promotion, phone angle selection, console → action → console return, selected-worker continuity, a purchase/attachment change, a jam, hidden/resumed tab and motion-off mode. Record intended action, accepted command and visible consequence; evaluate whether the day feels actively shaped rather than spent waiting for prompts. Fixed inputs/seed permit frame and outcome comparison. Reference original art alongside the real renderer, never substitute a concept render for implementation evidence.
 
 The owner should be able to recognise Loopforge, read what workers are doing and enjoy watching the factory before opening diagnostics. The engineering record must demonstrate responsiveness and headroom on the same candidate. Neither a beautiful still at poor frame rate nor a smooth generic scene clears the gate. The first combined slice is the decision point for further construction.
 
@@ -177,4 +211,4 @@ Primary sources checked 11 October 2026. Their techniques inform the proposal; t
 
 ## Status of this design pass
 
-The plan, its dedicated `design#floor-scale` tab, engine-reader link and companion documents are delivered as a proposal. The tab was checked at desktop, 390 and 320 CSS-pixel viewports with no horizontal overflow or browser warnings/errors; its generator and component lint pass. No factory renderer, simulation, geometry or material implementation was changed in this pass. Steps 0–7 above are the implementation checklist still to execute.
+The plan, its dedicated `design#floor-scale` tab, engine-reader link and companion documents are delivered as a proposal. The console/CCTV and actor-agency revision passed desktop, 390 and 320 CSS-pixel checks without horizontal overflow or browser warnings/errors. Its document generator, spatial-map freshness check and changed-component lint pass. These are documentation checks, not certification of the unbuilt room interface. No factory renderer, simulation, geometry or material implementation was changed in this pass. Steps 0–7 above are the implementation checklist still to execute.

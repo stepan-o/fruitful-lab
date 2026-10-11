@@ -152,13 +152,13 @@ Owner direction: the build phase precedes the morning brief and supervisor assig
 
 **Safe teaching, real ownership.** Propose a supplied starter kit for the required placements, so the guided lesson cannot consume expansion money and strand the opening. No quota clock runs while learning the camera or reading placement help. Once basic placement is understood, later construction introduces cash, footprint and time tradeoffs. Do not disguise the fixed Security sockets as a strategic choice.
 
-## One factory view: night construction and daily transitions
+## One world: console observation, active room controls and night construction
 
-Navigation belongs to the factory view. Build mode adds placement tools to that same camera; leaving it never swaps maps or discards installed equipment. Production is stopped at night.
+The producer console is the recurring entry/return hub. Its floor view shows one selected room through three authored CCTV angles. Focused construction and operating workspaces use the same geometry and installed equipment; they carry the actor role. Build mode pauses production at night and adds placement tools, without creating a separate world.
 
 **The familiar construction loop.** Enter Build → select the next machine → inspect its ghost at the permitted socket → confirm. Escape clears the selection, then exits the tool. A camera drag must never place equipment. The first two Security placements teach the controls; fitting the conveyor drive reuses them.
 
-**Shared map navigation.** Orbit, pan, zoom and room focus are identical during building and production. Preserve the camera when entering or leaving the tool. Focus a room when the player explicitly selects its equipment; do not repeatedly pull their camera back.
+**Navigation and return.** Console → selected room → focused action → console. Preserve room, angle, selected equipment and drafts. Build/inspection camera controls can differ from the authored CCTV angles while using the same spatial map. The guided night-zero Lobby–Security–Forge tutorial remains an explicit entry exception.
 
 **The factory day.** Default world schedule: eighteen hours on shift, six hours charging. Faster chargers are a future research option. Night is a paused construction/planning window, not a six-hour real-time wait. The complete game retains morning leadership/adviser interfaces.
 
@@ -166,7 +166,7 @@ Navigation belongs to the factory view. Build mode adds placement tools to that 
 
 **Art scale.** Use the old factory overview, entrance, lobby and Lattice Forge as references: a compact factory, fenced yard, low workshops and crowded rooms. Avoid monumental robot-city skylines and cathedral charging halls. The world is global; this workplace is in a town.
 
-**What the playable study proves.** The factory-study route implements three ordered installations, the same procedural view in both modes, ten or one hundred individually tracked test workers, an uneven conveyor, pace and obstruction controls, a compressed test shift and automatic return to night. It does not implement the economy, adviser decisions, injuries, research, charging simulation or the full onboarding story.
+**What the playable study proves.** The factory-floor route implements three ordered installations, the same procedural view in both modes, ten or one hundred individually tracked test workers, an uneven conveyor, pace and obstruction controls, a compressed test shift and automatic return to night. It does not implement the economy, adviser decisions, injuries, research, charging simulation or the full onboarding story.
 
 ## Four learning loops, beginning with building
 
@@ -302,9 +302,9 @@ Keep the whole routine day near one minute; heavier days can use two to three. T
 
 **Routine day · about 60 seconds.** Night review/build decision 10s → morning adviser and brief 15s → approval 5s → watch and operate 20s → allocation/result 10s. A working layout can be retained immediately. These are test budgets; heavy construction, onboarding and weekly calls use the longer allowance. Count them when measuring entry-to-first-production time; no response timer punishes reading.
 
-**Producer console.** Communications, six-room summary and navigation. In the next opening it follows night setup and receives the morning leadership call before adviser selection. The currently implemented prototype still starts here; this study does not change runtime entry.
+**Producer console.** Default observation and navigation hub, with communication and a compact six-room summary. Select one accessible room to view its floor through three CCTV angles, then enter focused actions and return. The opening night tutorial precedes the morning call; the current runtime still begins at the console.
 
-**Cinematic factory.** Shared spatial world for watching and operating. Select a room or object without changing simulation ownership. Room puzzles use the same visual language, navigation and event feedback.
+**Room operating / building workspace.** Act on the shared world: place and connect at night; adjust eligible machinery/flow during the shift. Use room geometry and actual entities. Observation supplies evidence and payoff, not a substitute for agency. Adviser authority still governs incident responses.
 
 **Room inspector / build mode.** Focused machinery, layout and policies. Contextual overlay for one object; full usable floor for construction. On small screens use a focused room and a bottom sheet, not a shrunken six-room editor.
 

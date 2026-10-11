@@ -1,0 +1,158 @@
+{
+  "pack": "mexico-city",
+  "assets": {
+    "zocalo": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/zocalo.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "ehecatl": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/ehecatl.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "revolucion": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/revolucion.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "chapultepec": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/chapultepec.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "zocalo-past": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/zocalo-past.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "ehecatl-past": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/ehecatl-past.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "revolucion-past": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/revolucion-past.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "chapultepec-past": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/chapultepec-past.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "archive-tenochtitlan": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-tenochtitlan.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "maxBytes": 450000
+    },
+    "archive-legislativo": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-legislativo.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "maxBytes": 450000
+    },
+    "photo-revolucion": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/photo-revolucion.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "maxBytes": 450000
+    },
+    "tenochtitlan-island": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/tenochtitlan-island.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    }
+  }
+}

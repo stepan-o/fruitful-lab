@@ -1,12 +1,12 @@
-# backend/manage_users.py
+# Run from backend/: python -m scripts.db.manage_users
 import argparse
 import getpass
 import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
-from db import SessionLocal
 import models
-from security import hash_password
+from db import SessionLocal
+from security import get_user_by_email, hash_password
 
 
 def parse_groups(raw: str | None) -> list[str]:
@@ -18,24 +18,25 @@ def parse_groups(raw: str | None) -> list[str]:
 
 
 def create_user(
-        email: str,
-        password: str,
-        *,
-        full_name: str | None = None,
-        is_admin: bool = False,
-        groups: list[str] | None = None,
+    email: str,
+    password: str,
+    *,
+    full_name: str | None = None,
+    is_admin: bool = False,
+    groups: list[str] | None = None,
 ) -> None:
     """Create a new user. Admins must be explicitly requested & validated."""
     groups = groups or []
+    email = email.strip().lower()
 
     db = SessionLocal()
     try:
-        existing = db.query(models.User).filter(models.User.email == email).first()
+        existing = get_user_by_email(db, email)
         if existing:
             print(f"User with email {email} already exists (id={existing.id}).")
             return
 
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
 
         user = models.User(
             email=email,
@@ -61,7 +62,7 @@ def delete_user(email: str) -> None:
     """Delete a user by email."""
     db = SessionLocal()
     try:
-        user = db.query(models.User).filter(models.User.email == email).first()
+        user = get_user_by_email(db, email)
         if not user:
             print(f"User with email {email} not found.")
             return
@@ -115,7 +116,9 @@ def main() -> None:
     # create
     create_cmd = sub.add_parser("create", help="Create a new user")
     create_cmd.add_argument("email")
-    create_cmd.add_argument("password")
+    create_cmd.add_argument(
+        "password", nargs="?", help="Omit for a private password prompt"
+    )
     create_cmd.add_argument(
         "--name",
         dest="full_name",
@@ -171,9 +174,17 @@ def main() -> None:
 
         groups = parse_groups(getattr(args, "groups", None))
 
+        password = args.password or getpass.getpass(
+            "Password (at least 10 characters): "
+        )
+        if len(password) < 10 or len(password) > 128:
+            parser.error("Password must be between 10 and 128 characters")
+        if args.password is None and password != getpass.getpass("Confirm password: "):
+            parser.error("Passwords do not match")
+
         create_user(
             args.email,
-            args.password,
+            password,
             full_name=args.full_name,
             is_admin=is_admin,
             groups=groups,

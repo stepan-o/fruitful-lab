@@ -1,0 +1,352 @@
+.account-workspace {
+  --account-ink: #254c42;
+  color: var(--account-ink);
+  font:
+    14px/1.55 Arial,
+    sans-serif;
+}
+.account-workspace * {
+  box-sizing: border-box;
+}
+.account-workspace button,
+.account-workspace input,
+.account-workspace select {
+  font: inherit;
+}
+.account-workspace button,
+.account-workspace select {
+  cursor: pointer;
+}
+.account-workspace button {
+  min-height: 44px;
+  border: 1px solid #d8e0d9;
+  border-radius: 12px;
+  background: white;
+  padding: 10px 14px;
+  color: var(--account-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.account-workspace button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.account-workspace :focus-visible {
+  outline: 3px solid #d48972;
+  outline-offset: 3px;
+}
+.account-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  justify-content: space-between;
+  padding-bottom: 26px;
+}
+.account-kicker {
+  margin: 0 0 9px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+}
+.account-heading h1 {
+  font:
+    400 clamp(30px, 4vw, 44px)/1.1 Georgia,
+    serif;
+  letter-spacing: -0.035em;
+  margin: 0 0 12px;
+}
+.account-heading p:not(.account-kicker) {
+  max-width: 480px;
+  color: #62716b;
+  margin: 0;
+}
+.account-workspace .ov-language {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.account-workspace .ov-language button {
+  padding: 6px;
+  min-width: 44px;
+  border: 0;
+  background: transparent;
+}
+.account-workspace .ov-language button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-decoration-color: #d48972;
+  text-underline-offset: 6px;
+}
+.account-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid #dae1d8;
+}
+.account-toolbar > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.account-workspace .account-primary {
+  background: #254c42;
+  color: white;
+  border-color: #254c42;
+  font-weight: 600;
+}
+.account-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(270px, 0.95fr);
+  gap: 18px;
+}
+.account-directory,
+.account-editor {
+  min-width: 0;
+  background: white;
+  border: 1px solid #dbe3da;
+  border-radius: 22px;
+  padding: 20px;
+}
+.account-filters {
+  display: grid;
+  gap: 10px;
+}
+.account-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 12px;
+  border: 1px solid #d8e0d9;
+  border-radius: 11px;
+}
+.account-search input {
+  border: 0 !important;
+}
+.account-workspace input:not([type="checkbox"]),
+.account-workspace select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  color: #254c42;
+  background: white;
+  border: 1px solid #d8e0d9;
+  border-radius: 11px;
+  font-size: 16px;
+}
+.account-count {
+  font-size: 12px;
+  color: #66776c;
+  margin: 16px 0 5px;
+}
+.account-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.account-list li + li {
+  border-top: 1px solid #edf0e8;
+}
+.account-list li button {
+  width: 100%;
+  text-align: left;
+  justify-content: flex-start;
+  border: 0;
+  padding: 15px 8px;
+}
+.account-list li button[aria-pressed="true"] {
+  background: #f2f5e9;
+}
+.account-avatar {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e8eed5;
+  font:
+    23px Georgia,
+    serif;
+}
+.account-person {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  gap: 2px;
+}
+.account-person strong,
+.account-person > span {
+  overflow-wrap: anywhere;
+}
+.account-person > span {
+  font-size: 12px;
+  color: #6b7b72;
+}
+.account-status {
+  font-size: 10px;
+  color: #587a41;
+}
+.account-status.is-pending {
+  color: #93703c;
+}
+.account-status.is-paused {
+  color: #a34f41;
+}
+.account-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 11px;
+}
+.account-pagination button {
+  padding: 8px;
+}
+.account-editor {
+  position: relative;
+  background: #f8faf3;
+  align-self: start;
+  padding: 26px;
+}
+.account-editor h2 {
+  font:
+    28px/1.15 Georgia,
+    serif;
+  margin: 0 35px 12px 0;
+  overflow-wrap: anywhere;
+}
+.account-workspace .account-close {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  width: 44px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+}
+.account-editor form {
+  display: grid;
+  gap: 16px;
+}
+.account-editor label {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.account-editor p,
+.account-editor small {
+  color: #68756c;
+}
+.account-email {
+  overflow-wrap: anywhere;
+}
+.account-editor .account-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-weight: 400;
+}
+.account-check input {
+  width: 20px;
+  height: 20px;
+  accent-color: #254c42;
+}
+.account-access-actions {
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid #dae2d5;
+  padding-top: 20px;
+  margin-top: 24px;
+}
+.account-issued {
+  margin-top: 25px;
+  border-radius: 16px;
+  background: #e9efda;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+.account-issued h3,
+.account-issued p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.account-issued h3 {
+  font:
+    24px Georgia,
+    serif;
+}
+.account-issued small {
+  line-height: 1.6;
+}
+.account-error {
+  border: 1px solid #e8c7bb;
+  border-radius: 14px;
+  background: #fff4ee;
+  padding: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #843f32;
+}
+.account-error a {
+  text-decoration: underline;
+}
+.account-saved {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+}
+.account-empty {
+  padding: 25px 0;
+}
+.account-empty h2 {
+  margin: 20px 0;
+}
+.account-empty a {
+  display: inline-block;
+  min-height: 44px;
+  text-decoration: underline;
+}
+.account-email-status {
+  border-top: 1px solid #dbe1d5;
+  padding-top: 18px;
+  margin: 24px 0 0;
+  font-size: 11px;
+}
+@media (max-width: 1200px) {
+  .account-layout {
+    grid-template-columns: 1fr;
+  }
+  .account-editor {
+    order: -1;
+  }
+}
+@media (max-width: 550px) {
+  .account-heading {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .account-heading .ov-language {
+    align-self: flex-end;
+  }
+  .account-directory,
+  .account-editor {
+    padding: 18px;
+  }
+  .account-toolbar {
+    font-size: 12px;
+  }
+  .account-toolbar button {
+    padding: 10px;
+  }
+}

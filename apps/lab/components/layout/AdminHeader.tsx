@@ -5,7 +5,7 @@ import LogoutButton from "@/components/layout/LogoutButton";
 export default function AdminHeader() {
     return (
         <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur">
-            <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6">
+            <div className="mx-auto flex min-h-16 flex-wrap gap-y-2 py-2 max-w-[1200px] items-center justify-between px-4 sm:px-6">
                 {/* Left: Brand + Admin label */}
                 <div className="flex items-center gap-3">
                     <Link
@@ -41,6 +41,7 @@ export default function AdminHeader() {
                     </Link>
                 </nav>
 
+                <Link href="/admin/users" className="inline-flex min-h-11 items-center rounded-lg px-3 text-sm font-semibold">Accounts</Link>
                 {/* Right: actions */}
                 <div className="flex items-center gap-2">
                     <Link

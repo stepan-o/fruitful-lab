@@ -1,17 +1,17 @@
 # backend/security.py
 
-from datetime import datetime, timedelta, timezone
-from typing import Optional
+from datetime import UTC, datetime, timedelta
 
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 import config
-from db import SessionLocal
 import models
+from db import SessionLocal
 
 # Password hashing context
 pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
@@ -41,13 +41,17 @@ def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
 
-def get_user_by_email(db: Session, email: str) -> Optional[models.User]:
-    return db.query(models.User).filter(models.User.email == email).first()
+def get_user_by_email(db: Session, email: str) -> models.User | None:
+    return (
+        db.query(models.User)
+        .filter(func.lower(models.User.email) == email.strip().lower())
+        .first()
+    )
 
 
-def authenticate_user(db: Session, email: str, password: str) -> Optional[models.User]:
+def authenticate_user(db: Session, email: str, password: str) -> models.User | None:
     user = get_user_by_email(db, email)
-    if not user:
+    if not user or not user.is_active:
         return None
     if not verify_password(password, user.hashed_password):
         return None
@@ -58,24 +62,30 @@ def authenticate_user(db: Session, email: str, password: str) -> Optional[models
 
 
 def create_access_token(
-        subject: str,
-        expires_delta: timedelta | None = None,
+    subject: str,
+    expires_delta: timedelta | None = None,
+    session_version: int = 0,
 ) -> str:
     """
     subject: typically user.email
     """
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     if expires_delta is None:
         expires_delta = timedelta(minutes=config.JWT_ACCESS_TOKEN_EXPIRE_MINUTES)
 
-    to_encode = {"sub": subject, "iat": now, "exp": now + expires_delta}
+    to_encode = {
+        "sub": subject,
+        "iat": now,
+        "exp": now + expires_delta,
+        "ver": session_version,
+    }
     secret = config.require_jwt_secret()
     return jwt.encode(to_encode, secret, algorithm=config.JWT_ALGORITHM)
 
 
 async def get_current_user(
-        token: str = Depends(oauth2_scheme),
-        db: Session = Depends(get_db),
+    token: str = Depends(oauth2_scheme),
+    db: Session = Depends(get_db),
 ) -> models.User:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -96,14 +106,14 @@ async def get_current_user(
         raise credentials_exception
 
     user = get_user_by_email(db, email)
-    if user is None:
+    if user is None or payload.get("ver", 0) != user.session_version:
         raise credentials_exception
 
     return user
 
 
 async def get_current_active_user(
-        current_user: models.User = Depends(get_current_user),
+    current_user: models.User = Depends(get_current_user),
 ) -> models.User:
     if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
@@ -111,7 +121,7 @@ async def get_current_active_user(
 
 
 async def get_current_admin_user(
-        current_user: models.User = Depends(get_current_active_user),
+    current_user: models.User = Depends(get_current_active_user),
 ) -> models.User:
     if not current_user.is_admin:
         raise HTTPException(
@@ -134,7 +144,7 @@ def has_group(user: models.User, group: str) -> bool:
 
 
 async def get_current_contractor_user(
-        current_user: models.User = Depends(get_current_active_user),
+    current_user: models.User = Depends(get_current_active_user),
 ) -> models.User:
     """Allow access to admins or users in the 'contractor' group.
 

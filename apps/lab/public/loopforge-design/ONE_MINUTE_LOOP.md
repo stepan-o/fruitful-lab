@@ -1,28 +1,31 @@
 # Loopforge — one-minute loop inventory
 
-8 October 2026. Working brief for the next design pass. The owner considers the one-second loop a good baseline and has asked to gather the next loop's flow, requirements and interfaces. The owner then clarified the pacing: one game day should take about one minute, two to three at most for a heavier day. This document consolidates that agreed requirement; proposed interface changes below are not yet implemented or accepted.
+9 October 2026. Working brief for the next design pass. The owner considers the one-second loop a good baseline and has asked to gather the next loop's flow, requirements and interfaces. The owner then clarified the pacing: one game day should take about one minute, two to three at most for a heavier day. This document consolidates that agreed requirement; proposed interface changes below are not yet implemented or accepted.
 
 ## What this loop does
 
-**Review → choose today's adviser → approve their arrangement → run the shift and handle events → commit output and read the result → next day.**
+**Build at night → morning context and adviser → approve assignments → operate and handle events → commit output → next night.**
+
+The opening now begins through the Lobby, with two guided Security placements followed by the first Conveyor element in Lattice Forge. This is a one-time teaching arc before the morning call, not a daily placement chore. Exact starter equipment and minimum-chain construction remain proposed in the [Conveyor tab](CONVEYOR_MINIGAME_PROPOSAL.md). The current playable runtime still starts at the console.
 
 The one-minute loop is the **whole game day**, including its ordinary reading, choices and transitions. A routine day targets about 60 seconds; a heavier day targets two to three minutes at most. Giving production a minute and adding several minutes of briefing is outside this requirement. These are experience pacing targets, not an instruction to force a timed answer or penalize a player for reading slowly.
 
 A seven-day delivery cycle therefore has a nominal seven-minute routine-day baseline; if every day took three minutes it would be 21 minutes. That arithmetic explains why long mandatory briefings would undermine the weekly loop. Leadership calls, major developments and onboarding must fit into the longer-day allowance. Optional inspection and a player intentionally leaving the game paused do not establish the intended normal-path duration.
 
-The smaller operational beat is **notice → adviser action or player response → visible consequence**. It sits inside the day; it does not get its own minute or demand a compulsory incident. Quiet successful production is valid.
+The smaller operational beat is **notice the constraint → adjust or delegate → watch the material and worker consequence**. The [conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md) makes physical layout, installed machinery and local policy part of that loop; its mechanics remain proposed. It sits inside the day; it does not get its own minute or demand a compulsory incident. Quiet successful production is valid.
 
 ## Whole-day flow and interface ownership
 
 | Step | Player's job | Primary interface | What must be quick |
 | --- | --- | --- | --- |
+| Build at night | Keep or improve the arrangement using the last result | Cinematic floor / paused construction overlay | Skip changes when the floor works. Preview funds, connections and readiness before committing. |
 | Read the situation | Understand the useful result from yesterday, the remaining weekly obligation and today's concern | Console summary / previous debrief; leadership call at week start | Show the change that matters. Do not repeat the full report at both ends of the day. Day one uses opening facts instead. |
 | Choose the adviser | Compare current short pitches and choose whose priority to follow | Dedicated adviser roster | This is the primary daily decision. Recognizable tokens, meaningful pitches and inspectable tradeoffs; do not play five full briefings. |
 | Hear and authorize | Read structured advice, inspect the proposed arrangement, accept or override | Adviser brief with a concise plan; detailed placement desk when needed | Proposed fast path: approve from the briefing after showing assignments and delegation. Keep deliberate edits available without a compulsory extra trip. No priority picker. |
-| Operate | Watch the arrangement work; trust automatic decisions or respond where required | Producer console; room focus optional; incident dialog when consequential | Allow enough operation to feel the choice. Routine receipts stay out of modal flow; a safe day does not need an invented interruption. |
+| Operate | Watch the arrangement work; trust automatic decisions or respond where required | Common cinematic factory; focused room inspection/build controls; incident dialog when consequential | Allow enough operation to feel the choice. Routine receipts stay out of modal flow; a safe day does not need an invented interruption. |
 | Commit and carry | Permanently split output between factory and quota; understand the day's benefit, cost and outstanding issue | Dispatch, with concise result/debrief | Clear before/after totals and explicit irreversible commitment. Feed the result into tomorrow's context, rather than another mandatory exposition screen. |
 
-Proposed first pacing budget, to test rather than treat as balance: situation 5s, adviser choice 10s, brief/plan 10s, operation 25s, allocation/result 10s. Total about 60s. A consequential decision, first-time explanation or weekly call can expand the day into the two-to-three-minute range. If normal play cannot meet that range, simplify the required route and reading before hiding the problem with a faster conveyor.
+Proposed first pacing budget, to test rather than treat as balance: situation 5s, adviser and brief 15s, one relevant adjustment 10s, operation 20s, allocation/result 10s. Total about 60s. A consequential decision, first-time explanation or weekly call can expand the day into the two-to-three-minute range. If normal play cannot meet that range, simplify the required route and reading before hiding the problem with a faster conveyor.
 
 ## Part 01 sets the daily interface requirements
 
@@ -30,7 +33,7 @@ Part 01 should let the player try a way to lead, enjoy a recognizable result and
 
 **Proposed first test:** Revised proposal: four or five completed two-room days, roughly six to eight minutes including the opening and heavier decisions, before Cathexis joins a ready factory’s next planning cycle. The owner asked for a somewhat longer opening; these exact numbers remain a playtest hypothesis, not a timer or fixed unlock date.
 
-**First day · choose a way to lead.** After the leadership call, choose LIMEN or STILETTO, authorize the arrangement and see it work. Commit output to growth or the weekly obligation. Give the player a benefit they can enjoy and a cost they can recognize.
+**First night and day · build, then choose a way to lead.** Enter through the Lobby, set up Security and commission the starter Conveyor. After the morning leadership call, choose LIMEN or STILETTO, authorize the arrangement and see it work. Commit output to growth or the weekly obligation. Give the player a benefit they can enjoy and a cost they can recognize.
 
 **Second day · enjoy what you built.** Retained workers, delivery progress and equipment condition return. The roster acknowledges relevant history. Let sticking with a favourite or a successful method feel valid; do not force a switch.
 
@@ -52,11 +55,11 @@ See [Player desires and scenarios](PLAYER_DESIRES_AND_SCENARIOS.md) for the rese
 
 ## Conditions established before operation
 
-- The opening leadership call establishes the weekly quota and known factory facts. Acknowledge it before gameplay opens; later calls require actual completed-week records.
+- The opening leadership call establishes the weekly quota and known factory facts. It follows the opening night build; acknowledge it before adviser selection and production; later calls require actual completed-week records.
 - The player chooses an adviser from current short pitches, inspecting their priority and tradeoff before appointment. Two candidates on day one; the roster accommodates at least five later.
 - The chosen adviser gives a structured assessment, attributed context, priority and proposed arrangement. The player cannot give them a different optimization target.
 - The player accepts or overrides placements, sees the adviser's delegated room, and starts the shift. No first-day assignments exist before this sequence.
-- Output, equipment condition, available workforce, quota progress and the adviser/operator identities supply the visible operating context. No station-staffing puzzle or repair control is introduced in Parts 01–02.
+- Output, equipment condition, available workforce, quota progress and the adviser/operator identities supply the visible operating context. Station processing and worker tasks are simulated in the new conveyor proposal, without manual station-staffing controls. No repair control is introduced in Parts 01–02.
 
 ## Operational events inside the day
 
@@ -69,7 +72,7 @@ See [Player desires and scenarios](PLAYER_DESIRES_AND_SCENARIOS.md) for the rese
 | Read the consequence | Was the order accepted, what actually happened, and who reacted? | Return to the originating camera + concise outcome receipt; supervisor token/speech | Show execution and known immediate costs. Preserve pending consequences. An order, an attempted action and a successful outcome are different states. |
 | Judge and carry forward | Did the response help? What remains unresolved? | Live operation; optional causal record; later daily debrief | Allow enough observable work for a consequence to become legible. Link the outcome to its decision without claiming a counterfactual was observed. |
 
-**Proposed presentation emphasis:** the operating portion stays on the console. A player-controlled event adds one focused decision surface and returns to its room. Automatic actions should be visible on the console without forcing acknowledgement. Room focus and records deepen inspection; they should not be compulsory steps for every event.
+**Proposed presentation emphasis:** construction and operation use the common cinematic factory. The console handles communication and summaries. A consequential event opens one focused decision surface and returns to its room. Automatic actions remain visible without forcing acknowledgement. Room focus and records deepen inspection; they should not be compulsory steps for every event.
 
 ## The decision surface's minimum content
 
@@ -106,7 +109,8 @@ These give us matched tests of the same problem under different judgment and aut
 | Adviser roster | Compare pitches, priorities and costs; make the primary daily choice | Once per day |
 | Adviser brief / intercom | Structured interpretation and proposed priority; later bounded conversation | Daily, with event advice carried into incidents |
 | Placement desk | Accept or revise assignments; make delegation visible | Planning; later handovers unresolved |
-| Producer console / room focus | Operate, notice, inspect, receive consequences | Recurring |
+| Cinematic factory / room focus | Build at night; operate, notice and inspect during the shift | Recurring |
+| Producer console | Receive calls, contact supervisors and read the room summary | When needed |
 | Incident response / outcome receipt | Resolve a meaningful decision and understand its aftermath | When warranted |
 | Records | Recover missed facts and trace a consequence to its source/order | Optional |
 | Dispatch | Permanently retain output or commit it to the weekly quota | End of shift |
@@ -152,4 +156,4 @@ Acceptance questions: Can the player say what happened, whose judgment they foll
 - Authored design: `game-design/design-data.json`, sections `loops`, `advisedPlanning`, `uiDesign`, `uiStructure`, `experience`, `accident` and `bdi`.
 - Implemented boundary: [First-shift engine](FIRST_SHIFT_ENGINE.md), [producer console direction](PRODUCER_CONSOLE_DIRECTION.md), [hosted review](review/producer-console/README.md).
 - Current code: `apps/lab/components/loopforge/first-shift/{FirstShift,ProducerConsole,ConsoleWorkspaces,AdviserSelection}.tsx`; `apps/lab/lib/loopforge/first-shift/{contract,kernel}.ts`.
-- Latest entry sequence above supersedes older board phrasing that skips the leadership call. This brief does not change runtime mechanics, balance or the approved long arcs.
+- Latest entry sequence places night construction before the morning leadership call; this supersedes both the console-first opening proposal and older phrasing that skips the call. This brief does not change runtime mechanics, balance or the approved long arcs.

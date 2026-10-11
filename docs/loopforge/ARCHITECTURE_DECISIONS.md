@@ -1,5 +1,16 @@
 # Loopforge implementation decisions
 
+**10 October — webview direction:** retain Babylon.js for the separate factory view. The next room pass combines authored surface art, reusable 3D kits and baked static lighting with procedural assembly/motion. Frontend rendering and delivery are the main present optimization workstream. [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md) separates current capabilities from proposed model/texture delivery; [Asset/prefab pipeline](ASSET_PREFAB_PIPELINE.md) records the missing authoring/export/validation work. [Lobby art direction](LOBBY_ART_DIRECTION.md) grounds the first kit in the original painting and autonomous worker pay-claim desks. Wage settlement remains design, not implemented behavior.
+
+**Full-floor follow-up, 9 October:** The separate procedural study now uses a calibrated 280 × 200 tile map (8× the reference plan in each direction) with all six managed rooms plus Lobby, Dispatch and Shipping. Security and Conveyor alone are initially unlocked. Room bounds, portals, locks, pathfinding and direct interaction adjacency share a framework-free spatial definition; workers carry integer positions and room identity. The floor-plan dialog and camera consume the same map. The existing console protocol remains unchanged. An explicit Equipment study view reveals staged machinery and operator spaces in all six rooms without granting access or changing the host snapshot. Equipment dimensions stay at worker scale. The Forge now measures 80 × 56 m, with 2,068 m² reserved for construction. Whole room and Work area are camera framings of the same world; typed construction reserves and delivery aisles live outside the renderer. See [Factory floor calibration](FACTORY_FLOOR_CALIBRATION.md) and [Factory scale and equipment](FACTORY_SCALE_AND_EQUIPMENT.md).
+
+
+**9 October implementation update:** The procedural commissioning study now uses Babylon.js in a separate route. One persistent factory camera serves night construction and production playback. The eighteen-hour shift / six-hour charge baseline and three-second illustrated day/phase interludes are approved direction. The existing first-shift game protocol is unchanged. See [Procedural factory study](PROCEDURAL_FACTORY_STUDY.md) for the implemented boundaries and verification.
+
+**Next opening, 9 October:** night construction precedes morning briefing and assignments. The proposed kernel phase order is night build/commissioning → morning mandate/advice → authorized operation → settlement. Stable construction jobs and equipment IDs survive phase transitions; tutorial/camera state stays in the viewer. Standard installation is separate from engineering repair. No runtime or protocol extension is implemented in this documentation pass. See [the conveyor proposal](CONVEYOR_MINIGAME_PROPOSAL.md).
+
+9 October 2026 — [Conveyor mini-game proposal](CONVEYOR_MINIGAME_PROPOSAL.md) is the current direction for the next operating prototype. Each room is a distinct puzzle within a common cinematic 3D factory; the console handles overview and communications. Physical machinery, routes, shared policies applied per room and supervisor delegation supply player agency during production. This supersedes the earlier scope of a later observation-only 3D view. The illustrated-console game remains the canonical runtime baseline. The separate commissioning fixture exercises construction and motion without changing that game’s economic or supervisor rules.
+
 Started 3 October 2026; rendering scope updated 8 October. The original bounded
 teaching demo and the current first-day prototype are distinct implementations.
 Neither claims feature parity with the Python project. See
@@ -12,7 +23,7 @@ effects. Their editorial diagrams do not establish the material language of the
 game UI. The landing conveyor now combines authored assets and procedural
 motion/lighting; its physical feeling remains the game-interface reference.
 
-The current game deliverable is **asset-driven decision interfaces with
+The implemented baseline is **asset-driven decision interfaces with
 illustrated factory context**. Use the original sim-sim UI assets and patterns
 for cameras, plates, resource symbols, character dialogue, controls and
 settlement. Native layout, text, semantics and hit areas provide usability;
@@ -24,9 +35,7 @@ with a separate immutable `loopforge-console` pack, two new portraits and
 authored normal/hover/pressed control states. It adds no rendering dependency
 and changes no kernel or viewer protocol. See `UI_REBUILD_VALIDATION.md`.
 
-The future **live tick-fed 3D factory** is a separate presentation layer. It must
-join the same adviser/incident/allocation interfaces and knowledge-filtered
-protocol, while the core loop remains playable without it. The old Sim4/KVP
+The next **live tick-fed 3D factory** is a separate renderer but a central operating interface for the proposed room puzzles. It joins adviser/incident/allocation interfaces through a knowledge-filtered protocol. The kernel remains headless and independent of the renderer; the playable spatial prototype must prove its own visual feedback. The old Sim4/KVP
 viewer is an implemented Pixi isometric scene; Sim5's broader viewer stack is a
 strategy reference. Do not mistake either for an inherited finished 3D scene.
 
@@ -34,7 +43,7 @@ strategy reference. Do not mistake either for an inherited finished 3D scene.
 | --- | --- | --- |
 | React + native HTML/CSS + authored assets | Readable text, semantic controls and responsive material composition | Current decision interfaces and illustrated cameras; no generic SVG/CSS replacement for the required artwork |
 | PixiJS | Existing sim-sim and Sim4 viewer implementation; sprite and texture composition | Reuse source assets and architectural patterns selectively; no mandatory runtime migration for the current interfaces |
-| Babylon.js | Candidate integrated scene/lighting toolset | Proposed future 3D spike, not selected or installed; revisit dated research and measure representative content |
+| Babylon.js | Candidate integrated scene/lighting toolset | Installed for the isolated commissioning study; evaluate representative art, interaction and performance before expanding |
 | Three.js / React Three Fiber | Alternative 3D composition and ecosystem | Future scene alternative, to compare if the representative spike exposes a reason |
 | WebGPU | Modern graphics and compute capabilities | Progressive rendering option; never a prerequisite for reading or playing |
 
@@ -42,7 +51,7 @@ No claim that one choice is universally fastest. Performance depends on the
 scene, hardware, browser and implementation. The board retains the dated
 7 October capability comparison; recheck it before a future renderer selection.
 Visual quality, interface load, engine depth and model capability are separate
-axes. Prove the core decision loop now, and benchmark the later scene separately.
+axes. Prove the spatial operating loop with representative content and benchmark rendering independently of kernel correctness.
 
 Sources checked 2026-10-03:
 - https://pixijs.com/8.x/guides/components/renderers

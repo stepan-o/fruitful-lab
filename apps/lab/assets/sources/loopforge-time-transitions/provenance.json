@@ -1,0 +1,21 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-09",
+  "revision": "Town-scale revision after owner feedback",
+  "chargingHours": 6,
+  "shiftHours": 18,
+  "assets": {
+    "night": {
+      "prompt": "Edit image 1 (night charging transition). Image 2 is canonical Loopforge interior material and SCALE reference. Replace the giant vaulted battery cathedral and endless ranks with ONE CRAMPED WORKSHOP CHARGING ROOM in a small-town factory: a low ceiling barely higher than the robots, six exhausted individual robots docked in mismatched patched charging chairs along the wall, a few old battery lockers and improvised copper cable reels. Foreground one tired dented brass-and-iron robot slumped with loose hand and a thick cable in its back, legs on dirty grated floor. Warm desk lamp, faded paper inspection tags, scuffed green enamel meter boxes, oily cobbles, steaming pipe, small cyan charge meters. Through a tiny high window only a nearby low roof and night fog, no towers. Human-scale workplace closeness, machinery feels repairable by a local crew, beautifully grim not cute. Use reference 2's fine engraved gritty painterly detail, black olive and tarnished brass with restrained amber/cyan. Dark central lower-middle space for title rendered separately. Widescreen16:9, center-safe portrait crop, no added title or UI. Do not depict humans.",
+      "role": "Three-second phase transition; no gameplay authority"
+    },
+    "morning": {
+      "prompt": "Edit image 1, the generated MORNING transition. Images 2 and 3 are the canonical Loopforge factory exterior/style reference: use their modest building scale, fenced scrappy yard, ornate sign and heavily drawn grim material detail. REPLACE the giant metropolis/cathedral entirely. New scene: one compact two-storey patched-together AI brain factory in a small industrial town. Camera just outside its chainlink yard, on a damp lane with low crooked workshops and modest rooftops fading into fog. Its ornate glowing Loopforge / AI BRAIN FACTORY entrance sign is the dominant feature, recognizably derived from reference. Only 4 or 5 tired robots approach the ordinary-height doors, one guard in a small security booth, crates and salvage bins, barrel heater, hoses, dim tungsten lamps. Morning is only a sickly pale glimmer above the low roofs. No skyscrapers, enormous arches, monumental towers, endless crowd, civic plaza or cathedral. Rusty olive-black, engraved brass, amber lamps, sparse cyan accents. Close lived-in working-town scale with intimate storytelling. Reference's etched/painterly grit instead of shiny CGI. Retain a 16:9 composition and cinematic depth, dark center-lower title space but no added title/UI. No humans.",
+      "role": "Three-second phase transition; no gameplay authority"
+    },
+    "shift": {
+      "prompt": "Edit image1 (shift start). Image2 is the original Loopforge Lattice Forge concept art and must be the primary style, room scale and mechanical design guide. Rebuild the scene as a CLOSE CROWDED SMALL-FACTORY CONVEYOR BAY, not an immense hall. Low pipe-crowded ceiling, only one short line with four fleshy realistically folded brain specimens in battered individual brass mechanical cradles, tidy cyan neural cables. Three distinctive battered iron-and-brass worker robots at arm's reach, skull-like mechanical faces as in original, one engages a hefty lever. Dense hand-repaired mechanisms with a skull-shaped end housing, dials, paper tags, messy power looms, low fluorescent amber lamps and a modest ruby red rotating beacon. No soaring arches, giant wheel, cathedral, infinite line, monumental scale. Match original's engraved gritty painterly realism, rich black-olive recesses and hot orange practical highlights, oil glints, deep localized shadows, oppressive worn workplace character. Widescreen16:9, central composition safe for phone crop, dark lower-middle for short title placed later. No added titles, UI, logos or humans.",
+      "role": "Three-second phase transition; no gameplay authority"
+    }
+  }
+}

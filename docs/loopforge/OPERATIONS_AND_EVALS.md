@@ -2,7 +2,7 @@
 
 ## What is running
 
-The two English presentations contain 8 overview and 16 architecture chapters.
+The two English presentations contain 8 overview and 17 architecture chapters.
 Routes: `/stepanoskin/loopforge/overview/the-factory`,
 `/stepanoskin/loopforge/architecture/the-thesis`, `/stepanoskin/loopforge/play`.
 The existing Stepanoskin entrance links to all three and Sanctuary Economics.

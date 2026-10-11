@@ -314,3 +314,79 @@ def test_delivery_failure_does_not_reveal_account(system, monkeypatch, caplog):
     assert (
         "private details" not in caplog.text and "player@example.com" not in caplog.text
     )
+
+
+@pytest.mark.parametrize("password", ["a", "1234", "susy"])
+def test_simple_password_signup_login_and_reset(system, password):
+    client, Session, login, _ = system
+    email = "simple@example.com"
+    response = client.post(
+        "/discovery/register",
+        json={"email": email, "full_name": "Player", "password": password},
+    )
+    assert response.status_code == 201, response.text
+    old_session = login(email, password)
+    assert client.get("/discovery/state", headers=old_session).status_code == 200
+    with Session() as db:
+        user = service.find_user(db, email)
+        assert user.hashed_password != password
+        uid = user.id
+    token = client.post(f"/admin/users/{uid}/setup-link", headers=login()).json()[
+        "token"
+    ]
+    assert reset(client, token, "x").status_code == 200
+    assert reset(client, token, "x").status_code == 400
+    assert client.get("/auth/me", headers=old_session).status_code == 401
+    assert client.get("/discovery/state", headers=login(email, "x")).status_code == 200
+    assert (
+        client.post(
+            "/auth/login", data={"username": email, "password": password}
+        ).status_code
+        == 401
+    )
+
+
+@pytest.mark.parametrize("password", ["", "a" * 129])
+def test_password_input_bounds_preserve_setup_link(system, password):
+    client, _, login, _ = system
+    assert (
+        client.post(
+            "/discovery/register",
+            json={
+                "email": "bounds@example.com",
+                "full_name": "Player",
+                "password": password,
+            },
+        ).status_code
+        == 422
+    )
+    result = create_pending(client, login)
+    assert reset(client, result["token"], password).status_code == 422
+    assert reset(client, result["token"], "a").status_code == 200
+    login("new@example.com", "a")
+
+
+@pytest.mark.parametrize(
+    "admin,groups",
+    [
+        (True, []),
+        (True, ["mexico-city"]),
+        (False, ["mexico-city", "contractor"]),
+        (False, []),
+        (False, ["mexico-city", "other-access"]),
+    ],
+)
+def test_shared_accounts_keep_existing_password_minimum(system, admin, groups):
+    client, Session, login, _ = system
+    with Session() as db:
+        user = service.find_user(db, "player@example.com")
+        user.is_admin = admin
+        user.groups = groups
+        token, _ = service.issue_link(db, user)
+        db.commit()
+    rejected = reset(client, token, "a")
+    assert rejected.status_code == 422
+    assert rejected.json()["detail"] == "password_too_short"
+    login("player@example.com", PASSWORD)
+    assert reset(client, token).status_code == 200
+    login("player@example.com", NEW_PASSWORD)

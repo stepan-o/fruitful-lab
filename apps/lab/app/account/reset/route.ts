@@ -11,12 +11,12 @@ const copy = {
  title: ['Tu próxima salida empieza aquí.', 'Your next outing starts here.'],
  intro: ['Elige una contraseña para tu cuenta de Fruitful Lab. Este enlace es privado y sirve una sola vez.', 'Choose a password for your Fruitful Lab account. This private link works once.'],
  passwordLabel: ['Contraseña nueva', 'New password'], confirmLabel: ['Repite la contraseña', 'Repeat password'],
- hint: ['Al menos 10 caracteres. Puedes usar una frase.', 'At least 10 characters. A passphrase works well.'],
  submit: ['Guardar contraseña', 'Save password'], retry: ['Necesito otro enlace', 'I need another link'],
  successTitle: ['Tu cuenta está lista.', 'Your account is ready.'], successText: ['Ya puedes entrar con tu correo y contraseña nueva. Cerramos las sesiones anteriores de esta cuenta.', 'Sign in with your email and new password. Previous sessions for this account are signed out.'],
  login: ['Entrar al juego', 'Enter the game'], footer: ['Una misma cuenta para Fruitful Lab y Mexico city discovery game.', 'One account for Fruitful Lab and Mexico city discovery game.']
 };
 const errors = {
+ password_too_short: ['Esta cuenta de Fruitful Lab requiere al menos 10 caracteres. Elige una contraseña más larga.', 'This Fruitful Lab account requires at least 10 characters. Choose a longer password.'],
  invalid: ['Este enlace venció, ya se usó o fue reemplazado. Pide otro para continuar.', 'This link expired, was used or was replaced. Request another to continue.'],
  mismatch: ['Las contraseñas no coinciden. Revísalas antes de guardar.', 'The passwords do not match. Check them before saving.'],
  service: ['No pudimos guardar tu contraseña. Inténtalo de nuevo en un momento.', 'We couldn’t save your password. Try again shortly.']
@@ -43,7 +43,10 @@ document.getElementById('form').addEventListener('submit', async event => {
  busy = true; error = ''; render();
  try {
   const response = await fetch('/api/account/reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, password, locale }) });
-  if (!response.ok) { error = response.status === 400 || response.status === 422 ? 'invalid' : 'service'; }
+  if (!response.ok) {
+   const data = await response.json();
+   error = data.detail === 'password_too_short' ? 'password_too_short' : response.status === 400 || response.status === 422 ? 'invalid' : 'service';
+  }
   else {
    complete = true; token = ''; document.getElementById('form').reset(); document.getElementById('form').hidden = true;
    document.getElementById('intro').hidden = true; document.getElementById('retry').hidden = true;
@@ -55,7 +58,7 @@ document.getElementById('form').addEventListener('submit', async event => {
 render();
 })();`;
 export function GET() {
-  const html = `<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>Tu contraseña · Fruitful Lab</title><style>${styles}</style></head><body><main><header><a href="/mexico-city">✳ Mexico city discovery game</a><button id="language" type="button" aria-label="English">EN</button></header><h1 id="title">Tu próxima salida empieza aquí.</h1><p id="intro">Elige una contraseña para tu cuenta de Fruitful Lab.</p><form id="form"><label><span id="passwordLabel">Contraseña nueva</span><input id="password" name="password" type="password" autocomplete="new-password" required minlength="10" maxlength="128"></label><small id="hint">Al menos 10 caracteres.</small><label><span id="confirmLabel">Repite la contraseña</span><input id="confirm" name="confirm" type="password" autocomplete="new-password" required minlength="10" maxlength="128"></label><button id="submit" type="submit">Guardar contraseña</button></form><p id="message" role="alert" hidden></p><section id="success" role="status" hidden><h2 id="successTitle">Tu cuenta está lista.</h2><p id="successText"></p><a id="login" class="action" href="/mexico-city/play">Entrar al juego</a></section><a id="retry" href="/mexico-city/play?auth=forgot">Necesito otro enlace</a><footer id="footer"></footer><noscript>Activa JavaScript para usar este enlace privado. / Enable JavaScript to use this private link.</noscript></main><script>${script}</script></body></html>`;
+  const html = `<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>Tu contraseña · Fruitful Lab</title><style>${styles}</style></head><body><main><header><a href="/mexico-city">✳ Mexico city discovery game</a><button id="language" type="button" aria-label="English">EN</button></header><h1 id="title">Tu próxima salida empieza aquí.</h1><p id="intro">Elige una contraseña para tu cuenta de Fruitful Lab.</p><form id="form"><label><span id="passwordLabel">Contraseña nueva</span><input id="password" name="password" type="password" autocomplete="new-password" required minlength="1" maxlength="128"></label><label><span id="confirmLabel">Repite la contraseña</span><input id="confirm" name="confirm" type="password" autocomplete="new-password" required minlength="1" maxlength="128"></label><button id="submit" type="submit">Guardar contraseña</button></form><p id="message" role="alert" hidden></p><section id="success" role="status" hidden><h2 id="successTitle">Tu cuenta está lista.</h2><p id="successText"></p><a id="login" class="action" href="/mexico-city/play">Entrar al juego</a></section><a id="retry" href="/mexico-city/play?auth=forgot">Necesito otro enlace</a><footer id="footer"></footer><noscript>Activa JavaScript para usar este enlace privado. / Enable JavaScript to use this private link.</noscript></main><script>${script}</script></body></html>`;
   const sha = (source: string) =>
     createHash("sha256").update(source).digest("base64");
   return new Response(html, {

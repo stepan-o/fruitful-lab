@@ -75,7 +75,7 @@ test("existing-email signup points to login or recovery and does not try another
   expect(screen.getByLabelText("Contraseña")).toHaveValue("");
 });
 
-test("successful signup authenticates and enters the game", async () => {
+test.each(["a", "1234", "susy"])("signup with a simple password (%s) authenticates and enters the game", async (password) => {
   request
     .mockResolvedValueOnce(response(201))
     .mockResolvedValueOnce(response(200));
@@ -89,7 +89,8 @@ test("successful signup authenticates and enters the game", async () => {
   );
   fill("Cómo te llamas", "Susy");
   fill("Correo electrónico", "susy@example.com");
-  fill("Contraseña", "a-test-passphrase");
+  fill("Contraseña", password);
+  expect(screen.getByLabelText("Contraseña")).toHaveAttribute("minlength", "1");
   fireEvent.click(
     screen.getByRole("button", { name: "Crear cuenta y entrar" }),
   );
@@ -98,6 +99,8 @@ test("successful signup authenticates and enters the game", async () => {
     "/api/mexico-city/register",
     "/api/auth/login",
   ]);
+  expect(JSON.parse(request.mock.calls[0][1].body).password).toBe(password);
+  expect(JSON.parse(request.mock.calls[1][1].body).password).toBe(password);
   expect(JSON.parse(request.mock.calls[1][1].body).next).toBe(
     "/mexico-city/play?mode=friends",
   );

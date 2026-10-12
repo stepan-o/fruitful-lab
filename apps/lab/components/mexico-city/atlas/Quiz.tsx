@@ -27,7 +27,7 @@ export default function Quiz({
   useEffect(() => {
     if (answer !== null)
       feedback.current?.scrollIntoView?.({
-        block: "nearest",
+        block: "center",
         behavior: "instant",
       });
   }, [answer]);

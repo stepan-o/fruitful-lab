@@ -103,3 +103,7 @@ The next shared test follows [the city exploration direction](FIELD_GAME_DIRECTI
 After the full interaction path worked, the second pass shortened the phone opening, moved the map higher, corrected cramped headings and overlapping place labels, added understated real streets, and made landmark sizes and positions transition continuously across scales. It also strengthened small-text contrast, raised controls to 44px targets, preserved keyboard focus while paging, added a collected-story stamp, and disabled all motion under reduced-motion preferences. Original before-pass captures and final production captures are recorded with the verification evidence.
 
 See [verification](VERIFICATION.md) for test results, screenshots, delivery measurements and limitations. This prototype is ready for owner playtesting; technical checks are not a claim that the game balance or visual direction has been accepted.
+
+## Illustrated atlas
+
+The current atlas content and interface map is in [ATLAS_CONTENT_MAP.md](ATLAS_CONTENT_MAP.md). It keeps the real-world game as the default and provides a separate learning space through the HUD.

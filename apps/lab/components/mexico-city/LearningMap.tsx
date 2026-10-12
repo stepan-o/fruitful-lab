@@ -296,7 +296,7 @@ export default function LearningMap({
               },
               {
                 line: "2",
-                name: "Santa Martha · MA",
+                name: "Santa Marta · MA",
                 p: [-98.995, 19.36] as Point,
               },
               {
@@ -312,8 +312,11 @@ export default function LearningMap({
                   <g key={a.name}>
                     <circle cx={p.x} cy={p.y} r="5" fill="#16849a" />
                     <text
-                      x={p.x + 8}
-                      y={p.y + 18}
+                      x={p.x + (a.name.startsWith("Constitución") ? -8 : 8)}
+                      y={p.y + (a.name.startsWith("Santa") ? -14 : 22)}
+                      textAnchor={
+                        a.name.startsWith("Constitución") ? "end" : "start"
+                      }
                       className="ov-learning-label"
                     >
                       {a.name}

@@ -784,19 +784,23 @@ function Game({
                       "For when you’re curious · optional",
                     )}
                   </p>
-                  <button onClick={() => show("chapter")}>
+                  <Link
+                    href={`/mexico-city/atlas?view=chapters&from=${kind === "account" ? "" : kind}`}
+                  >
                     <MapPin size={18} />
                     {say(
                       "Por qué la ciudad tiene esta forma",
                       "Why the city has this shape",
                     )}
                     <ArrowUpRight size={17} />
-                  </button>
-                  <button onClick={() => show("nahuatl")}>
+                  </Link>
+                  <Link
+                    href={`/mexico-city/atlas?view=words&from=${kind === "account" ? "" : kind}`}
+                  >
                     <BookOpen size={18} />
                     {say("Un poquito de náhuatl", "A little Nahuatl")}
                     <ArrowUpRight size={17} />
-                  </button>
+                  </Link>
                 </div>
                 {kind === "guest" && (
                   <button
@@ -1627,14 +1631,16 @@ function Game({
                     {say("Diseño, reglas y alcance", "Design, rules and scope")}{" "}
                     ↗
                   </Link>
-                  <button onClick={() => show("chapter")}>
+                  <Link
+                    href={`/mexico-city/atlas?view=chapters&from=${kind === "account" ? "" : kind}`}
+                  >
                     {say("Entender la ciudad", "Understand the city")} ↗
-                  </button>
+                  </Link>
                 </div>
                 <p className="mc-muted">
                   {say(
-                    "+30 por hallazgo personal. Los retos tienen su propio marcador por grupo. Los quizzes suman solo a tu aventura. No hay multiplicadores.",
-                    "+30 per personal discovery. Challenges have a separate score per group. Quizzes add only to your adventure. No multipliers.",
+                    "+30 por hallazgo personal. Los retos tienen su propio marcador por grupo. En el Atlas, los puntos de práctica sólo se muestran en pantalla.",
+                    "+30 per personal discovery. Challenges have a separate score per group. Atlas practice points are only shown on screen.",
                   )}
                 </p>
                 {kind === "account" ? (

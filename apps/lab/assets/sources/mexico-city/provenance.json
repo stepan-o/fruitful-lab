@@ -72,8 +72,44 @@
       "subjectDirection": "Transparent watercolor and fine-pencil vignette of an interpreted pre-conquest island settlement: flat plaster homes, canals, canoes, a central double-stair Mexica temple with two shrines, and narrow causeways. Oblique miniature-world composition, terracotta and sage, 3:2; no colonial domes, European buildings, modern features, flags, lettering, or UI. Use the 1524 map for island/canal/causeway context, not its European architectural conventions.",
       "promptRecord": "Summarized generation direction; reference images inspected before generation",
       "historicalLimit": "Interpretive vignette, not a literal reconstruction, footprint, or archaeological record. Shown separately from the geographic anchor."
+    },
+    {
+      "id": "atlas-cuicuilco",
+      "workspaceSource": "assets/sources/mexico-city/atlas-cuicuilco.webp",
+      "generationOutput": "exec-89e1b9ef-e8c2-41e0-8d3e-3f583ebc8a99.png",
+      "created": "2026-10-12",
+      "prompt": "Use case: illustration-story. Asset type: original atlas story artwork for Mexico city discovery game. Hand-drawn oblique travel sketch, fine graphite and irregular ink, loose crosshatching, restrained lively watercolor in jade, powder blue, warm ochre and coral. White airy negative space, edges dissolving into pure white paper, landscape 3:2 composition. No text, labels, UI, logos, border or watermark. This is an interpretive thematic illustration, not documentary evidence or a measured reconstruction. Show the present-day archaeological idea of Cuicuilco: a LOW broad circular stepped volcanic-stone platform with an earthen grassy upper surface, one simple straight access stair/ramp, rough dark volcanic rock in the foreground, grass and sparse trees, distant modern urban buildings barely suggested. The circular low form is the key. No tall pyramid, no temple at the top, no Aztec decorations, no lava eruption, no ritual spectacle.",
+      "promptRecord": "Exact prompt; built-in imagegen",
+      "historicalLimit": "Thematic illustration, not a measured reconstruction or documentary photograph. Peñón bath courtyard is a composite, not an identified building."
+    },
+    {
+      "id": "atlas-viga",
+      "workspaceSource": "assets/sources/mexico-city/atlas-viga.webp",
+      "generationOutput": "exec-022877ae-edc4-4823-8d58-622aa6b98eca.png",
+      "created": "2026-10-12",
+      "prompt": "Use case: illustration-story. Asset type: original atlas story artwork for Mexico city discovery game. Hand-drawn oblique travel sketch, fine graphite and irregular ink, loose crosshatching, restrained lively watercolor in jade, powder blue, warm ochre and coral. White airy negative space, edges dissolving into pure white paper, landscape 3:2 composition. No text, labels, UI, logos, border or watermark. This is an interpretive thematic illustration, not documentary evidence or a measured reconstruction. Show a restrained interpretation of a late nineteenth-century waterway in southern Mexico City: a shallow straight canal, a narrow flat wooden produce canoe carrying baskets of vegetables, a modest footbridge in the distance and low town buildings, willow-like trees, tiny ordinary clothed boat workers. No pyramids, no tall towers, no decorative tourist trajinera arches. Emphasize water as a route between fields and market, without claiming to reproduce an exact archive scene.",
+      "promptRecord": "Exact prompt; built-in imagegen",
+      "historicalLimit": "Thematic illustration, not a measured reconstruction or documentary photograph. Peñón bath courtyard is a composite, not an identified building."
+    },
+    {
+      "id": "atlas-milpa",
+      "workspaceSource": "assets/sources/mexico-city/atlas-milpa.webp",
+      "generationOutput": "exec-8887e38b-1bd7-48d5-a6dd-c3226c3ce99e.png",
+      "created": "2026-10-12",
+      "prompt": "Use case: illustration-story. Asset type: original atlas story artwork for Mexico city discovery game. Hand-drawn oblique travel sketch, fine graphite and irregular ink, loose crosshatching, restrained lively watercolor in jade, powder blue, warm ochre and coral. White airy negative space, edges dissolving into pure white paper, landscape 3:2 composition. No text, labels, UI, logos, border or watermark. This is an interpretive thematic illustration, not documentary evidence or a measured reconstruction. Show a contemporary thematic Milpa Alta landscape: carefully cultivated rows of nopal paddles and maguey on rolling highland ground, a few modest low colorful town houses and tiny present-day farmers in ordinary work clothing, pine-covered highlands behind. Not an aerial map of an exact village. No costume stereotypes, no invented glyphs, no ruins or pyramids. Quiet living agricultural landscape.",
+      "promptRecord": "Exact prompt; built-in imagegen",
+      "historicalLimit": "Thematic illustration, not a measured reconstruction or documentary photograph. Peñón bath courtyard is a composite, not an identified building."
+    },
+    {
+      "id": "atlas-penon",
+      "workspaceSource": "assets/sources/mexico-city/atlas-penon.webp",
+      "generationOutput": "exec-34c8d7c4-4320-4303-bf83-f19f6ff120a2.png",
+      "created": "2026-10-12",
+      "prompt": "Use case: illustration-story. Asset type: original atlas story artwork for Mexico city discovery game. Hand-drawn oblique travel sketch, fine graphite and irregular ink, loose crosshatching, restrained lively watercolor in jade, powder blue, warm ochre and coral. White airy negative space, edges dissolving into pure white paper, landscape 3:2 composition. No text, labels, UI, logos, border or watermark. This is an interpretive thematic illustration, not documentary evidence or a measured reconstruction. Show a thematic urban Peñón de los Baños vignette in present-day Mexico City: a modest rocky hill hemmed by densely packed low neighborhood houses, an airport runway and small airplane discretely suggested behind at a distance. At the foreground a simple small bath courtyard and a turquoise pool serve as a visual allusion to the area's thermal-water history, not an identified building. No invented monumental hot-spring temple, no skyscrapers, no text. Contemporary neighborhood is the focus.",
+      "promptRecord": "Exact prompt; built-in imagegen",
+      "historicalLimit": "Thematic illustration, not a measured reconstruction or documentary photograph. Peñón bath courtyard is a composite, not an identified building."
     }
   ],
   "conversion": "Built-in generator PNGs converted to source WebP at quality94/alpha100; responsive immutable variants built by assets/mexico-city.json. A draft shrine with an invented face carving was edited to plain masonry before publication.",
-  "updated": "2026-10-10"
+  "updated": "2026-10-12"
 }

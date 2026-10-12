@@ -98,7 +98,7 @@ Before delivery, complete the rewrites identified in the second pass and read th
 
 ## Landing copy record and revision status
 
-The table below preserves the owner's earlier selections: 1 B; 2 A; 3 B title with A body; 4 A; 5 A; 6 A; 7 B. These are the implemented choices at the time of this guide's revision. The voice direction above governs future writing and revisions; this record does not make the selected copy a template for every page. The app's existing text has not received a comprehensive pass under the revised guidance.
+The table below preserves the owner's earlier selections: 1 B; 2 A; 3 B title with A body; 4 A; 5 A; 6 A; 7 B. These are the implemented choices at the time of this guide's revision. The voice direction above governs future writing and revisions; this record does not make the selected copy a template for every page. The eight existing history chapters have now received the full pass in both languages, including their 24 quiz questions, nine archive captions and ten guided diagrams. The landing, borough profiles, separate practice library and other app text have not received that comprehensive pass.
 
 | Section | Spanish | English |
 | --- | --- | --- |
@@ -128,4 +128,4 @@ The current map note reads:
 
 The voice discussion identified this note as too abstract: it suits the page's mood but contributes little to reading its geography. It remains an implementation record and should receive a more specific treatment when the landing copy is next revised.
 
-For implementation and preview evidence see [ATLAS_VERIFICATION.md](ATLAS_VERIFICATION.md). This update revises the writing guidelines and project references; the existing application copy remains as recorded above.
+For implementation and preview evidence see [ATLAS_VERIFICATION.md](ATLAS_VERIFICATION.md). The landing copy remains as recorded above. The chapter revision applies the guide to the complete existing history sequence: geography, chinampas, pre-Mexica cities, empire, conquest, drainage, metropolitan growth and the living basin. A second continuous read led to further rewrites of repetitive abstractions, reader coaching and mechanical transitions. Passage citations, image provenance and substantive historical distinctions remain visible.

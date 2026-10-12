@@ -10,8 +10,8 @@ const ITEMS = {
     id: "archive-teotihuacan",
     title: c("Teotihuacan, bajo la tierra", "Teotihuacan, beneath the ground"),
     note: c(
-      "1865–1866. Léon Méhédin dibujó un edificio en proceso de excavación. Sigue la escalera y el perfil escalonado que emerge del terreno: el dibujo registra una mirada del siglo XIX sobre una arquitectura mucho más antigua.",
-      "1865–1866. Léon Méhédin drew a building being excavated. Follow the stair and stepped profile emerging from the ground: this is a nineteenth-century view of much older architecture.",
+      "1865–1866. La escalera y el perfil escalonado de un edificio aparecen entre la tierra removida. Léon Méhédin dibujó la excavación, dejando constancia de cómo se acercaba el siglo XIX a la arquitectura de Teotihuacan.",
+      "1865–1866. A stairway and stepped building profile emerge from the excavated earth. Léon Méhédin’s drawing records the excavation and a nineteenth-century encounter with Teotihuacan’s architecture.",
     ),
     detail: c("Escalera y perfil", "Stair and profile"),
     position: "45% 72%",
@@ -21,8 +21,8 @@ const ITEMS = {
     id: "archive-valley-1847",
     title: c("El valle en un mapa de guerra", "The valley on a wartime map"),
     note: c(
-      "1847. Ubica las aguas alrededor de México y los caminos entre ellas. Las marcas militares explican el propósito del documento; no representa la cuenca de 1519.",
-      "1847. Locate waters around Mexico and the roads between them. Military markings explain the document’s purpose; it does not depict the basin of 1519.",
+      "Los caminos se abren paso entre las aguas del valle en este mapa de 1847, preparado durante la invasión estadounidense. Las posiciones militares sitúan el paisaje en las operaciones de aquella guerra.",
+      "Roads thread their way between the valley’s waters on this 1847 map, prepared during the United States invasion. Military positions place the landscape within the operations of that war.",
     ),
     detail: c("México y Texcoco", "Mexico and Texcoco"),
     position: "55% 65%",
@@ -35,8 +35,8 @@ const ITEMS = {
       "La Viga, still a water route",
     ),
     note: c(
-      "Ca. 1885–1899. Observa las canoas cargadas, las orillas arboladas y las construcciones. La foto documenta este lugar; no permite deducir cómo estaba toda la cuenca.",
-      "Ca. 1885–1899. Look at loaded boats, tree-lined banks and buildings. This photograph records one place, not the condition of the entire basin.",
+      "Ca. 1885–1899. Canoas cargadas circulan entre orillas arboladas y construcciones: La Viga aún forma parte de los caminos por los que llegan personas y mercancías a la capital.",
+      "Ca. 1885–1899. Loaded canoes move between tree-lined banks and buildings, with La Viga still among the routes bringing people and goods into the capital.",
     ),
     detail: c("Canoas y orillas", "Boats and banks"),
     position: "55% 60%",
@@ -49,8 +49,8 @@ const ITEMS = {
       "A city seen through a European print",
     ),
     note: c(
-      "1524. Publicado en Núremberg después de la conquista. Observa las conexiones entre isla y orillas. Su orientación y sus convenciones difieren de las de un mapa actual.",
-      "1524. Published in Nuremberg after the conquest. Look at connections between island and shores. Its orientation and conventions differ from a modern map.",
+      "Las conexiones entre la isla y las orillas dan forma a esta imagen de Tenochtitlan, publicada en Núremberg en 1524, después de la conquista. El impreso emplea convenciones europeas para representar la ciudad; su orientación requiere una lectura distinta de la de un mapa actual.",
+      "Connections between the island and the shores shape this image of Tenochtitlan, published in Nuremberg in 1524, after the conquest. The print uses European conventions to represent the city, with an orientation that differs from a modern map.",
     ),
     detail: c("Ver el detalle central", "See central detail"),
     position: "50% 50%",
@@ -60,8 +60,8 @@ const ITEMS = {
     id: "archive-legislativo",
     title: c("Un palacio antes del monumento", "A palace before the monument"),
     note: c(
-      "1912. Guillermo Kahlo fotografió la estructura del Palacio Legislativo inconcluso. Parte de ella sería incorporada al Monumento a la Revolución.",
-      "1912. Guillermo Kahlo photographed the unfinished Legislative Palace’s frame. Part would be incorporated into the Monument to the Revolution.",
+      "Guillermo Kahlo fotografió en 1912 la estructura del Palacio Legislativo inconcluso. Parte de ese armazón encontraría un destino imprevisto en el Monumento a la Revolución.",
+      "Guillermo Kahlo photographed the unfinished Legislative Palace’s frame in 1912. Part of that structure would find an unexpected use in the Monument to the Revolution.",
     ),
     detail: c("La estructura", "The structure"),
     position: "50% 45%",
@@ -69,13 +69,10 @@ const ITEMS = {
   },
   monument: {
     id: "photo-revolucion",
-    title: c(
-      "La materia permanece; el significado cambia",
-      "Material remains; meaning changes",
-    ),
+    title: c("Del palacio al monumento", "From palace to monument"),
     note: c(
-      "2018. Compara el monumento con la estructura de 1912 del capítulo anterior. Fotografía contemporánea; no es una reconstrucción generada.",
-      "2018. Compare the monument with the 1912 frame in the previous chapter. A modern photograph, not a generated reconstruction.",
+      "En esta fotografía de 2018, la cúpula del Monumento a la Revolución ocupa el lugar de la estructura que Kahlo fotografió en 1912. Entre ambas imágenes cambió el proyecto, y con él la historia que se buscaba conmemorar.",
+      "In this 2018 photograph, the dome of the Monument to the Revolution stands where Kahlo photographed the frame in 1912. Between the two images, the project changed, along with the history it was intended to commemorate.",
     ),
     detail: c("La cúpula", "The dome"),
     position: "50% 35%",
@@ -85,8 +82,8 @@ const ITEMS = {
     id: "archive-chinampas",
     title: c("Entre la parcela y el canal", "Between field and canal"),
     note: c(
-      "Publicada en 1912; fecha de la toma no confirmada. Mira la embarcación entre vegetación y bordes cultivados. Es un testimonio posterior al periodo prehispánico, no una prueba de que nada hubiera cambiado.",
-      "Published in 1912; camera date unconfirmed. Look at the boat between vegetation and cultivated banks. It is later evidence, not proof that nothing changed after the pre-Hispanic period.",
+      "Una embarcación pasa entre la vegetación y los bordes cultivados. La imagen apareció publicada en 1912, aunque la fecha de la toma sigue sin confirmarse; documenta un paisaje chinampero ya separado por siglos de sus antecedentes prehispánicos.",
+      "A boat passes between vegetation and cultivated banks. The image was published in 1912, though the camera date remains unconfirmed; it records a chinampa landscape already separated by centuries from its pre-Hispanic predecessors.",
     ),
     detail: c("Embarcación y borde", "Boat and bank"),
     position: "57% 76%",
@@ -99,8 +96,8 @@ const ITEMS = {
       "The foundation, told through signs",
     ),
     note: c(
-      "Ca. 1541, folio 2r. Mira el centro y las divisiones azules: la imagen organiza una memoria política. El manuscrito colonial representa un pasado anterior.",
-      "Ca. 1541, folio 2r. Look at the center and blue divisions: the image orders a political memory. The colonial manuscript represents an earlier past.",
+      "El centro y las divisiones azules organizan el relato de la fundación de Tenochtitlan. Este folio 2r del Códice Mendoza, elaborado hacia 1541, recoge la memoria de la ciudad en un manuscrito del periodo colonial.",
+      "The center and blue divisions organize the account of Tenochtitlan’s foundation. Folio 2r of the Codex Mendoza, made around 1541, records the city’s memory in a colonial-period manuscript.",
     ),
     detail: c("El centro de la imagen", "The image’s center"),
     position: "50% 43%",
@@ -113,8 +110,8 @@ const ITEMS = {
       "Illness and care in the Florentine Codex",
     ),
     note: c(
-      "Libro XII, folio 53v: detalle de un manuscrito terminado en 1577. Representa la epidemia de 1520 desde una elaboración posterior con participación nahua.",
-      "Book XII, folio 53v: detail from a manuscript completed in 1577. It represents the epidemic of 1520 through a later work with Nahua participation.",
+      "La epidemia de 1520 quedó representada en este detalle del libro XII, folio 53v, del Códice Florentino. El manuscrito se terminó en 1577 con participación nahua, varias décadas después de la enfermedad que describe.",
+      "The epidemic of 1520 is represented in this detail from Book XII, folio 53v, of the Florentine Codex. The manuscript was completed in 1577 with Nahua participation, several decades after the illness it describes.",
     ),
     detail: c("Acercar el dibujo", "Look closer"),
     position: "50% 50%",
@@ -134,7 +131,7 @@ export default function ArchiveFigure({
   return (
     <figure className={`at-archive ${detail ? "is-detail" : ""}`}>
       <div className="at-archive-label">
-        {say("DOCUMENTO PARA MIRAR", "A DOCUMENT TO EXAMINE")}
+        {say("ARCHIVO", "ARCHIVE")}
         <span>
           {detail
             ? say("Detalle ampliado", "Enlarged detail")

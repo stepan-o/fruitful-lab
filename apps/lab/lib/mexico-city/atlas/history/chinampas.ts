@@ -11,36 +11,36 @@ const chapter: Chapter = {
   },
   art: "archive-chinampas",
   subtitle: {
-    es: "El paisaje agrícola que sostiene mucho más que una cosecha.",
-    en: "An agricultural landscape sustaining much more than a harvest.",
+    es: "La tierra, los canales y el trabajo que sostienen el paisaje chinampero.",
+    en: "The soil, canals and work that sustain the chinampa landscape.",
   },
   sections: [
     {
       id: "raised-fields",
       title: {
-        es: "La parcela no flota",
-        en: "The field does not float",
+        es: "Levantar una parcela entre canales",
+        en: "Raising a field among canals",
       },
       diagram: "chinampa",
       paragraphs: [
         {
           text: {
-            es: "Vista desde una lancha, una chinampa puede parecer una isla verde. Pero la imagen popular del jardín flotante oculta lo importante: es una parcela construida en un medio húmedo. La tierra cultivable se forma con sedimentos y materia orgánica; los canales la rodean. No es una balsa que pueda desamarrarse y navegar. Comprender su sección —agua al lado, suelo bajo las plantas— permite entender el trabajo que hay detrás de esa superficie tan ordenada.",
-            en: "Seen from a boat, a chinampa may look like a green island. Yet the popular image of a floating garden hides the essential point: it is a field built in wet ground. Cultivable soil is made from sediments and organic material, with canals around it. It is not a raft that can be untied and sailed away. Understanding its section—water beside it, soil beneath the plants—reveals the work behind that orderly surface.",
+            es: "Entre los canales de Xochimilco, la superficie cultivada de una chinampa se eleva sobre el agua. Bajo las plantas hay un suelo construido con sedimentos y materia orgánica, retenido dentro de un perímetro preparado para ese fin. La expresión «jardín flotante» ha acompañado muchas imágenes de este paisaje, aunque las parcelas están asentadas en el terreno. Su aparente sencillez reúne varias obras: formar tierra cultivable, sostener sus bordes y conservar abiertos los canales que la rodean.",
+            en: "Among Xochimilco's canals, the cultivated surface of a chinampa rises above the water. Beneath the plants lies soil built from sediment and organic matter, held within a prepared perimeter. The phrase “floating garden” has accompanied many images of this landscape, although the fields are rooted in the ground. Their apparent simplicity brings together several kinds of work: forming cultivable soil, supporting its edges and keeping the surrounding canals open.",
           },
           sources: ["chinampas", "chinampaStudy"],
         },
         {
           text: {
-            es: "El sistema se desarrolló especialmente en el ámbito de Xochimilco y Chalco, donde las condiciones de agua dulce ofrecían oportunidades distintas a las de Texcoco. No todas las orillas permitían cultivar de la misma manera. Por eso una explicación del paisaje prehispánico necesita distinguir ambientes, no pintar toda la cuenca de azul y repartir chinampas al azar. Tampoco debemos atribuir su historia entera a un único gobernante o a una fecha de invención: los paisajes agrícolas se construyen y transforman a lo largo del tiempo.",
-            en: "The system developed especially around Xochimilco and Chalco, where fresh-water conditions offered different possibilities from Texcoco. Not every shore supported the same cultivation. An account of the pre-Hispanic landscape must distinguish environments rather than paint the entire basin blue and scatter fields at random. Nor should we assign its whole history to one ruler or invention date: agricultural landscapes are built and changed over time.",
+            es: "Las aguas dulces de Xochimilco y Chalco favorecieron el desarrollo de este sistema en el sur de la cuenca. Allí, las condiciones para cultivar diferían de las de las riberas salinas de Texcoco. La historia de las chinampas se fue formando a lo largo del tiempo, mediante la construcción y transformación de paisajes agrícolas. El lugar de una parcela dentro del sistema lacustre importaba tanto como la manera de levantarla: el suelo, el agua disponible y la conexión con otras tierras condicionaban su aprovechamiento.",
+            en: "The fresh waters of Xochimilco and Chalco favored the development of this system in the southern basin. Conditions for cultivation differed from those along Texcoco's saline shores. Chinampa agriculture took shape over time as people built and transformed farming landscapes. A plot's place within the lake system mattered as much as the way it was raised: soil, available water and connections with neighboring land shaped what could be grown there.",
           },
           sources: ["chinampaHistory", "chinampas"],
         },
         {
           text: {
-            es: "La construcción comienza por delimitar el terreno con estacas y una estructura que retenga el relleno. Sedimentos, ramas y vegetación en descomposición ayudan a formar el cuerpo cultivable. Los ahuejotes, sauces de las orillas, participan en el cuidado de los bordes. La fertilidad también se trabaja: añadir materia orgánica repone el suelo que sostiene las cosechas. En el dibujo puedes reconocer las tres piezas que hacen posible ese trabajo: tierra elevada, canales y vegetación del límite.",
-            en: "Construction begins by marking a perimeter with stakes and a structure to retain the fill. Sediment, branches and decomposing vegetation help form cultivable ground. Ahuejote willows contribute to the care of its edges. Fertility is maintained too: organic inputs replenish the soil supporting crops. The drawing separates the three connected parts that make this work possible: raised earth, canals and edge vegetation.",
+            es: "El terreno se delimitaba con estacas y estructuras capaces de retener el relleno. Sedimentos, ramas y vegetación en descomposición formaban el cuerpo de la parcela; los ahuejotes, sauces plantados en las orillas, ayudaban a sostener sus bordes. Sobre esa base seguía el trabajo de mantener la fertilidad mediante aportes de materia orgánica. El corte del diagrama permite ver juntas esas piezas: el suelo elevado donde crecen las plantas, la vegetación del límite y el agua que permanece a sus lados.",
+            en: "Stakes and structures capable of retaining fill marked out the ground. Sediment, branches and decomposing vegetation formed the body of the plot, while ahuejote willows planted along the banks helped support its edges. Once the field existed, fertility still had to be maintained through additions of organic material. The diagram's section brings these parts into view together: raised soil beneath the crops, vegetation along the boundary and water remaining on either side.",
           },
           sources: ["chinampas"],
         },
@@ -49,29 +49,29 @@ const chapter: Chapter = {
     {
       id: "working-cycle",
       title: {
-        es: "Del lodo a la semilla; de la parcela al mercado",
-        en: "From mud to seed; from field to market",
+        es: "Del almácigo al mercado",
+        en: "From seedbed to market",
       },
       archive: "chinampas",
       paragraphs: [
         {
           text: {
-            es: "Una pista concreta es el chapín. Los productores sacan lodo del canal, lo llevan a la parcela, lo dejan cuajar y lo cortan en pequeños cuadros para sembrar. El canal no queda fuera del cultivo: participa en su preparación. Cuando veas una chinampa, busca esa relación entre agua, tierra y trabajo antes de pensar únicamente en un paseo turístico.",
-            en: "A specific clue is the chapín. Growers take mud from a canal to a plot, let it set and cut it into small squares for sowing. The canal is not separate from cultivation: it helps prepare it. When you see a chinampa, look for that relationship between water, soil and work before thinking only of a tourist boat ride.",
+            es: "Una parte de ese trabajo comienza con lodo extraído del canal. Los productores lo extienden sobre la parcela, lo dejan cuajar y lo cortan en pequeños cuadros llamados chapines. En esos pequeños bloques se siembran las semillas; cuando llega el momento del trasplante, el bloque permite llevar la planta al campo con el material en el que germinó. El canal aporta así parte del almácigo, y la preparación de una cosecha empieza en el lodo que se saca de su fondo.",
+            en: "Some of that work begins with mud taken from a canal. Growers spread it on the plot, let it set and cut it into small squares called chapines. Seeds are sown in these small blocks; when transplanting time comes, the block allows the young plant to move into the field with the material in which it germinated. The canal supplies part of the seedbed, so preparing a harvest begins with mud drawn from its bottom.",
           },
           sources: ["chapin"],
         },
         {
           text: {
-            es: "Preparar almácigos, trasplantar, cuidar el borde y mantener transitables los canales son trabajos conectados. El canal puede participar en el cultivo y también servir para transportar personas y productos. Llamarlo simplemente separación entre dos terrenos hace desaparecer esas funciones. La fotografía publicada en 1912 permite mirar esa relación material entre embarcación, vegetación y agua; no es una fotografía del siglo XV ni prueba que todas las técnicas hayan permanecido iguales.",
-            en: "Preparing seedbeds, transplanting, tending banks and keeping canals usable are connected tasks. A canal can support cultivation while carrying people and produce. Calling it merely the gap between two plots erases those functions. The photograph published in 1912 lets us inspect the material relationship between boat, vegetation and water; it is not a fifteenth-century photograph or proof that every technique remained unchanged.",
+            es: "El mantenimiento del canal acompañaba las tareas de la parcela. Por él circulaban personas y productos, de modo que conservar un paso utilizable era parte del recorrido entre sembrar y vender. En la fotografía publicada en 1912, una embarcación aparece junto a la vegetación y los bordes cultivados. La imagen conserva una vista de esa cercanía entre trabajo agrícola y navegación a comienzos del siglo XX, aunque la fecha exacta de la toma sigue sin confirmarse.",
+            en: "Canal maintenance accompanied work on the land. People and produce traveled along the waterways, so keeping a passage usable was part of the journey between sowing and selling. In the photograph published in 1912, a boat appears beside vegetation and cultivated banks. The image preserves a view of farming and navigation in close proximity in the early twentieth century, although its precise camera date remains unconfirmed.",
           },
           sources: ["chapin", "archiveChinampas"],
         },
         {
           text: {
-            es: "También cambiaron las cosechas. La documentación del sistema agrícola describe la importancia histórica del maíz y otras plantas mesoamericanas, junto con una diversificación posterior hacia hortalizas y flores para mercados urbanos. Una chinampa actual no es una vitrina detenida antes de la conquista. Su continuidad depende, entre otras cosas, de que el trabajo agrícola encuentre compradores y pueda sostener a quienes lo realizan. La tradición incluye decisiones nuevas, no sólo repetición.",
-            en: "Crops changed too. Documentation describes the historical importance of maize and other Mesoamerican plants alongside later diversification into vegetables and flowers for urban markets. A present-day chinampa is not a display frozen before the conquest. Its continuity depends in part on farming finding buyers and sustaining its producers. Tradition includes new decisions as well as repetition.",
+            es: "Las cosechas también fueron cambiando con los mercados. A la importancia histórica del maíz y otras plantas mesoamericanas se sumó una diversificación hacia hortalizas y flores destinadas a la ciudad. El paisaje chinampero reunió así técnicas transmitidas y decisiones nuevas sobre qué producir y para quién. La continuidad del cultivo depende de esa relación económica: de encontrar compradores y de que la venta permita sostener a quienes preparan los almácigos, atienden las plantas y mantienen las parcelas.",
+            en: "Crops changed with their markets. The historical importance of maize and other Mesoamerican plants was joined by diversification into vegetables and flowers for the city. The chinampa landscape thus brought inherited techniques together with new decisions about what to produce and for whom. Continued cultivation depends on that economic relationship: finding buyers and earning enough to support those preparing seedbeds, tending plants and maintaining the fields.",
           },
           sources: ["chinampas"],
         },
@@ -80,30 +80,30 @@ const chapter: Chapter = {
     {
       id: "living-system",
       title: {
-        es: "Un ecosistema trabajado, no un decorado",
-        en: "A worked ecosystem, not a backdrop",
+        es: "Cultivar en un humedal vivo",
+        en: "Farming in a living wetland",
       },
       paragraphs: [
         {
           text: {
-            es: "La relación entre agricultura y vida acuática sigue siendo visible en los proyectos de restauración. Chinampa Refugio reúne producción y recuperación del hábitat: mejorar las condiciones de los canales importa tanto para el cultivo como para especies como el ajolote. La conservación no se reduce a criar animales por separado y devolverlos a cualquier agua. Exige preguntarse qué condiciones encontrarán y quién puede sostenerlas día tras día.",
-            en: "Restoration projects still reveal the relationship between farming and aquatic life. Chinampa Refugio links production with habitat recovery: improving canal conditions matters for cultivation and species such as the axolotl. Conservation is not simply breeding animals elsewhere and returning them to any available water. It requires asking what conditions they will encounter and who can sustain those conditions every day.",
+            es: "En Xochimilco, los proyectos de restauración reúnen hoy el cultivo con la recuperación del hábitat acuático. Chinampa Refugio trabaja con productores y científicos para mejorar las condiciones de los canales, donde la calidad del agua importa tanto para la agricultura como para especies como el ajolote. La parcela y el refugio comparten un entorno; lo que ocurre en sus aguas afecta a ambos. Por eso el trabajo de restauración se prolonga en el cuidado cotidiano del lugar donde se cultiva.",
+            en: "In Xochimilco, restoration projects now bring cultivation together with the recovery of aquatic habitat. Chinampa Refugio works with growers and scientists to improve canal conditions, where water quality matters both for farming and for species such as the axolotl. Field and refuge share an environment; what happens in their waters affects both. Restoration therefore continues through the daily care of the places where people grow their crops.",
           },
           sources: ["chinampaRefuge", "axolotl"],
         },
         {
           text: {
-            es: "Eso evita dos errores al hablar del pasado. El primero es imaginar una naturaleza intacta sin intervención humana: aquí se construyó suelo y se organizó agua. El segundo es suponer que una tecnología histórica garantizaba por sí sola un equilibrio perfecto. La lección útil es otra: parcela, canal y comunidad son interdependientes. Preservar una de esas piezas mientras las demás se deterioran no conserva el conjunto.",
-            en: "This avoids two mistakes about the past. The first is imagining untouched nature without human intervention: people built soil and organized water here. The second is assuming that a historical technology automatically guaranteed perfect balance. The useful lesson is interdependence between field, canal and community. Preserving one piece while the others deteriorate does not preserve the whole.",
+            es: "Los rectángulos que se reconocen desde arriba son el resultado de ese trabajo acumulado. Cada borde plantado ayuda a mantener la parcela; cada canal abierto conserva un paso entre los campos. Cuando se deteriora el agua o se interrumpe el cultivo, también se resiente el mantenimiento del conjunto. La restauración debe ocuparse de esas dependencias, porque un productor necesita que su tierra siga dando cosechas y que el canal junto a ella permanezca en condiciones de sostenerlas.",
+            en: "The rectangles visible from above are the result of accumulated work. Each planted edge helps hold a field together; each open canal preserves passage between plots. When water deteriorates or cultivation stops, upkeep of the wider system suffers too. Restoration has to address those dependencies: a grower needs the land to keep producing harvests and the neighboring canal to remain capable of supporting them.",
           },
           sources: ["chinampas", "chinampaRefuge"],
         },
         {
           text: {
-            es: "Cuando visites la zona, pide permiso antes de fotografiar a quienes trabajan y distingue el paseo turístico del espacio productivo. Busca una pregunta concreta: ¿cómo llega el producto al comprador?, ¿qué necesita mantenerse limpio?, ¿de dónde sale el almácigo? Son propuestas de observación, no una prueba de autenticidad que deban pasar los productores. La historia del valle se entiende mejor cuando quienes lo habitan siguen siendo protagonistas.",
-            en: "When you visit, ask before photographing people at work and distinguish a tourist route from productive space. Choose a concrete question: how does produce reach its buyer, what needs to stay clear, where do seedlings begin? These are observation prompts, not an authenticity test for farmers. The valley’s history makes more sense when its inhabitants remain protagonists.",
+            es: "La historia de una chinampa puede seguirse a través de ese ciclo: el lodo que se vuelve almácigo, la planta que pasa al campo y la cosecha que encuentra un mercado. En torno a él se reúnen conocimientos de cultivo, condiciones del agua y decisiones de quienes trabajan la tierra. Al sur de una metrópoli que ha transformado profundamente sus lagos, esas parcelas conservan una manera de vivir de la proximidad entre suelo y agua, renovada con cada temporada de trabajo.",
+            en: "A chinampa's history can be followed through this cycle: mud becoming a seedbed, a plant moving into the field and a harvest finding a market. Around it come together farming knowledge, water conditions and the decisions of those working the land. In the south of a metropolis that has profoundly transformed its lakes, these plots preserve a way of living from the closeness of soil and water, renewed with each season's work.",
           },
-          sources: ["chinampaRefuge"],
+          sources: ["chapin", "chinampas", "chinampaRefuge"],
         },
       ],
     },
@@ -111,79 +111,79 @@ const chapter: Chapter = {
   quiz: [
     {
       prompt: {
-        es: "En el corte de una chinampa, ¿qué sostiene el cultivo?",
-        en: "In a chinampa section, what supports the crops?",
+        es: "¿Sobre qué crecen los cultivos de una chinampa?",
+        en: "What do crops grow on in a chinampa?",
       },
       options: [
         {
-          es: "Una balsa que navega por el lago",
-          en: "A raft moving around the lake",
+          es: "Una plataforma que flota libremente por el canal",
+          en: "A platform floating freely along the canal",
         },
         {
-          es: "Una parcela elevada hecha con tierra y materia orgánica",
-          en: "A raised plot made with soil and organic matter",
+          es: "Una parcela fija, elevada con sedimentos y materia orgánica",
+          en: "A fixed plot raised with sediment and organic material",
         },
         {
-          es: "El techo de una canoa",
-          en: "The roof of a canoe",
+          es: "Una capa de plantas acuáticas sin suelo debajo",
+          en: "A layer of aquatic plants with no soil beneath it",
         },
       ],
       correct: 1,
       explanation: {
-        es: "Es una parcela construida. Los canales que la rodean forman parte del sistema agrícola.",
-        en: "It is a built plot. The surrounding canals form part of the agricultural system.",
+        es: "Los sedimentos y la materia orgánica forman una parcela estable, rodeada de canales. Construir ese suelo y mantener sus bordes permite cultivar en un paisaje de agua.",
+        en: "Sediment and organic material form a stable plot surrounded by canals. Building that soil and maintaining its edges makes farming possible in a watery landscape.",
       },
       sources: ["chinampas"],
     },
     {
       prompt: {
-        es: "¿Qué es el chapín en la técnica descrita?",
-        en: "What is a chapín in the technique described?",
+        es: "¿Para qué sirve el chapín en el cultivo chinampero?",
+        en: "What is a chapín used for in chinampa farming?",
       },
       options: [
         {
-          es: "Una compuerta de piedra",
-          en: "A stone sluice",
+          es: "Para sujetar una canoa a la orilla",
+          en: "To moor a canoe to the bank",
         },
         {
-          es: "Un bloque de lodo preparado para sembrar",
-          en: "A prepared mud block for sowing",
+          es: "Para germinar semillas en un pequeño bloque de lodo",
+          en: "To germinate seeds in a small block of mud",
         },
         {
-          es: "Una embarcación de guerra",
-          en: "A war boat",
+          es: "Para separar el agua dulce de la salada mediante una compuerta",
+          en: "To separate fresh and saline water with a gate",
         },
       ],
       correct: 1,
       explanation: {
-        es: "El lodo del canal se prepara y divide para formar un almácigo.",
-        en: "Canal mud is prepared and divided to form a seedbed.",
+        es: "El lodo extendido sobre el almácigo se corta en pequeños bloques llamados chapines. Allí germinan las semillas antes de que las plantas se trasladen a la parcela.",
+        en: "Mud spread over the seedbed is cut into small blocks called chapines. Seeds germinate there before the young plants are moved to the field.",
       },
       sources: ["chapin"],
     },
     {
       prompt: {
-        es: "¿Qué necesita conservarse para mantener el sistema?",
-        en: "What needs preserving to sustain the system?",
+        es: "¿Qué conecta una cosecha de chinampa con la vida de sus canales?",
+        en: "What connects a chinampa harvest with life in its canals?",
       },
       options: [
         {
-          es: "Sólo la silueta rectangular de la parcela",
-          en: "Only the plot’s rectangular outline",
+          es: "El cultivo puede continuar igual aunque los canales se rellenen",
+          en: "Farming can continue unchanged even if the canals are filled in",
         },
         {
-          es: "Sólo las trajineras turísticas",
-          en: "Only tourist boats",
+          es: "El agua sólo sirve para transportar la cosecha después de cultivarla",
+          en: "Water serves only to transport the harvest once it has grown",
         },
         {
-          es: "La relación entre cultivo, canales, hábitat y trabajo comunitario",
-          en: "The relationship between cultivation, canals, habitat and community work",
+          es: "La calidad del agua y el trabajo agrícola sostienen parcelas y hábitats",
+          en: "Water quality and agricultural work sustain both plots and habitats",
         },
       ],
       correct: 2,
       explanation: {
-        es: "La chinampa es una relación productiva y ecológica, no un objeto aislado.",
-        en: "A chinampa is a productive and ecological relationship, not an isolated object.",
+        es: "La parcela depende del agua y del trabajo que mantiene el sistema. Los proyectos de chinampa-refugio reúnen esas relaciones al vincular la producción agrícola con canales que ofrecen hábitat al ajolote.",
+        en: "The plot depends on water and the work that maintains the system. Chinampa-refuge projects bring those relationships together, linking agricultural production with canals that provide axolotl habitat.",
       },
       sources: ["chinampaRefuge", "chinampas"],
     },

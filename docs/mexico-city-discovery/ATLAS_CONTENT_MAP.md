@@ -19,7 +19,7 @@ Spanish is the initial language. All authored learning text, navigation, questio
 | Chapter | Scope | Figures and closing practice |
 | --- | --- | --- |
 | 01 Un mundo entre lagos | Enclosed basin, rainfall and relief; five connected but different lakes; lakeside livelihoods | Basin cross-section, guided north/center/south lake diagram, 1847 valley map with date/purpose explained; geography quiz |
-| 02 Construir tierra, cuidar agua | Chinampas as constructed soil, canals and living edges; chapines, crops and markets; farming and habitat stewardship | Three-part chinampa cross-section, historical photograph published in 1912; ecosystem quiz |
+| 02 Construir tierra, cuidar agua | Chinampas as constructed soil, canals and living edges; chapines, crops and markets; farming and aquatic habitat | Three-part chinampa cross-section, historical photograph published in 1912; ecosystem quiz |
 | 03 Antes de los mexicas | Cuicuilco and Xitle; Teotihuacan's urbanism and networks; Tula, Culhuacán and Tepanec centers | Guided comparison of urban centers; Léon Méhédin's 1865–1866 excavation drawing; chronology quiz |
 | 04 La isla que se volvió capital | Foundation traditions, 1428 alliance, tribute, Tlatelolco, causeways, dike and drinking-water supply | Mendoza folio 2r, 1524 Nuremberg map, alliance/network diagrams; political and spatial quiz |
 | 05 La conquista y la ciudad inundada | 1519 encounters and Malintzin; alliances, epidemic and siege; colonial capital, Huehuetoca 1607 and flood of 1629 | Florentine Codex 53v, siege/supply diagram, two-stage drainage explanation; causality quiz |
@@ -27,7 +27,7 @@ Spanish is the initial language. All authored learning text, navigation, questio
 | 07 La capital se desborda | Legislative Palace/Revolution monument; 1929 reorganization; urban growth, 1969 Metro, 1975 drainage; subsidence and earthquake distinction | Kahlo's 1912 photograph and separated transport/supply/drainage networks; modern-city quiz |
 | 08 La cuenca sigue viva | Subsoil and urban water; living chinampas, Texcoco protection, reading historical layers outdoors | Guided subsoil process, 2018 monument photograph for comparison; synthesis quiz |
 
-The historical sequence introduces present-day places when useful, but does not replace the separate borough directory. Reading time is calculated from each localized manuscript; roughly 600–700 Spanish words per chapter precede figures, captions, sources and questions. These are original narrative syntheses grounded in the linked scholarship, not copied book chapters.
+The historical sequence introduces present-day places when useful, but does not replace the separate borough directory. Reading time is calculated from each localized manuscript; roughly 675–760 Spanish words per chapter precede figures, captions, sources and questions. These are original narrative syntheses grounded in the linked scholarship, not copied book chapters.
 
 The types and contents shelf live in `lib/mexico-city/atlas/history.ts`; individual manuscripts in `history/*.ts` load on demand. Dates, interpretations and evidence limits remain explicit. In particular, no single disputed Xitle eruption date is imposed, early colonial codices are not described as pre-conquest originals, and a historical photograph's publication date is distinguished from its camera date.
 

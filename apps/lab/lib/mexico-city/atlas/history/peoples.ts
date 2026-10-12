@@ -11,36 +11,36 @@ const chapter: Chapter = {
   },
   art: "archive-teotihuacan",
   subtitle: {
-    es: "Cuicuilco, Teotihuacan y un valle que nunca estuvo vacío.",
-    en: "Cuicuilco, Teotihuacan and a valley that was never empty.",
+    es: "Cuicuilco, Teotihuacan y las ciudades que precedieron a Tenochtitlan.",
+    en: "Cuicuilco, Teotihuacan and the cities that preceded Tenochtitlan.",
   },
   sections: [
     {
       id: "cuicuilco",
       title: {
-        es: "El sur ya tenía un centro monumental",
-        en: "The south already had a monumental center",
+        es: "Cuicuilco, en el sur del valle",
+        en: "Cuicuilco, in the southern valley",
       },
       diagram: "cities",
       paragraphs: [
         {
           text: {
-            es: "Antes de imaginar Tenochtitlan hay que mirar al sur. En Cuicuilco, el gran basamento circular expresa una capacidad de organizar trabajo y construir arquitectura monumental muy anterior al poder mexica. No estamos ante una pequeña antesala de la historia importante: estamos ante otra sociedad, con sus propios vínculos entre asentamiento y territorio. El museo de sitio sitúa ese desarrollo en el Preclásico, mucho antes de que existiera la capital que más tarde dominaría nuestras imágenes del valle.",
-            en: "Before imagining Tenochtitlan, look south. Cuicuilco’s great circular platform expresses an ability to organize labor and build monumental architecture long before Mexica power. This is not a minor prelude to the important history: it is another society with its own relationships between settlement and landscape. The site museum places this development in the Preclassic, long before the capital that would later dominate our images of the valley.",
+            es: "El gran basamento circular de Cuicuilco se levanta en el sur de la ciudad, en la actual Tlalpan. Su arquitectura pertenece al Preclásico, muchos siglos antes de la fundación de Tenochtitlan. Reunir materiales y levantar un centro de esas dimensiones exigía organizar el trabajo de una población considerable. El edificio que hoy queda dentro de la metrópoli fue parte de una ciudad con su propio territorio de abasto, sus recorridos y sus lugares de reunión.",
+            en: "Cuicuilco’s great circular platform stands in the south of the city, in present-day Tlalpan. Its architecture belongs to the Preclassic, many centuries before Tenochtitlan’s foundation. Gathering materials and raising a center on that scale required the organized labor of a substantial population. The building now enclosed by the metropolis belonged to a city with its own supply territory, routes and gathering places.",
           },
           sources: ["cuicuilcoMuseum"],
         },
         {
           text: {
-            es: "Su ubicación permitía relacionarse con recursos lacustres, corrientes que bajaban desde el sur y entornos boscosos. El INAH propone además una posición estratégica en rutas hacia el valle de Toluca. Conviene conservar el verbo propone: una interpretación arqueológica argumenta a partir de evidencias, no dispone de una vista completa de cada viaje antiguo. La lección espacial es clara: los primeros centros no aparecieron en una hoja vacía, sino entre ambientes y recorridos que ofrecían posibilidades.",
-            en: "Its location connected lake resources, streams descending from the south and woodland environments. INAH also proposes a strategic position on routes toward the Toluca valley. Keep the word proposes: archaeological interpretation argues from evidence rather than observing every ancient journey. The spatial lesson is clear: early centers arose among environments and routes offering particular possibilities, not on an empty sheet.",
+            es: "Cuicuilco ocupaba un lugar próximo a recursos lacustres, corrientes que descendían desde el sur y ambientes boscosos. La interpretación del INAH sitúa además al asentamiento en una posición estratégica respecto a las rutas hacia el valle de Toluca. Esa combinación daba acceso a paisajes diferentes dentro de un territorio conectado: las posibilidades de una ciudad dependían de lo que tenía cerca y de lo que podía alcanzar por sus recorridos hacia otras regiones.",
+            en: "Cuicuilco stood near lake resources, streams descending from the south and woodland environments. INAH's interpretation also places the settlement strategically in relation to routes toward the Toluca valley. That combination offered access to different landscapes within a connected territory: a city's possibilities depended both on nearby resources and on what its routes could reach in other regions.",
           },
           sources: ["cuicuilcoLandscape"],
         },
         {
           text: {
-            es: "La lava del Xitle transformó ese paisaje. Pero la relación exacta entre erupción, ocupación y abandono sigue siendo objeto de investigación, como muestra la revisión arqueológica publicada en 2024. Evitemos una escena demasiado cómoda: un volcán hace erupción, toda una ciudad desaparece y al día siguiente nace otra. Los procesos urbanos pueden superponerse; una fecha discutida no borra la evidencia de una historia larga. Hoy Cuicuilco, en Tlalpan, permite reconocer esa profundidad dentro de la ciudad moderna.",
-            en: "Xitle’s lava transformed this landscape. Yet the precise relationship between eruption, occupation and abandonment remains under investigation, as a 2024 archaeological reassessment shows. Avoid an overly convenient scene in which a volcano erupts, one city vanishes and another appears the next day. Urban processes can overlap; a debated date does not erase evidence of a long history. Cuicuilco, in today’s Tlalpan, makes that depth visible within the modern city.",
+            es: "La lava del Xitle transformó ese entorno y dejó una marca que todavía acompaña al sitio arqueológico. La relación entre la erupción, las etapas de ocupación y el abandono de Cuicuilco sigue en estudio; una revisión publicada en 2024 vuelve sobre esa cronología. El basamento y el paisaje volcánico reúnen, por tanto, tiempos distintos, cuya relación se reconstruye mediante la investigación. Dentro de la ciudad moderna, Cuicuilco conserva las dimensiones de un centro antiguo y las señales materiales de un territorio que cambió a su alrededor.",
+            en: "Lava from Xitle transformed the surroundings, leaving a mark still visible beside the archaeological site. The relationship between the eruption, successive phases of occupation and Cuicuilco's abandonment remains under study; a reassessment published in 2024 revisits that chronology. The platform and volcanic landscape therefore bring together different periods whose relationship researchers continue to reconstruct. Within the modern city, Cuicuilco preserves the dimensions of an ancient center and the material traces of a landscape that changed around it.",
           },
           sources: ["cuicuilco", "cuicuilcoMuseum"],
         },
@@ -50,58 +50,58 @@ const chapter: Chapter = {
       id: "teotihuacan",
       archive: "teotihuacan",
       title: {
-        es: "Otra escala de ciudad, al noreste",
-        en: "Another scale of city, to the northeast",
+        es: "Los barrios de Teotihuacan",
+        en: "The neighborhoods of Teotihuacan",
       },
       paragraphs: [
         {
           text: {
-            es: "Teotihuacan desplazó la escala de nuestra mirada. Su gran traza, sus conjuntos residenciales y sus edificios ceremoniales muestran una ciudad planificada y densamente organizada, no únicamente dos pirámides aisladas. La Calzada de los Muertos articulaba sectores monumentales; vivir allí también significaba habitar barrios, producir y mantener relaciones con otros lugares. Para entender una ciudad antigua hay que preguntar por las casas y los talleres tanto como por el templo más alto.",
-            en: "Teotihuacan changes the scale of our view. Its urban layout, residential compounds and ceremonial buildings reveal a planned, densely organized city, not merely two isolated pyramids. The Avenue of the Dead linked monumental sectors; living there also meant inhabiting neighborhoods, producing goods and maintaining connections elsewhere. Understanding an ancient city means asking about houses and workshops as well as its tallest temple.",
+            es: "Al noreste de la cuenca, Teotihuacan desarrolló una organización urbana de gran escala. La Calzada de los Muertos articulaba conjuntos monumentales, mientras los espacios residenciales extendían la ciudad más allá de sus grandes templos. En esos conjuntos transcurrían la habitación y la producción que sostenían la vida urbana. La disposición de edificios, barrios y ejes de circulación revela un trabajo de planificación cuyo alcance se aprecia al considerar el asentamiento completo.",
+            en: "In the northeast of the basin, Teotihuacan developed an urban organization on a great scale. The Avenue of the Dead linked monumental compounds, while residential spaces extended the city beyond its major temples. Those compounds held the homes and production that sustained urban life. The arrangement of buildings, neighborhoods and routes reveals a work of planning whose reach becomes apparent across the settlement as a whole.",
           },
           sources: ["teotihuacanCity"],
         },
         {
           text: {
-            es: "La presencia de un barrio zapoteca y las conexiones que documenta el INAH con regiones lejanas ayudan a desmontar otra imagen: la de culturas guardadas en cajas separadas. Teotihuacan formaba parte de redes mesoamericanas de intercambio e influencia. Tampoco fue una ciudad construida por los mexicas. Cuando éstos alcanzaron el poder, los grandes edificios teotihuacanos pertenecían a un pasado antiguo que podía ser reinterpretado, no a su propia fundación imperial.",
-            en: "A Zapotec neighborhood and the distant connections documented by INAH challenge another image: cultures kept in separate boxes. Teotihuacan belonged to Mesoamerican networks of exchange and influence. It was not a city built by the Mexica. By the time they rose to power, its major buildings belonged to an ancient past open to reinterpretation, not to their own imperial foundation.",
+            es: "Sus relaciones también alcanzaban regiones lejanas. El barrio zapoteca documentado por el INAH permite reconocer una presencia concreta dentro de esas conexiones mesoamericanas, hechas de intercambio, desplazamientos e influencia. Teotihuacan tuvo su desarrollo muchos siglos antes del ascenso mexica. Cuando Tenochtitlan se convirtió en un centro de poder, aquellos grandes edificios pertenecían ya a un pasado antiguo, susceptible de recibir nuevos significados de quienes llegaban a conocerlo.",
+            en: "Its relationships also extended to distant regions. The Zapotec neighborhood documented by INAH gives a particular presence to those Mesoamerican connections, formed through exchange, movement and influence. Teotihuacan developed many centuries before Mexica power. By the time Tenochtitlan became a major center, its great buildings already belonged to an ancient past, open to new meanings among those who encountered them.",
           },
           sources: ["teotihuacan", "teotihuacanEnd"],
         },
         {
           text: {
-            es: "Su declive tampoco se explica con un único interruptor. Las huellas de incendios en conjuntos como Xalla y los cambios en la ocupación permiten estudiar una transformación del orden urbano. Hablar de colapso no equivale a afirmar que toda persona desapareció del valle. El diagrama ordena centros en el tiempo para distinguirlos; no dibuja una sucesión de pueblos que se reemplazaron por completo ni una línea inevitable que condujera a Tenochtitlan.",
-            en: "Its decline cannot be explained by one switch either. Traces of fire in compounds such as Xalla and changes in occupation allow researchers to study a transformation of urban order. Collapse does not mean every inhabitant disappeared from the valley. The diagram orders centers in time to distinguish them; it does not show populations completely replacing one another or an inevitable line leading to Tenochtitlan.",
+            es: "En Xalla, las excavaciones encontraron huellas de incendio y destrucción que permiten acercarse a la crisis de Teotihuacan. Los edificios conservan señales de un orden urbano que se desarticuló, mientras los cambios de ocupación ayudan a seguir lo que ocurrió después. Reunir ambas clases de evidencia permite estudiar la caída de los grandes conjuntos junto a la suerte de quienes vivían alrededor. La duración de esos cambios y su relación entre sí forman parte de las preguntas que siguen abiertas.",
+            en: "At Xalla, excavations uncovered traces of fire and destruction that bring Teotihuacan’s crisis into view. Buildings retain evidence of an urban order coming apart, while changes in occupation help researchers follow what happened afterward. Taken together, these findings allow the fate of the great compounds to be studied alongside that of the people living around them. How long those changes took, and how they relate to one another, remain questions for investigation.",
           },
-          sources: ["teotihuacanEnd"],
+          sources: ["teotihuacanEnd", "teotihuacanCity"],
         },
       ],
     },
     {
       id: "many-centers",
       title: {
-        es: "Herencias, migraciones y ciudades con nombre propio",
-        en: "Legacies, movements and cities of their own",
+        es: "Herencias y poderes alrededor de la cuenca",
+        en: "Legacies and powers around the basin",
       },
       paragraphs: [
         {
           text: {
-            es: "Tula, al norte de la cuenca, se convirtió después en un centro destacado. El INAH distingue Tula Chico y Tula Grande y documenta barrios, conjuntos habitacionales, comercio y conquista. Su historia importa tanto por lo que se puede excavar como por el prestigio que la tradición tolteca adquirió después. No hace falta llamar azteca a todo lo monumental para encontrar relaciones entre estas sociedades; hacerlo, en cambio, nos impediría reconocer sus diferencias.",
-            en: "Tula, north of the basin, later became a major center. INAH distinguishes Tula Chico and Tula Grande and documents neighborhoods, residential compounds, trade and conquest. Its history matters both for what can be excavated and for the prestige later attached to Toltec tradition. We do not need to call every monument Aztec to find connections between these societies; doing so would obscure their differences.",
+            es: "Tula, al norte de la cuenca, adquirió después una importancia propia. Los conjuntos que hoy se distinguen como Tula Chico y Tula Grande, sus barrios y espacios habitacionales forman parte de una trayectoria ligada al comercio y la conquista. A esa historia material se sumó el prestigio de la tradición tolteca entre sociedades posteriores. La memoria de un centro podía viajar más allá de su periodo de mayor poder y convertirse en una herencia disputada o reivindicada por otros.",
+            en: "Tula, north of the basin, later acquired its own prominence. The complexes now distinguished as Tula Chico and Tula Grande, along with their neighborhoods and residential compounds, belong to a history connected with trade and conquest. Alongside that material history grew the prestige of Toltec tradition among later societies. A center's memory could travel beyond the period of its greatest power and become a legacy others claimed or contested.",
           },
           sources: ["tula"],
         },
         {
           text: {
-            es: "Culhuacán ofrece otra puerta de entrada a esas herencias. El museo comunitario trata el señorío, el ambiente lacustre y la tradición tolteca antes de explicar el dominio mexica y la época virreinal. Mientras tanto, Azcapotzalco sería un centro de poder tepaneca decisivo para la primera historia política de Tenochtitlan. Conserva esos nombres como actores: no eran barrios esperando a que la futura capital les diera sentido.",
-            en: "Culhuacán offers another entry into these legacies. Its community museum treats the polity, lake environment and Toltec tradition before explaining Mexica rule and the colonial period. Azcapotzalco, meanwhile, would be a Tepanec power center decisive in Tenochtitlan’s early political history. Keep those names as actors: they were not neighborhoods waiting for the future capital to give them meaning.",
+            es: "Culhuacán ofrece una entrada a esas herencias dentro del paisaje lacustre. Su museo comunitario recorre la historia del señorío y la tradición tolteca antes de abordar el dominio mexica y la época virreinal. Hacia el noroeste, Azcapotzalco llegaría a encabezar un poder tepaneca decisivo en la política regional. Ambos nombres, que hoy se encuentran dentro de la metrópoli, correspondían a centros con autoridad y relaciones propias, capaces de intervenir en el destino de otros asentamientos.",
+            en: "Culhuacán offers an entry into those legacies within the lake landscape. Its community museum follows the history of the polity and Toltec tradition before turning to Mexica rule and the colonial period. To the northwest, Azcapotzalco would come to head a Tepanec power decisive in regional politics. Both names, now found within the metropolis, belonged to centers with authority and relationships of their own, able to shape the fortunes of other settlements.",
           },
           sources: ["culhuacan", "alliance"],
         },
         {
           text: {
-            es: "Así termina este capítulo: con un territorio habitado, con memoria y con poderes en competencia. En el siguiente, los mexicas entran en esa historia; no la ponen en marcha desde cero. Si puedes distinguir Cuicuilco de Teotihuacan y ubicar la antigüedad de ambos respecto a Tenochtitlan, ya tienes algo más útil que una lista de fechas: una defensa contra la idea de que todo el pasado de la ciudad pertenece a un solo pueblo.",
-            en: "This chapter ends with an inhabited landscape, memories and competing powers. In the next, the Mexica enter that history; they do not start it from zero. If you can distinguish Cuicuilco from Teotihuacan and place both before Tenochtitlan, you have more than a list of dates: a way to resist assigning the city’s entire past to one people.",
+            es: "Los mexicas llegaron a un territorio donde ya existían ciudades antiguas, memorias prestigiosas y poderes en competencia. Cuicuilco y Teotihuacan pertenecían a otros tiempos de la vida urbana; Culhuacán y Azcapotzalco formaban parte de las relaciones políticas que rodearían a la nueva Tenochtitlan. La historia de esa isla se desarrolló entre vecinos que podían ofrecer vínculos, exigir servicios o hacer la guerra. Su ascenso iba a alterar ese equilibrio.",
+            en: "The Mexica entered a territory of ancient cities, prestigious memories and competing powers. Cuicuilco and Teotihuacan belonged to earlier periods of urban life; Culhuacán and Azcapotzalco formed part of the political relationships surrounding the new Tenochtitlan. The island's history unfolded among neighbors who might offer connections, demand service or wage war. Its rise would change that balance.",
           },
           sources: ["cuicuilcoMuseum", "teotihuacan", "alliance"],
         },
@@ -111,8 +111,8 @@ const chapter: Chapter = {
   quiz: [
     {
       prompt: {
-        es: "¿Qué lugar obliga a mirar el sur antes de Tenochtitlan?",
-        en: "Which place draws our attention south before Tenochtitlan?",
+        es: "¿Qué asentamiento del sur de la cuenca destacó mucho antes de Tenochtitlan?",
+        en: "Which settlement in the southern basin flourished long before Tenochtitlan?",
       },
       options: [
         {
@@ -120,70 +120,70 @@ const chapter: Chapter = {
           en: "Cuicuilco",
         },
         {
-          es: "El Palacio Legislativo",
-          en: "The Legislative Palace",
+          es: "Tlacopan",
+          en: "Tlacopan",
         },
         {
-          es: "El Gran Canal de 1900",
-          en: "The Grand Canal of 1900",
+          es: "Tlatelolco",
+          en: "Tlatelolco",
         },
       ],
       correct: 0,
       explanation: {
-        es: "Su arquitectura monumental pertenece a una historia anterior al poder mexica.",
-        en: "Its monumental architecture belongs to a history before Mexica power.",
+        es: "Cuicuilco fue un centro del Preclásico en el sur de la cuenca. Su gran basamento circular pertenece a una historia urbana muchos siglos anterior a la capital mexica.",
+        en: "Cuicuilco was a Preclassic center in the southern basin. Its great circular platform belongs to an urban history many centuries older than the Mexica capital.",
       },
       sources: ["cuicuilcoMuseum"],
     },
     {
       prompt: {
-        es: "¿Quién construyó Teotihuacan?",
-        en: "Who built Teotihuacan?",
+        es: "¿Cómo se relacionan Teotihuacan y la capital mexica en el tiempo?",
+        en: "How do Teotihuacan and the Mexica capital relate in time?",
       },
       options: [
         {
-          es: "Los españoles después de 1521",
-          en: "The Spanish after 1521",
+          es: "Teotihuacan se construyó como ampliación de Tenochtitlan",
+          en: "Teotihuacan was built as an extension of Tenochtitlan",
         },
         {
-          es: "Sociedades anteriores al imperio mexica",
-          en: "Societies preceding the Mexica empire",
+          es: "Teotihuacan había sido una gran ciudad siglos antes de la fundación de Tenochtitlan",
+          en: "Teotihuacan had been a major city centuries before Tenochtitlan was founded",
         },
         {
-          es: "El gobierno del siglo XIX",
-          en: "The nineteenth-century government",
+          es: "Las dos capitales se fundaron como parte de la Triple Alianza",
+          en: "Both capitals were founded as part of the Triple Alliance",
         },
       ],
       correct: 1,
       explanation: {
-        es: "Teotihuacan tuvo su desarrollo urbano muchos siglos antes del auge de Tenochtitlan.",
-        en: "Teotihuacan developed as a city many centuries before Tenochtitlan’s rise.",
+        es: "Teotihuacan alcanzó su auge durante el Clásico, mucho antes de la fundación de Tenochtitlan en el siglo XIV. Sus barrios y redes de intercambio tuvieron una trayectoria propia.",
+        en: "Teotihuacan flourished during the Classic period, long before Tenochtitlan’s fourteenth-century foundation. Its neighborhoods and exchange networks had their own history.",
       },
       sources: ["teotihuacanCity"],
     },
     {
       prompt: {
-        es: "¿Cómo conviene leer el final de una gran ciudad antigua?",
-        en: "How should we read the end of a major ancient city?",
+        es: "¿Qué evidencia de Xalla contribuye a estudiar la crisis de Teotihuacan?",
+        en: "What evidence from Xalla helps researchers study Teotihuacan’s crisis?",
       },
       options: [
         {
-          es: "Como la desaparición automática de todos sus habitantes",
-          en: "As the automatic disappearance of all inhabitants",
+          es: "Un mapa de las calzadas de Tenochtitlan",
+          en: "A map of Tenochtitlan’s causeways",
         },
         {
-          es: "Como prueba de una única causa segura",
-          en: "As proof of one certain cause",
+          es: "Los registros de tributo de la Triple Alianza",
+          en: "Tribute records from the Triple Alliance",
         },
         {
-          es: "Como un proceso que requiere comparar evidencias y cambios de ocupación",
-          en: "As a process requiring comparison of evidence and changing occupation",
+          es: "Huellas de incendio y destrucción en un conjunto de la ciudad",
+          en: "Traces of fire and destruction in a city compound",
         },
       ],
       correct: 2,
       explanation: {
-        es: "Los incendios y cambios materiales ayudan a investigar; no justifican una explicación única de todo el valle.",
-        en: "Fires and material changes support investigation, not one explanation for the entire valley.",
+        es: "Las huellas de incendio y destrucción en Xalla forman parte de la evidencia sobre la crisis de Teotihuacan. Su interpretación se combina con lo encontrado en otros conjuntos para estudiar una transformación que afectó de manera distinta a sus habitantes.",
+        en: "Traces of fire and destruction at Xalla contribute to the evidence for Teotihuacan’s crisis. Researchers compare them with findings from other compounds to study a transformation that affected the city’s inhabitants in different ways.",
       },
       sources: ["teotihuacanEnd"],
     },

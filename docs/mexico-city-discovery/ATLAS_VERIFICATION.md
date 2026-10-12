@@ -4,7 +4,7 @@
 
 ## Scope
 
-Eight continuous ES/EN history chapters replace the six short scene sequences. Chinampas have a dedicated second chapter. Each chapter has three sections, an archival figure and its own three-question concluding quiz. The manuscript has 5,175 Spanish narrative words and 4,474 English narrative words, excluding captions, sources and quiz content. Every factual passage and answer resolves a source link.
+Eight continuous ES/EN history chapters replace the six short scene sequences. Chinampas have a dedicated second chapter. Each chapter has three sections, an archival figure and its own three-question concluding quiz. The manuscript has 5,734 Spanish narrative words and 4,984 English narrative words, excluding captions, sources and quiz content. Every factual passage and answer resolves a source link.
 
 The reader adds 24 questions to the existing 40-question practice library. Scores are visual practice feedback only; neither account scores nor backend progress change. The game map, login and field-discovery rules are untouched. Atlas maps use explicit selection, zoom, framing and recenter controls rather than drag capture.
 
@@ -67,3 +67,21 @@ Validation for this follow-up:
 - Local build log: `/tmp/atlas-editorial-build.log`. Full field performance remains unmeasured; no new cold/warm transfer timing claim is made for this copy pass.
 
 Evidence: [phone opening](evidence/atlas-editorial-phone.png), [phone map and note](evidence/atlas-editorial-map-phone.png), [desktop](evidence/atlas-editorial-desktop.png). Vercel preview verification is reported on PR #114 after the push.
+
+## Chapter voice revision · 12 October 2026
+
+Applied the current editorial guide to all eight existing history chapters in Spanish and English: narrative, section headings, subtitles, 24 quiz questions and explanations, nine archive captions, and the explanatory copy in ten guided diagrams. The narrative now contains **5,734 Spanish / 4,984 English words**, excluding headings, captions, references and quizzes. Chapter cards use the same revised metadata as the reader.
+
+The first draft was followed by a complete bilingual reread and concrete rewrites. The second pass replaced repeated abstractions with the work of cultivating, supplying, building and draining; removed interpretation lessons and invented opposites; and revised mechanical endings and implausible quiz alternatives. Historical distinctions remain where they explain the evidence, including fresh/saline water, trade/tribute, manuscript/event dates and subsidence/seismic response. The final figure note identifies approximate positions and simplified processes directly.
+
+All original figure assignments, archival records and quiz answer indexes are preserved. Passage citations were checked against the revised wording, with existing source IDs added where needed. Targeted source rereads included UNAM's alliance, siege and Malintzin accounts, Gurría Lacroix on eighteenth-century drainage, UNAM on urban climate, and Agricultura CDMX on chapines. Direct access to the last page returned 403; its indexed official-page text remained available. This was an editorial revision of the existing sourced manuscript, not a new audit of every external URL.
+
+Validation for this revision:
+
+- Scoped ESLint and exact-path tests passed on the final content: **3 suites / 8 tests**, including sources, bilingual completeness, correct-answer scoring, locking answers, next-chapter navigation and guided figures.
+- Production build passed with retained-asset checks and TypeScript validation. The final small quiz-choice and diagram-note polish followed that build and was covered by the final lint/tests and local browser review.
+- The final source was reviewed in the local app at **320, 390 and 1280 CSS px**. The checked Spanish/English headings, quiz choices and reader had no horizontal overflow. The 320 px English quiz produced **3/3 → +75**, then opened chinampas; changing back to Spanish showed the revised subtitle and prose.
+- The 390 px chinampa reader displayed the rewritten almácigo passage and its source link. Archive full/detail controls preserved the publication-date qualification, credit and rights link. The 1280 px index and conquest chapter showed the revised copy; no console errors were recorded in the review.
+- React review: edits are static content and labels; chapter imports remain lazy, and existing hooks, semantics, source links and image delivery behavior are retained. No new assets enter runtime delivery, and no dependencies, fonts or motion were added.
+
+Evidence: [phone passage](evidence/atlas-prose-phone.png), [desktop chapter](evidence/atlas-prose-desktop.png). The landing and other Atlas tracks remain outside this comprehensive voice pass. PR #114 records the new deployment status after push.

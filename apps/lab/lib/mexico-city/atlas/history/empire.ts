@@ -18,29 +18,29 @@ const chapter: Chapter = {
     {
       id: "island-power",
       title: {
-        es: "De subordinados a aliados victoriosos",
-        en: "From subordinates to victorious allies",
+        es: "La guerra contra Azcapotzalco",
+        en: "The war against Azcapotzalco",
       },
       archive: "mendoza",
       paragraphs: [
         {
           text: {
-            es: "La fecha tradicional de fundación de México-Tenochtitlan es 1325. Conviene distinguir esa referencia de la idea de un imperio que nace terminado. Los primeros gobernantes mexicas actuaron dentro de un orden dominado por los tepanecas de Azcapotzalco; participaron en sus guerras antes de desafiar ese poder. La ubicación insular no explica por sí sola el ascenso. También importaron decisiones, conflictos y alianzas que pudieron tener otros desenlaces.",
-            en: "The traditional founding date of Mexico-Tenochtitlan is 1325. Distinguish that reference from the idea of an empire born complete. Early Mexica rulers operated within an order dominated by Azcapotzalco’s Tepanecs, participating in their wars before challenging their power. Island geography alone does not explain the rise. Decisions, conflicts and alliances mattered, and could have ended differently.",
+            es: "La tradición sitúa la fundación de México-Tenochtitlan en 1325, en una isla del sistema lacustre. Durante sus primeras décadas, sus gobernantes actuaron dentro del orden político dominado por los tepanecas de Azcapotzalco y participaron en las guerras de ese poder regional. La futura capital imperial comenzó, por tanto, con una posición subordinada. Su historia temprana se hizo entre obligaciones militares y relaciones con vecinos cuya fuerza condicionaba las posibilidades de la nueva ciudad.",
+            en: "Tradition places the founding of Mexico-Tenochtitlan in 1325, on an island within the lake system. During its first decades, its rulers operated within the political order dominated by Azcapotzalco's Tepanecs and took part in that regional power's wars. The future imperial capital thus began in a subordinate position. Its early history unfolded through military obligations and relationships with neighbors whose strength shaped the new city's possibilities.",
+          },
+          sources: ["alliance", "island"],
+        },
+        {
+          text: {
+            es: "La guerra de 1428 cambió esa posición. Tenochtitlan, Texcoco y Tlacopan reunieron fuerzas contra Azcapotzalco, y la victoria abrió una etapa de expansión militar y reorganización del tributo. Esa Triple Alianza es la estructura a la que nos referimos aquí al hablar del imperio azteca. Tenochtitlan adquirió un protagonismo creciente dentro de ella, mientras las relaciones de sometimiento y las entregas exigidas a distintas poblaciones extendían el alcance de su poder.",
+            en: "The war of 1428 changed that position. Tenochtitlan, Texcoco and Tlacopan joined forces against Azcapotzalco, and victory opened a period of military expansion and a reorganization of tribute. This Triple Alliance is the structure meant here by the Aztec empire. Tenochtitlan became increasingly prominent within it, while subjugation and deliveries demanded from different communities extended the reach of its power.",
           },
           sources: ["alliance"],
         },
         {
           text: {
-            es: "La guerra de 1428 cambió esa relación. Tenochtitlan, Texcoco y Tlacopan formaron la alianza que permitió derrotar a Azcapotzalco y reorganizar el poder regional. Cuando hablamos de imperio azteca, aquí seguimos principalmente esa estructura militar y tributaria, con un protagonismo creciente de Tenochtitlan. No imaginemos un país moderno de fronteras uniformes: someter poblaciones y recibir tributos no equivale a administrar cada lugar de la misma manera.",
-            en: "The war of 1428 changed that relationship. Tenochtitlan, Texcoco and Tlacopan formed the alliance that defeated Azcapotzalco and reorganized regional power. When we speak of the Aztec empire here, we chiefly follow that military and tributary structure, with Tenochtitlan increasingly prominent. Do not imagine a modern country with uniform borders: subjugating communities and receiving tribute did not mean administering every place identically.",
-          },
-          sources: ["alliance"],
-        },
-        {
-          text: {
-            es: "El Códice Mendoza muestra cómo podía narrarse una fundación mediante signos, nombres y una organización pictórica del espacio. Fue elaborado ya en época colonial: es evidencia de una memoria indígena representada bajo nuevas condiciones, no una instantánea tomada en 1325. Mira las divisiones azules y el centro de la imagen; después compara ese modo de ordenar la ciudad con el diagrama de alianzas. Una imagen puede expresar legitimidad además de ubicación.",
-            en: "The Codex Mendoza shows how a foundation could be narrated through signs, names and a pictorial organization of space. Made in the colonial period, it records Indigenous memory under new conditions, not a snapshot taken in 1325. Notice the blue divisions and the image’s center, then compare that ordering with the alliance diagram. An image can express legitimacy as well as location.",
+            es: "El Códice Mendoza representa la fundación de Tenochtitlan mediante signos, nombres y divisiones azules que ordenan el espacio alrededor de un centro. Elaborado hacia 1541, ya bajo dominio colonial, conserva una narración pictórica de aquel origen. La distancia entre la fundación y la elaboración del manuscrito forma parte de su interés: en sus páginas, el pasado de la ciudad recibe una forma que permite contarlo y transmitirlo en circunstancias políticas muy distintas.",
+            en: "The Codex Mendoza depicts Tenochtitlan's foundation through signs, names and blue divisions arranging space around a center. Made around 1541, already under colonial rule, it preserves a pictorial account of that origin. The distance between the foundation and the manuscript's creation is part of its interest: the city's past takes a form through which it can be told and transmitted under very different political circumstances.",
           },
           sources: ["archiveMendoza"],
         },
@@ -49,68 +49,68 @@ const chapter: Chapter = {
     {
       id: "capital-network",
       title: {
-        es: "Una capital se alimenta de relaciones",
-        en: "A capital feeds on relationships",
+        es: "El abasto de una capital",
+        en: "Supplying a capital",
       },
       diagram: "alliance",
       paragraphs: [
         {
           text: {
-            es: "El tributo y el comercio hicieron llegar alimentos, materias primas, objetos y trabajo a la capital. Eran mecanismos distintos: una mercancía intercambiada en un mercado no cuenta la misma historia que una entrega exigida a un pueblo sometido. El Museo del Templo Mayor invita a leer ambos para entender la riqueza mexica. Cuando un objeto procede de lejos, la pregunta no termina en qué tan bonito es: también importa qué relación política o económica hizo posible su llegada.",
-            en: "Tribute and trade brought food, raw materials, objects and labor to the capital. These were different mechanisms: a market exchange tells a different story from a delivery demanded of a subject community. The Templo Mayor Museum uses both to explain Mexica wealth. When an object comes from far away, ask not only how beautiful it is but what political or economic relationship brought it there.",
+            es: "A la capital llegaban alimentos, materias primas y objetos de otros lugares. Parte se adquiría mediante intercambios comerciales; parte se exigía como tributo a poblaciones sometidas. Esa diferencia pesaba sobre quienes los entregaban: una obligación política podía sostener el abasto de los centros dominantes con el trabajo de pueblos distantes. Los materiales conservados en el Museo del Templo Mayor permiten seguir ambas vías por las que la ciudad reunía riqueza, desde la producción hasta la llegada de los bienes a la capital.",
+            en: "Food, raw materials and objects reached the capital from elsewhere. Some were acquired through trade; others were demanded as tribute from subject communities. The distinction mattered to those delivering them: a political obligation could supply the dominant centers through the labor of distant peoples. Materials preserved at the Templo Mayor Museum help trace both routes by which wealth reached the city, from the work of production to the goods’ arrival in the capital.",
           },
           sources: ["tribute"],
         },
         {
           text: {
-            es: "Tlatelolco, al norte de Tenochtitlan, tenía su propio centro ceremonial y un mercado de enorme importancia. Su incorporación al dominio tenochca en 1473 recuerda que la gran capital también se construyó mediante conflictos cercanos. No borremos esa historia diciendo que siempre fue un simple barrio. La imagen de una ciudad unida, ordenada y próspera resulta incompleta si no permite ver rivalidades, desigualdad y el trabajo de quienes la abastecían.",
-            en: "Tlatelolco, north of Tenochtitlan, had its own ceremonial center and a major market. Its incorporation under Tenochca rule in 1473 reminds us that the great capital was also made through nearby conflicts. Calling it always a mere neighborhood erases that history. An image of a united, orderly, prosperous city is incomplete unless it also reveals rivalries, inequality and the labor of its suppliers.",
+            es: "Al norte de Tenochtitlan, Tlatelolco tenía su propio centro ceremonial y un mercado de enorme importancia. Su incorporación al dominio tenochca en 1473 llevó a la expansión de la capital un conflicto entre ciudades vecinas. La proximidad física había permitido relaciones intensas, pero también rivalidades. El lugar que después quedaría unido a Tenochtitlan en las descripciones de la gran ciudad conservaba una trayectoria propia, inseparable de la historia de su mercado y de su centro político.",
+            en: "North of Tenochtitlan, Tlatelolco had its own ceremonial center and a market of enormous importance. Its incorporation under Tenochca rule in 1473 brought conflict between neighboring cities into the capital's expansion. Physical proximity had allowed intense connections as well as rivalry. The place later joined with Tenochtitlan in descriptions of the great city retained a history of its own, inseparable from its market and political center.",
           },
           sources: ["tlatelolco"],
         },
         {
           text: {
-            es: "México-Tenochtitlan se desarrolló sobre una isla del sector occidental del lago. Canales y calzadas organizaban sus conexiones con las riberas. La ubicación no eliminaba las dificultades: había que construir, abastecerse y mantener esos pasos. El agua era parte de la infraestructura cotidiana, no sólo el paisaje que se veía desde un templo.",
-            en: "Mexico-Tenochtitlan developed on an island in the western part of the lake. Canals and causeways organized connections with the shores. Its location did not remove practical difficulties: people had to build, obtain supplies and maintain those passages. Water formed part of everyday infrastructure, not just scenery seen from a temple.",
+            es: "La posición insular de México-Tenochtitlan, en el sector occidental del lago, hacía del transporte una tarea cotidiana de abastecimiento. Los canales recorrían la ciudad y las calzadas enlazaban sus accesos con las riberas. Mantener esa circulación permitía que los productos llegaran a los mercados y que las personas cruzaran entre tierra firme e isla. La construcción urbana avanzó junto a la necesidad de conservar esos pasos y de asegurar el agua que sus habitantes podían beber.",
+            en: "Mexico-Tenochtitlan's island position, in the western part of the lake, made transport a daily task of supply. Canals ran through the city and causeways connected its entrances with the shores. Keeping that circulation working allowed goods to reach markets and people to cross between mainland and island. Urban construction went alongside the need to maintain these passages and secure water the inhabitants could drink.",
           },
-          sources: ["island", "causeways"],
+          sources: ["island", "causeways", "hydraulicCity"],
         },
       ],
     },
     {
       id: "hydraulic-capital",
       title: {
-        es: "Cruzar, regular, abastecer",
-        en: "Crossing, regulating, supplying",
+        es: "Las obras que sostenían la isla",
+        en: "The works sustaining the island",
       },
       diagram: "waterworks",
       archive: "island",
       paragraphs: [
         {
           text: {
-            es: "El albarradón asociado con Nezahualcóyotl dividía el agua al oriente de la ciudad. Era un dique con compuertas: ayudaba a regular niveles y a separar las aguas de la laguna de México de las de Texcoco. No hacía desaparecer el lago. La solución consistía en intervenir sus relaciones, una tarea que exigía conservación y decisiones colectivas.",
-            en: "The dike associated with Nezahualcóyotl divided the water east of the city. Equipped with gates, it helped regulate levels and separate the waters of the Mexico lagoon from those of Texcoco. It did not make the lake disappear. The solution was to manage relationships within it, requiring maintenance and collective decisions.",
+            es: "Al oriente de la ciudad, el albarradón asociado con Nezahualcóyotl dividía las aguas de la laguna de México y las de Texcoco. El dique permitía separar aguas de distinta salinidad, y sus compuertas intervenían en la circulación y los niveles. Mantener la obra significaba conservar esa capacidad de regulación: reparar las estructuras y manejar los pasos de agua formaba parte del trabajo necesario para sostener una ciudad junto al lago salino.",
+            en: "East of the city, the dike associated with Nezahualcóyotl divided the Mexico lagoon from Texcoco. It separated waters of different salinity, while its gates helped control circulation and levels. Maintaining the work meant keeping that regulation possible: repairing structures and managing water passages belonged to the labor of sustaining a city beside a saline lake.",
           },
           sources: ["hydraulicCity"],
         },
         {
           text: {
-            es: "Abastecer a la población era otra tarea. El acueducto llevaba agua de Chapultepec hacia la ciudad. Una calzada podía conectar lugares; un dique, regular el agua; un acueducto, conducirla para el abastecimiento. Algunas obras combinaban funciones, pero no conviene confundirlas. En el esquema, enciende cada una y observa qué problema intenta resolver.",
-            en: "Supplying residents was a different task. The aqueduct brought water from Chapultepec to the city. A causeway could connect places; a dike could regulate water; an aqueduct could carry it for supply. Some works combined functions, but the distinctions matter. Switch on each in the diagram and notice which problem it addresses.",
+            es: "El abastecimiento de agua dulce seguía otro recorrido, desde Chapultepec hasta la ciudad por medio de un acueducto. Esa conducción se sumaba a las obras que hacían habitable la isla. Las calzadas facilitaban el cruce, el albarradón regulaba las aguas y el acueducto llevaba el suministro a la población; algunas construcciones podían combinar funciones. La vida urbana dependía de que esas tareas continuaran, con sus necesidades distintas de trabajo y conservación.",
+            en: "Fresh-water supply followed another route, from Chapultepec to the city through an aqueduct. That conduit joined the works making the island habitable. Causeways supported crossings, the dike regulated the waters and the aqueduct brought supplies to the population; some structures could combine functions. Urban life depended on these tasks continuing, each with its particular demands for labor and upkeep.",
           },
           sources: ["hydraulicCity"],
         },
         {
           text: {
-            es: "Las direcciones siguen siendo buenas pistas: Tlacopan al poniente, Tepeyac al norte, Iztapalapa hacia el sur. No son tres avenidas modernas dibujadas sobre una foto antigua. Son relaciones espaciales que ayudan a entender por qué ciertos corredores importaban. El dibujo publicado en Núremberg en 1524 convierte esas conexiones en una imagen poderosa; sus convenciones europeas y su fecha posterior a la conquista también forman parte del documento.",
-            en: "The directions remain useful clues: Tlacopan westward, Tepeyac northward, Iztapalapa to the south. These are not three modern avenues drawn on an old photograph. They are spatial relationships that explain why certain corridors mattered. The drawing published in Nuremberg in 1524 turns such connections into a powerful image; its European conventions and post-conquest date are part of the document too.",
+            es: "Las calzadas orientaban la ciudad hacia lugares concretos de la ribera: Tlacopan al poniente, Tepeyac al norte e Iztapalapa hacia el sur. En el mapa publicado en Núremberg en 1524, las conexiones de la isla ocupan un lugar destacado dentro de una imagen realizada con convenciones europeas después de la conquista. La estampa conserva la fuerza visual de una ciudad rodeada de agua y vinculada por pasos largos a los asentamientos de sus orillas.",
+            en: "Causeways oriented the city toward specific places on the lakeshore: Tlacopan to the west, Tepeyac to the north and Iztapalapa toward the south. In the map published in Nuremberg in 1524, the island's connections feature prominently in an image made through European conventions after the conquest. The print preserves the visual force of a city surrounded by water and linked by long crossings to settlements along its shores.",
           },
           sources: ["causeways", "archive1524"],
         },
         {
           text: {
-            es: "Ese conjunto de obras no es prueba de una ciudad invulnerable. Mantener conexiones y abastecimiento era precisamente lo que permitía vivir allí. En una guerra, las mismas relaciones podían convertirse en puntos débiles. Antes de pasar al siguiente capítulo, sigue mentalmente un camino de entrada, una vía de agua dulce y un trayecto en canoa. Comprender cómo funcionaban permitirá entender qué significó interrumpirlos durante el sitio.",
-            en: "These works do not prove the city was invulnerable. Maintaining connections and supply was precisely what made life there possible. In war, the same relationships could become weaknesses. Before the next chapter, trace an access route, a fresh-water supply and a canoe journey. Understanding their functions will explain the consequences of interrupting them during the siege.",
+            es: "Esas conexiones iban a adquirir otro significado durante el sitio de 1521. Un paso que llevaba personas y productos podía bloquearse; una conducción de agua dulce, romperse. La misma red que permitía abastecer a una gran población concentraba puntos de los que dependía su supervivencia. La guerra llevaría los ataques hasta esas obras y convertiría el acceso a la isla en una lucha por mantener abiertas las rutas del alimento y del agua.",
+            en: "Those connections would acquire another meaning during the siege of 1521. A passage carrying people and produce could be blocked; a fresh-water conduit could be broken. The network supplying a large population concentrated places on which its survival depended. War would bring attacks to those works and turn access to the island into a struggle to keep the routes of food and water open.",
           },
           sources: ["hydraulicCity", "siege"],
         },
@@ -120,34 +120,34 @@ const chapter: Chapter = {
   quiz: [
     {
       prompt: {
-        es: "¿Qué tres centros formaron la Triple Alianza?",
-        en: "Which three centers formed the Triple Alliance?",
+        es: "¿Qué ciudades formaron la Triple Alianza tras la derrota de Azcapotzalco?",
+        en: "Which cities formed the Triple Alliance after Azcapotzalco’s defeat?",
       },
       options: [
         {
-          es: "Cuicuilco, Tula y Teotihuacan",
-          en: "Cuicuilco, Tula and Teotihuacan",
+          es: "Tenochtitlan, Teotihuacan y Cuicuilco",
+          en: "Tenochtitlan, Teotihuacan and Cuicuilco",
         },
         {
           es: "Tenochtitlan, Texcoco y Tlacopan",
           en: "Tenochtitlan, Texcoco and Tlacopan",
         },
         {
-          es: "Chalco, Toluca y Veracruz",
-          en: "Chalco, Toluca and Veracruz",
+          es: "Azcapotzalco, Chalco y Tula",
+          en: "Azcapotzalco, Chalco and Tula",
         },
       ],
       correct: 1,
       explanation: {
-        es: "La alianza cambió el orden regional tras la guerra contra Azcapotzalco.",
-        en: "The alliance changed the regional order after the war against Azcapotzalco.",
+        es: "Tenochtitlan, Texcoco y Tlacopan integraron la alianza que se impuso en 1428. Desde esas relaciones de poder se extendieron las conquistas y las exigencias de tributo.",
+        en: "Tenochtitlan, Texcoco and Tlacopan formed the alliance that prevailed in 1428. Those political relationships underpinned further conquests and tribute demands.",
       },
       sources: ["alliance"],
     },
     {
       prompt: {
-        es: "¿Qué obra explica mejor el abastecimiento desde Chapultepec?",
-        en: "Which work best explains supply from Chapultepec?",
+        es: "¿Qué obra llevaba agua dulce desde Chapultepec a Tenochtitlan?",
+        en: "Which work carried fresh water from Chapultepec to Tenochtitlan?",
       },
       options: [
         {
@@ -155,44 +155,44 @@ const chapter: Chapter = {
           en: "The aqueduct",
         },
         {
-          es: "Cualquier calzada, por sí sola",
-          en: "Any causeway on its own",
+          es: "El albarradón oriental",
+          en: "The eastern dike",
         },
         {
-          es: "Una división entre alcaldías",
-          en: "A borough boundary",
+          es: "El desagüe de Huehuetoca",
+          en: "The Huehuetoca drainage works",
         },
       ],
       correct: 0,
       explanation: {
-        es: "El acueducto conduce agua. No equivale a un camino ni a una frontera administrativa.",
-        en: "An aqueduct conveys water. It is not the same as a road or an administrative boundary.",
+        es: "El acueducto conducía el agua de Chapultepec hacia la isla. El albarradón cumplía otra tarea: separar aguas y ayudar a regular sus niveles.",
+        en: "The aqueduct carried Chapultepec’s water toward the island. The dike had a different task: separating waters and helping regulate their levels.",
       },
       sources: ["hydraulicCity"],
     },
     {
       prompt: {
-        es: "¿Por qué no son lo mismo tributo y comercio?",
-        en: "Why are tribute and trade different?",
+        es: "Cuando un pueblo entregaba bienes como tributo, ¿qué relación había detrás?",
+        en: "When a community delivered goods as tribute, what relationship lay behind the delivery?",
       },
       options: [
         {
-          es: "Uno puede ser una entrega exigida por dominación; el otro, un intercambio",
-          en: "One can be a delivery demanded through domination; the other, an exchange",
+          es: "Una obligación política impuesta dentro de una relación de dominio",
+          en: "A political obligation within a relationship of domination",
         },
         {
-          es: "Ambos son nombres de lagos",
-          en: "Both are lake names",
+          es: "Una venta negociada libremente en el mercado",
+          en: "A freely negotiated market sale",
         },
         {
-          es: "Sólo existieron después de 1521",
-          en: "They existed only after 1521",
+          es: "Un préstamo que la capital debía devolver con los mismos bienes",
+          en: "A loan the capital had to repay with the same goods",
         },
       ],
       correct: 0,
       explanation: {
-        es: "Distinguirlos permite preguntar cómo llegaban los recursos a la capital y quién sostenía su riqueza.",
-        en: "Distinguishing them helps explain how resources reached the capital and who sustained its wealth.",
+        es: "El tributo era una exigencia política que sostenía a los centros dominantes. El intercambio comercial también abastecía la ciudad, pero se organizaba mediante otras relaciones entre quienes entregaban y recibían bienes.",
+        en: "Tribute was a political demand supporting the dominant centers. Trade also supplied the city, through different relationships between those giving and receiving goods.",
       },
       sources: ["tribute"],
     },

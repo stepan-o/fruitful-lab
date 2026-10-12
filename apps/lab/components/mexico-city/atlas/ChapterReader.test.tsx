@@ -36,7 +36,7 @@ test("chapter quiz gives only correct-answer points, locks submitted answers, an
   );
   for (const radio of screen.getAllByRole("radio"))
     expect(radio).toBeDisabled();
-  expect(screen.getAllByText("Una pista para repasar")).toHaveLength(1);
+  expect(screen.getAllByText("La explicación")).toHaveLength(1);
   expect(window.localStorage.length).toBe(0);
   await user.click(
     screen.getByRole("button", { name: "Leer el siguiente capítulo" }),
@@ -61,7 +61,7 @@ test("guided figure buttons change the explanation, while full text and its sour
   ).toHaveAttribute("aria-pressed", "true");
   expect(within(figure).getByText(/aportan lodo para preparar/)).toBeVisible();
   expect(
-    screen.getByRole("heading", { name: "La parcela no flota" }),
+    screen.getByRole("heading", { name: "Levantar una parcela entre canales" }),
   ).toBeVisible();
   expect(
     screen.getAllByRole("link", { name: /El chapín/ }).length,

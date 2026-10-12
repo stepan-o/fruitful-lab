@@ -18,28 +18,28 @@ const chapter: Chapter = {
     {
       id: "encounter",
       title: {
-        es: "1519: nadie llega a un mundo sencillo",
-        en: "1519: nobody enters a simple world",
+        es: "Los acuerdos de 1519",
+        en: "The agreements of 1519",
       },
       paragraphs: [
         {
           text: {
-            es: "La llegada de la expedición de Hernán Cortés en 1519 abrió una crisis dentro de un territorio con conflictos propios. Los recién llegados no avanzaron solos contra un bloque indígena unido. Hubo negociaciones, coaliciones y decisiones de pueblos que perseguían objetivos distintos. La investigación de Noticonquista insiste en esa pluralidad: entender quién se alió con quién explica más que atribuir todo el desenlace a unos cuantos hombres europeos y sus armas.",
-            en: "Hernán Cortés’s expedition arrived in 1519, opening a crisis within a region already shaped by its own conflicts. The newcomers did not advance alone against a united Indigenous bloc. Communities negotiated, formed coalitions and pursued different goals. Noticonquista’s research emphasizes that plurality: understanding who allied with whom explains more than attributing everything to a few European men and their weapons.",
+            es: "Cuando la expedición de Hernán Cortés llegó en 1519, encontró pueblos sujetos a tributo, poderes rivales y alianzas que podían cambiar. El avance hacia la capital mexica dependió de negociar dentro de ese mundo político. Los aliados indígenas aportaron fuerzas y conocimientos del territorio, persiguiendo objetivos que podían coincidir con los de los españoles durante una campaña y separarse después. De esos acuerdos surgió la coalición que terminaría por sitiar Tenochtitlan.",
+            en: "When Hernán Cortés’s expedition arrived in 1519, it encountered tributary communities, rival powers and alliances that could shift. Advancing toward the Mexica capital depended on negotiating within that political world. Indigenous allies contributed forces and knowledge of the terrain, pursuing aims that might coincide with Spanish objectives during a campaign and diverge afterward. Those agreements produced the coalition that would eventually besiege Tenochtitlan.",
           },
           sources: ["coalition"],
         },
         {
           text: {
-            es: "La comunicación era una condición de esa política. Malintzin participó como intérprete y negociadora; en los primeros intercambios, ella y Jerónimo de Aguilar hicieron posible una cadena entre náhuatl, maya y castellano. Berenice Alcántara Rojas destaca que traducir también requería conocer discursos y protocolos. Reducir a Malintzin a una etiqueta moral elimina su actuación histórica y confunde a una mujer sometida a circunstancias violentas con una nación moderna que todavía no existía.",
-            en: "Communication made that politics possible. Malintzin acted as interpreter and negotiator; in early exchanges she and Jerónimo de Aguilar enabled a chain between Nahuatl, Maya and Spanish. Berenice Alcántara Rojas emphasizes that translation also required knowledge of speech and protocol. Reducing Malintzin to a moral label erases her historical agency and confuses a woman living through violent circumstances with a modern nation that did not yet exist.",
+            es: "La comunicación daba acceso a esas negociaciones. Malintzin y Jerónimo de Aguilar hicieron posible, en los primeros intercambios, una cadena de traducción entre náhuatl, maya y castellano. El trabajo implicaba conocer formas de dirigirse a otros, protocolos y sentidos que una palabra aislada apenas recoge. Berenice Alcántara Rojas sitúa a Malintzin en esa actividad de interpretación y negociación, donde su conocimiento resultó decisivo en encuentros atravesados por la violencia y por enormes diferencias de poder.",
+            en: "Communication opened the way to negotiation. In the early exchanges, Malintzin and Jerónimo de Aguilar made possible a chain of translation between Nahuatl, Maya and Spanish. The work required knowledge of forms of address, protocols and meanings that an isolated word can scarcely convey. Berenice Alcántara Rojas places Malintzin within this work of interpretation and negotiation, where her knowledge proved decisive in encounters shaped by violence and enormous differences in power.",
           },
           sources: ["malintzin", "coalition"],
         },
         {
           text: {
-            es: "Las fuentes tampoco hablan desde un mismo lugar. Las cartas de Cortés justificaban sus acciones ante el poder imperial; los testimonios indígenas recogidos después conservaron otras memorias. Leer cerca de las fuentes no significa creer sin preguntas al testigo más famoso. Significa saber cuándo se produjo el relato, quién pudo hablar y para quién. En este capítulo contrastamos la investigación mexicana con un documento pictórico indígena elaborado décadas después de la guerra.",
-            en: "The sources do not speak from one position either. Cortés’s letters justified his actions to imperial authority; Indigenous testimony recorded later preserved other memories. Reading close to sources does not mean unquestioningly trusting the most famous witness. It means asking when an account was made, who could speak and for whom. Here we compare Mexican scholarship with an Indigenous pictorial document made decades after the war.",
+            es: "De aquellos acontecimientos quedaron relatos elaborados para destinatarios distintos. Cortés escribió cartas en las que exponía y justificaba sus acciones ante la autoridad imperial; las memorias indígenas recogidas posteriormente conservaron otras experiencias de la guerra. Entre ellas se encuentra el libro XII del Códice Florentino, elaborado décadas después con participación nahua. La coexistencia de esas voces permite acercarse a una conquista vivida desde posiciones muy diferentes, tanto en el combate como en sus consecuencias.",
+            en: "Accounts of these events were made for different audiences. Cortés wrote letters presenting and justifying his actions to imperial authority; Indigenous memories recorded later preserved other experiences of the war. Among them is Book XII of the Florentine Codex, compiled decades afterward with Nahua participation. These voices bring into view a conquest experienced from very different positions, both in the fighting and in its consequences.",
           },
           sources: ["siege", "florentine"],
         },
@@ -48,30 +48,30 @@ const chapter: Chapter = {
     {
       id: "siege",
       title: {
-        es: "1520–1521: romper las conexiones de la isla",
-        en: "1520–1521: severing the island’s connections",
+        es: "La isla bajo sitio, 1520–1521",
+        en: "The island under siege, 1520–1521",
       },
       diagram: "siege",
       archive: "epidemic",
       paragraphs: [
         {
           text: {
-            es: "La epidemia de viruela de 1520 se sumó a la violencia de la guerra. No debe convertirse en una explicación automática que borre el hambre, el asedio o las decisiones militares. El Códice Florentino representa personas enfermas y cuidados: devuelve cuerpos y sufrimiento a una narración que a menudo se cuenta sólo con nombres de capitanes. Fue compilado después de los hechos, con colaboradores nahuas; su distancia temporal y su perspectiva son parte de lo que debemos leer.",
-            en: "The smallpox epidemic of 1520 compounded wartime violence. It should not become an automatic explanation erasing hunger, siege or military decisions. The Florentine Codex depicts illness and care, returning bodies and suffering to a story often told only through captains’ names. Compiled after the events with Nahua collaborators, its time of production and perspective belong to our reading of it.",
+            es: "En 1520, la viruela se sumó a la guerra. La epidemia alcanzó a una población que pronto tendría que afrontar también el hambre y el asedio, y el cuidado de los enfermos pasó a ocupar a sus allegados. El Códice Florentino representa cuerpos afectados por la enfermedad y personas que los atienden. Terminado en 1577 con participación nahua, el manuscrito reunió décadas después esa memoria de los meses en que la enfermedad entró en las casas de la ciudad.",
+            en: "In 1520, smallpox compounded the war. The epidemic reached a population that would soon face hunger and siege as well, while those close to the sick took on their care. The Florentine Codex depicts bodies affected by disease and people tending them. Completed in 1577 with Nahua participation, the manuscript gathered that memory decades later: an account of the months when illness entered the city’s homes.",
           },
           sources: ["epidemic", "florentine"],
         },
         {
           text: {
-            es: "En 1521, las fuerzas indígenas y españolas que cercaron la ciudad combinaron operaciones sobre las calzadas con bergantines en el lago. Las embarcaciones se prepararon en Texcoco con trabajo indígena. Atacar desde el agua y bloquear pasos terrestres permitió presionar los circuitos de abastecimiento. El diagrama no anima una batalla imaginaria: separa las conexiones que el sitio intentó cortar para explicar por qué la geografía del capítulo anterior se volvió decisiva.",
-            en: "In 1521, Indigenous and Spanish forces besieging the city combined causeway operations with brigantines on the lake. The vessels were prepared at Texcoco with Indigenous labor. Waterborne attacks and blocked land passages put pressure on supply circuits. The diagram does not animate an invented battle: it separates the connections the siege sought to interrupt, explaining why the previous chapter’s geography became decisive.",
+            es: "En 1521, las fuerzas indígenas y españolas combinaron ataques sobre las calzadas con operaciones de bergantines en el lago. Las embarcaciones se habían preparado en Texcoco con trabajo indígena; desde el agua, podían apoyar a las tropas que avanzaban por los pasos terrestres. Entre los objetivos estuvo la conducción que traía agua dulce de Chapultepec. Interrumpirla y bloquear los accesos al alimento extendía el daño de cada operación militar a la vida diaria de los habitantes de la isla.",
+            en: "In 1521, Indigenous and Spanish forces combined attacks along the causeways with brigantine operations on the lake. The vessels had been prepared at Texcoco with Indigenous labor; from the water they could support troops advancing over land crossings. Targets included the conduit bringing fresh water from Chapultepec. Cutting that supply and blocking access to food extended the effects of military operations into the daily lives of the island's inhabitants.",
           },
           sources: ["siege"],
         },
         {
           text: {
-            es: "La caída de Tenochtitlan y Tlatelolco en agosto de 1521 cerró ese sitio, no la historia de los pueblos indígenas. La destrucción y el nuevo poder colonial transformaron las condiciones de vida, pero no hicieron desaparecer de golpe a las comunidades, las lenguas o todos los canales. Conviene detenerse en esa diferencia: terminar una guerra e imponer un orden político no equivale a sustituir instantáneamente un territorio entero.",
-            en: "The fall of Tenochtitlan and Tlatelolco in August 1521 ended that siege, not Indigenous history. Destruction and colonial power transformed living conditions without instantly eliminating communities, languages or every canal. Ending a war and imposing a political order did not replace an entire landscape at once.",
+            es: "La caída de Tenochtitlan y Tlatelolco en agosto de 1521 puso fin al sitio y abrió la imposición de un nuevo orden colonial. La destrucción había alterado profundamente las condiciones de vida de sus habitantes. Las comunidades que sobrevivieron tuvieron que continuar bajo otras autoridades y exigencias, en un territorio donde persistían lenguas, asentamientos y vías de agua. La ciudad conquistada se convertiría en sede del poder que la había vencido, mientras sus pobladores afrontaban las consecuencias de la guerra.",
+            en: "The fall of Tenochtitlan and Tlatelolco in August 1521 ended the siege and opened the imposition of a new colonial order. Destruction had profoundly altered living conditions. Surviving communities had to continue under new authorities and demands in a territory where languages, settlements and waterways persisted. The conquered city would become the seat of the power that had defeated it, while its inhabitants faced the consequences of war.",
           },
           sources: ["conquestEnd", "indigenousAfter"],
         },
@@ -80,29 +80,29 @@ const chapter: Chapter = {
     {
       id: "colonial-water",
       title: {
-        es: "La nueva capital se queda; el agua también",
-        en: "The new capital stays; so does the water",
+        es: "Una capital en las tierras bajas",
+        en: "A capital on low ground",
       },
       diagram: "drainage",
       paragraphs: [
         {
           text: {
-            es: "La capital colonial se reconstruyó sobre el sitio de la ciudad vencida. Ésa fue una decisión cargada de poder y de consecuencias materiales: cambiar templos, autoridades y usos del suelo no movía las montañas ni eliminaba el agua de lluvia. La nueva ciudad heredó un problema de ubicación y transformó las maneras de abordarlo. La larga lucha con el lago empezó sobre un paisaje previamente trabajado, no sobre una naturaleza que nadie hubiera intentado manejar.",
-            en: "The colonial capital was rebuilt on the defeated city’s site. That decision carried political and material consequences: changing temples, authorities and land uses did not move mountains or remove rainfall. The new city inherited a problem of location and changed how it addressed it. Its long struggle with the lake began in an already worked landscape, not a nature nobody had managed before.",
+            es: "La capital colonial se reconstruyó sobre el sitio de Tenochtitlan. La elección conservaba el lugar de un centro de poder, pero también su posición dentro de la cuenca. Las montañas seguían reuniendo los escurrimientos hacia las tierras bajas, y las obras hidráulicas heredadas formaban parte de un paisaje largamente trabajado. La reconstrucción de la ciudad y los cambios en el uso del suelo tuvieron que convivir con esa geografía del agua.",
+            en: "The colonial capital was rebuilt on Tenochtitlan's site. The choice preserved the location of a center of power, along with its position within the basin. The mountains still directed runoff toward low ground, and inherited hydraulic works belonged to a landscape shaped over a long period. Rebuilding the city and changing its land uses meant continuing to live within that geography of water.",
           },
           sources: ["drainage", "hydraulicCity"],
         },
         {
           text: {
-            es: "La capital colonial siguió en el mismo sitio. En 1607 comenzó el proyecto de desagüe de Huehuetoca: se buscaba sacar agua de la cuenca en vez de manejarla sólo dentro de ella. Eso no produjo una victoria inmediata sobre las inundaciones. La tormenta de 1629 dejó a la ciudad anegada durante años. La cronología importa: empezar una obra no equivale a resolver el problema.",
-            en: "The colonial capital remained in the same place. The Huehuetoca drainage project began in 1607: the aim was to send water out of the basin rather than manage it only within. That did not immediately defeat flooding. The 1629 storm left the city flooded for years. Chronology matters: beginning a work is not the same as solving a problem.",
+            es: "En 1607 comenzó el proyecto de desagüe de Huehuetoca, que buscaba abrir una salida para enviar agua fuera de la cuenca. La intervención cambiaba la escala del problema: a la regulación de las aguas interiores se añadía el intento de conducirlas a través del borde del territorio cerrado. Sin embargo, en 1629 una gran tormenta dejó a la capital inundada durante años. La ciudad que había conservado su emplazamiento volvía a experimentar lo que significaba ocupar las tierras bajas.",
+            en: "In 1607, the Huehuetoca drainage project began, seeking an outlet through which water could be sent beyond the basin. The intervention changed the scale of the problem: regulating the interior waters would be joined by an attempt to conduct them across the edge of the enclosed territory. Yet in 1629 a great storm left the capital flooded for years. The city that had retained its location once again experienced the consequences of occupying low ground.",
           },
           sources: ["firstDrain", "water"],
         },
         {
           text: {
-            es: "El cambio de escala es fundamental. Un dique regula relaciones dentro del sistema; un desagüe busca enviar parte del agua fuera de la cuenca. Ninguna obra actúa sola: necesita mantenimiento, mano de obra y decisiones sobre qué se protege y qué se modifica. La inundación de 1629 impide contar esta historia como una victoria técnica lineal. En el siguiente capítulo seguiremos esa tensión durante siglos, entre una capital que quería seguridad y un territorio que seguía siendo lacustre.",
-            en: "The change of scale matters. A dike regulates relationships within the system; a drainage outlet seeks to send water outside the basin. Neither works alone: each requires maintenance, labor and decisions about what to protect or change. The 1629 flood prevents a tale of steady technical triumph. The next chapter follows that tension across centuries between a capital seeking security and a landscape that remained lacustrine.",
+            es: "La inundación prolongó una discusión que atravesaría los siglos siguientes. Regular niveles mediante diques y abrir salidas mediante desagües exigía obras de distinto alcance, ambas dependientes de mantenimiento y mano de obra. Proteger la capital implicaba decidir dónde intervenir y qué lugares se transformarían con cada proyecto. El agua seguía vinculando a la ciudad con su entorno, y las soluciones emprendidas para asegurar un espacio podían modificar las condiciones de otros. La obra de desagüe iba a convertirse en una tarea de generaciones.",
+            en: "The flood prolonged a debate that would run through the following centuries. Regulating levels with dikes and opening drainage outlets required works of different scales, both dependent on maintenance and labor. Protecting the capital meant choosing where to intervene and which places each project would transform. Water continued to link the city with its surroundings, and a solution intended to secure one place could alter conditions elsewhere. Drainage would become the work of generations.",
           },
           sources: ["firstDrain", "drainage"],
         },
@@ -112,79 +112,79 @@ const chapter: Chapter = {
   quiz: [
     {
       prompt: {
-        es: "¿Qué describe mejor a las fuerzas que sitiaron Tenochtitlan?",
-        en: "What best describes the forces besieging Tenochtitlan?",
+        es: "¿Quiénes participaron en las fuerzas que sitiaron Tenochtitlan en 1521?",
+        en: "Who took part in the forces besieging Tenochtitlan in 1521?",
       },
       options: [
         {
-          es: "Sólo un pequeño grupo de españoles",
-          en: "Only a small Spanish group",
+          es: "Únicamente las tropas españolas llegadas con Cortés",
+          en: "Only the Spanish troops who arrived with Cortés",
         },
         {
-          es: "Todos los habitantes de la cuenca actuando juntos",
-          en: "Every basin inhabitant acting together",
+          es: "La Triple Alianza reunida contra los españoles",
+          en: "The Triple Alliance united against the Spanish",
         },
         {
-          es: "Una coalición de fuerzas indígenas y españolas",
-          en: "A coalition of Indigenous and Spanish forces",
+          es: "Una coalición de españoles y distintos aliados indígenas",
+          en: "A coalition of Spaniards and different Indigenous allies",
         },
       ],
       correct: 2,
       explanation: {
-        es: "Las alianzas indígenas y sus objetivos propios fueron decisivos.",
-        en: "Indigenous alliances and their own goals were decisive.",
+        es: "Los aliados indígenas aportaron fuerzas, trabajo y conocimientos decisivos. La coalición reunió pueblos con intereses propios dentro de una guerra que transformó las relaciones de poder de la región.",
+        en: "Indigenous allies contributed crucial forces, labor and knowledge. The coalition brought together peoples with their own interests in a war that transformed the region’s political relationships.",
       },
       sources: ["coalition"],
     },
     {
       prompt: {
-        es: "¿Por qué importaban calzadas y embarcaciones en el sitio?",
-        en: "Why did causeways and vessels matter during the siege?",
+        es: "¿Por qué se combatió tanto por las calzadas y las rutas del lago?",
+        en: "Why was control of the causeways and lake routes so fiercely contested?",
       },
       options: [
         {
-          es: "Permitían controlar conexiones y abastecimiento",
-          en: "They allowed control of connections and supplies",
+          es: "Porque permitían entrar a la ciudad y sostener su abastecimiento",
+          en: "They provided access to the city and sustained its supplies",
         },
         {
-          es: "Eran sólo decoraciones religiosas",
-          en: "They were only religious decoration",
+          es: "Porque su control permitía exigir tributo sin entrar a la ciudad",
+          en: "Controlling them allowed tribute to be collected without entering the city",
         },
         {
-          es: "Secaron instantáneamente todos los lagos",
-          en: "They instantly drained every lake",
+          es: "Porque eran la única fuente de agua dulce de la cuenca",
+          en: "They were the basin’s only source of fresh water",
         },
       ],
       correct: 0,
       explanation: {
-        es: "La guerra actuó sobre la red de circulación que sostenía la ciudad.",
-        en: "War targeted the circulation network sustaining the city.",
+        es: "La isla dependía de sus conexiones para recibir alimentos, agua y refuerzos. El bloqueo por tierra y agua convirtió esas rutas cotidianas en puntos decisivos del asedio.",
+        en: "The island depended on its connections for food, water and reinforcements. Blockades by land and water turned those everyday routes into decisive points of the siege.",
       },
       sources: ["siege"],
     },
     {
       prompt: {
-        es: "¿Qué cambió con el proyecto de Huehuetoca de 1607?",
-        en: "What changed with the Huehuetoca project of 1607?",
+        es: "¿Qué pretendía hacer el proyecto de Huehuetoca iniciado en 1607?",
+        en: "What did the Huehuetoca project begun in 1607 aim to do?",
       },
       options: [
         {
-          es: "Dejó de llover",
-          en: "Rain stopped",
+          es: "Llevar agua de Chapultepec hasta la isla",
+          en: "Carry water from Chapultepec to the island",
         },
         {
-          es: "Se buscó sacar agua de la cuenca",
-          en: "Water was to be sent outside the basin",
+          es: "Desviar parte del agua hacia fuera de la cuenca",
+          en: "Divert part of the water outside the basin",
         },
         {
-          es: "Se inventaron las chinampas",
-          en: "Chinampas were invented",
+          es: "Ampliar los canales agrícolas de Xochimilco",
+          en: "Expand Xochimilco’s agricultural canals",
         },
       ],
       correct: 1,
       explanation: {
-        es: "Fue una estrategia de desagüe; la inundación de 1629 muestra que no resolvió el problema de inmediato.",
-        en: "It was a drainage strategy; the 1629 flood shows that it did not solve the problem immediately.",
+        es: "Huehuetoca abrió la larga historia de las grandes obras coloniales para evacuar agua de la cuenca. Los problemas de ejecución y mantenimiento acompañaron el proyecto, y la inundación de 1629 mostró cuánto seguía en juego.",
+        en: "Huehuetoca began the long history of major colonial works to discharge water from the basin. Construction and maintenance problems accompanied the project, and the flood of 1629 showed how much remained at stake.",
       },
       sources: ["firstDrain", "water"],
     },

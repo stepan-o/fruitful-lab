@@ -8,7 +8,7 @@ Use [EDITORIAL_DESIGN.md](EDITORIAL_DESIGN.md) before writing for this project. 
 
 ## Current learning experience
 
-The public `/mexico-city/atlas` contains the guided history reader, borough directory, historical comparisons and language practice. See [the Atlas content map](ATLAS_CONTENT_MAP.md), [source register](SOURCES.md) and [verification](ATLAS_VERIFICATION.md). Its eight history chapters include a dedicated chinampas chapter, archival documents, visible citations and 24 chapter-closing questions. The older prototype descriptions below remain historical context; the content map defines the current learning behavior.
+The public `/mexico-city/atlas` contains the guided history reader, borough directory, historical comparisons and language practice. See [the Atlas content map](ATLAS_CONTENT_MAP.md), [source register](SOURCES.md) and [verification](ATLAS_VERIFICATION.md). Its eight history chapters include a dedicated chinampas chapter, archival documents, visible citations and 24 chapter-closing questions. All eight chapters, their captions, guided figures and quiz explanations have received the bilingual editorial revision and a second full reread under the current voice guide. The older prototype descriptions below remain historical context; the content map defines the current learning behavior.
 
 ## Current field-game implementation
 

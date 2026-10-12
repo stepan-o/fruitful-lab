@@ -35,10 +35,13 @@ function ChapterQuiz({
       aria-labelledby="chapter-quiz-title"
     >
       <p className="at-eyebrow">
-        {say("CIERRA EL CAPÍTULO", "CLOSE THE CHAPTER")}
+        {say("AL FINAL DEL CAPÍTULO", "AT THE END OF THE CHAPTER")}
       </p>
       <h2 id="chapter-quiz-title" tabIndex={-1}>
-        {say("¿Qué te llevas de este viaje?", "What are you taking with you?")}
+        {say(
+          "Tres preguntas para volver sobre la historia",
+          "Three questions to return to the story",
+        )}
       </h2>
       <p>
         {say(
@@ -83,7 +86,7 @@ function ChapterQuiz({
                 <strong>
                   {answers[i] === q.correct
                     ? say("+25 puntos", "+25 points")
-                    : say("Una pista para repasar", "A clue to revisit")}
+                    : say("La explicación", "The explanation")}
                 </strong>
                 <p>{q.explanation[locale]}</p>
                 <Sources ids={q.sources} compact />

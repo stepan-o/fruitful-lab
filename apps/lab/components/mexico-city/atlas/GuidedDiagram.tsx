@@ -15,24 +15,24 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("1. La lluvia", "1. Rain"),
       c(
-        "El agua cae sobre un territorio rodeado de elevaciones. El corte muestra una relación entre alturas, no el perfil de una calle.",
-        "Rain falls on terrain surrounded by high ground. This section shows a relationship between elevations, not a street profile.",
+        "La lluvia cae sobre las montañas que rodean la cuenca. El corte esquemático permite seguir su recorrido hacia las tierras bajas.",
+        "Rain falls on the mountains surrounding the basin. This schematic section follows its course toward low ground.",
       ),
       "drainageWorks",
     ),
     panel(
       c("2. Las laderas", "2. Slopes"),
       c(
-        "Los escurrimientos bajan hacia las depresiones. Sigue las flechas hacia el interior de la cuenca.",
-        "Runoff moves toward depressions. Follow the arrows toward the basin’s interior.",
+        "El agua escurre por las laderas hacia el interior. Las flechas muestran cómo el relieve la conduce hasta las depresiones.",
+        "Water runs down the slopes toward the interior. The arrows show how the terrain channels it into depressions.",
       ),
       "drainageWorks",
     ),
     panel(
       c("3. Las partes bajas", "3. Low ground"),
       c(
-        "En la cuenca naturalmente cerrada se reunía el agua. Las salidas artificiales pertenecen a una historia posterior.",
-        "Water gathered inside the naturally closed basin. Artificial outlets belong to a later history.",
+        "El agua se reúne en las partes bajas de una cuenca sin salida natural al mar. Siglos después, las obras de desagüe abrirían rutas artificiales al exterior.",
+        "Water collects in the low ground of a basin with no natural outlet to the sea. Centuries later, drainage works would open artificial routes outward.",
       ),
       "drainageWorks",
     ),
@@ -41,32 +41,32 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("El conjunto", "The system"),
       c(
-        "Cinco lagos principales; relaciones de posición. Las siluetas son didácticas, no costas medidas para una fecha.",
-        "Five main lakes in relative positions. These teaching shapes are not surveyed shorelines for a date.",
+        "Zumpango y Xaltocan al norte, Texcoco en el centro, Xochimilco y Chalco al sur. Las siluetas esquemáticas sitúan los cinco lagos; sus orillas cambiaban con el nivel del agua.",
+        "Zumpango and Xaltocan to the north, Texcoco in the center, Xochimilco and Chalco to the south. These schematic shapes locate the five lakes, whose shores shifted with water levels.",
       ),
       "basin",
     ),
     panel(
       c("Norte", "North"),
       c(
-        "Zumpango y Xaltocan: busca la pareja septentrional antes de seguir hacia Texcoco.",
-        "Zumpango and Xaltocan: locate the northern pair before moving toward Texcoco.",
+        "Zumpango y Xaltocan ocupaban el norte del sistema lacustre, por encima de Texcoco en esta vista del conjunto.",
+        "Zumpango and Xaltocan occupied the north of the lake system, above Texcoco in this overview.",
       ),
       "basin",
     ),
     panel(
       c("Centro", "Center"),
       c(
-        "Texcoco ocupa el sector central del esquema. Su salinidad ayuda a explicar diferencias de usos respecto a las aguas del sur.",
-        "Texcoco occupies the central part of the diagram. Its salinity helps explain different uses from the southern waters.",
+        "Texcoco reunía aguas de mayor salinidad en la zona central. Esa diferencia condicionaba los usos del agua y las obras para separarla de las aguas dulces.",
+        "Texcoco held more saline water in the central area. That difference shaped how water was used and the works built to separate it from fresh water.",
       ),
       "basin",
     ),
     panel(
       c("Sur", "South"),
       c(
-        "Xochimilco y Chalco: agua dulce y paisajes agrícolas. El próximo capítulo se detiene en las chinampas.",
-        "Xochimilco and Chalco: fresh water and agricultural landscapes. The next chapter examines chinampas.",
+        "Los lagos de Xochimilco y Chalco ocupaban el sur. Sus aguas dulces alimentaron los paisajes agrícolas que veremos en el capítulo de las chinampas.",
+        "Lakes Xochimilco and Chalco lay to the south. Their fresh water sustained the agricultural landscapes of the chinampa chapter.",
       ),
       "basin",
       "chinampas",
@@ -76,8 +76,8 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Suelo construido", "Built soil"),
       c(
-        "Una parcela elevada: sedimentos y materia orgánica forman suelo cultivable. No es una balsa que navega.",
-        "A raised plot: sediments and organic material create cultivable soil. It is not a moving raft.",
+        "Sedimentos y materia orgánica forman una parcela fija, elevada sobre el agua. En ese suelo construido crecen los cultivos.",
+        "Sediment and organic material form a fixed plot raised above the water. Crops grow in that constructed soil.",
       ),
       "chinampas",
       "chinampaStudy",
@@ -85,8 +85,8 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Canales", "Canals"),
       c(
-        "El agua rodea la parcela. Los canales permiten circulación y aportan lodo para preparar almácigos en la técnica descrita.",
-        "Water surrounds the plot. Canals allow movement and provide mud for preparing seedbeds in the technique described.",
+        "Los canales rodean las parcelas, permiten el paso de canoas y aportan lodo para preparar los almácigos. Por ellos circulan también cosechas y materiales.",
+        "Canals surround the plots, provide passage for canoes and supply mud for seedbeds. Harvests and materials travel along them too.",
       ),
       "chapin",
       "chinampas",
@@ -94,8 +94,8 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Bordes vivos", "Living edges"),
       c(
-        "Los ahuejotes acompañan los bordes. Parcela, vegetación y agua necesitan cuidado; el dibujo separa piezas de un mismo sistema.",
-        "Ahuejote willows line the edges. Field, vegetation and water require care; the drawing separates parts of one system.",
+        "Los ahuejotes crecen en los bordes de las parcelas. Sus raíces ayudan a sujetar la tierra junto a los canales.",
+        "Ahuejote willows grow along the edges of the plots. Their roots help hold the soil beside the canals.",
       ),
       "chinampas",
     ),
@@ -104,8 +104,8 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Cuicuilco", "Cuicuilco"),
       c(
-        "Sur de la cuenca · Preclásico. Su basamento circular y su entorno lacustre pertenecen a una historia anterior a Tenochtitlan.",
-        "Southern basin · Preclassic. Its circular platform and lake environment belong to a history before Tenochtitlan.",
+        "Cuicuilco creció en el sur de la cuenca durante el Preclásico. Su basamento circular se alza en un territorio que conoció lagos, asentamientos y transformaciones volcánicas.",
+        "Cuicuilco grew in the southern basin during the Preclassic. Its circular platform stands in terrain shaped by lakes, settlements and volcanic change.",
       ),
       "cuicuilcoMuseum",
       "cuicuilcoLandscape",
@@ -113,16 +113,16 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Teotihuacan", "Teotihuacan"),
       c(
-        "Noreste de la cuenca · Clásico. Una gran ciudad con barrios y conexiones lejanas, anterior al imperio mexica.",
-        "Northeastern basin · Classic. A major city with neighborhoods and distant connections, preceding the Mexica empire.",
+        "Teotihuacan alcanzó su auge al noreste de la cuenca durante el Clásico. Sus barrios y conexiones de larga distancia formaban parte de un mundo urbano anterior al mexica.",
+        "Teotihuacan flourished in the northeastern basin during the Classic. Its neighborhoods and long-distance connections belonged to an urban world preceding the Mexica.",
       ),
       "teotihuacanCity",
     ),
     panel(
       c("Tula", "Tula"),
       c(
-        "Al norte de la cuenca · apogeo en el Posclásico temprano. Es otro centro y otra trayectoria, no un barrio de Teotihuacan.",
-        "North of the basin · Early Postclassic prominence. Another center and trajectory, not a Teotihuacan neighborhood.",
+        "Tula se encuentra al norte de la cuenca. Su apogeo en el Posclásico temprano corresponde a una etapa posterior al auge de Teotihuacan.",
+        "Tula lies north of the basin. Its Early Postclassic prominence belongs to a period after Teotihuacan’s height.",
       ),
       "tula",
     ),
@@ -131,24 +131,24 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Tenochtitlan", "Tenochtitlan"),
       c(
-        "La capital mexica pasa de la subordinación tepaneca a formar parte de una alianza victoriosa en 1428.",
-        "The Mexica capital moves from Tepanec subordination to membership in a victorious alliance in 1428.",
+        "En 1428, Tenochtitlan pasó de la subordinación a Azcapotzalco a integrar la alianza que derrotó al poder tepaneca.",
+        "In 1428, Tenochtitlan moved from subordination to Azcapotzalco into the alliance that defeated Tepanec power.",
       ),
       "alliance",
     ),
     panel(
       c("Texcoco", "Texcoco"),
       c(
-        "Texcoco fue otro de los centros de la Triple Alianza. La historia del imperio no se reduce a una sola ciudad.",
-        "Texcoco was another center of the Triple Alliance. Imperial history is not reducible to a single city.",
+        "Texcoco fue uno de los tres centros de la alianza que se impuso en 1428. El esquema vincula las capitales que compartieron aquel acuerdo político.",
+        "Texcoco was one of the three centers of the alliance that prevailed in 1428. The diagram links the capitals joined by that political agreement.",
       ),
       "alliance",
     ),
     panel(
       c("Tlacopan", "Tlacopan"),
       c(
-        "Tlacopan, hoy Tacuba, completa la alianza. Las líneas indican relación política, no fronteras ni rutas medidas.",
-        "Tlacopan, today Tacuba, completes the alliance. Lines indicate political relations, not borders or surveyed routes.",
+        "Tlacopan, hoy Tacuba, completa el triángulo de la alianza. Las líneas representan vínculos políticos entre los tres centros.",
+        "Tlacopan, today Tacuba, completes the alliance’s triangle. The lines represent political connections among the three centers.",
       ),
       "alliance",
     ),
@@ -157,24 +157,24 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Calzadas", "Causeways"),
       c(
-        "Conectar: Tlacopan al poniente, Tepeyac al norte e Iztapalapa hacia el sur. Mostramos relaciones, no el trazo preciso de calles actuales.",
-        "Connect: Tlacopan westward, Tepeyac northward and Iztapalapa southward. These are relationships, not exact modern street alignments.",
+        "Las calzadas enlazaban la isla con Tlacopan al poniente, Tepeyac al norte e Iztapalapa hacia el sur. El esquema muestra la dirección de esas conexiones.",
+        "Causeways linked the island to Tlacopan in the west, Tepeyac in the north and Iztapalapa toward the south. The diagram shows the direction of those connections.",
       ),
       "causeways",
     ),
     panel(
       c("Albarradón", "Dike"),
       c(
-        "Regular: el dique al oriente de la ciudad separaba aguas y ayudaba a manejar niveles mediante compuertas.",
-        "Regulate: the dike east of the city separated waters and helped manage levels through gates.",
+        "Al oriente de la ciudad, el albarradón separaba aguas de distinta salinidad. Sus compuertas permitían intervenir también en la circulación y los niveles.",
+        "East of the city, the dike separated waters of different salinity. Its gates also allowed control of circulation and levels.",
       ),
       "hydraulicCity",
     ),
     panel(
       c("Acueducto", "Aqueduct"),
       c(
-        "Abastecer: el agua de Chapultepec llegaba mediante el acueducto. Tener un lago alrededor no resolvía el suministro de agua dulce.",
-        "Supply: Chapultepec water arrived through the aqueduct. A surrounding lake did not solve fresh-water supply.",
+        "El acueducto llevaba agua dulce de Chapultepec hasta la isla. El abastecimiento requería una conducción propia entre el manantial y la ciudad.",
+        "The aqueduct carried fresh water from Chapultepec to the island. Supply required a dedicated conduit between the spring and the city.",
       ),
       "hydraulicCity",
     ),
@@ -183,24 +183,24 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Por tierra", "By land"),
       c(
-        "Los accesos sobre las calzadas se convirtieron en frentes de ataque y bloqueo. La circulación cotidiana pasó a ser un problema militar.",
-        "Causeway access became a focus of attack and blockade. Everyday circulation became a military problem.",
+        "Las calzadas, por donde entraban personas y mercancías, se convirtieron en frentes de ataque y bloqueo durante el asedio.",
+        "The causeways that carried people and goods into the city became fronts of attack and blockade during the siege.",
       ),
       "siege",
     ),
     panel(
       c("Por agua", "By water"),
       c(
-        "Los bergantines preparados en Texcoco apoyaron operaciones sobre el lago. El asedio combinó fuerzas y vías distintas.",
-        "Brigantines prepared at Texcoco supported lake operations. The siege combined different forces and approaches.",
+        "Los bergantines preparados en Texcoco permitieron a la coalición operar sobre el lago y apoyar el cerco de la ciudad.",
+        "Brigantines prepared at Texcoco allowed the coalition to operate on the lake and support the city’s encirclement.",
       ),
       "siege",
     ),
     panel(
       c("Abastecimiento", "Supply"),
       c(
-        "Interrumpir conexiones presionaba a quienes habitaban la isla. Este esquema explica funciones; no reconstruye posiciones de tropas.",
-        "Severing connections put pressure on island inhabitants. This schematic explains functions, not troop positions.",
+        "El bloqueo de las rutas y la interrupción del acueducto dificultaron la llegada de alimentos y agua dulce. El dibujo esquematiza las conexiones de las que dependía la isla.",
+        "Blocked routes and the severed aqueduct restricted the arrival of food and fresh water. The drawing outlines the connections on which the island depended.",
       ),
       "siege",
       "epidemic",
@@ -210,24 +210,24 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("1607", "1607"),
       c(
-        "Huehuetoca: comienza un proyecto para enviar agua fuera de la cuenca. Cambia la estrategia de intervención.",
-        "Huehuetoca: a project begins to send water outside the basin, changing the intervention strategy.",
+        "En Huehuetoca comenzaron las obras para desviar parte del agua hacia fuera de la cuenca, abriendo una salida artificial en el territorio que la encerraba.",
+        "At Huehuetoca, work began to divert part of the water outside the basin, opening an artificial outlet through the surrounding terrain.",
       ),
       "firstDrain",
     ),
     panel(
       c("1629", "1629"),
       c(
-        "Una gran inundación deja la ciudad anegada durante años. El inicio de una obra no equivale a una solución inmediata.",
-        "A major flood leaves the city inundated for years. Beginning a project is not the same as an immediate solution.",
+        "La gran inundación de 1629 dejó la ciudad anegada durante años, mientras continuaban los problemas de las obras de desagüe.",
+        "The great flood of 1629 left the city inundated for years as problems with the drainage works continued.",
       ),
       "water",
     ),
     panel(
       c("1900", "1900"),
       c(
-        "Se inaugura el Gran Canal del Desagüe. El hito no representa la desaparición instantánea de todos los canales.",
-        "The Grand Drainage Canal opens. This milestone does not mark the instant disappearance of every canal.",
+        "La inauguración del Gran Canal del Desagüe marcó otra etapa de las obras para evacuar agua. Otros canales, como La Viga, seguían ligados a la circulación y al abastecimiento.",
+        "The opening of the Grand Drainage Canal marked another stage in efforts to discharge water. Other canals, including La Viga, remained part of transport and supply.",
       ),
       "drainageWorks",
       "viga",
@@ -237,24 +237,24 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Abastecer", "Supply"),
       c(
-        "El abastecimiento se extendió fuera de la cuenca mientras aumentaba la presión sobre aguas subterráneas.",
-        "Supply extended outside the basin while pressure on groundwater increased.",
+        "La demanda de una metrópoli en expansión extendió el abastecimiento fuera de la cuenca y aumentó la presión sobre las aguas subterráneas.",
+        "Demand from an expanding metropolis extended supply outside the basin and increased pressure on groundwater.",
       ),
       "rivers",
     ),
     panel(
       c("Moverse", "Move"),
       c(
-        "1969: inauguración del Metro. La red conecta partes de una metrópoli que ya se estaba expandiendo.",
-        "1969: the Metro opens, connecting parts of an already expanding metropolis.",
+        "El Metro abrió en 1969. Sus recorridos se incorporaron a los trayectos de una ciudad que seguía extendiéndose.",
+        "The Metro opened in 1969. Its routes became part of daily journeys across a city that continued to expand.",
       ),
       "metroHistory",
     ),
     panel(
       c("Desaguar", "Drain"),
       c(
-        "1975: Drenaje Profundo. Una red para evacuar agua; una función diferente del abastecimiento y del transporte.",
-        "1975: Deep Drainage. A network discharging water, with a different function from supply and transport.",
+        "El Drenaje Profundo se inauguró en 1975 para evacuar agua de la metrópoli. Su recorrido subterráneo añadió otra red a las que sostenían la ciudad.",
+        "The Deep Drainage system opened in 1975 to discharge water from the metropolis. Its underground course added another network to those sustaining the city.",
       ),
       "water",
     ),
@@ -263,24 +263,24 @@ const PANELS: Record<NonNullable<Section["diagram"]>, Panel[]> = {
     panel(
       c("Depósitos", "Deposits"),
       c(
-        "Sedimentos lacustres compresibles bajo parte de la ciudad. No todo el territorio tiene el mismo suelo.",
-        "Compressible lake sediments beneath part of the city. Ground conditions vary across the territory.",
+        "Bajo parte de la ciudad se encuentran sedimentos lacustres compresibles. Su distribución ayuda a explicar las diferencias de hundimiento entre zonas.",
+        "Compressible lake sediments lie beneath parts of the city. Their distribution helps explain differences in subsidence across areas.",
       ),
       "subsidence",
     ),
     panel(
       c("Extracción", "Extraction"),
       c(
-        "Extraer agua subterránea puede contribuir a la compactación. El agua ocupa poros y formaciones; no dibujamos un lago abierto bajo una calle.",
-        "Groundwater extraction can contribute to compaction. Water occupies pores and formations; this is not an open lake beneath a street.",
+        "El agua subterránea ocupa poros y formaciones del subsuelo. Su extracción puede favorecer la compactación de los sedimentos.",
+        "Groundwater occupies pores and formations below ground. Its extraction can promote sediment compaction.",
       ),
       "subsidence",
     ),
     panel(
       c("Compactación", "Compaction"),
       c(
-        "El hundimiento es desigual. Este corte conceptual no representa una calle concreta ni permite evaluar un edificio.",
-        "Subsidence varies by location. This conceptual section is not a particular street or a building assessment.",
+        "La compactación puede hacer descender el terreno de forma desigual. Este corte es conceptual; las condiciones del subsuelo varían según el lugar.",
+        "Compaction can cause the ground to sink unevenly. This section is conceptual; ground conditions vary by location.",
       ),
       "subsidence",
     ),
@@ -770,8 +770,8 @@ export default function GuidedDiagram({
         <Sources ids={selected.sources} compact />
         <small>
           {say(
-            "Dibujo editorial de relaciones y procesos; no es una reconstrucción topográfica.",
-            "Editorial drawing of relationships and processes; not a topographic reconstruction.",
+            "Esquema editorial con posiciones aproximadas y procesos simplificados.",
+            "Editorial diagram with approximate positions and simplified processes.",
           )}
         </small>
       </figcaption>

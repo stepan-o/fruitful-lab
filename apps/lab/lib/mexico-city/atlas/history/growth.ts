@@ -11,36 +11,36 @@ const chapter: Chapter = {
   },
   art: "archive-legislativo",
   subtitle: {
-    es: "De la ciudad monumental a una metrópoli de barrios, obras y trayectos.",
-    en: "From a monumental capital to a metropolis of neighborhoods, works and journeys.",
+    es: "La expansión de la capital, sus nuevas redes y el terreno sobre el que creció.",
+    en: "The capital’s expansion, its new networks and the ground beneath them.",
   },
   sections: [
     {
       id: "new-capital",
       title: {
-        es: "Un esqueleto cambia de significado",
-        en: "A steel frame changes meaning",
+        es: "Del Palacio Legislativo al Monumento a la Revolución",
+        en: "From Legislative Palace to Monument to the Revolution",
       },
       archive: "palace",
       paragraphs: [
         {
           text: {
-            es: "La fotografía del Palacio Legislativo en construcción muestra una promesa que no se cumplió como se había proyectado. La Revolución interrumpió aquel gran edificio porfiriano; parte de su estructura terminó integrada al Monumento a la Revolución. El archivo permite ver la diferencia entre proyecto y resultado. La ciudad no sólo crece añadiendo piezas nuevas: también reutiliza materiales y cambia el significado de lo que ya está en pie.",
-            en: "The photograph of the Legislative Palace under construction shows a promise not fulfilled as planned. The Revolution interrupted the grand Porfirian building; part of its structure later became the Monument to the Revolution. The archive makes the difference between plan and outcome visible. A city grows not only by adding pieces but by reusing materials and changing the meaning of what already stands.",
+            es: "En la fotografía que Guillermo Kahlo tomó en 1912, el Palacio Legislativo aparece todavía como una gran estructura en construcción. El proyecto porfiriano había quedado interrumpido por la Revolución; parte de aquel armazón se incorporaría después al Monumento a la Revolución. La estructura destinada a alojar al poder legislativo acabó sirviendo para conmemorar el movimiento que había trastocado sus planes. El cambio puede seguirse entre la fotografía del palacio inconcluso y la plaza donde hoy se alza el monumento.",
+            en: "In Guillermo Kahlo’s 1912 photograph, the Legislative Palace is still a great structure under construction. The Revolution had interrupted the Porfirian project; part of its frame would later be incorporated into the Monument to the Revolution. A structure intended to house legislative power ended up commemorating the movement that had overturned its plans. That change can be followed from the photograph of the unfinished palace to the square where the monument now stands.",
           },
           sources: ["palace"],
         },
         {
           text: {
-            es: "A escala del gobierno hubo otra transformación. En 1929 se creó el Departamento del Distrito Federal tras la supresión de sus municipios. La investigación histórica de la UNAM vincula esa reorganización con problemas de administración y urbanización. Esto importa para leer mapas de distintas fechas: los nombres de un municipio, una delegación y una alcaldía pueden parecer familiares sin representar exactamente la misma organización territorial.",
-            en: "Government changed at another scale. In 1929 the Department of the Federal District was created after its municipalities were abolished. UNAM’s historical study links that reorganization to administrative and urbanization problems. This matters when reading maps of different dates: municipality, delegation and borough names may sound familiar without representing exactly the same territorial organization.",
+            es: "La organización del gobierno también se transformó. En 1929, tras la supresión de los municipios del Distrito Federal, se creó el Departamento del Distrito Federal. La investigación histórica de la UNAM relaciona esa reorganización con las dificultades de administrar un territorio en proceso de urbanización. Los mapas de cada periodo conservan las divisiones de su momento: municipios, delegaciones y alcaldías corresponden a formas distintas de ordenar una capital cuyo tamaño y funcionamiento estaban cambiando.",
+            en: "The organization of government changed too. In 1929, after the Federal District's municipalities were abolished, the Department of the Federal District was created. UNAM's historical research connects this reorganization with the difficulties of governing a territory undergoing urbanization. Maps preserve the divisions of their own period: municipalities, delegations and boroughs belong to different ways of organizing a capital whose size and workings were changing.",
           },
           sources: ["capital1929"],
         },
         {
           text: {
-            es: "La expansión posterior incorporó pueblos, terrenos agrícolas y nuevos fraccionamientos a una mancha urbana cada vez más extensa. No fue un crecimiento provocado por una sola causa: producción, vivienda, infraestructura y decisiones políticas reorganizaron las relaciones entre centro y periferias. El mapa de hoy mezcla núcleos de edades diferentes. Una plaza de pueblo dentro de la metrópoli puede ser la pista de una historia anterior a las avenidas que la rodean.",
-            en: "Later expansion incorporated towns, farmland and new developments into an increasingly extensive built area. No single cause explains it: production, housing, infrastructure and political decisions reorganized relationships between center and peripheries. Today’s map combines cores of different ages. A town square inside the metropolis may reveal a history older than the avenues surrounding it.",
+            es: "La expansión urbana incorporó pueblos, tierras agrícolas y nuevos fraccionamientos a una superficie construida cada vez más extensa. La vivienda, la producción y las obras de infraestructura desplazaban las relaciones entre el centro y sus periferias. Los antiguos núcleos quedaron rodeados por construcciones posteriores, de modo que el mapa actual reúne asentamientos de edades muy distintas. Una plaza de pueblo dentro de la metrópoli puede conservar la escala de un lugar que existía antes de las avenidas que hoy lo conectan con otros barrios.",
+            en: "Urban expansion brought towns, farmland and new developments into an increasingly extensive built area. Housing, production and infrastructure shifted relationships between the center and its peripheries. Older settlements became surrounded by later construction, so today's map brings together places of very different ages. A town square within the metropolis may retain the scale of a settlement that existed before the avenues now connecting it with other neighborhoods.",
           },
           sources: ["urbanGrowth"],
         },
@@ -49,29 +49,29 @@ const chapter: Chapter = {
     {
       id: "moving-metropolis",
       title: {
-        es: "Una ciudad que necesita moverse y abastecerse",
-        en: "A city that needs movement and supply",
+        es: "Las redes de una metrópoli",
+        en: "The networks of a metropolis",
       },
       diagram: "growth",
       paragraphs: [
         {
           text: {
-            es: "El Metro fue inaugurado en septiembre de 1969. El archivo de El Nacional conservado por el AGN permite acercarse a cómo se presentó esa nueva infraestructura. Una red de transporte responde a una ciudad existente y, a su vez, cambia las posibilidades de cruzarla. Aprenderla no consiste sólo en memorizar colores: interesa reconocer qué partes pone en relación y qué trayectos siguen necesitando otras conexiones.",
-            en: "The Metro was inaugurated in September 1969. El Nacional’s archive, preserved by AGN, shows how the new infrastructure was presented. A transport network responds to an existing city and also changes how it can be crossed. Learning it means more than memorizing colors: ask which parts it connects and which journeys still require other links.",
+            es: "En septiembre de 1969 se inauguró el Metro. Las páginas de El Nacional conservadas por el Archivo General de la Nación registran la llegada de ese nuevo transporte a una capital que llevaba décadas extendiéndose. La apertura añadió recorridos a través de la ciudad y lugares donde cambiar de medio para continuar un viaje. Desde entonces, la red pasó a formar parte de la manera de orientarse en la metrópoli: sus estaciones y conexiones se incorporaron a los trayectos entre barrios.",
+            en: "The Metro opened in September 1969. Pages of El Nacional preserved by the National General Archive record its arrival in a capital that had been expanding for decades. The opening added routes across the city and places to change transport for the next part of a journey. Its stations and connections would become part of how people found their way around the metropolis and traveled between neighborhoods.",
           },
           sources: ["metroHistory"],
         },
         {
           text: {
-            es: "El agua siguió una transformación paralela. La metrópoli extendió su abastecimiento más allá de la cuenca y aumentó la presión sobre aguas subterráneas, mientras los ríos urbanos fueron frecuentemente integrados al drenaje o cubiertos. El estudio de rescate de ríos del PUEC describe esa relación entre urbanización y transformación hidráulica. Un río convertido en infraestructura deja de verse, pero no deja por ello de tener historia ni de condicionar el territorio.",
-            en: "Water underwent a parallel transformation. The metropolis extended supply beyond the basin and increased pressure on groundwater, while urban rivers were frequently incorporated into drainage or covered. PUEC’s study of river recovery describes that relationship between urbanization and hydraulic change. A river transformed into infrastructure may disappear from view without losing its history or its effects on the landscape.",
+            es: "El abastecimiento de agua ampliaba también sus recorridos. La metrópoli buscó fuentes fuera de la cuenca y aumentó la presión sobre las aguas subterráneas, mientras muchos ríos urbanos se integraron al drenaje o quedaron cubiertos. El estudio del PUEC sobre rescate de ríos sigue esa transformación hidráulica: cauces que habían formado parte del paisaje abierto pasaron a funcionar dentro de la infraestructura de una ciudad cada vez más extensa.",
+            en: "Water supply also extended its routes. The metropolis sought sources beyond the basin and increased pressure on groundwater, while many urban rivers were incorporated into drainage or covered. PUEC's study of river recovery follows this hydraulic transformation: channels that had belonged to an open landscape came to function within the infrastructure of an expanding city.",
           },
           sources: ["rivers"],
         },
         {
           text: {
-            es: "El Drenaje Profundo entró en operación en 1975, otro hito distinto del Gran Canal de 1900. Guardar ambas fechas ayuda a evitar la idea de una única obra que resolvió para siempre el problema. El esquema separa abastecimiento, circulación de personas y evacuación de agua porque son redes diferentes, aunque compartan una ciudad. La historia urbana aparece cuando preguntamos cómo interactúan y qué ocurre al cambiar una de ellas.",
-            en: "Deep Drainage entered operation in 1975, a milestone distinct from the Grand Canal of 1900. Keeping both dates avoids imagining one work solving the problem forever. The diagram separates water supply, movement of people and water discharge because they are different networks sharing a city. Urban history emerges when we ask how they interact and what happens when one changes.",
+            es: "En 1975 entró en operación el Drenaje Profundo, setenta y cinco años después de la inauguración del Gran Canal. La nueva obra se sumó a una larga historia de intervenciones para evacuar agua de la capital. Bajo una misma superficie urbana se extendían redes con recorridos y destinos distintos: unas traían el suministro, otras sacaban agua y residuos, y el transporte enlazaba los lugares donde la población vivía y trabajaba. El crecimiento de la metrópoli exigía mantener en funcionamiento ese conjunto.",
+            en: "Deep Drainage entered operation in 1975, seventy-five years after the Grand Canal's inauguration. The new work joined a long history of interventions to discharge water from the capital. Beneath a shared urban surface ran networks with different routes and destinations: some brought supplies, others carried water and waste away, while transport linked the places where residents lived and worked. Metropolitan growth required that whole system to keep functioning.",
           },
           sources: ["water", "rivers"],
         },
@@ -80,30 +80,30 @@ const chapter: Chapter = {
     {
       id: "ground-remembers",
       title: {
-        es: "El terreno no desapareció bajo el pavimento",
-        en: "The ground did not disappear beneath paving",
+        es: "Construir sobre terrenos distintos",
+        en: "Building on different ground",
       },
       paragraphs: [
         {
           text: {
-            es: "El crecimiento sobre terrenos lacustres no borró sus propiedades. La extracción de agua subterránea y la compactación de sedimentos contribuyen al hundimiento diferencial: diferentes lugares cambian de nivel de manera distinta. Esto no es el mismo fenómeno que el movimiento de un sismo. Mezclar ambos bajo la idea de que la ciudad se hunde porque antes era lago impide entender los procesos y sus tiempos.",
-            en: "Growth over lake ground did not erase its properties. Groundwater extraction and sediment compaction contribute to differential subsidence: different places change level differently. This is not the same phenomenon as earthquake shaking. Combining both into the idea that the city sinks because it used to be a lake prevents understanding their distinct processes and timescales.",
+            es: "Parte de la expansión ocurrió sobre depósitos lacustres compresibles. La extracción de agua subterránea contribuye a la compactación de esos sedimentos y al hundimiento diferencial del terreno. El descenso varía de un lugar a otro, según las condiciones del subsuelo y de la extracción, y puede afectar a las obras construidas sobre él. Así, una ciudad que necesita extraer agua encuentra también consecuencias de esa extracción en el suelo que sostiene su infraestructura.",
+            en: "Part of this expansion took place over compressible lake deposits. Groundwater extraction contributes to the compaction of these sediments and to differential subsidence. The descent varies from place to place according to underground conditions and extraction, and can affect structures above. A city that needs to draw water from the ground therefore also encounters the consequences in the soil supporting its infrastructure.",
           },
           sources: ["subsidence", "earthquake"],
         },
         {
           text: {
-            es: "El sismo de 1985 mostró de forma devastadora la importancia de estudiar suelos, edificios y movimientos del terreno juntos. La UNAM documenta cómo impulsó investigación, cooperación y nuevas capacidades de prevención. No basta con colorear una zona como antiguo lago y concluir el destino de cada edificio: las características de las construcciones y la respuesta local del suelo también importan. El pasado geográfico ayuda a formular preguntas; no sustituye un análisis técnico.",
-            en: "The 1985 earthquake devastatingly demonstrated the need to study soils, buildings and ground motion together. UNAM documents its impact on research, cooperation and prevention capacity. Coloring an area as former lake does not establish the fate of every building: construction characteristics and local soil response also matter. Geographical history helps frame questions; it does not replace technical analysis.",
+            es: "Durante un sismo, las propiedades del terreno intervienen de otra manera, en la respuesta al movimiento sísmico y en su relación con los edificios. El terremoto de 1985 mostró devastadoramente la importancia de estudiar juntos esos elementos. La UNAM documenta cómo impulsó investigación, cooperación y capacidades de prevención. La respuesta local de los suelos y las características de las construcciones forman parte de esa historia científica, nacida de la necesidad de comprender daños que se distribuyeron de manera desigual.",
+            en: "During an earthquake, ground properties act through another process: the response to seismic motion and its relationship with buildings. The 1985 earthquake devastatingly demonstrated the importance of studying these elements together. UNAM documents how it spurred research, cooperation and prevention capacity. Local soil response and building characteristics belong to that scientific history, driven by the need to understand damage that was distributed unevenly.",
           },
           sources: ["earthquake"],
         },
         {
           text: {
-            es: "Terminamos con una ciudad que ha cambiado de escala y depende de redes extensas, pero sigue asentada en un territorio desigual. El siguiente capítulo vuelve a la superficie: qué aguas y prácticas permanecen, qué se intenta recuperar y cómo mirar la ciudad actual sin convertir la historia en una explicación única para todo.",
-            en: "We end with a city transformed in scale and dependent on extensive networks, still set on varied terrain. The next chapter returns to the surface: which waters and practices remain, what people seek to recover and how to read today’s city without turning history into one explanation for everything.",
+            es: "Al finalizar este periodo, los trayectos cotidianos recorrían una capital de escala metropolitana. El Metro enlazaba sus zonas, el abastecimiento alcanzaba fuentes lejanas y el drenaje prolongaba bajo tierra la búsqueda de una salida para el agua. Entre esas obras permanecían pueblos rodeados por nuevos barrios y cauces que habían desaparecido de la vista. El mapa de la ciudad crecía sobre ellos, mientras en el subsuelo seguían cambiando las condiciones del terreno construido.",
+            en: "By the end of this period, everyday journeys crossed a capital of metropolitan scale. The Metro linked its districts, water supply reached distant sources and drainage continued the search for an outlet underground. Among these works remained towns surrounded by newer neighborhoods and riverbeds that had disappeared from view. The city map grew over them, while below ground the conditions supporting the built landscape continued to change.",
           },
-          sources: ["urbanGrowth", "rivers"],
+          sources: ["urbanGrowth", "rivers", "metroHistory", "subsidence"],
         },
       ],
     },
@@ -111,34 +111,34 @@ const chapter: Chapter = {
   quiz: [
     {
       prompt: {
-        es: "¿Qué revela la estructura del Palacio Legislativo?",
-        en: "What does the Legislative Palace’s frame reveal?",
+        es: "¿Qué ocurrió con parte de la estructura del Palacio Legislativo inconcluso?",
+        en: "What happened to part of the unfinished Legislative Palace’s frame?",
       },
       options: [
         {
-          es: "Que los proyectos siempre se concluyen como se planearon",
-          en: "That projects always finish as planned",
+          es: "Se completó como sede del Congreso",
+          en: "It was completed as the seat of Congress",
         },
         {
-          es: "Que toda la ciudad fue construida en 1912",
-          en: "That the whole city was built in 1912",
+          es: "Se desmontó por completo antes de construir el monumento",
+          en: "It was completely dismantled before the monument was built",
         },
         {
-          es: "Que una construcción puede reutilizarse y adquirir otro significado",
-          en: "That a structure can be reused and acquire another meaning",
+          es: "Se incorporó al Monumento a la Revolución",
+          en: "It was incorporated into the Monument to the Revolution",
         },
       ],
       correct: 2,
       explanation: {
-        es: "Parte del proyecto inconcluso fue incorporada al Monumento a la Revolución.",
-        en: "Part of the unfinished project became the Monument to the Revolution.",
+        es: "La estructura fotografiada por Guillermo Kahlo en 1912 pertenecía a un proyecto del Porfiriato. Parte de ella se aprovechó después para construir un monumento dedicado a la Revolución.",
+        en: "The frame Guillermo Kahlo photographed in 1912 belonged to a Porfirian project. Part was later reused for a monument dedicated to the Revolution.",
       },
       sources: ["palace"],
     },
     {
       prompt: {
-        es: "¿Qué par de hitos corresponde al siglo XX?",
-        en: "Which pair of milestones belongs to the twentieth century?",
+        es: "¿Qué orden corresponde a la apertura del Metro y del Drenaje Profundo?",
+        en: "Which sequence gives the opening dates of the Metro and Deep Drainage system?",
       },
       options: [
         {
@@ -146,44 +146,44 @@ const chapter: Chapter = {
           en: "Metro in 1969; Deep Drainage in 1975",
         },
         {
-          es: "Triple Alianza en 1428; sitio en 1521",
-          en: "Triple Alliance in 1428; siege in 1521",
+          es: "Metro en 1900; Drenaje Profundo en 1969",
+          en: "Metro in 1900; Deep Drainage in 1969",
         },
         {
-          es: "Huehuetoca en 1607; inundación en 1629",
-          en: "Huehuetoca in 1607; flood in 1629",
+          es: "Metro en 1975; Drenaje Profundo en 1985",
+          en: "Metro in 1975; Deep Drainage in 1985",
         },
       ],
       correct: 0,
       explanation: {
-        es: "Son redes y funciones distintas dentro de una metrópoli en expansión.",
-        en: "They are different networks and functions within an expanding metropolis.",
+        es: "El Metro comenzó a funcionar en 1969 y el Drenaje Profundo se inauguró en 1975. Ambas redes atendían necesidades de una metrópoli en expansión: trasladar personas y evacuar agua.",
+        en: "The Metro began operating in 1969 and the Deep Drainage system opened in 1975. Both networks addressed the needs of an expanding metropolis: moving people and discharging water.",
       },
       sources: ["metroHistory", "water"],
     },
     {
       prompt: {
-        es: "¿Son iguales el hundimiento y la sacudida de un sismo?",
-        en: "Are subsidence and earthquake shaking the same?",
+        es: "¿Cómo intervienen los suelos lacustres en el hundimiento y en los sismos?",
+        en: "How do lakebed soils matter to subsidence and earthquakes?",
       },
       options: [
         {
-          es: "Sí, tienen siempre la misma causa y duración",
-          en: "Yes, always the same cause and duration",
+          es: "El hundimiento cotidiano produce por sí solo los grandes sismos",
+          en: "Everyday subsidence itself produces major earthquakes",
         },
         {
-          es: "No: son procesos distintos que requieren explicaciones distintas",
-          en: "No: they are different processes needing different explanations",
+          es: "Pueden compactarse con la extracción de agua e influir en la respuesta a las ondas sísmicas",
+          en: "They can compact with groundwater extraction and affect the response to seismic waves",
         },
         {
-          es: "Sólo cambian sus nombres",
-          en: "Only their names differ",
+          es: "El agua subterránea impide tanto el hundimiento como el movimiento sísmico",
+          en: "Groundwater prevents both subsidence and seismic movement",
         },
       ],
       correct: 1,
       explanation: {
-        es: "La compactación ligada a la extracción de agua no equivale al movimiento sísmico.",
-        en: "Compaction linked to water extraction is not earthquake motion.",
+        es: "La extracción de agua puede favorecer la compactación de sedimentos y el hundimiento. Durante un sismo, las propiedades del subsuelo también influyen en el movimiento, mediante un proceso distinto.",
+        en: "Water extraction can promote sediment compaction and subsidence. During an earthquake, the properties of the ground also influence movement, through a different process.",
       },
       sources: ["subsidence", "earthquake"],
     },

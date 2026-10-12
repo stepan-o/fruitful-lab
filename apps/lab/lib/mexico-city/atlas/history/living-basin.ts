@@ -11,36 +11,36 @@ const chapter: Chapter = {
   },
   art: "photo-revolucion",
   subtitle: {
-    es: "Lo que permanece, lo que cambia y las preguntas que llevarás a la calle.",
-    en: "What remains, what changes and the questions to take into the city.",
+    es: "El subsuelo, los humedales y los paisajes de agua que permanecen en la metrópoli.",
+    en: "The subsoil, wetlands and water landscapes that remain within the metropolis.",
   },
   sections: [
     {
       id: "under-streets",
       title: {
-        es: "Tres capas debajo de una frase",
-        en: "Three layers beneath one phrase",
+        es: "El agua bajo las calles",
+        en: "Water beneath the streets",
       },
       diagram: "subsoil",
       paragraphs: [
         {
           text: {
-            es: "Bajo parte de la ciudad hay sedimentos lacustres compresibles. La extracción de agua subterránea contribuye a la compactación y al hundimiento. No es correcto imaginar toda la metrópoli bajando a la misma velocidad, ni dibujar un lago líquido justo debajo de cada calle. La geología y la extracción ayudan a explicar diferencias entre zonas y daños en infraestructura.",
-            en: "Compressible lake sediments lie beneath parts of the city. Groundwater extraction contributes to compaction and subsidence. It is misleading to imagine the whole metropolis sinking at one rate, or a liquid lake directly beneath every street. Geology and extraction help explain differences between areas and damage to infrastructure.",
+            es: "Bajo parte de la ciudad permanecen los sedimentos depositados en los antiguos ambientes lacustres. Su compresibilidad interviene en un proceso que continúa transformando el terreno: al extraer agua subterránea, se favorece la compactación y el suelo puede descender. El hundimiento es desigual, con diferencias entre zonas que afectan también a la infraestructura. El abastecimiento de la metrópoli y el comportamiento de su subsuelo quedan así unidos por una relación que se hace visible en la superficie.",
+            en: "Beneath parts of the city remain sediments deposited in former lake environments. Their compressibility contributes to a process still transforming the ground: extracting groundwater encourages compaction, and the surface can descend. Subsidence is uneven, with differences between areas that also affect infrastructure. The metropolis's water supply and the behavior of its subsoil are joined by a relationship that becomes visible at the surface.",
           },
           sources: ["subsidence"],
         },
         {
           text: {
-            es: "La frase antes todo esto era un lago puede abrir una conversación, pero no terminarla. Hay que distinguir antiguos depósitos, agua subterránea y cuerpos de agua actuales. También hay suelos volcánicos y elevaciones que no se entienden con la misma imagen de fondo lacustre. El corte del diagrama es conceptual: separa procesos y materiales; no ofrece un perfil geológico de tu calle ni predice riesgos de un edificio.",
-            en: "The phrase this all used to be a lake can begin a conversation but should not end it. Distinguish old deposits, groundwater and present water bodies. Volcanic ground and high areas also resist a single lake-floor image. The diagram’s section is conceptual: it separates processes and materials, not a geological profile of your street or a prediction about a building.",
+            es: "En otras partes de la cuenca, la ciudad se asienta sobre terrenos volcánicos y elevaciones con propiedades diferentes. Esa variedad hace que dos zonas de la misma metrópoli puedan experimentar descensos muy distintos. También durante un sismo importa el terreno sobre el que se construyó: el subsuelo interviene en la respuesta al movimiento, junto con las características de los edificios. Los antiguos ambientes del valle siguen formando parte de la vida urbana a través de esos materiales.",
+            en: "Elsewhere in the basin, the city stands on volcanic ground and elevations with different properties. That variety allows two parts of the same metropolis to experience very different amounts of subsidence. The ground also matters during an earthquake: its response to motion acts together with the characteristics of the buildings above it. The valley’s former environments remain part of urban life through these materials.",
           },
           sources: ["subsidence", "earthquake"],
         },
         {
           text: {
-            es: "La urbanización también modifica el clima local. La investigación divulgada por la UNAM relaciona cambios de uso del suelo y crecimiento urbano con islas de calor; no describe simplemente un único punto caliente en el centro. Para comprender las diferencias actuales, la memoria del agua necesita conversar con vegetación, pavimentos y formas de ocupar el territorio. Ninguna capa histórica explica por sí sola todas las experiencias de la ciudad.",
-            en: "Urbanization also changes local climate. Research shared by UNAM links land-use change and growth to heat islands rather than one hot spot downtown. Understanding current differences requires connecting water’s history with vegetation, paving and settlement patterns. No historical layer alone explains every experience of the city.",
+            es: "La urbanización cambia también el clima a escala local. Donde se modifican la vegetación y el uso del suelo, y se extienden los pavimentos, cambia la respuesta de la superficie al calor. La investigación divulgada por la UNAM estudia esas diferencias mediante las islas de calor de la metrópoli. Sobre la geografía heredada de lagos y volcanes se ha construido otra distribución de ambientes, ligada a la manera en que la ciudad ocupa y transforma el terreno.",
+            en: "Urbanization also changes the local climate. Altering vegetation and land use, and extending paved surfaces, changes how the ground responds to heat. Research shared by UNAM examines those differences through the metropolis’s heat islands. Above the geography inherited from lakes and volcanoes, another distribution of environments has emerged from the ways the city occupies and transforms the land.",
           },
           sources: ["urbanClimate"],
         },
@@ -49,28 +49,28 @@ const chapter: Chapter = {
     {
       id: "surface-water",
       title: {
-        es: "Conservar agua es conservar relaciones",
-        en: "Preserving water means preserving relationships",
+        es: "Xochimilco y Texcoco en el presente",
+        en: "Xochimilco and Texcoco today",
       },
       paragraphs: [
         {
           text: {
-            es: "También persisten paisajes de agua en la superficie. Las chinampas de Xochimilco continúan vinculadas a productores y comunidades. Hacia el oriente, el área protegida Lago de Texcoco, decretada en 2022, conserva humedales y funciones de regulación hídrica en el Estado de México. “Desapareció el lago” es una frase demasiado cómoda para un territorio que todavía necesita espacio para el agua.",
-            en: "Water landscapes also remain at the surface. Xochimilco’s chinampas are still connected to growers and communities. To the east, the Lago de Texcoco protected area, decreed in 2022, preserves wetlands and water-regulation functions in the State of Mexico. “The lake disappeared” is too convenient a phrase for a territory that still needs room for water.",
+            es: "En Xochimilco, los canales y las parcelas mantienen una presencia del agua ligada al trabajo agrícola. Hacia el oriente, los humedales del Lago de Texcoco forman parte de un área natural protegida decretada en 2022, en el Estado de México. Son paisajes distintos dentro de la misma cuenca, vinculados con funciones de hábitat y regulación hídrica. Su permanencia muestra el lugar que el agua sigue ocupando alrededor de una metrópoli que ha dedicado siglos a modificar sus recorridos.",
+            en: "In Xochimilco, canals and fields retain a presence of water connected with farming. To the east, the Lago de Texcoco wetlands belong to a protected area decreed in 2022, in the State of Mexico. They are different landscapes within the same basin, connected with habitat and water-regulation functions. Their persistence reveals the space water still occupies around a metropolis that has spent centuries changing its routes.",
           },
           sources: ["chinampas", "texcocoProtected"],
         },
         {
           text: {
-            es: "El reconocimiento de las chinampas como patrimonio agrícola por la FAO en 2017 no las convirtió en un paisaje del pasado. Señala el valor de un sistema vivo. Los proyectos de restauración vinculados a productores y científicos, como Chinampa Refugio, permiten pensar la conservación con quienes trabajan allí. No se trata de escoger entre historia y presente: la continuidad de una práctica depende de las condiciones actuales que la hacen posible.",
-            en: "FAO’s recognition of chinampas as agricultural heritage in 2017 did not turn them into a landscape of the past. It recognizes a living system. Restoration involving growers and scientists, such as Chinampa Refugio, allows conservation to be considered with the people working there. History and the present are not alternatives: continuity depends on present conditions making a practice possible.",
+            es: "El reconocimiento de las chinampas como patrimonio agrícola por la FAO en 2017 destacó el valor de un sistema sostenido por productores y comunidades. Su continuidad se resuelve en condiciones presentes: en la posibilidad de cultivar, en la calidad del agua y en la conservación de los canales. Proyectos como Chinampa Refugio reúnen a agricultores y científicos alrededor de ese trabajo, enlazando la producción con la recuperación del hábitat acuático.",
+            en: "FAO's recognition of chinampas as agricultural heritage in 2017 highlighted a system sustained by growers and communities. Its continuity depends on present conditions: the possibility of cultivation, water quality and the maintenance of canals. Projects such as Chinampa Refugio bring farmers and scientists together around this work, linking production with the recovery of aquatic habitat.",
           },
           sources: ["chinampas", "chinampaRefuge"],
         },
         {
           text: {
-            es: "En Texcoco, el decreto de protección de 2022 y su programa de manejo obligan a ampliar el mapa más allá de la CDMX. El humedal se encuentra en el Estado de México y sus funciones ecológicas no se detienen en una frontera administrativa. El recorrido vuelve así al punto inicial del libro: la cuenca es una unidad útil para pensar el agua, aunque las decisiones se repartan entre territorios y autoridades diferentes.",
-            en: "At Texcoco, the 2022 protection decree and management program require looking beyond CDMX. The wetland lies in the State of Mexico, and its ecological functions do not stop at an administrative border. Our journey returns to the book’s starting point: the basin is useful for thinking about water even when decisions are divided among territories and authorities.",
+            es: "El programa de manejo del Lago de Texcoco sitúa otro ámbito de conservación más allá de los límites de la CDMX. El humedal pertenece al Estado de México, mientras sus funciones hídricas y ecológicas participan en el conjunto de la cuenca. Las decisiones se distribuyen entre territorios y autoridades, sobre una geografía que vincula sus partes por el agua. La diferencia entre el mapa administrativo y el relieve vuelve a ser una cuestión práctica del presente.",
+            en: "The Lago de Texcoco management program sets out another area of conservation beyond CDMX's boundaries. The wetland lies within the State of Mexico, while its water and ecological functions operate within the wider basin. Decisions are divided among territories and authorities across a geography whose parts are connected by water. The difference between administrative boundaries and terrain becomes a practical question of the present once again.",
           },
           sources: ["texcocoProtected"],
         },
@@ -79,36 +79,36 @@ const chapter: Chapter = {
     {
       id: "read-the-city",
       title: {
-        es: "Salir con preguntas mejores",
-        en: "Going out with better questions",
+        es: "Las huellas a la vista",
+        en: "Traces in view",
       },
       archive: "monument",
       paragraphs: [
         {
           text: {
-            es: "Compara la fotografía actual del Monumento a la Revolución con la estructura de 1912 del capítulo anterior. Es el mismo argumento en dos documentos: las ciudades conservan materia y cambian significados. Pero evita trasladar esa certeza a cualquier parecido. Para conectar una calle con una calzada antigua, o una depresión con un canal, necesitamos evidencia específica. Una semejanza visual puede ser una pista; no es todavía una conclusión.",
-            en: "Compare the modern Monument to the Revolution photograph with the 1912 frame in the previous chapter. Two documents support one argument: cities preserve material and change meanings. But do not transfer that certainty to every resemblance. Connecting a street with an old causeway or a depression with a canal requires specific evidence. Visual similarity may be a clue, not yet a conclusion.",
+            es: "La fotografía de 2018 del Monumento a la Revolución permite reconocer el resultado de la transformación que comenzó con el Palacio Legislativo. Junto a la imagen de Guillermo Kahlo de 1912, conserva dos momentos separados por más de un siglo: la estructura de un edificio inconcluso y el monumento que incorporó parte de ella. La comparación da una escala visible al cambio, con materiales que permanecen dentro de una obra cuyo nombre y propósito pertenecen a otra etapa política.",
+            en: "The 2018 photograph of the Monument to the Revolution shows the result of a transformation that began with the Legislative Palace. Alongside Guillermo Kahlo's image from 1912, it preserves two moments more than a century apart: the frame of an unfinished building and the monument that incorporated part of it. The comparison gives change a visible scale, with materials surviving within a work whose name and purpose belong to another political period.",
           },
           sources: ["palace", "archiveMonument"],
         },
         {
           text: {
-            es: "Ésta será tu primera tarea al llegar: busca una huella y formula una pregunta. En La Viga, relaciona un nombre con la fotografía; en Xochimilco, distingue una parcela de un canal; en el centro, pregunta por el abastecimiento y el desagüe antes de atribuir cualquier desnivel al antiguo lago. Una observación útil separa lo que ves de lo que todavía necesitas comprobar.",
-            en: "Here is your first task when you arrive: find a trace and ask a question. At La Viga, connect a name with the photograph; in Xochimilco, distinguish a plot from a canal; in the center, ask about supply and drainage before attributing every uneven surface to the old lake. A useful observation separates what you see from what you still need to verify.",
+            es: "En La Viga, las fotografías del canal permiten relacionar un nombre actual con una antigua ruta de abasto; en Xochimilco, las parcelas y los pasos de agua conservan una relación productiva. Las huellas tienen formas distintas: una imagen documenta un lugar en una fecha, mientras un paisaje trabajado continúa cambiando con quienes lo utilizan. Cada caso ofrece una manera concreta de acercarse a la historia de los sitios que hoy forman parte de la ciudad.",
+            en: "At La Viga, photographs of the canal connect a present name with an old supply route; in Xochimilco, fields and waterways retain a productive relationship. The traces take different forms: an image records a place at a date, while a worked landscape continues changing with those who use it. Each offers a particular way into the history of places that now form part of the city.",
           },
-          sources: ["viga", "chinampas", "subsidence"],
+          sources: ["viga", "archiveViga", "chinampas"],
         },
         {
           text: {
-            es: "Las fuentes también son parte del paseo. Una fotografía tiene fecha y encuadre; un códice reúne convenciones y memorias; una investigación arqueológica puede revisar una cronología. En este libro los enlaces acompañan la información para que puedas volver al documento y distinguir una observación de una interpretación. No hay un mapa final que contenga toda la ciudad. Hay formas cada vez mejores de preguntar cómo llegó a ser lo que vemos.",
-            en: "Sources belong to the journey too. A photograph has a date and frame; a codex brings conventions and memories; archaeological research may revise a chronology. Links accompany information throughout this book so you can return to documents and distinguish observation from interpretation. No final map contains the whole city. There are increasingly useful ways to ask how it became what we see.",
+            es: "Las imágenes dejan además sus propias fechas en ese recorrido. La Viga de Briquet pertenece a finales del siglo XIX, cuando el canal aún llevaba mercancías hacia la capital. El Códice Mendoza, elaborado en el periodo colonial, vuelve sobre una fundación anterior a la conquista. Ambos conservan algo que sus autores quisieron registrar, y la distancia entre lo representado y el momento de la imagen forma parte de la historia que cuentan.",
+            en: "The images leave their own dates along that route. Briquet’s La Viga belongs to the late nineteenth century, when the canal still carried goods toward the capital. The Codex Mendoza, made in the colonial period, looks back to a foundation before the conquest. Both preserve something their makers chose to record, and the distance between the depicted event and the making of the image belongs to the history they tell.",
           },
-          sources: ["archiveViga", "archiveMendoza", "cuicuilco"],
+          sources: ["archiveViga", "archiveMendoza"],
         },
         {
           text: {
-            es: "Para tu primera exploración, elige una sola relación: una parcela y su canal, un monumento y su fotografía, una montaña y las tierras bajas. Registra lo que observas, conserva la fuente que te llevó allí y anota lo que todavía no sabes. Ésta es una propuesta de actividad del juego, no una obligación para visitar la ciudad ni una invitación a entrar en predios sin permiso. La curiosidad funciona mejor cuando deja espacio a quienes viven en el lugar.",
-            en: "For your first exploration, choose one relationship: a field and its canal, a monument and its photograph, a mountain and the low ground. Record what you observe, keep the source that brought you there and note what remains unknown. This is a suggested game activity, not a requirement for visiting or an invitation to enter property without permission. Curiosity works best when it makes room for the people living there.",
+            es: "En el paisaje chinampero, esa distancia entre pasado y presente se acorta alrededor de un trabajo que continúa. Preparar una parcela, conservar un canal y recuperar las condiciones del hábitat son actividades de quienes viven y producen allí. Después de recorrer fundaciones, guerras y grandes obras de desagüe, la historia del valle vuelve a esa escala cotidiana: la de una tierra cultivada junto al agua, cuyo porvenir se decide también en el trabajo de cada temporada.",
+            en: "In the chinampa landscape, that distance between past and present narrows around continuing work. Preparing a field, maintaining a canal and recovering habitat conditions are activities carried out by people living and producing there. After foundations, wars and great drainage works, the valley's history returns to this everyday scale: land cultivated beside water, its future also being decided through each season's labor.",
           },
           sources: ["chinampaRefuge"],
         },
@@ -118,81 +118,81 @@ const chapter: Chapter = {
   quiz: [
     {
       prompt: {
-        es: "¿Cuál es la mejor conclusión para explorar la ciudad?",
-        en: "Which is the best conclusion for exploring the city?",
+        es: "¿Qué relación tiene la extracción de agua subterránea con el hundimiento?",
+        en: "How is groundwater extraction related to subsidence?",
       },
       options: [
         {
-          es: "Todo desnivel demuestra que debajo hay un lago",
-          en: "Every uneven surface proves there is a lake underneath",
+          es: "Eleva de forma uniforme el antiguo fondo de los lagos",
+          en: "It raises the former lakebeds uniformly",
         },
         {
-          es: "El agua dejó huellas diferentes que hay que contrastar con evidencia",
-          en: "Water left different traces that need to be checked against evidence",
+          es: "Puede favorecer la compactación de sedimentos bajo partes de la ciudad",
+          en: "It can promote sediment compaction beneath parts of the city",
         },
         {
-          es: "El agua dejó de importar cuando llegaron las avenidas",
-          en: "Water stopped mattering when avenues arrived",
+          es: "Produce el mismo descenso en todos los tipos de terreno",
+          en: "It causes the same amount of subsidence in every kind of ground",
         },
       ],
       correct: 1,
       explanation: {
-        es: "Conecta paisaje, historia y fuentes. Una pista invita a investigar; no sustituye la evidencia.",
-        en: "Connect landscape, history and sources. A clue invites investigation; it does not replace evidence.",
+        es: "Al extraer agua pueden cambiar las condiciones que sostienen los sedimentos compresibles. La compresibilidad del terreno varía entre zonas, de modo que el descenso puede ser desigual incluso dentro de la misma ciudad.",
+        en: "Extracting water can change the conditions supporting compressible sediments. The ground’s compressibility varies across areas, so subsidence can be uneven even within the same city.",
       },
-      sources: ["subsidence", "texcocoProtected"],
+      sources: ["subsidence"],
     },
     {
       prompt: {
-        es: "¿Por qué mirar Texcoco más allá de la CDMX?",
-        en: "Why look beyond CDMX at Texcoco?",
+        es: "¿Por qué Texcoco forma parte de esta historia aunque esté fuera de la CDMX?",
+        en: "Why does Texcoco belong to this history even though it lies outside CDMX?",
       },
       options: [
         {
-          es: "Porque la cuenca y sus procesos cruzan límites administrativos",
-          en: "Because the basin and its processes cross administrative boundaries",
+          es: "Porque la cuenca y sus relaciones de agua y territorio cruzan los límites administrativos",
+          en: "The basin and its water and territorial relationships cross administrative boundaries",
         },
         {
-          es: "Porque todo el Estado de México es un lago",
-          en: "Because the entire State of Mexico is a lake",
+          es: "Porque todas las antiguas orillas del lago pertenecen hoy a una sola alcaldía",
+          en: "All the former lakeshores now belong to a single borough",
         },
         {
-          es: "Porque las alcaldías no tienen historia",
-          en: "Because boroughs have no history",
+          es: "Porque Texcoco se convirtió en una colonia del Centro Histórico",
+          en: "Texcoco became a neighborhood of the Historic Center",
         },
       ],
       correct: 0,
       explanation: {
-        es: "El área protegida está en el Estado de México; el agua y los hábitats requieren una mirada territorial más amplia.",
-        en: "The protected area lies in the State of Mexico; water and habitats require a broader territorial view.",
+        es: "El sistema lacustre abarcaba territorios que hoy pertenecen a distintas entidades. Texcoco conserva un lugar en la historia y en los proyectos ambientales de la cuenca; en 2022 se decretó allí un área natural protegida.",
+        en: "The lake system extended across territories now belonging to different jurisdictions. Texcoco remains part of the basin’s history and environmental projects; a protected natural area was designated there in 2022.",
       },
       sources: ["texcocoProtected"],
     },
     {
       prompt: {
-        es: "¿Qué hace más útil una observación en la calle?",
-        en: "What makes a street observation more useful?",
+        es: "¿Qué une la fotografía del Palacio Legislativo de 1912 y la del Monumento a la Revolución de 2018?",
+        en: "What connects the 1912 photograph of the Legislative Palace and the 2018 photograph of the Monument to the Revolution?",
       },
       options: [
         {
-          es: "Afirmar una causa sin comprobarla",
-          en: "Claiming a cause without checking",
+          es: "Documentan el mismo edificio terminado con el mismo propósito",
+          en: "They record the same completed building serving the same purpose",
         },
         {
-          es: "Separar lo observado, la fuente y lo que falta investigar",
-          en: "Separating observation, source and what remains to investigate",
+          es: "Parte de la estructura de un proyecto pasó a formar parte del otro",
+          en: "Part of one project’s frame became part of the other",
         },
         {
-          es: "Usar cualquier imagen antigua como prueba de cualquier época",
-          en: "Using any old image as proof for any period",
+          es: "Muestran dos proyectos construidos en lugares distintos",
+          en: "They show two projects built in different locations",
         },
       ],
       correct: 1,
       explanation: {
-        es: "La fecha, el lugar y el propósito del documento ayudan a poner límites a una interpretación.",
-        en: "A document’s date, place and purpose help define the limits of an interpretation.",
+        es: "El monumento incorporó parte de la estructura del palacio inconcluso. Las dos fotografías permiten seguir esa transformación material entre un proyecto del Porfiriato y la conmemoración de la Revolución.",
+        en: "The monument incorporated part of the unfinished palace’s frame. Together, the photographs trace that material transformation from a Porfirian project to a commemoration of the Revolution.",
       },
-      sources: ["archive1847", "cuicuilco"],
+      sources: ["palace", "archiveMonument"],
     },
   ],
 };

@@ -4,7 +4,7 @@ Updated 12 October 2026. Public Lab route: `/mexico-city`. Working reference: **
 
 ## Editorial design
 
-Use [EDITORIAL_DESIGN.md](EDITORIAL_DESIGN.md) for this project’s Spanish-first voice, English adaptation, landing composition, map notes, historical captions and mobile copy review. It records the owner’s selected Atlas wording and the current implementation.
+Use [EDITORIAL_DESIGN.md](EDITORIAL_DESIGN.md) before writing for this project. It defines a literary, Spanish-first voice with connected paragraphs, varied rhythm and concrete historical detail, together with idiomatic English adaptation. Every writing task includes a full reread and rewrite to remove LLM clichés, formulaic contrasts, promotional invitations, unsolicited behavior lessons and choppy prose. The guide covers sources, captions, map notes and the different pace of chapters, quizzes and game controls; it also preserves earlier landing choices as an implementation record.
 
 ## Current learning experience
 

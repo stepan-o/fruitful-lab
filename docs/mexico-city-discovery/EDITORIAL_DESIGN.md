@@ -1,40 +1,104 @@
 # Mexico city discovery game — editorial design
 
-12 October 2026 · Active project writing and presentation guide.
+12 October 2026 · Active project writing and presentation guide, revised after the owner's language-and-voice discussion.
 
 Read this before writing or revising the landing, Atlas, chapters, borough profiles, map captions or game prompts. The working reference remains **Mexico city discovery game**. This guide sits alongside [EXPERIENCE_SPEC.md](EXPERIENCE_SPEC.md), [ATLAS_CONTENT_MAP.md](ATLAS_CONTENT_MAP.md), [SOURCES.md](SOURCES.md) and the repository [design/performance standards](../DESIGN_AND_PERFORMANCE_STANDARDS.md).
 
-## Editorial purpose
+## Editorial purpose and voice
 
-Help someone understand the city they will explore. Give them a concrete question, explain the relationships behind it, and offer a clear next step. Geography, people, work, water and history belong in the same account. The Atlas prepares curiosity for an actual outing; the field game records that outing.
+The Atlas should have the depth and visual pleasure of an illustrated history book, with the curiosity, warmth and occasional irreverence of a good conversation. Its reader is an interested adult preparing to spend time in the city. A passage can linger over a landscape, follow an argument or explain an unfamiliar practice, giving the reader enough room to understand how people and places came to be connected.
 
-The voice is informed, inviting and conversational. Write with the care of an illustrated history book and the clarity of a companion who knows where to begin. Make a place interesting through particular details, not promotional adjectives. Readers should finish a passage with something they can recognize, explain or ask about outside.
+Geography, work, ambition, conflict and invention supply the narrative. A decision changes a landscape; that change alters how people live; its consequences become part of the city someone can encounter today. Follow those relationships far enough for the reader to grasp them. A broad subject needs scenes, explanation and images that contribute evidence. When a chapter has too much to carry, divide the subject into chapters with their own narrative arcs.
 
-## Language and voice
+“Exciting” and “juicy” describe the quality of the material we seek: a telling detail, an ingenious solution, an argument with consequences, an ambition that outran its circumstances. The prose earns its interest by developing that material. Generic praise and promises of hidden wonders only postpone the story.
 
-- Compose in natural Mexican Spanish first; Spanish is the default. Use tú and concise invitations: “Empieza”, “Selecciona”, “Conoce”, “Observa”. Avoid classroom scolding, forced slang, tourist exoticism and claims to speak for local communities.
-- Write English as an idiomatic adaptation with the same meaning, promise and action. Preserve place names and accents; use “borough” for alcaldía, “neighborhood” for colonia/barrio when appropriate. Spanish náhuatl / English Nahuatl refer to a living language; variants and source spellings need context.
-- A heading may ask a genuine question (“¿Por qué la ciudad tiene esta forma?”). The following paragraph must establish how the section helps answer it. Do not add a rhetorical question to every card.
-- Prefer named places and observable relationships: “El río Magdalena y los bosques de Los Dinamos.” Avoid empty mystery (“Descubre sus secretos”), forced praise (“Ninguna de relleno”) and vague metaphors (“El sur también habla”).
-- Explain cause and change through people and processes. Avoid framing all history as preparation for the Mexica or conquest. Chinampas, farming communities and Indigenous languages belong to the present as well as the past.
-- Keep the human scale: distinguish a borough from one famous neighborhood, a place from a transit stop, a photograph from a reconstruction. Names, maps and community life need not share administrative boundaries.
-- Do not sacrifice accuracy for a striking line. “El agua no está” erases surviving waterways and wetlands. State the particular transformation instead.
-- Use curiosity rather than pressure: no FOMO, mandatory learning gates, invented urgency, inflated quiz rewards or shame about what a reader does not know.
+The narrator has a point of view and can recognize absurdity, irony or a disastrous miscalculation. Let the circumstances establish the force of that observation. Conquest, displacement and other histories of suffering need space for the people involved and the differences among their experiences. Editorial personality can sharpen an account without inventing motives or reducing its participants to a joke.
 
-## Page composition and copy hierarchy
+## Literary prose and sentence rhythm
 
-1. **Opening:** one useful question and a short paragraph establishing the journey. Identify the Atlas plainly; avoid decorative coordinates in the introduction.
-2. **First chapter:** chapter number, concrete topic, one short explanation, an explicit reading action and a separate route to all chapters. “El valle y sus lagos” is the entry invitation for chapter 01; its book title remains “Un mundo entre lagos”.
-3. **Map introduction:** invite a place choice, explain what selecting a borough reveals, then give the illustrated map room. Map selection opens its profile; no extra confirmation step.
-4. **Historical comparison:** explain the timeline's purpose. A selected period can lead to its related history chapter. Do not advertise a measured historical simulation; the existing timeline is a sourced schematic.
-5. **Borough directory:** use clear names, positional labels and recognizable places. Short card descriptions are orientation clues, not complete cultural identities. Search says what it searches.
-6. **Navigation:** verbs and destinations should be recognizable and stable. Preserve selected state, accessible labels and browser history.
+Write in connected paragraphs whose sentences develop one another. An observation may lead into an explanation, a qualification or a consequence; the next paragraph can change distance, period or perspective when the account needs it. Vary sentence length and construction with the thought. A short sentence can land with force after a longer passage, but repeated fragments give every detail the same artificial emphasis.
 
-Each section has its own job. Avoid repeating the map instruction inside the history panel, or repeating the opening's broad promise on every card. Remove decorative eyebrow text when it adds no information.
+Literary writing depends on attention, precision and rhythm. Choose nouns and verbs that allow the reader to picture a particular place or understand a particular process. An image or metaphor should illuminate something in the subject. Elaborate vocabulary, decorative personification and strings of adjectives can make a passage harder to see through. Historical description must remain within the evidence: imagined dialogue, sensations, weather and private thoughts cannot quietly enter an account as fact.
 
-## Approved Atlas landing choices
+A paragraph can carry several connected ideas as long as the reader can follow the relationship among them. Splitting every fact into its own sentence often breaks the thread that makes those facts intelligible. On a phone, suitable line length, spacing and paragraph breaks should give sustained prose the room it needs.
 
-Owner selection: 1 B; 2 A; 3 B title with A body; 4 A; 5 A; 6 A; 7 B. Map-note options from the earlier proposal were rejected; the replacement below was authored for this implementation.
+## Spanish and English
+
+Compose in natural contemporary Mexican Spanish first, with an easy tú when addressing the reader serves the passage. Local character comes through named places, everyday practices, people's accounts and well-chosen quotations. Forced slang and repeated claims that something is “auténtico” make the narrator conspicuous. Let the subjects and sources bring their own particularity.
+
+English receives an idiomatic adaptation with the same substance and editorial care. Read it independently for cadence; carrying Spanish syntax over word for word can flatten an otherwise lively passage. Preserve place names and accents, use “borough” for alcaldía, and explain colonia or barrio in the context where it appears. Náhuatl material needs its variety, source spelling and historical or contemporary setting identified where relevant.
+
+Treat peoples, communities and languages in their own periods and circumstances. The chapter sequence should give earlier societies room to exist before the account reaches the Mexica, while contemporary practices and communities receive the same specificity as historical ones.
+
+## LLM habits to remove during revision
+
+After drafting, return to the whole text for a separate editorial reread and rewrite before delivery. This review includes every passage produced or changed in the task, together with headings, captions, navigation, quiz feedback and both languages. A search for stock phrases can locate some problems; reading the paragraphs in sequence reveals where the argument falters or the rhythm becomes mechanical.
+
+| Habit to flag | Editorial response |
+| --- | --- |
+| Formulaic contrast: “X, not Y”, “This isn't about X. It's about Y”, “No es solo…”, “Más que…” | State the substantive idea directly and develop it. Keep a comparison when it explains an actual difference in the evidence; remove the invented opposite used to give a sentence weight. |
+| Promotional invitations: “Discover the secrets”, “Unlock”, “Embark on a journey”, “Sumérgete”, “Atrévete”, or repeated “Empieza / Conoce / Explora” in prose | Begin with the subject, a specific observation or a question the passage will answer. Reserve action wording for controls and an occasional invitation that helps the reader choose a direction. |
+| “Proper behavior” asides: “Remember to be respectful”, “Be a responsible explorer”, “Es importante valorar…” | Remove unsolicited moral coaching. Where an activity needs a practical instruction, state the relevant action and circumstances at that point. Historical consequences belong in the account with the people and evidence involved. |
+| A succession of clipped facts, fragments or dramatic one-line paragraphs | Restore relationships between the ideas, combine sentences where they belong together, and vary the rhythm. Read the entire paragraph again after restructuring it. |
+| Empty atmosphere: “hidden gem”, “rich tapestry”, “vibrant”, “fascinating”, “magical”, “where past meets present”, “una ciudad llena de contrastes” | Identify the place, event or detail doing the work. Remove praise that could describe almost anywhere. |
+| Mechanical signposting: “It's worth noting”, “Importantly”, “In short”, “Cabe destacar”, “Es importante recordar”; a tidy moral at every ending | Make the relationship clear within the passage. End when the thought has reached its destination; an image, consequence or unresolved question may carry the reader onward. |
+| Reassurance, generic caveats and hedging added to sound careful | Match the language to the evidence. Locate a real uncertainty precisely and explain its bearing on the claim. Remove qualifications that add no information. |
+| An identical question–answer, three-part list or grand reveal repeated across sections | Choose the structure the material needs. Read neighboring sections together so their openings, transitions and endings do not all follow the same pattern. |
+
+Use these patterns to locate passages that need reconsideration. When an opening sells the experience, changing “discover” to “explore” preserves the same pitch; rebuilding it around a particular observation may give the reader something worth following. Apply the same reread to this guide whenever it changes.
+
+## Voice across the experience
+
+The same narrator can change pace as the reader moves between a chapter, a caption and an outing.
+
+| Surface | Treatment |
+| --- | --- |
+| Atlas landing | A composed editorial opening that establishes what is here and gives the reader somewhere to begin. Let the subject carry the invitation. |
+| History chapter | Sustained storytelling and explanation, with enough detail to follow people, processes and consequences. |
+| Borough profile | A recognizable place assembled through landscape, reference points and particular histories. Give a borough more identity than its best-known attraction. |
+| Image or map caption | An observant companion to the visual: identify what deserves attention and why it matters to the passage. |
+| Quiz and feedback | Conversational questions and explanations that make recognition satisfying. An incorrect answer opens an explanation; it needs no scolding or character judgment. |
+| Outdoor game | Brief, energetic wording that makes the immediate action easy to understand while someone is walking, choosing a place or recording a discovery. |
+| Controls and system states | Familiar labels that identify destinations and actions; precise messages when something succeeds, fails or needs input. |
+
+Labels such as “Leer el primer capítulo” and “Guardar foto” name an available action clearly, while the prose around them has room to establish a subject and develop an idea. Repeated commands can make that surrounding text sound like an advertisement. Learning remains available at the reader's own pace; quiz rewards provide feedback, with no mandatory gates or competitive multipliers.
+
+## Sources and editorial judgment
+
+Every factual passage needs visible sources in the relevant chapter or profile. Work from the closest available evidence, including Mexican scholarship and archives, and follow [SOURCES.md](SOURCES.md) for the source and media register. Quotations should contribute a person's words, a period's language or a revealing account; preserve their attribution and distinguish a translation from the original.
+
+The account needs both the evidence behind a claim and an explanation of how it connects to what follows. Write that relationship carefully, identifying an interpretation where the evidence permits several readings. A disputed date, uncertain identification or approximate geography deserves an explanation at the point where it affects the reader's understanding.
+
+Historical images carry author, date, archive or provenance and reproduction rights; publication dates and camera dates may differ. Captions should also give the reader a reason to look closely. Identify generated or interpretive imagery directly, and keep its status visible beside it. A drawing used to explain a process requires a different caption from an archival document that records one.
+
+## Page composition and map notes
+
+The opening establishes the Atlas's subject and the reading journey. The first-chapter invitation gives its topic and a direct route into the text, with a separate route to the chapter index. The map introduces place-based exploration; the historical comparison connects a selected period to its chapter. Borough cards offer recognizable associations, and search names the material it covers. Each section should contribute something the preceding section has prepared the reader to understand.
+
+Map notes must help someone read the particular map in front of them. They might draw attention to position, scale, a relationship among places or a change visible in the figure. Select the observation from the graphic and the accompanying evidence. A pleasant statement about history or discovery is insufficient if it would work equally well beneath every map.
+
+Keep the note below the map, with room to read it on a phone. Place necessary information about schematic coastlines, approximate locations or dated transit layers beside the relevant figure or control. The timeline's schematic views require that context; descriptions must accurately convey what those views can show.
+
+## Visual expression
+
+The Atlas uses light paper and white surfaces, green ink, quiet ochre accents, serif headings and captions, and readable sans-serif explanations and controls. Open spacing and restrained dividers give the text and images their place. Headlines can wrap naturally, and captions remain outside the geography and controls they accompany.
+
+Reading follows page scrolling with guided buttons for diagram views and map framing. The field game keeps its freely pannable live map. Control targets remain at least 44 px, focus is visible and motion is optional. Review both languages at 320 and 390 px, including long headings, captions and navigation labels. Existing artwork and archives retain their attribution and asset-delivery requirements.
+
+## Mandatory editorial pass before delivery
+
+1. **Draft from the material.** Establish the passage's subject, relevant evidence and connections before polishing its opening, giving substantial subjects enough space to develop.
+2. **Reread the entire changed text as a reader.** Follow the paragraphs in order, including headings and captions. Mark generic passages, abrupt sentence sequences, repeated structures, promotional invitations, invented contrasts and unsolicited behavior lessons.
+3. **Rewrite the marked passages.** Restore the specific observation and the relationships among ideas. Read the sentences aloud, or deliberately hear their cadence, and adjust transitions and sentence length until the passage flows. Merely deleting a prohibited phrase does not complete the rewrite.
+4. **Read both languages independently.** Check natural Spanish, then the English adaptation. Review quiz feedback and controls in their own context; their brevity should help someone use them.
+5. **Check the evidence after rewriting.** Confirm that dates, quotations, sources and image captions still support the exact wording. Make sure a smoother sentence has not acquired an unsupported motive, certainty or causal claim.
+6. **Make a final continuous read.** Include the rewritten passages and their neighbors. Confirm that section openings vary, endings earn their place and the writing sustains attention without repeated instructions to feel curious. Record the scope of the review accurately in the handoff.
+
+Before delivery, complete the rewrites identified in the second pass and read the resulting text once more. Automated checks can help locate repeated phrases and missing references along the way.
+
+## Landing copy record and revision status
+
+The table below preserves the owner's earlier selections: 1 B; 2 A; 3 B title with A body; 4 A; 5 A; 6 A; 7 B. These are the implemented choices at the time of this guide's revision. The voice direction above governs future writing and revisions; this record does not make the selected copy a template for every page. The app's existing text has not received a comprehensive pass under the revised guidance.
 
 | Section | Spanish | English |
 | --- | --- | --- |
@@ -54,41 +118,14 @@ Owner selection: 1 B; 2 A; 3 B title with A body; 4 A; 5 A; 6 A; 7 B. Map-note o
 | Navigation | Explorar · Leer · En el tiempo · Ponte a prueba · Náhuatl | Explore · Read · Through time · Test yourself · Nahuatl |
 | Game return | Ir al mapa del juego | Open the game map |
 
-All 16 borough cards use the selected place-based descriptions in `apps/lab/lib/mexico-city/atlas/content.ts`. These names refer to the places and landscapes documented in each existing, sourced profile. Directory numbers are ordering aids, not official borough codes. The source register remains the authority for historical claims.
+All 16 borough cards use the selected place-based descriptions in `apps/lab/lib/mexico-city/atlas/content.ts`. Directory numbers indicate display order; the source register documents the geographic and historical material. “El valle y sus lagos” is the entry topic for chapter 01, whose book title remains “Un mundo entre lagos”.
 
-## Map notes and visual captions
-
-A map note should help the reader interpret what they see. Relate the visible geography to the editorial journey; do not repeat the interaction instruction or append a generic legal-sounding warning.
-
-Current landing note:
+The current map note reads:
 
 > Las alcaldías dibujan la ciudad de hoy. Sus historias nos llevan más atrás.
 >
 > Today’s boroughs give us our bearings. Their stories take us further back.
 
-The first sentence anchors the graphic in present-day administrative geography. The second leads toward history. Place it below the map in readable editorial type, outside the controls and mapped places. Give it enough space to wrap naturally on a phone.
+The voice discussion identified this note as too abstract: it suits the page's mood but contributes little to reading its geography. It remains an implementation record and should receive a more specific treatment when the landing copy is next revised.
 
-This voice does not remove necessary evidence limits. A figure that approximates a coastline, omits a route, or depicts a disputed event needs a precise explanation at that figure. Transit overlays are reference material rather than live service status. Put those limitations beside the relevant data or layer, with sources/dates, rather than disguising them as a general landing slogan.
-
-Historical images need author, date (distinguish publication from camera date), archive/provenance, reproduction basis and a reason to look. Identify an interpretive illustration directly: “Ilustración interpretativa de Tenochtitlan.” Never present generated artwork as archival evidence.
-
-## Visual expression
-
-Use the Atlas's light paper/white surfaces, green ink, quiet ochre accents, serif headings and captions, and readable sans-serif explanations/controls. Let the map, source image or diagram establish the place; let typography organize the questions. Decoration must not obscure meaning.
-
-Use open spacing, restrained dividers and editorial rows. The first-chapter invitation can have a pale paper tint, while borough descriptions remain plain, scannable entries. A caption belongs beside its image or below its map, not floating over important geography. Headlines can wrap naturally; do not shrink meaningful text to preserve a desktop layout on a phone.
-
-Atlas reading uses guided buttons and page scrolling. Keep freely pannable live play in the field map. Keep control targets at least 44 px, text navigation legible across both languages, focus visible and motion optional. Existing sketches and archival assets keep their documented attribution and delivery pipeline; this copy pass adds no media or font downloads.
-
-## Editorial review before publishing
-
-- Does the opening name a concrete question and the section fulfill its promise?
-- Is the next action explicit, available and connected to the intended destination?
-- Does each card teach a usable place association rather than offer generic atmosphere?
-- Are dates, people, places and causal claims backed by visible sources in the relevant chapter/profile? Distinguish author interpretation from evidence.
-- Are communities and languages described as living, varied and contemporary?
-- Does English read naturally while preserving Spanish's meaning and action?
-- Can the longest copy and navigation labels fit at 320 and 390 px without clipped controls or horizontal overflow?
-- Do map notes clarify the figure, and do archive captions identify the evidence accurately?
-
-For implementation and preview evidence see [ATLAS_VERIFICATION.md](ATLAS_VERIFICATION.md). This guide records the writing direction; it does not imply that every older screen has already received an editorial revision.
+For implementation and preview evidence see [ATLAS_VERIFICATION.md](ATLAS_VERIFICATION.md). This update revises the writing guidelines and project references; the existing application copy remains as recorded above.

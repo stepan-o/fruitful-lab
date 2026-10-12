@@ -28,7 +28,7 @@ function GameSession({ media }: { media: Media }) {
         <Art media={media} id="logo" className={s.menuLogo} sizes="320px" priority />
         <h1>First shift</h1>
         <p className={s.menuMotto}>Truth stays clean.<br />Story gets messy.</p>
-        <button ref={start} className={s.startControl} disabled={theme.loading} onClick={enter}>{started ? "Resume shift" : "Start shift"}<span>01 / FIRST NIGHT → FIRST SHIFT</span></button>
+        <button ref={start} className={s.startControl} disabled={theme.loading} onClick={enter}>{started ? "Resume shift" : "Start shift"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
         <button ref={settingsButton} className={s.menuSetting} onClick={() => setSettings(true)}>Settings <span>Equipment / presentation</span></button>
         <Link href="/stepanoskin/loopforge" prefetch={false}>← Back to Loopforge</Link>
         <small className={s.sessionNote}>{started ? "Your shift is paused. Resume to return to the console." : "First shift · playable prototype"}</small>

@@ -90,7 +90,7 @@ beforeEach(() => {
     const [,redraw]=useReducer(n=>n+1,0);
     useEffect(()=>{notify=redraw;return()=>{notify=()=>{};};},[]);
     return {view:mockView,pending:false,error:mockError,recover:mockRecover,restart,download:jest.fn(),send:async c=>{
-      if(c.type==='acknowledge_mandate'){acknowledged=true;mockView={...mockView,floor:{...mockView.floor,stage:'day'}};notify();return true;}
+      if(c?.type==='acknowledge_mandate'){acknowledged=true;mockView={...mockView,floor:{...mockView.floor,stage:'day'}};notify();return true;}
       return send(c);
     }};
   });

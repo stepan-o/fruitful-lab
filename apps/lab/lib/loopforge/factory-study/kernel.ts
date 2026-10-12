@@ -1,24 +1,24 @@
-import { FLOOR_VERSION, INITIAL_UNLOCKED, FIXTURE_SOCKETS, accessible, crewPose, GATE_CROSSINGS, ROUTE_LENGTH, type ManagedRoomId } from "../spatial/floor";
+import { FLOOR_VERSION, INITIAL_UNLOCKED, crewPose, GATE_CROSSINGS, ROUTE_LENGTH, type ManagedRoomId } from "../spatial/floor";
 
-/** Public commissioning fixture. No framework, wall clock, rendering or private game state. */
-export const STUDY_VERSION = "loopforge-commissioning/4";
+/** Public prebuilt floor fixture. No framework, wall clock, rendering or private game state. */
+export const STUDY_VERSION = "loopforge-floor-preview/5";
 export const TICK_MS = 50;
 export const SHIFT_TICKS = 1200; // One-minute visual study; represents an eighteen-hour shift.
 export type Phase = "night" | "morning" | "shift";
 export type Fixture = "terminal" | "gate" | "drive";
-export type StudyEvent = { id: number; tick: number; kind: "installed" | "start" | "stop" | "cycle" | "jam" | "release" | "pace" | "phase"; text: string };
+export type StudyEvent = { id: number; tick: number; kind: "start" | "stop" | "cycle" | "jam" | "release" | "pace" | "phase"; text: string };
 export type Worker = { id: number; progress: number; waiting: boolean; position: ReturnType<typeof crewPose>; task?: "work"|"wait"|"carry"|"lost"; distance?: number };
 export type StudyState = {
   version: typeof STUDY_VERSION; floorVersion: typeof FLOOR_VERSION; unlockedRooms: ManagedRoomId[]; tick: number; day: number; phase: Phase; shiftTick: number; installed: Fixture[]; running: boolean;
   jammed: boolean; pace: "steady" | "push"; travel: number; cycles: number;
-  process?: { intake: number; outtake: number; assembly: number; attachment?: boolean; blocked?: boolean }; workers: Worker[]; events: StudyEvent[]; nextEvent: number;
+  process?: { intake: number; outtake: number; assembly: number; blocked?: boolean }; workers: Worker[]; events: StudyEvent[]; nextEvent: number;
 };
-export type Command = { type: "install"; fixture: Fixture } | { type: "running"; value: boolean } |
+export type Command = { type: "running"; value: boolean } |
   { type: "pace"; value: "steady" | "push" } | { type: "obstruct" } | { type: "release" } | { type: "morning" } | { type: "shift" };
 export type Result = { ok: true; state: StudyState } | { ok: false; reason: string };
 export const FIXTURES: readonly Fixture[] = ["terminal", "gate", "drive"];
 export function initialStudy(count: 10 | 100 = 10): StudyState {
-  return { version: STUDY_VERSION, floorVersion: FLOOR_VERSION, unlockedRooms: [...INITIAL_UNLOCKED], tick: 0, day: 1, phase: "night", shiftTick: 0, installed: [], running: false, jammed: false,
+  return { version: STUDY_VERSION, floorVersion: FLOOR_VERSION, unlockedRooms: [...INITIAL_UNLOCKED], tick: 0, day: 1, phase: "morning", shiftTick: 0, installed: [...FIXTURES], running: false, jammed: false,
     pace: "steady", travel: 0, cycles: 0, nextEvent: 1, events: [],
     workers: Array.from({ length: count }, (_, id) => ({ id, progress: Math.floor(id * ROUTE_LENGTH / count), waiting: false, position: crewPose(Math.floor(id * ROUTE_LENGTH / count)) })) };
 }
@@ -27,15 +27,10 @@ function event(s: StudyState, kind: StudyEvent["kind"], text: string): StudyStat
 }
 export function command(s: StudyState, c: Command): Result {
   switch (c.type) {
-    case "install":
-      if (!accessible(FIXTURE_SOCKETS[c.fixture].room, s.unlockedRooms)) return { ok: false, reason: "This room is sealed." };
-      if (s.phase !== "night") return { ok: false, reason: "Construction happens at night, with production stopped." };
-      if (FIXTURES[s.installed.length] !== c.fixture) return { ok: false, reason: "Commission the marked equipment in order." };
-      return { ok: true, state: event({ ...s, installed: [...s.installed, c.fixture] }, "installed", `${c.fixture === "terminal" ? "Clearance terminal" : c.fixture === "gate" ? "Access gate" : "Conveyor drive"} commissioned.`) };
     case "running":
       if (s.phase !== "shift") return { ok: false, reason: "Start the shift first." };
       if (s.running === c.value) return { ok: true, state: s };
-      return { ok: true, state: event({ ...s, running: c.value }, c.value ? "start" : "stop", c.value ? "Commissioning cycle started. Test specimens only." : "Commissioning cycle paused.") };
+      return { ok: true, state: event({ ...s, running: c.value }, c.value ? "start" : "stop", c.value ? "Preview cycle started. Test specimens only." : "Preview cycle paused.") };
     case "pace":
       if (c.value === s.pace) return { ok: true, state: s };
       return { ok: true, state: event({ ...s, pace: c.value }, "pace", c.value === "push" ? "Drive pushed. The mechanism is working harder." : "Drive returned to its steady range.") };
@@ -46,8 +41,8 @@ export function command(s: StudyState, c: Command): Result {
       if (!s.jammed) return { ok: false, reason: "The line is clear." };
       return { ok: true, state: event({ ...s, jammed: false }, "release", "Obstruction released. The drive can move again.") };
     case "morning":
-      if (s.phase !== "night" || s.installed.length !== 3) return { ok: false, reason: "Complete the three installations before morning." };
-      return { ok: true, state: event({ ...s, phase: "morning" }, "phase", "Morning. Commissioning crew ready.") };
+      if (s.phase !== "night") return { ok: false, reason: "The charging window comes before morning." };
+      return { ok: true, state: event({ ...s, phase: "morning" }, "phase", "Morning. Factory crew ready.") };
     case "shift":
       if (s.phase !== "morning") return { ok: false, reason: "The morning handover comes first." };
       return { ok: true, state: event({ ...s, phase: "shift", running: true, shiftTick: 0 }, "phase", "Shift start. Eighteen factory hours; one minute in this study.") };

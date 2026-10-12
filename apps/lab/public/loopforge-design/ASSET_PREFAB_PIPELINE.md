@@ -1,5 +1,8 @@
 # Producing room assets and prefabs
 
+**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Current procedural figures remain placeholders; production rigs, general BDI and paired acting are not yet implemented.
+
+
 **Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate the active work area before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
 
 Updated 11 October 2026. Production pipeline proposal, with a native lobby kit now implemented. Companion: [Webview rendering and assets](WEBVIEW_RENDERING_AND_ASSETS.md). The native kit is a first production path, not a functioning model-generation/export pipeline.

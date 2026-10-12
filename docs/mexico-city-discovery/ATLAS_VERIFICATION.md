@@ -31,7 +31,7 @@ The final built app was reviewed at 320, 390, 768 and 1280 CSS-pixel viewport se
 - Spanish chinampas chapter → diagram controls → archive full/detail views → all three answers → +75 points → next chapter.
 - Switching to English in the pre-Mexica chapter, jumping to its Teotihuacan section, inspecting the nineteenth-century drawing and its source/rights links, then returning to the eight-chapter contents.
 - Desktop lake diagram: south selection highlights Xochimilco/Chalco and changes the explanation. Keyboard Tab reaches the citation link with visible focus.
-- Scroll input over the chinampa diagram moves the page. The Explore map reports `touch-action: auto`; explicit zoom and east-view buttons change its transform. Browser inspection caught a 12 px overlap between direction and zoom controls; the final CSS gives those groups a 13 px gap, to be confirmed on the hosted preview.
+- Scroll input over the chinampa diagram moves the page. The Explore map reports `touch-action: auto`; explicit zoom and east-view buttons change its transform. Browser inspection caught a 12 px overlap between direction and zoom controls; the final hosted preview confirms a 13 px gap between those groups, with no horizontal overflow.
 - The mobile chapter selector keeps the document scrollable; chapter headings and quiz result receive focus. Submitted answers are locked, and the result explicitly distinguishes practice points from account progress.
 
 Representative image selection: the Teotihuacan figure at 320 px used the 400 px file (9,266 bytes); opening its detail increases the requested size to 144vw. Chinampas offers 400/800/1200 px variants of 29,334/101,646/203,394 bytes; the detail loads a sharper variant on demand. Archive figures are below the opening text/diagram and lazy-loaded; screenshots retain source captions. These are measured file sizes and browser-selected sources, not a network-waterfall or field-speed claim.
@@ -45,3 +45,10 @@ Evidence:
 - [Desktop: guided lake figure](evidence/atlas-history-desktop.png)
 
 This is laboratory verification, not field Core Web Vitals; field LCP/INP/CLS and full cold/warm transfer timings remain unmeasured.
+
+
+### Hosted preview
+
+Vercel deployment `dpl_Ewhgx6kdnNiNkWfUg6cBNLWwFdQL` is **READY** for application commit `a227eccd1fd30a56617797bd8bbd407351d1b8af`. [Open the chinampas chapter](https://fruitful-gmr56wt2w-stepan-oskins-projects.vercel.app/mexico-city/atlas?view=chapters&chapter=chinampas).
+
+On the hosted app, all five later chapters loaded with three sections, three quiz questions and their own archival figures; no console errors were observed during those checks. The final deployment was checked at 390 px: map zoom revealed separated direction controls, the measured gap was 13 px, and the chinampas chapter and diagram loaded correctly. Archive delivery was also confirmed: the phone's enlarged chinampas view selected the 800 px / 101,646-byte variant. Final PR delivery details are in [PR #114](https://github.com/stepan-o/fruitful-lab/pull/114). The commit recording this result changes documentation only.

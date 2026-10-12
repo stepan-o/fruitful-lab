@@ -23,8 +23,7 @@ function object(value: unknown): Record<string, unknown> {
 }
 export function parseCommand(value: unknown): Command {
   const c=object(value);
-  if(c.type==='install' && ['terminal','gate','drive'].includes(String(c.fixture))) return {type:'install',fixture:c.fixture as 'terminal'|'gate'|'drive'};
-  if(c.type==='buy_outtake'||c.type==='finish_build'||c.type==='acknowledge_mandate')return {type:c.type};
+  if(c.type==='acknowledge_mandate')return {type:c.type};
   if(c.type==='set_operation'&&(c.feed==='hold'||c.feed==='metered'||c.feed==='open')&&(c.drive==='steady'||c.drive==='push'))return {type:c.type,feed:c.feed,drive:c.drive};
   return parseDailyCommand(value);
 }

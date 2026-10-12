@@ -7,7 +7,7 @@ export const metadata = {
 const boundaries = [
   [
     "Commands",
-    "The viewer sends intent: choose an adviser, approve placements, install equipment, start, advance a bounded fixed-tick batch, adjust intake/drive, respond to an incident, or commit output. The server validates the entire bounded command history.",
+    "The viewer sends intent: choose an adviser, approve assignments, start, advance a bounded fixed-tick batch, adjust intake/drive, respond to an incident, or commit output. The server validates the entire bounded command history.",
   ],
   [
     "Kernel",
@@ -23,7 +23,7 @@ const boundaries = [
   ],
   [
     "Viewer",
-    "The React viewer separates the six-camera wall, adviser intercom, placements, room focus, dispatch, debrief and records into focused workspaces. Illustrated assets carry those jobs within one persistent console. One persistent Babylon scene now renders the chosen room from three authored CCTV angles and supplies focused construction/operating views; neither presentation layer chooses outcomes or imports the kernel.",
+    "The React viewer separates the six-camera wall, adviser intercom, placements, room focus, dispatch, debrief and records into focused workspaces. Illustrated assets carry those jobs within one persistent console. One persistent Babylon scene now renders the chosen room from three authored CCTV angles and supplies focused operating views; neither presentation layer chooses outcomes or imports the kernel.",
   ],
 ];
 export default function EngineNotes() {
@@ -37,7 +37,7 @@ export default function EngineNotes() {
       </header>
       <article className={styles.records}>
         <span className={styles.kicker}>
-          Implementation record / first-turn-1.0.0
+          Implementation record / first-turn-2.0.0
         </span>
         <h1>
           A small world.
@@ -62,10 +62,9 @@ export default function EngineNotes() {
         </ol>
         <h2>One console. Focused interfaces.</h2>
         <p>
-          The opening night enters through the Lobby. Commission Security's
-          terminal and gate, then the Forge's drive. An optional outtake
-          investment competes with keeping cash. Morning returns to the producer
-          console, where the leadership call gates adviser selection. Appointment,
+          The factory is prebuilt. Security’s terminal and gate and the Forge’s
+          drive already exist, with no construction charge. The opening lands at
+          the morning producer console, where leadership’s call gates adviser selection. Appointment,
           brief and assignments stay focused. The shift connects room cameras,
           intake/drive controls and warranted incidents. Dispatch commits the
           same produced workers to quota or workforce, then files the result.
@@ -114,6 +113,15 @@ export default function EngineNotes() {
           not supply Rust’s borrow checker; ownership is enforced here through
           pure transitions, boundaries and tests.
         </p>
+        <h2>Agents: BDI decisions, authored character acting.</h2>
+        <p>The next character slice uses original Loopforge silhouettes, rigged
+          3D bodies and authored machine contacts. Deterministic actions reserve
+          actors, recipients and workstations; the viewer animates permitted
+          timing and outcomes. Full animation control belongs on supervisors and
+          close interactions, with cheaper shared animation considered for distant
+          routine work. BDI, paired acting and new rigs remain planned; the current
+          procedural bodies are placeholders.</p>
+        <p><Link href="/stepanoskin/loopforge/design#agents">Original character art and animation architecture →</Link></p>
         <h2>Workers are people beneath the count.</h2>
         <p style={{ margin: "20px 0 32px" }}>
           Every robot has a stable identity and separate body, assignment,
@@ -131,7 +139,7 @@ export default function EngineNotes() {
           replaceable viewers and explicit snapshots and differences. This slice
           uses a separately versioned HTTP application profile,{" "}
           <code>loopforge-kvp-http/2</code>, with schema{" "}
-          <code>loopforge_first_turn_1</code>. It is not wire-compatible with
+          <code>loopforge_first_turn_2</code>. It is not wire-compatible with
           the old KVP-0001 v0.1 live handshake or artifact manifest. Its fields,
           recovery behavior and differences are documented in the repository.
         </p>
@@ -141,7 +149,7 @@ export default function EngineNotes() {
           fixed clock. The viewer interpolates confirmed motion. A full outtake
           stops useful assembly. Slow responses slow presentation rather than
           skipping state. The first turn ends after 48 production beats and permanent
-          Dispatch; later days and free construction are not implemented yet.</p>
+          Dispatch; later days are not implemented; player construction has been removed.</p>
         <p><Link href="/stepanoskin/loopforge/design#first-turn">Complete first-turn flow and execution checklist →</Link></p>
         <h2>Truth stays clean. Story gets messy.</h2>
         <p style={{ margin: "20px 0 32px" }}>

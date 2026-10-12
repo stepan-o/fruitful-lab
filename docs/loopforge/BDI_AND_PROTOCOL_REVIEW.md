@@ -1,5 +1,8 @@
 # BDI, recorded I/O and the larger engine
 
+**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Current procedural figures remain placeholders; production rigs, general BDI and paired acting are not yet implemented.
+
+
 Incorporates the owner's 2026-10-03 architecture attachment. It is design input,
 not evidence that these components exist in the archived implementation.
 

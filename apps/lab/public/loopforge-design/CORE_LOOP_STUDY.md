@@ -88,7 +88,7 @@ Find a constraint → Change the arrangement → Observe flow → Reinvest or re
 
 **Room for expression.** Elegant systems, redundancy, compactness, excess capacity or ambitious expansion.
 
-**Loopforge inference.** Build the physical chain at night; observe it during the shift and use that evidence next night. Machines, routes, supervisors and room policy change the same operation. Worker tasks remain simulated, without per-station staffing sliders.
+**Loopforge inference.** Player construction is removed. Borrow visible constraints, queues and physical causality for a prebuilt line: observe a bottleneck, adjust flow or delegation, read the changed work and revise the next action. Worker tasks remain individual without per-station staffing sliders.
 
 [Factorio · Wube](https://www.factorio.com/support/press-kit) · [Oxygen Not Included · Klei](https://store.steampowered.com/app/457140/) · [Cookie Clicker · Orteil / DashNet](https://store.steampowered.com/app/1454400/Cookie_Clicker/)
 
@@ -210,7 +210,7 @@ Factorio · © Wube Software. All rights reserved.
 
 [Official source](https://www.factorio.com/game/screenshots)
 
-Loopforge inference: production should visibly move or back up around a real constraint. The 9 October conveyor proposal now includes physical chain construction and upgrades; the cinematic floor shows their consequences while the console summarizes them. Borrow legibility and spatial causality without inheriting Factorio’s full logistics scale.
+Loopforge inference: production should visibly move or back up around a real constraint. The prebuilt factory retains spatial causality and clear work without inheriting Factorio’s construction or full logistics scale.
 
 ### Put the commitment in the foreground
 
@@ -262,9 +262,9 @@ Loopforge inference: yesterday’s confirmed output, an adviser’s explanation 
 
 ## Conclusions for Loopforge
 
-**Build first; let evidence close the loop.** Night construction → morning adviser and assignments → operation → permanent allocation → next night. The Security placement tutorial is a one-time arc teaching reusable controls. The Conveyor tab names the expectation, action, visible feedback and next decision for building, operation, delegation and growth. A sequence of screens alone is not a learning loop.
+**Let evidence close the loop.** Observe a constraint → predict what a change will do → adjust flow or delegation → see the physical outcome → revise the next choice. A prebuilt world still supports learning loops. Building and the Security placement tutorial are removed.
 
-**Primary loop · leadership through production.** Build at night → choose whose judgment to back in the morning → authorize assignments → operate and respond → permanently allocate output → use the result next night. Construction, supervision and live control supply distinct decisions within that schedule.
+**Primary loop · leadership through production.** Review → choose whose judgment to back → authorize assignments → operate and respond → permanently allocate output → use the result next day. Operation, adviser trust and growth each carry a repeatable choice/feedback loop within this schedule.
 
 **Three connected satisfactions.** Make the machine work. Shape what kind of leader you are. Discover what your choices have done to people. Each should feed the others; story cannot be interchangeable flavour pasted onto a production score.
 
@@ -298,7 +298,7 @@ Now in the first-day playable UI: active camera status, attributed supervisor po
 
 #### 01 · Conveyor + Security
 
-**Player agency.** Build Security and the starter Conveyor before the first morning. On later nights, use operating evidence to improve or retain the floor. Back LIMEN or STILETTO; accept or override assignments; retain or deliver output.
+**Player agency.** Inherit the prebuilt factory. Back LIMEN or STILETTO, accept or override assignments, act on intake and effort, respond to consequences, and retain or deliver output. Use agent behaviour as evidence for the next choice.
 
 **Direct status.** Room tokens: operating policy, assignment and observed condition. Workforce and quota tokens: count changes after allocation.
 

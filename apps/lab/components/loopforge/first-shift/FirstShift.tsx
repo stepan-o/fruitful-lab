@@ -86,8 +86,8 @@ export default function FirstShift({
   const [interlude,setInterlude]=useState<"night"|"morning"|"shift"|null>(null);
   const [seenCards,setSeenCards]=useState<string[]>([]);
   const closeInterlude=useCallback(()=>setInterlude(null),[]);
-  const cardKey=!v?null:v.floor.stage==="night"?"arrival":v.floor.stage==="mandate"?"morning":v.phase==="running"?"shift":v.phase==="complete"?"night":null;
-  if(cardKey&&!seenCards.includes(cardKey)){setSeenCards([...seenCards,cardKey]);setInterlude(cardKey==="arrival"?"night":cardKey as "night"|"morning"|"shift");}
+  const cardKey=!v?null:v.floor.stage==="mandate"?"morning":v.phase==="running"?"shift":v.phase==="complete"?"night":null;
+  if(cardKey&&!seenCards.includes(cardKey)){setSeenCards([...seenCards,cardKey]);setInterlude(cardKey as "night"|"morning"|"shift");}
   const rawSend=run.send;
   const send: typeof run.send = useCallback((...args) => incoming ? Promise.resolve(false) : rawSend(...args),[incoming,rawSend]);
   const [candidate,setCandidate]=useState<string|null>(null);
@@ -323,8 +323,8 @@ export default function FirstShift({
       >
         {v ? (
           <>
-            <TurnFloor view={v} media={media} room={room} onRoom={setRoom} onBack={()=>setScreen("factory")} send={rawSend} busy={busy} visible={(v.floor.stage==="night"||screen==="room")&&!suspended&&!hidden} playing={Boolean(ticking)} effects={effects} onIncident={()=>setModal("incident")} onPause={()=>setPaused(!paused)} onFeedback={()=>inspectFeedback(`room:${room}`)} />
-            {v.floor.stage!=="night"&&screen !== "factory" && screen !== "leadership" && screen!=="room" && (
+            <TurnFloor view={v} media={media} room={room} onRoom={setRoom} onBack={()=>setScreen("factory")} send={rawSend} busy={busy} visible={(screen==="room")&&!suspended&&!hidden} playing={Boolean(ticking)} effects={effects} onIncident={()=>setModal("incident")} onPause={()=>setPaused(!paused)} onFeedback={()=>inspectFeedback(`room:${room}`)} />
+            {screen !== "factory" && screen !== "leadership" && screen!=="room" && (
               <button
                 className={s.backToWall}
                 onClick={() => setScreen("factory")}
@@ -332,7 +332,7 @@ export default function FirstShift({
                 ← Camera wall
               </button>
             )}
-            {v.floor.stage!=="night"&&screen === "factory" && <ProducerConsole
+            {screen === "factory" && <ProducerConsole
               media={media} view={v} skin={theme?.recipe.console ?? "foundry-desk"}
               incoming={incoming} busy={busy} effects={effects} active={!modal&&!suspended&&!hidden} ticking={Boolean(ticking)} speed={speed}
               primaryLabel={v.phase === "ready" ? "Start the line" : v.phase === "running" ? paused ? "Resume" : "Pause" : v.phase === "decision" ? "Respond to incident" : v.phase === "allocation" ? "Dispatch output" : v.phase === "complete" ? "Shift debrief" : "Awaiting orders"}
@@ -421,7 +421,7 @@ export default function FirstShift({
           </div>
         )}
       </div>
-      {v && v.floor.stage!=="night" && screen !== "leadership" && screen !== "factory" && screen!=="room" && (
+      {v && screen !== "leadership" && screen !== "factory" && screen!=="room" && (
         <footer className={s.commandRail}>
           <nav className={s.consoleNav} aria-label="Director console">
             {(["factory", "development", "records"] as const).map((id) => (

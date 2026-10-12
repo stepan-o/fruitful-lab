@@ -569,7 +569,7 @@ export function Debrief({
         <h1>The line moved. At a cost.</h1>
       </header>
       <div className={s.debriefContent}>
-        {'floor' in view&&<p className={s.costReceipt}>Closing funds: <b>¤ {view.cash}</b>. Construction and dispatch are recorded in the factory ledger.</p>}
+        {'floor' in view&&<p className={s.costReceipt}>Closing funds: <b>¤ {view.cash}</b>. Dispatch income is recorded in the factory ledger.</p>}
         <OutcomeTokens view={view} opening={opening} onOpen={onFeedback}/>
         <p className={s.costReceipt}>{view.losses ? `${view.losses} worker lost this shift.` : "All workers survived."} The factory carries today’s wear forward.</p>
         <div className={s.debriefVoices}>{view.people.map(p=><SupervisorSignal key={p.id} media={media} view={view} person={p.id} onOpen={onFeedback}/>)}</div>

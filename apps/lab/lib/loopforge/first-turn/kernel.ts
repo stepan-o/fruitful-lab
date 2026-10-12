@@ -3,12 +3,11 @@ import { initialState as dailyInitial, stepWithOperation as dailyStep, type Stat
 import { project as dailyProject } from '../first-shift/projection';
 import { crew, workforceTotals } from '../first-shift/workers';
 import { FIXTURE_SOCKETS, LINE_ORIGIN } from '../spatial/floor';
-import { BATCH_TICKS, PRICES, type Command, type FloorView, type PlayerView } from './contract';
+import { BATCH_TICKS, type Command, type FloorView, type PlayerView } from './contract';
 export type State = { revision: number; daily: DailyState; floor: FloorView; raised: string[]; strain: number };
-const order = ['terminal','gate','drive'] as const;
 export function initialState(seed: number, workers = 24): State {
   return { revision: 0, daily: dailyInitial(seed, workers), raised: [], strain: 0, floor: {
-    stage: 'night', simTick: 0, installed: [], attachment: false, feed: 'metered', drive: 'steady', intake: 0, assembly: 0, outtake: 0, released: 0, blocked: false, travel: 0, actors: Array.from({length:workers},(_,i)=>({id:`worker-${i+1}`,x:Math.round((60+(i%6)*1.1)*1000),y:Math.round((86+Math.floor(i/6)*1.2)*1000),dx:0,dy:-1,room:'lobby' as const,task:'wait' as const,distance:0})), concern: 'Commission Security, then the Forge.', spent: 0, earned: 0,
+    stage: 'mandate', simTick: 0, installed: ['terminal','gate','drive'], feed: 'metered', drive: 'steady', intake: 0, assembly: 0, outtake: 0, released: 0, blocked: false, travel: 0, actors: Array.from({length:workers},(_,i)=>({id:`worker-${i+1}`,x:Math.round((60+(i%6)*1.1)*1000),y:Math.round((86+Math.floor(i/6)*1.2)*1000),dx:0,dy:-1,room:'lobby' as const,task:'wait' as const,distance:0})), concern: 'The line is ready. Receive the mandate, then choose your adviser.', earned: 0,
   } };
 }
 function record(s: State, title: string, detail: string, room: 'conveyor'|'security'|null = null) {
@@ -42,7 +41,7 @@ function fixedTick(s: State) {
   let released=0, assemblyActive=false;
   if(s.daily.downtime===0){
     const clearance=s.daily.assignments?.security==='limen'?3:2;
-    if(f.simTick%(clearance*20)===0) {released=Math.min(f.outtake,f.attachment?2:1);f.outtake-=released;f.released+=released;}
+    if(f.simTick%(clearance*20)===0) {released=Math.min(f.outtake,1);f.outtake-=released;f.released+=released;}
     const feedEvery=f.feed==='open'?20:80;
     if(f.feed!=='hold' && f.simTick%feedEvery===0 && f.intake<6) f.intake++;
     const capacity=crew(s.daily.workers,'conveyor').length*(s.daily.assignments?.conveyor==='stiletto'?2:1);
@@ -70,16 +69,6 @@ export function step(previous: State, c: Command): State {
   const s: State=JSON.parse(JSON.stringify(previous));s.revision++;s.daily.tick=s.revision-1;
   const f=s.floor;
   switch(c.type){
-    case 'install':
-      if(f.stage!=='night'||order[f.installed.length]!==c.fixture||s.daily.cash<PRICES[c.fixture])throw new Error('installation_not_allowed');
-      f.installed.push(c.fixture);s.daily.cash-=PRICES[c.fixture];f.spent+=PRICES[c.fixture];
-      record(s,`${c.fixture==='terminal'?'Clearance terminal':c.fixture==='gate'?'Access gate':'Conveyor drive'} installed`,`${PRICES[c.fixture]} funds committed. Equipment is ready for the morning.`,c.fixture==='drive'?'conveyor':'security');break;
-    case 'buy_outtake':
-      if(f.stage!=='night'||f.installed.length!==3||f.attachment||s.daily.cash<PRICES.outtake)throw new Error('attachment_not_allowed');
-      f.attachment=true;s.daily.cash-=PRICES.outtake;f.spent+=PRICES.outtake;record(s,'Outtake handling upgraded','Two cradles can leave per clearance cycle. 60 funds committed.','conveyor');break;
-    case 'finish_build':
-      if(f.stage!=='night'||f.installed.length!==3)throw new Error('commissioning_required');
-      f.stage='mandate';f.concern='Line commissioned. Awaiting the morning assignments.';record(s,'Morning handover','The commissioned line is ready. Leadership is calling.');break;
     case 'acknowledge_mandate':
       if(f.stage!=='mandate')throw new Error('mandate_not_pending');
       f.stage='day';record(s,'Weekly mandate received','Deliver 60 basic robots by the end of day seven. Dispatch pays 12 funds per robot; retained output earns no contract payment.');break;

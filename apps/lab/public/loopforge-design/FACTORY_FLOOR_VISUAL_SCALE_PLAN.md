@@ -1,5 +1,8 @@
 # Factory floor: scale, grain and motion
 
+**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Current procedural figures remain placeholders; production rigs, general BDI and paired acting are not yet implemented.
+
+
 11 October 2026 · Design proposal and build checklist · **Renderer changes not implemented by this pass.**
 
 ## Decision
@@ -18,7 +21,7 @@ Reference authority: original lobby `01_loopforge_factory_rooms_lobby.png` and f
 
 | Current mismatch | Why it matters | Design response |
 | --- | --- | --- |
-| The 26 × 29 m lobby working frame spends much of its image on floor; desks and robots become punctuation | A room feels large but its activity is hard to read | Compose authored room angles around operating clusters; preserve the rest as spatial context and usable build space |
+| The 26 × 29 m lobby working frame spends much of its image on floor; desks and robots become punctuation | A room feels large but its activity is hard to read | Compose authored room angles around operating clusters; preserve the rest as spatial context and usable circulation space |
 | The desk close-up is more legible but loses the doorway, arrival and queue relationship | Detail inspection alone cannot carry the operating loop | Add a middle composition that shows a full action and its immediate upstream/downstream connection |
 | Patina repeats across differently sized model faces; the floor has dense contrast at a similar visual strength | The image reads as mottling instead of machinery/materials | Calibrated world-scale UVs, distinct material values and authored macro/mid/micro detail |
 | Existing generic material code derives bump from generated colour noise; new lobby maps are diffuse-only | Relief can turn dirt into false geometry; the new surfaces can still look flat | Author/bake relief from intended form, separately from dirt and illumination |

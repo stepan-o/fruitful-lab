@@ -1,6 +1,9 @@
 # Webview: rendering, assets and delivery
 
-**11 October — current first-turn integration:** Main play now uses a separately versioned first-turn kernel for night commissioning → mandatory mandate → adviser/assignment → fixed-step room operation → paid permanent dispatch. One persistent Babylon scene supplies the room views. The old first-shift profile and standalone factory fixture remain regression/calibration tools. [Current implementation contract](FIRST_TURN_ENGINE.md) · [Execution checklist](FIRST_TURN_BUILD_PLAN.md). Earlier implementation descriptions below are historical where they conflict with this delivery.
+**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Current procedural figures remain placeholders; production rigs, general BDI and paired acting are not yet implemented.
+
+
+**11 October — current first-turn integration:** Main play now uses a separately versioned first-turn kernel for night prebuilt-floor calibration → mandatory mandate → adviser/assignment → fixed-step room operation → paid permanent dispatch. One persistent Babylon scene supplies the room views. The old first-shift profile and standalone factory fixture remain regression/calibration tools. [Current implementation contract](FIRST_TURN_ENGINE.md) · [Execution checklist](FIRST_TURN_BUILD_PLAN.md). Earlier implementation descriptions below are historical where they conflict with this delivery.
 
 **Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate one selected room’s three CCTV angles inside the producer console and its focused action workspace before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
 
@@ -12,13 +15,13 @@ Keep Babylon.js for the shared factory world, rendered by default as one selecte
 
 This updates the earlier aspiration for a wholly procedural visual world. The owner now explicitly allows painted walls and objects alongside modeled objects. The accepted spatial layout, physical scale, room connections and common 15 m height remain fixed. Visual calibration must not silently redesign them.
 
-React/Next.js continues to own focused decision interfaces, semantic controls and documents. Babylon.js 9.30.0 is installed for the separate commissioning study. No renderer replacement, framework upgrade or new render abstraction is justified by this pass. Pin compatible loaders when imported models are introduced. WebGPU can be evaluated later; it is not a prerequisite for the art direction or a promised speedup.
+React/Next.js continues to own focused decision interfaces, semantic controls and documents. Babylon.js 9.30.0 is installed for the separate prebuilt-floor calibration study. No renderer replacement, framework upgrade or new render abstraction is justified by this pass. Pin compatible loaders when imported models are introduced. WebGPU can be evaluated later; it is not a prerequisite for the art direction or a promised speedup.
 
 ## Current code and proposed work
 
 | Already implemented | Proposed next |
 | --- | --- |
-| Integer 20 Hz commissioning kernel, local host and individual worker records | Economy/task records for pay claims, if gameplay design approves their rules |
+| Integer 20 Hz prebuilt-floor calibration kernel, local host and individual worker records | Economy/task records for pay claims, if gameplay design approves their rules |
 | Shared spatial map, build/production camera, native lobby desk kit and authored lobby surfaces | Extend calibrated kits to the other rooms; imported model pipeline |
 | Static mesh batching, instanced workers/belt, adaptive pixels, cached shadows, scoped desk lamps and idle/demand rendering | Room/bay visibility and detail tiers verified against representative camera movement |
 | Immutable image/audio/JSON media releases on Vercel CDN | Typed GLB/model and KTX2/texture asset support, including dependency validation |
@@ -61,7 +64,7 @@ Use lossless intermediate maps and inspect compressed normals, linework, letteri
 
 Publish and verify every dependency before switching the pointer. Pin a complete compatible release for the current scene; adopt updates at a safe scene boundary. Keep prior releases and provide rollback through a new deployment containing both versions. Failed downloads leave the previous complete kit or a legible fallback, never a room with missing walls or blocked input. Private snapshots, credentials and personalized results are not public asset cache entries.
 
-Load the first selected room plus the shared worker kit; the one-time arrival tutorial can start with the Lobby. Fetch detailed rooms on selection/unlock, not all at startup. Use a bounded cache for revisits and a lightweight whole-floor summary. One engine and room graph supply all three camera passes; update simulation and poses once, and budget total passes/targets rather than treating each feed as a separate allowance. On small screens render only the active angle. Keep loading and camera choice independent of simulation tick ownership.
+Load the first selected room plus the shared worker kit; the prebuilt game starts at the producer console. Fetch detailed rooms on selection/unlock, not all at startup. Use a bounded cache for revisits and a lightweight whole-floor summary. One engine and room graph supply all three camera passes; update simulation and poses once, and budget total passes/targets rather than treating each feed as a separate allowance. On small screens render only the active angle. Keep loading and camera choice independent of simulation tick ownership.
 
 Track retained deployment storage separately from download traffic and GPU memory. Shipping the public media library inside every preview also retains that deployment's static output. Batch preview publishing, audit output size and review retention of obsolete previews while preserving active reviews, production and needed rollback releases. Before large model/material packs multiply this footprint, evaluate a shared immutable media origin so code deployments reference versioned assets instead of carrying the whole library. An external origin still needs dependency validation, cache rules and a retention policy; it is not a substitute for them. See [Vercel deployment storage](https://vercel.com/docs/deployment-storage). No storage deletion or hosting migration is performed by this pass.
 

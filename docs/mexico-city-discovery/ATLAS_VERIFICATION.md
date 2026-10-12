@@ -26,4 +26,22 @@ Continuous looping motion is absent from chapter figures. Discrete diagram and c
 
 ## Browser and delivery evidence
 
-Final production-browser checks and hosted preview results are recorded below before delivery. This is laboratory verification, not field Core Web Vitals; field LCP/INP/CLS remain unmeasured.
+The final built app was reviewed at 320, 390, 768 and 1280 CSS-pixel viewport settings (DPR 1). No horizontal overflow was found in the checked reader, archive, contents, quiz and Explore views. Tests included:
+
+- Spanish chinampas chapter → diagram controls → archive full/detail views → all three answers → +75 points → next chapter.
+- Switching to English in the pre-Mexica chapter, jumping to its Teotihuacan section, inspecting the nineteenth-century drawing and its source/rights links, then returning to the eight-chapter contents.
+- Desktop lake diagram: south selection highlights Xochimilco/Chalco and changes the explanation. Keyboard Tab reaches the citation link with visible focus.
+- Scroll input over the chinampa diagram moves the page. The Explore map reports `touch-action: auto`; explicit zoom and east-view buttons change its transform. Browser inspection caught a 12 px overlap between direction and zoom controls; the final CSS gives those groups a 13 px gap, to be confirmed on the hosted preview.
+- The mobile chapter selector keeps the document scrollable; chapter headings and quiz result receive focus. Submitted answers are locked, and the result explicitly distinguishes practice points from account progress.
+
+Representative image selection: the Teotihuacan figure at 320 px used the 400 px file (9,266 bytes); opening its detail increases the requested size to 144vw. Chinampas offers 400/800/1200 px variants of 29,334/101,646/203,394 bytes; the detail loads a sharper variant on demand. Archive figures are below the opening text/diagram and lazy-loaded; screenshots retain source captions. These are measured file sizes and browser-selected sources, not a network-waterfall or field-speed claim.
+
+Cold production navigation and subsequent in-app navigation rendered the selected chapter and figures successfully; a pending chapter has an explicit loading state and a retry affordance for failure. Independent chunk inspection confirmed chinampas and pre-Mexica manuscripts in separate bundles. Reduced-motion behavior was reviewed in CSS: all diagram and crop transitions are disabled; an OS-level reduced-motion emulation was not available in the browser tool.
+
+Evidence:
+
+- [Phone: chinampa diagram](evidence/atlas-history-phone.png)
+- [Phone: chapter quiz result](evidence/atlas-history-quiz.png)
+- [Desktop: guided lake figure](evidence/atlas-history-desktop.png)
+
+This is laboratory verification, not field Core Web Vitals; field LCP/INP/CLS and full cold/warm transfer timings remain unmeasured.

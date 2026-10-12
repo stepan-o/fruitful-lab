@@ -2789,7 +2789,7 @@ No command, balance, transport schema or deterministic kernel changes. End-to-en
 
 # Webview: rendering, assets and delivery
 
-**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Current procedural figures remain placeholders; production rigs, general BDI and paired acting are not yet implemented.
+**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Main-play figures remain placeholders. The separate `/play/agent-test` review now supplies offline-authored GLB worker/LIMEN/STILETTO rigs, paired contacts and a bounded deterministic trace; general BDI and main-game integration remain open. See [the production-test record](production/AGENT_PRODUCTION_TEST.md).
 
 
 **11 October — current first-turn integration:** Main play now uses a separately versioned first-turn kernel for night prebuilt-floor calibration → mandatory mandate → adviser/assignment → fixed-step room operation → paid permanent dispatch. One persistent Babylon scene supplies the room views. The old first-shift profile and standalone factory fixture remain regression/calibration tools. [Current implementation contract](FIRST_TURN_ENGINE.md) · [Execution checklist](FIRST_TURN_BUILD_PLAN.md). Earlier implementation descriptions below are historical where they conflict with this delivery.
@@ -2986,7 +2986,7 @@ See [Lobby visual pass](LOBBY_VISUAL_PASS_2026-10-11.md) for the review checklis
 
 # Producing room assets and prefabs
 
-**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Current procedural figures remain placeholders; production rigs, general BDI and paired acting are not yet implemented.
+**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Main-play figures remain placeholders. The separate `/play/agent-test` review now supplies offline-authored GLB worker/LIMEN/STILETTO rigs, paired contacts and a bounded deterministic trace; general BDI and main-game integration remain open. See [the production-test record](production/AGENT_PRODUCTION_TEST.md).
 
 
 **Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate the active work area before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
@@ -2995,7 +2995,7 @@ Updated 11 October 2026. Production pipeline proposal, with a native lobby kit n
 
 ## What is missing
 
-We have image publication/CDN delivery and a native Babylon lobby recipe with shared surfaces, desk sockets and articulated parts. We still need the imported-model stages between concept art and a reliable game object: modeling, clean material maps, attachment/animation conventions, export, prefab validation and an in-engine review bench. The first milestone is one excellent desk and one wall bay.
+We have image publication/CDN delivery and a native Babylon lobby recipe with shared surfaces, desk sockets and articulated parts. The character production test now implements a first imported-model path: reproducible offline geometry, embedded surface maps, 17-joint rigs, seven clips, GLB validation, immutable publication and an in-engine contact bench. Broader equipment prefab sockets, a Blender workflow and art approval are still open. Earlier desk/wall milestones below describe the room pipeline, not the character test.
 
 | Stage | Output | Acceptance |
 | --- | --- | --- |
@@ -3440,7 +3440,7 @@ Use Blender or equivalent offline authoring for measured turnaround → low-poly
 
 A character prefab needs a versioned source/model, compatible rig ID, mesh/material detail tiers, named clips and their phase ranges, foot/hand/look/tool sockets, bounds, semantic appearance states and dependencies. A machine prefab needs approach/stand/contact slots and prop sockets. Simulation definitions own slot capacity, action duration, authority and effects separately. Validate scale, coordinate conversion, finite transforms, sockets, clip coverage, legal transitions, prop handoffs, hash integrity and disposal. A cosmetic asset revision cannot change production balance.
 
-Reuse the immutable asset manifest/CDN workflow; extend its schema for GLB and texture dependencies when the first actual model exists. Use compressed GPU textures where measured appropriate; keep export sources, high-resolution intermediates and raw takes out of runtime packs and Vercel deployments. Load only the chosen room/agents, share dependencies, retain a bounded cache and release unused resources. Do not add speculative libraries or bulk generated artwork now.
+The immutable asset manifest/CDN workflow now accepts self-contained GLB model entries. Embedded texture dependencies are validated before publication. Use compressed GPU textures where measured appropriate; keep export sources, high-resolution intermediates and raw takes out of runtime packs and Vercel deployments. Load only the chosen room/agents, share dependencies, retain a bounded cache and release unused resources. Do not add speculative libraries or bulk generated artwork now.
 
 ## First production slice and acceptance
 
@@ -3450,9 +3450,9 @@ Reuse the immutable asset manifest/CDN workflow; extend its schema for GLB and t
 4. Compare skeletal and baked background paths at 10, 24 and 100 agents. Measure whole-frame p50/p95/p99, interaction latency, draw calls, all-pass triangles, decoded texture memory, loading, API/replay cost and repeated room-switch memory. Use the existing visual-scale plan's device targets; claim no universal performance percentage.
 5. Review side by side with original art at actual game size: silhouette, surface response, stride, contacts, paired reactions and compositional hierarchy. Motion must read with badges hidden. Expand to Cathexis, Witch and Thrum only after this slice passes owner review.
 
-**Delivered in this revision:** builder removal, prebuilt opening state, obsolete command rejection/version bump, no construction charge, renderer lazy activation, source-art review and this plan in the game/UI/engine records.
+**Production test implemented — 12 October:** `/stepanoskin/loopforge/play/agent-test` reviews three worker variants, LIMEN and STILETTO in the real Security/Forge scene. Offline geometry/material recipes export validated GLB rigs and named clips. A bounded headless fixture owns paired reservations, gate inspection/release, cradle ownership and supervisor intervention/refusal. The review includes fixed-tick seeking, three cameras, original-art comparison and hybrid/all-skeletal diagnostics at 10/24/100 workers. [Execution and evidence record](production/AGENT_PRODUCTION_TEST.md).
 
-**Not delivered:** production character meshes/rigs, Blender pipeline, new glTF/KTX2 loader, general BDI planning, paired animation system, optimized animated crowds or certified mobile character performance. Current visible bodies remain placeholders. Room unlocks/policies remain longer-run design; no free placement returns through that terminology.
+**Remaining:** owner approval of the cast; richer acting, planted locomotion and smooth transitions; general BDI perception/planning/navigation; first-turn integration; dynamic asset loading by cast membership and physical-device certification. The review route eagerly loads its small complete comparison cast (8.69 MiB of raw models/data) so switching paths is a controlled comparison. That is an author-bench exception, not the intended main-game loading policy. Main-play figures remain placeholders. No Blender dependency or KTX2 pipeline is claimed.
 
 **Economy consequence:** removing construction removes the prototype's immediate cash sink. Keep the existing opening funds and delivery income honestly; do not invent a replacement purchase or charge for prebuilt fixtures. Later funding/unlocks, payroll and engineering need a separate balance pass. Adviser choice, assignments, process controls, responses and permanent allocation still carry first-turn agency.
 

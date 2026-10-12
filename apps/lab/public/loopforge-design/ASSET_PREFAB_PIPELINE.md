@@ -1,6 +1,6 @@
 # Producing room assets and prefabs
 
-**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Current procedural figures remain placeholders; production rigs, general BDI and paired acting are not yet implemented.
+**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Main-play figures remain placeholders. The separate `/play/agent-test` review now supplies offline-authored GLB worker/LIMEN/STILETTO rigs, paired contacts and a bounded deterministic trace; general BDI and main-game integration remain open. See [the production-test record](production/AGENT_PRODUCTION_TEST.md).
 
 
 **Next-build priority (11 October):** [Factory-floor scale, grain and motion](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md) now defines the camera, material, movement and joint visual/performance gates. Calibrate the active work area before expanding this kit or treating imported-model tooling as the immediate next milestone. This is a design proposal; it does not change the current renderer.
@@ -9,7 +9,7 @@ Updated 11 October 2026. Production pipeline proposal, with a native lobby kit n
 
 ## What is missing
 
-We have image publication/CDN delivery and a native Babylon lobby recipe with shared surfaces, desk sockets and articulated parts. We still need the imported-model stages between concept art and a reliable game object: modeling, clean material maps, attachment/animation conventions, export, prefab validation and an in-engine review bench. The first milestone is one excellent desk and one wall bay.
+We have image publication/CDN delivery and a native Babylon lobby recipe with shared surfaces, desk sockets and articulated parts. The character production test now implements a first imported-model path: reproducible offline geometry, embedded surface maps, 17-joint rigs, seven clips, GLB validation, immutable publication and an in-engine contact bench. Broader equipment prefab sockets, a Blender workflow and art approval are still open. Earlier desk/wall milestones below describe the room pipeline, not the character test.
 
 | Stage | Output | Acceptance |
 | --- | --- | --- |

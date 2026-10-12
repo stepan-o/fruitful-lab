@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-agents",
+  "assets": {
+    "limen": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/e922255e0372b1837dbc44d285960419c325f4feef04d97febb1cca8c55421ff.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1799792,
+          "sha256": "e922255e0372b1837dbc44d285960419c325f4feef04d97febb1cca8c55421ff"
+        }
+      ]
+    },
+    "limen-rig": {
+      "kind": "data",
+      "variants": [
+        {
+          "src": "/media/files/6c1c2dff85577d77bc255610a02cf764187da6733eec2bf7561ff259376500d7.json",
+          "mime": "application/json",
+          "bytes": 2988,
+          "sha256": "6c1c2dff85577d77bc255610a02cf764187da6733eec2bf7561ff259376500d7"
+        }
+      ]
+    },
+    "stiletto": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/73c4fede87657bde2ca72e8eb6000ca5a8c1ce4e313f17a822752298a0f0206d.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1280780,
+          "sha256": "73c4fede87657bde2ca72e8eb6000ca5a8c1ce4e313f17a822752298a0f0206d"
+        }
+      ]
+    },
+    "stiletto-rig": {
+      "kind": "data",
+      "variants": [
+        {
+          "src": "/media/files/9797492ba806bb5a1928887a850add74f9371b730452ab9449e878875db38bbc.json",
+          "mime": "application/json",
+          "bytes": 2741,
+          "sha256": "9797492ba806bb5a1928887a850add74f9371b730452ab9449e878875db38bbc"
+        }
+      ]
+    },
+    "worker": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/63fc6e686c04e5691374bac6c84fe935cc0cfd13d89653d11ffe8cdc3464ddbd.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1101420,
+          "sha256": "63fc6e686c04e5691374bac6c84fe935cc0cfd13d89653d11ffe8cdc3464ddbd"
+        }
+      ]
+    },
+    "worker-baked": {
+      "kind": "data",
+      "variants": [
+        {
+          "src": "/media/files/6fc56081e9de06cdc78d567f2a1571ae785b5b8b98ea18db90ff7e1afb9e860b.json",
+          "mime": "application/json",
+          "bytes": 276611,
+          "sha256": "6fc56081e9de06cdc78d567f2a1571ae785b5b8b98ea18db90ff7e1afb9e860b"
+        }
+      ]
+    },
+    "worker-low": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/951ddc4170024b4498966cf2c5d4b6490fa3f13649b3e5235ff94e2e297a616d.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 778276,
+          "sha256": "951ddc4170024b4498966cf2c5d4b6490fa3f13649b3e5235ff94e2e297a616d"
+        }
+      ]
+    },
+    "worker-low-rig": {
+      "kind": "data",
+      "variants": [
+        {
+          "src": "/media/files/ac6538143288b415f883ebd4bebb093e9bc40697a1daf18c7cc5374181ae860d.json",
+          "mime": "application/json",
+          "bytes": 2925,
+          "sha256": "ac6538143288b415f883ebd4bebb093e9bc40697a1daf18c7cc5374181ae860d"
+        }
+      ]
+    },
+    "worker-plated": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/0f107c2e1afd49c442661a2ca1d7489e09ff30d204085601c413fb5e53679e65.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1114252,
+          "sha256": "0f107c2e1afd49c442661a2ca1d7489e09ff30d204085601c413fb5e53679e65"
+        }
+      ]
+    },
+    "worker-plated-low": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/e62ef3df2d5bec0a38ef38114ad3b4ba815b62d15a2599a6999544e3312a7673.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 791108,
+          "sha256": "e62ef3df2d5bec0a38ef38114ad3b4ba815b62d15a2599a6999544e3312a7673"
+        }
+      ]
+    },
+    "worker-plated-low-rig": {
+      "kind": "data",
+      "variants": [
+        {
+          "src": "/media/files/c70be0232fef7e56e975528b12deae26e1926b4a97213ca243641316d69cbcae.json",
+          "mime": "application/json",
+          "bytes": 2932,
+          "sha256": "c70be0232fef7e56e975528b12deae26e1926b4a97213ca243641316d69cbcae"
+        }
+      ]
+    },
+    "worker-plated-rig": {
+      "kind": "data",
+      "variants": [
+        {
+          "src": "/media/files/2a98998ffbdaf12076ad8b4e53cdaa2e6eeaebd3ecfb428a608c28c17fb5c541.json",
+          "mime": "application/json",
+          "bytes": 2931,
+          "sha256": "2a98998ffbdaf12076ad8b4e53cdaa2e6eeaebd3ecfb428a608c28c17fb5c541"
+        }
+      ]
+    },
+    "worker-ribbed": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/adc12af62c36c4979751b5e7d7c22d6abb25b580abc88e07f8a7ab9a8cae623c.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1135956,
+          "sha256": "adc12af62c36c4979751b5e7d7c22d6abb25b580abc88e07f8a7ab9a8cae623c"
+        }
+      ]
+    },
+    "worker-ribbed-low": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/e7218f374749a38413c42fb27e08d040a851982d7dfc1b3df99a3de9449207c5.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 812812,
+          "sha256": "e7218f374749a38413c42fb27e08d040a851982d7dfc1b3df99a3de9449207c5"
+        }
+      ]
+    },
+    "worker-ribbed-low-rig": {
+      "kind": "data",
+      "variants": [
+        {
+          "src": "/media/files/b5c86205d30244fbfa0f2b78b9b33181505dbed2b78c4e9aa042decfdf10942f.json",
+          "mime": "application/json",
+          "bytes": 2932,
+          "sha256": "b5c86205d30244fbfa0f2b78b9b33181505dbed2b78c4e9aa042decfdf10942f"
+        }
+      ]
+    },
+    "worker-ribbed-rig": {
+      "kind": "data",
+      "variants": [
+        {
+          "src": "/media/files/f5ea216f523db8501da0f051121f6f504cd208ddc2966d8082a51847ca1df9be.json",
+          "mime": "application/json",
+          "bytes": 2931,
+          "sha256": "f5ea216f523db8501da0f051121f6f504cd208ddc2966d8082a51847ca1df9be"
+        }
+      ]
+    },
+    "worker-rig": {
+      "kind": "data",
+      "variants": [
+        {
+          "src": "/media/files/5758f099eb24ae83f79261d03d2731f67db8bec7c20efeb4da6237d5938398aa.json",
+          "mime": "application/json",
+          "bytes": 2924,
+          "sha256": "5758f099eb24ae83f79261d03d2731f67db8bec7c20efeb4da6237d5938398aa"
+        }
+      ]
+    }
+  }
+}

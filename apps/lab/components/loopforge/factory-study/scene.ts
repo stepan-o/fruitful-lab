@@ -36,14 +36,15 @@ import { gateOpen, initialStudy, type Fixture, type StudyState } from "@/lib/loo
 import { WORK_AREAS } from '@/lib/loopforge/spatial/capacity';
 export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
-export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
-export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
+export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; p50?: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
+export type CharacterStage = { scene: Scene; shadow: ShadowGenerator; gate(open: boolean): void; refresh(): void };
+export type FactoryScene = { characterStage(): CharacterStage; review(enabled: boolean): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
 const C = (hex: string) => Color3.FromHexString(hex);
 
-export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void): FactoryScene {
+export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void, options: {reviewOnly?:boolean} = {}): FactoryScene {
   const engine = new Engine(canvas, false, { stencil: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
   const scene = new Scene(engine);
   const instrumentation=new SceneInstrumentation(scene);
@@ -63,7 +64,8 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   engine.onContextRestoredObservable.add(() => { renderDirty = true; resourcesReady = false; });
   let visible = true, cctvEnabled = false, cctvAngle = 0, tripleFeed = false;
   const alternateCameras = [1,2].map(n => new ArcRotateCamera(`room-angle-${n}`, 0, 1, 20, Vector3.Zero(), scene));
-  let isolatedRoom = false;
+  let isolatedRoom = false, characterReview = false;
+  let reviewGate: boolean | null = null;
   let equipmentStudy = false, framing: Framing = "work";
   let bottomInset = 180, topInset = 125;
   let focus: Focus = "wide", targetRadius = 27, targetPoint = new Vector3(-1, 1.7, 0), transition = 1;
@@ -176,9 +178,9 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     const plane=MeshBuilder.CreatePlane(text,{width,height:.64},scene);finish(plane,m,[pos[0],pos[1],pos[2]-.046],parent);
   }
   const workshop = { box, pipe, cylinder, sphere, ring, bar, sign, iron, dark, brass, copper, green, floorMat, amber, quiet, cyan, ridge };
-  const floor = buildFloor(scene, workshop);
-  const equipment = buildEquipment(scene, workshop);
-  const lobby = buildLobby(scene, workshop);
+  const floor = buildFloor(scene, workshop,options.reviewOnly?["security","conveyor"]:undefined);
+  const equipment = buildEquipment(scene, workshop,options.reviewOnly?["security","conveyor"]:undefined);
+  const lobby = options.reviewOnly ? {roots:[] as TransformNode[],feeder(){},finalize(){},animate(){}} : buildLobby(scene, workshop);
   lobby.feeder(false);
   const localGlow=new PointLight("Security terminal bounce",new Vector3(-2.2,2.5,.6),scene);localGlow.diffuse=C("#69bab2");localGlow.intensity=28;localGlow.range=25;localGlow.renderPriority=1;
   const taskLight=new PointLight("conveyor inspection light",new Vector3(-2.5,3.5,-7),scene);taskLight.diffuse=C("#ffb362");taskLight.intensity=95;taskLight.range=36;taskLight.renderPriority=2;
@@ -448,13 +450,13 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   const configureFeeds=()=>{
     if(!cctvEnabled){scene.activeCameras=null;scene.activeCamera=camera;camera.attachControl(canvas,true);return;}
     camera.detachControl();
-    const poses = focus==='security'
+    const poses = characterReview ? (focus==='security' ? [{x:126,y:126.5,r:6.6,a:.6,b:1.15},{x:126,y:126.5,r:5.5,a:-1.05,b:1.2},{x:128,y:121,r:15,a:.9,b:.7}] : [{x:120.8,y:149.6,r:7.3,a:-1.1,b:1.15},{x:120.8,y:149.6,r:5.8,a:-2.0,b:1.15},{x:121,y:150,r:16,a:-1.4,b:.7}]) : focus==='security'
       ? [{x:125,y:123,r:20,a:-1.45,b:.92},{x:123,y:115,r:10,a:-1.15,b:1.0},{x:126.5,y:128,r:11,a:-2.4,b:.94}]
       : focus==='lobby'
         ? [{x:64,y:89,r:25,a:-1.85,b:1.02},{x:59,y:83,r:9,a:-1.65,b:1.02},{x:74,y:100,r:18,a:-2.1,b:.95}]
         : [{x:122,y:145,r:19,a:-1.36,b:.98},{x:116,y:144,r:12,a:-.75,b:1.00},{x:124,y:145,r:12,a:-2.65,b:.84}];
     const cams=[camera,...alternateCameras];
-    cams.forEach((cam,i)=>{const p=poses[(cctvAngle+i)%3];cam.alpha=p.a;cam.beta=p.b;cam.radius=p.r;cam.setTarget(new Vector3(...worldPoint(p.x,p.y)).add(new Vector3(0,1.4,0)));cam.fov=.7;cam.minZ=.15;cam.maxZ=400;cam.viewport=!tripleFeed||i===0?new Viewport(0,0,tripleFeed?.70:1,1):new Viewport(.705,i===1?.505:0,.295,.495);});
+    cams.forEach((cam,i)=>{const p=poses[(cctvAngle+i)%3];cam.alpha=p.a;cam.beta=p.b;cam.radius=p.r*(characterReview&&!tripleFeed&&focus!=='security'?Math.max(1,.95/(canvas.clientWidth/Math.max(1,canvas.clientHeight))):1);cam.setTarget(new Vector3(...worldPoint(p.x,p.y)).add(new Vector3(0,1.4,0)));cam.fov=.7;cam.minZ=.15;cam.maxZ=400;cam.viewport=!tripleFeed||i===0?new Viewport(0,0,tripleFeed?.70:1,1):new Viewport(.705,i===1?.505:0,.295,.495);});
     scene.activeCameras=tripleFeed?cams:[camera];transition=0;
   };
   const viewport=()=>{if(cctvEnabled){configureFeeds();return;}const h=Math.max(1,canvas.clientHeight),top=topInset,bottom=Math.min(h*.52,bottomInset);camera.viewport=new Viewport(0,bottom/h,1,Math.max(.25,(h-bottom-top)/h));};
@@ -489,7 +491,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     }
     for(let i=0;i<intakeTrays.length;i++)intakeTrays[i].setEnabled(!!state.process&&i<state.process.intake);
     flywheel.rotation.x=-visualTravel*4;
-    const open=gateOpen(state)?1:0;arm.position.y+=(1.25+open*1.4-arm.position.y)*Math.min(1,dt*5);
+    const open=(reviewGate??gateOpen(state))?1:0;arm.position.y+=(1.25+open*1.4-arm.position.y)*Math.min(1,dt*5);
     scan.position.y=2.17+(moving?Math.sin(motionClock*1.8)*.29:0);
     for(const f of ["terminal","gate","drive"] as const){const placed=(equipmentStudy||state.installed.includes(f))&&(!isolatedRoom||(f==="drive"?focus==="conveyor":focus==="security"));installedRoots[f].setEnabled(placed);}
     if (state.running || posesDirty) {
@@ -529,13 +531,15 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     if(signal.isEnabled()&&signal.intensity>.01)signalMap.resetRefreshCounter();
     equipment.animate(motionClock,moving,focus);
     lobby.animate(motionClock,moving,focus==="lobby",framing!=="room");
-    const beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady;const renderedAt=performance.now();frames++;if(now-reportTime>1200){const fps=Math.round(frames*1000/(now-reportTime));report({fps,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),p95:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.95)]??0),p99:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.99)]??0),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});if((moving||state.running||cameraMoving)&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;frames=0;reportTime=now;}
+    const beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady;const renderedAt=performance.now();frames++;if(now-reportTime>1200){const fps=Math.round(frames*1000/(now-reportTime));report({fps,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),p50:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.5)]??0),p95:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.95)]??0),p99:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.99)]??0),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});if((moving||state.running||cameraMoving)&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;frames=0;reportTime=now;}
   }
   equipment.study(false);
   const input = () => { renderDirty = true; };
   canvas.addEventListener("keydown", input);
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
+    characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(){renderDirty=true;keyMap.resetRefreshCounter();}};},
+    review(enabled){characterReview=enabled;frame();if(cctvEnabled)configureFeeds();},
     update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const fresh=s.events.filter(e=>e.id>lastEvent);if(fresh.length){lastEvent=fresh.at(-1)!.id;const signal=fresh.find(e=>e.kind==="jam")??fresh.find(e=>e.kind==="cycle");if(signal){flash=1;flashKind=signal.kind as "jam"|"cycle";}else if(fresh.some(e=>e.kind==="release")){flash=0;flashKind="idle";}}},
     focus(f){frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
     framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},

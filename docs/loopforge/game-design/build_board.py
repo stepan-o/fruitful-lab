@@ -188,7 +188,7 @@ engine+=detail('Decoupling the LLM ecosystem',table(en['llm']))
 engine+='<div class="inheritance"><span class="kicker">What makes a replay deterministic</span>'+p(en['determinism'])+'</div>'+p(en['timing'])
 engine+=detail('A concrete prototype without premature infrastructure',p(en['prototype']))
 engine+=detail('How we prove the boundaries',ul(en['proof']))
-engine+='<div class="callout"><h3>Webview: the visible factory</h3>'+p('The lobby is the first hybrid rendering calibration: modeled furniture and major pipes, authored surface detail, baked atmosphere and selective live lighting. Worker claims and wages stay in simulation records. The reader chapter includes Babylon examples and the source-to-prefab production plan; the desk kit and payroll mechanics are not implemented yet.')+'<p><a href="/stepanoskin/loopforge/architecture/webview" target="_blank" rel="noopener">Open the Webview chapter and reference gallery ↗</a> · <a href="ASSET_PREFAB_PIPELINE.md" target="_blank" rel="noopener">Asset production plan ↗</a></p></div>'
+engine+='<div class="callout"><h3>Webview: the visible factory</h3>'+p('The lobby is the first hybrid rendering calibration: modeled furniture and major pipes, authored surface detail, baked atmosphere and selective live lighting. Worker claims and wages stay in simulation records. The reader chapter includes Babylon examples and the source-to-prefab production plan; the desk kit is implemented, while payroll remains a separate simulation task. The Agents tab now links to a rigged character/contact production test.')+'<p><a href="/stepanoskin/loopforge/architecture/webview" target="_blank" rel="noopener">Open the Webview chapter and reference gallery ↗</a> · <a href="ASSET_PREFAB_PIPELINE.md" target="_blank" rel="noopener">Asset production plan ↗</a></p></div>'
 engine+=detail('Original doctrine and implementation limits',p(en['sourceBoundary'])+'<p><a href="sources/kvp.md" target="_blank" rel="noopener">KVP-0001 ↗</a> · <a href="sources/kvp-hashing.md" target="_blank" rel="noopener">Canonicalization ↗</a> · <a href="sources/rust-engine.md" target="_blank" rel="noopener">Rust-aligned Sim4 specification ↗</a> · <a href="sources/live-contract.md" target="_blank" rel="noopener">Existing live contract ↗</a></p>')
 engine+='<button class="link-button" data-panel="experience">Return to the player experience →</button>'
 
@@ -570,3 +570,7 @@ for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT
     (OUT/contract_name).write_text(content)
     for name in ["UI_DESIGN.md", "GAME_DESIGN.md"]:
         with (OUT/name).open("a") as f: f.write("\n\n"+content)
+
+(OUT/"AGENT_PRODUCTION_TEST.md").write_text((ROOT.parent/"production/AGENT_PRODUCTION_TEST.md").read_text())
+(OUT/"production").mkdir(exist_ok=True)
+(OUT/"production/AGENT_PRODUCTION_TEST.md").write_text((ROOT.parent/"production/AGENT_PRODUCTION_TEST.md").read_text())

@@ -1,0 +1,256 @@
+{
+  "recordedAt": "2026-10-12T09:51:41.181Z",
+  "fixture": "loopforge-agent-test/1",
+  "config": {
+    "kind": "gate",
+    "supervisor": "limen",
+    "count": 10,
+    "strained": false
+  },
+  "mode": "skeletal",
+  "view": {
+    "version": "loopforge-agent-test/1",
+    "tick": 506,
+    "room": "security",
+    "actors": [
+      {
+        "id": "worker-001",
+        "appearance": "worker",
+        "position": [
+          125000,
+          0,
+          131500
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.43333333333333335
+      },
+      {
+        "id": "worker-002",
+        "appearance": "worker-ribbed",
+        "position": [
+          126000,
+          0,
+          131500
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.65
+      },
+      {
+        "id": "worker-003",
+        "appearance": "worker-plated",
+        "position": [
+          126500,
+          0,
+          127934
+        ],
+        "yaw": 0,
+        "clip": "walk",
+        "phase": 0.16742424242424248
+      },
+      {
+        "id": "worker-004",
+        "appearance": "worker",
+        "position": [
+          126500,
+          0,
+          123900
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.08333333333333333
+      },
+      {
+        "id": "worker-005",
+        "appearance": "worker-ribbed",
+        "position": [
+          126500,
+          0,
+          123000
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.3
+      },
+      {
+        "id": "worker-006",
+        "appearance": "worker-plated",
+        "position": [
+          126500,
+          0,
+          122100
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.5166666666666667
+      },
+      {
+        "id": "worker-007",
+        "appearance": "worker",
+        "position": [
+          126500,
+          0,
+          121200
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.7333333333333333
+      },
+      {
+        "id": "worker-008",
+        "appearance": "worker-ribbed",
+        "position": [
+          126500,
+          0,
+          120300
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.95
+      },
+      {
+        "id": "worker-009",
+        "appearance": "worker-plated",
+        "position": [
+          126500,
+          0,
+          119400
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.16666666666666666
+      },
+      {
+        "id": "worker-010",
+        "appearance": "worker",
+        "position": [
+          126500,
+          0,
+          118500
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.38333333333333336
+      },
+      {
+        "id": "limen",
+        "appearance": "limen",
+        "position": [
+          125500,
+          0,
+          126650
+        ],
+        "yaw": -1571,
+        "clip": "wait",
+        "phase": 0.38333333333333336
+      }
+    ],
+    "active": {
+      "id": "action-3",
+      "kind": "gate",
+      "worker": "worker-003",
+      "supervisor": "limen",
+      "start": 363,
+      "end": 543,
+      "resources": [
+        "worker-003",
+        "limen",
+        "gate-contact"
+      ],
+      "outcome": "pending"
+    },
+    "completed": 2,
+    "propOwner": "source-dock",
+    "propPosition": [
+      120000,
+      1040,
+      150100
+    ],
+    "gateOpen": true,
+    "phase": "Released · the next slot can advance.",
+    "finished": false
+  },
+  "report": {
+    "fps": 41,
+    "meshes": 274,
+    "active": 73,
+    "workers": 0,
+    "resolution": "732 × 530",
+    "renderer": "ANGLE (Intel, Mesa Intel(R) HD Graphics 620 (KBL GT2), OpenGL 4.6)",
+    "renderMs": 18,
+    "updateMs": 0,
+    "p50": 24,
+    "p95": 38,
+    "p99": 50,
+    "drawCalls": 187,
+    "triangles": 334082
+  },
+  "castReport": {
+    "mode": "skeletal",
+    "actors": 11,
+    "loadedBytes": 9114311,
+    "bakedBytes": 207360,
+    "loadMs": 3467.5,
+    "puppets": 11,
+    "crowdGroups": 0,
+    "contactErrorMm": 0
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 800,
+    "dpr": 1
+  },
+  "trace": [
+    {
+      "tick": 1,
+      "action": "action-1",
+      "observation": "The next worker reaches the clearance queue.",
+      "belief": "Unchecked clearance threatens orderly work.",
+      "desire": "Preserve clearance discipline.",
+      "intention": "Inspect, then release.",
+      "validation": "Actor and station slots acquired atomically.",
+      "outcome": "In progress."
+    },
+    {
+      "tick": 181,
+      "action": "action-1",
+      "observation": "The reserved action reaches its confirmed end.",
+      "belief": "The result is now observed.",
+      "desire": "Continue without inventing an outcome.",
+      "intention": "Admit the next task.",
+      "validation": "Fixed tick committed once; no animation callback.",
+      "outcome": "released"
+    },
+    {
+      "tick": 182,
+      "action": "action-2",
+      "observation": "The next worker reaches the clearance queue.",
+      "belief": "Unchecked clearance threatens orderly work.",
+      "desire": "Preserve clearance discipline.",
+      "intention": "Inspect, then release.",
+      "validation": "Actor and station slots acquired atomically.",
+      "outcome": "In progress."
+    },
+    {
+      "tick": 362,
+      "action": "action-2",
+      "observation": "The reserved action reaches its confirmed end.",
+      "belief": "The result is now observed.",
+      "desire": "Continue without inventing an outcome.",
+      "intention": "Admit the next task.",
+      "validation": "Fixed tick committed once; no animation callback.",
+      "outcome": "released"
+    },
+    {
+      "tick": 363,
+      "action": "action-3",
+      "observation": "The next worker reaches the clearance queue.",
+      "belief": "Unchecked clearance threatens orderly work.",
+      "desire": "Preserve clearance discipline.",
+      "intention": "Inspect, then release.",
+      "validation": "Actor and station slots acquired atomically.",
+      "outcome": "In progress."
+    }
+  ]
+}

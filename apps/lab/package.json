@@ -9,7 +9,7 @@
     "floor:preview": "API_BASE_URL=${API_BASE_URL:-http://localhost:8000} NODE_OPTIONS=--max-old-space-size=512 next start --hostname 127.0.0.1 --port 3191",
     "assets:publish-editorial": "node scripts/publish-editorial.mjs",
     "assets:build": "node scripts/assets.mjs build",
-    "assets:check": "node scripts/assets.mjs check && node scripts/research-assets.mjs && npm run floor-plan:check",
+    "assets:check": "node scripts/assets.mjs check && node scripts/research-assets.mjs && npm run floor-plan:check && npm run characters:check",
     "assets:activate": "node scripts/assets.mjs activate",
     "assets:test": "node --test scripts/assets.node-check.mjs",
     "start": "next start",
@@ -22,10 +22,12 @@
     "research:dev": "STEPANOSKIN_RESEARCH_MODE=1 next dev --hostname 127.0.0.1 --port 3101",
     "research:import": "node scripts/import-research.mjs",
     "floor-plan:build": "node scripts/loopforge-floor-plan.mjs",
-    "floor-plan:check": "node scripts/loopforge-floor-plan.mjs --check"
+    "floor-plan:check": "node scripts/loopforge-floor-plan.mjs --check",
+    "characters:check": "node scripts/characters/check.mjs"
   },
   "dependencies": {
     "@babylonjs/core": "9.30.0",
+    "@babylonjs/loaders": "9.30.0",
     "@flags-sdk/growthbook": "^0.2.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^1.3.1",
@@ -35,6 +37,10 @@
     "react-dom": "^19.2.1"
   },
   "devDependencies": {
+    "@babylonjs/serializers": "9.30.0",
+    "@gltf-transform/core": "4.2.1",
+    "@gltf-transform/extensions": "4.2.1",
+    "@gltf-transform/functions": "4.2.1",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
@@ -46,6 +52,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^16.2.2",
+    "gltf-validator": "2.0.0-dev.3.10",
     "jest": "^30.2.0",
     "jest-environment-jsdom": "^30.2.0",
     "sharp": "0.34.5",

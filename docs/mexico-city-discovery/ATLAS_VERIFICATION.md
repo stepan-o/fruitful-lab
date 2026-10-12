@@ -52,3 +52,18 @@ This is laboratory verification, not field Core Web Vitals; field LCP/INP/CLS an
 Vercel deployment `dpl_Ewhgx6kdnNiNkWfUg6cBNLWwFdQL` is **READY** for application commit `a227eccd1fd30a56617797bd8bbd407351d1b8af`. [Open the chinampas chapter](https://fruitful-gmr56wt2w-stepan-oskins-projects.vercel.app/mexico-city/atlas?view=chapters&chapter=chinampas).
 
 On the hosted app, all five later chapters loaded with three sections, three quiz questions and their own archival figures; no console errors were observed during those checks. The final deployment was checked at 390 px: map zoom revealed separated direction controls, the measured gap was 13 px, and the chinampas chapter and diagram loaded correctly. Archive delivery was also confirmed: the phone's enlarged chinampas view selected the 800 px / 101,646-byte variant. Final PR delivery details are in [PR #114](https://github.com/stepan-o/fruitful-lab/pull/114). The commit recording this result changes documentation only.
+
+## Atlas landing editorial pass · 12 October 2026
+
+Applied the owner-selected ES/EN copy and a new map note, documented in [EDITORIAL_DESIGN.md](EDITORIAL_DESIGN.md). The entry offers explicit first-chapter/all-chapters actions; borough cards identify concrete places; the bottom navigation uses conversational labels. The note now sits below the map in readable editorial text. Timeline periods have a related-chapter action to fulfill the history panel's invitation. This pass adds no assets to runtime delivery, fonts or dependencies.
+
+Validation for this follow-up:
+
+- Production build passed with `API_BASE_URL=http://localhost:8000 LOOPFORGE_LOW_MEMORY=1 npm run build`, including retained-asset checks and TypeScript validation. Subsequent formatting changes do not change behavior.
+- Scoped ESLint passed. Exact-path Mexico City test run passed: **7 suites / 23 tests** with `API_BASE_URL=http://localhost:8000`. The initial broad path-pattern attempt inadvertently selected other tests because the worktree path contains `mexico-city`; it was stopped and replaced by the exact-path run. An earlier test/build overlap hit an intermediate `.next/package.json`; the successful run happened after the build.
+- The built landing was inspected at **320, 390, 768 and 1280 CSS px**, DPR 1. No horizontal page overflow was found. Spanish and English navigation labels fit at 320 px without clipping; each tab remains 58 px tall and at least 52 px wide there.
+- Verified: first-chapter action opens `chapter=basin`; all-chapters action opens the index; selecting a timeline chapter opens `chapter=peoples`; returning to Explore opens the landing. Searching `Cuicuilco` returns Tlalpan; an unknown term renders the localized no-result message. Map zoom exposes its directional controls; keyboard Tab from the new chapter-index action reaches the first borough with visible focus.
+- Phone map caption and history panel retain their layout; the new note is outside the map's controls. Desktop heading, first-chapter card and map/history composition were visually reviewed. No new animation was introduced; existing reduced-motion rules remain.
+- Local build log: `/tmp/atlas-editorial-build.log`. Full field performance remains unmeasured; no new cold/warm transfer timing claim is made for this copy pass.
+
+Evidence: [phone opening](evidence/atlas-editorial-phone.png), [phone map and note](evidence/atlas-editorial-map-phone.png), [desktop](evidence/atlas-editorial-desktop.png). Vercel preview verification is reported on PR #114 after the push.

@@ -314,8 +314,8 @@ export const BOROUGHS: Borough[] = [
     name: "Cuauhtémoc",
     region: c("Centro", "Center"),
     hook: c(
-      "La isla sigue debajo de tus pasos.",
-      "The island is still beneath your feet.",
+      "Del Zócalo a Tlatelolco y Tabacalera.",
+      "From the Zócalo to Tlatelolco and Tabacalera.",
     ),
     memory: c(
       "Ubica el Zócalo; al norte, Tlatelolco. Hacia el poniente aparecen Tabacalera y las colonias Roma y Condesa.",
@@ -362,8 +362,8 @@ export const BOROUGHS: Borough[] = [
     name: "Miguel Hidalgo",
     region: c("Centro-poniente", "West of center"),
     hook: c(
-      "El cerro, el agua y los caminos del poniente.",
-      "The hill, water and western roads.",
+      "Chapultepec, Tacuba y Tacubaya.",
+      "Chapultepec, Tacuba, and Tacubaya.",
     ),
     memory: c(
       "Chapultepec es tu ancla. Busca Tacuba al norte y Tacubaya al sur: tres nombres, tres lugares distintos.",
@@ -409,8 +409,8 @@ export const BOROUGHS: Borough[] = [
     name: "Azcapotzalco",
     region: c("Noroeste", "Northwest"),
     hook: c(
-      "Antes de las fábricas, un poder tepaneca.",
-      "Before the factories, a Tepanec power.",
+      "Del antiguo pueblo al paisaje industrial de Vallejo.",
+      "From the old town to Vallejo’s industrial landscape.",
     ),
     memory: c(
       "Al noroeste del centro. Une el antiguo pueblo, el paisaje industrial y un parque que representa la cuenca.",
@@ -448,8 +448,8 @@ export const BOROUGHS: Borough[] = [
     name: "Gustavo A. Madero",
     region: c("Norte", "North"),
     hook: c(
-      "El norte también sube al cerro.",
-      "The north climbs the hills too.",
+      "Del Tepeyac a las laderas de Cuautepec.",
+      "From Tepeyac to Cuautepec’s hillsides.",
     ),
     memory: c(
       "Tepeyac orienta; la Sierra de Guadalupe explica el relieve del norte. Cuautepec está entre laderas.",
@@ -494,7 +494,10 @@ export const BOROUGHS: Borough[] = [
     id: "09017",
     name: "Venustiano Carranza",
     region: c("Oriente del centro", "East of center"),
-    hook: c("Un cerro junto a las pistas.", "A hill beside the runways."),
+    hook: c(
+      "El Peñón, el aeropuerto y el Mercado de Jamaica.",
+      "Peñón de los Baños, the airport, and Jamaica Market.",
+    ),
     memory: c(
       "Del lado oriental del centro, ubica el aeropuerto y el Peñón de los Baños. Hacia el centro aparecen grandes mercados.",
       "East of the center, locate the airport and Peñón de los Baños. Major markets lie toward the city center.",
@@ -539,8 +542,8 @@ export const BOROUGHS: Borough[] = [
     name: "Iztacalco",
     region: c("Centro-oriente", "East-central"),
     hook: c(
-      "Donde había canoas, hoy buscas calles.",
-      "Where canoes passed, you now look for streets.",
+      "San Matías, Santa Anita y la historia de La Viga.",
+      "San Matías, Santa Anita, and the story of La Viga.",
     ),
     memory: c(
       "Es la pieza pequeña entre el centro y el oriente. Su escala no cuenta toda su historia: La Viga conectaba pueblos y mercados.",
@@ -586,8 +589,8 @@ export const BOROUGHS: Borough[] = [
     name: "Iztapalapa",
     region: c("Oriente", "East"),
     hook: c(
-      "El oriente tiene cerros y pueblos antiguos.",
-      "The east has hills and old towns.",
+      "Culhuacán y el Cerro de la Estrella.",
+      "Culhuacán and Cerro de la Estrella.",
     ),
     memory: c(
       "Encuentra el Cerro de la Estrella; Culhuacán queda hacia su poniente. Esta alcaldía no es sólo expansión reciente.",
@@ -633,8 +636,8 @@ export const BOROUGHS: Borough[] = [
     name: "Benito Juárez",
     region: c("Sur del centro", "South of center"),
     hook: c(
-      "La ciudad también creció entre sus pueblos.",
-      "The city grew between its towns too.",
+      "Mixcoac, Portales y Del Valle.",
+      "Mixcoac, Portales, and Del Valle.",
     ),
     memory: c(
       "Al sur de Cuauhtémoc y al norte de Coyoacán. Mixcoac, Portales y Del Valle te ayudan a reconocerla.",
@@ -677,7 +680,10 @@ export const BOROUGHS: Borough[] = [
     id: "09003",
     name: "Coyoacán",
     region: c("Sur urbano", "Urban south"),
-    hook: c("Del pueblo al Pedregal.", "From the old town to the Pedregal."),
+    hook: c(
+      "De las plazas del centro a Ciudad Universitaria.",
+      "From the historic center’s squares to Ciudad Universitaria.",
+    ),
     memory: c(
       "El centro de Coyoacán y Ciudad Universitaria no son el mismo sitio. Entre ambos cambia el paisaje.",
       "Coyoacán’s historic center and Ciudad Universitaria are not the same place. The landscape changes between them.",
@@ -719,7 +725,10 @@ export const BOROUGHS: Borough[] = [
     id: "09010",
     name: "Álvaro Obregón",
     region: c("Poniente", "West"),
-    hook: c("Entre plazas y barrancas.", "Between squares and ravines."),
+    hook: c(
+      "San Ángel, Chimalistac y las barrancas del poniente.",
+      "San Ángel, Chimalistac, and the western ravines.",
+    ),
     memory: c(
       "San Ángel es una entrada, no toda la alcaldía. Sigue el terreno hacia las laderas del poniente.",
       "San Ángel is an entry point, not the whole borough. Follow the terrain into the western hillsides.",
@@ -762,8 +771,8 @@ export const BOROUGHS: Borough[] = [
     name: "Cuajimalpa de Morelos",
     region: c("Poniente montañoso", "Mountainous west"),
     hook: c(
-      "El bosque también es Ciudad de México.",
-      "The forest is Mexico City too.",
+      "Pueblos y bosques en el poniente de la ciudad.",
+      "Towns and forests on the city’s western side.",
     ),
     memory: c(
       "En el borde poniente, la ciudad sube. Santa Fe no explica por sí sola los pueblos y bosques de Cuajimalpa.",
@@ -809,8 +818,8 @@ export const BOROUGHS: Borough[] = [
     name: "La Magdalena Contreras",
     region: c("Suroeste", "Southwest"),
     hook: c(
-      "Un río entre fábricas y bosque.",
-      "A river between mills and forest.",
+      "El río Magdalena y los bosques de Los Dinamos.",
+      "The Magdalena River and the forests of Los Dinamos.",
     ),
     memory: c(
       "Busca el corredor del río Magdalena y Los Dinamos, al suroeste del mapa.",
@@ -854,8 +863,8 @@ export const BOROUGHS: Borough[] = [
     name: "Tlalpan",
     region: c("Sur y montaña", "South and mountains"),
     hook: c(
-      "Una pirámide antes de Tenochtitlan.",
-      "A pyramid before Tenochtitlan.",
+      "De Cuicuilco a las montañas del Ajusco.",
+      "From Cuicuilco to the Ajusco mountains.",
     ),
     memory: c(
       "Cuicuilco y el centro de Tlalpan están en el extremo urbano norte de una alcaldía que se extiende hacia el Ajusco.",
@@ -901,8 +910,8 @@ export const BOROUGHS: Borough[] = [
     name: "Xochimilco",
     region: c("Sur lacustre", "Lake country to the south"),
     hook: c(
-      "El agua todavía se cultiva.",
-      "Water still supports a working landscape.",
+      "Chinampas, canales y pueblos del sur.",
+      "Chinampas, canals, and southern communities.",
     ),
     memory: c(
       "Al sur de Coyoacán y al oeste de Tláhuac. Canales, chinampas y pueblos: recuerda las tres piezas.",
@@ -947,8 +956,8 @@ export const BOROUGHS: Borough[] = [
     name: "Tláhuac",
     region: c("Sureste lacustre", "Southeastern lake country"),
     hook: c(
-      "La orilla se convirtió en ciudad, pero no sólo en ciudad.",
-      "The shore became urban, but not entirely.",
+      "San Pedro, Mixquic y los campos del sureste.",
+      "San Pedro, Mixquic, and the southeastern fields.",
     ),
     memory: c(
       "Al oriente de Xochimilco y al norte de Milpa Alta. Une San Pedro, Mixquic y los paisajes agrícolas.",
@@ -991,7 +1000,10 @@ export const BOROUGHS: Borough[] = [
     id: "09009",
     name: "Milpa Alta",
     region: c("Extremo sur", "Far south"),
-    hook: c("El sur también habla.", "The south has a living voice."),
+    hook: c(
+      "Pueblos, campos y náhuatl en el sur de la ciudad.",
+      "Towns, fields, and Nahuatl in the city’s south.",
+    ),
     memory: c(
       "En el extremo sur: pueblos, campos y bosque. No confundas el borde del Metro con el borde de la ciudad.",
       "At the far south: towns, fields and forest. Do not confuse the edge of Metro with the edge of the city.",

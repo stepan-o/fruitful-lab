@@ -244,7 +244,8 @@ export default function AtlasMap({
         <>
           <div
             className="at-map-layers"
-            aria-label={say("Capas del mapa", "Map layers")}
+            role="group"
+            aria-label={say("Transporte", "Transit")}
           >
             {(["metro", "cable"] as const).map((key) => (
               <button
@@ -259,7 +260,12 @@ export default function AtlasMap({
           {!current && (
             <div className="at-map-caption">
               <span>CDMX</span>
-              <small>{say("16 maneras de empezar", "16 ways to begin")}</small>
+              <small>
+                {say(
+                  "16 alcaldías · Selecciona una para explorar",
+                  "16 boroughs · Choose one to explore",
+                )}
+              </small>
             </div>
           )}
           {anchor?.story && (
@@ -293,9 +299,7 @@ export default function AtlasMap({
           ))}
           {!current && (
             <details className="at-city-key">
-              <summary>
-                {say("Nombres de las alcaldías", "Borough names")}
-              </summary>
+              <summary>{say("Ver nombres", "Show names")}</summary>
               <div>
                 {BOROUGHS.map((b, i) => (
                   <button key={b.id} onClick={() => choose(b.id)}>
@@ -375,18 +379,16 @@ export default function AtlasMap({
               <Minus size={18} />
             </button>
             <button
-              aria-label={say("Centrar mapa", "Recenter map")}
+              aria-label={
+                current
+                  ? say("Restablecer vista", "Reset view")
+                  : say("Ver toda la ciudad", "Show the whole city")
+              }
               onClick={() => setCamera({ x: 0, y: 0, zoom: 1 })}
             >
               <RotateCcw size={16} />
             </button>
           </div>
-          <span className="at-map-footnote">
-            {say(
-              "Límites actuales · puntos de referencia, no rutas",
-              "Current boundaries · reference points, not routes",
-            )}
-          </span>
         </>
       )}
     </div>

@@ -2,6 +2,7 @@ import { c } from "./content";
 export { CHAPTERS } from "./history";
 export const ERAS = [
   {
+    chapter: "peoples",
     label: c("Antes de los mexicas", "Before the Mexica"),
     date: c("Antes del siglo XIV", "Before the 14th century"),
     title: c("La cuenca ya tenía historia", "The basin already had a history"),
@@ -12,6 +13,7 @@ export const ERAS = [
     sources: ["cuicuilco", "basin"],
   },
   {
+    chapter: "empire",
     label: c("Isla y orillas", "Island and shores"),
     date: "c. 1500",
     title: c(
@@ -25,6 +27,7 @@ export const ERAS = [
     sources: ["island", "causeways"],
   },
   {
+    chapter: "conquest",
     label: c("Ciudad colonial", "Colonial city"),
     date: "c. 1550",
     title: c("El mundo del mapa de Uppsala", "The world of the Uppsala map"),
@@ -35,6 +38,7 @@ export const ERAS = [
     sources: ["uppsala"],
   },
   {
+    chapter: "drainage",
     label: c("Calles y cuarteles", "Streets and quarters"),
     date: "1793 / 1807",
     title: c("Medir otra ciudad", "Surveying a changed city"),
@@ -45,6 +49,7 @@ export const ERAS = [
     sources: ["conde"],
   },
   {
+    chapter: "drainage",
     label: c("Canales y desagüe", "Canals and drainage"),
     date: "c. 1900",
     title: c("Dos movimientos del agua", "Two movements of water"),
@@ -55,6 +60,7 @@ export const ERAS = [
     sources: ["viga", "water"],
   },
   {
+    chapter: "growth",
     label: c("Vista desde arriba", "Seen from above"),
     date: "1932–1994",
     title: c(
@@ -68,6 +74,7 @@ export const ERAS = [
     sources: ["aerial"],
   },
   {
+    chapter: "living-basin",
     label: c("La ciudad de hoy", "The city today"),
     date: "2026",
     title: c("El pasado no se quedó atrás", "The past did not stay behind"),

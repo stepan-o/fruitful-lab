@@ -17,5 +17,5 @@ export type Scenario = {
 export const DEFAULT_SCENARIO: Scenario = {
   amount: 1000, deadline: "2027-01-01", spread: 1, fee: 0, lossBudget: 2, target: null, eventRisk: false,
 };
-export const SOURCE_URL = "https://www.bankofcanada.ca/valet/observations/FXMXNCAD/json?recent=800";
-export const METHOD_VERSION = "cad-mxn-1.0";
+export const SOURCE_URL = "https://www.bankofcanada.ca/valet/observations/FXMXNCAD/json?start_date=2017-05-01";
+export const METHOD_VERSION = "cad-mxn-1.1";

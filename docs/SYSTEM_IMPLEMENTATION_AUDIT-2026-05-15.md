@@ -1,3 +1,5 @@
+Financial Lab methodology study (12 October 2026): `/tools/finance#methodology` adds source-backed interactive series diagnostics, causal/hindsight extrema replay, four forecast paths, 252-return versus EWMA uncertainty, chronological pre-2024 / 2024-onward evaluation, fee-aware timing-policy experiments and a mixed-evidence scenario sandbox. The BoC query now starts 2017-05-01 (consistent methodology). Policy `cad-mxn-1.1` removes the historical trend screen as authority for all-wait; 50%/75% floors remain explicit risk preferences. No validated mixed model, automatic news or executable-quote backtest is claimed. Local study JSON includes applied inputs and source data; analytics adds view_methodology only. Specs and evidence: `docs/brands/lab/financial-lab-methodology.md`.
+
 # System Implementation Audit - Fruitful Lab
 
 Status: confirmed from local repository scan on 2026-05-15.

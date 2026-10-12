@@ -21,19 +21,31 @@ limitations and sources; browser print supports PDF. Source-history CSV contains
 all fetched observations and exact source/derived units, independent of the
 chart's display-only history filter.
 
+## Methodology tab
+
+A lazy-loaded third view at `/tools/finance#methodology` contains the sourced
+study, interactive series transformations, online-versus-hindsight extrema replay,
+four point forecasts, two uncertainty models, earlier/later chronological
+evaluation and fee-adjusted policy experiments. Mixed evidence has an explicit
+source-timing and qualification design plus an assumption-only scenario sandbox.
+Print and local reproducibility JSON are available. See
+[the study record](financial-lab-methodology.md) for specifications, initial real-data
+results, primary sources and remaining qualification requirements. All three tabs
+share applied dashboard assumptions. Hash links contain view/chapter names only.
+
 ## Source and ingestion
 
 - Primary source: [Bank of Canada Valet API](https://www.bankofcanada.ca/valet-api-how-to/).
-- Exact query: `https://www.bankofcanada.ca/valet/observations/FXMXNCAD/json?recent=800`.
+- Exact query: `https://www.bankofcanada.ca/valet/observations/FXMXNCAD/json?start_date=2017-05-01`.
 - Source series `FXMXNCAD`: daily average Mexican peso in Canadian dollars.
 - Display: reciprocal, **MXN per CAD**. Increasing means more pesos for CAD.
 - [Publication methodology](https://www.bankofcanada.ca/rates/exchange/background-information-on-foreign-exchange-rates/)
   explains indicative reference rates, not executable transaction prices.
 - [Terms](https://www.bankofcanada.ca/terms/) linked in every view's source footer.
-- Official source verified on 12 October 2026: 800 observations, 25 July 2023
+- Official source verified on 12 October 2026: 2,356 observations, 1 May 2017
   through 9 October 2026; final CAD/MXN observation 0.07767. This is evidence of
   ingestion, not a pinned live-data fallback or a permanent current quote.
-- Sort ascending (source currently returns descending). Validate dates, reject
+- Sort ascending regardless of source order. Validate dates, reject
   duplicates, future dates and invalid/nonpositive rates. Omit missing quotes;
   never forward fill. Require 253 observations. Reject recommendations when the
   latest date is more than four calendar days old or the latest 253 points
@@ -47,7 +59,7 @@ chart's display-only history filter.
   always prominent. A failed browser refresh retains the prior chart with advice
   paused. No synthetic data is substituted for a failed source.
 
-## Forecast and decision method (`cad-mxn-1.0`)
+## Forecast and decision method (`cad-mxn-1.1`)
 
 1. Transform observations to log returns; use sample standard deviation of the
    most recent 252 returns as daily volatility.
@@ -63,8 +75,8 @@ chart's display-only history filter.
    interval coverage. Each forecast only uses its own available history. The
    full-sample comparison is exploratory, without an independent model-selection
    holdout or significance test. Few windows at longer horizons are explicit.
-5. A challenger qualifies with at least 12 windows and at least 10% lower error.
-   These are predeclared prototype thresholds, not optimized profitable rules.
+5. A historical challenger screen reports at least 12 windows and at least 10%
+   lower error. It is diagnostic only and cannot authorize a timing change.
 6. Convert net pesos as `(CAD principal - fixed CAD fee) * rate * (1-markup/100)`.
    A partial plan pays two fees; a single transfer pays one. Amounts too small
    to pay a fee are infeasible. Assume same markup/fee for future transfers.
@@ -73,11 +85,11 @@ chart's display-only history filter.
    allocations `[0,.25,.5,.75,1]` for the least upfront fraction whose lower
    modeled net scenario fits the loss tolerance relative to all-now.
 8. Default minimum upfront fraction is 50%; manual event caution raises it to
-   75%. Qualifying positive challenger gain above 0.5% allows an all-wait
-   candidate, only if its lower baseline scenario fits tolerance. Actual loss
+   75%. These are policy preferences, not estimated optima. Version 1.1 removes
+   automatic all-wait promotion from the historical trend screen. Actual loss
    can exceed the modeled tolerance. All-now is the feasible fallback.
-9. Payout comparisons and uncertainty always use the baseline, even if the
-   exploratory challenger influences the policy. The report discloses this.
+9. Payout comparisons and uncertainty use the baseline. Research challengers
+   and scenario assumptions do not silently change the operational allocation.
 10. Longer deadlines widen baseline uncertainty rather than creating a forecast
     gain. The tool does not infer that extending until spring is worthwhile.
 
@@ -100,7 +112,7 @@ hour. Hidden pages do not fetch. Local save/load uses
 No recurring background job or notification exists in this prototype.
 Analytics use existing GTM helpers: `tool_view`, `tool_start`, and
 `finance_interaction` with `tool_name=finance_exchange` plus an action enum only
-(`scenario_apply`, `view_report`, `refresh`, `export_csv`, `print_report`, `save_plan`).
+(`scenario_apply`, `view_report`, `view_methodology`, `refresh`, `export_csv`, `print_report`, `save_plan`).
 
 ## Architecture and growth path
 
@@ -112,9 +124,8 @@ calculation engine and evidence snapshot.
 
 Subsequent work can add a durable daily snapshot store, provider quotes and
 settlement calendars, scheduled rate/target notifications, multiple currency
-pairs and richer time series. Before directional model expansion, define a
-separate time holdout, regime diagnostics, proper interval calibration and
-fee-aware strategy backtests. For macro/news models, record source, publication
+pairs and richer time series. Before promoting directional models, add prospective evaluation, formal
+regime diagnostics, interval calibration and actual provider-quote policy tests. For macro/news models, record source, publication
 and availability timestamps (avoid revision/look-ahead leakage), extract
 explicit scenarios and evaluate incremental value against this baseline.
 Automatic model-driven financial decisions are outside this prototype.

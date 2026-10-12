@@ -8,7 +8,7 @@ for (let d = Date.parse("2026-10-09"); dates.length < 800; d -= 86400000) {
   if (![0,6].includes(new Date(d).getUTCDay())) dates.unshift(new Date(d).toISOString().slice(0, 10));
 }
 const snapshot: RateSnapshot = { source: "Bank of Canada", checkedAt: "2026-10-12T16:00:00Z", omitted: 0, observations: dates.map((date, i) => ({ date, cadPerMxn: 1 / (13 + .2 * Math.sin(i / 10)), mxnPerCad: 13 + .2 * Math.sin(i / 10) })) };
-beforeEach(() => { localStorage.clear(); });
+beforeEach(() => { localStorage.clear(); window.history.replaceState(null, "", "/"); });
 test("renders all three budgets, January deadline and extension comparison", () => {
   render(<FinanceWorkspace initialSnapshot={snapshot} />);
   expect(screen.getByRole("heading", { name: "One decision, three budgets" })).toBeInTheDocument();
@@ -41,4 +41,13 @@ test("refresh failure preserves history but pauses advice", async () => {
   fireEvent.click(screen.getByRole("button", { name: "Refresh rates" }));
   await waitFor(() => expect(screen.getByRole("heading", { name: "Refresh data before deciding" })).toBeInTheDocument());
   expect(screen.getByRole("heading", { name: "The rate, and the room to move" })).toBeInTheDocument();
+});
+
+test("methodology opens as a separate view and preserves dashboard assumptions", async () => {
+  render(<FinanceWorkspace initialSnapshot={snapshot} />);
+  fireEvent.click(screen.getByRole("button", { name: "Methodology" }));
+  await waitFor(() => expect(screen.getByRole("article", { name: "Exchange timing methodology study" })).toBeInTheDocument());
+  expect(window.location.hash).toBe("#methodology");
+  fireEvent.click(screen.getByRole("button", { name: "Dashboard" }));
+  expect(screen.getByLabelText("Exchange by")).toHaveValue("2027-01-01");
 });

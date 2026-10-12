@@ -59,3 +59,45 @@ Other brand apps and the backend were not edited.
   skill. Provider execution rates, settlement holidays, interest, taxes, live
   news and background notifications remain outside this first prototype.
 - Field LCP, INP and CLS are unmeasured. No production release or merge is implied.
+
+## Methodology follow-up — 12 October 2026
+
+This section supersedes the earlier source-window and browser-unavailable notes
+above for the methodology follow-up. The earlier figures remain a record of the
+initial dashboard delivery.
+
+- Expanded real BoC history: 2,356 observations, 2017-05-01–2026-10-09. Final
+  source 0.07767 CAD/MXN, reciprocal 12.874983906270117 MXN/CAD. No fixture fallback.
+- Full sequential suite: 93 suites / 489 tests / one snapshot passed. After final
+  browser refinements and the minimum-history edge-case addition, all 33 finance
+  tests passed. Existing full-suite tests were not rerun after those narrow edits.
+- Final production build, TypeScript, asset check, asset test, scoped ESLint and
+  diff check passed. A CSS-module print-selector error was repaired before passing.
+- Causal prefix invariance, hindsight labels, quote inversion, temporal split,
+  future-outcome isolation, gaps, known-error interval scores, delayed execution,
+  fixed fees, infeasible splits, combined same-day fees and mixture math tested.
+- Independent Python check reproduced the 32-window 21-publication baseline MAE
+  and wait-policy mean gain to within 1e-9 of the TypeScript result.
+- In-app browser walkthrough on the production build at local port 3295: direct
+  methodology view, source dates, real charts, 21/63-publication forecasts,
+  historical replay, reversal threshold, exact-publication replay and mixed weights.
+  Keyboard ArrowLeft changed the projection from step 21 to 20; replay and mixture
+  keyboard changes produced corresponding dated/numerical readouts. No console
+  warnings/errors during the inspected study interactions.
+- Visually reviewed desktop and 320/390/768px layouts. Page widths remained within
+  the viewport; wide charts/tables intentionally scroll inside their containers.
+  Added visible mobile scrolling guidance, exact observation sliders, numbered
+  sources and suppression of rounded negative zero after review.
+- Screenshots saved as local task artifacts: finance-methodology.jpg and
+  finance-methodology-phone.jpg (task visualization directory). They are review
+  evidence, not runtime app assets. No physical-device touch test is claimed.
+- Browser download observation timed out twice, including after retaining the Blob
+  URL for a second and attaching the temporary link. Component checks confirm Blob
+  creation and click dispatch; **actual saved browser JSON remains unverified**.
+  Print/PDF pagination and physical-device touch remain unverified.
+- Final local API and HTML returned 200. Single local request samples: API 171,153
+  bytes / 0.832 s; compressed HTML 41,816 bytes / 1.138 s. These are not field web
+  vitals or a controlled cold/warm benchmark. Field performance remains unmeasured.
+- No new dependencies, backend work, news ingestion, notifications or transfers.
+  Primary research sources and the numerical study are documented in
+  financial-lab-methodology.md. Prospective predictive validation remains required.

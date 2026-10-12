@@ -95,21 +95,18 @@ export function analyze(snapshot: RateSnapshot, s: Scenario, today = torontoDate
       feeCad: (fraction > 0 && fraction < 1 ? 2 : 1) * s.fee };
   });
   const targetMet = s.target !== null && last.mxnPerCad * (1 - s.spread / 100) >= s.target;
-  const waitingGain = percentChange(challenger, last.mxnPerCad);
   let fraction = 1;
   let reason = "The exchange deadline is close. Allow time for your provider to deliver the money.";
   if (days > 3) {
     if (targetMet) reason = "Your target rate is met after the assumed markup. Exchanging now removes the risk of losing it.";
     else if (s.lossBudget === 0) reason = "You chose zero tolerance for receiving fewer pesos. Exchanging now removes future rate exposure.";
     else {
-      const minimum = s.eventRisk ? .75 : trendSupported && waitingGain > .5 ? 0 : .5;
+      const minimum = s.eventRisk ? .75 : .5;
       const chosen = strategies.find(row => row.fraction >= minimum && row.feasible && row.downside <= s.lossBudget);
       fraction = chosen?.fraction ?? 1;
       reason = s.eventRisk
         ? "Your event-risk flag raises the minimum exchange today to 75%. The model cannot price an unreviewed news shock."
-        : minimum === 0
-          ? "The trend challenger cleared the exploratory history check. This allocation fits your modeled downside tolerance; its future edge is unproven."
-          : "There is no strong enough tested case for waiting with everything. Start with at least half now, then limit the remainder to your downside tolerance.";
+        : "The planning policy starts with at least half now, then limits the remainder to your modeled downside tolerance. This is a risk preference, not a proven timing optimum.";
       if (fraction === 1) reason += " Fees and downside tolerance leave exchanging everything now as the feasible plan.";
     }
   }

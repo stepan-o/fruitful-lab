@@ -2838,6 +2838,8 @@ All lamp geometry, illuminated surface and shadow direction must share the same 
 
 ## Asset contract and CDN
 
+12 October: S3 is the selected source store and CloudFront the intended runtime CDN; account verification is still pending. The owner approved temporarily shipping the optimized 4.87 MB LIMEN GLB with the app. Its separate lazy review uses the existing Babylon loader and checksum manifest. See [LIMEN model and delivery contract](production/LIMEN_MESHY_REVIEW.md).
+
 Preserve the current release model documented in `apps/lab/assets/README.md`: optimized bytes → content-hashed files → immutable manifest → short-cached pointer. Files/manifests use one-year immutable caching; pointers use 30-second browser / 60-second edge freshness plus 30-second edge stale-while-revalidate. A CDN improves delivery, not draw calls or GPU memory.
 
 Extend the schema deliberately for render assets. Each room package should declare:
@@ -2857,7 +2859,7 @@ Publish and verify every dependency before switching the pointer. Pin a complete
 
 Load the first selected room plus the shared worker kit; the prebuilt game starts at the producer console. Fetch detailed rooms on selection/unlock, not all at startup. Use a bounded cache for revisits and a lightweight whole-floor summary. One engine and room graph supply all three camera passes; update simulation and poses once, and budget total passes/targets rather than treating each feed as a separate allowance. On small screens render only the active angle. Keep loading and camera choice independent of simulation tick ownership.
 
-Track retained deployment storage separately from download traffic and GPU memory. Shipping the public media library inside every preview also retains that deployment's static output. Batch preview publishing, audit output size and review retention of obsolete previews while preserving active reviews, production and needed rollback releases. Before large model/material packs multiply this footprint, evaluate a shared immutable media origin so code deployments reference versioned assets instead of carrying the whole library. An external origin still needs dependency validation, cache rules and a retention policy; it is not a substitute for them. See [Vercel deployment storage](https://vercel.com/docs/deployment-storage). No storage deletion or hosting migration is performed by this pass.
+Track retained deployment storage separately from download traffic and GPU memory. Shipping the public media library inside every preview also retains that deployment's static output. Batch preview publishing, audit output size and review retention of obsolete previews while preserving active reviews, production and needed rollback releases. Migrate to the selected shared S3/CloudFront origin so code deployments reference versioned assets instead of carrying the whole library, once verification is resolved. An external origin still needs dependency validation, cache rules and a retention policy; it is not a substitute for them. See [Vercel deployment storage](https://vercel.com/docs/deployment-storage). No storage deletion or hosting migration is performed by this pass.
 
 ## Babylon-specific optimization order
 
@@ -3029,7 +3031,7 @@ Gameplay configuration separately owns footprint, approach slots, occupancy/capa
 4. Pin authoring/export/encoding tools and preserve reproducible source recipes. Use official glTF validation plus project-specific checks. Geometry compression is optional until measured useful.
 5. Add a local review route in the actual viewer: orbit, neutral/final light, bounds, worker contacts, animation states, attachment swaps, detail tiers and performance readouts.
 
-No new CDN is needed for the first kits. Use the existing Git-backed immutable files on Vercel. Object storage becomes useful if binary churn/library size warrants it; the package contract should survive that move.
+The owner is moving asset storage to S3 with CloudFront delivery to avoid repeating binary libraries in code deployments. CloudFront account verification is pending. LIMEN’s private source is already in S3; the owner explicitly approved a temporary optimized app-hosted `loopforge-limen` pack. Keep the immutable manifest contract and migrate delivery at the asset boundary once the CDN is ready. Remove migrated files from deployment output as well as changing URLs. See [LIMEN Meshy review](production/LIMEN_MESHY_REVIEW.md).
 
 ## First package and gates
 
@@ -3371,6 +3373,8 @@ See [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRE
 
 # Agents: character, movement and contact
 
+Current candidate: [Meshy LIMEN review](production/LIMEN_MESHY_REVIEW.md), with source/derivative provenance and explicit clip/material limits. It does not replace main-play agents yet.
+
 12 October 2026. Current direction; implementation status is explicit below. Companion to [the first-turn contract](FIRST_TURN_ENGINE.md) and [the room scale plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
 
 ## Decision
@@ -3416,7 +3420,7 @@ Hard shell pieces follow their rigid mechanical bones. Model articulation cleara
 | Multi-view image-to-3D, then Blender cleanup | Optional acceleration experiment using a consistent reference turnaround | Generated hidden surfaces, joint separation, hands, texture lighting and animation topology still need review and repair |
 | Purchased generic robot or unedited generated mesh | Possible temporary reference/benchmark, not the selected Loopforge cast | A technically usable model can still miss the character completely |
 
-Meshy's current multi-image API supports several views, PBR maps and GLB output; that makes it a plausible candidate experiment, not a proven winner for Loopforge. Hunyuan3D 2.1 provides an alternative shape/PBR pipeline; its published memory requirements make it a separate offline/GPU production decision. No vendor account, paid generation run, model download or new authoring installation has been performed in this rethink. Blender was not found on this task's shell PATH. Establish that toolchain before claiming automated mesh production is available.
+Meshy's current multi-image API supports several views, PBR maps and GLB output; that makes it a plausible candidate experiment, not a proven winner for Loopforge. Hunyuan3D 2.1 provides an alternative shape/PBR pipeline; its published memory requirements make it a separate offline/GPU production decision. The initial rethink did not select a vendor. The owner subsequently generated and rigged LIMEN in Meshy; its runtime derivative is now reviewed at `/stepanoskin/loopforge/play/agent-test/limen`. Blender was not found on this task's shell PATH. Establish that toolchain before claiming automated mesh production is available.
 
 ### Next production gate: one worker, fully resolved
 
@@ -3492,7 +3496,7 @@ One Babylon engine, one active room and one pose update feed all three CCTV pass
 
 ## Asset package and production pipeline
 
-Use Blender or equivalent offline authoring for measured turnaround → low-poly silhouette → UV/material bake → rig → contact clips → GLB export → actual Babylon review. Image generation can help designs and surface art; it cannot guarantee a usable rig, topology, correct unseen surfaces or synchronized contacts by itself. No model vendor is selected and no purchase is required by this proposal.
+Use Blender or equivalent offline authoring for measured turnaround → low-poly silhouette → UV/material bake → rig → contact clips → GLB export → actual Babylon review. Image generation can help designs and surface art; it cannot guarantee a usable rig, topology, correct unseen surfaces or synchronized contacts by itself. The owner has now selected Meshy for a first LIMEN candidate; worker and remaining-supervisor authoring decisions are still open.
 
 A character prefab needs a versioned source/model, compatible rig ID, mesh/material detail tiers, named clips and their phase ranges, foot/hand/look/tool sockets, bounds, semantic appearance states and dependencies. A machine prefab needs approach/stand/contact slots and prop sockets. Simulation definitions own slot capacity, action duration, authority and effects separately. Validate scale, coordinate conversion, finite transforms, sockets, clip coverage, legal transitions, prop handoffs, hash integrity and disposal. A cosmetic asset revision cannot change production balance.
 

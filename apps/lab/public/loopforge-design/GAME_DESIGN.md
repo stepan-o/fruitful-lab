@@ -5113,6 +5113,8 @@ See [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRE
 
 # Agents: character, movement and contact
 
+Current candidate: [Meshy LIMEN review](production/LIMEN_MESHY_REVIEW.md), with source/derivative provenance and explicit clip/material limits. It does not replace main-play agents yet.
+
 12 October 2026. Current direction; implementation status is explicit below. Companion to [the first-turn contract](FIRST_TURN_ENGINE.md) and [the room scale plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
 
 ## Decision
@@ -5158,7 +5160,7 @@ Hard shell pieces follow their rigid mechanical bones. Model articulation cleara
 | Multi-view image-to-3D, then Blender cleanup | Optional acceleration experiment using a consistent reference turnaround | Generated hidden surfaces, joint separation, hands, texture lighting and animation topology still need review and repair |
 | Purchased generic robot or unedited generated mesh | Possible temporary reference/benchmark, not the selected Loopforge cast | A technically usable model can still miss the character completely |
 
-Meshy's current multi-image API supports several views, PBR maps and GLB output; that makes it a plausible candidate experiment, not a proven winner for Loopforge. Hunyuan3D 2.1 provides an alternative shape/PBR pipeline; its published memory requirements make it a separate offline/GPU production decision. No vendor account, paid generation run, model download or new authoring installation has been performed in this rethink. Blender was not found on this task's shell PATH. Establish that toolchain before claiming automated mesh production is available.
+Meshy's current multi-image API supports several views, PBR maps and GLB output; that makes it a plausible candidate experiment, not a proven winner for Loopforge. Hunyuan3D 2.1 provides an alternative shape/PBR pipeline; its published memory requirements make it a separate offline/GPU production decision. The initial rethink did not select a vendor. The owner subsequently generated and rigged LIMEN in Meshy; its runtime derivative is now reviewed at `/stepanoskin/loopforge/play/agent-test/limen`. Blender was not found on this task's shell PATH. Establish that toolchain before claiming automated mesh production is available.
 
 ### Next production gate: one worker, fully resolved
 
@@ -5234,7 +5236,7 @@ One Babylon engine, one active room and one pose update feed all three CCTV pass
 
 ## Asset package and production pipeline
 
-Use Blender or equivalent offline authoring for measured turnaround → low-poly silhouette → UV/material bake → rig → contact clips → GLB export → actual Babylon review. Image generation can help designs and surface art; it cannot guarantee a usable rig, topology, correct unseen surfaces or synchronized contacts by itself. No model vendor is selected and no purchase is required by this proposal.
+Use Blender or equivalent offline authoring for measured turnaround → low-poly silhouette → UV/material bake → rig → contact clips → GLB export → actual Babylon review. Image generation can help designs and surface art; it cannot guarantee a usable rig, topology, correct unseen surfaces or synchronized contacts by itself. The owner has now selected Meshy for a first LIMEN candidate; worker and remaining-supervisor authoring decisions are still open.
 
 A character prefab needs a versioned source/model, compatible rig ID, mesh/material detail tiers, named clips and their phase ranges, foot/hand/look/tool sockets, bounds, semantic appearance states and dependencies. A machine prefab needs approach/stand/contact slots and prop sockets. Simulation definitions own slot capacity, action duration, authority and effects separately. Validate scale, coordinate conversion, finite transforms, sockets, clip coverage, legal transitions, prop handoffs, hash integrity and disposal. A cosmetic asset revision cannot change production balance.
 

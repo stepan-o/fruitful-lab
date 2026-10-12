@@ -41,7 +41,7 @@ Gameplay configuration separately owns footprint, approach slots, occupancy/capa
 4. Pin authoring/export/encoding tools and preserve reproducible source recipes. Use official glTF validation plus project-specific checks. Geometry compression is optional until measured useful.
 5. Add a local review route in the actual viewer: orbit, neutral/final light, bounds, worker contacts, animation states, attachment swaps, detail tiers and performance readouts.
 
-No new CDN is needed for the first kits. Use the existing Git-backed immutable files on Vercel. Object storage becomes useful if binary churn/library size warrants it; the package contract should survive that move.
+The owner is moving asset storage to S3 with CloudFront delivery to avoid repeating binary libraries in code deployments. CloudFront account verification is pending. LIMEN’s private source is already in S3; the owner explicitly approved a temporary optimized app-hosted `loopforge-limen` pack. Keep the immutable manifest contract and migrate delivery at the asset boundary once the CDN is ready. Remove migrated files from deployment output as well as changing URLs. See [LIMEN Meshy review](production/LIMEN_MESHY_REVIEW.md).
 
 ## First package and gates
 

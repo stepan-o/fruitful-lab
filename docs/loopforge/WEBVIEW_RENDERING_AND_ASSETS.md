@@ -49,6 +49,8 @@ All lamp geometry, illuminated surface and shadow direction must share the same 
 
 ## Asset contract and CDN
 
+12 October: S3 is the selected source store and CloudFront the intended runtime CDN; account verification is still pending. The owner approved temporarily shipping the optimized 4.87 MB LIMEN GLB with the app. Its separate lazy review uses the existing Babylon loader and checksum manifest. See [LIMEN model and delivery contract](production/LIMEN_MESHY_REVIEW.md).
+
 Preserve the current release model documented in `apps/lab/assets/README.md`: optimized bytes → content-hashed files → immutable manifest → short-cached pointer. Files/manifests use one-year immutable caching; pointers use 30-second browser / 60-second edge freshness plus 30-second edge stale-while-revalidate. A CDN improves delivery, not draw calls or GPU memory.
 
 Extend the schema deliberately for render assets. Each room package should declare:
@@ -68,7 +70,7 @@ Publish and verify every dependency before switching the pointer. Pin a complete
 
 Load the first selected room plus the shared worker kit; the prebuilt game starts at the producer console. Fetch detailed rooms on selection/unlock, not all at startup. Use a bounded cache for revisits and a lightweight whole-floor summary. One engine and room graph supply all three camera passes; update simulation and poses once, and budget total passes/targets rather than treating each feed as a separate allowance. On small screens render only the active angle. Keep loading and camera choice independent of simulation tick ownership.
 
-Track retained deployment storage separately from download traffic and GPU memory. Shipping the public media library inside every preview also retains that deployment's static output. Batch preview publishing, audit output size and review retention of obsolete previews while preserving active reviews, production and needed rollback releases. Before large model/material packs multiply this footprint, evaluate a shared immutable media origin so code deployments reference versioned assets instead of carrying the whole library. An external origin still needs dependency validation, cache rules and a retention policy; it is not a substitute for them. See [Vercel deployment storage](https://vercel.com/docs/deployment-storage). No storage deletion or hosting migration is performed by this pass.
+Track retained deployment storage separately from download traffic and GPU memory. Shipping the public media library inside every preview also retains that deployment's static output. Batch preview publishing, audit output size and review retention of obsolete previews while preserving active reviews, production and needed rollback releases. Migrate to the selected shared S3/CloudFront origin so code deployments reference versioned assets instead of carrying the whole library, once verification is resolved. An external origin still needs dependency validation, cache rules and a retention policy; it is not a substitute for them. See [Vercel deployment storage](https://vercel.com/docs/deployment-storage). No storage deletion or hosting migration is performed by this pass.
 
 ## Babylon-specific optimization order
 

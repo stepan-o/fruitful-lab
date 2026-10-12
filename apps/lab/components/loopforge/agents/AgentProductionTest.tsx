@@ -41,7 +41,7 @@ export default function AgentProductionTest(){
    </section>
    <aside className={styles.controls} aria-label='Production test controls'>
     <span className={styles.kicker}>The same truth. Three cameras.</span>
-    <h2>Watch the difference.</h2><p>A bounded production take. These interactions do not change your game save.</p>
+    <Link className={styles.modelLink} href="/stepanoskin/loopforge/play/agent-test/limen">New · Inspect the Meshy LIMEN model →</Link><h2>Watch the difference.</h2><p>A bounded production take. These interactions do not change your game save.</p>
     <label>Interaction<select value={config.kind} disabled={!ready} onChange={e=>reset({...config,kind:e.target.value as TestConfig['kind']})}><option value='gate'>01 · Inspection & release</option><option value='transfer'>02 · Cradle transfer</option><option value='intervention'>03 · Supervisor & worker</option></select></label>
     <div className={styles.duo}><button aria-pressed={config.supervisor==='limen'} disabled={!ready} onClick={()=>reset({...config,supervisor:'limen'})}>LIMEN</button><button aria-pressed={config.supervisor==='stiletto'} disabled={!ready} onClick={()=>reset({...config,supervisor:'stiletto'})}>STILETTO</button></div>
     <p className={styles.intent}>{config.supervisor==='limen'?'Check the worker. Hold the queue. Release on procedure.':'Cut the delay. Move the worker. Keep the line fed.'}</p>

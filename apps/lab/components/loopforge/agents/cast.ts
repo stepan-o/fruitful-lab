@@ -27,7 +27,8 @@ const wp=(p:readonly number[])=>new Vector3(...worldPoint(p[0]/1000,p[2]/1000)).
 export async function loadCast(stage:CharacterStage,signal:AbortSignal,progress:(s:string)=>void){
  const {scene,shadow}=stage,started=performance.now(),packs=new Map<string,Pack>(),puppets=new Map<string,Puppet>();let bytes=0,disposed=false,mode:'skeletal'|'hybrid'='hybrid';
  const resources:AssetContainer[]=[];
- async function fetchAsset(id:string){const entry=manifest.assets[id as keyof typeof manifest.assets].variants[0];const integrity='sha256-'+btoa(String.fromCharCode(...entry.sha256.match(/../g)!.map(x=>parseInt(x,16))));const r=await fetch(entry.src,{signal,integrity,credentials:'omit'});if(!r.ok)throw new Error(`Unable to load ${id}`);bytes+=entry.bytes;return r;}
+ // Same-origin requests retain the viewer's protected-preview session; integrity still verifies every asset.
+ async function fetchAsset(id:string){const entry=manifest.assets[id as keyof typeof manifest.assets].variants[0];const integrity='sha256-'+btoa(String.fromCharCode(...entry.sha256.match(/../g)!.map(x=>parseInt(x,16))));const r=await fetch(entry.src,{signal,integrity,credentials:'same-origin'});if(!r.ok)throw new Error(`Unable to load ${id}`);bytes+=entry.bytes;return r;}
  try{
   // Bounded sequential decode prevents eight simultaneous GLB parsers on phones.
   for(const name of [...groups,'limen','stiletto',...groups.map(x=>x+'-low')]){progress('Loading '+name.replaceAll('-',' ')+'…');const raw=await (await fetchAsset(name)).arrayBuffer();if(signal.aborted)throw new DOMException('Aborted','AbortError');const container=await LoadAssetContainerAsync(new Uint8Array(raw),scene,{pluginExtension:'.glb',name:name+'.glb'});resources.push(container);const rig=await (await fetchAsset(name+'-rig')).json() as Rig;

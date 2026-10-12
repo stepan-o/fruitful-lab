@@ -13,6 +13,10 @@ Production experiment on the existing prebuilt factory, not approval of the fina
 - [x] Update the design/engine records and prepare the scoped draft review. Hosting verification is reported with the PR.
 - [ ] Certify physical-phone frame times, GPU-memory disposal soak and deliberately interrupted-load recovery before promoting these characters into the game.
 
+## Owner review outcome
+
+The owner rejected this cast visually: bodies are clumsy, overly spherical and lack convincing surface construction. This test remains an engineering benchmark. Replace the models through the [worker-first authoring gate](../AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md#model-direction-reset-after-production-review); do not expand the current geometry recipe or promote it into main play. The replacement pass is planned, not implemented.
+
 ## Art contract
 
 Workers: industrial skull/goggle face, ribbed torso, exposed actuator rods, repair plates and separate knuckles. Their heads must stay subordinate to their bodies. LIMEN: broad shoulder caps, heavy greaves, skull jaw/teeth, harness, pouches, restrained cyan optics. STILETTO: long legs, narrow waist, black polished shell, continuous angular red visor, blade forearms. Fine detail cannot substitute for the silhouettes.

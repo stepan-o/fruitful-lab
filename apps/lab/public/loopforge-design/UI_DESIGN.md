@@ -2789,6 +2789,8 @@ No command, balance, transport schema or deterministic kernel changes. End-to-en
 
 # Webview: rendering, assets and delivery
 
+**Character art review — 12 October:** the owner rejected the production-test bodies as clumsy, overly spherical and poorly textured. The import/action pipeline remains useful; its meshes are engineering stand-ins. The next pass is one deliberately modelled, UV-unwrapped and textured mechanical worker, reviewed as an actual animated asset before variants or supervisors. Blender-led authoring is recommended; image-to-3D is an optional starting-mesh experiment with the same cleanup and acceptance gates. See [the revised character direction](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md#model-direction-reset-after-production-review).
+
 **Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Main-play figures remain placeholders. The separate `/play/agent-test` review now supplies offline-authored GLB worker/LIMEN/STILETTO rigs, paired contacts and a bounded deterministic trace; general BDI and main-game integration remain open. See [the production-test record](production/AGENT_PRODUCTION_TEST.md).
 
 
@@ -2804,7 +2806,7 @@ Keep Babylon.js for the shared factory world, rendered by default as one selecte
 
 This updates the earlier aspiration for a wholly procedural visual world. The owner now explicitly allows painted walls and objects alongside modeled objects. The accepted spatial layout, physical scale, room connections and common 15 m height remain fixed. Visual calibration must not silently redesign them.
 
-React/Next.js continues to own focused decision interfaces, semantic controls and documents. Babylon.js 9.30.0 is installed for the separate prebuilt-floor calibration study. No renderer replacement, framework upgrade or new render abstraction is justified by this pass. Pin compatible loaders when imported models are introduced. WebGPU can be evaluated later; it is not a prerequisite for the art direction or a promised speedup.
+React/Next.js continues to own focused decision interfaces, semantic controls and documents. Babylon.js 9.30.0 is installed for the separate prebuilt-floor calibration study. No renderer replacement, framework upgrade or new render abstraction is justified by this pass. The imported-character path pins the matching Babylon 9.30.0 glTF loader. WebGPU can be evaluated later; it is not a prerequisite for the art direction or a promised speedup.
 
 ## Current code and proposed work
 
@@ -2813,10 +2815,10 @@ React/Next.js continues to own focused decision interfaces, semantic controls an
 | Integer 20 Hz prebuilt-floor calibration kernel, local host and individual worker records | Economy/task records for pay claims, if gameplay design approves their rules |
 | Shared spatial map, build/production camera, native lobby desk kit and authored lobby surfaces | Extend calibrated kits to the other rooms; imported model pipeline |
 | Static mesh batching, instanced workers/belt, adaptive pixels, cached shadows, scoped desk lamps and idle/demand rendering | Room/bay visibility and detail tiers verified against representative camera movement |
-| Immutable image/audio/JSON media releases on Vercel CDN | Typed GLB/model and KTX2/texture asset support, including dependency validation |
+| Immutable image/audio/JSON and embedded GLB releases on Vercel CDN; character model/rig validation | KTX2/texture asset support and broader room-prefab dependency validation |
 | Authored console images and a navigable hybrid lobby calibration | Complete task-driven room behaviour and remaining authored rooms |
 
-The media schema currently rejects GLB/KTX2. Do not hide those bytes in image/JSON entries or imply the existing image optimizer can author game materials. The first native kit deliberately uses supported image entries; the model/texture schema extension remains future work.
+The character production test added explicit embedded GLB model entries and semantic validation. KTX2 remains future work. Do not hide unsupported texture containers in image/JSON entries or imply the image optimizer can author game materials. The original native room kit still uses image entries.
 
 ## Model, paint or animate
 
@@ -2847,7 +2849,7 @@ Extend the schema deliberately for render assets. Each room package should decla
 - Animation clips and semantic attachment points: worker seat, hand contact, paper output, lamp, queue entrance.
 - Source artwork, modeling/generation provenance and reproducible export recipe outside the public runtime pack.
 
-GLB is the proposed model interchange format. Keep large shared textures reusable across kits. KTX2 is the proposed runtime GPU-texture container; assess encoder mode and actual transcoded quality separately for colour and normal/data maps. Use sRGB for colour and linear handling for data maps. A download-small WebP is still expanded when used as a GPU texture. At 2048², one uncompressed RGBA8 texture is about 16 MiB before mipmaps, roughly 21.3 MiB with a full mip chain; several material maps multiply that cost.
+GLB is the implemented character interchange format and the proposed room-model format. Keep large shared textures reusable across kits. KTX2 is the proposed runtime GPU-texture container; assess encoder mode and actual transcoded quality separately for colour and normal/data maps. Use sRGB for colour and linear handling for data maps. A download-small WebP is still expanded when used as a GPU texture. At 2048², one uncompressed RGBA8 texture is about 16 MiB before mipmaps, roughly 21.3 MiB with a full mip chain; several material maps multiply that cost.
 
 Use lossless intermediate maps and inspect compressed normals, linework, lettering and gradients. Do not blindly run every material map through the reader's lossy WebP recipe. Self-host matching decoder resources or pin their trusted origin; account for decoder startup and memory in measurement.
 
@@ -2986,6 +2988,8 @@ See [Lobby visual pass](LOBBY_VISUAL_PASS_2026-10-11.md) for the review checklis
 
 # Producing room assets and prefabs
 
+**Character art review — 12 October:** the owner rejected the production-test bodies as clumsy, overly spherical and poorly textured. The import/action pipeline remains useful; its meshes are engineering stand-ins. The next pass is one deliberately modelled, UV-unwrapped and textured mechanical worker, reviewed as an actual animated asset before variants or supervisors. Blender-led authoring is recommended; image-to-3D is an optional starting-mesh experiment with the same cleanup and acceptance gates. See [the revised character direction](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md#model-direction-reset-after-production-review).
+
 **Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Main-play figures remain placeholders. The separate `/play/agent-test` review now supplies offline-authored GLB worker/LIMEN/STILETTO rigs, paired contacts and a bounded deterministic trace; general BDI and main-game integration remain open. See [the production-test record](production/AGENT_PRODUCTION_TEST.md).
 
 
@@ -3039,7 +3043,7 @@ First complete one source → export → inspect → publish cycle. Then automat
 
 The first `lobby.pay-claim-desk` is a reproducible Babylon recipe, versioned as `lobby-claim-hall/1`. `spatial/lobby.ts` records dimensions, sockets and placements; `lobby-scene.ts` assembles five instances and animates two staged clerks. Its four authored image surfaces use the existing `loopforge-lobby` immutable pack. Original PNGs and provenance stay outside runtime delivery. The feeder is a separately toggleable attachment. This establishes an inspectable native kit without prematurely extending the asset schema.
 
-Blender, a GLB loader, KTX2, imported-model validation, formal clip/detail-tier metadata and automated export remain unimplemented. Payroll economics remain separately designed. The current calibration does not claim queued worker tasks or live settlement. See [the visual-pass record](LOBBY_VISUAL_PASS_2026-10-11.md).
+For the room kit, Blender authoring, KTX2 and the broader prefab compiler remain unimplemented. The later character test supplies the pinned GLB loader, imported-model validation, clip metadata and a reproducible offline export recipe; its rejected geometry is not an art-approved prefab library. Payroll economics remain separately designed. The current calibration does not claim queued worker tasks or live settlement. See [the visual-pass record](LOBBY_VISUAL_PASS_2026-10-11.md).
 
 Primary references checked 10 October 2026: [Blender to Babylon via glTF](https://doc.babylonjs.com/features/featuresDeepDive/Exporters/Blender_to_glTF), [Khronos glTF Validator](https://github.com/KhronosGroup/glTF-Validator), [Babylon KTX2](https://doc.babylonjs.com/features/featuresDeepDive/materials/using/ktx2Compression/). Verify behavior against pinned export/runtime versions when implementing the first kit.
 
@@ -3377,6 +3381,58 @@ Call workers and supervisors **agents** because the intended simulation gives th
 
 Keep Babylon 9.30.0. The best next step is authored, rigged 3D characters in the existing procedural factory, with baked surface detail and deliberate animation. Authoring can use procedural modeling offline; it need not construct hundreds of little meshes in every browser. The goal is a movable, lightable character that matches the art from every CCTV angle. Flat sprites or generated video cannot supply reliable arbitrary views, shadows, contacts and gameplay timing. Native asset-driven illustrations remain valuable for briefings and major event cuts.
 
+## Model direction reset after production review
+
+12 October, owner review: the production-test models are too clumsy, too spherical and insufficiently textured. **The current cast fails the visual gate.** Keep its deterministic action fixture, import/validation pipeline and performance evidence as engineering tools. Do not expand or integrate these bodies as the accepted character style.
+
+### What the test got wrong
+
+The original art has connected mechanical anatomy: shaped shells over a narrower frame, recessed bearings, layered plates and purposeful empty space. LIMEN has a skull, fitted security armour and equipment; STILETTO has a continuous slim torso, long tapered limbs and swept forearm blades. Workers have coherent chest/pelvis assemblies and capable hands. Curved armour is appropriate; repeated isolated balls and capsules defining the whole body are not.
+
+The current `scripts/characters/author.mjs` uses scaled spheres for chest, head, limb covers and most joints. Changing their dimensions does not establish convincing part construction. Its texture coordinates project X/Y across every surface, collapsing depth-oriented faces, and `surface.mjs` adds a shared 256-pixel noise/scratch pattern. Nearly all body surfaces share one metallic response. Additional scratches, bevel segments or brighter lighting cannot repair those shape and material decisions.
+
+### Recommended replacement: authored mechanical characters
+
+Use **Blender-led mesh and material authoring**, with image-to-3D only as an optional candidate source. Blender is the production workspace, not an automatic quality upgrade: recreating the same sphere recipe there would fail for the same reason. Art-directed mesh editing, coherent surface maps and repeated actual-model review are the necessary work. Browser-side procedural code remains useful for assembly, state variation and animation; it should not invent the final bodies.
+
+| Body feature | Required construction |
+| --- | --- |
+| Head | Designed brow, cheek/jaw planes, recessed optics, neck connection and a convincing back. Preserve a skull-like worker/LIMEN face and STILETTO's narrow visor/helmet. |
+| Torso and pelvis | One coherent load-bearing assembly with tapered sections, overlapping shell panels and access covers; a narrower waist with visible suspension. |
+| Limbs | Shaped cross-sections and tapered forearm/shin shells around a lighter frame. Show where a shell ends and a moving linkage begins. |
+| Joints | Recessed hinge barrels, bearings, sockets and clearances appropriate to the motion; rounded parts remain only where their construction calls for them. |
+| Hands and feet | A palm, thumb, credible gripping fingers, ankle and articulated sole. Fit the same cradle and station contacts used in the engine. |
+| Wear | Damage follows exposure and use: paint loss at edges, grime inside recesses, oil near moving joints and polished contact surfaces. Avoid uniform noise over every material. |
+
+Use real geometry for silhouette, overhangs, deep cavities and moving parts. Bake shallow panel grooves, screws and small damage from detailed sources into normal maps. UV unwrap surfaces deliberately. A compact material atlas can still encode painted enamel, bare steel, brass and rubber separately through colour, roughness and metalness masks. Painted/coated regions must not inherit the same metallic response as exposed metal. Preserve readable planes and some quiet surfaces; detail should form a hierarchy rather than cover everything equally. Do not bake the concept art's fixed highlights or dramatic shadows into base colour.
+
+Hard shell pieces follow their rigid mechanical bones. Model articulation clearances and joint centres before texturing; cables and soft covers can use limited weighted deformation. Bake authoring constraints into clips. Preserve action names/contact semantics, but version a new rig if proportions or articulation require it; do not force the asset into the test's 17-bone rig. Foot planting, turns, grip timing and weight transfer are reviewed with the mesh, since a good static body can still become clumsy in motion.
+
+### Candidate production routes
+
+| Route | Role in this project | Main constraint |
+| --- | --- | --- |
+| Deliberately modelled Blender asset | Recommended production authority: exact shells, articulation, UVs, baked detail and export | Requires actual character-art work and visual iteration; scripting alone does not guarantee it |
+| Multi-view image-to-3D, then Blender cleanup | Optional acceleration experiment using a consistent reference turnaround | Generated hidden surfaces, joint separation, hands, texture lighting and animation topology still need review and repair |
+| Purchased generic robot or unedited generated mesh | Possible temporary reference/benchmark, not the selected Loopforge cast | A technically usable model can still miss the character completely |
+
+Meshy's current multi-image API supports several views, PBR maps and GLB output; that makes it a plausible candidate experiment, not a proven winner for Loopforge. Hunyuan3D 2.1 provides an alternative shape/PBR pipeline; its published memory requirements make it a separate offline/GPU production decision. No vendor account, paid generation run, model download or new authoring installation has been performed in this rethink. Blender was not found on this task's shell PATH. Establish that toolchain before claiming automated mesh production is available.
+
+### Next production gate: one worker, fully resolved
+
+1. **Reference:** resolve one worker's front, side and back in a consistent neutral pose, using existing room art. Define body proportions and joint clearances. A new illustration is a specification, not proof of a finished model.
+2. **Shape:** author the complete worker. Review actual mesh renders in neutral grey from front, rear, side and three-quarter views. It must already look mechanical with textures and glow disabled. Reject the silhouette before spending time on surface polish.
+3. **Surface:** unwrap and texture the same mesh; bake detailed source geometry into the delivery mesh. Inspect close-up and at actual CCTV size under neutral and factory lighting, including the alarm sweep.
+4. **Motion:** test walk/stop/turn, credential presentation and cradle lift/carry/set-down. Check shell intersections, feet and hands. The existing headless fixture remains the source of action timing and outcomes.
+5. **Delivery:** retain the detailed source outside public deployment, export validated GLB/material maps, and test in the existing viewer. Measure a close actor and 10/24/100-worker scenes at fixed resolution/camera settings; only then derive background meshes and shared animation tiers.
+6. **Expansion:** derive two worker variants from the accepted construction and material family. Build bespoke LIMEN and STILETTO bodies next; sharing contact semantics does not mean sharing a rescaled torso.
+
+Acceptance requires side-by-side original-art comparison and rendered-asset evidence: shape without textures, material response, all three CCTV angles, visible contact sequence and measured frame-time tails. A polished offline beauty render alone cannot pass the in-game gate. If the first worker still misses the art, escalate the modelling method or obtain specialist character-art input rather than repeat the primitive recipe across the cast.
+
+The performance strategy is better allocation of detail: shaped visible surfaces, baked microdetail, shared texture/mesh resources, spatially culled crowds, limited contact shadows and camera-specific detail. A richer offline source need not produce a heavier browser asset. This is a design objective to measure, not a promise that more detailed art will automatically run faster. Keep Babylon and the frontend-independent BDI/action contract.
+
+Primary production references checked 12 October: [Blender Studio modelling workflow](https://studio.blender.org/tools/artist-guide/asset-creation/modeling), [Blender baking](https://docs.blender.org/UATEST/manual/en/4.5/render/cycles/baking.html), [Meshy multi-image generation](https://docs.meshy.ai/en/api/multi-image-to-3d), [Hunyuan3D 2.1](https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1). Their documented capabilities do not establish a quality or speed result for our characters.
+
 ## Style pass: what must survive the translation
 
 Sources: original Loopforge character sheets and room interaction art, already published in the versioned `loopforge`, `loopforge-console` and `loopforge-supervisors` packs. These are references, not finished 3D turnarounds. Read shape, gesture and materials before ornamental grain.
@@ -3452,7 +3508,7 @@ The immutable asset manifest/CDN workflow now accepts self-contained GLB model e
 
 **Production test implemented — 12 October:** `/stepanoskin/loopforge/play/agent-test` reviews three worker variants, LIMEN and STILETTO in the real Security/Forge scene. Offline geometry/material recipes export validated GLB rigs and named clips. A bounded headless fixture owns paired reservations, gate inspection/release, cradle ownership and supervisor intervention/refusal. The review includes fixed-tick seeking, three cameras, original-art comparison and hybrid/all-skeletal diagnostics at 10/24/100 workers. [Execution and evidence record](production/AGENT_PRODUCTION_TEST.md).
 
-**Remaining:** owner approval of the cast; richer acting, planted locomotion and smooth transitions; general BDI perception/planning/navigation; first-turn integration; dynamic asset loading by cast membership and physical-device certification. The review route eagerly loads its small complete comparison cast (8.69 MiB of raw models/data) so switching paths is a controlled comparison. That is an author-bench exception, not the intended main-game loading policy. Main-play figures remain placeholders. No Blender dependency or KTX2 pipeline is claimed.
+**Remaining:** replace the visually rejected cast through the worker-first gate above; richer acting, planted locomotion and smooth transitions; general BDI perception/planning/navigation; first-turn integration; dynamic asset loading by cast membership and physical-device certification. The review route eagerly loads its small complete comparison cast (8.69 MiB of raw models/data) so switching paths is a controlled comparison. That is an author-bench exception, not the intended main-game loading policy. Main-play figures remain placeholders. No Blender dependency or KTX2 pipeline is claimed.
 
 **Economy consequence:** removing construction removes the prototype's immediate cash sink. Keep the existing opening funds and delivery income honestly; do not invent a replacement purchase or charge for prebuilt fixtures. Later funding/unlocks, payroll and engineering need a separate balance pass. Adviser choice, assignments, process controls, responses and permanent allocation still carry first-turn agency.
 

@@ -1,5 +1,7 @@
 # Webview: rendering, assets and delivery
 
+**Character art review — 12 October:** the owner rejected the production-test bodies as clumsy, overly spherical and poorly textured. The import/action pipeline remains useful; its meshes are engineering stand-ins. The next pass is one deliberately modelled, UV-unwrapped and textured mechanical worker, reviewed as an actual animated asset before variants or supervisors. Blender-led authoring is recommended; image-to-3D is an optional starting-mesh experiment with the same cleanup and acceptance gates. See [the revised character direction](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md#model-direction-reset-after-production-review).
+
 **Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Main-play figures remain placeholders. The separate `/play/agent-test` review now supplies offline-authored GLB worker/LIMEN/STILETTO rigs, paired contacts and a bounded deterministic trace; general BDI and main-game integration remain open. See [the production-test record](production/AGENT_PRODUCTION_TEST.md).
 
 
@@ -15,7 +17,7 @@ Keep Babylon.js for the shared factory world, rendered by default as one selecte
 
 This updates the earlier aspiration for a wholly procedural visual world. The owner now explicitly allows painted walls and objects alongside modeled objects. The accepted spatial layout, physical scale, room connections and common 15 m height remain fixed. Visual calibration must not silently redesign them.
 
-React/Next.js continues to own focused decision interfaces, semantic controls and documents. Babylon.js 9.30.0 is installed for the separate prebuilt-floor calibration study. No renderer replacement, framework upgrade or new render abstraction is justified by this pass. Pin compatible loaders when imported models are introduced. WebGPU can be evaluated later; it is not a prerequisite for the art direction or a promised speedup.
+React/Next.js continues to own focused decision interfaces, semantic controls and documents. Babylon.js 9.30.0 is installed for the separate prebuilt-floor calibration study. No renderer replacement, framework upgrade or new render abstraction is justified by this pass. The imported-character path pins the matching Babylon 9.30.0 glTF loader. WebGPU can be evaluated later; it is not a prerequisite for the art direction or a promised speedup.
 
 ## Current code and proposed work
 
@@ -24,10 +26,10 @@ React/Next.js continues to own focused decision interfaces, semantic controls an
 | Integer 20 Hz prebuilt-floor calibration kernel, local host and individual worker records | Economy/task records for pay claims, if gameplay design approves their rules |
 | Shared spatial map, build/production camera, native lobby desk kit and authored lobby surfaces | Extend calibrated kits to the other rooms; imported model pipeline |
 | Static mesh batching, instanced workers/belt, adaptive pixels, cached shadows, scoped desk lamps and idle/demand rendering | Room/bay visibility and detail tiers verified against representative camera movement |
-| Immutable image/audio/JSON media releases on Vercel CDN | Typed GLB/model and KTX2/texture asset support, including dependency validation |
+| Immutable image/audio/JSON and embedded GLB releases on Vercel CDN; character model/rig validation | KTX2/texture asset support and broader room-prefab dependency validation |
 | Authored console images and a navigable hybrid lobby calibration | Complete task-driven room behaviour and remaining authored rooms |
 
-The media schema currently rejects GLB/KTX2. Do not hide those bytes in image/JSON entries or imply the existing image optimizer can author game materials. The first native kit deliberately uses supported image entries; the model/texture schema extension remains future work.
+The character production test added explicit embedded GLB model entries and semantic validation. KTX2 remains future work. Do not hide unsupported texture containers in image/JSON entries or imply the image optimizer can author game materials. The original native room kit still uses image entries.
 
 ## Model, paint or animate
 
@@ -58,7 +60,7 @@ Extend the schema deliberately for render assets. Each room package should decla
 - Animation clips and semantic attachment points: worker seat, hand contact, paper output, lamp, queue entrance.
 - Source artwork, modeling/generation provenance and reproducible export recipe outside the public runtime pack.
 
-GLB is the proposed model interchange format. Keep large shared textures reusable across kits. KTX2 is the proposed runtime GPU-texture container; assess encoder mode and actual transcoded quality separately for colour and normal/data maps. Use sRGB for colour and linear handling for data maps. A download-small WebP is still expanded when used as a GPU texture. At 2048², one uncompressed RGBA8 texture is about 16 MiB before mipmaps, roughly 21.3 MiB with a full mip chain; several material maps multiply that cost.
+GLB is the implemented character interchange format and the proposed room-model format. Keep large shared textures reusable across kits. KTX2 is the proposed runtime GPU-texture container; assess encoder mode and actual transcoded quality separately for colour and normal/data maps. Use sRGB for colour and linear handling for data maps. A download-small WebP is still expanded when used as a GPU texture. At 2048², one uncompressed RGBA8 texture is about 16 MiB before mipmaps, roughly 21.3 MiB with a full mip chain; several material maps multiply that cost.
 
 Use lossless intermediate maps and inspect compressed normals, linework, lettering and gradients. Do not blindly run every material map through the reader's lossy WebP recipe. Self-host matching decoder resources or pin their trusted origin; account for decoder startup and memory in measurement.
 

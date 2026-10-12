@@ -2,6 +2,8 @@
 
 Status: confirmed from local repository scan on 2026-05-15.
 
+2026-10-12 addendum: Financial Lab adds public `/tools/finance` and the hourly-cached Bank of Canada source endpoint `/api/tools/finance/rates`. Forecast, decision, monitoring and analytics boundaries are documented in `docs/brands/lab/financial-lab.md`; existing auth/backend contracts are unchanged.
+
 2026-10-09 addendum (working reference updated 2026-10-10): `/mexico-city` adds the public Mexico city discovery game illustrated prototype in `apps/lab`, with local two-player journals, source-backed stories and a dedicated immutable media pack. `/mexico-city/game-design` captures its direction and visual identity; proposed multiplayer remains separate from current local behavior. No auth, backend or experiment contracts change. See `docs/mexico-city-discovery/README.md` and `VERIFICATION.md` for current implementation and limits.
 
 2026-10-01 addendum: `apps/lab` now includes versioned media catalogs,

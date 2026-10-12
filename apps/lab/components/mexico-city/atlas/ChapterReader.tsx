@@ -1,202 +1,368 @@
 "use client";
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
-import { CHAPTERS, type Scene } from "@/lib/mexico-city/atlas/chapters";
-import { BOROUGHS } from "@/lib/mexico-city/atlas/content";
+import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, Check, BookOpen } from "lucide-react";
+import {
+  CHAPTERS,
+  loadChapter,
+  type Chapter,
+} from "@/lib/mexico-city/atlas/history";
 import { useLocale } from "@/lib/mexico-city/locale";
-import { AIRPORTS } from "@/lib/mexico-city/learning";
-import type { Track } from "@/lib/mexico-city/atlas/quizzes";
-import LearningMap from "../LearningMap";
-import PhotoReferences from "../PhotoReferences";
-import AtlasMap from "./AtlasMap";
 import Sources from "./Sources";
-function LessonMap({
-  scene,
-  explore,
+import GuidedDiagram from "./GuidedDiagram";
+import ArchiveFigure from "./ArchiveFigure";
+
+function ChapterQuiz({
+  chapter,
+  next,
+  back,
 }: {
-  scene: Scene;
-  explore: (id: string) => void;
+  chapter: Chapter;
+  next?: () => void;
+  back: () => void;
 }) {
   const { locale } = useLocale();
   const say = (es: string, en: string) => (locale === "es" ? es : en);
-  const [blend, setBlend] = useState(0),
-    [selected, setSelected] = useState(
-      scene.map === 5
-        ? "MEX"
-        : scene.map === 4
-          ? "1"
-          : scene.map === 3
-            ? "3"
-            : scene.map === 1
-              ? "west"
-              : "09015",
-    );
-  const options =
-    scene.map === 1
-      ? [
-          { id: "west", label: "Tlacopan · O / W" },
-          { id: "north", label: "Tepeyac · N" },
-          { id: "south", label: "Iztapalapa · S" },
-        ]
-      : scene.map === 3
-        ? ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "12"].map(
-            (id) => ({ id, label: id }),
-          )
-        : scene.map === 4
-          ? ["1", "2", "3"].map((id) => ({ id, label: `C${id}` }))
-          : scene.map === 5
-            ? AIRPORTS.map((a) => ({ id: a.id, label: a.name }))
-            : [];
+  const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [submitted, setSubmitted] = useState(false);
+  const correct = chapter.quiz.filter(
+    (q, i) => answers[i] === q.correct,
+  ).length;
+  const result = useRef<HTMLDivElement>(null);
   return (
-    <div className="at-lesson-map">
-      {scene.map === 2 ? (
-        <>
-          <AtlasMap compact onBorough={setSelected} answer={selected} />
-          <p className="at-map-selected">
-            {BOROUGHS.find((b) => b.id === selected)?.name} ·{" "}
-            {BOROUGHS.find((b) => b.id === selected)?.hook[locale]}
-          </p>
-          <button className="at-text-button" onClick={() => explore(selected)}>
-            {say("Explorar esta alcaldía", "Explore this borough")} →
+    <section
+      className="at-book-quiz"
+      id="chapter-quiz"
+      aria-labelledby="chapter-quiz-title"
+    >
+      <p className="at-eyebrow">
+        {say("CIERRA EL CAPÍTULO", "CLOSE THE CHAPTER")}
+      </p>
+      <h2 id="chapter-quiz-title" tabIndex={-1}>
+        {say("¿Qué te llevas de este viaje?", "What are you taking with you?")}
+      </h2>
+      <p>
+        {say(
+          "Tres preguntas sobre lo que acabas de leer. Puedes volver al texto antes de responder.",
+          "Three questions about what you have just read. You can revisit the text before answering.",
+        )}
+      </p>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          setSubmitted(true);
+          requestAnimationFrame(() => {
+            result.current?.focus();
+          });
+        }}
+      >
+        {chapter.quiz.map((q, i) => (
+          <fieldset key={i} disabled={submitted}>
+            <legend>
+              <span>{i + 1}.</span> {q.prompt[locale]}
+            </legend>
+            {q.options.map((o, j) => (
+              <label
+                className={submitted && j === q.correct ? "is-correct" : ""}
+                key={j}
+              >
+                <input
+                  type="radio"
+                  name={`question-${i}`}
+                  checked={answers[i] === j}
+                  onChange={() => setAnswers((a) => ({ ...a, [i]: j }))}
+                  required
+                />
+                {o[locale]}
+                {submitted && j === q.correct && (
+                  <Check size={18} aria-label={say("Correcta", "Correct")} />
+                )}
+              </label>
+            ))}
+            {submitted && (
+              <div className="at-book-answer">
+                <strong>
+                  {answers[i] === q.correct
+                    ? say("+25 puntos", "+25 points")
+                    : say("Una pista para repasar", "A clue to revisit")}
+                </strong>
+                <p>{q.explanation[locale]}</p>
+                <Sources ids={q.sources} compact />
+              </div>
+            )}
+          </fieldset>
+        ))}
+        {!submitted && (
+          <button
+            className="at-primary"
+            type="submit"
+            disabled={Object.keys(answers).length !== chapter.quiz.length}
+          >
+            {say("Comprobar respuestas", "Check answers")}{" "}
+            <ArrowRight size={18} />
           </button>
-        </>
-      ) : (
-        <LearningMap
-          stage={scene.map}
-          blend={blend}
-          selected={selected}
-          onSelect={setSelected}
-        />
-      )}
-      {scene.map === 0 && (
-        <label className="at-blend">
-          {say(
-            "Agua como referencia ↔ límites actuales",
-            "Water as reference ↔ current boundaries",
-          )}
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={blend}
-            aria-label={say("Comparar agua y ciudad", "Compare water and city")}
-            onChange={(e) => setBlend(Number(e.target.value))}
-          />
-        </label>
-      )}
-      {options.length > 0 && (
+        )}
+      </form>
+      {submitted && (
         <div
-          className="at-chips"
-          aria-label={say("Elegir conexión", "Choose connection")}
+          ref={result}
+          tabIndex={-1}
+          className="at-book-result"
+          role="status"
         >
-          {options.map((o) => (
-            <button
-              key={o.id}
-              aria-pressed={selected === o.id}
-              onClick={() => setSelected(o.id)}
-            >
-              {o.label}
-            </button>
-          ))}
+          <BookOpen size={28} />
+          <h3>{say("Capítulo completado", "Chapter completed")}</h3>
+          <p>
+            {correct} / {chapter.quiz.length}{" "}
+            {say("respuestas correctas", "correct answers")} ·{" "}
+            <strong>
+              +{correct * 25} {say("puntos", "points")}
+            </strong>
+          </p>
+          <small>
+            {say(
+              "Puntos de práctica: sólo se muestran aquí. No se guardan ni cambian tu cuenta.",
+              "Practice points: displayed here only. They are not saved and do not change your account.",
+            )}
+          </small>
+          <button className="at-primary" onClick={next ?? back}>
+            {next
+              ? say("Leer el siguiente capítulo", "Read the next chapter")
+              : say("Volver al índice", "Back to contents")}{" "}
+            <ArrowRight size={18} />
+          </button>
+          <button
+            className="at-text-button"
+            onClick={() => {
+              setAnswers({});
+              setSubmitted(false);
+              document.getElementById("chapter-quiz-title")?.focus();
+            }}
+          >
+            {say("Volver a practicar", "Practice again")}
+          </button>
         </div>
       )}
-      {scene.map === 4 && (
-        <p className="at-map-selected">
-          {selected === "1"
-            ? "Indios Verdes · Metro 3 ↔ Cuautepec"
-            : selected === "2"
-              ? "Constitución de 1917 · Metro 8 ↔ Santa Marta · Metro A"
-              : "Los Pinos / Constituyentes · Metro 7 ↔ Vasco de Quiroga"}
-        </p>
-      )}
-      {scene.map === 5 && (
-        <p className="at-map-selected">
-          {AIRPORTS.find((a) => a.id === selected)?.detail[locale]}
-        </p>
-      )}
-    </div>
+    </section>
   );
 }
-export default function ChapterReader({
-  id,
-  practice,
-  back,
-  explore,
-}: {
+type ReaderProps = {
   id: string;
-  practice: (track: Track) => void;
   back: () => void;
-  explore: (id: string) => void;
-}) {
+  openChapter: (id: string) => void;
+};
+export default function ChapterReader(props: ReaderProps) {
+  const { locale } = useLocale();
+  const [chapter, setChapter] = useState<Chapter | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    let current = true;
+    loadChapter(props.id)
+      .then((value) => {
+        if (current) {
+          setChapter(value);
+          setFailed(false);
+        }
+      })
+      .catch(() => {
+        if (current) setFailed(true);
+      });
+    return () => {
+      current = false;
+    };
+  }, [props.id, attempt]);
+  if (!chapter || chapter.id !== props.id)
+    return (
+      <div className="at-book" role="status">
+        <button className="at-text-button" onClick={props.back}>
+          {locale === "es" ? "Todos los capítulos" : "All chapters"}
+        </button>
+        <p>
+          {failed
+            ? locale === "es"
+              ? "No pudimos cargar el capítulo. Revisa tu conexión y vuelve a intentar."
+              : "The chapter could not load. Check your connection and try again."
+            : locale === "es"
+              ? "Abriendo el capítulo…"
+              : "Opening the chapter…"}
+        </p>
+        {failed && (
+          <button
+            className="at-primary"
+            onClick={() => {
+              setFailed(false);
+              setAttempt((a) => a + 1);
+            }}
+          >
+            {locale === "es" ? "Reintentar" : "Try again"}
+          </button>
+        )}
+      </div>
+    );
+  return (
+    <Book
+      key={chapter.id}
+      chapter={chapter}
+      back={props.back}
+      openChapter={props.openChapter}
+    />
+  );
+}
+function Book({
+  chapter,
+  back,
+  openChapter,
+}: Omit<ReaderProps, "id"> & { chapter: Chapter }) {
   const { locale } = useLocale();
   const say = (es: string, en: string) => (locale === "es" ? es : en);
-  const chapter = CHAPTERS.find((c) => c.id === id) ?? CHAPTERS[0];
-  const [step, setStep] = useState(0);
-  const scene = chapter.scenes[step];
+  const index = CHAPTERS.findIndex((c) => c.id === chapter.id);
+  const [active, setActive] = useState("");
+  const minutes = Math.max(
+    1,
+    Math.ceil(
+      chapter.sections
+        .flatMap((s) => s.paragraphs)
+        .reduce((n, p) => n + p.text[locale].split(/\s+/).length, 0) / 180,
+    ),
+  );
+  function jump(value: string) {
+    setActive(value);
+    const el = document.getElementById(value);
+    el?.scrollIntoView({ behavior: "auto", block: "start" });
+    el?.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
+  }
   return (
-    <section className="at-chapter-reader">
-      <button className="at-text-button" onClick={back}>
-        <ArrowLeft size={16} />
+    <article className="at-book">
+      <button className="at-text-button at-book-back" onClick={back}>
+        <ArrowLeft size={17} />
         {say("Todos los capítulos", "All chapters")}
       </button>
-      <header className="at-section-heading">
+      <header className="at-book-heading">
         <p className="at-eyebrow">
-          {chapter.title[locale]} · {step + 1} / {chapter.scenes.length}
+          {say("CAPÍTULO", "CHAPTER")} {String(index + 1).padStart(2, "0")} /{" "}
+          {String(CHAPTERS.length).padStart(2, "0")}· {chapter.period[locale]}
         </p>
-        <h1 data-page-heading tabIndex={-1}>
-          {scene.title[locale]}
-        </h1>
+        <h1 tabIndex={-1}>{chapter.title[locale]}</h1>
+        <p className="at-book-deck">{chapter.subtitle[locale]}</p>
+        <div className="at-book-meta">
+          <span>
+            {minutes} {say("min de lectura", "min read")}
+          </span>
+          <span>
+            {say(
+              "Documentos · diagramas · quiz",
+              "Documents · diagrams · quiz",
+            )}
+          </span>
+        </div>
       </header>
-      <div className="at-lesson-layout">
-        <LessonMap scene={scene} key={scene.title.es} explore={explore} />
-        <div className="at-lesson-copy">
-          <p className="at-lead">{scene.text[locale]}</p>
-          <div className="at-observe">
-            <span>↗</span>
-            <p>{scene.notice[locale]}</p>
-          </div>
-          {chapter.id === "peoples" && step === 2 && (
-            <PhotoReferences kind="map" />
-          )}
-          {chapter.id === "growth" && step === 2 && (
-            <PhotoReferences kind="revolucion" />
-          )}
-          <Sources ids={scene.sources} />
-          <div className="at-lesson-nav">
-            <button
-              disabled={step === 0}
-              className="at-round"
-              aria-label={say("Paso anterior", "Previous step")}
-              onClick={() => setStep((s) => s - 1)}
-            >
-              <ArrowLeft size={19} />
-            </button>
-            {step < chapter.scenes.length - 1 ? (
-              <button
-                className="at-primary"
-                onClick={() => {
-                  setStep((s) => s + 1);
-                  document
-                    .querySelector<HTMLElement>("[data-page-heading]")
-                    ?.focus();
-                  window.scrollTo({ top: 0, behavior: "instant" });
-                }}
-              >
-                {say("Seguir la pista", "Follow the clue")}
-                <ArrowRight size={17} />
+      <div className="at-book-layout">
+        <nav
+          className="at-book-contents"
+          aria-label={say("En este capítulo", "In this chapter")}
+        >
+          <label htmlFor="chapter-section">
+            {say("EN ESTE CAPÍTULO", "IN THIS CHAPTER")}
+          </label>
+          <select
+            id="chapter-section"
+            value={active}
+            onChange={(e) => jump(e.target.value)}
+          >
+            <option value="">
+              {say("Ir a una sección…", "Go to a section…")}
+            </option>
+            {chapter.sections.map((s, i) => (
+              <option key={s.id} value={`section-${s.id}`}>
+                {i + 1}. {s.title[locale]}
+              </option>
+            ))}
+            <option value="chapter-quiz">
+              {say("Quiz del capítulo", "Chapter quiz")}
+            </option>
+          </select>
+          <ol>
+            {chapter.sections.map((s, i) => (
+              <li key={s.id}>
+                <button
+                  aria-current={
+                    active === `section-${s.id}` ? "location" : undefined
+                  }
+                  onClick={() => jump(`section-${s.id}`)}
+                >
+                  <span>0{i + 1}</span>
+                  {s.title[locale]}
+                </button>
+              </li>
+            ))}
+            <li>
+              <button onClick={() => jump("chapter-quiz")}>
+                <span>↗</span>
+                {say("Quiz del capítulo", "Chapter quiz")}
               </button>
-            ) : (
-              <button
-                className="at-primary"
-                onClick={() => practice(chapter.track)}
-              >
-                <Sparkles size={18} />
-                {say("Probar lo aprendido", "Try what you learned")}
+            </li>
+          </ol>
+        </nav>
+        <div className="at-book-reading">
+          {chapter.sections.map((s, i) => (
+            <section
+              className="at-book-section"
+              id={`section-${s.id}`}
+              key={s.id}
+            >
+              <div className="at-book-section-heading">
+                <span>0{i + 1}</span>
+                <h2 tabIndex={-1}>{s.title[locale]}</h2>
+              </div>
+              {s.paragraphs.map((p, j) => (
+                <div key={j}>
+                  <div className="at-book-passage">
+                    <p>{p.text[locale]}</p>
+                    <Sources ids={p.sources} compact />
+                  </div>
+                  {j === 0 && s.diagram && (
+                    <GuidedDiagram kind={s.diagram} chapter={chapter.id} />
+                  )}
+                  {j === 1 && s.archive && <ArchiveFigure kind={s.archive} />}
+                </div>
+              ))}
+            </section>
+          ))}
+          <ChapterQuiz
+            key={chapter.id}
+            chapter={chapter}
+            next={
+              CHAPTERS[index + 1]
+                ? () => openChapter(CHAPTERS[index + 1].id)
+                : undefined
+            }
+            back={back}
+          />
+          <nav
+            className="at-book-pagination"
+            aria-label={say("Capítulos", "Chapters")}
+          >
+            {index > 0 && (
+              <button onClick={() => openChapter(CHAPTERS[index - 1].id)}>
+                <ArrowLeft size={18} />
+                <span>
+                  <small>{say("Anterior", "Previous")}</small>
+                  {CHAPTERS[index - 1].title[locale]}
+                </span>
               </button>
             )}
-          </div>
+            {index < CHAPTERS.length - 1 && (
+              <button onClick={() => openChapter(CHAPTERS[index + 1].id)}>
+                <span>
+                  <small>{say("Siguiente", "Next")}</small>
+                  {CHAPTERS[index + 1].title[locale]}
+                </span>
+                <ArrowRight size={18} />
+              </button>
+            )}
+          </nav>
         </div>
       </div>
-    </section>
+    </article>
   );
 }

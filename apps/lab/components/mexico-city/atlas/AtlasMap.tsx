@@ -48,20 +48,12 @@ export default function AtlasMap({
     streets: true,
   });
   const [camera, setCamera] = useState({ x: 0, y: 0, zoom: 1 });
-  const [dragging, setDragging] = useState(false);
   const focusKey = `${focus.borough ?? "city"}:${focus.anchor ?? ""}`;
   const [previousFocus, setPreviousFocus] = useState(focusKey);
   if (previousFocus !== focusKey) {
     setPreviousFocus(focusKey);
     setCamera({ x: 0, y: 0, zoom: 1 });
   }
-  const drag = useRef<{
-    x: number;
-    y: number;
-    px: number;
-    py: number;
-    moved: boolean;
-  } | null>(null);
   useEffect(() => {
     const r = root.current;
     if (!r) return;
@@ -95,7 +87,6 @@ export default function AtlasMap({
     y: point[1] * scale + ty,
   });
   const choose = (id: string) => {
-    if (drag.current?.moved) return;
     setCamera({ x: 0, y: 0, zoom: 1 });
     onBorough(id);
   };
@@ -138,48 +129,6 @@ export default function AtlasMap({
         className="at-map-surface"
         role="group"
         aria-label={say("Mapa de las 16 alcaldías", "Map of the 16 boroughs")}
-        onPointerDown={(e) => {
-          if (quiz) return;
-          drag.current = {
-            x: e.clientX,
-            y: e.clientY,
-            px: camera.x,
-            py: camera.y,
-            moved: false,
-          };
-          e.currentTarget.setPointerCapture(e.pointerId);
-        }}
-        onPointerMove={(e) => {
-          const d = drag.current;
-          if (!d || quiz) return;
-          if (Math.abs(e.clientX - d.x) + Math.abs(e.clientY - d.y) > 8)
-            d.moved = true;
-          if (d.moved) setDragging(true);
-          if (d.moved)
-            setCamera((v) => ({
-              ...v,
-              x: d.px + e.clientX - d.x,
-              y: d.py + e.clientY - d.y,
-            }));
-        }}
-        onPointerUp={(e) => {
-          if (e.currentTarget.hasPointerCapture(e.pointerId))
-            e.currentTarget.releasePointerCapture(e.pointerId);
-          const moved = drag.current?.moved;
-          setDragging(false);
-          drag.current = null;
-          if (!moved) {
-            const hit = document
-              .elementFromPoint(e.clientX, e.clientY)
-              ?.closest("[data-borough]")
-              ?.getAttribute("data-borough");
-            if (hit) choose(hit);
-          }
-        }}
-        onPointerCancel={() => {
-          setDragging(false);
-          drag.current = null;
-        }}
       >
         <defs>
           <pattern
@@ -193,7 +142,7 @@ export default function AtlasMap({
         </defs>
         <rect width="100%" height="100%" fill="url(#at-paper)" />
         <g
-          className={dragging ? "" : "at-map-camera"}
+          className="at-map-camera"
           transform={`translate(${tx} ${ty}) scale(${scale})`}
         >
           {geography.boroughs.map((b) => {
@@ -209,9 +158,7 @@ export default function AtlasMap({
                   quiz ? `${say("Zona", "Area")} ${index + 1}` : b.name
                 }
                 aria-pressed={answer === b.id || focus.borough === b.id}
-                onClick={(e) => {
-                  if (quiz || e.detail === 0) choose(b.id);
-                }}
+                onClick={() => choose(b.id)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
@@ -358,6 +305,57 @@ export default function AtlasMap({
                 ))}
               </div>
             </details>
+          )}
+          {camera.zoom > 1 && (
+            <div
+              className="at-map-directions"
+              role="group"
+              aria-label={say("Mover el encuadre", "Move the view")}
+            >
+              {[
+                {
+                  label: say("Ver al norte", "Look north"),
+                  symbol: "↑",
+                  x: 0,
+                  y: 100,
+                },
+                {
+                  label: say("Ver al oeste", "Look west"),
+                  symbol: "←",
+                  x: 100,
+                  y: 0,
+                },
+                {
+                  label: say("Ver al este", "Look east"),
+                  symbol: "→",
+                  x: -100,
+                  y: 0,
+                },
+                {
+                  label: say("Ver al sur", "Look south"),
+                  symbol: "↓",
+                  x: 0,
+                  y: -100,
+                },
+              ].map((d) => (
+                <button
+                  key={d.label}
+                  aria-label={d.label}
+                  onClick={() =>
+                    setCamera((v) => ({
+                      ...v,
+                      x: Math.max(-size.width, Math.min(size.width, v.x + d.x)),
+                      y: Math.max(
+                        -size.height,
+                        Math.min(size.height, v.y + d.y),
+                      ),
+                    }))
+                  }
+                >
+                  {d.symbol}
+                </button>
+              ))}
+            </div>
           )}
           <div className="at-map-tools">
             <button

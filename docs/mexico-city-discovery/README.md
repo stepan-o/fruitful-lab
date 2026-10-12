@@ -1,6 +1,10 @@
 # Mexico city discovery game
 
-Updated 10 October 2026. Public Lab route: `/mexico-city`. Working reference: **Mexico city discovery game**; the final name is undecided. First players: Susy and Stepan.
+Updated 12 October 2026. Public Lab route: `/mexico-city`. Working reference: **Mexico city discovery game**; the final name is undecided. First players: Susy and Stepan.
+
+## Current learning experience
+
+The public `/mexico-city/atlas` contains the guided history reader, borough directory, historical comparisons and language practice. See [the Atlas content map](ATLAS_CONTENT_MAP.md), [source register](SOURCES.md) and [verification](ATLAS_VERIFICATION.md). Its eight history chapters include a dedicated chinampas chapter, archival documents, visible citations and 24 chapter-closing questions. The older prototype descriptions below remain historical context; the content map defines the current learning behavior.
 
 ## Current field-game implementation
 

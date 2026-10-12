@@ -205,6 +205,72 @@
       "quality": 76,
       "alphaQuality": 85,
       "maxBytes": 450000
+    },
+    "archive-valley-1847": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-valley-1847.webp",
+      "widths": [
+        480,
+        960,
+        1280
+      ],
+      "quality": 64,
+      "maxBytes": 900000
+    },
+    "archive-viga-briquet": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-viga-briquet.webp",
+      "widths": [
+        480,
+        768,
+        990
+      ],
+      "quality": 80,
+      "maxBytes": 900000
+    },
+    "archive-chinampas": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-chinampas.webp",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 72,
+      "maxBytes": 700000
+    },
+    "archive-mendoza": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-mendoza.webp",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 72,
+      "maxBytes": 700000
+    },
+    "archive-epidemic": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-epidemic.webp",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 72,
+      "maxBytes": 700000
+    },
+    "archive-teotihuacan": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-teotihuacan.webp",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 72,
+      "maxBytes": 700000
     }
   }
 }

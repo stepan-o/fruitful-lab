@@ -1,6 +1,6 @@
 {
-  "checked": "2026-10-10",
-  "transformations": "Reduced to at most 1600px, converted to WebP; original framing retained. Responsive variants generated through the immutable asset pipeline. No generative edits to archival or modern reference images.",
+  "checked": "2026-10-12",
+  "transformations": "Responsive WebP variants; original framing retained. Optional guided detail crops are labeled in the reader. No generative edits to archival or modern reference images.",
   "references": [
     {
       "id": "archive-tenochtitlan",
@@ -34,6 +34,77 @@
       "license": "CC BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "notes": "This photograph and resized WebP copies remain under CC BY-SA 4.0. It was not used as an image-generation reference."
+    },
+    {
+      "id": "archive-valley-1847",
+      "file": "archive-valley-1847.webp",
+      "date": "1847",
+      "title": "Map of the valley of Mexico",
+      "credit": "M. L. Smith / E. L. F. Hardcastle · Library of Congress",
+      "source": "https://commons.wikimedia.org/wiki/File:Map_of_the_valley_of_Mexico,_with_a_plan_of_the_defences_of_the_capital_and_the_line_of_operations_of_the_United_States_Army_under_Major_General_Scott_in_August_and_September_1847_LOC_2018593099.jpg",
+      "collection": "https://www.loc.gov/item/2018593099/",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "notes": "Military map of the US invasion, not a reconstruction of the pre-Hispanic lake system."
+    },
+    {
+      "id": "archive-viga-briquet",
+      "file": "archive-viga-briquet.webp",
+      "date": "ca. 1885–1899",
+      "title": "Canal de la Viga",
+      "credit": "Abel Briquet · DeGolyer Library, Southern Methodist University",
+      "source": "https://commons.wikimedia.org/wiki/File:Canal_de_la_Viga_(23858284724).jpg",
+      "collection": "https://digitalcollections.smu.edu/cdm/ref/collection/mex/id/2838",
+      "license": "No known copyright restrictions",
+      "licenseUrl": "https://www.flickr.com/commons/usage/",
+      "notes": "Albumen photograph. SMU Libraries institutional Flickr Commons image; no AI reconstruction."
+    },
+    {
+      "id": "archive-chinampas",
+      "file": "archive-chinampas.webp",
+      "date": "1912 (publication)",
+      "title": "Chinampas",
+      "credit": "Karl Weule · Leitfaden der Völkerkunde, Leipzig · Wikimedia Commons",
+      "source": "https://commons.wikimedia.org/wiki/File:Chinampas.jpg",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "notes": "Publication date, not a confirmed camera date. Historical photograph, not a depiction from the pre-Hispanic period."
+    },
+    {
+      "id": "archive-mendoza",
+      "file": "archive-mendoza.webp",
+      "date": "ca. 1541",
+      "title": "Codex Mendoza, folio 2r",
+      "credit": "Indigenous painter-scribes · Bodleian Libraries, MS. Arch. Selden. A. 1",
+      "source": "https://commons.wikimedia.org/wiki/File:Codex_Mendoza_folio_2r.jpg",
+      "collection": "https://digital.bodleian.ox.ac.uk/objects/2fea788e-2aa2-4f08-b6d9-648c00486220/",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "notes": "Colonial manuscript representing an earlier foundation. The scan is not a map surveyed in 1325."
+    },
+    {
+      "id": "archive-epidemic",
+      "file": "archive-epidemic.webp",
+      "date": "1577",
+      "title": "Smallpox, Florentine Codex, book XII, folio 53v (detail)",
+      "credit": "Nahua painter-scribes / Bernardino de Sahagún · Biblioteca Medicea Laurenziana · scan via NYU Latinx Project",
+      "source": "https://commons.wikimedia.org/wiki/File:Healer_%28ticitl%29_tending_to_people_suffering_from_smallpox_in_1520_in_Book_12_of_the_Florentine_Codex%2C_1577.jpg",
+      "collection": "https://florentinecodex.getty.edu/en/book/12/folio/53v/images/37bdcd20-4f02-47e3-a2b8-a1a52e844472",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "notes": "Detail of manuscript folio 53v, showing illness and care. Original image reproduced without generated changes."
+    },
+    {
+      "id": "archive-teotihuacan",
+      "file": "archive-teotihuacan.webp",
+      "date": "1865–1866",
+      "title": "Teotihuacan: edificio en proceso de excavación",
+      "credit": "Léon Méhédin · Bibliothèque municipale de Rouen / Bibliothèque nationale de France",
+      "source": "https://commons.wikimedia.org/wiki/File:Vue_de_face_d'un_%C3%A9difice_pyramidal_en_cours_de_d%C3%A9gagement%2C_construit_sur_le_syst%C3%A8me_%22talud-tablero%22%2C_avec_un_escalier_d'acc%C3%A8s._Teotihuacan._-_btv1b100532826.jpg",
+      "collection": "https://catalogue.bnf.fr/ark:/12148/cb441976592",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "notes": "Nineteenth-century drawing showing an excavation, not an ancient drawing or a reconstruction of the complete city."
     }
   ]
 }

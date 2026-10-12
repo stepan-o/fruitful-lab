@@ -6,8 +6,8 @@ Editorial and implementation specification, 12 October 2026. The game name remai
 
 The game HUD opens **Atlas** at `/mexico-city/atlas`. Its five destinations are **Explorar / Explore**, **Aprender / Learn**, **Tiempo / Time**, **Retos / Challenges**, and **Náhuatl**. The return control leads to the game; guest/demo entry context is carried in an allowlisted query parameter. The atlas is public, requires neither a Google Maps key nor login, and does not invent a player identity.
 
-- Explore: city → one of 16 boroughs → one of its three reference places → an available place story. Camera transitions retain spatial continuity. Pan, zoom, recenter, Metro/Cablebús overlays and a borough-name key support exploration. A searchable directory provides an accessible alternative to small map regions. At local scales the existing sourced street and neighborhood overlay is reused where coverage exists.
-- Learn: six chapters, three scenes each. Each scene combines a short bilingual narrative, an illustrated interactive map, a noticing prompt and source links. A chapter ends by opening its related practice track.
+- Explore: city → one of 16 boroughs → one of its three reference places → an available place story. Camera transitions retain spatial continuity. Explicit zoom, directional framing, recenter, Metro/Cablebús overlays and a borough-name key support exploration. A searchable directory provides an accessible alternative to small map regions. At local scales the existing sourced street and neighborhood overlay is reused where coverage exists.
+- Learn: eight continuous, book-like chapters in a chronological sequence, with a standalone chinampas chapter. Each has three substantial sections, visible sources beside every passage, authentic archival figures, purpose-specific diagrams and its own three-question closing quiz. Contents links, previous/next chapter controls and a mobile section selector provide simple navigation. Figures never capture page-scroll gestures: buttons reveal explicitly named comparisons and image details.
 - Time: seven dated windows, manual scrub/selection, optional playback, reference-water/connections/current-boundaries layers, three local comparisons and archival evidence drawers.
 - Challenges: 40 questions across four tracks. Layout and borough recognition use an unlabeled numbered map plus named answer buttons. History and vocabulary use choices with explanatory feedback.
 - Náhuatl: eight revealable vocabulary cards and two word-building games, with a living-language context and source links.
@@ -16,14 +16,20 @@ Spanish is the initial language. All authored learning text, navigation, questio
 
 ## Learning sequence
 
-| Chapter | Three scenes | Reader should be able to… | Interaction / practice |
-| --- | --- | --- | --- |
-| 01 Antes del asfalto | Basin and high ground; connected lakes; Cuicuilco before the Mexica | Relate terrain and water to settlement, distinguish Texcoco from the entire basin, recognize a longer chronology | Water/current-city comparison, southern borough map → layout |
-| 02 Una cuenca, muchos pueblos | Multiple centers; island–shore connections; authorship of historical maps | Orient west to Tlacopan, north to Tepeyac, south to Iztapalapa; distinguish early colonial evidence from pre-conquest reconstruction | Select a causeway direction; open the 1524 archival map → history |
-| 03 ¿A dónde se fue el agua? | Centuries of drainage; La Viga as transport; water beneath today’s city | Explain gradual transformation and the difference between water supply and drainage | Compare water references and borough locations → history |
-| 04 Cuando los pueblos se volvieron ciudad | García Conde survey/publication; aerial evidence; an unfinished palace transformed | Compare sources at compatible scales and recognize changes without inventing missing imagery | Borough map; 1912/2018 photo pair → history |
-| 05 Encuentra las piezas | Basin/borough/neighborhood; geographic anchors; the southern city | Identify boroughs through position, landscape and history rather than labels alone | Current borough map → all-16 recognition |
-| 06 Muévete con sentido | Geographic Metro versus schematic diagram; Cablebús/light rail; airport distinctions | Connect major areas and distinguish network interchange from actual destination access | Select Metro lines, Cablebús corridors and airport connections → layout |
+| Chapter | Scope | Figures and closing practice |
+| --- | --- | --- |
+| 01 Un mundo entre lagos | Enclosed basin, rainfall and relief; five connected but different lakes; lakeside livelihoods | Basin cross-section, guided north/center/south lake diagram, 1847 valley map with date/purpose explained; geography quiz |
+| 02 Construir tierra, cuidar agua | Chinampas as constructed soil, canals and living edges; chapines, crops and markets; farming and habitat stewardship | Three-part chinampa cross-section, historical photograph published in 1912; ecosystem quiz |
+| 03 Antes de los mexicas | Cuicuilco and Xitle; Teotihuacan's urbanism and networks; Tula, Culhuacán and Tepanec centers | Guided comparison of urban centers; Léon Méhédin's 1865–1866 excavation drawing; chronology quiz |
+| 04 La isla que se volvió capital | Foundation traditions, 1428 alliance, tribute, Tlatelolco, causeways, dike and drinking-water supply | Mendoza folio 2r, 1524 Nuremberg map, alliance/network diagrams; political and spatial quiz |
+| 05 La conquista y la ciudad inundada | 1519 encounters and Malintzin; alliances, epidemic and siege; colonial capital, Huehuetoca 1607 and flood of 1629 | Florentine Codex 53v, siege/supply diagram, two-stage drainage explanation; causality quiz |
+| 06 Canales, mapas y promesas de tierra firme | Long colonial works and labor; 1847 military mapping; La Viga and 1900 Grand Canal | Guided drainage stages, 1847 map, Briquet photograph; infrastructure/evidence quiz |
+| 07 La capital se desborda | Legislative Palace/Revolution monument; 1929 reorganization; urban growth, 1969 Metro, 1975 drainage; subsidence and earthquake distinction | Kahlo's 1912 photograph and separated transport/supply/drainage networks; modern-city quiz |
+| 08 La cuenca sigue viva | Subsoil and urban water; living chinampas, Texcoco protection, reading historical layers outdoors | Guided subsoil process, 2018 monument photograph for comparison; synthesis quiz |
+
+The historical sequence introduces present-day places when useful, but does not replace the separate borough directory. Reading time is calculated from each localized manuscript; roughly 600–700 Spanish words per chapter precede figures, captions, sources and questions. These are original narrative syntheses grounded in the linked scholarship, not copied book chapters.
+
+The types and contents shelf live in `lib/mexico-city/atlas/history.ts`; individual manuscripts in `history/*.ts` load on demand. Dates, interpretations and evidence limits remain explicit. In particular, no single disputed Xitle eruption date is imposed, early colonial codices are not described as pre-conquest originals, and a historical photograph's publication date is distinguished from its camera date.
 
 ## Borough content inventory
 
@@ -75,6 +81,8 @@ The Uppsala map is early colonial evidence, not an untouched pre-conquest view. 
 
 ## Quiz and reward contract
 
+Each history chapter additionally closes with three dedicated questions (24 total), checked together with explained answers and a +25-per-correct-answer summary. Submitting locks that attempt; retry starts a fresh practice attempt.
+
 | Track | Questions | Skill |
 | --- | ---: | --- |
 | Layout | 8 | Borough position, direction, administrative scale, transit and airport distinctions |
@@ -89,11 +97,11 @@ Vocabulary: **atl, tepetl, xochitl, milli, ehecatl, tlalli, calli, metl**. Histo
 
 ## Source and imagery policy
 
-`lib/mexico-city/atlas/content.ts` holds the source register and borough profiles; `chapters.ts`, `stories.ts`, and `quizzes.ts` contain their evidence references. Core research uses UNAM, INAH, INPI, SEDEMA, official CDMX guides and transport operators. Detailed original-language documents remain linked rather than silently converted into archive assets.
+`lib/mexico-city/atlas/content.ts` holds the source register and borough profiles; `history/*.ts`, `chapters.ts`, `stories.ts`, and `quizzes.ts` contain their evidence references. Paragraphs, diagram explanations and quiz feedback show source links directly; image captions show author, date, reproduction basis and archive links. Core research uses UNAM, INAH, INPI, SEDEMA, official CDMX guides and transport operators. Detailed original-language documents remain linked rather than silently converted into archive assets.
 
-The atlas extends the immutable Mexico City art pack with four original interpretive sketches: Cuicuilco, La Viga, Milpa Alta and Peñón de los Baños. They use the built-in image generator, with exact prompts and provenance retained in `apps/lab/assets/sources/mexico-city/provenance.json`. The Peñón bath courtyard is explicitly a composite, not an identified building. Generated illustrations remain visibly interpretive. Available real evidence is the public-domain 1524 map, Guillermo Kahlo’s 1912 construction photograph and CarlosGalvanMex’s 2018 monument photograph (CC BY-SA 4.0). Their source/author/date/license/transformations remain in the existing media rights register and photo drawers. ICA and additional INAH archives are research links only; linking a catalog does not imply permission to reproduce its images.
+The atlas extends the immutable Mexico City art pack with four original interpretive sketches: Cuicuilco, La Viga, Milpa Alta and Peñón de los Baños. They use the built-in image generator, with exact prompts and provenance retained in `apps/lab/assets/sources/mexico-city/provenance.json`. The Peñón bath courtyard is explicitly a composite, not an identified building. Generated illustrations remain visibly interpretive. The history reader adds six archival assets: Smith/Hardcastle’s 1847 valley map; Briquet’s ca. 1885–1899 La Viga photograph; a chinampas photograph published in 1912; Mendoza folio 2r (ca. 1541); Florentine Codex book XII, folio 53v (1577); and Méhédin’s Teotihuacan drawing (1865–1866). It also uses the public-domain 1524 map, Guillermo Kahlo’s 1912 construction photograph and CarlosGalvanMex’s 2018 monument photograph (CC BY-SA 4.0). Their source/author/date/license/transformations remain in the existing media rights register and photo drawers. ICA and additional INAH archives are research links only; linking a catalog does not imply permission to reproduce its images.
 
-Transit is a dated learning layer, not live operation. Metro/Cablebús coverage comes from the existing sourced geographic overlay; the chapter identifies interchanges, Tren Ligero and three different airports. Operator links are provided for service changes. No fares, arrival times or live closure promises are added.
+Transit is a dated learning layer, not live operation. Metro/Cablebús coverage comes from the existing sourced geographic overlay; the existing learning materials identify interchanges, Tren Ligero and three different airports. Operator links are provided for service changes. No fares, arrival times or live closure promises are added.
 
 ## Technical scope and verification
 

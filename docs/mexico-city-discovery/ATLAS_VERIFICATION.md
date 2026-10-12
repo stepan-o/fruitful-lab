@@ -1,32 +1,29 @@
-# Illustrated Atlas verification
+# Atlas history reader verification
 
-12 October 2026 · `codex/illustrated-city-atlas` · base `fe07962`
+12 October 2026 · `codex/atlas-water-chapter` · base `2079cac` (PR #111)
 
 ## Scope
 
-`/mexico-city/play` stays the primary game map. Its HUD and learning links lead to the public illustrated `/mexico-city/atlas`. Spanish is the default; English covers the complete learning flow. No backend/auth/database or field-score changes.
+Eight continuous ES/EN history chapters replace the six short scene sequences. Chinampas have a dedicated second chapter. Each chapter has three sections, an archival figure and its own three-question concluding quiz. The manuscript has 5,175 Spanish narrative words and 4,474 English narrative words, excluding captions, sources and quiz content. Every factual passage and answer resolves a source link.
 
-Implemented inventory: 16 bilingual borough profiles, 48 approximate place anchors, six three-scene chapters, seven historical windows, three local comparisons, eight stories, eight vocabulary cards, 40 quiz questions and two place-name games. The content and source map is in [ATLAS_CONTENT_MAP.md](ATLAS_CONTENT_MAP.md).
+The reader adds 24 questions to the existing 40-question practice library. Scores are visual practice feedback only; neither account scores nor backend progress change. The game map, login and field-discovery rules are untouched. Atlas maps use explicit selection, zoom, framing and recenter controls rather than drag capture.
 
-## Automated checks
+## Automated validation
 
-- Immutable asset round-trip/integrity test passed. All 54 retained asset releases passed asset checks, including the new responsive Mexico City pack.
-- Full `API_BASE_URL=http://localhost:8000 LOOPFORGE_LOW_MEMORY=1 npm run ci`: 88 suites passed and one existing Sanctuary suite timed out (456 passing tests). No Atlas failure. The timeout prevented this combined command from reaching the build.
-- Serial rerun of the timed-out Sanctuary suite, Atlas data coverage/reward checks, Atlas quiz interactions and existing FieldApp interactions: four suites / 24 tests passed. The full run preceded one added asset-resolution test.
-- ESLint: new Atlas components/data clean; modified FieldApp retains three pre-existing image-element warnings and no errors.
-- Separate `API_BASE_URL=http://localhost:8000 LOOPFORGE_LOW_MEMORY=1 CI=1 npm run build` passed, including Next.js production type checking and route generation. A subsequent quiz scroll-into-view adjustment passed its two interaction tests; final hosting validation also covers that change and separated Cablebús labels.
-- A standalone `tsc --noEmit` check reports existing test-only typing issues in Loopforge, Sanctuary, Pinterest and GrowthBook tests; no Atlas diagnostics. Next.js production type checking passed.
+- Full `API_BASE_URL=http://localhost:8000 LOOPFORGE_LOW_MEMORY=1 npm run ci` passed: 90 suites, 459 tests, one snapshot, asset round-trip checks, integrity checks and Next.js production build. Jest reported an existing worker-teardown warning but exited successfully.
+- Atlas tests cover bilingual source coverage, chapter loading, valid answers, 2/3 correct → +50, locking submitted answers, navigation to the next chapter, guided diagram selection and no practice-score writes to localStorage.
+- Scoped ESLint passed for Atlas components and data. `git diff --check` passed.
+- 55 retained asset releases pass verification. Current Mexico City revision: `ffa2e9bddb11809adb490fba477e3d565ed238de41d9faf48de643eb15c12c89`.
+- After the full CI run, archive detail views were adjusted to request a larger responsive variant only when selected. A final production build covers that adjustment.
 
-## Browser checks
+## Reading and media contract
 
-The development experience was exercised at 320 and 390 CSS pixels: Spanish-default entry, English switch, lake/current-boundary comparison, timeline selection/play/pause, borough → place zoom, history wrong-answer retry → +25 → next question, and a completed Xochimilco word-building game. No horizontal document overflow in checked views. A successful answer disables repeat reward; navigation starts a fresh practice run. The reward tests confirm no new localStorage state is written.
+Chapter metadata is separate from eight dynamic manuscript imports. Opening a chapter fetches its manuscript, not the rest of the book. Later archival figures use native lazy loading and reserve intrinsic image dimensions. Details request sharper variants on demand. All historical source masters remain outside `public`; runtime delivery uses content-hashed responsive WebP variants.
 
-The built app was additionally checked at 390 and 768 CSS pixels: generated Cuicuilco story opened, Escape dismissed it and restored focus, browser Back dismissed a story, Spanish/English source captions remained attached, and Cablebús C2 selected the eastern corridor. Two close Cablebús labels were separated after this inspection.
+New source-image provenance is recorded in `assets/sources/mexico-city/references.json` and [SOURCES.md](SOURCES.md). Full reproductions preserve framing; enlarged details are visibly labeled. No generative edits, modern colorizations or invented documentary images are introduced. Original explanatory SVGs are labeled diagrams and distinguish relative positions/processes from measured historical geography.
 
-Phone screenshot: `/tmp/mexico-atlas-phone.jpg` (390 × 844, DPR 1). The initial Explore image selected `2c964bfe802bfaeb6ba85534ac649d0c8dd1c1338b1e87afed31e537a49a51d7.webp`; image bytes are recorded in the immutable manifest. Additional final hosted checks follow in the PR.
+Continuous looping motion is absent from chapter figures. Discrete diagram and crop transitions are disabled by the reader's reduced-motion media query. The older optional timeline playback remains separate and retains its existing pause/visibility behavior.
 
-## Evidence boundaries
+## Browser and delivery evidence
 
-The timeline is a sourced narrated comparison, not a measured urban-growth animation. Historical lake outlines and connecting paths are labeled schematic; modern borough outlines never masquerade as historical boundaries. Archival maps/photos have separate author/date/license records. Four new generated illustrations are labeled interpretive; original prompts are retained with the asset source masters. Additional aerial/INAH archives are linked as research, not copied without a reproduction basis.
-
-Atlas points are visual practice feedback only. They do not alter the account or field-discovery score. Transit layers are dated learning references with operator links, not a live service-status promise.
+Final production-browser checks and hosted preview results are recorded below before delivery. This is laboratory verification, not field Core Web Vitals; field LCP/INP/CLS remain unmeasured.

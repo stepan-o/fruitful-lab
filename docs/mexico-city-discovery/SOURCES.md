@@ -69,3 +69,23 @@ The [rights register](../../apps/lab/assets/sources/mexico-city/references.json)
 The source registry in `apps/lab/lib/mexico-city/atlas/content.ts` links each of the 16 borough profiles to official local guidance and each lesson to its evidence. Added research covers UNAM’s Uppsala-map study and García Conde plan catalog; INAH’s 2024 Cuicuilco reassessment and site museum; Araceli Peralta Flores on La Viga; UNAM on the Peñón bathing landscape; INPI on Milpa Alta; SEDEMA on Desierto de los Leones; Fundación ICA’s aerial archive (research link only). UNAM’s historical drainage study and Geofísica’s 2026 subsidence research separate drainage history from current groundwater processes.
 
 Additional vocabulary entries are UNAM GDN: [tlalli](https://gdn.iib.unam.mx/diccionario/tlalli), [calli](https://gdn.iib.unam.mx/diccionario/calli/16740), [metl](https://gdn.iib.unam.mx/diccionario/metl/279022). Full bilingual authored content, questions, and the evidence boundaries are specified in [ATLAS_CONTENT_MAP.md](ATLAS_CONTENT_MAP.md). New map pins are approximate learning anchors, not entrances or directions.
+
+
+## History reader source register — 12 October 2026
+
+All factual passages and closing quiz explanations resolve source identifiers in `apps/lab/lib/mexico-city/atlas/content.ts`. Citations are visible beside the passage, not hidden behind a disclosure. The eight individual manuscripts are in `history/*.ts`. Source links generally point to original Mexican scholarship or institutional interpretation (UNAM, INAH, AGN, Agricultura, CONANP), with FAO's agricultural-heritage account for the chinampa system. Original-language titles are retained in both interface languages.
+
+The expanded register includes Gurría Lacroix's *El desagüe del Valle de México durante la época novohispana* (1978), especially pp. 19–36 and 139–158; Carlos González Cabello's *El primer desagüe colonial en los lagos de la cuenca de México* (HistoriAgenda, 2016); Natalia V. Soto Coloballes on drained Texcoco land (2019); INAH's Cuicuilco reassessment (2024), Teotihuacan and Tula materials; UNAM Noticonquista essays by Marco Antonio Cervera Obregón, Berenice Alcántara Rojas, Iván Arriaga, Sandra Guevara and Federico Navarrete; Javier Delgado (coord., 2008) on metropolitan urbanization; and PUEC's urban-rivers study.
+
+### New reproduced documents
+
+| Asset | Creator / date | Original record and reproduction basis |
+| --- | --- | --- |
+| Valley map | M. L. Smith / E. L. F. Hardcastle, 1847 | [Library of Congress](https://www.loc.gov/item/2018593099/), public domain; military map, not a pre-Hispanic shoreline reconstruction |
+| La Viga | Abel Briquet, ca. 1885–1899 | [DeGolyer Library, SMU](https://digitalcollections.smu.edu/cdm/ref/collection/mex/id/2838), institutional Flickr Commons: no known copyright restrictions |
+| Chinampas | Karl Weule publication, 1912 | [Commons source record](https://commons.wikimedia.org/wiki/File:Chinampas.jpg), public domain; publication date, camera date unconfirmed |
+| Mendoza folio 2r | Indigenous painter-scribes, ca. 1541 | [Bodleian Libraries](https://digital.bodleian.ox.ac.uk/objects/2fea788e-2aa2-4f08-b6d9-648c00486220/), public-domain manuscript reproduction |
+| Florentine Codex XII, 53v | Nahua painter-scribes / Bernardino de Sahagún, 1577 | [Digital Florentine Codex](https://florentinecodex.getty.edu/en/book/12/folio/53v/images/37bdcd20-4f02-47e3-a2b8-a1a52e844472), public-domain manuscript detail via Commons/NYU; original scan, no modern colorization |
+| Teotihuacan excavation drawing | Léon Méhédin, 1865–1866 | [BnF catalog](https://catalogue.bnf.fr/ark:/12148/cb441976592), public domain; Rouen/BnF collection reproduced through Commons |
+
+The machine-readable author/date/license/source/collection register is `apps/lab/assets/sources/mexico-city/references.json`. Original framing is retained in the full view. Button-controlled details use labeled CSS crops, never generative modification. Responsive WebP files pass the repository's content-hash and byte-budget checks. These reproductions do not grant rights to unrelated images in the same archives.

@@ -3,6 +3,187 @@ export type Copy = { es: string; en: string };
 export const c = (es: string, en: string): Copy => ({ es, en });
 export const REVIEWED = "2026-10-12";
 export const SOURCES: Record<string, { title: string; url: string }> = {
+  drainageEighteenth: {
+    title:
+      "Jorge Gurría Lacroix · El desagüe en el XVIII y principios del XIX, pp. 139–158 · UNAM (1978)",
+    url: "https://historicas.unam.mx/publicaciones/publicadigital/libros/047/047_04_09_desague.pdf",
+  },
+  drainageWorks: {
+    title: "SICT · El desagüe del Valle de México",
+    url: "https://elmirador.sct.gob.mx/manos-a-la-obra/el-desague-del-valle-de-mexico",
+  },
+  hydraulicCity: {
+    title:
+      "Jorge Gurría Lacroix · La ciudad de México, pp. 19–36 · UNAM (1978)",
+    url: "https://historicas.unam.mx/publicaciones/publicadigital/libros/047/047_04_02_ciudadmexico.pdf",
+  },
+  firstDrain: {
+    title:
+      "Carlos González Cabello · El primer desagüe colonial en los lagos de la cuenca de México · HistoriAgenda (2016)",
+    url: "https://revistas.unam.mx/index.php/historiagenda/article/view/57072",
+  },
+  lakebed: {
+    title:
+      "Natalia V. Soto Coloballes · Terrenos desecados de Texcoco, 1912–1998 · UNAM (2019)",
+    url: "https://moderna.historicas.unam.mx/index.php/ehm/article/view/70695",
+  },
+  chinampas: {
+    title: "FAO · Chinampas Agricultural System in Mexico City · SIPAM (2017)",
+    url: "https://www.fao.org/giahs/giahs-around-the-world/mexico-chinampas-agricultural-system/en",
+  },
+  chapin: {
+    title: "Agricultura CDMX · El chapín, técnica de siembra ancestral",
+    url: "https://www.gob.mx/agricultura/cdmx/articulos/el-chapin-tecnica-de-siembra-ancestral?idiom=es",
+  },
+  archive1847: {
+    title:
+      "M. L. Smith / E. L. F. Hardcastle · Map of the valley of Mexico · Library of Congress (1847)",
+    url: "https://www.loc.gov/item/2018593099/",
+  },
+  archive1524: {
+    title:
+      "Friedrich Peypus, impresor · Tenochtitlan y Golfo de México · Newberry Library (1524)",
+    url: "https://commons.wikimedia.org/wiki/File:Map_of_Tenochtitlan_and_Gulf_of_Mexico,_1524.jpg",
+  },
+  archiveViga: {
+    title:
+      "Abel Briquet · Canal de la Viga · DeGolyer Library, SMU (ca. 1885–1899)",
+    url: "https://digitalcollections.smu.edu/cdm/ref/collection/mex/id/2838",
+  },
+  texcocoProtected: {
+    title: "CONANP · Programa de Manejo, Lago de Texcoco (2024; decreto 2022)",
+    url: "https://www.conanp.gob.mx/programademanejo/PMLagoDeTexcoco.pdf",
+  },
+  cuicuilcoLandscape: {
+    title: "INAH · Zona arqueológica de Cuicuilco",
+    url: "https://www.inah.gob.mx/zonas/zona-arqueologica-cuicuilco",
+  },
+  teotihuacan: {
+    title: "INAH · Historia breve de Teotihuacan (2009)",
+    url: "https://www.inah.gob.mx/boletines/historia-breve-de-teotihuacan",
+  },
+  teotihuacanCity: {
+    title: "INAH · Ciudad prehispánica de Teotihuacan",
+    url: "https://lugares.inah.gob.mx/es/node/6130",
+  },
+  teotihuacanEnd: {
+    title: "INAH · La historia de un colapso: el fin de la gran Teotihuacán",
+    url: "https://visitateotihuacan.inah.gob.mx/aprende/teotihuacan-colapso-final-fin/",
+  },
+  tula: {
+    title: "INAH · Zona arqueológica de Tula",
+    url: "https://lugares.inah.gob.mx/es/node/4360",
+  },
+  culhuacan: {
+    title: "INAH · Centro Comunitario Culhuacán",
+    url: "https://mediateca.inah.gob.mx/repositorio/islandora/object/museo%3A1518",
+  },
+  alliance: {
+    title:
+      "Marco Antonio Cervera Obregón · Los orígenes del Imperio Mexica · UNAM",
+    url: "https://www.noticonquista.unam.mx/amoxtli/1012/961",
+  },
+  tlatelolco: {
+    title: "INAH · Templo Mayor de Tlatelolco (2023)",
+    url: "https://www.inah.gob.mx/foto-del-dia/templo-mayor-de-tlatelolco",
+  },
+  tribute: {
+    title:
+      "Museo del Templo Mayor, INAH · Travesía 1: Antecedentes arqueológicos",
+    url: "https://www.templomayor.inah.gob.mx/images/home/tripticos/viajeros.pdf",
+  },
+  malintzin: {
+    title: "Berenice Alcántara Rojas · Marina–Malina–Malintzin–Malinche · UNAM",
+    url: "https://www.noticonquista.unam.mx/index.php/amoxtli/365/363",
+  },
+  siege: {
+    title: "Iván Arriaga · El inicio del asedio de México Tenochtitlan · UNAM",
+    url: "https://www.noticonquista.unam.mx/amoxtli/2746/2743",
+  },
+  coalition: {
+    title:
+      "UNAM, Noticonquista · Batallas, conquistas y rebeliones, la gran guerra de 1521",
+    url: "https://www.noticonquista.unam.mx/portada/semanal/2592",
+  },
+  epidemic: {
+    title: "Sandra Guevara · Pandemia en Tenochtitlan · UNAM (2020)",
+    url: "https://www.noticonquista.unam.mx/sites/default/files/2020-03/guevara_-_pandemia_-_final.pdf",
+  },
+  urbanGrowth: {
+    title:
+      "Javier Delgado, coord. · La urbanización difusa de la Ciudad de México · UNAM (2008)",
+    url: "https://publicaciones.geografia.unam.mx/index.php/ig/catalog/book/10",
+  },
+  rivers: {
+    title: "PUEC, UNAM · Rescate de ríos urbanos (2012)",
+    url: "https://www.puec.unam.mx/pdf/publicaciones_digitales/rescate_rios_digital.pdf",
+  },
+  capital1929: {
+    title: "UNAM · La creación del Departamento del Distrito Federal",
+    url: "https://librosoa.unam.mx/handle/123456789/2636",
+  },
+  metroHistory: {
+    title: "AGN · Inauguración del Metro, vía El Nacional (archivo de 1969)",
+    url: "https://www.gob.mx/agn/articulos/agn-recuerda-la-inauguracion-del-metro-via-el-nacional?idiom=es",
+  },
+  palace: {
+    title: "AGN · El proyecto inconcluso del Palacio Legislativo",
+    url: "https://www.gob.mx/agn/articulos/agnrecuerda-el-proyecto-inconcluso-del-palacio-legislativo-hoy-monumento-a-la-revolucion",
+  },
+  earthquake: {
+    title: "UNAM · El sismo de 1985 y la investigación científica (2025)",
+    url: "https://www.dgcs.unam.mx/boletin/bdboletin/2025_622.html",
+  },
+  urbanClimate: {
+    title: "Gaceta UNAM · Urbanización cambia clima de Ciudad de México (2021)",
+    url: "https://www.gaceta.unam.mx/urbanizacion-cambia-clima-de-ciudad-de-mexico/",
+  },
+  chinampaStudy: {
+    title:
+      "UNAM, Anales del Instituto de Biología · Chinampas y almácigos flotantes, 8(3), pp. 375–386",
+    url: "https://anales.ib.unam.mx/index.php/anales/es/article/view/335",
+  },
+  chinampaHistory: {
+    title: "UNAM, Decires · Historia de Xochimilco y sus chinampas",
+    url: "https://decires.cepe.unam.mx/index.php/decires/article/download/127/108/219",
+  },
+  chinampaRefuge: {
+    title:
+      "Ciencia UNAM · Ajolotes y chinampas en el rescate de Xochimilco (2022)",
+    url: "https://ciencia.unam.mx/leer/1251/ajolotes-y-chinampas-en-el-rescate-de-xochimilco",
+  },
+  axolotl: {
+    title:
+      "Liliana Morán / Elizabeth Cruz · Axolotes y chinampas: vida en equilibrio · UNAM (2025)",
+    url: "https://ciencia.unam.mx/contenido/infografia/279/axolotes-y-chinampas-vida-en-equilibrio",
+  },
+  archiveChinampas: {
+    title:
+      "Karl Weule, Leitfaden der Völkerkunde · Chinampas (publicación de 1912)",
+    url: "https://commons.wikimedia.org/wiki/File:Chinampas.jpg",
+  },
+  archiveMendoza: {
+    title:
+      "Bodleian Libraries · Códice Mendoza, MS. Arch. Selden. A. 1, folio 2r (ca. 1541)",
+    url: "https://digital.bodleian.ox.ac.uk/objects/2fea788e-2aa2-4f08-b6d9-648c00486220/",
+  },
+  florentine: {
+    title:
+      "Códice Florentino · libro XII, folio 53v (1577) · Biblioteca Medicea Laurenziana / Getty",
+    url: "https://florentinecodex.getty.edu/en/book/12/folio/53v/images/37bdcd20-4f02-47e3-a2b8-a1a52e844472",
+  },
+  conquestEnd: {
+    title: "Iván Arriaga · Julio–agosto de 1521: la caída de Tlatelolco · UNAM",
+    url: "https://www.noticonquista.unam.mx/index.php/amoxtli/2752/2750",
+  },
+  indigenousAfter: {
+    title: "Federico Navarrete · ¿Conquista, invasión o rebelión? · UNAM",
+    url: "https://www.noticonquista.unam.mx/amoxtli/2599/2592",
+  },
+  archiveMonument: {
+    title: "CarlosGalvanMex · Monumento a la Revolución (2018), CC BY-SA 4.0",
+    url: "https://commons.wikimedia.org/wiki/File:MONUMENTO_A_LA_REVOLUCION_CON_CIELO_AZUL.jpg",
+  },
   subsidence: {
     title: "UNAM Geofísica · Hundimiento del suelo en la CDMX (2026)",
     url: "https://geogaceta.geofisica.unam.mx/index.php/2026/05/18/el-hundimiento-del-suelo-en-la-zona-metropolitana-de-la-cdmx-alcanza-hasta-42-centimetros-por-ano/",

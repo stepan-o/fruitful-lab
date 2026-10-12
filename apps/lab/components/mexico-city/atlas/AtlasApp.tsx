@@ -411,10 +411,9 @@ function Atlas() {
         {location.screen === "chapters" &&
           (location.chapter ? (
             <ChapterReader
-              explore={(id) => go({ screen: "explore", borough: id })}
+              openChapter={(id) => go({ screen: "chapters", chapter: id })}
               key={location.chapter}
               id={location.chapter}
-              practice={practice}
               back={() => go({ screen: "chapters" })}
             />
           ) : (
@@ -434,8 +433,8 @@ function Atlas() {
                 </h1>
                 <p>
                   {say(
-                    "Seis capítulos. Entra por el principio o sigue la pista que te dé curiosidad.",
-                    "Six chapters. Start at the beginning or follow whatever sparks your curiosity.",
+                    "Ocho capítulos para seguir la historia del valle. Cada uno termina con su propio quiz.",
+                    "Eight chapters tracing the valley’s history. Each ends with its own quiz.",
                   )}
                 </p>
               </header>
@@ -457,7 +456,8 @@ function Atlas() {
                       <h2>{c.title[locale]}</h2>
                       <p>{c.subtitle[locale]}</p>
                       <span>
-                        {say("3 escenas · un reto", "3 scenes · one challenge")}
+                        {c.period[locale]} ·{" "}
+                        {say("Leer y practicar", "Read and practice")}
                         <ArrowRight size={18} />
                       </span>
                     </div>

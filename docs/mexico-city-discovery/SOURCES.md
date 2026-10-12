@@ -63,3 +63,9 @@ The three airports have geographic anchors; dashed airport links are connection 
 ## Archive and modern imagery
 
 The [rights register](../../apps/lab/assets/sources/mexico-city/references.json) records the source page, author, date, license and transformation of every non-generated image. Public-domain 1524 Newberry/Nuremberg map; public-domain Guillermo Kahlo construction photograph (1912); CarlosGalvanMex modern monument photograph (2018), CC BY-SA 4.0, including the distributed WebP variants. All are visibly credited in the interface. The modern photograph was not used as a generation reference. The new island vignette used only the public-domain map for historical context and the existing generated artwork for stylistic continuity. The illustration is labeled interpretive.
+
+## Atlas expansion — reviewed 12 October 2026
+
+The source registry in `apps/lab/lib/mexico-city/atlas/content.ts` links each of the 16 borough profiles to official local guidance and each lesson to its evidence. Added research covers UNAM’s Uppsala-map study and García Conde plan catalog; INAH’s 2024 Cuicuilco reassessment and site museum; Araceli Peralta Flores on La Viga; UNAM on the Peñón bathing landscape; INPI on Milpa Alta; SEDEMA on Desierto de los Leones; Fundación ICA’s aerial archive (research link only). UNAM’s historical drainage study and Geofísica’s 2026 subsidence research separate drainage history from current groundwater processes.
+
+Additional vocabulary entries are UNAM GDN: [tlalli](https://gdn.iib.unam.mx/diccionario/tlalli), [calli](https://gdn.iib.unam.mx/diccionario/calli/16740), [metl](https://gdn.iib.unam.mx/diccionario/metl/279022). Full bilingual authored content, questions, and the evidence boundaries are specified in [ATLAS_CONTENT_MAP.md](ATLAS_CONTENT_MAP.md). New map pins are approximate learning anchors, not entrances or directions.

@@ -153,6 +153,58 @@
       "quality": 76,
       "alphaQuality": 85,
       "maxBytes": 450000
+    },
+    "atlas-cuicuilco": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/atlas-cuicuilco.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "atlas-viga": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/atlas-viga.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "atlas-milpa": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/atlas-milpa.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "atlas-penon": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/atlas-penon.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
     }
   }
 }

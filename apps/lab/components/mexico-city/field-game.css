@@ -754,7 +754,7 @@
   padding-top: 22px;
   margin-top: 25px;
 }
-.mc-learning-links button {
+.mc-learning-links :is(button, a) {
   font-size: 12px;
 }
 .mc-bottom-nav {

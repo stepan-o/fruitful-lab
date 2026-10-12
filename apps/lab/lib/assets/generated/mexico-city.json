@@ -64,6 +64,162 @@
         }
       ]
     },
+    "atlas-cuicuilco": {
+      "kind": "image",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "src": "/media/files/4b76c9424744fab98bf580c06458fff5d14b1e02c7dd75f30085136a1fc58b8c.webp",
+          "mime": "image/webp",
+          "bytes": 11028,
+          "sha256": "4b76c9424744fab98bf580c06458fff5d14b1e02c7dd75f30085136a1fc58b8c",
+          "width": 256,
+          "height": 171
+        },
+        {
+          "src": "/media/files/cd17680018936c58e4e43649b2e11455fd672c7b6d1ca7dc71ca695fca7f8d49.webp",
+          "mime": "image/webp",
+          "bytes": 39410,
+          "sha256": "cd17680018936c58e4e43649b2e11455fd672c7b6d1ca7dc71ca695fca7f8d49",
+          "width": 512,
+          "height": 341
+        },
+        {
+          "src": "/media/files/a5799b4dd007c921cc58c572cf6329a3489ccabb0cb3bd1bb1e62cd4bd6364d5.webp",
+          "mime": "image/webp",
+          "bytes": 119618,
+          "sha256": "a5799b4dd007c921cc58c572cf6329a3489ccabb0cb3bd1bb1e62cd4bd6364d5",
+          "width": 960,
+          "height": 640
+        },
+        {
+          "src": "/media/files/74d85524c9a7254adbef50dd5fbea3dafbab85d78d220c137f60f424766bebcd.webp",
+          "mime": "image/webp",
+          "bytes": 186188,
+          "sha256": "74d85524c9a7254adbef50dd5fbea3dafbab85d78d220c137f60f424766bebcd",
+          "width": 1280,
+          "height": 853
+        }
+      ]
+    },
+    "atlas-milpa": {
+      "kind": "image",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "src": "/media/files/222ffb305ac7d85a2db8152626440492adc8cbb9e89fc1ee506dd9348929e9c6.webp",
+          "mime": "image/webp",
+          "bytes": 13806,
+          "sha256": "222ffb305ac7d85a2db8152626440492adc8cbb9e89fc1ee506dd9348929e9c6",
+          "width": 256,
+          "height": 171
+        },
+        {
+          "src": "/media/files/59edf9d22272f9a95c79eeef0ef82e82ea9b04fd9f19ee51d790b2542aa903d5.webp",
+          "mime": "image/webp",
+          "bytes": 49870,
+          "sha256": "59edf9d22272f9a95c79eeef0ef82e82ea9b04fd9f19ee51d790b2542aa903d5",
+          "width": 512,
+          "height": 341
+        },
+        {
+          "src": "/media/files/ef686255d6cc3c63558a98dcbeed26ef1f90f52040225dc6d78a9dee629519cd.webp",
+          "mime": "image/webp",
+          "bytes": 147912,
+          "sha256": "ef686255d6cc3c63558a98dcbeed26ef1f90f52040225dc6d78a9dee629519cd",
+          "width": 960,
+          "height": 640
+        },
+        {
+          "src": "/media/files/fc34fc71e80e6d393f7b9d9cabc89a4538e9b684643c5a60b7ebc2202df77acc.webp",
+          "mime": "image/webp",
+          "bytes": 224642,
+          "sha256": "fc34fc71e80e6d393f7b9d9cabc89a4538e9b684643c5a60b7ebc2202df77acc",
+          "width": 1280,
+          "height": 853
+        }
+      ]
+    },
+    "atlas-penon": {
+      "kind": "image",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "src": "/media/files/bf3eda5005b8e13222b7951690111c90bc5b3aafcc675a2eb68671cf634cd050.webp",
+          "mime": "image/webp",
+          "bytes": 12306,
+          "sha256": "bf3eda5005b8e13222b7951690111c90bc5b3aafcc675a2eb68671cf634cd050",
+          "width": 256,
+          "height": 171
+        },
+        {
+          "src": "/media/files/74e764c96436caf90b772afd1ace45eab45d311ec64a551357ce7ad4fc990804.webp",
+          "mime": "image/webp",
+          "bytes": 43466,
+          "sha256": "74e764c96436caf90b772afd1ace45eab45d311ec64a551357ce7ad4fc990804",
+          "width": 512,
+          "height": 341
+        },
+        {
+          "src": "/media/files/b98ef908a97719069c813f247604e001a684b6baa08d2dc51b7297642fa79e2a.webp",
+          "mime": "image/webp",
+          "bytes": 127130,
+          "sha256": "b98ef908a97719069c813f247604e001a684b6baa08d2dc51b7297642fa79e2a",
+          "width": 960,
+          "height": 640
+        },
+        {
+          "src": "/media/files/f0d0b62c0f3f1cfaa3c8c08c2e4e5ec85249e67ac031ff38e50cd2745609a2cb.webp",
+          "mime": "image/webp",
+          "bytes": 195834,
+          "sha256": "f0d0b62c0f3f1cfaa3c8c08c2e4e5ec85249e67ac031ff38e50cd2745609a2cb",
+          "width": 1280,
+          "height": 853
+        }
+      ]
+    },
+    "atlas-viga": {
+      "kind": "image",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "src": "/media/files/4d7675a47c6d1b8c751dbe02373c6b005f005a5bfbd7657a2b5ce63c62d991aa.webp",
+          "mime": "image/webp",
+          "bytes": 12392,
+          "sha256": "4d7675a47c6d1b8c751dbe02373c6b005f005a5bfbd7657a2b5ce63c62d991aa",
+          "width": 256,
+          "height": 171
+        },
+        {
+          "src": "/media/files/5551abcc5c3dd7d5782de07c9b1578ce7ece6c1c7226094dfd23d80306d9b0bb.webp",
+          "mime": "image/webp",
+          "bytes": 45064,
+          "sha256": "5551abcc5c3dd7d5782de07c9b1578ce7ece6c1c7226094dfd23d80306d9b0bb",
+          "width": 512,
+          "height": 341
+        },
+        {
+          "src": "/media/files/40430b7c2e985a03fb4fc4f8854bb6b455123cc8ca90af159bc62fff5d62ef4e.webp",
+          "mime": "image/webp",
+          "bytes": 132560,
+          "sha256": "40430b7c2e985a03fb4fc4f8854bb6b455123cc8ca90af159bc62fff5d62ef4e",
+          "width": 960,
+          "height": 640
+        },
+        {
+          "src": "/media/files/1ca9fbd9fca5856d32cf88e4cf7ebba7deb15846678855df5059130368cc6d54.webp",
+          "mime": "image/webp",
+          "bytes": 203300,
+          "sha256": "1ca9fbd9fca5856d32cf88e4cf7ebba7deb15846678855df5059130368cc6d54",
+          "width": 1280,
+          "height": 853
+        }
+      ]
+    },
     "chapultepec": {
       "kind": "image",
       "width": 1536,

@@ -11,6 +11,26 @@ import type { Copy } from "@/lib/mexico-city/field-game";
 const chapters: { title: Copy; paragraphs: Copy[] }[] = [
   {
     title: [
+      "Atlas / El viaje antes del viaje",
+      "Atlas / The journey before the journey",
+    ],
+    paragraphs: [
+      [
+        "El juego abre en el mapa real. El botón Atlas del HUD lleva a una experiencia ilustrada independiente: 16 alcaldías, 48 lugares de referencia, seis capítulos, ocho historias y una máquina del tiempo. Explorar, Aprender, Tiempo, Retos y Náhuatl son sus cinco destinos.",
+        "The game opens on the real map. The HUD’s Atlas button opens a separate illustrated experience: 16 boroughs, 48 reference places, six chapters, eight stories and a time machine. Explore, Learn, Time, Challenges and Náhuatl are its five destinations.",
+      ],
+      [
+        "Los 40 quizzes practican orientación, historia, reconocimiento de alcaldías y vocabulario. Dos juegos adicionales arman topónimos. Cada acierto muestra +25 puntos; por ahora no se acumulan ni se guardan, y no cambian la puntuación de la cuenta.",
+        "The 40 quiz questions practice layout, history, borough recognition and vocabulary. Two additional games build place names. Each correct answer displays +25 points; for now they do not accumulate, persist or change account scores.",
+      ],
+      [
+        "El recorrido histórico distingue fuentes de reconstrucciones: conserva referencias fijas y anima conexiones, sin inventar costas medidas ni una simulación del crecimiento urbano. Las fotografías y el mapa de archivo mantienen sus créditos. El náhuatl se presenta como lengua viva, con grafías históricas documentadas y sin audio inventado.",
+        "The historical sequence distinguishes sources from reconstruction: it keeps fixed references and animates connections without inventing surveyed shores or an urban-growth simulation. Photographs and the archive map retain credits. Nahuatl is presented as a living language, with documented historical spellings and no invented audio.",
+      ],
+    ],
+  },
+  {
+    title: [
       "El tablero y las próximas piezas",
       "The play field and the next pieces",
     ],

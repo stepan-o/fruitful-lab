@@ -1,6 +1,10 @@
+Financial Lab methodology study (12 October 2026): `/tools/finance#methodology` adds source-backed interactive series diagnostics, causal/hindsight extrema replay, four forecast paths, 252-return versus EWMA uncertainty, chronological pre-2024 / 2024-onward evaluation, fee-aware timing-policy experiments and a mixed-evidence scenario sandbox. The BoC query now starts 2017-05-01 (consistent methodology). Policy `cad-mxn-1.1` removes the historical trend screen as authority for all-wait; 50%/75% floors remain explicit risk preferences. No validated mixed model, automatic news or executable-quote backtest is claimed. Local study JSON includes applied inputs and source data; analytics adds view_methodology only. Specs and evidence: `docs/brands/lab/financial-lab-methodology.md`.
+
 # System Implementation Audit - Fruitful Lab
 
 Status: confirmed from local repository scan on 2026-05-15.
+
+2026-10-12 addendum: Financial Lab adds public `/tools/finance` and the hourly-cached Bank of Canada source endpoint `/api/tools/finance/rates`. Forecast, decision, monitoring and analytics boundaries are documented in `docs/brands/lab/financial-lab.md`; existing auth/backend contracts are unchanged.
 
 2026-10-09 addendum (working reference updated 2026-10-10): `/mexico-city` adds the public Mexico city discovery game illustrated prototype in `apps/lab`, with local two-player journals, source-backed stories and a dedicated immutable media pack. `/mexico-city/game-design` captures its direction and visual identity; proposed multiplayer remains separate from current local behavior. No auth, backend or experiment contracts change. See `docs/mexico-city-discovery/README.md` and `VERIFICATION.md` for current implementation and limits.
 

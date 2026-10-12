@@ -61,9 +61,8 @@ export default function ToolsIndexPage() {
                         Tools &amp; Assessments
                     </h1>
                     <p className="mt-4 text-base sm:text-lg leading-relaxed text-[var(--foreground-muted)]">
-                        A curated set of tools for evaluating Pinterest opportunities, planning campaigns,
-                        and strengthening the path from discovery to conversion. The first live tool is built
-                        specifically for product-based brands.
+                        Practical tools for exploring business opportunities and making informed decisions,
+                        from Pinterest assessments to financial modeling.
                     </p>
                 </div>
 
@@ -121,6 +120,12 @@ export default function ToolsIndexPage() {
                         </div>
                     </Link>
                 </div>
+
+                <Link href="/tools/finance" onClick={() => trackCtaClick("Open Financial Lab", { location: "/tools" })} className="mt-6 block rounded-2xl border border-[var(--border)] bg-[var(--card)] p-8 hover:shadow-md focus-visible:outline-2">
+                    <div className="flex items-start justify-between gap-4"><h2 className="font-heading text-xl sm:text-2xl">Financial Lab</h2><span className="text-xs">Research preview</span></div>
+                    <p className="mt-3 max-w-prose text-sm text-[var(--foreground-muted)]">Exchange Canadian dollars for Mexican pesos now, wait, or split the transfer? Explore source-backed rates, forecasts and a transparent decision report.</p>
+                    <span className="mt-5 inline-block text-sm font-medium">Explore exchange timing →</span>
+                </Link>
 
                 {/* SECONDARY / COMING SOON */}
                 <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">

@@ -3,7 +3,7 @@ import { BUILDING_AREA, BUILDING_BANDS, SERVICE_INFILL, SERVICE_BLOCKS, inBuildi
 import { portalRect, portalAt } from "@/lib/loopforge/spatial/floor";
 import { CONSTRUCTION_RESERVES, DELIVERY_AISLES, reservedArea } from "@/lib/loopforge/spatial/capacity";
 import { EQUIPMENT_STUDY, ROOM_STAGING } from "@/lib/loopforge/spatial/equipment";
-import { command, initialStudy } from "@/lib/loopforge/factory-study/kernel";
+import { initialStudy } from "@/lib/loopforge/factory-study/kernel";
 
 describe("calibrated factory floor", () => {
   it("repacks nine metre-scale halls and fills the eastern rectangles", () => {
@@ -61,7 +61,7 @@ describe("calibrated factory floor", () => {
       const destination = { x: r.rect.x + 1, y: r.rect.y + 1 };
       expect(findTilePath({ x: 126, y: 120 }, destination, state.unlockedRooms)).toBeNull();
     }
-    expect(command({ ...state, unlockedRooms: [] }, { type: "install", fixture: "terminal" })).toEqual({ ok: false, reason: "This room is sealed." });
+    expect(state.installed).toEqual(["terminal", "gate", "drive"]);
   });
   it("connects Lobby → Dispatch → Security → Conveyor through actual thresholds", () => {
     const path = findTilePath({ x: 68, y: 104 }, { x: 126, y: 133 }, INITIAL_UNLOCKED)!;

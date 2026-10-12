@@ -3,24 +3,19 @@ import { command, FIXTURES, initialStudy, SHIFT_TICKS, step, type Command, type 
 import { StudyHost } from "@/lib/loopforge/factory-study/host";
 
 function apply(s: StudyState, c: Command) { const r = command(s, c); if (!r.ok) throw new Error(r.reason); return r.state; }
-function ready(count: 10 | 100 = 10) { return FIXTURES.reduce((s, fixture) => apply(s, { type: "install", fixture }), initialStudy(count)); }
-function start(count: 10 | 100 = 10) { return apply(apply(ready(count), { type: "morning" }), { type: "shift" }); }
+function ready(count: 10 | 100 = 10) { return initialStudy(count); }
+function start(count: 10 | 100 = 10) { return apply(ready(count), { type: "shift" }); }
 
-describe("procedural commissioning fixture", () => {
-  it("admits construction in order, at night only; previews cannot create equipment", () => {
-    const s = initialStudy(); const before = JSON.stringify(s);
-    expect(command(s, { type: "install", fixture: "gate" }).ok).toBe(false);
-    expect(command(s, { type: "morning" }).ok).toBe(false);
-    expect(command(s, { type: "shift" }).ok).toBe(false);
-    const terminal = apply(s, { type: "install", fixture: "terminal" });
-    expect(command(terminal, { type: "install", fixture: "terminal" }).ok).toBe(false);
-    expect(command(start(), { type: "install", fixture: "terminal" }).ok).toBe(false);
-    expect(JSON.stringify(s)).toBe(before);
-    expect(s.installed).toEqual([]);
+describe("prebuilt floor fixture", () => {
+  it("starts with complete equipment and never changes it when entering the shift", () => {
+    const s=initialStudy(),before=JSON.stringify(s);
+    expect(s.phase).toBe('morning');expect(s.installed).toEqual(FIXTURES);
+    expect(command(s,{type:'morning'}).ok).toBe(false);
+    expect(start().installed).toEqual(FIXTURES);expect(JSON.stringify(s)).toBe(before);
   });
   it("keeps a night or morning stationary; pause stops ticks and jam stops physical output", () => {
     expect(step(ready())).toEqual(ready());
-    const morning = apply(ready(), { type: "morning" }); expect(step(morning)).toBe(morning);
+    const morning = ready(); expect(step(morning)).toBe(morning);
     let s = start(); for (let i = 0; i < 30; i++) s = step(s);
     expect(s.travel).toBeGreaterThan(0);
     const paused = apply(s, { type: "running", value: false }); expect(step(paused)).toBe(paused);
@@ -46,7 +41,7 @@ describe("procedural commissioning fixture", () => {
   });
   it("has a disposable clock with no catch-up after suspension", () => {
     jest.useFakeTimers(); const h = new StudyHost();
-    FIXTURES.forEach(fixture => h.send({ type: "install", fixture })); h.send({ type: "morning" }); h.send({ type: "shift" });
+    h.send({ type: "shift" });
     h.resumeClock(); h.resumeClock(); jest.advanceTimersByTime(500); expect(h.snapshot.tick).toBe(10);
     h.suspendClock(); jest.advanceTimersByTime(5000); expect(h.snapshot.tick).toBe(10);
     h.resumeClock(); jest.advanceTimersByTime(100); expect(h.snapshot.tick).toBe(12);

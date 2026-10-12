@@ -116,7 +116,7 @@
       "examples": "Factorio makes production routes and automation tangible. Oxygen Not Included couples colony construction to interdependent physical systems.",
       "counter": "Cookie Clicker also increases production. Buying a multiplier is a different kind of decision from arranging a network that must physically work.",
       "expression": "Elegant systems, redundancy, compactness, excess capacity or ambitious expansion.",
-      "loopforge": "Build the physical chain at night; observe it during the shift and use that evidence next night. Machines, routes, supervisors and room policy change the same operation. Worker tasks remain simulated, without per-station staffing sliders.",
+      "loopforge": "Player construction is removed. Borrow visible constraints, queues and physical causality for a prebuilt line: observe a bottleneck, adjust flow or delegation, read the changed work and revise the next action. Worker tasks remain individual without per-station staffing sliders.",
       "sources": [
         [
           "Factorio · Wube",
@@ -293,7 +293,7 @@
           "caption": "Parallel streams and repeated machines make scale readable without opening a report. Compare the composition with the smaller network; these are separate gallery examples, not a before/after save."
         }
       ],
-      "lesson": "Loopforge inference: production should visibly move or back up around a real constraint. The 9 October conveyor proposal now includes physical chain construction and upgrades; the cinematic floor shows their consequences while the console summarizes them. Borrow legibility and spatial causality without inheriting Factorio’s full logistics scale."
+      "lesson": "Loopforge inference: production should visibly move or back up around a real constraint. The prebuilt factory retains spatial causality and clear work without inheriting Factorio’s construction or full logistics scale."
     },
     {
       "title": "Put the commitment in the foreground",
@@ -349,12 +349,12 @@
   ],
   "conclusions": [
     [
-      "Build first; let evidence close the loop",
-      "Night construction → morning adviser and assignments → operation → permanent allocation → next night. The Security placement tutorial is a one-time arc teaching reusable controls. The Conveyor tab names the expectation, action, visible feedback and next decision for building, operation, delegation and growth. A sequence of screens alone is not a learning loop."
+      "Let evidence close the loop",
+      "Observe a constraint → predict what a change will do → adjust flow or delegation → see the physical outcome → revise the next choice. A prebuilt world still supports learning loops. Building and the Security placement tutorial are removed."
     ],
     [
       "Primary loop · leadership through production",
-      "Build at night → choose whose judgment to back in the morning → authorize assignments → operate and respond → permanently allocate output → use the result next night. Construction, supervision and live control supply distinct decisions within that schedule."
+      "Review → choose whose judgment to back → authorize assignments → operate and respond → permanently allocate output → use the result next day. Operation, adviser trust and growth each carry a repeatable choice/feedback loop within this schedule."
     ],
     [
       "Three connected satisfactions",
@@ -413,7 +413,7 @@
     "arcs": [
       {
         "stage": "01 · Conveyor + Security",
-        "agency": "Build Security and the starter Conveyor before the first morning. On later nights, use operating evidence to improve or retain the floor. Back LIMEN or STILETTO; accept or override assignments; retain or deliver output.",
+        "agency": "Inherit the prebuilt factory. Back LIMEN or STILETTO, accept or override assignments, act on intake and effort, respond to consequences, and retain or deliver output. Use agent behaviour as evidence for the next choice.",
         "direct": "Room tokens: operating policy, assignment and observed condition. Workforce and quota tokens: count changes after allocation.",
         "indirect": "A backed-up line, wear warning, witnessed incident or changed supervisor statement makes the chosen pace felt. Safety needs a tangible avoided cost or coordination benefit.",
         "hidden": "Individual stress and unindoctrinated histories persist. Their raw values and meaning are not exposed. No repair action appears yet.",

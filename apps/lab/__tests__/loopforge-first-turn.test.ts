@@ -5,9 +5,9 @@ import { respond, viewHash, parseRequest } from '@/lib/loopforge/first-turn/serv
 import { applyRecord } from '@/lib/loopforge/first-turn/viewer';
 import { workforceTotals } from '@/lib/loopforge/first-shift/workers';
 const runId='12345678-1234-4123-8123-123456789012';
-const install:Command[]=[{type:'install',fixture:'terminal'},{type:'install',fixture:'gate'},{type:'install',fixture:'drive'}];
-function setup(adviser:'limen'|'stiletto',workers=24,upgrade=false){
- const commands:Command[]=[...install,...(upgrade?[{type:'buy_outtake'} as Command]:[]),{type:'finish_build'},{type:'acknowledge_mandate'},{type:'choose_adviser',adviser}];
+const opening:Command[]=[{type:'acknowledge_mandate'},{type:'choose_adviser',adviser:'limen'}];
+function setup(adviser:'limen'|'stiletto',workers=24){
+ const commands:Command[]=[{type:'acknowledge_mandate'},{type:'choose_adviser',adviser}];
  let state=replay(7,commands,workers);
  const send=(c:Command)=>{state=step(state,c);commands.push(c);};
  send({type:'approve_plan',assignments:state.daily.briefing!.assignments});send({type:'start_shift'});
@@ -21,13 +21,14 @@ function finish(run:ReturnType<typeof setup>){
  expect(run.current().daily.phase).toBe('allocation');return run.current();
 }
 const request=(commands:Command[]=[]):RunRequest=>({protocol:PROTOCOL,schema_version:SCHEMA,engine_version:ENGINE,run_id:runId,seed:7,initial_workers:24,commands,baseline:null});
-test('commissioning has strict order, costs once, and the mandatory leadership gate',()=>{
+test('prebuilt opening preserves funds, has no assignments, and still requires the leadership call',()=>{
  const first=initialState(7),before=canonical(first);
- for(const c of [{type:'install',fixture:'drive'},{type:'finish_build'},{type:'choose_adviser',adviser:'limen'}] as Command[])expect(()=>step(first,c)).toThrow();
- let s=step(first,install[0]);expect(canonical(first)).toBe(before);expect(s.daily.cash).toBe(205);expect(()=>step(s,install[0])).toThrow();
- s=replay(7,[...install,{type:'finish_build'}]);expect(s.daily.cash).toBe(100);expect(s.floor.stage).toBe('mandate');
- expect(()=>step(s,{type:'choose_adviser',adviser:'limen'})).toThrow();
- expect(step(s,{type:'acknowledge_mandate'}).floor.stage).toBe('day');
+ expect(first.floor.stage).toBe('mandate');expect(first.floor.installed).toEqual(['terminal','gate','drive']);
+ expect(first.daily.cash).toBe(240);expect(first.daily.assignments).toBeNull();expect(first.daily.adviser).toBeNull();
+ expect(()=>step(first,{type:'choose_adviser',adviser:'limen'})).toThrow();
+ expect(step(first,{type:'acknowledge_mandate'}).floor.stage).toBe('day');expect(canonical(first)).toBe(before);
+ for(const c of [{type:'install',fixture:'drive'},{type:'buy_outtake'},{type:'finish_build'}])expect(()=>parseRequest({...request(),commands:[c]})).toThrow();
+ expect(()=>parseRequest({...request(),schema_version:'loopforge_first_turn_1',engine_version:'first-turn-1.0.0'})).toThrow();
 });
 test.each([10,24,100])('%i workers remain unique visible bodies backed by private component records',count=>{
  const s=setup('limen',count).current(),v=project(s);
@@ -59,11 +60,6 @@ test('open intake and push expose finite buffers and wear; no output appears thr
  expect(fast.current().daily.condition).toBeLessThan(finish(slow).daily.condition);
  expect(workforceTotals(fast.current().daily.workers).produced).toBe(fast.current().floor.released);
 });
-test('a physical outtake investment pays only once and improves a clearance bottleneck',()=>{
- const plain=setup('stiletto',100),upgrade=setup('stiletto',100,true);
- expect(upgrade.current().daily.cash).toBe(40);expect(upgrade.current().floor.attachment).toBe(true);
- expect(finish(upgrade).floor.released).toBeGreaterThan(finish(plain).floor.released);
-});
 test('adviser authority follows assigned room, and decision pauses reject operation commands',()=>{
  const run=setup('limen');run.send({type:'set_operation',feed:'open',drive:'push'});
  const s=finish(run),resolutions=s.daily.events.filter(e=>e.kind==='resolution');
@@ -75,22 +71,22 @@ test('adviser authority follows assigned room, and decision pauses reject operat
 });
 test('snapshot and diff rebuild the same projection and fail closed on forged state or protocol',async()=>{
  let receipt=await applyRecord(null,respond(request()),runId,async v=>viewHash(v));
- for(let i=1;i<=install.length;i++){
-  const m=respond({...request(install.slice(0,i)),baseline:{tick:receipt.view.tick,step_hash:receipt.hash}});
-  receipt=await applyRecord(receipt,m,runId,async v=>viewHash(v));expect(receipt.view).toEqual(project(replay(7,install.slice(0,i))));
+ for(let i=1;i<=opening.length;i++){
+  const m=respond({...request(opening.slice(0,i)),baseline:{tick:receipt.view.tick,step_hash:receipt.hash}});
+  receipt=await applyRecord(receipt,m,runId,async v=>viewHash(v));expect(receipt.view).toEqual(project(replay(7,opening.slice(0,i))));
   await expect(applyRecord(receipt,m,runId,async v=>viewHash(v))).rejects.toThrow();
  }
- expect(()=>respond({...request(install),baseline:{tick:2,step_hash:'0'.repeat(64)}})).toThrow('baseline_mismatch');
+ expect(()=>respond({...request(opening),baseline:{tick:2,step_hash:'0'.repeat(64)}})).toThrow('baseline_mismatch');
  expect(()=>respond({...request(),protocol:'old'})).toThrow();
  expect(()=>parseRequest({...request(),commands:[{type:'set_operation',feed:'infinite',drive:'push'}]})).toThrow();
  expect(()=>parseRequest({...request(),commands:[{type:'produce',count:99}]})).toThrow();
 });
 
 test('closing intake clears accumulated work and cannot manufacture from an empty supply',()=>{
- const run=setup('stiletto',24,true);run.send({type:'set_operation',feed:'open',drive:'push'});
+ const run=setup('stiletto',24);run.send({type:'set_operation',feed:'open',drive:'push'});
  for(let i=0;i<9;i++)run.send({type:'advance'});
  run.send({type:'set_operation',feed:'hold',drive:'steady'});
- for(let i=0;i<25;i++)run.send({type:'advance'});
+ for(let i=0;i<25;i++){const p=run.current().daily.pending;run.send(p?{type:'resolve_incident',incident:p.id,response:p.recommendation}:{type:'advance'});}
  const before=run.current();expect(before.floor.intake).toBe(0);expect(before.floor.outtake).toBe(0);
  run.send({type:'advance'});expect(run.current().floor.released).toBe(before.floor.released);
 });

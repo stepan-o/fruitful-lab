@@ -1,5 +1,8 @@
 # Producer console — four selectable integrated skins
 
+**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Current procedural figures remain placeholders; production rigs, general BDI and paired acting are not yet implemented.
+
+
 **11 October — current first-turn integration:** Main play now uses a separately versioned first-turn kernel for night commissioning → mandatory mandate → adviser/assignment → fixed-step room operation → paid permanent dispatch. One persistent Babylon scene supplies the room views. The old first-shift profile and standalone factory fixture remain regression/calibration tools. [Current implementation contract](FIRST_TURN_ENGINE.md) · [Execution checklist](FIRST_TURN_BUILD_PLAN.md). Earlier implementation descriptions below are historical where they conflict with this delivery.
 
 **Next floor-view direction (11 October):** the console remains the default observation and return hub. Its live floor view selects one room and presents three authored CCTV angles. Focused operating/building/decision workspaces carry the player’s active choices and return to that context. The six-room summary and existing illustrated runtime described below are not six simultaneously rendered 3D rooms. See [the scale, camera and agency build plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md); this integration is not implemented yet.

@@ -7,6 +7,7 @@ from focused_console import render_focused_console
 from theme_system import render_theme_system
 from floor_scale import render_floor_scale
 from first_turn import render_first_turn
+from agents import render_agents
 from pathlib import Path
 import html, json, re, shutil, subprocess, hashlib
 from style_review import render_style_review
@@ -341,7 +342,7 @@ floor_scale_link='<button class="link-button" data-panel="floor-scale">Factory f
 conveyor+=floor_scale_link
 ui_html+=floor_scale_link
 engine+=floor_scale_link
-panels=[('player-desires','Player desires & scenarios',desires),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: build & play',first_turn),('floor-scale','Factory floor: scale & feel',floor_scale),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+panels=[('player-desires','Player desires & scenarios',desires),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('agents','Agents: character & motion',render_agents()),('floor-scale','Factory floor: scale & feel',floor_scale),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 head=head.replace('</head>','<link rel="stylesheet" href="style-review.css?v='+hashlib.sha256((ROOT/'style-review.css').read_bytes()).hexdigest()[:12]+'"></head>')
@@ -564,7 +565,7 @@ for contract_name in ["WEBVIEW_RENDERING_AND_ASSETS.md", "LOBBY_ART_DIRECTION.md
 # The visual-scale plan also belongs to the game design reading copy.
 with (OUT/"GAME_DESIGN.md").open("a") as f: f.write("\n\n"+(ROOT.parent/"FACTORY_FLOOR_VISUAL_SCALE_PLAN.md").read_text())
 
-for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md"]:
+for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md"]:
     content=(ROOT.parent/contract_name).read_text()
     (OUT/contract_name).write_text(content)
     for name in ["UI_DESIGN.md", "GAME_DESIGN.md"]:

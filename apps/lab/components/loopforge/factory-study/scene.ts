@@ -37,13 +37,13 @@ import { WORK_AREAS } from '@/lib/loopforge/spatial/capacity';
 export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
 export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
-export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; build(enabled: boolean, selected: Fixture | null): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
+export type FactoryScene = { update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
 const C = (hex: string) => Color3.FromHexString(hex);
 
-export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixture) => void, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void): FactoryScene {
+export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void): FactoryScene {
   const engine = new Engine(canvas, false, { stencil: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
   const scene = new Scene(engine);
   const instrumentation=new SceneInstrumentation(scene);
@@ -65,7 +65,6 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const alternateCameras = [1,2].map(n => new ArcRotateCamera(`room-angle-${n}`, 0, 1, 20, Vector3.Zero(), scene));
   let isolatedRoom = false;
   let equipmentStudy = false, framing: Framing = "work";
-  let building = false, selected: Fixture | null = null;
   let bottomInset = 180, topInset = 125;
   let focus: Focus = "wide", targetRadius = 27, targetPoint = new Vector3(-1, 1.7, 0), transition = 1;
   let seed = 873121;
@@ -210,7 +209,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const arm=root("gate actuator",[0,1.25,0]);arm.parent=gate;
   box("gate arm",[2.4,.2,.18],[0,0,0],brass,arm,true);
   for(let x=-.65;x<.8;x+=.26){const stripe=box("gate hazard stripe",[.12,.205,.19],[x,0,0],dark,arm);stripe.rotation.z=-.3;}
-  // A complete test segment: fixed infeed/outtake fixtures; player fits its drive.
+  // A complete test segment: prebuilt infeed, outtake and drive.
   const line=root("conveyor test bed",[3,0,0]);
   for(const z of [-1,1]){
     box("continuous steel rail",[10,.35,.19],[0,1.22,z],iron,line,true);
@@ -228,9 +227,6 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const plates=beltParts.map(part=>part.mesh),beltMatrix=Matrix.Identity();
   for(const x of [-5.12,5.12]){box("end housing",[.5,1.55,2.5],[x,.8,0],green,line,true);for(const z of [-1,1]){const cap=cylinder("bearing cap",.3,.16,[x,1.22,z],brass,line);cap.rotation.x=Math.PI/2;}}
   const intakeTrays:TransformNode[]=[];
-  const outtakeAttachment=root("paired outtake carriage");outtakeAttachment.parent=line;
-  box("outtake extension",[2.5,.24,2.8],[6.55,1.2,0],green,outtakeAttachment,true);
-  for(const z of [-1.15,1.15]){pipe("outtake guide",[[5.25,1.45,z],[7.8,1.45,z]],.06,brass,outtakeAttachment);box("extension leg",[.2,1.2,.2],[7.2,.6,z],iron,outtakeAttachment);}
   for(let i=0;i<6;i++){const tray=root("incoming cradle "+i,[-6.7+(i%2)*1.3,.7+Math.floor(i/2)*.23,0]);tray.parent=line;box("empty carrier",[1.12,.1,1.32],[0,0,0],brass,tray);for(const z of [-.6,.6])box("carrier rim",[1.12,.12,.05],[0,.07,z],iron,tray);intakeTrays.push(tray);}
   box("intake rack",[3,.16,1.7],[-6.05,.6,0],green,line,true);
   for(const x of [-7.2,-4.9])box("rack leg",[.14,.6,1.5],[x,.3,0],iron,line);
@@ -376,31 +372,15 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
   const beaconOriginal=beacon.position.clone();beacon.position.copyFrom(beaconOriginal.add(v(processOffset)));beacon.scaling.setAll(1);
   for(const m of scene.meshes)if(m.name==="signal mounting arm"||m.name==="signal footing"){m.parent=processFrame;}
   signal.position.copyFrom(v([-2.6,3.68,2.6]).add(v(processOffset)));signal.range=24;
-  const ghostRoots: Record<Fixture,TransformNode>={terminal:root("terminal socket"),gate:root("gate socket"),drive:root("drive socket")};
-  for(const f of ["terminal","gate","drive"] as const){const socket=FIXTURE_SOCKETS[f];ghostRoots[f].position.copyFrom(v(worldPoint(socket.x,socket.y)));ghostRoots[f].scaling.setAll(socket.scale);}
   const installedRoots:Record<Fixture,TransformNode>={terminal,gate,drive};
-  const projection=glow("construction hologram","#55bda6",.8);projection.alpha=.27;projection.disableLighting=true;
-  for(const f of ["terminal","gate","drive"] as const){
-    const n=ghostRoots[f],size:V=f==="gate"?[3.2,3.3,.75]:f==="terminal"?[1.6,2.75,1.4]:[2.9,1.5,1.5];
-    const ghost=box("fit "+f,size,[0,size[1]/2,0],transparent,n);ghost.isPickable=true;ghost.metadata={fixture:f};
-    installedRoots[f].computeWorldMatrix(true);
-    for(const source of installedRoots[f].getChildMeshes()){
-      if(!(source instanceof Mesh))continue;source.computeWorldMatrix(true);
-      const clone=source.clone("preview "+source.name,n,true);clone.makeGeometryUnique();
-      clone.bakeTransformIntoVertices(source.getWorldMatrix().multiply(Matrix.Invert(installedRoots[f].getWorldMatrix())));
-      clone.position.setAll(0);clone.rotation.setAll(0);clone.rotationQuaternion=null;clone.scaling.setAll(1);clone.material=projection;clone.isPickable=false;
-    }
-    for(const side of [-1,1]){box("placement corner",[.28,.025,.04],[side*size[0]/2,.06,-size[2]/2],cyan,n);box("placement corner",[.04,.025,.28],[side*size[0]/2,.06,-size[2]/2],cyan,n);}
-  }
   scene.onPointerObservable.add(info=>{
     renderDirty = true;
     if(info.type!==PointerEventTypes.POINTERTAP)return;
-    if(!building||!selected){const pick=scene.pick(scene.pointerX,scene.pointerY,m=>!!m.metadata?.zone);const z=pick?.pickedMesh?.metadata?.zone as ZoneId|undefined;if(z)selectZone(z);return;}
-    const hit=scene.pick(scene.pointerX,scene.pointerY,m=>m.isPickable&&m.metadata?.fixture===selected);
-    const f=hit?.pickedMesh?.metadata?.fixture as Fixture|undefined;if(hit?.hit&&f===selected)install(f);
+    const pick=scene.pick(scene.pointerX,scene.pointerY,m=>!!m.metadata?.zone);
+    const z=pick?.pickedMesh?.metadata?.zone as ZoneId|undefined;if(z)selectZone(z);
   });
   // Merge static construction by material/parent. Moving mechanisms keep their transforms.
-  const mergeParents:(TransformNode|null)[]=[null,terminal,gate,drive,line,processFrame,skull,outtakeAttachment,...intakeTrays,...specimens,...floor.roots,...equipment.roots,...lobby.roots];
+  const mergeParents:(TransformNode|null)[]=[null,terminal,gate,drive,line,processFrame,skull,...intakeTrays,...specimens,...floor.roots,...equipment.roots,...lobby.roots];
   for(const parent of mergeParents){
     parent?.computeWorldMatrix(true);
     const candidates=scene.meshes.filter(m=>m instanceof Mesh&&m.parent===parent&&m!==cone&&!m.metadata?.unbatched&&!plates.includes(m as Mesh)&&m.material!==transparent&&m.isEnabled()) as Mesh[];
@@ -463,8 +443,6 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
         targetRadius=Math.max(targetRadius,depth+Math.max(Math.abs(right)/(tan*aspect),Math.abs(up)/tan));
       }
     }
-    if(building&&focus==='lobby'&&framing==='work'){targetPoint.set(...worldPoint(64,87));targetPoint.y=1.5;targetRadius=Math.max(17,19/aspect);camera.beta=1.05;}
-    if(building&&selected){const socket=FIXTURE_SOCKETS[selected];targetPoint.set(...worldPoint(socket.x,socket.y));targetPoint.y=1.25;targetRadius=Math.max(9,10/aspect);camera.beta=1.00;}
     transition=1;
   };
   const configureFeeds=()=>{
@@ -510,11 +488,10 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
       specimen.position.x=dest;specimen.position.y=1.5+(state.running&&!state.jammed&&moving?Math.sin(motionClock*13+i)*.004:0);
     }
     for(let i=0;i<intakeTrays.length;i++)intakeTrays[i].setEnabled(!!state.process&&i<state.process.intake);
-    outtakeAttachment.setEnabled(!!state.process?.attachment);
     flywheel.rotation.x=-visualTravel*4;
     const open=gateOpen(state)?1:0;arm.position.y+=(1.25+open*1.4-arm.position.y)*Math.min(1,dt*5);
     scan.position.y=2.17+(moving?Math.sin(motionClock*1.8)*.29:0);
-    for(const f of ["terminal","gate","drive"] as const){const placed=(equipmentStudy||state.installed.includes(f))&&(!isolatedRoom||(f==="drive"?focus==="conveyor":focus==="security"));installedRoots[f].setEnabled(placed);ghostRoots[f].setEnabled(building&&!placed&&f===selected);}
+    for(const f of ["terminal","gate","drive"] as const){const placed=(equipmentStudy||state.installed.includes(f))&&(!isolatedRoom||(f==="drive"?focus==="conveyor":focus==="security"));installedRoots[f].setEnabled(placed);}
     if (state.running || posesDirty) {
     const figures=equipmentStudy?SCALE_FIGURES:[];
     for(let i=0;i<state.workers.length+figures.length;i++){
@@ -564,7 +541,6 @@ export function createFactoryScene(canvas: HTMLCanvasElement, install: (f: Fixtu
     framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},
     feeder(enabled){resourcesReady=false;renderDirty=true;lobby.feeder(enabled);keyMap.resetRefreshCounter();},
     inset(bottom,top){bottomInset=bottom;topInset=top;engine.resize();frame();viewport();},
-    build(enabled,fixture){resourcesReady=false;renderDirty=true;building=enabled;selected=fixture;if(enabled&&(fixture||focus==='lobby'))frame();},
     motion(enabled){renderDirty=true;moving=enabled;},
     study(enabled){posesDirty=true;equipmentStudy=enabled;floor.study(enabled);equipment.study(enabled);population(state.workers.length+(enabled?SCALE_FIGURES.length:0));keyMap.resetRefreshCounter();frame();},
     cctv(enabled,angle,triple){cctvEnabled=enabled;cctvAngle=angle;tripleFeed=triple;renderDirty=true;configureFeeds();if(!enabled){viewport();frame();}},

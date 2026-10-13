@@ -111,7 +111,7 @@ export function savedMarker(i: SavedItem, locale = "es"): SavedMarker | null {
     title: i.data.title || new URL(i.url).hostname,
     label:
       i.kind === "activity"
-        ? i.data.title || "Actividad"
+        ? i.data.title || (locale === "es" ? "Actividad" : "Activity")
         : money(i.data, locale),
     lat: i.data.lat,
     lng: i.data.lng,

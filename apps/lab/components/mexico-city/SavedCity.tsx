@@ -72,6 +72,12 @@ function Library({
   const { locale } = useLocale();
   const say = (es: string, en: string) => (locale === "es" ? es : en);
   const activity = initialKind === "activity";
+  const periods: Record<string, string> = {
+    month: say("mes", "month"),
+    night: say("noche", "night"),
+    week: say("semana", "week"),
+    total: say("total", "total"),
+  };
   const [authenticated, setAuthenticated] = useState(signedIn),
     [state, setState] = useState<SavedList>(EMPTY),
     [kind, setKind] = useState<SavedKind>(initialKind);
@@ -993,7 +999,7 @@ function Library({
                           .map((i) => (
                             <td key={i.id}>
                               {key === "price"
-                                ? `${money(i.data, locale)} / ${i.data.pricePeriod || say("periodo por confirmar", "period unknown")}`
+                                ? `${money(i.data, locale)} / ${periods[i.data.pricePeriod || ""] || say("periodo por confirmar", "period unknown")}`
                                 : key === "monthly"
                                   ? monthlyCost(i) != null
                                     ? money(

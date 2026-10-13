@@ -28,3 +28,5 @@ console.log('Shared animation texture: 203 KiB decoded, finite matrices.');
 await import('./check-limen.mjs');
 
 await import("./check-worker-review.mjs");
+
+await import("./check-stiletto-review.mjs");

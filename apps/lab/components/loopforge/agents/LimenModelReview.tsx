@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element -- on-demand immutable concept reference */
 'use client';
 import Link from 'next/link';
+import ReviewNavigation from './ReviewNavigation';
+import ReviewChecklist from './ReviewChecklist';
 import {useEffect,useRef,useState} from 'react';
 import {initialStudy} from '@/lib/loopforge/factory-study/kernel';
 import reference from '@/lib/assets/generated/loopforge.json';
@@ -42,6 +44,7 @@ export default function LimenModelReview(){
  const art=reference.assets.limen.variants.find(v=>v.width>=1536)??reference.assets.limen.variants.at(-1)!;
  return <main className={styles.page}>
   <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>LIMEN<span>Meshy character / factory lighting review</span></h1></div><Link href='/stepanoskin/loopforge/design#agents'>Character direction ↗</Link></header>
+  <ReviewNavigation current='limen-assembly'/><ReviewChecklist subject='limen-assembly'/>
   <div className={styles.workspace}>
    <section className={`${styles.stage} ${styles.modelStage}`} aria-label='LIMEN model review'>
     <canvas ref={canvas} aria-label='LIMEN textured 3D model in the factory'/>

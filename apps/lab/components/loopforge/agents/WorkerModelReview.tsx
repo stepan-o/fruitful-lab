@@ -1,5 +1,7 @@
 'use client';
 import Link from 'next/link';
+import ReviewNavigation from './ReviewNavigation';
+import ReviewChecklist from './ReviewChecklist';
 import {useEffect,useRef,useState} from 'react';
 import {initialStudy} from '@/lib/loopforge/factory-study/kernel';
 import bank from '@/lib/loopforge/agents/worker-review.json';
@@ -36,6 +38,7 @@ export default function WorkerModelReview(){
  function reset(){setReady(false);setError('');setRunning(false);setId('idle');setPhase(0);setSpeed(1);setLoop(true);setCentred(true);setTurn(0);setCamera('model');setAngle(0);setRoom('security');setSurface('textured');setLamp(true);setRetry(n=>n+1);}
  return <main className={styles.page}>
   <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>Worker 01<span>19 motions / factory lighting review</span></h1></div><Link href='/stepanoskin/loopforge/design#agents'>Game design · Agents ↗</Link></header>
+  <ReviewNavigation current='worker-01-motions'/><ReviewChecklist subject='worker-01-motions'/>
   <div className={styles.workspace}>
    <section className={`${styles.stage} ${styles.modelStage}`} aria-label='Worker motion review'>
     <canvas ref={canvas} aria-label='Rigged Worker 01 in the factory'/>

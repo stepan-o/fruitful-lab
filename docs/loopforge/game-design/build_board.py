@@ -579,3 +579,7 @@ for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT
 (OUT/"production/LIMEN_MESHY_REVIEW.md").write_text((ROOT.parent/"production/LIMEN_MESHY_REVIEW.md").read_text())
 
 (OUT/"production/WORKER_MOTION_REVIEW.md").write_text((ROOT.parent/"production/WORKER_MOTION_REVIEW.md").read_text())
+
+(OUT/"production/STILETTO_MOTION_REVIEW.md").write_text((ROOT.parent/"production/STILETTO_MOTION_REVIEW.md").read_text())
+
+(OUT/"production/CHARACTER_REVIEW_STRUCTURE.md").write_text((ROOT.parent/"production/CHARACTER_REVIEW_STRUCTURE.md").read_text())

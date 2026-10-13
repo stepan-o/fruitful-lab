@@ -14,21 +14,50 @@ async function proxy(
     operation === "register" ||
     operation === "community" ||
     (path[0] === "public-photos" && path.length === 2 && UUID.test(path[1]));
+  const saved =
+    path[0] === "saved" &&
+    ((req.method === "GET" &&
+      (path.length === 1 ||
+        operation === "saved/map" ||
+        (path[1] === "items" &&
+          UUID.test(path[2] || "") &&
+          (path.length === 3 ||
+            (path.length === 4 && path[3] === "image"))))) ||
+      (req.method === "POST" &&
+        (["saved/imports", "saved/collections"].includes(operation) ||
+          (path.length === 4 &&
+            path[1] === "items" &&
+            UUID.test(path[2]) &&
+            path[3] === "refresh"))) ||
+      (req.method === "PATCH" &&
+        ((path.length === 3 &&
+          ["collections", "items"].includes(path[1]) &&
+          UUID.test(path[2])) ||
+          (path.length === 4 &&
+            path[1] === "items" &&
+            UUID.test(path[2]) &&
+            path[3] === "personal"))) ||
+      (req.method === "DELETE" &&
+        path.length === 3 &&
+        path[1] === "items" &&
+        UUID.test(path[2])));
   const allowed =
-    req.method === "GET"
+    saved ||
+    (req.method === "GET"
       ? operation === "state" ||
         operation === "community" ||
         (["photos", "public-photos"].includes(path[0]) &&
           path.length === 2 &&
           UUID.test(path[1]))
-      : operation === "command" || operation === "register";
+      : req.method === "POST" &&
+        (operation === "command" || operation === "register"));
   if (!allowed)
     return NextResponse.json({ detail: "not_found" }, { status: 404 });
   const token = (await cookies()).get("fruitful_access_token")?.value;
   if (!publicRoute && !token)
     return NextResponse.json({ detail: "sign_in_required" }, { status: 401 });
   const origin = req.headers.get("origin");
-  if (req.method === "POST" && origin) {
+  if (["POST", "PATCH", "DELETE"].includes(req.method) && origin) {
     try {
       // Next may normalize nextUrl to localhost behind a proxy; Host is the
       // browser-facing authority. Never accept a different website's origin.
@@ -46,7 +75,7 @@ async function proxy(
     }
   }
   let body: string | undefined;
-  if (req.method === "POST") {
+  if (["POST", "PATCH"].includes(req.method)) {
     if (Number(req.headers.get("content-length") || 0) > 1_500_000)
       return NextResponse.json({ detail: "photo_size" }, { status: 413 });
     body = await req.text();
@@ -54,16 +83,22 @@ async function proxy(
       return NextResponse.json({ detail: "photo_size" }, { status: 413 });
   }
   try {
-    const upstream = await fetch(`${getApiOrigin()}/discovery/${operation}`, {
-      method: req.method,
-      headers: {
-        ...(token && !publicRoute ? { Authorization: `Bearer ${token}` } : {}),
-        ...(body ? { "Content-Type": "application/json" } : {}),
+    const upstream = await fetch(
+      `${getApiOrigin()}/discovery/${operation}${saved ? req.nextUrl.search : ""}`,
+      {
+        method: req.method,
+        headers: {
+          ...(token && !publicRoute
+            ? { Authorization: `Bearer ${token}` }
+            : {}),
+          ...(body ? { "Content-Type": "application/json" } : {}),
+        },
+        body,
+        cache: "no-store",
+        signal: AbortSignal.timeout(20_000),
       },
-      body,
-      cache: "no-store",
-      signal: AbortSignal.timeout(20_000),
-    });
+    );
+    if (upstream.status === 204) return new Response(null, { status: 204 });
     const type = upstream.headers.get("content-type") || "application/json";
     if (type.startsWith("image/") && upstream.ok)
       return new Response(upstream.body, {
@@ -89,3 +124,6 @@ async function proxy(
 }
 export const GET = proxy;
 export const POST = proxy;
+
+export const PATCH = proxy;
+export const DELETE = proxy;

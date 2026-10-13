@@ -121,3 +121,11 @@ test("browser Back dismisses a focused mode without replacing the map", () => {
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   expect(screen.getByTestId("field-map")).toBe(map);
 });
+
+test("the single Explore shortcut leads to the expansion landing", () => {
+  openGame();
+  expect(screen.getByRole("link", { name: /Explorar/ })).toHaveAttribute(
+    "href",
+    "/mexico-city/explore?from=demo",
+  );
+});

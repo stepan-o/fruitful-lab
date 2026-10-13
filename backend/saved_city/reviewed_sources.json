@@ -1,0 +1,187 @@
+{
+  "https://pistadehielosantafe.com/clubes-y-servicios/hockey/": {
+    "kind": "activity",
+    "data": {
+      "title": "Hockey · Pista de Hielo Santa Fe",
+      "description": "El club México City Jr. Kings entrena en Centro Santa Fe. La página del club presenta a su equipo de hockey; las opciones de práctica para adultos y sus horarios requieren consulta directa.",
+      "address": "Centro Santa Fe, Cuajimalpa de Morelos, Ciudad de México",
+      "category": "Hockey sobre hielo",
+      "lat": 19.3612975,
+      "lng": -99.2737949,
+      "method": "reviewed_snapshot",
+      "reviewedAt": "2026-10-12",
+      "sourceUrl": "https://pistadehielosantafe.com/clubes-y-servicios/hockey/",
+      "sourceNote": "Centro comercial; ubicación aproximada. El número exterior publicado por la pista difiere de otras fuentes.",
+      "evidence": {
+        "title": {
+          "source": "https://pistadehielosantafe.com/clubes-y-servicios/hockey/",
+          "text": "Hockey · Pista de Hielo Santa Fe"
+        },
+        "description": {
+          "source": "https://pistadehielosantafe.com/clubes-y-servicios/hockey/",
+          "text": "El club México City Jr. Kings entrena en Centro Santa Fe. La página del club presenta a su equipo de hockey; las opciones de práctica para adultos y sus horarios requieren consulta directa."
+        },
+        "address": {
+          "source": "https://pistadehielosantafe.com/clubes-y-servicios/hockey/",
+          "text": "Centro Santa Fe, Cuajimalpa de Morelos, Ciudad de México"
+        },
+        "category": {
+          "source": "https://pistadehielosantafe.com/clubes-y-servicios/hockey/",
+          "text": "Hockey sobre hielo"
+        },
+        "lat": {
+          "source": "https://www.openstreetmap.org/way/30291947",
+          "text": "Centro comercial aproximado · © OpenStreetMap contributors · ODbL"
+        },
+        "lng": {
+          "source": "https://www.openstreetmap.org/way/30291947",
+          "text": "Centro comercial aproximado · © OpenStreetMap contributors · ODbL"
+        }
+      },
+      "precision": "approximate",
+      "locationSource": "openstreetmap"
+    }
+  },
+  "https://isk8.mx/hockey/": {
+    "kind": "activity",
+    "data": {
+      "title": "Hockey · ISK8 Interlomas",
+      "description": "La academia ofrece programas de hockey para distintas edades en Paseo Interlomas, en Huixquilucan, Estado de México. Su página describe categorías juveniles y de adultos.",
+      "address": "Paseo Interlomas, Vialidad de la Barranca 6, PH-01, Huixquilucan, Estado de México, 52763",
+      "category": "Hockey sobre hielo",
+      "lat": 19.3979566,
+      "lng": -99.2831503,
+      "method": "reviewed_snapshot",
+      "reviewedAt": "2026-10-12",
+      "sourceUrl": "https://isk8.mx/hockey/",
+      "sourceNote": "Centro comercial; ubicación aproximada. Dirección: https://isk8.mx/contacto/",
+      "evidence": {
+        "title": {
+          "source": "https://isk8.mx/hockey/",
+          "text": "Hockey · ISK8 Interlomas"
+        },
+        "description": {
+          "source": "https://isk8.mx/hockey/",
+          "text": "La academia ofrece programas de hockey para distintas edades en Paseo Interlomas, en Huixquilucan, Estado de México. Su página describe categorías juveniles y de adultos."
+        },
+        "address": {
+          "source": "https://isk8.mx/hockey/",
+          "text": "Paseo Interlomas, Vialidad de la Barranca 6, PH-01, Huixquilucan, Estado de México, 52763"
+        },
+        "category": {
+          "source": "https://isk8.mx/hockey/",
+          "text": "Hockey sobre hielo"
+        },
+        "lat": {
+          "source": "https://www.openstreetmap.org/way/187677332",
+          "text": "Centro comercial aproximado · © OpenStreetMap contributors · ODbL"
+        },
+        "lng": {
+          "source": "https://www.openstreetmap.org/way/187677332",
+          "text": "Centro comercial aproximado · © OpenStreetMap contributors · ODbL"
+        }
+      },
+      "precision": "approximate",
+      "locationSource": "openstreetmap"
+    }
+  },
+  "https://www.ice-station.com.mx/": {
+    "kind": "activity",
+    "data": {
+      "title": "Hockey · Ice Station Buenavista",
+      "description": "La pista de Forum Buenavista anuncia una escuela de hockey y sesiones públicas de patinaje. Las tarifas de patinaje publicadas no permiten deducir el costo de hockey; falta confirmar horarios y grupos actuales.",
+      "address": "Forum Buenavista, Eje 1 Mosqueta 259, local SAN2-04, Buenavista, Cuauhtémoc, Ciudad de México, 06350",
+      "category": "Hockey sobre hielo",
+      "lat": 19.4480388,
+      "lng": -99.1519785,
+      "method": "reviewed_snapshot",
+      "reviewedAt": "2026-10-12",
+      "sourceUrl": "https://www.ice-station.com.mx/",
+      "sourceNote": "Centro comercial; ubicación aproximada. La página de la pista no pudo consultarse directamente.",
+      "evidence": {
+        "title": {
+          "source": "https://www.ice-station.com.mx/",
+          "text": "Hockey · Ice Station Buenavista"
+        },
+        "description": {
+          "source": "https://www.ice-station.com.mx/",
+          "text": "La pista de Forum Buenavista anuncia una escuela de hockey y sesiones públicas de patinaje. Las tarifas de patinaje publicadas no permiten deducir el costo de hockey; falta confirmar horarios y grupos actuales."
+        },
+        "address": {
+          "source": "https://www.ice-station.com.mx/",
+          "text": "Forum Buenavista, Eje 1 Mosqueta 259, local SAN2-04, Buenavista, Cuauhtémoc, Ciudad de México, 06350"
+        },
+        "category": {
+          "source": "https://www.ice-station.com.mx/",
+          "text": "Hockey sobre hielo"
+        },
+        "lat": {
+          "source": "https://www.openstreetmap.org/node/4829767292",
+          "text": "Centro comercial aproximado · © OpenStreetMap contributors · ODbL"
+        },
+        "lng": {
+          "source": "https://www.openstreetmap.org/node/4829767292",
+          "text": "Centro comercial aproximado · © OpenStreetMap contributors · ODbL"
+        }
+      },
+      "precision": "approximate",
+      "locationSource": "openstreetmap"
+    }
+  },
+  "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003": {
+    "kind": "rent",
+    "data": {
+      "title": "Departamento · San Pedro de los Pinos",
+      "description": "Anuncio de un departamento de dos recámaras y dos baños, con balcón y dos lugares de estacionamiento. La calle no aparece identificada; la ubicación del edificio queda por confirmar.",
+      "address": "San Pedro de los Pinos, Benito Juárez, Ciudad de México, 03800",
+      "price": 22000,
+      "currency": "MXN",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "area": 75,
+      "areaType": "floor",
+      "method": "reviewed_snapshot",
+      "reviewedAt": "2026-10-12",
+      "sourceUrl": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+      "sourceNote": "Anuncio 31353003. Mantenimiento, depósito, periodo del precio y disponibilidad actual por confirmar. No contiene una dirección suficiente para colocar el edificio.",
+      "evidence": {
+        "title": {
+          "source": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+          "text": "Departamento · San Pedro de los Pinos"
+        },
+        "description": {
+          "source": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+          "text": "Anuncio de un departamento de dos recámaras y dos baños, con balcón y dos lugares de estacionamiento. La calle no aparece identificada; la ubicación del edificio queda por confirmar."
+        },
+        "address": {
+          "source": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+          "text": "San Pedro de los Pinos, Benito Juárez, Ciudad de México, 03800"
+        },
+        "price": {
+          "source": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+          "text": "22000"
+        },
+        "currency": {
+          "source": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+          "text": "MXN"
+        },
+        "bedrooms": {
+          "source": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+          "text": "2"
+        },
+        "bathrooms": {
+          "source": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+          "text": "2"
+        },
+        "area": {
+          "source": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+          "text": "75"
+        },
+        "areaType": {
+          "source": "https://propiedades.com/inmuebles/departamento-en-renta-sin-nombre-de-calle-san-pedro-de-los-pinos-df-31353003",
+          "text": "floor"
+        }
+      }
+    }
+  }
+}

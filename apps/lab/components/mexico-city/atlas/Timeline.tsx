@@ -1,7 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Pause, Play } from "lucide-react";
-import { ERAS, LOCAL_TIMELINES } from "@/lib/mexico-city/atlas/chapters";
+import {
+  ERAS,
+  LOCAL_TIMELINES,
+  CHAPTERS,
+} from "@/lib/mexico-city/atlas/chapters";
 import { useLocale } from "@/lib/mexico-city/locale";
 import geography from "@/lib/mexico-city/geography.json";
 import { project, STORIES } from "@/lib/mexico-city/content";
@@ -15,7 +19,13 @@ const nodes = [
   { name: "Iztapalapa", p: [-99.092, 19.359] as const, dx: 10, dy: 8 },
   { name: "Xochimilco", p: [-99.104, 19.258] as const, dx: -18, dy: 22 },
 ];
-export default function Timeline({ story }: { story: (id: string) => void }) {
+export default function Timeline({
+  story,
+  openChapter,
+}: {
+  story: (id: string) => void;
+  openChapter: (id: string) => void;
+}) {
   const { locale } = useLocale();
   const say = (es: string, en: string) => (locale === "es" ? es : en);
   const [era, setEra] = useState(0),
@@ -27,6 +37,7 @@ export default function Timeline({ story }: { story: (id: string) => void }) {
     boundaries: false,
   });
   const selected = ERAS[era];
+  const chapter = CHAPTERS.find((c) => c.id === selected.chapter)!;
   useEffect(() => {
     if (!playing) return;
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -322,6 +333,13 @@ export default function Timeline({ story }: { story: (id: string) => void }) {
             )}
           </p>
           <Sources ids={selected.sources} />
+          <button
+            className="at-text-button"
+            onClick={() => openChapter(chapter.id)}
+          >
+            {say("Leer el capítulo", "Read the chapter")}:{" "}
+            {chapter.title[locale]} →
+          </button>
           {era === 1 || era === 2 ? (
             <PhotoReferences kind="map" />
           ) : era === 5 ? (

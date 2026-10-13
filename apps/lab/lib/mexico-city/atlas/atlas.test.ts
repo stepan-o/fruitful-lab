@@ -1,6 +1,7 @@
 import manifest from "@/lib/assets/generated/mexico-city.json";
 import geography from "../geography.json";
 import { BOROUGHS, SOURCES, VOCABULARY } from "./content";
+import { loadChapter } from "./history";
 import { CHAPTERS, ERAS, LOCAL_TIMELINES } from "./chapters";
 import { NEW_STORIES } from "./stories";
 import { QUESTIONS, rewardFor } from "./quizzes";
@@ -39,18 +40,31 @@ test("every current borough has a bilingual learning profile and three usable pl
     }
   }
 });
-test("all lessons and historical windows resolve their evidence and quiz destination", () => {
-  expect(CHAPTERS).toHaveLength(6);
+test("all lessons and historical windows resolve their evidence and quiz destination", async () => {
+  expect(CHAPTERS).toHaveLength(8);
   expect(ERAS).toHaveLength(7);
-  for (const chapter of CHAPTERS) {
-    expect(chapter.scenes).toHaveLength(3);
-    expect(QUESTIONS[chapter.track].length).toBeGreaterThan(0);
-    for (const scene of chapter.scenes) {
-      validSources(scene.sources);
-      expect(scene.text.es).toBeTruthy();
-      expect(scene.text.en).toBeTruthy();
+  for (const metadata of CHAPTERS) {
+    const chapter = await loadChapter(metadata.id);
+    expect(chapter.id).toBe(metadata.id);
+    expect(chapter.sections.length).toBeGreaterThanOrEqual(3);
+    expect(chapter.quiz).toHaveLength(3);
+    for (const section of chapter.sections) {
+      for (const passage of section.paragraphs) {
+        expect(passage.sources.length).toBeGreaterThan(0);
+        validSources(passage.sources);
+        expect(passage.text.es).toBeTruthy();
+        expect(passage.text.en).toBeTruthy();
+      }
+    }
+    for (const question of chapter.quiz) {
+      validSources(question.sources);
+      expect(question.correct).toBeGreaterThanOrEqual(0);
+      expect(question.correct).toBeLessThan(question.options.length);
+      expect(question.explanation.es).toBeTruthy();
+      expect(question.explanation.en).toBeTruthy();
     }
   }
+
   for (const era of ERAS) validSources(era.sources);
   for (const local of LOCAL_TIMELINES) validSources(local.sources);
   for (const s of NEW_STORIES) validSources(s.sources);

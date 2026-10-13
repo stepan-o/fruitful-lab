@@ -3,6 +3,187 @@ export type Copy = { es: string; en: string };
 export const c = (es: string, en: string): Copy => ({ es, en });
 export const REVIEWED = "2026-10-12";
 export const SOURCES: Record<string, { title: string; url: string }> = {
+  drainageEighteenth: {
+    title:
+      "Jorge Gurría Lacroix · El desagüe en el XVIII y principios del XIX, pp. 139–158 · UNAM (1978)",
+    url: "https://historicas.unam.mx/publicaciones/publicadigital/libros/047/047_04_09_desague.pdf",
+  },
+  drainageWorks: {
+    title: "SICT · El desagüe del Valle de México",
+    url: "https://elmirador.sct.gob.mx/manos-a-la-obra/el-desague-del-valle-de-mexico",
+  },
+  hydraulicCity: {
+    title:
+      "Jorge Gurría Lacroix · La ciudad de México, pp. 19–36 · UNAM (1978)",
+    url: "https://historicas.unam.mx/publicaciones/publicadigital/libros/047/047_04_02_ciudadmexico.pdf",
+  },
+  firstDrain: {
+    title:
+      "Carlos González Cabello · El primer desagüe colonial en los lagos de la cuenca de México · HistoriAgenda (2016)",
+    url: "https://revistas.unam.mx/index.php/historiagenda/article/view/57072",
+  },
+  lakebed: {
+    title:
+      "Natalia V. Soto Coloballes · Terrenos desecados de Texcoco, 1912–1998 · UNAM (2019)",
+    url: "https://moderna.historicas.unam.mx/index.php/ehm/article/view/70695",
+  },
+  chinampas: {
+    title: "FAO · Chinampas Agricultural System in Mexico City · SIPAM (2017)",
+    url: "https://www.fao.org/giahs/giahs-around-the-world/mexico-chinampas-agricultural-system/en",
+  },
+  chapin: {
+    title: "Agricultura CDMX · El chapín, técnica de siembra ancestral",
+    url: "https://www.gob.mx/agricultura/cdmx/articulos/el-chapin-tecnica-de-siembra-ancestral?idiom=es",
+  },
+  archive1847: {
+    title:
+      "M. L. Smith / E. L. F. Hardcastle · Map of the valley of Mexico · Library of Congress (1847)",
+    url: "https://www.loc.gov/item/2018593099/",
+  },
+  archive1524: {
+    title:
+      "Friedrich Peypus, impresor · Tenochtitlan y Golfo de México · Newberry Library (1524)",
+    url: "https://commons.wikimedia.org/wiki/File:Map_of_Tenochtitlan_and_Gulf_of_Mexico,_1524.jpg",
+  },
+  archiveViga: {
+    title:
+      "Abel Briquet · Canal de la Viga · DeGolyer Library, SMU (ca. 1885–1899)",
+    url: "https://digitalcollections.smu.edu/cdm/ref/collection/mex/id/2838",
+  },
+  texcocoProtected: {
+    title: "CONANP · Programa de Manejo, Lago de Texcoco (2024; decreto 2022)",
+    url: "https://www.conanp.gob.mx/programademanejo/PMLagoDeTexcoco.pdf",
+  },
+  cuicuilcoLandscape: {
+    title: "INAH · Zona arqueológica de Cuicuilco",
+    url: "https://www.inah.gob.mx/zonas/zona-arqueologica-cuicuilco",
+  },
+  teotihuacan: {
+    title: "INAH · Historia breve de Teotihuacan (2009)",
+    url: "https://www.inah.gob.mx/boletines/historia-breve-de-teotihuacan",
+  },
+  teotihuacanCity: {
+    title: "INAH · Ciudad prehispánica de Teotihuacan",
+    url: "https://lugares.inah.gob.mx/es/node/6130",
+  },
+  teotihuacanEnd: {
+    title: "INAH · La historia de un colapso: el fin de la gran Teotihuacán",
+    url: "https://visitateotihuacan.inah.gob.mx/aprende/teotihuacan-colapso-final-fin/",
+  },
+  tula: {
+    title: "INAH · Zona arqueológica de Tula",
+    url: "https://lugares.inah.gob.mx/es/node/4360",
+  },
+  culhuacan: {
+    title: "INAH · Centro Comunitario Culhuacán",
+    url: "https://mediateca.inah.gob.mx/repositorio/islandora/object/museo%3A1518",
+  },
+  alliance: {
+    title:
+      "Marco Antonio Cervera Obregón · Los orígenes del Imperio Mexica · UNAM",
+    url: "https://www.noticonquista.unam.mx/amoxtli/1012/961",
+  },
+  tlatelolco: {
+    title: "INAH · Templo Mayor de Tlatelolco (2023)",
+    url: "https://www.inah.gob.mx/foto-del-dia/templo-mayor-de-tlatelolco",
+  },
+  tribute: {
+    title:
+      "Museo del Templo Mayor, INAH · Travesía 1: Antecedentes arqueológicos",
+    url: "https://www.templomayor.inah.gob.mx/images/home/tripticos/viajeros.pdf",
+  },
+  malintzin: {
+    title: "Berenice Alcántara Rojas · Marina–Malina–Malintzin–Malinche · UNAM",
+    url: "https://www.noticonquista.unam.mx/index.php/amoxtli/365/363",
+  },
+  siege: {
+    title: "Iván Arriaga · El inicio del asedio de México Tenochtitlan · UNAM",
+    url: "https://www.noticonquista.unam.mx/amoxtli/2746/2743",
+  },
+  coalition: {
+    title:
+      "UNAM, Noticonquista · Batallas, conquistas y rebeliones, la gran guerra de 1521",
+    url: "https://www.noticonquista.unam.mx/portada/semanal/2592",
+  },
+  epidemic: {
+    title: "Sandra Guevara · Pandemia en Tenochtitlan · UNAM (2020)",
+    url: "https://www.noticonquista.unam.mx/sites/default/files/2020-03/guevara_-_pandemia_-_final.pdf",
+  },
+  urbanGrowth: {
+    title:
+      "Javier Delgado, coord. · La urbanización difusa de la Ciudad de México · UNAM (2008)",
+    url: "https://publicaciones.geografia.unam.mx/index.php/ig/catalog/book/10",
+  },
+  rivers: {
+    title: "PUEC, UNAM · Rescate de ríos urbanos (2012)",
+    url: "https://www.puec.unam.mx/pdf/publicaciones_digitales/rescate_rios_digital.pdf",
+  },
+  capital1929: {
+    title: "UNAM · La creación del Departamento del Distrito Federal",
+    url: "https://librosoa.unam.mx/handle/123456789/2636",
+  },
+  metroHistory: {
+    title: "AGN · Inauguración del Metro, vía El Nacional (archivo de 1969)",
+    url: "https://www.gob.mx/agn/articulos/agn-recuerda-la-inauguracion-del-metro-via-el-nacional?idiom=es",
+  },
+  palace: {
+    title: "AGN · El proyecto inconcluso del Palacio Legislativo",
+    url: "https://www.gob.mx/agn/articulos/agnrecuerda-el-proyecto-inconcluso-del-palacio-legislativo-hoy-monumento-a-la-revolucion",
+  },
+  earthquake: {
+    title: "UNAM · El sismo de 1985 y la investigación científica (2025)",
+    url: "https://www.dgcs.unam.mx/boletin/bdboletin/2025_622.html",
+  },
+  urbanClimate: {
+    title: "Gaceta UNAM · Urbanización cambia clima de Ciudad de México (2021)",
+    url: "https://www.gaceta.unam.mx/urbanizacion-cambia-clima-de-ciudad-de-mexico/",
+  },
+  chinampaStudy: {
+    title:
+      "UNAM, Anales del Instituto de Biología · Chinampas y almácigos flotantes, 8(3), pp. 375–386",
+    url: "https://anales.ib.unam.mx/index.php/anales/es/article/view/335",
+  },
+  chinampaHistory: {
+    title: "UNAM, Decires · Historia de Xochimilco y sus chinampas",
+    url: "https://decires.cepe.unam.mx/index.php/decires/article/download/127/108/219",
+  },
+  chinampaRefuge: {
+    title:
+      "Ciencia UNAM · Ajolotes y chinampas en el rescate de Xochimilco (2022)",
+    url: "https://ciencia.unam.mx/leer/1251/ajolotes-y-chinampas-en-el-rescate-de-xochimilco",
+  },
+  axolotl: {
+    title:
+      "Liliana Morán / Elizabeth Cruz · Axolotes y chinampas: vida en equilibrio · UNAM (2025)",
+    url: "https://ciencia.unam.mx/contenido/infografia/279/axolotes-y-chinampas-vida-en-equilibrio",
+  },
+  archiveChinampas: {
+    title:
+      "Karl Weule, Leitfaden der Völkerkunde · Chinampas (publicación de 1912)",
+    url: "https://commons.wikimedia.org/wiki/File:Chinampas.jpg",
+  },
+  archiveMendoza: {
+    title:
+      "Bodleian Libraries · Códice Mendoza, MS. Arch. Selden. A. 1, folio 2r (ca. 1541)",
+    url: "https://digital.bodleian.ox.ac.uk/objects/2fea788e-2aa2-4f08-b6d9-648c00486220/",
+  },
+  florentine: {
+    title:
+      "Códice Florentino · libro XII, folio 53v (1577) · Biblioteca Medicea Laurenziana / Getty",
+    url: "https://florentinecodex.getty.edu/en/book/12/folio/53v/images/37bdcd20-4f02-47e3-a2b8-a1a52e844472",
+  },
+  conquestEnd: {
+    title: "Iván Arriaga · Julio–agosto de 1521: la caída de Tlatelolco · UNAM",
+    url: "https://www.noticonquista.unam.mx/index.php/amoxtli/2752/2750",
+  },
+  indigenousAfter: {
+    title: "Federico Navarrete · ¿Conquista, invasión o rebelión? · UNAM",
+    url: "https://www.noticonquista.unam.mx/amoxtli/2599/2592",
+  },
+  archiveMonument: {
+    title: "CarlosGalvanMex · Monumento a la Revolución (2018), CC BY-SA 4.0",
+    url: "https://commons.wikimedia.org/wiki/File:MONUMENTO_A_LA_REVOLUCION_CON_CIELO_AZUL.jpg",
+  },
   subsidence: {
     title: "UNAM Geofísica · Hundimiento del suelo en la CDMX (2026)",
     url: "https://geogaceta.geofisica.unam.mx/index.php/2026/05/18/el-hundimiento-del-suelo-en-la-zona-metropolitana-de-la-cdmx-alcanza-hasta-42-centimetros-por-ano/",
@@ -133,8 +314,8 @@ export const BOROUGHS: Borough[] = [
     name: "Cuauhtémoc",
     region: c("Centro", "Center"),
     hook: c(
-      "La isla sigue debajo de tus pasos.",
-      "The island is still beneath your feet.",
+      "Del Zócalo a Tlatelolco y Tabacalera.",
+      "From the Zócalo to Tlatelolco and Tabacalera.",
     ),
     memory: c(
       "Ubica el Zócalo; al norte, Tlatelolco. Hacia el poniente aparecen Tabacalera y las colonias Roma y Condesa.",
@@ -181,8 +362,8 @@ export const BOROUGHS: Borough[] = [
     name: "Miguel Hidalgo",
     region: c("Centro-poniente", "West of center"),
     hook: c(
-      "El cerro, el agua y los caminos del poniente.",
-      "The hill, water and western roads.",
+      "Chapultepec, Tacuba y Tacubaya.",
+      "Chapultepec, Tacuba, and Tacubaya.",
     ),
     memory: c(
       "Chapultepec es tu ancla. Busca Tacuba al norte y Tacubaya al sur: tres nombres, tres lugares distintos.",
@@ -228,8 +409,8 @@ export const BOROUGHS: Borough[] = [
     name: "Azcapotzalco",
     region: c("Noroeste", "Northwest"),
     hook: c(
-      "Antes de las fábricas, un poder tepaneca.",
-      "Before the factories, a Tepanec power.",
+      "Del antiguo pueblo al paisaje industrial de Vallejo.",
+      "From the old town to Vallejo’s industrial landscape.",
     ),
     memory: c(
       "Al noroeste del centro. Une el antiguo pueblo, el paisaje industrial y un parque que representa la cuenca.",
@@ -267,8 +448,8 @@ export const BOROUGHS: Borough[] = [
     name: "Gustavo A. Madero",
     region: c("Norte", "North"),
     hook: c(
-      "El norte también sube al cerro.",
-      "The north climbs the hills too.",
+      "Del Tepeyac a las laderas de Cuautepec.",
+      "From Tepeyac to Cuautepec’s hillsides.",
     ),
     memory: c(
       "Tepeyac orienta; la Sierra de Guadalupe explica el relieve del norte. Cuautepec está entre laderas.",
@@ -313,7 +494,10 @@ export const BOROUGHS: Borough[] = [
     id: "09017",
     name: "Venustiano Carranza",
     region: c("Oriente del centro", "East of center"),
-    hook: c("Un cerro junto a las pistas.", "A hill beside the runways."),
+    hook: c(
+      "El Peñón, el aeropuerto y el Mercado de Jamaica.",
+      "Peñón de los Baños, the airport, and Jamaica Market.",
+    ),
     memory: c(
       "Del lado oriental del centro, ubica el aeropuerto y el Peñón de los Baños. Hacia el centro aparecen grandes mercados.",
       "East of the center, locate the airport and Peñón de los Baños. Major markets lie toward the city center.",
@@ -358,8 +542,8 @@ export const BOROUGHS: Borough[] = [
     name: "Iztacalco",
     region: c("Centro-oriente", "East-central"),
     hook: c(
-      "Donde había canoas, hoy buscas calles.",
-      "Where canoes passed, you now look for streets.",
+      "San Matías, Santa Anita y la historia de La Viga.",
+      "San Matías, Santa Anita, and the story of La Viga.",
     ),
     memory: c(
       "Es la pieza pequeña entre el centro y el oriente. Su escala no cuenta toda su historia: La Viga conectaba pueblos y mercados.",
@@ -405,8 +589,8 @@ export const BOROUGHS: Borough[] = [
     name: "Iztapalapa",
     region: c("Oriente", "East"),
     hook: c(
-      "El oriente tiene cerros y pueblos antiguos.",
-      "The east has hills and old towns.",
+      "Culhuacán y el Cerro de la Estrella.",
+      "Culhuacán and Cerro de la Estrella.",
     ),
     memory: c(
       "Encuentra el Cerro de la Estrella; Culhuacán queda hacia su poniente. Esta alcaldía no es sólo expansión reciente.",
@@ -452,8 +636,8 @@ export const BOROUGHS: Borough[] = [
     name: "Benito Juárez",
     region: c("Sur del centro", "South of center"),
     hook: c(
-      "La ciudad también creció entre sus pueblos.",
-      "The city grew between its towns too.",
+      "Mixcoac, Portales y Del Valle.",
+      "Mixcoac, Portales, and Del Valle.",
     ),
     memory: c(
       "Al sur de Cuauhtémoc y al norte de Coyoacán. Mixcoac, Portales y Del Valle te ayudan a reconocerla.",
@@ -496,7 +680,10 @@ export const BOROUGHS: Borough[] = [
     id: "09003",
     name: "Coyoacán",
     region: c("Sur urbano", "Urban south"),
-    hook: c("Del pueblo al Pedregal.", "From the old town to the Pedregal."),
+    hook: c(
+      "De las plazas del centro a Ciudad Universitaria.",
+      "From the historic center’s squares to Ciudad Universitaria.",
+    ),
     memory: c(
       "El centro de Coyoacán y Ciudad Universitaria no son el mismo sitio. Entre ambos cambia el paisaje.",
       "Coyoacán’s historic center and Ciudad Universitaria are not the same place. The landscape changes between them.",
@@ -538,7 +725,10 @@ export const BOROUGHS: Borough[] = [
     id: "09010",
     name: "Álvaro Obregón",
     region: c("Poniente", "West"),
-    hook: c("Entre plazas y barrancas.", "Between squares and ravines."),
+    hook: c(
+      "San Ángel, Chimalistac y las barrancas del poniente.",
+      "San Ángel, Chimalistac, and the western ravines.",
+    ),
     memory: c(
       "San Ángel es una entrada, no toda la alcaldía. Sigue el terreno hacia las laderas del poniente.",
       "San Ángel is an entry point, not the whole borough. Follow the terrain into the western hillsides.",
@@ -581,8 +771,8 @@ export const BOROUGHS: Borough[] = [
     name: "Cuajimalpa de Morelos",
     region: c("Poniente montañoso", "Mountainous west"),
     hook: c(
-      "El bosque también es Ciudad de México.",
-      "The forest is Mexico City too.",
+      "Pueblos y bosques en el poniente de la ciudad.",
+      "Towns and forests on the city’s western side.",
     ),
     memory: c(
       "En el borde poniente, la ciudad sube. Santa Fe no explica por sí sola los pueblos y bosques de Cuajimalpa.",
@@ -628,8 +818,8 @@ export const BOROUGHS: Borough[] = [
     name: "La Magdalena Contreras",
     region: c("Suroeste", "Southwest"),
     hook: c(
-      "Un río entre fábricas y bosque.",
-      "A river between mills and forest.",
+      "El río Magdalena y los bosques de Los Dinamos.",
+      "The Magdalena River and the forests of Los Dinamos.",
     ),
     memory: c(
       "Busca el corredor del río Magdalena y Los Dinamos, al suroeste del mapa.",
@@ -673,8 +863,8 @@ export const BOROUGHS: Borough[] = [
     name: "Tlalpan",
     region: c("Sur y montaña", "South and mountains"),
     hook: c(
-      "Una pirámide antes de Tenochtitlan.",
-      "A pyramid before Tenochtitlan.",
+      "De Cuicuilco a las montañas del Ajusco.",
+      "From Cuicuilco to the Ajusco mountains.",
     ),
     memory: c(
       "Cuicuilco y el centro de Tlalpan están en el extremo urbano norte de una alcaldía que se extiende hacia el Ajusco.",
@@ -720,8 +910,8 @@ export const BOROUGHS: Borough[] = [
     name: "Xochimilco",
     region: c("Sur lacustre", "Lake country to the south"),
     hook: c(
-      "El agua todavía se cultiva.",
-      "Water still supports a working landscape.",
+      "Chinampas, canales y pueblos del sur.",
+      "Chinampas, canals, and southern communities.",
     ),
     memory: c(
       "Al sur de Coyoacán y al oeste de Tláhuac. Canales, chinampas y pueblos: recuerda las tres piezas.",
@@ -766,8 +956,8 @@ export const BOROUGHS: Borough[] = [
     name: "Tláhuac",
     region: c("Sureste lacustre", "Southeastern lake country"),
     hook: c(
-      "La orilla se convirtió en ciudad, pero no sólo en ciudad.",
-      "The shore became urban, but not entirely.",
+      "San Pedro, Mixquic y los campos del sureste.",
+      "San Pedro, Mixquic, and the southeastern fields.",
     ),
     memory: c(
       "Al oriente de Xochimilco y al norte de Milpa Alta. Une San Pedro, Mixquic y los paisajes agrícolas.",
@@ -810,7 +1000,10 @@ export const BOROUGHS: Borough[] = [
     id: "09009",
     name: "Milpa Alta",
     region: c("Extremo sur", "Far south"),
-    hook: c("El sur también habla.", "The south has a living voice."),
+    hook: c(
+      "Pueblos, campos y náhuatl en el sur de la ciudad.",
+      "Towns, fields, and Nahuatl in the city’s south.",
+    ),
     memory: c(
       "En el extremo sur: pueblos, campos y bosque. No confundas el borde del Metro con el borde de la ciudad.",
       "At the far south: towns, fields and forest. Do not confuse the edge of Metro with the edge of the city.",

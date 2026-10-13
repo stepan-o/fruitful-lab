@@ -2,6 +2,68 @@
   "schemaVersion": 1,
   "pack": "mexico-city",
   "assets": {
+    "archive-chinampas": {
+      "kind": "image",
+      "width": 1520,
+      "height": 1067,
+      "variants": [
+        {
+          "src": "/media/files/31ce6a377b9b4e2987e677037c85911d5a4c054158791a2e22b8b99e76940ba2.webp",
+          "mime": "image/webp",
+          "bytes": 29334,
+          "sha256": "31ce6a377b9b4e2987e677037c85911d5a4c054158791a2e22b8b99e76940ba2",
+          "width": 400,
+          "height": 281
+        },
+        {
+          "src": "/media/files/5facdc0435bf299dd325af2ca67d7b8642f4d69beea2839481be0607a86d92d5.webp",
+          "mime": "image/webp",
+          "bytes": 101646,
+          "sha256": "5facdc0435bf299dd325af2ca67d7b8642f4d69beea2839481be0607a86d92d5",
+          "width": 800,
+          "height": 562
+        },
+        {
+          "src": "/media/files/a083ba0421ba203c017e318b4718a1e6ad6237764bf3c09268ecc26e3312bc7a.webp",
+          "mime": "image/webp",
+          "bytes": 203394,
+          "sha256": "a083ba0421ba203c017e318b4718a1e6ad6237764bf3c09268ecc26e3312bc7a",
+          "width": 1200,
+          "height": 842
+        }
+      ]
+    },
+    "archive-epidemic": {
+      "kind": "image",
+      "width": 2000,
+      "height": 1451,
+      "variants": [
+        {
+          "src": "/media/files/9986ef22094492447ae31101a9913286ae70f9277bc4732ad4cfaa9b2862ebf4.webp",
+          "mime": "image/webp",
+          "bytes": 30596,
+          "sha256": "9986ef22094492447ae31101a9913286ae70f9277bc4732ad4cfaa9b2862ebf4",
+          "width": 400,
+          "height": 290
+        },
+        {
+          "src": "/media/files/29d5f72d2bedb70c32962e40a7375103083fe30ff4c3cff65bbfcf35d7279f36.webp",
+          "mime": "image/webp",
+          "bytes": 97794,
+          "sha256": "29d5f72d2bedb70c32962e40a7375103083fe30ff4c3cff65bbfcf35d7279f36",
+          "width": 800,
+          "height": 580
+        },
+        {
+          "src": "/media/files/89afe0266bde634a0ebdd725b240c5058928b8ee9c3c985cf74d819362880232.webp",
+          "mime": "image/webp",
+          "bytes": 177986,
+          "sha256": "89afe0266bde634a0ebdd725b240c5058928b8ee9c3c985cf74d819362880232",
+          "width": 1200,
+          "height": 871
+        }
+      ]
+    },
     "archive-legislativo": {
       "kind": "image",
       "width": 510,
@@ -22,6 +84,29 @@
           "sha256": "284ebcd61081577cb531ca2cdaadd91a730124453dd434d183453a051a425c1d",
           "width": 510,
           "height": 692
+        }
+      ]
+    },
+    "archive-mendoza": {
+      "kind": "image",
+      "width": 736,
+      "height": 1077,
+      "variants": [
+        {
+          "src": "/media/files/0c749d5d32dc2deb8a1afddb14cda3cc6b497c12949ca104e00946463622337a.webp",
+          "mime": "image/webp",
+          "bytes": 73708,
+          "sha256": "0c749d5d32dc2deb8a1afddb14cda3cc6b497c12949ca104e00946463622337a",
+          "width": 400,
+          "height": 585
+        },
+        {
+          "src": "/media/files/3eb82772b1383a4145ab8faa1dad0cbe970101b1c712cda5715c0a3ef30fe471.webp",
+          "mime": "image/webp",
+          "bytes": 282526,
+          "sha256": "3eb82772b1383a4145ab8faa1dad0cbe970101b1c712cda5715c0a3ef30fe471",
+          "width": 736,
+          "height": 1077
         }
       ]
     },
@@ -61,6 +146,99 @@
           "sha256": "040796d0535f2ffc95d8872933dd82752578f6339bbf7a7ed72a638b9acf5c55",
           "width": 1280,
           "height": 811
+        }
+      ]
+    },
+    "archive-teotihuacan": {
+      "kind": "image",
+      "width": 1600,
+      "height": 1261,
+      "variants": [
+        {
+          "src": "/media/files/94905e2698ce4dea75a658bb44efa8c26845cef935ae1cfab57f59997ac02925.webp",
+          "mime": "image/webp",
+          "bytes": 9266,
+          "sha256": "94905e2698ce4dea75a658bb44efa8c26845cef935ae1cfab57f59997ac02925",
+          "width": 400,
+          "height": 315
+        },
+        {
+          "src": "/media/files/84efa57b0a274157b85d2875a28ad0117c918d6254b99db8be30682b00386419.webp",
+          "mime": "image/webp",
+          "bytes": 30664,
+          "sha256": "84efa57b0a274157b85d2875a28ad0117c918d6254b99db8be30682b00386419",
+          "width": 800,
+          "height": 630
+        },
+        {
+          "src": "/media/files/6c935843d7748e7023f95e508b209d117ceeeb5733d90b52f490ef09354f4b0d.webp",
+          "mime": "image/webp",
+          "bytes": 60478,
+          "sha256": "6c935843d7748e7023f95e508b209d117ceeeb5733d90b52f490ef09354f4b0d",
+          "width": 1200,
+          "height": 946
+        }
+      ]
+    },
+    "archive-valley-1847": {
+      "kind": "image",
+      "width": 1920,
+      "height": 2505,
+      "variants": [
+        {
+          "src": "/media/files/d55079ca69039a21f922590deb853b17f408c9ac25b9ef441ba3e8a9e1ee043f.webp",
+          "mime": "image/webp",
+          "bytes": 50094,
+          "sha256": "d55079ca69039a21f922590deb853b17f408c9ac25b9ef441ba3e8a9e1ee043f",
+          "width": 480,
+          "height": 626
+        },
+        {
+          "src": "/media/files/9c712973556c5dd88b8e60450bca718182a7d26392a95aaec4897e53cd3c7681.webp",
+          "mime": "image/webp",
+          "bytes": 271198,
+          "sha256": "9c712973556c5dd88b8e60450bca718182a7d26392a95aaec4897e53cd3c7681",
+          "width": 960,
+          "height": 1252
+        },
+        {
+          "src": "/media/files/be0714f9eff50eb0273b87556183ee84d9c5464288d852e468de4816b1bfc480.webp",
+          "mime": "image/webp",
+          "bytes": 525170,
+          "sha256": "be0714f9eff50eb0273b87556183ee84d9c5464288d852e468de4816b1bfc480",
+          "width": 1280,
+          "height": 1670
+        }
+      ]
+    },
+    "archive-viga-briquet": {
+      "kind": "image",
+      "width": 990,
+      "height": 724,
+      "variants": [
+        {
+          "src": "/media/files/3a61d52a78fe2903e969a3dcb064a7c4a0ea4e10d38dbf3465136dc362bd1940.webp",
+          "mime": "image/webp",
+          "bytes": 14788,
+          "sha256": "3a61d52a78fe2903e969a3dcb064a7c4a0ea4e10d38dbf3465136dc362bd1940",
+          "width": 480,
+          "height": 351
+        },
+        {
+          "src": "/media/files/cb1e8b254d9e1abe7fd87cfc051070036b66531dc51f0c8e724418ba2ba7a2cd.webp",
+          "mime": "image/webp",
+          "bytes": 30512,
+          "sha256": "cb1e8b254d9e1abe7fd87cfc051070036b66531dc51f0c8e724418ba2ba7a2cd",
+          "width": 768,
+          "height": 562
+        },
+        {
+          "src": "/media/files/e74250c9b8623abbfedd2c15c0307f59e095ed1e3304f855ae6f15f3f2605e6c.webp",
+          "mime": "image/webp",
+          "bytes": 51228,
+          "sha256": "e74250c9b8623abbfedd2c15c0307f59e095ed1e3304f855ae6f15f3f2605e6c",
+          "width": 990,
+          "height": 724
         }
       ]
     },

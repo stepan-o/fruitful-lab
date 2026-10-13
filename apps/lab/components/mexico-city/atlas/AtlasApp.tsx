@@ -131,16 +131,20 @@ function Atlas() {
     { id: "explore" as const, title: say("Explorar", "Explore"), Icon: Map },
     {
       id: "chapters" as const,
-      title: say("Aprender", "Learn"),
+      title: say("Leer", "Read"),
       Icon: BookOpen,
     },
-    { id: "time" as const, title: say("Tiempo", "Time"), Icon: History },
+    {
+      id: "time" as const,
+      title: say("En el tiempo", "Through time"),
+      Icon: History,
+    },
     {
       id: "quizzes" as const,
-      title: say("Retos", "Challenges"),
+      title: say("Ponte a prueba", "Test yourself"),
       Icon: Sparkles,
     },
-    { id: "words" as const, title: "Náhuatl", Icon: Sprout },
+    { id: "words" as const, title: say("Náhuatl", "Nahuatl"), Icon: Sprout },
   ];
   const practice = (track: Track) => go({ screen: "quizzes", track });
   return (
@@ -154,7 +158,7 @@ function Atlas() {
           className="at-return"
         >
           <ArrowLeft size={18} />
-          <span>{say("Al juego", "Back to game")}</span>
+          <span>{say("Ir al mapa del juego", "Open the game map")}</span>
         </Link>
         <Link href="/mexico-city" className="at-brand">
           Mexico city
@@ -169,34 +173,57 @@ function Atlas() {
             <div className="at-explore-header">
               <div>
                 <p className="at-eyebrow">
-                  {say("ATLAS DE LA CIUDAD", "CITY ATLAS")} · 19° N / 99° O
+                  {say("ATLAS DE LA CIUDAD DE MÉXICO", "MEXICO CITY ATLAS")}
                 </p>
                 <h1 tabIndex={-1}>
                   {current
                     ? current.name
                     : say(
-                        "Antes de salir,\nempieza a mirar.",
-                        "Before you go,\nstart noticing.",
+                        "¿Por qué la ciudad tiene esta forma?",
+                        "Why does the city look this way?",
                       )}
                 </h1>
+                {!current && (
+                  <p className="at-landing-intro">
+                    {say(
+                      "Empieza por el valle y sus lagos. Sigue a los pueblos que lo transformaron y encuentra sus huellas en la ciudad de hoy.",
+                      "Begin with the valley and its lakes. Follow the people who transformed them, and find their traces in today’s city.",
+                    )}
+                  </p>
+                )}
               </div>
               {!current && (
-                <button
-                  className="at-start"
-                  onClick={() => go({ screen: "chapters", chapter: "basin" })}
+                <section
+                  className="at-first-chapter"
+                  aria-labelledby="atlas-first-chapter"
                 >
-                  <span>01</span>
-                  <div>
-                    {say("Empieza por el agua", "Start with the water")}
-                    <small>
-                      {say(
-                        "Un viaje por la forma de la ciudad",
-                        "A journey through the city’s shape",
-                      )}
-                    </small>
-                  </div>
-                  <ArrowRight size={20} />
-                </button>
+                  <p className="at-eyebrow">
+                    {say("Capítulo 01", "Chapter 01")}
+                  </p>
+                  <h2 id="atlas-first-chapter">
+                    {say("El valle y sus lagos", "The valley and its lakes")}
+                  </h2>
+                  <p>
+                    {say(
+                      "Conoce el paisaje donde comienza esta historia: montañas, agua y distintas maneras de vivir entre ambas.",
+                      "Meet the landscape where this story begins: mountains, water, and different ways of living between them.",
+                    )}
+                  </p>
+                  <button
+                    className="at-start"
+                    onClick={() => go({ screen: "chapters", chapter: "basin" })}
+                  >
+                    {say("Leer el primer capítulo", "Read the first chapter")}
+                    <ArrowRight size={20} />
+                  </button>
+                  <button
+                    className="at-text-button"
+                    onClick={() => go({ screen: "chapters" })}
+                  >
+                    {say("Ver todos los capítulos", "Browse all chapters")}
+                    <ArrowRight size={16} />
+                  </button>
+                </section>
               )}
             </div>
             {current && (
@@ -219,13 +246,41 @@ function Atlas() {
             <div
               className={`at-explore-layout ${current ? "has-selection" : ""}`}
             >
-              <AtlasMap
-                focus={location}
-                onBorough={(id) => go({ screen: "explore", borough: id })}
-                onAnchor={(index) =>
-                  go({ screen: "explore", borough: current!.id, anchor: index })
-                }
-              />
+              <section
+                className="at-map-section"
+                aria-label={say("Mapa de la ciudad", "City map")}
+              >
+                {!current && (
+                  <div className="at-map-intro">
+                    <h2>
+                      {say("Empieza por un lugar.", "Start with a place.")}
+                    </h2>
+                    <p>
+                      {say(
+                        "Selecciona una alcaldía para conocer sus lugares de referencia, su historia y cómo se conecta con otras partes de la ciudad.",
+                        "Choose a borough to explore its landmarks, history, and connections with the rest of the city.",
+                      )}
+                    </p>
+                  </div>
+                )}
+                <AtlasMap
+                  focus={location}
+                  onBorough={(id) => go({ screen: "explore", borough: id })}
+                  onAnchor={(index) =>
+                    go({
+                      screen: "explore",
+                      borough: current!.id,
+                      anchor: index,
+                    })
+                  }
+                />
+                <p className="at-map-editorial-note">
+                  {say(
+                    "Las alcaldías dibujan la ciudad de hoy. Sus historias nos llevan más atrás.",
+                    "Today’s boroughs give us our bearings. Their stories take us further back.",
+                  )}
+                </p>
+              </section>
               {current ? (
                 <section className="at-borough-panel" aria-label={current.name}>
                   <p className="at-eyebrow">{current.region[locale]}</p>
@@ -296,32 +351,29 @@ function Atlas() {
                     id="tenochtitlan-island"
                     sizes="(max-width: 760px) 240px, 340px"
                   />
-                  <p className="at-eyebrow">
-                    {say("UNA CIUDAD, MUCHAS CAPAS", "ONE CITY, MANY LAYERS")}
-                  </p>
                   <h2>
-                    {say(
-                      "El agua no está.\nLas pistas, sí.",
-                      "The water has gone.\nThe clues remain.",
-                    )}
+                    {say("Cómo cambió la ciudad", "How the city changed")}
                   </h2>
                   <p>
                     {say(
-                      "Toca una alcaldía. Acércate a sus lugares y descubre por qué están donde están.",
-                      "Choose a borough. Zoom into its places and discover why they are where they are.",
+                      "Recorre los momentos que transformaron el valle. Observa qué cambió entre una época y otra y encuentra el capítulo que cuenta esa parte de la historia.",
+                      "Explore turning points in the valley’s history. See what changed between periods, then find the chapter that tells that story.",
                     )}
                   </p>
                   <small>
                     {say(
-                      "Ilustración interpretativa de la ciudad lacustre.",
-                      "Interpretive illustration of the lake city.",
+                      "Ilustración interpretativa de Tenochtitlan.",
+                      "Interpretive illustration of Tenochtitlan.",
                     )}
                   </small>
                   <button
                     className="at-text-button"
                     onClick={() => go({ screen: "time" })}
                   >
-                    {say("Viajar en el tiempo", "Travel through time")}
+                    {say(
+                      "Explorar la línea del tiempo",
+                      "Explore the timeline",
+                    )}
                     <ArrowRight size={18} />
                   </button>
                 </aside>
@@ -330,26 +382,23 @@ function Atlas() {
             <section className="at-borough-directory">
               <div className="at-directory-heading">
                 <div>
-                  <p className="at-eyebrow">
-                    {say("LAS PIEZAS DE HOY", "TODAY’S PIECES")}
-                  </p>
                   <h2>
-                    {say(
-                      "16 alcaldías. Ninguna de relleno.",
-                      "16 boroughs. Each with a story.",
-                    )}
+                    {say("Conoce las 16 alcaldías.", "Meet the 16 boroughs.")}
                   </h2>
+                  <p>
+                    {say(
+                      "Ubica cada una por sus lugares, su paisaje y su historia. Elige una para empezar.",
+                      "Get to know each through its landmarks, landscape, and history. Choose one to begin.",
+                    )}
+                  </p>
                 </div>
                 <label>
-                  {say("Busca un nombre o lugar", "Find a name or place")}
+                  {say("Buscar alcaldía o lugar", "Find a borough or place")}
                   <input
                     type="search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder={say(
-                      "Ej. Cuicuilco, Tláhuac…",
-                      "E.g. Cuicuilco, Tláhuac…",
-                    )}
+                    placeholder="Coyoacán, Cuicuilco, Los Dinamos…"
                   />
                 </label>
               </div>
@@ -400,8 +449,8 @@ function Atlas() {
                 ) && (
                   <p role="status">
                     {say(
-                      "No encontramos ese nombre. Prueba con una alcaldía o un lugar.",
-                      "No match. Try a borough or place name.",
+                      `No encontramos «${query}» en el Atlas. Prueba con otro nombre o explora las alcaldías del mapa.`,
+                      `We couldn’t find “${query}” in the Atlas. Try another name or explore the boroughs on the map.`,
                     )}
                   </p>
                 )}
@@ -411,10 +460,9 @@ function Atlas() {
         {location.screen === "chapters" &&
           (location.chapter ? (
             <ChapterReader
-              explore={(id) => go({ screen: "explore", borough: id })}
+              openChapter={(id) => go({ screen: "chapters", chapter: id })}
               key={location.chapter}
               id={location.chapter}
-              practice={practice}
               back={() => go({ screen: "chapters" })}
             />
           ) : (
@@ -434,8 +482,8 @@ function Atlas() {
                 </h1>
                 <p>
                   {say(
-                    "Seis capítulos. Entra por el principio o sigue la pista que te dé curiosidad.",
-                    "Six chapters. Start at the beginning or follow whatever sparks your curiosity.",
+                    "Ocho capítulos para seguir la historia del valle. Cada uno termina con su propio quiz.",
+                    "Eight chapters tracing the valley’s history. Each ends with its own quiz.",
                   )}
                 </p>
               </header>
@@ -457,7 +505,8 @@ function Atlas() {
                       <h2>{c.title[locale]}</h2>
                       <p>{c.subtitle[locale]}</p>
                       <span>
-                        {say("3 escenas · un reto", "3 scenes · one challenge")}
+                        {c.period[locale]} ·{" "}
+                        {say("Leer y practicar", "Read and practice")}
                         <ArrowRight size={18} />
                       </span>
                     </div>
@@ -485,7 +534,12 @@ function Atlas() {
               </section>
             </section>
           ))}
-        {location.screen === "time" && <Timeline story={openStory} />}
+        {location.screen === "time" && (
+          <Timeline
+            story={openStory}
+            openChapter={(id) => go({ screen: "chapters", chapter: id })}
+          />
+        )}
         {location.screen === "words" && (
           <Words practice={() => practice("nahuatl")} />
         )}

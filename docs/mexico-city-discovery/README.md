@@ -1,6 +1,14 @@
 # Mexico city discovery game
 
-Updated 10 October 2026. Public Lab route: `/mexico-city`. Working reference: **Mexico city discovery game**; the final name is undecided. First players: Susy and Stepan.
+Updated 12 October 2026. Public Lab route: `/mexico-city`. Working reference: **Mexico city discovery game**; the final name is undecided. First players: Susy and Stepan.
+
+## Editorial design
+
+Use [EDITORIAL_DESIGN.md](EDITORIAL_DESIGN.md) before writing for this project. It defines a literary, Spanish-first voice with connected paragraphs, varied rhythm and concrete historical detail, together with idiomatic English adaptation. Every writing task includes a full reread and rewrite to remove LLM clichés, formulaic contrasts, promotional invitations, unsolicited behavior lessons and choppy prose. The guide covers sources, captions, map notes and the different pace of chapters, quizzes and game controls; it also preserves earlier landing choices as an implementation record.
+
+## Current learning experience
+
+The public `/mexico-city/atlas` contains the guided history reader, borough directory, historical comparisons and language practice. See [the Atlas content map](ATLAS_CONTENT_MAP.md), [source register](SOURCES.md) and [verification](ATLAS_VERIFICATION.md). Its eight history chapters include a dedicated chinampas chapter, archival documents, visible citations and 24 chapter-closing questions. All eight chapters, their captions, guided figures and quiz explanations have received the bilingual editorial revision and a second full reread under the current voice guide. The older prototype descriptions below remain historical context; the content map defines the current learning behavior.
 
 ## Current field-game implementation
 

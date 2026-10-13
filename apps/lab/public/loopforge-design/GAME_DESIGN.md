@@ -5297,7 +5297,7 @@ The uploaded blade is a single 1,145,974-triangle mesh with embedded material ma
 
 | Visible state | Proposed treatment |
 | --- | --- |
-| Powered rest / walking | Narrow stable core with slow uneven braid crawling. The blade follows a calibrated carry pose and clears the leg. |
+| Powered rest / walking | Narrow stable core with fast outward current and independently shifting jade/cyan/blue/violet braids. The blade follows a calibrated carry pose and clears the leg. |
 | Preparing an intervention | Strands tighten, brightness briefly gathers at the emitter and sound rises. Use an actual visible action wind-up, not a guessed emotion. |
 | Intervention / contact | A brief outward lash, trail and spark burst at the authored action phase. Contact sparks require confirmed contact, not proximity alone. |
 | Recovery / interruption | A short uneven decay back to the core. Cancel pending contact effects when an action is interrupted; do not finish a rejected strike visually. |
@@ -5368,8 +5368,8 @@ Keep the accepted body unchanged unless a specific rig or clearance failure requ
 
 Technical references checked 12 October 2026. Art direction and numeric budgets are Loopforge proposals, not vendor performance guarantees. Private bucket addresses, account IDs and credentials stay outside published records.
 
-## Owner feedback and idle refinement — 13 October
+## Owner feedback and idle refinement — 12 October
 
-Body/weapon clearance and the energy flowing from the forearm are accepted. Make blade motion visible beside full-body movement: separate the narrower white-cyan core from thicker travelling turquoise/ice-blue braids. Keep colour near cyan, without colour-coding hidden state. The same one-draw effect now follows an authored maintenance idle: inspect → power down → opposite-hand adjustment → two local failed starts → reignite → lower. Reduced effects preserve slow power transitions and suppress flicker/surge/displacement.
+Body/weapon clearance and the energy flowing from the forearm are accepted. Make blade motion visible beside full-body movement: separate the narrower white-cyan core from thicker travelling braids. The owner’s follow-up increases displacement speed fourfold and widens the palette through jade, cyan and electric blue to occasional violet. Each strand uses staggered, time-hashed tonal targets with smooth transitions; a pale cyan core holds the silhouette. Fast brightness packets travel along the strands without switching the powered core off. These are cosmetic variations, without colour-coding hidden state. The same one-draw effect now follows an authored maintenance idle: inspect → power down → opposite-hand adjustment → two local failed starts → reignite → lower. Reduced effects preserve slow power transitions and suppress flicker/surge/displacement.
 
 The 11-second, nine-track pose clip is baked offline against the existing rig. No Meshy regeneration or Blender work is required for this pass. Fingers, armour weights and exact worker contact are later Blender tasks; actual gameplay effects still need authoritative action timing. The existing GLBs, forearm mount and walk/run tracks are preserved. Review through the [asset library](/stepanoskin/loopforge/play/asset-review); implementation details live in [the production record](production/LIMEN_MESHY_REVIEW.md).

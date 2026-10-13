@@ -47,6 +47,12 @@ Bake static indirect light and fixed-architecture occlusion to a separate, non-o
 
 All lamp geometry, illuminated surface and shadow direction must share the same source transform. A beacon impulse can affect the nearby wall, robot and desk. Limit casters and receiver area before adding resolution. No blanket volumetric fog, screen-space reflections or expensive full-screen AO by default. Small local dust/steam effects must earn their overdraw.
 
+## LIMEN: character identity at CCTV scale
+
+[LIMEN’s blade](LIMEN_BLADE_DESIGN.md) is the primary cue for recognizing him in a dark camera feed. Keep a rigid textured housing, a narrow luminous core and a few shader-driven cyan braids. Reserve sparks, trails and brightness surges for visible action phases. Reuse the room bloom; any local spill light has a small receiver scope and must earn its cost. Identity survives low-detail and reduced-motion modes through shape, asymmetric placement and contrast, with correct wall/body occlusion. It must not depend on sound, a name badge or a hidden-stat glow.
+
+The updated 42,354-triangle body and separate 1,145,974-triangle blade master are in private S3. The 4.32 MB body review copy is prepared; the blade still needs offline separation, simplification and material preparation. The current hosted bench still uses v1. The implementation checklist and provisional budgets are in the blade contract; no assembled-v2 or performance approval is claimed. No further source generation is required to begin.
+
 ## Asset contract and CDN
 
 12 October: S3 is the selected source store and CloudFront the intended runtime CDN; account verification is still pending. The owner approved temporarily shipping the optimized 4.87 MB LIMEN GLB with the app. Its separate lazy review uses the existing Babylon loader and checksum manifest. See [LIMEN model and delivery contract](production/LIMEN_MESHY_REVIEW.md).

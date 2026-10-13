@@ -566,7 +566,7 @@ for contract_name in ["WEBVIEW_RENDERING_AND_ASSETS.md", "LOBBY_ART_DIRECTION.md
 # The visual-scale plan also belongs to the game design reading copy.
 with (OUT/"GAME_DESIGN.md").open("a") as f: f.write("\n\n"+(ROOT.parent/"FACTORY_FLOOR_VISUAL_SCALE_PLAN.md").read_text())
 
-for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md"]:
+for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md", "LIMEN_BLADE_DESIGN.md"]:
     content=(ROOT.parent/contract_name).read_text()
     (OUT/contract_name).write_text(content)
     for name in ["UI_DESIGN.md", "GAME_DESIGN.md"]:

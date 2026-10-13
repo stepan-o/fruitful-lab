@@ -6,7 +6,19 @@
 
 The owner approved temporary app-hosted delivery while AWS resolves CloudFront account verification. The source stays private in S3. No CloudFront distribution, bucket policy or credential change is needed to run this test.
 
-## Asset provenance and derivative
+## Current source revision — body and separate blade
+
+The owner regenerated LIMEN with the blade removed from the body and supplied a separate energy-blade prop. Both masters, the optimized body review copy and source provenance are uploaded and checksum-verified in private S3. The current source record selects `meshy-2026-10-12-v2`. The former source is marked retired and archived; its former object location remains because the scoped publisher cannot delete it. Bucket details remain private.
+
+| Asset | Current source / review status |
+| --- | --- |
+| Body v2 | 24,184,936 bytes; SHA-256 `2085f27c0264c417b876ee038919175712fd7fcc02c6c2601c1b2d65325a0ad4`; 42,354 triangles and 23 Mixamo joints. Local walk/run review is usable for the next pass. No finger bones or animated idle; minor soft armour deformation remains. |
+| Body v2 derivative | 4,318,356 bytes; SHA-256 `fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee`; geometry/rig preserved, 2048² colour map and material cleanup. Zero validator errors, inherited non-root skinned-mesh warning. |
+| Separate blade source | 61,813,440 bytes; SHA-256 `c65ba4fd8556e5203e5f7314c5a6c2877ff70c7806101da4a3e77ecf0e789f0f`; 1,145,974 triangles, one mesh, no skin or clips. Zero validator errors; missing authored tangent-space warning. Needs offline simplification/separation and attachment review. |
+
+**The deployed bench and pinned importer below still use v1.** A source-store pointer change does not activate a runtime pack. Blade attachment, leg clearance, animated energy and main-game integration have not been implemented. [The blade identity and implementation contract](../LIMEN_BLADE_DESIGN.md) is the next review gate. CloudFront remains pending; local or temporarily app-hosted review can proceed.
+
+## Deployed v1 provenance and derivative
 
 - Source: the private Loopforge source store, owner-provided Meshy LIMEN export dated 12 October 2026 (`limen_rigged.glb`). The storage address remains in private operational configuration.
 - Source SHA-256: `5cf991bb1be950dae7d2ba92353488562b7c6c2742cdfc169eef5febe7b220ef`.

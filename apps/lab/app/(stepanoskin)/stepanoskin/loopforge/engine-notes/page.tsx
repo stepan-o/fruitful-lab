@@ -103,6 +103,20 @@ export default function EngineNotes() {
             Themes, assets and feedback contract →
           </Link>
         </p>
+        <h2>Next character effect: LIMEN’s blade.</h2>
+        <p>
+          The cyan blade is the proposed recognition cue for LIMEN in dark CCTV
+          views. The updated body and separate blade sources are ready for asset
+          preparation; the assembled effect is not implemented. Visible action
+          timing and confirmed contacts will drive its motion phrases. Shader
+          noise, sparks and glow remain presentation, with no access to private
+          supervisor traits and no authority over outcomes.
+        </p>
+        <p>
+          <Link href="/stepanoskin/loopforge/design#agents">
+            Blade identity, readiness and the three-camera acceptance gate →
+          </Link>
+        </p>
         <h2>Rust-native logic, TypeScript implementation.</h2>
         <p style={{ margin: "20px 0 32px" }}>
           The domain uses owned plain records, discriminated unions, bounded

@@ -43,6 +43,10 @@ Gameplay configuration separately owns footprint, approach slots, occupancy/capa
 
 The owner is moving asset storage to S3 with CloudFront delivery to avoid repeating binary libraries in code deployments. CloudFront account verification is pending. LIMEN’s private source is already in S3; the owner explicitly approved a temporary optimized app-hosted `loopforge-limen` pack. Keep the immutable manifest contract and migrate delivery at the asset boundary once the CDN is ready. Remove migrated files from deployment output as well as changing URLs. See [LIMEN Meshy review](production/LIMEN_MESHY_REVIEW.md).
 
+## LIMEN body and blade production slice
+
+The owner supplied a separate rigged v2 body and unrigged blade. Both masters and the optimized body review copy are verified in private S3; the prior source is retired, while runtime migration remains separate. [The blade contract](LIMEN_BLADE_DESIGN.md) defines the next deliverable: a light housing mesh and baked maps, calibrated forearm socket, procedural energy geometry/material, bounded action effects and versioned dependencies. The source blade has 1,145,974 triangles and is not a runtime payload. Establish offline separation/baking tools, then review clearance and identity at actual CCTV size before changing the game cast. No additional owner-generated source art is currently needed.
+
 ## First package and gates
 
 Build one pay-claim desk with an alternate attachment, stool/lamp/terminal, paper/stamp animation, one forms-and-pipes wall bay and a floor-emblem surface. Two desk instances prove reuse; one worker proves contact.
@@ -58,3 +62,5 @@ The first `lobby.pay-claim-desk` is a reproducible Babylon recipe, versioned as 
 For the room kit, Blender authoring, KTX2 and the broader prefab compiler remain unimplemented. The later character test supplies the pinned GLB loader, imported-model validation, clip metadata and a reproducible offline export recipe; its rejected geometry is not an art-approved prefab library. Payroll economics remain separately designed. The current calibration does not claim queued worker tasks or live settlement. See [the visual-pass record](LOBBY_VISUAL_PASS_2026-10-11.md).
 
 Primary references checked 10 October 2026: [Blender to Babylon via glTF](https://doc.babylonjs.com/features/featuresDeepDive/Exporters/Blender_to_glTF), [Khronos glTF Validator](https://github.com/KhronosGroup/glTF-Validator), [Babylon KTX2](https://doc.babylonjs.com/features/featuresDeepDive/materials/using/ktx2Compression/). Verify behavior against pinned export/runtime versions when implementing the first kit.
+
+For the LIMEN slice, the owner can supply targeted Meshy revisions. Inspect the current master first; request a housing-only revision if separation, mounting or silhouette fails. Procedural energy remains a renderer effect, independent of generated mesh detail. See [the blade contract](LIMEN_BLADE_DESIGN.md#targeted-meshy-regeneration-is-available).

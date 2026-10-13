@@ -64,3 +64,9 @@ For the room kit, Blender authoring, KTX2 and the broader prefab compiler remain
 Primary references checked 10 October 2026: [Blender to Babylon via glTF](https://doc.babylonjs.com/features/featuresDeepDive/Exporters/Blender_to_glTF), [Khronos glTF Validator](https://github.com/KhronosGroup/glTF-Validator), [Babylon KTX2](https://doc.babylonjs.com/features/featuresDeepDive/materials/using/ktx2Compression/). Verify behavior against pinned export/runtime versions when implementing the first kit.
 
 For the LIMEN slice, the owner can supply targeted Meshy revisions. Inspect the current master first; request a housing-only revision if separation, mounting or silhouette fails. Procedural energy remains a renderer effect, independent of generated mesh detail. See [the blade contract](LIMEN_BLADE_DESIGN.md#targeted-meshy-regeneration-is-available).
+
+## Production asset review — 13 October
+
+Game Design → Agents links to `/stepanoskin/loopforge/play/asset-review`. A typed catalog identifies each subject and revision; the review loads one explicit character/equipment adapter in the real renderer. LIMEN is the first production entry, with concept comparison, idle/walk/run, seekable action beats, three CCTV-scale angles, reduced effects and evidence download. Future assets require compatible rigs/materials and acceptance checks; arbitrary source GLBs are not exposed.
+
+LIMEN’s new emitter-check idle is authored and baked offline (331 poses, nine rotation tracks, 11 seconds). Browser work is quaternion interpolation plus the existing single energy shader draw. Pure cosmetic cues drive shutdown, two bounded partial-power attempts and restart from the same clock. Turquoise/ice-blue braid variation stays independent of simulation truth. Blender has not been used for this pass; use it for fingers, armour weights and precise contacts. Existing accepted Meshy geometry and the forearm socket are preserved. See `production/LIMEN_MESHY_REVIEW.md`.

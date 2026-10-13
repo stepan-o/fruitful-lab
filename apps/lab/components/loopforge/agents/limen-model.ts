@@ -10,9 +10,11 @@ import type {CharacterStage} from '../factory-study/scene';
 import {worldPoint} from '@/lib/loopforge/spatial/floor';
 import manifest from '@/lib/assets/generated/loopforge-limen.json';
 import {createLimenBlade} from './limen-blade';
+import {createLimenIdle} from './limen-idle';
+import {limenIdleDuration,limenIdleCue} from '@/lib/loopforge/agents/limen-idle-cues';
 import calibration from './limen-blade-calibration.json';
 
-export type LimenClip='Rest'|'Walking'|'Running';
+export type LimenClip='Idle'|'Rest'|'Walking'|'Running';
 export type LimenSurface='textured'|'clay'|'wireframe';
 export const limenFile=manifest.assets.limen.variants[0];
 export const bladeFile=manifest.assets['blade-housing'].variants[0];
@@ -53,9 +55,11 @@ export async function loadLimen(stage:CharacterStage,signal:AbortSignal,onFrame:
   // The room has five lights; reserve one slot for this model-only inspection key.
   materials.forEach(m=>{m.maxSimultaneousLights=6;});
   const appearance=materials.map(m=>({m,texture:m.albedoTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness}));
-  let effectTime=0,pulseAt=-100,energyEnabled=true;
-  let clip:LimenClip='Rest',phase=0,playing=false,speed=1,last=performance.now(),notifyAt=0,disposed=false;
+  let effectTime=0,pulseAt=-100,energyEnabled=true,reducedOverride=false;
+  const sampleIdle=createLimenIdle(container.transformNodes);
+  let clip:LimenClip='Idle',phase=0,playing=false,speed=1,last=performance.now(),notifyAt=0,disposed=false;
   function sample(){
+   if(clip==='Idle'){sampleIdle(phase);root.computeWorldMatrix(true);stage.refresh();return;}
    const group=container.animationGroups.find(g=>g.name===clip)!;
    for(const track of group.targetedAnimations){
     const frame=group.from+(group.to-group.from)*phase,value=track.animation.evaluate(frame),target=track.target as TransformNode;
@@ -65,13 +69,25 @@ export async function loadLimen(stage:CharacterStage,signal:AbortSignal,onFrame:
    }
    root.computeWorldMatrix(true);stage.refresh();
   }
+  function duration(){
+   if(clip==='Idle')return limenIdleDuration;
+   const group=container.animationGroups.find(g=>g.name===clip)!;
+   return Math.max(.001,(group.to-group.from)/group.targetedAnimations[0].animation.framePerSecond);
+  }
+  function effect(){
+   const reduced=reducedOverride||reducedMotion.matches;
+   const cue=clip==='Idle'?limenIdleCue(phase*limenIdleDuration,reduced):{power:1,adjust:0,surge:0};
+   const age=effectTime-pulseAt,manual=Math.max(0,1-Math.abs(age-.25)/.25);
+   energy?.sample(reduced?0:effectTime,reduced?0:Math.max(cue.surge,manual),cue.power,cue.adjust);
+  }
   const observer=scene.onBeforeRenderObservable.add(()=>{
    const now=performance.now(),dt=Math.min(.06,(now-last)/1000);last=now;
    if(!playing)return;
-   effectTime+=dt*speed;const age=effectTime-pulseAt;energy?.sample(reducedMotion.matches?0:effectTime,reducedMotion.matches?0:Math.max(0,1-Math.abs(age-.25)/.25));
-   if(clip==='Rest')return;
-   const group=container.animationGroups.find(g=>g.name===clip)!,fps=group.targetedAnimations[0].animation.framePerSecond,duration=(group.to-group.from)/fps;
-   phase=(phase+dt*speed/duration)%1;sample();
+   effectTime+=dt*speed;
+   if(clip!=='Rest'){
+    phase=(phase+dt*speed/duration())%1;sample();
+   }
+   effect();
    if(now-notifyAt>100){notifyAt=now;onFrame(phase);}
   });
   function room(value:'security'|'conveyor'){
@@ -80,10 +96,11 @@ export async function loadLimen(stage:CharacterStage,signal:AbortSignal,onFrame:
   }
   room('security');sample();
   return {
-   clip(value:LimenClip){clip=value;phase=0;sample();onFrame(0);},
+   clip(value:LimenClip){clip=value;phase=0;effectTime=0;pulseAt=-100;sample();effect();onFrame(0);},
    play(value:boolean){playing=value;last=performance.now();stage.refresh();},
-   seek(value:number){phase=Math.max(0,Math.min(1,value));sample();},
+   seek(value:number){phase=Math.max(0,Math.min(1,value));effectTime=phase*duration();pulseAt=-100;sample();effect();},
    speed(value:number){speed=value;},
+   reduced(value:boolean){reducedOverride=value;effect();stage.refresh();},
    blade(value:boolean){energyEnabled=value;socket.setEnabled(value);stage.refresh();},
    pulse(){if(energyEnabled){pulseAt=effectTime;stage.refresh();}},
    turn(degrees:number){root.rotation.y=Math.PI+degrees*Math.PI/180;stage.refresh();},

@@ -2907,6 +2907,12 @@ From `apps/lab`, `npm run floor:build` opts into one build worker, a 1,536 MiB N
 
 The viewer retains hidden-tab suspension. Quiet scenes draw at about 30 Hz; camera interaction and running production are uncapped. A stopped scene with motion disabled draws only on state, camera, resize or resource changes. Local desk lights are restricted to their desk meshes and disabled outside the lobby. Rendering cadence never changes the 20 Hz kernel clock.
 
+## Production asset review — 13 October
+
+Game Design → Agents links to `/stepanoskin/loopforge/play/asset-review`. A typed catalog identifies each subject and revision; the review loads one explicit character/equipment adapter in the real renderer. LIMEN is the first production entry, with concept comparison, idle/walk/run, seekable action beats, three CCTV-scale angles, reduced effects and evidence download. Future assets require compatible rigs/materials and acceptance checks; arbitrary source GLBs are not exposed.
+
+LIMEN’s new emitter-check idle is authored and baked offline (331 poses, nine rotation tracks, 11 seconds). Browser work is quaternion interpolation plus the existing single energy shader draw. Pure cosmetic cues drive shutdown, two bounded partial-power attempts and restart from the same clock. Turquoise/ice-blue braid variation stays independent of simulation truth. Blender has not been used for this pass; use it for fingers, armour weights and precise contacts. Existing accepted Meshy geometry and the forearm socket are preserved. See `production/LIMEN_MESHY_REVIEW.md`.
+
 
 # Lobby: the wage-claim hall
 
@@ -3060,6 +3066,12 @@ For the room kit, Blender authoring, KTX2 and the broader prefab compiler remain
 Primary references checked 10 October 2026: [Blender to Babylon via glTF](https://doc.babylonjs.com/features/featuresDeepDive/Exporters/Blender_to_glTF), [Khronos glTF Validator](https://github.com/KhronosGroup/glTF-Validator), [Babylon KTX2](https://doc.babylonjs.com/features/featuresDeepDive/materials/using/ktx2Compression/). Verify behavior against pinned export/runtime versions when implementing the first kit.
 
 For the LIMEN slice, the owner can supply targeted Meshy revisions. Inspect the current master first; request a housing-only revision if separation, mounting or silhouette fails. Procedural energy remains a renderer effect, independent of generated mesh detail. See [the blade contract](LIMEN_BLADE_DESIGN.md#targeted-meshy-regeneration-is-available).
+
+## Production asset review — 13 October
+
+Game Design → Agents links to `/stepanoskin/loopforge/play/asset-review`. A typed catalog identifies each subject and revision; the review loads one explicit character/equipment adapter in the real renderer. LIMEN is the first production entry, with concept comparison, idle/walk/run, seekable action beats, three CCTV-scale angles, reduced effects and evidence download. Future assets require compatible rigs/materials and acceptance checks; arbitrary source GLBs are not exposed.
+
+LIMEN’s new emitter-check idle is authored and baked offline (331 poses, nine rotation tracks, 11 seconds). Browser work is quaternion interpolation plus the existing single energy shader draw. Pure cosmetic cues drive shutdown, two bounded partial-power attempts and restart from the same clock. Turquoise/ice-blue braid variation stays independent of simulation truth. Blender has not been used for this pass; use it for fingers, armour weights and precise contacts. Existing accepted Meshy geometry and the forearm socket are preserved. See `production/LIMEN_MESHY_REVIEW.md`.
 
 
 # Factory floor: scale, grain and motion
@@ -3639,3 +3651,9 @@ Keep the accepted body unchanged unless a specific rig or clearance failure requ
 - [Babylon GPU particles](https://doc.babylonjs.com/features/featuresDeepDive/particles/particle_system/gpu_particles/) — capabilities, limitations and lifecycle costs. GPU simulation is not automatically the best choice for a tiny burst.
 
 Technical references checked 12 October 2026. Art direction and numeric budgets are Loopforge proposals, not vendor performance guarantees. Private bucket addresses, account IDs and credentials stay outside published records.
+
+## Owner feedback and idle refinement — 13 October
+
+Body/weapon clearance and the energy flowing from the forearm are accepted. Make blade motion visible beside full-body movement: separate the narrower white-cyan core from thicker travelling turquoise/ice-blue braids. Keep colour near cyan, without colour-coding hidden state. The same one-draw effect now follows an authored maintenance idle: inspect → power down → opposite-hand adjustment → two local failed starts → reignite → lower. Reduced effects preserve slow power transitions and suppress flicker/surge/displacement.
+
+The 11-second, nine-track pose clip is baked offline against the existing rig. No Meshy regeneration or Blender work is required for this pass. Fingers, armour weights and exact worker contact are later Blender tasks; actual gameplay effects still need authoritative action timing. The existing GLBs, forearm mount and walk/run tracks are preserved. Review through the [asset library](/stepanoskin/loopforge/play/asset-review); implementation details live in [the production record](production/LIMEN_MESHY_REVIEW.md).

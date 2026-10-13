@@ -23,7 +23,7 @@
     "research:import": "node scripts/import-research.mjs",
     "floor-plan:build": "node scripts/loopforge-floor-plan.mjs",
     "floor-plan:check": "node scripts/loopforge-floor-plan.mjs --check",
-    "characters:check": "node scripts/characters/check.mjs"
+    "characters:check": "node scripts/characters/check.mjs && node scripts/characters/build-limen-idle.mjs --check"
   },
   "dependencies": {
     "@babylonjs/core": "9.30.0",

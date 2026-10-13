@@ -26,3 +26,5 @@ for(const [id,asset] of Object.entries(pack.assets)){
 const baked=JSON.parse(new TextDecoder().decode(await file('worker-baked')));assert.equal(baked.width,72);assert.equal(baked.height,180);const raw=Buffer.from(baked.vertexData,'base64');assert.equal(raw.byteLength,207360);assert.ok(new Float32Array(raw.buffer,raw.byteOffset,raw.byteLength/4).every(Number.isFinite));
 console.log('Shared animation texture: 203 KiB decoded, finite matrices.');
 await import('./check-limen.mjs');
+
+await import("./check-worker-review.mjs");

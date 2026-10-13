@@ -153,3 +153,9 @@ Verified 12 October 2026; recommendations above are design judgments, not perfor
 - [Babylon animation groups](https://doc.babylonjs.com/features/featuresDeepDive/animation/groupAnimations/) — clip grouping and playback control.
 - [Babylon lightmaps](https://doc.babylonjs.com/guidedLearning/lightmaps/) — static lighting as an environment optimization.
 - [Babylon crowd navigation](https://doc.babylonjs.com/features/featuresDeepDive/crowdNavigation/) — available navigation tools, not a guarantee of deterministic cross-runtime simulation.
+
+## Worker motion bank and Cathexis gait — 13 October 2026
+
+Worker 01’s 19 exported motions are available in the [production review player](/stepanoskin/loopforge/play/asset-review/worker), linked from Game design → Agents → Asset review. The new Idle and Injured Walk share the same FBX rig as the other standalone exports. They are review candidates; machine-contact authoring and several clearance adjustments remain. See [the complete inventory and audit](production/WORKER_MOTION_REVIEW.md).
+
+The owner selects **Hot Walk as Cathexis’s default walk**. Keep that public name even though the source FBX says `Confident_Walk`. Preserve the expressive gait; fix mesh intersections without erasing its character. Worker 01 is a temporary motion stand-in until Cathexis’s own mesh/rig can be reviewed. Style approval does not certify retargeting or factory contact. `afraid_recoil` and `work_cradle` remain missing custom motions.

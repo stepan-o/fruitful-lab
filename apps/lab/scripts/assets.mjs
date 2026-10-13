@@ -7,7 +7,7 @@ import sharp from 'sharp';
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const namePattern = /^[a-z][a-z0-9-]{0,63}$/;
 const hashPattern = /^[a-f0-9]{64}$/;
-const mimeTypes = { '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.wav': 'audio/wav', '.mp4': 'video/mp4', '.webm': 'video/webm', '.json': 'application/json' };
+const mimeTypes = { '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.wav': 'audio/wav', '.mp4': 'video/mp4', '.webm': 'video/webm', '.json': 'application/json', '.glb': 'model/gltf-binary' };
 export const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const serialize = (value) => Buffer.from(JSON.stringify(value, null, 2) + '\n');
 
@@ -33,7 +33,7 @@ function roots(options = {}) {
 }
 
 function localFile(publicRoot, url) {
-  if (!/^\/media\/files\/[a-f0-9]{64}\.(webp|mp3|ogg|wav|mp4|webm|json)$/.test(url)) throw new Error(`Invalid asset URL: ${url}`);
+  if (!/^\/media\/files\/[a-f0-9]{64}\.(webp|mp3|ogg|wav|mp4|webm|json|glb)$/.test(url)) throw new Error(`Invalid asset URL: ${url}`);
   return path.join(publicRoot, url);
 }
 
@@ -100,9 +100,16 @@ export async function buildPack(catalogPath, options = {}) {
     } else {
       const ext = path.extname(input).toLowerCase();
       const mime = mimeTypes[ext];
-      if (!mime || !['audio', 'video', 'data'].includes(spec.kind) ||
-          (spec.kind === 'data' ? mime !== 'application/json' : !mime.startsWith(`${spec.kind}/`))) throw new Error(`${id}: unsupported type`);
+      if (!mime || !['audio', 'video', 'data', 'model'].includes(spec.kind) ||
+          (spec.kind === 'model' ? mime !== 'model/gltf-binary' : spec.kind === 'data' ? mime !== 'application/json' : !mime.startsWith(`${spec.kind}/`))) throw new Error(`${id}: unsupported type`);
       if (spec.kind === 'data') JSON.parse(sourceBytes);
+      if (spec.kind === 'model') {
+        const { validateBytes } = await import('gltf-validator');
+        const report = await validateBytes(new Uint8Array(sourceBytes), { maxIssues: 10 });
+        if (report.issues.numErrors) throw new Error(`${id}: invalid GLB`);
+        const json = JSON.parse(sourceBytes.subarray(20, 20 + sourceBytes.readUInt32LE(12)).toString());
+        if ([...(json.buffers ?? []), ...(json.images ?? [])].some(x => x.uri)) throw new Error(`${id}: GLB must embed all dependencies`);
+      }
       await save(sourceBytes, ext, mime);
       manifest.assets[id] = { kind: spec.kind, variants };
     }

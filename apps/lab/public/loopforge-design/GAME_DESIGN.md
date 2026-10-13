@@ -5113,6 +5113,8 @@ See [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRE
 
 # Agents: character, movement and contact
 
+Current candidate: [Meshy LIMEN review](production/LIMEN_MESHY_REVIEW.md), with source/derivative provenance and explicit clip/material limits. It does not replace main-play agents yet. The updated body and separate blade masters are verified in S3. The review bench now assembles the v2 body, simplified rigid housing and procedural cyan energy. [LIMEN’s blade identity contract](LIMEN_BLADE_DESIGN.md) makes its asymmetric cyan silhouette and controlled energy motion the primary recognition cue in dark CCTV views. The first assembly is implemented. Contact poses, action-driven bursts and measured crowd recognition/performance remain open.
+
 12 October 2026. Current direction; implementation status is explicit below. Companion to [the first-turn contract](FIRST_TURN_ENGINE.md) and [the room scale plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
 
 ## Decision
@@ -5123,6 +5125,58 @@ Call workers and supervisors **agents** because the intended simulation gives th
 
 Keep Babylon 9.30.0. The best next step is authored, rigged 3D characters in the existing procedural factory, with baked surface detail and deliberate animation. Authoring can use procedural modeling offline; it need not construct hundreds of little meshes in every browser. The goal is a movable, lightable character that matches the art from every CCTV angle. Flat sprites or generated video cannot supply reliable arbitrary views, shadows, contacts and gameplay timing. Native asset-driven illustrations remain valuable for briefings and major event cuts.
 
+## Model direction reset after production review
+
+12 October, owner review: the production-test models are too clumsy, too spherical and insufficiently textured. **The current cast fails the visual gate.** Keep its deterministic action fixture, import/validation pipeline and performance evidence as engineering tools. Do not expand or integrate these bodies as the accepted character style.
+
+### What the test got wrong
+
+The original art has connected mechanical anatomy: shaped shells over a narrower frame, recessed bearings, layered plates and purposeful empty space. LIMEN has a skull, fitted security armour and equipment; STILETTO has a continuous slim torso, long tapered limbs and swept forearm blades. Workers have coherent chest/pelvis assemblies and capable hands. Curved armour is appropriate; repeated isolated balls and capsules defining the whole body are not.
+
+The current `scripts/characters/author.mjs` uses scaled spheres for chest, head, limb covers and most joints. Changing their dimensions does not establish convincing part construction. Its texture coordinates project X/Y across every surface, collapsing depth-oriented faces, and `surface.mjs` adds a shared 256-pixel noise/scratch pattern. Nearly all body surfaces share one metallic response. Additional scratches, bevel segments or brighter lighting cannot repair those shape and material decisions.
+
+### Recommended replacement: authored mechanical characters
+
+Use **Blender-led mesh and material authoring**, with image-to-3D only as an optional candidate source. Blender is the production workspace, not an automatic quality upgrade: recreating the same sphere recipe there would fail for the same reason. Art-directed mesh editing, coherent surface maps and repeated actual-model review are the necessary work. Browser-side procedural code remains useful for assembly, state variation and animation; it should not invent the final bodies.
+
+| Body feature | Required construction |
+| --- | --- |
+| Head | Designed brow, cheek/jaw planes, recessed optics, neck connection and a convincing back. Preserve a skull-like worker/LIMEN face and STILETTO's narrow visor/helmet. |
+| Torso and pelvis | One coherent load-bearing assembly with tapered sections, overlapping shell panels and access covers; a narrower waist with visible suspension. |
+| Limbs | Shaped cross-sections and tapered forearm/shin shells around a lighter frame. Show where a shell ends and a moving linkage begins. |
+| Joints | Recessed hinge barrels, bearings, sockets and clearances appropriate to the motion; rounded parts remain only where their construction calls for them. |
+| Hands and feet | A palm, thumb, credible gripping fingers, ankle and articulated sole. Fit the same cradle and station contacts used in the engine. |
+| Wear | Damage follows exposure and use: paint loss at edges, grime inside recesses, oil near moving joints and polished contact surfaces. Avoid uniform noise over every material. |
+
+Use real geometry for silhouette, overhangs, deep cavities and moving parts. Bake shallow panel grooves, screws and small damage from detailed sources into normal maps. UV unwrap surfaces deliberately. A compact material atlas can still encode painted enamel, bare steel, brass and rubber separately through colour, roughness and metalness masks. Painted/coated regions must not inherit the same metallic response as exposed metal. Preserve readable planes and some quiet surfaces; detail should form a hierarchy rather than cover everything equally. Do not bake the concept art's fixed highlights or dramatic shadows into base colour.
+
+Hard shell pieces follow their rigid mechanical bones. Model articulation clearances and joint centres before texturing; cables and soft covers can use limited weighted deformation. Bake authoring constraints into clips. Preserve action names/contact semantics, but version a new rig if proportions or articulation require it; do not force the asset into the test's 17-bone rig. Foot planting, turns, grip timing and weight transfer are reviewed with the mesh, since a good static body can still become clumsy in motion.
+
+### Candidate production routes
+
+| Route | Role in this project | Main constraint |
+| --- | --- | --- |
+| Deliberately modelled Blender asset | Recommended production authority: exact shells, articulation, UVs, baked detail and export | Requires actual character-art work and visual iteration; scripting alone does not guarantee it |
+| Multi-view image-to-3D, then Blender cleanup | Optional acceleration experiment using a consistent reference turnaround | Generated hidden surfaces, joint separation, hands, texture lighting and animation topology still need review and repair |
+| Purchased generic robot or unedited generated mesh | Possible temporary reference/benchmark, not the selected Loopforge cast | A technically usable model can still miss the character completely |
+
+Meshy's current multi-image API supports several views, PBR maps and GLB output; that makes it a plausible candidate experiment, not a proven winner for Loopforge. Hunyuan3D 2.1 provides an alternative shape/PBR pipeline; its published memory requirements make it a separate offline/GPU production decision. The initial rethink did not select a vendor. The owner subsequently generated and rigged LIMEN in Meshy; its runtime derivative is now reviewed at `/stepanoskin/loopforge/play/agent-test/limen`. Blender was not found on this task's shell PATH. Establish that toolchain before claiming automated mesh production is available.
+
+### Next production gate: one worker, fully resolved
+
+1. **Reference:** resolve one worker's front, side and back in a consistent neutral pose, using existing room art. Define body proportions and joint clearances. A new illustration is a specification, not proof of a finished model.
+2. **Shape:** author the complete worker. Review actual mesh renders in neutral grey from front, rear, side and three-quarter views. It must already look mechanical with textures and glow disabled. Reject the silhouette before spending time on surface polish.
+3. **Surface:** unwrap and texture the same mesh; bake detailed source geometry into the delivery mesh. Inspect close-up and at actual CCTV size under neutral and factory lighting, including the alarm sweep.
+4. **Motion:** test walk/stop/turn, credential presentation and cradle lift/carry/set-down. Check shell intersections, feet and hands. The existing headless fixture remains the source of action timing and outcomes.
+5. **Delivery:** retain the detailed source outside public deployment, export validated GLB/material maps, and test in the existing viewer. Measure a close actor and 10/24/100-worker scenes at fixed resolution/camera settings; only then derive background meshes and shared animation tiers.
+6. **Expansion:** derive two worker variants from the accepted construction and material family. Build bespoke LIMEN and STILETTO bodies next; sharing contact semantics does not mean sharing a rescaled torso.
+
+Acceptance requires side-by-side original-art comparison and rendered-asset evidence: shape without textures, material response, all three CCTV angles, visible contact sequence and measured frame-time tails. A polished offline beauty render alone cannot pass the in-game gate. If the first worker still misses the art, escalate the modelling method or obtain specialist character-art input rather than repeat the primitive recipe across the cast.
+
+The performance strategy is better allocation of detail: shaped visible surfaces, baked microdetail, shared texture/mesh resources, spatially culled crowds, limited contact shadows and camera-specific detail. A richer offline source need not produce a heavier browser asset. This is a design objective to measure, not a promise that more detailed art will automatically run faster. Keep Babylon and the frontend-independent BDI/action contract.
+
+Primary production references checked 12 October: [Blender Studio modelling workflow](https://studio.blender.org/tools/artist-guide/asset-creation/modeling), [Blender baking](https://docs.blender.org/UATEST/manual/en/4.5/render/cycles/baking.html), [Meshy multi-image generation](https://docs.meshy.ai/en/api/multi-image-to-3d), [Hunyuan3D 2.1](https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1). Their documented capabilities do not establish a quality or speed result for our characters.
+
 ## Style pass: what must survive the translation
 
 Sources: original Loopforge character sheets and room interaction art, already published in the versioned `loopforge`, `loopforge-console` and `loopforge-supervisors` packs. These are references, not finished 3D turnarounds. Read shape, gesture and materials before ornamental grain.
@@ -5130,7 +5184,7 @@ Sources: original Loopforge character sheets and room interaction art, already p
 | Agent | Identity from the art | Motion and contact direction | What would break the character |
 | --- | --- | --- | --- |
 | Workers | Worn industrial skull/visor heads, exposed joints and ribbed bodies, repair plates, brass/steel with restrained eye light. Smaller and less ornate than supervisors. | Weight shifts under a brain cradle; planted feet at a press; both hands meet handles. Waiting, hesitation and fatigue have distinct silhouettes. Start with three compatible body variants and stable cosmetic seeds. | Identical upright toy figures, oversized round heads, floating hands, synchronized marching, random twitching as a substitute for stress. |
-| LIMEN | Broad, heavy dark armour; skull-like face, cyan eyes/accents, straps and equipment. A low, stable centre of mass. | Deliberate steps; a planted blocking stance at a gate; head looks at a worker before a stop gesture. Inspection visibly holds that worker and the queue behind them. | The same slim rig silhouette as STILETTO, fast flailing, or cyan glow covering every surface. |
+| LIMEN | Broad, heavy dark armour; skull-like face, cyan eyes/accents, straps and equipment. A single asymmetric cyan blade is the primary dark-CCTV recognition cue; retain its outline when labels are hidden. A low, stable centre of mass. | Deliberate steps; a planted blocking stance at a gate; head looks at a worker before a stop gesture. Inspection visibly holds that worker and the queue behind them. | The same slim rig silhouette as STILETTO, fast flailing, or cyan glow covering every surface. |
 | STILETTO | Narrow elongated silhouette, articulated black chrome, sharp forearms, restrained red visor. Clear distinction between hard polish and dirty surroundings. | Short decisive turns, forward intent, crisp pointing and impatient checking. Workers hurry in response; she cannot perform engineering repairs. | Bulky armour, soft round proportions, indiscriminate spikes, a permanent attack pose or excessive bloom hiding articulation. |
 | Cathexis | Cracked porcelain, warm eyes/core, crown/headphones, trailing cables and distressed fabric. An inviting face that can become disturbing. | Open-handed address, controlled head tilt, attention spreading across a worker group. A refusal or loss of trust changes who turns toward her. | A generic metal worker painted white; workers applauding regardless of their actual response. |
 | Rivet Witch | Hood, round green goggles, brass mask, dense tools/cables and heavy boots. Her kit has a practical working silhouette. | Kneel, brace, inspect, wrench and test at authored machine sockets. The work changes an actual repair task once engineering is available. | A repair beam, tools missing the machine, or decorative repair motion producing free condition recovery. |
@@ -5182,11 +5236,11 @@ One Babylon engine, one active room and one pose update feed all three CCTV pass
 
 ## Asset package and production pipeline
 
-Use Blender or equivalent offline authoring for measured turnaround → low-poly silhouette → UV/material bake → rig → contact clips → GLB export → actual Babylon review. Image generation can help designs and surface art; it cannot guarantee a usable rig, topology, correct unseen surfaces or synchronized contacts by itself. No model vendor is selected and no purchase is required by this proposal.
+Use Blender or equivalent offline authoring for measured turnaround → low-poly silhouette → UV/material bake → rig → contact clips → GLB export → actual Babylon review. Image generation can help designs and surface art; it cannot guarantee a usable rig, topology, correct unseen surfaces or synchronized contacts by itself. The owner has now selected Meshy for a first LIMEN candidate; worker and remaining-supervisor authoring decisions are still open.
 
 A character prefab needs a versioned source/model, compatible rig ID, mesh/material detail tiers, named clips and their phase ranges, foot/hand/look/tool sockets, bounds, semantic appearance states and dependencies. A machine prefab needs approach/stand/contact slots and prop sockets. Simulation definitions own slot capacity, action duration, authority and effects separately. Validate scale, coordinate conversion, finite transforms, sockets, clip coverage, legal transitions, prop handoffs, hash integrity and disposal. A cosmetic asset revision cannot change production balance.
 
-Reuse the immutable asset manifest/CDN workflow; extend its schema for GLB and texture dependencies when the first actual model exists. Use compressed GPU textures where measured appropriate; keep export sources, high-resolution intermediates and raw takes out of runtime packs and Vercel deployments. Load only the chosen room/agents, share dependencies, retain a bounded cache and release unused resources. Do not add speculative libraries or bulk generated artwork now.
+The immutable asset manifest/CDN workflow now accepts self-contained GLB model entries. Embedded texture dependencies are validated before publication. Use compressed GPU textures where measured appropriate; keep export sources, high-resolution intermediates and raw takes out of runtime packs and Vercel deployments. Load only the chosen room/agents, share dependencies, retain a bounded cache and release unused resources. Do not add speculative libraries or bulk generated artwork now.
 
 ## First production slice and acceptance
 
@@ -5196,9 +5250,9 @@ Reuse the immutable asset manifest/CDN workflow; extend its schema for GLB and t
 4. Compare skeletal and baked background paths at 10, 24 and 100 agents. Measure whole-frame p50/p95/p99, interaction latency, draw calls, all-pass triangles, decoded texture memory, loading, API/replay cost and repeated room-switch memory. Use the existing visual-scale plan's device targets; claim no universal performance percentage.
 5. Review side by side with original art at actual game size: silhouette, surface response, stride, contacts, paired reactions and compositional hierarchy. Motion must read with badges hidden. Expand to Cathexis, Witch and Thrum only after this slice passes owner review.
 
-**Delivered in this revision:** builder removal, prebuilt opening state, obsolete command rejection/version bump, no construction charge, renderer lazy activation, source-art review and this plan in the game/UI/engine records.
+**Production test implemented — 12 October:** `/stepanoskin/loopforge/play/agent-test` reviews three worker variants, LIMEN and STILETTO in the real Security/Forge scene. Offline geometry/material recipes export validated GLB rigs and named clips. A bounded headless fixture owns paired reservations, gate inspection/release, cradle ownership and supervisor intervention/refusal. The review includes fixed-tick seeking, three cameras, original-art comparison and hybrid/all-skeletal diagnostics at 10/24/100 workers. [Execution and evidence record](production/AGENT_PRODUCTION_TEST.md).
 
-**Not delivered:** production character meshes/rigs, Blender pipeline, new glTF/KTX2 loader, general BDI planning, paired animation system, optimized animated crowds or certified mobile character performance. Current visible bodies remain placeholders. Room unlocks/policies remain longer-run design; no free placement returns through that terminology.
+**Remaining:** replace the visually rejected cast through the worker-first gate above; richer acting, planted locomotion and smooth transitions; general BDI perception/planning/navigation; first-turn integration; dynamic asset loading by cast membership and physical-device certification. The review route eagerly loads its small complete comparison cast (8.69 MiB of raw models/data) so switching paths is a controlled comparison. That is an author-bench exception, not the intended main-game loading policy. Main-play figures remain placeholders. No Blender dependency or KTX2 pipeline is claimed.
 
 **Economy consequence:** removing construction removes the prototype's immediate cash sink. Keep the existing opening funds and delivery income honestly; do not invent a replacement purchase or charge for prebuilt fixtures. Later funding/unlocks, payroll and engineering need a separate balance pass. Adviser choice, assignments, process controls, responses and permanent allocation still carry first-turn agency.
 
@@ -5212,3 +5266,110 @@ Verified 12 October 2026; recommendations above are design judgments, not perfor
 - [Babylon animation groups](https://doc.babylonjs.com/features/featuresDeepDive/animation/groupAnimations/) — clip grouping and playback control.
 - [Babylon lightmaps](https://doc.babylonjs.com/guidedLearning/lightmaps/) — static lighting as an environment optimization.
 - [Babylon crowd navigation](https://doc.babylonjs.com/features/featuresDeepDive/crowdNavigation/) — available navigation tools, not a guarantee of deterministic cross-runtime simulation.
+
+
+# LIMEN blade — identity through CCTV
+
+Decision: 12 October 2026. First assembly implemented; action integration and full visual/performance acceptance remain open.
+
+## The player-facing promise
+
+**The blade is how you tell LIMEN from other robots in a dark factory room through a CCTV camera angle.** Recognition must work before reading a name, opening a portrait or zooming in. It is part of the interface's visual language, not an optional close-up ornament.
+
+Preserve the original character sheet: a heavy dark security body with a single asymmetric cyan blade extending from its arm. A narrow white-cyan core, torn cyan braids and deliberate heavy movement distinguish it from worker eye lights, Thrum's blue lens and fixed cyan machinery. Colour alone is insufficient. Shape, placement, rhythm and local contrast carry identity together. Keep the body mechanically controlled while its contained energy moves fiercely; do not turn LIMEN into a flailing swordsman.
+
+When powered and visible, the blade retains a restrained luminous core at rest. Rich activity arrives in phrases, not continuous fireworks. This differs from the console beacon, whose default is dark with brief event impulses. An extinguished, stowed or fully occluded blade must not appear through armour or walls to preserve a recognition cue. Use body shape, motion and the existing accessible inspection/name affordance when the blade cannot be seen.
+
+## The layered asset
+
+| Layer | Visual responsibility | Implementation direction |
+| --- | --- | --- |
+| Rigid housing | Weight, worn metal and a credible mounting point | Simplified Meshy-derived mesh with deliberate material maps. Attach to a calibrated forearm socket. Verify actual rig handedness, axes, units and carry pose; do not guess from the camera view. |
+| Energy core | A readable blade silhouette, even at small size | Small procedural mesh anchored at the emitter. Preserve a firm cutting edge and a pointed asymmetrical outline. |
+| Cyan braids | Contained instability; flex, tear and snap back | A few segmented ribbons with shader displacement, small shared noise data and tapered motion. Keep the base fixed; increase displacement toward the tip. No cloth or fluid simulation. |
+| Sparks and trail | Brief release of energy during a specific action | Bounded pooled particles and a short swing trail. A bright head and fast decay matter more than particle count. Ordinary footsteps do not trigger repeated bursts. |
+| Glow and spill | Separate LIMEN from the dark room and connect the blade to nearby surfaces | Reuse the factory's existing bloom. Test a small scoped light on the gauntlet/torso or nearby receivers only at useful viewing distances. Correct occlusion and restrained bloom are mandatory. |
+| Sound | Anticipation, discharge and recovery | A restrained electrical hum/whine, dry snap and short decay tied to the same action envelope. Spatial attenuation and mute apply; recognition must still work silently. |
+
+The uploaded blade is a single 1,145,974-triangle mesh with embedded material maps, not a ready runtime effect. Separate housing from modeled energy offline. Preserve the housing silhouette; bake fine detail into a lower-complexity mesh and replace the sculpted energy with controlled procedural geometry. Do not upload the full master into a browser pack or merely wobble its million vertices.
+
+## Motion phrases and evidence
+
+| Visible state | Proposed treatment |
+| --- | --- |
+| Powered rest / walking | Narrow stable core with fast outward current and independently shifting jade/cyan/blue/violet braids. The blade follows a calibrated carry pose and clears the leg. |
+| Preparing an intervention | Strands tighten, brightness briefly gathers at the emitter and sound rises. Use an actual visible action wind-up, not a guessed emotion. |
+| Intervention / contact | A brief outward lash, trail and spark burst at the authored action phase. Contact sparks require confirmed contact, not proximity alone. |
+| Recovery / interruption | A short uneven decay back to the core. Cancel pending contact effects when an action is interrupted; do not finish a rejected strike visually. |
+| Reduced motion / paused inspection | Stable readable core and restrained state changes. No rapid flashes, wandering ribbons or compulsory camera shake. |
+
+Stress, malfunction or aggression variants may be added only when the projection permits that observable behaviour. Do not drive brightness directly from private loyalty, confidence, beliefs or motives. A furious-looking effect must not invent a hostile intention the world never committed.
+
+## Engine and viewer boundary
+
+The simulation owns agent/action IDs, action timing, equipment availability and committed contacts. The renderer consumes permitted action records and maps them to a versioned visual recipe. Proposed inputs are the stable agent/action ID, blade mode, phase timing, approved visible intensity and a separate cosmetic seed. These are a design contract, not newly implemented KVP fields.
+
+Evaluate the core/ribbons from action time and that visual seed. Key one-shot bursts by event ID; seeking or changing cameras must not duplicate them. Camera passes share the same pose and effect time. Handle pause, resume, cancellation, replay seek and room disposal explicitly. Cosmetic RNG never advances the gameplay random stream. No LLM, particle collision or animation callback can produce damage, trust changes or production outcomes.
+
+A viewer's lower detail tier may simplify appearance but must retain identity and permitted action meaning. Geometry/FX updates stay outside React; UI readouts update at bounded frequency. The effect stops when hidden or unloaded while the authoritative agent continues to exist.
+
+## Initial budgets — hypotheses to measure
+
+- Housing: roughly 2–5k triangles, with a compact texture set; tune against the actual silhouette and viewing distance.
+- Core and braids: under 1k triangles total; a few shared materials and a small noise texture.
+- Sparks: begin with 4–12 per burst, capped at 24 live blade sparks across the active room. Use a small pooled system first; GPU particles are an option if measured demand warrants their setup cost.
+- No per-spark lights, continuous shadow-map updates, fluid physics or new full-screen distortion pass. A scoped blade light is conditional, not required for recognition.
+- Reuse the existing bloom before introducing a separate glow layer. Check transparent overdraw, brightness clipping and occlusion from every feed.
+- Test a provisional incremental effect cost of at most 1 ms at the 60 fps tier / 2 ms at the 30 fps tier, measured over the complete camera composition. These are targets, not achieved results; the underlying room must also meet its total frame budget.
+
+Near view: housing detail, braids, brief trail/sparks and optional spill. Ordinary CCTV: silhouette, limited braid motion and short bursts. Very small feed: the clean core and asymmetric motion signature survive; micro-sparks and spill can disappear. Set thresholds using projected pixel size, not arbitrary world distance. In all tiers, avoid making the blade a broad bloom blob that hides a worker or a gate interaction.
+
+## First implementation — 12 October
+
+The separate `/play/agent-test/limen` bench now loads body v2 and the blade housing from an immutable two-file pack. They total **5,493,992 bytes**. The 61.81 MB blade master remains offline: a revision-specific extraction removes modeled energy, then Meshoptimizer reduces the housing to **4,994 triangles**. Three retained source maps become 1024² JPEGs; MikkTSpace tangents are generated. This is not a fresh high-to-low texture bake.
+
+The mount follows `mixamorig:RightForeArm`. The rig uses centimetres; equipment uses metres. Calibration is versioned in `limen-blade-calibration.json` and shared by the renderer and geometry check. Sampling 73 poses per walk/run clip finds no blade-axis intersections with the leg mesh. Nearest sampled leg vertices are 12.4 cm / 6.6 cm away respectively. This is a regression measure, not a guaranteed minimum surface distance, swept-volume test or acceptance of future contact poses.
+
+A single opaque shader draw supplies the **672-triangle** tapered core and three moving braids. It reuses factory bloom and adds no dynamic light, particle allocation or full-screen pass. A half-second manual surge previews a stronger energy phrase. It is explicitly a review cue, not a game event or a replacement for the authoritative action contract. Pause freezes cosmetic time; reduced motion keeps energy steady. Hidden tabs pause, offscreen canvases stop rendering and teardown disposes both assets and the effect.
+
+Close inspection and three elevated CCTV-scale presets frame the stationary subject in Security or the Forge. They support silhouette review without replacing the game's fixed feeds. The complete recognition gate still includes those real feeds, partial occlusion, other robots, machinery and low-end devices. Contact poses, event-keyed sparks/trails, audio and main-play integration remain open. CloudFront is pending; temporary app-hosted delivery is authorized. Private source records already select v2.
+
+No additional Meshy export is required for this first assembly. A targeted housing revision remains available if owner review finds a shape or mount problem.
+
+## Targeted Meshy regeneration is available
+
+The owner has credits and can generate additional models. Treat that as an available production route, not a prerequisite. Inspect the current blade first. If its housing cannot be separated cleanly, has an unsuitable mount, or loses its silhouette at the delivery budget, request a housing-only revision using the original character sheet: rigid emitter, gauntlet mount and clear attachment surfaces, without modeled energy, sparks or trails. Aim initially for the same 2–5k-triangle housing budget with baked material detail; inspect actual geometry and materials rather than relying on the generator’s reported target.
+
+Keep the accepted body unchanged unless a specific rig or clearance failure requires it. Request each new asset against an observed failure and compare it in the same CCTV camera before adoption. A new Meshy mesh still needs socket calibration, material preparation and motion clearance. The living energy remains procedural so it can react to committed actions, pause, scale in detail and cancel cleanly.
+
+## Implementation checklist and exit gate
+
+- [x] Preserve and verify the separate body and blade sources; record the prior source as retired.
+- [x] Establish the identity, state/visibility boundary and performance proposal in the design and engine readers.
+- [x] Prepare the first housing delivery mesh, retained maps, pivot and bounds; replace modeled energy with a procedural core and braids.
+- [x] Attach to the verified forearm socket and establish sampled rest/walk/run review.
+- [ ] Author intervention poses and certify full swept leg, torso and paired-worker clearance.
+- [ ] Implement bounded phrases, event-keyed sparks/trails, shared bloom and optional scoped spill. Add sound only through the existing opt-in/mute path.
+- [x] Integrate v2 body and blade in the separate review bench with blade visibility, pause/scrub and fixed framing presets. Quality remains adaptive; a controlled performance comparison is still required before main-play integration.
+- [ ] Review normal, dark and alarm lighting from all three room CCTV angles at their real on-screen size. Test beside workers, STILETTO and cyan machinery; test overlapping bodies and partial occlusion.
+- [ ] Hide labels and portraits. The owner should identify LIMEN quickly without zooming, including at the smallest supported feed size, in stills/reduced motion and with sound off. Check grayscale contrast as well as colour. Record failures rather than compensating with permanent UI arrows.
+- [ ] Compare the same room/agents/camera sequence with blade FX off and on at 10/24/100 workers. Record CPU/GPU time where available, p50/p95/p99, draw calls, transparent overdraw, memory and all three camera passes. Retain the 30 fps modest-device goal; physical-phone performance remains unmeasured until tested.
+- [ ] Check hidden-tab suspension, room swaps, repeated load/dispose, pause/seek/replay, no duplicated sparks and unchanged simulation hashes across quality tiers.
+- [x] Publish optimized immutable dependencies and switch the review manifest. Retained v1 assets remain available for older release references; the main-play cast is unchanged.
+
+## References and related records
+
+- [Original cast, acting and BDI boundaries](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md)
+- [Source revisions and deployed LIMEN bench](production/LIMEN_MESHY_REVIEW.md)
+- [Webview rendering, assets and total room budget](WEBVIEW_RENDERING_AND_ASSETS.md)
+- [Babylon ShaderMaterial](https://doc.babylonjs.com/features/featuresDeepDive/materials/shaders/shaderMaterial/) — vertex/fragment animation and explicit uniforms.
+- [Babylon default rendering pipeline](https://doc.babylonjs.com/features/featuresDeepDive/postProcesses/defaultRenderingPipeline/) — shared bloom and adjustable post-processing.
+- [Babylon GPU particles](https://doc.babylonjs.com/features/featuresDeepDive/particles/particle_system/gpu_particles/) — capabilities, limitations and lifecycle costs. GPU simulation is not automatically the best choice for a tiny burst.
+
+Technical references checked 12 October 2026. Art direction and numeric budgets are Loopforge proposals, not vendor performance guarantees. Private bucket addresses, account IDs and credentials stay outside published records.
+
+## Owner feedback and idle refinement — 12 October
+
+Body/weapon clearance and the energy flowing from the forearm are accepted. Make blade motion visible beside full-body movement: separate the narrower white-cyan core from thicker travelling braids. The owner’s follow-up increases displacement speed fourfold and widens the palette through jade, cyan and electric blue to occasional violet. Each strand uses staggered, time-hashed tonal targets with smooth transitions; a pale cyan core holds the silhouette. Fast brightness packets travel along the strands without switching the powered core off. These are cosmetic variations, without colour-coding hidden state. The same one-draw effect now follows an authored maintenance idle: inspect → power down → opposite-hand adjustment → two local failed starts → reignite → lower. Reduced effects preserve slow power transitions and suppress flicker/surge/displacement.
+
+The 11-second, nine-track pose clip is baked offline against the existing rig. No Meshy regeneration or Blender work is required for this pass. Fingers, armour weights and exact worker contact are later Blender tasks; actual gameplay effects still need authoritative action timing. The existing GLBs, forearm mount and walk/run tracks are preserved. Review through the [asset library](/stepanoskin/loopforge/play/asset-review); implementation details live in [the production record](production/LIMEN_MESHY_REVIEW.md).

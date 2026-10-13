@@ -58,3 +58,15 @@ describe("asset release loading", () => {
         expect(headers.every(h => h.source.startsWith("/media/"))).toBe(true);
     });
 });
+
+
+test('model entries require an immutable GLB with the glTF MIME type', () => {
+    const hash = 'a'.repeat(64);
+    const model = {schemaVersion: 1, pack: 'cast', assets: {worker: {kind: 'model', variants: [{src: `/media/files/${hash}.glb`, sha256: hash, mime: 'model/gltf-binary', bytes: 100}]}}};
+    expect(parseManifest(model, 'cast').assets.worker.kind).toBe('model');
+    model.assets.worker.variants[0].mime = 'application/json';
+    expect(() => parseManifest(model, 'cast')).toThrow();
+    model.assets.worker.variants[0].mime = 'model/gltf-binary';
+    model.assets.worker.variants[0].src = `/media/files/${hash}.json`;
+    expect(() => parseManifest(model, 'cast')).toThrow();
+});

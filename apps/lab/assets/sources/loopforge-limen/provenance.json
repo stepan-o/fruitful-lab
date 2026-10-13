@@ -1,0 +1,9 @@
+{
+  "character": "LIMEN",
+  "provider": "Meshy",
+  "source": "Owner-provided Meshy LIMEN export, 2026-10-12; master retained in private source storage",
+  "sourceSha256": "5cf991bb1be950dae7d2ba92353488562b7c6c2742cdfc169eef5febe7b220ef",
+  "ownerAuthorization": "2026-10-12: temporarily include new LIMEN assets in app code pending CloudFront setup",
+  "importer": "scripts/characters/import-limen.mjs",
+  "review": "docs/loopforge/production/LIMEN_MESHY_REVIEW.md"
+}

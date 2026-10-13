@@ -7,6 +7,7 @@ from alembic import context
 
 from db import DATABASE_URL
 from models import Base
+import saved_city.models  # noqa: F401
 import discovery_models  # noqa: F401 — include game tables in autogenerate metadata
 
 # this is the Alembic Config object, which provides

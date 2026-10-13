@@ -44,6 +44,8 @@ import type { LearningId } from "@/lib/mexico-city/rewards";
 import { directions } from "@/lib/mexico-city/map-engine";
 import FieldMap, { type MapHandle } from "./FieldMap";
 import FieldHUD from "./FieldHUD";
+import useSavedMap from "./useSavedMap";
+const SavedItemDetails = dynamic(() => import("./SavedItemDetails"));
 import { FieldLogin } from "./FieldEntry";
 import {
   Capture,
@@ -100,6 +102,8 @@ function Game({
   );
   const [authenticated, setAuthenticated] = useState(!!initialUser);
   const [ready, setReady] = useState(false);
+  const savedMap = useSavedMap(kind === "account" && authenticated);
+  const [savedSelection, setSavedSelection] = useState("");
   const [state, setState] = useState<FieldState>(() =>
     demo
       ? demoState()
@@ -559,6 +563,13 @@ function Game({
       <FieldMap
         ref={map}
         records={visibleRecords}
+        savedMarkers={savedMap.markers}
+        onViewport={savedMap.setBounds}
+        extraLayers={savedMap.layers}
+        selectSaved={(id) => {
+          close();
+          setSavedSelection(id);
+        }}
         selected={selected}
         objective={mode === "home" || mode === "solo" ? goal : undefined}
         openObjective={() => navigate("solo")}
@@ -571,6 +582,22 @@ function Game({
           setPanel("capture");
         }}
       />
+      {savedSelection && (
+        <GameDialog
+          label={say("Lugar guardado", "Saved place")}
+          close={() => setSavedSelection("")}
+          className="mc-task-dialog city-dialog"
+        >
+          <SavedItemDetails
+            key={savedSelection}
+            openItem={setSavedSelection}
+            id={savedSelection}
+            collections={savedMap.collections}
+            changed={savedMap.changed}
+            close={() => setSavedSelection("")}
+          />
+        </GameDialog>
+      )}
       {!picking && (
         <FieldHUD
           name={state.me.name}

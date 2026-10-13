@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
   type PointerEvent as ReactPointer,
+  type ReactNode,
 } from "react";
 import {
   LocateFixed,
@@ -39,6 +40,15 @@ import {
 } from "@/lib/mexico-city/map-engine";
 import type { Discovery, GOALS } from "@/lib/mexico-city/field-game";
 
+import type { SavedMarker } from "@/lib/mexico-city/saved-city";
+
+export type MapBounds = {
+  west: number;
+  east: number;
+  south: number;
+  north: number;
+};
+const NO_SAVED: SavedMarker[] = [];
 export type MapHandle = {
   focus: (point: Coordinate, zoom?: number) => void;
   center: () => Coordinate;
@@ -51,6 +61,11 @@ type MapLayers = {
 };
 type Props = {
   records: Discovery[];
+  savedMarkers?: SavedMarker[];
+  selectSaved?: (id: string) => void;
+  onViewport?: (bounds: MapBounds) => void;
+  extraLayers?: ReactNode;
+  pickLabel?: string;
   objective?: (typeof GOALS)[number];
   openObjective?: () => void;
   selected?: string;
@@ -121,6 +136,11 @@ const Geometry = memo(function Geometry({
 const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
   {
     records,
+    savedMarkers = NO_SAVED,
+    selectSaved,
+    onViewport,
+    extraLayers,
+    pickLabel,
     selected,
     select,
     picking,
@@ -183,6 +203,89 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
   const center = project(camera),
     tx = size.width / 2 - center[0] * scale,
     ty = size.height / 2 - center[1] * scale;
+  const [savedCluster, setSavedCluster] = useState<SavedMarker[]>([]);
+  useEffect(() => {
+    if (!onViewport) return;
+    const timer = window.setTimeout(() => {
+      const bounds = googleMap.current?.getBounds();
+      if (provider === "google" && bounds) {
+        const sw = bounds.getSouthWest(),
+          ne = bounds.getNorthEast();
+        onViewport({
+          west: sw.lng(),
+          east: ne.lng(),
+          south: sw.lat(),
+          north: ne.lat(),
+        });
+      } else {
+        const c = project(camera),
+          k = 2 ** (camera.zoom - 11);
+        const nw = unproject([
+          c[0] - size.width / (2 * k),
+          c[1] - size.height / (2 * k),
+        ]);
+        const se = unproject([
+          c[0] + size.width / (2 * k),
+          c[1] + size.height / (2 * k),
+        ]);
+        onViewport({
+          west: nw.lng,
+          east: se.lng,
+          south: se.lat,
+          north: nw.lat,
+        });
+      }
+    }, 350);
+    return () => window.clearTimeout(timer);
+  }, [camera, size, provider, onViewport]);
+  const savedGroups = useMemo(() => {
+    const groups = new Map<string, SavedMarker[]>();
+    for (const marker of savedMarkers) {
+      if (provider !== "google" && marker.provider === "google") continue;
+      const point = project(marker),
+        scale = 2 ** (camera.zoom - 11);
+      const key = `${Math.floor((point[0] * scale) / 64)}:${Math.floor((point[1] * scale) / 64)}`;
+      groups.set(key, [...(groups.get(key) || []), marker]);
+    }
+    return [...groups.values()];
+  }, [savedMarkers, camera.zoom, provider]);
+  const savedActions = useRef({ selectSaved });
+  useEffect(() => {
+    savedActions.current = { selectSaved };
+  }, [selectSaved]);
+  useEffect(() => {
+    if (provider !== "google" || !googleMap.current) return;
+    const markers = savedGroups.map((group) => {
+      const first = group[0],
+        node = document.createElement("button");
+      node.className = `city-map-pin is-${first.kind} ${first.approximate ? "is-approximate" : ""}`;
+      node.textContent =
+        group.length > 1
+          ? String(group.length)
+          : `${first.kind === "activity" ? "✦" : "⌂"} ${first.label}`;
+      node.setAttribute(
+        "aria-label",
+        group.length > 1
+          ? `${group.length} ${locale === "es" ? "lugares guardados" : "saved places"}`
+          : first.title,
+      );
+      node.addEventListener("click", () => {
+        if (group.length > 1) setSavedCluster(group);
+        else savedActions.current.selectSaved?.(first.id);
+      });
+      return new google.maps.marker.AdvancedMarkerElement({
+        map: googleMap.current,
+        position: first,
+        content: node,
+        title: first.title,
+        zIndex: 30,
+      });
+    });
+    return () =>
+      markers.forEach((m) => {
+        m.map = null;
+      });
+  }, [provider, savedGroups, locale]);
   function move(next: Camera, animate = false) {
     const bounded = {
       ...next,
@@ -893,6 +996,29 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
                   <span>{storyById(s.id, locale).place}</span>
                 </button>
               ))}
+              {savedGroups
+                .filter((group) => inView(project(group[0])))
+                .map((group) => (
+                  <button
+                    key={group[0].id}
+                    className={`city-map-pin is-${group[0].kind} ${group[0].approximate ? "is-approximate" : ""}`}
+                    style={screenPoint(project(group[0]))}
+                    aria-label={
+                      group.length > 1
+                        ? `${group.length} ${say("lugares guardados", "saved places")}`
+                        : group[0].title
+                    }
+                    onClick={() =>
+                      group.length > 1
+                        ? setSavedCluster(group)
+                        : selectSaved?.(group[0].id)
+                    }
+                  >
+                    {group.length > 1
+                      ? group.length
+                      : `${group[0].kind === "activity" ? "✦" : "⌂"} ${group[0].label}`}
+                  </button>
+                ))}
               {records
                 .filter((r) => inView(project(r)))
                 .slice(-100)
@@ -970,6 +1096,34 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
           <MapIcon size={19} />
         </button>
       </div>
+      {savedCluster.length > 0 && (
+        <div className="city-cluster-panel">
+          <button
+            className="city-cluster-close"
+            onClick={() => setSavedCluster([])}
+            aria-label={say("Cerrar lugares", "Close places")}
+          >
+            <X size={18} />
+          </button>
+          <strong>
+            {say("En esta parte del mapa", "In this part of the map")}
+          </strong>
+          {savedCluster
+            .filter((m) => savedMarkers.some((s) => s.id === m.id))
+            .map((m) => (
+              <button
+                key={m.id}
+                onClick={() => {
+                  setSavedCluster([]);
+                  selectSaved?.(m.id);
+                }}
+              >
+                {m.title}
+                <span>{m.label}</span>
+              </button>
+            ))}
+        </div>
+      )}
       {layerMenu && (
         <div className="mc-layer-panel">
           <div className="mc-row">
@@ -999,6 +1153,7 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
               {settings[id] && <Check size={16} />}
             </button>
           ))}
+          {extraLayers}
           <small>
             {say(
               "Transporte de referencia · 10 oct 2026. Consulta al operador para cambios de servicio.",
@@ -1026,7 +1181,7 @@ const FieldMap = forwardRef<MapHandle, Props>(function FieldMap(
               }
             >
               <Check size={18} />
-              {say("Aquí fue", "It happened here")}
+              {pickLabel || say("Aquí fue", "It happened here")}
             </button>
           </div>
         </>

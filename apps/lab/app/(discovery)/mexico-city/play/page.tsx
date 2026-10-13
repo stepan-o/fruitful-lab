@@ -4,6 +4,7 @@ import FieldApp from "@/components/mexico-city/FieldApp";
 import "@/components/mexico-city/mexico-city.css";
 import "@/components/mexico-city/field-game.css";
 import "@/components/mexico-city/field-hud.css";
+import "@/components/mexico-city/saved-city.css";
 export const metadata: Metadata = {
   title: "Juega · Mexico city discovery game",
   robots: { index: false, follow: false },

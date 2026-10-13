@@ -19,7 +19,7 @@ from alembic.operations import Operations
 from alembic.script import ScriptDirectory
 
 ROOT = Path(__file__).resolve().parents[1]
-LEGACY, BASELINE, HEAD = "c1a2b3c4d5e6", "0f1db0936876", "3acct101026"
+LEGACY, BASELINE, HEAD = "c1a2b3c4d5e6", "0f1db0936876", "4city121026"
 PASSWORD = "migration-test-passphrase"
 
 
@@ -140,6 +140,11 @@ def test_fresh_upgrade_and_repeated_deploy(database):
         "discovery_groups",
         "discovery_records",
         "account_access_tokens",
+        "city_items",
+        "city_collections",
+        "city_import_jobs",
+        "city_notes",
+        "city_revisions",
     } <= set(sa.inspect(connection).get_table_names())
     connection.commit()
     seed(connection)
@@ -219,7 +224,7 @@ def test_legacy_upgrade_preserves_rows_and_supports_account_recovery(
         assert client.post("/auth/login", data=credentials).status_code == 200
 
 
-@pytest.mark.parametrize("start", [BASELINE, "2cdmx101026", HEAD])
+@pytest.mark.parametrize("start", [BASELINE, "2cdmx101026", "3acct101026", HEAD])
 def test_current_revisions_do_not_replay_legacy(database, start):
     connection, cfg = database
     upgrade(connection, cfg, start)

@@ -122,10 +122,10 @@ export default function FieldHUD(props: Props) {
       </header>
       <Link
         className="mc-atlas-shortcut"
-        href={`/mexico-city/atlas${props.kind === "account" ? "" : `?from=${props.kind}`}`}
+        href={`/mexico-city/explore${props.kind === "account" ? "" : `?from=${props.kind}`}`}
       >
         <Compass size={21} />
-        <span>Atlas</span>
+        <span>{say("Explorar", "Explore")}</span>
       </Link>
       {props.kind !== "account" && (
         <button className="mc-session-tag" onClick={props.account}>

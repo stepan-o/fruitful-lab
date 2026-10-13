@@ -573,6 +573,10 @@
 html:has(.mc-map-game) { scrollbar-gutter: auto; }
 .mc-mode-content .mc-goal-list { display: grid; gap: 10px; }
 
-/* The learning atlas is a separate field, one thumb away from play. */
+/* Explore is the single entry to the atlas and saved-place collections. */
 .mc-atlas-shortcut { position: absolute; z-index: 5; top: calc(80px + env(safe-area-inset-top)); right: max(14px, env(safe-area-inset-right)); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 54px; min-height: 59px; background: #fffdf5; border: 2px solid white; border-radius: 18px; box-shadow: var(--mc-hud-shadow); color: #255645; font-size: 10px; font-weight: 800; text-decoration: none; }
 .mc-atlas-shortcut:focus-visible { outline: 3px solid #b87635; outline-offset: 4px; }
+
+/* Keep the map controls below Explore, including on narrow phone screens. */
+.mc-map-game .mc-map-tools,
+.mc-map-game .mc-layer-panel { top: calc(153px + env(safe-area-inset-top)); }

@@ -34,7 +34,7 @@ function isAllowedNextForRole(
   role: "admin" | "contractor" | "general",
 ) {
   const p = normalizePath(nextPath);
-  if (p === "/mexico-city/play") return true;
+  if (["/mexico-city/play", "/mexico-city/activities", "/mexico-city/housing"].includes(p)) return true;
 
   // Admins can go to admin area + tools + contractor area.
   // NOTE: tighten/expand as policy evolves.

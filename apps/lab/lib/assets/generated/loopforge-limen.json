@@ -2,14 +2,25 @@
   "schemaVersion": 1,
   "pack": "loopforge-limen",
   "assets": {
+    "blade-housing": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/f520691b5fe2bb72c3d7864c556e87b35373a9ab4a1e8c7f176d4414ab7c2f3e.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1175636,
+          "sha256": "f520691b5fe2bb72c3d7864c556e87b35373a9ab4a1e8c7f176d4414ab7c2f3e"
+        }
+      ]
+    },
     "limen": {
       "kind": "model",
       "variants": [
         {
-          "src": "/media/files/a1baecfa670b8bc1d63656d23bb7d51bf44aad287223a753377004b02787eef7.glb",
+          "src": "/media/files/fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee.glb",
           "mime": "model/gltf-binary",
-          "bytes": 4865140,
-          "sha256": "a1baecfa670b8bc1d63656d23bb7d51bf44aad287223a753377004b02787eef7"
+          "bytes": 4318356,
+          "sha256": "fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee"
         }
       ]
     }

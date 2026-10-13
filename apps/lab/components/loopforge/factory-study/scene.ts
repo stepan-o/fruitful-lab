@@ -38,7 +38,7 @@ export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
 export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; p50?: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
 export type CharacterStage = { scene: Scene; shadow: ShadowGenerator; gate(open: boolean): void; refresh(): void };
-export type FactoryScene = { characterStage(): CharacterStage; review(enabled: boolean | "model", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
+export type FactoryScene = { characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
@@ -65,7 +65,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   let visible = true, cctvEnabled = false, cctvAngle = 0, tripleFeed = false;
   const alternateCameras = [1,2].map(n => new ArcRotateCamera(`room-angle-${n}`, 0, 1, 20, Vector3.Zero(), scene));
   let isolatedRoom = false;
-  let characterReview: boolean | "model" = false, modelDistance = 4.6;
+  let characterReview: boolean | "model" | "model-cctv" = false, modelDistance = 4.6;
   let reviewGate: boolean | null = null;
   let equipmentStudy = false, framing: Framing = "work";
   let bottomInset = 180, topInset = 125;
@@ -451,13 +451,13 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   const configureFeeds=()=>{
     if(!cctvEnabled){scene.activeCameras=null;scene.activeCamera=camera;camera.attachControl(canvas,true);return;}
     camera.detachControl();
-    const poses = characterReview === "model" ? [{x:focus==='security'?131:120.8,y:focus==='security'?122:149.6,r:modelDistance,a:-Math.PI/2,b:1.36}] : characterReview ? (focus==='security' ? [{x:126,y:126.5,r:6.6,a:.6,b:1.15},{x:126,y:126.5,r:5.5,a:-1.05,b:1.2},{x:128,y:121,r:15,a:.9,b:.7}] : [{x:120.8,y:149.6,r:7.3,a:-1.1,b:1.15},{x:120.8,y:149.6,r:5.8,a:-2.0,b:1.15},{x:121,y:150,r:16,a:-1.4,b:.7}]) : focus==='security'
+    const poses = characterReview === "model" ? [{x:focus==='security'?131:120.8,y:focus==='security'?122:149.6,r:modelDistance,a:-Math.PI/2,b:1.36}] : characterReview === "model-cctv" ? [{a:.55,b:.78,r:7.5},{a:2.35,b:.92,r:6.5},{a:-.85,b:.65,r:10}].map(p=>({...p,x:focus==='security'?131:120.8,y:focus==='security'?122:149.6})) : characterReview ? (focus==='security' ? [{x:126,y:126.5,r:6.6,a:.6,b:1.15},{x:126,y:126.5,r:5.5,a:-1.05,b:1.2},{x:128,y:121,r:15,a:.9,b:.7}] : [{x:120.8,y:149.6,r:7.3,a:-1.1,b:1.15},{x:120.8,y:149.6,r:5.8,a:-2.0,b:1.15},{x:121,y:150,r:16,a:-1.4,b:.7}]) : focus==='security'
       ? [{x:125,y:123,r:20,a:-1.45,b:.92},{x:123,y:115,r:10,a:-1.15,b:1.0},{x:126.5,y:128,r:11,a:-2.4,b:.94}]
       : focus==='lobby'
         ? [{x:64,y:89,r:25,a:-1.85,b:1.02},{x:59,y:83,r:9,a:-1.65,b:1.02},{x:74,y:100,r:18,a:-2.1,b:.95}]
         : [{x:122,y:145,r:19,a:-1.36,b:.98},{x:116,y:144,r:12,a:-.75,b:1.00},{x:124,y:145,r:12,a:-2.65,b:.84}];
     const cams=[camera,...alternateCameras];
-    cams.forEach((cam,i)=>{const p=poses[(cctvAngle+i)%poses.length];cam.alpha=p.a;cam.beta=p.b;cam.radius=p.r*(characterReview&&!tripleFeed&&(characterReview==='model'||focus!=='security')?Math.max(1,(characterReview==='model'?.65:.95)/(canvas.clientWidth/Math.max(1,canvas.clientHeight))):1);cam.setTarget(new Vector3(...worldPoint(p.x,p.y)).add(new Vector3(0,characterReview==='model'?1.02:1.4,0)),false,true,true);cam.fov=.7;cam.minZ=.15;cam.maxZ=400;cam.viewport=!tripleFeed||i===0?new Viewport(0,0,tripleFeed?.70:1,1):new Viewport(.705,i===1?.505:0,.295,.495);});
+    cams.forEach((cam,i)=>{const p=poses[(cctvAngle+i)%poses.length];cam.alpha=p.a;cam.beta=p.b;cam.radius=p.r*(characterReview&&!tripleFeed&&(typeof characterReview==='string'||focus!=='security')?Math.max(1,(characterReview==='model'?.65:.95)/(canvas.clientWidth/Math.max(1,canvas.clientHeight))):1);cam.setTarget(new Vector3(...worldPoint(p.x,p.y)).add(new Vector3(0,characterReview==='model'?1.02:1.4,0)),false,true,true);cam.fov=.7;cam.minZ=.15;cam.maxZ=400;cam.viewport=!tripleFeed||i===0?new Viewport(0,0,tripleFeed?.70:1,1):new Viewport(.705,i===1?.505:0,.295,.495);});
     scene.activeCameras=tripleFeed?cams:[camera];transition=0;
   };
   const viewport=()=>{if(cctvEnabled){configureFeeds();return;}const h=Math.max(1,canvas.clientHeight),top=topInset,bottom=Math.min(h*.52,bottomInset);camera.viewport=new Viewport(0,bottom/h,1,Math.max(.25,(h-bottom-top)/h));};

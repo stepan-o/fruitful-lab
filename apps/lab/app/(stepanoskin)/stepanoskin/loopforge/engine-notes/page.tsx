@@ -103,11 +103,12 @@ export default function EngineNotes() {
             Themes, assets and feedback contract →
           </Link>
         </p>
-        <h2>Next character effect: LIMEN’s blade.</h2>
+        <h2>First character effect: LIMEN’s blade.</h2>
         <p>
           The cyan blade is the proposed recognition cue for LIMEN in dark CCTV
-          views. The updated body and separate blade sources are ready for asset
-          preparation; the assembled effect is not implemented. Visible action
+          views. The separate review now assembles the v2 body, a simplified rigid
+          housing and procedural cyan core/braids. Its surge is a preview cue;
+          contact sparks, trails and game integration remain open. Visible action
           timing and confirmed contacts will drive its motion phrases. Shader
           noise, sparks and glow remain presentation, with no access to private
           supervisor traits and no authority over outcomes.

@@ -24,7 +24,20 @@ for(const m of root.listMeshes())for(const p of m.listPrimitives()){
  for(let i=0;i<weights.length;i+=4)assert.ok(Math.abs(weights[i]+weights[i+1]+weights[i+2]+weights[i+3]-1)<.0001);
  assert.ok(ids.every(i=>i>=0&&i<23));
 }
-assert.equal(triangles,41326);assert.equal(root.listMaterials().length,1);
+assert.equal(triangles,42354);assert.equal(root.listMaterials().length,1);
 assert.equal(root.listMaterials()[0].getEmissiveTexture(),null);
 assert.equal(root.listTextures().length,1);const texture=await sharp(root.listTextures()[0].getImage()).metadata();assert.equal(texture.width,2048);assert.equal(texture.height,2048);
 console.log(`Meshy LIMEN: ${triangles} triangles, 23 joints, Rest/Walking/Running, ${(bytes.length/1048576).toFixed(2)} MiB; embedded, finite, normalized.`);
+const housing=pack.assets['blade-housing'].variants[0],housingBytes=new Uint8Array(await readFile(new URL('../../public'+housing.src,import.meta.url)));
+assert.ok(housingBytes.length<1200000);
+const housingReport=await validateBytes(housingBytes,{maxIssues:20});assert.equal(housingReport.issues.numErrors,0);assert.equal(housingReport.issues.numWarnings,0);
+const housingDoc=await io.readBinary(housingBytes),housingRoot=housingDoc.getRoot();
+assert.equal(housingRoot.listSkins().length,0);assert.equal(housingRoot.listAnimations().length,0);assert.equal(housingRoot.listMeshes().length,1);
+const primitive=housingRoot.listMeshes()[0].listPrimitives()[0];assert.ok(primitive.getIndices().getCount()/3<=5000);assert.ok(primitive.getAttribute('TANGENT'));
+for(const a of housingRoot.listAccessors())assert.ok(a.getArray().every(Number.isFinite));
+assert.equal(housingRoot.listTextures().length,3);
+for(const t of housingRoot.listTextures()){const meta=await sharp(t.getImage()).metadata();assert.ok(meta.width<=1024&&meta.height<=1024);}
+assert.ok(primitive.getAttribute('POSITION').getMax([])[1]<.4,'Housing +Y is local metres, not source scene units');
+console.log(`LIMEN housing: ${primitive.getIndices().getCount()/3} triangles, retained material maps, generated tangents, ${(housingBytes.length/1048576).toFixed(2)} MiB.`);
+
+await import('./check-limen-clearance.mjs');

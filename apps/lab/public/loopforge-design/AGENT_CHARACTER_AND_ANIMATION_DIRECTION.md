@@ -1,6 +1,6 @@
 # Agents: character, movement and contact
 
-Current candidate: [Meshy LIMEN review](production/LIMEN_MESHY_REVIEW.md), with source/derivative provenance and explicit clip/material limits. It does not replace main-play agents yet. The updated body and separate blade sources are verified in S3; the deployed bench still shows v1. [LIMEN’s blade identity contract](LIMEN_BLADE_DESIGN.md) makes its asymmetric cyan silhouette and controlled energy motion the primary recognition cue in dark CCTV views. We can start implementation; housing preparation, socket calibration, effects and measured recognition/performance remain open.
+Current candidate: [Meshy LIMEN review](production/LIMEN_MESHY_REVIEW.md), with source/derivative provenance and explicit clip/material limits. It does not replace main-play agents yet. The updated body and separate blade masters are verified in S3. The review bench now assembles the v2 body, simplified rigid housing and procedural cyan energy. [LIMEN’s blade identity contract](LIMEN_BLADE_DESIGN.md) makes its asymmetric cyan silhouette and controlled energy motion the primary recognition cue in dark CCTV views. The first assembly is implemented. Contact poses, action-driven bursts and measured crowd recognition/performance remain open.
 
 12 October 2026. Current direction; implementation status is explicit below. Companion to [the first-turn contract](FIRST_TURN_ENGINE.md) and [the room scale plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
 

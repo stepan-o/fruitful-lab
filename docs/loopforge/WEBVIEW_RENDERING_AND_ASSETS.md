@@ -51,7 +51,7 @@ All lamp geometry, illuminated surface and shadow direction must share the same 
 
 [LIMEN’s blade](LIMEN_BLADE_DESIGN.md) is the primary cue for recognizing him in a dark camera feed. Keep a rigid textured housing, a narrow luminous core and a few shader-driven cyan braids. Reserve sparks, trails and brightness surges for visible action phases. Reuse the room bloom; any local spill light has a small receiver scope and must earn its cost. Identity survives low-detail and reduced-motion modes through shape, asymmetric placement and contrast, with correct wall/body occlusion. It must not depend on sound, a name badge or a hidden-stat glow.
 
-The updated 42,354-triangle body and separate 1,145,974-triangle blade master are in private S3. The 4.32 MB body review copy is prepared; the blade still needs offline separation, simplification and material preparation. The current hosted bench still uses v1. The implementation checklist and provisional budgets are in the blade contract; no assembled-v2 or performance approval is claimed. No further source generation is required to begin.
+The review bench now assembles the 42,354-triangle v2 body, 4,994-triangle housing and 672-triangle procedural energy mesh. Meshoptimizer and MikkTSpace run offline; the housing retains reduced source material maps rather than claiming a new high-to-low bake. Two integrity-pinned GLBs total 5.49 MB. Energy uses one opaque draw and the existing bloom, with no extra light or particle allocation. Three subject-centered CCTV-scale presets are review cameras, not replacements for the game feeds. Contact effects, crowd/device performance and owner acceptance remain open. Sources are private in S3; optimized files remain temporarily app-hosted.
 
 ## Asset contract and CDN
 

@@ -2840,7 +2840,7 @@ All lamp geometry, illuminated surface and shadow direction must share the same 
 
 [LIMEN’s blade](LIMEN_BLADE_DESIGN.md) is the primary cue for recognizing him in a dark camera feed. Keep a rigid textured housing, a narrow luminous core and a few shader-driven cyan braids. Reserve sparks, trails and brightness surges for visible action phases. Reuse the room bloom; any local spill light has a small receiver scope and must earn its cost. Identity survives low-detail and reduced-motion modes through shape, asymmetric placement and contrast, with correct wall/body occlusion. It must not depend on sound, a name badge or a hidden-stat glow.
 
-The updated 42,354-triangle body and separate 1,145,974-triangle blade master are in private S3. The 4.32 MB body review copy is prepared; the blade still needs offline separation, simplification and material preparation. The current hosted bench still uses v1. The implementation checklist and provisional budgets are in the blade contract; no assembled-v2 or performance approval is claimed. No further source generation is required to begin.
+The review bench now assembles the 42,354-triangle v2 body, 4,994-triangle housing and 672-triangle procedural energy mesh. Meshoptimizer and MikkTSpace run offline; the housing retains reduced source material maps rather than claiming a new high-to-low bake. Two integrity-pinned GLBs total 5.49 MB. Energy uses one opaque draw and the existing bloom, with no extra light or particle allocation. Three subject-centered CCTV-scale presets are review cameras, not replacements for the game feeds. Contact effects, crowd/device performance and owner acceptance remain open. Sources are private in S3; optimized files remain temporarily app-hosted.
 
 ## Asset contract and CDN
 
@@ -3041,7 +3041,7 @@ The owner is moving asset storage to S3 with CloudFront delivery to avoid repeat
 
 ## LIMEN body and blade production slice
 
-The owner supplied a separate rigged v2 body and unrigged blade. Both masters and the optimized body review copy are verified in private S3; the prior source is retired, while runtime migration remains separate. [The blade contract](LIMEN_BLADE_DESIGN.md) defines the next deliverable: a light housing mesh and baked maps, calibrated forearm socket, procedural energy geometry/material, bounded action effects and versioned dependencies. The source blade has 1,145,974 triangles and is not a runtime payload. Establish offline separation/baking tools, then review clearance and identity at actual CCTV size before changing the game cast. No additional owner-generated source art is currently needed.
+The owner supplied a separate rigged v2 body and unrigged blade. Both masters and the optimized body review copy are verified in private S3; the prior source is retired, while runtime migration remains separate. [The blade contract](LIMEN_BLADE_DESIGN.md) defines the next deliverable: a light housing mesh and baked maps, calibrated forearm socket, procedural energy geometry/material, bounded action effects and versioned dependencies. The source blade has 1,145,974 triangles and is not a runtime payload. The first importer now trims modeled energy from this exact revision, simplifies the housing to 4,994 triangles, retains three 1024² material maps and generates MikkTSpace tangents. It publishes two immutable GLBs totaling 5.49 MB. The recipe checks source hashes and is not a general segmentation tool or a new material bake. The review assembles these with procedural energy; contact actions and full CCTV/crowd acceptance remain open. No additional owner-generated source art is currently needed.
 
 ## First package and gates
 
@@ -3385,7 +3385,7 @@ See [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRE
 
 # Agents: character, movement and contact
 
-Current candidate: [Meshy LIMEN review](production/LIMEN_MESHY_REVIEW.md), with source/derivative provenance and explicit clip/material limits. It does not replace main-play agents yet. The updated body and separate blade sources are verified in S3; the deployed bench still shows v1. [LIMEN’s blade identity contract](LIMEN_BLADE_DESIGN.md) makes its asymmetric cyan silhouette and controlled energy motion the primary recognition cue in dark CCTV views. We can start implementation; housing preparation, socket calibration, effects and measured recognition/performance remain open.
+Current candidate: [Meshy LIMEN review](production/LIMEN_MESHY_REVIEW.md), with source/derivative provenance and explicit clip/material limits. It does not replace main-play agents yet. The updated body and separate blade masters are verified in S3. The review bench now assembles the v2 body, simplified rigid housing and procedural cyan energy. [LIMEN’s blade identity contract](LIMEN_BLADE_DESIGN.md) makes its asymmetric cyan silhouette and controlled energy motion the primary recognition cue in dark CCTV views. The first assembly is implemented. Contact poses, action-driven bursts and measured crowd recognition/performance remain open.
 
 12 October 2026. Current direction; implementation status is explicit below. Companion to [the first-turn contract](FIRST_TURN_ENGINE.md) and [the room scale plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
 
@@ -3542,7 +3542,7 @@ Verified 12 October 2026; recommendations above are design judgments, not perfor
 
 # LIMEN blade — identity through CCTV
 
-Decision: 12 October 2026. Approved direction; implementation and performance acceptance remain open.
+Decision: 12 October 2026. First assembly implemented; action integration and full visual/performance acceptance remain open.
 
 ## The player-facing promise
 
@@ -3596,18 +3596,17 @@ A viewer's lower detail tier may simplify appearance but must retain identity an
 
 Near view: housing detail, braids, brief trail/sparks and optional spill. Ordinary CCTV: silhouette, limited braid motion and short bursts. Very small feed: the clean core and asymmetric motion signature survive; micro-sparks and spill can disappear. Set thresholds using projected pixel size, not arbitrary world distance. In all tiers, avoid making the blade a broad bloom blob that hides a worker or a gate interaction.
 
-## Readiness as of 12 October
+## First implementation — 12 October
 
-| Input or capability | Verified status | Remaining work |
-| --- | --- | --- |
-| Updated body | 42,354 triangles, 23 Mixamo joints; local Babylon walk/run review; 24.18 MB source and 4.32 MB review derivative | Carry/interaction poses and attachment calibration. Hands have no finger bones; minor soft armour deformation remains. |
-| Separate blade | 61.81 MB, 1,145,974 triangles, no rig; embedded-only GLB; validator reports zero errors | Offline separation, simplification/material bake and tangent review. Validation warns that tangent space would otherwise be generated at runtime. |
-| Source management | New body, blade and body review copy are checksum-verified in private S3; current source record selects revision v2 | CloudFront delivery remains pending. Original source is marked retired and archived; deleting its old location is denied by the scoped publisher permissions. |
-| Runtime bench | Babylon 9.30.0, glTF loader, manual clip sampling, factory lighting and shared bloom exist | The deployed bench still uses the earlier body-with-blade revision. No v2 attachment or animated blade has shipped. |
-| Authoring tools | glTF inspection/optimization libraries exist | Establish the offline separation/baking toolchain. Blender is not available on the current PATH. This is implementation work, not a request for another concept image. |
-| Acceptance | Original character art and explicit identity goal are available | Actual CCTV recognition, contact clearance, low-end performance and owner review have not passed yet. |
+The separate `/play/agent-test/limen` bench now loads body v2 and the blade housing from an immutable two-file pack. They total **5,493,992 bytes**. The 61.81 MB blade master remains offline: a revision-specific extraction removes modeled energy, then Meshoptimizer reduces the housing to **4,994 triangles**. Three retained source maps become 1024² JPEGs; MikkTSpace tangents are generated. This is not a fresh high-to-low texture bake.
 
-**Ready to start implementation, not ready to declare the assembled asset finished.** No additional Meshy export or new concept art is required to begin. CloudFront is not a blocker for a local review or the already-authorized temporary app-hosted prototype.
+The mount follows `mixamorig:RightForeArm`. The rig uses centimetres; equipment uses metres. Calibration is versioned in `limen-blade-calibration.json` and shared by the renderer and geometry check. Sampling 73 poses per walk/run clip finds no blade-axis intersections with the leg mesh. Nearest sampled leg vertices are 12.4 cm / 6.6 cm away respectively. This is a regression measure, not a guaranteed minimum surface distance, swept-volume test or acceptance of future contact poses.
+
+A single opaque shader draw supplies the **672-triangle** tapered core and three moving braids. It reuses factory bloom and adds no dynamic light, particle allocation or full-screen pass. A half-second manual surge previews a stronger energy phrase. It is explicitly a review cue, not a game event or a replacement for the authoritative action contract. Pause freezes cosmetic time; reduced motion keeps energy steady. Hidden tabs pause, offscreen canvases stop rendering and teardown disposes both assets and the effect.
+
+Close inspection and three elevated CCTV-scale presets frame the stationary subject in Security or the Forge. They support silhouette review without replacing the game's fixed feeds. The complete recognition gate still includes those real feeds, partial occlusion, other robots, machinery and low-end devices. Contact poses, event-keyed sparks/trails, audio and main-play integration remain open. CloudFront is pending; temporary app-hosted delivery is authorized. Private source records already select v2.
+
+No additional Meshy export is required for this first assembly. A targeted housing revision remains available if owner review finds a shape or mount problem.
 
 ## Targeted Meshy regeneration is available
 
@@ -3619,15 +3618,16 @@ Keep the accepted body unchanged unless a specific rig or clearance failure requ
 
 - [x] Preserve and verify the separate body and blade sources; record the prior source as retired.
 - [x] Establish the identity, state/visibility boundary and performance proposal in the design and engine readers.
-- [ ] Prepare the housing delivery mesh, materials, pivot and bounds; replace modeled energy with the procedural core/ribbons.
-- [ ] Attach to the verified forearm socket; calibrate rest/walk/run and intervention poses. Check leg, torso and worker clearance throughout the motion, not only sampled stills.
+- [x] Prepare the first housing delivery mesh, retained maps, pivot and bounds; replace modeled energy with a procedural core and braids.
+- [x] Attach to the verified forearm socket and establish sampled rest/walk/run review.
+- [ ] Author intervention poses and certify full swept leg, torso and paired-worker clearance.
 - [ ] Implement bounded phrases, event-keyed sparks/trails, shared bloom and optional scoped spill. Add sound only through the existing opt-in/mute path.
-- [ ] Integrate the v2 body and blade in the separate review bench, with FX on/off, paused time and fixed camera/quality controls. Keep main-play integration separate until the review passes.
+- [x] Integrate v2 body and blade in the separate review bench with blade visibility, pause/scrub and fixed framing presets. Quality remains adaptive; a controlled performance comparison is still required before main-play integration.
 - [ ] Review normal, dark and alarm lighting from all three room CCTV angles at their real on-screen size. Test beside workers, STILETTO and cyan machinery; test overlapping bodies and partial occlusion.
 - [ ] Hide labels and portraits. The owner should identify LIMEN quickly without zooming, including at the smallest supported feed size, in stills/reduced motion and with sound off. Check grayscale contrast as well as colour. Record failures rather than compensating with permanent UI arrows.
 - [ ] Compare the same room/agents/camera sequence with blade FX off and on at 10/24/100 workers. Record CPU/GPU time where available, p50/p95/p99, draw calls, transparent overdraw, memory and all three camera passes. Retain the 30 fps modest-device goal; physical-phone performance remains unmeasured until tested.
 - [ ] Check hidden-tab suspension, room swaps, repeated load/dispose, pause/seek/replay, no duplicated sparks and unchanged simulation hashes across quality tiers.
-- [ ] Publish only optimized immutable dependencies; verify the whole character package before switching the runtime reference. S3 source retirement does not by itself update an app release.
+- [x] Publish optimized immutable dependencies and switch the review manifest. Retained v1 assets remain available for older release references; the main-play cast is unchanged.
 
 ## References and related records
 

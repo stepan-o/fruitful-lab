@@ -14,28 +14,33 @@ The owner regenerated LIMEN with the blade removed from the body and supplied a 
 | --- | --- |
 | Body v2 | 24,184,936 bytes; SHA-256 `2085f27c0264c417b876ee038919175712fd7fcc02c6c2601c1b2d65325a0ad4`; 42,354 triangles and 23 Mixamo joints. Local walk/run review is usable for the next pass. No finger bones or animated idle; minor soft armour deformation remains. |
 | Body v2 derivative | 4,318,356 bytes; SHA-256 `fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee`; geometry/rig preserved, 2048² colour map and material cleanup. Zero validator errors, inherited non-root skinned-mesh warning. |
-| Separate blade source | 61,813,440 bytes; SHA-256 `c65ba4fd8556e5203e5f7314c5a6c2877ff70c7806101da4a3e77ecf0e789f0f`; 1,145,974 triangles, one mesh, no skin or clips. Zero validator errors; missing authored tangent-space warning. Needs offline simplification/separation and attachment review. |
+| Separate blade source | 61,813,440 bytes; SHA-256 `c65ba4fd8556e5203e5f7314c5a6c2877ff70c7806101da4a3e77ecf0e789f0f`; 1,145,974 triangles, one mesh, no skin or clips. Zero validator errors; missing authored tangent-space warning. Prepared as the reduced rigid housing below; the source remains unchanged. |
 
-**The deployed bench and pinned importer below still use v1.** A source-store pointer change does not activate a runtime pack. Blade attachment, leg clearance, animated energy and main-game integration have not been implemented. [The blade identity and implementation contract](../LIMEN_BLADE_DESIGN.md) is the next review gate. CloudFront remains pending; local or temporarily app-hosted review can proceed.
+## Assembled v2 runtime
 
-## Deployed v1 provenance and derivative
+The separate bench now uses **body v2 + a rigid forearm housing + procedural energy**. The earlier body-with-blade export is retired from this active manifest. Its immutable files remain for older deployment references.
 
-- Source: the private Loopforge source store, owner-provided Meshy LIMEN export dated 12 October 2026 (`limen_rigged.glb`). The storage address remains in private operational configuration.
-- Source SHA-256: `5cf991bb1be950dae7d2ba92353488562b7c6c2742cdfc169eef5febe7b220ef`.
-- Source 25,582,380 bytes; runtime 4,865,140 bytes (81% less).
-- Geometry preserved: 41,326 triangles, one mesh/material, a 23-joint Mixamo skin.
-- Supplied animations: Walking (1.083 s), Running (0.708 s), Rest (renamed from the short bind/rest clip). No finger joints or factory-contact clips are present.
-- The embedded 4096² PNG becomes a 2048² JPEG, quality 88. This reduces the colour texture's approximate decoded RGBA+mipmap budget from 85.3 to 21.3 MiB. It does not reduce the geometry or animation data.
-- Remove the source's full-body emissive colour-map assignment and invalid specular extension. Use a moderate constant metal/roughness response (0.35 / 0.6). This is a review material, not a completed PBR bake; the source contains no normal/roughness textures.
-- All runtime dependencies are embedded. The immutable `loopforge-limen` pack is capped at 5 MB and records MIME, bytes, checksum and integrity metadata.
+- Body: 4,318,356 bytes; geometry and 23-joint rig preserved, 2048² JPEG colour map, full-body emission removed. No authored body normal/roughness map, finger rig or factory-contact clip is supplied.
+- Housing: 1,175,636 bytes, **4,994 triangles**, SHA-256 `f520691b5fe2bb72c3d7864c556e87b35373a9ab4a1e8c7f176d4414ab7c2f3e`. Three retained source maps resized to 1024²; generated MikkTSpace tangents. No skin or animations. Validator: zero errors/warnings.
+- Combined downloads: **5,493,992 bytes / 5.24 MiB**, versus 85,998,376 bytes for both masters. Both GLBs embed their dependencies and are checksum-verified before import.
+- Energy: **672 triangles**, one opaque shader draw for a tapered core and three displaced braids, sharing the existing bloom. No additional dynamic light or particle system.
+- Mount: right forearm TransformNode, centimetre-to-metre conversion and versioned offset. The housing and energy inherit a rigid transform, without skinning the blade into a leg.
 
-Rebuild from `apps/lab` using `node scripts/characters/import-limen.mjs /absolute/path/limen_rigged.glb`. The importer verifies the pinned source hash and publishes only the derivative. `npm run characters:check` validates the rig, named clips, finite accessors, weight sums, joint ranges, triangle count, texture dimensions, material and file budget. Khronos validation has zero errors and one inherited `NODE_SKINNED_MESH_NON_ROOT` warning; actual posed import must also be inspected in Babylon because that hierarchy warning is not an animation-quality guarantee.
+From `apps/lab`, run `node scripts/characters/import-limen.mjs /absolute/path/body-v2.glb /absolute/path/blade-master.glb`. Both source hashes are pinned. `prepare-limen-blade.mjs` trims source geometry by position and material colour, simplifies with Meshoptimizer, retains/reduces maps and generates tangents. This recipe is specific to this Meshy revision; a new source requires a new inspection. It does not claim a high-to-low material rebake. All preparation dependencies are development-only.
+
+`npm run characters:check` checks rig/clip structure, finite data, normalized weights, file/triangle/texture budgets, validator issues and sampled leg clearance. The latter skins the leg geometry at 73 points per walking/running clip and checks blade-axis intersections. Current results: zero intersections, nearest leg vertices 12.4 cm walking and 6.6 cm running. Nearest vertices are not the minimum surface distance. Full swept-volume, torso, hand and paired-worker clearance remains a separate contact-animation gate.
 
 ## Review controls and boundaries
 
-Rest/walk/run, play/pause, timeline scrubbing, quarter/half/full speed, front/side/back and continuous turning, camera distance, room selection, textured/clay/wireframe surfaces, original-art comparison and downloadable measurement records. The inspection lamp affects the character only and can be switched off to judge ordinary room light. No autoplay; reduced-motion users start with the same still. Hidden tabs pause the clip, offscreen canvases stop rendering, and navigation releases the model, animation observer, light and scene.
+Rest/walk/run, play/pause, scrubbing, speed, turn, room, surfaces, original art and measurement download remain available. New controls switch the whole blade assembly on/off, preview a half-second energy surge and select close inspection or three elevated CCTV-scale framing presets. Those presets frame this stationary subject; they do not change production cameras. The inspection lamp remains optional.
 
-A single selected model is loaded lazily with an abortable, time-limited fetch, checksum enforcement and same-origin preview authentication. It does not load the previous cast. Clip playback is presentation time only; authored BDI/action timing, root motion, foot plants, blade/grip weighting and paired contacts need a separate integration pass after visual acceptance.
+No autoplay. Reduced motion freezes braid displacement and removes the surge flash. Pausing freezes both clip and cosmetic clock; the body scrubber does not seek a world action timeline. Hidden tabs pause and offscreen canvases stop rendering. Navigation/failed loads dispose containers, shader, light and scene. The main-play cast, game state and simulation random stream are unchanged.
+
+The manual surge is a labelled preview, not a fabricated intervention. Event-keyed contact sparks, trails, spatial audio, authored carry/interaction clips and full game integration remain to build. No new Meshy source is required for this assembly review.
+
+## Earlier v1 record
+
+The first review used a 41,326-triangle body with modeled blade, source SHA-256 `5cf991bb1be950dae7d2ba92353488562b7c6c2742cdfc169eef5febe7b220ef`, 25,582,380 bytes and a 4,865,140-byte derivative. The owner accepted the body/clip direction but reported blade/leg crossing, motivating the separate body and equipment workflow. It is retained as provenance, not the active candidate.
 
 ## Delivery migration
 
@@ -43,4 +48,10 @@ Current runtime URLs are relative immutable app files. Once CloudFront is ready,
 
 ## Validation status
 
-The local browser review covers body silhouette, supplied walk/run clips, frame scrubbing, rotation, surfaces and room framing. Owner art acceptance, contact animation, controlled device performance and full game integration remain open. Asset-publication tests, all 56 retained pack checks, semantic GLB checks, 20 agent/layout regression tests, scoped lint and the low-memory production build passed. Desktop and 320/390-pixel layouts, walk/run playback, keyboard scrub, art-dialog dismissal and room switching were reviewed locally. The full local Jest suite and a broader Loopforge UI run were interrupted after sustained CPU/memory growth with no completed-suite report; they are not claimed as passing. Plain repository-wide tsc also reports existing test-file type errors; the Next production type check passed. Runtime and validation results are recorded with the PR; this bench is not a claim that the production character is finished.
+The first assembly passed the local production build/type check, scoped ESLint, asset-publication test and two agent/layout regression suites (20 tests). The complete asset/character gate includes the new leg-clearance check. Walking/running, the closest running pose, side/behind occlusion, whole-assembly toggle, energy preview, pause/scrub and Security/Forge switching were exercised. Initial running proximity and obscured camera composition led to the corrected mount and dedicated review presets. Browser warning/error capture was empty.
+
+Responsive checks covered 320/390-pixel controls and a 1600-pixel desktop composition without horizontal overflow. These are desktop browser viewport checks, not physical-phone GPU results. At the warmed 862 × 562 canvas in the single-character Forge inspection, observed frame intervals were about 18 ms median / 35 ms p95 with the blade on; a separate blade-off observation was 20 / 36 ms. These uncontrolled samples do not establish a blade timing delta or certify the target budget. The review reports room-inclusive timing and submitted geometry so subsequent measurements can be compared under controlled conditions.
+
+The three review angles keep the stationary character framed. The arm/body can still legitimately occlude the blade from the opposite side; recognizability across moving production cameras and authored carry poses is not signed off. Exact-commit hosted build/test status and preview links are recorded on PR #113 after deployment.
+
+This review does not certify low-end/mobile GPU performance, crowded 10/24/100-worker rooms, main-play integration or owner art acceptance. Do not reuse the previous PR's test totals as results for this revision. The main-game agent fixture has separate checks; this bench remains a single character/equipment review.

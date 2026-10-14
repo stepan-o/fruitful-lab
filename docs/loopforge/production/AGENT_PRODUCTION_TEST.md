@@ -1,3 +1,5 @@
+> **Historical fixture — rejected placeholder models.** Current model reviews live in the [asset library](/stepanoskin/loopforge/play/asset-review). The older action and crowd experiments below remain engineering evidence only; they do not validate the new Meshy cast or its contact/performance behaviour. The direct fixture page is labelled legacy.
+
 # Agent production test / 12 October 2026
 
 **New Meshy candidate (12 October):** open `/stepanoskin/loopforge/play/agent-test/limen` for the owner-supplied 41,326-triangle LIMEN, 23-joint rig and walk/run clips. The previous procedural cast below remains an engineering fixture rejected on visual quality. See [LIMEN model review](LIMEN_MESHY_REVIEW.md) for provenance, material treatment and the temporary app-hosted delivery plan.

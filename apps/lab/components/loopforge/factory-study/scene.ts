@@ -1,3 +1,4 @@
+import { createReviewOrbit, type ReviewCameraAction } from './review-orbit';
 import { SceneInstrumentation } from "@babylonjs/core/Instrumentation/sceneInstrumentation";
 import { Engine } from "@babylonjs/core/Engines/engine";
 import { Scene } from "@babylonjs/core/scene";
@@ -38,7 +39,7 @@ export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
 export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; p50?: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
 export type CharacterStage = { scene: Scene; shadow: ShadowGenerator; gate(open: boolean): void; refresh(): void };
-export type FactoryScene = { characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
+export type FactoryScene = { reviewCamera(action?: ReviewCameraAction): ReturnType<ReturnType<typeof createReviewOrbit>["snapshot"]>; characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
@@ -65,7 +66,8 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   let visible = true, cctvEnabled = false, cctvAngle = 0, tripleFeed = false;
   const alternateCameras = [1,2].map(n => new ArcRotateCamera(`room-angle-${n}`, 0, 1, 20, Vector3.Zero(), scene));
   let isolatedRoom = false;
-  let characterReview: boolean | "model" | "model-cctv" = false, modelDistance = 4.6;
+  let characterReview: boolean | "model" | "model-cctv" = false;
+  const reviewOrbit = createReviewOrbit(camera, canvas, () => { renderDirty = true; });
   let reviewGate: boolean | null = null;
   let equipmentStudy = false, framing: Framing = "work";
   let bottomInset = 180, topInset = 125;
@@ -449,15 +451,21 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     transition=1;
   };
   const configureFeeds=()=>{
+    reviewOrbit.suspend();
     if(!cctvEnabled){scene.activeCameras=null;scene.activeCamera=camera;camera.attachControl(canvas,true);return;}
-    camera.detachControl();
-    const poses = characterReview === "model" ? [{x:focus==='security'?131:120.8,y:focus==='security'?122:149.6,r:modelDistance,a:-Math.PI/2,b:1.36}] : characterReview === "model-cctv" ? [{a:.55,b:.78,r:7.5},{a:2.35,b:.92,r:6.5},{a:-.85,b:.65,r:10}].map(p=>({...p,x:focus==='security'?131:120.8,y:focus==='security'?122:149.6})) : characterReview ? (focus==='security' ? [{x:126,y:126.5,r:6.6,a:.6,b:1.15},{x:126,y:126.5,r:5.5,a:-1.05,b:1.2},{x:128,y:121,r:15,a:.9,b:.7}] : [{x:120.8,y:149.6,r:7.3,a:-1.1,b:1.15},{x:120.8,y:149.6,r:5.8,a:-2.0,b:1.15},{x:121,y:150,r:16,a:-1.4,b:.7}]) : focus==='security'
+    if(characterReview==='model'){
+      camera.viewport=new Viewport(0,0,1,1);camera.fov=.7;camera.minZ=.15;camera.maxZ=400;
+      const point=focus==='security'?[131,122]:[120.8,149.6];
+      reviewOrbit.attach(new Vector3(...worldPoint(point[0],point[1])).add(new Vector3(0,1.02,0)));
+      scene.activeCameras=[camera];scene.activeCamera=camera;transition=0;return;
+    }
+    const poses = characterReview === "model-cctv" ? [{a:.55,b:.78,r:7.5},{a:2.35,b:.92,r:6.5},{a:-.85,b:.65,r:10}].map(p=>({...p,x:focus==='security'?131:120.8,y:focus==='security'?122:149.6})) : characterReview ? (focus==='security' ? [{x:126,y:126.5,r:6.6,a:.6,b:1.15},{x:126,y:126.5,r:5.5,a:-1.05,b:1.2},{x:128,y:121,r:15,a:.9,b:.7}] : [{x:120.8,y:149.6,r:7.3,a:-1.1,b:1.15},{x:120.8,y:149.6,r:5.8,a:-2.0,b:1.15},{x:121,y:150,r:16,a:-1.4,b:.7}]) : focus==='security'
       ? [{x:125,y:123,r:20,a:-1.45,b:.92},{x:123,y:115,r:10,a:-1.15,b:1.0},{x:126.5,y:128,r:11,a:-2.4,b:.94}]
       : focus==='lobby'
         ? [{x:64,y:89,r:25,a:-1.85,b:1.02},{x:59,y:83,r:9,a:-1.65,b:1.02},{x:74,y:100,r:18,a:-2.1,b:.95}]
         : [{x:122,y:145,r:19,a:-1.36,b:.98},{x:116,y:144,r:12,a:-.75,b:1.00},{x:124,y:145,r:12,a:-2.65,b:.84}];
     const cams=[camera,...alternateCameras];
-    cams.forEach((cam,i)=>{const p=poses[(cctvAngle+i)%poses.length];cam.alpha=p.a;cam.beta=p.b;cam.radius=p.r*(characterReview&&!tripleFeed&&(typeof characterReview==='string'||focus!=='security')?Math.max(1,(characterReview==='model'?.65:.95)/(canvas.clientWidth/Math.max(1,canvas.clientHeight))):1);cam.setTarget(new Vector3(...worldPoint(p.x,p.y)).add(new Vector3(0,characterReview==='model'?1.02:1.4,0)),false,true,true);cam.fov=.7;cam.minZ=.15;cam.maxZ=400;cam.viewport=!tripleFeed||i===0?new Viewport(0,0,tripleFeed?.70:1,1):new Viewport(.705,i===1?.505:0,.295,.495);});
+    cams.forEach((cam,i)=>{const p=poses[(cctvAngle+i)%poses.length];cam.alpha=p.a;cam.beta=p.b;cam.radius=p.r*(characterReview&&!tripleFeed&&(typeof characterReview==='string'||focus!=='security')?Math.max(1,.95/(canvas.clientWidth/Math.max(1,canvas.clientHeight))):1);cam.setTarget(new Vector3(...worldPoint(p.x,p.y)).add(new Vector3(0,1.4,0)),false,true,true);cam.fov=.7;cam.minZ=.15;cam.maxZ=400;cam.viewport=!tripleFeed||i===0?new Viewport(0,0,tripleFeed?.70:1,1):new Viewport(.705,i===1?.505:0,.295,.495);});
     scene.activeCameras=tripleFeed?cams:[camera];transition=0;
   };
   const viewport=()=>{if(cctvEnabled){configureFeeds();return;}const h=Math.max(1,canvas.clientHeight),top=topInset,bottom=Math.min(h*.52,bottomInset);camera.viewport=new Viewport(0,bottom/h,1,Math.max(.25,(h-bottom-top)/h));};
@@ -535,14 +543,18 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     const beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady;const renderedAt=performance.now();frames++;if(now-reportTime>1200){const fps=Math.round(frames*1000/(now-reportTime));report({fps,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),p50:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.5)]??0),p95:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.95)]??0),p99:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.99)]??0),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});if((moving||state.running||cameraMoving)&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;frames=0;reportTime=now;}
   }
   equipment.study(false);
-  const input = () => { renderDirty = true; };
-  canvas.addEventListener("keydown", input);
+  const input = (event: Event) => {
+    if(event.type!=='pointermove'||(event as PointerEvent).buttons)renderDirty=true;
+  };
+  const inputEvents=['keydown','pointerdown','pointermove','pointerup','wheel'] as const;
+  inputEvents.forEach(name=>canvas.addEventListener(name,input,{passive:true}));
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
+    reviewCamera(action){if(action)reviewOrbit.action(action);return reviewOrbit.snapshot();},
     characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(){renderDirty=true;keyMap.resetRefreshCounter();}};},
-    review(enabled,distance){characterReview=enabled;if(distance!==undefined)modelDistance=Math.max(3.2,Math.min(7,distance));frame();if(cctvEnabled)configureFeeds();},
+    review(enabled,distance){reviewOrbit.suspend();characterReview=enabled;if(distance!==undefined)reviewOrbit.distance(distance);frame();if(cctvEnabled)configureFeeds();},
     update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const fresh=s.events.filter(e=>e.id>lastEvent);if(fresh.length){lastEvent=fresh.at(-1)!.id;const signal=fresh.find(e=>e.kind==="jam")??fresh.find(e=>e.kind==="cycle");if(signal){flash=1;flashKind=signal.kind as "jam"|"cycle";}else if(fresh.some(e=>e.kind==="release")){flash=0;flashKind="idle";}}},
-    focus(f){frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
+    focus(f){reviewOrbit.suspend();frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
     framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},
     feeder(enabled){resourcesReady=false;renderDirty=true;lobby.feeder(enabled);keyMap.resetRefreshCounter();},
     inset(bottom,top){bottomInset=bottom;topInset=top;engine.resize();frame();viewport();},
@@ -551,7 +563,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     cctv(enabled,angle,triple){cctvEnabled=enabled;cctvAngle=angle;tripleFeed=triple;renderDirty=true;configureFeeds();if(!enabled){viewport();frame();}},
     isolate(enabled){isolatedRoom=enabled;posesDirty=true;frame();},
     active(enabled){visible=enabled;if(enabled&&!document.hidden){frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();lastTime=performance.now();renderDirty=true;engine.resize();viewport();engine.runRenderLoop(render);}else engine.stopRenderLoop(render);},
-    dispose(){canvas.removeEventListener("keydown",input);observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);instrumentation.dispose();scene.dispose();engine.dispose();}
+    dispose(){reviewOrbit.suspend();inputEvents.forEach(name=>canvas.removeEventListener(name,input));observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);instrumentation.dispose();scene.dispose();engine.dispose();}
   };
   } catch(error) { scene.dispose(); engine.dispose(); throw error; }
 }

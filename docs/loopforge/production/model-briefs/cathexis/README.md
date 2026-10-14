@@ -1,8 +1,8 @@
 # CATHEXIS — model rebuild kit
 
-Current repair scope (14 October): add only the missing central rear skirt fabric behind the legs, with knee clearance and a lower-ankle hem. All other model features, including the existing side panels and crown, stay intact. Earlier full-dress/crown redesigns are discarded. For the existing Meshy body, use **08-rear-panel-repair.txt** first; numbered generation stages remain available for future rebuilds. The viewer still shows the unrepaired v1 body.
+Current skirt revision (14 October): fill the missing center-back fabric to the lower ankles and replace excessive decorative lace with worn theatrical cloth. The revised back and left profile are a matching reference pair. Preserve the body, crown, front opening and layered silhouette. The original front image remains a proportions/opening reference, not the material authority. Use **08-rear-panel-repair.txt** on a copy of the existing body first; full rebuild instructions are separate. The viewer still shows the unchanged, unrigged v1 body. Earlier full-dress/crown redesigns and the lace-heavy repair input are superseded.
 
-Generation brief v2 · modular mechanical face · 14 October 2026
+Generation brief v3 · localized skirt revision + modular mechanical face · 14 October 2026
 
 First static intake available · fitting and rigging pending. A delicate porcelain-and-brass performer: chilling, vibing and flirting until coarse work and grime test her composure. Hot Walk is her only travel gait. She never runs and has no alert state.
 
@@ -10,7 +10,7 @@ Prepared from original character and room art. New generated input references ar
 
 ## Read first
 
-Use prompts in numbered order. Reference images are generated illustrations, not measured engineering projections. Respect each image's role in manifest.json: upload body views together as one character; props and masks separately. Never upload the whole gallery as one model. High-quality JPEG inputs preserve the original framing and use at most 1800 pixels on the longest edge; original PNG masters stay outside the runtime deployment.
+For the current body, start with the first displayed skirt-revision stage (08), then inspect the unrigged result. Use the full numbered generation sequence only when a complete rebuild is explicitly needed. Reference images are generated illustrations, not measured engineering projections. Respect each image's role in manifest.json: upload body views together as one character; props and masks separately. Never upload the whole gallery as one model. High-quality JPEG inputs preserve the original framing and use at most 1800 pixels on the longest edge; original PNG masters stay outside the runtime deployment.
 
 Inspect the first body and face candidates: https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/cathexis
 

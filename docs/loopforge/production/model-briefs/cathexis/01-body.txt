@@ -1,6 +1,6 @@
-For repair of the existing v1 body, use 08-rear-panel-repair.txt instead. The instructions below are for a full rebuild only.
+For the current skirt revision of the existing v1 body, use 08-rear-panel-repair.txt first. The instructions below are for a full rebuild only.
 
-Create CATHEXIS for Loopforge from the THREE attached body reference images: 01-cathexis-body-front.260b685edbc8b769.jpg, 02-cathexis-rear-panel-repair.5385077857a25085.jpg and 03-cathexis-body-left.7876f6e8730e1f86.jpg.
+Create CATHEXIS for Loopforge from the THREE attached body reference images: 01-cathexis-body-front.260b685edbc8b769.jpg, 02-cathexis-back-worn-cloth.f46b50f5d702ac1d.jpg and 03-cathexis-left-worn-cloth.5ca90f61805e55e6.jpg.
 
 This task is the BODY ONLY. Do not install a porcelain face mask. Separate masks will follow as separate assets. Do not infer additional characters from any reference sheet.
 
@@ -12,7 +12,7 @@ She is physically delicate and made for performance and fine interaction, not co
 
 Generate the complete unrigged visual master first, in a clean symmetric A-pose. Hands clear of the torso, five separate mechanical fingers with a distinct thumb, legs and feet separated. The front view is the authority for proportions. Use the rear for reactor/hair construction and the profile for depth. Resolve minor view disagreements coherently rather than duplicating parts.
 
-Keep fabric clear of legs and hands. The skirt has the original layered side panels and an open front. Its central rear cloth must form a continuous section behind the legs, reaching the lower ankles without knee/shin intersections. Use the revised rear reference for this section only; preserve the original outer silhouette, side hems and crown. The original profile predates this rear infill and must not reintroduce the missing rear section. Hair is grouped into a few controllable locks/cable bundles, not thousands of separate strands. Do not bake background shadows, ambient glow, fog, transparent veils or magical energy into geometry. Surface cracks, weave and fine wear should primarily be texture detail.
+Keep fabric clear of legs and hands. The skirt has the original layered side panels and an open front. Its central rear cloth must form a continuous section behind the legs, reaching the lower ankles without knee/shin intersections. The revised back and matching left profile govern rear coverage and skirt material: mostly solid weathered gray-ivory cloth, restrained repaired seams and frayed edges, with excessive decorative lace removed. Preserve the original front opening, layered silhouette and crown. The original front drawing predates the fabric revision: use it for body proportions and the front opening, not the older ornate lace. In the left-facing profile, the rear panel is on the right and the leg is visible through the front opening. No floor train or knee-shaped cutouts. Hair is grouped into a few controllable locks/cable bundles, not thousands of separate strands. Do not bake background shadows, ambient glow, fog, transparent veils or magical energy into geometry. Surface cracks, weave and fine wear should primarily be texture detail.
 
 Where your tools support it, keep body, skirt panels and hair sections separable. Do not claim separate objects unless the exported file actually contains them. If segmentation is unsupported, say so and preserve the neutral master for our offline cleanup. Do not discard the costume just to make auto-rigging easier.
 

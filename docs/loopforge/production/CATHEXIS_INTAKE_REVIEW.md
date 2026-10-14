@@ -5,6 +5,8 @@
 Review player: `/stepanoskin/loopforge/play/asset-review/cathexis`.
 Generation kit: Game Design → Model briefs → CATHEXIS. The Agents tab and every character player link into the shared library.
 
+Current handoff: revise the original skirt using matching worn-cloth back/profile references. Fill the rear gap, reduce ornamental lace and preserve the body, crown, front opening and layered silhouette. These are input-art revisions only; this player still displays the original unrigged body. Inspect a new Meshy export before replacing it or starting rigging.
+
 ## Files actually received
 
 Eight Meshy FBX packages were found in Downloads and inspected with ufbx. Every export has one mesh/material and **zero skin joints and zero animation clips**. Original archive names, FBX hashes and bounds are recorded in `apps/lab/lib/loopforge/agents/cathexis-review.json`.

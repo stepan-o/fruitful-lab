@@ -1,3 +1,5 @@
+CURRENT EXISTING BODY: complete 08-rear-panel-repair.txt and inspect front/side/back before rigging. Keep the original body and masks. The sequence below describes the full character pipeline, not a request to regenerate the existing body.
+
 CATHEXIS — delivery order and remaining gates
 1. Generate the clean body in A-pose, with permanent head/eyes and a separate facial-insert boundary. Inspect silhouette, two separated legs, costume, heels, hands and rear. Source body drawing's mechanical face is a placement guide, not fused immutable geometry.
 2. Generate Grace and the distorted mechanical insert separately. Fit head/eyes/insert/shell offline. Then make Fury, Distress and the half-shell. Finish the other porcelain expressions after the interface is sound.

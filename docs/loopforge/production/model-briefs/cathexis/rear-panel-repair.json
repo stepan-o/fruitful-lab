@@ -1,37 +1,72 @@
 {
   "date": "2026-10-14",
-  "method": "built-in image_gen",
-  "scope": "Add missing central rear cloth only; all other design retained",
-  "reference": {
-    "label": "Body · rear panel repair",
-    "role": "Localized repair reference only: fill the missing rear cloth; preserve the original model, crown and side panels. The 3D repair is pending.",
-    "sourceName": "02-cathexis-rear-panel-repair.png",
-    "sourceSha256": "b580a9f6aadaf6e0abaf58e9da8f5eb7dd99c04ae93892a9c7d91a9be4ae5fba",
-    "input": {
-      "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair.5385077857a25085.jpg",
-      "width": 1024,
-      "height": 1536,
-      "bytes": 328568,
-      "sha256": "5385077857a250856e1a318be139b3877a76a5ffef5989dc8b8f0b304a628b39"
-    },
-    "variants": [
-      {
-        "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair-360.fdc943b7283f6e7c.webp",
-        "width": 360,
-        "height": 540,
-        "bytes": 27714,
-        "sha256": "fdc943b7283f6e7c40af261a169cf6c2efcd0072b30b69f6f26bceeea62b2c12"
+  "revision": "cathexis-worn-cloth-revision-2026-10-14",
+  "method": "built-in image generation",
+  "scope": "Localized rear infill plus worn-cloth treatment across the existing skirt; body and crown preserved",
+  "references": [
+    {
+      "label": "Body · revised back / worn cloth",
+      "role": "Skirt revision reference: continuous rear cloth behind the knees, lower-ankle hem and less decorative lace. Preserve the original body and crown; 3D revision pending.",
+      "sourceName": "03-cathexis-worn-cloth-candidate.png",
+      "sourceSha256": "1b0d3c559b3c5d2bf7f7a7c9743e31f65b80777a972bbd554f5e21ad0db2636d",
+      "input": {
+        "src": "/media/loopforge-model-briefs/02-cathexis-back-worn-cloth.f46b50f5d702ac1d.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 327005,
+        "sha256": "f46b50f5d702ac1d6ae74109877bc36f12a42ebb5690ca10f72147f32944bb07"
       },
-      {
-        "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair-720.47b23547dd4a8677.webp",
-        "width": 720,
-        "height": 1080,
-        "bytes": 90182,
-        "sha256": "47b23547dd4a8677136c6f2eb3a0bec31a4b1c3cb5a3d594e7ac1905b2cb532d"
-      }
-    ]
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/02-cathexis-back-worn-cloth-360.ac6dd8898e919a45.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 26780,
+          "sha256": "ac6dd8898e919a45316b9817c2795b97a7c28f2aa7058482f8533ea3631a49ab"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/02-cathexis-back-worn-cloth-720.9521d41f1e4e9a05.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 87986,
+          "sha256": "9521d41f1e4e9a056ad5acf0501cc44b7703cda536c5730875c264ea1fca4a1c"
+        }
+      ]
+    },
+    {
+      "label": "Body · matching left profile",
+      "role": "Matches the revised rear fabric and coverage. Character faces left; rear cloth hangs on the right. The visible leg belongs to the preserved front opening. 3D clearance still needs inspection.",
+      "sourceName": "04-cathexis-left-profile-worn-cloth.png",
+      "sourceSha256": "f0ba551732e513a167eacf075bf2c0960c41709e0079e2c8d6183bd1f900a3fa",
+      "input": {
+        "src": "/media/loopforge-model-briefs/03-cathexis-left-worn-cloth.5ca90f61805e55e6.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 230357,
+        "sha256": "5ca90f61805e55e6ce45e8f93ddb37e874cc37440406eacd3775ad4214b2fc15"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/03-cathexis-left-worn-cloth-360.152d32590f71b0e8.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 15884,
+          "sha256": "152d32590f71b0e887a15054b52fe221c0a0180063cb083a82a2806b1b3e817b"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/03-cathexis-left-worn-cloth-720.30ef41164732e678.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 54992,
+          "sha256": "30ef41164732e6780d70fd403f1a863365d815fb8183d9f1a483f62af891b5d4"
+        }
+      ]
+    }
+  ],
+  "generationPrompts": {
+    "back": "Use case: precise-object-edit.\nImage 1 is the edit target: CATHEXIS rear A-pose. Image 2 is original Loopforge room art, used ONLY as a reference for the fabric material's subdued theatrical character.\nChange ONLY the skirt's fabric surface and edge treatment. Preserve EXACTLY the body, crown size, hair, reactor, arms, hands, hip lamps, legs, heels, pose, background, framing, skirt outer silhouette and lengths. Preserve the repaired continuous rear panel behind the knees and legs; do not reopen any central gap or knee cutouts.\nThe current skirt is excessively bridal and lace-covered. Replace ALL its lace, floral/perforated mesh patterns and ornamental scalloped edges with mostly solid, thin, worn theatrical cloth in muted smoke-gray and faded gray-ivory, with darker gray cloth in recessed layers. Keep its elegant soft drape and the existing overlapping panel layout, but the fabric should look like an old stage costume that has survived an industrial environment, closely grounded in image 2. Subtle weave, creases, modest discoloration, a few repaired seams and restrained fraying at raw hems. No floral lace, crocheted holes, repeating decorative perforations or bright white wedding fabric. No new bows, jewelry, belts, tools or costume components. This remains her baseline theatre costume, not a heavily oil-soaked conveyor variant, not coarse burlap workwear. The garment is opaque enough to conceal both knees/shins from this rear view. Keep the mechanical heels visible below its hem. No holes exposing knees; no fabric intersecting or wrapping tightly around individual legs.\nSingle isolated full-body REAR view on the exact same neutral gray background. Change fabric only; preserve character identity and all geometry proportions. No text.\n",
+    "side": "Use case: precise-object-edit.\nImage 1 is the original LEFT PROFILE reference to EDIT. Image 2 is the revised BACK reference of exactly the same CATHEXIS character. Produce ONE left-profile view facing left, matching image 1's anatomy, pose, scale, framing, neutral gray background and lighting.\nONLY revise the skirt to match image 2. Keep the head, face, crown, hair, back reactor, chest, waist, arms, five-finger hands, hip lamps, chains, leg anatomy and mechanical heels completely unchanged.\nMatch the back view's mostly solid weathered theatrical cloth in smoke-gray and faded gray-ivory: plain worn weave, subtle discoloration, sparse repaired seams, frayed irregular hems, darker layers in recesses. Remove the original side view's ornate lace bands, crocheted perforations and scalloped bridal trim. Preserve the overlapping panel structure and restrained flare. This is a worn stage costume, not a wedding dress, heavy work apron or burlap sack. Do not add machinery or accessories.\nCRITICAL garment construction: The new continuous center-back panel shown in image 2 must also exist in profile. In this left-facing view the REAR is on the RIGHT side of the image. Let the rear cloth hang from the rear waist down to the lower ankles, just above the heel tops, with enough volume/clearance BEHIND the thigh, knee and calf. The rear panel is part of a continuous wraparound skirt, not a separate hanging ribbon or gap. No knee or shin may protrude through fabric. Do not create a cutout around the knee. Preserve the original intentional FRONT opening on the LEFT side of this profile: the mechanical leg can be visible through that front opening, but never puncturing a panel. Keep the same natural garment thickness, skirt width and layered edge lengths implied by image 2, no added floor train. Heels remain exposed below the hem, feet unchanged.\nThis is the SAME dress and SAME robot from the side, not an alternative costume. One isolated full-body pure profile, no extra views, no labels.\n"
   },
-  "prompt": "Precise localized inpainting edit of this rear-view character reference. Keep the entire image unchanged except the open REAR SKIRT GAP below the hips. Fill ALL of that rear central opening with matching hanging weathered gray-ivory cloth from the rear waist down to the lower ankles. The new rear infill must be WIDE ENOUGH TO COVER BOTH EXPOSED KNEES AND THE BACKS OF BOTH SHINS as well as the gap between the legs. NO two leg-shaped windows: legs are behind the rear fabric. Do not draw a narrow loincloth between two still-visible legs. This is one continuous rear skirt infill overlapping UNDER the inner edges of the existing left and right skirt panels, so the whole rear is covered until just above the mechanical heels. The two heels/feet remain visible below the new hem. Add only this missing rear infill; preserve exactly the existing side skirt panels, side hems, outer width, all existing drapes, crown size/design, hair, reactor, arms, hands, torso, hip cylinders, feet, background, pose and framing. Match the original cloth's subdued distress, narrow vertical folds, irregular ragged bottom. No skirt widening, new tiers, bell skirt, bridal restyle, crown enlargement or other redesign. The body behind the garment remains anatomically unchanged. One back view.\n",
-  "supersedes": "Prior full-dress/crown redesigns; narrow strip leaving exposed knees is rejected",
-  "meshStatus": "Existing v1 is unchanged; local mesh repair pending"
+  "supersedes": "Lace-heavy repair input and original profile as fabric/coverage guidance; full-dress and enlarged-crown redesigns remain rejected",
+  "meshStatus": "Existing v1 is unchanged; Meshy revision and 3D clearance inspection pending"
 }

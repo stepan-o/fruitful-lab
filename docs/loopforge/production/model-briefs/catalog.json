@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-14-v3",
+  "revision": "model-briefs-2026-10-14-v4",
   "date": "2026-10-14",
   "models": [
     {
@@ -690,9 +690,9 @@
       "id": "cathexis",
       "name": "CATHEXIS",
       "subtitle": "Theatre diva \u00b7 modular faces + surface conditions",
-      "revision": "cathexis-rear-panel-repair-2026-10-14",
-      "status": "First intake \u00b7 rear-panel repair pending",
-      "summary": "Delicate theatrical body, interchangeable porcelain and mechanical expressions, and room-dependent grime. The first body, Grace budgets and three exposed expressions are available for static inspection; fit and acting are pending.",
+      "revision": "cathexis-worn-cloth-revision-2026-10-14",
+      "status": "First intake \u00b7 skirt revision pending",
+      "summary": "Delicate theatrical body, interchangeable porcelain and mechanical expressions, and room-dependent grime. Current Meshy task: revise the existing skirt using the matching worn-cloth back/profile references. The viewer still shows the original unrigged body and separate face candidates.",
       "provenance": "Prepared from original character and room art. New generated input references are proposals, not owner-approved meshes. Dirt options A/B/C remain alternatives; build the clean master first.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
       "viewerLabel": "Inspect the body and face candidates",
@@ -704,7 +704,7 @@
         "Three mechanical expression masters with local 12k inspection copies"
       ],
       "remaining": [
-        "Fill only the missing rear skirt panel; preserve all other body geometry and the crown",
+        "Fill the rear skirt gap and reduce decorative lace; preserve body, crown, front opening and layered silhouette",
         "Normalize and fit the face layers to one shared head",
         "Restore/export the body and Grace normal maps",
         "Half-shell, remaining porcelain expressions and grime selection",
@@ -713,7 +713,7 @@
       "images": [
         {
           "label": "Body \u00b7 front",
-          "role": "Body input \u2014 expression is replaced by separate insert",
+          "role": "Original body proportions and front opening. For skirt material and rear coverage, follow the revised back/profile; this original front drawing predates the reduction in lace.",
           "sourceName": "01-cathexis-body-front.png",
           "sourceSha256": "168fb9fe3af049b9786894d342906a4f85a659f99f1cdbd830c60d69b6911635",
           "input": {
@@ -741,60 +741,60 @@
           ]
         },
         {
-          "label": "Body \u00b7 rear panel repair",
-          "role": "Localized repair reference only: fill the missing rear cloth; preserve the original model, crown and side panels. The 3D repair is pending.",
-          "sourceName": "02-cathexis-rear-panel-repair.png",
-          "sourceSha256": "b580a9f6aadaf6e0abaf58e9da8f5eb7dd99c04ae93892a9c7d91a9be4ae5fba",
+          "label": "Body \u00b7 revised back / worn cloth",
+          "role": "Skirt revision reference: continuous rear cloth behind the knees, lower-ankle hem and less decorative lace. Preserve the original body and crown; 3D revision pending.",
+          "sourceName": "03-cathexis-worn-cloth-candidate.png",
+          "sourceSha256": "1b0d3c559b3c5d2bf7f7a7c9743e31f65b80777a972bbd554f5e21ad0db2636d",
           "input": {
-            "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair.5385077857a25085.jpg",
+            "src": "/media/loopforge-model-briefs/02-cathexis-back-worn-cloth.f46b50f5d702ac1d.jpg",
             "width": 1024,
             "height": 1536,
-            "bytes": 328568,
-            "sha256": "5385077857a250856e1a318be139b3877a76a5ffef5989dc8b8f0b304a628b39"
+            "bytes": 327005,
+            "sha256": "f46b50f5d702ac1d6ae74109877bc36f12a42ebb5690ca10f72147f32944bb07"
           },
           "variants": [
             {
-              "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair-360.fdc943b7283f6e7c.webp",
+              "src": "/media/loopforge-model-briefs/02-cathexis-back-worn-cloth-360.ac6dd8898e919a45.webp",
               "width": 360,
               "height": 540,
-              "bytes": 27714,
-              "sha256": "fdc943b7283f6e7c40af261a169cf6c2efcd0072b30b69f6f26bceeea62b2c12"
+              "bytes": 26780,
+              "sha256": "ac6dd8898e919a45316b9817c2795b97a7c28f2aa7058482f8533ea3631a49ab"
             },
             {
-              "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair-720.47b23547dd4a8677.webp",
+              "src": "/media/loopforge-model-briefs/02-cathexis-back-worn-cloth-720.9521d41f1e4e9a05.webp",
               "width": 720,
               "height": 1080,
-              "bytes": 90182,
-              "sha256": "47b23547dd4a8677136c6f2eb3a0bec31a4b1c3cb5a3d594e7ac1905b2cb532d"
+              "bytes": 87986,
+              "sha256": "9521d41f1e4e9a056ad5acf0501cc44b7703cda536c5730875c264ea1fca4a1c"
             }
           ]
         },
         {
-          "label": "Body \u00b7 profile",
-          "role": "Original profile: preserve body and outer skirt shape; use the revised rear view for the missing rear cloth.",
-          "sourceName": "03-cathexis-body-left.png",
-          "sourceSha256": "da923ec954e36efdae95905dbf9c89ea611b8e2b0a801cec167e77235c737c4a",
+          "label": "Body \u00b7 matching left profile",
+          "role": "Matches the revised rear fabric and coverage. Character faces left; rear cloth hangs on the right. The visible leg belongs to the preserved front opening. 3D clearance still needs inspection.",
+          "sourceName": "04-cathexis-left-profile-worn-cloth.png",
+          "sourceSha256": "f0ba551732e513a167eacf075bf2c0960c41709e0079e2c8d6183bd1f900a3fa",
           "input": {
-            "src": "/media/loopforge-model-briefs/03-cathexis-body-left.7876f6e8730e1f86.jpg",
+            "src": "/media/loopforge-model-briefs/03-cathexis-left-worn-cloth.5ca90f61805e55e6.jpg",
             "width": 1024,
             "height": 1536,
-            "bytes": 273411,
-            "sha256": "7876f6e8730e1f8676a142b73dc3c0ebadc16e31d9147838c224d5528f34e2e0"
+            "bytes": 230357,
+            "sha256": "5ca90f61805e55e6ce45e8f93ddb37e874cc37440406eacd3775ad4214b2fc15"
           },
           "variants": [
             {
-              "src": "/media/loopforge-model-briefs/03-cathexis-body-left-360.f20de8713bc16d41.webp",
+              "src": "/media/loopforge-model-briefs/03-cathexis-left-worn-cloth-360.152d32590f71b0e8.webp",
               "width": 360,
               "height": 540,
-              "bytes": 14078,
-              "sha256": "f20de8713bc16d419474a1face8e58cbfe1e0305576425dfc8b2cb9bf4d47b52"
+              "bytes": 15884,
+              "sha256": "152d32590f71b0e887a15054b52fe221c0a0180063cb083a82a2806b1b3e817b"
             },
             {
-              "src": "/media/loopforge-model-briefs/03-cathexis-body-left-720.396ddfe83c997cdd.webp",
+              "src": "/media/loopforge-model-briefs/03-cathexis-left-worn-cloth-720.30ef41164732e678.webp",
               "width": 720,
               "height": 1080,
-              "bytes": 48784,
-              "sha256": "396ddfe83c997cddc61e9aac8e2914aada63dda15aa43460d3c2135759318fa3"
+              "bytes": 54992,
+              "sha256": "30ef41164732e6780d70fd403f1a863365d815fb8183d9f1a483f62af891b5d4"
             }
           ]
         },
@@ -1207,11 +1207,11 @@
       ],
       "prompts": [
         {
-          "title": "Current model: rear panel repair only",
+          "title": "Current model: skirt repair + worn cloth",
           "file": "cathexis/08-rear-panel-repair.txt"
         },
         {
-          "title": "Body",
+          "title": "Full body rebuild (only if needed)",
           "file": "cathexis/01-body.txt"
         },
         {

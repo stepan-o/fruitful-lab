@@ -27,3 +27,9 @@ Hosted preview verification is recorded in the PR after its deployment becomes r
 ## Rear-panel repair update — 14 October 2026
 
 The current CATHEXIS kit replaces only its rear input, retains front/profile references, and starts with a localized repair prompt for the existing body. All kit file sizes/hashes and the standalone repair ZIP CRCs pass. The runtime body remains unchanged. Four review-camera tests and scoped ESLint pass. All six static CATHEXIS assets pass the character validator. A broad TypeScript check reports errors in existing test files (floor types, readonly NODE_ENV, Testing Library options and GrowthBook mocks); it reports none in the changed files. This is not a clean whole-repository type check. Named side buttons now reset the orbit before turning the model; they are commands rather than potentially stale pressed-state indicators. Hosted visual verification is performed after deployment.
+
+## Worn-cloth reference alignment — 14 October 2026
+
+The current CATHEXIS kit replaces both rear and profile inputs with a matching worn-cloth pair. The original front is explicitly limited to proportions/front-opening guidance. The first copyable stage requests a separate revision of the existing body: rear infill and reduced decorative lace, with body/crown/masks preserved. Full rebuild instructions, delivery order, image roles and provenance agree with that scope. Viewer geometry remains the original unrigged body.
+
+Publication checks verify all input/preview hashes and byte counts; generated kit files and ZIP CRCs are checked before push. No renderer or runtime behavior changes in this revision. Hosted verification follows the preview build.

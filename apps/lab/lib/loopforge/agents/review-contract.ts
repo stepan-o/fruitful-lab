@@ -11,6 +11,14 @@ export type ReviewSection = typeof reviewSections[number]['id'];
 export type ReviewGate = {status:'Accepted slice'|'Candidate'|'Needs work'|'Not measured'; detail:string};
 export type ReviewReadiness = Record<ReviewSection, ReviewGate>;
 export const reviewReadiness: Record<string, ReviewReadiness> = {
+ 'cathexis-intake': {
+  body:{status:'Accepted slice',detail:'Owner accepted the 51,034-triangle v2 body and repaired skirt. Unrigged; the delivery normal map remains missing. Faces are separate candidates.'},
+  equipment:{status:'Needs work',detail:'Grace 3k/8k and three mechanical faces are isolated. Head fit, eye apertures, cavities and half-shell remain unvalidated.'},
+  motion:{status:'Needs work',detail:'No skin joints or animation clips in the downloaded files. Hot Walk and all acting await rigging.'},
+  contact:{status:'Needs work',detail:'No mounted mask, jaw motion, hand-to-face contact or costume clearance test yet.'},
+  readability:{status:'Candidate',detail:'Body and separate enlarged face inspection available. Mounted-face readability in CCTV remains untested.'},
+  performance:{status:'Not measured',detail:'One static asset loaded at a time; high-resolution masters stay outside deployments. Animated scenes, crowd and device performance remain unmeasured.'}
+ },
  'limen-assembly': {
   body:{status:'Accepted slice',detail:'Owner approved prototype appearance and character resemblance.'},
   equipment:{status:'Accepted slice',detail:'Body/blade fit and arm-flowing energy accepted. Contact sparks and game cues remain open.'},
@@ -37,7 +45,6 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
  }
 };
 export const upcomingReviewSubjects = [
- {id:'cathexis',name:'CATHEXIS',focus:'Presence and influence',direction:'Validate Hot Walk on her own rig; expressive posture, worker-facing gestures and group reactions.'},
  {id:'rivet-witch',name:'RIVET WITCH',focus:'Engineering and intervention',direction:'Tool mounts, precise machine contacts, inspection, repair and visible frustration with unresolved damage.'},
  {id:'thrum',name:'THRUM',focus:'Rhythm and calm',direction:'Distinct movement and vibration cues; worker relaxation must read differently from productive discipline.'}
 ] as const;

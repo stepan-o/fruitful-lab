@@ -1,0 +1,15 @@
+CATHEXIS — dirt appearances on the ACCEPTED shared body
+
+Choose one of the neutral A-pose dirt references before this step. These images define a surface treatment; they are NOT separate characters or alternative anatomy. Face masks are separate items and should not be baked onto the body.
+
+Preserve the exact accepted body mesh, UVs, skeleton, skin weights and sockets. If your tools cannot preserve them, provide texture references for offline work instead of remeshing. A newly generated dirty body cannot be assumed to share the rig or animation files.
+
+Stage condition: worn cracked ivory, antique brass and black mechanics. She is already aged, not glossy factory-new plastic.
+
+Conveyor condition: dense charcoal soot and black-brown machine oil over much of the pale porcelain, cuffs, fingers, bodice and skirt. Darkened matted cable hair. Black-gray stained skirt with sparse pale edges. Use original conveyor art as the benchmark, not a few decorative splashes. The three A-pose options explore dry soot, wet oil and caked mixed grime; the owner will choose or combine them.
+
+Brewery condition: later retexture using wet olive/green-brown process residue on hands, cuffs, bodice and hem. No fluid simulation or extra body geometry needed. Prepare after the conveyor treatment is chosen; do not infer approval from earlier posed concept sketches.
+
+Keep amber eye/canister identity. No new injury, missing pieces, enlarged armor or combat redesign. No baked scenery, lighting or animation pose in textures. Export named material/texture variants; preserve clean source maps. Report any topology/UV changes honestly.
+
+Dirt is not an angry face. The selected face item and body animation supply presentation. She can be dirty and composed, clean and furious. Actual contamination follows exposure events and does not reset when changing rooms. This brief does not add cleaning or repair gameplay.

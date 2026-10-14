@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-cathexis-review",
+  "assets": {
+    "body": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/aeba362417181f3aa0c5a19526a3d49a80ef408a9c51ee11341ad172cd6701a8.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 5695824,
+          "sha256": "aeba362417181f3aa0c5a19526a3d49a80ef408a9c51ee11341ad172cd6701a8"
+        }
+      ]
+    },
+    "grace-3k": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/79ba6f535ef190c10289b6ea814bdb8ac1bea5ba56a926dd93ec8fb5dde1052d.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 782140,
+          "sha256": "79ba6f535ef190c10289b6ea814bdb8ac1bea5ba56a926dd93ec8fb5dde1052d"
+        }
+      ]
+    },
+    "grace-8k": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/b52577f0839263519f6c339d626f68c18880c57b377dfa12d1079fee0b58cefa.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1013708,
+          "sha256": "b52577f0839263519f6c339d626f68c18880c57b377dfa12d1079fee0b58cefa"
+        }
+      ]
+    },
+    "mechanism-distress": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/86bd5b43364f7d5549cac14348fd58a2565c6ce657788e824ea1da1b9c4f4d0c.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1370156,
+          "sha256": "86bd5b43364f7d5549cac14348fd58a2565c6ce657788e824ea1da1b9c4f4d0c"
+        }
+      ]
+    },
+    "mechanism-fury": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/b38b68f51568ca361ceecdef589bea179982cb6885416a84cf2ad8226652f929.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1521988,
+          "sha256": "b38b68f51568ca361ceecdef589bea179982cb6885416a84cf2ad8226652f929"
+        }
+      ]
+    },
+    "mechanism-grimace": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/b791854b87a34da5a892e93aad980a42bcff793ecd1160b6da580fb953797e96.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1413904,
+          "sha256": "b791854b87a34da5a892e93aad980a42bcff793ecd1160b6da580fb953797e96"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,437 @@
+{
+  "revision": "cathexis-body-v2-accepted-2026-10-14",
+  "intake": [
+    {
+      "id": "body",
+      "archive": "Cathexis_Body_v2_50k.zip",
+      "archiveBytes": 70582380,
+      "archiveSha256": "7820d62654bed3d510ee974406dfb0ba0986c6ecd9269927f6341f3320763d39",
+      "fbx": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture.fbx",
+      "fbxSha256": "e897cee07618259637845002928dabb6afab336d5847239b42627b6fe5709b38",
+      "textures": [
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture_metallic.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "L"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture_metallic_roughness.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture_roughness.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "L"
+        }
+      ],
+      "triangles": 51034,
+      "meshes": 1,
+      "materials": 1,
+      "skinJoints": 0,
+      "clips": 0,
+      "unitMeters": 0.01,
+      "min": [
+        -0.625555,
+        -0.951479,
+        -0.257363
+      ],
+      "max": [
+        0.624205,
+        0.948759,
+        0.26323
+      ]
+    },
+    {
+      "id": "body-master",
+      "archive": "Cathexis_Body_v2_mast.zip",
+      "archiveBytes": 221410578,
+      "archiveSha256": "bde160db90e3d4287f6d28b5d3500913c88ae5c7c5733f1a3625172560a552be",
+      "fbx": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture.fbx",
+      "fbxSha256": "5c2157b88ae737a3ebc24de576d4b51e99f9e063412c1f36bcc17d8036e116a5",
+      "textures": [
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture_metallic.png",
+          "width": 2048,
+          "height": 2048,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture_roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "mode": "RGB"
+        }
+      ],
+      "triangles": 3403416,
+      "meshes": 1,
+      "materials": 1,
+      "skinJoints": 0,
+      "clips": 0,
+      "unitMeters": 0.01,
+      "min": [
+        -0.625704,
+        -0.952014,
+        -0.257821
+      ],
+      "max": [
+        0.624463,
+        0.949357,
+        0.263883
+      ]
+    },
+    {
+      "id": "grace-master",
+      "archive": "Meshy_AI_Cathexis_Mask_Grace_1014181414_image-to-3d-texture_fbx.zip",
+      "archiveBytes": 108887870,
+      "archiveSha256": "c8acdff47bc10cdf8eda18218c92f03c16de97ca6967776564a211e8d5017c90",
+      "fbx": "Meshy_AI_Cathexis_Mask_Grace_1014181414_image-to-3d-texture.fbx",
+      "fbxSha256": "e332f30bd087ec0ba21cc79892b786f10b44a3b28a901eafe1e3bdfea8fafaff",
+      "triangles": 603694,
+      "meshes": 1,
+      "materials": 1,
+      "skinJoints": 0,
+      "clips": 0,
+      "unitMeters": 0.01,
+      "min": [
+        -0.70193,
+        -0.952282,
+        -0.495671
+      ],
+      "max": [
+        0.701066,
+        0.950554,
+        0.495136
+      ]
+    },
+    {
+      "id": "grace-3k",
+      "archive": "Meshy_AI_Cathexis_Mask_Grace_3_1014181434_texture_fbx.zip",
+      "archiveBytes": 64858102,
+      "archiveSha256": "598ef6cc8abd038916a2f3f95cca3b3a8246563b3123e3037aa91a70104a1e31",
+      "fbx": "Meshy_AI_Cathexis_Mask_Grace_3_1014181434_texture.fbx",
+      "fbxSha256": "b6683dbb89dcdf61ecae1715774069b873f097aa2556dcbb68eb14f0f4cbffe9",
+      "triangles": 3058,
+      "meshes": 1,
+      "materials": 1,
+      "skinJoints": 0,
+      "clips": 0,
+      "unitMeters": 0.01,
+      "min": [
+        -0.699795,
+        -0.950907,
+        -0.495601
+      ],
+      "max": [
+        0.697911,
+        0.950009,
+        0.493793
+      ]
+    },
+    {
+      "id": "grace-8k",
+      "archive": "Meshy_AI_Cathexis_Mask_Grace_8_1014181453_texture_fbx.zip",
+      "archiveBytes": 65632104,
+      "archiveSha256": "9578f48a58ef8a619e4566dbe85514d621cd0e3ffef7f4b112789013c5d03426",
+      "fbx": "Meshy_AI_Cathexis_Mask_Grace_8_1014181453_texture.fbx",
+      "fbxSha256": "2ba91c1a1cd565119a5f38cdadb498b7e617fcf8b2eade74185170af86242d84",
+      "triangles": 8128,
+      "meshes": 1,
+      "materials": 1,
+      "skinJoints": 0,
+      "clips": 0,
+      "unitMeters": 0.01,
+      "min": [
+        -0.700753,
+        -0.950907,
+        -0.495601
+      ],
+      "max": [
+        0.701066,
+        0.950009,
+        0.493793
+      ]
+    },
+    {
+      "id": "mechanism-grimace",
+      "archive": "Meshy_AI_Cathexis_Mechanism_Gr_1014181512_image-to-3d-texture_fbx.zip",
+      "archiveBytes": 160738077,
+      "archiveSha256": "7e9905065a3d186958c9180196e1d94b78e257fc62485a90f0aca8a01a01c9f1",
+      "fbx": "Meshy_AI_Cathexis_Mechanism_Gr_1014181512_image-to-3d-texture.fbx",
+      "fbxSha256": "f338666b1a82e54f2ba9651d4e73ee9ad2eb1abe23d623aecfa391ff15034817",
+      "triangles": 1992300,
+      "meshes": 1,
+      "materials": 1,
+      "skinJoints": 0,
+      "clips": 0,
+      "unitMeters": 0.01,
+      "min": [
+        -0.685207,
+        -0.952058,
+        -0.413831
+      ],
+      "max": [
+        0.684438,
+        0.950701,
+        0.413153
+      ]
+    },
+    {
+      "id": "mechanism-fury",
+      "archive": "Meshy_AI_Cathexis_Mechanism_Fu_1014181537_image-to-3d-texture_fbx.zip",
+      "archiveBytes": 170132766,
+      "archiveSha256": "ce6b77f4f11c9475190e03a8ec0348aa750dad7de9fd7d5e9777ca1b4ef99444",
+      "fbx": "Meshy_AI_Cathexis_Mechanism_Fu_1014181537_image-to-3d-texture.fbx",
+      "fbxSha256": "138232fedcfa4b17c1e42f4708468999ba14f61b3bf7edc15180c455a0dbe102",
+      "triangles": 2123714,
+      "meshes": 1,
+      "materials": 1,
+      "skinJoints": 0,
+      "clips": 0,
+      "unitMeters": 0.01,
+      "min": [
+        -0.655851,
+        -0.951722,
+        -0.511728
+      ],
+      "max": [
+        0.655375,
+        0.950985,
+        0.515368
+      ]
+    },
+    {
+      "id": "mechanism-distress",
+      "archive": "Meshy_AI_Cathexis_Mechanism_Di_1014181608_image-to-3d-texture_fbx.zip",
+      "archiveBytes": 136528707,
+      "archiveSha256": "5fbd2e4e7e0f34e928168203fbd3e51406410c1fded02e2472690b2f4121b2ba",
+      "fbx": "Meshy_AI_Cathexis_Mechanism_Di_1014181608_image-to-3d-texture.fbx",
+      "fbxSha256": "2202d8520d73ddab1a9b31f347eef012d5709cd3fdd4f7534f9079e4c398da99",
+      "triangles": 1291824,
+      "meshes": 1,
+      "materials": 1,
+      "skinJoints": 0,
+      "clips": 0,
+      "unitMeters": 0.01,
+      "min": [
+        -0.656949,
+        -0.9524,
+        -0.445726
+      ],
+      "max": [
+        0.65648,
+        0.950978,
+        0.440165
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "body",
+      "label": "Body · accepted v2 A-pose",
+      "sourceTriangles": 51034,
+      "triangles": 51034,
+      "vertices": 75869,
+      "bytes": 5695824,
+      "sha256": "aeba362417181f3aa0c5a19526a3d49a80ef408a9c51ee11341ad172cd6701a8",
+      "sourceArchive": "Cathexis_Body_v2_50k.zip",
+      "sourceSha256": "e897cee07618259637845002928dabb6afab336d5847239b42627b6fe5709b38",
+      "sourceBounds": {
+        "min": [
+          -0.625555,
+          -0.951479,
+          -0.257363
+        ],
+        "max": [
+          0.624205,
+          0.948759,
+          0.26323
+        ]
+      },
+      "displayScale": 0.9998747525309988,
+      "textureSize": 2048,
+      "normalMap": false,
+      "skinJoints": 0,
+      "clips": 0,
+      "derived": false,
+      "note": "Owner-accepted v2 body and rear skirt. Unrigged; the 50k export still lacks a matching normal map."
+    },
+    {
+      "id": "grace-3k",
+      "label": "Grace · 3k candidate",
+      "sourceTriangles": 3058,
+      "triangles": 3058,
+      "vertices": 4358,
+      "bytes": 782140,
+      "sha256": "79ba6f535ef190c10289b6ea814bdb8ac1bea5ba56a926dd93ec8fb5dde1052d",
+      "sourceArchive": "Meshy_AI_Cathexis_Mask_Grace_3_1014181434_texture_fbx.zip",
+      "sourceSha256": "b6683dbb89dcdf61ecae1715774069b873f097aa2556dcbb68eb14f0f4cbffe9",
+      "sourceBounds": {
+        "min": [
+          -0.699795,
+          -0.950907,
+          -0.495601
+        ],
+        "max": [
+          0.697911,
+          0.950009,
+          0.493793
+        ]
+      },
+      "displayScale": 0.9995181270503273,
+      "textureSize": 1024,
+      "normalMap": false,
+      "skinJoints": 0,
+      "clips": 0,
+      "derived": false,
+      "note": "Source geometry retained. Compare both Grace versions from the same camera."
+    },
+    {
+      "id": "grace-8k",
+      "label": "Grace · 8k candidate",
+      "sourceTriangles": 8128,
+      "triangles": 8128,
+      "vertices": 10379,
+      "bytes": 1013708,
+      "sha256": "b52577f0839263519f6c339d626f68c18880c57b377dfa12d1079fee0b58cefa",
+      "sourceArchive": "Meshy_AI_Cathexis_Mask_Grace_8_1014181453_texture_fbx.zip",
+      "sourceSha256": "2ba91c1a1cd565119a5f38cdadb498b7e617fcf8b2eade74185170af86242d84",
+      "sourceBounds": {
+        "min": [
+          -0.700753,
+          -0.950907,
+          -0.495601
+        ],
+        "max": [
+          0.701066,
+          0.950009,
+          0.493793
+        ]
+      },
+      "displayScale": 0.9995181270503273,
+      "textureSize": 1024,
+      "normalMap": false,
+      "skinJoints": 0,
+      "clips": 0,
+      "derived": false,
+      "note": "Source geometry retained. Compare both Grace versions from the same camera."
+    },
+    {
+      "id": "mechanism-grimace",
+      "label": "Mechanism · grimace",
+      "sourceTriangles": 1992300,
+      "triangles": 11996,
+      "vertices": 13673,
+      "bytes": 1413904,
+      "sha256": "b791854b87a34da5a892e93aad980a42bcff793ecd1160b6da580fb953797e96",
+      "sourceArchive": "Meshy_AI_Cathexis_Mechanism_Gr_1014181512_image-to-3d-texture_fbx.zip",
+      "sourceSha256": "f338666b1a82e54f2ba9651d4e73ee9ad2eb1abe23d623aecfa391ff15034817",
+      "sourceBounds": {
+        "min": [
+          -0.685207,
+          -0.952058,
+          -0.413831
+        ],
+        "max": [
+          0.684438,
+          0.950701,
+          0.413153
+        ]
+      },
+      "displayScale": 0.9985500002890538,
+      "textureSize": 1024,
+      "normalMap": true,
+      "skinJoints": 0,
+      "clips": 0,
+      "derived": true,
+      "note": "Locally simplified inspection derivative. Source master retained; final remesh and fit pending."
+    },
+    {
+      "id": "mechanism-fury",
+      "label": "Mechanism · fury",
+      "sourceTriangles": 2123714,
+      "triangles": 11986,
+      "vertices": 14210,
+      "bytes": 1521988,
+      "sha256": "b38b68f51568ca361ceecdef589bea179982cb6885416a84cf2ad8226652f929",
+      "sourceArchive": "Meshy_AI_Cathexis_Mechanism_Fu_1014181537_image-to-3d-texture_fbx.zip",
+      "sourceSha256": "138232fedcfa4b17c1e42f4708468999ba14f61b3bf7edc15180c455a0dbe102",
+      "sourceBounds": {
+        "min": [
+          -0.655851,
+          -0.951722,
+          -0.511728
+        ],
+        "max": [
+          0.655375,
+          0.950985,
+          0.515368
+        ]
+      },
+      "displayScale": 0.9985772901450407,
+      "textureSize": 1024,
+      "normalMap": true,
+      "skinJoints": 0,
+      "clips": 0,
+      "derived": true,
+      "note": "Locally simplified inspection derivative. Source master retained; final remesh and fit pending."
+    },
+    {
+      "id": "mechanism-distress",
+      "label": "Mechanism · distress",
+      "sourceTriangles": 1291824,
+      "triangles": 11996,
+      "vertices": 11912,
+      "bytes": 1370156,
+      "sha256": "86bd5b43364f7d5549cac14348fd58a2565c6ce657788e824ea1da1b9c4f4d0c",
+      "sourceArchive": "Meshy_AI_Cathexis_Mechanism_Di_1014181608_image-to-3d-texture_fbx.zip",
+      "sourceSha256": "2202d8520d73ddab1a9b31f347eef012d5709cd3fdd4f7534f9079e4c398da99",
+      "sourceBounds": {
+        "min": [
+          -0.656949,
+          -0.9524,
+          -0.445726
+        ],
+        "max": [
+          0.65648,
+          0.950978,
+          0.440165
+        ]
+      },
+      "displayScale": 0.998225260563062,
+      "textureSize": 1024,
+      "normalMap": true,
+      "skinJoints": 0,
+      "clips": 0,
+      "derived": true,
+      "note": "Locally simplified inspection derivative. Source master retained; final remesh and fit pending."
+    }
+  ],
+  "scope": "Separate unrigged assets. Each normalized to 1.9 units for isolated inspection, not shared physical dimensions. No fitted assembly, animation, mechanical jaw or gameplay integration.",
+  "acceptance": {
+    "body": "Owner accepted v2 appearance and skirt on 2026-10-14, including regenerated body detail differences.",
+    "motion": "Not tested: no rig or animation.",
+    "retirement": "v1 removed from runtime delivery and selection at owner request."
+  }
+}

@@ -1,0 +1,47 @@
+STAGE 1 — RIG VALIDATION, BEFORE THE LARGE BANK
+
+Use the approved Stiletto_Body_v1 delivery mesh without regenerating its geometry, materials or proportions. It is a humanoid body with NO visible hands: forearms end in tool sockets. Try standard humanoid/biped auto-rigging with a Mixamo-compatible export skeleton. Terminal hand bones are acceptable if required by the template; no visible palms or fingers should be added. The tools will be attached rigidly to forearm sockets offline, not deformed by hand or finger animation.
+
+If the handless body cannot be rigged reliably, explain the actual failure and preserve the neutral model. Do not silently replace it with a handed robot. We can finish or transfer the rig offline.
+
+Preserve an unanimated neutral rigged A-pose. Apply this small test set to the SAME rig:
+- Action 0 — Idle — export alias stiletto_idle_source.
+- Action 115 — Quick_Walk — export alias stiletto_quick_walk_source. Preserve any original root motion and report it; do not claim it is in-place without checking.
+- Action 576 — Idle_Turn_Left — export alias stiletto_turn_left_source.
+
+Export the rigged character ON, with textures, as GLB; also export FBX for offline animation/skin cleanup where available. Keep action IDs in filenames. Export neutral rig separately. If a combined GLB is available, also provide a list of the actual embedded clip names and durations. Do not treat a visible animation in the web viewer as proof it exists in the downloaded file.
+
+Do not claim two-blade clearance: no blades are attached in this rigging test. We will test the assembled character and all transitions in our viewer.
+
+STAGE 2 — CANDIDATE BANK AFTER THE RIG TEST PASSES
+
+Apply these to the SAME approved rig. They are motion sources for review and cleanup, not approval to use them unmodified in gameplay:
+- Action 2 — Alert — stiletto_alert_source.
+- Action 692 — walking_2_inplace — stiletto_grounded_walk_source (alternative to Quick_Walk).
+- Action 644 — Lean_Forward_Sprint_inplace — stiletto_sprint_source.
+- Action 586 — Idle_Turn_Right — stiletto_turn_right_source.
+- Action 47 — Listening_Gesture — stiletto_listening_source.
+- Action 51 — Shouting_Angrily — stiletto_reprimand_source.
+- Action 311 — Stand_Talking_Angry — stiletto_argument_source.
+- Action 317 — Shrug — stiletto_dismissive_source.
+- Action 404 — Crouch_and_Step_Back — stiletto_recoil_source.
+- Action 637 — Injured_Walk_inplace — stiletto_injured_walk_source.
+- Action 172 — Electrocution_Reaction — stiletto_electrical_hit_source.
+- Action 181 — Electrocuted_Fall — stiletto_electrical_collapse_source.
+- Action 365 — Kneel_on_One_Knee_and_Stand — stiletto_kneel_source (legs/torso reference; hands on thigh need blade-aware correction).
+
+Do not substitute or silently rename:
+- Confident_Strut_inplace (621) sweeps an arm across the chest in the official preview. Optional style study only.
+- Angry_Stomp (26) folds the arms. Optional lower-body source, not a ready blade-arm emote.
+- Left_Slash (97) is a sword-and-shield stance in the preview; it does not represent a forearm tool cutting a conveyor obstruction.
+- Double_Blade_Spin (91) previews a held double-ended weapon. It is NOT a pair of integrated forearm blades.
+- Confused_Scratch (36), hand rubbing (318), hand-on-hip, neck/face touching, clapping and chest pounding are unsuitable stock motions for blade-equipped STILETTO.
+- Hot Walk remains Cathexis's intended default gait; do not transfer that naming/character choice to STILETTO.
+
+REPORT
+
+For each exported file provide action ID, original catalog name, filename, embedded animation names/durations, skeleton template, whether the character mesh and skin are included, root translation/rotation, and any known issues. Preserve original exports; do not claim rigid armour weights or collision cleanup unless actually performed.
+
+CUSTOM MOTIONS
+
+We need tool-dock exchange, forearm-tool cutting, short seam welding, impatient outward directives, blade-aware idle and a paired worker recoil. These are NOT satisfied by random combat or hand-grip presets. If your Agent workflow exposes actual Text-to-Motion, identify that capability and its output before proceeding. Meshy's current public API documents Text-to-Motion separately; its availability through this Agent workflow is not assumed. Exact prop contacts and blade clearance will still be finished offline.

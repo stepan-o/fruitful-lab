@@ -3,11 +3,12 @@ import type { Vector3 } from '@babylonjs/core/Maths/math.vector';
 
 export type ReviewCameraAction = 'reset' | 'closer' | 'farther';
 const defaults = { alpha: -Math.PI / 2, beta: 1.36, distance: 3.8 };
-const clamp = (n: number) => Math.max(3.2, Math.min(7, n));
+
 
 /** Inspection orbit is independent of fixed CCTV presets and animation time. */
 export function createReviewOrbit(camera: ArcRotateCamera, canvas: HTMLCanvasElement, invalidate: () => void) {
-  let pose = { ...defaults }, active = false, scale = 1;
+  let pose = { ...defaults }, active = false, scale = 1, minimum = 3.2, resetDistance = defaults.distance;
+  const clamp = (n: number) => Math.max(minimum, Math.min(7, n));
   function capture() {
     if (active) pose = { alpha: camera.alpha, beta: camera.beta, distance: clamp(camera.radius / scale) };
   }
@@ -30,16 +31,17 @@ export function createReviewOrbit(camera: ArcRotateCamera, canvas: HTMLCanvasEle
     attach(target: Vector3) {
       scale = Math.max(1, .65 / (canvas.clientWidth / Math.max(1, canvas.clientHeight)));
       camera.lowerBetaLimit = .25; camera.upperBetaLimit = 1.65;
-      camera.lowerRadiusLimit = 3.2 * scale; camera.upperRadiusLimit = 7 * scale;
+      camera.lowerRadiusLimit = minimum * scale; camera.upperRadiusLimit = 7 * scale;
       camera.panningSensibility = 0; // Keep the inspected subject as the orbit centre.
       camera.setTarget(target, false, true, true);
       apply(); camera.attachControl(canvas, false); active = true;
     },
+    framing(distance: number, minDistance: number) { capture(); minimum = Math.max(.25, minDistance); resetDistance = clamp(distance); pose.distance = resetDistance; if (active) apply(); },
     distance(n: number) { capture(); pose.distance = clamp(n); if (active) apply(); },
     action(action: ReviewCameraAction) {
       if (!active) return;
       capture();
-      if (action === 'reset') pose = { ...defaults };
+      if (action === 'reset') pose = { ...defaults, distance: resetDistance };
       else pose.distance = clamp(pose.distance * (action === 'closer' ? .88 : 1 / .88));
       apply();
     },

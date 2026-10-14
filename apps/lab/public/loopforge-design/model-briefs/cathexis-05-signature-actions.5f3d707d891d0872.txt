@@ -1,0 +1,47 @@
+CATHEXIS — signature actions to author after the actual body and masks exist
+
+These are custom briefs, NOT verified catalog entries. If your Agent interface cannot generate custom motions, state that and leave them pending. The Meshy Text-to-Motion API is a possible separate experiment; we can also author these offline. Neither route guarantees exact mask contact or costume clearance.
+
+1. POISED IDLE (4–6 seconds, loop)
+She settles onto one hip, raises her chin a fraction, slowly checks the audience and makes one small dismissive wrist flourish. Hold still long enough for the pause to feel intentional. Return seamlessly. No ordinary worker fidget or neutral breathing loop.
+
+2. MASK REVEAL (5–7 seconds, one-shot)
+She holds eye contact, raises a hand to the temple latch, grips the faceplate, lifts it forward clear of the head and lowers it just beside her shoulder. Hold the exposed mechanism for a beat. Hand contact and the mask's rigid trajectory must be authored against the fitted prop.
+
+3. MASK EXCHANGE (6–9 seconds, staged at a theatre rack)
+She lifts the old mask, seats it on a known rack hook, selects another and settles it onto the head rim with a small decisive head tilt. Finish in a different composed pose. Keep both prop positions continuous; no invisible disappearing mask or hand through face.
+
+4. INVITE ONE WORKER (4–6 seconds)
+A measured turn toward one person, palm opened low, a teasing beckon, then an expectant hold. The worker may approach or refuse; Cathexis must not clap or celebrate regardless of the response. Exact partner placement is an offline paired scene.
+
+5. DISMISS (3–4 seconds)
+She looks the recipient up and down, tips her chin, turns one wrist in a small cutting dismissal and turns away before they finish answering. Precision and a held pause, not frantic waving.
+
+6. HOLD THE ROOM / RALLY (6–8 seconds)
+She collects attention with a small raised hand, opens her arms in a measured expansion, singles out an imagined listener and ends on one emphatic cue. Strong silhouette readable from CCTV. Crowd response is separate and driven by the simulation.
+
+7. GRIEF AS PERFORMANCE (5–7 seconds)
+A hand suspended near the chest, a long bowed head, a controlled opening toward the audience as if asking them to witness a loss. The mask supplies the face; the body supplies the performance. No guaranteed sincerity encoded in the clip.
+
+8. THE LINE IS BENEATH ME (5–7 seconds)
+At a waist-height station she approaches reluctantly, touches the object with exaggerated distaste, recoils and inspects or wipes dirt from her fingers. Provide a continuation that resumes the attempt with obvious resentment, and a separate refusal/appeal ending. This is not automatically a failed task: original conveyor success art still shows her dirty and angry. Exact object contact and task outcome remain our responsibility.
+
+9. LOSING THE AUDIENCE (6–8 seconds)
+An invitation receives no response. She repeats it more broadly, freezes when it fails, touches the mask as if checking it and lets the pose collapse. Preserve a readable attempt and recovery before any larger tantrum.
+
+10. OFFENDED EXIT (locomotion with a stationary gesture)
+A dismissive turn and look back lead into the approved Hot Walk. She does not run, hurry into another gait, or enter alert. Preserve attitude, heel and skirt clearance; authored starts/stops/turn blends must connect to Hot Walk. If danger prevents a safe walking route, the simulation must handle that situation rather than silently replacing the gait.
+
+11. CONTAMINATED AT THE BREWERY (5–7 seconds)
+She withdraws a sticky hand from a known vat-side task, holds it far away from the ivory dress, spreads the fingers and inspects the residue. A sharp recoil becomes an angry glance at a supervisor or worker. Keep a safe grasp/contact phase on the other hand if bracing against the vat. Author hand placement and the partner's position offline. Do not substitute fighting or a happy grin.
+
+12. THE GALLERY IS TOLERABLE (5–7 seconds, loop with contact markers)
+She makes a precise adjustment at the loom, rests her head languidly against one hand, checks the result with apparent boredom, and returns to a small exact adjustment. Fine motor skill is visible even when enthusiasm is absent. Match the actual loom handles; no generic hammering or heavy lifting.
+
+13. SECURITY IS NOT MY CONCERN (4–6 seconds, staged exit)
+She glances at a form, lets it fall with a dismissive wrist, turns her back on the checkpoint and leaves with an offended theatrical stride. The paper remains a real prop with a defined release point. Worker movement through the unattended post is a separate simulation response.
+
+14. OVERWHELMED AT THE CONVEYOR (4–6 seconds)
+The poised stance contracts. Both hands rise to the sides of the crown, shoulders lift and she holds a furious distressed grimace, then tries to regain composure. No smiling, dancing, head impact or damage implied. Keep hand/crown, hair and forearm clearances. A separate angry confrontation can follow if the simulation selects it.
+
+These scenes need a small finger-pose library and costume tracks. No physical prop exchange is accepted solely because the bare skeleton resembles the action. Keep source takes and cleaned derivatives separate. Dirt follows actual exposure and can persist into a composed gesture; emotional recovery does not clean or repair the robot.

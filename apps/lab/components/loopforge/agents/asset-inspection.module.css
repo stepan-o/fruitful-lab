@@ -1,0 +1,3 @@
+.controls .compare{display:grid;gap:8px;grid-column:1/-1}.compare>span{font:11px/1.5 monospace;color:#b8a67b}.notes{margin:4px 0 10px;padding-left:18px;font-size:12px;line-height:1.7;color:#b9c4b9}.notes li{margin-bottom:9px}.controls label:has(input[type="checkbox"]){min-height:44px}.controls select{width:100%}
+
+@media(max-width:800px){.controls>label{grid-column:1/-1}}

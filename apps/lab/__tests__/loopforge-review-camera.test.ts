@@ -37,3 +37,13 @@ test('zoom buttons remain bounded and cannot alter fixed CCTV framing',()=>{
   orbit.suspend();camera.radius=10;orbit.action('reset');expect(camera.radius).toBe(10);
   expect(camera.detachControl).toHaveBeenCalled();
 });
+test('portrait framing supports close inspection and restores full-body bounds',()=>{
+  const {camera,target,orbit}=fixture();orbit.attach(target);
+  camera.alpha=.4;camera.radius=5;orbit.suspend();
+  orbit.framing(.85,.35);orbit.attach(target);
+  expect(camera.alpha).toBe(.4);expect(camera.radius).toBe(.85);expect(camera.lowerRadiusLimit).toBe(.35);
+  for(let i=0;i<30;i++)orbit.action('closer');expect(camera.radius).toBe(.35);
+  orbit.action('reset');expect(camera.radius).toBe(.85);
+  orbit.suspend();orbit.framing(3.8,3.2);orbit.attach(target);
+  expect(camera.radius).toBe(3.8);expect(camera.lowerRadiusLimit).toBe(3.2);
+});

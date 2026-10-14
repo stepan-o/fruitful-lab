@@ -16,4 +16,10 @@ export const stilettoReviewAsset:ProductionReviewAsset={
  description:'Accepted prototype appearance and blade acting. Idle/alert follow their visible reading; attack and threat are distinct interaction candidates. Original clips and technical contact flags remain available.',
  checks:['Original / corrected at the same timestamp','2,335 corrected poses checked at 120 Hz','Blade, body and flat-floor review','Remaining leg contacts, blends and paired encounters']
 };
-export const productionReviewAssets:readonly ProductionReviewAsset[]=[limenReviewAsset,workerReviewAsset,stilettoReviewAsset];
+export const cathexisReviewAsset:ProductionReviewAsset={
+ id:'cathexis-intake',shortName:'CATHEXIS',navDetail:'Body · Grace · mechanical faces',title:'CATHEXIS · accepted body and face studies',revision:'body-v2 / Grace 3k & 8k / three mechanisms',
+ route:'/stepanoskin/loopforge/play/asset-review/cathexis',conceptRoute:'/stepanoskin/loopforge/design?model=cathexis#model-briefs',status:'Body accepted · rigging next',
+ description:'Accepted v2 body with the completed rear skirt, two Grace masks and three mechanical expressions. Inspect surfaces and camera scale before fitting or rigging.',
+ checks:['Body and head close inspection','Grace 3k / 8k at the same camera angle','Three reduced mechanical-face studies','No animation or fitted assembly yet']
+};
+export const productionReviewAssets:readonly ProductionReviewAsset[]=[limenReviewAsset,workerReviewAsset,stilettoReviewAsset,cathexisReviewAsset];

@@ -126,7 +126,7 @@ export default function EngineNotes() {
           Thrum have awaiting-model entries. Immutable runtime hashes tie
           collision reports to the exact reviewed asset; source masters stay
           outside deployment bundles.</p>
-        <p>Current character adapters preserve their specialized controls.
+        <p>Close inspection supports mouse/touch orbit, scroll/pinch zoom and reset; CCTV presets stay fixed. The older rejected-model action fixture is archived separately. Current character adapters preserve their specialized controls.
           The next intake should extract a shared player shell. Review status
           never grants a simulation action or changes a run.</p>
         <p><Link href="/stepanoskin/loopforge/play/asset-review">Character review library →</Link>{' · '}

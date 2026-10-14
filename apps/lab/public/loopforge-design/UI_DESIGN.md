@@ -1,6 +1,6 @@
 # Loopforge UI design
 
-12 October 2026 · prebuilt world and agent character direction
+14 October 2026 · current character reviews and camera controls
 
 Four integrated console skins are implemented: Foundry desk, Broadcast control, Dispatch office and Obedience organ. Only those four appear in Settings; the old six studies remain historical and their focused-screen materials remain internal. Start at the console, Answer leadership, Acknowledge quota, then Choose adviser. Hardware uses registered CSS fragments cropped from clean plates, not separate alpha handsets. Local visual and full-flow checks passed; the hosted first shift was also completed. All four dedicated portrait plates are generated, catalogued and implemented. Owner review remains pending. Adaptive wide, portrait, small/short and compact-landscape modes preserve the selected camera, run and pending decision through resize. That describes the implemented baseline. The 9 October conveyor proposal makes a common cinematic 3D factory the operating surface of the next prototype, with spatial machinery and room puzzles. Existing focused decision interfaces remain; the new room simulation is not implemented by this study.
 
@@ -2791,7 +2791,7 @@ No command, balance, transport schema or deterministic kernel changes. End-to-en
 
 **Character art review — 12 October:** the owner rejected the production-test bodies as clumsy, overly spherical and poorly textured. The import/action pipeline remains useful; its meshes are engineering stand-ins. The next pass is one deliberately modelled, UV-unwrapped and textured mechanical worker, reviewed as an actual animated asset before variants or supervisors. Blender-led authoring is recommended; image-to-3D is an optional starting-mesh experiment with the same cleanup and acceptance gates. See [the revised character direction](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md#model-direction-reset-after-production-review).
 
-**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Main-play figures remain placeholders. The separate `/play/agent-test` review now supplies offline-authored GLB worker/LIMEN/STILETTO rigs, paired contacts and a bounded deterministic trace; general BDI and main-game integration remain open. See [the production-test record](production/AGENT_PRODUCTION_TEST.md).
+**Current direction — 12 October 2026:** The world is prebuilt; all player construction and the night-zero installation tutorial are removed. First entry is the morning console and mandatory leadership call. [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) defines the next art/animation/BDI pipeline and supersedes earlier building references in this record. Main-play figures remain placeholders. The current `/play/asset-review` library supplies the new LIMEN, Worker 01 and STILETTO models, with close orbit inspection and fixed CCTV views. Their paired contacts, crowd performance, general BDI and main-game integration remain open. `/play/agent-test` is a historical engineering fixture with rejected placeholder bodies; its measurements cannot certify the new rigs. See [the common review contract](production/CHARACTER_REVIEW_STRUCTURE.md).
 
 
 **11 October — current first-turn integration:** Main play now uses a separately versioned first-turn kernel for night prebuilt-floor calibration → mandatory mandate → adviser/assignment → fixed-step room operation → paid permanent dispatch. One persistent Babylon scene supplies the room views. The old first-shift profile and standalone factory fixture remain regression/calibration tools. [Current implementation contract](FIRST_TURN_ENGINE.md) · [Execution checklist](FIRST_TURN_BUILD_PLAN.md). Earlier implementation descriptions below are historical where they conflict with this delivery.
@@ -3397,9 +3397,13 @@ See [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRE
 
 # Agents: character, movement and contact
 
-Current candidate: [Meshy LIMEN review](production/LIMEN_MESHY_REVIEW.md), with source/derivative provenance and explicit clip/material limits. It does not replace main-play agents yet. The updated body and separate blade masters are verified in S3. The review bench now assembles the v2 body, simplified rigid housing and procedural cyan energy. [LIMEN’s blade identity contract](LIMEN_BLADE_DESIGN.md) makes its asymmetric cyan silhouette and controlled energy motion the primary recognition cue in dark CCTV views. The first assembly is implemented. Contact poses, action-driven bursts and measured crowd recognition/performance remain open.
+14 October 2026. Current character review and integration direction.
 
-12 October 2026. Current direction; implementation status is explicit below. Companion to [the first-turn contract](FIRST_TURN_ENGINE.md) and [the room scale plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
+The [asset review library](/stepanoskin/loopforge/play/asset-review) is the entry point for **LIMEN, Worker 01 and STILETTO’s new Meshy models**. Each has its own equipment/motion controls, six shared review gates and factory/CCTV inspection. Mouse/touch orbit belongs to close inspection; CCTV remains fixed. Cathexis, Rivet Witch and Thrum await models.
+
+LIMEN’s body, mount and energy direction have owner acceptance. Worker 01 has 19 motion candidates. STILETTO has two mounted blades, 18 original clips and five corrected arm alternatives. Exact inventories and open issues live in their [review records](production/CHARACTER_REVIEW_STRUCTURE.md). The old spherical cast is a rejected engineering fixture, not the current production model set. Main play still uses placeholders; paired acting, crowd performance and gameplay integration with these new rigs remain to build.
+
+Companion to [the first-turn contract](FIRST_TURN_ENGINE.md) and [the room scale plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
 
 ## Decision
 
@@ -3411,17 +3415,17 @@ Keep Babylon 9.30.0. The best next step is authored, rigged 3D characters in the
 
 ## Model direction reset after production review
 
-12 October, owner review: the production-test models are too clumsy, too spherical and insufficiently textured. **The current cast fails the visual gate.** Keep its deterministic action fixture, import/validation pipeline and performance evidence as engineering tools. Do not expand or integrate these bodies as the accepted character style.
+12 October, owner review: the production-test models are too clumsy, too spherical and insufficiently textured. **That earlier cast failed the visual gate.** Keep its deterministic action fixture, import/validation pipeline and performance evidence as engineering tools. Do not expand or integrate these bodies as the accepted character style.
 
 ### What the test got wrong
 
 The original art has connected mechanical anatomy: shaped shells over a narrower frame, recessed bearings, layered plates and purposeful empty space. LIMEN has a skull, fitted security armour and equipment; STILETTO has a continuous slim torso, long tapered limbs and swept forearm blades. Workers have coherent chest/pelvis assemblies and capable hands. Curved armour is appropriate; repeated isolated balls and capsules defining the whole body are not.
 
-The current `scripts/characters/author.mjs` uses scaled spheres for chest, head, limb covers and most joints. Changing their dimensions does not establish convincing part construction. Its texture coordinates project X/Y across every surface, collapsing depth-oriented faces, and `surface.mjs` adds a shared 256-pixel noise/scratch pattern. Nearly all body surfaces share one metallic response. Additional scratches, bevel segments or brighter lighting cannot repair those shape and material decisions.
+The legacy `scripts/characters/author.mjs` uses scaled spheres for chest, head, limb covers and most joints. Changing their dimensions does not establish convincing part construction. Its texture coordinates project X/Y across every surface, collapsing depth-oriented faces, and `surface.mjs` adds a shared 256-pixel noise/scratch pattern. Nearly all body surfaces share one metallic response. Additional scratches, bevel segments or brighter lighting cannot repair those shape and material decisions.
 
 ### Recommended replacement: authored mechanical characters
 
-Use **Blender-led mesh and material authoring**, with image-to-3D only as an optional candidate source. Blender is the production workspace, not an automatic quality upgrade: recreating the same sphere recipe there would fail for the same reason. Art-directed mesh editing, coherent surface maps and repeated actual-model review are the necessary work. Browser-side procedural code remains useful for assembly, state variation and animation; it should not invent the final bodies.
+Use the owner’s **Meshy-generated bodies and catalog motions**, then targeted offline cleanup and contact authoring where the review finds gaps. Blender or an equivalent DCC can provide that cleanup; it is not an automatic quality upgrade: recreating the same sphere recipe there would fail for the same reason. Art-directed mesh editing, coherent surface maps and repeated actual-model review are the necessary work. Browser-side procedural code remains useful for assembly, state variation and animation; it should not invent the final bodies.
 
 | Body feature | Required construction |
 | --- | --- |
@@ -3440,13 +3444,13 @@ Hard shell pieces follow their rigid mechanical bones. Model articulation cleara
 
 | Route | Role in this project | Main constraint |
 | --- | --- | --- |
-| Deliberately modelled Blender asset | Recommended production authority: exact shells, articulation, UVs, baked detail and export | Requires actual character-art work and visual iteration; scripting alone does not guarantee it |
-| Multi-view image-to-3D, then Blender cleanup | Optional acceleration experiment using a consistent reference turnaround | Generated hidden surfaces, joint separation, hands, texture lighting and animation topology still need review and repair |
+| Targeted Blender/DCC authoring | Correct weights, joints, sockets and contact clips on the selected bodies | Requires actual character-art work and visual iteration; scripting alone does not guarantee it |
+| Meshy multi-view generation, rigging and catalog motion | Current source for the selected LIMEN, Worker 01 and STILETTO candidates | Generated hidden surfaces, joint separation, hands, texture lighting and animation topology still need review and repair |
 | Purchased generic robot or unedited generated mesh | Possible temporary reference/benchmark, not the selected Loopforge cast | A technically usable model can still miss the character completely |
 
-Meshy's current multi-image API supports several views, PBR maps and GLB output; that makes it a plausible candidate experiment, not a proven winner for Loopforge. Hunyuan3D 2.1 provides an alternative shape/PBR pipeline; its published memory requirements make it a separate offline/GPU production decision. The initial rethink did not select a vendor. The owner subsequently generated and rigged LIMEN in Meshy; its runtime derivative is now reviewed at `/stepanoskin/loopforge/play/agent-test/limen`. Blender was not found on this task's shell PATH. Establish that toolchain before claiming automated mesh production is available.
+Meshy's current multi-image API supports several views, PBR maps and GLB output; that makes it a plausible candidate experiment, not a proven winner for Loopforge. Hunyuan3D 2.1 provides an alternative shape/PBR pipeline; its published memory requirements make it a separate offline/GPU production decision. The owner subsequently selected Meshy and generated LIMEN, Worker 01 and STILETTO; their runtime derivatives are in the shared review library. Blender was not found on this task's shell PATH. Establish that toolchain before claiming automated mesh production is available.
 
-### Next production gate: one worker, fully resolved
+### Intake gates for each candidate
 
 1. **Reference:** resolve one worker's front, side and back in a consistent neutral pose, using existing room art. Define body proportions and joint clearances. A new illustration is a specification, not proof of a finished model.
 2. **Shape:** author the complete worker. Review actual mesh renders in neutral grey from front, rear, side and three-quarter views. It must already look mechanical with textures and glow disabled. Reject the silhouette before spending time on surface polish.
@@ -3520,7 +3524,7 @@ One Babylon engine, one active room and one pose update feed all three CCTV pass
 
 ## Asset package and production pipeline
 
-Use Blender or equivalent offline authoring for measured turnaround → low-poly silhouette → UV/material bake → rig → contact clips → GLB export → actual Babylon review. Image generation can help designs and surface art; it cannot guarantee a usable rig, topology, correct unseen surfaces or synchronized contacts by itself. The owner has now selected Meshy for a first LIMEN candidate; worker and remaining-supervisor authoring decisions are still open.
+Use Blender or equivalent offline authoring for measured turnaround → low-poly silhouette → UV/material bake → rig → contact clips → GLB export → actual Babylon review. Image generation can help designs and surface art; it cannot guarantee a usable rig, topology, correct unseen surfaces or synchronized contacts by itself. Meshy supplies the current LIMEN, Worker 01 and STILETTO candidates. The remaining supervisors follow the same intake; exact contact animation still needs offline work against real props.
 
 A character prefab needs a versioned source/model, compatible rig ID, mesh/material detail tiers, named clips and their phase ranges, foot/hand/look/tool sockets, bounds, semantic appearance states and dependencies. A machine prefab needs approach/stand/contact slots and prop sockets. Simulation definitions own slot capacity, action duration, authority and effects separately. Validate scale, coordinate conversion, finite transforms, sockets, clip coverage, legal transitions, prop handoffs, hash integrity and disposal. A cosmetic asset revision cannot change production balance.
 
@@ -3532,11 +3536,11 @@ The immutable asset manifest/CDN workflow now accepts self-contained GLB model e
 2. Walk, turn, wait, inspect/release and one complete cradle transfer, plus one supervisor→worker interaction. Prove three-camera contacts before expanding the repertoire.
 3. Deterministic action reservations, interruption/cancellation and causal trace for that slice. Replay must preserve the same agents and outcomes through every camera/quality setting.
 4. Compare skeletal and baked background paths at 10, 24 and 100 agents. Measure whole-frame p50/p95/p99, interaction latency, draw calls, all-pass triangles, decoded texture memory, loading, API/replay cost and repeated room-switch memory. Use the existing visual-scale plan's device targets; claim no universal performance percentage.
-5. Review side by side with original art at actual game size: silhouette, surface response, stride, contacts, paired reactions and compositional hierarchy. Motion must read with badges hidden. Expand to Cathexis, Witch and Thrum only after this slice passes owner review.
+5. Review side by side with original art at actual game size: silhouette, surface response, stride, contacts, paired reactions and compositional hierarchy. Motion must read with badges hidden. Continue the remaining supervisors’ individual intakes in parallel with this integration gate; their availability does not imply paired acting is complete.
 
-**Production test implemented — 12 October:** `/stepanoskin/loopforge/play/agent-test` reviews three worker variants, LIMEN and STILETTO in the real Security/Forge scene. Offline geometry/material recipes export validated GLB rigs and named clips. A bounded headless fixture owns paired reservations, gate inspection/release, cradle ownership and supervisor intervention/refusal. The review includes fixed-tick seeking, three cameras, original-art comparison and hybrid/all-skeletal diagnostics at 10/24/100 workers. [Execution and evidence record](production/AGENT_PRODUCTION_TEST.md).
+**Historical engineering fixture — 12 October (rejected bodies):** `/stepanoskin/loopforge/play/agent-test` reviews three worker variants, LIMEN and STILETTO in the real Security/Forge scene. Offline geometry/material recipes export validated GLB rigs and named clips. A bounded headless fixture owns paired reservations, gate inspection/release, cradle ownership and supervisor intervention/refusal. The review includes fixed-tick seeking, three cameras, original-art comparison and hybrid/all-skeletal diagnostics at 10/24/100 workers. [Execution and evidence record](production/AGENT_PRODUCTION_TEST.md).
 
-**Remaining:** replace the visually rejected cast through the worker-first gate above; richer acting, planted locomotion and smooth transitions; general BDI perception/planning/navigation; first-turn integration; dynamic asset loading by cast membership and physical-device certification. The review route eagerly loads its small complete comparison cast (8.69 MiB of raw models/data) so switching paths is a controlled comparison. That is an author-bench exception, not the intended main-game loading policy. Main-play figures remain placeholders. No Blender dependency or KTX2 pipeline is claimed.
+**Remaining:** integrate the new library’s rigs into paired scenes with newly authored contact poses; richer acting, planted locomotion and smooth transitions; general BDI perception/planning/navigation; first-turn integration; dynamic asset loading by cast membership and physical-device certification. The review route eagerly loads its small complete comparison cast (8.69 MiB of raw models/data) so switching paths is a controlled comparison. That is an author-bench exception, not the intended main-game loading policy. Main-play figures remain placeholders. No Blender dependency or KTX2 pipeline is claimed.
 
 **Economy consequence:** removing construction removes the prototype's immediate cash sink. Keep the existing opening funds and delivery income honestly; do not invent a replacement purchase or charge for prebuilt fixtures. Later funding/unlocks, payroll and engineering need a separate balance pass. Adviser choice, assignments, process controls, responses and permanent allocation still carry first-turn agency.
 

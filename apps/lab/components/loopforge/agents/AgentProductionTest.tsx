@@ -31,7 +31,8 @@ export default function AgentProductionTest(){
  function saveEvidence(){const data={recordedAt:new Date().toISOString(),fixture:state.current.version,config,mode,view:projectAgentTest(state.current),report,castReport,viewport:{width:window.innerWidth,height:window.innerHeight,dpr:window.devicePixelRatio},trace:state.current.trace};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='loopforge-agent-test.json';a.click();URL.revokeObjectURL(url);}
  const view=projectAgentTest(snapshot),ref=reference[referenceKind],image=ref.variants.find(v=>v.width>=960)??ref.variants.at(-1)!;
  return <main className={styles.page}>
-  <header className={styles.header}><div><Link href='/stepanoskin/loopforge/design#agents'>← Character direction</Link><h1>Agents at work<span>Production test / 01</span></h1></div><Link href='/stepanoskin/loopforge/play'>Producer console ↗</Link></header>
+  <header className={styles.header}><div><Link href='/stepanoskin/loopforge/design#agents'>← Character direction</Link><h1>Legacy agent fixture<span>12 October / rejected placeholder cast</span></h1></div><Link href='/stepanoskin/loopforge/play'>Producer console ↗</Link></header>
+  <p className={styles.archiveNotice}><strong>Historical engineering fixture.</strong> These older bodies were rejected for visual quality. This test preserves reservations, prop ownership and replay experiments; it does not review the new Meshy cast. <Link href='/stepanoskin/loopforge/play/asset-review'>Open the current model library →</Link></p>
   <div className={styles.workspace}>
    <section className={styles.stage} aria-label='Factory character review'>
     <canvas ref={canvas} aria-label='Animated character review in the actual factory' />
@@ -41,7 +42,7 @@ export default function AgentProductionTest(){
    </section>
    <aside className={styles.controls} aria-label='Production test controls'>
     <span className={styles.kicker}>The same truth. Three cameras.</span>
-    <Link className={styles.modelLink} href="/stepanoskin/loopforge/play/agent-test/limen">New · Inspect the Meshy LIMEN model →</Link><h2>Watch the difference.</h2><p>A bounded production take. These interactions do not change your game save.</p>
+    <Link className={styles.modelLink} href="/stepanoskin/loopforge/play/asset-review">Current character models →</Link><h2>Inspect the action fixture.</h2><p>A bounded engineering take with old placeholder models. These interactions do not change your game save.</p>
     <label>Interaction<select value={config.kind} disabled={!ready} onChange={e=>reset({...config,kind:e.target.value as TestConfig['kind']})}><option value='gate'>01 · Inspection & release</option><option value='transfer'>02 · Cradle transfer</option><option value='intervention'>03 · Supervisor & worker</option></select></label>
     <div className={styles.duo}><button aria-pressed={config.supervisor==='limen'} disabled={!ready} onClick={()=>reset({...config,supervisor:'limen'})}>LIMEN</button><button aria-pressed={config.supervisor==='stiletto'} disabled={!ready} onClick={()=>reset({...config,supervisor:'stiletto'})}>STILETTO</button></div>
     <p className={styles.intent}>{config.supervisor==='limen'?'Check the worker. Hold the queue. Release on procedure.':'Cut the delay. Move the worker. Keep the line fed.'}</p>

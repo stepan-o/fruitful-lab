@@ -8,6 +8,7 @@ import {parseManifest,imageAsset} from '@/lib/assets/types';
 import AssetImage from '@/components/media/AssetImage';
 import ReviewNavigation from './ReviewNavigation';
 import ReviewChecklist from './ReviewChecklist';
+import ReviewCameraControls from './ReviewCameraControls';
 import type {FactoryScene,SceneReport} from '../factory-study/scene';
 import type {loadStiletto,StilettoSurface} from './stiletto-model';
 import styles from './agent-test.module.css';
@@ -21,7 +22,7 @@ export default function StilettoModelReview(){
  const canvas=useRef<HTMLCanvasElement>(null),runtime=useRef<{floor:FactoryScene;model:Puppet}|null>(null);
  const [ready,setReady]=useState(false),[error,setError]=useState(''),[retry,setRetry]=useState(0),[running,setRunning]=useState(false);
  const [id,setId]=useState('Running'),[version,setVersion]=useState<Version>('corrected'),[phase,setPhase]=useState(.2/initial.duration),[speed,setSpeed]=useState(1),[loop,setLoop]=useState(true);
- const [centred,setCentred]=useState(true),[turn,setTurn]=useState(0),[camera,setCamera]=useState<'model'|'cctv'>('model'),[angle,setAngle]=useState(0),[room,setRoom]=useState<'security'|'conveyor'>('security'),[zoom,setZoom]=useState(3.8);
+ const [centred,setCentred]=useState(true),[turn,setTurn]=useState(0),[camera,setCamera]=useState<'model'|'cctv'>('model'),[angle,setAngle]=useState(0),[room,setRoom]=useState<'security'|'conveyor'>('security');
  const [surface,setSurface]=useState<StilettoSurface>('textured'),[lamp,setLamp]=useState(true),[blades,setBlades]=useState<'both'|'left'|'right'|'none'>('both'),[highlight,setHighlight]=useState(false),[report,setReport]=useState<SceneReport|null>(null),[showProof,setShowProof]=useState(false);
  const clip=bank.clips.find(c=>c.id===id),duration=clip?.duration??0,correction=clip?.corrected;
  const resolvedVersion=correction?version:'original';
@@ -50,15 +51,16 @@ export default function StilettoModelReview(){
  function choose(value:string,time=0){play(false);const next=bank.clips.find(c=>c.id===value);const p=next?Math.min(1,Math.max(0,time/next.duration)):0;setId(value);setVersion('corrected');setPhase(p);setLoop(next?.loop??false);runtime.current?.model.loop(next?.loop??false);runtime.current?.model.clip(value+(next?.corrected?'__corrected':''));runtime.current?.model.seek(p);}
  function compare(value:Version){play(false);setVersion(value);runtime.current?.model.clip(id+(correction&&value==='corrected'?'__corrected':''),true);}
  function seek(seconds:number){play(false);const p=duration?Math.min(1,Math.max(0,seconds/duration)):0;setPhase(p);runtime.current?.model.seek(p);}
- function evidence(){const data={revision:bank.revision,file,clip,version:resolvedVersion,seconds:phase*duration,phase,speed,loop,centred,turn,camera,angle,room,surface,lamp,blades,highlight,report,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},auditMethod:bank.auditMethod};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='loopforge-stiletto-review.json';a.click();URL.revokeObjectURL(url);}
- function reset(){setReady(false);setError('');setRunning(false);setSpeed(1);setCentred(true);setTurn(0);setCamera('model');setAngle(0);setRoom('security');setZoom(3.8);setSurface('textured');setLamp(true);setBlades('both');setHighlight(false);setRetry(n=>n+1);}
+ function evidence(){const data={revision:bank.revision,file,clip,version:resolvedVersion,seconds:phase*duration,phase,speed,loop,centred,turn,camera,angle,room,surface,lamp,blades,highlight,report,cameraPose:runtime.current?.floor.reviewCamera(),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},auditMethod:bank.auditMethod};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='loopforge-stiletto-review.json';a.click();URL.revokeObjectURL(url);}
+ function reset(){setReady(false);setError('');setRunning(false);setSpeed(1);setCentred(true);setTurn(0);setCamera('model');setAngle(0);setRoom('security');setSurface('textured');setLamp(true);setBlades('both');setHighlight(false);setRetry(n=>n+1);}
  const poseLink=`?clip=${encodeURIComponent(id)}&version=${resolvedVersion}&t=${(phase*duration).toFixed(3)}`;
  return <main className={styles.page}>
   <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>STILETTO<span>Twin blades / motion & clearance review</span></h1></div><Link href='/stepanoskin/loopforge/design#agents'>Game design · Agents ↗</Link></header>
   <ReviewNavigation current='stiletto-blades'/><ReviewChecklist subject='stiletto-blades'/>
   <div className={styles.workspace}>
    <section className={`${styles.stage} ${styles.modelStage}`} aria-label='STILETTO motion review'>
-    <canvas ref={canvas} aria-label='Rigged STILETTO with forearm blades in the factory'/>
+    <ReviewCameraControls ready={ready} fixed={camera==='cctv'} onAction={a=>runtime.current?.floor.reviewCamera(a)}/>
+    <canvas tabIndex={0} ref={canvas} aria-label='Rigged STILETTO with forearm blades in the factory'/>
     <div className={styles.cameraTag}><i className={running?styles.rec:''}/>{room==='security'?'SECURITY':'LATTICE FORGE'}<span>{camera==='model'?'MOTION REVIEW':`CCTV · CAM ${angle+1}`}</span></div>
     {!ready&&<div className={styles.loading} role='status'><strong>{error?'STILETTO unavailable':'Preparing STILETTO…'}</strong><p>{error||'Loading one body, two blades and the motion bank.'}</p>{error&&<button onClick={reset}>Retry loading</button>}</div>}
     <div className={styles.caption}><span>{clip?(resolvedVersion==='corrected'?'CORRECTED ARMS · REVIEW CANDIDATE':'ORIGINAL MOTION'):'NEUTRAL RIG'}</span><strong>{clip?.label??'A-pose'} · {running?'playing':'paused'}</strong><small>{(phase*duration).toFixed(2)} / {duration.toFixed(2)} s · {speed}× · {blades==='both'?'two 55 cm blades':`${blades} blade visibility`}</small></div>
@@ -81,11 +83,10 @@ export default function StilettoModelReview(){
      <label>Attachments<select disabled={!ready} value={blades} onChange={e=>{const v=e.target.value as typeof blades;setBlades(v);runtime.current?.model.blades(v);}}><option value='both'>Both blades</option><option value='left'>Left blade</option><option value='right'>Right blade</option><option value='none'>Body only</option></select></label>
      <label className={styles.check}><input type='checkbox' disabled={!ready} checked={highlight} onChange={e=>{setHighlight(e.target.checked);runtime.current?.model.highlight(e.target.checked);}}/> Highlight blades for inspection</label>
      <label>Surface inspection<select disabled={!ready} value={surface} onChange={e=>{const v=e.target.value as StilettoSurface;setSurface(v);runtime.current?.model.surface(v);}}><option value='textured'>Textured metal</option><option value='clay'>Untextured shape</option><option value='wireframe'>Wireframe</option></select></label>
-     <label>View<select disabled={!ready} value={camera} onChange={e=>{const v=e.target.value as typeof camera;setCamera(v);runtime.current?.floor.review(v==='model'?'model':'model-cctv',zoom);runtime.current?.floor.cctv(true,angle,false);}}><option value='model'>Close model inspection</option><option value='cctv'>CCTV scale review</option></select></label>
+     <label>View<select disabled={!ready} value={camera} onChange={e=>{const v=e.target.value as typeof camera;setCamera(v);runtime.current?.floor.review(v==='model'?'model':'model-cctv');runtime.current?.floor.cctv(true,angle,false);}}><option value='model'>Close model inspection</option><option value='cctv'>CCTV scale review</option></select></label>
      {camera==='cctv'&&<div className={styles.duo}>{[0,1,2].map(n=><button disabled={!ready} key={n} aria-pressed={angle===n} onClick={()=>{setAngle(n);runtime.current?.floor.cctv(true,n,false);}}>CAM {n+1}</button>)}</div>}
      <div className={styles.duo}>{[['Front',0],['Side',90],['Back',180]].map(([label,n])=><button key={label} disabled={!ready} aria-pressed={turn===n} onClick={()=>{setTurn(Number(n));runtime.current?.model.turn(Number(n));}}>{label}</button>)}</div>
      <label>Turn character<input type='range' min='0' max='360' value={turn} disabled={!ready} onChange={e=>{setTurn(Number(e.target.value));runtime.current?.model.turn(Number(e.target.value));}}/></label>
-     <label>Camera distance<input type='range' min='3.2' max='7' step='.1' value={zoom} disabled={!ready||camera==='cctv'} onChange={e=>{const n=Number(e.target.value);setZoom(n);runtime.current?.floor.review('model',n);}}/></label>
      <label>Factory room<select disabled={!ready} value={room} onChange={e=>{const v=e.target.value as typeof room;setRoom(v);runtime.current?.floor.focus(v);runtime.current?.model.room(v);}}><option value='security'>Security</option><option value='conveyor'>Lattice Forge</option></select></label>
      <label className={styles.check}><input type='checkbox' disabled={!ready} checked={centred} onChange={e=>{setCentred(e.target.checked);runtime.current?.model.centre(e.target.checked);}}/> Keep subject centred</label><p>Horizontal centering is a review transform. Turn it off to inspect source travel. Vertical fall motion stays intact.</p>
      <label className={styles.check}><input type='checkbox' disabled={!ready} checked={lamp} onChange={e=>{setLamp(e.target.checked);runtime.current?.model.light(e.target.checked);}}/> Inspection lamp</label>

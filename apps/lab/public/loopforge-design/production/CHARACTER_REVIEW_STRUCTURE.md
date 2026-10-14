@@ -2,7 +2,7 @@
 
 ## Entry and navigation
 
-Game Design → Agents → Asset review library. The library is the permanent index of character candidates. Every implemented player links directly to every other implemented player and back to the library. The active subject is marked; selecting another releases the previous scene. No background model preloading. Cathexis, Rivet Witch and Thrum appear as “awaiting model” entries with their review focus, without dead player links or invented readiness.
+Game Design → Agents → Asset review library. This is the current cast entry point; the rejected-model action fixture appears only in a collapsed historical section and identifies itself as legacy on direct entry. The library is the permanent index of character candidates. Every implemented player links directly to every other implemented player and back to the library. The active subject is marked; selecting another releases the previous scene. No background model preloading. Cathexis, Rivet Witch and Thrum appear as “awaiting model” entries with their review focus, without dead player links or invented readiness.
 
 The common structure is a review workbench, separate from player-facing game UI and simulation authority. LIMEN, Worker 01 and STILETTO retain specialized controls. Shared navigation and six evidence gates are implemented now; one configurable player shell and a normalized animation adapter are the next refactor when the next supervisor is added. Do not duplicate a complete viewer for every new character.
 
@@ -24,7 +24,7 @@ All six appear in each current player's collapsible **Review coverage** panel. S
 1. Library: available cast, revisions, pending cast, review purpose and direction links.
 2. Player header: subject/revision and cross-model navigation; concise review coverage.
 3. Stage: one assembled character in the real factory renderer; close inspection or CCTV. Pause and inspect a meaningful pose before autoplay.
-4. Controls: motion selection, transport, precise time, speed, loop behavior, surface, orientation, room and camera. Group advanced controls into disclosure panels. Use semantic action labels while retaining source identifiers in evidence.
+4. Controls: close inspection supports mouse/touch orbit, scroll/pinch zoom, keyboard arrows and visible zoom/reset buttons. Fixed CCTV presets deliberately detach orbit controls; returning to inspection restores its angle and distance. Camera gestures do not change the pose or simulation. Export the actual camera pose with evidence. Motion selection, transport, precise time, speed, loop behavior, surface, orientation, room and camera. Group advanced controls into disclosure panels. Use semantic action labels while retaining source identifiers in evidence.
 5. Character-specific tools: LIMEN's emitter and power-cycle beats; STILETTO's interchangeable arms and original/corrected comparison; future tools describe genuine character differences, not separate navigation systems.
 6. Evidence: visible unresolved checks, recorded images, audit method and exportable review state. STILETTO pose links currently preserve clip/version/time. A common pose-link schema across all players is a follow-up, not already implemented.
 

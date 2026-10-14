@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import ReviewNavigation from './ReviewNavigation';
 import ReviewChecklist from './ReviewChecklist';
+import ReviewCameraControls from './ReviewCameraControls';
 import {useEffect,useRef,useState} from 'react';
 import {initialStudy} from '@/lib/loopforge/factory-study/kernel';
 import bank from '@/lib/loopforge/agents/worker-review.json';
@@ -34,14 +35,15 @@ export default function WorkerModelReview(){
  function choose(value:string){play(false);setId(value);setPhase(0);const repeat=bank.clips.find(c=>c.id===value)?.loop??false;setLoop(repeat);runtime.current?.model.loop(repeat);runtime.current?.model.clip(value);}
  function seek(seconds:number){play(false);const p=duration?Math.min(1,Math.max(0,seconds/duration)):0;setPhase(p);runtime.current?.model.seek(p);}
  function rotate(n:number){setTurn(n);runtime.current?.model.turn(n);}
- function evidence(){const data={revision:bank.revision,file,clip,phase,seconds:phase*duration,speed,loop,centred,turn,camera,angle,room,surface,lamp,report,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},note:bank.auditMethod};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='loopforge-worker-review.json';a.click();URL.revokeObjectURL(url);}
+ function evidence(){const data={revision:bank.revision,file,clip,phase,seconds:phase*duration,speed,loop,centred,turn,camera,angle,room,surface,lamp,report,cameraPose:runtime.current?.floor.reviewCamera(),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},note:bank.auditMethod};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='loopforge-worker-review.json';a.click();URL.revokeObjectURL(url);}
  function reset(){setReady(false);setError('');setRunning(false);setId('idle');setPhase(0);setSpeed(1);setLoop(true);setCentred(true);setTurn(0);setCamera('model');setAngle(0);setRoom('security');setSurface('textured');setLamp(true);setRetry(n=>n+1);}
  return <main className={styles.page}>
   <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>Worker 01<span>19 motions / factory lighting review</span></h1></div><Link href='/stepanoskin/loopforge/design#agents'>Game design · Agents ↗</Link></header>
   <ReviewNavigation current='worker-01-motions'/><ReviewChecklist subject='worker-01-motions'/>
   <div className={styles.workspace}>
    <section className={`${styles.stage} ${styles.modelStage}`} aria-label='Worker motion review'>
-    <canvas ref={canvas} aria-label='Rigged Worker 01 in the factory'/>
+    <ReviewCameraControls ready={ready} fixed={camera==='cctv'} onAction={a=>runtime.current?.floor.reviewCamera(a)}/>
+    <canvas tabIndex={0} ref={canvas} aria-label='Rigged Worker 01 in the factory'/>
     <div className={styles.cameraTag}><i className={running?styles.rec:''}/>{room==='security'?'SECURITY':'LATTICE FORGE'}<span>{camera==='model'?'MOTION REVIEW':`CCTV · CAM ${angle+1}`}</span></div>
     {!ready&&<div className={styles.loading} role='status'><strong>{error?'Worker unavailable':'Preparing Worker 01…'}</strong><p>{error||'Loading one body and the complete motion bank.'}</p>{error&&<button onClick={reset}>Retry loading</button>}</div>}
     <div className={styles.caption}><span>25,893 TRIANGLES / 24 SKIN JOINTS</span><strong>{clip?.label??'Neutral rig'} · {running?'playing':'paused'}</strong><small>{clip?.actor==='Cathexis'?'CATHEXIS DEFAULT WALK · WORKER STAND-IN':`${(phase*duration).toFixed(2)} / ${duration.toFixed(2)} s · ${speed}×`}</small></div>
@@ -58,7 +60,7 @@ export default function WorkerModelReview(){
     {!!clip&&<div className={styles.beats} aria-label='Sampled review poses'>{clip.markers.map(m=><button key={m.label} disabled={!ready} onClick={()=>seek(m.time)}>{m.label.replace('leftLeg / rightLeg','Legs').replace('leftArm / rightArm','Arms').replace('hands / head','Hand / head')} · {m.time.toFixed(2)} s{m.intersections?' · contact':''}</button>)}</div>}
     <button disabled={!ready} aria-pressed={id==='Hot_Walk'} onClick={()=>choose('Hot_Walk')}>Hot Walk → Cathexis</button>
     <details><summary>Camera & appearance</summary>
-     <label>View<select disabled={!ready} value={camera} onChange={e=>{const mode=e.target.value as typeof camera;setCamera(mode);runtime.current?.floor.review(mode==='model'?'model':'model-cctv',3.8);runtime.current?.floor.cctv(true,angle,false);}}><option value='model'>Close model inspection</option><option value='cctv'>CCTV scale review</option></select></label>
+     <label>View<select disabled={!ready} value={camera} onChange={e=>{const mode=e.target.value as typeof camera;setCamera(mode);runtime.current?.floor.review(mode==='model'?'model':'model-cctv');runtime.current?.floor.cctv(true,angle,false);}}><option value='model'>Close model inspection</option><option value='cctv'>CCTV scale review</option></select></label>
      {camera==='cctv'&&<div className={styles.duo}>{[0,1,2].map(n=><button disabled={!ready} key={n} aria-pressed={angle===n} onClick={()=>{setAngle(n);runtime.current?.floor.cctv(true,n,false);}}>CAM {n+1}</button>)}</div>}
      <div className={styles.duo}>{[['Front',0],['Side',90],['Back',180]].map(([label,n])=><button key={label} disabled={!ready} aria-pressed={turn===n} onClick={()=>rotate(Number(n))}>{label}</button>)}</div>
      <label>Turn character<input type='range' min='0' max='360' value={turn} disabled={!ready} onChange={e=>rotate(Number(e.target.value))}/></label>

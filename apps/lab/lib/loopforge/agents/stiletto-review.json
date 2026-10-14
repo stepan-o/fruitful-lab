@@ -1,0 +1,814 @@
+{
+  "revision": "stiletto-twin-blade-review-2026-10-13-v4",
+  "triangles": 41124,
+  "renderedTriangles": 49358,
+  "skinJoints": 24,
+  "sampleRateHz": 120,
+  "correctedPoseCount": 2335,
+  "sha256": "ad84c17431f6eea244b9a15f46296f0da63d7ae9726e2f7d2622f9d522b6f97b",
+  "auditMethod": "Distal blade / skinned body, blade / blade, and blade / flat floor. Surface crossing test with the intentional proximal socket overlap excluded. No continuous collision guarantee or scene-obstacle / blend validation. Existing body-to-body gait intersections are unchanged.",
+  "clips": [
+    {
+      "id": "Alert",
+      "label": "Alert",
+      "duration": 4,
+      "loop": true,
+      "note": "Attentive, wide stance. No intersections detected at the three tested poses.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Alert_withSkin.fbx",
+      "sourceSha256": "b82b6df30c13b11a37bb1eb9d99cc3a90f6ccdc38fbc572ed2148b2a0a583b35",
+      "sourceClip": "Armature|Armature|Alert|baselayer",
+      "netTravelMetres": [
+        -2.265000000056805e-08,
+        -2.299999999344493e-07,
+        5.720000000042358e-08
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 3.45,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 2.36666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 2.56666667,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 121,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Crouch_and_Step_Back",
+      "label": "Recoil",
+      "duration": 2.7,
+      "loop": false,
+      "note": "Has 2.83 m backward travel in source units; requires movement/space reservation. No intersections at tested poses.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Crouch_and_Step_Back_withSkin.fbx",
+      "sourceSha256": "9df1cde4aa91ff372d5c4bcbef4cc06844744aa0506b992f7210db0d036edac9",
+      "sourceClip": "Armature|Armature|Crouch_and_Step_Back|baselayer",
+      "netTravelMetres": [
+        0.0006195771699999998,
+        0.00020805999999984337,
+        -2.8338466956
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 1.1,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 1.3,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0.5,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 82,
+        "bodyContactFrames": 1,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": {
+        "clip": "Crouch_and_Step_Back",
+        "label": "Recoil",
+        "reviewTime": 1.433333,
+        "description": "A smooth correction to the right upper arm and elbow around the backward step. The original backward travel is preserved.",
+        "imageKey": "recoil",
+        "original": {
+          "clip": "Crouch_and_Step_Back",
+          "frames": 326,
+          "bodyContactFrames": 1,
+          "floorContactFrames": 0,
+          "bladeContactFrames": 0
+        },
+        "result": {
+          "clip": "Crouch_and_Step_Back__corrected",
+          "frames": 326,
+          "bodyContactFrames": 0,
+          "floorContactFrames": 0,
+          "bladeContactFrames": 0
+        }
+      }
+    },
+    {
+      "id": "Electrocuted_Fall",
+      "label": "Electrical collapse",
+      "duration": 6.33333333,
+      "loop": false,
+      "note": "Leg intersection at 4.33 s. Fall ends lower and displaced; needs ground/contact cleanup and one-shot playback.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Electrocuted_Fall_withSkin.fbx",
+      "sourceSha256": "c84c5eebd79d9ab3cc4a3fde85381540253fd5cb2d94898938b8d6e6532c896a",
+      "sourceClip": "Armature|Armature|Electrocuted_Fall|baselayer",
+      "netTravelMetres": [
+        -0.669549336,
+        -1.1917520125,
+        1.34194805256
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 4.33333333,
+          "intersections": 445
+        },
+        {
+          "label": "hands / head",
+          "time": 4.96666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 2.36666667,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 191,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 75,
+        "bladeContactFrames": 0
+      },
+      "corrected": {
+        "clip": "Electrocuted_Fall",
+        "label": "Electrical collapse",
+        "reviewTime": 4.633333,
+        "description": "The forearms rotate to avoid driving the blades through the floor. The right-arm lift leads the impact and is smoothed across neighboring frames. This is the most substantial choreography change and needs particular artistic review.",
+        "imageKey": "fall",
+        "original": {
+          "clip": "Electrocuted_Fall",
+          "frames": 762,
+          "bodyContactFrames": 0,
+          "floorContactFrames": 300,
+          "bladeContactFrames": 0
+        },
+        "result": {
+          "clip": "Electrocuted_Fall__corrected",
+          "frames": 762,
+          "bodyContactFrames": 0,
+          "floorContactFrames": 0,
+          "bladeContactFrames": 0
+        }
+      }
+    },
+    {
+      "id": "Electrocution_Reaction",
+      "label": "Electrical hit",
+      "duration": 4.66666667,
+      "loop": false,
+      "note": "Readable malfunction candidate. No intersections at tested poses; preserve source timing when binding to an incident.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Electrocution_Reaction_withSkin.fbx",
+      "sourceSha256": "8ca299187c89e33ce3a39799a8147aabfe22159d07bfce8e7a917560a2136c04",
+      "sourceClip": "Armature|Armature|Electrocution_Reaction|baselayer",
+      "netTravelMetres": [
+        0.007865333499999995,
+        -0.005603489999999933,
+        -0.08802364110000001
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.0166666667,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 4.46666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 141,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Idle_Turn_Left",
+      "label": "Idle Turn Left",
+      "duration": 0.933333333,
+      "loop": false,
+      "note": "Pivot candidate. No intersections at tested poses. Reconcile facing and small pelvis offset with navigation.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Idle_Turn_Left_withSkin.fbx",
+      "sourceSha256": "4da6ad0c83a94b2552a2df41fa88c7fbeb57d051638ed7a47c80e2ff38a6fc9d",
+      "sourceClip": "Armature|Armature|Idle_Turn_Left|baselayer",
+      "netTravelMetres": [
+        0.09555930756,
+        -7.270000000003662e-05,
+        -0.11381342890000001
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.533333333,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 0,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 29,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Idle_Turn_Right",
+      "label": "Idle Turn Right",
+      "duration": 1.1,
+      "loop": false,
+      "note": "Leg/foot intersection at 0.63 s. Requires foot clearance correction.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Idle_Turn_Right_withSkin.fbx",
+      "sourceSha256": "f64a56eac6199bff2fd323fa15dafd7c57fe548d61bd23fad26d44e9c5fbda58",
+      "sourceClip": "Armature|Armature|Idle_Turn_Right|baselayer",
+      "netTravelMetres": [
+        -0.040731144,
+        0.0015263399999998484,
+        -0.026750631300000008
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.633333333,
+          "intersections": 127
+        },
+        {
+          "label": "hands / head",
+          "time": 0.433333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0.666666667,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 34,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Kneel_on_One_Knee_and_Stand",
+      "label": "Rise from kneeling",
+      "duration": 2.56666667,
+      "loop": false,
+      "note": "Starts kneeling and rises. Socket is close to thigh in first pose. Needs blade-aware arm correction before tools are mounted; not a complete standing-to-kneel-to-stand cycle.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Kneel_on_One_Knee_and_Stand_withSkin.fbx",
+      "sourceSha256": "87eb6395b94e91b6577f3dcb52242b9e5f79d546d6c4c41155cb58dabc32dab1",
+      "sourceClip": "Armature|Armature|Kneel_on_One_Knee_and_Stand|baselayer",
+      "netTravelMetres": [
+        0.1962734488,
+        0.5350280050000001,
+        0.2685107684
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 0.333333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 2.46666667,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 78,
+        "bodyContactFrames": 28,
+        "floorContactFrames": 15,
+        "bladeContactFrames": 0
+      },
+      "corrected": {
+        "clip": "Kneel_on_One_Knee_and_Stand",
+        "label": "Rise from kneeling",
+        "reviewTime": 0.166667,
+        "description": "Both arms keep their blades outside the knees. Elbow orientation also keeps the blades above a flat floor. The source clip starts kneeling and rises; it is not a full kneel-and-rise cycle.",
+        "imageKey": "kneel",
+        "original": {
+          "clip": "Kneel_on_One_Knee_and_Stand",
+          "frames": 309,
+          "bodyContactFrames": 109,
+          "floorContactFrames": 59,
+          "bladeContactFrames": 0
+        },
+        "result": {
+          "clip": "Kneel_on_One_Knee_and_Stand__corrected",
+          "frames": 309,
+          "bodyContactFrames": 0,
+          "floorContactFrames": 0,
+          "bladeContactFrames": 0
+        }
+      }
+    },
+    {
+      "id": "Lean_Forward_Sprint_inplace",
+      "label": "Forward sprint",
+      "duration": 0.6,
+      "loop": true,
+      "note": "Leg intersection at 0.32 s. In-place motion; adjust gait clearance.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Lean_Forward_Sprint_inplace_withSkin.fbx",
+      "sourceSha256": "cd1af8d37a49d686d2fcd88b181acf52e7838018702654b30a1aea75a0fe3a68",
+      "sourceClip": "Armature|Armature|Lean_Forward_Sprint_inplace|baselayer",
+      "netTravelMetres": [
+        -1.839159999999368e-05,
+        1.5000000019860238e-07,
+        -2.0503999999949007e-06
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.316666667,
+          "intersections": 348
+        },
+        {
+          "label": "hands / head",
+          "time": 0.133333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0.266666667,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 19,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Listening_Gesture",
+      "label": "Listening Gesture",
+      "duration": 9.33333333,
+      "loop": false,
+      "note": "Leg/foot intersection near 8.77 s. Fix feet or choose a trimmed range that passes another check.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Listening_Gesture_withSkin.fbx",
+      "sourceSha256": "a498bd01e107bb85c98f258f2f5565447e35d04fa3385c7fa6ade6b53a32f548",
+      "sourceClip": "Armature|Armature|Listening_Gesture|baselayer",
+      "netTravelMetres": [
+        0.00015649675999999946,
+        0.0016221699999998673,
+        0.0005011702000000048
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 8.76666667,
+          "intersections": 588
+        },
+        {
+          "label": "hands / head",
+          "time": 3.3,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 4.73333333,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 281,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Quick_Walk",
+      "label": "Quick Walk",
+      "duration": 3,
+      "loop": true,
+      "note": "Leg intersection at 1.68 s. Contrary to report, exported pelvis returns to its start and has only 0.017 m fore/aft range: already in place.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Quick_Walk_withSkin.fbx",
+      "sourceSha256": "558eb34605e0c89733259877783c3f8dfdafd1b534ac5e2e9ba6ecc120579820",
+      "sourceClip": "Armature|Armature|Quick_Walk|baselayer",
+      "netTravelMetres": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 1.68333333,
+          "intersections": 643
+        },
+        {
+          "label": "hands / head",
+          "time": 3,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 2.66666667,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 91,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Running",
+      "label": "Running",
+      "duration": 0.633333333,
+      "loop": true,
+      "note": "In-place baseline run. No intersections at the targeted poses; promising starting candidate.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Running_withSkin.fbx",
+      "sourceSha256": "b5d251a66b46e993ea3dbb8b8acac559ac7fa6f719afb7a4b5f7cc1288012b76",
+      "sourceClip": "Armature|Armature|running|baselayer",
+      "netTravelMetres": [
+        2.622000000018082e-08,
+        2.300000001564939e-07,
+        -1.9099999998273276e-08
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.233333333,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 0.366666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0.2,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 20,
+        "bodyContactFrames": 3,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": {
+        "clip": "Running",
+        "label": "Running",
+        "reviewTime": 0.2,
+        "description": "Running holds the upper arms about 14\u00b0 farther out and adjusts the elbows by at most 7\u00b0. The stride, body lean, loop seam and blade dimensions are preserved.",
+        "imageKey": "running",
+        "original": {
+          "clip": "Running",
+          "frames": 77,
+          "bodyContactFrames": 12,
+          "floorContactFrames": 0,
+          "bladeContactFrames": 0
+        },
+        "result": {
+          "clip": "Running__corrected",
+          "frames": 77,
+          "bodyContactFrames": 0,
+          "floorContactFrames": 0,
+          "bladeContactFrames": 0
+        }
+      }
+    },
+    {
+      "id": "Shouting_Angrily",
+      "label": "Reprimand",
+      "duration": 7.16666667,
+      "loop": false,
+      "note": "Broad overhead and forward arm gestures. No body intersections at targeted poses; full blade sweep must be reviewed with actual attachments.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Shouting_Angrily_withSkin.fbx",
+      "sourceSha256": "58bca9b5c942f9c85ab345149b10dc97fb9f6bf2943ae944bd283af58f53f7d0",
+      "sourceClip": "Armature|Armature|Shouting_Angrily|baselayer",
+      "netTravelMetres": [
+        -0.0007881414899999998,
+        0.0031833699999999077,
+        0.0018134999200000003
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.866666667,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 2.66666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 2.66666667,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 216,
+        "bodyContactFrames": 1,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": {
+        "clip": "Shouting_Angrily",
+        "label": "Reprimand",
+        "reviewTime": 2.033333,
+        "description": "A brief right-arm correction around the gesture that previously intersected the shin. The rest of the gesture is unchanged.",
+        "imageKey": "reprimand",
+        "original": {
+          "clip": "Shouting_Angrily",
+          "frames": 861,
+          "bodyContactFrames": 3,
+          "floorContactFrames": 0,
+          "bladeContactFrames": 0
+        },
+        "result": {
+          "clip": "Shouting_Angrily__corrected",
+          "frames": 861,
+          "bodyContactFrames": 0,
+          "floorContactFrames": 0,
+          "bladeContactFrames": 0
+        }
+      }
+    },
+    {
+      "id": "Shrug",
+      "label": "Shrug",
+      "duration": 2,
+      "loop": false,
+      "note": "Readable dismissive gesture. No intersections at targeted poses; check both tools when fitting.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Shrug_withSkin.fbx",
+      "sourceSha256": "96b9a6eb7deb5e39532df2d683cc2b454b46cc51ee8f5080702996b46fac8cd0",
+      "sourceClip": "Armature|Armature|Shrug|baselayer",
+      "netTravelMetres": [
+        -1.87159999998944e-07,
+        0.0,
+        -3.0999999997560757e-08
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.6,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 0.7,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 1,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 61,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Stand_Talking_Angry",
+      "label": "Argument",
+      "duration": 20.8,
+      "loop": false,
+      "note": "20.80-second long argument take. No intersections at targeted poses. Needs selection/trim and blade-aware gesture review.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Stand_Talking_Angry_withSkin.fbx",
+      "sourceSha256": "73efe812e6f5dc3bbd7686b370882379521dee652c6a93db1d40b4b40dfbe147",
+      "sourceClip": "Armature|Armature|Stand_Talking_Angry|baselayer",
+      "netTravelMetres": [
+        0.0003498080399999999,
+        0.018022229999999917,
+        0.0018429803999999994
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 13.1,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 12.4666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 7.93333333,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 625,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Walking",
+      "label": "Walking",
+      "duration": 1.03333333,
+      "loop": true,
+      "note": "In-place baseline walk. No intersections at the targeted poses; promising starting candidate.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Walking_withSkin.fbx",
+      "sourceSha256": "779c27a6a779cc3105160459227d547f426ebe3b6c4d61a93b017aab0c5b377a",
+      "sourceClip": "Armature|Armature|walking_man|baselayer",
+      "netTravelMetres": [
+        1.310999999965673e-08,
+        -7.000000001866624e-08,
+        2.860000000021179e-08
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.7,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 0.733333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 1,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 33,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "walking_2_inplace",
+      "label": "Grounded walk",
+      "duration": 1.2,
+      "loop": true,
+      "note": "Pronounced leg/foot intersection at 0.97 s. Does not meet Meshy report claim of clean separation.",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_walking_2_inplace_withSkin.fbx",
+      "sourceSha256": "984ba8593e1cabc6adf26ecb64aa3b068e429f3228b68d6211a2723f5714b653",
+      "sourceClip": "Armature|Armature|walking_2_inplace|baselayer",
+      "netTravelMetres": [
+        5.01000000010382e-08,
+        0.0,
+        -2.9330000000243883e-07
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.966666667,
+          "intersections": 1303
+        },
+        {
+          "label": "hands / head",
+          "time": 0.6,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0.866666667,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 37,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Idle",
+      "label": "Idle",
+      "duration": 4,
+      "loop": true,
+      "note": "Stationary 4-second idle. No surface intersections detected at the three targeted closest poses; full-cycle and mounted-tool review still required.",
+      "sourceFile": "stiletto_idle_source.fbx",
+      "sourceSha256": "3e7d0aec0b2113019e21f1c8eb0537fc466109b98144ec956f00e24eb2a5c577",
+      "sourceClip": "Armature|Armature|Idle|baselayer",
+      "netTravelMetres": [
+        4.1413000000031785e-06,
+        1.8299999999804584e-06,
+        -4.708799999995905e-06
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 1.2,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 1.13333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 3.6,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 121,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    },
+    {
+      "id": "Injured_Walk_inplace",
+      "label": "Injured walk",
+      "duration": 8.66666667,
+      "loop": true,
+      "note": "In-place limping motion. Positive leg/foot intersections at 6.83 s; clearance correction required.",
+      "sourceFile": "stiletto_injured_walk_source.fbx",
+      "sourceSha256": "b15e7a9f8798e10d9ea811c680594e34e76a505bda53a7b607bd59d49d78160f",
+      "sourceClip": "Armature|Armature|Injured_Walk_inplace|baselayer",
+      "netTravelMetres": [
+        1.2589689999999328e-05,
+        0.0003424899999999731,
+        0.00011557579999999998
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 6.83333333,
+          "intersections": 179
+        },
+        {
+          "label": "hands / head",
+          "time": 6.33333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 5.56666667,
+          "intersections": 0
+        }
+      ],
+      "originalBlade": {
+        "frames": 261,
+        "bodyContactFrames": 0,
+        "floorContactFrames": 0,
+        "bladeContactFrames": 0
+      },
+      "corrected": null
+    }
+  ]
+}

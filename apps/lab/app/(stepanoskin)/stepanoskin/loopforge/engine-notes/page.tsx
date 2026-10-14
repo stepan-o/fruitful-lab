@@ -118,6 +118,19 @@ export default function EngineNotes() {
             Blade identity, readiness and the three-camera acceptance gate →
           </Link>
         </p>
+        <h2>One review structure for the cast.</h2>
+        <p>LIMEN, Worker 01 and STILETTO share a production asset library,
+          direct model navigation and six evidence gates: body, equipment,
+          motion, contacts, CCTV readability and performance. Each gate records
+          what was accepted and what is still open. Cathexis, Rivet Witch and
+          Thrum have awaiting-model entries. Immutable runtime hashes tie
+          collision reports to the exact reviewed asset; source masters stay
+          outside deployment bundles.</p>
+        <p>Current character adapters preserve their specialized controls.
+          The next intake should extract a shared player shell. Review status
+          never grants a simulation action or changes a run.</p>
+        <p><Link href="/stepanoskin/loopforge/play/asset-review">Character review library →</Link>{' · '}
+          <a href="/loopforge-design/production/CHARACTER_REVIEW_STRUCTURE.md">Intake and acceptance contract ↗</a></p>
         <h2>Rust-native logic, TypeScript implementation.</h2>
         <p style={{ margin: "20px 0 32px" }}>
           The domain uses owned plain records, discriminated unions, bounded
@@ -134,8 +147,9 @@ export default function EngineNotes() {
           actors, recipients and workstations; the viewer animates permitted
           timing and outcomes. Full animation control belongs on supervisors and
           close interactions, with cheaper shared animation considered for distant
-          routine work. BDI, paired acting and new rigs remain planned; the current
-          procedural bodies are placeholders.</p>
+          routine work. Imported LIMEN, Worker 01 and STILETTO candidates are available in
+          isolated reviews. Full BDI and paired acting with these production rigs
+          remain planned; main-play bodies are still placeholders.</p>
         <p><Link href="/stepanoskin/loopforge/design#agents">Original character art and animation architecture →</Link></p>
         <h2>Workers are people beneath the count.</h2>
         <p style={{ margin: "20px 0 32px" }}>

@@ -1,0 +1,121 @@
+[
+  {
+    "clip": "Running",
+    "preservedAllOtherJointTRS": true,
+    "preservedTimingAndHierarchy": true,
+    "rotationContinuity": {
+      "LeftArm": {
+        "sourceMaxStepDegrees": 11.811,
+        "correctedMaxStepDegrees": 11.873,
+        "loopSeamSourceDegrees": 0.0,
+        "loopSeamCorrectedDegrees": 0.0
+      },
+      "RightArm": {
+        "sourceMaxStepDegrees": 9.449,
+        "correctedMaxStepDegrees": 8.578,
+        "loopSeamSourceDegrees": 0.0,
+        "loopSeamCorrectedDegrees": 0.0
+      },
+      "LeftForeArm": {
+        "sourceMaxStepDegrees": 8.427,
+        "correctedMaxStepDegrees": 8.394,
+        "loopSeamSourceDegrees": 0.0,
+        "loopSeamCorrectedDegrees": 0.0
+      },
+      "RightForeArm": {
+        "sourceMaxStepDegrees": 9.761,
+        "correctedMaxStepDegrees": 9.743,
+        "loopSeamSourceDegrees": 0.0,
+        "loopSeamCorrectedDegrees": 0.0
+      }
+    }
+  },
+  {
+    "clip": "Crouch_and_Step_Back",
+    "preservedAllOtherJointTRS": true,
+    "preservedTimingAndHierarchy": true,
+    "rotationContinuity": {
+      "RightArm": {
+        "sourceMaxStepDegrees": 9.913,
+        "correctedMaxStepDegrees": 9.49,
+        "loopSeamSourceDegrees": 1.971,
+        "loopSeamCorrectedDegrees": 1.971
+      },
+      "RightForeArm": {
+        "sourceMaxStepDegrees": 4.902,
+        "correctedMaxStepDegrees": 4.574,
+        "loopSeamSourceDegrees": 0.167,
+        "loopSeamCorrectedDegrees": 0.167
+      }
+    }
+  },
+  {
+    "clip": "Shouting_Angrily",
+    "preservedAllOtherJointTRS": true,
+    "preservedTimingAndHierarchy": true,
+    "rotationContinuity": {
+      "RightArm": {
+        "sourceMaxStepDegrees": 29.184,
+        "correctedMaxStepDegrees": 29.184,
+        "loopSeamSourceDegrees": 0.317,
+        "loopSeamCorrectedDegrees": 0.317
+      },
+      "RightForeArm": {
+        "sourceMaxStepDegrees": 20.128,
+        "correctedMaxStepDegrees": 20.128,
+        "loopSeamSourceDegrees": 0.021,
+        "loopSeamCorrectedDegrees": 0.021
+      }
+    }
+  },
+  {
+    "clip": "Kneel_on_One_Knee_and_Stand",
+    "preservedAllOtherJointTRS": true,
+    "preservedTimingAndHierarchy": true,
+    "rotationContinuity": {
+      "LeftArm": {
+        "sourceMaxStepDegrees": 1.538,
+        "correctedMaxStepDegrees": 1.385,
+        "loopSeamSourceDegrees": 62.518,
+        "loopSeamCorrectedDegrees": 59.119
+      },
+      "RightArm": {
+        "sourceMaxStepDegrees": 1.4,
+        "correctedMaxStepDegrees": 1.331,
+        "loopSeamSourceDegrees": 22.874,
+        "loopSeamCorrectedDegrees": 23.072
+      },
+      "LeftForeArm": {
+        "sourceMaxStepDegrees": 2.075,
+        "correctedMaxStepDegrees": 1.715,
+        "loopSeamSourceDegrees": 58.522,
+        "loopSeamCorrectedDegrees": 33.55
+      },
+      "RightForeArm": {
+        "sourceMaxStepDegrees": 0.822,
+        "correctedMaxStepDegrees": 0.832,
+        "loopSeamSourceDegrees": 17.43,
+        "loopSeamCorrectedDegrees": 16.866
+      }
+    }
+  },
+  {
+    "clip": "Electrocuted_Fall",
+    "preservedAllOtherJointTRS": true,
+    "preservedTimingAndHierarchy": true,
+    "rotationContinuity": {
+      "LeftForeArm": {
+        "sourceMaxStepDegrees": 4.901,
+        "correctedMaxStepDegrees": 4.898,
+        "loopSeamSourceDegrees": 89.145,
+        "loopSeamCorrectedDegrees": 103.85
+      },
+      "RightForeArm": {
+        "sourceMaxStepDegrees": 5.367,
+        "correctedMaxStepDegrees": 11.024,
+        "loopSeamSourceDegrees": 111.373,
+        "loopSeamCorrectedDegrees": 118.809
+      }
+    }
+  }
+]

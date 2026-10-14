@@ -60,3 +60,5 @@ Current runtime pack: `loopforge-cathexis-review`, revision `522d72240362a6c4ce6
 The production build passed asset validation, TypeScript and prerendering. The four camera contract tests pass, including portrait zoom limits/reset and restoration of full-body limits; scoped ESLint passed. All six candidates rendered, textured/clay inspection worked, Grace switched at a fixed camera and native mouse dragging changed the orbit. Desktop plus 390px and 320px layouts were inspected; no horizontal overflow was observed. Narrow controls were expanded to full width. Runtime logs showed no viewer errors during the local check.
 
 Screenshots are retained in the private `cathexis-intake/evidence` folder: body face textured/clay, Grace budgets, Grace profile, all three mechanical fronts and phone controls. These are development evidence, not additional public art assets.
+
+Material and lamp changes explicitly invalidate scene readiness as well as the frame. This keeps the demand-rendered player drawing while replacement shaders compile, instead of leaving a blank model until the next camera gesture.

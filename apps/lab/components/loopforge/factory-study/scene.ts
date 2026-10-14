@@ -553,7 +553,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   return {
     reviewSubject(height,distance,minimum){reviewOrbit.suspend();reviewTargetHeight=height;reviewOrbit.framing(distance,minimum);if(cctvEnabled)configureFeeds();},
     reviewCamera(action){if(action)reviewOrbit.action(action);return reviewOrbit.snapshot();},
-    characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(){renderDirty=true;keyMap.resetRefreshCounter();}};},
+    characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(){resourcesReady=false;renderDirty=true;keyMap.resetRefreshCounter();}};},
     review(enabled,distance){reviewOrbit.suspend();characterReview=enabled;if(distance!==undefined)reviewOrbit.distance(distance);frame();if(cctvEnabled)configureFeeds();},
     update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const fresh=s.events.filter(e=>e.id>lastEvent);if(fresh.length){lastEvent=fresh.at(-1)!.id;const signal=fresh.find(e=>e.kind==="jam")??fresh.find(e=>e.kind==="cycle");if(signal){flash=1;flashKind=signal.kind as "jam"|"cycle";}else if(fresh.some(e=>e.kind==="release")){flash=0;flashKind="idle";}}},
     focus(f){reviewOrbit.suspend();frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},

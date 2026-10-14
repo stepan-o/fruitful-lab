@@ -1,0 +1,11 @@
+Create a new project: Loopforge Worker 01.
+
+The three attached images show ONE character, not three alternatives. Use worker-01-front.02c6c68fda86b0c0.jpg as the authoritative design and A-pose. worker-01-back.c97d065cd1642436.jpg specifies the rear construction; worker-01-left.9e94fa650cdd2d38.jpg supports body depth. Keep the front pose/proportions if minor generated-view discrepancies occur. Do not combine these into a collage or generate extra characters.
+
+Make a textured humanoid factory-worker robot faithful to this design: ordinary adult proportions, paired round cyan optics, a narrow grille mouth, fitted worn dark petrol-grey steel panels, restrained brass bearings, ribbed waist, coherent pelvis, tapered limbs, exposed mechanical hinges, five separate fingers including a thumb on each hand, and sturdy split-toe feet. Both hands are empty. No weapon, tool, carried object, backpack, base, floor or background geometry. No writing or supervisor insignia. Preserve mechanical form rather than smoothing it into a toy.
+
+Maintain a symmetrical A-pose with arms separated from the body and a gap between the legs. Keep shoulder, elbow, wrist, hip, knee and ankle joints clear enough to articulate. Preserve face, hand, foot and silhouette geometry; fine scratches, rivets and shallow grooves belong primarily in textures/normal maps.
+
+Generate the body and textures, then create a separate remeshed candidate targeting about 25,000 triangles. Retain the detailed source separately. Do not sacrifice the hands or face just to hit the count. Use a compact PBR material set with base colour, normal, roughness and metalness where supported. Keep eye emission separate if supported; no baked cyan halo or dramatic studio shadows. Target 2K textures for the first review; retain better source maps separately if available.
+
+Show the result from front, back and side before rigging. Report the actual triangle count and any unsupported requests. Stop after the model/remesh stage so I can inspect it.

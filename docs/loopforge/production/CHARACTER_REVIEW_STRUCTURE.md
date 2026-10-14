@@ -58,3 +58,8 @@ For every intake: validate downloaded contents and names → assemble and normal
 - [LIMEN](LIMEN_MESHY_REVIEW.md): body/emitter/energy and authored idle.
 - [Worker 01](WORKER_MOTION_REVIEW.md): motion inventory and gait flags.
 - [STILETTO](STILETTO_MOTION_REVIEW.md): twin blades, five corrected candidates and sampled audit.
+
+
+## Rebuild archive — 14 October 2026
+
+Game Design → Model briefs stores versioned reference inputs, copyable stage prompts, downloadable kits and links back to every available model player. Viewer navigation returns to the active character brief. LIMEN, Worker 01 and STILETTO have inspected results; CATHEXIS has a generation brief and face/condition candidates but no model. See `model-briefs/README.md`.

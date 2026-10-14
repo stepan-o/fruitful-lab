@@ -21,6 +21,7 @@ def render_agents():
     <div class="callout"><h3>Start with the current model library.</h3>
     <p><a href="/stepanoskin/loopforge/play/asset-review">Open the character &amp; motion players →</a></p>
     <p>LIMEN, Worker 01 and STILETTO use the new Meshy bodies. Inspect one assembled character at a time under factory lighting. Drag to orbit, scroll or pinch to zoom, reset the view, and switch to fixed CCTV angles.</p></div>
+    <p><a href="/stepanoskin/loopforge/design#model-briefs">Model briefs: input art, copyable stages and downloadable rebuild kits →</a></p>
     <h3>What is available now</h3><div class="principle-grid">''']
     current = [
         ('LIMEN', '/stepanoskin/loopforge/play/agent-test/limen', 'Body, emitter and living energy',
@@ -51,7 +52,7 @@ def render_agents():
         ('Worker 01', 'thrum-conveyor', 'loopforge-supervisors', 'Worn metal. Exposed joints. A working body.', 'Weight, fatigue, hesitation and fear must read in the posture. Keep workers smaller and less ornate than supervisors.'),
         ('LIMEN', 'limen', 'loopforge', 'Heavy armour. One asymmetric cyan blade.', 'The blade is his dark-CCTV identity cue. A planted stance holds a worker and the queue behind them. The emitter-check idle gives that tool a physical routine.'),
         ('STILETTO', 'stiletto-portrait', 'loopforge-console', 'Black chrome. Long limbs. Twin blade forearms.', 'Decisive turns and impatient directives. Her equipment needs its own clearance envelope. A welder module is an asset option; it does not grant unimplemented engineering ability.'),
-        ('CATHEXIS / awaiting model', 'cathexis', 'loopforge', 'Cracked porcelain. Warm eyes. Controlled attention.', 'Hot Walk is her intended default gait. Persuasion and worker response need paired acting on her own rig; the worker preview is only a motion reference.'),
+        ('CATHEXIS / awaiting model', 'cathexis', 'loopforge', 'Cracked porcelain. Warm eyes. Controlled attention.', 'Hot Walk is her only travel gait; she never runs and has no alert state. Gentle theatrical presence, modular porcelain/mechanical expressions and grime variants are ready for staged generation in Model briefs. Her own rig and paired acting remain untested.'),
         ('RIVET WITCH / awaiting model', 'witch', 'loopforge', 'Hood. Green goggles. A practical working kit.', 'Brace, inspect, wrench and test at real machine contacts. Frustration with unfinished damage should be readable before dialogue.'),
         ('THRUM / awaiting model', 'thrum', 'loopforge', 'Speaker head. Chest resonator. Deliberate rhythm.', 'Workers visibly settle around him. Stress relief and slipping discipline need distinct responses, with a real throughput cost.'),
     ]

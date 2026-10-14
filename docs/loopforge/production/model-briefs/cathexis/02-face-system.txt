@@ -1,0 +1,13 @@
+CATHEXIS — one permanent head, replaceable mechanism, porcelain coverage
+Generate separate items one at a time; never upload the whole face gallery as one object.
+
+1. Fit master: use 04-mask-grace as the porcelain identity reference. Generate a hollow rigid faceplate with a consistent thin oval seating rim, readable expression, eye apertures and attachment features. No eyes, skull, hair, crown or neck. Fit it to the accepted body before expanding the bank. The body owns the amber eyes.
+2. Exposed mechanical expression insert: use 10-mechanism-grimace as ONE standalone object. Dark metal/brass brow, cheek and jaw plates, connected backing, open eye apertures and no duplicate skull. Use 11-mechanism-fury and 12-mechanism-distress for two separate expression variants with the same mounting boundary. Fury must shout/snarl, distress must be downturned; do not make every mechanical face happy. For the first prototype these are rigid swaps, not a promised facial rig. A composed neutral mechanism can be derived offline from the accepted insert if needed; no separate neutral image is supplied.
+3. Full porcelain family: Grace, Rapture, Scorn, Grief, Fury, Distress. Keep each as a separate rigid asset; expression is not a new body or new head. Do not assume generated contours match perfectly: normalize to the fitted master offline.
+4. Split coverage: use 13-mask-half-shell as the separate retained half-shell. 14-split-assembly-reference only shows the desired combination with the mechanical insert; do not generate a fused complete head from it. Mirror the visual side only if explicitly chosen; preserve the chosen orientation in filenames.
+
+The same head can show full porcelain, half porcelain / exposed mechanism, or exposed mechanism alone. The expression underneath must suit the visible emotion. Avoid overlapping teeth, doubled lips or two complete noses. Validate mouth cavities and clearance with ALL fitted combinations; some incompatible pairs may need variant-specific clearance or hidden underlying regions.
+
+Keep a high-resolution master and economical close-review derivatives. Porcelain target around 1–3k triangles each, mechanism around 3–6k as an initial proposal; preserve silhouette before count. Export separate named textured GLBs/FBXs, report actual object/material counts, axes and dimensions. A static image does not establish matching geometry, fitting tolerances, topology or articulation.
+
+Small jaw/brow motion can be added after the rigid expression prototypes pass. No rubber face, live fracture simulation, floating shards, eyes baked into each mask or new full head per expression. Exact face fit, hand-to-mask contacts and swaps belong to offline assembly and actual viewer review.

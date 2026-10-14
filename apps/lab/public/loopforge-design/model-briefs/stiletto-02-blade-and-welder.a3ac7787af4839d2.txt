@@ -1,0 +1,17 @@
+RUN EACH OF THE FOLLOWING AS A SEPARATE PROP TASK, WITH ITS MATCHING IMAGE.
+
+TASK A — STILETTO BLADE MODULE
+
+Create one rigid STILETTO forearm blade module from 03-stiletto-blade-module.77b6eafca7b2fd3d.jpg. This is a mechanical prosthetic mounted to an arm socket, not a hand-held sword. Preserve the black-chrome keyed cylindrical mounting sleeve, narrow mechanical root, restrained brass bearings and one long tapered steel cutting blade. No hand, grip, trigger, character or full forearm. Keep the blade thin with a real solid edge. No smoke, sparks, energy ribbons, light beams, floor or background geometry.
+
+Make a detailed master and a separate low-poly delivery candidate starting around 3,000-5,000 triangles with PBR textures. Preserve the blade silhouette. No character rig or skeletal deformation is required. Export GLB and an editable source format if available, named Stiletto_Blade_Module_v1. Generate ONE canonical module; we will fit and derive the left/right pair offline from the same source to preserve consistency.
+
+The intended assembled scale is a sleeve about 7 cm in diameter and total module length around 55 cm, relative to a roughly 1.8 m robot. These are starting fitting dimensions, not a fixed design if clearance requires revision. Do not pretend the illustrated coupler guarantees an exact mechanical fit to the independently generated body.
+
+TASK B — STILETTO LASER / WELDER MODULE
+
+Create one rigid interchangeable forearm laser/welder module from 04-stiletto-welder-module.6fb60b79c099fbca.jpg. Preserve its compatible keyed coupling sleeve, tapered black-chrome protective housing, recessed brass cooling hardware, compact heat sinks and small copper/ceramic focusing nozzle. No hand, grip, trigger, stock, character or full forearm. Beam OFF; no solid cone, lightning, particles, smoke or glowing volume as geometry.
+
+Make a detailed master and a separate low-poly delivery candidate starting around 3,000-5,000 triangles. Use PBR surface textures, preserving the dark aperture and readable silhouette. Export GLB and an editable source format if available, named Stiletto_Welder_Module_v1. No humanoid rig required. Intended initial scale: same approximately 7 cm sleeve diameter, roughly 25 cm total length. Final socket fit and scale will be established offline against the body.
+
+Both tools share one coupling standard and material family. Their meshes remain independent of the body. We will attach them rigidly to each forearm, establish the mounting origin/forward axis, and add runtime glow and contact sparks ourselves. Never reskin them as flexible fingers or merge them into the body.

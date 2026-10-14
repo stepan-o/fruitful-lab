@@ -37,7 +37,7 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
  }
 };
 export const upcomingReviewSubjects = [
- {id:'cathexis',name:'CATHEXIS',focus:'Presence and influence',direction:'Validate Hot Walk on her own rig; expressive posture, worker-facing gestures and group reactions.'},
+ {id:'cathexis',name:'CATHEXIS',focus:'Presence and influence',direction:'Staged Meshy brief ready: Hot Walk only, no run or alert state; modular face inserts, porcelain shells and grime variants. Her own rig and worker-facing acting remain to validate.'},
  {id:'rivet-witch',name:'RIVET WITCH',focus:'Engineering and intervention',direction:'Tool mounts, precise machine contacts, inspection, repair and visible frustration with unresolved damage.'},
  {id:'thrum',name:'THRUM',focus:'Rhythm and calm',direction:'Distinct movement and vibration cues; worker relaxation must read differently from productive discipline.'}
 ] as const;

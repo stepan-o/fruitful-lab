@@ -1,0 +1,11 @@
+Create STILETTO, a Loopforge factory supervisor, from the attached FRONT, SIDE and BACK modeling references. These are three views of ONE character, not three model variants. The front is the primary silhouette reference; use side and back to resolve depth and hidden surfaces.
+
+Create the BODY ONLY, in the same neutral symmetric A-pose. She has NO HANDS, NO PALMS and NO FINGERS. Both forearms terminate in small keyed cylindrical tool-coupling sockets at the wrist position. Keep full forearms and visible elbow joints. Do not attach blades or welding tools to this body mesh: those are separate rigid assets.
+
+Preserve the slender black-chrome mechanical silhouette, long tapered limbs, fitted segmented torso and pelvis, narrow helmet, crimson-orange slit visor, recessed bearings, restrained brass connections, and purposeful gaps between moving plates. This must resemble the references, not a generic robot or rounded cartoon. No hair, cloth, floating cables or ornamental spikes. Preserve her mechanical heel and planted sole; do not make the foot balance on a needle.
+
+Generate a detailed master, then preserve it and make a separate delivery candidate at approximately 40,000 triangles. This is a starting budget, not permission to destroy the visor, joints or silhouette. Use coherent UVs and PBR base colour, roughness, metallic and normal textures, preferably one shared 2K body material set. Keep dramatic illumination out of base colour; do not bake the background, floor, cast shadows, bloom or sparks into the mesh or textures.
+
+Keep arms and legs separated in the A-pose. Avoid fused armpits, thighs, elbow gaps and ankle joints. Preserve a plausible range of shoulder and hip motion. Do not thicken the body or add visible hands to make rigging easier.
+
+First show the textured model from front, side, rear and three-quarter views, with triangle count. Save it as Stiletto_Body_v1. Preserve the unrigged A-pose master. Do not generate the entire motion bank yet; the next step is a small humanoid-rig test on this exact body.

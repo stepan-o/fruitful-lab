@@ -1,0 +1,8 @@
+Current rebuild constraints — 14 October 2026
+The original motion bank remains source material. In the assembled twin-blade player, source Idle reads as Alert, source Alert as Idle, source Shouting_Angrily (Reprimand) reads as Attack, and source Stand_Talking_Angry (Argument) reads as Threaten. Preserve source names/IDs and record gameplay aliases separately.
+
+Five offline arm corrections exist: Running, Crouch_and_Step_Back, Shouting_Angrily, Kneel_on_One_Knee_and_Stand, Electrocuted_Fall. They are NOT returned by Meshy merely by re-requesting the source clips. Reapply or refit the correction recipes to a new rig and resample the actual exported model. 2,335 poses at 120 Hz passed blade/body/blade/floor checks on the current published derivative, not every possible regenerated model or blend. Existing body gait contacts remain open.
+
+The rigid 55 cm blades attach to each forearm with opposite roll, without mirroring geometry. Socket scale/orientation are calibrated offline. Keep palms and fingers absent; don't solve mounting by adding hands. Welder mounting is pending, not implied by the blade review. A tool module does not grant new repair capability in the simulation.
+
+The red visor's glow is an application material/emission treatment. Preserve a clean visor surface/UV region; no baked red halo or light-volume geometry. Threat and attack require actual agent targets, contact timing and recipient reactions before gameplay use.

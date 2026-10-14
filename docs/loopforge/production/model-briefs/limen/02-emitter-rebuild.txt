@@ -1,0 +1,8 @@
+LIMEN — separate rigid forearm emitter
+Use the accepted body and original cyan blade reference. Generate the physical emitter housing and forearm mounting collar as ONE rigid separate accessory, with its longitudinal axis and mounting end clearly identified. Do not generate a hand, arm, body, floor or background. The complete source blade may include energy geometry, but our runtime retains the housing and creates the energy procedurally; prefer the physical housing alone for this rebuild.
+
+Preserve dark worn metal, cyan-adjacent accents, engineered vents and attachment details. Target about 5,000 triangles for the delivery housing, keeping the high-resolution master separate. Export textured GLB and editable FBX with actual dimensions, axes and material inventory. No skeleton is required for a rigid attachment.
+
+Mounting offsets, scale and handedness will be fitted to LIMEN's right forearm offline. Do not claim clearance from a standalone prop. We will validate walk, run, maintenance idle, blends and worker contacts after assembly.
+
+The current 672-triangle core and braids, rapid energy flow, independent cyan/jade/blue/violet shifts, flicker/power-down/restart, reduced-effects mode and future sparks are authored in the renderer. Do not bake those effects into a heavy Meshy mesh.

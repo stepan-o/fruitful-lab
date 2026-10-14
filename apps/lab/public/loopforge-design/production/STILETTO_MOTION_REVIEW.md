@@ -8,6 +8,52 @@ Every production review has the same direct model navigation: All models, LIMEN,
 
 STILETTO uses the actual Security/Forge renderer, starts paused on Running at 0.20 seconds, and offers all 18 source clips plus neutral. Five clips can switch between original and corrected arm curves at the same phase/camera angle. Pause, quarter speed, exact time, source-contact markers, blades independently visible, inspection highlighting, textured/clay/wireframe modes, three CCTV angles and evidence download support the review. Pose links retain clip/version/time; appearance and camera are included in the downloadable evidence. Recorded before/after pictures load only when opened. No main-play cast, BDI, saves or outcomes change.
 
+## Owner acceptance and action meanings — 14 October 2026
+
+The owner accepts STILETTO's prototype appearance, mounted blade arms and the
+acting seen in the review player. All viewed animations appeared fixed. Record
+this as visual acceptance of the current prototype, alongside the earlier
+technical contact flags; no additional curves or collision checks were produced
+by this acceptance pass.
+
+Choose gameplay meaning from the equipped character's visible action. Meshy
+catalog names remain provenance and do not dictate that meaning. The player now
+shows the following labels with their source aliases; IDs, original animation
+tracks, comparison poses, hashes and corrected alternatives remain unchanged.
+
+| Gameplay reading | Existing review/source motion | Use with twin blades |
+| --- | --- | --- |
+| Alert | Idle (`Idle`) | Ready, watchful stance. |
+| Idle | Alert (`Alert`) | Relaxed baseline stance. |
+| Attack | Reprimand (`Shouting_Angrily`) | A physical strike; use the corrected arm variant. Do not present this as ordinary verbal discipline. |
+| Threaten | Argument (`Stand_Talking_Angry`) | Coercive blade display directed at another agent. It can end without a strike. |
+
+These bindings apply to STILETTO with blades. Welder-equipped acting and other
+characters need their own reading; sharing a source clip does not grant the same
+action or capability.
+
+### Proposed supervisor–worker encounters
+
+**Threaten:** STILETTO closes distance, faces a specific worker and displays her
+blades. The worker may comply, freeze, retreat or refuse according to their
+state and perception. An immediate return to work can coexist with lasting fear,
+resentment or changed trust. These response branches are design proposals;
+worker recoil/fear acting is still missing.
+
+**Attack:** a separate intention requires a target, reach, space for both blades
+and a committed contact time. The worker's recoil, injury or shutdown must match
+the outcome admitted by the engine. Threatening must not automatically escalate
+just because its animation finishes. A missed or interrupted strike needs its
+own visible result.
+
+The BDI engine owns the motive and action choice, reservations, interruption,
+contact result and consequences. The renderer expresses the committed sequence;
+random animation selection or mesh intersection does not create damage. Log the
+actor, target, observation/belief, intention, selected action, contact result and
+aftermath. The same threat may arise from an order, initiative, self-interest or
+breakdown; the trace explains which. These paired encounters are not implemented
+in the current single-character player.
+
 ## Published derivative
 
 One shared body and texture set: 41,124 body triangles, two rigid 4,117-triangle blades, 49,358 rendered character triangles, 24 skin joints. Each blade is 55 cm long and attached to its corresponding forearm, with opposite roll and no mirrored geometry. The body remains handless. The welder module is not included in this mounted-blade review; its mechanical fit and interactions need a separate pass. Visor emission remains open.
@@ -29,7 +75,7 @@ All 2,335 corrected poses were evaluated from the final exported GLB at 120 Hz, 
 - Running opens the upper arms by up to 14° and elbows by up to 7°. Original stride, body lean and loop seam remain.
 - Recoil and reprimand apply small, smoothly bounded right-arm corrections around the offending gesture.
 - Rise from kneeling holds blades outside the knees and above the floor. The source starts kneeling and rises; it is not a complete kneel-and-rise cycle.
-- Electrical collapse lifts the forearms to avoid driving blades through the floor. The right-arm correction leads impact and is smoothed. This larger choreography change especially needs the owner's artistic acceptance.
+- Electrical collapse lifts the forearms to avoid driving blades through the floor. The right-arm correction leads impact and is smoothed. The owner accepted the visible acting on 14 October; physical interaction and transition checks remain separate.
 
 This is offline animation authoring. There is no runtime collision solver, IK or retargeter. All 18 original clips / 1,404 original tracks are exactly preserved; all 376 unedited tracks inside corrected variants are exactly preserved. Geometry, skin, mounting, source timing, leg curves and every translation/scale track are unchanged. Only selected arm rotations differ. Validation reports zero errors and one inherited `NODE_SKINNED_MESH_NON_ROOT` warning.
 
@@ -43,7 +89,7 @@ The original 18-clip blade sweep uses 30 Hz (2,441 poses). In the player, the fi
 
 Body-to-body contact candidates remain in Grounded walk, Quick Walk, Forward sprint, Listening Gesture, Idle Turn Right, Electrical collapse and Injured walk. Arm corrections do not repair these gaits. Check precise foot planting, mechanical plate deformation, transitions and room contacts before gameplay acceptance. Source travel is preserved; horizontal subject-centering in the review is only a viewing transform.
 
-Artistic acceptance of the corrected acting, welder mounting, visor glow, worker encounters, factory-state integration and crowd/physical-device performance remain open. Passing sampled blade checks must not silently mark the entire character or every action production-ready.
+The corrected acting has owner visual acceptance. Welder mounting, visor glow, worker encounters, factory-state integration and crowd/physical-device performance remain open. Passing sampled blade checks must not silently mark the entire character or every action production-ready.
 
 ## Provenance and repeatability
 

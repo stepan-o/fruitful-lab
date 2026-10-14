@@ -28,14 +28,19 @@ def render_agents():
          'Next: paired gate inspection and worker contact.', 'LIMEN_MESHY_REVIEW.md'),
         ('Worker 01', '/stepanoskin/loopforge/play/asset-review/worker', 'Nineteen motions on one rig',
          'Idle, scratch, locomotion, carry, gestures and incident reactions. Hot Walk is retained as Cathexis’s future default gait, demonstrated on this worker stand-in.',
-         'Next: gait clearance, afraid recoil and precise machine/cradle work.', 'WORKER_MOTION_REVIEW.md'),
+         'Audited, not corrected. Next: gait clearance, natural arm/wrist posture and a finger-rig feasibility check; afraid recoil and precise machine work still need authoring.', 'WORKER_MOTION_REVIEW.md'),
         ('STILETTO', '/stepanoskin/loopforge/play/asset-review/stiletto', 'Twin blades and motion corrections',
-         'Eighteen source motions plus five corrected arm alternatives. Compare the same timestamp with both blades mounted; inspect recorded contacts and before/after evidence.',
+         'Owner accepts the prototype appearance and mounted-blade acting. Eighteen source motions plus five corrected alternatives remain available with their technical contact flags.',
          'Next: remaining leg contacts, blends, welder mounting, visor emission and paired acting.', 'STILETTO_MOTION_REVIEW.md'),
     ]
     for name, route, title, current_text, next_text, record in current:
         out.append(f'<article class="principle"><span class="kicker">{name} / current review</span><h3>{title}</h3><p>{current_text}</p><p><strong>{next_text}</strong></p><p><a href="{route}">Inspect {name} →</a> · <a href="production/{record}">Review record ↗</a></p></article>')
     out.append('''</div><p>These players review the new assets. Main play still uses placeholder bodies; coordinated encounters and crowd performance with the new cast remain to implement. Passing an isolated motion check does not approve animation blends, machinery contact or a complete shift.</p>
+    <h3>STILETTO: what the motion says</h3>
+    <p>With both blades fitted, the source Idle reads as alert and source Alert as idle. The player labels now follow those readings and retain the original aliases.</p>
+    <div class="principle-grid"><article class="principle"><span class="kicker">THREATEN / source Argument</span><h3>Make a worker yield.</h3><p>The blade display reads as coercion. Proposed responses: comply, freeze, retreat or refuse. Output might recover while fear and resentment accumulate; fear/recoil acting still needs authoring.</p></article>
+    <article class="principle"><span class="kicker">ATTACK / source Reprimand</span><h3>Commit to a strike.</h3><p>The corrected gesture reads as a physical attack. It needs a target, a timed contact and a matching worker reaction. It is a separate intention; a threat can end without violence.</p></article></div>
+    <p>These are accepted visual meanings and proposed encounter uses, not implemented combat. The engine chooses and logs the action and outcome. Animation makes them visible. Different motives can produce the same threat; belief and intention traces explain why.</p>
     <h3>One review process for every character</h3>
     <div class="scale-lenses"><article><span class="kicker">01–02 / IDENTITY</span><h4>Body, equipment and effects.</h4><p>Preserve the concept silhouette and materials. Inspect each tool’s mount and the cues that identify the character in a dark room.</p></article>
     <article><span class="kicker">03–04 / ACTING</span><h4>Motion and physical contact.</h4><p>Read the action without captions. Scrub feet, limbs and tools; compare source and corrected motion with its exact asset revision.</p></article>

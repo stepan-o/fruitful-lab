@@ -23,14 +23,14 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
   body:{status:'Candidate',detail:'One imported worker body and rig; inspect against the approved source art.'},
   equipment:{status:'Needs work',detail:'Working props and contact sockets have not been integrated.'},
   motion:{status:'Candidate',detail:'19 motions available. Hot Walk is a Cathexis reference, not the worker default.'},
-  contact:{status:'Needs work',detail:'Gait and limb contact candidates are flagged. Afraid and precise machine work remain to author.'},
+  contact:{status:'Needs work',detail:'Audited, not corrected. Walk 2, Run Fast 10 and Injured Walk still have leg intersections; gesture contacts and missing afraid/work actions remain.'},
   readability:{status:'Candidate',detail:'Review gestures in factory lighting and at CCTV scale before assigning gameplay meaning.'},
   performance:{status:'Not measured',detail:'One consolidated body and motion bank. Real crowd and device measurements remain open.'}
  },
  'stiletto-blades': {
-  body:{status:'Candidate',detail:'Owner liked the prototype silhouette. Rigid armour weights and visor emission remain open.'},
-  equipment:{status:'Candidate',detail:'Two rigid blades mounted. Welder mounting and tool-change acting are still pending.'},
-  motion:{status:'Candidate',detail:'18 original motions plus five corrected arm alternatives, all independently reviewable.'},
+  body:{status:'Accepted slice',detail:'Owner accepts prototype appearance. Rigid armour weights and visor emission remain open.'},
+  equipment:{status:'Accepted slice',detail:'Owner accepts both mounted blade arms in motion. Welder mounting and tool-change acting are still pending.'},
+  motion:{status:'Accepted slice',detail:'Owner accepts the visible prototype acting. Idle/alert readings swapped; Reprimand reads as attack and Argument as threat. Source clips remain traceable.'},
   contact:{status:'Needs work',detail:'2,335 corrected poses pass sampled blade checks. Gait, blends and machine/worker clearance remain open.'},
   readability:{status:'Candidate',detail:'Factory/CCTV inspection available; visor identity and blade-aware interactions still need acceptance.'},
   performance:{status:'Not measured',detail:'49,358 body-and-blade triangles. Runtime counters are evidence, not crowd or device certification.'}

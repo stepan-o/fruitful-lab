@@ -36,10 +36,10 @@ Original body, blade, welder and motion briefs recovered. Rebuild notes preserve
 - [Runtime meaning and cleanup](/loopforge-design/model-briefs/stiletto-04-runtime-meaning-and-cleanup.21101254865cd48b.txt)
 ## CATHEXIS
 
-Prepared from original character and room art. New generated input references are proposals, not owner-approved meshes. Dirt options A/B/C remain alternatives; build the clean master first.
+Body v2 appearance accepted by the owner on 14 October 2026. Input art derives from original character and room art. Face candidates, grime treatments and motion remain subject to review.
 
 - [Body · front](/media/loopforge-model-briefs/01-cathexis-body-front.260b685edbc8b769.jpg) — Original body proportions and front opening. For skirt material and rear coverage, follow the revised back/profile; this original front drawing predates the reduction in lace.
-- [Body · revised back / worn cloth](/media/loopforge-model-briefs/02-cathexis-back-worn-cloth.f46b50f5d702ac1d.jpg) — Skirt revision reference: continuous rear cloth behind the knees, lower-ankle hem and less decorative lace. Preserve the original body and crown; 3D revision pending.
+- [Body · revised back / worn cloth](/media/loopforge-model-briefs/02-cathexis-back-worn-cloth.f46b50f5d702ac1d.jpg) — Skirt revision reference: continuous rear cloth behind the knees, lower-ankle hem and less decorative lace. Completed revision reference; the resulting v2 body is now accepted.
 - [Body · matching left profile](/media/loopforge-model-briefs/03-cathexis-left-worn-cloth.5ca90f61805e55e6.jpg) — Matches the revised rear fabric and coverage. Character faces left; rear cloth hangs on the right. The visible leg belongs to the preserved front opening. 3D clearance still needs inspection.
 - [Porcelain · Grace](/media/loopforge-model-briefs/04-mask-grace.7e156c7899d94c8c.jpg) — Separate porcelain faceplate — one object per generation
 - [Porcelain · Rapture](/media/loopforge-model-briefs/05-mask-rapture.ef5c280029b3d3ea.jpg) — Separate porcelain faceplate — one object per generation
@@ -55,11 +55,11 @@ Prepared from original character and room art. New generated input references ar
 - [A · dry soot](/media/loopforge-model-briefs/a-body-soot-apose.47085b8220cf5d82.jpg) — Material option — same accepted mesh; selection pending
 - [B · wet machine oil](/media/loopforge-model-briefs/b-body-oil-apose.91e78f5baba1a0fa.jpg) — Material option — same accepted mesh; selection pending
 - [C · caked grime](/media/loopforge-model-briefs/c-body-caked-apose.a108132ca1deb339.jpg) — Material option — same accepted mesh; selection pending
-- [Current model: skirt repair + worn cloth](/loopforge-design/model-briefs/cathexis-08-rear-panel-repair.44e34622c3346c68.txt)
+- [Next: rig the accepted v2 body](/loopforge-design/model-briefs/cathexis-03-rig-tests.9a5555718eb6b1c8.txt)
 - [Full body rebuild (only if needed)](/loopforge-design/model-briefs/cathexis-01-body.12cde250c70e4258.txt)
 - [Face system](/loopforge-design/model-briefs/cathexis-02-face-system.df7c4b05173ccd67.txt)
-- [Rig tests](/loopforge-design/model-briefs/cathexis-03-rig-tests.164fc2688a4f3961.txt)
 - [Acting bank](/loopforge-design/model-briefs/cathexis-04-acting-bank.24b7096ba256d75a.txt)
 - [Signature actions](/loopforge-design/model-briefs/cathexis-05-signature-actions.5f3d707d891d0872.txt)
 - [Room conditions](/loopforge-design/model-briefs/cathexis-06-room-conditions.7f83c96b95fb31df.txt)
-- [Delivery order](/loopforge-design/model-briefs/cathexis-07-delivery-order.1eaba3c078c63efd.txt)
+- [Delivery order](/loopforge-design/model-briefs/cathexis-07-delivery-order.7cd3620e23726ddd.txt)
+- [Completed skirt revision · rebuild reference](/loopforge-design/model-briefs/cathexis-08-rear-panel-repair.ee292aa6edc5be91.txt)

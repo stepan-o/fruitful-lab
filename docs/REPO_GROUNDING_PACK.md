@@ -1,3 +1,5 @@
+Loopforge CATHEXIS v2 acceptance (14 October 2026): the owner accepted the revised body and rear skirt. The shared review player now uses only the 51,034-triangle v2 body; v1 runtime GLB and its obsolete pack manifest are retired at owner request. Source archives remain private. The body is unrigged and its delivery normal map is still missing. Model briefs now start with the v2 rig test: Hot Walk and expressive sway first, then mirror/frustration gestures. Faces remain separate fitting candidates. No simulation/API changes.
+
 Loopforge model brief library (14 October 2026): Game Design → Model briefs (`#model-briefs`, optional `?model=limen|worker|stiletto|cathexis`) adds versioned input art, copyable Meshy stages, on-demand checksum-verified ZIP kits and current viewer links. Canonical source: `docs/loopforge/production/model-briefs/`. CATHEXIS is generation-ready with separate mechanical/porcelain faces; no model yet and grime choice remains pending. LIMEN rebuild prompt is reconstructed, not a recovered transcript. Model viewers now link back to their brief. No simulation/API or AWS access changes.
 
 ## Loopforge CATHEXIS static intake — 14 October 2026

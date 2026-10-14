@@ -46,7 +46,7 @@ export default function AssetInspectionWorkbench({definition:d}:{definition:Insp
  function retryLoad(){setError('');setReady(false);if(floor.current)setRetry(n=>n+1);else{setFloorReady(false);setSceneRetry(n=>n+1);}}
  function evidence(){const result={subject:d.id,revision:d.revision,asset:current,camera,cameraPose:floor.current?.reviewCamera(),angle,portrait,room,turn,surface,lamp,report,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},scope:'Static unrigged inspection; no fitted assembly or motion acceptance.'};const url=URL.createObjectURL(new Blob([JSON.stringify(result,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`${d.name.toLowerCase()}-${id}-review.json`;a.click();URL.revokeObjectURL(url);}
  return <main className={styles.page}>
-  <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>{d.name}<span>Body & face studies / first intake</span></h1></div><Link href={d.brief}>Generation brief ↗</Link></header>
+  <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>{d.name}<span>Body & face review</span></h1></div><Link href={d.brief}>Generation brief ↗</Link></header>
   <ReviewNavigation current={d.id}/><ReviewChecklist subject={d.id}/>
   <div className={styles.workspace}>
    <section className={`${styles.stage} ${styles.modelStage}`} aria-label={`${d.name} asset inspection`}>
@@ -57,7 +57,7 @@ export default function AssetInspectionWorkbench({definition:d}:{definition:Insp
     <div className={styles.caption}><span>{current.triangles.toLocaleString()} TRIANGLES · UNRIGGED</span><strong>{current.label}</strong><small>{current.derived?'LOCAL INSPECTION DERIVATIVE':'SOURCE GEOMETRY'} · {id==='body'?'CLEAN A-POSE':'ISOLATED FACE · DISPLAY SCALE'}</small></div>
    </section>
    <aside className={`${styles.controls} ${local.controls}`} aria-label={`${d.name} inspection controls`}>
-    <span className={styles.kicker}>First exports / static review</span><h2>Inspect the character.</h2><p>{d.description}</p>
+    <span className={styles.kicker}>Current assets / static review</span><h2>Inspect the character.</h2><p>{d.description}</p>
     <label>Asset<select value={id} onChange={e=>choose(e.target.value)}>{d.assets.map(a=><option key={a.id} value={a.id}>{a.label}</option>)}</select></label>
     {d.comparison&&<div className={local.compare} role='group' aria-label={d.comparison.label}><span>{d.comparison.label} · camera stays fixed</span><div className={styles.duo}>{d.comparison.ids.map(key=><button key={key} aria-pressed={id===key} onClick={()=>choose(key)}>{d.assets.find(a=>a.id===key)!.label}</button>)}</div></div>}
     <p className={styles.intent}>{current.note}</p>

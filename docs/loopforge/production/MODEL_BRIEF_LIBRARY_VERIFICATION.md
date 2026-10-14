@@ -33,3 +33,12 @@ The current CATHEXIS kit replaces only its rear input, retains front/profile ref
 The current CATHEXIS kit replaces both rear and profile inputs with a matching worn-cloth pair. The original front is explicitly limited to proportions/front-opening guidance. The first copyable stage requests a separate revision of the existing body: rear infill and reduced decorative lace, with body/crown/masks preserved. Full rebuild instructions, delivery order, image roles and provenance agree with that scope. Viewer geometry remains the original unrigged body.
 
 Publication checks verify all input/preview hashes and byte counts; generated kit files and ZIP CRCs are checked before push. No renderer or runtime behavior changes in this revision. Hosted verification follows the preview build.
+
+
+## Accepted CATHEXIS v2 publication — 14 October 2026
+
+Owner accepted the v2 body and requested removal of v1 from the public viewer. The current pack contains only the 51,034-triangle v2 body plus unchanged face candidates. v1 GLB and its obsolete manifest are removed from this release; source downloads remain private.
+
+Validation: all six static GLBs pass hash, byte count, geometry, normal-map presence and glTF checks. All 31 CATHEXIS kit files match hashes and sizes. Scoped ESLint and the production build (including TypeScript and all asset checks) pass. The built application renders the accepted body with the repaired rear skirt, correct current labels and no v1 option. Phone controls inspected at 390px; 320/390/768px document widths stay within their viewports. No browser console errors during inspection. Existing orbit/camera behavior is retained. Current screenshots are retained in the private cathexis-v2-intake evidence directory.
+
+The new body downloads 5,695,824 bytes, down from 5,898,524. Only the selected asset loads. This static inspection does not establish rigging, costume motion, crowd performance or physical-device frame rates. Normal-map export and first Hot Walk/expressive-sway rig tests are next. Production deployment is verified after the release commit.

@@ -1,3 +1,5 @@
+COMPLETED REBUILD REFERENCE — the resulting v2 body was accepted on 14 October 2026. Do not rerun this revision on the accepted body. Current next step is 03-rig-tests.txt.
+
 Create a separate revision of the existing Cathexis_Body_v1 model. Use the existing body as the authority for geometry and identity. The attached revised back and left-profile images guide changes restricted to the skirt. Preserve the original master and delivery model.
 
 Fill the missing center-back section with continuous fabric reaching the lower ankles, just above the heels. Join/overlap it naturally beneath the existing layered panels. The cloth hangs BEHIND the thighs, knees and calves with physical clearance. Neither knee nor shin may punch through it. Do not make knee-shaped holes, two separate leg coverings or a narrow strip between exposed legs.

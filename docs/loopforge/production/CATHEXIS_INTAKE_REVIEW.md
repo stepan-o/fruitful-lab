@@ -1,11 +1,11 @@
-# CATHEXIS — first body and face intake
+# CATHEXIS — accepted v2 body and face intake
 
 14 October 2026. Candidate intake, not an accepted rig or fitted assembly.
 
 Review player: `/stepanoskin/loopforge/play/asset-review/cathexis`.
 Generation kit: Game Design → Model briefs → CATHEXIS. The Agents tab and every character player link into the shared library.
 
-Current handoff: revise the original skirt using matching worn-cloth back/profile references. Fill the rear gap, reduce ornamental lace and preserve the body, crown, front opening and layered silhouette. These are input-art revisions only; this player still displays the original unrigged body. Inspect a new Meshy export before replacing it or starting rigging.
+Current handoff: the owner accepted body v2 and its repaired rear skirt on 14 October 2026. The public viewer contains only v2, per the owner’s request to drop superseded bodies. Start the staged rig test in Model briefs; the normal map matched to the 50k delivery still needs exporting. Face fitting and moving costume clearance remain open.
 
 ## Files actually received
 
@@ -13,8 +13,8 @@ Eight Meshy FBX packages were found in Downloads and inspected with ufbx. Every 
 
 | Source | Source triangles | Viewer delivery |
 | --- | ---: | --- |
-| Body v1 master | 3,506,880 | Private source only |
-| Body v1 50k | 51,123 | Source geometry; 5.63 MiB |
+| Body v2 master | 3,403,416 | Private source only |
+| Body v2 50k | 51,034 | Accepted source geometry; 5.43 MiB |
 | Mask Grace master | 603,694 | Private source only |
 | Mask Grace 3k | 3,058 | Source geometry; 0.75 MiB |
 | Mask Grace 8k | 8,128 | Source geometry; 0.97 MiB |
@@ -26,7 +26,7 @@ The mechanical derivatives are inspection candidates. They are not Meshy deliver
 
 ## Rendered visual review
 
-All six runtime candidates were inspected in the production-built Babylon player with textured and shape-only views. Front, side and reverse views support these observations:
+The initial six runtime candidates were inspected in the production-built Babylon player with textured and shape-only views. Front, side and reverse views support these observations:
 
 - The body preserves the porcelain/brass costume, open skirt, crown and mechanical heels. Its head still has a grinning skull surface. The teeth read strongly in the texture; shape-only inspection shows the underlying skull/nose/face volume. This is not yet a prepared recessed seat for interchangeable expression inserts. Clear or rework the overlapping surface during assembly.
 - Grace has open eye holes, a hollow reverse and a raised upper mounting/strap shape. Both budgets preserve the silhouette. At close inspection, 3k is visibly more faceted around the cheek/forehead; 8k is smoother. Keep 3k as a lightweight candidate and 8k for close fitting tests until mounted camera comparisons establish the required budget. Neither is accepted on the character yet.
@@ -53,9 +53,9 @@ Each player uses the common six review gates and character navigation. Save revi
 2. The static extractor bakes FBX geometry transforms into right-handed, Y-up meters and exports position, normal and flipped-V UV corner data. Source hashes and bounds accompany the binary geometry.
 3. Run `scripts/characters/import-cathexis-review.mjs` with the private intake directory. It preserves body/Grace triangle counts, welds shared vertices, reduces mechanical faces to approximately 12k triangles, packs PBR maps, and publishes immutable hashed GLBs. Body texture delivery is 2048px; face textures are 1024px.
 4. `scripts/characters/check-cathexis-review.mjs` verifies all six runtime hashes/byte counts, actual triangles, finite geometry/UV attributes, display bounds, expected normal-map presence, absence of rigs/clips, and zero glTF validation errors. It is included in the ordinary character/build checks.
-5. Review the rendered surfaces and silhouettes before accepting any candidate. Then fit Grace and one mechanical face to the body, test eye/cavity clearances, and only then expand expressions and rig the character.
+5. Review the rendered surfaces and silhouettes before accepting any candidate. For the accepted v2 body, first test Hot Walk and expressive sway on its rig; continue face fitting as a separate assembly gate before expanding expressions.
 
-Current runtime pack: `loopforge-cathexis-review`, revision `522d72240362a6c4ce61cab6d36226fd3de2a539a6e61adcaee6bda844cc171f`.
+Current runtime pack: `loopforge-cathexis-review`, revision `4c36727176798cdcec099dc5f1e24003620eea71b51e3f6fc4d0fc00998f666b`.
 
 ## Viewer verification — 14 October 2026
 
@@ -67,4 +67,13 @@ Material and lamp changes explicitly invalidate scene readiness as well as the f
 
 ## Rear skirt repair scope — 14 October 2026
 
-The initial body is the design authority. Fill only the missing central rear cloth behind the legs; retain the original front opening, side panels, hem lengths, outer silhouette, crown and all body parts. Knees and shins must remain behind the new fabric with clearance. Full-dress/crown redesigns and a narrow infill leaving knee openings were rejected. The revised rear input and `08-rear-panel-repair.txt` are in Model briefs and its download kit. The current 3D asset remains v1: image approval does not certify a repaired mesh or moving costume.
+The initial body is the design authority. Fill only the missing central rear cloth behind the legs; retain the original front opening, side panels, hem lengths, outer silhouette, crown and all body parts. Knees and shins must remain behind the new fabric with clearance. Full-dress/crown redesigns and a narrow infill leaving knee openings were rejected. The revised rear input and `08-rear-panel-repair.txt` are in Model briefs and its download kit. This scope produced the subsequently accepted v2 body below; moving costume clearance is still untested.
+
+
+## Accepted v2 body — 14 October 2026
+
+The owner accepted the revised model after front/side/rear inspection. Rear fabric is continuous behind the thighs, knees and calves to the lower ankles, with exposed heels and a small bottom-center hem split. Front opening remains. Neutral-pose rear knee protrusions were not observed. Meshy changed the arm pose and some face/back machinery details beyond the skirt; the owner accepted the resulting appearance. The model remains unrigged.
+
+Downloads: `Cathexis_Body_v2_50k.zip` and `Cathexis_Body_v2_mast.zip`, both CRC-valid FBX packages. Runtime body: 51,034 triangles, 75,869 vertices, one mesh/material, 5,695,824 bytes with 2K delivery textures; source geometry preserved. Master: 3,403,416 triangles, private only. Both contain zero skin joints and animation clips. Delivery has no normal map; obtain a map matched to its own UVs rather than assuming the master map fits.
+
+The v1 body GLB and its previous pack manifest are removed from the new deployment at the owner’s explicit request. Existing deployments are immutable and are not purged by this code change. Other face candidates are unchanged. The viewer loads one selected object at a time. Next: Mixamo-compatible neutral rig plus Hot Walk (106) and expressive sway (415), followed by mirror (48) and head-hold frustration (391) after the first two tests pass. Full acting-bank generation waits on costume/heel/hair clearance.

@@ -34,8 +34,8 @@ def render_agents():
          'Owner accepts the prototype appearance and mounted-blade acting. Eighteen source motions plus five corrected alternatives remain available with their technical contact flags.',
          'Next: remaining leg contacts, blends, welder mounting, visor emission and paired acting.', 'STILETTO_MOTION_REVIEW.md'),
         ('CATHEXIS', '/stepanoskin/loopforge/play/asset-review/cathexis', 'Body, porcelain and mechanical expressions',
-         'Inspect the clean 51k A-pose, compare Grace at 3k and 8k from the same camera, and examine Grimace, Fury and Distress. Mechanical masters use clearly labelled 12k inspection copies.',
-         'Next: shared head fit, body/Grace normal maps, half-shell and rigging. No acting or mounted-face clearance has been validated.', 'CATHEXIS_INTAKE_REVIEW.md'),
+         'Inspect the accepted 51,034-triangle v2 A-pose and completed rear skirt, compare Grace at 3k and 8k from the same camera, and examine Grimace, Fury and Distress. Mechanical masters use clearly labelled 12k inspection copies.',
+         'Next: matched body normal map and a Hot Walk/expressive-sway rig test, then shared head fit and half-shell. No acting or mounted-face clearance has been validated.', 'CATHEXIS_INTAKE_REVIEW.md'),
     ]
     for name, route, title, current_text, next_text, record in current:
         out.append(f'<article class="principle"><span class="kicker">{name} / current review</span><h3>{title}</h3><p>{current_text}</p><p><strong>{next_text}</strong></p><p><a href="{route}">Inspect {name} →</a> · <a href="production/{record}">Review record ↗</a></p></article>')

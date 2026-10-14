@@ -1,6 +1,8 @@
 CATHEXIS — first rig and motion tests
 
-Use the approved Cathexis_Body_v1 derivative. Keep the unrigged visual master. Do not regenerate her body, costume, materials or proportions for each animation.
+Use the owner-accepted Cathexis_Body_v2_50k (51,034 triangles). Keep the unrigged visual master. Do not regenerate her body, costume, materials or proportions for each animation.
+
+Also export a tangent-space normal map matched to this 50k mesh and its UVs, without changing the accepted geometry or base color. The master normal map is not automatically compatible with this remesh. Report if a matched map cannot be exported; this does not prevent a diagnostic rig test.
 
 Create a Mixamo-compatible humanoid rig in a clean neutral A-pose. Crown and mechanical underface should follow the head rigidly; torso reactor follows the torso and hip canisters follow the pelvis. Face masks are separate rigid attachments and should not be fused into the skin or auto-rigged as anatomy.
 
@@ -8,10 +10,10 @@ Important: skirt and hair must not weld the legs together or become uncontrolled
 
 Hands need five separate fingers for later mask handling. Report the ACTUAL exported finger bones and weighting. If only hand/wrist bones exist, say that explicitly. Broad gesture tests can proceed, but exact mask handling will remain an offline task.
 
-First apply ONLY these four tests:
+First apply ONLY Hot Walk (106) and Happy_Sway_Standing (415). Export both for review before expanding the bank. After those pass, add Mirror_Viewing (48) and Head_Hold_in_Pain (391). The four staged tests are:
 1. Hot Walk — our ONLY approved locomotion gait; the prior exported source is Confident_Walk, catalog Action 106. Use that exact source as the first comparison. Keep Hot Walk as our label and retain the source ID/name. If your UI label differs, report the mapping.
-2. Mirror_Viewing — Action 48. Test hand/head/face and hair clearance; not yet a finished mask-change animation.
-3. Happy_Sway_Standing — Action 415. Test relaxed presence, weight shifts, skirt and heel clearance. Do not assume the source is already a seamless idle loop.
+2. Happy_Sway_Standing — Action 415. Test relaxed presence, weight shifts, skirt and heel clearance. Do not assume the source is already a seamless idle loop.
+3. Mirror_Viewing — Action 48. Test hand/head/face and hair clearance; not yet a finished mask-change animation.
 4. Head_Hold_in_Pain — Action 391. Audition head-holding frustration from the conveyor art; test crown, hair and hand clearance. A pain source label does not impose an injury state.
 
 A diagnostic rest pose is required. She NEVER runs and has NO alert state. Do not request ordinary walk/run/alert clips. If the tool automatically bundles them, label them excluded and report that; they must not enter the game bank. No regular worker walk or generic breathing idle as a silent fallback.
@@ -19,7 +21,7 @@ A diagnostic rest pose is required. She NEVER runs and has NO alert state. Do no
 Export each test as a textured GLB with the RIGGED CHARACTER INCLUDED, plus FBX. Keep a separate neutral rigged GLB/FBX. Use the Mixamo skeleton template consistently. If exporting all added animations as one file is supported, also supply it, but keep individual exports so missing clips can be checked.
 
 Use clear aliases:
-Cathexis_Body_v1_Rigged_APose
+Cathexis_Body_v2_Rigged_APose
 cathexis_hot_walk_106_source
 cathexis_mirror_48_source
 cathexis_sway_415_source

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-14-v4",
+  "revision": "model-briefs-2026-10-14-v5",
   "date": "2026-10-14",
   "models": [
     {
@@ -690,25 +690,25 @@
       "id": "cathexis",
       "name": "CATHEXIS",
       "subtitle": "Theatre diva \u00b7 modular faces + surface conditions",
-      "revision": "cathexis-worn-cloth-revision-2026-10-14",
-      "status": "First intake \u00b7 skirt revision pending",
-      "summary": "Delicate theatrical body, interchangeable porcelain and mechanical expressions, and room-dependent grime. Current Meshy task: revise the existing skirt using the matching worn-cloth back/profile references. The viewer still shows the original unrigged body and separate face candidates.",
-      "provenance": "Prepared from original character and room art. New generated input references are proposals, not owner-approved meshes. Dirt options A/B/C remain alternatives; build the clean master first.",
+      "revision": "cathexis-body-v2-accepted-2026-10-14",
+      "status": "Body v2 accepted \u00b7 rigging next",
+      "summary": "The v2 body and continuous rear skirt are accepted. The current viewer uses only this final body version. Next: obtain its matching normal map and test a Mixamo-compatible rig with Hot Walk and expressive sway; face fitting remains separate.",
+      "provenance": "Body v2 appearance accepted by the owner on 14 October 2026. Input art derives from original character and room art. Face candidates, grime treatments and motion remain subject to review.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
-      "viewerLabel": "Inspect the body and face candidates",
+      "viewerLabel": "Inspect the accepted body and face candidates",
       "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
       "record": "/loopforge-design/production/CATHEXIS_INTAKE_REVIEW.md",
       "parts": [
-        "51,123-triangle clean body; unrigged",
+        "51,034-triangle accepted v2 body; unrigged",
         "Grace mask: 3,058 and 8,128-triangle candidates",
         "Three mechanical expression masters with local 12k inspection copies"
       ],
       "remaining": [
-        "Fill the rear skirt gap and reduce decorative lace; preserve body, crown, front opening and layered silhouette",
+        "Matching normal map for the accepted 50k body and Grace masks",
+        "Rig v2; first test Hot Walk and expressive sway, then mirror and frustration gestures",
         "Normalize and fit the face layers to one shared head",
-        "Restore/export the body and Grace normal maps",
         "Half-shell, remaining porcelain expressions and grime selection",
-        "Rig and test Hot Walk plus theatrical acting"
+        "Costume, hair, heel and hand clearance through motion"
       ],
       "images": [
         {
@@ -742,7 +742,7 @@
         },
         {
           "label": "Body \u00b7 revised back / worn cloth",
-          "role": "Skirt revision reference: continuous rear cloth behind the knees, lower-ankle hem and less decorative lace. Preserve the original body and crown; 3D revision pending.",
+          "role": "Skirt revision reference: continuous rear cloth behind the knees, lower-ankle hem and less decorative lace. Completed revision reference; the resulting v2 body is now accepted.",
           "sourceName": "03-cathexis-worn-cloth-candidate.png",
           "sourceSha256": "1b0d3c559b3c5d2bf7f7a7c9743e31f65b80777a972bbd554f5e21ad0db2636d",
           "input": {
@@ -1207,8 +1207,8 @@
       ],
       "prompts": [
         {
-          "title": "Current model: skirt repair + worn cloth",
-          "file": "cathexis/08-rear-panel-repair.txt"
+          "title": "Next: rig the accepted v2 body",
+          "file": "cathexis/03-rig-tests.txt"
         },
         {
           "title": "Full body rebuild (only if needed)",
@@ -1217,10 +1217,6 @@
         {
           "title": "Face system",
           "file": "cathexis/02-face-system.txt"
-        },
-        {
-          "title": "Rig tests",
-          "file": "cathexis/03-rig-tests.txt"
         },
         {
           "title": "Acting bank",
@@ -1237,6 +1233,10 @@
         {
           "title": "Delivery order",
           "file": "cathexis/07-delivery-order.txt"
+        },
+        {
+          "title": "Completed skirt revision \u00b7 rebuild reference",
+          "file": "cathexis/08-rear-panel-repair.txt"
         }
       ]
     }

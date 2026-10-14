@@ -1,52 +1,104 @@
 {
-  "revision": "cathexis-first-intake-2026-10-14-v1",
+  "revision": "cathexis-body-v2-accepted-2026-10-14",
   "intake": [
     {
       "id": "body",
-      "archive": "Meshy_AI_Cathexis_Body_v1_50k_1014181354_texture_fbx.zip",
-      "archiveBytes": 73118234,
-      "archiveSha256": "8b9a64445e5cf87d38c701cbd4a7aaebb7994b1241df207dc5e8a5d905139f19",
-      "fbx": "Meshy_AI_Cathexis_Body_v1_50k_1014181354_texture.fbx",
-      "fbxSha256": "d6c7b33d7aea13883418199682c6e6881e1b805439b071e26581ecc7453b5650",
-      "triangles": 51123,
+      "archive": "Cathexis_Body_v2_50k.zip",
+      "archiveBytes": 70582380,
+      "archiveSha256": "7820d62654bed3d510ee974406dfb0ba0986c6ecd9269927f6341f3320763d39",
+      "fbx": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture.fbx",
+      "fbxSha256": "e897cee07618259637845002928dabb6afab336d5847239b42627b6fe5709b38",
+      "textures": [
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture_metallic.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "L"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture_metallic_roughness.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_50k_1014210415_texture_roughness.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "L"
+        }
+      ],
+      "triangles": 51034,
       "meshes": 1,
       "materials": 1,
       "skinJoints": 0,
       "clips": 0,
       "unitMeters": 0.01,
       "min": [
-        -0.565018,
-        -0.951512,
-        -0.215342
+        -0.625555,
+        -0.951479,
+        -0.257363
       ],
       "max": [
-        0.565026,
-        0.949481,
-        0.223043
+        0.624205,
+        0.948759,
+        0.26323
       ]
     },
     {
       "id": "body-master",
-      "archive": "Meshy_AI_Cathexis_Body_v1_mast_1014181313_image-to-3d-texture_fbx.zip",
-      "archiveBytes": 222593144,
-      "archiveSha256": "8a9e2f75de9363c5893f523192f92d7bae564449b9713cc82861be6a482f4b01",
-      "fbx": "Meshy_AI_Cathexis_Body_v1_mast_1014181313_image-to-3d-texture.fbx",
-      "fbxSha256": "470aeafad9bc5a0d13bbacf0772aa3737688cfe492b1b54703d8a8084696f7a7",
-      "triangles": 3506880,
+      "archive": "Cathexis_Body_v2_mast.zip",
+      "archiveBytes": 221410578,
+      "archiveSha256": "bde160db90e3d4287f6d28b5d3500913c88ae5c7c5733f1a3625172560a552be",
+      "fbx": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture.fbx",
+      "fbxSha256": "5c2157b88ae737a3ebc24de576d4b51e99f9e063412c1f36bcc17d8036e116a5",
+      "textures": [
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture_metallic.png",
+          "width": 2048,
+          "height": 2048,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB"
+        },
+        {
+          "file": "Meshy_AI_Cathexis_Body_v2_mast_1014210402_image-to-3d-texture_roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "mode": "RGB"
+        }
+      ],
+      "triangles": 3403416,
       "meshes": 1,
       "materials": 1,
       "skinJoints": 0,
       "clips": 0,
       "unitMeters": 0.01,
       "min": [
-        -0.565951,
-        -0.951789,
-        -0.21551
+        -0.625704,
+        -0.952014,
+        -0.257821
       ],
       "max": [
-        0.565595,
-        0.950058,
-        0.223186
+        0.624463,
+        0.949357,
+        0.263883
       ]
     },
     {
@@ -197,33 +249,33 @@
   "assets": [
     {
       "id": "body",
-      "label": "Body · clean A-pose",
-      "sourceTriangles": 51123,
-      "triangles": 51123,
-      "vertices": 76651,
-      "bytes": 5898524,
-      "sha256": "b48c6e470becc4eb5b28719cbabc85c9aa26ae8e880545e0e994a0b29090be2a",
-      "sourceArchive": "Meshy_AI_Cathexis_Body_v1_50k_1014181354_texture_fbx.zip",
-      "sourceSha256": "d6c7b33d7aea13883418199682c6e6881e1b805439b071e26581ecc7453b5650",
+      "label": "Body · accepted v2 A-pose",
+      "sourceTriangles": 51034,
+      "triangles": 51034,
+      "vertices": 75869,
+      "bytes": 5695824,
+      "sha256": "aeba362417181f3aa0c5a19526a3d49a80ef408a9c51ee11341ad172cd6701a8",
+      "sourceArchive": "Cathexis_Body_v2_50k.zip",
+      "sourceSha256": "e897cee07618259637845002928dabb6afab336d5847239b42627b6fe5709b38",
       "sourceBounds": {
         "min": [
-          -0.565018,
-          -0.951512,
-          -0.215342
+          -0.625555,
+          -0.951479,
+          -0.257363
         ],
         "max": [
-          0.565026,
-          0.949481,
-          0.223043
+          0.624205,
+          0.948759,
+          0.26323
         ]
       },
-      "displayScale": 0.9994776414221408,
+      "displayScale": 0.9998747525309988,
       "textureSize": 2048,
       "normalMap": false,
       "skinJoints": 0,
       "clips": 0,
       "derived": false,
-      "note": "Unrigged source body. No normal map in the 50k download."
+      "note": "Owner-accepted v2 body and rear skirt. Unrigged; the 50k export still lacks a matching normal map."
     },
     {
       "id": "grace-3k",
@@ -376,5 +428,10 @@
       "note": "Locally simplified inspection derivative. Source master retained; final remesh and fit pending."
     }
   ],
-  "scope": "Separate unrigged assets. Each normalized to 1.9 units for isolated inspection, not shared physical dimensions. No fitted assembly, animation, mechanical jaw or gameplay integration."
+  "scope": "Separate unrigged assets. Each normalized to 1.9 units for isolated inspection, not shared physical dimensions. No fitted assembly, animation, mechanical jaw or gameplay integration.",
+  "acceptance": {
+    "body": "Owner accepted v2 appearance and skirt on 2026-10-14, including regenerated body detail differences.",
+    "motion": "Not tested: no rig or animation.",
+    "retirement": "v1 removed from runtime delivery and selection at owner request."
+  }
 }

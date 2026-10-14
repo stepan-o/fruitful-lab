@@ -1,6 +1,6 @@
 # CATHEXIS — staged model and expression brief
 
-Current skirt revision (14 October): fill the missing center-back fabric to the lower ankles and replace excessive decorative lace with worn theatrical cloth. The revised back and left profile are a matching reference pair. Preserve the body, crown, front opening and layered silhouette. The original front image remains a proportions/opening reference, not the material authority. Use **08-rear-panel-repair.txt** on a copy of the existing body first; full rebuild instructions are separate. The viewer still shows the unchanged, unrigged v1 body. Earlier full-dress/crown redesigns and the lace-heavy repair input are superseded.
+Accepted body v2 (14 October): the owner approved the completed rear skirt and current appearance. The viewer now contains only this final body version. Start with **03-rig-tests.txt**: matching delivery normal map, neutral rig, Hot Walk and expressive sway. The completed skirt brief and matching back/profile art remain rebuild references, not a request for another regeneration.
 
 14 October 2026. First body and face exports have arrived; see ../../CATHEXIS_INTAKE_REVIEW.md for measured source inventory and limits. The static viewer does not establish fit, rigging or retargeted motion. A/B/C grime selection remains open until material authoring; it does not block the clean body.
 
@@ -24,4 +24,4 @@ Sticky-hand disgust, mask handling, precision conveyor/vat/loom contacts, Hot Wa
 
 ## Delivery
 
-Generate and inspect the clean body; fit Grace and a mechanical insert; make initial face variants and half-shell; rig/test four motions; expand the bank; select/apply grime. Preserve full sources privately, supply neutral and animated GLB/FBX, verify actual exported clip names and skins. Keep source hashes and later corrections separate. No Meshy jobs were submitted by this archive task.
+Use accepted body v2. First test the rig with Hot Walk and expressive sway; then mirror/frustration gestures. Fit Grace and a mechanical insert in parallel with the body-motion review, make the remaining face variants and half-shell after fit is proven, then expand the motion bank and select/apply grime. Preserve full sources privately, supply neutral and animated GLB/FBX, verify actual exported clip names and skins. Keep source hashes and later corrections separate. No Meshy jobs were submitted by this archive task.

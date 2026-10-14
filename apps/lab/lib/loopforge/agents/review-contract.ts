@@ -12,7 +12,7 @@ export type ReviewGate = {status:'Accepted slice'|'Candidate'|'Needs work'|'Not 
 export type ReviewReadiness = Record<ReviewSection, ReviewGate>;
 export const reviewReadiness: Record<string, ReviewReadiness> = {
  'cathexis-intake': {
-  body:{status:'Candidate',detail:'51,123-triangle clean A-pose and separate face candidates. No rig; body normal map is absent in this export.'},
+  body:{status:'Accepted slice',detail:'Owner accepted the 51,034-triangle v2 body and repaired skirt. Unrigged; the delivery normal map remains missing. Faces are separate candidates.'},
   equipment:{status:'Needs work',detail:'Grace 3k/8k and three mechanical faces are isolated. Head fit, eye apertures, cavities and half-shell remain unvalidated.'},
   motion:{status:'Needs work',detail:'No skin joints or animation clips in the downloaded files. Hot Walk and all acting await rigging.'},
   contact:{status:'Needs work',detail:'No mounted mask, jaw motion, hand-to-face contact or costume clearance test yet.'},

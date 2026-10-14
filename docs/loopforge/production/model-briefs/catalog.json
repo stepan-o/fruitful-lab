@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-14-v1",
+  "revision": "model-briefs-2026-10-14-v2",
   "date": "2026-10-14",
   "models": [
     {
@@ -691,23 +691,23 @@
       "name": "CATHEXIS",
       "subtitle": "Theatre diva \u00b7 modular faces + surface conditions",
       "revision": "Generation brief v2 \u00b7 modular mechanical face",
-      "status": "Ready for staged generation \u00b7 no model yet",
-      "summary": "A delicate porcelain-and-brass performer: chilling, vibing and flirting until coarse work and grime test her composure. Hot Walk is her only travel gait. She never runs and has no alert state.",
+      "status": "First static intake available",
+      "summary": "Delicate theatrical body, interchangeable porcelain and mechanical expressions, and room-dependent grime. The first body, Grace budgets and three exposed expressions are available for static inspection; fit and acting are pending.",
       "provenance": "Prepared from original character and room art. New generated input references are proposals, not owner-approved meshes. Dirt options A/B/C remain alternatives; build the clean master first.",
-      "viewer": null,
-      "viewerLabel": null,
+      "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
+      "viewerLabel": "Inspect the body and face candidates",
       "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
-      "record": "/loopforge-design/model-briefs/CATHEXIS_DESIGN.md",
+      "record": "/loopforge-design/production/CATHEXIS_INTAKE_REVIEW.md",
       "parts": [
-        "One body / permanent head, crown and amber eyes",
-        "Replaceable mechanical expression insert",
-        "Full or half porcelain faceplate",
-        "Same mesh/UV/rig for clean and dirty materials"
+        "51,123-triangle clean body; unrigged",
+        "Grace mask: 3,058 and 8,128-triangle candidates",
+        "Three mechanical expression masters with local 12k inspection copies"
       ],
       "remaining": [
-        "Accept the clean body, face fit and costume clearance",
-        "Select A/B/C grime direction before making material variants",
-        "Retarget Hot Walk and the initial four rig tests"
+        "Normalize and fit the face layers to one shared head",
+        "Restore/export the body and Grace normal maps",
+        "Half-shell, remaining porcelain expressions and grime selection",
+        "Rig and test Hot Walk plus theatrical acting"
       ],
       "images": [
         {

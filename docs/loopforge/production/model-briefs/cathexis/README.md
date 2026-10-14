@@ -2,7 +2,7 @@
 
 Generation brief v2 · modular mechanical face · 14 October 2026
 
-Ready for staged generation · no model yet. A delicate porcelain-and-brass performer: chilling, vibing and flirting until coarse work and grime test her composure. Hot Walk is her only travel gait. She never runs and has no alert state.
+First static intake available · fitting and rigging pending. A delicate porcelain-and-brass performer: chilling, vibing and flirting until coarse work and grime test her composure. Hot Walk is her only travel gait. She never runs and has no alert state.
 
 Prepared from original character and room art. New generated input references are proposals, not owner-approved meshes. Dirt options A/B/C remain alternatives; build the clean master first.
 
@@ -10,7 +10,9 @@ Prepared from original character and room art. New generated input references ar
 
 Use prompts in numbered order. Reference images are generated illustrations, not measured engineering projections. Respect each image's role in manifest.json: upload body views together as one character; props and masks separately. Never upload the whole gallery as one model. High-quality JPEG inputs preserve the original framing and use at most 1800 pixels on the longest edge; original PNG masters stay outside the runtime deployment.
 
-No CATHEXIS result exists yet. Worker Hot Walk is only a motion stand-in: https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/worker
+Inspect the first body and face candidates: https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/cathexis
+
+The eight downloaded FBX sources are unrigged. Grace has 3k/8k delivery candidates; mechanical faces currently use local 12k inspection derivatives. Faces require scale and fit adjustment. Worker Hot Walk remains only a motion stand-in.
 
 ## Open work
 

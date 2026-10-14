@@ -20,7 +20,7 @@ def render_agents():
     <p>The prebuilt factory needs readable people: workers carrying the consequences of a shift, and supervisors whose posture, tools and actions reveal who they are.</p></header>
     <div class="callout"><h3>Start with the current model library.</h3>
     <p><a href="/stepanoskin/loopforge/play/asset-review">Open the character &amp; motion players →</a></p>
-    <p>LIMEN, Worker 01 and STILETTO use the new Meshy bodies. Inspect one assembled character at a time under factory lighting. Drag to orbit, scroll or pinch to zoom, reset the view, and switch to fixed CCTV angles.</p></div>
+    <p>LIMEN, Worker 01 and STILETTO use the new Meshy bodies. CATHEXIS adds a static body-and-face intake. Inspect one character or candidate part at a time under factory lighting. Drag to orbit, scroll or pinch to zoom, reset the view, and switch to fixed CCTV angles.</p></div>
     <p><a href="/stepanoskin/loopforge/design#model-briefs">Model briefs: input art, copyable stages and downloadable rebuild kits →</a></p>
     <h3>What is available now</h3><div class="principle-grid">''']
     current = [
@@ -33,6 +33,9 @@ def render_agents():
         ('STILETTO', '/stepanoskin/loopforge/play/asset-review/stiletto', 'Twin blades and motion corrections',
          'Owner accepts the prototype appearance and mounted-blade acting. Eighteen source motions plus five corrected alternatives remain available with their technical contact flags.',
          'Next: remaining leg contacts, blends, welder mounting, visor emission and paired acting.', 'STILETTO_MOTION_REVIEW.md'),
+        ('CATHEXIS', '/stepanoskin/loopforge/play/asset-review/cathexis', 'Body, porcelain and mechanical expressions',
+         'Inspect the clean 51k A-pose, compare Grace at 3k and 8k from the same camera, and examine Grimace, Fury and Distress. Mechanical masters use clearly labelled 12k inspection copies.',
+         'Next: shared head fit, body/Grace normal maps, half-shell and rigging. No acting or mounted-face clearance has been validated.', 'CATHEXIS_INTAKE_REVIEW.md'),
     ]
     for name, route, title, current_text, next_text, record in current:
         out.append(f'<article class="principle"><span class="kicker">{name} / current review</span><h3>{title}</h3><p>{current_text}</p><p><strong>{next_text}</strong></p><p><a href="{route}">Inspect {name} →</a> · <a href="production/{record}">Review record ↗</a></p></article>')
@@ -47,12 +50,12 @@ def render_agents():
     <article><span class="kicker">03–04 / ACTING</span><h4>Motion and physical contact.</h4><p>Read the action without captions. Scrub feet, limbs and tools; compare source and corrected motion with its exact asset revision.</p></article>
     <article><span class="kicker">05–06 / DELIVERY</span><h4>CCTV and performance.</h4><p>Review actual camera scale and room lighting. Measure the intended scene and device; keep unmeasured crowd costs explicit.</p></article></div>
     <p>Each player records accepted details, candidates, remaining work and unmeasured checks. Character-specific controls fit this shared structure. <a href="production/CHARACTER_REVIEW_STRUCTURE.md">Intake and acceptance contract ↗</a></p>
-    <h3>The cast’s visual anchors</h3><p>Original art sets silhouette, material and acting direction. The next three supervisors have reference art and pending entries in the library; their 3D models have not arrived yet.</p><div class="agent-gallery">''')
+    <h3>The cast’s visual anchors</h3><p>Original art sets silhouette, material and acting direction. CATHEXIS now has a static intake. Rivet Witch and Thrum still have reference art and pending entries; their models have not arrived yet.</p><div class="agent-gallery">''')
     cast = [
         ('Worker 01', 'thrum-conveyor', 'loopforge-supervisors', 'Worn metal. Exposed joints. A working body.', 'Weight, fatigue, hesitation and fear must read in the posture. Keep workers smaller and less ornate than supervisors.'),
         ('LIMEN', 'limen', 'loopforge', 'Heavy armour. One asymmetric cyan blade.', 'The blade is his dark-CCTV identity cue. A planted stance holds a worker and the queue behind them. The emitter-check idle gives that tool a physical routine.'),
         ('STILETTO', 'stiletto-portrait', 'loopforge-console', 'Black chrome. Long limbs. Twin blade forearms.', 'Decisive turns and impatient directives. Her equipment needs its own clearance envelope. A welder module is an asset option; it does not grant unimplemented engineering ability.'),
-        ('CATHEXIS / awaiting model', 'cathexis', 'loopforge', 'Cracked porcelain. Warm eyes. Controlled attention.', 'Hot Walk is her only travel gait; she never runs and has no alert state. Gentle theatrical presence, modular porcelain/mechanical expressions and grime variants are ready for staged generation in Model briefs. Her own rig and paired acting remain untested.'),
+        ('CATHEXIS / static intake', 'cathexis', 'loopforge', 'Cracked porcelain. Warm eyes. Controlled attention.', 'Hot Walk is her only travel gait; she never runs and has no alert state. Gentle theatrical presence, modular porcelain/mechanical expressions and grime variants are documented in Model briefs. The first clean body and separate expressions can now be inspected; face fit, her rig and paired acting remain untested.'),
         ('RIVET WITCH / awaiting model', 'witch', 'loopforge', 'Hood. Green goggles. A practical working kit.', 'Brace, inspect, wrench and test at real machine contacts. Frustration with unfinished damage should be readable before dialogue.'),
         ('THRUM / awaiting model', 'thrum', 'loopforge', 'Speaker head. Chest resonator. Deliberate rhythm.', 'Workers visibly settle around him. Stress relief and slipping discipline need distinct responses, with a real throughput cost.'),
     ]

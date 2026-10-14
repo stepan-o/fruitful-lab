@@ -1,6 +1,6 @@
 # CATHEXIS — staged model and expression brief
 
-14 October 2026. Generation-ready instructions and input images; no CATHEXIS model or retargeted motion has been validated. The clean master can start now. A/B/C grime selection remains open until material authoring; it does not block the clean body.
+14 October 2026. First body and face exports have arrived; see ../../CATHEXIS_INTAKE_REVIEW.md for measured source inventory and limits. The static viewer does not establish fit, rigging or retargeted motion. A/B/C grime selection remains open until material authoring; it does not block the clean body.
 
 ## One head, two face layers
 

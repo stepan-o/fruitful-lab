@@ -2,7 +2,7 @@
 
 ## Entry and navigation
 
-Game Design → Agents → Asset review library. This is the current cast entry point; the rejected-model action fixture appears only in a collapsed historical section and identifies itself as legacy on direct entry. The library is the permanent index of character candidates. Every implemented player links directly to every other implemented player and back to the library. The active subject is marked; selecting another releases the previous scene. No background model preloading. Cathexis, Rivet Witch and Thrum appear as “awaiting model” entries with their review focus, without dead player links or invented readiness.
+Game Design → Agents → Asset review library. This is the current cast entry point; the rejected-model action fixture appears only in a collapsed historical section and identifies itself as legacy on direct entry. The library is the permanent index of character candidates. Every implemented player links directly to every other implemented player and back to the library. The active subject is marked; selecting another releases the previous scene. No background model preloading. Rivet Witch and Thrum appear as “awaiting model” entries with their review focus, without dead player links or invented readiness.
 
 The common structure is a review workbench, separate from player-facing game UI and simulation authority. LIMEN, Worker 01 and STILETTO retain specialized controls. Shared navigation and six evidence gates are implemented now; one configurable player shell and a normalized animation adapter are the next refactor when the next supervisor is added. Do not duplicate a complete viewer for every new character.
 
@@ -62,4 +62,10 @@ For every intake: validate downloaded contents and names → assemble and normal
 
 ## Rebuild archive — 14 October 2026
 
-Game Design → Model briefs stores versioned reference inputs, copyable stage prompts, downloadable kits and links back to every available model player. Viewer navigation returns to the active character brief. LIMEN, Worker 01 and STILETTO have inspected results; CATHEXIS has a generation brief and face/condition candidates but no model. See `model-briefs/README.md`.
+Game Design → Model briefs stores versioned reference inputs, copyable stage prompts, downloadable kits and links back to every available model player. Viewer navigation returns to the active character brief. LIMEN, Worker 01 and STILETTO have inspected results; CATHEXIS has six static inspection assets, a generation brief and face/condition references. Its assembly and motion remain pending. See `model-briefs/README.md`.
+
+## Static intake workbench
+
+CATHEXIS introduces a configurable static adapter within the same review navigation and six acceptance gates. It owns one canvas and one selected model, lazy-loads the selected SHA-verified GLB, cancels stale downloads and disposes previous geometry, textures, shadow registrations and its inspection lamp. The scene pauses offscreen and when the document is hidden. Model materials, clay and wireframe views share the same geometry. Framing can target the body or its face seat; the default limits of the existing motion viewers remain unchanged.
+
+Grace 3k/8k comparisons preserve camera pose and subject orientation. Isolated faces use normalized display dimensions, explicitly distinguished from mounted scale. No assembly, rig, animation, game outcome or source-master quality is implied. Review evidence includes source filename, runtime hash, selection, camera pose, lighting, viewport and available scene counters. High-resolution FBX masters stay private.

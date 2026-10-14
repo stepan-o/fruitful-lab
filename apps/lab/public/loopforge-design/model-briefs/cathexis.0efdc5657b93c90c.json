@@ -1,0 +1,1520 @@
+{
+  "id": "cathexis",
+  "name": "CATHEXIS",
+  "subtitle": "Theatre diva · modular faces + surface conditions",
+  "revision": "Generation brief v2 · modular mechanical face",
+  "status": "First static intake available",
+  "summary": "Delicate theatrical body, interchangeable porcelain and mechanical expressions, and room-dependent grime. The first body, Grace budgets and three exposed expressions are available for static inspection; fit and acting are pending.",
+  "provenance": "Prepared from original character and room art. New generated input references are proposals, not owner-approved meshes. Dirt options A/B/C remain alternatives; build the clean master first.",
+  "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
+  "viewerLabel": "Inspect the body and face candidates",
+  "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
+  "record": "/loopforge-design/production/CATHEXIS_INTAKE_REVIEW.md",
+  "parts": [
+    "51,123-triangle clean body; unrigged",
+    "Grace mask: 3,058 and 8,128-triangle candidates",
+    "Three mechanical expression masters with local 12k inspection copies"
+  ],
+  "remaining": [
+    "Normalize and fit the face layers to one shared head",
+    "Restore/export the body and Grace normal maps",
+    "Half-shell, remaining porcelain expressions and grime selection",
+    "Rig and test Hot Walk plus theatrical acting"
+  ],
+  "images": [
+    {
+      "label": "Body · front",
+      "role": "Body input — expression is replaced by separate insert",
+      "sourceName": "01-cathexis-body-front.png",
+      "sourceSha256": "168fb9fe3af049b9786894d342906a4f85a659f99f1cdbd830c60d69b6911635",
+      "input": {
+        "src": "/media/loopforge-model-briefs/01-cathexis-body-front.260b685edbc8b769.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 395226,
+        "sha256": "260b685edbc8b7695f3d25c24bed1ddbbd5862b7e716d3fe5a15f9d265a3b293"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/01-cathexis-body-front-360.1b34ac85ad78d4a6.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 23846,
+          "sha256": "1b34ac85ad78d4a6b4c208e5ae2beef6f701e14a780f2a6a34afdad0855ebd45"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/01-cathexis-body-front-720.0f466ea5edc7319b.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 81484,
+          "sha256": "0f466ea5edc7319b3aaeecea09d71c03446bcbb0dc58d0aa8bced7ce2f054d70"
+        }
+      ],
+      "archivePath": "images/01-cathexis-body-front.260b685edbc8b769.jpg"
+    },
+    {
+      "label": "Body · corrected back",
+      "role": "Body input",
+      "sourceName": "02-cathexis-body-back-v2.png",
+      "sourceSha256": "03ab8b79eceb1f3ad5c47b719c99a74ef7c90799b2d87a857381d4525cfb19fb",
+      "input": {
+        "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 383708,
+        "sha256": "d765eb0b4c8a0ff0b1a2ffea82e542ff8ff920c0129ac8ef42470fde47e11fd4"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2-360.3a950adaaa9f1b5b.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 25112,
+          "sha256": "3a950adaaa9f1b5b1423813910efbe91981571dfb97c8033cf46089b24a57aad"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2-720.5b61b1c027b03dee.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 81822,
+          "sha256": "5b61b1c027b03deec3aaf66b736bf930940a64e59afcb6fdfa8a512aa4251026"
+        }
+      ],
+      "archivePath": "images/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg"
+    },
+    {
+      "label": "Body · profile",
+      "role": "Body input",
+      "sourceName": "03-cathexis-body-left.png",
+      "sourceSha256": "da923ec954e36efdae95905dbf9c89ea611b8e2b0a801cec167e77235c737c4a",
+      "input": {
+        "src": "/media/loopforge-model-briefs/03-cathexis-body-left.7876f6e8730e1f86.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 273411,
+        "sha256": "7876f6e8730e1f8676a142b73dc3c0ebadc16e31d9147838c224d5528f34e2e0"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/03-cathexis-body-left-360.f20de8713bc16d41.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 14078,
+          "sha256": "f20de8713bc16d419474a1face8e58cbfe1e0305576425dfc8b2cb9bf4d47b52"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/03-cathexis-body-left-720.396ddfe83c997cdd.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 48784,
+          "sha256": "396ddfe83c997cddc61e9aac8e2914aada63dda15aa43460d3c2135759318fa3"
+        }
+      ],
+      "archivePath": "images/03-cathexis-body-left.7876f6e8730e1f86.jpg"
+    },
+    {
+      "label": "Porcelain · Grace",
+      "role": "Separate porcelain faceplate — one object per generation",
+      "sourceName": "04-mask-grace.png",
+      "sourceSha256": "6b62d64263cd324480ce4194d6344208d59d6f511f16d9add92f67cf9513dc96",
+      "input": {
+        "src": "/media/loopforge-model-briefs/04-mask-grace.7e156c7899d94c8c.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 380232,
+        "sha256": "7e156c7899d94c8cecee4a122870cb6c56bd8cdb6f6915592d8f0e13263398fd"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/04-mask-grace-360.64546c30844d8d2c.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 20410,
+          "sha256": "64546c30844d8d2cf0ba1603f3c11e1e8581f1c17e8306068fc1a34808f613b0"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/04-mask-grace-720.d8d6acb09c48e6fd.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 66142,
+          "sha256": "d8d6acb09c48e6fd88659dc2cd8fc2886bdbe6dd74804e735c69a86dab5ab4f7"
+        }
+      ],
+      "archivePath": "images/04-mask-grace.7e156c7899d94c8c.jpg"
+    },
+    {
+      "label": "Porcelain · Rapture",
+      "role": "Separate porcelain faceplate — one object per generation",
+      "sourceName": "05-mask-rapture.png",
+      "sourceSha256": "98865d99902dcb61cdc0432a1683d0d25d3b11bbf40e0cfd79447d0c1685d261",
+      "input": {
+        "src": "/media/loopforge-model-briefs/05-mask-rapture.ef5c280029b3d3ea.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 357830,
+        "sha256": "ef5c280029b3d3eaf13d54960d35ec70d13d4891e87f6553db8ecdbcb01ecbf1"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/05-mask-rapture-360.55f54c3a3b08e85d.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 20834,
+          "sha256": "55f54c3a3b08e85de33bdd2cf16504e7b78229a887e3e419e26f1487c65709e4"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/05-mask-rapture-720.41d9418c7a81b528.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 63890,
+          "sha256": "41d9418c7a81b528794805e2eddbcc09d45ba339058e2ab1aef7cec6f874dc9c"
+        }
+      ],
+      "archivePath": "images/05-mask-rapture.ef5c280029b3d3ea.jpg"
+    },
+    {
+      "label": "Porcelain · Scorn",
+      "role": "Separate porcelain faceplate — one object per generation",
+      "sourceName": "06-mask-scorn.png",
+      "sourceSha256": "1ab8cb1a972a32748852b8fba4a49bfcd07e1b5a8db58bd9414b177188f4c431",
+      "input": {
+        "src": "/media/loopforge-model-briefs/06-mask-scorn.8e32f84f8e0f6891.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 368263,
+        "sha256": "8e32f84f8e0f6891934412cf80cbb48681edebba1749d8231d5a96eed4132868"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/06-mask-scorn-360.ab64a794ad493262.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 21064,
+          "sha256": "ab64a794ad4932629a581f5ab5b758c2d67c5a7b69f32ba288dd0abc088b514e"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/06-mask-scorn-720.0b89c00e36cde192.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 66598,
+          "sha256": "0b89c00e36cde192f579701a53dd6e4960a7e0828ecd0d6a062fc25523d99ced"
+        }
+      ],
+      "archivePath": "images/06-mask-scorn.8e32f84f8e0f6891.jpg"
+    },
+    {
+      "label": "Porcelain · Grief",
+      "role": "Separate porcelain faceplate — one object per generation",
+      "sourceName": "07-mask-grief.png",
+      "sourceSha256": "ca447ab82f0cefc5be515a73425e5cddf045bd77169b4e20436d2ae3c8118cb9",
+      "input": {
+        "src": "/media/loopforge-model-briefs/07-mask-grief.31797f472b6415e4.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 371895,
+        "sha256": "31797f472b6415e4f1fb3e3b89d5cfe22501d9405f168f88b49c138c5b9b1bd3"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/07-mask-grief-360.8d7905a052687051.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 21506,
+          "sha256": "8d7905a0526870519b80adb90397502d1b14d77cfe3cb91787365a8cb6a5bae5"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/07-mask-grief-720.d493ded08a2cf08e.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 67994,
+          "sha256": "d493ded08a2cf08e53ac1f0c55c38bb687d5ea897b23069a3eb45e4b7d1f3ef8"
+        }
+      ],
+      "archivePath": "images/07-mask-grief.31797f472b6415e4.jpg"
+    },
+    {
+      "label": "Porcelain · Fury",
+      "role": "Separate porcelain faceplate — one object per generation",
+      "sourceName": "08-mask-fury.png",
+      "sourceSha256": "e2861b814911605d119ba28b8c3853870d1d4ac4925665262952e40face5a575",
+      "input": {
+        "src": "/media/loopforge-model-briefs/08-mask-fury.131d45d8c56f3bf4.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 389823,
+        "sha256": "131d45d8c56f3bf4cf33fe9133a9cdc86db481e17d6009d2106cc861fc309d45"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/08-mask-fury-360.8a5e467dcf9f94ff.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 22904,
+          "sha256": "8a5e467dcf9f94ffd6d51efb9c4abb87b6e6fe2c7eec8649755398a9aabe0ff5"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/08-mask-fury-720.285e7a8329ee58ee.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 72486,
+          "sha256": "285e7a8329ee58eee5b43aa6cea05429c3e49640158e7779fc616cfdd21493d4"
+        }
+      ],
+      "archivePath": "images/08-mask-fury.131d45d8c56f3bf4.jpg"
+    },
+    {
+      "label": "Porcelain · Distress",
+      "role": "Separate porcelain faceplate — one object per generation",
+      "sourceName": "09-mask-distress.png",
+      "sourceSha256": "80eef314217ea012dcb82ffdbf863990b037aab35b9675a7e61500a91e238d44",
+      "input": {
+        "src": "/media/loopforge-model-briefs/09-mask-distress.efb33dd4f17fdc36.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 387068,
+        "sha256": "efb33dd4f17fdc3606be8341e89a06174822997131894e0a979ec531c1880d8c"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/09-mask-distress-360.8492c42d74f615b1.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 22290,
+          "sha256": "8492c42d74f615b1bce80cfa50080a734d0bbf1406a084dc16b8dd44de18e53a"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/09-mask-distress-720.dd60245a343ca3a1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 72068,
+          "sha256": "dd60245a343ca3a17a15506a6885beee884b3ae6c41d3553162175e4c1409cf4"
+        }
+      ],
+      "archivePath": "images/09-mask-distress.efb33dd4f17fdc36.jpg"
+    },
+    {
+      "label": "Mechanism · Distorted grimace",
+      "role": "Separate expression insert — no duplicated skull or eyes",
+      "sourceName": "10-mechanism-grimace.png",
+      "sourceSha256": "5166df66750a48acb01b2f6d2d7228103b706f3d29e31c822155a0c78c1af3a8",
+      "input": {
+        "src": "/media/loopforge-model-briefs/10-mechanism-grimace.0281cbf9888b957f.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 467941,
+        "sha256": "0281cbf9888b957f865a8c750890538c16f9708298551645b95289ed516ab275"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/10-mechanism-grimace-360.a61ec45232055586.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 29924,
+          "sha256": "a61ec45232055586b003617622ddfd7a946c0ffe09f7bef4fe47ac359cd286f4"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/10-mechanism-grimace-720.3f436240f25e8c1e.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 99572,
+          "sha256": "3f436240f25e8c1e4b8c57541797452c8afeb03d4ff5630b0e540cafcaea1174"
+        }
+      ],
+      "archivePath": "images/10-mechanism-grimace.0281cbf9888b957f.jpg"
+    },
+    {
+      "label": "Mechanism · Fury",
+      "role": "Separate expression insert — no duplicated skull or eyes",
+      "sourceName": "11-mechanism-fury.png",
+      "sourceSha256": "e5b1e4e7a8aff6266db6c35f901b83fd84fe41c72891d89129586b88177e5802",
+      "input": {
+        "src": "/media/loopforge-model-briefs/11-mechanism-fury.f2d08f1ad4306492.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 483653,
+        "sha256": "f2d08f1ad4306492ada49128f7d534a02728eb010c1c982978c8010d022239e2"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/11-mechanism-fury-360.20abc108cc65b6d5.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 32728,
+          "sha256": "20abc108cc65b6d5f768396a06e95add60b6a6869d8c57b0c11be40638229bc4"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/11-mechanism-fury-720.88abdf541b6ad928.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 104956,
+          "sha256": "88abdf541b6ad92841c99dda01e302fe03d65e671073fba35fe610938cda7617"
+        }
+      ],
+      "archivePath": "images/11-mechanism-fury.f2d08f1ad4306492.jpg"
+    },
+    {
+      "label": "Mechanism · Distress",
+      "role": "Separate expression insert — no duplicated skull or eyes",
+      "sourceName": "12-mechanism-distress.png",
+      "sourceSha256": "8faf9fe473e0d30db3d7af898c3e4ddf53c72bb045295d2dc26bd3fb26846448",
+      "input": {
+        "src": "/media/loopforge-model-briefs/12-mechanism-distress.cf2b148ff319e5fb.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 436048,
+        "sha256": "cf2b148ff319e5fbd23f0176e6894f2508baa9134dd01a7c59ca5ac49947d6bc"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/12-mechanism-distress-360.e3c3b38e9e7d6035.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 27074,
+          "sha256": "e3c3b38e9e7d6035b252f28e2495b8a06121f4ceebfb5e85c694b6998bf71f42"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/12-mechanism-distress-720.53fed11ecbf1182d.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 90120,
+          "sha256": "53fed11ecbf1182de24dd042f8c2cb338501efbd0756cb4ca004b5b663ec95f0"
+        }
+      ],
+      "archivePath": "images/12-mechanism-distress.cf2b148ff319e5fb.jpg"
+    },
+    {
+      "label": "Porcelain · half shell",
+      "role": "Separate shell — fit to shared head offline",
+      "sourceName": "13-mask-half-shell.png",
+      "sourceSha256": "b274d63353ad82cf1ba990eb322764da4c7153488282e7ca16ad86cf0d4b2130",
+      "input": {
+        "src": "/media/loopforge-model-briefs/13-mask-half-shell.d633d94d8ad121b2.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 269767,
+        "sha256": "d633d94d8ad121b2b2eb693cc44a5ca0d998d872363c3b5def998f53c84ae0a2"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/13-mask-half-shell-360.3877b9aa62f2248b.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 13648,
+          "sha256": "3877b9aa62f2248bbdd4e2a419d290233956f6080cd0e9678b6b00f3a14490e6"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/13-mask-half-shell-720.9b1c00fbb498efe7.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 43714,
+          "sha256": "9b1c00fbb498efe760f09d3e0e4079558f1a1e4a527c8ab391c9156a7406ade5"
+        }
+      ],
+      "archivePath": "images/13-mask-half-shell.d633d94d8ad121b2.jpg"
+    },
+    {
+      "label": "Split face · assembly guide",
+      "role": "Reference only — do not generate this as a fused full face",
+      "sourceName": "14-split-assembly-reference.png",
+      "sourceSha256": "2b1ab7995ce597d02b7b041bf72c5ae06a47365f835ecb0af7085f96ae0b5ff1",
+      "input": {
+        "src": "/media/loopforge-model-briefs/14-split-assembly-reference.439af4f42c2bd212.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 445356,
+        "sha256": "439af4f42c2bd21220eca9b5ffd84d35feab2b4fa6649c1d00f17e5cd0a54079"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/14-split-assembly-reference-360.29f3d7958452a6f5.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 27932,
+          "sha256": "29f3d7958452a6f5c3e5eb463c651bd3012e5c543f889aba58cde05c8abb5c6d"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/14-split-assembly-reference-720.74123711285f6bdf.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 93786,
+          "sha256": "74123711285f6bdff93a7c3372b35a07eb9f514f24229e2eadd73af77dac4680"
+        }
+      ],
+      "archivePath": "images/14-split-assembly-reference.439af4f42c2bd212.jpg"
+    },
+    {
+      "label": "A · dry soot",
+      "role": "Material option — same accepted mesh; selection pending",
+      "sourceName": "a-body-soot-apose.png",
+      "sourceSha256": "1f5006dd8287780e58d4b46a27b135fe4c15c2848c05331661ca779481bbd40e",
+      "input": {
+        "src": "/media/loopforge-model-briefs/a-body-soot-apose.47085b8220cf5d82.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 375366,
+        "sha256": "47085b8220cf5d82e9c3dd44382a1af8f455a4a321e401277ff40ccc62eab518"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/a-body-soot-apose-360.3c191ec326c999cd.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 21926,
+          "sha256": "3c191ec326c999cde29a1eb4796051440a4b4f7ee30881ff7df0b8783dbf537a"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/a-body-soot-apose-720.83d498b77829891a.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 75758,
+          "sha256": "83d498b77829891a80247ba2445f83b785dec293fbc4dc01ca44d627dcc2ef5c"
+        }
+      ],
+      "archivePath": "images/a-body-soot-apose.47085b8220cf5d82.jpg"
+    },
+    {
+      "label": "B · wet machine oil",
+      "role": "Material option — same accepted mesh; selection pending",
+      "sourceName": "b-body-oil-apose.png",
+      "sourceSha256": "1805d0defe987f9f7c4c7a8a7e99865e5c7397f47d738bdc466c67e5509e5554",
+      "input": {
+        "src": "/media/loopforge-model-briefs/b-body-oil-apose.91e78f5baba1a0fa.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 388843,
+        "sha256": "91e78f5baba1a0faa27d9f9a909f0c3603ac1c6e58c0d72215bb86d74abbea39"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/b-body-oil-apose-360.136a71fda63a487c.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 24584,
+          "sha256": "136a71fda63a487c61de42e7a0fe832895ac03d190c9a15469d19bed00a0f243"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/b-body-oil-apose-720.482fcae45d1a3f30.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 83962,
+          "sha256": "482fcae45d1a3f302b3feec7ab7b00bb97399b7871eb5a13a77cf42683073331"
+        }
+      ],
+      "archivePath": "images/b-body-oil-apose.91e78f5baba1a0fa.jpg"
+    },
+    {
+      "label": "C · caked grime",
+      "role": "Material option — same accepted mesh; selection pending",
+      "sourceName": "c-body-caked-apose.png",
+      "sourceSha256": "23c4ae936bc3d12d88366600c988448265ef9169184c3d2aeff08d3f35cf775e",
+      "input": {
+        "src": "/media/loopforge-model-briefs/c-body-caked-apose.a108132ca1deb339.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 389832,
+        "sha256": "a108132ca1deb3392886721eb0652f3bcd5a86f1fa61cee73698d53d93cd3105"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/c-body-caked-apose-360.3c3708b385fe1d35.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 22906,
+          "sha256": "3c3708b385fe1d3559bb35a0c21a7f65942725f352e8ea06040a118a818f49ed"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/c-body-caked-apose-720.d9a75f3a36e831f1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 80908,
+          "sha256": "d9a75f3a36e831f1208f7cc5cba4e0aeebedb518df2aaa87a519bfba56df5e5e"
+        }
+      ],
+      "archivePath": "images/c-body-caked-apose.a108132ca1deb339.jpg"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Body",
+      "file": "cathexis/01-body.txt",
+      "text": "Create CATHEXIS for Loopforge from the THREE attached body reference images: 01-cathexis-body-front.260b685edbc8b769.jpg, 02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg and 03-cathexis-body-left.7876f6e8730e1f86.jpg.\n\nThis task is the BODY ONLY. Do not install a porcelain face mask. Separate masks will follow as separate assets. Do not infer additional characters from any reference sheet.\n\nIdentity: a theatrical robot diva who runs the Burn-in Theatre. Cracked ivory armor, black articulated mechanics, antique brass corset ribs, compact diadem/headset, amber eye emitters and hip canisters, a compact back reactor, grouped cable-hair and a distressed open-front layered skirt. Elegant, commanding and unmistakably mechanical. Preserve the approved body proportions and high-heeled mechanical feet. Do not turn her into a worker, a glossy generic android, a princess or a weapon-bearing fighter.\n\nThe faceplate and mechanical expression insert are separate replaceable items. Keep the permanent compact skull, crown, hair, amber eye emitters and a shallow oval receiving seat. The mechanical face pictured in the body reference is an assembly placeholder: do NOT fuse its teeth, lips, brows or grin into the immutable skull. If object separation is supported, deliver it as a separately named placeholder; otherwise explain the limitation and preserve the neutral master for offline separation before the rig/motion bank. We will not stack a second face over fused facial geometry. No facial rig is claimed at this stage.\n\nShe is physically delicate and made for performance and fine interaction, not coarse industrial labor. Keep fine hands, porcelain and elegant costume. Later oil/soot and brewery-residue appearances will reuse this EXACT model, UVs and rig. Do not create a heavier dirty-body replacement. Anger and distress will be expressed through fitted face variants and acting, independent of dirt or mask coverage.\n\nGenerate the complete unrigged visual master first, in a clean symmetric A-pose. Hands clear of the torso, five separate mechanical fingers with a distinct thumb, legs and feet separated. The front view is the authority for proportions. Use the rear for reactor/hair construction and the profile for depth. Resolve minor view disagreements coherently rather than duplicating parts.\n\nKeep fabric clear of legs and hands. The skirt is several broad side/rear panels with an open front, not a solid cone. Hair is grouped into a few controllable locks/cable bundles, not thousands of separate strands. Do not bake background shadows, ambient glow, fog, transparent veils or magical energy into geometry. Surface cracks, weave and fine wear should primarily be texture detail.\n\nWhere your tools support it, keep body, skirt panels and hair sections separable. Do not claim separate objects unless the exported file actually contains them. If segmentation is unsupported, say so and preserve the neutral master for our offline cleanup. Do not discard the costume just to make auto-rigging easier.\n\nDeliver:\n- Cathexis_Body_v1_master: full-detail unrigged source.\n- Cathexis_Body_v1_50k: a derivative around 40,000–55,000 triangles, preserving silhouette, fingers, face seating rim and costume. Report the actual count rather than claiming the target was exact.\n- Textured GLB and FBX, neutral A-pose, PBR base color, normal, roughness and metallic maps. 2K working textures are sufficient for the first trial; preserve higher-resolution source maps if available.\n- A brief report of material slots, separate objects, pose and any likely rigging problems.\n\nStop before generating the large animation bank. We will inspect the body, fit a mask and test the rig first. Do not overwrite the master when remeshing.\n",
+      "url": "/loopforge-design/model-briefs/cathexis-01-body.df6838bb24473ee6.txt"
+    },
+    {
+      "title": "Face system",
+      "file": "cathexis/02-face-system.txt",
+      "text": "CATHEXIS — one permanent head, replaceable mechanism, porcelain coverage\nGenerate separate items one at a time; never upload the whole face gallery as one object.\n\n1. Fit master: use 04-mask-grace as the porcelain identity reference. Generate a hollow rigid faceplate with a consistent thin oval seating rim, readable expression, eye apertures and attachment features. No eyes, skull, hair, crown or neck. Fit it to the accepted body before expanding the bank. The body owns the amber eyes.\n2. Exposed mechanical expression insert: use 10-mechanism-grimace as ONE standalone object. Dark metal/brass brow, cheek and jaw plates, connected backing, open eye apertures and no duplicate skull. Use 11-mechanism-fury and 12-mechanism-distress for two separate expression variants with the same mounting boundary. Fury must shout/snarl, distress must be downturned; do not make every mechanical face happy. For the first prototype these are rigid swaps, not a promised facial rig. A composed neutral mechanism can be derived offline from the accepted insert if needed; no separate neutral image is supplied.\n3. Full porcelain family: Grace, Rapture, Scorn, Grief, Fury, Distress. Keep each as a separate rigid asset; expression is not a new body or new head. Do not assume generated contours match perfectly: normalize to the fitted master offline.\n4. Split coverage: use 13-mask-half-shell as the separate retained half-shell. 14-split-assembly-reference only shows the desired combination with the mechanical insert; do not generate a fused complete head from it. Mirror the visual side only if explicitly chosen; preserve the chosen orientation in filenames.\n\nThe same head can show full porcelain, half porcelain / exposed mechanism, or exposed mechanism alone. The expression underneath must suit the visible emotion. Avoid overlapping teeth, doubled lips or two complete noses. Validate mouth cavities and clearance with ALL fitted combinations; some incompatible pairs may need variant-specific clearance or hidden underlying regions.\n\nKeep a high-resolution master and economical close-review derivatives. Porcelain target around 1–3k triangles each, mechanism around 3–6k as an initial proposal; preserve silhouette before count. Export separate named textured GLBs/FBXs, report actual object/material counts, axes and dimensions. A static image does not establish matching geometry, fitting tolerances, topology or articulation.\n\nSmall jaw/brow motion can be added after the rigid expression prototypes pass. No rubber face, live fracture simulation, floating shards, eyes baked into each mask or new full head per expression. Exact face fit, hand-to-mask contacts and swaps belong to offline assembly and actual viewer review.\n",
+      "url": "/loopforge-design/model-briefs/cathexis-02-face-system.df7c4b05173ccd67.txt"
+    },
+    {
+      "title": "Rig tests",
+      "file": "cathexis/03-rig-tests.txt",
+      "text": "CATHEXIS — first rig and motion tests\n\nUse the approved Cathexis_Body_v1 derivative. Keep the unrigged visual master. Do not regenerate her body, costume, materials or proportions for each animation.\n\nCreate a Mixamo-compatible humanoid rig in a clean neutral A-pose. Crown and mechanical underface should follow the head rigidly; torso reactor follows the torso and hip canisters follow the pelvis. Face masks are separate rigid attachments and should not be fused into the skin or auto-rigged as anatomy.\n\nImportant: skirt and hair must not weld the legs together or become uncontrolled rubber. If your rigging tool cannot separate or sensibly weight these parts, report the limitation and provide the neutral export for offline cleanup. Do not replace the distinctive costume with generic clothing. We can add dedicated skirt/hair bones and rigid plate weighting offline.\n\nHands need five separate fingers for later mask handling. Report the ACTUAL exported finger bones and weighting. If only hand/wrist bones exist, say that explicitly. Broad gesture tests can proceed, but exact mask handling will remain an offline task.\n\nFirst apply ONLY these four tests:\n1. Hot Walk — our ONLY approved locomotion gait; the prior exported source is Confident_Walk, catalog Action 106. Use that exact source as the first comparison. Keep Hot Walk as our label and retain the source ID/name. If your UI label differs, report the mapping.\n2. Mirror_Viewing — Action 48. Test hand/head/face and hair clearance; not yet a finished mask-change animation.\n3. Happy_Sway_Standing — Action 415. Test relaxed presence, weight shifts, skirt and heel clearance. Do not assume the source is already a seamless idle loop.\n4. Head_Hold_in_Pain — Action 391. Audition head-holding frustration from the conveyor art; test crown, hair and hand clearance. A pain source label does not impose an injury state.\n\nA diagnostic rest pose is required. She NEVER runs and has NO alert state. Do not request ordinary walk/run/alert clips. If the tool automatically bundles them, label them excluded and report that; they must not enter the game bank. No regular worker walk or generic breathing idle as a silent fallback.\n\nExport each test as a textured GLB with the RIGGED CHARACTER INCLUDED, plus FBX. Keep a separate neutral rigged GLB/FBX. Use the Mixamo skeleton template consistently. If exporting all added animations as one file is supported, also supply it, but keep individual exports so missing clips can be checked.\n\nUse clear aliases:\nCathexis_Body_v1_Rigged_APose\ncathexis_hot_walk_106_source\ncathexis_mirror_48_source\ncathexis_sway_415_source\ncathexis_head_hold_391_source\n\nReport actual clip name, duration, joint count, root translation and root rotation, whether mesh/skin/textures are embedded, and any visible intersections. Do not certify clearance from catalog previews. Inspect the full costume on this rig. Keep source motion intact; any in-place or clearance-corrected version must be a separately named derivative.\n",
+      "url": "/loopforge-design/model-briefs/cathexis-03-rig-tests.164fc2688a4f3961.txt"
+    },
+    {
+      "title": "Acting bank",
+      "file": "cathexis/04-acting-bank.txt",
+      "text": "CATHEXIS — motion auditions on the accepted shared rig\n\nHARD CHARACTER RULES\n- Only Hot Walk for locomotion. Public game name Hot_Walk. The existing approved stand-in export is Animation_Confident_Walk_withSkin.fbx; catalog source 106 Confident_Walk is the matching name candidate. Confirm the exact take against our approved reference. Do not silently substitute Confident_Strut, Flirty_Strut, Stage_Walk or another gait.\n- She NEVER runs and has NO alert state. Do not bundle run/sprint/alert as gameplay fallbacks. A reaction can interrupt a relaxed pose without creating an alert stance.\n- Normal behavior: chilling, vibing, flirting and theatrical social gestures. Coarse work and contamination often provoke frustration. Dirt and mood are related but remain independent.\n- Apply motions to the accepted body/rig, preserving mesh, skeleton and materials. No regeneration between clips.\n\nThis is a broad audition inventory, not a claim that every motion is suitable. Names/IDs were checked against the official catalog on 14 October 2026. Review previews and actual character exports. Reject any candidate that contains combat, running, alert posing or a traveling gait other than Hot Walk. Optional groups are discovery material, not defaults.\n\nStart with the priority pass below after the four rig tests. Then test the wider groups without re-exporting duplicate IDs. Do not manufacture a missing motion or claim custom generation if unavailable. Catalog actions animate the body; they do not guarantee facial expression, articulated fingers or precise mask/prop contact.\n\nPRIORITY PASS\n\n- 106 Confident_Walk — public name Hot Walk; verify approved take\n- 576 Idle_Turn_Left\n- 586 Idle_Turn_Right\n- 52 Sit_to_Stand_Transition_F\n- 58 Step_to_Sit_Transition\n- 32 Chair_Sit_Idle_F\n- 362 Sit_Cross_Legged\n- 364 Sit_on_Chair_Arms_Crossed\n- 27 Big_Heart_Gesture\n- 48 Mirror_Viewing\n- 309 Talk_with_Left_Hand_on_Hip\n- 315 Hand_on_Hip_Gesture\n- 405 Joyful_Dance_with_Hand_Sway\n- 415 Happy_Sway_Standing\n- 41 Formal_Bow\n- 47 Listening_Gesture\n- 49 Motivational_Cheer\n- 308 Talk_Passionately\n- 313 Talk_with_Hands_Open\n- 408 Jazz_Hands\n- 26 Angry_Stomp\n- 51 Shouting_Angrily\n- 311 Stand_Talking_Angry\n- 316 Headache_Relief\n- 317 Shrug\n- 391 Head_Hold_in_Pain\n- 409 Finger_Wag_No\n- 588 Frustrated_Turn_Right\n\nFULL GROUP: CORE MOVEMENT\n- 106 Confident_Walk — Hot Walk is the ONLY gait. The existing worker export aliases this as Confident_Walk; verify the actual take, not just ID. No substitute struts.\n- 576 Idle_Turn_Left\n- 586 Idle_Turn_Right\n- 577 Idle_Step_Turn_Left — Small local pivot only; reject or trim traveling gait.\n- 52 Sit_to_Stand_Transition_F\n- 53 Sit_to_Stand_Transition_M\n- 57 Stand_to_Sit_Transition_M\n- 58 Step_to_Sit_Transition\n- 360 Sit_to_standTransition_Female_2\n- 365 Kneel_on_One_Knee_and_Stand — Knee, skirt, heel and hand contact need inspection; not routine navigation.\n\nFULL GROUP: CHILL / SEATED PRESENCE\n- 32 Chair_Sit_Idle_F\n- 33 Chair_Sit_Idle_M\n- 38 Dozing_Elderly\n- 263 Sleep_on_Desk\n- 268 Sit_and_Doze_Off\n- 272 Lie_on_Chair_Sunbathe_and_Sleep\n- 307 Sitting_Answering_Questions\n- 343 Sit_and_Drink — Chair/cup-contact audition only; not a new gameplay resource.\n- 356 Sit_Hands_on_Head_Lean_Back\n- 359 Look_Back_and_Sit\n- 362 Sit_Cross_Legged\n- 363 Sit_Cross_Legged_on_Floor\n- 364 Sit_on_Chair_Arms_Crossed\n- 369 Lie_Back_Leg_Swing\n- 370 Stand_To_Side_Lying\n- 371 Sit_Lie_Bed\n\nFULL GROUP: FLIRT / VANITY / VIBE\n- 27 Big_Heart_Gesture\n- 48 Mirror_Viewing — Vanity/self-inspection candidate; mirror contact or mask contact is not certified.\n- 309 Talk_with_Left_Hand_on_Hip\n- 315 Hand_on_Hip_Gesture\n- 318 Scheming_Hand_Rub — Hands can suggest self-satisfaction; animation does not reveal hidden motive.\n- 405 Joyful_Dance_with_Hand_Sway — Short stationary phrase for vibing; do not use perpetual full dances as her only idle.\n- 415 Happy_Sway_Standing — Candidate baseline relaxed sway, pending actual loop and costume testing.\n\nFULL GROUP: THEATRE / CONVERSATION\n- 25 Agree_Gesture\n- 28 Big_Wave_Hello\n- 29 Call_Gesture\n- 34 Checkout_Gesture\n- 37 Discuss_While_Moving — Gesture audition only; replace any pacing with Hot Walk.\n- 41 Formal_Bow\n- 42 Gentlemans_Bow\n- 47 Listening_Gesture\n- 49 Motivational_Cheer\n- 56 Stand_and_Chat\n- 59 Victory_Cheer\n- 290 Wave_One_Hand\n- 297 Personalized_Gesture\n- 298 Cheer_with_Both_Hands_Up\n- 299 Stand_Clap_and_Sit_Down\n- 300 Sit_Cheer_with_Left_Hand\n- 301 Cheer_with_Both_Hands_1\n- 302 Stand_Wave_and_Sit_Down\n- 303 Cheer_with_Both_Hands\n- 304 Seated_Fist_Pump\n- 305 Stand_Cheer_and_Sit_Down\n- 306 Cheer_with_One_Hand_Up\n- 308 Talk_Passionately\n- 310 Talk_with_Left_Hand_Raised\n- 313 Talk_with_Hands_Open\n- 314 Talk_with_Right_Hand_Open\n- 342 Stand_and_Drink — Prop-contact audition only; does not introduce a drinking mechanic.\n- 354 Sitting_Clap\n- 357 Sit_Thumbs_Up_Right\n- 358 Sit_Shout_Hands_on_Mouth\n- 403 Victory_Fist_Pump\n- 408 Jazz_Hands\n- 639 Jazz_Hands_inplace — In-place variant is not proof of zero root drift; inspect export.\n\nFULL GROUP: FRUSTRATION / REFUSAL / RECOIL\n- 26 Angry_Stomp\n- 31 Catching_Breath\n- 36 Confused_Scratch — Keep only if it reads as her irritation, not the worker’s dumb idle.\n- 51 Shouting_Angrily\n- 255 Angry_Ground_Stomp\n- 256 Angry_Ground_Stomp_1\n- 257 Angry_Ground_Stomp_2\n- 311 Stand_Talking_Angry\n- 316 Headache_Relief — Audition for weary frustration; do not infer illness from the source label.\n- 317 Shrug\n- 333 Look_Around_Dumbfounded\n- 355 Sit_Finger_Wag_No\n- 368 Angry_To_Tantrum_Sit\n- 391 Head_Hold_in_Pain — Head/crown/hair contact requires cleanup; pain-labeled source can be auditioned for frustration, not proof of injury.\n- 404 Crouch_and_Step_Back\n- 409 Finger_Wag_No\n- 579 Depressed_Full_Turn_Left — Emotional turn one-shot only, not another walk state.\n- 588 Frustrated_Turn_Right — Frustrated local turn only; check any steps do not become an alternate gait.\n\nFULL GROUP: CONTACT AUDITIONS\n- 274 Female_Crouch_Pick_Up_Place_Side\n- 276 Male_Bend_Over_Pick_Up\n- 277 Female_Crouch_Pick_Fruit_Basket_Stand\n- 278 Female_Stand_Pick_Fruit_Basket\n- 280 Female_Crouch_Pick_Throw_Forward\n- 281 Female_Bend_Over_Pick_Up_Inspect\n- 284 Collect_Object\n- 285 open_door\n- 286 open_door_1\n- 287 open_door_2\n- 288 open_door_3\n- 289 open_door_4\n\nFULL GROUP: OPTIONAL DANCE POOL\n- 22 FunnyDancing_01\n- 23 FunnyDancing_02\n- 24 FunnyDancing_03\n- 54 Squat_Stance\n- 63 Arm_Circle_Shuffle\n- 64 All_Night_Dance\n- 65 Bass_Beats\n- 66 Boom_Dance\n- 67 Bubble_Dance\n- 68 Cherish_Pop_Dance\n- 69 Crystal_Beads\n- 70 Cardio_Dance\n- 71 Denim_Pop_Dance\n- 72 Dont_You_Dare — Catalog category is Dancing. Name is not proof of a refusal gesture.\n- 73 Fast_Lightning\n- 74 Gangnam_Groove\n- 75 Indoor_Swing\n- 76 Love_You_Pop_Dance\n- 77 Magic_Genie\n- 78 Not_Your_Mom — Catalog category is Dancing. Name is not proof of a dismissal gesture.\n- 79 OMG_Groove\n- 80 Pop_Dance_LSA2\n- 81 Pod_Baby_Groove\n- 82 Shake_It_Off_Dance\n- 83 Superlove_Pop_Dance\n- 84 You_Groove\n- 591 Hip_Hop_Dance\n- 592 Hip_Hop_Dance_1\n- 593 Hip_Hop_Dance_2\n- 594 Hip_Hop_Dance_3\n- 595 jazz_danc\n- 596 ymca_dance\n- 597 Hip_Hop_Dance_4\n\nFULL GROUP: OPTIONAL UNKNOWN IDLE / GESTURE\n- 3 Arise\n- 11 Idle_02\n- 12 Idle_03\n- 17 Skill_01\n- 18 Skill_02\n- 19 Skill_03\n- 243 Idle_3\n- 244 Idle_4\n- 245 Idle_5\n- 246 Idle_6\n- 247 Idle_7\n- 248 Idle_8\n- 249 Idle_9\n- 250 Idle_10\n- 251 Idle_11\n- 252 Idle_12\n- 253 Idle_13\n- 254 Idle_14\n- 344 Stand_Up1\n- 345 Stand_Up2\n- 346 Stand_Up3\n- 347 Stand_Up4\n- 348 Stand_Up5\n- 349 Stand_Up6\n- 350 Stand_Up7\n- 351 Stand_Up8\n- 352 Stand_Up9\n- 353 Stand_Up10\n- 599 Idle_15\n- 44 Happy_jump_f\n- 61 happy_jump_m\n- 417 Hop_with_Arms_Raised\n\nDELIVERY\nExport every accepted audition as textured rigged GLB and FBX, each with the character mesh, skin and skeleton. Preserve a neutral rigged A-pose separately. Keep source action IDs and actual embedded clip names in the report. Use aliases such as cathexis_391_head_hold_source; keep source names in metadata. Report actual duration, root translation and yaw, start/end pose, loopability and missing finger bones. If an export package excludes later actions, export those cards individually and report the omission; verify the files rather than the viewer alone.\n\nCUSTOM GAPS\nSee 05-signature-actions.txt for greasy-hand disgust, mask swaps, fine loom work, conveyor/vat hand contact and theatrical interaction with workers. Catalog gestures are starting material, not proof those contacts exist. Hot Walk starts/stops and seating approaches must preserve her sole gait.\n",
+      "url": "/loopforge-design/model-briefs/cathexis-04-acting-bank.24b7096ba256d75a.txt"
+    },
+    {
+      "title": "Signature actions",
+      "file": "cathexis/05-signature-actions.txt",
+      "text": "CATHEXIS — signature actions to author after the actual body and masks exist\n\nThese are custom briefs, NOT verified catalog entries. If your Agent interface cannot generate custom motions, state that and leave them pending. The Meshy Text-to-Motion API is a possible separate experiment; we can also author these offline. Neither route guarantees exact mask contact or costume clearance.\n\n1. POISED IDLE (4–6 seconds, loop)\nShe settles onto one hip, raises her chin a fraction, slowly checks the audience and makes one small dismissive wrist flourish. Hold still long enough for the pause to feel intentional. Return seamlessly. No ordinary worker fidget or neutral breathing loop.\n\n2. MASK REVEAL (5–7 seconds, one-shot)\nShe holds eye contact, raises a hand to the temple latch, grips the faceplate, lifts it forward clear of the head and lowers it just beside her shoulder. Hold the exposed mechanism for a beat. Hand contact and the mask's rigid trajectory must be authored against the fitted prop.\n\n3. MASK EXCHANGE (6–9 seconds, staged at a theatre rack)\nShe lifts the old mask, seats it on a known rack hook, selects another and settles it onto the head rim with a small decisive head tilt. Finish in a different composed pose. Keep both prop positions continuous; no invisible disappearing mask or hand through face.\n\n4. INVITE ONE WORKER (4–6 seconds)\nA measured turn toward one person, palm opened low, a teasing beckon, then an expectant hold. The worker may approach or refuse; Cathexis must not clap or celebrate regardless of the response. Exact partner placement is an offline paired scene.\n\n5. DISMISS (3–4 seconds)\nShe looks the recipient up and down, tips her chin, turns one wrist in a small cutting dismissal and turns away before they finish answering. Precision and a held pause, not frantic waving.\n\n6. HOLD THE ROOM / RALLY (6–8 seconds)\nShe collects attention with a small raised hand, opens her arms in a measured expansion, singles out an imagined listener and ends on one emphatic cue. Strong silhouette readable from CCTV. Crowd response is separate and driven by the simulation.\n\n7. GRIEF AS PERFORMANCE (5–7 seconds)\nA hand suspended near the chest, a long bowed head, a controlled opening toward the audience as if asking them to witness a loss. The mask supplies the face; the body supplies the performance. No guaranteed sincerity encoded in the clip.\n\n8. THE LINE IS BENEATH ME (5–7 seconds)\nAt a waist-height station she approaches reluctantly, touches the object with exaggerated distaste, recoils and inspects or wipes dirt from her fingers. Provide a continuation that resumes the attempt with obvious resentment, and a separate refusal/appeal ending. This is not automatically a failed task: original conveyor success art still shows her dirty and angry. Exact object contact and task outcome remain our responsibility.\n\n9. LOSING THE AUDIENCE (6–8 seconds)\nAn invitation receives no response. She repeats it more broadly, freezes when it fails, touches the mask as if checking it and lets the pose collapse. Preserve a readable attempt and recovery before any larger tantrum.\n\n10. OFFENDED EXIT (locomotion with a stationary gesture)\nA dismissive turn and look back lead into the approved Hot Walk. She does not run, hurry into another gait, or enter alert. Preserve attitude, heel and skirt clearance; authored starts/stops/turn blends must connect to Hot Walk. If danger prevents a safe walking route, the simulation must handle that situation rather than silently replacing the gait.\n\n11. CONTAMINATED AT THE BREWERY (5–7 seconds)\nShe withdraws a sticky hand from a known vat-side task, holds it far away from the ivory dress, spreads the fingers and inspects the residue. A sharp recoil becomes an angry glance at a supervisor or worker. Keep a safe grasp/contact phase on the other hand if bracing against the vat. Author hand placement and the partner's position offline. Do not substitute fighting or a happy grin.\n\n12. THE GALLERY IS TOLERABLE (5–7 seconds, loop with contact markers)\nShe makes a precise adjustment at the loom, rests her head languidly against one hand, checks the result with apparent boredom, and returns to a small exact adjustment. Fine motor skill is visible even when enthusiasm is absent. Match the actual loom handles; no generic hammering or heavy lifting.\n\n13. SECURITY IS NOT MY CONCERN (4–6 seconds, staged exit)\nShe glances at a form, lets it fall with a dismissive wrist, turns her back on the checkpoint and leaves with an offended theatrical stride. The paper remains a real prop with a defined release point. Worker movement through the unattended post is a separate simulation response.\n\n14. OVERWHELMED AT THE CONVEYOR (4–6 seconds)\nThe poised stance contracts. Both hands rise to the sides of the crown, shoulders lift and she holds a furious distressed grimace, then tries to regain composure. No smiling, dancing, head impact or damage implied. Keep hand/crown, hair and forearm clearances. A separate angry confrontation can follow if the simulation selects it.\n\nThese scenes need a small finger-pose library and costume tracks. No physical prop exchange is accepted solely because the bare skeleton resembles the action. Keep source takes and cleaned derivatives separate. Dirt follows actual exposure and can persist into a composed gesture; emotional recovery does not clean or repair the robot.\n",
+      "url": "/loopforge-design/model-briefs/cathexis-05-signature-actions.5f3d707d891d0872.txt"
+    },
+    {
+      "title": "Room conditions",
+      "file": "cathexis/06-room-conditions.txt",
+      "text": "CATHEXIS — dirt appearances on the ACCEPTED shared body\n\nChoose one of the neutral A-pose dirt references before this step. These images define a surface treatment; they are NOT separate characters or alternative anatomy. Face masks are separate items and should not be baked onto the body.\n\nPreserve the exact accepted body mesh, UVs, skeleton, skin weights and sockets. If your tools cannot preserve them, provide texture references for offline work instead of remeshing. A newly generated dirty body cannot be assumed to share the rig or animation files.\n\nStage condition: worn cracked ivory, antique brass and black mechanics. She is already aged, not glossy factory-new plastic.\n\nConveyor condition: dense charcoal soot and black-brown machine oil over much of the pale porcelain, cuffs, fingers, bodice and skirt. Darkened matted cable hair. Black-gray stained skirt with sparse pale edges. Use original conveyor art as the benchmark, not a few decorative splashes. The three A-pose options explore dry soot, wet oil and caked mixed grime; the owner will choose or combine them.\n\nBrewery condition: later retexture using wet olive/green-brown process residue on hands, cuffs, bodice and hem. No fluid simulation or extra body geometry needed. Prepare after the conveyor treatment is chosen; do not infer approval from earlier posed concept sketches.\n\nKeep amber eye/canister identity. No new injury, missing pieces, enlarged armor or combat redesign. No baked scenery, lighting or animation pose in textures. Export named material/texture variants; preserve clean source maps. Report any topology/UV changes honestly.\n\nDirt is not an angry face. The selected face item and body animation supply presentation. She can be dirty and composed, clean and furious. Actual contamination follows exposure events and does not reset when changing rooms. This brief does not add cleaning or repair gameplay.\n",
+      "url": "/loopforge-design/model-briefs/cathexis-06-room-conditions.7f83c96b95fb31df.txt"
+    },
+    {
+      "title": "Delivery order",
+      "file": "cathexis/07-delivery-order.txt",
+      "text": "CATHEXIS — delivery order and remaining gates\n1. Generate the clean body in A-pose, with permanent head/eyes and a separate facial-insert boundary. Inspect silhouette, two separated legs, costume, heels, hands and rear. Source body drawing's mechanical face is a placement guide, not fused immutable geometry.\n2. Generate Grace and the distorted mechanical insert separately. Fit head/eyes/insert/shell offline. Then make Fury, Distress and the half-shell. Finish the other porcelain expressions after the interface is sound.\n3. Rig the accepted body and run only the four initial tests in 03-rig-tests. Inspect skirt/hair/arm/heel clearance. Meshy may supply rigid hands rather than fingers; report actual bones. No claim of articulated fingers from a five-finger drawing.\n4. After approval, audition the 28 priority motions, then useful candidates from the broader 161-entry name/category inventory. These are not 161 validated CATHEXIS clips. Use only Hot Walk for travel; no running or alert fallback. An expressive catalog name is not proof of the intended performance.\n5. Select grime treatment A/B/C before material variants. They are comparison inputs, not three new bodies. Keep the same mesh, UVs and rig; brewery residue can be authored after the material direction is chosen. Dirt can accompany anger without forcing it in every scene.\n6. Download original full sources privately, plus neutral and animated textured GLB/FBX. Preserve per-clip names/IDs and actual embedded inventories. All Animations may omit later jobs: verify local files, export missing clips separately.\n\nCustom/offline gaps: sticky-finger disgust, protecting the skirt from grime, mask handling, precise conveyor/vat/loom contacts, Hot Walk starts/stops and paired worker responses. Do not substitute arbitrary gestures or claim these are finished by catalog retargeting.\n\nThe kit is ready to START staged generation; no CATHEXIS model, actual shared mask fit, facial rig, motion clearance or gameplay integration is certified yet. A/B/C material selection can wait until the clean master is accepted.\n",
+      "url": "/loopforge-design/model-briefs/cathexis-07-delivery-order.529fee1408e6b03a.txt"
+    }
+  ],
+  "files": [
+    {
+      "name": "images/01-cathexis-body-front.260b685edbc8b769.jpg",
+      "src": "/media/loopforge-model-briefs/01-cathexis-body-front.260b685edbc8b769.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 395226,
+      "sha256": "260b685edbc8b7695f3d25c24bed1ddbbd5862b7e716d3fe5a15f9d265a3b293"
+    },
+    {
+      "name": "images/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg",
+      "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 383708,
+      "sha256": "d765eb0b4c8a0ff0b1a2ffea82e542ff8ff920c0129ac8ef42470fde47e11fd4"
+    },
+    {
+      "name": "images/03-cathexis-body-left.7876f6e8730e1f86.jpg",
+      "src": "/media/loopforge-model-briefs/03-cathexis-body-left.7876f6e8730e1f86.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 273411,
+      "sha256": "7876f6e8730e1f8676a142b73dc3c0ebadc16e31d9147838c224d5528f34e2e0"
+    },
+    {
+      "name": "images/04-mask-grace.7e156c7899d94c8c.jpg",
+      "src": "/media/loopforge-model-briefs/04-mask-grace.7e156c7899d94c8c.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 380232,
+      "sha256": "7e156c7899d94c8cecee4a122870cb6c56bd8cdb6f6915592d8f0e13263398fd"
+    },
+    {
+      "name": "images/05-mask-rapture.ef5c280029b3d3ea.jpg",
+      "src": "/media/loopforge-model-briefs/05-mask-rapture.ef5c280029b3d3ea.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 357830,
+      "sha256": "ef5c280029b3d3eaf13d54960d35ec70d13d4891e87f6553db8ecdbcb01ecbf1"
+    },
+    {
+      "name": "images/06-mask-scorn.8e32f84f8e0f6891.jpg",
+      "src": "/media/loopforge-model-briefs/06-mask-scorn.8e32f84f8e0f6891.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 368263,
+      "sha256": "8e32f84f8e0f6891934412cf80cbb48681edebba1749d8231d5a96eed4132868"
+    },
+    {
+      "name": "images/07-mask-grief.31797f472b6415e4.jpg",
+      "src": "/media/loopforge-model-briefs/07-mask-grief.31797f472b6415e4.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 371895,
+      "sha256": "31797f472b6415e4f1fb3e3b89d5cfe22501d9405f168f88b49c138c5b9b1bd3"
+    },
+    {
+      "name": "images/08-mask-fury.131d45d8c56f3bf4.jpg",
+      "src": "/media/loopforge-model-briefs/08-mask-fury.131d45d8c56f3bf4.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 389823,
+      "sha256": "131d45d8c56f3bf4cf33fe9133a9cdc86db481e17d6009d2106cc861fc309d45"
+    },
+    {
+      "name": "images/09-mask-distress.efb33dd4f17fdc36.jpg",
+      "src": "/media/loopforge-model-briefs/09-mask-distress.efb33dd4f17fdc36.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 387068,
+      "sha256": "efb33dd4f17fdc3606be8341e89a06174822997131894e0a979ec531c1880d8c"
+    },
+    {
+      "name": "images/10-mechanism-grimace.0281cbf9888b957f.jpg",
+      "src": "/media/loopforge-model-briefs/10-mechanism-grimace.0281cbf9888b957f.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 467941,
+      "sha256": "0281cbf9888b957f865a8c750890538c16f9708298551645b95289ed516ab275"
+    },
+    {
+      "name": "images/11-mechanism-fury.f2d08f1ad4306492.jpg",
+      "src": "/media/loopforge-model-briefs/11-mechanism-fury.f2d08f1ad4306492.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 483653,
+      "sha256": "f2d08f1ad4306492ada49128f7d534a02728eb010c1c982978c8010d022239e2"
+    },
+    {
+      "name": "images/12-mechanism-distress.cf2b148ff319e5fb.jpg",
+      "src": "/media/loopforge-model-briefs/12-mechanism-distress.cf2b148ff319e5fb.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 436048,
+      "sha256": "cf2b148ff319e5fbd23f0176e6894f2508baa9134dd01a7c59ca5ac49947d6bc"
+    },
+    {
+      "name": "images/13-mask-half-shell.d633d94d8ad121b2.jpg",
+      "src": "/media/loopforge-model-briefs/13-mask-half-shell.d633d94d8ad121b2.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 269767,
+      "sha256": "d633d94d8ad121b2b2eb693cc44a5ca0d998d872363c3b5def998f53c84ae0a2"
+    },
+    {
+      "name": "images/14-split-assembly-reference.439af4f42c2bd212.jpg",
+      "src": "/media/loopforge-model-briefs/14-split-assembly-reference.439af4f42c2bd212.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 445356,
+      "sha256": "439af4f42c2bd21220eca9b5ffd84d35feab2b4fa6649c1d00f17e5cd0a54079"
+    },
+    {
+      "name": "images/a-body-soot-apose.47085b8220cf5d82.jpg",
+      "src": "/media/loopforge-model-briefs/a-body-soot-apose.47085b8220cf5d82.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 375366,
+      "sha256": "47085b8220cf5d82e9c3dd44382a1af8f455a4a321e401277ff40ccc62eab518"
+    },
+    {
+      "name": "images/b-body-oil-apose.91e78f5baba1a0fa.jpg",
+      "src": "/media/loopforge-model-briefs/b-body-oil-apose.91e78f5baba1a0fa.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 388843,
+      "sha256": "91e78f5baba1a0faa27d9f9a909f0c3603ac1c6e58c0d72215bb86d74abbea39"
+    },
+    {
+      "name": "images/c-body-caked-apose.a108132ca1deb339.jpg",
+      "src": "/media/loopforge-model-briefs/c-body-caked-apose.a108132ca1deb339.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 389832,
+      "sha256": "a108132ca1deb3392886721eb0652f3bcd5a86f1fa61cee73698d53d93cd3105"
+    },
+    {
+      "name": "prompts/01-body.txt",
+      "src": "/loopforge-design/model-briefs/cathexis-01-body.df6838bb24473ee6.txt",
+      "bytes": 3737,
+      "sha256": "df6838bb24473ee6feaa98b0a1fa1083d968b693cf3c0c2c9fb8642089d5aa24"
+    },
+    {
+      "name": "prompts/02-face-system.txt",
+      "src": "/loopforge-design/model-briefs/cathexis-02-face-system.df7c4b05173ccd67.txt",
+      "bytes": 2738,
+      "sha256": "df7c4b05173ccd6734ba0ef950be48a59b2e03f20adccfbb7f6145ab212fee0b"
+    },
+    {
+      "name": "prompts/03-rig-tests.txt",
+      "src": "/loopforge-design/model-briefs/cathexis-03-rig-tests.164fc2688a4f3961.txt",
+      "bytes": 3017,
+      "sha256": "164fc2688a4f3961dfc4bfc99d9bb9169ea31435c946f9aed6b1bc55e496443d"
+    },
+    {
+      "name": "prompts/04-acting-bank.txt",
+      "src": "/loopforge-design/model-briefs/cathexis-04-acting-bank.24b7096ba256d75a.txt",
+      "bytes": 8533,
+      "sha256": "24b7096ba256d75af78916b2a455d6c9afbb7a7060df93c46ee0ff0471c07541"
+    },
+    {
+      "name": "prompts/05-signature-actions.txt",
+      "src": "/loopforge-design/model-briefs/cathexis-05-signature-actions.5f3d707d891d0872.txt",
+      "bytes": 5416,
+      "sha256": "5f3d707d891d0872740dd68b768599b5e8fbf30e9e39712d088372b53a6eb6d6"
+    },
+    {
+      "name": "prompts/06-room-conditions.txt",
+      "src": "/loopforge-design/model-briefs/cathexis-06-room-conditions.7f83c96b95fb31df.txt",
+      "bytes": 1905,
+      "sha256": "7f83c96b95fb31df95053c358e8be3056ba111654c4b835e28905cd8f02f9c2d"
+    },
+    {
+      "name": "prompts/07-delivery-order.txt",
+      "src": "/loopforge-design/model-briefs/cathexis-07-delivery-order.529fee1408e6b03a.txt",
+      "bytes": 2088,
+      "sha256": "529fee1408e6b03a7240b3ecb8676f0d6e34fd5d41ebc95fa57e462f4e431d8d"
+    },
+    {
+      "name": "DESIGN.md",
+      "src": "/loopforge-design/model-briefs/cathexis-DESIGN.da56dd6f1a929488.md",
+      "bytes": 3559,
+      "sha256": "da56dd6f1a9294882d5ec1f6e5af562ce9f60089374fc09bf4e4f80d09475e01"
+    },
+    {
+      "name": "README.md",
+      "src": "/loopforge-design/model-briefs/cathexis-README.634e595b1dc5cc66.md",
+      "bytes": 1767,
+      "sha256": "634e595b1dc5cc66d056c36135cbd091c31962a08ffc57601c656871ceb419ae"
+    },
+    {
+      "name": "catalog-candidates.json",
+      "src": "/loopforge-design/model-briefs/cathexis-catalog-candidates.25ca1e7503955e7c.json",
+      "bytes": 78727,
+      "sha256": "25ca1e7503955e7c02b8a34197ee8fc2926e46d49e968122f43df89ced5b6849"
+    },
+    {
+      "name": "image-generation-prompts.json",
+      "src": "/loopforge-design/model-briefs/cathexis-image-generation-prompts.4aacb6d1e6609aee.json",
+      "bytes": 22154,
+      "sha256": "4aacb6d1e6609aee885d9af5df900f471782a550890df5123ae52158db9b56d0"
+    },
+    {
+      "name": "new-face-generation-prompts.json",
+      "src": "/loopforge-design/model-briefs/cathexis-new-face-generation-prompts.f4ddedf048abb602.json",
+      "bytes": 16593,
+      "sha256": "f4ddedf048abb602909d1d6a49212603d88b0b7e5de9434bc6a16baaf5122007"
+    }
+  ],
+  "downloadBytes": 6714496,
+  "packageManifest": {
+    "schemaVersion": 1,
+    "id": "cathexis",
+    "revision": "Generation brief v2 · modular mechanical face",
+    "provenance": "Prepared from original character and room art. New generated input references are proposals, not owner-approved meshes. Dirt options A/B/C remain alternatives; build the clean master first.",
+    "viewer": "https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/cathexis",
+    "images": [
+      {
+        "label": "Body · front",
+        "role": "Body input — expression is replaced by separate insert",
+        "sourceName": "01-cathexis-body-front.png",
+        "sourceSha256": "168fb9fe3af049b9786894d342906a4f85a659f99f1cdbd830c60d69b6911635",
+        "input": {
+          "src": "/media/loopforge-model-briefs/01-cathexis-body-front.260b685edbc8b769.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 395226,
+          "sha256": "260b685edbc8b7695f3d25c24bed1ddbbd5862b7e716d3fe5a15f9d265a3b293"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/01-cathexis-body-front-360.1b34ac85ad78d4a6.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 23846,
+            "sha256": "1b34ac85ad78d4a6b4c208e5ae2beef6f701e14a780f2a6a34afdad0855ebd45"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/01-cathexis-body-front-720.0f466ea5edc7319b.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 81484,
+            "sha256": "0f466ea5edc7319b3aaeecea09d71c03446bcbb0dc58d0aa8bced7ce2f054d70"
+          }
+        ],
+        "archivePath": "images/01-cathexis-body-front.260b685edbc8b769.jpg"
+      },
+      {
+        "label": "Body · corrected back",
+        "role": "Body input",
+        "sourceName": "02-cathexis-body-back-v2.png",
+        "sourceSha256": "03ab8b79eceb1f3ad5c47b719c99a74ef7c90799b2d87a857381d4525cfb19fb",
+        "input": {
+          "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 383708,
+          "sha256": "d765eb0b4c8a0ff0b1a2ffea82e542ff8ff920c0129ac8ef42470fde47e11fd4"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2-360.3a950adaaa9f1b5b.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 25112,
+            "sha256": "3a950adaaa9f1b5b1423813910efbe91981571dfb97c8033cf46089b24a57aad"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2-720.5b61b1c027b03dee.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 81822,
+            "sha256": "5b61b1c027b03deec3aaf66b736bf930940a64e59afcb6fdfa8a512aa4251026"
+          }
+        ],
+        "archivePath": "images/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg"
+      },
+      {
+        "label": "Body · profile",
+        "role": "Body input",
+        "sourceName": "03-cathexis-body-left.png",
+        "sourceSha256": "da923ec954e36efdae95905dbf9c89ea611b8e2b0a801cec167e77235c737c4a",
+        "input": {
+          "src": "/media/loopforge-model-briefs/03-cathexis-body-left.7876f6e8730e1f86.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 273411,
+          "sha256": "7876f6e8730e1f8676a142b73dc3c0ebadc16e31d9147838c224d5528f34e2e0"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/03-cathexis-body-left-360.f20de8713bc16d41.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 14078,
+            "sha256": "f20de8713bc16d419474a1face8e58cbfe1e0305576425dfc8b2cb9bf4d47b52"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/03-cathexis-body-left-720.396ddfe83c997cdd.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 48784,
+            "sha256": "396ddfe83c997cddc61e9aac8e2914aada63dda15aa43460d3c2135759318fa3"
+          }
+        ],
+        "archivePath": "images/03-cathexis-body-left.7876f6e8730e1f86.jpg"
+      },
+      {
+        "label": "Porcelain · Grace",
+        "role": "Separate porcelain faceplate — one object per generation",
+        "sourceName": "04-mask-grace.png",
+        "sourceSha256": "6b62d64263cd324480ce4194d6344208d59d6f511f16d9add92f67cf9513dc96",
+        "input": {
+          "src": "/media/loopforge-model-briefs/04-mask-grace.7e156c7899d94c8c.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 380232,
+          "sha256": "7e156c7899d94c8cecee4a122870cb6c56bd8cdb6f6915592d8f0e13263398fd"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/04-mask-grace-360.64546c30844d8d2c.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 20410,
+            "sha256": "64546c30844d8d2cf0ba1603f3c11e1e8581f1c17e8306068fc1a34808f613b0"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/04-mask-grace-720.d8d6acb09c48e6fd.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 66142,
+            "sha256": "d8d6acb09c48e6fd88659dc2cd8fc2886bdbe6dd74804e735c69a86dab5ab4f7"
+          }
+        ],
+        "archivePath": "images/04-mask-grace.7e156c7899d94c8c.jpg"
+      },
+      {
+        "label": "Porcelain · Rapture",
+        "role": "Separate porcelain faceplate — one object per generation",
+        "sourceName": "05-mask-rapture.png",
+        "sourceSha256": "98865d99902dcb61cdc0432a1683d0d25d3b11bbf40e0cfd79447d0c1685d261",
+        "input": {
+          "src": "/media/loopforge-model-briefs/05-mask-rapture.ef5c280029b3d3ea.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 357830,
+          "sha256": "ef5c280029b3d3eaf13d54960d35ec70d13d4891e87f6553db8ecdbcb01ecbf1"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/05-mask-rapture-360.55f54c3a3b08e85d.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 20834,
+            "sha256": "55f54c3a3b08e85de33bdd2cf16504e7b78229a887e3e419e26f1487c65709e4"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/05-mask-rapture-720.41d9418c7a81b528.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 63890,
+            "sha256": "41d9418c7a81b528794805e2eddbcc09d45ba339058e2ab1aef7cec6f874dc9c"
+          }
+        ],
+        "archivePath": "images/05-mask-rapture.ef5c280029b3d3ea.jpg"
+      },
+      {
+        "label": "Porcelain · Scorn",
+        "role": "Separate porcelain faceplate — one object per generation",
+        "sourceName": "06-mask-scorn.png",
+        "sourceSha256": "1ab8cb1a972a32748852b8fba4a49bfcd07e1b5a8db58bd9414b177188f4c431",
+        "input": {
+          "src": "/media/loopforge-model-briefs/06-mask-scorn.8e32f84f8e0f6891.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 368263,
+          "sha256": "8e32f84f8e0f6891934412cf80cbb48681edebba1749d8231d5a96eed4132868"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/06-mask-scorn-360.ab64a794ad493262.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 21064,
+            "sha256": "ab64a794ad4932629a581f5ab5b758c2d67c5a7b69f32ba288dd0abc088b514e"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/06-mask-scorn-720.0b89c00e36cde192.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 66598,
+            "sha256": "0b89c00e36cde192f579701a53dd6e4960a7e0828ecd0d6a062fc25523d99ced"
+          }
+        ],
+        "archivePath": "images/06-mask-scorn.8e32f84f8e0f6891.jpg"
+      },
+      {
+        "label": "Porcelain · Grief",
+        "role": "Separate porcelain faceplate — one object per generation",
+        "sourceName": "07-mask-grief.png",
+        "sourceSha256": "ca447ab82f0cefc5be515a73425e5cddf045bd77169b4e20436d2ae3c8118cb9",
+        "input": {
+          "src": "/media/loopforge-model-briefs/07-mask-grief.31797f472b6415e4.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 371895,
+          "sha256": "31797f472b6415e4f1fb3e3b89d5cfe22501d9405f168f88b49c138c5b9b1bd3"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/07-mask-grief-360.8d7905a052687051.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 21506,
+            "sha256": "8d7905a0526870519b80adb90397502d1b14d77cfe3cb91787365a8cb6a5bae5"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/07-mask-grief-720.d493ded08a2cf08e.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 67994,
+            "sha256": "d493ded08a2cf08e53ac1f0c55c38bb687d5ea897b23069a3eb45e4b7d1f3ef8"
+          }
+        ],
+        "archivePath": "images/07-mask-grief.31797f472b6415e4.jpg"
+      },
+      {
+        "label": "Porcelain · Fury",
+        "role": "Separate porcelain faceplate — one object per generation",
+        "sourceName": "08-mask-fury.png",
+        "sourceSha256": "e2861b814911605d119ba28b8c3853870d1d4ac4925665262952e40face5a575",
+        "input": {
+          "src": "/media/loopforge-model-briefs/08-mask-fury.131d45d8c56f3bf4.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 389823,
+          "sha256": "131d45d8c56f3bf4cf33fe9133a9cdc86db481e17d6009d2106cc861fc309d45"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/08-mask-fury-360.8a5e467dcf9f94ff.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 22904,
+            "sha256": "8a5e467dcf9f94ffd6d51efb9c4abb87b6e6fe2c7eec8649755398a9aabe0ff5"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/08-mask-fury-720.285e7a8329ee58ee.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 72486,
+            "sha256": "285e7a8329ee58eee5b43aa6cea05429c3e49640158e7779fc616cfdd21493d4"
+          }
+        ],
+        "archivePath": "images/08-mask-fury.131d45d8c56f3bf4.jpg"
+      },
+      {
+        "label": "Porcelain · Distress",
+        "role": "Separate porcelain faceplate — one object per generation",
+        "sourceName": "09-mask-distress.png",
+        "sourceSha256": "80eef314217ea012dcb82ffdbf863990b037aab35b9675a7e61500a91e238d44",
+        "input": {
+          "src": "/media/loopforge-model-briefs/09-mask-distress.efb33dd4f17fdc36.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 387068,
+          "sha256": "efb33dd4f17fdc3606be8341e89a06174822997131894e0a979ec531c1880d8c"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/09-mask-distress-360.8492c42d74f615b1.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 22290,
+            "sha256": "8492c42d74f615b1bce80cfa50080a734d0bbf1406a084dc16b8dd44de18e53a"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/09-mask-distress-720.dd60245a343ca3a1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 72068,
+            "sha256": "dd60245a343ca3a17a15506a6885beee884b3ae6c41d3553162175e4c1409cf4"
+          }
+        ],
+        "archivePath": "images/09-mask-distress.efb33dd4f17fdc36.jpg"
+      },
+      {
+        "label": "Mechanism · Distorted grimace",
+        "role": "Separate expression insert — no duplicated skull or eyes",
+        "sourceName": "10-mechanism-grimace.png",
+        "sourceSha256": "5166df66750a48acb01b2f6d2d7228103b706f3d29e31c822155a0c78c1af3a8",
+        "input": {
+          "src": "/media/loopforge-model-briefs/10-mechanism-grimace.0281cbf9888b957f.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 467941,
+          "sha256": "0281cbf9888b957f865a8c750890538c16f9708298551645b95289ed516ab275"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/10-mechanism-grimace-360.a61ec45232055586.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 29924,
+            "sha256": "a61ec45232055586b003617622ddfd7a946c0ffe09f7bef4fe47ac359cd286f4"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/10-mechanism-grimace-720.3f436240f25e8c1e.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 99572,
+            "sha256": "3f436240f25e8c1e4b8c57541797452c8afeb03d4ff5630b0e540cafcaea1174"
+          }
+        ],
+        "archivePath": "images/10-mechanism-grimace.0281cbf9888b957f.jpg"
+      },
+      {
+        "label": "Mechanism · Fury",
+        "role": "Separate expression insert — no duplicated skull or eyes",
+        "sourceName": "11-mechanism-fury.png",
+        "sourceSha256": "e5b1e4e7a8aff6266db6c35f901b83fd84fe41c72891d89129586b88177e5802",
+        "input": {
+          "src": "/media/loopforge-model-briefs/11-mechanism-fury.f2d08f1ad4306492.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 483653,
+          "sha256": "f2d08f1ad4306492ada49128f7d534a02728eb010c1c982978c8010d022239e2"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/11-mechanism-fury-360.20abc108cc65b6d5.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 32728,
+            "sha256": "20abc108cc65b6d5f768396a06e95add60b6a6869d8c57b0c11be40638229bc4"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/11-mechanism-fury-720.88abdf541b6ad928.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 104956,
+            "sha256": "88abdf541b6ad92841c99dda01e302fe03d65e671073fba35fe610938cda7617"
+          }
+        ],
+        "archivePath": "images/11-mechanism-fury.f2d08f1ad4306492.jpg"
+      },
+      {
+        "label": "Mechanism · Distress",
+        "role": "Separate expression insert — no duplicated skull or eyes",
+        "sourceName": "12-mechanism-distress.png",
+        "sourceSha256": "8faf9fe473e0d30db3d7af898c3e4ddf53c72bb045295d2dc26bd3fb26846448",
+        "input": {
+          "src": "/media/loopforge-model-briefs/12-mechanism-distress.cf2b148ff319e5fb.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 436048,
+          "sha256": "cf2b148ff319e5fbd23f0176e6894f2508baa9134dd01a7c59ca5ac49947d6bc"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/12-mechanism-distress-360.e3c3b38e9e7d6035.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 27074,
+            "sha256": "e3c3b38e9e7d6035b252f28e2495b8a06121f4ceebfb5e85c694b6998bf71f42"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/12-mechanism-distress-720.53fed11ecbf1182d.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 90120,
+            "sha256": "53fed11ecbf1182de24dd042f8c2cb338501efbd0756cb4ca004b5b663ec95f0"
+          }
+        ],
+        "archivePath": "images/12-mechanism-distress.cf2b148ff319e5fb.jpg"
+      },
+      {
+        "label": "Porcelain · half shell",
+        "role": "Separate shell — fit to shared head offline",
+        "sourceName": "13-mask-half-shell.png",
+        "sourceSha256": "b274d63353ad82cf1ba990eb322764da4c7153488282e7ca16ad86cf0d4b2130",
+        "input": {
+          "src": "/media/loopforge-model-briefs/13-mask-half-shell.d633d94d8ad121b2.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 269767,
+          "sha256": "d633d94d8ad121b2b2eb693cc44a5ca0d998d872363c3b5def998f53c84ae0a2"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/13-mask-half-shell-360.3877b9aa62f2248b.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 13648,
+            "sha256": "3877b9aa62f2248bbdd4e2a419d290233956f6080cd0e9678b6b00f3a14490e6"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/13-mask-half-shell-720.9b1c00fbb498efe7.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 43714,
+            "sha256": "9b1c00fbb498efe760f09d3e0e4079558f1a1e4a527c8ab391c9156a7406ade5"
+          }
+        ],
+        "archivePath": "images/13-mask-half-shell.d633d94d8ad121b2.jpg"
+      },
+      {
+        "label": "Split face · assembly guide",
+        "role": "Reference only — do not generate this as a fused full face",
+        "sourceName": "14-split-assembly-reference.png",
+        "sourceSha256": "2b1ab7995ce597d02b7b041bf72c5ae06a47365f835ecb0af7085f96ae0b5ff1",
+        "input": {
+          "src": "/media/loopforge-model-briefs/14-split-assembly-reference.439af4f42c2bd212.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 445356,
+          "sha256": "439af4f42c2bd21220eca9b5ffd84d35feab2b4fa6649c1d00f17e5cd0a54079"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/14-split-assembly-reference-360.29f3d7958452a6f5.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 27932,
+            "sha256": "29f3d7958452a6f5c3e5eb463c651bd3012e5c543f889aba58cde05c8abb5c6d"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/14-split-assembly-reference-720.74123711285f6bdf.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 93786,
+            "sha256": "74123711285f6bdff93a7c3372b35a07eb9f514f24229e2eadd73af77dac4680"
+          }
+        ],
+        "archivePath": "images/14-split-assembly-reference.439af4f42c2bd212.jpg"
+      },
+      {
+        "label": "A · dry soot",
+        "role": "Material option — same accepted mesh; selection pending",
+        "sourceName": "a-body-soot-apose.png",
+        "sourceSha256": "1f5006dd8287780e58d4b46a27b135fe4c15c2848c05331661ca779481bbd40e",
+        "input": {
+          "src": "/media/loopforge-model-briefs/a-body-soot-apose.47085b8220cf5d82.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 375366,
+          "sha256": "47085b8220cf5d82e9c3dd44382a1af8f455a4a321e401277ff40ccc62eab518"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/a-body-soot-apose-360.3c191ec326c999cd.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 21926,
+            "sha256": "3c191ec326c999cde29a1eb4796051440a4b4f7ee30881ff7df0b8783dbf537a"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/a-body-soot-apose-720.83d498b77829891a.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 75758,
+            "sha256": "83d498b77829891a80247ba2445f83b785dec293fbc4dc01ca44d627dcc2ef5c"
+          }
+        ],
+        "archivePath": "images/a-body-soot-apose.47085b8220cf5d82.jpg"
+      },
+      {
+        "label": "B · wet machine oil",
+        "role": "Material option — same accepted mesh; selection pending",
+        "sourceName": "b-body-oil-apose.png",
+        "sourceSha256": "1805d0defe987f9f7c4c7a8a7e99865e5c7397f47d738bdc466c67e5509e5554",
+        "input": {
+          "src": "/media/loopforge-model-briefs/b-body-oil-apose.91e78f5baba1a0fa.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 388843,
+          "sha256": "91e78f5baba1a0faa27d9f9a909f0c3603ac1c6e58c0d72215bb86d74abbea39"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/b-body-oil-apose-360.136a71fda63a487c.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 24584,
+            "sha256": "136a71fda63a487c61de42e7a0fe832895ac03d190c9a15469d19bed00a0f243"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/b-body-oil-apose-720.482fcae45d1a3f30.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 83962,
+            "sha256": "482fcae45d1a3f302b3feec7ab7b00bb97399b7871eb5a13a77cf42683073331"
+          }
+        ],
+        "archivePath": "images/b-body-oil-apose.91e78f5baba1a0fa.jpg"
+      },
+      {
+        "label": "C · caked grime",
+        "role": "Material option — same accepted mesh; selection pending",
+        "sourceName": "c-body-caked-apose.png",
+        "sourceSha256": "23c4ae936bc3d12d88366600c988448265ef9169184c3d2aeff08d3f35cf775e",
+        "input": {
+          "src": "/media/loopforge-model-briefs/c-body-caked-apose.a108132ca1deb339.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 389832,
+          "sha256": "a108132ca1deb3392886721eb0652f3bcd5a86f1fa61cee73698d53d93cd3105"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/c-body-caked-apose-360.3c3708b385fe1d35.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 22906,
+            "sha256": "3c3708b385fe1d3559bb35a0c21a7f65942725f352e8ea06040a118a818f49ed"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/c-body-caked-apose-720.d9a75f3a36e831f1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 80908,
+            "sha256": "d9a75f3a36e831f1208f7cc5cba4e0aeebedb518df2aaa87a519bfba56df5e5e"
+          }
+        ],
+        "archivePath": "images/c-body-caked-apose.a108132ca1deb339.jpg"
+      }
+    ],
+    "files": [
+      {
+        "name": "images/01-cathexis-body-front.260b685edbc8b769.jpg",
+        "src": "/media/loopforge-model-briefs/01-cathexis-body-front.260b685edbc8b769.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 395226,
+        "sha256": "260b685edbc8b7695f3d25c24bed1ddbbd5862b7e716d3fe5a15f9d265a3b293"
+      },
+      {
+        "name": "images/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg",
+        "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 383708,
+        "sha256": "d765eb0b4c8a0ff0b1a2ffea82e542ff8ff920c0129ac8ef42470fde47e11fd4"
+      },
+      {
+        "name": "images/03-cathexis-body-left.7876f6e8730e1f86.jpg",
+        "src": "/media/loopforge-model-briefs/03-cathexis-body-left.7876f6e8730e1f86.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 273411,
+        "sha256": "7876f6e8730e1f8676a142b73dc3c0ebadc16e31d9147838c224d5528f34e2e0"
+      },
+      {
+        "name": "images/04-mask-grace.7e156c7899d94c8c.jpg",
+        "src": "/media/loopforge-model-briefs/04-mask-grace.7e156c7899d94c8c.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 380232,
+        "sha256": "7e156c7899d94c8cecee4a122870cb6c56bd8cdb6f6915592d8f0e13263398fd"
+      },
+      {
+        "name": "images/05-mask-rapture.ef5c280029b3d3ea.jpg",
+        "src": "/media/loopforge-model-briefs/05-mask-rapture.ef5c280029b3d3ea.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 357830,
+        "sha256": "ef5c280029b3d3eaf13d54960d35ec70d13d4891e87f6553db8ecdbcb01ecbf1"
+      },
+      {
+        "name": "images/06-mask-scorn.8e32f84f8e0f6891.jpg",
+        "src": "/media/loopforge-model-briefs/06-mask-scorn.8e32f84f8e0f6891.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 368263,
+        "sha256": "8e32f84f8e0f6891934412cf80cbb48681edebba1749d8231d5a96eed4132868"
+      },
+      {
+        "name": "images/07-mask-grief.31797f472b6415e4.jpg",
+        "src": "/media/loopforge-model-briefs/07-mask-grief.31797f472b6415e4.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 371895,
+        "sha256": "31797f472b6415e4f1fb3e3b89d5cfe22501d9405f168f88b49c138c5b9b1bd3"
+      },
+      {
+        "name": "images/08-mask-fury.131d45d8c56f3bf4.jpg",
+        "src": "/media/loopforge-model-briefs/08-mask-fury.131d45d8c56f3bf4.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 389823,
+        "sha256": "131d45d8c56f3bf4cf33fe9133a9cdc86db481e17d6009d2106cc861fc309d45"
+      },
+      {
+        "name": "images/09-mask-distress.efb33dd4f17fdc36.jpg",
+        "src": "/media/loopforge-model-briefs/09-mask-distress.efb33dd4f17fdc36.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 387068,
+        "sha256": "efb33dd4f17fdc3606be8341e89a06174822997131894e0a979ec531c1880d8c"
+      },
+      {
+        "name": "images/10-mechanism-grimace.0281cbf9888b957f.jpg",
+        "src": "/media/loopforge-model-briefs/10-mechanism-grimace.0281cbf9888b957f.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 467941,
+        "sha256": "0281cbf9888b957f865a8c750890538c16f9708298551645b95289ed516ab275"
+      },
+      {
+        "name": "images/11-mechanism-fury.f2d08f1ad4306492.jpg",
+        "src": "/media/loopforge-model-briefs/11-mechanism-fury.f2d08f1ad4306492.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 483653,
+        "sha256": "f2d08f1ad4306492ada49128f7d534a02728eb010c1c982978c8010d022239e2"
+      },
+      {
+        "name": "images/12-mechanism-distress.cf2b148ff319e5fb.jpg",
+        "src": "/media/loopforge-model-briefs/12-mechanism-distress.cf2b148ff319e5fb.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 436048,
+        "sha256": "cf2b148ff319e5fbd23f0176e6894f2508baa9134dd01a7c59ca5ac49947d6bc"
+      },
+      {
+        "name": "images/13-mask-half-shell.d633d94d8ad121b2.jpg",
+        "src": "/media/loopforge-model-briefs/13-mask-half-shell.d633d94d8ad121b2.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 269767,
+        "sha256": "d633d94d8ad121b2b2eb693cc44a5ca0d998d872363c3b5def998f53c84ae0a2"
+      },
+      {
+        "name": "images/14-split-assembly-reference.439af4f42c2bd212.jpg",
+        "src": "/media/loopforge-model-briefs/14-split-assembly-reference.439af4f42c2bd212.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 445356,
+        "sha256": "439af4f42c2bd21220eca9b5ffd84d35feab2b4fa6649c1d00f17e5cd0a54079"
+      },
+      {
+        "name": "images/a-body-soot-apose.47085b8220cf5d82.jpg",
+        "src": "/media/loopforge-model-briefs/a-body-soot-apose.47085b8220cf5d82.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 375366,
+        "sha256": "47085b8220cf5d82e9c3dd44382a1af8f455a4a321e401277ff40ccc62eab518"
+      },
+      {
+        "name": "images/b-body-oil-apose.91e78f5baba1a0fa.jpg",
+        "src": "/media/loopforge-model-briefs/b-body-oil-apose.91e78f5baba1a0fa.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 388843,
+        "sha256": "91e78f5baba1a0faa27d9f9a909f0c3603ac1c6e58c0d72215bb86d74abbea39"
+      },
+      {
+        "name": "images/c-body-caked-apose.a108132ca1deb339.jpg",
+        "src": "/media/loopforge-model-briefs/c-body-caked-apose.a108132ca1deb339.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 389832,
+        "sha256": "a108132ca1deb3392886721eb0652f3bcd5a86f1fa61cee73698d53d93cd3105"
+      },
+      {
+        "name": "prompts/01-body.txt",
+        "src": "/loopforge-design/model-briefs/cathexis-01-body.df6838bb24473ee6.txt",
+        "bytes": 3737,
+        "sha256": "df6838bb24473ee6feaa98b0a1fa1083d968b693cf3c0c2c9fb8642089d5aa24"
+      },
+      {
+        "name": "prompts/02-face-system.txt",
+        "src": "/loopforge-design/model-briefs/cathexis-02-face-system.df7c4b05173ccd67.txt",
+        "bytes": 2738,
+        "sha256": "df7c4b05173ccd6734ba0ef950be48a59b2e03f20adccfbb7f6145ab212fee0b"
+      },
+      {
+        "name": "prompts/03-rig-tests.txt",
+        "src": "/loopforge-design/model-briefs/cathexis-03-rig-tests.164fc2688a4f3961.txt",
+        "bytes": 3017,
+        "sha256": "164fc2688a4f3961dfc4bfc99d9bb9169ea31435c946f9aed6b1bc55e496443d"
+      },
+      {
+        "name": "prompts/04-acting-bank.txt",
+        "src": "/loopforge-design/model-briefs/cathexis-04-acting-bank.24b7096ba256d75a.txt",
+        "bytes": 8533,
+        "sha256": "24b7096ba256d75af78916b2a455d6c9afbb7a7060df93c46ee0ff0471c07541"
+      },
+      {
+        "name": "prompts/05-signature-actions.txt",
+        "src": "/loopforge-design/model-briefs/cathexis-05-signature-actions.5f3d707d891d0872.txt",
+        "bytes": 5416,
+        "sha256": "5f3d707d891d0872740dd68b768599b5e8fbf30e9e39712d088372b53a6eb6d6"
+      },
+      {
+        "name": "prompts/06-room-conditions.txt",
+        "src": "/loopforge-design/model-briefs/cathexis-06-room-conditions.7f83c96b95fb31df.txt",
+        "bytes": 1905,
+        "sha256": "7f83c96b95fb31df95053c358e8be3056ba111654c4b835e28905cd8f02f9c2d"
+      },
+      {
+        "name": "prompts/07-delivery-order.txt",
+        "src": "/loopforge-design/model-briefs/cathexis-07-delivery-order.529fee1408e6b03a.txt",
+        "bytes": 2088,
+        "sha256": "529fee1408e6b03a7240b3ecb8676f0d6e34fd5d41ebc95fa57e462f4e431d8d"
+      },
+      {
+        "name": "DESIGN.md",
+        "src": "/loopforge-design/model-briefs/cathexis-DESIGN.da56dd6f1a929488.md",
+        "bytes": 3559,
+        "sha256": "da56dd6f1a9294882d5ec1f6e5af562ce9f60089374fc09bf4e4f80d09475e01"
+      },
+      {
+        "name": "README.md",
+        "src": "/loopforge-design/model-briefs/cathexis-README.634e595b1dc5cc66.md",
+        "bytes": 1767,
+        "sha256": "634e595b1dc5cc66d056c36135cbd091c31962a08ffc57601c656871ceb419ae"
+      },
+      {
+        "name": "catalog-candidates.json",
+        "src": "/loopforge-design/model-briefs/cathexis-catalog-candidates.25ca1e7503955e7c.json",
+        "bytes": 78727,
+        "sha256": "25ca1e7503955e7c02b8a34197ee8fc2926e46d49e968122f43df89ced5b6849"
+      },
+      {
+        "name": "image-generation-prompts.json",
+        "src": "/loopforge-design/model-briefs/cathexis-image-generation-prompts.4aacb6d1e6609aee.json",
+        "bytes": 22154,
+        "sha256": "4aacb6d1e6609aee885d9af5df900f471782a550890df5123ae52158db9b56d0"
+      },
+      {
+        "name": "new-face-generation-prompts.json",
+        "src": "/loopforge-design/model-briefs/cathexis-new-face-generation-prompts.f4ddedf048abb602.json",
+        "bytes": 16593,
+        "sha256": "f4ddedf048abb602909d1d6a49212603d88b0b7e5de9434bc6a16baaf5122007"
+      }
+    ]
+  }
+}

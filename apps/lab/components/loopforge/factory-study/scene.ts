@@ -39,7 +39,7 @@ export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
 export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; p50?: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
 export type CharacterStage = { scene: Scene; shadow: ShadowGenerator; gate(open: boolean): void; refresh(): void };
-export type FactoryScene = { reviewCamera(action?: ReviewCameraAction): ReturnType<ReturnType<typeof createReviewOrbit>["snapshot"]>; characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
+export type FactoryScene = { reviewSubject(targetHeight:number, distance:number, minimum:number): void; reviewCamera(action?: ReviewCameraAction): ReturnType<ReturnType<typeof createReviewOrbit>["snapshot"]>; characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
@@ -67,6 +67,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   const alternateCameras = [1,2].map(n => new ArcRotateCamera(`room-angle-${n}`, 0, 1, 20, Vector3.Zero(), scene));
   let isolatedRoom = false;
   let characterReview: boolean | "model" | "model-cctv" = false;
+  let reviewTargetHeight = 1.02;
   const reviewOrbit = createReviewOrbit(camera, canvas, () => { renderDirty = true; });
   let reviewGate: boolean | null = null;
   let equipmentStudy = false, framing: Framing = "work";
@@ -456,7 +457,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     if(characterReview==='model'){
       camera.viewport=new Viewport(0,0,1,1);camera.fov=.7;camera.minZ=.15;camera.maxZ=400;
       const point=focus==='security'?[131,122]:[120.8,149.6];
-      reviewOrbit.attach(new Vector3(...worldPoint(point[0],point[1])).add(new Vector3(0,1.02,0)));
+      reviewOrbit.attach(new Vector3(...worldPoint(point[0],point[1])).add(new Vector3(0,reviewTargetHeight,0)));
       scene.activeCameras=[camera];scene.activeCamera=camera;transition=0;return;
     }
     const poses = characterReview === "model-cctv" ? [{a:.55,b:.78,r:7.5},{a:2.35,b:.92,r:6.5},{a:-.85,b:.65,r:10}].map(p=>({...p,x:focus==='security'?131:120.8,y:focus==='security'?122:149.6})) : characterReview ? (focus==='security' ? [{x:126,y:126.5,r:6.6,a:.6,b:1.15},{x:126,y:126.5,r:5.5,a:-1.05,b:1.2},{x:128,y:121,r:15,a:.9,b:.7}] : [{x:120.8,y:149.6,r:7.3,a:-1.1,b:1.15},{x:120.8,y:149.6,r:5.8,a:-2.0,b:1.15},{x:121,y:150,r:16,a:-1.4,b:.7}]) : focus==='security'
@@ -550,6 +551,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   inputEvents.forEach(name=>canvas.addEventListener(name,input,{passive:true}));
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
+    reviewSubject(height,distance,minimum){reviewOrbit.suspend();reviewTargetHeight=height;reviewOrbit.framing(distance,minimum);if(cctvEnabled)configureFeeds();},
     reviewCamera(action){if(action)reviewOrbit.action(action);return reviewOrbit.snapshot();},
     characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(){renderDirty=true;keyMap.resetRefreshCounter();}};},
     review(enabled,distance){reviewOrbit.suspend();characterReview=enabled;if(distance!==undefined)reviewOrbit.distance(distance);frame();if(cctvEnabled)configureFeeds();},

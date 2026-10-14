@@ -1,5 +1,7 @@
 # Model brief library verification — 14 October 2026
 
+Update later on 14 October: CATHEXIS first exports now have a static player linked from the archive and Agents tab. The earlier archive-only checks below describe the initial publication. See [CATHEXIS intake verification](CATHEXIS_INTAKE_REVIEW.md) for the eight-source audit, six runtime candidates, visual findings and current limits.
+
 Scope: Loopforge within apps/lab, dedicated branch codex/loopforge-model-brief-library. Current 3D bodies, animation curves, simulation and AWS access are unchanged. Shared project memory records the archive contract.
 
 ## Completed checks

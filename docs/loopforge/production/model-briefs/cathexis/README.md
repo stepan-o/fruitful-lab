@@ -1,5 +1,7 @@
 # CATHEXIS — model rebuild kit
 
+Current repair scope (14 October): add only the missing central rear skirt fabric behind the legs, with knee clearance and a lower-ankle hem. All other model features, including the existing side panels and crown, stay intact. Earlier full-dress/crown redesigns are discarded. For the existing Meshy body, use **08-rear-panel-repair.txt** first; numbered generation stages remain available for future rebuilds. The viewer still shows the unrepaired v1 body.
+
 Generation brief v2 · modular mechanical face · 14 October 2026
 
 First static intake available · fitting and rigging pending. A delicate porcelain-and-brass performer: chilling, vibing and flirting until coarse work and grime test her composure. Hot Walk is her only travel gait. She never runs and has no alert state.

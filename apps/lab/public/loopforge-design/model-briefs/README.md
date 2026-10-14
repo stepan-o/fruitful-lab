@@ -39,8 +39,8 @@ Original body, blade, welder and motion briefs recovered. Rebuild notes preserve
 Prepared from original character and room art. New generated input references are proposals, not owner-approved meshes. Dirt options A/B/C remain alternatives; build the clean master first.
 
 - [Body · front](/media/loopforge-model-briefs/01-cathexis-body-front.260b685edbc8b769.jpg) — Body input — expression is replaced by separate insert
-- [Body · corrected back](/media/loopforge-model-briefs/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg) — Body input
-- [Body · profile](/media/loopforge-model-briefs/03-cathexis-body-left.7876f6e8730e1f86.jpg) — Body input
+- [Body · rear panel repair](/media/loopforge-model-briefs/02-cathexis-rear-panel-repair.5385077857a25085.jpg) — Localized repair reference only: fill the missing rear cloth; preserve the original model, crown and side panels. The 3D repair is pending.
+- [Body · profile](/media/loopforge-model-briefs/03-cathexis-body-left.7876f6e8730e1f86.jpg) — Original profile: preserve body and outer skirt shape; use the revised rear view for the missing rear cloth.
 - [Porcelain · Grace](/media/loopforge-model-briefs/04-mask-grace.7e156c7899d94c8c.jpg) — Separate porcelain faceplate — one object per generation
 - [Porcelain · Rapture](/media/loopforge-model-briefs/05-mask-rapture.ef5c280029b3d3ea.jpg) — Separate porcelain faceplate — one object per generation
 - [Porcelain · Scorn](/media/loopforge-model-briefs/06-mask-scorn.8e32f84f8e0f6891.jpg) — Separate porcelain faceplate — one object per generation
@@ -55,7 +55,8 @@ Prepared from original character and room art. New generated input references ar
 - [A · dry soot](/media/loopforge-model-briefs/a-body-soot-apose.47085b8220cf5d82.jpg) — Material option — same accepted mesh; selection pending
 - [B · wet machine oil](/media/loopforge-model-briefs/b-body-oil-apose.91e78f5baba1a0fa.jpg) — Material option — same accepted mesh; selection pending
 - [C · caked grime](/media/loopforge-model-briefs/c-body-caked-apose.a108132ca1deb339.jpg) — Material option — same accepted mesh; selection pending
-- [Body](/loopforge-design/model-briefs/cathexis-01-body.df6838bb24473ee6.txt)
+- [Current model: rear panel repair only](/loopforge-design/model-briefs/cathexis-08-rear-panel-repair.318d63da6e04319c.txt)
+- [Body](/loopforge-design/model-briefs/cathexis-01-body.0e7c4420f88ff24d.txt)
 - [Face system](/loopforge-design/model-briefs/cathexis-02-face-system.df7c4b05173ccd67.txt)
 - [Rig tests](/loopforge-design/model-briefs/cathexis-03-rig-tests.164fc2688a4f3961.txt)
 - [Acting bank](/loopforge-design/model-briefs/cathexis-04-acting-bank.24b7096ba256d75a.txt)

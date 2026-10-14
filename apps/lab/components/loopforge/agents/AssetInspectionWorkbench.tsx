@@ -40,7 +40,7 @@ export default function AssetInspectionWorkbench({definition:d}:{definition:Insp
   return()=>{alive=false;abort.abort();subject?.dispose();if(model.current===subject)model.current=null;};
  },[floorReady,current,retry]);
  function choose(value:string){if(value===id)return;setReady(false);setError('');setId(value);if(portrait){setPortrait(false);floor.current?.reviewSubject(1.02,3.8,3.2);} }
- function rotate(value:number){setTurn(value);model.current?.turn(value);}
+ function rotate(value:number){if(camera==='cctv')mode('model');floor.current?.reviewCamera('reset');setTurn(value);model.current?.turn(value);}
  function mode(value:'model'|'cctv'){setCamera(value);floor.current?.review(value==='model'?'model':'model-cctv');floor.current?.cctv(true,angle,false);}
  function focusHead(value:boolean){setPortrait(value);if(camera==='cctv')mode('model');floor.current?.reviewSubject(value?1.72:1.02,value?.85:3.8,value?.35:3.2);}
  function retryLoad(){setError('');setReady(false);if(floor.current)setRetry(n=>n+1);else{setFloorReady(false);setSceneRetry(n=>n+1);}}
@@ -61,7 +61,7 @@ export default function AssetInspectionWorkbench({definition:d}:{definition:Insp
     <label>Asset<select value={id} onChange={e=>choose(e.target.value)}>{d.assets.map(a=><option key={a.id} value={a.id}>{a.label}</option>)}</select></label>
     {d.comparison&&<div className={local.compare} role='group' aria-label={d.comparison.label}><span>{d.comparison.label} · camera stays fixed</span><div className={styles.duo}>{d.comparison.ids.map(key=><button key={key} aria-pressed={id===key} onClick={()=>choose(key)}>{d.assets.find(a=>a.id===key)!.label}</button>)}</div></div>}
     <p className={styles.intent}>{current.note}</p>
-    <div className={styles.duo}>{[['Front',0],['Side',90],['Back',180]].map(([label,n])=><button key={label} disabled={!ready} aria-pressed={turn===n} onClick={()=>rotate(Number(n))}>{label}</button>)}</div>
+    <div className={styles.duo}>{[['Front',0],['Side',90],['Back',180]].map(([label,n])=><button key={label} disabled={!ready} onClick={()=>rotate(Number(n))}>{label}</button>)}</div>
     {d.portraitAsset===id&&<button disabled={!ready} aria-pressed={portrait} onClick={()=>focusHead(!portrait)}>{portrait?'Full body':'Inspect head & face seat'}</button>}
     <label>Surface<select disabled={!ready} value={surface} onChange={e=>{const value=e.target.value as InspectionSurface;setSurface(value);model.current?.surface(value);}}><option value='textured'>Textured materials</option><option value='clay'>Untextured shape</option><option value='wireframe'>Wireframe</option></select></label>
     <label className={styles.check}><input type='checkbox' disabled={!ready} checked={lamp} onChange={e=>{setLamp(e.target.checked);model.current?.light(e.target.checked);}}/> Inspection lamp</label>

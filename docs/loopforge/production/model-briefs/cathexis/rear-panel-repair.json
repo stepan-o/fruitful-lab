@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-14",
+  "method": "built-in image_gen",
+  "scope": "Add missing central rear cloth only; all other design retained",
+  "reference": {
+    "label": "Body · rear panel repair",
+    "role": "Localized repair reference only: fill the missing rear cloth; preserve the original model, crown and side panels. The 3D repair is pending.",
+    "sourceName": "02-cathexis-rear-panel-repair.png",
+    "sourceSha256": "b580a9f6aadaf6e0abaf58e9da8f5eb7dd99c04ae93892a9c7d91a9be4ae5fba",
+    "input": {
+      "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair.5385077857a25085.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 328568,
+      "sha256": "5385077857a250856e1a318be139b3877a76a5ffef5989dc8b8f0b304a628b39"
+    },
+    "variants": [
+      {
+        "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair-360.fdc943b7283f6e7c.webp",
+        "width": 360,
+        "height": 540,
+        "bytes": 27714,
+        "sha256": "fdc943b7283f6e7c40af261a169cf6c2efcd0072b30b69f6f26bceeea62b2c12"
+      },
+      {
+        "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair-720.47b23547dd4a8677.webp",
+        "width": 720,
+        "height": 1080,
+        "bytes": 90182,
+        "sha256": "47b23547dd4a8677136c6f2eb3a0bec31a4b1c3cb5a3d594e7ac1905b2cb532d"
+      }
+    ]
+  },
+  "prompt": "Precise localized inpainting edit of this rear-view character reference. Keep the entire image unchanged except the open REAR SKIRT GAP below the hips. Fill ALL of that rear central opening with matching hanging weathered gray-ivory cloth from the rear waist down to the lower ankles. The new rear infill must be WIDE ENOUGH TO COVER BOTH EXPOSED KNEES AND THE BACKS OF BOTH SHINS as well as the gap between the legs. NO two leg-shaped windows: legs are behind the rear fabric. Do not draw a narrow loincloth between two still-visible legs. This is one continuous rear skirt infill overlapping UNDER the inner edges of the existing left and right skirt panels, so the whole rear is covered until just above the mechanical heels. The two heels/feet remain visible below the new hem. Add only this missing rear infill; preserve exactly the existing side skirt panels, side hems, outer width, all existing drapes, crown size/design, hair, reactor, arms, hands, torso, hip cylinders, feet, background, pose and framing. Match the original cloth's subdued distress, narrow vertical folds, irregular ragged bottom. No skirt widening, new tiers, bell skirt, bridal restyle, crown enlargement or other redesign. The body behind the garment remains anatomically unchanged. One back view.\n",
+  "supersedes": "Prior full-dress/crown redesigns; narrow strip leaving exposed knees is rejected",
+  "meshStatus": "Existing v1 is unchanged; local mesh repair pending"
+}

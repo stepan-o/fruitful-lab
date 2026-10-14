@@ -1,5 +1,7 @@
 # CATHEXIS — staged model and expression brief
 
+Current repair scope (14 October): add only the missing central rear skirt fabric behind the legs, with knee clearance and a lower-ankle hem. All other model features, including the existing side panels and crown, stay intact. Earlier full-dress/crown redesigns are discarded. For the existing Meshy body, use **08-rear-panel-repair.txt** first; numbered generation stages remain available for future rebuilds. The viewer still shows the unrepaired v1 body.
+
 14 October 2026. First body and face exports have arrived; see ../../CATHEXIS_INTAKE_REVIEW.md for measured source inventory and limits. The static viewer does not establish fit, rigging or retargeted motion. A/B/C grime selection remains open until material authoring; it does not block the clean body.
 
 ## One head, two face layers

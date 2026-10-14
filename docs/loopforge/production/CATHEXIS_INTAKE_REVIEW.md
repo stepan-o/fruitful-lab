@@ -41,7 +41,7 @@ All six runtime candidates were inspected in the production-built Babylon player
 
 ## Inspection controls and evidence
 
-Body, Grace 3k, Grace 8k, Grimace, Fury and Distress share the same player. Drag or use arrow keys to orbit, use scroll/pinch or the visible zoom buttons, and reset the camera. Front/side/back buttons rotate the subject; Grace comparison buttons retain camera pose and subject orientation. The body also offers a closer face-seat framing. Textured, untextured shape and wireframe modes reveal different issues. The inspection lamp can be disabled. Fixed Security and Lattice Forge CCTV presets remain available, with a warning that enlarged isolated faces do not prove mounted readability.
+Body, Grace 3k, Grace 8k, Grimace, Fury and Distress share the same player. Drag or use arrow keys to orbit, use scroll/pinch or the visible zoom buttons, and reset the camera. Front/side/back buttons reset the orbit to its canonical direction before rotating the subject, so their names remain correct after manual mouse orbit or CCTV use; Grace comparison buttons retain camera pose and subject orientation. The body also offers a closer face-seat framing. Textured, untextured shape and wireframe modes reveal different issues. The inspection lamp can be disabled. Fixed Security and Lattice Forge CCTV presets remain available, with a warning that enlarged isolated faces do not prove mounted readability.
 
 Each player uses the common six review gates and character navigation. Save review evidence exports asset revision/hash, source filename, camera pose, room, selected material mode, lamp setting, viewport and available frame counters. A static single-object scene is not a crowd or physical-device performance test.
 
@@ -62,3 +62,7 @@ The production build passed asset validation, TypeScript and prerendering. The f
 Screenshots are retained in the private `cathexis-intake/evidence` folder: body face textured/clay, Grace budgets, Grace profile, all three mechanical fronts and phone controls. These are development evidence, not additional public art assets.
 
 Material and lamp changes explicitly invalidate scene readiness as well as the frame. This keeps the demand-rendered player drawing while replacement shaders compile, instead of leaving a blank model until the next camera gesture.
+
+## Rear skirt repair scope — 14 October 2026
+
+The initial body is the design authority. Fill only the missing central rear cloth behind the legs; retain the original front opening, side panels, hem lengths, outer silhouette, crown and all body parts. Knees and shins must remain behind the new fabric with clearance. Full-dress/crown redesigns and a narrow infill leaving knee openings were rejected. The revised rear input and `08-rear-panel-repair.txt` are in Model briefs and its download kit. The current 3D asset remains v1: image approval does not certify a repaired mesh or moving costume.

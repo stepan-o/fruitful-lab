@@ -1,0 +1,13 @@
+Modify the existing Cathexis_Body_v1 model. This is a LOCAL REAR SKIRT REPAIR, not a new character generation. Use the attached rear-panel reference to understand the missing cloth, and the existing 3D model as the authority for everything else.
+
+Add ONLY the missing central rear fabric between the existing left and right skirt panels, hanging from beneath the rear waist drape to the lower ankles, just above the heels. Join/overlap it naturally beneath the existing panel edges so the rear skirt is continuous. The material must match the existing worn gray-ivory cloth.
+
+The new cloth hangs BEHIND the legs with physical clearance. Neither knee nor shin may punch through it. Do not make knee-shaped holes, two separate leg coverings or a narrow strip between exposed legs. Keep the actual legs and joints intact behind the fabric. Preserve the front opening; do not fill it or bridge fabric through the body. Preserve both heels and their visibility below the hem.
+
+Leave every other part unchanged: existing side panels, their folds and hem lengths, outer skirt width and silhouette, crown size/design, head, face, hair, reactor, torso, arms, hands, hip canisters, legs and heels. Do not enlarge the crown or regenerate the costume. Do not use the discarded full-dress redesigns. Do not change masks or the face seat in this repair task.
+
+Work on a copy. Preserve the original master and delivery model. If your tools cannot add this local section while preserving the rest, report that limitation and stop; do not substitute whole-body regeneration. We can finish the local mesh repair offline.
+
+Deliver Cathexis_Body_v1_RearPanelFix as a textured unrigged GLB and FBX, with the repaired section separately named where supported. Keep the original scale, pose and materials. Preserve existing UVs outside the added section if the tool supports a local edit; disclose any topology, UV or texture changes. Report actual triangle counts. Provide rear, rear three-quarter and side inspection views showing continuous fabric and knee clearance. Do not start rigging or a new animation bank yet.
+
+The reference illustrates the repair intent. It does not establish mesh topology or animation clearance; those will be checked in the production viewer before replacing the current body.

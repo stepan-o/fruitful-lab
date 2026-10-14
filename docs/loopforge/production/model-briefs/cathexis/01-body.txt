@@ -1,4 +1,6 @@
-Create CATHEXIS for Loopforge from the THREE attached body reference images: 01-cathexis-body-front.260b685edbc8b769.jpg, 02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg and 03-cathexis-body-left.7876f6e8730e1f86.jpg.
+For repair of the existing v1 body, use 08-rear-panel-repair.txt instead. The instructions below are for a full rebuild only.
+
+Create CATHEXIS for Loopforge from the THREE attached body reference images: 01-cathexis-body-front.260b685edbc8b769.jpg, 02-cathexis-rear-panel-repair.5385077857a25085.jpg and 03-cathexis-body-left.7876f6e8730e1f86.jpg.
 
 This task is the BODY ONLY. Do not install a porcelain face mask. Separate masks will follow as separate assets. Do not infer additional characters from any reference sheet.
 
@@ -10,7 +12,7 @@ She is physically delicate and made for performance and fine interaction, not co
 
 Generate the complete unrigged visual master first, in a clean symmetric A-pose. Hands clear of the torso, five separate mechanical fingers with a distinct thumb, legs and feet separated. The front view is the authority for proportions. Use the rear for reactor/hair construction and the profile for depth. Resolve minor view disagreements coherently rather than duplicating parts.
 
-Keep fabric clear of legs and hands. The skirt is several broad side/rear panels with an open front, not a solid cone. Hair is grouped into a few controllable locks/cable bundles, not thousands of separate strands. Do not bake background shadows, ambient glow, fog, transparent veils or magical energy into geometry. Surface cracks, weave and fine wear should primarily be texture detail.
+Keep fabric clear of legs and hands. The skirt has the original layered side panels and an open front. Its central rear cloth must form a continuous section behind the legs, reaching the lower ankles without knee/shin intersections. Use the revised rear reference for this section only; preserve the original outer silhouette, side hems and crown. The original profile predates this rear infill and must not reintroduce the missing rear section. Hair is grouped into a few controllable locks/cable bundles, not thousands of separate strands. Do not bake background shadows, ambient glow, fog, transparent veils or magical energy into geometry. Surface cracks, weave and fine wear should primarily be texture detail.
 
 Where your tools support it, keep body, skirt panels and hair sections separable. Do not claim separate objects unless the exported file actually contains them. If segmentation is unsupported, say so and preserve the neutral master for our offline cleanup. Do not discard the costume just to make auto-rigging easier.
 

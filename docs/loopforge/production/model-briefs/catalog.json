@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-14-v2",
+  "revision": "model-briefs-2026-10-14-v3",
   "date": "2026-10-14",
   "models": [
     {
@@ -690,8 +690,8 @@
       "id": "cathexis",
       "name": "CATHEXIS",
       "subtitle": "Theatre diva \u00b7 modular faces + surface conditions",
-      "revision": "Generation brief v2 \u00b7 modular mechanical face",
-      "status": "First static intake available",
+      "revision": "cathexis-rear-panel-repair-2026-10-14",
+      "status": "First intake \u00b7 rear-panel repair pending",
       "summary": "Delicate theatrical body, interchangeable porcelain and mechanical expressions, and room-dependent grime. The first body, Grace budgets and three exposed expressions are available for static inspection; fit and acting are pending.",
       "provenance": "Prepared from original character and room art. New generated input references are proposals, not owner-approved meshes. Dirt options A/B/C remain alternatives; build the clean master first.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
@@ -704,6 +704,7 @@
         "Three mechanical expression masters with local 12k inspection copies"
       ],
       "remaining": [
+        "Fill only the missing rear skirt panel; preserve all other body geometry and the crown",
         "Normalize and fit the face layers to one shared head",
         "Restore/export the body and Grace normal maps",
         "Half-shell, remaining porcelain expressions and grime selection",
@@ -740,37 +741,37 @@
           ]
         },
         {
-          "label": "Body \u00b7 corrected back",
-          "role": "Body input",
-          "sourceName": "02-cathexis-body-back-v2.png",
-          "sourceSha256": "03ab8b79eceb1f3ad5c47b719c99a74ef7c90799b2d87a857381d4525cfb19fb",
+          "label": "Body \u00b7 rear panel repair",
+          "role": "Localized repair reference only: fill the missing rear cloth; preserve the original model, crown and side panels. The 3D repair is pending.",
+          "sourceName": "02-cathexis-rear-panel-repair.png",
+          "sourceSha256": "b580a9f6aadaf6e0abaf58e9da8f5eb7dd99c04ae93892a9c7d91a9be4ae5fba",
           "input": {
-            "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2.d765eb0b4c8a0ff0.jpg",
+            "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair.5385077857a25085.jpg",
             "width": 1024,
             "height": 1536,
-            "bytes": 383708,
-            "sha256": "d765eb0b4c8a0ff0b1a2ffea82e542ff8ff920c0129ac8ef42470fde47e11fd4"
+            "bytes": 328568,
+            "sha256": "5385077857a250856e1a318be139b3877a76a5ffef5989dc8b8f0b304a628b39"
           },
           "variants": [
             {
-              "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2-360.3a950adaaa9f1b5b.webp",
+              "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair-360.fdc943b7283f6e7c.webp",
               "width": 360,
               "height": 540,
-              "bytes": 25112,
-              "sha256": "3a950adaaa9f1b5b1423813910efbe91981571dfb97c8033cf46089b24a57aad"
+              "bytes": 27714,
+              "sha256": "fdc943b7283f6e7c40af261a169cf6c2efcd0072b30b69f6f26bceeea62b2c12"
             },
             {
-              "src": "/media/loopforge-model-briefs/02-cathexis-body-back-v2-720.5b61b1c027b03dee.webp",
+              "src": "/media/loopforge-model-briefs/02-cathexis-rear-panel-repair-720.47b23547dd4a8677.webp",
               "width": 720,
               "height": 1080,
-              "bytes": 81822,
-              "sha256": "5b61b1c027b03deec3aaf66b736bf930940a64e59afcb6fdfa8a512aa4251026"
+              "bytes": 90182,
+              "sha256": "47b23547dd4a8677136c6f2eb3a0bec31a4b1c3cb5a3d594e7ac1905b2cb532d"
             }
           ]
         },
         {
           "label": "Body \u00b7 profile",
-          "role": "Body input",
+          "role": "Original profile: preserve body and outer skirt shape; use the revised rear view for the missing rear cloth.",
           "sourceName": "03-cathexis-body-left.png",
           "sourceSha256": "da923ec954e36efdae95905dbf9c89ea611b8e2b0a801cec167e77235c737c4a",
           "input": {
@@ -1205,6 +1206,10 @@
         }
       ],
       "prompts": [
+        {
+          "title": "Current model: rear panel repair only",
+          "file": "cathexis/08-rear-panel-repair.txt"
+        },
         {
           "title": "Body",
           "file": "cathexis/01-body.txt"

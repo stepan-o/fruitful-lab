@@ -23,3 +23,7 @@ Only a tiny catalog and the selected model record load on entering the tab; WebP
 Screenshots are retained locally in model-brief-library-review/ within the task visualization archive, outside production assets. Cold/warm browser interactions were responsive, but network timing, physical-phone performance and field Core Web Vitals were not benchmarked. No claim of field-performance compliance is made. Model/animation approvals and pending cleanup remain in the linked review records.
 
 Hosted preview verification is recorded in the PR after its deployment becomes ready.
+
+## Rear-panel repair update — 14 October 2026
+
+The current CATHEXIS kit replaces only its rear input, retains front/profile references, and starts with a localized repair prompt for the existing body. All kit file sizes/hashes and the standalone repair ZIP CRCs pass. The runtime body remains unchanged. Four review-camera tests, scoped ESLint and TypeScript checks pass. Named side buttons now reset the orbit before turning the model; they are commands rather than potentially stale pressed-state indicators. Hosted visual verification is performed after deployment.

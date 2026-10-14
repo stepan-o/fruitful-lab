@@ -10,7 +10,7 @@
   "clips": [
     {
       "id": "Alert",
-      "label": "Alert",
+      "label": "Idle (source: Alert)",
       "duration": 4,
       "loop": true,
       "note": "Attentive, wide stance. No intersections detected at the three tested poses.",
@@ -519,7 +519,7 @@
     },
     {
       "id": "Shouting_Angrily",
-      "label": "Reprimand",
+      "label": "Attack (source: Reprimand)",
       "duration": 7.16666667,
       "loop": false,
       "note": "Broad overhead and forward arm gestures. No body intersections at targeted poses; full blade sweep must be reviewed with actual attachments.",
@@ -617,7 +617,7 @@
     },
     {
       "id": "Stand_Talking_Angry",
-      "label": "Argument",
+      "label": "Threaten (source: Argument)",
       "duration": 20.8,
       "loop": false,
       "note": "20.80-second long argument take. No intersections at targeted poses. Needs selection/trim and blade-aware gesture review.",
@@ -734,7 +734,7 @@
     },
     {
       "id": "Idle",
-      "label": "Idle",
+      "label": "Alert (source: Idle)",
       "duration": 4,
       "loop": true,
       "note": "Stationary 4-second idle. No surface intersections detected at the three targeted closest poses; full-cycle and mounted-tool review still required.",

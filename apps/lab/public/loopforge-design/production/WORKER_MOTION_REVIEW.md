@@ -6,11 +6,66 @@ Game design → Agents → Production asset player → Worker 01. Direct route: 
 
 The real Babylon Security/Forge renderer now reviews one worker with 19 named motions, a neutral pose, three CCTV angles, scrubbing, slow playback, textured/clay/wireframe modes, sampled-contact shortcuts and downloadable review evidence. Starts paused, pauses when hidden, disposes its scene on exit. No main-play cast, BDI, save or production rules change. These clips are candidates, not blanket gameplay acceptance.
 
+## Correction status — 14 October 2026
+
+The worker bank has been imported and audited, but has **not** received the
+offline motion-correction pass applied to STILETTO. All 19 clips retain their
+source movement. Review centering is a camera convenience, not a gait repair.
+
+First correction targets: Walk 2 (shin intersection near 0.97 s), Run Fast 10
+(leg intersection near 0.78 s) and Injured Walk (near 6.83 s). Then review the
+flagged gesture/pivot contacts, preserving deliberate head scratching, limping
+and expressive poses. Keep each source clip beside its corrected derivative,
+sample the exported result through the full cycle, and compare in factory light.
+Hot Walk remains reserved for Cathexis and needs clearance on her eventual body.
+Afraid recoil and precision machine/cradle work still require authored actions;
+an audit or a renamed catalog gesture does not supply them.
+
 ## Owner decision: Hot Walk belongs to Cathexis
 
 **Hot Walk is the correct public name and Cathexis’s intended default gait.** The owner confirmed both its Meshy catalog label and visual movement. Preserve its expressive hip-led crossover, confidence and attitude. The internal FBX alias `Confident_Walk` is provenance, not a reason to rename the motion or reject its style. Its runtime name is `Hot_Walk`.
 
 The player currently shows it on Worker 01 as a motion stand-in. Cathexis still needs her own mesh and retarget/clearance review. Deliberate leg crossing and actual surfaces intersecting are distinct: preserve the former while correcting the latter on the final character. Do not copy this FBX’s tracks directly onto LIMEN’s differently named 23-joint rig.
+
+## Planned posture and hand pass — 14 October 2026
+
+The owner asks for more natural arm/hand posture and finger articulation. This is
+the next worker cleanup scope, not a claim that the current asset has changed.
+
+1. **Posture on the existing rig.** Adjust shoulders, elbows, forearm roll and
+   wrists per clip. Start with idle, walk and run; preserve the puzzled scratch,
+   injured gait and intended prop contacts. Bake corrections into separate clips.
+   A one-time runtime bone rotation would be overwritten by the next animation
+   sample; a global arm offset could break deliberate gestures.
+2. **Inspect the hands.** The present 24-joint skin stops at the hands. Inspect
+   finger geometry, separation and hinge locations before adding finger chains.
+   Usable geometry can be reweighted; fused or unsuitable fingers need local
+   mesh cleanup or replacement hands. Do not regenerate the accepted whole body
+   unless this inspection establishes a reason.
+3. **Add mechanical articulation in Blender.** Parent finger chains below the
+   existing hand bones while preserving body bone names, hierarchy and bind
+   transforms. Use rigid weights for finger plates and hinges, with deformation
+   confined to suitable joint geometry. Author relaxed curl, grip and release
+   first; individual finger acting follows actual scene needs. Existing body
+   clips need explicit/default finger poses so clip changes do not retain a
+   previous grip accidentally.
+4. **Export and compare.** Publish a new rig revision with updated skin-joint
+   metadata and validators, preserving the current 24-joint source. Compare the
+   rendered result against the source through all 19 motions. Check scratch/head,
+   hand/body, gait, floor, blend and actual prop contacts; a gripping pose alone
+   is not a completed work/cradle action.
+
+Bake animation offline and play skeletal clips in Babylon; do not introduce
+per-finger physics, per-frame React updates or a live retargeter. Keep hand detail
+for close acting and compare its cost at CCTV/crowd scale before selecting a
+background simplification. No performance improvement is assumed without a
+measurement.
+
+Blender's [skinning documentation](https://docs.staging.blender.org/manual/en/latest/animation/armatures/skinning/parenting.html)
+describes assigning vertices to bone groups; its
+[glTF exporter](https://docs.blender.org/manual/en/3.6/addons/import_export/scene_gltf2.html)
+supports armature/skinning animation. The pipeline choice here is proposed;
+Blender has not yet been used for this worker pass.
 
 ## Export audit
 

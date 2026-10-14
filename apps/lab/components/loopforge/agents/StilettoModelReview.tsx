@@ -103,7 +103,7 @@ export default function StilettoModelReview(){
     {showProof&&(correction?<div className={auditStyles.proof}>{(['original','corrected'] as const).map(v=><figure key={v}><AssetImage asset={imageAsset(pack,`${correction.imageKey}-${v}`)} alt={`${clip?.label}, ${v} arms at the recorded comparison pose, blades highlighted`} sizes='(max-width: 700px) 90vw, 45vw'/><figcaption>{v==='original'?'Original motion':'Corrected arms'} · {correction.reviewTime.toFixed(2)} s</figcaption></figure>)}</div>:<p>Select one of the five corrected candidates to compare its recorded evidence.</p>)}
    </details>
    <p>{bank.auditMethod} The proximal collar overlap is deliberately excluded. This test does not certify containment, coplanar contact, animation blends or clearance from machinery.</p>
-   <p>Remaining work: leg-to-leg contacts in several source gaits, foot and prop contacts, transitions, rigid plate weights, welder mounting and visor emission. The collapse’s larger arm adjustment needs particular artistic review.</p>
+   <p>Remaining work: leg-to-leg contacts in several source gaits, foot and prop contacts, transitions, rigid plate weights, welder mounting and visor emission. Owner visual acceptance is recorded; paired encounters still need target and reaction timing.</p>
    <div className={auditStyles.links}><a href='/loopforge-design/production/STILETTO_MOTION_REVIEW.md'>Full review record ↗</a><a href={manifest.assets['clearance-audit'].variants[0].src}>120 Hz audit data ↗</a><a href={manifest.assets['packed-preservation'].variants[0].src}>Source preservation checks ↗</a></div>
   </section>
  </main>;

@@ -6,14 +6,14 @@ export const limenReviewAsset:ProductionReviewAsset={
 export const workerReviewAsset:ProductionReviewAsset={
  id:'worker-01-motions',shortName:'Worker 01',navDetail:'19 motions · gait checks',title:'Worker 01 · motion bank',revision:'worker-01 / 19 motions / review-v1',
  route:'/stepanoskin/loopforge/play/asset-review/worker',conceptRoute:'/stepanoskin/loopforge/design#agents',
- status:'Owner review · motion and clearance candidates',
+ status:'Audited · motion corrections pending',
  description:'All 19 exported motions on one rig, including the new Idle and Injured Walk. Hot Walk is reserved for Cathexis, previewed here on the worker stand-in.',
  checks:['Pause, scrub and jump to contact candidates','Idle, locomotion, reactions and gestures','Hot Walk · Cathexis default gait','Factory lighting and three CCTV angles']
 };
 export const stilettoReviewAsset:ProductionReviewAsset={
  id:'stiletto-blades',shortName:'STILETTO',navDetail:'Twin blades · clearance checks',title:'STILETTO · twin-blade motion',revision:'body-v1 / twin blades / corrected arms v4',
- route:'/stepanoskin/loopforge/play/asset-review/stiletto',conceptRoute:'/stepanoskin/loopforge/design#agents',status:'Owner review · five corrected candidates',
- description:'18 source motions and five corrected arm alternatives on the same body and rigid blades. Compare the same pose, inspect sampled collisions and keep outstanding gait issues visible.',
- checks:['Original / corrected at the same timestamp','2,335 corrected poses checked at 120 Hz','Blade, body and flat-floor review','Remaining leg contacts and choreography acceptance']
+ route:'/stepanoskin/loopforge/play/asset-review/stiletto',conceptRoute:'/stepanoskin/loopforge/design#agents',status:'Owner accepted · prototype acting',
+ description:'Accepted prototype appearance and blade acting. Idle/alert follow their visible reading; attack and threat are distinct interaction candidates. Original clips and technical contact flags remain available.',
+ checks:['Original / corrected at the same timestamp','2,335 corrected poses checked at 120 Hz','Blade, body and flat-floor review','Remaining leg contacts, blends and paired encounters']
 };
 export const productionReviewAssets:readonly ProductionReviewAsset[]=[limenReviewAsset,workerReviewAsset,stilettoReviewAsset];

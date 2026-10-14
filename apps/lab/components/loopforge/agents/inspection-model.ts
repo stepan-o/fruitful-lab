@@ -28,8 +28,8 @@ export async function loadInspectionModel(stage:CharacterStage,file:InspectionFi
   const materials=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{m.maxSimultaneousLights=6;return {m,base:m.albedoTexture,mr:m.metallicTexture,normal:m.bumpTexture,color:m.albedoColor.clone(),metal:m.metallic,rough:m.roughness};});
   function room(value:'security'|'conveyor'){const p=value==='security'?[131,122]:[120.8,149.6];root.position.set(...worldPoint(p[0],p[1]));root.position.y=.015;stage.gate(true);stage.refresh();}
   root.rotation.y=Math.PI;room('security');let disposed=false;
-  return {room,turn(deg:number){root.rotation.y=Math.PI+deg*Math.PI/180;stage.refresh();},light(value:boolean){fill?.setEnabled(value);stage.refresh();},
-   surface(value:InspectionSurface){for(const {m,base,mr,normal,color,metal,rough} of materials){m.albedoTexture=value==='clay'?null:base;m.metallicTexture=value==='clay'?null:mr;m.bumpTexture=value==='clay'?null:normal;m.albedoColor=value==='clay'?new Color3(.46,.48,.44):color;m.metallic=value==='clay'?0:metal;m.roughness=value==='clay'?.85:rough;m.wireframe=value==='wireframe';}stage.refresh();},
+  return {room,turn(deg:number){root.rotation.y=Math.PI+deg*Math.PI/180;stage.refresh();},light(value:boolean){fill?.setEnabled(value);stage.refresh(true);},
+   surface(value:InspectionSurface){for(const {m,base,mr,normal,color,metal,rough} of materials){m.albedoTexture=value==='clay'?null:base;m.metallicTexture=value==='clay'?null:mr;m.bumpTexture=value==='clay'?null:normal;m.albedoColor=value==='clay'?new Color3(.46,.48,.44):color;m.metallic=value==='clay'?0:metal;m.roughness=value==='clay'?.85:rough;m.wireframe=value==='wireframe';}stage.refresh(true);},
    dispose(){if(disposed)return;disposed=true;meshes.forEach(m=>stage.shadow.removeShadowCaster(m));fill?.dispose();container.dispose();root.dispose();}
   };
  }catch(error){fill?.dispose();container.dispose();root.dispose();throw error;}

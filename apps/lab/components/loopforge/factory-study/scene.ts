@@ -38,7 +38,7 @@ import { WORK_AREAS } from '@/lib/loopforge/spatial/capacity';
 export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
 export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; p50?: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
-export type CharacterStage = { scene: Scene; shadow: ShadowGenerator; gate(open: boolean): void; refresh(): void };
+export type CharacterStage = { scene: Scene; shadow: ShadowGenerator; gate(open: boolean): void; refresh(materialsChanged?: boolean): void };
 export type FactoryScene = { reviewSubject(targetHeight:number, distance:number, minimum:number): void; reviewCamera(action?: ReviewCameraAction): ReturnType<ReturnType<typeof createReviewOrbit>["snapshot"]>; characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
@@ -553,7 +553,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   return {
     reviewSubject(height,distance,minimum){reviewOrbit.suspend();reviewTargetHeight=height;reviewOrbit.framing(distance,minimum);if(cctvEnabled)configureFeeds();},
     reviewCamera(action){if(action)reviewOrbit.action(action);return reviewOrbit.snapshot();},
-    characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(){resourcesReady=false;renderDirty=true;keyMap.resetRefreshCounter();}};},
+    characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(materialsChanged=false){if(materialsChanged)resourcesReady=false;renderDirty=true;keyMap.resetRefreshCounter();}};},
     review(enabled,distance){reviewOrbit.suspend();characterReview=enabled;if(distance!==undefined)reviewOrbit.distance(distance);frame();if(cctvEnabled)configureFeeds();},
     update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const fresh=s.events.filter(e=>e.id>lastEvent);if(fresh.length){lastEvent=fresh.at(-1)!.id;const signal=fresh.find(e=>e.kind==="jam")??fresh.find(e=>e.kind==="cycle");if(signal){flash=1;flashKind=signal.kind as "jam"|"cycle";}else if(fresh.some(e=>e.kind==="release")){flash=0;flashKind="idle";}}},
     focus(f){reviewOrbit.suspend();frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},

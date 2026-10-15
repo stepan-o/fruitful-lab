@@ -55,11 +55,11 @@ def refine_hands(d, tracks, times):
         for upper, fore, hand, amount, anchor, fingers, pole in contacts:
             if amount < 1e-6:
                 continue
+            source_rotations = {j: R.from_quat(rotations[j][k].copy()) for j in (upper, fore, hand)}
             hand_rotation = R.from_matrix(world[hand, :3, :3] / .01)
             desired = swing(hand_rotation.apply([0, 1, 0]), unit(fingers)) * hand_rotation
-            wrist_rotation = mix(hand_rotation, desired, amount)
+            wrist_rotation = desired
             goal = anchor[:3] - desired.apply(PALM_FROM_WRIST)
-            goal = world[hand, :3, 3] * (1 - amount) + goal * amount
             shoulder, elbow, wrist = [world[i, :3, 3] for i in (upper, fore, hand)]
             upper_length, fore_length = np.linalg.norm(elbow - shoulder), np.linalg.norm(wrist - elbow)
             distance = np.clip(np.linalg.norm(goal - shoulder), abs(upper_length - fore_length) + .001, upper_length + fore_length - .002)
@@ -74,6 +74,10 @@ def refine_hands(d, tracks, times):
             fore_rotation = swing(world[hand, :3, 3] - world[fore, :3, 3], goal - world[fore, :3, 3]) * R.from_matrix(world[fore, :3, :3] / .01)
             rotations[fore][k] = (upper_rotation.inv() * fore_rotation).as_quat()
             rotations[hand][k] = (fore_rotation.inv() * wrist_rotation).as_quat()
+            # Blend the complete solved chain, including its elbow plane. Blending
+            # just the wrist goal snapped the arm when contact weight approached 0.
+            for j in (upper, fore, hand):
+                rotations[j][k] = mix(source_rotations[j], R.from_quat(rotations[j][k]), amount).as_quat()
             world = d['world_at'](tracks, t)
     for i in (8, 9, 10, 12, 13, 14):
         values = rotations[i]

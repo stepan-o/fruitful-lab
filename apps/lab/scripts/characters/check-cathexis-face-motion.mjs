@@ -36,9 +36,10 @@ try{
   if(coverage!=='full')for(let i=0;i<points.length;i+=3)assert.ok((coverage==='half-left'?points[i]:-points[i])>=-1e-6,'correct porcelain half');
   for(const version of ['Source','Corrected'])for(const clip of clips){
    model.motion.select(clip.id,version);const steps=Math.ceil(clip.duration*120);
+   const motionRoot=scene.transformNodes.find(n=>n.name==='Motion inspection subject'),fixedOrigin=motionRoot.position.clone();
    assert.equal(source.isEnabled(),version==='Source');assert.equal(corrected.isEnabled(),version==='Corrected');
    for(let k=0;k<=steps;k++){
-    model.motion.seek(k/steps);head.computeWorldMatrix(true);mask.computeWorldMatrix(true);
+    model.motion.seek(k/steps);assert.ok(Vector3.Distance(motionRoot.position,fixedOrigin)<.00001,'viewer must not recenter the moving pelvis');head.computeWorldMatrix(true);mask.computeWorldMatrix(true);
     // Independent skin-space prediction from the raw mask vertex and source inverse bind.
     const raw=Vector3.FromArray(points),fit=cathexisFits[key];
     const bodyPoint=raw.multiply(new Vector3(...fit.scale)).add(new Vector3(...fit.position)).scale(1.7/1.9);
@@ -61,6 +62,7 @@ try{
  const last=model.face(assets['grace-3k'].variants[0],cathexisFits['grace-3k'],'half-right');
  const settled=await Promise.allSettled([first,last]);assert.equal(settled[1].status,'fulfilled');
  assert.ok(!scene.meshes.some(m=>m.name==='grace-8k'));await model.face(null);assert.equal(casters.size,2);
+ model.ground(true);assert.ok(scene.meshes.find(m=>m.name==='Motion ground reference · 10 cm').isEnabled());
  model.dispose();assert.equal(scene.meshes.length,0);assert.equal(scene.transformNodes.length,0);assert.equal(casters.size,0);
  // Static review shares the same clipping/eye code and still owns one intact body.
  const staticModel=await loadInspectionModel(stage,assets.body.variants[0],new AbortController().signal,true,bodyEyePatch);

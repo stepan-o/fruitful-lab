@@ -9,6 +9,7 @@ from cathexis_motion_math import context,cloth_regions
 from cathexis_drape import refine_hands, drape_matrices
 from cathexis_gait import refine_gait
 from cathexis_hot_walk import rebuild_hot_walk
+from cathexis_stance import calm_stance
 source,output=map(Path,sys.argv[1:3]);assert hashlib.sha256(source.read_bytes()).hexdigest()=='a15bb25903042ca5830963f3231818df99101338ef4d6df960218995b8889dc1','Unexpected source revision'
 d=context(source)
 v=d['verts'];js=d['js'];ws=d['ws'];ib=d['ib'];g=copy.deepcopy(d['g']);joints=d['sk']['joints'];hip=22
@@ -76,11 +77,12 @@ for source in g['animations']:
  natural_tracks=copy.deepcopy(corrected)
  refine_gait(d,corrected,ts)
  if name=='Hot_Walk':refine_hands(d,corrected,ts)
+ else:calm_stance(d,corrected,ts)
  worlds=[d['world_at'](corrected,t)for t in ts]
  floor=[skinv(world,legs)[:,1].min() for world in worlds]
  drapes,drape_report=drape_matrices(d,corrected,ts,levels,cloth,legs,skinv,clearance_floor=.20 if name=='Happy_Sway' else .14)
  if name=='Hot_Walk':rebuild_hot_walk(d,corrected,ts,natural_tracks)
- floor=np.array(floor);ground=.002-floor;ground[-1]=ground[0]
+ floor=np.array(floor);ground=np.zeros(len(ts)) if name=='Happy_Sway' else .002-floor;ground[-1]=ground[0]
  # Translate the pelvis globally; corrected leg articulation and source forward timing are retained.
  for node,path,_,vals in corrected:
   if node==22 and path=='translation':vals[:,1]+=ground*100

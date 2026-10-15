@@ -16,20 +16,23 @@ for(const animation of root.listAnimations())for(const sampler of animation.list
  const values=sampler.getOutput().getArray();assert.ok(values.every(Number.isFinite));
  if(animation.getName().endsWith('Corrected')){const n=sampler.getOutput().getElementSize();for(let k=0;k<n;k++)assert.ok(Math.abs(values[k]-values[values.length-n+k])<1e-6,'closed endpoint');}
 }
-// Owner-approved waist/hem flow and acting: only Hot Walk's six leg rotations change.
-// Pin all other curves to the accepted 96bf1856 runtime, without shipping that asset.
-const legNames=new Set(['mixamorig:LeftUpLeg','mixamorig:LeftLeg','mixamorig:LeftFoot','mixamorig:RightUpLeg','mixamorig:RightLeg','mixamorig:RightFoot']);
+// Preserve both originals, Hot Walk gait/dress/left contact and unrelated acting.
+const armNames=new Set(['mixamorig:RightArm','mixamorig:RightForeArm','mixamorig:RightHand']);
 const preserved=[];for(const a of root.listAnimations())for(const c of a.listChannels()){
  const node=c.getTargetNode().getName(),path=c.getTargetPath();
- if(a.getName()==='Hot_Walk_Corrected'&&path==='rotation'&&legNames.has(node))continue;
+ if(a.getName()==='Happy_Sway_Corrected'||a.getName()==='Hot_Walk_Corrected'&&path==='rotation'&&armNames.has(node))continue;
  const s=c.getSampler();preserved.push([a.getName(),node,path,Array.from(s.getInput().getArray()),Array.from(s.getOutput().getArray())]);
 }
 preserved.sort((a,b)=>JSON.stringify(a.slice(0,3)).localeCompare(JSON.stringify(b.slice(0,3))));
-assert.equal(digest(Buffer.from(JSON.stringify(preserved))),'1519a2bdf599b1f1d66f9e812dd3348efa973e120d69b315486107ed4f9253d7','accepted non-leg curves unchanged');
+assert.equal(digest(Buffer.from(JSON.stringify(preserved))),'1f4f407ccb53a020855d9e73affb3c2d45eaeeb73def682f89cca83ab28bc025','originals and preserved Hot Walk curves unchanged');
 const corrected=audit.clips.filter(c=>c.clip.endsWith('Corrected'));assert.equal(corrected.reduce((n,c)=>n+c.samples,0),1907);
 for(const c of corrected){assert.equal(c.costumeLegContactFrames,0);assert.equal(c.legLegContactFrames,0);assert.ok(c.maxLegKeyRotationStepRadians<.20);if(c.clip==='Hot_Walk_Corrected'){assert.ok(c.ankleLaneSeparationMaxM<.15,'no wide fixed stance');assert.ok(c.ankleLaneSeparationMaxM-c.ankleLaneSeparationMinM>.09,'curved recovery and central landing');assert.ok(c.kneeCentreDistanceMinM>.12,'knee armour passing clearance');}else{assert.ok(c.ankleLaneSeparationMinM>.15);assert.ok(c.kneeLaneSeparationMinM>.10);}assert.equal(c.endpointMaxM,0);assert.ok(c.footMinM>=0&&c.footMaxM<(c.clip==='Hot_Walk_Corrected'?.006:.004));}
 assert.equal(audit.handContacts.hipSamples,701);assert.equal(audit.handContacts.templeSamples,318);
 assert.ok(audit.handContacts.hipPalmErrorMaxM<.001);assert.ok(audit.handContacts.templePalmErrorMaxM<.001);
+const stance=audit.motionQuality.find(c=>c.clip==='Happy_Sway_Corrected');
+assert.equal(stance.soleSamples,1206);assert.ok(stance.maxSoleDriftM<.003,'planted sole surfaces stay within 3mm');assert.ok(stance.hipTravelRangeM[0]<.14,'calmer standing sway');
+const arm=audit.motionQuality.find(c=>c.clip==='Hot_Walk_Corrected');
+assert.ok(arm.rightArmMaxKeyStepDegrees['mixamorig:RightArm']<8,'no elbow-plane jump');assert.ok(arm.rightArmMaxKeyStepDegrees['mixamorig:RightForeArm']<6);assert.ok(arm.rightArmMaxKeyStepDegrees['mixamorig:RightHand']<13);
 // Babylon inserts a non-indexed ancestor for the two-branch skirt skeleton.
 const engine=new NullEngine(),scene=new Scene(engine);try{const c=await LoadAssetContainerAsync(bytes,scene,{pluginExtension:'.glb'});assert.deepEqual(c.meshes.filter(m=>m.getTotalVertices()>0).map(m=>[m.name,m.skeleton.bones.filter(b=>b.getIndex()>=0).length]),[['Source_Body',23],['Corrected_Body',29]]);c.dispose();}finally{scene.dispose();engine.dispose();}
 console.log('CATHEXIS motion: 4 clips, shared geometry, 23/29 indexed joints, exact 1,907-pose audit hash, zero glTF errors.');

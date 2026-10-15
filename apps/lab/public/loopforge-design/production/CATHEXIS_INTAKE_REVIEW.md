@@ -1,6 +1,6 @@
 # CATHEXIS — accepted v2 body and face intake
 
-14 October 2026. Accepted body; fitted rigid-face candidates, not an accepted rig.
+14 October 2026 intake; updated 15 October. Accepted body and full/split Grace fit; acting remains under review.
 
 Review player: `/stepanoskin/loopforge/play/asset-review/cathexis`.
 Generation kit: Game Design → Model briefs → CATHEXIS. The Agents tab and every character player link into the shared library.
@@ -29,7 +29,7 @@ The mechanical derivatives are inspection candidates. They are not Meshy deliver
 The initial six runtime candidates were inspected in the production-built Babylon player with textured and shape-only views. Front, side and reverse views support these observations:
 
 - The body preserves the porcelain/brass costume, open skirt, crown and mechanical heels. Its head still has a grinning skull surface. The teeth read strongly in the texture; shape-only inspection shows the underlying skull/nose/face volume. This is not yet a prepared recessed seat for interchangeable expression inserts. The assembly viewer now preserves this entire face under Grace; the earlier cutout has been removed.
-- Grace has open eye holes, a hollow reverse and a raised upper mounting/strap shape. Both budgets preserve the silhouette. At close inspection, 3k is visibly more faceted around the cheek/forehead; 8k is smoother. Keep 3k as a lightweight candidate and 8k for close fitting tests until mounted camera comparisons establish the required budget. Both are now mounted candidates, pending owner acceptance.
+- Grace has open eye holes, a hollow reverse and a raised upper mounting/strap shape. Both budgets preserve the silhouette. At close inspection, 3k is visibly more faceted around the cheek/forehead; 8k is smoother. Keep 3k as a lightweight candidate and 8k for close fitting tests until mounted camera comparisons establish the required budget. Full/split Grace fit is owner-approved; 3k and 8k remain selectable for camera-budget comparisons.
 - Grimace is asymmetric; Fury has strongly lowered brows and an open mouth; Distress has raised inner brows and a downturned mouth. They read as distinct isolated expressions. The models are rigid single meshes, not mechanical jaw/brow rigs. The enlarged inspection does not establish their readability on a distant worker-facing character.
 - Local simplification retains useful expression shapes; it is not a claim that every master detail survives. These are earlier isolated studies; the original body face now supplies the mechanical appearance.
 
@@ -90,7 +90,7 @@ Mask downloads are integrity checked, abortable and disposed on replacement. Err
 
 ## Layering verification
 
-The geometry check partitions both Grace budgets into opposite halves, verifies surface area conservation, finite normalized normals, interpolated UVs and source immutability. Browser checks cover full/half/exposed appearances, both sides, both budgets, oblique/profile inspection, eye toggles and CCTV. Owner appearance acceptance and moving costume clearance remain open.
+The geometry check partitions both Grace budgets into opposite halves, verifies surface area conservation, finite normalized normals, interpolated UVs and source immutability. Browser checks cover full/half/exposed appearances, both sides, both budgets, oblique/profile inspection, eye toggles and CCTV. Grace appearance/fit is owner-approved. Motion and contact evidence has its own limits in the motion record.
 
 ## Stage 2 closed — owner decision, 14 October 2026
 
@@ -98,4 +98,4 @@ The current face assets are sufficient. Remaining porcelain/robotic expression g
 
 ## Animated Grace review — 15 October 2026
 
-The same viewer now fits full Grace, either half or the exposed original face to both Hot Walk and Happy Sway. Use **Motion & face review → Appearance**, then **Inspect head & face seat**; static source fitting remains available separately. The rigged body uses the existing neutral fit mapped to its head bind space and scale. No body face is removed and no new expression assets are introduced. See [motion/attachment record](CATHEXIS_MOTION_REVIEW.md) for the reproducible checks and their limits. Artistic fit acceptance remains with the owner.
+The same viewer now fits full Grace, either half or the exposed original face to both Hot Walk and Happy Sway. Use **Motion & face review → Appearance**, then **Inspect head & face seat**; static source fitting remains available separately. The rigged body uses the existing neutral fit mapped to its head bind space and scale. No body face is removed and no new expression assets are introduced. See [motion/attachment record](CATHEXIS_MOTION_REVIEW.md) for the reproducible checks and their limits. The owner approved full/split Grace fit on 15 October; subsequent motion changes preserve it.

@@ -2,6 +2,7 @@ import {LoadAssetContainerAsync} from '@babylonjs/core/Loading/sceneLoader';
 import '@babylonjs/loaders/glTF/2.0/glTFLoader';
 import '@babylonjs/loaders/glTF/glTFFileLoader';
 import {VertexBuffer} from '@babylonjs/core/Buffers/buffer';
+import {MeshBuilder} from '@babylonjs/core/Meshes/meshBuilder';
 import {TransformNode} from '@babylonjs/core/Meshes/transformNode';
 import {PBRMaterial} from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import {Vector3,Quaternion} from '@babylonjs/core/Maths/math.vector';
@@ -47,7 +48,16 @@ export async function loadMotionModel(stage:CharacterStage,bank:InspectionMotion
   bodyEyes=createEyeLenses(headAnchor,bodyEyePatch,.174);
   const appearance=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{m.maxSimultaneousLights=6;return {m,texture:m.albedoTexture,mr:m.metallicTexture,normal:m.bumpTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness};});
   let id=bank.clips[0].id,version:MotionVersion='Corrected',group=container.animationGroups.find(g=>g.name===`${id}_${version}`),phase=0,playing=false,speed=1,loop=true,last=performance.now(),notifyAt=0,disposed=false;
-  const anchor=new Vector3();
+  const anchor=new Vector3(),origin=new Vector3(),offset=new Vector3();
+  // A fixed reference makes planted contacts visible. Never chase the current
+  // pelvis: doing that turns hip sway into world-space foot skating.
+  const gridLines:Vector3[][]=[];
+  for(let i=-8;i<=8;i++){
+   gridLines.push([new Vector3(i*.1,.001,-.8),new Vector3(i*.1,.001,.8)]);
+   gridLines.push([new Vector3(-.8,.001,i*.1),new Vector3(.8,.001,i*.1)]);
+  }
+  const groundGuide=MeshBuilder.CreateLineSystem('Motion ground reference · 10 cm',{lines:gridLines},scene);
+  groundGuide.color=new Color3(.50,.64,.56);groundGuide.alpha=.65;groundGuide.isPickable=false;groundGuide.setEnabled(false);
   function sample(){
    if(group)for(const track of group.targetedAnimations){
     const frame=group.from+(group.to-group.from)*phase,value=track.animation.evaluate(frame),target=track.target as TransformNode;
@@ -56,12 +66,17 @@ export async function loadMotionModel(stage:CharacterStage,bank:InspectionMotion
     else if(track.animation.targetProperty==='scaling')target.scaling.copyFrom(value as Vector3);
    }
    root.position.copyFrom(anchor);root.computeWorldMatrix(true);hips!.computeWorldMatrix(true);
-   const p=hips!.getAbsolutePosition();root.position.x+=anchor.x-p.x;root.position.z+=anchor.z-p.z;root.computeWorldMatrix(true);stage.refresh();
+   Vector3.TransformNormalToRef(origin,root.getWorldMatrix(),offset);root.position.x-=offset.x;root.position.z-=offset.z;root.computeWorldMatrix(true);groundGuide.position.copyFrom(anchor);stage.refresh();
   }
   function select(clip:string,next:MotionVersion,preserveTime=false){
    playing=false;if(!preserveTime)phase=0;id=clip;version=next;
    for(const {n,p,r,s}of neutral){n.position.copyFrom(p);n.rotationQuaternion=r.clone();n.scaling.copyFrom(s);}
-   group=container.animationGroups.find(g=>g.name===`${id}_${version}`);source!.setEnabled(version==='Source');corrected!.setEnabled(version==='Corrected');sample();onFrame(phase,false);
+   group=container.animationGroups.find(g=>g.name===`${id}_${version}`);source!.setEnabled(version==='Source');corrected!.setEnabled(version==='Corrected');
+   // Capture the clip's starting position once, independently of seek/play phase.
+   const restorePhase=phase;phase=0;origin.setAll(0);sample();
+   origin.copyFrom(hips!.getAbsolutePosition()).subtractInPlace(anchor);
+   const yaw=Quaternion.FromEulerAngles(0,-root.rotation.y,0);origin.rotateByQuaternionToRef(yaw,offset);origin.copyFrom(offset);origin.y=0;
+   phase=restorePhase;sample();onFrame(phase,false);
   }
   const observer=scene.onBeforeRenderObservable.add(()=>{
    const now=performance.now(),dt=Math.min(.06,(now-last)/1000);last=now;if(!playing||!group)return;
@@ -73,10 +88,11 @@ export async function loadMotionModel(stage:CharacterStage,bank:InspectionMotion
   root.rotation.y=Math.PI;room('security');select(id,version);
   return {
    motion:{select,play(value:boolean){if(value&&phase===1)phase=0;playing=value&&!!group;last=performance.now();stage.refresh();},seek(value:number){phase=Math.max(0,Math.min(1,value));sample();},speed(value:number){speed=value;},loop(value:boolean){loop=value;}},
+   ground(value:boolean){groundGuide.setEnabled(value);stage.refresh();},
    face:fitted.face,eyes(value:boolean){bodyEyes?.enabled(value);fitted?.eyes(value);},room,turn(degrees:number){root.rotation.y=Math.PI+degrees*Math.PI/180;sample();},
    light(value:boolean){fill?.setEnabled(value);stage.refresh(true);},
    surface(value:InspectionSurface){for(const {m,texture,mr,normal,color,metallic,roughness}of appearance){m.albedoTexture=value==='clay'?null:texture;m.metallicTexture=value==='clay'?null:mr;m.bumpTexture=value==='clay'?null:normal;m.albedoColor=value==='clay'?new Color3(.46,.48,.44):color;m.metallic=value==='clay'?0:metallic;m.roughness=value==='clay'?.85:roughness;m.wireframe=value==='wireframe';}fitted?.surface(value);stage.refresh(true);},
-   dispose(){if(disposed)return;disposed=true;scene.onBeforeRenderObservable.remove(observer);fitted?.dispose();bodyEyes?.dispose();headAnchor?.dispose();meshes.forEach(m=>shadow.removeShadowCaster(m));fill?.dispose();container.dispose();root.dispose();}
+   dispose(){if(disposed)return;disposed=true;scene.onBeforeRenderObservable.remove(observer);fitted?.dispose();bodyEyes?.dispose();headAnchor?.dispose();meshes.forEach(m=>shadow.removeShadowCaster(m));fill?.dispose();groundGuide.dispose();container.dispose();root.dispose();}
   };
  }catch(error){fitted?.dispose();bodyEyes?.dispose();headAnchor?.dispose();fill?.dispose();container.dispose();root.dispose();throw error;}
 }

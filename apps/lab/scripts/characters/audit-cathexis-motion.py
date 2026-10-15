@@ -6,6 +6,7 @@ import sys,json,hashlib,ctypes,subprocess,tempfile
 import numpy as np
 from cathexis_motion_math import context,cloth_regions
 from cathexis_drape import audit_hand_contacts
+from cathexis_quality import audit_motion_quality
 runtime=Path(sys.argv[1]);output=Path(sys.argv[2]);d=context(runtime);g=d['g'];acc=d['acc'];v=d['verts'];vh=np.c_[v,np.ones(len(v))]
 f=acc(g['meshes'][0]['primitives'][0]['indices']).astype(np.uint32).reshape(-1,3)
 cloth,legs=cloth_regions(v,f);cf=f[np.all(cloth[f],axis=1)];lf=f[np.all(legs[f],axis=1)];left=f[np.all((legs&(v[:,0]>0))[f],axis=1)];right=f[np.all((legs&(v[:,0]<0))[f],axis=1)]
@@ -27,4 +28,4 @@ for clip in g['animations']:
   if kind=='rotation' and node in (1,2,3,5,6,7):
    q=values/np.linalg.norm(values,axis=1)[:,None];steps.extend(2*np.arccos(np.clip(abs(np.sum(q[1:]*q[:-1],axis=1)),0,1)))
  row={'clip':clip['name'],'samples':len(times),'costumeLegContactFrames':len(hits),'legLegContactFrames':len(leg_hits),'maxLegKeyRotationStepRadians':max(steps),'ankleLaneSeparationMinM':min(ankles),'ankleLaneSeparationMaxM':max(ankles),'kneeLaneSeparationMinM':min(knees),'kneeCentreDistanceMinM':min(knee_distances),'footMinM':min(ground),'footMaxM':max(ground),'endpointMaxM':float(np.linalg.norm(ends[1]-ends[0],axis=1).max())};reports.append(row);print({k:v for k,v in row.items()if k!='contacts'},flush=True)
-output.write_text(json.dumps({'runtimeSHA256':hashlib.sha256(runtime.read_bytes()).hexdigest(),'method':'120 Hz non-coplanar edge/triangle crossings. Cloth versus both legs, plus left versus right leg surfaces, below 0.85m. World-X ankle/knee lane separation is diagnostic for these forward-facing clips. No other body contacts, cloth self-contact, blends or dynamics certified. Coplanar/tangent contact, full containment and velocity continuity are not certified.','handContacts':audit_hand_contacts(d),'clothTriangles':len(cf),'legTriangles':len(lf),'leftLegTriangles':len(left),'rightLegTriangles':len(right),'clips':reports},indent=2))
+output.write_text(json.dumps({'runtimeSHA256':hashlib.sha256(runtime.read_bytes()).hexdigest(),'method':'120 Hz non-coplanar edge/triangle crossings. Cloth versus both legs, plus left versus right leg surfaces, below 0.85m. World-X ankle/knee lane separation is diagnostic for these forward-facing clips. No other body contacts, cloth self-contact, blends or dynamics certified. Coplanar/tangent contact, full containment and velocity continuity are not certified.','motionQuality':audit_motion_quality(d),'handContacts':audit_hand_contacts(d),'clothTriangles':len(cf),'legTriangles':len(lf),'leftLegTriangles':len(left),'rightLegTriangles':len(right),'clips':reports},indent=2))

@@ -13,10 +13,10 @@ export type ReviewReadiness = Record<ReviewSection, ReviewGate>;
 export const reviewReadiness: Record<string, ReviewReadiness> = {
  'cathexis-intake': {
   body:{status:'Accepted slice',detail:'Accepted v2 silhouette and rear skirt; rigged export has 51,031 triangles. Matching delivery normal map remains missing.'},
-  equipment:{status:'Candidate',detail:'Full/half Grace and recessed eyes are fitted to the intact static body. Moving head/mask fit remains open; other expression studies are retired.'},
-  motion:{status:'Candidate',detail:'Hot Walk and Happy Sway have source/corrected comparison, six baked controls with a softened waist transition and less trailing flare, separate foot/knee paths, preserved Hot Walk hip/temple hand contacts, sole grounding and closed endpoint poses. Owner motion acceptance pending.'},
-  contact:{status:'Needs work',detail:'1,907 corrected poses pass sampled lower-skirt/leg crossings. Self-contact, blends, moving masks and worker/machine encounters are not certified.'},
-  readability:{status:'Candidate',detail:'Motion and static assembly modes share close inspection, materials and three room cameras. Review acting and identity at actual CCTV scale.'},
+  equipment:{status:'Accepted slice',detail:'Owner approves full/split Grace fit on the intact animated head. Recessed eyes and static/moving fitting share one adapter. Physical mask removal and facial articulation remain outside this slice.'},
+  motion:{status:'Candidate',detail:'Hot Walk keeps its curved gait and accepted dress flow, with a smoothly blended right-arm temple gesture. Happy Sway has calmer hips/torso and planted feet. Source clips are preserved. Owner acting review remains open.'},
+  contact:{status:'Needs work',detail:'1,907 corrected poses pass sampled dress/leg and leg/leg checks; standing sole drift is at most 2.12 mm. Grace attachment passes 22,908 samples. Hand/mask surfaces, self-contact, blends and paired encounters remain unverified.'},
+  readability:{status:'Candidate',detail:'Portrait, full-body and CCTV framing share one performer. A fixed floor grid exposes contact drift; close-up acceptance does not certify distant action readability.'},
   performance:{status:'Not measured',detail:'11.51 MB motion bank; one selected body renders. Baked skinning, no runtime cloth. Crowd and physical-device performance remain unmeasured.'}
  },
  'limen-assembly': {

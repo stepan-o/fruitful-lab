@@ -1,0 +1,40 @@
+{
+  "runtimeSHA256": "e02a0e9c21005d46908a8ba70b6c12c6a36c34b96e1c0537cab0a503314ae1d3",
+  "method": "120 Hz non-coplanar edge/triangle crossings. Cloth and both leg components below 0.85m; no other body contacts, cloth self-contact, blends or dynamics certified. Coplanar/tangent contact, full containment and velocity continuity are not certified.",
+  "clothTriangles": 14855,
+  "legTriangles": 5420,
+  "clips": [
+    {
+      "clip": "Hot_Walk_Source",
+      "samples": 701,
+      "costumeLegContactFrames": 652,
+      "footMinM": 0.04030415901522259,
+      "footMaxM": 0.08523422723668928,
+      "endpointMaxM": 0.03734271404427308
+    },
+    {
+      "clip": "Hot_Walk_Corrected",
+      "samples": 701,
+      "costumeLegContactFrames": 0,
+      "footMinM": 0.0012759772070199023,
+      "footMaxM": 0.003925987977543673,
+      "endpointMaxM": 0.0
+    },
+    {
+      "clip": "Happy_Sway_Source",
+      "samples": 1206,
+      "costumeLegContactFrames": 433,
+      "footMinM": 0.0005312714980404238,
+      "footMaxM": 0.03561656018241842,
+      "endpointMaxM": 0.00032658819923982445
+    },
+    {
+      "clip": "Happy_Sway_Corrected",
+      "samples": 1206,
+      "costumeLegContactFrames": 0,
+      "footMinM": 0.001988312473231568,
+      "footMaxM": 0.0020751423716316286,
+      "endpointMaxM": 0.0
+    }
+  ]
+}

@@ -5,7 +5,7 @@
 Review player: `/stepanoskin/loopforge/play/asset-review/cathexis`.
 Generation kit: Game Design → Model briefs → CATHEXIS. The Agents tab and every character player link into the shared library.
 
-Current handoff: the owner accepted body v2 and its repaired rear skirt on 14 October 2026. The public viewer contains only v2, per the owner’s request to drop superseded bodies. Start the staged rig test in Model briefs; the normal map matched to the 50k delivery still needs exporting. Static face fitting is available; moving costume and face clearance remain open.
+Current handoff (15 October): the first two rigged clips are now locally corrected candidates. [Hot Walk / Happy Sway cleanup](CATHEXIS_MOTION_REVIEW.md) is the current motion record. Static face fitting remains a separate mode. The following inventory describes the original 14 October static intake; its no-rig statements do not describe the new motion bank.
 
 ## Files actually received
 

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-14-v6",
-  "date": "2026-10-14",
+  "revision": "model-briefs-2026-10-15-v7",
+  "date": "2026-10-15",
   "models": [
     {
       "id": "limen",
@@ -690,22 +690,23 @@
       "id": "cathexis",
       "name": "CATHEXIS",
       "subtitle": "Theatre diva · intact mechanism + Grace coverage",
-      "revision": "cathexis-stage-2-closed-v6-2026-10-14",
-      "status": "Stage 2 closed · rigging next",
-      "summary": "Body v2 and the simplified face scope are settled. Existing Grace and the intact original mechanical face supply full, half and exposed appearances. Remaining stage 2 generation is abandoned. Next: rig the body alone, export Hot Walk and expressive sway, then fit Grace to its head joint in our viewer.",
+      "revision": "cathexis-motion-cleanup-v7-2026-10-15",
+      "status": "Body accepted · two motion cleanup candidates",
+      "summary": "Accepted v2 body, full/half Grace over its intact mechanical face, and first rigged Hot Walk / Happy Sway clips. Local skirt, grounding and loop corrections are ready for review; moving mask fit is next.",
       "provenance": "Body v2 accepted on 14 October 2026. The owner closed stage 2 after the layered Grace preview: no further face models are required. Input art derives from original character and room art; earlier expression studies are archive references. Motion, moving fit and grime direction still need review.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
-      "viewerLabel": "Inspect full, half and exposed faces",
+      "viewerLabel": "Compare Hot Walk, sway and mask fitting",
       "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
-      "record": "/loopforge-design/production/CATHEXIS_INTAKE_REVIEW.md",
+      "record": "/loopforge-design/production/CATHEXIS_MOTION_REVIEW.md",
       "parts": [
         "51,034-triangle accepted v2 body; original mechanical face retained",
+        "51,031-triangle rigged delivery; Hot Walk / Happy Sway source and corrected candidates",
         "Grace: 3,058 / 8,128 triangles; half coverage derived from the same mesh",
         "Earlier mechanical expression studies: separate inspection only"
       ],
       "remaining": [
         "Matching delivery normal maps; do not regenerate accepted geometry",
-        "Stage 3: intact-head body rig, Hot Walk and expressive sway, then mirror/frustration",
+        "Stage 3 initial rig test delivered and locally cleaned; next: moving Grace fit and owner motion review",
         "Moving full/half Grace fit, costume, hair, heel and hand clearance",
         "Stage 4 acting auditions; grime selection later. Facial rig and expression-mask exchange are out of scope"
       ],

@@ -587,4 +587,5 @@ for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT
 
 (OUT/"production/CHARACTER_REVIEW_STRUCTURE.md").write_text((ROOT.parent/"production/CHARACTER_REVIEW_STRUCTURE.md").read_text())
 
+(OUT/"production/CATHEXIS_MOTION_REVIEW.md").write_text((ROOT.parent/"production/CATHEXIS_MOTION_REVIEW.md").read_text())
 (OUT/"production/CATHEXIS_INTAKE_REVIEW.md").write_text((ROOT.parent/"production/CATHEXIS_INTAKE_REVIEW.md").read_text())

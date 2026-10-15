@@ -12,12 +12,12 @@ export type ReviewGate = {status:'Accepted slice'|'Candidate'|'Needs work'|'Not 
 export type ReviewReadiness = Record<ReviewSection, ReviewGate>;
 export const reviewReadiness: Record<string, ReviewReadiness> = {
  'cathexis-intake': {
-  body:{status:'Accepted slice',detail:'Owner accepted the 51,034-triangle v2 body and repaired skirt. Unrigged; the delivery normal map remains missing. Faces are separate candidates.'},
-  equipment:{status:'Needs work',detail:'Grace 3k/8k and three mechanical faces are isolated. Head fit, eye apertures, cavities and half-shell remain unvalidated.'},
-  motion:{status:'Needs work',detail:'No skin joints or animation clips in the downloaded files. Hot Walk and all acting await rigging.'},
-  contact:{status:'Needs work',detail:'No mounted mask, jaw motion, hand-to-face contact or costume clearance test yet.'},
-  readability:{status:'Candidate',detail:'Body and separate enlarged face inspection available. Mounted-face readability in CCTV remains untested.'},
-  performance:{status:'Not measured',detail:'One static asset loaded at a time; high-resolution masters stay outside deployments. Animated scenes, crowd and device performance remain unmeasured.'}
+  body:{status:'Accepted slice',detail:'Accepted v2 silhouette and rear skirt; rigged export has 51,031 triangles. Matching delivery normal map remains missing.'},
+  equipment:{status:'Candidate',detail:'Full/half Grace and recessed eyes are fitted to the intact static body. Moving head/mask fit remains open; other expression studies are retired.'},
+  motion:{status:'Candidate',detail:'Hot Walk and Happy Sway have source/corrected comparison, six baked skirt controls, sole grounding and closed endpoint poses. Owner motion acceptance pending.'},
+  contact:{status:'Needs work',detail:'1,907 corrected poses pass sampled lower-skirt/leg crossings. Self-contact, blends, moving masks and worker/machine encounters are not certified.'},
+  readability:{status:'Candidate',detail:'Motion and static assembly modes share close inspection, materials and three room cameras. Review acting and identity at actual CCTV scale.'},
+  performance:{status:'Not measured',detail:'11.51 MB motion bank; one selected body renders. Baked skinning, no runtime cloth. Crowd and physical-device performance remain unmeasured.'}
  },
  'limen-assembly': {
   body:{status:'Accepted slice',detail:'Owner approved prototype appearance and character resemblance.'},
@@ -36,8 +36,8 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
   performance:{status:'Not measured',detail:'One consolidated body and motion bank. Real crowd and device measurements remain open.'}
  },
  'stiletto-blades': {
-  body:{status:'Accepted slice',detail:'Owner accepts prototype appearance. Rigid armour weights and visor emission remain open.'},
-  equipment:{status:'Accepted slice',detail:'Owner accepts both mounted blade arms in motion. Welder mounting and tool-change acting are still pending.'},
+  body:{status:'Accepted slice',detail:'Owner accepts prototype appearance. Rigid armour weights remain open; the red cross visor is a review candidate.'},
+  equipment:{status:'Accepted slice',detail:'Owner accepts both mounted blade arms in motion. Welders/flames are mounted review candidates; tool-change acting is still pending.'},
   motion:{status:'Accepted slice',detail:'Owner accepts the visible prototype acting. Idle/alert readings swapped; Reprimand reads as attack and Argument as threat. Source clips remain traceable.'},
   contact:{status:'Needs work',detail:'2,335 corrected poses pass sampled blade checks. Gait, blends and machine/worker clearance remain open.'},
   readability:{status:'Candidate',detail:'Factory/CCTV inspection available; visor identity and blade-aware interactions still need acceptance.'},

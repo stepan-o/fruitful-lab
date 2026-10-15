@@ -15,12 +15,12 @@ def render_agents():
         sources = ', '.join(f'{v["src"]} {v["width"]}w' for v in variants)
         return f'<figure><a href="{variants[-1]["src"]}" target="_blank" rel="noopener"><img src="{first["src"]}" srcset="{sources}" sizes="(max-width:700px) 90vw, 520px" width="{first["width"]}" height="{first["height"]}" loading="lazy" decoding="async" alt="{e(label)}"></a><figcaption>{e(label)} · original concept reference</figcaption></figure>'
 
-    out = ['''<header class="section-head"><span class="kicker">14 October · current character pipeline</span>
+    out = ['''<header class="section-head"><span class="kicker">15 October · current character pipeline</span>
     <h2>Characters you can recognize in motion.</h2>
     <p>The prebuilt factory needs readable people: workers carrying the consequences of a shift, and supervisors whose posture, tools and actions reveal who they are.</p></header>
     <div class="callout"><h3>Start with the current model library.</h3>
     <p><a href="/stepanoskin/loopforge/play/asset-review">Open the character &amp; motion players →</a></p>
-    <p>LIMEN, Worker 01 and STILETTO use the new Meshy bodies. CATHEXIS adds a fitted body-and-face review with illuminated eyes. Inspect one character or candidate part at a time under factory lighting. Drag to orbit, scroll or pinch to zoom, reset the view, and switch to fixed CCTV angles.</p></div>
+    <p>LIMEN, Worker 01 and STILETTO use the new Meshy bodies. CATHEXIS adds original/corrected Hot Walk and Happy Sway plus a separate mask-fitting view. Inspect one character or candidate part at a time under factory lighting. Drag to orbit, scroll or pinch to zoom, reset the view, and switch to fixed CCTV angles.</p></div>
     <p><a href="/stepanoskin/loopforge/design#model-briefs">Model briefs: input art, copyable stages and downloadable rebuild kits →</a></p>
     <h3>What is available now</h3><div class="principle-grid">''']
     current = [
@@ -33,9 +33,9 @@ def render_agents():
         ('STILETTO', '/stepanoskin/loopforge/play/asset-review/stiletto', 'Blades, active welders and red visor',
          'Owner accepts the blade appearance and acting. The same motion player now offers twin welders and mixed tools, blue-white flame flow and a red visor. Eighteen source motions plus five corrected alternatives remain available.',
          'Next: module-specific clearance, remaining leg contacts, blends and machine-contact acting. Blade audit counts do not certify welders.', 'STILETTO_MOTION_REVIEW.md'),
-        ('CATHEXIS', '/stepanoskin/loopforge/play/asset-review/cathexis', 'Grace, split mask and exposed mechanism',
-         'Keep the accepted 51,034-triangle body intact. Compare full Grace, half Grace on either side, or her original mechanical face. Warm recessed eyes, close head framing and CCTV share one player. Dedicated grimace studies remain in separate-part inspection.',
-         'Next: matched body normal map and a Hot Walk/expressive-sway rig test, then moving mask/costume clearance. Stage 2 is closed: remaining face generation is abandoned. Rig the intact body alone; mount existing Grace to the head in our app. No facial rig is requested.', 'CATHEXIS_INTAKE_REVIEW.md'),
+        ('CATHEXIS', '/stepanoskin/loopforge/play/asset-review/cathexis', 'Hot Walk, sway and Grace coverage',
+         'Compare original/corrected Hot Walk and Happy Sway. Six baked skirt controls, grounded soles and closed loop endpoints preserve neutral geometry; 1,907 corrected poses pass the sampled lower-skirt/leg crossing test. Full/half Grace and illuminated eyes remain in separate static fitting.',
+         'Next: owner motion review, moving Grace fit, normal map, blends and paired contacts. No live cloth simulation. Stage 2 remains closed; no new expression masks or facial rig.', 'CATHEXIS_MOTION_REVIEW.md'),
     ]
     for name, route, title, current_text, next_text, record in current:
         out.append(f'<article class="principle"><span class="kicker">{name} / current review</span><h3>{title}</h3><p>{current_text}</p><p><strong>{next_text}</strong></p><p><a href="{route}">Inspect {name} →</a> · <a href="production/{record}">Review record ↗</a></p></article>')
@@ -55,7 +55,7 @@ def render_agents():
         ('Worker 01', 'thrum-conveyor', 'loopforge-supervisors', 'Worn metal. Exposed joints. A working body.', 'Weight, fatigue, hesitation and fear must read in the posture. Keep workers smaller and less ornate than supervisors.'),
         ('LIMEN', 'limen', 'loopforge', 'Heavy armour. One asymmetric cyan blade.', 'The blade is his dark-CCTV identity cue. A planted stance holds a worker and the queue behind them. The emitter-check idle gives that tool a physical routine.'),
         ('STILETTO', 'stiletto-portrait', 'loopforge-console', 'Black chrome. Long limbs. Twin blade forearms.', 'Decisive turns and impatient directives. Her equipment needs its own clearance envelope. A welder module is an asset option; it does not grant unimplemented engineering ability.'),
-        ('CATHEXIS / static intake', 'cathexis', 'loopforge', 'Cracked porcelain. Warm eyes. Controlled attention.', 'Hot Walk is her only travel gait; she never runs and has no alert state. Gentle theatrical presence, full/half Grace over her original mechanical face and grime variants are documented in Model briefs. The accepted clean body supports mask coverage changes and warm eye lights. Her body rig and paired acting remain open; face articulation is outside the current scope.'),
+        ('CATHEXIS / static intake', 'cathexis', 'loopforge', 'Cracked porcelain. Warm eyes. Controlled attention.', 'Hot Walk is her only travel gait; she never runs and has no alert state. Gentle theatrical presence, full/half Grace over her original mechanical face and grime variants are documented in Model briefs. The accepted clean body supports mask coverage changes and warm eye lights. Her first two rigged motion candidates are available; paired acting remains open; face articulation is outside the current scope.'),
         ('RIVET WITCH / awaiting model', 'witch', 'loopforge', 'Hood. Green goggles. A practical working kit.', 'Brace, inspect, wrench and test at real machine contacts. Frustration with unfinished damage should be readable before dialogue.'),
         ('THRUM / awaiting model', 'thrum', 'loopforge', 'Speaker head. Chest resonator. Deliberate rhythm.', 'Workers visibly settle around him. Stress relief and slipping discipline need distinct responses, with a real throughput cost.'),
     ]

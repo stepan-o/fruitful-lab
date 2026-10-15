@@ -41,7 +41,9 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
   const headBone=container.skeletons[0].bones.find(b=>b.name==='Head');
   if(!head||!body||!headBone||!['Left','Right'].every(side=>container.transformNodes.some(n=>n.name===side+'ForeArm')))throw Error('Character attachment anchors missing.');
   // Skin bind space differs from the skinned mesh node transform. Attach in head bind space.
-  visor=createFaceEmission(body,{x:2.5,y:170.9,rx:2.9,ry:.55,zMin:5,slope:.19},new Color3(1,.025,.045),head,.08,headBone.getAbsoluteInverseBindMatrix(),{bottom:159.5,top:170.9,halfWidth:.4});
+  // Align with the eye-level helmet cut; the forehead ridge is not the visor.
+  const visorCut={x:2.5,y:166.3,rx:2.9,ry:.55,zMin:5,slope:.4};
+  visor=createFaceEmission(body,visorCut,new Color3(1,.025,.045),head,.08,headBone.getAbsoluteInverseBindMatrix(),{bottom:159.5,top:visorCut.y-visorCut.x*visorCut.slope,halfWidth:.4});
   const hips=container.transformNodes.find(n=>n.name==='Hips');if(!hips)throw Error('Stiletto pelvis missing.');
   const meshes=container.meshes.filter(m=>m.getTotalVertices()>0);
   meshes.forEach(m=>{m.isPickable=false;m.receiveShadows=true;m.alwaysSelectAsActiveMesh=true;shadow.addShadowCaster(m);});

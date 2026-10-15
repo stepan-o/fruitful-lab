@@ -124,3 +124,9 @@ The original STILETTO character sheet (set 1, head detail) and approved front mo
 The body and runtime rebuild briefs now explicitly preserve the full visor shape. The original image-generation prompts remain historical provenance.
 
 Validation: optimized production build, TypeScript, scoped ESLint and existing character/asset checks passed. Local visual inspection covered neutral front and three-quarter views, Running at 0.20 s, Idle Turn Left including profile/back occlusion, the shared visor switch and CCTV scale. No browser errors were observed. All 12 rebuild-kit files match their size/hash declarations and all four prompt copies match the source. This correction adds no model download or draw call; crowd performance is not newly measured.
+
+## Eye-level alignment — 15 October 2026
+
+Owner review found the horizontal emission above the actual eye slit. Visor v3 lowers it onto the helmet's eye-level cut and follows its steeper inward slope. The descending seam now starts at that exact centre intersection instead of extending above the horizontal light. This changes only the fitted overlay coordinates; the body, materials, rig, animations and effect budget are unchanged.
+
+Validation: optimized build, TypeScript, scoped ESLint and existing asset/character checks passed. Neutral front, three-quarter and profile inspection confirms the horizontal light follows the lower eye opening. Running at 0.20 s retains that fit and the connected centre seam. No browser console errors were observed.

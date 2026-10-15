@@ -33,9 +33,9 @@ def render_agents():
         ('STILETTO', '/stepanoskin/loopforge/play/asset-review/stiletto', 'Blades, active welders and red visor',
          'Owner accepts the blade appearance and acting. The same motion player now offers twin welders and mixed tools, blue-white flame flow and a red visor. Eighteen source motions plus five corrected alternatives remain available.',
          'Next: module-specific clearance, remaining leg contacts, blends and machine-contact acting. Blade audit counts do not certify welders.', 'STILETTO_MOTION_REVIEW.md'),
-        ('CATHEXIS', '/stepanoskin/loopforge/play/asset-review/cathexis', 'Body, porcelain and mechanical expressions',
-         'Fit Grace 3k/8k, Grimace, Fury or Distress to the accepted 51,034-triangle body. Warm illuminated eyes, close head framing, CCTV and separate-part review share one player. The source body is preserved; a reversible central face seat clears the insert.',
-         'Next: matched body normal map and a Hot Walk/expressive-sway rig test, then moving face/costume clearance and half-shell. Fitted rigid expressions are candidates, not facial articulation.', 'CATHEXIS_INTAKE_REVIEW.md'),
+        ('CATHEXIS', '/stepanoskin/loopforge/play/asset-review/cathexis', 'Grace, split mask and exposed mechanism',
+         'Keep the accepted 51,034-triangle body intact. Compare full Grace, half Grace on either side, or her original mechanical face. Warm recessed eyes, close head framing and CCTV share one player. Dedicated grimace studies remain in separate-part inspection.',
+         'Next: matched body normal map and a Hot Walk/expressive-sway rig test, then moving mask/costume clearance. The half mask is derived from Grace; no new Meshy face is needed for this prototype.', 'CATHEXIS_INTAKE_REVIEW.md'),
     ]
     for name, route, title, current_text, next_text, record in current:
         out.append(f'<article class="principle"><span class="kicker">{name} / current review</span><h3>{title}</h3><p>{current_text}</p><p><strong>{next_text}</strong></p><p><a href="{route}">Inspect {name} →</a> · <a href="production/{record}">Review record ↗</a></p></article>')
@@ -55,7 +55,7 @@ def render_agents():
         ('Worker 01', 'thrum-conveyor', 'loopforge-supervisors', 'Worn metal. Exposed joints. A working body.', 'Weight, fatigue, hesitation and fear must read in the posture. Keep workers smaller and less ornate than supervisors.'),
         ('LIMEN', 'limen', 'loopforge', 'Heavy armour. One asymmetric cyan blade.', 'The blade is his dark-CCTV identity cue. A planted stance holds a worker and the queue behind them. The emitter-check idle gives that tool a physical routine.'),
         ('STILETTO', 'stiletto-portrait', 'loopforge-console', 'Black chrome. Long limbs. Twin blade forearms.', 'Decisive turns and impatient directives. Her equipment needs its own clearance envelope. A welder module is an asset option; it does not grant unimplemented engineering ability.'),
-        ('CATHEXIS / static intake', 'cathexis', 'loopforge', 'Cracked porcelain. Warm eyes. Controlled attention.', 'Hot Walk is her only travel gait; she never runs and has no alert state. Gentle theatrical presence, modular porcelain/mechanical expressions and grime variants are documented in Model briefs. The accepted clean body now supports fitted rigid expressions and warm eye lights. Her rig, face articulation and paired acting remain open.'),
+        ('CATHEXIS / static intake', 'cathexis', 'loopforge', 'Cracked porcelain. Warm eyes. Controlled attention.', 'Hot Walk is her only travel gait; she never runs and has no alert state. Gentle theatrical presence, full/half Grace over her original mechanical face and grime variants are documented in Model briefs. The accepted clean body supports mask coverage changes and warm eye lights. Her rig, face articulation and paired acting remain open.'),
         ('RIVET WITCH / awaiting model', 'witch', 'loopforge', 'Hood. Green goggles. A practical working kit.', 'Brace, inspect, wrench and test at real machine contacts. Frustration with unfinished damage should be readable before dialogue.'),
         ('THRUM / awaiting model', 'thrum', 'loopforge', 'Speaker head. Chest resonator. Deliberate rhythm.', 'Workers visibly settle around him. Stress relief and slipping discipline need distinct responses, with a real throughput cost.'),
     ]

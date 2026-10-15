@@ -9,7 +9,7 @@ import type {FactoryScene,SceneReport} from '../factory-study/scene';
 import type {loadInspectionModel,InspectionFile,InspectionSurface} from './inspection-model';
 import styles from './agent-test.module.css';
 import local from './asset-inspection.module.css';
-import {cathexisFits,bodyEyePatch} from '@/lib/loopforge/agents/cathexis-fit';
+import {cathexisFits,bodyEyePatch,type MaskCoverage} from '@/lib/loopforge/agents/cathexis-fit';
 type Subject=Awaited<ReturnType<typeof loadInspectionModel>>;
 export type InspectionAsset={id:string;label:string;triangles:number;sourceTriangles:number;bytes:number;sha256:string;sourceArchive:string;note:string;normalMap:boolean;derived:boolean;file:InspectionFile};
 export type InspectionDefinition={id:string;name:string;revision:string;description:string;record:string;brief:string;assets:InspectionAsset[];observations:string[];comparison?:{ids:[string,string];label:string};portraitAsset?:string;fittedFaces?:boolean};
@@ -17,10 +17,11 @@ export default function AssetInspectionWorkbench({definition:d}:{definition:Insp
  const canvas=useRef<HTMLCanvasElement>(null),floor=useRef<FactoryScene|null>(null),model=useRef<Subject|null>(null);
  const [floorReady,setFloorReady]=useState(false),[ready,setReady]=useState(false),[error,setError]=useState(''),[retry,setRetry]=useState(0),[sceneRetry,setSceneRetry]=useState(0);
  const [id,setId]=useState(d.assets[0].id),[turn,setTurn]=useState(0),[surface,setSurface]=useState<InspectionSurface>('textured'),[lamp,setLamp]=useState(true),[room,setRoom]=useState<'security'|'conveyor'>('security'),[camera,setCamera]=useState<'model'|'cctv'>('model'),[angle,setAngle]=useState(0),[portrait,setPortrait]=useState(false),[report,setReport]=useState<SceneReport|null>(null);
- const [assembly,setAssembly]=useState(!!d.fittedFaces),[faceId,setFaceId]=useState('grace-8k'),[faceReady,setFaceReady]=useState(false),[faceError,setFaceError]=useState(''),[eyes,setEyes]=useState(true);
+ const [assembly,setAssembly]=useState(!!d.fittedFaces),[faceId,setFaceId]=useState('grace-8k'),[coverage,setCoverage]=useState<MaskCoverage>('full'),[faceReady,setFaceReady]=useState(false),[faceError,setFaceError]=useState(''),[eyes,setEyes]=useState(true);
  const current=d.assets.find(a=>a.id===(assembly?'body':id))!,selectedFace=d.assets.find(a=>a.id===faceId);
  const mounted=assembly&&faceId!=='none';
- const label=assembly?`CATHEXIS · ${faceReady&&mounted?selectedFace?.label:'original face'}`:current.label;
+ const appearanceLabel=faceId==='none'?'Exposed mechanism':coverage==='full'?'Full Grace':'Half Grace';
+ const label=assembly?`CATHEXIS · ${faceReady?appearanceLabel:'original face'}`:current.label;
  const triangles=current.triangles+(mounted&&faceReady?(selectedFace?.triangles??0):0);
  const appearance=useRef({turn,surface,lamp,room,eyes});appearance.current={turn,surface,lamp,room,eyes};
  useEffect(()=>{
@@ -48,16 +49,16 @@ export default function AssetInspectionWorkbench({definition:d}:{definition:Insp
   if(!ready||!model.current)return;
   let active=true;setFaceReady(false);setFaceError('');
   const subject=model.current;
-  void subject.face(assembly&&selectedFace?selectedFace.file:null,assembly?cathexisFits[faceId]:undefined).then(()=>{if(active)setFaceReady(true);}).catch(e=>{if(active&&e.name!=='AbortError')setFaceError(e instanceof Error?e.message:'Unable to fit face.');});
+  void subject.face(assembly&&selectedFace?selectedFace.file:null,assembly?cathexisFits[faceId]:undefined,coverage).then(()=>{if(active)setFaceReady(true);}).catch(e=>{if(active&&e.name!=='AbortError')setFaceError(e instanceof Error?e.message:'Unable to fit face.');});
   return()=>{active=false;};
- },[ready,assembly,faceId,selectedFace,retry]);
+ },[ready,assembly,faceId,selectedFace,coverage,retry]);
  function view(value:boolean){if(value===assembly)return;setAssembly(value);if(current.id!=='body'){setReady(false);setError('');}setId('body');setPortrait(false);floor.current?.reviewSubject(1.02,3.8,3.2);}
  function choose(value:string){if(value===id)return;setReady(false);setError('');setId(value);if(portrait){setPortrait(false);floor.current?.reviewSubject(1.02,3.8,3.2);} }
  function rotate(value:number){if(camera==='cctv')mode('model');floor.current?.reviewCamera('reset');setTurn(value);model.current?.turn(value);}
  function mode(value:'model'|'cctv'){setCamera(value);floor.current?.review(value==='model'?'model':'model-cctv');floor.current?.cctv(true,angle,false);}
  function focusHead(value:boolean){setPortrait(value);if(camera==='cctv')mode('model');floor.current?.reviewSubject(value?1.72:1.02,value?.85:3.8,value?.35:3.2);}
  function retryLoad(){setError('');setReady(false);if(floor.current)setRetry(n=>n+1);else{setFloorReady(false);setSceneRetry(n=>n+1);}}
- function evidence(){const result={subject:d.id,revision:d.revision,asset:current,camera,cameraPose:floor.current?.reviewCamera(),angle,portrait,room,turn,surface,lamp,eyes,report,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},assembly,face:mounted?selectedFace:null,fit:mounted?cathexisFits[faceId]:null,scope:assembly?'Static fitted face candidate; no rig or motion acceptance.':'Isolated static inspection.'};const url=URL.createObjectURL(new Blob([JSON.stringify(result,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`${d.name.toLowerCase()}-${id}-review.json`;a.click();URL.revokeObjectURL(url);}
+ function evidence(){const result={subject:d.id,revision:d.revision,asset:current,camera,cameraPose:floor.current?.reviewCamera(),angle,portrait,room,turn,surface,lamp,eyes,report,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},assembly,coverage,face:mounted&&faceReady?selectedFace:null,fit:mounted&&faceReady?cathexisFits[faceId]:null,scope:assembly?'Static fitted face candidate; no rig or motion acceptance.':'Isolated static inspection.'};const url=URL.createObjectURL(new Blob([JSON.stringify(result,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`${d.name.toLowerCase()}-${id}-review.json`;a.click();URL.revokeObjectURL(url);}
  return <main className={styles.page}>
   <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>{d.name}<span>Body & face review</span></h1></div><Link href={d.brief}>Generation brief ↗</Link></header>
   <ReviewNavigation current={d.id}/><ReviewChecklist subject={d.id}/>
@@ -67,16 +68,17 @@ export default function AssetInspectionWorkbench({definition:d}:{definition:Insp
     <canvas ref={canvas} tabIndex={0} aria-label={`${d.name} ${label}. Drag to orbit; arrows rotate; scroll or pinch to zoom.`}/>
     <div className={styles.cameraTag}><i/>{room==='security'?'SECURITY':'LATTICE FORGE'}<span>{camera==='model'?'ASSET INSPECTION':`CCTV · CAM ${angle+1}`}</span></div>
     {!ready&&<div className={styles.loading} role='status'><strong>{error?'Asset unavailable':`Loading ${label}…`}</strong><p>{error||'Preparing the selected asset and its materials.'}</p>{error&&<button onClick={retryLoad}>Retry loading</button>}</div>}
-    <div className={styles.caption}><span>{triangles.toLocaleString()} SOURCE TRIANGLES · UNRIGGED</span><strong>{label}</strong><small>{current.derived?'LOCAL INSPECTION DERIVATIVE':'SOURCE GEOMETRY'} · {assembly?'FITTED FACE · STATIC CANDIDATE':id==='body'?'CLEAN A-POSE':'ISOLATED FACE · DISPLAY SCALE'}</small></div>
+    <div className={styles.caption}><span>{triangles.toLocaleString()} SOURCE TRIANGLES · UNRIGGED</span><strong>{label}</strong><small>{current.derived?'LOCAL INSPECTION DERIVATIVE':'SOURCE GEOMETRY'} · {assembly?'INTACT BODY FACE · STATIC CANDIDATE':id==='body'?'CLEAN A-POSE':'ISOLATED FACE · DISPLAY SCALE'}</small></div>
    </section>
    <aside className={`${styles.controls} ${local.controls}`} aria-label={`${d.name} inspection controls`}>
     <span className={styles.kicker}>Current assets / static review</span><h2>Inspect the character.</h2><p>{d.description}</p>
     {d.fittedFaces&&<div className={styles.duo} role='group' aria-label='Inspection mode'><button aria-pressed={assembly} onClick={()=>view(true)}>Assembled character</button><button aria-pressed={!assembly} onClick={()=>view(false)}>Separate assets</button></div>}
-    {assembly&&<><label>Fitted face<select disabled={!ready} value={faceId} onChange={e=>setFaceId(e.target.value)}><option value='none'>Original body face</option>{d.assets.filter(a=>a.id!=='body').map(a=><option key={a.id} value={a.id}>{a.label}</option>)}</select></label>
+    {assembly&&<><label>Appearance<select disabled={!ready} value={faceId==='none'?'none':coverage==='full'?'full':'half'} onChange={e=>{const value=e.target.value;if(value==='none')setFaceId('none');else{if(faceId==='none')setFaceId('grace-8k');setCoverage(value==='full'?'full':'half-left');}}}><option value='full'>Full Grace mask</option><option value='half'>Half Grace / exposed mechanism</option><option value='none'>Exposed body face</option></select></label>
+     {mounted&&coverage!=='full'&&<button disabled={!ready} onClick={()=>setCoverage(coverage==='half-left'?'half-right':'half-left')}>Swap covered side</button>}
      {!faceReady&&!faceError&&<p role='status'>Fitting the selected face…</p>}{faceError&&<p role='alert'>{faceError} <button onClick={retryLoad}>Retry face</button></p>}
-     <p className={styles.intent}>Rigid face fitted at character scale. The original face surface is reversibly cleared beneath the insert. Crown, hair and costume stay intact.</p></>}
-    {!assembly&&<label>Asset<select value={id} onChange={e=>choose(e.target.value)}>{d.assets.map(a=><option key={a.id} value={a.id}>{a.label}</option>)}</select></label>}
-    {d.comparison&&<div className={local.compare} role='group' aria-label={d.comparison.label}><span>{d.comparison.label} · camera stays fixed</span><div className={styles.duo}>{d.comparison.ids.map(key=><button key={key} aria-pressed={(assembly?faceId:id)===key} onClick={()=>assembly?setFaceId(key):choose(key)}>{d.assets.find(a=>a.id===key)!.label}</button>)}</div></div>}
+     <p className={styles.intent}>The original mechanical face stays intact beneath Grace. Full porcelain, split porcelain and the exposed mechanism share one head.</p></>}
+    {!assembly&&<label>Source asset / earlier studies<select value={id} onChange={e=>choose(e.target.value)}>{d.assets.map(a=><option key={a.id} value={a.id}>{a.label}</option>)}</select></label>}
+    {d.comparison&&(!assembly||mounted)&&<div className={local.compare} role='group' aria-label={d.comparison.label}><span>{d.comparison.label} · camera stays fixed</span><div className={styles.duo}>{d.comparison.ids.map(key=><button key={key} aria-pressed={(assembly?faceId:id)===key} onClick={()=>assembly?setFaceId(key):choose(key)}>{d.assets.find(a=>a.id===key)!.label}</button>)}</div></div>}
     <p className={styles.intent}>{current.note}</p>
     <div className={styles.duo}>{[['Front',0],['Side',90],['Back',180]].map(([label,n])=><button key={label} disabled={!ready} onClick={()=>rotate(Number(n))}>{label}</button>)}</div>
     {(assembly||d.portraitAsset===id)&&<button disabled={!ready} aria-pressed={portrait} onClick={()=>focusHead(!portrait)}>{portrait?'Full body':'Inspect head & face seat'}</button>}

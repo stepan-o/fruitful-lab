@@ -10,12 +10,13 @@ import {Color3} from '@babylonjs/core/Maths/math.color';
 import type {CharacterStage} from '../factory-study/scene';
 import {Mesh} from '@babylonjs/core/Meshes/mesh';
 import {VertexBuffer} from '@babylonjs/core/Buffers/buffer';
-import {cathexisSeatIndices,type FaceFit} from '@/lib/loopforge/agents/cathexis-fit';
+import {VertexData} from '@babylonjs/core/Meshes/mesh.vertexData';
+import {halfMaskGeometry,type FaceFit,type MaskCoverage} from '@/lib/loopforge/agents/cathexis-fit';
 import {worldPoint} from '@/lib/loopforge/spatial/floor';
 export type InspectionFile={src:string;sha256:string;bytes:number};
 export type InspectionSurface='textured'|'clay'|'wireframe';
 /** Shared static-asset adapter. No rig, animation or physical fit is inferred. */
-export async function loadInspectionModel(stage:CharacterStage,file:InspectionFile,signal:AbortSignal,prepareFaceSeat=false,eyePatch?:EyePatch){
+export async function loadInspectionModel(stage:CharacterStage,file:InspectionFile,signal:AbortSignal,bodyWithMask=false,eyePatch?:EyePatch){
  const integrity='sha256-'+btoa(String.fromCharCode(...file.sha256.match(/../g)!.map(x=>parseInt(x,16))));
  const response=await fetch(file.src,{signal:AbortSignal.any([signal,AbortSignal.timeout(60000)]),integrity,credentials:'same-origin'});
  if(!response.ok)throw Error('The selected asset could not be downloaded.');
@@ -34,20 +35,19 @@ export async function loadInspectionModel(stage:CharacterStage,file:InspectionFi
   root.rotation.y=Math.PI;room('security');let disposed=false;
   let attachment:Awaited<ReturnType<typeof LoadAssetContainerAsync>>|null=null,seat:TransformNode|null=null,faceAbort:AbortController|null=null;
   let currentSurface:InspectionSurface='textured';
-  const original=meshes.filter((m):m is Mesh=>m instanceof Mesh).map(m=>({m,indices:Array.from(m.getIndices()??[])}));
-  const trimmed=prepareFaceSeat?original.map(({m,indices})=>({m,indices:cathexisSeatIndices(m.getVerticesData(VertexBuffer.PositionKind)!,indices)})):[];
+  let edge:Mesh|null=null,edgeMaterial:PBRMaterial|null=null;
   const baseMaterials=[...materials];
   let eyesOn=true,faceEyes:ReturnType<typeof createEyeLenses>|null=null;
-  const bodyEyes=eyePatch?createEyeLenses(meshes[0],eyePatch,prepareFaceSeat?.174:eyePatch.zMin):null;
-  function eyes(value:boolean){eyesOn=value;bodyEyes?.enabled(value&&!attachment);faceEyes?.enabled(value);stage.refresh();}
+  const bodyEyes=eyePatch?createEyeLenses(meshes[0],eyePatch,bodyWithMask?.174:eyePatch.zMin):null;
+  function eyes(value:boolean){eyesOn=value;bodyEyes?.enabled(value);faceEyes?.enabled(value);stage.refresh();}
   function surface(value:InspectionSurface){currentSurface=value;for(const {m,base,mr,normal,color,metal,rough} of materials){m.albedoTexture=value==='clay'?null:base;m.metallicTexture=value==='clay'?null:mr;m.bumpTexture=value==='clay'?null:normal;m.albedoColor=value==='clay'?new Color3(.46,.48,.44):color;m.metallic=value==='clay'?0:metal;m.roughness=value==='clay'?.85:rough;m.wireframe=value==='wireframe';}stage.refresh(true);}
   function clearFace(){
-   faceEyes?.dispose();faceEyes=null;bodyEyes?.enabled(eyesOn);
+   faceEyes?.dispose();faceEyes=null;edge?.dispose();edge=null;edgeMaterial?.dispose();edgeMaterial=null;bodyEyes?.enabled(eyesOn);
    if(attachment){attachment.meshes.forEach(m=>stage.shadow.removeShadowCaster(m));attachment.dispose();attachment=null;}
    seat?.dispose();seat=null;materials.splice(0,materials.length,...baseMaterials);if(fill)fill.includedOnlyMeshes=meshes;
-   for(const {m,indices} of original)m.setIndices(indices);stage.refresh(true);
+   stage.refresh(true);
   }
-  async function face(file:InspectionFile|null,fit?:FaceFit){
+  async function face(file:InspectionFile|null,fit?:FaceFit,coverage:MaskCoverage='full'){
    faceAbort?.abort();faceAbort=new AbortController();const abort=faceAbort;
    clearFace();if(!file||!fit)return;
    const integrity='sha256-'+btoa(String.fromCharCode(...file.sha256.match(/../g)!.map(x=>parseInt(x,16))));
@@ -61,9 +61,17 @@ export async function loadInspectionModel(stage:CharacterStage,file:InspectionFi
    loaded.rootNodes.forEach(n=>n.parent=seat);
    const faceMeshes=loaded.meshes.filter(m=>m.getTotalVertices()>0);faceMeshes.forEach(m=>{m.isPickable=false;m.receiveShadows=true;stage.shadow.addShadowCaster(m);});
    if(fill)fill.includedOnlyMeshes=[...meshes,...faceMeshes];
-   for(const {m,indices} of trimmed)m.setIndices(indices);
+   if(coverage!=='full')for(const mesh of faceMeshes){
+    if(!(mesh instanceof Mesh))continue;
+    const {geometry,rim}=halfMaskGeometry({positions:Array.from(mesh.getVerticesData(VertexBuffer.PositionKind)!),normals:Array.from(mesh.getVerticesData(VertexBuffer.NormalKind)!),uvs:Array.from(mesh.getVerticesData(VertexBuffer.UVKind)!),indices:Array.from(mesh.getIndices()!)},coverage==='half-left'?1:-1);
+    const data=new VertexData();Object.assign(data,geometry);data.applyToMesh(mesh);
+    edge=new Mesh('Grace cut porcelain return',stage.scene);edge.parent=mesh;const wall=new VertexData();wall.positions=rim;wall.indices=Array.from({length:rim.length/3},(_,i)=>i);wall.normals=[];VertexData.ComputeNormals(wall.positions,wall.indices,wall.normals);wall.applyToMesh(edge);
+    edgeMaterial=new PBRMaterial('Porcelain cut edge',stage.scene);edgeMaterial.albedoColor=new Color3(.38,.31,.21);edgeMaterial.metallic=.35;edgeMaterial.roughness=.72;edgeMaterial.backFaceCulling=false;edge.material=edgeMaterial;edge.isPickable=false;
+   }
    for(const m of loaded.materials)if(m instanceof PBRMaterial){m.maxSimultaneousLights=6;materials.push({m,base:m.albedoTexture,mr:m.metallicTexture,normal:m.bumpTexture,color:m.albedoColor.clone(),metal:m.metallic,rough:m.roughness});}
-   faceEyes=createEyeLenses(faceMeshes[0],fit.eyes,fit.eyes.zMin);eyes(eyesOn);
+   // Recess lenses behind the porcelain lip, with only the covered half lit here.
+   // The body's own eyes remain in place on the exposed half.
+   faceEyes=createEyeLenses(faceMeshes[0],fit.eyes,-.04,coverage==='full'?[1,-1]:coverage==='half-left'?[1]:[-1],.12);eyes(eyesOn);
    surface(currentSurface);stage.refresh(true);
   }
 

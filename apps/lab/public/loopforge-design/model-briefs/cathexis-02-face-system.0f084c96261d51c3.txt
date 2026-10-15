@@ -1,0 +1,10 @@
+CATHEXIS — intact mechanical head with removable Grace coverage
+Current direction, 14 October 2026: use the accepted v2 body and existing Grace 3k/8k masks. No new Meshy generation is required for this prototype.
+
+The body owns its original mechanical grimace, skull, crown, hair and amber eyes. Keep all body geometry intact. Grace fits on top as a separate rigid porcelain shell. Three appearances: full Grace, half Grace exposing the original face, or exposed mechanism alone. Distress and sinister intent use this original mechanical face plus theatrical body acting; no dedicated mechanical expression bank is needed.
+
+The viewer derives either half directly from the Grace mesh, preserving UVs and adding a narrow cut edge. Fit the shell close to the head without intersections, floating side gaps or a protruding far eye. The covered side is reviewable in both orientations. This is a static appearance test, not a finished removal animation or facial rig.
+
+If Grace must be rebuilt later, generate one hollow porcelain faceplate with open eye apertures and a thin seating rim, using 04-mask-grace. No eyes, skull, hair, crown or neck. Preserve a master plus a lightweight 3k and closer-review 8k candidate, with actual counts and matching PBR maps. Keep textures and geometry independent of baked glow. Fit against the accepted body before replacing the runtime asset.
+
+Grimace, Fury, Distress, the larger porcelain family and the separate half-shell illustration are earlier design studies. Do not generate them from this delivery brief. They remain references in the archive; the current split mask comes from Grace itself. Exact mask-hand contacts and the future head-bone attachment belong to offline assembly after the body rig passes.

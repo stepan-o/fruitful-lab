@@ -6,9 +6,9 @@ Accepted body v2 (14 October): the owner approved the completed rear skirt and c
 
 ## One head, two face layers
 
-The body owns the skull, crown, hair, amber eye emitters and shallow face seat. The mechanical face is a separate expression insert. A full or partial porcelain faceplate fits over it. Bare mechanism, split face and full porcelain reuse the same head. Do not generate a second full skull per expression or retain an overlapping fixed grinning face beneath the inserts.
+The accepted body owns the complete original mechanical face, skull, crown, hair and amber eyes. Keep it intact. Full Grace or a half cut of Grace fits over it; removing porcelain exposes the original grimace. No body-face deletion or separate mechanism insert.
 
-Mechanical references: distorted asymmetric grimace, fury, distress. Porcelain: Grace, Rapture, Scorn, Grief, Fury, Distress, plus retained half-shell. The split assembly image is a visual fitting guide, not an instruction to fuse both materials into one complete face. Retained porcelain is viewer-left / wearer-right. The initial prototype uses rigid expression swaps; limited jaw/brow articulation may follow. Images do not prove matching rims, mouth cavities, sockets, joint pivots or clearance. Fit the master first, then normalize each item and test compatible combinations. Five visible fingers do not establish a finger rig.
+Current appearance vocabulary: full porcelain for composure, exposed original mechanism for distress/menace, split coverage for both at once. The viewer derives either half from the existing Grace mesh. Earlier mechanical expression and porcelain-family art remain historical studies, not active generation requests. No facial rig or articulated fingers are claimed.
 
 ## Body and room conditions
 
@@ -24,4 +24,4 @@ Sticky-hand disgust, mask handling, precision conveyor/vat/loom contacts, Hot Wa
 
 ## Delivery
 
-Use accepted body v2. First test the rig with Hot Walk and expressive sway; then mirror/frustration gestures. Fit Grace and a mechanical insert in parallel with the body-motion review, make the remaining face variants and half-shell after fit is proven, then expand the motion bank and select/apply grime. Preserve full sources privately, supply neutral and animated GLB/FBX, verify actual exported clip names and skins. Keep source hashes and later corrections separate. No Meshy jobs were submitted by this archive task.
+Use accepted body v2. First test Hot Walk and expressive sway; then mirror/frustration gestures. Review Grace coverage on the intact head alongside motion tests, then expand the motion bank and select/apply grime. No new face generation is required now. Preserve sources privately and verify exported clip names/skins. No Meshy jobs were submitted by this revision.

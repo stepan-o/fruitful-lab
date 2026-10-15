@@ -31,13 +31,13 @@ export function createFaceEmission(source:AbstractMesh,patch:EyePatch,color:Colo
 }
 
 /** Small convex lenses fill actual eye apertures; the surrounding mask depth-tests them. */
-export function createEyeLenses(parent:AbstractMesh,patch:EyePatch,depth:number){
+export function createEyeLenses(parent:AbstractMesh,patch:EyePatch,depth:number,sides:number[]=[-1,1],bulge=1){
  const scene=parent.getScene(),mesh=new Mesh('CATHEXIS warm eye lenses',scene),data=new VertexData(),positions:number[]=[],uvs:number[]=[],indices:number[]=[];
- for(const side of [-1,1]){
+ for(const side of sides){
   const base=positions.length/3;
   for(let ring=0;ring<=4;ring++)for(let i=0;i<12;i++){
    const r=ring/4,a=i/12*Math.PI*2,x=Math.cos(a)*r,y=Math.sin(a)*r;
-   positions.push(side*patch.x+x*patch.rx,patch.y+y*patch.ry+side*x*patch.rx*(patch.slope??0),depth+Math.sqrt(1-r*r)*patch.ry);uvs.push(x,y);
+   positions.push(side*patch.x+x*patch.rx,patch.y+y*patch.ry+side*x*patch.rx*(patch.slope??0),depth+Math.sqrt(1-r*r)*patch.ry*bulge);uvs.push(x,y);
   }
   for(let r=0;r<4;r++)for(let i=0;i<12;i++){const a=base+r*12+i,b=base+r*12+(i+1)%12;indices.push(a,b,a+12,b,b+12,a+12);}
  }

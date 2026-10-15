@@ -17,9 +17,9 @@ export const stilettoReviewAsset:ProductionReviewAsset={
  checks:['Original / corrected at the same timestamp','2,335 corrected poses checked at 120 Hz','Blade, body and flat-floor review','Remaining leg contacts, blends and paired encounters']
 };
 export const cathexisReviewAsset:ProductionReviewAsset={
- id:'cathexis-intake',shortName:'CATHEXIS',navDetail:'Fitted faces · illuminated eyes',title:'CATHEXIS · body and fitted faces',revision:'body-v2 / Grace 3k & 8k / three mechanisms',
+ id:'cathexis-intake',shortName:'CATHEXIS',navDetail:'Grace · split · exposed',title:'CATHEXIS · layered Grace mask',revision:'body-v2 / Grace 3k & 8k / coverage-v2',
  route:'/stepanoskin/loopforge/play/asset-review/cathexis',conceptRoute:'/stepanoskin/loopforge/design?model=cathexis#model-briefs',status:'Body accepted · face fitting review',
- description:'Accepted v2 body with the completed rear skirt, two Grace masks and three mechanical expressions. Swap fitted faces with illuminated eyes, compare close-up and CCTV, or inspect the source parts separately.',
- checks:['Body and head close inspection','Grace 3k / 8k at the same camera angle','Three reduced mechanical-face studies','Rigid face swaps and eye light; rigging remains open']
+ description:'Full Grace, half Grace or the original mechanical face on the accepted body. Compare both Grace budgets with illuminated eyes, close-up orbit and CCTV. Earlier mechanical-face studies remain separate.',
+ checks:['Body and head close inspection','Grace 3k / 8k at the same camera angle','Half-mask seam and both covered sides','Intact head and recessed eyes; rigging remains open']
 };
 export const productionReviewAssets:readonly ProductionReviewAsset[]=[limenReviewAsset,workerReviewAsset,stilettoReviewAsset,cathexisReviewAsset];

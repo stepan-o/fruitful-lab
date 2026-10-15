@@ -28,17 +28,17 @@ The mechanical derivatives are inspection candidates. They are not Meshy deliver
 
 The initial six runtime candidates were inspected in the production-built Babylon player with textured and shape-only views. Front, side and reverse views support these observations:
 
-- The body preserves the porcelain/brass costume, open skirt, crown and mechanical heels. Its head still has a grinning skull surface. The teeth read strongly in the texture; shape-only inspection shows the underlying skull/nose/face volume. This is not yet a prepared recessed seat for interchangeable expression inserts. The assembly viewer now clears only a small central face region, reversibly, while an insert is attached.
+- The body preserves the porcelain/brass costume, open skirt, crown and mechanical heels. Its head still has a grinning skull surface. The teeth read strongly in the texture; shape-only inspection shows the underlying skull/nose/face volume. This is not yet a prepared recessed seat for interchangeable expression inserts. The assembly viewer now preserves this entire face under Grace; the earlier cutout has been removed.
 - Grace has open eye holes, a hollow reverse and a raised upper mounting/strap shape. Both budgets preserve the silhouette. At close inspection, 3k is visibly more faceted around the cheek/forehead; 8k is smoother. Keep 3k as a lightweight candidate and 8k for close fitting tests until mounted camera comparisons establish the required budget. Both are now mounted candidates, pending owner acceptance.
 - Grimace is asymmetric; Fury has strongly lowered brows and an open mouth; Distress has raised inner brows and a downturned mouth. They read as distinct isolated expressions. The models are rigid single meshes, not mechanical jaw/brow rigs. The enlarged inspection does not establish their readability on a distant worker-facing character.
-- Local simplification retains useful expression shapes; it is not a claim that every master detail survives. Exact sockets, rim alignment, mouth backing and half-shell compatibility still need a fitted test.
+- Local simplification retains useful expression shapes; it is not a claim that every master detail survives. These are earlier isolated studies; the original body face now supplies the mechanical appearance.
 
 ## Confirmed intake gaps
 
 - Faces have approximately the same exported height as the entire body (about 1.90 m). The assembly adapter scales each face to approximately 19 cm and provides a versioned fit transform. The isolated viewer normalizes every selected object to a 1.9-unit display height; this is explicitly **not shared anatomical scale**.
 - The Body 50k and Grace 3k/8k packages do not contain normal maps. Their master packages do. Do not apply a master normal map to a remesh without establishing compatible UVs or rebaking it.
 - No skeleton, skinning, Hot Walk or theatrical acting is present. There is no animation selector because there are no clips to play.
-- The retained half-shell, other porcelain expressions and grime variants have not arrived. No split-face assembly or facial articulation is implemented.
+- Half coverage is derived directly from Grace in the viewer. Separate half-shell and expression generation are retired from the current scope. Grime variants and facial articulation are not implemented.
 - Head-seat, eye-aperture, mouth-cavity and layer-clearance acceptance now uses the assembled viewer; isolated source review remains available.
 
 ## Inspection controls and evidence
@@ -78,16 +78,16 @@ Downloads: `Cathexis_Body_v2_50k.zip` and `Cathexis_Body_v2_mast.zip`, both CRC-
 
 The v1 body GLB and its previous pack manifest are removed from the new deployment at the owner’s explicit request. Existing deployments are immutable and are not purged by this code change. Other face candidates are unchanged. The current viewer can inspect single sources or the body with one fitted face. Next: Mixamo-compatible neutral rig plus Hot Walk (106) and expressive sway (415), followed by mirror (48) and head-hold frustration (391) after the first two tests pass. Full acting-bank generation waits on costume/heel/hair clearance.
 
-## Fitted faces and illuminated eyes — 14 October 2026
+## Layered Grace and illuminated eyes — 14 October 2026
 
-The default view assembles the accepted body with Grace 8k. The selector also offers Grace 3k, Grimace, Fury, Distress and the unchanged original body face. Fit transforms live in `cathexis-fit.ts`; source GLBs remain immutable. The adapter removes only central facial triangles under an insert and restores the exact original indices for body-only review. Crown, hair, skirt and body geometry outside that seat remain unchanged.
+The appearance selector offers full Grace, half Grace and the exposed original mechanical face. Both Grace budgets can be compared, and the half mask can cover either side. The body is never cut, hidden or remeshed for a mask. This replaces the earlier central-face removal that produced a visible side gap. Separate Grimace/Fury/Distress candidates remain under source inspection only: the owner finds the original body grimace more useful at factory-camera distance.
 
-Illuminated eyes can be toggled independently of the inspection lamp. Close head, side/rear and three CCTV angles serve different checks. These are rigid expression swaps: no facial morphs, jaw rig, mask-removal animation or new locomotion is implied. The eventual rig will carry this same face-seat transform on its head joint.
+`cathexis-fit.ts` records the fitted transform. Half coverage clips Grace triangles at local x=0, interpolates normals/UVs and adds a narrow porcelain return edge once on selection. No new GLB or duplicate body texture is deployed. Recessed, depth-tested eye lenses prevent the far eye projecting past the mask silhouette; eye highlighting remains independently switchable.
 
-Face loads are integrity checked, abortable and disposed on replacement. An error leaves the original body visible with a retry control. Evidence records the body and selected-face hashes, fitting transform, light state and camera. Source triangle totals intentionally exclude small presentation overlays and reversible removed seat triangles.
+The visual vocabulary is composure (full porcelain), distress/menace (original mechanism), or both at once (half porcelain). Acting and context still carry emotion; these states do not certify a specific emotional reading at every CCTV distance. This is static appearance work, with no facial articulation, mask-removal animation or rig acceptance. Future attachment follows the head joint.
 
-## Assembly verification — 14 October 2026
+Mask downloads are integrity checked, abortable and disposed on replacement. Errors leave the original body visible with retry. Evidence includes coverage side, mask/body hashes, fit transform, eye state and camera. Source triangle totals describe the complete source assets, excluding small overlays; half-mask rendered triangles are lower.
 
-The optimized production build, scoped ESLint and character checks passed. Geometry checks verify that the body source stays intact and only 315 central face-seat triangles are omitted while a face is mounted.
+## Layering verification
 
-Local browser review covered Grace 3k/8k, Grimace, Fury, Distress, the original face, eye highlighting on/off, side framing, separate/assembled mode changes and all three Security CCTV presets. No viewer console errors were observed in the final check. The crown, costume and rear skirt remain in place. Face details still require close inspection at these CCTV distances; these previews do not establish expression readability in gameplay. Screenshots are retained privately in `character-assemblies/`. Owner acceptance of the fitted faces remains open; the body still needs a rig and costume-motion checks.
+The geometry check partitions both Grace budgets into opposite halves, verifies surface area conservation, finite normalized normals, interpolated UVs and source immutability. Browser checks cover full/half/exposed appearances, both sides, both budgets, oblique/profile inspection, eye toggles and CCTV. Owner appearance acceptance and moving costume clearance remain open.

@@ -689,26 +689,25 @@
     {
       "id": "cathexis",
       "name": "CATHEXIS",
-      "subtitle": "Theatre diva \u00b7 modular faces + surface conditions",
-      "revision": "cathexis-body-v2-accepted-2026-10-14",
+      "subtitle": "Theatre diva \u00b7 intact mechanism + Grace coverage",
+      "revision": "cathexis-grace-coverage-v5-2026-10-14",
       "status": "Body v2 accepted \u00b7 rigging next",
-      "summary": "The v2 body and continuous rear skirt are accepted. The current viewer uses only this final body version. Next: obtain its matching normal map and test a Mixamo-compatible rig with Hot Walk and expressive sway; the viewer now fits Grace and three mechanical expressions with illuminated eyes.",
+      "summary": "Accepted v2 body with its original mechanical face intact. Review full Grace, half Grace or the exposed grimace with warm eyes. No new face generation is needed. Next: matching normal map and a Mixamo-compatible rig with Hot Walk and expressive sway.",
       "provenance": "Body v2 appearance accepted by the owner on 14 October 2026. Input art derives from original character and room art. Face candidates, grime treatments and motion remain subject to review.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
-      "viewerLabel": "Inspect fitted faces and illuminated eyes",
+      "viewerLabel": "Inspect full, half and exposed faces",
       "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
       "record": "/loopforge-design/production/CATHEXIS_INTAKE_REVIEW.md",
       "parts": [
-        "51,034-triangle accepted v2 body; unrigged",
-        "Grace mask: 3,058 and 8,128-triangle candidates",
-        "Three mechanical expression masters with local 12k inspection copies"
+        "51,034-triangle accepted v2 body; original mechanical face retained",
+        "Grace: 3,058 / 8,128 triangles; half coverage derived from the same mesh",
+        "Earlier mechanical expression studies: separate inspection only"
       ],
       "remaining": [
-        "Matching normal map for the accepted 50k body and Grace masks",
-        "Rig v2; first test Hot Walk and expressive sway, then mirror and frustration gestures",
-        "Owner acceptance of the fitted face seat and future half-shell layering",
-        "Half-shell, remaining porcelain expressions and grime selection",
-        "Costume, hair, heel and hand clearance through motion"
+        "Matching normal maps for body and Grace",
+        "Rig v2; test Hot Walk and expressive sway, then mirror and frustration",
+        "Owner review of full/half Grace, recessed eyes and both covered sides",
+        "Grime selection and moving costume, hair, heel and hand clearance"
       ],
       "images": [
         {
@@ -829,7 +828,7 @@
         },
         {
           "label": "Porcelain \u00b7 Rapture",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "05-mask-rapture.png",
           "sourceSha256": "98865d99902dcb61cdc0432a1683d0d25d3b11bbf40e0cfd79447d0c1685d261",
           "input": {
@@ -858,7 +857,7 @@
         },
         {
           "label": "Porcelain \u00b7 Scorn",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "06-mask-scorn.png",
           "sourceSha256": "1ab8cb1a972a32748852b8fba4a49bfcd07e1b5a8db58bd9414b177188f4c431",
           "input": {
@@ -887,7 +886,7 @@
         },
         {
           "label": "Porcelain \u00b7 Grief",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "07-mask-grief.png",
           "sourceSha256": "ca447ab82f0cefc5be515a73425e5cddf045bd77169b4e20436d2ae3c8118cb9",
           "input": {
@@ -916,7 +915,7 @@
         },
         {
           "label": "Porcelain \u00b7 Fury",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "08-mask-fury.png",
           "sourceSha256": "e2861b814911605d119ba28b8c3853870d1d4ac4925665262952e40face5a575",
           "input": {
@@ -945,7 +944,7 @@
         },
         {
           "label": "Porcelain \u00b7 Distress",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "09-mask-distress.png",
           "sourceSha256": "80eef314217ea012dcb82ffdbf863990b037aab35b9675a7e61500a91e238d44",
           "input": {
@@ -974,7 +973,7 @@
         },
         {
           "label": "Mechanism \u00b7 Distorted grimace",
-          "role": "Separate expression insert \u2014 no duplicated skull or eyes",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "10-mechanism-grimace.png",
           "sourceSha256": "5166df66750a48acb01b2f6d2d7228103b706f3d29e31c822155a0c78c1af3a8",
           "input": {
@@ -1003,7 +1002,7 @@
         },
         {
           "label": "Mechanism \u00b7 Fury",
-          "role": "Separate expression insert \u2014 no duplicated skull or eyes",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "11-mechanism-fury.png",
           "sourceSha256": "e5b1e4e7a8aff6266db6c35f901b83fd84fe41c72891d89129586b88177e5802",
           "input": {
@@ -1032,7 +1031,7 @@
         },
         {
           "label": "Mechanism \u00b7 Distress",
-          "role": "Separate expression insert \u2014 no duplicated skull or eyes",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "12-mechanism-distress.png",
           "sourceSha256": "8faf9fe473e0d30db3d7af898c3e4ddf53c72bb045295d2dc26bd3fb26846448",
           "input": {
@@ -1061,7 +1060,7 @@
         },
         {
           "label": "Porcelain \u00b7 half shell",
-          "role": "Separate shell \u2014 fit to shared head offline",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "13-mask-half-shell.png",
           "sourceSha256": "b274d63353ad82cf1ba990eb322764da4c7153488282e7ca16ad86cf0d4b2130",
           "input": {
@@ -1090,7 +1089,7 @@
         },
         {
           "label": "Split face \u00b7 assembly guide",
-          "role": "Reference only \u2014 do not generate this as a fused full face",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "14-split-assembly-reference.png",
           "sourceSha256": "2b1ab7995ce597d02b7b041bf72c5ae06a47365f835ecb0af7085f96ae0b5ff1",
           "input": {

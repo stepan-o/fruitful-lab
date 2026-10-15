@@ -1,4 +1,4 @@
-For the current skirt revision of the existing v1 body, use 08-rear-panel-repair.txt first. The instructions below are for a full rebuild only.
+REBUILD REFERENCE ONLY. The accepted v2 body and skirt are already complete. Do not rerun this stage or the completed skirt repair. Stage 2 is closed; current work starts at 03-rig-tests.txt. The instructions below apply only if a complete body rebuild is explicitly requested.
 
 Create CATHEXIS for Loopforge from the THREE attached body reference images: 01-cathexis-body-front.260b685edbc8b769.jpg, 02-cathexis-back-worn-cloth.f46b50f5d702ac1d.jpg and 03-cathexis-left-worn-cloth.5ca90f61805e55e6.jpg.
 

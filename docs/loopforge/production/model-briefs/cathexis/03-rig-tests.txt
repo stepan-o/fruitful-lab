@@ -4,11 +4,13 @@ Use the owner-accepted Cathexis_Body_v2_50k (51,034 triangles). Keep the unrigge
 
 Also export a tangent-space normal map matched to this 50k mesh and its UVs, without changing the accepted geometry or base color. The master normal map is not automatically compatible with this remesh. Report if a matched map cannot be exported; this does not prevent a diagnostic rig test.
 
-Create a Mixamo-compatible humanoid rig in a clean neutral A-pose. Crown and mechanical underface should follow the head rigidly; torso reactor follows the torso and hip canisters follow the pelvis. Face masks are separate rigid attachments and should not be fused into the skin or auto-rigged as anatomy.
+Stage 2 is closed: no further porcelain expressions, mechanical inserts, half-mask models or facial-expression rig are requested. Rig the BODY ONLY, retaining its complete original mechanical face. Our app will fit the existing full Grace mask or its locally cut half over that head, or leave the face exposed. Do not delete, hollow, smooth away or replace the original face. Do not attach or merge Grace into the body export.
+
+Create a Mixamo-compatible humanoid rig in a clean neutral A-pose. The complete mechanical face, crown and grouped head attachments should follow the head rigidly; torso reactor follows the torso and hip canisters follow the pelvis. Preserve the head shape and report its exact exported joint name and neutral transform so we can calibrate a rigid Grace attachment. Do not add facial blendshapes, moving jaws or expression bones for this prototype. Eye glow is controlled by our app. Dynamic hair cleanup can happen offline.
 
 Important: skirt and hair must not weld the legs together or become uncontrolled rubber. If your rigging tool cannot separate or sensibly weight these parts, report the limitation and provide the neutral export for offline cleanup. Do not replace the distinctive costume with generic clothing. We can add dedicated skirt/hair bones and rigid plate weighting offline.
 
-Hands need five separate fingers for later mask handling. Report the ACTUAL exported finger bones and weighting. If only hand/wrist bones exist, say that explicitly. Broad gesture tests can proceed, but exact mask handling will remain an offline task.
+Preserve the existing five-finger hand geometry. Report the ACTUAL exported finger bones and weighting. If only hand/wrist bones exist, say that explicitly; this does not block the rig test or motion bank. Do not regenerate hands to satisfy a finger-rig requirement. Detailed finger poses and physical Grace removal/reseating are optional offline work later.
 
 First apply ONLY Hot Walk (106) and Happy_Sway_Standing (415). Export both for review before expanding the bank. After those pass, add Mirror_Viewing (48) and Head_Hold_in_Pain (391). The four staged tests are:
 1. Hot Walk — our ONLY approved locomotion gait; the prior exported source is Confident_Walk, catalog Action 106. Use that exact source as the first comparison. Keep Hot Walk as our label and retain the source ID/name. If your UI label differs, report the mapping.
@@ -27,4 +29,4 @@ cathexis_mirror_48_source
 cathexis_sway_415_source
 cathexis_head_hold_391_source
 
-Report actual clip name, duration, joint count, root translation and root rotation, whether mesh/skin/textures are embedded, and any visible intersections. Do not certify clearance from catalog previews. Inspect the full costume on this rig. Keep source motion intact; any in-place or clearance-corrected version must be a separately named derivative.
+Report actual clip name, duration, joint count, root translation and root rotation, whether mesh/skin/textures are embedded, and any visible intersections. The first Meshy exports can be maskless; we will test the existing full and half Grace attachments on the moving head in our viewer. Do not regenerate masks for each motion or promise mask clearance before that assembly check. Do not certify clearance from catalog previews. Inspect the full costume on this rig. Keep source motion intact; any in-place or clearance-corrected version must be a separately named derivative.

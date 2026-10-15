@@ -53,7 +53,7 @@ Each player uses the common six review gates and character navigation. Save revi
 2. The static extractor bakes FBX geometry transforms into right-handed, Y-up meters and exports position, normal and flipped-V UV corner data. Source hashes and bounds accompany the binary geometry.
 3. Run `scripts/characters/import-cathexis-review.mjs` with the private intake directory. It preserves body/Grace triangle counts, welds shared vertices, reduces mechanical faces to approximately 12k triangles, packs PBR maps, and publishes immutable hashed GLBs. Body texture delivery is 2048px; face textures are 1024px.
 4. `scripts/characters/check-cathexis-review.mjs` verifies all six runtime hashes/byte counts, actual triangles, finite geometry/UV attributes, display bounds, expected normal-map presence, absence of rigs/clips, and zero glTF validation errors. It is included in the ordinary character/build checks.
-5. Review the rendered surfaces and silhouettes before accepting any candidate. For the accepted v2 body, first test Hot Walk and expressive sway on its rig; continue face fitting as a separate assembly gate before expanding expressions.
+5. Review the rendered surfaces and silhouettes before accepting any candidate. For the accepted v2 body, first test Hot Walk and expressive sway on its rig; validate moving Grace fit as an assembly gate. Do not expand expressions: stage 2 is closed.
 
 Current runtime pack: `loopforge-cathexis-review`, revision `4c36727176798cdcec099dc5f1e24003620eea71b51e3f6fc4d0fc00998f666b`.
 
@@ -91,3 +91,7 @@ Mask downloads are integrity checked, abortable and disposed on replacement. Err
 ## Layering verification
 
 The geometry check partitions both Grace budgets into opposite halves, verifies surface area conservation, finite normalized normals, interpolated UVs and source immutability. Browser checks cover full/half/exposed appearances, both sides, both budgets, oblique/profile inspection, eye toggles and CCTV. Owner appearance acceptance and moving costume clearance remain open.
+
+## Stage 2 closed — owner decision, 14 October 2026
+
+The current face assets are sufficient. Remaining porcelain/robotic expression generation is abandoned; retain original face plus full/half Grace. Stages 3–7 now preserve the intact mechanical head, request body-only rigging and one shared motion bank, and leave rigid Grace fitting to our app. No facial articulation or expression-mask exchange is requested. Physical removal/reseating of the same mask is optional later work, independent of rigging and catalog auditions. Grime remains a material condition independent of mask coverage and mood. Hot Walk and expressive sway are the next two exports; motion and moving attachment clearance remain unverified.

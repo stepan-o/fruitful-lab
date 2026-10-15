@@ -1,15 +1,17 @@
-CATHEXIS — signature actions to author after the actual body and masks exist
+CATHEXIS — later signature actions on the accepted body and existing Grace mask
+
+Stage 2 is closed. Full Grace, half Grace and the exposed original face are our complete appearance set for now. No new expression masks or facial rig. The motion bank can proceed without physical mask handling; these custom scenes are future work, not prerequisites for stage 3 or 4. Mask coverage is selected independently of the body motion. A half mask is a separate fitted coverage variant, not a claim that the full mask breaks or opens during a gesture.
 
 These are custom briefs, NOT verified catalog entries. If your Agent interface cannot generate custom motions, state that and leave them pending. The Meshy Text-to-Motion API is a possible separate experiment; we can also author these offline. Neither route guarantees exact mask contact or costume clearance.
 
 1. POISED IDLE (4–6 seconds, loop)
 She settles onto one hip, raises her chin a fraction, slowly checks the audience and makes one small dismissive wrist flourish. Hold still long enough for the pause to feel intentional. Return seamlessly. No ordinary worker fidget or neutral breathing loop.
 
-2. MASK REVEAL (5–7 seconds, one-shot)
-She holds eye contact, raises a hand to the temple latch, grips the faceplate, lifts it forward clear of the head and lowers it just beside her shoulder. Hold the exposed mechanism for a beat. Hand contact and the mask's rigid trajectory must be authored against the fitted prop.
+2. GRACE REVEAL (optional later, 5–7 seconds, one-shot)
+She holds eye contact, raises a hand to the temple latch, grips the existing Grace faceplate, lifts it forward clear of the intact head and lowers it beside her shoulder. Hold the exposed original mechanism for a beat. The head never disappears or changes into a second face model. Hand contact, rigid mask trajectory and head-to-hand attachment transfer must be authored against the fitted prop offline. Do not treat Mirror_Viewing as a completed reveal.
 
-3. MASK EXCHANGE (6–9 seconds, staged at a theatre rack)
-She lifts the old mask, seats it on a known rack hook, selects another and settles it onto the head rim with a small decisive head tilt. Finish in a different composed pose. Keep both prop positions continuous; no invisible disappearing mask or hand through face.
+3. GRACE RESEAT (optional later, staged against a known prop position)
+She returns that same Grace mask to the head and settles it with a small decisive tilt. Preserve the prop continuously from hand to head, using authored contact markers. No selection from an expression-mask rack, new mask generation or automatic facial change. This replaces the abandoned mask-exchange action; it is not requested in the current Meshy batch.
 
 4. INVITE ONE WORKER (4–6 seconds)
 A measured turn toward one person, palm opened low, a teasing beckon, then an expectant hold. The worker may approach or refuse; Cathexis must not clap or celebrate regardless of the response. Exact partner placement is an offline paired scene.
@@ -21,13 +23,13 @@ She looks the recipient up and down, tips her chin, turns one wrist in a small c
 She collects attention with a small raised hand, opens her arms in a measured expansion, singles out an imagined listener and ends on one emphatic cue. Strong silhouette readable from CCTV. Crowd response is separate and driven by the simulation.
 
 7. GRIEF AS PERFORMANCE (5–7 seconds)
-A hand suspended near the chest, a long bowed head, a controlled opening toward the audience as if asking them to witness a loss. The mask supplies the face; the body supplies the performance. No guaranteed sincerity encoded in the clip.
+A hand suspended near the chest, a long bowed head, a controlled opening toward the audience as if asking them to witness a loss. Choose full/half Grace or exposed mechanism independently; grief must read through the body performance without a dedicated grief mask. No guaranteed sincerity encoded in the clip.
 
 8. THE LINE IS BENEATH ME (5–7 seconds)
 At a waist-height station she approaches reluctantly, touches the object with exaggerated distaste, recoils and inspects or wipes dirt from her fingers. Provide a continuation that resumes the attempt with obvious resentment, and a separate refusal/appeal ending. This is not automatically a failed task: original conveyor success art still shows her dirty and angry. Exact object contact and task outcome remain our responsibility.
 
 9. LOSING THE AUDIENCE (6–8 seconds)
-An invitation receives no response. She repeats it more broadly, freezes when it fails, touches the mask as if checking it and lets the pose collapse. Preserve a readable attempt and recovery before any larger tantrum.
+An invitation receives no response. She repeats it more broadly, freezes when it fails, brings a hand near the temple as if checking her presentation and lets the pose collapse. Keep the gesture clear of both full and half Grace; an actual touch requires offline contact cleanup. Preserve a readable attempt and recovery before any larger tantrum.
 
 10. OFFENDED EXIT (locomotion with a stationary gesture)
 A dismissive turn and look back lead into the approved Hot Walk. She does not run, hurry into another gait, or enter alert. Preserve attitude, heel and skirt clearance; authored starts/stops/turn blends must connect to Hot Walk. If danger prevents a safe walking route, the simulation must handle that situation rather than silently replacing the gait.
@@ -42,6 +44,6 @@ She makes a precise adjustment at the loom, rests her head languidly against one
 She glances at a form, lets it fall with a dismissive wrist, turns her back on the checkpoint and leaves with an offended theatrical stride. The paper remains a real prop with a defined release point. Worker movement through the unattended post is a separate simulation response.
 
 14. OVERWHELMED AT THE CONVEYOR (4–6 seconds)
-The poised stance contracts. Both hands rise to the sides of the crown, shoulders lift and she holds a furious distressed grimace, then tries to regain composure. No smiling, dancing, head impact or damage implied. Keep hand/crown, hair and forearm clearances. A separate angry confrontation can follow if the simulation selects it.
+The poised stance contracts. Both hands rise to the sides of the crown, shoulders lift and she holds a furious, distressed posture, then tries to regain composure. Her original mechanical face may be exposed or half-covered; no face deformation or new distressed mask is needed. No smiling, dancing, head impact or damage implied. Keep hand/crown, hair and forearm clearances. A separate angry confrontation can follow if the simulation selects it.
 
-These scenes need a small finger-pose library and costume tracks. No physical prop exchange is accepted solely because the bare skeleton resembles the action. Keep source takes and cleaned derivatives separate. Dirt follows actual exposure and can persist into a composed gesture; emotional recovery does not clean or repair the robot.
+Exact-contact scenes will need finger-pose and costume cleanup; broad silhouette gestures can be auditioned with the exported wrist-level rig. No physical prop exchange is accepted solely because the bare skeleton resembles the action. Keep source takes and cleaned derivatives separate. Dirt follows actual exposure and can persist into a composed gesture; emotional recovery does not clean or repair the robot.

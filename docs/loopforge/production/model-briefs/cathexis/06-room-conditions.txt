@@ -1,6 +1,6 @@
 CATHEXIS — dirt appearances on the ACCEPTED shared body
 
-Choose one of the neutral A-pose dirt references before this step. These images define a surface treatment; they are NOT separate characters or alternative anatomy. Face masks are separate items and should not be baked onto the body.
+Choose one of the neutral A-pose dirt references before this step. These images define a surface treatment; they are NOT separate characters or alternative anatomy. Keep the original mechanical face intact. Grace is the only separate mask, with full/half/exposed coverage handled in our app; do not paint porcelain over the bare mechanical face or bake a mask onto the body.
 
 Preserve the exact accepted body mesh, UVs, skeleton, skin weights and sockets. If your tools cannot preserve them, provide texture references for offline work instead of remeshing. A newly generated dirty body cannot be assumed to share the rig or animation files.
 
@@ -12,4 +12,4 @@ Brewery condition: later retexture using wet olive/green-brown process residue o
 
 Keep amber eye/canister identity. No new injury, missing pieces, enlarged armor or combat redesign. No baked scenery, lighting or animation pose in textures. Export named material/texture variants; preserve clean source maps. Report any topology/UV changes honestly.
 
-Dirt is not an angry face. The selected face item and body animation supply presentation. She can be dirty and composed, clean and furious. Actual contamination follows exposure events and does not reset when changing rooms. This brief does not add cleaning or repair gameplay.
+Dirt, full/half/exposed Grace coverage and body acting are independent presentation choices. No angry face model or facial rig is requested. If a dirty Grace surface is later needed, provide matching texture variants for the EXISTING Grace UVs as a separate task; both full and half coverage reuse those maps. She can be dirty and composed, clean and furious. Actual contamination follows exposure events and does not reset when changing rooms. This brief does not add cleaning or repair gameplay.

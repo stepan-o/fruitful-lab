@@ -69,11 +69,16 @@ for source in g['animations']:
   else:
    vals=np.column_stack([np.interp(ts,times,values[:,j])for j in range(values.shape[1])]);ease=np.clip((ts-(dur-.25))/.25,0,1);ease=ease**3*(10-15*ease+6*ease**2);vals+=ease[:,None]*(vals[0]-vals[-1])
   corrected.append((node,path,ts,vals))
+ # Retain the natural lateral travel before the clearance pass. Evaluate the
+ # approved dress/ground controls from that pass before narrowing Hot Walk.
+ # This changes only six leg rotation tracks, leaving the accepted acting intact.
+ natural_tracks=copy.deepcopy(corrected)
  refine_gait(d,corrected,ts)
  if name=='Hot_Walk':refine_hands(d,corrected,ts)
  worlds=[d['world_at'](corrected,t)for t in ts]
  floor=[skinv(world,legs)[:,1].min() for world in worlds]
  drapes,drape_report=drape_matrices(d,corrected,ts,levels,cloth,legs,skinv,clearance_floor=.20 if name=='Happy_Sway' else .14)
+ if name=='Hot_Walk':refine_gait(d,corrected,ts,narrow_source=natural_tracks)
  floor=np.array(floor);ground=.002-floor;ground[-1]=ground[0]
  # Translate the pelvis globally; corrected leg articulation and source forward timing are retained.
  for node,path,_,vals in corrected:

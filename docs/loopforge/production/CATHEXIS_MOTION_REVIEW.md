@@ -1,8 +1,8 @@
 # CATHEXIS — Hot Walk and Happy Sway cleanup
 
-15 October 2026, third quality pass. Local baked candidates, awaiting owner appearance/motion acceptance.
+15 October 2026, fourth quality pass. The owner accepted the current dress flow; this pass narrows Hot Walk’s leg trajectory for review.
 
-Open [CATHEXIS review](/stepanoskin/loopforge/play/asset-review/cathexis). **Motion cleanup** opens paused with corrected Hot Walk. Compare Original export at the same time, scrub or play at normal/half/quarter speed, inspect the rear skirt, feet and **Hip & temple** / **Foot paths** poses, and switch to Happy Sway. **Face & asset fitting** retains full Grace, half Grace and the intact mechanical face; masks are not yet fitted to the moving rig.
+Open [CATHEXIS review](/stepanoskin/loopforge/play/asset-review/cathexis). **Motion cleanup** opens paused with corrected Hot Walk. Compare Original export at the same time, scrub or play at normal/half/quarter speed, inspect the rear skirt, feet and **Hip & temple** / **Passing step** / **Foot paths** poses, and switch to Happy Sway. **Face & asset fitting** retains full Grace, half Grace and the intact mechanical face; masks are not yet fitted to the moving rig.
 
 ## Delivered evidence
 
@@ -10,13 +10,15 @@ Open [CATHEXIS review](/stepanoskin/loopforge/play/asset-review/cathexis). **Mot
 - Happy Sway FBX ZIP: SHA-256 `f63a384ac5049a21e962cb993e783b76c262ede6aaf364241eaf02cdc0c2bb6a`; neutral and animated FBX, matching base/metallic/roughness maps. GLB is the canonical motion source; FBX timing is not asserted byte-identical.
 - Rigged delivery: 51,031 triangles, 23 skin joints. Meshy’s rigging export differs slightly from the accepted 51,034-triangle static source. This cleanup does not remodel either body.
 - `Confident_Walk` (catalog 106) is publicly **Hot Walk**, 5.8333 s. `Happy_Sway_Standing` (415) is 10.0417 s. Source Walking/Running are excluded: CATHEXIS never runs and uses Hot Walk only.
-- Runtime: 11,512,604 bytes, SHA-256 `96bf18561160749fae91f7528977330d99a6cd9fe61be9c5b3917940d1851632`. Immutable `loopforge-cathexis-motion` pack. Four source/corrected clips, two skins sharing geometry/maps; only one body renders.
+- Runtime: 11,512,604 bytes, SHA-256 `6c27a50d5697b26156156edabf525c3ab8be5f94aa5650aba9ea7c15f14bfdb6`. Immutable `loopforge-cathexis-motion` pack. Four source/corrected clips, two skins sharing geometry/maps; only one body renders.
 
 ## What changed
 
 Original positions, normals, UVs, topology, original skin and source curves remain available. Six additional baked skirt controls (29 corrected skin joints) carry the rear fabric clear of the legs. The waist transition now spans 20 cm instead of the earlier abrupt 8 cm join. Controls extend to the waist, and lateral ease changes gradually down the skirt instead of stepping between control rows. The rear arc has less backward flare, with a small clearance allowance for the heel at maximum stride and the calf during the deepest sway. Front panels follow their own thigh; the exported opposite-thigh weights were pulling them through the legs. The accepted neutral geometry remains unchanged.
 
-Both clips now have separate foot paths. Offline two-bone IK adjusts thigh, knee and ankle rotations while preserving the source’s forward timing, foot orientation, toe animation and hip/torso acting. Knee targets use a forward bend with lateral separation, avoiding an exaggerated bow-legged stance. These clips remain theatrical Hot Walk and Happy Sway; no generic walk or run is substituted.
+Both clips have separate foot paths. Hot Walk now lands nearer the centre and takes a small outward arc during foot recovery, using STILETTO’s Quick Walk as a trajectory reference without copying its cadence. The earlier 193 mm minimum ankle spacing read as too wide; the new path varies from 108–126 mm. The authored dress/ground controls are evaluated before this final leg refinement, so they stay identical to the accepted pass. Offline two-bone IK adjusts thigh, knee and ankle rotations while preserving the source’s forward timing, foot orientation, toe animation and hip/torso acting. Knee targets use a forward bend with lateral separation, avoiding an exaggerated bow-legged stance. These clips remain theatrical Hot Walk and Happy Sway; no generic walk or run is substituted.
+
+Only the six Hot Walk thigh/knee/ankle rotation tracks change in this pass. A regression digest pins all 214 other tracks to the accepted previous runtime: all source curves, all Happy Sway curves, and Hot Walk’s hip, upper-body, hands, toes and six skirt controls. Front panels retain their existing own-thigh weights and therefore follow the refined legs.
 
 Hot Walk’s left palm now follows the hip. The right hand approaches the temple from 1.35–1.85 s, holds through 4.5 s, and releases by 5.1 s. Offline two-bone IK adjusts shoulder, elbow and wrist rotation, preserving limb lengths and the free gesture outside the contact window. Happy Sway keeps its original arm acting. No finger joints were added.
 
@@ -37,7 +39,7 @@ These are **1,907 sampled corrected poses**, not a guarantee of arbitrary motion
 
 A separate 120 Hz check of the exported Hot Walk measures a wrist-relative palm proxy against its authored body-relative target: maximum error 0.026 mm at the hip (701 poses) and 0.031 mm at the temple (318 held-contact poses). This verifies contact stability through export; it does not certify finger placement or all hand/body surface contacts.
 
-The minimum signed ankle separation is 193.0 mm in Hot Walk and 204.4 mm in Happy Sway. Minimum knee separation is 146.8 / 178.7 mm respectively. Consecutive 60 Hz corrected leg keys rotate at most 6.27° / 4.95°; a regression guard rejects abrupt steps above 0.20 radians. These diagnostics support this candidate’s review and do not certify velocity continuity or arbitrary animation blends.
+Signed ankle separation is 108.0–126.1 mm in Hot Walk and 204.4–209.5 mm in Happy Sway. Minimum knee separation is 84.9 / 178.7 mm respectively. Consecutive 60 Hz corrected leg keys rotate at most 6.21° / 4.95°; a regression guard rejects abrupt steps above 0.20 radians. These diagnostics support this candidate’s review and do not certify velocity continuity or arbitrary animation blends.
 
 ## Reproduce and maintain
 
@@ -51,4 +53,4 @@ Run from `apps/lab` with private source downloads available:
 
 The bake is reproducible from the pinned source and checked-in scripts. Runtime validation has zero errors; two expected non-root skinned-mesh warnings reflect the source hierarchy. Babylon adds an unweighted common ancestor to the corrected skeleton, so validate indexed skin joints, not its raw bone-array length.
 
-Remaining: owner review of drape/acting, moving Grace/head/eye fit, matching normal map, grime variants, blends, paired worker/machine contacts, rigid armour/finger refinement and device/crowd measurements. No new Meshy body generation is needed for this cleanup.
+Remaining: owner review of the narrower gait, moving Grace/head/eye fit, matching normal map, grime variants, blends, paired worker/machine contacts, rigid armour/finger refinement and device/crowd measurements. No new Meshy body generation is needed for this cleanup.

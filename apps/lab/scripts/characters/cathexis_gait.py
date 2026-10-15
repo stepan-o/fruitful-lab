@@ -4,26 +4,43 @@ from scipy.spatial.transform import Rotation as R
 from cathexis_drape import unit, swing
 
 
-def refine_gait(d, tracks, times):
+def refine_gait(d, tracks, times, narrow_source=None):
     """Solve hips/knees/ankles into separate lanes without a bow-legged pole.
 
     The source's forward stride, timing, toe animation and world foot rotations
     are retained. Knees keep the forward bend on their two-bone reach circle,
-    subject to lateral separation. This is not a world-space foot-lock solver.
+    subject to lateral separation. narrow_source selects the compact Hot Walk
+    trajectory after the approved costume controls have been baked. Without it,
+    retain the broad clearance pass used by those controls and Happy Sway.
+    This is not a world-space foot-lock solver.
     """
     rotations = {i: values for i, kind, _, values in tracks if kind == 'rotation'}
     parents = {c:i for i,n in enumerate(d['g']['nodes']) for c in n.get('children',[])}
     source = [d['world_at'](tracks,t) for t in times]
     centre = float(np.mean([(w[1,0,3]+w[5,0,3])/2 for w in source]))
     chains = [(3,2,1,1),(7,6,5,-1)]
+    natural = [d['world_at'](narrow_source,t) for t in times] if narrow_source is not None else None
     for k,t in enumerate(times):
         world = d['world_at'](tracks,t)
         goals = [world[foot,:3,3].copy() for _,_,foot,_ in chains]
-        for goal,(_,_,foot,side) in zip(goals,chains):
-            goal[0] = centre + side*.105 + (world[foot,0,3]-centre)*.10
-        knee_x = np.array([world[lower,0,3]+.35*(goal[0]-world[foot,0,3])
-                           for goal,(_,lower,foot,_) in zip(goals,chains)])
-        needed = max(0., .13-(knee_x[0]-knee_x[1])) / 2
+        if natural is not None:
+            ref = natural[k]
+            # Narrow stance; a lifted foot arcs gently outward during recovery.
+            # Source lateral body travel and forward timing survive. This uses
+            # Quick Walk's path principle, without copying its cadence.
+            mid = (ref[1,0,3]+ref[5,0,3])/2
+            for goal,(_,_,foot,side) in zip(goals,chains):
+                lift = np.clip((world[foot,1,3]-min(world[1,1,3],world[5,1,3]))/.12,0,1)
+                goal[0] = mid + side*(.054 + .018*lift)
+            knee_x = np.array([ref[lower,0,3]+.20*(goal[0]-ref[foot,0,3])
+                               for goal,(_,lower,foot,_) in zip(goals,chains)])
+            needed = max(0., .085-(knee_x[0]-knee_x[1])) / 2
+        else:
+            for goal,(_,_,foot,side) in zip(goals,chains):
+                goal[0] = centre + side*.105 + (world[foot,0,3]-centre)*.10
+            knee_x = np.array([world[lower,0,3]+.35*(goal[0]-world[foot,0,3])
+                               for goal,(_,lower,foot,_) in zip(goals,chains)])
+            needed = max(0., .13-(knee_x[0]-knee_x[1])) / 2
         knee_x += [needed,-needed]
         for goal,wanted_x,(upper,lower,foot,_) in zip(goals,knee_x,chains):
             hip,knee,ankle = [world[i,:3,3].copy() for i in (upper,lower,foot)]

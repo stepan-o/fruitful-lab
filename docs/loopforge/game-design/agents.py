@@ -34,7 +34,7 @@ def render_agents():
          'Owner accepts the blade appearance and acting. The same motion player now offers twin welders and mixed tools, blue-white flame flow and a red visor. Eighteen source motions plus five corrected alternatives remain available.',
          'Next: module-specific clearance, remaining leg contacts, blends and machine-contact acting. Blade audit counts do not certify welders.', 'STILETTO_MOTION_REVIEW.md'),
         ('CATHEXIS', '/stepanoskin/loopforge/play/asset-review/cathexis', 'Hot Walk, sway and Grace coverage',
-         'Compare original/corrected Hot Walk and Happy Sway. Six baked skirt controls, grounded soles and closed loop endpoints preserve neutral geometry; 1,907 corrected poses pass the sampled lower-skirt/leg crossing test. Full/half Grace and illuminated eyes remain in separate static fitting.',
+         'Compare original/corrected Hot Walk and Happy Sway. Continuous rear drape and Hot Walk hip/temple hand contacts replace the first cleanup’s band bends. Six baked skirt controls, grounded soles and closed loop endpoints preserve neutral geometry; 1,907 corrected poses pass the sampled lower-skirt/leg crossing test. Full/half Grace and illuminated eyes remain in separate static fitting.',
          'Next: owner motion review, moving Grace fit, normal map, blends and paired contacts. No live cloth simulation. Stage 2 remains closed; no new expression masks or facial rig.', 'CATHEXIS_MOTION_REVIEW.md'),
     ]
     for name, route, title, current_text, next_text, record in current:

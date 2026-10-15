@@ -1,5 +1,5 @@
 {
-  "runtimeSHA256": "e02a0e9c21005d46908a8ba70b6c12c6a36c34b96e1c0537cab0a503314ae1d3",
+  "runtimeSHA256": "dd36247bea5ec3ac6db291da8ee8ba85f0b455c73127f3d497b4d84079d12a53",
   "method": "120 Hz non-coplanar edge/triangle crossings. Cloth and both leg components below 0.85m; no other body contacts, cloth self-contact, blends or dynamics certified. Coplanar/tangent contact, full containment and velocity continuity are not certified.",
   "clothTriangles": 14855,
   "legTriangles": 5420,
@@ -36,5 +36,12 @@
       "footMaxM": 0.0020751423716316286,
       "endpointMaxM": 0.0
     }
-  ]
+  ],
+  "handContacts": {
+    "method": "120 Hz wrist-relative palm proxy versus body-relative contact target; not finger or mesh collision certification.",
+    "hipPalmErrorMaxM": 2.591387602883948e-05,
+    "templePalmErrorMaxM": 3.126090912175831e-05,
+    "hipSamples": 701,
+    "templeSamples": 318
+  }
 }

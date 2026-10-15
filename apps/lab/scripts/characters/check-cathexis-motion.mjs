@@ -18,6 +18,8 @@ for(const animation of root.listAnimations())for(const sampler of animation.list
 }
 const corrected=audit.clips.filter(c=>c.clip.endsWith('Corrected'));assert.equal(corrected.reduce((n,c)=>n+c.samples,0),1907);
 for(const c of corrected){assert.equal(c.costumeLegContactFrames,0);assert.equal(c.endpointMaxM,0);assert.ok(c.footMinM>=0&&c.footMaxM<.004);}
+assert.equal(audit.handContacts.hipSamples,701);assert.equal(audit.handContacts.templeSamples,318);
+assert.ok(audit.handContacts.hipPalmErrorMaxM<.001);assert.ok(audit.handContacts.templePalmErrorMaxM<.001);
 // Babylon inserts a non-indexed ancestor for the two-branch skirt skeleton.
 const engine=new NullEngine(),scene=new Scene(engine);try{const c=await LoadAssetContainerAsync(bytes,scene,{pluginExtension:'.glb'});assert.deepEqual(c.meshes.filter(m=>m.getTotalVertices()>0).map(m=>[m.name,m.skeleton.bones.filter(b=>b.getIndex()>=0).length]),[['Source_Body',23],['Corrected_Body',29]]);c.dispose();}finally{scene.dispose();engine.dispose();}
 console.log('CATHEXIS motion: 4 clips, shared geometry, 23/29 indexed joints, exact 1,907-pose audit hash, zero glTF errors.');

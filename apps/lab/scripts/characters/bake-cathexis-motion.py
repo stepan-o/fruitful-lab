@@ -3,10 +3,10 @@ Usage: python bake-cathexis-motion.py source.glb corrected-raw.glb
 Requires numpy and scipy, offline only. No Blender or runtime cloth solver.
 """
 from pathlib import Path
-import json,struct,math,hashlib,copy,sys
+import json,struct,hashlib,copy,sys
 import numpy as np
-from scipy.ndimage import gaussian_filter1d,maximum_filter1d
 from cathexis_motion_math import context,cloth_regions
+from cathexis_drape import refine_hands, drape_matrices
 source,output=map(Path,sys.argv[1:3]);assert hashlib.sha256(source.read_bytes()).hexdigest()=='a15bb25903042ca5830963f3231818df99101338ef4d6df960218995b8889dc1','Unexpected source revision'
 d=context(source)
 v=d['verts'];js=d['js'];ws=d['ws'];ib=d['ib'];g=copy.deepcopy(d['g']);joints=d['sk']['joints'];hip=22
@@ -28,10 +28,10 @@ newib=np.concatenate([ib,np.tile(np.eye(4),(len(levels),1,1))]);skin=copy.deepco
 cjs=js.copy();cws=ws.copy();newbone=23
 for i in np.flatnonzero(cloth):
  y=v[i,1];hi=min(len(levels)-1,max(1,np.searchsorted(levels,y)));lo=hi-1;t=np.clip((y-levels[lo])/(levels[hi]-levels[lo]),0,1)
- # Smooth blend into the preserved waist skin; all lower fabric becomes independent of legs.
+ # Smooth blend into the preserved waist skin; the rear fabric becomes independent of legs.
  a=np.clip((.85-y)/.08,0,1);a=a*a*(3-2*a)
- rear=np.clip((.10-v[i,2])/.12,0,1);rear=rear*rear*(3-2*rear)
- a*=rear
+ # Rear fabric hangs from the waist; front opening retains the approved stride.
+ rear=np.clip((.12-v[i,2])/.14,0,1);rear=rear*rear*(3-2*rear);a*=rear
  influences={int(j):float(w*(1-a))for j,w in zip(js[i],ws[i])if w>0}
  for j,w in [(newbone+lo,(1-t)*a),(newbone+hi,t*a)]:influences[j]=influences.get(j,0)+w
  pairs=sorted(influences.items(),key=lambda x:-x[1])[:4];cjs[i]=0;cws[i]=0
@@ -62,19 +62,10 @@ for source in g['animations']:
   else:
    vals=np.column_stack([np.interp(ts,times,values[:,j])for j in range(values.shape[1])]);ease=np.clip((ts-(dur-.25))/.25,0,1);ease=ease**3*(10-15*ease+6*ease**2);vals+=ease[:,None]*(vals[0]-vals[-1])
   corrected.append((node,path,ts,vals))
- worlds=[d['world_at'](corrected,t)for t in ts];floor=[];offsets=[]
- for world in worlds:
-  lv=skinv(world,legs);floor.append(lv[:,1].min());M=world[22]@ib[0];local=(np.linalg.inv(M)@np.c_[lv,np.ones(len(lv))].T).T[:,:3]
-  off=[]
-  for y in levels:
-   # Clearance measured against the rear envelope in a vertical neighbourhood.
-   lower=local[(abs(local[:,1]-y)<.105)&(abs(local[:,0])<.25)]
-   fabric=v[cloth&(abs(v[:,1]-y)<.08)&(abs(v[:,0])<.17)&(v[:,2]<-.025)]
-   off.append(min(0,lower[:,2].min()-.055-np.quantile(fabric[:,2],.85)) if len(lower)and len(fabric)and y<.79 else 0)
-  offsets.append(off)
- offsets=np.array(offsets);offsets[-1]=offsets[0]
- # Anticipate contact and round the envelope without consuming its margin.
- offsets=-gaussian_filter1d(maximum_filter1d(-offsets,size=11,axis=0,mode='wrap'),sigma=2,axis=0,mode='wrap');offsets[-1]=offsets[0]
+ if name=='Hot_Walk':refine_hands(d,corrected,ts)
+ worlds=[d['world_at'](corrected,t)for t in ts]
+ floor=[skinv(world,legs)[:,1].min() for world in worlds]
+ drapes,drape_report=drape_matrices(d,corrected,ts,levels,cloth,legs,skinv)
  floor=np.array(floor);ground=.002-floor;ground[-1]=ground[0]
  # Translate the pelvis globally; original leg articulation and stride remain untouched.
  for node,path,_,vals in corrected:
@@ -83,15 +74,15 @@ for source in g['animations']:
   sampler=len(out['samplers']);out['samplers'].append({'input':timeacc,'output':add(vals,'VEC4'if path=='rotation'else 'VEC3'),'interpolation':'LINEAR'});out['channels'].append({'sampler':sampler,'target':{'node':node,'path':'scale' if path=='scale' else path}})
  for bi,bnode in enumerate(newnodes):
   rots=[];trans=[]
-  for t,z in zip(ts,offsets[:,bi]):
-   world=d['world_at'](corrected,t);M=world[22]@ib[0];M[:3,3]+=M[:3,:3]@np.array([0,0,z]);trans.append(M[:3,3]*100);rots.append(Rotation.from_matrix(M[:3,:3]).as_quat())
+  for k,t in enumerate(ts):
+   M=drapes[k,bi].copy();M[1,3]+=ground[k]
+   trans.append(M[:3,3]*100);rots.append(Rotation.from_matrix(M[:3,:3]).as_quat())
   rots=np.array(rots)
   for k in range(1,len(rots)):
    if np.dot(rots[k-1],rots[k])<0:rots[k]*=-1
-  lateral=1.18 if levels[bi]<.79 else 1
-  scales=np.tile([100*lateral,100,100],(len(ts),1))
+  scales=np.tile([100*(1.15 if levels[bi]<.79 else 1),100,100],(len(ts),1))
   for path,vals in [('rotation',rots),('translation',trans),('scale',scales)]:
-   sampler=len(out['samplers']);out['samplers'].append({'input':timeacc,'output':add(vals,'VEC4'if path=='rotation'else 'VEC3'),'interpolation':'LINEAR'});out['channels'].append({'sampler':sampler,'target':{'node':bnode,'path':'scale' if path=='scale' else path}})
- reports.append({'clip':name,'duration':dur,'samples':len(ts),'maxGroundAdjustmentM':float(abs(ground).max()),'maxSkirtOffsetM':float(abs(offsets).max())});newclips.extend([source,out])
+   sampler=len(out['samplers']);out['samplers'].append({'input':timeacc,'output':add(vals,'VEC4'if path=='rotation'else 'VEC3'),'interpolation':'LINEAR'});out['channels'].append({'sampler':sampler,'target':{'node':bnode,'path':path}})
+ reports.append({'clip':name,'duration':dur,'samples':len(ts),'maxGroundAdjustmentM':float(abs(ground).max()),'drape':drape_report});newclips.extend([source,out])
 g['animations']=newclips;g['buffers'][0]['byteLength']=len(data);j=json.dumps(g,separators=(',',':')).encode();j+=b' '*((-len(j))%4);data+=b'\0'*((-len(data))%4);out=struct.pack('<4sII',b'glTF',2,28+len(j)+len(data))+struct.pack('<I4s',len(j),b'JSON')+j+struct.pack('<I4s',len(data),b'BIN\0')+data
 output.write_bytes(out);output.with_suffix('.authoring.json').write_text(json.dumps(reports,indent=2));print(reports)

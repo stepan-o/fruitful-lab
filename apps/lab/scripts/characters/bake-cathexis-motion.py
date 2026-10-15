@@ -8,6 +8,7 @@ import numpy as np
 from cathexis_motion_math import context,cloth_regions
 from cathexis_drape import refine_hands, drape_matrices
 from cathexis_gait import refine_gait
+from cathexis_hot_walk import rebuild_hot_walk
 source,output=map(Path,sys.argv[1:3]);assert hashlib.sha256(source.read_bytes()).hexdigest()=='a15bb25903042ca5830963f3231818df99101338ef4d6df960218995b8889dc1','Unexpected source revision'
 d=context(source)
 v=d['verts'];js=d['js'];ws=d['ws'];ib=d['ib'];g=copy.deepcopy(d['g']);joints=d['sk']['joints'];hip=22
@@ -69,16 +70,16 @@ for source in g['animations']:
   else:
    vals=np.column_stack([np.interp(ts,times,values[:,j])for j in range(values.shape[1])]);ease=np.clip((ts-(dur-.25))/.25,0,1);ease=ease**3*(10-15*ease+6*ease**2);vals+=ease[:,None]*(vals[0]-vals[-1])
   corrected.append((node,path,ts,vals))
- # Retain the natural lateral travel before the clearance pass. Evaluate the
- # approved dress/ground controls from that pass before narrowing Hot Walk.
- # This changes only six leg rotation tracks, leaving the accepted acting intact.
+ # Preserve original Hot Walk rotations before evaluating the accepted
+ # costume/grounding envelope. Rebuild its six leg tracks from that source
+ # using measured Quick Walk paths; never refine a previously corrected gait.
  natural_tracks=copy.deepcopy(corrected)
  refine_gait(d,corrected,ts)
  if name=='Hot_Walk':refine_hands(d,corrected,ts)
  worlds=[d['world_at'](corrected,t)for t in ts]
  floor=[skinv(world,legs)[:,1].min() for world in worlds]
  drapes,drape_report=drape_matrices(d,corrected,ts,levels,cloth,legs,skinv,clearance_floor=.20 if name=='Happy_Sway' else .14)
- if name=='Hot_Walk':refine_gait(d,corrected,ts,narrow_source=natural_tracks)
+ if name=='Hot_Walk':rebuild_hot_walk(d,corrected,ts,natural_tracks)
  floor=np.array(floor);ground=.002-floor;ground[-1]=ground[0]
  # Translate the pelvis globally; corrected leg articulation and source forward timing are retained.
  for node,path,_,vals in corrected:

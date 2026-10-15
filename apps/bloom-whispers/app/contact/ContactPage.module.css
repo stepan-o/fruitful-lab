@@ -1,0 +1,361 @@
+.contactPage {
+  background:
+    radial-gradient(circle at 10% 34%, rgba(197, 99, 183, 0.08), transparent 24%),
+    radial-gradient(circle at 86% 58%, rgba(92, 159, 130, 0.1), transparent 24%),
+    var(--moon-cream);
+  color: #061d20;
+  overflow: hidden;
+}
+
+.heroSection {
+  align-items: center;
+  background:
+    radial-gradient(circle at 80% 24%, rgba(197, 99, 183, 0.18), transparent 24%),
+    linear-gradient(180deg, rgba(2, 15, 15, 0.44), rgba(1, 64, 71, 0.78)),
+    url("/assets/hero-midnight-garden.png");
+  background-position: center 48%;
+  background-size: cover;
+  border-bottom: 1px solid rgba(231, 167, 103, 0.5);
+  display: grid;
+  min-height: clamp(430px, 46vw, 660px);
+  overflow: hidden;
+  padding: clamp(72px, 8vw, 112px) clamp(18px, 5vw, 72px);
+  position: relative;
+  text-align: center;
+}
+
+.heroSection::after {
+  background: linear-gradient(180deg, transparent, rgba(2, 15, 15, 0.18));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.heroContent {
+  margin: 0 auto;
+  max-width: 720px;
+  position: relative;
+  z-index: 2;
+}
+
+.heroTabs {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: clamp(24px, 4vw, 44px);
+}
+
+.heroTabs a {
+  background: rgba(2, 15, 15, 0.28);
+  border: 1px solid rgba(231, 167, 103, 0.86);
+  border-radius: 999px;
+  color: var(--moon-cream);
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1rem, 1.3vw, 1.28rem);
+  font-weight: 700;
+  min-width: 172px;
+  padding: 11px 24px;
+}
+
+.heroSection h1,
+.contactCard h2 {
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.heroSection h1 {
+  color: var(--moon-cream);
+  font-size: clamp(4rem, 8vw, 8.4rem);
+  line-height: 0.86;
+  text-shadow: 0 16px 46px rgba(0, 0, 0, 0.26);
+}
+
+.heroSection p {
+  color: rgba(249, 241, 228, 0.94);
+  font-size: clamp(1rem, 1.35vw, 1.22rem);
+  line-height: 1.65;
+  margin: clamp(22px, 3vw, 34px) auto 0;
+  max-width: 600px;
+}
+
+.heroWhiteBloom,
+.heroRose {
+  height: auto;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.heroWhiteBloom {
+  bottom: -72px;
+  left: clamp(-72px, -3vw, -16px);
+  opacity: 0.92;
+  width: clamp(280px, 28vw, 500px);
+}
+
+.heroRose {
+  bottom: clamp(12px, 4vw, 58px);
+  opacity: 0.92;
+  right: clamp(-70px, -2vw, -20px);
+  width: clamp(220px, 23vw, 390px);
+}
+
+.contactSection {
+  padding: clamp(36px, 5vw, 72px) clamp(18px, 5vw, 72px) clamp(72px, 8vw, 120px);
+}
+
+.contactGrid {
+  align-items: stretch;
+  display: grid;
+  gap: clamp(26px, 5vw, 72px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: 1320px;
+  position: relative;
+}
+
+.contactGrid::before {
+  background: linear-gradient(180deg, transparent, rgba(38, 27, 34, 0.22), transparent);
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+}
+
+.contactGrid::after {
+  color: var(--pollen-gold);
+  content: "✦";
+  font-size: 1.6rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contactCard {
+  background:
+    radial-gradient(circle at 92% 10%, rgba(231, 167, 103, 0.12), transparent 24%),
+    rgba(255, 253, 248, 0.66);
+  border: 1px solid rgba(38, 27, 34, 0.13);
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(70, 4, 60, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 4vw, 48px);
+}
+
+.starEyebrow {
+  color: var(--pollen-gold);
+  font-size: 1.6rem;
+  line-height: 1;
+  margin: 0 0 8px;
+}
+
+.contactCard h2 {
+  color: #061d20;
+  font-size: clamp(2.6rem, 4.3vw, 5rem);
+  line-height: 0.94;
+}
+
+.contactCard > p {
+  color: rgba(38, 27, 34, 0.78);
+  font-size: clamp(0.98rem, 1.12vw, 1.08rem);
+  line-height: 1.7;
+  margin: 16px 0 0;
+  max-width: 620px;
+}
+
+.contactForm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: clamp(24px, 3vw, 34px);
+}
+
+.twoFields {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.contactForm label {
+  display: grid;
+  gap: 8px;
+}
+
+.contactForm label > span {
+  color: rgba(38, 27, 34, 0.58);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contactForm input,
+.contactForm select,
+.contactForm textarea {
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid rgba(38, 27, 34, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 10px 26px rgba(70, 4, 60, 0.06);
+  color: #061d20;
+  font: inherit;
+  min-height: 54px;
+  padding: 14px 16px;
+  width: 100%;
+}
+
+.contactForm textarea {
+  line-height: 1.5;
+  min-height: 128px;
+  resize: vertical;
+}
+
+.contactForm button {
+  align-items: center;
+  background: linear-gradient(180deg, #053f45, #021819);
+  border: 1px solid rgba(231, 167, 103, 0.62);
+  border-radius: 10px;
+  color: var(--moon-cream);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  gap: 12px;
+  justify-content: center;
+  min-height: 58px;
+  margin-top: auto;
+  padding: 14px 22px;
+}
+
+.contactForm button span {
+  color: var(--pollen-gold);
+}
+
+.guestButton {
+  background: linear-gradient(180deg, #6f0d5f, #46043c) !important;
+}
+
+.formNote {
+  color: rgba(38, 27, 34, 0.62) !important;
+  font-size: 0.86rem !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  text-align: center;
+}
+
+.interestBox {
+  align-items: center;
+  background: rgba(255, 253, 248, 0.58);
+  border: 1px solid rgba(38, 27, 34, 0.13);
+  border-radius: 12px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 78px minmax(0, 1fr);
+  margin-top: clamp(22px, 3vw, 32px);
+  padding: 18px;
+}
+
+.interestBox img {
+  height: auto;
+  opacity: 0.9;
+  width: 78px;
+}
+
+.interestBox p {
+  color: #061d20;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.interestBox ul {
+  display: grid;
+  gap: 9px 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.interestBox li {
+  align-items: start;
+  color: rgba(38, 27, 34, 0.78);
+  display: grid;
+  font-size: 0.88rem;
+  gap: 8px;
+  grid-template-columns: 14px minmax(0, 1fr);
+  line-height: 1.4;
+}
+
+.interestBox li span {
+  color: var(--pollen-gold);
+  font-size: 0.78rem;
+  margin-top: 1px;
+}
+
+@media (max-width: 980px) {
+  .heroWhiteBloom {
+    opacity: 0.58;
+  }
+
+  .heroRose {
+    opacity: 0.62;
+  }
+
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactGrid::before,
+  .contactGrid::after {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .heroSection {
+    min-height: 520px;
+    padding-top: 58px;
+  }
+
+  .heroTabs a {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .heroSection h1 {
+    font-size: clamp(3.6rem, 18vw, 5.4rem);
+  }
+
+  .heroWhiteBloom {
+    bottom: -54px;
+    left: -150px;
+    width: 320px;
+  }
+
+  .heroRose {
+    bottom: -24px;
+    right: -120px;
+    width: 290px;
+  }
+
+  .twoFields,
+  .interestBox,
+  .interestBox ul {
+    grid-template-columns: 1fr;
+  }
+
+  .interestBox img {
+    margin: 0 auto;
+  }
+}

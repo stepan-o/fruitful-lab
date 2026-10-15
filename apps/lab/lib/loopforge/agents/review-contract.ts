@@ -14,7 +14,7 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
  'cathexis-intake': {
   body:{status:'Accepted slice',detail:'Accepted v2 silhouette and rear skirt; rigged export has 51,031 triangles. Matching delivery normal map remains missing.'},
   equipment:{status:'Candidate',detail:'Full/half Grace and recessed eyes are fitted to the intact static body. Moving head/mask fit remains open; other expression studies are retired.'},
-  motion:{status:'Candidate',detail:'Hot Walk and Happy Sway have source/corrected comparison, six baked controls with continuous skirt drape, Hot Walk hip/temple hand contacts, sole grounding and closed endpoint poses. Owner motion acceptance pending.'},
+  motion:{status:'Candidate',detail:'Hot Walk and Happy Sway have source/corrected comparison, six baked controls with a softened waist transition and less trailing flare, separate foot/knee paths, preserved Hot Walk hip/temple hand contacts, sole grounding and closed endpoint poses. Owner motion acceptance pending.'},
   contact:{status:'Needs work',detail:'1,907 corrected poses pass sampled lower-skirt/leg crossings. Self-contact, blends, moving masks and worker/machine encounters are not certified.'},
   readability:{status:'Candidate',detail:'Motion and static assembly modes share close inspection, materials and three room cameras. Review acting and identity at actual CCTV scale.'},
   performance:{status:'Not measured',detail:'11.51 MB motion bank; one selected body renders. Baked skinning, no runtime cloth. Crowd and physical-device performance remain unmeasured.'}

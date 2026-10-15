@@ -83,17 +83,17 @@ def refine_hands(d, tracks, times):
                 values[k] *= -1
 
 
-def drape_matrices(d, tracks, times, levels, cloth, legs, skin_vertices):
+def drape_matrices(d, tracks, times, levels, cloth, legs, skin_vertices, clearance_floor=.14):
     """One smooth waist-hung arc replaces six unrelated horizontal offsets.
 
     The tangent starts and ends vertical, with a broad curved middle that
     yields behind the legs. Arc length is preserved before skin blending.
-    Front opening weights stay with the source stride. The lower rear drape
+    Front opening weights follow the corrected same-side thigh. The lower rear drape
     progressively rejects pelvis tilt so it hangs down instead of hinging up.
     A shared periodic envelope prevents bands from pulsing independently.
     """
     vertices = d['verts']
-    pivot = np.array([0, .91, .10])
+    pivot = np.array([0, 1.02, .10])
     depths = pivot[1] - levels
     worlds = [d['world_at'](tracks, t) for t in times]
     hips = np.array([world[22] @ d['ib'][0] for world in worlds])
@@ -107,7 +107,7 @@ def drape_matrices(d, tracks, times, levels, cloth, legs, skin_vertices):
             fabric = vertices[cloth & (abs(vertices[:, 1] - y) < .08) & (abs(vertices[:, 0]) < .17) & (vertices[:, 2] < -.025)]
             if len(lower_leg) and len(fabric) and y < .65:
                 required.append(max(0, np.quantile(fabric[:, 2], .85) - lower_leg[:, 2].min() + .025) / max(depth, .1))
-        angles.append(min(.62, max(required, default=0) * 1.1))
+        angles.append(min(.52, max(clearance_floor, max(required, default=0) * .95)))
     angles = gaussian_filter1d(maximum_filter1d(angles[:-1], size=17, mode='wrap'), sigma=5, mode='wrap')
     angles = np.r_[angles, angles[0]]
     result = []
@@ -118,10 +118,10 @@ def drape_matrices(d, tracks, times, levels, cloth, legs, skin_vertices):
         rows = []
         for y, depth in zip(levels, depths):
             u = np.linspace(0, depth, 41)
-            angle = theta * np.sin(np.pi * np.clip(u / .69, 0, 1))
+            angle = theta * np.sin(np.pi * np.clip(u / .80, 0, 1))
             dy, dz = -np.trapezoid(np.cos(angle), u), -np.trapezoid(np.sin(angle), u)
-            base = mix(root, yaw, .75 * np.clip(depth / .69, 0, 1))
-            rotation = base * R.from_euler('x', theta * np.sin(np.pi * np.clip(depth / .69, 0, 1)))
+            base = mix(root, yaw, .60 * np.clip(depth / .80, 0, 1))
+            rotation = base * R.from_euler('x', theta * np.sin(np.pi * np.clip(depth / .80, 0, 1)))
             center = waist + base.apply([0, dy, dz])
             transform = np.eye(4)
             transform[:3, :3] = rotation.as_matrix()

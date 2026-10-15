@@ -1,13 +1,26 @@
 {
-  "runtimeSHA256": "dd36247bea5ec3ac6db291da8ee8ba85f0b455c73127f3d497b4d84079d12a53",
-  "method": "120 Hz non-coplanar edge/triangle crossings. Cloth and both leg components below 0.85m; no other body contacts, cloth self-contact, blends or dynamics certified. Coplanar/tangent contact, full containment and velocity continuity are not certified.",
+  "runtimeSHA256": "96bf18561160749fae91f7528977330d99a6cd9fe61be9c5b3917940d1851632",
+  "method": "120 Hz non-coplanar edge/triangle crossings. Cloth versus both legs, plus left versus right leg surfaces, below 0.85m. World-X ankle/knee lane separation is diagnostic for these forward-facing clips. No other body contacts, cloth self-contact, blends or dynamics certified. Coplanar/tangent contact, full containment and velocity continuity are not certified.",
+  "handContacts": {
+    "method": "120 Hz wrist-relative palm proxy versus body-relative contact target; not finger or mesh collision certification.",
+    "hipPalmErrorMaxM": 2.591387602883948e-05,
+    "templePalmErrorMaxM": 3.126090912175831e-05,
+    "hipSamples": 701,
+    "templeSamples": 318
+  },
   "clothTriangles": 14855,
   "legTriangles": 5420,
+  "leftLegTriangles": 2711,
+  "rightLegTriangles": 2709,
   "clips": [
     {
       "clip": "Hot_Walk_Source",
       "samples": 701,
       "costumeLegContactFrames": 652,
+      "legLegContactFrames": 276,
+      "maxLegKeyRotationStepRadians": 0.23523449599570226,
+      "ankleLaneSeparationMinM": -0.170289629669104,
+      "kneeLaneSeparationMinM": 0.019661325543193997,
       "footMinM": 0.04030415901522259,
       "footMaxM": 0.08523422723668928,
       "endpointMaxM": 0.03734271404427308
@@ -16,14 +29,22 @@
       "clip": "Hot_Walk_Corrected",
       "samples": 701,
       "costumeLegContactFrames": 0,
-      "footMinM": 0.0012759772070199023,
-      "footMaxM": 0.003925987977543673,
+      "legLegContactFrames": 0,
+      "maxLegKeyRotationStepRadians": 0.10941702714254754,
+      "ankleLaneSeparationMinM": 0.19297102083347145,
+      "kneeLaneSeparationMinM": 0.14680256279580056,
+      "footMinM": 0.001317736479334513,
+      "footMaxM": 0.003932940508060979,
       "endpointMaxM": 0.0
     },
     {
       "clip": "Happy_Sway_Source",
       "samples": 1206,
       "costumeLegContactFrames": 433,
+      "legLegContactFrames": 362,
+      "maxLegKeyRotationStepRadians": 0.046733726947582016,
+      "ankleLaneSeparationMinM": -0.010632725228278947,
+      "kneeLaneSeparationMinM": 0.1035922049841048,
       "footMinM": 0.0005312714980404238,
       "footMaxM": 0.03561656018241842,
       "endpointMaxM": 0.00032658819923982445
@@ -32,16 +53,13 @@
       "clip": "Happy_Sway_Corrected",
       "samples": 1206,
       "costumeLegContactFrames": 0,
-      "footMinM": 0.001988312473231568,
-      "footMaxM": 0.0020751423716316286,
+      "legLegContactFrames": 0,
+      "maxLegKeyRotationStepRadians": 0.08647410996565545,
+      "ankleLaneSeparationMinM": 0.2044373232970169,
+      "kneeLaneSeparationMinM": 0.1787186657575705,
+      "footMinM": 0.0019485919045144455,
+      "footMaxM": 0.0020854867110725863,
       "endpointMaxM": 0.0
     }
-  ],
-  "handContacts": {
-    "method": "120 Hz wrist-relative palm proxy versus body-relative contact target; not finger or mesh collision certification.",
-    "hipPalmErrorMaxM": 2.591387602883948e-05,
-    "templePalmErrorMaxM": 3.126090912175831e-05,
-    "hipSamples": 701,
-    "templeSamples": 318
-  }
+  ]
 }

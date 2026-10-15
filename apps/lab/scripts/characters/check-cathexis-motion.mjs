@@ -17,7 +17,7 @@ for(const animation of root.listAnimations())for(const sampler of animation.list
  if(animation.getName().endsWith('Corrected')){const n=sampler.getOutput().getElementSize();for(let k=0;k<n;k++)assert.ok(Math.abs(values[k]-values[values.length-n+k])<1e-6,'closed endpoint');}
 }
 const corrected=audit.clips.filter(c=>c.clip.endsWith('Corrected'));assert.equal(corrected.reduce((n,c)=>n+c.samples,0),1907);
-for(const c of corrected){assert.equal(c.costumeLegContactFrames,0);assert.equal(c.endpointMaxM,0);assert.ok(c.footMinM>=0&&c.footMaxM<.004);}
+for(const c of corrected){assert.equal(c.costumeLegContactFrames,0);assert.equal(c.legLegContactFrames,0);assert.ok(c.maxLegKeyRotationStepRadians<.20);assert.ok(c.ankleLaneSeparationMinM>.15);assert.ok(c.kneeLaneSeparationMinM>.10);assert.equal(c.endpointMaxM,0);assert.ok(c.footMinM>=0&&c.footMaxM<.004);}
 assert.equal(audit.handContacts.hipSamples,701);assert.equal(audit.handContacts.templeSamples,318);
 assert.ok(audit.handContacts.hipPalmErrorMaxM<.001);assert.ok(audit.handContacts.templePalmErrorMaxM<.001);
 // Babylon inserts a non-indexed ancestor for the two-branch skirt skeleton.

@@ -2,7 +2,7 @@
 
 15 October 2026, fifth quality pass. The owner accepted the dress flow but rejected the constrained gait. This candidate rebuilds Hot Walk from its original leg curves using measured STILETTO Quick Walk trajectories. Artistic acceptance remains with the owner.
 
-Open [CATHEXIS review](/stepanoskin/loopforge/play/asset-review/cathexis). **Motion cleanup** opens paused with corrected Hot Walk. Compare Original export at the same time, scrub or play at normal/half/quarter speed, and inspect **Knees passing**, **Foot recovery**, **Forward reach** and **Hip & temple**. Happy Sway remains available. **Face & asset fitting** retains full Grace, half Grace and the intact mechanical face; masks are not yet fitted to the moving rig. [STILETTO’s viewer](/stepanoskin/loopforge/play/asset-review/stiletto) retains Quick Walk for comparison.
+Open [CATHEXIS review](/stepanoskin/loopforge/play/asset-review/cathexis). **Motion & face review** opens paused with corrected Hot Walk. Compare Original export at the same time, scrub or play at normal/half/quarter speed, and inspect **Knees passing**, **Foot recovery**, **Forward reach** and **Hip & temple**. Happy Sway remains available. The **Appearance** selector fits full Grace, either half or the exposed body face on both motion versions. **Inspect head & face seat** provides a moving close-up; skirt/feet framing remains separate. **Face & asset fitting** retains the static source inspection. [STILETTO’s viewer](/stepanoskin/loopforge/play/asset-review/stiletto) retains Quick Walk for comparison.
 
 ## Source and delivery
 
@@ -61,4 +61,14 @@ Run from `apps/lab`, with private source downloads available:
 
 Runtime validation reports zero errors. Two expected non-root skinned-mesh warnings reflect the source hierarchy. Babylon adds an unweighted common ancestor to the corrected skeleton: validate indexed joints rather than raw bone-array length.
 
-Remaining: owner review of the rebuilt gait, moving Grace/head/eye fit, normal maps, grime variants, blends, paired worker/machine contacts, rigid armour/finger refinement and device/crowd measurements. No new Meshy body generation is needed for this cleanup.
+Remaining: owner review of the rebuilt gait and moving Grace/head/eye fit, normal maps, grime variants, blends, paired worker/machine contacts, rigid armour/finger refinement and device/crowd measurements. No new Meshy body generation is needed for this cleanup.
+
+## Grace on the moving rig — 15 October 2026
+
+Viewer revision `cathexis-motion-grace-v6` mounts the existing Grace 3k/8k candidates on the animated head. Full, left-covered and right-covered porcelain use the same clipping, cut-edge, materials and recessed eye code as static fitting. The original mechanical face remains complete under the mask. Exposed body eyes and covered mask eyes follow the same head; the illumination toggle affects both. Selection changes preserve the current clip, pose, speed and camera. Switching source/corrected motion retains the mask and pose.
+
+The static fitting body is 1.9 m; the rigged mesh is 1.7 m. The attachment maps static fitting coordinates into the head's inverse-bind space with that ratio. Bounds inflated by skin bind scaling must not be used. The nested mask import's handedness conversion is removed because the animated body already applies it. This adds a rigid transform, not a facial rig, cloth solver or extra skeleton joints. One selected mask loads at a time; switching/disposal cancels stale requests and releases mask resources. Motion and source GLB bytes are unchanged.
+
+Run `node scripts/characters/check-cathexis-face-motion.mjs` from `apps/lab` with Node 22.15+. It imports the production adapters and checks the delivered assets in Babylon: 22,908 pose samples (120 Hz, both clips and versions, both Grace resolutions, three fits). Maximum attachment-coordinate error is 0.0021 mm. It also checks clipping side, mask scale, eye toggles, room/turn transforms, rapid replacement, static-fit regression, unchanged body geometry and complete cleanup. This is attachment correctness, not a hand/mask surface-collision certificate. The earlier 1,907-pose audit remains specific to the legs and lower dress.
+
+Visual review uses Hot Walk's temple hold/release, Happy Sway head tilts, profile and split-edge close-ups, and the factory cameras. Facial articulation, taking the mask off/on, new expression items and crowd performance remain outside this change. Owner artistic acceptance remains pending.

@@ -52,7 +52,7 @@ export function createFaceEmission(source:AbstractMesh,patch:EyePatch,color:Colo
 }
 
 /** Small convex lenses fill actual eye apertures; the surrounding mask depth-tests them. */
-export function createEyeLenses(parent:AbstractMesh,patch:EyePatch,depth:number,sides:number[]=[-1,1],bulge=1){
+export function createEyeLenses(parent:TransformNode,patch:EyePatch,depth:number,sides:number[]=[-1,1],bulge=1){
  const scene=parent.getScene(),mesh=new Mesh('CATHEXIS warm eye lenses',scene),data=new VertexData(),positions:number[]=[],uvs:number[]=[],indices:number[]=[];
  for(const side of sides){
   const base=positions.length/3;

@@ -95,3 +95,7 @@ The geometry check partitions both Grace budgets into opposite halves, verifies 
 ## Stage 2 closed — owner decision, 14 October 2026
 
 The current face assets are sufficient. Remaining porcelain/robotic expression generation is abandoned; retain original face plus full/half Grace. Stages 3–7 now preserve the intact mechanical head, request body-only rigging and one shared motion bank, and leave rigid Grace fitting to our app. No facial articulation or expression-mask exchange is requested. Physical removal/reseating of the same mask is optional later work, independent of rigging and catalog auditions. Grime remains a material condition independent of mask coverage and mood. Hot Walk and expressive sway are the next two exports; motion and moving attachment clearance remain unverified.
+
+## Animated Grace review — 15 October 2026
+
+The same viewer now fits full Grace, either half or the exposed original face to both Hot Walk and Happy Sway. Use **Motion & face review → Appearance**, then **Inspect head & face seat**; static source fitting remains available separately. The rigged body uses the existing neutral fit mapped to its head bind space and scale. No body face is removed and no new expression assets are introduced. See [motion/attachment record](CATHEXIS_MOTION_REVIEW.md) for the reproducible checks and their limits. Artistic fit acceptance remains with the owner.

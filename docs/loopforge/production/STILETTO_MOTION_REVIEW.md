@@ -116,3 +116,11 @@ The existing five arm corrections and source motions remain unchanged. Blade con
 The optimized production build, scoped ESLint and asset checks passed. The welder derivative validates with zero glTF errors, 4,116 triangles, finite bounds, a 36 cm length and the pinned file hash. The unchanged body/animation pack is reused.
 
 Local browser review covered twin welders, both mixed combinations, restoration of blades, flame/visor switches, Running and Idle Turn Left. No viewer console errors were observed. The visor follows the animated head using its inverse bind matrix; the local overlay stays aligned during movement. Desktop and a 390 px viewport rendered the assembly and usable controls. Screenshots are retained privately in `character-assemblies/`. This is a single-character appearance check, not a crowd benchmark or a welder-contact certification. Owner acceptance remains open.
+
+## Visor reference correction — 15 October 2026
+
+The original STILETTO character sheet (set 1, head detail) and approved front modeling input both show a horizontal red slit connected to a narrow vertical centre seam toward the chin. The first runtime overlay omitted that descending branch. Visor v2 restores it, tapering the seam toward the chin on the existing facial surface. It shares the same head attachment, colour, toggle, material and draw call as the horizontal slit. Triangle bounds are considered for the narrow seam so it cannot disappear merely because no mesh vertex lies inside it. The body GLB, rig and motion bank are unchanged; no new Meshy export is needed for this correction.
+
+The body and runtime rebuild briefs now explicitly preserve the full visor shape. The original image-generation prompts remain historical provenance.
+
+Validation: optimized production build, TypeScript, scoped ESLint and existing character/asset checks passed. Local visual inspection covered neutral front and three-quarter views, Running at 0.20 s, Idle Turn Left including profile/back occlusion, the shared visor switch and CCTV scale. No browser errors were observed. All 12 rebuild-kit files match their size/hash declarations and all four prompt copies match the source. This correction adds no model download or draw call; crowd performance is not newly measured.

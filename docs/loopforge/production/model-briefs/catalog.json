@@ -359,7 +359,7 @@
       "subtitle": "Twin blades · interchangeable forearm modules",
       "revision": "Rebuild brief v2 · corrected arm derivatives v4",
       "status": "Prototype acting accepted",
-      "summary": "Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the player also fits twin or mixed welders with flame flow and a red visor.",
+      "summary": "Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the player also fits twin or mixed welders with flame flow and the reference-shaped red visor, including its descending centre seam.",
       "provenance": "Original body, blade, welder and motion briefs recovered. Rebuild notes preserve the later acting meanings and offline corrections; a fresh Meshy export does not include those corrections.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/stiletto",
       "viewerLabel": "Inspect blades, welders and visor",

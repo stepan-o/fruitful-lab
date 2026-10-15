@@ -30,10 +30,10 @@ Original body, blade, welder and motion briefs recovered. Rebuild notes preserve
 - [Body · back](/media/loopforge-model-briefs/02-stiletto-body-back.957e15069ec82a53.jpg) — Body input
 - [Blade module](/media/loopforge-model-briefs/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg) — Separate rigid object — upload alone
 - [Welder module](/media/loopforge-model-briefs/04-stiletto-welder-module.6fb60b79c099fbca.jpg) — Separate rigid object — upload alone
-- [Body](/loopforge-design/model-briefs/stiletto-01-body.844df50e25c09347.txt)
+- [Body](/loopforge-design/model-briefs/stiletto-01-body.4fc7446cfc329907.txt)
 - [Blade and welder](/loopforge-design/model-briefs/stiletto-02-blade-and-welder.a3ac7787af4839d2.txt)
 - [Rig and motion](/loopforge-design/model-briefs/stiletto-03-rig-and-motion.ea95dedca4238e16.txt)
-- [Runtime meaning and cleanup](/loopforge-design/model-briefs/stiletto-04-runtime-meaning-and-cleanup.21101254865cd48b.txt)
+- [Runtime meaning and cleanup](/loopforge-design/model-briefs/stiletto-04-runtime-meaning-and-cleanup.50ca8e41815edce4.txt)
 ## CATHEXIS
 
 Body v2 accepted on 14 October 2026. The owner closed stage 2 after the layered Grace preview: no further face models are required. Input art derives from original character and room art; earlier expression studies are archive references. Motion, moving fit and grime direction still need review.

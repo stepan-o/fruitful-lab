@@ -359,10 +359,10 @@
       "subtitle": "Twin blades \u00b7 interchangeable forearm modules",
       "revision": "Rebuild brief v2 \u00b7 corrected arm derivatives v4",
       "status": "Prototype acting accepted",
-      "summary": "Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the welder is a generated prop awaiting its mounted review.",
+      "summary": "Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the player also fits twin or mixed welders with flame flow and a red visor.",
       "provenance": "Original body, blade, welder and motion briefs recovered. Rebuild notes preserve the later acting meanings and offline corrections; a fresh Meshy export does not include those corrections.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/stiletto",
-      "viewerLabel": "Inspect body + both blades",
+      "viewerLabel": "Inspect blades, welders and visor",
       "record": "/loopforge-design/production/STILETTO_MOTION_REVIEW.md",
       "parts": [
         "41,124-triangle body / 24 skin joints",
@@ -692,10 +692,10 @@
       "subtitle": "Theatre diva \u00b7 modular faces + surface conditions",
       "revision": "cathexis-body-v2-accepted-2026-10-14",
       "status": "Body v2 accepted \u00b7 rigging next",
-      "summary": "The v2 body and continuous rear skirt are accepted. The current viewer uses only this final body version. Next: obtain its matching normal map and test a Mixamo-compatible rig with Hot Walk and expressive sway; face fitting remains separate.",
+      "summary": "The v2 body and continuous rear skirt are accepted. The current viewer uses only this final body version. Next: obtain its matching normal map and test a Mixamo-compatible rig with Hot Walk and expressive sway; the viewer now fits Grace and three mechanical expressions with illuminated eyes.",
       "provenance": "Body v2 appearance accepted by the owner on 14 October 2026. Input art derives from original character and room art. Face candidates, grime treatments and motion remain subject to review.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
-      "viewerLabel": "Inspect the accepted body and face candidates",
+      "viewerLabel": "Inspect fitted faces and illuminated eyes",
       "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
       "record": "/loopforge-design/production/CATHEXIS_INTAKE_REVIEW.md",
       "parts": [
@@ -706,7 +706,7 @@
       "remaining": [
         "Matching normal map for the accepted 50k body and Grace masks",
         "Rig v2; first test Hot Walk and expressive sway, then mirror and frustration gestures",
-        "Normalize and fit the face layers to one shared head",
+        "Owner acceptance of the fitted face seat and future half-shell layering",
         "Half-shell, remaining porcelain expressions and grime selection",
         "Costume, hair, heel and hand clearance through motion"
       ],

@@ -2913,6 +2913,12 @@ Game Design → Agents links to `/stepanoskin/loopforge/play/asset-review`. A ty
 
 LIMEN’s new emitter-check idle is authored and baked offline (331 poses, nine rotation tracks, 11 seconds). Browser work is quaternion interpolation plus the existing single energy shader draw. Pure cosmetic cues drive shutdown, two bounded partial-power attempts and restart from the same clock. Four-times-faster braid displacement and independent jade/cyan/blue/violet tonal shifts stay independent of simulation truth. Tone targets use a time/strand hash in the vertex shader, with smooth interpolation and a stable pale-cyan core. Pausing and reduced effects freeze the colour/motion clock; no extra mesh, draw, texture or light is added. Blender has not been used for this pass; use it for fingers, armour weights and precise contacts. Existing accepted Meshy geometry and the forearm socket are preserved. See `production/LIMEN_MESHY_REVIEW.md`.
 
+### Character assembly adapters (14 October 2026)
+
+The asset review players compose immutable bodies with lazy-loaded rigid attachments, versioned fit transforms and small local effects. CATHEXIS keeps one body and one selected face loaded; STILETTO shares one welder geometry/material between two sockets. No assembly reimports a body per attachment, and no viewer-specific clearance flag is promoted into a simulation capability. Warm CATHEXIS eyes, STILETTO’s red visor and blue-white welder flames are presentation cues only.
+
+Static face/light inspection is demand rendered. Flame flow uses the room’s bounded idle cadence, freezes for reduced motion, and stops offscreen or while hidden. No fullscreen bloom, unbounded particle emitter or shadow-casting effect light is used. Socket and face fits remain review candidates until accepted; contact acting and crowd costs require their own measurements.
+
 
 # Lobby: the wage-claim hall
 

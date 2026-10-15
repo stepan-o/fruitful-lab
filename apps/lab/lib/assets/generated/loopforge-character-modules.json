@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-character-modules",
+  "assets": {
+    "stiletto-welder": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/a448d195885cd5077eb9a1e3fe245ceb7ecaf4495379ea36fd06114b359c7775.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 2095644,
+          "sha256": "a448d195885cd5077eb9a1e3fe245ceb7ecaf4495379ea36fd06114b359c7775"
+        }
+      ]
+    }
+  }
+}

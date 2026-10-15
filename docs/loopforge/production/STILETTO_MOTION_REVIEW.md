@@ -4,7 +4,7 @@
 
 Game Design → Agents → Asset review library → STILETTO. Direct route: `/stepanoskin/loopforge/play/asset-review/stiletto`.
 
-Every production review has the same direct model navigation: All models, LIMEN, Worker 01 and STILETTO. The selected model is identified with `aria-current`; links do not prefetch other players. Leaving a player aborts pending loading and disposes its Babylon scene. Only the selected model downloads. Each character retains its specific controls and review record.
+Every production review has the same direct model navigation: All models, LIMEN, Worker 01, STILETTO, CATHEXIS and Model briefs. The selected model is identified with `aria-current`; links do not prefetch other players. Leaving a player aborts pending loading and disposes its Babylon scene. Only the selected model downloads. Each character retains its specific controls and review record.
 
 STILETTO uses the actual Security/Forge renderer, starts paused on Running at 0.20 seconds, and offers all 18 source clips plus neutral. Five clips can switch between original and corrected arm curves at the same phase/camera angle. Pause, quarter speed, exact time, source-contact markers, blades independently visible, inspection highlighting, textured/clay/wireframe modes, three CCTV angles and evidence download support the review. Pose links retain clip/version/time; appearance and camera are included in the downloadable evidence. Recorded before/after pictures load only when opened. No main-play cast, BDI, saves or outcomes change.
 
@@ -56,7 +56,7 @@ in the current single-character player.
 
 ## Published derivative
 
-One shared body and texture set: 41,124 body triangles, two rigid 4,117-triangle blades, 49,358 rendered character triangles, 24 skin joints. Each blade is 55 cm long and attached to its corresponding forearm, with opposite roll and no mirrored geometry. The body remains handless. The welder module is not included in this mounted-blade review; its mechanical fit and interactions need a separate pass. Visor emission remains open.
+One shared body and texture set: 41,124 body triangles, two rigid 4,117-triangle blades, 49,358 rendered character triangles, 24 skin joints. Each blade is 55 cm long and attached to its corresponding forearm, with opposite roll and no mirrored geometry. The body remains handless. This immutable motion bank contains blades only. The viewer now adds the separately loaded welder modules and visor described below; their appearance does not extend the blade collision audit to welders.
 
 The immutable `loopforge-stiletto-review` pack contains one 11,661,248-byte GLB (11.12 MiB), 18 unchanged source clips and five baked alternatives, audit JSON and responsive evidence pictures. Model SHA-256: `ad84c17431f6eea244b9a15f46296f0da63d7ae9726e2f7d2622f9d522b6f97b`. The reviewed bytes are copied without another geometry/animation optimization pass so the published audit remains tied to the exact tested file. Source FBXs, duplicate bodies and high-resolution masters stay outside deployments. Delivery temporarily uses the owner-authorized app-hosted path while CloudFront is pending; no S3 or access-policy changes.
 
@@ -100,3 +100,19 @@ The corrected acting has owner visual acceptance. Welder mounting, visor glow, w
 ## Delivery verification
 
 Verification on 13 October: the bounded production build and scoped ESLint pass; 18 focused agent/layout tests and the asset-pipeline test pass. Browser checks cover design → library → all three models, existing LIMEN idle and Worker Hot Walk, STILETTO original/corrected comparison, neutral state, attachments, CCTV, sampled-result labels and a downloaded evidence record. Responsive checks at 320, 390, 768 and the desktop viewport show no horizontal overflow. No browser console errors were observed in this review. Before/after pose pictures are published in the immutable pack; interface captures remain in the local review evidence archive. Runtime frame statistics are laboratory observations including the factory room, not crowd or physical-phone certification. The page is a published review candidate, not promotion of these models into the playable simulation.
+
+## Welder modules and red visor — 14 October 2026
+
+The existing motion player now offers twin blades, twin welders, either mixed pair, single blades and bare sockets. The 4,116-triangle low-poly welder is normalized to 36 cm from collar to nozzle along local +Y and attached rigidly to the same forearm parents. One 2.00 MiB immutable GLB is loaded lazily and shared by the two modules; no extra body or animation bank is shipped. The high-resolution 1.1-million-triangle export is not a runtime asset.
+
+Each welder has a blue-white active flame: one 256-triangle shader draw, bounded flow animation and one short-range, non-shadowing bounce light. Flame and flow switches support static clearance inspection. Reduced motion freezes flow, and offscreen/hidden viewers stop rendering. There are no free-air contact sparks: those belong at an actual workpiece contact in a later authored encounter. A welder module does not confer engineering or repair capabilities on the simulation.
+
+STILETTO’s red visor is a small surface-fitted emission overlay attached to the head joint. It follows animation and can be toggled independently of the inspection lamp. No full-screen bloom or per-frame geometry allocation is added.
+
+The existing five arm corrections and source motions remain unchanged. Blade contact counts are hidden for welder/mixed modes; those counts certify only the recorded blade geometry and sampling method. Machine contacts, tool swaps, welder-specific clearance and paired acting are separate review gates. Evidence includes selected modules and light/effect settings.
+
+## Assembly verification — 14 October 2026
+
+The optimized production build, scoped ESLint and asset checks passed. The welder derivative validates with zero glTF errors, 4,116 triangles, finite bounds, a 36 cm length and the pinned file hash. The unchanged body/animation pack is reused.
+
+Local browser review covered twin welders, both mixed combinations, restoration of blades, flame/visor switches, Running and Idle Turn Left. No viewer console errors were observed. The visor follows the animated head using its inverse bind matrix; the local overlay stays aligned during movement. Desktop and a 390 px viewport rendered the assembly and usable controls. Screenshots are retained privately in `character-assemblies/`. This is a single-character appearance check, not a crowd benchmark or a welder-contact certification. Owner acceptance remains open.

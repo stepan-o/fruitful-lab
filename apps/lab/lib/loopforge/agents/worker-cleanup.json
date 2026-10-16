@@ -1,6 +1,6 @@
 {
-  "revision": "worker-contact-acting-v3",
-  "sha256": "991d1511694d862537ae329821bc28416dd90a6ee4f493cee075acd6e7409541",
+  "revision": "worker-source-arm-rebuild-v4",
+  "sha256": "f8cce2ffa260d08e49de114d29d56f37cd0d7a5b137f0286723412b540c78dbc",
   "sampleRate": 120,
   "method": "Exported skinned mesh checked at 120 Hz across legs, opposite forearms, hands/head, forearms/torso and hands/legs. Interior triangle crossings; Electrocuted Fall also checks both complete hands against the fixed Y=0 floor. Not swept-volume, coplanar, prop-contact or transition certification.",
   "clips": [
@@ -369,7 +369,7 @@
       "samples": 1381,
       "sourceContactFrames": 705,
       "correctedContactFrames": 0,
-      "note": "Curled fingertips scratch the scalp; the elbow and wrist are authored for head contact. The other hand rests loosely beside the thigh.",
+      "note": "Right arm rebuilt from the untouched source. Original elbow rotations and middle puzzled gesture retained; wrist flexion and curled fingers shape the two scratch beats. Shoulder-only clearance preserves the elbow.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 616,
@@ -489,7 +489,7 @@
       "samples": 761,
       "sourceContactFrames": 71,
       "correctedContactFrames": 0,
-      "note": "Palms settle above the fixed floor with supported wrists. One-shot collapse keeps source travel; align the floor when staging it in a scene.",
+      "note": "Left arm rebuilt from source elbow/wrist curves; smooth shoulder lift clears the fixed floor without twisting the palm. Right-hand correction and source fall travel retained.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 52,
@@ -545,7 +545,7 @@
       "remainingTimes": [],
       "floor": {
         "planeY": 0,
-        "leftHandMinimumMetres": 0.001977719462469829,
+        "leftHandMinimumMetres": 0.003908539887383045,
         "rightHandMinimumMetres": 0.0006470176942876549,
         "penetratingFrames": 0,
         "toleranceMetres": 0.001
@@ -1449,7 +1449,8 @@
     "contactBeats": {
       "Confused_Scratch": [
         1.6,
-        3.6
+        3.6,
+        8.6
       ],
       "injured_walk": [
         3.0
@@ -1469,5 +1470,19 @@
     },
     "fingerCurlDegrees": "34\u201336 rest; 7 clap contact; 18 injured brace; 40 carry/run; 46 crossed-arm hold; 9 settled floor contact. One rigid hinge per digit; per-finger multipliers retained.",
     "reviewStatus": "Candidate for owner visual review; not blanket gameplay approval."
+  },
+  "sourceArmRebuild": {
+    "unchangedClips": 39,
+    "originalSamplersPreserved": {
+      "Confused_Scratch": [
+        "RightForeArm.rotation"
+      ],
+      "Electrocuted_Fall": [
+        "LeftForeArm.rotation",
+        "LeftHand.rotation"
+      ]
+    },
+    "method": "Restore the rejected arm chain from untouched source motion, then rotate the complete chain from its shoulder for clearance. Scratch adds palm-axis wrist flexion only at the two original scratch beats. No elbow-pole solve or floor-palm reorientation.",
+    "reviewStatus": "Candidate for owner visual review. Collision counts are not an artistic approval."
   }
 }

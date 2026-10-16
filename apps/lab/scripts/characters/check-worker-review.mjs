@@ -74,3 +74,15 @@ assert.equal(audit.sha256,repairedFile.sha256,'Clearance audit does not belong t
 assert.ok(audit.clips.every(c=>c.samples>0&&c.correctedContactFrames===0),'Unresolved exported-mesh contacts');
 const fall=audit.clips.find(c=>c.id==='Electrocuted_Fall');assert.equal(fall.floor?.planeY,0);assert.equal(fall.floor?.penetratingFrames,0);assert.ok(fall.floor.leftHandMinimumMetres>=-.001&&fall.floor.rightHandMinimumMetres>=-.001,'Hands penetrate the fixed floor');
 console.log('Worker cleanup: exact source preservation, 19 corrected clips, 10 weighted finger hinges, 3 hand studies, 120 Hz clearance report pinned to this GLB.');
+
+// These joints were rejected visually despite passing the collision-only gate.
+// Preserve their actual source samplers: a new elbow pole or wrist twist must fail.
+for(const [name,joints] of [['Confused_Scratch',['RightForeArm']],['Electrocuted_Fall',['LeftForeArm','LeftHand']]]){
+ const source=fixed.listAnimations().find(a=>a.getName()===name),corrected=fixed.listAnimations().find(a=>a.getName()===name+'_Corrected');
+ for(const joint of joints){
+  const channel=a=>a.listChannels().find(c=>c.getTargetNode().getName()===joint&&c.getTargetPath()==='rotation').getSampler();
+  assert.deepEqual(channel(corrected).getInput().getArray(),channel(source).getInput().getArray(),name+' '+joint+' timing changed');
+  assert.deepEqual(channel(corrected).getOutput().getArray(),channel(source).getOutput().getArray(),name+' '+joint+' source hinge changed');
+ }
+}
+console.log('Source-joint guard: Scratch elbow and Fall left elbow/wrist curves are unchanged.');

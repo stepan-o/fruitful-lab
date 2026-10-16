@@ -4,17 +4,17 @@
 
 Game design → Agents → Production asset player → Worker 01. Direct route: `/stepanoskin/loopforge/play/asset-review/worker`. Worker is the first character tab, before the supervisors.
 
-This revision implements the previously committed correction and hand plan. The first cleanup repaired limb clearance; this follow-up authors the hand contacts and posture requested during visual review. The new bank contains nineteen corrected derivatives beside nineteen untouched source motions, plus Relax, Grip and Release hand studies. The default view is corrected Idle, paused. Original/Corrected switches preserve the selected time and camera for comparison. Source-contact markers retain their original meaning.
+This revision implements the previously committed correction and hand plan. The cleanup repairs limb clearance, hand contacts and posture. The latest revision rebuilds the rejected Scratch right arm and Fall left arm from the untouched source; the other 39 tracks remain unchanged. The new bank contains nineteen corrected derivatives beside nineteen untouched source motions, plus Relax, Grip and Release hand studies. The default view is corrected Idle, paused. Original/Corrected switches preserve the selected time and camera for comparison. Source-contact markers retain their original meaning.
 
 The accepted 25,893-triangle body is unchanged. The source skin has 24 joints; the corrected skin has 34, adding one rigid hinge per visible finger. The existing separated fingers support this movement without replacing the hands or regenerating the character. The mesh does not have suitable intermediate knuckle loops, so this is ten articulated digit plates, not a full human finger rig.
 
 ## What changed
 
 - Leg clearance is corrected with a smooth whole-chain swing from the hip. Knee-local source curves are preserved, avoiding a new independent knee wobble. Feet retain source orientation; the source lowest-sole height is restored without flattening jumps, the limp or collapse. Foot centerline crossing is not treated as a collision by itself.
-- Confused Scratch brings curled fingertips to the scalp with a bent elbow and aligned wrist. Injured Walk braces the right thigh with the right palm throughout the limp.
+- Confused Scratch preserves the source right-elbow curve exactly. Wrist flexion and curled fingers shape the two original scratch beats; the middle puzzled gesture is restored. Clearance rotates the whole arm from the shoulder without changing elbow articulation. Injured Walk braces the right thigh with the right palm throughout the limp.
 - Agree Gesture turns the palms toward each other for two claps. Angry Stomp folds the arms at separate heights and depths; the front elbow lowers before uncrossing. Contacts follow the moving head, thigh or chest.
 - Standing hands use a stronger relaxed curl with inward palm orientation and twist distributed between forearm and wrist. Gesture-specific curls open the clap and support the injured leg.
-- Electrocuted Fall places the hands above the fixed Y=0 floor. A dedicated floor audit checks all hand vertices throughout the fall; the body-region crossing test alone could not catch this problem.
+- Electrocuted Fall restores the source left-elbow and left-wrist curves exactly. Smooth shoulder lift keeps the hand above the floor without the rejected forced palm twist. The right-hand correction is unchanged. Both hands stay above the fixed Y=0 floor. A dedicated floor audit checks all hand vertices throughout the fall; the body-region crossing test alone could not catch this problem.
 - The viewer adds named contact-pose shortcuts. Original source-contact markers remain separate and unchanged.
 - Finger weights are rigid on each digit. All corrected clips explicitly set finger poses, preventing a previous grip from leaking into another clip. Three separate hand studies demonstrate the range.
 - The review scene anchors once at the first frame. A 10 cm floor grid exposes actual travel instead of moving the scene with every hip sway. Following travel remains an optional inspection aid.
@@ -23,11 +23,11 @@ Corrections are baked offline with the checked-in Python/NumPy/SciPy tooling and
 
 ## Export verification
 
-The delivered GLB is 11,894,404 bytes (11.34 MiB), with 41 tracks. SHA-256: `991d1511694d862537ae329821bc28416dd90a6ee4f493cee075acd6e7409541`.
+The delivered GLB is 11,833,140 bytes (11.28 MiB), with 41 tracks. SHA-256: `f8cce2ffa260d08e49de114d29d56f37cd0d7a5b137f0286723412b540c78dbc`.
 
 The validator checks the original geometry, skin, bind matrices and every source animation sampler against the pinned original bank. They remain unchanged. It also validates the corrected rig, all nineteen derivatives, explicit finger tracks, finite data, normalized weights and the hash-pinned clearance report. glTF validation reports zero errors; the inherited non-root skinned-mesh warning remains.
 
-The final exported mesh was sampled at 120 Hz across every full clip: **13,551 poses, 5,138 source contact frames, zero detected corrected contact frames** in the tested regions. These are interior triangle crossings between legs, opposing forearms, hands/head, forearms/torso and hands/legs. This is not swept-volume, coplanar/contained-volume, machine-contact or transition certification. Intentional contact still needs artistic review. The fall has zero sampled hand/floor penetrations: minimum left/right hand heights are 1.98/0.65 mm above Y=0. These heights apply to this asset on a flat floor; scene placement must preserve that plane.
+The final exported mesh was sampled at 120 Hz across every full clip: **13,551 poses, 5,138 source contact frames, zero detected corrected contact frames** in the tested regions. These are interior triangle crossings between legs, opposing forearms, hands/head, forearms/torso and hands/legs. This is not swept-volume, coplanar/contained-volume, machine-contact or transition certification. Intentional contact still needs artistic review. The fall has zero sampled hand/floor penetrations: minimum left/right hand heights are 3.91/0.65 mm above Y=0. These heights apply to this asset on a flat floor; scene placement must preserve that plane.
 
 | Motion | Sampled poses | Source contact frames | Corrected contact frames |
 | --- | ---: | ---: | ---: |
@@ -68,12 +68,13 @@ python scripts/characters/bake-worker-cleanup.py /tmp/worker-cleanup --reuse --c
 # Author the contact acting from those inspected intermediate poses.
 python scripts/characters/bake-worker-cleanup.py /tmp/worker-cleanup --reuse
 python scripts/characters/polish-worker-acting.py /tmp/worker-cleanup/worker-corrected.glb /tmp/worker-cleanup/worker-fitted.glb --rate 120
-cp /tmp/worker-cleanup/worker-fitted.glb /tmp/worker-cleanup/worker-corrected.glb
+# Restore source articulation for the two visually rejected arm performances.
+python scripts/characters/rebuild-worker-source-arms.py /tmp/worker-cleanup/worker-fitted.glb /tmp/worker-cleanup/worker-corrected.glb
 node scripts/characters/import-worker-cleanup.mjs /tmp/worker-cleanup
 python scripts/characters/check-worker-clearance.py /tmp/worker-cleanup/worker-runtime.glb /tmp/worker-cleanup/audit.json
 ```
 
-Do not run the earlier broad clearance refinement after contact acting: it can pull a purposeful hand contact away from its target. Inspect and fit residual clips with `polish-worker-acting.py --clips <names> --rate 120`; repeat the exact-export audit after any change. The fitter checkpoints each clip. `check-worker-clearance.py --resume` only resumes an identical asset hash. `--reuse-acting` preserves previously inspected acting arrays when rebuilding other clips. This is an authoring workflow with visual gates, not an automatic guarantee of acceptable acting.
+Do not run the earlier broad clearance refinement after contact acting: it can pull a purposeful hand contact away from its target. Inspect and fit residual clips with `polish-worker-acting.py --clips <names> --rate 120`; repeat the exact-export audit after any change. The fitter checkpoints each clip. `check-worker-clearance.py --resume` only resumes an identical asset hash. `--reuse-acting` preserves previously inspected acting arrays when rebuilding other clips. Run the source-arm rebuild last; do not apply the general elbow-pole fitter after it. The validator compares Scratch’s right-elbow and Fall’s left-elbow/wrist samplers directly with the source. A numeric collision pass alone missed the previously broken elbow and awkward hand: inspect joint articulation and the full performance independently. This is an authoring workflow with visual gates, not an automatic guarantee of acceptable acting.
 
 Run `python scripts/characters/check-worker-fingers.py /tmp/worker-cleanup/worker-runtime.glb` for the three hand studies.
 
@@ -92,3 +93,5 @@ Delivery uses the existing immutable asset pack and temporary app hosting while 
 The bounded production build and character validators pass. Source preservation and full-cycle exported-mesh checks are complete. Browser review and focused test results are recorded with this revision in the PR. Physical-device and crowd measurements remain open; no earlier supervisor benchmark is claimed as a worker result.
 
 Earlier clearance-pass browser check (16 October; before the contact-acting follow-up): the production build loaded the corrected bank, source/corrected Walk 2 comparison preserved 0.97 s, mouse orbit changed the camera, Run Fast 10 / Injured Walk / Scratch / Agreement and Grip were inspected, quarter-speed playback and Forge CAM 2 worked. A 390 × 844 viewport had no horizontal overflow; no captured browser warnings/errors. Scoped ESLint and the four review-camera tests passed. These checks do not replace owner motion approval or physical-device testing.
+
+Source-arm rebuild verification (16 October): only the corrected Scratch right-arm/finger tracks and corrected Fall left-arm tracks changed. All 19 source clips, the other 17 corrected clips and three hand studies retain identical sampler arrays. The original Scratch elbow and Fall left elbow/wrist rotation samplers are reused verbatim. Front/side scratch poses, the restored middle gesture and the fall hand close-up were inspected in Babylon.

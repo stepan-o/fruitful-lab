@@ -17,8 +17,8 @@ The FBX bind orientations and spine labels differ from the earlier GLB. Import r
 
 The separate, on-demand audition bank now contains source and corrected versions of both clips. Geometry and textures are shared; the corrected skin adds six baked skirt controls. The approved Hot Walk/Happy Sway bank remains byte-identical. Both banks use the same mask attachment, eyes, camera controls, floor guide, playback speed, timeline and saved review evidence. Corrected auditions are labelled candidates; their presence in the player does not imply owner acceptance.
 
-- Runtime: `/media/files/725004d26b745736c69da01677c4bf157a97e19f56bf6c9f1c2618c85c4e7aa9.glb`
-- SHA-256: `725004d26b745736c69da01677c4bf157a97e19f56bf6c9f1c2618c85c4e7aa9`
+- Runtime: `/media/files/be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f.glb`
+- SHA-256: `be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f`
 - Size: 13,875,328 bytes, below the 14.5 MB audition-bank budget. Loaded only when selected. Eight influence skinning is for this isolated review; it does not certify crowd performance.
 - Validator: zero errors; two expected non-root skinned-mesh warnings.
 - Source bank `b9271a9e10a7f2109782ff33aa0083bcf333ac91be82e344a7df0479a068e891` remains the pinned authoring input.
@@ -26,9 +26,13 @@ The separate, on-demand audition bank now contains source and corrected versions
 
 ## What changed
 
-Mirror Viewing previously held the hands too far from the body. A complete arm-chain correction brings the palms close to the waist, with fingers directed down beside the hip ornaments. It blends into that contact from 0.45–1.10 s and releases from 6.10–6.75 s, retaining the opening and closing flourish. Free wrist flexion is reduced; the waist pose keeps the wrist bend needed for natural palm placement. The held palm target follows the pelvis, so body turns do not leave the hands floating behind.
+Both corrected clips restart from the pinned, untouched exports. The earlier fixed foot lanes and high palm targets are discarded.
 
-Both clips retain their original tempo and upper-body acting. Red Carpet’s feet follow narrower, separate paths with knee clearance instead of crossing; Mirror’s turning steps receive their own clearance adjustment. The approved waist-hung fabric weighting supplies a smooth six-level drape rather than bending the skirt with each thigh. Small vertical root corrections reduce floor penetration and hovering. The last 0.3 s closes each measured endpoint mismatch for repeat inspection; gameplay transitions still need separate review.
+Mirror Viewing uses the approved Hot Walk hand orientation as the reference for a lower waist contact, with the fingers beside the hip ornaments. The palm centre is 65 mm lower and 20 mm closer to the body in depth than the rejected correction. Lower, rearward elbow guides avoid the elevated-wing posture. The complete arm chain blends in from 0.45–1.10 s and releases from 6.10–6.75 s, retaining the original opening and closing gestures. The hands follow the pelvis through the turn; this is authored motion, not runtime IK.
+
+Red Carpet uses the same measured STILETTO Quick Walk lateral trajectories and knee bend planes as the approved Hot Walk correction. Each original forward reach is phase-matched to the corresponding reference stride, preserving Red Carpet’s varying stride timing, hip sway, upper-body acting, forward/vertical foot path and foot roll. Only the local knee-armour clearance needed at passing poses is added. The signed ankle spacing varies from 27.6 to 142.0 mm (approved Hot Walk: 22.6–141.6 mm); minimum knee-centre distance is 132.7 mm. These describe the trajectories, not a claim of owner approval.
+
+Mirror’s separate turning-step clearance remains. The waist-hung fabric weighting supplies a smooth six-level drape rather than bending the skirt with each thigh. Red Carpet’s trailing calf receives an additional fabric-clearance allowance, without widening its foot path. Small vertical root corrections reduce floor penetration and hovering. The last 0.3 s closes each measured endpoint mismatch for repeat inspection; gameplay transitions still need separate review.
 
 ## Contact and costume checks
 
@@ -39,9 +43,9 @@ Both clips retain their original tempo and upper-body acting. Red Carpet’s fee
 | Mirror Viewing / source | 881 | 205 | 630 | −1.9 to 48.5 mm | 7.2 mm |
 | Mirror Viewing / corrected | 881 | 0 | 0 | −3.0 to 7.5 mm | 0 mm |
 | Red Carpet Walk / source | 717 | 717 | 307 | 7.3 to 73.3 mm | 16.8 mm |
-| Red Carpet Walk / corrected | 717 | 0 | 0 | −0.6 to 5.7 mm | 0 mm |
+| Red Carpet Walk / corrected | 717 | 0 | 0 | −0.7 to 5.8 mm | 0 mm |
 
-The separate Mirror hand check samples 881 poses, finding no hand/central-torso triangle crossings. During the full waist contact, maximum palm-target error is 0.051 mm. Maximum adjacent arm key rotation is 6.73°. The test covers hand-weighted surfaces against the central torso/waist, not every arm/head/cloth contact. Palm-target stability alone is not proof of finger fit. Front, profile and rear three-quarter visual checks remain part of acceptance. Floor height is not a planted-foot sliding measurement; neither audition is certified for locomotion speed matching.
+The separate Mirror hand check samples 881 poses, finding no hand/central-torso triangle crossings. During the full waist contact, maximum palm-target error is 0.070 mm. Maximum adjacent arm key rotation is 4.96°. The test covers hand-weighted surfaces against the central torso/waist, not every arm/head/cloth contact. Palm-target stability alone is not proof of finger fit. Front, profile and rear three-quarter visual checks remain part of acceptance. Floor height is not a planted-foot sliding measurement; neither audition is certified for locomotion speed matching.
 
 Full and half Grace retain the approved fit. Attachment checks cover 19,188 poses across both clips, both versions, full/left/right coverage and 3k/8k masks at 120 Hz. Maximum attachment-coordinate error is 0.0021 mm; fixed subject origin, unchanged body geometry and disposal pass. The approved bank’s separate regression covers 22,908 poses. These establish fit consistency, not motion approval.
 

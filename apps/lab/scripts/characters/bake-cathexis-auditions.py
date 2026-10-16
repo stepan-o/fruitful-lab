@@ -39,7 +39,7 @@ def solve(tr,t,k,rot,chain,goal,pole,footrot=None):
  lr=swing(w[end,:3,3]-w[lower,:3,3],goal-w[lower,:3,3])*R.from_matrix(w[lower,:3,:3]/.01);rot[lower][k]=(ur.inv()*lr).as_quat()
  if footrot is not None:rot[end][k]=(lr.inv()*footrot).as_quat()
 
-def legs_pass(tr,ts,mirror):
+def mirror_legs_pass(tr,ts,mirror=True):
  rot={i:z for i,p,_,z in tr if p=='rotation'};worlds=[d['world_at'](tr,t)for t in ts];goals=[];poles=[]
  for tloc,w in zip(ts,worlds):
   turn_clearance=max(smooth((tloc-2.8)/.4)*smooth((4.0-tloc)/.4),smooth((tloc-5.35)/.35)*smooth((6.5-tloc)/.4))
@@ -54,6 +54,13 @@ def legs_pass(tr,ts,mirror):
   for i,chain in enumerate([(3,2,1),(7,6,5)]):solve(tr,t,k,rot,chain,goals[k,i],poles[k,i],R.from_matrix(worlds[k][chain[-1],:3,:3]/.01))
 
 def hands_pass(tr,ts):
+ # Use the approved Hot Walk waist-contact pose as an actual geometric
+ # reference. The neutral joint matrices are identical between both banks.
+ reference=next(c for c in a['g']['animations'] if c['name']=='Hot_Walk_Corrected')
+ rw=a['world_at'](a['tracks'](reference),2.5);rh=rw[22]@np.linalg.inv(bind[22]);local=np.linalg.inv(rh)@rw[8]
+ assert np.allclose(a['world_at']([],0)[:23],bind[:23],atol=1e-8), 'Contact reference bind changed.'
+ reflection=np.diag([-1,1,1])
+
  rot={i:z for i,p,_,z in tr if p=='rotation'}
  for k,t in enumerate(ts):
   w=d['world_at'](tr,t)
@@ -63,6 +70,8 @@ def hands_pass(tr,ts):
    hr=R.from_matrix(w[hand,:3,:3]/.01);axis=unit(w[hand,:3,3]-w[fore,:3,3]);fingers=hr.apply([0,1,0]);angle=np.arccos(np.clip(np.dot(axis,fingers),-1,1));limit=np.radians(22)
    amount=max(0,1-limit/max(angle,1e-8));wanted=mix(hr,swing(fingers,axis)*hr,amount)
    rot[hand][k]=(R.from_matrix(w[fore,:3,:3]/.01).inv()*wanted).as_quat()
+  # Fit the approved palm orientation lower against the waist ornaments;
+  # lower/back elbow poles avoid the previous raised-wing silhouette.
   # The self-admiring pose and turn rest the palms on the waist. Keep the
   # opening/release flourish; smoothly enter/leave a complete arm-chain solve.
   amount=smooth((t-.45)/.65)*smooth((6.75-t)/.65)
@@ -70,10 +79,11 @@ def hands_pass(tr,ts):
    for chain,side in [((10,9,8),1),((14,13,12),-1)]:
     w=d['world_at'](tr,t);hip=w[22]@np.linalg.inv(bind[22]);upper,fore,hand=chain
     saved={j:R.from_quat(rot[j][k].copy())for j in chain}
-    hr=R.from_matrix(w[hand,:3,:3]/.01);direction=hip[:3,:3]@[-side*.12,-1,.06]
-    desired=swing(hr.apply([0,1,0]),direction)*hr
-    palm=(hip@np.array([side*.18,1.11,.21,1]))[:3]
-    pole=(hip@np.array([side*.42,1.19,.07,1]))[:3]
+    hand_rotation=local[:3,:3]/.01
+    if side<0:hand_rotation=reflection@hand_rotation@reflection
+    desired=R.from_matrix(hip[:3,:3]@hand_rotation)
+    palm=(hip@np.array([side*.18,1.045,.19,1]))[:3]
+    pole=(hip@np.array([side*.30,1.17,-.03,1]))[:3]
     solve(tr,t,k,rot,chain,palm-desired.apply([0,.08,0]),pole,desired)
     for j in chain:rot[j][k]=mix(saved[j],R.from_quat(rot[j][k]),amount).as_quat()
 
@@ -85,10 +95,15 @@ for clip in list(g['animations']):
  for node,path,_,z in tr:
   if path=='rotation':delta=R.from_quat(z[0])*R.from_quat(z[-1]).inv();z[:]=(R.from_rotvec(ease[:,None]*delta.as_rotvec())*R.from_quat(z)).as_quat()
   else:z+=ease[:,None]*(z[0]-z[-1])
- legs_pass(tr,ts,clip['name'].startswith('Mirror'))
+ if clip['name'].startswith('Mirror'):mirror_legs_pass(tr,ts)
+ else:
+  # Same phase-matched Quick Walk paths as the approved Hot Walk. Preserve
+  # the original forward/vertical reach, foot roll, hips and variable timing.
+  from cathexis_hot_walk import rebuild_hot_walk
+  rebuild_hot_walk(d,tr,ts,copy.deepcopy(tr))
  if clip['name'].startswith('Mirror'):hands_pass(tr,ts)
  worlds=[d['world_at'](tr,t)for t in ts];ground=np.array([.002-points(w)[:,1].min()for w in worlds]);ground=gaussian_filter1d(ground,1.5,mode='wrap');ground[-1]=ground[0]
- drapes,record=drape_matrices(d,tr,ts,levels,cloth,legs,points,clearance_floor=.10)
+ drapes,record=drape_matrices(d,tr,ts,levels,cloth,legs,points,clearance_floor=.10,clearance_padding=.025 if clip['name'].startswith('Mirror') else .100,max_angle=.72)
  for node,path,_,z in tr:
   if node==22 and path=='translation':z[:,1]+=ground*100
  out={'name':clip['name'].replace('_Source','_Corrected'),'channels':[],'samplers':[]};ta=add(ts,'SCALAR')

@@ -14,7 +14,7 @@ with tempfile.TemporaryDirectory() as td:
   if 1.1<=t<=6.1:
    hip=w[hipnode]@np.linalg.inv(bind[hipnode])
    for j,side in zip(hands,[1,-1]):
-    palm=w[j,:3,3]+R.from_matrix(w[j,:3,:3]/.01).apply([0,.08,0]);target=(hip@[side*.18,1.11,.21,1])[:3];gap.append(float(np.linalg.norm(palm-target)))
+    palm=w[j,:3,3]+R.from_matrix(w[j,:3,:3]/.01).apply([0,.08,0]);target=(hip@[side*.18,1.045,.19,1])[:3];gap.append(float(np.linalg.norm(palm-target)))
  for node,path,ks,z in tr:
   if path=='rotation' and any(x in g['nodes'][node]['name'] for x in ['Arm','Hand']):
    q=R.from_quat(z);angles=np.degrees((q[1:]*q[:-1].inv()).magnitude());steps.append({'joint':g['nodes'][node]['name'],'maxKeyStepDegrees':float(angles.max())})

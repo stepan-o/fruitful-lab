@@ -87,7 +87,7 @@ def refine_hands(d, tracks, times):
                 values[k] *= -1
 
 
-def drape_matrices(d, tracks, times, levels, cloth, legs, skin_vertices, clearance_floor=.14):
+def drape_matrices(d, tracks, times, levels, cloth, legs, skin_vertices, clearance_floor=.14, clearance_padding=.025, max_angle=.52):
     """One smooth waist-hung arc replaces six unrelated horizontal offsets.
 
     The tangent starts and ends vertical, with a broad curved middle that
@@ -110,8 +110,8 @@ def drape_matrices(d, tracks, times, levels, cloth, legs, skin_vertices, clearan
             lower_leg = local[(abs(local[:, 1] - y) < .12) & (abs(local[:, 0]) < .24)]
             fabric = vertices[cloth & (abs(vertices[:, 1] - y) < .08) & (abs(vertices[:, 0]) < .17) & (vertices[:, 2] < -.025)]
             if len(lower_leg) and len(fabric) and y < .65:
-                required.append(max(0, np.quantile(fabric[:, 2], .85) - lower_leg[:, 2].min() + .025) / max(depth, .1))
-        angles.append(min(.52, max(clearance_floor, max(required, default=0) * .95)))
+                required.append(max(0, np.quantile(fabric[:, 2], .85) - lower_leg[:, 2].min() + clearance_padding) / max(depth, .1))
+        angles.append(min(max_angle, max(clearance_floor, max(required, default=0) * .95)))
     angles = gaussian_filter1d(maximum_filter1d(angles[:-1], size=17, mode='wrap'), sigma=5, mode='wrap')
     angles = np.r_[angles, angles[0]]
     result = []

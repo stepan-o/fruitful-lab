@@ -57,7 +57,7 @@
     }
   ],
   "surfaceAudit": {
-    "runtimeSHA256": "725004d26b745736c69da01677c4bf157a97e19f56bf6c9f1c2618c85c4e7aa9",
+    "runtimeSHA256": "be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f",
     "method": "120 Hz non-coplanar edge/triangle tests below 0.85m: skirt/legs and left/right legs. Excludes tangency, containment, upper body, hand/face, cloth self-contact, blends and dynamics. Samples both source and corrected candidates; no owner approval implied.",
     "clips": [
       {
@@ -112,8 +112,8 @@
         "legLegFrames": 0,
         "dressLegWorst": null,
         "legLegWorst": null,
-        "lowestSoleM": -0.000631105877628239,
-        "highestSupportingSoleM": 0.0057322244055575695,
+        "lowestSoleM": -0.0006680570567852632,
+        "highestSupportingSoleM": 0.00577047092549304,
         "endpointMaxM": 0.0
       }
     ]
@@ -125,51 +125,65 @@
     "approvedBankRegressionPoseChecks": 22908
   },
   "handAudit": {
-    "runtimeSHA256": "725004d26b745736c69da01677c4bf157a97e19f56bf6c9f1c2618c85c4e7aa9",
+    "runtimeSHA256": "be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f",
     "clip": "Mirror_Viewing_Corrected",
     "samples": 881,
     "handTorsoCrossingFrames": 0,
     "worst": null,
-    "maxPalmTargetErrorM": 5.056195363374486e-05,
+    "maxPalmTargetErrorM": 6.947986526416792e-05,
     "armSteps": [
       {
         "joint": "mixamorig:LeftArm",
-        "maxKeyStepDegrees": 3.7274615995358684
+        "maxKeyStepDegrees": 4.51051414933066
       },
       {
         "joint": "mixamorig:LeftForeArm",
-        "maxKeyStepDegrees": 5.399719488690726
+        "maxKeyStepDegrees": 4.738653293434157
       },
       {
         "joint": "mixamorig:LeftHand",
-        "maxKeyStepDegrees": 6.726080873142391
+        "maxKeyStepDegrees": 2.8821369056023323
       },
       {
         "joint": "mixamorig:RightArm",
-        "maxKeyStepDegrees": 2.966706979358431
+        "maxKeyStepDegrees": 2.0898957989157427
       },
       {
         "joint": "mixamorig:RightForeArm",
-        "maxKeyStepDegrees": 5.903091925594538
+        "maxKeyStepDegrees": 4.9553512793812855
       },
       {
         "joint": "mixamorig:RightHand",
-        "maxKeyStepDegrees": 6.063864849653841
+        "maxKeyStepDegrees": 2.978730268898383
       }
     ],
     "method": "120 Hz hand mesh vs central torso/waist (rest x \u00b10.26m, y 0.85\u20131.52m) non-coplanar triangle crossings. Palm targets tested during full-contact 1.10\u20136.10s. Excludes tangency, containment, cloth, arm/head, blends and dynamics."
   },
   "cleanup": {
     "status": "corrected candidates; owner acceptance pending",
-    "runtimeSHA256": "725004d26b745736c69da01677c4bf157a97e19f56bf6c9f1c2618c85c4e7aa9",
+    "runtimeSHA256": "be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f",
     "bodyJoints": 23,
     "additionalSkirtJoints": 6,
     "approvedBankUnchanged": true,
     "notes": [
-      "Mirror palms follow the waist; opening/release acting retained.",
-      "Separate foot paths and knee clearance in both auditions.",
-      "Smooth baked skirt drape, supporting-sole height and repeat-seam correction.",
-      "Offline authoring; no runtime IK or cloth solver."
+      "Both corrections restart from the pinned original exports; the previous high palm targets and fixed Red Carpet foot lanes are discarded.",
+      "Mirror uses approved Hot Walk palm orientation with lower waist targets and lower/rearward elbow guides.",
+      "Red Carpet phase-matches the same Quick Walk reference trajectories and knee bend planes as approved Hot Walk; original hips, tempo, forward/vertical reach and foot roll retained.",
+      "Smooth baked skirt drape, supporting-sole height and repeat-seam correction; no runtime IK or cloth solver."
     ]
+  },
+  "trajectoryReview": {
+    "clip": "Red_Carpet_Walk_Corrected",
+    "runtimeSHA256": "be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f",
+    "ankleSignedLateralSpacingM": [
+      0.02758983086719409,
+      0.1419778027943353
+    ],
+    "kneeCentreMinM": 0.13266197900299714,
+    "approvedHotWalkAnkleSignedLateralSpacingM": [
+      0.022585896305492376,
+      0.14155011121530856
+    ],
+    "method": "60 Hz joint positions in character world space; source-key samples. Reference phase matched by original forward-reach events. These measurements supplement visual review, not acting acceptance."
   }
 }

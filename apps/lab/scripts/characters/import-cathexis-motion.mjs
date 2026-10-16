@@ -1,0 +1,10 @@
+import {readFile,writeFile,mkdtemp} from 'node:fs/promises';
+import {tmpdir} from 'node:os';import path from 'node:path';import assert from 'node:assert/strict';
+import {NodeIO} from '@gltf-transform/core';import {ALL_EXTENSIONS} from '@gltf-transform/extensions';import {validateBytes} from 'gltf-validator';import {buildPack,digest} from '../assets.mjs';
+const source=process.argv[2];if(!source)throw Error('Pass the reviewed, material-cleaned CATHEXIS motion GLB.');
+const bytes=await readFile(source),doc=await new NodeIO().registerExtensions(ALL_EXTENSIONS).readBinary(bytes),root=doc.getRoot();
+assert.equal(root.listAnimations().length,4);assert.deepEqual(root.listSkins().map(s=>s.listJoints().length),[23,29]);
+const validation=await validateBytes(bytes,{maxIssues:100});assert.equal(validation.issues.numErrors,0,JSON.stringify(validation.issues));
+const dir=await mkdtemp(path.join(tmpdir(),'cathexis-motion-'));
+await writeFile(path.join(dir,'catalog.json'),JSON.stringify({pack:'loopforge-cathexis-motion',assets:{'cathexis-motion':{kind:'model',source:path.resolve(source),maxBytes:12000000}}}));
+console.log(await buildPack(path.join(dir,'catalog.json')));console.log({sha256:digest(bytes),bytes:bytes.length});

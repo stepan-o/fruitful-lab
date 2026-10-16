@@ -4,7 +4,7 @@
 
 Game Design → Agents → Asset review library. This is the current cast entry point; the rejected-model action fixture appears only in a collapsed historical section and identifies itself as legacy on direct entry. The library is the permanent index of character candidates. Every implemented player links directly to every other implemented player and back to the library. The active subject is marked; selecting another releases the previous scene. No background model preloading. Rivet Witch and Thrum appear as “awaiting model” entries with their review focus, without dead player links or invented readiness.
 
-The common structure is a review workbench, separate from player-facing game UI and simulation authority. LIMEN, Worker 01 and STILETTO retain specialized controls. Shared navigation and six evidence gates are implemented now; one configurable player shell and a normalized animation adapter are the next refactor when the next supervisor is added. Do not duplicate a complete viewer for every new character.
+The common structure is a review workbench, separate from player-facing game UI and simulation authority. LIMEN, Worker 01 and STILETTO retain specialized controls. Shared navigation and six evidence gates are implemented. CATHEXIS now uses a configurable shell with separate static-assembly and baked-motion adapters; earlier specialized players can migrate incrementally. Do not duplicate a complete viewer for every new character.
 
 ## Six shared gates
 
@@ -62,10 +62,20 @@ For every intake: validate downloaded contents and names → assemble and normal
 
 ## Rebuild archive — 14 October 2026
 
-Game Design → Model briefs stores versioned reference inputs, copyable stage prompts, downloadable kits and links back to every available model player. Viewer navigation returns to the active character brief. LIMEN, Worker 01 and STILETTO have inspected results; CATHEXIS has six static inspection assets, a generation brief and face/condition references. Its assembly and motion remain pending. See `model-briefs/README.md`.
+Game Design → Model briefs stores versioned reference inputs, copyable stage prompts, downloadable kits and links back to every available model player. Viewer navigation returns to the active character brief. LIMEN, Worker 01 and STILETTO have inspected results; CATHEXIS has six static inspection assets, a generation brief and face/condition references. Its assembly and first two corrected motion candidates are now available in separate workbench modes. See `model-briefs/README.md`.
 
 ## Static intake workbench
 
 CATHEXIS introduces a configurable static adapter within the same review navigation and six acceptance gates. It owns one canvas and one selected model, lazy-loads the selected SHA-verified GLB, cancels stale downloads and disposes previous geometry, textures, shadow registrations and its inspection lamp. The scene pauses offscreen and when the document is hidden. Model materials, clay and wireframe views share the same geometry. Framing can target the body or its face seat; the default limits of the existing motion viewers remain unchanged.
 
-Grace 3k/8k comparisons preserve camera pose and subject orientation. Isolated faces use normalized display dimensions, explicitly distinguished from mounted scale. No assembly, rig, animation, game outcome or source-master quality is implied. Review evidence includes source filename, runtime hash, selection, camera pose, lighting, viewport and available scene counters. High-resolution FBX masters stay private.
+Grace 3k/8k comparisons preserve camera pose and subject orientation. Isolated faces use normalized display dimensions, explicitly distinguished from mounted scale. Static-part inspection does not establish motion clearance or game outcomes. Review evidence includes source filename, runtime hash, selection, camera pose, lighting, viewport and available scene counters. High-resolution FBX masters stay private.
+
+## Baked motion adapter — 15 October 2026
+
+The same shell switches between CATHEXIS motion cleanup and face fitting, disposing the inactive subject. The motion adapter loads one checksum-verified bank, renders only its selected source/corrected skin, and supports same-pose comparison, neutral reset, play/pause, scrub, speed, looping, camera and material controls. It starts paused and stops when hidden/offscreen. Evidence includes clip, version, time and asset hash. Six baked skirt joints avoid live cloth cost. Full/split Grace fit is owner-approved. A fixed clip origin, optional 10 cm floor grid and unobscured feet separate true motion from preview movement. Supervisor portrait, full-body and CCTV framing use the same performer. Arm/contact changes remain motion candidates. See [motion record](CATHEXIS_MOTION_REVIEW.md).
+
+## One performer across information screens and the factory
+
+Supervisor information screens reuse the versioned body, rig, clip IDs, equipment sockets and appearance controller that world scenes use. Screen-specific cameras, lighting and quality budgets frame that performer; they do not fork its anatomy or acting. Review full motion cycles in portrait and full-body framing before using a flattering close-up as evidence. The current portrait preset is a review view, not an implemented information screen.
+
+Stationary acting preserves hip weight shift over anchored feet. Keep scene placement outside the skeleton; never cancel pelvis translation every frame to centre a preview. Locomotion declares in-place or authored root travel and must match world speed/contact phases. Interaction clips declare targets and contact/release timing; shared scenes still need collision, interruption and blend checks. The engine owns action eligibility and results. Offline corrections avoid a per-agent runtime IK/cloth solver. LOD, animation update cadence, effect/shadow budgets and device/crowd measurements are required before scaling the accepted single figure to many agents.

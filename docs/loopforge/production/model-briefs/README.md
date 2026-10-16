@@ -8,7 +8,7 @@ Canonical prompts and catalog are in docs/loopforge/production/model-briefs/. Th
 
 The browser assembles ZIP STORE archives on demand after verifying every file's SHA-256. Kits contain numbered prompts, 1800-pixel-maximum high-quality JPG inputs, a README, image provenance and actual motion audits where available. JPEGs remain single copies in deployment; ZIPs are not duplicated on disk. Original PNGs and source model binaries remain in the private/local source archive. Generated drawings are modeling guides, not dimensionally consistent CAD views.
 
-Use the current briefs for rebuilds. Worker and STILETTO preserve recovered input art and creation requests with updated delivery instructions. LIMEN is explicitly reconstructed from accepted v2 records: the original prompt and isolated upload images were not recovered. CATHEXIS has a first static intake: body, Grace 3k/8k and three mechanical expressions. Fitting, rigging and acting remain pending; see CATHEXIS_INTAKE_REVIEW.md. A/B/C grime selection is pending; all image options are labelled.
+Use the current briefs for rebuilds. Worker and STILETTO preserve recovered input art and creation requests with updated delivery instructions. LIMEN is explicitly reconstructed from accepted v2 records: the original prompt and isolated upload images were not recovered. CATHEXIS uses the accepted v2 body with its original face, plus full/half Grace 3k/8k. The owner closed stage 2; remaining face generation is abandoned. Earlier mechanical expressions are archive studies. Body rigging and acting are next; see CATHEXIS_INTAKE_REVIEW.md. A/B/C grime selection is pending; all image options are labelled.
 
 ## Change discipline
 

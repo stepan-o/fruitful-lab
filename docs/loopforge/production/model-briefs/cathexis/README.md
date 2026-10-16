@@ -2,11 +2,11 @@
 
 Accepted body v2 (14 October): the owner approved the completed rear skirt and current appearance. The viewer now contains only this final body version. Start with **03-rig-tests.txt**: matching delivery normal map, neutral rig, Hot Walk and expressive sway. The completed skirt brief and matching back/profile art remain rebuild references, not a request for another regeneration.
 
-Generation brief v4 · accepted body v2 + staged rigging · 14 October 2026
+Generation brief v6 · face scope closed + intact-head rigging · 14 October 2026
 
-Body v2 accepted · face fitting and rigging pending. A delicate porcelain-and-brass performer: chilling, vibing and flirting until coarse work and grime test her composure. Hot Walk is her only travel gait. She never runs and has no alert state.
+Body v2 accepted · remaining stage 2 abandoned · rigging next. A delicate porcelain-and-brass performer: chilling, vibing and flirting until coarse work and grime test her composure. Hot Walk is her only travel gait. She never runs and has no alert state.
 
-Prepared from original character and room art. The v2 mesh is accepted; face candidates and dirt options A/B/C remain unaccepted.
+Prepared from original character and room art. The v2 mesh is accepted and the owner has settled the face scope: existing Grace plus the original body face are enough. Grace budget choice, moving fit and dirt options A/B/C remain to validate.
 
 ## Read first
 
@@ -14,11 +14,15 @@ For the accepted body, start with the first displayed rigging stage (03). Do not
 
 Inspect the accepted body and face candidates: https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/cathexis
 
-The eight downloaded FBX sources are unrigged. Grace has 3k/8k delivery candidates; mechanical faces currently use local 12k inspection derivatives. Faces require scale and fit adjustment. Worker Hot Walk remains only a motion stand-in.
+The eight downloaded FBX sources are unrigged. Grace has 3k/8k delivery candidates; mechanical faces currently use local 12k inspection derivatives. The viewer fits full or half Grace over the intact head. Dedicated mechanical faces are earlier isolated studies, outside the current generation scope. Worker Hot Walk remains only a motion stand-in.
+
+## Stage 2 closed
+
+Do not resume the remaining expression masks or mechanical inserts. Stages 3–4 use the accepted body with its original face and one shared animation bank; Grace attaches rigidly in our app. Stage 5 keeps optional removal/reseating of the same Grace, with expression-mask exchange abandoned. Stage 6 keeps grime independent of coverage and mood. No facial rig, new face models or mask-handling animation blocks the first motion tests. Historical image-generation JSON files preserve provenance only; they are not current Meshy jobs.
 
 ## Open work
 
-- Fit the face layers and validate moving costume clearance
+- Rig the intact head and attach existing Grace locally; validate full/half/exposed coverage during motion
 - Select A/B/C grime direction before making material variants
 - First retarget Hot Walk and expressive sway; then mirror and frustration gestures
 

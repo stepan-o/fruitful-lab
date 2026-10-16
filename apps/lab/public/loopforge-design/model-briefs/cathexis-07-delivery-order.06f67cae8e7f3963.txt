@@ -1,0 +1,13 @@
+CURRENT ACCEPTED BODY: Cathexis_Body_v2_50k, 51,034 triangles. Rear skirt and appearance accepted on 14 October. Do not regenerate it. Start 03-rig-tests.txt with a matching normal-map export and neutral rig plus Hot Walk/expressive sway. Only the final body version belongs in the public viewer.
+
+CATHEXIS — delivery order and remaining gates
+1. Preserve the accepted v2 A-pose. Keep the original mechanical face intact under Grace; no facial-insert cutout.
+2. Review full Grace, a clipped half of that same mask, and the exposed body face. Dedicated mechanical expressions are retired from the current delivery scope. No further Meshy face generation is needed.
+3. Rig the accepted v2 body: first Hot Walk and expressive sway, then the two remaining tests in 03-rig-tests. Inspect skirt/hair/arm/heel clearance. Meshy may supply rigid hands rather than fingers; report actual bones. No claim of articulated fingers from a five-finger drawing.
+4. After approval, audition the 28 priority motions, then useful candidates from the broader 161-entry name/category inventory. These are not 161 validated CATHEXIS clips. Use only Hot Walk for travel; no running or alert fallback. An expressive catalog name is not proof of the intended performance.
+5. Select grime treatment A/B/C before material variants. They are comparison inputs, not three new bodies. Keep the same mesh, UVs and rig; brewery residue can be authored after the material direction is chosen. Dirt can accompany anger without forcing it in every scene.
+6. Download original full sources privately, plus neutral and animated textured GLB/FBX. Preserve per-clip names/IDs and actual embedded inventories. All Animations may omit later jobs: verify local files, export missing clips separately.
+
+Custom/offline gaps: sticky-finger disgust, protecting the skirt from grime, mask handling, precise conveyor/vat/loom contacts, Hot Walk starts/stops and paired worker responses. Do not substitute arbitrary gestures or claim these are finished by catalog retargeting.
+
+The v2 body appearance is accepted. Shared mask fit, facial rig, motion clearance and gameplay integration remain unvalidated. A/B/C material selection can wait until the rig tests.

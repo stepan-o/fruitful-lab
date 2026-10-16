@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-14-v5",
-  "date": "2026-10-14",
+  "revision": "model-briefs-2026-10-15-v7",
+  "date": "2026-10-15",
   "models": [
     {
       "id": "limen",
       "name": "LIMEN",
-      "subtitle": "Security chief \u00b7 body + emitter",
-      "revision": "Rebuild brief v1 \u00b7 body v2 / emitter v1",
+      "subtitle": "Security chief · body + emitter",
+      "revision": "Rebuild brief v1 · body v2 / emitter v1",
       "status": "Prototype available",
       "summary": "Heavy armour, cyan optics and energy flowing from one forearm. Rebuild the accepted body and rigid housing separately; the living blade and maintenance idle are authored in our pipeline.",
       "provenance": "Reconstructed rebuild brief from the accepted v2 source, owner instructions and import records. The original Meshy chat prompt and extracted front/back upload images were not recovered; this is not a verbatim historical export.",
@@ -26,8 +26,8 @@
       ],
       "images": [
         {
-          "label": "Original character sheet \u00b7 identity reference",
-          "role": "Reference only \u2014 contains multiple views; prepare isolated A-pose inputs before a fresh generation.",
+          "label": "Original character sheet · identity reference",
+          "role": "Reference only — contains multiple views; prepare isolated A-pose inputs before a fresh generation.",
           "sourceName": "limen_character_sheet_2.png",
           "sourceSha256": "12e79d26004c8c15e3b98689412f850afca4b27472332b61d91f5ae8390cee63",
           "input": {
@@ -73,9 +73,9 @@
     {
       "id": "worker",
       "name": "Worker 01",
-      "subtitle": "Factory worker \u00b7 body + motion bank",
-      "revision": "Rebuild brief v2 \u00b7 19 audited motions",
-      "status": "Audited \u00b7 cleanup pending",
+      "subtitle": "Factory worker · body + motion bank",
+      "revision": "Rebuild brief v2 · 19 audited motions",
+      "status": "Audited · cleanup pending",
       "summary": "Round cyan optics, ordinary worn industrial anatomy and readable uncertainty. The shared worker body has nineteen reviewed source motions; gait and hand cleanup are still open.",
       "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
@@ -93,8 +93,8 @@
       ],
       "images": [
         {
-          "label": "Front \u00b7 proportion authority",
-          "role": "Body input \u2014 views of one model",
+          "label": "Front · proportion authority",
+          "role": "Body input — views of one model",
           "sourceName": "worker-01-front.png",
           "sourceSha256": "733d9166885871504784915d2598f0ece0564c107d6014322711e152c039dc6e",
           "input": {
@@ -122,8 +122,8 @@
           ]
         },
         {
-          "label": "Back \u00b7 rear construction",
-          "role": "Body input \u2014 views of one model",
+          "label": "Back · rear construction",
+          "role": "Body input — views of one model",
           "sourceName": "worker-01-back.png",
           "sourceSha256": "14f5e668c2d05e6e4ea3578b559c16ce78b3d71e56663ebda9c3a4d5338d1337",
           "input": {
@@ -151,8 +151,8 @@
           ]
         },
         {
-          "label": "Left profile \u00b7 depth",
-          "role": "Body input \u2014 views of one model",
+          "label": "Left profile · depth",
+          "role": "Body input — views of one model",
           "sourceName": "worker-01-left.png",
           "sourceSha256": "0267f79a2aae22654cc053b85bb59fe3a7de09aba7118f3c4a5d961e444e974a",
           "input": {
@@ -245,7 +245,7 @@
           "sourceFile": "Animation_Confident_Walk_withSkin.fbx",
           "sourceSha256": "420ab45096d9f04af5bbe9914482c17371bc3ec695bb34038c9d2c749e3fe42e",
           "duration": 5.76666667,
-          "note": "Owner confirms Hot Walk in Meshy and selects it as Cathexis\u2019s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on Cathexis."
+          "note": "Owner confirms Hot Walk in Meshy and selects it as Cathexis’s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on Cathexis."
         },
         {
           "label": "Alert",
@@ -356,13 +356,13 @@
     {
       "id": "stiletto",
       "name": "STILETTO",
-      "subtitle": "Twin blades \u00b7 interchangeable forearm modules",
-      "revision": "Rebuild brief v2 \u00b7 corrected arm derivatives v4",
+      "subtitle": "Twin blades · interchangeable forearm modules",
+      "revision": "Rebuild brief v2 · corrected arm derivatives v4",
       "status": "Prototype acting accepted",
-      "summary": "Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the welder is a generated prop awaiting its mounted review.",
+      "summary": "Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the player also fits twin or mixed welders with flame flow and the reference-shaped red visor, including its descending centre seam.",
       "provenance": "Original body, blade, welder and motion briefs recovered. Rebuild notes preserve the later acting meanings and offline corrections; a fresh Meshy export does not include those corrections.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/stiletto",
-      "viewerLabel": "Inspect body + both blades",
+      "viewerLabel": "Inspect blades, welders and visor",
       "record": "/loopforge-design/production/STILETTO_MOTION_REVIEW.md",
       "parts": [
         "41,124-triangle body / 24 skin joints",
@@ -376,7 +376,7 @@
       ],
       "images": [
         {
-          "label": "Body \u00b7 front",
+          "label": "Body · front",
           "role": "Body input",
           "sourceName": "01-stiletto-body-front.png",
           "sourceSha256": "45b6f020dde327639818b5111a5ee159dfd9a34822e1a88f4aa599099efab8cc",
@@ -405,7 +405,7 @@
           ]
         },
         {
-          "label": "Body \u00b7 side",
+          "label": "Body · side",
           "role": "Body input",
           "sourceName": "05-stiletto-body-side.png",
           "sourceSha256": "4c364928052df01cef5a13ed885fb6ce3d291c50a694f03f85bec404aa7e5eb4",
@@ -434,7 +434,7 @@
           ]
         },
         {
-          "label": "Body \u00b7 back",
+          "label": "Body · back",
           "role": "Body input",
           "sourceName": "02-stiletto-body-back.png",
           "sourceSha256": "d1e95118e6a9a5a1eae5dddf4c37c57c0973af20a15e1eb68713d0306c3ebb3c",
@@ -464,7 +464,7 @@
         },
         {
           "label": "Blade module",
-          "role": "Separate rigid object \u2014 upload alone",
+          "role": "Separate rigid object — upload alone",
           "sourceName": "03-stiletto-blade-module.png",
           "sourceSha256": "cd07f0af819c40d7113268a2dc784d60ad7e69f5412fbc08dc5eac0a3de7efaf",
           "input": {
@@ -493,7 +493,7 @@
         },
         {
           "label": "Welder module",
-          "role": "Separate rigid object \u2014 upload alone",
+          "role": "Separate rigid object — upload alone",
           "sourceName": "04-stiletto-welder-module.png",
           "sourceSha256": "d0f6be5eeacae41dd10aaf34f718afc6520bc717405de350a1d3a82ab47db414",
           "input": {
@@ -689,30 +689,30 @@
     {
       "id": "cathexis",
       "name": "CATHEXIS",
-      "subtitle": "Theatre diva \u00b7 modular faces + surface conditions",
-      "revision": "cathexis-body-v2-accepted-2026-10-14",
-      "status": "Body v2 accepted \u00b7 rigging next",
-      "summary": "The v2 body and continuous rear skirt are accepted. The current viewer uses only this final body version. Next: obtain its matching normal map and test a Mixamo-compatible rig with Hot Walk and expressive sway; face fitting remains separate.",
-      "provenance": "Body v2 appearance accepted by the owner on 14 October 2026. Input art derives from original character and room art. Face candidates, grime treatments and motion remain subject to review.",
+      "subtitle": "Theatre diva · intact mechanism + Grace coverage",
+      "revision": "cathexis-motion-cleanup-v7-2026-10-15",
+      "status": "Body accepted · two motion cleanup candidates",
+      "summary": "Accepted v2 body, full/half Grace over its intact mechanical face, and first rigged Hot Walk / Happy Sway clips. Local skirt, grounding and loop corrections are ready for review; moving mask fit is next.",
+      "provenance": "Body v2 accepted on 14 October 2026. The owner closed stage 2 after the layered Grace preview: no further face models are required. Input art derives from original character and room art; earlier expression studies are archive references. Motion, moving fit and grime direction still need review.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
-      "viewerLabel": "Inspect the accepted body and face candidates",
+      "viewerLabel": "Compare Hot Walk, sway and mask fitting",
       "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
-      "record": "/loopforge-design/production/CATHEXIS_INTAKE_REVIEW.md",
+      "record": "/loopforge-design/production/CATHEXIS_MOTION_REVIEW.md",
       "parts": [
-        "51,034-triangle accepted v2 body; unrigged",
-        "Grace mask: 3,058 and 8,128-triangle candidates",
-        "Three mechanical expression masters with local 12k inspection copies"
+        "51,034-triangle accepted v2 body; original mechanical face retained",
+        "51,031-triangle rigged delivery; Hot Walk / Happy Sway source and corrected candidates",
+        "Grace: 3,058 / 8,128 triangles; half coverage derived from the same mesh",
+        "Earlier mechanical expression studies: separate inspection only"
       ],
       "remaining": [
-        "Matching normal map for the accepted 50k body and Grace masks",
-        "Rig v2; first test Hot Walk and expressive sway, then mirror and frustration gestures",
-        "Normalize and fit the face layers to one shared head",
-        "Half-shell, remaining porcelain expressions and grime selection",
-        "Costume, hair, heel and hand clearance through motion"
+        "Matching delivery normal maps; do not regenerate accepted geometry",
+        "Stage 3 initial rig test delivered and locally cleaned; next: moving Grace fit and owner motion review",
+        "Moving full/half Grace fit, costume, hair, heel and hand clearance",
+        "Stage 4 acting auditions; grime selection later. Facial rig and expression-mask exchange are out of scope"
       ],
       "images": [
         {
-          "label": "Body \u00b7 front",
+          "label": "Body · front",
           "role": "Original body proportions and front opening. For skirt material and rear coverage, follow the revised back/profile; this original front drawing predates the reduction in lace.",
           "sourceName": "01-cathexis-body-front.png",
           "sourceSha256": "168fb9fe3af049b9786894d342906a4f85a659f99f1cdbd830c60d69b6911635",
@@ -741,7 +741,7 @@
           ]
         },
         {
-          "label": "Body \u00b7 revised back / worn cloth",
+          "label": "Body · revised back / worn cloth",
           "role": "Skirt revision reference: continuous rear cloth behind the knees, lower-ankle hem and less decorative lace. Completed revision reference; the resulting v2 body is now accepted.",
           "sourceName": "03-cathexis-worn-cloth-candidate.png",
           "sourceSha256": "1b0d3c559b3c5d2bf7f7a7c9743e31f65b80777a972bbd554f5e21ad0db2636d",
@@ -770,7 +770,7 @@
           ]
         },
         {
-          "label": "Body \u00b7 matching left profile",
+          "label": "Body · matching left profile",
           "role": "Matches the revised rear fabric and coverage. Character faces left; rear cloth hangs on the right. The visible leg belongs to the preserved front opening. 3D clearance still needs inspection.",
           "sourceName": "04-cathexis-left-profile-worn-cloth.png",
           "sourceSha256": "f0ba551732e513a167eacf075bf2c0960c41709e0079e2c8d6183bd1f900a3fa",
@@ -799,8 +799,8 @@
           ]
         },
         {
-          "label": "Porcelain \u00b7 Grace",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "label": "Porcelain · Grace",
+          "role": "Existing Grace reference — no generation needed. Full and half coverage reuse this mask; stage 2 is closed.",
           "sourceName": "04-mask-grace.png",
           "sourceSha256": "6b62d64263cd324480ce4194d6344208d59d6f511f16d9add92f67cf9513dc96",
           "input": {
@@ -828,8 +828,8 @@
           ]
         },
         {
-          "label": "Porcelain \u00b7 Rapture",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "label": "Porcelain · Rapture",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "05-mask-rapture.png",
           "sourceSha256": "98865d99902dcb61cdc0432a1683d0d25d3b11bbf40e0cfd79447d0c1685d261",
           "input": {
@@ -857,8 +857,8 @@
           ]
         },
         {
-          "label": "Porcelain \u00b7 Scorn",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "label": "Porcelain · Scorn",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "06-mask-scorn.png",
           "sourceSha256": "1ab8cb1a972a32748852b8fba4a49bfcd07e1b5a8db58bd9414b177188f4c431",
           "input": {
@@ -886,8 +886,8 @@
           ]
         },
         {
-          "label": "Porcelain \u00b7 Grief",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "label": "Porcelain · Grief",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "07-mask-grief.png",
           "sourceSha256": "ca447ab82f0cefc5be515a73425e5cddf045bd77169b4e20436d2ae3c8118cb9",
           "input": {
@@ -915,8 +915,8 @@
           ]
         },
         {
-          "label": "Porcelain \u00b7 Fury",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "label": "Porcelain · Fury",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "08-mask-fury.png",
           "sourceSha256": "e2861b814911605d119ba28b8c3853870d1d4ac4925665262952e40face5a575",
           "input": {
@@ -944,8 +944,8 @@
           ]
         },
         {
-          "label": "Porcelain \u00b7 Distress",
-          "role": "Separate porcelain faceplate \u2014 one object per generation",
+          "label": "Porcelain · Distress",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "09-mask-distress.png",
           "sourceSha256": "80eef314217ea012dcb82ffdbf863990b037aab35b9675a7e61500a91e238d44",
           "input": {
@@ -973,8 +973,8 @@
           ]
         },
         {
-          "label": "Mechanism \u00b7 Distorted grimace",
-          "role": "Separate expression insert \u2014 no duplicated skull or eyes",
+          "label": "Mechanism · Distorted grimace",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "10-mechanism-grimace.png",
           "sourceSha256": "5166df66750a48acb01b2f6d2d7228103b706f3d29e31c822155a0c78c1af3a8",
           "input": {
@@ -1002,8 +1002,8 @@
           ]
         },
         {
-          "label": "Mechanism \u00b7 Fury",
-          "role": "Separate expression insert \u2014 no duplicated skull or eyes",
+          "label": "Mechanism · Fury",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "11-mechanism-fury.png",
           "sourceSha256": "e5b1e4e7a8aff6266db6c35f901b83fd84fe41c72891d89129586b88177e5802",
           "input": {
@@ -1031,8 +1031,8 @@
           ]
         },
         {
-          "label": "Mechanism \u00b7 Distress",
-          "role": "Separate expression insert \u2014 no duplicated skull or eyes",
+          "label": "Mechanism · Distress",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "12-mechanism-distress.png",
           "sourceSha256": "8faf9fe473e0d30db3d7af898c3e4ddf53c72bb045295d2dc26bd3fb26846448",
           "input": {
@@ -1060,8 +1060,8 @@
           ]
         },
         {
-          "label": "Porcelain \u00b7 half shell",
-          "role": "Separate shell \u2014 fit to shared head offline",
+          "label": "Porcelain · half shell",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "13-mask-half-shell.png",
           "sourceSha256": "b274d63353ad82cf1ba990eb322764da4c7153488282e7ca16ad86cf0d4b2130",
           "input": {
@@ -1089,8 +1089,8 @@
           ]
         },
         {
-          "label": "Split face \u00b7 assembly guide",
-          "role": "Reference only \u2014 do not generate this as a fused full face",
+          "label": "Split face · assembly guide",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
           "sourceName": "14-split-assembly-reference.png",
           "sourceSha256": "2b1ab7995ce597d02b7b041bf72c5ae06a47365f835ecb0af7085f96ae0b5ff1",
           "input": {
@@ -1118,8 +1118,8 @@
           ]
         },
         {
-          "label": "A \u00b7 dry soot",
-          "role": "Material option \u2014 same accepted mesh; selection pending",
+          "label": "A · dry soot",
+          "role": "Material option — same accepted mesh; selection pending",
           "sourceName": "a-body-soot-apose.png",
           "sourceSha256": "1f5006dd8287780e58d4b46a27b135fe4c15c2848c05331661ca779481bbd40e",
           "input": {
@@ -1147,8 +1147,8 @@
           ]
         },
         {
-          "label": "B \u00b7 wet machine oil",
-          "role": "Material option \u2014 same accepted mesh; selection pending",
+          "label": "B · wet machine oil",
+          "role": "Material option — same accepted mesh; selection pending",
           "sourceName": "b-body-oil-apose.png",
           "sourceSha256": "1805d0defe987f9f7c4c7a8a7e99865e5c7397f47d738bdc466c67e5509e5554",
           "input": {
@@ -1176,8 +1176,8 @@
           ]
         },
         {
-          "label": "C \u00b7 caked grime",
-          "role": "Material option \u2014 same accepted mesh; selection pending",
+          "label": "C · caked grime",
+          "role": "Material option — same accepted mesh; selection pending",
           "sourceName": "c-body-caked-apose.png",
           "sourceSha256": "23c4ae936bc3d12d88366600c988448265ef9169184c3d2aeff08d3f35cf775e",
           "input": {
@@ -1207,35 +1207,35 @@
       ],
       "prompts": [
         {
-          "title": "Next: rig the accepted v2 body",
+          "title": "NEXT: rig accepted body; Hot Walk + sway",
           "file": "cathexis/03-rig-tests.txt"
         },
         {
-          "title": "Full body rebuild (only if needed)",
-          "file": "cathexis/01-body.txt"
-        },
-        {
-          "title": "Face system",
-          "file": "cathexis/02-face-system.txt"
-        },
-        {
-          "title": "Acting bank",
+          "title": "Acting bank · after rig tests",
           "file": "cathexis/04-acting-bank.txt"
         },
         {
-          "title": "Signature actions",
+          "title": "Signature actions · later/offline",
           "file": "cathexis/05-signature-actions.txt"
         },
         {
-          "title": "Room conditions",
+          "title": "Room conditions · later material variants",
           "file": "cathexis/06-room-conditions.txt"
         },
         {
-          "title": "Delivery order",
+          "title": "Delivery order and checks",
           "file": "cathexis/07-delivery-order.txt"
         },
         {
-          "title": "Completed skirt revision \u00b7 rebuild reference",
+          "title": "Face system · CLOSED, no further generation",
+          "file": "cathexis/02-face-system.txt"
+        },
+        {
+          "title": "Full body rebuild · reference only",
+          "file": "cathexis/01-body.txt"
+        },
+        {
+          "title": "Completed skirt repair · reference only",
           "file": "cathexis/08-rear-panel-repair.txt"
         }
       ]

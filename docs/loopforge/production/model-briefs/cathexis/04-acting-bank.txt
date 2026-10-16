@@ -5,6 +5,8 @@ HARD CHARACTER RULES
 - She NEVER runs and has NO alert state. Do not bundle run/sprint/alert as gameplay fallbacks. A reaction can interrupt a relaxed pose without creating an alert stance.
 - Normal behavior: chilling, vibing, flirting and theatrical social gestures. Coarse work and contamination often provoke frustration. Dirt and mood are related but remain independent.
 - Apply motions to the accepted body/rig, preserving mesh, skeleton and materials. No regeneration between clips.
+- Stage 2 is closed. The body keeps its original mechanical face; Grace is the only separate mask design. Full/half/exposed coverage is assembled in our app, independent of the body clip. Do not generate expression faces, facial animation or a separate motion bank for each mask appearance.
+- Emotion must read from posture, timing, head direction and gestures at factory-camera distance. The mask does not morph or supply a new expression for each clip.
 
 This is a broad audition inventory, not a claim that every motion is suitable. Names/IDs were checked against the official catalog on 14 October 2026. Review previews and actual character exports. Reject any candidate that contains combat, running, alert posing or a traveling gait other than Hot Walk. Optional groups are discovery material, not defaults.
 
@@ -222,4 +224,4 @@ DELIVERY
 Export every accepted audition as textured rigged GLB and FBX, each with the character mesh, skin and skeleton. Preserve a neutral rigged A-pose separately. Keep source action IDs and actual embedded clip names in the report. Use aliases such as cathexis_391_head_hold_source; keep source names in metadata. Report actual duration, root translation and yaw, start/end pose, loopability and missing finger bones. If an export package excludes later actions, export those cards individually and report the omission; verify the files rather than the viewer alone.
 
 CUSTOM GAPS
-See 05-signature-actions.txt for greasy-hand disgust, mask swaps, fine loom work, conveyor/vat hand contact and theatrical interaction with workers. Catalog gestures are starting material, not proof those contacts exist. Hot Walk starts/stops and seating approaches must preserve her sole gait.
+See 05-signature-actions.txt for greasy-hand disgust, optional removal/reseating of the same Grace mask, fine loom work, conveyor/vat hand contact and theatrical interaction with workers. Exchanging different expression masks is abandoned and is not a dependency for this motion bank. Catalog gestures are starting material, not proof those contacts exist. Hot Walk starts/stops and seating approaches must preserve her sole gait.

@@ -1,11 +1,11 @@
 # CATHEXIS — accepted v2 body and face intake
 
-14 October 2026. Candidate intake, not an accepted rig or fitted assembly.
+14 October 2026 intake; updated 15 October. Accepted body and full/split Grace fit; acting remains under review.
 
 Review player: `/stepanoskin/loopforge/play/asset-review/cathexis`.
 Generation kit: Game Design → Model briefs → CATHEXIS. The Agents tab and every character player link into the shared library.
 
-Current handoff: the owner accepted body v2 and its repaired rear skirt on 14 October 2026. The public viewer contains only v2, per the owner’s request to drop superseded bodies. Start the staged rig test in Model briefs; the normal map matched to the 50k delivery still needs exporting. Face fitting and moving costume clearance remain open.
+Current handoff (15 October): the first two rigged clips are now locally corrected candidates. [Hot Walk / Happy Sway cleanup](CATHEXIS_MOTION_REVIEW.md) is the current motion record. Static face fitting remains a separate mode. The following inventory describes the original 14 October static intake; its no-rig statements do not describe the new motion bank.
 
 ## Files actually received
 
@@ -22,24 +22,24 @@ Eight Meshy FBX packages were found in Downloads and inspected with ufbx. Every 
 | Mechanism Fury master | 2,123,714 | Local 11,986-triangle inspection copy; 1.45 MiB |
 | Mechanism Distress master | 1,291,824 | Local 11,996-triangle inspection copy; 1.31 MiB |
 
-The mechanical derivatives are inspection candidates. They are not Meshy delivery models and do not replace the retained masters. Only the selected GLB loads, and changing selection releases the previous one. No source FBX, ZIP or million-triangle model is shipped.
+The mechanical derivatives are inspection candidates. They are not Meshy delivery models and do not replace the retained masters. Assembly mode keeps the body loaded and fetches only the selected face; switching releases the prior face. Separate-parts mode loads only its selected GLB. No source FBX, ZIP or million-triangle model is shipped.
 
 ## Rendered visual review
 
 The initial six runtime candidates were inspected in the production-built Babylon player with textured and shape-only views. Front, side and reverse views support these observations:
 
-- The body preserves the porcelain/brass costume, open skirt, crown and mechanical heels. Its head still has a grinning skull surface. The teeth read strongly in the texture; shape-only inspection shows the underlying skull/nose/face volume. This is not yet a prepared recessed seat for interchangeable expression inserts. Clear or rework the overlapping surface during assembly.
-- Grace has open eye holes, a hollow reverse and a raised upper mounting/strap shape. Both budgets preserve the silhouette. At close inspection, 3k is visibly more faceted around the cheek/forehead; 8k is smoother. Keep 3k as a lightweight candidate and 8k for close fitting tests until mounted camera comparisons establish the required budget. Neither is accepted on the character yet.
+- The body preserves the porcelain/brass costume, open skirt, crown and mechanical heels. Its head still has a grinning skull surface. The teeth read strongly in the texture; shape-only inspection shows the underlying skull/nose/face volume. This is not yet a prepared recessed seat for interchangeable expression inserts. The assembly viewer now preserves this entire face under Grace; the earlier cutout has been removed.
+- Grace has open eye holes, a hollow reverse and a raised upper mounting/strap shape. Both budgets preserve the silhouette. At close inspection, 3k is visibly more faceted around the cheek/forehead; 8k is smoother. Keep 3k as a lightweight candidate and 8k for close fitting tests until mounted camera comparisons establish the required budget. Full/split Grace fit is owner-approved; 3k and 8k remain selectable for camera-budget comparisons.
 - Grimace is asymmetric; Fury has strongly lowered brows and an open mouth; Distress has raised inner brows and a downturned mouth. They read as distinct isolated expressions. The models are rigid single meshes, not mechanical jaw/brow rigs. The enlarged inspection does not establish their readability on a distant worker-facing character.
-- Local simplification retains useful expression shapes; it is not a claim that every master detail survives. Exact sockets, rim alignment, mouth backing and half-shell compatibility still need a fitted test.
+- Local simplification retains useful expression shapes; it is not a claim that every master detail survives. These are earlier isolated studies; the original body face now supplies the mechanical appearance.
 
 ## Confirmed intake gaps
 
-- Faces have approximately the same exported height as the entire body (about 1.90 m). They need physical scaling, orientation, pivots and mounting alignment. The isolated viewer normalizes every selected object to a 1.9-unit display height; this is explicitly **not shared anatomical scale**.
+- Faces have approximately the same exported height as the entire body (about 1.90 m). The assembly adapter scales each face to approximately 19 cm and provides a versioned fit transform. The isolated viewer normalizes every selected object to a 1.9-unit display height; this is explicitly **not shared anatomical scale**.
 - The Body 50k and Grace 3k/8k packages do not contain normal maps. Their master packages do. Do not apply a master normal map to a remesh without establishing compatible UVs or rebaking it.
 - No skeleton, skinning, Hot Walk or theatrical acting is present. There is no animation selector because there are no clips to play.
-- The retained half-shell, other porcelain expressions and grime variants have not arrived. No split-face assembly or facial articulation is implemented.
-- Head-seat, eye-aperture, mouth-cavity and layer-clearance acceptance needs an assembled model. Separate attractive objects do not establish compatibility.
+- Half coverage is derived directly from Grace in the viewer. Separate half-shell and expression generation are retired from the current scope. Grime variants and facial articulation are not implemented.
+- Head-seat, eye-aperture, mouth-cavity and layer-clearance acceptance now uses the assembled viewer; isolated source review remains available.
 
 ## Inspection controls and evidence
 
@@ -53,7 +53,7 @@ Each player uses the common six review gates and character navigation. Save revi
 2. The static extractor bakes FBX geometry transforms into right-handed, Y-up meters and exports position, normal and flipped-V UV corner data. Source hashes and bounds accompany the binary geometry.
 3. Run `scripts/characters/import-cathexis-review.mjs` with the private intake directory. It preserves body/Grace triangle counts, welds shared vertices, reduces mechanical faces to approximately 12k triangles, packs PBR maps, and publishes immutable hashed GLBs. Body texture delivery is 2048px; face textures are 1024px.
 4. `scripts/characters/check-cathexis-review.mjs` verifies all six runtime hashes/byte counts, actual triangles, finite geometry/UV attributes, display bounds, expected normal-map presence, absence of rigs/clips, and zero glTF validation errors. It is included in the ordinary character/build checks.
-5. Review the rendered surfaces and silhouettes before accepting any candidate. For the accepted v2 body, first test Hot Walk and expressive sway on its rig; continue face fitting as a separate assembly gate before expanding expressions.
+5. Review the rendered surfaces and silhouettes before accepting any candidate. For the accepted v2 body, first test Hot Walk and expressive sway on its rig; validate moving Grace fit as an assembly gate. Do not expand expressions: stage 2 is closed.
 
 Current runtime pack: `loopforge-cathexis-review`, revision `4c36727176798cdcec099dc5f1e24003620eea71b51e3f6fc4d0fc00998f666b`.
 
@@ -76,4 +76,26 @@ The owner accepted the revised model after front/side/rear inspection. Rear fabr
 
 Downloads: `Cathexis_Body_v2_50k.zip` and `Cathexis_Body_v2_mast.zip`, both CRC-valid FBX packages. Runtime body: 51,034 triangles, 75,869 vertices, one mesh/material, 5,695,824 bytes with 2K delivery textures; source geometry preserved. Master: 3,403,416 triangles, private only. Both contain zero skin joints and animation clips. Delivery has no normal map; obtain a map matched to its own UVs rather than assuming the master map fits.
 
-The v1 body GLB and its previous pack manifest are removed from the new deployment at the owner’s explicit request. Existing deployments are immutable and are not purged by this code change. Other face candidates are unchanged. The viewer loads one selected object at a time. Next: Mixamo-compatible neutral rig plus Hot Walk (106) and expressive sway (415), followed by mirror (48) and head-hold frustration (391) after the first two tests pass. Full acting-bank generation waits on costume/heel/hair clearance.
+The v1 body GLB and its previous pack manifest are removed from the new deployment at the owner’s explicit request. Existing deployments are immutable and are not purged by this code change. Other face candidates are unchanged. The current viewer can inspect single sources or the body with one fitted face. Next: Mixamo-compatible neutral rig plus Hot Walk (106) and expressive sway (415), followed by mirror (48) and head-hold frustration (391) after the first two tests pass. Full acting-bank generation waits on costume/heel/hair clearance.
+
+## Layered Grace and illuminated eyes — 14 October 2026
+
+The appearance selector offers full Grace, half Grace and the exposed original mechanical face. Both Grace budgets can be compared, and the half mask can cover either side. The body is never cut, hidden or remeshed for a mask. This replaces the earlier central-face removal that produced a visible side gap. Separate Grimace/Fury/Distress candidates remain under source inspection only: the owner finds the original body grimace more useful at factory-camera distance.
+
+`cathexis-fit.ts` records the fitted transform. Half coverage clips Grace triangles at local x=0, interpolates normals/UVs and adds a narrow porcelain return edge once on selection. No new GLB or duplicate body texture is deployed. Recessed, depth-tested eye lenses prevent the far eye projecting past the mask silhouette; eye highlighting remains independently switchable.
+
+The visual vocabulary is composure (full porcelain), distress/menace (original mechanism), or both at once (half porcelain). Acting and context still carry emotion; these states do not certify a specific emotional reading at every CCTV distance. This is static appearance work, with no facial articulation, mask-removal animation or rig acceptance. Future attachment follows the head joint.
+
+Mask downloads are integrity checked, abortable and disposed on replacement. Errors leave the original body visible with retry. Evidence includes coverage side, mask/body hashes, fit transform, eye state and camera. Source triangle totals describe the complete source assets, excluding small overlays; half-mask rendered triangles are lower.
+
+## Layering verification
+
+The geometry check partitions both Grace budgets into opposite halves, verifies surface area conservation, finite normalized normals, interpolated UVs and source immutability. Browser checks cover full/half/exposed appearances, both sides, both budgets, oblique/profile inspection, eye toggles and CCTV. Grace appearance/fit is owner-approved. Motion and contact evidence has its own limits in the motion record.
+
+## Stage 2 closed — owner decision, 14 October 2026
+
+The current face assets are sufficient. Remaining porcelain/robotic expression generation is abandoned; retain original face plus full/half Grace. Stages 3–7 now preserve the intact mechanical head, request body-only rigging and one shared motion bank, and leave rigid Grace fitting to our app. No facial articulation or expression-mask exchange is requested. Physical removal/reseating of the same mask is optional later work, independent of rigging and catalog auditions. Grime remains a material condition independent of mask coverage and mood. Hot Walk and expressive sway are the next two exports; motion and moving attachment clearance remain unverified.
+
+## Animated Grace review — 15 October 2026
+
+The same viewer now fits full Grace, either half or the exposed original face to both Hot Walk and Happy Sway. Use **Motion & face review → Appearance**, then **Inspect head & face seat**; static source fitting remains available separately. The rigged body uses the existing neutral fit mapped to its head bind space and scale. No body face is removed and no new expression assets are introduced. See [motion/attachment record](CATHEXIS_MOTION_REVIEW.md) for the reproducible checks and their limits. The owner approved full/split Grace fit on 15 October; subsequent motion changes preserve it.

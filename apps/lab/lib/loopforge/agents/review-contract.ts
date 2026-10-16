@@ -12,12 +12,12 @@ export type ReviewGate = {status:'Accepted slice'|'Candidate'|'Needs work'|'Not 
 export type ReviewReadiness = Record<ReviewSection, ReviewGate>;
 export const reviewReadiness: Record<string, ReviewReadiness> = {
  'cathexis-intake': {
-  body:{status:'Accepted slice',detail:'Owner accepted the 51,034-triangle v2 body and repaired skirt. Unrigged; the delivery normal map remains missing. Faces are separate candidates.'},
-  equipment:{status:'Needs work',detail:'Grace 3k/8k and three mechanical faces are isolated. Head fit, eye apertures, cavities and half-shell remain unvalidated.'},
-  motion:{status:'Needs work',detail:'No skin joints or animation clips in the downloaded files. Hot Walk and all acting await rigging.'},
-  contact:{status:'Needs work',detail:'No mounted mask, jaw motion, hand-to-face contact or costume clearance test yet.'},
-  readability:{status:'Candidate',detail:'Body and separate enlarged face inspection available. Mounted-face readability in CCTV remains untested.'},
-  performance:{status:'Not measured',detail:'One static asset loaded at a time; high-resolution masters stay outside deployments. Animated scenes, crowd and device performance remain unmeasured.'}
+  body:{status:'Accepted slice',detail:'Accepted v2 silhouette and rear skirt; rigged export has 51,031 triangles. Matching delivery normal map remains missing.'},
+  equipment:{status:'Accepted slice',detail:'Owner approves full/split Grace fit on the intact animated head. Recessed eyes and static/moving fitting share one adapter. Physical mask removal and facial articulation remain outside this slice.'},
+  motion:{status:'Accepted slice',detail:'Owner approves corrected Hot Walk and Happy Sway. Mirror Viewing and Red Carpet Walk are new source auditions, with their own FBX skin weights and pending acting/contact cleanup. Head Hold in Pain is missing; that ZIP contains Mirror Viewing.'},
+  contact:{status:'Needs work',detail:'1,907 corrected poses pass sampled dress/leg and leg/leg checks; standing sole drift is at most 2.12 mm. Grace attachment passes 22,908 samples. Hand/mask surfaces, self-contact, blends and paired encounters remain unverified.'},
+  readability:{status:'Candidate',detail:'Portrait, full-body and CCTV framing share one performer. A fixed floor grid exposes contact drift; close-up acceptance does not certify distant action readability.'},
+  performance:{status:'Not measured',detail:'Approved bank: 11.51 MB. A separate source-audition bank loads only on selection; one body renders. Baked skinning, no runtime cloth. Crowd and physical-device performance remain unmeasured.'}
  },
  'limen-assembly': {
   body:{status:'Accepted slice',detail:'Owner approved prototype appearance and character resemblance.'},
@@ -36,8 +36,8 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
   performance:{status:'Not measured',detail:'One consolidated body and motion bank. Real crowd and device measurements remain open.'}
  },
  'stiletto-blades': {
-  body:{status:'Accepted slice',detail:'Owner accepts prototype appearance. Rigid armour weights and visor emission remain open.'},
-  equipment:{status:'Accepted slice',detail:'Owner accepts both mounted blade arms in motion. Welder mounting and tool-change acting are still pending.'},
+  body:{status:'Accepted slice',detail:'Owner accepts prototype appearance. Rigid armour weights remain open; the red cross visor is a review candidate.'},
+  equipment:{status:'Accepted slice',detail:'Owner accepts both mounted blade arms in motion. Welders/flames are mounted review candidates; tool-change acting is still pending.'},
   motion:{status:'Accepted slice',detail:'Owner accepts the visible prototype acting. Idle/alert readings swapped; Reprimand reads as attack and Argument as threat. Source clips remain traceable.'},
   contact:{status:'Needs work',detail:'2,335 corrected poses pass sampled blade checks. Gait, blends and machine/worker clearance remain open.'},
   readability:{status:'Candidate',detail:'Factory/CCTV inspection available; visor identity and blade-aware interactions still need acceptance.'},

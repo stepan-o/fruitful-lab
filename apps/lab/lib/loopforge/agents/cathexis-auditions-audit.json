@@ -1,0 +1,223 @@
+{
+  "baseRuntimeSHA256": "156f11fff75c4eba27c74d953b5b1c5b9246786aa15785e3e2b0fd9295245cc5",
+  "vertexMatchMaxM": 1.270215596775227e-07,
+  "maxDiscardedWeight": 0.0008407304839999075,
+  "clips": [
+    {
+      "clip": "Mirror_Viewing",
+      "fbxClip": "Armature|Armature|Mirror_Viewing|baselayer",
+      "duration": 7.33333333,
+      "samples": 441,
+      "maxLocalShearError": 1.523595514676635e-06,
+      "maxEightWeightPoseErrorM": 8.471264001554364e-05,
+      "maxJointKeyStepDegrees": 5.009851811868463,
+      "rootStart": [
+        0.65895164,
+        101.254044,
+        12.0761356
+      ],
+      "rootEnd": [
+        0.705934286,
+        101.331032,
+        12.0955772
+      ]
+    },
+    {
+      "clip": "Red_Carpet_Walk",
+      "fbxClip": "Armature|Armature|Red_Carpet_Walk|baselayer",
+      "duration": 5.96666667,
+      "samples": 359,
+      "maxLocalShearError": 1.6735776041613994e-06,
+      "maxEightWeightPoseErrorM": 0.00010535849984303175,
+      "maxJointKeyStepDegrees": 8.114218903794015,
+      "rootStart": [
+        -0.497832537,
+        100.698387,
+        14.0523052
+      ],
+      "rootEnd": [
+        -0.514501572,
+        100.549286,
+        14.1206532
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "archive": "Meshy_AI_Cathexis_Body_v2_Rig__biped_Head_Hold_In_Pain.zip",
+      "sha256": "ece25468b106b59a3a1654147bd66ff6557adaa4cfd5bdef6984268bbf30e018",
+      "fbx": "Meshy_AI_Cathexis_Body_v2_Rig__biped_Animation_Mirror_Viewing_withSkin.fbx",
+      "fbxSHA256": "39be503f9a38ca89db4235242509e8c7983a34dd0ce2301153d403bf94c723dc"
+    },
+    {
+      "archive": "Meshy_AI_Cathexis_Body_v2_Rig__biped_Red_Carpet_Walk.zip",
+      "sha256": "6fe73088d70748ece37d1d69a96c4b104ce7061a783273fdf94a0e9e4f5e92b3",
+      "fbx": "Meshy_AI_Cathexis_Body_v2_Rig__biped_Animation_Red_Carpet_Walk_withSkin.fbx",
+      "fbxSHA256": "2b83c30d6c11a2f69650e98c22c35a56ae2662813ac2ddd7dcf21030e4af10d4"
+    }
+  ],
+  "surfaceAudit": {
+    "runtimeSHA256": "d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd",
+    "method": "120 Hz non-coplanar edge/triangle tests below 0.85m: skirt/legs and left/right legs. Excludes tangency, containment, upper body, hand/face, cloth self-contact, blends and dynamics. Samples both source and corrected candidates; no owner approval implied.",
+    "clips": [
+      {
+        "clip": "Mirror_Viewing_Source",
+        "samples": 881,
+        "dressLegFrames": 205,
+        "legLegFrames": 630,
+        "dressLegWorst": {
+          "seconds": 6.175,
+          "crossings": 188
+        },
+        "legLegWorst": {
+          "seconds": 7.1,
+          "crossings": 516
+        },
+        "lowestSoleM": -0.0019129700067836916,
+        "highestSupportingSoleM": 0.04845219855702967,
+        "endpointMaxM": 0.007216109973112853
+      },
+      {
+        "clip": "Red_Carpet_Walk_Source",
+        "samples": 717,
+        "dressLegFrames": 717,
+        "legLegFrames": 307,
+        "dressLegWorst": {
+          "seconds": 5.517,
+          "crossings": 313
+        },
+        "legLegWorst": {
+          "seconds": 5.367,
+          "crossings": 340
+        },
+        "lowestSoleM": 0.00730006187764563,
+        "highestSupportingSoleM": 0.07333498914331973,
+        "endpointMaxM": 0.016823488442003848
+      },
+      {
+        "clip": "Mirror_Viewing_Corrected",
+        "samples": 881,
+        "dressLegFrames": 0,
+        "legLegFrames": 0,
+        "dressLegWorst": null,
+        "legLegWorst": null,
+        "lowestSoleM": -0.002998848698738613,
+        "highestSupportingSoleM": 0.0075096455182877084,
+        "endpointMaxM": 0.0
+      },
+      {
+        "clip": "Red_Carpet_Walk_Corrected",
+        "samples": 717,
+        "dressLegFrames": 0,
+        "legLegFrames": 0,
+        "dressLegWorst": null,
+        "legLegWorst": null,
+        "lowestSoleM": 0.00012546672133201785,
+        "highestSupportingSoleM": 0.006365778863975088,
+        "endpointMaxM": 0.0
+      }
+    ]
+  },
+  "attachmentAudit": {
+    "poseChecks": 19188,
+    "maxErrorMetres": 2.026982153225502e-06,
+    "coverage": "3k/8k full/left/right Grace on both source/corrected audition clips; 120 Hz; fixed root, unchanged body and disposal checked",
+    "approvedBankRegressionPoseChecks": 22908
+  },
+  "handAudit": {
+    "runtimeSHA256": "be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f",
+    "clip": "Mirror_Viewing_Corrected",
+    "samples": 881,
+    "handTorsoCrossingFrames": 0,
+    "worst": null,
+    "maxPalmTargetErrorM": 6.947986526416792e-05,
+    "armSteps": [
+      {
+        "joint": "mixamorig:LeftArm",
+        "maxKeyStepDegrees": 4.51051414933066
+      },
+      {
+        "joint": "mixamorig:LeftForeArm",
+        "maxKeyStepDegrees": 4.738653293434157
+      },
+      {
+        "joint": "mixamorig:LeftHand",
+        "maxKeyStepDegrees": 2.8821369056023323
+      },
+      {
+        "joint": "mixamorig:RightArm",
+        "maxKeyStepDegrees": 2.0898957989157427
+      },
+      {
+        "joint": "mixamorig:RightForeArm",
+        "maxKeyStepDegrees": 4.9553512793812855
+      },
+      {
+        "joint": "mixamorig:RightHand",
+        "maxKeyStepDegrees": 2.978730268898383
+      }
+    ],
+    "method": "120 Hz hand mesh vs central torso/waist (rest x \u00b10.26m, y 0.85\u20131.52m) non-coplanar triangle crossings. Palm targets tested during full-contact 1.10\u20136.10s. Excludes tangency, containment, cloth, arm/head, blends and dynamics.",
+    "unchangedInRuntimeSHA256": "d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd"
+  },
+  "cleanup": {
+    "status": "Mirror Viewing owner-approved; corrected Red Carpet Walk candidate awaiting owner acceptance",
+    "runtimeSHA256": "d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd",
+    "bodyJoints": 23,
+    "additionalSkirtJoints": 6,
+    "approvedBankUnchanged": true,
+    "notes": [
+      "Approved Mirror channels and surface/skin arrays are identical to the v4 bank.",
+      "Red Carpet restarts from source; retains knee-local articulation and phase-matches Quick Walk lateral ankle paths with deliberate centre crossing.",
+      "A smooth whole-leg hip swing provides close-pass clearance; no reference knee bend planes, minimum knee-flexion clamp or separate foot lanes.",
+      "Smooth baked skirt drape, supporting-sole height and repeat closure; no runtime IK or cloth solver."
+    ],
+    "revision": "cathexis-auditions-cleanup-v5",
+    "authoring": [
+      {
+        "clip": "Mirror_Viewing_Corrected",
+        "maxGroundAdjustmentM": 0.045001154909681346,
+        "drape": {
+          "maxArcAngleRadians": 0.18583012076443245,
+          "minArcAngleRadians": 0.10000000000000002,
+          "method": "continuous length-preserving arc, tangent-aligned controls and damped shared envelope"
+        }
+      },
+      {
+        "clip": "Red_Carpet_Walk_Corrected",
+        "maxGroundAdjustmentM": 0.06304409138197642,
+        "drape": {
+          "maxArcAngleRadians": 0.6433578843020908,
+          "minArcAngleRadians": 0.2716788340010984,
+          "method": "continuous length-preserving arc, tangent-aligned controls and damped shared envelope"
+        },
+        "gait": {
+          "maxClearanceSwingDeg": 1.7424667438131074,
+          "minClearanceSwingDeg": 0.25007753476043104,
+          "kneeLocalCurves": "unchanged source after shared endpoint closure"
+        }
+      }
+    ]
+  },
+  "trajectoryReview": {
+    "runtimeSHA256": "d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd",
+    "clip": "Red_Carpet_Walk_Corrected",
+    "sourceKeys": 359,
+    "leftCrossMaxM": 0.04503278478651454,
+    "rightCrossMaxM": 0.040395811728591656,
+    "kneeArticulation": [
+      {
+        "joint": "mixamorig:LeftLeg",
+        "maxSourceClosureErrorDeg": 3.557350505394958e-06
+      },
+      {
+        "joint": "mixamorig:RightLeg",
+        "maxSourceClosureErrorDeg": 3.004900588103342e-06
+      }
+    ],
+    "originalActingAndTempoPreserved": true,
+    "mirrorChannelsAndSkinIdentical": true,
+    "bothSourceClipsIdentical": true,
+    "method": "Source-key joint curves. Preserve source articulation except shared final 0.3s closure; compare approved Mirror channels and surface/skin arrays exactly. Centre crossing is intentional and must not be rejected by a signed lane-gap test. Surface collision and visual acting acceptance are separate checks."
+  }
+}

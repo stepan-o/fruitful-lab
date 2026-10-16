@@ -11,15 +11,15 @@ export const workerReviewAsset:ProductionReviewAsset={
  checks:['Pause, scrub and jump to contact candidates','Idle, locomotion, reactions and gestures','Hot Walk · Cathexis default gait','Factory lighting and three CCTV angles']
 };
 export const stilettoReviewAsset:ProductionReviewAsset={
- id:'stiletto-blades',shortName:'STILETTO',navDetail:'Twin blades · clearance checks',title:'STILETTO · twin-blade motion',revision:'body-v1 / twin blades / corrected arms v4',
- route:'/stepanoskin/loopforge/play/asset-review/stiletto',conceptRoute:'/stepanoskin/loopforge/design#agents',status:'Owner accepted · prototype acting',
- description:'Accepted prototype appearance and blade acting. Idle/alert follow their visible reading; attack and threat are distinct interaction candidates. Original clips and technical contact flags remain available.',
+ id:'stiletto-blades',shortName:'STILETTO',navDetail:'Blades · welders · red visor',title:'STILETTO · interchangeable forearms',revision:'body-v1 / blades-v4 / welders-v1 / visor-v3',
+ route:'/stepanoskin/loopforge/play/asset-review/stiletto',conceptRoute:'/stepanoskin/loopforge/design#agents',status:'Blades accepted · welder/effects review',
+ description:'Twin blades, twin welders or mixed forearms on the existing motion bank. Blue-white welder flames and a red visor with its descending centre seam are switchable. Original blade audits remain separate from module review.',
  checks:['Original / corrected at the same timestamp','2,335 corrected poses checked at 120 Hz','Blade, body and flat-floor review','Remaining leg contacts, blends and paired encounters']
 };
 export const cathexisReviewAsset:ProductionReviewAsset={
- id:'cathexis-intake',shortName:'CATHEXIS',navDetail:'Body · Grace · mechanical faces',title:'CATHEXIS · accepted body and face studies',revision:'body-v2 / Grace 3k & 8k / three mechanisms',
- route:'/stepanoskin/loopforge/play/asset-review/cathexis',conceptRoute:'/stepanoskin/loopforge/design?model=cathexis#model-briefs',status:'Body accepted · rigging next',
- description:'Accepted v2 body with the completed rear skirt, two Grace masks and three mechanical expressions. Inspect surfaces and camera scale before fitting or rigging.',
- checks:['Body and head close inspection','Grace 3k / 8k at the same camera angle','Three reduced mechanical-face studies','No animation or fitted assembly yet']
+ id:'cathexis-intake',shortName:'CATHEXIS',navDetail:'4 motions · Grace',title:'CATHEXIS · motion & mask review',revision:'body-v2 / motion-v1 / Grace coverage-v2',
+ route:'/stepanoskin/loopforge/play/asset-review/cathexis',conceptRoute:'/stepanoskin/loopforge/design?model=cathexis#model-briefs',status:'2 motions approved · 2 auditions',
+ description:'Compare original/corrected Hot Walk and Happy Sway with skirt and foot inspection. Switch to static face fitting for full/half Grace over the intact mechanical face.',
+ checks:['Original/corrected at the same pose','1,907 corrected skirt/leg samples at 120 Hz','Grounding, loop seam and CCTV readability','Moving Grace, blends and contacts remain open']
 };
 export const productionReviewAssets:readonly ProductionReviewAsset[]=[limenReviewAsset,workerReviewAsset,stilettoReviewAsset,cathexisReviewAsset];

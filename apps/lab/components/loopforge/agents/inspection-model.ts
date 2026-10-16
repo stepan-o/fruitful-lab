@@ -5,13 +5,15 @@ import {TransformNode} from '@babylonjs/core/Meshes/transformNode';
 import {PBRMaterial} from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import {Vector3} from '@babylonjs/core/Maths/math.vector';
 import {DirectionalLight} from '@babylonjs/core/Lights/directionalLight';
+import {createEyeLenses,type EyePatch} from './character-emission';
 import {Color3} from '@babylonjs/core/Maths/math.color';
 import type {CharacterStage} from '../factory-study/scene';
+import {createFittedFace} from './fitted-face';
 import {worldPoint} from '@/lib/loopforge/spatial/floor';
 export type InspectionFile={src:string;sha256:string;bytes:number};
 export type InspectionSurface='textured'|'clay'|'wireframe';
 /** Shared static-asset adapter. No rig, animation or physical fit is inferred. */
-export async function loadInspectionModel(stage:CharacterStage,file:InspectionFile,signal:AbortSignal){
+export async function loadInspectionModel(stage:CharacterStage,file:InspectionFile,signal:AbortSignal,bodyWithMask=false,eyePatch?:EyePatch){
  const integrity='sha256-'+btoa(String.fromCharCode(...file.sha256.match(/../g)!.map(x=>parseInt(x,16))));
  const response=await fetch(file.src,{signal:AbortSignal.any([signal,AbortSignal.timeout(60000)]),integrity,credentials:'same-origin'});
  if(!response.ok)throw Error('The selected asset could not be downloaded.');
@@ -28,9 +30,15 @@ export async function loadInspectionModel(stage:CharacterStage,file:InspectionFi
   const materials=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{m.maxSimultaneousLights=6;return {m,base:m.albedoTexture,mr:m.metallicTexture,normal:m.bumpTexture,color:m.albedoColor.clone(),metal:m.metallic,rough:m.roughness};});
   function room(value:'security'|'conveyor'){const p=value==='security'?[131,122]:[120.8,149.6];root.position.set(...worldPoint(p[0],p[1]));root.position.y=.015;stage.gate(true);stage.refresh();}
   root.rotation.y=Math.PI;room('security');let disposed=false;
+  const fitted=createFittedFace(stage,root,signal,faces=>{if(fill)fill.includedOnlyMeshes=[...meshes,...faces];});
+  const bodyEyes=eyePatch?createEyeLenses(meshes[0],eyePatch,bodyWithMask?.174:eyePatch.zMin):null;
+  function eyes(value:boolean){bodyEyes?.enabled(value);fitted.eyes(value);}
+  function surface(value:InspectionSurface){for(const {m,base,mr,normal,color,metal,rough} of materials){m.albedoTexture=value==='clay'?null:base;m.metallicTexture=value==='clay'?null:mr;m.bumpTexture=value==='clay'?null:normal;m.albedoColor=value==='clay'?new Color3(.46,.48,.44):color;m.metallic=value==='clay'?0:metal;m.roughness=value==='clay'?.85:rough;m.wireframe=value==='wireframe';}fitted.surface(value);}
+
   return {room,turn(deg:number){root.rotation.y=Math.PI+deg*Math.PI/180;stage.refresh();},light(value:boolean){fill?.setEnabled(value);stage.refresh(true);},
-   surface(value:InspectionSurface){for(const {m,base,mr,normal,color,metal,rough} of materials){m.albedoTexture=value==='clay'?null:base;m.metallicTexture=value==='clay'?null:mr;m.bumpTexture=value==='clay'?null:normal;m.albedoColor=value==='clay'?new Color3(.46,.48,.44):color;m.metallic=value==='clay'?0:metal;m.roughness=value==='clay'?.85:rough;m.wireframe=value==='wireframe';}stage.refresh(true);},
-   dispose(){if(disposed)return;disposed=true;meshes.forEach(m=>stage.shadow.removeShadowCaster(m));fill?.dispose();container.dispose();root.dispose();}
+   surface,face:fitted.face,eyes,
+
+   dispose(){if(disposed)return;disposed=true;fitted.dispose();bodyEyes?.dispose();meshes.forEach(m=>stage.shadow.removeShadowCaster(m));fill?.dispose();container.dispose();root.dispose();}
   };
  }catch(error){fill?.dispose();container.dispose();root.dispose();throw error;}
 }

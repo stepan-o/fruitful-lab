@@ -1,0 +1,129 @@
+{
+  "runtimeSHA256": "156f11fff75c4eba27c74d953b5b1c5b9246786aa15785e3e2b0fd9295245cc5",
+  "method": "120 Hz non-coplanar edge/triangle crossings. Cloth versus both legs, plus left versus right leg surfaces, below 0.85m. World-X ankle/knee lane separation is diagnostic for these forward-facing clips. No other body contacts, cloth self-contact, blends or dynamics certified. Coplanar/tangent contact, full containment and velocity continuity are not certified.",
+  "handContacts": {
+    "method": "120 Hz wrist-relative palm proxy versus body-relative contact target; not finger or mesh collision certification.",
+    "hipPalmErrorMaxM": 2.591387602883948e-05,
+    "templePalmErrorMaxM": 3.126090912175831e-05,
+    "hipSamples": 701,
+    "templeSamples": 318
+  },
+  "clothTriangles": 14855,
+  "legTriangles": 5420,
+  "leftLegTriangles": 2711,
+  "rightLegTriangles": 2709,
+  "clips": [
+    {
+      "clip": "Hot_Walk_Source",
+      "samples": 701,
+      "costumeLegContactFrames": 652,
+      "legLegContactFrames": 276,
+      "maxLegKeyRotationStepRadians": 0.23523449599570226,
+      "ankleLaneSeparationMinM": -0.170289629669104,
+      "ankleLaneSeparationMaxM": -0.05578628384344904,
+      "kneeLaneSeparationMinM": 0.019661325543193997,
+      "kneeCentreDistanceMinM": 0.06819274035165812,
+      "footMinM": 0.04030415901522259,
+      "footMaxM": 0.08523422723668928,
+      "endpointMaxM": 0.03734271404427308
+    },
+    {
+      "clip": "Hot_Walk_Corrected",
+      "samples": 701,
+      "costumeLegContactFrames": 0,
+      "legLegContactFrames": 0,
+      "maxLegKeyRotationStepRadians": 0.09945233517543076,
+      "ankleLaneSeparationMinM": 0.0225859061359458,
+      "ankleLaneSeparationMaxM": 0.14155010431474535,
+      "kneeLaneSeparationMinM": 0.07104421693648225,
+      "kneeCentreDistanceMinM": 0.13202537803606743,
+      "footMinM": 0.0013107718849006515,
+      "footMaxM": 0.005320277867596847,
+      "endpointMaxM": 0.0
+    },
+    {
+      "clip": "Happy_Sway_Source",
+      "samples": 1206,
+      "costumeLegContactFrames": 433,
+      "legLegContactFrames": 362,
+      "maxLegKeyRotationStepRadians": 0.046733726947582016,
+      "ankleLaneSeparationMinM": -0.010632725228278947,
+      "ankleLaneSeparationMaxM": 0.004688475368705203,
+      "kneeLaneSeparationMinM": 0.1035922049841048,
+      "kneeCentreDistanceMinM": 0.125918451409031,
+      "footMinM": 0.0005312714980404238,
+      "footMaxM": 0.03561656018241842,
+      "endpointMaxM": 0.00032658819923982445
+    },
+    {
+      "clip": "Happy_Sway_Corrected",
+      "samples": 1206,
+      "costumeLegContactFrames": 0,
+      "legLegContactFrames": 0,
+      "maxLegKeyRotationStepRadians": 0.013026093666627143,
+      "ankleLaneSeparationMinM": 0.20438335002872096,
+      "ankleLaneSeparationMaxM": 0.20438678217605089,
+      "kneeLaneSeparationMinM": 0.18894047983319384,
+      "kneeCentreDistanceMinM": 0.20101490684242765,
+      "footMinM": 0.0019979705769865488,
+      "footMaxM": 0.002000036303961363,
+      "endpointMaxM": 0.0
+    }
+  ],
+  "motionQuality": [
+    {
+      "clip": "Hot_Walk_Source",
+      "hipTravelRangeM": [
+        0.12477136201531483,
+        0.049900205130135156,
+        0.03944621661945055
+      ],
+      "rightArmMaxKeyStepDegrees": {
+        "mixamorig:RightHand": 24.305198279065362,
+        "mixamorig:RightForeArm": 6.732943673901258,
+        "mixamorig:RightArm": 11.275693324439032
+      }
+    },
+    {
+      "clip": "Hot_Walk_Corrected",
+      "hipTravelRangeM": [
+        0.12475748482315221,
+        0.04603598397527442,
+        0.03932766564708785
+      ],
+      "rightArmMaxKeyStepDegrees": {
+        "mixamorig:RightHand": 12.1527119580342,
+        "mixamorig:RightForeArm": 5.416424691013538,
+        "mixamorig:RightArm": 7.273881703683561
+      }
+    },
+    {
+      "clip": "Happy_Sway_Source",
+      "hipTravelRangeM": [
+        0.3090012414202387,
+        0.025514906518129266,
+        0.06649815878207593
+      ],
+      "soleSamples": 1206,
+      "soleVertices": 940,
+      "maxSoleDriftM": 0.05480768678341545,
+      "soleMinM": 0.0005312714980404238,
+      "soleMaxOfMinM": 0.03561656018241842,
+      "legacyPelvisCentredFootSlideM": 0.271728361278889
+    },
+    {
+      "clip": "Happy_Sway_Corrected",
+      "hipTravelRangeM": [
+        0.12968721310165826,
+        0.008403926327096967,
+        0.027860815085615442
+      ],
+      "soleSamples": 1206,
+      "soleVertices": 940,
+      "maxSoleDriftM": 0.0021219294033893656,
+      "soleMinM": 0.0019979705769865488,
+      "soleMaxOfMinM": 0.002000036303961363,
+      "legacyPelvisCentredFootSlideM": 0.10903947861950995
+    }
+  ]
+}

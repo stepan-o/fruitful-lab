@@ -32,3 +32,7 @@ await import("./check-worker-review.mjs");
 await import("./check-stiletto-review.mjs");
 
 await import("./check-cathexis-review.mjs");
+
+await import("./check-assemblies.mjs");
+
+await import("./check-cathexis-motion.mjs");

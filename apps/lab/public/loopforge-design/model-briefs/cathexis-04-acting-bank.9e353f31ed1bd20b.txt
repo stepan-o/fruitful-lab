@@ -1,0 +1,227 @@
+CATHEXIS — motion auditions on the accepted shared rig
+
+HARD CHARACTER RULES
+- Only Hot Walk for locomotion. Public game name Hot_Walk. The existing approved stand-in export is Animation_Confident_Walk_withSkin.fbx; catalog source 106 Confident_Walk is the matching name candidate. Confirm the exact take against our approved reference. Do not silently substitute Confident_Strut, Flirty_Strut, Stage_Walk or another gait.
+- She NEVER runs and has NO alert state. Do not bundle run/sprint/alert as gameplay fallbacks. A reaction can interrupt a relaxed pose without creating an alert stance.
+- Normal behavior: chilling, vibing, flirting and theatrical social gestures. Coarse work and contamination often provoke frustration. Dirt and mood are related but remain independent.
+- Apply motions to the accepted body/rig, preserving mesh, skeleton and materials. No regeneration between clips.
+- Stage 2 is closed. The body keeps its original mechanical face; Grace is the only separate mask design. Full/half/exposed coverage is assembled in our app, independent of the body clip. Do not generate expression faces, facial animation or a separate motion bank for each mask appearance.
+- Emotion must read from posture, timing, head direction and gestures at factory-camera distance. The mask does not morph or supply a new expression for each clip.
+
+This is a broad audition inventory, not a claim that every motion is suitable. Names/IDs were checked against the official catalog on 14 October 2026. Review previews and actual character exports. Reject any candidate that contains combat, running, alert posing or a traveling gait other than Hot Walk. Optional groups are discovery material, not defaults.
+
+Start with the priority pass below after the four rig tests. Then test the wider groups without re-exporting duplicate IDs. Do not manufacture a missing motion or claim custom generation if unavailable. Catalog actions animate the body; they do not guarantee facial expression, articulated fingers or precise mask/prop contact.
+
+PRIORITY PASS
+
+- 106 Confident_Walk — public name Hot Walk; verify approved take
+- 576 Idle_Turn_Left
+- 586 Idle_Turn_Right
+- 52 Sit_to_Stand_Transition_F
+- 58 Step_to_Sit_Transition
+- 32 Chair_Sit_Idle_F
+- 362 Sit_Cross_Legged
+- 364 Sit_on_Chair_Arms_Crossed
+- 27 Big_Heart_Gesture
+- 48 Mirror_Viewing
+- 309 Talk_with_Left_Hand_on_Hip
+- 315 Hand_on_Hip_Gesture
+- 405 Joyful_Dance_with_Hand_Sway
+- 415 Happy_Sway_Standing
+- 41 Formal_Bow
+- 47 Listening_Gesture
+- 49 Motivational_Cheer
+- 308 Talk_Passionately
+- 313 Talk_with_Hands_Open
+- 408 Jazz_Hands
+- 26 Angry_Stomp
+- 51 Shouting_Angrily
+- 311 Stand_Talking_Angry
+- 316 Headache_Relief
+- 317 Shrug
+- 391 Head_Hold_in_Pain
+- 409 Finger_Wag_No
+- 588 Frustrated_Turn_Right
+
+FULL GROUP: CORE MOVEMENT
+- 106 Confident_Walk — Hot Walk is the ONLY gait. The existing worker export aliases this as Confident_Walk; verify the actual take, not just ID. No substitute struts.
+- 576 Idle_Turn_Left
+- 586 Idle_Turn_Right
+- 577 Idle_Step_Turn_Left — Small local pivot only; reject or trim traveling gait.
+- 52 Sit_to_Stand_Transition_F
+- 53 Sit_to_Stand_Transition_M
+- 57 Stand_to_Sit_Transition_M
+- 58 Step_to_Sit_Transition
+- 360 Sit_to_standTransition_Female_2
+- 365 Kneel_on_One_Knee_and_Stand — Knee, skirt, heel and hand contact need inspection; not routine navigation.
+
+FULL GROUP: CHILL / SEATED PRESENCE
+- 32 Chair_Sit_Idle_F
+- 33 Chair_Sit_Idle_M
+- 38 Dozing_Elderly
+- 263 Sleep_on_Desk
+- 268 Sit_and_Doze_Off
+- 272 Lie_on_Chair_Sunbathe_and_Sleep
+- 307 Sitting_Answering_Questions
+- 343 Sit_and_Drink — Chair/cup-contact audition only; not a new gameplay resource.
+- 356 Sit_Hands_on_Head_Lean_Back
+- 359 Look_Back_and_Sit
+- 362 Sit_Cross_Legged
+- 363 Sit_Cross_Legged_on_Floor
+- 364 Sit_on_Chair_Arms_Crossed
+- 369 Lie_Back_Leg_Swing
+- 370 Stand_To_Side_Lying
+- 371 Sit_Lie_Bed
+
+FULL GROUP: FLIRT / VANITY / VIBE
+- 27 Big_Heart_Gesture
+- 48 Mirror_Viewing — Vanity/self-inspection candidate; mirror contact or mask contact is not certified.
+- 309 Talk_with_Left_Hand_on_Hip
+- 315 Hand_on_Hip_Gesture
+- 318 Scheming_Hand_Rub — Hands can suggest self-satisfaction; animation does not reveal hidden motive.
+- 405 Joyful_Dance_with_Hand_Sway — Short stationary phrase for vibing; do not use perpetual full dances as her only idle.
+- 415 Happy_Sway_Standing — Candidate baseline relaxed sway, pending actual loop and costume testing.
+
+FULL GROUP: THEATRE / CONVERSATION
+- 25 Agree_Gesture
+- 28 Big_Wave_Hello
+- 29 Call_Gesture
+- 34 Checkout_Gesture
+- 37 Discuss_While_Moving — Gesture audition only; replace any pacing with Hot Walk.
+- 41 Formal_Bow
+- 42 Gentlemans_Bow
+- 47 Listening_Gesture
+- 49 Motivational_Cheer
+- 56 Stand_and_Chat
+- 59 Victory_Cheer
+- 290 Wave_One_Hand
+- 297 Personalized_Gesture
+- 298 Cheer_with_Both_Hands_Up
+- 299 Stand_Clap_and_Sit_Down
+- 300 Sit_Cheer_with_Left_Hand
+- 301 Cheer_with_Both_Hands_1
+- 302 Stand_Wave_and_Sit_Down
+- 303 Cheer_with_Both_Hands
+- 304 Seated_Fist_Pump
+- 305 Stand_Cheer_and_Sit_Down
+- 306 Cheer_with_One_Hand_Up
+- 308 Talk_Passionately
+- 310 Talk_with_Left_Hand_Raised
+- 313 Talk_with_Hands_Open
+- 314 Talk_with_Right_Hand_Open
+- 342 Stand_and_Drink — Prop-contact audition only; does not introduce a drinking mechanic.
+- 354 Sitting_Clap
+- 357 Sit_Thumbs_Up_Right
+- 358 Sit_Shout_Hands_on_Mouth
+- 403 Victory_Fist_Pump
+- 408 Jazz_Hands
+- 639 Jazz_Hands_inplace — In-place variant is not proof of zero root drift; inspect export.
+
+FULL GROUP: FRUSTRATION / REFUSAL / RECOIL
+- 26 Angry_Stomp
+- 31 Catching_Breath
+- 36 Confused_Scratch — Keep only if it reads as her irritation, not the worker’s dumb idle.
+- 51 Shouting_Angrily
+- 255 Angry_Ground_Stomp
+- 256 Angry_Ground_Stomp_1
+- 257 Angry_Ground_Stomp_2
+- 311 Stand_Talking_Angry
+- 316 Headache_Relief — Audition for weary frustration; do not infer illness from the source label.
+- 317 Shrug
+- 333 Look_Around_Dumbfounded
+- 355 Sit_Finger_Wag_No
+- 368 Angry_To_Tantrum_Sit
+- 391 Head_Hold_in_Pain — Head/crown/hair contact requires cleanup; pain-labeled source can be auditioned for frustration, not proof of injury.
+- 404 Crouch_and_Step_Back
+- 409 Finger_Wag_No
+- 579 Depressed_Full_Turn_Left — Emotional turn one-shot only, not another walk state.
+- 588 Frustrated_Turn_Right — Frustrated local turn only; check any steps do not become an alternate gait.
+
+FULL GROUP: CONTACT AUDITIONS
+- 274 Female_Crouch_Pick_Up_Place_Side
+- 276 Male_Bend_Over_Pick_Up
+- 277 Female_Crouch_Pick_Fruit_Basket_Stand
+- 278 Female_Stand_Pick_Fruit_Basket
+- 280 Female_Crouch_Pick_Throw_Forward
+- 281 Female_Bend_Over_Pick_Up_Inspect
+- 284 Collect_Object
+- 285 open_door
+- 286 open_door_1
+- 287 open_door_2
+- 288 open_door_3
+- 289 open_door_4
+
+FULL GROUP: OPTIONAL DANCE POOL
+- 22 FunnyDancing_01
+- 23 FunnyDancing_02
+- 24 FunnyDancing_03
+- 54 Squat_Stance
+- 63 Arm_Circle_Shuffle
+- 64 All_Night_Dance
+- 65 Bass_Beats
+- 66 Boom_Dance
+- 67 Bubble_Dance
+- 68 Cherish_Pop_Dance
+- 69 Crystal_Beads
+- 70 Cardio_Dance
+- 71 Denim_Pop_Dance
+- 72 Dont_You_Dare — Catalog category is Dancing. Name is not proof of a refusal gesture.
+- 73 Fast_Lightning
+- 74 Gangnam_Groove
+- 75 Indoor_Swing
+- 76 Love_You_Pop_Dance
+- 77 Magic_Genie
+- 78 Not_Your_Mom — Catalog category is Dancing. Name is not proof of a dismissal gesture.
+- 79 OMG_Groove
+- 80 Pop_Dance_LSA2
+- 81 Pod_Baby_Groove
+- 82 Shake_It_Off_Dance
+- 83 Superlove_Pop_Dance
+- 84 You_Groove
+- 591 Hip_Hop_Dance
+- 592 Hip_Hop_Dance_1
+- 593 Hip_Hop_Dance_2
+- 594 Hip_Hop_Dance_3
+- 595 jazz_danc
+- 596 ymca_dance
+- 597 Hip_Hop_Dance_4
+
+FULL GROUP: OPTIONAL UNKNOWN IDLE / GESTURE
+- 3 Arise
+- 11 Idle_02
+- 12 Idle_03
+- 17 Skill_01
+- 18 Skill_02
+- 19 Skill_03
+- 243 Idle_3
+- 244 Idle_4
+- 245 Idle_5
+- 246 Idle_6
+- 247 Idle_7
+- 248 Idle_8
+- 249 Idle_9
+- 250 Idle_10
+- 251 Idle_11
+- 252 Idle_12
+- 253 Idle_13
+- 254 Idle_14
+- 344 Stand_Up1
+- 345 Stand_Up2
+- 346 Stand_Up3
+- 347 Stand_Up4
+- 348 Stand_Up5
+- 349 Stand_Up6
+- 350 Stand_Up7
+- 351 Stand_Up8
+- 352 Stand_Up9
+- 353 Stand_Up10
+- 599 Idle_15
+- 44 Happy_jump_f
+- 61 happy_jump_m
+- 417 Hop_with_Arms_Raised
+
+DELIVERY
+Export every accepted audition as textured rigged GLB and FBX, each with the character mesh, skin and skeleton. Preserve a neutral rigged A-pose separately. Keep source action IDs and actual embedded clip names in the report. Use aliases such as cathexis_391_head_hold_source; keep source names in metadata. Report actual duration, root translation and yaw, start/end pose, loopability and missing finger bones. If an export package excludes later actions, export those cards individually and report the omission; verify the files rather than the viewer alone.
+
+CUSTOM GAPS
+See 05-signature-actions.txt for greasy-hand disgust, optional removal/reseating of the same Grace mask, fine loom work, conveyor/vat hand contact and theatrical interaction with workers. Exchanging different expression masks is abandoned and is not a dependency for this motion bank. Catalog gestures are starting material, not proof those contacts exist. Hot Walk starts/stops and seating approaches must preserve her sole gait.

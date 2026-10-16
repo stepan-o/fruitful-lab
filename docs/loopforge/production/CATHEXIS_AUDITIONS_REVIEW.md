@@ -1,6 +1,6 @@
 # CATHEXIS — Mirror Viewing and Red Carpet cleanup
 
-Reviewed 2026-10-16. Hot Walk, Happy Sway Standing and full/half Grace fit remain owner-approved. Mirror Viewing is now also **owner-approved**. Red Carpet Walk has a **new corrected candidate awaiting owner review**, alongside its untouched export. Hot Walk remains CATHEXIS’s sole approved travel gait.
+Reviewed 2026-10-16. Hot Walk, Happy Sway Standing and full/half Grace fit remain owner-approved. The owner approved **corrected Mirror Viewing and Red Carpet Walk on 16 October 2026**. Their untouched exports remain available for comparison. Hot Walk remains CATHEXIS’s default travel gait; Red Carpet is a performance walk.
 
 [Open CATHEXIS motion and face viewer](/stepanoskin/loopforge/play/asset-review/cathexis) · [Approved motion record](CATHEXIS_MOTION_REVIEW.md)
 
@@ -15,7 +15,7 @@ Reviewed 2026-10-16. Hot Walk, Happy Sway Standing and full/half Grace fit remai
 
 The FBX bind orientations and spine labels differ from the earlier GLB. Import rebases source deformation into the existing canonical skeleton. It retains each source motion and skin rather than applying motion curves to incompatible weights. Eight weights per vertex preserve the FBX’s influence distribution. At five sampled checkpoints per clip, maximum deformation difference from the full FBX weights is 0.085 mm for Mirror Viewing and 0.106 mm for Red Carpet Walk; this is not an exhaustive all-frame equivalence claim.
 
-The separate, on-demand audition bank now contains source and corrected versions of both clips. Geometry and textures are shared; the corrected skin adds six baked skirt controls. The approved Hot Walk/Happy Sway bank remains byte-identical. Both banks use the same mask attachment, eyes, camera controls, floor guide, playback speed, timeline and saved review evidence. Approval belongs to each clip: corrected Mirror is labelled approved; corrected Red Carpet remains a candidate. Sharing a delivery bank does not share approval.
+The separate, on-demand audition bank now contains source and corrected versions of both clips. Geometry and textures are shared; the corrected skin adds six baked skirt controls. The approved Hot Walk/Happy Sway bank remains byte-identical. Both banks use the same mask attachment, eyes, camera controls, floor guide, playback speed, timeline and saved review evidence. Approval belongs to each clip: corrected Mirror and corrected Red Carpet are both labelled approved. Source clips remain references, and sharing a delivery bank does not share approval.
 
 - Runtime: `/media/files/d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd.glb`
 - SHA-256: `d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd`
@@ -32,7 +32,7 @@ Mirror Viewing uses the approved Hot Walk hand orientation as the reference for 
 
 Red Carpet phase-matches STILETTO Quick Walk’s measured **lateral ankle trajectories**, retaining Red Carpet’s own tempo, forward reach, pelvis sway and upper-body acting. Each leg swings as a complete chain from its hip; its original knee-local bend and twist curves are preserved. The foot counter-rotates to retain the source sole orientation and roll. Unlike the rejected pass, this does not solve a new knee pole at every frame or force a minimum knee bend near a straight leg.
 
-**Feet intentionally cross the pelvis centre line.** In this candidate the left ankle reaches 45.0 mm across and the right reaches 40.4 mm across. A positive left/right lane gap is not an acceptance requirement. Surface contact, forward/back separation and the visual walk determine clearance. An offline contact scan adds a broad, smoothed whole-leg outward swing only around close passes (0.25–1.74°); it never snaps the knee outward when contact starts. The hip-to-ankle distance remains source, so widening the pass does not change knee flexion. This changes ankle height as needed; the later small root-height adjustment maintains floor clearance.
+**Feet intentionally cross the pelvis centre line.** In the accepted correction the left ankle reaches 45.0 mm across and the right reaches 40.4 mm across. A positive left/right lane gap is not an acceptance requirement. Surface contact, forward/back separation and the visual walk determine clearance. An offline contact scan adds a broad, smoothed whole-leg outward swing only around close passes (0.25–1.74°); it never snaps the knee outward when contact starts. The hip-to-ankle distance remains source, so widening the pass does not change knee flexion. This changes ankle height as needed; the later small root-height adjustment maintains floor clearance.
 
 The reference is STILETTO’s delivered Quick Walk gait, whose documented cleanup adjusts the arms; there is no separate STILETTO leg correction to copy. Regression checks verify both centre crossings, original knee articulation within export precision, unchanged acting/tempo, identical source clips, and identical approved Mirror channels and surface/skin arrays.
 
@@ -64,4 +64,4 @@ Run from `apps/lab`, with Python NumPy/SciPy and a C compiler:
 5. Run `python scripts/characters/check-cathexis-red-carpet.py published-bank.glb previous-approved-bank.glb trajectory-audit.json`. For this pass, the previous approved Mirror bank is `be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f`. Run `node scripts/characters/check-cathexis-face-motion.mjs --auditions`; omit the flag to regress the approved bank. Run the production build and scoped lint checks.
 6. In the shared player, compare Corrected with Original export at the same pose; review hands at waist (2.5 s), turning (3.5 s), costume, front/side/rear views, repeat seam and full/split Grace. Save evidence with runtime hash, clip, version, time and camera.
 
-Remaining: owner acceptance of corrected Red Carpet Walk, normal maps, grime variants, animation blends, travel-speed matching, paired contacts and device/crowd performance. No change to the closed Stage 2 facial-expression program: Grace, split Grace and the underlying body face remain the expression system.
+Remaining: normal maps, grime variants, animation blends, travel-speed matching, paired contacts and device/crowd performance. No change to the closed Stage 2 facial-expression program: Grace, split Grace and the underlying body face remain the expression system.

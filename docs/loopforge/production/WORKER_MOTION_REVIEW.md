@@ -6,7 +6,7 @@ Game design → Agents → Production asset player → Worker 01. Direct route: 
 
 The real Babylon Security/Forge renderer now reviews one worker with 19 named motions, a neutral pose, three CCTV angles, scrubbing, slow playback, textured/clay/wireframe modes, sampled-contact shortcuts and downloadable review evidence. Starts paused, pauses when hidden, disposes its scene on exit. No main-play cast, BDI, save or production rules change. These clips are candidates, not blanket gameplay acceptance.
 
-## Correction status — 14 October 2026
+## Correction status — confirmed 16 October 2026
 
 The worker bank has been imported and audited, but has **not** received the
 offline motion-correction pass applied to STILETTO. All 19 clips retain their
@@ -17,7 +17,7 @@ First correction targets: Walk 2 (shin intersection near 0.97 s), Run Fast 10
 flagged gesture/pivot contacts, preserving deliberate head scratching, limping
 and expressive poses. Keep each source clip beside its corrected derivative,
 sample the exported result through the full cycle, and compare in factory light.
-Hot Walk remains reserved for Cathexis and needs clearance on her eventual body.
+Hot Walk remains reserved for CATHEXIS; her own corrected version is now approved.
 Afraid recoil and precision machine/cradle work still require authored actions;
 an audit or a renamed catalog gesture does not supply them.
 
@@ -25,7 +25,7 @@ an audit or a renamed catalog gesture does not supply them.
 
 **Hot Walk is the correct public name and Cathexis’s intended default gait.** The owner confirmed both its Meshy catalog label and visual movement. Preserve its expressive hip-led crossover, confidence and attitude. The internal FBX alias `Confident_Walk` is provenance, not a reason to rename the motion or reject its style. Its runtime name is `Hot_Walk`.
 
-The player currently shows it on Worker 01 as a motion stand-in. Cathexis still needs her own mesh and retarget/clearance review. Deliberate leg crossing and actual surfaces intersecting are distinct: preserve the former while correcting the latter on the final character. Do not copy this FBX’s tracks directly onto LIMEN’s differently named 23-joint rig.
+The worker player retains it as a source-motion reference. CATHEXIS now has her own accepted body and corrected Hot Walk in her dedicated player. Deliberate leg crossing and actual surfaces intersecting are distinct: preserve the former while correcting the latter on the final character. Do not copy this FBX’s tracks directly onto LIMEN’s differently named 23-joint rig.
 
 ## Planned posture and hand pass — 14 October 2026
 
@@ -86,7 +86,7 @@ Source filenames and hashes are captured in `apps/lab/lib/loopforge/agents/worke
 | Run Fast 10 | 0.80 s | Worker | Run is present. Legs cross/intersect near 0.78 s; review at quarter speed. |
 | Confused Scratch | 11.50 s | Worker | The requested puzzled idle is present. Check boot clearance near 0.20 s; keep the deliberate hand-to-head gesture. |
 | Injured Walk | 8.67 s | Worker | New export. Limp is present; leg meshes intersect near 6.83 s. Keep the damaged gait, adjust clearance. |
-| Hot Walk | 5.77 s | Cathexis | Owner confirms Hot Walk in Meshy and selects it as Cathexis’s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on Cathexis. |
+| Hot Walk | 5.77 s | Cathexis | Owner confirms Hot Walk in Meshy and selects it as Cathexis’s default walk. The hip-led crossover and attitude are intentional. This worker is only a source-motion reference; CATHEXIS’s own corrected version is now approved. |
 | Alert | 4.00 s | Worker | Attentive stance. No contacts found at the three sampled closest poses. |
 | Agree Gesture | 13.00 s | Worker | Long acknowledgement, not a tiny nod. Forearms intersect near 10.17 s; trim and adjust contact before gameplay. |
 | Angry Stomp | 8.00 s | Worker | Expressive reaction. Check legs near 0.45 s and arm crossing near 5.27 s. |

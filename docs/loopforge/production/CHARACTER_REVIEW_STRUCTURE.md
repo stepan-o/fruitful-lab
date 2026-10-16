@@ -2,7 +2,7 @@
 
 ## Entry and navigation
 
-Game Design → Agents → Asset review library. This is the current cast entry point; the rejected-model action fixture appears only in a collapsed historical section and identifies itself as legacy on direct entry. The library is the permanent index of character candidates. Every implemented player links directly to every other implemented player and back to the library. The active subject is marked; selecting another releases the previous scene. No background model preloading. Rivet Witch and Thrum appear as “awaiting model” entries with their review focus, without dead player links or invented readiness.
+Game Design → Agents → Asset review library. This is the current cast entry point; the rejected-model action fixture appears only in a collapsed historical section and identifies itself as legacy on direct entry. The library is the permanent index of character candidates. Every implemented player links directly to every other implemented player and back to the library. Navigation and library cards follow All models → Worker 01 → LIMEN → STILETTO → CATHEXIS → Model briefs, with the worker before every supervisor. The active subject is marked; selecting another releases the previous scene. No background model preloading. Rivet Witch and Thrum appear as “awaiting model” entries with their review focus, without dead player links or invented readiness.
 
 The common structure is a review workbench, separate from player-facing game UI and simulation authority. LIMEN, Worker 01 and STILETTO retain specialized controls. Shared navigation and six evidence gates are implemented. CATHEXIS now uses a configurable shell with separate static-assembly and baked-motion adapters; earlier specialized players can migrate incrementally. Do not duplicate a complete viewer for every new character.
 
@@ -62,7 +62,7 @@ For every intake: validate downloaded contents and names → assemble and normal
 
 ## Rebuild archive — 14 October 2026
 
-Game Design → Model briefs stores versioned reference inputs, copyable stage prompts, downloadable kits and links back to every available model player. Viewer navigation returns to the active character brief. LIMEN, Worker 01 and STILETTO have inspected results; CATHEXIS has six static inspection assets, a generation brief and face/condition references. Its assembly and first two corrected motion candidates are now available in separate workbench modes. See `model-briefs/README.md`.
+Game Design → Model briefs stores versioned reference inputs, copyable stage prompts, downloadable kits and links back to every available model player. Viewer navigation returns to the active character brief. LIMEN, Worker 01 and STILETTO have inspected results; CATHEXIS has six static inspection assets, a generation brief and face/condition references. Its assembly and four approved corrected motions are now available in separate workbench modes. See `model-briefs/README.md`.
 
 ## Static intake workbench
 
@@ -72,7 +72,7 @@ Grace 3k/8k comparisons preserve camera pose and subject orientation. Isolated f
 
 ## Baked motion adapter — 15 October 2026
 
-The same shell switches between CATHEXIS motion cleanup and face fitting, disposing the inactive subject. The motion adapter loads one checksum-verified bank, renders only its selected source/corrected skin, and supports same-pose comparison, neutral reset, play/pause, scrub, speed, looping, camera and material controls. It starts paused and stops when hidden/offscreen. Evidence includes clip, version, time and asset hash. Six baked skirt joints avoid live cloth cost. Full/split Grace fit is owner-approved. A fixed clip origin, optional 10 cm floor grid and unobscured feet separate true motion from preview movement. Supervisor portrait, full-body and CCTV framing use the same performer. Arm/contact changes remain motion candidates. See [motion record](CATHEXIS_MOTION_REVIEW.md).
+The same shell switches between CATHEXIS motion cleanup and face fitting, disposing the inactive subject. The motion adapter loads one checksum-verified bank, renders only its selected source/corrected skin, and supports same-pose comparison, neutral reset, play/pause, scrub, speed, looping, camera and material controls. It starts paused and stops when hidden/offscreen. Evidence includes clip, version, time and asset hash. Six baked skirt joints avoid live cloth cost. Full/split Grace fit is owner-approved. A fixed clip origin, optional 10 cm floor grid and unobscured feet separate true motion from preview movement. Supervisor portrait, full-body and CCTV framing use the same performer. Hot Walk, Happy Sway, Mirror Viewing and Red Carpet Walk are owner-approved. Blends, travel-speed matching and paired contacts remain open. See [motion record](CATHEXIS_MOTION_REVIEW.md).
 
 ## One performer across information screens and the factory
 

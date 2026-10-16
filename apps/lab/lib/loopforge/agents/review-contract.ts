@@ -14,10 +14,10 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
  'cathexis-intake': {
   body:{status:'Accepted slice',detail:'Accepted v2 silhouette and rear skirt; rigged export has 51,031 triangles. Matching delivery normal map remains missing.'},
   equipment:{status:'Accepted slice',detail:'Owner approves full/split Grace fit on the intact animated head. Recessed eyes and static/moving fitting share one adapter. Physical mask removal and facial articulation remain outside this slice.'},
-  motion:{status:'Accepted slice',detail:'Owner approves corrected Hot Walk and Happy Sway. Mirror Viewing and Red Carpet Walk are new source auditions, with their own FBX skin weights and pending acting/contact cleanup. Head Hold in Pain is missing; that ZIP contains Mirror Viewing.'},
-  contact:{status:'Needs work',detail:'1,907 corrected poses pass sampled dress/leg and leg/leg checks; standing sole drift is at most 2.12 mm. Grace attachment passes 22,908 samples. Hand/mask surfaces, self-contact, blends and paired encounters remain unverified.'},
+  motion:{status:'Accepted slice',detail:'Owner approves corrected Hot Walk, Happy Sway, Mirror Viewing and Red Carpet Walk. Hot Walk remains the default travel gait; Red Carpet is a performance walk. Original exports remain available for comparison. Head Hold in Pain is missing; that ZIP contains Mirror Viewing.'},
+  contact:{status:'Needs work',detail:'3,505 corrected poses across both banks pass sampled dress/leg and leg/leg checks; Happy Sway sole drift is at most 2.12 mm. Grace attachment passes 22,908 first-bank and 19,188 second-bank samples. Hand/mask surfaces, self-contact, blends and paired encounters remain unverified.'},
   readability:{status:'Candidate',detail:'Portrait, full-body and CCTV framing share one performer. A fixed floor grid exposes contact drift; close-up acceptance does not certify distant action readability.'},
-  performance:{status:'Not measured',detail:'Approved bank: 11.51 MB. A separate source-audition bank loads only on selection; one body renders. Baked skinning, no runtime cloth. Crowd and physical-device performance remain unmeasured.'}
+  performance:{status:'Not measured',detail:'Approved banks: 11.51 MB for Hot Walk/Sway, 13.88 MB for Mirror/Red Carpet. Only the selected bank loads; one body renders. Baked skinning, no runtime cloth. Crowd and physical-device performance remain unmeasured.'}
  },
  'limen-assembly': {
   body:{status:'Accepted slice',detail:'Owner approved prototype appearance and character resemblance.'},

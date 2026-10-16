@@ -18,8 +18,8 @@ export const stilettoReviewAsset:ProductionReviewAsset={
 };
 export const cathexisReviewAsset:ProductionReviewAsset={
  id:'cathexis-intake',shortName:'CATHEXIS',navDetail:'4 motions · Grace',title:'CATHEXIS · motion & mask review',revision:'body-v2 / motion-v1 / Grace coverage-v2',
- route:'/stepanoskin/loopforge/play/asset-review/cathexis',conceptRoute:'/stepanoskin/loopforge/design?model=cathexis#model-briefs',status:'2 motions approved · 2 auditions',
- description:'Compare original/corrected Hot Walk and Happy Sway with skirt and foot inspection. Switch to static face fitting for full/half Grace over the intact mechanical face.',
- checks:['Original/corrected at the same pose','1,907 corrected skirt/leg samples at 120 Hz','Grounding, loop seam and CCTV readability','Moving Grace, blends and contacts remain open']
+ route:'/stepanoskin/loopforge/play/asset-review/cathexis',conceptRoute:'/stepanoskin/loopforge/design?model=cathexis#model-briefs',status:'4 motions approved',
+ description:'Compare four approved corrected motions with their original exports: Hot Walk, Happy Sway, Mirror Viewing and Red Carpet Walk. Inspect full/half Grace over the intact mechanical face.',
+ checks:['Original/corrected at the same pose','3,505 corrected skirt/leg samples at 120 Hz','Grounding, loop seam and CCTV readability','Grace fit approved; blends and paired contacts remain open']
 };
-export const productionReviewAssets:readonly ProductionReviewAsset[]=[limenReviewAsset,workerReviewAsset,stilettoReviewAsset,cathexisReviewAsset];
+export const productionReviewAssets:readonly ProductionReviewAsset[]=[workerReviewAsset,limenReviewAsset,stilettoReviewAsset,cathexisReviewAsset];

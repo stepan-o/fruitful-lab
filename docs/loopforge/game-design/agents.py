@@ -15,7 +15,7 @@ def render_agents():
         sources = ', '.join(f'{v["src"]} {v["width"]}w' for v in variants)
         return f'<figure><a href="{variants[-1]["src"]}" target="_blank" rel="noopener"><img src="{first["src"]}" srcset="{sources}" sizes="(max-width:700px) 90vw, 520px" width="{first["width"]}" height="{first["height"]}" loading="lazy" decoding="async" alt="{e(label)}"></a><figcaption>{e(label)} · original concept reference</figcaption></figure>'
 
-    out = ['''<header class="section-head"><span class="kicker">15 October · current character pipeline</span>
+    out = ['''<header class="section-head"><span class="kicker">16 October · current character pipeline</span>
     <h2>Characters you can recognize in motion.</h2>
     <p>The prebuilt factory needs readable people: workers carrying the consequences of a shift, and supervisors whose posture, tools and actions reveal who they are.</p></header>
     <div class="callout"><h3>Start with the current model library.</h3>
@@ -27,9 +27,9 @@ def render_agents():
         ('LIMEN', '/stepanoskin/loopforge/play/agent-test/limen', 'Body, emitter and living energy',
          'The accepted body and forearm mount, walk/run clips and authored emitter-adjustment idle. Cyan strands move, flicker and power down as he works the controls.',
          'Next: paired gate inspection and worker contact.', 'LIMEN_MESHY_REVIEW.md'),
-        ('Worker 01', '/stepanoskin/loopforge/play/asset-review/worker', 'Nineteen motions on one rig',
-         'Idle, scratch, locomotion, carry, gestures and incident reactions. Hot Walk is retained as Cathexis’s future default gait, demonstrated on this worker stand-in.',
-         'Audited, not corrected. Next: gait clearance, natural arm/wrist posture and a finger-rig feasibility check; afraid recoil and precise machine work still need authoring.', 'WORKER_MOTION_REVIEW.md'),
+        ('Worker 01', '/stepanoskin/loopforge/play/asset-review/worker', 'Nineteen corrected motions and articulated hands',
+         'Original/corrected comparisons for idle, scratch, locomotion, carry, gestures and incidents. Ten finger hinges add relaxed, gripping and releasing poses; a fixed floor reference exposes foot contact.',
+         'Offline corrections and an exported-mesh 120 Hz audit are delivered for owner review. Paired interactions, transitions, afraid recoil and precise machine work remain separate scene-authoring gates.', 'WORKER_MOTION_REVIEW.md'),
         ('STILETTO', '/stepanoskin/loopforge/play/asset-review/stiletto', 'Blades, active welders and red visor',
          'Owner accepts the blade appearance and acting. The same motion player now offers twin welders and mixed tools, blue-white flame flow and a red visor. Eighteen source motions plus five corrected alternatives remain available.',
          'Next: module-specific clearance, remaining leg contacts, blends and machine-contact acting. Blade audit counts do not certify welders.', 'STILETTO_MOTION_REVIEW.md'),

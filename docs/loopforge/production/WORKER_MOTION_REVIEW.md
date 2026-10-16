@@ -1,124 +1,85 @@
-# Worker 01 motion review — 13 October 2026
+# Worker 01 motion cleanup — 16 October 2026
 
-## Where to review
+## Delivered candidate
 
-Game design → Agents → Production asset player → Worker 01. Direct route: `/stepanoskin/loopforge/play/asset-review/worker`.
+Game design → Agents → Production asset player → Worker 01. Direct route: `/stepanoskin/loopforge/play/asset-review/worker`. Worker is the first character tab, before the supervisors.
 
-The real Babylon Security/Forge renderer now reviews one worker with 19 named motions, a neutral pose, three CCTV angles, scrubbing, slow playback, textured/clay/wireframe modes, sampled-contact shortcuts and downloadable review evidence. Starts paused, pauses when hidden, disposes its scene on exit. No main-play cast, BDI, save or production rules change. These clips are candidates, not blanket gameplay acceptance.
+This revision implements the previously committed correction and hand plan. The earlier pass imported and audited the source; it did not repair it. The new bank contains nineteen corrected derivatives beside nineteen untouched source motions, plus Relax, Grip and Release hand studies. The default view is corrected Idle, paused. Original/Corrected switches preserve the selected time and camera for comparison. Source-contact markers retain their original meaning.
 
-## Correction status — confirmed 16 October 2026
+The accepted 25,893-triangle body is unchanged. The source skin has 24 joints; the corrected skin has 34, adding one rigid hinge per visible finger. The existing separated fingers support this movement without replacing the hands or regenerating the character. The mesh does not have suitable intermediate knuckle loops, so this is ten articulated digit plates, not a full human finger rig.
 
-The worker bank has been imported and audited, but has **not** received the
-offline motion-correction pass applied to STILETTO. All 19 clips retain their
-source movement. Review centering is a camera convenience, not a gait repair.
+## What changed
 
-First correction targets: Walk 2 (shin intersection near 0.97 s), Run Fast 10
-(leg intersection near 0.78 s) and Injured Walk (near 6.83 s). Then review the
-flagged gesture/pivot contacts, preserving deliberate head scratching, limping
-and expressive poses. Keep each source clip beside its corrected derivative,
-sample the exported result through the full cycle, and compare in factory light.
-Hot Walk remains reserved for CATHEXIS; her own corrected version is now approved.
-Afraid recoil and precision machine/cradle work still require authored actions;
-an audit or a renamed catalog gesture does not supply them.
+- Leg clearance is corrected with a smooth whole-chain swing from the hip. Knee-local source curves are preserved, avoiding a new independent knee wobble. Feet retain source orientation; the source lowest-sole height is restored without flattening jumps, the limp or collapse. Foot centerline crossing is not treated as a collision by itself.
+- Arms get per-clip clearance adjustments. Rest/locomotion wrists have reduced extreme flex; expressive gestures retain their intent. Scratch, agreement and Hot Walk were refined again against the final exported finger geometry.
+- Finger weights are rigid on each digit. All corrected clips explicitly set finger poses, preventing a previous grip from leaking into another clip. Three separate hand studies demonstrate the range.
+- The review scene anchors once at the first frame. A 10 cm floor grid exposes actual travel instead of moving the scene with every hip sway. Following travel remains an optional inspection aid.
 
-## Owner decision: Hot Walk belongs to Cathexis
+Corrections are baked offline with the checked-in Python/NumPy/SciPy tooling and a small C triangle-intersection helper. Blender was not used for this pass. Babylon plays ordinary skeletal tracks; no runtime IK, finger physics, retargeter or per-frame finger React updates were added. Original and corrected versions share geometry/textures; only the selected body is rendered.
 
-**Hot Walk is the correct public name and Cathexis’s intended default gait.** The owner confirmed both its Meshy catalog label and visual movement. Preserve its expressive hip-led crossover, confidence and attitude. The internal FBX alias `Confident_Walk` is provenance, not a reason to rename the motion or reject its style. Its runtime name is `Hot_Walk`.
+## Export verification
 
-The worker player retains it as a source-motion reference. CATHEXIS now has her own accepted body and corrected Hot Walk in her dedicated player. Deliberate leg crossing and actual surfaces intersecting are distinct: preserve the former while correcting the latter on the final character. Do not copy this FBX’s tracks directly onto LIMEN’s differently named 23-joint rig.
+The delivered GLB is 10,794,320 bytes (10.29 MiB), with 41 tracks. SHA-256: `12f1714557a25ca9152e45d5d2d5b5385de3416bf5b703ebd84899342240a2a3`.
 
-## Planned posture and hand pass — 14 October 2026
+The validator checks the original geometry, skin, bind matrices and every source animation sampler against the pinned original bank. They remain unchanged. It also validates the corrected rig, all nineteen derivatives, explicit finger tracks, finite data, normalized weights and the hash-pinned clearance report. glTF validation reports zero errors; the inherited non-root skinned-mesh warning remains.
 
-The owner asks for more natural arm/hand posture and finger articulation. This is
-the next worker cleanup scope, not a claim that the current asset has changed.
+The final exported mesh was sampled at 120 Hz across every full clip: **13,551 poses, 5,138 source contact frames, zero detected corrected contact frames** in the tested regions. These are interior triangle crossings between legs, opposing forearms, hands/head, forearms/torso and hands/legs. This is not swept-volume, coplanar/contained-volume, machine-contact or transition certification. Intentional contact still needs artistic review.
 
-1. **Posture on the existing rig.** Adjust shoulders, elbows, forearm roll and
-   wrists per clip. Start with idle, walk and run; preserve the puzzled scratch,
-   injured gait and intended prop contacts. Bake corrections into separate clips.
-   A one-time runtime bone rotation would be overwritten by the next animation
-   sample; a global arm offset could break deliberate gestures.
-2. **Inspect the hands.** The present 24-joint skin stops at the hands. Inspect
-   finger geometry, separation and hinge locations before adding finger chains.
-   Usable geometry can be reweighted; fused or unsuitable fingers need local
-   mesh cleanup or replacement hands. Do not regenerate the accepted whole body
-   unless this inspection establishes a reason.
-3. **Add mechanical articulation in Blender.** Parent finger chains below the
-   existing hand bones while preserving body bone names, hierarchy and bind
-   transforms. Use rigid weights for finger plates and hinges, with deformation
-   confined to suitable joint geometry. Author relaxed curl, grip and release
-   first; individual finger acting follows actual scene needs. Existing body
-   clips need explicit/default finger poses so clip changes do not retain a
-   previous grip accidentally.
-4. **Export and compare.** Publish a new rig revision with updated skin-joint
-   metadata and validators, preserving the current 24-joint source. Compare the
-   rendered result against the source through all 19 motions. Check scratch/head,
-   hand/body, gait, floor, blend and actual prop contacts; a gripping pose alone
-   is not a completed work/cradle action.
+| Motion | Sampled poses | Source contact frames | Corrected contact frames |
+| --- | ---: | ---: | ---: |
+| Agree Gesture | 1561 | 136 | 0 |
+| Alert | 481 | 0 | 0 |
+| Angry Stomp | 961 | 413 | 0 |
+| Carry Heavy Walk | 781 | 0 | 0 |
+| Catching Breath | 841 | 247 | 0 |
+| Hot Walk | 693 | 344 | 0 |
+| Confused Scratch | 1381 | 705 | 0 |
+| Discuss While Moving | 965 | 834 | 0 |
+| Electrocuted Fall | 761 | 71 | 0 |
+| Electrocution Reaction | 561 | 0 | 0 |
+| Idle Turn Left | 113 | 102 | 0 |
+| Idle Turn Right | 133 | 133 | 0 |
+| Listening Gesture | 1121 | 1121 | 0 |
+| Push Forward and Stop | 313 | 110 | 0 |
+| Victory Cheer | 1121 | 306 | 0 |
+| Idle | 481 | 255 | 0 |
+| Injured Walk | 1041 | 291 | 0 |
+| Run Fast 10 | 97 | 23 | 0 |
+| Walk 2 | 145 | 47 | 0 |
 
-Bake animation offline and play skeletal clips in Babylon; do not introduce
-per-finger physics, per-frame React updates or a live retargeter. Keep hand detail
-for close acting and compare its cost at CCTV/crowd scale before selecting a
-background simplification. No performance improvement is assumed without a
-measurement.
+The three hand studies were checked separately at 60 Hz: 363 samples with no detected finger-to-finger crossings. Comparing knee-local rotations at 30 Hz gives a maximum difference of 0.000149°, within export precision. This preserves the original knee articulation; it does not certify the visual quality of every source performance.
 
-Blender's [skinning documentation](https://docs.staging.blender.org/manual/en/latest/animation/armatures/skinning/parenting.html)
-describes assigning vertices to bone groups; its
-[glTF exporter](https://docs.blender.org/manual/en/3.6/addons/import_export/scene_gltf2.html)
-supports armature/skinning animation. The pipeline choice here is proposed;
-Blender has not yet been used for this worker pass.
+The largest hip swing corrections for Walk 2, Run Fast 10 and Injured Walk are respectively 7.80°, 7.30° and 4.80°. There is no forced wide foot lane. Source hip acting, timing and root travel remain. Per-clip authoring measurements and the full region counts are in `apps/lab/lib/loopforge/agents/worker-cleanup.json` and the downloadable rebuild kit.
 
-## Export audit
+## Rebuild and review
 
-The latest `Loopforge Worker 01 - idle.fbx` (4.00 s) and `Loopforge Worker 01 - injured_walk.fbx` (8.67 s) contain real skinned geometry and motion. Geometry, weights, inverse binds and hierarchy match the other 17 standalone exports. Together: 25,893 triangles, 27 source nodes, 24 skin joints (22 weighted), no finger articulation. No vertices are unweighted; source weights are normalized. The original exports remain unchanged.
+Run from `apps/lab` with Python, NumPy, SciPy and a C compiler available. Use a temporary output directory outside the deployment tree. The scripts pin the accepted source bank; regeneration requires another import/validation pass.
 
-Idle had no detected contact at the three sampled closest poses. Injured Walk has positive leg mesh intersections at 6.833 s. The earlier replacement Walk 2 and Run Fast 10 still need leg-clearance work. Checking negative foot spacing alone is not sufficient to reject a motion: intentional crossing can be part of acting.
+```sh
+python scripts/characters/bake-worker-cleanup.py /tmp/worker-cleanup
+node scripts/characters/import-worker-cleanup.mjs /tmp/worker-cleanup
+python scripts/characters/check-worker-clearance.py /tmp/worker-cleanup/worker-runtime.glb /tmp/worker-cleanup/audit.json
+# If the exported fingers introduce residual contacts:
+python scripts/characters/refine-worker-contacts.py /tmp/worker-cleanup /tmp/worker-cleanup/worker-runtime.glb
+python scripts/characters/bake-worker-cleanup.py /tmp/worker-cleanup --reuse
+node scripts/characters/import-worker-cleanup.mjs /tmp/worker-cleanup
+python scripts/characters/check-worker-clearance.py /tmp/worker-cleanup/worker-runtime.glb /tmp/worker-cleanup/audit.json
+```
 
-`afraid_recoil` and precision `work_cradle` remain unprovided. Carry Heavy Walk is locomotion with a holding pose, not a substitute for machine interaction. Those two clips need offline authoring against actual props. Meshy’s smooth skinning can also bend metal plates; rigid plate weights and joint clearance remain a later cleanup gate.
+Run `python scripts/characters/check-worker-fingers.py /tmp/worker-cleanup/worker-runtime.glb` for the three hand studies.
 
-## Motion inventory and flags
+Update the committed audit from the final export, retaining the authoring measurements and hand-study results, then run `node scripts/characters/check-worker-review.mjs`. The validator rejects a report whose hash or clearance results do not match the delivered bank. Review the exact immutable asset in the production player at normal and quarter speed, with the fixed floor and from several angles.
 
-Source filenames and hashes are captured in `apps/lab/lib/loopforge/agents/worker-review.json`. The public labels below describe the reviewed motion, not inferred action IDs.
+## Remaining scene work
 
-| Preview | Duration | Intended actor | Review note |
-| --- | --- | --- | --- |
-| Idle | 4.00 s | Worker | New export. Staggered stance with torso turns and weight shifts; review foot planting before using as the default idle. No contacts found at the three sampled closest poses. |
-| Walk 2 | 1.20 s | Worker | Replacement walk candidate. The worker shins still intersect near 0.97 s; needs clearance adjustment. |
-| Run Fast 10 | 0.80 s | Worker | Run is present. Legs cross/intersect near 0.78 s; review at quarter speed. |
-| Confused Scratch | 11.50 s | Worker | The requested puzzled idle is present. Check boot clearance near 0.20 s; keep the deliberate hand-to-head gesture. |
-| Injured Walk | 8.67 s | Worker | New export. Limp is present; leg meshes intersect near 6.83 s. Keep the damaged gait, adjust clearance. |
-| Hot Walk | 5.77 s | Cathexis | Owner confirms Hot Walk in Meshy and selects it as Cathexis’s default walk. The hip-led crossover and attitude are intentional. This worker is only a source-motion reference; CATHEXIS’s own corrected version is now approved. |
-| Alert | 4.00 s | Worker | Attentive stance. No contacts found at the three sampled closest poses. |
-| Agree Gesture | 13.00 s | Worker | Long acknowledgement, not a tiny nod. Forearms intersect near 10.17 s; trim and adjust contact before gameplay. |
-| Angry Stomp | 8.00 s | Worker | Expressive reaction. Check legs near 0.45 s and arm crossing near 5.27 s. |
-| Catching Breath | 7.00 s | Worker | Includes a running approach before the recovery pose; about 6.24 m of pelvis travel. Select/author the recovery portion for a stationary overheating idle. |
-| Discuss While Moving | 8.03 s | Worker | Gesture with real travel (about 1.75 m net). Check legs near 4.15 s; placement and interruption need authored transitions. |
-| Listening Gesture | 9.33 s | Worker | Attentive gesture; boot clearance needs adjustment near the end. |
-| Victory Cheer | 9.33 s | Worker | Celebration with close feet near 1.27 s. Review overhead clearance in the room. |
-| Electrocution Reaction | 4.67 s | Worker | Shock reaction. No contacts found at the sampled closest poses; keep action timing tied to a confirmed incident. |
-| Electrocuted Fall | 6.33 s | Worker | One-shot collapse with vertical and forward travel. Check legs near 4.33 s and author ground contact; do not loop in gameplay. |
-| Push Forward and Stop | 2.60 s | Worker | Stepping two-handed push. Needs an actual prop/contact target and leg clearance near 0.87 s. |
-| Idle Turn Left | 0.93 s | Worker | Pivot transition. Inspect boot overlap near 0.53 s; reconcile heading with the agent path. |
-| Idle Turn Right | 1.10 s | Worker | Pivot transition. Inspect boot overlap near 0.63 s; reconcile heading with the agent path. |
-| Carry Heavy Walk | 6.50 s | Worker | Cradled carry pose; no contacts found at the three sampled closest poses. This is not the missing precision work/cradle interaction. |
+This is an implemented cleanup candidate awaiting owner visual review, not blanket gameplay approval. `afraid_recoil` and precision `work_cradle` are still separate authored actions. Carry Heavy Walk is a carrying gait, not machine interaction. Align grips against actual props; verify blend boundaries, navigation speed, reservations, planted contacts, falls and paired supervisor actions in their scenes. Broader rigid armor weighting and crowd/device performance are not certified by this pass.
 
-## Audit limits and conversion
+Catching Breath retains a running approach (about 6.24 m); Discuss While Moving retains travel (about 1.75 m). Turn and fall clips retain their heading/displacement. Do not label these stationary merely because the camera can follow them. Hot Walk remains a worker-body source reference; CATHEXIS has her own accepted gait and model. Do not mix these tracks directly with other supervisors' differently named rigs.
 
-Native ufbx 0.23.0 evaluated each source FBX at 60 Hz. The audit compared geometry/skin/bind/hierarchy hashes, measured pelvis travel and joint clearances, then tested skinned triangle intersections at each clip’s closest-leg, closest-arm and closest-hand/head poses. These are targeted candidates, not a full-cycle or swept-volume collision certificate. A non-contact result does not certify every frame. Markers in the player open those exact source times.
+Delivery uses the existing immutable asset pack and temporary app hosting while CloudFront setup is pending. No game/BDI/API, AWS permissions or CDN changes are made.
 
-The intermediate GLB uses metre conversion, the verified FBX inverse binds, original per-corner normals/UVs and sampled local TRS. Its source-to-skin check against native evaluation at Walk 2 / 0.9667 s had maximum vertex error below 0.00003 cm. The 8 strongest skin weights are retained/renormalized; the greatest discarded influence is 0.1163%. Source has up to 9 weights. Existing review material maps come from the same worker; full-surface emission is removed. There is no live retargeter or IK in this bench.
+## Verification record
 
-`import-worker-review.mjs` pins the verified intermediate hash, welds duplicate vertices, resamples tracks at 1e-5 tolerance, deduplicates data, optimizes the packed metallic/roughness texture and publishes through the existing immutable asset pipeline. One GLB is 7,486,164 bytes / 7.14 MiB, with 43,444 runtime vertices, all 19 clips, a 2048² colour map and a 1024² packed metallic/roughness map. This review-only budget covers the whole motion library, loaded only after opening its player. Source FBXs, duplicated neutral bodies and 4K masters are not shipped. The validator reports zero errors and the inherited non-root skinned-mesh warning, also present in the LIMEN review. Babylon visual verification is required as well as syntax validation.
+The bounded production build and character validators pass. Source preservation and full-cycle exported-mesh checks are complete. Browser review and focused test results are recorded with this revision in the PR. Physical-device and crowd measurements remain open; no earlier supervisor benchmark is claimed as a worker result.
 
-Horizontal subject-centering is a review transform and can be disabled to expose source travel. It does not alter the clips or certify in-place navigation. Vertical travel remains intact for falls. One-shots stop at their last frame by default; repeat is an explicit review option. Runtime BDI integration must own travel, heading, reservations, transitions and contacts separately.
-
-The raw source archive inventory, parsed frames, skin/contact checks and unoptimized intermediate remain in the local `worker-audit-v2` artifact directory. The imported app derivative has a content-hashed GLB, pinned manifest and short-lived pointer. Temporary app delivery follows the existing owner-approved CloudFront-pending approach; no S3 access policy, credentials or distribution are changed here. Source upload and CDN migration remain separate work.
-
-## Validation
-
-Asset integrity, clip identity, finite animation/skin data and the new review route are checked with the revision. Browser and production-build results are recorded in the PR; physical-device and crowd performance remain unmeasured. Do not inherit prior LIMEN benchmark numbers as worker results.
-
-### Implementation check, 13 October
-
-Production build completed with the full asset/character validation gates. Scoped ESLint passed. The agent-production, console-layout and LIMEN idle-cue suites passed (3 suites / 22 tests); the asset publication test passed. A broad Jest invocation was stopped before results while competing with the build; the focused run completed successfully. Standalone `tsc --noEmit --incremental false` also reports existing test-file type errors (floor test, Pinterest NODE_ENV assignments, Testing Library `exact` options and GrowthBook mocks); no new worker files were reported. The Next production build/type stage succeeded.
-
-Browser verification used the production server: design Agents → library → Worker 01 → back/reopen, 19 selectable motions plus neutral, Hot Walk playback/pause, exact contact jumps, Injured Walk, Confused Scratch, clay view, model/CCTV switching, Security/Forge and the second CCTV angle. The new Idle and Injured Walk were also reviewed as nine-pose source sequences in the diagnostic player. No captured browser warnings/errors. Phone/tablet viewport checks at 320/390/768 px showed no horizontal overflow; 390 px screenshot captured. This is a desktop viewport test, not physical-phone or crowd certification. Review still opens paused; source motion remains unchanged.
+Browser check (16 October): the production build loaded the corrected bank, source/corrected Walk 2 comparison preserved 0.97 s, mouse orbit changed the camera, Run Fast 10 / Injured Walk / Scratch / Agreement and Grip were inspected, quarter-speed playback and Forge CAM 2 worked. A 390 × 844 viewport had no horizontal overflow; no captured browser warnings/errors. Scoped ESLint and the four review-camera tests passed. These checks do not replace owner motion approval or physical-device testing.

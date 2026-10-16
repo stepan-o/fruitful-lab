@@ -28,10 +28,10 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
   performance:{status:'Not measured',detail:'Live single-character counters available. Crowd and physical-device budgets are not certified.'}
  },
  'worker-01-motions': {
-  body:{status:'Candidate',detail:'One imported worker body and rig; inspect against the approved source art.'},
+  body:{status:'Candidate',detail:'Accepted source body retained; corrected skin adds ten rigid digit hinges for inspection.'},
   equipment:{status:'Needs work',detail:'Working props and contact sockets have not been integrated.'},
-  motion:{status:'Candidate',detail:'19 motions available. Hot Walk is a Cathexis reference, not the worker default.'},
-  contact:{status:'Needs work',detail:'Audited, not corrected. Walk 2, Run Fast 10 and Injured Walk still have leg intersections; gesture contacts and missing afraid/work actions remain.'},
+  motion:{status:'Candidate',detail:'19 original/corrected motion pairs plus three finger-pose studies. Hot Walk remains a CATHEXIS source reference.'},
+  contact:{status:'Candidate',detail:'13,551 exported poses at 120 Hz clear the tested self-contact regions. Source/corrected comparison is available; blends, floor staging and paired prop/agent contacts remain separate gates.'},
   readability:{status:'Candidate',detail:'Review gestures in factory lighting and at CCTV scale before assigning gameplay meaning.'},
   performance:{status:'Not measured',detail:'One consolidated body and motion bank. Real crowd and device measurements remain open.'}
  },

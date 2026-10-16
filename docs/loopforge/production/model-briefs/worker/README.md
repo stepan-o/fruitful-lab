@@ -1,21 +1,19 @@
 # Worker 01 — model rebuild kit
 
-Rebuild brief v2 · 19 audited motions · 14 October 2026
+Rebuild brief v3 · corrected motion + fingers · 16 October 2026
 
-Audited · cleanup pending. Round cyan optics, ordinary worn industrial anatomy and readable uncertainty. The shared worker body has nineteen reviewed source motions; gait and hand cleanup are still open.
+The accepted body now has nineteen offline-corrected motion derivatives and three hand studies. The original 24-joint source stays intact; the corrected skin adds ten rigid digit hinges (34 joints). Geometry and textures are shared. Visual acceptance remains with the owner.
 
-Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.
-
-## Read first
-
-Use prompts in numbered order. Reference images are generated illustrations, not measured engineering projections. Respect each image's role in manifest.json: upload body views together as one character; props and masks separately. Never upload the whole gallery as one model. High-quality JPEG inputs preserve the original framing and use at most 1800 pixels on the longest edge; original PNG masters stay outside the runtime deployment.
+Use numbered prompts in order to regenerate upstream sources. Input images are illustrations, not measured projections. A Meshy regeneration will not reproduce the offline fixes, exact topology or bind transforms: rerun the correction pipeline and review the export before replacing it.
 
 Current viewer: https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/worker
 
+`export-audit.json` records the original intake. `motion-cleanup.json` records the corrected export and its full-cycle clearance checks. The detailed pipeline is in `WORKER_MOTION_REVIEW.md` linked from the viewer.
+
 ## Open work
 
-- Walk 2, Run Fast 10 and Injured Walk intersections
-- Natural shoulder, forearm and wrist posture; finger articulation
-- Afraid recoil and precise work/cradle interaction
+- Owner visual approval of the corrected motion bank.
+- Afraid recoil and precise work/cradle actions against real props.
+- Scene contacts, transitions, rigid armor refinement and crowd/device cost.
 
-Regeneration does not reproduce exact topology, rig transforms, sockets, exported hashes or offline fixes. Preserve source and derivative revisions; validate every new export in the production player before replacement.
+Hot Walk here is a source reference. CATHEXIS already has her own approved gait.

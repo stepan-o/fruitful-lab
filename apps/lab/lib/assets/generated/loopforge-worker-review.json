@@ -12,6 +12,17 @@
           "sha256": "299587fb5eefb1fa1dc725118d4edd17ae058ea4231610c19d079bde3c991933"
         }
       ]
+    },
+    "worker-01-corrected": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/12f1714557a25ca9152e45d5d2d5b5385de3416bf5b703ebd84899342240a2a3.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 10794320,
+          "sha256": "12f1714557a25ca9152e45d5d2d5b5385de3416bf5b703ebd84899342240a2a3"
+        }
+      ]
     }
   }
 }

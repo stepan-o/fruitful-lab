@@ -95,12 +95,11 @@ for clip in list(g['animations']):
  for node,path,_,z in tr:
   if path=='rotation':delta=R.from_quat(z[0])*R.from_quat(z[-1]).inv();z[:]=(R.from_rotvec(ease[:,None]*delta.as_rotvec())*R.from_quat(z)).as_quat()
   else:z+=ease[:,None]*(z[0]-z[-1])
+ gait=None
  if clip['name'].startswith('Mirror'):mirror_legs_pass(tr,ts)
  else:
-  # Same phase-matched Quick Walk paths as the approved Hot Walk. Preserve
-  # the original forward/vertical reach, foot roll, hips and variable timing.
-  from cathexis_hot_walk import rebuild_hot_walk
-  rebuild_hot_walk(d,tr,ts,copy.deepcopy(tr))
+  from cathexis_red_carpet import rebuild_red_carpet
+  gait=rebuild_red_carpet(d,tr,ts)
  if clip['name'].startswith('Mirror'):hands_pass(tr,ts)
  worlds=[d['world_at'](tr,t)for t in ts];ground=np.array([.002-points(w)[:,1].min()for w in worlds]);ground=gaussian_filter1d(ground,1.5,mode='wrap');ground[-1]=ground[0]
  drapes,record=drape_matrices(d,tr,ts,levels,cloth,legs,points,clearance_floor=.10,clearance_padding=.025 if clip['name'].startswith('Mirror') else .100,max_angle=.72)
@@ -117,5 +116,5 @@ for clip in list(g['animations']):
  for i,node in enumerate(newnodes):
   m=drapes[:,i].copy();m[:,1,3]+=ground
   for path,z in [('rotation',R.from_matrix(m[:,:3,:3]).as_quat()),('translation',m[:,:3,3]*100),('scale',np.tile([100*(1+.24*np.clip((1.02-levels[i])/.65,0,1)),100,100],(n,1)))]:channel(node,path,z)
- g['animations'].append(out);reports.append({'clip':out['name'],'maxGroundAdjustmentM':float(abs(ground).max()),'drape':record});print(reports[-1],flush=True)
+ g['animations'].append(out);reports.append({'clip':out['name'],'maxGroundAdjustmentM':float(abs(ground).max()),'drape':record,**({'gait':gait}if gait else {})});print(reports[-1],flush=True)
 g['buffers']=[{'byteLength':len(data)}];j=json.dumps(g,separators=(',',':')).encode();j+=b' '*((-len(j))%4);data+=b'\0'*((-len(data))%4);output.write_bytes(struct.pack('<4sII',b'glTF',2,28+len(j)+len(data))+struct.pack('<I4s',len(j),b'JSON')+j+struct.pack('<I4s',len(data),b'BIN\0')+data);output.with_suffix('.authoring.json').write_text(json.dumps(reports,indent=2))

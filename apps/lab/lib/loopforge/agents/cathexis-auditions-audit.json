@@ -57,7 +57,7 @@
     }
   ],
   "surfaceAudit": {
-    "runtimeSHA256": "be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f",
+    "runtimeSHA256": "d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd",
     "method": "120 Hz non-coplanar edge/triangle tests below 0.85m: skirt/legs and left/right legs. Excludes tangency, containment, upper body, hand/face, cloth self-contact, blends and dynamics. Samples both source and corrected candidates; no owner approval implied.",
     "clips": [
       {
@@ -112,8 +112,8 @@
         "legLegFrames": 0,
         "dressLegWorst": null,
         "legLegWorst": null,
-        "lowestSoleM": -0.0006680570567852632,
-        "highestSupportingSoleM": 0.00577047092549304,
+        "lowestSoleM": 0.00012546672133201785,
+        "highestSupportingSoleM": 0.006365778863975088,
         "endpointMaxM": 0.0
       }
     ]
@@ -157,33 +157,67 @@
         "maxKeyStepDegrees": 2.978730268898383
       }
     ],
-    "method": "120 Hz hand mesh vs central torso/waist (rest x \u00b10.26m, y 0.85\u20131.52m) non-coplanar triangle crossings. Palm targets tested during full-contact 1.10\u20136.10s. Excludes tangency, containment, cloth, arm/head, blends and dynamics."
+    "method": "120 Hz hand mesh vs central torso/waist (rest x \u00b10.26m, y 0.85\u20131.52m) non-coplanar triangle crossings. Palm targets tested during full-contact 1.10\u20136.10s. Excludes tangency, containment, cloth, arm/head, blends and dynamics.",
+    "unchangedInRuntimeSHA256": "d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd"
   },
   "cleanup": {
-    "status": "corrected candidates; owner acceptance pending",
-    "runtimeSHA256": "be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f",
+    "status": "Mirror Viewing owner-approved; corrected Red Carpet Walk candidate awaiting owner acceptance",
+    "runtimeSHA256": "d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd",
     "bodyJoints": 23,
     "additionalSkirtJoints": 6,
     "approvedBankUnchanged": true,
     "notes": [
-      "Both corrections restart from the pinned original exports; the previous high palm targets and fixed Red Carpet foot lanes are discarded.",
-      "Mirror uses approved Hot Walk palm orientation with lower waist targets and lower/rearward elbow guides.",
-      "Red Carpet phase-matches the same Quick Walk reference trajectories and knee bend planes as approved Hot Walk; original hips, tempo, forward/vertical reach and foot roll retained.",
-      "Smooth baked skirt drape, supporting-sole height and repeat-seam correction; no runtime IK or cloth solver."
+      "Approved Mirror channels and surface/skin arrays are identical to the v4 bank.",
+      "Red Carpet restarts from source; retains knee-local articulation and phase-matches Quick Walk lateral ankle paths with deliberate centre crossing.",
+      "A smooth whole-leg hip swing provides close-pass clearance; no reference knee bend planes, minimum knee-flexion clamp or separate foot lanes.",
+      "Smooth baked skirt drape, supporting-sole height and repeat closure; no runtime IK or cloth solver."
+    ],
+    "revision": "cathexis-auditions-cleanup-v5",
+    "authoring": [
+      {
+        "clip": "Mirror_Viewing_Corrected",
+        "maxGroundAdjustmentM": 0.045001154909681346,
+        "drape": {
+          "maxArcAngleRadians": 0.18583012076443245,
+          "minArcAngleRadians": 0.10000000000000002,
+          "method": "continuous length-preserving arc, tangent-aligned controls and damped shared envelope"
+        }
+      },
+      {
+        "clip": "Red_Carpet_Walk_Corrected",
+        "maxGroundAdjustmentM": 0.06304409138197642,
+        "drape": {
+          "maxArcAngleRadians": 0.6433578843020908,
+          "minArcAngleRadians": 0.2716788340010984,
+          "method": "continuous length-preserving arc, tangent-aligned controls and damped shared envelope"
+        },
+        "gait": {
+          "maxClearanceSwingDeg": 1.7424667438131074,
+          "minClearanceSwingDeg": 0.25007753476043104,
+          "kneeLocalCurves": "unchanged source after shared endpoint closure"
+        }
+      }
     ]
   },
   "trajectoryReview": {
+    "runtimeSHA256": "d20fdfe8152722fab7c5d421839c805b13ae3729ba8c8c5def93293403b9ddcd",
     "clip": "Red_Carpet_Walk_Corrected",
-    "runtimeSHA256": "be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f",
-    "ankleSignedLateralSpacingM": [
-      0.02758983086719409,
-      0.1419778027943353
+    "sourceKeys": 359,
+    "leftCrossMaxM": 0.04503278478651454,
+    "rightCrossMaxM": 0.040395811728591656,
+    "kneeArticulation": [
+      {
+        "joint": "mixamorig:LeftLeg",
+        "maxSourceClosureErrorDeg": 3.557350505394958e-06
+      },
+      {
+        "joint": "mixamorig:RightLeg",
+        "maxSourceClosureErrorDeg": 3.004900588103342e-06
+      }
     ],
-    "kneeCentreMinM": 0.13266197900299714,
-    "approvedHotWalkAnkleSignedLateralSpacingM": [
-      0.022585896305492376,
-      0.14155011121530856
-    ],
-    "method": "60 Hz joint positions in character world space; source-key samples. Reference phase matched by original forward-reach events. These measurements supplement visual review, not acting acceptance."
+    "originalActingAndTempoPreserved": true,
+    "mirrorChannelsAndSkinIdentical": true,
+    "bothSourceClipsIdentical": true,
+    "method": "Source-key joint curves. Preserve source articulation except shared final 0.3s closure; compare approved Mirror channels and surface/skin arrays exactly. Centre crossing is intentional and must not be rejected by a signed lane-gap test. Surface collision and visual acting acceptance are separate checks."
   }
 }

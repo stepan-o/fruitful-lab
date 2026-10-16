@@ -16,7 +16,7 @@ import {createEyeLenses} from './character-emission';
 import {bodyEyePatch} from '@/lib/loopforge/agents/cathexis-fit';
 import {worldPoint} from '@/lib/loopforge/spatial/floor';
 export type MotionVersion='Source'|'Corrected';
-export type InspectionMotion={versions?:MotionVersion[];file:InspectionFile;triangles:number;joints:number;extraJoints:number;revision:string;record:string;note:string;clips:{id:string;label:string;source:string;duration:number;markers:{label:string;time:number}[]}[]};
+export type InspectionMotion={approval?:'approved'|'candidate';versions?:MotionVersion[];file:InspectionFile;triangles:number;joints:number;extraJoints:number;revision:string;record:string;note:string;clips:{id:string;label:string;source:string;duration:number;markers:{label:string;time:number}[]}[]};
 /** Shared baked-motion adapter. Source and corrected skins share geometry/materials;
  * only the selected mesh renders. All costume solving happens offline. */
 export async function loadMotionModel(stage:CharacterStage,bank:InspectionMotion,signal:AbortSignal,onFrame:(phase:number,ended:boolean)=>void){

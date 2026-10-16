@@ -57,17 +57,17 @@
     }
   ],
   "surfaceAudit": {
-    "runtimeSHA256": "b9271a9e10a7f2109782ff33aa0083bcf333ac91be82e344a7df0479a068e891",
-    "method": "30 Hz non-coplanar edge/triangle tests below 0.85m: skirt/legs and left/right legs. Excludes tangency, containment, upper body, hand/face, cloth self-contact, blends and dynamics. Source audition only; no correction or approval implied.",
+    "runtimeSHA256": "725004d26b745736c69da01677c4bf157a97e19f56bf6c9f1c2618c85c4e7aa9",
+    "method": "120 Hz non-coplanar edge/triangle tests below 0.85m: skirt/legs and left/right legs. Excludes tangency, containment, upper body, hand/face, cloth self-contact, blends and dynamics. Samples both source and corrected candidates; no owner approval implied.",
     "clips": [
       {
         "clip": "Mirror_Viewing_Source",
-        "samples": 221,
-        "dressLegFrames": 51,
-        "legLegFrames": 158,
+        "samples": 881,
+        "dressLegFrames": 205,
+        "legLegFrames": 630,
         "dressLegWorst": {
-          "seconds": 6.2,
-          "crossings": 180
+          "seconds": 6.175,
+          "crossings": 188
         },
         "legLegWorst": {
           "seconds": 7.1,
@@ -79,27 +79,97 @@
       },
       {
         "clip": "Red_Carpet_Walk_Source",
-        "samples": 180,
-        "dressLegFrames": 180,
-        "legLegFrames": 79,
+        "samples": 717,
+        "dressLegFrames": 717,
+        "legLegFrames": 307,
         "dressLegWorst": {
-          "seconds": 4.1,
-          "crossings": 254
+          "seconds": 5.517,
+          "crossings": 313
         },
         "legLegWorst": {
           "seconds": 5.367,
           "crossings": 340
         },
         "lowestSoleM": 0.00730006187764563,
-        "highestSupportingSoleM": 0.07219723468339938,
+        "highestSupportingSoleM": 0.07333498914331973,
         "endpointMaxM": 0.016823488442003848
+      },
+      {
+        "clip": "Mirror_Viewing_Corrected",
+        "samples": 881,
+        "dressLegFrames": 0,
+        "legLegFrames": 0,
+        "dressLegWorst": null,
+        "legLegWorst": null,
+        "lowestSoleM": -0.002998848698738613,
+        "highestSupportingSoleM": 0.0075096455182877084,
+        "endpointMaxM": 0.0
+      },
+      {
+        "clip": "Red_Carpet_Walk_Corrected",
+        "samples": 717,
+        "dressLegFrames": 0,
+        "legLegFrames": 0,
+        "dressLegWorst": null,
+        "legLegWorst": null,
+        "lowestSoleM": -0.000631105877628239,
+        "highestSupportingSoleM": 0.0057322244055575695,
+        "endpointMaxM": 0.0
       }
     ]
   },
   "attachmentAudit": {
-    "poseChecks": 9594,
+    "poseChecks": 19188,
     "maxErrorMetres": 2.026982153225502e-06,
-    "coverage": "3k/8k full/left/right Grace on both delivered source clips; 120 Hz; fixed root and disposal checked",
+    "coverage": "3k/8k full/left/right Grace on both source/corrected audition clips; 120 Hz; fixed root, unchanged body and disposal checked",
     "approvedBankRegressionPoseChecks": 22908
+  },
+  "handAudit": {
+    "runtimeSHA256": "725004d26b745736c69da01677c4bf157a97e19f56bf6c9f1c2618c85c4e7aa9",
+    "clip": "Mirror_Viewing_Corrected",
+    "samples": 881,
+    "handTorsoCrossingFrames": 0,
+    "worst": null,
+    "maxPalmTargetErrorM": 5.056195363374486e-05,
+    "armSteps": [
+      {
+        "joint": "mixamorig:LeftArm",
+        "maxKeyStepDegrees": 3.7274615995358684
+      },
+      {
+        "joint": "mixamorig:LeftForeArm",
+        "maxKeyStepDegrees": 5.399719488690726
+      },
+      {
+        "joint": "mixamorig:LeftHand",
+        "maxKeyStepDegrees": 6.726080873142391
+      },
+      {
+        "joint": "mixamorig:RightArm",
+        "maxKeyStepDegrees": 2.966706979358431
+      },
+      {
+        "joint": "mixamorig:RightForeArm",
+        "maxKeyStepDegrees": 5.903091925594538
+      },
+      {
+        "joint": "mixamorig:RightHand",
+        "maxKeyStepDegrees": 6.063864849653841
+      }
+    ],
+    "method": "120 Hz hand mesh vs central torso/waist (rest x \u00b10.26m, y 0.85\u20131.52m) non-coplanar triangle crossings. Palm targets tested during full-contact 1.10\u20136.10s. Excludes tangency, containment, cloth, arm/head, blends and dynamics."
+  },
+  "cleanup": {
+    "status": "corrected candidates; owner acceptance pending",
+    "runtimeSHA256": "725004d26b745736c69da01677c4bf157a97e19f56bf6c9f1c2618c85c4e7aa9",
+    "bodyJoints": 23,
+    "additionalSkirtJoints": 6,
+    "approvedBankUnchanged": true,
+    "notes": [
+      "Mirror palms follow the waist; opening/release acting retained.",
+      "Separate foot paths and knee clearance in both auditions.",
+      "Smooth baked skirt drape, supporting-sole height and repeat-seam correction.",
+      "Offline authoring; no runtime IK or cloth solver."
+    ]
   }
 }

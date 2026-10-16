@@ -63,7 +63,7 @@ Run from `apps/lab`, with private source downloads available:
 
 Runtime validation reports zero errors. Two expected non-root skinned-mesh warnings reflect the source hierarchy. Babylon adds an unweighted common ancestor to the corrected skeleton: validate indexed joints rather than raw bone-array length.
 
-Remaining: normal maps, grime variants, blends, paired worker/machine contacts, rigid armour/finger refinement and device/crowd measurements. The current corrected Hot Walk and Happy Sway acting, as well as Grace fit, are owner-approved. Next catalog auditions are Mirror_Viewing (48) and Head_Hold_in_Pain (391), followed by the priority acting bank; no new source retarget is accepted automatically. No new Meshy body generation is needed for this cleanup.
+Remaining: normal maps, grime variants, blends, paired worker/machine contacts, rigid armour/finger refinement and device/crowd measurements. The current corrected Hot Walk and Happy Sway acting, as well as Grace fit, are owner-approved. Mirror Viewing (48) and Red Carpet Walk have arrived and now have corrected candidates in the same player, pending owner review; see [their focused cleanup record](CATHEXIS_AUDITIONS_REVIEW.md). The archive labelled Head Hold in Pain (391) actually contained Mirror Viewing, so that requested take remains undelivered. No new source retarget is accepted automatically. No new Meshy body generation is needed for this cleanup.
 
 ## Grace on the moving rig — 15 October 2026
 

@@ -28,7 +28,7 @@ def render_agents():
          'The accepted body and forearm mount, walk/run clips and authored emitter-adjustment idle. Cyan strands move, flicker and power down as he works the controls.',
          'Next: paired gate inspection and worker contact.', 'LIMEN_MESHY_REVIEW.md'),
         ('Worker 01', '/stepanoskin/loopforge/play/asset-review/worker', 'Nineteen corrected motions and articulated hands',
-         'Original/corrected comparisons for idle, scratch, locomotion, carry, gestures and incidents. Ten finger hinges add relaxed, gripping and releasing poses; a fixed floor reference exposes foot contact.',
+         'Original/corrected comparison now includes scalp scratching, a right-hand thigh brace, opposing-palm claps, staggered crossed arms and floor-supported collapse hands. Relaxed finger curls and shared forearm/wrist twist soften standing poses. Contact-pose shortcuts make each beat inspectable.',
          'Offline corrections and an exported-mesh 120 Hz audit are delivered for owner review. Paired interactions, transitions, afraid recoil and precise machine work remain separate scene-authoring gates.', 'WORKER_MOTION_REVIEW.md'),
         ('STILETTO', '/stepanoskin/loopforge/play/asset-review/stiletto', 'Blades, active welders and red visor',
          'Owner accepts the blade appearance and acting. The same motion player now offers twin welders and mixed tools, blue-white flame flow and a red visor. Eighteen source motions plus five corrected alternatives remain available.',

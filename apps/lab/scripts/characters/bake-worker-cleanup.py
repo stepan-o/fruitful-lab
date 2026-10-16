@@ -4,8 +4,9 @@ from worker_fingers import add_fingers
 import copy,struct,hashlib
 import argparse
 from worker_correct import correct
+from worker_acting import refine
 parser=argparse.ArgumentParser(description='Bake Worker 01 corrections and articulated-hand studies; preserve the source bank.')
-parser.add_argument('output_directory',type=Path);parser.add_argument('--reuse',action='store_true',help='Reuse per-clip intermediate arrays after an inspected refinement.')
+parser.add_argument('--clearance-only',action='store_true',help='Emit the baseline clearance bank before contact acting.');parser.add_argument('--reuse-acting',action='store_true',help='Reuse inspected acting arrays without reauthoring.');parser.add_argument('output_directory',type=Path);parser.add_argument('--reuse',action='store_true',help='Reuse per-clip intermediate arrays after an inspected refinement.')
 args=parser.parse_args();workdir=args.output_directory;workdir.mkdir(parents=True,exist_ok=True)
 assert hashlib.sha256(SOURCE.read_bytes()).hexdigest()=='299587fb5eefb1fa1dc725118d4edd17ae058ea4231610c19d079bde3c991933','Worker source changed: inspect before rebaking.'
 b=Worker();records={}
@@ -13,6 +14,16 @@ if not args.reuse:
  for clip in b.g['animations']:
   records[clip['name']]=correct(b,clip,workdir)
   (workdir/'authoring.json').write_text(json.dumps(records,indent=2))
+authored={}
+for clip in b.g['animations']:
+ x=np.load(workdir/(clip['name']+'.npz'));cache=workdir/(clip['name']+'.acting.npz')
+ if args.clearance_only:
+  curl={'run_fast_10_inplace':22,'Angry_Stomp':24,'Carry_Heavy_Object_Walk_inplace':28,'Confused_Scratch':9,'Push_Forward_and_Stop':4,'Victory_Cheer':6}.get(clip['name'],14);authored[clip['name']]=(x['local'],np.full(len(x['times']),curl))
+ elif args.reuse_acting and cache.exists():
+  a=np.load(cache);authored[clip['name']]=(a['local'],a['curls'])
+ else:
+  authored[clip['name']]=refine(b,x['times'],x['local'],clip['name']);np.savez_compressed(cache,local=authored[clip['name']][0],curls=authored[clip['name']][1])
+ print(clip['name'],'contact acting authored',flush=True)
 g=b.g;data=bytearray(b.d['data']);source_nodes=copy.deepcopy(g['nodes']);source_clips=copy.deepcopy(g['animations']);js,ws,ib,joints,fingers=add_fingers(b)
 def add(arr,kind,component=5126):
  arr=np.asarray(arr,dtype={5126:'<f4',5123:'<u2'}[component]);data.extend(b'\0'*((-len(data))%4));offset=len(data);data.extend(arr.tobytes());g['bufferViews'].append({'buffer':0,'byteOffset':offset,'byteLength':arr.nbytes});ac={'bufferView':len(g['bufferViews'])-1,'componentType':component,'count':len(arr),'type':kind}
@@ -45,13 +56,16 @@ def append(name,ts,local,hand_angles):
   sc=np.linalg.norm(local[:,i,:3,:3],axis=1)
   for path,v in [('rotation',R.from_matrix(local[:,i,:3,:3]/sc[:,None,:]).as_quat()),('translation',local[:,i,:3,3]),('scale',sc)]:channel(i,path,v)
  for f in fingers:
-  amount=hand_angles*np.array([.6,1,1.1,1.2,1.3])[['Thumb','Index','Middle','Ring','Little'].index(f['name'].replace('Left','').replace('Right',''))];q=R.from_rotvec(np.array([0,0,f['sign']])[None,:]*np.radians(amount)[:,None]).as_quat();channel(f['node'],'rotation',q)
+  angles=hand_angles[:,0 if f['hand']==25 else 1] if hand_angles.ndim==2 else hand_angles
+  amount=angles*np.array([.6,1,1.1,1.2,1.3])[['Thumb','Index','Middle','Ring','Little'].index(f['name'].replace('Left','').replace('Right',''))];q=R.from_rotvec(np.array([0,0,f['sign']])[None,:]*np.radians(amount)[:,None]).as_quat();channel(f['node'],'rotation',q)
  g['animations'].append(out)
 for clip in source_clips:
  path=workdir/(clip['name']+'.npz')
  assert path.exists(),f'Missing correction: {path}'
- x=np.load(path);ts=x['times'];local=x['local'];name=clip['name'];curl={'run_fast_10_inplace':22,'Angry_Stomp':24,'Carry_Heavy_Object_Walk_inplace':28,'Confused_Scratch':9,'Push_Forward_and_Stop':4,'Victory_Cheer':6}.get(name,14)
- append(name+'_Corrected',ts,local,np.full(len(ts),curl))
+ x=np.load(path);ts=x['times'];name=clip['name']
+ local,curls=authored[name]
+ append(name+'_Corrected',ts,local,curls)
+ print(name,'contact acting baked',flush=True)
 for name,start,end in [('Hand_Relax',0,14),('Hand_Grip',14,40),('Hand_Release',40,0)]:
  ts=np.linspace(0,2,121);u=np.clip(ts/1.4,0,1);u=u*u*(3-2*u);local=np.tile(np.array([mat(n)for n in source_nodes]),(len(ts),1,1,1));append(name,ts,local,start+(end-start)*u)
 g['buffers']=[{'byteLength':len(data)}];g.setdefault('asset',{})['extras']={'workerCleanup':'2026-10-16','sourceSha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),'fingerJoints':10,'sourceSkinPreserved':True}

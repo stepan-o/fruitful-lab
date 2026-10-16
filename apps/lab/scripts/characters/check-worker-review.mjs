@@ -72,4 +72,5 @@ for(let i=0;i<w0.length;i+=4)assert.ok(Math.abs([...w0.slice(i,i+4),...w1.slice(
 const audit=JSON.parse(await readFile(new URL('../../lib/loopforge/agents/worker-cleanup.json',import.meta.url),'utf8'));
 assert.equal(audit.sha256,repairedFile.sha256,'Clearance audit does not belong to this asset');assert.equal(audit.sampleRate,120);assert.equal(audit.clips.length,19);
 assert.ok(audit.clips.every(c=>c.samples>0&&c.correctedContactFrames===0),'Unresolved exported-mesh contacts');
+const fall=audit.clips.find(c=>c.id==='Electrocuted_Fall');assert.equal(fall.floor?.planeY,0);assert.equal(fall.floor?.penetratingFrames,0);assert.ok(fall.floor.leftHandMinimumMetres>=-.001&&fall.floor.rightHandMinimumMetres>=-.001,'Hands penetrate the fixed floor');
 console.log('Worker cleanup: exact source preservation, 19 corrected clips, 10 weighted finger hinges, 3 hand studies, 120 Hz clearance report pinned to this GLB.');

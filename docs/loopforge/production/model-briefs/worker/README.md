@@ -1,8 +1,8 @@
 # Worker 01 — model rebuild kit
 
-Rebuild brief v3 · corrected motion + fingers · 16 October 2026
+Rebuild brief v4 · authored hand contacts · 16 October 2026
 
-The accepted body now has nineteen offline-corrected motion derivatives and three hand studies. The original 24-joint source stays intact; the corrected skin adds ten rigid digit hinges (34 joints). Geometry and textures are shared. Visual acceptance remains with the owner.
+The accepted body now has nineteen offline-corrected motion derivatives and three hand studies. The original 24-joint source stays intact; the corrected skin adds ten rigid digit hinges (34 joints). Geometry and textures are shared. The latest pass authors scalp, thigh, clap, crossed-arm and floor contacts plus relaxed standing hands. The viewer has direct contact-pose shortcuts and same-frame source comparison. Visual acceptance remains with the owner.
 
 Use numbered prompts in order to regenerate upstream sources. Input images are illustrations, not measured projections. A Meshy regeneration will not reproduce the offline fixes, exact topology or bind transforms: rerun the correction pipeline and review the export before replacing it.
 

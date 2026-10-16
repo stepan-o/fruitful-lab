@@ -13,6 +13,14 @@ import type {loadWorker,WorkerSurface,WorkerVersion} from './worker-model';
 import styles from './agent-test.module.css';
 type Puppet=Awaited<ReturnType<typeof loadWorker>>;
 const file=manifest.assets['worker-01-corrected'].variants[0];
+const actingBeats:Record<string,{label:string;time:number}[]>={
+ Confused_Scratch:[{label:'Fingertips at scalp',time:1.6},{label:'Second scratch',time:3.6}],
+ injured_walk:[{label:'Right palm on sore thigh',time:3}],
+ Agree_Gesture:[{label:'First clap',time:4.85},{label:'Second clap',time:9.3}],
+ Angry_Stomp:[{label:'Arms folded',time:5.6},{label:'Arms uncrossing',time:6.9}],
+ Electrocuted_Fall:[{label:'Hands meet floor',time:4.8},{label:'Settled collapse',time:6}],
+ idle:[{label:'Relaxed hands',time:2}],
+};
 export default function WorkerModelReview(){
  const canvas=useRef<HTMLCanvasElement>(null),runtime=useRef<{floor:FactoryScene;model:Puppet}|null>(null);
  const [ready,setReady]=useState(false),[error,setError]=useState(''),[retry,setRetry]=useState(0),[running,setRunning]=useState(false),[id,setId]=useState('idle'),[phase,setPhase]=useState(0),[speed,setSpeed]=useState(1),[loop,setLoop]=useState(true),[version,setVersion]=useState<WorkerVersion>('Corrected'),[ground,setGround]=useState(true),[centred,setCentred]=useState(false),[turn,setTurn]=useState(0),[camera,setCamera]=useState<'model'|'cctv'>('model'),[angle,setAngle]=useState(0),[room,setRoom]=useState<'security'|'conveyor'>('security'),[surface,setSurface]=useState<WorkerSurface>('textured'),[lamp,setLamp]=useState(true),[report,setReport]=useState<SceneReport|null>(null);
@@ -51,7 +59,7 @@ export default function WorkerModelReview(){
     <div className={styles.caption}><span>25,893 TRIANGLES / {version==='Corrected'?'34':'24'} SKIN JOINTS</span><strong>{clip?.label??(handDemo?id.replace('Hand_','Hand · '):'Neutral rig')} · {version.toLowerCase()} · {running?'playing':'paused'}</strong><small>{clip?.actor==='Cathexis'?'SOURCE REFERENCE · CATHEXIS HAS HER OWN APPROVED GAIT':`${(phase*duration).toFixed(2)} / ${duration.toFixed(2)} s · ${speed}×`}</small></div>
    </section>
    <aside className={styles.controls} aria-label='Worker review controls'>
-    <span className={styles.kicker}>Worker motion bank / cleanup v2</span><h2>Read the movement.</h2><p>Compare the corrected motion with its untouched source at the same frame. Review the full gesture, feet and hands before accepting it for gameplay.</p>
+    <span className={styles.kicker}>Worker motion bank / contact acting v3</span><h2>Read the movement.</h2><p>Compare the corrected motion with its untouched source at the same frame. Review the full gesture, feet and hands before accepting it for gameplay.</p>
     <div className={styles.duo} aria-label='Motion version'>{(['Corrected','Source'] as const).map(v=><button key={v} disabled={!ready||(handDemo&&v==='Source')} aria-pressed={version===v} onClick={()=>{play(false);setVersion(v);runtime.current?.model.version(v);}}>{v==='Source'?'Original source':'Corrected motion'}</button>)}</div>
     <label>Animation<select disabled={!ready} value={id} onChange={e=>choose(e.target.value)}><option value='Rest'>Neutral rig · A-pose</option>{bank.clips.map(c=><option key={c.id} value={c.id}>{c.label}{c.actor==='Cathexis'?' · Cathexis':''}</option>)}{['Hand_Relax','Hand_Grip','Hand_Release'].map(v=><option key={v} value={v}>{v.replace('Hand_','Hand · ')}</option>)}</select></label>
     <p className={styles.intent}>{version==='Source'?clip?.note??'Original neutral rig.':handDemo?'Ten finger hinges, baked offline. These are hand-pose studies; a grip is not yet a machine interaction.':audit?.note??'Neutral body with articulated finger joints.'}</p>
@@ -60,6 +68,7 @@ export default function WorkerModelReview(){
     <label>Time in seconds<input className={styles.timeInput} type='number' min='0' max={duration} step='.01' disabled={!ready||(!clip&&!handDemo)} value={Number((phase*duration).toFixed(2))} onChange={e=>{const n=e.target.valueAsNumber;if(Number.isFinite(n))seek(n);}}/></label>
     <label>Playback speed<select disabled={!ready} value={speed} onChange={e=>{const n=Number(e.target.value);setSpeed(n);runtime.current?.model.speed(n);}}><option value='.25'>¼ speed</option><option value='.5'>½ speed</option><option value='1'>Normal</option></select></label>
     <label className={styles.check}><input type='checkbox' disabled={!ready||(!clip&&!handDemo)} checked={loop} onChange={e=>{setLoop(e.target.checked);runtime.current?.model.loop(e.target.checked);}}/> Repeat clip</label>
+    {!!actingBeats[id]&&<div className={styles.beats} aria-label='Authored contact poses'>{actingBeats[id].map(m=><button key={m.label} disabled={!ready} onClick={()=>seek(m.time)}>{m.label} · {m.time.toFixed(2)} s</button>)}</div>}
     {!!clip&&<div className={styles.beats} aria-label='Original contact comparison poses'>{clip.markers.map(m=><button key={m.label} disabled={!ready} onClick={()=>seek(m.time)}>{m.label.replace('leftLeg / rightLeg','Legs').replace('leftArm / rightArm','Arms').replace('hands / head','Hand / head')} · {m.time.toFixed(2)} s{m.intersections?' · source contact':''}</button>)}</div>}
     <button disabled={!ready} aria-pressed={id==='Hot_Walk'} onClick={()=>choose('Hot_Walk')}>Hot Walk · source reference</button>
     <details><summary>Camera & appearance</summary>

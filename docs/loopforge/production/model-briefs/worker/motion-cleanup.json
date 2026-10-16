@@ -1,15 +1,15 @@
 {
-  "revision": "worker-cleanup-v2",
-  "sha256": "12f1714557a25ca9152e45d5d2d5b5385de3416bf5b703ebd84899342240a2a3",
+  "revision": "worker-contact-acting-v3",
+  "sha256": "991d1511694d862537ae329821bc28416dd90a6ee4f493cee075acd6e7409541",
   "sampleRate": 120,
-  "method": "Exported skinned mesh checked at 120 Hz across legs, opposite forearms, hands/head, forearms/torso and hands/legs. Interior triangle crossings; not swept-volume, coplanar, prop-contact or transition certification.",
+  "method": "Exported skinned mesh checked at 120 Hz across legs, opposite forearms, hands/head, forearms/torso and hands/legs. Interior triangle crossings; Electrocuted Fall also checks both complete hands against the fixed Y=0 floor. Not swept-volume, coplanar, prop-contact or transition certification.",
   "clips": [
     {
       "id": "Agree_Gesture",
       "samples": 1561,
       "sourceContactFrames": 136,
       "correctedContactFrames": 0,
-      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "note": "Opposing palms close for two claps; fingers open during the contact beats.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 0,
@@ -129,7 +129,7 @@
       "samples": 961,
       "sourceContactFrames": 413,
       "correctedContactFrames": 0,
-      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "note": "Arms fold at separate heights and depths; the front elbow lowers before uncrossing.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 179,
@@ -369,7 +369,7 @@
       "samples": 1381,
       "sourceContactFrames": 705,
       "correctedContactFrames": 0,
-      "note": "Preserves the puzzled scratch; separates boots and clears the resting hand from the thigh.",
+      "note": "Curled fingertips scratch the scalp; the elbow and wrist are authored for head contact. The other hand rests loosely beside the thigh.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 616,
@@ -489,7 +489,7 @@
       "samples": 761,
       "sourceContactFrames": 71,
       "correctedContactFrames": 0,
-      "note": "Preserves collapse and source travel; one-shot. Floor/prop staging remains a scene integration check.",
+      "note": "Palms settle above the fixed floor with supported wrists. One-shot collapse keeps source travel; align the floor when staging it in a scene.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 52,
@@ -542,7 +542,14 @@
           "maxCorrectedTriangles": 0
         }
       },
-      "remainingTimes": []
+      "remainingTimes": [],
+      "floor": {
+        "planeY": 0,
+        "leftHandMinimumMetres": 0.001977719462469829,
+        "rightHandMinimumMetres": 0.0006470176942876549,
+        "penetratingFrames": 0,
+        "toleranceMetres": 0.001
+      }
     },
     {
       "id": "Electrocution_Reaction",
@@ -909,7 +916,7 @@
       "samples": 481,
       "sourceContactFrames": 255,
       "correctedContactFrames": 0,
-      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "note": "Relaxed finger curl and inward-facing palms; forearm twist is shared with the wrist.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 0,
@@ -969,7 +976,7 @@
       "samples": 1041,
       "sourceContactFrames": 291,
       "correctedContactFrames": 0,
-      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "note": "Right palm follows and braces the injured thigh throughout the limp.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 291,
@@ -1436,5 +1443,31 @@
       },
       "maxGroundAdjustmentMm": 10.531
     }
+  },
+  "acting": {
+    "method": "Offline two-bone arm placement and distributed forearm/wrist rotation, followed by exported articulated-mesh contact fitting. No runtime IK.",
+    "contactBeats": {
+      "Confused_Scratch": [
+        1.6,
+        3.6
+      ],
+      "injured_walk": [
+        3.0
+      ],
+      "Agree_Gesture": [
+        4.85,
+        9.3
+      ],
+      "Angry_Stomp": [
+        5.6,
+        6.9
+      ],
+      "Electrocuted_Fall": [
+        4.8,
+        6.0
+      ]
+    },
+    "fingerCurlDegrees": "34\u201336 rest; 7 clap contact; 18 injured brace; 40 carry/run; 46 crossed-arm hold; 9 settled floor contact. One rigid hinge per digit; per-finger multipliers retained.",
+    "reviewStatus": "Candidate for owner visual review; not blanket gameplay approval."
   }
 }

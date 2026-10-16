@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-16-worker-cleanup",
+  "revision": "model-briefs-2026-10-16-worker-contacts",
   "date": "2026-10-16",
   "models": [
     {
@@ -74,7 +74,7 @@
       "id": "worker",
       "name": "Worker 01",
       "subtitle": "Factory worker · body + motion bank",
-      "revision": "Rebuild brief v3 · corrected motion + fingers",
+      "revision": "Rebuild brief v4 · authored hand contacts",
       "status": "Cleanup implemented · visual review",
       "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions now sit beside untouched sources, with ten rigid finger hinges and three hand studies.",
       "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",

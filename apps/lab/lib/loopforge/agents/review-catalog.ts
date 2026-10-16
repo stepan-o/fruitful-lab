@@ -17,8 +17,8 @@ export const stilettoReviewAsset:ProductionReviewAsset={
  checks:['Original / corrected at the same timestamp','2,335 corrected poses checked at 120 Hz','Blade, body and flat-floor review','Remaining leg contacts, blends and paired encounters']
 };
 export const cathexisReviewAsset:ProductionReviewAsset={
- id:'cathexis-intake',shortName:'CATHEXIS',navDetail:'Hot Walk · sway · Grace',title:'CATHEXIS · motion & mask review',revision:'body-v2 / motion-v1 / Grace coverage-v2',
- route:'/stepanoskin/loopforge/play/asset-review/cathexis',conceptRoute:'/stepanoskin/loopforge/design?model=cathexis#model-briefs',status:'Body accepted · motion cleanup candidate',
+ id:'cathexis-intake',shortName:'CATHEXIS',navDetail:'4 motions · Grace',title:'CATHEXIS · motion & mask review',revision:'body-v2 / motion-v1 / Grace coverage-v2',
+ route:'/stepanoskin/loopforge/play/asset-review/cathexis',conceptRoute:'/stepanoskin/loopforge/design?model=cathexis#model-briefs',status:'2 motions approved · 2 auditions',
  description:'Compare original/corrected Hot Walk and Happy Sway with skirt and foot inspection. Switch to static face fitting for full/half Grace over the intact mechanical face.',
  checks:['Original/corrected at the same pose','1,907 corrected skirt/leg samples at 120 Hz','Grounding, loop seam and CCTV readability','Moving Grace, blends and contacts remain open']
 };

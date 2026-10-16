@@ -1,6 +1,6 @@
 # CATHEXIS — Hot Walk and Happy Sway cleanup
 
-15 October 2026, arm/contact quality pass. The owner accepts the body, dress flow and full/split Grace fit. Hot Walk keeps its rebuilt curved gait, with a corrected right-arm blend into the temple gesture. Happy Sway is calmer and holds a planted stance. These motion changes await owner artistic review.
+15 October 2026, arm/contact quality pass. The owner accepts the body, dress flow and full/split Grace fit. Hot Walk keeps its rebuilt curved gait, with a corrected right-arm blend into the temple gesture. Happy Sway is calmer and holds a planted stance. On 15 October 2026 the owner approved both corrected animations: Hot Walk (106) and Happy Sway Standing (415), including the arm/contact cleanup. This approval applies to the current `cathexis-contact-v7` delivery, whose runtime hash is recorded below; untouched source takes and future clips are not approved by this decision.
 
 Open [CATHEXIS review](/stepanoskin/loopforge/play/asset-review/cathexis). **Motion & face review** opens paused with corrected Hot Walk. Compare Original export at the same time, scrub or play at normal/half/quarter speed, and inspect **Knees passing**, **Foot recovery**, **Forward reach** and **Hip & temple**. **Arm approach** and **Arm release** expose the corrected right-arm transitions. Happy Sway has **Weight shift** and **Opposite sway** markers. **Floor contact grid · 10 cm** is fixed to the floor; **Supervisor portrait** tests the same performer at information-screen scale. Captions sit below the canvas so the feet stay visible. The **Appearance** selector fits full Grace, either half or the exposed body face on both motion versions. **Inspect head & face seat** provides a moving close-up; skirt/feet framing remains separate. **Face & asset fitting** retains the static source inspection. [STILETTO’s viewer](/stepanoskin/loopforge/play/asset-review/stiletto) retains Quick Walk for comparison.
 
@@ -63,7 +63,7 @@ Run from `apps/lab`, with private source downloads available:
 
 Runtime validation reports zero errors. Two expected non-root skinned-mesh warnings reflect the source hierarchy. Babylon adds an unweighted common ancestor to the corrected skeleton: validate indexed joints rather than raw bone-array length.
 
-Remaining: owner review of arm transitions and calmer standing acting, gait feel, normal maps, grime variants, blends, paired worker/machine contacts, rigid armour/finger refinement and device/crowd measurements. Grace fit itself is owner-approved. No new Meshy body generation is needed for this cleanup.
+Remaining: normal maps, grime variants, blends, paired worker/machine contacts, rigid armour/finger refinement and device/crowd measurements. The current corrected Hot Walk and Happy Sway acting, as well as Grace fit, are owner-approved. Next catalog auditions are Mirror_Viewing (48) and Head_Hold_in_Pain (391), followed by the priority acting bank; no new source retarget is accepted automatically. No new Meshy body generation is needed for this cleanup.
 
 ## Grace on the moving rig — 15 October 2026
 
@@ -73,7 +73,7 @@ The static fitting body is 1.9 m; the rigged mesh is 1.7 m. The attachment maps 
 
 Run `node scripts/characters/check-cathexis-face-motion.mjs` from `apps/lab` with Node 22.15+. It imports the production adapters and checks the delivered assets in Babylon: 22,908 pose samples (120 Hz, both clips and versions, both Grace resolutions, three fits). Maximum attachment-coordinate error is 0.0021 mm. It also checks clipping side, mask scale, eye toggles, room/turn transforms, rapid replacement, static-fit regression, unchanged body geometry and complete cleanup. This is attachment correctness, not a hand/mask surface-collision certificate. The earlier 1,907-pose audit remains specific to the legs and lower dress.
 
-Visual review uses Hot Walk's temple hold/release, Happy Sway head tilts, profile and split-edge close-ups, and the factory cameras. Facial articulation, taking the mask off/on, new expression items and crowd performance remain outside this change. The owner approved the Grace fit; this does not approve all acting or interactions.
+Visual review uses Hot Walk's temple hold/release, Happy Sway head tilts, profile and split-edge close-ups, and the factory cameras. Facial articulation, taking the mask off/on, new expression items and crowd performance remain outside this change. The owner approved Grace fit and these two corrected motion clips. Other acting, mask handling and paired interactions remain separate reviews.
 
 ## Portrait and factory reuse
 

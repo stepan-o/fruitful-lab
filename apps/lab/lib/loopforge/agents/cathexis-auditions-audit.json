@@ -1,0 +1,105 @@
+{
+  "baseRuntimeSHA256": "156f11fff75c4eba27c74d953b5b1c5b9246786aa15785e3e2b0fd9295245cc5",
+  "vertexMatchMaxM": 1.270215596775227e-07,
+  "maxDiscardedWeight": 0.0008407304839999075,
+  "clips": [
+    {
+      "clip": "Mirror_Viewing",
+      "fbxClip": "Armature|Armature|Mirror_Viewing|baselayer",
+      "duration": 7.33333333,
+      "samples": 441,
+      "maxLocalShearError": 1.523595514676635e-06,
+      "maxEightWeightPoseErrorM": 8.471264001554364e-05,
+      "maxJointKeyStepDegrees": 5.009851811868463,
+      "rootStart": [
+        0.65895164,
+        101.254044,
+        12.0761356
+      ],
+      "rootEnd": [
+        0.705934286,
+        101.331032,
+        12.0955772
+      ]
+    },
+    {
+      "clip": "Red_Carpet_Walk",
+      "fbxClip": "Armature|Armature|Red_Carpet_Walk|baselayer",
+      "duration": 5.96666667,
+      "samples": 359,
+      "maxLocalShearError": 1.6735776041613994e-06,
+      "maxEightWeightPoseErrorM": 0.00010535849984303175,
+      "maxJointKeyStepDegrees": 8.114218903794015,
+      "rootStart": [
+        -0.497832537,
+        100.698387,
+        14.0523052
+      ],
+      "rootEnd": [
+        -0.514501572,
+        100.549286,
+        14.1206532
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "archive": "Meshy_AI_Cathexis_Body_v2_Rig__biped_Head_Hold_In_Pain.zip",
+      "sha256": "ece25468b106b59a3a1654147bd66ff6557adaa4cfd5bdef6984268bbf30e018",
+      "fbx": "Meshy_AI_Cathexis_Body_v2_Rig__biped_Animation_Mirror_Viewing_withSkin.fbx",
+      "fbxSHA256": "39be503f9a38ca89db4235242509e8c7983a34dd0ce2301153d403bf94c723dc"
+    },
+    {
+      "archive": "Meshy_AI_Cathexis_Body_v2_Rig__biped_Red_Carpet_Walk.zip",
+      "sha256": "6fe73088d70748ece37d1d69a96c4b104ce7061a783273fdf94a0e9e4f5e92b3",
+      "fbx": "Meshy_AI_Cathexis_Body_v2_Rig__biped_Animation_Red_Carpet_Walk_withSkin.fbx",
+      "fbxSHA256": "2b83c30d6c11a2f69650e98c22c35a56ae2662813ac2ddd7dcf21030e4af10d4"
+    }
+  ],
+  "surfaceAudit": {
+    "runtimeSHA256": "b9271a9e10a7f2109782ff33aa0083bcf333ac91be82e344a7df0479a068e891",
+    "method": "30 Hz non-coplanar edge/triangle tests below 0.85m: skirt/legs and left/right legs. Excludes tangency, containment, upper body, hand/face, cloth self-contact, blends and dynamics. Source audition only; no correction or approval implied.",
+    "clips": [
+      {
+        "clip": "Mirror_Viewing_Source",
+        "samples": 221,
+        "dressLegFrames": 51,
+        "legLegFrames": 158,
+        "dressLegWorst": {
+          "seconds": 6.2,
+          "crossings": 180
+        },
+        "legLegWorst": {
+          "seconds": 7.1,
+          "crossings": 516
+        },
+        "lowestSoleM": -0.0019129700067836916,
+        "highestSupportingSoleM": 0.04845219855702967,
+        "endpointMaxM": 0.007216109973112853
+      },
+      {
+        "clip": "Red_Carpet_Walk_Source",
+        "samples": 180,
+        "dressLegFrames": 180,
+        "legLegFrames": 79,
+        "dressLegWorst": {
+          "seconds": 4.1,
+          "crossings": 254
+        },
+        "legLegWorst": {
+          "seconds": 5.367,
+          "crossings": 340
+        },
+        "lowestSoleM": 0.00730006187764563,
+        "highestSupportingSoleM": 0.07219723468339938,
+        "endpointMaxM": 0.016823488442003848
+      }
+    ]
+  },
+  "attachmentAudit": {
+    "poseChecks": 9594,
+    "maxErrorMetres": 2.026982153225502e-06,
+    "coverage": "3k/8k full/left/right Grace on both delivered source clips; 120 Hz; fixed root and disposal checked",
+    "approvedBankRegressionPoseChecks": 22908
+  }
+}

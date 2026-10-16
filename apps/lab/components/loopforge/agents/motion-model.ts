@@ -16,7 +16,7 @@ import {createEyeLenses} from './character-emission';
 import {bodyEyePatch} from '@/lib/loopforge/agents/cathexis-fit';
 import {worldPoint} from '@/lib/loopforge/spatial/floor';
 export type MotionVersion='Source'|'Corrected';
-export type InspectionMotion={file:InspectionFile;triangles:number;joints:number;extraJoints:number;revision:string;record:string;note:string;clips:{id:string;label:string;source:string;duration:number;markers:{label:string;time:number}[]}[]};
+export type InspectionMotion={versions?:MotionVersion[];file:InspectionFile;triangles:number;joints:number;extraJoints:number;revision:string;record:string;note:string;clips:{id:string;label:string;source:string;duration:number;markers:{label:string;time:number}[]}[]};
 /** Shared baked-motion adapter. Source and corrected skins share geometry/materials;
  * only the selected mesh renders. All costume solving happens offline. */
 export async function loadMotionModel(stage:CharacterStage,bank:InspectionMotion,signal:AbortSignal,onFrame:(phase:number,ended:boolean)=>void){
@@ -31,8 +31,9 @@ export async function loadMotionModel(stage:CharacterStage,bank:InspectionMotion
  let fitted:ReturnType<typeof createFittedFace>|null=null,bodyEyes:ReturnType<typeof createEyeLenses>|null=null,headAnchor:TransformNode|null=null;
  try{
   const meshes=container.meshes.filter(m=>m.getTotalVertices()>0),source=meshes.find(m=>m.name==='Source_Body'),corrected=meshes.find(m=>m.name==='Corrected_Body');
-  if(!source||!corrected||source.skeleton?.bones.filter(b=>b.getIndex()>=0).length!==bank.joints||corrected.skeleton?.bones.filter(b=>b.getIndex()>=0).length!==bank.joints+bank.extraJoints)throw Error('The source/corrected rig bank is incomplete.');
-  for(const clip of bank.clips)for(const version of ['Source','Corrected'])if(!container.animationGroups.some(g=>g.name===`${clip.id}_${version}`))throw Error(`Missing ${clip.label} ${version} clip.`);
+  const versions=bank.versions??['Source','Corrected'];
+  if(!source||source.skeleton?.bones.filter(b=>b.getIndex()>=0).length!==bank.joints||versions.includes('Corrected')&&(!corrected||corrected.skeleton?.bones.filter(b=>b.getIndex()>=0).length!==bank.joints+bank.extraJoints))throw Error('The source/corrected rig bank is incomplete.');
+  for(const clip of bank.clips)for(const version of versions)if(!container.animationGroups.some(g=>g.name===`${clip.id}_${version}`))throw Error(`Missing ${clip.label} ${version} clip.`);
   container.addAllToScene();container.rootNodes.forEach(n=>{n.parent=root;});container.animationGroups.forEach(g=>g.stop());
   const neutral=container.transformNodes.map(n=>({n,p:n.position.clone(),r:n.rotationQuaternion?.clone()??Quaternion.FromEulerVector(n.rotation),s:n.scaling.clone()}));
   const hips=container.transformNodes.find(n=>n.name==='mixamorig:Hips');if(!hips)throw Error('Motion pelvis missing.');
@@ -47,7 +48,7 @@ export async function loadMotionModel(stage:CharacterStage,bank:InspectionMotion
   fitted=createFittedFace(stage,headAnchor,signal,faces=>{if(fill)fill.includedOnlyMeshes=[...meshes,...faces];},true);
   bodyEyes=createEyeLenses(headAnchor,bodyEyePatch,.174);
   const appearance=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{m.maxSimultaneousLights=6;return {m,texture:m.albedoTexture,mr:m.metallicTexture,normal:m.bumpTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness};});
-  let id=bank.clips[0].id,version:MotionVersion='Corrected',group=container.animationGroups.find(g=>g.name===`${id}_${version}`),phase=0,playing=false,speed=1,loop=true,last=performance.now(),notifyAt=0,disposed=false;
+  let id=bank.clips[0].id,version:MotionVersion=versions.includes('Corrected')?'Corrected':'Source',group=container.animationGroups.find(g=>g.name===`${id}_${version}`),phase=0,playing=false,speed=1,loop=true,last=performance.now(),notifyAt=0,disposed=false;
   const anchor=new Vector3(),origin=new Vector3(),offset=new Vector3();
   // A fixed reference makes planted contacts visible. Never chase the current
   // pelvis: doing that turns hip sway into world-space foot skating.
@@ -69,9 +70,10 @@ export async function loadMotionModel(stage:CharacterStage,bank:InspectionMotion
    Vector3.TransformNormalToRef(origin,root.getWorldMatrix(),offset);root.position.x-=offset.x;root.position.z-=offset.z;root.computeWorldMatrix(true);groundGuide.position.copyFrom(anchor);stage.refresh();
   }
   function select(clip:string,next:MotionVersion,preserveTime=false){
+   if(!versions.includes(next))throw Error('This motion has no corrected version.');
    playing=false;if(!preserveTime)phase=0;id=clip;version=next;
    for(const {n,p,r,s}of neutral){n.position.copyFrom(p);n.rotationQuaternion=r.clone();n.scaling.copyFrom(s);}
-   group=container.animationGroups.find(g=>g.name===`${id}_${version}`);source!.setEnabled(version==='Source');corrected!.setEnabled(version==='Corrected');
+   group=container.animationGroups.find(g=>g.name===`${id}_${version}`);source!.setEnabled(version==='Source');corrected?.setEnabled(version==='Corrected');
    // Capture the clip's starting position once, independently of seek/play phase.
    const restorePhase=phase;phase=0;origin.setAll(0);sample();
    origin.copyFrom(hips!.getAbsolutePosition()).subtractInPlace(anchor);

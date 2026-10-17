@@ -47,3 +47,10 @@ test('portrait framing supports close inspection and restores full-body bounds',
   orbit.suspend();orbit.framing(3.8,3.2);orbit.attach(target);
   expect(camera.radius).toBe(3.8);expect(camera.lowerRadiusLimit).toBe(3.2);
 });
+
+test('a scene-specific composition resets to its own angle without changing character review defaults',()=>{
+ const {camera,target,orbit}=fixture();orbit.orientation(-2.55,1.22);orbit.framing(6.5,3.5);orbit.attach(target);
+ camera.alpha=.2;camera.beta=.9;orbit.action('reset');
+ expect(camera.alpha).toBe(-2.55);expect(camera.beta).toBe(1.22);expect(camera.radius).toBe(6.5);
+ const other=fixture();other.orbit.attach(other.target);expect(other.camera.alpha).toBe(-Math.PI/2);
+});

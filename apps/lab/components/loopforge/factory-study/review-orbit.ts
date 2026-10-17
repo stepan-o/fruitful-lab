@@ -7,7 +7,7 @@ const defaults = { alpha: -Math.PI / 2, beta: 1.36, distance: 3.8 };
 
 /** Inspection orbit is independent of fixed CCTV presets and animation time. */
 export function createReviewOrbit(camera: ArcRotateCamera, canvas: HTMLCanvasElement, invalidate: () => void) {
-  let pose = { ...defaults }, active = false, scale = 1, minimum = 3.2, resetDistance = defaults.distance;
+  let pose = { ...defaults }, active = false, scale = 1, minimum = 3.2, resetDistance = defaults.distance, resetAngles = { alpha: defaults.alpha, beta: defaults.beta };
   const clamp = (n: number) => Math.max(minimum, Math.min(7, n));
   function capture() {
     if (active) pose = { alpha: camera.alpha, beta: camera.beta, distance: clamp(camera.radius / scale) };
@@ -36,12 +36,13 @@ export function createReviewOrbit(camera: ArcRotateCamera, canvas: HTMLCanvasEle
       camera.setTarget(target, false, true, true);
       apply(); camera.attachControl(canvas, false); active = true;
     },
+    orientation(alpha: number, beta: number) { capture(); resetAngles = { alpha, beta }; pose = { ...pose, ...resetAngles }; if (active) apply(); },
     framing(distance: number, minDistance: number) { capture(); minimum = Math.max(.25, minDistance); resetDistance = clamp(distance); pose.distance = resetDistance; if (active) apply(); },
     distance(n: number) { capture(); pose.distance = clamp(n); if (active) apply(); },
     action(action: ReviewCameraAction) {
       if (!active) return;
       capture();
-      if (action === 'reset') pose = { ...defaults, distance: resetDistance };
+      if (action === 'reset') pose = { ...resetAngles, distance: resetDistance };
       else pose.distance = clamp(pose.distance * (action === 'closer' ? .88 : 1 / .88));
       apply();
     },

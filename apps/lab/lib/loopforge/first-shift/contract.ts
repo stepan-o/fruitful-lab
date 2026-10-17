@@ -1,7 +1,7 @@
 /** Primitives-only viewer contract. No kernel, renderer, clock or provider imports. */
 export const PROTOCOL = "loopforge-kvp-http/1" as const;
 export const SCHEMA = "loopforge_first_shift_1" as const;
-export const ENGINE = "first-shift-1.0.0" as const;
+export const ENGINE = "first-shift-1.0.1" as const;
 export const SHIFT_TICKS = 48;
 export type SupervisorId = "limen" | "stiletto";
 export type RoomId = "conveyor" | "security";

@@ -3,7 +3,7 @@ import type { Command as DailyCommand, PlayerView as DailyView, Event } from '..
 export { canonical } from '../first-shift/contract';
 export const PROTOCOL = 'loopforge-kvp-http/2' as const;
 export const SCHEMA = 'loopforge_first_turn_2' as const;
-export const ENGINE = 'first-turn-2.0.0' as const;
+export const ENGINE = 'first-turn-2.0.1' as const;
 export const TICK_MS = 50;
 export const BATCH_TICKS = 20;
 export type Fixture = 'terminal' | 'gate' | 'drive';

@@ -69,6 +69,8 @@ export async function loadWorker(stage:CharacterStage,signal:AbortSignal,onFrame
   }
   root.rotation.y=Math.PI;room('security');select(id,version);
   return {
+   place(x:number,y:number,z:number,yaw:number){anchor.set(x,y,z);root.rotation.y=Math.PI+yaw*Math.PI/180;sample();},
+   duration,
    clip(value:string){select(value,version);},version(value:WorkerVersion){select(id,value,true);},ground(value:boolean){guide.setEnabled(value);stage.refresh();},
    play(value:boolean){if(value&&phase===1)phase=0;playing=value&&!!group;last=performance.now();stage.refresh();},
    seek(value:number){phase=Math.max(0,Math.min(1,value));sample();},speed(value:number){speed=value;},loop(value:boolean){loop=value;},

@@ -486,22 +486,22 @@ test("golden first-day truth and player projection", () => {
       player: viewHash(project(state)),
     };
   };
-  expect({ limen: summarize("limen"), stiletto: summarize("stiletto") })
-    .toMatchInlineSnapshot(`
+  expect({ limen: summarize("limen"), stiletto: summarize("stiletto") }).
+toMatchInlineSnapshot(`
 {
   "limen": {
-    "condition": 76,
+    "condition": 70,
     "losses": 0,
-    "player": "c020ab89e69c1b445e9f077a09102ea0fc70bed4f2334d6086d3b9fd7e9fd7f7",
-    "produced": 10,
-    "truth": "13d9c06b26986bfc3621b1db03f10d190fad169e789e5a09ba8ef8c7303d04cd",
+    "player": "117cc7241c99b1b78bd1c7cd63281c7c75c46d735b0bc794f2f165a4d053bafa",
+    "produced": 20,
+    "truth": "1bcb50ec037347b03bade9fde6de0f102cbaf083c5d7b21978748a05563de704",
   },
   "stiletto": {
     "condition": 67,
     "losses": 0,
-    "player": "e24a6630cd64e6a4f2511e586ed882761f01bd7031dcc06f822ad46210d57d62",
+    "player": "43c920fe176ba48cc1c3ec083a48d0536fd165d0813730cbceca7ce59a1bf6ee",
     "produced": 24,
-    "truth": "e8db9685ddcb753acfa59405a8ccb527c1bbf13498124cc7549af2ada3d1b9f1",
+    "truth": "5bc926b3566cbac10b90bd986dd1682dc9d6375f373925a543d04d3bc0557b0a",
   },
 }
 `);

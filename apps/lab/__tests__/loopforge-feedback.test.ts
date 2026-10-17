@@ -16,7 +16,7 @@ function finish(s: State) {
 test("tokens reflect safe/fast actual outcomes and distinguish claims from evidence", () => {
   const opening = project(initialState(7));
   for (const adviser of ["limen", "stiletto"] as const) {
-    const view = project(finish(begin(adviser)));
+    const view = project(finish(begin(adviser, adviser === "limen")));
     const room = feedbackFor(view, "room:conveyor", opening);
     expect(room.value).toBe(adviser === "limen" ? "10 completed" : "Wear warning");
     expect(room.knowledge).toBe(adviser === "limen" ? "Confirmed" : "Observed");
@@ -26,12 +26,12 @@ test("tokens reflect safe/fast actual outcomes and distinguish claims from evide
   }
 });
 test("pending decisions route to response; delegated events remain inspectable without inventing another choice", () => {
-  let s = begin("limen", true);
+  let s = begin("limen");
   while (s.phase === "running") s = step(s, { type: "advance" });
   const pending = feedbackFor(project(s), "room:conveyor");
   expect(pending.action?.id).toBe("incident");
   expect(pending.value).toBe("Response required");
-  const complete = project(finish(begin("limen")));
+  const complete = project(finish(begin("limen", true)));
   const room = feedbackFor(complete, "room:conveyor");
   expect(room.events.some(e => e.kind === "resolution" && e.actor === "limen")).toBe(true);
   expect(room.action?.id).toBe("room:conveyor");

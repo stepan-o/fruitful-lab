@@ -101,7 +101,9 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
   }
 
   return {
-   clip(value:string,keepPhase=false){playing=false;if(!keepPhase)phase=0;for(const {n,p,r,s} of neutral){n.position.copyFrom(p);n.rotationQuaternion=r.clone();n.scaling.copyFrom(s);}group=container.animationGroups.find(g=>g.name===value)!;sample();onFrame(phase,false);},
+   place(x:number,y:number,z:number,yaw:number){anchor.set(x,y,z);root.rotation.y=Math.PI+yaw*Math.PI/180;sample();},
+   duration,
+   clip(value:string,keepPhase=false){playing=false;if(!keepPhase)phase=0;for(const {n,p,r,s} of neutral){n.position.copyFrom(p);n.rotationQuaternion=r.clone();n.scaling.copyFrom(s);}const selected=container.animationGroups.find(g=>g.name===value);if(!selected)throw Error(`Missing STILETTO motion: ${value}`);group=selected;sample();onFrame(phase,false);},
    play(value:boolean){if(value&&phase===1)phase=0;playing=value&&!!group;last=performance.now();stage.refresh();},
    seek(value:number){phase=Math.max(0,Math.min(1,value));sample();},speed(value:number){speed=value;},loop(value:boolean){loop=value;},
    centre(value:boolean){centred=value;sample();},turn(degrees:number){root.rotation.y=Math.PI+degrees*Math.PI/180;sample();},room,

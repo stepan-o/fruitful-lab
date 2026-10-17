@@ -93,6 +93,24 @@ assert.ok(contact.beats.every(b=>b.samples>100&&b.maximumGapMetres<.015),'Scratc
 assert.ok(contact.palmOnlyLandmarks>=3,'Contact must use central palm triangle, not fingertips');
 assert.ok(contact.maximumElbowFlexionDegrees<=130.1,'Scratch elbow overfolds');
 assert.ok(contact.maximumWristBendDegrees<55,'Scratch wrist kinks');
-assert.ok(contact.maximumFreeWristBendDegrees<20,'Resting wrist kinks');
+assert.ok(contact.maximumFreeWristBendDegrees<=contact.maximumReferenceFreeWristBendDegrees+.01,'Free wrist exceeds the Alert reference');
 assert.ok(contact.maximumArmJointSpeedDegreesPerSecond<=contact.maximumSourceArmJointSpeedDegreesPerSecond*1.05,'New arm rotation discontinuity');
 console.log('Palm-acting guard: central palm within 15 mm, bounded elbow/wrist and relaxed free wrist.');
+
+// Preserve the owner-approved scratch and every channel outside this left-arm edit.
+const freeNames=new Set(['LeftArm','LeftForeArm','LeftHand','LeftThumb','LeftIndex','LeftMiddle','LeftRing','LeftLittle']);
+function retainedMotionHash(bank){
+ const hash=createHash('sha256');
+ for(const animation of [...bank.listAnimations()].sort((a,b)=>a.getName().localeCompare(b.getName()))){
+  for(const channel of [...animation.listChannels()].sort((a,b)=>(a.getTargetNode().getName()+a.getTargetPath()).localeCompare(b.getTargetNode().getName()+b.getTargetPath()))){
+   const name=channel.getTargetNode().getName(),path=channel.getTargetPath();
+   if(animation.getName()==='Confused_Scratch_Corrected'&&freeNames.has(name)&&path==='rotation')continue;
+   const sampler=channel.getSampler();hash.update(JSON.stringify([animation.getName(),name,path,sampler.getInterpolation()]));
+   for(const accessor of [sampler.getInput(),sampler.getOutput()]){const values=accessor.getArray();hash.update(Buffer.from(values.buffer,values.byteOffset,values.byteLength));}
+  }
+ }
+ return hash.digest('hex');
+}
+assert.equal(retainedMotionHash(fixed),audit.freeArmReference.preservedMotionSha256,'Approved scratch or unrelated motion changed');
+assert.equal(audit.freeArmReference.reference,'Alert_Corrected + approved lowered right arm');
+console.log('Free-arm guard: approved scratch and all unrelated channels preserved exactly.');

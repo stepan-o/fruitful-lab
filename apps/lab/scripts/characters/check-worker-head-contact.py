@@ -44,11 +44,14 @@ for name,start,end in [('first palm scratch',.9,2.22),('palm rest',3.1,4.15),('s
  beats.append({'name':name,'start':start,'end':end,'samples':len(d),'minimumGapMetres':float(d.min()),'maximumGapMetres':float(d.max()),'maximumWristBendDegrees':float(wr.max())})
 assert max(elbow)<130.1,max(elbow)
 assert max(wrist)<55,max(wrist)
-assert max(free)<20,max(free)
+reference=next(c for c in b.g['animations']if c['name']=='Alert_Corrected')
+_,_,alert=b.sample(reference,120)
+reference_free=[float(np.degrees(np.arccos(np.clip(unit(q[25,:3,1])@unit(q[25,:3,3]-q[21,:3,3]),-1,1))))for q in alert]
+assert max(free)<=max(reference_free)+.01,(max(free),max(reference_free))
 source=next(c for c in b.g['animations']if c['name']=='Confused_Scratch');_,sl,_=b.sample(source,120);source_speed=[]
 for n in [18,21,25,19,22,26]:
  r=sl[:,n,:3,:3];r=r/np.linalg.norm(r,axis=1)[:,None,:]
  source_speed.extend(np.degrees(R.from_matrix(r[1:]@r[:-1].transpose(0,2,1)).magnitude())/np.diff(ts))
 assert max(vel)<=max(source_speed)*1.05,('New joint-speed spike',max(vel),max(source_speed))
-r={'sha256':hashlib.sha256(args.asset.read_bytes()).hexdigest(),'sampleRate':120,'method':'Central palm surface point (a barycentric point on a real hand triangle, fingers excluded), measured against all head triangles within 15 mm during all three holds. Full-clip elbow flexion <=130 degrees, wrist bend <55 degrees, contact-hold wrist bend <55 degrees, free wrist <20 degrees; joint speed may not exceed the original maximum by more than 5% (the source has a fast final arm drop). Skinned collision audit remains separate. These gates do not replace owner visual review.','palmOnlyLandmarks':len(palm_ids),'maximumElbowFlexionDegrees':max(elbow),'maximumWristBendDegrees':max(wrist),'maximumFreeWristBendDegrees':max(free),'maximumSourceArmJointSpeedDegreesPerSecond':float(max(source_speed)),'maximumArmJointSpeedDegreesPerSecond':max(vel),'beats':beats}
+r={'sha256':hashlib.sha256(args.asset.read_bytes()).hexdigest(),'sampleRate':120,'method':'Central palm surface point (a barycentric point on a real hand triangle, fingers excluded), measured against all head triangles within 15 mm during all three holds. Full-clip elbow flexion <=130 degrees, wrist bend <55 degrees, contact-hold wrist bend <55 degrees, free wrist no more bent than the Alert reference; joint speed may not exceed the original maximum by more than 5% (the source has a fast final arm drop). Skinned collision audit remains separate. These gates do not replace owner visual review.','palmOnlyLandmarks':len(palm_ids),'maximumElbowFlexionDegrees':max(elbow),'maximumWristBendDegrees':max(wrist),'maximumFreeWristBendDegrees':max(free),'maximumReferenceFreeWristBendDegrees':max(reference_free),'maximumSourceArmJointSpeedDegreesPerSecond':float(max(source_speed)),'maximumArmJointSpeedDegreesPerSecond':max(vel),'beats':beats}
 args.output.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))

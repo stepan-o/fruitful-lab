@@ -1,6 +1,6 @@
 {
-  "revision": "worker-palm-acting-v7",
-  "sha256": "4706b780ccbde6a553f954a5235c511e48c9b0770fd2748fbdbcba026bf53357",
+  "revision": "worker-free-arm-v8",
+  "sha256": "f353652a8d3c12020cf3ad2ae10fada37b543f673ae66238e9374bdfa6f52da9",
   "sampleRate": 120,
   "method": "Exported skinned mesh checked at 120 Hz across legs, opposite forearms, hands/head, forearms/torso and hands/legs. Interior triangle crossings; Electrocuted Fall also checks both complete hands against the fixed Y=0 floor. Not swept-volume, coplanar, prop-contact or transition certification.",
   "clips": [
@@ -369,7 +369,7 @@
       "samples": 1381,
       "sourceContactFrames": 705,
       "correctedContactFrames": 0,
-      "note": "The central palm rests against the moving scalp, with two small scratching beats and a puzzled hold. Elbow flexion is bounded and wrist alignment follows the whole arm. The free arm rests beside the torso with a soft elbow and relaxed fingers.",
+      "note": "The central palm rests against the moving scalp, with two small scratching beats and a puzzled hold. Elbow flexion is bounded and wrist alignment follows the whole arm. The approved right scratch is preserved exactly. The free arm uses Alert posture and mirrors the lowered right-arm swing during body recoil; it is no longer pinned to the hip.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 616,
@@ -1473,13 +1473,14 @@
     "reviewStatus": "Candidate for owner visual review; not blanket gameplay approval."
   },
   "headContact": {
-    "sha256": "4706b780ccbde6a553f954a5235c511e48c9b0770fd2748fbdbcba026bf53357",
+    "sha256": "f353652a8d3c12020cf3ad2ae10fada37b543f673ae66238e9374bdfa6f52da9",
     "sampleRate": 120,
-    "method": "Central palm surface point (a barycentric point on a real hand triangle, fingers excluded), measured against all head triangles within 15 mm during all three holds. Full-clip elbow flexion <=130 degrees, wrist bend <55 degrees, contact-hold wrist bend <55 degrees, free wrist <20 degrees; joint speed may not exceed the original maximum by more than 5% (the source has a fast final arm drop). Skinned collision audit remains separate. These gates do not replace owner visual review.",
+    "method": "Central palm surface point (a barycentric point on a real hand triangle, fingers excluded), measured against all head triangles within 15 mm during all three holds. Full-clip elbow flexion <=130 degrees, wrist bend <55 degrees, contact-hold wrist bend <55 degrees, free wrist no more bent than the Alert reference; joint speed may not exceed the original maximum by more than 5% (the source has a fast final arm drop). Skinned collision audit remains separate. These gates do not replace owner visual review.",
     "palmOnlyLandmarks": 3,
     "maximumElbowFlexionDegrees": 123.71160070725814,
     "maximumWristBendDegrees": 50.11280046123837,
-    "maximumFreeWristBendDegrees": 8.350789108455531,
+    "maximumFreeWristBendDegrees": 24.638975771027525,
+    "maximumReferenceFreeWristBendDegrees": 26.575992108485636,
     "maximumSourceArmJointSpeedDegreesPerSecond": 971.9743132699576,
     "maximumArmJointSpeedDegreesPerSecond": 971.9884753031279,
     "beats": [
@@ -1520,7 +1521,25 @@
         "LeftHand.rotation"
       ]
     },
-    "method": "Scratch reaches with a measured central palm triangle, aligned to the moving scalp surface. The shoulder and elbow are solved together with the source bend plane and a 130-degree flexion bound. Wrist orientation is authored as part of the complete palm pose. Two scratch beats flow into a puzzled palm rest; the free arm is lowered beside the torso with a soft elbow and relaxed finger hinges. All work is baked offline. Fall retains its previous source elbow/wrist and shoulder lift.",
-    "reviewStatus": "Candidate for owner visual review. Contact proximity and collision counts are not artistic approval."
+    "method": "Alert left-arm posture, retimed through Scratch; blend to a bind-frame mirror of the approved lowered right-arm swing during body recoil and release. Three-degree shoulder arc clears thigh during release. Original right arm, torso, clavicles, legs and all other clips stay exact. Baked offline; no pinned wrist target.",
+    "reviewStatus": "Right-hand scratch approved by owner; revised free arm awaits owner review."
+  },
+  "freeArmReference": {
+    "reference": "Alert_Corrected + approved lowered right arm",
+    "approvedBaselineSha256": "4706b780ccbde6a553f954a5235c511e48c9b0770fd2748fbdbcba026bf53357",
+    "preservedMotionSha256": "afb14b9b6bd54f8beac794d5762d356ac1015a7d37b292ed7e6a20cf6a7ff5f4",
+    "changedChannels": [
+      "LeftArm.rotation",
+      "LeftForeArm.rotation",
+      "LeftHand.rotation",
+      "LeftThumb.rotation",
+      "LeftIndex.rotation",
+      "LeftMiddle.rotation",
+      "LeftRing.rotation",
+      "LeftLittle.rotation"
+    ],
+    "unchangedClips": 40,
+    "method": "Alert left-arm posture, retimed through Scratch; blend to a bind-frame mirror of the approved lowered right-arm swing during body recoil and release. Three-degree shoulder arc clears thigh during release. Original right arm, torso, clavicles, legs and all other clips stay exact. Baked offline; no pinned wrist target.",
+    "reviewStatus": "Right-hand scratch approved by owner; revised free arm awaits owner review."
   }
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-17-worker-palm-acting",
+  "revision": "model-briefs-2026-10-17-worker-free-arm",
   "date": "2026-10-16",
   "models": [
     {
@@ -74,9 +74,9 @@
       "id": "worker",
       "name": "Worker 01",
       "subtitle": "Factory worker · body + motion bank",
-      "revision": "Rebuild brief v8 · palm contact and relaxed free arm",
+      "revision": "Rebuild brief v9 · Alert-referenced free arm",
       "status": "Cleanup implemented · visual review",
-      "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions sit beside untouched sources, with ten rigid finger hinges and three hand studies. Scratch uses central-palm contact, bounded elbow/wrist motion and a relaxed free arm. Inspect the hands/head close-up and full gesture. Fall retains its source-preserving left-arm correction; owner visual acceptance remains pending.",
+      "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions sit beside untouched sources, with ten rigid finger hinges and three hand studies. The approved right-hand scratch stays exact; its free arm follows Alert’s posture and the lowered right-arm swing. Inspect the hands/head close-up and full gesture. Revised free arm awaits owner review.",
       "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
       "viewerLabel": "Compare corrected and original motions",

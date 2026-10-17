@@ -64,4 +64,42 @@ Automated coverage includes reservation contention, duplicate admission, cancell
 
 The production build, asset validation, affected 72-test engine/console/camera suite, legacy reservation tests and targeted lint pass. The broader serial run passed 95 of 99 suites initially; the remaining feedback expectations were updated for native day-one assignments, and the three environment-dependent suites were rerun successfully with `API_BASE_URL` set.
 
-An initial browser pass identified a missing STILETTO walk alias and a gate-column staging overlap. The source binding, paired facing, portal-centre positions and default oblique camera were corrected. The browser connection became unavailable before the final visual rerun, responsive inspection and PNG download check could finish. Those visual gates remain open; this record does not certify final blocking, blends, contact or crowd performance. PNG export includes the exact frame and public dialogue; JSON separately contains author evidence.
+An initial browser pass identified a missing STILETTO walk alias and a gate-column staging overlap. The source binding, paired facing, portal-centre positions and default oblique camera were corrected. A later local production-build browser pass loaded and played all three scenes and measured the older Intel machine below. A 390 px layout check found and corrected a speech bubble escaping the canvas; the verified bubble occupied x=186–336 inside a 344 px canvas. Final paired-facing review, tablet/touch inspection and PNG download verification remain open; this record does not certify final blocking, blends, contact or crowd performance. PNG export includes the exact frame and public dialogue; JSON separately contains author evidence.
+
+
+## Older-computer baseline · 17 October 2026
+
+Older laptops are an intended performance target, including the development computer: Intel Core i5-7200U (two cores / four threads), Intel HD Graphics 620, about 12 GB RAM. Browser inspection confirmed the Intel HD 620 through ANGLE / Mesa OpenGL; this was not a software renderer. The optimized Next production build was used with the development compiler stopped. The desktop still had other applications open, roughly 2.1 GiB memory available and nearly full 8 GiB swap. These are observations of a busy machine, not an isolated hardware laboratory or an attribution of its memory use to Loopforge.
+
+The measurement now counts wall-clock intervals between active scene draws. Paused/loading gaps are excluded, but long stalls during active playback are retained. The last 300 intervals form a rolling window, reset on pause/resume, scene changes and backgrounding. FPS derives from that window. These are rendering-cadence readings, not GPU execution timers or a whole-session benchmark. Cold downloads, decoding and initial shader warmup are not represented.
+
+| Live sample | Render pixels | FPS | Frame p50 / p95 / p99 | Draw calls / active-index triangles |
+| --- | --- | --- | --- | --- |
+| Doorway: LIMEN + STILETTO, around 31 s | 857 × 468 | 57 | 17 / 22 / 34 ms | 131 / 314,126 |
+| Doorway: LIMEN + STILETTO, around 34 s | 1470 × 702 | 43 | 18 / 35 / 37 ms | 100 / 301,478 |
+| Security: worker + LIMEN, around 25 s | 1470 × 702 | 48 | 17 / 35 / 36 ms | 62 / 170,476 |
+| Conveyor: worker + STILETTO, around 30 s | 1470 × 702 | 39 | 30 / 36 / 41 ms | 135 / 371,236 |
+
+The Conveyor repeated samples ranged from 38–40 FPS, with p95 35–37 ms and a captured p99 up to 55 ms. Pausing may leave the last active sample displayed until another report is emitted; it is not paused-scene FPS.
+
+Each row is a single warmed rolling snapshot with 300 intervals, not a guaranteed minimum. The larger view used a 1920 × 1080 browser viewport; the actual 3D canvas was smaller because of the author controls. Active-index counts vary with visibility and render passes and are not unique asset triangle totals. A resized viewport is not a different physical device.
+
+### Runtime work before a full-room claim
+
+1. Export lean runtime character packages containing the accepted body and required clips. The current pair downloads are about 16.4–22.4 MiB of character GLBs alone; they reuse review packages, including source-comparison data. These file sizes are not decoded GPU memory measurements. Share worker geometry/materials/textures across the cohort; keep independent animation state without downloading each worker again.
+2. Evaluate each character pose once per presented frame. The current adapter calls both seek and place, each of which samples the pose. It also repeats poses between 50 ms simulation ticks. Interpolate presentation separately from authoritative effects; the simulation must never depend on FPS or a visual clip callback.
+3. Add camera-distance levels of detail, lower-resolution worker textures and GPU-compressed KTX2 delivery. Keep the hero model for supervisor information closeups. Validate independent animated workers before choosing ordinary instances versus baked GPU animation; static-instance savings cannot simply be assumed for a crowd with independent skeletons.
+4. Render one selected room/camera. The other CCTV angles should be switchable views or cheap still previews on the low tier, not three simultaneous full-detail renders. Keep off-camera agents in the world without paying for their skinning, shadows and effects every frame.
+5. Budget lights, dynamic shadows, glow and particles across the whole room. Preserve LIMEN's energy silhouette, STILETTO's visor and CATHEXIS's mask contrast. Prefer cheaper background shadows and detail before reducing readability of actors or their speech. Hosting on S3/CDN improves delivery and deployment size; it does not remove per-frame GPU cost.
+
+### Acceptance target, not yet a passed guarantee
+
+- Older integrated-graphics computer: steady 30 FPS at roughly 1280 × 720 internal rendering, adaptive resolution and a reduced effects tier. Aim for p95 at or below 33.3 ms, report p99 and counts of stalls over 100 ms separately. Do not declare a pass from a good average alone.
+- More capable computer: 60 FPS target at higher resolution/quality.
+- Tablets and phones: a separately validated 30 FPS tier, tested on real Android and iOS hardware. Viewport resizing does not test GPU limits, browser memory limits, touch performance or thermal throttling.
+
+The next performance gate is one representative occupied room with 24 workers, both supervisors, machinery, dialogue and effects, followed by a ten-minute run and repeated room changes. Record cold start, warm frame times, memory growth, context loss, camera responsiveness and speech readability. Use this computer as a required reference machine rather than assuming players will upgrade. The present two-character results support browser feasibility; they do not yet certify that crowd, five-day gameplay, or all older devices.
+
+Implementation references: [Babylon scene optimization](https://doc.babylonjs.com/features/featuresDeepDive/scene/optimize_your_scene) and [KTX2 textures](https://doc.babylonjs.com/features/featuresDeepDive/materials/using/ktx2Compression).
+
+Verification of this addendum: the production build and scoped lint pass; 17 targeted tests pass, including long-stall retention, pause/loading exclusion and bounded performance windows. No full-crowd, physical-mobile, sustained thermal or isolated-process memory pass is claimed.

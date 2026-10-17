@@ -1,3 +1,4 @@
+import {createFrameWindow, type FrameMode} from '@/lib/loopforge/frame-window';
 import { createReviewOrbit, type ReviewCameraAction } from './review-orbit';
 import { SceneInstrumentation } from "@babylonjs/core/Instrumentation/sceneInstrumentation";
 import { Engine } from "@babylonjs/core/Engines/engine";
@@ -37,7 +38,7 @@ import { gateOpen, initialStudy, type Fixture, type StudyState } from "@/lib/loo
 import { WORK_AREAS } from '@/lib/loopforge/spatial/capacity';
 export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
-export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; p50?: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
+export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; sampleMode?: FrameMode; sampleCount?: number; p50?: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
 export type CharacterStage = { scene: Scene; shadow: ShadowGenerator; gate(open: boolean): void; refresh(materialsChanged?: boolean): void };
 export type FactoryScene = { reviewTarget(point: readonly [number,number] | null, angle?: number): void; reviewSubject(targetHeight:number, distance:number, minimum:number): void; reviewCamera(action?: ReviewCameraAction): ReturnType<ReturnType<typeof createReviewOrbit>["snapshot"]>; characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
@@ -474,9 +475,9 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   const resize=()=>{const w=canvas.clientWidth;engine.setHardwareScalingLevel(1/(Math.min(w<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();frame();viewport();};
   const observer=new ResizeObserver(resize);observer.observe(canvas);resize();
   let hidden=document.hidden;
-  const visibility=()=>{hidden=document.hidden;lastTime=performance.now();if(hidden||!visible)engine.stopRenderLoop(render);else {renderDirty=true;frames=0;reportTime=performance.now();engine.runRenderLoop(render);}};
-  const frameIntervals:number[]=[];let previousFrame=0;
-  let frames=0,reportTime=performance.now(),shadowView="",shadowTravel=-1,shadowInstalled=-1,shadowArm=-1;
+  const visibility=()=>{hidden=document.hidden;frameWindow.reset();lastTime=performance.now();if(hidden||!visible)engine.stopRenderLoop(render);else {renderDirty=true;reportTime=performance.now();engine.runRenderLoop(render);}};
+  const frameWindow=createFrameWindow();
+  let reportTime=performance.now(),shadowView="",shadowTravel=-1,shadowInstalled=-1,shadowArm=-1;
   const keyMap=shadow.getShadowMap()!,signalMap=signalShadows.getShadowMap()!;keyMap.refreshRate=0;signalMap.refreshRate=0;
   function render(){
     if(hidden||!visible)return;
@@ -487,7 +488,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     const quietFrame = !cameraMoving && !state.running;
     if(quietFrame&&!renderDirty&&(!moving||now<idleDue-2))return;
     idleDue = quietFrame ? Math.max(idleDue+1000/30, now) : now+1000/30;
-    if(previousFrame&&now-previousFrame<200){frameIntervals.push(now-previousFrame);if(frameIntervals.length>300)frameIntervals.shift();}previousFrame=now;
+    frameWindow.frame(now,!resourcesReady?'loading':moving||state.running||cameraMoving?'active':'idle');
     const dt=Math.min(.06,(now-lastTime)/1000);lastTime=now;renderDirty=false;if(moving)motionClock+=dt;
     if(transition>0){const speed=moving?1-Math.exp(-dt*4):1;camera.setTarget(Vector3.Lerp(camera.target,targetPoint,speed),false,false,true);camera.radius+=(targetRadius-camera.radius)*speed;transition-=moving?dt*.8:1;}
     const targetTravel=state.travel/1600;visualTravel+=(targetTravel-visualTravel)*Math.min(1,dt*(state.process?3:18));
@@ -543,7 +544,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     equipment.animate(motionClock,moving,focus);
     lobby.animate(motionClock,moving,focus==="lobby",framing!=="room");
     // A resource can become ready after its draw was skipped. Render once more before sleeping.
-    const wasReady=resourcesReady,beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady||!wasReady;const renderedAt=performance.now();frames++;if(now-reportTime>1200){const fps=Math.round(frames*1000/(now-reportTime));report({fps,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),p50:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.5)]??0),p95:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.95)]??0),p99:Math.round([...frameIntervals].sort((a,b)=>a-b)[Math.floor(frameIntervals.length*.99)]??0),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});if((moving||state.running||cameraMoving)&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;frames=0;reportTime=now;}
+    const wasReady=resourcesReady,beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady||!wasReady;const renderedAt=performance.now();if(now-reportTime>1200){const timing=frameWindow.snapshot(),fps=timing.fps;report({...timing,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});if(timing.sampleMode==='active'&&timing.sampleCount>=30&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;reportTime=now;}
   }
   equipment.study(false);
   const input = (event: Event) => {
@@ -559,15 +560,15 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(materialsChanged=false){if(materialsChanged)resourcesReady=false;renderDirty=true;keyMap.resetRefreshCounter();}};},
     review(enabled,distance){reviewOrbit.suspend();characterReview=enabled;if(distance!==undefined)reviewOrbit.distance(distance);frame();if(cctvEnabled)configureFeeds();},
     update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const fresh=s.events.filter(e=>e.id>lastEvent);if(fresh.length){lastEvent=fresh.at(-1)!.id;const signal=fresh.find(e=>e.kind==="jam")??fresh.find(e=>e.kind==="cycle");if(signal){flash=1;flashKind=signal.kind as "jam"|"cycle";}else if(fresh.some(e=>e.kind==="release")){flash=0;flashKind="idle";}}},
-    focus(f){reviewOrbit.suspend();frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
+    focus(f){reviewOrbit.suspend();frameWindow.reset();reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
     framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},
     feeder(enabled){resourcesReady=false;renderDirty=true;lobby.feeder(enabled);keyMap.resetRefreshCounter();},
     inset(bottom,top){bottomInset=bottom;topInset=top;engine.resize();frame();viewport();},
-    motion(enabled){renderDirty=true;moving=enabled;},
+    motion(enabled){if(enabled!==moving)frameWindow.reset();renderDirty=true;moving=enabled;},
     study(enabled){posesDirty=true;equipmentStudy=enabled;floor.study(enabled);equipment.study(enabled);population(state.workers.length+(enabled?SCALE_FIGURES.length:0));keyMap.resetRefreshCounter();frame();},
     cctv(enabled,angle,triple){cctvEnabled=enabled;cctvAngle=angle;tripleFeed=triple;renderDirty=true;configureFeeds();if(!enabled){viewport();frame();}},
     isolate(enabled){isolatedRoom=enabled;posesDirty=true;frame();},
-    active(enabled){visible=enabled;if(enabled&&!document.hidden){frameIntervals.length=0;previousFrame=0;frames=0;reportTime=performance.now();lastTime=performance.now();renderDirty=true;engine.resize();viewport();engine.runRenderLoop(render);}else engine.stopRenderLoop(render);},
+    active(enabled){visible=enabled;if(enabled&&!document.hidden){frameWindow.reset();reportTime=performance.now();lastTime=performance.now();renderDirty=true;engine.resize();viewport();engine.runRenderLoop(render);}else engine.stopRenderLoop(render);},
     dispose(){reviewOrbit.suspend();inputEvents.forEach(name=>canvas.removeEventListener(name,input));observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);instrumentation.dispose();scene.dispose();engine.dispose();}
   };
   } catch(error) { scene.dispose(); engine.dispose(); throw error; }

@@ -1,6 +1,6 @@
 {
-  "revision": "worker-source-arm-rebuild-v4",
-  "sha256": "f8cce2ffa260d08e49de114d29d56f37cd0d7a5b137f0286723412b540c78dbc",
+  "revision": "worker-head-contact-v5",
+  "sha256": "22ba7f99855c5f09c23369c09c9f8005603a8fd3eaaf261db10804d09f008703",
   "sampleRate": 120,
   "method": "Exported skinned mesh checked at 120 Hz across legs, opposite forearms, hands/head, forearms/torso and hands/legs. Interior triangle crossings; Electrocuted Fall also checks both complete hands against the fixed Y=0 floor. Not swept-volume, coplanar, prop-contact or transition certification.",
   "clips": [
@@ -369,7 +369,7 @@
       "samples": 1381,
       "sourceContactFrames": 705,
       "correctedContactFrames": 0,
-      "note": "Right arm rebuilt from the untouched source. Original elbow rotations and middle puzzled gesture retained; wrist flexion and curled fingers shape the two scratch beats. Shoulder-only clearance preserves the elbow.",
+      "note": "Fingertips follow the moving scalp for both scratch beats; the middle gesture rests its palm at the temple. A source-derived elbow hinge and separate contact targets replace fixed wrist offsets.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 616,
@@ -1448,8 +1448,9 @@
     "method": "Offline two-bone arm placement and distributed forearm/wrist rotation, followed by exported articulated-mesh contact fitting. No runtime IK.",
     "contactBeats": {
       "Confused_Scratch": [
+        1.12,
         1.6,
-        3.6,
+        3.51,
         8.6
       ],
       "injured_walk": [
@@ -1471,18 +1472,47 @@
     "fingerCurlDegrees": "34\u201336 rest; 7 clap contact; 18 injured brace; 40 carry/run; 46 crossed-arm hold; 9 settled floor contact. One rigid hinge per digit; per-finger multipliers retained.",
     "reviewStatus": "Candidate for owner visual review; not blanket gameplay approval."
   },
+  "headContact": {
+    "sha256": "22ba7f99855c5f09c23369c09c9f8005603a8fd3eaaf261db10804d09f008703",
+    "sampleRate": 120,
+    "method": "Nearest exported hand/head vertices during the three authored contact holds; 15 mm proximity gate. Elbow correction is restricted to flexion about the original source bend-plane normal. Proximity alone is not visual acceptance.",
+    "maximumHingeOffAxisRadians": 9.767089342169017e-06,
+    "beats": [
+      {
+        "name": "first scratch",
+        "start": 0.9,
+        "end": 2.12,
+        "samples": 147,
+        "minimumGapMetres": 0.008366904169795648,
+        "maximumGapMetres": 0.010051060380209156
+      },
+      {
+        "name": "temple",
+        "start": 3.1,
+        "end": 4.15,
+        "samples": 127,
+        "minimumGapMetres": 0.006094882180919519,
+        "maximumGapMetres": 0.00886777244417883
+      },
+      {
+        "name": "second scratch",
+        "start": 7.78,
+        "end": 8.9,
+        "samples": 135,
+        "minimumGapMetres": 0.00879724183527346,
+        "maximumGapMetres": 0.010691655688064256
+      }
+    ]
+  },
   "sourceArmRebuild": {
-    "unchangedClips": 39,
+    "unchangedClips": 40,
     "originalSamplersPreserved": {
-      "Confused_Scratch": [
-        "RightForeArm.rotation"
-      ],
       "Electrocuted_Fall": [
         "LeftForeArm.rotation",
         "LeftHand.rotation"
       ]
     },
-    "method": "Restore the rejected arm chain from untouched source motion, then rotate the complete chain from its shoulder for clearance. Scratch adds palm-axis wrist flexion only at the two original scratch beats. No elbow-pole solve or floor-palm reorientation.",
-    "reviewStatus": "Candidate for owner visual review. Collision counts are not an artistic approval."
+    "method": "Scratch starts from source arm motion. Two fingertip targets follow actual scalp triangles; a separate palm target follows the temple. Shoulder rotation, source-plane elbow flexion and bounded wrist rotation fit these contacts. Finger hinges ease in and out. Fall retains the previous source elbow/wrist and shoulder lift.",
+    "reviewStatus": "Candidate for owner visual review. Contact proximity and collision counts are not artistic approval."
   }
 }

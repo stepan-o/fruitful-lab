@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-16-worker-source-arms",
+  "revision": "model-briefs-2026-10-16-worker-head-contact",
   "date": "2026-10-16",
   "models": [
     {
@@ -74,9 +74,9 @@
       "id": "worker",
       "name": "Worker 01",
       "subtitle": "Factory worker · body + motion bank",
-      "revision": "Rebuild brief v5 · source-preserving arm rebuild",
+      "revision": "Rebuild brief v6 · head-relative hand contacts",
       "status": "Cleanup implemented · visual review",
-      "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions now sit beside untouched sources, with ten rigid finger hinges and three hand studies. Scratch elbow and Fall left wrist are rebuilt from their source motion; review their joint articulation independently of collision counts.",
+      "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions now sit beside untouched sources, with ten rigid finger hinges and three hand studies. Scratch uses moving scalp and temple targets with a constrained elbow hinge. Check contact proximity and joint articulation, not just collision counts. Fall retains its source-preserving left-arm correction.",
       "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
       "viewerLabel": "Compare corrected and original motions",

@@ -77,7 +77,7 @@ console.log('Worker cleanup: exact source preservation, 19 corrected clips, 10 w
 
 // These joints were rejected visually despite passing the collision-only gate.
 // Preserve their actual source samplers: a new elbow pole or wrist twist must fail.
-for(const [name,joints] of [['Confused_Scratch',['RightForeArm']],['Electrocuted_Fall',['LeftForeArm','LeftHand']]]){
+for(const [name,joints] of [['Electrocuted_Fall',['LeftForeArm','LeftHand']]]){
  const source=fixed.listAnimations().find(a=>a.getName()===name),corrected=fixed.listAnimations().find(a=>a.getName()===name+'_Corrected');
  for(const joint of joints){
   const channel=a=>a.listChannels().find(c=>c.getTargetNode().getName()===joint&&c.getTargetPath()==='rotation').getSampler();
@@ -85,4 +85,10 @@ for(const [name,joints] of [['Confused_Scratch',['RightForeArm']],['Electrocuted
   assert.deepEqual(channel(corrected).getOutput().getArray(),channel(source).getOutput().getArray(),name+' '+joint+' source hinge changed');
  }
 }
-console.log('Source-joint guard: Scratch elbow and Fall left elbow/wrist curves are unchanged.');
+console.log('Source-joint guard: Fall left elbow/wrist curves are unchanged.');
+const contact=audit.headContact;
+assert.equal(contact.sha256,repairedFile.sha256,'Head-contact audit must match the delivered GLB');
+assert.equal(contact.sampleRate,120);assert.equal(contact.beats.length,3);
+assert.ok(contact.beats.every(b=>b.samples>100&&b.maximumGapMetres<.015),'Scratch contact drifts away from the head');
+assert.ok(contact.maximumHingeOffAxisRadians<.002,'Scratch elbow gained a new bend plane');
+console.log('Head-contact guard: three holds within 15 mm; source elbow hinge plane retained.');

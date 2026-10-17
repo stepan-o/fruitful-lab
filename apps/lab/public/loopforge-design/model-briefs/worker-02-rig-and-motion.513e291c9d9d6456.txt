@@ -1,0 +1,34 @@
+Use the accepted Worker 01 delivery mesh and textures throughout. Rig a humanoid biped with Mixamo export naming; keep a neutral rigged A-pose. Report actual hierarchy and finger support. The accepted FBX bank has 24 skin joints, while an earlier GLB had 23: do not mix their raw animation tracks without retargeting. The vendor source has rigid fingers. Our offline derivative now adds ten rigid digit hinges (34 joints total) plus corrected motions. Preserve the vendor export as source and rerun offline fitting/cleanup after regeneration; do not claim the new Meshy export already includes those fixes. Broader rigid armor weighting remains scene-dependent.
+
+Apply these catalog motions to the SAME body. Keep IDs in filenames and original embedded clip names. Export mesh, skin, materials and motion in GLB and FBX; export each clip independently if All Animations omits later additions.
+- 0 Idle
+- 2 Alert
+- 25 Agree_Gesture
+- 26 Angry_Stomp
+- 31 Catching_Breath
+- 36 Confused_Scratch (idle_scratch)
+- 37 Discuss_While_Moving
+- 47 Listening_Gesture
+- 59 Victory_Cheer
+- 106 Confident_Walk / owner UI name Hot Walk — CATHEXIS reference, not worker default
+- 172 Electrocution_Reaction
+- 181 Electrocuted_Fall
+- 260 Push_Forward_and_Stop
+- 576 Idle_Turn_Left
+- 586 Idle_Turn_Right
+- 611 Carry_Heavy_Walk
+- 637 Injured_Walk_inplace
+- 657 run_fast_10_inplace
+- 692 walking_2_inplace
+
+613 Casual_Walk_inplace was rejected for leg crossing. 692 is a replacement candidate, NOT certified collision-free: the original downloaded worker intersects its shins. Our corrected derivative is separate and has passed the recorded 120 Hz mesh checks. Keep source and corrected versions separate. Preserve intended Hot Walk crossover for CATHEXIS, but correct actual surface penetration on her own model.
+
+Do not trust labels such as in-place without inspecting root travel. Catching Breath includes a running approach, Discuss While Moving travels, and fall clips finish displaced. Catalog names are source identity, not guaranteed gameplay meaning.
+
+Still missing: afraid_recoil and exact work_cradle. Do not substitute a carry walk for machine work. If custom motion is unavailable in the current Agent UI, report that and preserve the successful exports for offline authoring.
+
+Report each filename, hash if available, triangle/joint counts, embedded clips/durations and root translation/rotation. A working browser preview is not proof of a complete downloaded asset.
+
+Offline acting requirements (after source export): Confused Scratch must place the palm and fingers against the scalp, with a natural wrist and relaxed free arm. Injured Walk braces the right thigh with the right palm. Agree Gesture presents opposed palms for clapping. Angry Stomp folds the arms at different heights/depths and uncrosses them without cutting through one another. Resting hands face inward with relaxed fingers and forearm/wrist rotation. Electrocuted Fall must keep both complete hands above the fixed scene floor. These are locally authored corrections, not Meshy catalog guarantees; preserve the source for comparison.
+
+Scratch correction starts from the original reaching-arm motion. Fit an actual central palm surface, accounting for its tilt relative to the wrist bone; do not use fingertip-only contact. Solve shoulder and elbow together with a stable source bend plane and a maximum 130-degree elbow flexion. Align the wrist as part of the complete palm pose, keep its bend below 55 degrees, and keep the free wrist within the measured Alert reference range (26.58 degrees). Use Alert’s left-arm posture, blending to a bind-frame mirror of the lowered right-arm swing during recoil and release. Keep the original torso/clavicle animation and relaxed finger hinges; do not pin the wrist to a fixed hip-relative target. The right-hand scratch has owner approval: preserve its exact baked channels when changing the free arm. Use two small scalp-scratching beats and a continuous puzzled palm rest. Check actual palm-to-head surface distance throughout each hold (within 15 mm), not merely absence of intersections. These replace the previous exact-source-elbow requirement, which forced a bad wrist fit. Fall left-arm correction must preserve source elbow and wrist alignment, lifting the whole arm to clear the floor instead of forcing the palm down. Review every contact from front, profile and three-quarter views plus entry/release. These constraints are checked locally after Meshy export.

@@ -35,3 +35,82 @@ for(const a of root.listAnimations()){
  assert.ok(clip.markers.every(m=>m.time>=0&&m.time<=duration+.002));
 }
 console.log('Worker review: 19 named motions, 24 skin joints, 25,893 triangles, embedded maps, finite/normalized data and bounded review markers.');
+
+// Cleanup revision: source geometry, skin and all source samples stay intact.
+const repairedFile=pack.assets['worker-01-corrected'].variants[0];
+const repairedBytes=new Uint8Array(await readFile(new URL('../../public'+repairedFile.src,import.meta.url)));
+const {createHash}=await import('node:crypto');
+assert.equal(repairedBytes.length,repairedFile.bytes);assert.ok(repairedBytes.length<12000000);
+assert.equal(createHash('sha256').update(repairedBytes).digest('hex'),repairedFile.sha256);
+const repairedValidation=await validateBytes(repairedBytes,{maxIssues:100});assert.equal(repairedValidation.issues.numErrors,0,JSON.stringify(repairedValidation.issues));
+const fixedDoc=await io.readBinary(repairedBytes),fixed=fixedDoc.getRoot();
+assert.deepEqual(fixed.listSkins().map(s=>s.listJoints().length).sort((a,b)=>a-b),[24,34]);
+assert.equal(fixed.listAnimations().length,41);
+const sourceSkin=fixed.listSkins().find(s=>s.listJoints().length===24),correctedSkin=fixed.listSkins().find(s=>s.listJoints().length===34);
+assert.deepEqual(sourceSkin.getInverseBindMatrices().getArray(),root.listSkins()[0].getInverseBindMatrices().getArray());
+assert.deepEqual(sourceSkin.listJoints().map(n=>n.getName()),root.listSkins()[0].listJoints().map(n=>n.getName()));
+assert.deepEqual(correctedSkin.listJoints().slice(0,24).map(n=>n.getName()),sourceSkin.listJoints().map(n=>n.getName()));
+for(const skin of fixed.listSkins())for(const joint of skin.listJoints())assert.ok(joint.getName());
+const srcNode=fixed.listNodes().find(n=>n.getSkin()===sourceSkin),newNode=fixed.listNodes().find(n=>n.getName()==='WorkerCorrected');
+assert.equal(newNode.getSkin(),correctedSkin);
+for(const key of ['POSITION','NORMAL','TEXCOORD_0','JOINTS_0','JOINTS_1','WEIGHTS_0','WEIGHTS_1'])assert.deepEqual(srcNode.getMesh().listPrimitives()[0].getAttribute(key).getArray(),root.listMeshes()[0].listPrimitives()[0].getAttribute(key).getArray(),`Source ${key} changed`);
+assert.deepEqual(srcNode.getMesh().listPrimitives()[0].getIndices().getArray(),newNode.getMesh().listPrimitives()[0].getIndices().getArray());
+for(const a of root.listAnimations()){
+ const exact=fixed.listAnimations().find(x=>x.getName()===a.getName());assert.ok(exact);
+ for(const channel of a.listChannels()){
+  const x=exact.listChannels().find(c=>c.getTargetNode().getName()===channel.getTargetNode().getName()&&c.getTargetPath()===channel.getTargetPath());assert.ok(x);
+  assert.deepEqual(x.getSampler().getInput().getArray(),channel.getSampler().getInput().getArray(),'Source timing changed');assert.deepEqual(x.getSampler().getOutput().getArray(),channel.getSampler().getOutput().getArray(),'Source motion changed');
+ }
+ const corrected=fixed.listAnimations().find(x=>x.getName()===a.getName()+'_Corrected');assert.ok(corrected);
+ for(const f of correctedSkin.listJoints().slice(24))assert.ok(corrected.listChannels().some(c=>c.getTargetNode()===f&&c.getTargetPath()==='rotation'),'Every clip must reset finger posture');
+}
+for(const a of fixed.listAnimations())for(const s of a.listSamplers()){assert.ok(s.getInput().getArray().every(Number.isFinite));assert.ok(s.getOutput().getArray().every(Number.isFinite));}
+const p=newNode.getMesh().listPrimitives()[0],j0=p.getAttribute('JOINTS_0').getArray(),j1=p.getAttribute('JOINTS_1').getArray(),w0=p.getAttribute('WEIGHTS_0').getArray(),w1=p.getAttribute('WEIGHTS_1').getArray(),weighted=new Set();
+for(let i=0;i<j0.length;i++){assert.ok(j0[i]<34&&j1[i]<34);if(w0[i]>0)weighted.add(j0[i]);if(w1[i]>0)weighted.add(j1[i]);}
+for(let i=24;i<34;i++)assert.ok(weighted.has(i),'Unused finger joint');
+for(let i=0;i<w0.length;i+=4)assert.ok(Math.abs([...w0.slice(i,i+4),...w1.slice(i,i+4)].reduce((a,b)=>a+b,0)-1)<1e-4);
+const audit=JSON.parse(await readFile(new URL('../../lib/loopforge/agents/worker-cleanup.json',import.meta.url),'utf8'));
+assert.equal(audit.sha256,repairedFile.sha256,'Clearance audit does not belong to this asset');assert.equal(audit.sampleRate,120);assert.equal(audit.clips.length,19);
+assert.ok(audit.clips.every(c=>c.samples>0&&c.correctedContactFrames===0),'Unresolved exported-mesh contacts');
+const fall=audit.clips.find(c=>c.id==='Electrocuted_Fall');assert.equal(fall.floor?.planeY,0);assert.equal(fall.floor?.penetratingFrames,0);assert.ok(fall.floor.leftHandMinimumMetres>=-.001&&fall.floor.rightHandMinimumMetres>=-.001,'Hands penetrate the fixed floor');
+console.log('Worker cleanup: exact source preservation, 19 corrected clips, 10 weighted finger hinges, 3 hand studies, 120 Hz clearance report pinned to this GLB.');
+
+// These joints were rejected visually despite passing the collision-only gate.
+// Fall retains exact source joints. Scratch uses the bounded palm-acting audit below.
+for(const [name,joints] of [['Electrocuted_Fall',['LeftForeArm','LeftHand']]]){
+ const source=fixed.listAnimations().find(a=>a.getName()===name),corrected=fixed.listAnimations().find(a=>a.getName()===name+'_Corrected');
+ for(const joint of joints){
+  const channel=a=>a.listChannels().find(c=>c.getTargetNode().getName()===joint&&c.getTargetPath()==='rotation').getSampler();
+  assert.deepEqual(channel(corrected).getInput().getArray(),channel(source).getInput().getArray(),name+' '+joint+' timing changed');
+  assert.deepEqual(channel(corrected).getOutput().getArray(),channel(source).getOutput().getArray(),name+' '+joint+' source hinge changed');
+ }
+}
+console.log('Source-joint guard: Fall left elbow/wrist curves are unchanged.');
+const contact=audit.headContact;
+assert.equal(contact.sha256,repairedFile.sha256,'Head-contact audit must match the delivered GLB');
+assert.equal(contact.sampleRate,120);assert.equal(contact.beats.length,3);
+assert.ok(contact.beats.every(b=>b.samples>100&&b.maximumGapMetres<.015),'Scratch contact drifts away from the head');
+assert.ok(contact.palmOnlyLandmarks>=3,'Contact must use central palm triangle, not fingertips');
+assert.ok(contact.maximumElbowFlexionDegrees<=130.1,'Scratch elbow overfolds');
+assert.ok(contact.maximumWristBendDegrees<55,'Scratch wrist kinks');
+assert.ok(contact.maximumFreeWristBendDegrees<=contact.maximumReferenceFreeWristBendDegrees+.01,'Free wrist exceeds the Alert reference');
+assert.ok(contact.maximumArmJointSpeedDegreesPerSecond<=contact.maximumSourceArmJointSpeedDegreesPerSecond*1.05,'New arm rotation discontinuity');
+console.log('Palm-acting guard: central palm within 15 mm, bounded elbow/wrist and relaxed free wrist.');
+
+// Preserve the owner-approved scratch and every channel outside this left-arm edit.
+const freeNames=new Set(['LeftArm','LeftForeArm','LeftHand','LeftThumb','LeftIndex','LeftMiddle','LeftRing','LeftLittle']);
+function retainedMotionHash(bank){
+ const hash=createHash('sha256');
+ for(const animation of [...bank.listAnimations()].sort((a,b)=>a.getName().localeCompare(b.getName()))){
+  for(const channel of [...animation.listChannels()].sort((a,b)=>(a.getTargetNode().getName()+a.getTargetPath()).localeCompare(b.getTargetNode().getName()+b.getTargetPath()))){
+   const name=channel.getTargetNode().getName(),path=channel.getTargetPath();
+   if(animation.getName()==='Confused_Scratch_Corrected'&&freeNames.has(name)&&path==='rotation')continue;
+   const sampler=channel.getSampler();hash.update(JSON.stringify([animation.getName(),name,path,sampler.getInterpolation()]));
+   for(const accessor of [sampler.getInput(),sampler.getOutput()]){const values=accessor.getArray();hash.update(Buffer.from(values.buffer,values.byteOffset,values.byteLength));}
+  }
+ }
+ return hash.digest('hex');
+}
+assert.equal(retainedMotionHash(fixed),audit.freeArmReference.preservedMotionSha256,'Approved scratch or unrelated motion changed');
+assert.equal(audit.freeArmReference.reference,'Alert_Corrected + approved lowered right arm');
+console.log('Free-arm guard: approved scratch and all unrelated channels preserved exactly.');

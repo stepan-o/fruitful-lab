@@ -14,10 +14,10 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
  'cathexis-intake': {
   body:{status:'Accepted slice',detail:'Accepted v2 silhouette and rear skirt; rigged export has 51,031 triangles. Matching delivery normal map remains missing.'},
   equipment:{status:'Accepted slice',detail:'Owner approves full/split Grace fit on the intact animated head. Recessed eyes and static/moving fitting share one adapter. Physical mask removal and facial articulation remain outside this slice.'},
-  motion:{status:'Accepted slice',detail:'Owner approves corrected Hot Walk and Happy Sway. Mirror Viewing and Red Carpet Walk are new source auditions, with their own FBX skin weights and pending acting/contact cleanup. Head Hold in Pain is missing; that ZIP contains Mirror Viewing.'},
-  contact:{status:'Needs work',detail:'1,907 corrected poses pass sampled dress/leg and leg/leg checks; standing sole drift is at most 2.12 mm. Grace attachment passes 22,908 samples. Hand/mask surfaces, self-contact, blends and paired encounters remain unverified.'},
+  motion:{status:'Accepted slice',detail:'Owner approves corrected Hot Walk, Happy Sway, Mirror Viewing and Red Carpet Walk. Hot Walk remains the default travel gait; Red Carpet is a performance walk. Original exports remain available for comparison. Head Hold in Pain is missing; that ZIP contains Mirror Viewing.'},
+  contact:{status:'Needs work',detail:'3,505 corrected poses across both banks pass sampled dress/leg and leg/leg checks; Happy Sway sole drift is at most 2.12 mm. Grace attachment passes 22,908 first-bank and 19,188 second-bank samples. Hand/mask surfaces, self-contact, blends and paired encounters remain unverified.'},
   readability:{status:'Candidate',detail:'Portrait, full-body and CCTV framing share one performer. A fixed floor grid exposes contact drift; close-up acceptance does not certify distant action readability.'},
-  performance:{status:'Not measured',detail:'Approved bank: 11.51 MB. A separate source-audition bank loads only on selection; one body renders. Baked skinning, no runtime cloth. Crowd and physical-device performance remain unmeasured.'}
+  performance:{status:'Not measured',detail:'Approved banks: 11.51 MB for Hot Walk/Sway, 13.88 MB for Mirror/Red Carpet. Only the selected bank loads; one body renders. Baked skinning, no runtime cloth. Crowd and physical-device performance remain unmeasured.'}
  },
  'limen-assembly': {
   body:{status:'Accepted slice',detail:'Owner approved prototype appearance and character resemblance.'},
@@ -28,10 +28,10 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
   performance:{status:'Not measured',detail:'Live single-character counters available. Crowd and physical-device budgets are not certified.'}
  },
  'worker-01-motions': {
-  body:{status:'Candidate',detail:'One imported worker body and rig; inspect against the approved source art.'},
+  body:{status:'Candidate',detail:'Accepted source body retained; corrected skin adds ten rigid digit hinges for inspection.'},
   equipment:{status:'Needs work',detail:'Working props and contact sockets have not been integrated.'},
-  motion:{status:'Candidate',detail:'19 motions available. Hot Walk is a Cathexis reference, not the worker default.'},
-  contact:{status:'Needs work',detail:'Audited, not corrected. Walk 2, Run Fast 10 and Injured Walk still have leg intersections; gesture contacts and missing afraid/work actions remain.'},
+  motion:{status:'Candidate',detail:'19 original/corrected motion pairs plus three finger-pose studies. Hot Walk remains a CATHEXIS source reference.'},
+  contact:{status:'Candidate',detail:'13,551 exported poses at 120 Hz clear the tested self-contact regions. Source/corrected comparison is available; blends, floor staging and paired prop/agent contacts remain separate gates.'},
   readability:{status:'Candidate',detail:'Review gestures in factory lighting and at CCTV scale before assigning gameplay meaning.'},
   performance:{status:'Not measured',detail:'One consolidated body and motion bank. Real crowd and device measurements remain open.'}
  },

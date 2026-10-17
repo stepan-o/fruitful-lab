@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-15-v7",
-  "date": "2026-10-15",
+  "revision": "model-briefs-2026-10-17-worker-free-arm",
+  "date": "2026-10-16",
   "models": [
     {
       "id": "limen",
@@ -74,22 +74,22 @@
       "id": "worker",
       "name": "Worker 01",
       "subtitle": "Factory worker · body + motion bank",
-      "revision": "Rebuild brief v2 · 19 audited motions",
-      "status": "Audited · cleanup pending",
-      "summary": "Round cyan optics, ordinary worn industrial anatomy and readable uncertainty. The shared worker body has nineteen reviewed source motions; gait and hand cleanup are still open.",
+      "revision": "Rebuild brief v9 · Alert-referenced free arm",
+      "status": "Cleanup implemented · visual review",
+      "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions sit beside untouched sources, with ten rigid finger hinges and three hand studies. The approved right-hand scratch stays exact; its free arm follows Alert’s posture and the lowered right-arm swing. Inspect the hands/head close-up and full gesture. Revised free arm awaits owner review.",
       "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
-      "viewerLabel": "Inspect all 19 source motions",
+      "viewerLabel": "Compare corrected and original motions",
       "record": "/loopforge-design/production/WORKER_MOTION_REVIEW.md",
       "parts": [
-        "25,893-triangle body",
-        "24 skin joints in the current FBX bank; no finger rig",
-        "19 motions; Hot Walk is a CATHEXIS stand-in"
+        "25,893-triangle accepted body",
+        "24-joint source / 34-joint corrected skin",
+        "19 source + 19 corrected motions; 3 hand studies"
       ],
       "remaining": [
-        "Walk 2, Run Fast 10 and Injured Walk intersections",
-        "Natural shoulder, forearm and wrist posture; finger articulation",
-        "Afraid recoil and precise work/cradle interaction"
+        "Owner visual approval of corrected motion",
+        "Afraid recoil and precise work/cradle interaction",
+        "Prop contacts, transitions and crowd/device measurements"
       ],
       "images": [
         {
@@ -205,7 +205,7 @@
           "sourceFile": "Animation_idle_withSkin.fbx",
           "sourceSha256": "42121a1375d9db29f102cf42d0c91d3f8bce8346d497e5246fa808ac50f6b4a8",
           "duration": 4,
-          "note": "New export. Staggered stance with torso turns and weight shifts; review foot planting before using as the default idle. No contacts found at the three sampled closest poses."
+          "note": "Original export observation: New export. Staggered stance with torso turns and weight shifts; review foot planting before using as the default idle. No contacts found at the three sampled closest poses. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Walk 2",
@@ -213,7 +213,7 @@
           "sourceFile": "Animation_walking_2_inplace_withSkin.fbx",
           "sourceSha256": "3467563e12a1b50a33c31b3ac59edfb3bb37b98079980990518559ab7d12f2f7",
           "duration": 1.2,
-          "note": "Replacement walk candidate. The worker shins still intersect near 0.97 s; needs clearance adjustment."
+          "note": "Original export observation: Replacement walk candidate. The worker shins still intersect near 0.97 s; needs clearance adjustment. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Run Fast 10",
@@ -221,7 +221,7 @@
           "sourceFile": "Animation_run_fast_10_inplace_withSkin.fbx",
           "sourceSha256": "db60597c39d1d494956e1ff2f106711f99e8ac8a08e2bf83b49fef2eccf62be2",
           "duration": 0.8,
-          "note": "Run is present. Legs cross/intersect near 0.78 s; review at quarter speed."
+          "note": "Original export observation: Run is present. Legs cross/intersect near 0.78 s; review at quarter speed. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Confused Scratch",
@@ -229,7 +229,7 @@
           "sourceFile": "Animation_Confused_Scratch_withSkin.fbx",
           "sourceSha256": "6737651104181d8ffd773f60fbd716b2ac1491c8d1b630d710fd1af4352534ae",
           "duration": 11.5,
-          "note": "The requested puzzled idle is present. Check boot clearance near 0.20 s; keep the deliberate hand-to-head gesture."
+          "note": "Original export observation: The requested puzzled idle is present. Check boot clearance near 0.20 s; keep the deliberate hand-to-head gesture. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Injured Walk",
@@ -237,7 +237,7 @@
           "sourceFile": "Animation_injured_walk_withSkin.fbx",
           "sourceSha256": "6ce99fda2952a0698a8204d0c1149ff23464a6d02a6afdad3721ef0d09cb354b",
           "duration": 8.66666667,
-          "note": "New export. Limp is present; leg meshes intersect near 6.83 s. Keep the damaged gait, adjust clearance."
+          "note": "Original export observation: New export. Limp is present; leg meshes intersect near 6.83 s. Keep the damaged gait, adjust clearance. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Hot Walk",
@@ -245,7 +245,7 @@
           "sourceFile": "Animation_Confident_Walk_withSkin.fbx",
           "sourceSha256": "420ab45096d9f04af5bbe9914482c17371bc3ec695bb34038c9d2c749e3fe42e",
           "duration": 5.76666667,
-          "note": "Owner confirms Hot Walk in Meshy and selects it as Cathexis’s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on Cathexis."
+          "note": "Original export observation: Owner confirms Hot Walk in Meshy and selects it as Cathexis’s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on Cathexis. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Alert",
@@ -253,7 +253,7 @@
           "sourceFile": "Animation_Alert_withSkin.fbx",
           "sourceSha256": "2724cb12e0088b28d59ac0ca710632a392e599fa52e717318eefba628f863b5a",
           "duration": 4,
-          "note": "Attentive stance. No contacts found at the three sampled closest poses."
+          "note": "Original export observation: Attentive stance. No contacts found at the three sampled closest poses. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Agree Gesture",
@@ -261,7 +261,7 @@
           "sourceFile": "Animation_Agree_Gesture_withSkin.fbx",
           "sourceSha256": "1ec89fe84330776aeb619a146842da914b38f25cf096eaba31e704e7218cfd19",
           "duration": 13,
-          "note": "Long acknowledgement, not a tiny nod. Forearms intersect near 10.17 s; trim and adjust contact before gameplay."
+          "note": "Original export observation: Long acknowledgement, not a tiny nod. Forearms intersect near 10.17 s; trim and adjust contact before gameplay. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Angry Stomp",
@@ -269,7 +269,7 @@
           "sourceFile": "Animation_Angry_Stomp_withSkin.fbx",
           "sourceSha256": "d457aca73c3aed5642d1c3fa0b2eabba115feaaf3ae97cc6f25249ef68769cfb",
           "duration": 8,
-          "note": "Expressive reaction. Check legs near 0.45 s and arm crossing near 5.27 s."
+          "note": "Original export observation: Expressive reaction. Check legs near 0.45 s and arm crossing near 5.27 s. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Catching Breath",
@@ -277,7 +277,7 @@
           "sourceFile": "Animation_Catching_Breath_withSkin.fbx",
           "sourceSha256": "c5fc07cc67ecaf34223ff8ffd17181bf87139138a499b80eae052626d2e3a463",
           "duration": 7,
-          "note": "Includes a running approach before the recovery pose; about 6.24 m of pelvis travel. Select/author the recovery portion for a stationary overheating idle."
+          "note": "Original export observation: Includes a running approach before the recovery pose; about 6.24 m of pelvis travel. Select/author the recovery portion for a stationary overheating idle. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Discuss While Moving",
@@ -285,7 +285,7 @@
           "sourceFile": "Animation_Discuss_While_Moving_withSkin.fbx",
           "sourceSha256": "dafb7476c053bcecf5040fc8b79e037798084aa57472fc61c8bdc8e689bc8ba4",
           "duration": 8.03333333,
-          "note": "Gesture with real travel (about 1.75 m net). Check legs near 4.15 s; placement and interruption need authored transitions."
+          "note": "Original export observation: Gesture with real travel (about 1.75 m net). Check legs near 4.15 s; placement and interruption need authored transitions. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Listening Gesture",
@@ -293,7 +293,7 @@
           "sourceFile": "Animation_Listening_Gesture_withSkin.fbx",
           "sourceSha256": "f51ec8a95a9f139169b47980e0057c3da65ab4d31b1ad31b51aeb95e4be52e07",
           "duration": 9.33333333,
-          "note": "Attentive gesture; boot clearance needs adjustment near the end."
+          "note": "Original export observation: Attentive gesture; boot clearance needs adjustment near the end. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Victory Cheer",
@@ -301,7 +301,7 @@
           "sourceFile": "Animation_Victory_Cheer_withSkin.fbx",
           "sourceSha256": "bef4b8c7b50dd7c909098caa8bd09e1e952720318689853bc24bd55cb946eb67",
           "duration": 9.33333333,
-          "note": "Celebration with close feet near 1.27 s. Review overhead clearance in the room."
+          "note": "Original export observation: Celebration with close feet near 1.27 s. Review overhead clearance in the room. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Electrocution Reaction",
@@ -309,7 +309,7 @@
           "sourceFile": "Animation_Electrocution_Reaction_withSkin.fbx",
           "sourceSha256": "58ad5b5df6f704a459f5014fc067c4b262f82ee4ddf97600713d34a12f151d19",
           "duration": 4.66666667,
-          "note": "Shock reaction. No contacts found at the sampled closest poses; keep action timing tied to a confirmed incident."
+          "note": "Original export observation: Shock reaction. No contacts found at the sampled closest poses; keep action timing tied to a confirmed incident. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Electrocuted Fall",
@@ -317,7 +317,7 @@
           "sourceFile": "Animation_Electrocuted_Fall_withSkin.fbx",
           "sourceSha256": "e0ea4388f38ba9095efd7666f41f61eec20a325829ada29c48094447bde16cc9",
           "duration": 6.33333333,
-          "note": "One-shot collapse with vertical and forward travel. Check legs near 4.33 s and author ground contact; do not loop in gameplay."
+          "note": "Original export observation: One-shot collapse with vertical and forward travel. Check legs near 4.33 s and author ground contact; do not loop in gameplay. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Push Forward and Stop",
@@ -325,7 +325,7 @@
           "sourceFile": "Animation_Push_Forward_and_Stop_withSkin.fbx",
           "sourceSha256": "131a2e7e4e1ce67412e95b339a49d0534b8167dce233cbd13041af772a2f7672",
           "duration": 2.6,
-          "note": "Stepping two-handed push. Needs an actual prop/contact target and leg clearance near 0.87 s."
+          "note": "Original export observation: Stepping two-handed push. Needs an actual prop/contact target and leg clearance near 0.87 s. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Idle Turn Left",
@@ -333,7 +333,7 @@
           "sourceFile": "Animation_Idle_Turn_Left_withSkin.fbx",
           "sourceSha256": "a5149c1d23b1fa8191ab4c5e5ef3423397b728e8147354f41ee0891be7ce4307",
           "duration": 0.933333333,
-          "note": "Pivot transition. Inspect boot overlap near 0.53 s; reconcile heading with the agent path."
+          "note": "Original export observation: Pivot transition. Inspect boot overlap near 0.53 s; reconcile heading with the agent path. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Idle Turn Right",
@@ -341,7 +341,7 @@
           "sourceFile": "Animation_Idle_Turn_Right_withSkin.fbx",
           "sourceSha256": "106854a870b545692104f588664d3f655feb070cfc38a3017c2cdd87d72dbcda",
           "duration": 1.1,
-          "note": "Pivot transition. Inspect boot overlap near 0.63 s; reconcile heading with the agent path."
+          "note": "Original export observation: Pivot transition. Inspect boot overlap near 0.63 s; reconcile heading with the agent path. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Carry Heavy Walk",
@@ -349,7 +349,7 @@
           "sourceFile": "Animation_Carry_Heavy_Object_Walk_inplace_withSkin.fbx",
           "sourceSha256": "daaea79bfac1e0024cf81eb454d715888df433de538598474aa137a30f3855f6",
           "duration": 6.5,
-          "note": "Cradled carry pose; no contacts found at the three sampled closest poses. This is not the missing precision work/cradle interaction."
+          "note": "Original export observation: Cradled carry pose; no contacts found at the three sampled closest poses. This is not the missing precision work/cradle interaction. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         }
       ]
     },

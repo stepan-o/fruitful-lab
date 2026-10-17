@@ -101,10 +101,10 @@ export function brief(id: SupervisorId, workers = 24): Briefing {
           "Stiletto will favour a faster start. I expect we will disagree.",
         priority: "Keep the line within operating limits.",
         rationale:
-          "Give me the Conveyor. Stiletto can cover Security. We need seven working days, not one impressive morning.",
+          "Put me on Security and STILETTO on Conveyor. I will enforce admission procedures; she can run the line. We need seven working days, not one impressive morning.",
         tradeoff:
-          "Fewer robots today. Less equipment wear and lower accident exposure.",
-        assignments: { conveyor: "limen", security: "stiletto" },
+          "Thorough checks and clerical staffing delay the line’s start. The aim is a safe, intact factory at the weekly review.",
+        assignments: { conveyor: "stiletto", security: "limen" },
       }
     : {
         assessment: `${workers} workers. A working line. We can do more than stand here admiring it.`,
@@ -112,7 +112,7 @@ export function brief(id: SupervisorId, workers = 24): Briefing {
           "LIMEN will want headroom for everything that might go wrong. I want something coming off that belt.",
         priority: "Build an early production lead.",
         rationale:
-          "Give me the Conveyor. Put LIMEN on Security; he can count the badges while I make us some options.",
+          "Give me Conveyor. Put LIMEN on Security. Leadership will be happy when we exceed the weekly quota; send me the workers and I will give them a fortune.",
         tradeoff:
           "More robots to retain or deliver. More wear and greater accident exposure.",
         assignments: { conveyor: "stiletto", security: "limen" },

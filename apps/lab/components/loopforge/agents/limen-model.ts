@@ -96,6 +96,8 @@ export async function loadLimen(stage:CharacterStage,signal:AbortSignal,onFrame:
   }
   room('security');sample();
   return {
+   place(x:number,y:number,z:number,yaw:number){root.position.set(x,y,z);root.rotation.y=Math.PI+yaw*Math.PI/180;sample();},
+   duration,
    clip(value:LimenClip){clip=value;phase=0;effectTime=0;pulseAt=-100;sample();effect();onFrame(0);},
    play(value:boolean){playing=value;last=performance.now();stage.refresh();},
    seek(value:number){phase=Math.max(0,Math.min(1,value));effectTime=phase*duration();pulseAt=-100;sample();effect();},

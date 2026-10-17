@@ -1,3 +1,5 @@
+import {reserve} from '../encounters/reservations';
+export {reserve} from '../encounters/reservations';
 /** Bounded authoring fixture. Integer ticks/mm, owned records, no renderer or clock.
  * This is a small BDI/action slice, not the complete first-turn simulation. */
 export const AGENT_TEST_VERSION = 'loopforge-agent-test/1';
@@ -17,11 +19,6 @@ const lerp=(a:Point,b:Point,t:number):Point=>a.map((v,i)=>Math.round(v+(b[i]-v)*
 export function initialAgentTest(config:TestConfig):TestState {
  if(!['gate','transfer','intervention'].includes(config.kind)||!['limen','stiletto'].includes(config.supervisor)||![10,24,100].includes(config.count)||typeof config.strained!=='boolean')throw new Error('invalid_test_config');
  return {version:AGENT_TEST_VERSION,tick:0,config:{...config},active:null,history:[],reservations:{},workers:Array.from({length:config.count},(_,i)=>`worker-${String(i+1).padStart(3,'0')}`),nextWorker:0,completed:0,propOwner:'source-dock',trace:[],cancelled:false};
-}
-/** All or nothing, stable action owner. Used for actors as well as physical slots. */
-export function reserve(resources:readonly string[],owner:string,held:Record<string,string>):Record<string,string>|null {
- if(new Set(resources).size!==resources.length||resources.some(id=>held[id]&&held[id]!==owner))return null;
- return {...held,...Object.fromEntries(resources.map(id=>[id,owner]))};
 }
 function free(s:TestState,action:TestAction){for(const resource of action.resources)if(s.reservations[resource]===action.id)delete s.reservations[resource];}
 export function cancelAgentTest(state:TestState):TestState {

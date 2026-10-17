@@ -278,7 +278,7 @@ it("separates the brief from placements and submits an explicit override", () =>
   );
   expect(send).toHaveBeenCalledWith({
     type: "approve_plan",
-    assignments: { conveyor: "stiletto", security: "limen" },
+    assignments: { conveyor: "limen", security: "stiletto" },
   });
 });
 it("opens an incident, lets the player inspect evidence and return to the same unresolved decision", () => {
@@ -309,8 +309,8 @@ it("opens an incident, lets the player inspect evidence and return to the same u
   fireEvent.click(screen.getByRole("button", { name: "Issue override" }));
   expect(send).toHaveBeenCalledWith({
     type: "resolve_incident",
-    incident: "clearance-mismatch",
-    response: "wave",
+    incident: "belt-vibration",
+    response: "push",
   });
 });
 it("keeps an allocation preview through records navigation and commits only after explicit review", () => {
@@ -352,7 +352,7 @@ it("keeps confirmed facts visible and blocks appointments until reconnection", a
 
 it("links an attributed reaction to evidence without revealing private traits or repeating a stale morning brief", () => {
   let state = step(initialState(7), { type: "choose_adviser", adviser: "limen" });
-  state = step(state, { type: "approve_plan", assignments: { conveyor: "stiletto", security: "limen" } });
+  state = step(state, { type: "approve_plan", assignments: { conveyor: "limen", security: "stiletto" } });
   setup(project(state));
   render(<FirstShift media={media} />);
   const token = screen.getByRole("button", { name: /LIMEN: I will follow the arrangement/ });

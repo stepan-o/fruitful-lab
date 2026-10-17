@@ -1,6 +1,8 @@
 # Worker 01 motion cleanup — 17 October 2026
 
-## Delivered candidate
+## Approved movement bank
+
+Owner approval, 17 October 2026: the current worker animations are approved, including the final Confused Scratch free-arm pass. This closes the individual movement review and provides Worker 01's initial factory performance palette. See [the cast and show direction](../AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md#from-the-approved-cast-to-the-show) for the next phase.
 
 Game design → Agents → Production asset player → Worker 01. Direct route: `/stepanoskin/loopforge/play/asset-review/worker`. Worker is the first character tab, before the supervisors.
 
@@ -84,7 +86,7 @@ Update the committed audit from the final export, retaining the authoring measur
 
 ## Remaining scene work
 
-This is an implemented cleanup candidate awaiting owner visual review, not blanket gameplay approval. `afraid_recoil` and precision `work_cradle` are still separate authored actions. Carry Heavy Walk is a carrying gait, not machine interaction. Align grips against actual props; verify blend boundaries, navigation speed, reservations, planted contacts, falls and paired supervisor actions in their scenes. Broader rigid armor weighting and crowd/device performance are not certified by this pass.
+The individual movement bank has owner visual approval. Scene integration is the next step. `afraid_recoil` and precision `work_cradle` are still separate authored actions. Carry Heavy Walk is a carrying gait, not machine interaction. Align grips against actual props; verify blend boundaries, navigation speed, reservations, planted contacts, falls and paired supervisor actions in their scenes. Broader rigid armor weighting and crowd/device performance are not certified by this pass.
 
 Catching Breath retains a running approach (about 6.24 m); Discuss While Moving retains travel (about 1.75 m). Turn and fall clips retain their heading/displacement. Do not label these stationary merely because the camera can follow them. Hot Walk remains a worker-body source reference; CATHEXIS has her own accepted gait and model. Do not mix these tracks directly with other supervisors' differently named rigs.
 
@@ -98,4 +100,4 @@ Earlier clearance-pass browser check (16 October; before the contact-acting foll
 
 Earlier palm-acting revision (17 October, superseded free arm): only corrected Scratch’s two arms and finger rotations changed. All 19 sources, the other 18 corrected clips and three hand studies retain identical sampler arrays. The accepted geometry and skin remain unchanged. The final export was reviewed at the reported 2.19 s and 3.40 s poses, in front/profile close-up and through entry/release and the full sequence. The central palm surface stays 9.31–14.71 mm from the head during the holds; maximum elbow flexion is 123.72°, maximum wrist bend 50.12° over the full clip and 24.85° during the puzzled hold, and the free wrist stays within 8.36°. The source’s fast final arm drop remains (about 972°/s peak elbow rotation); no faster rotation spike was introduced. The former v6 asset fails the new palm-contact gate. These geometric checks do not imply owner acceptance.
 
-Free-arm revision (17 October): the owner approved the scratch and requested a more natural left arm based on Alert and the lowered right-arm swing. Only eight left-arm/finger rotation channels changed. A retained-motion fingerprint verifies the approved right arm, torso, clavicles, legs and all other clips remain exact. Maximum left-wrist bend is 24.64° versus 26.58° in Alert. The packed bank passes the repeated 120 Hz audit with zero detected corrected contact frames; palm contact remains within 15 mm. Local front/profile pose sequence, normal and quarter-speed transition checks cover the new arm. The revised free arm awaits owner visual review. No runtime solver or extra geometry was introduced.
+Free-arm revision (17 October): the owner approved the scratch and requested a more natural left arm based on Alert and the lowered right-arm swing. Only eight left-arm/finger rotation channels changed. A retained-motion fingerprint verifies the approved right arm, torso, clavicles, legs and all other clips remain exact. Maximum left-wrist bend is 24.64° versus 26.58° in Alert. The packed bank passes the repeated 120 Hz audit with zero detected corrected contact frames; palm contact remains within 15 mm. Local front/profile pose sequence, normal and quarter-speed transition checks cover the new arm. The owner subsequently approved the revised free arm and the worker animation bank on 17 October. No runtime solver or extra geometry was introduced.

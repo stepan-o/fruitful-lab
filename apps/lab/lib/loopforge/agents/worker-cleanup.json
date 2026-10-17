@@ -1,6 +1,6 @@
 {
-  "revision": "worker-head-contact-v5",
-  "sha256": "22ba7f99855c5f09c23369c09c9f8005603a8fd3eaaf261db10804d09f008703",
+  "revision": "worker-source-elbow-v6",
+  "sha256": "9425215a0c3e724a053ddfe800917e98427f843103f338ff8433362300615a1d",
   "sampleRate": 120,
   "method": "Exported skinned mesh checked at 120 Hz across legs, opposite forearms, hands/head, forearms/torso and hands/legs. Interior triangle crossings; Electrocuted Fall also checks both complete hands against the fixed Y=0 floor. Not swept-volume, coplanar, prop-contact or transition certification.",
   "clips": [
@@ -369,7 +369,7 @@
       "samples": 1381,
       "sourceContactFrames": 705,
       "correctedContactFrames": 0,
-      "note": "Fingertips follow the moving scalp for both scratch beats; the middle gesture rests its palm at the temple. A source-derived elbow hinge and separate contact targets replace fixed wrist offsets.",
+      "note": "Fingertips follow the moving scalp for both scratch beats; the middle gesture rests its palm at the temple. The exact source elbow curve is preserved; shoulder and wrist fit the moving contact targets.",
       "regions": {
         "legL/legR": {
           "sourceFrames": 616,
@@ -1473,46 +1473,51 @@
     "reviewStatus": "Candidate for owner visual review; not blanket gameplay approval."
   },
   "headContact": {
-    "sha256": "22ba7f99855c5f09c23369c09c9f8005603a8fd3eaaf261db10804d09f008703",
+    "sha256": "9425215a0c3e724a053ddfe800917e98427f843103f338ff8433362300615a1d",
     "sampleRate": 120,
-    "method": "Nearest exported hand/head vertices during the three authored contact holds; 15 mm proximity gate. Elbow correction is restricted to flexion about the original source bend-plane normal. Proximity alone is not visual acceptance.",
-    "maximumHingeOffAxisRadians": 9.767089342169017e-06,
+    "method": "Nearest exported hand/head vertices during three authored contact holds; 15 mm proximity gate. Source right-elbow input/output arrays and interpolation must match exactly. Shoulder/wrist contact fitting cannot alter elbow flexion or twist. Proximity alone is not visual acceptance.",
+    "exactSourceElbow": true,
+    "maximumElbowDeltaRadians": 1.2398708590815516e-16,
+    "maximumElbowFlexionDegrees": 127.94641999285065,
     "beats": [
       {
         "name": "first scratch",
         "start": 0.9,
         "end": 2.12,
         "samples": 147,
-        "minimumGapMetres": 0.008366904169795648,
-        "maximumGapMetres": 0.010051060380209156
+        "minimumGapMetres": 0.007918600752901793,
+        "maximumGapMetres": 0.012042336800917538
       },
       {
         "name": "temple",
         "start": 3.1,
         "end": 4.15,
         "samples": 127,
-        "minimumGapMetres": 0.006094882180919519,
-        "maximumGapMetres": 0.00886777244417883
+        "minimumGapMetres": 0.007690049533299684,
+        "maximumGapMetres": 0.009362970402279956
       },
       {
         "name": "second scratch",
         "start": 7.78,
         "end": 8.9,
         "samples": 135,
-        "minimumGapMetres": 0.00879724183527346,
-        "maximumGapMetres": 0.010691655688064256
+        "minimumGapMetres": 0.008450004560167874,
+        "maximumGapMetres": 0.01290355805710794
       }
     ]
   },
   "sourceArmRebuild": {
     "unchangedClips": 40,
     "originalSamplersPreserved": {
+      "Confused_Scratch": [
+        "RightForeArm.rotation"
+      ],
       "Electrocuted_Fall": [
         "LeftForeArm.rotation",
         "LeftHand.rotation"
       ]
     },
-    "method": "Scratch starts from source arm motion. Two fingertip targets follow actual scalp triangles; a separate palm target follows the temple. Shoulder rotation, source-plane elbow flexion and bounded wrist rotation fit these contacts. Finger hinges ease in and out. Fall retains the previous source elbow/wrist and shoulder lift.",
+    "method": "Scratch starts from source arm motion. Two fingertip targets follow actual scalp triangles; a separate palm target follows the temple. Only shoulder and wrist rotations fit these contacts. Source elbow timing, rotations and interpolation are copied exactly; finger hinges ease in and out. Fall retains the previous source elbow/wrist and shoulder lift.",
     "reviewStatus": "Candidate for owner visual review. Contact proximity and collision counts are not artistic approval."
   }
 }

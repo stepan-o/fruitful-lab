@@ -1,8 +1,9 @@
-"""Bake Worker 01 head contacts from original arm motion, with an elbow hinge.
+"""Bake Worker 01 head contacts from original arm motion, with an unchanged elbow curve.
 
 Two fingertip/scalp beats and a separate palm/temple gesture follow actual head
 surface triangles. Offline only: no IK, collision queries or physics in the client.
-Run after the source-arm rebuild. Only corrected Scratch rotations are replaced.
+Run after the source-arm rebuild. Only corrected Scratch shoulder, wrist and finger rotations are replaced.
+The source elbow sampler is copied exactly: contact fitting cannot overfold it.
 """
 import argparse,struct
 from worker_motion import *
@@ -41,7 +42,7 @@ patches={
 }
 print('patches',[(key,[(weights@hv[ids]).tolist()for ids,weights,n in values])for key,values in patches.items()],flush=True)
 
-prev=np.zeros(7)
+prev=np.zeros(6)
 for k,t in enumerate(ts):
  w=world[k];u=max(window(t,.45,.90,2.12,2.55),window(t,2.65,3.10,4.15,4.9),window(t,7.3,7.78,8.9,9.5))
  if u<1e-6:continue
@@ -60,18 +61,15 @@ for k,t in enumerate(ts):
  hb=frame(w,b,20);head=w[20,:3,3];targets=np.array([weights@v[ids]+hb@n*.012 for ids,weights,n in patches[kind]])
  if kind=='scalp':targets+=hb[:,1]*.003*np.sin(2*np.pi*2.4*t)
  else:targets[:]=targets.mean(0)
- s=w[19,:3,3];e=w[22,:3,3];h=w[26,:3,3];axis=unit(np.cross(e-s,h-e));axislocal=np.linalg.inv(w[19,:3,:3])@axis;axislocal=unit(axislocal)
  def pose(x):
   q=w.copy();sr=w[19,:3,:3]/np.linalg.norm(w[19,:3,:3],axis=0);b.rotate_chain(q,19,sr@R.from_rotvec(x[:3]).as_matrix()@sr.T)
-  ax=unit(q[19,:3,:3]@axislocal);b.rotate_chain(q,22,R.from_rotvec(ax*x[3]).as_matrix())
-  wr=q[26,:3,:3]/np.linalg.norm(q[26,:3,:3],axis=0);b.rotate_chain(q,26,wr@R.from_rotvec(x[4:]).as_matrix()@wr.T)
+  wr=q[26,:3,:3]/np.linalg.norm(q[26,:3,:3],axis=0);b.rotate_chain(q,26,wr@R.from_rotvec(x[3:]).as_matrix()@wr.T)
   return q
  def residual(x):
   q=pose(x);tips=(tiplocal@q[26].T)[:,:3];hp=(handlocal[::2]@q[26].T)[:,:3];pl=(hp-head)@hb
   sd=(pl@eq[:,:3].T+eq[:,3]).max(1)
-  orient=(q[26,:3,1]/np.linalg.norm(q[26,:3,1])-hb[:,1])*.1 if kind=='temple'else np.zeros(3)
-  return np.r_[orient,(tips-targets).ravel()*6,np.maximum(.008-sd,0)*12,x*np.array([.012,.012,.012,.01,.06,.06,.04]),(x-prev)*.008]
- lo=np.array([-1.5,-1.5,-1.5,-1.1,-.8,-.8,-1.]);hi=-lo
+  return np.r_[(tips-targets).ravel()*6,np.maximum(.008-sd,0)*12,x*np.array([.05,.05,.05,.015,.015,.015]),(x-prev)*.008]
+ lo=np.array([-1.5,-1.5,-1.5,-1.65,-1.65,-1.65]);hi=-lo
  opt=least_squares(residual,np.clip(prev,lo,hi),bounds=(lo,hi),max_nfev=100,ftol=1e-7,xtol=1e-7,gtol=1e-7)
  prev=opt.x
  q=pose(opt.x);tips=(tiplocal@q[26].T)[:,:3];error=np.linalg.norm(tips-targets,axis=1)
@@ -107,6 +105,10 @@ def bake(clip,ts,local,nodes):
 out=world.copy()
 for n in b.order:
  if n in b.parent:out[:,n]=np.linalg.inv(world[:,b.parent[n]])@world[:,n]
-bake(clip,ts,out,[19,22,26,33,34,35,36,37])
+bake(clip,ts,out,[19,26,33,34,35,36,37])
+# Copy the untouched source curve instead of numerically rebaking the joint.
+source_elbow=next(c for c in source['channels']if c['target']=={'node':22,'path':'rotation'})
+corrected_elbow=next(c for c in clip['channels']if c['target']=={'node':22,'path':'rotation'})
+clip['samplers'][corrected_elbow['sampler']]=dict(source['samplers'][source_elbow['sampler']])
 g['buffers']=[{'byteLength':len(data)}];j=json.dumps(g,separators=(',',':')).encode();j+=b' '*((-len(j))%4);data+=b'\0'*((-len(data))%4)
 args.output.write_bytes(struct.pack('<4sII',b'glTF',2,28+len(j)+len(data))+struct.pack('<I4s',len(j),b'JSON')+j+struct.pack('<I4s',len(data),b'BIN\0')+data)

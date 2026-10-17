@@ -17,10 +17,10 @@
       "kind": "model",
       "variants": [
         {
-          "src": "/media/files/22ba7f99855c5f09c23369c09c9f8005603a8fd3eaaf261db10804d09f008703.glb",
+          "src": "/media/files/9425215a0c3e724a053ddfe800917e98427f843103f338ff8433362300615a1d.glb",
           "mime": "model/gltf-binary",
-          "bytes": 11835452,
-          "sha256": "22ba7f99855c5f09c23369c09c9f8005603a8fd3eaaf261db10804d09f008703"
+          "bytes": 11823484,
+          "sha256": "9425215a0c3e724a053ddfe800917e98427f843103f338ff8433362300615a1d"
         }
       ]
     }

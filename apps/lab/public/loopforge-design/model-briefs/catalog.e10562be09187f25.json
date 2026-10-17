@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-17-worker-source-elbow",
+  "revision": "model-briefs-2026-10-17-worker-palm-acting",
   "date": "2026-10-16",
   "models": [
     {
@@ -16,8 +16,8 @@
       "name": "Worker 01",
       "subtitle": "Factory worker · body + motion bank",
       "status": "Cleanup implemented · visual review",
-      "downloadBytes": 979884,
-      "src": "/loopforge-design/model-briefs/worker.5cf9e57fb398bb1e.json"
+      "downloadBytes": 980781,
+      "src": "/loopforge-design/model-briefs/worker.541c4d3f21126567.json"
     },
     {
       "id": "stiletto",

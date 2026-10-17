@@ -14,7 +14,7 @@ import styles from './agent-test.module.css';
 type Puppet=Awaited<ReturnType<typeof loadWorker>>;
 const file=manifest.assets['worker-01-corrected'].variants[0];
 const actingBeats:Record<string,{label:string;time:number}[]>={
- Confused_Scratch:[{label:'First scalp contact',time:1.12},{label:'Fingertips at scalp',time:1.6},{label:'Palm at temple',time:3.51},{label:'Second scratch',time:8.6}],
+ Confused_Scratch:[{label:'First scalp contact',time:1.12},{label:'Palm contact',time:2.19},{label:'Puzzled palm rest',time:3.4},{label:'Second scratch',time:8.6}],
  injured_walk:[{label:'Right palm on sore thigh',time:3}],
  Agree_Gesture:[{label:'First clap',time:4.85},{label:'Second clap',time:9.3}],
  Angry_Stomp:[{label:'Arms folded',time:5.6},{label:'Arms uncrossing',time:6.9}],
@@ -23,7 +23,7 @@ const actingBeats:Record<string,{label:string;time:number}[]>={
 };
 export default function WorkerModelReview(){
  const canvas=useRef<HTMLCanvasElement>(null),runtime=useRef<{floor:FactoryScene;model:Puppet}|null>(null);
- const [ready,setReady]=useState(false),[error,setError]=useState(''),[retry,setRetry]=useState(0),[running,setRunning]=useState(false),[id,setId]=useState('idle'),[phase,setPhase]=useState(0),[speed,setSpeed]=useState(1),[loop,setLoop]=useState(true),[version,setVersion]=useState<WorkerVersion>('Corrected'),[ground,setGround]=useState(true),[centred,setCentred]=useState(false),[turn,setTurn]=useState(0),[camera,setCamera]=useState<'model'|'cctv'>('model'),[angle,setAngle]=useState(0),[room,setRoom]=useState<'security'|'conveyor'>('security'),[surface,setSurface]=useState<WorkerSurface>('textured'),[lamp,setLamp]=useState(true),[report,setReport]=useState<SceneReport|null>(null);
+ const [ready,setReady]=useState(false),[error,setError]=useState(''),[retry,setRetry]=useState(0),[running,setRunning]=useState(false),[id,setId]=useState('idle'),[phase,setPhase]=useState(0),[speed,setSpeed]=useState(1),[loop,setLoop]=useState(true),[version,setVersion]=useState<WorkerVersion>('Corrected'),[ground,setGround]=useState(true),[centred,setCentred]=useState(false),[turn,setTurn]=useState(0),[camera,setCamera]=useState<'model'|'cctv'>('model'),[closeup,setCloseup]=useState(false),[angle,setAngle]=useState(0),[room,setRoom]=useState<'security'|'conveyor'>('security'),[surface,setSurface]=useState<WorkerSurface>('textured'),[lamp,setLamp]=useState(true),[report,setReport]=useState<SceneReport|null>(null);
  const clip=bank.clips.find(c=>c.id===id),handDemo=id.startsWith('Hand_'),duration=clip?.duration??(handDemo?2:0);
  const audit=cleanup.clips.find(c=>c.id===id);
  useEffect(()=>{
@@ -44,9 +44,10 @@ export default function WorkerModelReview(){
  function play(v:boolean){setRunning(v);runtime.current?.model.play(v);runtime.current?.floor.update({...initialStudy(),workers:[],running:v});}
  function choose(value:string){play(false);if(value.startsWith('Hand_')){setVersion('Corrected');runtime.current?.model.version('Corrected');}setId(value);setPhase(0);const repeat=bank.clips.find(c=>c.id===value)?.loop??false;setLoop(repeat);runtime.current?.model.loop(repeat);runtime.current?.model.clip(value);}
  function seek(seconds:number){play(false);const p=duration?Math.min(1,Math.max(0,seconds/duration)):0;setPhase(p);runtime.current?.model.seek(p);}
+ function frameBody(close:boolean){setCloseup(close);runtime.current?.floor.reviewSubject(close?1.48:1,close?1.7:3.8,close?.8:1.5);}
  function rotate(n:number){setTurn(n);runtime.current?.model.turn(n);}
  function evidence(){const data={revision:cleanup.revision,file,clip,version,ground,cleanup:audit,phase,seconds:phase*duration,speed,loop,centred,turn,camera,angle,room,surface,lamp,report,cameraPose:runtime.current?.floor.reviewCamera(),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},note:cleanup.method};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='loopforge-worker-review.json';a.click();URL.revokeObjectURL(url);}
- function reset(){setReady(false);setError('');setRunning(false);setId('idle');setPhase(0);setSpeed(1);setLoop(true);setCentred(false);setVersion('Corrected');setGround(true);setTurn(0);setCamera('model');setAngle(0);setRoom('security');setSurface('textured');setLamp(true);setRetry(n=>n+1);}
+ function reset(){setReady(false);setError('');setRunning(false);setId('idle');setPhase(0);setSpeed(1);setLoop(true);setCentred(false);setVersion('Corrected');setGround(true);setTurn(0);setCamera('model');setCloseup(false);setAngle(0);setRoom('security');setSurface('textured');setLamp(true);setRetry(n=>n+1);}
  return <main className={styles.page}>
   <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>Worker 01<span>19 corrected motions / articulated hands</span></h1></div><Link href='/stepanoskin/loopforge/design#agents'>Game design · Agents ↗</Link></header>
   <ReviewNavigation current='worker-01-motions'/><ReviewChecklist subject='worker-01-motions'/>
@@ -59,8 +60,9 @@ export default function WorkerModelReview(){
     <div className={styles.caption}><span>25,893 TRIANGLES / {version==='Corrected'?'34':'24'} SKIN JOINTS</span><strong>{clip?.label??(handDemo?id.replace('Hand_','Hand · '):'Neutral rig')} · {version.toLowerCase()} · {running?'playing':'paused'}</strong><small>{clip?.actor==='Cathexis'?'SOURCE REFERENCE · CATHEXIS HAS HER OWN APPROVED GAIT':`${(phase*duration).toFixed(2)} / ${duration.toFixed(2)} s · ${speed}×`}</small></div>
    </section>
    <aside className={styles.controls} aria-label='Worker review controls'>
-    <span className={styles.kicker}>Worker motion bank / source elbow v6</span><h2>Read the movement.</h2><p>Compare the corrected motion with its untouched source at the same frame. Review the full gesture, feet and hands before accepting it for gameplay.</p>
+    <span className={styles.kicker}>Worker motion bank / palm acting v7</span><h2>Read the movement.</h2><p>Compare the corrected motion with its untouched source at the same frame. Review the full gesture, feet and hands before accepting it for gameplay.</p>
     <div className={styles.duo} aria-label='Motion version'>{(['Corrected','Source'] as const).map(v=><button key={v} disabled={!ready||(handDemo&&v==='Source')} aria-pressed={version===v} onClick={()=>{play(false);setVersion(v);runtime.current?.model.version(v);}}>{v==='Source'?'Original source':'Corrected motion'}</button>)}</div>
+    {camera==='model'&&<div className={styles.duo} aria-label='Inspection framing'><button disabled={!ready} aria-pressed={!closeup} onClick={()=>frameBody(false)}>Full body</button><button disabled={!ready} aria-pressed={closeup} onClick={()=>frameBody(true)}>Hands & head close-up</button></div>}
     <label>Animation<select disabled={!ready} value={id} onChange={e=>choose(e.target.value)}><option value='Rest'>Neutral rig · A-pose</option>{bank.clips.map(c=><option key={c.id} value={c.id}>{c.label}{c.actor==='Cathexis'?' · Cathexis':''}</option>)}{['Hand_Relax','Hand_Grip','Hand_Release'].map(v=><option key={v} value={v}>{v.replace('Hand_','Hand · ')}</option>)}</select></label>
     <p className={styles.intent}>{version==='Source'?clip?.note??'Original neutral rig.':handDemo?'Ten finger hinges, baked offline. These are hand-pose studies; a grip is not yet a machine interaction.':audit?.note??'Neutral body with articulated finger joints.'}</p>
     <div className={styles.duo}><button className={styles.primary} disabled={!ready||(!clip&&!handDemo)} onClick={()=>play(!running)}>{running?'Pause animation':'Play animation'}</button><button disabled={!ready} onClick={()=>seek(0)}>First frame</button></div>

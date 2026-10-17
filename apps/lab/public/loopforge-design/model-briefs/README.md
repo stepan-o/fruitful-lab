@@ -18,7 +18,7 @@ Original body input images and creation prompt recovered. Rig/motion instruction
 - [Back · rear construction](/media/loopforge-model-briefs/worker-01-back.c97d065cd1642436.jpg) — Body input — views of one model
 - [Left profile · depth](/media/loopforge-model-briefs/worker-01-left.9e94fa650cdd2d38.jpg) — Body input — views of one model
 - [Body](/loopforge-design/model-briefs/worker-01-body.418ec4d37bcb2dc2.txt)
-- [Rig and motion](/loopforge-design/model-briefs/worker-02-rig-and-motion.bce5338cacda7e07.txt)
+- [Rig and motion](/loopforge-design/model-briefs/worker-02-rig-and-motion.1087549026c05b05.txt)
 - [Afraid](/loopforge-design/model-briefs/worker-03-afraid.045045d169198b1e.txt)
 - [Work cradle](/loopforge-design/model-briefs/worker-04-work-cradle.f60af4965fadc294.txt)
 ## STILETTO

@@ -2,9 +2,9 @@
   "id": "worker",
   "name": "Worker 01",
   "subtitle": "Factory worker · body + motion bank",
-  "revision": "Rebuild brief v7 · original elbow articulation",
+  "revision": "Rebuild brief v8 · palm contact and relaxed free arm",
   "status": "Cleanup implemented · visual review",
-  "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions now sit beside untouched sources, with ten rigid finger hinges and three hand studies. Scratch uses moving scalp and temple targets while preserving its original elbow curve exactly. Check contact proximity and joint articulation, not just collision counts. Fall retains its source-preserving left-arm correction.",
+  "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions sit beside untouched sources, with ten rigid finger hinges and three hand studies. Scratch uses central-palm contact, bounded elbow/wrist motion and a relaxed free arm. Inspect the hands/head close-up and full gesture. Fall retains its source-preserving left-arm correction; owner visual acceptance remains pending.",
   "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
   "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
   "viewerLabel": "Compare corrected and original motions",
@@ -121,8 +121,8 @@
     {
       "title": "Rig and motion",
       "file": "worker/02-rig-and-motion.txt",
-      "text": "Use the accepted Worker 01 delivery mesh and textures throughout. Rig a humanoid biped with Mixamo export naming; keep a neutral rigged A-pose. Report actual hierarchy and finger support. The accepted FBX bank has 24 skin joints, while an earlier GLB had 23: do not mix their raw animation tracks without retargeting. The vendor source has rigid fingers. Our offline derivative now adds ten rigid digit hinges (34 joints total) plus corrected motions. Preserve the vendor export as source and rerun offline fitting/cleanup after regeneration; do not claim the new Meshy export already includes those fixes. Broader rigid armor weighting remains scene-dependent.\n\nApply these catalog motions to the SAME body. Keep IDs in filenames and original embedded clip names. Export mesh, skin, materials and motion in GLB and FBX; export each clip independently if All Animations omits later additions.\n- 0 Idle\n- 2 Alert\n- 25 Agree_Gesture\n- 26 Angry_Stomp\n- 31 Catching_Breath\n- 36 Confused_Scratch (idle_scratch)\n- 37 Discuss_While_Moving\n- 47 Listening_Gesture\n- 59 Victory_Cheer\n- 106 Confident_Walk / owner UI name Hot Walk — CATHEXIS reference, not worker default\n- 172 Electrocution_Reaction\n- 181 Electrocuted_Fall\n- 260 Push_Forward_and_Stop\n- 576 Idle_Turn_Left\n- 586 Idle_Turn_Right\n- 611 Carry_Heavy_Walk\n- 637 Injured_Walk_inplace\n- 657 run_fast_10_inplace\n- 692 walking_2_inplace\n\n613 Casual_Walk_inplace was rejected for leg crossing. 692 is a replacement candidate, NOT certified collision-free: the original downloaded worker intersects its shins. Our corrected derivative is separate and has passed the recorded 120 Hz mesh checks. Keep source and corrected versions separate. Preserve intended Hot Walk crossover for CATHEXIS, but correct actual surface penetration on her own model.\n\nDo not trust labels such as in-place without inspecting root travel. Catching Breath includes a running approach, Discuss While Moving travels, and fall clips finish displaced. Catalog names are source identity, not guaranteed gameplay meaning.\n\nStill missing: afraid_recoil and exact work_cradle. Do not substitute a carry walk for machine work. If custom motion is unavailable in the current Agent UI, report that and preserve the successful exports for offline authoring.\n\nReport each filename, hash if available, triangle/joint counts, embedded clips/durations and root translation/rotation. A working browser preview is not proof of a complete downloaded asset.\n\nOffline acting requirements (after source export): Confused Scratch must reach the scalp with curled fingertips. Injured Walk braces the right thigh with the right palm. Agree Gesture presents opposed palms for clapping. Angry Stomp folds the arms at different heights/depths and uncrosses them without cutting through one another. Resting hands face inward with relaxed fingers and forearm/wrist rotation. Electrocuted Fall must keep both complete hands above the fixed scene floor. These are locally authored corrections, not Meshy catalog guarantees; preserve the source for comparison.\n\nScratch correction starts from the original arm motion, then fits fingertips to the moving scalp and the middle gesture palm to the temple. Copy the original right-elbow rotation sampler exactly, including timing and interpolation. Do not add elbow flexion or twist: the previous contact solver overfolded the mechanical joint even while respecting its bend plane. Fit the hand through shoulder and wrist rotation. Use separate contact targets, bounded wrist rotations and eased finger hinges, not a fixed wrist offset. Check actual exported head proximity throughout each hold, not merely absence of intersections. Fall left-arm correction must preserve source elbow and wrist alignment, lifting the whole arm to clear the floor instead of forcing the palm down. Review every contact from front, profile and three-quarter views plus entry/release. These constraints are checked locally after Meshy export.\n",
-      "url": "/loopforge-design/model-briefs/worker-02-rig-and-motion.bce5338cacda7e07.txt"
+      "text": "Use the accepted Worker 01 delivery mesh and textures throughout. Rig a humanoid biped with Mixamo export naming; keep a neutral rigged A-pose. Report actual hierarchy and finger support. The accepted FBX bank has 24 skin joints, while an earlier GLB had 23: do not mix their raw animation tracks without retargeting. The vendor source has rigid fingers. Our offline derivative now adds ten rigid digit hinges (34 joints total) plus corrected motions. Preserve the vendor export as source and rerun offline fitting/cleanup after regeneration; do not claim the new Meshy export already includes those fixes. Broader rigid armor weighting remains scene-dependent.\n\nApply these catalog motions to the SAME body. Keep IDs in filenames and original embedded clip names. Export mesh, skin, materials and motion in GLB and FBX; export each clip independently if All Animations omits later additions.\n- 0 Idle\n- 2 Alert\n- 25 Agree_Gesture\n- 26 Angry_Stomp\n- 31 Catching_Breath\n- 36 Confused_Scratch (idle_scratch)\n- 37 Discuss_While_Moving\n- 47 Listening_Gesture\n- 59 Victory_Cheer\n- 106 Confident_Walk / owner UI name Hot Walk — CATHEXIS reference, not worker default\n- 172 Electrocution_Reaction\n- 181 Electrocuted_Fall\n- 260 Push_Forward_and_Stop\n- 576 Idle_Turn_Left\n- 586 Idle_Turn_Right\n- 611 Carry_Heavy_Walk\n- 637 Injured_Walk_inplace\n- 657 run_fast_10_inplace\n- 692 walking_2_inplace\n\n613 Casual_Walk_inplace was rejected for leg crossing. 692 is a replacement candidate, NOT certified collision-free: the original downloaded worker intersects its shins. Our corrected derivative is separate and has passed the recorded 120 Hz mesh checks. Keep source and corrected versions separate. Preserve intended Hot Walk crossover for CATHEXIS, but correct actual surface penetration on her own model.\n\nDo not trust labels such as in-place without inspecting root travel. Catching Breath includes a running approach, Discuss While Moving travels, and fall clips finish displaced. Catalog names are source identity, not guaranteed gameplay meaning.\n\nStill missing: afraid_recoil and exact work_cradle. Do not substitute a carry walk for machine work. If custom motion is unavailable in the current Agent UI, report that and preserve the successful exports for offline authoring.\n\nReport each filename, hash if available, triangle/joint counts, embedded clips/durations and root translation/rotation. A working browser preview is not proof of a complete downloaded asset.\n\nOffline acting requirements (after source export): Confused Scratch must place the palm and fingers against the scalp, with a natural wrist and relaxed free arm. Injured Walk braces the right thigh with the right palm. Agree Gesture presents opposed palms for clapping. Angry Stomp folds the arms at different heights/depths and uncrosses them without cutting through one another. Resting hands face inward with relaxed fingers and forearm/wrist rotation. Electrocuted Fall must keep both complete hands above the fixed scene floor. These are locally authored corrections, not Meshy catalog guarantees; preserve the source for comparison.\n\nScratch correction starts from the original reaching-arm motion. Fit an actual central palm surface, accounting for its tilt relative to the wrist bone; do not use fingertip-only contact. Solve shoulder and elbow together with a stable source bend plane and a maximum 130-degree elbow flexion. Align the wrist as part of the complete palm pose, keep its bend below 55 degrees, and keep the free wrist below 20 degrees. Lower the free arm beside the torso with a soft elbow and relaxed finger hinges. Use two small scalp-scratching beats and a continuous puzzled palm rest. Check actual palm-to-head surface distance throughout each hold (within 15 mm), not merely absence of intersections. These replace the previous exact-source-elbow requirement, which forced a bad wrist fit. Fall left-arm correction must preserve source elbow and wrist alignment, lifting the whole arm to clear the floor instead of forcing the palm down. Review every contact from front, profile and three-quarter views plus entry/release. These constraints are checked locally after Meshy export.\n",
+      "url": "/loopforge-design/model-briefs/worker-02-rig-and-motion.1087549026c05b05.txt"
     },
     {
       "title": "Afraid",
@@ -324,9 +324,9 @@
     },
     {
       "name": "prompts/02-rig-and-motion.txt",
-      "src": "/loopforge-design/model-briefs/worker-02-rig-and-motion.bce5338cacda7e07.txt",
-      "bytes": 3963,
-      "sha256": "bce5338cacda7e07469a62f9a1ce82955fa24bbda6fea81ee69ea47773807833"
+      "src": "/loopforge-design/model-briefs/worker-02-rig-and-motion.1087549026c05b05.txt",
+      "bytes": 4175,
+      "sha256": "1087549026c05b054eb3587c18687c98ed6c925a1ee552c98731476439bb3ef4"
     },
     {
       "name": "prompts/03-afraid.txt",
@@ -342,9 +342,9 @@
     },
     {
       "name": "README.md",
-      "src": "/loopforge-design/model-briefs/worker-README.af293ea3b0f451f8.md",
-      "bytes": 1724,
-      "sha256": "af293ea3b0f451f8b20ded5d09d0783a8f89fdd7a5afcd36c114251992a93980"
+      "src": "/loopforge-design/model-briefs/worker-README.f169ffa07034eedc.md",
+      "bytes": 1751,
+      "sha256": "f169ffa07034eedc7489a861fea35b36b4d50e3e26864950abb0234fd9c93a58"
     },
     {
       "name": "export-audit.json",
@@ -360,16 +360,16 @@
     },
     {
       "name": "motion-cleanup.json",
-      "src": "/loopforge-design/model-briefs/worker-motion-cleanup.d6aab08f44dc34a3.json",
-      "bytes": 41113,
-      "sha256": "d6aab08f44dc34a3d51773fe6f48e7eee95357b6eb0e5fa0de749ce2434614a3"
+      "src": "/loopforge-design/model-briefs/worker-motion-cleanup.d2dd9f0375e54a5d.json",
+      "bytes": 41771,
+      "sha256": "d2dd9f0375e54a5dbc437fd032ca7d18d22b3e83895892a14a65a311944e109c"
     }
   ],
-  "downloadBytes": 979884,
+  "downloadBytes": 980781,
   "packageManifest": {
     "schemaVersion": 1,
     "id": "worker",
-    "revision": "Rebuild brief v7 · original elbow articulation",
+    "revision": "Rebuild brief v8 · palm contact and relaxed free arm",
     "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
     "viewer": "https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/worker",
     "images": [
@@ -497,9 +497,9 @@
       },
       {
         "name": "prompts/02-rig-and-motion.txt",
-        "src": "/loopforge-design/model-briefs/worker-02-rig-and-motion.bce5338cacda7e07.txt",
-        "bytes": 3963,
-        "sha256": "bce5338cacda7e07469a62f9a1ce82955fa24bbda6fea81ee69ea47773807833"
+        "src": "/loopforge-design/model-briefs/worker-02-rig-and-motion.1087549026c05b05.txt",
+        "bytes": 4175,
+        "sha256": "1087549026c05b054eb3587c18687c98ed6c925a1ee552c98731476439bb3ef4"
       },
       {
         "name": "prompts/03-afraid.txt",
@@ -515,9 +515,9 @@
       },
       {
         "name": "README.md",
-        "src": "/loopforge-design/model-briefs/worker-README.af293ea3b0f451f8.md",
-        "bytes": 1724,
-        "sha256": "af293ea3b0f451f8b20ded5d09d0783a8f89fdd7a5afcd36c114251992a93980"
+        "src": "/loopforge-design/model-briefs/worker-README.f169ffa07034eedc.md",
+        "bytes": 1751,
+        "sha256": "f169ffa07034eedc7489a861fea35b36b4d50e3e26864950abb0234fd9c93a58"
       },
       {
         "name": "export-audit.json",
@@ -533,9 +533,9 @@
       },
       {
         "name": "motion-cleanup.json",
-        "src": "/loopforge-design/model-briefs/worker-motion-cleanup.d6aab08f44dc34a3.json",
-        "bytes": 41113,
-        "sha256": "d6aab08f44dc34a3d51773fe6f48e7eee95357b6eb0e5fa0de749ce2434614a3"
+        "src": "/loopforge-design/model-briefs/worker-motion-cleanup.d2dd9f0375e54a5d.json",
+        "bytes": 41771,
+        "sha256": "d2dd9f0375e54a5dbc437fd032ca7d18d22b3e83895892a14a65a311944e109c"
       }
     ]
   }

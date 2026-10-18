@@ -2,6 +2,15 @@
 
 14 October 2026. Four reusable character kits: LIMEN body/emitter, Worker 01, STILETTO body/blade/welder and CATHEXIS body/face system/material conditions. Game Design → Model briefs is the maintained visual entry; each current model viewer links back to its brief. Rivet Witch and Thrum are not yet generated and have no completed briefs in this release.
 
+## Next sheet revision — 18 October 2026
+
+The [cross-cast sheet brief](../CAST_SHEET_REVISION_BRIEF.md) adds larger supervisor
+bodies, broad distinctive body colours and a separate worker colour family with
+multiple shades, tested at operator-console scale. Relative heights and swatches
+are proposals. The current kits retain approved historical inputs; new sheets,
+kit revisions and replacement meshes have not been produced yet. Use the
+[readability standard](../CAST_READABILITY_STANDARD.md) for the selection gate.
+
 ## Source and delivery
 
 Canonical prompts and catalog are in docs/loopforge/production/model-briefs/. The board publisher verifies every optimized image hash and emits per-model versioned JSON and plain-text downloads. Initial navigation loads only catalog metadata and the selected character's data/images. No GLBs are embedded or prefetched. Viewer links open the real production players.

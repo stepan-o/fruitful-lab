@@ -2,6 +2,7 @@
 from pathlib import Path
 from html import escape as e
 import json
+from readability import render_readability
 
 
 def render_agents():
@@ -78,4 +79,7 @@ def render_agents():
     <details><summary>Earlier engineering prototype · rejected placeholder cast</summary>
     <p>The 12 October test used older spherical robots. It exercises deterministic reservations, prop ownership, fixed-tick replay and skeletal/baked comparisons. It does not demonstrate the new character art, contact accuracy or crowd performance.</p>
     <p><a href="production/AGENT_PRODUCTION_TEST.md">Historical engineering record ↗</a> · <a href="/stepanoskin/loopforge/play/agent-test">Open the legacy fixture ↗</a></p></details>''')
-    return ''.join(out).replace('href="production/', 'href="/loopforge-design/production/').replace('href="AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md', 'href="/loopforge-design/AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md').replace('href="LIMEN_BLADE_DESIGN.md', 'href="/loopforge-design/LIMEN_BLADE_DESIGN.md')
+    content = ''.join(out)
+    marker = '<div class="callout"><h3>Graphics and performance.</h3>'
+    content = content.replace(marker, render_readability() + marker, 1)
+    return content.replace('href="production/', 'href="/loopforge-design/production/').replace('href="AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md', 'href="/loopforge-design/AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md').replace('href="LIMEN_BLADE_DESIGN.md', 'href="/loopforge-design/LIMEN_BLADE_DESIGN.md')

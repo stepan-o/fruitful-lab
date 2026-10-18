@@ -593,3 +593,17 @@ for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT
 # Current show-production records.
 for name in ['FIRST_FIVE_DAYS_SHOW_PROPOSAL.md','production/SCENE_REHEARSALS.md','production/ROOM_ASSET_BRIEFS.md']:
     (OUT/name).write_text((ROOT.parent/name).read_text())
+
+# Cast recognition is a design requirement, not a claim that the runtime passes.
+readability_record = (ROOT.parent/'production/CAST_READABILITY_STANDARD.md').read_text()
+(OUT/'production/CAST_READABILITY_STANDARD.md').write_text(readability_record)
+for name in ['GAME_DESIGN.md', 'UI_DESIGN.md']:
+    with (OUT/name).open('a') as f:
+        f.write('\n\n' + readability_record)
+(OUT/'production/GRAPHICS_AND_PERFORMANCE.md').write_text((ROOT.parent/'production/GRAPHICS_AND_PERFORMANCE.md').read_text())
+
+sheet_record = (ROOT.parent/'production/CAST_SHEET_REVISION_BRIEF.md').read_text()
+(OUT/'production/CAST_SHEET_REVISION_BRIEF.md').write_text(sheet_record)
+for name in ['GAME_DESIGN.md', 'UI_DESIGN.md']:
+    with (OUT/name).open('a') as f:
+        f.write('\n\n' + sheet_record)

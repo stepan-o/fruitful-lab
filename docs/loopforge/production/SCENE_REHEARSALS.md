@@ -4,6 +4,14 @@
 
 [Open the scene player](/stepanoskin/loopforge/play/scene-studies). [Five-day direction](../FIRST_FIVE_DAYS_SHOW_PROPOSAL.md). [Room scale and Meshy kits](ROOM_ASSET_BRIEFS.md).
 
+## Readability requirement — 18 October 2026
+
+Apply the [cast readability standard](CAST_READABILITY_STANDARD.md) when composing
+these encounters. Cast identity must survive without dialogue; actor, recipient
+and aftermath must remain visible at actual room scale. A worker can be the focal
+subject. Preserve world position, equipment state and causal timing when choosing
+shots. Existing rehearsal delivery is not an occupied-room recognition pass.
+
 ## What this build proves
 
 The approved cast can perform together under a headless action engine. An authored planner proposes intentions; it cannot move bodies, reserve stations or award results itself. The kernel admits feasible actions, reserves actors and resources atomically, advances phases in 50 ms ticks, commits effects once and releases reservations. Interruption retains already-heard information while cancelling uncommitted effects. Deterministic replay reconstructs any storyboard frame from the same fixture and choice.

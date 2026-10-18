@@ -8,6 +8,15 @@ The owner has approved the initial cast and its basic movement palette, includin
 
 Companion to [the first-turn contract](FIRST_TURN_ENGINE.md) and [the room scale plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
 
+## Factory-scale visual hierarchy — 18 October 2026
+
+The [cast readability standard](production/CAST_READABILITY_STANDARD.md) now owns
+room-distance identity, event-led attention, lighting/staging rules and visual
+acceptance across graphics tiers. Supervisors must be recognizable without names
+or speech; active workers and consequences can take visual priority. The owner’s
+crowded-room sample fails this requirement. Approved assets remain the starting
+point; implementation and names-hidden recognition evidence are still pending.
+
 ## Decision
 
 The factory is prebuilt. Remove player construction, purchase/placement tools and the night-zero installation tutorial. Keep the approved room dimensions, portals, locked rooms and shared world. Begin at the producer console with the leadership call. Night still means review and charging; it does not imply a builder.

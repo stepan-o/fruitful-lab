@@ -60,6 +60,18 @@ resolution is fixed throughout, clearly separate from the historical reference.
 The original recorded HD620 result remains unchanged. See
 [acceptance protocol](FRONTEND_PERFORMANCE_ACCEPTANCE.md).
 
+## Visual acceptance alongside frame time — 18 October 2026
+
+The owner’s crowded-room review shows that the current fixture does not make
+LIMEN and STILETTO reliably distinguishable from the workers. The real models and
+emissive features are loaded, but asset presence is not recognition. The
+[cast readability standard](CAST_READABILITY_STANDARD.md) adds a separate visual
+gate: persistent silhouette/value/equipment cues, event-led attention and
+names/speech-hidden review at actual room-camera sizes across quality settings.
+The current regular crowd and fixed wide cameras remain a load fixture, not
+accepted gameplay staging. A recognition mode and its evidence are pending;
+existing benchmark results and their performance thresholds remain unchanged.
+
 ## Next asset and presentation stages
 
 Model/texture quality menus are intentionally absent until tested assets exist.

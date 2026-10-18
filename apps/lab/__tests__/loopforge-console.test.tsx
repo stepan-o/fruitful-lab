@@ -195,7 +195,7 @@ it("preserves the acknowledgement gate through console changes and menu round-tr
 
   async function changeConsoleAndResume(name: string) {
     fireEvent.click(screen.getByRole("button", { name: "Settings" }));
-    const settings = screen.getByRole("dialog", { name: "Console settings" });
+    const settings = screen.getByRole("dialog", { name: "Game settings" });
     fireEvent.click(within(settings).getByRole("button", { name: new RegExp(name) }));
     await within(settings).findByText(`${name} applied.`);
     fireEvent.click(within(settings).getByRole("button", { name: "Return to the console" }));

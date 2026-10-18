@@ -1,10 +1,10 @@
 # Agents: character, movement and contact
 
-14 October 2026. Current character review and integration direction.
+17 October 2026. Current character review and integration direction.
 
-The [asset review library](/stepanoskin/loopforge/play/asset-review) is the entry point for **LIMEN, Worker 01 and STILETTO’s new Meshy models**. Each has its own equipment/motion controls, six shared review gates and factory/CCTV inspection. Mouse/touch orbit belongs to close inspection; CCTV remains fixed. Cathexis, Rivet Witch and Thrum await models.
+The [asset review library](/stepanoskin/loopforge/play/asset-review) is the entry point for **Worker 01, LIMEN, STILETTO and CATHEXIS**. Worker 01 comes before the supervisors. Each character has its own equipment/motion controls, shared review gates and factory/CCTV inspection. Mouse/touch orbit belongs to close inspection; CCTV remains fixed. Rivet Witch and Thrum remain later cast work.
 
-LIMEN’s body, mount and energy direction have owner acceptance. Worker 01 has 19 motion candidates. STILETTO has two mounted blades, 18 original clips and five corrected arm alternatives. Exact inventories and open issues live in their [review records](production/CHARACTER_REVIEW_STRUCTURE.md). The old spherical cast is a rejected engineering fixture, not the current production model set. Main play still uses placeholders; paired acting, crowd performance and gameplay integration with these new rigs remain to build.
+The owner has approved the initial cast and its basic movement palette, including the completed Worker 01 cleanup on 17 October. Worker acceptance covers the nineteen corrected motions, including the final Confused Scratch palm contact and Alert-derived free arm. LIMEN supplies the cyan emitter identity; STILETTO supplies blade-arm acting; CATHEXIS supplies the accepted theatrical motions and full/half Grace fit. Exact inventories and scene work live in the [review records](production/CHARACTER_REVIEW_STRUCTURE.md). These accepted performances are the starting material for factory encounters. Paired acting, prop contacts, crowd performance and integration into main play remain to build.
 
 Companion to [the first-turn contract](FIRST_TURN_ENGINE.md) and [the room scale plan](FACTORY_FLOOR_VISUAL_SCALE_PLAN.md).
 
@@ -15,6 +15,38 @@ The factory is prebuilt. Remove player construction, purchase/placement tools an
 Call workers and supervisors **agents** because the intended simulation gives them beliefs, desires and intentions. An agent does not require an LLM. Current first-turn workers have individual component records and bounded task movement; this is not yet a complete BDI implementation. Current procedural bodies are placeholders, not approved character art.
 
 Keep Babylon 9.30.0. The best next step is authored, rigged 3D characters in the existing procedural factory, with baked surface detail and deliberate animation. Authoring can use procedural modeling offline; it need not construct hundreds of little meshes in every browser. The goal is a movable, lightable character that matches the art from every CCTV angle. Flat sprites or generated video cannot supply reliable arbitrary views, shadows, contacts and gameplay timing. Native asset-driven illustrations remain valuable for briefings and major event cuts.
+
+## From the approved cast to the show
+
+Owner direction, 17 October 2026: the next development priority is a factory whose interactions are legible and entertaining in the 3D world. The initial cast provides the visual vocabulary that the original backend experiments lacked. Add movements as actual scenes need them.
+
+**Read the world.** Player-relevant interactions need visible action, recipient response and aftermath. Workers and supervisors speak and reveal selected thoughts through in-world bubbles. Their bodies, timing, spacing, equipment and effects must carry the interaction; text supplements the performance. Reports and traces remain useful for optional inspection and authoring, but cannot rescue a scene that has nothing interesting to show. Thoughts are a character's belief, not an omniscient account or a dump of private state.
+
+**Make it worth watching and acting in.** BDI and simulation support the show without becoming the subject the player must study. Every added mechanic must earn its place through an enjoyable encounter or a meaningful consequence. The player chooses priorities, assignments and interventions whose effects become visible. Competence, relief, absurdity, affection and rivalry belong alongside threats and failure; a well-run day can be satisfying. More incidents or more dialogue do not automatically make a better episode.
+
+**Let relationships appear in performance.** The original Puppeteer describes a supervisor as the room's weather. Apply that through what other agents do when the supervisor arrives, speaks, threatens, helps or leaves. Stable worker identities and memory should produce recognizable changes in later encounters. Readable behavior can hint at a problem before its eventual consequences; it need not reveal a hidden motive or future outcome.
+
+### Opening two-week arc
+
+The [first five days proposal](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md) details the two-room sub-arc, show ingredients, conditional scenes, asset/system gaps and staged-scene-first build order.
+
+The owner's current pacing proposal is approximately **five to nine days with Security and Conveyor**, with length responding to player choices, followed by Theatre and CATHEXIS's arrival. **The second week concludes the “first act of the first act”: the opening sub-arc within Act 1.** This does not establish the duration of the entire act.
+
+This supersedes the older four-to-five-day hypothesis and the assumption that CATHEXIS must arrive before the day-seven settlement in `ONE_MINUTE_LOOP.md` and `PLAYER_DESIRES_AND_SCENARIOS.md`. Keep the existing whole-day pacing targets as a test constraint; exact progression conditions, arrival timing and the second-week payoff still need scene design and playtesting. Do not force an accident, a supervisor switch or an arbitrary wait to unlock the next phase. The prebuilt-factory decision remains in force.
+
+A proposed first scene test is one worker encounter on the Security–Conveyor boundary: a clearance hold, a supervisor's response, a worker's reaction and a change in the line. Compare two player commitments and let the same workers carry the result into the next day. This is a scene proposal, not an implemented encounter or a fixed opening script. Its review question is whether the player can see what happened, care about it and want to influence what happens next without opening a report.
+
+### Original doctrine and its changed delivery
+
+Re-read from the original Loopforge repository on 17 October:
+
+- `docs/legacy/sim2/psych/THE_PUPPETTEER_README.md`: continuity, supervisor pressure and the “Puppet Master” passage identifying the creator who shapes the conditions. Its report-first deliverable is historical.
+- `docs/legacy/sim2/psych/THE_PUPPETTEER_DOCTRINE.md`: “Loopforge is a story machine disguised as a simulation” and robots must be watchable. Its log-derived psychology pipeline describes the old implementation, not a requirement to rebuild it.
+- `docs/legacy/sim2/narrative/PRODUCER_VISION.md`: episode interestingness and clarity are the creative test; the engineering exists to let characters act.
+- `docs/legacy/sim2/architecture/evolution/NOTES_FROM_PREVIOUS_ARCHITECTS.md`, Producer handover: protect the robots' strangeness and the entertainment value of the world.
+- `docs/legacy/visual/STAGE_VISION.md`: records the original gap between available backend cognition and the limited visible frontend.
+
+Preserve credible causes and observable consequences. The current delivery is the live encounter in the factory, with optional records underneath it. Historical implementation claims, omniscient lenses and report-led workflows do not override current code or the owner's direction.
 
 ## Model direction reset after production review
 

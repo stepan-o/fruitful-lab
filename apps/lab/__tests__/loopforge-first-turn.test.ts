@@ -6,11 +6,11 @@ import { applyRecord } from '@/lib/loopforge/first-turn/viewer';
 import { workforceTotals } from '@/lib/loopforge/first-shift/workers';
 const runId='12345678-1234-4123-8123-123456789012';
 const opening:Command[]=[{type:'acknowledge_mandate'},{type:'choose_adviser',adviser:'limen'}];
-function setup(adviser:'limen'|'stiletto',workers=24){
+function setup(adviser:'limen'|'stiletto',workers=24,swap=false){
  const commands:Command[]=[{type:'acknowledge_mandate'},{type:'choose_adviser',adviser}];
  let state=replay(7,commands,workers);
  const send=(c:Command)=>{state=step(state,c);commands.push(c);};
- send({type:'approve_plan',assignments:state.daily.briefing!.assignments});send({type:'start_shift'});
+ send({type:'approve_plan',assignments:swap?{conveyor:'limen',security:'stiletto'}:state.daily.briefing!.assignments});send({type:'start_shift'});
  return {commands,send,current:()=>state};
 }
 function finish(run:ReturnType<typeof setup>){
@@ -61,7 +61,7 @@ test('open intake and push expose finite buffers and wear; no output appears thr
  expect(workforceTotals(fast.current().daily.workers).produced).toBe(fast.current().floor.released);
 });
 test('adviser authority follows assigned room, and decision pauses reject operation commands',()=>{
- const run=setup('limen');run.send({type:'set_operation',feed:'open',drive:'push'});
+ const run=setup('limen',24,true);run.send({type:'set_operation',feed:'open',drive:'push'});
  const s=finish(run),resolutions=s.daily.events.filter(e=>e.kind==='resolution');
  expect(resolutions.some(e=>e.actor==='limen'&&e.room==='conveyor')).toBe(true);
  expect(resolutions.some(e=>e.actor==='director'&&e.room==='security')).toBe(true);
@@ -89,4 +89,9 @@ test('closing intake clears accumulated work and cannot manufacture from an empt
  for(let i=0;i<25;i++){const p=run.current().daily.pending;run.send(p?{type:'resolve_incident',incident:p.id,response:p.recommendation}:{type:'advance'});}
  const before=run.current();expect(before.floor.intake).toBe(0);expect(before.floor.outtake).toBe(0);
  run.send({type:'advance'});expect(run.current().floor.released).toBe(before.floor.released);
+});
+
+test('both advisers propose native stations; choosing a voice does not swap jobs',()=>{
+ const a=replay(7,opening),b=replay(7,[{type:'acknowledge_mandate'},{type:'choose_adviser',adviser:'stiletto'}]);
+ expect(a.daily.briefing!.assignments).toEqual({security:'limen',conveyor:'stiletto'});expect(b.daily.briefing!.assignments).toEqual(a.daily.briefing!.assignments);expect(a.daily.briefing!.rationale).not.toBe(b.daily.briefing!.rationale);
 });

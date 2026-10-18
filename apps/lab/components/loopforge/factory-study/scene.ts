@@ -46,7 +46,7 @@ type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
 const C = (hex: string) => Color3.FromHexString(hex);
 
-export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void, options: {reviewOnly?:boolean} = {}): FactoryScene {
+export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void, options: {reviewOnly?:boolean; renderSize?:readonly [number,number]} = {}): FactoryScene {
   const engine = new Engine(canvas, false, { stencil: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
   const scene = new Scene(engine);
   const instrumentation=new SceneInstrumentation(scene);
@@ -472,7 +472,8 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     scene.activeCameras=tripleFeed?cams:[camera];transition=0;
   };
   const viewport=()=>{if(cctvEnabled){configureFeeds();return;}const h=Math.max(1,canvas.clientHeight),top=topInset,bottom=Math.min(h*.52,bottomInset);camera.viewport=new Viewport(0,bottom/h,1,Math.max(.25,(h-bottom-top)/h));};
-  const resize=()=>{const w=canvas.clientWidth;engine.setHardwareScalingLevel(1/(Math.min(w<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();frame();viewport();};
+  const resizeEngine=()=>{if(options.renderSize){engine.setHardwareScalingLevel(1);engine.setSize(...options.renderSize);}else{engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}};
+  const resize=()=>{resizeEngine();frame();viewport();};
   const observer=new ResizeObserver(resize);observer.observe(canvas);resize();
   let hidden=document.hidden;
   const visibility=()=>{hidden=document.hidden;frameWindow.reset();lastTime=performance.now();if(hidden||!visible)engine.stopRenderLoop(render);else {renderDirty=true;reportTime=performance.now();engine.runRenderLoop(render);}};
@@ -544,7 +545,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     equipment.animate(motionClock,moving,focus);
     lobby.animate(motionClock,moving,focus==="lobby",framing!=="room");
     // A resource can become ready after its draw was skipped. Render once more before sleeping.
-    const wasReady=resourcesReady,beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady||!wasReady;const renderedAt=performance.now();if(now-reportTime>1200){const timing=frameWindow.snapshot(),fps=timing.fps;report({...timing,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});if(timing.sampleMode==='active'&&timing.sampleCount>=30&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;reportTime=now;}
+    const wasReady=resourcesReady,beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady||!wasReady;const renderedAt=performance.now();if(now-reportTime>1200){const timing=frameWindow.snapshot(),fps=timing.fps;report({...timing,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});if(!options.renderSize&&timing.sampleMode==='active'&&timing.sampleCount>=30&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;reportTime=now;}
   }
   equipment.study(false);
   const input = (event: Event) => {
@@ -563,12 +564,12 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     focus(f){reviewOrbit.suspend();frameWindow.reset();reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
     framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},
     feeder(enabled){resourcesReady=false;renderDirty=true;lobby.feeder(enabled);keyMap.resetRefreshCounter();},
-    inset(bottom,top){bottomInset=bottom;topInset=top;engine.resize();frame();viewport();},
+    inset(bottom,top){bottomInset=bottom;topInset=top;resizeEngine();frame();viewport();},
     motion(enabled){if(enabled!==moving)frameWindow.reset();renderDirty=true;moving=enabled;},
     study(enabled){posesDirty=true;equipmentStudy=enabled;floor.study(enabled);equipment.study(enabled);population(state.workers.length+(enabled?SCALE_FIGURES.length:0));keyMap.resetRefreshCounter();frame();},
     cctv(enabled,angle,triple){cctvEnabled=enabled;cctvAngle=angle;tripleFeed=triple;renderDirty=true;configureFeeds();if(!enabled){viewport();frame();}},
     isolate(enabled){isolatedRoom=enabled;posesDirty=true;frame();},
-    active(enabled){visible=enabled;if(enabled&&!document.hidden){frameWindow.reset();reportTime=performance.now();lastTime=performance.now();renderDirty=true;engine.resize();viewport();engine.runRenderLoop(render);}else engine.stopRenderLoop(render);},
+    active(enabled){visible=enabled;if(enabled&&!document.hidden){frameWindow.reset();reportTime=performance.now();lastTime=performance.now();renderDirty=true;resizeEngine();viewport();engine.runRenderLoop(render);}else engine.stopRenderLoop(render);},
     dispose(){reviewOrbit.suspend();inputEvents.forEach(name=>canvas.removeEventListener(name,input));observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);instrumentation.dispose();scene.dispose();engine.dispose();}
   };
   } catch(error) { scene.dispose(); engine.dispose(); throw error; }

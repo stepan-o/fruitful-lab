@@ -6,6 +6,7 @@ export default function ReviewNavigation({current}:{current?:string}){
   <Link prefetch={false} href="/stepanoskin/loopforge/play/asset-review" aria-current={!current?'page':undefined}>All models<span>Review library</span></Link>
   {productionReviewAssets.map(asset=><Link prefetch={false} key={asset.id} href={asset.route} aria-current={current===asset.id?'page':undefined}>{asset.shortName}<span>{asset.navDetail}</span></Link>)}
   <Link prefetch={false} href="/stepanoskin/loopforge/play/scene-studies" aria-current={current==='scene-studies'?'page':undefined}>Scene studies<span>Encounters · speech · storyboard</span></Link>
+  <Link prefetch={false} href="/stepanoskin/loopforge/play/performance-test" aria-current={current==='performance-test'?'page':undefined}>Performance<span>26 actors · ten-minute acceptance</span></Link>
   <Link prefetch={false} href={`/stepanoskin/loopforge/design?model=${current==='worker-01-motions'?'worker':current==='stiletto-blades'?'stiletto':current==='limen-assembly'?'limen':'cathexis'}#model-briefs`}>Model briefs<span>Inputs · rebuild kits</span></Link>
  </nav>;
 }

@@ -33,6 +33,7 @@ import {
 import AdviserSelection, { firstDayCandidates } from "./AdviserSelection";
 import LeadershipCall from "./LeadershipCall";
 import ThemeSettings from "./ThemeSettings";
+import GraphicsSettings from "../graphics/GraphicsSettings";
 import ProducerConsole from "./ProducerConsole";
 import { useConsoleTheme } from "./ThemeProvider";
 import { ConsoleBeacon, useConsoleSignals } from "./ConsoleSignals";
@@ -551,7 +552,7 @@ export default function FirstShift({
           modal === "incident"
             ? "Incident response"
             : modal === "settings"
-              ? "Console settings"
+              ? "Game settings"
               : modal === "help"
                 ? "Operator guidance"
                 : "Status evidence"
@@ -579,8 +580,9 @@ export default function FirstShift({
         )}
         {modal === "settings" && (
           <>
-            <Kicker>Console settings</Kicker>
-            <h1>Fit the console.</h1>
+            <Kicker>Loopforge / Settings</Kicker>
+            <h1>Game settings.</h1>
+            <GraphicsSettings expanded />
             <ThemeSettings
               disabled={pending}
               onPreview={() => setModal(null)}

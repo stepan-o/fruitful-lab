@@ -27,7 +27,7 @@ export default function SceneStudies(){
   function visibility(){if(document.hidden)pause();}
   async function boot(){try{
    const {createFactoryScene}=await import('../factory-study/scene');if(!alive||!canvas.current)return;
-   floor=createFactoryScene(canvas.current,r=>{if(alive)setReport(r);},()=>{},{reviewOnly:true});floor.inset(0,0);floor.isolate(true);floor.motion(false);floor.review('model',6.5);floor.focus(study==='conveyor'?'conveyor':'security');floor.reviewTarget(rehearsal(study,choice).anchor,study==='threshold'?-1.05:-Math.PI/2);if(study==='threshold')floor.isolate(false);floor.cctv(true,0,false);floor.reviewSubject(1.05,6.5,3.5);floor.update({...initialStudy(),workers:[],running:false});observer.observe(canvas.current);
+   floor=createFactoryScene(canvas.current,r=>{if(alive)setReport(r);},()=>{},{reviewOnly:true,context:'room'});floor.inset(0,0);floor.isolate(true);floor.motion(false);floor.review('model',6.5);floor.focus(study==='conveyor'?'conveyor':'security');floor.reviewTarget(rehearsal(study,choice).anchor,study==='threshold'?-1.05:-Math.PI/2);if(study==='threshold')floor.isolate(false);floor.cctv(true,0,false);floor.reviewSubject(1.05,6.5,3.5);floor.update({...initialStudy(),workers:[],running:false});observer.observe(canvas.current);
    const {loadRehearsalCast}=await import('./rehearsal-cast');if(!alive)return;cast=await loadRehearsalCast(floor,study,abort.signal);if(!alive){cast.dispose();return;}
    const take=rehearsal(study,choice),r:Runtime={floor,cast,take,world:replay(take,study==='threshold'?125:70),playing:false};runtime.current=r;sync(r);setReady(true);floor.active(inView);
    const render=(now:number)=>{

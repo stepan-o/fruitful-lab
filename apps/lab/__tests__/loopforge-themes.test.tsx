@@ -1,4 +1,6 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {DEFAULT_GRAPHICS} from "@/lib/loopforge/graphics/settings";
+import {saveGraphics} from "@/lib/loopforge/graphics/store";
 import GameClient from "@/components/loopforge/first-shift/GameClient";
 import ThemeProvider, { useConsoleTheme } from "@/components/loopforge/first-shift/ThemeProvider";
 import ThemeSettings from "@/components/loopforge/first-shift/ThemeSettings";
@@ -26,7 +28,7 @@ beforeAll(() => {
   HTMLDialogElement.prototype.close = function() { this.removeAttribute("open"); };
 });
 beforeEach(() => {
-  localStorage.clear(); jest.clearAllMocks();
+  localStorage.clear(); saveGraphics(DEFAULT_GRAPHICS); jest.clearAllMocks();
   window.history.replaceState({}, "", "/stepanoskin/loopforge/play");
   prepared.mockImplementation(async (r, compact) => themeFiles(r, compact));
   jest.mocked(useFirstTurnRun).mockReturnValue({ view: project(initialState(7)), pending: false, error: "", send, restart, recover: jest.fn(), download: jest.fn() });
@@ -192,4 +194,26 @@ it("opens an explicit console link ahead of a stored preference without starting
   render(<GameClient media={firstShiftMedia()} />);
   await waitFor(() => expect(prepared).toHaveBeenCalledWith(recipeForConsole("broadcast-control"), true));
   expect(useFirstTurnRun).not.toHaveBeenCalled();
+});
+
+it("shares saved graphics between menu and shift settings without restarting the run", async () => {
+  jest.mocked(useFirstTurnRun).mockReturnValue({ view: { ...project(initialState(7)), phase: "allocation" }, pending: false, error: "", send, restart, recover: jest.fn(), download: jest.fn() });
+  render(<GameClient media={firstShiftMedia()} />);
+  await waitFor(() => expect(screen.getByRole("button", { name: /Start shift/ })).toBeEnabled());
+  fireEvent.click(screen.getByRole("button", { name: /Settings Graphics/ }));
+  fireEvent.change(screen.getByLabelText("Quality"), { target: { value: "performance" } });
+  expect(screen.getByLabelText("Render resolution")).toHaveValue("0.65");
+  expect(useFirstTurnRun).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button", { name: "Return to menu" }));
+  fireEvent.click(screen.getByRole("button", { name: /Start shift/ }));
+  fireEvent.click(screen.getByRole("button", { name: "Settings" }));
+  expect(screen.getByLabelText("Quality")).toHaveValue("performance");
+  fireEvent.change(screen.getByLabelText("Render resolution"), { target: { value: "0.75" } });
+  expect(JSON.parse(localStorage.getItem("loopforge.graphics.v1")!).resolution).toBe(.75);
+  fireEvent.click(screen.getByRole("button", { name: "Return to the console" }));
+  fireEvent.click(screen.getByRole("button", { name: "Menu" }));
+  fireEvent.click(screen.getByRole("button", { name: /Settings Graphics/ }));
+  expect(screen.getByLabelText("Render resolution")).toHaveValue("0.75");
+  expect(restart).not.toHaveBeenCalled();
+  expect(send).not.toHaveBeenCalled();
 });

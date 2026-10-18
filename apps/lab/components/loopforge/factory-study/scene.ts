@@ -1,3 +1,8 @@
+import {resolveGraphics,createResolutionGovernor,type GraphicsSettings,type GraphicsContext} from '@/lib/loopforge/graphics/settings';
+import {graphicsSnapshot,subscribeGraphics} from '@/lib/loopforge/graphics/store';
+import {EngineInstrumentation} from '@babylonjs/core/Instrumentation/engineInstrumentation';
+import '@babylonjs/core/Engines/AbstractEngine/abstractEngine.timeQuery';
+import '@babylonjs/core/Engines/Extensions/engine.query';
 import {createFrameWindow, type FrameMode} from '@/lib/loopforge/frame-window';
 import { createReviewOrbit, type ReviewCameraAction } from './review-orbit';
 import { SceneInstrumentation } from "@babylonjs/core/Instrumentation/sceneInstrumentation";
@@ -40,17 +45,22 @@ export type Framing = 'work' | 'room' | 'detail';
 export type Focus = ZoneId | "wide";
 export type SceneReport = { fps: number; meshes: number; active: number; workers: number; resolution: string; renderer: string; renderMs: number; updateMs: number; sampleMode?: FrameMode; sampleCount?: number; p50?: number; p95?: number; p99?: number; drawCalls?: number; triangles?: number };
 export type CharacterStage = { scene: Scene; shadow: ShadowGenerator; gate(open: boolean): void; refresh(materialsChanged?: boolean): void };
-export type FactoryScene = { reviewTarget(point: readonly [number,number] | null, angle?: number): void; reviewSubject(targetHeight:number, distance:number, minimum:number): void; reviewCamera(action?: ReviewCameraAction): ReturnType<ReturnType<typeof createReviewOrbit>["snapshot"]>; characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
+export type GraphicsFrame = {cpuMs:number;sceneUpdateMs:number;renderSubmitMs:number;gpuMs:number|null;drawCalls:number;triangles:number};
+export type GraphicsState = {settings:GraphicsSettings;context:GraphicsContext;effective:ReturnType<typeof resolveGraphics>;scale:number;resolution:readonly number[];uncapped:boolean};
+export type FactoryScene = { graphics(settings?:GraphicsSettings,context?:GraphicsContext):GraphicsState; reviewTarget(point: readonly [number,number] | null, angle?: number): void; reviewSubject(targetHeight:number, distance:number, minimum:number): void; reviewCamera(action?: ReviewCameraAction): ReturnType<ReturnType<typeof createReviewOrbit>["snapshot"]>; characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
 const C = (hex: string) => Color3.FromHexString(hex);
 
-export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void, options: {reviewOnly?:boolean; renderSize?:readonly [number,number]} = {}): FactoryScene {
+export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void, options: {reviewOnly?:boolean; renderSize?:readonly [number,number]; graphics?:GraphicsSettings; context?:GraphicsContext; uncapped?:boolean; onFrame?:(frame:GraphicsFrame)=>void} = {}): FactoryScene {
   const engine = new Engine(canvas, false, { stencil: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
   const scene = new Scene(engine);
   const instrumentation=new SceneInstrumentation(scene);
+  const gpuInstrumentation=new EngineInstrumentation(engine);
+  let gpuSamples=0;
   try {
+  if(options.onFrame&&engine.getCaps().timerQuery)gpuInstrumentation.captureGPUFrameTime=true;
   scene.clearColor = new Color4(.018, .025, .025, 1);
   scene.ambientColor = new Color3(.08, .10, .09);
   scene.fogMode = Scene.FOGMODE_EXP2; scene.fogDensity = .0018; scene.fogColor = new Color3(.025, .041, .042);
@@ -60,7 +70,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   camera.pinchDeltaPercentage = .012; camera.panningSensibility = 130; camera.inertia = .78;
   camera.minZ = .15; camera.maxZ = 1600; camera.fov = .8; camera.fovMode = 0;
   let state = initialStudy(), lastTime = performance.now(), visualTravel = 0, moving = true;
-  let renderDirty = true, posesDirty = true, resourcesReady = false, idleDue = performance.now();
+  let renderDirty = true, posesDirty = true, resourcesReady = false;
   // Demand rendering must also redraw decoded textures and restored GPU resources.
   scene.onDataLoadedObservable.add(() => { renderDirty = true; resourcesReady = false; });
   engine.onContextRestoredObservable.add(() => { renderDirty = true; resourcesReady = false; });
@@ -412,7 +422,10 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   // Pick surfaces mirror room bounds. Locked rooms select their sealed roof, never an interior.
   const pickMaterial=new StandardMaterial("room hit surfaces",scene);pickMaterial.alpha=0;pickMaterial.disableDepthWrite=true;
   for(const z of ZONES){const r=z.rect,hit=box(z.name+" hit surface",[r.w-.2,.015,r.h-.2],[...worldPoint(r.x+r.w/2,r.y+r.h/2)] as V,pickMaterial);hit.position.y=.02;hit.isPickable=true;hit.metadata={zone:z.id};}
-  let resolutionScale=1,slowSamples=0,qualityAfter=performance.now()+8000;
+  let preferences=options.graphics??graphicsSnapshot(),graphicsContext:GraphicsContext=options.context??'room';
+  let quality=resolveGraphics(preferences,graphicsContext),resolutionScale:number=quality.scale;
+  let governor=createResolutionGovernor(resolutionScale,quality.scale),qualityAfter=performance.now()+8000,nextDraw=0;
+  let cpuTotal=0,cpuFrames=0;
   const frame=()=>{
     resourcesReady = false;renderDirty = true;
     const viewportHeight=canvas.clientHeight*camera.viewport.height,aspect=canvas.clientWidth/Math.max(1,viewportHeight);
@@ -472,23 +485,37 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     scene.activeCameras=tripleFeed?cams:[camera];transition=0;
   };
   const viewport=()=>{if(cctvEnabled){configureFeeds();return;}const h=Math.max(1,canvas.clientHeight),top=topInset,bottom=Math.min(h*.52,bottomInset);camera.viewport=new Viewport(0,bottom/h,1,Math.max(.25,(h-bottom-top)/h));};
-  const resizeEngine=()=>{if(options.renderSize){engine.setHardwareScalingLevel(1);engine.setSize(...options.renderSize);}else{engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}};
+  const resizeEngine=()=>{if(options.renderSize){engine.setHardwareScalingLevel(1);engine.setSize(Math.round(options.renderSize[0]*resolutionScale),Math.round(options.renderSize[1]*resolutionScale));}else{engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}};
   const resize=()=>{resizeEngine();frame();viewport();};
   const observer=new ResizeObserver(resize);observer.observe(canvas);resize();
   let hidden=document.hidden;
   const visibility=()=>{hidden=document.hidden;frameWindow.reset();lastTime=performance.now();if(hidden||!visible)engine.stopRenderLoop(render);else {renderDirty=true;reportTime=performance.now();engine.runRenderLoop(render);}};
   const frameWindow=createFrameWindow();
   let reportTime=performance.now(),shadowView="",shadowTravel=-1,shadowInstalled=-1,shadowArm=-1;
-  const keyMap=shadow.getShadowMap()!,signalMap=signalShadows.getShadowMap()!;keyMap.refreshRate=0;signalMap.refreshRate=0;
+  let keyMap=shadow.getShadowMap()!,signalMap=signalShadows.getShadowMap()!;keyMap.refreshRate=0;signalMap.refreshRate=0;
+  const graphicsState=():GraphicsState=>({settings:{...preferences},context:graphicsContext,effective:{...quality},scale:resolutionScale,resolution:[engine.getRenderWidth(),engine.getRenderHeight()],uncapped:!!options.uncapped});
+  function applyGraphics(){
+    quality=resolveGraphics(preferences,graphicsContext);resolutionScale=quality.scale;governor=createResolutionGovernor(resolutionScale,quality.scale);
+    key.shadowEnabled=quality.shadows!=='off';signal.shadowEnabled=quality.shadows==='full';
+    const size=quality.shadows==='low'?512:1024;if(shadow.mapSize!==size)shadow.mapSize=size;
+    keyMap=shadow.getShadowMap()!;signalMap=signalShadows.getShadowMap()!;keyMap.refreshRate=0;signalMap.refreshRate=0;keyMap.resetRefreshCounter();signalMap.resetRefreshCounter();
+    pipeline.bloomEnabled=quality.bloom;pipeline.fxaaEnabled=quality.antialias;
+    resourcesReady=false;renderDirty=true;nextDraw=0;qualityAfter=performance.now()+8000;frameWindow.reset();resizeEngine();
+  }
+  applyGraphics();
+  const unsubscribeGraphics=options.graphics?()=>{}:subscribeGraphics(()=>{preferences=graphicsSnapshot();applyGraphics();});
   function render(){
     if(hidden||!visible)return;
     const now=performance.now();
+    if(!options.uncapped){
+      if(now<nextDraw-1)return;
+      const interval=1000/quality.targetFps;nextDraw=now+interval-Math.min(interval,Math.max(0,now-nextDraw));
+    }
     const cameraMoving=transition>0||Math.abs(camera.inertialAlphaOffset)+Math.abs(camera.inertialBetaOffset)+Math.abs(camera.inertialRadiusOffset)+Math.abs(camera.inertialPanningX)+Math.abs(camera.inertialPanningY)>.0001;
-    // Quiet rooms need only a 30 Hz presentation cadence. Camera gestures and
-    // production remain uncapped; reduced-motion stills render only on changes.
+    // The shared frame target governs moving scenes and character showcases.
+    // Reduced-motion stills render only when the camera or content changes.
     const quietFrame = !cameraMoving && !state.running;
-    if(quietFrame&&!renderDirty&&(!moving||now<idleDue-2))return;
-    idleDue = quietFrame ? Math.max(idleDue+1000/30, now) : now+1000/30;
+    if(quietFrame&&!renderDirty&&!moving)return;
     frameWindow.frame(now,!resourcesReady?'loading':moving||state.running||cameraMoving?'active':'idle');
     const dt=Math.min(.06,(now-lastTime)/1000);lastTime=now;renderDirty=false;if(moving)motionClock+=dt;
     if(transition>0){const speed=moving?1-Math.exp(-dt*4):1;camera.setTarget(Vector3.Lerp(camera.target,targetPoint,speed),false,false,true);camera.radius+=(targetRadius-camera.radius)*speed;transition-=moving?dt*.8:1;}
@@ -545,7 +572,20 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     equipment.animate(motionClock,moving,focus);
     lobby.animate(motionClock,moving,focus==="lobby",framing!=="room");
     // A resource can become ready after its draw was skipped. Render once more before sleeping.
-    const wasReady=resourcesReady,beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady||!wasReady;const renderedAt=performance.now();if(now-reportTime>1200){const timing=frameWindow.snapshot(),fps=timing.fps;report({...timing,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});if(!options.renderSize&&timing.sampleMode==='active'&&timing.sampleCount>=30&&now>qualityAfter&&fps<24&&++slowSamples>=3&&resolutionScale>.65){resolutionScale=Math.max(.65,resolutionScale-.15);slowSamples=0;qualityAfter=now+7000;engine.setHardwareScalingLevel(1/(Math.min(canvas.clientWidth<650?1:1.25,window.devicePixelRatio)*resolutionScale));engine.resize();}else if(fps>=24||!moving)slowSamples=0;reportTime=now;}
+    const wasReady=resourcesReady,beforeRender=performance.now();scene.render();if(!resourcesReady)resourcesReady=scene.isReady();renderDirty=!resourcesReady||!wasReady;
+    const renderedAt=performance.now(),cpuMs=renderedAt-now;cpuTotal+=cpuMs;cpuFrames++;
+    const gpuCounter=gpuInstrumentation.captureGPUFrameTime?gpuInstrumentation.gpuFrameTimeCounter:null;
+    const gpuMs=gpuCounter&&gpuCounter.count>gpuSamples?gpuCounter.current/1e6:null;if(gpuCounter)gpuSamples=gpuCounter.count;
+    options.onFrame?.({cpuMs,sceneUpdateMs:beforeRender-now,renderSubmitMs:renderedAt-beforeRender,gpuMs,drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});
+    if(now-reportTime>1200){
+      const timing=frameWindow.snapshot(),fps=timing.fps;
+      report({...timing,meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:state.workers.length,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(renderedAt-beforeRender),updateMs:Math.round(beforeRender-now),drawCalls:instrumentation.drawCallsCounter.current,triangles:Math.round(scene.getActiveIndices()/3)});
+      if(quality.adaptive&&timing.sampleMode==='active'&&timing.sampleCount>=30&&now>qualityAfter){
+        const work=Math.max(cpuTotal/Math.max(1,cpuFrames),gpuMs??0,fps<quality.targetFps*.85?1000/Math.max(1,fps):0);
+        const next=governor.sample(work,quality.targetFps);if(next!==resolutionScale){resolutionScale=next;resizeEngine();renderDirty=true;}
+      }
+      cpuTotal=cpuFrames=0;reportTime=now;
+    }
   }
   equipment.study(false);
   const input = (event: Event) => {
@@ -555,11 +595,12 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   inputEvents.forEach(name=>canvas.addEventListener(name,input,{passive:true}));
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
+    graphics(settings,context){if(settings)preferences=settings;if(context)graphicsContext=context;if(settings||context)applyGraphics();return graphicsState();},
     reviewTarget(point,angle){reviewPoint=point;if(angle!==undefined)reviewOrbit.orientation(angle,1.22);if(cctvEnabled)configureFeeds();renderDirty=true;},
     reviewSubject(height,distance,minimum){reviewOrbit.suspend();reviewTargetHeight=height;reviewOrbit.framing(distance,minimum);if(cctvEnabled)configureFeeds();},
     reviewCamera(action){if(action)reviewOrbit.action(action);return reviewOrbit.snapshot();},
     characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(materialsChanged=false){if(materialsChanged)resourcesReady=false;renderDirty=true;keyMap.resetRefreshCounter();}};},
-    review(enabled,distance){reviewOrbit.suspend();characterReview=enabled;if(distance!==undefined)reviewOrbit.distance(distance);frame();if(cctvEnabled)configureFeeds();},
+    review(enabled,distance){reviewOrbit.suspend();characterReview=enabled;if(!options.context){graphicsContext=enabled==='model'?'showcase':'room';applyGraphics();}if(distance!==undefined)reviewOrbit.distance(distance);frame();if(cctvEnabled)configureFeeds();},
     update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const fresh=s.events.filter(e=>e.id>lastEvent);if(fresh.length){lastEvent=fresh.at(-1)!.id;const signal=fresh.find(e=>e.kind==="jam")??fresh.find(e=>e.kind==="cycle");if(signal){flash=1;flashKind=signal.kind as "jam"|"cycle";}else if(fresh.some(e=>e.kind==="release")){flash=0;flashKind="idle";}}},
     focus(f){reviewOrbit.suspend();frameWindow.reset();reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
     framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},
@@ -570,7 +611,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     cctv(enabled,angle,triple){cctvEnabled=enabled;cctvAngle=angle;tripleFeed=triple;renderDirty=true;configureFeeds();if(!enabled){viewport();frame();}},
     isolate(enabled){isolatedRoom=enabled;posesDirty=true;frame();},
     active(enabled){visible=enabled;if(enabled&&!document.hidden){frameWindow.reset();reportTime=performance.now();lastTime=performance.now();renderDirty=true;resizeEngine();viewport();engine.runRenderLoop(render);}else engine.stopRenderLoop(render);},
-    dispose(){reviewOrbit.suspend();inputEvents.forEach(name=>canvas.removeEventListener(name,input));observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);instrumentation.dispose();scene.dispose();engine.dispose();}
+    dispose(){reviewOrbit.suspend();inputEvents.forEach(name=>canvas.removeEventListener(name,input));observer.disconnect();document.removeEventListener("visibilitychange",visibility);engine.stopRenderLoop(render);unsubscribeGraphics();gpuInstrumentation.captureGPUFrameTime=false;gpuInstrumentation.dispose();instrumentation.dispose();scene.dispose();engine.dispose();}
   };
-  } catch(error) { scene.dispose(); engine.dispose(); throw error; }
+  } catch(error) { gpuInstrumentation.captureGPUFrameTime=false;gpuInstrumentation.dispose();instrumentation.dispose();scene.dispose();engine.dispose();throw error; }
 }

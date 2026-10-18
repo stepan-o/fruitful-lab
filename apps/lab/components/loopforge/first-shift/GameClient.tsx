@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import FirstShift from "./FirstShift";
 import ThemeProvider, { useConsoleTheme } from "./ThemeProvider";
 import ThemeSettings from "./ThemeSettings";
+import GraphicsSettings from "../graphics/GraphicsSettings";
 import { ConsoleBeacon, ConsoleSignals } from "./ConsoleSignals";
 import { Art, Control, Kicker, materialStyle, type Media } from "./ConsoleParts";
 import s from "./themes.module.css";
@@ -29,7 +30,7 @@ function GameSession({ media }: { media: Media }) {
         <h1>First shift</h1>
         <p className={s.menuMotto}>Truth stays clean.<br />Story gets messy.</p>
         <button ref={start} className={s.startControl} disabled={theme.loading} onClick={enter}>{started ? "Resume shift" : "Start shift"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
-        <button ref={settingsButton} className={s.menuSetting} onClick={() => setSettings(true)}>Settings <span>Equipment / presentation</span></button>
+        <button ref={settingsButton} className={s.menuSetting} onClick={() => setSettings(true)}>Settings <span>Graphics / presentation</span></button>
         <Link href="/stepanoskin/loopforge" prefetch={false}>← Back to Loopforge</Link>
         <small className={s.sessionNote}>{started ? "Your shift is paused. Resume to return to the console." : "First shift · playable prototype"}</small>
         <small className={s.sessionNote}>Progress lasts while this page stays open.</small>
@@ -41,9 +42,9 @@ function GameSession({ media }: { media: Media }) {
     <dialog ref={dialog} className={s.menuDialog} onClose={closeSettings} aria-labelledby="menu-settings-title"
       onClick={e => { if (e.target === dialog.current) closeSettings(); }}>
       <ConsoleBeacon active={settings} />
-      <header><Kicker>Loopforge / Settings</Kicker><h2 id="menu-settings-title">Fit the console.</h2></header>
+      <header><Kicker>Loopforge / Settings</Kicker><h2 id="menu-settings-title">Game settings.</h2></header>
       <button className={s.closeSettings} onClick={closeSettings} aria-label="Close settings">Close ×</button>
-      {settings && <ThemeSettings onPreview={closeSettings} />}
+      {settings && <><GraphicsSettings expanded /><ThemeSettings onPreview={closeSettings} /></>}
       <Control onClick={closeSettings}>Return to menu</Control>
     </dialog>
   </div>;

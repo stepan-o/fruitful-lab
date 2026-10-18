@@ -37,9 +37,11 @@ export async function loadWorkerCrowd(stage:CharacterStage,count:number,signal:A
    actors.push({root,entry,mesh,group,hips,anchor:Vector3.Zero(),duration:(group.to-group.from)/group.targetedAnimations[0].animation.framePerSecond});
   }
   if(new Set(actors.map(a=>a.mesh.skeleton)).size!==count||new Set(actors.map(a=>a.mesh.geometry)).size!==1)throw Error('Crowd sharing/independence invariant failed.');
+  let visibleCount=count;
   return {
+   visible(n:number){visibleCount=Math.max(0,Math.min(count,Math.floor(n)));actors.forEach((a,i)=>a.root.setEnabled(i<visibleCount));},
    place(origin:Vector3){actors.forEach((a,i)=>{a.anchor.copyFrom(origin).addInPlaceFromFloats((i%6-2.5)*1.8,.015,(Math.floor(i/6)-1.5)*1.85);a.root.rotation.y=Math.PI;});},
-   sample(seconds:number){for(const [i,a] of actors.entries()){
+   sample(seconds:number){for(let i=0;i<visibleCount;i++){const a=actors[i];
     const phase=(seconds/a.duration+i*.137)%1,frame=a.group.from+(a.group.to-a.group.from)*phase;
     for(const track of a.group.targetedAnimations){const target=track.target as TransformNode,value=track.animation.evaluate(frame);
      if(track.animation.targetProperty==='rotationQuaternion')target.rotationQuaternion!.copyFrom(value as Quaternion);

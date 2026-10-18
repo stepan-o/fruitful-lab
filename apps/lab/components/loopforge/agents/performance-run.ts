@@ -1,3 +1,4 @@
+import {REFERENCE_GRAPHICS,type GraphicsSettings} from '@/lib/loopforge/graphics/settings';
 import {Vector3,Matrix} from '@babylonjs/core/Maths/math.vector';
 import type {ArcRotateCamera} from '@babylonjs/core/Cameras/arcRotateCamera';
 import {createFactoryScene,type SceneReport} from '../factory-study/scene';
@@ -10,9 +11,9 @@ import {ACCEPTANCE,createAcceptanceRecorder,type Resources,type AcceptanceResult
 export type Progress={state:'ready'|'warming'|'running'|'finished';seconds:number;room:string;angle:number;fps:number;p95:number;drawCalls:number;triangles:number;probes:number;result?:AcceptanceResult&Record<string,unknown>};
 const lines=[['LIMEN','Papers first. Every worker.'],['STILETTO','My line needs those workers.'],['WORKER 07','I was cleared yesterday.'],['WORKER 12','Then why are we still waiting?']];
 /** Deterministic renderer workload. This fixture does not simulate crowd decisions or pathfinding. */
-export async function createPerformanceRun(canvas:HTMLCanvasElement,bubbles:HTMLDivElement[],signal:AbortSignal,publish:(p:Progress)=>void){
+export async function createPerformanceRun(canvas:HTMLCanvasElement,bubbles:HTMLDivElement[],signal:AbortSignal,publish:(p:Progress)=>void,graphics:GraphicsSettings=REFERENCE_GRAPHICS){
  const loadingAt=performance.now();let latest:SceneReport|null=null;
- const floor=createFactoryScene(canvas,r=>latest=r,()=>{},{reviewOnly:true,renderSize:[ACCEPTANCE.width,ACCEPTANCE.height]});
+ const floor=createFactoryScene(canvas,r=>latest=r,()=>{},{reviewOnly:true,graphics,uncapped:true,context:'room',renderSize:[ACCEPTANCE.width,ACCEPTANCE.height]});
  const stage=floor.characterStage(),scene=stage.scene,engine=scene.getEngine();
  let crowd:Awaited<ReturnType<typeof loadWorkerCrowd>>|null=null,limen:Awaited<ReturnType<typeof loadLimen>>|null=null,stiletto:Awaited<ReturnType<typeof loadStiletto>>|null=null;
  try{
@@ -24,6 +25,7 @@ export async function createPerformanceRun(canvas:HTMLCanvasElement,bubbles:HTML
   stiletto=await loadStiletto(stage,signal,()=>{});stiletto.clip('Stand_Talking_Angry');stiletto.light(false);stiletto.flame(false);
   signal.throwIfAborted();
  }catch(e){crowd?.dispose();limen?.dispose();stiletto?.dispose();floor.dispose();throw e;}
+ const expectedResolution=[engine.getRenderWidth(),engine.getRenderHeight()];
  const loadedAt=performance.now(),state={...initialStudy(),workers:[],running:true};
  const recorder=createAcceptanceRecorder(),resource=():Resources=>({meshes:scene.meshes.length,materials:scene.materials.length,textures:engine.getLoadedTexturesCache().length,skeletons:scene.skeletons.length,geometries:scene.getGeometries().length,animationGroups:scene.animationGroups.length});
  const heap=()=>((performance as Performance & {memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize??null);
@@ -45,7 +47,7 @@ export async function createPerformanceRun(canvas:HTMLCanvasElement,bubbles:HTML
  function finish(reason:string|null){
   if(status!=='running'&&status!=='warming')return;
   const result=recorder.result(baseline,resource(),reason,contextLosses);
-  final={...result,protocol:ACCEPTANCE,createdAt:new Date().toISOString(),environment:{userAgent:navigator.userAgent,cores:navigator.hardwareConcurrency,deviceMemoryGiB:(navigator as Navigator&{deviceMemory?:number}).deviceMemory??null,devicePixelRatio:devicePixelRatio,viewport:[innerWidth,innerHeight],canvas:[engine.getRenderWidth(),engine.getRenderHeight()],renderer:latest?.renderer??null,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches},
+  final={...result,protocol:ACCEPTANCE,profile:JSON.stringify(graphics)===JSON.stringify(REFERENCE_GRAPHICS)?'reference':'selected-fixed',graphics:floor.graphics(),createdAt:new Date().toISOString(),environment:{userAgent:navigator.userAgent,cores:navigator.hardwareConcurrency,deviceMemoryGiB:(navigator as Navigator&{deviceMemory?:number}).deviceMemory??null,devicePixelRatio:devicePixelRatio,viewport:[innerWidth,innerHeight],canvas:[engine.getRenderWidth(),engine.getRenderHeight()],renderer:latest?.renderer??null,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches},
    loadMs:loadedAt-loadingAt,assets:{worker:crowd!.manifest,limen:limenFile,blade:bladeFile,stiletto:stilettoFile},memory,longTasks,
    limitations:['Draw-completion cadence is not a GPU timestamp or compositor presentation measurement.','Synthetic two-room workload, not crowd BDI, pathfinding, contacts or final room art.','Warm asset/renderer test; local asset preparation is not cold internet delivery.','Heap is an optional browser estimate, not GPU memory. Resource stability is not a full leak proof.','One selected camera; simultaneous three-feed and physical mobile tests remain separate gates.']};
   status='finished';taskObserver?.disconnect();limen!.play(false);stiletto!.play(false);floor.motion(false);floor.update({...state,running:false});snapshot();floor.active(false);
@@ -70,7 +72,7 @@ export async function createPerformanceRun(canvas:HTMLCanvasElement,bubbles:HTML
   if(status==='running'){
    recorder.frame(now);if(pendingSwitch!==null){recorder.switchResponse(now-pendingSwitch);pendingSwitch=null;}
    if(pendingInput!==null){recorder.inputResponse(now-pendingInput);pendingInput=null;}
-   if(engine.getRenderWidth()!==ACCEPTANCE.width||engine.getRenderHeight()!==ACCEPTANCE.height){finish('Render resolution changed');return;}
+   if(engine.getRenderWidth()!==expectedResolution[0]||engine.getRenderHeight()!==expectedResolution[1]){finish('Render resolution changed');return;}
    const seconds=(now-measureStart)/1000;if(seconds>=memory.length*10)memory.push({seconds,heapBytes:heap(),resources:resource()});
    if(now-measureStart>=ACCEPTANCE.durationMs){finish(null);return;}
   }

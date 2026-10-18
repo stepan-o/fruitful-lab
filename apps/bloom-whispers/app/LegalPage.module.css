@@ -1,0 +1,183 @@
+.legalPage {
+  background:
+    radial-gradient(circle at 14% 28%, rgba(197, 99, 183, 0.08), transparent 24%),
+    radial-gradient(circle at 86% 58%, rgba(92, 159, 130, 0.1), transparent 28%),
+    var(--moon-cream);
+  color: #061d20;
+  overflow: hidden;
+}
+
+.legalHero {
+  align-items: center;
+  background:
+    radial-gradient(circle at 80% 24%, rgba(197, 99, 183, 0.18), transparent 24%),
+    linear-gradient(180deg, rgba(2, 15, 15, 0.48), rgba(1, 64, 71, 0.82)),
+    url("/assets/hero-midnight-garden.png");
+  background-position: center 45%;
+  background-size: cover;
+  border-bottom: 1px solid rgba(231, 167, 103, 0.58);
+  display: grid;
+  min-height: clamp(270px, 30vw, 420px);
+  overflow: hidden;
+  padding: clamp(70px, 8vw, 118px) clamp(18px, 5vw, 72px);
+  position: relative;
+  text-align: center;
+}
+
+.legalHero::after {
+  background: linear-gradient(180deg, transparent, rgba(2, 15, 15, 0.18));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.heroBloom {
+  bottom: -70px;
+  height: auto;
+  left: clamp(-82px, -3vw, -22px);
+  opacity: 0.62;
+  pointer-events: none;
+  position: absolute;
+  width: clamp(260px, 28vw, 470px);
+  z-index: 1;
+}
+
+.heroContent {
+  margin: 0 auto;
+  max-width: 860px;
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  color: var(--pollen-gold);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.legalHero h1 {
+  color: var(--moon-cream);
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(4rem, 8vw, 7.4rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 0.88;
+  margin: 12px 0 0;
+  text-shadow: 0 16px 46px rgba(0, 0, 0, 0.26);
+}
+
+.legalHero p:not(.eyebrow) {
+  color: rgba(249, 241, 228, 0.92);
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  line-height: 1.65;
+  margin: 18px auto 0;
+  max-width: 650px;
+}
+
+.contentShell {
+  margin: 0 auto;
+  max-width: 1040px;
+  padding: clamp(46px, 7vw, 90px) clamp(18px, 5vw, 72px);
+}
+
+.legalCard {
+  background:
+    radial-gradient(circle at 92% 10%, rgba(231, 167, 103, 0.12), transparent 28%),
+    rgba(255, 253, 248, 0.72);
+  border: 1px solid rgba(38, 27, 34, 0.13);
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(70, 4, 60, 0.08);
+  display: grid;
+  gap: 28px;
+  padding: clamp(28px, 5vw, 58px);
+}
+
+.updated {
+  color: #b66f24;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.legalCard section {
+  border-top: 1px solid rgba(231, 167, 103, 0.34);
+  padding-top: 26px;
+}
+
+.legalCard section:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.legalCard h2 {
+  color: #061d20;
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.legalCard p,
+.legalCard li {
+  color: rgba(38, 27, 34, 0.76);
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  line-height: 1.72;
+}
+
+.legalCard p {
+  margin: 14px 0 0;
+}
+
+.legalCard ul {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+.legalCard li {
+  padding-left: 24px;
+  position: relative;
+}
+
+.legalCard li::before {
+  color: var(--pollen-gold);
+  content: "✦";
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.legalCard a {
+  color: #014047;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(231, 167, 103, 0.7);
+  text-underline-offset: 0.22em;
+}
+
+.plainNote {
+  background: rgba(1, 64, 71, 0.08);
+  border: 1px solid rgba(1, 64, 71, 0.12);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+@media (max-width: 680px) {
+  .legalHero h1 {
+    font-size: clamp(3.4rem, 17vw, 5.1rem);
+  }
+
+  .heroBloom {
+    opacity: 0.38;
+  }
+}

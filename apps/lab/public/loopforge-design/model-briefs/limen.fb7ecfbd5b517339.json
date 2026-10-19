@@ -1,0 +1,510 @@
+{
+  "id": "limen",
+  "name": "LIMEN",
+  "subtitle": "Security chief · body + emitter",
+  "revision": "A-pose reference kit · 19 October 2026 / accepted body v2",
+  "status": "Prototype available",
+  "summary": "Rebuild inputs are ready: front, rear and side A-pose renders of the accepted body with pale-steel armour and deep teal-cyan optics. The approved Set 1 concept sheet and separate protocol clipboard are included for identity and equipment review.",
+  "provenance": "The three A-pose body inputs are matching orthographic renders of the accepted v2 model, using the same approved pale-steel treatment as the animation viewer. They are reconstructed references, not recovered historical upload images. The Set 1 concept sheet and separate horizontal clipboard remain unchanged; the clipboard has no 3D model yet.",
+  "viewer": "/stepanoskin/loopforge/play/agent-test/limen",
+  "viewerLabel": "Inspect body, emitter and energy",
+  "record": "/loopforge-design/production/LIMEN_MESHY_REVIEW.md",
+  "parts": [
+    "Body v2: 42,354 triangles / 23-joint source rig",
+    "Separate emitter: 4,994-triangle runtime housing",
+    "Living cyan blade: procedural effect, not a Meshy model"
+  ],
+  "remaining": [
+    "Finger articulation and rigid armour weights",
+    "Worker/machine contact and blended-motion clearance",
+    "Crowd and physical-device performance"
+  ],
+  "images": [
+    {
+      "label": "Front · neutral A-pose",
+      "role": "Body input — primary view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+      "sourceName": "limen-apose-front.png",
+      "sourceSha256": "bacacee78badb7acb7746e84affa3584c16d0425b77b9649755c93d256488480",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-apose-front.4fc2463b7a7d9fd9.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 244447,
+        "sha256": "4fc2463b7a7d9fd90ab1f3f1ce5bd32b4a2daf79f036ffcc24cb9f637775a1b9"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-front-360.4f7f181953e99462.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 12250,
+          "sha256": "4f7f181953e99462d096841cc1c968e766214e5153c378ca9ef5610da7486371"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-front-720.0c0237fbf547c2de.webp",
+          "width": 720,
+          "height": 960,
+          "bytes": 41882,
+          "sha256": "0c0237fbf547c2de0289959890537ff40bc64f5b28361e57572dc541d499b9a4"
+        }
+      ],
+      "archivePath": "images/limen-apose-front.4fc2463b7a7d9fd9.jpg"
+    },
+    {
+      "label": "Back · neutral A-pose",
+      "role": "Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+      "sourceName": "limen-apose-back.png",
+      "sourceSha256": "b9e314dd1ddbf440b6cdf99b9f36343b384cf73f2e77207b404d4abc20a80326",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-apose-back.bb4a9c92de353af3.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 243273,
+        "sha256": "bb4a9c92de353af361d62b2375be2cdc1d5782f792b1cab7ccb0495a7653cd49"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-back-360.634b67b2c9f9481f.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 12050,
+          "sha256": "634b67b2c9f9481f28073619ec7e502a6db05edf6fe8ab420a65455f75f05d9d"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-back-720.50265f911269aafa.webp",
+          "width": 720,
+          "height": 960,
+          "bytes": 41032,
+          "sha256": "50265f911269aafa565eb290f8857ce6a8ec271d3b023000bf5e00c3c64f538d"
+        }
+      ],
+      "archivePath": "images/limen-apose-back.bb4a9c92de353af3.jpg"
+    },
+    {
+      "label": "Side · neutral A-pose",
+      "role": "Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+      "sourceName": "limen-apose-side.png",
+      "sourceSha256": "707c899a1dc1606f9259587d66fabc98f99c43390f45b0cf055f8ddc57164a24",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-apose-side.6a1c0f61c950cbfa.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 149098,
+        "sha256": "6a1c0f61c950cbfa3fa8101930b98f7c4f79ad8926a7e306312502904909ba2d"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-side-360.95be6cff312d14e9.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 6884,
+          "sha256": "95be6cff312d14e9a0a09e3ae1146c23089bdf68ac2334210d122b6a7b6c4e5b"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-side-720.14ddfc852d15d84e.webp",
+          "width": 720,
+          "height": 960,
+          "bytes": 23248,
+          "sha256": "14ddfc852d15d84e34827265664d412fa939c88753313341de2215d3d2b0d273"
+        }
+      ],
+      "archivePath": "images/limen-apose-side.6a1c0f61c950cbfa.jpg"
+    },
+    {
+      "label": "LIMEN · pale steel / Set 1 revision",
+      "role": "Reference only — approved Set 1 identity and palette, with one protocol clipboard. Use the three isolated A-pose body images for generation.",
+      "sourceName": "limen-character-sheet-protocol-v2.png",
+      "sourceSha256": "3c543c780503b0d20844e866a26d8885536bf4468c4b5f218b61e2817dd90edc",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 626054,
+        "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-360.bed8d640e2977d5b.webp",
+          "width": 360,
+          "height": 240,
+          "bytes": 23442,
+          "sha256": "bed8d640e2977d5b9ad0ff8c5a634ac5f725624191da30d609adf7d0aa0e1f11"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-720.a426cbb598560982.webp",
+          "width": 720,
+          "height": 480,
+          "bytes": 79716,
+          "sha256": "a426cbb59856098251c14b628f74e56297bf907d9c3b3af3fd65e393c918f169"
+        }
+      ],
+      "archivePath": "images/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg"
+    },
+    {
+      "label": "Protocol clipboard · horizontal overlay",
+      "role": "Equipment concept — weathered steel clipboard and paper protocols, seen at a low oblique angle. Transparent cutout; no 3D model yet.",
+      "sourceName": "limen-protocol-clipboard-horizontal-v2.png",
+      "sourceSha256": "ae963c310b7fde955536c6f1b248a8169a63f924d7ca555488906488cab7acd3",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+        "width": 1895,
+        "height": 621,
+        "bytes": 410092,
+        "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-360.895b5e8658485e3e.webp",
+          "width": 360,
+          "height": 118,
+          "bytes": 16558,
+          "sha256": "895b5e8658485e3e96c65a80e52ab1744e6976c304af0e7a749f3f9bd6772c47"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-720.4c95571a1fef1887.webp",
+          "width": 720,
+          "height": 236,
+          "bytes": 55366,
+          "sha256": "4c95571a1fef18873d20afa776ed58366171a005696d9d3ea218613eeaf40b2c"
+        }
+      ],
+      "archivePath": "images/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Body rebuild",
+      "file": "limen/01-body-rebuild.txt",
+      "text": "LIMEN — accepted v2 body rebuild specification, A-pose references added 19 October 2026.\nThis is a reusable brief, not a transcript of the original Meshy task. Attach the three supplied body images whose filenames start limen-apose-front, limen-apose-back and limen-apose-side as views of ONE character. Use front as the primary input and rear/side as supporting views. They are orthographic renders of the same accepted v2 body in its neutral A-pose, with identical framing and the approved pale-steel palette. Preserve these proportions and construction. The Set 1 character concept sheet is reference only for identity/material intent; do not upload its multi-character collage as the body or combine the separate clipboard with it.\n\nCreate LIMEN, Loopforge's security chief: broad heavy worn industrial armour, recognizable helmet and cyan optics, dark mechanical joints, legible chest insignia and robust planted feet. Preserve the original Set 1 skull face, armour anatomy and silhouette. Follow the owner-approved 19 October concept palette: pale steel armour (direction #AAB9BD), dark mechanical recesses, deeper saturated teal-cyan optics and energy. No machine gun. The horizontal protocol clipboard shown beside the body is a separate equipment concept: do not fuse it into the body. Neutral symmetric A-pose, hands clear of torso, two separated legs. Full humanoid body with useful hands. No blade or energy fused to the body, hand, leg or torso.\n\nKeep high-detail master separately. Produce a roughly 41–43k-triangle delivery candidate without losing helmet, joints, hands or silhouette. The accepted v2 had 42,354 triangles; a new generation need not reproduce its topology. Preserve available PBR texture maps; target 2K working maps and no baked glow halo. Do not claim maps, rigid weights or finger bones that are absent.\n\nExport unrigged neutral GLB and editable FBX. Inspect front/back/profile before rigging. Retain the exact accepted source if shape changes are unnecessary: animation cleanup alone is not a reason to regenerate the body.\n",
+      "url": "/loopforge-design/model-briefs/limen-01-body-rebuild.5e99585e0f3bb562.txt"
+    },
+    {
+      "title": "Emitter rebuild",
+      "file": "limen/02-emitter-rebuild.txt",
+      "text": "LIMEN — separate rigid forearm emitter\nUse the accepted body and original cyan blade reference. Generate the physical emitter housing and forearm mounting collar as ONE rigid separate accessory, with its longitudinal axis and mounting end clearly identified. Do not generate a hand, arm, body, floor or background. The complete source blade may include energy geometry, but our runtime retains the housing and creates the energy procedurally; prefer the physical housing alone for this rebuild.\n\nPreserve dark worn metal, cyan-adjacent accents, engineered vents and attachment details. Target about 5,000 triangles for the delivery housing, keeping the high-resolution master separate. Export textured GLB and editable FBX with actual dimensions, axes and material inventory. No skeleton is required for a rigid attachment.\n\nMounting offsets, scale and handedness will be fitted to LIMEN's right forearm offline. Do not claim clearance from a standalone prop. We will validate walk, run, maintenance idle, blends and worker contacts after assembly.\n\nThe current 672-triangle core and braids, rapid energy flow, independent cyan/jade/blue/violet shifts, flicker/power-down/restart, reduced-effects mode and future sparks are authored in the renderer. Do not bake those effects into a heavy Meshy mesh.\n",
+      "url": "/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt"
+    },
+    {
+      "title": "Rig and delivery",
+      "file": "limen/03-rig-and-delivery.txt",
+      "text": "Rig the approved blade-free LIMEN body as a humanoid with Mixamo-compatible export naming. Preserve a neutral rigged A-pose and the same mesh/materials for each clip. Include walking and running takes with original names, durations and root travel documented. Export GLB with Rigged Character enabled, embedded textures, and every selected animation; export individual clips if the combined file omits any. Supply FBX for offline cleanup.\n\nThe accepted v2 source has 23 joints and no articulated fingers; do not assume a new rig shares those transforms. Report actual bones, skin weights, maps and embedded clips. Preserve original downloads and source hashes.\n\nThe 11-second emitter-adjustment idle is our offline-authored animation: planted stance, raise emitter, inspect, power down, opposite hand adjusts housing, two restart attempts, reignite, lower arm. It is not a Meshy catalog clip. Refit/rebake it for any changed skeleton or socket. Keep a separate authored derivative and compare against source. Avoid a global arm offset that breaks other motions.\n\nBefore adoption: validate neutral pose, walks/runs, full-cycle blade/body/floor clearance, material appearance, factory CCTV recognition and actual performance. The existing source-specific import recipe and socket calibration are not automatically valid for a regenerated model.\n",
+      "url": "/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt"
+    }
+  ],
+  "files": [
+    {
+      "name": "images/limen-apose-front.4fc2463b7a7d9fd9.jpg",
+      "src": "/media/loopforge-model-briefs/limen-apose-front.4fc2463b7a7d9fd9.jpg",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 244447,
+      "sha256": "4fc2463b7a7d9fd90ab1f3f1ce5bd32b4a2daf79f036ffcc24cb9f637775a1b9"
+    },
+    {
+      "name": "images/limen-apose-back.bb4a9c92de353af3.jpg",
+      "src": "/media/loopforge-model-briefs/limen-apose-back.bb4a9c92de353af3.jpg",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 243273,
+      "sha256": "bb4a9c92de353af361d62b2375be2cdc1d5782f792b1cab7ccb0495a7653cd49"
+    },
+    {
+      "name": "images/limen-apose-side.6a1c0f61c950cbfa.jpg",
+      "src": "/media/loopforge-model-briefs/limen-apose-side.6a1c0f61c950cbfa.jpg",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 149098,
+      "sha256": "6a1c0f61c950cbfa3fa8101930b98f7c4f79ad8926a7e306312502904909ba2d"
+    },
+    {
+      "name": "images/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+      "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 626054,
+      "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
+    },
+    {
+      "name": "images/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+      "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+      "width": 1895,
+      "height": 621,
+      "bytes": 410092,
+      "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
+    },
+    {
+      "name": "prompts/01-body-rebuild.txt",
+      "src": "/loopforge-design/model-briefs/limen-01-body-rebuild.5e99585e0f3bb562.txt",
+      "bytes": 2064,
+      "sha256": "5e99585e0f3bb5627dd67a3e71dd474201f095978ece3999c3c161bb56723e44"
+    },
+    {
+      "name": "prompts/02-emitter-rebuild.txt",
+      "src": "/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt",
+      "bytes": 1303,
+      "sha256": "a184fe1c2f5fab69558ec791dcbdae72c8385a3c8c89d58e5a3373f052c1489f"
+    },
+    {
+      "name": "prompts/03-rig-and-delivery.txt",
+      "src": "/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt",
+      "bytes": 1343,
+      "sha256": "782019332c10aa4c584406b903ec42c0f618e32b82122401d28971acad027016"
+    },
+    {
+      "name": "APOSE_REFERENCES_2026-10-19.json",
+      "src": "/loopforge-design/model-briefs/limen-APOSE_REFERENCES_2026-10-19.a59f2016af2da408.json",
+      "bytes": 5532,
+      "sha256": "a59f2016af2da40836e4e21f962632e07a00fbd797e670efc3aa6da8f6f5510b"
+    },
+    {
+      "name": "CONCEPT_REVISION_2026-10-19.json",
+      "src": "/loopforge-design/model-briefs/limen-CONCEPT_REVISION_2026-10-19.0135e48bcfab11f0.json",
+      "bytes": 11196,
+      "sha256": "0135e48bcfab11f08da57bf1ccfdd39d8abc7c22a9210fd1f2ecbe353e2af44d"
+    },
+    {
+      "name": "README.md",
+      "src": "/loopforge-design/model-briefs/limen-README.3f9878650fa05e22.md",
+      "bytes": 3589,
+      "sha256": "3f9878650fa05e22f839702e4b20764348d54b06b539549a9c8e4fc483a085d8"
+    }
+  ],
+  "downloadBytes": 1697991,
+  "packageManifest": {
+    "schemaVersion": 1,
+    "id": "limen",
+    "revision": "A-pose reference kit · 19 October 2026 / accepted body v2",
+    "provenance": "The three A-pose body inputs are matching orthographic renders of the accepted v2 model, using the same approved pale-steel treatment as the animation viewer. They are reconstructed references, not recovered historical upload images. The Set 1 concept sheet and separate horizontal clipboard remain unchanged; the clipboard has no 3D model yet.",
+    "viewer": "https://www.fruitfulab.net/stepanoskin/loopforge/play/agent-test/limen",
+    "images": [
+      {
+        "label": "Front · neutral A-pose",
+        "role": "Body input — primary view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+        "sourceName": "limen-apose-front.png",
+        "sourceSha256": "bacacee78badb7acb7746e84affa3584c16d0425b77b9649755c93d256488480",
+        "input": {
+          "src": "/media/loopforge-model-briefs/limen-apose-front.4fc2463b7a7d9fd9.jpg",
+          "width": 1200,
+          "height": 1600,
+          "bytes": 244447,
+          "sha256": "4fc2463b7a7d9fd90ab1f3f1ce5bd32b4a2daf79f036ffcc24cb9f637775a1b9"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/limen-apose-front-360.4f7f181953e99462.webp",
+            "width": 360,
+            "height": 480,
+            "bytes": 12250,
+            "sha256": "4f7f181953e99462d096841cc1c968e766214e5153c378ca9ef5610da7486371"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/limen-apose-front-720.0c0237fbf547c2de.webp",
+            "width": 720,
+            "height": 960,
+            "bytes": 41882,
+            "sha256": "0c0237fbf547c2de0289959890537ff40bc64f5b28361e57572dc541d499b9a4"
+          }
+        ],
+        "archivePath": "images/limen-apose-front.4fc2463b7a7d9fd9.jpg"
+      },
+      {
+        "label": "Back · neutral A-pose",
+        "role": "Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+        "sourceName": "limen-apose-back.png",
+        "sourceSha256": "b9e314dd1ddbf440b6cdf99b9f36343b384cf73f2e77207b404d4abc20a80326",
+        "input": {
+          "src": "/media/loopforge-model-briefs/limen-apose-back.bb4a9c92de353af3.jpg",
+          "width": 1200,
+          "height": 1600,
+          "bytes": 243273,
+          "sha256": "bb4a9c92de353af361d62b2375be2cdc1d5782f792b1cab7ccb0495a7653cd49"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/limen-apose-back-360.634b67b2c9f9481f.webp",
+            "width": 360,
+            "height": 480,
+            "bytes": 12050,
+            "sha256": "634b67b2c9f9481f28073619ec7e502a6db05edf6fe8ab420a65455f75f05d9d"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/limen-apose-back-720.50265f911269aafa.webp",
+            "width": 720,
+            "height": 960,
+            "bytes": 41032,
+            "sha256": "50265f911269aafa565eb290f8857ce6a8ec271d3b023000bf5e00c3c64f538d"
+          }
+        ],
+        "archivePath": "images/limen-apose-back.bb4a9c92de353af3.jpg"
+      },
+      {
+        "label": "Side · neutral A-pose",
+        "role": "Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+        "sourceName": "limen-apose-side.png",
+        "sourceSha256": "707c899a1dc1606f9259587d66fabc98f99c43390f45b0cf055f8ddc57164a24",
+        "input": {
+          "src": "/media/loopforge-model-briefs/limen-apose-side.6a1c0f61c950cbfa.jpg",
+          "width": 1200,
+          "height": 1600,
+          "bytes": 149098,
+          "sha256": "6a1c0f61c950cbfa3fa8101930b98f7c4f79ad8926a7e306312502904909ba2d"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/limen-apose-side-360.95be6cff312d14e9.webp",
+            "width": 360,
+            "height": 480,
+            "bytes": 6884,
+            "sha256": "95be6cff312d14e9a0a09e3ae1146c23089bdf68ac2334210d122b6a7b6c4e5b"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/limen-apose-side-720.14ddfc852d15d84e.webp",
+            "width": 720,
+            "height": 960,
+            "bytes": 23248,
+            "sha256": "14ddfc852d15d84e34827265664d412fa939c88753313341de2215d3d2b0d273"
+          }
+        ],
+        "archivePath": "images/limen-apose-side.6a1c0f61c950cbfa.jpg"
+      },
+      {
+        "label": "LIMEN · pale steel / Set 1 revision",
+        "role": "Reference only — approved Set 1 identity and palette, with one protocol clipboard. Use the three isolated A-pose body images for generation.",
+        "sourceName": "limen-character-sheet-protocol-v2.png",
+        "sourceSha256": "3c543c780503b0d20844e866a26d8885536bf4468c4b5f218b61e2817dd90edc",
+        "input": {
+          "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 626054,
+          "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-360.bed8d640e2977d5b.webp",
+            "width": 360,
+            "height": 240,
+            "bytes": 23442,
+            "sha256": "bed8d640e2977d5b9ad0ff8c5a634ac5f725624191da30d609adf7d0aa0e1f11"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-720.a426cbb598560982.webp",
+            "width": 720,
+            "height": 480,
+            "bytes": 79716,
+            "sha256": "a426cbb59856098251c14b628f74e56297bf907d9c3b3af3fd65e393c918f169"
+          }
+        ],
+        "archivePath": "images/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg"
+      },
+      {
+        "label": "Protocol clipboard · horizontal overlay",
+        "role": "Equipment concept — weathered steel clipboard and paper protocols, seen at a low oblique angle. Transparent cutout; no 3D model yet.",
+        "sourceName": "limen-protocol-clipboard-horizontal-v2.png",
+        "sourceSha256": "ae963c310b7fde955536c6f1b248a8169a63f924d7ca555488906488cab7acd3",
+        "input": {
+          "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+          "width": 1895,
+          "height": 621,
+          "bytes": 410092,
+          "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-360.895b5e8658485e3e.webp",
+            "width": 360,
+            "height": 118,
+            "bytes": 16558,
+            "sha256": "895b5e8658485e3e96c65a80e52ab1744e6976c304af0e7a749f3f9bd6772c47"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-720.4c95571a1fef1887.webp",
+            "width": 720,
+            "height": 236,
+            "bytes": 55366,
+            "sha256": "4c95571a1fef18873d20afa776ed58366171a005696d9d3ea218613eeaf40b2c"
+          }
+        ],
+        "archivePath": "images/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp"
+      }
+    ],
+    "files": [
+      {
+        "name": "images/limen-apose-front.4fc2463b7a7d9fd9.jpg",
+        "src": "/media/loopforge-model-briefs/limen-apose-front.4fc2463b7a7d9fd9.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 244447,
+        "sha256": "4fc2463b7a7d9fd90ab1f3f1ce5bd32b4a2daf79f036ffcc24cb9f637775a1b9"
+      },
+      {
+        "name": "images/limen-apose-back.bb4a9c92de353af3.jpg",
+        "src": "/media/loopforge-model-briefs/limen-apose-back.bb4a9c92de353af3.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 243273,
+        "sha256": "bb4a9c92de353af361d62b2375be2cdc1d5782f792b1cab7ccb0495a7653cd49"
+      },
+      {
+        "name": "images/limen-apose-side.6a1c0f61c950cbfa.jpg",
+        "src": "/media/loopforge-model-briefs/limen-apose-side.6a1c0f61c950cbfa.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 149098,
+        "sha256": "6a1c0f61c950cbfa3fa8101930b98f7c4f79ad8926a7e306312502904909ba2d"
+      },
+      {
+        "name": "images/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+        "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 626054,
+        "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
+      },
+      {
+        "name": "images/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+        "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+        "width": 1895,
+        "height": 621,
+        "bytes": 410092,
+        "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
+      },
+      {
+        "name": "prompts/01-body-rebuild.txt",
+        "src": "/loopforge-design/model-briefs/limen-01-body-rebuild.5e99585e0f3bb562.txt",
+        "bytes": 2064,
+        "sha256": "5e99585e0f3bb5627dd67a3e71dd474201f095978ece3999c3c161bb56723e44"
+      },
+      {
+        "name": "prompts/02-emitter-rebuild.txt",
+        "src": "/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt",
+        "bytes": 1303,
+        "sha256": "a184fe1c2f5fab69558ec791dcbdae72c8385a3c8c89d58e5a3373f052c1489f"
+      },
+      {
+        "name": "prompts/03-rig-and-delivery.txt",
+        "src": "/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt",
+        "bytes": 1343,
+        "sha256": "782019332c10aa4c584406b903ec42c0f618e32b82122401d28971acad027016"
+      },
+      {
+        "name": "APOSE_REFERENCES_2026-10-19.json",
+        "src": "/loopforge-design/model-briefs/limen-APOSE_REFERENCES_2026-10-19.a59f2016af2da408.json",
+        "bytes": 5532,
+        "sha256": "a59f2016af2da40836e4e21f962632e07a00fbd797e670efc3aa6da8f6f5510b"
+      },
+      {
+        "name": "CONCEPT_REVISION_2026-10-19.json",
+        "src": "/loopforge-design/model-briefs/limen-CONCEPT_REVISION_2026-10-19.0135e48bcfab11f0.json",
+        "bytes": 11196,
+        "sha256": "0135e48bcfab11f08da57bf1ccfdd39d8abc7c22a9210fd1f2ecbe353e2af44d"
+      },
+      {
+        "name": "README.md",
+        "src": "/loopforge-design/model-briefs/limen-README.3f9878650fa05e22.md",
+        "bytes": 3589,
+        "sha256": "3f9878650fa05e22f839702e4b20764348d54b06b539549a9c8e4fc483a085d8"
+      }
+    ]
+  }
+}

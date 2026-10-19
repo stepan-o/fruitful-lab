@@ -100,3 +100,4 @@ Validation for the core-loop study: all nine patterns, five figures and five arc
 cast treatments and one comparison before remodelling. Current model players
 follow; scene integration, test procedures and concept galleries are disclosures.
 Detailed acceptance requirements remain in the linked production standard.
+The Agents tab is second in the deck, immediately after Player desires & scenarios.

@@ -85,6 +85,7 @@ export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTM
    applyLight(t.neutralLight);
    for(const [i,p] of workerMaterials){p.set(t.worker,t.workerPaint);p.colour.scaleInPlace([.72,1,1.28][i]);}
    limen!.palette(s.original?'source':'approved');
+   stiletto!.palette(s.original?'source':'approved');
    for(const p of limenBody.plugins)p.set(t.limen,t.limenPaint);
    for(const p of stilettoBody.plugins)p.set(t.stiletto,t.stilettoPaint);
    [limenBody,stilettoBody].forEach((body,i)=>{

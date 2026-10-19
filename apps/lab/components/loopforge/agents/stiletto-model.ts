@@ -12,6 +12,8 @@ import manifest from '@/lib/assets/generated/loopforge-stiletto-review.json';
 import review from '@/lib/loopforge/agents/stiletto-review.json';
 import modules from '@/lib/assets/generated/loopforge-character-modules.json';
 import {createWelderFlame} from './welder-flame';
+import {ReadabilityMaterial} from './readability-material';
+import {STILETTO_PALETTE,type StilettoPalette} from '@/lib/loopforge/agents/stiletto-palette';
 import {createFaceEmission} from './character-emission';
 import type {Mesh} from '@babylonjs/core/Meshes/mesh';
 export type StilettoTools='both'|'left'|'right'|'none'|'welders'|'blade-welder'|'welder-blade';
@@ -49,6 +51,17 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
   meshes.forEach(m=>{m.isPickable=false;m.receiveShadows=true;m.alwaysSelectAsActiveMesh=true;shadow.addShadowCaster(m);});
   fill=new DirectionalLight('Stiletto inspection lamp',new Vector3(.25,-.5,1),scene);fill.diffuse=new Color3(.82,.9,1);fill.intensity=2.5;fill.includedOnlyMeshes=meshes;fill.renderPriority=5;
   const appearance=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{m.maxSimultaneousLights=6;return {m,texture:m.albedoTexture,mr:m.metallicTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness};});
+  // Classify the original body vertices, before skinning. The enamel follows the
+  // shoulders through animation, regardless of the skinned mesh node's axis basis.
+  const positions=body.getVerticesData('position');
+  if(!(body.material instanceof PBRMaterial)||!positions)throw Error('STILETTO body material or bind positions missing.');
+  let minY=Infinity,maxY=-Infinity;
+  for(let i=1;i<positions.length;i+=3){minY=Math.min(minY,positions[i]);maxY=Math.max(maxY,positions[i]);}
+  const paint=new ReadabilityMaterial(body.material);
+  paint.kind=2;paint.minY=minY;paint.height=maxY-minY;
+  const palettePlugins=[paint];let palette:StilettoPalette='approved';
+  function applyPalette(){paint.set(STILETTO_PALETTE.accent,palette==='approved'&&appearanceMode!=='clay'?STILETTO_PALETTE.strength:0);stage.refresh();}
+  applyPalette();
   let group=container.animationGroups.find(g=>g.name==='Running__corrected')!,phase=.2/review.clips.find(c=>c.id==='Running')!.duration,playing=false,speed=1,loop=true,centred=true,last=performance.now(),notifyAt=0,disposed=false;
   const anchor=new Vector3();
   function sample(){
@@ -77,7 +90,7 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
     container.meshes.find(m=>m.name===side+'Blade')?.setEnabled(blade);welders[index]?.setEnabled(welder);flames[index]?.enabled(welder&&flameEnabled);
    }stage.refresh(true);
   }
-  function surface(value:StilettoSurface){appearanceMode=value;for(const {m,texture,mr,color,metallic,roughness} of appearance){m.albedoTexture=value==='clay'?null:texture;m.metallicTexture=value==='clay'?null:mr;m.albedoColor=value==='clay'?new Color3(.4,.43,.42):color;m.metallic=value==='clay'?0:metallic;m.roughness=value==='clay'?.85:roughness;m.wireframe=value==='wireframe';}stage.refresh(true);}
+  function surface(value:StilettoSurface){appearanceMode=value;for(const {m,texture,mr,color,metallic,roughness} of appearance){m.albedoTexture=value==='clay'?null:texture;m.metallicTexture=value==='clay'?null:mr;m.albedoColor=value==='clay'?new Color3(.4,.43,.42):color;m.metallic=value==='clay'?0:metallic;m.roughness=value==='clay'?.85:roughness;m.wireframe=value==='wireframe';}applyPalette();stage.refresh(true);}
   function highlight(value:boolean){highlighted=value;for(const {m} of appearance)if(m.name==='blade'||m.name==='welder')m.emissiveColor=value?new Color3(.45,.09,.025):Color3.Black();stage.refresh();}
   async function loadWelders(){
    const integrity='sha256-'+btoa(String.fromCharCode(...welderFile.sha256.match(/../g)!.map(x=>parseInt(x,16))));
@@ -101,7 +114,8 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
   }
 
   return {
-   presentation:{root,bodyMeshes:container.meshes.filter(m=>m.name==='char1')},
+   presentation:{root,bodyMeshes:container.meshes.filter(m=>m.name==='char1'),palettePlugins},
+   palette(value:StilettoPalette){palette=value;applyPalette();},
    place(x:number,y:number,z:number,yaw:number){anchor.set(x,y,z);root.rotation.y=Math.PI+yaw*Math.PI/180;sample();},
    duration,
    clip(value:string,keepPhase=false){playing=false;if(!keepPhase)phase=0;for(const {n,p,r,s} of neutral){n.position.copyFrom(p);n.rotationQuaternion=r.clone();n.scaling.copyFrom(s);}const selected=container.animationGroups.find(g=>g.name===value);if(!selected)throw Error(`Missing STILETTO motion: ${value}`);group=selected;sample();onFrame(phase,false);},

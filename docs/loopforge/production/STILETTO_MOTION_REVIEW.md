@@ -130,3 +130,23 @@ Validation: optimized production build, TypeScript, scoped ESLint and existing c
 Owner review found the horizontal emission above the actual eye slit. Visor v3 lowers it onto the helmet's eye-level cut and follows its steeper inward slope. The descending seam now starts at that exact centre intersection instead of extending above the horizontal light. This changes only the fitted overlay coordinates; the body, materials, rig, animations and effect budget are unchanged.
 
 Validation: optimized build, TypeScript, scoped ESLint and existing asset/character checks passed. Neutral front, three-quarter and profile inspection confirms the horizontal light follows the lower eye opening. Running at 0.20 s retains that fit and the connected centre seam. No browser console errors were observed.
+
+## Approved shoulder palette — 19 October 2026
+
+The shared animated STILETTO now defaults to the approved comparison-studio
+shoulder/upper-torso enamel: `#C5443C` at 91% strength. Black chrome, texture wear,
+normal detail, the eye-level red visor and both module types remain. The mask
+uses original body-vertex height before skinning, so it follows the shoulders
+through movement. It is the same approximate band used in the static comparison,
+not a newly authored armour UV mask.
+
+The motion viewer offers approved/source colour comparison. Pose links and
+downloaded evidence record that selection. Clay inspection bypasses the colour
+treatment; textured and wireframe modes restore the selected palette. The static
+studio reuses this body plugin, retaining its own colour/strength controls and
+an exact source-colour mode without stacking a second treatment.
+
+The immutable GLB, animation curves, rig, character size, blade/welder fit and
+effect settings are unchanged. No extra geometry, texture maps, lights or draw
+calls are introduced. Source GLB downloads retain the original colours. New
+blade silhouette design and authored paint masks remain separate asset work.

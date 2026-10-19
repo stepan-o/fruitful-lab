@@ -3,7 +3,7 @@ import {PBRMaterial} from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import type {UniformBuffer} from '@babylonjs/core/Materials/uniformBuffer';
 import {LIMEN_PALETTE} from '@/lib/loopforge/agents/limen-palette';
 import {Color3} from '@babylonjs/core/Maths/math.color';
-/** Shared paint treatment for cast studies and the approved LIMEN palette: preserves the original texture and normal maps.
+/** Shared paint treatment for cast studies and the approved cast palettes: preserves the original texture and normal maps.
  * The shoulder band is a bind-space study, not a production armour UV mask. */
 export class ReadabilityMaterial extends MaterialPluginBase {
  colour=Color3.White();accent=Color3.FromHexString(LIMEN_PALETTE.accent).toLinearSpace();strength=0;detail=1;kind=0;minY=0;height=1;

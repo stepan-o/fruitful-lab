@@ -54,7 +54,7 @@ type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
 const C = (hex: string) => Color3.FromHexString(hex);
 
-export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void, options: {reviewOnly?:boolean; renderSize?:readonly [number,number]; graphics?:GraphicsSettings; context?:GraphicsContext; uncapped?:boolean; onFrame?:(frame:GraphicsFrame)=>void} = {}): FactoryScene {
+export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneReport) => void, selectZone: (zone: ZoneId) => void, options: {sourcePalette?:boolean;reviewOnly?:boolean; renderSize?:readonly [number,number]; graphics?:GraphicsSettings; context?:GraphicsContext; uncapped?:boolean; onFrame?:(frame:GraphicsFrame)=>void} = {}): FactoryScene {
   const engine = new Engine(canvas, false, { stencil: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
   const scene = new Scene(engine);
   const instrumentation=new SceneInstrumentation(scene);
@@ -196,7 +196,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
     const plane=MeshBuilder.CreatePlane(text,{width,height:.64},scene);finish(plane,m,[pos[0],pos[1],pos[2]-.046],parent);
   }
   const workshop = { box, pipe, cylinder, sphere, ring, bar, sign, iron, dark, brass, copper, green, floorMat, amber, quiet, cyan, ridge };
-  const floor = buildFloor(scene, workshop,options.reviewOnly?["security","conveyor"]:undefined);
+  const floor = buildFloor(scene, workshop,options.reviewOnly?["security","conveyor"]:undefined,options.sourcePalette);
   const equipment = buildEquipment(scene, workshop,options.reviewOnly?["security","conveyor"]:undefined);
   const lobby = options.reviewOnly ? {roots:[] as TransformNode[],feeder(){},finalize(){},animate(){}} : buildLobby(scene, workshop);
   lobby.feeder(false);

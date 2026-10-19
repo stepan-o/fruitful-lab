@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import {changeReadabilityRoom} from '@/lib/loopforge/readability/room-settings';
 import {useEffect,useRef,useState} from 'react';
 import {READABILITY_DEFAULT,parseReadability,type ReadabilitySettings} from '@/lib/loopforge/readability/settings';
 import type {createReadabilityScene} from './readability-scene';
@@ -30,7 +31,7 @@ export default function ReadabilityStudio(){
   return()=>{alive=false;abort.abort();clearTimeout(metricsTimer);runtime.current=null;owned?.dispose();};
  },[retry]);
  useEffect(()=>{if(!hydrated)return;latest.current=settings;runtime.current?.update(settings);try{localStorage.setItem(STORAGE,JSON.stringify(settings));}catch{/* Storage is optional. */}},[settings,hydrated]);
- function change(patch:Partial<ReadabilitySettings>,appearance=false){setSettings(s=>({...s,...patch,...(appearance?{original:false}:{})}));}
+ function change(patch:Partial<ReadabilitySettings>,appearance=false){setSettings(s=>changeReadabilityRoom(s,{...patch,...(appearance?{original:false}:{})}));}
  async function capture(pin=false){const r=runtime.current;if(!r)return;setSaving(true);setStatus('');try{const src=await r.capture();const label=`${settings.original?'Original':'Treatment'} · ${settings.room} · ${settings.camera}`;if(pin){setPinned({src,label});setStatus('Reference pinned below. It stays fixed while you adjust the live shot.');}else{saveUrl(src,`loopforge-cast-${settings.room}-${settings.original?'original':'treatment'}-${settings.size}.png`);setStatus('Clean shot saved. Names and bubbles are excluded.');}}catch(e){setStatus(e instanceof Error?e.message:'Could not save shot.');}finally{setSaving(false);}}
  function saveSettings(){const r=runtime.current;if(!r)return;const url=URL.createObjectURL(new Blob([JSON.stringify(r.evidence(),null,2)],{type:'application/json'}));saveUrl(url,'loopforge-readability-settings.json');setTimeout(()=>URL.revokeObjectURL(url),1000);setStatus('Settings and asset references saved.');}
  return <main className={styles.page}>
@@ -62,7 +63,7 @@ export default function ReadabilityStudio(){
      <img src={pinned.src} alt={pinned.label+' pinned reference'} width={1280} height={720}/><figcaption>{pinned.label}<button onClick={()=>setPinned(null)}>Remove reference</button></figcaption>
     </figure>}
     <p className={styles.note}>Poses stay fixed. Changes redraw the same scene; nothing plays in the background. Console mode renders at its actual 320 × 180 size.</p>
-    <details className={styles.details}><summary>What this study establishes</summary><p>This auditions colour, size and background separation using the accepted models. Paint follows approximate texture brightness and body regions; final armour masks still need authoring. LIMEN’s steel/cyan and STILETTO’s black/red are owner-approved. CATHEXIS’s ivory is a candidate; it targets pale cloth and porcelain while retaining the source gold and dark mechanisms.</p><p>Supervisor height is measured against the worker’s neutral foot-to-skull body height. Crowns and tools are excluded. CATHEXIS’s scalp height uses an approximate fitting landmark, and Grace keeps its accepted porcelain finish.</p><p>{metrics?`${metrics.drawCalls} draw calls · ${metrics.triangles.toLocaleString()} visible triangles.`:'Preparing renderer details.'} Still frames do not establish animation performance or prove recognition. <Link href='/stepanoskin/loopforge/play/performance-lab'>Performance lab →</Link></p></details>
+    <details className={styles.details}><summary>What this study establishes</summary><p>This auditions colour, size and background separation using the accepted models. Paint follows approximate texture brightness and body regions; final armour masks still need authoring. LIMEN’s steel/cyan and STILETTO’s black/red are owner-approved. CATHEXIS’s ivory, 100% paint and 1.3× worker height are owner-approved. Paint targets pale cloth and porcelain while retaining the source gold and dark mechanisms.</p><p>Supervisor height is measured against the worker’s neutral foot-to-skull body height. Crowns and tools are excluded. CATHEXIS’s scalp height uses an approximate fitting landmark, and Grace keeps its accepted porcelain finish.</p><p>{metrics?`${metrics.drawCalls} draw calls · ${metrics.triangles.toLocaleString()} visible triangles.`:'Preparing renderer details.'} Still frames do not establish animation performance or prove recognition. <Link href='/stepanoskin/loopforge/play/performance-lab'>Performance lab →</Link></p></details>
    </section>
    <aside className={styles.controls} aria-label='Appearance settings'>
     <div className={styles.controlsHeading}><h2>Shape the shot</h2><button disabled={!ready} onClick={()=>{setSettings({...READABILITY_DEFAULT});setStatus('Proposal defaults restored.');}}>Reset</button></div>
@@ -78,7 +79,7 @@ export default function ReadabilityStudio(){
      <div className={styles.divider}/><Colour label='LIMEN steel' value={settings.limen} onChange={limen=>change({limen},true)}/><Range label='LIMEN paint strength' value={settings.limenPaint} onChange={limenPaint=>change({limenPaint},true)}/><Range label='LIMEN height / worker' value={settings.limenHeight} min={1} max={1.5} step={.01} unit='×' onChange={limenHeight=>change({limenHeight},true)}/>
      <div className={styles.divider}/><Colour label='STILETTO shoulder accent' value={settings.stiletto} onChange={stiletto=>change({stiletto},true)}/><Range label='STILETTO accent strength' value={settings.stilettoPaint} onChange={stilettoPaint=>change({stilettoPaint},true)}/><Range label='STILETTO height / worker' value={settings.stilettoHeight} min={1} max={1.5} step={.01} unit='×' onChange={stilettoHeight=>change({stilettoHeight},true)}/>
     </fieldset>
-    <fieldset disabled={!ready}><legend>03 / CATHEXIS · candidate</legend>
+    <fieldset disabled={!ready}><legend>03 / CATHEXIS · approved</legend>
      <label className={styles.check}><input type='checkbox' checked={settings.cathexisVisible} onChange={e=>change({cathexisVisible:e.target.checked})}/>Include CATHEXIS</label>
      <Colour label='CATHEXIS ivory' value={settings.cathexis} onChange={cathexis=>change({cathexis},true)}/>
      <Range label='CATHEXIS paint strength' value={settings.cathexisPaint} onChange={cathexisPaint=>change({cathexisPaint},true)}/>

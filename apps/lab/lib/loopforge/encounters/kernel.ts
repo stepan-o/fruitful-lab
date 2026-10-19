@@ -52,7 +52,7 @@ export function advance(world:World,registry:Registry,space:SpatialServices,plan
   if((d.adjacentRoom&&!space.connected(d.room,d.adjacentRoom,s))||d.participants.some(id=>![d.room,d.adjacentRoom].includes(s.agents[id]?.room))){s=cancel(s,a.intent.id);continue;}
   const t=Math.min(1,(s.tick-a.start)/p.ticks);
   let blocked=false;
-  for(const v of p.perform)if(v.to){const from=a.origins[v.agent],next:readonly[number,number]=[Math.round(from[0]+(v.to[0]-from[0])*t),Math.round(from[1]+(v.to[1]-from[1])*t)];if(!space.canTraverse(s.agents[v.agent],next,s)){blocked=true;break;}s.agents[v.agent].position=next;}
+  for(const v of p.perform)if(v.to){const from=a.origins[v.agent],next:readonly[number,number]=[Math.round(from[0]+(v.to[0]-from[0])*t),Math.round(from[1]+(v.to[1]-from[1])*t)];if(!space.canTraverse(s.agents[v.agent],next,s)){blocked=true;break;}s.agents[v.agent].position=next;const room=space.roomAt?.(next);if(room)s.agents[v.agent].room=room;}
   if(blocked){s=cancel(s,a.intent.id);continue;}
   if(t<1)continue;
   for(const e of p.effects??[]){

@@ -3,7 +3,7 @@ export const ENCOUNTER_VERSION='loopforge-encounters/1';
 export const TICK_MS=50;
 export type Point=readonly [number,number]; // Floor coordinates, millimetres; never renderer coordinates.
 export type Character='worker'|'limen'|'stiletto'|'cathexis';
-export type Motion='idle'|'listen'|'scratch'|'walk'|'threaten'|'settle'|'dismiss';
+export type Motion='idle'|'listen'|'scratch'|'walk'|'threaten'|'settle'|'dismiss'|'guard'|'warn'|'strike'|'recoil'|'limp';
 export type Value=string|number|boolean;
 export type Belief={value:Value;source:string;mode:'observed'|'reported';tick:number};
 export type Agent={id:string;name:string;character:Character;room:ZoneId;position:Point;yaw:number;beliefs:Record<string,Belief>;stress:number;trust:number;memory:string[]};
@@ -20,7 +20,7 @@ export type World={version:typeof ENCOUNTER_VERSION;tick:number;sequence:number;
 /** The planner only proposes. Authority, admission, clock and effects belong to the kernel. */
 export interface Planner { propose(world:Readonly<World>):Intent[] }
 /** A room's path/visibility service. Rehearsals use authored, collision-reviewed lanes. */
-export interface SpatialServices { connected(a:ZoneId,b:ZoneId,world:World):boolean; canTraverse(agent:Agent,to:Point,world:World):boolean; canHear(speaker:Agent,listener:Agent,world:World,channel?:Speech['channel']):boolean }
+export interface SpatialServices { roomAt?(point:Point):ZoneId|undefined; connected(a:ZoneId,b:ZoneId,world:World):boolean; canTraverse(agent:Agent,to:Point,world:World):boolean; canHear(speaker:Agent,listener:Agent,world:World,channel?:Speech['channel']):boolean }
 export type Registry=Record<string,Action>;
 export type ActorView={id:string;name:string;character:Character;position:Point;yaw:number;motion:Motion;seconds:number;action:string};
 export type Bubble={id:string;speaker:string;to:string[];text:string;act:Speech['act']};

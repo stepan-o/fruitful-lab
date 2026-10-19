@@ -27,7 +27,7 @@ function sharedTextureMaterial(source:PBRMaterial,name:string){
 /** Owns one demand-rendered scene. No animation clock, benchmark mutation or simulation writes. */
 export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTMLDivElement[],signal:AbortSignal,publish:(f:GraphicsFrame)=>void,onFaceStatus:(busy:boolean,message:string)=>void=()=>{}){
  const renderSize:[number,number]=[1280,720];
- const floor=createFactoryScene(canvas,()=>{},()=>{},{reviewOnly:true,renderSize,graphics:{...REFERENCE_GRAPHICS,targetFps:30},context:'room',onFrame:publish});
+ const floor=createFactoryScene(canvas,()=>{},()=>{},{reviewOnly:true,sourcePalette:true,renderSize,graphics:{...REFERENCE_GRAPHICS,targetFps:30},context:'room',onFrame:publish});
  const stage=floor.characterStage(),scene=stage.scene,engine=scene.getEngine();
  let crowd:Awaited<ReturnType<typeof loadWorkerCrowd>>|null=null,limen:Awaited<ReturnType<typeof loadLimen>>|null=null,stiletto:Awaited<ReturnType<typeof loadStiletto>>|null=null,cathexis:Awaited<ReturnType<typeof loadCathexisStudy>>|null=null;
  let disposed=false,visible=true;

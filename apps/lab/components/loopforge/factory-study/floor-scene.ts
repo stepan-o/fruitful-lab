@@ -1,3 +1,4 @@
+import {ROOM_FLOORS} from '@/lib/loopforge/rooms/appearance';
 import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
 import { MeshBuilder } from '@babylonjs/core/Meshes/meshBuilder';
@@ -26,7 +27,7 @@ export type WorkshopTools = {
 
 /** Architecture uses metre-scale repetition; increasing tile count does not produce
  * a mesh per tile. Each hall is a cullable, material-batched chunk. */
-export function buildFloor(scene:Scene,t:WorkshopTools,only?:readonly ZoneId[]){
+export function buildFloor(scene:Scene,t:WorkshopTools,only?:readonly ZoneId[],sourcePalette=false){
   const {box,pipe,iron,dark,brass,copper,green,amber,quiet}=t;
 
   const roots:TransformNode[]=[], covers:TransformNode[]=[], shutters:TransformNode[]=[];
@@ -45,6 +46,15 @@ export function buildFloor(scene:Scene,t:WorkshopTools,only?:readonly ZoneId[]){
   for(let i=0;i<3600;i++){const x=(i*197)%1024,y=(i*443)%1024;ctx.fillStyle=i%3?'#10181219':'#c0b89522';ctx.fillRect(x,y,2+i%17,1+i%2);}
   for(let i=0;i<24;i++){const x=(i*191)%1024,y=(i*337)%1024,g=ctx.createRadialGradient(x,y,0,x,y,35+i%40);g.addColorStop(0,'#070e0b50');g.addColorStop(1,'#070e0b00');ctx.fillStyle=g;ctx.fillRect(x-80,y-80,160,160);}
   texture.wrapU=Texture.WRAP_ADDRESSMODE;texture.wrapV=Texture.WRAP_ADDRESSMODE;texture.update();const floorMat=t.floorMat.clone('architectural floor');floorMat.albedoTexture=texture;floorMat.albedoColor=new Color3(.92,.94,.88);floorMat.metallic=.12;floorMat.roughness=.82;floorMat.bumpTexture=null;
+  let securityFloor=floorMat;
+  if(!sourcePalette&&(!only||only.includes('security'))){
+  securityFloor=floorMat.clone('architectural floor');
+  const neutral=new DynamicTexture('Security floor wear',1024,scene,true),nc=neutral.getContext() as CanvasRenderingContext2D;
+  const pixels=ctx.getImageData(0,0,1024,1024);
+  for(let i=0;i<pixels.data.length;i+=4){const shade=Math.min(255,160+pixels.data[i]*1.5);pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=shade;}
+  nc.putImageData(pixels,0,0);neutral.update();neutral.wrapU=Texture.WRAP_ADDRESSMODE;neutral.wrapV=Texture.WRAP_ADDRESSMODE;
+  securityFloor.albedoTexture=neutral;securityFloor.albedoColor=Color3.FromHexString(ROOM_FLOORS.security).toLinearSpace();
+  }
   function stencil(title:string,sub:string,x:number,y:number,w:number,h:number,elevation:number,p:TransformNode,dim=false){
     const tex=new DynamicTexture(title+' stencil',{width:1024,height:256},scene,true),c=tex.getContext() as CanvasRenderingContext2D;
     c.clearRect(0,0,1024,256);c.textAlign='center';c.fillStyle=dim?'#9f9c86':'#d0bd88';c.font='bold 80px Georgia';c.fillText(title,512,115,950);c.font='26px monospace';c.fillStyle='#8ba494';c.fillText(sub,512,190,950);
@@ -80,7 +90,7 @@ export function buildFloor(scene:Scene,t:WorkshopTools,only?:readonly ZoneId[]){
     }
   }
   for(const z of ZONES.filter(z=>!only||only.includes(z.id))){const r=z.rect,x=r.x+r.w/2,y=r.y+r.h/2,p=parent(z.id+' architecture');
-    const slab=box('continuous slab',[r.w,.4,r.h],at(x,y,-.22),floorMat,p),uv=slab.getVerticesData('uv');if(uv){for(let i=0;i<uv.length;i+=2){uv[i]*=r.w/4;uv[i+1]*=r.h/4;}slab.setVerticesData('uv',uv);}
+    const slab=box('continuous slab',[r.w,.4,r.h],at(x,y,-.22),z.id==='security'&&!sourcePalette?securityFloor:floorMat,p),uv=slab.getVerticesData('uv');if(uv){for(let i=0;i<uv.length;i+=2){uv[i]*=r.w/4;uv[i+1]*=r.h/4;}slab.setVerticesData('uv',uv);}
     // Perimeter trench and metre-scaled drain grilles make worker scale legible.
     for(let tx=r.x+2;tx<r.x+r.w-1;tx+=3){box('service trench',[2.85,.015,.48],at(tx,r.y+r.h-2,.015),dark,p);for(let i=0;i<10;i++)box('trench grille',[.055,.025,.42],at(tx-1.3+i*.27,r.y+r.h-2,.03),iron,p);}
     for(const side of ['north','south','west','east'] as const){

@@ -1,4 +1,8 @@
 # Cast readability and visual hierarchy
+## Owner decisions — 19 October 2026
+
+CATHEXIS is accepted at 100% ivory paint strength and 1.3× worker neutral-body height. No further model or palette redesign is requested. Security floor is `#A7B2D3`; Lobby/Conveyor retain `#666860`. Per-room floor choices are independent in the comparison studio. This supersedes earlier candidate language below for CATHEXIS. The [Day-one arrival rehearsal](DAY_ONE_ARRIVAL.md) applies the room palette and approved worker/LIMEN colours; it does not introduce CATHEXIS before her story arrival.
+
 
 ## Static comparison studio — updated 2026-10-19
 

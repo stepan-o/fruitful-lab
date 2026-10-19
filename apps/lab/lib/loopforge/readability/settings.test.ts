@@ -24,13 +24,22 @@ test('the frozen STILETTO pose exists in the delivered motion bank',()=>{
 
 test('older two-supervisor saves retain their choices and acquire CATHEXIS defaults',()=>{
  const saved=parseReadability({version:1,limenHeight:1.5,stiletto:'#bc3344',stilettoPaint:91,camera:'rear',labels:true});
- expect(saved).toMatchObject({limenHeight:1.5,stiletto:'#bc3344',stilettoPaint:91,camera:'rear',labels:true,cathexis:defaults.cathexis,cathexisHeight:1.22,cathexisVisible:true,cathexisFace:'full'});
+ expect(saved).toMatchObject({limenHeight:1.5,stiletto:'#bc3344',stilettoPaint:91,camera:'rear',labels:true,cathexis:defaults.cathexis,cathexisHeight:1.3,cathexisVisible:true,cathexisFace:'full'});
  const candidate={...saved,cathexis:'#d0c8a4',cathexisPaint:70,cathexisFace:'half-left' as const,cathexisVisible:false};
  expect(parseReadability(JSON.parse(JSON.stringify(candidate)))).toEqual(candidate);
  expect(treatment({...candidate,original:true})).toMatchObject({cathexisPaint:0,cathexisFace:'half-left',cathexisVisible:false});
  expect(candidate.cathexisPaint).toBe(70);
 });
 test('CATHEXIS settings reject unsupported masks, unsafe colour and non-finite dimensions',()=>{
- expect(parseReadability({version:1,cathexis:'red',cathexisHeight:Infinity,cathexisPaint:-20,cathexisFace:'grimace',cathexisVisible:'false'})).toMatchObject({cathexis:defaults.cathexis,cathexisHeight:1.22,cathexisPaint:0,cathexisFace:'full',cathexisVisible:true});
+ expect(parseReadability({version:1,cathexis:'red',cathexisHeight:Infinity,cathexisPaint:-20,cathexisFace:'grimace',cathexisVisible:'false'})).toMatchObject({cathexis:defaults.cathexis,cathexisHeight:1.3,cathexisPaint:0,cathexisFace:'full',cathexisVisible:true});
  expect(parseReadability({version:1,cathexisHeight:9,cathexisPaint:120,cathexisFace:'none'})).toMatchObject({cathexisHeight:1.5,cathexisPaint:100,cathexisFace:'none'});
+});
+
+import {changeReadabilityRoom} from './room-settings';
+test('Security retains its own approved floor when switching rooms and editing conveyor',()=>{
+ const security=changeReadabilityRoom(defaults,{room:'security'});expect(security.floor).toBe('#A7B2D3');
+ const conveyor=changeReadabilityRoom(security,{room:'conveyor'});expect(conveyor.floor).toBe('#666860');
+ const edited=changeReadabilityRoom(conveyor,{floor:'#445566'});expect(changeReadabilityRoom(edited,{room:'security'}).floor).toBe('#A7B2D3');
+ expect(changeReadabilityRoom(changeReadabilityRoom(edited,{room:'security'}),{room:'conveyor'}).floor).toBe('#445566');
+ expect(parseReadability(JSON.parse(JSON.stringify(edited)))).toEqual(edited);
 });

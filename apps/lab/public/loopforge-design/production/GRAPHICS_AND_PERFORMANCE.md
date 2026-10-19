@@ -1,5 +1,7 @@
 # Graphics profiles and controlled performance comparisons
 
+The [static cast-readability studio](/stepanoskin/loopforge/play/readability) auditions room and character treatment with fixed poses, adjustable colour/size and 1280×720 / 320×180 outputs. It reuses the shared factory renderer with a persistent fixed-shot camera and demand rendering. It has no animation playback, FPS acceptance claim or changes to the frozen performance fixture. See [the readability standard](CAST_READABILITY_STANDARD.md#static-comparison-studio--2026-10-18).
+
 18 October 2026. Scope: Fruitful Lab / Loopforge presentation. Gameplay, BDI,
 identity, assignments and action timelines are independent of graphics quality.
 
@@ -59,6 +61,18 @@ configuration and uses the same ten-minute acceptance thresholds. Selected
 resolution is fixed throughout, clearly separate from the historical reference.
 The original recorded HD620 result remains unchanged. See
 [acceptance protocol](FRONTEND_PERFORMANCE_ACCEPTANCE.md).
+
+## Visual acceptance alongside frame time — 18 October 2026
+
+The owner’s crowded-room review shows that the current fixture does not make
+LIMEN and STILETTO reliably distinguishable from the workers. The real models and
+emissive features are loaded, but asset presence is not recognition. The
+[cast readability standard](CAST_READABILITY_STANDARD.md) adds a separate visual
+gate: persistent silhouette/value/equipment cues, event-led attention and
+names/speech-hidden review at actual room-camera sizes across quality settings.
+The current regular crowd and fixed wide cameras remain a load fixture, not
+accepted gameplay staging. A recognition mode and its evidence are pending;
+existing benchmark results and their performance thresholds remain unchanged.
 
 ## Next asset and presentation stages
 

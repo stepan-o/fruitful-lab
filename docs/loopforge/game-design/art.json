@@ -98,18 +98,18 @@
     "pack": "loopforge",
     "variants": [
       {
-        "src": "/media/files/3a38873d5abab52028410258ae10d5a97c8823dc820b99d62f25f6f696f3862e.webp",
+        "src": "/media/files/73b56e3bbf6b870e3e754640d218751766a9ff232f0b8ddc68b98748caba9c38.webp",
         "width": 480,
         "height": 320,
-        "bytes": 45862,
-        "sha256": "3a38873d5abab52028410258ae10d5a97c8823dc820b99d62f25f6f696f3862e"
+        "bytes": 38914,
+        "sha256": "73b56e3bbf6b870e3e754640d218751766a9ff232f0b8ddc68b98748caba9c38"
       },
       {
-        "src": "/media/files/8a79c49780be45958aff19bb43a4eef1ab21515bd5108de1a0fd69ef913a7868.webp",
+        "src": "/media/files/5aa7b216014f69095151ebf169030da6c0ac9c77dd804780faaa0546aeb31eb4.webp",
         "width": 960,
         "height": 640,
-        "bytes": 161810,
-        "sha256": "8a79c49780be45958aff19bb43a4eef1ab21515bd5108de1a0fd69ef913a7868"
+        "bytes": 130468,
+        "sha256": "5aa7b216014f69095151ebf169030da6c0ac9c77dd804780faaa0546aeb31eb4"
       }
     ]
   },

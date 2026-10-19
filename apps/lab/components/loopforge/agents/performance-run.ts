@@ -13,7 +13,7 @@ const lines=[['LIMEN','Papers first. Every worker.'],['STILETTO','My line needs 
 /** Deterministic renderer workload. This fixture does not simulate crowd decisions or pathfinding. */
 export async function createPerformanceRun(canvas:HTMLCanvasElement,bubbles:HTMLDivElement[],signal:AbortSignal,publish:(p:Progress)=>void,graphics:GraphicsSettings=REFERENCE_GRAPHICS){
  const loadingAt=performance.now();let latest:SceneReport|null=null;
- const floor=createFactoryScene(canvas,r=>latest=r,()=>{},{reviewOnly:true,graphics,uncapped:true,context:'room',renderSize:[ACCEPTANCE.width,ACCEPTANCE.height]});
+ const floor=createFactoryScene(canvas,r=>latest=r,()=>{},{reviewOnly:true,sourcePalette:true,graphics,uncapped:true,context:'room',renderSize:[ACCEPTANCE.width,ACCEPTANCE.height]});
  const stage=floor.characterStage(),scene=stage.scene,engine=scene.getEngine();
  let crowd:Awaited<ReturnType<typeof loadWorkerCrowd>>|null=null,limen:Awaited<ReturnType<typeof loadLimen>>|null=null,stiletto:Awaited<ReturnType<typeof loadStiletto>>|null=null;
  try{

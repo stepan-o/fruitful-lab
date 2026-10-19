@@ -47,6 +47,7 @@ def publish_briefs():
 
 def render_model_briefs():
     src=publish_briefs()
-    return '''<header class="section-head"><span class="kicker">Production archive · 14 October 2026</span><h2>Model briefs</h2><p>Reference images, copyable Meshy instructions and the resulting models. Rebuild a character without losing the decisions made after its first export.</p></header>
+    return '''<header class="section-head"><span class="kicker">Production archive · 19 October 2026</span><h2>Model briefs</h2><p>Reference images, copyable Meshy instructions and the resulting models. Rebuild a character without losing the decisions made after its first export.</p></header>
+    <div class="callout"><h3>From readability study to character sheets</h3><p>The selected direction uses blue workers, pale-steel LIMEN and red-accented STILETTO. LIMEN’s kit now includes front, rear and side A-pose body inputs, the Set 1 concept revision and a separate horizontal protocol clipboard. STILETTO and worker concept sheets follow next.</p><p><a href="/stepanoskin/loopforge/design#agents">Review the visual hierarchy →</a> · <a href="/loopforge-design/production/CAST_SHEET_REVISION_BRIEF.md">Character-sheet revision brief ↗</a> · <a href="/loopforge-design/production/CAST_READABILITY_STANDARD.md">Visual hierarchy and acceptance ↗</a></p></div>
     <div id="model-brief-library" data-catalog="'''+src+'''"><p>Choose this tab to load the character briefs.</p></div>
     <noscript><p>The interactive archive needs JavaScript. <a href="/loopforge-design/model-briefs/README.md">Read the library index and download individual briefs.</a></p></noscript>'''

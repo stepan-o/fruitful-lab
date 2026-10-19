@@ -15,7 +15,7 @@ export async function createComparisonRun(canvas:HTMLCanvasElement,bubbles:HTMLD
  let status:ComparisonProgress['state']='ready',index=0,started=0,measuredAt=0,lastPublish=0,segment=-1,poseMs=0,disposed=false,latest:SceneReport|null=null;
  let recorder=createComparisonRecorder(),result:Record<string,unknown>|undefined;
  const rows:ComparisonRow[]=[],loadingAt=performance.now();let nextCase=false;
- const floor=createFactoryScene(canvas,r=>latest=r,()=>{},{reviewOnly:true,renderSize:[COMPARISON.width,COMPARISON.height],graphics:REFERENCE_GRAPHICS,context:'room',uncapped:true,onFrame:record});
+ const floor=createFactoryScene(canvas,r=>latest=r,()=>{},{reviewOnly:true,sourcePalette:true,renderSize:[COMPARISON.width,COMPARISON.height],graphics:REFERENCE_GRAPHICS,context:'room',uncapped:true,onFrame:record});
  const stage=floor.characterStage(),scene=stage.scene,engine=scene.getEngine();
  let crowd:Awaited<ReturnType<typeof loadWorkerCrowd>>|null=null,limen:Awaited<ReturnType<typeof loadLimen>>|null=null,stiletto:Awaited<ReturnType<typeof loadStiletto>>|null=null;
  try{

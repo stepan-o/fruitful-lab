@@ -344,7 +344,7 @@ floor_scale_link='<button class="link-button" data-panel="floor-scale">Factory f
 conveyor+=floor_scale_link
 ui_html+=floor_scale_link
 engine+=floor_scale_link
-panels=[('player-desires','Player desires & scenarios',desires),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('agents','Agents: character & motion',agent_direction),('model-briefs','Model briefs',render_model_briefs()),('floor-scale','Factory floor: scale & feel',floor_scale),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+panels=[('player-desires','Player desires & scenarios',desires),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('floor-scale','Factory floor: scale & feel',floor_scale),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 head=head.replace('</head>','<link rel="stylesheet" href="model-briefs.css?v='+hashlib.sha256((ROOT/'model-briefs.css').read_bytes()).hexdigest()[:12]+'"></head>')
@@ -593,3 +593,17 @@ for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT
 # Current show-production records.
 for name in ['FIRST_FIVE_DAYS_SHOW_PROPOSAL.md','production/SCENE_REHEARSALS.md','production/ROOM_ASSET_BRIEFS.md']:
     (OUT/name).write_text((ROOT.parent/name).read_text())
+
+# Cast recognition is a design requirement, not a claim that the runtime passes.
+readability_record = (ROOT.parent/'production/CAST_READABILITY_STANDARD.md').read_text()
+(OUT/'production/CAST_READABILITY_STANDARD.md').write_text(readability_record)
+for name in ['GAME_DESIGN.md', 'UI_DESIGN.md']:
+    with (OUT/name).open('a') as f:
+        f.write('\n\n' + readability_record)
+(OUT/'production/GRAPHICS_AND_PERFORMANCE.md').write_text((ROOT.parent/'production/GRAPHICS_AND_PERFORMANCE.md').read_text())
+
+sheet_record = (ROOT.parent/'production/CAST_SHEET_REVISION_BRIEF.md').read_text()
+(OUT/'production/CAST_SHEET_REVISION_BRIEF.md').write_text(sheet_record)
+for name in ['GAME_DESIGN.md', 'UI_DESIGN.md']:
+    with (OUT/name).open('a') as f:
+        f.write('\n\n' + sheet_record)

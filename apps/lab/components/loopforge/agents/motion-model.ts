@@ -89,6 +89,8 @@ export async function loadMotionModel(stage:CharacterStage,bank:InspectionMotion
   function room(value:'security'|'conveyor'){const point=value==='security'?[131,122]:[120.8,149.6];anchor.set(...worldPoint(point[0],point[1]));anchor.y=.015;stage.gate(true);sample();}
   root.rotation.y=Math.PI;room('security');select(id,version);
   return {
+   presentation:{root,bodyMeshes:[corrected??source]},
+   place(x:number,y:number,z:number,yaw=180){anchor.set(x,y,z);root.rotation.y=yaw*Math.PI/180;sample();},
    motion:{select,play(value:boolean){if(value&&phase===1)phase=0;playing=value&&!!group;last=performance.now();stage.refresh();},seek(value:number){phase=Math.max(0,Math.min(1,value));sample();},speed(value:number){speed=value;},loop(value:boolean){loop=value;}},
    ground(value:boolean){groundGuide.setEnabled(value);stage.refresh();},
    face:fitted.face,eyes(value:boolean){bodyEyes?.enabled(value);fitted?.eyes(value);},room,turn(degrees:number){root.rotation.y=Math.PI+degrees*Math.PI/180;sample();},

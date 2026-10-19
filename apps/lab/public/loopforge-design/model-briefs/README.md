@@ -4,10 +4,14 @@ Download numbered stages and reference inputs below. For the visual library open
 
 ## LIMEN
 
-Reconstructed rebuild brief from the accepted v2 source, owner instructions and import records. The original Meshy chat prompt and extracted front/back upload images were not recovered; this is not a verbatim historical export.
+The three A-pose body inputs are matching orthographic renders of the accepted v2 model, using the same approved pale-steel treatment as the animation viewer. They are reconstructed references, not recovered historical upload images. The Set 1 concept sheet and separate horizontal clipboard remain unchanged; the clipboard has no 3D model yet.
 
-- [Original character sheet · identity reference](/media/loopforge-model-briefs/limen_character_sheet_2.3555f0a1bcef0f53.jpg) — Reference only — contains multiple views; prepare isolated A-pose inputs before a fresh generation.
-- [Body rebuild](/loopforge-design/model-briefs/limen-01-body-rebuild.ca58c8f0f7c763be.txt)
+- [Front · neutral A-pose](/media/loopforge-model-briefs/limen-apose-front.4fc2463b7a7d9fd9.jpg) — Body input — primary view; same accepted v2 body, Rest pose and approved palette. No equipment attached.
+- [Back · neutral A-pose](/media/loopforge-model-briefs/limen-apose-back.bb4a9c92de353af3.jpg) — Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.
+- [Side · neutral A-pose](/media/loopforge-model-briefs/limen-apose-side.6a1c0f61c950cbfa.jpg) — Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.
+- [LIMEN · pale steel / Set 1 revision](/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg) — Reference only — approved Set 1 identity and palette, with one protocol clipboard. Use the three isolated A-pose body images for generation.
+- [Protocol clipboard · horizontal overlay](/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp) — Equipment concept — weathered steel clipboard and paper protocols, seen at a low oblique angle. Transparent cutout; no 3D model yet.
+- [Body rebuild](/loopforge-design/model-briefs/limen-01-body-rebuild.5e99585e0f3bb562.txt)
 - [Emitter rebuild](/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt)
 - [Rig and delivery](/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt)
 ## Worker 01

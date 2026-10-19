@@ -4,11 +4,21 @@
 
 [Open the scene player](/stepanoskin/loopforge/play/scene-studies). [Five-day direction](../FIRST_FIVE_DAYS_SHOW_PROPOSAL.md). [Room scale and Meshy kits](ROOM_ASSET_BRIEFS.md).
 
+## Readability requirement — 18 October 2026
+
+Apply the [cast readability standard](CAST_READABILITY_STANDARD.md) when composing
+these encounters. Cast identity must survive without dialogue; actor, recipient
+and aftermath must remain visible at actual room scale. A worker can be the focal
+subject. Preserve world position, equipment state and causal timing when choosing
+shots. Existing rehearsal delivery is not an occupied-room recognition pass.
+
 ## What this build proves
 
 The approved cast can perform together under a headless action engine. An authored planner proposes intentions; it cannot move bodies, reserve stations or award results itself. The kernel admits feasible actions, reserves actors and resources atomically, advances phases in 50 ms ticks, commits effects once and releases reservations. Interruption retains already-heard information while cancelling uncommitted effects. Deterministic replay reconstructs any storyboard frame from the same fixture and choice.
 
-Three fixtures are available:
+Four fixtures are available:
+
+- **Stop and wait here:** ten workers arrive through the Lobby, LIMEN blocks Security, one worker receives a baton strike and limps back before the ID instruction. [Opening sequence and Meshy motion requests](DAY_ONE_ARRIVAL.md).
 
 - **Your workers are still here:** day-one STILETTO sees empty workstations, walks to the actual Security–Conveyor portal, calls for her workers and hears LIMEN defend clerical staffing. Each reply requires the preceding attributed report. The producer’s backing changes remembered treatment. STILETTO returns to her still-empty line; this scene does not invent an admission or completed robot.
 - **The name on the list:** a worker reports a clearance mismatch. Verified release and an exception produce different interpretations and trust changes.
@@ -42,13 +52,13 @@ The player projection contains bodies, visible effects and at most two active sp
 
 ## Timing and performance
 
-World time is fixed-step and independent of camera, rendering speed and particles. The client samples accepted clips from action phase time; it does not let an animation callback award production. Room/character modules load on demand. Offscreen/hidden playback pauses; the player begins paused and remains complete with reduced motion. Only the active two-character cast is loaded. No new source GLBs are duplicated by this feature.
+World time is fixed-step and independent of camera, rendering speed and particles. The client samples accepted clips from action phase time; it does not let an animation callback award production. Room/character modules load on demand. Offscreen/hidden playback pauses; the player begins paused and remains complete with reduced motion. Only the active cast is loaded: ten workers sharing source data plus LIMEN for the opening, two characters for the other takes. No new source GLBs are duplicated by this feature.
 
 LIMEN currently listens with the approved emitter idle. The worker’s scratch is an excerpt of the accepted gesture. No hand-to-paper, scanner or cradle contact is claimed. Speech rehearsal must not be mistaken for finished industrial work. Contact clips, blends and floor/prop clearance are explicit acceptance gates before this enters the main play loop.
 
 ## Review protocol
 
-Use the three scene tabs, compare both priorities, pause/scrub and orbit. Capture a storyboard frame and its evidence JSON; the latter preserves the exact tick, camera, projection and author state. Verify cause, reaction and later interpretation from both a readable close composition and the eventual room CCTV view. Camera changes must not alter world state. Check touch/keyboard controls, active cast disposal and loading failures.
+Use the four scene tabs, compare both priorities where offered, pause/scrub and orbit. Capture a storyboard frame and its evidence JSON; the latter preserves the exact tick, camera, projection and author state. Verify cause, reaction and later interpretation from both a readable close composition and the eventual room CCTV view. Camera changes must not alter world state. Check touch/keyboard controls, active cast disposal and loading failures.
 
 Automated coverage includes reservation contention, duplicate admission, cancelled effects, blocked routes, unheard claims, attributed belief versus fact, closed/distant doorway hearing, deterministic outcomes and projection privacy. The first-turn briefing regression confirms both advisers initially propose Security/LIMEN and Conveyor/STILETTO, while an explicit player swap still exercises room-based authority.
 

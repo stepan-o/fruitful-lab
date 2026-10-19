@@ -12,6 +12,7 @@ import ReviewChecklist from './ReviewChecklist';
 import ReviewCameraControls from './ReviewCameraControls';
 import type {FactoryScene,SceneReport} from '../factory-study/scene';
 import type {loadStiletto,StilettoSurface,StilettoTools} from './stiletto-model';
+import {STILETTO_PALETTE,type StilettoPalette} from '@/lib/loopforge/agents/stiletto-palette';
 import styles from './agent-test.module.css';
 import auditStyles from './stiletto-review.module.css';
 type Puppet=Awaited<ReturnType<typeof loadStiletto>>;
@@ -26,6 +27,7 @@ export default function StilettoModelReview(){
  const [id,setId]=useState('Running'),[version,setVersion]=useState<Version>('corrected'),[phase,setPhase]=useState(.2/initial.duration),[speed,setSpeed]=useState(1),[loop,setLoop]=useState(true);
  const [centred,setCentred]=useState(true),[turn,setTurn]=useState(0),[camera,setCamera]=useState<'model'|'cctv'>('model'),[angle,setAngle]=useState(0),[room,setRoom]=useState<'security'|'conveyor'>('security');
  const [surface,setSurface]=useState<StilettoSurface>('textured'),[lamp,setLamp]=useState(true),[blades,setBlades]=useState<StilettoTools>('both'),[highlight,setHighlight]=useState(false),[report,setReport]=useState<SceneReport|null>(null),[showProof,setShowProof]=useState(false);
+ const [palette,setPalette]=useState<StilettoPalette>('approved');
  const [toolsLoading,setToolsLoading]=useState(false),[toolsError,setToolsError]=useState('');
  const [flames,setFlames]=useState(true),[visor,setVisor]=useState(true),[effectsMotion,setEffectsMotion]=useState(true),[portrait,setPortrait]=useState(false);
  useEffect(()=>{runtime.current?.floor.motion(hasWelderTools(blades)&&flames&&effectsMotion&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches);},[ready,blades,flames,effectsMotion]);
@@ -48,6 +50,7 @@ export default function StilettoModelReview(){
    const neutral=requested==='Rest',v=query.get('version')==='original'?'original':'corrected',time=Number(query.get('t')??(start.id==='Running'?.2:0));
    const p=neutral?0:Math.min(1,Math.max(0,(Number.isFinite(time)?time:0)/start.duration));
    const active=neutral?'Rest':start.id;puppet.clip(active+(start.corrected&&v==='corrected'&&!neutral?'__corrected':''));puppet.seek(p);puppet.loop(!neutral&&start.loop);
+   const colours=query.get('palette')==='source'?'source':'approved';puppet.palette(colours);setPalette(colours);
    const requestedTools=query.get('tools');if(['both','left','right','none','welders','blade-welder','welder-blade'].includes(requestedTools??'')){await puppet.tools(requestedTools as StilettoTools);if(!alive)return;setBlades(requestedTools as StilettoTools);}
    setId(active);setVersion(v);setPhase(p);setLoop(!neutral&&start.loop);runtime.current={floor,model:puppet};floor.active(inView);setReady(true);
   }catch(e){if(alive){puppet?.dispose();floor?.dispose();puppet=null;floor=null;runtime.current=null;setError(e instanceof Error?e.message:'Unable to load STILETTO.');}}})();
@@ -60,9 +63,9 @@ export default function StilettoModelReview(){
  function choose(value:string,time=0){play(false);const next=bank.clips.find(c=>c.id===value);const p=next?Math.min(1,Math.max(0,time/next.duration)):0;setId(value);setVersion('corrected');setPhase(p);setLoop(next?.loop??false);runtime.current?.model.loop(next?.loop??false);runtime.current?.model.clip(value+(next?.corrected?'__corrected':''));runtime.current?.model.seek(p);}
  function compare(value:Version){play(false);setVersion(value);runtime.current?.model.clip(id+(correction&&value==='corrected'?'__corrected':''),true);}
  function seek(seconds:number){play(false);const p=duration?Math.min(1,Math.max(0,seconds/duration)):0;setPhase(p);runtime.current?.model.seek(p);}
- function evidence(){const data={revision:bank.revision,file,clip,version:resolvedVersion,seconds:phase*duration,phase,speed,loop,centred,turn,camera,angle,room,surface,lamp,blades,flames,visor,effectsMotion,welder:hasWelders?modules.assets['stiletto-welder'].variants[0]:null,highlight,report,cameraPose:runtime.current?.floor.reviewCamera(),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},auditMethod:bank.auditMethod};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='loopforge-stiletto-review.json';a.click();URL.revokeObjectURL(url);}
- function reset(){setReady(false);setError('');setRunning(false);setSpeed(1);setCentred(true);setTurn(0);setCamera('model');setAngle(0);setRoom('security');setSurface('textured');setLamp(true);setBlades('both');setHighlight(false);setFlames(true);setVisor(true);setEffectsMotion(true);setPortrait(false);setRetry(n=>n+1);}
- const poseLink=`?clip=${encodeURIComponent(id)}&version=${resolvedVersion}&t=${(phase*duration).toFixed(3)}&tools=${blades}`;
+ function evidence(){const data={revision:bank.revision,file,clip,version:resolvedVersion,seconds:phase*duration,phase,speed,loop,centred,turn,camera,angle,room,surface,palette,paletteDefinition:STILETTO_PALETTE,lamp,blades,flames,visor,effectsMotion,welder:hasWelders?modules.assets['stiletto-welder'].variants[0]:null,highlight,report,cameraPose:runtime.current?.floor.reviewCamera(),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},auditMethod:bank.auditMethod};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='loopforge-stiletto-review.json';a.click();URL.revokeObjectURL(url);}
+ function reset(){setReady(false);setError('');setRunning(false);setSpeed(1);setCentred(true);setTurn(0);setCamera('model');setAngle(0);setRoom('security');setSurface('textured');setPalette('approved');setLamp(true);setBlades('both');setHighlight(false);setFlames(true);setVisor(true);setEffectsMotion(true);setPortrait(false);setRetry(n=>n+1);}
+ const poseLink=`?clip=${encodeURIComponent(id)}&version=${resolvedVersion}&t=${(phase*duration).toFixed(3)}&tools=${blades}&palette=${palette}`;
  return <main className={styles.page}>
   <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>STILETTO<span>Forearm modules / motion & clearance review</span></h1></div><Link href='/stepanoskin/loopforge/design#agents'>Game design · Agents ↗</Link></header>
   <ReviewNavigation current='stiletto-blades'/><ReviewChecklist subject='stiletto-blades'/>
@@ -76,6 +79,8 @@ export default function StilettoModelReview(){
    </section>
    <aside className={styles.controls} aria-label='STILETTO review controls'>
     <span className={styles.kicker}>18 source motions / 5 corrected alternatives</span><h2>Inspect the complete character.</h2>
+    <label>Colour palette<select disabled={!ready} value={palette} onChange={e=>{const value=e.target.value as StilettoPalette;setPalette(value);runtime.current?.model.palette(value);}}><option value='approved'>Red shoulders · approved palette</option><option value='source'>Original model colours</option></select></label>
+    <p className={styles.intent}>Red shoulder enamel over black chrome, matching the selected cast comparison.</p>
     <label>Forearm modules<select disabled={!ready||toolsLoading} value={blades} onChange={e=>void chooseTools(e.target.value as StilettoTools)}><option value='both'>Twin blades</option><option value='welders'>Twin welders</option><option value='blade-welder'>Left blade / right welder</option><option value='welder-blade'>Left welder / right blade</option><option value='left'>Left blade only</option><option value='right'>Right blade only</option><option value='none'>Bare sockets</option></select></label>
     {toolsLoading&&<p role='status'>Fitting the welder modules…</p>}{toolsError&&<p role='alert'>{toolsError} Select a configuration to retry.</p>}
     {hasWelders&&<p className={styles.intent}>36 cm rigid welders share the forearm sockets. Scrub any motion to inspect the fit. Blue-white flames show the active tools. Machine-contact sparks and tool-change acting still need paired animation.</p>}

@@ -1,0 +1,8 @@
+LIMEN — accepted v2 body rebuild specification, reconstructed 14 October 2026.
+This is a reusable brief, not a transcript of the original Meshy task. The attached current Set 1 character concept sheet is identity reference, not a single-object A-pose upload. First prepare matching isolated front/back A-pose references; preserve the accepted model's proportions using the linked viewer. Do not generate directly from a multi-character collage.
+
+Create LIMEN, Loopforge's security chief: broad heavy worn industrial armour, recognizable helmet and cyan optics, dark mechanical joints, legible chest insignia and robust planted feet. Preserve the original Set 1 skull face, armour anatomy and silhouette. Follow the owner-approved 19 October concept palette: pale steel armour (direction #AAB9BD), dark mechanical recesses, deeper saturated teal-cyan optics and energy. No machine gun. Clipboard, stamp and reader shown beside the body are separate equipment concepts: do not fuse them into the body. Neutral symmetric A-pose, hands clear of torso, two separated legs. Full humanoid body with useful hands. No blade or energy fused to the body, hand, leg or torso.
+
+Keep high-detail master separately. Produce a roughly 41–43k-triangle delivery candidate without losing helmet, joints, hands or silhouette. The accepted v2 had 42,354 triangles; a new generation need not reproduce its topology. Preserve available PBR texture maps; target 2K working maps and no baked glow halo. Do not claim maps, rigid weights or finger bones that are absent.
+
+Export unrigged neutral GLB and editable FBX. Inspect front/back/profile before rigging. Retain the exact accepted source if shape changes are unnecessary: animation cleanup alone is not a reason to regenerate the body.

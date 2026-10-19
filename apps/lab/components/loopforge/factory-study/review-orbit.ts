@@ -6,9 +6,9 @@ const defaults = { alpha: -Math.PI / 2, beta: 1.36, distance: 3.8 };
 
 
 /** Inspection orbit is independent of fixed CCTV presets and animation time. */
-export function createReviewOrbit(camera: ArcRotateCamera, canvas: HTMLCanvasElement, invalidate: () => void) {
+export function createReviewOrbit(camera: ArcRotateCamera, canvas: HTMLCanvasElement, invalidate: () => void, maximum = 7) {
   let pose = { ...defaults }, active = false, scale = 1, minimum = 3.2, resetDistance = defaults.distance, resetAngles = { alpha: defaults.alpha, beta: defaults.beta };
-  const clamp = (n: number) => Math.max(minimum, Math.min(7, n));
+  const clamp = (n: number) => Math.max(minimum, Math.min(maximum, n));
   function capture() {
     if (active) pose = { alpha: camera.alpha, beta: camera.beta, distance: clamp(camera.radius / scale) };
   }
@@ -31,7 +31,7 @@ export function createReviewOrbit(camera: ArcRotateCamera, canvas: HTMLCanvasEle
     attach(target: Vector3) {
       scale = Math.max(1, .65 / (canvas.clientWidth / Math.max(1, canvas.clientHeight)));
       camera.lowerBetaLimit = .25; camera.upperBetaLimit = 1.65;
-      camera.lowerRadiusLimit = minimum * scale; camera.upperRadiusLimit = 7 * scale;
+      camera.lowerRadiusLimit = minimum * scale; camera.upperRadiusLimit = maximum * scale;
       camera.panningSensibility = 0; // Keep the inspected subject as the orbit centre.
       camera.setTarget(target, false, true, true);
       apply(); camera.attachControl(canvas, false); active = true;

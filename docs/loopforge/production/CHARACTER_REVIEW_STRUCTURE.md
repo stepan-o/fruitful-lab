@@ -19,6 +19,15 @@ The common structure is a review workbench, separate from player-facing game UI 
 
 All six appear in each current player's collapsible **Review coverage** panel. Status is per gate: **Accepted slice**, **Candidate**, **Needs work**, or **Not measured**. An accepted silhouette does not approve a gait; passing isolated sampled clearance does not approve animation blends. Owner feedback names the accepted slice. Missing assets start **Awaiting model** in the library. No silent global “production-ready” badge.
 
+## Occupied-scene recognition gate — 18 October 2026
+
+The [cast readability standard](CAST_READABILITY_STANDARD.md) specifies persistent
+identity, event-led attention, camera/lighting rules and a names/speech-hidden
+recognition protocol across graphics tiers. It expands Factory & CCTV and
+Performance & delivery; it does not replace the six gates. The reported crowded
+factory view Needs work. Single-character approvals stand; floor recognition and
+the proposed test mode remain pending.
+
 ## Shared screen jobs
 
 1. Library: available cast, revisions, pending cast, review purpose and direction links.

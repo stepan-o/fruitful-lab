@@ -1,4 +1,30 @@
-# LIMEN Meshy model review — 12 October 2026
+# LIMEN character and motion review
+
+## New motion intake — 19 October 2026
+
+The LIMEN viewer now offers two explicit model/motion banks. **New source** opens paused on Shouting Angrily and includes all 17 newly downloaded takes. **Approved assembly** retains the accepted 42k body, walk/run and authored emitter-check idle. The source candidate is not a replacement for the game performer: it is a different 9,752-triangle body with 80 skin joints, animated finger chains and up to eight influences per vertex.
+
+The 17 takes are Agree Gesture, Air Squat, Alert, All Night Dance, Angry Ground Stomp, Arise, Axe Breathe and Look Around, Axe Spin Attack, Boxing Warm Up, Confident Strut, Confused Scratch, Idle 02, Idle 11, Injured Walk, Shouting Angrily, Shrug and Stand and Chat. `Idle_1.zip` actually contains **Idle_02**; the viewer uses the internal clip name. Each archive contains a fully skinned animated FBX and PBR maps. All 17 animated bodies share the inspected geometry, bind pose and skin weights. No standalone worker recovery take or Right Hand Sword Slash was present.
+
+One derived GLB holds one body and all 17 clips: **10,391,048 bytes / 9.91 MiB**, SHA-256 `730fcb9d3bbce10e59ed343d2de4dd34a49e7a1d112d82a078152d74dcd2d2cd`. Embedded maps are 2048² colour/normal and 1024² metallic/roughness; normal and metallic/roughness JPEGs use 4:4:4 chroma. The source helper icosphere is omitted from rendering. Clips are sampled from the FBX at 30 Hz with their source transforms retained, then resampled with a 1e-6 tolerance. Generated tangents and normalized weights pass the glTF validator with zero errors and warnings.
+
+`prepare-limen-motions.py` converts inspected `fbx-motion-dump.c` / ufbx v0.21.3 dumps into the consolidated source GLB. `import-limen-motions.mjs` prepares maps, tangents and the immutable asset pack. `check-limen-motions.mjs` checks the delivered hash/size, all 17 names, skeleton, skin, finite arrays, map presence and 9,752-triangle budget. The full-resolution source archives stay outside the app deployment. This is an offline conversion; there is no FBX parser or animation authoring solver in the player.
+
+The review provides play/pause, scrub and seconds controls, speed, an explicit repeat option, front/side/back/orbit, factory rooms and CCTV views. Non-repeating clips hold their last frame. Hidden tabs pause. Switching banks disposes the previous assembly; only the selected bank and shared emitter are loaded. The new rig uses the existing physical forearm socket offset, converted to metres, as a **candidate** fit for visual inspection. Accepted palette and reduced-energy controls work in both banks.
+
+Review notes remain visible beside each motion. Shouting Angrily is a warning candidate. Axe Spin Attack has a large windup/spin and needs paired contact and blade-path cleanup before use as the doorway strike. Arise starts with its hips about 1.95 m below the source floor and does not finish standing; the viewer deliberately preserves this defect. Confused Scratch and Agree Gesture also have visible contact/translation considerations. Showing a source clip does not certify clearance or assign an engine capability. The Day 1 strike, worker collapse, recovery and limp still need a coordinated scene pass.
+
+Validation: all 17 takes rendered in the actual factory viewer with no browser errors. Desktop, 390 px and 768 px layouts passed; play/pause, seconds/frame scrubbing, one-shot end hold, repeat, CCTV, surfaces, blade toggling and switching both banks passed. Network inspection confirmed the inactive body bank is not eagerly fetched. The embedded-asset validation, five existing camera tests, scoped lint and complete production build passed. These checks establish preview operation, not animation-contact or device-performance acceptance.
+
+## Approved palette transfer — 19 October 2026
+
+The shared `loadLimen` model applies the accepted comparison-studio pale steel (`#AAB9BD`, 100%) by default. The existing luminance mask preserves texture wear and deep mechanical recesses. Cyan source markings are distinguished by colour and shifted to `#08798B`; this is an approximate material mask, not a newly authored armour texture.
+
+The opaque energy shader uses a deeper teal-cyan core and darker jade/cyan/blue/violet strands. Its timing, displacement, idle shutdown/restart and reduced-motion behaviour are unchanged. The body GLB, emitter housing, rig, animation curves and scale are unchanged. This adds no maps, geometry, lights or draw calls; it adds a small amount of work in the existing shaders.
+
+The animation viewer starts with the approved palette, provides an original-model colour comparison, and links the accepted concept sheet. The static readability studio reuses the same body material plugin, so Original restores the source appearance and Treatment applies paint only once. Clay inspection bypasses paint and restores the chosen palette when textures return. Saved review evidence includes the palette selection and colour definition. The palette is applied by the application; downloading the unchanged source GLB alone does not include it.
+
+Validation for this transfer is recorded in PR #125. Earlier performance numbers below are historical; this visual change is not a new device-performance acceptance result.
 
 ## Purpose and route
 

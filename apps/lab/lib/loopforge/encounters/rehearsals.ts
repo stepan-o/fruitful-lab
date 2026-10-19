@@ -1,11 +1,12 @@
 /** Authored intention providers for repeatable scenes. No timeline can bypass admission. */
 import {contains,zone,PORTALS} from '../spatial/floor';
 import {ENCOUNTER_VERSION,type Agent,type Action,type World,type Registry,type Planner,type SpatialServices,type Motion,type Phase,type Speech} from './contract';
+import {arrival} from './arrival';
 import {advance,project} from './kernel';
-export type Study='security'|'conveyor'|'threshold';
+export type Study='security'|'conveyor'|'threshold'|'arrival';
 export type RoomStudy='security'|'conveyor';
 export type Choice='care'|'pressure';
-export const studies=[{id:'threshold' as const,title:'Your workers are still here',subtitle:'DAY ONE · the shared doorway',choices:['Back LIMEN’s procedure','Back STILETTO’s urgency']},{id:'security' as const,title:'The name on the list',subtitle:'LIMEN · clearance and confidence',choices:['Verify the record','Allow this exception']},{id:'conveyor' as const,title:'The line can wait',subtitle:'STILETTO · pressure and willingness to speak',choices:['Ease the drive','Keep pushing']}];
+export const studies=[{id:'arrival' as const,title:'Stop and wait here',subtitle:'DAY ONE · Lobby → Security',choices:[]},{id:'threshold' as const,title:'Your workers are still here',subtitle:'DAY ONE · the shared doorway',choices:['Back LIMEN’s procedure','Back STILETTO’s urgency']},{id:'security' as const,title:'The name on the list',subtitle:'LIMEN · clearance and confidence',choices:['Verify the record','Allow this exception']},{id:'conveyor' as const,title:'The line can wait',subtitle:'STILETTO · pressure and willingness to speak',choices:['Ease the drive','Keep pushing']}];
 const W='worker-07';
 function actor(id:string,name:string,character:Agent['character'],room:RoomStudy,x:number,z:number,yaw:number):Agent{return {id,name,character,room,position:[x,z],yaw,beliefs:{},stress:28,trust:50,memory:[]};}
 /** Deliberately limited authored-lane service. Full obstacle/portal navigation remains a port to implement. */
@@ -20,6 +21,7 @@ export const rehearsalSpace:SpatialServices={
  }
 };
 export function rehearsal(study:Study,choice:Choice){
+ if(study==='arrival')return arrival();
  if(study==='threshold')return doorway(choice);
  const security=study==='security',S=security?'limen':'stiletto',x=security?131000:120800,z=security?122000:149600;
  const worker=actor(W,'SEVEN','worker',study,x-1000,z-1400,0),supervisor=actor(S,security?'LIMEN':'STILETTO',S,study,x+1200,z,90);

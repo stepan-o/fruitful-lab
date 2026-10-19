@@ -12,6 +12,8 @@ import manifest from '@/lib/assets/generated/loopforge-limen.json';
 import {createLimenBlade} from './limen-blade';
 import {createLimenIdle} from './limen-idle';
 import {limenIdleDuration,limenIdleCue} from '@/lib/loopforge/agents/limen-idle-cues';
+import {ReadabilityMaterial} from './readability-material';
+import {LIMEN_PALETTE,type LimenPalette} from '@/lib/loopforge/agents/limen-palette';
 import calibration from './limen-blade-calibration.json';
 
 export type LimenClip='Idle'|'Rest'|'Walking'|'Running';
@@ -55,6 +57,14 @@ export async function loadLimen(stage:CharacterStage,signal:AbortSignal,onFrame:
   // The room has five lights; reserve one slot for this model-only inspection key.
   materials.forEach(m=>{m.maxSimultaneousLights=6;});
   const appearance=materials.map(m=>({m,texture:m.albedoTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness}));
+  const palettePlugins=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{
+   const paint=new ReadabilityMaterial(m);paint.kind=1;paint.set(LIMEN_PALETTE.steel,LIMEN_PALETTE.strength);return paint;
+  });
+  let palette:LimenPalette='approved',surface:LimenSurface='textured';
+  function applyPalette(){
+   palettePlugins.forEach(p=>p.set(LIMEN_PALETTE.steel,palette==='approved'&&surface!=='clay'?LIMEN_PALETTE.strength:0));
+   energy?.palette(palette==='approved');stage.refresh();
+  }
   let effectTime=0,pulseAt=-100,energyEnabled=true,reducedOverride=false;
   const sampleIdle=createLimenIdle(container.transformNodes);
   let clip:LimenClip='Idle',phase=0,playing=false,speed=1,last=performance.now(),notifyAt=0,disposed=false;
@@ -96,6 +106,7 @@ export async function loadLimen(stage:CharacterStage,signal:AbortSignal,onFrame:
   }
   room('security');sample();
   return {
+   presentation:{root,bodyMeshes:container.meshes.filter(m=>m.getTotalVertices()>0),palettePlugins},
    place(x:number,y:number,z:number,yaw:number){root.position.set(x,y,z);root.rotation.y=Math.PI+yaw*Math.PI/180;sample();},
    duration,
    clip(value:LimenClip){clip=value;phase=0;effectTime=0;pulseAt=-100;sample();effect();onFrame(0);},
@@ -108,7 +119,8 @@ export async function loadLimen(stage:CharacterStage,signal:AbortSignal,onFrame:
    turn(degrees:number){root.rotation.y=Math.PI+degrees*Math.PI/180;stage.refresh();},
    room,
    light(value:boolean){fill?.setEnabled(value);stage.refresh();},
-   surface(value:LimenSurface){for(const {m,texture,color,metallic,roughness} of appearance){m.albedoTexture=value==='clay'?null:texture;m.albedoColor=value==='clay'?new Color3(.4,.43,.42):color;m.metallic=value==='clay'?0:metallic;m.roughness=value==='clay'?.85:roughness;m.wireframe=value==='wireframe';}stage.refresh();},
+   palette(value:LimenPalette){palette=value;applyPalette();},
+   surface(value:LimenSurface){surface=value;for(const {m,texture,color,metallic,roughness} of appearance){m.albedoTexture=value==='clay'?null:texture;m.albedoColor=value==='clay'?new Color3(.4,.43,.42):color;m.metallic=value==='clay'?0:metallic;m.roughness=value==='clay'?.85:roughness;m.wireframe=value==='wireframe';}applyPalette();},
    dispose(){if(disposed)return;disposed=true;scene.onBeforeRenderObservable.remove(observer);meshes.forEach(m=>shadow.removeShadowCaster(m));fill?.dispose();energy?.dispose();housing?.dispose();container.dispose();root.dispose();}
   };
  }catch(error){fill?.dispose();energy?.dispose();housing?.dispose();container.dispose();root.dispose();throw error;}

@@ -48,3 +48,11 @@ The new body downloads 5,695,824 bytes, down from 5,898,524. Only the selected a
 Owner closed remaining face generation after the layered Grace preview. Stages 3–7 now request the intact original head, body-only rigging and one shared motion bank; expression-mask exchange and facial articulation are outside the current prototype. Physical Grace handling is optional later work. The brief UI now displays stable filename stage numbers when stage 3 is ordered first. Rebuild/closed stages are labelled and placed after active stages.
 
 Validation: board publication, JavaScript syntax and whitespace checks passed. All four generated kit manifests match source prompts, file hashes and byte counts; independently assembled archives pass ZIP CRC checks (CATHEXIS: 31 files). No model binaries or renderer behavior changed. The preceding optimized application build remains valid for the viewer; the new hosted build and brief controls are checked after push.
+
+## LIMEN A-pose inputs — 19 October 2026
+
+Added front, rear and profile images rendered from the accepted 42,354-triangle body at Rest frame 0. The renderer uses the approved pale-steel/deep-teal material treatment, identical orthographic framing and a plain grey background. Equipment is excluded. Visual inspection confirmed the skull/chest front, back plates/neck conduits rear and true side profile, with full silhouette inside each frame. These are reconstructed inputs; the original Meshy uploads have not been recovered. Source geometry, rig and animations are unchanged.
+
+The brief gallery puts the three body inputs first, followed by the retained approved Set 1 sheet and transparent clipboard. Stage 1 now identifies these files as one body's multi-view inputs. The kit records source-model, render and image provenance. The three full-resolution JPEGs add 636,818 bytes; responsive WebPs serve the page.
+
+Validation: board publication and all image hash/size checks passed; 71 retained asset releases verified. The actual browser downloaded the LIMEN ZIP (12 entries, including five images); independent ZIP CRC and every manifest SHA-256/length check passed. Desktop 1440×1000 and phone 390×844 show the references, with no phone document overflow or browser errors. Hosted preview is verified after publication; production merge remains separate.

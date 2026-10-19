@@ -1,5 +1,7 @@
 # Loopforge game design board
 
+18 October cast readability: **Agents: character & motion** now records the room-scale visual hierarchy, cast signatures, viewing jobs and names/speech-hidden acceptance gate. Canonical standard: `../production/CAST_READABILITY_STANDARD.md`; `readability.py` supplies the deck synopsis. Generated HTML and complete Markdown records include it. This records the requirement; renderer adjustments and recognition evidence remain pending.
+
 12 October LIMEN identity pass: **Agents: character & motion** (`#agents`) records the animated blade as the primary dark-CCTV recognition cue, with layered rendering, readable states, source/runtime readiness and a recognition/performance gate. `../LIMEN_BLADE_DESIGN.md` is the detailed contract; the Webview engine chapter and both complete reading copies carry the decision. The separate v2 body and blade sources are in S3, but the deployed model bench remains v1. This documentation change does not implement the effect.
 
 9 October conveyor pass: **Conveyor mini-game** (`#conveyor`) adds eight reference games, three selectable original floor schematics, the proposed spatial production loop, machinery/policy branches, supervision and delegation, pacing, UI and kernel contracts, and playtest gates. `conveyor-proposal.json` is authoritative; `conveyor_proposal.py` renders the tab and `../CONVEYOR_MINIGAME_PROPOSAL.md`. `conveyor.js` switches authored comparisons only; it is not a simulation. Both complete reading copies and UI records include all alternatives. See `../CONVEYOR_STUDY_DELIVERY.md` for validation.
@@ -93,3 +95,9 @@ The owner's emergence requirement is captured across all five Act 1 stages: play
 Research figures are editorial references only, separate from Loopforge game art and generation inputs. `core-loop-media.v1.json` records source URLs, owners, publication basis, dates, dimensions and hashes. Factorio explicitly permits website screenshots; selected Mega Crit/Torpor press stills support close criticism without claiming an unrestricted asset licence. Sources are kept outside the repository; uncropped 640/960/1600px WebP variants have immutable content-hashed filenames. Inspection loads its larger image on request; inactive tabs do not request the research figures. Keep credits and commentary with the images. Do not reinterpret these sources as a game-asset licence.
 
 Validation for the core-loop study: all nine patterns, five figures and five arc-feedback contracts are present in the board and complete game/UI HTML and Markdown records. IDs, local links and all 15 image hashes pass; generation is repeatable. Browser review covered desktop composition, phone figures/credits and token examples, modal close/Escape focus return, detail zoom, and 320/390/768/1440 widths without page overflow. Only nearby study figures loaded; the 1600px image loaded when explicitly inspected. A stopped local server was restarted before completing image checks. These are document/UI checks, not proof of gameplay balance, audience demand or a production performance benchmark.
+
+18 October refinement: the Agents chapter now leads with room contrast, four
+cast treatments and one comparison before remodelling. Current model players
+follow; scene integration, test procedures and concept galleries are disclosures.
+Detailed acceptance requirements remain in the linked production standard.
+The Agents tab is second in the deck, immediately after Player desires & scenarios.

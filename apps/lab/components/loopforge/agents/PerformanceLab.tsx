@@ -18,6 +18,7 @@ export default function PerformanceLab(){
  function save(){if(!progress?.result)return;const url=URL.createObjectURL(new Blob([JSON.stringify(progress.result,null,2)],{type:'application/json'}));const anchor=document.createElement('a');anchor.href=url;anchor.download='loopforge-graphics-comparison.json';anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
  return <main className={styles.page}>
   <header><Link href='/stepanoskin/loopforge/play/scene-studies'>← Scene studies</Link><h1>Graphics & performance lab</h1><p>Find which changes buy smoother motion, and compare their appearance in the same factory scene.</p></header>
+  <p><Link href='/stepanoskin/loopforge/play/readability'>Compare cast colours and size in a static shot →</Link></p>
   {!cases&&<GraphicsSettings/>}
   <div className={styles.controls}>
    {!cases?<><button onClick={()=>setCases(COMPARISON_CASES)}>Load eight comparisons</button><button onClick={()=>setCases([{id:'selected',label:'Selected graphics settings',settings:fixedGraphics(graphicsSnapshot()),workers:24,workerPoses:'animated'}])}>Load my settings only</button></>:<button disabled={progress?.state!=='ready'} onClick={()=>runtime.current?.start()}>Start comparison</button>}

@@ -23,7 +23,7 @@ def render_agents():
     <p>Inspect the existing assets, approved motions and fitted equipment. These players do not yet show the proposed palette or size changes.</p><div class="cast-player-list">''']
     current = [
         ('Worker 01', '/stepanoskin/loopforge/play/asset-review/worker', '19 approved motions · articulated hands', 'WORKER_MOTION_REVIEW.md'),
-        ('LIMEN', '/stepanoskin/loopforge/play/agent-test/limen', 'Cyan emitter · walk, run & adjustment idle', 'LIMEN_MESHY_REVIEW.md'),
+        ('LIMEN', '/stepanoskin/loopforge/play/agent-test/limen', '17 new source motions · cyan emitter · approved assembly', 'LIMEN_MESHY_REVIEW.md'),
         ('STILETTO', '/stepanoskin/loopforge/play/asset-review/stiletto', 'Twin blades or welders · red visor · motion bank', 'STILETTO_MOTION_REVIEW.md'),
         ('CATHEXIS', '/stepanoskin/loopforge/play/asset-review/cathexis', '4 approved motions · full or split Grace', 'CATHEXIS_MOTION_REVIEW.md'),
     ]

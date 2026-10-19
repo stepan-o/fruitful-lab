@@ -20,12 +20,12 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
   performance:{status:'Not measured',detail:'Approved banks: 11.51 MB for Hot Walk/Sway, 13.88 MB for Mirror/Red Carpet. Only the selected bank loads; one body renders. Baked skinning, no runtime cloth. Crowd and physical-device performance remain unmeasured.'}
  },
  'limen-assembly': {
-  body:{status:'Accepted slice',detail:'Owner approved prototype appearance and character resemblance.'},
+  body:{status:'Accepted slice',detail:'Owner approved the 42k body. The separate 9,752-triangle / 80-joint source candidate is available for review; it does not replace that game performer.'},
   equipment:{status:'Accepted slice',detail:'Body/blade fit and arm-flowing energy accepted. Contact sparks and game cues remain open.'},
-  motion:{status:'Candidate',detail:'Maintenance idle, walk and run available. Factory interactions still need authoring.'},
-  contact:{status:'Needs work',detail:'Owner observed no blade/body overlap in tested movement. Worker and machine contacts remain untested.'},
+  motion:{status:'Candidate',detail:'17 new source motions with finger animation, plus the accepted maintenance idle, walk and run. Shout and attack candidates require scene-specific staging; Arise has a below-floor source trajectory.'},
+  contact:{status:'Needs work',detail:'Accepted assembly clearance remains approved. New source motions use a candidate forearm emitter fit; self-contact, swept blade paths and paired worker contacts need review.'},
   readability:{status:'Candidate',detail:'Three CCTV presets available; full room-action recognition still needs review.'},
-  performance:{status:'Not measured',detail:'Live single-character counters available. Crowd and physical-device budgets are not certified.'}
+  performance:{status:'Not measured',detail:'New bank: 9.91 MiB, one body, 17 clips and embedded PBR maps; housing adds 1.12 MiB. Only the selected bank loads. Crowd and physical-device budgets are not certified.'}
  },
  'worker-01-motions': {
   body:{status:'Candidate',detail:'Accepted source body retained; corrected skin adds ten rigid digit hinges for inspection.'},

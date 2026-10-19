@@ -101,6 +101,7 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
   }
 
   return {
+   presentation:{root,bodyMeshes:container.meshes.filter(m=>m.name==='char1')},
    place(x:number,y:number,z:number,yaw:number){anchor.set(x,y,z);root.rotation.y=Math.PI+yaw*Math.PI/180;sample();},
    duration,
    clip(value:string,keepPhase=false){playing=false;if(!keepPhase)phase=0;for(const {n,p,r,s} of neutral){n.position.copyFrom(p);n.rotationQuaternion=r.clone();n.scaling.copyFrom(s);}const selected=container.animationGroups.find(g=>g.name===value);if(!selected)throw Error(`Missing STILETTO motion: ${value}`);group=selected;sample();onFrame(phase,false);},

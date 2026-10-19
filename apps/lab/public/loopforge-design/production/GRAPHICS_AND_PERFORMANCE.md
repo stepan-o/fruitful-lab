@@ -1,5 +1,7 @@
 # Graphics profiles and controlled performance comparisons
 
+The [static cast-readability studio](/stepanoskin/loopforge/play/readability) auditions room and character treatment with fixed poses, adjustable colour/size and 1280×720 / 320×180 outputs. It reuses the shared factory renderer with a persistent fixed-shot camera and demand rendering. It has no animation playback, FPS acceptance claim or changes to the frozen performance fixture. See [the readability standard](CAST_READABILITY_STANDARD.md#static-comparison-studio--2026-10-18).
+
 18 October 2026. Scope: Fruitful Lab / Loopforge presentation. Gameplay, BDI,
 identity, assignments and action timelines are independent of graphics quality.
 

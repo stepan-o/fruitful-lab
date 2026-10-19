@@ -39,6 +39,7 @@ export async function loadWorkerCrowd(stage:CharacterStage,count:number,signal:A
   if(new Set(actors.map(a=>a.mesh.skeleton)).size!==count||new Set(actors.map(a=>a.mesh.geometry)).size!==1)throw Error('Crowd sharing/independence invariant failed.');
   let visibleCount=count;
   return {
+   bodies:actors.map(a=>({root:a.root,mesh:a.mesh})),
    visible(n:number){visibleCount=Math.max(0,Math.min(count,Math.floor(n)));actors.forEach((a,i)=>a.root.setEnabled(i<visibleCount));},
    place(origin:Vector3){actors.forEach((a,i)=>{a.anchor.copyFrom(origin).addInPlaceFromFloats((i%6-2.5)*1.8,.015,(Math.floor(i/6)-1.5)*1.85);a.root.rotation.y=Math.PI;});},
    sample(seconds:number){for(let i=0;i<visibleCount;i++){const a=actors[i];

@@ -47,7 +47,8 @@ export type SceneReport = { fps: number; meshes: number; active: number; workers
 export type CharacterStage = { scene: Scene; shadow: ShadowGenerator; gate(open: boolean): void; refresh(materialsChanged?: boolean): void };
 export type GraphicsFrame = {cpuMs:number;sceneUpdateMs:number;renderSubmitMs:number;gpuMs:number|null;drawCalls:number;triangles:number};
 export type GraphicsState = {settings:GraphicsSettings;context:GraphicsContext;effective:ReturnType<typeof resolveGraphics>;scale:number;resolution:readonly number[];uncapped:boolean};
-export type FactoryScene = { graphics(settings?:GraphicsSettings,context?:GraphicsContext):GraphicsState; reviewTarget(point: readonly [number,number] | null, angle?: number): void; reviewSubject(targetHeight:number, distance:number, minimum:number): void; reviewCamera(action?: ReviewCameraAction): ReturnType<ReturnType<typeof createReviewOrbit>["snapshot"]>; characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
+export type StillShot = {target:readonly [number,number,number];alpha:number;beta:number;radius:number};
+export type FactoryScene = { shot(pose:StillShot):void; graphics(settings?:GraphicsSettings,context?:GraphicsContext):GraphicsState; reviewTarget(point: readonly [number,number] | null, angle?: number): void; reviewSubject(targetHeight:number, distance:number, minimum:number): void; reviewCamera(action?: ReviewCameraAction): ReturnType<ReturnType<typeof createReviewOrbit>["snapshot"]>; characterStage(): CharacterStage; review(enabled: boolean | "model" | "model-cctv", distance?: number): void; update(s: StudyState): void; focus(f: Focus): void; framing(mode: Framing): void; inset(bottom: number, top: number): void; motion(enabled: boolean): void; study(enabled: boolean): void; feeder(enabled: boolean): void; cctv(enabled: boolean, angle: number, triple: boolean): void; active(enabled: boolean): void; isolate(enabled: boolean): void; dispose(): void };
 type V = [number, number, number];
 type Mat = PBRMaterial | StandardMaterial;
 const v = (p: V) => new Vector3(...p);
@@ -77,6 +78,7 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   let visible = true, cctvEnabled = false, cctvAngle = 0, tripleFeed = false;
   const alternateCameras = [1,2].map(n => new ArcRotateCamera(`room-angle-${n}`, 0, 1, 20, Vector3.Zero(), scene));
   let isolatedRoom = false;
+  let stillShot:StillShot|null=null;
   let reviewPoint:readonly [number,number]|null=null;
   let characterReview: boolean | "model" | "model-cctv" = false;
   let reviewTargetHeight = 1.02;
@@ -469,6 +471,11 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   const configureFeeds=()=>{
     reviewOrbit.suspend();
     if(!cctvEnabled){scene.activeCameras=null;scene.activeCamera=camera;camera.attachControl(canvas,true);return;}
+    if(stillShot){
+      camera.detachControl();camera.alpha=stillShot.alpha;camera.beta=stillShot.beta;camera.radius=stillShot.radius;
+      camera.setTarget(new Vector3(...stillShot.target),false,true,true);camera.viewport=new Viewport(0,0,1,1);camera.fov=.7;
+      scene.activeCameras=[camera];scene.activeCamera=camera;transition=0;return;
+    }
     if(characterReview==='model'){
       camera.viewport=new Viewport(0,0,1,1);camera.fov=.7;camera.minZ=.15;camera.maxZ=400;
       const point=reviewPoint??(focus==='security'?[131,122]:[120.8,149.6]);
@@ -595,14 +602,15 @@ export function createFactoryScene(canvas: HTMLCanvasElement, report: (r: SceneR
   inputEvents.forEach(name=>canvas.addEventListener(name,input,{passive:true}));
   document.addEventListener("visibilitychange",visibility);engine.runRenderLoop(render);
   return {
+    shot(pose){stillShot=pose;cctvEnabled=true;configureFeeds();renderDirty=true;},
     graphics(settings,context){if(settings)preferences=settings;if(context)graphicsContext=context;if(settings||context)applyGraphics();return graphicsState();},
     reviewTarget(point,angle){reviewPoint=point;if(angle!==undefined)reviewOrbit.orientation(angle,1.22);if(cctvEnabled)configureFeeds();renderDirty=true;},
     reviewSubject(height,distance,minimum){reviewOrbit.suspend();reviewTargetHeight=height;reviewOrbit.framing(distance,minimum);if(cctvEnabled)configureFeeds();},
     reviewCamera(action){if(action)reviewOrbit.action(action);return reviewOrbit.snapshot();},
     characterStage(){return {scene,shadow,gate(open){reviewGate=open;},refresh(materialsChanged=false){if(materialsChanged)resourcesReady=false;renderDirty=true;keyMap.resetRefreshCounter();}};},
-    review(enabled,distance){reviewOrbit.suspend();characterReview=enabled;if(!options.context){graphicsContext=enabled==='model'?'showcase':'room';applyGraphics();}if(distance!==undefined)reviewOrbit.distance(distance);frame();if(cctvEnabled)configureFeeds();},
+    review(enabled,distance){stillShot=null;reviewOrbit.suspend();characterReview=enabled;if(!options.context){graphicsContext=enabled==='model'?'showcase':'room';applyGraphics();}if(distance!==undefined)reviewOrbit.distance(distance);frame();if(cctvEnabled)configureFeeds();},
     update(s){posesDirty=true;renderDirty=true;state=s;population(s.workers.length+(equipmentStudy?SCALE_FIGURES.length:0));const fresh=s.events.filter(e=>e.id>lastEvent);if(fresh.length){lastEvent=fresh.at(-1)!.id;const signal=fresh.find(e=>e.kind==="jam")??fresh.find(e=>e.kind==="cycle");if(signal){flash=1;flashKind=signal.kind as "jam"|"cycle";}else if(fresh.some(e=>e.kind==="release")){flash=0;flashKind="idle";}}},
-    focus(f){reviewOrbit.suspend();frameWindow.reset();reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
+    focus(f){stillShot=null;reviewOrbit.suspend();frameWindow.reset();reportTime=performance.now();posesDirty=true;focus=f;framing="work";camera.alpha=-Math.PI/2+(f==="lobby"?-.28:.22);camera.beta=f==="wide"?.60:f==="lobby"?1.02:.86;frame();if(cctvEnabled)configureFeeds();},
     framing(mode){framing=mode;camera.beta=mode==="room"?.66:focus==="lobby"?1.02:.86;frame();},
     feeder(enabled){resourcesReady=false;renderDirty=true;lobby.feeder(enabled);keyMap.resetRefreshCounter();},
     inset(bottom,top){bottomInset=bottom;topInset=top;resizeEngine();frame();viewport();},

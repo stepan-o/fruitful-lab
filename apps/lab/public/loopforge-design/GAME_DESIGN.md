@@ -5428,8 +5428,23 @@ The 11-second, nine-track pose clip is baked offline against the existing rig. N
 
 # Cast readability and visual hierarchy
 
-18 October 2026 · design requirement and review protocol. Implementation and
-factory-view acceptance remain pending. Owner-approved models and motions remain
+## Static comparison studio — 2026-10-18
+
+Open [Cast readability](/stepanoskin/loopforge/play/readability) from the second design chapter, the model-review navigation or the performance lab. This is the first implementation slice, using 24 approved workers plus LIMEN and STILETTO in fixed poses. CATHEXIS is outside this initial two-room comparison.
+
+- Original / Your treatment switches reversibly without changing the shot or asset files.
+- Existing, neutral diagnostic and quieter-room presets; floor/wall colour pickers and texture-contrast slider. Lighting neutralisation is a separate slider, initially zero.
+- Worker blue-family, LIMEN steel and STILETTO shoulder-band colour/strength controls. Three stable worker shades share textures and geometry.
+- Supervisor height sliders normalize neutral foot-to-skull bounds against worker height. Original restores delivered sizes; proposed defaults remain LIMEN 1.25× and STILETTO 1.20×.
+- Front/side/rear cameras, fixed camera-distance slider, security/conveyor rooms, names-and-bubbles toggle, emitter/visor, glow and shadow checks.
+- Room output is 1280×720; console output is genuinely rendered at 320×180. Poses, blade energy and machinery are held. One WebGL scene renders on demand and sleeps when hidden/offscreen.
+- Pin a clean PNG as a fixed reference, save PNGs and export settings with asset hashes, fixed pose samples and neutral heights. Versioned local settings are separate from gameplay graphics preferences.
+
+The shader treatment retains source textures/normal maps but approximates plate masks from texture brightness and bind-space height. It is an art-direction audition, not finished painted armour. STILETTO's shoulder band needs authored masks if selected. The original performance benchmark is unchanged. A still does not certify motion performance or the three-second recognition target; those remain separate reviews after the visual treatment is selected.
+
+
+18 October 2026 · design requirement and review protocol. The static audition is implemented;
+final material authoring and factory-view acceptance remain pending. Owner-approved models and motions remain
 the source assets; this standard adds the occupied-scene gate they still need.
 Owner refinement: regenerate character sheets as needed. All supervisors should
 be generally larger than workers, with strong small-scale shape, size and body
@@ -5701,9 +5716,10 @@ A failed important angle or state remains Needs work; do not average it away.
 Artwork acceptance by the owner and later newcomer playtests remain explicit.
 
 **Current status:** the reported crowded factory sample Needs work. Existing
-single-character approvals do not certify this test. A names/bubbles-off review
-mode, standardized captures and measured recognition results still need to be
-built; the performance lab does not yet implement this protocol.
+single-character approvals do not certify this test. The static studio now provides names/bubbles-off
+comparison, fixed poses, camera controls, actual-size console rendering and PNG/settings
+exports. Measured recognition results, full-action review and the remaining cast/tool
+states are still pending. The performance lab retains its separate timing protocol.
 
 ## First implementation slice
 

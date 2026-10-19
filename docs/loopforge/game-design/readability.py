@@ -34,8 +34,9 @@ def render_readability():
       <div class="cast-directions">''' + rows + '''</div>
       <p class="cast-note">Palette and height proposals for comparison, not approved model changes. Heights are measured foot to skull; tools and crowns add to the silhouette.</p>
     </section>
-    <section class="cast-step cast-next"><span class="kicker">03 / The next step</span>
+    <section class="cast-step cast-next"><span class="kicker">03 / Compare the shot</span>
       <h3>Test one crowded shot before remodelling.</h3>
+      <p><a href="/stepanoskin/loopforge/play/readability" target="_top"><strong>Open the static readability studio →</strong></a></p>
       <ol>
         <li><strong>Fix the background first.</strong> Compare the existing room with a neutral background and the proposed palette. Keep camera, cast and lighting fixed; test lighting separately.</li>
         <li><strong>Try the cast treatment on existing models.</strong> Compare size and broad colour changes in the same shot, with names and speech bubbles hidden.</li>
@@ -43,6 +44,6 @@ def render_readability():
       </ol>
       <p><strong>The test:</strong> after meeting the cast, can you find each supervisor in about three seconds, even when paused? Then, in motion, can you see who acts on whom and what changes?</p>
     </section>
-    <p class="cast-note">The scene refinement is proposed. Existing close-up models and approved motions remain the starting point.</p>
+    <p class="cast-note">The studio uses existing models with reversible colour and scale controls. Approve the treatment before changing the source models.</p>
     <div class="cast-reference-links"><a href="/loopforge-design/production/CAST_SHEET_REVISION_BRIEF.md">Sheet revision brief ↗</a><a href="/loopforge-design/production/CAST_READABILITY_STANDARD.md">Full visual standard &amp; review checks ↗</a></div>
     </div>'''

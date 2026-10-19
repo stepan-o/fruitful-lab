@@ -96,6 +96,7 @@ export async function loadLimen(stage:CharacterStage,signal:AbortSignal,onFrame:
   }
   room('security');sample();
   return {
+   presentation:{root,bodyMeshes:container.meshes.filter(m=>m.getTotalVertices()>0)},
    place(x:number,y:number,z:number,yaw:number){root.position.set(x,y,z);root.rotation.y=Math.PI+yaw*Math.PI/180;sample();},
    duration,
    clip(value:LimenClip){clip=value;phase=0;effectTime=0;pulseAt=-100;sample();effect();onFrame(0);},

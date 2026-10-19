@@ -58,7 +58,7 @@ export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTM
    if(!m){m=sharedTextureMaterial(source,'Worker blue shade '+shade);workerVariants.set(shade,m);workerMaterials.set(shade,new ReadabilityMaterial(m));}
    mesh.material=m;
   });
-  function bodyStudy(subject:{root:TransformNode;bodyMeshes:AbstractMesh[]},kind:number){
+  function bodyStudy(subject:{root:TransformNode;bodyMeshes:AbstractMesh[];palettePlugins?:ReadabilityMaterial[]},kind:number){
    const body=subject.bodyMeshes.reduce((a,b)=>a.getTotalVertices()>b.getTotalVertices()?a:b);subject.root.computeWorldMatrix(true);body.computeWorldMatrix(true);
    const box=body.getBoundingInfo().boundingBox,sourceHeight=box.maximumWorld.y-box.minimumWorld.y;
    const foot=box.minimumWorld.y-subject.root.position.y;
@@ -67,7 +67,7 @@ export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTM
    // The shader reads undeformed POSITION, whose authored height remains Y.
    const positions=body.getVerticesData('position');if(!positions)throw Error('Character bind positions are missing.');
    let bindMinY=Infinity,bindMaxY=-Infinity;for(let i=1;i<positions.length;i+=3){bindMinY=Math.min(bindMinY,positions[i]);bindMaxY=Math.max(bindMaxY,positions[i]);}
-   const plugins=[...new Set(subject.bodyMeshes.map(m=>m.material))].filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{const p=new ReadabilityMaterial(m);p.kind=kind;p.minY=bindMinY;p.height=bindMaxY-bindMinY;return p;});
+   const plugins=subject.palettePlugins??[...new Set(subject.bodyMeshes.map(m=>m.material))].filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{const p=new ReadabilityMaterial(m);p.kind=kind;p.minY=bindMinY;p.height=bindMaxY-bindMinY;return p;});
    return {root:subject.root,sourceHeight,foot,plugins};
   }
   const limenBody=bodyStudy(limen.presentation,1),stilettoBody=bodyStudy(stiletto.presentation,2);
@@ -84,6 +84,7 @@ export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTM
    for(const {plugin,floor:isFloor} of roomMaterials.values()){plugin.set(isFloor?t.floor:t.walls,t.background==='proposed'?100:0);plugin.detail=t.detail/100;}
    applyLight(t.neutralLight);
    for(const [i,p] of workerMaterials){p.set(t.worker,t.workerPaint);p.colour.scaleInPlace([.72,1,1.28][i]);}
+   limen!.palette(s.original?'source':'approved');
    for(const p of limenBody.plugins)p.set(t.limen,t.limenPaint);
    for(const p of stilettoBody.plugins)p.set(t.stiletto,t.stilettoPaint);
    [limenBody,stilettoBody].forEach((body,i)=>{

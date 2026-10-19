@@ -1,15 +1,16 @@
 import {MaterialPluginBase} from '@babylonjs/core/Materials/materialPluginBase';
 import {PBRMaterial} from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import type {UniformBuffer} from '@babylonjs/core/Materials/uniformBuffer';
+import {LIMEN_PALETTE} from '@/lib/loopforge/agents/limen-palette';
 import {Color3} from '@babylonjs/core/Maths/math.color';
-/** Lightweight shader audition: preserves the original texture and normal maps.
+/** Shared paint treatment for cast studies and the approved LIMEN palette: preserves the original texture and normal maps.
  * The shoulder band is a bind-space study, not a production armour UV mask. */
 export class ReadabilityMaterial extends MaterialPluginBase {
- colour=Color3.White();strength=0;detail=1;kind=0;minY=0;height=1;
+ colour=Color3.White();accent=Color3.FromHexString(LIMEN_PALETTE.accent).toLinearSpace();strength=0;detail=1;kind=0;minY=0;height=1;
  constructor(material:PBRMaterial){super(material,'Readability study',200,{},true,true);this.doNotSerialize=true;}
  getClassName(){return 'ReadabilityMaterial';}
- bindForSubMesh(u:UniformBuffer){u.updateColor3('readColour',this.colour);u.updateFloat4('readParams',this.strength,this.detail,this.kind,0);u.updateFloat2('readBounds',this.minY,this.height);}
- getUniforms(){return {ubo:[{name:'readColour',size:3,type:'vec3'},{name:'readParams',size:4,type:'vec4'},{name:'readBounds',size:2,type:'vec2'}],vertex:'uniform vec2 readBounds;',fragment:'uniform vec3 readColour; uniform vec4 readParams;'};}
+ bindForSubMesh(u:UniformBuffer){u.updateColor3('readColour',this.colour);u.updateColor3('readAccent',this.accent);u.updateFloat4('readParams',this.strength,this.detail,this.kind,0);u.updateFloat2('readBounds',this.minY,this.height);}
+ getUniforms(){return {ubo:[{name:'readAccent',size:3,type:'vec3'},{name:'readColour',size:3,type:'vec3'},{name:'readParams',size:4,type:'vec4'},{name:'readBounds',size:2,type:'vec2'}],vertex:'uniform vec2 readBounds;',fragment:'uniform vec3 readAccent; uniform vec3 readColour; uniform vec4 readParams;'};}
  getCustomCode(type:string):Record<string,string>{return type==='vertex'?{
   CUSTOM_VERTEX_DEFINITIONS:'varying float vReadHeight;',
   CUSTOM_VERTEX_MAIN_BEGIN:'vReadHeight = (position.y - readBounds.x) / max(readBounds.y, 0.001);',
@@ -35,6 +36,11 @@ export class ReadabilityMaterial extends MaterialPluginBase {
    } else {
     readRegion *= readParams.z > 1.5 ? (0.35 + 0.65 * smoothstep(0.001, 0.025, readLum)) : smoothstep(0.008, 0.09, readLum);
     readPaint = readColour * (0.45 + 1.25 * sqrt(readLum));
+   }
+   if (readParams.z > 0.5 && readParams.z < 1.5) {
+    // Preserve LIMEN's cyan markings as a deeper accent instead of painting them steel.
+    float readCyan = smoothstep(0.015, 0.08, min(surfaceAlbedo.g, surfaceAlbedo.b) - surfaceAlbedo.r);
+    readPaint = mix(readPaint, readAccent * (0.75 + 0.5 * sqrt(readLum)), readCyan);
    }
    surfaceAlbedo = mix(surfaceAlbedo, readPaint, readParams.x * readRegion);
   `,

@@ -1,5 +1,15 @@
 # LIMEN Meshy model review — 12 October 2026
 
+## Approved palette transfer — 19 October 2026
+
+The shared `loadLimen` model applies the accepted comparison-studio pale steel (`#AAB9BD`, 100%) by default. The existing luminance mask preserves texture wear and deep mechanical recesses. Cyan source markings are distinguished by colour and shifted to `#08798B`; this is an approximate material mask, not a newly authored armour texture.
+
+The opaque energy shader uses a deeper teal-cyan core and darker jade/cyan/blue/violet strands. Its timing, displacement, idle shutdown/restart and reduced-motion behaviour are unchanged. The body GLB, emitter housing, rig, animation curves and scale are unchanged. This adds no maps, geometry, lights or draw calls; it adds a small amount of work in the existing shaders.
+
+The animation viewer starts with the approved palette, provides an original-model colour comparison, and links the accepted concept sheet. The static readability studio reuses the same body material plugin, so Original restores the source appearance and Treatment applies paint only once. Clay inspection bypasses paint and restores the chosen palette when textures return. Saved review evidence includes the palette selection and colour definition. The palette is applied by the application; downloading the unchanged source GLB alone does not include it.
+
+Validation for this transfer is recorded in PR #125. Earlier performance numbers below are historical; this visual change is not a new device-performance acceptance result.
+
 ## Purpose and route
 
 `/stepanoskin/loopforge/play/agent-test/limen` reviews the owner's Meshy export inside the real Security/Lattice Forge renderer. It is linked from the agent production test and the design Agents tab. This is a model/clip bench: it does not replace the cast in main play, run BDI decisions or simulate worker contacts. An authored emitter-maintenance idle is now included as cosmetic acting.

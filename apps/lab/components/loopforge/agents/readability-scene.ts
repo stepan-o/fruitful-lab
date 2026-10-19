@@ -63,7 +63,11 @@ export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTM
    const box=body.getBoundingInfo().boundingBox,sourceHeight=box.maximumWorld.y-box.minimumWorld.y;
    const foot=box.minimumWorld.y-subject.root.position.y;
    if(sourceHeight<=0)throw Error('Character height could not be established.');
-   const plugins=[...new Set(subject.bodyMeshes.map(m=>m.material))].filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{const p=new ReadabilityMaterial(m);p.kind=kind;p.minY=box.minimum.y;p.height=box.maximum.y-box.minimum.y;return p;});
+   // glTF skin bounds can use the skin-node basis (STILETTO's height is Z there).
+   // The shader reads undeformed POSITION, whose authored height remains Y.
+   const positions=body.getVerticesData('position');if(!positions)throw Error('Character bind positions are missing.');
+   let bindMinY=Infinity,bindMaxY=-Infinity;for(let i=1;i<positions.length;i+=3){bindMinY=Math.min(bindMinY,positions[i]);bindMaxY=Math.max(bindMaxY,positions[i]);}
+   const plugins=[...new Set(subject.bodyMeshes.map(m=>m.material))].filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{const p=new ReadabilityMaterial(m);p.kind=kind;p.minY=bindMinY;p.height=bindMaxY-bindMinY;return p;});
    return {root:subject.root,sourceHeight,foot,plugins};
   }
   const limenBody=bodyStudy(limen.presentation,1),stilettoBody=bodyStudy(stiletto.presentation,2);

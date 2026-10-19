@@ -279,15 +279,18 @@ built; the performance lab does not yet implement this protocol.
 
 ## First implementation slice
 
-1. Produce a common-scale cast lineup and revised sheets using the size/body-colour
-   proposals. Compare them at room and intended console sizes before spending on
-   replacement models. Record which proportions/palettes are selected.
-2. Add reproducible names/bubbles-off review to the scene/performance workbenches,
-   retaining the frozen timing benchmark for historical comparison.
-3. Compare current/neutral/proposed backgrounds with fixed cast and camera, then
-   framing/placement, material/light separation and bounded
-   distance-aware cues, one change at a time with fixed scene state. Start with
-   LIMEN and STILETTO among workers in Security and Conveyor.
+1. Start with the existing cast in one crowded Security/Conveyor shot. Add
+   reproducible names/bubbles-off review, retaining the frozen timing benchmark
+   for historical comparison. Compare current, neutral diagnostic and proposed
+   backgrounds with camera, cast and lighting fixed; test lighting separately.
+2. Audition relative scale and broad body colours on existing models in that
+   same scene. Compare one variable at a time before combining the treatment.
+   Keep worker blues, light-steel LIMEN, black/red STILETTO and ivory CATHEXIS
+   as proposals until the occupied room and console-size comparisons succeed.
+3. Produce revised common-scale character sheets only after that comparison.
+   Preserve approved identities and motions; regenerate only the model parts
+   whose silhouette or material regions cannot deliver the selected treatment.
+   Any change still needs the applicable rig, stride, contact and clearance checks.
 4. Author the doorway conflict: empty Conveyor stations, STILETTO's approach,
    LIMEN's checkpoint stance, the waiting worker and the released/held queue.
    The same action data must serve scripted rehearsals and later BDI execution.

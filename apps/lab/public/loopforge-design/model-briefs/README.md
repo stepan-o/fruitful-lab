@@ -4,10 +4,13 @@ Download numbered stages and reference inputs below. For the visual library open
 
 ## LIMEN
 
-Reconstructed rebuild brief from the accepted v2 source, owner instructions and import records. The original Meshy chat prompt and extracted front/back upload images were not recovered; this is not a verbatim historical export.
+Current concept: owner-approved pale-steel revision of the original Set 1 sheet, with independently generated security props alpha-composited into its empty slot. The approved character pixels are unchanged by that composition. Existing 3D prototype and reconstructed rebuild stages are retained; the new props have no 3D models yet.
 
-- [Original character sheet · identity reference](/media/loopforge-model-briefs/limen_character_sheet_2.3555f0a1bcef0f53.jpg) — Reference only — contains multiple views; prepare isolated A-pose inputs before a fresh generation.
-- [Body rebuild](/loopforge-design/model-briefs/limen-01-body-rebuild.ca58c8f0f7c763be.txt)
+- [LIMEN · pale steel / Set 1 revision](/media/loopforge-model-briefs/limen-character-sheet-composed.2417766cad44da17.jpg) — Current concept sheet — approved body artwork with three separate security-prop overlays. Prepare isolated body views before Meshy generation.
+- [Security clipboard · transparent overlay](/media/loopforge-model-briefs/limen-clipboard-overlay.23d644fa34f4d003.webp) — Equipment concept — entry-clearance paperwork and tethered stylus. Separate transparent cutout; no 3D model yet.
+- [Clearance stamp · transparent overlay](/media/loopforge-model-briefs/limen-clearance-stamp-overlay.aeaa6d527a4d9435.webp) — Equipment concept — heavy manual approval stamp. Separate transparent cutout; no 3D model yet.
+- [Access-pass reader · transparent overlay](/media/loopforge-model-briefs/limen-pass-reader-overlay.7941d78fa5c38c04.webp) — Equipment concept — industrial worker-card reader. Separate transparent cutout; no 3D model yet.
+- [Body rebuild](/loopforge-design/model-briefs/limen-01-body-rebuild.af360da5175b2561.txt)
 - [Emitter rebuild](/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt)
 - [Rig and delivery](/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt)
 ## Worker 01

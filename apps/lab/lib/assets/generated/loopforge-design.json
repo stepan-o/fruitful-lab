@@ -123,19 +123,19 @@
       "height": 640,
       "variants": [
         {
-          "src": "/media/files/3a38873d5abab52028410258ae10d5a97c8823dc820b99d62f25f6f696f3862e.webp",
+          "src": "/media/files/922c17b75820d209bbfe0d950b07f27b5c8d970c97d872357a821d53a9da77a7.webp",
           "width": 480,
           "height": 320,
-          "bytes": 45862,
-          "sha256": "3a38873d5abab52028410258ae10d5a97c8823dc820b99d62f25f6f696f3862e",
+          "bytes": 44512,
+          "sha256": "922c17b75820d209bbfe0d950b07f27b5c8d970c97d872357a821d53a9da77a7",
           "mime": "image/webp"
         },
         {
-          "src": "/media/files/8a79c49780be45958aff19bb43a4eef1ab21515bd5108de1a0fd69ef913a7868.webp",
+          "src": "/media/files/d459aeab78ea07447b013f548285cf20460752de1aebde7e5014b3c80f1b2a87.webp",
           "width": 960,
           "height": 640,
-          "bytes": 161810,
-          "sha256": "8a79c49780be45958aff19bb43a4eef1ab21515bd5108de1a0fd69ef913a7868",
+          "bytes": 151204,
+          "sha256": "d459aeab78ea07447b013f548285cf20460752de1aebde7e5014b3c80f1b2a87",
           "mime": "image/webp"
         }
       ]

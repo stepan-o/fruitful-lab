@@ -1,7 +1,7 @@
 {
   "repository": "stepan-o/loopforge",
   "commit": "3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9",
-  "basis": "Owner-provided Loopforge art; reused locally from existing optimized presentation assets or resized from the recorded original source without visual alteration.",
+  "basis": "Owner-provided Loopforge art. Original sources remain recorded; entries with a revision describe owner-directed edits and composition explicitly.",
   "images": {
     "factory": {
       "source": "frontend/loopforge-webview/public/assets/concept_art/world/loopforge_factory_overview_2.png",
@@ -99,23 +99,45 @@
       ]
     },
     "limen": {
-      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_2/limen_character_sheet_2.png",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/limen_character_sheet_1.png",
+      "revision": "19 October 2026 · Set 1 pale steel + security-equipment overlays",
+      "basis": "Current concept: owner-approved pale-steel revision of the original Set 1 sheet, with independently generated security props alpha-composited into its empty slot. The approved character pixels are unchanged by that composition. Existing 3D prototype and reconstructed rebuild stages are retained; the new props have no 3D models yet.",
+      "sourceSha256": "812d879c23b5d018516ba1c3746fc9ba94c7558520403f13e8756b6028123c92",
       "variants": [
         {
-          "src": "assets/limen-480.webp",
+          "src": "/media/files/922c17b75820d209bbfe0d950b07f27b5c8d970c97d872357a821d53a9da77a7.webp",
           "width": 480,
           "height": 320,
-          "bytes": 45862,
-          "sha256": "3a38873d5abab52028410258ae10d5a97c8823dc820b99d62f25f6f696f3862e"
+          "bytes": 44512,
+          "sha256": "922c17b75820d209bbfe0d950b07f27b5c8d970c97d872357a821d53a9da77a7"
         },
         {
-          "src": "assets/limen-960.webp",
+          "src": "/media/files/d459aeab78ea07447b013f548285cf20460752de1aebde7e5014b3c80f1b2a87.webp",
           "width": 960,
           "height": 640,
-          "bytes": 161810,
-          "sha256": "8a79c49780be45958aff19bb43a4eef1ab21515bd5108de1a0fd69ef913a7868"
+          "bytes": 151204,
+          "sha256": "d459aeab78ea07447b013f548285cf20460752de1aebde7e5014b3c80f1b2a87"
         }
-      ]
+      ],
+      "supersededPresentationReference": {
+        "source": "frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_2/limen_character_sheet_2.png",
+        "variants": [
+          {
+            "src": "assets/limen-480.webp",
+            "width": 480,
+            "height": 320,
+            "bytes": 45862,
+            "sha256": "3a38873d5abab52028410258ae10d5a97c8823dc820b99d62f25f6f696f3862e"
+          },
+          {
+            "src": "assets/limen-960.webp",
+            "width": 960,
+            "height": 640,
+            "bytes": 161810,
+            "sha256": "8a79c49780be45958aff19bb43a4eef1ab21515bd5108de1a0fd69ef913a7868"
+          }
+        ]
+      }
     },
     "stiletto": {
       "source": "frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_2/stiletto_character_sheet_2.png",

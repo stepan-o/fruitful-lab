@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-17-worker-free-arm",
-  "date": "2026-10-16",
+  "revision": "model-briefs-2026-10-19-limen-concept",
+  "date": "2026-10-19",
   "models": [
     {
       "id": "limen",
       "name": "LIMEN",
       "subtitle": "Security chief · body + emitter",
-      "revision": "Rebuild brief v1 · body v2 / emitter v1",
+      "revision": "Concept sheet · 19 October 2026 / body v2 + emitter v1",
       "status": "Prototype available",
-      "summary": "Heavy armour, cyan optics and energy flowing from one forearm. Rebuild the accepted body and rigid housing separately; the living blade and maintenance idle are authored in our pipeline.",
-      "provenance": "Reconstructed rebuild brief from the accepted v2 source, owner instructions and import records. The original Meshy chat prompt and extracted front/back upload images were not recovered; this is not a verbatim historical export.",
+      "summary": "Pale steel armour, deep teal-cyan energy and a stern skull face. The accepted Set 1 revision keeps LIMEN’s silhouette and smoky background. Clipboard, clearance stamp and pass reader fill the former gun slot as separate equipment concepts.",
+      "provenance": "Current concept: owner-approved pale-steel revision of the original Set 1 sheet, with independently generated security props alpha-composited into its empty slot. The approved character pixels are unchanged by that composition. Existing 3D prototype and reconstructed rebuild stages are retained; the new props have no 3D models yet.",
       "viewer": "/stepanoskin/loopforge/play/agent-test/limen",
       "viewerLabel": "Inspect body, emitter and energy",
       "record": "/loopforge-design/production/LIMEN_MESHY_REVIEW.md",
@@ -26,31 +26,118 @@
       ],
       "images": [
         {
-          "label": "Original character sheet · identity reference",
-          "role": "Reference only — contains multiple views; prepare isolated A-pose inputs before a fresh generation.",
-          "sourceName": "limen_character_sheet_2.png",
-          "sourceSha256": "12e79d26004c8c15e3b98689412f850afca4b27472332b61d91f5ae8390cee63",
+          "label": "LIMEN · pale steel / Set 1 revision",
+          "role": "Current concept sheet — approved body artwork with three separate security-prop overlays. Prepare isolated body views before Meshy generation.",
+          "sourceName": "limen-character-sheet-composed.png",
+          "sourceSha256": "812d879c23b5d018516ba1c3746fc9ba94c7558520403f13e8756b6028123c92",
           "input": {
-            "src": "/media/loopforge-model-briefs/limen_character_sheet_2.3555f0a1bcef0f53.jpg",
+            "src": "/media/loopforge-model-briefs/limen-character-sheet-composed.2417766cad44da17.jpg",
             "width": 1536,
             "height": 1024,
-            "bytes": 771280,
-            "sha256": "3555f0a1bcef0f537d2a85820a89103dd2866cbbb86afddc2c65389b46aeb646"
+            "bytes": 618335,
+            "sha256": "2417766cad44da17d0005700cde755ba4174c5cae63f1e3d81c1f8dcb913919a"
           },
           "variants": [
             {
-              "src": "/media/loopforge-model-briefs/limen_character_sheet_2-360.d6599a8c39ff7368.webp",
+              "src": "/media/loopforge-model-briefs/limen-character-sheet-composed-360.a2fcbf16a05313cd.webp",
               "width": 360,
               "height": 240,
-              "bytes": 23030,
-              "sha256": "d6599a8c39ff7368eaf1ad85ed84676610d8940d5cbde08239d40d5e35b9758c"
+              "bytes": 26236,
+              "sha256": "a2fcbf16a05313cdaa6c743fc15e5ef148d6b87328f3e012e561f8b58efd2582"
             },
             {
-              "src": "/media/loopforge-model-briefs/limen_character_sheet_2-720.163a385f98b126ef.webp",
+              "src": "/media/loopforge-model-briefs/limen-character-sheet-composed-720.6e5f9e013dd45fb8.webp",
               "width": 720,
               "height": 480,
-              "bytes": 93508,
-              "sha256": "163a385f98b126efda5310ce331afe15acfc6b795c06d76c3fc74d47cceb4096"
+              "bytes": 89476,
+              "sha256": "6e5f9e013dd45fb85edfb5a10d3ab66ce603638682c16637dac463de574618af"
+            }
+          ]
+        },
+        {
+          "label": "Security clipboard · transparent overlay",
+          "role": "Equipment concept — entry-clearance paperwork and tethered stylus. Separate transparent cutout; no 3D model yet.",
+          "sourceName": "limen-clipboard-overlay.png",
+          "sourceSha256": "a7a7f1d32dc214b63164c013dc080ba18c2b0ee4daa8dd79c8b60a454a534ce4",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-clipboard-overlay.23d644fa34f4d003.webp",
+            "width": 1020,
+            "height": 1519,
+            "bytes": 513692,
+            "sha256": "23d644fa34f4d0038b285f39b07a0c24f51449dc8837c62956b2b413be8462fe"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-clipboard-overlay-360.eabe00be6383ad2d.webp",
+              "width": 360,
+              "height": 536,
+              "bytes": 77900,
+              "sha256": "eabe00be6383ad2d9f01547adbec1272357bc0eece2bfc5e9bf0a66ea9a4c3b6"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-clipboard-overlay-720.95eace2162de6623.webp",
+              "width": 720,
+              "height": 1072,
+              "bytes": 286700,
+              "sha256": "95eace2162de6623076bbeb09d3d434ef33065afadd8d3394b2b021de81e8980"
+            }
+          ]
+        },
+        {
+          "label": "Clearance stamp · transparent overlay",
+          "role": "Equipment concept — heavy manual approval stamp. Separate transparent cutout; no 3D model yet.",
+          "sourceName": "limen-clearance-stamp-overlay.png",
+          "sourceSha256": "aa4ec50324bbb3a534999b53145999c48211638c9728c6cce6e5d02c4fdf0f06",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-clearance-stamp-overlay.aeaa6d527a4d9435.webp",
+            "width": 1024,
+            "height": 700,
+            "bytes": 110692,
+            "sha256": "aeaa6d527a4d9435e9a8082c9fa67c452c2d611e1ba494598028b39b202d2c3a"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-clearance-stamp-overlay-360.4059496252f1df35.webp",
+              "width": 360,
+              "height": 246,
+              "bytes": 18134,
+              "sha256": "4059496252f1df3543d73aa38a1711e4b7f81833e1edad82e325a3cf60a7a0bc"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-clearance-stamp-overlay-720.70378dfc57024353.webp",
+              "width": 720,
+              "height": 493,
+              "bytes": 57520,
+              "sha256": "70378dfc5702435386cba6813af26234deb78ae568107c9068dd0e2391cb110d"
+            }
+          ]
+        },
+        {
+          "label": "Access-pass reader · transparent overlay",
+          "role": "Equipment concept — industrial worker-card reader. Separate transparent cutout; no 3D model yet.",
+          "sourceName": "limen-pass-reader-overlay.png",
+          "sourceSha256": "4fa48a72ebc9fd3a8151fe62371ede54a4ec08200acbdc64458e369d732fb1ca",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-pass-reader-overlay.7941d78fa5c38c04.webp",
+            "width": 1010,
+            "height": 1487,
+            "bytes": 334074,
+            "sha256": "7941d78fa5c38c040207482fae0573876acafcb7fb5c6b85ecf0bda24d1dc9ab"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-pass-reader-overlay-360.43a7abf72fe311c6.webp",
+              "width": 360,
+              "height": 530,
+              "bytes": 56070,
+              "sha256": "43a7abf72fe311c6398d31f8ae511e62a7a6c670bdf7facc756da19f3adeff1e"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-pass-reader-overlay-720.3a0d39440524a3a7.webp",
+              "width": 720,
+              "height": 1060,
+              "bytes": 197248,
+              "sha256": "3a0d39440524a3a7f2c45650f35021a3cb96e0783b9f24417e3dcb3ef081f715"
             }
           ]
         }

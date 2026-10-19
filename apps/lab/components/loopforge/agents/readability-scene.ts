@@ -13,6 +13,7 @@ import {worldPoint} from '@/lib/loopforge/spatial/floor';
 import {loadWorkerCrowd} from './worker-crowd';
 import {loadLimen,limenFile,bladeFile} from './limen-model';
 import {loadStiletto,stilettoFile} from './stiletto-model';
+import {loadCathexisStudy,cathexisStudyFile,cathexisGraceFile} from './cathexis-readability-model';
 import {ReadabilityMaterial} from './readability-material';
 
 /** Material copies share decoded maps; DynamicTexture.clone() intentionally has a blank canvas. */
@@ -24,11 +25,11 @@ function sharedTextureMaterial(source:PBRMaterial,name:string){
  return copy;
 }
 /** Owns one demand-rendered scene. No animation clock, benchmark mutation or simulation writes. */
-export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTMLDivElement[],signal:AbortSignal,publish:(f:GraphicsFrame)=>void){
+export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTMLDivElement[],signal:AbortSignal,publish:(f:GraphicsFrame)=>void,onFaceStatus:(busy:boolean,message:string)=>void=()=>{}){
  const renderSize:[number,number]=[1280,720];
  const floor=createFactoryScene(canvas,()=>{},()=>{},{reviewOnly:true,renderSize,graphics:{...REFERENCE_GRAPHICS,targetFps:30},context:'room',onFrame:publish});
  const stage=floor.characterStage(),scene=stage.scene,engine=scene.getEngine();
- let crowd:Awaited<ReturnType<typeof loadWorkerCrowd>>|null=null,limen:Awaited<ReturnType<typeof loadLimen>>|null=null,stiletto:Awaited<ReturnType<typeof loadStiletto>>|null=null;
+ let crowd:Awaited<ReturnType<typeof loadWorkerCrowd>>|null=null,limen:Awaited<ReturnType<typeof loadLimen>>|null=null,stiletto:Awaited<ReturnType<typeof loadStiletto>>|null=null,cathexis:Awaited<ReturnType<typeof loadCathexisStudy>>|null=null;
  let disposed=false,visible=true;
  try{
   floor.inset(0,0);floor.isolate(true);floor.motion(false);floor.review(false);floor.focus('conveyor');floor.cctv(true,0,false);floor.update({...initialStudy(),workers:[],running:false});
@@ -49,6 +50,7 @@ export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTM
   crowd=await loadWorkerCrowd(stage,24,signal);
   limen=await loadLimen(stage,signal,()=>{});limen.clip(READABILITY_POSES.limen.clip);limen.play(false);limen.light(false);limen.seek(READABILITY_POSES.limen.phase);
   stiletto=await loadStiletto(stage,signal,()=>{});stiletto.clip(READABILITY_POSES.stiletto.clip);stiletto.seek(READABILITY_POSES.stiletto.phase);stiletto.play(false);stiletto.light(false);stiletto.flame(false);stiletto.effectsMotion(false);
+  cathexis=await loadCathexisStudy(stage,signal);
   signal.throwIfAborted();
   const workerMaterials=new Map<number,ReadabilityMaterial>();
   const workerVariants=new Map<number,PBRMaterial>();
@@ -72,7 +74,19 @@ export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTM
   }
   const limenBody=bodyStudy(limen.presentation,1),stilettoBody=bodyStudy(stiletto.presentation,2);
   const worker=crowd.bodies[0];worker.mesh.computeWorldMatrix(true);const wb=worker.mesh.getBoundingInfo().boundingBox,workerHeight=wb.maximumWorld.y-wb.minimumWorld.y;
-  const origin=Vector3.Zero(),positions=[Vector3.Zero(),Vector3.Zero()];let current:ReadabilitySettings|null=null;
+  const origin=Vector3.Zero(),positions=[Vector3.Zero(),Vector3.Zero(),Vector3.Zero()];let current:ReadabilitySettings|null=null;
+  const cathexisBody=cathexis.presentation;
+  let faceRequest=0,faceBusy=false,faceError='',requestedFace:ReadabilitySettings['cathexisFace']|null=null;
+  function fitFace(face:ReadabilitySettings['cathexisFace']){
+   if(requestedFace===face)return;
+   requestedFace=face;const request=++faceRequest;faceBusy=true;faceError='';onFaceStatus(true,'Fitting Grace…');
+   void cathexis!.mask(face).then(()=>{
+    if(disposed||request!==faceRequest)return;faceBusy=false;onFaceStatus(false,'');stage.refresh(true);
+   }).catch(error=>{
+    if(disposed||signal.aborted||request!==faceRequest)return;
+    faceBusy=false;requestedFace=null;faceError=error instanceof Error?error.message:'Grace could not load.';onFaceStatus(false,faceError);
+   });
+  }
   function applyLight(amount:number){for(const {light,colour,ground} of lights){light.diffuse=Color3.Lerp(colour,Color3.White(),amount/100);if(ground&&light instanceof HemisphericLight)light.groundColor=Color3.Lerp(ground,new Color3(.07,.07,.07),amount/100);}}
   const beforeRender=scene.onBeforeRenderObservable.add(()=>{if(current)applyLight(treatment(current).neutralLight);});
   function update(s:ReadabilitySettings){
@@ -88,24 +102,27 @@ export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTM
    stiletto!.palette(s.original?'source':'approved');
    for(const p of limenBody.plugins)p.set(t.limen,t.limenPaint);
    for(const p of stilettoBody.plugins)p.set(t.stiletto,t.stilettoPaint);
-   [limenBody,stilettoBody].forEach((body,i)=>{
-    const scale=heightScale(s.original,body.sourceHeight,workerHeight,i===0?s.limenHeight:s.stilettoHeight);body.root.scaling.setAll(scale);
-    positions[i].copyFrom(origin).addInPlaceFromFloats(i===0?-2:2,.015,-4.5);
-    if(i===0){limen!.place(positions[i].x,.015,positions[i].z,0);limen!.turn(0);}else stiletto!.place(positions[i].x,.015,positions[i].z,180);
+   [limenBody,stilettoBody,cathexisBody].forEach((body,i)=>{
+    const scale=heightScale(s.original,body.sourceHeight,workerHeight,[s.limenHeight,s.stilettoHeight,s.cathexisHeight][i]);body.root.scaling.setAll(scale);
+    positions[i].copyFrom(origin).addInPlaceFromFloats(s.cathexisVisible?[-4,0,4][i]:[-2,2,6][i],.015,-4.5);
+    if(i===0){limen!.place(positions[i].x,.015,positions[i].z,0);limen!.turn(0);}else if(i===1)stiletto!.place(positions[i].x,.015,positions[i].z,180);else cathexis!.place(positions[i].x,.015,positions[i].z,180);
     body.root.position.y=.015-body.foot*scale;body.root.computeWorldMatrix(true);positions[i].y=body.sourceHeight*scale+.18;
    });
-   limen!.blade(s.signatures);stiletto!.visor(s.signatures);
+   cathexisBody.root.setEnabled(s.cathexisVisible);cathexis!.colour(t.cathexis,t.cathexisPaint);
+   if(s.cathexisVisible)fitFace(s.cathexisFace);
+   limen!.blade(s.signatures);stiletto!.visor(s.signatures);cathexis!.eyes(s.signatures);
    floor.shot({target:[origin.x,1,origin.z],alpha:s.camera==='front'?-Math.PI/2:s.camera==='side'?-.2:Math.PI/2,beta:.9,radius:s.distance});
    stage.refresh(true);
   }
   const after=scene.onAfterRenderObservable.add(()=>{
    if(!current)return;const viewport=scene.activeCamera!.viewport.toGlobal(engine.getRenderWidth(),engine.getRenderHeight());
-   labels.forEach((label,i)=>{const p=Vector3.Project(positions[i],Matrix.IdentityReadOnly,scene.getTransformMatrix(),viewport);label.style.left=`${100*p.x/engine.getRenderWidth()}%`;label.style.top=`${100*p.y/engine.getRenderHeight()}%`;label.hidden=!current!.labels||p.z<0||p.z>1;});
+   labels.forEach((label,i)=>{const p=Vector3.Project(positions[i],Matrix.IdentityReadOnly,scene.getTransformMatrix(),viewport);label.style.left=`${100*p.x/engine.getRenderWidth()}%`;label.style.top=`${100*p.y/engine.getRenderHeight()}%`;label.hidden=!current!.labels||(i===2&&!current!.cathexisVisible)||p.z<0||p.z>1;});
   });
   const observer=new IntersectionObserver(entries=>{visible=entries[0]?.isIntersecting??false;floor.active(visible);});observer.observe(canvas);
   const captures=new Set<(error:Error)=>void>();
   return {update,
    async capture():Promise<string>{
+    if(current?.cathexisVisible&&(faceBusy||faceError))throw Error(faceError||'Wait for Grace to finish fitting before saving.');
     if(disposed||!visible||document.hidden)throw Error('Keep the shot visible before saving it.');
     return new Promise((resolve,reject)=>{
      const fail=(error:Error)=>{clearTimeout(timer);scene.onAfterRenderObservable.remove(token);captures.delete(fail);reject(error);};
@@ -114,8 +131,8 @@ export async function createReadabilityScene(canvas:HTMLCanvasElement,labels:HTM
      captures.add(fail);stage.refresh(true);
     });
    },
-   evidence(){return {kind:'Static cast readability audition',settings:current,renderSize:[...renderSize],neutralHeights:{worker:workerHeight,limen:limenBody.sourceHeight,stiletto:stilettoBody.sourceHeight},assets:{worker:crowd!.manifest,limen:limenFile,blade:bladeFile,stiletto:stilettoFile},poses:READABILITY_POSES,resources:{meshes:scene.meshes.length,materials:scene.materials.length,textures:engine.getLoadedTexturesCache().length},limitations:['Art-direction shader masks are approximate; final paint needs authored armour masks.','Static frames do not establish animation performance or recognition acceptance.','CATHEXIS is outside this first two-room comparison.']};},
-   dispose(){if(disposed)return;disposed=true;captures.forEach(f=>f(Error('Studio closed.')));observer.disconnect();scene.onBeforeRenderObservable.remove(beforeRender);scene.onAfterRenderObservable.remove(after);crowd!.dispose();limen!.dispose();stiletto!.dispose();floor.dispose();},
+   evidence(){return {kind:'Static cast readability audition',settings:current,renderSize:[...renderSize],neutralHeights:{worker:workerHeight,limen:limenBody.sourceHeight,stiletto:stilettoBody.sourceHeight,cathexis:cathexisBody.sourceHeight,cathexisIncludingCrown:cathexisBody.crownHeight},assets:{worker:crowd!.manifest,limen:limenFile,blade:bladeFile,stiletto:stilettoFile,cathexis:cathexisStudyFile,grace:cathexisGraceFile},poses:READABILITY_POSES,resources:{meshes:scene.meshes.length,materials:scene.materials.length,textures:engine.getLoadedTexturesCache().length},limitations:['Art-direction shader masks are approximate; final paint needs authored armour masks.','Static frames do not establish animation performance or recognition acceptance.','CATHEXIS scalp height is calibrated approximately from the accepted face-fitting coordinates; crown is excluded.','Grace retains its accepted porcelain finish; the ivory control adjusts body costume surfaces.']};},
+   dispose(){if(disposed)return;disposed=true;captures.forEach(f=>f(Error('Studio closed.')));observer.disconnect();scene.onBeforeRenderObservable.remove(beforeRender);scene.onAfterRenderObservable.remove(after);crowd!.dispose();limen!.dispose();stiletto!.dispose();cathexis!.dispose();floor.dispose();},
   };
- }catch(e){crowd?.dispose();limen?.dispose();stiletto?.dispose();floor.dispose();throw e;}
+ }catch(e){crowd?.dispose();limen?.dispose();stiletto?.dispose();cathexis?.dispose();floor.dispose();throw e;}
 }

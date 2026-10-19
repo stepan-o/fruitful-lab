@@ -1,16 +1,17 @@
 # Cast readability and visual hierarchy
 
-## Static comparison studio — 2026-10-18
+## Static comparison studio — updated 2026-10-19
 
-Open [Cast readability](/stepanoskin/loopforge/play/readability) from the second design chapter, the model-review navigation or the performance lab. This is the first implementation slice, using 24 approved workers plus LIMEN and STILETTO in fixed poses. CATHEXIS is outside this initial two-room comparison.
+Open [Cast readability](/stepanoskin/loopforge/play/readability) from the second design chapter, the model-review navigation or the performance lab. The shot contains 24 approved workers plus LIMEN, STILETTO and CATHEXIS in fixed poses. CATHEXIS can be hidden to restore the two-supervisor composition. The owner approved LIMEN’s steel/cyan and STILETTO’s black/red colours on 19 October; CATHEXIS’s ivory remains a candidate.
 
 - Original / Your treatment switches reversibly without changing the shot or asset files.
 - Existing, neutral diagnostic and quieter-room presets; floor/wall colour pickers and texture-contrast slider. Lighting neutralisation is a separate slider, initially zero.
-- Worker blue-family, LIMEN steel and STILETTO shoulder-band colour/strength controls. Three stable worker shades share textures and geometry.
-- Supervisor height sliders normalize neutral foot-to-skull bounds against worker height. Original restores delivered sizes; proposed defaults remain LIMEN 1.25× and STILETTO 1.20×.
-- Front/side/rear cameras, fixed camera-distance slider, security/conveyor rooms, names-and-bubbles toggle, emitter/visor, glow and shadow checks.
+- Worker blue-family, LIMEN steel, STILETTO shoulder-band and CATHEXIS ivory colour/strength controls. Three stable worker shades share textures and geometry.
+- Supervisor height sliders normalize neutral foot-to-skull bounds against worker height. Original restores delivered sizes; proposed defaults are LIMEN 1.25×, STILETTO 1.20× and CATHEXIS 1.22×. CATHEXIS uses an approximate scalp landmark at 1.82 m in the 1.90 m accepted fitting space, excluding her crown. These are scale proposals, separate from colour approval.
+- CATHEXIS uses the accepted corrected Happy Sway held at phase zero, with full Grace, either half Grace or the exposed underlying mechanical face. The ivory slider targets bright, low-chroma costume surfaces; gold, dark mechanisms and the fitted Grace finish retain their source appearance. No new geometry, maps or animation edits. Mask loading must finish before PNG capture.
+- Front/side/rear cameras, fixed camera-distance slider, security/conveyor rooms, names-and-bubbles toggle, emitter/visor/warm-eye, glow and shadow checks.
 - Room output is 1280×720; console output is genuinely rendered at 320×180. Poses, blade energy and machinery are held. One WebGL scene renders on demand and sleeps when hidden/offscreen.
-- Pin a clean PNG as a fixed reference, save PNGs and export settings with asset hashes, fixed pose samples and neutral heights. Versioned local settings are separate from gameplay graphics preferences.
+- Pin a clean PNG as a fixed reference, save PNGs and export settings with asset hashes, fixed pose samples and neutral heights. Versioned local settings are separate from gameplay graphics preferences. Existing v1 saves retain every previous choice and gain CATHEXIS defaults; reset uses approved LIMEN/STILETTO paint strengths of 100%/91%.
 
 The shader treatment retains source textures/normal maps but approximates plate masks from texture brightness and bind-space height. It is an art-direction audition, not finished painted armour. STILETTO's shoulder band needs authored masks if selected. The original performance benchmark is unchanged. A still does not certify motion performance or the three-second recognition target; those remain separate reviews after the visual treatment is selected.
 
@@ -254,7 +255,7 @@ study. Its three-second prompt is a working target to refine during playtests.
 
 1. Give the reviewer a brief introduction to the cast. Freeze a candidate build,
    asset hashes, motion versions and scene state. Include both supervisors among
-   the full intended worker population; add CATHEXIS when her scene exists.
+   the full intended worker population; include CATHEXIS for the three-supervisor colour study; hide her for the opening two-room cast.
 2. Hide names, speech, selection rings and debug highlights. Randomize presentation
    order so recognition cannot depend on knowing which actor always stands left.
    For each usable room camera, show a paused frame and ask the reviewer to point
@@ -301,8 +302,9 @@ states are still pending. The performance lab retains its separate timing protoc
    backgrounds with camera, cast and lighting fixed; test lighting separately.
 2. Audition relative scale and broad body colours on existing models in that
    same scene. Compare one variable at a time before combining the treatment.
-   Keep worker blues, light-steel LIMEN, black/red STILETTO and ivory CATHEXIS
-   as proposals until the occupied room and console-size comparisons succeed.
+   LIMEN’s light steel/deep cyan and STILETTO’s black/red are owner-approved.
+   CATHEXIS’s ivory and cast scale still need comparison; measured recognition
+   and performance remain separate gates for the entire cast.
 3. Produce revised common-scale character sheets only after that comparison.
    Preserve approved identities and motions; regenerate only the model parts
    whose silhouette or material regions cannot deliver the selected treatment.
@@ -311,7 +313,7 @@ states are still pending. The performance lab retains its separate timing protoc
    LIMEN's checkpoint stance, the waiting worker and the released/held queue.
    The same action data must serve scripted rehearsals and later BDI execution.
 5. Promote only treatments that pass the visual gate and the target device's
-   performance gate. Add CATHEXIS, alternate equipment and future supervisors
+   performance gate. Add alternate equipment and future supervisors
    through the same record; no new isolated presentation implementation per actor.
 
 Related records: [character review gates](CHARACTER_REVIEW_STRUCTURE.md),

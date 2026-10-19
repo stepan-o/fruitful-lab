@@ -31,7 +31,7 @@ export class ReadabilityMaterial extends MaterialPluginBase {
     readRegion = smoothstep(0.69, 0.76, vReadHeight) * (1.0 - smoothstep(0.85, 0.91, vReadHeight));
    }
    vec3 readPaint;
-   if (readParams.z > 2.5) {
+   if (readParams.z > 2.5 && readParams.z < 3.5) {
     readPaint = readColour * mix(1.0, clamp(0.6 + 2.0 * sqrt(readLum), 0.25, 1.45), readParams.y);
    } else {
     readRegion *= readParams.z > 1.5 ? (0.35 + 0.65 * smoothstep(0.001, 0.025, readLum)) : smoothstep(0.008, 0.09, readLum);
@@ -41,6 +41,13 @@ export class ReadabilityMaterial extends MaterialPluginBase {
     // Preserve LIMEN's cyan markings as a deeper accent instead of painting them steel.
     float readCyan = smoothstep(0.015, 0.08, min(surfaceAlbedo.g, surfaceAlbedo.b) - surfaceAlbedo.r);
     readPaint = mix(readPaint, readAccent * (0.75 + 0.5 * sqrt(readLum)), readCyan);
+   }
+   if (readParams.z > 3.5) {
+    float readMax = max(surfaceAlbedo.r, max(surfaceAlbedo.g, surfaceAlbedo.b));
+    float readMin = min(surfaceAlbedo.r, min(surfaceAlbedo.g, surfaceAlbedo.b));
+    float readChroma = (readMax - readMin) / max(readMax, 0.001);
+    readRegion = smoothstep(0.12, 0.42, readLum) * (1.0 - smoothstep(0.30, 0.60, readChroma));
+    readPaint = readColour * (0.45 + 1.25 * sqrt(readLum));
    }
    surfaceAlbedo = mix(surfaceAlbedo, readPaint, readParams.x * readRegion);
   `,

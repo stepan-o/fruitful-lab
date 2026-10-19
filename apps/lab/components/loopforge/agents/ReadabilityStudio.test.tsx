@@ -25,3 +25,20 @@ test('saved settings survive hydration and pinned reference is a still image',as
  expect(await screen.findByRole('img',{name:/pinned reference/})).toHaveAttribute('src','data:image/png;base64,AA==');
  expect(mockCreate).toHaveBeenCalledTimes(1);
 });
+
+test('CATHEXIS controls preserve the selected face through A/B and do not recreate the scene',async()=>{
+ localStorage.setItem('loopforge-readability-v1',JSON.stringify({version:1,limenHeight:1.5,stilettoPaint:91}));
+ const view=render(<ReadabilityStudio/>);
+ await waitFor(()=>expect(screen.getByRole('button',{name:'Original'})).toBeEnabled());
+ fireEvent.change(screen.getByLabelText('CATHEXIS ivory'),{target:{value:'#c8bc98'}});
+ fireEvent.change(screen.getByRole('slider',{name:'CATHEXIS paint strength'}),{target:{value:'65'}});
+ fireEvent.change(screen.getByRole('slider',{name:'CATHEXIS height / worker'}),{target:{value:'1.4'}});
+ fireEvent.change(screen.getByRole('combobox',{name:'CATHEXIS face'}),{target:{value:'half-right'}});
+ fireEvent.click(screen.getByRole('button',{name:'Original'}));
+ expect(mockUpdate).toHaveBeenLastCalledWith(expect.objectContaining({original:true,limenHeight:1.5,stilettoPaint:91,cathexis:'#c8bc98',cathexisPaint:65,cathexisHeight:1.4,cathexisFace:'half-right'}));
+ fireEvent.click(screen.getByRole('button',{name:'Your treatment'}));
+ fireEvent.click(screen.getByRole('checkbox',{name:'Include CATHEXIS'}));
+ expect(mockUpdate).toHaveBeenLastCalledWith(expect.objectContaining({original:false,cathexisVisible:false,cathexisFace:'half-right'}));
+ expect(JSON.parse(localStorage.getItem('loopforge-readability-v1')!)).toMatchObject({cathexisPaint:65,cathexisVisible:false});
+ expect(mockCreate).toHaveBeenCalledTimes(1);view.unmount();expect(mockDispose).toHaveBeenCalledTimes(1);
+});

@@ -5,7 +5,7 @@ test('saved art settings reject unknown versions and invalid colours, and bound 
 });
 test('original comparison preserves camera, shot size, overlays and selected treatment for switching back',()=>{
  const saved={...defaults,original:true,camera:'rear' as const,size:'console' as const,neutralLight:75,labels:true};
- expect(treatment(saved)).toMatchObject({background:'current',workerPaint:0,limenPaint:0,stilettoPaint:0,neutralLight:0,camera:'rear',size:'console',labels:true});
+ expect(treatment(saved)).toMatchObject({background:'current',workerPaint:0,limenPaint:0,stilettoPaint:0,cathexisPaint:0,neutralLight:0,camera:'rear',size:'console',labels:true});
  expect(saved.neutralLight).toBe(75);expect(saved.workerPaint).toBe(85);
  expect(treatment({...saved,original:false}).neutralLight).toBe(75);
 });
@@ -20,4 +20,17 @@ import {READABILITY_POSES} from './settings';
 import stilettoReview from '../agents/stiletto-review.json';
 test('the frozen STILETTO pose exists in the delivered motion bank',()=>{
  expect(stilettoReview.clips.some(clip=>clip.id===READABILITY_POSES.stiletto.clip)).toBe(true);
+});
+
+test('older two-supervisor saves retain their choices and acquire CATHEXIS defaults',()=>{
+ const saved=parseReadability({version:1,limenHeight:1.5,stiletto:'#bc3344',stilettoPaint:91,camera:'rear',labels:true});
+ expect(saved).toMatchObject({limenHeight:1.5,stiletto:'#bc3344',stilettoPaint:91,camera:'rear',labels:true,cathexis:defaults.cathexis,cathexisHeight:1.22,cathexisVisible:true,cathexisFace:'full'});
+ const candidate={...saved,cathexis:'#d0c8a4',cathexisPaint:70,cathexisFace:'half-left' as const,cathexisVisible:false};
+ expect(parseReadability(JSON.parse(JSON.stringify(candidate)))).toEqual(candidate);
+ expect(treatment({...candidate,original:true})).toMatchObject({cathexisPaint:0,cathexisFace:'half-left',cathexisVisible:false});
+ expect(candidate.cathexisPaint).toBe(70);
+});
+test('CATHEXIS settings reject unsupported masks, unsafe colour and non-finite dimensions',()=>{
+ expect(parseReadability({version:1,cathexis:'red',cathexisHeight:Infinity,cathexisPaint:-20,cathexisFace:'grimace',cathexisVisible:'false'})).toMatchObject({cathexis:defaults.cathexis,cathexisHeight:1.22,cathexisPaint:0,cathexisFace:'full',cathexisVisible:true});
+ expect(parseReadability({version:1,cathexisHeight:9,cathexisPaint:120,cathexisFace:'none'})).toMatchObject({cathexisHeight:1.5,cathexisPaint:100,cathexisFace:'none'});
 });

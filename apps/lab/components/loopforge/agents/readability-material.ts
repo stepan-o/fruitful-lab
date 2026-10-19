@@ -15,6 +15,14 @@ export class ReadabilityMaterial extends MaterialPluginBase {
   CUSTOM_VERTEX_MAIN_BEGIN:'vReadHeight = (position.y - readBounds.x) / max(readBounds.y, 0.001);',
  }:{
   CUSTOM_FRAGMENT_DEFINITIONS:'varying float vReadHeight;',
+  // Painted enamel must change the metallic response too; tinted chrome stays almost black.
+  CUSTOM_FRAGMENT_UPDATE_METALLICROUGHNESS:`
+   if (readParams.z > 1.5 && readParams.z < 2.5) {
+    float readEnamel = readParams.x * smoothstep(0.69, 0.76, vReadHeight) * (1.0 - smoothstep(0.85, 0.91, vReadHeight));
+    metallicRoughness.r = mix(metallicRoughness.r, 0.05, readEnamel);
+    metallicRoughness.g = mix(metallicRoughness.g, 0.6, readEnamel);
+   }
+  `,
   CUSTOM_FRAGMENT_BEFORE_LIGHTS:`
    float readLum = dot(surfaceAlbedo, vec3(0.2126, 0.7152, 0.0722));
    float readRegion = 1.0;

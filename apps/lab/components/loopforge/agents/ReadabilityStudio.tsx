@@ -12,7 +12,7 @@ function saveUrl(url:string,name:string){const a=document.createElement('a');a.h
 function Range({label,value,min=0,max=100,step=1,unit='%',onChange}:{label:string;value:number;min?:number;max?:number;step?:number;unit?:string;onChange:(n:number)=>void}){
  return <label className={styles.range}><span>{label}<output>{step<1?value.toFixed(2):value}{unit}</output></span><input type='range' aria-label={label} value={value} min={min} max={max} step={step} onChange={e=>onChange(Number(e.target.value))}/></label>;
 }
-function Colour({label,value,onChange}:{label:string;value:string;onChange:(s:string)=>void}){return <label className={styles.colour}><input type='color' aria-label={label} value={value} onChange={e=>onChange(e.target.value)}/><span>{label}<small>{value.toUpperCase()}</small></span></label>;}
+function Colour({label,value,onChange}:{label:string;value:string;onChange:(s:string)=>void}){return <label className={styles.colour}><input type='color' aria-label={label} value={value} onInput={e=>onChange(e.currentTarget.value)} onChange={e=>onChange(e.target.value)}/><span>{label}<small>{value.toUpperCase()}</small></span></label>;}
 export default function ReadabilityStudio(){
  const canvas=useRef<HTMLCanvasElement>(null),limenLabel=useRef<HTMLDivElement>(null),stilettoLabel=useRef<HTMLDivElement>(null),runtime=useRef<Runtime|null>(null);
  const [settings,setSettings]=useState({...READABILITY_DEFAULT}),latest=useRef(settings);

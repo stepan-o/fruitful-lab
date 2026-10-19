@@ -62,7 +62,8 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
   const palettePlugins=[paint];let palette:StilettoPalette='approved';
   function applyPalette(){paint.set(STILETTO_PALETTE.accent,palette==='approved'&&appearanceMode!=='clay'?STILETTO_PALETTE.strength:0);stage.refresh();}
   applyPalette();
-  let group=container.animationGroups.find(g=>g.name==='Running__corrected')!,phase=.2/review.clips.find(c=>c.id==='Running')!.duration,playing=false,speed=1,loop=true,centred=true,last=performance.now(),notifyAt=0,disposed=false;
+  let group:typeof container.animationGroups[number]|undefined=container.animationGroups.find(g=>g.name==='Running__corrected');
+  let phase=.2/review.clips.find(c=>c.id==='Running')!.duration,playing=false,speed=1,loop=true,centred=true,last=performance.now(),notifyAt=0,disposed=false;
   const anchor=new Vector3();
   function sample(){
    if(group)for(const track of group.targetedAnimations){
@@ -118,7 +119,7 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
    palette(value:StilettoPalette){palette=value;applyPalette();},
    place(x:number,y:number,z:number,yaw:number){anchor.set(x,y,z);root.rotation.y=Math.PI+yaw*Math.PI/180;sample();},
    duration,
-   clip(value:string,keepPhase=false){playing=false;if(!keepPhase)phase=0;for(const {n,p,r,s} of neutral){n.position.copyFrom(p);n.rotationQuaternion=r.clone();n.scaling.copyFrom(s);}const selected=container.animationGroups.find(g=>g.name===value);if(!selected)throw Error(`Missing STILETTO motion: ${value}`);group=selected;sample();onFrame(phase,false);},
+   clip(value:string,keepPhase=false){playing=false;if(!keepPhase)phase=0;for(const {n,p,r,s} of neutral){n.position.copyFrom(p);n.rotationQuaternion=r.clone();n.scaling.copyFrom(s);}const selected=container.animationGroups.find(g=>g.name===value);if(value!=='Rest'&&!selected)throw Error(`Missing STILETTO motion: ${value}`);group=selected;sample();onFrame(phase,false);},
    play(value:boolean){if(value&&phase===1)phase=0;playing=value&&!!group;last=performance.now();stage.refresh();},
    seek(value:number){phase=Math.max(0,Math.min(1,value));sample();},speed(value:number){speed=value;},loop(value:boolean){loop=value;},
    centre(value:boolean){centred=value;sample();},turn(degrees:number){root.rotation.y=Math.PI+degrees*Math.PI/180;sample();},room,

@@ -150,3 +150,10 @@ The immutable GLB, animation curves, rig, character size, blade/welder fit and
 effect settings are unchanged. No extra geometry, texture maps, lights or draw
 calls are introduced. Source GLB downloads retain the original colours. New
 blade silhouette design and authored paint masks remain separate asset work.
+
+Palette verification: six focused tests, scoped lint and complete asset checks
+passed. A Babylon NullEngine integration checked 92 poses across all 23 clips,
+source/approved switching without transform changes, clay restoration, both
+tool families, fixed resource counts and disposal. Browser inspection also
+found and fixed the existing neutral-pose selector: it now uses the saved rig
+transforms instead of requesting an absent `Rest` animation clip.

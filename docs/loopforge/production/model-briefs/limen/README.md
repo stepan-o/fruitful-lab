@@ -10,9 +10,9 @@ Reconstructed rebuild brief from the accepted v2 source, owner instructions and 
 
 Use the original Set 1 identity and dark smoky background. The owner approved the pale-steel armour revision with deeper teal-cyan highlights and removal of the machine gun. The armour silhouette, skull face, poses and existing forearm-energy design remain the reference.
 
-The empty equipment slot now contains a security clipboard, manual clearance stamp and access-pass reader. Each was generated as a transparent cutout and alpha-composited onto the approved sheet. Pixels outside the overlays are unchanged. These are equipment concepts, not available 3D props or a request to regenerate the body.
+The middle equipment slot contains one protocol clipboard. Its low oblique view gives it a shallow horizontal silhouette, similar to the blade detail below. Worn steel, stained forms and a mechanical paper clamp follow LIMEN’s security-room interactions. The clipboard was generated as a transparent cutout and alpha-composited onto the approved sheet. Pixels outside its footprint are unchanged. The earlier three-item arrangement is superseded; this remains an equipment concept, not an available 3D prop or a body rebuild.
 
-The downloadable kit includes the composed sheet, three separate transparent WebP overlays and composition/generation provenance. Source-resolution PNG overlays and the approved base are retained outside the runtime deployment. Use the complete concept sheet for identity review, not as a multi-object Meshy upload.
+The downloadable kit includes the composed sheet, one separate transparent WebP clipboard and composition/generation provenance. The source-resolution PNG cutout and the approved base are retained outside the runtime deployment. Use the complete concept sheet for identity review, not as a multi-object Meshy upload.
 
 ## Read first
 

@@ -4,13 +4,11 @@ Download numbered stages and reference inputs below. For the visual library open
 
 ## LIMEN
 
-Current concept: owner-approved pale-steel revision of the original Set 1 sheet, with independently generated security props alpha-composited into its empty slot. The approved character pixels are unchanged by that composition. Existing 3D prototype and reconstructed rebuild stages are retained; the new props have no 3D models yet.
+Current concept: owner-approved pale-steel revision of the original Set 1 sheet, with one horizontal protocol clipboard alpha-composited into the middle slot. Its worn steel and paper forms follow the security-room interaction art. Approved character pixels remain unchanged. Existing 3D prototype and rebuild stages are retained; the clipboard has no 3D model yet.
 
-- [LIMEN · pale steel / Set 1 revision](/media/loopforge-model-briefs/limen-character-sheet-composed.2417766cad44da17.jpg) — Current concept sheet — approved body artwork with three separate security-prop overlays. Prepare isolated body views before Meshy generation.
-- [Security clipboard · transparent overlay](/media/loopforge-model-briefs/limen-clipboard-overlay.23d644fa34f4d003.webp) — Equipment concept — entry-clearance paperwork and tethered stylus. Separate transparent cutout; no 3D model yet.
-- [Clearance stamp · transparent overlay](/media/loopforge-model-briefs/limen-clearance-stamp-overlay.aeaa6d527a4d9435.webp) — Equipment concept — heavy manual approval stamp. Separate transparent cutout; no 3D model yet.
-- [Access-pass reader · transparent overlay](/media/loopforge-model-briefs/limen-pass-reader-overlay.7941d78fa5c38c04.webp) — Equipment concept — industrial worker-card reader. Separate transparent cutout; no 3D model yet.
-- [Body rebuild](/loopforge-design/model-briefs/limen-01-body-rebuild.af360da5175b2561.txt)
+- [LIMEN · pale steel / Set 1 revision](/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg) — Current concept sheet — approved body artwork with one horizontal protocol clipboard in the middle equipment slot. Prepare isolated body views before Meshy generation.
+- [Protocol clipboard · horizontal overlay](/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp) — Equipment concept — weathered steel clipboard and paper protocols, seen at a low oblique angle. Transparent cutout; no 3D model yet.
+- [Body rebuild](/loopforge-design/model-briefs/limen-01-body-rebuild.ef326d7b8007b4d7.txt)
 - [Emitter rebuild](/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt)
 - [Rig and delivery](/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt)
 ## Worker 01

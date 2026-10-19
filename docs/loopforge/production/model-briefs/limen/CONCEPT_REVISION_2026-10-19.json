@@ -1,193 +1,122 @@
 {
   "date": "2026-10-19",
+  "revision": "single-protocol-clipboard-v2",
   "base": "limen-set-1-pale-steel-v1.png",
   "baseSha256": "700053364c3dc579541146b9e321323cc392aa12eda33fddcbc2b91570e646d2",
-  "method": "Alpha composite of independently generated transparent equipment. Approved character artwork is not regenerated.",
+  "method": "Alpha composite of one independently generated transparent protocol clipboard. Proportional resize only; the low horizontal silhouette comes from the generated oblique viewpoint. Approved character artwork is not regenerated.",
   "items": [
     {
-      "id": "clipboard",
-      "sourceGeneratedName": "exec-781a31ac-28cc-4f7c-bc0e-f2a64cb4e79e.png",
-      "file": "limen-clipboard-overlay.png",
-      "sha256": "a7a7f1d32dc214b63164c013dc080ba18c2b0ee4daa8dd79c8b60a454a534ce4",
+      "id": "protocol-clipboard",
+      "sourceGeneratedName": "exec-15edbf7d-61c2-4f6f-930e-2325d7c30913.png",
+      "file": "limen-protocol-clipboard-horizontal-v2.png",
+      "sha256": "ae963c310b7fde955536c6f1b248a8169a63f924d7ca555488906488cab7acd3",
       "sourceAlphaCrop": [
-        0,
-        17,
-        1020,
-        1536
+        39,
+        134,
+        1934,
+        755
       ],
+      "cropAlphaThreshold": 12,
+      "cropPadding": 8,
       "position": [
         985,
-        355
+        392
       ],
       "placedSize": [
-        148,
-        220
-      ]
-    },
-    {
-      "id": "clearance-stamp",
-      "sourceGeneratedName": "exec-75049f19-8aa9-484c-adfc-82a8280c072d.png",
-      "file": "limen-clearance-stamp-overlay.png",
-      "sha256": "aa4ec50324bbb3a534999b53145999c48211638c9728c6cce6e5d02c4fdf0f06",
-      "sourceAlphaCrop": [
-        41,
-        15,
-        1516,
-        1024
-      ],
-      "position": [
-        1155,
-        417
-      ],
-      "placedSize": [
-        170,
-        116
-      ]
-    },
-    {
-      "id": "pass-reader",
-      "sourceGeneratedName": "exec-eaed680f-a249-4230-9b62-cc4c5ab06eec.png",
-      "file": "limen-pass-reader-overlay.png",
-      "sha256": "4fa48a72ebc9fd3a8151fe62371ede54a4ec08200acbdc64458e369d732fb1ca",
-      "sourceAlphaCrop": [
-        0,
-        49,
-        1010,
-        1536
-      ],
-      "position": [
-        1340,
-        360
-      ],
-      "placedSize": [
-        143,
-        210
+        490,
+        161
       ]
     }
   ],
   "changedBounds": [
-    988,
-    360,
-    1471,
-    571
+    985,
+    392,
+    1475,
+    553
   ],
   "unchangedOutsideOverlay": true,
-  "composedSha256": "812d879c23b5d018516ba1c3746fc9ba94c7558520403f13e8756b6028123c92",
+  "composedSha256": "3c543c780503b0d20844e866a26d8885536bf4468c4b5f218b61e2817dd90edc",
+  "generation": {
+    "tool": "built-in image_gen",
+    "transparentBackground": true,
+    "styleReferences": [
+      "frontend/loopforge-webview/public/assets/concept_art/characters/security_operations/limen_security.png",
+      "frontend/loopforge-webview/public/assets/concept_art/characters/interactions/argue_limen_stiletto_security.png"
+    ],
+    "compositionReference": "limen-set-1-pale-steel-v1.png",
+    "prompt": "Use case: stylized-concept.\nCreate ONE isolated protocol clipboard for LIMEN's character concept sheet. True transparent background, landscape canvas approximately 3:1. This is a standalone painted prop cutout, NOT a full character sheet.\nReference 1 is the security room: follow its gritty worn bureaucratic industrial design, thin dirty paper forms, dark oxidized steel, small mechanical clips and aged inspection tags. Reference 2 is the security checkpoint interaction: match its detailed hand-painted/etched concept-art treatment and worn hardware. Reference 3 is the approved LIMEN sheet: match its linework, cool steel lighting and restrained palette; the new item will be placed in the empty horizontal slot below the head portraits and above the belt details. Do not reproduce or change that sheet.\nSubject: a simple, thin, battered dark-steel protocol clipboard, with a few yellow-grey worn paper forms tightly clamped to the board by a utilitarian spring-metal clip. Subtle blue-grey patina, rubbed metal edges, fine dark scratches, a few muted rust stains and oily finger marks. Mechanical factory bureaucracy, not an electronic tablet. Paper carries faded compact typewriter-like lines, little checkboxes and one small faded approval stamp; a modest printed heading 'PROTOCOL'. Restrained details that read as paperwork at small scale.\nVIEWPOINT AND FOOTPRINT ARE CRITICAL: the clipboard lies almost flat, shown from a LOW OBLIQUE three-quarter viewpoint about 20 degrees above its surface. Its LONG AXIS runs LEFT TO RIGHT across the image, the spring clip at the left end; the near long edge is almost horizontal, slightly diagonal. Strong perspective foreshortening makes the final visible item WIDE AND SHALLOW, around 3.2:1 width to height, so it fits a 470 x 150 pixel horizontal gap like the blade detail on the sheet. See enough paper surface to identify it as a clipboard, but NEVER an upright portrait or front-on clipboard. Do not squash the object; achieve the shallow silhouette with real perspective.\nComposition: a single clipboard centered, fills most of the landscape width with modest transparent margin; all edges fully within frame. No separate accessories, no detached stamp, pen, reader, hands, characters, scene, background, table, smoke, ground shadow, labels outside the object, bright cyan lights, display screens, huge armored frame or plastic corners. Light softly from upper left as in the sheet, cool worn highlights, subdued shadows. Detailed painterly concept art, not glossy product photography. Preserve real alpha transparency."
+  },
+  "supersedes": "The earlier three-prop layout and front-on clipboard are superseded. The active sheet and kit contain one horizontal protocol clipboard.",
+  "baseGeneration": {
+    "character": "LIMEN",
+    "status": "Character artwork approved by owner on 19 October 2026",
+    "reference": "frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/limen_character_sheet_1.png",
+    "generated_with": "Built-in image_gen",
+    "date": "2026-10-19",
+    "changes": [
+      "Pale-steel exterior armour",
+      "Deeper saturated teal-cyan highlights",
+      "Machine gun removed"
+    ],
+    "prompt": "Use case: precise-object-edit. Edit this exact existing LIMEN character concept sheet. This is a restrained colour/material revision, NOT a redesign. Preserve the original artwork's composition, all character anatomy and proportions, face, head shapes, armour construction, straps, chest labels, utility belt and pouches, poses, illustrated rendering, typography and dark smoky blue-charcoal background. Keep \"LIMEN\" and \"SECURITY CHIEF\" in exactly the same style and position. Retain the two full-body views, both head detail portraits, belt equipment and forearm energy-blade detail.\n\nMake ONLY these changes:\n1. Recolour the broad exterior ARMOUR surfaces in every character view and head detail from dark green-black steel to worn PALE STEEL, reference sRGB #AAB9BD. Preserve dark graphite recessed joints, hoses, plate gaps, strapping and undersuit so the pale outer plates read as heavy layered industrial metal. Keep original scratches, wear, material texture and carefully drawn geometry. Light steel should visibly dominate the outer shell, with convincing midtone shading, not white plastic, not bright chrome and not a washed-out image. Do not lighten the background.\n2. Deepen the cyan accents in eyes and the forearm energy blade to rich saturated darker teal-cyan, reference #008FAD through #00A9C2. Keep a clearly luminous energy effect with fine electrical filaments, but reduce the broad white-hot core and pale cyan bloom so the cyan colour remains distinctly legible against the new pale armour. Preserve the exact flowing, jagged electrical blade design and attachment. No solid sword redesign. Apply consistently to all head portraits and emitter detail. Do not add cyan stripes to armour.\n3. REMOVE the machine gun in the middle-right equipment area completely. Fill its former footprint seamlessly with the SAME dark smoky textured background. Do not replace it with another weapon or object. Preserve all other equipment and its layout.\n\nAbsolutely preserve this character's original heavy tactical security-chief identity. No worker head, round goggles, new riveted plates, altered jaw, new boots, shoulder enlargement, new symbols or new borders. Keep the severe skull face, angular eyes and teeth exactly as drawn. Same landscape canvas and uncropped composition. The user likes this sheet as-is; the only permitted revisions are pale steel armour, deeper cyan highlights and removal of the gun."
+  },
   "publication": {
     "sheet": {
       "label": "LIMEN · pale steel / Set 1 revision",
-      "role": "Current concept sheet — approved body artwork with three separate security-prop overlays. Prepare isolated body views before Meshy generation.",
-      "sourceName": "limen-character-sheet-composed.png",
-      "sourceSha256": "812d879c23b5d018516ba1c3746fc9ba94c7558520403f13e8756b6028123c92",
+      "role": "Current concept sheet — approved body artwork with one horizontal protocol clipboard in the middle equipment slot. Prepare isolated body views before Meshy generation.",
+      "sourceName": "limen-character-sheet-protocol-v2.png",
+      "sourceSha256": "3c543c780503b0d20844e866a26d8885536bf4468c4b5f218b61e2817dd90edc",
       "input": {
-        "src": "/media/loopforge-model-briefs/limen-character-sheet-composed.2417766cad44da17.jpg",
+        "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
         "width": 1536,
         "height": 1024,
-        "bytes": 618335,
-        "sha256": "2417766cad44da17d0005700cde755ba4174c5cae63f1e3d81c1f8dcb913919a"
+        "bytes": 626054,
+        "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
       },
       "variants": [
         {
-          "src": "/media/loopforge-model-briefs/limen-character-sheet-composed-360.a2fcbf16a05313cd.webp",
+          "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-360.bed8d640e2977d5b.webp",
           "width": 360,
           "height": 240,
-          "bytes": 26236,
-          "sha256": "a2fcbf16a05313cdaa6c743fc15e5ef148d6b87328f3e012e561f8b58efd2582"
+          "bytes": 23442,
+          "sha256": "bed8d640e2977d5b9ad0ff8c5a634ac5f725624191da30d609adf7d0aa0e1f11"
         },
         {
-          "src": "/media/loopforge-model-briefs/limen-character-sheet-composed-720.6e5f9e013dd45fb8.webp",
+          "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-720.a426cbb598560982.webp",
           "width": 720,
           "height": 480,
-          "bytes": 89476,
-          "sha256": "6e5f9e013dd45fb85edfb5a10d3ab66ce603638682c16637dac463de574618af"
+          "bytes": 79716,
+          "sha256": "a426cbb59856098251c14b628f74e56297bf907d9c3b3af3fd65e393c918f169"
         }
       ]
     },
     "overlays": [
       {
-        "label": "Security clipboard · transparent overlay",
-        "role": "Equipment concept — entry-clearance paperwork and tethered stylus. Separate transparent cutout; no 3D model yet.",
-        "sourceName": "limen-clipboard-overlay.png",
-        "sourceSha256": "a7a7f1d32dc214b63164c013dc080ba18c2b0ee4daa8dd79c8b60a454a534ce4",
+        "label": "Protocol clipboard · horizontal overlay",
+        "role": "Equipment concept — weathered steel clipboard and paper protocols, seen at a low oblique angle. Transparent cutout; no 3D model yet.",
+        "sourceName": "limen-protocol-clipboard-horizontal-v2.png",
+        "sourceSha256": "ae963c310b7fde955536c6f1b248a8169a63f924d7ca555488906488cab7acd3",
         "input": {
-          "src": "/media/loopforge-model-briefs/limen-clipboard-overlay.23d644fa34f4d003.webp",
-          "width": 1020,
-          "height": 1519,
-          "bytes": 513692,
-          "sha256": "23d644fa34f4d0038b285f39b07a0c24f51449dc8837c62956b2b413be8462fe"
+          "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+          "width": 1895,
+          "height": 621,
+          "bytes": 410092,
+          "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
         },
         "variants": [
           {
-            "src": "/media/loopforge-model-briefs/limen-clipboard-overlay-360.eabe00be6383ad2d.webp",
+            "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-360.895b5e8658485e3e.webp",
             "width": 360,
-            "height": 536,
-            "bytes": 77900,
-            "sha256": "eabe00be6383ad2d9f01547adbec1272357bc0eece2bfc5e9bf0a66ea9a4c3b6"
+            "height": 118,
+            "bytes": 16558,
+            "sha256": "895b5e8658485e3e96c65a80e52ab1744e6976c304af0e7a749f3f9bd6772c47"
           },
           {
-            "src": "/media/loopforge-model-briefs/limen-clipboard-overlay-720.95eace2162de6623.webp",
+            "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-720.4c95571a1fef1887.webp",
             "width": 720,
-            "height": 1072,
-            "bytes": 286700,
-            "sha256": "95eace2162de6623076bbeb09d3d434ef33065afadd8d3394b2b021de81e8980"
-          }
-        ]
-      },
-      {
-        "label": "Clearance stamp · transparent overlay",
-        "role": "Equipment concept — heavy manual approval stamp. Separate transparent cutout; no 3D model yet.",
-        "sourceName": "limen-clearance-stamp-overlay.png",
-        "sourceSha256": "aa4ec50324bbb3a534999b53145999c48211638c9728c6cce6e5d02c4fdf0f06",
-        "input": {
-          "src": "/media/loopforge-model-briefs/limen-clearance-stamp-overlay.aeaa6d527a4d9435.webp",
-          "width": 1024,
-          "height": 700,
-          "bytes": 110692,
-          "sha256": "aeaa6d527a4d9435e9a8082c9fa67c452c2d611e1ba494598028b39b202d2c3a"
-        },
-        "variants": [
-          {
-            "src": "/media/loopforge-model-briefs/limen-clearance-stamp-overlay-360.4059496252f1df35.webp",
-            "width": 360,
-            "height": 246,
-            "bytes": 18134,
-            "sha256": "4059496252f1df3543d73aa38a1711e4b7f81833e1edad82e325a3cf60a7a0bc"
-          },
-          {
-            "src": "/media/loopforge-model-briefs/limen-clearance-stamp-overlay-720.70378dfc57024353.webp",
-            "width": 720,
-            "height": 493,
-            "bytes": 57520,
-            "sha256": "70378dfc5702435386cba6813af26234deb78ae568107c9068dd0e2391cb110d"
-          }
-        ]
-      },
-      {
-        "label": "Access-pass reader · transparent overlay",
-        "role": "Equipment concept — industrial worker-card reader. Separate transparent cutout; no 3D model yet.",
-        "sourceName": "limen-pass-reader-overlay.png",
-        "sourceSha256": "4fa48a72ebc9fd3a8151fe62371ede54a4ec08200acbdc64458e369d732fb1ca",
-        "input": {
-          "src": "/media/loopforge-model-briefs/limen-pass-reader-overlay.7941d78fa5c38c04.webp",
-          "width": 1010,
-          "height": 1487,
-          "bytes": 334074,
-          "sha256": "7941d78fa5c38c040207482fae0573876acafcb7fb5c6b85ecf0bda24d1dc9ab"
-        },
-        "variants": [
-          {
-            "src": "/media/loopforge-model-briefs/limen-pass-reader-overlay-360.43a7abf72fe311c6.webp",
-            "width": 360,
-            "height": 530,
-            "bytes": 56070,
-            "sha256": "43a7abf72fe311c6398d31f8ae511e62a7a6c670bdf7facc756da19f3adeff1e"
-          },
-          {
-            "src": "/media/loopforge-model-briefs/limen-pass-reader-overlay-720.3a0d39440524a3a7.webp",
-            "width": 720,
-            "height": 1060,
-            "bytes": 197248,
-            "sha256": "3a0d39440524a3a7f2c45650f35021a3cb96e0783b9f24417e3dcb3ef081f715"
+            "height": 236,
+            "bytes": 55366,
+            "sha256": "4c95571a1fef18873d20afa776ed58366171a005696d9d3ea218613eeaf40b2c"
           }
         ]
       }
@@ -221,37 +150,5 @@
         }
       ]
     }
-  },
-  "generation": {
-    "tool": "Built-in imagegen",
-    "transparentBackground": true,
-    "reference": "Owner-approved LIMEN Set 1 pale-steel revision",
-    "prompts": [
-      {
-        "key": "clipboard",
-        "prompt": "Use case: stylized-concept. Generate ONE isolated industrial security equipment concept-art cutout on a TRUE TRANSPARENT background. The supplied image is only a STYLE AND MATERIAL reference: match its detailed painted dark smoky Loopforge character-dossier medium, worn pale-steel armour, graphite mechanisms, restrained antique brass accents and cool lighting. Do NOT reproduce the character, sheet, background or layout. No background panel, paper backdrop, base, vignette, lettering outside the object, floating effects, gun, human or robot hand. This cutout will be composited into the blank right-side equipment slot of the approved sheet; compact readable silhouette and soft painted edges, coherent highlights from upper left. Full uncropped object with generous transparent margins, subtle hand-painted wear, credible heavy factory construction, not photoreal product photography or glossy UI icon. Subject: LIMEN's SECURITY CLIPBOARD. A broad, rugged rectangular steel inspection clipboard held nearly front-on in a mild three-quarter angle, portrait format with width 70% of height. Heavy spring clip at top, a stack of worn grey-cream worker-entry inspection papers, strong dark printed checkbox rows and a couple of red clearance stamps, a tethered metal stylus fixed along the right edge. The main paper heading reads \"ENTRY CLEARANCE\" in small worn lettering; no need for legible small body text. Squared chamfered steel corners, black protective edge strips, restrained brass fasteners and one tiny unlit teal status lens built into the clip. Functional bureaucratic object used to scrutinize worker papers. Preserve lots of visible paper against the metal. No screens replacing the paper. Transparent alpha all around. "
-      },
-      {
-        "key": "stamp",
-        "prompt": "Use case: stylized-concept. Generate ONE isolated industrial security equipment concept-art cutout on a TRUE TRANSPARENT background. The supplied image is only a STYLE AND MATERIAL reference: match its detailed painted dark smoky Loopforge character-dossier medium, worn pale-steel armour, graphite mechanisms, restrained antique brass accents and cool lighting. Do NOT reproduce the character, sheet, background or layout. No background panel, paper backdrop, base, vignette, lettering outside the object, floating effects, gun, human or robot hand. This cutout will be composited into the blank right-side equipment slot of the approved sheet; compact readable silhouette and soft painted edges, coherent highlights from upper left. Full uncropped object with generous transparent margins, subtle hand-painted wear, credible heavy factory construction, not photoreal product photography or glossy UI icon. Subject: LIMEN's heavy mechanical CLEARANCE STAMP. A compact handheld industrial rubber document stamper, seen three-quarter from above: short thick dark graphite vertical palm handle, worn brass actuator collar, rectangular pale-steel stamping shoe with dark rubber underside, small mechanical locking lever. Powerful squat silhouette, readable handle and rectangular base, simple enough to remain recognizable at 100px. The side of the shoe has only the word \"CLEARED\". No ink blot floating outside it, no paper, no pedestal. This is a physical bureaucratic rubber stamp, not a gun, not a hammer and not a magical object. Transparent alpha all around. "
-      },
-      {
-        "key": "reader",
-        "prompt": "Use case: stylized-concept. Generate ONE isolated industrial security equipment concept-art cutout on a TRUE TRANSPARENT background. The supplied image is only a STYLE AND MATERIAL reference: match its detailed painted dark smoky Loopforge character-dossier medium, worn pale-steel armour, graphite mechanisms, restrained antique brass accents and cool lighting. Do NOT reproduce the character, sheet, background or layout. No background panel, paper backdrop, base, vignette, lettering outside the object, floating effects, gun, human or robot hand. This cutout will be composited into the blank right-side equipment slot of the approved sheet; compact readable silhouette and soft painted edges, coherent highlights from upper left. Full uncropped object with generous transparent margins, subtle hand-painted wear, credible heavy factory construction, not photoreal product photography or glossy UI icon. Subject: LIMEN's worker ACCESS-PASS READER, a compact rectangular handheld verification scanner, three-quarter front view with portrait orientation. Worn pale steel housing with protective graphite corners, recessed small dim teal rectangular status window at top, two simple thick control buttons, a lower physical card slot holding a small brass-edged worker identity card halfway inserted. Tiny face pictogram and a couple of rows on the card, no real person. Tether loop at the bottom. It is an old-factory industrial card verification instrument, not a modern smartphone, not a pistol, no trigger, no handle, no barrel. Keep screen dim and small, mostly practical mechanical body. Transparent alpha all around."
-      }
-    ]
-  },
-  "baseGeneration": {
-    "character": "LIMEN",
-    "status": "Character artwork approved by owner on 19 October 2026",
-    "reference": "frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/limen_character_sheet_1.png",
-    "generated_with": "Built-in image_gen",
-    "date": "2026-10-19",
-    "changes": [
-      "Pale-steel exterior armour",
-      "Deeper saturated teal-cyan highlights",
-      "Machine gun removed"
-    ],
-    "prompt": "Use case: precise-object-edit. Edit this exact existing LIMEN character concept sheet. This is a restrained colour/material revision, NOT a redesign. Preserve the original artwork's composition, all character anatomy and proportions, face, head shapes, armour construction, straps, chest labels, utility belt and pouches, poses, illustrated rendering, typography and dark smoky blue-charcoal background. Keep \"LIMEN\" and \"SECURITY CHIEF\" in exactly the same style and position. Retain the two full-body views, both head detail portraits, belt equipment and forearm energy-blade detail.\n\nMake ONLY these changes:\n1. Recolour the broad exterior ARMOUR surfaces in every character view and head detail from dark green-black steel to worn PALE STEEL, reference sRGB #AAB9BD. Preserve dark graphite recessed joints, hoses, plate gaps, strapping and undersuit so the pale outer plates read as heavy layered industrial metal. Keep original scratches, wear, material texture and carefully drawn geometry. Light steel should visibly dominate the outer shell, with convincing midtone shading, not white plastic, not bright chrome and not a washed-out image. Do not lighten the background.\n2. Deepen the cyan accents in eyes and the forearm energy blade to rich saturated darker teal-cyan, reference #008FAD through #00A9C2. Keep a clearly luminous energy effect with fine electrical filaments, but reduce the broad white-hot core and pale cyan bloom so the cyan colour remains distinctly legible against the new pale armour. Preserve the exact flowing, jagged electrical blade design and attachment. No solid sword redesign. Apply consistently to all head portraits and emitter detail. Do not add cyan stripes to armour.\n3. REMOVE the machine gun in the middle-right equipment area completely. Fill its former footprint seamlessly with the SAME dark smoky textured background. Do not replace it with another weapon or object. Preserve all other equipment and its layout.\n\nAbsolutely preserve this character's original heavy tactical security-chief identity. No worker head, round goggles, new riveted plates, altered jaw, new boots, shoulder enlargement, new symbols or new borders. Keep the severe skull face, angular eyes and teeth exactly as drawn. Same landscape canvas and uncropped composition. The user likes this sheet as-is; the only permitted revisions are pale steel armour, deeper cyan highlights and removal of the gun."
   }
 }

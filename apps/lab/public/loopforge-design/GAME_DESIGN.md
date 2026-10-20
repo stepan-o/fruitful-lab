@@ -5152,7 +5152,7 @@ Owner direction, 17 October 2026: the next development priority is a factory who
 
 20 October owner direction: workers must be recognizable through appearance, movement, speech, relationships, choices, **actions and reactions**. Their BDI motives should drive factory conduct, with robot mechanisms carrying recognizable human meanings. Story discovery happens in short, situated exchanges tied to player problems and later consequences. Day one's pressure from LIMEN starts individual worker–LIMEN arcs and worker–worker relationships; a common stress increase does not establish those identities.
 
-The [character dramaturgy and worker story design](CHARACTER_DRAMATURGY.md) defines the character record, robot metaphors, perception-to-action chain, bite-sized discovery, and conditional arcs across shifts and weeks. It extends the Puppeteer/Producer direction. The [ten-worker cast](OPENING_CAST.md) and [opening episode](OPENING_EPISODE.md) are writing proposals for approval before concept art, Meshy production and the systems that support the approved performance. The [illustrated Back to the Dawn study](BACK_TO_THE_DAWN_CASE_STUDY.md) records the reference. Full worker BDI and persistent relationship arcs remain implementation work.
+The [character dramaturgy essay](CHARACTER_DRAMATURGY.md) follows the workers from the Security queue to the choices they make later on shift. [Writing Loopforge](EDITORIAL_VOICE.md) sets the candidate editorial and dialogue direction, with concrete examples and distinct supervisor voices. It extends the Puppeteer/Producer direction. The [ten-worker cast](OPENING_CAST.md) and [opening episode](OPENING_EPISODE.md) are writing proposals for approval before concept art, Meshy production and the systems that support the approved performance. The [illustrated Back to the Dawn study](BACK_TO_THE_DAWN_CASE_STUDY.md) records the reference. Full worker BDI and persistent relationship arcs remain implementation work.
 
 ### Opening two-week arc
 
@@ -5325,102 +5325,85 @@ Worker 01’s 19 exported motions are available in the [production review player
 The owner selects **Hot Walk as Cathexis’s default walk**. Keep that public name even though the source FBX says `Confident_Walk`. Preserve the expressive gait; fix mesh intersections without erasing its character. Worker 01 is a temporary motion stand-in until Cathexis’s own mesh/rig can be reviewed. Style approval does not certify retargeting or factory contact. `afraid_recoil` and `work_cradle` remain missing custom motions.
 
 
-# Character dramaturgy and worker story design
+# The people who make the factory run
 
-20 October 2026 · Owner direction for the opening cast and Act 1.
+Character dramaturgy · 20 October 2026 · Opening cast and scene remain proposals.
 
-**Loopforge tells human stories through robot lives.** Workers are recurring characters whose wants, beliefs and relationships affect what happens in the factory. The player comes to know them through what they do, how they respond to pressure, and short exchanges that make those choices meaningful. Appearance, movement, speech, relationships, choices, **actions and reactions** must form one recognizable person.
+By the end of the proposed opening scene, LIMEN has almost everything he wanted. The workers have stopped crowding the door. Their IDs are ready. One of them is helping with the paperwork. The first admission is orderly, although the worker going through the door now has a limp.
 
-This is character dramaturgy: designing people who generate drama through action. It connects narrative design, the robot metaphor, character art and BDI behavior. The purpose is a show worth watching and influencing. The [first five days](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md) provide its first small society; the [morning count](production/DAY_ONE_ARRIVAL.md) supplies their first shared encounter.
+That morning can look like a success from LIMEN's desk. From the queue, it looks rather different. Skip tried to be useful and was struck. Patch offered help and was told to wait. Index followed the instructions carefully and received a position beside the person giving them. The player has watched all three experiences happen in the same room. When these workers meet again at the Conveyor, there is already something between them.
 
-[Illustrated Back to the Dawn case study](BACK_TO_THE_DAWN_CASE_STUDY.md) · [Ten-worker cast proposal](OPENING_CAST.md) · [Opening episode script](OPENING_EPISODE.md)
+This is where Loopforge's characters begin to matter. The player needs a factory that works, and the people who can make it work have their own ideas about what just happened. Their habits will affect the next handoff, the next warning and the next request for help. Getting to know them gives the player a better chance of understanding those events—and a reason to care when the outcome is disappointing.
 
-## What the reference teaches us
+[The ten workers](OPENING_CAST.md) · [The opening episode](OPENING_EPISODE.md) · [Back to the Dawn case study](BACK_TO_THE_DAWN_CASE_STUDY.md) · [Writing Loopforge](EDITORIAL_VOICE.md)
 
-The owner's reference is *Back to the Dawn*: an ensemble of distinctive inmates, small dialogue exchanges, relationships that help solve problems, and animal traits that carry recognizable human meanings. Its lesson for Loopforge is the connection between character discovery and the player's purpose. Learning about someone changes the interpretation of a problem, opens an approach, complicates a choice, or makes a consequence matter.
+## Being useful can get you into trouble
 
-Loopforge adds an important source of characterization: workers and supervisors are intended to act through beliefs, desires and intentions. They can reveal themselves without waiting for a player to open a conversation. A worker volunteers, conceals a fault, waits for permission, helps a colleague, repeats a warning, or refuses a shortcut. Dialogue gives those actions voice. Their subsequent conduct must support, complicate or expose what they said.
+Skip wants to be the worker people ask for. They finish one job with an eye on the next, offer to carry something before being asked and remember which supervisor noticed. There is kindness in this eagerness. There is also competition: being needed feels safer than being left standing while somebody else is chosen.
 
-We are borrowing this design logic, not its prison escape plot, animal factions or specific characters. Loopforge's immediate stakes are making the factory function, answering leadership's demands, and deciding how its people will be treated. Relationships must matter to those problems. Affection, curiosity and humour also have value; every conversation need not award a resource or unlock a solution.
+An earlier success gives Skip a reason to trust that habit. They once rescued a delayed handoff by acting without an instruction, and someone praised them for it. At Security, they hear LIMEN begin counting and mistake their number for a summons. The same readiness that helped on one shift gets them hurt on another. Later, when Skip asks permission for a perfectly ordinary task, the player has a chance to recognize how that hesitation was learned.
 
-## Human patterns expressed through robot lives
+Patch has a different difficulty. They know how to help and are accustomed to being allowed to do it. Offering an arm seems obvious; letting Skip refuse it takes more effort. Index, meanwhile, believes the rule will protect everyone if everyone follows it. Telling Patch to wait may feel like preventing a second injury. It can still leave Skip on the floor.
 
-An archetype is a recognizable human pattern with an individual contradiction. “Blue robot with a nervous voice” is an appearance and a mannerism. A worker who believes being useful will keep them from being replaced has a motive that can produce eager volunteering, hidden strain, resentment of a newcomer and unexpected loyalty to someone who lets them rest. The contradiction keeps the character from becoming a single repeated joke.
+These are people we can understand before we agree with them. Their useful qualities also make trouble. Skip's generosity becomes overcommitment; Patch's care can become interference; Index's diligence can make a bad instruction harder to escape. A character begins to feel familiar when the player can anticipate one of these choices. A later surprise becomes convincing when something has happened to change the choice.
 
-Robot details should have a literal function and a human consequence. Candidate motifs include:
+## What a robot can mean
 
-- A serial number, replacement plate or reassigned component can carry questions of identity, status and belonging.
-- Battery and duty cycles can express exhaustion, overcommitment and the shame of needing rest. Charging, repair and psychological recovery remain different things.
-- Maintenance access and spare parts can become care, reciprocity, unequal privilege or dependence.
-- Certification, clearance and firmware rules can express legitimacy, conformity and the need for permission.
-- Retained logs, corrupted records and conflicting reports can express memory, reputation and contested history.
-- Manufactured purpose and station aptitude can express pride, vocation, class and the fear of becoming unnecessary.
+A worn joint has practical consequences. It may slow a worker down, make a task painful or require a part another worker knows how to obtain. Around that small mechanical fact, several human concerns can gather. The worker may be ashamed to report the fault, proud of an old repair or reluctant to accept another favor from the person who fixed it last time.
 
-These are design possibilities, not new mechanics or fixed biographies. Build each metaphor into a concrete situation, an action the robot can take, and a visible cost or benefit. Mechanical differences do not dictate a moral personality. Robots with the same body or firmware can develop different beliefs and relationships from their histories. Keep warmth, competence, vanity, humour and mutual care alongside fear and damage.
+Those meanings depend on what people do with the body they have. Crate enjoys being good at heavy work. The resentment begins when colleagues take that ability as permission to add one more load. A replacement plate can be an ordinary repair to its owner and an embarrassing reminder to someone who remembers how it was damaged. Maintenance can give Patch a way to care for another worker; it can also give them an excuse to decide what that worker needs.
 
-## Identity is a behavioral promise
+Loopforge has plenty of language for these encounters already: shifts, clearances, tolerances, service records, missed targets, spare parts. The words belong to work, but work reaches into a life. Being considered reliable can become a source of pride. Being considered replaceable can make someone accept conditions they would otherwise refuse. We should let the situation establish those connections before asking a character to explain them.
 
-For every recurring worker, define a small, coherent character record:
+There must also be things worth enjoying here. Mica can take pleasure in getting an alignment right. Fuse can make a dull task bearable. Crate and Hush can be good company for each other without discussing their friendship. CATHEXIS will eventually bring a different appetite for attention, beauty and amusement into this working society. If the factory offers only suffering, there will be little for the player to miss when a relationship or a familiar routine is lost.
 
-1. **Human pattern and contradiction.** What recognizable kind of person are they, and what stops them being a caricature?
-2. **Want, fear and belief.** What matters now, what do they protect, and what do they think will achieve it? Beliefs can be incomplete or wrong.
-3. **Factory conduct.** What task do they seek or avoid? What do they do under routine work, authority pressure, an accident, peer need and unexpected kindness?
-4. **Visible signature.** A readable blue-family variation, one useful silhouette or wear cue, posture, motion phrasing and speech rhythm. Preserve the supervisor/worker hierarchy and reuse the accepted rig where possible.
-5. **Relationships.** Who do they trust, defer to, protect, imitate, envy or avoid—and which event earned that response?
-6. **Discoverable past.** Which earlier experience explains a present choice? How can it emerge naturally while dealing with a current problem?
-7. **Arc opportunities.** What could reinforce their belief, challenge it, or allow a different choice? Specify conditions, not a mandatory ending.
-8. **Performance and system needs.** Identify the action, counterpart, prop, motion, line, memory and world result needed to make the beat happen.
+## Ten workers do not have to mean ten introductions
 
-A signature is a tendency, not an animation loop or a deterministic label. A timid worker can help someone at personal risk. A dutiful worker can decide an order is illegitimate. Such changes need evidence and continuity. The player should sometimes predict a response, then understand a surprising one after seeing what changed.
+At Security, the player can meet a person through a small act. Tally picks up the dropped ID. Hush keeps a place open. Mica gives up a spot with enough room for Skip's injured leg. None requires a biography before the act makes sense. A later encounter can give it a name, a history or an unexpected cost.
 
-## Day one pressure starts individual arcs
+*Back to the Dawn* offers a useful example of how to sustain that interest across a large ensemble. Its inmates have stories of their own, while the player's need to escape creates reasons to approach them. Short conversations can serve an immediate purpose and leave a person more interesting than they were before. The [illustrated case study](BACK_TO_THE_DAWN_CASE_STUDY.md) follows that connection from the morning count to a private exchange.
 
-Every one of the ten arrivals encounters **pressure from authority, embodied by LIMEN**. They share a setting, but not an identical experience. Worker 01 is confronted and injured in the authored opening. Other workers hear commands, witness different portions of the encounter, attempt compliance, offer help or withhold it. Their positions, attention and existing dispositions affect what the event means to them.
+Loopforge's player has a different job. They are trying to meet leadership's demands through supervisors whose methods affect the same workers. Knowing that Skip now waits for explicit permission may explain why a station has stalled. Knowing that Index was rewarded for enforcing the rule may explain why asking them to hurry has no effect. A morning briefing can offer one supervisor's account; the factory floor gives the player something to compare it with.
 
-For each worker, retain the perceived event, its source, their interpretation, selected response, result, and the people involved. Separate what happened from what that worker believes happened. A missed action cannot become a witnessed fact; a neighbour's account can become an attributed report. A shared rise in stress cannot substitute for these individual beginnings.
+Discovery should arrive when there is a reason to listen. If Patch challenges Skip's next shortcut, Skip might mention the shift when acting early saved the line. If Relay repeats an account of the strike, Tally might correct a detail. The player learns a little history while dealing with the present. Some conversations can go further when the player wants them to; ordinary operation should not depend on exhausting everyone's dialogue.
 
-The current rehearsal uses anonymous worker roles. The [new cast proposal](OPENING_CAST.md) gives all ten distinct motives, appearances and relationships; it is not yet implemented. Skip steps forward to be useful, Patch offers help, Index repeats the rule and accepts a clerk's role. Tally preserves the dropped ID, Crate and Hush make space, Mica surrenders a comfortable position, Fuse loses the joke, Nib changes whom they copy, and Relay seeks the facts their view could not establish.
+## The same morning leaves different memories
 
-The [proposed episode](OPENING_EPISODE.md) foregrounds a few voices while giving everyone a consequential action. Later encounters can reveal their histories in small pieces. The same ten identities carry across work, conflict and recovery; none is merely a different idle loop.
+The blade strike is one event, but the workers do not receive identical versions of it. Skip feels the contact. Tally sees the approach and the blow. Relay's view is blocked by Crate; they hear the shout and see Skip on the floor. Index has been concentrating on the instruction. What each later says should follow from that experience.
 
-The encounter starts two linked kinds of arc: **each worker with LIMEN**, and **workers with each other**. Trust earned by helping, embarrassment witnessed by a peer, imitation of another's compliance, and silence interpreted as abandonment can change later cooperation and information sharing. No universal “relationship with workers” score can represent that network.
+Disagreement can then have an honest beginning. Index may think Skip ignored a clear order. Skip may think they obeyed a call. Relay may repeat Index's explanation because it sounds authoritative, while Tally knows enough to challenge part of it. The player saw the scene from another position again. Nobody needs access to a hidden record of everyone else's thoughts for this conflict to develop.
 
-## Discover stories through problems and consequences
+Relationships begin in equally particular ways. Patch offered help, but Skip was embarrassed to need it. Mica gave up a place; Patch noticed, while Skip may not have understood the concession. Hush preserved a gap without asking for thanks. These differences matter later. A worker can trust someone who barely knows them, resent a favor sincerely offered, or cooperate with a colleague they dislike.
 
-Use a short repeating sequence: notice someone, encounter them in a situation, learn one relevant detail, make or witness a choice, then recognize the callback. A useful exchange typically reveals one new thing. Short lines, pauses, gestures, emphasis and emotion cues keep it readable in the world; optional conversation can go deeper when the player chooses.
+LIMEN leaves the encounter with his own evidence: the queue is quiet, the procedure is running and Index is useful. He may take Skip's new caution as proof that the lesson worked. His account should be coherent enough for the player to understand why he would repeat the method. The limp supplies a reason to question his conclusion.
 
-For example, a worker who now waits excessively at the gate can cause a real delay. A brief exchange reveals that yesterday's permission was followed by punishment. The player can clarify authority or accept the delay. Later, the worker's changed willingness to move shows whether that intervention mattered. The story is both personal and part of the operating problem.
+## The second encounter gives the first one weight
 
-Do not place every worker's biography in a report and call it discovery. An optional record can collect what the player has learned. Do not force the player to exhaust a conversation tree or meet every worker to maintain ordinary factory operation. Give important information more than one credible route, while preserving who knows it and why. Characters can misunderstand, conceal or disagree; dialogue alone does not make a claim true or award a world effect.
+Suppose Skip reaches a handoff later that day and waits for permission. The worker who arrived eager to start has become the reason for a delay. STILETTO sees lost time; LIMEN would recognize caution. The player may have helped create the problem by leaving the morning's treatment unchallenged, even if the original assignment seemed sensible.
 
-## Build arcs at several scales
+The next response can deepen that pattern or change it. A clear instruction and a colleague who waits for Skip to act may restore some confidence. Another outburst may make asking permission feel dangerous too. We should be able to watch the difference in what Skip attempts. A speech bubble can explain a hesitation, but the handoff still has to happen—or fail to happen—in the room.
 
-A single exchange establishes a want and a response. A shift repeats or challenges it through work. Across the first five days, worker conduct and relationships reflect the player's handling of LIMEN and STILETTO's conflict. The later arrival of Theatre and CATHEXIS gives those existing people a new audience, authority and possible source of belonging. Weeks 1–2 should pay off some earlier encounters while leaving others open for the rest of Act 1.
+Across the first five days, these encounters accumulate alongside the supervisors' conflict. Moving LIMEN and STILETTO between the two stations changes which habits receive approval and which create trouble. When Theatre opens and CATHEXIS arrives, she meets workers who already have friendships, grievances and ways of protecting themselves. She may offer some of them a welcome audience. Others may have good reasons to distrust another supervisor's attention.
 
-Arc opportunities depend on the run. If a worker was helped, a later response can acknowledge that help. If an incident never happened, nobody remembers it to make a dramatic scene fit. Keep stable identities across days and preserve the history of departure, dispatch or loss. Expand the ensemble through repeated meaningful encounters; do not treat a large character count as a content quota.
+The first two weeks should let the player recognize changes in familiar people. Some small stories can resolve: help finally accepted, a warning believed, a task completed without asking. Others can become harder. Their continuation depends on what has happened in that playthrough. If Skip never stepped forward, there is no injury to remember.
 
-## The engine must let characters act
+## Giving these people room to act
 
-The intended causal chain is world event → personal perception → belief update → competing desires → feasible intention → admitted action → observed outcome → personal and relationship memory. Character history and disposition influence choices within this chain. They must not sit only in prompt text or dialogue decoration.
+The immediate work is to agree on the cast and the opening script, then make the episode convincing with bodies, space, sound and speech. Existing models can stand in while we review it. The proposed appearances become concept sheets and Meshy briefs after the people themselves are approved.
 
-The planner proposes actions; the world validates position, access, time, participants and resources. Speech and expressive delivery present the act and its meaning. A show scheduler can foreground an eligible exchange and suppress repeated chatter, but cannot invent harm, teleport a helper or overwrite an agent's knowledge to manufacture drama. An expressive face or emoji describes a performance; it is not an omniscient display of private state.
+Once the scene works visually, its causes become the requirements for behavior. In the intended BDI system—beliefs, desires and intentions—Skip must have a reason to approach, Patch must perceive a need for help, and Index must have a reason to intervene. Each needs an action the room will actually permit. A blocked route, an unheard instruction or a refusal should change what follows.
 
-The current rehearsal has fixed authored intentions and lines, with real admission, hearing, effects and replay. Main-play workers have stable IDs and limited component history. Complete worker BDI, person-specific relationship memory, persistent multi-day arcs and contextual story discovery remain implementation work. After cast, script and visual approval, the first behavior proof should connect one worker's morning experience to a later action under two different player treatments, using the same identity, truthful memories and visible consequences.
+The engine must keep the event separate from each person's knowledge of it. It must also check whether an intended action is possible: where the worker stands, whether a path is clear, who holds the ID and whether the other participant accepts help. Speech can communicate an offer or a belief; it cannot silently move the prop or supply consent. A scene scheduler may give an exchange room to be noticed, but the encounter still needs to arise from the people and circumstances present.
 
-## Review the character in action
+The current rehearsal already handles admitted actions, hearing and effects with an authored sequence. Individual worker BDI, lasting relationships and stories carried across days still need to be built. The first useful proof will be modest: let the same worker leave the morning with two different experiences under two player treatments, then show those experiences changing a later action. That will tell us more than a long account of what the worker supposedly feels.
 
-A recurring worker is ready when we can recognize them in a name-hidden scene, identify what they are trying to achieve, and explain why their reaction differs from another worker's. Across a later encounter, the player should see a consequence of prior treatment and a relationship that has changed or held firm. Dialogue should add meaning the body cannot carry alone; removing the bubble should still leave an intelligible action.
+## The older vision and the factory we can now see
 
-Review all ten proposed workers and the opening script first. Then produce the common-scale concept lineup and individual sheets. Approved concepts become Meshy briefs; approved visual interactions become targets for the systems and BDI behavior. Existing models can serve as blocking stand-ins without locking the new appearances. Review quiet work, pressure, help and recovery as well as the dramatic injury.
+The original [Producer notes](sources/producer.md) ask whether an episode is interesting and whether the audience can understand what is at stake. The [Puppeteer notes](sources/puppetteer.md) place supervisors under pressure and give workers different ways to cope. The [Agent Vision](sources/agent-vision.md) supplies the intended path from perception to action and reflection. The opening draws those ambitions into one small room.
 
-Related direction: [character and animation](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md), [first five days](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md), [cast readability](production/CAST_READABILITY_STANDARD.md), [encounter architecture](production/SCENE_REHEARSALS.md). This extends the original Puppeteer's emphasis on continuity and the Producer's test of episode interest and clarity into the visible, acting factory.
+The older restriction that kept psychology from influencing action no longer fits the owner's direction. A remembered favor or a fear of punishment now needs to alter conduct. Nor can the report screen carry the main performance. The player should be able to watch a worker hesitate, recognize who taught them to hesitate and wonder what the supervisor will do about it.
 
-
-## Continuity with the original design
-
-The [Producer Vision](sources/producer.md) treats pressure, competing interpretations and consequential episodes as the basis of drama. The [Puppeteer notes](sources/puppetteer.md) describe supervisors as social pressure and workers as a network of coping strategies. The [Agent Vision](sources/agent-vision.md) develops perception, planning, action and reflection. Those ideas support the cast and script.
-
-The historical Puppeteer doctrine also restricted emotion and memory to a read-only psychological layer. That restriction and the old report-first presentation are superseded by the owner's current direction: individual beliefs and relationships must affect actions, and the factory must show the resulting drama. The original documents remain historical sources; they do not certify that the new behavior is already implemented.
+[First five days](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md) · [Character and animation direction](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) · [Cast appearance](production/CAST_READABILITY_STANDARD.md) · [Encounter architecture](production/SCENE_REHEARSALS.md)
 
 
 # LIMEN blade — identity through CCTV

@@ -17,7 +17,7 @@ import styles from './agent-test.module.css';
 import type {loadLimenMotions} from './limen-motion-model';
 import motionManifest from '@/lib/assets/generated/loopforge-limen-motions.json';
 import {limenMotions,limenMotion,LIMEN_MOTION_REVISION,type LimenReviewBank} from '@/lib/loopforge/agents/limen-motions';
-type Puppet=Awaited<ReturnType<typeof loadLimenMotions>>;
+type Puppet=Omit<Awaited<ReturnType<typeof loadLimenMotions>>,'perform'>;
 const asset=model.assets.limen.variants[0],housing=model.assets['blade-housing'].variants[0];
 export default function LimenModelReview(){
  const canvas=useRef<HTMLCanvasElement>(null),runtime=useRef<{floor:FactoryScene;model:Puppet}|null>(null),dialog=useRef<HTMLDialogElement>(null);

@@ -18,7 +18,7 @@ The approved cast can perform together under a headless action engine. An author
 
 Four fixtures are available:
 
-- **Stop and wait here:** ten workers arrive through the Lobby, LIMEN blocks Security, one worker receives a baton strike and limps back before the ID instruction. [Opening sequence and Meshy motion requests](DAY_ONE_ARRIVAL.md).
+- **The first morning count:** ten timid workers arrive through the Lobby. Eight LIMEN source motions articulate a fixed 21-line exchange; a misunderstood count leads to a cyan-blade strike, accepted worker fall, adapted recovery and injured return before IDs. [Full original script, acting plan and remaining gates](DAY_ONE_ARRIVAL.md).
 
 - **Your workers are still here:** day-one STILETTO sees empty workstations, walks to the actual Security–Conveyor portal, calls for her workers and hears LIMEN defend clerical staffing. Each reply requires the preceding attributed report. The producer’s backing changes remembered treatment. STILETTO returns to her still-empty line; this scene does not invent an admission or completed robot.
 - **The name on the list:** a worker reports a clearance mismatch. Verified release and an exception produce different interpretations and trust changes.
@@ -54,7 +54,7 @@ The player projection contains bodies, visible effects and at most two active sp
 
 World time is fixed-step and independent of camera, rendering speed and particles. The client samples accepted clips from action phase time; it does not let an animation callback award production. Room/character modules load on demand. Offscreen/hidden playback pauses; the player begins paused and remains complete with reduced motion. Only the active cast is loaded: ten workers sharing source data plus LIMEN for the opening, two characters for the other takes. No new source GLBs are duplicated by this feature.
 
-LIMEN currently listens with the approved emitter idle. The worker’s scratch is an excerpt of the accepted gesture. No hand-to-paper, scanner or cradle contact is claimed. Speech rehearsal must not be mistaken for finished industrial work. Contact clips, blends and floor/prop clearance are explicit acceptance gates before this enters the main play loop.
+In the opening, LIMEN uses eight named source motions with deterministic cue timing and blends. A retargeted worker get-up bridges the accepted fall and limp; it remains a candidate. The other takes retain LIMEN’s approved emitter idle. The worker’s scratch is an excerpt of the accepted gesture. No hand-to-paper, scanner or cradle contact is claimed. Speech rehearsal must not be mistaken for finished industrial work. Contact clips, blends and floor/prop clearance are explicit acceptance gates before this enters the main play loop.
 
 ## Review protocol
 

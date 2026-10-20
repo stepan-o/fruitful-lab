@@ -1,7 +1,7 @@
 import {reserve} from './reservations';
 import {TICK_MS,type World,type Registry,type Intent,type Action,type Active,type SpatialServices,type Event,type Planner,type View} from './contract';
 const copy=(s:World):World=>JSON.parse(JSON.stringify(s));
-function emit(s:World,e:Omit<Event,'id'|'tick'>){s.events.push({...e,id:`event-${++s.sequence}`,tick:s.tick});if(s.events.length>128)s.events.shift();}
+function emit(s:World,e:Omit<Event,'id'|'tick'>){s.events.push({...e,id:`event-${++s.sequence}`,tick:s.tick});if(s.events.length>512)s.events.shift();}
 function free(s:World,id:string){for(const key of Object.keys(s.held))if(s.held[key]===id)delete s.held[key];}
 function startPhase(s:World,a:Active,d:Action,space:SpatialServices){
  const phase=d.phases[a.phase];a.start=s.tick;a.origins={};
@@ -68,9 +68,17 @@ export function advance(world:World,registry:Registry,space:SpatialServices,plan
 }
 /** Player projection deliberately excludes beliefs, stress, trust and internal reasoning. */
 export function project(s:World,registry:Registry,finished=false):View {
- return {tick:s.tick,actors:Object.values(s.agents).map(agent=>{
+ return {framing:s.active[0]?registry[s.active[0].intent.action].phases[s.active[0].phase].framing:undefined,tick:s.tick,actors:Object.values(s.agents).map(agent=>{
   const a=s.active.find(v=>registry[v.intent.action].participants.includes(agent.id));
-  const p=a?registry[a.intent.action].phases[a.phase]:null,v=p?.perform.find(v=>v.agent===agent.id);
-  return {id:agent.id,name:agent.name,character:agent.character,position:agent.position,yaw:agent.yaw,motion:v?.motion??'idle',seconds:(a?s.tick-a.start:s.tick)*TICK_MS/1000,action:a?`${a.intent.id}/${a.phase}`:'idle'};
- }),bubbles:s.events.filter(e=>e.kind==='speech'&&(e.until??0)>s.tick&&!!e.speech).slice(-2).map(e=>({id:e.id,speaker:e.speech!.speaker,to:e.speech!.to,text:e.speech!.text,act:e.speech!.act})),gateOpen:s.facts['gate.open']===true,drive:s.facts['drive.mode']??'steady',phase:s.active.map(a=>registry[a.intent.action].phases[a.phase].id).join(' · ')||'The exchange has settled.',finished};
+  const completed=[...s.events].reverse().find(e=>e.kind==='completed'&&registry[e.detail]?.participants.includes(agent.id));
+  const settled=completed?registry[completed.detail].phases.at(-1):undefined;
+  const last=settled??Object.values(registry).find(d=>d.participants.includes(agent.id))?.phases[0];
+  const p=a?registry[a.intent.action].phases[a.phase]:last,v=p?.perform.find(v=>v.agent===agent.id);
+  const previous=a?(a.phase>0?registry[a.intent.action].phases[a.phase-1]:settled??null):null;
+  const prior=previous?.perform.find(p=>p.agent===agent.id)?.cue;
+  const seconds=(a?s.tick-a.start:settled?.ticks??0)*TICK_MS/1000;
+  const continuous=v?.cue&&prior&&v.cue.clip===prior.clip&&(v.cue.rate??1)===(prior.rate??1)&&Math.abs((v.cue.start??0)-((prior.start??0)+previous!.ticks*TICK_MS/1000*(prior.rate??1)))<.001;
+  const blend=v?.cue&&prior&&!continuous?(v.cue.blend===0?1:Math.min(1,seconds/(v.cue.blend??.35))):1;
+  return {cue:v?.cue,previous:prior?{cue:prior,seconds:previous!.ticks*TICK_MS/1000,yaw:previous!.perform.find(p=>p.agent===agent.id)?.yaw}:undefined,blend,id:agent.id,name:agent.name,character:agent.character,position:agent.position,yaw:agent.yaw,motion:v?.motion??'idle',seconds,action:a?`${a.intent.id}/${a.phase}`:'idle'};
+ }),bubbles:s.events.filter(e=>e.kind==='speech'&&(e.until??0)>s.tick&&!!e.speech).slice(-2).map(e=>({id:e.id,speaker:e.speech!.speaker,to:e.speech!.to,text:e.speech!.text,act:e.speech!.act})),gateOpen:s.facts['gate.open']===true,drive:s.facts['drive.mode']??'steady',phase:s.active.map(a=>registry[a.intent.action].phases[a.phase].id).join(' · ')||(s.tick===0?'Ready for the first count.':'The exchange has settled.'),finished};
 }

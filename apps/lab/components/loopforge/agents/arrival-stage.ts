@@ -33,8 +33,8 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
  let dirty=true,visible=true,playing=false,disposed=false,lastDraw=0,lastReport=0;
  const invalidate=()=>{dirty=true;};
  const orbit=createReviewOrbit(camera,canvas,invalidate,36);
- orbit.framing(19,5);orbit.orientation(-1.42,1.02);orbit.attach(new Vector3(...worldPoint(...ARRIVAL_LAYOUT.anchor)).add(new Vector3(0,1,0)));
- const key=new DirectionalLight('Entrance overhead',new Vector3(.4,-1,-.2),scene);key.position=new Vector3(-14,14,-5);key.intensity=2.5;key.diffuse=Color3.FromHexString('#fff0d6');
+ orbit.framing(16,5);orbit.orientation(-1.15,1.08);orbit.attach(new Vector3(...worldPoint(124,115.3)).add(new Vector3(0,1,0)));
+ const key=new DirectionalLight('Entrance overhead',new Vector3(.4,-1,-.2),scene);key.position=new Vector3(-14,14,-5);key.intensity=1.8;key.diffuse=Color3.FromHexString('#fff0d6');
  const hemi=new HemisphericLight('Lobby bounce',Vector3.Up(),scene);hemi.intensity=1.1;hemi.groundColor=new Color3(.19,.22,.26);
  const shadow=new ShadowGenerator(1024,key);shadow.usePercentageCloserFiltering=true;shadow.filteringQuality=ShadowGenerator.QUALITY_LOW;shadow.bias=.001;shadow.normalBias=.03;
  const faces=Array.from({length:6},(_,face)=>{const data=new Uint8Array(16*16*4);for(let i=0;i<data.length;i+=4){const c=face===2?140:face===3?30:75;data[i]=data[i+1]=data[i+2]=c;data[i+3]=255;}return data;});
@@ -84,7 +84,7 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
   if(now-lastReport>1000){lastReport=now;report({...timings.snapshot(),meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:10,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(performance.now()-before),updateMs:0,drawCalls:engine._drawCalls.current,triangles:Math.round(scene.getActiveIndices()/3)});}
  });
  return {
-  sceneShot(shot){orbit.framing(shot==='lobby'?19:12.5,5);orbit.orientation(-1.42,1.02);orbit.attach(new Vector3(...worldPoint(124,shot==='lobby'?117:112.7)).add(new Vector3(0,1.15,0)));},
+  sceneShot(shot){orbit.framing(shot==='lobby'?16:9.8,5);orbit.orientation(-1.15,1.08);orbit.attach(new Vector3(...worldPoint(124,shot==='lobby'?115.8:112.1)).add(new Vector3(0,1.15,0)));},
   characterStage(){return {scene,shadow,gate(){},refresh:invalidate};},
   motion(value){playing=value;timings.reset();invalidate();},active(value){visible=value;timings.reset();invalidate();},reviewCamera(action){if(action)orbit.action(action);return orbit.snapshot();},
   dispose(){if(disposed)return;disposed=true;unsubscribe();resize.disconnect();canvas.removeEventListener('pointermove',pointer);canvas.removeEventListener('wheel',pointer);canvas.removeEventListener('keydown',pointer);orbit.suspend();scene.dispose();engine.dispose();}

@@ -28,7 +28,7 @@ export const arrivalSpace:SpatialServices={
   const distance=Math.hypot(speaker.position[0]-listener.position[0],speaker.position[1]-listener.position[1]);
   if(speaker.room===listener.room)return distance<=(channel==='shout'?18000:6000);
   // Admission is blocked by LIMEN, not an acoustically closed door.
-  return channel==='shout'&&world.facts['portal.lobby-security.audible']===true&&distance<=18000&&crossesArrivalDoor(speaker.position,listener.position);
+  return world.facts['portal.lobby-security.audible']===true&&distance<=(channel==='shout'?18000:6000)&&crossesArrivalDoor(speaker.position,listener.position);
  }
 };
 export function arrivalWaiting(world:World){return Object.keys(world.agents).filter(id=>id!=='limen').every(id=>world.facts[`queue.${id}.settled`]===true);}

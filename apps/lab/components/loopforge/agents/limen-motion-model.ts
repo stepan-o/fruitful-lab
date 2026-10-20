@@ -14,10 +14,12 @@ import {limenMotion,limenMotions,type LimenMotionId} from '@/lib/loopforge/agent
 import {LIMEN_PALETTE,type LimenPalette} from '@/lib/loopforge/agents/limen-palette';
 import {ReadabilityMaterial} from './readability-material';
 import {createLimenBlade} from './limen-blade';
+import {createPerformanceSampler} from './performance-sampler';
+import type {ActorView} from '@/lib/loopforge/encounters/contract';
 import type {LimenSurface} from './limen-model';
 
 export const limenMotionFile=manifest.assets.motions.variants[0];
-/** Source motion inspection only. The accepted game performer still uses loadLimen. */
+/** Shared source performer for inspection and the scripted checkpoint. Approved legacy clips remain separate. */
 export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,onFrame:(phase:number)=>void,onEnd:()=>void){
  const {scene,shadow}=stage;
  async function download(file:typeof limenMotionFile){
@@ -67,7 +69,10 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
   });
   function room(value:'security'|'conveyor'){const p=value==='security'?[131,122]:[120.8,149.6];root.position.set(...worldPoint(p[0],p[1]));root.position.y=.015;root.rotation.y=Math.PI;stage.gate(true);stage.refresh();}
   room('security');appearanceUpdate();sample();
+  const performanceSampler=createPerformanceSampler(body.animationGroups);
   return {
+   presentation:{root,bodyMeshes:body.meshes.filter(m=>m.getTotalVertices()>0)},
+   perform(actor:ActorView){if(!actor.cue)return;playing=false;performanceSampler.sample(actor.cue,actor.seconds,actor.previous,actor.blend);const p=worldPoint(actor.position[0]/1000,actor.position[1]/1000);root.position.set(p[0],.015,p[2]);root.rotation.y=actor.yaw*Math.PI/180;root.computeWorldMatrix(true);energy?.sample(reducedMotion.matches?0:actor.seconds,actor.motion==='strike'?.8:0,1,0);stage.refresh();},
    duration,clip(value:string){if(!limenMotion(value))throw Error('Unknown LIMEN motion');clip=value as LimenMotionId;phase=0;effectTime=0;pulseAt=-100;sample();onFrame(0);},
    play(value:boolean){if(value&&phase>=1)phase=0;playing=value;last=performance.now();sample();},
    seek(value:number){phase=Math.max(0,Math.min(1,value));effectTime=phase*duration();sample();},

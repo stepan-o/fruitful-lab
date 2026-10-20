@@ -20,7 +20,7 @@ def render_agents():
     <h2>Make the cast readable at a glance.</h2>
     <p>The close-ups work. In crowded room shots, supervisors disappear among the workers. The next pass changes three things: background contrast, body colour and relative size.</p></header>''', render_readability(),
     '''<div class="section-divider"></div><h3>Current models &amp; motion players</h3>
-    <p>Inspect the existing assets, approved motions and fitted equipment. These players do not yet show the proposed palette or size changes.</p><div class="cast-player-list">''']
+    <p>Inspect the existing assets, approved motions and fitted equipment. LIMEN and STILETTO show the accepted colour treatments; CATHEXIS retains her distinct ivory treatment.</p><div class="cast-player-list">''']
     current = [
         ('Worker 01', '/stepanoskin/loopforge/play/asset-review/worker', '19 approved motions · articulated hands', 'WORKER_MOTION_REVIEW.md'),
         ('LIMEN', '/stepanoskin/loopforge/play/agent-test/limen', '17 new source motions · cyan emitter · approved assembly', 'LIMEN_MESHY_REVIEW.md'),
@@ -31,9 +31,10 @@ def render_agents():
         out.append(f'<div class="cast-player"><a href="{route}"><strong>{name} →</strong><span>{description}</span></a><a class="cast-record-link" href="/loopforge-design/production/{record}">Review record ↗</a></div>')
     out.append('''</div><p><a href="/stepanoskin/loopforge/design#model-briefs">Model briefs · reference art, Meshy prompts &amp; download kits →</a></p>
     <details><summary>Scene acting &amp; engine integration</summary>
+    <p><strong>The first morning count.</strong> Ten timid workers enter the Lobby. LIMEN explains his rules, misreads a worker’s eager compliance and makes an example of him with the cyan blade. Twenty-one fixed lines, eight LIMEN motions, a fall and an injured return make the cost of order visible. <a href="/loopforge-design/production/DAY_ONE_ARRIVAL.md">Read the intro script and acting plan ↗</a></p>
     <p>Day one: both supervisors propose LIMEN at Security and STILETTO at Conveyor. LIMEN’s checks hold up workers; STILETTO approaches their shared doorway to demand them. Their conflict should read through posture, tools, queues and reactions. Speech adds motives.</p>
     <p>STILETTO’s source Idle reads as alert; source Alert reads as idle. Argument with blades reads as a threat, Reprimand as an attack. The player labels follow these accepted meanings. Paired targets, contact timing and worker reactions still need authoring.</p>
-    <p>The same body, motions and equipment serve close-ups and the factory. The engine owns intentions, reservations and outcomes; animation shows them. Main play still uses placeholder bodies; the three scene rehearsals use the new cast. Complete shifts, animation blends and machine contacts remain integration work.</p>
+    <p>The same body, motions and equipment serve close-ups and the factory. The engine owns intentions, reservations and outcomes; animation shows them. Main play still uses placeholder bodies; the four scene rehearsals use the new cast. The opening now blends named performance cues. Complete shifts and machine contacts remain integration work.</p>
     <p><a href="/stepanoskin/loopforge/play/scene-studies">Play the scene rehearsals →</a> · <a href="/loopforge-design/FIRST_FIVE_DAYS_SHOW_PROPOSAL.md">First five days ↗</a> · <a href="/loopforge-design/production/SCENE_REHEARSALS.md">Action &amp; speech architecture ↗</a></p>
     </details>
     <details><summary>Performance &amp; acceptance checks</summary>

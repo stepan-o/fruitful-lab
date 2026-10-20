@@ -16,6 +16,10 @@ Review notes remain visible beside each motion. Shouting Angrily is a warning ca
 
 Validation: all 17 takes rendered in the actual factory viewer with no browser errors. Desktop, 390 px and 768 px layouts passed; play/pause, seconds/frame scrubbing, one-shot end hold, repeat, CCTV, surfaces, blade toggling and switching both banks passed. Network inspection confirmed the inactive body bank is not eagerly fetched. The embedded-asset validation, five existing camera tests, scoped lint and complete production build passed. These checks establish preview operation, not animation-contact or device-performance acceptance.
 
+## First morning count rehearsal — 19 October 2026
+
+[The opening scene](/stepanoskin/loopforge/play/scene-studies) now uses eight of the source motions as a timed performance: Alert, Shouting Angrily, Stand and Chat, Idle 02, Idle 11, Shrug, Angry Ground Stomp and Axe Spin Attack. The cyan forearm blade supplies the strike; no axe or baton is attached. The shared sampler keeps horizontal movement under encounter authority and blends pose changes. This is a paired-scene candidate, not acceptance of the source bank for main play. [Full script and staging notes](DAY_ONE_ARRIVAL.md).
+
 ## Approved palette transfer — 19 October 2026
 
 The shared `loadLimen` model applies the accepted comparison-studio pale steel (`#AAB9BD`, 100%) by default. The existing luminance mask preserves texture wear and deep mechanical recesses. Cyan source markings are distinguished by colour and shifted to `#08798B`; this is an approximate material mask, not a newly authored armour texture.

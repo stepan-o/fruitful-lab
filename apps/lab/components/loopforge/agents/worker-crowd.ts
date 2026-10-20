@@ -5,6 +5,9 @@ import {TransformNode} from '@babylonjs/core/Meshes/transformNode';
 import {Quaternion,Vector3} from '@babylonjs/core/Maths/math.vector';
 import {Mesh} from '@babylonjs/core/Meshes/mesh';
 import {Skeleton} from '@babylonjs/core/Bones/skeleton';
+import {Animation} from '@babylonjs/core/Animations/animation';
+import {createPerformanceSampler} from './performance-sampler';
+import type {ActorView} from '@/lib/loopforge/encounters/contract';
 import {AnimationGroup} from '@babylonjs/core/Animations/animationGroup';
 import {PBRMaterial} from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import type {CharacterStage} from '../factory-study/scene';
@@ -24,6 +27,17 @@ export async function loadWorkerCrowd(stage:CharacterStage,count:number,signal:A
   signal.throwIfAborted();source.animationGroups.forEach(g=>g.stop());
   const body=source.meshes.find(m=>m.name==='WorkerCorrected');
   if(!body||body.skeleton?.bones.length!==34)throw Error('Approved 34-joint worker missing.');
+  if(options.clips?.includes('Checkpoint_Get_Up')){
+   const {default:data}=await import('@/lib/loopforge/agents/worker-checkpoint-recovery.json');signal.throwIfAborted();
+   const group=new AnimationGroup('Checkpoint_Get_Up_Corrected',stage.scene);
+   for(const track of data.tracks){
+    const target=body.skeleton!.bones.find(b=>b.name===track.joint)?.getTransformNode();if(!target)throw Error(`Recovery joint missing: ${track.joint}`);
+    const rotation='rotation' in track,values=rotation?track.rotation!:track.position!;
+    const anim=new Animation(`recover/${track.joint}`,rotation?'rotationQuaternion':'position',data.fps,rotation?Animation.ANIMATIONTYPE_QUATERNION:Animation.ANIMATIONTYPE_VECTOR3,Animation.ANIMATIONLOOPMODE_CONSTANT);
+    anim.setKeys(values.map((v,frame)=>({frame,value:rotation?Quaternion.FromArray(v):Vector3.FromArray(v)})));group.addTargetedAnimation(anim,target);
+   }
+   source.animationGroups.push(group);
+  }
   for(const m of source.materials)if(m instanceof PBRMaterial)m.maxSimultaneousLights=4;
   for(let i=0;i<count;i++){
    const clip=motions[i%motions.length]+'_Corrected';
@@ -48,8 +62,10 @@ export async function loadWorkerCrowd(stage:CharacterStage,count:number,signal:A
    a.root.position.copyFrom(a.anchor);a.root.computeWorldMatrix(true);a.hips.computeWorldMatrix(true);
    const hip=a.hips.getAbsolutePosition();a.root.position.x+=a.anchor.x-hip.x;a.root.position.z+=a.anchor.z-hip.z;
   }
+  const performers=actors.map((a,i)=>createPerformanceSampler(a.entry.animationGroups,`${i}:`));
   let visibleCount=count;
   return {
+   perform(index:number,view:ActorView,position:Vector3){const a=actors[index];if(!view.cue)return;performers[index].sample(view.cue,view.seconds,view.previous,view.blend);const from=view.previous?.yaw??view.yaw,delta=((view.yaw-from+540)%360)-180,t=Math.min(1,view.seconds/.4);a.root.rotation.y=Math.PI+(from+delta*t*t*(3-2*t))*Math.PI/180;a.root.position.copyFrom(position);a.root.computeWorldMatrix(true);},
    bodies:actors.map(a=>({root:a.root,mesh:a.mesh})),
    visible(n:number){visibleCount=Math.max(0,Math.min(count,Math.floor(n)));actors.forEach((a,i)=>a.root.setEnabled(i<visibleCount));},
    place(origin:Vector3){actors.forEach((a,i)=>{a.anchor.copyFrom(origin).addInPlaceFromFloats((i%6-2.5)*1.8,.015,(Math.floor(i/6)-1.5)*1.85);a.root.rotation.y=Math.PI;});},

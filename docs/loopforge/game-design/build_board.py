@@ -591,7 +591,7 @@ for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT
 (OUT/"production/CATHEXIS_INTAKE_REVIEW.md").write_text((ROOT.parent/"production/CATHEXIS_INTAKE_REVIEW.md").read_text())
 
 # Current show-production records.
-for name in ['FIRST_FIVE_DAYS_SHOW_PROPOSAL.md','production/SCENE_REHEARSALS.md','production/ROOM_ASSET_BRIEFS.md']:
+for name in ['FIRST_FIVE_DAYS_SHOW_PROPOSAL.md','production/SCENE_REHEARSALS.md','production/ROOM_ASSET_BRIEFS.md','production/DAY_ONE_ARRIVAL.md']:
     (OUT/name).write_text((ROOT.parent/name).read_text())
 
 # Cast recognition is a design requirement, not a claim that the runtime passes.

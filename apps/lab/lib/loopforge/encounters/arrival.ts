@@ -1,29 +1,56 @@
-import {ENCOUNTER_VERSION,type Agent,type World,type Registry,type Planner,type Phase,type Performance,type Speech} from './contract';
+import {ENCOUNTER_VERSION,type Agent,type World,type Registry,type Planner,type Phase,type Performance,type Speech,type MotionCue} from './contract';
 import {ARRIVAL_LAYOUT,arrivalSpace,arrivalWaiting} from './arrival-layout';
+import type {LimenMotionId} from '../agents/limen-motions';
+export const ARRIVAL_REVISION='morning-count/2';
 export const ARRIVAL_WORKERS=Array.from({length:10},(_,i)=>`arrival-worker-${String(i+1).padStart(2,'0')}`);
-const LIMEN='limen',W=ARRIVAL_WORKERS[0];
-/** An intention fixture; the shared kernel still owns movement, reservations, hearing and effects. */
+const LIMEN='limen',W=ARRIVAL_WORKERS[0],NEIGHBOUR=ARRIVAL_WORKERS[1],WORRIER=ARRIVAL_WORKERS[2];
+const cue=(clip:string,start=0,rate=1,loop=false):MotionCue=>({clip,start,rate,loop,blend:.35});
+/** Fixed original dialogue; the action kernel owns admission, hearing, movement and consequences. */
 export function arrival(){
  const agents:Record<string,Agent>={};
- ARRIVAL_WORKERS.forEach((id,i)=>{agents[id]={id,name:`Worker ${String(i+1).padStart(2,'0')}`,character:'worker',room:'lobby',position:[(i%2?125:123)*1000,(120+Math.floor(i/2)*1.3)*1000],yaw:180,beliefs:{},stress:10,trust:50,memory:[]};});
- agents[LIMEN]={id:LIMEN,name:'LIMEN',character:'limen',room:'security',position:[124000,110100],yaw:0,beliefs:{'checkpoint.arrivals':{value:10,source:'entrance-sightline',mode:'observed',tick:0}},stress:8,trust:50,memory:[]};
- const world:World={version:ENCOUNTER_VERSION,tick:0,sequence:0,agents,facts:{'portal.lobby-security.open':false,'portal.lobby-security.audible':true,'checkpoint.arrivals':10,'checkpoint.ids-requested':false},resources:['lobby-security:entrance','limen:baton',...ARRIVAL_WORKERS.map(id=>`queue:${id}`)],held:{},active:[],done:[],events:[]};
- const waiting=()=>ARRIVAL_WORKERS.map(agent=>({agent,motion:'idle' as const,yaw:180}));
- const command=(text:string,claim:Speech['claim']):Speech=>({speaker:LIMEN,to:ARRIVAL_WORKERS,channel:'shout',act:'instruction',text,claim,cause:'checkpoint.arrivals',seconds:4});
- const perform=(motion:Performance['motion'],worker?:Performance):Performance[]=>[...waiting().filter(p=>p.agent!==worker?.agent),...(worker?[worker]:[]),{agent:LIMEN,motion,yaw:0}];
- const phases:Phase[]=[
-  {id:'Ten workers arrive through the lobby',ticks:160,perform:[...ARRIVAL_WORKERS.map((agent,i)=>({agent,motion:'walk' as const,to:[(i%2?125:123)*1000,(113.8+Math.floor(i/2)*1.3)*1000] as const,yaw:180})),{agent:LIMEN,motion:'guard',yaw:0}]},
-  {id:'LIMEN blocks the entrance',ticks:80,perform:perform('warn'),say:[command('STOP AND WAIT HERE!!',{fact:'checkpoint.instruction',value:'wait'})]},
-  {id:'One worker tries to pass',ticks:40,perform:perform('guard',{agent:W,motion:'walk',to:[124000,111450],yaw:157})},
-  {id:'LIMEN swings the baton',ticks:20,perform:perform('strike'),say:[command('HEY YOU I SAID STOP!!!!',{fact:'checkpoint.instruction',value:'stop'})],effects:[{fact:`injury.${W}`,value:'limping'},{agent:W,stress:22,trust:-12,remember:'LIMEN struck me when I tried to pass the checkpoint.'}]},
-  {id:'The worker recoils',ticks:16,perform:perform('guard',{agent:W,motion:'recoil',yaw:180})},
-  {id:'The worker limps back into the queue',ticks:100,perform:perform('guard',{agent:W,motion:'limp',to:[123000,113800],yaw:-23}),effects:ARRIVAL_WORKERS.map(id=>({fact:`queue.${id}.settled`,value:true}))},
-  {id:'Everyone waits',ticks:45,perform:perform('guard')},
- ];
- const registry:Registry={
-  arrival:{id:'arrival',room:'lobby',adjacentRoom:'security',participants:[LIMEN,...ARRIVAL_WORKERS],resources:world.resources,requires:[{fact:'portal.lobby-security.open',equals:false}],reason:'LIMEN holds the checkpoint while arriving workers gather in the lobby.',phases},
-  ids:{id:'ids',room:'lobby',adjacentRoom:'security',participants:[LIMEN,...ARRIVAL_WORKERS],resources:['lobby-security:entrance'],requires:ARRIVAL_WORKERS.map(id=>({fact:`queue.${id}.settled`,equals:true})),reason:'The settled queue is ready to hear the next instruction.',phases:[{id:'The ID check begins',ticks:100,perform:perform('warn'),say:[command('EVERYONE PREPARE YOUR IDs',{fact:'checkpoint.instruction',value:'prepare-ids'})],effects:[{fact:'checkpoint.ids-requested',value:true}]}]},
- };
+ ARRIVAL_WORKERS.forEach((id,i)=>{agents[id]={id,name:`Worker ${String(i+1).padStart(2,'0')}`,character:'worker',room:'lobby',position:[([124,122.3,125.7][i%3])*1000,(120.2+Math.floor(i/3)*1.55)*1000],yaw:180,beliefs:{},stress:24+i%3*3,trust:50,memory:[]};});
+ agents[LIMEN]={id:LIMEN,name:'LIMEN',character:'limen',room:'security',position:[124000,110250],yaw:0,beliefs:{'checkpoint.arrivals':{value:10,source:'entrance-sightline',mode:'observed',tick:0}},stress:8,trust:50,memory:[]};
+ const world:World={version:ENCOUNTER_VERSION,tick:0,sequence:0,agents,facts:{'portal.lobby-security.open':false,'portal.lobby-security.audible':true,'checkpoint.arrivals':10,'checkpoint.ids-requested':false},resources:['lobby-security:entrance','limen:cyan-emitter',...ARRIVAL_WORKERS.map(id=>`queue:${id}`)],held:{},active:[],done:[],events:[]};
+ // Different starting phases, held listening poses and blue shades distinguish a nervous cohort.
+ const waiting=():Performance[]=>ARRIVAL_WORKERS.map((agent,i)=>({agent,motion:'listen',yaw:180+(i%3-1)*6,cue:cue(i%3===0?'Listening_Gesture':'idle',i%3===0?1.1+i*.08:i*.37,.72,true)}));
+ const perform=(clip:LimenMotionId,overrides:Performance[]=[],start=0,rate=1,loop=false):Performance[]=>[...waiting().filter(p=>!overrides.some(o=>o.agent===p.agent)),...overrides,{agent:LIMEN,motion:'guard',yaw:0,cue:cue(clip,start,rate,loop)}];
+ const line=(speaker:string,text:string,seconds:number,act:Speech['act']='response',to:string[]=speaker===LIMEN?ARRIVAL_WORKERS:[LIMEN,...ARRIVAL_WORKERS.filter(id=>id!==speaker)]):Speech=>({speaker,to,channel:speaker===LIMEN?'shout':'local',act,text,cause:'checkpoint.arrivals',seconds});
+ const order=(text:string,seconds:number,value:string):Speech=>({...line(LIMEN,text,seconds,'instruction'),claim:{fact:'checkpoint.instruction',value}});
+ const phases:Phase[]=[];
+ const add=(id:string,seconds:number,clip:LimenMotionId,say?:Speech,overrides:Performance[]=[],start=0,rate=1,loop=false)=>{const p:Phase={id,ticks:Math.round(seconds*20),perform:perform(clip,overrides,start,rate,loop),say:say?[say]:[]};phases.push(p);return p;};
+ const walks=ARRIVAL_WORKERS.map((agent,i)=>({agent,motion:'walk' as const,to:[([124,122.3,125.7][i%3])*1000,(114.5+Math.floor(i/3)*1.4)*1000] as const,yaw:180,cue:cue('walking_2_inplace',i*.13,.76,true)}));
+ add('Keep your number ready',8,'Alert',line(NEIGHBOUR,'Keep your number ready. And wait for him to call it.',5,'instruction',[W]),walks,0,.75,true);
+ add('LIMEN closes the room with his voice',4.8,'Shouting_Angrily',order('STOP AND WAIT HERE!!',4,'wait'),[],.5,.8);
+ add('Ten sets of papers',6,'Stand_and_Chat',line(LIMEN,'Ten units. Ten sets of papers. We begin when all ten can follow one instruction.',5.8,'instruction'),[],0,.8);
+ add('Anxious compliance',3.4,'Idle_02',line(WORRIER,"I'm standing still, sir.",3,'acknowledge',[LIMEN,NEIGHBOUR,W]),[],0,.7,true);
+ add('A small approval',3.4,'Idle_11',line(LIMEN,'Excellent. Keep doing that.',3),[],0,.7,true);
+ add('The security chief explains',6.2,'Stand_and_Chat',line(LIMEN,"The line produces. Security makes sure there's still a factory tomorrow.",5.8,'report'),[],.5,.7);
+ add('The worker worries about being late',3.8,'Alert',line(W,'Sir… my shift has already started.',3.5,'request',[LIMEN,NEIGHBOUR]),[],0,.7,true);
+ add('Procedure has an answer',5.5,'Shrug',line(LIMEN,'Then let us avoid starting it twice. Once here. Once in an incident report.',5.2),[],0,.55);
+ add('No exceptions',3.5,'Angry_Ground_Stomp',line(LIMEN,'Numbers when called. No shortcuts. No exceptions.',3.3,'instruction'),[],0,.75);
+ add('A neighbour tries to help',2.8,'Alert',line(NEIGHBOUR,'Just wait for your number.',2.5,'instruction',[W]),[],.3,.65,true);
+ add('LIMEN begins counting',1.6,'Stand_and_Chat',line(LIMEN,'One…',1.5,'instruction'),[],1,.8);
+ add('One mistakes the count for permission',2.3,'Alert',line(W,"I've got it, sir.",2.1,'acknowledge',[LIMEN,NEIGHBOUR]),[{agent:W,motion:'walk',to:[124000,111350],yaw:180,cue:cue('walking_2_inplace',0,.6,true)}]);
+ const windup=add('The cyan warning',.8,'Axe_Spin_Attack',order('HEY YOU I SAID STOP!!!!',3.4,'stop'),[],0,1);windup.perform.at(-1)!.motion='strike';
+ const strike=add('Blade contact',.15,'Axe_Spin_Attack',undefined,[],.8,1);strike.perform.at(-1)!.motion='strike';
+ strike.effects=[{fact:`injury.${W}`,value:'limping'},{agent:W,stress:22,trust:-12,remember:'I heard my number and stepped forward. LIMEN struck me with his cyan blade.'},...ARRIVAL_WORKERS.slice(1).map(agent=>({agent,stress:8,trust:-3,remember:'Worker 01 stepped forward when called. LIMEN struck him. Wait for explicit permission.'}))];
+ const down:Performance={agent:W,motion:'fall',yaw:180,cue:{...cue('Electrocuted_Fall',0,1),blend:.12}};
+ add('The strike lands',2.5,'Axe_Spin_Attack',undefined,[down],.95,1);
+ add('The queue freezes',3.9,'Axe_Spin_Attack',line(WORRIER,"Don't move. He said don't move.",3.5,'instruction',[NEIGHBOUR]),[{...down,cue:cue('Electrocuted_Fall',2.5,1)}],3.45,1);
+ const prone:Performance={agent:W,motion:'fall',yaw:180,cue:cue('Electrocuted_Fall',6.333,0)};
+ add('LIMEN restores the distinction',4,'Idle_02',line(LIMEN,'That was a number. Not permission.',3.8),[prone],0,.7,true);
+ add('The worker gets back up',4.8,'Alert',line(W,'Understood. Sorry, sir.',3.8,'acknowledge',[LIMEN,NEIGHBOUR]),[{agent:W,motion:'recover',yaw:180,cue:cue('Checkpoint_Get_Up',0,1)}],0,.7,true);
+ add('The cost walks back into the queue',6,'Idle_11',line(LIMEN,'Back behind the line. Take your time.',4,'instruction'),[{agent:W,motion:'limp',to:[124000,114500],yaw:0,cue:cue('injured_walk',0,1,true)}],0,.7,true);
+ const injured:Performance={agent:W,motion:'limp',yaw:180,cue:cue('injured_walk',2.8,0)};
+ const settled=add('A small kindness',3,'Alert',line(NEIGHBOUR,"Here. There's room here.",2.7,'response',[W]),[injured],1,.7,true);
+ settled.effects=ARRIVAL_WORKERS.map(id=>({fact:`queue.${id}.settled`,value:true}));
+ add('Ten accounted for',3.3,'Stand_and_Chat',line(LIMEN,'Good. Ten accounted for.',3,'report'),[injured],1,.65);
+ const ids:Phase[]=[{id:'Everyone prepares their IDs',ticks:90,perform:perform('Shouting_Angrily',[injured],1,.7),say:[order('EVERYONE PREPARE YOUR IDs',4.3,'prepare-ids')],effects:[{fact:'checkpoint.ids-requested',value:true}]},{id:'A promise with conditions',ticks:110,perform:perform('Stand_and_Chat',[injured],0,.8),say:[line(LIMEN,'One at a time. We all get through if we do this properly.',5.2,'instruction')]},{id:'The first queue is ready',ticks:40,perform:perform('Idle_11',[injured],0,.7,true)}];
+ const wide=new Set(['Keep your number ready','LIMEN closes the room with his voice','Anxious compliance','The worker worries about being late','No exceptions','A neighbour tries to help','The queue freezes','The cost walks back into the queue','A small kindness','Ten accounted for','Everyone prepares their IDs','The first queue is ready']);
+ [...phases,...ids].forEach(p=>p.framing=wide.has(p.id)?'wide':'interaction');
+ const registry:Registry={arrival:{id:'arrival',room:'lobby',adjacentRoom:'security',participants:[LIMEN,...ARRIVAL_WORKERS],resources:world.resources,requires:[{fact:'portal.lobby-security.open',equals:false}],reason:'LIMEN performs the first morning count. The workers want to comply.',phases},ids:{id:'ids',room:'lobby',adjacentRoom:'security',participants:[LIMEN,...ARRIVAL_WORKERS],resources:['lobby-security:entrance'],requires:ARRIVAL_WORKERS.map(id=>({fact:`queue.${id}.settled`,equals:true})),reason:'The settled queue can hear the ID instruction.',phases:ids}};
  const planner:Planner={propose(s){if(s.active.length)return [];if(!s.done.includes('arrival'))return [{id:'arrival',action:'arrival',initiator:LIMEN}];if(!s.done.includes('ids')&&arrivalWaiting(s))return [{id:'ids',action:'ids',initiator:LIMEN}];return [];}};
- return {world,registry,planner,space:arrivalSpace,total:562,beats:[{label:'Arrivals',tick:80},{label:'Stop and wait',tick:180},{label:'The baton',tick:292},{label:'Limp back',tick:365},{label:'Prepare IDs',tick:500}],study:'arrival' as const,choice:'care' as const,room:'security' as const,anchor:ARRIVAL_LAYOUT.anchor};
+ const starts=[...phases,...ids].reduce<number[]>((a,p)=>[...a,(a.at(-1)??1)+p.ticks],[1]);
+ const beats=[['Arrivals','Keep your number ready'],['Stop and wait','LIMEN closes the room with his voice'],['The explanation','The security chief explains'],['The mistake','One mistakes the count for permission'],['Cyan strike','Blade contact'],['The fall','The strike lands'],['Recovery','The worker gets back up'],['Limp back','The cost walks back into the queue'],['Prepare IDs','Everyone prepares their IDs']].map(([label,id])=>{const all=[...phases,...ids],i=all.findIndex(p=>p.id===id);return {label,tick:starts[i]+Math.min(20,Math.floor(all[i].ticks/2))};});
+ return {world,registry,planner,space:arrivalSpace,total:starts.at(-1)!+1,beats,study:'arrival' as const,choice:'care' as const,room:'security' as const,anchor:ARRIVAL_LAYOUT.anchor};
 }

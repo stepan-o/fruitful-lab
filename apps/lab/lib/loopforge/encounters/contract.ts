@@ -3,15 +3,17 @@ export const ENCOUNTER_VERSION='loopforge-encounters/1';
 export const TICK_MS=50;
 export type Point=readonly [number,number]; // Floor coordinates, millimetres; never renderer coordinates.
 export type Character='worker'|'limen'|'stiletto'|'cathexis';
-export type Motion='idle'|'listen'|'scratch'|'walk'|'threaten'|'settle'|'dismiss'|'guard'|'warn'|'strike'|'recoil'|'limp';
+export type Motion='idle'|'listen'|'scratch'|'walk'|'threaten'|'settle'|'dismiss'|'guard'|'warn'|'strike'|'recoil'|'limp'|'fall'|'recover';
 export type Value=string|number|boolean;
 export type Belief={value:Value;source:string;mode:'observed'|'reported';tick:number};
 export type Agent={id:string;name:string;character:Character;room:ZoneId;position:Point;yaw:number;beliefs:Record<string,Belief>;stress:number;trust:number;memory:string[]};
 export type Condition={fact:string;equals:Value}|{agent:string;belief:string;equals:Value}|{agent:string;feeling:'trust'|'stress';atLeast:number};
 export type Effect={fact:string;value:Value}|{agent:string;stress?:number;trust?:number;remember?:string};
 export type Speech={channel?:'local'|'shout';speaker:string;to:string[];text:string;claim?:{fact:string;value:Value};act:'report'|'request'|'instruction'|'acknowledge'|'response';cause:string;seconds:number};
-export type Performance={agent:string;motion:Motion;to?:Point;yaw?:number};
-export type Phase={id:string;ticks:number;perform:Performance[];say?:Speech[];effects?:Effect[]};
+/** Presentation instructions contain no authority to award effects. Times are source seconds. */
+export type MotionCue={clip:string;start?:number;rate?:number;loop?:boolean;blend?:number};
+export type Performance={agent:string;motion:Motion;to?:Point;yaw?:number;cue?:MotionCue};
+export type Phase={framing?:'wide'|'interaction';id:string;ticks:number;perform:Performance[];say?:Speech[];effects?:Effect[]};
 export type Action={id:string;room:ZoneId;adjacentRoom?:ZoneId;participants:string[];resources:string[];requires:Condition[];reason:string;phases:Phase[]};
 export type Intent={id:string;action:string;initiator:string};
 export type Active={intent:Intent;phase:number;start:number;origins:Record<string,Point>};
@@ -22,6 +24,6 @@ export interface Planner { propose(world:Readonly<World>):Intent[] }
 /** A room's path/visibility service. Rehearsals use authored, collision-reviewed lanes. */
 export interface SpatialServices { roomAt?(point:Point):ZoneId|undefined; connected(a:ZoneId,b:ZoneId,world:World):boolean; canTraverse(agent:Agent,to:Point,world:World):boolean; canHear(speaker:Agent,listener:Agent,world:World,channel?:Speech['channel']):boolean }
 export type Registry=Record<string,Action>;
-export type ActorView={id:string;name:string;character:Character;position:Point;yaw:number;motion:Motion;seconds:number;action:string};
+export type ActorView={id:string;name:string;character:Character;position:Point;yaw:number;motion:Motion;seconds:number;action:string;cue?:MotionCue;previous?:{cue:MotionCue;seconds:number;yaw?:number};blend?:number};
 export type Bubble={id:string;speaker:string;to:string[];text:string;act:Speech['act']};
-export type View={tick:number;actors:ActorView[];bubbles:Bubble[];gateOpen:boolean;drive:Value;phase:string;finished:boolean};
+export type View={framing?:'wide'|'interaction';tick:number;actors:ActorView[];bubbles:Bubble[];gateOpen:boolean;drive:Value;phase:string;finished:boolean};

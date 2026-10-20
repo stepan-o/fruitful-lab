@@ -72,7 +72,8 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
   const performanceSampler=createPerformanceSampler(body.animationGroups);
   return {
    presentation:{root,bodyMeshes:body.meshes.filter(m=>m.getTotalVertices()>0)},
-   perform(actor:ActorView){if(!actor.cue)return;playing=false;performanceSampler.sample(actor.cue,actor.seconds,actor.previous,actor.blend);const p=worldPoint(actor.position[0]/1000,actor.position[1]/1000);root.position.set(p[0],.015,p[2]);root.rotation.y=actor.yaw*Math.PI/180;root.computeWorldMatrix(true);energy?.sample(reducedMotion.matches?0:actor.seconds,actor.motion==='strike'?.8:0,1,0);stage.refresh();},
+   perform(actor:ActorView){if(!actor.cue)return;playing=false;performanceSampler.sample(actor.cue,actor.seconds,actor.previous,actor.blend);const p=worldPoint(actor.position[0]/1000,actor.position[1]/1000);root.position.set(p[0],.015,p[2]);// Imported glTF faces -Z; encounter yaw zero faces the queue along +Z.
+    root.rotation.y=Math.PI+actor.yaw*Math.PI/180;root.computeWorldMatrix(true);energy?.sample(reducedMotion.matches?0:actor.seconds,actor.motion==='strike'?.8:0,1,0);stage.refresh();},
    duration,clip(value:string){if(!limenMotion(value))throw Error('Unknown LIMEN motion');clip=value as LimenMotionId;phase=0;effectTime=0;pulseAt=-100;sample();onFrame(0);},
    play(value:boolean){if(value&&phase>=1)phase=0;playing=value;last=performance.now();sample();},
    seek(value:number){phase=Math.max(0,Math.min(1,value));effectTime=phase*duration();sample();},

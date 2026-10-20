@@ -1,10 +1,34 @@
-import {ENCOUNTER_VERSION,type Agent,type World,type Registry,type Planner,type Phase,type Performance,type Speech,type MotionCue} from './contract';
+import {ENCOUNTER_VERSION,type Agent,type World,type Registry,type Planner,type Phase,type Performance,type Speech,type MotionCue,type Delivery} from './contract';
 import {ARRIVAL_LAYOUT,arrivalSpace,arrivalWaiting} from './arrival-layout';
 import type {LimenMotionId} from '../agents/limen-motions';
-export const ARRIVAL_REVISION='morning-count/2';
+export const ARRIVAL_REVISION='morning-count/3';
 export const ARRIVAL_WORKERS=Array.from({length:10},(_,i)=>`arrival-worker-${String(i+1).padStart(2,'0')}`);
 const LIMEN='limen',W=ARRIVAL_WORKERS[0],NEIGHBOUR=ARRIVAL_WORKERS[1],WORRIER=ARRIVAL_WORKERS[2];
 const cue=(clip:string,start=0,rate=1,loop=false):MotionCue=>({clip,start,rate,loop,blend:.35});
+/** Audible performance, not private feelings: these cues may eventually be chosen by an agent. */
+const delivery:Record<string,Delivery>={
+ 'Keep your number ready':{tone:'aside',emotion:'care',emphasis:['wait']},
+ 'LIMEN closes the room with his voice':{tone:'command',emphasis:['STOP','WAIT HERE']},
+ 'Ten sets of papers':{tone:'plain',emphasis:['Ten','one instruction']},
+ 'Anxious compliance':{tone:'hesitant',emotion:'nerves',emphasis:['still']},
+ 'A small approval':{tone:'dry',emphasis:['Keep doing that']},
+ 'The security chief explains':{tone:'plain',emphasis:['Security','tomorrow']},
+ 'The worker worries about being late':{tone:'hesitant',emotion:'nerves',emphasis:['already started']},
+ 'Procedure has an answer':{tone:'dry',emotion:'doubt',emphasis:['incident report']},
+ 'No exceptions':{tone:'command',emphasis:['No shortcuts','No exceptions']},
+ 'A neighbour tries to help':{tone:'aside',emphasis:['wait']},
+ 'LIMEN begins counting':{tone:'plain'},
+ 'One mistakes the count for permission':{tone:'hesitant',emotion:'relief'},
+ 'The cyan warning':{tone:'outburst',emotion:'anger',emphasis:['HEY YOU','STOP']},
+ 'The queue freezes':{tone:'aside',emotion:'nerves',emphasis:["Don't move"]},
+ 'LIMEN restores the distinction':{tone:'dry',emphasis:['number','Not permission']},
+ 'The worker gets back up':{tone:'hesitant',emotion:'nerves',emphasis:['Sorry']},
+ 'The cost walks back into the queue':{tone:'dry',emphasis:['Take your time']},
+ 'A small kindness':{tone:'warm',emotion:'care',emphasis:["room here"]},
+ 'Ten accounted for':{tone:'dry',emphasis:['Ten']},
+ 'Everyone prepares their IDs':{tone:'command',emphasis:['PREPARE YOUR IDs']},
+ 'A promise with conditions':{tone:'plain',emphasis:['One at a time','properly']},
+};
 /** Fixed original dialogue; the action kernel owns admission, hearing, movement and consequences. */
 export function arrival(){
  const agents:Record<string,Agent>={};
@@ -46,8 +70,15 @@ export function arrival(){
  settled.effects=ARRIVAL_WORKERS.map(id=>({fact:`queue.${id}.settled`,value:true}));
  add('Ten accounted for',3.3,'Stand_and_Chat',line(LIMEN,'Good. Ten accounted for.',3,'report'),[injured],1,.65);
  const ids:Phase[]=[{id:'Everyone prepares their IDs',ticks:90,perform:perform('Shouting_Angrily',[injured],1,.7),say:[order('EVERYONE PREPARE YOUR IDs',4.3,'prepare-ids')],effects:[{fact:'checkpoint.ids-requested',value:true}]},{id:'A promise with conditions',ticks:110,perform:perform('Stand_and_Chat',[injured],0,.8),say:[line(LIMEN,'One at a time. We all get through if we do this properly.',5.2,'instruction')]},{id:'The first queue is ready',ticks:40,perform:perform('Idle_11',[injured],0,.7,true)}];
- const wide=new Set(['Keep your number ready','LIMEN closes the room with his voice','Anxious compliance','The worker worries about being late','No exceptions','A neighbour tries to help','The queue freezes','The cost walks back into the queue','A small kindness','Ten accounted for','Everyone prepares their IDs','The first queue is ready']);
- [...phases,...ids].forEach(p=>p.framing=wide.has(p.id)?'wide':'interaction');
+ // Camera direction belongs to the encounter, never to the current speaker.
+ // Hold the assembly; cut once as a worker leaves it; return only for the aftermath.
+ let framing:Phase['framing']='wide';
+ for(const p of [...phases,...ids]){
+  if(p.id==='One mistakes the count for permission')framing='interaction';
+  if(p.id==='The cost walks back into the queue')framing='wide';
+  p.framing=framing;
+  for(const speech of p.say??[])speech.delivery=delivery[p.id]??{tone:'plain'};
+ }
  const registry:Registry={arrival:{id:'arrival',room:'lobby',adjacentRoom:'security',participants:[LIMEN,...ARRIVAL_WORKERS],resources:world.resources,requires:[{fact:'portal.lobby-security.open',equals:false}],reason:'LIMEN performs the first morning count. The workers want to comply.',phases},ids:{id:'ids',room:'lobby',adjacentRoom:'security',participants:[LIMEN,...ARRIVAL_WORKERS],resources:['lobby-security:entrance'],requires:ARRIVAL_WORKERS.map(id=>({fact:`queue.${id}.settled`,equals:true})),reason:'The settled queue can hear the ID instruction.',phases:ids}};
  const planner:Planner={propose(s){if(s.active.length)return [];if(!s.done.includes('arrival'))return [{id:'arrival',action:'arrival',initiator:LIMEN}];if(!s.done.includes('ids')&&arrivalWaiting(s))return [{id:'ids',action:'ids',initiator:LIMEN}];return [];}};
  const starts=[...phases,...ids].reduce<number[]>((a,p)=>[...a,(a.at(-1)??1)+p.ticks],[1]);

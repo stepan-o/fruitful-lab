@@ -9,6 +9,7 @@ import type {SceneReport} from '../factory-study/scene';
 import type {loadRehearsalCast} from './rehearsal-cast';
 import ReviewNavigation from './ReviewNavigation';
 import ReviewCameraControls from './ReviewCameraControls';
+import SpeechBubble from './SpeechBubble';
 import styles from './scene-studies.module.css';
 import {storyboard} from './storyboard';
 import type {RehearsalStage} from './arrival-stage';
@@ -18,9 +19,11 @@ type Runtime={floor:RehearsalStage;cast:Cast;take:Take;world:World;playing:boole
 function download(blob:Blob,name:string){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 export default function SceneStudies(){
  const followCamera=useRef(true),lastShot=useRef('');
- const [following,setFollowing]=useState(true);
+ const [following,setFollowing]=useState(true),[expressive,setExpressive]=useState(true);
  const canvas=useRef<HTMLCanvasElement>(null),runtime=useRef<Runtime|null>(null),bubbles=useRef(new Map<string,HTMLDivElement>());
  const [study,setStudy]=useState<Study>('arrival'),[choice,setChoice]=useState<Choice>('care'),[retry,setRetry]=useState(0),[ready,setReady]=useState(false),[error,setError]=useState(''),[running,setRunning]=useState(false),[tick,setTick]=useState(0),[view,setView]=useState<View|null>(null),[report,setReport]=useState<SceneReport|null>(null),[world,setWorld]=useState<World|null>(null),[saving,setSaving]=useState(false),[saveStatus,setSaveStatus]=useState('');
+ const [captureFile,setCaptureFile]=useState<{url:string;name:string}|null>(null);
+ useEffect(()=>()=>{if(captureFile)URL.revokeObjectURL(captureFile.url);},[captureFile]);
  const take=rehearsal(study,choice),info=studies.find(s=>s.id===study)!;
  function frameShot(r:Runtime,v:View){if(followCamera.current&&v.framing&&lastShot.current!==v.framing){r.floor.sceneShot?.(v.framing==='wide'?'lobby':'doorway');lastShot.current=v.framing;}}
  function sync(r:Runtime){const v=rehearsalView(r.take,r.world);r.cast.update(v);frameShot(r,v);setView(v);setTick(v.tick);setWorld(r.world);}
@@ -50,7 +53,7 @@ export default function SceneStudies(){
     if(!inView||document.hidden){last=0;return;}
     const dt=last?Math.min(100,now-last):0;last=now;
     if(r.playing){acc+=dt;while(acc>=TICK_MS&&r.world.tick<r.take.total){r.world=advance(r.world,r.take.registry,r.take.space,r.take.planner);acc-=TICK_MS;}const next=rehearsalView(r.take,r.world);if(next.tick!==lastSampleTick){r.cast.update(next);frameShot(r,next);lastSampleTick=next.tick;}if(now-lastPublish>100||next.finished){lastPublish=now;setTick(next.tick);setView(next);setWorld(r.world);}if(next.finished)pause();}
-    for(const a of r.cast.anchors()){const el=bubbles.current.get(a.id);if(el){el.style.left=`clamp(var(--bubble-margin), ${a.x}%, calc(100% - var(--bubble-margin)))`;el.style.top=`${Math.max(100*(el.offsetHeight+10)/(canvas.current?.clientHeight??500),Math.min(88,a.y))}%`;el.style.visibility=a.visible?'visible':'hidden';}}
+    for(const a of r.cast.anchors()){const el=bubbles.current.get(a.id);if(el){el.style.left=`clamp(var(--bubble-margin), ${a.x}%, calc(100% - var(--bubble-margin)))`;el.style.top=`${Math.max(100*(el.offsetHeight+28)/(canvas.current?.clientHeight??500),Math.min(88,a.y))}%`;el.style.visibility=a.visible?'visible':'hidden';}}
    };frame=requestAnimationFrame(render);
   }catch(e){if(alive){setError(e instanceof Error?e.message:'Unable to prepare scene.');cast?.dispose();floor?.dispose();cast=null;floor=null;runtime.current=null;}}}
   void boot();document.addEventListener('visibilitychange',visibility);
@@ -58,6 +61,7 @@ export default function SceneStudies(){
  // Changing a room reloads only its cast. Choice changes replay the same loaded bodies.
  // eslint-disable-next-line react-hooks/exhaustive-deps
  },[study,retry]);
+ function manualShot(shot:'lobby'|'doorway'){followCamera.current=false;setFollowing(false);runtime.current?.floor.sceneShot?.(shot);}
  function play(){const r=runtime.current;if(!r)return;if(r.world.tick>=r.take.total)r.world=replay(r.take,0);r.playing=!r.playing;setRunning(r.playing);r.floor.motion(r.playing);sync(r);}
  function seek(n:number){const r=runtime.current;if(!r)return;r.playing=false;r.floor.motion(false);setRunning(false);r.world=replay(r.take,Math.max(0,Math.min(r.take.total,Math.round(n))));sync(r);}
  function beat(n:number){seek(n);}
@@ -72,12 +76,12 @@ export default function SceneStudies(){
    const timeout=setTimeout(()=>{scene.onAfterRenderObservable.remove(observer);reject(new Error('Keep the scene visible and try saving again.'));},5000);
    const observer=scene.onAfterRenderObservable.addOnce(()=>{
     clearTimeout(timeout);if(runtime.current!==r){resolve();return;}
-    try{storyboard(c,rehearsalView(r.take,r.world),r.cast.anchors()).toBlob(blob=>{
+    try{storyboard(c,rehearsalView(r.take,r.world),r.cast.anchors(),expressive).toBlob(blob=>{
      if(!blob){reject(new Error('The image could not be saved. Please try again.'));return;}
-     download(blob,`loopforge-${study}-${choice}-${r.world.tick}.png`);resolve();
+     setCaptureFile({url:URL.createObjectURL(blob),name:`loopforge-${study}-${choice}-${r.world.tick}.png`});resolve();
     });}catch(e){reject(e);}
    });r.floor.characterStage().refresh();
-  });if(runtime.current===r)setSaveStatus('Storyboard saved.');}
+  });if(runtime.current===r)setSaveStatus('Storyboard ready.');}
   catch(e){if(runtime.current===r)setSaveStatus(e instanceof Error?e.message:'Could not save this frame.');}
   finally{setSaving(false);}
  }
@@ -92,12 +96,13 @@ export default function SceneStudies(){
     <ReviewCameraControls ready={ready} fixed={false} onAction={a=>runtime.current?.floor.reviewCamera(a)}/>
     <div className={styles.viewport}><canvas ref={canvas} tabIndex={0} aria-label={`${info.title}, animated scene with anchored speech`}/>
      <div className={styles.sceneLabel}>{info.subtitle}</div>
-     {view?.actors.filter(a=>study!=='arrival'||activeSpeech.some(b=>b.speaker===a.id)).map(a=><div className={styles.anchor} key={a.id} ref={el=>{if(el)bubbles.current.set(a.id,el);else bubbles.current.delete(a.id);}}><span className={styles.name}>{a.name}</span>{activeSpeech.filter(b=>b.speaker===a.id).map(b=><div key={b.id} className={styles.bubble}><small>{b.act==='report'?'REPORT':b.act==='instruction'?'INSTRUCTION':'SPEAKING'}</small>{b.text}</div>)}</div>)}
+     {view?.actors.filter(a=>study!=='arrival'||activeSpeech.some(b=>b.speaker===a.id)).map(a=><div className={styles.anchor} key={a.id} ref={el=>{if(el)bubbles.current.set(a.id,el);else bubbles.current.delete(a.id);}}>{!activeSpeech.some(b=>b.speaker===a.id)&&<span className={styles.name}>{a.name}</span>}{activeSpeech.filter(b=>b.speaker===a.id).map(b=><SpeechBubble key={b.id} speech={b} name={a.name} character={a.character} playing={running} expressive={expressive}/>)}</div>)}
      {!ready&&<div className={styles.loading} role='status'>{error||'Preparing the room and its performers…'}{error&&<button onClick={()=>{setError('');setRetry(v=>v+1);}}>Retry</button>}</div>}
      <div className={styles.caption}>{view?.phase}<small>{(tick/20).toFixed(1)} s · {running?'playing':'paused'}</small></div>
     </div>
     <div className={styles.transport}><button disabled={!ready} onClick={play}>{running?'Pause':'Play scene'}</button><button disabled={!ready} onClick={()=>seek(0)}>Restart</button><label>Scene time<input aria-label='Scene time' type='range' min='0' max={take.total} value={tick} disabled={!ready} onChange={e=>seek(Number(e.target.value))}/></label><label>Seconds<input aria-label='Jump to seconds' type='number' min='0' max={take.total/20} step='.05' value={tick/20} disabled={!ready} onChange={e=>seek(Number(e.target.value)*20)}/></label></div>
-    {study==='arrival'&&<div className={styles.beats}><label className={styles.cameraFollow}><input type='checkbox' checked={following} onChange={e=>{followCamera.current=e.target.checked;setFollowing(e.target.checked);lastShot.current='';const r=runtime.current;if(r)sync(r);}}/>Follow scene cameras</label><button disabled={!ready} onClick={()=>runtime.current?.floor.sceneShot?.('lobby')}>Lobby view</button><button disabled={!ready} onClick={()=>runtime.current?.floor.sceneShot?.('doorway')}>Doorway view</button></div>}
+    {study==='arrival'&&<div className={styles.beats}><label className={styles.cameraFollow}><input type='checkbox' checked={following} onChange={e=>{followCamera.current=e.target.checked;setFollowing(e.target.checked);lastShot.current='';const r=runtime.current;if(r)sync(r);}}/>Follow scene cameras</label><button disabled={!ready} onClick={()=>manualShot('lobby')}>Lobby view</button><button disabled={!ready} onClick={()=>manualShot('doorway')}>Doorway view</button></div>}
+    <div className={styles.beats}><label className={styles.cameraFollow}><input type='checkbox' checked={expressive} onChange={e=>setExpressive(e.target.checked)}/>Expressive speech</label><span className={styles.fine}>Pause to read{study==='arrival'?' · three held shots':''}</span></div>
     <div className={styles.beats}>{take.beats.map(b=><button disabled={!ready} key={b.label} onClick={()=>beat(b.tick)}>{b.label}</button>)}</div>
    </section>
    <aside className={styles.aside}>
@@ -106,7 +111,7 @@ export default function SceneStudies(){
     <p className={styles.note}>Speech reaches addressed listeners within hearing range. Their belief records remember who said it. A report can be mistaken; hearing it does not make it true.</p>
     <div className={styles.subtitle} aria-live={running?'off':'polite'}><small>CURRENT EXCHANGE</small>{activeSpeech.length?activeSpeech.map(b=><p key={b.id}><b>{view?.actors.find(a=>a.id===b.speaker)?.name}:</b> {b.text}</p>):<p>Let the posture speak.</p>}</div>
     <button disabled={!ready||saving} onClick={capture}>{saving?'Saving…':'Save storyboard image'}</button><button disabled={!ready} onClick={evidence}>Save scene evidence</button>
-    {saveStatus&&<p role='status'>{saveStatus}</p>}<p className={styles.fine}>PNG includes the rendered scene and its dialogue. The evidence file keeps state and camera for that exact frame.</p>
+    {saveStatus&&<p role='status'>{saveStatus} {captureFile&&<a href={captureFile.url} download={captureFile.name}>Download PNG</a>}</p>}<p className={styles.fine}>PNG includes the rendered scene and its dialogue. The evidence file keeps state and camera for that exact frame.</p>
     {study==='arrival'&&<p className={styles.note}>A fixed opening performed with LIMEN’s new motion bank and cyan blade. The worker’s fall and limp use accepted clips; the adapted get-up is a new candidate. <a href='/loopforge-design/production/DAY_ONE_ARRIVAL.md'>Script & staging notes ↗</a></p>}
     <details><summary>What is real, what is staged?</summary><p>Real: fixed-tick action admission, actor/station reservations, interruption, effects, addressed speech, hearing and remembered provenance. The player view contains no private mind values.</p><p>Staged: intentions, dialogue and reserved clear lanes. The opening uses a compact Lobby–Security layout shared by navigation and construction; the full-floor Dispatch layout is unchanged. Credential lookup is supplied fixture data. Full BDI planning, general crowd navigation, machine contacts, day progression and economy integration are still to build. No live game or save is changed.</p><p>The opening uses eight source LIMEN motions with timed blends. Other studies retain the accepted emitter idle. Precise paper inspection is still missing. Machinery here is a scale mockup, not final art. Transitions and partner contacts remain a separate animation gate.</p></details>
     <details><summary>Author view · inner-world evidence</summary><p>This is author inspection. Players read the world and its speech, not these values.</p>{world&&Object.values(world.agents).map(a=><div key={a.id}><h3>{a.name}</h3><p>Stress {a.stress} · trust {a.trust}</p><ul>{a.memory.map((m,i)=><li key={i}>{m}</li>)}</ul></div>)}<p>{Object.keys(world?.held??{}).length} resources currently reserved.</p></details>

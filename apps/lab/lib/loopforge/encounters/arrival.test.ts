@@ -68,3 +68,22 @@ it('holds the last performed pose when an intent ID differs from its action defi
  const actor=project(s,t.registry).actors.find(a=>a.id==='limen')!;
  expect(s.done).toEqual(['morning-take-001']);expect(actor.cue?.clip).toBe('Stand_and_Chat');expect(actor.seconds).toBe(3.3);
 });
+
+
+it('holds the group camera across dialogue and cuts only for the incident and aftermath',()=>{
+ const t=rehearsal('arrival','care');let s=t.world,previous:string|undefined;const shots:string[]=[];
+ for(let i=0;i<t.total;i++){
+  s=advance(s,t.registry,t.space,t.planner);const v=project(s,t.registry);
+  if(v.framing&&v.framing!==previous){shots.push(v.phase);previous=v.framing;}
+ }
+ expect(shots).toEqual(['Keep your number ready','One mistakes the count for permission','The cost walks back into the queue']);
+ const limen=s.agents.limen,worker=s.agents[ARRIVAL_WORKERS[0]],yaw=limen.yaw*Math.PI/180;
+ expect(Math.sin(yaw)*(worker.position[0]-limen.position[0])+Math.cos(yaw)*(worker.position[1]-limen.position[1])).toBeGreaterThan(0);
+});
+it('preserves delivery and elapsed speech time across a seek without changing hearing or outcomes',()=>{
+ const t=rehearsal('arrival','care'),s=replay(t,180),bubble=project(s,t.registry).bubbles[0];
+ expect(bubble.delivery).toMatchObject({tone:'command',emphasis:['STOP','WAIT HERE']});
+ expect(bubble.age).toBeCloseTo(.95);
+ for(const action of Object.values(t.registry))for(const p of action.phases)for(const speech of p.say??[])delete speech.delivery;
+ const plain=replay(t,180);expect(plain.agents).toEqual(s.agents);expect(plain.facts).toEqual(s.facts);
+});

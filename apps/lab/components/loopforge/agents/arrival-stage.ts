@@ -33,7 +33,7 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
  let dirty=true,visible=true,playing=false,disposed=false,lastDraw=0,lastReport=0;
  const invalidate=()=>{dirty=true;};
  const orbit=createReviewOrbit(camera,canvas,invalidate,36);
- orbit.framing(16,5);orbit.orientation(-1.15,1.08);orbit.attach(new Vector3(...worldPoint(124,115.3)).add(new Vector3(0,1,0)));
+ orbit.framing(16,5);orbit.orientation(-1.15,1.08);orbit.attach(new Vector3(...worldPoint(124,115.8)).add(new Vector3(0,1.15,0)));
  const key=new DirectionalLight('Entrance overhead',new Vector3(.4,-1,-.2),scene);key.position=new Vector3(-14,14,-5);key.intensity=1.8;key.diffuse=Color3.FromHexString('#fff0d6');
  const hemi=new HemisphericLight('Lobby bounce',Vector3.Up(),scene);hemi.intensity=1.1;hemi.groundColor=new Color3(.19,.22,.26);
  const shadow=new ShadowGenerator(1024,key);shadow.usePercentageCloserFiltering=true;shadow.filteringQuality=ShadowGenerator.QUALITY_LOW;shadow.bias=.001;shadow.normalBias=.03;

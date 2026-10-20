@@ -1,3 +1,5 @@
+20 October editorial standard revision 3: `EDITORIAL_VOICE.md` is the official writing standard. `ASTAFIEV_CASE_STUDY.md` adds a sourced study of the Russian opening and first barracks encounter in *Cursed and Killed*, published as `narrative-astafiev.html`. The studies and second top-level dramaturgy chapter link to it. The rejected bob synopsis is removed from the overview; cast and episode remain drafts under revision, not approved creative work. This pass changes documentation only.
+
 # Loopforge game design board
 
 20 October narrative foundation: **Character dramaturgy and narrative design** is the second top-level tab, after Player desires & scenarios (`#dramaturgy`). bob is the ordinary-life protagonist; the player remains the operator. The chapter covers a dramaturgy/character-creation primer, pressure and relief, conditional collision arcs, limited agency, offstage events and persistent traces. It retains Producer/Puppeteer lineage while moving player understanding into the world.

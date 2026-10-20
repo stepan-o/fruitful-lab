@@ -4,7 +4,7 @@ Reference studies and design conclusions · 20 October 2026 · Contains plot spo
 
 The factory can generate an unlimited supply of incidents. A line stops, a supervisor intervenes, somebody is blamed, production resumes. None of this guarantees a story. A story begins to accumulate when the next interruption finds a person changed by the last one. bob used to volunteer before the instruction was finished. Now he waits. The machine has been repaired; something else has not.
 
-This is the problem our references help us solve. *Back to the Dawn* gives an unfamiliar institution a clear purpose and a population worth discovering. *Attack on Titan* makes changing personal commitments carry an expanding conflict. Dostoevsky follows people into the gap between what they claim to believe and what they can bear to do. Loopforge needs all three kinds of attention, but at the scale of working lives.
+This is the problem our references help us solve. *Back to the Dawn* gives an unfamiliar institution a clear purpose and a population worth discovering. *Attack on Titan* makes changing personal commitments carry an expanding conflict. Dostoevsky follows people into the gap between what they claim to believe and what they can bear to do. Astafiev supplies a further editorial reference, examined in the [opening case study](ASTAFIEV_CASE_STUDY.md). These influences meet at the scale of working lives; the [official style guide](EDITORIAL_VOICE.md) sets the requirements for writing those lives.
 
 bob is the protagonist. The operator's decisions shape the factory, while bob's ordinary life gives us a continuing human concern within it. The other workers have purposes of their own. They become more than supporting parts when those purposes interfere with his, or continue somewhere he is not present.
 
@@ -73,6 +73,10 @@ The current game direction changes where that understanding reaches the audience
 Pressure is one of Loopforge's central themes. It passes through people and changes form. A weekly target becomes STILETTO's demand for speed. bob turns that demand into a promise, because being dependable matters to him. He conceals a fault to keep the promise; sam inherits the consequences. LIMEN then reads the fault as further evidence that speed needs stricter control. The pressure has returned to the conflict that helped produce it.
 
 This is a candidate chain, not a mandatory failure loop. A credible intervention can interrupt it. Praise, friendship, envy and gratitude can also create pressure; rest and successful cooperation can relieve it. If every action produces deterioration, the player soon learns that choices do not matter and affection becomes merely preparation for punishment.
+
+## Astafiev and the editorial standard
+
+Read the [Astafiev case study](ASTAFIEV_CASE_STUDY.md) alongside the Sanctuary study below. They establish the editorial requirements in [Writing Loopforge](EDITORIAL_VOICE.md). Those requirements apply to these essays as well as to the cast and episode drafts. An intelligible plot outline remains a draft until its people and circumstances become particular enough to sustain a scene.
 
 ## Sanctuary Economics — how the explanation earns its next sentence
 

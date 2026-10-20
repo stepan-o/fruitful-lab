@@ -1,12 +1,14 @@
 # Writing Loopforge
 
-Editorial direction · Revision 2 · 20 October 2026
+Official editorial standard · Revision 3 · 20 October 2026
 
 Loopforge takes place among people who have been built for work and have developed lives around it. Some want to do a good job. Some want credit, company or a quiet shift. Their supervisors can turn an ordinary need into an offense, then fill in the paperwork with complete conviction. The writing should let us enjoy knowing these people while taking what happens to them seriously.
 
 The voice needs a good eye for how work feels: the colleague who volunteers too quickly, the expert who cannot accept help, the superior who mistakes a frightened room for a well-run one. Its humor can be dry, and its circumstances absurd, without making every character deliver a joke. Affection grows through noticing what somebody does when there is little advantage in doing it.
 
-This revision guides the [dramaturgy primer](CHARACTER_DRAMATURGY.md), [reference studies](NARRATIVE_STUDIES.md), [cast](OPENING_CAST.md) and [opening episode](OPENING_EPISODE.md). These are design proposals, not a description of behavior already installed in the game.
+This standard applies to design essays, character portraits, scene scripts and in-world dialogue. It establishes the writing requirements; individual cast and episode drafts still need creative acceptance.
+
+It guides the [dramaturgy primer](CHARACTER_DRAMATURGY.md), [reference studies](NARRATIVE_STUDIES.md), [cast](OPENING_CAST.md) and [opening episode](OPENING_EPISODE.md). These are design proposals, not a description of behavior already installed in the game.
 
 ## What Sanctuary teaches us about the sentence
 
@@ -17,6 +19,34 @@ That is the craft to carry into Loopforge. A statement about authority becomes e
 Sanctuary also lets a detail change meaning as the argument develops. A broken machine turns out to have taken too much money; a game becomes a reason to buy an entire console. Loopforge has its own reversals. The keenest worker becomes afraid to move. The person who asks everybody to keep the line clear causes the delay. Let the circumstances do the work before adding a clever sentence about them.
 
 The reference is a standard of clarity and development. Loopforge has a different subject, more room for dialogue and a more intimate interest in its characters. Its prose need not reproduce Sanctuary's sentences, examples or chapter structure.
+
+## Establish experience before explaining its meaning
+
+[Astafiev’s opening](ASTAFIEV_CASE_STUDY.md) joins Sanctuary Economics as a foundation of our editorial style. Together they set two obligations: make the situation imaginable, and carry the reader through its meaning without losing the people involved.
+
+A scene needs a sustained point of attention. Decide whose experience organizes it, what that person can perceive and what they have yet to understand. In bob’s opening, the queue must contain a morning he is trying to get through. His attention can move between a colleague, an instruction and the doorway. The order matters: what he expects before a command determines what he hears in it. Give the reader time to encounter that difference before explaining his response.
+
+Choose physical details because they bear on the encounter. A stiff joint can change how someone makes room; a card can occupy a hand that would otherwise accept help. A sound matters when someone listens, ignores it or mistakes its source. Materials should have properties and uses. Adding rust, steam and brass to every paragraph will not make a factory feel inhabited.
+
+The prose needs a perceiving voice. It can be affectionate, impatient, amused or appalled. It can notice an absurdity and make a judgment, provided the circumstances give that judgment substance. Keep the voice’s interest in people broader than the institution’s interest in their output. Compassion does not require calling everyone kind; it requires attention even when somebody is vain, tedious, frightened or wrong.
+
+Let syntax follow attention. A sentence may accumulate the small demands competing for a worker’s notice. A shorter one can register an interruption. Read the paragraph aloud and listen for where understanding arrives. Repeated fragments, solemn declarations and decorative metaphors make every moment sound equally important. Plain passages give a disturbance room to register.
+
+## Give prose, dialogue and performance their own jobs
+
+A design essay must explain its claim and supply an encounter the reader can imagine. A character portrait must make somebody particular enough that a later action could surprise us. Neither should disguise an undeveloped premise with phrases such as “a small pleasure,” “an important bond” or “things become harder.” Name the pleasure, establish the bond and state what happened. If those particulars are undecided, keep them as open creative work.
+
+Dialogue belongs to a speaker addressing somebody under particular circumstances. A hesitant answer, an unfinished request or an unreturned joke may carry more than a polished statement of theme. Workers do not need literary eloquence to have an inner life. Give their silences and plain speech the same attention as a supervisor’s performance.
+
+Scene direction must make those circumstances performable. Specify what the audience can see or hear, how long the action needs, and which reaction changes its meaning. Hold a useful shot through a developing exchange. A new bubble alone is no reason to change the camera. Sound can invite attention before its cause becomes visible; a pause must allow the viewer to notice what the person is waiting for. The scene must remain understandable when sound is off.
+
+The design narrator may interpret a proposed encounter. The player’s interface must preserve uncertainty about private motives. A worker’s explanation remains their account; the camera cannot certify it by displaying an invisible belief as fact. Keep authoritative instructions and costs clear, even when characters speak evasively.
+
+## Revise the scene before polishing its summary
+
+The rejected description of bob arriving with “a small job to look forward to” is a useful editorial failure. It assigns him an ordinary pleasure without establishing one. “LIMEN interrupts that morning” skips the experience, and “getting to it has become harder” conceals the injury. These phrases need decisions about the scene before they need better wording. The subsequent ID-and-strike outline clarifies causality but still needs lived duration, individual attention and an inhabited setting.
+
+For each substantial revision, read the passage aloud, then review it in its intended medium. Ask whether we can follow what somebody notices, wants and does; whether a detail changes the encounter; and whether the writing earns its interpretation. A scene can pass a causal or animation check and still fail as writing. Record those judgments separately. Keep the cast and opening episode in draft until their scenes meet this standard.
 
 ## Keep a person at the center
 
@@ -32,7 +62,7 @@ For each reference, identify a concrete scene or passage, explain how its dramat
 
 Separate the work, its author's stated intention and our interpretation. Cite the actual chapter, official episode description, interview or observed footage beside the claim. Mark spoilers. A synopsis can verify a premise; it cannot substantiate a shot-by-shot analysis of an episode we have not inspected. Selected passages support a focused study, not a claim to have reread an entire body of work.
 
-Give each reference its own difficulty. Back to the Dawn makes a large social world approachable around a practical goal. Attack on Titan lets evolving loyalties alter the meaning and direction of its central conflict. Dostoevsky presses a person's account of themselves against other people who will not fit it. Explain where these methods disagree as well as where they cooperate. Loopforge needs a synthesis with its own scale and tone.
+Give each reference its own difficulty. Astafiev supplies a close study of narrative voice and felt experience. Back to the Dawn makes a large social world approachable around a practical goal. Attack on Titan lets evolving loyalties alter the meaning and direction of its central conflict. Dostoevsky presses a person's account of themselves against other people who will not fit it. Explain where these methods disagree as well as where they cooperate. Loopforge needs a synthesis with its own scale and tone.
 
 ## Let characters exceed their descriptions
 
@@ -141,6 +171,8 @@ For dialogue, cover the names and read the exchange with its actions. The voices
 Review the foundation, studies, portraits and script against the same standard. A portrait should make a person imaginable; the script should then put that person in a situation the portrait cannot settle in advance. Keep observations, design decisions, proposed outcomes and implementation status distinct.
 
 ## Reading references
+
+[Astafiev editorial case study](ASTAFIEV_CASE_STUDY.md): the Russian opening and first barracks encounter in *Cursed and Killed*, Book One, Chapter One.
 
 Sanctuary Economics: [Insert coin. Join in.](/stepanoskin/game-monetization?chapter=insert-coin) and [Different roads to the same market](/stepanoskin/game-monetization?chapter=studio-to-screen). Its editorial guide and manuscripts are maintained under docs/sanctuary; the current reader copy is in apps/lab/lib/sanctuary/content.ts.
 

@@ -3438,6 +3438,12 @@ Owner direction, 17 October 2026: the next development priority is a factory who
 
 **Let relationships appear in performance.** The original Puppeteer describes a supervisor as the room's weather. Apply that through what other agents do when the supervisor arrives, speaks, threatens, helps or leaves. Stable worker identities and memory should produce recognizable changes in later encounters. Readable behavior can hint at a problem before its eventual consequences; it need not reveal a hidden motive or future outcome.
 
+### Worker characters and relationship arcs
+
+20 October owner direction: workers must be recognizable through appearance, movement, speech, relationships, choices, **actions and reactions**. Their BDI motives should drive factory conduct, with robot mechanisms carrying recognizable human meanings. Story discovery happens in short, situated exchanges tied to player problems and later consequences. Day one's pressure from LIMEN starts individual worker–LIMEN arcs and worker–worker relationships; a common stress increase does not establish those identities.
+
+The [character dramaturgy and worker story design](CHARACTER_DRAMATURGY.md) defines the character record, robot metaphors, perception-to-action chain, bite-sized discovery, and conditional arcs across shifts and weeks. It extends the Puppeteer/Producer direction. The [ten-worker cast](OPENING_CAST.md) and [opening episode](OPENING_EPISODE.md) are writing proposals for approval before concept art, Meshy production and the systems that support the approved performance. The [illustrated Back to the Dawn study](BACK_TO_THE_DAWN_CASE_STUDY.md) records the reference. Full worker BDI and persistent relationship arcs remain implementation work.
+
 ### Opening two-week arc
 
 The [first five days proposal](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md) details the two-room sub-arc, show ingredients, conditional scenes, asset/system gaps and staged-scene-first build order.
@@ -3609,6 +3615,104 @@ Worker 01’s 19 exported motions are available in the [production review player
 The owner selects **Hot Walk as Cathexis’s default walk**. Keep that public name even though the source FBX says `Confident_Walk`. Preserve the expressive gait; fix mesh intersections without erasing its character. Worker 01 is a temporary motion stand-in until Cathexis’s own mesh/rig can be reviewed. Style approval does not certify retargeting or factory contact. `afraid_recoil` and `work_cradle` remain missing custom motions.
 
 
+# Character dramaturgy and worker story design
+
+20 October 2026 · Owner direction for the opening cast and Act 1.
+
+**Loopforge tells human stories through robot lives.** Workers are recurring characters whose wants, beliefs and relationships affect what happens in the factory. The player comes to know them through what they do, how they respond to pressure, and short exchanges that make those choices meaningful. Appearance, movement, speech, relationships, choices, **actions and reactions** must form one recognizable person.
+
+This is character dramaturgy: designing people who generate drama through action. It connects narrative design, the robot metaphor, character art and BDI behavior. The purpose is a show worth watching and influencing. The [first five days](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md) provide its first small society; the [morning count](production/DAY_ONE_ARRIVAL.md) supplies their first shared encounter.
+
+[Illustrated Back to the Dawn case study](BACK_TO_THE_DAWN_CASE_STUDY.md) · [Ten-worker cast proposal](OPENING_CAST.md) · [Opening episode script](OPENING_EPISODE.md)
+
+## What the reference teaches us
+
+The owner's reference is *Back to the Dawn*: an ensemble of distinctive inmates, small dialogue exchanges, relationships that help solve problems, and animal traits that carry recognizable human meanings. Its lesson for Loopforge is the connection between character discovery and the player's purpose. Learning about someone changes the interpretation of a problem, opens an approach, complicates a choice, or makes a consequence matter.
+
+Loopforge adds an important source of characterization: workers and supervisors are intended to act through beliefs, desires and intentions. They can reveal themselves without waiting for a player to open a conversation. A worker volunteers, conceals a fault, waits for permission, helps a colleague, repeats a warning, or refuses a shortcut. Dialogue gives those actions voice. Their subsequent conduct must support, complicate or expose what they said.
+
+We are borrowing this design logic, not its prison escape plot, animal factions or specific characters. Loopforge's immediate stakes are making the factory function, answering leadership's demands, and deciding how its people will be treated. Relationships must matter to those problems. Affection, curiosity and humour also have value; every conversation need not award a resource or unlock a solution.
+
+## Human patterns expressed through robot lives
+
+An archetype is a recognizable human pattern with an individual contradiction. “Blue robot with a nervous voice” is an appearance and a mannerism. A worker who believes being useful will keep them from being replaced has a motive that can produce eager volunteering, hidden strain, resentment of a newcomer and unexpected loyalty to someone who lets them rest. The contradiction keeps the character from becoming a single repeated joke.
+
+Robot details should have a literal function and a human consequence. Candidate motifs include:
+
+- A serial number, replacement plate or reassigned component can carry questions of identity, status and belonging.
+- Battery and duty cycles can express exhaustion, overcommitment and the shame of needing rest. Charging, repair and psychological recovery remain different things.
+- Maintenance access and spare parts can become care, reciprocity, unequal privilege or dependence.
+- Certification, clearance and firmware rules can express legitimacy, conformity and the need for permission.
+- Retained logs, corrupted records and conflicting reports can express memory, reputation and contested history.
+- Manufactured purpose and station aptitude can express pride, vocation, class and the fear of becoming unnecessary.
+
+These are design possibilities, not new mechanics or fixed biographies. Build each metaphor into a concrete situation, an action the robot can take, and a visible cost or benefit. Mechanical differences do not dictate a moral personality. Robots with the same body or firmware can develop different beliefs and relationships from their histories. Keep warmth, competence, vanity, humour and mutual care alongside fear and damage.
+
+## Identity is a behavioral promise
+
+For every recurring worker, define a small, coherent character record:
+
+1. **Human pattern and contradiction.** What recognizable kind of person are they, and what stops them being a caricature?
+2. **Want, fear and belief.** What matters now, what do they protect, and what do they think will achieve it? Beliefs can be incomplete or wrong.
+3. **Factory conduct.** What task do they seek or avoid? What do they do under routine work, authority pressure, an accident, peer need and unexpected kindness?
+4. **Visible signature.** A readable blue-family variation, one useful silhouette or wear cue, posture, motion phrasing and speech rhythm. Preserve the supervisor/worker hierarchy and reuse the accepted rig where possible.
+5. **Relationships.** Who do they trust, defer to, protect, imitate, envy or avoid—and which event earned that response?
+6. **Discoverable past.** Which earlier experience explains a present choice? How can it emerge naturally while dealing with a current problem?
+7. **Arc opportunities.** What could reinforce their belief, challenge it, or allow a different choice? Specify conditions, not a mandatory ending.
+8. **Performance and system needs.** Identify the action, counterpart, prop, motion, line, memory and world result needed to make the beat happen.
+
+A signature is a tendency, not an animation loop or a deterministic label. A timid worker can help someone at personal risk. A dutiful worker can decide an order is illegitimate. Such changes need evidence and continuity. The player should sometimes predict a response, then understand a surprising one after seeing what changed.
+
+## Day one pressure starts individual arcs
+
+Every one of the ten arrivals encounters **pressure from authority, embodied by LIMEN**. They share a setting, but not an identical experience. Worker 01 is confronted and injured in the authored opening. Other workers hear commands, witness different portions of the encounter, attempt compliance, offer help or withhold it. Their positions, attention and existing dispositions affect what the event means to them.
+
+For each worker, retain the perceived event, its source, their interpretation, selected response, result, and the people involved. Separate what happened from what that worker believes happened. A missed action cannot become a witnessed fact; a neighbour's account can become an attributed report. A shared rise in stress cannot substitute for these individual beginnings.
+
+The current rehearsal uses anonymous worker roles. The [new cast proposal](OPENING_CAST.md) gives all ten distinct motives, appearances and relationships; it is not yet implemented. Skip steps forward to be useful, Patch offers help, Index repeats the rule and accepts a clerk's role. Tally preserves the dropped ID, Crate and Hush make space, Mica surrenders a comfortable position, Fuse loses the joke, Nib changes whom they copy, and Relay seeks the facts their view could not establish.
+
+The [proposed episode](OPENING_EPISODE.md) foregrounds a few voices while giving everyone a consequential action. Later encounters can reveal their histories in small pieces. The same ten identities carry across work, conflict and recovery; none is merely a different idle loop.
+
+The encounter starts two linked kinds of arc: **each worker with LIMEN**, and **workers with each other**. Trust earned by helping, embarrassment witnessed by a peer, imitation of another's compliance, and silence interpreted as abandonment can change later cooperation and information sharing. No universal “relationship with workers” score can represent that network.
+
+## Discover stories through problems and consequences
+
+Use a short repeating sequence: notice someone, encounter them in a situation, learn one relevant detail, make or witness a choice, then recognize the callback. A useful exchange typically reveals one new thing. Short lines, pauses, gestures, emphasis and emotion cues keep it readable in the world; optional conversation can go deeper when the player chooses.
+
+For example, a worker who now waits excessively at the gate can cause a real delay. A brief exchange reveals that yesterday's permission was followed by punishment. The player can clarify authority or accept the delay. Later, the worker's changed willingness to move shows whether that intervention mattered. The story is both personal and part of the operating problem.
+
+Do not place every worker's biography in a report and call it discovery. An optional record can collect what the player has learned. Do not force the player to exhaust a conversation tree or meet every worker to maintain ordinary factory operation. Give important information more than one credible route, while preserving who knows it and why. Characters can misunderstand, conceal or disagree; dialogue alone does not make a claim true or award a world effect.
+
+## Build arcs at several scales
+
+A single exchange establishes a want and a response. A shift repeats or challenges it through work. Across the first five days, worker conduct and relationships reflect the player's handling of LIMEN and STILETTO's conflict. The later arrival of Theatre and CATHEXIS gives those existing people a new audience, authority and possible source of belonging. Weeks 1–2 should pay off some earlier encounters while leaving others open for the rest of Act 1.
+
+Arc opportunities depend on the run. If a worker was helped, a later response can acknowledge that help. If an incident never happened, nobody remembers it to make a dramatic scene fit. Keep stable identities across days and preserve the history of departure, dispatch or loss. Expand the ensemble through repeated meaningful encounters; do not treat a large character count as a content quota.
+
+## The engine must let characters act
+
+The intended causal chain is world event → personal perception → belief update → competing desires → feasible intention → admitted action → observed outcome → personal and relationship memory. Character history and disposition influence choices within this chain. They must not sit only in prompt text or dialogue decoration.
+
+The planner proposes actions; the world validates position, access, time, participants and resources. Speech and expressive delivery present the act and its meaning. A show scheduler can foreground an eligible exchange and suppress repeated chatter, but cannot invent harm, teleport a helper or overwrite an agent's knowledge to manufacture drama. An expressive face or emoji describes a performance; it is not an omniscient display of private state.
+
+The current rehearsal has fixed authored intentions and lines, with real admission, hearing, effects and replay. Main-play workers have stable IDs and limited component history. Complete worker BDI, person-specific relationship memory, persistent multi-day arcs and contextual story discovery remain implementation work. After cast, script and visual approval, the first behavior proof should connect one worker's morning experience to a later action under two different player treatments, using the same identity, truthful memories and visible consequences.
+
+## Review the character in action
+
+A recurring worker is ready when we can recognize them in a name-hidden scene, identify what they are trying to achieve, and explain why their reaction differs from another worker's. Across a later encounter, the player should see a consequence of prior treatment and a relationship that has changed or held firm. Dialogue should add meaning the body cannot carry alone; removing the bubble should still leave an intelligible action.
+
+Review all ten proposed workers and the opening script first. Then produce the common-scale concept lineup and individual sheets. Approved concepts become Meshy briefs; approved visual interactions become targets for the systems and BDI behavior. Existing models can serve as blocking stand-ins without locking the new appearances. Review quiet work, pressure, help and recovery as well as the dramatic injury.
+
+Related direction: [character and animation](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md), [first five days](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md), [cast readability](production/CAST_READABILITY_STANDARD.md), [encounter architecture](production/SCENE_REHEARSALS.md). This extends the original Puppeteer's emphasis on continuity and the Producer's test of episode interest and clarity into the visible, acting factory.
+
+
+## Continuity with the original design
+
+The [Producer Vision](sources/producer.md) treats pressure, competing interpretations and consequential episodes as the basis of drama. The [Puppeteer notes](sources/puppetteer.md) describe supervisors as social pressure and workers as a network of coping strategies. The [Agent Vision](sources/agent-vision.md) develops perception, planning, action and reflection. Those ideas support the cast and script.
+
+The historical Puppeteer doctrine also restricted emotion and memory to a read-only psychological layer. That restriction and the old report-first presentation are superseded by the owner's current direction: individual beliefs and relationships must affect actions, and the factory must show the resulting drama. The original documents remain historical sources; they do not certify that the new behavior is already implemented.
+
+
 # LIMEN blade — identity through CCTV
 
 Decision: 12 October 2026. First assembly implemented; action integration and full visual/performance acceptance remain open.
@@ -3717,18 +3821,23 @@ The 11-second, nine-track pose clip is baked offline against the existing rig. N
 
 
 # Cast readability and visual hierarchy
+## Owner decisions — 19 October 2026
 
-## Static comparison studio — 2026-10-18
+CATHEXIS is accepted at 100% ivory paint strength and 1.3× worker neutral-body height. No further model or palette redesign is requested. Security floor is `#A7B2D3`; Lobby/Conveyor retain `#666860`. Per-room floor choices are independent in the comparison studio. This supersedes earlier candidate language below for CATHEXIS. The [Day-one arrival rehearsal](DAY_ONE_ARRIVAL.md) applies the room palette and approved worker/LIMEN colours; it does not introduce CATHEXIS before her story arrival.
 
-Open [Cast readability](/stepanoskin/loopforge/play/readability) from the second design chapter, the model-review navigation or the performance lab. This is the first implementation slice, using 24 approved workers plus LIMEN and STILETTO in fixed poses. CATHEXIS is outside this initial two-room comparison.
+
+## Static comparison studio — updated 2026-10-19
+
+Open [Cast readability](/stepanoskin/loopforge/play/readability) from the second design chapter, the model-review navigation or the performance lab. The shot contains 24 approved workers plus LIMEN, STILETTO and CATHEXIS in fixed poses. CATHEXIS can be hidden to restore the two-supervisor composition. The owner approved LIMEN’s steel/cyan and STILETTO’s black/red colours on 19 October; CATHEXIS’s ivory remains a candidate.
 
 - Original / Your treatment switches reversibly without changing the shot or asset files.
 - Existing, neutral diagnostic and quieter-room presets; floor/wall colour pickers and texture-contrast slider. Lighting neutralisation is a separate slider, initially zero.
-- Worker blue-family, LIMEN steel and STILETTO shoulder-band colour/strength controls. Three stable worker shades share textures and geometry.
-- Supervisor height sliders normalize neutral foot-to-skull bounds against worker height. Original restores delivered sizes; proposed defaults remain LIMEN 1.25× and STILETTO 1.20×.
-- Front/side/rear cameras, fixed camera-distance slider, security/conveyor rooms, names-and-bubbles toggle, emitter/visor, glow and shadow checks.
+- Worker blue-family, LIMEN steel, STILETTO shoulder-band and CATHEXIS ivory colour/strength controls. Three stable worker shades share textures and geometry.
+- Supervisor height sliders normalize neutral foot-to-skull bounds against worker height. Original restores delivered sizes; proposed defaults are LIMEN 1.25×, STILETTO 1.20× and CATHEXIS 1.22×. CATHEXIS uses an approximate scalp landmark at 1.82 m in the 1.90 m accepted fitting space, excluding her crown. These are scale proposals, separate from colour approval.
+- CATHEXIS uses the accepted corrected Happy Sway held at phase zero, with full Grace, either half Grace or the exposed underlying mechanical face. The ivory slider targets bright, low-chroma costume surfaces; gold, dark mechanisms and the fitted Grace finish retain their source appearance. No new geometry, maps or animation edits. Mask loading must finish before PNG capture.
+- Front/side/rear cameras, fixed camera-distance slider, security/conveyor rooms, names-and-bubbles toggle, emitter/visor/warm-eye, glow and shadow checks.
 - Room output is 1280×720; console output is genuinely rendered at 320×180. Poses, blade energy and machinery are held. One WebGL scene renders on demand and sleeps when hidden/offscreen.
-- Pin a clean PNG as a fixed reference, save PNGs and export settings with asset hashes, fixed pose samples and neutral heights. Versioned local settings are separate from gameplay graphics preferences.
+- Pin a clean PNG as a fixed reference, save PNGs and export settings with asset hashes, fixed pose samples and neutral heights. Versioned local settings are separate from gameplay graphics preferences. Existing v1 saves retain every previous choice and gain CATHEXIS defaults; reset uses approved LIMEN/STILETTO paint strengths of 100%/91%.
 
 The shader treatment retains source textures/normal maps but approximates plate masks from texture brightness and bind-space height. It is an art-direction audition, not finished painted armour. STILETTO's shoulder band needs authored masks if selected. The original performance benchmark is unchanged. A still does not certify motion performance or the three-second recognition target; those remain separate reviews after the visual treatment is selected.
 
@@ -3972,7 +4081,7 @@ study. Its three-second prompt is a working target to refine during playtests.
 
 1. Give the reviewer a brief introduction to the cast. Freeze a candidate build,
    asset hashes, motion versions and scene state. Include both supervisors among
-   the full intended worker population; add CATHEXIS when her scene exists.
+   the full intended worker population; include CATHEXIS for the three-supervisor colour study; hide her for the opening two-room cast.
 2. Hide names, speech, selection rings and debug highlights. Randomize presentation
    order so recognition cannot depend on knowing which actor always stands left.
    For each usable room camera, show a paused frame and ask the reviewer to point
@@ -4019,8 +4128,9 @@ states are still pending. The performance lab retains its separate timing protoc
    backgrounds with camera, cast and lighting fixed; test lighting separately.
 2. Audition relative scale and broad body colours on existing models in that
    same scene. Compare one variable at a time before combining the treatment.
-   Keep worker blues, light-steel LIMEN, black/red STILETTO and ivory CATHEXIS
-   as proposals until the occupied room and console-size comparisons succeed.
+   LIMEN’s light steel/deep cyan and STILETTO’s black/red are owner-approved.
+   CATHEXIS’s ivory and cast scale still need comparison; measured recognition
+   and performance remain separate gates for the entire cast.
 3. Produce revised common-scale character sheets only after that comparison.
    Preserve approved identities and motions; regenerate only the model parts
    whose silhouette or material regions cannot deliver the selected treatment.
@@ -4029,7 +4139,7 @@ states are still pending. The performance lab retains its separate timing protoc
    LIMEN's checkpoint stance, the waiting worker and the released/held queue.
    The same action data must serve scripted rehearsals and later BDI execution.
 5. Promote only treatments that pass the visual gate and the target device's
-   performance gate. Add CATHEXIS, alternate equipment and future supervisors
+   performance gate. Add alternate equipment and future supervisors
    through the same record; no new isolated presentation implementation per actor.
 
 Related records: [character review gates](CHARACTER_REVIEW_STRUCTURE.md),

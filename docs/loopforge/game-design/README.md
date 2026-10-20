@@ -1,5 +1,7 @@
 # Loopforge game design board
 
+20 October narrative pass: `narrative.py` renders four linked review pages from `CHARACTER_DRAMATURGY.md`, `BACK_TO_THE_DAWN_CASE_STUDY.md`, `OPENING_CAST.md` and `OPENING_EPISODE.md`. The Agents chapter links to the principles, illustrated reference, ten-worker cast and opening script. The cast and script are proposals pending owner approval; this does not implement or replace gameplay. Two attributed playthrough frames are editorial references only; source timestamps and hashes live in `reference/back-to-the-dawn-media.json`.
+
 18 October cast readability: **Agents: character & motion** now records the room-scale visual hierarchy, cast signatures, viewing jobs and names/speech-hidden acceptance gate. Canonical standard: `../production/CAST_READABILITY_STANDARD.md`; `readability.py` supplies the deck synopsis. Generated HTML and complete Markdown records include it. This records the requirement; renderer adjustments and recognition evidence remain pending.
 
 12 October LIMEN identity pass: **Agents: character & motion** (`#agents`) records the animated blade as the primary dark-CCTV recognition cue, with layered rendering, readable states, source/runtime readiness and a recognition/performance gate. `../LIMEN_BLADE_DESIGN.md` is the detailed contract; the Webview engine chapter and both complete reading copies carry the decision. The separate v2 body and blade sources are in S3, but the deployed model bench remains v1. This documentation change does not implement the effect.

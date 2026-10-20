@@ -1,203 +1,161 @@
-# Ten workers at the door
+# bob and the people he works with
 
-20 October 2026 · Cast proposal 1 · For owner review before concept art, Meshy or behavior implementation.
+Cast proposal 2 · 20 October 2026 · For creative review before concept art, Meshy generation or behavior implementation.
 
-[Read the opening episode](OPENING_EPISODE.md) · [Character dramaturgy](CHARACTER_DRAMATURGY.md) · [Back to the Dawn case study](BACK_TO_THE_DAWN_CASE_STUDY.md)
+[Dramaturgy primer](CHARACTER_DRAMATURGY.md) · [Reference studies](NARRATIVE_STUDIES.md) · [Opening episode](OPENING_EPISODE.md)
 
-## The ensemble
+## A life in the middle of the factory
 
-Ten familiar co-workers arrive for the first shift under the player's management. This is not necessarily their first morning in the factory. Some have worked beside each other for years; their exact ages and the factory's founding remain unspecified. LIMEN subjects all ten to the same public ritual. It reveals ten different ways of trying to get through a working life.
+bob would like to have a good shift. He knows which part of the line he hopes to work on, who is likely to lend him a tool and who will notice if he gets something right. This is enough to begin with. His life can become complicated without turning out to have been extraordinary all along.
 
-The proposed names are workshop nicknames, separate from persistent worker IDs. They are handles the player can remember, not personality classes. Each worker has competence, a private want, an inconvenient contradiction and the capacity to act differently after experience. None knows the concealed purpose of Brain 2.0. Fear of being useless is an ordinary workplace fear, not advance knowledge of the replacement programme.
+He is the protagonist. The player operates the factory around him; the supervisors try to make it serve their priorities. Nine colleagues bring their own work, loyalties and disappointments into the same rooms. They are not nine explanations of bob. Several have known one another longer than they have known him.
 
-| ID / name | Human pattern | First memorable action | Large visual cue |
-| --- | --- | --- | --- |
-| W01 · Skip | The eager colleague who tries to earn security by being useful | Steps forward too soon; asks for explicit permission afterwards | Forward-leaning wedge chest, swept brow |
-| W02 · Patch | The indispensable helper who struggles to let people refuse help | Offers support, then lets Skip choose whether to take it | Broad low head, square forearm cuffs, flat back pouch |
-| W03 · Index | The junior officious colleague who wants authority to become fair | Repeats the rule; accepts a clerk's place beside LIMEN | Tall rectangular head, narrow upright body |
-| W04 · Tally | The careful witness who trusts a record more than a promise | Keeps the dropped ID safe; preserves what actually happened | Horizontal drum head, divided blue chest panels |
-| W05 · Crate | The strong worker whom everyone treats as spare capacity | Makes room with their whole body, then shields the injured worker | Broad barrel torso, tiny recessed head |
-| W06 · Fuse | The funny colleague who cannot stand the silence after a bad joke | Starts to joke; stops when Skip falls | One large circular ear housing, uneven shoulder outline |
-| W07 · Mica | The proud craftsperson who wants the work to carry their name | Gives up the clean place in the queue without announcing it | Tapered, smooth plated torso; tall teardrop cranium |
-| W08 · Nib | The learner trying to work out which mistakes are survivable | Copies the wrong person, then asks a precise question | Large pear-shaped head, small compact body |
-| W09 · Relay | The social broker who wants to be needed as much as informed | Passes an accurate warning; seeks an account of contact they missed | Wide side receiver housings, short trunk, long mobile neck |
-| W10 · Hush | The quiet colleague who survives by choosing where to stand | Holds a gap open for Skip instead of closing the queue | Low oval head between raised shoulders, narrow waist |
+These portraits propose people who can sustain later encounters. Their possible developments are conditional directions, not scheduled transformations. The opening foregrounds bob, sam and ed. The others first become recognizable through conduct; the player does not need to memorize this document to enjoy the scene.
 
-The opener gives Skip, Patch and Index most of the worker dialogue. The other seven make consequential choices in the same composition. The player need not memorize ten biographies before play begins.
+Workers have short, single-syllable lowercase names. Supervisor names retain capitals. W01–W10 remain author-facing production identifiers. The exact ages and origins of this crew are unsettled; none of these portraits gives them knowledge of the factory's concealed purpose.
 
-## Shared visual language
+## bob — W01
 
-These remain Loopforge industrial workers: worn blue enamel, exposed dark mechanics, readable hands, round optical elements and manufactured joints. Use the approved Worker 01 and the original Security interaction art as the family reference. Keep the same dark smoky concept-sheet background used for the accepted LIMEN revision.
+bob likes a task with a visible finish. A guide seated squarely, a clean handoff, the first piece moving as it should: these are small pleasures he trusts. He returns tools handle-first and stays a moment to see whether the next person can use what he has done. He is good company when he has stopped trying to demonstrate that he is good company.
 
-All ten stay smaller and less heavily equipped than supervisors. Variation comes from head shape, torso proportion, shoulder line, blue value blocks and posture. A small scratch, serial number or prop cannot be the sole identifier. Do not borrow LIMEN's pale armoured mass/cyan weapon, STILETTO's black-red blades or CATHEXIS's ivory costume/crown. Their uniform blue family must survive front, side and rear views. Character does not require ten unrelated art styles.
+He wants to become dependable. The difficulty is that he measures this partly by whether anyone has to wait for him. He volunteers early, promises a little too much and is embarrassed by help offered in public. He can spend ten patient minutes teaching kit a simple adjustment, then be wounded when kit receives the compliment.
 
-The dimensions below are concept comparisons against Worker 01 = 1.00, not approved rig scales. Anatomy remains humanoid with two hands. Review reach, gait, hands and station fit before transferring accepted animation. Mechanical difference never determines virtue: a battered body is not automatically noble, and a polished worker is not automatically vain or cruel.
+sam has promised him the first guide on the Conveyor. bob has been looking forward to it. At Security he is already holding his ID, trying to get through an obstacle he regards as preparation for the real work. LIMEN's intervention makes that preparation costly. bob's first concern after getting up is whether he can still do the job.
 
-## W01 · Skip — always ready before the question is finished
+His longer question is whether being valued has to mean being useful all the time. We should not answer it in the first episode. He may learn to ask for help, become better at concealing difficulty or seek a supervisor whose praise feels easier to obtain. Whatever happens, return to the ordinary actions that let us recognize the change. A day when he enjoys the work and keeps a promise is part of his story too.
 
-**Person.** Skip wants to become the person everyone asks for when something needs doing. They fear being left standing while the useful workers are selected. Their private rule is: if you are first to help, there will always be a place for you. Skip is generous with effort but fiercely competitive about being considered reliable. They resent being helped when it looks like demotion.
+**Look and performance.** Height 0.98 against Worker 01 = 1.00; a lean wedge-shaped chest, swept brow and medium blue enamel. Keep a broad lighter chest area visible from the room camera and a corresponding upper-back panel. His readiness appears in a slight forward inclination and hands prepared before they are needed. Later hesitation should interrupt that familiar readiness. He needs a distinct silhouette without the brightest paint or a hero-sized body.
 
-**At work.** Volunteers for the next carry before putting down the current load; returns a tool handle-first; checks whether a supervisor noticed. When a fault appears, tries one small fix before reporting it. Under praise, promises too much. Under pressure, says they are fine and works around pain. When someone less experienced asks for help, slows down surprisingly well.
+**Voice.** Concrete offers, quick assurances, occasional impatience with being fussed over. “Leave the guide. I can do that.” When embarrassed: “It works. Just give it a second.”
 
-**Look and acting.** Height 0.98, lean compact body, cobalt blue with broad faded blue shoulder faces. A shallow wedge-shaped chest and forward-projecting brow make the whole figure seem ready to move. Two small round optics, slim jaw grille, elbows carried slightly behind the ribs. No permanent limp before the episode. A start-stop half-step and hands already reaching distinguish Skip from Nib's copying and Relay's head turns.
+## sam — W02
 
-**Voice.** Quick offers, unfinished corrections; little bravado. “I can do that.” After the strike: “I heard my number.”
+sam notices the loose fastening before anyone asks. They enjoy getting something to work again and will remember which grip another worker finds comfortable. A successful repair is satisfying; being sought out for it is satisfying too.
 
-**Past to discover.** Skip once salvaged a delayed handoff and was praised for not waiting to be asked. Reveal it when someone challenges their next shortcut, not in a dossier on arrival. They have generalized one success into a dangerous rule.
+This makes sam useful and occasionally exhausting. They can arrive with a solution before learning what the other person wants. bob resists the attention most when others are watching. kit welcomes it. gus sometimes finds that the favor sam promised has been displaced by a more urgent request.
 
-**Episode and arc.** Hears LIMEN begin counting, mistakes “one” for being called, steps toward the door and is struck. Remembers the conflicting lesson: initiative once earned approval; here it earned pain. Patch's offered arm is care but also public evidence of incapacity. Hush's saved place preserves dignity. Later fair, explicit permission can rebuild initiative; repeated punishment can produce excessive waiting or concealed work. Neither resentment nor submission is a mandatory destiny.
+At the checkpoint sam wants to help bob and prevent another confrontation. The first offer is refused. The important choice is what follows: sam can keep close without taking over. A later scene should test whether that restraint survives a real deadline. If they abandon gus's task to help bob, gus has a grievance even if the audience approves of the kindness.
 
-## W02 · Patch — help with a grip that can be hard to escape
+**Look and performance.** Height 1.00; broad low head, substantial square forearm cuffs and a shallow blue back pouch. Middle blue with worn pale cuffs. Hands approach deliberately and pause before contact. Keep the pouch flat enough to preserve the shared rig and station clearances.
 
-**Person.** Patch wants the crew to get home intact and wants to be necessary to that result. They notice discomfort quickly, but can treat another worker's independence as a refusal of care. Their flaw is taking responsibility for people who have not asked them to.
+**Voice.** Offers with practical limits. “This side. There's room.” Under strain: “I said I'd come back. I haven't forgotten.”
 
-**At work.** Checks the partner's grip before a carry, notices strain before a supervisor, keeps an emergency fastener when the rest of the kit is empty. Will interrupt an efficient sequence to check someone. Under authority pressure, searches for a permitted way to help; if permission repeatedly fails, assistance becomes discreet. Under kindness, deflects attention to someone who needs it more.
+## ed — W03
 
-**Look and acting.** Height 0.96, broad low head with a shallow central brow, rounded shoulder caps and square blue forearm cuffs. Weathered medium blue, one large light-blue replacement shoulder panel repeated as a broad back patch. A shallow rectangular parts pouch sits flush on the lower back; no cloth cape, medic costume or red cross. Hands hover ready to steady things, then deliberately withdraw when refused.
+ed likes an instruction that survives being repeated. He checks a number twice, arrives prepared and takes comfort in being able to tell someone exactly what comes next. It is easy to laugh at him until a missing part or a confused handoff makes that precision useful.
 
-**Voice.** Specific, practical offers. “Take my arm.” Not “Everything will be all right.” Patch cannot know that.
+He wants the rules to be fair, and he wants recognition from the people who administer them. Usually he can treat these as the same ambition. LIMEN's desk begins to separate them. An accurate record might protect bob while contradicting the supervisor who has just entrusted ed with it.
 
-**Past to discover.** A partner once concealed a fault until it became serious. Patch now checks everyone too often. The explanation appears after a worker asks why Patch will not leave them alone; the past does not excuse ignoring that request.
+In the opening, ed warns sam to stay behind the line and then accepts the clerk's position. He thinks he is preventing another injury and helping the queue proceed. sam experiences an obstruction. Both perceptions have a cause. Later, give ed a chance to clarify a rule successfully before testing whether he will correct LIMEN in front of somebody else.
 
-**Episode and arc.** Starts forward after the strike, stops at Index's warning and LIMEN's look, offers support from behind the line. Lets Skip rise without being grabbed. Trust can grow from that restraint. Index regards the movement as a problem to manage; Patch sees Index accepting a job beside LIMEN. Future pressure can turn this into a feud, a negotiated exception or a fragile alliance over real safety.
+**Look and performance.** Height 1.04; tall rectangular head, narrow upright torso and long continuous blue panels down the back. Darker blue than bob, with broad pale side panels. Precise turns and small corrective gestures; a hand held halfway toward a mistake before deciding whether to point it out.
 
-## W03 · Index — rules are fair, if someone would finally apply them properly
+**Voice.** Exact questions and sentences that try to close uncertainty. “Do you mean all ten?” When authority and fact diverge: “I've already put ten.”
 
-**Person.** Index wants a recognized place in the chain of responsibility. They believe consistent procedure can protect ordinary workers from arbitrary decisions. They crave the approval of the very authority capable of making procedure arbitrary. Their temptation is to confuse being entrusted with a rule with being respected as a person.
+## jo — W04
 
-**At work.** Aligns the queue, catches a real missing step, repeats instructions accurately. Useful when others are confused, unbearable when someone already understands. Under praise, takes on enforcement beyond their remit. If a colleague is punished despite complying, initially searches for the clause that would make it make sense.
+jo remembers the order in which things happened. When a handoff goes wrong, they can often identify the missing step. They dislike confident accounts assembled after the fact, especially when the teller was not there.
 
-**Look and acting.** Height 1.04, narrow upright chassis, tall rectangular cranial casing and a clean symmetrical collar. Deep blue torso with two broad lighter vertical side plates. Smaller, squared shoulder caps; no security insignia, blade or supervisor armour. Feet together, elbows close, one raised finger that almost points before permission arrives.
+That care does not make jo an impartial instrument. They choose when to speak, whom to correct and whether accuracy is worth becoming the center of an argument. lou irritates them by making incomplete news sound finished. Yet lou can get a warning to someone jo cannot reach.
 
-**Voice.** Complete sentences and unsolicited clarifications. “He said wait.” Later: “I can keep the order.”
+jo returns bob's dropped ID. Later, a dispute over whether he was injured before or after clearance can draw them into a conversation they hoped to avoid. Their story concerns the uses of truth: preserving it, withholding it and discovering that a correct fact does not settle what somebody should do.
 
-**Past to discover.** Index once solved a real queue error by insisting that everybody use the same list. Coworkers relied on them for a day. They want that feeling back, not merely power for its own sake.
+**Look and performance.** Height 0.99; horizontal drum head, wide-set optics and two broad blue chest panels separated by a dark channel. Deep blue with a lighter shoulder band that continues onto the back. Small head turns track the actual speaker; hands are economical.
 
-**Episode and arc.** Warns Patch against approaching; LIMEN recruits Index to order IDs. Index receives status, the factory loses another pair of working hands, and Patch sees a colleague becoming an obstacle. Tally becomes a dangerous friend: their record can expose when Index's rule did not protect anyone. Index might become a petty gatekeeper or use their access to insist on a genuine exception.
+**Voice.** Specific observations, with limits intact. “I saw him take one step.” If pressed beyond that: “That part I didn't see.”
 
-## W04 · Tally — promises are easy; show me what happened
+## gus — W05
 
-**Person.** Tally wants a version of events that cannot be rewritten by the loudest person. They are accurate, patient and reluctant to take a position until they can substantiate it. Their contradiction is that keeping evidence safe can become an excuse for withholding it when someone needs help now.
+gus has a body everyone interprets as an offer. There is always something to carry, somebody to steady or a difficult place to stand. He does the work well, with a patient economy that makes its effort easy to overlook.
 
-**At work.** Counts the actual handoffs, remembers who borrowed a part and checks the physical buffer against the announced total. Notices mismatches, not hidden motives. Under pressure, records before speaking. When trust grows, supplies a useful fact without making the other worker beg for it.
+He likes company and dislikes being hurried while helping. ben knows how to work beside him without adding instructions to every movement. sam means well, but has begun to assume that gus can manage until they get back. His eventual refusal should surprise people because they have mistaken reliability for unlimited availability.
 
-**Look and acting.** Height 0.99, horizontal cylindrical head, low shoulders and two offset rectangular chest panels: dusty blue on one side, navy on the other. A flush document channel is built into the torso. Compact movements, eyes returning to a fixed reference point; fingers count once and stop. A quiet figure, visually distinct from Hush's sheltered head and folded posture.
+At Security, gus makes room for bob's return. That act needs no speech. Later, let someone notice his own need for room—or fail to notice it. He can be proud of his strength without agreeing that it belongs to whoever asks first.
 
-**Voice.** Times, counts and careful qualifications. “I saw him step. I didn't hear permission.” Avoid omniscient courtroom speeches.
+**Look and performance.** Height 1.06, with a broad barrel torso and small recessed head; still clearly smaller than the supervisors. Large dark-blue back and side plates, lighter upper chest. Weight moves through the whole body before a turn. Do not make him permanently slow or use his size as a joke.
 
-**Past to discover.** A previous shift total was attributed to the wrong workers. Tally kept the handoff marks. The details come out when a new disagreement over credit makes that memory useful.
+**Voice.** Plain, patient, capable of a firm boundary. “One at a time.” Eventually: “No. I've got this one.”
 
-**Episode and arc.** Picks up Skip's dropped ID from the safe side and returns it after they return to the queue. Saw the step and strike, but cannot read LIMEN's intention. Relay later offers a cleaner story than the facts support; Tally may correct it privately, publicly or not at all. Evidence becomes a relationship choice with a cost.
+## max — W06
 
-## W05 · Crate — everyone asks the strong one for one more thing
+max can make waiting feel shorter. They enjoy finding somebody who will answer a joke and are sensitive to a room that has stopped answering. Sometimes they keep talking a line too long, trying to recover the ease that has already gone.
 
-**Person.** Crate wants to be chosen as a partner, not treated as equipment. They enjoy being good at heavy work and dislike being assumed available. They will quietly accept an unfair load until they abruptly put it down. Their gentleness is a choice; physical strength does not make them the group's leader.
+Their humor is a social skill, not an obligation to comment on everything. When bob falls, max has no useful line. Later, they may try to make him laugh and discover that bob does not want the morning turned into a story yet. The choice is whether to respect that refusal or defend the joke.
 
-**At work.** Braces a load so the smaller partner can find a grip; waits for the partner's readiness. Prefers one clear job over three urgent favors. Under authority pressure, becomes very still. If a peer is hurt, places their body where it makes assistance possible without a speech.
+Give max competent, unremarkable work between these encounters. A person becomes tiring if every appearance is a performance. The same worker who gets a laugh can quietly finish somebody else's awkward cleanup without inviting an audience.
 
-**Look and acting.** Height 1.06, broad barrel torso, tiny rounded head recessed between shoulders, thick low forearms and short sturdy shins. Dark blue sides with one broad mid-blue chest field. Smaller and plainly less armoured than LIMEN, with visible load-bearing joints rather than tactical plates. Weight shifts before each step; relaxed open palms when safe.
+**Look and performance.** Height 0.97; one large circular ear housing and a modest asymmetry in the shoulder shells. Muted cobalt with a broad light-blue upper-back strip. Gestures begin toward a listener; failed humor leaves a visible, unfinished hand movement. Asymmetry must remain readable from behind.
 
-**Voice.** Sparse and concrete. “There's room.” A refusal is simply “Not both.”
+**Voice.** Observational, addressed to someone. “We've made excellent time to the queue.” After a joke fails: “All right. Leave it.”
 
-**Past to discover.** Crate and Hush completed a difficult carry together after others assumed Hush could not contribute. Crate remembers the partnership; Hush remembers being asked instead of handled.
+## mae — W07
 
-**Episode and arc.** Steps sideways within the waiting zone so Skip can return, partly screening him from the crowd. Crate keeps the lane LIMEN ordered clear, while making its opening usable for Patch. A repeated demand to carry everyone can produce withdrawal; a fair partner can make refusal and cooperation coexist.
+mae enjoys doing a thing properly even when the person collecting it cannot tell the difference. She knows when a surface is clean, an edge true or a repair merely hidden. She wants work she can take pride in, and she wants someone to notice without being asked.
 
-## W06 · Fuse — the joke is usually a request for company
+This pride can become ungenerous. She dislikes careless handling of what she has finished and may dismiss a rough but effective solution too quickly. CATHEXIS's later attention could be pleasurable and costly: recognition from a supervisor does not necessarily mean respect for the worker's time.
 
-**Person.** Fuse wants a room that is safe enough to laugh in. They make other workers breathe easier, but use humor to avoid saying when they are frightened. They can turn another person's embarrassment into a joke before noticing the harm.
+At Security, mae gives bob the roomier place by the wall. She does not become less particular about dirt because she makes one concession. A future request for the same favor may receive a different answer if everyone has begun to expect it.
 
-**At work.** Gives a monotonous handoff a rhythm, invents nicknames and fills an awkward pause. Competent at repetitive work when the cadence holds. Under sudden threat, stops mid-gesture. When someone is upset by a joke, first tries another joke; learning to apologize plainly is a real change.
+**Look and performance.** Height 1.01; tapered plated torso, long teardrop cranium and relatively continuous blue surfaces. A cleaner, quieter slate-blue finish, without porcelain or CATHEXIS's ivory. Care appears in handling and inspection. Keep her capable of fast, practical movement when it matters.
 
-**Look and acting.** Height 0.97, one large circular receiver housing and a flatter opposite ear, one high and one low shoulder cap. Mid-blue body with a broad dark hip band. No jester hat, flashing screen face or random electrical malfunction. Loose knees and a sideways head tilt; in fear the head goes level and both hands become still.
+**Voice.** Judgments grounded in the object. “That will catch.” When someone calls it good enough: “For whom?”
 
-**Voice.** Short, situational remarks, not endless robot puns. On arrival: “Best time I ever made to a queue.” After the strike, says nothing. The silence matters.
+## kit — W08
 
-**Past to discover.** Fuse remembers the first time their joke made a hard shift easier, and a later time it got a quieter worker blamed. Patch knows both stories and does not automatically laugh.
+kit is learning which questions receive an answer and which make people impatient. They imitate useful movements before fully understanding them. bob's willingness to demonstrate is a relief; ed's exactness is another kind of reassurance.
 
-**Episode and arc.** The joke dies when Skip falls. Fuse reaches toward the dropped card, then sees Tally already moving and retreats. Later can repair the social damage by doing something useful without an audience, or make Skip the punchline to regain the group's attention. That choice should change who laughs next time.
+They want independence sooner than their experience permits. Praise can send them beyond their competence. A public correction can make them hide the next uncertainty. Their development should include the pleasure of mastering something small, not simply a succession of mistakes.
 
-## W07 · Mica — the work ought to look as though someone cared
+At the checkpoint kit starts to follow bob, then stops at sam's warning. Afterwards they ask a question the others were avoiding: how will they know when movement is actually permitted? Later, kit may learn a useful distinction and apply it better than the worker who taught them.
 
-**Person.** Mica wants visible craft to count, even in work nobody signs. They polish a worn panel and correct an uneven assembly because both deserve care. Their pride makes them generous with expertise but poor at receiving criticism, especially from someone who values only speed.
+**Look and performance.** Height 0.90; larger pear-shaped head, compact torso and broad flat feet. Clear middle blue with wide lighter side plates. Pauses to watch before copying. Smaller stature indicates this body's proportions; it must not turn kit into a child or a toy.
 
-**At work.** Finishes the alignment others call good enough; resents redoing rushed work without credit. Under authority pressure, protects their composure. Under peer need, may surrender a practical advantage while pretending it was inconvenient anyway. Not a miniature CATHEXIS: Mica's concern is workmanship, not commanding an audience.
+**Voice.** Direct questions, sometimes inconveniently precise. “If he says my number, do I go?”
 
-**Look and acting.** Height 1.02, tapered torso, tall teardrop cranium, smooth narrow shoulder caps and long tapered blue forearm shells over dark fingers. Desaturated light-blue upper plates, deep-blue legs; keep clearly bluer/darker than LIMEN steel. Large brushed finish zones, one unpolished replacement panel on the back. No porcelain, dress, heels or crown. Carefully places each foot, wipes a surface once, then notices who saw.
+## lou — W09
 
-**Voice.** Exact judgments, occasional wounded formality. “It's aligned. Now it's finished.”
+lou usually knows who has arrived, who is waiting and who needs to hear about it. They enjoy being the person who connects two otherwise separate conversations. Passing useful information gives them a place in other people's business.
 
-**Past to discover.** A particularly good assembly was shipped without recording who made it. Mica saved a rejected trial component because it was theirs. Introduce the object through work or a personal invitation, not as an immediate fetch quest.
+The temptation is to remove uncertainty while passing it on. A qualified account is less satisfying than a complete story, and lou likes a listener who needs the complete story. jo is valuable because they know the facts and troublesome because they insist on their limits.
 
-**Episode and arc.** Gives Skip the waiting position with room to extend the injured leg, taking a cramped dirty edge instead. Does not announce the sacrifice. Skip may fail to notice; Patch does. Later criticism can turn the unacknowledged favor into resentment, or appreciation can grow into an understated friendship. CATHEXIS may later offer an audience, but Mica's need for credit already exists.
+gus blocks lou's view of the strike. lou hears LIMEN and sees the aftermath. Their later account must have that gap unless someone fills it. We can learn about them through what they do with the gap: ask, acknowledge, infer or embellish. Gossip should sometimes help people; otherwise there is no reason for anyone to listen.
 
-## W08 · Nib — looking for the instruction everybody else seems to have received
+**Look and performance.** Height 0.96; wide receiver housings, short torso and a long mobile neck. Medium slate blue, broad blue upper arms and a lighter back panel. Frequent but purposeful shifts of attention; avoid perpetual fidgeting.
 
-**Person.** Nib wants to become competent without being noticed being incompetent. They are curious and learn quickly from examples, including bad examples. They may repeat a rule faithfully while failing to understand when it applies. Their useful questions can expose what more experienced workers have stopped questioning.
+**Voice.** Begins with the listener's need. “You're waiting for bob? He's still at Security.” If challenged: “That's what ed told me.”
 
-**At work.** Watches a full cycle, copies it, asks why a detail differs. Will try a harmless experiment when the task feels safe. Under threat, imitates the nearest confident worker. Unexpected patience encourages them to ask an actual question instead of saying they understand.
+## ben — W10
 
-**Look and acting.** Height 0.90, oversized pear-shaped cranium, two widely spaced circular optics and a small compact trunk. Bright work-blue upper shell with deep-blue calves; no childish clothing or literal child proportions. Large head turns and economical steps. Hands rehearse the other person's gesture a beat later, never as a constant comic loop.
+ben prefers a useful action to a public position. They leave a tool within reach, preserve a space and choose a partner carefully. gus understands these decisions without requiring an explanation. lou sometimes interprets the silence as permission to supply one.
 
-**Voice.** Precise questions with uncertain timing. “When does a number mean go?”
+ben's reserve is not universal wisdom. By avoiding a dispute they can leave somebody else alone in it. Their practical kindness may be invisible to its recipient, and occasionally they resent receiving no recognition for something they chose not to announce.
 
-**Past to discover.** Recently reassigned from a narrow repetitive task, Nib has genuine expertise there but cannot read this social routine. Do not equate unfamiliarity with low intelligence or specify an unapproved manufacture date.
+At Security, ben keeps bob's place open. Later, a direct request may make this quiet method insufficient. They can speak clearly when necessary; the dramatic question is what makes the necessity worth the exposure.
 
-**Episode and arc.** Almost follows Skip, then freezes. Later asks Index whether a called number now means permission. Patch hears the question and understands how the incident has taught the wrong lesson. Tomorrow, Nib might ask explicitly, imitate a trusted peer or take a small initiative after receiving clear feedback.
+**Look and performance.** Height 0.94; low oval head between raised rounded shoulders, narrow waist and a large flat blue back plate. Muted slate blue with dark knees, retaining contrast against the room. Small purposeful shifts and hands resting near the body. Silence is performed through attention, not immobility.
 
-## W09 · Relay — everyone comes to them, which is exactly how they like it
+**Voice.** Short, complete answers. “Here.” Under pressure: “I heard you. No.”
 
-**Person.** Relay wants to remain the person who connects everybody. They remember useful details and deliver real warnings. They also edit a story to make themselves indispensable or to avoid passing on something that might sever a relationship. Being trusted and being needed can pull them in opposite directions.
+## LIMEN at the door
 
-**At work.** Knows which colleague can finish a particular handoff and who has a spare part. Moves between clusters when the task allows. Under pressure, watches the witnesses as much as the authority. When challenged, cites who told them; sometimes the attribution arrives suspiciously late.
+Keep the accepted Security Chief: pale steel, substantial armor, skull-grin face, cold optics and cyan forearm blade. He should look capable of closing the route simply by standing in it.
 
-**Look and acting.** Height 1.00, wide shallow receiver housings on either side of a small central head, short trunk and long articulated neck. Dark blue shoulders with a broad brighter blue lower-back panel. Housings remain compact enough for the shared head-turn envelope; no antenna crown. Frequent looks between people, torso turning only after deciding which way to go.
+LIMEN wants the room's conduct to confirm the authority of his procedure. His safety concerns can be real, but compliance is the measure he reaches for. He can injure bob and read bob's subsequent hesitation as successful instruction. Patient explanation after violence belongs to the same conviction.
 
-**Voice.** Intimate and addressed: “Patch needs space.” Later: “That's what Index told me.” Not omniscient gossip.
+STILETTO is absent from this episode. Her later demand for the workers arises from production, quota and leadership's approval. She is not arriving to advocate for their wellbeing. The distinction matters because bob may initially welcome release from LIMEN and only later discover the cost of the pace she requires.
 
-**Past to discover.** Relay once warned a colleague early enough to avoid trouble, then took credit for a warning that came from Hush. The relationship has a small outstanding debt rather than an instant villain reveal.
+## A social world beyond bob
 
-**Episode and arc.** View of the actual blade contact is blocked by Crate, but sees Skip down and hears the command. Relay can report those facts. If later calling it a deliberate charge at LIMEN, that is an inference or embellishment, not witnessed truth. Tally saw more; Hush remembers being used as an unnamed source. Both relationships can constrain the next account.
+Three relationships organize the first episode: bob and sam disagree about help; sam and ed disagree about what protection requires; ed and LIMEN begin an unequal working arrangement. These should be clear before adding more spoken complications.
 
-## W10 · Hush — quietly deciding which gaps stay open
+The remaining connections provide future entrances. gus expects sam to return to a promised task. gus and ben have an established practical ease. jo and lou need each other's abilities while distrusting how they are used. mae and max differ about whether an awkward moment needs a joke. kit learns from several people whose advice does not always agree.
 
-**Person.** Hush wants enough room to choose without making a public claim. They dislike attracting authority and are capable of deliberate solidarity. Their silence is often mistaken for agreement. They can protect someone subtly while leaving that person unsure whether they have an ally.
+These relationships are directed. sam's concern need not feel like care to bob. ed's admiration need not make LIMEN loyal to him. A worker can cooperate with someone they dislike. A scene without bob should still contain a desire, an action and a consequence.
 
-**At work.** Chooses a reliable partner, leaves the next tool within reach and changes position to make a task easier. Avoids public competitions for credit. Under pressure, withdraws speech before withdrawing help. If a trusted person asks directly, gives a brief clear answer.
+## Appearance and production review
 
-**Look and acting.** Height 0.94, low oval head sheltered between raised rounded shoulders, narrow waist and large flat blue back plate. Muted slate-blue shell with dark knees; sufficient contrast against the floor, not camouflage. No missing limbs or limp as shorthand for weakness. Small purposeful weight shifts; hands rest near the body until needed.
+All ten belong to the approved industrial worker family: blue enamel in several shades, dark exposed mechanisms, readable hands and optical elements. Concept sheets should retain the dark smoky background of the accepted character art. Their large shapes and paint blocks must distinguish them from front, side and rear at the actual factory camera distance. A scratch, serial number or handheld item cannot be the sole identifier.
 
-**Voice.** Few words, no mystical riddles. “Here.” When pushed past a boundary: “I heard you. No.”
+The proposed proportions are concept comparisons, not approved rig settings. Reuse compatible body families, rigid head/panel variations and shared textures where possible. Ten portraits do not authorize ten expensive bespoke meshes. Validate reach, gait, station fit and the existing animation bank before accepting a body change.
 
-**Past to discover.** An earlier objection was repeated with the source removed; someone else received the credit while Hush received the attention. Relay knows more of that incident than they admit. Discover it when Hush refuses to be quoted.
-
-**Episode and arc.** Keeps Skip's place open and looks at Mica before redirecting them to the roomier slot. These are social decisions, not background idle. Skip may eventually recognize this quiet ally. Under repeated suppression Hush might organize through small practical acts, or retreat from the group; trust and outcomes determine which.
-
-## LIMEN — the eleventh member of the cast
-
-Use the accepted Security Chief, not a redesigned guard: larger pale-steel armour, skull-grin face, cold optics and built-in cyan blade. His original character bible calls for a figure who moves like a door closing. He wants a room in which his instructions become the definition of safety. He can identify a genuine defect and still treat a minor misunderstanding with disproportionate violence.
-
-His voice changes register. A shouted stop establishes the room. Calm explanation demands attention. One explosive strike interrupts that calm. Administrative reassurance afterwards makes the violence more chilling. Do not shout every line or give him a joke after every injury. He counts order as success and recruits the orderly worker to help produce it. The player can see the staffing cost before STILETTO complains about it later.
-
-He is not secretly kind because he gives Skip time to limp back. Nor is every concern he has invented: IDs, clearance and safe routes can matter. His contradiction is treating harm committed to secure order as evidence that order works.
-
-## Relationships seeded in the opening
-
-- **Skip ↔ Patch:** help offered without consent becoming help accepted by choice. Gratitude and embarrassment coexist.
-- **Skip ↔ Hush / Mica:** a place preserved, a better place surrendered. Two different kinds of quiet aid; not everybody knows who did what.
-- **Patch ↔ Index:** care and procedure obstruct each other; a later real safety problem could require cooperation.
-- **Index ↔ Tally:** formal authority versus a faithful record. Each has something the other needs.
-- **Crate ↔ Hush:** an established practical partnership; small signals do not need explanation every time.
-- **Fuse ↔ Skip:** the joker has to choose whether an injured colleague is a person to help or a story to tell.
-- **Nib ↔ Skip / Index:** two competing examples of what earns safety. Neither is a universal teacher.
-- **Relay ↔ Tally / Hush:** information, attribution and the price of becoming someone else's story.
-
-These are directed relationships. Patch can trust Skip more than Skip trusts Patch. A shared event does not make everyone feel the same way, and useful cooperation does not require friendship.
-
-## Approval and production sequence
-
-Approve or revise these ten people and the episode first. Then create a common-scale blue-family lineup and individual concept sheets, preserving each silhouette from front, side and back. Each sheet should show routine work, public pressure and a moment of voluntary choice as well as the neutral model views. Only accepted concepts become Meshy briefs.
-
-Aim to derive the cast from a small set of compatible torso/proportion families and rigid head/panel kits, with shared material maps where practical. The number of unique textures and draw calls matters alongside triangle counts. Ten independently generated high-resolution bodies are not a performance plan. Existing Worker 01 remains the acting stand-in while the new appearance is reviewed; no current accepted asset is retired by this proposal.
-
-After the visual episode is approved, translate its causes and alternate outcomes into BDI choices, perceptions, reservations, prop handling, contact actions and persistent relationship memory. The script is a concrete performance target, not a demand that future agents reproduce it regardless of what the player does.
+The next creative review should judge the episode and these people together. Then produce the lineup and individual sheets, followed by model and performance trials. Existing Worker 01 remains the stand-in. No approved model is retired, no new backstory is installed and no future outcome becomes mandatory through this document.

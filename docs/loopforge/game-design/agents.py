@@ -30,12 +30,7 @@ def render_agents():
     for name, route, description, record in current:
         out.append(f'<div class="cast-player"><a href="{route}"><strong>{name} →</strong><span>{description}</span></a><a class="cast-record-link" href="/loopforge-design/production/{record}">Review record ↗</a></div>')
     out.append('''</div><p><a href="/stepanoskin/loopforge/design#model-briefs">Model briefs · reference art, Meshy prompts &amp; download kits →</a></p>
-    <div class="callout"><span class="kicker">Character dramaturgy · opening cast proposal</span>
-    <h3>Who is waiting at Security?</h3>
-    <p>Skip is ready before anyone calls. Patch is watching Skip. Index is checking where the line begins. Ten workers arrive for a shift; by the time LIMEN lets them through, some have learned to wait and one has been put in charge of the others.</p>
-    <p>Review the cast and script before concept art and Meshy production. Visual approval comes before the systems that let these people act on their beliefs.</p>
-    <p><a href="/loopforge-design/narrative.html">Characters and story →</a> · <a href="/loopforge-design/narrative-voice.html">Writing Loopforge →</a> · <a href="/loopforge-design/narrative-reference.html">Back to the Dawn · illustrated case study →</a></p>
-    <p><a href="/loopforge-design/narrative-cast.html">Meet the ten workers →</a> · <a href="/loopforge-design/narrative-episode.html">Read the opening episode →</a></p></div>
+    <p>Character motives, narrative foundations and the ten-worker cast now have their own design chapter. <a href="/stepanoskin/loopforge/design#dramaturgy">Character dramaturgy and narrative design →</a></p>
     <details><summary>Scene acting &amp; engine integration</summary>
     <p><strong>The first morning count.</strong> Ten timid workers enter the Lobby. LIMEN explains his rules, misreads a worker’s eager compliance and makes an example of him with the cyan blade. Twenty-one fixed lines, eight LIMEN motions, a fall and an injured return make the cost of order visible. <a href="/loopforge-design/production/DAY_ONE_ARRIVAL.md">Read the intro script and acting plan ↗</a></p>
     <p>Day one: both supervisors propose LIMEN at Security and STILETTO at Conveyor. LIMEN’s checks hold up workers; STILETTO approaches their shared doorway to demand them. Their conflict should read through posture, tools, queues and reactions. Speech adds motives.</p>

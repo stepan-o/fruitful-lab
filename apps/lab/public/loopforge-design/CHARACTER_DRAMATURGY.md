@@ -1,79 +1,117 @@
-# The people who make the factory run
+# This is bob
 
-Character dramaturgy · 20 October 2026 · Opening cast and scene remain proposals.
+Character dramaturgy and narrative design · Foundation and working primer · 20 October 2026
 
-By the end of the proposed opening scene, LIMEN has almost everything he wanted. The workers have stopped crowding the door. Their IDs are ready. One of them is helping with the paperwork. The first admission is orderly, although the worker going through the door now has a limp.
+bob arrives with his ID already in his hand. He has been thinking about the job on the other side of Security. sam has promised to let him set the first guide on the Conveyor, and he would like to get there before somebody else does it. Ten workers are coming through the Lobby. For the moment, this is an ordinary morning.
 
-That morning can look like a success from LIMEN's desk. From the queue, it looks rather different. Skip tried to be useful and was struck. Patch offered help and was told to wait. Index followed the instructions carefully and received a position beside the person giving them. The player has watched all three experiences happen in the same room. When these workers meet again at the Conveyor, there is already something between them.
+LIMEN tells them to wait. A little later, bob moves when he should not, and LIMEN strikes him. The player sees the fall. What makes it a beginning rather than a spectacle is what follows: bob still wants the job, sam still expects him, and now the walk to the line will take longer. Other people have seen what happened. Each will carry a different part of it away.
 
-This is where Loopforge's characters begin to matter. The player needs a factory that works, and the people who can make it work have their own ideas about what just happened. Their habits will affect the next handoff, the next warning and the next request for help. Getting to know them gives the player a better chance of understanding those events—and a reason to care when the outcome is disappointing.
+Loopforge's story follows bob through an ordinary factory life. The player occupies a different position: they operate the factory and influence its conditions. bob is the protagonist, not a controllable avatar or a disposable example of a system. His life gives the growing world continuity. The design succeeds when an event is understood as “STILETTO hit bob”—and when the player also remembers what bob was trying to do before she arrived.
 
-[The ten workers](OPENING_CAST.md) · [The opening episode](OPENING_EPISODE.md) · [Back to the Dawn case study](BACK_TO_THE_DAWN_CASE_STUDY.md) · [Writing Loopforge](EDITORIAL_VOICE.md)
+This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) and [opening script](OPENING_EPISODE.md) are proposals developed from that reading. They await creative approval before new visual production or behavior implementation.
 
-## Being useful can get you into trouble
+## Dramaturgy begins with an action
 
-Skip wants to be the worker people ask for. They finish one job with an eye on the next, offer to carry something before being asked and remember which supervisor noticed. There is kindness in this eagerness. There is also competition: being needed feels safer than being left standing while somebody else is chosen.
+Dramaturgy concerns how actions are arranged, performed and understood: where attention goes, what an audience expects, what changes, and why the change matters. A robot walking across a room is movement. bob leaving a safe place to return a tool after being told not to move is an action with a purpose, an obstacle and a possible cost.
 
-An earlier success gives Skip a reason to trust that habit. They once rescued a delayed handoff by acting without an instruction, and someone praised them for it. At Security, they hear LIMEN begin counting and mistake their number for a summons. The same readiness that helped on one shift gets them hurt on another. Later, when Skip asks permission for a perfectly ordinary task, the player has a chance to recognize how that hesitation was learned.
+A scene gives that action a particular situation. Someone wants something now. Another person, a rule or a material difficulty stands in the way. The person tries an approach; the world answers. By the end, some condition is different. They may have gained permission, lost face, learned a fact or incurred an obligation. A scene can be quiet and still accomplish all of this.
 
-Patch has a different difficulty. They know how to help and are accustomed to being allowed to do it. Offering an arm seems obvious; letting Skip refuse it takes more effort. Index, meanwhile, believes the rule will protect everyone if everyone follows it. Telling Patch to wait may feel like preventing a second injury. It can still leave Skip on the floor.
+An episode connects several such changes into a small complete movement. At Security, the crew arrives intending to begin work. LIMEN imposes his admission procedure. The crew eventually gets a way through, but bob is hurt and ed has become part of the procedure. Admission resolves the immediate question. The consequences give the next episode its material.
 
-These are people we can understand before we agree with them. Their useful qualities also make trouble. Skip's generosity becomes overcommitment; Patch's care can become interference; Index's diligence can make a bad instruction harder to escape. A character begins to feel familiar when the player can anticipate one of these choices. A later surprise becomes convincing when something has happened to change the choice.
+An arc is the longer pattern formed by those consequences. Repeating the same punishment is escalation in quantity. Returning bob to a similar choice after he has learned to fear initiative tests a change in the person. That second encounter can develop the story even if nobody raises their voice.
 
-## What a robot can mean
+## A protagonist gives the audience someone to keep following
 
-A worn joint has practical consequences. It may slow a worker down, make a task painful or require a part another worker knows how to obtain. Around that small mechanical fact, several human concerns can gather. The worker may be ashamed to report the fault, proud of an old repair or reluctant to accept another favor from the person who fixed it last time.
+A protagonist supplies continuity of concern. The audience learns what that person wants, watches them act and carries questions about them into the next scene. They need not be the most powerful person, the best person or the cause of every event. Their importance comes from the life we are invited to follow.
 
-Those meanings depend on what people do with the body they have. Crate enjoys being good at heavy work. The resentment begins when colleagues take that ability as permission to add one more load. A replacement plate can be an ordinary repair to its owner and an embarrassing reminder to someone who remembers how it was damaged. Maintenance can give Patch a way to care for another worker; it can also give them an excuse to decide what that worker needs.
+bob's ordinary status is useful. Leadership's target, a supervisor's grievance and a staffing decision can all reach him as changes to a working day. He makes choices within that day: whether to admit a fault, ask for help, take credit, share a task or leave somebody waiting. His actions affect other people, who answer from lives of their own.
 
-Loopforge has plenty of language for these encounters already: shifts, clearances, tolerances, service records, missed targets, spare parts. The words belong to work, but work reaches into a life. Being considered reliable can become a source of pride. Being considered replaceable can make someone accept conditions they would otherwise refuse. We should let the situation establish those connections before asking a character to explain them.
+The operator and bob can therefore have different desires without either becoming a mistake in the design. The operator may see an available worker; bob may see a promise he cannot keep if reassigned. A production success can disappoint him. A kindness to him can burden sam. We want the player to notice those tensions, not receive a definitive moral score.
 
-There must also be things worth enjoying here. Mica can take pleasure in getting an alignment right. Fuse can make a dull task bearable. Crate and Hush can be good company for each other without discussing their friendship. CATHEXIS will eventually bring a different appetite for attention, beauty and amusement into this working society. If the factory offers only suffering, there will be little for the player to miss when a relationship or a familiar routine is lost.
+Keeping bob central does not require permanent camera coverage. Establish recurring places, habits, partners and unfinished concerns, then return to them often enough that a change is recognizable. An empty place becomes a question because we expected him there. No special power, concealed royal origin or inevitable martyrdom is needed to justify that attention.
 
-## Ten workers do not have to mean ten introductions
+## Character creation starts with a life, not a list of traits
 
-At Security, the player can meet a person through a small act. Tally picks up the dropped ID. Hush keeps a place open. Mica gives up a spot with enough room for Skip's injured leg. None requires a biography before the act makes sense. A later encounter can give it a name, a history or an unexpected cost.
+Begin by imagining a day the person would consider good. What work can they do well? Whose company do they seek? What do they enjoy when no reward is available? What small inconvenience do they tolerate, and which one produces a surprising reaction? These details create something pressure can disturb.
 
-*Back to the Dawn* offers a useful example of how to sustain that interest across a large ensemble. Its inmates have stories of their own, while the player's need to escape creates reasons to approach them. Short conversations can serve an immediate purpose and leave a person more interesting than they were before. The [illustrated case study](BACK_TO_THE_DAWN_CASE_STUDY.md) follows that connection from the morning count to a private exchange.
+Then distinguish a desire from the strategy used to pursue it. bob wants to be dependable. Volunteering first is one strategy. Concealing pain may become another. The desire helps us recognize him while the changing strategy gives him an arc. If every event simply triggers “eager worker behavior,” we have built a routine with a name.
 
-Loopforge's player has a different job. They are trying to meet leadership's demands through supervisors whose methods affect the same workers. Knowing that Skip now waits for explicit permission may explain why a station has stalled. Knowing that Index was rewarded for enforcing the rule may explain why asking them to hurry has no effect. A morning briefing can offer one supervisor's account; the factory floor gives the player something to compare it with.
+An archetype provides a recognizable human pattern: the helper, the ambitious subordinate, the proud craftsperson. It becomes a stereotype when the pattern explains everything. A specific person needs a competence, a contradiction and relationships in which the same habit has different effects. sam's attentiveness may reassure kit and irritate bob. Neither response proves that sam has ceased to care.
 
-Discovery should arrive when there is a reason to listen. If Patch challenges Skip's next shortcut, Skip might mention the shift when acting early saved the line. If Relay repeats an account of the strike, Tally might correct a detail. The player learns a little history while dealing with the present. Some conversations can go further when the player wants them to; ordinary operation should not depend on exhausting everyone's dialogue.
+Backstory is useful when it explains a present investment. It need not arrive as a confession. The way gus makes room for ben can establish that they have worked together before. A later disagreement can complicate that history. Avoid treating every person as a sealed mystery whose only reward is a biography.
 
-## The same morning leaves different memories
+The same principle applies to visual design. A silhouette helps the audience find somebody; habitual movement helps them recognize what that person is doing. Speech and conduct must then justify the recognition. A head shape cannot make a timid worker timid in every circumstance.
 
-The blade strike is one event, but the workers do not receive identical versions of it. Skip feels the contact. Tally sees the approach and the blow. Relay's view is blocked by Crate; they hear the shout and see Skip on the floor. Index has been concentrating on the instruction. What each later says should follow from that experience.
+## Pressure turns a conviction into a choice
 
-Disagreement can then have an honest beginning. Index may think Skip ignored a clear order. Skip may think they obeyed a call. Relay may repeat Index's explanation because it sounds authoritative, while Tally knows enough to challenge part of it. The player saw the scene from another position again. Nobody needs access to a hidden record of everyone else's thoughts for this conflict to develop.
+Pressure is one of Loopforge's central themes. It comes from deadlines, bodies, hierarchy and relationships. It also comes from inside a person: the promise they made, the image they want to preserve, the favor they cannot bear to owe. These pressures matter when they make two valued things difficult to keep together.
 
-Relationships begin in equally particular ways. Patch offered help, but Skip was embarrassed to need it. Mica gave up a place; Patch noticed, while Skip may not have understood the concession. Hush preserved a gap without asking for thanks. These differences matter later. A worker can trust someone who barely knows them, resent a favor sincerely offered, or cooperate with a colleague they dislike.
+STILETTO wants output and leadership's approval. A delayed crew threatens both. She demands speed from the workers who finally arrive. bob wants to be useful and does not want sam to see that his leg is failing. His promise to keep up turns a production demand into a private difficulty. sam now faces a choice between finishing their own work and attending to him.
 
-LIMEN leaves the encounter with his own evidence: the queue is quiet, the procedure is running and Index is useful. He may take Skip's new caution as proof that the lesson worked. His account should be coherent enough for the player to understand why he would repeat the method. The limp supplies a reason to question his conclusion.
+LIMEN applies another pressure. Procedure gives him an account of order and a basis for authority. He may recognize real hazards while harming the people whose compliance he demands. STILETTO's objection is that his checks withhold labor she needs; worker welfare is not her motive. Their conflict can be understandable without making either supervisor benevolent.
 
-## The second encounter gives the first one weight
+Pressure need not always produce damage. Clear permission can relieve hesitation. A colleague can make help bearable. Praise can create confidence, obligation or rivalry depending on its recipient and context. Relief matters because it shows that the world can answer an action with something other than deterioration.
 
-Suppose Skip reaches a handoff later that day and waits for permission. The worker who arrived eager to start has become the reason for a delay. STILETTO sees lost time; LIMEN would recognize caution. The player may have helped create the problem by leaving the morning's treatment unchallenged, even if the original assignment seemed sensible.
+## Contradiction gives a person somewhere to go
 
-The next response can deepen that pattern or change it. A clear instruction and a colleague who waits for Skip to act may restore some confidence. Another outburst may make asking permission feel dangerous too. We should be able to watch the difference in what Skip attempts. A speech bubble can explain a hesitation, but the handoff still has to happen—or fail to happen—in the room.
+Character development is not a compulsory journey toward virtue. A person may become more generous, more guarded, more skilled at rationalizing harm or simply more aware of a difficulty they cannot resolve. The important connection is between experience, interpretation and later conduct.
 
-Across the first five days, these encounters accumulate alongside the supervisors' conflict. Moving LIMEN and STILETTO between the two stations changes which habits receive approval and which create trouble. When Theatre opens and CATHEXIS arrives, she meets workers who already have friendships, grievances and ways of protecting themselves. She may offer some of them a welcome audience. Others may have good reasons to distrust another supervisor's attention.
+Dostoevsky is useful here because his characters' explanations do not settle them. An argument about duty or freedom can also be an attempt to avoid shame, obtain recognition or control the listener. Another person can expose the gap by answering unexpectedly. Our [selected passage studies](NARRATIVE_STUDIES.md) consider this in *Crime and Punishment*, *The Brothers Karamazov* and *Notes from the Underground*.
 
-The first two weeks should let the player recognize changes in familiar people. Some small stories can resolve: help finally accepted, a warning believed, a task completed without asking. Others can become harder. Their continuation depends on what has happened in that playthrough. If Skip never stepped forward, there is no injury to remember.
+For bob, the first contradiction is modest: he wants others to be able to rely on him, but has difficulty relying on them. A hurt leg makes that harder to avoid. It does not determine his response. He can accept a limited offer, reject it, repay it too quickly or blame the person who made his need visible. The script should give us grounds to understand the choice without announcing the final truth about him.
 
-## Giving these people room to act
+The rest of the ensemble must have equivalent freedom. ed may become LIMEN's assistant and later correct him. jo can keep a faithful record yet choose the moment to reveal it. A person with a recognizable pattern is still capable of surprising us; the surprise should make sense once we see what mattered to them.
 
-The immediate work is to agree on the cast and the opening script, then make the episode convincing with bodies, space, sound and speech. Existing models can stand in while we review it. The proposed appearances become concept sheets and Meshy briefs after the people themselves are approved.
+## Dialogue is part of the action
 
-Once the scene works visually, its causes become the requirements for behavior. In the intended BDI system—beliefs, desires and intentions—Skip must have a reason to approach, Patch must perceive a need for help, and Index must have a reason to intervene. Each needs an action the room will actually permit. A blocked route, an unheard instruction or a refusal should change what follows.
+A line does something to a listener: asks, reassures, tests, conceals, threatens, includes or refuses. The visible situation supplies the rest. When sam says, “I'll walk on this side,” after bob declines an arm, the line offers company while allowing him to preserve the refusal. A speech about dignity would do less.
 
-The engine must keep the event separate from each person's knowledge of it. It must also check whether an intended action is possible: where the worker stands, whether a path is clear, who holds the ID and whether the other participant accepts help. Speech can communicate an offer or a belief; it cannot silently move the prop or supply consent. A scene scheduler may give an exchange room to be noticed, but the encounter still needs to arise from the people and circumstances present.
+Subtext is the difference between the literal words and the work they perform in that situation. It should be inferable, not an excuse for everyone to speak in riddles. LIMEN's “Take your time” can sound considerate while he is enforcing a painful retreat. A clear control label should never share that ambiguity; players need to understand the choices the interface offers.
 
-The current rehearsal already handles admitted actions, hearing and effects with an authored sequence. Individual worker BDI, lasting relationships and stories carried across days still need to be built. The first useful proof will be modest: let the same worker leave the morning with two different experiences under two player treatments, then show those experiences changing a later action. That will tell us more than a long account of what the worker supposedly feels.
+Short bubbles help conversation inhabit the world. Pacing, emphasis and occasional emotion marks can color a line, but should not make every speaker equally loud. A silent reaction may carry the turn. Hold the camera long enough for the player to see who listens and who changes their behavior.
 
-## The older vision and the factory we can now see
+Workers' short names remain lowercase, including at sentence starts and on speaker labels. Supervisors retain capitals. This makes hierarchy present in the language while repeated encounters give each name a personal history. A number on LIMEN's form need not become the name by which the audience knows bob.
 
-The original [Producer notes](sources/producer.md) ask whether an episode is interesting and whether the audience can understand what is at stake. The [Puppeteer notes](sources/puppetteer.md) place supervisors under pressure and give workers different ways to cope. The [Agent Vision](sources/agent-vision.md) supplies the intended path from perception to action and reflection. The opening draws those ambitions into one small room.
+## A large cast needs unequal attention
 
-The older restriction that kept psychology from influencing action no longer fits the owner's direction. A remembered favor or a fear of punishment now needs to alter conduct. Nor can the report screen carry the main performance. The player should be able to watch a worker hesitate, recognize who taught them to hesitate and wonder what the supervisor will do about it.
+Ten people can be present without ten simultaneous stories demanding comprehension. The opening follows bob, gives sam an immediate relationship with him and lets ed acquire a role that will complicate both their lives. The others become available through concrete acts: somebody preserves a place, somebody returns an ID, somebody decides not to make a joke.
 
-[First five days](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md) · [Character and animation direction](AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md) · [Cast appearance](production/CAST_READABILITY_STANDARD.md) · [Encounter architecture](production/SCENE_REHEARSALS.md)
+The first viewing should establish a few relationships well. Later encounters can bring a previously peripheral worker forward. *Back to the Dawn* is especially useful for this movement between a recognizable crowd and a short personal exchange. Its clear escape goal gives encounters direction; Loopforge's factory goals and bob's ongoing concerns must perform that organizing work in our game.
+
+*Attack on Titan* offers another lesson: a change in perspective can alter our understanding of someone we already know. To use that lesson, a scene with ed away from LIMEN should reveal something ed actually does, not supply a narrator's correction that he is “really good.” The player can revise a judgment while the harm remains part of the history.
+
+## Collisions need a history and a shared constraint
+
+Two people disagreeing is not yet a long plot. Give them incompatible commitments, a reason they cannot avoid one another and consequences that return. LIMEN's checks delay STILETTO's crew. STILETTO raises the pace to recover output. The resulting wear gives LIMEN grounds for further interference. Each response changes the situation the other will face.
+
+This produces a credible course toward confrontation without requiring one immutable outcome. An assignment change, a credible concession or better information can redirect the course. If the player commits to one supervisor, the world should carry that preference into advantages and costs that belong to that approach.
+
+The same structure works among workers. sam promises to help two people. ed must choose whether to preserve an accurate count or an approving relationship. bob accepts an opportunity that kit expected. These smaller collisions keep the factory from becoming a stage used only by supervisors.
+
+## Some of the story happens elsewhere
+
+The world must continue when the camera leaves. At six rooms, the player cannot witness every encounter, and the design should not pretend otherwise. We need continuity of causes and selective presentation of consequences.
+
+Some scenes offer a direct decision. Others reflect an earlier assignment. Some can only be witnessed; some will be discovered later; some remain private. We should identify which kind we are writing rather than add an artificial intervention button to every exchange. The player is responsible for their actual decisions, not for failing to exercise a power we never gave them.
+
+“What happened to bob?” becomes meaningful through established expectations. His station is empty. sam is doing a task normally shared with him. A familiar tool has moved to Security. Each trace has an ordinary cause and a limited meaning. Following them may reveal a new duty, an avoidance, a friendship or an injury. Absence is not automatically a catastrophe.
+
+The player needs enough recurring evidence to follow the long arc and enough context to make the next consequential decision. They do not need every secret. Witness accounts should retain their source and uncertainty; a rumor must not silently become the world's truth. A camera can suggest something worth watching without cutting away from the player's attention on every bubble.
+
+## From an authored episode to agents who can live it
+
+BDI gives us a useful distinction between what a person believes, what they want and what they have committed to doing. It does not itself make a person interesting. The authored episode tests whether those commitments can produce a performance worth watching. The engine then needs to support the causes, alternatives and interruptions that the performance implies.
+
+Write the chain explicitly: what actually happened; what this person could perceive; what they inferred; which desire became urgent; what they attempted; and what the world returned. Retain the difference between a sincere mistake and an invented excuse. A speech bubble should express or perform something within that chain, not retroactively invent its cause.
+
+The opening script is one representative run with LIMEN at Security. It is not permission to manufacture bob's injury when he waits, or force LIMEN back into the room after the player assigns STILETTO there. Nor does bob's protagonist status decide his eventual fate. Those are separate design choices requiring their own evidence and review.
+
+Our first proof should connect three moments: the checkpoint, a later task affected by it, and an encounter missed live but discoverable through its aftermath. The question is whether a viewer recognizes bob and wants to follow him, understands some of the changing relationships and can distinguish what they know from what they suspect.
+
+## What every feature owes this story
+
+The [feature assessment](FEATURE_ASSESSMENT.md) applies this foundation to mechanics, presentation and technology. Ask which encounter improves, who becomes more particular, what can be understood now or later, how the player is involved and what continues. Compare that contribution with a simpler approach and with leaving the feature out.
+
+The original [Producer](sources/producer.md) asks for episodes worth watching. The [Puppeteer](sources/puppetteer.md) supplies continuity and pressure through the conditions of the world. Their report-oriented beginnings remain useful to authors; the player's story must now live in the factory.
+
+A clearer silhouette, a believable handoff, a held camera or a persistent memory can all serve that purpose. Their value is established by what they let us notice and care about. The factory should become more interesting as we know its people better.

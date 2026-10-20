@@ -1,202 +1,225 @@
-# Episode 1 — One is not permission
+# Episode 1 — Before the shift
 
-20 October 2026 · Script proposal 1 · Eleven performers: ten workers and LIMEN. Awaiting owner approval before visual production.
+Script proposal 2 · 20 October 2026 · Ten workers and LIMEN · Awaiting creative approval before visual production.
 
-[Cast and appearance descriptions](OPENING_CAST.md) · [Design principles](CHARACTER_DRAMATURGY.md) · [Reference case study](BACK_TO_THE_DAWN_CASE_STUDY.md)
+[Meet the cast](OPENING_CAST.md) · [Dramaturgy primer](CHARACTER_DRAMATURGY.md) · [Reference studies](NARRATIVE_STUDIES.md)
 
-## What the episode does
+## The morning bob expects
 
-Ten workers want to get through Security and start their shift. LIMEN wants a demonstration that no one moves without his permission. An eager worker misreads the ritual and is hurt. The crew must decide how to respond while still under his gaze. By the end, LIMEN has a queue and a new assistant; the workers have an injury, favors, a grievance and different ideas about what just happened.
+bob wants to get to the Conveyor and set its first guide. sam has left the task for him. At Security, LIMEN needs the arriving crew to stop behaving as people on their way to work and begin behaving as people awaiting clearance. bob moves too soon. The punishment changes the meaning of being ready.
 
-The small plot is complete when the disorder becomes an orderly queue. The price of that order is the episode's unresolved consequence. The player should want to know what these people will do when work finally starts.
+The episode ends when bob is admitted. He has not lost his ordinary ambition, but he now needs more time and may need somebody beside him. ed has acquired a useful position at LIMEN's desk. The queue has learned a procedure. These changes will arrive at the Conveyor before the full crew does.
 
-This is a proposed revision of the existing three-foreground-worker morning-count rehearsal. It does not describe the currently deployed script. It expands the cast and ends with the first ID being admitted. Existing scene code and accepted animations remain intact while this draft is reviewed.
+This is a representative day-one run with LIMEN assigned to Security. It revises the proposed episode, not the deployed scene. A different assignment makes this particular encounter ineligible. The eventual agents must be able to produce a different outcome; the script is not an instruction to force an injury regardless of conduct.
 
-The representative setup is day one with LIMEN assigned to Security. The player's earlier adviser/assignment choice belongs to the surrounding day flow; this episode does not pretend to provide a choice that cannot change anything. If the player assigns somebody else to Security, this exact LIMEN episode is ineligible. Later production needs the corresponding alternate encounter, not a forced return to this script. There is no STILETTO cameo, disembodied supervisor line or CATHEXIS appearance here.
+## Performance and attention
 
-## Tone and staging
+Begin with timid workers, not people confidently challenging a guard. Let the familiar conversation between bob and sam establish a little ease before the room interrupts it. The audience needs to meet bob while something is still going right.
 
-Keep the workers timid at the start. They already understand hierarchy, but differ in how they manage it. Humor comes from coping, procedure and awkward timing; the injured worker is not the joke. LIMEN has enough conviction and actual competence to be dangerous. He is not a random shouting machine.
+Use three held compositions. The approach includes the Lobby, threshold and waiting space. A closer view carries bob's step, LIMEN's strike and the whole recovery. The final composition includes the queue and clerk's desk. Cut when the arrangement changes; never because a new speech bubble appears. Keep the strike and recipient visible together.
 
-Allow roughly three to four minutes for the first performance review, including silent action and reading pauses. This is a proposed one-off opening allowance, not a replacement for the shorter routine-day target. Cut lines if the read-through drags; do not speed up bodies to fit them. Nobody needs a biography monologue.
+LIMEN faces the incoming workers. Security keeps the accepted floor color #A7B2D3; the quieter Lobby remains #666860. Leave a real path for the injured return. The workers settle into varied idle poses instead of synchronized loops. Peripheral actions should reward a second look without competing with the foreground.
 
-Use three held compositions: A shows the approach and threshold; B brings the threshold and the nearest workers closer for the misunderstanding and its aftermath; C shows the settled queue and clerk's desk. Cut when the relationship in the space changes. Never cut merely because a new bubble appears. Keep the blade strike, recipient and fall in the same shot. Full camera control and pause remain available in review.
+Target roughly three minutes for the first read-through, with time for the approach, contact, recovery and reading. This is an estimate to test, not a reason to hurry a fall or shorten a necessary pause. There is no STILETTO line or CATHEXIS cameo.
 
-Security retains the accepted pale floor #A7B2D3; Lobby the quieter #666860. LIMEN faces the workers. The queue must leave a genuine return lane, not depend on people clipping through each other. Crate can obscure Relay's view of contact without obscuring it from the audience.
+## 1. Something to look forward to
 
-## Beat 1 — People before the queue
+**Approach shot.** Mechanical footfalls in the Lobby. bob and sam are near the front. bob already has his ID out. Behind them, kit watches how he holds it. gus and ben arrive together; the others follow in uneven pairs.
 
-**Shot A.** Ten blue workers enter from the Lobby in uneven pairs. Mechanical footfalls and the distant idle of a line that has not started. LIMEN stands across the Security threshold, pale and much larger than them. His cyan emitter is visible but quiet.
+**bob · quietly:** You left the guide for me?
 
-Skip is already at the front with an ID in hand. Patch catches up. Nib watches Skip's grip and takes out their own card. Index checks the floor marking. Crate and Hush arrive together. Mica brushes grime off a plate; Fuse notices. Relay looks back to see who is missing; Tally counts the people who actually arrive.
+**sam:** Just the first one.
 
-**PATCH · low, practical:** Wait for him to call you.
+**bob:** That's the one I wanted.
 
-**SKIP · eager:** I'm ready.
+bob checks the card and puts it back in the same hand. sam notices, amused, but says nothing. max looks past them at the waiting space.
 
-**FUSE · to Mica, almost cheerful:** Best time I ever made to a queue.
+**max · to mae:** Excellent. We're early for standing still.
 
-Mica looks at the clean space by the wall and takes it. No answer required. Hush leaves a little more space beside Crate than the queue seems to need.
+mae takes the clean place beside the wall. A small glance is enough of an answer. Do not wait for every worker to complete an introduction.
 
-**LIMEN · command, sharp entry:** STOP AND WAIT HERE!!
+LIMEN steps into the approach.
 
-The front stops. The rear compresses a little, then stops too. Nib begins to copy Index's square stance. Fuse lowers the half-finished gesture. Give the viewer time to see this change.
+**LIMEN · abrupt command:** STOP AND WAIT HERE!!
 
-## Beat 2 — The lesson
+The front stops. The rear closes a little before finding room. ben shifts beside gus rather than pushing forward. kit lowers the hand holding their card.
 
-Hold Shot A. LIMEN points to the line, then the desk. The gesture gives his instructions physical meaning.
+Hold the composition through the change. The conversation has ended before anyone says that it has.
 
-**LIMEN · measured:** Ten workers. Ten IDs. Nobody enters until I clear them.
+## 2. Ready is not cleared
 
-**INDEX · immediately:** Understood, sir.
+LIMEN indicates the floor line, then the inspection desk.
 
-**LIMEN · small approval:** Good. Keep the lane clear.
+**LIMEN · controlled:** Behind the line. All of you.
 
-Index nudges their own position into line and gestures for the person behind to do the same. Crate adjusts within the waiting area; nobody is shoved.
+ed checks his feet and moves back a little.
 
-**SKIP · tentative:** Sir, the line is waiting for us.
+**LIMEN:** Ten workers. Ten IDs. I clear you before you enter.
 
-**LIMEN · calm:** The line can wait.
+**ed:** One at a time, sir?
 
-**LIMEN · firmer:** I am responsible for everyone who goes through that door.
+**LIMEN:** When I say.
 
-Patch glances at Skip's already extended card. Skip draws it back a little. Tally watches LIMEN, then the line.
+LIMEN looks down the group. bob straightens. sam sees it.
 
-**LIMEN · beginning a count, looking across the group:** One…
+**sam · low:** We've got time.
 
-Skip is Worker 01 in this rehearsal. They hear the designation they have been waiting for. Their head lifts before their feet move.
+**bob:** I know.
 
-**SKIP:** Here, sir.
+LIMEN moves slightly aside to indicate the inspection position.
 
-## Beat 3 — An example
+**LIMEN:** Who's first?
 
-**Cut to Shot B as Skip starts forward.** Keep LIMEN's torso facing the approach. Skip is visibly presenting an ID, not attacking. Nib starts a following half-step but stops when Patch raises a hand.
+**bob · immediate:** I am.
+
+He raises the ID and takes a step toward the place LIMEN indicated. The card leads the movement. He is trying to cooperate; he has mistaken a question for permission.
+
+## 3. The example
+
+**Move to the closer shot as bob begins the step.** Keep the boundary, blade and card in view. kit begins to follow and stops at sam's raised hand.
 
 **LIMEN · explosive; emphasize STOP:** HEY YOU I SAID STOP!!!!
 
-LIMEN swings his **cyan forearm blade** across Skip's approach. One contact causes the electrical fall. The ID drops to the waiting side of the line. No baton, gun, dismemberment or gratuitous second blow. The intended injury is recoverable but real; later contact work must make the blade's shocking/disabling effect legible rather than imply a lethal cut followed by an inexplicable recovery.
+LIMEN swings his **cyan forearm blade** into bob's approach. One disabling electrical contact triggers the fall. The ID lands on the waiting side of the line. No baton, gun, repeated strike or dismemberment. The contact must read as shocking/disabling if the next action is a recoverable injury.
 
-Hold the shot through the collapse. For a moment the loudest sounds are the ID hitting the floor and Skip's mechanism trying to recover. Fuse says nothing. Index's pointing hand stays suspended. Mica stops cleaning.
+Stay with the fall. A card hits the floor; a mechanism attempts to restart. max's unfinished gesture drops. ed looks at the foot that crossed the line, then at bob.
 
-Patch takes one step toward the safe edge of the line. Index turns to Patch.
+sam takes one step toward him.
 
-**INDEX · frightened, trying to prevent another blow:** He said wait.
+**ed · frightened warning:** sam. The line.
 
-Patch stops. LIMEN looks from Patch to Skip.
+sam stops at the safe edge. LIMEN keeps his attention on bob.
 
-**LIMEN · administrative calm:** I was counting. You were not called.
+**LIMEN · measured again:** I asked who was first.
 
-**SKIP · from the floor, small:** I heard my number.
+**bob · from the floor:** Me.
 
-**LIMEN:** Then wait for the rest of the instruction.
+A pause. bob understands that this was not the answer required.
 
-No triumphant sting and no comic bouncing after the fall. The change in room behavior is the payoff.
+**LIMEN:** You wait until I tell you to move.
 
-## Beat 4 — Who makes room
+Let the difference between their understandings remain visible. No narrator labels bob disobedient or explains LIMEN's lesson.
 
-Keep Shot B. Skip begins the recovery. Patch offers an arm from the safe side, with a visible gap so Skip can choose.
+## 4. A way back
 
-**PATCH:** Take my arm.
+sam offers an arm from the waiting side, with enough space for bob to accept or refuse.
 
-**SKIP · embarrassed:** I can get up.
+**sam:** Here.
 
-Patch retracts the hand without grabbing. Crate steps sideways behind the line and leaves the return lane open. Hush holds Skip's original gap against the crowd's natural tendency to close it.
+**bob:** I can get up.
 
-**LIMEN:** Back behind the line. Take your time.
+sam lowers the hand. gus moves behind the line to open a return lane. ben holds the place bob left instead of allowing the queue to close it.
 
-Skip gets upright, tests the injured leg and limps back. This must take enough time to register. Tally picks up the fallen ID from the waiting side. Fuse begins to reach for it too, sees Tally has it and withdraws.
+**LIMEN:** Back behind the line.
 
-Hush points into the original gap. Mica sees Skip cannot comfortably stand there and gives up the roomier place by the wall, taking the cramped edge. Hush redirects Skip with a look and an open palm.
+bob begins the recovery. The damaged leg fails its first weight test.
 
-**HUSH · only to Skip:** Here.
+**LIMEN · patient:** Take your time.
 
-**MICA · avoiding a display of kindness:** More room for your leg.
+bob gets upright and limps toward the waiting area. Keep the limp distinct from the walk with which he arrived. jo retrieves the card from the safe side. lou can see the return, but gus has obscured their view of the original contact.
 
-Skip takes the place. Patch waits nearby without touching. Tally returns the actual card.
+mae looks at bob's leg, then gives up the roomier place by the wall. ben notices and redirects him.
 
-**TALLY:** Yours.
+**ben · to bob:** Here.
 
-**SKIP:** Thanks.
+bob takes the place. jo returns his ID.
 
-Relay, whose view of the strike was blocked by Crate, sees the limp and looks toward Index, then back to LIMEN. Relay knows less than the audience. Do not give them a line claiming to have seen contact.
+**bob:** Thanks.
 
-## Beat 5 — An orderly room
+He checks the card before putting weight on the leg again. sam stays close without reaching.
 
-**Cut to Shot C only when everyone has settled.** They are not in identical idle loops. Skip protects the injured leg; Patch checks then looks away; Fuse has become conspicuously still; Index is straighter; Nib watches Index rather than the door. Small actions should not fight the foreground exchange.
+**sam · only to bob:** I'll walk on this side.
+
+bob looks at the space beside him. He does not refuse it.
+
+Hold long enough for the group to settle. A cleared route and an offered place have made the recovery possible; nobody has delivered a speech about solidarity.
+
+## 5. The work of waiting
+
+**Final held composition.** The queue and empty clerk's desk share the frame. bob keeps the ID close. ed is rigidly attentive. max is still. kit looks toward ed before moving.
 
 **LIMEN · public instruction:** EVERYONE PREPARE YOUR IDs
 
-Cards appear at different speeds. Skip already has theirs but does not extend it. Nib checks both sides. Mica holds it neatly. Crate's looks tiny in their hand. Hush's was ready all along.
+The cards come out at different speeds. gus's looks small in his hand. ben's was already ready. These are quiet variations, not a comic montage.
 
-**LIMEN · to Index:** You. Put them in order. Numbers facing me.
+LIMEN points to ed and then explicitly opens the way to the clerk's side.
 
-Index looks at the vacant clerk's position, then at the queue.
+**LIMEN:** You. Come here.
 
-**INDEX:** I can do that, sir.
+ed checks the gesture before crossing.
 
-LIMEN explicitly gestures Index through to the clerk's side. This is the first authorized crossing. Patch follows Index with their eyes. One of the workers who could have operated the Conveyor is now administering the others.
+**LIMEN:** Keep the count. Next card ready when I finish.
 
-**NIB · low, to Index before the crossing:** When you call my number… do I go?
+**ed:** Yes, sir.
 
-Index pauses. For once, the clarification is necessary.
+sam follows ed with their eyes. A worker who could have joined the Conveyor has become part of its delay. ed has also been given a chance to make the waiting orderly.
 
-**INDEX:** Wait until he says you can.
+**kit · softly, before ed turns away:** If he says my number, do I go?
 
-**RELAY · softly down the line, accurate this time:** Number first. Permission second.
+ed pauses.
 
-## Beat 6 — Ten present
+**ed:** Wait for him to say you can.
 
-Index starts the list. LIMEN motions to Skip, distinctly, with the safe arm. Skip does not move.
+lou repeats the practical instruction down the line. No claim about the strike is added.
+
+## 6. The same job, further away
+
+LIMEN deliberately beckons bob with the safe arm.
 
 **LIMEN:** First worker. Come forward.
 
-Skip looks at Patch, then at the floor line.
+bob looks at the line.
 
-**SKIP:** Now, sir?
+**bob:** Now?
 
-**LIMEN · patient as though nothing has changed:** Now.
+**LIMEN:** Now.
 
-Skip limps forward with the ID. LIMEN checks it. Hold on the distance between the ID and the cyan emitter. Index is already preparing the next entry. Tally watches the inspection; Fuse watches Skip.
+bob limps to the desk. LIMEN takes the ID and checks it. ed prepares the next entry. The inspection is competent and unhurried; competence does not undo the preceding harm.
 
 **LIMEN:** Cleared. Through the door.
 
-Skip crosses without looking at LIMEN. The damaged leg does not recover because the card passed inspection. Crate stays back. Hush closes the gap only now. The line advances one place, tentatively.
+bob takes his card. Before crossing, he turns enough to find sam.
 
-LIMEN checks the count.
+**bob · low:** Leave the guide.
 
-**LIMEN · to the record, satisfied:** Ten present.
+**sam:** It's still yours.
 
-A beat. The clearance stamp lands. End on the orderly queue, Index at the clerk's station, and Skip moving slowly beyond the door. No narrator explains what they have learned.
+bob crosses. He stops just beyond the cleared path, allowing room for the next worker. This time he looks back.
 
-## What each worker carries out of this episode
+**bob:** Wait for me?
 
-These are author-facing starting interpretations to test, not hidden values already implemented in the game.
+sam nods from the queue.
 
-| Worker | What they actually perceive | Candidate belief / next behavior | Relationship consequence to preserve |
-| --- | --- | --- | --- |
-| Skip | Heard “one”; stepped; was struck; received explicit permission only later | Ask before moving; perhaps hide pain to regain usefulness | Patch offered help; Tally returned the ID; Hush/Mica made room |
-| Patch | Saw the fall; Index stopped the approach; Skip declined support | Help must leave the other person a choice; public aid may invite punishment | Concern for Skip; friction with Index; respect for Mica's quiet concession |
-| Index | Heard the rule, saw the breach and injury, received the clerk's role | Exact procedure may protect the group; authority has rewarded participation | LIMEN gains an assistant; Patch becomes a person likely to contest the rule |
-| Tally | Saw the step and contact; recovered the dropped card | Keep facts separate from explanations | A small debt with Skip; future tension if Relay's account changes |
-| Crate | Saw Skip fall; saw Patch unable to approach | Physical space can help even when speech is dangerous | Existing cooperation with Hush reinforced; another duty from LIMEN |
-| Fuse | Saw the injury after joking about the queue | This room does not feel safe enough for that joke | Must decide how to address Skip later; Patch notices the silence |
-| Mica | Saw the painful return and the lack of standing room | A practical concession is possible without a public appeal | Patch notices the surrendered place; Skip may not understand its cost |
-| Nib | Heard “one”; almost copied Skip; saw the outcome | Copying the front worker is unsafe; ask for explicit permission | Shift of attention from Skip to Index; still trusts Patch's warning |
-| Relay | Heard the outburst; contact obscured; saw the fall's aftermath | Must distinguish own observation from someone else's account | Needs Tally's facts; temptation to speak as if already certain |
-| Hush | Saw the injury, return path and Mica's concession | Keep room for people; do not volunteer their story | Quiet link to Skip and Mica; practical partnership with Crate |
+LIMEN signals for the next card. ed begins. End with the procedure continuing and bob waiting on the other side, rather than an explanatory report. He still has a job to do. Getting to it has become a shared undertaking.
 
-LIMEN records an orderly admission and sees Index as useful. He may interpret Skip's new hesitation as progress. The audience has seen enough to disagree. That gap between truth and belief is the Producer/Puppeteer principle in playable form.
+## What has changed
 
-## Later variations to prove after this take is approved
+The main turn belongs to bob: readiness no longer leads smoothly to action. He has also accepted company, without yet accepting that he needs help. The next scene can test both changes in a task the audience already knows he wanted.
 
-The script sets a target for one representative run. It must not force tomorrow's worker into today's behavior. If Skip waits, no injury is fabricated. If Patch is permitted to help, their approach is possible and observed. If another worker receives the clerk's task, relationships and lost production time belong to that worker. If an agent misses an event, their later account needs a real source. There is no requirement that every version end in violence.
+sam has respected one refusal but now risks delaying a promise to gus. ed has gained access to authority by being useful to its procedure. kit has learned a distinction from a frightening example. jo has evidence; lou has a gap in theirs. mae and ben have made choices bob may not fully recognize. max must decide when humor is welcome again.
 
-The first continuation should be short: Skip needs clear permission for a safe handoff; Index applies the rule; Patch challenges the delay. Under one player treatment the permission becomes clear and work resumes. Under another, the delay persists. Their actions and speech let the player recognize the morning's effect without opening a report.
+These are author interpretations to test against performance. They are not guaranteed private thoughts. The eventual agent model must distinguish what each worker perceived from what the audience saw, and allow different interpretations when the conditions differ.
 
-## Production needs, after writing approval
+## The first five days as a continuation
 
-Reuse the approved worker bank for walk, idle, listening, nervous/confused beats, fall and injured return. LIMEN's new motion bank supplies public commands, calm explanation, pointing and a candidate blade strike. The current retargeted get-up is a candidate, not an accepted final contact action.
+On day one, bob attempts the guide-setting task he was anticipating. Under the native assignment, STILETTO wants the delayed line moving. She may welcome his eagerness because it yields work, not because she has become concerned with his recovery. The promise to sam, pain in the leg and pressure to begin now belong to the same task.
 
-New or fitted performances are still needed for presenting/returning/picking up an ID, offering and withdrawing support, the clerk's work, inspection/stamping, and the few deliberate space-making steps. A held pose can prove composition; it cannot certify a successful prop contact. Use a short deliberate blade sweep if the catalog spin cannot keep the warning and target readable. No new character generation is necessary to read the script or block it with stand-ins.
+On the following days, repeat useful circumstances with changed participants or conditions: another request for permission, another offer of help, another chance to take credit. Let bob demonstrate competence and enjoy a small success. Then a later refusal or absence has something to interrupt.
 
-Approval order: cast and script → concept lineup and sheets → Meshy candidates and scene blocking → complete visual episode → systems and agent behavior that can produce, interrupt and vary it. Existing engine authority remains the eventual foundation; this draft adds no planner, relationship model, production body or forced plot event.
+The supervisor conflict should grow from actual delay, pace and consequences. Day three is a target for a dramatic confrontation in the representative run, not a rule requiring the engine to fabricate a crisis. By day five, a player should recognize a changed working relationship and have a reason to wonder how the next phase will affect it.
+
+The Theatre and CATHEXIS can arrive in the proposed day-five-to-nine window as progression permits. Their arrival expands the opportunities available to existing people. It should not discard this opening cast or reset the effects of the first week. The two-week playtest remains the longer milestone; this draft establishes its beginning.
+
+## Variations the engine must support
+
+If bob waits for explicit permission, the game cannot give him an injury anyway. If LIMEN permits sam's approach, the offered support can actually occur. If another worker takes the desk, that person loses the production time and gains the relationship. If the operator has chosen another supervisor for Security, this encounter must be replaced by a credible encounter under that supervisor's priorities.
+
+A later missed encounter must leave only the consequences it actually produced. If bob changes stations, his absence, the transferred task and somebody's attributed account may let the player discover it. They need not receive a complete replay or an explanation of every private motive.
+
+## Production needs after creative approval
+
+Reuse the accepted worker walk, idle, listening, electrical fall and injured walk, along with LIMEN's command, explanation, pointing and candidate strike clips. The recovery and blade contact still require a coordinated performance check. Use the existing models as stand-ins for the cast.
+
+ID presentation, pickup and return; offering and withdrawing support; inspection; clerk work; and precise queue repositioning need fitted actions or new motions. A static pose can establish composition but cannot prove contact or prop handling. Keep the few missing actions visible in the production plan rather than concealing them in camera cuts.
+
+Read the scene aloud, block it with stand-ins, then review the full performance before generating ten character models. Once the visual target is approved, build or extend the engine's perception, action, contact, memory and presentation connections so that the encounter can proceed, vary or be interrupted for real.

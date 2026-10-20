@@ -9,8 +9,10 @@ import re
 
 PAGES = [
     ('CHARACTER_DRAMATURGY.md', 'narrative.html', 'Characters and story'),
+    ('NARRATIVE_STUDIES.md', 'narrative-studies.html', 'Reference studies'),
+    ('FEATURE_ASSESSMENT.md', 'narrative-assessment.html', 'Feature assessment'),
     ('EDITORIAL_VOICE.md', 'narrative-voice.html', 'Writing Loopforge'),
-    ('BACK_TO_THE_DAWN_CASE_STUDY.md', 'narrative-reference.html', 'Case study'),
+    ('BACK_TO_THE_DAWN_CASE_STUDY.md', 'narrative-reference.html', 'Back to the Dawn'),
     ('OPENING_CAST.md', 'narrative-cast.html', 'The cast'),
     ('OPENING_EPISODE.md', 'narrative-episode.html', 'The episode'),
 ]
@@ -109,5 +111,5 @@ def build_narrative(docs, out):
         title, body, headings = render(text, media)
         nav = ''.join(f'<a href="{file}"'+(' aria-current="page"' if file == target else '')+f'>{E(name)}</a>' for _, file, name in PAGES)
         toc = ''.join(f'<a href="#{ident}">{E(name)}</a>' for ident, name in headings)
-        document = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)} — Loopforge design</title><meta name="description" content="Loopforge character dramaturgy: illustrated reference study, ten proposed workers and the opening episode."><style>{STYLE}</style></head><body><a class="skip" href="#content">Skip to content</a><header><a href="/stepanoskin/loopforge/design#agents">← Game design · Agents</a><p class="eyebrow">Loopforge / Character dramaturgy and narrative design</p><nav aria-label="Narrative review">{nav}</nav></header><main><aside><details><summary>On this page</summary>{toc}</details></aside><article id="content"><h1>{E(title)}</h1>{body}</article></main><footer><a href="{source}" download>Download this document</a><a href="/stepanoskin/loopforge/design#agents">Back to game design</a><p>Design review · Cast and script await approval before visual production.</p></footer></body></html>'''
+        document = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)} — Loopforge design</title><meta name="description" content="Loopforge dramaturgy and character creation: bob, pressure, reference studies, feature assessment, the cast and the opening episode."><style>{STYLE}</style></head><body><a class="skip" href="#content">Skip to content</a><header><a href="/stepanoskin/loopforge/design#dramaturgy">← Game design · Character dramaturgy</a><p class="eyebrow">Loopforge / Character dramaturgy and narrative design</p><nav aria-label="Narrative review">{nav}</nav></header><main><aside><details><summary>On this page</summary>{toc}</details></aside><article id="content"><h1>{E(title)}</h1>{body}</article></main><footer><a href="{source}" download>Download this document</a><a href="/stepanoskin/loopforge/design#dramaturgy">Back to game design</a><p>Design review · Cast and script await approval before visual production.</p></footer></body></html>'''
         (out/target).write_text(document)

@@ -6,7 +6,7 @@ Editorial case study · 20 October 2026
 
 Viktor Astafiev’s *Cursed and Killed* (*Прокляты и убиты*), Book One, *Чертова яма*, opens with a stopping train. The Russian verbs “хрустнул, сжался, взвизгнул” give iron a strained, almost bodily movement. Accumulating clauses prolong its settling; the fog then deprives us of orientation. [Russian opening, Chapter One](https://mybook.ru/author/viktor-astafev/proklyaty-i-ubity-4/read/)
 
-The next paragraphs make cold audible and wood vulnerable. The shared bodily vocabulary makes exhaustion belong to the whole place. This is an interpreting voice, willing to name desolation and imagine suffering. Its authority comes from the specificity that accompanies its judgments.
+Cold becomes audible; wood becomes vulnerable. The narrator openly judges and imagines. This is much more than neutral observation.
 
 Recognition takes time. A distant howl grows; recruits quiet down; Лешка moves his cap away from his ear. Human singing becomes identifiable only after we have experienced uncertainty. The named person enters through an act of attention.
 
@@ -28,6 +28,6 @@ A clearer account of the strike would repair the causal sequence. It would still
 
 ## The adopted standard
 
-The [official editorial guide](EDITORIAL_VOICE.md) now requires separate reviews of the scene’s causality, its writing and its performance. The reviewer must be able to identify whose experience organizes the scene, follow the change in their understanding, and point to the detail that makes the encounter particular. A sequence of correct events can fail this review.
+The [editorial brief](EDITORIAL_VOICE.md) calls for an intimate, materially felt account of factory life, with room for anger, affection and comedy. The narrator can judge; the writing has to earn that judgment through its knowledge of the people and the place. Correctly listing the events does not meet this standard.
 
 For the game, the work continues in composition, sound, gesture and silence. Prose can establish the intended experience for the production team; the playable encounter has to deliver it through the world. Adding a speech bubble that explains the intended feeling does not finish that work. The cast and episode remain drafts until their performances earn the familiarity on which later events depend.

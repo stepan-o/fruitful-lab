@@ -1444,7 +1444,7 @@
       "id": "sam",
       "name": "sam",
       "subtitle": "Rounded shoulders · low head",
-      "revision": "Approved cast art · 21 October 2026",
+      "revision": "Opening contacts · 21 October 2026",
       "status": "Rigged motion candidate · review available",
       "summary": "Great rounded humped shoulders with head carried low and forward, vertical mouth grille, squat sturdy legs, thick working arms. Blue worn enamel and dull brass. Preserve the industrial porter silhouette; do not straighten the hump into a generic humanoid.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
@@ -1509,6 +1509,10 @@
         {
           "title": "Stage 3 · Opening performance",
           "file": "sam/03-opening-performance.txt"
+        },
+        {
+          "title": "Stage 4 · Help bob",
+          "file": "sam/04-help-bob.txt"
         }
       ]
     },
@@ -1516,7 +1520,7 @@
       "id": "ed",
       "name": "ed",
       "subtitle": "Swept skull · pointing finger",
-      "revision": "Approved cast art · 21 October 2026",
+      "revision": "Opening contacts · 21 October 2026",
       "status": "Rigged motion candidate · review available",
       "summary": "Tall angular dark-blue goon, swept-back skull, narrow eyes, open toothed jaw, pointed chin, large round ear receiver and layered shoulder plates. Long expressive pointing index. The original LIMEN Security far-right assistant remains the source; not a generic smiling worker.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
@@ -1581,6 +1585,10 @@
         {
           "title": "Stage 3 · Opening performance",
           "file": "ed/03-opening-performance.txt"
+        },
+        {
+          "title": "Stage 4 · Pick up and keep bob’s card",
+          "file": "ed/04-card-pickup.txt"
         }
       ]
     },
@@ -1588,7 +1596,7 @@
       "id": "jo",
       "name": "jo",
       "subtitle": "Work cap · blue jacket",
-      "revision": "Approved cast art · 21 October 2026",
+      "revision": "Opening contacts · 21 October 2026",
       "status": "Rigged motion candidate · review available",
       "summary": "Low wide flat head with a projecting metal work cap, two small horizontal cyan eyes, worn blue work jacket and trousers, exposed mechanical knees and cuffs. Adult average factory hand; retain the cap and clothing silhouette.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
@@ -1653,6 +1661,10 @@
         {
           "title": "Stage 3 · Opening performance",
           "file": "jo/03-opening-performance.txt"
+        },
+        {
+          "title": "Stage 4 · Pickup source trial (superseded)",
+          "file": "jo/04-card-pickup.txt"
         }
       ]
     },

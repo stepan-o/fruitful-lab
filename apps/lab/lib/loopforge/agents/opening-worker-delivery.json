@@ -35,7 +35,10 @@
             "walking_2_inplace",
             "Checkpoint_Get_Up",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "ID_Limp"
           ]
         },
         "floor": {
@@ -64,7 +67,10 @@
             "walking_2_inplace",
             "Checkpoint_Get_Up",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "ID_Limp"
           ]
         },
         "console": {
@@ -93,7 +99,10 @@
             "walking_2_inplace",
             "Checkpoint_Get_Up",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "ID_Limp"
           ]
         }
       },
@@ -127,7 +136,13 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "Kneel_Source",
+            "Kneel_To_Help",
+            "Attend_Bob",
+            "Rise_From_Help"
           ]
         },
         "floor": {
@@ -155,7 +170,13 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "Kneel_Source",
+            "Kneel_To_Help",
+            "Attend_Bob",
+            "Rise_From_Help"
           ]
         },
         "console": {
@@ -183,7 +204,13 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "Kneel_Source",
+            "Kneel_To_Help",
+            "Attend_Bob",
+            "Rise_From_Help"
           ]
         }
       },
@@ -217,7 +244,14 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "Male_Bend_Over_Pick_Up",
+            "Pickup_Card",
+            "Stow_Card",
+            "Stow_ID",
+            "Draw_ID"
           ]
         },
         "floor": {
@@ -245,7 +279,14 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "Male_Bend_Over_Pick_Up",
+            "Pickup_Card",
+            "Stow_Card",
+            "Stow_ID",
+            "Draw_ID"
           ]
         },
         "console": {
@@ -273,7 +314,14 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "Male_Bend_Over_Pick_Up",
+            "Pickup_Card",
+            "Stow_Card",
+            "Stow_ID",
+            "Draw_ID"
           ]
         }
       },
@@ -307,7 +355,11 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "Male_Bend_Over_Pick_Up",
+            "Pickup_Card"
           ]
         },
         "floor": {
@@ -335,7 +387,11 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "Male_Bend_Over_Pick_Up",
+            "Pickup_Card"
           ]
         },
         "console": {
@@ -363,7 +419,11 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk",
+            "Male_Bend_Over_Pick_Up",
+            "Pickup_Card"
           ]
         }
       },
@@ -397,7 +457,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "floor": {
@@ -425,7 +487,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "console": {
@@ -453,7 +517,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         }
       },
@@ -487,7 +553,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "floor": {
@@ -515,7 +583,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "console": {
@@ -543,7 +613,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         }
       },
@@ -577,7 +649,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "floor": {
@@ -605,7 +679,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "console": {
@@ -633,7 +709,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         }
       },
@@ -667,7 +745,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "floor": {
@@ -695,7 +775,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "console": {
@@ -723,7 +805,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         }
       },
@@ -757,7 +841,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "floor": {
@@ -785,7 +871,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "console": {
@@ -813,7 +901,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         }
       },
@@ -847,7 +937,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "floor": {
@@ -875,7 +967,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         },
         "console": {
@@ -903,7 +997,9 @@
             "run_fast_10_inplace",
             "walking_2_inplace",
             "Meshy_Walking",
-            "Meshy_Running"
+            "Meshy_Running",
+            "ID_Ready",
+            "ID_Walk"
           ]
         }
       },

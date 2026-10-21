@@ -1,6 +1,6 @@
 # Writing Loopforge
 
-Editorial brief · Revision 6 · 21 October 2026
+Editorial brief · Revision 7 · 21 October 2026
 
 After LIMEN strikes bob, the queue becomes easier to manage. Nobody moves without being told. bob gets up, tests the leg and goes back to waiting. A successful inspection can look like this.
 
@@ -35,6 +35,10 @@ Keep approved portraits separate from performance proposals, relationship possib
 Give a passage enough time to develop. A long sentence can carry a gathering disturbance; a plain sentence can let its consequence settle. Avoid the repeated snap of declarations, the solemn fragment, the neat moral after every exchange. Read aloud for a speaking voice, not a succession of captions.
 
 Dialogue should have an immediate listener and a reason to be spoken. The characters can misunderstand themselves, lose their temper, tell a poor lie or ask for something they cannot quite name. Their language comes from their circumstances. LIMEN can call coercion a precaution with complete sincerity. STILETTO can object to an injured worker being held at Security because she needs that worker on the line. The objection does not make her kind.
+
+The [dialogue study](TARANTINO_CASE_STUDY.md) develops the craft of an encounter through Tarantino’s own accounts of writing and revising. Give the speakers room to pursue their immediate concerns. bob can want to hear a new roller; ed can want to know how much space to leave in a register. The listener’s response tells us whether they share the interest, tolerate it or intend to put it to use. Avoid making every worker equally quick, articulate or amusing. A plain answer can carry the greatest cost in the room.
+
+Draft the conversation before dividing it into bubbles. Read it aloud through every part, including the listener who is working, waiting or trying to leave. Revise once from the position of the person with least power to end it. Then fit words, gestures, pauses and object handling together. A line may change a belief, but that consequence belongs to whoever heard and understood it; the scene must not distribute knowledge or reconciliation to everyone because a sentence was spoken.
 
 Prose can take us inside an experience. In the game, we have to find its visible and audible life: a hand offered and left waiting, a worker testing the floor before committing weight, a conversation that stops when a supervisor approaches. Leave room to notice these things. Speech bubbles should let people speak to one another; they should not tell the audience what to feel.
 

@@ -10,6 +10,8 @@ bob is the protagonist. The operator's decisions shape the factory, while bob's 
 
 The studies below draw on selected primary passages, creator interviews, official descriptions and the attributed gameplay frames in the separate illustrated study. They are our analysis of those materials, not a claim to have conducted an exhaustive rereading or a new viewing of every episode.
 
+The [dialogue case study](TARANTINO_CASE_STUDY.md) adds Tarantino’s accounts of improvising through his characters, revising from another participant’s perspective and making a film people revisit for its company. It carries those methods into the morning walk, the Security checks and LIMEN’s private explanation to bob. The factory needs conversations worth listening to before it needs more dialogue.
+
 ## Back to the Dawn — a clear purpose opens a complicated world
 
 Escape is a useful organizing desire. The player can enter a prison full of strangers without first understanding its entire society: getting out gives them a reason to learn whom to approach, what somebody knows and what help might cost. The official description connects 47 inmates, their stories and the player's escape prospects. That relationship between a clear goal and a crowded social world matters more to Loopforge than the size of the cast. [Official game description](https://store.steampowered.com/app/1735700/Back_to_the_Dawn/) · [Publisher overview](https://clearrivergames.com/games/back-to-the-dawn/)

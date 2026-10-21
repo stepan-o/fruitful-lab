@@ -12,8 +12,8 @@ export const ARRIVAL_LAYOUT = {
 } as const;
 /** These fixture bounds belong to the world, so navigation and scenery agree. */
 export const ARRIVAL_EQUIPMENT:readonly EquipmentPlacement[]=[
- {id:'security-register',room:'security',kind:'records-bank',name:'Admission register',footprint:{x:117.5,y:100,w:3,h:3},height:2.8,operator:{x:119.2,y:105.5}},
- {id:'security-trays',room:'security',kind:'records-bank',name:'ID sorting desk',footprint:{x:127.5,y:100,w:3,h:3},height:2.8,operator:{x:129,y:105.5}},
+ {id:'security-register',room:'security',kind:'records-bank',name:'Admission register',footprint:{x:117.5,y:100,w:3,h:3.5},height:2.8,operator:{x:119.2,y:105.5}},
+ {id:'security-trays',room:'security',kind:'records-bank',name:'ID sorting desk',footprint:{x:127.5,y:100,w:3,h:3.5},height:2.8,operator:{x:129,y:105.5}},
 ];
 export function arrivalRoom(point:Point):ZoneId|undefined{return ARRIVAL_LAYOUT.rooms.find(r=>contains(r.rect as Rect,{x:point[0]/1000,y:point[1]/1000}))?.id;}
 export function crossesArrivalDoor(from:Point,to:Point){

@@ -86,6 +86,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [Stage 1 · Body](/loopforge-design/model-briefs/sam-01-body.cd1136a2d3a4df7f.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/sam-02-rig-and-motion.2a644305e429f71d.txt)
 - [Stage 3 · Opening performance](/loopforge-design/model-briefs/sam-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 4 · Help bob](/loopforge-design/model-briefs/sam-04-help-bob.082e7be259310f68.txt)
 ## ed
 
 Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.
@@ -94,6 +95,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [Stage 1 · Body](/loopforge-design/model-briefs/ed-01-body.62bd45b9717f2ee9.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/ed-02-rig-and-motion.dee141631764876f.txt)
 - [Stage 3 · Opening performance](/loopforge-design/model-briefs/ed-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 4 · Pick up and keep bob’s card](/loopforge-design/model-briefs/ed-04-card-pickup.b34d45558ef8f10c.txt)
 ## jo
 
 Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.
@@ -102,6 +104,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [Stage 1 · Body](/loopforge-design/model-briefs/jo-01-body.dbcf95fb5b0f536a.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/jo-02-rig-and-motion.e6fa4ad8283ea80b.txt)
 - [Stage 3 · Opening performance](/loopforge-design/model-briefs/jo-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 4 · Pickup source trial (superseded)](/loopforge-design/model-briefs/jo-04-card-pickup.89931880535496be.txt)
 ## gus
 
 Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.

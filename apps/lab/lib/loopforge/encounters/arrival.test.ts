@@ -49,3 +49,23 @@ it('revoking an earned clearance interrupts the crossing before the doorway',()=
  for(let i=0;i<80&&!s.events.some(e=>e.kind==='cancelled');i++)s=advance(s,t.registry,t.space);
  expect(s.events.some(e=>e.kind==='cancelled'&&e.action==='first-checks')).toBe(true);expect(s.agents.ed.room).toBe('lobby');expect(s.held).toEqual({});
 });
+it('keeps bob down and sam attending continuously while the others handle IDs',()=>{
+ const t=take();
+ for(const name of ['Everyone prepares their IDs','ed lifts the card','STILETTO passes without stopping']){
+  const v=project(replay(t,startOf(t,name)+20),t.registry);
+  expect(v.actors.find(a=>a.id==='bob')?.cue).toMatchObject({clip:'Electrocuted_Fall',start:6.333,rate:0});
+  expect(v.actors.find(a=>a.id==='sam')?.cue).toMatchObject({clip:'Attend_Bob',loop:true,rootMotion:'preserve'});
+  expect(v.props?.find(p=>p.id==='sam:id')).toBeUndefined();
+ }
+});
+
+it('faces worker locomotion along its route before settling into the next pose',()=>{
+ const t=take(),positions=Object.fromEntries(Object.values(t.world.agents).map(a=>[a.id,a.position]));
+ for(const action of Object.values(t.registry))for(const phase of action.phases)for(const p of phase.perform){
+  if(p.to&&ARRIVAL_WORKERS.includes(p.agent as typeof ARRIVAL_WORKERS[number])&&['walk','limp'].includes(p.motion)){
+   const from=positions[p.agent],dx=p.to[0]-from[0],dy=p.to[1]-from[1],length=Math.hypot(dx,dy);
+   if(length){const angle=p.yaw!*Math.PI/180;expect((-Math.sin(angle)*dx+Math.cos(angle)*dy)/length).toBeGreaterThan(.999);}
+  }
+  if(p.to)positions[p.agent]=p.to;
+ }
+});

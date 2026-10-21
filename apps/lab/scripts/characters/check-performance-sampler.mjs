@@ -26,3 +26,15 @@ const target={uniqueId:8,name:'Hips',position:Vector3.Zero(),rotationQuaternion:
 const group=(name,height)=>({name,from:0,to:30,targetedAnimations:[{target,animation:{targetProperty:'position',framePerSecond:30,evaluate:()=>new Vector3(0,height,0)}}]});
 for(const groups of [[group('walk',1),group('walk__corrected',2)],[group('walk__corrected',2),group('walk',1)]]){createPerformanceSampler(groups,'','y-up').sample({clip:'walk'},0);assert.equal(target.position.y,2);}
 console.log('STILETTO corrected motion selection is independent of asset group ordering.');
+
+// A paired interaction retains its small local balance shift. Blending and seeking
+// must evaluate the old cue with its own policy, not the incoming cue's policy.
+{
+ const {hips,sampler}=fixture('y-up');
+ sampler.sample({clip:'move',rootMotion:'preserve'},.5);assert.deepEqual(hips.position.asArray(),[2,12,3]);
+ sampler.sample({clip:'rest'},0,{cue:{clip:'move',rootMotion:'preserve'},seconds:.5},0);assert.deepEqual(hips.position.asArray(),[2,12,3]);
+ sampler.sample({clip:'rest'},0,{cue:{clip:'move',rootMotion:'preserve'},seconds:.5},.5);assert.deepEqual(hips.position.asArray(),[1,11,1.5]);
+ sampler.sample({clip:'move'},.5);assert.deepEqual(hips.position.asArray(),[0,12,0]);
+ sampler.sample({clip:'move',rootMotion:'preserve'},.5);assert.deepEqual(hips.position.asArray(),[2,12,3]);
+}
+console.log('Paired balance shifts survive seeking and blend into encounter-owned travel.');

@@ -18,8 +18,9 @@ export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootM
   for(const {animation,index,hips}of tracks){
    const value=animation.evaluate(group.from+t*fps)as Quaternion|Vector3;
    if(channels[index].path==='rotationQuaternion')(result[index]as Quaternion).copyFrom(value as Quaternion);else(result[index]as Vector3).copyFrom(value as Vector3);
-   // Encounter owns planar travel; portrait inspection preserves the source path.
-   if(hips){const p=result[index]as Vector3;p.x=0;if(rootMotion==='z-up')p.y=0;else p.z=0;}
+   // Locomotion travel belongs to the encounter. A planted interaction may retain
+   // its baked balance shift around that anchor; portraits preserve all source travel.
+   if(hips&&cue.rootMotion!=='preserve'){const p=result[index]as Vector3;p.x=0;if(rootMotion==='z-up')p.y=0;else p.z=0;}
   }
  }
  return {sample(cue:MotionCue,seconds:number,previous?:ActorView['previous'],blend=1){

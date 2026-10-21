@@ -1,0 +1,148 @@
+{
+  "revision": "before-the-shift/10",
+  "sampling": "30 Hz offline source meshes; visual candidate, not continuous collision certification",
+  "sam": {
+    "sourceTask": "01a16027-0b35-751f-bf47-fa5951663447",
+    "action": 365,
+    "sourceSha256": "5ff48d6cb0d87a09cded570f06a2884a22f5e1acd4ed11694f6f60286b6f5442",
+    "anchor": [
+      122.87,
+      111.18
+    ],
+    "yaw": 288.66325367570676,
+    "bobShoulderWorld": [
+      123.6294,
+      111.4365,
+      0.35
+    ],
+    "localPalmTarget": [
+      -9.77157379840411e-18,
+      0.3393940000741937,
+      0.7772596607632257
+    ],
+    "maxReachErrorM": 0.06632855726567236,
+    "poseQA": [
+      {
+        "clip": "Kneel_To_Help",
+        "duration": 2.4,
+        "minimumY": 0.0019999990752275136,
+        "contactFrames": {
+          "('legL', 'legR')": 0,
+          "('foreL', 'foreR')": 0,
+          "('handL', 'head')": 0,
+          "('handR', 'head')": 0,
+          "('foreL', 'torso')": 0,
+          "('foreR', 'torso')": 0,
+          "('handL', 'legL')": 0,
+          "('handR', 'legR')": 0,
+          "('handL', 'legR')": 0,
+          "('handR', 'legL')": 0
+        },
+        "contactTimes": {}
+      },
+      {
+        "clip": "Attend_Bob",
+        "duration": 6.0,
+        "minimumY": 0.001999999103000309,
+        "contactFrames": {
+          "('legL', 'legR')": 0,
+          "('foreL', 'foreR')": 0,
+          "('handL', 'head')": 0,
+          "('handR', 'head')": 0,
+          "('foreL', 'torso')": 0,
+          "('foreR', 'torso')": 0,
+          "('handL', 'legL')": 0,
+          "('handR', 'legR')": 0,
+          "('handL', 'legR')": 0,
+          "('handR', 'legL')": 0
+        },
+        "contactTimes": {}
+      },
+      {
+        "clip": "Rise_From_Help",
+        "duration": 2.4,
+        "minimumY": 0.0019999990752275136,
+        "contactFrames": {
+          "('legL', 'legR')": 0,
+          "('foreL', 'foreR')": 0,
+          "('handL', 'head')": 0,
+          "('handR', 'head')": 0,
+          "('foreL', 'torso')": 0,
+          "('foreR', 'torso')": 0,
+          "('handL', 'legL')": 0,
+          "('handR', 'legR')": 0,
+          "('handL', 'legR')": 0,
+          "('handR', 'legL')": 0
+        },
+        "contactTimes": {}
+      }
+    ],
+    "status": "candidate; paired scene visual review pending"
+  },
+  "ed": {
+    "sourceTask": "01a15fe7-755e-71e3-b184-a689b7bab3c2",
+    "action": 276,
+    "sourceSha256": "66c46ca1804dda07dfb213f8d7ea99f615ed8c97c3aecdff266b52c1a5a9b1a3",
+    "duration": 7.199999809265137,
+    "contactSeconds": 1.5,
+    "pickupHand": "right",
+    "originalMinimumY": -0.05552986489351188,
+    "fittedMinimumY": 0.001999998465620996,
+    "cardAtContact": [
+      -0.17,
+      0.002999999999999961,
+      0.5099999999999999
+    ],
+    "targetCard": [
+      -0.17,
+      0.003,
+      0.51
+    ],
+    "maxTargetErrorM": 0.0,
+    "stowing": [
+      {
+        "clip": "Stow_Card",
+        "duration": 3.6,
+        "contactSeconds": 1.6,
+        "maxTargetErrorM": 2.0816681711721685e-17,
+        "rightArmContactFrames": 0,
+        "contactTimes": [],
+        "pouchTarget": [
+          -0.19062135457992552,
+          0.9471120493215003,
+          0.12486522548258275
+        ],
+        "wristTarget": [
+          -0.30331566682385336,
+          0.9416340294877259,
+          -0.06952804823633588
+        ]
+      },
+      {
+        "clip": "Stow_ID",
+        "duration": 3.6,
+        "contactSeconds": 1.6,
+        "maxTargetErrorM": 5.551115123125783e-17,
+        "rightArmContactFrames": 0,
+        "contactTimes": [],
+        "pouchTarget": [
+          -0.20260277449876243,
+          0.8243140323422697,
+          -0.06387727614093264
+        ],
+        "wristTarget": [
+          -0.2448201321820846,
+          0.9113649222752426,
+          -0.01893018791003532
+        ]
+      }
+    ],
+    "status": "candidate; visual contact/transition review pending"
+  },
+  "checks": {
+    "encounterTests": 36,
+    "dialogueLinesMatchingScript": 50,
+    "deliveryBanks": 30
+  },
+  "performance": "Previous HD620 acceptance predates these props and paired support; rerun required."
+}

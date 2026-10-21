@@ -13,16 +13,18 @@ STYLE = """
 .episode-panels>summary{min-height:44px;padding:10px 0;margin:0}
 .episode-panel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .episode-panel-grid figure{margin:16px 0}
+.episode-insert{max-width:1100px;margin:40px auto}.episode-insert figure{margin:16px 0}.episode-insert h2{margin-top:0}
 .episode-script{max-width:76ch;margin:48px auto 0;scroll-margin-top:24px}
 .episode-script h2{scroll-margin-top:24px}
 @media(max-width:700px){.episode-page header,.episode-page main,.episode-page footer{padding:20px}.episode-panel-grid{grid-template-columns:1fr}.episode-storyboard figcaption{font-size:13px}}
 """
 
-def image(ref, hero=False):
+def image(ref, hero=False, wide=False):
     variants = ref['variants']
     default = variants[0]
     srcset = ', '.join(f'{v["src"]} {v["width"]}w' for v in variants)
     sizes = '(max-width:700px) calc(100vw - 40px), (max-width:1440px) calc(100vw - 64px), 1376px' if hero else '(max-width:700px) calc(100vw - 40px), 660px'
+    if wide: sizes = '(max-width:700px) calc(100vw - 40px), (max-width:1164px) calc(100vw - 64px), 1100px'
     load = 'fetchpriority="high"' if hero else 'loading="lazy"'
     return f'<a href="{E(variants[-1]["src"])}" target="_blank" rel="noopener" aria-label="Open {E(ref["title"])} at full size"><img src="{default["src"]}" srcset="{srcset}" sizes="{sizes}" width="{default["width"]}" height="{default["height"]}" alt="{E(ref["alt"])}" decoding="async" {load}></a>'
 
@@ -35,4 +37,6 @@ def render_episode(docs, prose):
     for ref in panels:
         hero += '<figure>' + image(ref) + f'<figcaption><strong>{E(ref["title"])}</strong><br>{E(ref["alt"])}</figcaption></figure>'
     hero += '</div></details>'
+    for ref in data.get('inserts', []):
+        hero += f'<section class="episode-insert" aria-labelledby="{E(ref["id"])}"><h2 id="{E(ref["id"])}">{E(ref["title"])}</h2><figure>' + image(ref, wide=True) + f'<figcaption>{E(ref["caption"])}</figcaption></figure><div class="episode-tools"><a href="{E(ref["variants"][-1]["src"])}" download>Download this card</a><a href="narrative-card-arc.html">bob’s missing card →</a></div></section>'
     return hero + '<div id="episode-script" class="episode-script">' + prose + '</div>'

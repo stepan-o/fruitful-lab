@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "status": "review candidate",
   "images": [
     {
@@ -129,6 +129,35 @@
           "width": 1672,
           "height": 941,
           "bytes": 420662
+        }
+      ]
+    }
+  ],
+  "inserts": [
+    {
+      "id": "found-card",
+      "title": "3a. The found card",
+      "alt": "ed picks up bob’s fallen ID while sam tends to bob. Behind them, LIMEN orders everyone to prepare their papers.",
+      "caption": "ed sees the card. bob does not. This happens after the strike, before ed’s own clearance. ed keeps it at Security—the selected starting seed for bob’s missing-card arc.",
+      "source": "output/opening-storyboard/03a-found-card-v2.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-opening-storyboard/found-card-480.c8b960124144f4f8.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 56768
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/found-card-960.58a3465289eb53d8.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 184920
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/found-card-1672.7201f066c983310d.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 398788
         }
       ]
     }

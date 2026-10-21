@@ -17,6 +17,7 @@ PAGES = [
     ('BACK_TO_THE_DAWN_CASE_STUDY.md', 'narrative-reference.html', 'Back to the Dawn'),
     ('ASTAFIEV_CASE_STUDY.md', 'narrative-astafiev.html', 'Astafiev'),
     ('OPENING_CAST.md', 'narrative-cast.html', 'The cast'),
+    ('BOB_CARD_ARC.md', 'narrative-card-arc.html', 'bob’s missing card'),
     ('OPENING_EPISODE.md', 'narrative-episode.html', 'The episode'),
 ]
 ROUTES = {source: target for source, target, _ in PAGES}

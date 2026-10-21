@@ -3,7 +3,7 @@ import type {AnimationGroup} from '@babylonjs/core/Animations/animationGroup';
 import type {TransformNode} from '@babylonjs/core/Meshes/transformNode';
 import type {MotionCue,ActorView} from '@/lib/loopforge/encounters/contract';
 /** Stateless sampling is shared by portraits and encounters. Seek order cannot change a pose. */
-export function createPerformanceSampler(groups:AnimationGroup[],prefix=''){
+export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootMotion:'z-up'|'y-up'|'source'='z-up'){
  const channels=new Map<string,{target:TransformNode;path:string;value:Quaternion|Vector3}>();
  for(const group of groups)for(const {animation,target}of group.targetedAnimations){const path=animation.targetProperty,key=`${target.uniqueId}/${path}`;if(!channels.has(key))channels.set(key,{target,path,value:target[path].clone()});}
  const bank=new Map(groups.map(g=>[g.name.replace(prefix,'').replace(/_Corrected$/,''),g]));
@@ -14,9 +14,9 @@ export function createPerformanceSampler(groups:AnimationGroup[],prefix=''){
   const result=new Map([...channels].map(([key,track])=>[key,{...track,value:track.value.clone()}]));
   for(const {animation,target}of group.targetedAnimations){
    const value=animation.evaluate(group.from+t*fps).clone() as Quaternion|Vector3;
-   // FBX source rigs use local Z-up. The encounter owns horizontal travel;
-   // animated pelvis height and articulation stay in the captured pose.
-   if(animation.targetProperty==='position'&&/(?:^|:)Hips$/.test(target.name)){(value as Vector3).x=0;(value as Vector3).y=0;}
+   // The encounter owns horizontal travel. Imported FBX rigs use local Z-up;
+   // the new GLB rigs use Y-up. Inspection keeps the source path intact.
+   if(rootMotion!=='source'&&animation.targetProperty==='position'&&/(?:^|:)Hips$/.test(target.name)){(value as Vector3).x=0;if(rootMotion==='z-up')(value as Vector3).y=0;else (value as Vector3).z=0;}
    result.set(`${target.uniqueId}/${animation.targetProperty}`,{target:target as TransformNode,path:animation.targetProperty,value});
   }
   return [...result.values()];

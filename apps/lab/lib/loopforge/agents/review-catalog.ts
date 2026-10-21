@@ -4,11 +4,11 @@ export const limenReviewAsset:ProductionReviewAsset={
  id:'limen-assembly',shortName:'LIMEN',navDetail:'17 source motions · cyan emitter',title:'LIMEN · character, emitter & motions',revision:'body-v2 / source-motions-2026-10-19 / energy-v2',route:'/stepanoskin/loopforge/play/agent-test/limen',conceptRoute:'/stepanoskin/loopforge/design#agents',status:'Source motion review · approved assembly retained',description:'Compare 17 new source motions and their articulated finger rig with the accepted idle, walk and run assembly. Inspect the cyan emitter under factory lighting before accepting new contacts.',checks:['Body and rig comparison','17 source motions and attachment','Three CCTV angles','Reduced effects and performance']
 };
 export const workerReviewAsset:ProductionReviewAsset={
- id:'worker-01-motions',shortName:'Worker 01',navDetail:'19 corrections · finger hinges',title:'Worker 01 · motion bank',revision:'worker-01 / cleanup-v2 / finger-rig-v1',
- route:'/stepanoskin/loopforge/play/asset-review/worker',conceptRoute:'/stepanoskin/loopforge/design#agents',
- status:'Corrected bank · owner review',
- description:'Compare 19 baked corrections with untouched source motion. The corrected rig adds ten finger hinges and relax, grip and release studies. Hot Walk remains a source reference; CATHEXIS has her own approved gait.',
- checks:['Original/corrected at the same timestamp','Full-cycle 120 Hz exported-mesh checks','Natural posture and articulated fingers','Fixed floor, factory lighting and three CCTV angles']
+ id:'worker-01-motions',shortName:'Workers',navDetail:'10 characters · motion fitting',title:'The opening workers · bodies & motion',revision:'opening-cast / motion-transfer-v1',
+ route:'/stepanoskin/loopforge/play/asset-review/worker',conceptRoute:'/loopforge-design/narrative-cast.html',
+ status:'Ten rigged candidates · contact fitting underway',
+ description:'Inspect bob, sam, ed, jo, gus, max, mae, kit, lou and ben with 22 clips each and three body detail levels. The accepted Worker 01 bank remains available as a separate source reference.',
+ checks:['Distinct silhouettes and body materials','All motion clips on each worker','Portrait, floor and console detail','Per-character contacts, transitions and device review']
 };
 export const stilettoReviewAsset:ProductionReviewAsset={
  id:'stiletto-blades',shortName:'STILETTO',navDetail:'Blades · welders · red visor',title:'STILETTO · interchangeable forearms',revision:'body-v1 / blades-v4 / welders-v1 / visor-v3',

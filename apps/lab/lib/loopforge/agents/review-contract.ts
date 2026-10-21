@@ -11,6 +11,14 @@ export type ReviewSection = typeof reviewSections[number]['id'];
 export type ReviewGate = {status:'Accepted slice'|'Candidate'|'Needs work'|'Not measured'; detail:string};
 export type ReviewReadiness = Record<ReviewSection, ReviewGate>;
 export const reviewReadiness: Record<string, ReviewReadiness> = {
+ 'opening-workers': {
+  body:{status:'Candidate',detail:'Ten individually generated bodies follow the approved cast art. Inspect each silhouette and the three simplified detail levels before accepting the exported geometry.'},
+  equipment:{status:'Candidate',detail:'Characteristic clothing and kit’s pipe are part of the source body. Held IDs and paired prop contacts remain to be fitted.'},
+  motion:{status:'Candidate',detail:'Each bank has nineteen transferred Worker 01 motions, a neutral rig and two companion Meshy clips. Source finger tracks do not transfer to these 24-joint rigs.'},
+  contact:{status:'Needs work',detail:'New proportions need individual fitting. The first bob scan finds hand/head, hand/leg and fall/floor contacts. Worker 01’s earlier cleanup does not certify these bodies.'},
+  readability:{status:'Candidate',detail:'Inspect the new cast under the same factory lighting and CCTV cameras. Full-cast and names-hidden recognition remain separate checks.'},
+  performance:{status:'Not measured',detail:'Ten floor bodies total 92,385 triangles and 12.75 MB including motion banks. The smaller set preserves head features and totals 45,542 triangles. These are delivery measurements; the actual opening-scene device test is still pending.'}
+ },
  'cathexis-intake': {
   body:{status:'Accepted slice',detail:'Accepted v2 silhouette and rear skirt; rigged export has 51,031 triangles. Matching delivery normal map remains missing.'},
   equipment:{status:'Accepted slice',detail:'Owner approves full/split Grace fit on the intact animated head. Recessed eyes and static/moving fitting share one adapter. Physical mask removal and facial articulation remain outside this slice.'},

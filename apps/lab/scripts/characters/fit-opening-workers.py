@@ -21,6 +21,16 @@ def arm_pose(b,w,a):
   upper=b.names[prefix+'Arm'];hand=b.names[prefix+'Hand'];delta=w[hand,:3,3]-w[upper,:3,3]
   b.rotate_chain(w,upper,swing(delta,delta+sign*basis[:,0]*a))
  return w
+def open_elbow(b,w,prefix,angle):
+ # Extend within the source arm's own plane. A wrist-only turn would leave
+ # the palm embedded in bob's much larger head; shoulder abduction alone
+ # cannot repair that folded contact. Retain at least ten degrees of bend.
+ w=w.copy();upper=b.names[prefix+'Arm'];elbow=b.names[prefix+'ForeArm'];hand=b.names[prefix+'Hand']
+ a=w[elbow,:3,3]-w[upper,:3,3];a/=np.linalg.norm(a)
+ v=w[hand,:3,3]-w[elbow,:3,3];v/=np.linalg.norm(v)
+ bend=np.arccos(np.clip(np.dot(a,v),-1,1));axis=np.cross(v,a);length=np.linalg.norm(axis)
+ if length>1e-8 and bend>np.radians(10):b.rotate_chain(w,elbow,R.from_rotvec(axis/length*min(angle,bend-np.radians(10))).as_matrix())
+ return w
 ap=argparse.ArgumentParser();ap.add_argument('directory',type=Path);ap.add_argument('--workers',nargs='+',default=['bob']);ap.add_argument('--clips',nargs='*');args=ap.parse_args()
 for name in args.workers:
  folder=args.directory/name;b=OpeningWorker(folder/(name+'-motion-candidate-v1.glb'));writer=Writer(b.d);writer.g['animations']=[];records=[]
@@ -41,11 +51,31 @@ for name in args.workers:
     if not hits.any():break
     envelope=np.minimum(maximum+step,envelope+gaussian_filter1d(maximum_filter1d(hits.astype(float),size=7,mode=mode),1,mode=mode)*step)
    report[kind]={'maximum':float(envelope.max()),'unit':'radians'if kind=='legs'else'metres','remainingFrames':int(hits.sum()),'limitFrames':int((needs>=maximum).sum())}
+  if c['name']in ['Electrocuted_Fall','Checkpoint_Get_Up']:
+   for side,prefix in [('L','Left'),('R','Right')]:
+    pairs=[('hand'+side,'head')];step=np.radians(3);maximum=np.radians(66);needs=[]
+    for w in out:
+     a=0.
+     while b.intersects(b.skin(open_elbow(b,w,prefix,a)),pairs)and a<maximum:a+=step
+     needs.append(a)
+    # Continuous source-plane correction, with matching held endpoints for
+    # the fallen pose and the start of the recovery clip.
+    envelope=gaussian_filter1d(maximum_filter1d(np.array(needs),size=11,mode='nearest'),2,mode='nearest')
+    if envelope.max()>0:envelope+=np.radians(2)
+    before=out.copy()
+    for iteration in range(3):
+     out=np.array([open_elbow(b,w,prefix,a)for w,a in zip(before,envelope)])
+     hits=np.array([b.intersects(b.skin(w),pairs)for w in out])
+     if not hits.any():break
+     envelope=np.minimum(maximum,envelope+gaussian_filter1d(maximum_filter1d(hits.astype(float),size=9,mode='nearest'),2,mode='nearest')*step)
+    report['elbow'+side]={'maximumDegrees':float(np.degrees(envelope.max())),'remainingHeadContactFrames':int(hits.sum())}
+   report['remainingArmContactFrames']=int(sum(b.intersects(b.skin(w),b.pairs[1:])for w in out))
   # New eyes and forearms require their own floor clearance. Keep this correction
   # in the baked pelvis curve; the review camera and world floor never chase it.
   minima=np.array([b.skin(w)[:,1].min()for w in out]);floor_offset=np.full(len(ts),.002-float(minima.min()))
-  if c['name']=='Electrocuted_Fall':
-   # Follow support geometry during collapse, smooth the clearance envelope,
+  if c['name']in ['Electrocuted_Fall','Checkpoint_Get_Up','idle','Alert','walking_2_inplace','injured_walk','Listening_Gesture','Catching_Breath','Discuss_While_Moving','Agree_Gesture']:
+   # Follow the planted support during stance, walking, collapse and recovery.
+   # Runs/jumps retain their flight phase. Smooth the clearance envelope,
    # then guarantee no sampled vertex passes through the stationary floor.
    floor_offset=gaussian_filter1d(maximum_filter1d(.002-minima,size=5,mode='nearest'),1,mode='nearest');floor_offset=np.maximum(floor_offset,.002-minima)
   joints=b.d['sk']['joints'];out[:,joints,1,3]+=floor_offset[:,None]

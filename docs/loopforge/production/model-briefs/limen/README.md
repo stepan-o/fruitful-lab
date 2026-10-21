@@ -39,3 +39,7 @@ Current viewer: https://www.fruitfulab.net/stepanoskin/loopforge/play/agent-test
 - Crowd and physical-device performance
 
 Regeneration does not reproduce exact topology, rig transforms, sockets, exported hashes or offline fixes. Preserve source and derivative revisions; validate every new export in the production player before replacement.
+
+## Checkpoint motion additions · 21 October 2026
+
+`07-checkpoint-strike.txt` records Action 219 and its local adaptation onto the accepted body. The bank retains the source right-hand slash and a separate Checkpoint Strike alongside Step Back. The scene pairs the cyan contact with bob’s fitted collapse; verify partner contact and blended transitions in the opening, not only in the single-character viewer.

@@ -15,7 +15,7 @@ import type {CharacterStage} from '../factory-study/scene';
 import type {ActorView} from '@/lib/loopforge/encounters/contract';
 import type {WorkerSurface} from './worker-model';
 import {worldPoint} from '@/lib/loopforge/spatial/floor';
-import {openingWorkerAsset,type OpeningWorkerId,type WorkerDetail} from '@/lib/loopforge/agents/opening-workers';
+import {openingWorkers,openingWorkerAsset,type OpeningWorkerId,type WorkerDetail} from '@/lib/loopforge/agents/opening-workers';
 import delivery from '@/lib/loopforge/agents/opening-worker-delivery.json';
 import {createPerformanceSampler} from './performance-sampler';
 import {OpeningWorkerFinish} from './opening-worker-finish';
@@ -37,6 +37,8 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
   const meshes=container.meshes.filter(m=>m.getTotalVertices()>0),hips=container.transformNodes.find(n=>n.name==='Hips');
   if(!hips)throw Error(`${worker}'s pelvis is missing.`);
   meshes.forEach(m=>{m.isPickable=false;m.receiveShadows=true;shadow.addShadowCaster(m);});
+  const sourceHeight=Math.max(...meshes.map(m=>{m.computeWorldMatrix(true);return m.getBoundingInfo().boundingBox.maximumWorld.y;}))-Math.min(...meshes.map(m=>m.getBoundingInfo().boundingBox.minimumWorld.y));
+  const standingHeight=openingWorkers.find(w=>w.id===worker)!.height;root.scaling.setAll(standingHeight/sourceHeight);root.computeWorldMatrix(true);
   const reviewSampler=createPerformanceSampler(container.animationGroups,'','source'),performer=createPerformanceSampler(container.animationGroups,'','y-up');
   lamp=new DirectionalLight(`${worker} inspection lamp`,new Vector3(.25,-.5,1),scene);lamp.diffuse=new Color3(.82,.9,1);lamp.intensity=2.5;lamp.includedOnlyMeshes=meshes;lamp.renderPriority=5;
   const materials=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{m.maxSimultaneousLights=6;return {m,texture:m.albedoTexture,mr:m.metallicTexture,normal:m.bumpTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness,paint:new OpeningWorkerFinish(m,worker)};});
@@ -73,6 +75,7 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
   });
   root.rotation.y=Math.PI;room('security');clip(id);
   return {
+   presentation:{root,bodyMeshes:meshes,standingHeight},
    file,clips:file.clips,duration,clip,room,finish,normals,
    play(value:boolean){if(value&&phase===1)phase=0;playing=value;last=performance.now();stage.refresh();},
    seek(value:number){phase=Math.max(0,Math.min(1,value));sample();},speed(value:number){speed=value;},loop(value:boolean){loop=value;},

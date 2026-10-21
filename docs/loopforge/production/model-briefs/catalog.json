@@ -187,6 +187,10 @@
         {
           "title": "Stage 6 · Doorway step back",
           "file": "limen/06-doorway-step-back.txt"
+        },
+        {
+          "title": "Stage 7 · Checkpoint cyan strike",
+          "file": "limen/07-checkpoint-strike.txt"
         }
       ]
     },
@@ -1365,11 +1369,11 @@
       "name": "bob",
       "subtitle": "Fly eyes · flat head",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · body candidate",
+      "status": "Rigged motion candidate · review available",
       "summary": "Small narrow blue frame; flat small head beneath two oversized convex cyan fly-eye lenses, above and wider than the head; moderately large articulated hands, cream chest stripe. Do not return to a round ordinary head or huge mitten hands.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=bob",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#bob",
       "parts": [
         "Individual blue-family body",
@@ -1377,9 +1381,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {
@@ -1429,6 +1433,10 @@
         {
           "title": "Stage 3 · Opening performance",
           "file": "bob/03-opening-performance.txt"
+        },
+        {
+          "title": "Stage 4 · Native Idle comparison",
+          "file": "bob/04-native-idle-control.txt"
         }
       ]
     },
@@ -1437,11 +1445,11 @@
       "name": "sam",
       "subtitle": "Rounded shoulders · low head",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · model pending",
+      "status": "Rigged motion candidate · review available",
       "summary": "Great rounded humped shoulders with head carried low and forward, vertical mouth grille, squat sturdy legs, thick working arms. Blue worn enamel and dull brass. Preserve the industrial porter silhouette; do not straighten the hump into a generic humanoid.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=sam",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#sam",
       "parts": [
         "Individual blue-family body",
@@ -1449,9 +1457,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {
@@ -1509,11 +1517,11 @@
       "name": "ed",
       "subtitle": "Swept skull · pointing finger",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · body candidate",
+      "status": "Rigged motion candidate · review available",
       "summary": "Tall angular dark-blue goon, swept-back skull, narrow eyes, open toothed jaw, pointed chin, large round ear receiver and layered shoulder plates. Long expressive pointing index. The original LIMEN Security far-right assistant remains the source; not a generic smiling worker.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=ed",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#ed",
       "parts": [
         "Individual blue-family body",
@@ -1521,9 +1529,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {
@@ -1581,11 +1589,11 @@
       "name": "jo",
       "subtitle": "Work cap · blue jacket",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · model pending",
+      "status": "Rigged motion candidate · review available",
       "summary": "Low wide flat head with a projecting metal work cap, two small horizontal cyan eyes, worn blue work jacket and trousers, exposed mechanical knees and cuffs. Adult average factory hand; retain the cap and clothing silhouette.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=jo",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#jo",
       "parts": [
         "Individual blue-family body",
@@ -1593,9 +1601,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {
@@ -1653,11 +1661,11 @@
       "name": "gus",
       "subtitle": "Square shoulders · recessed head",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · body candidate",
+      "status": "Rigged motion candidate · review available",
       "summary": "Massive square navy shoulders with pale yoke, small recessed skull, broad rectangular chest and heavy boots. Distinguish his squared upright mass from sam’s rounded hunched mass. Worker-scale security helper, never supervisor-scale.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=gus",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#gus",
       "parts": [
         "Individual blue-family body",
@@ -1665,9 +1673,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {
@@ -1725,11 +1733,11 @@
       "name": "max",
       "subtitle": "Long face · narrow frame",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · model pending",
+      "status": "Rigged motion candidate · review available",
       "summary": "Tall slender upright blue body, long narrow masklike exposed face with straight pale central nose ridge, small horizontal cyan optics, narrow shoulders, ordinary hands. Use the approved long-faced character reassigned from the mae proposal; discard the previous oversized unilateral ear design.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=max",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#max",
       "parts": [
         "Individual blue-family body",
@@ -1737,9 +1745,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {
@@ -1797,11 +1805,11 @@
       "name": "mae",
       "subtitle": "Blunt head · compact frame",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · model pending",
+      "status": "Rigged motion candidate · review available",
       "summary": "Short compact square blue craftswoman, broad blunt bob-shaped angular head casing, narrow rectangular cyan eyes in dark slot, short neck, small precise hands and exposed separated legs. No hood, skirt or dress. No baby proportions. Different from RIVET WITCH.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=mae",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#mae",
       "parts": [
         "Individual blue-family body",
@@ -1809,9 +1817,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {
@@ -1869,11 +1877,11 @@
       "name": "kit",
       "subtitle": "Piston forearms · pipe",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · model pending",
+      "status": "Rigged motion candidate · review available",
       "summary": "Adult wiry Popeye-like robot: tiny squinting skull with heavy jaw, short brass/steel pipe at mouth corner, lean ribbed torso, thin upper arms and enormous blue piston forearms tapering to ordinary hands. Pale forearm stripe, sturdy boots. Preserve pipe and forearm silhouette, not oversized hands or baby head.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=kit",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#kit",
       "parts": [
         "Individual blue-family body",
@@ -1881,9 +1889,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {
@@ -1941,11 +1949,11 @@
       "name": "lou",
       "subtitle": "Long neck · spare frame",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · model pending",
+      "status": "Rigged motion candidate · review available",
       "summary": "Exceptionally long curved neck and forward beaky skull with twin receiver housings; narrow exposed rib torso, very long thin arms and legs. Maintain a coherent biped and expressive neck without collapsing this into standard worker proportions.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=lou",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#lou",
       "parts": [
         "Individual blue-family body",
@@ -1953,9 +1961,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {
@@ -2013,11 +2021,11 @@
       "name": "ben",
       "subtitle": "Oval hood · barrel body",
       "revision": "Approved cast art · 21 October 2026",
-      "status": "Concept approved · model pending",
+      "status": "Rigged motion candidate · review available",
       "summary": "Short squat rounded barrel body and back, low broad oval hood, tiny square cyan eyes, circular shoulder joints, long thin forearms and short legs. Keep ben low and round; unlike gus’s square mass or sam’s raised hump.",
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
-      "viewer": null,
-      "viewerLabel": "Individual viewer in production",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=ben",
+      "viewerLabel": "Inspect body and every motion",
       "record": "/loopforge-design/narrative-cast.html#ben",
       "parts": [
         "Individual blue-family body",
@@ -2025,9 +2033,9 @@
         "Locally fitted contacts, transitions and scene performance"
       ],
       "remaining": [
-        "Model and rig inspection",
-        "All-motion viewer and contact fitting",
-        "Room-scale recognition and performance acceptance"
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
       ],
       "images": [
         {

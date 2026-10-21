@@ -1,14 +1,20 @@
+import type {EquipmentPlacement} from '../spatial/equipment';
 import type {Point,SpatialServices,World} from './contract';
 import type {ZoneId,Rect} from '../spatial/floor';
 import {contains} from '../spatial/floor';
 /** Compact first-day rehearsal layout. This does not silently relocate the full-floor Dispatch.
  * Both navigation and construction consume these bounds; production can select this layout. */
 export const ARRIVAL_LAYOUT = {
- id:'day-one-lobby-security/1',
- rooms:[{id:'lobby',rect:{x:116,y:111,w:16,h:15}},{id:'security',rect:{x:116,y:99,w:16,h:12}}] as const,
+ id:'day-one-lobby-security/2',
+ rooms:[{id:'lobby',rect:{x:116,y:111,w:16,h:33}},{id:'security',rect:{x:116,y:99,w:16,h:12}},{id:'conveyor',rect:{x:132,y:101,w:6,h:6}}] as const,
  portal:{id:'lobby-security',a:'lobby',b:'security',axis:111,min:122,max:126},
  anchor:[124,113.8] as const,
 } as const;
+/** These fixture bounds belong to the world, so navigation and scenery agree. */
+export const ARRIVAL_EQUIPMENT:readonly EquipmentPlacement[]=[
+ {id:'security-register',room:'security',kind:'records-bank',name:'Admission register',footprint:{x:117.5,y:100,w:3,h:3},height:2.8,operator:{x:119.2,y:105.5}},
+ {id:'security-trays',room:'security',kind:'records-bank',name:'ID sorting desk',footprint:{x:127.5,y:100,w:3,h:3},height:2.8,operator:{x:129,y:105.5}},
+];
 export function arrivalRoom(point:Point):ZoneId|undefined{return ARRIVAL_LAYOUT.rooms.find(r=>contains(r.rect as Rect,{x:point[0]/1000,y:point[1]/1000}))?.id;}
 export function crossesArrivalDoor(from:Point,to:Point){
  const door=ARRIVAL_LAYOUT.portal,ay=from[1]/1000,by=to[1]/1000;
@@ -17,11 +23,20 @@ export function crossesArrivalDoor(from:Point,to:Point){
  return x>=door.min+.4&&x<=door.max-.4;
 }
 export const arrivalSpace:SpatialServices={
- connected(a,b){return a!==b&&[a,b].every(r=>r==='lobby'||r==='security');},
+ connected(a,b){return a!==b&&((a==='security'&&['lobby','conveyor'].includes(b))||(b==='security'&&['lobby','conveyor'].includes(a)));},
  roomAt:arrivalRoom,
  canTraverse(agent,to,world){
   const destination=arrivalRoom(to);if(!destination||!to.every(Number.isFinite))return false;
-  if(destination!==agent.room&&(!crossesArrivalDoor(agent.position,to)||world.facts['portal.lobby-security.open']!==true))return false;
+  if(ARRIVAL_EQUIPMENT.some(e=>contains(e.footprint,{x:to[0]/1000,y:to[1]/1000})))return false;
+  if(destination!==agent.room){
+   if([destination,agent.room].includes('lobby')){
+    if(!crossesArrivalDoor(agent.position,to))return false;
+    if(agent.character==='worker'&&world.facts[`checkpoint.cleared.${agent.id}`]!==true&&world.facts['portal.lobby-security.open']!==true)return false;
+   }else{
+    const from=agent.position,axis=132000,ratio=(axis-from[0])/(to[0]-from[0]),y=from[1]+(to[1]-from[1])*ratio;
+    if(!Number.isFinite(ratio)||ratio<0||ratio>1||y<102000||y>106000)return false;
+   }
+  }
   return Object.values(world.agents).every(other=>other.id===agent.id||Math.hypot(other.position[0]-to[0],other.position[1]-to[1])>=850);
  },
  canHear(speaker,listener,world,channel='local'){
@@ -31,4 +46,4 @@ export const arrivalSpace:SpatialServices={
   return world.facts['portal.lobby-security.audible']===true&&distance<=(channel==='shout'?18000:6000)&&crossesArrivalDoor(speaker.position,listener.position);
  }
 };
-export function arrivalWaiting(world:World){return Object.keys(world.agents).filter(id=>id!=='limen').every(id=>world.facts[`queue.${id}.settled`]===true);}
+export function arrivalWaiting(world:World){return Object.keys(world.agents).filter(id=>world.agents[id].character==='worker').every(id=>world.facts[`queue.${id}.settled`]===true);}

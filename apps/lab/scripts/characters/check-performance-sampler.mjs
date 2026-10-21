@@ -21,3 +21,8 @@ for(const [mode,expected]of [['source',[2,12,3]],['y-up',[0,12,0]],['z-up',[0,0,
  sampler.sample({clip:'rest'},0,{cue:{clip:'move'},seconds:.5,yaw:0},1);assert(hand.rotationQuaternion.equalsWithEpsilon(Quaternion.Identity()));
 }
 console.log('Shared sampling verified: Y-up and Z-up pelvis height, source travel, missing-channel reset and transition endpoints.');
+
+const target={uniqueId:8,name:'Hips',position:Vector3.Zero(),rotationQuaternion:Quaternion.Identity()};
+const group=(name,height)=>({name,from:0,to:30,targetedAnimations:[{target,animation:{targetProperty:'position',framePerSecond:30,evaluate:()=>new Vector3(0,height,0)}}]});
+for(const groups of [[group('walk',1),group('walk__corrected',2)],[group('walk__corrected',2),group('walk',1)]]){createPerformanceSampler(groups,'','y-up').sample({clip:'walk'},0);assert.equal(target.position.y,2);}
+console.log('STILETTO corrected motion selection is independent of asset group ordering.');

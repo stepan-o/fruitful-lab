@@ -47,8 +47,9 @@ function reduce(doc,level,name){
   console.log(JSON.stringify({simplification:level.id,triangles:indices.length/3,error}));
  }
 }
-for(const name of names){
- const folder=path.resolve(directory,name),source=path.join(folder,name+'-motion-candidate-v1.glb');
+const fitted=names.includes('--fitted');
+for(const name of names.filter(n=>n!=='--fitted')){
+ const folder=path.resolve(directory,name),source=path.join(folder,name+(fitted?'-motion-fitted-v1.glb':'-motion-candidate-v1.glb'));
  const original=await readFile(source),records=[];
  for(const level of levels){
   const doc=await io.readBinary(original);

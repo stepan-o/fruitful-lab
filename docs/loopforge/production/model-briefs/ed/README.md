@@ -1,6 +1,6 @@
 # ed — opening worker rebuild kit
 
-Revision 2 · 21 October 2026 · Approved concept; generated body candidate awaiting full rig and motion review.
+Revision 2 · 21 October 2026 · Approved concept; rigged body and motion candidates available for review.
 
 ## Character
 
@@ -20,4 +20,4 @@ Tall angular dark-blue goon, swept-back skull, narrow eyes, open toothed jaw, po
 2. `02-rig-and-motion.txt`: neutral rig, motion reuse and character-specific fitting.
 3. `03-opening-performance.txt`: common scene choreography and contact review.
 
-The planned individual viewer route is `/stepanoskin/loopforge/play/asset-review/worker?worker=ed`. Individual navigation and motion fitting are still in production. Export audit and motion cleanup records must report inspected files; a concept approval is not a rig or performance pass.
+The individual viewer route is `/stepanoskin/loopforge/play/asset-review/worker?worker=ed`. Ten worker tabs, all source/transferred motions and three detail levels are available. Selected opening clips have a first contact-fitting pass; the full bank and paired acting remain under review. Export audit and motion cleanup records must report inspected files; a concept approval is not a rig or performance pass.

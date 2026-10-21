@@ -33,6 +33,7 @@
             "injured_walk",
             "run_fast_10_inplace",
             "walking_2_inplace",
+            "Checkpoint_Get_Up",
             "Meshy_Walking",
             "Meshy_Running"
           ]
@@ -61,6 +62,7 @@
             "injured_walk",
             "run_fast_10_inplace",
             "walking_2_inplace",
+            "Checkpoint_Get_Up",
             "Meshy_Walking",
             "Meshy_Running"
           ]
@@ -89,6 +91,7 @@
             "injured_walk",
             "run_fast_10_inplace",
             "walking_2_inplace",
+            "Checkpoint_Get_Up",
             "Meshy_Walking",
             "Meshy_Running"
           ]

@@ -50,6 +50,19 @@ source_clips=[]
 for clip in source['g']['animations']:
     if clip['name'].endswith('_Corrected'):
         times,world=sample(source,clip);source_clips.append((clip['name'].removesuffix('_Corrected'),times,world,rotation(world)))
+# The opening recovery was authored against Worker 01. Transfer its actual
+# joint curves through the same bind-space mapping, never reuse its rig offsets.
+recovery=json.loads((APP/'lib/loopforge/agents/worker-checkpoint-recovery.json').read_text())
+rt=np.linspace(0,recovery['seconds'],round(recovery['seconds']*recovery['fps'])+1)
+rl=np.tile(np.array([mat(n)for n in source['g']['nodes']]),(len(rt),1,1,1))
+for track in recovery['tracks']:
+    i=sn[track['joint']]
+    if 'rotation'in track:rl[:,i,:3,:3]=Rotation.from_quat(track['rotation']).as_matrix()*np.linalg.norm(rl[:,i,:3,:3],axis=1)[:,None,:]
+    else:rl[:,i,:3,3]=np.array(track['position'])
+rp,ro=hierarchy(source['g']['nodes']);rw=rl.copy()
+for i in ro:
+    if i in rp:rw[:,i]=rw[:,rp[i]]@rl[:,i]
+recovery_clip=('Checkpoint_Get_Up',rt,rw,rotation(rw))
 for name in args.workers:
     directory=args.directory/name;path=directory/(name+'-rig-current-v1.glb');d=context(path);tb=d['world_at']([],0);trot=rotation(tb);nodes=d['g']['nodes'];tn={n.get('name'):i for i,n in enumerate(nodes)};parents,order=hierarchy(nodes)
     joints=d['sk']['joints'];writer=Writer(d);writer.g['animations'][0]['name']='Rig_Source'
@@ -57,7 +70,7 @@ for name in args.workers:
     matched={i:sn[nodes[i]['name']] for i in joints if nodes[i].get('name') in sn}
     assert len(matched)==24,f'{name}: unmapped skeleton'
     records=[]
-    for clip,times,sw,swr in source_clips:
+    for clip,times,sw,swr in source_clips+([recovery_clip]if name=="bob"else[]):
         # Some accepted source clips animate a uniform skeleton scale. Normalize
         # their actual chain lengths before transferring pelvis displacement.
         animated_leg=np.linalg.norm(sw[:,sn['LeftUpLeg'],:3,3]-sw[:,sn['LeftLeg'],:3,3],axis=1)+np.linalg.norm(sw[:,sn['LeftLeg'],:3,3]-sw[:,sn['LeftFoot'],:3,3],axis=1)

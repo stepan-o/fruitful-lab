@@ -8,7 +8,7 @@ const bytes=await readFile(new URL('../../public'+file.src,import.meta.url));ass
 const validation=await validateBytes(bytes,{maxIssues:20});assert.equal(validation.issues.numErrors,0);assert.equal(validation.issues.numWarnings,0);
 const io=new NodeIO(),doc=await io.readBinary(bytes),root=doc.getRoot(),json=(await io.binaryToJSON(bytes)).json;
 assert.ok([...json.buffers,...json.images].every(x=>!x.uri));assert.equal(root.listSkins().length,1);assert.equal(root.listSkins()[0].listJoints().length,80);
-const expected=['Agree_Gesture','Alert','All_Night_Dance','Angry_Ground_Stomp','Arise','Axe_Breathe_and_Look_Around','Axe_Spin_Attack','Boxing_Warmup','Confident_Strut','Confused_Scratch','Idle_02','Idle_11','Injured_Walk','Shouting_Angrily','Shrug','Stand_and_Chat','air_squat'];assert.deepEqual(root.listAnimations().map(a=>a.getName()).sort(),expected.sort());
+const expected=['Checkpoint_Strike','Right_Hand_Sword_Slash','Agree_Gesture','Alert','All_Night_Dance','Angry_Ground_Stomp','Arise','Axe_Breathe_and_Look_Around','Axe_Spin_Attack','Boxing_Warmup','Confident_Strut','Confused_Scratch','Idle_02','Idle_11','Injured_Walk','Shouting_Angrily','Shrug','Stand_and_Chat','Step_Back','air_squat'];assert.deepEqual(root.listAnimations().map(a=>a.getName()).sort(),expected.sort());
 assert.equal(root.listMeshes().length,1);const p=root.listMeshes()[0].listPrimitives()[0];assert.equal(p.getIndices().getCount()/3,9752);
 for(const s of ['POSITION','NORMAL','TANGENT','TEXCOORD_0','JOINTS_0','WEIGHTS_0','JOINTS_1','WEIGHTS_1'])assert.ok(p.getAttribute(s),s);
 const w0=p.getAttribute('WEIGHTS_0').getArray(),w1=p.getAttribute('WEIGHTS_1').getArray();for(let i=0;i<w0.length;i+=4)assert.ok(Math.abs([...w0.slice(i,i+4),...w1.slice(i,i+4)].reduce((a,b)=>a+b,0)-1)<.00001);

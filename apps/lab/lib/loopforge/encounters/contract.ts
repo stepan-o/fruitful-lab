@@ -14,8 +14,9 @@ export type Speech={delivery?:Delivery;channel?:'local'|'shout';speaker:string;t
 /** Presentation instructions contain no authority to award effects. Times are source seconds. */
 export type MotionCue={clip:string;start?:number;rate?:number;loop?:boolean;blend?:number};
 export type Performance={agent:string;motion:Motion;to?:Point;yaw?:number;cue?:MotionCue};
-export type Phase={framing?:'wide'|'interaction';id:string;ticks:number;perform:Performance[];say?:Speech[];effects?:Effect[]};
-export type Action={id:string;room:ZoneId;adjacentRoom?:ZoneId;participants:string[];resources:string[];requires:Condition[];reason:string;phases:Phase[]};
+export type SceneFraming='wide'|'interaction'|'approach'|'assembly'|'impact'|'passage';
+export type Phase={framing?:SceneFraming;id:string;ticks:number;perform:Performance[];say?:Speech[];effects?:Effect[]};
+export type Action={id:string;room:ZoneId;adjacentRoom?:ZoneId;additionalRooms?:ZoneId[];participants:string[];resources:string[];requires:Condition[];reason:string;phases:Phase[]};
 export type Intent={id:string;action:string;initiator:string};
 export type Active={intent:Intent;phase:number;start:number;origins:Record<string,Point>};
 export type Event={id:string;tick:number;kind:'admitted'|'rejected'|'cancelled'|'completed'|'speech'|'heard'|'effect';action:string;agent?:string;detail:string;speech?:Speech;until?:number};
@@ -27,4 +28,4 @@ export interface SpatialServices { roomAt?(point:Point):ZoneId|undefined; connec
 export type Registry=Record<string,Action>;
 export type ActorView={id:string;name:string;character:Character;position:Point;yaw:number;motion:Motion;seconds:number;action:string;cue?:MotionCue;previous?:{cue:MotionCue;seconds:number;yaw?:number};blend?:number};
 export type Bubble=Pick<Speech,'speaker'|'to'|'text'|'act'|'delivery'>&{id:string;age:number};
-export type View={framing?:'wide'|'interaction';tick:number;actors:ActorView[];bubbles:Bubble[];gateOpen:boolean;drive:Value;phase:string;finished:boolean};
+export type View={framing?:SceneFraming;tick:number;actors:ActorView[];bubbles:Bubble[];gateOpen:boolean;drive:Value;phase:string;finished:boolean};

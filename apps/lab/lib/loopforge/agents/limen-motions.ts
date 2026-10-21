@@ -1,5 +1,8 @@
 /** Verified embedded clip names from the 19 October Meshy delivery. These are review candidates. */
 export const limenMotions = [
+ {id:'Checkpoint_Strike',label:'Checkpoint strike · fitted for bob',seconds:1.533,note:'A lowered right-arm slash fitted to bob’s shoulder height. Contact is staged at 0.60 seconds; inspect beside bob in the opening scene.'},
+ {id:'Right_Hand_Sword_Slash',label:'Right-arm slash · checkpoint candidate',seconds:1.533,note:'Catalog 219 transferred onto the accepted LIMEN rig. One sharp right-arm blow; blade contact and paired reaction are being fitted in the opening.'},
+ {id:'Step_Back',label:'Step back · doorway clearance',seconds:.833,note:'Short backward avoidance take. The opening stages this against STILETTO’s uninterrupted approach; inspect blade clearance and planted landing.'},
  {id:'Shouting_Angrily',label:'Shouting angrily',seconds:7.167,note:'Entrance-warning candidate. Review the full arm gesture with the cyan blade before pairing it with workers.'},
  {id:'Alert',label:'Alert',seconds:4,note:'Guard stance. Review body and blade clearance through the settling motion.'},
  {id:'Idle_11',label:'Idle 11 · relaxed',seconds:1.833,note:'Relaxed standing candidate. This export includes the complete skinned body.'},

@@ -24,7 +24,7 @@ Retarget the accepted worker library where appropriate, then validate each new p
 
 ## Current opening and briefs
 
-The current script is `../OPENING_EPISODE.md`, revision 5. Workers approach the factory from behind, ed and gus volunteer, bob is struck, and the crowd yields to STILETTO after ed and gus’s ID checks. bob remains down while she passes. She marches through Security to Conveyor; LIMEN jumps back. His downloaded Step_Back has been imported as the eighteenth source clip and still needs scene fitting.
+The current script is `../OPENING_EPISODE.md`, revision 5. Workers approach the factory from behind, ed and gus volunteer, bob is struck, and the crowd yields to STILETTO after ed and gus’s ID checks. bob remains down while she passes. She marches through Security to Conveyor; LIMEN jumps back. His downloaded Step_Back and the new fitted cyan strike are integrated; the paired choreography is undergoing visual review. The delivery bank now has 20 clips.
 
 Numbered body, rig/motion and opening-performance briefs are saved in each character’s folder under `model-briefs/`. The shared choreography is `model-briefs/opening-workers/03-opening-performance.txt`. Source IDs, actual exports and local cleanup remain separate records.
 

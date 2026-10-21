@@ -6,10 +6,10 @@
       "kind": "model",
       "variants": [
         {
-          "src": "/media/files/730fcb9d3bbce10e59ed343d2de4dd34a49e7a1d112d82a078152d74dcd2d2cd.glb",
+          "src": "/media/files/70878f2f4a5c234c12548503a1b816ce951288aae7e7d245731814dcade7fb0e.glb",
           "mime": "model/gltf-binary",
-          "bytes": 10391048,
-          "sha256": "730fcb9d3bbce10e59ed343d2de4dd34a49e7a1d112d82a078152d74dcd2d2cd"
+          "bytes": 10766284,
+          "sha256": "70878f2f4a5c234c12548503a1b816ce951288aae7e7d245731814dcade7fb0e"
         }
       ]
     }

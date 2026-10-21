@@ -15,6 +15,8 @@ import {createWelderFlame} from './welder-flame';
 import {ReadabilityMaterial} from './readability-material';
 import {STILETTO_PALETTE,type StilettoPalette} from '@/lib/loopforge/agents/stiletto-palette';
 import {createFaceEmission} from './character-emission';
+import {createPerformanceSampler} from './performance-sampler';
+import type {ActorView} from '@/lib/loopforge/encounters/contract';
 import type {Mesh} from '@babylonjs/core/Meshes/mesh';
 export type StilettoTools='both'|'left'|'right'|'none'|'welders'|'blade-welder'|'welder-blade';
 export const welderFile=modules.assets['stiletto-welder'].variants[0];
@@ -64,7 +66,7 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
   applyPalette();
   let group:typeof container.animationGroups[number]|undefined=container.animationGroups.find(g=>g.name==='Running__corrected');
   let phase=.2/review.clips.find(c=>c.id==='Running')!.duration,playing=false,speed=1,loop=true,centred=true,last=performance.now(),notifyAt=0,disposed=false;
-  const anchor=new Vector3();
+  const anchor=new Vector3(),performer=createPerformanceSampler(container.animationGroups);
   function sample(){
    if(group)for(const track of group.targetedAnimations){
     const frame=group.from+(group.to-group.from)*phase,value=track.animation.evaluate(frame),target=track.target as TransformNode;
@@ -118,6 +120,7 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
    presentation:{root,bodyMeshes:container.meshes.filter(m=>m.name==='char1'),palettePlugins},
    palette(value:StilettoPalette){palette=value;applyPalette();},
    place(x:number,y:number,z:number,yaw:number){anchor.set(x,y,z);root.rotation.y=Math.PI+yaw*Math.PI/180;sample();},
+   perform(actor:ActorView){if(!actor.cue)return;playing=false;performer.sample(actor.cue,actor.seconds,actor.previous,actor.blend);const p=worldPoint(actor.position[0]/1000,actor.position[1]/1000);root.position.set(p[0],.015,p[2]);const from=actor.previous?.yaw??actor.yaw,delta=((actor.yaw-from+540)%360)-180,t=Math.min(1,actor.seconds/.3);root.rotation.y=Math.PI+(from+delta*t*t*(3-2*t))*Math.PI/180;root.computeWorldMatrix(true);stage.refresh();},
    duration,
    clip(value:string,keepPhase=false){playing=false;if(!keepPhase)phase=0;for(const {n,p,r,s} of neutral){n.position.copyFrom(p);n.rotationQuaternion=r.clone();n.scaling.copyFrom(s);}const selected=container.animationGroups.find(g=>g.name===value);if(value!=='Rest'&&!selected)throw Error(`Missing STILETTO motion: ${value}`);group=selected;sample();onFrame(phase,false);},
    play(value:boolean){if(value&&phase===1)phase=0;playing=value&&!!group;last=performance.now();stage.refresh();},

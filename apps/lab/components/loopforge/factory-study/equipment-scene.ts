@@ -4,12 +4,12 @@ import { StandardMaterial } from '@babylonjs/core/Materials/standardMaterial';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
 import { MeshBuilder } from '@babylonjs/core/Meshes/meshBuilder';
 import type { Scene } from '@babylonjs/core/scene';
-import { EQUIPMENT_STUDY, ROOM_STAGING } from '@/lib/loopforge/spatial/equipment';
+import { EQUIPMENT_STUDY, ROOM_STAGING, type EquipmentPlacement } from '@/lib/loopforge/spatial/equipment';
 import { INITIAL_UNLOCKED, worldPoint, type ManagedRoomId } from '@/lib/loopforge/spatial/floor';
 import type { WorkshopTools, V } from './floor-scene';
 
 /** Procedural equipment vocabulary; metre-sized parts are never resized to fill a room. */
-export function buildEquipment(scene:Scene,t:WorkshopTools,only?:readonly ManagedRoomId[]){
+export function buildEquipment(scene:Scene,t:WorkshopTools,only?:readonly ManagedRoomId[],options:{placements?:readonly EquipmentPlacement[];markings?:boolean}={}){
   const {box,cylinder,sphere,ring,pipe,bar,sign,iron,dark,brass,copper,green,amber,cyan,ridge}=t;
   const roots:TransformNode[]=[],later:TransformNode[]=[];
   const rotors:{node:TransformNode;room:ManagedRoomId;axis:'x'|'y'|'z';speed:number}[]=[];
@@ -62,7 +62,7 @@ export function buildEquipment(scene:Scene,t:WorkshopTools,only?:readonly Manage
     tex.update();const m=new StandardMaterial('phosphor projection '+kind,scene);m.diffuseTexture=tex;m.emissiveTexture=tex;m.emissiveColor=new Color3(.28,.4,.36);m.specularColor=Color3.Black();
     const plate=MeshBuilder.CreatePlane('conditioning screen',{width:3.8,height:3.5},scene);plate.parent=p;plate.position.set(x,4.1,z-.13);plate.material=m;plate.isPickable=false;
   }
-  for(const e of EQUIPMENT_STUDY.filter(e=>!only||only.includes(e.room))){const r=e.footprint,p=node(e.name,worldPoint(r.x+r.w/2,r.y+r.h/2));roots.push(p);p.metadata={room:e.room};if(!INITIAL_UNLOCKED.includes(e.room))later.push(p);
+  for(const e of (options.placements??EQUIPMENT_STUDY).filter(e=>!only||only.includes(e.room))){const r=e.footprint,p=node(e.name,worldPoint(r.x+r.w/2,r.y+r.h/2));roots.push(p);p.metadata={room:e.room};if(!INITIAL_UNLOCKED.includes(e.room))later.push(p);
     // Local +Z points into the far end of the room. Fronts face south / camera.
     if(e.kind==='holding-cage'){
       box('cage floor',[2.8,.18,4.8],[0,.09,0],iron,p);for(const x of [-1.35,1.35])for(let z=-2.2;z<=2.2;z+=.4)bar('cage vertical',[x,.2,z],[x,3.2,z],.035,brass,p);
@@ -132,7 +132,7 @@ export function buildEquipment(scene:Scene,t:WorkshopTools,only?:readonly Manage
     }
   }
   const markings=node('interaction floor clearances');roots.push(markings);
-  for(const room of ['security','conveyor'] as const){const a=ROOM_STAGING[room].encounter;for(const x of [a.x,a.x+a.w]){const p=worldPoint(x,a.y+a.h/2);box('service aisle edge',[.045,.018,a.h],[p[0],.03,p[2]],brass,markings);} }
+  for(const room of (options.markings===false?[]:['security','conveyor'] as const)){const a=ROOM_STAGING[room].encounter;for(const x of [a.x,a.x+a.w]){const p=worldPoint(x,a.y+a.h/2);box('service aisle edge',[.045,.018,a.h],[p[0],.03,p[2]],brass,markings);} }
   let inspecting=false;
-  return {roots,study(enabled:boolean){inspecting=enabled;for(const n of later)n.setEnabled(enabled);},animate(time:number,motion:boolean,focus:string){if(inspecting&&motion)for(const r of rotors)if(focus===r.room)r.node.rotation[r.axis]=time*r.speed;},counts:EQUIPMENT_STUDY.length};
+  return {roots,study(enabled:boolean){inspecting=enabled;for(const n of later)n.setEnabled(enabled);},animate(time:number,motion:boolean,focus:string){if(inspecting&&motion)for(const r of rotors)if(focus===r.room)r.node.rotation[r.axis]=time*r.speed;},counts:(options.placements??EQUIPMENT_STUDY).length};
 }

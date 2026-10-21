@@ -7,3 +7,5 @@
 .transport label:has(input[type=number]){flex:0 0 85px}.transport input[type=number]{background:#10231d;border:1px solid #43564e;color:#e0dfc7;padding:7px;min-height:36px}
 
 .cameraFollow{display:flex;align-items:center;gap:8px;min-height:44px;font-size:12px;color:#b7c2b1;padding:0 8px}.cameraFollow input{accent-color:#b6a76c}
+
+.performanceBar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px;border-bottom:1px solid #43564e;font-size:12px}.testing .viewport{height:auto;aspect-ratio:16/9}.testing .viewport canvas{position:absolute;inset:0}

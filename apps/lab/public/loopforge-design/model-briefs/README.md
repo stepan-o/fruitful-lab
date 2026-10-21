@@ -15,6 +15,7 @@ The three A-pose body inputs are matching orthographic renders of the accepted v
 - [Emitter rebuild](/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt)
 - [Rig and delivery](/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt)
 - [Stage 6 · Doorway step back](/loopforge-design/model-briefs/limen-06-doorway-step-back.d8f5cef3a55a255e.txt)
+- [Stage 7 · Checkpoint cyan strike](/loopforge-design/model-briefs/limen-07-checkpoint-strike.10a3766937d5aa7f.txt)
 ## Worker 01
 
 Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.
@@ -76,6 +77,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [Stage 1 · Body](/loopforge-design/model-briefs/bob-01-body.4180a423afb11002.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/bob-02-rig-and-motion.7e3d6734f7816a70.txt)
 - [Stage 3 · Opening performance](/loopforge-design/model-briefs/bob-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 4 · Native Idle comparison](/loopforge-design/model-briefs/bob-04-native-idle-control.aadcbe7c9f425246.txt)
 ## sam
 
 Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.

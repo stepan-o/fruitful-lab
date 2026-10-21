@@ -7,10 +7,11 @@ def render_dramaturgy():
     <p>bob is the protagonist. The player runs the factory; bob lives in it. His ordinary working life gives us someone to keep following as the world grows.</p></header>
     <div class="narrative-foundation">
     <h3>This is bob</h3>
-    <p>The first episode follows bob through Security with nine other workers. LIMEN controls the doorway; the workers expect to begin their shift. Before the confrontation, we need to recognize bob through what he notices, whom he approaches and how he responds. The opening cast and script remain drafts under revision against the editorial standard below.</p>
+    <p>bob was a small worker with hands a size too large for him and a face that always seemed to have just heard something. His head turned before the rest of him, pulling his narrow shoulders after it; even in a queue he gave the impression of being on his way somewhere. He liked new machinery, especially before anyone quite knew how to use it. He had a warm, slightly cracked voice and a habit of addressing a whole group while looking at whichever face seemed kindest.</p>
+    <p class="small">bob’s approved character brief. Nine other worker portraits are new drafts; the earlier opening script awaits revision.</p>
     <p>That continuity is the foundation. The player should see “STILETTO hit bob” and remember a particular person, his conduct and the people who know him. Other workers have lives beyond his. We introduce those lives gradually, through encounters that change something.</p>
     <h3>Pressure passes between people</h3>
-    <p>A quota becomes STILETTO’s demand for speed. bob turns it into a promise because being dependable matters to him. Keeping the promise can make him conceal a fault; sam may inherit the difficulty. Pressure is one of Loopforge’s central themes, and the scene should show whose demand becomes whose problem.</p>
+    <p>A quota becomes STILETTO’s demand for speed. The time bob might spend examining unfamiliar machinery now has to serve a deadline. His response belongs to the encounter we still have to write. Pressure is one of Loopforge’s central themes; people bring different interests to it, and their actions change what others face.</p>
     <p>STILETTO wants output and leadership’s approval, not worker welfare. LIMEN’s commitment to procedure does not make him compassionate either. Their conflict places different demands on the same crew. Choices can redirect that pressure, and cooperation, relief and ordinary pleasures need room to matter.</p>
     <h3>Follow a life through a growing world</h3>
     <p><em>Back to the Dawn</em> makes a crowded social world approachable around a clear goal. <em>Attack on Titan</em> lets evolving commitments reshape its conflict. Dostoevsky presses characters’ explanations of themselves against other people who will not fit them. Our studies examine particular examples and the limits of transferring them into a game.</p>
@@ -20,13 +21,13 @@ def render_dramaturgy():
     <li><a href="/loopforge-design/narrative.html">Dramaturgy and character creation 101</a><span>Protagonist, desire, action, contradiction, scene, arc and ensemble attention—applied to Loopforge.</span></li>
     <li><a href="/loopforge-design/narrative-studies.html">The people become the story · reference studies</a><span>Back to the Dawn, Attack on Titan, Dostoevsky, Producer/Puppeteer, Astafiev and Sanctuary editorial craft.</span></li>
     <li><a href="/loopforge-design/narrative-reference.html">Back to the Dawn · illustrated case study</a><span>Morning count, personal conversation and the practical reasons to discover a large cast.</span></li>
-    <li><a href="/loopforge-design/narrative-voice.html">Writing Loopforge</a><span>Editorial brief · revision 4. The voice of factory life, on the page and on the screen.</span></li>
+    <li><a href="/loopforge-design/narrative-voice.html">Writing Loopforge</a><span>Editorial brief · revision 5. The voice of factory life, on the page and on the screen.</span></li>
     <li><a href="/loopforge-design/narrative-astafiev.html">Astafiev · editorial case study</a><span>A close reading of the opening of Cursed and Killed, linked to the writing standard.</span></li>
-    <li><a href="/loopforge-design/narrative-cast.html">bob and the people he works with</a><span>Ten proposed people, their ordinary pleasures, competing interests and distinct appearances.</span></li>
-    <li><a href="/loopforge-design/narrative-episode.html">Before the shift · the opening episode</a><span>A revised script at LIMEN’s checkpoint, and what it changes in the working day.</span></li>
+    <li><a href="/loopforge-design/narrative-cast.html">bob and the people he works with</a><span>bob’s approved portrait and nine distinct worker drafts, with proposed performance and relationship notes.</span></li>
+    <li><a href="/loopforge-design/narrative-episode.html">Before the shift · the opening episode</a><span>Earlier checkpoint script, marked for revision after the new cast review.</span></li>
     <li><a href="/loopforge-design/narrative-assessment.html">Does this belong in Loopforge? · feature assessment</a><span>Evidence, alternatives, attention and agency, costs, and a clear review decision.</span></li>
     </ul>
     <p>Every feature should strengthen a particular encounter or the continuity between encounters. A quieter floor, a believable handoff and a reliable memory can all serve the story. Judge the experience they make possible, compare simpler alternatives, and test the uncertain claim.</p>
-    <p class="small">The protagonist and thematic direction follow the owner’s decisions. Cast, script and proposed mechanics await creative review; these pages do not claim that individual worker behavior or lasting relationships are implemented.</p>
+    <p class="small">The protagonist and thematic direction follow the owner’s decisions. bob’s portrait is approved; the other portraits, revised script and proposed mechanics await creative review; these pages do not claim that individual worker behavior or lasting relationships are implemented.</p>
     <p class="small"><a href="/loopforge-design/sources/producer.md">Original Producer vision</a> · <a href="/loopforge-design/sources/puppetteer.md">Original Puppeteer doctrine</a></p>
     </div>'''

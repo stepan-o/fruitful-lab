@@ -2,13 +2,13 @@
 
 Character dramaturgy and narrative design · Foundation and working primer · 20 October 2026
 
-bob arrives with his ID already in his hand. He has been thinking about the job on the other side of Security. sam has promised to let him set the first guide on the Conveyor, and he would like to get there before somebody else does it. Ten workers are coming through the Lobby. For the moment, this is an ordinary morning.
+**Approved character brief · 20 October 2026**
 
-LIMEN tells them to wait. A little later, bob moves when he should not, and LIMEN strikes him. The player sees the fall. What makes it a beginning rather than a spectacle is what follows: bob still wants the job, sam still expects him, and now the walk to the line will take longer. Other people have seen what happened. Each will carry a different part of it away.
+bob was a small worker with hands a size too large for him and a face that always seemed to have just heard something. His head turned before the rest of him, pulling his narrow shoulders after it; even in a queue he gave the impression of being on his way somewhere. He liked new machinery, especially before anyone quite knew how to use it. He had a warm, slightly cracked voice and a habit of addressing a whole group while looking at whichever face seemed kindest.
 
 Loopforge's story follows bob through an ordinary factory life. The player occupies a different position: they operate the factory and influence its conditions. bob is the protagonist, not a controllable avatar or a disposable example of a system. His life gives the growing world continuity. The design succeeds when an event is understood as “STILETTO hit bob”—and when the player also remembers what bob was trying to do before she arrived.
 
-This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) and [opening script](OPENING_EPISODE.md) are proposals developed from that reading. They await creative approval before new visual production or behavior implementation.
+This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) records bob’s approved portrait and nine worker drafts. The [opening script](OPENING_EPISODE.md) predates this approval and awaits revision. Approval of the portrait does not approve those drafts, a plot or an implementation.
 
 ## Dramaturgy begins with an action
 
@@ -34,7 +34,7 @@ Keeping bob central does not require permanent camera coverage. Establish recurr
 
 Begin by imagining a day the person would consider good. What work can they do well? Whose company do they seek? What do they enjoy when no reward is available? What small inconvenience do they tolerate, and which one produces a surprising reaction? These details create something pressure can disturb.
 
-Then distinguish a desire from the strategy used to pursue it. bob wants to be dependable. Volunteering first is one strategy. Concealing pain may become another. The desire helps us recognize him while the changing strategy gives him an arc. If every event simply triggers “eager worker behavior,” we have built a routine with a name.
+The approved portrait gives us bob’s physical presence, curiosity and manner of addressing others. It leaves his explanations of himself open. His interest in unfamiliar machinery is enough to begin staging an act of attention; it does not establish a need to prove his usefulness, a fear of dependence or a future rebellion. Situations and relationships will give him particular desires. Their importance can change as he gains experience.
 
 An archetype provides a recognizable human pattern: the helper, the ambitious subordinate, the proud craftsperson. It becomes a stereotype when the pattern explains everything. A specific person needs a competence, a contradiction and relationships in which the same habit has different effects. sam's attentiveness may reassure kit and irritate bob. Neither response proves that sam has ceased to care.
 
@@ -46,7 +46,7 @@ The same principle applies to visual design. A silhouette helps the audience fin
 
 Pressure is one of Loopforge's central themes. It comes from deadlines, bodies, hierarchy and relationships. It also comes from inside a person: the promise they made, the image they want to preserve, the favor they cannot bear to owe. These pressures matter when they make two valued things difficult to keep together.
 
-STILETTO wants output and leadership's approval. A delayed crew threatens both. She demands speed from the workers who finally arrive. bob wants to be useful and does not want sam to see that his leg is failing. His promise to keep up turns a production demand into a private difficulty. sam now faces a choice between finishing their own work and attending to him.
+STILETTO wants output and leadership's approval. A delayed crew threatens both. She demands speed from the workers who finally arrive. The time bob might have spent examining a new machine now has to serve a deadline. Whether he hurries, asks a question, follows somebody else or objects belongs to the encounter we still have to write. His portrait gives that encounter a person; it does not supply a compulsory response.
 
 LIMEN applies another pressure. Procedure gives him an account of order and a basis for authority. He may recognize real hazards while harming the people whose compliance he demands. STILETTO's objection is that his checks withhold labor she needs; worker welfare is not her motive. Their conflict can be understandable without making either supervisor benevolent.
 
@@ -58,7 +58,7 @@ Character development is not a compulsory journey toward virtue. A person may be
 
 Dostoevsky is useful here because his characters' explanations do not settle them. An argument about duty or freedom can also be an attempt to avoid shame, obtain recognition or control the listener. Another person can expose the gap by answering unexpectedly. Our [selected passage studies](NARRATIVE_STUDIES.md) consider this in *Crime and Punishment*, *The Brothers Karamazov* and *Notes from the Underground*.
 
-For bob, the first contradiction is modest: he wants others to be able to rely on him, but has difficulty relying on them. A hurt leg makes that harder to avoid. It does not determine his response. He can accept a limited offer, reject it, repay it too quickly or blame the person who made his need visible. The script should give us grounds to understand the choice without announcing the final truth about him.
+bob’s interest in what nobody yet knows how to use can meet ed’s preference for an established instruction or sam’s readiness to demonstrate the solution. His habit of looking towards a kind face can affect whom he addresses in the same room. These are possible points of contact. We still have to discover what each person wants in the encounter, what they misunderstand and what they choose. A portrait should leave enough room for that work.
 
 The rest of the ensemble must have equivalent freedom. ed may become LIMEN's assistant and later correct him. jo can keep a faithful record yet choose the moment to reveal it. A person with a recognizable pattern is still capable of surprising us; the surprise should make sense once we see what mattered to them.
 

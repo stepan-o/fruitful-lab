@@ -1,5 +1,7 @@
 # Episode 1 — Before the shift
 
+**Revision notice · 20 October 2026:** this script predates bob’s approved [character brief](OPENING_CAST.md). Its first-guide promise, usefulness motive and proposed help-refusal development are unapproved staging ideas. Retain it as an earlier episode draft for revision after the cast review; it must not be used to extend the approved portrait. The deployed rehearsal is unchanged.
+
 Script proposal 2 · 20 October 2026 · Ten workers and LIMEN · Awaiting creative approval before visual production.
 
 [Meet the cast](OPENING_CAST.md) · [Dramaturgy primer](CHARACTER_DRAMATURGY.md) · [Reference studies](NARRATIVE_STUDIES.md)

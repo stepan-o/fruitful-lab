@@ -3442,7 +3442,7 @@ Owner direction, 17 October 2026: the next development priority is a factory who
 
 20 October owner direction: workers must be recognizable through appearance, movement, speech, relationships, choices, **actions and reactions**. Their BDI motives should drive factory conduct, with robot mechanisms carrying recognizable human meanings. Story discovery happens in short, situated exchanges tied to player problems and later consequences. Day one's pressure from LIMEN starts individual worker–LIMEN arcs and worker–worker relationships; a common stress increase does not establish those identities.
 
-The [character dramaturgy essay](CHARACTER_DRAMATURGY.md) follows the workers from the Security queue to the choices they make later on shift. [Writing Loopforge](EDITORIAL_VOICE.md) sets the candidate editorial and dialogue direction, with concrete examples and distinct supervisor voices. It extends the Puppeteer/Producer direction. The [ten-worker cast](OPENING_CAST.md) and [opening episode](OPENING_EPISODE.md) are writing proposals for approval before concept art, Meshy production and the systems that support the approved performance. The [illustrated Back to the Dawn study](BACK_TO_THE_DAWN_CASE_STUDY.md) records the reference. Full worker BDI and persistent relationship arcs remain implementation work.
+The [character dramaturgy essay](CHARACTER_DRAMATURGY.md) follows the workers from the Security queue to the choices they make later on shift. [Writing Loopforge](EDITORIAL_VOICE.md) sets the candidate editorial and dialogue direction, with concrete examples and distinct supervisor voices. It extends the Puppeteer/Producer direction. The [ten-worker cast](OPENING_CAST.md) contains bob’s approved short portrait and nine new drafts. It also records proposed art, voice and performance implications. The earlier [opening episode](OPENING_EPISODE.md) awaits revision against the cast; its usefulness-based explanation of bob is retired. New portraits, scenes and assets need their own creative review before production. The [illustrated Back to the Dawn study](BACK_TO_THE_DAWN_CASE_STUDY.md) records the reference. Full worker BDI and persistent relationship arcs remain implementation work.
 
 ### Opening two-week arc
 
@@ -3619,13 +3619,13 @@ The owner selects **Hot Walk as Cathexis’s default walk**. Keep that public na
 
 Character dramaturgy and narrative design · Foundation and working primer · 20 October 2026
 
-bob arrives with his ID already in his hand. He has been thinking about the job on the other side of Security. sam has promised to let him set the first guide on the Conveyor, and he would like to get there before somebody else does it. Ten workers are coming through the Lobby. For the moment, this is an ordinary morning.
+**Approved character brief · 20 October 2026**
 
-LIMEN tells them to wait. A little later, bob moves when he should not, and LIMEN strikes him. The player sees the fall. What makes it a beginning rather than a spectacle is what follows: bob still wants the job, sam still expects him, and now the walk to the line will take longer. Other people have seen what happened. Each will carry a different part of it away.
+bob was a small worker with hands a size too large for him and a face that always seemed to have just heard something. His head turned before the rest of him, pulling his narrow shoulders after it; even in a queue he gave the impression of being on his way somewhere. He liked new machinery, especially before anyone quite knew how to use it. He had a warm, slightly cracked voice and a habit of addressing a whole group while looking at whichever face seemed kindest.
 
 Loopforge's story follows bob through an ordinary factory life. The player occupies a different position: they operate the factory and influence its conditions. bob is the protagonist, not a controllable avatar or a disposable example of a system. His life gives the growing world continuity. The design succeeds when an event is understood as “STILETTO hit bob”—and when the player also remembers what bob was trying to do before she arrived.
 
-This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) and [opening script](OPENING_EPISODE.md) are proposals developed from that reading. They await creative approval before new visual production or behavior implementation.
+This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) records bob’s approved portrait and nine worker drafts. The [opening script](OPENING_EPISODE.md) predates this approval and awaits revision. Approval of the portrait does not approve those drafts, a plot or an implementation.
 
 ## Dramaturgy begins with an action
 
@@ -3651,7 +3651,7 @@ Keeping bob central does not require permanent camera coverage. Establish recurr
 
 Begin by imagining a day the person would consider good. What work can they do well? Whose company do they seek? What do they enjoy when no reward is available? What small inconvenience do they tolerate, and which one produces a surprising reaction? These details create something pressure can disturb.
 
-Then distinguish a desire from the strategy used to pursue it. bob wants to be dependable. Volunteering first is one strategy. Concealing pain may become another. The desire helps us recognize him while the changing strategy gives him an arc. If every event simply triggers “eager worker behavior,” we have built a routine with a name.
+The approved portrait gives us bob’s physical presence, curiosity and manner of addressing others. It leaves his explanations of himself open. His interest in unfamiliar machinery is enough to begin staging an act of attention; it does not establish a need to prove his usefulness, a fear of dependence or a future rebellion. Situations and relationships will give him particular desires. Their importance can change as he gains experience.
 
 An archetype provides a recognizable human pattern: the helper, the ambitious subordinate, the proud craftsperson. It becomes a stereotype when the pattern explains everything. A specific person needs a competence, a contradiction and relationships in which the same habit has different effects. sam's attentiveness may reassure kit and irritate bob. Neither response proves that sam has ceased to care.
 
@@ -3663,7 +3663,7 @@ The same principle applies to visual design. A silhouette helps the audience fin
 
 Pressure is one of Loopforge's central themes. It comes from deadlines, bodies, hierarchy and relationships. It also comes from inside a person: the promise they made, the image they want to preserve, the favor they cannot bear to owe. These pressures matter when they make two valued things difficult to keep together.
 
-STILETTO wants output and leadership's approval. A delayed crew threatens both. She demands speed from the workers who finally arrive. bob wants to be useful and does not want sam to see that his leg is failing. His promise to keep up turns a production demand into a private difficulty. sam now faces a choice between finishing their own work and attending to him.
+STILETTO wants output and leadership's approval. A delayed crew threatens both. She demands speed from the workers who finally arrive. The time bob might have spent examining a new machine now has to serve a deadline. Whether he hurries, asks a question, follows somebody else or objects belongs to the encounter we still have to write. His portrait gives that encounter a person; it does not supply a compulsory response.
 
 LIMEN applies another pressure. Procedure gives him an account of order and a basis for authority. He may recognize real hazards while harming the people whose compliance he demands. STILETTO's objection is that his checks withhold labor she needs; worker welfare is not her motive. Their conflict can be understandable without making either supervisor benevolent.
 
@@ -3675,7 +3675,7 @@ Character development is not a compulsory journey toward virtue. A person may be
 
 Dostoevsky is useful here because his characters' explanations do not settle them. An argument about duty or freedom can also be an attempt to avoid shame, obtain recognition or control the listener. Another person can expose the gap by answering unexpectedly. Our [selected passage studies](NARRATIVE_STUDIES.md) consider this in *Crime and Punishment*, *The Brothers Karamazov* and *Notes from the Underground*.
 
-For bob, the first contradiction is modest: he wants others to be able to rely on him, but has difficulty relying on them. A hurt leg makes that harder to avoid. It does not determine his response. He can accept a limited offer, reject it, repay it too quickly or blame the person who made his need visible. The script should give us grounds to understand the choice without announcing the final truth about him.
+bob’s interest in what nobody yet knows how to use can meet ed’s preference for an established instruction or sam’s readiness to demonstrate the solution. His habit of looking towards a kind face can affect whom he addresses in the same room. These are possible points of contact. We still have to discover what each person wants in the encounter, what they misunderstand and what they choose. A portrait should leave enough room for that work.
 
 The rest of the ensemble must have equivalent freedom. ed may become LIMEN's assistant and later correct him. jo can keep a faithful record yet choose the moment to reveal it. A person with a recognizable pattern is still capable of surprising us; the surprise should make sense once we see what mattered to them.
 
@@ -3738,7 +3738,7 @@ A clearer silhouette, a believable handoff, a held camera or a persistent memory
 
 Reference studies and design conclusions · 20 October 2026 · Contains plot spoilers for the works discussed.
 
-The factory can generate an unlimited supply of incidents. A line stops, a supervisor intervenes, somebody is blamed, production resumes. None of this guarantees a story. A story begins to accumulate when the next interruption finds a person changed by the last one. bob used to volunteer before the instruction was finished. Now he waits. The machine has been repaired; something else has not.
+The factory can generate an unlimited supply of incidents. A line stops, a supervisor intervenes, somebody is blamed, production resumes. None of this guarantees a story. A story begins to accumulate when the next interruption finds a person changed by the last one. A worker who once interrupted a demonstration may now wait for permission to approach it. The repaired machine alone would not tell that history. This is a possible scene contrast, not an approved history for bob.
 
 This is the problem our references help us solve. *Back to the Dawn* gives an unfamiliar institution a clear purpose and a population worth discovering. *Attack on Titan* makes changing personal commitments carry an expanding conflict. Dostoevsky follows people into the gap between what they claim to believe and what they can bear to do. Astafiev supplies a further editorial reference, examined in the [opening case study](ASTAFIEV_CASE_STUDY.md). These influences meet at the scale of working lives; the [official style guide](EDITORIAL_VOICE.md) sets the requirements for writing those lives.
 
@@ -3784,6 +3784,8 @@ There is an important limit to the analogy. A published narrative can commit its
 
 Calling a character an archetype is useful only if we then find the person who makes the pattern difficult. The proud intellectual, the officious subordinate or the indispensable helper gives us an initial expectation. A character becomes interesting when the expectation encounters an act it cannot fully explain.
 
+Before following a long arc, study an introduction. Marmeladov’s appearance in Part I, Chapter II brings worn clothing, a damaged body, an eager wish to converse and surviving official manners into one portrait. His remaining coat button carries a concern for respectability. The reader can form an impression before knowing the full history, and the details resist settling into one simple judgment. For our worker briefs, this suggests choosing a few observations that belong to a particular person, then stopping before explaining away their ambiguity. [Crime and Punishment, Part I, Chapter II](https://www.gutenberg.org/files/2554/2554-h/2554-h.htm)
+
 In *Crime and Punishment*, Raskolnikov's account of exceptional people becomes material for Porfiry's questioning in Part III, Chapter V. The conversation is intellectual, but it is also an encounter between a suspect and somebody testing him. Later, in his confession to Sonia, explanations involving money and benevolence give way to his need to discover what kind of person he is entitled to be. The argument has become inseparable from pride, dependence and the listener before him. [Part III, Chapter V; Part V, Chapter IV, Constance Garnett translation](https://www.gutenberg.org/files/2554/2554-h/2554-h.htm)
 
 This suggests a way to write ed. “Rules protect everyone” is an intelligible conviction. It becomes dramatic when an exact record would protect bob but embarrass LIMEN, whose approval has just given ed a place at the desk. ed's next action can expose an unresolved question: does he want the rule to be fair, or does he need to be recognized as the person who knows it? Both desires may be sincere. A personality label cannot choose for him.
@@ -3796,7 +3798,7 @@ In *Notes from the Underground*, the narrator's encounter with Liza exposes how 
 
 For Loopforge, this is a particularly useful study of a trace. An object can be evidence of another person's choice, not just a collectible clue. If bob returns a tool he normally keeps ready for sam, that action may mean something has changed. It earns that meaning through their earlier routine. The player must have a way to investigate without being handed an authoritative diagnosis of the relationship.
 
-Reaching for a character's “soul” means staying with what their convenient explanation leaves out: shame, affection, vanity, mercy, a pleasure they cannot defend, a kindness they regret receiving. It does not mean giving every worker a devastating secret or making everyone eloquent about suffering. A person can be exposed by a very small choice. bob may genuinely want kit to succeed and still be hurt when kit receives praise for a task he taught them.
+Reaching for a character's “soul” means staying with what their convenient explanation leaves out: shame, affection, vanity, mercy, a pleasure they cannot defend, a kindness they regret receiving. It does not mean giving every worker a devastating secret or making everyone eloquent about suffering. A person can be exposed by a very small choice. That possibility does not justify assigning bob an unapproved jealousy or need for recognition. His approved portrait leaves those questions open.
 
 Nor should suffering become a machine that automatically produces depth. Pressure reveals some things and conceals others. People learn, harden, recover, misread and sometimes behave well without any dramatic reward. Our scenes need enough ordinary life for those differences to register.
 
@@ -3806,7 +3808,7 @@ The original [Producer notes](sources/producer.md) ask for interesting episodes 
 
 The current game direction changes where that understanding reaches the audience. Reports and diagnostic traces remain useful to authors. The player should encounter a hesitant handoff, a missing colleague, an accusation overheard at a door or a supervisor's selective account of yesterday. The world must do the dramatic work that the earlier vision often assigned to a report.
 
-Pressure is one of Loopforge's central themes. It passes through people and changes form. A weekly target becomes STILETTO's demand for speed. bob turns that demand into a promise, because being dependable matters to him. He conceals a fault to keep the promise; sam inherits the consequences. LIMEN then reads the fault as further evidence that speed needs stricter control. The pressure has returned to the conflict that helped produce it.
+Pressure is one of Loopforge's central themes. It passes through people and changes form. A weekly target becomes STILETTO's demand for speed. Workers have less time to examine a problem or attend to one another. The results can give LIMEN further grounds for intervention. Each worker’s interpretation and response still need to be written from the person and situation; bob’s approved curiosity does not predetermine compliance, concealment or resistance.
 
 This is a candidate chain, not a mandatory failure loop. A credible intervention can interrupt it. Praise, friendship, envy and gratitude can also create pressure; rest and successful cooperation can relieve it. If every action produces deterioration, the player soon learns that choices do not matter and affection becomes merely preparation for punishment.
 
@@ -3818,13 +3820,13 @@ Read the [Astafiev case study](ASTAFIEV_CASE_STUDY.md) alongside the Sanctuary s
 
 The opening chapters of Sanctuary Economics explain large arrangements through people doing particular things. Al Alcorn's encounter with a cabinet and its coins gives an economic relationship a physical beginning. The move from a machine to a platform then changes what it means to make and sell a game. The reader acquires the conceptual vocabulary after meeting the problem it describes. [Insert coin. Join in.](/stepanoskin/game-monetization?chapter=insert-coin) · [Different roads to the same market](/stepanoskin/game-monetization?chapter=studio-to-screen)
 
-That order improves both our documentation and our scenes. Show bob keeping his card ready before explaining his need to be useful. Let the same readiness become hesitation after Security. Then ask what has changed and what the player can do with that knowledge. The sentences should carry an argument; the actions should carry a life. The [revised editorial guide](EDITORIAL_VOICE.md) applies this approach without borrowing Sanctuary's wording or turning factory dialogue into an essay.
+That order improves both our documentation and our scenes. Let the reader meet bob through the particulars of the approved portrait before discussing what a scene might demand of him. Let a changed gesture become visible before interpreting it. Then ask what the player has grounds to understand. The sentences should carry an argument; the actions should carry a life. The [revised editorial guide](EDITORIAL_VOICE.md) applies this approach without borrowing Sanctuary's wording or turning factory dialogue into an essay.
 
 ## Bringing the methods together
 
 These references solve different problems. A clear practical goal helps us enter an unfamiliar society. Recurring personal commitments give its events a direction. Contradiction prevents the people from becoming illustrations of the design. Their combination makes an ordinary protagonist capable of carrying a large story.
 
-The opening should therefore introduce bob doing something he wants to do, with somebody who knows him. LIMEN interrupts that life. The other workers respond according to interests already in motion. The final beat should change bob's next action, leaving a reason to return to him. That is the basis of the revised [cast](OPENING_CAST.md) and [episode](OPENING_EPISODE.md).
+The opening should therefore introduce bob doing something he wants to do, with somebody who knows him. LIMEN interrupts that life. The other workers respond according to interests already in motion. The final beat should change bob's next action, leaving a reason to return to him. The [cast](OPENING_CAST.md) now separates bob’s approved portrait from nine new worker drafts. The earlier [episode](OPENING_EPISODE.md) awaits revision against that cast.
 
 Across the first five days, the same people meet altered conditions. bob can become useful to one supervisor by doing something that damages a colleague's trust. ed can discover that access to authority is not the same as influence over it. sam can find that help offered insistently becomes another demand. These are directions to test, not five scheduled personality conversions.
 

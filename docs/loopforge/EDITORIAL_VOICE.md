@@ -1,6 +1,6 @@
 # Writing Loopforge
 
-Editorial brief · Revision 4 · 20 October 2026
+Editorial brief · Revision 5 · 20 October 2026
 
 After LIMEN strikes bob, the queue becomes easier to manage. Nobody moves without being told. bob gets up, tests the leg and goes back to waiting. A successful inspection can look like this.
 
@@ -15,6 +15,18 @@ The [Astafiev study](ASTAFIEV_CASE_STUDY.md) is our reference for that closeness
 In Loopforge, the machine body gives familiar experiences unfamiliar consequences. A worn joint can be repaired, but asking for the repair means admitting wear to someone who decides whether you are worth keeping. Words such as *serviceable*, *spare* and *replacement* belong in the workshop; familiarity with their use gives them force when they enter a conversation about a person. We should not have to explain the metaphor.
 
 The factory must also be somewhere people live. They waste time together, show off, get bored, enjoy doing something well. A joke can be stupid and still be welcome. Let a good afternoon remain a good afternoon, without turning every pleasure into advance notice of disaster. bob needs a life the player enjoys returning to.
+
+## Introducing a person
+
+bob’s [approved portrait](OPENING_CAST.md) is the standard for the worker briefs. Its details belong together: the small frame and large hands, the head drawing the shoulders after it, the interest in unfamiliar machinery, the voice and the face he looks towards when speaking. They let us picture someone without exhausting what there is to know about him. Preserve the approved paragraph exactly.
+
+Begin with a few particulars that carry life. Body, bearing, voice, pleasures and treatment of other people are available to the writer; every portrait need not use them in the same order. A narrator can judge directly when the observation earns it. Keep the first portrait short enough to remember. Stop before supplying a hidden wound, a future plot or a sentence that explains what the person really represents.
+
+Astafiev gives Yashkin a bodily presence and an abrasive voice before a reader could reduce him to his authority. His need for warmth and his conduct among the men belong to the same person. In Dostoevsky’s introduction of Marmeladov, damaged appearance and surviving official manners occupy the same frame. Our lesson is to hold several impressions together and let the reader continue looking. These are readings of the [Astafiev opening](https://mybook.ru/author/viktor-astafev/proklyaty-i-ubity-4/read/) and [Crime and Punishment, Part I, Chapter II](https://www.gutenberg.org/files/2554/2554-h/2554-h.htm), not instructions to copy their imagery or sentences.
+
+Read the cast together. Who makes room, takes over, seeks an audience, values privacy, waits, hurries or insists on a particular way of doing things? The differences must survive removing the names. Avoid giving every worker bob’s curiosity or the same kindness followed by a qualifying flaw. Leave room for affection as well as friction. Back to the Dawn informs how we introduce and revisit an ensemble; Attack on Titan informs how sustained encounters can alter our understanding of its people. Neither requires a miniature destiny in every portrait.
+
+Keep approved portraits separate from performance proposals, relationship possibilities and episode drafts. Carry recognition into what the agents do and how they react, then let events and their interpretations accumulate. Additional motives for bob require their own creative review.
 
 ## On the page and on the screen
 

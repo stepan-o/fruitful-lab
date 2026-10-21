@@ -124,7 +124,7 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
     impact:[123.85,111.8,.95,4.8,-2.15,1.12],
     card:[124.2,112.2,.8,4.1,-2.5,.98],
     passage:[125.1,116.0,1.3,7.9,1.79,1.36],
-    threshold:[124.9,110.9,1.05,7.1,-2.3,1.25],
+    threshold:[124.9,110.9,1.05,7.1,-1.5,1.25],
     aftermath:[124.6,111.3,1.45,4.8,-1.45,1.35],
    } as const;
    cutaway.forEach(m=>m.setEnabled(shot==='approach'||shot==='passage'));
